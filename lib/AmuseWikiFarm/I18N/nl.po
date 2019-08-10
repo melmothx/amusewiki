@@ -110,8 +110,8 @@ msgstr "Voeg een omslagafbeelding toe (PNG of JPG)"
 msgid "Add a new text"
 msgstr "Voeg een nieuwe tekst toe"
 
-msgid "Add an attachment (PNG, JPG or PDF)"
-msgstr "Voeg een bijlage toe (PNG, JPG of PDF)"
+msgid "Add an attachment"
+msgstr ""
 
 msgid "Add crop marks to the PDF"
 msgstr "Voeg herkaderingtekens toe aan de PDF"
@@ -196,6 +196,11 @@ msgid "All users"
 msgstr "Alle gebruiken"
 
 msgid ""
+"Allow binary uploads to logged in users: list of whitespace separate file "
+"extensions"
+msgstr ""
+
+msgid ""
 "Also produce slides\n"
 "          from the document. Each section, no matter how deep, will\n"
 "          produce a slide. The text outside a section is ignored, so\n"
@@ -246,6 +251,12 @@ msgstr "Als omslag in de koptekst"
 msgid "As regular image in the body"
 msgstr "Als normale afbeelding in de hoofdtekst"
 
+msgid "Assign text to nodes"
+msgstr ""
+
+msgid "Attach"
+msgstr ""
+
 msgid "Attached images"
 msgstr "Bijgevoegde afbeeldingen"
 
@@ -272,6 +283,9 @@ msgstr "Automatisch gegenereerd"
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr "SSL certificaten van Let's Encrypt automatisch aanvragen en vernieuwen"
+
+msgid "Available"
+msgstr ""
 
 msgid "Available category tags for header"
 msgstr "Beschikbare categorie tags voor de koptekst"
@@ -311,6 +325,9 @@ msgstr ""
 msgid "Blog"
 msgstr "Blog"
 
+msgid "Body"
+msgstr ""
+
 msgid "Bold"
 msgstr "Vet"
 
@@ -331,6 +348,12 @@ msgstr ""
 "Standaard gebruiken secondaire voetnoten arabische\n"
 "        nummers tussen haakjes. Met deze optie gebruiken ze\n"
 "        alfa nummering per pagina"
+
+msgid "By number of pages, ascending"
+msgstr "Op aantal pagina's, oplopend"
+
+msgid "By number of pages, descending"
+msgstr "Op aantal pagina's, aflopend"
 
 msgid "By relevance"
 msgstr "Op relevantie"
@@ -412,6 +435,9 @@ msgstr "Leeg de boekenlijst"
 msgid "Click on the images to get the sample PDF"
 msgstr "Klik op de afbeelding om de voorbeeld PDF te krijgen"
 
+msgid "Clone"
+msgstr ""
+
 msgid "Clone the repo locally and set it up"
 msgstr "Kloon de repo lokaal en begin hem"
 
@@ -424,6 +450,9 @@ msgid ""
 msgstr ""
 "Kolommen voor de linker kant van de bewerkpagina, met het bewerkvak (van de "
 "12)"
+
+msgid "Comma or semicolon separated list"
+msgstr "Komma of puntkomma gescheiden lijst"
 
 msgid "Completed"
 msgstr "Voltooid"
@@ -498,6 +527,9 @@ msgstr "Huidige tijd"
 msgid "Custom formats for %1"
 msgstr "Aangepaste formaten voor %1"
 
+msgid "Custom home page"
+msgstr ""
+
 msgid "Date"
 msgstr "Datum"
 
@@ -512,6 +544,9 @@ msgstr "Uitgestelde/verwijderde teksten"
 
 msgid "Delete"
 msgstr "Verwijder"
+
+msgid "Delete permanently"
+msgstr ""
 
 #. (remote.name)
 msgid "Delete remote repository %1"
@@ -657,6 +692,9 @@ msgstr "Lettertypes insluiten in het EPUB bestand"
 msgid "Enable \"What links here\" feature"
 msgstr "Schakel \"Welke links hier\" optie in"
 
+msgid "Enable search suggestions (did you mean...)"
+msgstr ""
+
 msgid "Enable title ordering by SKU"
 msgstr "Schakel titel sorteren op SKU in"
 
@@ -726,9 +764,6 @@ msgstr "Bestandsextensie"
 
 msgid "File format not allowed"
 msgstr "Bestandsformaat niet toegestaan"
-
-msgid "File to delete not found!"
-msgstr "Te verwijderen bestand niet gevonden!"
 
 msgid "File too big"
 msgstr "Bestand te groot"
@@ -827,9 +862,6 @@ msgstr "Opmaak succesvol aangemaakt"
 msgid "Format successfully updated"
 msgstr "Opmaak succesvol geupdated"
 
-msgid "Format: yyyy-mm-dd hh:mm, e.g."
-msgstr "Opmaak: jjjj-mm-dd uu:mm, bijvoorbeeld"
-
 msgid "Formats"
 msgstr "Opmaken"
 
@@ -870,6 +902,9 @@ msgstr ""
 "            letterlijk ingevoegd, je hebt hiermee de kans om alles te "
 "verpesten,\n"
 "            dus wees voorzichting"
+
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr ""
 
 msgid "HTML to insert into the left sidebar"
 msgstr "HTML om in te voegen in de linker zijbalk"
@@ -964,6 +999,15 @@ msgstr "IRC kanaal op freenode"
 msgid "Id"
 msgstr "Id"
 
+msgid ""
+"If by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+"Als door toeval een andere tekst met dezelfde auteur en titel bestaat, kies "
+"dan de gewenste URI door het veld hieronder te gebruiken en auteur, titel en "
+"een getal in te voeren, bijvoorbeeld mijn-auteur-mijn-titel-1"
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -974,6 +1018,14 @@ msgstr "Id"
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Als %1 niet is ingesteld wordt het opgezocht in de programma index."
+
+msgid ""
+"If present, hide the\n"
+"          generated format and the information box. This makes sense\n"
+"          with attachments, when the text version is poor or not\n"
+"          available and more relevance should be given to the attached\n"
+"          files."
+msgstr ""
 
 msgid ""
 "If set to a number greater than 0, automatically generate a teaser, with "
@@ -1097,6 +1149,10 @@ msgstr ""
 msgid "Image already set as cover"
 msgstr "Afbeelding reeds ingesteld als omslagafbeelding"
 
+#. ($w, $h, $limit, $limit)
+msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -1108,8 +1164,8 @@ msgstr ""
 msgid "Image url"
 msgstr "Afbeeldings URL"
 
-msgid "Images:"
-msgstr "Afbeeldingen:"
+msgid "Images"
+msgstr ""
 
 msgid "Imposition schemas"
 msgstr "Oplegschemas"
@@ -1195,6 +1251,9 @@ msgstr "Cursief"
 
 msgid "Italics, bold, monospace and code, linebreaks..."
 msgstr "Cursief, vet, niet-proportioneel en code (monospace), regeleindes..."
+
+msgid "JPG, PNG and PDF are always allowed."
+msgstr ""
 
 msgid "Job deleted"
 msgstr "Taak verwijderd"
@@ -1284,8 +1343,11 @@ msgstr "US-letter papier"
 msgid "Link"
 msgstr "Link"
 
-msgid "Links and images"
-msgstr "Links en afbeeldingen"
+msgid "Links"
+msgstr ""
+
+msgid "List of URLs to attach to this node, one per line."
+msgstr ""
 
 msgid "List of texts on hold"
 msgstr "Lijst van teksten in de wacht"
@@ -1352,6 +1414,12 @@ msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Maak alle harde spaties expliciet en zichtbaar als ~~"
 
 msgid "Manage categories"
+msgstr ""
+
+msgid "Max image dimension in pixels, applies to both width and height"
+msgstr ""
+
+msgid "Max size for uploads in Mb"
 msgstr ""
 
 msgid "Message"
@@ -1462,6 +1530,9 @@ msgstr "Geen tekst gevonden!"
 msgid "No text was added yet"
 msgstr "Er is nog geen tekst toegevoegd"
 
+msgid "Nodes"
+msgstr ""
+
 msgid "None"
 msgstr "Geen"
 
@@ -1518,6 +1589,9 @@ msgstr "Open wiki"
 
 msgid "Option templates"
 msgstr "Optiesjablonen"
+
+msgid "Optional, defaults to the author directive"
+msgstr "Optioneel, gebruikt standaard de auteur instructie"
 
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
@@ -1601,6 +1675,9 @@ msgstr "Papierdikte, (0.10 zou voldoende moeten zijn gewoon 80g/m2 papier)"
 
 msgid "Paragraphs"
 msgstr "Alineas"
+
+msgid "Parent node"
+msgstr ""
 
 msgid "Part"
 msgstr "Deel"
@@ -1736,15 +1813,6 @@ msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
 "Let op dat omhullende tags alleen en op een aparte regel moeten worden "
 "geplaatst."
-
-msgid ""
-"Please note that you have to upload them first and\n"
-"          use the name the form provides. Images are always renamed by\n"
-"          us."
-msgstr ""
-"Let op dat je ze eerst moet uploaden en de naam\n"
-"          moet gebruiken uit het formulier. Afbeeldingen worden altijd\n"
-"          door ons hernoemd."
 
 msgid ""
 "Please note that you may want to paste from a\n"
@@ -2022,6 +2090,9 @@ msgstr "Herziening voor %1 is verwijderd"
 msgid "Roles"
 msgstr "Rollen"
 
+msgid "Root node"
+msgstr ""
+
 msgid "Running headings"
 msgstr "Lopende koppen"
 
@@ -2131,6 +2202,9 @@ msgstr "Toon het tekstinfovenster onderaan de teksten"
 msgid "Single bars"
 msgstr "Enkele strepen"
 
+msgid "Site Map"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Site bestaat al"
 
@@ -2211,6 +2285,10 @@ msgstr "Speciale paginas"
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr "Specificeer een spatie-gescheiden lijst van talen om het te activeren."
 
+msgid ""
+"Speed up the publishing process for logged-in skipping the revision page."
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Oud bewerken"
 
@@ -2231,6 +2309,9 @@ msgstr "Statische pagina zonder javascript"
 
 msgid "Status"
 msgstr "Status"
+
+msgid "Status changed"
+msgstr ""
 
 msgid "Subsection"
 msgstr "Subsectie"
@@ -2257,6 +2338,9 @@ msgstr "Zo'n gebruiker bestaat al!"
 
 msgid "Such username already exists"
 msgstr "Zo'n gebruikersnaam bestaat al"
+
+msgid "Suggested values:"
+msgstr ""
 
 msgid "Summary"
 msgstr "Samenvatting"
@@ -2432,11 +2516,14 @@ msgstr "Haal dan de updates van deze pagina."
 msgid "There are failed jobs"
 msgstr "Er zijn mislukte taken"
 
+msgid "There are pending revisions"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Deze teksten missen de unieke id."
 
-msgid "They have the same syntax (images are actually links)"
-msgstr "Ze hebben dezelfde syntax (afbeeeldingen zijn eigenlijk links)"
+msgid "They can be texts, regular, authors or topics."
+msgstr ""
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
@@ -2447,9 +2534,6 @@ msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr "Deze instructie wil een spatiegescheiden lijst met bestandsnamen."
-
-msgid "This field is required"
-msgstr "Dit veld is vereist"
 
 msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
@@ -2527,9 +2611,6 @@ msgstr "Deze test zal worden uitgesteld tot %1"
 
 msgid "Thumbnail"
 msgstr "Miniafbeelding"
-
-msgid "Time is optional."
-msgstr "Tijd is optioneel."
 
 msgid "Title"
 msgstr "Titel"
@@ -2673,6 +2754,7 @@ msgid "Unpublished texts"
 msgstr "Ongepubliceerde teksten"
 
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Niet-ondersteund bestandsformaat %1"
 
@@ -2693,6 +2775,13 @@ msgstr "Update naar huidige instellingen"
 
 msgid "Upload"
 msgstr "Upload"
+
+msgid "Upload the image and note its name. Files are always renamed."
+msgstr ""
+
+msgid ""
+"Uploaded and available images are shown and listed below the text preview."
+msgstr ""
 
 msgid "Url"
 msgstr "URL"
@@ -2842,6 +2931,9 @@ msgstr ""
 msgid "Workflow"
 msgstr "Workflow"
 
+msgid "Working locally?"
+msgstr ""
+
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
 "          which require leading space (notably, you cannot use them in\n"
@@ -2897,6 +2989,11 @@ msgstr ""
 "    klikken op het \"plus\" icoon bij de downloads van elke tekst. Je\n"
 "    kunt de teksten laten toevoegen en verwijderen."
 
+msgid ""
+"You can also link to a part of the text. Please refer to the manual for this "
+"feature"
+msgstr ""
+
 #. (create_url)
 msgid "You can create a peer at %1"
 msgstr "Je kunt een peer toevoegen bij %1"
@@ -2927,6 +3024,11 @@ msgid "You may want to resume the editing of one of them"
 msgstr "Je zou kunnen verdergaan met het bewerken van een van hen"
 
 msgid ""
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr ""
+"Je zou wellicht de \"Een\", \"De\" etc. vooraan de titel willen verwijderen"
+
+msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
 msgstr ""
@@ -2937,6 +3039,12 @@ msgstr ""
 #. (edit_url)
 msgid "You should change your password right away at %1"
 msgstr "Je moet je wachtwoord meteen veranderen bij %1"
+
+msgid "Your browser does not support the audio tag."
+msgstr ""
+
+msgid "Your browser does not support the video tag."
+msgstr ""
 
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or Save"
@@ -2999,17 +3107,8 @@ msgid "automatically generated if not present, using author and title"
 msgstr ""
 "automatisch gegenereerd indien niet aanwezig, op basis van auteur en titel"
 
-msgid "By number of pages, ascending"
-msgstr "Op aantal pagina's, oplopend"
-
-msgid "By number of pages, descending"
-msgstr "Op aantal pagina's, aflopend"
-
 msgid "code and monospace"
 msgstr "code en niet-proportioneel (monospace)"
-
-msgid "Comma or semicolon separated list"
-msgstr "Komma of puntkomma gescheiden lijst"
 
 msgid "completed"
 msgstr "voltooid"
@@ -3047,15 +3146,6 @@ msgstr "voor poezie"
 msgid "generic sectioning, good for articles"
 msgstr "generieke indeling, goed voor artikelen"
 
-msgid ""
-"If by chance another text with the same author and title exists, choose the "
-"desired URI using the field below inserting author, title and a number, e.g. "
-"my-author-my-title-1"
-msgstr ""
-"Als door toeval een andere tekst met dezelfde auteur en titel bestaat, kies "
-"dan de gewenste URI door het veld hieronder te gebruiken en auteur, titel en "
-"een getal in te voeren, bijvoorbeeld mijn-auteur-mijn-titel-1"
-
 msgid "if the repository is exported"
 msgstr "als de repository geexporteerd is"
 
@@ -3076,14 +3166,18 @@ msgstr "verplicht"
 msgid "markup *not* interpreted"
 msgstr "opmaak *niet* geinterpreteerd"
 
+#. (site.binary_upload_max_size_in_mega)
+msgid "max %1 Mb"
+msgstr ""
+
 msgid "minutes"
 msgstr ""
 
 msgid "new-example-uri"
 msgstr "nieuwe-voorbeeld-uri"
 
-msgid "Optional, defaults to the author directive"
-msgstr "Optioneel, gebruikt standaard de auteur instructie"
+msgid "only lowercase ASCII and hyphens"
+msgstr ""
 
 msgid "or"
 msgstr "of"
@@ -3178,11 +3272,6 @@ msgid "without description"
 msgstr "zonder beschrijving"
 
 msgid ""
-"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
-msgstr ""
-"Je zou wellicht de \"Een\", \"De\" etc. vooraan de titel willen verwijderen"
-
-msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
@@ -3190,6 +3279,39 @@ msgstr ""
 "\"Oude bewerking\" betekent dat de herziening was verlaten\n"
 "    tijdens het bewerken, maar hij is er nog steeds voor het geval dat\n"
 "    iemand er verder mee wil gaan bij het bewerken van een tekst."
+
+#~ msgid "Add an attachment (PNG, JPG or PDF)"
+#~ msgstr "Voeg een bijlage toe (PNG, JPG of PDF)"
+
+#~ msgid "File to delete not found!"
+#~ msgstr "Te verwijderen bestand niet gevonden!"
+
+#~ msgid "Format: yyyy-mm-dd hh:mm, e.g."
+#~ msgstr "Opmaak: jjjj-mm-dd uu:mm, bijvoorbeeld"
+
+#~ msgid "Images:"
+#~ msgstr "Afbeeldingen:"
+
+#~ msgid "Links and images"
+#~ msgstr "Links en afbeeldingen"
+
+#~ msgid ""
+#~ "Please note that you have to upload them first and\n"
+#~ "          use the name the form provides. Images are always renamed by\n"
+#~ "          us."
+#~ msgstr ""
+#~ "Let op dat je ze eerst moet uploaden en de naam\n"
+#~ "          moet gebruiken uit het formulier. Afbeeldingen worden altijd\n"
+#~ "          door ons hernoemd."
+
+#~ msgid "They have the same syntax (images are actually links)"
+#~ msgstr "Ze hebben dezelfde syntax (afbeeeldingen zijn eigenlijk links)"
+
+#~ msgid "This field is required"
+#~ msgstr "Dit veld is vereist"
+
+#~ msgid "Time is optional."
+#~ msgstr "Tijd is optioneel."
 
 #~ msgid "Document type"
 #~ msgstr "Documenttype"

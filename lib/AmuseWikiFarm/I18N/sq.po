@@ -109,8 +109,8 @@ msgstr "Shto imazh të kopertinës (PNG ose JPG)"
 msgid "Add a new text"
 msgstr "Shto tekstin e ri"
 
-msgid "Add an attachment (PNG, JPG or PDF)"
-msgstr "Shto një attachment (PNG, JPG or PDF)"
+msgid "Add an attachment"
+msgstr ""
 
 msgid "Add crop marks to the PDF"
 msgstr "Shto shenjat prerëse në PDF"
@@ -194,6 +194,11 @@ msgid "All users"
 msgstr "Të gjithë përdoruesit"
 
 msgid ""
+"Allow binary uploads to logged in users: list of whitespace separate file "
+"extensions"
+msgstr ""
+
+msgid ""
 "Also produce slides\n"
 "          from the document. Each section, no matter how deep, will\n"
 "          produce a slide. The text outside a section is ignored, so\n"
@@ -245,6 +250,12 @@ msgstr ""
 msgid "As regular image in the body"
 msgstr ""
 
+msgid "Assign text to nodes"
+msgstr ""
+
+msgid "Attach"
+msgstr ""
+
 msgid "Attached images"
 msgstr "Fotot e bashkangjitura"
 
@@ -274,6 +285,9 @@ msgstr ""
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr ""
 "Automatikisht kërko dhe ripërtri çertifikatën SSL nga \"Let's Encrypt\""
+
+msgid "Available"
+msgstr ""
 
 msgid "Available category tags for header"
 msgstr "Etiketat e kategorive në dispozicion për "
@@ -313,6 +327,9 @@ msgstr ""
 msgid "Blog"
 msgstr "Blogu"
 
+msgid "Body"
+msgstr ""
+
 msgid "Bold"
 msgstr ""
 
@@ -329,6 +346,12 @@ msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
 "        numbering"
+msgstr ""
+
+msgid "By number of pages, ascending"
+msgstr ""
+
+msgid "By number of pages, descending"
 msgstr ""
 
 msgid "By relevance"
@@ -411,6 +434,9 @@ msgstr "Pastro listën e librave"
 msgid "Click on the images to get the sample PDF"
 msgstr "Kliko në imazhin që ta shkarkosh mostrën e PDF-it"
 
+msgid "Clone"
+msgstr ""
+
 msgid "Clone the repo locally and set it up"
 msgstr ""
 
@@ -421,6 +447,9 @@ msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
 msgstr ""
+
+msgid "Comma or semicolon separated list"
+msgstr "Listë e ndarë me presje ose pikëpresje"
 
 msgid "Completed"
 msgstr "E përfunduar"
@@ -493,6 +522,9 @@ msgstr ""
 msgid "Custom formats for %1"
 msgstr ""
 
+msgid "Custom home page"
+msgstr ""
+
 msgid "Date"
 msgstr "Data"
 
@@ -507,6 +539,9 @@ msgstr "Tekstet e shtyra/fshira"
 
 msgid "Delete"
 msgstr "Fshij"
+
+msgid "Delete permanently"
+msgstr ""
 
 #. (remote.name)
 msgid "Delete remote repository %1"
@@ -644,6 +679,9 @@ msgstr ""
 msgid "Enable \"What links here\" feature"
 msgstr ""
 
+msgid "Enable search suggestions (did you mean...)"
+msgstr ""
+
 msgid "Enable title ordering by SKU"
 msgstr ""
 
@@ -713,9 +751,6 @@ msgid "File extension"
 msgstr ""
 
 msgid "File format not allowed"
-msgstr ""
-
-msgid "File to delete not found!"
 msgstr ""
 
 msgid "File too big"
@@ -811,9 +846,6 @@ msgstr ""
 msgid "Format successfully updated"
 msgstr ""
 
-msgid "Format: yyyy-mm-dd hh:mm, e.g."
-msgstr "Formati: yyyy-mm-dd  hh:mm, p.sh."
-
 msgid "Formats"
 msgstr "Formatët:"
 
@@ -851,6 +883,9 @@ msgstr ""
 "HTML-i të bashkangjitet secilës faqe speciale, e shtuar \n"
 "ashtu siç është, tani ke mundesi me prishë çdo gjë, pranaj \n"
 "ke kujdes"
+
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr ""
 
 msgid "HTML to insert into the left sidebar"
 msgstr "HTML-i të vendoset në shiritin në të majtë"
@@ -944,6 +979,15 @@ msgstr "Kanali IRC në freenode"
 msgid "Id"
 msgstr "ID"
 
+msgid ""
+"If by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+"Nëse ekziston një tekst tjetër, me autor dhe titull të njejtë, zgjedhe URI-"
+"në e dëshiruar duke plotësuar fushën më poshtë me autorin, titullin dhe "
+"numrin, p.sh autori-im-titulli-im-1"
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -954,6 +998,14 @@ msgstr "ID"
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Nëse nuk është vendosur %1 do të merret nga udhëzuesi i aplikacionit"
+
+msgid ""
+"If present, hide the\n"
+"          generated format and the information box. This makes sense\n"
+"          with attachments, when the text version is poor or not\n"
+"          available and more relevance should be given to the attached\n"
+"          files."
+msgstr ""
 
 msgid ""
 "If set to a number greater than 0, automatically generate a teaser, with "
@@ -1056,6 +1108,10 @@ msgstr ""
 msgid "Image already set as cover"
 msgstr ""
 
+#. ($w, $h, $limit, $limit)
+msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -1066,8 +1122,8 @@ msgstr ""
 msgid "Image url"
 msgstr "Linku i imazhit"
 
-msgid "Images:"
-msgstr "Imazhet"
+msgid "Images"
+msgstr ""
 
 msgid "Imposition schemas"
 msgstr "Skemat e imponimit"
@@ -1140,6 +1196,9 @@ msgstr ""
 
 msgid "Italics, bold, monospace and code, linebreaks..."
 msgstr "Italic, bold, monospace dhe kodi, thyerje e rreshtit..."
+
+msgid "JPG, PNG and PDF are always allowed."
+msgstr ""
 
 msgid "Job deleted"
 msgstr "Puna është fshirë"
@@ -1229,8 +1288,11 @@ msgstr ""
 msgid "Link"
 msgstr "Linku"
 
-msgid "Links and images"
-msgstr "Linqet dhe imazhet"
+msgid "Links"
+msgstr ""
+
+msgid "List of URLs to attach to this node, one per line."
+msgstr ""
 
 msgid "List of texts on hold"
 msgstr ""
@@ -1297,6 +1359,12 @@ msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
 msgid "Manage categories"
+msgstr ""
+
+msgid "Max image dimension in pixels, applies to both width and height"
+msgstr ""
+
+msgid "Max size for uploads in Mb"
 msgstr ""
 
 msgid "Message"
@@ -1405,6 +1473,9 @@ msgstr "Nuk u gjetën tekste!"
 msgid "No text was added yet"
 msgstr "Asnjë tekst nuk është futur deri më tani"
 
+msgid "Nodes"
+msgstr ""
+
 msgid "None"
 msgstr "Asnjë"
 
@@ -1461,6 +1532,9 @@ msgstr "Hape wikin"
 
 msgid "Option templates"
 msgstr "Shabllonat opcional"
+
+msgid "Optional, defaults to the author directive"
+msgstr "Opcionale, e parazgjedhur direktiva e autorit"
 
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
@@ -1535,6 +1609,9 @@ msgstr ""
 
 msgid "Paragraphs"
 msgstr "Paragrafet"
+
+msgid "Parent node"
+msgstr ""
 
 msgid "Part"
 msgstr "Pjesa"
@@ -1666,15 +1743,6 @@ msgstr ""
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
 "Keni kujdes që tags të mbledhura duhen të vendosen në një rresht veçmas. "
-
-msgid ""
-"Please note that you have to upload them first and\n"
-"          use the name the form provides. Images are always renamed by\n"
-"          us."
-msgstr ""
-"Ju lutem keni parasysh që duhet ti ngarkoni së pari dhe\n"
-"       të përdorni emrin që forma e ofron. Imazhet janë gjithmonë të\n"
-"      riemëruara nga ne."
 
 msgid ""
 "Please note that you may want to paste from a\n"
@@ -1948,6 +2016,9 @@ msgstr "Përpunimi për 1% është fshirë"
 msgid "Roles"
 msgstr "Rrolet"
 
+msgid "Root node"
+msgstr ""
+
 msgid "Running headings"
 msgstr ""
 
@@ -2058,6 +2129,9 @@ msgstr "Trego kutinë informative të tekstit në fund të teksteve"
 msgid "Single bars"
 msgstr "Shiritat e veçantë"
 
+msgid "Site Map"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Kjo faqe tashmë egziston"
 
@@ -2140,6 +2214,10 @@ msgstr "Faqet e posaçme"
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr ""
 
+msgid ""
+"Speed up the publishing process for logged-in skipping the revision page."
+msgstr ""
+
 msgid "Stale editing"
 msgstr ""
 
@@ -2160,6 +2238,9 @@ msgstr "Faqja statike pa javascript"
 
 msgid "Status"
 msgstr "Statusi"
+
+msgid "Status changed"
+msgstr ""
 
 msgid "Subsection"
 msgstr "Nënseksioni"
@@ -2183,6 +2264,9 @@ msgstr "Egziston një përdorues me këtë emër!"
 
 msgid "Such username already exists"
 msgstr "Egziston një përdorues me këtë emër!"
+
+msgid "Suggested values:"
+msgstr ""
 
 msgid "Summary"
 msgstr "Përmbledhja"
@@ -2342,11 +2426,14 @@ msgstr "Pastaj merrini përditësimet nga kjo faqe."
 msgid "There are failed jobs"
 msgstr ""
 
+msgid "There are pending revisions"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Ketyre teksteve iu mungon ID e veçantë."
 
-msgid "They have the same syntax (images are actually links)"
-msgstr "E kanë të njëjtën sintaksë (imazhet në të vërtetë janë linqe)"
+msgid "They can be texts, regular, authors or topics."
+msgstr ""
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
@@ -2355,9 +2442,6 @@ msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
-
-msgid "This field is required"
-msgstr "Kjo fushë duhet plotësuar"
 
 msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
@@ -2436,9 +2520,6 @@ msgstr "Ky tekst është shtyrë për %1"
 
 msgid "Thumbnail"
 msgstr ""
-
-msgid "Time is optional."
-msgstr ". Koha nuk ështe e detyrueshme. "
 
 msgid "Title"
 msgstr "Titulli"
@@ -2583,6 +2664,7 @@ msgid "Unpublished texts"
 msgstr "Tekst i papublikuar"
 
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Tip i dokumentit i pasuportuar %1"
 
@@ -2603,6 +2685,13 @@ msgstr "Përditëso parametrat aktuale"
 
 msgid "Upload"
 msgstr "Ngarko"
+
+msgid "Upload the image and note its name. Files are always renamed."
+msgstr ""
+
+msgid ""
+"Uploaded and available images are shown and listed below the text preview."
+msgstr ""
 
 msgid "Url"
 msgstr "Url"
@@ -2737,6 +2826,9 @@ msgstr ""
 msgid "Workflow"
 msgstr "Rrjedha e punës"
 
+msgid "Working locally?"
+msgstr ""
+
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
 "          which require leading space (notably, you cannot use them in\n"
@@ -2788,6 +2880,11 @@ msgstr ""
 " në ikonën “plus” afër shkarkimeve te çdo teksti. Mund të shtoni\n"
 " dhe të hiqni tekste më vonë."
 
+msgid ""
+"You can also link to a part of the text. Please refer to the manual for this "
+"feature"
+msgstr ""
+
 #. (create_url)
 msgid "You can create a peer at %1"
 msgstr ""
@@ -2816,6 +2913,12 @@ msgid "You may want to resume the editing of one of them"
 msgstr "Mund të dëshironi të vazhdoni me ndryshimin e njërit prej tyre"
 
 msgid ""
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr ""
+"Nëse dëshironi, ju mund të largoni parafjalët, fjalët lidhëse e të tjera, "
+"nga titulli."
+
+msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
 msgstr ""
@@ -2823,6 +2926,12 @@ msgstr ""
 #. (edit_url)
 msgid "You should change your password right away at %1"
 msgstr "Duhet të ndryshoni fjalëkalimin menjëherë tek %1"
+
+msgid "Your browser does not support the audio tag."
+msgstr ""
+
+msgid "Your browser does not support the video tag."
+msgstr ""
 
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or Save"
@@ -2886,17 +2995,8 @@ msgstr ""
 "gjenerohet automatikisht nëse nuk është prezente duke përdorur autorin dhe "
 "titullin"
 
-msgid "By number of pages, ascending"
-msgstr ""
-
-msgid "By number of pages, descending"
-msgstr ""
-
 msgid "code and monospace"
 msgstr "Kodi dhe monospace"
-
-msgid "Comma or semicolon separated list"
-msgstr "Listë e ndarë me presje ose pikëpresje"
 
 msgid "completed"
 msgstr "i kompletuar"
@@ -2934,15 +3034,6 @@ msgstr "për poezi"
 msgid "generic sectioning, good for articles"
 msgstr "seksionim gjenerik, e mirë për artikuj"
 
-msgid ""
-"If by chance another text with the same author and title exists, choose the "
-"desired URI using the field below inserting author, title and a number, e.g. "
-"my-author-my-title-1"
-msgstr ""
-"Nëse ekziston një tekst tjetër, me autor dhe titull të njejtë, zgjedhe URI-"
-"në e dëshiruar duke plotësuar fushën më poshtë me autorin, titullin dhe "
-"numrin, p.sh autori-im-titulli-im-1"
-
 msgid "if the repository is exported"
 msgstr ""
 
@@ -2963,14 +3054,18 @@ msgstr "e detyrueshme"
 msgid "markup *not* interpreted"
 msgstr ""
 
+#. (site.binary_upload_max_size_in_mega)
+msgid "max %1 Mb"
+msgstr ""
+
 msgid "minutes"
 msgstr ""
 
 msgid "new-example-uri"
 msgstr ""
 
-msgid "Optional, defaults to the author directive"
-msgstr "Opcionale, e parazgjedhur direktiva e autorit"
+msgid "only lowercase ASCII and hyphens"
+msgstr ""
 
 msgid "or"
 msgstr "ose"
@@ -3063,12 +3158,6 @@ msgid "without description"
 msgstr "pa përshkrim"
 
 msgid ""
-"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
-msgstr ""
-"Nëse dëshironi, ju mund të largoni parafjalët, fjalët lidhëse e të tjera, "
-"nga titulli."
-
-msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
@@ -3076,6 +3165,36 @@ msgstr ""
 "“Ndryshim i mbetur” do të thotë që përpunimi është brakstisur\n"
 " gjatë ndryshimit por është ende aty në rast se dikush dëshiron të vazhdoj\n"
 " me ndryshimin e tekstit."
+
+#~ msgid "Add an attachment (PNG, JPG or PDF)"
+#~ msgstr "Shto një attachment (PNG, JPG or PDF)"
+
+#~ msgid "Format: yyyy-mm-dd hh:mm, e.g."
+#~ msgstr "Formati: yyyy-mm-dd  hh:mm, p.sh."
+
+#~ msgid "Images:"
+#~ msgstr "Imazhet"
+
+#~ msgid "Links and images"
+#~ msgstr "Linqet dhe imazhet"
+
+#~ msgid ""
+#~ "Please note that you have to upload them first and\n"
+#~ "          use the name the form provides. Images are always renamed by\n"
+#~ "          us."
+#~ msgstr ""
+#~ "Ju lutem keni parasysh që duhet ti ngarkoni së pari dhe\n"
+#~ "       të përdorni emrin që forma e ofron. Imazhet janë gjithmonë të\n"
+#~ "      riemëruara nga ne."
+
+#~ msgid "They have the same syntax (images are actually links)"
+#~ msgstr "E kanë të njëjtën sintaksë (imazhet në të vërtetë janë linqe)"
+
+#~ msgid "This field is required"
+#~ msgstr "Kjo fushë duhet plotësuar"
+
+#~ msgid "Time is optional."
+#~ msgstr ". Koha nuk ështe e detyrueshme. "
 
 #~ msgid "Hide options"
 #~ msgstr "Fsheh zgjedhjet"

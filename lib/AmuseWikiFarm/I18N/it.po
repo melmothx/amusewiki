@@ -103,8 +103,8 @@ msgstr "Aggiungi un'immagine di copertina (PNG o JPG)"
 msgid "Add a new text"
 msgstr "Aggiungi un nuovo testo"
 
-msgid "Add an attachment (PNG, JPG or PDF)"
-msgstr "Aggiungi un allegato (PNG, JPG o PDF)"
+msgid "Add an attachment"
+msgstr ""
 
 msgid "Add crop marks to the PDF"
 msgstr "Aggiungi gli indicatori di ritaglio"
@@ -187,6 +187,11 @@ msgid "All users"
 msgstr "Tutte le utenze"
 
 msgid ""
+"Allow binary uploads to logged in users: list of whitespace separate file "
+"extensions"
+msgstr ""
+
+msgid ""
 "Also produce slides\n"
 "          from the document. Each section, no matter how deep, will\n"
 "          produce a slide. The text outside a section is ignored, so\n"
@@ -235,6 +240,12 @@ msgstr "Come immagine di copertina nelle intestazioni"
 msgid "As regular image in the body"
 msgstr "Come una normale immagine nel corpo del testo"
 
+msgid "Assign text to nodes"
+msgstr ""
+
+msgid "Attach"
+msgstr ""
+
 msgid "Attached images"
 msgstr "Immagini allegate"
 
@@ -263,6 +274,9 @@ msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr ""
 "Richiedi e rinnova automaticamente i certificati SSL per mezzo di Let's "
 "Encrypt"
+
+msgid "Available"
+msgstr ""
 
 msgid "Available category tags for header"
 msgstr "Codici categoria disponibili per l'intestazione"
@@ -301,6 +315,9 @@ msgstr ""
 msgid "Blog"
 msgstr "Blog"
 
+msgid "Body"
+msgstr ""
+
 msgid "Bold"
 msgstr "Grassetto"
 
@@ -321,6 +338,12 @@ msgstr ""
 "L'apparato critico secondario usa normalmente cifre arabe tra\n"
 "parentesi. Con questa opzione verrà usata una numerazione alfabetica\n"
 "per pagina. (La prima nota secondaria di ogni pagina sarà \"a\")"
+
+msgid "By number of pages, ascending"
+msgstr "Per numero di pagine (da minore a maggiore)"
+
+msgid "By number of pages, descending"
+msgstr "Per numero di pagine (da maggiore a minore)"
 
 msgid "By relevance"
 msgstr "Rilevanza"
@@ -401,6 +424,9 @@ msgstr "Cancella la lista dei testi"
 msgid "Click on the images to get the sample PDF"
 msgstr "Clicca sulle immagini per avere un PDF di esempio"
 
+msgid "Clone"
+msgstr ""
+
 msgid "Clone the repo locally and set it up"
 msgstr "Clona il repositorio in locale e configuralo"
 
@@ -413,6 +439,9 @@ msgid ""
 msgstr ""
 "Numero di colonne (12 in totale) da usare per la parte sinistra della\n"
 "schermata per la modifica dei testi"
+
+msgid "Comma or semicolon separated list"
+msgstr "Lista separata da virgola o punto e virgola"
 
 msgid "Completed"
 msgstr "Completato"
@@ -487,6 +516,9 @@ msgstr "Ora corrente"
 msgid "Custom formats for %1"
 msgstr "Formati particolari per %1"
 
+msgid "Custom home page"
+msgstr ""
+
 msgid "Date"
 msgstr "Data"
 
@@ -501,6 +533,9 @@ msgstr "Testi non ancora pubblicati o rimossi"
 
 msgid "Delete"
 msgstr "Cancella"
+
+msgid "Delete permanently"
+msgstr ""
 
 #. (remote.name)
 msgid "Delete remote repository %1"
@@ -644,6 +679,9 @@ msgstr "Includi i font nel file EPUB"
 msgid "Enable \"What links here\" feature"
 msgstr "Attiva \"Puntano qui\""
 
+msgid "Enable search suggestions (did you mean...)"
+msgstr ""
+
 msgid "Enable title ordering by SKU"
 msgstr "Abilita l'ordinamento dei titoli per numero di inventario"
 
@@ -710,9 +748,6 @@ msgstr "Estensione del file"
 
 msgid "File format not allowed"
 msgstr "Formato del file non valido"
-
-msgid "File to delete not found!"
-msgstr "File da cancellare non trovato!"
 
 msgid "File too big"
 msgstr "Dimensioni del file troppo grandi"
@@ -811,9 +846,6 @@ msgstr "Formato creato con successo"
 msgid "Format successfully updated"
 msgstr "Formato aggiornato con successo"
 
-msgid "Format: yyyy-mm-dd hh:mm, e.g."
-msgstr "Formato: aaaa-mm-gg hh:mm, ad esempio"
-
 msgid "Formats"
 msgstr "Formati"
 
@@ -853,6 +885,9 @@ msgstr ""
 "Codice HTML da aggiungere a ogni pagina speciale, inserito\n"
 "letteralmente. Fai attenzione a ciò che fai, dato che puoi inserire\n"
 "qualsiasi cosa (codice, script, ecc.)"
+
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr ""
 
 msgid "HTML to insert into the left sidebar"
 msgstr "Codice HTML da inserire nella colonna di sinistra"
@@ -946,6 +981,15 @@ msgstr "Canale IRC su Freenode"
 msgid "Id"
 msgstr "Id"
 
+msgid ""
+"If by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+"Se per caso esite un altro testo con lo stesso autore e lo stesso titolo, "
+"scegli tu stesso un URI usando il campo più in basso, inserendo autore, "
+"titolo e un numero, ad esempio “autore-titlo-1”"
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -956,6 +1000,14 @@ msgstr "Id"
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Se non impostato, %1 sarà cercato nella directory dell'applicazione."
+
+msgid ""
+"If present, hide the\n"
+"          generated format and the information box. This makes sense\n"
+"          with attachments, when the text version is poor or not\n"
+"          available and more relevance should be given to the attached\n"
+"          files."
+msgstr ""
 
 msgid ""
 "If set to a number greater than 0, automatically generate a teaser, with "
@@ -1073,6 +1125,10 @@ msgstr ""
 msgid "Image already set as cover"
 msgstr "Già impostata come immagine di copertina"
 
+#. ($w, $h, $limit, $limit)
+msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -1083,8 +1139,8 @@ msgstr ""
 msgid "Image url"
 msgstr "URL dell'immagine"
 
-msgid "Images:"
-msgstr "Immagini:"
+msgid "Images"
+msgstr ""
 
 msgid "Imposition schemas"
 msgstr "Schemi di impaginazione"
@@ -1172,6 +1228,9 @@ msgstr "Corsivo"
 msgid "Italics, bold, monospace and code, linebreaks..."
 msgstr "Corsivo, grassetto, codice, interruzioni di linea..."
 
+msgid "JPG, PNG and PDF are always allowed."
+msgstr ""
+
 msgid "Job deleted"
 msgstr "Lavoro cancellato"
 
@@ -1258,8 +1317,11 @@ msgstr "Carta Letter"
 msgid "Link"
 msgstr "Collegamento"
 
-msgid "Links and images"
-msgstr "Collegamenti e immagini"
+msgid "Links"
+msgstr ""
+
+msgid "List of URLs to attach to this node, one per line."
+msgstr ""
 
 msgid "List of texts on hold"
 msgstr "Lista dei testi in attesa di approvazione"
@@ -1328,6 +1390,12 @@ msgstr ""
 "espliciti con ~~"
 
 msgid "Manage categories"
+msgstr ""
+
+msgid "Max image dimension in pixels, applies to both width and height"
+msgstr ""
+
+msgid "Max size for uploads in Mb"
 msgstr ""
 
 msgid "Message"
@@ -1438,6 +1506,9 @@ msgstr "Nessun testo trovato"
 msgid "No text was added yet"
 msgstr "Nessun testo è stato ancora aggiunto"
 
+msgid "Nodes"
+msgstr ""
+
 msgid "None"
 msgstr "Nessuno"
 
@@ -1496,6 +1567,9 @@ msgstr "Wiki aperto"
 
 msgid "Option templates"
 msgstr "Configurazioni preimpostate"
+
+msgid "Optional, defaults to the author directive"
+msgstr "opzionale, se mancante verrà usata la direttiva autore"
 
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
@@ -1579,6 +1653,9 @@ msgstr ""
 
 msgid "Paragraphs"
 msgstr "Paragrafi"
+
+msgid "Parent node"
+msgstr ""
 
 msgid "Part"
 msgstr "Parte"
@@ -1712,14 +1789,6 @@ msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
 "Nota bene: i tag che racchiudono un blocco di testo devono essere\n"
 "posizionati da soli su una riga, senza spazi o altro materiale."
-
-msgid ""
-"Please note that you have to upload them first and\n"
-"          use the name the form provides. Images are always renamed by\n"
-"          us."
-msgstr ""
-"Nota bene: devi prima caricarle e usare il nome che verrà mostrato. Le\n"
-"immagini sono sempre rinominate dal sistema."
 
 msgid ""
 "Please note that you may want to paste from a\n"
@@ -1994,6 +2063,9 @@ msgstr "La revisione per %1 è stata cancellata"
 msgid "Roles"
 msgstr "Ruoli"
 
+msgid "Root node"
+msgstr ""
+
 msgid "Running headings"
 msgstr "Testatine"
 
@@ -2103,6 +2175,9 @@ msgstr "Mostra le informazioni sul testo in fondo alla pagina"
 msgid "Single bars"
 msgstr "Le barre singole"
 
+msgid "Site Map"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Il sito già esiste"
 
@@ -2185,6 +2260,10 @@ msgstr ""
 "Specifica una lista di lingue separate da uno spazio bianco per "
 "l'attivazione."
 
+msgid ""
+"Speed up the publishing process for logged-in skipping the revision page."
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Modifica in corso abbandonata"
 
@@ -2205,6 +2284,9 @@ msgstr "Pagina statica senza javascript"
 
 msgid "Status"
 msgstr "Status"
+
+msgid "Status changed"
+msgstr ""
 
 msgid "Subsection"
 msgstr "Sottosezione"
@@ -2230,6 +2312,9 @@ msgstr "Questa utenza già esiste"
 
 msgid "Such username already exists"
 msgstr "Nome utente già esistente"
+
+msgid "Suggested values:"
+msgstr ""
 
 msgid "Summary"
 msgstr "Sommario"
@@ -2403,11 +2488,14 @@ msgstr "Poi recupera gli aggiornamenti da questa pagina."
 msgid "There are failed jobs"
 msgstr "Ci sono lavori falliti"
 
+msgid "There are pending revisions"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Questi testi sono senza identificativo."
 
-msgid "They have the same syntax (images are actually links)"
-msgstr "Hanno la stessa sintassi (le immagini sono in realtà collegamenti)"
+msgid "They can be texts, regular, authors or topics."
+msgstr ""
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
@@ -2420,9 +2508,6 @@ msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
 "Questa direttiva richiede una lista di nomi di file separati da spazi "
 "bianchi."
-
-msgid "This field is required"
-msgstr "Questo campo è richiesto"
 
 msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
@@ -2499,9 +2584,6 @@ msgstr "Questo testo verrà pubblicato solo in data %1"
 
 msgid "Thumbnail"
 msgstr "Miniatura"
-
-msgid "Time is optional."
-msgstr "L'ora è opzionale"
 
 msgid "Title"
 msgstr "Titolo"
@@ -2644,6 +2726,7 @@ msgid "Unpublished texts"
 msgstr "Testi non pubblicati"
 
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Tipo di file (%1) non supportato"
 
@@ -2664,6 +2747,13 @@ msgstr "Aggiorna alla configurazione attuale"
 
 msgid "Upload"
 msgstr "Carica"
+
+msgid "Upload the image and note its name. Files are always renamed."
+msgstr ""
+
+msgid ""
+"Uploaded and available images are shown and listed below the text preview."
+msgstr ""
 
 msgid "Url"
 msgstr "URL"
@@ -2807,6 +2897,9 @@ msgstr ""
 msgid "Workflow"
 msgstr "Procedura"
 
+msgid "Working locally?"
+msgstr ""
+
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
 "          which require leading space (notably, you cannot use them in\n"
@@ -2860,6 +2953,11 @@ msgstr ""
 "segno più nella sezione dei download di ciascun testo. In seguito\n"
 "potrai aggiungere o rimuovere altri testi."
 
+msgid ""
+"You can also link to a part of the text. Please refer to the manual for this "
+"feature"
+msgstr ""
+
 #. (create_url)
 msgid "You can create a peer at %1"
 msgstr "Puoi creare un'utenza su %1"
@@ -2891,6 +2989,12 @@ msgid "You may want to resume the editing of one of them"
 msgstr "Potresti riprendere una delle modifiche in corso"
 
 msgid ""
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr ""
+"Potresti voler togliere gli articoli determinativi e indeterminativi\n"
+"dal titolo"
+
+msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
 msgstr ""
@@ -2901,6 +3005,12 @@ msgstr ""
 #. (edit_url)
 msgid "You should change your password right away at %1"
 msgstr "Dovresti cambiare subito la tua password a %1"
+
+msgid "Your browser does not support the audio tag."
+msgstr ""
+
+msgid "Your browser does not support the video tag."
+msgstr ""
 
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or Save"
@@ -2962,17 +3072,8 @@ msgstr "qualsiasi"
 msgid "automatically generated if not present, using author and title"
 msgstr "generato automaticamente se non presente, usando autore e titolo"
 
-msgid "By number of pages, ascending"
-msgstr "Per numero di pagine (da minore a maggiore)"
-
-msgid "By number of pages, descending"
-msgstr "Per numero di pagine (da maggiore a minore)"
-
 msgid "code and monospace"
 msgstr "formattazione codice"
-
-msgid "Comma or semicolon separated list"
-msgstr "Lista separata da virgola o punto e virgola"
 
 msgid "completed"
 msgstr "completato"
@@ -3010,15 +3111,6 @@ msgstr "per brani poetici"
 msgid "generic sectioning, good for articles"
 msgstr "sezione generica, raccomandata per gli articoli"
 
-msgid ""
-"If by chance another text with the same author and title exists, choose the "
-"desired URI using the field below inserting author, title and a number, e.g. "
-"my-author-my-title-1"
-msgstr ""
-"Se per caso esite un altro testo con lo stesso autore e lo stesso titolo, "
-"scegli tu stesso un URI usando il campo più in basso, inserendo autore, "
-"titolo e un numero, ad esempio “autore-titlo-1”"
-
 msgid "if the repository is exported"
 msgstr "se il repositorio è esportato"
 
@@ -3039,14 +3131,18 @@ msgstr "obbligatorio"
 msgid "markup *not* interpreted"
 msgstr "markup *non* interpretato"
 
+#. (site.binary_upload_max_size_in_mega)
+msgid "max %1 Mb"
+msgstr ""
+
 msgid "minutes"
 msgstr ""
 
 msgid "new-example-uri"
 msgstr "nuovo-uri-di-esempio"
 
-msgid "Optional, defaults to the author directive"
-msgstr "opzionale, se mancante verrà usata la direttiva autore"
+msgid "only lowercase ASCII and hyphens"
+msgstr ""
 
 msgid "or"
 msgstr "o"
@@ -3142,12 +3238,6 @@ msgid "without description"
 msgstr "senza descrizione"
 
 msgid ""
-"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
-msgstr ""
-"Potresti voler togliere gli articoli determinativi e indeterminativi\n"
-"dal titolo"
-
-msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
@@ -3155,6 +3245,38 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "Add an attachment (PNG, JPG or PDF)"
+#~ msgstr "Aggiungi un allegato (PNG, JPG o PDF)"
+
+#~ msgid "File to delete not found!"
+#~ msgstr "File da cancellare non trovato!"
+
+#~ msgid "Format: yyyy-mm-dd hh:mm, e.g."
+#~ msgstr "Formato: aaaa-mm-gg hh:mm, ad esempio"
+
+#~ msgid "Images:"
+#~ msgstr "Immagini:"
+
+#~ msgid "Links and images"
+#~ msgstr "Collegamenti e immagini"
+
+#~ msgid ""
+#~ "Please note that you have to upload them first and\n"
+#~ "          use the name the form provides. Images are always renamed by\n"
+#~ "          us."
+#~ msgstr ""
+#~ "Nota bene: devi prima caricarle e usare il nome che verrà mostrato. Le\n"
+#~ "immagini sono sempre rinominate dal sistema."
+
+#~ msgid "They have the same syntax (images are actually links)"
+#~ msgstr "Hanno la stessa sintassi (le immagini sono in realtà collegamenti)"
+
+#~ msgid "This field is required"
+#~ msgstr "Questo campo è richiesto"
+
+#~ msgid "Time is optional."
+#~ msgstr "L'ora è opzionale"
 
 #~ msgid "Document type"
 #~ msgstr "Tipo di documento"

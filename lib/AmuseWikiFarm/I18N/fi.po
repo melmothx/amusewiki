@@ -100,8 +100,8 @@ msgstr "Lisää kansikuva (PNG tai JPG)"
 msgid "Add a new text"
 msgstr "Lisää kirjastoon"
 
-msgid "Add an attachment (PNG, JPG or PDF)"
-msgstr "Lisää liitetiedosto (PNG, JPG tai PDF)"
+msgid "Add an attachment"
+msgstr ""
 
 msgid "Add crop marks to the PDF"
 msgstr ""
@@ -175,6 +175,11 @@ msgid "All users"
 msgstr ""
 
 msgid ""
+"Allow binary uploads to logged in users: list of whitespace separate file "
+"extensions"
+msgstr ""
+
+msgid ""
 "Also produce slides\n"
 "          from the document. Each section, no matter how deep, will\n"
 "          produce a slide. The text outside a section is ignored, so\n"
@@ -218,6 +223,12 @@ msgstr ""
 msgid "As regular image in the body"
 msgstr ""
 
+msgid "Assign text to nodes"
+msgstr ""
+
+msgid "Attach"
+msgstr ""
+
 msgid "Attached images"
 msgstr "Liitetyt kuvat"
 
@@ -243,6 +254,9 @@ msgid "Automatically generated"
 msgstr ""
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr ""
+
+msgid "Available"
 msgstr ""
 
 msgid "Available category tags for header"
@@ -281,6 +295,9 @@ msgstr ""
 msgid "Blog"
 msgstr "Blogi"
 
+msgid "Body"
+msgstr ""
+
 msgid "Bold"
 msgstr "LIhavointi"
 
@@ -297,6 +314,12 @@ msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
 "        numbering"
+msgstr ""
+
+msgid "By number of pages, ascending"
+msgstr ""
+
+msgid "By number of pages, descending"
 msgstr ""
 
 msgid "By relevance"
@@ -374,6 +397,9 @@ msgstr "Tyhjennä kirjalista"
 msgid "Click on the images to get the sample PDF"
 msgstr "Klikkaa kuvaa nähdäksesi esimerkki PDF:n"
 
+msgid "Clone"
+msgstr ""
+
 msgid "Clone the repo locally and set it up"
 msgstr ""
 
@@ -384,6 +410,9 @@ msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
 msgstr ""
+
+msgid "Comma or semicolon separated list"
+msgstr "Pilkulla tai puolipisteellä erotettu lista"
 
 msgid "Completed"
 msgstr "Valmis"
@@ -456,6 +485,9 @@ msgstr ""
 msgid "Custom formats for %1"
 msgstr ""
 
+msgid "Custom home page"
+msgstr ""
+
 msgid "Date"
 msgstr "Päivämäärä"
 
@@ -470,6 +502,9 @@ msgstr "Odottamaan jätetyt/poistetut tekstit"
 
 msgid "Delete"
 msgstr "Poista"
+
+msgid "Delete permanently"
+msgstr ""
 
 #. (remote.name)
 msgid "Delete remote repository %1"
@@ -604,6 +639,9 @@ msgstr ""
 msgid "Enable \"What links here\" feature"
 msgstr ""
 
+msgid "Enable search suggestions (did you mean...)"
+msgstr ""
+
 msgid "Enable title ordering by SKU"
 msgstr ""
 
@@ -663,9 +701,6 @@ msgid "File extension"
 msgstr ""
 
 msgid "File format not allowed"
-msgstr ""
-
-msgid "File to delete not found!"
 msgstr ""
 
 msgid "File too big"
@@ -758,9 +793,6 @@ msgstr ""
 msgid "Format successfully updated"
 msgstr ""
 
-msgid "Format: yyyy-mm-dd hh:mm, e.g."
-msgstr "Muoto: vvvv-kk-pp tt:mm, esim. "
-
 msgid "Formats"
 msgstr ""
 
@@ -794,6 +826,9 @@ msgid ""
 "HTML to append to each special page, inserted\n"
 "            verbatim, now you have a chance to screw up everything, so\n"
 "            be careful"
+msgstr ""
+
+msgid "HTML to insert in the footer of the layout, below the links"
 msgstr ""
 
 msgid "HTML to insert into the left sidebar"
@@ -879,6 +914,15 @@ msgstr ""
 msgid "Id"
 msgstr "Tunniste"
 
+msgid ""
+"If by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+"Jos jostain syystä olisi toinen teksti samalla otsikolla ja kirjoittajan "
+"nimellä, valitse haluttu URI laittamalla alla olevaan kenttään kirjoittaja, "
+"otsikko ja numero, esim. kirjoittaja-otsikko-1"
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -888,6 +932,14 @@ msgstr "Tunniste"
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
+msgstr ""
+
+msgid ""
+"If present, hide the\n"
+"          generated format and the information box. This makes sense\n"
+"          with attachments, when the text version is poor or not\n"
+"          available and more relevance should be given to the attached\n"
+"          files."
 msgstr ""
 
 msgid ""
@@ -973,6 +1025,10 @@ msgstr ""
 msgid "Image already set as cover"
 msgstr ""
 
+#. ($w, $h, $limit, $limit)
+msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -981,8 +1037,8 @@ msgstr "Kuvien lisäämisen voi tehdä seuraavassa vaiheessa."
 msgid "Image url"
 msgstr "Kuvan osoite"
 
-msgid "Images:"
-msgstr "Kuvat:"
+msgid "Images"
+msgstr ""
 
 msgid "Imposition schemas"
 msgstr "Taittomallit"
@@ -1049,6 +1105,9 @@ msgid "Italic"
 msgstr "Kursivoitu"
 
 msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr ""
+
+msgid "JPG, PNG and PDF are always allowed."
 msgstr ""
 
 msgid "Job deleted"
@@ -1139,8 +1198,11 @@ msgstr "Letter "
 msgid "Link"
 msgstr "Linkki"
 
-msgid "Links and images"
-msgstr "Linkit ja kuvat"
+msgid "Links"
+msgstr ""
+
+msgid "List of URLs to attach to this node, one per line."
+msgstr ""
 
 msgid "List of texts on hold"
 msgstr "Odottamassa olevat tekstit"
@@ -1207,6 +1269,12 @@ msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
 msgid "Manage categories"
+msgstr ""
+
+msgid "Max image dimension in pixels, applies to both width and height"
+msgstr ""
+
+msgid "Max size for uploads in Mb"
 msgstr ""
 
 msgid "Message"
@@ -1315,6 +1383,9 @@ msgstr "Tekstiä ei löytynyt!"
 msgid "No text was added yet"
 msgstr "Ei vielä yhtään tekstiä."
 
+msgid "Nodes"
+msgstr ""
+
 msgid "None"
 msgstr ""
 
@@ -1369,6 +1440,9 @@ msgstr "Avoin wiki"
 
 msgid "Option templates"
 msgstr ""
+
+msgid "Optional, defaults to the author directive"
+msgstr "Vapaaehtoinen, oletuksena kirjoittajamerkintä"
 
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
@@ -1451,6 +1525,9 @@ msgstr ""
 
 msgid "Paragraphs"
 msgstr "Kappaleet"
+
+msgid "Parent node"
+msgstr ""
 
 msgid "Part"
 msgstr "Osa"
@@ -1570,15 +1647,6 @@ msgstr ""
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr "Huomaa, että tällaiset tagit täytyy laittaa omalle rivilleen."
-
-msgid ""
-"Please note that you have to upload them first and\n"
-"          use the name the form provides. Images are always renamed by\n"
-"          us."
-msgstr ""
-"Huomaa, että kuvat täytyy lisätä ensin ja merkinnässä\n"
-"          käyttää lomakkeen tarjoamaa nimeä. Sivusto nimeää\n"
-"          aina kuvat uudestaan."
 
 msgid ""
 "Please note that you may want to paste from a\n"
@@ -1836,6 +1904,9 @@ msgstr "Versio %1 poistettu"
 msgid "Roles"
 msgstr ""
 
+msgid "Root node"
+msgstr ""
+
 msgid "Running headings"
 msgstr ""
 
@@ -1945,6 +2016,9 @@ msgstr ""
 msgid "Single bars"
 msgstr "Yksittäinen putki"
 
+msgid "Site Map"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Sivu on jo olemassa"
 
@@ -2021,6 +2095,10 @@ msgstr "Erityissivuyt"
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr ""
 
+msgid ""
+"Speed up the publishing process for logged-in skipping the revision page."
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Vanha muokkaus"
 
@@ -2041,6 +2119,9 @@ msgstr "Staattinen sivu ilman javascriptiä"
 
 msgid "Status"
 msgstr "Tila"
+
+msgid "Status changed"
+msgstr ""
 
 msgid "Subsection"
 msgstr "Alaosio"
@@ -2066,6 +2147,9 @@ msgstr ""
 
 msgid "Such username already exists"
 msgstr "Käyttäjänimi on jo olemassa"
+
+msgid "Suggested values:"
+msgstr ""
 
 msgid "Summary"
 msgstr "Yhteenveto"
@@ -2218,11 +2302,14 @@ msgstr ""
 msgid "There are failed jobs"
 msgstr ""
 
+msgid "There are pending revisions"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Näistä teksteistä puuttuu yksilöivä tunniste."
 
-msgid "They have the same syntax (images are actually links)"
-msgstr "Syntaksi on sama (kuvat ovat itse asiassa linkkejä)"
+msgid "They can be texts, regular, authors or topics."
+msgstr ""
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
@@ -2231,9 +2318,6 @@ msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
-
-msgid "This field is required"
-msgstr "Pakollinen kenttä"
 
 msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
@@ -2304,9 +2388,6 @@ msgstr ""
 
 msgid "Thumbnail"
 msgstr ""
-
-msgid "Time is optional."
-msgstr "Aika on valinnainen"
 
 msgid "Title"
 msgstr "Otsikko"
@@ -2436,6 +2517,7 @@ msgid "Unpublished texts"
 msgstr "Julkaisemattomat tekstit"
 
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Tiedostotyyppi %1 ei ole tuettu"
 
@@ -2456,6 +2538,13 @@ msgstr ""
 
 msgid "Upload"
 msgstr "Lisää"
+
+msgid "Upload the image and note its name. Files are always renamed."
+msgstr ""
+
+msgid ""
+"Uploaded and available images are shown and listed below the text preview."
+msgstr ""
 
 msgid "Url"
 msgstr ""
@@ -2583,6 +2672,9 @@ msgstr ""
 msgid "Workflow"
 msgstr ""
 
+msgid "Working locally?"
+msgstr ""
+
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
 "          which require leading space (notably, you cannot use them in\n"
@@ -2628,6 +2720,11 @@ msgstr ""
 "    \"plus\"-kuvaketta tekstin latausvaihtoehtojen vieressä. Voit lisätä\n"
 "    ja poistaa tekstejä myöhemmin."
 
+msgid ""
+"You can also link to a part of the text. Please refer to the manual for this "
+"feature"
+msgstr ""
+
 #. (create_url)
 msgid "You can create a peer at %1"
 msgstr ""
@@ -2654,6 +2751,10 @@ msgid "You may want to resume the editing of one of them"
 msgstr "Saatat haluta jatkaa muokkausta"
 
 msgid ""
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr " "
+
+msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
 msgstr ""
@@ -2661,6 +2762,12 @@ msgstr ""
 #. (edit_url)
 msgid "You should change your password right away at %1"
 msgstr "Sinun tulisi vaihtaa salasanasi heti osoitteessa %1"
+
+msgid "Your browser does not support the audio tag."
+msgstr ""
+
+msgid "Your browser does not support the video tag."
+msgstr ""
 
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or Save"
@@ -2722,17 +2829,8 @@ msgstr ""
 msgid "automatically generated if not present, using author and title"
 msgstr "luodaan automaattisesti kirjoittajan ja otsikon pohjalta"
 
-msgid "By number of pages, ascending"
-msgstr ""
-
-msgid "By number of pages, descending"
-msgstr ""
-
 msgid "code and monospace"
 msgstr "koodi ja tasavälinen teksti"
-
-msgid "Comma or semicolon separated list"
-msgstr "Pilkulla tai puolipisteellä erotettu lista"
 
 msgid "completed"
 msgstr "valmis"
@@ -2770,15 +2868,6 @@ msgstr "runoille"
 msgid "generic sectioning, good for articles"
 msgstr ""
 
-msgid ""
-"If by chance another text with the same author and title exists, choose the "
-"desired URI using the field below inserting author, title and a number, e.g. "
-"my-author-my-title-1"
-msgstr ""
-"Jos jostain syystä olisi toinen teksti samalla otsikolla ja kirjoittajan "
-"nimellä, valitse haluttu URI laittamalla alla olevaan kenttään kirjoittaja, "
-"otsikko ja numero, esim. kirjoittaja-otsikko-1"
-
 msgid "if the repository is exported"
 msgstr ""
 
@@ -2797,14 +2886,18 @@ msgstr "pakollinen"
 msgid "markup *not* interpreted"
 msgstr ""
 
+#. (site.binary_upload_max_size_in_mega)
+msgid "max %1 Mb"
+msgstr ""
+
 msgid "minutes"
 msgstr ""
 
 msgid "new-example-uri"
 msgstr ""
 
-msgid "Optional, defaults to the author directive"
-msgstr "Vapaaehtoinen, oletuksena kirjoittajamerkintä"
+msgid "only lowercase ASCII and hyphens"
+msgstr ""
 
 msgid "or"
 msgstr "tai"
@@ -2897,16 +2990,42 @@ msgid "without description"
 msgstr "ilman kuvausta"
 
 msgid ""
-"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
-msgstr " "
-
-msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
 "\"Vanha muokkaus\" tarkoittaa sitä, että versio hylättiin\n"
 "    kesken muokkauksen, mutta se on yhä odottamassa jatkajaansa"
+
+#~ msgid "Add an attachment (PNG, JPG or PDF)"
+#~ msgstr "Lisää liitetiedosto (PNG, JPG tai PDF)"
+
+#~ msgid "Format: yyyy-mm-dd hh:mm, e.g."
+#~ msgstr "Muoto: vvvv-kk-pp tt:mm, esim. "
+
+#~ msgid "Images:"
+#~ msgstr "Kuvat:"
+
+#~ msgid "Links and images"
+#~ msgstr "Linkit ja kuvat"
+
+#~ msgid ""
+#~ "Please note that you have to upload them first and\n"
+#~ "          use the name the form provides. Images are always renamed by\n"
+#~ "          us."
+#~ msgstr ""
+#~ "Huomaa, että kuvat täytyy lisätä ensin ja merkinnässä\n"
+#~ "          käyttää lomakkeen tarjoamaa nimeä. Sivusto nimeää\n"
+#~ "          aina kuvat uudestaan."
+
+#~ msgid "They have the same syntax (images are actually links)"
+#~ msgstr "Syntaksi on sama (kuvat ovat itse asiassa linkkejä)"
+
+#~ msgid "This field is required"
+#~ msgstr "Pakollinen kenttä"
+
+#~ msgid "Time is optional."
+#~ msgstr "Aika on valinnainen"
 
 #~ msgid "Hide options"
 #~ msgstr "Piilota lisävaihtoehdot"

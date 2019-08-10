@@ -105,8 +105,8 @@ msgstr "Додади слика за насловна страница (PNG ил
 msgid "Add a new text"
 msgstr "Додади во библиотека"
 
-msgid "Add an attachment (PNG, JPG or PDF)"
-msgstr "Додади прилог ((PNG, JPG или PDF)"
+msgid "Add an attachment"
+msgstr ""
 
 msgid "Add crop marks to the PDF"
 msgstr "Додај контролни ознаки на PDF документот"
@@ -190,6 +190,11 @@ msgid "All users"
 msgstr "Сите корисници"
 
 msgid ""
+"Allow binary uploads to logged in users: list of whitespace separate file "
+"extensions"
+msgstr ""
+
+msgid ""
 "Also produce slides\n"
 "          from the document. Each section, no matter how deep, will\n"
 "          produce a slide. The text outside a section is ignored, so\n"
@@ -239,6 +244,12 @@ msgstr ""
 msgid "As regular image in the body"
 msgstr ""
 
+msgid "Assign text to nodes"
+msgstr ""
+
+msgid "Attach"
+msgstr ""
+
 msgid "Attached images"
 msgstr "Слики во прилог"
 
@@ -268,6 +279,9 @@ msgstr "Автоматски"
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr ""
 "Автоматски барај и обнови ги SSL сертификатите користејќи Let's Encrypt"
+
+msgid "Available"
+msgstr ""
 
 msgid "Available category tags for header"
 msgstr "Расположиви ознаки за категории за заглавието"
@@ -305,6 +319,9 @@ msgstr ""
 msgid "Blog"
 msgstr "Блог"
 
+msgid "Body"
+msgstr ""
+
 msgid "Bold"
 msgstr "Здебелено"
 
@@ -321,6 +338,12 @@ msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
 "        numbering"
+msgstr ""
+
+msgid "By number of pages, ascending"
+msgstr ""
+
+msgid "By number of pages, descending"
 msgstr ""
 
 msgid "By relevance"
@@ -402,6 +425,9 @@ msgstr "Поништи ја листата на текстови"
 msgid "Click on the images to get the sample PDF"
 msgstr "Кликни на сликите за пример за PDF"
 
+msgid "Clone"
+msgstr ""
+
 msgid "Clone the repo locally and set it up"
 msgstr "Клонирај го репозиториумот на својата машина и подеси го"
 
@@ -412,6 +438,9 @@ msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
 msgstr "Ширина на левата страна на страницата за уредување текстови"
+
+msgid "Comma or semicolon separated list"
+msgstr "Листа разделена со запирка или точка-запирка"
 
 msgid "Completed"
 msgstr "Готово"
@@ -486,6 +515,9 @@ msgstr "Време"
 msgid "Custom formats for %1"
 msgstr "Посебни формати за %1"
 
+msgid "Custom home page"
+msgstr ""
+
 msgid "Date"
 msgstr "Датум"
 
@@ -500,6 +532,9 @@ msgstr "Одложени/избришани текстови"
 
 msgid "Delete"
 msgstr "Избриши"
+
+msgid "Delete permanently"
+msgstr ""
 
 #. (remote.name)
 msgid "Delete remote repository %1"
@@ -641,6 +676,9 @@ msgstr "Вклучи ги фонтовите во EPUB датотеката"
 msgid "Enable \"What links here\" feature"
 msgstr "Овозможи \"Што води овде\""
 
+msgid "Enable search suggestions (did you mean...)"
+msgstr ""
+
 msgid "Enable title ordering by SKU"
 msgstr "Овозможи сортирање според СКУ"
 
@@ -705,9 +743,6 @@ msgid "File extension"
 msgstr ""
 
 msgid "File format not allowed"
-msgstr ""
-
-msgid "File to delete not found!"
 msgstr ""
 
 msgid "File too big"
@@ -808,9 +843,6 @@ msgstr "Форматот е успешно креиран"
 msgid "Format successfully updated"
 msgstr "Форматот е успешно уреден"
 
-msgid "Format: yyyy-mm-dd hh:mm, e.g."
-msgstr "Форматирање: гггг-мм-дд:мм, нпр.:"
-
 msgid "Formats"
 msgstr "Формати"
 
@@ -847,6 +879,9 @@ msgid ""
 msgstr ""
 "Додади го следниот HTML кај секоја посебна страница (/special/*), без\n"
 " никакви промени (внимавај што правиш)."
+
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr ""
 
 msgid "HTML to insert into the left sidebar"
 msgstr "HTML за левата страна на секоја страница"
@@ -938,6 +973,15 @@ msgstr "IRC канал на мрежата Freenode"
 msgid "Id"
 msgstr "Id"
 
+msgid ""
+"If by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+"Доколку случајно постои уште еден текст од истиот автор и со ист наслов, "
+"избери го саканиот URL користејќи го полето подолу, внеси го авторот, "
+"насловот и еден број, на пр.: мој-автор-мој-наслов-1"
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -948,6 +992,14 @@ msgstr "Id"
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Ако е празно, ќе се користи %1 од директориумот на апликацијата."
+
+msgid ""
+"If present, hide the\n"
+"          generated format and the information box. This makes sense\n"
+"          with attachments, when the text version is poor or not\n"
+"          available and more relevance should be given to the attached\n"
+"          files."
+msgstr ""
 
 msgid ""
 "If set to a number greater than 0, automatically generate a teaser, with "
@@ -1063,6 +1115,10 @@ msgstr ""
 msgid "Image already set as cover"
 msgstr ""
 
+#. ($w, $h, $limit, $limit)
+msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -1073,8 +1129,8 @@ msgstr ""
 msgid "Image url"
 msgstr "URL од сликата"
 
-msgid "Images:"
-msgstr "Слики:"
+msgid "Images"
+msgstr ""
 
 msgid "Imposition schemas"
 msgstr "Обрасци за прелом на текстот"
@@ -1147,6 +1203,9 @@ msgstr "Курзив"
 
 msgid "Italics, bold, monospace and code, linebreaks..."
 msgstr "Курзиви, здебелено, код, нов ред"
+
+msgid "JPG, PNG and PDF are always allowed."
+msgstr ""
 
 msgid "Job deleted"
 msgstr "Задачата е избришана"
@@ -1236,8 +1295,11 @@ msgstr "Letter формат"
 msgid "Link"
 msgstr "Линк"
 
-msgid "Links and images"
-msgstr "Линкови и слики"
+msgid "Links"
+msgstr ""
+
+msgid "List of URLs to attach to this node, one per line."
+msgstr ""
 
 msgid "List of texts on hold"
 msgstr "Листа на текстови на чекање"
@@ -1306,6 +1368,12 @@ msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
 msgid "Manage categories"
+msgstr ""
+
+msgid "Max image dimension in pixels, applies to both width and height"
+msgstr ""
+
+msgid "Max size for uploads in Mb"
 msgstr ""
 
 msgid "Message"
@@ -1416,6 +1484,9 @@ msgstr "Не е пронајден ниту еден текст!"
 msgid "No text was added yet"
 msgstr "Сѐ уште не е додаден ниту еден текст"
 
+msgid "Nodes"
+msgstr ""
+
 msgid "None"
 msgstr "Без"
 
@@ -1471,6 +1542,9 @@ msgstr "Отворен wiki"
 
 msgid "Option templates"
 msgstr "Обрасци за опции"
+
+msgid "Optional, defaults to the author directive"
+msgstr "Незадолжително, доколку недостига ќе се користи полето автор"
 
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
@@ -1552,6 +1626,9 @@ msgstr ""
 
 msgid "Paragraphs"
 msgstr "Пасуси"
+
+msgid "Parent node"
+msgstr ""
 
 msgid "Part"
 msgstr "Дел"
@@ -1685,14 +1762,6 @@ msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
 "Имај на ум дека ознаките меѓу кои се наоѓа дел од текстот мораат да бидат "
 "сами во ред, без празно место или нешто друго."
-
-msgid ""
-"Please note that you have to upload them first and\n"
-"          use the name the form provides. Images are always renamed by\n"
-"          us."
-msgstr ""
-"Имај на ум дека мораш прво да ги прикачиш и употребиш името кое ќе биде "
-"прикажано. Системот секогаш ги преименува сликите."
 
 msgid ""
 "Please note that you may want to paste from a\n"
@@ -1972,6 +2041,9 @@ msgstr "Измената за %1 е избришана"
 msgid "Roles"
 msgstr "Улоги"
 
+msgid "Root node"
+msgstr ""
+
 msgid "Running headings"
 msgstr "Заглавје на страницата"
 
@@ -2081,6 +2153,9 @@ msgstr "Прикажи ги информациите за текстот на д
 msgid "Single bars"
 msgstr "Единечна лента"
 
+msgid "Site Map"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Сајтот веќе постои"
 
@@ -2157,6 +2232,10 @@ msgstr "Посебни страници"
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr "За активација додади листа на јазици одвоени со празно место."
 
+msgid ""
+"Speed up the publishing process for logged-in skipping the revision page."
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Напуштена измена"
 
@@ -2177,6 +2256,9 @@ msgstr "Статична страница без javascript"
 
 msgid "Status"
 msgstr "Состојба"
+
+msgid "Status changed"
+msgstr ""
 
 msgid "Subsection"
 msgstr "Пододдел"
@@ -2202,6 +2284,9 @@ msgstr "Тој корисник веќе постои!"
 
 msgid "Such username already exists"
 msgstr "Такво корисничко име веќе постои"
+
+msgid "Suggested values:"
+msgstr ""
 
 msgid "Summary"
 msgstr "Резиме"
@@ -2367,11 +2452,14 @@ msgstr "И преземи ги надградбите од оваа страни
 msgid "There are failed jobs"
 msgstr ""
 
+msgid "There are pending revisions"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "На овие текстови им недостига единствениот id."
 
-msgid "They have the same syntax (images are actually links)"
-msgstr "Ја имаат истата синтакса (сликите всушност се само линкови)"
+msgid "They can be texts, regular, authors or topics."
+msgstr ""
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
@@ -2383,9 +2471,6 @@ msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr "Ова поле бара листа на имињата на датотеки одвоени со празно место."
-
-msgid "This field is required"
-msgstr "Ова поле е задолжително"
 
 msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
@@ -2461,9 +2546,6 @@ msgstr "Овој текст ќе се објави на %1"
 
 msgid "Thumbnail"
 msgstr "Минијатура"
-
-msgid "Time is optional."
-msgstr "Времето е незадолжително"
 
 msgid "Title"
 msgstr "Наслов"
@@ -2604,6 +2686,7 @@ msgid "Unpublished texts"
 msgstr "Необјавени текстови"
 
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Погрешен вид на фајл %1"
 
@@ -2624,6 +2707,13 @@ msgstr "Зачувај ги активните опции"
 
 msgid "Upload"
 msgstr "Прикачи"
+
+msgid "Upload the image and note its name. Files are always renamed."
+msgstr ""
+
+msgid ""
+"Uploaded and available images are shown and listed below the text preview."
+msgstr ""
 
 msgid "Url"
 msgstr "Url"
@@ -2764,6 +2854,9 @@ msgstr ""
 msgid "Workflow"
 msgstr "Управување"
 
+msgid "Working locally?"
+msgstr ""
+
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
 "          which require leading space (notably, you cannot use them in\n"
@@ -2818,6 +2911,11 @@ msgstr ""
 "Кликни на иконата \"Плус\", покрај преземања, кај секој од текстовите за да "
 "го додадеш на својата збирка. Подоцна можеш да додадеш или избришеш текстови."
 
+msgid ""
+"You can also link to a part of the text. Please refer to the manual for this "
+"feature"
+msgstr ""
+
 #. (create_url)
 msgid "You can create a peer at %1"
 msgstr "Можеш да создадеш сметка на %1"
@@ -2845,6 +2943,12 @@ msgid "You may want to resume the editing of one of them"
 msgstr "Можеш да се вратиш на една од измените во тек"
 
 msgid ""
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr ""
+"Насловот на документот, за индексирање. Обично не се користи во македонскиот "
+"јазик"
+
+msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
 msgstr ""
@@ -2854,6 +2958,12 @@ msgstr ""
 #. (edit_url)
 msgid "You should change your password right away at %1"
 msgstr "Треба веднаш да ја промениш својата лозинка на %1"
+
+msgid "Your browser does not support the audio tag."
+msgstr ""
+
+msgid "Your browser does not support the video tag."
+msgstr ""
 
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or Save"
@@ -2915,17 +3025,8 @@ msgstr "која било"
 msgid "automatically generated if not present, using author and title"
 msgstr "се генерира автоматски доколку недостига, со автор и наслов"
 
-msgid "By number of pages, ascending"
-msgstr ""
-
-msgid "By number of pages, descending"
-msgstr ""
-
 msgid "code and monospace"
 msgstr "обликување на кодот"
-
-msgid "Comma or semicolon separated list"
-msgstr "Листа разделена со запирка или точка-запирка"
 
 msgid "completed"
 msgstr "готово"
@@ -2963,15 +3064,6 @@ msgstr "за поезија"
 msgid "generic sectioning, good for articles"
 msgstr "општ оддел, препорачан за кратки текстови"
 
-msgid ""
-"If by chance another text with the same author and title exists, choose the "
-"desired URI using the field below inserting author, title and a number, e.g. "
-"my-author-my-title-1"
-msgstr ""
-"Доколку случајно постои уште еден текст од истиот автор и со ист наслов, "
-"избери го саканиот URL користејќи го полето подолу, внеси го авторот, "
-"насловот и еден број, на пр.: мој-автор-мој-наслов-1"
-
 msgid "if the repository is exported"
 msgstr "доколку репозиториумот е отворен на web"
 
@@ -2990,14 +3082,18 @@ msgstr "задолжително"
 msgid "markup *not* interpreted"
 msgstr "овој маркап *не е* толкуван"
 
+#. (site.binary_upload_max_size_in_mega)
+msgid "max %1 Mb"
+msgstr ""
+
 msgid "minutes"
 msgstr ""
 
 msgid "new-example-uri"
 msgstr "нов-uri-како-пример"
 
-msgid "Optional, defaults to the author directive"
-msgstr "Незадолжително, доколку недостига ќе се користи полето автор"
+msgid "only lowercase ASCII and hyphens"
+msgstr ""
 
 msgid "or"
 msgstr "или"
@@ -3092,18 +3188,41 @@ msgid "without description"
 msgstr "без опис"
 
 msgid ""
-"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
-msgstr ""
-"Насловот на документот, за индексирање. Обично не се користи во македонскиот "
-"јазик"
-
-msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Add an attachment (PNG, JPG or PDF)"
+#~ msgstr "Додади прилог ((PNG, JPG или PDF)"
+
+#~ msgid "Format: yyyy-mm-dd hh:mm, e.g."
+#~ msgstr "Форматирање: гггг-мм-дд:мм, нпр.:"
+
+#~ msgid "Images:"
+#~ msgstr "Слики:"
+
+#~ msgid "Links and images"
+#~ msgstr "Линкови и слики"
+
+#~ msgid ""
+#~ "Please note that you have to upload them first and\n"
+#~ "          use the name the form provides. Images are always renamed by\n"
+#~ "          us."
+#~ msgstr ""
+#~ "Имај на ум дека мораш прво да ги прикачиш и употребиш името кое ќе биде "
+#~ "прикажано. Системот секогаш ги преименува сликите."
+
+#~ msgid "They have the same syntax (images are actually links)"
+#~ msgstr "Ја имаат истата синтакса (сликите всушност се само линкови)"
+
+#~ msgid "This field is required"
+#~ msgstr "Ова поле е задолжително"
+
+#~ msgid "Time is optional."
+#~ msgstr "Времето е незадолжително"
 
 #~ msgid "Hide options"
 #~ msgstr "Сокриј ги опциите"

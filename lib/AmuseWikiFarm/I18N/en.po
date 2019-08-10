@@ -96,7 +96,7 @@ msgstr ""
 msgid "Add a new text"
 msgstr ""
 
-msgid "Add an attachment (PNG, JPG or PDF)"
+msgid "Add an attachment"
 msgstr ""
 
 msgid "Add crop marks to the PDF"
@@ -171,6 +171,11 @@ msgid "All users"
 msgstr ""
 
 msgid ""
+"Allow binary uploads to logged in users: list of whitespace separate file "
+"extensions"
+msgstr ""
+
+msgid ""
 "Also produce slides\n"
 "          from the document. Each section, no matter how deep, will\n"
 "          produce a slide. The text outside a section is ignored, so\n"
@@ -209,6 +214,12 @@ msgstr ""
 msgid "As regular image in the body"
 msgstr ""
 
+msgid "Assign text to nodes"
+msgstr ""
+
+msgid "Attach"
+msgstr ""
+
 msgid "Attached images"
 msgstr ""
 
@@ -234,6 +245,9 @@ msgid "Automatically generated"
 msgstr ""
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr ""
+
+msgid "Available"
 msgstr ""
 
 msgid "Available category tags for header"
@@ -272,6 +286,9 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
+msgid "Body"
+msgstr ""
+
 msgid "Bold"
 msgstr ""
 
@@ -288,6 +305,12 @@ msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
 "        numbering"
+msgstr ""
+
+msgid "By number of pages, ascending"
+msgstr ""
+
+msgid "By number of pages, descending"
 msgstr ""
 
 msgid "By relevance"
@@ -365,6 +388,9 @@ msgstr ""
 msgid "Click on the images to get the sample PDF"
 msgstr ""
 
+msgid "Clone"
+msgstr ""
+
 msgid "Clone the repo locally and set it up"
 msgstr ""
 
@@ -374,6 +400,9 @@ msgstr ""
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
+msgstr ""
+
+msgid "Comma or semicolon separated list"
 msgstr ""
 
 msgid "Completed"
@@ -447,6 +476,9 @@ msgstr ""
 msgid "Custom formats for %1"
 msgstr ""
 
+msgid "Custom home page"
+msgstr ""
+
 msgid "Date"
 msgstr "Date"
 
@@ -460,6 +492,9 @@ msgid "Deferred/Deleted texts"
 msgstr ""
 
 msgid "Delete"
+msgstr ""
+
+msgid "Delete permanently"
 msgstr ""
 
 #. (remote.name)
@@ -593,6 +628,9 @@ msgstr ""
 msgid "Enable \"What links here\" feature"
 msgstr ""
 
+msgid "Enable search suggestions (did you mean...)"
+msgstr ""
+
 msgid "Enable title ordering by SKU"
 msgstr ""
 
@@ -652,9 +690,6 @@ msgid "File extension"
 msgstr ""
 
 msgid "File format not allowed"
-msgstr ""
-
-msgid "File to delete not found!"
 msgstr ""
 
 msgid "File too big"
@@ -746,9 +781,6 @@ msgstr ""
 msgid "Format successfully updated"
 msgstr ""
 
-msgid "Format: yyyy-mm-dd hh:mm, e.g."
-msgstr ""
-
 msgid "Formats"
 msgstr ""
 
@@ -782,6 +814,9 @@ msgid ""
 "HTML to append to each special page, inserted\n"
 "            verbatim, now you have a chance to screw up everything, so\n"
 "            be careful"
+msgstr ""
+
+msgid "HTML to insert in the footer of the layout, below the links"
 msgstr ""
 
 msgid "HTML to insert into the left sidebar"
@@ -867,6 +902,12 @@ msgstr ""
 msgid "Id"
 msgstr ""
 
+msgid ""
+"If by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -876,6 +917,14 @@ msgstr ""
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
+msgstr ""
+
+msgid ""
+"If present, hide the\n"
+"          generated format and the information box. This makes sense\n"
+"          with attachments, when the text version is poor or not\n"
+"          available and more relevance should be given to the attached\n"
+"          files."
 msgstr ""
 
 msgid ""
@@ -961,6 +1010,10 @@ msgstr ""
 msgid "Image already set as cover"
 msgstr ""
 
+#. ($w, $h, $limit, $limit)
+msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -969,7 +1022,7 @@ msgstr ""
 msgid "Image url"
 msgstr ""
 
-msgid "Images:"
+msgid "Images"
 msgstr ""
 
 msgid "Imposition schemas"
@@ -1035,6 +1088,9 @@ msgid "Italic"
 msgstr ""
 
 msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr ""
+
+msgid "JPG, PNG and PDF are always allowed."
 msgstr ""
 
 msgid "Job deleted"
@@ -1114,7 +1170,10 @@ msgstr ""
 msgid "Link"
 msgstr ""
 
-msgid "Links and images"
+msgid "Links"
+msgstr ""
+
+msgid "List of URLs to attach to this node, one per line."
 msgstr ""
 
 msgid "List of texts on hold"
@@ -1182,6 +1241,12 @@ msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
 msgid "Manage categories"
+msgstr ""
+
+msgid "Max image dimension in pixels, applies to both width and height"
+msgstr ""
+
+msgid "Max size for uploads in Mb"
 msgstr ""
 
 msgid "Message"
@@ -1290,6 +1355,9 @@ msgstr ""
 msgid "No text was added yet"
 msgstr ""
 
+msgid "Nodes"
+msgstr ""
+
 msgid "None"
 msgstr ""
 
@@ -1343,6 +1411,9 @@ msgid "Open wiki"
 msgstr ""
 
 msgid "Option templates"
+msgstr ""
+
+msgid "Optional, defaults to the author directive"
 msgstr ""
 
 msgid ""
@@ -1408,6 +1479,9 @@ msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
 msgstr ""
 
 msgid "Paragraphs"
+msgstr ""
+
+msgid "Parent node"
 msgstr ""
 
 msgid "Part"
@@ -1521,12 +1595,6 @@ msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
-msgstr ""
-
-msgid ""
-"Please note that you have to upload them first and\n"
-"          use the name the form provides. Images are always renamed by\n"
-"          us."
 msgstr ""
 
 msgid ""
@@ -1779,6 +1847,9 @@ msgstr ""
 msgid "Roles"
 msgstr ""
 
+msgid "Root node"
+msgstr ""
+
 msgid "Running headings"
 msgstr ""
 
@@ -1888,6 +1959,9 @@ msgstr ""
 msgid "Single bars"
 msgstr ""
 
+msgid "Site Map"
+msgstr ""
+
 msgid "Site already exists"
 msgstr ""
 
@@ -1964,6 +2038,10 @@ msgstr ""
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr ""
 
+msgid ""
+"Speed up the publishing process for logged-in skipping the revision page."
+msgstr ""
+
 msgid "Stale editing"
 msgstr ""
 
@@ -1983,6 +2061,9 @@ msgid "Static page without javascript"
 msgstr ""
 
 msgid "Status"
+msgstr ""
+
+msgid "Status changed"
 msgstr ""
 
 msgid "Subsection"
@@ -2006,6 +2087,9 @@ msgid "Such an user already exists!"
 msgstr ""
 
 msgid "Such username already exists"
+msgstr ""
+
+msgid "Suggested values:"
 msgstr ""
 
 msgid "Summary"
@@ -2157,10 +2241,13 @@ msgstr ""
 msgid "There are failed jobs"
 msgstr ""
 
+msgid "There are pending revisions"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr ""
 
-msgid "They have the same syntax (images are actually links)"
+msgid "They can be texts, regular, authors or topics."
 msgstr ""
 
 msgid ""
@@ -2169,9 +2256,6 @@ msgid ""
 msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
-msgstr ""
-
-msgid "This field is required"
 msgstr ""
 
 msgid ""
@@ -2238,9 +2322,6 @@ msgid "This text will be deferred to %1"
 msgstr ""
 
 msgid "Thumbnail"
-msgstr ""
-
-msgid "Time is optional."
 msgstr ""
 
 msgid "Title"
@@ -2371,6 +2452,7 @@ msgid "Unpublished texts"
 msgstr ""
 
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr ""
 
@@ -2390,6 +2472,13 @@ msgid "Update to current settings"
 msgstr ""
 
 msgid "Upload"
+msgstr ""
+
+msgid "Upload the image and note its name. Files are always renamed."
+msgstr ""
+
+msgid ""
+"Uploaded and available images are shown and listed below the text preview."
 msgstr ""
 
 msgid "Url"
@@ -2511,6 +2600,9 @@ msgstr ""
 msgid "Workflow"
 msgstr ""
 
+msgid "Working locally?"
+msgstr ""
+
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
 "          which require leading space (notably, you cannot use them in\n"
@@ -2553,6 +2645,11 @@ msgid ""
 "    remove the texts later."
 msgstr ""
 
+msgid ""
+"You can also link to a part of the text. Please refer to the manual for this "
+"feature"
+msgstr ""
+
 #. (create_url)
 msgid "You can create a peer at %1"
 msgstr ""
@@ -2579,12 +2676,22 @@ msgid "You may want to resume the editing of one of them"
 msgstr ""
 
 msgid ""
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr ""
+
+msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
 msgstr ""
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
+msgstr ""
+
+msgid "Your browser does not support the audio tag."
+msgstr ""
+
+msgid "Your browser does not support the video tag."
 msgstr ""
 
 msgid ""
@@ -2645,16 +2752,7 @@ msgstr ""
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 
-msgid "By number of pages, ascending"
-msgstr ""
-
-msgid "By number of pages, descending"
-msgstr ""
-
 msgid "code and monospace"
-msgstr ""
-
-msgid "Comma or semicolon separated list"
 msgstr ""
 
 msgid "completed"
@@ -2693,12 +2791,6 @@ msgstr ""
 msgid "generic sectioning, good for articles"
 msgstr ""
 
-msgid ""
-"If by chance another text with the same author and title exists, choose the "
-"desired URI using the field below inserting author, title and a number, e.g. "
-"my-author-my-title-1"
-msgstr ""
-
 msgid "if the repository is exported"
 msgstr ""
 
@@ -2717,13 +2809,17 @@ msgstr ""
 msgid "markup *not* interpreted"
 msgstr ""
 
+#. (site.binary_upload_max_size_in_mega)
+msgid "max %1 Mb"
+msgstr ""
+
 msgid "minutes"
 msgstr ""
 
 msgid "new-example-uri"
 msgstr ""
 
-msgid "Optional, defaults to the author directive"
+msgid "only lowercase ASCII and hyphens"
 msgstr ""
 
 msgid "or"
@@ -2814,10 +2910,6 @@ msgid "with description"
 msgstr ""
 
 msgid "without description"
-msgstr ""
-
-msgid ""
-"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
 
 msgid ""

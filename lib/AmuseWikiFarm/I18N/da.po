@@ -104,8 +104,8 @@ msgstr "Tilføj et omslagsbillede (PNG eller JPG)"
 msgid "Add a new text"
 msgstr "Tilføj en ny tekst"
 
-msgid "Add an attachment (PNG, JPG or PDF)"
-msgstr "Vedhæft en fil (PNG, JPG eller PDF)"
+msgid "Add an attachment"
+msgstr ""
 
 msgid "Add crop marks to the PDF"
 msgstr "Tilføj skæremærker til PDF'en"
@@ -189,6 +189,11 @@ msgid "All users"
 msgstr "Alle brugere"
 
 msgid ""
+"Allow binary uploads to logged in users: list of whitespace separate file "
+"extensions"
+msgstr ""
+
+msgid ""
 "Also produce slides\n"
 "          from the document. Each section, no matter how deep, will\n"
 "          produce a slide. The text outside a section is ignored, so\n"
@@ -234,6 +239,12 @@ msgstr ""
 msgid "As regular image in the body"
 msgstr ""
 
+msgid "Assign text to nodes"
+msgstr ""
+
+msgid "Attach"
+msgstr ""
+
 msgid "Attached images"
 msgstr "Vedhæftede billeder"
 
@@ -260,6 +271,9 @@ msgstr ""
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr "Anmod om og forny automatisk SSL certifikater fra Let's Encrypt"
+
+msgid "Available"
+msgstr ""
 
 msgid "Available category tags for header"
 msgstr "Tilgængelige kategorimarkeringer til sidehovedet"
@@ -299,6 +313,9 @@ msgstr ""
 msgid "Blog"
 msgstr "Blog"
 
+msgid "Body"
+msgstr ""
+
 msgid "Bold"
 msgstr "Fed"
 
@@ -315,6 +332,12 @@ msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
 "        numbering"
+msgstr ""
+
+msgid "By number of pages, ascending"
+msgstr ""
+
+msgid "By number of pages, descending"
 msgstr ""
 
 msgid "By relevance"
@@ -396,6 +419,9 @@ msgstr "Tøm boglisten"
 msgid "Click on the images to get the sample PDF"
 msgstr "Klik på billederne for at se prøve-PDF'en"
 
+msgid "Clone"
+msgstr ""
+
 msgid "Clone the repo locally and set it up"
 msgstr "Klon arkivet lokalt og sæt det op"
 
@@ -406,6 +432,9 @@ msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
 msgstr ""
+
+msgid "Comma or semicolon separated list"
+msgstr "Liste separeret af komma eller semikolon"
 
 msgid "Completed"
 msgstr "Færdig"
@@ -478,6 +507,9 @@ msgstr "Nuværende tidspunkt"
 msgid "Custom formats for %1"
 msgstr "Tilpassede formater til %1"
 
+msgid "Custom home page"
+msgstr ""
+
 msgid "Date"
 msgstr "Dato"
 
@@ -492,6 +524,9 @@ msgstr "Udsatte/Slettede tekster"
 
 msgid "Delete"
 msgstr "Slet"
+
+msgid "Delete permanently"
+msgstr ""
 
 #. (remote.name)
 msgid "Delete remote repository %1"
@@ -630,6 +665,9 @@ msgstr "Indlejr skrifttyper i EPUB filen"
 msgid "Enable \"What links here\" feature"
 msgstr ""
 
+msgid "Enable search suggestions (did you mean...)"
+msgstr ""
+
 msgid "Enable title ordering by SKU"
 msgstr ""
 
@@ -697,9 +735,6 @@ msgid "File extension"
 msgstr ""
 
 msgid "File format not allowed"
-msgstr ""
-
-msgid "File to delete not found!"
 msgstr ""
 
 msgid "File too big"
@@ -798,9 +833,6 @@ msgstr ""
 msgid "Format successfully updated"
 msgstr ""
 
-msgid "Format: yyyy-mm-dd hh:mm, e.g."
-msgstr "Format: åååå-mm-dd tt:mm, f.eks."
-
 msgid "Formats"
 msgstr "Formater"
 
@@ -834,6 +866,9 @@ msgid ""
 "HTML to append to each special page, inserted\n"
 "            verbatim, now you have a chance to screw up everything, so\n"
 "            be careful"
+msgstr ""
+
+msgid "HTML to insert in the footer of the layout, below the links"
 msgstr ""
 
 msgid "HTML to insert into the left sidebar"
@@ -929,6 +964,15 @@ msgstr "IRC kanal på freenode"
 msgid "Id"
 msgstr "Id"
 
+msgid ""
+"If by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+"Hvis der tilfældigvis eksisterer en anden tekst med samme forfatter og "
+"titel, så vælg den ønskede URI i feltet nedenfor ved at indsætte forfatter, "
+"titel og et nummer, f.eks. min-forfatter-min-titel-1"
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -938,6 +982,14 @@ msgstr "Id"
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
+msgstr ""
+
+msgid ""
+"If present, hide the\n"
+"          generated format and the information box. This makes sense\n"
+"          with attachments, when the text version is poor or not\n"
+"          available and more relevance should be given to the attached\n"
+"          files."
 msgstr ""
 
 msgid ""
@@ -1047,6 +1099,10 @@ msgstr ""
 msgid "Image already set as cover"
 msgstr ""
 
+#. ($w, $h, $limit, $limit)
+msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -1057,8 +1113,8 @@ msgstr ""
 msgid "Image url"
 msgstr "Billedets URL"
 
-msgid "Images:"
-msgstr "Billeder:"
+msgid "Images"
+msgstr ""
 
 msgid "Imposition schemas"
 msgstr "Udskydningsskemaer"
@@ -1129,6 +1185,9 @@ msgstr "Kursiv"
 
 msgid "Italics, bold, monospace and code, linebreaks..."
 msgstr "Kursiv, fed, monospatieret og kode (skrivemaskine), linjeskift..."
+
+msgid "JPG, PNG and PDF are always allowed."
+msgstr ""
 
 msgid "Job deleted"
 msgstr "Job slettet"
@@ -1217,8 +1276,11 @@ msgstr "Letter papir"
 msgid "Link"
 msgstr "Link"
 
-msgid "Links and images"
-msgstr "Links og billeder"
+msgid "Links"
+msgstr ""
+
+msgid "List of URLs to attach to this node, one per line."
+msgstr ""
 
 msgid "List of texts on hold"
 msgstr "Liste over tekster i bero"
@@ -1285,6 +1347,12 @@ msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
 msgid "Manage categories"
+msgstr ""
+
+msgid "Max image dimension in pixels, applies to both width and height"
+msgstr ""
+
+msgid "Max size for uploads in Mb"
 msgstr ""
 
 msgid "Message"
@@ -1393,6 +1461,9 @@ msgstr "Ingen tekst fundet!"
 msgid "No text was added yet"
 msgstr "Ingen tekst blev tilføjet endnu"
 
+msgid "Nodes"
+msgstr ""
+
 msgid "None"
 msgstr "Ingen"
 
@@ -1449,6 +1520,9 @@ msgstr "Åben wiki"
 
 msgid "Option templates"
 msgstr "Valgmuligheds skabeloner"
+
+msgid "Optional, defaults to the author directive"
+msgstr ""
 
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
@@ -1532,6 +1606,9 @@ msgstr "Papirtykkelse (0,10 burde være passende for almindeligt 80g/m2 papir)"
 
 msgid "Paragraphs"
 msgstr "Afsnit"
+
+msgid "Parent node"
+msgstr ""
 
 msgid "Part"
 msgstr "Del"
@@ -1662,15 +1739,6 @@ msgstr ""
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr "Bemærk at omsluttende markeringer skal placeres på sin egen linje."
-
-msgid ""
-"Please note that you have to upload them first and\n"
-"          use the name the form provides. Images are always renamed by\n"
-"          us."
-msgstr ""
-"Bemærk venligst at du er nødt til at uploade dem først og\n"
-"          bruge navnet som formularen giver. Billeder bliver altid omdøbt\n"
-"          af os."
 
 msgid ""
 "Please note that you may want to paste from a\n"
@@ -1943,6 +2011,9 @@ msgstr "Revisionen af %1 er blevet slettet"
 msgid "Roles"
 msgstr "Roller"
 
+msgid "Root node"
+msgstr ""
+
 msgid "Running headings"
 msgstr "Løbende sidehoveder"
 
@@ -2052,6 +2123,9 @@ msgstr "Vis tekstens infoboks ved tekstens afslutning"
 msgid "Single bars"
 msgstr "Enkelte barer"
 
+msgid "Site Map"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Siden eksisterer allerede"
 
@@ -2131,6 +2205,10 @@ msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr ""
 "Specificer en liste over sprog separeret med mellemrum for at aktivere det."
 
+msgid ""
+"Speed up the publishing process for logged-in skipping the revision page."
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Gammel redigering"
 
@@ -2151,6 +2229,9 @@ msgstr "Statisk side uden javaskript"
 
 msgid "Status"
 msgstr "Status"
+
+msgid "Status changed"
+msgstr ""
 
 msgid "Subsection"
 msgstr "Undersektion"
@@ -2174,6 +2255,9 @@ msgstr "En sådan bruger eksisterer allerede!"
 
 msgid "Such username already exists"
 msgstr "Et sådant brugernavn eksisterer allerede"
+
+msgid "Suggested values:"
+msgstr ""
 
 msgid "Summary"
 msgstr "Sammenfatning"
@@ -2325,11 +2409,14 @@ msgstr "Hent derefter opdateringerne på denne side."
 msgid "There are failed jobs"
 msgstr ""
 
+msgid "There are pending revisions"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Disse tekster mangler den unikke ID."
 
-msgid "They have the same syntax (images are actually links)"
-msgstr "De har samme syntaks (billeder er i virkeligheden links)"
+msgid "They can be texts, regular, authors or topics."
+msgstr ""
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
@@ -2338,9 +2425,6 @@ msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
-
-msgid "This field is required"
-msgstr "Dette felt er påkrævet"
 
 msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
@@ -2418,9 +2502,6 @@ msgstr "Denne tekst vi blive forsinket til %1"
 
 msgid "Thumbnail"
 msgstr ""
-
-msgid "Time is optional."
-msgstr "Tidspunktet er valgfrit."
 
 msgid "Title"
 msgstr "Titel"
@@ -2550,6 +2631,7 @@ msgid "Unpublished texts"
 msgstr "Ikke offentliggjorte tekster"
 
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Ikke understøttet filtype %1"
 
@@ -2570,6 +2652,13 @@ msgstr "Opdater til nuværende indstillinger"
 
 msgid "Upload"
 msgstr "Upload"
+
+msgid "Upload the image and note its name. Files are always renamed."
+msgstr ""
+
+msgid ""
+"Uploaded and available images are shown and listed below the text preview."
+msgstr ""
 
 msgid "Url"
 msgstr "Url"
@@ -2708,6 +2797,9 @@ msgstr ""
 msgid "Workflow"
 msgstr "Arbejdsgang"
 
+msgid "Working locally?"
+msgstr ""
+
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
 "          which require leading space (notably, you cannot use them in\n"
@@ -2759,6 +2851,11 @@ msgstr ""
 "tilføje og\n"
 "    fjerne teksterne senere."
 
+msgid ""
+"You can also link to a part of the text. Please refer to the manual for this "
+"feature"
+msgstr ""
+
 #. (create_url)
 msgid "You can create a peer at %1"
 msgstr ""
@@ -2787,6 +2884,12 @@ msgid "You may want to resume the editing of one of them"
 msgstr "Du ønsker måske at fortsætte med at redigere en af dem"
 
 msgid ""
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr ""
+"Du ønsker måske at fjerne det indledende »En«, »Et«, »Den«, og så videre fra "
+"titlen"
+
+msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
 msgstr ""
@@ -2796,6 +2899,12 @@ msgstr ""
 #. (edit_url)
 msgid "You should change your password right away at %1"
 msgstr "Du bør skifte dit kodeord med det samme på %1"
+
+msgid "Your browser does not support the audio tag."
+msgstr ""
+
+msgid "Your browser does not support the video tag."
+msgstr ""
 
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or Save"
@@ -2858,17 +2967,8 @@ msgid "automatically generated if not present, using author and title"
 msgstr ""
 "bliver automatisk genereret hvis feltet er tomt, bruger forfatter og titel"
 
-msgid "By number of pages, ascending"
-msgstr ""
-
-msgid "By number of pages, descending"
-msgstr ""
-
 msgid "code and monospace"
 msgstr "kode og monospatieret"
-
-msgid "Comma or semicolon separated list"
-msgstr "Liste separeret af komma eller semikolon"
 
 msgid "completed"
 msgstr "færdig"
@@ -2906,15 +3006,6 @@ msgstr "til poesi"
 msgid "generic sectioning, good for articles"
 msgstr "generel sektionering, passer til artikler"
 
-msgid ""
-"If by chance another text with the same author and title exists, choose the "
-"desired URI using the field below inserting author, title and a number, e.g. "
-"my-author-my-title-1"
-msgstr ""
-"Hvis der tilfældigvis eksisterer en anden tekst med samme forfatter og "
-"titel, så vælg den ønskede URI i feltet nedenfor ved at indsætte forfatter, "
-"titel og et nummer, f.eks. min-forfatter-min-titel-1"
-
 msgid "if the repository is exported"
 msgstr "hvis arkivet er eksporteret"
 
@@ -2935,13 +3026,17 @@ msgstr "obligatorisk"
 msgid "markup *not* interpreted"
 msgstr ""
 
+#. (site.binary_upload_max_size_in_mega)
+msgid "max %1 Mb"
+msgstr ""
+
 msgid "minutes"
 msgstr ""
 
 msgid "new-example-uri"
 msgstr "ny-eksempel-uri"
 
-msgid "Optional, defaults to the author directive"
+msgid "only lowercase ASCII and hyphens"
 msgstr ""
 
 msgid "or"
@@ -3035,12 +3130,6 @@ msgid "without description"
 msgstr "uden beskrivelse"
 
 msgid ""
-"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
-msgstr ""
-"Du ønsker måske at fjerne det indledende »En«, »Et«, »Den«, og så videre fra "
-"titlen"
-
-msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
@@ -3049,6 +3138,37 @@ msgstr ""
 "    under redigeringen, men den er stadig der, hvis nogen skulle få lyst "
 "til\n"
 "    at samle den op under redigeringen af en tekst."
+
+#~ msgid "Add an attachment (PNG, JPG or PDF)"
+#~ msgstr "Vedhæft en fil (PNG, JPG eller PDF)"
+
+#~ msgid "Format: yyyy-mm-dd hh:mm, e.g."
+#~ msgstr "Format: åååå-mm-dd tt:mm, f.eks."
+
+#~ msgid "Images:"
+#~ msgstr "Billeder:"
+
+#~ msgid "Links and images"
+#~ msgstr "Links og billeder"
+
+#~ msgid ""
+#~ "Please note that you have to upload them first and\n"
+#~ "          use the name the form provides. Images are always renamed by\n"
+#~ "          us."
+#~ msgstr ""
+#~ "Bemærk venligst at du er nødt til at uploade dem først og\n"
+#~ "          bruge navnet som formularen giver. Billeder bliver altid "
+#~ "omdøbt\n"
+#~ "          af os."
+
+#~ msgid "They have the same syntax (images are actually links)"
+#~ msgstr "De har samme syntaks (billeder er i virkeligheden links)"
+
+#~ msgid "This field is required"
+#~ msgstr "Dette felt er påkrævet"
+
+#~ msgid "Time is optional."
+#~ msgstr "Tidspunktet er valgfrit."
 
 #~ msgid "Hide options"
 #~ msgstr "Skjul valgmuligheder"
