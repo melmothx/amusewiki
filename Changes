@@ -4,6 +4,18 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.391 2019-08-15
+
+ - Migrate from Protocol::ACME to Net::ACME2 to get Let's Encrypt
+   certificate using the new protocol, given that the old one is
+   getting sinked soon.
+ - New site option: express_publishing. If in effect, the publishing
+   procedure is speeded up and if no conflict is found, the text will
+   be published right away. This is useful if there are no external
+   contributions.
+ - Add List-Id to our mails, so clients have a chance to pick it up.
+ - Support per-format template files via newest Text::Amuse::Compile
+
 2.390 2019-07-25
 
  - Added experimental node system. It's accessible to logged in users
