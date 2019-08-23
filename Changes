@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.392 2019-08-23
+
+ - Upgraded HR and IT localization
+
 2.391 2019-08-15
 
  - Migrate from Protocol::ACME to Net::ACME2 to get Let's Encrypt
