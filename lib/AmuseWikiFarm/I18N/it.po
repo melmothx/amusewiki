@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2018-03-12 10:24+0100\n"
+"PO-Revision-Date: 2019-08-23 08:11+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -104,7 +104,7 @@ msgid "Add a new text"
 msgstr "Aggiungi un nuovo testo"
 
 msgid "Add an attachment"
-msgstr ""
+msgstr "Aggiungi un allegato"
 
 msgid "Add crop marks to the PDF"
 msgstr "Aggiungi gli indicatori di ritaglio"
@@ -161,7 +161,7 @@ msgstr ""
 "rimosso c'è un bottone rosso, con il quale è possibile purgare il testo."
 
 msgid "Age:"
-msgstr ""
+msgstr "Età:"
 
 msgid "Alias"
 msgstr "Alias"
@@ -190,6 +190,8 @@ msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
 "extensions"
 msgstr ""
+"Permetti l'inclusione di formati binari agli utenti autenticati:\n"
+"inserisci una lista di estensioni separate da spazi"
 
 msgid ""
 "Also produce slides\n"
@@ -241,10 +243,10 @@ msgid "As regular image in the body"
 msgstr "Come una normale immagine nel corpo del testo"
 
 msgid "Assign text to nodes"
-msgstr ""
+msgstr "Assegna il testo a uno o più nodi"
 
 msgid "Attach"
-msgstr ""
+msgstr "Allega"
 
 msgid "Attached images"
 msgstr "Immagini allegate"
@@ -276,7 +278,7 @@ msgstr ""
 "Encrypt"
 
 msgid "Available"
-msgstr ""
+msgstr "Disponibile"
 
 msgid "Available category tags for header"
 msgstr "Codici categoria disponibili per l'intestazione"
@@ -285,6 +287,8 @@ msgid ""
 "Avoid hyphenation on the last word of a sentence (it could result in bad "
 "spacing)"
 msgstr ""
+"Evita la sillabazione dell'ultima parola di una frase (così facendo è\n"
+"possibile che le spaziature risultino sbagliate)"
 
 msgid "Back to the text"
 msgstr "Torna al testo"
@@ -311,12 +315,14 @@ msgid ""
 "Blocks of 8 pages to be folded twice and then bound\n"
 "                together."
 msgstr ""
+"Blocchi di 8 pagine da piegare due volte e successivamente cucite\n"
+"insieme."
 
 msgid "Blog"
 msgstr "Blog"
 
 msgid "Body"
-msgstr ""
+msgstr "Corpo del testo"
 
 msgid "Bold"
 msgstr "Grassetto"
@@ -373,10 +379,10 @@ msgid "Categories"
 msgstr "Categorie"
 
 msgid "Center all the sectioning titles."
-msgstr ""
+msgstr "Centra tutti i titoli delle sezioni."
 
 msgid "Center the chapter titles."
-msgstr ""
+msgstr "Centra i titoli dei capitoli."
 
 msgid "Changes"
 msgstr "Modifiche"
@@ -425,7 +431,7 @@ msgid "Click on the images to get the sample PDF"
 msgstr "Clicca sulle immagini per avere un PDF di esempio"
 
 msgid "Clone"
-msgstr ""
+msgstr "Clona"
 
 msgid "Clone the repo locally and set it up"
 msgstr "Clona il repositorio in locale e configuralo"
@@ -454,6 +460,8 @@ msgstr "Conferma"
 
 msgid "Continuous footnote numbering across the whole document."
 msgstr ""
+"Numerazione continua delle note a piè di pagina in tutto il\n"
+"documento."
 
 msgid "Convert to archive markup"
 msgstr "Converti nel markup dell'archivio"
@@ -517,7 +525,7 @@ msgid "Custom formats for %1"
 msgstr "Formati particolari per %1"
 
 msgid "Custom home page"
-msgstr ""
+msgstr "Pagina iniziale (homepage) a scelta"
 
 msgid "Date"
 msgstr "Data"
@@ -535,7 +543,7 @@ msgid "Delete"
 msgstr "Cancella"
 
 msgid "Delete permanently"
-msgstr ""
+msgstr "Rimuovi per sempre"
 
 #. (remote.name)
 msgid "Delete remote repository %1"
@@ -569,7 +577,7 @@ msgid "Destination"
 msgstr "Destinazione"
 
 msgid "Did you mean:"
-msgstr ""
+msgstr "Volevi dire forse:"
 
 msgid "Differences"
 msgstr "Differenze"
@@ -584,7 +592,7 @@ msgstr ""
 "sai esattamente cosa stai facendo"
 
 msgid "Disable /mirror/ URL for anonymous users"
-msgstr ""
+msgstr "Disabilita l'accesso all'URL /mirror/ agli utenti anonimi"
 
 msgid "Display url as"
 msgstr "Mostra l'URL come"
@@ -681,6 +689,8 @@ msgstr "Attiva \"Puntano qui\""
 
 msgid "Enable search suggestions (did you mean...)"
 msgstr ""
+"Abilita i suggerimenti nei risultati della ricerca (volevi forse\n"
+"dire...)"
 
 msgid "Enable title ordering by SKU"
 msgstr "Abilita l'ordinamento dei titoli per numero di inventario"
@@ -888,6 +898,8 @@ msgstr ""
 
 msgid "HTML to insert in the footer of the layout, below the links"
 msgstr ""
+"HTML da inserire in fondo a tutte le pagine web, sotto ai\n"
+"collegamenti"
 
 msgid "HTML to insert into the left sidebar"
 msgstr "Codice HTML da inserire nella colonna di sinistra"
@@ -2974,7 +2986,7 @@ msgid ""
 msgstr ""
 "Si possono usare i seguenti prefissi per cercare una parola in un\n"
 "campo specifico, ad esempio: \"title:titolo\" (i prefissi sono in\n"
-"inglese)"
+"inglese e non devono esserci spazi dopo i due punti)"
 
 msgid ""
 "You can't create a new revision because the text has not been published yet"
