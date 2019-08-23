@@ -921,7 +921,7 @@ msgstr ""
 
 msgid ""
 "If present, hide the\n"
-"          generated format and the information box. This makes sense\n"
+"          generated formats and the information box. This makes sense\n"
 "          with attachments, when the text version is poor or not\n"
 "          available and more relevance should be given to the attached\n"
 "          files."

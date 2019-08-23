@@ -751,7 +751,7 @@ How smart a lash that speech doth giue my Conscience?
         </li>
         <li>
           <code>#blob 1</code><br /> [% loc('If present, hide the
-          generated format and the information box. This makes sense
+          generated formats and the information box. This makes sense
           with attachments, when the text version is poor or not
           available and more relevance should be given to the attached
           files.') %]
