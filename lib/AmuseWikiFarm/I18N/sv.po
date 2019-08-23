@@ -962,6 +962,12 @@ msgid ""
 "            the body"
 msgstr ""
 
+msgid ""
+"If the user is allowed to publish, speed up the process skipping the "
+"revision page if there are no conflicts and automatically redirect to the "
+"published text once it is done."
+msgstr ""
+
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr "Om avsändaren tillhandahöll mail, så är det listat i mailets CC-fält"
 
@@ -1208,7 +1214,7 @@ msgstr "Länk"
 msgid "Links"
 msgstr ""
 
-msgid "List of URLs to attach to this node, one per line."
+msgid "List of paths to attach to this node, one per line."
 msgstr ""
 
 msgid "List of texts on hold"
@@ -2115,10 +2121,6 @@ msgstr "Specialsidor"
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr ""
 
-msgid ""
-"Speed up the publishing process for logged-in skipping the revision page."
-msgstr ""
-
 msgid "Stale editing"
 msgstr "Förlegad redigering"
 
@@ -2332,7 +2334,7 @@ msgstr ""
 msgid "These texts are missing the unique id."
 msgstr "Dessa texter saknar det unika ID:t."
 
-msgid "They can be texts, regular, authors or topics."
+msgid "They can be texts, special texts, authors or topics."
 msgstr ""
 
 msgid ""

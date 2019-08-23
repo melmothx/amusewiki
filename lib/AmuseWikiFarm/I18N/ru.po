@@ -1012,6 +1012,12 @@ msgstr ""
 "Если публикация текста отложена, вывести его с тизером и обложкой без "
 "предоставления доступа к содержимому"
 
+msgid ""
+"If the user is allowed to publish, speed up the process skipping the "
+"revision page if there are no conflicts and automatically redirect to the "
+"published text once it is done."
+msgstr ""
+
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr "Если редактор указывает e-mail, то он добавляется в поле CC."
 
@@ -1292,7 +1298,7 @@ msgstr "Ссылка"
 msgid "Links"
 msgstr ""
 
-msgid "List of URLs to attach to this node, one per line."
+msgid "List of paths to attach to this node, one per line."
 msgstr ""
 
 msgid "List of texts on hold"
@@ -2210,10 +2216,6 @@ msgstr "Специальные страницы"
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr "Укажите список языков через пробел, чтобы активировать их."
 
-msgid ""
-"Speed up the publishing process for logged-in skipping the revision page."
-msgstr ""
-
 msgid "Stale editing"
 msgstr "Устаревшие правки"
 
@@ -2439,7 +2441,7 @@ msgstr "Есть ожидающие правки"
 msgid "These texts are missing the unique id."
 msgstr "У этих текстов отсутствуют уникальные идентификаторы."
 
-msgid "They can be texts, regular, authors or topics."
+msgid "They can be texts, special texts, authors or topics."
 msgstr ""
 
 msgid ""

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2019-08-23 08:11+0200\n"
+"PO-Revision-Date: 2019-08-23 08:43+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -1020,6 +1020,11 @@ msgid ""
 "          available and more relevance should be given to the attached\n"
 "          files."
 msgstr ""
+"Se presente, nascondi i file generati automaticamente e la casella con\n"
+"le informazioni sul testo. Questa opzione è stata pensata per essere\n"
+"usata in congiunzione con l'uso di allegati, quando il testo stesso è\n"
+"in cattive condizioni (ad esempio, un OCR non corretto) e si vuol dare\n"
+"maggiore rilevanza agli allegati."
 
 msgid ""
 "If set to a number greater than 0, automatically generate a teaser, with "
@@ -1036,6 +1041,12 @@ msgstr ""
 "Se la pubblicazione di un testo è nel futuro, mostra comunque\n"
 "l'anteprima e la copertina, pur senza consentire l'accesso al corpo\n"
 "del testo"
+
+msgid ""
+"If the user is allowed to publish, speed up the process skipping the "
+"revision page if there are no conflicts and automatically redirect to the "
+"published text once it is done."
+msgstr ""
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
@@ -1140,6 +1151,7 @@ msgstr "Già impostata come immagine di copertina"
 #. ($w, $h, $limit, $limit)
 msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
 msgstr ""
+"Le dimensioni dell'immagine %1 x %2 superano il limite di %3 x %4 pixel"
 
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
@@ -1152,7 +1164,7 @@ msgid "Image url"
 msgstr "URL dell'immagine"
 
 msgid "Images"
-msgstr ""
+msgstr "Immagini"
 
 msgid "Imposition schemas"
 msgstr "Schemi di impaginazione"
@@ -1241,7 +1253,7 @@ msgid "Italics, bold, monospace and code, linebreaks..."
 msgstr "Corsivo, grassetto, codice, interruzioni di linea..."
 
 msgid "JPG, PNG and PDF are always allowed."
-msgstr ""
+msgstr "JPG, PNG e PDF sono sempre permessi."
 
 msgid "Job deleted"
 msgstr "Lavoro cancellato"
@@ -1256,7 +1268,7 @@ msgid "Jobs"
 msgstr "Lavori"
 
 msgid "Jobs (all sites)"
-msgstr ""
+msgstr "Lavori (tutti i siti)"
 
 msgid "Jobs waiting before yours:"
 msgstr "Lavori in attesa:"
@@ -1330,10 +1342,10 @@ msgid "Link"
 msgstr "Collegamento"
 
 msgid "Links"
-msgstr ""
+msgstr "Collegamenti"
 
-msgid "List of URLs to attach to this node, one per line."
-msgstr ""
+msgid "List of paths to attach to this node, one per line."
+msgstr "Lista di percorsi da assegnare a questo nodo, uno per linea."
 
 msgid "List of texts on hold"
 msgstr "Lista dei testi in attesa di approvazione"
@@ -1402,13 +1414,14 @@ msgstr ""
 "espliciti con ~~"
 
 msgid "Manage categories"
-msgstr ""
+msgstr "Gestione delle categorie"
 
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr ""
+"Dimensione massima in pixel, da applicare sia all'altezza che alla larghezza"
 
 msgid "Max size for uploads in Mb"
-msgstr ""
+msgstr "Dimensione massima dei file caricati in megabyte"
 
 msgid "Message"
 msgstr "Messaggio"
@@ -1465,7 +1478,7 @@ msgid "Network library listing screen."
 msgstr "Schermata con l'elenco delle biblioteche online."
 
 msgid "Never display the cover"
-msgstr ""
+msgstr "Non mostrare mai il frontespizio"
 
 msgid "Never generate a table of content"
 msgstr "Non generare un sommario"
@@ -1519,7 +1532,7 @@ msgid "No text was added yet"
 msgstr "Nessun testo è stato ancora aggiunto"
 
 msgid "Nodes"
-msgstr ""
+msgstr "Nodi"
 
 msgid "None"
 msgstr "Nessuno"
@@ -1667,13 +1680,13 @@ msgid "Paragraphs"
 msgstr "Paragrafi"
 
 msgid "Parent node"
-msgstr ""
+msgstr "Nodo genitore"
 
 msgid "Part"
 msgstr "Parte"
 
 msgid "Part and chapter. If one side document: part."
-msgstr ""
+msgstr "Parte e capitolo. Se il documento è a facciata singola: parte."
 
 msgid "Part, for larger books only"
 msgstr "Parte, solo per libri con un elevato numero di pagine"
@@ -1941,7 +1954,7 @@ msgid "Quotes"
 msgstr "Citazioni"
 
 msgid "RSS aggregator"
-msgstr ""
+msgstr "Aggregatore di feed RSS"
 
 msgid "RSS feed"
 msgstr "Feed RSS"
@@ -2021,7 +2034,7 @@ msgid "Remove cover image"
 msgstr "Rimuovi immagine di copertina"
 
 msgid "Remove this category"
-msgstr ""
+msgstr "Rimuovi questa categoria"
 
 msgid "Rename to"
 msgstr "Rinomina"
@@ -2076,7 +2089,7 @@ msgid "Roles"
 msgstr "Ruoli"
 
 msgid "Root node"
-msgstr ""
+msgstr "Nodo radice"
 
 msgid "Running headings"
 msgstr "Testatine"
@@ -2119,7 +2132,7 @@ msgid "Search"
 msgstr "Cerca"
 
 msgid "Search filters"
-msgstr ""
+msgstr "Filtri la ricerca"
 
 msgid "Search results"
 msgstr "Risultati della ricerca"
@@ -2188,7 +2201,7 @@ msgid "Single bars"
 msgstr "Le barre singole"
 
 msgid "Site Map"
-msgstr ""
+msgstr "Mappa del sito"
 
 msgid "Site already exists"
 msgstr "Il sito già esiste"
@@ -2272,10 +2285,6 @@ msgstr ""
 "Specifica una lista di lingue separate da uno spazio bianco per "
 "l'attivazione."
 
-msgid ""
-"Speed up the publishing process for logged-in skipping the revision page."
-msgstr ""
-
 msgid "Stale editing"
 msgstr "Modifica in corso abbandonata"
 
@@ -2298,7 +2307,7 @@ msgid "Status"
 msgstr "Status"
 
 msgid "Status changed"
-msgstr ""
+msgstr "Modifica dello status"
 
 msgid "Subsection"
 msgstr "Sottosezione"
@@ -2326,7 +2335,7 @@ msgid "Such username already exists"
 msgstr "Nome utente già esistente"
 
 msgid "Suggested values:"
-msgstr ""
+msgstr "Valori suggeriti:"
 
 msgid "Summary"
 msgstr "Sommario"
@@ -2350,7 +2359,7 @@ msgid "Task"
 msgstr "Lavoro"
 
 msgid "TeX options (advanced)"
-msgstr ""
+msgstr "Opzioni TeX (avanzate)"
 
 msgid "Teaser"
 msgstr "Anteprima"
@@ -2408,6 +2417,8 @@ msgstr "La descrizione per %1 è stata aggiornata"
 msgid ""
 "The differences between the list of footnotes and references is shown below."
 msgstr ""
+"La differenza tra la lista delle note a piè di pagina e i riferimenti\n"
+"nel testo è mostrata qui sotto."
 
 msgid "The file uploaded is not an HTML file!"
 msgstr "Il file caricato non è un file HTML!"
@@ -2501,12 +2512,12 @@ msgid "There are failed jobs"
 msgstr "Ci sono lavori falliti"
 
 msgid "There are pending revisions"
-msgstr ""
+msgstr "Ci sono revisioni in attesa di pubblicazione"
 
 msgid "These texts are missing the unique id."
 msgstr "Questi testi sono senza identificativo."
 
-msgid "They can be texts, regular, authors or topics."
+msgid "They can be texts, special texts, authors or topics."
 msgstr ""
 
 msgid ""
@@ -2693,7 +2704,7 @@ msgid "Two side layout"
 msgstr "Impaginazione fronte-retro"
 
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 msgid "URI"
 msgstr "URI"
@@ -2762,10 +2773,14 @@ msgstr "Carica"
 
 msgid "Upload the image and note its name. Files are always renamed."
 msgstr ""
+"Carica l'immagine e prendi nota del suo nome. I file sono sempre rinominati "
+"dal sistema."
 
 msgid ""
 "Uploaded and available images are shown and listed below the text preview."
 msgstr ""
+"Le immagini caricate e disponibili sono mostrate sotto l'anteprima del\n"
+"testo."
 
 msgid "Url"
 msgstr "URL"
@@ -2910,7 +2925,7 @@ msgid "Workflow"
 msgstr "Procedura"
 
 msgid "Working locally?"
-msgstr ""
+msgstr "Stai lavorando in locale?"
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
@@ -2969,6 +2984,8 @@ msgid ""
 "You can also link to a part of the text. Please refer to the manual for this "
 "feature"
 msgstr ""
+"Puoi anche inserire un collegamento a una parte del testo. Vedi il\n"
+"manuale (in inglese) per maggiori dettagli"
 
 #. (create_url)
 msgid "You can create a peer at %1"
@@ -3019,10 +3036,10 @@ msgid "You should change your password right away at %1"
 msgstr "Dovresti cambiare subito la tua password a %1"
 
 msgid "Your browser does not support the audio tag."
-msgstr ""
+msgstr "Il tuo browser non supporta i formati audio."
 
 msgid "Your browser does not support the video tag."
-msgstr ""
+msgstr "Il tuo browser non supporta i formati video."
 
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or Save"
@@ -3145,16 +3162,16 @@ msgstr "markup *non* interpretato"
 
 #. (site.binary_upload_max_size_in_mega)
 msgid "max %1 Mb"
-msgstr ""
+msgstr "massimo %1 Mb"
 
 msgid "minutes"
-msgstr ""
+msgstr "minuti"
 
 msgid "new-example-uri"
 msgstr "nuovo-uri-di-esempio"
 
 msgid "only lowercase ASCII and hyphens"
-msgstr ""
+msgstr "solo ASCII minuscolo e trattini"
 
 msgid "or"
 msgstr "o"

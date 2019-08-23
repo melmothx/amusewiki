@@ -1024,6 +1024,12 @@ msgstr ""
 "Si la publication d'un texte est différée, la lister avec le teaser et la "
 "couverture sans fournir d'accès au corps de texte"
 
+msgid ""
+"If the user is allowed to publish, speed up the process skipping the "
+"revision page if there are no conflicts and automatically redirect to the "
+"published text once it is done."
+msgstr ""
+
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
 "Si l'édi·teur·trice a fourni un email, ce dernier est répertorié dans le "
@@ -1306,7 +1312,7 @@ msgstr "Lien"
 msgid "Links"
 msgstr ""
 
-msgid "List of URLs to attach to this node, one per line."
+msgid "List of paths to attach to this node, one per line."
 msgstr ""
 
 msgid "List of texts on hold"
@@ -2242,10 +2248,6 @@ msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr ""
 "Spécifiez une liste de langues séparées par des espaces pour l'activer."
 
-msgid ""
-"Speed up the publishing process for logged-in skipping the revision page."
-msgstr ""
-
 msgid "Stale editing"
 msgstr "Modification périmée"
 
@@ -2473,7 +2475,7 @@ msgstr ""
 msgid "These texts are missing the unique id."
 msgstr "Il manque l'ID unique de ces textes."
 
-msgid "They can be texts, regular, authors or topics."
+msgid "They can be texts, special texts, authors or topics."
 msgstr ""
 
 msgid ""

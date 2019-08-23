@@ -507,7 +507,7 @@ kpsewhich mylogo.pdf
                  [% IF esite.express_publishing %]checked="checked"[% END %]
                  value="ON"
                  name="express_publishing" />
-          [% loc('Speed up the publishing process for logged-in skipping the revision page.') %]
+          [% loc("If the user is allowed to publish, speed up the process skipping the revision page if there are no conflicts and automatically redirect to the published text once it is done.") %]
         </label>
       </div>
     </div>

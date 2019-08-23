@@ -79,8 +79,9 @@
       <div class="form-group">
         <div class="col-sm-12">
           <label for="attached_uris">
-            [% loc('List of URLs to attach to this node, one per line.') %]
-            [% loc('They can be texts, regular, authors or topics.') %]
+            [% loc('List of paths to attach to this node, one per line.') %]
+            [% loc('They can be texts, special texts, authors or topics.') %]
+            [% loc('Example') %]: <code>/library/text</code>
           </label>
         </div>
         <div class="col-sm-12">
@@ -88,6 +89,14 @@
                     id="attached_uris"
                     rows="10"
                     class="form-control">[% edit_node.serialize.attached_uris | html %]</textarea>
+          <p class="help-block">
+            [% loc('Example') %]:<br>
+            <pre>
+/library/regular-text
+/special/index
+/category/author/my-author
+/category/topic/my-topic</pre>
+          </p>
         </div>
       </div>
       <div class="row">

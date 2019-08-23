@@ -1000,6 +1000,12 @@ msgstr ""
 "Ako je objavljivanje odgođeno, pokazati će se pregled i slika na\n"
 "popisima, ali bez pristupa tekstu"
 
+msgid ""
+"If the user is allowed to publish, speed up the process skipping the "
+"revision page if there are no conflicts and automatically redirect to the "
+"published text once it is done."
+msgstr ""
+
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
 "Ako je osoba koja je napravila izmijene navela mail, uključena je u CC listu"
@@ -1283,7 +1289,7 @@ msgstr "Poveznica"
 msgid "Links"
 msgstr ""
 
-msgid "List of URLs to attach to this node, one per line."
+msgid "List of paths to attach to this node, one per line."
 msgstr ""
 
 msgid "List of texts on hold"
@@ -2200,10 +2206,6 @@ msgstr "Posebne stranice"
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr "Za aktivaciju dodaj popis jezika odvojenih razmakom."
 
-msgid ""
-"Speed up the publishing process for logged-in skipping the revision page."
-msgstr ""
-
 msgid "Stale editing"
 msgstr "Napuštena izmjena"
 
@@ -2424,7 +2426,7 @@ msgstr ""
 msgid "These texts are missing the unique id."
 msgstr "Ovim tekstovima nedostaje jedinstveni id."
 
-msgid "They can be texts, regular, authors or topics."
+msgid "They can be texts, special texts, authors or topics."
 msgstr ""
 
 msgid ""

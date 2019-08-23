@@ -623,7 +623,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: root/src/include/edit_node.tt:106
+#: root/src/include/edit_node.tt:115
 msgid "Delete permanently"
 msgstr ""
 
@@ -846,7 +846,7 @@ msgid ""
 "        can print, for example, A6 booklets on A4."
 msgstr ""
 
-#: root/src/edit/edit.tt:512 root/src/edit/edit.tt:518 root/src/edit/edit.tt:531 root/src/edit/edit.tt:533
+#: root/src/edit/edit.tt:512 root/src/edit/edit.tt:518 root/src/edit/edit.tt:531 root/src/edit/edit.tt:533 root/src/include/edit_node.tt:84 root/src/include/edit_node.tt:93
 msgid "Example"
 msgstr ""
 
@@ -1182,6 +1182,10 @@ msgid ""
 "            the body"
 msgstr ""
 
+#: root/src/admin/edit.tt:510
+msgid "If the user is allowed to publish, speed up the process skipping the revision page if there are no conflicts and automatically redirect to the published text once it is done."
+msgstr ""
+
 #: mkits/commit/body.txt:10
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
@@ -1474,7 +1478,7 @@ msgid "Links"
 msgstr ""
 
 #: root/src/include/edit_node.tt:82
-msgid "List of URLs to attach to this node, one per line."
+msgid "List of paths to attach to this node, one per line."
 msgstr ""
 
 #: root/src/console/unpublished.tt:3
@@ -2592,10 +2596,6 @@ msgstr ""
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr ""
 
-#: root/src/admin/edit.tt:510
-msgid "Speed up the publishing process for logged-in skipping the revision page."
-msgstr ""
-
 #: root/src/publish/pending.tt:65
 msgid "Stale editing"
 msgstr ""
@@ -2859,7 +2859,7 @@ msgid "These texts are missing the unique id."
 msgstr ""
 
 #: root/src/include/edit_node.tt:83
-msgid "They can be texts, regular, authors or topics."
+msgid "They can be texts, special texts, authors or topics."
 msgstr ""
 
 #: root/src/admin/edit.tt:1172
@@ -3124,7 +3124,7 @@ msgstr ""
 msgid "Unused attachment"
 msgstr ""
 
-#: root/src/admin/edit.tt:1242 root/src/admin/show_user_details.tt:70 root/src/attachments/edit.tt:33 root/src/bookbuilder/index.tt:203 root/src/bookbuilder/index.tt:225 root/src/category-details-edit.tt:41 root/src/include/edit_node.tt:100 root/src/settings/edit_format.tt:38 root/src/user/edit.tt:39 root/src/user/edit_options.tt:19
+#: root/src/admin/edit.tt:1242 root/src/admin/show_user_details.tt:70 root/src/attachments/edit.tt:33 root/src/bookbuilder/index.tt:203 root/src/bookbuilder/index.tt:225 root/src/category-details-edit.tt:41 root/src/include/edit_node.tt:109 root/src/settings/edit_format.tt:38 root/src/user/edit.tt:39 root/src/user/edit_options.tt:19
 msgid "Update"
 msgstr ""
 
