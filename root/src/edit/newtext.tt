@@ -28,7 +28,8 @@
            maxlength="250" id="title"
            size="30"
            value="[% processed_params.title | html %]"
-           required />
+           required
+	   autofocus />
     <p class="help-block">
       [% loc('If by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1') %].
       <a href="#choose-uri">
