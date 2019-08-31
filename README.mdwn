@@ -1,4 +1,4 @@
-# AmuseWiki
+![AmuseWiki](https://raw.githubusercontent.com/melmothx/amusewiki/master/doc/design/amw-banner.png)
 
 This is a wiki engine using the Text::Amuse markup (based on and
 mostly compatible with Emacs Muse) and a Git backend. It can work as a
