@@ -106,7 +106,7 @@ msgid "Add a new text"
 msgstr "Добавить в библиотеку"
 
 msgid "Add an attachment"
-msgstr ""
+msgstr "Добавить вложение"
 
 msgid "Add crop marks to the PDF"
 msgstr "Добавить метки обрезки в PDF"
@@ -188,6 +188,8 @@ msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
 "extensions"
 msgstr ""
+"Разрешить бинарные загрузки для вошедших пользователей: список расширений, "
+"разделённых пробелами"
 
 msgid ""
 "Also produce slides\n"
@@ -238,10 +240,10 @@ msgid "As regular image in the body"
 msgstr "Как обычное изображение в текст"
 
 msgid "Assign text to nodes"
-msgstr ""
+msgstr "Назначить текст узлам"
 
 msgid "Attach"
-msgstr ""
+msgstr "Прикрепить"
 
 msgid "Attached images"
 msgstr "Вложенные изображения"
@@ -272,7 +274,7 @@ msgstr ""
 "Автоматически запрашивать и обновлять SSL сертификаты через Let's Encrypt"
 
 msgid "Available"
-msgstr ""
+msgstr "Доступно"
 
 msgid "Available category tags for header"
 msgstr "Доступные категории тегов для заголовка"
@@ -315,7 +317,7 @@ msgid "Blog"
 msgstr "Блог"
 
 msgid "Body"
-msgstr ""
+msgstr "Тело"
 
 msgid "Bold"
 msgstr "Жирный"
@@ -389,9 +391,7 @@ msgid "Changes for %1"
 msgstr "Изменения для %1"
 
 msgid "Changes saved, thanks! They are now waiting to be published"
-msgstr ""
-"Изменения внесены, спасибо! После того, как администрация проверит\n"
-"текст, вы сможете увидеть изменения на сайте."
+msgstr "Изменения внесены, спасибо! Теперь они ожидают публикации"
 
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
@@ -424,7 +424,7 @@ msgid "Click on the images to get the sample PDF"
 msgstr "Нажмите на изображение для получения образца PDF"
 
 msgid "Clone"
-msgstr ""
+msgstr "Клонировать"
 
 msgid "Clone the repo locally and set it up"
 msgstr "Склонируйте репозиторий и настройте его"
@@ -532,7 +532,7 @@ msgid "Delete"
 msgstr "Удалить"
 
 msgid "Delete permanently"
-msgstr ""
+msgstr "Удалить безвозвратно"
 
 #. (remote.name)
 msgid "Delete remote repository %1"
@@ -565,7 +565,7 @@ msgid "Destination"
 msgstr "Назначение"
 
 msgid "Did you mean:"
-msgstr "Возможно вы имели в виду:"
+msgstr "Возможно, вы имели в виду:"
 
 msgid "Differences"
 msgstr "Различия"
@@ -674,7 +674,7 @@ msgid "Enable \"What links here\" feature"
 msgstr "Включить функцию «ссылки сюда»"
 
 msgid "Enable search suggestions (did you mean...)"
-msgstr ""
+msgstr "Включить поисковые предложения (возможно, вы имели в виду...)"
 
 msgid "Enable title ordering by SKU"
 msgstr "Включить упорядочивание заголовков по номеру"
@@ -686,7 +686,7 @@ msgid "Error converting the upload file. Is it an HTML file?"
 msgstr "Ошибка конвертации загруженного файла. Это точно HTML-файл?"
 
 msgid "Error sending mail!"
-msgstr "Ошибка при отправке письма"
+msgstr "Ошибка при отправке письма!"
 
 msgid "Error while converting the HTML. Sorry."
 msgstr "Ошибка при конвертации HTML."
@@ -877,7 +877,7 @@ msgstr ""
 "у вас есть шанс испортить разметку, поэтому будьте осторожны"
 
 msgid "HTML to insert in the footer of the layout, below the links"
-msgstr ""
+msgstr "HTML для вставки в подвал раскладки, под ссылками"
 
 msgid "HTML to insert into the left sidebar"
 msgstr "HTML для вставки в левую боковую панель"
@@ -910,7 +910,7 @@ msgid "Height:"
 msgstr "Высота:"
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
-msgstr "Здесь вы можете посмотреть на темы и цветовые схемы Beamer."
+msgstr "Здесь вы можете посмотреть на темы и цветовые схемы Beamer"
 
 msgid ""
 "Here you can save or load your templates. The text list\n"
@@ -1019,7 +1019,7 @@ msgid ""
 msgstr ""
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
-msgstr "Если редактор указывает e-mail, то он добавляется в поле CC."
+msgstr "Если редактор указывает e-mail, то он добавляется в поле CC"
 
 msgid ""
 "If this line\n"
@@ -1116,7 +1116,7 @@ msgstr "Изображение уже установлено в качестве
 
 #. ($w, $h, $limit, $limit)
 msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
-msgstr ""
+msgstr "Размеры изображения %1 × %2 превышают ограничение %3 × %4 пикселей."
 
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
@@ -1126,23 +1126,23 @@ msgstr ""
 "предварительно проверите текст."
 
 msgid "Image url"
-msgstr "url изображения"
+msgstr "URL изображения"
 
 msgid "Images"
-msgstr ""
+msgstr "Изображения"
 
 msgid "Imposition schemas"
 msgstr "Схемы спуска полос"
 
 msgid "In both case you will get a reverse indentation."
-msgstr "В обоих случаях вы получите обратный отступ"
+msgstr "В обоих случаях вы получите обратный отступ."
 
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
 msgstr ""
 "В тексте номер в квадратных скобках воспринимается как\n"
-" номер сноски, если сноска существует. "
+" номер сноски, если сноска существует."
 
 #. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
@@ -1232,7 +1232,7 @@ msgid "Jobs waiting before yours:"
 msgstr "Задания, ожидающие перед вашим:"
 
 msgid "Just packs 2 consecutives logical pages on a physical one."
-msgstr "Просто разместить 2 страницы макета на физической странице"
+msgstr "Просто разместить 2 страницы макета на физической странице."
 
 msgid ""
 "Keep in mind that I’m cleaning the text and give it\n"
@@ -1281,7 +1281,7 @@ msgid "Layout"
 msgstr "Раскладка"
 
 msgid "Leave it blank if you want it published right away."
-msgstr "Оставьте поле пустым, если хотите опубликовать в таком виде"
+msgstr "Оставьте поле пустым, если хотите опубликовать в таком виде."
 
 msgid "Leave this empty to have it automatically generated"
 msgstr "Оставьте поле пустым, чтобы это было сгенерировано автоматически"
@@ -1296,10 +1296,10 @@ msgid "Link"
 msgstr "Ссылка"
 
 msgid "Links"
-msgstr ""
+msgstr "Ссылки"
 
 msgid "List of paths to attach to this node, one per line."
-msgstr ""
+msgstr "Список путей для прикрепления к этому узлу, один на строку."
 
 msgid "List of texts on hold"
 msgstr "Список текстов в ожидании"
@@ -1370,15 +1370,17 @@ msgstr "Управление категориями"
 
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr ""
+"Максимальное разрешение изображения в пикселях, применяется как для ширины "
+"так и для высоты"
 
 msgid "Max size for uploads in Mb"
-msgstr ""
+msgstr "Максимальный размер загрузок в Мб."
 
 msgid "Message"
 msgstr "Сообщение"
 
 msgid "Missing #title header in the text!"
-msgstr "Отсутствующий заголовок #title в тексте"
+msgstr "Отсутствующий заголовок #title в тексте!"
 
 msgid "Missing alias"
 msgstr "Отсутствует псевдоним"
@@ -1483,7 +1485,7 @@ msgid "No text was added yet"
 msgstr "Ни один текст не был добавлен"
 
 msgid "Nodes"
-msgstr ""
+msgstr "Узлы"
 
 msgid "None"
 msgstr "Нет"
@@ -1560,7 +1562,7 @@ msgstr ""
 "обратитесь к библиотекарям."
 
 msgid "Or log in, if you have an account."
-msgstr "Или войдите, если у вас есть аккаунт"
+msgstr "Или войдите, если у вас есть аккаунт."
 
 msgid "Or provide an HTML file to upload"
 msgstr "Или предоставьте HTML-файл для загрузки"
@@ -1581,7 +1583,7 @@ msgid "PDF logo"
 msgstr "Логотип PDF"
 
 msgid "PDFs cannot be used in the body."
-msgstr "PDF не могут быть использованы в теле текста"
+msgstr "PDF не могут быть использованы в теле текста."
 
 #. ('#ATTACH')
 #. ("#ATTACH")
@@ -1589,7 +1591,7 @@ msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF не прописанные в %1 будут сохранены но проигнорированы"
 
 msgid "Page not found!"
-msgstr "Страница не найдена"
+msgstr "Страница не найдена!"
 
 msgid "Page where to start a chapter"
 msgstr "Страница, с которой начинать главу"
@@ -1625,7 +1627,7 @@ msgid "Paragraphs"
 msgstr "Параграфы"
 
 msgid "Parent node"
-msgstr ""
+msgstr "Родительский узел"
 
 msgid "Part"
 msgstr "Часть"
@@ -1653,7 +1655,7 @@ msgid "Password updated"
 msgstr "Пароль изменён"
 
 msgid "Password, minimum 8 characters."
-msgstr "Пароль, минимум 8 символов"
+msgstr "Пароль, минимум 8 символов."
 
 msgid "Passwords do not match"
 msgstr "Пароли не совпадают"
@@ -2026,7 +2028,7 @@ msgid "Roles"
 msgstr "Роли"
 
 msgid "Root node"
-msgstr ""
+msgstr "Корневой узел"
 
 msgid "Running headings"
 msgstr "Бегущие заголовки"
@@ -2138,7 +2140,7 @@ msgid "Single bars"
 msgstr "Одна вертикальная линия"
 
 msgid "Site Map"
-msgstr ""
+msgstr "Карта сайта"
 
 msgid "Site already exists"
 msgstr "Сайт уже существует"
@@ -2266,7 +2268,7 @@ msgid "Such username already exists"
 msgstr "Такое имя пользователя уже существует"
 
 msgid "Suggested values:"
-msgstr ""
+msgstr "Предлагаемые значения:"
 
 msgid "Summary"
 msgstr "Краткое описание"
@@ -2442,7 +2444,7 @@ msgid "These texts are missing the unique id."
 msgstr "У этих текстов отсутствуют уникальные идентификаторы."
 
 msgid "They can be texts, special texts, authors or topics."
-msgstr ""
+msgstr "Это могут быть тексты, специальные тексты, авторы и темы."
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
@@ -2488,7 +2490,7 @@ msgid "This revision is being actively edited by you"
 msgstr "Правка в процессе редактирования вами"
 
 msgid "This revision is being edited by someone else!"
-msgstr "Правка редактируется кем-то другим"
+msgstr "Правка редактируется кем-то другим!"
 
 msgid "This section will not produce a slide"
 msgstr "Этот раздел не произведёт слайд"
@@ -2533,7 +2535,7 @@ msgid "Title"
 msgstr "Название"
 
 msgid "Title and chapter. If one side document: chapter."
-msgstr "Заголовок и глава. Для одностороннего документа: глава"
+msgstr "Заголовок и глава. Для одностороннего документа: глава."
 
 msgid "Title and section.  If one side document: section."
 msgstr "Заголовок и раздел. Для одностороннего документа: раздел."
@@ -2562,7 +2564,7 @@ msgid ""
 msgstr "Для сохранения пробелов и разрывов строк, поместите параграфы в"
 
 msgid "To quickly format bibliographies wrap them in"
-msgstr "Для быстрого форматирования библиографии поместите их в "
+msgstr "Для быстрого форматирования библиографии поместите их в"
 
 msgid "To quickly format plays, use"
 msgstr "Для быстрого форматирования пьес используйте"
@@ -2598,7 +2600,7 @@ msgid "Triple bars"
 msgstr "Три вертикальные линии"
 
 msgid "Try a random text if unsure"
-msgstr "Попробуйте случайный текст."
+msgstr "Попробуйте случайный текст если не уверены"
 
 msgid "Try again"
 msgstr "Попробовать снова"
@@ -2691,6 +2693,7 @@ msgstr "Загрузить"
 
 msgid "Upload the image and note its name. Files are always renamed."
 msgstr ""
+"Загрузите изображение и запомните его имя. Файлы всегда переименовываются."
 
 msgid ""
 "Uploaded and available images are shown and listed below the text preview."
@@ -2709,7 +2712,7 @@ msgid "Use SSL for authenticated users"
 msgstr "Использовать SSL для авторизованных пользователей"
 
 msgid "Use it as a teaser image adding to the header this line:"
-msgstr "Используйте это как обложку, добавив следующую строку в заголовок"
+msgstr "Используйте это как обложку, добавив следующую строку в заголовок:"
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
@@ -2895,13 +2898,15 @@ msgid ""
 "You can also link to a part of the text. Please refer to the manual for this "
 "feature"
 msgstr ""
+"Вы также можете ссылаться на часть текста. Пожалуйста, обратитесь к "
+"руководству для этой функции"
 
 #. (create_url)
 msgid "You can create a peer at %1"
 msgstr "Вы можете создать аналог в %1"
 
 msgid "You can do so answering a simple question."
-msgstr "Вы можете сделать это, ответив на простой вопрос"
+msgstr "Вы можете сделать это, ответив на простой вопрос."
 
 msgid "You can tune them editing them here."
 msgstr "Вы можете отредактировать их здесь."
@@ -2941,10 +2946,10 @@ msgid "You should change your password right away at %1"
 msgstr "Вы должны сразу изменить свой пароль на %1"
 
 msgid "Your browser does not support the audio tag."
-msgstr ""
+msgstr "Ваш браузер не поддерживает тег audio."
 
 msgid "Your browser does not support the video tag."
-msgstr ""
+msgstr "Ваш браузер не поддерживает тег video."
 
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or Save"
@@ -2953,7 +2958,7 @@ msgstr ""
 "Опубликовать"
 
 msgid "Your chapter here..."
-msgstr "Ваша глава здесь"
+msgstr "Ваша глава здесь..."
 
 msgid "Your current bookbuilder token is:"
 msgstr "Ваш текущий токен конструктора книг:"
@@ -2965,28 +2970,28 @@ msgid "Your file is ready"
 msgstr "Ваш файл готов"
 
 msgid "Your part here..."
-msgstr "Ваша часть здесь"
+msgstr "Ваша часть здесь..."
 
 #. (password)
 msgid "Your password is %1."
-msgstr "Ваш пароль %1"
+msgstr "Ваш пароль %1."
 
 msgid "Your section here..."
 msgstr "Здесь ваш раздел..."
 
 msgid "Your sub-sub-section (or description heading) here..."
-msgstr "Ваш подзаголовок третьего уровня здесь"
+msgstr "Ваш подзаголовок третьего уровня здесь..."
 
 msgid "Your subsection here..."
-msgstr "Ваш подзаголовок здесь"
+msgstr "Ваш подзаголовок здесь..."
 
 #. (home)
 msgid "Your user at %1 has been created."
-msgstr "Ваш пользователь в %1 был создан"
+msgstr "Ваш пользователь в %1 был создан."
 
 #. (username)
 msgid "Your username is %1."
-msgstr "Ваше имя пользователя %1"
+msgstr "Ваше имя пользователя %1."
 
 msgid "aborted"
 msgstr "отменено"
@@ -3069,7 +3074,7 @@ msgstr "разметка *не* интерпретируется"
 
 #. (site.binary_upload_max_size_in_mega)
 msgid "max %1 Mb"
-msgstr ""
+msgstr "максимум %1 Мб"
 
 msgid "minutes"
 msgstr "минуты"
