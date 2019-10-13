@@ -299,7 +299,7 @@ sub fetch {
         $ok = 1;
     } catch {
         my $error = $_;
-        log_warn { "Certificate fetching failed with $error for " . $self->names_as_string };
+        log_error { "Certificate fetching failed with $error for " . $self->names_as_string };
     };
     return $ok;
 }
