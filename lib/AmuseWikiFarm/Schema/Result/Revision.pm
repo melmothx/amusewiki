@@ -1057,14 +1057,24 @@ sub remove_attachment {
 
 sub only_one_pending {
     my $self = shift;
-    if ($self->pending and
-        $self->can_be_merged and
-        $self->title->revisions->not_published->count == 1) {
-        return 1;
+    if ($self->pending) {
+        if ($self->can_be_merged) {
+            my $pending_count = $self->title->revisions->pending->count;
+            if ($pending_count == 1) {
+                return 1;
+            }
+            else {
+                log_info { "Pending revision count is $pending_count" };
+            }
+        }
+        else {
+            log_info { "Revision cannot be merged" };
+        }
     }
     else {
-        return 0;
+        log_info { "Revision has status " . $self->status };
     }
+    return 0;
 }
 
 __PACKAGE__->meta->make_immutable;

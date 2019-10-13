@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 28;
+use Test::More tests => 32;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -123,8 +123,9 @@ $site->jobs->delete;
 {
     $mech->get($text->full_edit_uri);
 
-    # and spawn another one.
-    $text->new_revision;
+    # and spawn another one. This is in editing state, so it doesn't matter
+    my $other = $text->new_revision;
+    is $other->status, 'editing';
 
     $mech->submit_form(with_fields => {
                                        message => 'pippo',
@@ -136,8 +137,38 @@ $site->jobs->delete;
 
 is $text->revisions->count, 5;
 is $text->revisions->not_published->count, 2;
-is $site->jobs->count, 0, "Job enqueued";
-foreach my $rev ($text->revisions->not_published) {
-    ok !$rev->only_one_pending;
+is $site->jobs->count, 1, "Job enqueued";
+foreach my $rev ($text->revisions->pending) {
+    ok $rev->only_one_pending;
 }
+
+if ($mech->uri->path =~ qr{/tasks/status/(\d+)}) {
+    my $j = $site->jobs->find($1);
+    ok $j, "Found job";
+    ok $j->dispatch_job;
+}
+else {
+    die "Express publishing not in effect";
+}
+
+
+# the trick is to commit the revision.
+
+{
+    $mech->get($text->full_edit_uri);
+
+    # and spawn another one. This is in editing state,
+    $text->new_revision->commit_version;
+    $mech->submit_form(with_fields => {
+                                       message => 'pippo',
+                                       body => $text->muse_body . "\n\nciao ciao last\n\n",
+                                      },
+                       button => 'commit',
+                      );
+}
+
+is $text->revisions->count, 7;
+is $text->revisions->pending->count, 2;
 is $mech->uri->path, '/publish/pending';
+
+
