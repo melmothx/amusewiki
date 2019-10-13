@@ -594,7 +594,8 @@ sub edit :Chained('edit_revision') :PathPart('') :Args(0) {
                         my $job = $site->jobs->publish_add($revision,
                                                            $c->user_exists ? $c->user->get("username") : '');
                         $c->res->redirect($c->uri_for_action('/tasks/display',
-                                                             [$job->id]));
+                                                             [$job->id],
+                                                             { express => 1 }));
                     }
                     else {
                         $c->response->redirect($c->uri_for_action('/publish/pending'));

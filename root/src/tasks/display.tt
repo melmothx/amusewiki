@@ -84,7 +84,8 @@
   </div>
 </div>
 
-<pre id="job-logs" style="margin: 30px 0px" data-express-publishing=[% site.express_publishing | html %]></pre>
+<pre id="job-logs" style="margin: 30px 0px"
+     data-express-publishing="[% IF c.request.params.express %]1[% ELSE %]0[% END %]"></pre>
 <pre id="job-errors"></pre>
 
 <div class="center">
@@ -98,7 +99,7 @@
     </strong>
   </div>
 
-<script src="[% c.uri_for('/static/js/queue.js') %]"></script>
+<script src="[% c.uri_for('/static/js/queue.js', { v => 2 }) %]"></script>
 <script type="text/javascript">
   $(document).ready(function() {
     update_status('[% c.uri_for_action('/tasks/ajax', [job.id]) %]');

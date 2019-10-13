@@ -6,6 +6,8 @@ function update_status(url, reloaded, offset) {
     if (!offset) {
         offset = 0;
     }
+    var location = window.location;
+    var current_url = location.protocol + '//' + location.host + location.pathname;
     // console.log(offset);
     $.getJSON(url, { 'offset':  offset }, function(data) {
         if (!reloaded) {
@@ -46,6 +48,7 @@ function update_status(url, reloaded, offset) {
             }
             if ($('#job-logs').data('express-publishing')) {
                 console.log("Redirecting to " + data.produced_uri);
+                window.history.pushState('Build', 'Build', current_url);
                 window.location = data.produced_uri;
             }
         }
