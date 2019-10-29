@@ -9,6 +9,15 @@ use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Utils::Jobber;
 use AmuseWikiFarm::Log::Contextual;
 use Try::Tiny;
+use Getopt::Long;
+
+my $max_parallel = 3;
+# legacy
+my $polling_interval = $ENV{AMW_POLLING} || 5;
+
+GetOptions('max-parallel=i' => \$max_parallel,
+           'polling-interval=i' => \$polling_interval);
+
 
 =pod
 
@@ -95,11 +104,9 @@ XAPIAN_UPGRADE: {
 
 my $jobber = AmuseWikiFarm::Utils::Jobber->new(
                                                schema => $schema,
-                                               ($ENV{AMW_POLLING} ?
-                                                ( polling_interval => $ENV{AMW_POLLING} )
-                                                :
-                                                ()
-                                               ));
+                                               polling_interval => $polling_interval,
+                                               max_parallel => $max_parallel,
+                                              );
 
 print "Starting jobber's loop with polling interval of " . $jobber->polling_interval . " seconds with pid $$\n";
 print "Lockfile is " . $jobber->pidfile . "\n";
