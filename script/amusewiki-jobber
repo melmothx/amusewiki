@@ -16,8 +16,8 @@ my $max_parallel = 3;
 my $polling_interval = $ENV{AMW_POLLING} || 5;
 
 GetOptions('max-parallel=i' => \$max_parallel,
-           'polling-interval=i' => \$polling_interval);
-
+           'polling-interval=i' => \$polling_interval)
+  or die;
 
 =pod
 
@@ -27,11 +27,16 @@ amusewiki-jobber - amusewiki job daemon
 
 =head1 SYNOPSIS
 
+amusewiki-jobber [ --max-parallel 3 ] [ --polling-interval 5 ]
+
 Daemon which takes care of all the slow amusewiki's operations. Needs
 to be launched from the application's root, where the repo are located.
 
 It stays in the foreground, but each job is managed in a double fork
 (so killing it doesn't kill the grandchild).
+
+You can set the maximum of parallel job and the polling interval via
+option.
 
 =cut
 
