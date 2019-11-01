@@ -4,9 +4,16 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.401 2019-11-01
+
+ - Add CLI options to control the jobber polling interval and
+   parallelization.
+
+ - Add id attributes where missing in the top bar, for better styling
+
 2.400 2019-10-27
 
- - Upgraded RU localization
+ - Upgraded RU localization (@link2xt)
  - Improved express publishing
 
 2.392 2019-08-23
