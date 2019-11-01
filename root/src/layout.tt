@@ -192,7 +192,7 @@
               </div>
             </div>
           </form>
-          <ul class="nav navbar-nav navbar-right">
+          <ul id="amw-top-nav-right-menu" class="nav navbar-nav navbar-right">
             <li class="hidden-when-no-toc" style="display:none">
               <a class="amw-navlogo" href="#"
                  data-toggle="modal"
@@ -206,6 +206,7 @@
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle"
+                 id="amw-top-nav-archive-menu"
                  title="[% loc('texts by authors, title, topic...') %]"
                  data-toggle="dropdown">
                 <span class="fa fa-heart fa-fw"></span>
@@ -264,7 +265,8 @@
                 </li>
 
                 [% IF blog_style %]
-                <li[% IF nav == 'monthly' %] class="active"[% END %]>
+                  <li[% IF nav == 'monthly' %] class="active"[% END %]
+                                               id="amw-top-nav-archive-monthly-archive">
                   <a href="[% c.uri_for_action('/monthly/list') %]"
 		             title="[% loc('Archive by month') %]">
                     [% loc('Archive by month') %]
@@ -298,9 +300,8 @@
             </li>
             [% IF navigation %]
 
-            [%- # begin project -%]
             [% IF navigation.specials %]
-            <li class="dropdown">
+            <li class="dropdown" id="amw-top-nav-specials">
               <a href="#" class="dropdown-toggle"
                  title="[% loc('about, links...') %]"
                  data-toggle="dropdown">
@@ -320,9 +321,8 @@
             </li>
             [% END %]
 
-            [%- # begin specials -%]
             [% IF navigation.projects %]
-            <li class="dropdown">
+            <li class="dropdown" id="amw-top-nav-projects">
               <a href="#" class="dropdown-toggle"
                  title="[% loc('Related projects') %]"
                  data-toggle="dropdown">
@@ -345,7 +345,7 @@
             [% END %]
 
             [% IF site.multilanguage %]
-            <li class="dropdown">
+            <li class="dropdown" id="amw-top-nav-multilanguage">
               <a href="#" class="dropdown-toggle"
                  title="[% loc('Language selection') %]"
                  data-toggle="dropdown">
@@ -544,7 +544,7 @@
             [% END %]
             [%- # the menu for logged in ends here -%]
 
-            <li [% IF nav == 'bookbuilder' %] class="active" [% END %]>
+            <li [% IF nav == 'bookbuilder' %] class="active" [% END %] id="amw-top-nav-bookbuilder">
               <a href="[% c.uri_for('/bookbuilder') %]" title="[% loc('Bookbuilder') %]">
                 [% SET bb_count_texts = c.model('BookBuilder').total_texts %]
                 <span class="fa fa-book [% IF bb_count_texts %]text-primary[% END %] fa-fw"></span>
