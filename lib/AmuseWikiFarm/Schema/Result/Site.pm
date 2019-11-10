@@ -1718,7 +1718,7 @@ sub collation_index {
     my $ttime = time();
     my @texts = sort {
         # warn $a->id . ' <=>  ' . $b->id;
-        $collator->cmp($a->list_title, $b->list_title)
+        $collator->cmp($a->list_title // '', $b->list_title // '')
     } $self->titles->search(undef, { order_by => 'sorting_pos',
                                      columns => [qw/id sorting_pos list_title/] })->all;
 
