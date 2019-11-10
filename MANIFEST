@@ -1347,6 +1347,7 @@ t/pagination-sizes.t
 t/preview-deferred.t
 t/private-sites.t
 t/pulling.t
+t/purge.t
 t/queue.t
 t/rebuilding.t
 t/redirect-after-login.t
