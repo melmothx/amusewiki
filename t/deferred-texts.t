@@ -107,7 +107,7 @@ MUSE
     }
     elsif ($spec->{status} eq 'deleted') {
         $mech->get($full_uri);
-        is $mech->status, '404', "Status is 404 for deleted";
+        is $mech->uri->path, '/console/unpublished', "Bounced to console/unpublished";
     }
     $mech->get_ok('/console/unpublished');
     $mech->content_contains($full_uri);
