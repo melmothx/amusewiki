@@ -112,8 +112,18 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
         return;
     }
     else {
-        $c->stash(uri => $canonical);
-        $c->detach('/not_found');
+        my $f_class = $c->stash->{f_class};
+        if ($f_class and $c->user_exists and $site->titles->find({
+                                                                  f_class => $f_class,
+                                                                  uri => $canonical,
+                                                                 })) {
+            $c->response->redirect($c->uri_for_action('/console/unpublished'));
+            $c->detach();
+        }
+        else {
+            $c->stash(uri => $canonical);
+            $c->detach('/not_found');
+        }
     }
 }
 
