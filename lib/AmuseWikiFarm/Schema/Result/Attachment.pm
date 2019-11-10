@@ -303,6 +303,11 @@ sub large_uri {
     return shift->thumbnail_base_path . '.large.png';
 }
 
+sub alt_title {
+    my $self = shift;
+    $self->title_muse ? $self->title_muse : $self->uri;
+}
+
 sub edit {
     my ($self, %args) = @_;
     my %update;

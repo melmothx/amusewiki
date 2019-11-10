@@ -200,6 +200,28 @@
         </a>
       </span>
       [% END %]
+      [%- FOREACH attachment IN attached_pdfs -%]
+        [% IF attachment.separator %]
+          [% # nothing to do %]
+        [% ELSIF attachment.has_thumbnails %]
+          <a href="[% c.uri_for(attachment.full_uri) %]">
+            <img src="[% c.uri_for(attachment.thumbnail_uri) %]"
+                 style="margin-bottom: 10px"
+                 alt="[% attachment.alt_title | html %]"
+                 title="[% attachment.alt_title | html %]"
+                 class="img img-responsive img-thumbnail" /></a>
+        [% ELSIF attachment.is_audio %]
+            <a href="[% c.uri_for(attachment.full_uri) %]"
+               alt="[% attachment.alt_title | html %]"
+               title="[% attachment.alt_title | html %]">
+              <span class="fa fa-file-audio-o fa-2x fa-border"></span></a>
+        [% ELSIF attachment.is_video %]
+            <a href="[% c.uri_for(attachment.full_uri) %]"
+               alt="[% attachment.alt_title | html %]"
+               title="[% attachment.alt_title | html %]">
+              <span class="fa fa-file-video-o fa-2x fa-border"></span></a>
+        [% END %]
+      [%- END -%]
     </div>
   </div>
   [% END %]
