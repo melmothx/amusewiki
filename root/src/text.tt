@@ -37,7 +37,7 @@
   [% END %]
   [% END %]
   <div class="center">
-    <div class="page-header">
+    <div id="amw-title-page-header" class="page-header">
       [% IF text.author %]
       <h3 id="text-author">[% text.author %]</h3>
       [% END %]
