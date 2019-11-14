@@ -225,9 +225,34 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
+=head2 title_attachments
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-07-12 09:33:17
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Z8dT4nmTMCOTH5QTIHwLFg
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::TitleAttachment>
+
+=cut
+
+__PACKAGE__->has_many(
+  "title_attachments",
+  "AmuseWikiFarm::Schema::Result::TitleAttachment",
+  { "foreign.attachment_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 titles
+
+Type: many_to_many
+
+Composing rels: L</title_attachments> -> title
+
+=cut
+
+__PACKAGE__->many_to_many("titles", "title_attachments", "title");
+
+
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-11-14 11:10:55
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TtFhWnF0NA8fGItNIMOgPw
 
 =head2 File classes
 

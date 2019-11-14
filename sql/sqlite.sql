@@ -579,6 +579,14 @@ CREATE TABLE node_category (
        PRIMARY KEY (node_id, category_id)
 );
 
+CREATE TABLE title_attachment (
+       title_id INTEGER NOT NULL REFERENCES title(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE,
+       attachment_id INTEGER NOT NULL REFERENCES attachment(id)
+               ON DELETE CASCADE ON UPDATE CASCADE,
+       PRIMARY KEY (title_id, attachment_id)
+);
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),
@@ -613,6 +621,7 @@ INSERT INTO table_comments (table_name, comment_text)
          ('global_site_files', 'Files which site uses'),
          ('amw_session', 'Session backend'),
          ('title_stat', 'Usage statistics'),
+         ('title_attachment', 'Linking table from Title to Attachment'),
          ('node', 'Nestable nodes'),
          ('node_body', 'Nodes description'),
          ('node_title', 'Linking table from Node to Title'),

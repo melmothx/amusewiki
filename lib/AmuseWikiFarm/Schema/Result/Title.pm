@@ -450,6 +450,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 title_attachments
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::TitleAttachment>
+
+=cut
+
+__PACKAGE__->has_many(
+  "title_attachments",
+  "AmuseWikiFarm::Schema::Result::TitleAttachment",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 title_categories
 
 Type: has_many
@@ -479,6 +494,16 @@ __PACKAGE__->has_many(
   { "foreign.title_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
+
+=head2 attachments
+
+Type: many_to_many
+
+Composing rels: L</title_attachments> -> attachment
+
+=cut
+
+__PACKAGE__->many_to_many("attachments", "title_attachments", "attachment");
 
 =head2 categories
 
@@ -511,8 +536,8 @@ Composing rels: L</node_titles> -> node
 __PACKAGE__->many_to_many("nodes", "node_titles", "node");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-07-12 09:33:17
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/pCllfccL1G90LMVI7t94Q
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-11-14 11:10:55
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:W1ThOPPyZvKidZ6VJKSKvg
 
 =head2 translations
 
