@@ -1840,12 +1840,23 @@ sub compile_and_index_files {
         }
         if (my $indexed = $self->index_file($file, $logger)) {
             if ($indexed->isa('AmuseWikiFarm::Schema::Result::Title')) {
-                foreach my $cf (@inactive_cfs) {
+                my (@to_do, @to_clean);
+                foreach my $cf (@active_cfs) {
+                    if ($indexed->wants_custom_format($cf)) {
+                        push @to_do, $cf;
+                    }
+                    else {
+                        push @to_clean, $cf;
+                    }
+                }
+                push @to_clean, @inactive_cfs;
+
+                foreach my $cf (@to_clean) {
                     $logger->("Removed inactive format " . $cf->format_name . "\n")
                       if $cf->remove_stale_files($indexed);
                 }
               CUSTOMFORMAT:
-                foreach my $cf (@active_cfs) {
+                foreach my $cf (@to_do) {
                     # the standard compilation nuked the standard formats, so we
                     # have to restore them, preserving the TS. Then we
                     # will rebuild them in the next job.

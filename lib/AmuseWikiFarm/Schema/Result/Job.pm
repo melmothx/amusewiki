@@ -573,10 +573,10 @@ sub dispatch_job_rebuild {
     my ($self, $logger) = @_;
     if (my $id = $self->job_data->{id}) {
         my $site = $self->site;
-        my @cfs = @{$site->active_custom_formats};
         if (my $text = $site->titles->find($id)) {
             my $muse = $text->filepath_for_ext('muse');
             if (-f $muse) {
+                my @cfs = grep { $text->wants_custom_format($_) } @{$site->active_custom_formats};
                 my $compiler = $site->get_compiler($logger);
                 foreach my $cf (@cfs) {
                     $cf->save_canonical_from_aliased_file($muse);

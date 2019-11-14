@@ -53,6 +53,7 @@ sub formats :Chained('list_custom_formats') :PathPart('') :Args(0) {
         my $id =  $format->custom_formats_id;
         push @list, {
                      id => $id,
+                     code => $format->code,
                      edit_url => $c->uri_for_action('/settings/edit_format', [ $id ]),
                      deactivate_url => $c->uri_for_action('/settings/make_format_inactive', [ $id ]),
                      activate_url   => $c->uri_for_action('/settings/make_format_active', [ $id ]),

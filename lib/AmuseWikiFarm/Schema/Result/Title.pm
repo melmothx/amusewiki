@@ -567,6 +567,23 @@ use HTML::TreeBuilder;
 use URI;
 use constant { PAPER_PAGE_SIZE => 2000 };
 
+has selected_formats => (is => 'ro',
+                         isa => 'Maybe[HashRef]',
+                         lazy => 1,
+                         builder => '_build_selected_formats',
+                        );
+
+sub _build_selected_formats {
+    my $self = shift;
+    if (my $formats = $self->muse_headers->header_value_by_name('formats')) {
+        if ($formats =~ m/\w/) {
+            my %out = map { $_ => 1 } split(/[,\s]+/, $formats);
+            return \%out;
+        }
+    }
+    return undef;
+}
+
 =head2 listing
 
 The following methods return a string, which may be empty if no
@@ -1568,6 +1585,19 @@ sub can_be_indexed {
     }
 }
 
+sub wants_custom_format {
+    my ($self, $cf) = @_;
+    die "Missing argument" unless $cf;
+    die "Wrong argument" unless $cf->isa('AmuseWikiFarm::Schema::Result::CustomFormat');
+    if (my $cfs = $self->selected_formats) {
+        Dlog_debug { $self->full_uri . " has selected formats: $_ checking against " . $cf->code } $cfs;
+        return $cfs->{$cf->code};
+    }
+    else {
+        # nothing selected, so yes.
+        return 1;
+    }
+}
 
 __PACKAGE__->meta->make_immutable;
 

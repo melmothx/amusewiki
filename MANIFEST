@@ -715,6 +715,7 @@ lib/AmuseWikiFarm/Schema/ResultSet/CategoryDescription.pm
 lib/AmuseWikiFarm/Schema/ResultSet/CustomFormat.pm
 lib/AmuseWikiFarm/Schema/ResultSet/GlobalSiteFile.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Job.pm
+lib/AmuseWikiFarm/Schema/ResultSet/MuseHeader.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Node.pm
 lib/AmuseWikiFarm/Schema/ResultSet/NodeBody.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Redirection.pm
@@ -1269,6 +1270,7 @@ t/crash-on-loc.t
 t/css-loading.t
 t/custom-formats-aliases.t
 t/custom-formats-id.t
+t/custom-formats-per-text.t
 t/custom-formats.t
 t/custom-sorting-sku-116.t
 t/custom-templates.t
