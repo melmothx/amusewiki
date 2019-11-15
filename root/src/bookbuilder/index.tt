@@ -177,6 +177,7 @@
           [% FOREACH cover_image IN bb.related_attachments %]
             <label>
               <input type="radio" name="cover_from_archive" value="[% cover_image.uri %]"
+                     class="amw-radio-with-images"
                      [% IF bb.cover_from_archive == cover_image.uri %]checked[% END %]/>
               <img src="[% cover_image.small_uri %]"
                    class="img-thumbnail"
