@@ -103,7 +103,17 @@ sub index :Chained('root') :PathPart('') :Args(0) {
             $c->flash->{error_msg} = $c->loc("Couldn't build that");
         }
     }
-    $c->stash(bb_texts => \@texts);
+    my @cfs;
+    foreach my $cf ($c->stash->{site}->custom_formats->sorted_by_priority->all) {
+        push @cfs, {
+                    url => $c->uri_for_action('/bookbuilder/from_custom_format', [ $cf->custom_formats_id ]),
+                    name => $cf->format_name,
+                    # desc => $cf->format_description,
+                   };
+    }
+    $c->stash(bb_texts => \@texts,
+              bb_custom_formats => \@cfs,
+             );
 }
 
 sub edit :Chained('root') :PathPart('edit') :Args(0) {

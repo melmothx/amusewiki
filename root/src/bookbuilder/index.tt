@@ -9,6 +9,8 @@
 
 [% IF bb.texts.size %]
 <div id="bb-list-edit">
+  <div class="row">
+    <div class="col-md-8">
   <div class="table-responsive">
   <table id="bookbuilderlist" class="table table-striped
                                      table-condensed
@@ -45,6 +47,7 @@
             [% loc('Delete') %]
           </button>
         </form>
+      </td>
     </tr>
     [% textindex = textindex + 1 %]
     [% END %]
@@ -69,6 +72,20 @@
       </td>
     </tr>
   </table>
+  </div>
+    </div>
+    <div class="col-md-4">
+      <div class="list-group">
+        <div class="amw-listing-item">
+          <strong class="list-group-item clearfix">[% loc("Use one of the site's formats") %]</strong>
+        </div>
+        [% FOREACH cf IN bb_custom_formats %]
+          <div class="amw-listing-item">
+            <a class="list-group-item clearfix" href="[% cf.url %]">[% loc(cf.name) %]</a>
+          </div>
+        [% END %]
+      </div>
+    </div>
   </div>
 </div>
 <div id="bb-compiler-options">
