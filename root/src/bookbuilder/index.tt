@@ -180,11 +180,17 @@
                      class="amw-radio-with-images"
                      [% IF bb.cover_from_archive == cover_image.uri %]checked[% END %]/>
               <img src="[% cover_image.small_uri %]"
-                   class="img-thumbnail"
+                   class="img-thumbnail amw-radio-image-label"
                    alt="[% cover_image.uri %]" />
             </label>
           [% END %]
+          [% IF bb.related_attachments.size %]
+            <label title="[% loc('None') %]">
+              <input type="radio" name="cover_from_archive" value="" class="amw-radio-with-images" />
+              &nbsp;&nbsp;<i class="fa fa-2x fa-remove amw-radio-image-label fa-border"></i>
+            </label>
           [% END %]
+        [% END %]
       </div>
     </div> <!-- end of row -->
     <div class="image-options">
