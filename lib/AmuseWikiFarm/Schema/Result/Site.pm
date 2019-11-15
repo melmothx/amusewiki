@@ -2160,6 +2160,9 @@ sub index_file {
     if (my $teaser_length = $self->automatic_teaser) {
         $title->autogenerate_teaser($teaser_length, $logger);
     }
+
+    $title->set_attachments([ grep { $_ } $title->attached_objects, $title->cover_file, $title->images ]);
+
     $guard->commit;
 
     # postpone the xapian indexing to the very end. The only piece

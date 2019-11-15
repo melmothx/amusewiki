@@ -1062,6 +1062,19 @@ sub attached_objects {
     return @indexed;
 }
 
+sub images {
+    my $self = shift;
+    my $muse = $self->muse_object;
+    my @out;
+    foreach my $uri ($muse->attachments) {
+        log_debug { "Found $uri" };
+        if (my $att = $self->site->attachments->by_uri($uri)) {
+            push @out, $att;
+        }
+    }
+    return @out;
+}
+
 sub attached_pdfs {
     my $self = shift;
     my @all = $self->attached_objects;
