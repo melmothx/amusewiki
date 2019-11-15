@@ -2161,8 +2161,11 @@ sub index_file {
         $title->autogenerate_teaser($teaser_length, $logger);
     }
 
-    $title->set_attachments([ grep { $_ } $title->attached_objects, $title->cover_file, $title->images ]);
-
+    foreach my $att (grep { $_ } ($title->attached_objects, $title->cover_file, $title->images)) {
+        unless ($title->title_attachments->find({ attachment_id => $att->id })) {
+            $title->add_to_attachments($att);
+        }
+    }
     $guard->commit;
 
     # postpone the xapian indexing to the very end. The only piece
