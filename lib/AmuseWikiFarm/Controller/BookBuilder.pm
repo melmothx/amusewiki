@@ -336,6 +336,34 @@ sub load :Chained('root') :Args(0) {
     $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
 }
 
+# no tests here, seems pretty straightforward
+sub from_custom_format :Chained('root') :PathPart('from-custom-format') :Args(1) {
+    my ($self, $c, $cf_code) = @_;
+    my $bb = $c->stash->{bb};
+    if ($cf_code =~ m/\A\d+\z/a) {
+        if (my $cf = $c->stash->{site}->custom_formats->find($cf_code)) {
+            foreach my $accessor ($bb->profile_methods) {
+                my $column = 'bb_' . $accessor;
+                try {
+                    $bb->$accessor($cf->$column);
+                    log_debug { "$column => $accessor => " . $bb->$accessor };
+                } catch {
+                    my $error = $_;
+                    log_warn { $column . ' => ' . $error->message };
+                };
+                $c->flash->{status_msg} = $c->loc('Settings loaded');
+            }
+            $self->save_session($c);
+        }
+        else {
+            log_info { "$cf_code not found" };
+        }
+    }
+    $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
+}
+
+
+
 sub save_session :Private {
     my ( $self, $c ) = @_;
     $c->session->{bookbuilder} = $c->stash->{bb}->serialize;
