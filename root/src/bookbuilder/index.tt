@@ -160,8 +160,6 @@
             [% loc('Remove cover image') %]
           </label>
         </div>
-      </div>
-      <div class="col-sm-3">
         [% IF bb.coverfile %]
           <div id="coverfile-is-present">
             <div class="center" style="margin:10px">
@@ -170,6 +168,22 @@
             </div>
           </div>
         [% END %]
+      </div>
+      <div class="col-sm-9" style="margin-bottom: 10px">
+        [% UNLESS bb.coverfile %]
+          [% IF bb.related_attachments.size %]
+            <div><label>[% loc('You may want to use one of these images') %]</label></div>
+          [% END %]
+          [% FOREACH cover_image IN bb.related_attachments %]
+            <label>
+              <input type="radio" name="cover_from_archive" value="[% cover_image.uri %]"
+                     [% IF bb.cover_from_archive == cover_image.uri %]checked[% END %]/>
+              <img src="[% cover_image.small_uri %]"
+                   class="img-thumbnail"
+                   alt="[% cover_image.uri %]" />
+            </label>
+          [% END %]
+          [% END %]
       </div>
     </div> <!-- end of row -->
     <div class="image-options">

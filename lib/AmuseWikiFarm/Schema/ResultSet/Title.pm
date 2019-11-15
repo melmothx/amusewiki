@@ -375,8 +375,13 @@ sub newer_than {
 sub bookbuildable_by_uri {
     my ($self, $uri) = @_;
     return unless $uri;
-    return $self->status_is_published_or_deferred->texts_only->by_uri($uri)->single;
+    return $self->bookbuildable->by_uri($uri)->single;
 }
+
+sub bookbuildable {
+    return shift->status_is_published_or_deferred->texts_only;
+}
+
 
 sub get_order_by {
     my ($self, $sorting) = @_;
