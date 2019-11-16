@@ -106,6 +106,8 @@ foreach my $code (@codes) {
     }
     # with --refresh, just check
     if ($refresh) {
+        # just in case
+        $site->init_category_types;
         $site->update_db_from_tree;
     }
     elsif ($xapian) {

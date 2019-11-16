@@ -4193,10 +4193,33 @@ sub create_feed {
     return $feed->to_string;
 }
 
+sub init_category_types {
+    my $self = shift;
+    foreach my $ctype ({
+                        category_type => 'author',
+                        active => 1,
+                        priority => 0,
+                        name_singular => 'Author',
+                        name_plural => 'Authors',
+                       },
+                       {
+                        category_type => 'topic',
+                        active => 1,
+                        priority => 1,
+                        name_singular => 'Topic',
+                        name_plural => 'Topics',
+                       }) {
+        $self->site_category_types->find_or_create($ctype);
+    }
+    $self->discard_changes;
+}
+
+
 after insert => sub {
     my $self = shift;
     $self->discard_changes;
     $self->check_and_update_custom_formats;
+    $self->init_category_types;
 };
 
 __PACKAGE__->meta->make_immutable;
