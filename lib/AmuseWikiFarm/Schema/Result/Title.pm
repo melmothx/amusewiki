@@ -1656,6 +1656,7 @@ sub display_categories {
                         entries => \@list,
                         # s if for the legacy
                         identifier => $ctype->category_type . 's',
+                        code => $ctype->category_type,
                        };
         }
     }

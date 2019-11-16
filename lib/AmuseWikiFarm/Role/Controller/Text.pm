@@ -129,6 +129,7 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
 
 sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
+    $c->stash(text_display_categories => $c->stash->{text}->display_categories);
 }
 
 sub text :Chained('populate_preamble') :PathPart('') :Args(0) {

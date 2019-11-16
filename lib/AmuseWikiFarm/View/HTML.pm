@@ -186,11 +186,14 @@ sub add_open_graph {
                 if (my $author = $text->author) {
                     push @opengraph, { p => "og:$type:author", c => $author };
                 }
-                if (my $topics = $c->stash->{text_topics}) {
-                    if (ref($topics) and ref($topics) eq 'ARRAY') {
-                        foreach my $topic (@$topics) {
-                            push @opengraph, { p => "og:$type:tag", c => $c->loc($topic->{name}) }
-                              if $topic->{name};
+                if (my $categories = $c->stash->{text_display_categories}) {
+                    my $lh = $c->stash->{lh};
+                    my ($topics) = grep { $_->{code} eq 'topic' } @$categories;
+                    if ($topics && @{$topics->{entries}}) {
+                        foreach my $topic (@{$topics->{entries}}) {
+                            if (my $t = $topic->{name}) {
+                                push @opengraph, { p => "og:$type:tag", c => $lh->site_loc($t) };
+                            }
                         }
                     }
                 }

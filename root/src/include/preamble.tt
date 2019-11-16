@@ -27,13 +27,13 @@
     </div>
     [% END %]
 
-    [% FOREACH ctype IN text.display_categories -%]
+    [% FOREACH ctype IN text_display_categories -%]
       <div id="[% ctype.identifier %]">
       <span id="[% ctype.identifier %]-label">
         <strong>[% loc(ctype.title) %]:</strong>
       </span>
       [% FOREACH ccat IN ctype.entries -%]
-        <a href="[% c.uri_for(ccat.uri) %]" class="text-[% ctype.identifier %]-item">[%- ccat.name -%]</a>[% UNLESS loop.last %],[% END %]
+        <a href="[% c.uri_for(ccat.uri) %]" class="text-[% ctype.identifier %]-item">[%- lh.site_loc_html(ccat.name) -%]</a>[% UNLESS loop.last %],[% END %]
       [% END %]
       </div>
     [% END %]
