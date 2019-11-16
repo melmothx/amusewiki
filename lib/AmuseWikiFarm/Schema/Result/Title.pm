@@ -1637,6 +1637,32 @@ sub wants_custom_format {
     }
 }
 
+sub display_categories {
+    my $self = shift;
+    my @out;
+    foreach my $ctype ($self->site->site_category_types->active->all) {
+        my $rs = $self->categories->by_type($ctype->category_type)->with_active_flag_on;
+        my @list;
+        while (my $cat = $rs->next) {
+            push @list, {
+                         uri => $cat->full_uri,
+                         name => $cat->name,
+                        };
+        }
+        if (@list) {
+            push @out, {
+                        # loc('Authors'); loc('Author'); loc('Topic'); loc('Topics');
+                        title => @list > 1 ? $ctype->name_plural : $ctype->name_singular,
+                        entries => \@list,
+                        # s if for the legacy
+                        identifier => $ctype->category_type . 's',
+                       };
+        }
+    }
+    return \@out;
+}
+
+
 __PACKAGE__->meta->make_immutable;
 
 1;

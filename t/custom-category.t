@@ -97,3 +97,10 @@ foreach my $c ($site->categories) {
     diag join(' ', $c->type, $c->uri, $c->name, $c->titles->count);
     $mech->get_ok($c->full_uri);
 }
+
+foreach my $t ($site->titles) {
+    $mech->get_ok($t->full_uri);
+    foreach my $c ($t->categories) {
+        $mech->content_contains($c->full_uri);
+    }
+}

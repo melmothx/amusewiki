@@ -27,21 +27,15 @@
     </div>
     [% END %]
 
-    [% IF text_authors.size %]
-    <div id="authors">
-      <span id="authors-label">
-        <strong>
-          [%- IF text_authors.size == 1 -%]
-          [%- loc('Author') -%]
-          [%- ELSE -%]
-          [%- loc('Authors') -%]
-          [%- END -%]:
-        </strong>
+    [% FOREACH ctype IN text.display_categories -%]
+      <div id="[% ctype.identifier %]">
+      <span id="[% ctype.identifier %]-label">
+        <strong>[% loc(ctype.title) %]:</strong>
       </span>
-      [% FOREACH author IN text_authors -%]
-      <a href="[% c.uri_for(author.uri) %]" class="text-authors-item">[% author.name %]</a>[% UNLESS loop.last %],[% END %]
+      [% FOREACH ccat IN ctype.entries -%]
+        <a href="[% c.uri_for(ccat.uri) %]" class="text-[% ctype.identifier %]-item">[%- ccat.name -%]</a>[% UNLESS loop.last %],[% END %]
       [% END %]
-    </div>
+      </div>
     [% END %]
 
     [% IF text.date %]
@@ -68,25 +62,6 @@
     </div>
     [% END %]
     [% END %]
-    [% END %]
-
-    [% IF text_topics.size %]
-    <div id="topics">
-      <span id="preamble-topics-label">
-        <strong>
-          [%- IF text_topics.size == 1 -%]
-          [%- loc('Topic') -%]
-          [%- ELSE -%]
-          [%- loc('Topics') -%]
-          [%- END -%]:
-        </strong>
-      </span>
-      [% FOREACH topic IN text_topics -%]
-      <a href="[% c.uri_for(topic.uri) %]">
-      [% lh.site_loc_html(topic.name) %]
-      [%- # -%]</a>[% UNLESS loop.last %],[% END %]
-      [% END %]
-    </div>
     [% END %]
 
     [% IF text.source %]
