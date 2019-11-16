@@ -128,6 +128,19 @@ __PACKAGE__->belongs_to(
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:mvkxzurO+uiYrdGz00M17A
 
 
+sub header_fields {
+    my $self = shift;
+    # these are special cases. The legacy ones, which we need to
+    # support.
+    my %fields = (
+                  author => [qw/authors sortauthors/],
+                  topic => [qw/cat sorttopics topics/],
+                 );
+    my $f = $self->category_type;
+    return $fields{$f} || [ $f ];
+}
+
+
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
 1;

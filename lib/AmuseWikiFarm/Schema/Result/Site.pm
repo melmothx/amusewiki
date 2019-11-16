@@ -1412,6 +1412,24 @@ sub _build_repo_is_under_git {
     return -d File::Spec->catdir($self->repo_root, '.git');
 }
 
+has custom_category_types => (is => 'ro',
+                              isa => 'ArrayRef',
+                              lazy => 1,
+                              builder => '_build_custom_category_types');
+
+sub _build_custom_category_types {
+    my $self = shift;
+    my @out;
+    foreach my $ct ($self->site_category_types->search(undef, { order_by => 'priority'})->all) {
+        push @out, {
+                    name => $ct->category_type,
+                    fields => $ct->header_fields,
+                   };
+    }
+    return \@out;
+}
+
+
 =head1 Site modes
 
 To check the site mode, you should use these methods, instead of
@@ -1988,7 +2006,7 @@ sub index_file {
         return;
     }
 
-    my $details = muse_file_info($file, $self->repo_root);
+    my $details = muse_file_info($file, $self->repo_root, { category_types => $self->custom_category_types });
     # unparsable
     return unless $details;
 

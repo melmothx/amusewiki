@@ -71,8 +71,10 @@ if the files are not in the right path, the indexing is skipped.
 =cut
 
 sub muse_file_info {
-    my ($file, $root) = @_;
+    my ($file, $root, $opts) = @_;
     die "$file not found!" unless -f $file;
+
+    $opts ||= {};
 
     my $details = muse_parse_file_path($file, $root);
     return unless $details;
@@ -105,36 +107,62 @@ sub muse_file_info {
         $details->{deleted} ||= "Missing title";
     }
 
+    my @cats;
     # use author as default if there is no #authors. Please note that
     # #(sort)authors could be empty or with a - in it. In this case
     # we fall into the case above and don't resort to Author. Tests
     # are in archive.t
-    my @authors;
-    Dlog_debug { "Header is $_"  } $header->header;
-    if (defined $header->header->{authors} || defined $header->header->{sortauthors}) {
-        @authors = @{$header->authors || []};
+
+    # special case. Did we get the author?
+    if (!defined $parsed_header{authors} and
+        !defined $parsed_header{sortauthors} and
+        $header->author =~ /\w/) {
+        Dlog_debug { "Using #author instead of #authors $_" . $header->author } \%parsed_header;
+        push @cats, _parse_category(author => muse_format_line(html => $header->author, $lang));
     }
-    elsif ($header->author =~ /\w/) {
-        @authors = ($header->author);
+
+    # defaults
+    my $default_ctypes = [
+                          { name => 'author', fields => [qw/authors sortauthors/] },
+                          { name => 'topic', fields => [qw/cat sorttopics topics/], },
+                         ];
+
+    foreach my $ctype (@{ $opts->{category_types} || $default_ctypes }) {
+        foreach my $f (@{$ctype->{fields}}) {
+            # this is the muse string
+            my $mstring = $parsed_header{$f};
+            if (defined $mstring and length($mstring)) {
+
+                # split it. See Text::Amuse::Compile::MuseHeader
+                my $separator;
+                # special case of course
+                if ($f eq 'cat') {
+                    $separator = qr{[\s;,]+};
+                }
+                # is there a semicolon? use that.
+                elsif ($mstring =~ m/\;/) {
+                    $separator = qr{\s*\;\s*};
+                }
+                # no? then use the comma.
+                else {
+                    $separator = qr{\s*\,\s*};
+                }
+                die "Not reached" unless $separator;
+                # we got the separator, so split it.
+                foreach my $p (grep { /\w/ } split($separator, $mstring)) {
+                    # convert to html and build the structure.
+                    push @cats, _parse_category($ctype->{name}, muse_format_line(html => $p, $lang));
+                }
+            }
+            delete $details->{$f};
+        }
     }
-
-    my @cats =  map {
-        _parse_topic_or_author(author => muse_format_line(html => $_, $lang))
-    } @authors;
-
-    push @cats, map {
-        _parse_topic_or_author(topic => muse_format_line(html => $_, $lang))
-    } @{$header->topics || []};
-
     @cats = grep { $_ } @cats;
-
     if (@cats) {
         $details->{parsed_categories} = \@cats;
     }
-    delete $details->{$_} for qw/sortauthors sorttopics cat authors topics/;
 
     # handle the pubdate field
-
     if (my $timestring = delete $details->{pubdate}) {
         if (my $epoch = str2time($timestring, 'UTC')) {
             $details->{pubdate} = DateTime->from_epoch(epoch => $epoch);
@@ -463,8 +491,7 @@ sub muse_get_full_path {
   return \@path;
 }
 
-sub _parse_topic_or_author {
-    # use the MuseHeader class here instead with new Text::Amuse::Compile
+sub _parse_category {
     my ($type, $string) = @_;
     return unless $type && $string;
     # given that we get the HTML, first we strip the tags.
