@@ -36,9 +36,11 @@ ok (scalar(@uris), "Found " . join(" ", @uris));
         is $job->status, 'completed';
         ok ($job->produced =~ m/([0-9]+\.pdf)\z/, "file is sane");
         ok (-f catfile(bbfiles => $1), "File $1 exists");
-        ok $job->job_data->{coverfile}, "coverfile passed";
+        my $filename = $job->job_data->{coverfile};
+        ok $filename, "coverfile passed $filename";
+
         if ($has_cover) {
-            like $job->logs, qr{Using uploaded image on the};
+            like $job->logs, qr{Using \Q$filename\E on the cover page};
         }
         else {
             like $job->logs, qr{Cover image provided vanished};
