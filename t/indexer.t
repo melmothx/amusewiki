@@ -35,7 +35,7 @@ is(muse_naming_algo("CrimethInc. Политика для тех, кому сли
 is(muse_naming_algo(" Ñ test ñ test ñ Ñ "), "n-test-n-test-n-n", "Spanish ok");
 
 is(muse_naming_algo("Боб Блэк Анархия: Вопросы и Ответы"),
-   "bob-blek-anarkhiya-voprosy-i-otvety",
+   "bob-blek-anarkhiia-voprosy-i-otvety",
    "checking naming algo 2, with cyrillic");
 
 is(muse_naming_algo(" Ò Purzel, my òààà\n\n\n"),
