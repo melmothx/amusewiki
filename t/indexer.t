@@ -29,13 +29,13 @@ is(decode_entities($utf8), encode("utf-8", "à&è"));
 is(muse_naming_algo("\n\n           "), '', "whitespace return empty string");
 
 is(muse_naming_algo("CrimethInc. Политика для тех, кому слишком скучно"),
-   "crimethinc-politika-dlya-teh-komu-slishkom-skuchno",
+   "crimethinc-politika-dlia-tekh-komu-slishkom-skuchno",
    "checking naming algo 1, with cyrillic");
 
 is(muse_naming_algo(" Ñ test ñ test ñ Ñ "), "n-test-n-test-n-n", "Spanish ok");
 
 is(muse_naming_algo("Боб Блэк Анархия: Вопросы и Ответы"),
-   "bob-blek-anarhiya-voprosy-i-otvety",
+   "bob-blek-anarkhiya-voprosy-i-otvety",
    "checking naming algo 2, with cyrillic");
 
 is(muse_naming_algo(" Ò Purzel, my òààà\n\n\n"),
@@ -51,7 +51,7 @@ is(muse_naming_algo("äÄÅåöÖøõØÕäÄÅåöÖøõØÕ"),
    "Testing new chars");
 
 is(muse_naming_algo("čćžšđČĆŽŠĐ âÂāĀêÊîÎôÔûÛ"),
-   'cczsdjcczsdj-aaaaeeiioouu',
+   'cczsdcczsd-aaaaeeiioouu',
    'Testing hr-sr chars');
    
 is(muse_naming_algo("ĘęŁłŃńŚśŹźŻż ĘęŁłŃńŚśŹźŻż "),
@@ -62,7 +62,7 @@ is (muse_naming_algo('ą ę ć ń ś ż ź ó ł Ą Ę Ć Ń Ś Ż Ź Ó Ł'),
     'a-e-c-n-s-z-z-o-l-a-e-c-n-s-z-z-o-l', "polish ok");
 
 is(muse_naming_algo("ѓЃèÈѕЅѝЍjJљЉњЊќЌџЏјЈѐЀ"),
-   "djdjeedzdziijjljljnjnjkjkjdzhdzhjjee",
+   "gjgjeedzdziijjljljnjnjkjkjdzhdzhjjieie",
    "testing macedonian cyril");
 
 is muse_naming_algo("-ciao-"), "ciao", "testing hyphens";

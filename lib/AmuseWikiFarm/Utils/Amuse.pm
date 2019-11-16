@@ -305,122 +305,6 @@ sub muse_parse_file_path {
     return;
 }
 
-=head2 transliteration_table
-
-Returns an hashref with the transliteration table.
-
-=cut
-
-sub transliteration_table  {
-
-    my %translitterationtable =
-  (
-   # cyrillyc
-   'а' => 'a',  'А' => 'a',    'р' => 'r',  'Р' => 'r',   
-   'б' => 'b',  'Б' => 'b',    'с' => 's',  'С' => 's',   
-   'в' => 'v',  'В' => 'v',    'т' => 't',  'Т' => 't',   
-   'г' => 'g',  'Г' => 'g',    'у' => 'u',  'У' => 'u',   
-   'д' => 'd',  'Д' => 'd',    'ф' => 'f',  'Ф' => 'f',   
-   'е' => 'e',  'Е' => 'e',    'х' => 'h',  'Х' => 'h',   
-   'ё' => 'e',  'Ё' => 'e',    'ц' => 'c',  'Ц' => 'c',   
-   'ж' => 'j',  'Ж' => 'j',    'ч' => 'ch', 'Ч' => 'ch',  
-   'з' => 'z',  'З' => 'z',    'ш' => 'sh', 'Ш' => 'sh',  
-   'и' => 'i',  'И' => 'i',    'щ' => 'sch','Щ' => 'sch', 
-   'й' => 'j',  'Й' => 'j',    'ь' => '',  'Ь' => '',   
-   'к' => 'k',  'К' => 'k',    'ы' => 'y',  'Ы' => 'y',   
-   'л' => 'l',  'Л' => 'l',    'ъ' => '',  'Ъ' => '',   
-   'м' => 'm',  'М' => 'm',    'э' => 'e',  'Э' => 'e',   
-   'н' => 'n',  'Н' => 'n',    'ю' => 'yu', 'Ю' => 'yu',  
-   'о' => 'o',  'О' => 'o',    'я' => 'ya', 'Я' => 'ya',  
-   'п' => 'p',  'П' => 'p', 
-
-   # macedonian cyrl
-   'ѓ' => 'dj',  'Ѓ' => 'dj',
-   'ѕ' => 'dz',  'Ѕ' => 'dz',
-   'ѝ' => 'i',   'Ѝ' => 'i',
-   'ј' => 'j',   'Ј' => 'j',
-   'љ' => 'lj',  'Љ' => 'lj',
-   'њ' => 'nj',  'Њ' => 'nj',
-   'ќ' => 'kj',  'Ќ' => 'kj',
-   'џ' => 'dzh', 'Џ' => 'dzh',
-   'Ѐ' => 'e',   'ѐ' => 'e',
-   # the latin
-   'á' => 'a',  'í' => 'i',  'ù' => 'u',  'æ' => 'ae',
-   'Á' => 'a',  'ì' => 'i',  'ü' => 'u',  'Æ' => 'ae',
-   'à' => 'a',  'Í' => 'i',  'ú' => 'u',  'ã' => 'a',
-   'À' => 'a',  'Ì' => 'i',  'ū' => 'u',  'Ã' => 'a',
-   'È' => 'e',  'ò' => 'o',  'Ū' => 'u',
-   'É' => 'e',  'ó' => 'o',  'Ù' => 'u',
-   'Ë' => 'e',  'ō' => 'o',  'Ü' => 'u',
-   'ë' => 'e',  'Ō' => 'o',  'Ú' => 'u',
-   'é' => 'e',  'Ò' => 'o',  'ç' => 'c',
-   'è' => 'e',  'Ó' => 'o',  'Ç' => 'c', 
-   # spanish
-   'ñ' => 'n',   'Ñ' => 'n',
-   # finnish
-   'ä' => 'a', 'Ä' => 'a',
-   'Å' => 'a', 'å' => 'a',
-   'ö' => 'o', 'Ö' => 'o',
-   # german
-   'ß' => 'ss',
-   # other northern
-   'ø' => 'o',  'õ' => 'o', 
-   'Ø' => 'o',  'Õ' => 'o', 
-   # croatian/serbian
-    'č' => 'c' , 'Č' => 'c',
-    'ć' => 'c' , 'Ć' => 'c',
-    'ž' => 'z' , 'Ž' => 'z',
-    'š' => 's' , 'Š' => 's',
-    'đ' => 'dj', 'Đ' => 'dj',
-    'â' => 'a' , 'Â' => 'a',
-    'ê' => 'e' , 'Ê' => 'e',
-    'î' => 'i' , 'Î' => 'i',
-    'ô' => 'o' , 'Ô' => 'o',
-    'û' => 'u' , 'Û' => 'u',
-    'ā' => 'a' , 'Ā' => 'a',
-
-   #The only Polish letters which are different are: ą ę ć ń ś ż ź ó and
-   # ł.
-   # polish, from http://en.wikipedia.org/wiki/Polish_alphabet
-   'ą' => 'a',  'Ą' => 'a',
-   'Ę' => 'e', 	'ę' => 'e',
-   'Ł' => 'l',  'ł' => 'l',
-   'Ń' => 'n', 	'ń' => 'n',
-   'Ś' => 's',  'ś' => 's',
-   'Ź' => 'z',  'ź' => 'z',
-   'Ż' => 'z',  'ż' => 'z',
-
-   # ascii
-   'A' => 'a',  'a' => 'a',   '0' => '0',   
-   'B' => 'b',  'b' => 'b',   '1' => '1',   
-   'C' => 'c',  'c' => 'c',   '2' => '2',   
-   'D' => 'd',  'd' => 'd',   '3' => '3',   
-   'E' => 'e',  'e' => 'e',   '4' => '4',   
-   'F' => 'f',  'f' => 'f',   '5' => '5',   
-   'G' => 'g',  'g' => 'g',   '6' => '6',   
-   'H' => 'h',  'h' => 'h',   '7' => '7',   
-   'I' => 'i',  'i' => 'i',   '8' => '8',   
-   'J' => 'j',  'j' => 'j',   '9' => '9',   
-   'K' => 'k',  'k' => 'k',   
-   'L' => 'l',  'l' => 'l',   
-   'M' => 'm',  'm' => 'm',   
-   'N' => 'n',  'n' => 'n',   
-   'O' => 'o',  'o' => 'o',   
-   'P' => 'p',  'p' => 'p',   
-   'Q' => 'q',  'q' => 'q',   
-   'R' => 'r',  'r' => 'r',   
-   'S' => 's',  's' => 's',   
-   'T' => 't',  't' => 't',   
-   'U' => 'u',  'u' => 'u',   
-   'V' => 'v',  'v' => 'v',   
-   'W' => 'w',  'w' => 'w',   
-   'X' => 'x',  'x' => 'x',   
-   'Y' => 'y',  'y' => 'y',   
-   'Z' => 'z',  'z' => 'z',   
-  );
-  return \%translitterationtable;
-}
-
 =head2 muse_naming_algo($string)
 
 Algorithm to convert an url to its canonical form, which is used as
@@ -453,19 +337,17 @@ sub muse_naming_algo {
     unless ((defined $dirtyline) and ($dirtyline ne "")) {
         return "";
     }
+    $dirtyline = lc(unidecode($dirtyline));
     my $fallback = $dirtyline;
+    my %permitted = map { $_ => 1 } ('a'..'z', '0'..'9');
+    # Dlog_debug { $_ } \%permitted;
     my @chars = split //, $dirtyline;
     my @cleaned;
     while (@chars) {
         last if $#cleaned > 93; # 93 is the index, so this means we have 94 + 1 = 95
         my $char = shift @chars;
-        my $trslit = transliteration_table();
-        if (exists $trslit->{$char}) {
-            my $good = $trslit->{$char};
-            # this check if we want to push empty strings --> no dashes
-            if ($good ne "") {
-                push @cleaned, $good;
-            }
+        if (exists $permitted{$char}) {
+            push @cleaned, $char;
         }
         # over the second character we put dashes to replace dirty
         # characters. But only if we have already 2 of them in the stash
@@ -477,10 +359,6 @@ sub muse_naming_algo {
         }
     }
     return '' unless @cleaned;
-    # while looping, we counted the tokens, not the chars, so we have
-    # to do it again
-    @cleaned = map { split // } @cleaned;
-    splice @cleaned, 95;
     # remove the trailing -
     while ($cleaned[-1] eq "-") {
         pop @cleaned;
@@ -489,7 +367,8 @@ sub muse_naming_algo {
     if ((length $clean) > 2) {
         return $clean;
     } else {
-        return md5_hex(encode("UTF-8", $fallback))
+        # it's all ascii
+        return md5_hex($fallback);
     }
 }
 
