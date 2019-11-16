@@ -25,6 +25,13 @@ Catalyst Controller.
 
 sub settings :Chained('/site_user_required') :CaptureArgs(0) {
     my ($self, $c) = @_;
+    $c->stash(breadcrumbs => [
+                              {
+                               uri => $c->uri_for_action('/user/site_config'),
+                               label => $c->loc('Edit site configuration'),
+                              },
+                             ]);
+    
 }
 
 sub list_custom_formats :Chained('settings') :PathPart('formats') :CaptureArgs(0) {
@@ -33,16 +40,11 @@ sub list_custom_formats :Chained('settings') :PathPart('formats') :CaptureArgs(0
         $c->detach('/not_permitted');
         return;
     }
-    $c->stash(breadcrumbs => [
-                              {
-                               uri => $c->uri_for_action('/user/site_config'),
-                               label => $c->loc('Edit site configuration'),
-                              },
-                              {
-                               uri => $c->uri_for_action('/settings/formats'),
-                               label => $c->loc('Custom formats for [_1]', $c->stash->{site}->canonical),
-                              },
-                             ]);
+    push @{$c->stash->{breadcrumbs}}, {
+                                       uri => $c->uri_for_action('/settings/formats'),
+                                       label => $c->loc('Custom formats for [_1]',
+                                                        $c->stash->{site}->canonical),
+                                      };
 }
 
 sub formats :Chained('list_custom_formats') :PathPart('') :Args(0) {
@@ -198,6 +200,56 @@ sub clone_format :Chained('get_format') :PathPart('clone') :Args(0) {
         $cf->sync_site_format;
     }
     $c->response->redirect($c->uri_for_action('/settings/formats'));
+}
+
+sub list_categories :Chained('settings') :PathPart('categories') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    unless ($c->check_any_user_role(qw/admin root/)) {
+        $c->detach('/not_permitted');
+        return;
+    }
+}
+
+sub categories :Chained('list_categories') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    my $site = $c->stash->{site};
+    my $page_title = $c->loc('Category types for [_1]', $site->canonical);
+    push @{$c->stash->{breadcrumbs}}, {
+                                       uri => $c->uri_for_action('/settings/categories'),
+                                       label => $page_title,
+                                      };
+    $c->stash(page_title => $page_title);
+}
+
+sub edit_categories :Chained('list_categories') :PathPart('edit') :Args(0) {
+    my ($self, $c) = @_;
+    my $site = $c->stash->{site};
+    my %params = %{ $c->request->body_parameters };
+    my $count = 0;
+    foreach my $cc ($site->site_category_types) {
+        $count++;
+        my $code = $cc->category_type;
+        foreach my $f (qw/active priority name_singular name_plural/) {
+            my $cgi = $code . '_' . $f;
+            if (exists $params{$cgi}) {
+                $cc->$f($params{$cgi})
+            }
+            if ($cc->is_changed) {
+                log_info { "Updating $code" };
+                $cc->update;
+            }
+        }
+    }
+    if ($params{create} and $params{create} =~ m/\A[a-z]{1,16}\z/) {
+        $site->site_category_types->find_or_create({
+                                                    category_type => $params{create},
+                                                    priority => $count + 1,
+                                                    active => 1,
+                                                    name_singular => ucfirst($params{create}),
+                                                    name_plural => ucfirst($params{create} . 's'),
+                                                   });
+    }
+    $c->response->redirect($c->uri_for_action('/settings/categories'));    
 }
 
 =encoding utf8

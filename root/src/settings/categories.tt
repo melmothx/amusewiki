@@ -1,0 +1,54 @@
+[% INCLUDE 'include/breadcrumbs.tt' %]
+<div class="page-header">
+  <h2>[% page_title | html %]</h2>
+</div>
+<div class="table-responsive">
+  <form action="[% c.uri_for_action('/settings/edit_categories') %]" method="POST">
+    <table class="table table-striped table-condensed table-bordered">
+      <tr>
+        <th>[% loc('Code') %]</th>
+        <th>[% loc('Active') %]</th>
+        <th>[% loc('Priority') %]</th>
+        <th>[% loc('Name singular') %]</th>
+        <th>[% loc('Name plural') %]</th>
+      </tr>
+      [% FOREACH ct IN site.site_category_types %]
+        <tr>
+          <td>
+            <code>[% ct.category_type %]</code>
+          </td>
+          <td>
+            <select name="[% ct.category_type %]_active" required>
+              <option value="0"[% IF ct.active == '0' %] selected[% END %]>[% loc('No') %]</option>
+              <option value="1"[% IF ct.active == '1' %] selected[% END %]>[% loc('Yes') %]</option>
+            </select>
+          </td>
+          <td>
+            <input type="number" name="[% ct.category_type %]_priority"
+                   class="form-control" value="[% ct.priority %]" required/>
+          </td>
+          <td>
+            <input type="text" name="[% ct.category_type %]_name_singular"
+                   class="form-control"
+                   value="[% ct.name_singular | html %]" required/>
+          </td>
+          <td>
+            <input type="text" name="[% ct.category_type %]_name_plural"
+                   class="form-control"
+                   value="[% ct.name_plural | html %]" required/>
+          </td>
+        </tr>
+      [% END %]
+      <tr>
+        <td colspan="3">[% loc('Create a new category type. Please use only lowercase ASCII letters') %]</td>
+        <td colspan="2">
+          <input type="text" name="create" pattern="[a-z]{1,16}" class="form-control" />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="5" class="text-center">
+          <button class="btn btn-primary" type="submit">[% loc('Update') %]</button>
+        </td>
+      </tr>
+    </table>
+</div>
