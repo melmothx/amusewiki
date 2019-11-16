@@ -89,14 +89,13 @@ before process => sub {
                                              },
                        };
         $c->stash(
-                  site_is_without_authors => $site->is_without_authors($c->user_exists),
-                  site_is_without_topics => $site->is_without_topics($c->user_exists),
                   bootstrap_css => "/static/css/bootstrap.$theme.css",
                   main_body_cols => $columns,
                   top_layout_html => $site->top_layout_html,
                   bottom_layout_html => $site->bottom_layout_html,
                   footer_layout_html => $site->footer_layout_html,
                   sitelinks_searchbox => to_json($sitelink, pretty => 1, canonical => 1),
+                  category_types_navbar_display => $site->category_types_navbar_display($c->user_exists),
                  );
     }
 };

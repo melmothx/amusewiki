@@ -2309,10 +2309,31 @@ sub supported_locales {
     return @locales;
 }
 
+sub category_types_navbar_display {
+    my ($self, $logged_in) = @_;
+    my @out;
+    foreach my $ct ($self->site_category_types->active->all) {
+        my $type = $ct->category_type;
+        # special case, already listed
+        if ($type eq 'topic' and $self->fixed_category_list) {
+            next;
+        }
+        if ($self->categories->by_type($ct->category_type)
+            ->with_texts(deferred => $logged_in || $self->show_preview_when_deferred)
+            ->first) {
+            push @out, {
+                        ctype => $ct->category_type,
+                        title => $ct->name_plural,
+                       };
+        }
+    }
+    return \@out;
+}
+
 sub is_without_authors {
     my ($self, $logged_in) = @_;
     return !$self->categories->by_type('author')
-      ->with_texts(deferred => $logged_in || $self->show_preview_when_deferred)
+
       ->first;
 }
 
