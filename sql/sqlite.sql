@@ -439,6 +439,17 @@ CREATE TABLE category_description (
 
 CREATE UNIQUE INDEX unique_category_description ON category_description(category_id, lang);
 
+CREATE TABLE site_category_type (
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
+       category_type VARCHAR(16) NOT NULL,
+       active SMALLINT NOT NULL DEFAULT 1,
+       priority INTEGER NOT NULL DEFAULT 0,
+       name_singular VARCHAR(255) NOT NULL,
+       name_plural VARCHAR(255) NOT NULL,
+       PRIMARY KEY (site_id, category_type)
+);
+
 CREATE TABLE attachment (
        id INTEGER PRIMARY KEY,
        f_path      TEXT NOT NULL,
