@@ -218,7 +218,9 @@ sub categories :Chained('list_categories') :PathPart('') :Args(0) {
                                        uri => $c->uri_for_action('/settings/categories'),
                                        label => $page_title,
                                       };
-    $c->stash(page_title => $page_title);
+    $c->stash(page_title => $page_title,
+              site_category_types => [ $site->site_category_types->ordered->all ]
+             );
 }
 
 sub edit_categories :Chained('list_categories') :PathPart('edit') :Args(0) {
@@ -226,7 +228,7 @@ sub edit_categories :Chained('list_categories') :PathPart('edit') :Args(0) {
     my $site = $c->stash->{site};
     my %params = %{ $c->request->body_parameters };
     my $count = 0;
-    foreach my $cc ($site->site_category_types) {
+    foreach my $cc ($site->site_category_types->all) {
         $count++;
         my $code = $cc->category_type;
         foreach my $f (qw/active priority name_singular name_plural/) {

@@ -12,7 +12,7 @@
         <th>[% loc('Name singular') %]</th>
         <th>[% loc('Name plural') %]</th>
       </tr>
-      [% FOREACH ct IN site.site_category_types %]
+      [% FOREACH ct IN site_category_types %]
         <tr>
           <td>
             <code>[% ct.category_type %]</code>
@@ -25,7 +25,7 @@
           </td>
           <td>
             <input type="number" name="[% ct.category_type %]_priority"
-                   class="form-control" value="[% ct.priority %]" required/>
+                   class="form-control" value="[% ct.priority %]" min="0" required/>
           </td>
           <td>
             <input type="text" name="[% ct.category_type %]_name_singular"
