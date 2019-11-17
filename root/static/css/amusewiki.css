@@ -446,3 +446,7 @@ table.dataTable thead .sorting_desc:after {
   content: "\f160";
   /* sort-by-attributes-alt */
 }
+
+textarea.form-control {
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}

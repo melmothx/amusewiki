@@ -120,53 +120,104 @@
  }
  $(document).ready(function() {
      update_monitor();
+     function safe_html(string) {
+         var type = typeof string;
+         if (type === 'string') {
+             return string.toString()
+                          .replace(/&/g, "&amp;")
+                          .replace(/</g, "&lt;")
+                          .replace(/>/g, "&gt;")
+                          .replace(/"/g, "&quot;")
+                          .replace(/'/g, "&#039;");
+         }
+         else if (type === 'number') {
+             return string.toString();
+         }
+         else {
+             return '';
+         }
+     }
      $('#job-table').DataTable({
          "ajax": "./source-ajax",
          "columns": [
              {
                  "data": "id",
                  "render": function (data, type, row) {
-                     var data;
                      if (!data) {
                          return '';
                      }
                      if (type == 'display') {
-                         return "<a href=\"https://" + row.canonical + '/tasks/status/' + data + "\">" + data + "</a>";
+                         return "<a href=\"https://" + safe_html(row.canonical)
+                              + '/tasks/status/' + safe_html(data) + "\">"
+                              + safe_html(data)
+                              + '<br /><span class="fa fa-external-link"></span></a>'
                      }
-                     return data;
+                     else {
+                         return safe_html(data);
+                     }
                  }
              },
              {
                  "data": "site_id",
                  "render": function (data, type, row) {
-                     var data;
                      if (type == 'display') {
-                         return "<a href=\"https://" + row.canonical + "\">" + data + "</a>";
+                         return "<a href=\"https://" + safe_html(row.canonical) + "\">"
+                              + safe_html(data) + "</a>";
                      }
-                     return data;
+                     return safe_html(data);
                  }
              },
-             { "data": "task" },
-             { "data": "payload" },
-             { "data": "status" },
-             { "data": "created" },
-             { "data": "started" },
-             { "data": "completed", },
-             { "data": "priority" },
+             {
+                 "data": "task",
+                 "render": $.fn.dataTable.render.text()
+             },
+             {
+                 "data": "payload",
+                 render: function(data, type, row) {
+                     if (type == 'display') {
+                         return '<textarea class="form-control">' + safe_html(data) +'</textarea>';
+                     }
+                     return safe_html(data);
+                 }
+             },
+             { "data": "status",
+               "render": $.fn.dataTable.render.text()
+             },
+             {
+                 "data": "created",
+                 "render": $.fn.dataTable.render.text()
+             },
+             { "data": "started",
+               "render": $.fn.dataTable.render.text()
+             },
+             { "data": "completed",
+               "render": $.fn.dataTable.render.text()
+             },
+             { "data": "priority",
+               "render": $.fn.dataTable.render.text()
+             },
              {
                  "data": "produced",
                  "render": function (data, type, row) {
-                     var data;
                      if (!data) {
                          return '';
                      }
                      if (type == 'display') {
-                         return "<a href=\"https://" + row.canonical + data + "\">" + data + "</a>";
+                         return "<a href=\"https://" + safe_html(row.canonical + data) + "\">"
+                              + safe_html(data) + "</a>";
                      }
-                     return data;
+                     return safe_html(data);
                  }
              },
-             { "data": "errors" }
+             {
+                 "data": "errors",
+                 render: function(data, type, row) {
+                     if (type == 'display') {
+                         return '<textarea class="form-control">' + safe_html(data) +'</textarea>';
+                     }
+                     return safe_html(data);
+                 }
+             }
          ]
      });
  });
