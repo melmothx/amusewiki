@@ -122,17 +122,50 @@
      update_monitor();
      $('#job-table').DataTable({
          "ajax": "./source-ajax",
-         columns: [
-             { "data": "id" },
-             { "data": "site_id" },
+         "columns": [
+             {
+                 "data": "id",
+                 "render": function (data, type, row) {
+                     var data;
+                     if (!data) {
+                         return '';
+                     }
+                     if (type == 'display') {
+                         return "<a href=\"https://" + row.canonical + '/tasks/status/' + data + "\">" + data + "</a>";
+                     }
+                     return data;
+                 }
+             },
+             {
+                 "data": "site_id",
+                 "render": function (data, type, row) {
+                     var data;
+                     if (type == 'display') {
+                         return "<a href=\"https://" + row.canonical + "\">" + data + "</a>";
+                     }
+                     return data;
+                 }
+             },
              { "data": "task" },
              { "data": "payload" },
              { "data": "status" },
              { "data": "created" },
              { "data": "started" },
-             { "data": "completed" },
+             { "data": "completed", },
              { "data": "priority" },
-             { "data": "produced" },
+             {
+                 "data": "produced",
+                 "render": function (data, type, row) {
+                     var data;
+                     if (!data) {
+                         return '';
+                     }
+                     if (type == 'display') {
+                         return "<a href=\"https://" + row.canonical + data + "\">" + data + "</a>";
+                     }
+                     return data;
+                 }
+             },
              { "data": "errors" }
          ]
      });

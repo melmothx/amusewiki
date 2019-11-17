@@ -37,6 +37,9 @@ sub source_ajax :Chained('get_jobs') :PathPart('source-ajax') :Args(0) {
     my $rs = delete $c->stash->{all_jobs};
     my @data = $rs->search(undef,
                            {
+                            '+select' => ['site.canonical'],
+                            '+as' => ['canonical'],
+                            join => [qw/site/],
                             result_class => 'DBIx::Class::ResultClass::HashRefInflator',
                            })->all;
     $c->stash(json => { data => \@data });
