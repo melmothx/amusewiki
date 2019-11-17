@@ -1135,6 +1135,10 @@ root/static/js/bbselect.js
 root/static/js/bookbuilder.js
 root/static/js/bootstrap.js
 root/static/js/bootstrap.min.js
+root/static/js/datatables/datatables.css
+root/static/js/datatables/datatables.js
+root/static/js/datatables/datatables.min.css
+root/static/js/datatables/datatables.min.js
 root/static/js/diff/COPYING
 root/static/js/diff/diff_match_patch.js
 root/static/js/diff/diff_match_patch_uncompressed.js
