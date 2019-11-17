@@ -4253,6 +4253,40 @@ sub init_category_types {
     $self->discard_changes;
 }
 
+sub edit_category_types_from_params {
+    my ($self, $args) = @_;
+    my %params = %$args;
+    my $count = 0;
+    my $changed = 0;
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    foreach my $cc ($self->site_category_types->all) {
+        $count++;
+        my $code = $cc->category_type;
+        foreach my $f (qw/active priority name_singular name_plural/) {
+            my $cgi = $code . '_' . $f;
+            if (exists $params{$cgi}) {
+                $cc->$f($params{$cgi})
+            }
+            if ($cc->is_changed) {
+                Dlog_info { "Updating $code $_" } +{ $cc->get_dirty_columns };
+                $cc->update;
+                $changed++;
+            }
+        }
+    }
+    if ($params{create} and $params{create} =~ m/\A[a-z]{1,16}\z/) {
+        $self->site_category_types->find_or_create({
+                                                    category_type => $params{create},
+                                                    priority => $count + 1,
+                                                    active => 1,
+                                                    name_singular => ucfirst($params{create}),
+                                                    name_pluralx => ucfirst($params{create} . 's'),
+                                                   });
+        $changed++;
+    }
+    $guard->commit;
+    return $changed;
+}
 
 after insert => sub {
     my $self = shift;

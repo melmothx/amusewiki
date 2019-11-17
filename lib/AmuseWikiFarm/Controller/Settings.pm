@@ -6,6 +6,8 @@ use AmuseWikiFarm::Log::Contextual;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use Try::Tiny;
+
 =head1 NAME
 
 AmuseWikiFarm::Controller::Settings - Catalyst Controller
@@ -227,30 +229,15 @@ sub edit_categories :Chained('list_categories') :PathPart('edit') :Args(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
     my %params = %{ $c->request->body_parameters };
-    my $count = 0;
-    foreach my $cc ($site->site_category_types->all) {
-        $count++;
-        my $code = $cc->category_type;
-        foreach my $f (qw/active priority name_singular name_plural/) {
-            my $cgi = $code . '_' . $f;
-            if (exists $params{$cgi}) {
-                $cc->$f($params{$cgi})
-            }
-            if ($cc->is_changed) {
-                log_info { "Updating $code" };
-                $cc->update;
-            }
+    try {
+        if ($site->edit_category_types_from_params(\%params)) {
+            $c->flash(status_msg => $c->loc("Changes applied"));
         }
-    }
-    if ($params{create} and $params{create} =~ m/\A[a-z]{1,16}\z/) {
-        $site->site_category_types->find_or_create({
-                                                    category_type => $params{create},
-                                                    priority => $count + 1,
-                                                    active => 1,
-                                                    name_singular => ucfirst($params{create}),
-                                                    name_plural => ucfirst($params{create} . 's'),
-                                                   });
-    }
+    } catch {
+        my $err = $_;
+        log_error { $err };
+        $c->flash(error_msg => "$err");
+    };
     $c->response->redirect($c->uri_for_action('/settings/categories'));    
 }
 
