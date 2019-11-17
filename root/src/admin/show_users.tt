@@ -3,7 +3,8 @@
 <h2>[% loc('All users') %]</h2>
 
 <div class="table-responsive">
-  <table class="table table-striped table-condensed table-bordered">
+  <table id="user-table" class="table table-striped table-condensed table-bordered">
+    <thead>
     <tr>
       <th>[% loc('Username') %]</th>
       <th>[% loc('Created by') %]</th>
@@ -13,6 +14,8 @@
       <th>[% loc('Roles') %]</th>
       <th>[% loc('Sites') %]</th>
     </tr>
+    </thead>
+    <tbody>
     [% WHILE (user = all_users.next) %]
     <tr>
       <td>
@@ -55,6 +58,7 @@
       </td>
     </tr>
     [% END %]
+    </tbody>
   </table>
 </div>
 
@@ -78,3 +82,8 @@
   </form>
 </div>
 
+<script>
+  $(document).ready(function() {
+      $('#user-table').DataTable();
+  });
+</script>

@@ -66,6 +66,7 @@ sub list :Chained('sites') :PathPart('') :Args(0)  {
     my ($self, $c) = @_;
     my $sites = delete $c->stash->{all_sites};
     $c->stash(page_title => $c->loc('All sites'),
+              load_datatables => 1,
               list => [ $sites->all ]);
 }
 
@@ -214,7 +215,7 @@ sub users :Chained('root') :PathPart('users') :CaptureArgs(0) {
 
 sub show_users :Chained('users') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    return;
+    $c->stash(load_datatables => 1);
 }
 
 sub user_details :Chained('users') :PathPart('') :CaptureArgs(1) {
