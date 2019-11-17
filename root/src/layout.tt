@@ -111,6 +111,15 @@
     <link rel="stylesheet" type="text/css"
           href="[% c.uri_for('/static/css/amuse.css', { v => 6 }) %]" />
 
+    [%#  datatable on demand %]
+    [%- IF load_datatables %]
+      <link rel="stylesheet" type="text/css"
+            href="[% c.uri_for('/static/js/datatables/datatables.min.css') %]" />
+      <script type="text/javascript"
+              src="[% c.uri_for('/static/js/datatables/datatables.min.js') %]">
+      </script>
+    [% END %]
+
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
           href="[% c.uri_for('/static/css/amusewiki.css', { v => 38 }) %]" />
