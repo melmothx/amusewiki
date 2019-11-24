@@ -14,20 +14,30 @@ sub jobs :Chained('get_jobs') :PathPart('show') :Args {
     my ($self, $c, $order_by, $direction, $page) = @_;
     my $rs = delete $c->stash->{all_jobs};
 
+    my @flash;
     # first, we handled deletions and reschedule
     if (my $delete = $c->request->body_parameters->{delete_job}) {
-        if (my $job = $rs->find($delete)) {
-            $job->delete;
-            $c->flash(status_msg => $c->loc("Job deleted"));
+        Dlog_info { "Deleting jobs $_" } $delete;
+        my $jobs = $rs->search({ id => $delete });
+        my $total = 0;
+        foreach my $j ($jobs->all) {
+            # same as ->delete_all
+            $total++;
+            $j->delete;
         }
+        push @flash, $c->loc("[_1] jobs deleted", [$total]);
     }
-    elsif (my $reschedule = $c->request->body_parameters->{reschedule_job}) {
-        if (my $job = $rs->find($reschedule)) {
-            if ($job->reschedule) {
-                $c->flash(status_msg => $c->loc("Job rescheduled"));
-            }
+    if (my $reschedule = $c->request->body_parameters->{reschedule_job}) {
+        Dlog_info { "Rescheduling jobs $_" } $reschedule;
+        my $jobs = $rs->search({ id => $reschedule });
+        my $total = 0;
+        foreach my $j ($jobs->all) {
+            $total++;
+            $j->reschedule;
         }
+        push @flash, $c->loc("[_1] jobs rescheduled", [$total]);
     }
+    $c->flash(status_msg => join(' / ', @flash)) if @flash;
     $c->stash(template => 'admin/jobs.tt',
               load_datatables => 1);
 }

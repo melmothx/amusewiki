@@ -36,6 +36,7 @@
   </div>
 </div>
 
+<form id="jobs-manager" action="" method="POST">
 <div class="table-responsive">
   <table id="job-table" class="table table-striped table-condensed table-bordered">
     <thead>
@@ -73,10 +74,27 @@
         <th>
           [% loc('Errors') %]
         </th>
+        <th>
+          [% loc('Delete') %]
+        </th>
+        <th>
+          [% loc('Reschedule') %]
+        </th>
       </tr>
     </thead>
   </table>
 </div>
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <br><br>
+    <div style="display:none">
+      <input type="text" name="reschedule_job" />
+      <input type="text" name="delete_job" />
+    </div>
+    <button type="submit" class="btn btn-primary">[% loc('Update') %]</button>
+  </div>
+</div>
+</form>
 
 <script>
  function update_monitor() {
@@ -175,7 +193,7 @@
                  "data": "payload",
                  render: function(data, type, row) {
                      if (type == 'display') {
-                         return '<textarea class="form-control">' + safe_html(data) +'</textarea>';
+                         return '<textarea class="form-control" readonly>' + safe_html(data) +'</textarea>';
                      }
                      return safe_html(data);
                  }
@@ -213,7 +231,29 @@
                  "data": "errors",
                  render: function(data, type, row) {
                      if (type == 'display') {
-                         return '<textarea class="form-control">' + safe_html(data) +'</textarea>';
+                         return '<textarea class="form-control" readonly>' + safe_html(data) +'</textarea>';
+                     }
+                     return safe_html(data);
+                 }
+             },
+             {
+                 data: "id",
+                 render: function(data, type, row) {
+                     if (type == 'display') {
+                         return '<div class="text-center"><label>'
+                              + '<input name="delete_job" value="' + safe_html(data)
+                              + '" type="checkbox" /></label></div>';
+                     }
+                     return safe_html(data);
+                 }
+             },
+             {
+                 data: "id",
+                 render: function(data, type, row) {
+                     if (type == 'display') {
+                         return '<div class="text-center"><label>'
+                              + '<input name="reschedule_job" value="' + safe_html(data)
+                              + '" type="checkbox" /></label></div>';
                      }
                      return safe_html(data);
                  }
