@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-use Test::More tests => 5;
+use Test::More tests => 7;
 use File::Spec::Functions qw/catfile catdir/;
 use AmuseWikiFarm::Schema;
 use lib catdir(qw/t lib/);
@@ -19,8 +19,9 @@ my $site = create_site($schema, $site_id);
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => "$site_id.amusewiki.org");
 
-ok $site->is_without_authors;
-ok $site->is_without_topics;
+$mech->get_ok('/');
+$mech->content_lacks('Topics');
+$mech->content_lacks('Authors');
 
 my ($revision) = $site->create_new_text({ uri => 'the-text',
                                           title => 'Hello',
@@ -33,6 +34,6 @@ $revision->commit_version;
 my $uri = $revision->publish_text;
 ok $uri, "Found uri $uri";
 
-ok !$site->is_without_authors;
-ok !$site->is_without_topics;
-
+$mech->get_ok('/');
+$mech->content_contains('Topics');
+$mech->content_contains('Authors');

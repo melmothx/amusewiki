@@ -2330,20 +2330,6 @@ sub category_types_navbar_display {
     return \@out;
 }
 
-sub is_without_authors {
-    my ($self, $logged_in) = @_;
-    return !$self->categories->by_type('author')
-
-      ->first;
-}
-
-sub is_without_topics {
-    my ($self, $logged_in) = @_;
-    return !$self->categories->by_type('topic')
-      ->with_texts(deferred => $logged_in || $self->show_preview_when_deferred)
-      ->first;
-}
-
 has options_hr => (
                    is => 'ro',
                    isa => 'HashRef[Str]',
