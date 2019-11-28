@@ -4,6 +4,29 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.410 2019-11-28
+
+ - Use datatables.net Javascript for large tables in the admin (users,
+   sites and jobs) instead of monolithic tables and/or pagination.
+ - Permit the creation of custom category types beside the predefined
+   authors/topics (GH#311)
+ - Use Text::Unidecode instead of the custom code
+ - List and allow to use existing custom formats in the BookBuilder as
+   preloaded settings. (GH#320)
+ - List and allow to use existing images as cover in the BookBuilder
+   (GH#314)
+ - Allow custom format selection in the header (GH#310)
+ - Add binary attachments to the infobox (GH#309)
+ - When a text is not published, redirect it to /console/unpublished
+   instead of a 404 for logged in users (GH#316)
+
+To take advantage of the new BookBuilder features with images, you may
+want to reindex the site with amusewiki-bootstrap-archive --refresh.
+This step is however optional and doesn't prevent the normal
+functioning of the sites (you're just not going to see the images as
+available on the BookBuilder until you reindex the affected texts).
+
+
 2.401 2019-11-01
 
  - Add CLI options to control the jobber polling interval and
