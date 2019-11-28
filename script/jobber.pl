@@ -17,15 +17,17 @@ unless (-d $vardir) {
 
 die "Couldn't find $program" unless -f $program;
 
+my ($cmd, @args) = @ARGV;
+
 Daemon::Control->new({
                       name => "amusewiki-jobber",
                       program =>  'perl',
-                      program_args => [ -I => 'lib', $program ],
+                      program_args => [ -I => 'lib', $program, @args ],
                       pid_file    => File::Spec->catfile($vardir, 'jobs.pid'),
                       stderr_file => File::Spec->catfile($vardir, 'jobs.err'),
                       stdout_file => File::Spec->catfile($vardir, 'jobs.log'),
                       directory => $basedir,
                       fork => 2,
-                     })->run;
+                     })->run_command($cmd);
 
 
