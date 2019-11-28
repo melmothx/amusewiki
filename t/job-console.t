@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 48;
+use Test::More tests => 40;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Schema;
@@ -64,17 +64,15 @@ logout();
 
 $user->set_roles([{ role => 'admin' }]);
 login();
+$mech->get_ok('/tasks/all/source-ajax');
+diag $mech->content;
+$mech->content_like(qr{"id": *"?\Q$jid\E\b"?});
 $mech->get_ok('/tasks/all/show');
-$mech->content_contains("delete-job-$jid");
-$mech->content_contains("reschedule-job-$jid");
-ok $mech->form_id("reschedule-job-$jid");
-ok $mech->click;
-$mech->content_contains("Job rescheduled");
-ok $mech->form_id("delete-job-$jid");
-ok $mech->click;
-$mech->content_contains("Job deleted");
-$mech->content_lacks("delete-job-$jid");
-$mech->content_lacks("delete-job-$other_id");
+ok $mech->submit_form(with_fields => { reschedule_job => $jid });
+$mech->content_contains("1 jobs rescheduled") or die $mech->content;
+
+ok $mech->submit_form(with_fields => { delete_job => $jid });
+$mech->content_contains("1 jobs deleted");
 logout();
 
 $j = $site->jobs->enqueue(testing => {});
@@ -83,27 +81,27 @@ $j->dispatch_job;
 
 $user->set_roles([{ role => 'root' }]);
 login();
-$mech->get_ok('/admin/jobs/show');
-$mech->content_contains("delete-job-$jid");
-$mech->content_lacks("reschedule-job-$jid");
+$mech->get_ok('/admin/jobs/source-ajax');
+diag $mech->content;
+$mech->content_like(qr{"id": *"?\Q$jid\E\b});
 
 $j->update({ status => 'failed' });
 $mech->get_ok('/admin/jobs/show');
-$mech->content_contains("reschedule-job-$jid");
 
-ok $mech->form_id("reschedule-job-$jid");
-ok $mech->click;
+ok $mech->submit_form(with_fields => { reschedule_job => $jid });
 is $j->discard_changes->status, 'pending';
 is $j->started, undef;
 is $j->completed, undef;
 is $j->produced, undef;
 is $j->errors, undef;
-$mech->content_contains("Job rescheduled");
-ok $mech->form_id("delete-job-$jid");
-ok $mech->click;
-$mech->content_contains("Job deleted");
-$mech->content_lacks("delete-job-$jid");
-$mech->content_contains("delete-job-$other_id");
+$mech->content_contains("1 jobs rescheduled");
+
+ok $mech->submit_form(with_fields => { delete_job => $jid });
+$mech->content_contains("1 jobs deleted");
+
+$mech->get_ok('/admin/jobs/source-ajax');
+diag $mech->content;
+$mech->content_unlike(qr{"id": *"?\Q$jid\E\b});
 
 $mech->get_ok('/admin/jobs/monitor');
 $mech->content_contains('active_jobs');

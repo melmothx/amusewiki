@@ -111,9 +111,18 @@
     <link rel="stylesheet" type="text/css"
           href="[% c.uri_for('/static/css/amuse.css', { v => 6 }) %]" />
 
+    [%#  datatable on demand %]
+    [%- IF load_datatables %]
+      <link rel="stylesheet" type="text/css"
+            href="[% c.uri_for('/static/js/datatables/datatables.min.css') %]" />
+      <script type="text/javascript"
+              src="[% c.uri_for('/static/js/datatables/datatables.min.js') %]">
+      </script>
+    [% END %]
+
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 38 }) %]" />
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 39 }) %]" />
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 3 }) %]"></script>
     <script>
       function amw_confirm() { return confirm('[% lh.loc('Are you sure?') | escape_js %]') }
@@ -223,14 +232,15 @@
                     [% loc('Titles') %]
                   </a>
                 </li>
-                [% UNLESS site_is_without_authors %]
-                <li[% IF nav == 'author' %] class="active" [% END %]
-                      id="amw-nav-bar-authors">
-                  <a href="[% c.uri_for_action('/category/category_list_display', [ 'author' ]) %]"
-		             title="[% loc('texts sorted by author') %]">
-                    [% loc('Authors') %]
-                  </a>
-                </li>
+
+                [% FOREACH sitectype IN category_types_navbar_display %]
+                  <li[% IF nav == sitectype.ctype %] class="active" [% END %]
+                                                     id="amw-nav-bar-[% sitectype.ctype %]s">
+                    <a href="[% c.uri_for_action('/category/category_list_display', [ sitectype.ctype ]) %]"
+		               title="[% loc(sitectype.title) %]">
+                      [% loc(sitectype.title) %]
+                    </a>
+                  </li>
                 [% END %]
                 [% IF site.fixed_category_list %]
                 <li role="presentation" class="divider"></li>
@@ -245,16 +255,6 @@
                   </a>
                 </li>
                 [%     END  %]
-                [% ELSE %]
-                    [% UNLESS site_is_without_topics %]
-	            <li[% IF nav == 'topic' %] class="active" [% END %]
-                      id="amw-nav-bar-topics">
-                  <a href="[% c.uri_for_action('/category/category_list_display', [ 'topic' ]) %]"
-		             title="[% loc('texts sorted by topics') %]">
-                    [% loc('Topics') %]
-                  </a>
-                </li>
-                    [% END %]
                 [% END %]
                 <li role="presentation" class="divider"></li>
                 <li[% IF nav == 'latest' %] class="active"[% END %]>
@@ -702,20 +702,14 @@
 		 title="[% loc('texts sorted by title') %]">[% loc('Titles') %]</a>
         </span>
 
-      [% UNLESS site_is_without_authors %]
-        <span id="amw-footer-link-authors-sep">|</span>
-        <span id="amw-footer-link-authors">
-      <a href="[% c.uri_for_action('/category/category_list_display', [ 'author' ]) %]"
-		 title="[% loc('texts sorted by author') %]">[% loc('Authors') %]</a>
-        </span>
-      [% END %]
-      [% UNLESS site_is_without_topics %]
-        <span id="amw-footer-link-topics-sep">|</span>
-        <span id="amw-footer-link-topics">
-      <a href="[% c.uri_for_action('/category/category_list_display', [ 'topic' ]) %]"
-		 title="[% loc('texts sorted by topics') %]">[% loc('Topics') %]</a>
-        </span>
-      [% END %]
+        [% FOREACH sitectype IN category_types_navbar_display %]
+          <span id="amw-footer-link-[% sitectype.ctype %]s-sep">|</span>
+          <span id="amw-footer-link-[% sitectype.ctype %]s">
+            <a href="[% c.uri_for_action('/category/category_list_display', [ sitectype.ctype ]) %]"
+		       title="[% loc(sitectype.title) %]">[% loc(sitectype.title) %]</a>
+          </span>
+        [% END %]
+
         <span id="amw-footer-link-latest-sep">|</span>
         <span id="amw-footer-link-latest">
       <a href="[% c.uri_for_action('/latest/index') %]">[% loc('Latest entries') %]</a>

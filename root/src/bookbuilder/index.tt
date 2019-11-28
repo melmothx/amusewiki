@@ -9,6 +9,8 @@
 
 [% IF bb.texts.size %]
 <div id="bb-list-edit">
+  <div class="row">
+    <div class="col-md-8">
   <div class="table-responsive">
   <table id="bookbuilderlist" class="table table-striped
                                      table-condensed
@@ -45,6 +47,7 @@
             [% loc('Delete') %]
           </button>
         </form>
+      </td>
     </tr>
     [% textindex = textindex + 1 %]
     [% END %]
@@ -69,6 +72,20 @@
       </td>
     </tr>
   </table>
+  </div>
+    </div>
+    <div class="col-md-4">
+      <div class="list-group">
+        <div class="amw-listing-item">
+          <strong class="list-group-item clearfix">[% loc("Use one of the site's formats") %]</strong>
+        </div>
+        [% FOREACH cf IN bb_custom_formats %]
+          <div class="amw-listing-item">
+            <a class="list-group-item clearfix" href="[% cf.url %]">[% loc(cf.name) %]</a>
+          </div>
+        [% END %]
+      </div>
+    </div>
   </div>
 </div>
 <div id="bb-compiler-options">
@@ -160,8 +177,6 @@
             [% loc('Remove cover image') %]
           </label>
         </div>
-      </div>
-      <div class="col-sm-3">
         [% IF bb.coverfile %]
           <div id="coverfile-is-present">
             <div class="center" style="margin:10px">
@@ -169,6 +184,29 @@
                    alt="bookbuilder cover" class="img-thumbnail"/>
             </div>
           </div>
+        [% END %]
+      </div>
+      <div class="col-sm-9" style="margin-bottom: 10px">
+        [% UNLESS bb.coverfile %]
+          [% IF bb.related_attachments.size %]
+            <div><label>[% loc('You may want to use one of these images') %]</label></div>
+          [% END %]
+          [% FOREACH cover_image IN bb.related_attachments %]
+            <label>
+              <input type="radio" name="cover_from_archive" value="[% cover_image.uri %]"
+                     class="amw-radio-with-images"
+                     [% IF bb.cover_from_archive == cover_image.uri %]checked[% END %]/>
+              <img src="[% cover_image.small_uri %]"
+                   class="img-thumbnail amw-radio-image-label"
+                   alt="[% cover_image.uri %]" />
+            </label>
+          [% END %]
+          [% IF bb.related_attachments.size %]
+            <label title="[% loc('None') %]">
+              <input type="radio" name="cover_from_archive" value="" class="amw-radio-with-images" />
+              &nbsp;&nbsp;<i class="fa fa-2x fa-remove amw-radio-image-label fa-border"></i>
+            </label>
+          [% END %]
         [% END %]
       </div>
     </div> <!-- end of row -->

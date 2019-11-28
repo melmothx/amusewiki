@@ -7,33 +7,7 @@
 </div>
 
 <div class="row">
-  <div class="col-sm-9">
-  <form id="search_jobs" method="get" action="[% c.uri_for_action('/admin/jobs') %]"
-        class="form-horizontal" role="form">
-    <div class="form-group">
-      <div class="col-sm-2">
-        <select name="field" class="form-control">
-          [% FOREACH search_field IN search_fields %]
-          <option value="[% search_field | html %]"
-                  [% IF search_field == c.req.query_params.field %]selected="selected"[% END %]>
-            [% search_field | html %]
-          </option>
-          [% END %]
-        </select>
-      </div>
-      <div class="col-sm-4">
-        <div class="input-group">
-          <input type="text" class="form-control" name="search"
-                 value="[% c.req.query_params.search | html %]"/>
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="submit">[% loc('Search') %]</button>
-          </span>
-        </div>
-      </div>
-    </div>
-  </form>
-  </div>
-  <div class="col-sm-3" id="monitoring-box">
+  <div class="col-sm-12" id="monitoring-box">
     <table class="table table-bordered table-condensed">
       <tr>
         <th>[% loc('pending') %]</th>
@@ -62,229 +36,65 @@
   </div>
 </div>
 
+<form id="jobs-manager" action="" method="POST">
 <div class="table-responsive">
-  <table class="table table-striped table-condensed table-bordered">
-    <tr>
-      <th>
-        <a href="[% c.uri_for_action('/admin/jobs', 'id', 'desc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-down"></span>
-        </a>
-        [% loc('Id') %]
-        <a href="[% c.uri_for_action('/admin/jobs', 'id', 'asc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-up"></span>
-        </a>
-      </th>
-      <th>
-        <a href="[% c.uri_for_action('/admin/jobs', 'site_id', 'desc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-down"></span>
-        </a>
-        [% loc('Site id') %]
-        <a href="[% c.uri_for_action('/admin/jobs', 'site_id', 'asc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-up"></span>
-        </a>
-      </th>
-      <th>
-        <a href="[% c.uri_for_action('/admin/jobs', 'task', 'desc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-down"></span>
-        </a>
-        [% loc('Task') %]
-        <a href="[% c.uri_for_action('/admin/jobs', 'task', 'asc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-up"></span>
-        </a>
-      </th>
-      <th>
-        [% loc('Payload') %]
-      </th>
-      <th>
-        <a href="[% c.uri_for_action('/admin/jobs', 'status', 'desc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-down"></span>
-        </a>
-        [% loc('Status') %]
-        <a href="[% c.uri_for_action('/admin/jobs', 'status', 'asc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-up"></span>
-        </a>
-      </th>
-      <th>
-        <a href="[% c.uri_for_action('/admin/jobs', 'created', 'desc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-down"></span>
-        </a>
-        [% loc('Created') %]
-        <a href="[% c.uri_for_action('/admin/jobs', 'created', 'asc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-up"></span>
-        </a>
-      </th>
-      <th>
-        <a href="[% c.uri_for_action('/admin/jobs', 'started', 'desc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-down"></span>
-        </a>
-        [% loc('Started') %]
-        <a href="[% c.uri_for_action('/admin/jobs', 'started', 'asc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-up"></span>
-        </a>
-      </th>
-      <th>
-        <a href="[% c.uri_for_action('/admin/jobs', 'completed', 'desc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-down"></span>
-        </a>
-        [% loc('Completed') %]
-        <a href="[% c.uri_for_action('/admin/jobs', 'completed', 'asc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-up"></span>
-        </a>
-      </th>
-      <th>
-        <a href="[% c.uri_for_action('/admin/jobs', 'priority', 'desc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-down"></span>
-        </a>
-        [% loc('Priority') %]
-        <a href="[% c.uri_for_action('/admin/jobs', 'priority', 'asc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-up"></span>
-        </a>
-      </th>
-      <th>
-        <a href="[% c.uri_for_action('/admin/jobs', 'produced', 'desc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-down"></span>
-        </a>
-        [% loc('Produced') %]
-        <a href="[% c.uri_for_action('/admin/jobs', 'produced', 'asc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-up"></span>
-        </a>
-      </th>
-      <th>
-        <a href="[% c.uri_for_action('/admin/jobs', 'errors', 'desc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-down"></span>
-        </a>
-        [% loc('Errors') %]
-        <a href="[% c.uri_for_action('/admin/jobs', 'errors', 'asc', 1,
-                 { field => c.req.query_params.field,
-                   search => c.req.query_params.search,
-                 }) | html %]">
-          <span class="fa fa-arrow-up"></span>
-        </a>
-      </th>
-      <th>
-        [% loc('Action') %]
-      </th>
-    </tr>
-    [% FOREACH job IN jobs %]
-    <tr>
-      <td>
-        <a href="[% job.site.canonical_url_secure %]/tasks/status/[% job.id %]">
-          [% job.id | html %]
-        </a>
-      </td>
-      <td>
-        <a href="[% job.site.canonical_url_secure %]">
-          [% job.site_id | html %]
-        </a>
-      </td>
-      <td>
-        [% job.task | html %]
-      </td>
-      <td>
-        <pre>[% job.payload_pretty | html %]</pre>
-      </td>
-      <td>
-        [% job.status | html %]
-      </td>
-      <td>
-        [% job.created.iso8601 | html %]
-      </td>
-      <td>
-        [% IF job.started %][% job.started.iso8601 | html %][% END %]
-      </td>
-      <td>
-        [% IF job.completed %][% job.completed.iso8601 | html %][% END %]
-      </td>
-      <td>
-        [% job.priority | html %]
-      </td>
-      <td>
-        [% IF job.produced %]
-        <a href="[% job.site.canonical_url_secure %][% job.produced %]">[% job.produced | html %]</a>
-        [% END %]
-      </td>
-      <td>
-        [% job.errors | html %]
-      </td>
-      <td>
-        <form id="delete-job-[% job.id %]" action="" method="post">
-          <input type="hidden" name="delete_job" value="[% job.id %]" />
-          <button type="submit" class="btn btn-default" title="[% loc('Delete') %]">
-            <span class="fa fa-trash"></span>
-          </button>
-        </form>
-        [% IF job.is_failed %]
-        <form id="reschedule-job-[% job.id %]" action="" method="post">
-          <input type="hidden" name="reschedule_job" value="[% job.id %]" />
-          <button type="submit" class="btn btn-default" title="[% loc('Try again') %]">
-            <span class="fa fa-refresh"></span>
-          </button>
-        </form>
-        [% END %]
-      </td>
-    </tr>
-    [% END %]
+  <table id="job-table" class="table table-striped table-condensed table-bordered">
+    <thead>
+      <tr>
+        <th>
+          [% loc('Id') %]
+        </th>
+        <th>
+          [% loc('Site id') %]
+        </th>
+        <th>
+          [% loc('Task') %]
+        </th>
+        <th>
+          [% loc('Payload') %]
+        </th>
+        <th>
+          [% loc('Status') %]
+        </th>
+        <th>
+          [% loc('Created') %]
+        </th>
+        <th>
+          [% loc('Started') %]
+        </th>
+        <th>
+          [% loc('Completed') %]
+        </th>
+        <th>
+          [% loc('Priority') %]
+        </th>
+        <th>
+          [% loc('Produced') %]
+        </th>
+        <th>
+          [% loc('Errors') %]
+        </th>
+        <th>
+          [% loc('Delete') %]
+        </th>
+        <th>
+          [% loc('Reschedule') %]
+        </th>
+      </tr>
+    </thead>
   </table>
 </div>
-
-[% INCLUDE 'include/pagination.tt' %]
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <br><br>
+    <div style="display:none">
+      <input type="text" name="reschedule_job" />
+      <input type="text" name="delete_job" />
+    </div>
+    <button type="submit" class="btn btn-primary">[% loc('Update') %]</button>
+  </div>
+</div>
+</form>
 
 <script>
  function update_monitor() {
@@ -328,5 +138,127 @@
  }
  $(document).ready(function() {
      update_monitor();
+     function safe_html(string) {
+         var type = typeof string;
+         if (type === 'string') {
+             return string.toString()
+                          .replace(/&/g, "&amp;")
+                          .replace(/</g, "&lt;")
+                          .replace(/>/g, "&gt;")
+                          .replace(/"/g, "&quot;")
+                          .replace(/'/g, "&#039;");
+         }
+         else if (type === 'number') {
+             return string.toString();
+         }
+         else {
+             return '';
+         }
+     }
+     $('#job-table').DataTable({
+         "ajax": "./source-ajax",
+         "columns": [
+             {
+                 "data": "id",
+                 "render": function (data, type, row) {
+                     if (!data) {
+                         return '';
+                     }
+                     if (type == 'display') {
+                         return "<a href=\"https://" + safe_html(row.canonical)
+                              + '/tasks/status/' + safe_html(data) + "\">"
+                              + safe_html(data)
+                              + '<br /><span class="fa fa-external-link"></span></a>'
+                     }
+                     else {
+                         return safe_html(data);
+                     }
+                 }
+             },
+             {
+                 "data": "site_id",
+                 "render": function (data, type, row) {
+                     if (type == 'display') {
+                         return "<a href=\"https://" + safe_html(row.canonical) + "\">"
+                              + safe_html(data) + "</a>";
+                     }
+                     return safe_html(data);
+                 }
+             },
+             {
+                 "data": "task",
+                 "render": $.fn.dataTable.render.text()
+             },
+             {
+                 "data": "payload",
+                 render: function(data, type, row) {
+                     if (type == 'display') {
+                         return '<textarea class="form-control" readonly>' + safe_html(data) +'</textarea>';
+                     }
+                     return safe_html(data);
+                 }
+             },
+             { "data": "status",
+               "render": $.fn.dataTable.render.text()
+             },
+             {
+                 "data": "created",
+                 "render": $.fn.dataTable.render.text()
+             },
+             { "data": "started",
+               "render": $.fn.dataTable.render.text()
+             },
+             { "data": "completed",
+               "render": $.fn.dataTable.render.text()
+             },
+             { "data": "priority",
+               "render": $.fn.dataTable.render.text()
+             },
+             {
+                 "data": "produced",
+                 "render": function (data, type, row) {
+                     if (!data) {
+                         return '';
+                     }
+                     if (type == 'display') {
+                         return "<a href=\"https://" + safe_html(row.canonical + data) + "\">"
+                              + safe_html(data) + "</a>";
+                     }
+                     return safe_html(data);
+                 }
+             },
+             {
+                 "data": "errors",
+                 render: function(data, type, row) {
+                     if (type == 'display') {
+                         return '<textarea class="form-control" readonly>' + safe_html(data) +'</textarea>';
+                     }
+                     return safe_html(data);
+                 }
+             },
+             {
+                 data: "id",
+                 render: function(data, type, row) {
+                     if (type == 'display') {
+                         return '<div class="text-center"><label>'
+                              + '<input name="delete_job" value="' + safe_html(data)
+                              + '" type="checkbox" /></label></div>';
+                     }
+                     return safe_html(data);
+                 }
+             },
+             {
+                 data: "id",
+                 render: function(data, type, row) {
+                     if (type == 'display') {
+                         return '<div class="text-center"><label>'
+                              + '<input name="reschedule_job" value="' + safe_html(data)
+                              + '" type="checkbox" /></label></div>';
+                     }
+                     return safe_html(data);
+                 }
+             }
+         ]
+     });
  });
 </script>

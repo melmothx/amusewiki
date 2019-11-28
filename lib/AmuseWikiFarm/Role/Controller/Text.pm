@@ -112,28 +112,24 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
         return;
     }
     else {
-        $c->stash(uri => $canonical);
-        $c->detach('/not_found');
+        my $f_class = $c->stash->{f_class};
+        if ($f_class and $c->user_exists and $site->titles->find({
+                                                                  f_class => $f_class,
+                                                                  uri => $canonical,
+                                                                 })) {
+            $c->response->redirect($c->uri_for_action('/console/unpublished'));
+            $c->detach();
+        }
+        else {
+            $c->stash(uri => $canonical);
+            $c->detach('/not_found');
+        }
     }
 }
 
 sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    my $text = $c->stash->{text} or die "WTF?";
-    my $site = $c->stash->{site};
-    # we are in a role, so if we don't set this special/text.tt and
-    # library/text.tt will be searched .
-    foreach my $listing (qw/authors topics/) {
-        my @list;
-        my $categories = $text->$listing->with_active_flag_on;
-        while (my $cat = $categories->next) {
-            push @list, {
-                         uri => $cat->full_uri,
-                         name => $cat->name,
-                        };
-        }
-        $c->stash("text_$listing" => \@list);
-    }
+    $c->stash(text_display_categories => $c->stash->{text}->display_categories);
 }
 
 sub text :Chained('populate_preamble') :PathPart('') :Args(0) {

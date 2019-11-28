@@ -6,6 +6,8 @@ use AmuseWikiFarm::Log::Contextual;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use Try::Tiny;
+
 =head1 NAME
 
 AmuseWikiFarm::Controller::Settings - Catalyst Controller
@@ -25,6 +27,13 @@ Catalyst Controller.
 
 sub settings :Chained('/site_user_required') :CaptureArgs(0) {
     my ($self, $c) = @_;
+    $c->stash(breadcrumbs => [
+                              {
+                               uri => $c->uri_for_action('/user/site_config'),
+                               label => $c->loc('Edit site configuration'),
+                              },
+                             ]);
+    
 }
 
 sub list_custom_formats :Chained('settings') :PathPart('formats') :CaptureArgs(0) {
@@ -33,16 +42,11 @@ sub list_custom_formats :Chained('settings') :PathPart('formats') :CaptureArgs(0
         $c->detach('/not_permitted');
         return;
     }
-    $c->stash(breadcrumbs => [
-                              {
-                               uri => $c->uri_for_action('/user/site_config'),
-                               label => $c->loc('Edit site configuration'),
-                              },
-                              {
-                               uri => $c->uri_for_action('/settings/formats'),
-                               label => $c->loc('Custom formats for [_1]', $c->stash->{site}->canonical),
-                              },
-                             ]);
+    push @{$c->stash->{breadcrumbs}}, {
+                                       uri => $c->uri_for_action('/settings/formats'),
+                                       label => $c->loc('Custom formats for [_1]',
+                                                        $c->stash->{site}->canonical),
+                                      };
 }
 
 sub formats :Chained('list_custom_formats') :PathPart('') :Args(0) {
@@ -53,6 +57,7 @@ sub formats :Chained('list_custom_formats') :PathPart('') :Args(0) {
         my $id =  $format->custom_formats_id;
         push @list, {
                      id => $id,
+                     code => $format->code,
                      edit_url => $c->uri_for_action('/settings/edit_format', [ $id ]),
                      deactivate_url => $c->uri_for_action('/settings/make_format_inactive', [ $id ]),
                      activate_url   => $c->uri_for_action('/settings/make_format_active', [ $id ]),
@@ -197,6 +202,43 @@ sub clone_format :Chained('get_format') :PathPart('clone') :Args(0) {
         $cf->sync_site_format;
     }
     $c->response->redirect($c->uri_for_action('/settings/formats'));
+}
+
+sub list_categories :Chained('settings') :PathPart('categories') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    unless ($c->check_any_user_role(qw/admin root/)) {
+        $c->detach('/not_permitted');
+        return;
+    }
+}
+
+sub categories :Chained('list_categories') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    my $site = $c->stash->{site};
+    my $page_title = $c->loc('Category types for [_1]', $site->canonical);
+    push @{$c->stash->{breadcrumbs}}, {
+                                       uri => $c->uri_for_action('/settings/categories'),
+                                       label => $page_title,
+                                      };
+    $c->stash(page_title => $page_title,
+              site_category_types => [ $site->site_category_types->ordered->all ]
+             );
+}
+
+sub edit_categories :Chained('list_categories') :PathPart('edit') :Args(0) {
+    my ($self, $c) = @_;
+    my $site = $c->stash->{site};
+    my %params = %{ $c->request->body_parameters };
+    try {
+        if ($site->edit_category_types_from_params(\%params)) {
+            $c->flash(status_msg => $c->loc("Changes applied"));
+        }
+    } catch {
+        my $err = $_;
+        log_error { $err };
+        $c->flash(error_msg => "$err");
+    };
+    $c->response->redirect($c->uri_for_action('/settings/categories'));    
 }
 
 =encoding utf8

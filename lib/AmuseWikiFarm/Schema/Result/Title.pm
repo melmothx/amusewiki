@@ -450,6 +450,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 title_attachments
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::TitleAttachment>
+
+=cut
+
+__PACKAGE__->has_many(
+  "title_attachments",
+  "AmuseWikiFarm::Schema::Result::TitleAttachment",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 title_categories
 
 Type: has_many
@@ -479,6 +494,16 @@ __PACKAGE__->has_many(
   { "foreign.title_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
+
+=head2 attachments
+
+Type: many_to_many
+
+Composing rels: L</title_attachments> -> attachment
+
+=cut
+
+__PACKAGE__->many_to_many("attachments", "title_attachments", "attachment");
 
 =head2 categories
 
@@ -511,8 +536,8 @@ Composing rels: L</node_titles> -> node
 __PACKAGE__->many_to_many("nodes", "node_titles", "node");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-07-12 09:33:17
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/pCllfccL1G90LMVI7t94Q
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-11-14 11:10:55
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:W1ThOPPyZvKidZ6VJKSKvg
 
 =head2 translations
 
@@ -566,6 +591,23 @@ use HTML::LinkExtor; # from HTML::Parser
 use HTML::TreeBuilder;
 use URI;
 use constant { PAPER_PAGE_SIZE => 2000 };
+
+has selected_formats => (is => 'ro',
+                         isa => 'Maybe[HashRef]',
+                         lazy => 1,
+                         builder => '_build_selected_formats',
+                        );
+
+sub _build_selected_formats {
+    my $self = shift;
+    if (my $formats = $self->muse_headers->header_value_by_name('formats')) {
+        if ($formats =~ m/\w/) {
+            my %out = map { $_ => 1 } split(/[,\s]+/, $formats);
+            return \%out;
+        }
+    }
+    return undef;
+}
 
 =head2 listing
 
@@ -1018,6 +1060,19 @@ sub attached_objects {
         }
     }
     return @indexed;
+}
+
+sub images {
+    my $self = shift;
+    my $muse = $self->muse_object;
+    my @out;
+    foreach my $uri ($muse->attachments) {
+        log_debug { "Found $uri" };
+        if (my $att = $self->site->attachments->by_uri($uri)) {
+            push @out, $att;
+        }
+    }
+    return @out;
 }
 
 sub attached_pdfs {
@@ -1566,6 +1621,46 @@ sub can_be_indexed {
     else {
         return 0;
     }
+}
+
+sub wants_custom_format {
+    my ($self, $cf) = @_;
+    die "Missing argument" unless $cf;
+    die "Wrong argument" unless $cf->isa('AmuseWikiFarm::Schema::Result::CustomFormat');
+    if (my $cfs = $self->selected_formats) {
+        Dlog_debug { $self->full_uri . " has selected formats: $_ checking against " . $cf->code } $cfs;
+        return $cfs->{$cf->code};
+    }
+    else {
+        # nothing selected, so yes.
+        return 1;
+    }
+}
+
+sub display_categories {
+    my $self = shift;
+    my @out;
+    foreach my $ctype ($self->site->site_category_types->active->all) {
+        my $rs = $self->categories->by_type($ctype->category_type)->with_active_flag_on;
+        my @list;
+        while (my $cat = $rs->next) {
+            push @list, {
+                         uri => $cat->full_uri,
+                         name => $cat->name,
+                        };
+        }
+        if (@list) {
+            push @out, {
+                        # loc('Authors'); loc('Author'); loc('Topic'); loc('Topics');
+                        title => @list > 1 ? $ctype->name_plural : $ctype->name_singular,
+                        entries => \@list,
+                        # s if for the legacy
+                        identifier => $ctype->category_type . 's',
+                        code => $ctype->category_type,
+                       };
+        }
+    }
+    return \@out;
 }
 
 

@@ -541,7 +541,8 @@ sub dispatch_job_purge {
     die "No user!" unless $user;
     my $path = $text->f_full_path_name;
     my $uri = $text->full_uri;
-    log_info { "Removing $path, job purged" };
+    log_info { "Removing $path, purge job" };
+    $logger->("Purging " . $text->full_uri . "\n");
     if (my $git = $site->git) {
         local $ENV{GIT_COMMITTER_NAME}  = $self->committer_name;
         local $ENV{GIT_COMMITTER_EMAIL} = $self->committer_mail;
@@ -554,7 +555,7 @@ sub dispatch_job_purge {
         unlink $path or die "Couldn't delete $path $!\n";
     }
     $text->delete;
-    return '/';
+    return '/console/unpublished';
 }
 
 
@@ -572,10 +573,10 @@ sub dispatch_job_rebuild {
     my ($self, $logger) = @_;
     if (my $id = $self->job_data->{id}) {
         my $site = $self->site;
-        my @cfs = @{$site->active_custom_formats};
         if (my $text = $site->titles->find($id)) {
             my $muse = $text->filepath_for_ext('muse');
             if (-f $muse) {
+                my @cfs = grep { $text->wants_custom_format($_) } @{$site->active_custom_formats};
                 my $compiler = $site->get_compiler($logger);
                 foreach my $cf (@cfs) {
                     $cf->save_canonical_from_aliased_file($muse);

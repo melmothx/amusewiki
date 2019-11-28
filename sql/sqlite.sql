@@ -439,6 +439,17 @@ CREATE TABLE category_description (
 
 CREATE UNIQUE INDEX unique_category_description ON category_description(category_id, lang);
 
+CREATE TABLE site_category_type (
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
+       category_type VARCHAR(16) NOT NULL,
+       active SMALLINT NOT NULL DEFAULT 1,
+       priority INTEGER NOT NULL DEFAULT 0,
+       name_singular VARCHAR(255) NOT NULL,
+       name_plural VARCHAR(255) NOT NULL,
+       PRIMARY KEY (site_id, category_type)
+);
+
 CREATE TABLE attachment (
        id INTEGER PRIMARY KEY,
        f_path      TEXT NOT NULL,
@@ -579,6 +590,14 @@ CREATE TABLE node_category (
        PRIMARY KEY (node_id, category_id)
 );
 
+CREATE TABLE title_attachment (
+       title_id INTEGER NOT NULL REFERENCES title(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE,
+       attachment_id INTEGER NOT NULL REFERENCES attachment(id)
+               ON DELETE CASCADE ON UPDATE CASCADE,
+       PRIMARY KEY (title_id, attachment_id)
+);
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),
@@ -613,6 +632,7 @@ INSERT INTO table_comments (table_name, comment_text)
          ('global_site_files', 'Files which site uses'),
          ('amw_session', 'Session backend'),
          ('title_stat', 'Usage statistics'),
+         ('title_attachment', 'Linking table from Title to Attachment'),
          ('node', 'Nestable nodes'),
          ('node_body', 'Nodes description'),
          ('node_title', 'Linking table from Node to Title'),

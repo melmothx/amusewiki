@@ -80,3 +80,19 @@ p.tableofcontentline a{
 #downloadformats a {
     color: @text-color;
 }
+
+.amw-radio-with-images {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.amw-radio-with-images + .amw-radio-image-label {
+    cursor: pointer;
+}
+.amw-radio-with-images:checked + .amw-radio-image-label {
+    margin-left: 10px;
+    margin-right: 10px;
+    outline: 3px solid @brand-primary;
+}

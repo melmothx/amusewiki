@@ -759,6 +759,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 site_category_types
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::SiteCategoryType>
+
+=cut
+
+__PACKAGE__->has_many(
+  "site_category_types",
+  "AmuseWikiFarm::Schema::Result::SiteCategoryType",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 site_links
 
 Type: has_many
@@ -875,8 +890,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-07-12 09:33:16
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:QxOGIMUTTJjMR6mYHy8S0Q
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-11-16 11:01:49
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:yGsFn693JLqyhiuo5L1MaA
 
 =head2 other_sites
 
@@ -1397,6 +1412,24 @@ sub _build_repo_is_under_git {
     return -d File::Spec->catdir($self->repo_root, '.git');
 }
 
+has custom_category_types => (is => 'ro',
+                              isa => 'ArrayRef',
+                              lazy => 1,
+                              builder => '_build_custom_category_types');
+
+sub _build_custom_category_types {
+    my $self = shift;
+    my @out;
+    foreach my $ct ($self->site_category_types->search(undef, { order_by => 'priority'})->all) {
+        push @out, {
+                    name => $ct->category_type,
+                    fields => $ct->header_fields,
+                   };
+    }
+    return \@out;
+}
+
+
 =head1 Site modes
 
 To check the site mode, you should use these methods, instead of
@@ -1718,7 +1751,7 @@ sub collation_index {
     my $ttime = time();
     my @texts = sort {
         # warn $a->id . ' <=>  ' . $b->id;
-        $collator->cmp($a->list_title, $b->list_title)
+        $collator->cmp($a->list_title // '', $b->list_title // '')
     } $self->titles->search(undef, { order_by => 'sorting_pos',
                                      columns => [qw/id sorting_pos list_title/] })->all;
 
@@ -1840,12 +1873,23 @@ sub compile_and_index_files {
         }
         if (my $indexed = $self->index_file($file, $logger)) {
             if ($indexed->isa('AmuseWikiFarm::Schema::Result::Title')) {
-                foreach my $cf (@inactive_cfs) {
+                my (@to_do, @to_clean);
+                foreach my $cf (@active_cfs) {
+                    if ($indexed->wants_custom_format($cf)) {
+                        push @to_do, $cf;
+                    }
+                    else {
+                        push @to_clean, $cf;
+                    }
+                }
+                push @to_clean, @inactive_cfs;
+
+                foreach my $cf (@to_clean) {
                     $logger->("Removed inactive format " . $cf->format_name . "\n")
                       if $cf->remove_stale_files($indexed);
                 }
               CUSTOMFORMAT:
-                foreach my $cf (@active_cfs) {
+                foreach my $cf (@to_do) {
                     # the standard compilation nuked the standard formats, so we
                     # have to restore them, preserving the TS. Then we
                     # will rebuild them in the next job.
@@ -1962,7 +2006,7 @@ sub index_file {
         return;
     }
 
-    my $details = muse_file_info($file, $self->repo_root);
+    my $details = muse_file_info($file, $self->repo_root, { category_types => $self->custom_category_types });
     # unparsable
     return unless $details;
 
@@ -2149,6 +2193,12 @@ sub index_file {
     if (my $teaser_length = $self->automatic_teaser) {
         $title->autogenerate_teaser($teaser_length, $logger);
     }
+
+    foreach my $att (grep { $_ } ($title->attached_objects, $title->cover_file, $title->images)) {
+        unless ($title->title_attachments->find({ attachment_id => $att->id })) {
+            $title->add_to_attachments($att);
+        }
+    }
     $guard->commit;
 
     # postpone the xapian indexing to the very end. The only piece
@@ -2259,18 +2309,25 @@ sub supported_locales {
     return @locales;
 }
 
-sub is_without_authors {
+sub category_types_navbar_display {
     my ($self, $logged_in) = @_;
-    return !$self->categories->by_type('author')
-      ->with_texts(deferred => $logged_in || $self->show_preview_when_deferred)
-      ->first;
-}
-
-sub is_without_topics {
-    my ($self, $logged_in) = @_;
-    return !$self->categories->by_type('topic')
-      ->with_texts(deferred => $logged_in || $self->show_preview_when_deferred)
-      ->first;
+    my @out;
+    foreach my $ct ($self->site_category_types->active->all) {
+        my $type = $ct->category_type;
+        # special case, already listed
+        if ($type eq 'topic' and $self->fixed_category_list) {
+            next;
+        }
+        if ($self->categories->by_type($ct->category_type)
+            ->with_texts(deferred => $logged_in || $self->show_preview_when_deferred)
+            ->first) {
+            push @out, {
+                        ctype => $ct->category_type,
+                        title => $ct->name_plural,
+                       };
+        }
+    }
+    return \@out;
 }
 
 has options_hr => (
@@ -4161,10 +4218,67 @@ sub create_feed {
     return $feed->to_string;
 }
 
+sub init_category_types {
+    my $self = shift;
+    foreach my $ctype ({
+                        category_type => 'author',
+                        active => 1,
+                        priority => 0,
+                        name_singular => 'Author',
+                        name_plural => 'Authors',
+                       },
+                       {
+                        category_type => 'topic',
+                        active => 1,
+                        priority => 1,
+                        name_singular => 'Topic',
+                        name_plural => 'Topics',
+                       }) {
+        $self->site_category_types->find_or_create($ctype);
+    }
+    $self->discard_changes;
+}
+
+sub edit_category_types_from_params {
+    my ($self, $args) = @_;
+    my %params = %$args;
+    my $count = 0;
+    my $changed = 0;
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    foreach my $cc ($self->site_category_types->all) {
+        $count++;
+        my $code = $cc->category_type;
+        foreach my $f (qw/active priority name_singular name_plural/) {
+            my $cgi = $code . '_' . $f;
+            if (exists $params{$cgi}) {
+                $cc->$f($params{$cgi})
+            }
+            if ($cc->is_changed) {
+                Dlog_info { "Updating $code $_" } +{ $cc->get_dirty_columns };
+                $cc->update;
+                $changed++;
+            }
+        }
+    }
+    if ($params{create} and $params{create} =~ m/\A[a-z]{1,16}\z/) {
+        $self->site_category_types->find_or_create({
+                                                    category_type => $params{create},
+                                                    priority => $count + 1,
+                                                    active => 1,
+                                                    name_singular => ucfirst($params{create}),
+                                                    name_pluralx => ucfirst($params{create} . 's'),
+                                                   });
+        $changed++;
+    }
+    $guard->commit;
+    return $changed;
+}
+
 after insert => sub {
     my $self = shift;
     $self->discard_changes;
     $self->check_and_update_custom_formats;
+    $self->init_category_types;
 };
 
 __PACKAGE__->meta->make_immutable;

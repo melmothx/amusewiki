@@ -193,7 +193,7 @@ ok (-f $text_file, "$text_file is present");
 
 $mech->get($text);
 
-is $mech->status, '404', "deleted text not found";
+is $mech->uri->path, '/console/unpublished', "deleted text not found";
 
 $mech->get_ok('/console/unpublished');
 

@@ -89,14 +89,13 @@ before process => sub {
                                              },
                        };
         $c->stash(
-                  site_is_without_authors => $site->is_without_authors($c->user_exists),
-                  site_is_without_topics => $site->is_without_topics($c->user_exists),
                   bootstrap_css => "/static/css/bootstrap.$theme.css",
                   main_body_cols => $columns,
                   top_layout_html => $site->top_layout_html,
                   bottom_layout_html => $site->bottom_layout_html,
                   footer_layout_html => $site->footer_layout_html,
                   sitelinks_searchbox => to_json($sitelink, pretty => 1, canonical => 1),
+                  category_types_navbar_display => $site->category_types_navbar_display($c->user_exists),
                  );
     }
 };
@@ -187,11 +186,14 @@ sub add_open_graph {
                 if (my $author = $text->author) {
                     push @opengraph, { p => "og:$type:author", c => $author };
                 }
-                if (my $topics = $c->stash->{text_topics}) {
-                    if (ref($topics) and ref($topics) eq 'ARRAY') {
-                        foreach my $topic (@$topics) {
-                            push @opengraph, { p => "og:$type:tag", c => $c->loc($topic->{name}) }
-                              if $topic->{name};
+                if (my $categories = $c->stash->{text_display_categories}) {
+                    my $lh = $c->stash->{lh};
+                    my ($topics) = grep { $_->{code} eq 'topic' } @$categories;
+                    if ($topics && @{$topics->{entries}}) {
+                        foreach my $topic (@{$topics->{entries}}) {
+                            if (my $t = $topic->{name}) {
+                                push @opengraph, { p => "og:$type:tag", c => $lh->site_loc($t) };
+                            }
                         }
                     }
                 }

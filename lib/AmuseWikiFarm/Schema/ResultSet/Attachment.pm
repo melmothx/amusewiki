@@ -59,7 +59,11 @@ sub find_file {
     return $self->search({ f_full_path_name => $path })->single;
 }
 
-
+sub images_only {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.f_class" => "image" });
+}
 
 1;
 

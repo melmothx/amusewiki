@@ -417,11 +417,16 @@ kpsewhich mylogo.pdf
 
     <div class="form-group">
       <label for="fixed_category_list" class="col-sm-6 control-label">
-        [% loc('Fixed category list') %]
+        [% loc('Fixed topic list') %]
       </label>
       <div class="col-sm-6">
         <input type="text"  name="fixed_category_list" id="fixed_category_list"
                class="form-control" value="[% esite.fixed_category_list | html %]" />
+        <p class="help-block">
+          <a href="[% c.uri_for_action('/settings/categories') %]">
+            [% loc('Beside topics and authors you can add more categories here') %]
+          </a>
+        </p>
       </div>
     </div>
 

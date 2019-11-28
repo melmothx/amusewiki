@@ -67,6 +67,9 @@ has site_id => (is => 'ro',
 has site => (is => 'lazy',
              isa => Maybe[Object]);
 
+has related_attachments => (is => 'lazy',
+                            isa => ArrayRef[Object]);
+
 sub _build_site {
     my $self = shift;
     if (my $schema = $self->dbic) {
@@ -202,6 +205,23 @@ sub total_pages_estimated {
 sub total_texts {
     my $self = shift;
     return scalar @{ $self->texts };
+}
+
+sub _build_related_attachments {
+    my $self = shift;
+    if (my $site = $self->site) {
+        my @covers = $site->titles
+          ->bookbuildable
+          ->by_uri([ map { Text::Amuse::Compile::FileName->new($_)->name } @{ $self->texts }])
+          ->search_related('title_attachments')
+          ->search_related('attachment')
+          ->images_only
+          ->all;
+        return \@covers;
+    }
+    else {
+        return [];
+    }
 }
 
 sub pages_estimated_for_text {
@@ -868,6 +888,20 @@ has coverwidth => (
                    default => sub { '100' },
                   );
 
+
+has cover_from_archive => (is => 'rw',
+                           isa => Maybe[Str]
+                          );
+
+sub valid_cover_from_archive {
+    my $self = shift;
+    if (my $uri = $self->cover_from_archive) {
+        my ($found) = grep { $_->uri eq $uri } @{$self->related_attachments};
+        return $found;
+    }
+    return undef;
+}
+
 =head2 signature_2up
 
 The signature to use.
@@ -940,8 +974,9 @@ Add a file to be merged into the the options.
 sub remove_cover {
     my $self = shift;
     if (my $oldcoverfile = $self->coverfile_path) {
+        # add check here
         if (-f $oldcoverfile) {
-            log_debug { "Removing $oldcoverfile" };
+            log_info { "Removing $oldcoverfile" };
             unlink $oldcoverfile;
         }
         else {
@@ -1174,6 +1209,7 @@ sub _text_methods {
               source
               coverfile
               coverwidth
+              cover_from_archive
              /;
 }
 
@@ -1293,13 +1329,12 @@ sub as_job {
                                      : (
                                         # when we provide these, they take precedence over the file defined
                                         # see Text::Amuse::Compile::File
-                                        cover       => $self->coverfile,
+                                        cover       => $self->use_cover_filename,
                                         coverwidth  => sprintf('%.2f', $self->coverwidth / 100),
                                        )
                                     ),
                                  },
               };
-    log_debug { "Cover is " . ($self->coverfile ? $self->coverfile : "none") };
     if (!$self->epub && !$self->slides && $self->imposed) {
         $job->{imposer_options} = {
                                    schema    => $self->schema,
@@ -1448,21 +1483,32 @@ sub compile {
     my %compiler_args = $self->compiler_options;
     $compiler_args{logger} = $logger;
 
-    if (!$self->is_single_file and
-        my $coverfile = $self->coverfile_path) {
+    if (!$self->is_single_file and $compiler_args{extra}{cover}) {
         my $coverfile_ok = 0;
-        if (-f $coverfile) {
-            my $coverfile_dest = $makeabs->($self->coverfile);
-            log_debug { "Copying $coverfile to $coverfile_dest" };
-            if (copy($coverfile, $coverfile_dest) and -f $coverfile_dest) {
+
+        my $uploaded = $self->coverfile_path;
+        my $from_archive = $self->valid_cover_from_archive;
+
+        my $coverfile_src;
+        my $coverfile_dest = $makeabs->($compiler_args{extra}{cover});
+
+        if ($uploaded) {
+            $coverfile_src = $uploaded;
+        }
+        elsif ($from_archive) {
+            $coverfile_src = $from_archive->f_full_path_name;
+        }
+        if ($coverfile_src and -f $coverfile_src) {
+            log_debug { "Copying $coverfile_src to $coverfile_dest" };
+            if (copy($coverfile_src, $coverfile_dest) and -f $coverfile_dest) {
                 $coverfile_ok = 1;
             }
             else {
-                log_error { "Failed to copy $coverfile to $coverfile_dest" };
+                log_error { "Failed to copy $coverfile_src to $coverfile_dest" };
             }
         }
         if ($coverfile_ok) {
-            $logger->("* Using uploaded image on the cover page $coverfile\n");
+            $logger->("* Using $compiler_args{extra}{cover} on the cover page\n");
         }
         else {
             $logger->("Cover image provided vanished, ignoring it\n");
@@ -1858,6 +1904,19 @@ sub imposer_options {
         %out = %{$data->{imposer_options}};
     }
     return %out;
+}
+
+sub use_cover_filename {
+    my $self = shift;
+    if ($self->coverfile) {
+        return $self->coverfile;
+    }
+    elsif ($self->valid_cover_from_archive) {
+        return $self->cover_from_archive;
+    }
+    else {
+        return undef;
+    }
 }
 
 

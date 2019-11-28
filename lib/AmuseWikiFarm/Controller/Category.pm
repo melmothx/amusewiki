@@ -75,18 +75,21 @@ sub legacy_category :Private {
 sub category :Chained('root') :PathPart('category') :CaptureArgs(1) {
     my ($self, $c, $type) = @_;
     my $name;
-    if ($type eq 'topic') {
-        $name = $c->loc('Topics');
 
-    }
-    elsif ($type eq 'author') {
-        $name = $c->loc('Authors');
+    my $site = $c->stash->{site};
+
+    if (my $ctype = $site->site_category_types->single({
+                                                        category_type => $type,
+                                                        active => 1,
+                                                       })) {
+        $name = $c->loc($ctype->name_plural);
     }
     else {
+        log_info { "category $type is not preset or inactive" }
         $c->detach('/not_found');
         return;
     }
-    my $site = $c->stash->{site};
+
     my %search;
     if ($c->user_exists) {
         $search{deferred} = 1;

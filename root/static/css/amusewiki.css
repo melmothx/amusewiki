@@ -419,3 +419,34 @@ legend.amw-facet-title {
     font-size: 14px;
     font-weight: bold;
 }
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:after {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  display: block;
+  margin-left: 2px;
+  font-family: 'ForkAwesome';
+  opacity: 0.5;
+}
+table.dataTable thead .sorting:after {
+  opacity: 0.2;
+  content: "\f0dc";
+  /* sort */
+}
+table.dataTable thead .sorting_asc:after {
+  content: "\f161";
+  /* sort-by-attributes */
+}
+table.dataTable thead .sorting_desc:after {
+  content: "\f160";
+  /* sort-by-attributes-alt */
+}
+
+textarea.form-control {
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}
