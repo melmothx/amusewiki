@@ -18,7 +18,9 @@ sub jobs :Chained('get_jobs') :PathPart('show') :Args {
     # first, we handled deletions and reschedule
     if (my $delete = $c->request->body_parameters->{delete_job}) {
         Dlog_info { "Deleting jobs $_" } $delete;
-        my $jobs = $rs->search({ id => $delete });
+        my $jobs = $rs->search(
+                               { id => [ grep { $_ } @{ ref($delete) ? $delete : [ $delete ] } ] }
+                              );
         my $total = 0;
         foreach my $j ($jobs->all) {
             # same as ->delete_all
@@ -29,7 +31,9 @@ sub jobs :Chained('get_jobs') :PathPart('show') :Args {
     }
     if (my $reschedule = $c->request->body_parameters->{reschedule_job}) {
         Dlog_info { "Rescheduling jobs $_" } $reschedule;
-        my $jobs = $rs->search({ id => $reschedule });
+        my $jobs = $rs->search(
+                               { id => [ grep { $_ } @{ ref($reschedule) ? $reschedule : [ $reschedule ] } ] }
+                              );
         my $total = 0;
         foreach my $j ($jobs->all) {
             $total++;
