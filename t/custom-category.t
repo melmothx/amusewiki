@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 79;
+use Test::More tests => 88;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -104,3 +104,27 @@ foreach my $t ($site->titles) {
         $mech->content_contains($c->full_uri);
     }
 }
+
+ok $site->edit_category_types_from_params({
+                                           create => 'pippo',
+                                           publisher_active => 0,
+                                           publisher_priority => 4,
+                                           publisher_name_singular => 'P',
+                                           publisher_name_plural => 'PP',
+                                          });
+{
+    my $cc = $site->site_category_types->find({ category_type => 'pippo' });
+    ok $cc;
+    ok $cc->active;
+    is $cc->name_plural, 'Pippos';
+    is $cc->name_singular, 'Pippo';
+
+}
+{
+    my $cc = $site->site_category_types->find({ category_type => 'publisher' });
+    ok $cc;
+    ok !$cc->active;
+    is $cc->name_plural, 'PP';
+    is $cc->name_singular, 'P';
+}
+

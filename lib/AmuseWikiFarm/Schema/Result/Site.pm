@@ -4266,7 +4266,7 @@ sub edit_category_types_from_params {
                                                     priority => $count + 1,
                                                     active => 1,
                                                     name_singular => ucfirst($params{create}),
-                                                    name_pluralx => ucfirst($params{create} . 's'),
+                                                    name_plural => ucfirst($params{create} . 's'),
                                                    });
         $changed++;
     }
