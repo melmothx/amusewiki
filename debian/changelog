@@ -1,3 +1,9 @@
+amusewiki (2.410-3+amw1) unstable; urgency=medium
+
+  * Rebuilt with another hotfix
+
+ -- Marco Pessotto <melmothx@gmail.com>  Thu, 28 Nov 2019 20:44:51 +0100
+
 amusewiki (2.410-2+amw1) unstable; urgency=medium
 
   * Rebuilt with an hotfix
