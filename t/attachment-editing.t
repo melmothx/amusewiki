@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 use Cwd;
 use File::Spec::Functions qw/catfile catdir/;
-use Test::More tests => 16;
+use Test::More tests => 14;
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
     $ENV{AMW_NO_404_FALLBACK} = 1;
@@ -32,7 +32,7 @@ my $attachment;
                                        }, 'text');
     my $pdf = catfile(qw/t files shot.pdf/);
     my $got = $rev->add_attachment($pdf);
-    for my $i (1..20) {
+    for my $i (1..2) {
         $rev->add_attachment($pdf);
     }
     ok $got->{attachment};
@@ -63,5 +63,3 @@ $mech->content_contains("this is my <strong>description</strong>");
 $mech->get_ok('/attachments/list');
 $mech->content_contains("Hello <em>there</em>");
 $mech->content_contains("this is my <strong>description</strong>");
-ok $mech->follow_link(url_regex => qr{/attachments/list/2}), "Pagination ok";
-$mech->content_lacks("this is my <strong>description</strong>");
