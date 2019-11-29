@@ -88,10 +88,20 @@ div.caption {
 
 div.center {
     text-align: center;
+    margin: 1em 0 1em 0;
 }
 
 div.right {
     text-align: right;
+    margin: 1em 0 1em 0;
+}
+
+div.right > p {
+    margin: 0;
+}
+
+div.center > p {
+    margin: 0;
 }
 
 div#tableofcontents{
