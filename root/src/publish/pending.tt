@@ -1,5 +1,3 @@
-[% # -*- mode: html -*- %]
-
 [%- # loc('editing')    -%]
 [%- # loc('pending')    -%]
 [%- # loc('processing') -%]
@@ -10,7 +8,8 @@
 <h3>[% page_title | html %]</h3>
 
 <div class="table-responsive">
-  <table class="table table-striped table-condensed table-bordered">
+  <table class="table table-striped table-condensed table-bordered amw-datatable">
+    <thead>
     <tr>
       <th>[% loc('Revision') %]</th>
       <th>[% loc('Attachments') %]</th>
@@ -21,6 +20,8 @@
       <th>[% loc('Message')  %]</th>
       <th>[% loc('Date')     %]</th>
     </tr>
+    </thead>
+    <tbody>
     [% FOREACH rev IN revisions %]
     <tr>
       <td>
@@ -104,6 +105,7 @@
       </td>
     </tr>
     [% END %]
+    </tbody>
   </table>
 </div>
 

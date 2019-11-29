@@ -141,6 +141,7 @@ sub unpublished_list :Chained('root') :PathPart('unpublished') :CaptureArgs(0) {
 
 sub unpublished :Chained('unpublished_list') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
+    $c->stash(load_datatables => 1);
     # empty to close the chain
 }
 
@@ -282,6 +283,7 @@ sub list_categories :Chained('categories') :PathPart('list') :Args(0) {
               page_title => $c->loc('Manage categories'),
               categories => \@all,
               toggler_url => $c->uri_for_action('/console/toggle_category'),
+              load_datatables => 1,
              );
 }
 

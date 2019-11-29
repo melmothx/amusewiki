@@ -68,9 +68,11 @@ sub pending :Chained('root') :PathPart('pending') :Args(0) {
                                     'title.status' => 'editing'
                                    }
                                   ]);
-    $c->stash(page_title => $c->loc('Pending revisions'));
-    $c->stash(return => 'pending');
-    $c->stash(revisions => $revs->as_list );
+    $c->stash(page_title => $c->loc('Pending revisions'),
+              return => 'pending',
+              revisions => $revs->as_list,
+              load_datatables => 1,
+             );
 };
 
 sub all :Chained('root') :PathPart('all') :Args {
@@ -95,6 +97,7 @@ sub all :Chained('root') :PathPart('all') :Args {
               revisions => $revs->as_list,
               page_title => $c->loc('All revisions'),
               return => 'all',
+              load_datatables => 1,
               template => 'publish/pending.tt',
              );
 }

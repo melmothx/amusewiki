@@ -1,10 +1,9 @@
-[%# -*- mode: html -*- %]
-
 <h2>[% loc('List of texts on hold') %]</h2>
 
 [% IF text_list %]
 
-<table class="table table-striped">
+<table class="table table-striped amw-datatable">
+  <thead>
   <tr>
     <th>[% loc('URI') %]</th>
     <th>[% loc('Author') %]</th>
@@ -13,8 +12,9 @@
     <th>[% loc('Reason') %]</th>
     <th>[% loc('Publication date') %]</th>
     <th>[% loc('Purge') %]</th>
-    <th></th>
   </tr>
+  </thead>
+  <tbody>
   [% FOREACH text IN text_list %]
   <tr>
     <td>
@@ -37,20 +37,21 @@
     <td>
       [% text.pubdate.datetime %]
     </td>
-    <td>
+    <td class="text-center">
       [% IF text.deleted %]
       <form name="purge" action="[% c.uri_for_action('/console/purge') %]"
             onsubmit="return amw_confirm()"
             method="post">
         <input type="hidden" name="purge" value="[% text.id %]"/>
-        <button type="submit" class="btn btn-danger">
-          [% loc('Purge') %]
+        <button type="submit" class="btn btn-danger" title="[% loc('Purge') %]">
+          <span class="fa fa-trash"></span>
         </button>
       </form>
       [% END %]
     </td>
   </tr>
   [% END %]
+  </tbody>
 </table>
 
 
