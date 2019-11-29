@@ -1126,6 +1126,7 @@ root/static/js/amuse.js
 root/static/js/amw-anchors.js
 root/static/js/amw-autosuggest.js
 root/static/js/amw-batch-upload.js
+root/static/js/amw-datatables.js
 root/static/js/amw-diff.js
 root/static/js/amw-extimg.js
 root/static/js/amw-footnotes.js

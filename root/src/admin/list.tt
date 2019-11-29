@@ -1,5 +1,3 @@
-[%# -*- mode:html -*- %]
-
 <h2>[% page_title | html %]</h2>
 
 [% SET protocol = c.req.uri.scheme %]
@@ -8,7 +6,7 @@
 [% END %]
 
 <div class="table-responsive">
-  <table id="site-table" class="table table-striped table-condensed table-bordered">
+  <table id="site-table" class="table table-striped table-condensed table-bordered amw-datatable">
     <thead>
     <tr>
       <th>[% loc('Id') %]</th>
@@ -96,8 +94,3 @@
     </div>
   </form>
 </div>
-<script>
-  $(document).ready(function() {
-      $('#site-table').DataTable();
-  });
-</script>

@@ -118,6 +118,9 @@
       <script type="text/javascript"
               src="[% c.uri_for('/static/js/datatables/datatables.min.js') %]">
       </script>
+      <script type="text/javascript"
+              src="[% c.uri_for('/static/js/amw-datatables.js') %]">
+      </script>
     [% END %]
 
     [%# our css for the web application %]
