@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.411 2019-11-29
+
+ - Extend the use of datatables and localize them (GH#324)
+
 2.410 2019-11-28
 
  - Use datatables.net Javascript for large tables in the admin (users,
