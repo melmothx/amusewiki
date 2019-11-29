@@ -13,9 +13,14 @@
     <tr>
       <th>[% loc('Revision') %]</th>
       <th>[% loc('Attachments') %]</th>
-      <th [% IF c.user_exists %]colspan="2"[% END %] style="text-align:center">
+      <th class="text-center">
         [% loc('Action')   %]
       </th>
+      [% IF c.user_exists %]
+      <th class="text-center">
+        [% loc('Delete')   %]
+      </th>
+      [% END %]
       <th>[% loc('Changes')  %]</th>
       <th>[% loc('Message')  %]</th>
       <th>[% loc('Date')     %]</th>

@@ -1,14 +1,16 @@
+use utf8;
 use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 24;
+use Test::More tests => 30;
 
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use Data::Dumper;
 
 use AmuseWikiFarm::Schema;
+use Encode;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
@@ -50,3 +52,10 @@ ok @$adisplays == 3;
 ok scalar(grep { $_ eq 'Marco & C.' }  @$adisplays);
 diag $mech->content;
 is_deeply($adisplays, $site->titles->list_display_authors);
+
+$mech->get_ok("/api/datatables-lang?__language=ru");
+$mech->content_contains(encode('UTF-8', 'активировать'));
+$mech->get_ok("/api/datatables-lang?__language=hr");
+$mech->content_contains(encode('UTF-8', 'Prikaži'));
+$mech->get_ok("/api/datatables-lang?__language=en");
+$mech->content_contains('Showing');

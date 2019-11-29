@@ -5,7 +5,10 @@ $(document).ready(function() {
             [10, 25, 50, 100, 200, -1],
             [10, 25, 50, 100, 200, "∞"]
         ],
-        "pageLength": 25
+        "pageLength": 25,
+        "language": {
+            "url": "/api/datatables-lang"
+        }
     };
     if (el.data('ajax-source')) {
         init.ajax = el.data('ajax-source');

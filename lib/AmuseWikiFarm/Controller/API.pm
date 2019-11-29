@@ -5,6 +5,8 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Utils::Paths;
+use IO::File;
 
 =head1 NAME
 
@@ -148,6 +150,45 @@ sub legacy_links :Chained('api') :PathPart('legacy-links') :Args(0) {
     $c->detach($c->view('JSON'));
 }
 
+
+sub datatables_lang :Chained('api') :PathPart('datatables-lang') :Args(0) {
+    my ($self, $c) = @_;
+    my %langs = (
+                 tr => 'Turkish',
+                 ru => 'Russian',
+                 hr => 'Croatian',
+                 it => 'Italian',
+                 he => 'Hebrew',
+                 fa => 'Persian',
+                 ar => 'Arabic',
+                 cs => 'Czech',
+                 da => 'Danish',
+                 pt => 'Portuguese',
+                 pl => 'Polish',
+                 sv => 'Swedish',
+                 sr => 'Serbian_latin',
+                 sq => 'Albanian',
+                 en => 'English',
+                 nl => 'Dutch',
+                 fr => 'French',
+                 de => 'German',
+                 id => 'Indonesian',
+                 mk => 'Macedonian',
+                 es => 'Spanish',
+                 fi => 'Finnish',
+                );
+    my $lang = $c->stash->{current_locale_code} || 'en';
+    if (my $data_file = $langs{$lang}) {
+        my $base = AmuseWikiFarm::Utils::Paths::static_file_location();
+        my $file = $base->child(qw/js datatables i18n/, $data_file . '.json');
+        if ($file->exists) {
+            $c->response->content_type('application/json');
+            $c->response->body(IO::File->new("$file", 'r'));
+            return;
+        }
+    }
+    $c->response->status(404);
+}
 
 
 =head1 AUTHOR
