@@ -59,7 +59,7 @@
     <input type="hidden" name="name" value="[% c.user.get('username') %]" />
     <div class="form-group">
       <label for="url" class="control-label">
-        [% loc('URL of the new remote repository (HTTPS, HTTP or GIT') %]:
+        [% loc('URL of the new remote repository (HTTPS, HTTP or GIT)') %]:
       </label>
       <input type="text" name="url" pattern="(git|https?)://.*" placeholder="https://..."
              required
