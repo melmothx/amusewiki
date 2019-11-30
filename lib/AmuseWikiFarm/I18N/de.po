@@ -20,6 +20,14 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr ""
 
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr ""
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr ""
+
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
@@ -284,6 +292,9 @@ msgstr ""
 msgid "Beamer theme"
 msgstr ""
 
+msgid "Beside topics and authors you can add more categories here"
+msgstr ""
+
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Bindungskorrektur in Millimeter (zusätzlich innerer Rand)"
 
@@ -354,6 +365,10 @@ msgstr "Kanonischer Name"
 msgid "Categories"
 msgstr "Kategorien"
 
+#. ($site->canonical)
+msgid "Category types for %1"
+msgstr ""
+
 msgid "Center all the sectioning titles."
 msgstr ""
 
@@ -412,6 +427,9 @@ msgstr ""
 msgid "Close"
 msgstr "Schließen"
 
+msgid "Code"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -446,6 +464,9 @@ msgstr "Konnte das nicht binden"
 
 msgid "Create"
 msgstr "Erstellen"
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
 
 msgid "Create a new format"
 msgstr ""
@@ -749,12 +770,12 @@ msgstr ""
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr ""
 
-msgid "Fixed category list"
-msgstr "Feste Kategorienliste"
-
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
+msgstr ""
+
+msgid "Fixed topic list"
 msgstr ""
 
 msgid "Font preview"
@@ -1130,12 +1151,6 @@ msgstr ""
 msgid "JPG, PNG and PDF are always allowed."
 msgstr ""
 
-msgid "Job deleted"
-msgstr "Auftrag gelöscht"
-
-msgid "Job rescheduled"
-msgstr ""
-
 msgid "Job status"
 msgstr ""
 
@@ -1347,6 +1362,12 @@ msgstr ""
 
 msgid "Name"
 msgstr "Name"
+
+msgid "Name plural"
+msgstr ""
+
+msgid "Name singular"
+msgstr ""
 
 msgid "Network library listing screen."
 msgstr ""
@@ -1883,6 +1904,9 @@ msgstr "Magazin"
 msgid "Request failed! Please report the the problem"
 msgstr ""
 
+msgid "Reschedule"
+msgstr ""
+
 msgid "Reset all"
 msgstr ""
 
@@ -1969,6 +1993,9 @@ msgstr ""
 msgid "Search results"
 msgstr ""
 
+msgid "Search this column"
+msgstr ""
+
 msgid "Secondary footnotes"
 msgstr ""
 
@@ -1993,6 +2020,12 @@ msgstr ""
 msgid "Select all"
 msgstr ""
 
+msgid "Select all for deletion"
+msgstr ""
+
+msgid "Select all for rescheduling"
+msgstr ""
+
 msgid "Select individual parts for the bookbuilder"
 msgstr ""
 
@@ -2011,6 +2044,9 @@ msgstr ""
 msgid "Set a date in the future if you want it deferred."
 msgstr ""
 "Wähle ein Datum in der Zukunft wenn du es verzögert veröffentlichen willst."
+
+msgid "Settings loaded"
+msgstr ""
 
 msgid "Show cheatsheet"
 msgstr ""
@@ -2481,9 +2517,6 @@ msgstr "Dreifachbalken"
 msgid "Try a random text if unsure"
 msgstr "Versuche einen zufälligen Text wenn unsicher"
 
-msgid "Try again"
-msgstr ""
-
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
@@ -2507,10 +2540,7 @@ msgstr "URI"
 msgid "URL"
 msgstr "URL"
 
-msgid ""
-"URL of the new remote repository\n"
-"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
-"        supported."
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
 
 msgid "UTC"
@@ -2582,6 +2612,9 @@ msgid "Use SSL for authenticated users"
 msgstr ""
 
 msgid "Use it as a teaser image adding to the header this line:"
+msgstr ""
+
+msgid "Use one of the site's formats"
 msgstr ""
 
 #. (sign)
@@ -2780,6 +2813,9 @@ msgid ""
 "You may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
 "Du solltest Artikel am Anfang des Titels entfernen, z.B. Der, Die, Das, Ein/e"
+
+msgid "You may want to use one of these images"
+msgstr ""
 
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
@@ -3026,6 +3062,12 @@ msgstr ""
 " Bearbeitung, auf Eis gelegt wurde, aber immer noch\n"
 " erhalten ist, falls sie jemand wieder aufnehmen will wenn sie den\n"
 " Text bearbeitet. "
+
+#~ msgid "Fixed category list"
+#~ msgstr "Feste Kategorienliste"
+
+#~ msgid "Job deleted"
+#~ msgstr "Auftrag gelöscht"
 
 #~ msgid "Add an attachment (PNG, JPG or PDF)"
 #~ msgstr "Anhang hinzufügen (PNG, JPG oder PDF)"

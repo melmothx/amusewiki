@@ -20,6 +20,14 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 ne postoji"
 
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr ""
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr ""
+
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
@@ -184,7 +192,8 @@ msgstr "Svi korisnici"
 msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
 "extensions"
-msgstr "Dopusti sljedeće vrste datoteka: popis ekstenzija odvojenih bijelim razmakom"
+msgstr ""
+"Dopusti sljedeće vrste datoteka: popis ekstenzija odvojenih bijelim razmakom"
 
 msgid ""
 "Also produce slides\n"
@@ -290,6 +299,9 @@ msgstr "Beamer tema za boju"
 msgid "Beamer theme"
 msgstr "Beamer tema"
 
+msgid "Beside topics and authors you can add more categories here"
+msgstr ""
+
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Korekcija za uvez u milimetrima (dodatna unutarnja margina)"
 
@@ -362,6 +374,10 @@ msgstr "Glavno osnovno ime"
 msgid "Categories"
 msgstr "Teme"
 
+#. ($site->canonical)
+msgid "Category types for %1"
+msgstr ""
+
 msgid "Center all the sectioning titles."
 msgstr "Centriraj sve naslove"
 
@@ -422,6 +438,9 @@ msgstr "Kloniraj na svoj mašini repozitorij i podesi ga"
 msgid "Close"
 msgstr "Zatvori"
 
+msgid "Code"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -456,6 +475,9 @@ msgstr "Ne mogu stvoriti zbirku"
 
 msgid "Create"
 msgstr "Stvori"
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
 
 msgid "Create a new format"
 msgstr "Stvori novi format"
@@ -773,15 +795,15 @@ msgstr "Arci od 16 stranica na dva lista, uz dvostruko pojedinačno savijanje."
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr "Arci od 16 stranica na jednom listu, uz trostruko savijanje."
 
-msgid "Fixed category list"
-msgstr "Nepromjenjiv popis kategorija"
-
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
 msgstr ""
 "Fiksni svesci od 8 stranica, za horizontalno rezanje, pojedinačno savijanje "
 "i uvez u buklet"
+
+msgid "Fixed topic list"
+msgstr ""
 
 msgid "Font preview"
 msgstr "Pretpregled fontova"
@@ -1206,12 +1228,6 @@ msgstr "Kurzivi, podebljano, kod, novi redak"
 msgid "JPG, PNG and PDF are always allowed."
 msgstr "Uvijek su dopuštene JPG, PNG i PDF datoteke."
 
-msgid "Job deleted"
-msgstr "Izbrisani zadatak"
-
-msgid "Job rescheduled"
-msgstr "Zadatak opet postavljen"
-
 msgid "Job status"
 msgstr "Status zadatka"
 
@@ -1421,6 +1437,12 @@ msgstr "Nepoznato"
 
 msgid "Name"
 msgstr "Ime"
+
+msgid "Name plural"
+msgstr ""
+
+msgid "Name singular"
+msgstr ""
 
 msgid "Network library listing screen."
 msgstr "Stranica s popisom mrežnih arhiva."
@@ -1984,6 +2006,9 @@ msgstr "Repozitorij"
 msgid "Request failed! Please report the the problem"
 msgstr "Greška! Kontaktirajte administratore"
 
+msgid "Reschedule"
+msgstr ""
+
 msgid "Reset all"
 msgstr "Poništi sve"
 
@@ -2070,6 +2095,9 @@ msgstr "Filtriranje rezultata"
 msgid "Search results"
 msgstr "Rezultati pretraživanja"
 
+msgid "Search this column"
+msgstr ""
+
 msgid "Secondary footnotes"
 msgstr "Fusnote drugog reda"
 
@@ -2094,6 +2122,12 @@ msgstr "Izaberi"
 msgid "Select all"
 msgstr "Izaberi sve"
 
+msgid "Select all for deletion"
+msgstr ""
+
+msgid "Select all for rescheduling"
+msgstr ""
+
 msgid "Select individual parts for the bookbuilder"
 msgstr "Izaberi pojedinačne dijelove za zbirku"
 
@@ -2111,6 +2145,9 @@ msgstr "Dijeli sesiju"
 
 msgid "Set a date in the future if you want it deferred."
 msgstr "Stavi budući datum ako želiš odgoditi objavljivanje."
+
+msgid "Settings loaded"
+msgstr ""
 
 msgid "Show cheatsheet"
 msgstr "Pokaži sažetak za oblikovanje teksta"
@@ -2591,9 +2628,6 @@ msgstr "Trostruka traka (\"|||\")"
 msgid "Try a random text if unsure"
 msgstr "Pokušaj sa slučajnim tekstom ako nisi siguran"
 
-msgid "Try again"
-msgstr "Pokušaj ponovo"
-
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
@@ -2619,12 +2653,8 @@ msgstr "URI"
 msgid "URL"
 msgstr "URL"
 
-msgid ""
-"URL of the new remote repository\n"
-"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
-"        supported."
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
-"URL udaljenog repozitorija (HTTP, HTTPS, GIT ili direktorij, ali ne SSH)."
 
 msgid "UTC"
 msgstr "UTC"
@@ -2696,6 +2726,9 @@ msgstr "Koristi SSL za ovlaštene korisnike"
 
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr "Koristi je kao sliku za pregled dodajući slijedeći redak zaglavlju:"
+
+msgid "Use one of the site's formats"
+msgstr ""
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
@@ -2879,7 +2912,9 @@ msgstr ""
 msgid ""
 "You can also link to a part of the text. Please refer to the manual for this "
 "feature"
-msgstr "Mogu se dodati i poveznice na neki pasus teksta. Upute se nalaze u priručniku (na engleskom)"
+msgstr ""
+"Mogu se dodati i poveznice na neki pasus teksta. Upute se nalaze u "
+"priručniku (na engleskom)"
 
 #. (create_url)
 msgid "You can create a peer at %1"
@@ -2913,6 +2948,9 @@ msgid ""
 msgstr ""
 "Naslov dokumenta, u svrhu popisa. Obično se ne koristi u hrvatsko-srpskom "
 "jeziku"
+
+msgid "You may want to use one of these images"
+msgstr ""
 
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
@@ -3159,6 +3197,25 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "Fixed category list"
+#~ msgstr "Nepromjenjiv popis kategorija"
+
+#~ msgid "Job deleted"
+#~ msgstr "Izbrisani zadatak"
+
+#~ msgid "Job rescheduled"
+#~ msgstr "Zadatak opet postavljen"
+
+#~ msgid "Try again"
+#~ msgstr "Pokušaj ponovo"
+
+#~ msgid ""
+#~ "URL of the new remote repository\n"
+#~ "        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
+#~ "        supported."
+#~ msgstr ""
+#~ "URL udaljenog repozitorija (HTTP, HTTPS, GIT ili direktorij, ali ne SSH)."
 
 #~ msgid "Add an attachment (PNG, JPG or PDF)"
 #~ msgstr "Dodaj privitak (PNG, JPG ili PDF)"

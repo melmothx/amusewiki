@@ -20,6 +20,14 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 bestaat niet"
 
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr ""
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr ""
+
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
@@ -307,6 +315,9 @@ msgstr "Beamer kleurthema"
 msgid "Beamer theme"
 msgstr "Beamer thema"
 
+msgid "Beside topics and authors you can add more categories here"
+msgstr ""
+
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Inbinding correctie in milimeters (extra binnenmarge)"
 
@@ -382,6 +393,10 @@ msgstr "Kanonieke naam"
 msgid "Categories"
 msgstr "Categorieen"
 
+#. ($site->canonical)
+msgid "Category types for %1"
+msgstr ""
+
 msgid "Center all the sectioning titles."
 msgstr ""
 
@@ -444,6 +459,9 @@ msgstr "Kloon de repo lokaal en begin hem"
 msgid "Close"
 msgstr "Sluit"
 
+msgid "Code"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -480,6 +498,9 @@ msgstr "Kon dat niet maken"
 
 msgid "Create"
 msgstr "Maak"
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
 
 msgid "Create a new format"
 msgstr "Maak een nieuw formaat"
@@ -806,15 +827,15 @@ msgstr "Vast 16 paginas katernen op twee vellen, met dubbele individuele vouw."
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr "Vast 16 paginas katernen op een enkel vel, met drievoudige vouw."
 
-msgid "Fixed category list"
-msgstr "Vaste categorielijst"
-
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
 msgstr ""
 "Vaste katernen van acht paginas, die horizontaal gesneden moeten worden, "
 "individueel gevouwen, en samengebonden."
+
+msgid "Fixed topic list"
+msgstr ""
 
 msgid "Font preview"
 msgstr "Lettertype voorbeeldweergave"
@@ -1261,12 +1282,6 @@ msgstr "Cursief, vet, niet-proportioneel en code (monospace), regeleindes..."
 msgid "JPG, PNG and PDF are always allowed."
 msgstr ""
 
-msgid "Job deleted"
-msgstr "Taak verwijderd"
-
-msgid "Job rescheduled"
-msgstr "Taak uitgesteld"
-
 msgid "Job status"
 msgstr "Taakstatus"
 
@@ -1478,6 +1493,12 @@ msgstr "Niet beschikbaar"
 
 msgid "Name"
 msgstr "Naam"
+
+msgid "Name plural"
+msgstr ""
+
+msgid "Name singular"
+msgstr ""
 
 msgid "Network library listing screen."
 msgstr "Netwerkbibliotheek lijstvenster."
@@ -2059,6 +2080,9 @@ msgstr "Repository"
 msgid "Request failed! Please report the the problem"
 msgstr "Verzoek mislukt! Vertel ons alsjeblieft over dit probleem"
 
+msgid "Reschedule"
+msgstr ""
+
 msgid "Reset all"
 msgstr "Stell alles opnieuw in"
 
@@ -2145,6 +2169,9 @@ msgstr ""
 msgid "Search results"
 msgstr "Resultaten zoeken"
 
+msgid "Search this column"
+msgstr ""
+
 msgid "Secondary footnotes"
 msgstr "Secundaire voetnoten"
 
@@ -2169,6 +2196,12 @@ msgstr "Selecteer"
 msgid "Select all"
 msgstr "Selecteer alle"
 
+msgid "Select all for deletion"
+msgstr ""
+
+msgid "Select all for rescheduling"
+msgstr ""
+
 msgid "Select individual parts for the bookbuilder"
 msgstr "Selecteer individuele delen voor de boekmaker"
 
@@ -2186,6 +2219,9 @@ msgstr "Sessie delen"
 
 msgid "Set a date in the future if you want it deferred."
 msgstr "Stek een datum in de toekomst in als je het uit wil stellen."
+
+msgid "Settings loaded"
+msgstr ""
 
 msgid "Show cheatsheet"
 msgstr "Toon spiekbriefje"
@@ -2687,9 +2723,6 @@ msgstr "Driedubbele strepen"
 msgid "Try a random text if unsure"
 msgstr "Probeer een willekeurige tekst indien niet zeker"
 
-msgid "Try again"
-msgstr "Probeer opnieuw"
-
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
@@ -2718,14 +2751,8 @@ msgstr "URI"
 msgid "URL"
 msgstr "URL"
 
-msgid ""
-"URL of the new remote repository\n"
-"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
-"        supported."
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
-"URL van de nieuwe externe repository\n"
-"        HTTP, HTTPS, GIT, of lokaal (alleen het pad). SSH wordt niet\n"
-"        ondersteund."
 
 msgid "UTC"
 msgstr "UTC"
@@ -2801,6 +2828,9 @@ msgid "Use it as a teaser image adding to the header this line:"
 msgstr ""
 "Gebruik het als een teaserafbeelding, waarbij deze regel aan de koptekst "
 "wordt toegevoegd:"
+
+msgid "Use one of the site's formats"
+msgstr ""
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
@@ -3029,6 +3059,9 @@ msgid ""
 "You may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
 "Je zou wellicht de \"Een\", \"De\" etc. vooraan de titel willen verwijderen"
+
+msgid "You may want to use one of these images"
+msgstr ""
 
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
@@ -3281,6 +3314,27 @@ msgstr ""
 "\"Oude bewerking\" betekent dat de herziening was verlaten\n"
 "    tijdens het bewerken, maar hij is er nog steeds voor het geval dat\n"
 "    iemand er verder mee wil gaan bij het bewerken van een tekst."
+
+#~ msgid "Fixed category list"
+#~ msgstr "Vaste categorielijst"
+
+#~ msgid "Job deleted"
+#~ msgstr "Taak verwijderd"
+
+#~ msgid "Job rescheduled"
+#~ msgstr "Taak uitgesteld"
+
+#~ msgid "Try again"
+#~ msgstr "Probeer opnieuw"
+
+#~ msgid ""
+#~ "URL of the new remote repository\n"
+#~ "        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
+#~ "        supported."
+#~ msgstr ""
+#~ "URL van de nieuwe externe repository\n"
+#~ "        HTTP, HTTPS, GIT, of lokaal (alleen het pad). SSH wordt niet\n"
+#~ "        ondersteund."
 
 #~ msgid "Add an attachment (PNG, JPG or PDF)"
 #~ msgstr "Voeg een bijlage toe (PNG, JPG of PDF)"

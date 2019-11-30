@@ -19,6 +19,14 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 не постои"
 
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr ""
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr ""
+
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
@@ -303,6 +311,9 @@ msgstr "Beamer тема за бојата"
 msgid "Beamer theme"
 msgstr "Beamer тема"
 
+msgid "Beside topics and authors you can add more categories here"
+msgstr ""
+
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Корекција за повезот во милиметри (дополнителна внатрешна маргина)"
 
@@ -373,6 +384,10 @@ msgstr "Основно име"
 msgid "Categories"
 msgstr "Теми"
 
+#. ($site->canonical)
+msgid "Category types for %1"
+msgstr ""
+
 msgid "Center all the sectioning titles."
 msgstr ""
 
@@ -434,6 +449,9 @@ msgstr "Клонирај го репозиториумот на својата �
 msgid "Close"
 msgstr "Затвори"
 
+msgid "Code"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -468,6 +486,9 @@ msgstr "Не можеше да се направи збирка"
 
 msgid "Create"
 msgstr "Креирај"
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
 
 msgid "Create a new format"
 msgstr "Креирај нов формат"
@@ -788,15 +809,15 @@ msgstr "Табаци од 16 страници на два листа, со дв�
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr "Табаци од 16 страници на еден лист, со тројно превиткување."
 
-msgid "Fixed category list"
-msgstr "Непроменлива листа на категории"
-
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
 msgstr ""
 "иксни табаци од 8 страници, за хоризонтално сечење, поединечно превиткување "
 "и повез во буклет"
+
+msgid "Fixed topic list"
+msgstr ""
 
 msgid "Font preview"
 msgstr "Преглед на фонт"
@@ -1213,12 +1234,6 @@ msgstr "Курзиви, здебелено, код, нов ред"
 msgid "JPG, PNG and PDF are always allowed."
 msgstr ""
 
-msgid "Job deleted"
-msgstr "Задачата е избришана"
-
-msgid "Job rescheduled"
-msgstr ""
-
 msgid "Job status"
 msgstr ""
 
@@ -1434,6 +1449,12 @@ msgstr "Непознато"
 
 msgid "Name"
 msgstr "Име"
+
+msgid "Name plural"
+msgstr ""
+
+msgid "Name singular"
+msgstr ""
 
 msgid "Network library listing screen."
 msgstr "Страница со листа од мрежните архиви."
@@ -2010,6 +2031,9 @@ msgstr "Репозиториум"
 msgid "Request failed! Please report the the problem"
 msgstr ""
 
+msgid "Reschedule"
+msgstr ""
+
 msgid "Reset all"
 msgstr "Поништи сè"
 
@@ -2096,6 +2120,9 @@ msgstr ""
 msgid "Search results"
 msgstr "Резултати од пребарувањето"
 
+msgid "Search this column"
+msgstr ""
+
 msgid "Secondary footnotes"
 msgstr ""
 
@@ -2120,6 +2147,12 @@ msgstr "Избери"
 msgid "Select all"
 msgstr "Избери сè"
 
+msgid "Select all for deletion"
+msgstr ""
+
+msgid "Select all for rescheduling"
+msgstr ""
+
 msgid "Select individual parts for the bookbuilder"
 msgstr "Избери поединечни делови за збирка"
 
@@ -2137,6 +2170,9 @@ msgstr "Сподели ја сесијата"
 
 msgid "Set a date in the future if you want it deferred."
 msgstr "Стави иден датум доколку сакаш да го одложиш објавувањето."
+
+msgid "Settings loaded"
+msgstr ""
 
 msgid "Show cheatsheet"
 msgstr "Покажи го резимето за обликување на текстот"
@@ -2622,9 +2658,6 @@ msgstr "Тројна лента"
 msgid "Try a random text if unsure"
 msgstr "Обиди се со случаен текст доколку не си сигурен"
 
-msgid "Try again"
-msgstr ""
-
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
@@ -2652,13 +2685,8 @@ msgstr "URI"
 msgid "URL"
 msgstr "URL"
 
-msgid ""
-"URL of the new remote repository\n"
-"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
-"        supported."
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
-"URL на оддалечениот репозиториум (HTTP, HTTPS, GIT или директориум, но не "
-"SSH)."
 
 msgid "UTC"
 msgstr "UTC"
@@ -2732,6 +2760,9 @@ msgstr "Користи SSL за овластени корисници"
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr ""
 "Користи ја како слика за преглед додавајќи го следниот ред во заглавјето:"
+
+msgid "Use one of the site's formats"
+msgstr ""
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
@@ -2949,6 +2980,9 @@ msgid ""
 msgstr ""
 "Насловот на документот, за индексирање. Обично не се користи во македонскиот "
 "јазик"
+
+msgid "You may want to use one of these images"
+msgstr ""
 
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
@@ -3196,6 +3230,20 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Fixed category list"
+#~ msgstr "Непроменлива листа на категории"
+
+#~ msgid "Job deleted"
+#~ msgstr "Задачата е избришана"
+
+#~ msgid ""
+#~ "URL of the new remote repository\n"
+#~ "        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
+#~ "        supported."
+#~ msgstr ""
+#~ "URL на оддалечениот репозиториум (HTTP, HTTPS, GIT или директориум, но не "
+#~ "SSH)."
 
 #~ msgid "Add an attachment (PNG, JPG or PDF)"
 #~ msgstr "Додади прилог ((PNG, JPG или PDF)"

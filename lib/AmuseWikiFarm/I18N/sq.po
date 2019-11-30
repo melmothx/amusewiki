@@ -19,6 +19,14 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 nuk ekziston"
 
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr ""
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr ""
+
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
@@ -309,6 +317,9 @@ msgstr ""
 msgid "Beamer theme"
 msgstr ""
 
+msgid "Beside topics and authors you can add more categories here"
+msgstr ""
+
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Madhësia e hapësirës për lidhjen e librit (kufitë e brendshëm shtesë)"
 
@@ -381,6 +392,10 @@ msgstr "Emër kanonik"
 msgid "Categories"
 msgstr "Kategoritë"
 
+#. ($site->canonical)
+msgid "Category types for %1"
+msgstr ""
+
 msgid "Center all the sectioning titles."
 msgstr ""
 
@@ -443,6 +458,9 @@ msgstr ""
 msgid "Close"
 msgstr "Mbyll"
 
+msgid "Code"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -477,6 +495,9 @@ msgstr "Nuk mundi të krijoj atë"
 
 msgid "Create"
 msgstr "Krijo"
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
 
 msgid "Create a new format"
 msgstr ""
@@ -795,12 +816,12 @@ msgstr ""
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr ""
 
-msgid "Fixed category list"
-msgstr "Lista e kategorive u rregullua"
-
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
+msgstr ""
+
+msgid "Fixed topic list"
 msgstr ""
 
 msgid "Font preview"
@@ -1206,12 +1227,6 @@ msgstr "Italic, bold, monospace dhe kodi, thyerje e rreshtit..."
 msgid "JPG, PNG and PDF are always allowed."
 msgstr ""
 
-msgid "Job deleted"
-msgstr "Puna është fshirë"
-
-msgid "Job rescheduled"
-msgstr ""
-
 msgid "Job status"
 msgstr ""
 
@@ -1423,6 +1438,12 @@ msgstr ""
 
 msgid "Name"
 msgstr "Emri"
+
+msgid "Name plural"
+msgstr ""
+
+msgid "Name singular"
+msgstr ""
 
 msgid "Network library listing screen."
 msgstr "Ekrani i listimit të rrjetit të bibliotekës."
@@ -1985,6 +2006,9 @@ msgstr ""
 msgid "Request failed! Please report the the problem"
 msgstr ""
 
+msgid "Reschedule"
+msgstr ""
+
 msgid "Reset all"
 msgstr "Rivendosi të gjitha"
 
@@ -2071,6 +2095,9 @@ msgstr ""
 msgid "Search results"
 msgstr "Rezultatet e kërkimit"
 
+msgid "Search this column"
+msgstr ""
+
 msgid "Secondary footnotes"
 msgstr ""
 
@@ -2096,6 +2123,12 @@ msgstr "Zgjedh"
 msgid "Select all"
 msgstr "Zgjedhi të gjitha"
 
+msgid "Select all for deletion"
+msgstr ""
+
+msgid "Select all for rescheduling"
+msgstr ""
+
 msgid "Select individual parts for the bookbuilder"
 msgstr "Zgjedh pjesët e veçanta për krijuesin e librit."
 
@@ -2113,6 +2146,9 @@ msgstr ""
 
 msgid "Set a date in the future if you want it deferred."
 msgstr "Cakto një datë të ardhshme nëse dëshiron që ta bësh këtë më vonë"
+
+msgid "Settings loaded"
+msgstr ""
 
 msgid "Show cheatsheet"
 msgstr ""
@@ -2603,9 +2639,6 @@ msgstr "Shirirta të trefishtë"
 msgid "Try a random text if unsure"
 msgstr "Provoje një tekst të rëndomtë nëse nuk jeni të sigurtë."
 
-msgid "Try again"
-msgstr ""
-
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
@@ -2631,10 +2664,7 @@ msgstr "URI"
 msgid "URL"
 msgstr "URL"
 
-msgid ""
-"URL of the new remote repository\n"
-"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
-"        supported."
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
 
 msgid "UTC"
@@ -2708,6 +2738,9 @@ msgid "Use SSL for authenticated users"
 msgstr ""
 
 msgid "Use it as a teaser image adding to the header this line:"
+msgstr ""
+
+msgid "Use one of the site's formats"
 msgstr ""
 
 #. (sign)
@@ -2919,6 +2952,9 @@ msgid ""
 msgstr ""
 "Nëse dëshironi, ju mund të largoni parafjalët, fjalët lidhëse e të tjera, "
 "nga titulli."
+
+msgid "You may want to use one of these images"
+msgstr ""
 
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
@@ -3167,6 +3203,12 @@ msgstr ""
 "“Ndryshim i mbetur” do të thotë që përpunimi është brakstisur\n"
 " gjatë ndryshimit por është ende aty në rast se dikush dëshiron të vazhdoj\n"
 " me ndryshimin e tekstit."
+
+#~ msgid "Fixed category list"
+#~ msgstr "Lista e kategorive u rregullua"
+
+#~ msgid "Job deleted"
+#~ msgstr "Puna është fshirë"
 
 #~ msgid "Add an attachment (PNG, JPG or PDF)"
 #~ msgstr "Shto një attachment (PNG, JPG or PDF)"

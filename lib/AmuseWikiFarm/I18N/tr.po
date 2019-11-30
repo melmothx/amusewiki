@@ -20,6 +20,14 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 bulunamadı"
 
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr ""
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr ""
+
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
@@ -299,6 +307,9 @@ msgstr "Beamer renk teması"
 msgid "Beamer theme"
 msgstr "Beamer teması"
 
+msgid "Beside topics and authors you can add more categories here"
+msgstr ""
+
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Milimetre cinsinden cilt düzeltmesi (ek iç kenar boşluğu)"
 
@@ -376,6 +387,10 @@ msgstr "Asıl isim"
 msgid "Categories"
 msgstr "Kategoriler"
 
+#. ($site->canonical)
+msgid "Category types for %1"
+msgstr ""
+
 msgid "Center all the sectioning titles."
 msgstr "Bölüm başlıklarının hepsini ortala."
 
@@ -436,6 +451,9 @@ msgstr "Veri deposunu klonla ve kur"
 msgid "Close"
 msgstr "Kapat"
 
+msgid "Code"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -472,6 +490,9 @@ msgstr "Onu yapılandıramadım"
 
 msgid "Create"
 msgstr "Yarat"
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
 
 msgid "Create a new format"
 msgstr "Yeni bir biçim yarat"
@@ -793,14 +814,14 @@ msgstr ""
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr "Tek tabakaya 3 kere katlayarak sabit 16 sayfalık formalar."
 
-msgid "Fixed category list"
-msgstr "Sabit kategori listesi"
-
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
 msgstr ""
 "Yatay kesilip ayrı ayrı katlanıp beraber bağlanan sabit 8 sayfalık formalar."
+
+msgid "Fixed topic list"
+msgstr ""
 
 msgid "Font preview"
 msgstr "Font önizleme"
@@ -1232,12 +1253,6 @@ msgstr "Yatık, kalın, sabit aralıklı ve kod, satırsonları..."
 msgid "JPG, PNG and PDF are always allowed."
 msgstr "JPG, PNG ve PDF'ye her zaman izin verilir."
 
-msgid "Job deleted"
-msgstr "İş silindi"
-
-msgid "Job rescheduled"
-msgstr "İş tekrar zamanlandı"
-
 msgid "Job status"
 msgstr "İş durumu"
 
@@ -1446,6 +1461,12 @@ msgstr "Kullanılmaz"
 
 msgid "Name"
 msgstr "İsim"
+
+msgid "Name plural"
+msgstr ""
+
+msgid "Name singular"
+msgstr ""
 
 msgid "Network library listing screen."
 msgstr "Ağ kütüphanesi listeleme ekranı."
@@ -2018,6 +2039,9 @@ msgstr "Veri deposu"
 msgid "Request failed! Please report the the problem"
 msgstr "İstek başarısız! Lütfen problemi raporla"
 
+msgid "Reschedule"
+msgstr ""
+
 msgid "Reset all"
 msgstr "Hepsini sıfırla"
 
@@ -2104,6 +2128,9 @@ msgstr "Arama filtreleri"
 msgid "Search results"
 msgstr "Arama sonuçları"
 
+msgid "Search this column"
+msgstr ""
+
 msgid "Secondary footnotes"
 msgstr "İkinci dipnotlar"
 
@@ -2128,6 +2155,12 @@ msgstr "Seç"
 msgid "Select all"
 msgstr "Hepsini seç"
 
+msgid "Select all for deletion"
+msgstr ""
+
+msgid "Select all for rescheduling"
+msgstr ""
+
 msgid "Select individual parts for the bookbuilder"
 msgstr "Kitap yapıcı için tek tek parçaları seç"
 
@@ -2145,6 +2178,9 @@ msgstr "Oturum paylaşma"
 
 msgid "Set a date in the future if you want it deferred."
 msgstr "Ertelemek istiyorsan ileri bir tarih gir."
+
+msgid "Settings loaded"
+msgstr ""
 
 msgid "Show cheatsheet"
 msgstr "Kopya kağıdını göster"
@@ -2639,9 +2675,6 @@ msgstr "Üçlü sütunlar"
 msgid "Try a random text if unsure"
 msgstr "Emin değilsen rastgele bir metin dene"
 
-msgid "Try again"
-msgstr "Tekrar dene"
-
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
@@ -2670,14 +2703,8 @@ msgstr "URI"
 msgid "URL"
 msgstr "URL"
 
-msgid ""
-"URL of the new remote repository\n"
-"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
-"        supported."
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
-"Yeni uzak veri deposunun URL'i\n"
-"        HTTP, HTTPS, GIT, ya da yerel (sadece yerel yol (path)).\n"
-"        SSH desteklenmez."
 
 msgid "UTC"
 msgstr "UTC"
@@ -2753,6 +2780,9 @@ msgstr "Kimlik denetimi yapılan kullanıcılar için SSL kullan"
 
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr "Üstliğe bu satırı kopyalayıp fragman resmi olarak kullan:"
+
+msgid "Use one of the site's formats"
+msgstr ""
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
@@ -2970,6 +3000,9 @@ msgstr "Onlardan birini düzenlemeye devam etmek isteyebilirsin"
 msgid ""
 "You may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr "Başlığın başındaki \"Bir\", vs önekleri çıkartmak isteyebilirsin"
+
+msgid "You may want to use one of these images"
+msgstr ""
 
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
@@ -3217,3 +3250,24 @@ msgstr ""
 "\"Yarım kalmış düzenleme\", versiyon düzenlenirken yarıda bırakılmış,\n"
 "    ama birisi metni düzenlemek için oradan devam edebilir\n"
 "    demektir."
+
+#~ msgid "Fixed category list"
+#~ msgstr "Sabit kategori listesi"
+
+#~ msgid "Job deleted"
+#~ msgstr "İş silindi"
+
+#~ msgid "Job rescheduled"
+#~ msgstr "İş tekrar zamanlandı"
+
+#~ msgid "Try again"
+#~ msgstr "Tekrar dene"
+
+#~ msgid ""
+#~ "URL of the new remote repository\n"
+#~ "        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
+#~ "        supported."
+#~ msgstr ""
+#~ "Yeni uzak veri deposunun URL'i\n"
+#~ "        HTTP, HTTPS, GIT, ya da yerel (sadece yerel yol (path)).\n"
+#~ "        SSH desteklenmez."

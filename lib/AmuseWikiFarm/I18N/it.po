@@ -19,6 +19,14 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 non esiste"
 
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr ""
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr ""
+
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
@@ -302,6 +310,9 @@ msgstr "Tema del colore delle diapositive"
 msgid "Beamer theme"
 msgstr "Tema delle diapositive"
 
+msgid "Beside topics and authors you can add more categories here"
+msgstr ""
+
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr ""
 "Correzione per la rilegatura in millimetri (margine interno addizionale)"
@@ -378,6 +389,10 @@ msgstr "Nome canonico"
 msgid "Categories"
 msgstr "Categorie"
 
+#. ($site->canonical)
+msgid "Category types for %1"
+msgstr ""
+
 msgid "Center all the sectioning titles."
 msgstr "Centra tutti i titoli delle sezioni."
 
@@ -439,6 +454,9 @@ msgstr "Clona il repositorio in locale e configuralo"
 msgid "Close"
 msgstr "Chiudi"
 
+msgid "Code"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -477,6 +495,9 @@ msgstr "Errore nella compilazione del testo"
 
 msgid "Create"
 msgstr "Crea"
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
 
 msgid "Create a new format"
 msgstr "Crea un nuovo formato"
@@ -801,15 +822,15 @@ msgstr "Segnature di 16 pagine su due fogli, con doppia piegatura individuale."
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr "Segnature di 16 pagine su un singolo foglio, con triplice piegatura."
 
-msgid "Fixed category list"
-msgstr "Lista fissa delle categorie"
-
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
 msgstr ""
 "Segnature fisse di 8 pagine. I fogli vanno tagliati orizzontalmente, e\n"
 "poi piegati a uno a uno, prima della legatura."
+
+msgid "Fixed topic list"
+msgstr ""
 
 msgid "Font preview"
 msgstr "Anteprima dei caratteri"
@@ -1258,12 +1279,6 @@ msgstr "Corsivo, grassetto, codice, interruzioni di linea..."
 msgid "JPG, PNG and PDF are always allowed."
 msgstr "JPG, PNG e PDF sono sempre permessi."
 
-msgid "Job deleted"
-msgstr "Lavoro cancellato"
-
-msgid "Job rescheduled"
-msgstr "Lavoro aggiunto alla coda"
-
 msgid "Job status"
 msgstr "Stato del lavoro"
 
@@ -1476,6 +1491,12 @@ msgstr "Non disponibile"
 
 msgid "Name"
 msgstr "Nome"
+
+msgid "Name plural"
+msgstr ""
+
+msgid "Name singular"
+msgstr ""
 
 msgid "Network library listing screen."
 msgstr "Schermata con l'elenco delle biblioteche online."
@@ -2054,6 +2075,9 @@ msgstr "Repository"
 msgid "Request failed! Please report the the problem"
 msgstr "Richiesta fallita! Per cortesia contatta gli amministratori"
 
+msgid "Reschedule"
+msgstr ""
+
 msgid "Reset all"
 msgstr "Ricomincia da capo"
 
@@ -2140,6 +2164,9 @@ msgstr "Filtri la ricerca"
 msgid "Search results"
 msgstr "Risultati della ricerca"
 
+msgid "Search this column"
+msgstr ""
+
 msgid "Secondary footnotes"
 msgstr "Note a piè di pagina secondarie"
 
@@ -2164,6 +2191,12 @@ msgstr "Seleziona"
 msgid "Select all"
 msgstr "Seleziona tutto"
 
+msgid "Select all for deletion"
+msgstr ""
+
+msgid "Select all for rescheduling"
+msgstr ""
+
 msgid "Select individual parts for the bookbuilder"
 msgstr "Seleziona singole parti per l'impaginatore"
 
@@ -2181,6 +2214,9 @@ msgstr "Condivisione"
 
 msgid "Set a date in the future if you want it deferred."
 msgstr "Imposta una data nel futuro se vuoi rimandare la pubblicazione."
+
+msgid "Settings loaded"
+msgstr ""
 
 msgid "Show cheatsheet"
 msgstr "Mostra la documentazione del markup"
@@ -2684,9 +2720,6 @@ msgstr "Triple barre"
 msgid "Try a random text if unsure"
 msgstr "Prova con un testo casuale, se in dubbio"
 
-msgid "Try again"
-msgstr "Riprova"
-
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
@@ -2715,13 +2748,8 @@ msgstr "URI"
 msgid "URL"
 msgstr "URL"
 
-msgid ""
-"URL of the new remote repository\n"
-"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
-"        supported."
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
-"URL del nuovo repositorio remoto, HTTP, HTTPS, GIT o locale (specificando "
-"solo il percorso locale). SSH non è supportato."
 
 msgid "UTC"
 msgstr "UTC"
@@ -2800,6 +2828,9 @@ msgstr "Usa SSL per gli utenti loggati"
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr ""
 "Usala come immagine d'anteprima aggiungendo alle intestazioni questa linea:"
+
+msgid "Use one of the site's formats"
+msgstr ""
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
@@ -3025,6 +3056,9 @@ msgid ""
 msgstr ""
 "Potresti voler togliere gli articoli determinativi e indeterminativi\n"
 "dal titolo"
+
+msgid "You may want to use one of these images"
+msgstr ""
 
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
@@ -3277,6 +3311,26 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "Fixed category list"
+#~ msgstr "Lista fissa delle categorie"
+
+#~ msgid "Job deleted"
+#~ msgstr "Lavoro cancellato"
+
+#~ msgid "Job rescheduled"
+#~ msgstr "Lavoro aggiunto alla coda"
+
+#~ msgid "Try again"
+#~ msgstr "Riprova"
+
+#~ msgid ""
+#~ "URL of the new remote repository\n"
+#~ "        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
+#~ "        supported."
+#~ msgstr ""
+#~ "URL del nuovo repositorio remoto, HTTP, HTTPS, GIT o locale (specificando "
+#~ "solo il percorso locale). SSH non è supportato."
 
 #~ msgid "Add an attachment (PNG, JPG or PDF)"
 #~ msgstr "Aggiungi un allegato (PNG, JPG o PDF)"

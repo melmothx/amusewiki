@@ -20,6 +20,14 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 findes ikke"
 
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr ""
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr ""
+
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
@@ -295,6 +303,9 @@ msgstr ""
 msgid "Beamer theme"
 msgstr ""
 
+msgid "Beside topics and authors you can add more categories here"
+msgstr ""
+
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Bindings justeringer i millimeter (ekstra indermargen)"
 
@@ -367,6 +378,10 @@ msgstr ""
 msgid "Categories"
 msgstr "Kategorier"
 
+#. ($site->canonical)
+msgid "Category types for %1"
+msgstr ""
+
 msgid "Center all the sectioning titles."
 msgstr ""
 
@@ -428,6 +443,9 @@ msgstr "Klon arkivet lokalt og sæt det op"
 msgid "Close"
 msgstr "Luk"
 
+msgid "Code"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -462,6 +480,9 @@ msgstr "Kunne ikke skabe den"
 
 msgid "Create"
 msgstr "Skab"
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
 
 msgid "Create a new format"
 msgstr "Skab et nyt format"
@@ -779,15 +800,15 @@ msgstr "Ordnede 16 siders trykark på 2 ark, med dobbelt individuel foldning."
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr "Ordnede 16 siders trykark på et ark, med tredobbelt foldning."
 
-msgid "Fixed category list"
-msgstr "Ordnede kategorilisten"
-
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
 msgstr ""
 "Ordnede 8 siders trykark, som skal skæres horisontalt, foldes individuelt og "
 "bindes sammen."
+
+msgid "Fixed topic list"
+msgstr ""
 
 msgid "Font preview"
 msgstr "Forhåndsvisning af skrifttyper"
@@ -1195,12 +1216,6 @@ msgstr "Kursiv, fed, monospatieret og kode (skrivemaskine), linjeskift..."
 msgid "JPG, PNG and PDF are always allowed."
 msgstr ""
 
-msgid "Job deleted"
-msgstr "Job slettet"
-
-msgid "Job rescheduled"
-msgstr ""
-
 msgid "Job status"
 msgstr ""
 
@@ -1411,6 +1426,12 @@ msgstr "Ikke tilgængelig"
 
 msgid "Name"
 msgstr "Navn"
+
+msgid "Name plural"
+msgstr ""
+
+msgid "Name singular"
+msgstr ""
 
 msgid "Network library listing screen."
 msgstr ""
@@ -1980,6 +2001,9 @@ msgstr "Arkiv"
 msgid "Request failed! Please report the the problem"
 msgstr ""
 
+msgid "Reschedule"
+msgstr ""
+
 msgid "Reset all"
 msgstr "Nulstil alt"
 
@@ -2066,6 +2090,9 @@ msgstr ""
 msgid "Search results"
 msgstr "Søgeresultater"
 
+msgid "Search this column"
+msgstr ""
+
 msgid "Secondary footnotes"
 msgstr ""
 
@@ -2090,6 +2117,12 @@ msgstr "Vælg"
 msgid "Select all"
 msgstr "Vælg alt"
 
+msgid "Select all for deletion"
+msgstr ""
+
+msgid "Select all for rescheduling"
+msgstr ""
+
 msgid "Select individual parts for the bookbuilder"
 msgstr "Vælg enkelte dele til bogbyggeren"
 
@@ -2107,6 +2140,9 @@ msgstr "Sessions deling"
 
 msgid "Set a date in the future if you want it deferred."
 msgstr "Sæt en dato i fremtiden hvis du vil udskyde den."
+
+msgid "Settings loaded"
+msgstr ""
 
 msgid "Show cheatsheet"
 msgstr "Vis manualen"
@@ -2574,9 +2610,6 @@ msgstr "Tredobbelte barer"
 msgid "Try a random text if unsure"
 msgstr "Prøv en tilfældig tekst hvis du er usikker"
 
-msgid "Try again"
-msgstr ""
-
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
@@ -2600,10 +2633,7 @@ msgstr "URI"
 msgid "URL"
 msgstr "URL"
 
-msgid ""
-"URL of the new remote repository\n"
-"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
-"        supported."
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
 
 msgid "UTC"
@@ -2677,6 +2707,9 @@ msgstr "Brug SSL for verificerede brugere"
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr ""
 "Brug det som et teaser billede ved at tilføje følgende linje til sidehovedet:"
+
+msgid "Use one of the site's formats"
+msgstr ""
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
@@ -2890,6 +2923,9 @@ msgid ""
 msgstr ""
 "Du ønsker måske at fjerne det indledende »En«, »Et«, »Den«, og så videre fra "
 "titlen"
+
+msgid "You may want to use one of these images"
+msgstr ""
 
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
@@ -3140,6 +3176,12 @@ msgstr ""
 "    under redigeringen, men den er stadig der, hvis nogen skulle få lyst "
 "til\n"
 "    at samle den op under redigeringen af en tekst."
+
+#~ msgid "Fixed category list"
+#~ msgstr "Ordnede kategorilisten"
+
+#~ msgid "Job deleted"
+#~ msgstr "Job slettet"
 
 #~ msgid "Add an attachment (PNG, JPG or PDF)"
 #~ msgstr "Vedhæft en fil (PNG, JPG eller PDF)"

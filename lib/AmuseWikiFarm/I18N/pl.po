@@ -20,6 +20,14 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr ""
 
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr ""
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr ""
+
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
@@ -271,6 +279,9 @@ msgstr ""
 msgid "Beamer theme"
 msgstr ""
 
+msgid "Beside topics and authors you can add more categories here"
+msgstr ""
+
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr ""
 
@@ -341,6 +352,10 @@ msgstr ""
 msgid "Categories"
 msgstr ""
 
+#. ($site->canonical)
+msgid "Category types for %1"
+msgstr ""
+
 msgid "Center all the sectioning titles."
 msgstr ""
 
@@ -398,6 +413,9 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
+msgid "Code"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -431,6 +449,9 @@ msgid "Couldn't build that"
 msgstr ""
 
 msgid "Create"
+msgstr ""
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 
 msgid "Create a new format"
@@ -733,12 +754,12 @@ msgstr ""
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr ""
 
-msgid "Fixed category list"
-msgstr ""
-
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
+msgstr ""
+
+msgid "Fixed topic list"
 msgstr ""
 
 msgid "Font preview"
@@ -1100,12 +1121,6 @@ msgstr ""
 msgid "JPG, PNG and PDF are always allowed."
 msgstr ""
 
-msgid "Job deleted"
-msgstr ""
-
-msgid "Job rescheduled"
-msgstr ""
-
 msgid "Job status"
 msgstr ""
 
@@ -1305,6 +1320,12 @@ msgid "N/A"
 msgstr ""
 
 msgid "Name"
+msgstr ""
+
+msgid "Name plural"
+msgstr ""
+
+msgid "Name singular"
 msgstr ""
 
 msgid "Network library listing screen."
@@ -1817,6 +1838,9 @@ msgstr ""
 msgid "Request failed! Please report the the problem"
 msgstr ""
 
+msgid "Reschedule"
+msgstr ""
+
 msgid "Reset all"
 msgstr ""
 
@@ -1903,6 +1927,9 @@ msgstr ""
 msgid "Search results"
 msgstr ""
 
+msgid "Search this column"
+msgstr ""
+
 msgid "Secondary footnotes"
 msgstr ""
 
@@ -1927,6 +1954,12 @@ msgstr ""
 msgid "Select all"
 msgstr ""
 
+msgid "Select all for deletion"
+msgstr ""
+
+msgid "Select all for rescheduling"
+msgstr ""
+
 msgid "Select individual parts for the bookbuilder"
 msgstr ""
 
@@ -1943,6 +1976,9 @@ msgid "Session sharing"
 msgstr ""
 
 msgid "Set a date in the future if you want it deferred."
+msgstr ""
+
+msgid "Settings loaded"
 msgstr ""
 
 msgid "Show cheatsheet"
@@ -2396,9 +2432,6 @@ msgstr ""
 msgid "Try a random text if unsure"
 msgstr ""
 
-msgid "Try again"
-msgstr ""
-
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
@@ -2422,10 +2455,7 @@ msgstr ""
 msgid "URL"
 msgstr ""
 
-msgid ""
-"URL of the new remote repository\n"
-"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
-"        supported."
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
 
 msgid "UTC"
@@ -2497,6 +2527,9 @@ msgid "Use SSL for authenticated users"
 msgstr ""
 
 msgid "Use it as a teaser image adding to the header this line:"
+msgstr ""
+
+msgid "Use one of the site's formats"
 msgstr ""
 
 #. (sign)
@@ -2680,6 +2713,9 @@ msgstr ""
 
 msgid ""
 "You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr ""
+
+msgid "You may want to use one of these images"
 msgstr ""
 
 msgid ""

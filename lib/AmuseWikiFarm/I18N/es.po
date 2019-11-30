@@ -19,6 +19,14 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 no existe"
 
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr ""
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr ""
+
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
@@ -301,6 +309,9 @@ msgstr "Color de tema de Beamer"
 msgid "Beamer theme"
 msgstr "Tema de Beamer"
 
+msgid "Beside topics and authors you can add more categories here"
+msgstr ""
+
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Corrección en milímetros para cuadernillos (margen interno adicional)"
 
@@ -373,6 +384,10 @@ msgstr "Nombre canónico"
 msgid "Categories"
 msgstr "Categorías"
 
+#. ($site->canonical)
+msgid "Category types for %1"
+msgstr ""
+
 msgid "Center all the sectioning titles."
 msgstr ""
 
@@ -433,6 +448,9 @@ msgstr "Clonar el repositorio localmente y configurarlo"
 msgid "Close"
 msgstr "Cerrar"
 
+msgid "Code"
+msgstr ""
+
 #, fuzzy
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
@@ -470,6 +488,9 @@ msgstr "No se pudo crear eso"
 
 msgid "Create"
 msgstr "Crear"
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
 
 msgid "Create a new format"
 msgstr ""
@@ -794,15 +815,15 @@ msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr ""
 "Encuadernación ajustada a 16 páginas en una sola hoja, con triple doblez."
 
-msgid "Fixed category list"
-msgstr "Lista de categorías corregida"
-
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
 msgstr ""
 "Encuadernación fija de 8 páginas, para ser cortadas horizontalmente, "
 "dobladas individualmente y juntarlas todas en un cuadernillo."
+
+msgid "Fixed topic list"
+msgstr ""
 
 msgid "Font preview"
 msgstr "Previsualización de la tipografía"
@@ -1222,12 +1243,6 @@ msgstr "Cursivas, negrita, monoespaciado y código, saltos de línea..."
 msgid "JPG, PNG and PDF are always allowed."
 msgstr ""
 
-msgid "Job deleted"
-msgstr "Proceso borrado"
-
-msgid "Job rescheduled"
-msgstr ""
-
 msgid "Job status"
 msgstr ""
 
@@ -1439,6 +1454,12 @@ msgstr ""
 
 msgid "Name"
 msgstr "Nombre"
+
+msgid "Name plural"
+msgstr ""
+
+msgid "Name singular"
+msgstr ""
 
 msgid "Network library listing screen."
 msgstr "Pantalla mostrando biblioteca en red."
@@ -2011,6 +2032,9 @@ msgstr "Repositorio"
 msgid "Request failed! Please report the the problem"
 msgstr ""
 
+msgid "Reschedule"
+msgstr ""
+
 msgid "Reset all"
 msgstr "Reiniciar todo"
 
@@ -2097,6 +2121,9 @@ msgstr ""
 msgid "Search results"
 msgstr "Resultados de búsqueda"
 
+msgid "Search this column"
+msgstr ""
+
 msgid "Secondary footnotes"
 msgstr ""
 
@@ -2121,6 +2148,12 @@ msgstr "Seleccionar"
 msgid "Select all"
 msgstr "Seleccionar todo"
 
+msgid "Select all for deletion"
+msgstr ""
+
+msgid "Select all for rescheduling"
+msgstr ""
+
 msgid "Select individual parts for the bookbuilder"
 msgstr "Seleccionar partes individuales para el creador de libros"
 
@@ -2138,6 +2171,9 @@ msgstr "Compartir sesión"
 
 msgid "Set a date in the future if you want it deferred."
 msgstr "Establecer una fecha en el futuro si quieres descartarlo."
+
+msgid "Settings loaded"
+msgstr ""
 
 msgid "Show cheatsheet"
 msgstr "Mostrar ayuda memoria"
@@ -2634,9 +2670,6 @@ msgstr "Barras triples"
 msgid "Try a random text if unsure"
 msgstr "Intenta con un texto aleatorio si no estás segura/o"
 
-msgid "Try again"
-msgstr ""
-
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
@@ -2663,14 +2696,8 @@ msgstr "URI"
 msgid "URL"
 msgstr "URL"
 
-msgid ""
-"URL of the new remote repository\n"
-"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
-"        supported."
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
-"URL del nuevo repositorio remoto\n"
-"        HTTP, HTTPS, GIT, o local (solo la ruta local). SSH no es\n"
-"        soportado."
 
 msgid "UTC"
 msgstr "UTC"
@@ -2744,6 +2771,9 @@ msgstr "Usar SSL para usuarias/os autenticadas/os"
 
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr "Usarla como una imagen de muestra agregando al header esta línea:"
+
+msgid "Use one of the site's formats"
+msgstr ""
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
@@ -2961,6 +2991,9 @@ msgid ""
 msgstr ""
 "Quizás quieras quitar los artículos iniciales \"Un\", \"Una\", \"Las\", etc. "
 "del título"
+
+msgid "You may want to use one of these images"
+msgstr ""
 
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
@@ -3212,6 +3245,21 @@ msgstr ""
 "\"Edición abandonada\" significa que la revisión fue abandonada\n"
 "    mientras se estaba editando, pero todavía está ahí, en caso de que\n"
 "    alguien quiera modificarla cuando edite un texto."
+
+#~ msgid "Fixed category list"
+#~ msgstr "Lista de categorías corregida"
+
+#~ msgid "Job deleted"
+#~ msgstr "Proceso borrado"
+
+#~ msgid ""
+#~ "URL of the new remote repository\n"
+#~ "        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
+#~ "        supported."
+#~ msgstr ""
+#~ "URL del nuevo repositorio remoto\n"
+#~ "        HTTP, HTTPS, GIT, o local (solo la ruta local). SSH no es\n"
+#~ "        soportado."
 
 #~ msgid "Add an attachment (PNG, JPG or PDF)"
 #~ msgstr "Agregar un adjunto (PNG, JPG or PDF)"

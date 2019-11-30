@@ -21,6 +21,14 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 не существует"
 
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr ""
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr ""
+
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
@@ -298,6 +306,9 @@ msgstr "Цветовая схема Beamer"
 msgid "Beamer theme"
 msgstr "Тема Beamer"
 
+msgid "Beside topics and authors you can add more categories here"
+msgstr ""
+
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Учёт ширины переплёта в мм (дополнительные внутренние поля)"
 
@@ -372,6 +383,10 @@ msgstr "Традиционное имя"
 msgid "Categories"
 msgstr "Категории"
 
+#. ($site->canonical)
+msgid "Category types for %1"
+msgstr ""
+
 msgid "Center all the sectioning titles."
 msgstr "Центрировать все заголовки разделов."
 
@@ -432,6 +447,9 @@ msgstr "Склонируйте репозиторий и настройте ег
 msgid "Close"
 msgstr "Закрыть"
 
+msgid "Code"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -466,6 +484,9 @@ msgstr "Нельзя создать это"
 
 msgid "Create"
 msgstr "Создать"
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
 
 msgid "Create a new format"
 msgstr "Создать новый формат"
@@ -784,15 +805,15 @@ msgstr "Отпечатки по 16 страниц на два листа, с д�
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr "Отпечатки по 16 страниц на лист, с тройным сгибом."
 
-msgid "Fixed category list"
-msgstr "Исправленный список категорий"
-
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
 msgstr ""
 "На одном листе с двух сторон печатаются 8 страниц. Каждый лист - одна "
 "тетрадка из 8 страниц."
+
+msgid "Fixed topic list"
+msgstr ""
 
 msgid "Font preview"
 msgstr "Предпросмотр шрифта"
@@ -1213,12 +1234,6 @@ msgstr "Курсив, жирный, моноширинный и код, пере
 msgid "JPG, PNG and PDF are always allowed."
 msgstr ""
 
-msgid "Job deleted"
-msgstr "Задание удалено"
-
-msgid "Job rescheduled"
-msgstr "Задача перезапущена"
-
 msgid "Job status"
 msgstr "Статус заданий"
 
@@ -1426,6 +1441,12 @@ msgstr "Н/Д"
 
 msgid "Name"
 msgstr "Имя"
+
+msgid "Name plural"
+msgstr ""
+
+msgid "Name singular"
+msgstr ""
 
 msgid "Network library listing screen."
 msgstr "Экран списка сетевых библиотек."
@@ -1990,6 +2011,9 @@ msgstr "Репозиторий"
 msgid "Request failed! Please report the the problem"
 msgstr "Запрос завершился с ошибкой! Пожалуйста, сообщите о проблеме"
 
+msgid "Reschedule"
+msgstr ""
+
 msgid "Reset all"
 msgstr "Сбросить всё"
 
@@ -2076,6 +2100,9 @@ msgstr "Поисковые фильтры"
 msgid "Search results"
 msgstr "Результаты поиска"
 
+msgid "Search this column"
+msgstr ""
+
 msgid "Secondary footnotes"
 msgstr "Дополнительные сноски"
 
@@ -2100,6 +2127,12 @@ msgstr "Выбрать"
 msgid "Select all"
 msgstr "Выбрать всё"
 
+msgid "Select all for deletion"
+msgstr ""
+
+msgid "Select all for rescheduling"
+msgstr ""
+
 msgid "Select individual parts for the bookbuilder"
 msgstr "Выбрать отдельные части для конструктора книг"
 
@@ -2117,6 +2150,9 @@ msgstr "Обмен сессиями"
 
 msgid "Set a date in the future if you want it deferred."
 msgstr "Установите дату, чтобы текст опубликовался позже."
+
+msgid "Settings loaded"
+msgstr ""
 
 msgid "Show cheatsheet"
 msgstr "Показывать шпаргалку"
@@ -2602,9 +2638,6 @@ msgstr "Три вертикальные линии"
 msgid "Try a random text if unsure"
 msgstr "Попробуйте случайный текст если не уверены"
 
-msgid "Try again"
-msgstr "Попробовать снова"
-
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
@@ -2633,14 +2666,8 @@ msgstr "URI"
 msgid "URL"
 msgstr "URL"
 
-msgid ""
-"URL of the new remote repository\n"
-"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
-"        supported."
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
-"URL нового удалённого репозитория\n"
-"        HTTP, HTTPS, git или local (просто локальный путь). SSH не\n"
-"        поддерживается."
 
 msgid "UTC"
 msgstr "UTC"
@@ -2713,6 +2740,9 @@ msgstr "Использовать SSL для авторизованных пол�
 
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr "Используйте это как обложку, добавив следующую строку в заголовок:"
+
+msgid "Use one of the site's formats"
+msgstr ""
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
@@ -2932,6 +2962,9 @@ msgstr "Возможно вы захотите продолжить редакт
 msgid ""
 "You may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr "Возможно вы захотите отделить «О», «Об» и др. от названия"
+
+msgid "You may want to use one of these images"
+msgstr ""
 
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
@@ -3186,6 +3219,27 @@ msgstr ""
 "«Устаревшее редактирование» означает, что правка не была доделана, но всё "
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
+
+#~ msgid "Fixed category list"
+#~ msgstr "Исправленный список категорий"
+
+#~ msgid "Job deleted"
+#~ msgstr "Задание удалено"
+
+#~ msgid "Job rescheduled"
+#~ msgstr "Задача перезапущена"
+
+#~ msgid "Try again"
+#~ msgstr "Попробовать снова"
+
+#~ msgid ""
+#~ "URL of the new remote repository\n"
+#~ "        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
+#~ "        supported."
+#~ msgstr ""
+#~ "URL нового удалённого репозитория\n"
+#~ "        HTTP, HTTPS, git или local (просто локальный путь). SSH не\n"
+#~ "        поддерживается."
 
 #~ msgid "Add an attachment (PNG, JPG or PDF)"
 #~ msgstr "Добавить вложение (PNG, JPG или PDF)"
