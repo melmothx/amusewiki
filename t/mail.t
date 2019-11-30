@@ -132,7 +132,7 @@ my $testfile = path($remotegit, 'specials', 'index.muse');
     $remote->commit({ message => 'First addition' });
 }
 
-$site->git->add(test => "$remotegit");
+$site->git->remote(add => test => "$remotegit");
 
 {
     my $job = $site->jobs->git_action_add({ remote => 'test',
