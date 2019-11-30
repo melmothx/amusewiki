@@ -4,6 +4,14 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.412 2019-11-30 [SECURITY]
+
+ -  Restrict remote repositories set in the web interface to git/http
+    In some configurations with hostile users, having local gits could
+    lead to information disclosure of other repositories (setting the
+    remote path to a known local git, the merge will not happen, but the
+    commit summary would be listed).
+
 2.411 2019-11-29
 
  - Extend the use of datatables and localize them (GH#324)
