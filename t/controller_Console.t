@@ -76,6 +76,8 @@ ok($mech->form_id('login-form'), "Found the login-form");
 $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root'});
 $mech->content_contains('You are logged in now!');
 
+$mech->get('/console/unpublished?__language=en');
+
 $mech->content_contains('/library/deleted-text');
 
 $mech->content_contains(q{/action/text/edit/deleted-text"});
@@ -90,7 +92,7 @@ $mech->content_contains('#DELETED garbage');
 
 my $orig_hashref = $site->remote_gits_hashref;
 # diag Dumper($orig_hashref);
-foreach my $proto ('', 'https', 'http', 'git') {
+foreach my $proto ('https', 'http', 'git') {
     my $path = '/git/amusewiki.git';
     my $url = $path;
     if ($proto) {
@@ -98,6 +100,7 @@ foreach my $proto ('', 'https', 'http', 'git') {
     }
     my $name = "testremote" . $proto;
     ok(!$site->add_git_remote($name, "git\@localhost:/$path"), "SSH thing not added $name git\@localhost:/$path");
+    ok(!$site->add_git_remote($name, $path), "Local path not allowed");
     ok(!$site->add_git_remote("$name $name", $url), "Invalid name not added");
     ok(!$site->add_git_remote($name, $url . ' ' . $url), "Invalid url not added");
     ok($site->add_git_remote($name, $url), "Added $url $name");
@@ -107,9 +110,16 @@ foreach my $proto ('', 'https', 'http', 'git') {
 
 is_deeply $site->remote_gits_hashref, $orig_hashref;
 
+ok(!$site->remove_git_remote('origin'), "Removing origin not allowed, it's local");
+
 foreach my $remote (keys %{$site->remote_gits_hashref}) {
-    ok($site->remove_git_remote($remote), "Removed $remote");
+    diag "Removed $remote";
+    $site->git->remote(rm => $remote);
 }
+
+ok !scalar(keys %{$site->remote_gits_hashref}), "Remote cleaned";
+
+
 $mech->get_ok('/console/git');
 ok($mech->submit_form(with_fields => {name => 'root', url => 'https://amusewiki.org/var/git/pippo.git' }), "Added root");
 ok($site->remote_gits_hashref->{root}, "remote exists");
@@ -126,5 +136,12 @@ ok(!$site->remote_gits_hashref->{pippo}, "faulty name");
 
 $mech->get_ok('/console/git');
 ok($mech->content_lacks('git-delete'));
-ok($mech->submit_form(with_fields => {name => 'pippo', url => 'git@amusewiki.org/var/git/pippo.git' }), "Added pippo fails");
-ok(!$site->remote_gits_hashref->{pippo}, "faulty url");
+ok($mech->submit_form(with_fields => {name => 'root', url => 'git@amusewiki.org/var/git/pippo.git' }), "Added root fails");
+ok(!$site->remote_gits_hashref->{root}, "faulty url");
+
+$mech->get_ok('/console/git');
+ok($mech->content_lacks('git-delete'));
+ok($mech->submit_form(with_fields => {name => 'root', url => '/etc' }), "Added root fails");
+ok(!$site->remote_gits_hashref->{root}, "no path allowed");
+
+

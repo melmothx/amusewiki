@@ -2676,10 +2676,11 @@ sub add_git_remote {
     my ($valid_name, $valid_url);
     if ($name =~ m/\A\s*([0-9a-zA-Z]{2,30})\s*\z/) {
         $valid_name = lc($1);
+        log_debug { "Name is valid $valid_name" };
     }
-    my $pathre = qr{(/[0-9a-zA-Z\._-]+)+/?};
-    if ($url =~ m{\A\s*(((git|https?):/)?$pathre)\s*\z}) {
+    if ($url =~ m{\A\s*((git|https?):/(/[0-9a-zA-Z\._-]+)+/?)\s*\z}) {
         $valid_url = $1;
+        log_debug { "URL is valid $valid_url" };
     }
     if ($valid_url && $valid_name && !$self->remote_gits_hashref->{$valid_name}) {
         log_info { "Adding $valid_name $valid_url" };
@@ -2695,13 +2696,17 @@ sub add_git_remote {
 sub remove_git_remote {
     my ($self, $name) = @_;
     my $git = $self->git;
-    if ($self->remote_gits_hashref->{$name}) {
-        $git->remote(rm => $name);
-        return 1;
+    my $remotes = $self->remote_gits_hashref;
+    if (my $git_urls = $remotes->{$name}) {
+        if ($git_urls->{fetch} and $git_urls->{fetch} =~ m{\A(git|https?)://}) {
+            $git->remote(rm => $name);
+            return 1;
+        }
+        else {
+            Dlog_info { "Refusing to remove local git $name $_" } $git_urls;
+        }
     }
-    else {
-        return;
-    }
+    return;
 }
 
 =head2 update_or_create_user(\%attrs, $role)
