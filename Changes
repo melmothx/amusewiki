@@ -4,7 +4,7 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-2.412 2019-11-30 [SECURITY]
+2.412 2019-12-01 [SECURITY]
 
  -  Restrict remote repositories set in the web interface to git/http
     In some configurations with hostile users, having local gits could

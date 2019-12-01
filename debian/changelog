@@ -1,3 +1,9 @@
+amusewiki (2.412-2+amw1) unstable; urgency=medium
+
+  * Rebuild
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sun, 01 Dec 2019 07:56:13 +0100
+
 amusewiki (2.412-1+amw1) unstable; urgency=medium
 
   * New minor release
