@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 264;
+use Test::More tests => 278;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -55,6 +55,7 @@ foreach my $f (qw/epub pdf/) {
                       );
     $mech->content_contains($name);
     my $cf = $site->custom_formats->active_only->search({ bb_format => $f })->first;
+    ok $cf->format_code, "With the proper format";
     ok($cf, "Found the format");
     push @cfs, $cf;
 }
@@ -233,6 +234,9 @@ diag Dumper(\@gen_files, \@links);
         $mech->submit_form(form_id => 'format-clone-' . $cf->custom_formats_id );
     }
     is $site->custom_formats->count, $total * 2;
+    foreach my $cf ($site->discard_changes->custom_formats->all) {
+        ok $cf->format_code, "Found format code for: " . $cf->code;
+    }
 }
 
 

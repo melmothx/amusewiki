@@ -93,6 +93,7 @@ sub create_format :Chained('list_custom_formats') :PathPart('create') :Args(0) {
                                                           });
         log_debug { "Created " . $f->format_name };
         log_debug { "Populating from site" };
+        $f->create_format_code;
         $f->sync_from_site;
         $f->discard_changes;
         $c->response->redirect($c->uri_for_action('/settings/edit_format', [ $f->custom_formats_id ]));
@@ -195,10 +196,12 @@ sub clone_format :Chained('get_format') :PathPart('clone') :Args(0) {
             $count++;
             $name = $basename . " ($count)";
         }
-        $cf->copy({
-                   format_alias => undef,
-                   format_name => $name,
-                  });
+        my $copied = $cf->copy({
+                                format_alias => undef,
+                                format_code => undef,
+                                format_name => $name,
+                               });
+        $copied->create_format_code;
         $cf->sync_site_format;
     }
     $c->response->redirect($c->uri_for_action('/settings/formats'));

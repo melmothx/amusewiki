@@ -1289,6 +1289,9 @@ sub check_and_update_custom_formats {
         Dlog_debug { "Enforcing $_ on " . $cf->format_name } $formats{$method}{fields};
         $cf->update($formats{$method}{fields});
     }
+    foreach my $cf ($self->custom_formats->all) {
+        $cf->create_format_code;
+    }
     $guard->commit;
 }
 

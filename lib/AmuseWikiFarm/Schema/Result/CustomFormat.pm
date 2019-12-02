@@ -807,8 +807,30 @@ sub is_slides {
     return shift->bb_format eq 'slides';
 }
 
+sub create_format_code {
+    my $self = shift;
+    unless ($self->format_code) {
+        my $site = $self->site;
+        log_info { $self->code . " is without format code" };
+        my $id = $self->custom_formats_id;
+        while ($site->custom_formats->search({ format_code => "c" . $id })->count) {
+            log_info { "c $id already exists on this site" };
+            $id++;
+        }
+        $self->update({ format_code => "c" . $id });
+    }
+    return $self->code;
+}
+
 sub code {
-    return 'c' . shift->custom_formats_id;
+    my $self = shift;
+    my $code = $self->format_code;
+    if ($code) {
+        return $code;
+    }
+    else {
+        return 'c' . $self->custom_formats_id;
+    }
 }
 
 sub tex_extension {
