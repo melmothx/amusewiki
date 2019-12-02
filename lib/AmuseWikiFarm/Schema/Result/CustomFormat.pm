@@ -564,6 +564,20 @@ __PACKAGE__->set_primary_key("custom_formats_id");
 
 __PACKAGE__->add_unique_constraint("site_id_format_alias_unique", ["site_id", "format_alias"]);
 
+=head2 C<site_id_format_code_unique>
+
+=over 4
+
+=item * L</site_id>
+
+=item * L</format_code>
+
+=back
+
+=cut
+
+__PACKAGE__->add_unique_constraint("site_id_format_code_unique", ["site_id", "format_code"]);
+
 =head1 RELATIONS
 
 =head2 site
@@ -582,8 +596,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-12-02 14:56:49
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:24zsiEG1juxXaeZw+QIXtw
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-12-02 15:58:05
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Gni+5Pu1BhLcmfkSkNadKQ
 
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;

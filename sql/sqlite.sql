@@ -170,6 +170,7 @@ CREATE TABLE custom_formats (
        bb_ignore_cover SMALLINT DEFAULT 0
 );
 
+CREATE UNIQUE INDEX unique_custom_formats_site_code ON custom_formats (site_id,format_code);
 CREATE UNIQUE INDEX unique_custom_formats_site_alias ON custom_formats (site_id,format_alias);
 
 -- https://sqlite.org/faq.html#q26
