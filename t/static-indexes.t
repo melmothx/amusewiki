@@ -14,7 +14,7 @@ use AmuseWikiFarm::Schema;
 
 use AmuseWikiFarm::Archive::StaticIndexes;
 use Data::Dumper;
-use Test::More tests => 70;
+use Test::More tests => 52;
 use DateTime;
 use Path::Tiny;
 use Test::WWW::Mechanize;
@@ -50,23 +50,23 @@ my $ftarget = $indexes->target_subdir;
 $ftarget->remove_tree;
 ok !$ftarget->exists;
 
+$indexes->copy_static_files;
+
+$indexes->create_titles;
+
 my @targets = (qw/titles topics authors/);
 
-my @files;
-foreach my $method (map { $_ . '_file' } @targets) {
-    my $file = $indexes->$method;
-    ok ($file);
-    diag $file;
-    if (-f $file) {
-        diag "removing $file";
-        unlink $file or die "Cannot remove $file $!";
-    }
-    push @files, $file;
+my $file = $indexes->output_file;
+ok ($file);
+diag $file;
+if (-f $file) {
+    diag "removing $file";
+    unlink $file or die "Cannot remove $file $!";
 }
 
 $indexes->generate;
 
-foreach my $file (@files) {
+{
     ok (-f $file, "$file was generated");
     my $content = read_file($file);
     unlike $content, qr{\[\%}, "No opening TT tokens found in $file";
@@ -85,7 +85,6 @@ foreach my $f ($indexes->javascript_files,
 }
 
 ok !$indexes->copy_static_files;
-# change the them
 
 my $oldtheme = $site->theme;
 $site->update({ theme => 'lumen' });
@@ -96,8 +95,7 @@ is $site->static_indexes_generator->copy_static_files, 0;
 $site->update({ theme => $oldtheme });
 
 my $mech = Test::WWW::Mechanize->new;
-foreach my $method (map { $_ . '_file' } @targets) {
-    my $file = $indexes->$method;
+{
     $mech->get_ok("file://" . $file);
     my @links = $mech->followable_links;
     diag Dumper([grep { $_ !~ /^https?:/ } map { $_->url } @links]);
@@ -108,7 +106,7 @@ $site->jobs->delete;
 
 is $site->jobs->count, 0;
 
-foreach my $file (@files) {
+{
     unlink $file or die "Cannot remove $file $!";
     ok (! -f $file, "$file removed");
 }
@@ -131,6 +129,6 @@ is $site->jobs->count, 1;
 
 ok !$site->titles->status_is_published_or_deferred->with_missing_pages_qualification->count;
 
-foreach my $file (@files) {
+{
     ok (-f $file, "$file created");
 }

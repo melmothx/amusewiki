@@ -1,9 +1,10 @@
+[%-  MACRO loc(text, args) BLOCK; lh.loc_html(text, args) ; END -%]
 <!DOCTYPE html>
 <html lang="[% lang %]">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>[% lh.loc_html(title) %]</title>
+    <title>[% loc(title) %]</title>
     [%- IF site.has_site_file('favicon.ico') %]
     <link rel="shortcut icon" href="./site_files/favicon.ico" />
     [%- END %]
@@ -45,25 +46,12 @@
                  alt="[% site.sitename | html %]" />
           </a>
           [% ELSE %]
-          <a class="navbar-brand" href="./titles.html"
+          <a class="navbar-brand" href="[% site.canonical_url_secure %]"
              title="[% site.sitename | html %]">
             <small>[%  site.sitename | html %]</small>
           </a>
           [%- END -%]
           </span>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li[% IF title == 'Titles' %] class="active" [% END %]>
-              <a href="./titles.html">[% lh.loc_html('Titles') %]</a>
-            </li>
-            <li[% IF title == 'Authors' %] class="active" [% END %]>
-              <a href="./authors.html">[% lh.loc_html('Authors') %]</a>
-            </li>
-            <li[% IF title == 'Topics' %] class="active" [% END %]>
-              <a href="./topics.html">[% lh.loc_html('Topics') %]</a>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
@@ -71,108 +59,68 @@
       <div class="page-header">
         <div class="row">
           <div class="col-xs-12 text-center">
-            <h1>[% lh.loc_html(title) %] <small>([% total_items %])</small></h1>
+            <h1>[% loc(title) %] <small>([% total_items %])</small></h1>
           </div>
         </div>
       </div>
-      <div class="pb-10">
-        <div class="row">
-          <div class="col-xs-offset-6 col-xs-6 text-right">
-            [% lh.loc_html('Sorting:') %]
-            <div class="btn-group btn-group-xs" role="group" aria-label="Sorting">
-              <button type="button" class="btn btn-default sorting-button"
-                      data-sort="alpha" data-direction="asc">
-                <span class="fa fa-sort-alpha-asc"></span>
-              </button>
-              <button type="button" class="btn btn-default sorting-button"
-                      data-sort="alpha" data-direction="desc">
-                <span class="fa fa-sort-alpha-desc"></span>
-              </button>
-              [% IF category_listing %]
-              <button type="button" class="btn btn-default sorting-button"
-                      data-sort="numtitles" data-direction="asc">
-                <span class="fa fa-sort-amount-asc"></span>
-              </button>
-              <button type="button" class="btn btn-default sorting-button"
-                      data-sort="numtitles" data-direction="desc">
-                <span class="fa fa-sort-amount-desc"></span>
-              </button>
-              [% ELSE %]
-              <button type="button" class="btn btn-default sorting-button"
-                      data-sort="pubdate" data-direction="desc">
-                [% lh.loc_html('Publication date') %]
-                <span class="fa fa-sort-desc"></span>
-              </button>
-              <button type="button" class="btn btn-default sorting-button"
-                      data-sort="pubdate" data-direction="asc">
-                [% lh.loc_html('Publication date') %]
-                <span class="fa fa-sort-asc"></span>
-              </button>
-              [% END %]
-            </div>
-          </div>
-        </div>
-      </div>
-      [% IF category_listing %]
-        <div id="sortable-listing">
-          [% FOREACH cat IN list %]
-          <div data-alpha="[% cat.sorting_pos %]"
-              data-numtitles="[% cat.titles_count %]"
-              class="sortable-element">
-            <h4 id="cat-[% cat.uri %]">[% lh.site_loc_html(cat.name) %]</h4>
-            <ul class="list-group">
-                  [% FOREACH text IN cat.sorted_titles %]
-                  <li class="list-group-item">
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <a href="./titles.html#text-[% text.uri %]">[% text.title %]</a>
-                        [%- IF text.author %] — [% text.author %][% END %]
-                      </div>
-                    </div>
-                  </li>
-                  [% END %]
-            </ul>
-          </div>
-          [% END %]
-        </div>
-        [% ELSE %]
-        <div id="sortable-listing" class="list-group">
-        [% SET topics_label = lh.loc_html('Topics') %]
-        [% SET authors_label = lh.loc_html('Authors') %]
+      <table id="title-listing-table" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>[% loc('Title') %]</th>
+            <th>[% loc('Author') %]</th>
+            [% FOREACH cat IN categories %]
+              <th data-orderable="false">[% loc(cat.name_plural) %]</th>
+            [% END %]
+            <th data-orderable="false" >[% loc('Files') %]</th>
+            <th>[% loc('Publication date') %]</th>
+            <th>[% loc('Estimated pages') %]
+            </th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th><input type="text" size="10" placeholder="[% loc('Filter') %]"/></th>
+            <th><input type="text" size="10" placeholder="[% loc('Filter') %]"/></th>
+            [% FOREACH cat IN categories %]
+              <th><input type="text" size="5" placeholder="[% loc('Filter') %]"/></th>
+            [% END %]
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </tfoot>
+        <tbody>
         [% FOREACH text IN list %]
-        <div id="text-[% text.uri %]"
-             class="sortable-element list-group-item pb-10"
-             data-pubdate="[% text.pubdate_int %]"
-             data-alpha="[% text.sorting_pos %]">
-          <div class="row">
-          <div class="col-xs-6">
+          <tr>
+            <td data-sort="[% text.sorting_pos %]">
+            <i aria-hidden="true"
+               data-toggle="tooltip"
+               data-placement="top"
+               [% IF text.text_qualification == 'book' %]
+               class="awm-show-text-type-icon fa fa-book"
+               title="[% loc('This text is a book') %]"
+               [% ELSE %]
+               title="[% loc('This text is an article') %]"
+               class="awm-show-text-type-icon fa fa-file-text-o"
+               [% END %]>
+            </i>
             <a href="[% text.in_tree_uri %].html">
               [% text.title %]
+              [% IF text.lang %]<small>[[% text.lang %]]</small>[% END %]
             </a>
-            [%- IF text.author %] — [% text.author %] [% END %]
-            [% IF text.lang %]<small>[[% text.lang %]]</small>[% END %]
-            [% IF text.sorted_authors || text.sorted_topics %]
-            <div>
-              [%- IF text.sorted_authors %]
-              <div>
-                <strong>[% authors_label %]:</strong>
-                [%- FOREACH author IN text.sorted_authors %]
-                <a href="./authors.html#cat-[% author.uri %]">[% author.name %]</a>
-                [%- END -%]
-              </div>
-              [%- END %]
-              [%- IF text.sorted_topics %]
-              <div>
-                <strong>[% topics_label %]:</strong>
-                [%- FOREACH topic IN text.sorted_topics %]
-                <a href="./topics.html#cat-[% topic.uri %]">[% lh.site_loc_html(topic.name) %]</a>
-                [%- END %]
-              </div>
-              [%- END %]
-            </div>
+            </td>
+            <td>
+              [% IF text.author %][% text.author %][% END %]
+            </td>
+            [% FOREACH ctype IN text.categories %]
+              <td>
+                [% FOREACH cat IN ctype %]
+                  <div>[% loc(cat.name) %]</div>
+                [% END  %]
+              </td>
             [% END %]
-          </div>
-          <div class="col-xs-5">
+
+            <td>
             [%- FOREACH format IN formats %]
             [%- IF format.is_slides && !text.slides %]
             <span class="fa fa-2x fa-border fa-ban"
@@ -191,52 +139,58 @@
               </span><span class="sr-only">[% format.desc %]</span></a>
             [%- END %]
             [%- END %]
-          </div>
-          <div class="col-xs-1">
+            </td>
+            <td data-sort="[% text.pubdate_int %]">
             <small>[% text.pubdate %]</small><br>
-            <i aria-hidden="true"
-               data-toggle="tooltip"
-               data-placement="top"
-               [% IF text.text_qualification == 'book' %]
-               class="awm-show-text-type-icon fa fa-book"
-               title="[% lh.loc_html('This text is a book') %]"
-               [% ELSE %]
-               title="[% lh.loc_html('This text is an article') %]"
-               class="awm-show-text-type-icon fa fa-file-text-o"
-               [% END %]>
-            </i>
-            <small>[% lh.loc_html('[_1] pp.', text.pages_estimated) %]</small>
-          </div>
-          </div>
-        </div>
+            </td>
+            <td data-sort="[% text.pages_estimated %]">
+            <small>[% loc('[_1] pp.', text.pages_estimated) %]</small>
+            </td>
+          </tr>
         [%- END %]
-        </div>
-      [%- END %]
+        </tbody>
+      </table>
     </div>
-    <div class="clearfix">&nbsp;</div>
-    <div class="clearfix">&nbsp;</div>
-    <div class="clearfix">&nbsp;</div>
-    <div class="clearfix">&nbsp;</div>
     <script>
     $(document).ready(function() {
-        $('[data-toggle="tooltip"]').tooltip();
-        $('.sorting-button').click(function () {
-            var direction = $(this).data('direction');
-            var field = $(this).data('sort');
-            // console.log("Click on " + direction + ' ' + field);
-            var sorted = $('.sortable-element').sort(function(a,b) {
-                var fa = parseInt($(a).data(field));
-                var fb = parseInt($(b).data(field));
-                if (direction == 'asc') {
-                    return (fa < fb) ? -1 : (fa > fb) ? 1 : 0;
-                }
-                else {
-                    return (fb < fa) ? -1 : (fb > fa) ? 1 : 0;
-                }
-            }).each(function(i,item) {
-                $('#sortable-listing').append(item)
-            });
-        });
+         $('[data-toggle="tooltip"]').tooltip();
+         var table = $('#title-listing-table').DataTable({
+             "lengthMenu": [
+                 [10, 25, 50, 100, 200, -1],
+                 [10, 25, 50, 100, 200, "∞"]
+             ],
+             "language": {
+	             "sEmptyTable":     "[% loc('No data available in table') %]",
+	             "sInfo":           "[% loc('Showing _START_ to _END_ of _TOTAL_ entries') %]",
+	             "sInfoEmpty":      "[% loc('Showing 0 to 0 of 0 entries') %]",
+	             "sInfoFiltered":   "([% loc('filtered from _MAX_ total entries') %])",
+	             "sInfoPostFix":    "",
+	             "sInfoThousands":  "",
+	             "sLengthMenu":     "[% loc('Show _MENU_ entries') %]",
+	             "sLoadingRecords": "[% loc('Loading') %]...",
+	             "sProcessing":     "[% loc('Processing') %]...",
+	             "sSearch":         "[% loc('Search') %]:",
+	             "sZeroRecords":    "[% loc('No matching records found') %]",
+	             "oPaginate": {
+		             "sFirst":    "[% loc('First') %]",
+		             "sLast":     "[% loc('Last') %]",
+		             "sNext":     "[% loc('Next') %]",
+		             "sPrevious": "[% loc('Previous') %]"
+	             },
+	             "oAria": {
+		             "sSortAscending":  ": [% loc('activate to sort column ascending') %]",
+		             "sSortDescending": ": [% loc('activate to sort column descending') %]"
+	             }
+             }
+         });
+         table.columns().every(function() {
+             var that = this;
+             $('input', this.footer()).on('keyup change', function () {
+                 if ( that.search() !== this.value ) {
+                     that.search( this.value ).draw();
+                 }
+             });
+         });
     });
     </script>
   </body>

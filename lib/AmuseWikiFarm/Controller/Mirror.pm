@@ -64,10 +64,14 @@ sub mirror :Chained('root') :PathPart('mirror') :Args {
         $c->detach;
         return;
     }
-    # fake index.html for wget and alike, otherwise the redirection
-    # will not download index.html again.
-    if (@path == 1 and $path[0] eq 'index.html') {
-        @path = ('titles.html');
+
+    my %indexes = (
+                 'titles.html' => 1,
+                 'authors.html' => 1,
+                 'topics.html' => 1,
+                );
+    if (@path == 1 and $indexes{$path[0]}) {
+        @path = ('index.html');
     }
     my @valid = grep { m/\A[0-9a-zA-Z_-]+(\.[0-9a-zA-Z]+)*\z/ } @path;
     # all fragments are valid:
