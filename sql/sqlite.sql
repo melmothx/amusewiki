@@ -119,6 +119,7 @@ CREATE TABLE custom_formats (
        format_name VARCHAR(255) NOT NULL,
        format_description TEXT,
        format_alias VARCHAR(8) NULL,
+       format_code VARCHAR(8) NULL,
        format_priority INTEGER NOT NULL DEFAULT 0,
        active SMALLINT DEFAULT 1,
        bb_format VARCHAR(16) NOT NULL DEFAULT 'pdf',
