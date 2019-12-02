@@ -7,6 +7,9 @@ BEGIN;
 ALTER TABLE custom_formats ADD COLUMN format_code varchar(8);
 
 ;
+CREATE UNIQUE INDEX site_id_format_code_unique ON custom_formats (site_id, format_code);
+
+;
 
 COMMIT;
 

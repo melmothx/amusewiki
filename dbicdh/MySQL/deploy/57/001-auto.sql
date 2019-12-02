@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Mon Dec  2 14:58:49 2019
+-- Created on Mon Dec  2 15:59:09 2019
 -- 
 ;
 SET foreign_key_checks=0;
@@ -264,6 +264,7 @@ CREATE TABLE `custom_formats` (
   INDEX `custom_formats_idx_site_id` (`site_id`),
   PRIMARY KEY (`custom_formats_id`),
   UNIQUE `site_id_format_alias_unique` (`site_id`, `format_alias`),
+  UNIQUE `site_id_format_code_unique` (`site_id`, `format_code`),
   CONSTRAINT `custom_formats_fk_site_id` FOREIGN KEY (`site_id`) REFERENCES `site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 --

@@ -902,6 +902,19 @@ schema:
           reference_fields: []
           reference_table: ''
           type: UNIQUE
+        - deferrable: 1
+          expression: ''
+          fields:
+            - site_id
+            - format_code
+          match_type: ''
+          name: site_id_format_code_unique
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: UNIQUE
         - deferrable: 0
           expression: ''
           fields:
@@ -1412,7 +1425,7 @@ schema:
           default_value: ~
           is_nullable: 1
           is_primary_key: 0
-          is_unique: 0
+          is_unique: 1
           name: format_code
           order: 6
           size:

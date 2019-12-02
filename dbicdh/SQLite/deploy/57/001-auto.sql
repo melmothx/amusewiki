@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Mon Dec  2 14:58:48 2019
+-- Created on Mon Dec  2 15:59:08 2019
 -- 
 
 ;
@@ -259,6 +259,7 @@ CREATE TABLE "custom_formats" (
 );
 CREATE INDEX "custom_formats_idx_site_id" ON "custom_formats" ("site_id");
 CREATE UNIQUE INDEX "site_id_format_alias_unique" ON "custom_formats" ("site_id", "format_alias");
+CREATE UNIQUE INDEX "site_id_format_code_unique" ON "custom_formats" ("site_id", "format_code");
 --
 -- Table: "legacy_link"
 --

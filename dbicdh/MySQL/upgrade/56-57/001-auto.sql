@@ -4,7 +4,8 @@
 BEGIN;
 
 ;
-ALTER TABLE custom_formats ADD COLUMN format_code varchar(8) NULL;
+ALTER TABLE custom_formats ADD COLUMN format_code varchar(8) NULL,
+                           ADD UNIQUE site_id_format_code_unique (site_id, format_code);
 
 ;
 

@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Mon Dec  2 14:58:50 2019
+-- Created on Mon Dec  2 15:59:10 2019
 -- 
 ;
 --
@@ -277,7 +277,8 @@ CREATE TABLE "custom_formats" (
   "bb_tex_tolerance" integer DEFAULT 200 NOT NULL,
   "bb_ignore_cover" smallint DEFAULT 0,
   PRIMARY KEY ("custom_formats_id"),
-  CONSTRAINT "site_id_format_alias_unique" UNIQUE ("site_id", "format_alias")
+  CONSTRAINT "site_id_format_alias_unique" UNIQUE ("site_id", "format_alias"),
+  CONSTRAINT "site_id_format_code_unique" UNIQUE ("site_id", "format_code")
 );
 CREATE INDEX "custom_formats_idx_site_id" on "custom_formats" ("site_id");
 
