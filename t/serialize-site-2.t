@@ -19,6 +19,7 @@ $schema->resultset('Site')->search({ canonical => '0ser0.amusewiki.org' })->dele
 
 my $site_id = '0ser0';
 my $dump;
+my $cfs;
 my $old_tree;
 {
     my $site = create_site($schema, $site_id);
@@ -80,6 +81,7 @@ MUSE
     ok $site->custom_formats->count;
     $site = $site->get_from_storage;
     $dump = $site->serialize_site;
+    $cfs = [ map { $_->code } $site->custom_formats->sorted_by_priority ];
     $site->delete;
     ok -d $site->repo_root;
     $old_tree = $site->repo_root;
@@ -89,6 +91,10 @@ is $schema->resultset('Attachment')->search({ site_id => $site_id })->count, 0;
 is $schema->resultset('CustomFormat')->search({ site_id => $site_id })->count, 0;
 
 $dump->{id} = '0resurrect0';
+
+# so with sqlite the CFs primary keys are not reused.
+my $placeholder = create_site($schema, "0blabla");
+
 {
     my $site = $schema->resultset('Site')->deserialize_site(dclone($dump));
     $site = $site->get_from_storage;
@@ -108,5 +114,9 @@ $dump->{id} = '0resurrect0';
     my $att = $site->attachments->first;
     ok $att->comment_muse, "attachment comment brought over";
     ok $att->title_muse, "attachment title brought over";
+    is_deeply [ map { $_->code } $site->custom_formats->sorted_by_priority ], $cfs,
+      "Custom formats retained thery code";
 }
 diag Dumper($dump);
+
+$placeholder->delete;
