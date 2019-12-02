@@ -65,5 +65,14 @@ sub images_only {
     return $self->search({ "$me.f_class" => "image" });
 }
 
+sub with_descriptions {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search([
+                          { "$me.title_muse"   => { '!=' => '' } },
+                          { "$me.comment_muse" => { '!=' => '' } },
+                         ]);
+}
+
 1;
 

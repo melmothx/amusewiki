@@ -130,6 +130,7 @@ sub site_serialize_related_rels {
               [ categories      => undef, { order_by => [qw/uri/]         } ],
               [ custom_formats  => undef, { order_by => [qw/format_name/] } ],
               [ redirections    => undef, { order_by => [qw/uri/]         } ],
+              [ site_category_types => undef, { order_by => [qw/priority/] } ],
              );
     return @out;
 }
@@ -146,6 +147,7 @@ sub deserialize_site {
     }
     my @users = @{ delete $hashref->{users} || [] };
     my @nodes = @{ delete $hashref->{nodes} || [] };
+    my @attachments = @{ delete $hashref->{attachments} || [] };
     my $site = $self->update_or_create($hashref);
 
     # notably, tables without a non-auto PK, and where it makes sense
@@ -207,6 +209,15 @@ sub deserialize_site {
     }
     $site->set_users(\@add);
     $site->deserialize_nodes(\@nodes);
+    foreach my $att (@attachments) {
+        my $uri = delete $att->{uri};
+        if (my $found = $site->attachments->by_uri($uri)) {
+            $found->update($att);
+        }
+        else {
+            log_info { "$uri not found in the tree" };
+        }
+    }
     $guard->commit;
     $site->discard_changes;
     return $site;
