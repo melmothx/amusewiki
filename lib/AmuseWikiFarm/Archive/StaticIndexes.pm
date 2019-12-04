@@ -153,12 +153,13 @@ sub create_titles {
 
           CATEGORY:
             while (@sorted) {
-                my $cat = shift @sorted;
-                next CATEGORY unless $cat->{category}->{active};
+                my $cat_title = shift @sorted;
+                # we don't really need the link here
+                my $cat = $cat_title->{category};
+                next CATEGORY unless $cat->{active};
 
-                $cat_by_type{$cat->{category}->{type}} ||= [];
-                $cat->{name} = $cat->{category}->{name};
-                push @{$cat_by_type{$cat->{category}->{type}}}, $cat;
+                $cat_by_type{$cat->{type}} ||= [];
+                push @{$cat_by_type{$cat->{type}}}, $cat;
             }
         }
         my @categories;

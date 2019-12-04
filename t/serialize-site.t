@@ -18,8 +18,8 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_id = '0serialize0';
 my $site = create_site($schema, $site_id);
 
-$site->add_to_vhosts({ name => 'pinco.pallino.net' });
-$site->add_to_vhosts({ name => 'www.pallino.net' });
+$site->add_to_vhosts({ name => 'pincox.pallino.net' });
+$site->add_to_vhosts({ name => 'www.xpallino.net' });
 $site->add_to_site_options({ option_name => 'test', option_value => 'tvalue' });
 $site->add_to_site_links({ url => 'http://www.example.org', label => 'Example' }) for (1..4);
 $site->add_to_categories({ name => 'The Cat', uri => 'the-cat', type => 'topic' });
