@@ -597,6 +597,10 @@ sub muse_filepath_is_valid {
     return unless muse_filename_is_valid($name);
     Dlog_debug { "$name is valid" };
     # handle the pdf, which are indexed only if in the 'uploads' directory
+    if ($dirs[0] eq '.git') {
+        return;
+    }
+
     if (@dirs == 1) {
         my $dir = shift @dirs;
 
@@ -624,10 +628,9 @@ sub muse_filepath_is_valid {
         log_debug { "$relpath not two levels down" };
         return;
     }
-
     # check the suffixes
     unless ($suffix =~ m/^\.(muse|jpe?g|png)$/s) {
-        log_info { "$relpath has a suffix I don't recognize" };
+        log_debug { "$relpath has a suffix I don't recognize" };
         return;
     }
 

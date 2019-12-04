@@ -1289,6 +1289,9 @@ sub check_and_update_custom_formats {
         Dlog_debug { "Enforcing $_ on " . $cf->format_name } $formats{$method}{fields};
         $cf->update($formats{$method}{fields});
     }
+    foreach my $cf ($self->custom_formats->all) {
+        $cf->create_format_code;
+    }
     $guard->commit;
 }
 
@@ -1959,9 +1962,10 @@ sub store_file_list_for_mirroring {
 sub get_file_list_for_mirroring {
     my ($self) = @_;
     my $root = Path::Tiny::path($self->repo_root);
+    my $index_ts = (stat($root->child('index.html')))[9] || '';
     my @list = map { +{
                        file => $_,
-                       ts => (stat($root->child($_)))[9] || '',
+                       ts => $index_ts,
                       } } ('index.html', 'titles.html', 'topics.html', 'authors.html' );
     my $root_as_string = $root->stringify;
     my $mime = AmuseWikiFarm::Utils::Paths::served_mime_types();
@@ -3710,6 +3714,15 @@ sub serialize_site {
     $data{users} = \@users;
     # and the nodes
     $data{nodes} = [ map { $_->serialize } $self->nodes->sorted->all ];
+
+    #and the attachments
+    $data{attachments} = [ map { +{
+                                   uri => $_->uri,
+                                   title_muse => $_->title_muse,
+                                   comment_muse => $_->comment_muse,
+                                   title_html => $_->title_html,
+                                   comment_html => $_->comment_html,
+                                  } } $self->attachments->with_descriptions->all ];
     return \%data;
 }
 

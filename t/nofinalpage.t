@@ -44,7 +44,7 @@ ok $mech->submit_form(with_fields => {
 my @fields = (qw/nofinalpage notoc nocoverpage unbranded/);
 ok $mech->form_with_fields(@fields);
 
-my $format = $site->custom_formats->first;
+my $format = $site->custom_formats->search({ format_name => 'custom' })->first;
 foreach my $f (@fields) {
     my $method = 'bb_' . $f;
     is $format->$method, 0, "$method is false";
@@ -71,6 +71,7 @@ $site->jobs->enqueue(rebuild => { id => $site->titles->first->id }, 15);
         is $job->status, 'completed';
         diag $job->logs;
         if ($job->task eq 'rebuild') {
+            diag "Produced is " . $job->produced;
             $produced = $job->produced;
         }
     }

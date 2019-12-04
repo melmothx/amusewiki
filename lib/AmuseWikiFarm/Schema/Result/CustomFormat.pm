@@ -68,6 +68,12 @@ __PACKAGE__->table("custom_formats");
   is_nullable: 1
   size: 8
 
+=head2 format_code
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 8
+
 =head2 format_priority
 
   data_type: 'integer'
@@ -380,6 +386,8 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 1 },
   "format_alias",
   { data_type => "varchar", is_nullable => 1, size => 8 },
+  "format_code",
+  { data_type => "varchar", is_nullable => 1, size => 8 },
   "format_priority",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "active",
@@ -556,6 +564,20 @@ __PACKAGE__->set_primary_key("custom_formats_id");
 
 __PACKAGE__->add_unique_constraint("site_id_format_alias_unique", ["site_id", "format_alias"]);
 
+=head2 C<site_id_format_code_unique>
+
+=over 4
+
+=item * L</site_id>
+
+=item * L</format_code>
+
+=back
+
+=cut
+
+__PACKAGE__->add_unique_constraint("site_id_format_code_unique", ["site_id", "format_code"]);
+
 =head1 RELATIONS
 
 =head2 site
@@ -574,8 +596,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2018-11-05 14:00:21
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:cM8EGuyHQVE9O4N+qLjneQ
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-12-02 15:58:05
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Gni+5Pu1BhLcmfkSkNadKQ
 
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;
@@ -785,8 +807,30 @@ sub is_slides {
     return shift->bb_format eq 'slides';
 }
 
+sub create_format_code {
+    my $self = shift;
+    unless ($self->format_code) {
+        my $site = $self->site;
+        log_info { $self->code . " is without format code" };
+        my $id = $self->custom_formats_id;
+        while ($site->custom_formats->search({ format_code => "c" . $id })->count) {
+            log_info { "c $id already exists on this site" };
+            $id++;
+        }
+        $self->update({ format_code => "c" . $id });
+    }
+    return $self->code;
+}
+
 sub code {
-    return 'c' . shift->custom_formats_id;
+    my $self = shift;
+    my $code = $self->format_code;
+    if ($code) {
+        return $code;
+    }
+    else {
+        return 'c' . $self->custom_formats_id;
+    }
 }
 
 sub tex_extension {

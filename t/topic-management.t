@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 97;
+use Test::More tests => 90;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -99,11 +99,10 @@ $mech->content_contains($cat->full_uri);
 }
 
 $site->jobs->dequeue->dispatch_job;
+$mech->get_ok("/mirror/index.html");
 foreach my $type (qw/topic author/) {
-    $mech->get_ok("/mirror/${type}s.html");
-    $mech->content_contains(q{id="cat-} . $cat->uri  . q{">});
-    $mech->content_lacks(q{id="cat-} . $site->categories->inactive->by_type($type)->first->uri  . q{">});
-    $mech->get_ok("/mirror/titles.html");
-    $mech->content_contains(qq/${type}s.html#cat-/ . $cat->uri);
-    $mech->content_lacks(qq/${type}s.html#cat-/ . $site->categories->inactive->by_type($type)->first->uri);
+    $mech->content_contains(qq{data-category-type="$type" data-category-uri="}
+                            . $cat->uri  . q{">});
+    $mech->content_lacks(   qq{data-category-type="$type" data-category-uri="}
+                            . $site->categories->inactive->by_type($type)->first->uri  . q{">});
 }

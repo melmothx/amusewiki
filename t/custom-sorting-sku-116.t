@@ -8,7 +8,7 @@ use strict;
 use warnings;
 use utf8;
 use File::Spec::Functions qw/catfile catdir/;
-use Test::More tests => 78;
+use Test::More tests => 76;
 
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -128,10 +128,8 @@ while (my $j = $site->jobs->dequeue) {
     diag $j->logs;
 }
 
-foreach my $f (qw/titles.html topics.html authors.html/) {
-    my $static = path($site->repo_root, $f)->slurp_utf8;
-    like $static, qr{Prefix 95 SKU first-000095 1.*Prefix 97 SKU first-000097 1.*Prefix 102 SKU first-000102 1}s;
-}
+my $static = path($site->repo_root, 'index.html')->slurp_utf8;
+like $static, qr{Prefix 95 SKU first-000095 1.*Prefix 97 SKU first-000097 1.*Prefix 102 SKU first-000102 1}s;
 
 ok $site->enable_order_by_sku;
 ok $site->validate_text_category_sorting('sku_asc') or die;

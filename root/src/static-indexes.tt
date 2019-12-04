@@ -115,7 +115,7 @@
             [% FOREACH ctype IN text.categories %]
               <td>
                 [% FOREACH cat IN ctype %]
-                  <div>[% loc(cat.name) %]</div>
+                  <div data-category-type="[% cat.type %]" data-category-uri="[% cat.uri %]">[% lh.site_loc_html(cat.name) %]</div>
                 [% END  %]
               </td>
             [% END %]
