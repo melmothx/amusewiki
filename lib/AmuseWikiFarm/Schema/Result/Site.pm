@@ -1962,9 +1962,10 @@ sub store_file_list_for_mirroring {
 sub get_file_list_for_mirroring {
     my ($self) = @_;
     my $root = Path::Tiny::path($self->repo_root);
+    my $index_ts = (stat($root->child('index.html')))[9] || '';
     my @list = map { +{
                        file => $_,
-                       ts => (stat($root->child($_)))[9] || '',
+                       ts => $index_ts,
                       } } ('index.html', 'titles.html', 'topics.html', 'authors.html' );
     my $root_as_string = $root->stringify;
     my $mime = AmuseWikiFarm::Utils::Paths::served_mime_types();

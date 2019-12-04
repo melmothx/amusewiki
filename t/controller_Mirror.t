@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 88;
+use Test::More tests => 91;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -157,8 +157,13 @@ foreach my $deny (@denied) {
 
 $mech->get_ok('/mirror.ts.txt');
 diag $mech->content;
-$mech->content_contains("index.html#\n");
+$mech->content_like(qr{^index\.html\#\d+$}m);
 $mech->content_like(qr{^specials/index\.muse\#\d+$}m);
+# legacy
+$mech->content_like(qr{^authors\.html\#\d+$}m);
+$mech->content_like(qr{^topics\.html\#\d+$}m);
+$mech->content_like(qr{^titles\.html\#\d+$}m);
+
 
 foreach my $deny (@denied) {
     $mech->content_lacks('.' . $deny . '#');
