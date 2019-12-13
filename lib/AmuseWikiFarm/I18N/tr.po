@@ -721,6 +721,9 @@ msgstr "HTML dönüştürürken hata. Üzgünüm."
 msgid "Errors"
 msgstr "Hatalar"
 
+msgid "Estimated pages"
+msgstr ""
+
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
@@ -778,10 +781,16 @@ msgstr "Dosya çok büyük"
 msgid "File uploaded!"
 msgstr "Dosya yüklendi!"
 
+msgid "Files"
+msgstr ""
+
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 "Eğer forma dolu değilse son sayfadan önceki sayfaları boş sayfalarla doldur."
+
+msgid "Filter"
+msgstr ""
 
 msgid "Filters"
 msgstr "Filtreler"
@@ -791,6 +800,9 @@ msgstr "Katalog ekle menüsünü bul."
 
 msgid "Find the network library menu, or equivalent."
 msgstr "Ağ kütüphanesi menüsünü ya da benzerini bul."
+
+msgid "First"
+msgstr ""
 
 msgid "First Author and Second Author"
 msgstr "Birinci Yazar ve İkinci Yazar"
@@ -1305,6 +1317,9 @@ msgstr "Dil seçimi"
 msgid "Languages supported"
 msgstr "Desteklenen diller"
 
+msgid "Last"
+msgstr ""
+
 msgid "Last successful rebuild"
 msgstr "Son başarılı yeniden oluşturma"
 
@@ -1353,6 +1368,9 @@ msgstr "Token ile başka bir oturum yükle"
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
 msgstr "\"%1\" konfigürasyonu yüklendi"
+
+msgid "Loading"
+msgstr ""
 
 msgid "Locked editing, no upload possible"
 msgstr "Düzenleme kilitlendi, yükleme mümkün değil"
@@ -1510,8 +1528,14 @@ msgstr "İyi başlık"
 msgid "No"
 msgstr "Hayır"
 
+msgid "No data available in table"
+msgstr ""
+
 msgid "No editing yet!"
 msgstr "Henüz düzenleme yok!"
+
+msgid "No matching records found"
+msgstr ""
 
 msgid "No result found!"
 msgstr "Hiçbir sonuç bulunamadı!"
@@ -1894,6 +1918,9 @@ msgstr "Özel"
 msgid "Procedure"
 msgstr "Yöntem"
 
+msgid "Processing"
+msgstr ""
+
 msgid "Produce slides."
 msgstr "Slaytları üret."
 
@@ -2182,6 +2209,9 @@ msgstr "Ertelemek istiyorsan ileri bir tarih gir."
 msgid "Settings loaded"
 msgstr ""
 
+msgid "Show _MENU_ entries"
+msgstr ""
+
 msgid "Show cheatsheet"
 msgstr "Kopya kağıdını göster"
 
@@ -2199,6 +2229,12 @@ msgstr "Listede metin tipi ve sayfa sayısını göster"
 
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Metinin altında bilgi kutusunu göster"
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr ""
 
 msgid "Single bars"
 msgstr "Tek sütünlar"
@@ -3067,6 +3103,12 @@ msgstr "iptal edildi"
 msgid "about, links..."
 msgstr "hakkında, bağlantılar..."
 
+msgid "activate to sort column ascending"
+msgstr ""
+
+msgid "activate to sort column descending"
+msgstr ""
+
 msgid "active"
 msgstr "aktif"
 
@@ -3105,6 +3147,9 @@ msgstr "vurgu"
 
 msgid "failed"
 msgstr "başarısız"
+
+msgid "filtered from _MAX_ total entries"
+msgstr ""
 
 msgid "for code, monospaced"
 msgstr "kod için, sabit aralıklı"

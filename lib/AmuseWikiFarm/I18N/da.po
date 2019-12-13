@@ -707,6 +707,9 @@ msgstr "Fejl under konverteringen af HTML. Undskyld."
 msgid "Errors"
 msgstr "Fejl"
 
+msgid "Estimated pages"
+msgstr ""
+
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
@@ -764,9 +767,15 @@ msgstr ""
 msgid "File uploaded!"
 msgstr "Fil uploadet!"
 
+msgid "Files"
+msgstr ""
+
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr "Indsæt tomme sider inden den sidste side hvis trykarket ikke er fyldt."
+
+msgid "Filter"
+msgstr ""
 
 msgid "Filters"
 msgstr "Filtre"
@@ -776,6 +785,9 @@ msgstr "Find menuen for at tilføje kataloger."
 
 msgid "Find the network library menu, or equivalent."
 msgstr "Find netværkets biblioteksmenu, eller tilsvarende."
+
+msgid "First"
+msgstr ""
 
 msgid "First Author and Second Author"
 msgstr "Første Forfatter og Anden Forfatter"
@@ -1269,6 +1281,9 @@ msgstr "Sprogudvalg"
 msgid "Languages supported"
 msgstr "Understøttede sprog"
 
+msgid "Last"
+msgstr ""
+
 msgid "Last successful rebuild"
 msgstr "Seneste succesfulde genskabelse"
 
@@ -1318,6 +1333,9 @@ msgstr "Indlæs en anden session med et mærke"
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
 msgstr "Indlæste \"%1\" konfiguration"
+
+msgid "Loading"
+msgstr ""
 
 msgid "Locked editing, no upload possible"
 msgstr ""
@@ -1473,8 +1491,14 @@ msgstr "God titel"
 msgid "No"
 msgstr "Nej"
 
+msgid "No data available in table"
+msgstr ""
+
 msgid "No editing yet!"
 msgstr "Endnu ikke redigeret!"
+
+msgid "No matching records found"
+msgstr ""
 
 msgid "No result found!"
 msgstr "Intet resultat fundet!"
@@ -1853,6 +1877,9 @@ msgstr "Privat"
 msgid "Procedure"
 msgstr "Procedure"
 
+msgid "Processing"
+msgstr ""
+
 msgid "Produce slides."
 msgstr ""
 
@@ -2144,6 +2171,9 @@ msgstr "Sæt en dato i fremtiden hvis du vil udskyde den."
 msgid "Settings loaded"
 msgstr ""
 
+msgid "Show _MENU_ entries"
+msgstr ""
+
 msgid "Show cheatsheet"
 msgstr "Vis manualen"
 
@@ -2161,6 +2191,12 @@ msgstr ""
 
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Vis tekstens infoboks ved tekstens afslutning"
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr ""
 
 msgid "Single bars"
 msgstr "Enkelte barer"
@@ -2992,6 +3028,12 @@ msgstr "afbrudt"
 msgid "about, links..."
 msgstr "om, links..."
 
+msgid "activate to sort column ascending"
+msgstr ""
+
+msgid "activate to sort column descending"
+msgstr ""
+
 msgid "active"
 msgstr "aktiv"
 
@@ -3031,6 +3073,9 @@ msgstr "fremhævelse"
 
 msgid "failed"
 msgstr "slog fejl"
+
+msgid "filtered from _MAX_ total entries"
+msgstr ""
 
 msgid "for code, monospaced"
 msgstr "til kode, monospatieret"

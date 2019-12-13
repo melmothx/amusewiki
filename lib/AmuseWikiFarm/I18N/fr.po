@@ -720,6 +720,9 @@ msgstr "Erreur de conversion de l'HTML. Désolé."
 msgid "Errors"
 msgstr "Erreurs"
 
+msgid "Estimated pages"
+msgstr ""
+
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
@@ -776,11 +779,17 @@ msgstr ""
 msgid "File uploaded!"
 msgstr "Fichier mis en ligne !"
 
+msgid "Files"
+msgstr ""
+
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 "Compléter avec des pages blanches avant la dernière page si la signature "
 "n'est pas pleine."
+
+msgid "Filter"
+msgstr ""
 
 msgid "Filters"
 msgstr "Filtres"
@@ -790,6 +799,9 @@ msgstr "Trouver le menu d'ajout de catalogue."
 
 msgid "Find the network library menu, or equivalent."
 msgstr "Trouver le menu bibliothèque de réseau, ou équivalent."
+
+msgid "First"
+msgstr ""
 
 msgid "First Author and Second Author"
 msgstr "Premier·e Auteur·e et Second·e Auteur·e"
@@ -1297,6 +1309,9 @@ msgstr "Choix de langue"
 msgid "Languages supported"
 msgstr "Langues prises en charge"
 
+msgid "Last"
+msgstr ""
+
 msgid "Last successful rebuild"
 msgstr "Dernier rebuild réussi"
 
@@ -1345,6 +1360,9 @@ msgstr "Charger une autre session par \"token\""
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
 msgstr "Configuration \"%1\" chargée"
+
+msgid "Loading"
+msgstr ""
 
 msgid "Locked editing, no upload possible"
 msgstr ""
@@ -1502,8 +1520,14 @@ msgstr "Titre sympa"
 msgid "No"
 msgstr "Non"
 
+msgid "No data available in table"
+msgstr ""
+
 msgid "No editing yet!"
 msgstr "Pas encore de modifications !"
+
+msgid "No matching records found"
+msgstr ""
 
 msgid "No result found!"
 msgstr "Aucun résultat trouvé !"
@@ -1889,6 +1913,9 @@ msgstr "Privé"
 msgid "Procedure"
 msgstr "Procédure"
 
+msgid "Processing"
+msgstr ""
+
 msgid "Produce slides."
 msgstr "Produire des diapositives."
 
@@ -2179,6 +2206,9 @@ msgstr "Définir une date future si vous souhaitez le différer."
 msgid "Settings loaded"
 msgstr ""
 
+msgid "Show _MENU_ entries"
+msgstr ""
+
 msgid "Show cheatsheet"
 msgstr "Afficher le pense-bête"
 
@@ -2196,6 +2226,12 @@ msgstr "Afficher le type de texte et le nombre de pages dans la liste"
 
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Afficher la boite d'informations de texte en bas des textes"
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr ""
 
 msgid "Single bars"
 msgstr "Barres simples"
@@ -3080,6 +3116,12 @@ msgstr "avorté"
 msgid "about, links..."
 msgstr "présentation, liens..."
 
+msgid "activate to sort column ascending"
+msgstr ""
+
+msgid "activate to sort column descending"
+msgstr ""
+
 msgid "active"
 msgstr "actif"
 
@@ -3120,6 +3162,9 @@ msgstr "emphase"
 
 msgid "failed"
 msgstr "échoué"
+
+msgid "filtered from _MAX_ total entries"
+msgstr ""
 
 msgid "for code, monospaced"
 msgstr "pour le code, l'espacement fixe"

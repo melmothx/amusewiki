@@ -734,6 +734,9 @@ msgstr "Fout bij het omzetten van de HTML. Sorry."
 msgid "Errors"
 msgstr "Fouten"
 
+msgid "Estimated pages"
+msgstr ""
+
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
@@ -792,10 +795,16 @@ msgstr "Bestand te groot"
 msgid "File uploaded!"
 msgstr "Bestand geuploaded!"
 
+msgid "Files"
+msgstr ""
+
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 "Vul met blanco paginas voor de laatste pagina als het katern niet vol is."
+
+msgid "Filter"
+msgstr ""
 
 msgid "Filters"
 msgstr "Filters"
@@ -805,6 +814,9 @@ msgstr "Vind het catalogus toevoegen menu."
 
 msgid "Find the network library menu, or equivalent."
 msgstr "Vind het netwerk bibliotheek menu, of gelijkwaardig."
+
+msgid "First"
+msgstr ""
 
 msgid "First Author and Second Author"
 msgstr "Eerste auteur en tweede auteur"
@@ -1337,6 +1349,9 @@ msgstr "Taalselectie"
 msgid "Languages supported"
 msgstr "Ondersteunde talen"
 
+msgid "Last"
+msgstr ""
+
 msgid "Last successful rebuild"
 msgstr "Laatste succesvolle rebuild"
 
@@ -1385,6 +1400,9 @@ msgstr "Laad een andere sessie met een identificatienummer"
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
 msgstr "Configuratie \"%1\" geladen"
+
+msgid "Loading"
+msgstr ""
 
 msgid "Locked editing, no upload possible"
 msgstr "Bewerken vergrendeld, geen upload mogelijk"
@@ -1542,8 +1560,14 @@ msgstr "Mooie titel"
 msgid "No"
 msgstr "Nee"
 
+msgid "No data available in table"
+msgstr ""
+
 msgid "No editing yet!"
 msgstr "Nog geen bewerking!"
+
+msgid "No matching records found"
+msgstr ""
 
 msgid "No result found!"
 msgstr "Geen resultaat gevonden!"
@@ -1931,6 +1955,9 @@ msgstr "Prive"
 msgid "Procedure"
 msgstr "Procedure"
 
+msgid "Processing"
+msgstr ""
+
 msgid "Produce slides."
 msgstr "Maak slides."
 
@@ -2223,6 +2250,9 @@ msgstr "Stek een datum in de toekomst in als je het uit wil stellen."
 msgid "Settings loaded"
 msgstr ""
 
+msgid "Show _MENU_ entries"
+msgstr ""
+
 msgid "Show cheatsheet"
 msgstr "Toon spiekbriefje"
 
@@ -2240,6 +2270,12 @@ msgstr "Toon teksttype en aantal paginas in de lijstvermelding"
 
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Toon het tekstinfovenster onderaan de teksten"
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr ""
 
 msgid "Single bars"
 msgstr "Enkele strepen"
@@ -3129,6 +3165,12 @@ msgstr "afgebroken"
 msgid "about, links..."
 msgstr "over, links..."
 
+msgid "activate to sort column ascending"
+msgstr ""
+
+msgid "activate to sort column descending"
+msgstr ""
+
 msgid "active"
 msgstr "actief"
 
@@ -3168,6 +3210,9 @@ msgstr "nadruk"
 
 msgid "failed"
 msgstr "mislukt"
+
+msgid "filtered from _MAX_ total entries"
+msgstr ""
 
 msgid "for code, monospaced"
 msgstr "voor code, niet-proportioneel (monospace)"

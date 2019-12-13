@@ -718,6 +718,9 @@ msgstr "Грешка при конвертирањето на ХТМЛ дато�
 msgid "Errors"
 msgstr "Грешки"
 
+msgid "Estimated pages"
+msgstr ""
+
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
@@ -772,12 +775,18 @@ msgstr ""
 msgid "File uploaded!"
 msgstr "Датотеката е вчитана!"
 
+msgid "Files"
+msgstr ""
+
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 "Вметни празни страници пред последната страница доколку недостигаат страници "
 "за да\n"
 " се пополни табакот."
+
+msgid "Filter"
+msgstr ""
 
 msgid "Filters"
 msgstr "Филтри"
@@ -787,6 +796,9 @@ msgstr "Пронајди го менито за нови каталози."
 
 msgid "Find the network library menu, or equivalent."
 msgstr "Пронајди го менито за мрежни библиотеки (или слично)."
+
+msgid "First"
+msgstr ""
 
 msgid "First Author and Second Author"
 msgstr "Прв Автор и Втор Автор"
@@ -1289,6 +1301,9 @@ msgstr "Избери јазик"
 msgid "Languages supported"
 msgstr "Јазици кои се поддржуваат"
 
+msgid "Last"
+msgstr ""
+
 msgid "Last successful rebuild"
 msgstr "Последниот пат кога се генерирани датотеки со текстови"
 
@@ -1337,6 +1352,9 @@ msgstr "Вчитај друга сесија со код"
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
 msgstr "Користејќи %1 конфигурација"
+
+msgid "Loading"
+msgstr ""
 
 msgid "Locked editing, no upload possible"
 msgstr ""
@@ -1496,8 +1514,14 @@ msgstr "Убав наслов"
 msgid "No"
 msgstr "Не"
 
+msgid "No data available in table"
+msgstr ""
+
 msgid "No editing yet!"
 msgstr "Сè уште нема измена!"
+
+msgid "No matching records found"
+msgstr ""
 
 msgid "No result found!"
 msgstr "Нема резултати!"
@@ -1884,6 +1908,9 @@ msgstr "Приватно"
 msgid "Procedure"
 msgstr "Процедура"
 
+msgid "Processing"
+msgstr ""
+
 msgid "Produce slides."
 msgstr "Слајдови"
 
@@ -2174,6 +2201,9 @@ msgstr "Стави иден датум доколку сакаш да го од�
 msgid "Settings loaded"
 msgstr ""
 
+msgid "Show _MENU_ entries"
+msgstr ""
+
 msgid "Show cheatsheet"
 msgstr "Покажи го резимето за обликување на текстот"
 
@@ -2191,6 +2221,12 @@ msgstr "Прикажи го видот и бројот на страници н�
 
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Прикажи ги информациите за текстот на дното од страницата"
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr ""
 
 msgid "Single bars"
 msgstr "Единечна лента"
@@ -3049,6 +3085,12 @@ msgstr "недовршено"
 msgid "about, links..."
 msgstr "за проектот, линкови..."
 
+msgid "activate to sort column ascending"
+msgstr ""
+
+msgid "activate to sort column descending"
+msgstr ""
+
 msgid "active"
 msgstr "активно"
 
@@ -3087,6 +3129,9 @@ msgstr "истакнато"
 
 msgid "failed"
 msgstr "неуспешно"
+
+msgid "filtered from _MAX_ total entries"
+msgstr ""
 
 msgid "for code, monospaced"
 msgstr "за кодот"

@@ -722,6 +722,9 @@ msgstr "Gabim gjatë konvertimit te HTML-së. Na falni."
 msgid "Errors"
 msgstr "Gabime"
 
+msgid "Estimated pages"
+msgstr ""
+
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
@@ -780,11 +783,17 @@ msgstr ""
 msgid "File uploaded!"
 msgstr "Dokumenti është ngarkuar!"
 
+msgid "Files"
+msgstr ""
+
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 "Mbush me faqe të zbrazëta para faqes së fundit nëse nënshkrimi nuk është "
 "plot. "
+
+msgid "Filter"
+msgstr ""
 
 msgid "Filters"
 msgstr "Filterët"
@@ -794,6 +803,9 @@ msgstr "Gjej menynë për shtuarje të katalogut."
 
 msgid "Find the network library menu, or equivalent."
 msgstr "Gej menynë e rrjetit të librarisë, ose ekuivalentin."
+
+msgid "First"
+msgstr ""
 
 msgid "First Author and Second Author"
 msgstr "Autorët parësor dhe dytësor"
@@ -1282,6 +1294,9 @@ msgstr "Përzgjedhja e gjuhës"
 msgid "Languages supported"
 msgstr "Gjuhët e përkrahura"
 
+msgid "Last"
+msgstr ""
+
 msgid "Last successful rebuild"
 msgstr ""
 
@@ -1329,6 +1344,9 @@ msgstr ""
 
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
+msgstr ""
+
+msgid "Loading"
 msgstr ""
 
 msgid "Locked editing, no upload possible"
@@ -1485,8 +1503,14 @@ msgstr "Titull i mirë"
 msgid "No"
 msgstr "Jo"
 
+msgid "No data available in table"
+msgstr ""
+
 msgid "No editing yet!"
 msgstr "Ska redaktim për tani!"
+
+msgid "No matching records found"
+msgstr ""
 
 msgid "No result found!"
 msgstr "Nuk ka rezultat!"
@@ -1859,6 +1883,9 @@ msgstr ""
 msgid "Procedure"
 msgstr "Procedura"
 
+msgid "Processing"
+msgstr ""
+
 msgid "Produce slides."
 msgstr "Krijo slide"
 
@@ -2150,6 +2177,9 @@ msgstr "Cakto një datë të ardhshme nëse dëshiron që ta bësh këtë më vo
 msgid "Settings loaded"
 msgstr ""
 
+msgid "Show _MENU_ entries"
+msgstr ""
+
 msgid "Show cheatsheet"
 msgstr ""
 
@@ -2167,6 +2197,12 @@ msgstr ""
 
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Trego kutinë informative të tekstit në fund të teksteve"
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr ""
 
 msgid "Single bars"
 msgstr "Shiritat e veçantë"
@@ -3019,6 +3055,12 @@ msgstr ""
 msgid "about, links..."
 msgstr "rreth, linqe..."
 
+msgid "activate to sort column ascending"
+msgstr ""
+
+msgid "activate to sort column descending"
+msgstr ""
+
 msgid "active"
 msgstr ""
 
@@ -3059,6 +3101,9 @@ msgstr "theks"
 
 msgid "failed"
 msgstr "dështoj"
+
+msgid "filtered from _MAX_ total entries"
+msgstr ""
 
 msgid "for code, monospaced"
 msgstr "për kod, monospaced"

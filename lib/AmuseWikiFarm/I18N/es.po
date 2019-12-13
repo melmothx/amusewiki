@@ -718,6 +718,9 @@ msgstr "Error al convertir el HTML. Disculpa."
 msgid "Errors"
 msgstr "Errores"
 
+msgid "Estimated pages"
+msgstr ""
+
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
@@ -777,11 +780,17 @@ msgstr ""
 msgid "File uploaded!"
 msgstr "¡Archivo subido!"
 
+msgid "Files"
+msgstr ""
+
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 "Llena con páginas en blanco antes de la última página si la encuadernación "
 "no está completa."
+
+msgid "Filter"
+msgstr ""
 
 msgid "Filters"
 msgstr "Filtros"
@@ -791,6 +800,9 @@ msgstr "Buscar el menú de agregar catálogo."
 
 msgid "Find the network library menu, or equivalent."
 msgstr "Buscar el menú de biblioteca en red o equivalente."
+
+msgid "First"
+msgstr ""
 
 msgid "First Author and Second Author"
 msgstr "Primer/a autor/a y segundo/a autor/a"
@@ -1298,6 +1310,9 @@ msgstr "Selección de idioma"
 msgid "Languages supported"
 msgstr "Idiomas soportados"
 
+msgid "Last"
+msgstr ""
+
 msgid "Last successful rebuild"
 msgstr ""
 
@@ -1346,6 +1361,9 @@ msgstr "Cargar otra sesión mediante un token"
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
 msgstr "Cargada la configuración \"%1\""
+
+msgid "Loading"
+msgstr ""
 
 msgid "Locked editing, no upload possible"
 msgstr ""
@@ -1501,8 +1519,14 @@ msgstr "Título"
 msgid "No"
 msgstr "No"
 
+msgid "No data available in table"
+msgstr ""
+
 msgid "No editing yet!"
 msgstr "¡Sin ediciones todavía!"
+
+msgid "No matching records found"
+msgstr ""
 
 msgid "No result found!"
 msgstr "¡No se encontró resultado!"
@@ -1885,6 +1909,9 @@ msgstr "Privado"
 msgid "Procedure"
 msgstr "Procedimiento"
 
+msgid "Processing"
+msgstr ""
+
 msgid "Produce slides."
 msgstr "Producir diapositivas"
 
@@ -2175,6 +2202,9 @@ msgstr "Establecer una fecha en el futuro si quieres descartarlo."
 msgid "Settings loaded"
 msgstr ""
 
+msgid "Show _MENU_ entries"
+msgstr ""
+
 msgid "Show cheatsheet"
 msgstr "Mostrar ayuda memoria"
 
@@ -2192,6 +2222,12 @@ msgstr ""
 
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Mostrar la baja de información de texto al final de los textos"
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr ""
 
 msgid "Single bars"
 msgstr "Barras simples"
@@ -3061,6 +3097,12 @@ msgstr ""
 msgid "about, links..."
 msgstr "acerca de, enlaces..."
 
+msgid "activate to sort column ascending"
+msgstr ""
+
+msgid "activate to sort column descending"
+msgstr ""
+
 msgid "active"
 msgstr ""
 
@@ -3099,6 +3141,9 @@ msgstr "énfasis"
 
 msgid "failed"
 msgstr "falló"
+
+msgid "filtered from _MAX_ total entries"
+msgstr ""
 
 msgid "for code, monospaced"
 msgstr "para código, mono espaciado"

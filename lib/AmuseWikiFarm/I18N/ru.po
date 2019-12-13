@@ -715,6 +715,9 @@ msgstr "Ошибка при конвертации HTML."
 msgid "Errors"
 msgstr "Ошибки"
 
+msgid "Estimated pages"
+msgstr ""
+
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
@@ -770,10 +773,16 @@ msgstr "Файл слишком большой"
 msgid "File uploaded!"
 msgstr "Файл загружен!"
 
+msgid "Files"
+msgstr ""
+
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 "Добавить пустые страницы перед последней страницей, если тетрадки неполные."
+
+msgid "Filter"
+msgstr ""
 
 msgid "Filters"
 msgstr "Опции"
@@ -783,6 +792,9 @@ msgstr "Найдите пункт добавления каталога в ме�
 
 msgid "Find the network library menu, or equivalent."
 msgstr "Найдите меню сетевых библиотек или что-то подобное."
+
+msgid "First"
+msgstr ""
 
 msgid "First Author and Second Author"
 msgstr "Первый Автор и Второй Автор"
@@ -1283,6 +1295,9 @@ msgstr "Язык интерфейса"
 msgid "Languages supported"
 msgstr "Поддерживаемые языки"
 
+msgid "Last"
+msgstr ""
+
 msgid "Last successful rebuild"
 msgstr "Последняя успешная пересборка"
 
@@ -1331,6 +1346,9 @@ msgstr "Загрузить другую сессию по токену"
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
 msgstr "Загружена конфигурация «%1»"
+
+msgid "Loading"
+msgstr ""
 
 msgid "Locked editing, no upload possible"
 msgstr "Редактирование заблокировано, загрузка невозможна"
@@ -1490,8 +1508,14 @@ msgstr "Хорошее название"
 msgid "No"
 msgstr "Нет"
 
+msgid "No data available in table"
+msgstr ""
+
 msgid "No editing yet!"
 msgstr "Ещё нет правок!"
+
+msgid "No matching records found"
+msgstr ""
 
 msgid "No result found!"
 msgstr "Ничего не найдено!"
@@ -1869,6 +1893,9 @@ msgstr "Приватный"
 msgid "Procedure"
 msgstr "Процедура"
 
+msgid "Processing"
+msgstr ""
+
 msgid "Produce slides."
 msgstr "Произвести слайды."
 
@@ -2154,6 +2181,9 @@ msgstr "Установите дату, чтобы текст опубликов�
 msgid "Settings loaded"
 msgstr ""
 
+msgid "Show _MENU_ entries"
+msgstr ""
+
 msgid "Show cheatsheet"
 msgstr "Показывать шпаргалку"
 
@@ -2171,6 +2201,12 @@ msgstr "Показывать тип текста и число страниц в
 
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Показывать информацию о текстах внизу текстов"
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr ""
 
 msgid "Single bars"
 msgstr "Одна вертикальная линия"
@@ -3032,6 +3068,12 @@ msgstr "отменено"
 msgid "about, links..."
 msgstr "о проекте, ссылки..."
 
+msgid "activate to sort column ascending"
+msgstr ""
+
+msgid "activate to sort column descending"
+msgstr ""
+
 msgid "active"
 msgstr "активно"
 
@@ -3072,6 +3114,9 @@ msgstr "курсив"
 
 msgid "failed"
 msgstr "ошибка"
+
+msgid "filtered from _MAX_ total entries"
+msgstr ""
 
 msgid "for code, monospaced"
 msgstr "для кода, моноширинного"

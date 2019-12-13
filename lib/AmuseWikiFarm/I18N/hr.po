@@ -705,6 +705,9 @@ msgstr "Greška na prerađivanju HTML-a."
 msgid "Errors"
 msgstr "Greške"
 
+msgid "Estimated pages"
+msgstr ""
+
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
@@ -759,11 +762,17 @@ msgstr "Datoteka prevelika"
 msgid "File uploaded!"
 msgstr "Datoteka učitana!"
 
+msgid "Files"
+msgstr ""
+
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 "Ubaci prazne stranice prije zadnje stranice ako nedostaju stranice da\n"
 "bi se popunio svezak."
+
+msgid "Filter"
+msgstr ""
 
 msgid "Filters"
 msgstr "Filteri"
@@ -773,6 +782,9 @@ msgstr "Pronađi menu za nove kataloge."
 
 msgid "Find the network library menu, or equivalent."
 msgstr "Pronađi menu za mrežne biblioteke (ili slično)."
+
+msgid "First"
+msgstr ""
 
 msgid "First Author and Second Author"
 msgstr "Prvi Autor i Drugi Autor"
@@ -1281,6 +1293,9 @@ msgstr "Izaberi jezik"
 msgid "Languages supported"
 msgstr "Jezici koji se podržavaju"
 
+msgid "Last"
+msgstr ""
+
 msgid "Last successful rebuild"
 msgstr "Zadnji put kad su datoteke s tekstovima regenerirane"
 
@@ -1329,6 +1344,9 @@ msgstr "Učitaj drugu sesiju kodom"
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
 msgstr "Koristeći \"%1\" konfiguraciju"
+
+msgid "Loading"
+msgstr ""
 
 msgid "Locked editing, no upload possible"
 msgstr "Uređenje zaključan, nije moguće učitati datoteku"
@@ -1484,8 +1502,14 @@ msgstr "Lijep naslov"
 msgid "No"
 msgstr "Ne"
 
+msgid "No data available in table"
+msgstr ""
+
 msgid "No editing yet!"
 msgstr "Nema još izmjene!"
+
+msgid "No matching records found"
+msgstr ""
 
 msgid "No result found!"
 msgstr "Nema rezultata!"
@@ -1862,6 +1886,9 @@ msgstr "Privatno"
 msgid "Procedure"
 msgstr "Procedura"
 
+msgid "Processing"
+msgstr ""
+
 msgid "Produce slides."
 msgstr "Slajdovi."
 
@@ -2149,6 +2176,9 @@ msgstr "Stavi budući datum ako želiš odgoditi objavljivanje."
 msgid "Settings loaded"
 msgstr ""
 
+msgid "Show _MENU_ entries"
+msgstr ""
+
 msgid "Show cheatsheet"
 msgstr "Pokaži sažetak za oblikovanje teksta"
 
@@ -2166,6 +2196,12 @@ msgstr "Pokaži vrstu i broj stranica na popisima tekstova"
 
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Prikaži informacije o tekstu na dnu stranice"
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr ""
 
 msgid "Single bars"
 msgstr "Jednostruke trake (\"|\")"
@@ -3017,6 +3053,12 @@ msgstr "nedovršeno"
 msgid "about, links..."
 msgstr "o projektu, poveznice..."
 
+msgid "activate to sort column ascending"
+msgstr ""
+
+msgid "activate to sort column descending"
+msgstr ""
+
 msgid "active"
 msgstr "aktivno"
 
@@ -3055,6 +3097,9 @@ msgstr "istaknuto"
 
 msgid "failed"
 msgstr "Neuspjelo"
+
+msgid "filtered from _MAX_ total entries"
+msgstr ""
 
 msgid "for code, monospaced"
 msgstr "za kod"

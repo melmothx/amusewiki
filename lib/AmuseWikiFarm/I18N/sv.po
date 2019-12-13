@@ -686,6 +686,9 @@ msgstr ""
 msgid "Errors"
 msgstr "Fel"
 
+msgid "Estimated pages"
+msgstr ""
+
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
@@ -735,9 +738,15 @@ msgstr ""
 msgid "File uploaded!"
 msgstr "Fil uppladdad!"
 
+msgid "Files"
+msgstr ""
+
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr "Fyll med blanksteg innan den sista sidan om signaturen inte är full."
+
+msgid "Filter"
+msgstr ""
 
 msgid "Filters"
 msgstr "Filter"
@@ -746,6 +755,9 @@ msgid "Find the add catalogue menu."
 msgstr ""
 
 msgid "Find the network library menu, or equivalent."
+msgstr ""
+
+msgid "First"
 msgstr ""
 
 msgid "First Author and Second Author"
@@ -1199,6 +1211,9 @@ msgstr "Val av språk"
 msgid "Languages supported"
 msgstr ""
 
+msgid "Last"
+msgstr ""
+
 msgid "Last successful rebuild"
 msgstr ""
 
@@ -1246,6 +1261,9 @@ msgstr ""
 
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
+msgstr ""
+
+msgid "Loading"
 msgstr ""
 
 msgid "Locked editing, no upload possible"
@@ -1402,7 +1420,13 @@ msgstr "Bra titel"
 msgid "No"
 msgstr ""
 
+msgid "No data available in table"
+msgstr ""
+
 msgid "No editing yet!"
+msgstr ""
+
+msgid "No matching records found"
 msgstr ""
 
 msgid "No result found!"
@@ -1769,6 +1793,9 @@ msgstr ""
 msgid "Procedure"
 msgstr ""
 
+msgid "Processing"
+msgstr ""
+
 msgid "Produce slides."
 msgstr ""
 
@@ -2056,6 +2083,9 @@ msgstr "Bestämm ett datum i framtiden om du vill skjuta upp det."
 msgid "Settings loaded"
 msgstr ""
 
+msgid "Show _MENU_ entries"
+msgstr ""
+
 msgid "Show cheatsheet"
 msgstr ""
 
@@ -2072,6 +2102,12 @@ msgid "Show text type and number of pages in the listing"
 msgstr ""
 
 msgid "Show the text infobox at the bottom of the texts"
+msgstr ""
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
 msgstr ""
 
 msgid "Single bars"
@@ -2880,6 +2916,12 @@ msgstr ""
 msgid "about, links..."
 msgstr "om, länkar..."
 
+msgid "activate to sort column ascending"
+msgstr ""
+
+msgid "activate to sort column descending"
+msgstr ""
+
 msgid "active"
 msgstr ""
 
@@ -2918,6 +2960,9 @@ msgstr "tyngdpunkt"
 
 msgid "failed"
 msgstr "misslyckad"
+
+msgid "filtered from _MAX_ total entries"
+msgstr ""
 
 msgid "for code, monospaced"
 msgstr "för kod, monospaced"
