@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2017-02-23 14:23+0100\n"
+"PO-Revision-Date: 2019-11-14 15:19+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: English\n"
 "Language: en\n"
@@ -14,6 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. ($filename)
 msgid "%1 doesn't exist"
@@ -317,6 +318,9 @@ msgid ""
 "        between parens. With this option they will use per-page alpha\n"
 "        numbering"
 msgstr ""
+"By default, secondary footnotes use arabic numbering\n"
+"        in parentheses. With this option they will use per-page alpha\n"
+"        numbering"
 
 msgid "By number of pages, ascending"
 msgstr ""
@@ -356,10 +360,10 @@ msgid "Category types for %1"
 msgstr ""
 
 msgid "Center all the sectioning titles."
-msgstr ""
+msgstr "Center all section titles."
 
 msgid "Center the chapter titles."
-msgstr ""
+msgstr "Center chapter titles."
 
 msgid "Changes"
 msgstr ""
@@ -392,7 +396,7 @@ msgid "Chapter, only for chapter divisions in books"
 msgstr ""
 
 msgid "Cheatsheet for the markup"
-msgstr ""
+msgstr "Markup cheatsheet"
 
 msgid "Choose a paper format"
 msgstr ""
@@ -670,6 +674,9 @@ msgstr ""
 msgid "Errors"
 msgstr ""
 
+msgid "Estimated pages"
+msgstr ""
+
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
@@ -719,8 +726,14 @@ msgstr ""
 msgid "File uploaded!"
 msgstr ""
 
+msgid "Files"
+msgstr ""
+
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
+msgstr ""
+
+msgid "Filter"
 msgstr ""
 
 msgid "Filters"
@@ -730,6 +743,9 @@ msgid "Find the add catalogue menu."
 msgstr ""
 
 msgid "Find the network library menu, or equivalent."
+msgstr ""
+
+msgid "First"
 msgstr ""
 
 msgid "First Author and Second Author"
@@ -1164,6 +1180,9 @@ msgstr ""
 msgid "Languages supported"
 msgstr ""
 
+msgid "Last"
+msgstr ""
+
 msgid "Last successful rebuild"
 msgstr ""
 
@@ -1211,6 +1230,9 @@ msgstr ""
 
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
+msgstr ""
+
+msgid "Loading"
 msgstr ""
 
 msgid "Locked editing, no upload possible"
@@ -1334,7 +1356,7 @@ msgid "Never display the cover"
 msgstr ""
 
 msgid "Never generate a table of content"
-msgstr ""
+msgstr "Never generate a table of contents"
 
 msgid ""
 "Never generate the standard final page with title/author/notes/logo/site name"
@@ -1367,7 +1389,13 @@ msgstr ""
 msgid "No"
 msgstr ""
 
+msgid "No data available in table"
+msgstr ""
+
 msgid "No editing yet!"
+msgstr ""
+
+msgid "No matching records found"
 msgstr ""
 
 msgid "No result found!"
@@ -1587,7 +1615,7 @@ msgid "Please choose the sans font"
 msgstr ""
 
 msgid "Please describe shortly what you did"
-msgstr ""
+msgstr "Please briefly describe what you did"
 
 msgid "Please do not use a valuable password."
 msgstr ""
@@ -1602,6 +1630,8 @@ msgid ""
 "        Just a fancy name, so we can know that multiple uploads come\n"
 "        from the same person."
 msgstr ""
+"Please provide a username. It should *not* be an email address. Just a fancy "
+"name, so we know when multiple uploads come from the same person."
 
 msgid ""
 "Please keep in mind that filters are language-specific\n"
@@ -1620,6 +1650,7 @@ msgstr ""
 
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
+"Enter your email address if you would like to be contacted about this change"
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
@@ -1701,6 +1732,9 @@ msgid "Private"
 msgstr ""
 
 msgid "Procedure"
+msgstr ""
+
+msgid "Processing"
 msgstr ""
 
 msgid "Produce slides."
@@ -1980,6 +2014,9 @@ msgstr ""
 msgid "Settings loaded"
 msgstr ""
 
+msgid "Show _MENU_ entries"
+msgstr ""
+
 msgid "Show cheatsheet"
 msgstr ""
 
@@ -1996,6 +2033,12 @@ msgid "Show text type and number of pages in the listing"
 msgstr ""
 
 msgid "Show the text infobox at the bottom of the texts"
+msgstr ""
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
 msgstr ""
 
 msgid "Single bars"
@@ -2443,7 +2486,7 @@ msgid ""
 msgstr ""
 
 msgid "Two side layout"
-msgstr ""
+msgstr "Two sided layout"
 
 msgid "Type"
 msgstr ""
@@ -2693,7 +2736,7 @@ msgid "You can do so answering a simple question."
 msgstr ""
 
 msgid "You can tune them editing them here."
-msgstr ""
+msgstr "You can tune them by editing them here."
 
 msgid ""
 "You can use the following prefixes to search a word in a specific field, e."
@@ -2778,6 +2821,12 @@ msgstr ""
 msgid "about, links..."
 msgstr ""
 
+msgid "activate to sort column ascending"
+msgstr ""
+
+msgid "activate to sort column descending"
+msgstr ""
+
 msgid "active"
 msgstr ""
 
@@ -2815,6 +2864,9 @@ msgid "emphasis"
 msgstr ""
 
 msgid "failed"
+msgstr ""
+
+msgid "filtered from _MAX_ total entries"
 msgstr ""
 
 msgid "for code, monospaced"
