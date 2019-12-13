@@ -7,7 +7,7 @@ dedicated tree.
 2.420 2019-12-04
 
  - Refactor the static indexes (GH#325)
- - Keep the custom formats name stable across migrations
+ - Keep the custom formats name stable across migrations (GH#321)
 
 2.412 2019-12-01 [SECURITY]
 
