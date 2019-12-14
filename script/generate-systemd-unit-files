@@ -74,6 +74,24 @@ WantedBy=multi-user.target
 
 EOF
 
+cat <<EOF> $tempdir/amusewiki-nginx-reload.path
+[Unit]
+Description=Path to monitor to trigger an nginx reload
+
+[Path]
+PathChanged=$(pwd)/ssl/amusewiki_requests_webserver_reload.txt
+EOF
+
+cat <<EOF> $tempdir/amusewiki-nginx-reload.service
+[Unit]
+Description=Trigger an nginx reload
+Wants=nginx.service
+
+[Service]
+ExecStart=/bin/sh -c '/usr/sbin/nginx -t && /usr/sbin/service nginx reload'
+EOF
+
+
 
 head -100 $tempdir/*
 echo "############################################"
@@ -82,10 +100,12 @@ cat <<EOF
 
 # Please execute as root:
 
-cp -v $tempdir/amusewiki-*.service /etc/systemd/system/
-chown root:root /etc/systemd/system/amusewiki-*
-chmod 664 /etc/systemd/system/amusewiki-*
+cd $tempdir
+EOF
+
+cat <<'EOF'
+for i in amusewiki-*; do echo "installing $i"; cat $i > /etc/systemd/system/$i ; done;
 systemctl daemon-reload
-systemctl start amusewiki-jobber amusewiki-web amusewiki-cgit
+for i in amusewiki-*; do echo "activating $i"; systemctl start $i ; done
 systemctl enable amusewiki-jobber amusewiki-web amusewiki-cgit
 EOF

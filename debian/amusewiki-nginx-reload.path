@@ -1,0 +1,7 @@
+[Unit]
+Description=Path to monitor to trigger an nginx reload
+
+[Path]
+PathChanged=/var/lib/amusewiki/ssl/amusewiki_requests_webserver_reload.txt
+
+

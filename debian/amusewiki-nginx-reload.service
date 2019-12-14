@@ -1,0 +1,6 @@
+[Unit]
+Description=Trigger an nginx reload
+Wants=nginx.service
+
+[Service]
+ExecStart=/bin/sh -c '/usr/sbin/nginx -t && /usr/sbin/service nginx reload'
