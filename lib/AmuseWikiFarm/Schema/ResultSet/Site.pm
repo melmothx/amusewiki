@@ -109,6 +109,11 @@ sub check_and_update_acme_certificates {
             }
         }
     }
+    # signal if it's just a check-only run, so we can test this
+    if ($got || !$update) {
+        path(ssl => 'amusewiki_requests_webserver_reload.txt')
+          ->append_utf8(localtime() . ": updated $got certificates\n");
+    }
     return $got;
 }
 
