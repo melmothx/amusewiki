@@ -1612,17 +1612,6 @@ sub page_range {
     return '+1000';
 }
 
-sub can_be_indexed {
-    my $self = shift;
-    if (($self->is_published) or
-        ($self->is_deferred && $self->teaser)) {
-        return 1;
-    }
-    else {
-        return 0;
-    }
-}
-
 sub wants_custom_format {
     my ($self, $cf) = @_;
     die "Missing argument" unless $cf;

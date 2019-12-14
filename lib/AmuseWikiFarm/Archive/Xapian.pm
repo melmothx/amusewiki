@@ -120,9 +120,9 @@ has stem_search => (
                     default => sub { return 1 },
                    );
 
-has index_deferred => (is => 'ro',
-                       isa => Bool,
-                       default => sub { return 0 });
+has show_deferred => (is => 'rw',
+                      isa => Bool,
+                      default => sub { return 0 });
 
 has basedir => (
                 is => 'ro',
@@ -293,7 +293,7 @@ sub index_text {
 
     my $qterm = 'Q' . $title->uri;
     my $exit = 1;
-    if ($title and ($title->is_published or ($self->index_deferred && $title->can_be_indexed))) {
+    if ($title and ($title->is_published or $title->is_deferred)) {
         $logger->("Updating " . $title->uri . " in Xapian db\n");
         try {
             my $doc = Search::Xapian::Document->new();
@@ -541,7 +541,8 @@ sub _do_faceted_search {
     if (@filters) {
         $query = Search::Xapian::Query->new(+OP_FILTER, $query, Search::Xapian::Query->new(+OP_AND, @filters));
     }
-    if ($args{published_only}) {
+
+    unless ($self->show_deferred) {
         my $published_only = Search::Xapian::Query->new(OP_VALUE_LE,
                                                    SLOT_PUBDATE_FULL,
                                                    Search::Xapian::sortable_serialise(time()));
@@ -651,7 +652,6 @@ sub _do_faceted_search {
                                                        multisite => $self->multisite,
                                                        site => $args{site},
                                                        lh => $args{lh},
-                                                       show_deferred => $self->index_deferred,
                                                        did_you_mean => $corrected_query,
                                                       );
 }

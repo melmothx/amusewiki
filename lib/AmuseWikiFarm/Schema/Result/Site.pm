@@ -1731,7 +1731,7 @@ sub xapian {
                                                locale => $self->locale,
                                                # disable stemming for search on multilang environment
                                                stem_search => !$self->multilanguage,
-                                               index_deferred => $self->show_preview_when_deferred,
+                                               show_deferred => $self->show_preview_when_deferred,
                                               );
 }
 

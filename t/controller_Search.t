@@ -72,6 +72,8 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
         $indexer->set_document($doc);
         $doc->set_data(qq[{ "uri":"$uri" }]);
         $doc->add_term('Q' . $uri);
+        # SLOT_PUBDATE_FULL, otherwise search will fail because of the default filter.
+        $doc->add_value(7, Search::Xapian::sortable_serialise(time() - 1));
         $indexer->index_text($uri, 1, 'S');
         $indexer->increase_termpos();
         $indexer->index_text("this uri doesn't exist a abc cdf");
