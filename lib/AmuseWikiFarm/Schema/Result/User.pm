@@ -271,10 +271,21 @@ __PACKAGE__->add_columns(
                             },
         passphrase_check_method => 'check_password',
     },
+    '+reset_token' => {
+        passphrase       => 'rfc2307',
+        passphrase_class => 'BlowfishCrypt',
+        passphrase_args  => {
+                             salt_random => 1,
+                             cost => 13,
+                            },
+        passphrase_check_method => 'check_reset_token',
+    },
 );
 
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse ();
+
+has reset_token_plain => (is => 'rw');
 
 =head2 available_roles
 

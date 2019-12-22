@@ -14,11 +14,11 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
-use Data::Dumper;
+use Data::Dumper::Concise;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-my $site = create_site($schema, '0reset0p');
+my $site = create_site($schema, '0reset0');
 diag $site->canonical;
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
@@ -63,6 +63,23 @@ is $mech->status, 401;
 $mech->content_contains('__auth_user');
 $mech->get_ok('/login');
 $mech->content_contains('/reset-password');
+
+{
+    my ($u) = $schema->resultset('User')->set_reset_token('sloppy@amusewiki.org');
+    ok $u;
+    my %raw =  $u->get_columns;
+    like $raw{reset_token}, qr/\{CRYPT\}\$2a\$/, "reset_token is bcrypted";
+    like $raw{password}, qr/\{CRYPT\}\$2a\$/, "password is bcrypted";
+    my $plain = $u->reset_token_plain;
+    ok $plain and diag "Token is $plain";
+    ok $schema->resultset('User')->reset_password_token_is_valid($u->username, $plain);
+    ok !$schema->resultset('User')->reset_password_token_is_valid($u->username . 'x', $plain);
+    ok !$schema->resultset('User')->reset_password_token_is_valid($u->username);
+    ok !$schema->resultset('User')->reset_password_token_is_valid($u->username, $plain . '!');
+    $u->update({ reset_until => 10 });
+    ok !$schema->resultset('User')->reset_password_token_is_valid($u->username, $plain);
+}
+
 
 # even if the mail doesn't exist, we print out the very same message
 foreach my $try ('sloppy@amusewiki.org', 'sloppyxxxxx@amusewiki.org',

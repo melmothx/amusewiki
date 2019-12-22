@@ -145,20 +145,18 @@ sub set_reset_token {
             my $now = time();
             my $token = $random->bytes_hex(32);
             if ($token and length($token) > 10) {
-                if (!$user->reset_token or $user->reset_until < $now) {
-                    log_info { "Setting reset token to " . $user->username };
-                    $user->update({
-                                   reset_token => $token,
-                                   reset_until => $now + (60 * 60),
-                                  });
-                    push @out, $user;
-                }
-                else {
-                    Dlog_debug { "Token already present: $_ " } [ $user->reset_until, $user->reset_token ];
-                }
+                # asked again? ok, regenerated the same.
+                log_info { "Setting reset token for " . $user->username };
+                $user->update({
+                               reset_token => $token,
+                               reset_until => $now + (60 * 60),
+                              });
+                # remember it in the current object, so we can catch it
+                $user->reset_token_plain($token);
+                push @out, $user;
             }
             else {
-                log_debug { "No token found" };
+                log_error { "No token generated???? $token" };
             }
         }
     }
@@ -169,32 +167,29 @@ sub set_reset_token {
     return @out;
 }
 
-sub reset_password {
+sub reset_password_token_is_valid {
     my ($self, $username, $token) = @_;
     return unless $username && $token;
     log_info { "Reset password requested for $username with token $token" };
-    if (my $user = $self->search({
-                                  username => $username,
-                                  reset_token => $token,
-                                  reset_until => { '!=' => undef },
-                                 })->first) {
-        my $now = time();
-        log_info { "User $username found, trying to update password if " .
-                     $user->reset_until . " > $now" };
-
-        if ($user->reset_until > $now) {
-            my $token = Bytes::Random::Secure->new(NonBlocking => 1)->bytes_hex(32);
-            if ($token and length($token) > 10) {
-                my $password = 'reset' . $token;
-                $user->password($password);
-                $user->reset_token(undef);
-                $user->reset_until(undef);
-                $user->update;
-                return $password;
+    my $now = time();
+    if (my $user = $self->find({ username => $username })) {
+        if ($user->reset_until and $user->reset_until > $now) {
+            if ($user->check_reset_token($token)) {
+                log_info { "Token for $username $token is OK" };
+                return $user;
+            }
+            else {
+                log_info { "Invalid token for $username $token" };
             }
         }
+        else {
+            log_info { "$username tried to access expired/missing token $token" };
+        }
     }
-    return;
+    else {
+        log_info { "$username does not exists" };
+    }
+    return undef;
 }
 
 
