@@ -170,20 +170,20 @@ sub set_reset_token {
 sub reset_password_token_is_valid {
     my ($self, $username, $token) = @_;
     return unless $username && $token;
-    log_info { "Reset password requested for $username with token $token" };
+    log_info { "Reset password check requested for $username" };
     my $now = time();
     if (my $user = $self->find({ username => $username })) {
         if ($user->reset_until and $user->reset_until > $now) {
             if ($user->check_reset_token($token)) {
-                log_info { "Token for $username $token is OK" };
+                log_info { "Token for $username is OK" };
                 return $user;
             }
             else {
-                log_info { "Invalid token for $username $token" };
+                log_info { "Invalid token for $username" };
             }
         }
         else {
-            log_info { "$username tried to access expired/missing token $token" };
+            log_info { "$username tried to access expired/missing token" };
         }
     }
     else {
