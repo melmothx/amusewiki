@@ -252,11 +252,11 @@ __PACKAGE__->load_components(qw(PassphraseColumn));
 __PACKAGE__->add_columns(
     '+password' => {
         passphrase       => 'rfc2307',
-        passphrase_class => 'SaltedDigest',
+        passphrase_class => 'BlowfishCrypt',
         passphrase_args  => {
-            algorithm   => 'SHA-1',
-            salt_random => 20,
-        },
+                             salt_random => 1,
+                             cost => 13,
+                            },
         passphrase_check_method => 'check_password',
     },
 );

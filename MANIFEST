@@ -1542,6 +1542,7 @@ t/numeric-collation-cats.t
 t/open-graph.t
 t/other-sites.t
 t/pagination-sizes.t
+t/password-hashing.t
 t/preview-deferred.t
 t/private-sites.t
 t/pulling.t
