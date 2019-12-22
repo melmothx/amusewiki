@@ -249,6 +249,18 @@ __PACKAGE__->load_components(qw(PassphraseColumn));
 
 # Have the 'password' column use a SHA-1 hash and 20-byte salt
 # with RFC 2307 encoding; Generate the 'check_password" method
+
+=head2 password hashing
+
+A cost of 13 seems fine on a current machine (Dec 22, 2019)
+
+  time perl -MAuthen::Passphrase::BlowfishCrypt -e 'print Authen::Passphrase::BlowfishCrypt->new(cost => 13, salt_random => 1, passphrase => "password")->as_rfc2307'
+
+in 0.5 seconds and 1.6 on a slow server.
+
+=cut
+
+
 __PACKAGE__->add_columns(
     '+password' => {
         passphrase       => 'rfc2307',
