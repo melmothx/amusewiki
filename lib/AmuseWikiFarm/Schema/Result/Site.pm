@@ -1988,7 +1988,7 @@ sub get_file_list_for_mirroring {
                                        };
                        }
                        else {
-                           log_info { "$filename denied, $ext not allowed" };
+                           log_debug { "$filename denied, $ext not allowed" };
                        }
                    }
                }
