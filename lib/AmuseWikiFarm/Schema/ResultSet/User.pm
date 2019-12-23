@@ -143,8 +143,12 @@ sub set_reset_token {
         while (my $user = $users->next) {
             log_debug { "Setting the token for " .  $user->username };
             my $now = time();
-            my $token = $random->bytes_hex(32);
-            if ($token and length($token) > 10) {
+            my $token = $random->bytes_base64(64);
+            $token =~ s/[^a-zA-Z0-9]//g;
+            # https://metacpan.org/pod/Authen::Passphrase::BlowfishCrypt
+            # ignores everything alter 72th char.
+            $token = substr($token, 0, 70);
+            if ($token and length($token) > 50) {
                 # asked again? ok, regenerated the same.
                 log_info { "Setting reset token for " . $user->username };
                 $user->update({

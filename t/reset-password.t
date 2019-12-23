@@ -8,7 +8,7 @@ BEGIN {
     $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';    
 };
 
-use Test::More tests => 96;
+use Test::More tests => 124;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -28,6 +28,7 @@ $site->update({
                locale => 'en',
                mail_notify => 'xxnotifications@amusewiki.org',
                mode => 'private',
+               sitename => "Čađa",
               });
 # root login and creates a user
 $mech->get('/');
@@ -76,8 +77,12 @@ $mech->content_contains('/reset-password');
     ok !$schema->resultset('User')->reset_password_token_is_valid($u->username . 'x', $plain);
     ok !$schema->resultset('User')->reset_password_token_is_valid($u->username);
     ok !$schema->resultset('User')->reset_password_token_is_valid($u->username, $plain . '!');
-    $u->update({ reset_until => 10 });
+    $u->update({ reset_until => 0 });
     ok !$schema->resultset('User')->reset_password_token_is_valid($u->username, $plain);
+    $u->update({ password => 'pizza6666' });
+    ok $u->get_from_storage->check_password('pizza6666');
+    ok !$u->get_from_storage->check_password('pizza6666!');
+    ok !$u->get_from_storage->check_password('pizza666');
 }
 
 
@@ -106,41 +111,66 @@ foreach my $try ('sloppy@amusewiki.org', 'sloppyxxxxx@amusewiki.org',
     my ($link) = $email_body =~ m{(https://.*?)\s*$}m;
     diag $email_body;
     diag $mails[1]{email}->get_header("Subject");
-    like $mails[1]{email}->get_header("Subject"), qr/Password reset for/;
+    is $mails[1]{email}->get_header("Subject"), 'Reset your password';
     ok $link, "Found reset link" and diag $link;
 
-    my $wrong_link = $link;
-    $wrong_link =~ s/sloppy/root/;
-    $mech->get($wrong_link);
-    is $mech->status, '403', 'Permission denied on $wrong_link (other user)';
+    {
+        my $wrong_link = $link;
+        $wrong_link =~ s/sloppy/root/;
+        my $short_link = $link;
+        chop($short_link);
+        foreach my $l ($wrong_link, $link . "!", $short_link) {
+            $mech->get_ok($l);
+            is ($mech->uri->path, '/reset-password', "Bounced back");
+            $mech->content_contains('invalid or expired', "$l bounces back");
+        }
+    }
 
     $mech->get_ok($link);
-    is $mech->uri . '' , $link;
-    my ($new_password) = $mech->content =~ m{<span class="new-password"><code>(.+)</code>};
-    ok ($new_password, "Found the new password $new_password");
-    $mech->content_contains('<span class="user-username"><code>sloppy</code></span>');
-    $mech->get($link);
-    is $mech->status, '403', "Access denied with token consumed" or diag $mech->content;
-    $mech->get('/');
-    is $mech->status, 401;
+    is $mech->uri->as_string, $link;
+
+    my $new_password = 'prova1234';
+    foreach my $bad (['', ''], # empty
+                     ['prova', 'prova'], # too short
+                     ['', $new_password ],
+                     [ $new_password, '' ],
+                     [ $new_password . '!' , $new_password ]) {
+        ok $mech->submit_form(with_fields => {
+                                              password => $bad->[0],
+                                              passwordrepeat => $bad->[1],
+                                             });
+        is $mech->uri->as_string, $link;
+    }
+    ok $mech->submit_form(with_fields => {
+                                          password => $new_password,
+                                          passwordrepeat => $new_password,
+                                         });
+    is $mech->uri->path, '/login';
+
+    $mech->get_ok($link);
+
+    is ($mech->uri->path, '/reset-password', "Bounced back");
+    $mech->content_contains('expired', "$link bounces back after being consumed");
+
+    $mech->get('/latest');
     $mech->submit_form(with_fields => { __auth_user => 'sloppy', __auth_pass => $new_password });
     is $mech->uri->path, '/latest', "Login ok with new password";
     $mech->get('/logout');
+
     is $mech->uri->path, '/';
     is $mech->status, 401;
     $mech->get_ok('/login');
     $mech->submit_form(with_fields => { __auth_user => 'sloppy', __auth_pass => 'sloppy1234' });
-    is $mech->uri->path, '/login', "Couldn't login with new password";
+    is $mech->uri->path, '/login', "Couldn't login with wrong password";
     $mech->get('/reset-password/sloppy/');
     # the catchall route is plugged into the auth, so we never get a
     # 404 before a 401. Which is a good thing, probably
     is $mech->status, '401';
     foreach my $fake ('%20', 0, 'asldfasd', 'asdfasdfasdf') {
         $mech->get("/reset-password/sloppy/$fake");
-        is $mech->status, 403, "Access denied on " . $mech->uri->path;
+        is $mech->uri->path, '/reset-password', "Invalid tokens";
     }
 }
-
 
 $schema->resultset('User')->search({ username => { -like => 'pallinox%' }})->delete;
 
@@ -158,16 +188,22 @@ for (1..3) {
     }
     my @repeat = $site->users->set_reset_token('pallino@amusewiki.org');
     sleep 1;
-    ok (!@repeat, "no users got repeating the request");
-    foreach my $user (@users) {
-        my $new_password = $site->users->reset_password($user->username,
-                                                        $user->reset_token);
-        ok ($new_password) and diag "New password is $new_password";
+    ok (@repeat, "got repeating the request");
+    foreach my $user (@repeat) {
+        ok $user->reset_token_plain;
+        ok $site->users->reset_password_token_is_valid($user->username,
+                                                       $user->reset_token_plain);
+        $mech->get_ok(join('/', '/reset-password', $user->username, $user->reset_token_plain));
+        $mech->submit_form(with_fields => {
+                                           password => 'PASSWORD',
+                                           passwordrepeat => 'PASSWORD',
+                                          });
+        ok $user->get_from_storage->check_password('PASSWORD');
     }
     # checking cleanup
     @users = $site->users->search({ email => 'pallino@amusewiki.org' });
     foreach my $user (@users) {
-        ok !$user->reset_token, "Token cleared for " . $user->username;
+        ok $user->reset_token, "Token still here for " . $user->username;
         ok !$user->reset_until, "Timestamp cleared for " . $user->username;
     }
 
@@ -180,29 +216,15 @@ for (1..3) {
     $site->users->search({ email => 'pallino@amusewiki.org' })
       ->update({ reset_until => time() - 1 });
     foreach my $user (@users) {
-        ok (!$site->users->reset_password($user->username, $user->reset_token),
-            $user->username . " was not reset");
+        ok (!$site->users->reset_password_token_is_valid($user->username, $user->reset_token_plain),
+            "Expired token " . $user->username . $user->reset_token_plain);
     }
 
     @users = $site->users->set_reset_token('pallino@amusewiki.org');
+    sleep 1;
     foreach my $user (@users) {
         ok $user->reset_token, "Token generated for " . $user->username;
-        ok $user->reset_until, "Timestamp generated for " . $user->username;
-    }
-
-    my $check = '';
-    foreach my $user (@users) {
-        my $new_password = $site->users->reset_password($user->username,
-                                                        $user->reset_token);
-        ok ($new_password) and diag "New password is $new_password";
-        isnt ($new_password, $check);
-        $check = $new_password;
-    }
-
-    @users = $site->users->search({ email => 'pallino@amusewiki.org' });
-    foreach my $user (@users) {
-        ok !$user->reset_token, "Token cleared for " . $user->username;
-        ok !$user->reset_until, "Timestamp cleared for " . $user->username;
+        ok $user->reset_until > time(), "Timestamp generated for " . $user->username;
     }
 }
 

@@ -97,6 +97,7 @@ sub reset_password :Chained('secure_no_user') :PathPart('reset-password') :Args(
                                                              host => $site->canonical,
                                                              valid => $valid_until,
                                                              username => $user->username,
+                                                             sitename => $site->sitename || $site->canonical,
                                                             });
         }
     }
@@ -106,6 +107,7 @@ sub reset_password_confirm :Chained('secure_no_user') :PathPart('reset-password'
     my ($self, $c, $username, $token) = @_;
     my $users = $c->stash->{site}->users;
     if (my $user = $users->reset_password_token_is_valid($username, $token)) {
+        # Dlog_debug { "Params are $_" } $c->request->body_params;
         my $pwd = $c->request->body_params->{password};
         my $pwd_repeat = $c->request->body_params->{passwordrepeat};
         if ($pwd && $pwd_repeat) {
@@ -113,6 +115,7 @@ sub reset_password_confirm :Chained('secure_no_user') :PathPart('reset-password'
                                                                passwordrepeat => $pwd_repeat,
                                                               );
             if (@errors) {
+                Dlog_info { "Found error in password validation $_" } \@errors;
                 $c->flash(error_msg => join ("\n", map { $c->loc($_) } @errors));
             }
             elsif ($validated->{password}) {
