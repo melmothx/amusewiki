@@ -95,7 +95,6 @@ sub reset_password :Chained('secure_no_user') :PathPart('reset-password') :Args(
                                                              from => $site->mail_from_default,
                                                              reset_url => $url,
                                                              host => $site->canonical,
-                                                             valid => $valid_until,
                                                              username => $user->username,
                                                              sitename => $site->sitename || $site->canonical,
                                                             });
