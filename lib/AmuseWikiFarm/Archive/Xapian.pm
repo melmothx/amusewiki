@@ -446,7 +446,7 @@ sub faceted_search {
         $self->_do_faceted_search(%args);
     } catch {
         my $err = $_;
-        log_error { "$err calling faceted_search $args{query}" };
+        log_warn { "$err calling faceted_search $args{query}" };
         AmuseWikiFarm::Archive::Xapian::Result->new(error => "$err");
     };
     return $res;
