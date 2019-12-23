@@ -38,6 +38,13 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     my $site = $c->stash->{site};
     my $lh = $c->stash->{lh};
     my $xapian = $site->xapian;
+    my $user_exists = $c->user_exists;
+    if ($user_exists) {
+        # by default we don't show the deferred titles, unless the
+        # site has the show_preview_when_deferred option set.
+        # so for logged in, enforce it to true.
+        $xapian->show_deferred(1);
+    }
     my %params = %{$c->req->params};
     Dlog_debug { "Searching with these parameters $_" } \%params;
 
@@ -70,7 +77,7 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     $baseres->lh($lh);
     $baseres->site($site);
 
-    if (!$c->user_exists and $site->show_preview_when_deferred) {
+    if (!$user_exists and $site->show_preview_when_deferred) {
         $c->stash(no_full_text_if_not_published => 1);
     }
     my $format_link = sub {

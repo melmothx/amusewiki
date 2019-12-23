@@ -1021,6 +1021,11 @@ msgstr ""
 "Eğer şans eseri aynı yazar ve başlığa sahip bir metin varsa, aşağıdaki alana "
 "yazar, başlık ve bir sayı girerek istenilen URL'i seç, örn yazar-baslik-1"
 
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -1119,6 +1124,11 @@ msgstr ""
 "      düzenlerseniz, üretilen dosyaları yeniden oluşturmak isteyebilirsiniz"
 
 msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
@@ -1143,10 +1153,6 @@ msgstr ""
 "      aynı zamanda PDF'nin ilk sayfasına konur. Aşağıdaki satırı\n"
 "      üstbilgiye eklersen resmin genişliğini ayarlayabilirsin. Buradaki\n"
 "      değer metin genişliğine orandır. 1 metinle aynı, 0.5 yarısı, vb"
-
-#. (reset_url)
-msgid "If you want to proceed, please visit the following url: %1"
-msgstr "İlerlemek istiyorsan lütfen bu url'e git: %1"
 
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
@@ -1432,6 +1438,10 @@ msgstr "Yüklenen dosyalar için max boyut (Mb)"
 msgid "Message"
 msgstr "Mesaj"
 
+#. (8)
+msgid "Minimum %1 characters"
+msgstr ""
+
 msgid "Missing #title header in the text!"
 msgstr "Metinde #title üstlük kısmı yok!"
 
@@ -1578,9 +1588,6 @@ msgstr "Posta bildirimi: alan boşsa bildirimleri etkisizleştirir"
 msgid "Notify to"
 msgstr "Bildirimin gönderilen"
 
-msgid "Now you can proceed to login."
-msgstr "Şimdi girişe devam edebilirsin."
-
 msgid "Number of jobs"
 msgstr "İş sayısı"
 
@@ -1638,9 +1645,6 @@ msgstr "Ya da içeri kaydır"
 
 msgid "Ordered List"
 msgstr "Sıralı Liste"
-
-msgid "Otherwise, please just ignore this mail."
-msgstr "Aksi halde, lütfen bu postayı yok say."
 
 msgid "PDF"
 msgstr "PDF"
@@ -1711,10 +1715,6 @@ msgstr "Sadece seçilenler"
 
 msgid "Password"
 msgstr "Şifre"
-
-#. (host)
-msgid "Password reset for %1"
-msgstr "%1 için şifre sıfırlama"
 
 msgid "Password too short"
 msgstr "Şifre çok kısa"
@@ -2078,8 +2078,15 @@ msgstr "Filtreleri sıfırla"
 msgid "Reset password"
 msgstr "Şifreyi sıfırla"
 
+#. (username)
+msgid "Reset password for user %1"
+msgstr ""
+
 msgid "Reset to site defaults"
 msgstr "Sitenin varsayılanına ayarla"
+
+msgid "Reset your password"
+msgstr ""
 
 msgid "Restricted configuration variables"
 msgstr "Engellenen konfigurasyon değişkenleri"
@@ -2285,10 +2292,6 @@ msgstr "Bazı alanlar fazla uzun"
 msgid "Some ongoing revisions were found"
 msgstr "Devam eden bazı versiyonlar bulundu"
 
-#. (username, host)
-msgid "Someone, probably you, has requested a password reset for %1 at %2."
-msgstr "Birisi, muhtemelen sen, %2 de %1 için şifre sıfırlama istedi."
-
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr "Üzgünüm, bekleyen çok fazla iş var, lütfen sonra tekrar dene!"
 
@@ -2471,10 +2474,6 @@ msgstr ""
 "Üretilen web sunucusu konfügurasyonu bütün HTTP\n"
 "           isteklerini HTTPS'e yönlendirecek"
 
-#. (valid)
-msgid "The link is valid until %1 (one hour from now)"
-msgstr "Link %1'e kadar geçerli (şu andan itibaren 1 saat)"
-
 msgid "The logo has the site name on itself"
 msgstr "Logonun kendi üzerinde site adı var"
 
@@ -2490,6 +2489,9 @@ msgstr ""
 
 msgid "The password will be mailed at this address"
 msgstr "Şifre bu adrese postalanacak"
+
+msgid "The reset link will expire in a hour."
+msgstr ""
 
 msgid "The revision has the following messages"
 msgstr "Version için aşağıdaki mesajlar var"
@@ -3080,6 +3082,9 @@ msgstr "Buraya parça gelecek..."
 msgid "Your password is %1."
 msgstr "Şifren %1."
 
+msgid "Your password was reset, now you can login with it"
+msgstr ""
+
 msgid "Your section here..."
 msgstr "Buraya bölüm gelecek..."
 
@@ -3295,6 +3300,24 @@ msgstr ""
 "\"Yarım kalmış düzenleme\", versiyon düzenlenirken yarıda bırakılmış,\n"
 "    ama birisi metni düzenlemek için oradan devam edebilir\n"
 "    demektir."
+
+#~ msgid "If you want to proceed, please visit the following url: %1"
+#~ msgstr "İlerlemek istiyorsan lütfen bu url'e git: %1"
+
+#~ msgid "Now you can proceed to login."
+#~ msgstr "Şimdi girişe devam edebilirsin."
+
+#~ msgid "Otherwise, please just ignore this mail."
+#~ msgstr "Aksi halde, lütfen bu postayı yok say."
+
+#~ msgid "Password reset for %1"
+#~ msgstr "%1 için şifre sıfırlama"
+
+#~ msgid "Someone, probably you, has requested a password reset for %1 at %2."
+#~ msgstr "Birisi, muhtemelen sen, %2 de %1 için şifre sıfırlama istedi."
+
+#~ msgid "The link is valid until %1 (one hour from now)"
+#~ msgstr "Link %1'e kadar geçerli (şu andan itibaren 1 saat)"
 
 #~ msgid "Fixed category list"
 #~ msgstr "Sabit kategori listesi"

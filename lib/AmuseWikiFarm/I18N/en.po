@@ -945,6 +945,11 @@ msgid ""
 "my-author-my-title-1"
 msgstr ""
 
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -1018,6 +1023,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
@@ -1033,10 +1043,6 @@ msgid ""
 "      adding the following line to the header, where the value is the\n"
 "      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
 "      on"
-msgstr ""
-
-#. (reset_url)
-msgid "If you want to proceed, please visit the following url: %1"
 msgstr ""
 
 msgid ""
@@ -1295,6 +1301,10 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
+#. (8)
+msgid "Minimum %1 characters"
+msgstr ""
+
 msgid "Missing #title header in the text!"
 msgstr ""
 
@@ -1437,9 +1447,6 @@ msgstr ""
 msgid "Notify to"
 msgstr ""
 
-msgid "Now you can proceed to login."
-msgstr ""
-
 msgid "Number of jobs"
 msgstr ""
 
@@ -1490,9 +1497,6 @@ msgstr ""
 
 msgid "Ordered List"
 msgstr "Ordered list"
-
-msgid "Otherwise, please just ignore this mail."
-msgstr ""
 
 msgid "PDF"
 msgstr ""
@@ -1552,10 +1556,6 @@ msgid "Partial selection"
 msgstr ""
 
 msgid "Password"
-msgstr ""
-
-#. (host)
-msgid "Password reset for %1"
 msgstr ""
 
 msgid "Password too short"
@@ -1883,7 +1883,14 @@ msgstr ""
 msgid "Reset password"
 msgstr ""
 
+#. (username)
+msgid "Reset password for user %1"
+msgstr ""
+
 msgid "Reset to site defaults"
+msgstr ""
+
+msgid "Reset your password"
 msgstr ""
 
 msgid "Restricted configuration variables"
@@ -2089,10 +2096,6 @@ msgstr ""
 msgid "Some ongoing revisions were found"
 msgstr ""
 
-#. (username, host)
-msgid "Someone, probably you, has requested a password reset for %1 at %2."
-msgstr ""
-
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 
@@ -2260,10 +2263,6 @@ msgid ""
 "          all the HTTP requests to HTTPS"
 msgstr ""
 
-#. (valid)
-msgid "The link is valid until %1 (one hour from now)"
-msgstr ""
-
 msgid "The logo has the site name on itself"
 msgstr ""
 
@@ -2276,6 +2275,9 @@ msgid ""
 msgstr ""
 
 msgid "The password will be mailed at this address"
+msgstr ""
+
+msgid "The reset link will expire in a hour."
 msgstr ""
 
 msgid "The revision has the following messages"
@@ -2796,6 +2798,9 @@ msgstr ""
 
 #. (password)
 msgid "Your password is %1."
+msgstr ""
+
+msgid "Your password was reset, now you can login with it"
 msgstr ""
 
 msgid "Your section here..."

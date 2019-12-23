@@ -4,6 +4,13 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.430 2019-12-23
+
+ - Include deferred texts in search results for logged in (GH# 327)
+ - Replace cronjob with unit file for nginx reloading on demand (GH#326)
+ - Upgrade the encryption of user passwords
+ - Refactor the password resetting feature asking (GH#328)
+
 2.420 2019-12-04
 
  - Refactor the static indexes (GH#325)

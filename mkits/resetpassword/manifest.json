@@ -4,7 +4,7 @@
         { "From": "[% from %]" },
         { "To": "[% to %]" },
         { "List-Id": "[% list_id %]" },
-        { "Subject": "[% lh.loc('Password reset for [_1]', host) %]" }
+        { "Subject": "[% lh.loc('Reset your password') %]" }
     ],
     "type": "text/plain",
     "path": "body.txt"

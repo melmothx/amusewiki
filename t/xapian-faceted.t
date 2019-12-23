@@ -190,7 +190,7 @@ LOREM
     $file->spew_utf8($muse, $lorem x 20);
 }
 
-ok $site->xapian->index_deferred or  die;
+ok $site->xapian->show_deferred or  die;
 
 $site->update_db_from_tree(sub { diag @_ });
 

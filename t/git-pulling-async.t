@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 139;
+use Test::More tests => 141;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -56,6 +56,20 @@ foreach my $dir (qw/specials site_files d f uploads/) {
 }
 
 $site->repo_git_pull;
+my @scanned = $site->_pre_update_db_from_tree;
+is scalar(@scanned), 10, "Found 10 files";
+is_deeply \@scanned, [                                            
+                      'f/ft/f-t-cata.jpg',                                      
+                      'f/ft/f-t-testimage.png', 
+                      'specials/i-x-myfile.png',                    
+                      'uploads/a-t-myfile.pdf',        
+                      'd/dt/deleted-text-in-the-future.muse',
+                      'd/dt/deleted-text.muse',  
+                      'd/dt/do-this-by-yourself.muse',
+                      'f/ft/first-test.muse',       
+                      'specials/index.muse',                                
+                      'specials/prova.muse'                   
+                     ];    
 my $bjob = $site->update_db_from_tree_async(sub { diag @_ }, 'root');
 is $bjob->username, 'root';
 

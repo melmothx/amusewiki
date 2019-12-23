@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2019-08-23 08:48+0200\n"
+"PO-Revision-Date: 2019-12-23 09:56+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -21,11 +21,11 @@ msgstr "%1 non esiste"
 
 #. ([$total])
 msgid "%1 jobs deleted"
-msgstr ""
+msgstr "%1 lavori cancellati"
 
 #. ([$total])
 msgid "%1 jobs rescheduled"
-msgstr ""
+msgstr "%1 lavori reimpostati"
 
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
@@ -311,7 +311,7 @@ msgid "Beamer theme"
 msgstr "Tema delle diapositive"
 
 msgid "Beside topics and authors you can add more categories here"
-msgstr ""
+msgstr "Oltre ai temi e agli autori puoi aggiungere altre categorie qui"
 
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr ""
@@ -391,7 +391,7 @@ msgstr "Categorie"
 
 #. ($site->canonical)
 msgid "Category types for %1"
-msgstr ""
+msgstr "Tipi di categoria per %1"
 
 msgid "Center all the sectioning titles."
 msgstr "Centra tutti i titoli delle sezioni."
@@ -455,7 +455,7 @@ msgid "Close"
 msgstr "Chiudi"
 
 msgid "Code"
-msgstr ""
+msgstr "Codice"
 
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
@@ -497,7 +497,7 @@ msgid "Create"
 msgstr "Crea"
 
 msgid "Create a new category type. Please use only lowercase ASCII letters"
-msgstr ""
+msgstr "Crea un nuovo tipo di categoria. Per cortesia, usa solo lettere minuscole ASCII"
 
 msgid "Create a new format"
 msgstr "Crea un nuovo formato"
@@ -732,7 +732,7 @@ msgid "Errors"
 msgstr "Errori"
 
 msgid "Estimated pages"
-msgstr ""
+msgstr "Pagine stimate"
 
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
@@ -790,7 +790,7 @@ msgid "File uploaded!"
 msgstr "File caricato!"
 
 msgid "Files"
-msgstr ""
+msgstr "File"
 
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
@@ -799,7 +799,7 @@ msgstr ""
 "completa"
 
 msgid "Filter"
-msgstr ""
+msgstr "Filtra"
 
 msgid "Filters"
 msgstr "Filtri"
@@ -811,7 +811,7 @@ msgid "Find the network library menu, or equivalent."
 msgstr "Trova il menù per le biblioteche online (o equivalente)."
 
 msgid "First"
-msgstr ""
+msgstr "Primo"
 
 msgid "First Author and Second Author"
 msgstr "Primo Autore e Secondo Autore"
@@ -842,7 +842,7 @@ msgstr ""
 "poi piegati a uno a uno, prima della legatura."
 
 msgid "Fixed topic list"
-msgstr ""
+msgstr "Lista fissa dei temi"
 
 msgid "Font preview"
 msgstr "Anteprima dei caratteri"
@@ -1035,6 +1035,11 @@ msgstr ""
 "scegli tu stesso un URI usando il campo più in basso, inserendo autore, "
 "titolo e un numero, ad esempio “autore-titlo-1”"
 
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr "Se non era tua intenzione, ignora questo messaggio e la tua password resterà uguale"
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -1137,6 +1142,13 @@ msgstr ""
 "prodotti."
 
 msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+"Se hai dimenticato la password, ne puoi scegliere un'altra visitando\n"
+"il seguente link (cliccaci sopra o copia e incollalo nel tuo browser)"
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
@@ -1160,10 +1172,6 @@ msgstr ""
 "nella prima pagine del PDF. Puoi impostare la sua larghezza, con un\n"
 "valore compreso tra 0 e 1, dove 1 è la larghezza piena del testo, 0.5\n"
 "metà e così via."
-
-#. (reset_url)
-msgid "If you want to proceed, please visit the following url: %1"
-msgstr "Se vuoi procedere, visita questo indirizzo: %1"
 
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
@@ -1345,7 +1353,7 @@ msgid "Languages supported"
 msgstr "Lingue supportate"
 
 msgid "Last"
-msgstr ""
+msgstr "Ultimo"
 
 msgid "Last successful rebuild"
 msgstr "Ultima rigenerazione completata con successo"
@@ -1397,7 +1405,7 @@ msgid "Loaded \"%1\" configuration"
 msgstr "La configurazione \"%1\" è stata caricata"
 
 msgid "Loading"
-msgstr ""
+msgstr "Caricamento"
 
 msgid "Locked editing, no upload possible"
 msgstr "Modifiche bloccate, caricamento non permesso"
@@ -1462,6 +1470,10 @@ msgstr "Dimensione massima dei file caricati in megabyte"
 msgid "Message"
 msgstr "Messaggio"
 
+#. (8)
+msgid "Minimum %1 characters"
+msgstr "Minimo %1 caratteri"
+
 msgid "Missing #title header in the text!"
 msgstr "Manca l'intestazione #title nel testo!"
 
@@ -1511,10 +1523,10 @@ msgid "Name"
 msgstr "Nome"
 
 msgid "Name plural"
-msgstr ""
+msgstr "Nome plurale"
 
 msgid "Name singular"
-msgstr ""
+msgstr "Nome singolare"
 
 msgid "Network library listing screen."
 msgstr "Schermata con l'elenco delle biblioteche online."
@@ -1559,13 +1571,13 @@ msgid "No"
 msgstr "No"
 
 msgid "No data available in table"
-msgstr ""
+msgstr "Nessun dato disponibile in questa tabella"
 
 msgid "No editing yet!"
 msgstr "Nessuna modifica apportata!"
 
 msgid "No matching records found"
-msgstr ""
+msgstr "Nessun record corrispondente è stato trovato"
 
 msgid "No result found!"
 msgstr "Nessun risultato trovato!"
@@ -1607,9 +1619,6 @@ msgstr "Mail di notifica: lasciare in bianco per disabilitare"
 
 msgid "Notify to"
 msgstr "Notifica a"
-
-msgid "Now you can proceed to login."
-msgstr "Adesso puoi procedere al login."
 
 msgid "Number of jobs"
 msgstr "Numero di lavori"
@@ -1668,9 +1677,6 @@ msgstr "O racchiudi in"
 
 msgid "Ordered List"
 msgstr "Lista numerata"
-
-msgid "Otherwise, please just ignore this mail."
-msgstr "In caso contrario, puoi semplicemente ignorare questa mail."
 
 msgid "PDF"
 msgstr "PDF"
@@ -1744,10 +1750,6 @@ msgstr "Selezione parziale"
 
 msgid "Password"
 msgstr "Password"
-
-#. (host)
-msgid "Password reset for %1"
-msgstr "Reimpostazione della password per %1"
 
 msgid "Password too short"
 msgstr "La password è troppo breve"
@@ -1955,7 +1957,7 @@ msgid "Procedure"
 msgstr "Procedura"
 
 msgid "Processing"
-msgstr ""
+msgstr "Elaborazione in corso"
 
 msgid "Produce slides."
 msgstr "Crea diapositive."
@@ -2103,7 +2105,7 @@ msgid "Request failed! Please report the the problem"
 msgstr "Richiesta fallita! Per cortesia contatta gli amministratori"
 
 msgid "Reschedule"
-msgstr ""
+msgstr "Riprova"
 
 msgid "Reset all"
 msgstr "Ricomincia da capo"
@@ -2114,8 +2116,15 @@ msgstr "Rimuovi i filtri"
 msgid "Reset password"
 msgstr "Reimposta la password"
 
+#. (username)
+msgid "Reset password for user %1"
+msgstr "Reimposta la password per l'utente %1"
+
 msgid "Reset to site defaults"
 msgstr "Ripristino alle impostazioni predefinite del sito"
+
+msgid "Reset your password"
+msgstr "Reimposta la password"
 
 msgid "Restricted configuration variables"
 msgstr "Variabili di configurazione protette"
@@ -2192,7 +2201,7 @@ msgid "Search results"
 msgstr "Risultati della ricerca"
 
 msgid "Search this column"
-msgstr ""
+msgstr "Cerca in questa colonna"
 
 msgid "Secondary footnotes"
 msgstr "Note a piè di pagina secondarie"
@@ -2219,10 +2228,10 @@ msgid "Select all"
 msgstr "Seleziona tutto"
 
 msgid "Select all for deletion"
-msgstr ""
+msgstr "Seleziona tutto e cancella"
 
 msgid "Select all for rescheduling"
-msgstr ""
+msgstr "Seleziona tutto e riprova"
 
 msgid "Select individual parts for the bookbuilder"
 msgstr "Seleziona singole parti per l'impaginatore"
@@ -2243,10 +2252,10 @@ msgid "Set a date in the future if you want it deferred."
 msgstr "Imposta una data nel futuro se vuoi rimandare la pubblicazione."
 
 msgid "Settings loaded"
-msgstr ""
+msgstr "Impostazioni caricate"
 
 msgid "Show _MENU_ entries"
-msgstr ""
+msgstr "Mostra _MENU_ record"
 
 msgid "Show cheatsheet"
 msgstr "Mostra la documentazione del markup"
@@ -2267,10 +2276,10 @@ msgid "Show the text infobox at the bottom of the texts"
 msgstr "Mostra le informazioni sul testo in fondo alla pagina"
 
 msgid "Showing 0 to 0 of 0 entries"
-msgstr ""
+msgstr "Vista da 0 a 0 di 0 elementi"
 
 msgid "Showing _START_ to _END_ of _TOTAL_ entries"
-msgstr ""
+msgstr "Vista da _START_ a _END_ di _TOTAL_ elementi"
 
 msgid "Single bars"
 msgstr "Le barre singole"
@@ -2319,12 +2328,6 @@ msgstr "Alcuni campi sono troppo lunghi"
 
 msgid "Some ongoing revisions were found"
 msgstr "Sono state trovate delle revisioni in corso"
-
-#. (username, host)
-msgid "Someone, probably you, has requested a password reset for %1 at %2."
-msgstr ""
-"Qualcuno, probabilmente tu, ha richiesto la reimpostazione della password "
-"per %1 su %2."
 
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
@@ -2513,10 +2516,6 @@ msgid ""
 msgstr ""
 "La configurazione del webserver instrada tutte le richieste HTTP su HTTPS"
 
-#. (valid)
-msgid "The link is valid until %1 (one hour from now)"
-msgstr "Il link è valido fino a %1 (un'ora a partire da adesso)"
-
 msgid "The logo has the site name on itself"
 msgstr "Il logo contiene il nome del sito"
 
@@ -2533,6 +2532,9 @@ msgstr ""
 
 msgid "The password will be mailed at this address"
 msgstr "La password sarà inviata a questo indirizzo"
+
+msgid "The reset link will expire in a hour."
+msgstr "Il link per reimpostare la password scadrà tra un'ora."
 
 msgid "The revision has the following messages"
 msgstr "La revisione contiene i seguenti messaggi"
@@ -2785,7 +2787,7 @@ msgid "URL"
 msgstr "URL"
 
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
-msgstr ""
+msgstr "URL del Git remoto (HTTPS, HTTP or GIT)"
 
 msgid "UTC"
 msgstr "UTC"
@@ -2866,7 +2868,7 @@ msgstr ""
 "Usala come immagine d'anteprima aggiungendo alle intestazioni questa linea:"
 
 msgid "Use one of the site's formats"
-msgstr ""
+msgstr "Usa uno dei formati del sito"
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
@@ -3094,7 +3096,7 @@ msgstr ""
 "dal titolo"
 
 msgid "You may want to use one of these images"
-msgstr ""
+msgstr "Potresti voler usare una di queste immagini"
 
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
@@ -3139,6 +3141,9 @@ msgstr "La tua parte..."
 msgid "Your password is %1."
 msgstr "La tua password è %1."
 
+msgid "Your password was reset, now you can login with it"
+msgstr "La tua password è stata cambiata, adesso puoi effettuare l'accesso con la nuova password"
+
 msgid "Your section here..."
 msgstr "Sezione..."
 
@@ -3163,10 +3168,10 @@ msgid "about, links..."
 msgstr "informazioni, link..."
 
 msgid "activate to sort column ascending"
-msgstr ""
+msgstr "attiva per ordinare la colonna in ordine crescente"
 
 msgid "activate to sort column descending"
-msgstr ""
+msgstr "attiva per ordinare la colonna in ordine decrescente"
 
 msgid "active"
 msgstr "attivo"
@@ -3208,7 +3213,7 @@ msgid "failed"
 msgstr "fallito"
 
 msgid "filtered from _MAX_ total entries"
-msgstr ""
+msgstr "filtrati da _MAX_ elementi totali"
 
 msgid "for code, monospaced"
 msgstr "per codice"
@@ -3356,6 +3361,26 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "If you want to proceed, please visit the following url: %1"
+#~ msgstr "Se vuoi procedere, visita questo indirizzo: %1"
+
+#~ msgid "Now you can proceed to login."
+#~ msgstr "Adesso puoi procedere al login."
+
+#~ msgid "Otherwise, please just ignore this mail."
+#~ msgstr "In caso contrario, puoi semplicemente ignorare questa mail."
+
+#~ msgid "Password reset for %1"
+#~ msgstr "Reimpostazione della password per %1"
+
+#~ msgid "Someone, probably you, has requested a password reset for %1 at %2."
+#~ msgstr ""
+#~ "Qualcuno, probabilmente tu, ha richiesto la reimpostazione della password "
+#~ "per %1 su %2."
+
+#~ msgid "The link is valid until %1 (one hour from now)"
+#~ msgstr "Il link è valido fino a %1 (un'ora a partire da adesso)"
 
 #~ msgid "Fixed category list"
 #~ msgstr "Lista fissa delle categorie"

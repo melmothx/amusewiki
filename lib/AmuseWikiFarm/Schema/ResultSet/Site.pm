@@ -109,6 +109,11 @@ sub check_and_update_acme_certificates {
             }
         }
     }
+    # signal if it's just a check-only run, so we can test this
+    if ($got || !$update) {
+        path(ssl => 'amusewiki_requests_webserver_reload.txt')
+          ->append_utf8(localtime() . ": updated $got certificates\n");
+    }
     return $got;
 }
 
@@ -187,6 +192,7 @@ sub deserialize_site {
     }
     my @add = $site->users;
     foreach my $user (@users) {
+        delete $user->{reset_token};
         # can't be passed plainly because it's a many to many
         my $roles = delete $user->{roles};
         # search it.

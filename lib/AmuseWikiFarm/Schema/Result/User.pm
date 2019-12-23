@@ -249,20 +249,43 @@ __PACKAGE__->load_components(qw(PassphraseColumn));
 
 # Have the 'password' column use a SHA-1 hash and 20-byte salt
 # with RFC 2307 encoding; Generate the 'check_password" method
+
+=head2 password hashing
+
+A cost of 13 seems fine on a current machine (Dec 22, 2019)
+
+  time perl -MAuthen::Passphrase::BlowfishCrypt -e 'print Authen::Passphrase::BlowfishCrypt->new(cost => 13, salt_random => 1, passphrase => "password")->as_rfc2307'
+
+in 0.5 seconds and 1.6 on a slow server.
+
+=cut
+
+
 __PACKAGE__->add_columns(
     '+password' => {
         passphrase       => 'rfc2307',
-        passphrase_class => 'SaltedDigest',
+        passphrase_class => 'BlowfishCrypt',
         passphrase_args  => {
-            algorithm   => 'SHA-1',
-            salt_random => 20,
-        },
+                             salt_random => 1,
+                             cost => 13,
+                            },
         passphrase_check_method => 'check_password',
+    },
+    '+reset_token' => {
+        passphrase       => 'rfc2307',
+        passphrase_class => 'BlowfishCrypt',
+        passphrase_args  => {
+                             salt_random => 1,
+                             cost => 13,
+                            },
+        passphrase_check_method => 'check_reset_token',
     },
 );
 
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse ();
+
+has reset_token_plain => (is => 'rw');
 
 =head2 available_roles
 

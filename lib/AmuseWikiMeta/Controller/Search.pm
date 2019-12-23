@@ -27,13 +27,11 @@ sub ajax :Chained('search') :Args(0) {
     my %params = %{$c->req->params};
 
     my $res = $xapian->faceted_search(%params,
-                                      published_only => 1,
                                       facets => 0,
                                       filters => 1,
                                      );
 
     my $baseres = $xapian->faceted_search(%params,
-                                          published_only => 1,
                                           filters => 0,
                                           facets => 1);
     $baseres->sites_map($conf->site_map);
@@ -86,7 +84,6 @@ sub feed :Chained('/root') :Args(0) {
     # enforce sorting to be time-based.
     $params{sort} = 'pubdate_desc';
     my $res = $xapian->faceted_search(%params,
-                                      published_only => 1,
                                       facets => 0,
                                       filters => 1,
                                      );

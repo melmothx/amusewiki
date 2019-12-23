@@ -12,7 +12,7 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 346;
+use Test::More tests => 341;
 use Data::Dumper::Concise;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -158,17 +158,13 @@ foreach my $url (@urls) {
     $mech->content_lacks("FULL TEXT HERE");
 }
 
-for (1..3) {
-    $mech->get_ok('/search?query=pallino&fmt=json');
-    my $search_results = from_json($mech->content);
-    is (scalar(@$search_results), 2) or diag Dumper($search_results);
-}
+$site = $schema->resultset('Site')->find($site->id);
 
-ok ($site->xapian->index_deferred, "Xapian will index the deferred as well") or die;
-$site->xapian_reindex_all;
+ok $site->show_preview_when_deferred;
+ok ($site->xapian->show_deferred, "Xapian will show the deferred as well") or die;
 
 for (1..3) {
-    # after reindexing (option is on now), we have 4 results
+    # no need to reindex
     $mech->get_ok('/search?query=pallino&fmt=json');
     foreach my $url (@urls, @pub_urls) {
         $mech->content_contains($url);
@@ -339,12 +335,12 @@ foreach my $page ('/library', '/category/author/pallino', '/category/topic/topic
 
 for (1..3) {
     $mech->get_ok('/search?query=pallino&fmt=json');
-    foreach my $url ('deferred-text-3', @pub_urls) {
+    foreach my $url ('deferred-text-2', 'deferred-text-3', @pub_urls) {
+        # still can be found without the teaser
         $mech->content_contains($url);
     }
-    $mech->content_lacks('deferred-text-2');
     my $search_results = from_json($mech->content);
-    is (scalar(@$search_results), 3) or diag Dumper($search_results);
+    is (scalar(@$search_results), 4) or diag Dumper($search_results);
 }
 
 $mech->get_ok('/logout');
@@ -362,7 +358,7 @@ foreach my $page ('/library', '/category/author/pallino', '/category/topic/topic
     $mech->content_lacks('deferred-text-2');
 }
 
-$site->xapian_reindex_all;
+# $site->xapian_reindex_all;
 
 
 for (1..3) {
@@ -388,7 +384,7 @@ $mech->content_like(qr/Deferred #3.*Published #0.*Published #1/s, "Sorting appea
 $mech->get_ok('/library/deferred-text-3');
 $mech->get('/library/deferred-text-2');
 is $mech->status, 404, "deferred and no preview => 404";
-$site->get_from_storage->xapian_reindex_all;
+# $site->get_from_storage->xapian_reindex_all;
 
 $mech->get_ok('/search?query=published');
 $mech->content_contains('Read the whole text');

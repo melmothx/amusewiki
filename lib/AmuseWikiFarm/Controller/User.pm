@@ -89,14 +89,14 @@ sub reset_password :Chained('secure_no_user') :PathPart('reset-password') :Args(
                                           locale => $c->stash->{current_locale_code});
             my $valid_until = $dt->format_cldr($dt->locale->datetime_format_long);
             my $url = $c->uri_for_action('/user/reset_password_confirm',
-                                         [ $user->username, $user->reset_token ]);
+                                         [ $user->username, $user->reset_token_plain ]);
             $site->send_mail(resetpassword => {
                                                              to => $user->email,
                                                              from => $site->mail_from_default,
                                                              reset_url => $url,
                                                              host => $site->canonical,
-                                                             valid => $valid_until,
                                                              username => $user->username,
+                                                             sitename => $site->sitename || $site->canonical,
                                                             });
         }
     }
@@ -104,22 +104,34 @@ sub reset_password :Chained('secure_no_user') :PathPart('reset-password') :Args(
 
 sub reset_password_confirm :Chained('secure_no_user') :PathPart('reset-password') :Args(2) {
     my ($self, $c, $username, $token) = @_;
-    if ($username and
-        $token and
-        $username =~ m/\w/ and
-        $token =~ m/\w/ ) {
-        if (my $password = $c->stash->{site}->users->reset_password($username, $token)) {
-            $c->stash(password => $password,
-                      username => $username);
+    my $users = $c->stash->{site}->users;
+    if (my $user = $users->reset_password_token_is_valid($username, $token)) {
+        # Dlog_debug { "Params are $_" } $c->request->body_params;
+        my $pwd = $c->request->body_params->{password};
+        my $pwd_repeat = $c->request->body_params->{passwordrepeat};
+        if ($pwd && $pwd_repeat) {
+            my ($validated, @errors) = $users->validate_params(password => $pwd,
+                                                               passwordrepeat => $pwd_repeat,
+                                                              );
+            if (@errors) {
+                Dlog_info { "Found error in password validation $_" } \@errors;
+                $c->flash(error_msg => join ("\n", map { $c->loc($_) } @errors));
+            }
+            elsif ($validated->{password}) {
+                $user->update({
+                               password => $validated->{password},
+                               reset_until => 0,
+                              });
+                $c->flash(status_msg => $c->loc('Your password was reset, now you can login with it'));
+                $c->response->redirect($c->uri_for_action('/user/login'));
+                return;
+            }
         }
-        else {
-            log_warn { $c->request->uri . " accessed with invalid mail and token" };
-            $c->detach('/not_permitted');
-        }
+        $c->stash(username => $username);
     }
     else {
-        log_error { $c->request->uri . " accessed without mail and token shouldn't happen!" };
-        $c->detach('/not_permitted');
+        $c->flash(error_msg => $c->log('The reset link is invalid or expired. Please try again'));
+        $c->response->redirect($c->uri_for_action('/user/reset_password'));
     }
 }
 

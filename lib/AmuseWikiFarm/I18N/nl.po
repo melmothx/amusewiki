@@ -1041,6 +1041,11 @@ msgstr ""
 "dan de gewenste URI door het veld hieronder te gebruiken en auteur, titel en "
 "een getal in te voeren, bijvoorbeeld mijn-auteur-mijn-titel-1"
 
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -1139,6 +1144,11 @@ msgstr ""
 "      bestanden opnieuw willen aanmaken"
 
 msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
@@ -1164,10 +1174,6 @@ msgstr ""
 "      de breedte ervan instellen door de volgende regel aan de header\n"
 "      toe te voegen, waarbij de waarde de tekst-breedte verhouding is.\n"
 "      1 is de volledige tekstbreedte, 0.5 is half, enzovoort"
-
-#. (reset_url)
-msgid "If you want to proceed, please visit the following url: %1"
-msgstr "Als je verder wilt gaan, ga dan naar de volgende URL: %1"
 
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
@@ -1464,6 +1470,10 @@ msgstr ""
 msgid "Message"
 msgstr "Bericht"
 
+#. (8)
+msgid "Minimum %1 characters"
+msgstr ""
+
 msgid "Missing #title header in the text!"
 msgstr "Missende #title koptekst in de tekst!"
 
@@ -1608,9 +1618,6 @@ msgstr "Notificatiemail: leeg veld schakelt ze uit"
 msgid "Notify to"
 msgstr "Notifactie aan"
 
-msgid "Now you can proceed to login."
-msgstr "Nu kun je verder gaan naar de login."
-
 msgid "Number of jobs"
 msgstr "Aantal taken"
 
@@ -1669,9 +1676,6 @@ msgstr "Of verpak het ik"
 
 msgid "Ordered List"
 msgstr "Georderde lijst"
-
-msgid "Otherwise, please just ignore this mail."
-msgstr "In andere gevallen kun je deze e-mail negeren."
 
 msgid "PDF"
 msgstr "PDF"
@@ -1744,10 +1748,6 @@ msgstr "Deelselectie"
 
 msgid "Password"
 msgstr "Wachtwoord"
-
-#. (host)
-msgid "Password reset for %1"
-msgstr "Wachtwoord opnieuw instellen voor %1"
 
 msgid "Password too short"
 msgstr "Wachtwoord te kort"
@@ -2119,8 +2119,15 @@ msgstr "Stel alle filters opnieuw in"
 msgid "Reset password"
 msgstr "Stel wachtwoord opnieuw in"
 
+#. (username)
+msgid "Reset password for user %1"
+msgstr ""
+
 msgid "Reset to site defaults"
 msgstr "Stel in op de standaardinstellingen van de site"
+
+msgid "Reset your password"
+msgstr ""
 
 msgid "Restricted configuration variables"
 msgstr "Afgeschermde configuratievariabelen"
@@ -2327,12 +2334,6 @@ msgstr "Sommige velden zijn te lang"
 msgid "Some ongoing revisions were found"
 msgstr "Er zijn een paar lopende herzieningen gevonden"
 
-#. (username, host)
-msgid "Someone, probably you, has requested a password reset for %1 at %2."
-msgstr ""
-"Iemand, waarschijnlijk jij, heeft verzocht een wachtwoord opnieuw in te "
-"stellen voor %1 op %2."
-
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr "Sorry, te veel taken in de wacht, probeer het later opnieuw!"
 
@@ -2516,10 +2517,6 @@ msgstr ""
 "De gegenereerde webserverconfiguratie zal alle\n"
 "          HTTP verzoeken doorsturen naar HTTPS"
 
-#. (valid)
-msgid "The link is valid until %1 (one hour from now)"
-msgstr "De link is geldig tot %1 (een uur vanaf nu)"
-
 msgid "The logo has the site name on itself"
 msgstr "Op het logo staat de sitenaam"
 
@@ -2536,6 +2533,9 @@ msgstr ""
 
 msgid "The password will be mailed at this address"
 msgstr "Het wachtwoord wordt ge-e-maild naar dit adres"
+
+msgid "The reset link will expire in a hour."
+msgstr ""
 
 msgid "The revision has the following messages"
 msgstr "De herziening heeft de volgende berichten"
@@ -3142,6 +3142,9 @@ msgstr "Jouw deel hier..."
 msgid "Your password is %1."
 msgstr "Je wachtwoord is %1."
 
+msgid "Your password was reset, now you can login with it"
+msgstr ""
+
 msgid "Your section here..."
 msgstr "Jouw deel hier..."
 
@@ -3359,6 +3362,26 @@ msgstr ""
 "\"Oude bewerking\" betekent dat de herziening was verlaten\n"
 "    tijdens het bewerken, maar hij is er nog steeds voor het geval dat\n"
 "    iemand er verder mee wil gaan bij het bewerken van een tekst."
+
+#~ msgid "If you want to proceed, please visit the following url: %1"
+#~ msgstr "Als je verder wilt gaan, ga dan naar de volgende URL: %1"
+
+#~ msgid "Now you can proceed to login."
+#~ msgstr "Nu kun je verder gaan naar de login."
+
+#~ msgid "Otherwise, please just ignore this mail."
+#~ msgstr "In andere gevallen kun je deze e-mail negeren."
+
+#~ msgid "Password reset for %1"
+#~ msgstr "Wachtwoord opnieuw instellen voor %1"
+
+#~ msgid "Someone, probably you, has requested a password reset for %1 at %2."
+#~ msgstr ""
+#~ "Iemand, waarschijnlijk jij, heeft verzocht een wachtwoord opnieuw in te "
+#~ "stellen voor %1 op %2."
+
+#~ msgid "The link is valid until %1 (one hour from now)"
+#~ msgstr "De link is geldig tot %1 (een uur vanaf nu)"
 
 #~ msgid "Fixed category list"
 #~ msgstr "Vaste categorielijst"

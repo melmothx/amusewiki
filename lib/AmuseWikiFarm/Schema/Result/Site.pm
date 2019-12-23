@@ -1731,7 +1731,7 @@ sub xapian {
                                                locale => $self->locale,
                                                # disable stemming for search on multilang environment
                                                stem_search => !$self->multilanguage,
-                                               index_deferred => $self->show_preview_when_deferred,
+                                               show_deferred => $self->show_preview_when_deferred,
                                               );
 }
 
@@ -2576,7 +2576,16 @@ sub _pre_update_db_from_tree {
     if ($@) {
         $logger->("Exception migrating lexicon to PO: $@");
     }
-    my @files = (sort @{ $todo->{new} }, @{ $todo->{changed} });
+    my (@muses, @images);
+    foreach my $f (sort @{ $todo->{new} }, @{ $todo->{changed} }) {
+        if ($f =~ m/\.muse$/) {
+            push @muses, $f;
+        }
+        else {
+            push @images, $f;
+        }
+    }
+    my @files = (@images, @muses);
     return @files;
 }
 

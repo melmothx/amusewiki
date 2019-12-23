@@ -963,6 +963,11 @@ msgstr ""
 "existiert, wähle die gewünschte URI, verwende dazu das untere Feld und gib "
 "die AutorIn, den Titel und eine Nummer an, z.B. meine-AutorIn-mein-Titel-1 "
 
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -1040,6 +1045,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
@@ -1055,10 +1065,6 @@ msgid ""
 "      adding the following line to the header, where the value is the\n"
 "      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
 "      on"
-msgstr ""
-
-#. (reset_url)
-msgid "If you want to proceed, please visit the following url: %1"
 msgstr ""
 
 msgid ""
@@ -1333,6 +1339,10 @@ msgstr ""
 msgid "Message"
 msgstr "Nachricht"
 
+#. (8)
+msgid "Minimum %1 characters"
+msgstr ""
+
 msgid "Missing #title header in the text!"
 msgstr "#title -Kopf fehlt im Text!"
 
@@ -1475,9 +1485,6 @@ msgstr "Benachrichtigungsmail: Leeres Feld "
 msgid "Notify to"
 msgstr "Benachrichtige"
 
-msgid "Now you can proceed to login."
-msgstr ""
-
 msgid "Number of jobs"
 msgstr ""
 
@@ -1533,9 +1540,6 @@ msgstr "Oder wickle es ein"
 
 msgid "Ordered List"
 msgstr "Nummerische Liste"
-
-msgid "Otherwise, please just ignore this mail."
-msgstr ""
 
 msgid "PDF"
 msgstr ""
@@ -1598,10 +1602,6 @@ msgstr ""
 
 msgid "Password"
 msgstr "Passwort"
-
-#. (host)
-msgid "Password reset for %1"
-msgstr "Passwort für %1 zurücksetzen"
 
 msgid "Password too short"
 msgstr "Passwort zu kurz"
@@ -1943,7 +1943,14 @@ msgstr ""
 msgid "Reset password"
 msgstr ""
 
+#. (username)
+msgid "Reset password for user %1"
+msgstr ""
+
 msgid "Reset to site defaults"
+msgstr ""
+
+msgid "Reset your password"
 msgstr ""
 
 msgid "Restricted configuration variables"
@@ -2152,10 +2159,6 @@ msgstr "Manche Felder sind zu lange"
 msgid "Some ongoing revisions were found"
 msgstr "Einige laufenden Änderungen wurden gefunden"
 
-#. (username, host)
-msgid "Someone, probably you, has requested a password reset for %1 at %2."
-msgstr ""
-
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 
@@ -2327,10 +2330,6 @@ msgid ""
 "          all the HTTP requests to HTTPS"
 msgstr ""
 
-#. (valid)
-msgid "The link is valid until %1 (one hour from now)"
-msgstr ""
-
 msgid "The logo has the site name on itself"
 msgstr ""
 
@@ -2344,6 +2343,9 @@ msgstr ""
 
 msgid "The password will be mailed at this address"
 msgstr "Das Passwort wird an die Adresse gemailt werden"
+
+msgid "The reset link will expire in a hour."
+msgstr ""
 
 msgid "The revision has the following messages"
 msgstr "Die Änderung beinhaltet die folgenden Nachrichten"
@@ -2893,6 +2895,9 @@ msgstr "Dein Teil hier..."
 msgid "Your password is %1."
 msgstr "Dein Passwort ist %1"
 
+msgid "Your password was reset, now you can login with it"
+msgstr ""
+
 msgid "Your section here..."
 msgstr ""
 
@@ -3107,6 +3112,9 @@ msgstr ""
 " Bearbeitung, auf Eis gelegt wurde, aber immer noch\n"
 " erhalten ist, falls sie jemand wieder aufnehmen will wenn sie den\n"
 " Text bearbeitet. "
+
+#~ msgid "Password reset for %1"
+#~ msgstr "Passwort für %1 zurücksetzen"
 
 #~ msgid "Fixed category list"
 #~ msgstr "Feste Kategorienliste"

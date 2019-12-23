@@ -51,10 +51,6 @@ has languages_map => (is => 'rw',
 has hostname_map => (is => 'rw',
                      isa => Maybe[HashRef]);
 
-has show_deferred => (is => 'ro',
-                      isa => Bool,
-                      default => sub { 0 });
-
 has authors => (is => 'lazy');
 
 has topics => (is => 'lazy');

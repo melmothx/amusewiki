@@ -965,6 +965,11 @@ msgstr ""
 "titel, välj den önskade URI genom att fylla i fältet nedan med författare, "
 "titel och nummer, t.ex. min-förf-min-titel-1"
 
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -1038,6 +1043,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
@@ -1053,10 +1063,6 @@ msgid ""
 "      adding the following line to the header, where the value is the\n"
 "      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
 "      on"
-msgstr ""
-
-#. (reset_url)
-msgid "If you want to proceed, please visit the following url: %1"
 msgstr ""
 
 msgid ""
@@ -1326,6 +1332,10 @@ msgstr ""
 msgid "Message"
 msgstr "Meddelande"
 
+#. (8)
+msgid "Minimum %1 characters"
+msgstr ""
+
 msgid "Missing #title header in the text!"
 msgstr "#title header saknas i texten!"
 
@@ -1468,9 +1478,6 @@ msgstr "Underrätta mail: tomt fält kommer att inaktivera dem"
 msgid "Notify to"
 msgstr "Underrätta"
 
-msgid "Now you can proceed to login."
-msgstr ""
-
 msgid "Number of jobs"
 msgstr ""
 
@@ -1526,9 +1533,6 @@ msgstr "Eller wrappa in det"
 
 msgid "Ordered List"
 msgstr "Numerisk lista"
-
-msgid "Otherwise, please just ignore this mail."
-msgstr ""
 
 msgid "PDF"
 msgstr ""
@@ -1599,10 +1603,6 @@ msgstr ""
 
 msgid "Password"
 msgstr "Lösenord"
-
-#. (host)
-msgid "Password reset for %1"
-msgstr ""
 
 msgid "Password too short"
 msgstr "Lösenord för kort"
@@ -1952,7 +1952,14 @@ msgstr ""
 msgid "Reset password"
 msgstr ""
 
+#. (username)
+msgid "Reset password for user %1"
+msgstr ""
+
 msgid "Reset to site defaults"
+msgstr ""
+
+msgid "Reset your password"
 msgstr ""
 
 msgid "Restricted configuration variables"
@@ -2159,10 +2166,6 @@ msgstr "Vissa fält är för långa"
 msgid "Some ongoing revisions were found"
 msgstr "Några pågående revideringar hittades"
 
-#. (username, host)
-msgid "Someone, probably you, has requested a password reset for %1 at %2."
-msgstr ""
-
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 
@@ -2334,10 +2337,6 @@ msgid ""
 "          all the HTTP requests to HTTPS"
 msgstr ""
 
-#. (valid)
-msgid "The link is valid until %1 (one hour from now)"
-msgstr ""
-
 msgid "The logo has the site name on itself"
 msgstr "Logotypen innehåller sidnamnet"
 
@@ -2351,6 +2350,9 @@ msgstr ""
 
 msgid "The password will be mailed at this address"
 msgstr "Lösenordet kommer att mailas till denna adress"
+
+msgid "The reset link will expire in a hour."
+msgstr ""
 
 msgid "The revision has the following messages"
 msgstr "Revideringen har följande meddelanden"
@@ -2892,6 +2894,9 @@ msgstr "Din del här..."
 #. (password)
 msgid "Your password is %1."
 msgstr "Ditt lösenord är %1"
+
+msgid "Your password was reset, now you can login with it"
+msgstr ""
 
 msgid "Your section here..."
 msgstr ""

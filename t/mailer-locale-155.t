@@ -9,7 +9,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 57;
+use Test::More tests => 54;
 use Data::Dumper::Concise;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -52,8 +52,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 foreach my $lh ('default', 'site', 'user') {
 
     # reset for the loop
-    $user->discard_changes->update({ reset_token => undef, reset_until => undef });
-    ok !$user->reset_token, "No reset token present";
+    $user->discard_changes->update({ reset_until => 0 });
     $site->users->search({ username => 'marchetto' })->delete;
 
 
@@ -102,17 +101,17 @@ foreach my $lh ('default', 'site', 'user') {
 my @mails = Email::Sender::Simple->default_transport->deliveries;
 
 my @expected = (
-                qr{Someone, probably you, has requested a password reset for notifications},
+                qr{If you forgot your password, you can choose a new one visiting},
                 qr{Your username is marchetto},
                 qr{A new text has been created at},
                 qr{The revision has the following messages},
                 # then site it set to hr
-                qr{Netko, vjerojatno ti, tra=C5=BEio},
+                qr{Ako ste zaboravili lozinku, mo=C5=BEete je ponovo birati na sljede=C4=87oj},
                 qr{Tvoj korisnik je stvoren na},
                 qr{Svrha ove poruke je da prijavi novi tekst, iako je procedura},
                 qr{Izmjena sadr=C5=BEi slijede=C4=87e poruke},
                 # then recipient known, with preference set
-                qr{Qualcuno, probabilmente tu, ha richiesto la reimpostazione della},
+                qr{Se hai dimenticato la password},
                 # however, the recipient is new, so we use the site locale
                 qr{Tvoj korisnik je stvoren na},
                 qr{Un nuovo testo =C3=A8 stato creato},

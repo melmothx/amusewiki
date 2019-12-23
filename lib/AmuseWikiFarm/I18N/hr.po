@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2019-08-23 11:10+0200\n"
+"PO-Revision-Date: 2019-12-23 10:04+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -1000,6 +1000,13 @@ msgstr ""
 "željeni URI koristeći polje niže, unesi autora, naslov i jedan broj, npr. "
 "moj-autor-moj-naslov-1"
 
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+"Ako nije vam bila namjera, jednostavno zanemarite ovu poruku i lozinka\n"
+"vaša neće se promijeniti"
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -1095,6 +1102,13 @@ msgstr ""
 "papira, valja ponovo proizvoditi ih."
 
 msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+"Ako ste zaboravili lozinku, možete je ponovo birati na sljedećoj\n"
+"poveznici (kliknite ili zalijepite u vašem browseru):"
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
@@ -1119,10 +1133,6 @@ msgstr ""
 "naslovnici PDF-a. Možeš mijenjati njenu širinu dodajući slijedeći\n"
 "redak zaglavlju, gdje vrijednost može biti između 0 i 1. 1 znači\n"
 "širinu teksta, 0.5 pola toga itd."
-
-#. (reset_url)
-msgid "If you want to proceed, please visit the following url: %1"
-msgstr "Ako želiš nastaviti, idi na ovu adresu: %1"
 
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
@@ -1408,6 +1418,10 @@ msgstr "Najveća veličina fajlova (Mb)"
 msgid "Message"
 msgstr "Poruka"
 
+#. (8)
+msgid "Minimum %1 characters"
+msgstr "Najmanje %1 slova"
+
 msgid "Missing #title header in the text!"
 msgstr "#title nedostaje u tekstu!"
 
@@ -1550,9 +1564,6 @@ msgstr "Mail obavijesti: ostavi prazno za onemogućiti"
 msgid "Notify to"
 msgstr "Obavijesti"
 
-msgid "Now you can proceed to login."
-msgstr "Sad možeš nastaviti na prijavu."
-
 msgid "Number of jobs"
 msgstr "Broj zadataka"
 
@@ -1608,9 +1619,6 @@ msgstr "Ili umetni između"
 
 msgid "Ordered List"
 msgstr "Brojčan popis"
-
-msgid "Otherwise, please just ignore this mail."
-msgstr "Ako to nije slučaj, možeš samo ignorirati ovaj mail."
 
 msgid "PDF"
 msgstr "PDF"
@@ -1680,10 +1688,6 @@ msgstr "Djelomični izbor"
 
 msgid "Password"
 msgstr "Lozinka"
-
-#. (host)
-msgid "Password reset for %1"
-msgstr "Ponovno postavi lozinku za %1"
 
 msgid "Password too short"
 msgstr "Lozinka prekratka"
@@ -2045,8 +2049,15 @@ msgstr "Poništi filtere"
 msgid "Reset password"
 msgstr "Ponovo postavi lozinku"
 
+#. (username)
+msgid "Reset password for user %1"
+msgstr "Promjena lozinke za %1"
+
 msgid "Reset to site defaults"
 msgstr "Koristi zadane postavke sajta"
+
+msgid "Reset your password"
+msgstr "Promjenite lozinku"
 
 msgid "Restricted configuration variables"
 msgstr "Ograničena konfiguracija"
@@ -2251,10 +2262,6 @@ msgstr "Neka polja su predugačka"
 msgid "Some ongoing revisions were found"
 msgstr "Pronađene su neke aktivne izmjene"
 
-#. (username, host)
-msgid "Someone, probably you, has requested a password reset for %1 at %2."
-msgstr "Netko, vjerojatno ti, tražio je novu lozinku za %1 na sajtu %2."
-
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr "Previše zadataka na čekanju, vratite se kasnije!"
 
@@ -2433,10 +2440,6 @@ msgid ""
 "          all the HTTP requests to HTTPS"
 msgstr "Konfiguracija webservera preusmjerit će sve HTTP zahtjeve na HTTPS"
 
-#. (valid)
-msgid "The link is valid until %1 (one hour from now)"
-msgstr "Adresa je važeća do %1 (sat vremena od sada)"
-
 msgid "The logo has the site name on itself"
 msgstr "Logo ima ime sajta na sebi"
 
@@ -2452,6 +2455,9 @@ msgstr ""
 
 msgid "The password will be mailed at this address"
 msgstr "Lozinka će biti poslana ovu e-mail adresu"
+
+msgid "The reset link will expire in a hour."
+msgstr "Poveznica za promjenu lozinke isteći će za sat vremena"
 
 msgid "The revision has the following messages"
 msgstr "Izmjena sadrži slijedeće poruke"
@@ -3030,6 +3036,9 @@ msgstr "Tvoj dio..."
 msgid "Your password is %1."
 msgstr "Tvoja lozinka je %1."
 
+msgid "Your password was reset, now you can login with it"
+msgstr "Promijenili ste lozinku, sad se možete njom prijaviti"
+
 msgid "Your section here..."
 msgstr "Odjeljak..."
 
@@ -3242,6 +3251,24 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "If you want to proceed, please visit the following url: %1"
+#~ msgstr "Ako želiš nastaviti, idi na ovu adresu: %1"
+
+#~ msgid "Now you can proceed to login."
+#~ msgstr "Sad možeš nastaviti na prijavu."
+
+#~ msgid "Otherwise, please just ignore this mail."
+#~ msgstr "Ako to nije slučaj, možeš samo ignorirati ovaj mail."
+
+#~ msgid "Password reset for %1"
+#~ msgstr "Ponovno postavi lozinku za %1"
+
+#~ msgid "Someone, probably you, has requested a password reset for %1 at %2."
+#~ msgstr "Netko, vjerojatno ti, tražio je novu lozinku za %1 na sajtu %2."
+
+#~ msgid "The link is valid until %1 (one hour from now)"
+#~ msgstr "Adresa je važeća do %1 (sat vremena od sada)"
 
 #~ msgid "Fixed category list"
 #~ msgstr "Nepromjenjiv popis kategorija"
