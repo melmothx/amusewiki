@@ -146,7 +146,7 @@ sub set_reset_token {
             my $token = $random->bytes_base64(64);
             $token =~ s/[^a-zA-Z0-9]//g;
             # https://metacpan.org/pod/Authen::Passphrase::BlowfishCrypt
-            # ignores everything alter 72th char.
+            # ignores everything after the 72th char.
             $token = substr($token, 0, 70);
             if ($token and length($token) > 50) {
                 # asked again? ok, regenerated the same.
@@ -191,7 +191,7 @@ sub reset_password_token_is_valid {
         }
     }
     else {
-        log_info { "$username does not exists" };
+        log_info { "$username does not exist" };
     }
     return undef;
 }
