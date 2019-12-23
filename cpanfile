@@ -69,6 +69,7 @@ requires 'Log::Contextual';
 requires 'Log::Log4perl';
 requires 'Log::Dispatch';
 requires 'Log::Dispatch::File::Stamped';
+requires 'Log::Dispatch::FileRotate';
 # for the Log::Dispatch::Email::MailSend module
 requires 'Mail::Send';
 requires 'Email::Sender';

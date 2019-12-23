@@ -114,10 +114,15 @@ if [ ! -f "/var/lib/amusewiki/log4perl.conf" ]; then
 # that one.
 
 log4perl.logger=INFO, Log, Mail
-log4perl.appender.Log=Log::Dispatch::File::Stamped
-log4perl.appender.Log.stamp_fmt=%Y-%m-%d
+
+log4perl.appender.Log=Log::Dispatch::FileRotate
 log4perl.appender.Log.filename=log/amw.log
 log4perl.appender.Log.mode=append
+
+# 10M then rotate, max 10, 100M of logs
+log4perl.appender.Log.size=10485760
+log4perl.appender.Log.max=10
+
 log4perl.appender.Log.layout=Log::Log4perl::Layout::PatternLayout
 log4perl.appender.Log.layout.ConversionPattern=%d %p - %c - %F:%L - %m%n
 
