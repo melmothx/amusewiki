@@ -192,6 +192,7 @@ sub deserialize_site {
     }
     my @add = $site->users;
     foreach my $user (@users) {
+        delete $user->{reset_token};
         # can't be passed plainly because it's a many to many
         my $roles = delete $user->{roles};
         # search it.
