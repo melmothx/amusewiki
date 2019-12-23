@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2019-08-23 11:10+0200\n"
+"PO-Revision-Date: 2019-12-23 10:04+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -1004,6 +1004,8 @@ msgid ""
 "If it was not your intention, please just ignore this mail and\n"
 "your password will not be changed."
 msgstr ""
+"Ako nije vam bila namjera, jednostavno zanemarite ovu poruku i lozinka\n"
+"vaša neće se promijeniti"
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
@@ -1103,6 +1105,8 @@ msgid ""
 "If you forgot your password, you can choose a new one visiting\n"
 "this link (click on it or copy and paste it in your browser):"
 msgstr ""
+"Ako ste zaboravili lozinku, možete je ponovo birati na sljedećoj\n"
+"poveznici (kliknite ili zalijepite u vašem browseru):"
 
 msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
@@ -1416,7 +1420,7 @@ msgstr "Poruka"
 
 #. (8)
 msgid "Minimum %1 characters"
-msgstr ""
+msgstr "Najmanje %1 slova"
 
 msgid "Missing #title header in the text!"
 msgstr "#title nedostaje u tekstu!"
@@ -2047,13 +2051,13 @@ msgstr "Ponovo postavi lozinku"
 
 #. (username)
 msgid "Reset password for user %1"
-msgstr ""
+msgstr "Promjena lozinke za %1"
 
 msgid "Reset to site defaults"
 msgstr "Koristi zadane postavke sajta"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "Promjenite lozinku"
 
 msgid "Restricted configuration variables"
 msgstr "Ograničena konfiguracija"
@@ -2453,7 +2457,7 @@ msgid "The password will be mailed at this address"
 msgstr "Lozinka će biti poslana ovu e-mail adresu"
 
 msgid "The reset link will expire in a hour."
-msgstr ""
+msgstr "Poveznica za promjenu lozinke isteći će za sat vremena"
 
 msgid "The revision has the following messages"
 msgstr "Izmjena sadrži slijedeće poruke"
@@ -3033,7 +3037,7 @@ msgid "Your password is %1."
 msgstr "Tvoja lozinka je %1."
 
 msgid "Your password was reset, now you can login with it"
-msgstr ""
+msgstr "Promijenili ste lozinku, sad se možete njom prijaviti"
 
 msgid "Your section here..."
 msgstr "Odjeljak..."
