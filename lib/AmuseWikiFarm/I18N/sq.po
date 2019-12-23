@@ -1021,6 +1021,11 @@ msgstr ""
 "në e dëshiruar duke plotësuar fushën më poshtë me autorin, titullin dhe "
 "numrin, p.sh autori-im-titulli-im-1"
 
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -1105,6 +1110,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
@@ -1123,10 +1133,6 @@ msgid ""
 "      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
 "      on"
 msgstr ""
-
-#. (reset_url)
-msgid "If you want to proceed, please visit the following url: %1"
-msgstr "Nëse dëshironi të vazhdoni, ju lutem vizitoni linkun në vazhdim: %1"
 
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
@@ -1409,6 +1415,10 @@ msgstr ""
 msgid "Message"
 msgstr "Porosi"
 
+#. (8)
+msgid "Minimum %1 characters"
+msgstr ""
+
 msgid "Missing #title header in the text!"
 msgstr ""
 
@@ -1553,9 +1563,6 @@ msgstr "Mail informues: fusha e zbrazët do ti pamundësoj ato"
 msgid "Notify to"
 msgstr "Njofto  te"
 
-msgid "Now you can proceed to login."
-msgstr "Mund të vazhdosh kyçu"
-
 msgid "Number of jobs"
 msgstr ""
 
@@ -1610,9 +1617,6 @@ msgstr "Ose shtoje brenda"
 
 msgid "Ordered List"
 msgstr "Lista Numerike"
-
-msgid "Otherwise, please just ignore this mail."
-msgstr "Përndryshe, të lutem vetëm injoro këtë mail."
 
 msgid "PDF"
 msgstr ""
@@ -1678,10 +1682,6 @@ msgstr "Zgjedhje e pjesëshme"
 
 msgid "Password"
 msgstr "Fjalëkalimi"
-
-#. (host)
-msgid "Password reset for %1"
-msgstr "Fjalëkalimi i ri i krijuar për 1%"
 
 msgid "Password too short"
 msgstr "Fjalëkalimi është shumë i shkurtë"
@@ -2045,7 +2045,14 @@ msgstr ""
 msgid "Reset password"
 msgstr "Rivendos fjalëkalimin"
 
+#. (username)
+msgid "Reset password for user %1"
+msgstr ""
+
 msgid "Reset to site defaults"
+msgstr ""
+
+msgid "Reset your password"
 msgstr ""
 
 msgid "Restricted configuration variables"
@@ -2254,12 +2261,6 @@ msgstr "Disa nga fushat janë shumë të gjata"
 msgid "Some ongoing revisions were found"
 msgstr "Janë gjetur disa përpunime që janë në proces"
 
-#. (username, host)
-msgid "Someone, probably you, has requested a password reset for %1 at %2."
-msgstr ""
-"Dikush, sipas të gjitha gjasave ju, keni kërkuar ndërrimin e fjalëkalimit "
-"për  %1 në %2."
-
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 "Kërkojmë falje, mirëpo një numër i madh i punëve është në pritje. Ju lutem "
@@ -2431,10 +2432,6 @@ msgstr ""
 "Parametrat e krijuar të webserverit do ti ridrejtoj \n"
 "të gjitha kërkesat për HTTP në HTTPS"
 
-#. (valid)
-msgid "The link is valid until %1 (one hour from now)"
-msgstr "Adresa është valide deri %1 (nj%1 orë nga tani)"
-
 msgid "The logo has the site name on itself"
 msgstr "Llogo-ja ka emër të uebfaqës në të"
 
@@ -2448,6 +2445,9 @@ msgstr ""
 
 msgid "The password will be mailed at this address"
 msgstr "Fjalëkalimi do të dërgohet në këtë email adresë"
+
+msgid "The reset link will expire in a hour."
+msgstr ""
 
 msgid "The revision has the following messages"
 msgstr "Përpunimi ka marrë komentet në vazhdim"
@@ -3032,6 +3032,9 @@ msgstr "Pjesa juaj këtu..."
 msgid "Your password is %1."
 msgstr "Fjalëkalimi juaj është %1."
 
+msgid "Your password was reset, now you can login with it"
+msgstr ""
+
 msgid "Your section here..."
 msgstr "Sekcioni juaj këtu..."
 
@@ -3248,6 +3251,26 @@ msgstr ""
 "“Ndryshim i mbetur” do të thotë që përpunimi është brakstisur\n"
 " gjatë ndryshimit por është ende aty në rast se dikush dëshiron të vazhdoj\n"
 " me ndryshimin e tekstit."
+
+#~ msgid "If you want to proceed, please visit the following url: %1"
+#~ msgstr "Nëse dëshironi të vazhdoni, ju lutem vizitoni linkun në vazhdim: %1"
+
+#~ msgid "Now you can proceed to login."
+#~ msgstr "Mund të vazhdosh kyçu"
+
+#~ msgid "Otherwise, please just ignore this mail."
+#~ msgstr "Përndryshe, të lutem vetëm injoro këtë mail."
+
+#~ msgid "Password reset for %1"
+#~ msgstr "Fjalëkalimi i ri i krijuar për 1%"
+
+#~ msgid "Someone, probably you, has requested a password reset for %1 at %2."
+#~ msgstr ""
+#~ "Dikush, sipas të gjitha gjasave ju, keni kërkuar ndërrimin e fjalëkalimit "
+#~ "për  %1 në %2."
+
+#~ msgid "The link is valid until %1 (one hour from now)"
+#~ msgstr "Adresa është valide deri %1 (nj%1 orë nga tani)"
 
 #~ msgid "Fixed category list"
 #~ msgstr "Lista e kategorive u rregullua"

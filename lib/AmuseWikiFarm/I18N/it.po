@@ -1035,6 +1035,11 @@ msgstr ""
 "scegli tu stesso un URI usando il campo più in basso, inserendo autore, "
 "titolo e un numero, ad esempio “autore-titlo-1”"
 
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -1137,6 +1142,11 @@ msgstr ""
 "prodotti."
 
 msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
@@ -1160,10 +1170,6 @@ msgstr ""
 "nella prima pagine del PDF. Puoi impostare la sua larghezza, con un\n"
 "valore compreso tra 0 e 1, dove 1 è la larghezza piena del testo, 0.5\n"
 "metà e così via."
-
-#. (reset_url)
-msgid "If you want to proceed, please visit the following url: %1"
-msgstr "Se vuoi procedere, visita questo indirizzo: %1"
 
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
@@ -1462,6 +1468,10 @@ msgstr "Dimensione massima dei file caricati in megabyte"
 msgid "Message"
 msgstr "Messaggio"
 
+#. (8)
+msgid "Minimum %1 characters"
+msgstr ""
+
 msgid "Missing #title header in the text!"
 msgstr "Manca l'intestazione #title nel testo!"
 
@@ -1608,9 +1618,6 @@ msgstr "Mail di notifica: lasciare in bianco per disabilitare"
 msgid "Notify to"
 msgstr "Notifica a"
 
-msgid "Now you can proceed to login."
-msgstr "Adesso puoi procedere al login."
-
 msgid "Number of jobs"
 msgstr "Numero di lavori"
 
@@ -1668,9 +1675,6 @@ msgstr "O racchiudi in"
 
 msgid "Ordered List"
 msgstr "Lista numerata"
-
-msgid "Otherwise, please just ignore this mail."
-msgstr "In caso contrario, puoi semplicemente ignorare questa mail."
 
 msgid "PDF"
 msgstr "PDF"
@@ -1744,10 +1748,6 @@ msgstr "Selezione parziale"
 
 msgid "Password"
 msgstr "Password"
-
-#. (host)
-msgid "Password reset for %1"
-msgstr "Reimpostazione della password per %1"
 
 msgid "Password too short"
 msgstr "La password è troppo breve"
@@ -2114,8 +2114,15 @@ msgstr "Rimuovi i filtri"
 msgid "Reset password"
 msgstr "Reimposta la password"
 
+#. (username)
+msgid "Reset password for user %1"
+msgstr ""
+
 msgid "Reset to site defaults"
 msgstr "Ripristino alle impostazioni predefinite del sito"
+
+msgid "Reset your password"
+msgstr ""
 
 msgid "Restricted configuration variables"
 msgstr "Variabili di configurazione protette"
@@ -2320,12 +2327,6 @@ msgstr "Alcuni campi sono troppo lunghi"
 msgid "Some ongoing revisions were found"
 msgstr "Sono state trovate delle revisioni in corso"
 
-#. (username, host)
-msgid "Someone, probably you, has requested a password reset for %1 at %2."
-msgstr ""
-"Qualcuno, probabilmente tu, ha richiesto la reimpostazione della password "
-"per %1 su %2."
-
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 "Siamo spiacenti, ci sono troppi lavori in attesa. Si prega di\n"
@@ -2513,10 +2514,6 @@ msgid ""
 msgstr ""
 "La configurazione del webserver instrada tutte le richieste HTTP su HTTPS"
 
-#. (valid)
-msgid "The link is valid until %1 (one hour from now)"
-msgstr "Il link è valido fino a %1 (un'ora a partire da adesso)"
-
 msgid "The logo has the site name on itself"
 msgstr "Il logo contiene il nome del sito"
 
@@ -2533,6 +2530,9 @@ msgstr ""
 
 msgid "The password will be mailed at this address"
 msgstr "La password sarà inviata a questo indirizzo"
+
+msgid "The reset link will expire in a hour."
+msgstr ""
 
 msgid "The revision has the following messages"
 msgstr "La revisione contiene i seguenti messaggi"
@@ -3139,6 +3139,9 @@ msgstr "La tua parte..."
 msgid "Your password is %1."
 msgstr "La tua password è %1."
 
+msgid "Your password was reset, now you can login with it"
+msgstr ""
+
 msgid "Your section here..."
 msgstr "Sezione..."
 
@@ -3356,6 +3359,26 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "If you want to proceed, please visit the following url: %1"
+#~ msgstr "Se vuoi procedere, visita questo indirizzo: %1"
+
+#~ msgid "Now you can proceed to login."
+#~ msgstr "Adesso puoi procedere al login."
+
+#~ msgid "Otherwise, please just ignore this mail."
+#~ msgstr "In caso contrario, puoi semplicemente ignorare questa mail."
+
+#~ msgid "Password reset for %1"
+#~ msgstr "Reimpostazione della password per %1"
+
+#~ msgid "Someone, probably you, has requested a password reset for %1 at %2."
+#~ msgstr ""
+#~ "Qualcuno, probabilmente tu, ha richiesto la reimpostazione della password "
+#~ "per %1 su %2."
+
+#~ msgid "The link is valid until %1 (one hour from now)"
+#~ msgstr "Il link è valido fino a %1 (un'ora a partire da adesso)"
 
 #~ msgid "Fixed category list"
 #~ msgstr "Lista fissa delle categorie"

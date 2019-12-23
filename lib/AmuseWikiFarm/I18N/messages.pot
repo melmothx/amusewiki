@@ -287,7 +287,7 @@ msgstr ""
 msgid "Attachments"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1654 root/src/bookbuilder/index.tt:123 root/src/console/unpublished.tt:9 root/src/edit/newtext.tt:63 root/src/static-indexes.tt:70
+#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1643 root/src/bookbuilder/index.tt:123 root/src/console/unpublished.tt:9 root/src/edit/newtext.tt:63 root/src/static-indexes.tt:70
 msgid "Author"
 msgstr ""
 
@@ -295,7 +295,7 @@ msgstr ""
 msgid "Author and title. If one side document: title."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:178 lib/AmuseWikiFarm/Controller/OPDS.pm:64 lib/AmuseWikiFarm/Schema/Result/Title.pm:1654 root/src/edit/preview.tt:25
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:178 lib/AmuseWikiFarm/Controller/OPDS.pm:64 lib/AmuseWikiFarm/Schema/Result/Title.pm:1643 root/src/edit/preview.tt:25
 msgid "Authors"
 msgstr ""
 
@@ -805,11 +805,11 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:214
+#: lib/AmuseWikiFarm/Controller/User.pm:226
 msgid "Email sent!"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:257
+#: lib/AmuseWikiFarm/Controller/User.pm:269
 msgid "Email updated"
 msgstr ""
 
@@ -841,7 +841,7 @@ msgstr ""
 msgid "Error converting the upload file. Is it an HTML file?"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:217
+#: lib/AmuseWikiFarm/Controller/User.pm:229
 msgid "Error sending mail!"
 msgstr ""
 
@@ -849,7 +849,7 @@ msgstr ""
 msgid "Error while converting the HTML. Sorry."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:288 root/src/admin/jobs.tt:73
+#: lib/AmuseWikiFarm/Controller/User.pm:300 root/src/admin/jobs.tt:73
 msgid "Errors"
 msgstr ""
 
@@ -1193,6 +1193,12 @@ msgstr ""
 msgid "If by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1"
 msgstr ""
 
+#: mkits/resetpassword/body.txt:6
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -1272,6 +1278,12 @@ msgid ""
 "      dimensions, you may want to rebuild the generated files"
 msgstr ""
 
+#: mkits/resetpassword/body.txt:1
+msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+
 #: root/src/edit/newtext.tt:199
 msgid "If you have a file in .doc or .odt, you can easily convert it saving it as HTML"
 msgstr ""
@@ -1289,11 +1301,6 @@ msgid ""
 "      adding the following line to the header, where the value is the\n"
 "      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
 "      on"
-msgstr ""
-
-#. (reset_url)
-#: mkits/resetpassword/body.txt:4
-msgid "If you want to proceed, please visit the following url: %1"
 msgstr ""
 
 #: root/src/help/faq.tt:34
@@ -1625,6 +1632,11 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
+#. (8)
+#: root/src/user/reset_password_confirm.tt:18 root/src/user/reset_password_confirm.tt:28
+msgid "Minimum %1 characters"
+msgstr ""
+
 #: lib/AmuseWikiFarm/Controller/Edit.pm:611
 msgid "Missing #title header in the text!"
 msgstr ""
@@ -1810,10 +1822,6 @@ msgstr ""
 msgid "Notify to"
 msgstr ""
 
-#: root/src/user/reset_password_confirm.tt:14
-msgid "Now you can proceed to login."
-msgstr ""
-
 #: root/src/include/bulk_job.tt:9
 msgid "Number of jobs"
 msgstr ""
@@ -1877,10 +1885,6 @@ msgstr ""
 
 #: root/src/include/markitup.tt:51
 msgid "Ordered List"
-msgstr ""
-
-#: mkits/resetpassword/body.txt:6
-msgid "Otherwise, please just ignore this mail."
 msgstr ""
 
 #: root/src/include/bbform.tt:9
@@ -1955,24 +1959,19 @@ msgstr ""
 msgid "Partial selection"
 msgstr ""
 
-#: root/src/user/login.tt:16 root/src/user/login.tt:18 root/src/user/reset_password_confirm.tt:7
+#: root/src/user/login.tt:16 root/src/user/login.tt:18
 msgid "Password"
-msgstr ""
-
-#. (host)
-#: mkits/resetpassword/manifest.json:7
-msgid "Password reset for %1"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:95
 msgid "Password too short"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:251
+#: lib/AmuseWikiFarm/Controller/User.pm:263
 msgid "Password updated"
 msgstr ""
 
-#: root/src/admin/show_user_details.tt:12 root/src/user/create.tt:20 root/src/user/edit.tt:11
+#: root/src/admin/show_user_details.tt:12 root/src/user/create.tt:20 root/src/user/edit.tt:11 root/src/user/reset_password_confirm.tt:12
 msgid "Password, minimum 8 characters."
 msgstr ""
 
@@ -2040,7 +2039,7 @@ msgstr ""
 msgid "Please describe shortly what you did"
 msgstr ""
 
-#: root/src/admin/show_user_details.tt:13 root/src/user/create.tt:21 root/src/user/edit.tt:12
+#: root/src/admin/show_user_details.tt:13 root/src/user/create.tt:21 root/src/user/edit.tt:12 root/src/user/reset_password_confirm.tt:13
 msgid "Please do not use a valuable password."
 msgstr ""
 
@@ -2278,7 +2277,7 @@ msgstr ""
 msgid "Reason for deletion"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4039 root/src/tasks/rebuild.tt:26
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4048 root/src/tasks/rebuild.tt:26
 msgid "Rebuild"
 msgstr ""
 
@@ -2344,7 +2343,7 @@ msgstr ""
 msgid "Repeat email"
 msgstr ""
 
-#: root/src/admin/show_user_details.tt:20 root/src/user/create.tt:29 root/src/user/edit.tt:19
+#: root/src/admin/show_user_details.tt:20 root/src/user/create.tt:29 root/src/user/edit.tt:19 root/src/user/reset_password_confirm.tt:23
 msgid "Repeat password"
 msgstr ""
 
@@ -2372,8 +2371,17 @@ msgstr ""
 msgid "Reset password"
 msgstr ""
 
+#. (username)
+#: root/src/user/reset_password_confirm.tt:3
+msgid "Reset password for user %1"
+msgstr ""
+
 #: root/src/settings/edit_format.tt:41
 msgid "Reset to site defaults"
+msgstr ""
+
+#: mkits/resetpassword/manifest.json:7
+msgid "Reset your password"
 msgstr ""
 
 #: root/src/admin/edit.tt:36
@@ -2462,7 +2470,7 @@ msgstr ""
 msgid "Saved \"%1\" configuration"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:83 lib/AmuseWikiFarm/Controller/Search.pm:94 root/src/admin/edit.tt:619 root/src/layout.tt:195 root/src/layout.tt:196 root/src/layout.tt:200 root/src/search/index.tt:24 root/src/search/index.tt:9 root/src/static-indexes.tt:172
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:83 lib/AmuseWikiFarm/Controller/Search.pm:101 root/src/admin/edit.tt:619 root/src/layout.tt:195 root/src/layout.tt:196 root/src/layout.tt:200 root/src/search/index.tt:24 root/src/search/index.tt:9 root/src/static-indexes.tt:172
 msgid "Search"
 msgstr ""
 
@@ -2634,7 +2642,7 @@ msgstr ""
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:168
+#: lib/AmuseWikiFarm/Controller/User.pm:180
 msgid "Some fields are missing, all are required"
 msgstr ""
 
@@ -2644,11 +2652,6 @@ msgstr ""
 
 #: root/src/edit/revs.tt:9
 msgid "Some ongoing revisions were found"
-msgstr ""
-
-#. (username, host)
-#: mkits/resetpassword/body.txt:2
-msgid "Someone, probably you, has requested a password reset for %1 at %2."
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:89 lib/AmuseWikiFarm/Controller/Publish.pm:141
@@ -2749,7 +2752,7 @@ msgstr ""
 msgid "Such an user already exists!"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:188
+#: lib/AmuseWikiFarm/Controller/User.pm:200
 msgid "Such username already exists"
 msgstr ""
 
@@ -2868,11 +2871,6 @@ msgid ""
 "          all the HTTP requests to HTTPS"
 msgstr ""
 
-#. (valid)
-#: mkits/resetpassword/body.txt:8
-msgid "The link is valid until %1 (one hour from now)"
-msgstr ""
-
 #: root/src/admin/edit.tt:139
 msgid "The logo has the site name on itself"
 msgstr ""
@@ -2889,6 +2887,10 @@ msgstr ""
 
 #: root/src/user/create.tt:39
 msgid "The password will be mailed at this address"
+msgstr ""
+
+#: mkits/resetpassword/body.txt:9
+msgid "The reset link will expire in a hour."
 msgstr ""
 
 #: mkits/commit/body.txt:6
@@ -3117,11 +3119,11 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1654
+#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1643
 msgid "Topic"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:136 lib/AmuseWikiFarm/Controller/OPDS.pm:59 lib/AmuseWikiFarm/Schema/Result/Title.pm:1654 root/src/edit/edit.tt:687 root/src/edit/newtext.tt:99 root/src/edit/preview.tt:39 root/src/layout.tt:251
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:136 lib/AmuseWikiFarm/Controller/OPDS.pm:59 lib/AmuseWikiFarm/Schema/Result/Title.pm:1643 root/src/edit/edit.tt:687 root/src/edit/newtext.tt:99 root/src/edit/preview.tt:39 root/src/layout.tt:251
 msgid "Topics"
 msgstr ""
 
@@ -3212,7 +3214,7 @@ msgstr ""
 msgid "Unused attachment"
 msgstr ""
 
-#: root/src/admin/edit.tt:1247 root/src/admin/jobs.tt:107 root/src/admin/show_user_details.tt:70 root/src/attachments/edit.tt:33 root/src/bookbuilder/index.tt:241 root/src/bookbuilder/index.tt:263 root/src/category-details-edit.tt:41 root/src/include/edit_node.tt:109 root/src/settings/categories.tt:50 root/src/settings/edit_format.tt:38 root/src/user/edit.tt:39 root/src/user/edit_options.tt:19
+#: root/src/admin/edit.tt:1247 root/src/admin/jobs.tt:107 root/src/admin/show_user_details.tt:70 root/src/attachments/edit.tt:33 root/src/bookbuilder/index.tt:241 root/src/bookbuilder/index.tt:263 root/src/category-details-edit.tt:41 root/src/include/edit_node.tt:109 root/src/settings/categories.tt:50 root/src/settings/edit_format.tt:38 root/src/user/edit.tt:39 root/src/user/edit_options.tt:19 root/src/user/reset_password_confirm.tt:32
 msgid "Update"
 msgstr ""
 
@@ -3286,7 +3288,7 @@ msgid "Useful for footnotes or in the headers of the document, where you cannot 
 msgstr ""
 
 #. ($user->username)
-#: lib/AmuseWikiFarm/Controller/User.pm:199
+#: lib/AmuseWikiFarm/Controller/User.pm:211
 msgid "User %1 created!"
 msgstr ""
 
@@ -3296,7 +3298,7 @@ msgid "User %1 deleted"
 msgstr ""
 
 #. ($user->username)
-#: lib/AmuseWikiFarm/Controller/Admin.pm:289 lib/AmuseWikiFarm/Controller/User.pm:283
+#: lib/AmuseWikiFarm/Controller/Admin.pm:289 lib/AmuseWikiFarm/Controller/User.pm:295
 msgid "User %1 updated"
 msgstr ""
 
@@ -3304,7 +3306,7 @@ msgstr ""
 msgid "User created"
 msgstr ""
 
-#: root/src/admin/show_users.tt:7 root/src/admin/show_users.tt:71 root/src/user/login.tt:11 root/src/user/login.tt:13 root/src/user/reset_password_confirm.tt:3
+#: root/src/admin/show_users.tt:7 root/src/admin/show_users.tt:71 root/src/user/login.tt:11 root/src/user/login.tt:13
 msgid "Username"
 msgstr ""
 
@@ -3471,7 +3473,7 @@ msgstr ""
 msgid "You can't create a new revision because the text has not been published yet"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:130
+#: lib/AmuseWikiFarm/Controller/User.pm:142
 msgid "You have logged out"
 msgstr ""
 
@@ -3531,6 +3533,10 @@ msgstr ""
 #. (password)
 #: mkits/newuser/body.txt:6
 msgid "Your password is %1."
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/User.pm:125
+msgid "Your password was reset, now you can login with it"
 msgstr ""
 
 #: root/src/include/markitup.tt:30

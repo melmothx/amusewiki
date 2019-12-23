@@ -1011,6 +1011,11 @@ msgstr ""
 "Если другой текст с этими же автором и названием существует, введите нужный "
 "URI, включающий автора, название и номер, например moi-avtor-moe-nazvanie-1"
 
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -1100,6 +1105,11 @@ msgstr ""
 "размеры бумаги, вы можете захотеть пересобрать производные файлы"
 
 msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
@@ -1123,10 +1133,6 @@ msgstr ""
 "страницу PDF. Вы можете установить ширину, добавив следующую линию в "
 "заголовок, где значение это доля ширина, занимаемой текстом. 1 это полная "
 "ширина, 0.5 половина и т.д."
-
-#. (reset_url)
-msgid "If you want to proceed, please visit the following url: %1"
-msgstr "Если вы хотите продолжить, пожалуйста, пройдите по ссылке: %1"
 
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
@@ -1412,6 +1418,10 @@ msgstr "Максимальный размер загрузок в Мб."
 msgid "Message"
 msgstr "Сообщение"
 
+#. (8)
+msgid "Minimum %1 characters"
+msgstr ""
+
 msgid "Missing #title header in the text!"
 msgstr "Отсутствующий заголовок #title в тексте!"
 
@@ -1558,9 +1568,6 @@ msgstr "Оповещающие сообщения (оставьте поле п�
 msgid "Notify to"
 msgstr "Оповестить"
 
-msgid "Now you can proceed to login."
-msgstr "Теперь вы можете войти."
-
 msgid "Number of jobs"
 msgstr "Число заданий"
 
@@ -1617,9 +1624,6 @@ msgstr "Или поместите текст в тег"
 
 msgid "Ordered List"
 msgstr "Список с нумерацией"
-
-msgid "Otherwise, please just ignore this mail."
-msgstr "В противном случае просто проигнорируйте это письмо."
 
 msgid "PDF"
 msgstr "PDF"
@@ -1688,10 +1692,6 @@ msgstr "Частичное выделение"
 
 msgid "Password"
 msgstr "Пароль"
-
-#. (host)
-msgid "Password reset for %1"
-msgstr "Сброс пароля для %1"
 
 msgid "Password too short"
 msgstr "Пароль слишком короткий"
@@ -2050,8 +2050,15 @@ msgstr "Сбросить фильтры"
 msgid "Reset password"
 msgstr "Сбросить пароль"
 
+#. (username)
+msgid "Reset password for user %1"
+msgstr ""
+
 msgid "Reset to site defaults"
 msgstr "Восстановить настройки сайта по умолчанию"
+
+msgid "Reset your password"
+msgstr ""
 
 msgid "Restricted configuration variables"
 msgstr "Ограничить настройки переменных"
@@ -2256,10 +2263,6 @@ msgstr "Некоторые поля очень длинные"
 msgid "Some ongoing revisions were found"
 msgstr "Некоторые незаконченные правки были найдены"
 
-#. (username, host)
-msgid "Someone, probably you, has requested a password reset for %1 at %2."
-msgstr "Кто-то, возможно вы, запросил сброс пароля для %1 на %2."
-
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr "Извините, слишком много задач в очереди, пожалуйста, попробуйте позже!"
 
@@ -2438,10 +2441,6 @@ msgstr ""
 "Сгенерированная конфигурация вебсервера будет перенаправлять все HTTP-"
 "запросы на HTTPS"
 
-#. (valid)
-msgid "The link is valid until %1 (one hour from now)"
-msgstr "Ссылка действительна до %1 (один час от текущего момента)"
-
 msgid "The logo has the site name on itself"
 msgstr "В логотипе имеется название сайта"
 
@@ -2457,6 +2456,9 @@ msgstr ""
 
 msgid "The password will be mailed at this address"
 msgstr "Пароль будет отправлен на этот адрес"
+
+msgid "The reset link will expire in a hour."
+msgstr ""
 
 msgid "The revision has the following messages"
 msgstr "Для правки есть следующие сообщения"
@@ -3045,6 +3047,9 @@ msgstr "Ваша часть здесь..."
 msgid "Your password is %1."
 msgstr "Ваш пароль %1."
 
+msgid "Your password was reset, now you can login with it"
+msgstr ""
+
 msgid "Your section here..."
 msgstr "Здесь ваш раздел..."
 
@@ -3264,6 +3269,24 @@ msgstr ""
 "«Устаревшее редактирование» означает, что правка не была доделана, но всё "
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
+
+#~ msgid "If you want to proceed, please visit the following url: %1"
+#~ msgstr "Если вы хотите продолжить, пожалуйста, пройдите по ссылке: %1"
+
+#~ msgid "Now you can proceed to login."
+#~ msgstr "Теперь вы можете войти."
+
+#~ msgid "Otherwise, please just ignore this mail."
+#~ msgstr "В противном случае просто проигнорируйте это письмо."
+
+#~ msgid "Password reset for %1"
+#~ msgstr "Сброс пароля для %1"
+
+#~ msgid "Someone, probably you, has requested a password reset for %1 at %2."
+#~ msgstr "Кто-то, возможно вы, запросил сброс пароля для %1 на %2."
+
+#~ msgid "The link is valid until %1 (one hour from now)"
+#~ msgstr "Ссылка действительна до %1 (один час от текущего момента)"
 
 #~ msgid "Fixed category list"
 #~ msgstr "Исправленный список категорий"

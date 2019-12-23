@@ -1006,6 +1006,11 @@ msgstr ""
 "titel, så vælg den ønskede URI i feltet nedenfor ved at indsætte forfatter, "
 "titel og et nummer, f.eks. min-forfatter-min-titel-1"
 
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -1093,6 +1098,11 @@ msgstr ""
 "filer"
 
 msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
@@ -1119,10 +1129,6 @@ msgstr ""
 "      tekstbreddens ratio. 1 er hele tekstens bredde, 0,5 er halve bredden, "
 "og så\n"
 "      videre"
-
-#. (reset_url)
-msgid "If you want to proceed, please visit the following url: %1"
-msgstr "Hvis du ønsker at fortsætte, så besøg venligst denne URL: %1"
 
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
@@ -1397,6 +1403,10 @@ msgstr ""
 msgid "Message"
 msgstr "Besked"
 
+#. (8)
+msgid "Minimum %1 characters"
+msgstr ""
+
 msgid "Missing #title header in the text!"
 msgstr "Manglende #title header i teksten!"
 
@@ -1541,9 +1551,6 @@ msgstr "Meddelelses mail: et tomt felt deaktiverer dem"
 msgid "Notify to"
 msgstr "Meddel til"
 
-msgid "Now you can proceed to login."
-msgstr "Nu kan du fortsætte til indlogning."
-
 msgid "Number of jobs"
 msgstr "Antal job"
 
@@ -1601,9 +1608,6 @@ msgstr "Eller omslut det i"
 
 msgid "Ordered List"
 msgstr "Numerisk Liste"
-
-msgid "Otherwise, please just ignore this mail."
-msgstr "Hvis ikke, så ignorer venligst denne e-mail."
 
 msgid "PDF"
 msgstr "PDF"
@@ -1675,10 +1679,6 @@ msgstr "Delvist udvalg"
 
 msgid "Password"
 msgstr "Kodeord"
-
-#. (host)
-msgid "Password reset for %1"
-msgstr "Kodeord nulstillet for %1"
 
 msgid "Password too short"
 msgstr "Kodeordet er for kort"
@@ -2040,7 +2040,14 @@ msgstr ""
 msgid "Reset password"
 msgstr "Nulstil kodeord"
 
+#. (username)
+msgid "Reset password for user %1"
+msgstr ""
+
 msgid "Reset to site defaults"
+msgstr ""
+
+msgid "Reset your password"
 msgstr ""
 
 msgid "Restricted configuration variables"
@@ -2247,11 +2254,6 @@ msgstr "Nogle felter er for lange"
 msgid "Some ongoing revisions were found"
 msgstr "Nogle igangværende revisioner blev fundet"
 
-#. (username, host)
-msgid "Someone, probably you, has requested a password reset for %1 at %2."
-msgstr ""
-"Nogen, sandsynligvis dig, har anmodet om at nulstille kodeordet for %1 på %2."
-
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr "Undskyld, for mange ventende opgaver, prøv venligst senere!"
 
@@ -2420,10 +2422,6 @@ msgid ""
 "          all the HTTP requests to HTTPS"
 msgstr ""
 
-#. (valid)
-msgid "The link is valid until %1 (one hour from now)"
-msgstr "Linket er gyldigt indtil %1 (en time fra nu)"
-
 msgid "The logo has the site name on itself"
 msgstr "Logoet har sidenavnet på sig selv"
 
@@ -2437,6 +2435,9 @@ msgstr ""
 
 msgid "The password will be mailed at this address"
 msgstr "Kodeordet vil blive sendt til denne mailadresse"
+
+msgid "The reset link will expire in a hour."
+msgstr ""
 
 msgid "The revision has the following messages"
 msgstr "Revisionen har følgende beskeder"
@@ -3005,6 +3006,9 @@ msgstr "Din del her..."
 msgid "Your password is %1."
 msgstr "Dit kodeord er %1"
 
+msgid "Your password was reset, now you can login with it"
+msgstr ""
+
 msgid "Your section here..."
 msgstr "Din sektion her..."
 
@@ -3221,6 +3225,26 @@ msgstr ""
 "    under redigeringen, men den er stadig der, hvis nogen skulle få lyst "
 "til\n"
 "    at samle den op under redigeringen af en tekst."
+
+#~ msgid "If you want to proceed, please visit the following url: %1"
+#~ msgstr "Hvis du ønsker at fortsætte, så besøg venligst denne URL: %1"
+
+#~ msgid "Now you can proceed to login."
+#~ msgstr "Nu kan du fortsætte til indlogning."
+
+#~ msgid "Otherwise, please just ignore this mail."
+#~ msgstr "Hvis ikke, så ignorer venligst denne e-mail."
+
+#~ msgid "Password reset for %1"
+#~ msgstr "Kodeord nulstillet for %1"
+
+#~ msgid "Someone, probably you, has requested a password reset for %1 at %2."
+#~ msgstr ""
+#~ "Nogen, sandsynligvis dig, har anmodet om at nulstille kodeordet for %1 på "
+#~ "%2."
+
+#~ msgid "The link is valid until %1 (one hour from now)"
+#~ msgstr "Linket er gyldigt indtil %1 (en time fra nu)"
 
 #~ msgid "Fixed category list"
 #~ msgstr "Ordnede kategorilisten"
