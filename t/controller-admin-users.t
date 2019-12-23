@@ -72,7 +72,8 @@ my $userobj = $schema->resultset('User')->find({ username => $new_username });
 ok ($userobj, "$new_username created and found: " . $userobj->id);
 is $userobj->created_by, 'root', "user created by root";
 
-my $default_pass = $userobj->password->hash_hex;
+my $default_pass = $userobj->get_column('password');
+diag $default_pass;
 ok(!$userobj->active, "User is inactive");
 
 $mech->submit_form(with_fields => {
@@ -86,7 +87,7 @@ $mech->submit_form(with_fields => {
                    button => 'update');
 $userobj->discard_changes;
 is $userobj->email, 'info@amusewiki.org';
-isnt $userobj->password->hash_hex, $default_pass, "Password updated";
+isnt $userobj->get_column('password'), $default_pass, "Password updated";
 ok ($userobj->active, "User now is active");
 
 is_deeply $userobj->role_list, [

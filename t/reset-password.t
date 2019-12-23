@@ -8,7 +8,7 @@ BEGIN {
     $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';    
 };
 
-use Test::More tests => 124;
+use Test::More tests => 125;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -49,6 +49,7 @@ $mech->submit_form(with_fields => {
                    button => 'create');
 
 my $user = $schema->resultset('User')->find({ username => 'sloppy' });
+ok !$user->reset_token;
 ok ($user, "Found the newly created user");
 $user->roles->find({ role => 'librarian' });
 

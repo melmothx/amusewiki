@@ -9,7 +9,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 57;
+use Test::More tests => 56;
 use Data::Dumper::Concise;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -52,8 +52,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 foreach my $lh ('default', 'site', 'user') {
 
     # reset for the loop
-    $user->discard_changes->update({ reset_token => undef, reset_until => undef });
-    ok !$user->reset_token, "No reset token present";
+    $user->discard_changes->update({ reset_until => 0 });
     $site->users->search({ username => 'marchetto' })->delete;
 
 
@@ -112,7 +111,7 @@ my @expected = (
                 qr{Svrha ove poruke je da prijavi novi tekst, iako je procedura},
                 qr{Izmjena sadr=C5=BEi slijede=C4=87e poruke},
                 # then recipient known, with preference set
-                qr{Qualcuno, probabilmente tu, ha richiesto la reimpostazione della},
+                qr{Se hai dimenticato la password},
                 # however, the recipient is new, so we use the site locale
                 qr{Tvoj korisnik je stvoren na},
                 qr{Un nuovo testo =C3=A8 stato creato},

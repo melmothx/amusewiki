@@ -4,9 +4,9 @@ this link (click on it or copy and paste it in your browser):') %]
 [% reset_url %]
 
 [% lh.loc("If it was not your intention, please just ignore this mail and
-your password will stay the same.") %]
+your password will not be changed.") %]
 
-[% lh.loc('The link is valid until [_1] (one hour from now)', valid) %]
+[% lh.loc('The reset link will expire in a hour.') %]
 
 -- 
 [% sitename %]
