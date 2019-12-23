@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# replaced by systemd unit files
+
+exit 0
