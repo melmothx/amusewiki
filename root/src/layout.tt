@@ -259,8 +259,10 @@
                 </li>
                 [%     END  %]
                 [% END %]
-                <li role="presentation" class="divider"></li>
-                <li[% IF nav == 'latest' %] class="active"[% END %]>
+                <li role="presentation" class="divider"
+                    id="amw-nav-bar-latest-separator"></li>
+                <li[% IF nav == 'latest' %] class="active"[% END %]
+                   id="amw-nav-bar-latest">
                   <a href="[% c.uri_for_action('/latest/index') %]"
 		             title="[% loc('Latest entries') %]">
                     [% loc('Latest entries') %]
