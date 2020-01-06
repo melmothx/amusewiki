@@ -497,6 +497,12 @@ sub order_by {
     return $self->search(undef, { order_by => $order_by });
 }
 
+sub ordered_by_uri {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search(undef, { order_by => "$me.uri" });
+}
+
 sub page_number {
     my ($self, $page) = @_;
     return $self->search(undef, { page => $self->_check_integer($page) || 1 });

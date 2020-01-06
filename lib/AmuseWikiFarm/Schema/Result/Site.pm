@@ -2073,6 +2073,11 @@ sub index_file {
     # this is needed because we insert it from title, and DBIC can't
     # infer the site_id from there (even if it should, but hey).
     my @parsed_cats;
+    if ($insertion{parent}) {
+        if (delete $details->{parsed_categories}) {
+            $logger->("Ignored categories, this is a child text\n");
+        }
+    }
     if (my $cats_from_title = delete $details->{parsed_categories}) {
         my %cat_hash;
         foreach my $cat (@$cats_from_title) {

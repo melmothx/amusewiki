@@ -79,6 +79,23 @@
     [% text.html_body %]
   </div>
 
+  [% IF text_display_children %]
+    <div style="margin-top: 40px" class="list-group">
+    [% FOREACH child IN text_display_children %]
+      <a href="[% child.full_uri %]" class="list-group-item[% IF child.active %] active[% END %]">
+        [% IF child.author %]
+          <small>[% child.author %]</small>
+          <br>
+        [% END %]
+        <strong>[% child.title %]</strong>
+        [% IF child.subtitle %]
+          <small>[% child.subtitle %]</small>
+        [% END %]
+      </a>
+    [% END %]
+    </div>
+  [% END %]
+
   [%- IF attached_pdfs -%]
   <div id="amw-attached-pdfs" style="margin: 80px 0">
     <div class="row" id="attached-pdf-separator-stars">

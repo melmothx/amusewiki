@@ -81,6 +81,13 @@
       [% text.notes %]
     </div>
     [% END %]
+
+    [% IF text_display_parent %]
+      <div id="text_display_parent">
+        <strong>[% loc('Part of') %]:</strong>
+        <a href="[% text_display_parent.full_uri %]">[% text_display_parent.title %]</a>
+      </div>
+    [% END %]
   </div>
 
   <!-- end of the preamble -->

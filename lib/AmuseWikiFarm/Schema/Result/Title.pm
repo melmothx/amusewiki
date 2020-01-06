@@ -110,6 +110,12 @@ __PACKAGE__->table("title");
   is_nullable: 0
   size: 16
 
+=head2 parent
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 f_path
 
   data_type: 'text'
@@ -269,6 +275,8 @@ __PACKAGE__->add_columns(
     is_nullable => 0,
     size => 16,
   },
+  "parent",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "f_path",
   { data_type => "text", is_nullable => 0 },
   "f_name",
@@ -536,8 +544,8 @@ Composing rels: L</node_titles> -> node
 __PACKAGE__->many_to_many("nodes", "node_titles", "node");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-11-14 11:10:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:W1ThOPPyZvKidZ6VJKSKvg
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2020-01-06 09:52:22
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UIhojnruxBlEVwKux/yGvg
 
 =head2 translations
 
@@ -575,6 +583,26 @@ __PACKAGE__->has_many(sibling_texts => "AmuseWikiFarm::Schema::Result::Title",
                                   "$args->{foreign_alias}.f_class" => {-ident => "$args->{self_alias}.f_class" },
                                   "$args->{foreign_alias}.status"  => {-ident => "$args->{self_alias}.status"  },
                                  };
+                      },
+                      { cascade_copy => 0, cascade_delete => 0 });
+
+__PACKAGE__->belongs_to(parent_text => "AmuseWikiFarm::Schema::Result::Title",
+                        {
+                         'foreign.uri' => 'self.parent',
+                         'foreign.site_id' => 'self.site_id',
+                         'foreign.f_class' => 'self.f_class',
+                        },
+                        {
+                         join_type     => "LEFT",
+                         is_foreign_key_constraint => 0,
+                        });
+
+
+__PACKAGE__->has_many(children_texts => "AmuseWikiFarm::Schema::Result::Title",
+                      {
+                       'foreign.parent' => 'self.uri',
+                       'foreign.site_id' => 'self.site_id',
+                       'foreign.f_class' => 'self.f_class',
                       },
                       { cascade_copy => 0, cascade_delete => 0 });
 
@@ -1629,8 +1657,20 @@ sub wants_custom_format {
 sub display_categories {
     my $self = shift;
     my @out;
+
+    my $text = $self;
+    my $iterations = 0;
+  PARENT:
+    while (my $p = $text->parent_text) {
+        $text = $p;
+        $iterations++;
+        if ($iterations > 10) {
+            log_error { "Possible parentage with infinite recursion on " . $self->full_uri };
+            last PARENT;
+        }
+    }
     foreach my $ctype ($self->site->site_category_types->active->all) {
-        my $rs = $self->categories->by_type($ctype->category_type)->with_active_flag_on;
+        my $rs = $text->categories->by_type($ctype->category_type)->with_active_flag_on;
         my @list;
         while (my $cat = $rs->next) {
             push @list, {

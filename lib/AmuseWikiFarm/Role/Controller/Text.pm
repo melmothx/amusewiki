@@ -129,7 +129,46 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
 
 sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    $c->stash(text_display_categories => $c->stash->{text}->display_categories);
+    my $text = $c->stash->{text};
+    my $site = $c->stash->{site};
+    my $current_uri = $text->full_uri;
+    $c->stash(
+              text_display_categories => $text->display_categories
+             );
+    my $rs = $text->children_texts;
+    if (my $parent = $text->parent_text) {
+        if ($parent->is_published or
+            ($parent->is_deferred and ($c->user_exists or $site->show_preview_when_deferred))) {
+            # use the parent to fetch the children
+            $rs = $parent->children_texts;
+            $c->stash(text_display_parent => {
+                                              full_uri => $parent->full_uri,
+                                              title => $parent->title,
+                                             });
+        }
+    }
+    if ($c->user_exists or $site->show_preview_when_deferred) {
+        $rs = $rs->status_is_published_or_deferred;
+    }
+    else {
+        $rs = $rs->status_is_published;
+    }
+    if (my @children = $rs->ordered_by_uri->all) {
+        my @out;
+        foreach my $child (@children) {
+            my %info = (
+                        author   => $child->author,
+                        full_uri => $child->full_uri,
+                        title    => $child->title,
+                        subtitle => $child->subtitle,
+                       );
+            if ($info{full_uri} eq $current_uri) {
+                $info{active} = 1;
+            }
+            push @out, \%info;
+        }
+        $c->stash(text_display_children => \@out);
+    }
 }
 
 sub text :Chained('populate_preamble') :PathPart('') :Args(0) {
