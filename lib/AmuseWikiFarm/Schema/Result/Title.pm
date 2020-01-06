@@ -586,6 +586,26 @@ __PACKAGE__->has_many(sibling_texts => "AmuseWikiFarm::Schema::Result::Title",
                       },
                       { cascade_copy => 0, cascade_delete => 0 });
 
+__PACKAGE__->belongs_to(parent_text => "AmuseWikiFarm::Schema::Result::Title",
+                        {
+                         'foreign.uri' => 'self.parent',
+                         'foreign.site_id' => 'self.site_id',
+                         'foreign.f_class' => 'self.f_class',
+                        },
+                        {
+                         join_type     => "LEFT",
+                         is_foreign_key_constraint => 0,
+                        });
+
+
+__PACKAGE__->has_many(children_texts => "AmuseWikiFarm::Schema::Result::Title",
+                      {
+                       'foreign.parent' => 'self.uri',
+                       'foreign.site_id' => 'self.site_id',
+                       'foreign.f_class' => 'self.f_class',
+                      },
+                      { cascade_copy => 0, cascade_delete => 0 });
+
 use File::Spec;
 use Text::Amuse::Compile::Utils qw/read_file/;
 use DateTime;

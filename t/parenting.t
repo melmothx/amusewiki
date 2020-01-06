@@ -7,7 +7,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 };
 
-use Test::More tests => 14;
+use Test::More tests => 36;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -62,8 +62,13 @@ $site->update_db_from_tree(sub { diag @_ });
 foreach my $text ($site->titles->search({ uri => { -like => 'c-child-%' } })) {
     ok $text->parent;
     diag $text->parent;
+    ok $text->parent_text;
+    is $text->children_texts->count, 0;
+    is $text->parent_text->children_texts->count, 3;
     is $text->categories->count, 0, "No categories set in the child text";
 }
 foreach my $text ($site->titles->search({ uri => { -like => 'parent-t-%' } })) {
     ok $text->categories->count, "Found categories set in the parent text";
+    ok !$text->parent_text;
+    is $text->children_texts->count, 3;
 }
