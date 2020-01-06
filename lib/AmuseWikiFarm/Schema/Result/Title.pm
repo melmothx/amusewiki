@@ -1657,8 +1657,20 @@ sub wants_custom_format {
 sub display_categories {
     my $self = shift;
     my @out;
+
+    my $text = $self;
+    my $iterations = 0;
+  PARENT:
+    while (my $p = $text->parent_text) {
+        $text = $p;
+        $iterations++;
+        if ($iterations > 10) {
+            log_error { "Possible parentage with infinite recursion on " . $self->full_uri };
+            last PARENT;
+        }
+    }
     foreach my $ctype ($self->site->site_category_types->active->all) {
-        my $rs = $self->categories->by_type($ctype->category_type)->with_active_flag_on;
+        my $rs = $text->categories->by_type($ctype->category_type)->with_active_flag_on;
         my @list;
         while (my $cat = $rs->next) {
             push @list, {

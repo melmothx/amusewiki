@@ -7,7 +7,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 };
 
-use Test::More tests => 36;
+use Test::More tests => 46;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -26,7 +26,7 @@ foreach my $suffix (qw/a b/) {
     my $parent_uri = "parent-t-$suffix";
     my $file = path($site->repo_root, qw/p pt/, "$parent_uri.muse");
     $file->parent->mkpath;
-    my $muse = <<'MUSE';
+    my $muse = <<"MUSE";
 #author Author
 #title My parent text X $suffix X
 #topics Topic $suffix
@@ -66,9 +66,38 @@ foreach my $text ($site->titles->search({ uri => { -like => 'c-child-%' } })) {
     is $text->children_texts->count, 0;
     is $text->parent_text->children_texts->count, 3;
     is $text->categories->count, 0, "No categories set in the child text";
+    my $expected = $text->parent_text->display_categories;
+    diag Dumper($expected);
+    is_deeply $text->display_categories, $expected;
 }
 foreach my $text ($site->titles->search({ uri => { -like => 'parent-t-%' } })) {
     ok $text->categories->count, "Found categories set in the parent text";
     ok !$text->parent_text;
     is $text->children_texts->count, 3;
+}
+
+{
+    my $file = path($site->repo_root, qw/s sf/, "self.muse");
+    $file->parent->mkpath;
+    my $muse = <<"MUSE";
+#author Author
+#title Self-referencing
+#topics Topic self
+#authors Author
+#lang en
+#parent self
+
+This is a recursive one
+
+MUSE
+    $file->spew_utf8($muse);
+    $site->update_db_from_tree(sub { diag @_ });
+}
+
+foreach my $text ($site->titles->search({ uri => 'self' })) {
+    ok $text->parent;
+    ok $text->parent_text;
+    is $text->children_texts->count, 1;
+    diag Dumper($text->display_categories);
+    is_deeply $text->display_categories, [];
 }
