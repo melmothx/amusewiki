@@ -129,7 +129,27 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
 
 sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    $c->stash(text_display_categories => $c->stash->{text}->display_categories);
+    my $text = $c->stash->{text};
+    my $site = $c->stash->{site};
+    $c->stash(
+              text_display_categories => $text->display_categories
+             );
+    my $rs = $text->children_texts;
+    if ($c->user_exists or $site->show_preview_when_deferred) {
+        $rs = $rs->status_is_published_or_deferred;
+    }
+    else {
+        $rs = $rs->status_is_published;
+    }
+    if (my @children = $rs->ordered_by_uri->all) {
+        $c->stash(text_display_children => \@children);
+    }
+    if (my $parent = $text->parent_text) {
+        if ($parent->is_published or
+            ($parent->is_deferred and ($c->user_exists or $site->show_preview_when_deferred))) {
+            $c->stash(text_display_parent => $parent);
+        }
+    }
 }
 
 sub text :Chained('populate_preamble') :PathPart('') :Args(0) {
