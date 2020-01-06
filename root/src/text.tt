@@ -82,14 +82,13 @@
   [% IF text_display_children %]
     <div style="margin-top: 40px" class="list-group">
     [% FOREACH child IN text_display_children %]
-      <a href="[% child.full_uri %]" class="list-group-item">
+      <a href="[% child.full_uri %]" class="list-group-item[% IF child.active %] active[% END %]">
         [% IF child.author %]
           <small>[% child.author %]</small>
           <br>
         [% END %]
         <strong>[% child.title %]</strong>
         [% IF child.subtitle %]
-          <br>
           <small>[% child.subtitle %]</small>
         [% END %]
       </a>
