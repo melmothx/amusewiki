@@ -110,6 +110,12 @@ __PACKAGE__->table("title");
   is_nullable: 0
   size: 16
 
+=head2 parent
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 f_path
 
   data_type: 'text'
@@ -269,6 +275,8 @@ __PACKAGE__->add_columns(
     is_nullable => 0,
     size => 16,
   },
+  "parent",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "f_path",
   { data_type => "text", is_nullable => 0 },
   "f_name",
@@ -536,8 +544,8 @@ Composing rels: L</node_titles> -> node
 __PACKAGE__->many_to_many("nodes", "node_titles", "node");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-11-14 11:10:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:W1ThOPPyZvKidZ6VJKSKvg
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2020-01-06 09:52:22
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UIhojnruxBlEVwKux/yGvg
 
 =head2 translations
 

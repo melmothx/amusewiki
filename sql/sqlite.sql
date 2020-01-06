@@ -340,6 +340,10 @@ CREATE TABLE title (
         pubdate     DATETIME NOT NULL,
         status      VARCHAR(16) NOT NULL DEFAULT 'unpublished',
 
+        -- parent/child relationship. This is not an hard rel, it's
+        -- just a string
+        parent      VARCHAR(255),
+
         -- from the scanner
         f_path      TEXT NOT NULL,
         f_name      VARCHAR(255) NOT NULL,
