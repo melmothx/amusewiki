@@ -1707,6 +1707,9 @@ msgstr "Parça"
 msgid "Part and chapter. If one side document: part."
 msgstr "Parça ve kısım. Tek taraflı doküman ise: parça."
 
+msgid "Part of"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Parça, sadece büyük kitaplar için"
 

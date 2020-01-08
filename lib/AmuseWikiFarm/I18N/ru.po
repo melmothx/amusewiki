@@ -1684,6 +1684,9 @@ msgstr "Часть"
 msgid "Part and chapter. If one side document: part."
 msgstr "Часть и глава. Если документ односторонний: часть."
 
+msgid "Part of"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Часть (только для больших текстов)"
 

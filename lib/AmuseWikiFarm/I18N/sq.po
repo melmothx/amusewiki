@@ -1674,6 +1674,9 @@ msgstr "Pjesa"
 msgid "Part and chapter. If one side document: part."
 msgstr ""
 
+msgid "Part of"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Pjesa, vetëm për librat më të më mëdhenjë"
 

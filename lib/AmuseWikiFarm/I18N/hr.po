@@ -1680,6 +1680,9 @@ msgstr "Dio"
 msgid "Part and chapter. If one side document: part."
 msgstr "Dio i poglavlje. Za jednostrani prijelom: dio."
 
+msgid "Part of"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Dio, samo za velike knjige"
 

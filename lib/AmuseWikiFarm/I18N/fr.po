@@ -1699,6 +1699,9 @@ msgstr "Partie"
 msgid "Part and chapter. If one side document: part."
 msgstr ""
 
+msgid "Part of"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Partie, uniquement pour des livres plus conséquents"
 

@@ -1671,6 +1671,9 @@ msgstr "Del"
 msgid "Part and chapter. If one side document: part."
 msgstr ""
 
+msgid "Part of"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Del, kun for større bøger"
 

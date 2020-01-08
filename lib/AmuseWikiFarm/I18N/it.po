@@ -497,7 +497,9 @@ msgid "Create"
 msgstr "Crea"
 
 msgid "Create a new category type. Please use only lowercase ASCII letters"
-msgstr "Crea un nuovo tipo di categoria. Per cortesia, usa solo lettere minuscole ASCII"
+msgstr ""
+"Crea un nuovo tipo di categoria. Per cortesia, usa solo lettere minuscole "
+"ASCII"
 
 msgid "Create a new format"
 msgstr "Crea un nuovo formato"
@@ -1038,7 +1040,9 @@ msgstr ""
 msgid ""
 "If it was not your intention, please just ignore this mail and\n"
 "your password will not be changed."
-msgstr "Se non era tua intenzione, ignora questo messaggio e la tua password resterà uguale"
+msgstr ""
+"Se non era tua intenzione, ignora questo messaggio e la tua password resterà "
+"uguale"
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
@@ -1741,6 +1745,9 @@ msgstr "Parte"
 
 msgid "Part and chapter. If one side document: part."
 msgstr "Parte e capitolo. Se il documento è a facciata singola: parte."
+
+msgid "Part of"
+msgstr ""
 
 msgid "Part, for larger books only"
 msgstr "Parte, solo per libri con un elevato numero di pagine"
@@ -3142,7 +3149,9 @@ msgid "Your password is %1."
 msgstr "La tua password è %1."
 
 msgid "Your password was reset, now you can login with it"
-msgstr "La tua password è stata cambiata, adesso puoi effettuare l'accesso con la nuova password"
+msgstr ""
+"La tua password è stata cambiata, adesso puoi effettuare l'accesso con la "
+"nuova password"
 
 msgid "Your section here..."
 msgstr "Sezione..."
