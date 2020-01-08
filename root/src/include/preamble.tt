@@ -38,6 +38,14 @@
       </div>
     [% END %]
 
+    [% IF text_display_parent %]
+      <div id="text_display_parent">
+        <strong>[% loc('Part of') %]:</strong>
+        <a href="[% text_display_parent.full_uri %]">[% text_display_parent.title %]</a>
+      </div>
+    [% END %]
+
+
     [% IF text.date %]
     <div id="textdate">
       <span id="textdate-label">
@@ -80,13 +88,6 @@
       </span>
       [% text.notes %]
     </div>
-    [% END %]
-
-    [% IF text_display_parent %]
-      <div id="text_display_parent">
-        <strong>[% loc('Part of') %]:</strong>
-        <a href="[% text_display_parent.full_uri %]">[% text_display_parent.title %]</a>
-      </div>
     [% END %]
   </div>
 
