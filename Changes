@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.440 2020-01-08
+
+ - Introduce an experimental feature for parent-children relationships
+   between texts (GH#208)
+
 2.431 2019-12-23
 
  - Logging tuning
