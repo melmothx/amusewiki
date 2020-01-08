@@ -7,7 +7,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 };
 
-use Test::More tests => 58;
+use Test::More tests => 60;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -84,7 +84,11 @@ foreach my $text ($site->titles->search({ uri => { -like => 'parent-t-%' } })) {
         $mech->content_contains($uri, "Link to child $uri found");
     }
     # diag $mech->content;
+    $text->delete;
 }
+
+is $site->titles->search({ uri => { -like => 'c-child-%' } })->count, 6;
+is $site->titles->search({ uri => { -like => 'parent-t-%' } })->count, 0;
 
 {
     my $file = path($site->repo_root, qw/s sf/, "self.muse");
@@ -111,3 +115,4 @@ foreach my $text ($site->titles->search({ uri => 'self' })) {
     diag Dumper($text->display_categories);
     is_deeply $text->display_categories, [];
 }
+
