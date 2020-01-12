@@ -65,7 +65,12 @@ sub _stash_pager {
         }
         push @sortings, $s;
     }
-    foreach my $i (10, 20, 50, 100, 200, 500) {
+    my @sizes = (10, 20, 50, 100, 200, 500);
+    unless (grep  { $_ == $active_rows } @sizes) {
+        push @sizes, $active_rows;
+        @sizes = sort { $a <=> $b } @sizes;
+    }
+    foreach my $i (@sizes) {
         push @rows_per_page, {
                               rows => $i,
                               active => ($i == $active_rows ? 1 : 0),

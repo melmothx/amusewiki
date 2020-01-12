@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 61;
+use Test::More tests => 63;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -66,6 +66,7 @@ is count_items($mech), $pages{pagination_size_monthly};
 foreach my $cat ($site->categories) {
     $mech->get_ok($cat->full_uri);
     is count_items($mech), $pages{pagination_size_category};
+    $mech->content_contains(qq{<option value="7" selected="selected">});
 }
 
 $mech->get_ok('/user/site');
