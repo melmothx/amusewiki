@@ -54,7 +54,7 @@ requires 'DateTime::Format::Pg';
 requires 'DateTime::Format::Strptime';
 requires 'XML::FeedPP' => '0.43';
 requires 'XML::Atom' => '0.41'; # 2011...
-requires 'XML::OPDS' => '0.05';
+requires 'XML::OPDS' => '0.06';
 requires 'Git::Wrapper';
 requires 'Text::Wrapper'; # for revision messages
 requires 'Email::Valid';
