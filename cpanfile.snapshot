@@ -8166,10 +8166,10 @@ DISTRIBUTIONS
       strict 0
       vars 0
       warnings 0
-  XML-OPDS-0.05
-    pathname: M/ME/MELMOTHX/XML-OPDS-0.05.tar.gz
+  XML-OPDS-0.06
+    pathname: M/ME/MELMOTHX/XML-OPDS-0.06.tar.gz
     provides:
-      XML::OPDS 0.05
+      XML::OPDS 0.06
       XML::OPDS::Acquisition undef
       XML::OPDS::Navigation undef
       XML::OPDS::OpenSearch::Query undef
