@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.441 2020-01-17
+
+ - Fix bug with arbitrary pagination size in the pagination widget
+   (the current size was not displayed if not a standard one)
+ - Fix crash on /opds/search with non-latin1 characters
+
 2.440 2020-01-08
 
  - Introduce an experimental feature for parent-children relationships
