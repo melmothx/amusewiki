@@ -1,7 +1,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 301;
+use Test::More tests => 303;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -18,6 +18,7 @@ use File::Spec::Functions qw/catfile catdir/;
 use File::Copy::Recursive qw/dircopy/;
 use File::Path qw/remove_tree make_path/;
 use File::Copy qw/copy/;
+use URI::Escape qw/uri_escape_utf8/;
 
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
@@ -222,7 +223,7 @@ $expected =<< 'ATOM';
     <id>http://0opds0.amusewiki.org/library/title-entry-14</id>
     <title>Title 14</title>
     <updated>2016-01-14T00:00:00Z</updated>
-    <dc:language xmlns:dc="http://purl.org/dc/elements/1.1/">en</dc:language>
+    <dc:language xmlns:dc="http://purl.org/dc/elements/1.1/">ru</dc:language>
     <author>
       <name>A1 14</name>
       <uri>http://0opds0.amusewiki.org/category/author/a1-14</uri>
@@ -244,6 +245,9 @@ $mech->get_ok('/opds/search?query=a*');
 $mech->content_contains(q{"http://0opds0.amusewiki.org/opds/search?query=a*&amp;page=2"});
 $mech->get_ok('/opds/search?query=<>+OR+a*');
 $mech->content_contains(q{"http://0opds0.amusewiki.org/opds/search?query=%3C%3E+OR+a*&amp;page=1"});
+
+$mech->get_ok('/opds/search?query=' . uri_escape_utf8('Здра́вствуйте'));
+$mech->content_contains(uri_escape_utf8('Здра́вствуйте'));
 
 $mech->get_ok('/opds/search?query=OR+OR+OR+OR');
 
@@ -387,7 +391,7 @@ $expected = <<'XML';
     <id>http://0opds0.amusewiki.org/library/title-entry-14</id>
     <title>Title 14</title>
     <updated>2016-01-14T00:00:00Z</updated>
-    <dc:language xmlns:dc="http://purl.org/dc/elements/1.1/">en</dc:language>
+    <dc:language xmlns:dc="http://purl.org/dc/elements/1.1/">ru</dc:language>
     <author>
       <name>A1 14</name>
       <uri>http://0opds0.amusewiki.org/category/author/a1-14</uri>
