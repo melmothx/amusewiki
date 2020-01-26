@@ -7,14 +7,17 @@ use Path::Tiny;
 use DateTime;
 use DateTime::Format::Strptime;
 use Data::Dumper;
+use AmuseWikiFarm::Utils::Amuse ();
 sub convert {
     my ($lexicon, $repo_dir) = @_;
     return unless $lexicon;
     my %lex;
     my %templates;
+    my %entries;
     foreach my $k (keys %$lexicon) {
         my $key = _filter($k);
         next unless length($k);
+        # placeholder
         my $empty_po = Locale::PO->new(-msgid => $key, -msgstr => '');
         $templates{$empty_po->msgid} = $empty_po;
         if (my $entries = $lexicon->{$k}) {
@@ -24,6 +27,15 @@ sub convert {
                 my $po = Locale::PO->new(-msgid => $key,
                                          -msgstr => _filter($entries->{$lang}));
                 $lex{$lang}{$po->msgid} = $po;
+            }
+        }
+    }
+    # if a language is '*' in the lexicon.json, then use that for all known languages.
+    if (my $wild_pos = delete $lex{'*'}) {
+        my $langs = AmuseWikiFarm::Utils::Amuse::known_langs();
+        foreach my $lang (keys %$langs) {
+            foreach my $key (keys %$wild_pos) {
+                $lex{$lang}{$key} ||= $wild_pos->{$key};
             }
         }
     }
