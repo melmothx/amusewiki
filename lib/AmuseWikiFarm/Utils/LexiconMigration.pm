@@ -13,7 +13,7 @@ sub convert {
     return unless $lexicon;
     my %lex;
     my %templates;
-    my %entries;
+    my @all_langs = (keys %{ AmuseWikiFarm::Utils::Amuse::known_langs() });
     foreach my $k (keys %$lexicon) {
         my $key = _filter($k);
         next unless length($k);
@@ -22,20 +22,22 @@ sub convert {
         $templates{$empty_po->msgid} = $empty_po;
         if (my $entries = $lexicon->{$k}) {
           LANG:
-            foreach my $lang (keys %$entries) {
-                next LANG unless length($entries->{$lang});
+            foreach my $lang (@all_langs) {
+                my $value;
+                if (exists $entries->{$lang} and length($entries->{$lang})) {
+                    $value = _filter($entries->{$lang});
+                }
+                elsif (exists $entries->{'*'} and length $entries->{'*'}) {
+                    # if a language is '*' in the lexicon.json, then
+                    # use that for all known languages.
+                    $value = _filter($entries->{'*'});
+                }
+                else {
+                    $value = $key;
+                }
                 my $po = Locale::PO->new(-msgid => $key,
-                                         -msgstr => _filter($entries->{$lang}));
+                                         -msgstr => $value,);
                 $lex{$lang}{$po->msgid} = $po;
-            }
-        }
-    }
-    # if a language is '*' in the lexicon.json, then use that for all known languages.
-    if (my $wild_pos = delete $lex{'*'}) {
-        my $langs = AmuseWikiFarm::Utils::Amuse::known_langs();
-        foreach my $lang (keys %$langs) {
-            foreach my $key (keys %$wild_pos) {
-                $lex{$lang}{$key} ||= $wild_pos->{$key};
             }
         }
     }
