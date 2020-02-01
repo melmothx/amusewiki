@@ -2,7 +2,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 67;
+use Test::More tests => 65;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf-8)";
 binmode $builder->failure_output, ":encoding(utf-8)";
@@ -94,8 +94,8 @@ foreach my $lang (qw/it hr/) {
     foreach my $check (@{$checks{$lang}}) {
         like $content, $check, "Updated PO has old content $check";
     }
-    like $content, qr{msgid "newtest"\nmsgstr ""}, "new key in lexicon generate new po entries";
-    push @{$checks{$lang}}, qr{msgid "newtest"\nmsgstr ""};
+    like $content, qr{msgid "newtest"\nmsgstr "newtest"}, "new key in lexicon generate new po entries";
+    push @{$checks{$lang}}, qr{msgid "newtest"\nmsgstr "newtest"};
     is $model->localizer($lang, 'amw')->loc('test'), $lexicon->{test}->{$lang},
       "'test' translated ok";
     is $model->localizer($lang, 'amw')->loc('newtest'), "newtest";
@@ -115,30 +115,36 @@ foreach my $lang (qw/it hr/) {
       "'test' translated ok";
 }
 
+# here in the past there the tests were leaving hr not set, and
+# testing that the PO string would be still there. I don't think
+# there's a real user case. Doc states that either they use the
+# lexicon.json or the POs.
+
 $lexicon->{test} = {
                     it => 'bla',
+                    hr => 'Proba ò',
                    };
 AmuseWikiFarm::Utils::LexiconMigration::convert($lexicon, "$temp");
+diag Dumper($lexicon);
 {
     my $po = path($temp, 'it.po');
     my $content = $po->slurp_utf8;
-    like $content, qr{msgid "test"\nmsgstr "bla"};
+    like $content, qr{msgid "test"\nmsgstr "bla"}, "it.po is fine" or die;
 }
 {
     my $po = path($temp, 'hr.po');
     my $content = $po->slurp_utf8;
-    like $content, qr{msgid "test"\nmsgstr "Proba ò"};
+    like $content, qr{msgid "test"\nmsgstr "Proba ò"}, "hr.po is not fine" or die;
 }
 
-$lexicon->{test} = {
-                    it => '',
-                   };
+delete $lexicon->{test};
+
 sleep 1;
 my @files = AmuseWikiFarm::Utils::LexiconMigration::convert($lexicon, "$temp");
-ok (@files == 2);
-foreach my $f (@files) {
-    ok (-f $f, "$f exists");
-}
+ok scalar(@files), "Found the generated PO files";
+diag Dumper(\@files);
+
+
 {
     my $po = path($temp, 'it.po');
     my $content = $po->slurp_utf8;
