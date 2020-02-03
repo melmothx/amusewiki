@@ -45,6 +45,7 @@
         <a href="[% diffing_uri | html %]" target="_blank"
            title="[% loc('Show differences in other tab') %]">
           <span class="pull-right" style="text-decoration: none">
+            [% loc('Changes') %]
             <span class="fa fa-plus"></span>
             <span class="fa fa-minus"></span>
           </span>
