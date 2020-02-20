@@ -1411,6 +1411,7 @@ t/atr-lexicon.json
 t/attachment-editing.t
 t/authentication.t
 t/author-update.t
+t/auto-pubdate.t
 t/automatic-teaser.t
 t/backlinks.t
 t/batch-upload.t

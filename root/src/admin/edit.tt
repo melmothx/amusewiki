@@ -517,6 +517,18 @@ kpsewhich mylogo.pdf
       </div>
     </div>
 
+    <div class="form-group">
+      <div class="col-sm-offset-6 col-sm-6">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.no_autoassign_pubdate %]checked="checked"[% END %]
+                 value="ON"
+                 name="no_autoassign_pubdate" />
+          [% loc("When creating a new text, do not populate the publication date if not provided by the user.") %]
+        </label>
+      </div>
+    </div>
+
 
     <div class="form-group">
       <div class="col-sm-offset-6 col-sm-6">

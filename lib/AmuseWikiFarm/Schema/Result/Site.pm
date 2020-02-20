@@ -1584,7 +1584,9 @@ sub import_text_from_html_params {
     # the first thing we do is to assign a path and create a revision in the db
     my $pubdate = str2time($params->{pubdate}) || time();
     my $pubdt = DateTime->from_epoch(epoch => $pubdate);
-    $params->{pubdate} = $pubdt->iso8601;
+    if (!$self->no_autoassign_pubdate) {
+        $params->{pubdate} = $pubdt->iso8601;
+    }
 
     # documented in Result::Title
     my $bogus = {
@@ -3101,6 +3103,7 @@ sub update_from_params {
                            restrict_mirror
                            home_page
                            express_publishing
+                           no_autoassign_pubdate
                            show_preview_when_deferred
                            lists_are_always_flat
                            titles_category_default_sorting
@@ -3455,6 +3458,10 @@ sub get_option {
     else {
         return undef;
     }
+}
+
+sub no_autoassign_pubdate {
+    return shift->get_option('no_autoassign_pubdate') || '';
 }
 
 sub express_publishing {
