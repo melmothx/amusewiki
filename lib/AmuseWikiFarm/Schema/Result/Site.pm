@@ -2525,11 +2525,20 @@ sub _repo_git_action {
         push @out, "Not under git!";
     }
     if (@out) {
+        Dlog_debug { "$_" } \@out;
         eval {
             my @decoded = map  { Encode::decode('UTF-8', $_) } @out;
             @out = @decoded;
         };
-        @out = map { $_ . "\n" } @out;
+        my @lines;
+        my $cgit_base_url = $self->cgit_base_url;
+        foreach my $l (@out) {
+            push @lines, $l . "\n";
+            if ($l =~ m/^commit ([0-9a-f]+)$/) {
+                push @lines, "URL: " . $cgit_base_url . "/commit/?id=" . $1 . "\n";
+            }
+        }
+        @out = @lines;
         if ($logger) {
             $logger->(@out);
         }
@@ -3363,6 +3372,10 @@ sub canonical_url_secure {
     }
 }
 
+sub cgit_base_url {
+    my $self = shift;
+    return $self->canonical_url . '/git/' . $self->id;
+}
 
 sub all_site_hostnames {
     my $self = shift;

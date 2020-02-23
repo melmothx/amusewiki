@@ -178,7 +178,10 @@ sub _format_dt_locale {
     my ($self, $datetime, $locale) = @_;
     $locale ||= 'en';
     if ($datetime) {
-        my $dt = DateTime->from_object(object => $datetime, locale => $locale);
+        my $dt = DateTime->from_object(object => $datetime,
+                                       locale => $locale,
+                                      );
+        $dt->set_time_zone('UTC');
         return $dt->format_cldr($dt->locale->datetime_format_full);
     }
     else {

@@ -1508,6 +1508,7 @@ t/fontspec-json.t
 t/french.t
 t/full-blog-mode.t
 t/git-pulling-async.t
+t/git-pulling-interface.t
 t/git-revision.t
 t/html-upload.t
 t/human-login-screens.t
