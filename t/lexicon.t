@@ -66,7 +66,7 @@ write_file($site->lexicon_file, to_json({
 $site->update_db_from_tree(sub { diag @_ });
 diag "Upgraded?";
 my $temp = Path::Tiny->tempdir;
-foreach my $po (AmuseWikiFarm::Utils::LexiconMigration::convert($site->lexicon, $locales_dir)) {
+foreach my $po (grep { /it\.po/ } AmuseWikiFarm::Utils::LexiconMigration::convert($site->lexicon, $locales_dir)) {
     diag "$po";
     my $po_body = read_file($po);
     diag $po_body;
@@ -91,16 +91,18 @@ foreach my $po (AmuseWikiFarm::Utils::LexiconMigration::convert($site->lexicon, 
 
 {
     my $lh = $model->localizer(hr => $site->id);
-    ok (! -f $lh->local_file, $lh->local_file . " doesn't exist");
+    ok (-f $lh->local_file, $lh->local_file . " HR file generated.");
     is ($lh->loc('test'), 'test');
+    sleep 2;
     $lh->local_file->spew_utf8(qq{msgid "test"\nmsgstr "Proba"\n});
     is ($lh->loc('test'), 'test');
     ok($lh->is_obsolete);
     # reload
+
     $lh = $model->localizer(hr => $site->id);
     diag $lh->local_file;
     is ($lh->loc('test'), 'Proba');
-    sleep 1;
+    sleep 2;
     $lh->local_file->spew_utf8(qq{msgid ""\nmsgstr "Content-Type: "text/plain; charset=UTF-8\\n"\n\nmsgid "test"\nmsgstr "ćxProbaX"\n});
     ok($lh->is_obsolete);
     is ($lh->loc('test'), 'Proba');
