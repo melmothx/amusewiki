@@ -34,6 +34,7 @@ E.g.
       instance_name amusewikidebian
       webserver_root /usr/share/perl5/AmuseWikiFarm/root
       fcgi_socket /var/lib/amusewiki/amusewiki.socket
+      ipv4_only 0
   </Model::Webserver>
 
 =head1 ACCESSORS
@@ -49,6 +50,10 @@ use the CDN.
 Default to C</usr/share/javascript/highlight.js> or
 C<root/static/js/highlight>. If the directory it's not found, it will
 use the CDN.
+
+=head2 ipv4_only
+
+Disable listening on ipv6 ports
 
 =head2 cgit_port
 
@@ -220,6 +225,10 @@ has cgit_proxy => (is => 'ro',
                    isa => 'Object',
                    lazy => 1,
                    builder => '_build_cgit_proxy');
+
+has ipv4_only => (is => 'ro',
+                  isa => 'Bool',
+                  default => sub { 0 });
 
 sub _build_cgit_proxy {
     my $self = shift;
@@ -581,10 +590,16 @@ sub _insert_server_stanza {
     my $out = '';
     unless ($site->secure_site_only) {
         $out .= "    listen 80;\n";
+        unless ($self->ipv4_only) {
+            $out .= "    listen [::]:80;\n";
+        }
     }
 
     if ($site->secure_site || $site->secure_site_only) {
         $out .= "    listen 443 ssl;\n";
+        unless ($self->ipv4_only) {
+            $out .= "    listen [::]:443 ssl;\n";
+        }
         $out .= "    ssl_certificate_key $site_key;\n";
         $out .= "    ssl_certificate     $site_crt;\n";
     }
@@ -604,9 +619,11 @@ sub _insert_server_stanza {
     my $stanza = "server {\n$out\n}\n";
 
     if ($site->secure_site_only) {
+        my $ipv6 = $self->ipv4_only ? '' : "listen [::]:80;\n";
         $stanza .= <<"REDIRECT";
 server {
     listen 80;
+    $ipv6
     server_name $hosts;
     return 301 https://$canonical\$request_uri;
 }
