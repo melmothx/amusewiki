@@ -95,7 +95,7 @@ requires 'Imager';
 requires 'PDF::API2';
 
 # our own dogfood
-requires 'Text::Amuse' => '1.27';
+requires 'Text::Amuse' => '1.40';
 requires 'PDF::Imposition' => '0.25';
 requires 'Text::Amuse::Compile' => '1.31';
 requires 'Text::Amuse::Preprocessor' => '0.61';
