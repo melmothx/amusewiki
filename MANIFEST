@@ -1526,6 +1526,7 @@ t/lang-sr.t
 t/letsencrypt.t
 t/lexicon-2.t
 t/lexicon-migration.t
+t/lexicon-wildcards.t
 t/lexicon.t
 t/lib/AmuseWiki/Tests.pm
 t/lib/TestApp.pm
