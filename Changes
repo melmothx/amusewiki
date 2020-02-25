@@ -4,6 +4,14 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.442 2020-02-25
+
+ - Enable ipv6 ports on nginx
+ - Bump dependency on Text::Amuse to bring in the short form of
+   section titles
+ - Improve messages for git pulling (GH #331 and #332)
+ - Add site option no_autoassign_pubdate (GH #330)
+
 2.441 2020-01-17
 
  - Fix bug with arbitrary pagination size in the pagination widget
