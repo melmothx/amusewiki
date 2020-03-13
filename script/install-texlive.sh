@@ -1,6 +1,11 @@
 #!/bin/sh
 set -e
 
+# needed packages
+# microtype koma-script graphics tools enumitem ulem bigfoot wrapfig
+# hyperref pdftexcmds infwarerr hycolor auxhook kvoptions zapfding
+# atveryendbookmark fontspec polyglossia
+
 TEXMIRROR=ctan.ijs.si/tex-archive
 cd "$HOME"
 echo "Installing TeX live 2019 in your home under texlive"
