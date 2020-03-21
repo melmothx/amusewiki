@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.443 UNRELEASED
+
+ - Bump ckeditor version. Users are advised to upgrade it with
+   ./script/install_js.sh --clean
+
 2.442 2020-02-25
 
  - Enable ipv6 ports on nginx
