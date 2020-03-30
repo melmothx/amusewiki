@@ -3,7 +3,7 @@ use 5.010001;
 use Moose;
 use namespace::autoclean;
 
-use Catalyst::Runtime 5.90075;
+use Catalyst::Runtime 5.90080;
 
 # Set flags and add plugins for the application.
 #

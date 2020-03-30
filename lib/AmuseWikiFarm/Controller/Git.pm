@@ -81,9 +81,10 @@ sub git :Chained('/site') :Args {
     if ($status) {
         log_debug { "Status is $status" } ;
         if ($status =~ m/(\d{3})/a) {
-            if ($status and $status ne '200') {
-                $c->response->status($1);
-                $c->response->body("Not found");
+            $c->response->status($1);
+            unless ($status and $status =~ /^2/) {
+                log_debug { "Body is $status" };
+                $c->response->body($status);
                 return;
             }
         }
@@ -94,10 +95,10 @@ sub git :Chained('/site') :Args {
     $c->response->header(%headers);
 
     if ($res->headers->header('Content-Disposition')) {
-        # now, here we trust both Catalyst and the HTTP::Message
-        # module to do the right thing about the encoding/decoding.
-        # And let's hope for the best. Seems to work, though.
-        $c->response->body($res->decoded_content);
+        # disable the encoding for this request, we're returning the
+        # content verbatim.
+        $c->clear_encoding;
+        $c->response->body($res->content);
         $c->detach;
     }
     elsif ($res->content_type =~ m/text\/html/) {
