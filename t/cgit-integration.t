@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 31;
+use Test::More tests => 33;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -97,3 +97,5 @@ foreach my $f ('t/tt/t-t-2.jpeg', 't/tt/t-t-1.png', 'uploads/shot.pdf') {
 $mech->get("/git/0cgit0/tree/asdfasdf");
 is $mech->status, 404;
 is $mech->content, ('404 Not found');
+$mech->get_ok("/git");
+$mech->content_contains("https://0cgit0.amusewiki.org/git/0cgit0");
