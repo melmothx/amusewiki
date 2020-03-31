@@ -36,6 +36,7 @@ sub create_site {
         $job->delete;
     }
     if (my $stray = $schema->resultset('Site')->find($id)) {
+        $stray->archive_remote_repo;
         if ( -d $stray->repo_root) {
             remove_tree($stray->repo_root);
         }

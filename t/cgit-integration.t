@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 33;
+use Test::More tests => 44;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -67,6 +67,8 @@ MUSE
     $site->git->commit({ message => "Added files" });
 }
 
+diag "Updating DB from tree";
+ok $site->remote_repo_root;
 $site->update_db_from_tree;
 
 
@@ -99,3 +101,17 @@ is $mech->status, 404;
 is $mech->content, ('404 Not found');
 $mech->get_ok("/git");
 $mech->content_contains("https://0cgit0.amusewiki.org/git/0cgit0");
+
+my $remote = $site->remote_repo_root;
+ok $remote, "Remote $remote returned";
+ok $remote->exists, "Remote $remote initialized";
+my $hook = $remote->child('hooks')->child('post-receive');
+ok $hook->exists, "$hook exists";
+like $hook->slurp_utf8, qr{/git-notify};
+$mech->get_ok('/git-notify');
+ok !$site->initialize_remote_repo, "initialize returns false";
+$site->archive_remote_repo;
+ok ! -d $site->remote_repo_root, "Remote repo archived";
+ok !$site->archive_remote_repo, "No op";
+ok $site->initialize_remote_repo, "Initialized ok";
+ok -d $site->remote_repo_root, "Remote repo OK";

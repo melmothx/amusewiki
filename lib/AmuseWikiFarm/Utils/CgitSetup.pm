@@ -6,7 +6,7 @@ use AmuseWikiFarm::Log::Contextual;
 use Cwd;
 use File::Spec;
 use File::Spec::Functions qw/catfile catdir/;
-use File::Path qw/make_path/;
+use File::Path qw/make_path remove_tree/;
 use File::Temp;
 use File::Copy qw/copy move/;
 
@@ -65,7 +65,7 @@ has cache => (is => 'ro',
               builder => '_build_cache');
 
 sub _build_cache {
-    my $cache = catdir(shift->amw_home, qw/opt cache cgit/);
+    my $cache = catdir(shift->amw_home, qw/shared cache cgit/);
     make_path($cache) unless -d $cache;
     return $cache;
 }
@@ -76,7 +76,7 @@ has etc => (is => 'ro',
             builder => '_build_etc');
 
 sub _build_etc {
-    my $etc = catdir(shift->amw_home, qw/opt etc/);
+    my $etc = catdir(shift->amw_home, qw/shared  etc/);
     make_path($etc) unless -d $etc;
     return $etc;
 }
@@ -132,13 +132,8 @@ embedded=1
 logo=/git/cgit.png
 CONFIG
     foreach my $site ($schema->resultset('Site')->all) {
-        next unless $site->repo_is_under_git;
-        my $path = File::Spec->rel2abs(catdir($self->amw_home, 'repo',
-                                              $site->id, ".git"));
-        unless (-d $path) {
-            log_debug { "Repo $path not found!, skipping" };
-            next;
-        }
+        my $path = $site->remote_repo_root;
+        next unless $path && -d $path;
         print $fh "repo.url=" . $site->id . "\n";
         print $fh "repo.path=" . $path . "\n";
         print $fh "repo.desc=" . $site->sitename . "\n" if $site->sitename;
@@ -163,6 +158,15 @@ sub cgi_exists {
         return 0;
     }
 }
+
+sub blow_cache {
+    my $self = shift;
+    my $cache = $self->cache;
+    remove_tree($cache) if -d $cache;
+    make_path($cache);
+}
+
+
 
 
 __PACKAGE__->meta->make_immutable;

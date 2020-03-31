@@ -550,6 +550,7 @@ sub dispatch_job_purge {
         local $ENV{GIT_AUTHOR_EMAIL} = $self->committer_mail;
         $git->rm($path);
         $git->commit({ message => "$uri deleted by $user" });
+        $site->sync_remote_repo;
     }
     else {
         unlink $path or die "Couldn't delete $path $!\n";
