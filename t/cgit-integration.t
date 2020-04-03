@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 44;
+use Test::More tests => 56;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -115,3 +115,100 @@ ok ! -d $site->remote_repo_root, "Remote repo archived";
 ok !$site->archive_remote_repo, "No op";
 ok $site->initialize_remote_repo, "Initialized ok";
 ok -d $site->remote_repo_root, "Remote repo OK";
+
+my $local = Path::Tiny->tempdir(CLEANUP => 0);
+my $git = Git::Wrapper->new("$local");
+$git->clone($site->remote_repo_root, "$local");
+diag "Using $local";
+die "Not cloned" unless $local->child('.git')->exists;
+
+PUSHING: {
+    $site->jobs->delete;
+    my $testfile = path($local, 'specials', 'index.muse');
+    $testfile->parent->mkpath;
+    $testfile->spew("#title Hello there\n\nciao\n");
+    $git->add("$testfile");
+    $git->commit({ message => 'Front page' });
+    $git->push;
+    # however, given that we're in test, the hook didn't work, so call
+    # it manually.
+    $mech->get_ok('/git-notify');
+    is $site->jobs->count, 1;
+    diag Dumper($site->jobs->hri->all);
+    while (my $j = $site->jobs->dequeue) {
+        $j->dispatch_job;
+        diag $j->logs;
+    }
+    $mech->get_ok('/special/index');
+    $mech->content_contains('Hello there');
+}
+
+PULLING: {
+    my ($revision) = $site->create_new_text({ uri => "new-hope",
+                                              title => "A new hope",
+                                              lang => 'en',
+                                              textbody => "Bla bla"
+                                            }, 'text');
+    $revision->commit_version;
+    my $file = $local->child('n')->child('nh')->child('new-hope.muse');
+    my $text_id = $revision->title_id;
+    ok(!$file->exists, "new file doesn't exist locally") or die;
+    my $uri = $revision->publish_text;
+    # now check if the revision was pushed to the shared repo
+    $git->pull;
+    ok($file->exists, "new file propaged") or die;
+    # confirm
+    $mech->get_ok($uri);
+
+    # now add the #DELETED directive
+    my $content = $file->slurp_utf8;
+    $file->spew_utf8("#DELETED purge\n" . $content);
+    $git->add("$file");
+    $git->commit({ message => "Deleting" });
+    $git->push;
+    # simulate the hook
+    $mech->get_ok('/git-notify');
+
+    # simulate the jobber
+    while (my $j = $site->jobs->dequeue) {
+        $j->dispatch_job;
+        diag $j->logs;
+    }
+    $mech->get($uri);
+    is $mech->status, 404;
+
+    # now purge from the site
+    $site->jobs->purge_add({
+                            id => $text_id,
+                            username => "pippo",
+                           });
+    ok($file->exists, "Local file is here") or die;
+    # just one.
+    if (my $j = $site->jobs->dequeue) {
+        $j->dispatch_job;
+        diag $j->logs;
+    }
+    # and check if the file is gone here as well
+    $git->pull;
+    ok(!$file->exists, "File is gone") or die;
+
+
+    # now try a pull from the site
+    $file->parent->mkpath;
+    $file->spew_utf8("#title Test\n\nxxxx\n");
+    $git->add("$file");
+    $git->commit({ message => "XRestoringX" });
+
+    $site->git->remote(add => "test", "$local");
+    my $job = $site->jobs->git_action_add({
+                                           remote => 'test',
+                                           action => 'fetch',
+                                          });
+    while (my $j = $site->jobs->dequeue) {
+        $j->dispatch_job;
+        diag $j->logs;
+    }
+    # and check if the change landed in the remote.
+    ok scalar(grep { /XRestoringX/ } $site->shared_git->show), "Shared repo updated";
+}
+

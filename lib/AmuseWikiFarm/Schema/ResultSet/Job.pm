@@ -449,5 +449,9 @@ sub monitoring_data {
     return $out;
 }
 
+sub hri {
+    my $self = shift;
+    return $self->search(undef, { result_class => 'DBIx::Class::ResultClass::HashRefInflator' });
+}
 
 1;

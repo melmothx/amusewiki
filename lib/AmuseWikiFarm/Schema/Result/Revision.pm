@@ -888,6 +888,7 @@ sub publish_text {
             $git->commit({ file => $commit_msg_file });
         }
     }
+    # tested
     $self->site->sync_remote_repo;
     $self->site->compile_and_index_files([ values %files ], $logger);
     # assert to have an up-to-date title object

@@ -550,6 +550,8 @@ sub dispatch_job_purge {
         local $ENV{GIT_AUTHOR_EMAIL} = $self->committer_mail;
         $git->rm($path);
         $git->commit({ message => "$uri deleted by $user" });
+        # tested
+        log_info { "Syncing the remote repository" };
         $site->sync_remote_repo;
     }
     else {
@@ -641,6 +643,8 @@ sub dispatch_job_git {
     die "Couldn't remote $remote for action $action appears invalid!" unless $validate->{$remote}->{$action};
     if ($action eq 'fetch') {
         my @logs = $site->repo_git_pull($remote, $logger);
+
+        # this will call the sync_remote_repo as well.
         my $bulk = $site->update_db_from_tree_async($logger, $self->username);
         my $url = '/tasks/job/' . $bulk->id . '/show';
         $site->send_mail(git_action => {
