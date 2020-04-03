@@ -2693,6 +2693,7 @@ sub archive_remote_repo {
             # blow the cgit cache as well
             my $schema = $self->result_source->schema;
             AmuseWikiFarm::Utils::CgitSetup->new(schema => $schema)->blow_cache;
+            return $backup;
         }
         else {
             log_error { "Error archiving the remote repo: "
@@ -2709,7 +2710,10 @@ sub sync_remote_repo {
         log_info { "Pushing to $target" };
         my $done;
         my $git = $self->git;
-        # normal push
+        # The logic here is simple: Either we can do a clean push, or
+        # we archive the shared tree, redo the setup and notify the
+        # move.
+
         try {
             $git->push(qw/shared master/);
             $done = 1;
@@ -2717,20 +2721,23 @@ sub sync_remote_repo {
             my $err = $_;
             log_error { "Normal push to $target failed: $err" };
         };
-        return $done if $done;
-        # force push
-        try {
-            $git->push(qw/shared master --force/);
-            $done = 1;
-        } catch {
-            my $err = $_;
-            log_error { "Forced push to $target failed: $err" };
-        };
-        # redo the setup.
         return 1 if $done;
         try {
-            $self->archive_remote_repo;
-            $self->initialize_remote_repo;
+            log_info { "Archiving the tree then and redoing the setup" };
+            if (my $backup = $self->archive_remote_repo) {
+                $self->send_mail(git_conflict => {
+                                                  to => $self->mail_notify,
+                                                  from => $self->mail_from,
+                                                  backup => "$backup",
+                                                  shared => "$target",
+                                                  subject => '[' . $self->canonical . "] git push shared master",
+                                                 });
+                $self->initialize_remote_repo;
+                $done = 1;
+            }
+            else {
+                log_error { "Cannot archive the remote repo :-/" };
+            }
         } catch {
             my $err = $_;
             log_error { "Giving up on syncing $target: $err" };

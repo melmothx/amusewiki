@@ -3,9 +3,12 @@
 use utf8;
 use strict;
 use warnings;
-BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+BEGIN {
+    $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';
+    $ENV{DBIX_CONFIG_DIR} = "t";
+}
 
-use Test::More tests => 56;
+use Test::More tests => 64;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -14,6 +17,8 @@ use Test::WWW::Mechanize::Catalyst;
 use Path::Tiny;
 use Digest::SHA;
 use Data::Dumper::Concise;
+use Email::MIME;
+
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -210,5 +215,45 @@ PULLING: {
     }
     # and check if the change landed in the remote.
     ok scalar(grep { /XRestoringX/ } $site->shared_git->show), "Shared repo updated";
+    $git->pull;
+    ok scalar(grep { /XRestoringX/ } $git->show), "Shared repo updated";
 }
 
+CONFLICT: {
+    $git->pull;
+    my $file = $local->child('n')->child('nh')->child('new-hope.muse');
+    $file->spew_utf8("#title Again\n\nxxxx\n");
+    $git->add("$file");
+    $git->commit({ message => "Breaking it" });
+    $git->push;
+    # here we don't notify the app with the hook, as it would happen.
+    $site->update({
+                   mail_from => 'root@amusewiki.org',
+                   locale => 'en',
+                   mail_notify => 'notifications@amusewiki.org',
+                  });
+
+    my ($revision) = $site->create_new_text({ uri => "bla-bla",
+                                              title => "Let's break",
+                                              lang => 'en',
+                                              textbody => "Bla bla"
+                                            }, 'text');
+    $revision->commit_version;
+    my $uri = $revision->publish_text;
+    eval {
+        $git->push;
+    };
+    ok $@, "Error while pushing: $@";
+    $git->pull;
+    diag join("\n", $git->show);
+    ok scalar(grep { /^Merge:/ } $git->show), "Pulling creates a merge";
+    my @emails = Email::Sender::Simple->default_transport->deliveries;
+    ok (scalar @emails), "Mails sent" or die;
+    my $body = shift(@emails)->{email}->as_string;
+    diag $body;
+    like $body, qr/Unfortunately/;
+    like $body, qr/Subject: \[0cgit0.amusewiki.org\] git push shared master/;
+    my $mail = Email::MIME->new($body);
+    like $mail->body, qr{shared/repo/0cgit0\.git};
+    like $mail->body, qr{shared/archive/archive-\d+-0cgit0\.git};
+}
