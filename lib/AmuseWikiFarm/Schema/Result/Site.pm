@@ -950,6 +950,7 @@ use Try::Tiny;
 use Encode ();
 use XML::FeedPP;
 use Git::Wrapper;
+use Bytes::Random::Secure;
 
 =head2 repo_root_rel
 
@@ -2676,7 +2677,7 @@ sub initialize_remote_repo {
             $self->git->remote(add => shared => "$target");
             $self->git->push(shared => 'master');
             my $hook = Path::Tiny::path($target, hooks => 'post-receive');
-            my $notify_url = $self->canonical_url . '/git-notify';
+            my $notify_url = $self->git_notify_url;
             $hook->spew_utf8(sprintf("#!/bin/sh\nwget -q -O- %s || curl -s %s || echo 'Cannot notify site'\n",
                                      $notify_url, $notify_url));
             $hook->chmod(0755);
@@ -2686,6 +2687,9 @@ sub initialize_remote_repo {
             my $err = $_;
             log_error { "Cannot initialize $target: $err" } ;
         };
+    }
+    else {
+        log_info { "Generating $target not needed" };
     }
     return $out;
 }
@@ -3325,6 +3329,24 @@ sub configure_cgit {
     my $cgit = AmuseWikiFarm::Utils::CgitSetup->new(schema => $schema);
     $cgit->configure;
 }
+
+sub get_git_token {
+    my $self = shift;
+    my $token = $self->git_token;
+    unless ($token) {
+        $token = Bytes::Random::Secure->new(NonBlocking => 1)
+          ->string_from('AABCDEEFGHLMNPQRSTUUVWYZ123456789', 16);
+        $self->git_token($token);
+        $self->update;
+    }
+    return $token;
+}
+
+sub git_notify_url {
+    my $self = shift;
+    return $self->canonical_url . '/git-notify/' . $self->get_git_token;
+}
+
 
 sub deserialize_links {
     my ($self, $string, $menu) = @_;

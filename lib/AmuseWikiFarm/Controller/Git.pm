@@ -23,13 +23,20 @@ Catalyst Controller.
 
 =cut
 
-sub git_notify :Chained('/site_no_auth') :PathPart('git-notify') :Args(0) {
-    my ($self, $c) = @_;
-    log_info { "Received notification to fetch the shared repo" };
-    my $job = $c->stash->{site}->jobs->git_action_add({
-                                                       remote => 'shared',
-                                                       action => 'fetch',
-                                                      });
+sub git_notify :Chained('/site_no_auth') :PathPart('git-notify') :Args(1) {
+    my ($self, $c, $token) = @_;
+    my $site = $c->stash->{site};
+    log_info {
+        $site->id .": received notification to fetch the shared repo (token $token)"
+    };
+    unless ($token and $token eq $site->git_token) {
+        $c->detach('/not_permitted');
+        return;
+    }
+    my $job = $site->jobs->git_action_add({
+                                           remote => 'shared',
+                                           action => 'fetch',
+                                          });
     $c->response->body("Remote Git notified: " . $c->uri_for_action('/tasks/display', [ $job->id ]) . "\n");
 }
 

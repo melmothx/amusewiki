@@ -113,7 +113,7 @@ ok $remote->exists, "Remote $remote initialized";
 my $hook = $remote->child('hooks')->child('post-receive');
 ok $hook->exists, "$hook exists";
 like $hook->slurp_utf8, qr{/git-notify};
-$mech->get_ok('/git-notify');
+$mech->get_ok($site->git_notify_url);
 ok !$site->initialize_remote_repo, "initialize returns false";
 $site->archive_remote_repo;
 ok ! -d $site->remote_repo_root, "Remote repo archived";
@@ -137,7 +137,7 @@ PUSHING: {
     $git->push;
     # however, given that we're in test, the hook didn't work, so call
     # it manually.
-    $mech->get_ok('/git-notify');
+    $mech->get_ok($site->git_notify_url);
     is $site->jobs->count, 1;
     diag Dumper($site->jobs->hri->all);
     while (my $j = $site->jobs->dequeue) {
@@ -172,7 +172,7 @@ PULLING: {
     $git->commit({ message => "Deleting" });
     $git->push;
     # simulate the hook
-    $mech->get_ok('/git-notify');
+    $mech->get_ok($site->git_notify_url);
 
     # simulate the jobber
     while (my $j = $site->jobs->dequeue) {
