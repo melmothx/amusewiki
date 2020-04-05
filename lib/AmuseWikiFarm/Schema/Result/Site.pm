@@ -379,6 +379,12 @@ __PACKAGE__->table("site");
   default_value: 8
   is_nullable: 0
 
+=head2 git_token
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 last_updated
 
   data_type: 'datetime'
@@ -532,6 +538,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "binary_upload_max_size_in_mega",
   { data_type => "integer", default_value => 8, is_nullable => 0 },
+  "git_token",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "last_updated",
   { data_type => "datetime", is_nullable => 1 },
 );
@@ -890,8 +898,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-11-16 11:01:49
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:yGsFn693JLqyhiuo5L1MaA
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-04-05 08:11:40
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:w4U9Yf2itrYqAAH5AWC2OA
 
 =head2 other_sites
 

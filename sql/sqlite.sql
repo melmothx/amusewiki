@@ -86,6 +86,8 @@ CREATE TABLE site (
        opening VARCHAR(16) NOT NULL DEFAULT 'any',
        twoside INTEGER(1) NOT NULL DEFAULT 0,
        binary_upload_max_size_in_mega INTEGER NOT NULL DEFAULT 8,
+
+       git_token VARCHAR(255),
        last_updated DATETIME
 );
 
