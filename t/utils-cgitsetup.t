@@ -18,9 +18,9 @@ my %paths = (
              cgitsrc => catdir($amw_home, qw/opt src cgit/),
              cgi => catfile($amw_home, qw/root git cgit.cgi/),
              gitsrc => catdir($amw_home, qw/opt src cgit git/),
-             cache => catdir($amw_home, qw/opt cache cgit/),
-             etc => catdir($amw_home, qw/opt etc/),
-             cgitrc => catfile($amw_home, qw/opt etc cgitrc/),
+             cache => catdir($amw_home, qw/shared cache cgit/),
+             etc => catdir($amw_home, qw/shared etc/),
+             cgitrc => catfile($amw_home, qw/shared etc cgitrc/),
              lib => catdir($amw_home, qw/opt usr/),
            );
 
