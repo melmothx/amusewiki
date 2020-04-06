@@ -56,8 +56,17 @@ is_deeply(\@remotes, [
                        name => 'origin',
                        url => $remotedir,
                        action => 'push',
-                      }
-
+                      },
+                      {
+                       name => 'shared',
+                       url => $site->remote_repo_root,
+                       action => 'fetch',
+                      },
+                      {
+                       name => 'shared',
+                       url => $site->remote_repo_root,
+                       action => 'push',
+                      },
                      ], "Found remotes") or diag Dumper(\@remotes);
 
 
@@ -66,6 +75,11 @@ is_deeply $site->remote_gits_hashref, {
                                                   fetch => $remotedir,
                                                   push  => $remotedir,
                                                  },
+                                       shared => {
+                                                  fetch => $site->remote_repo_root,
+                                                  push  => $site->remote_repo_root,
+                                                 }
+                                                  
                                       }, "Found remotes hashref";
 
 $site->repo_git_push;

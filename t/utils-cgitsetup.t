@@ -40,4 +40,4 @@ opendir (my $dh, $cgit->etc) or die "Cannot open " . $cgit->etc . " $!";
 my @paths = grep { /cgitrc/ } readdir $dh;
 closedir $dh;
 ok (-f $target, "$target found");
-ok(@paths > 1)
+ok(@paths == 1, "No backup found, idempotens call to configure");
