@@ -2682,7 +2682,7 @@ sub initialize_remote_repo {
             $self->git->push(shared => 'master');
             my $hook = Path::Tiny::path($target, hooks => 'post-receive');
             my $notify_url = $self->git_notify_url;
-            $hook->spew_utf8(sprintf("#!/bin/sh\nwget -q -O- %s || curl -s %s || echo 'Cannot notify site'\n",
+            $hook->spew_utf8(sprintf("#!/bin/sh\nwget --tries=1 -q -O- %s || curl -s %s || echo 'Cannot notify site'\n",
                                      $notify_url, $notify_url));
             $hook->chmod(0755);
             log_info { "Created hook $hook" };
