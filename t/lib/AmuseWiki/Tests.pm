@@ -36,7 +36,6 @@ sub create_site {
         $job->delete;
     }
     if (my $stray = $schema->resultset('Site')->find($id)) {
-        $stray->archive_remote_repo;
         if ( -d $stray->repo_root) {
             remove_tree($stray->repo_root);
         }
@@ -57,6 +56,7 @@ sub create_site {
 
     remove_tree($site->repo_root) if -d $site->repo_root;
     remove_tree($site->xapian->xapian_dir) if -d $site->xapian->xapian_dir;
+    $site->archive_remote_repo;
     $site->initialize_git;
     $site->index_site_files;
     return $site;
