@@ -29,7 +29,7 @@ sub git_notify :Chained('/site_no_auth') :PathPart('git-notify') :Args(1) {
     log_info {
         $site->id .": received notification to fetch the shared repo (token $token)"
     };
-    unless ($token and $token eq $site->git_token) {
+    unless ($token and $token eq $site->get_git_token) {
         $c->detach('/not_permitted');
         return;
     }

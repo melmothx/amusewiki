@@ -8,7 +8,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 64;
+use Test::More tests => 66;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -257,3 +257,9 @@ CONFLICT: {
     like $mail->body, qr{shared/repo/0cgit0\.git};
     like $mail->body, qr{shared/archive/archive-\d+-0cgit0\.git};
 }
+
+
+$mech->get('/git-notify');
+is $mech->status, 404;
+$mech->get('/git-notify/blabla');
+is $mech->status, 403;
