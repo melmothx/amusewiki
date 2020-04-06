@@ -28,9 +28,8 @@ requires 'MIME::Types' => '2.04';
 requires 'FCGI';
 requires 'FCGI::ProcManager';
 
-# for cgit under plack
-requires 'CGI::Emulate::PSGI';
-requires 'CGI::Compile';
+# for the emulated cgit
+requires 'IPC::Run';
 
 requires 'Config::General'; # Required by Catalyst::Plugin::ConfigLoader
 requires 'Unicode::Collate';
