@@ -9,6 +9,8 @@ use File::Spec::Functions qw/catfile catdir/;
 use File::Path qw/make_path remove_tree/;
 use File::Temp;
 use File::Copy qw/copy move/;
+use Path::Tiny ();
+use DateTime;
 
 has amw_home => (is => 'ro',
                  isa => 'Str',
@@ -120,7 +122,7 @@ sub configure {
     my $schema = $self->schema;
     die "Missing schema, can't configure" unless $schema;
     my $cache_root = $self->cache;
-    print $fh "####### automatically generated on " . localtime() . " ######\n\n";
+    # print $fh "####### automatically generated on " . localtime() . " ######\n\n";
     print $fh <<"CONFIG";
 virtual-root=/git
 enable-index-owner=0
@@ -142,9 +144,16 @@ CONFIG
         log_debug { "Exported " . $site->id . " into cgit" };
     }
     close $fh;
+
     if (-f $self->cgitrc) {
-        copy($self->cgitrc, $self->cgitrc . "." . time());
+        if (Path::Tiny::path($self->cgitrc)->slurp_utf8 eq
+            Path::Tiny::path($fh->filename)->slurp_utf8) {
+            log_info { "No changes detected in cgitrc" };
+            return;
+        }
+        copy($self->cgitrc, $self->cgitrc . "." . DateTime->now->iso8601);
     }
+    log_info { "Installing " . $self->cgitrc };
     chmod 0644, $fh->filename;
     move($fh->filename, $self->cgitrc) or log_error { "Cannot install " . $self->cgitrc . " $!" };
 }

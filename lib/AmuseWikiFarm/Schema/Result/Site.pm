@@ -2661,7 +2661,11 @@ sub initialize_remote_repo {
     my ($self) = @_;
     my $target = $self->remote_repo_root;
     my $out;
-    if ($self->repo_is_under_git && !$target->exists) {
+    unless ($self->repo_is_under_git) {
+        log_info { $self->id . ' is not under git' };
+        return;
+    }
+    if (!$target->exists) {
         $target->mkpath;
         try {
             log_info { "Creating $target repo" };
