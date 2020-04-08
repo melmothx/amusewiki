@@ -69,7 +69,10 @@ sub git :Chained('root') :PathPart('git') :CaptureArgs(0) {
 
 sub git_display :Chained('git') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    $c->stash(page_title => $c->loc('Git console'));
+    my $group = getgrgid($));
+    $c->stash(page_title => $c->loc('Git console'),
+              amw_group_name => $group,
+             );
 }
 
 sub add_git_remote :Chained('git') :PathPart('add') :Args(0) {
