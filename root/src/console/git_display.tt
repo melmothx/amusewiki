@@ -114,13 +114,13 @@ git push
 
 <div class="without-system-user">
   <p>
-    [% loc('Create an empty repository on GitLab, GitHub or similar services (or on your own server). ') %]
+    [% loc('Create a public repository on GitLab, GitHub or similar services (or on your own server). ') %]
   </p>
   <p>
-    [% loc('Get the repository URL, e.g. git://example.com/git/test or https://example.com/git/test.') %]
+    [% loc('Please initialized it empty, without any README,license, .gitignore or similar.') %]
   </p>
   <p>
-    [% loc('Add it on this page, using the form below.') %]
+    [% loc('Get the repository HTTPS URL, e.g. https://example.com/git/test and add it using the form you can find above. You can have one personal repository.') %]
   </p>
   <p>
     [% loc('Now we are going to populate it and get it ready') %]
@@ -132,8 +132,8 @@ git push
 git clone [% site.canonical_url %]/git/[% site.id %]
 cd [% site.id %]
 git remote rename origin web
-# [% loc('Please replace the example URL in hte next line with the real one') %]
-git remote add origin https://example.com/git/test
+# [% loc('Please replace the example URL in the next line with the real one with SSH protocol') %]
+git remote add origin git@example.com/git/test
 git push -u origin master
 git checkout -b upstream -t web/master
   </pre>
