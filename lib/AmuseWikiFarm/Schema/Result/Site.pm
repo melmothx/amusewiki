@@ -74,9 +74,8 @@ __PACKAGE__->table("site");
 
 =head2 fixed_category_list
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 1
-  size: 255
 
 =head2 sitename
 
@@ -108,15 +107,13 @@ __PACKAGE__->table("site");
 
 =head2 mail_notify
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 1
-  size: 255
 
 =head2 mail_from
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 1
-  size: 255
 
 =head2 canonical
 
@@ -381,9 +378,8 @@ __PACKAGE__->table("site");
 
 =head2 git_token
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 1
-  size: 255
 
 =head2 last_updated
 
@@ -414,7 +410,7 @@ __PACKAGE__->add_columns(
   "magic_answer",
   { data_type => "varchar", default_value => 16, is_nullable => 0, size => 255 },
   "fixed_category_list",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "text", is_nullable => 1 },
   "sitename",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "siteslogan",
@@ -424,9 +420,9 @@ __PACKAGE__->add_columns(
   "logo",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "mail_notify",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "text", is_nullable => 1 },
   "mail_from",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "text", is_nullable => 1 },
   "canonical",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "secure_site",
@@ -539,7 +535,7 @@ __PACKAGE__->add_columns(
   "binary_upload_max_size_in_mega",
   { data_type => "integer", default_value => 8, is_nullable => 0 },
   "git_token",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "text", is_nullable => 1 },
   "last_updated",
   { data_type => "datetime", is_nullable => 1 },
 );
@@ -898,8 +894,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-04-05 08:11:40
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:w4U9Yf2itrYqAAH5AWC2OA
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-04-12 07:40:33
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JOOx67O/X7RVY8xE0dPc9g
 
 =head2 other_sites
 
