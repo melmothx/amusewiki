@@ -94,13 +94,6 @@ EOF
     send_mail_to_user="1"
 fi
 
-# refresh the configuration
-if [ ! -d "/var/lib/amusewiki/opt/cache/cgit" ]; then
-    su -c 'mkdir -p /var/lib/amusewiki/opt/cache/cgit' amusewiki
-fi
-# assert that cgit can write into its own cache
-chown www-data:www-data /var/lib/amusewiki/opt/cache/cgit
-
 amusewiki populate-webfonts
 
 amusewiki upgrade-lexicon /var/lib/amusewiki/repo/*

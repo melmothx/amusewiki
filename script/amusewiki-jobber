@@ -10,6 +10,7 @@ use AmuseWikiFarm::Utils::Jobber;
 use AmuseWikiFarm::Log::Contextual;
 use Try::Tiny;
 use Getopt::Long;
+use AmuseWikiFarm::Utils::CgitSetup;
 
 my $max_parallel = 3;
 # legacy
@@ -42,8 +43,29 @@ option.
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
+my $max_retry = 30;
+while (!$schema->storage->ensure_connected and $max_retry) {
+    $max_retry--;
+    sleep 10;
+}
+
+unless ($schema->storage->ensure_connected) {
+    log_error { "Couldn't connect to DB after waiting 5 minutes" };
+    die;
+}
+
 # at startup, ensure all the sites will have fresh indexes. This will
 # schedule the jobs. Wrapped in eval if DB is failing us.
+try {
+    foreach my $site ($schema->resultset('Site')->all) {
+        $site->initialize_remote_repo;
+    }
+    AmuseWikiFarm::Utils::CgitSetup->new(schema => $schema)->configure;
+} catch {
+    my $err = $_;
+    log_error { "Error initializing the remote git repositories" };
+};
+
 try {
     foreach my $site ($schema->resultset('Site')->all) {
         $site->check_and_update_custom_formats;

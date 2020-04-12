@@ -1,0 +1,9 @@
+[% lh.loc("Unfortunately, the shared repository located at [_1] appeared out of sync.", shared) %]
+
+[% lh.loc("Now it has been aligned to the site's archive, but this means that there are some missing commits.") %]
+
+[% lh.loc("Usually this is due to high traffic and bad luck, and it can be fixed by pushing the changes again.") %]
+
+[% lh.loc("If it's not the case, please open a bug report at https://github.com/melmothx/amusewiki/issues") %]
+
+[% lh.loc("You can access the backup located at [_1] or ask your host for help, forwarding this email", backup) %]

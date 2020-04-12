@@ -452,7 +452,7 @@
                 <li>
                   <a href="[% c.uri_for_action('/console/git_display') %]">
                     <span class="fa fa-code-fork fa-fw" aria-hidden="true"></span>
-                    [% loc('Remotes') %]
+                    Git
                   </a>
                 </li>
                 <li>

@@ -14,6 +14,7 @@ do './cpanfile';
 
 # locations where we store the stuff
 catalyst_ignore('repo',
+                'shared',
                 'xapian',
                 'staging',
                 'opt',

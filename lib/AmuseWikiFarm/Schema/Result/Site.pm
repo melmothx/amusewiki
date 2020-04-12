@@ -74,9 +74,8 @@ __PACKAGE__->table("site");
 
 =head2 fixed_category_list
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 1
-  size: 255
 
 =head2 sitename
 
@@ -108,15 +107,13 @@ __PACKAGE__->table("site");
 
 =head2 mail_notify
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 1
-  size: 255
 
 =head2 mail_from
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 1
-  size: 255
 
 =head2 canonical
 
@@ -379,6 +376,11 @@ __PACKAGE__->table("site");
   default_value: 8
   is_nullable: 0
 
+=head2 git_token
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 last_updated
 
   data_type: 'datetime'
@@ -408,7 +410,7 @@ __PACKAGE__->add_columns(
   "magic_answer",
   { data_type => "varchar", default_value => 16, is_nullable => 0, size => 255 },
   "fixed_category_list",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "text", is_nullable => 1 },
   "sitename",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "siteslogan",
@@ -418,9 +420,9 @@ __PACKAGE__->add_columns(
   "logo",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "mail_notify",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "text", is_nullable => 1 },
   "mail_from",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "text", is_nullable => 1 },
   "canonical",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "secure_site",
@@ -532,6 +534,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "binary_upload_max_size_in_mega",
   { data_type => "integer", default_value => 8, is_nullable => 0 },
+  "git_token",
+  { data_type => "text", is_nullable => 1 },
   "last_updated",
   { data_type => "datetime", is_nullable => 1 },
 );
@@ -890,8 +894,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-11-16 11:01:49
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:yGsFn693JLqyhiuo5L1MaA
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-04-12 07:40:33
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JOOx67O/X7RVY8xE0dPc9g
 
 =head2 other_sites
 
@@ -941,6 +945,8 @@ use AmuseWikiFarm::Utils::Paths ();
 use Try::Tiny;
 use Encode ();
 use XML::FeedPP;
+use Git::Wrapper;
+use Bytes::Random::Secure;
 
 =head2 repo_root_rel
 
@@ -2585,13 +2591,13 @@ sub _pre_update_db_from_tree {
         if (my @generated =
             AmuseWikiFarm::Utils::LexiconMigration::convert($self->lexicon,
                                                             $self->locales_dir)) {
-            $logger->("Updated the following file from lexicon file:\n"
-                      . join("\n", @generated) . "\n");
+            $logger->("Updated files from lexicon file\n");
         }
     };
     if ($@) {
         $logger->("Exception migrating lexicon to PO: $@");
     }
+    $self->sync_remote_repo;
     my (@muses, @images);
     foreach my $f (sort @{ $todo->{new} }, @{ $todo->{changed} }) {
         if ($f =~ m/\.muse$/) {
@@ -2637,11 +2643,130 @@ sub git {
     my $self = shift;
     return unless $self->repo_is_under_git;
     my $root = $self->repo_root;
-    require Git::Wrapper;
     my $git = Git::Wrapper->new($root);
     return $git;
 }
 
+sub remote_repo_root {
+    my $self = shift;
+    return unless $self->repo_is_under_git;
+    return Path::Tiny::path(ROOT, shared => repo => $self->id . '.git');
+}
+
+sub initialize_remote_repo {
+    my ($self) = @_;
+    my $target = $self->remote_repo_root;
+    my $out;
+    unless ($self->repo_is_under_git) {
+        log_info { $self->id . ' is not under git' };
+        return;
+    }
+    if (!$target->exists) {
+        $target->mkpath;
+        try {
+            log_info { "Creating $target repo" };
+            my $git = Git::Wrapper->new("$target");
+            $git->init('--bare', '--shared=group');
+            log_info { "Populating $target repo" };
+            # add the nickname
+            if ($self->remote_gits_hashref->{shared}) {
+                # drop and redo
+                log_info { "Resetting the shared remote" };
+                $self->git->remote(qw/rm shared/);
+            }
+            $self->git->remote(add => shared => "$target");
+            $self->git->push(shared => 'master');
+            my $hook = Path::Tiny::path($target, hooks => 'post-receive');
+            my $notify_url = $self->git_notify_url;
+            $hook->spew_utf8(sprintf("#!/bin/sh\nwget --tries=1 -q -O- %s || curl -s %s || echo 'Cannot notify site'\n",
+                                     $notify_url, $notify_url));
+            $hook->chmod(0755);
+            log_info { "Created hook $hook" };
+            $out = $target;
+        } catch {
+            my $err = $_;
+            log_error { "Cannot initialize $target: $err" } ;
+        };
+    }
+    else {
+        log_info { "Generating $target not needed" };
+    }
+    return $out;
+}
+
+sub archive_remote_repo {
+    my $self = shift;
+    if (my $target = $self->remote_repo_root) {
+        my $backup = Path::Tiny::path(ROOT, shared => archive => 'archive-' . time()  . '-' . $self->id . '.git');
+        $backup->parent->mkpath;
+        if ($target->exists and !$backup->exists) {
+            log_info {"Moving $target to $backup" };
+            File::Copy::move("$target", "$backup");
+            # blow the cgit cache as well
+            my $schema = $self->result_source->schema;
+            AmuseWikiFarm::Utils::CgitSetup->new(schema => $schema)->blow_cache;
+            return $backup;
+        }
+        else {
+            log_error { "Error archiving the remote repo: "
+                          . " $target exists? " . ($target->exists ? 'yes' : 'no')
+                          . " $backup exists? " . ($backup->exists ? 'yes' : 'no')
+                      };
+        }
+    }
+}
+
+sub sync_remote_repo {
+    my $self = shift;
+    if (my $target = $self->remote_repo_root) {
+        log_info { "Pushing to $target" };
+        my $done;
+        my $git = $self->git;
+        # The logic here is simple: Either we can do a clean push, or
+        # we archive the shared tree, redo the setup and notify the
+        # move.
+
+        try {
+            $git->push(qw/shared master/);
+            $done = 1;
+        } catch {
+            my $err = $_;
+            log_error { "Normal push to $target failed: $err" };
+        };
+        return 1 if $done;
+        try {
+            log_info { "Archiving the tree then and redoing the setup" };
+            if (my $backup = $self->archive_remote_repo) {
+                $self->send_mail(git_conflict => {
+                                                  to => $self->mail_notify,
+                                                  from => $self->mail_from,
+                                                  backup => "$backup",
+                                                  shared => "$target",
+                                                  subject => '[' . $self->canonical . "] git push shared master",
+                                                 });
+                $self->initialize_remote_repo;
+                $done = 1;
+            }
+            else {
+                log_error { "Cannot archive the remote repo :-/" };
+            }
+        } catch {
+            my $err = $_;
+            log_error { "Giving up on syncing $target: $err" };
+        };
+        return 1 if $done;
+    }
+}
+
+sub shared_git {
+    my $self = shift;
+    if (my $root = $self->remote_repo_root) {
+        if (-d $root) {
+            return Git::Wrapper->new($root);
+        }
+    }
+    return;
+}
 
 
 =head2 remote_gits
@@ -3199,10 +3324,29 @@ sub update_from_params {
 
 sub configure_cgit {
     my $self = shift;
+    $self->initialize_remote_repo;
     my $schema = $self->result_source->schema;
     my $cgit = AmuseWikiFarm::Utils::CgitSetup->new(schema => $schema);
     $cgit->configure;
 }
+
+sub get_git_token {
+    my $self = shift;
+    my $token = $self->git_token;
+    unless ($token) {
+        $token = Bytes::Random::Secure->new(NonBlocking => 1)
+          ->string_from('AABCDEEFGHLMNPQRSTUUVWYZ123456789', 16);
+        $self->git_token($token);
+        $self->update;
+    }
+    return $token;
+}
+
+sub git_notify_url {
+    my $self = shift;
+    return $self->canonical_url . '/git-notify/' . $self->get_git_token;
+}
+
 
 sub deserialize_links {
     my ($self, $string, $menu) = @_;

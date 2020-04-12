@@ -6,7 +6,6 @@ use Moose;
 use namespace::autoclean;
 
 use AmuseWikiFarm::Log::Contextual;
-use AmuseWikiFarm::Archive::CgitProxy;
 use File::Spec;
 use File::Temp ();
 use File::Copy qw(copy move);
@@ -24,8 +23,6 @@ The settings can be modified in the amusewikifarm_local.conf file.
 E.g.
 
   <Model::Webserver>
-      ## cgit port
-      cgit_port 7015
       ## nginx log format
       log_format combined
       ## nginx root
@@ -55,10 +52,6 @@ use the CDN.
 
 Disable listening on ipv6 ports
 
-=head2 cgit_port
-
-Defaults to C<9015>
-
 =head2 log_format
 
 Defaults to C<combined>
@@ -75,12 +68,6 @@ Defaults to C</var/log/nginx>
 
 Defaults to C<amusewiki>. This affects the filenames of the produced
 nginx configuration files.
-
-=head2 fcgiwrap_socket
-
-Defaults to '/var/run/fcgiwrap.socket'. Needed for cgit if cgit is
-going to be run by the webserver. Debian package instead install a
-Plack service which runs C<amusewiki-cgit.psgi>.
 
 =head2 app_directory
 
@@ -105,24 +92,12 @@ is C</usr/share/perl5/AmuseWikiFarm/root> and it's read-only.
 
 Always return C<cronjobs> under the application directory.
 
-=head2 letsencrypt_cronjob_path
-
-Always return C<cronjobs/le.sh> under the application directory.
-
 =head1 METHODS
 
 =head2 generate_nginx_config
 
 Generate the files in a temporary directory and return a string with
 the commands to be run by root to install them.
-
-=head2 update_letsencrypt_cronjob
-
-Update the Let's Encrypt cronjob
-
-=head2 generate_letsencrypt_cronjob
-
-Generate the cronjob in a temporary location.
 
 =cut
 
@@ -196,11 +171,6 @@ sub _build_highlight_use_cdn {
     return 1;
 }
 
-has cgit_port => (is => 'ro',
-                  isa => 'Int',
-                  default => sub { '9015' },
-                 );
-
 has log_format => (is => 'ro',
                    isa => 'Str',
                    default => sub { 'combined' });
@@ -217,24 +187,9 @@ has instance_name => (is => 'ro',
                       isa => 'Str',
                       default => sub { 'amusewiki' });
 
-has fcgiwrap_socket => (is => 'ro',
-                        isa => 'Str',
-                        default => sub { '/var/run/fcgiwrap.socket' });
-
-has cgit_proxy => (is => 'ro',
-                   isa => 'Object',
-                   lazy => 1,
-                   builder => '_build_cgit_proxy');
-
 has ipv4_only => (is => 'ro',
                   isa => 'Bool',
                   default => sub { 0 });
-
-sub _build_cgit_proxy {
-    my $self = shift;
-    log_info { "Loading cgitproxy" };
-    return AmuseWikiFarm::Archive::CgitProxy->new(port => $self->cgit_port);
-}
 
 ### BEWARE IF YOU CHANGE THIS. CHECK AmuseWikiFarm::Schema::ResultSet::Site;
 
@@ -325,21 +280,6 @@ sub _build_webserver_root {
     return File::Spec->catdir($self->app_directory, 'root');
 }
 
-sub cronjobs_path {
-    my $self = shift;
-    my $dir = File::Spec->catdir($self->app_directory, 'cronjobs');
-    unless (-d $dir) {
-        log_info { "Creating $dir" };
-        mkdir $dir or die "Cannot create $dir $!";
-    }
-    return $dir;
-}
-
-sub letsencrypt_cronjob_path {
-    my $self = shift;
-    return File::Spec->catfile($self->cronjobs_path, 'le.sh');
-}
-
 sub generate_nginx_config {
     my ($self, @sites) = @_;
     return unless @sites;
@@ -347,9 +287,6 @@ sub generate_nginx_config {
       ->newdir(CLEANUP => 0,
                TMPDIR => 1,
                TEMPLATE => 'nginx-amusewiki-XXXXXXXX')->dirname;
-    my $cgit_port = $self->cgit_port;
-    my $fcgiwrap_socket = $self->fcgiwrap_socket;
-    my $cgit_path = File::Spec->catfile(qw/root git cgit.cgi/);
     my $amw_home = $self->app_directory;
     my $webserver_root = $self->webserver_root;
 
@@ -372,48 +309,9 @@ sub generate_nginx_config {
         chmod 0600, $self->ssl_default_key;
     }
 
-    my $cgit = "### cgit is not installed locally ###\n";
-    if (-f $cgit_path) {
-        $cgit = <<"EOF";
-server {
-    listen 127.0.0.1:$cgit_port;
-    server_name localhost;
-    location /git/ {
-        root $webserver_root;
-        fastcgi_split_path_info ^/git()(.*);
-        fastcgi_param   PATH_INFO       \$fastcgi_path_info;
-        fastcgi_param   SCRIPT_FILENAME \$document_root/git/cgit.cgi;
-
-        fastcgi_param  QUERY_STRING       \$query_string;
-        fastcgi_param  REQUEST_METHOD     \$request_method;
-        fastcgi_param  CONTENT_TYPE       \$content_type;
-        fastcgi_param  CONTENT_LENGTH     \$content_length;
-
-        fastcgi_param  SCRIPT_NAME        \$fastcgi_script_name;
-        fastcgi_param  REQUEST_URI        \$request_uri;
-        fastcgi_param  DOCUMENT_URI       \$document_uri;
-        fastcgi_param  DOCUMENT_ROOT      \$document_root;
-        fastcgi_param  SERVER_PROTOCOL    \$server_protocol;
-        fastcgi_param  HTTPS              \$https if_not_empty;
-
-        fastcgi_param  GATEWAY_INTERFACE  CGI/1.1;
-        fastcgi_param  SERVER_SOFTWARE    nginx/\$nginx_version;
-
-        fastcgi_param  REMOTE_ADDR        \$remote_addr;
-        fastcgi_param  REMOTE_PORT        \$remote_port;
-        fastcgi_param  SERVER_ADDR        \$server_addr;
-        fastcgi_param  SERVER_PORT        \$server_port;
-        fastcgi_param  SERVER_NAME        \$server_name;
-
-        fastcgi_pass    unix:$fcgiwrap_socket;
-    }
-}
-EOF
-    }
     my $conf_file = File::Spec->catfile($output_dir, $self->instance_name);
     open (my $fhc, '>:encoding(UTF-8)', $conf_file)
       or die "Cannot open $conf_file $!";
-    print $fhc $cgit;
 
     foreach my $site (@sites) {
         print $fhc $self->_insert_server_stanza($site);

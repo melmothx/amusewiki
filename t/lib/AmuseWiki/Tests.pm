@@ -57,6 +57,8 @@ sub create_site {
     remove_tree($site->repo_root) if -d $site->repo_root;
     remove_tree($site->xapian->xapian_dir) if -d $site->xapian->xapian_dir;
     $site->initialize_git;
+    $site->archive_remote_repo;
+    $site->configure_cgit;
     $site->index_site_files;
     return $site;
 }

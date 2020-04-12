@@ -1,4 +1,4 @@
-requires 'Catalyst::Runtime' => '5.90075';
+requires 'Catalyst::Runtime' => '5.90080';
 requires 'Catalyst::Plugin::ConfigLoader';
 requires 'Catalyst::Plugin::Authentication';
 requires 'Catalyst::Plugin::Session';
@@ -28,9 +28,8 @@ requires 'MIME::Types' => '2.04';
 requires 'FCGI';
 requires 'FCGI::ProcManager';
 
-# for cgit under plack
-requires 'CGI::Emulate::PSGI';
-requires 'CGI::Compile';
+# for the emulated cgit
+requires 'IPC::Run';
 
 requires 'Config::General'; # Required by Catalyst::Plugin::ConfigLoader
 requires 'Unicode::Collate';

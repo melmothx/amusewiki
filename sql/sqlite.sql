@@ -22,14 +22,14 @@ CREATE TABLE site (
        magic_answer   VARCHAR(255) NOT NULL DEFAULT '16',
 
        -- list of space separated category codes, if you want this feature
-       fixed_category_list VARCHAR(255),
+       fixed_category_list TEXT,
 
        sitename VARCHAR(255) NOT NULL DEFAULT '',
        siteslogan VARCHAR(255) NOT NULL DEFAULT '',
        theme VARCHAR(32) NOT NULL DEFAULT '',
        logo VARCHAR(255) NOT NULL DEFAULT '', -- could be a path, so keep it at 255
-       mail_notify VARCHAR(255),
-       mail_from   VARCHAR(255),
+       mail_notify TEXT,
+       mail_from   TEXT,
 
        -- canonical server name
        canonical VARCHAR(255) NOT NULL,
@@ -86,6 +86,7 @@ CREATE TABLE site (
        opening VARCHAR(16) NOT NULL DEFAULT 'any',
        twoside INTEGER(1) NOT NULL DEFAULT 0,
        binary_upload_max_size_in_mega INTEGER NOT NULL DEFAULT 8,
+       git_token TEXT,
        last_updated DATETIME
 );
 

@@ -55,7 +55,7 @@ foreach my $dir (@ARGV) {
         my $json = eval { JSON::from_json($lexicon->slurp_utf8) };
         if ($json) {
             if (my @generated = AmuseWikiFarm::Utils::LexiconMigration::convert($json, "$locales")) {
-                print "Updated the following file from $lexicon:\n" . join("\n", @generated) . "\n";
+                print "Updated $dir lexicon\n";
             }
         }
         else {

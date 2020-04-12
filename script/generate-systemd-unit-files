@@ -11,33 +11,6 @@ else
     mkdir -p $tempdir
 fi
 
-if id www-data >/dev/null 2>/dev/null; then
-    nginxid="www-data"
-else
-    if id nginx >/dev/null 2>/dev/null; then
-        nginxid="nginx"
-    else
-        echo "Cannot determine a user to run the cgit service"
-        exit 2
-    fi
-fi
-
-cat <<EOF > $tempdir/amusewiki-cgit.service
-[Unit]
-Description=Amusewiki CGIT server
-After=nss-user-lookup.target
-
-[Service]
-WorkingDirectory=$(pwd)
-User=$nginxid
-Group=$nginxid
-ExecStart=$(which carton) exec plackup --path /git --port 9015 --host 127.0.0.1 -E deployment $(pwd)/psgi/amusewiki-cgit.psgi
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
 cat <<EOF > $tempdir/amusewiki-jobber.service
 [Unit]
 Description=Amusewiki jobber
@@ -106,7 +79,7 @@ cat <<EOF
 EOF
 
 for i in amusewiki-jobber.service \
-             amusewiki-web.service amusewiki-cgit.service \
+             amusewiki-web.service \
              amusewiki-nginx-reload.path amusewiki-nginx-reload.service; do
 
     echo "cat $tempdir/$i > /etc/systemd/system/$i";
@@ -114,7 +87,7 @@ done
 
 echo "systemctl daemon-reload"
 
-for i in amusewiki-jobber.service amusewiki-web.service amusewiki-cgit.service amusewiki-nginx-reload.path; do
+for i in amusewiki-jobber.service amusewiki-web.service  amusewiki-nginx-reload.path; do
     echo "systemctl start $i"
     echo "systemctl enable $i"
 done

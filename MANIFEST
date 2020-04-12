@@ -635,8 +635,7 @@ dbicdh/SQLite/upgrade/8-9/001-auto.sql
 dbicdh/SQLite/upgrade/9-10/001-auto.sql
 lib/AmuseWikiFarm.pm
 lib/AmuseWikiFarm/Archive/BookBuilder.pm
-lib/AmuseWikiFarm/Archive/CgitProxy.pm
-lib/AmuseWikiFarm/Archive/CgitProxy/Response.pm
+lib/AmuseWikiFarm/Archive/CgitEmulated.pm
 lib/AmuseWikiFarm/Archive/Lexicon.pm
 lib/AmuseWikiFarm/Archive/Lexicon/Handles.pm
 lib/AmuseWikiFarm/Archive/Lexicon/Site.pm
@@ -704,6 +703,7 @@ lib/AmuseWikiFarm/Log/Contextual/App.pm
 lib/AmuseWikiFarm/Middleware/ConditionalGET.pm
 lib/AmuseWikiFarm/Middleware/WeakETag.pm
 lib/AmuseWikiFarm/Model/BookBuilder.pm
+lib/AmuseWikiFarm/Model/Cgit.pm
 lib/AmuseWikiFarm/Model/DB.pm
 lib/AmuseWikiFarm/Model/Lexicon.pm
 lib/AmuseWikiFarm/Model/OPDS.pm
@@ -1443,7 +1443,7 @@ t/category-sorting.t
 t/cf-aliases-2.t
 t/cf-aliases-3.t
 t/cf-scheduling.t
-t/cgit-proxy.t
+t/cgit-integration.t
 t/cleanups.t
 t/collation-index.t
 t/conditional-get.t

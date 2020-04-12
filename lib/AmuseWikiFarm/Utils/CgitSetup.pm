@@ -6,9 +6,11 @@ use AmuseWikiFarm::Log::Contextual;
 use Cwd;
 use File::Spec;
 use File::Spec::Functions qw/catfile catdir/;
-use File::Path qw/make_path/;
+use File::Path qw/make_path remove_tree/;
 use File::Temp;
 use File::Copy qw/copy move/;
+use Path::Tiny ();
+use DateTime;
 
 has amw_home => (is => 'ro',
                  isa => 'Str',
@@ -65,7 +67,7 @@ has cache => (is => 'ro',
               builder => '_build_cache');
 
 sub _build_cache {
-    my $cache = catdir(shift->amw_home, qw/opt cache cgit/);
+    my $cache = catdir(shift->amw_home, qw/shared cache cgit/);
     make_path($cache) unless -d $cache;
     return $cache;
 }
@@ -76,7 +78,7 @@ has etc => (is => 'ro',
             builder => '_build_etc');
 
 sub _build_etc {
-    my $etc = catdir(shift->amw_home, qw/opt etc/);
+    my $etc = catdir(shift->amw_home, qw/shared  etc/);
     make_path($etc) unless -d $etc;
     return $etc;
 }
@@ -120,7 +122,7 @@ sub configure {
     my $schema = $self->schema;
     die "Missing schema, can't configure" unless $schema;
     my $cache_root = $self->cache;
-    print $fh "####### automatically generated on " . localtime() . " ######\n\n";
+    # print $fh "####### automatically generated on " . localtime() . " ######\n\n";
     print $fh <<"CONFIG";
 virtual-root=/git
 enable-index-owner=0
@@ -132,28 +134,26 @@ embedded=1
 logo=/git/cgit.png
 CONFIG
     foreach my $site ($schema->resultset('Site')->all) {
-        next unless $site->repo_is_under_git;
-        my $path = File::Spec->rel2abs(catdir($self->amw_home, 'repo',
-                                              $site->id, ".git"));
-        unless (-d $path) {
-            log_debug { "Repo $path not found!, skipping" };
-            next;
-        }
+        my $path = $site->remote_repo_root;
+        next unless $path && -d $path;
         print $fh "repo.url=" . $site->id . "\n";
         print $fh "repo.path=" . $path . "\n";
         print $fh "repo.desc=" . $site->sitename . "\n" if $site->sitename;
-        if (-f catfile($path, 'git-daemon-export-ok')) {
-            my $githostname = $hostname || $site->canonical;
-            print $fh "repo.clone-url=git://$githostname/git/" . $site->id .
-              ".git\n";
-        }
+        print $fh "repo.clone-url=" . $site->canonical_url . "/git/" . $site->id . "\n";
         print $fh "\n\n";
         log_debug { "Exported " . $site->id . " into cgit" };
     }
     close $fh;
+
     if (-f $self->cgitrc) {
-        copy($self->cgitrc, $self->cgitrc . "." . time());
+        if (Path::Tiny::path($self->cgitrc)->slurp_utf8 eq
+            Path::Tiny::path($fh->filename)->slurp_utf8) {
+            log_info { "No changes detected in cgitrc" };
+            return;
+        }
+        copy($self->cgitrc, $self->cgitrc . "." . DateTime->now->iso8601);
     }
+    log_info { "Installing " . $self->cgitrc };
     chmod 0644, $fh->filename;
     move($fh->filename, $self->cgitrc) or log_error { "Cannot install " . $self->cgitrc . " $!" };
 }
@@ -167,6 +167,15 @@ sub cgi_exists {
         return 0;
     }
 }
+
+sub blow_cache {
+    my $self = shift;
+    my $cache = $self->cache;
+    remove_tree($cache) if -d $cache;
+    make_path($cache);
+}
+
+
 
 
 __PACKAGE__->meta->make_immutable;

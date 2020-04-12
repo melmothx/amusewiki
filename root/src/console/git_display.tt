@@ -1,4 +1,7 @@
-[%# -*- mode: html -*- %]
+[%# -*- mode: web -*- %]
+
+
+
 [% IF remotes.size %]
 <div>
 <table class="table table-striped">
@@ -74,43 +77,107 @@
 </div>
 [% END %]
 
-<div>&nbsp;</div>
+<h3>[% loc('How are you going to access Git?') %]</h3>
+<div class="form-group">
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-default">
+      <input class="choose-help" type="radio" name="choose-help" value="with" />
+      [% loc('I have a system user with SSH access') %]
+    </label>
+    <label class="btn btn-default">
+      <input class="choose-help" type="radio" name="choose-help" value="without" />
+      [% loc('I will provide my remote repository') %]
+    </label>
+  </div>
+</div>
 
-<h3>[% loc('How to work with a remote repo') %]</h3>
-
-[% loc('Create an empty repository. Here we refer to its url as <user_repo_url>.') %]
-
-<h4>[% loc('Clone the repo locally and set it up') %]</h4>
-
-<pre>
-  # [% loc('if the repository is exported') %]
-  git clone git://[% site.canonical %]/git/[% site.id %].git
-  # [% loc('or, if you have SSH access to the machine (but do not use the same user as amusewiki, it should be a read-only repo)') %]
-  git clone ssh://[% site.canonical %][% site.repo_root %]
-
-  git remote rename origin web
-  git remote add origin &lt;user_repo_url&gt;
-  git push -u origin master
-  git checkout -b upstream -t web/master
+<div class="with-system-user">
+  <h4>[% loc('Setup') %]</h4>
+  <pre>
+git clone ssh://[% site.canonical %][% site.remote_repo_root %]
+cd [% site.id %]
 </pre>
 
-<p>
-  [% loc('Add or delete and add again the <user_repo_url> on this page.') %]
-</p>
-
-<h4>[% loc('Workflow') %]</h4>
-
-<pre>
-  git checkout upstream
-  git pull
-  git checkout master
-  git merge upstream
-  # [% loc('edit, commit...') %]
-  git push
+  <h4>[% loc('Workflow') %]</h4>
+  <pre>
+git pull
+# [% loc('edit, commit...') %]
+git push
 </pre>
 
-<p>
-  [% loc('Then fetch the updates from this page.') %]
-</p>
+  <p>
+    [% loc('The changes will propagate automatically once you push.') %]
+    [% loc('Please be sure to be in the "[_1]" group', amw_group_name) %]
+    
+  </p>
+</div>
 
-<a href="https://amusewiki.org/library/offline-editing-via-git">[% loc('See here for the full documentation.')%]</a>
+<div class="without-system-user">
+  <p>
+    [% loc('Create a public repository on GitLab, GitHub or similar services (or on your own server). ') %]
+  </p>
+  <p>
+    [% loc('Please initialized it empty, without any README,license, .gitignore or similar.') %]
+  </p>
+  <p>
+    [% loc('Get the repository HTTPS URL, e.g. https://example.com/git/test and add it using the form you can find above. You can have one personal repository.') %]
+  </p>
+  <p>
+    [% loc('Now we are going to populate it and get it ready') %]
+  </p>
+
+  <h4>[% loc('Setup') %]</h4>
+
+  <pre>
+git clone [% site.canonical_url %]/git/[% site.id %]
+cd [% site.id %]
+git remote rename origin web
+# [% loc('Please replace the example URL in the next line with the real one with SSH protocol') %]
+git remote add origin git@example.com/git/test
+git push -u origin master
+git checkout -b upstream -t web/master
+  </pre>
+
+  <h4>[% loc('Workflow') %]</h4>
+
+  <pre>
+git checkout upstream
+git pull
+git checkout master
+git merge upstream
+# [% loc('edit, commit...') %]
+git push
+  </pre>
+
+  <p>
+    [% loc('Then fetch the updates from this page.') %]
+  </p>
+</div>
+<div class="with-system-user without-system-user">
+  <p>
+    <a href="https://amusewiki.org/library/offline-editing-via-git">
+      [% loc('See here for the full documentation.')%]
+      [% loc('Read about the file naming scheme if you need to add files to the tree.') %]
+    </a>
+  </p>
+</div>
+<script>
+ function show_help() {
+     console.log("Calling show help");
+     $('.with-system-user').hide();
+     $('.without-system-user').hide();
+     var current_format = $("input[name=choose-help]:checked").val();
+     if (current_format == 'with') {
+         console.log("Showing with system user" + current_format);
+         $('.with-system-user').show();
+     }
+     else if (current_format == 'without') {
+         console.log("Showing without system user");
+         $('.without-system-user').show();
+     }
+ }
+ show_help();
+ $('.choose-help').change(function() {
+     show_help();
+ });
+</script>
