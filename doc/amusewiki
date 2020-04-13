@@ -32,7 +32,7 @@ amusewiki [ start | stop | restart ]
 
 start and stop actions simply call systemctl, while the restart action
 performs a restart without downtime (so being a bit more useful than
-just "systemctl restart amusewiki-web amusewiki-jobber amusewiki-cgit"
+just "systemctl restart amusewiki-web amusewiki-jobber"
 
 EOF
 
@@ -52,12 +52,12 @@ if [ "x$action" = "xshell" ]; then
 fi
 
 if [ "x$action" = "xstart" ]; then
-    systemctl start amusewiki-web amusewiki-jobber amusewiki-cgit
+    systemctl start amusewiki-web amusewiki-jobber
     exit
 fi
 
 if [ "x$action" = "xstop" ]; then
-    systemctl stop amusewiki-web amusewiki-jobber amusewiki-cgit
+    systemctl stop amusewiki-web amusewiki-jobber
     exit
 fi
 
@@ -74,7 +74,7 @@ if [ "x$action" = "xrestart" ]; then
     echo "Waiting for the backup app to come up..."
     sleep 20
     echo "Restarting the apps"
-    systemctl restart amusewiki-web amusewiki-jobber amusewiki-cgit
+    systemctl restart amusewiki-web amusewiki-jobber
     echo "Waiting for the real app to come up..."
     sleep 20
     echo "Stopping the backup app $temp_pid"
