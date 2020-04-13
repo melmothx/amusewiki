@@ -56,6 +56,7 @@ unless ($schema->storage->ensure_connected) {
 
 # at startup, ensure all the sites will have fresh indexes. This will
 # schedule the jobs. Wrapped in eval if DB is failing us.
+AmuseWikiFarm::Utils::CgitSetup->new(schema => $schema)->configure;
 try {
     foreach my $site ($schema->resultset('Site')->all) {
         $site->initialize_remote_repo;
