@@ -50,9 +50,6 @@ foreach my $traversal (@traversals) {
 
 
 $mech->get('/git/0gitz0');
-SKIP: {
-    skip "/git url is disable", 32 unless $mech->success && $mech->content !~ m/No repositories found/;
-
 foreach my $text ({
                    title => "Zdravo Hello àààà",
                    author => "Nemò",
@@ -102,6 +99,7 @@ foreach my $text ({
     diag $mech->uri->path;
     $mech->content_like(qr{$body_re}s);
 }
+COMMON: {
     $mech->get_ok('/git');
     $site->update({ cgit_integration => 0 });
     $mech->get_ok($site->titles->published_texts->first->full_uri);
