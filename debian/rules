@@ -7,7 +7,6 @@ TMP     = $(CURDIR)/debian/$(PACKAGE)
 
 override_dh_systemd_enable:
 	install -d $(TMP)/lib/systemd/system
-	install -p -m644 $(CURDIR)/debian/amusewiki-cgit.service $(TMP)/lib/systemd/system/
 	install -p -m644 $(CURDIR)/debian/amusewiki-web.service $(TMP)/lib/systemd/system/
 	install -p -m644 $(CURDIR)/debian/amusewiki-jobber.service $(TMP)/lib/systemd/system/
 	install -p -m644 $(CURDIR)/debian/amusewiki-nginx-reload.service $(TMP)/lib/systemd/system/
