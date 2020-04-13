@@ -115,6 +115,8 @@ dbicdh/_source/deploy/57/001-auto-__VERSION.yml
 dbicdh/_source/deploy/57/001-auto.yml
 dbicdh/_source/deploy/58/001-auto-__VERSION.yml
 dbicdh/_source/deploy/58/001-auto.yml
+dbicdh/_source/deploy/59/001-auto-__VERSION.yml
+dbicdh/_source/deploy/59/001-auto.yml
 dbicdh/_source/deploy/6/001-auto-__VERSION.yml
 dbicdh/_source/deploy/6/001-auto.yml
 dbicdh/_source/deploy/7/001-auto-__VERSION.yml
@@ -229,6 +231,8 @@ dbicdh/MySQL/deploy/57/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/57/001-auto.sql
 dbicdh/MySQL/deploy/58/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/58/001-auto.sql
+dbicdh/MySQL/deploy/59/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/59/001-auto.sql
 dbicdh/MySQL/deploy/6/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/6/001-auto.sql
 dbicdh/MySQL/deploy/7/001-auto-__VERSION.sql
@@ -289,6 +293,7 @@ dbicdh/MySQL/upgrade/54-55/001-auto.sql
 dbicdh/MySQL/upgrade/55-56/001-auto.sql
 dbicdh/MySQL/upgrade/56-57/001-auto.sql
 dbicdh/MySQL/upgrade/57-58/001-auto.sql
+dbicdh/MySQL/upgrade/58-59/001-auto.sql
 dbicdh/MySQL/upgrade/6-7/001-auto.sql
 dbicdh/MySQL/upgrade/7-8/001-auto.sql
 dbicdh/MySQL/upgrade/8-9/001-auto.sql
@@ -399,6 +404,8 @@ dbicdh/PostgreSQL/deploy/57/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/57/001-auto.sql
 dbicdh/PostgreSQL/deploy/58/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/58/001-auto.sql
+dbicdh/PostgreSQL/deploy/59/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/59/001-auto.sql
 dbicdh/PostgreSQL/deploy/6/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/6/001-auto.sql
 dbicdh/PostgreSQL/deploy/7/001-auto-__VERSION.sql
@@ -459,6 +466,7 @@ dbicdh/PostgreSQL/upgrade/54-55/001-auto.sql
 dbicdh/PostgreSQL/upgrade/55-56/001-auto.sql
 dbicdh/PostgreSQL/upgrade/56-57/001-auto.sql
 dbicdh/PostgreSQL/upgrade/57-58/001-auto.sql
+dbicdh/PostgreSQL/upgrade/58-59/001-auto.sql
 dbicdh/PostgreSQL/upgrade/6-7/001-auto.sql
 dbicdh/PostgreSQL/upgrade/7-8/001-auto.sql
 dbicdh/PostgreSQL/upgrade/8-9/001-auto.sql
@@ -569,6 +577,8 @@ dbicdh/SQLite/deploy/57/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/57/001-auto.sql
 dbicdh/SQLite/deploy/58/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/58/001-auto.sql
+dbicdh/SQLite/deploy/59/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/59/001-auto.sql
 dbicdh/SQLite/deploy/6/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/6/001-auto.sql
 dbicdh/SQLite/deploy/7/001-auto-__VERSION.sql
@@ -629,6 +639,7 @@ dbicdh/SQLite/upgrade/54-55/001-auto.sql
 dbicdh/SQLite/upgrade/55-56/001-auto.sql
 dbicdh/SQLite/upgrade/56-57/001-auto.sql
 dbicdh/SQLite/upgrade/57-58/001-auto.sql
+dbicdh/SQLite/upgrade/58-59/001-auto.sql
 dbicdh/SQLite/upgrade/6-7/001-auto.sql
 dbicdh/SQLite/upgrade/7-8/001-auto.sql
 dbicdh/SQLite/upgrade/8-9/001-auto.sql
@@ -805,6 +816,8 @@ mkits/commit/body.txt
 mkits/commit/manifest.json
 mkits/git_action/body.txt
 mkits/git_action/manifest.json
+mkits/git_conflict/body.txt
+mkits/git_conflict/manifest.json
 mkits/newtext/body.txt
 mkits/newtext/manifest.json
 mkits/newuser/body.txt
