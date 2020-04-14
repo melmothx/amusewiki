@@ -7,7 +7,7 @@
 <table class="table table-striped">
   <tr>
     <th>
-      [% loc('Repository') %]
+      [% loc('Name') %]
     </th>
     <th>
       [% loc('URL') %]
