@@ -107,7 +107,7 @@ git push
 
   <p>
     [% loc('The changes will propagate automatically once you push.') %]
-    [% loc('Please be sure to be in the "[_1]" group', amw_group_name) %]
+    [% loc('Please ensure that your system user is member of the "[_1]" group', amw_group_name) %]
     
   </p>
 </div>
