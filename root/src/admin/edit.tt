@@ -1,4 +1,4 @@
-[%# -*- mode:html -*- %]
+[%# -*- mode:web -*- %]
 [%# loc('A4 paper'); %]
 [%# loc('A5 paper'); %]
 [%# loc('A6 paper (also suitable for e-readers)'); %]
@@ -696,8 +696,24 @@ kpsewhich mylogo.pdf
     </div>
 
 
-
+    <div class="form-group">
+      <label for="robots_txt" class="col-sm-3 control-label">
+        <code>robots.txt</code>
+      </label>
+      <div class="col-sm-9">
+        <textarea rows="5" name="robots_txt_override" id="robots_txt_override" class="form-control">
+          [%- esite.robots_txt_override | html -%]
+        </textarea>
+        <p class="help-block">
+          [% loc('Default value if blank:') %]
+          <pre>[% esite.robots_txt_default | html %]</pre>
+        </p>
       </div>
+    </div>
+
+
+
+    </div>
     </fieldset>
     <fieldset>
       <legend role="button"

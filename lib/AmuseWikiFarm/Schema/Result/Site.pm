@@ -3221,6 +3221,17 @@ sub update_from_params {
                        };
     }
 
+    foreach my $textarea (qw/robots_txt_override/) {
+        my $value = delete $params->{$textarea} || '';
+        $value =~ s/\r\n/\n/g;
+        chomp $value;
+        $value .= "\n";
+        push @options, {
+                        option_name => $textarea,
+                        option_value => $value,
+                       };
+    }
+
     # this is totally arbitrary
     foreach my $option (qw/html_special_page_bottom use_luatex
                            html_regular_page_bottom
@@ -4412,6 +4423,41 @@ sub create_feed {
         }
     }
     return $feed->to_string;
+}
+
+sub robots_txt {
+    my $self = shift;
+    my $provided = $self->robots_txt_override;
+    if ($provided =~ m/\w/) {
+        return $provided;
+    }
+    else {
+        return $self->robots_txt_default;
+    }
+}
+
+sub robots_txt_default {
+    my $self = shift;
+    my $robots = <<"ROBOTS";
+User-agent: *
+Disallow: /edit/
+Disallow: /bookbuilder/
+Disallow: /bookbuilder
+Disallow: /random
+Disallow: /git/
+ROBOTS
+    $robots .= "Sitemap: " . $self->canonical_url . '/sitemap.txt' . "\n";
+    if (!$self->restrict_mirror) {
+        my $mirror_url = $self->canonical_url . '/mirror.txt';
+        $robots .= <<"MIRROR";
+# Istant mirror:
+# wget -q -O - $mirror_url | wget -x -N -q -i -
+MIRROR
+    }
+}
+
+sub robots_txt_override {
+    shift->get_option('robots_txt_override') || '';
 }
 
 sub init_category_types {

@@ -316,27 +316,13 @@ sub apple_touch_icon :Chained('/site_no_auth') :PathPart('apple-touch-icon.png')
 
 sub robots_txt :Chained('/site_no_auth') :PathPart('robots.txt') :Args(0) {
     my ($self, $c) = @_;
-    my $robots = <<"ROBOTS";
-User-agent: *
-Disallow: /edit/
-Disallow: /bookbuilder/
-Disallow: /bookbuilder
-Disallow: /random
-Disallow: /git/
-ROBOTS
     my $site = $c->stash->{site};
+    my $robots;
     if (!$site or $site->is_private) {
         $robots = "User-agent: *\nDisallow: /\n";
     }
     else {
-        $robots .= "Sitemap: " . $c->uri_for_action('/sitemap_txt') . "\n";
-        if (!$site->restrict_mirror) {
-            my $mirror_url = $c->uri_for_action('/mirror/mirror_index');
-            $robots .= <<"MIRROR";
-# Istant mirror:
-# wget -q -O - $mirror_url | wget -x -N -q -i -
-MIRROR
-        }
+        $robots = $site->robots_txt;
     }
     $c->response->content_type('text/plain');
     $c->response->body($robots);
