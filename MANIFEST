@@ -1596,6 +1596,7 @@ t/revision-merging.t
 t/revisions-deletion.t
 t/revisions-files.t
 t/revisions.t
+t/robots-txt.t
 t/robots.t
 t/schema.t
 t/secondary-footnotes.t
