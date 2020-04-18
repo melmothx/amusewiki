@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.452 2020-04-18
+
+ - Implement robots.txt override from DB
+
 2.451 2020-04-13
 
  - Adjustments to tests and migration from amusewiki-cgit service
