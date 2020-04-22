@@ -655,6 +655,7 @@ sub dispatch_job_git {
                                         logs => join("", @logs),
                                         subject => '[' . $site->canonical . "] git pull $remote",
                                         action_url => $site->canonical_url_secure . $url,
+                                        expected_documents => $bulk->expected_documents,
                                        }) if $bulk->jobs->count;
         return $url;
     }

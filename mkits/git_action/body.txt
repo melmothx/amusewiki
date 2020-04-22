@@ -1,3 +1,9 @@
 [% logs %]
-
 [% action_url %]
+
+[% IF expected_documents -%]
+[% lh.loc("Expected pages") %]:
+[% FOREACH doc IN expected_documents %]
+ - [% doc %]
+[% END %]
+[% END %]

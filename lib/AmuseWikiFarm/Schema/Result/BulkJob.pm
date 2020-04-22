@@ -272,6 +272,24 @@ sub is_rebuild {
     return shift->task eq 'rebuild';
 }
 
+sub expected_documents {
+    my $self = shift;
+    my @out;
+    my $base = $self->site->canonical_url;
+    foreach my $j ($self->jobs) {
+        my $payload = $j->job_data;
+        if (my $path = $payload->{path}) {
+            if ($path =~ m{[a-z0-9]/[a-z0-9][a-z0-9]/([a-z0-9-]+)\.muse}) {
+                push @out, $base . "/library/$1";
+            }
+            elsif ($path =~ m{specials/([a-z0-9-]+)\.muse}) {
+                push @out, $base . "/special/$1";
+            }
+        }
+    }
+    return [ sort @out ];
+}
+
 
 __PACKAGE__->meta->make_immutable;
 1;

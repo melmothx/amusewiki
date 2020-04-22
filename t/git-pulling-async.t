@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 141;
+use Test::More tests => 144;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -41,6 +41,9 @@ $working_copy->init;
 $working_copy->remote(add => origin => $remotedir);
 $working_copy->pull(qw/origin master/);
 
+my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => $site->canonical);
+
 # END OF SETUP
 
 foreach my $dir (qw/specials site_files d f uploads/) {
@@ -72,6 +75,16 @@ is_deeply \@scanned, [
                      ];    
 my $bjob = $site->update_db_from_tree_async(sub { diag @_ }, 'root');
 is $bjob->username, 'root';
+
+is_deeply ($bjob->expected_documents,
+           [
+            'http://0pull2.amusewiki.org/library/deleted-text',
+            'http://0pull2.amusewiki.org/library/deleted-text-in-the-future',
+            'http://0pull2.amusewiki.org/library/do-this-by-yourself',
+            'http://0pull2.amusewiki.org/library/first-test',
+            'http://0pull2.amusewiki.org/special/index',
+            'http://0pull2.amusewiki.org/special/prova'
+           ]);
 
 # now remove some files under its nose
 $working_copy->rm(catfile(qw/d dt do-this-by-yourself.muse/));
@@ -118,6 +131,10 @@ while (my $job = $site->jobs->dequeue) {
         die "Unacceptable status " . $job->status . ' ' . $job->id;
     }
 }
+
+$mech->get_ok('/library/first-test', "Checking regular $$");
+$mech->get_ok('/special/index', "Checking index $$");
+
 ok !$site->titles->texts_only->find({
                                      uri => 'do-this-by-yourself',
                                     });
@@ -140,9 +157,6 @@ ok (!$site->jobs->dequeue, "no new jobs");
 ok(!$site->find_file_by_path($deletion));
 
 $site->update({ magic_answer => 16, magic_question => '12+4', mode => 'blog' });
-
-my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
-                                               host => $site->canonical);
 
 $mech->get_ok('/human');
 ok $mech->submit_form(with_fields => { __auth_human => 16 });
