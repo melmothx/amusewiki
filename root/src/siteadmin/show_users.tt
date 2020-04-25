@@ -1,0 +1,57 @@
+<h2>[% loc('Site users') %]</h2>
+
+<div class="table-responsive">
+  <table id="user-table" class="table table-striped table-condensed table-bordered amw-datatable">
+    <thead>
+    <tr>
+      <th>[% loc('Username') %]</th>
+      <th>[% loc('Created by') %]</th>
+      <th>[% loc('Delete') %]</th>
+      <th>[% loc('Email') %]</th>
+      <th>[% loc('Active') %]</th>
+      <th>[% loc('Roles') %]</th>
+    </tr>
+    </thead>
+    <tbody>
+    [% FOREACH user IN all_users %]
+    <tr>
+      <td>
+        [% user.username | html %]
+      </td>
+      <td>
+        <span class="user-created-by">[% user.created_by | html%]</span>
+      </td>
+      <td class="text-center">
+        [% IF user.can_be_deleted %]
+        <form method="post" class="form-horizontal" role="form"
+              id="delete-user-form-[% user.id %]"
+              action="[% c.uri_for_action('siteadmin/delete_user', [ user.id ]) %]"
+              onsubmit="return amw_confirm()">
+          <button type="submit" name="delete" value="delete" class="btn btn-danger">
+            <i class="fa fa-trash"></i>
+          </button>
+        </form>
+        [% END %]
+      </td>
+      <td>[% user.email %]</td>
+      <td>
+        [% IF user.active %]
+        [% loc('Yes') %]
+        [% ELSE %]
+        [% loc('No') %]
+        [% END %]
+      </td>
+      <td>
+        [% user.roles %]
+      </td>
+    </tr>
+    [% END %]
+    </tbody>
+  </table>
+</div>
+
+<a href="[% c.uri_for_action('/user/create') %]">
+  <span class="fa fa-user-plus fa-fw" aria-hidden="true"></span>
+  [% loc('Create a new user') %]
+</a>
+

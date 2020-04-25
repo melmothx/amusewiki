@@ -505,18 +505,25 @@
                     [% END %]
                   </a>
                 </li>
+                <li>
+                  [% IF c.check_user_roles('root') %]
+                  <a href="[% c.uri_for_action('/admin/show_users') %]">
+                    <span class="fa fa-users fa-fw" aria-hidden="true"></span>
+                    [% loc('Users') %]
+                  </a>
+                  [% ELSE %]
+                  <a href="[% c.uri_for_action('/siteadmin/show_users') %]">
+                    <span class="fa fa-users fa-fw" aria-hidden="true"></span>
+                    [% loc('Site users') %]
+                  </a>
+                  [% END %]
+                </li>
                 [% END %]
                 [% IF c.check_user_roles('root') %]
                 <li>
                   <a href="[% c.uri_for_action('/admin/edit', site.id) %]">
                     <span class="fa fa-cogs fa-fw" aria-hidden="true"></span>
                     [% loc('Edit full site configuration') %]
-                  </a>
-                </li>
-                <li>
-                  <a href="[% c.uri_for_action('/admin/show_users') %]">
-                    <span class="fa fa-users fa-fw" aria-hidden="true"></span>
-                    [% loc('Users') %]
                   </a>
                 </li>
                 <li>

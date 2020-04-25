@@ -679,6 +679,7 @@ lib/AmuseWikiFarm/Controller/Remote.pm
 lib/AmuseWikiFarm/Controller/Root.pm
 lib/AmuseWikiFarm/Controller/Search.pm
 lib/AmuseWikiFarm/Controller/Settings.pm
+lib/AmuseWikiFarm/Controller/SiteAdmin.pm
 lib/AmuseWikiFarm/Controller/SiteFiles.pm
 lib/AmuseWikiFarm/Controller/Special.pm
 lib/AmuseWikiFarm/Controller/Stats.pm
@@ -893,6 +894,7 @@ root/src/search/opensearch.tt
 root/src/settings/categories.tt
 root/src/settings/edit_format.tt
 root/src/settings/formats.tt
+root/src/siteadmin/show_users.tt
 root/src/special/display.tt
 root/src/static-indexes.tt
 root/src/stats/popular.tt
@@ -1480,6 +1482,7 @@ t/controller_OPDS.t
 t/controller_Publish.t
 t/controller_Remote.t
 t/controller_Search.t
+t/controller_SiteAdmin.t
 t/controller_Special.t
 t/controller_Stats.t
 t/controller_Uploads.t
