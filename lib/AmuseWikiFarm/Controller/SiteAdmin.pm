@@ -76,6 +76,7 @@ sub delete_user :Chained('users') :PathPart('delete') :Args(1) {
             }
         }
         else {
+            $c->flash(error_msg => $c->loc("This user cannot be removed"));
             log_info { "User $uid cannot be deleted" };
         }
     }
