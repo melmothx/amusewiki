@@ -70,9 +70,18 @@ sub delete_user :Chained('users') :PathPart('delete') :Args(1) {
     log_debug { "Requested $uid deletion" };
     if ($uid and $c->request->body_params->{delete}) {
         if (grep { $_->{can_be_deleted} and $uid eq $_->{id} }  @{ $c->stash->{all_users} }) {
-            if (my $user = $c->stash->{site}->users->find($uid)) {
+            if (my $user_site = $c->stash->{site}->user_sites->find({ user_id => $uid })) {
+                $user_site->delete;
+                # refetch the user
+                my $user = $c->model('DB::User')->find($uid);
+                if ($user->sites->count) {
+                    log_info { "$uid still belongs to other sites, not deleting" };
+                }
+                else {
+                    log_info { "Deleting orphaned user $uid" };
+                    $user->delete;
+                }
                 $c->flash(status_msg => $c->loc("User [_1] deleted", $user->username));
-                $user->delete;
             }
         }
         else {

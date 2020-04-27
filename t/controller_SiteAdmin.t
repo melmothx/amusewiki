@@ -8,7 +8,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 54;
+use Test::More tests => 67;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -129,4 +129,21 @@ DELETION: {
         $mechtwo->get('/site-admin/users?bare=1');
         $mechtwo->content_contains("delete-user-form-" . $user->id) or diag $mechtwo->content;
     }
+}
+
+foreach my $user (@librarians) {
+    ok $schema->resultset('User')->find($user->id), $user->username . " is still here";
+}
+
+FINAL: {
+    $mechtwo->get_ok('/site-admin/users');
+    foreach my $user (@librarians) {
+        $mechtwo->submit_form(form_id => "delete-user-form-" . $user->id,
+                              button => 'delete');
+        $mechtwo->content_lacks("delete-user-form-" . $user->id) or diag $mechtwo->content;
+    }
+}
+
+foreach my $user (@librarians) {
+    ok !$schema->resultset('User')->find($user->id), $user->username . " is gone";
 }
