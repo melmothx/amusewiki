@@ -6,6 +6,8 @@ use warnings;
 use MooseX::MethodAttributes::Role;
 use AmuseWikiFarm::Log::Contextual;
 
+use constant AMW_MAX_USER_NO_CHECK => $ENV{AMW_MAX_USER_NO_CHECK} || 3600;
+
 sub get_secure_uri {
     my ($self, $c) = @_;
     my $uri = $c->request->uri->clone;
@@ -53,9 +55,59 @@ sub check_site_id_in_session :Private {
     $c->session(site_id => $site->id);
 }
 
+sub check_if_user_in_db :Private {
+    my ($self, $c) = @_;
+    my $now = time();
+    my $checked = $c->session->{user_checked_in_db};
+    if ($checked and (($now - $checked) < AMW_MAX_USER_NO_CHECK )) {
+        log_debug { "User already checked against DB at $checked" };
+        return 1;
+    }
+    else {
+        $checked ||= 0;
+        if (my $site_id = $c->session->{site_id}) {
+            if (my $c_user = $c->user) {
+                if (my $user_id = $c_user->get('id')) {
+                    if (my $user = $c->model('DB::User')->find($user_id)) {
+                        if ($user->active) {
+                            if ($user->roles->find({ role => 'root' }) or
+                                $user->user_sites->find({ site_id => $site_id })) {
+                                log_info { "User checked against login on $checked" };
+                                $c->session(user_checked_in_db => $now);
+                                return 1;
+                            }
+                        }
+                        else {
+                            log_info { "$user_id is inactive" };
+                        }
+                    }
+                    else {
+                        log_info { "$user_id not found in the db" };
+                    }
+                }
+                else {
+                    log_info { "No user id found in the session?" };
+                }
+            }
+            else {
+                log_info { "User not found in the session?" };
+            }
+        }
+        else {
+            log_info { "No site id found in the session" };
+        }
+    }
+    $c->logout;
+    $c->delete_session;
+    return 0;
+}
+
+
 sub try_to_authenticate :Private {
     my ($self, $c) = @_;
-    return 1 if $c->user_exists;
+    if ($c->user_exists && $self->check_if_user_in_db($c)) {
+        return 1;
+    }
     $self->check_site_id_in_session($c);
     log_debug { "Checking login against " . $c->sessionid };
     my $site = $c->stash->{site};

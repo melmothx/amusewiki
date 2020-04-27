@@ -6,9 +6,10 @@ use warnings;
 
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
+    $ENV{AMW_MAX_USER_NO_CHECK} = 2;
 }
 
-use Test::More tests => 67;
+use Test::More tests => 76;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -99,7 +100,7 @@ my @librarians;
 foreach my $username (qw/uno due tre quattro/) {
     my $user = $schema->resultset('User')->create({
                                                    username => "ad0" . $username,
-                                                   password => $username,
+                                                   password => $pass,
                                                    user_roles => [ { role => { role => 'librarian' } } ],
                                                   });
     push @librarians, $user;
@@ -135,6 +136,19 @@ foreach my $user (@librarians) {
     ok $schema->resultset('User')->find($user->id), $user->username . " is still here";
 }
 
+# pick a library and login. We need to check if after removal it's logged out
+
+my $usermech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                                   host => $two->canonical);
+
+$usermech->get_ok('/login');
+$usermech->submit_form(with_fields => {
+                                       __auth_user => $librarians[0]->username,
+                                       __auth_pass => $pass,
+                                      });
+$usermech->get_ok('/action/special/new');
+
+
 FINAL: {
     $mechtwo->get_ok('/site-admin/users');
     foreach my $user (@librarians) {
@@ -147,3 +161,33 @@ FINAL: {
 foreach my $user (@librarians) {
     ok !$schema->resultset('User')->find($user->id), $user->username . " is gone";
 }
+
+# let the user go stale in the session
+sleep 3;
+$usermech->get('/action/special/new');
+is $usermech->status, 401, "User denied after removal";
+
+# do a logout/login for the two admins
+$mechone->get('/logout');
+$mechone->get('/login');
+$mechone->submit_form(with_fields => { __auth_user => "ad" . $one->id, __auth_pass => $pass });
+$mechone->get_ok('/site-admin/users');
+
+$mechtwo->get('/logout');
+$mechtwo->get('/login');
+$mechtwo->submit_form(with_fields => { __auth_user => "ad" . $two->id, __auth_pass => $pass });
+$mechtwo->get_ok('/site-admin/users');
+
+# turn them inactive in the DB
+$schema->resultset('User')->search({ username => { -like => "ad0%" } })->update({ active => 0 });
+sleep 3;
+$mechone->get('/site-admin/users');
+is $mechone->status, 401, "Access denied after turned inactive";
+$mechtwo->get('/site-admin/users');
+is $mechtwo->status, 401, "Access denied after turned inactive";
+
+$mechtwo->submit_form(with_fields => { __auth_user => "ad" . $two->id, __auth_pass => $pass });
+is $mechtwo->status, 401, "Cannot login";
+
+$mechone->submit_form(with_fields => { __auth_user => "ad" . $one->id, __auth_pass => $pass });
+is $mechone->status, 401, "Cannot login";
