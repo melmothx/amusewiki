@@ -9,7 +9,7 @@ BEGIN {
     $ENV{AMW_MAX_USER_NO_CHECK} = 2;
 }
 
-use Test::More tests => 76;
+use Test::More tests => 77;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -146,6 +146,8 @@ $usermech->submit_form(with_fields => {
                                        __auth_user => $librarians[0]->username,
                                        __auth_pass => $pass,
                                       });
+$usermech->get('/site-admin/users');
+is $usermech->status, 403, "Access denied to librarians";
 $usermech->get_ok('/action/special/new');
 
 
