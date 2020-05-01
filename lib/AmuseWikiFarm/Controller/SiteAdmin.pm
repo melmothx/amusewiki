@@ -25,7 +25,7 @@ Catalyst Controller.
 
 sub root :Chained('/site_user_required') :PathPart('site-admin') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    unless ($c->user_exists && $c->check_user_roles('admin')) {
+    unless ($c->user_exists && $c->check_any_user_role(qw/admin root/)) {
         $c->detach('/not_permitted');
         return;
     }
