@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2019-11-04 02:09+0300\n"
+"PO-Revision-Date: 2020-05-02 19:09+0300\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -14,19 +14,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3\n"
 
 #. ($filename)
 msgid "%1 doesn't exist"
 msgstr "%1 bulunamadı"
-
-#. ([$total])
-msgid "%1 jobs deleted"
-msgstr ""
-
-#. ([$total])
-msgid "%1 jobs rescheduled"
-msgstr ""
 
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
@@ -77,7 +69,7 @@ msgstr ""
 
 #. (location)
 msgid "A new text has been created at %1"
-msgstr "%1'de yeni bir metin yaratıldı"
+msgstr "%1 'de yeni bir metin yaratıldı"
 
 msgid "A nice title"
 msgstr "Güzel bir başlık"
@@ -307,9 +299,6 @@ msgstr "Beamer renk teması"
 msgid "Beamer theme"
 msgstr "Beamer teması"
 
-msgid "Beside topics and authors you can add more categories here"
-msgstr ""
-
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Milimetre cinsinden cilt düzeltmesi (ek iç kenar boşluğu)"
 
@@ -387,10 +376,6 @@ msgstr "Asıl isim"
 msgid "Categories"
 msgstr "Kategoriler"
 
-#. ($site->canonical)
-msgid "Category types for %1"
-msgstr ""
-
 msgid "Center all the sectioning titles."
 msgstr "Bölüm başlıklarının hepsini ortala."
 
@@ -451,9 +436,6 @@ msgstr "Veri deposunu klonla ve kur"
 msgid "Close"
 msgstr "Kapat"
 
-msgid "Code"
-msgstr ""
-
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -490,9 +472,6 @@ msgstr "Onu yapılandıramadım"
 
 msgid "Create"
 msgstr "Yarat"
-
-msgid "Create a new category type. Please use only lowercase ASCII letters"
-msgstr ""
 
 msgid "Create a new format"
 msgstr "Yeni bir biçim yarat"
@@ -721,9 +700,6 @@ msgstr "HTML dönüştürürken hata. Üzgünüm."
 msgid "Errors"
 msgstr "Hatalar"
 
-msgid "Estimated pages"
-msgstr ""
-
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
@@ -781,16 +757,10 @@ msgstr "Dosya çok büyük"
 msgid "File uploaded!"
 msgstr "Dosya yüklendi!"
 
-msgid "Files"
-msgstr ""
-
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 "Eğer forma dolu değilse son sayfadan önceki sayfaları boş sayfalarla doldur."
-
-msgid "Filter"
-msgstr ""
 
 msgid "Filters"
 msgstr "Filtreler"
@@ -800,9 +770,6 @@ msgstr "Katalog ekle menüsünü bul."
 
 msgid "Find the network library menu, or equivalent."
 msgstr "Ağ kütüphanesi menüsünü ya da benzerini bul."
-
-msgid "First"
-msgstr ""
 
 msgid "First Author and Second Author"
 msgstr "Birinci Yazar ve İkinci Yazar"
@@ -826,14 +793,14 @@ msgstr ""
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr "Tek tabakaya 3 kere katlayarak sabit 16 sayfalık formalar."
 
+msgid "Fixed category list"
+msgstr "Sabit kategori listesi"
+
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
 msgstr ""
 "Yatay kesilip ayrı ayrı katlanıp beraber bağlanan sabit 8 sayfalık formalar."
-
-msgid "Fixed topic list"
-msgstr ""
 
 msgid "Font preview"
 msgstr "Font önizleme"
@@ -1021,11 +988,6 @@ msgstr ""
 "Eğer şans eseri aynı yazar ve başlığa sahip bir metin varsa, aşağıdaki alana "
 "yazar, başlık ve bir sayı girerek istenilen URL'i seç, örn yazar-baslik-1"
 
-msgid ""
-"If it was not your intention, please just ignore this mail and\n"
-"your password will not be changed."
-msgstr ""
-
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
@@ -1124,11 +1086,6 @@ msgstr ""
 "      düzenlerseniz, üretilen dosyaları yeniden oluşturmak isteyebilirsiniz"
 
 msgid ""
-"If you forgot your password, you can choose a new one visiting\n"
-"this link (click on it or copy and paste it in your browser):"
-msgstr ""
-
-msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
@@ -1153,6 +1110,10 @@ msgstr ""
 "      aynı zamanda PDF'nin ilk sayfasına konur. Aşağıdaki satırı\n"
 "      üstbilgiye eklersen resmin genişliğini ayarlayabilirsin. Buradaki\n"
 "      değer metin genişliğine orandır. 1 metinle aynı, 0.5 yarısı, vb"
+
+#. (reset_url)
+msgid "If you want to proceed, please visit the following url: %1"
+msgstr "İlerlemek istiyorsan lütfen bu url'e git: %1"
 
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
@@ -1271,6 +1232,12 @@ msgstr "Yatık, kalın, sabit aralıklı ve kod, satırsonları..."
 msgid "JPG, PNG and PDF are always allowed."
 msgstr "JPG, PNG ve PDF'ye her zaman izin verilir."
 
+msgid "Job deleted"
+msgstr "İş silindi"
+
+msgid "Job rescheduled"
+msgstr "İş tekrar zamanlandı"
+
 msgid "Job status"
 msgstr "İş durumu"
 
@@ -1323,9 +1290,6 @@ msgstr "Dil seçimi"
 msgid "Languages supported"
 msgstr "Desteklenen diller"
 
-msgid "Last"
-msgstr ""
-
 msgid "Last successful rebuild"
 msgstr "Son başarılı yeniden oluşturma"
 
@@ -1374,9 +1338,6 @@ msgstr "Token ile başka bir oturum yükle"
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
 msgstr "\"%1\" konfigürasyonu yüklendi"
-
-msgid "Loading"
-msgstr ""
 
 msgid "Locked editing, no upload possible"
 msgstr "Düzenleme kilitlendi, yükleme mümkün değil"
@@ -1438,10 +1399,6 @@ msgstr "Yüklenen dosyalar için max boyut (Mb)"
 msgid "Message"
 msgstr "Mesaj"
 
-#. (8)
-msgid "Minimum %1 characters"
-msgstr ""
-
 msgid "Missing #title header in the text!"
 msgstr "Metinde #title üstlük kısmı yok!"
 
@@ -1490,12 +1447,6 @@ msgstr "Kullanılmaz"
 msgid "Name"
 msgstr "İsim"
 
-msgid "Name plural"
-msgstr ""
-
-msgid "Name singular"
-msgstr ""
-
 msgid "Network library listing screen."
 msgstr "Ağ kütüphanesi listeleme ekranı."
 
@@ -1538,14 +1489,8 @@ msgstr "İyi başlık"
 msgid "No"
 msgstr "Hayır"
 
-msgid "No data available in table"
-msgstr ""
-
 msgid "No editing yet!"
 msgstr "Henüz düzenleme yok!"
-
-msgid "No matching records found"
-msgstr ""
 
 msgid "No result found!"
 msgstr "Hiçbir sonuç bulunamadı!"
@@ -1587,6 +1532,9 @@ msgstr "Posta bildirimi: alan boşsa bildirimleri etkisizleştirir"
 
 msgid "Notify to"
 msgstr "Bildirimin gönderilen"
+
+msgid "Now you can proceed to login."
+msgstr "Şimdi girişe devam edebilirsin."
 
 msgid "Number of jobs"
 msgstr "İş sayısı"
@@ -1645,6 +1593,9 @@ msgstr "Ya da içeri kaydır"
 
 msgid "Ordered List"
 msgstr "Sıralı Liste"
+
+msgid "Otherwise, please just ignore this mail."
+msgstr "Aksi halde, lütfen bu postayı yok say."
 
 msgid "PDF"
 msgstr "PDF"
@@ -1707,9 +1658,6 @@ msgstr "Parça"
 msgid "Part and chapter. If one side document: part."
 msgstr "Parça ve kısım. Tek taraflı doküman ise: parça."
 
-msgid "Part of"
-msgstr ""
-
 msgid "Part, for larger books only"
 msgstr "Parça, sadece büyük kitaplar için"
 
@@ -1718,6 +1666,10 @@ msgstr "Sadece seçilenler"
 
 msgid "Password"
 msgstr "Şifre"
+
+#. (host)
+msgid "Password reset for %1"
+msgstr "%1 için şifre sıfırlama"
 
 msgid "Password too short"
 msgstr "Şifre çok kısa"
@@ -1921,9 +1873,6 @@ msgstr "Özel"
 msgid "Procedure"
 msgstr "Yöntem"
 
-msgid "Processing"
-msgstr ""
-
 msgid "Produce slides."
 msgstr "Slaytları üret."
 
@@ -2069,9 +2018,6 @@ msgstr "Veri deposu"
 msgid "Request failed! Please report the the problem"
 msgstr "İstek başarısız! Lütfen problemi raporla"
 
-msgid "Reschedule"
-msgstr ""
-
 msgid "Reset all"
 msgstr "Hepsini sıfırla"
 
@@ -2081,15 +2027,8 @@ msgstr "Filtreleri sıfırla"
 msgid "Reset password"
 msgstr "Şifreyi sıfırla"
 
-#. (username)
-msgid "Reset password for user %1"
-msgstr ""
-
 msgid "Reset to site defaults"
 msgstr "Sitenin varsayılanına ayarla"
-
-msgid "Reset your password"
-msgstr ""
 
 msgid "Restricted configuration variables"
 msgstr "Engellenen konfigurasyon değişkenleri"
@@ -2165,9 +2104,6 @@ msgstr "Arama filtreleri"
 msgid "Search results"
 msgstr "Arama sonuçları"
 
-msgid "Search this column"
-msgstr ""
-
 msgid "Secondary footnotes"
 msgstr "İkinci dipnotlar"
 
@@ -2192,12 +2128,6 @@ msgstr "Seç"
 msgid "Select all"
 msgstr "Hepsini seç"
 
-msgid "Select all for deletion"
-msgstr ""
-
-msgid "Select all for rescheduling"
-msgstr ""
-
 msgid "Select individual parts for the bookbuilder"
 msgstr "Kitap yapıcı için tek tek parçaları seç"
 
@@ -2216,12 +2146,6 @@ msgstr "Oturum paylaşma"
 msgid "Set a date in the future if you want it deferred."
 msgstr "Ertelemek istiyorsan ileri bir tarih gir."
 
-msgid "Settings loaded"
-msgstr ""
-
-msgid "Show _MENU_ entries"
-msgstr ""
-
 msgid "Show cheatsheet"
 msgstr "Kopya kağıdını göster"
 
@@ -2239,12 +2163,6 @@ msgstr "Listede metin tipi ve sayfa sayısını göster"
 
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Metinin altında bilgi kutusunu göster"
-
-msgid "Showing 0 to 0 of 0 entries"
-msgstr ""
-
-msgid "Showing _START_ to _END_ of _TOTAL_ entries"
-msgstr ""
 
 msgid "Single bars"
 msgstr "Tek sütünlar"
@@ -2294,6 +2212,10 @@ msgstr "Bazı alanlar fazla uzun"
 
 msgid "Some ongoing revisions were found"
 msgstr "Devam eden bazı versiyonlar bulundu"
+
+#. (username, host)
+msgid "Someone, probably you, has requested a password reset for %1 at %2."
+msgstr "Birisi, muhtemelen sen, %2 de %1 için şifre sıfırlama istedi."
 
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr "Üzgünüm, bekleyen çok fazla iş var, lütfen sonra tekrar dene!"
@@ -2477,6 +2399,10 @@ msgstr ""
 "Üretilen web sunucusu konfügurasyonu bütün HTTP\n"
 "           isteklerini HTTPS'e yönlendirecek"
 
+#. (valid)
+msgid "The link is valid until %1 (one hour from now)"
+msgstr "Link %1 'e kadar geçerli (şu andan itibaren 1 saat)"
+
 msgid "The logo has the site name on itself"
 msgstr "Logonun kendi üzerinde site adı var"
 
@@ -2492,9 +2418,6 @@ msgstr ""
 
 msgid "The password will be mailed at this address"
 msgstr "Şifre bu adrese postalanacak"
-
-msgid "The reset link will expire in a hour."
-msgstr ""
 
 msgid "The revision has the following messages"
 msgstr "Version için aşağıdaki mesajlar var"
@@ -2533,8 +2456,8 @@ msgid ""
 "The webserver needs to be reconfigured. Please execute in a root shell the "
 "following commands:"
 msgstr ""
-"Web sunucusunun yeniden konfigure edilmesi gerekiyor. Lürfen aşağıdaki "
-"komutları root sheeş'de çalıştır:"
+"Web sunucusunun yeniden konfigure edilmesi gerekiyor. Lütfen aşağıdaki "
+"komutları root sheel'de çalıştır:"
 
 msgid "The whole book in as single signature"
 msgstr "Bütün kitap tek forma halinde"
@@ -2637,7 +2560,7 @@ msgstr "Bu metin yenüz yayınlanmadı"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
-msgstr "Bu metin %1'e devredilecek"
+msgstr "Bu metin %1 'e devredilecek"
 
 msgid "Thumbnail"
 msgstr "Küçük resim"
@@ -2716,6 +2639,9 @@ msgstr "Üçlü sütunlar"
 msgid "Try a random text if unsure"
 msgstr "Emin değilsen rastgele bir metin dene"
 
+msgid "Try again"
+msgstr "Tekrar dene"
+
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
@@ -2744,8 +2670,14 @@ msgstr "URI"
 msgid "URL"
 msgstr "URL"
 
-msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
+msgid ""
+"URL of the new remote repository\n"
+"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
+"        supported."
 msgstr ""
+"Yeni uzak veri deposunun URL'i\n"
+"        HTTP, HTTPS, GIT, ya da yerel (sadece yerel yol (path)).\n"
+"        SSH desteklenmez."
 
 msgid "UTC"
 msgstr "UTC"
@@ -2821,9 +2753,6 @@ msgstr "Kimlik denetimi yapılan kullanıcılar için SSL kullan"
 
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr "Üstliğe bu satırı kopyalayıp fragman resmi olarak kullan:"
-
-msgid "Use one of the site's formats"
-msgstr ""
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
@@ -3013,7 +2942,7 @@ msgstr ""
 
 #. (create_url)
 msgid "You can create a peer at %1"
-msgstr "%1'de bir emsal yaratabilirsin"
+msgstr "%1 'e gidip yeni bir kullanıcı yaratabilirsin"
 
 msgid "You can do so answering a simple question."
 msgstr "Basit bir soruyu cevaplayarak yapabilirsin."
@@ -3042,9 +2971,6 @@ msgid ""
 "You may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr "Başlığın başındaki \"Bir\", vs önekleri çıkartmak isteyebilirsin"
 
-msgid "You may want to use one of these images"
-msgstr ""
-
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
@@ -3054,7 +2980,7 @@ msgstr ""
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
-msgstr "%1'deki şifreni hemen değiştirmelisin"
+msgstr "%1 'e gidip şifreni hemen değiştirmelisin"
 
 msgid "Your browser does not support the audio tag."
 msgstr "Tarayıcın audio tag'ini desteklemiyor."
@@ -3085,9 +3011,6 @@ msgstr "Buraya parça gelecek..."
 msgid "Your password is %1."
 msgstr "Şifren %1."
 
-msgid "Your password was reset, now you can login with it"
-msgstr ""
-
 msgid "Your section here..."
 msgstr "Buraya bölüm gelecek..."
 
@@ -3110,12 +3033,6 @@ msgstr "iptal edildi"
 
 msgid "about, links..."
 msgstr "hakkında, bağlantılar..."
-
-msgid "activate to sort column ascending"
-msgstr ""
-
-msgid "activate to sort column descending"
-msgstr ""
 
 msgid "active"
 msgstr "aktif"
@@ -3155,9 +3072,6 @@ msgstr "vurgu"
 
 msgid "failed"
 msgstr "başarısız"
-
-msgid "filtered from _MAX_ total entries"
-msgstr ""
 
 msgid "for code, monospaced"
 msgstr "kod için, sabit aralıklı"
@@ -3303,42 +3217,3 @@ msgstr ""
 "\"Yarım kalmış düzenleme\", versiyon düzenlenirken yarıda bırakılmış,\n"
 "    ama birisi metni düzenlemek için oradan devam edebilir\n"
 "    demektir."
-
-#~ msgid "If you want to proceed, please visit the following url: %1"
-#~ msgstr "İlerlemek istiyorsan lütfen bu url'e git: %1"
-
-#~ msgid "Now you can proceed to login."
-#~ msgstr "Şimdi girişe devam edebilirsin."
-
-#~ msgid "Otherwise, please just ignore this mail."
-#~ msgstr "Aksi halde, lütfen bu postayı yok say."
-
-#~ msgid "Password reset for %1"
-#~ msgstr "%1 için şifre sıfırlama"
-
-#~ msgid "Someone, probably you, has requested a password reset for %1 at %2."
-#~ msgstr "Birisi, muhtemelen sen, %2 de %1 için şifre sıfırlama istedi."
-
-#~ msgid "The link is valid until %1 (one hour from now)"
-#~ msgstr "Link %1'e kadar geçerli (şu andan itibaren 1 saat)"
-
-#~ msgid "Fixed category list"
-#~ msgstr "Sabit kategori listesi"
-
-#~ msgid "Job deleted"
-#~ msgstr "İş silindi"
-
-#~ msgid "Job rescheduled"
-#~ msgstr "İş tekrar zamanlandı"
-
-#~ msgid "Try again"
-#~ msgstr "Tekrar dene"
-
-#~ msgid ""
-#~ "URL of the new remote repository\n"
-#~ "        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
-#~ "        supported."
-#~ msgstr ""
-#~ "Yeni uzak veri deposunun URL'i\n"
-#~ "        HTTP, HTTPS, GIT, ya da yerel (sadece yerel yol (path)).\n"
-#~ "        SSH desteklenmez."
