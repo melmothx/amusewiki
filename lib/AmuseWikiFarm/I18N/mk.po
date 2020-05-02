@@ -125,11 +125,6 @@ msgstr "Додаден нов репозитириум"
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr "Додади нераздвоив проред соодветен за јазикот"
 
-msgid "Add or delete and add again the <user_repo_url> on this page."
-msgstr ""
-"Додади го или избриши го и повторно додади го URL-то на репозитириумот на "
-"оваа страница"
-
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
 "(integer)"
@@ -443,9 +438,6 @@ msgstr "Кликни на сликите за пример за PDF"
 msgid "Clone"
 msgstr ""
 
-msgid "Clone the repo locally and set it up"
-msgstr "Клонирај го репозиториумот на својата машина и подеси го"
-
 msgid "Close"
 msgstr "Затвори"
 
@@ -502,17 +494,16 @@ msgstr "Креирај нова посебна страница"
 msgid "Create a new user"
 msgstr "Создади нов корисник"
 
+msgid ""
+"Create a public repository on GitLab, GitHub or similar services (or on your "
+"own server). "
+msgstr ""
+
 msgid "Create a topic alias"
 msgstr "Креирај алијас за темата"
 
 msgid "Create an author alias"
 msgstr "Креирај алијас за авторот"
-
-msgid ""
-"Create an empty repository. Here we refer to its url as <user_repo_url>."
-msgstr ""
-"Создади нов репозиториум. Овде неговиот URL го споменуваме како "
-"<user_repo_url>."
 
 msgid "Create new site"
 msgstr "Креирај нов сајт"
@@ -547,6 +538,9 @@ msgstr "Датум на оригиналното издание"
 
 msgid "Default sorting for the category text list"
 msgstr "Зададено сортирање"
+
+msgid "Default value if blank:"
+msgstr ""
 
 msgid "Deferred/Deleted texts"
 msgstr "Одложени/избришани текстови"
@@ -749,6 +743,9 @@ msgstr "Пример"
 msgid "Existing redirections"
 msgstr "Постоечки пренасочувања"
 
+msgid "Expected pages"
+msgstr ""
+
 msgid "Failed"
 msgstr "Неуспешно"
 
@@ -894,6 +891,11 @@ msgstr "Општа конфигурација"
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Генеричен формат (го собира и на А4 и на Letter)"
 
+msgid ""
+"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
+"using the form you can find above. You can have one personal repository."
+msgstr ""
+
 msgid "Git console"
 msgstr "Git конзола"
 
@@ -962,6 +964,9 @@ msgstr ""
 msgid "Higher division factor means narrower margins"
 msgstr "Колку факторот на поделба е поголем толку маргините ќе бидат потесни"
 
+msgid "How are you going to access Git?"
+msgstr ""
+
 msgid "How do I create a landing page?"
 msgstr "Како можам да креирам насловна страница?"
 
@@ -983,9 +988,6 @@ msgstr "Како можам да пренасочам на друга стран
 msgid "How to choose a password"
 msgstr "Како да избереш лозинка"
 
-msgid "How to work with a remote repo"
-msgstr "Како да управуваш со оддалечен репозиториум"
-
 msgid ""
 "However, you can browse, search, download and read the texts\n"
 "  from mobile reading applications which support the so-called OPDS\n"
@@ -997,8 +999,14 @@ msgstr ""
 msgid "I am human"
 msgstr "Јас сум човек"
 
+msgid "I have a system user with SSH access"
+msgstr ""
+
 msgid "I want an imposed (ready to print) PDF"
 msgstr "Сакам PDF подготвен за печатење"
+
+msgid "I will provide my remote repository"
+msgstr ""
 
 msgid "IRC channel on freenode"
 msgstr "IRC канал на мрежата Freenode"
@@ -1018,6 +1026,11 @@ msgstr ""
 msgid ""
 "If it was not your intention, please just ignore this mail and\n"
 "your password will not be changed."
+msgstr ""
+
+msgid ""
+"If it's not the case, please open a bug report at https://github.com/"
+"melmothx/amusewiki/issues"
 msgstr ""
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
@@ -1572,6 +1585,14 @@ msgstr "E-mail известувања: остави празно за да ги 
 msgid "Notify to"
 msgstr "Извести"
 
+msgid ""
+"Now it has been aligned to the site's archive, but this means that there are "
+"some missing commits."
+msgstr ""
+
+msgid "Now we are going to populate it and get it ready"
+msgstr ""
+
 msgid "Number of jobs"
 msgstr "Број на задачи"
 
@@ -1774,6 +1795,10 @@ msgstr ""
 "Заради подобра прегледност, не користи повисоки нивоа (дел или поглавје)\n"
 " за кратки текстови, туку оддели."
 
+#. (amw_group_name)
+msgid "Please ensure that your system user is member of the \"%1\" group"
+msgstr ""
+
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
 "        Just a fancy name, so we can know that multiple uploads come\n"
@@ -1782,6 +1807,11 @@ msgstr ""
 "Те молам внеси корисничко име. *Не треба* да биде мејл адреса.\n"
 " Само какво било име, за да знаеме дека повеќекратните внесови доаѓаат \n"
 " од иста личност."
+
+msgid ""
+"Please initialized it empty, without any README,license, .gitignore or "
+"similar."
+msgstr ""
 
 msgid ""
 "Please keep in mind that filters are language-specific\n"
@@ -1843,6 +1873,11 @@ msgid "Please reload your page"
 msgstr "Вчитај ја повторно твојата страница"
 
 msgid "Please remove this file from the body first"
+msgstr ""
+
+msgid ""
+"Please replace the example URL in the next line with the real one with SSH "
+"protocol"
 msgstr ""
 
 msgid "Please select"
@@ -1970,6 +2005,9 @@ msgstr "RSS feed"
 msgid "Random"
 msgstr "Случајна страница"
 
+msgid "Read about the file naming scheme if you need to add files to the tree."
+msgstr ""
+
 msgid "Read the whole text..."
 msgstr "Прочитај го целиот текст..."
 
@@ -2034,9 +2072,6 @@ msgstr "Додаден е оддалечен репозиториум %1"
 msgid "Remote repository %1 removed"
 msgstr "Оддалечениот репозиториум %1 е избришан"
 
-msgid "Remotes"
-msgstr "Оддалечен репозиториум"
-
 msgid "Remove"
 msgstr "Избриши"
 
@@ -2054,9 +2089,6 @@ msgstr "Повтори го email-от"
 
 msgid "Repeat password"
 msgstr "Повтори ја лозинката"
-
-msgid "Repository"
-msgstr "Репозиториум"
 
 msgid "Request failed! Please report the the problem"
 msgstr ""
@@ -2211,6 +2243,9 @@ msgstr "Стави иден датум доколку сакаш да го од�
 msgid "Settings loaded"
 msgstr ""
 
+msgid "Setup"
+msgstr ""
+
 msgid "Show _MENU_ entries"
 msgstr ""
 
@@ -2264,6 +2299,9 @@ msgstr "Име на сајтот"
 
 msgid "Site slogan"
 msgstr "Слоган на сајтот"
+
+msgid "Site users"
+msgstr ""
 
 msgid "Sites"
 msgstr "Сајтови"
@@ -2440,6 +2478,9 @@ msgstr ""
 "само име на датотеката\n"
 " ако таа е инсталирана во Texlive. Можеш да го направиш тоа користејќи ги\n"
 " следните команди."
+
+msgid "The changes will propagate automatically once you push."
+msgstr ""
 
 #. ($uri)
 msgid "The description for %1 has been updated"
@@ -2623,6 +2664,9 @@ msgstr "Овој текст сè уште не е објавен"
 msgid "This text will be deferred to %1"
 msgstr "Овој текст ќе се објави на %1"
 
+msgid "This user cannot be removed"
+msgstr ""
+
 msgid "Thumbnail"
 msgstr "Минијатура"
 
@@ -2744,6 +2788,11 @@ msgid ""
 msgstr ""
 "Задолжително отстрани ги сите невидливи нераздвоиви прореди во текстот."
 
+#. (shared)
+msgid ""
+"Unfortunately, the shared repository located at %1 appeared out of sync."
+msgstr ""
+
 msgid "Unique ID for the text"
 msgstr "Единствен ID за текстот"
 
@@ -2829,6 +2878,7 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Корисникот %1 е креиран!"
 
+#. ($user->username)
 #. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Корисникот %1 избришан"
@@ -2861,6 +2911,11 @@ msgstr ""
 "личност.\n"
 "Доволно е да се препише во следниот формулар."
 
+msgid ""
+"Usually this is due to high traffic and bad luck, and it can be fixed by "
+"pushing the changes again."
+msgstr ""
+
 msgid "Verbatim block"
 msgstr "Предформатиран дел"
 
@@ -2875,6 +2930,11 @@ msgstr "Виртуелни хостови, по еден во ред"
 
 msgid "What links here"
 msgstr "Што води овде"
+
+msgid ""
+"When creating a new text, do not populate the publication date if not "
+"provided by the user."
+msgstr ""
 
 msgid ""
 "When you start a bookbuilder session, at the end of the\n"
@@ -2976,6 +3036,12 @@ msgstr ""
 
 msgid "You are logged in now!"
 msgstr "Сега си пријавен!"
+
+#. (backup)
+msgid ""
+"You can access the backup located at %1 or ask your host for help, "
+"forwarding this email"
+msgstr ""
 
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
@@ -3153,9 +3219,6 @@ msgstr "за поезија"
 msgid "generic sectioning, good for articles"
 msgstr "општ оддел, препорачан за кратки текстови"
 
-msgid "if the repository is exported"
-msgstr "доколку репозиториумот е отворен на web"
-
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr "ако сакаш посебни димензии треба да вметнеш и ширина и висина"
 
@@ -3186,13 +3249,6 @@ msgstr ""
 
 msgid "or"
 msgstr "или"
-
-msgid ""
-"or, if you have SSH access to the machine (but do not use the same user as "
-"amusewiki, it should be a read-only repo)"
-msgstr ""
-"Или, ако имаш SSH пристап на машината (немој да го користиш истиот корисник "
-"од апликацијата)"
 
 msgid "ordered item"
 msgstr "нумериран елемент"
@@ -3283,6 +3339,39 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Add or delete and add again the <user_repo_url> on this page."
+#~ msgstr ""
+#~ "Додади го или избриши го и повторно додади го URL-то на репозитириумот на "
+#~ "оваа страница"
+
+#~ msgid "Clone the repo locally and set it up"
+#~ msgstr "Клонирај го репозиториумот на својата машина и подеси го"
+
+#~ msgid ""
+#~ "Create an empty repository. Here we refer to its url as <user_repo_url>."
+#~ msgstr ""
+#~ "Создади нов репозиториум. Овде неговиот URL го споменуваме како "
+#~ "<user_repo_url>."
+
+#~ msgid "How to work with a remote repo"
+#~ msgstr "Како да управуваш со оддалечен репозиториум"
+
+#~ msgid "Remotes"
+#~ msgstr "Оддалечен репозиториум"
+
+#~ msgid "Repository"
+#~ msgstr "Репозиториум"
+
+#~ msgid "if the repository is exported"
+#~ msgstr "доколку репозиториумот е отворен на web"
+
+#~ msgid ""
+#~ "or, if you have SSH access to the machine (but do not use the same user "
+#~ "as amusewiki, it should be a read-only repo)"
+#~ msgstr ""
+#~ "Или, ако имаш SSH пристап на машината (немој да го користиш истиот "
+#~ "корисник од апликацијата)"
 
 #~ msgid "If you want to proceed, please visit the following url: %1"
 #~ msgstr "Ако сакаш да продолжиш, оди на оваа адреса: %1"

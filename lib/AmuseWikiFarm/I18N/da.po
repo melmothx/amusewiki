@@ -124,9 +124,6 @@ msgstr "Tilføj et nyt fjernarkiv"
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr "Tilføj hårde mellemrum hvor det er passende for sproget"
 
-msgid "Add or delete and add again the <user_repo_url> on this page."
-msgstr "Tilføj eller slet og tilføj igen <user_repo_url> på denne side."
-
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
 "(integer)"
@@ -437,9 +434,6 @@ msgstr "Klik på billederne for at se prøve-PDF'en"
 msgid "Clone"
 msgstr ""
 
-msgid "Clone the repo locally and set it up"
-msgstr "Klon arkivet lokalt og sæt det op"
-
 msgid "Close"
 msgstr "Luk"
 
@@ -496,15 +490,16 @@ msgstr "Skab en ny specialside"
 msgid "Create a new user"
 msgstr "Skab en ny bruger"
 
+msgid ""
+"Create a public repository on GitLab, GitHub or similar services (or on your "
+"own server). "
+msgstr ""
+
 msgid "Create a topic alias"
 msgstr "Skab et emnepseudonym"
 
 msgid "Create an author alias"
 msgstr "Skab et forfatterpseudonym"
-
-msgid ""
-"Create an empty repository. Here we refer to its url as <user_repo_url>."
-msgstr "Skab et tomt arkiv. Her henviser vi til dets URL som <user_repo_url>."
 
 msgid "Create new site"
 msgstr "Skab en ny side"
@@ -538,6 +533,9 @@ msgid "Date of the original publication"
 msgstr "Oprindelig udgivelsesdato"
 
 msgid "Default sorting for the category text list"
+msgstr ""
+
+msgid "Default value if blank:"
 msgstr ""
 
 msgid "Deferred/Deleted texts"
@@ -741,6 +739,9 @@ msgstr "Eksempel"
 msgid "Existing redirections"
 msgstr "Eksisterende omdirigeringer"
 
+msgid "Expected pages"
+msgstr ""
+
 msgid "Failed"
 msgstr "Mislykkede"
 
@@ -884,6 +885,11 @@ msgstr "Generel konfiguration"
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Generel (passer på A4 og Letter)"
 
+msgid ""
+"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
+"using the form you can find above. You can have one personal repository."
+msgstr ""
+
 msgid "Git console"
 msgstr "Git konsol"
 
@@ -951,6 +957,9 @@ msgstr ""
 msgid "Higher division factor means narrower margins"
 msgstr "Højere divisor betyder smallere margener"
 
+msgid "How are you going to access Git?"
+msgstr ""
+
 msgid "How do I create a landing page?"
 msgstr "Hvordan skaber jeg en forside?"
 
@@ -972,9 +981,6 @@ msgstr "Hvordan omdirigerer jeg til en anden side?"
 msgid "How to choose a password"
 msgstr "Hvordan man vælger et kodeord"
 
-msgid "How to work with a remote repo"
-msgstr "Hvordan man arbejder med at fjernarkiv"
-
 msgid ""
 "However, you can browse, search, download and read the texts\n"
 "  from mobile reading applications which support the so-called OPDS\n"
@@ -987,9 +993,15 @@ msgstr ""
 msgid "I am human"
 msgstr "Jeg er et menneske"
 
+msgid "I have a system user with SSH access"
+msgstr ""
+
 msgid "I want an imposed (ready to print) PDF"
 msgstr ""
 "Jeg vil have en PDF som er udskudt/imposeret (klar til udskrift som pjece)"
+
+msgid "I will provide my remote repository"
+msgstr ""
 
 msgid "IRC channel on freenode"
 msgstr "IRC kanal på freenode"
@@ -1009,6 +1021,11 @@ msgstr ""
 msgid ""
 "If it was not your intention, please just ignore this mail and\n"
 "your password will not be changed."
+msgstr ""
+
+msgid ""
+"If it's not the case, please open a bug report at https://github.com/"
+"melmothx/amusewiki/issues"
 msgstr ""
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
@@ -1551,6 +1568,14 @@ msgstr "Meddelelses mail: et tomt felt deaktiverer dem"
 msgid "Notify to"
 msgstr "Meddel til"
 
+msgid ""
+"Now it has been aligned to the site's archive, but this means that there are "
+"some missing commits."
+msgstr ""
+
+msgid "Now we are going to populate it and get it ready"
+msgstr ""
+
 msgid "Number of jobs"
 msgstr "Antal job"
 
@@ -1754,6 +1779,10 @@ msgstr ""
 "Brug venligst ikke højere niveauer (del eller kapitel) til kortere artikler "
 "med sektioner."
 
+#. (amw_group_name)
+msgid "Please ensure that your system user is member of the \"%1\" group"
+msgstr ""
+
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
 "        Just a fancy name, so we can know that multiple uploads come\n"
@@ -1762,6 +1791,11 @@ msgstr ""
 "Giv os venligst et brugernavn. Det skal *ikke* være en mail-adresse.\n"
 "        Bare find på et navn, så vi ved at forskellige uploads kommer\n"
 "        fra samme person."
+
+msgid ""
+"Please initialized it empty, without any README,license, .gitignore or "
+"similar."
+msgstr ""
 
 msgid ""
 "Please keep in mind that filters are language-specific\n"
@@ -1816,6 +1850,11 @@ msgid "Please reload your page"
 msgstr "Genindlæs venligst siden"
 
 msgid "Please remove this file from the body first"
+msgstr ""
+
+msgid ""
+"Please replace the example URL in the next line with the real one with SSH "
+"protocol"
 msgstr ""
 
 msgid "Please select"
@@ -1940,6 +1979,9 @@ msgstr "RSS-feed"
 msgid "Random"
 msgstr "Tilfældig tekst"
 
+msgid "Read about the file naming scheme if you need to add files to the tree."
+msgstr ""
+
 msgid "Read the whole text..."
 msgstr "Læs hele teksten..."
 
@@ -2004,9 +2046,6 @@ msgstr "Fjernarkivet %1 tilføjet"
 msgid "Remote repository %1 removed"
 msgstr "Fjernarkivet %1 fjernet"
 
-msgid "Remotes"
-msgstr "Fjerne"
-
 msgid "Remove"
 msgstr "Fjern"
 
@@ -2024,9 +2063,6 @@ msgstr "Gentag e-mail"
 
 msgid "Repeat password"
 msgstr "Gentag kodeord"
-
-msgid "Repository"
-msgstr "Arkiv"
 
 msgid "Request failed! Please report the the problem"
 msgstr ""
@@ -2181,6 +2217,9 @@ msgstr "Sæt en dato i fremtiden hvis du vil udskyde den."
 msgid "Settings loaded"
 msgstr ""
 
+msgid "Setup"
+msgstr ""
+
 msgid "Show _MENU_ entries"
 msgstr ""
 
@@ -2234,6 +2273,9 @@ msgstr "Side navn"
 
 msgid "Site slogan"
 msgstr "Side slogan"
+
+msgid "Site users"
+msgstr ""
 
 msgid "Sites"
 msgstr "Sider"
@@ -2401,6 +2443,9 @@ msgid ""
 "            or just a filename if you choose to install it in the\n"
 "            TeXlive tree. You can do so with the following commands.\n"
 "            The last one checks if the file can be found."
+msgstr ""
+
+msgid "The changes will propagate automatically once you push."
 msgstr ""
 
 #. ($uri)
@@ -2578,6 +2623,9 @@ msgstr "Denne tekst er ikke offentliggjort endnu"
 msgid "This text will be deferred to %1"
 msgstr "Denne tekst vi blive forsinket til %1"
 
+msgid "This user cannot be removed"
+msgstr ""
+
 msgid "Thumbnail"
 msgstr ""
 
@@ -2690,6 +2738,11 @@ msgid ""
 "                spaces in the text"
 msgstr ""
 
+#. (shared)
+msgid ""
+"Unfortunately, the shared repository located at %1 appeared out of sync."
+msgstr ""
+
 msgid "Unique ID for the text"
 msgstr "Tekstens unikke ID"
 
@@ -2775,6 +2828,7 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Brugeren %1 er blevet skabt!"
 
+#. ($user->username)
 #. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Brugeren %1 er blevet slettet"
@@ -2807,6 +2861,11 @@ msgstr ""
 "    Skriv den blot ned og indlæs den fra anden computer\n"
 "    med den følgende formular."
 
+msgid ""
+"Usually this is due to high traffic and bad luck, and it can be fixed by "
+"pushing the changes again."
+msgstr ""
+
 msgid "Verbatim block"
 msgstr "Ordret blok"
 
@@ -2820,6 +2879,11 @@ msgid "Virtual hosts, one per line"
 msgstr "Virtuelle værter, en per linje"
 
 msgid "What links here"
+msgstr ""
+
+msgid ""
+"When creating a new text, do not populate the publication date if not "
+"provided by the user."
 msgstr ""
 
 msgid ""
@@ -2915,6 +2979,12 @@ msgstr ""
 
 msgid "You are logged in now!"
 msgstr "Du er logget ind nu!"
+
+#. (backup)
+msgid ""
+"You can access the backup located at %1 or ask your host for help, "
+"forwarding this email"
+msgstr ""
 
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
@@ -3096,9 +3166,6 @@ msgstr "til poesi"
 msgid "generic sectioning, good for articles"
 msgstr "generel sektionering, passer til artikler"
 
-msgid "if the repository is exported"
-msgstr "hvis arkivet er eksporteret"
-
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
 "hvis du vil anvende en tilpasset størrelse er du nødt til at fastsætte både "
@@ -3131,11 +3198,6 @@ msgstr ""
 
 msgid "or"
 msgstr "eller"
-
-msgid ""
-"or, if you have SSH access to the machine (but do not use the same user as "
-"amusewiki, it should be a read-only repo)"
-msgstr ""
 
 msgid "ordered item"
 msgstr "nummereret element"
@@ -3228,6 +3290,29 @@ msgstr ""
 "    under redigeringen, men den er stadig der, hvis nogen skulle få lyst "
 "til\n"
 "    at samle den op under redigeringen af en tekst."
+
+#~ msgid "Add or delete and add again the <user_repo_url> on this page."
+#~ msgstr "Tilføj eller slet og tilføj igen <user_repo_url> på denne side."
+
+#~ msgid "Clone the repo locally and set it up"
+#~ msgstr "Klon arkivet lokalt og sæt det op"
+
+#~ msgid ""
+#~ "Create an empty repository. Here we refer to its url as <user_repo_url>."
+#~ msgstr ""
+#~ "Skab et tomt arkiv. Her henviser vi til dets URL som <user_repo_url>."
+
+#~ msgid "How to work with a remote repo"
+#~ msgstr "Hvordan man arbejder med at fjernarkiv"
+
+#~ msgid "Remotes"
+#~ msgstr "Fjerne"
+
+#~ msgid "Repository"
+#~ msgstr "Arkiv"
+
+#~ msgid "if the repository is exported"
+#~ msgstr "hvis arkivet er eksporteret"
 
 #~ msgid "If you want to proceed, please visit the following url: %1"
 #~ msgstr "Hvis du ønsker at fortsætte, så besøg venligst denne URL: %1"

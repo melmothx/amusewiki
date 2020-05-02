@@ -130,10 +130,6 @@ msgstr "Voeg externe repository toe"
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr "Voeg harde spatie toe waar van toepassing voor de taal"
 
-msgid "Add or delete and add again the <user_repo_url> on this page."
-msgstr ""
-"Voeg toe of verwijder en voeg op nieuw toe de <user_repo_url> op deze pagina."
-
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
 "(integer)"
@@ -453,9 +449,6 @@ msgstr "Klik op de afbeelding om de voorbeeld PDF te krijgen"
 msgid "Clone"
 msgstr ""
 
-msgid "Clone the repo locally and set it up"
-msgstr "Kloon de repo lokaal en begin hem"
-
 msgid "Close"
 msgstr "Sluit"
 
@@ -514,17 +507,16 @@ msgstr "Maak een nieuwe speciale pagina"
 msgid "Create a new user"
 msgstr "Maak een nieuwe gebruiker"
 
+msgid ""
+"Create a public repository on GitLab, GitHub or similar services (or on your "
+"own server). "
+msgstr ""
+
 msgid "Create a topic alias"
 msgstr "Maak een nieuw onderwerpalias"
 
 msgid "Create an author alias"
 msgstr "Maak een auteuralias"
-
-msgid ""
-"Create an empty repository. Here we refer to its url as <user_repo_url>."
-msgstr ""
-"Maak een lege repository. Hier refereren we zijn zijn url als "
-"<user_repo_url>."
 
 msgid "Create new site"
 msgstr "Voeg een nieuwe site toe"
@@ -559,6 +551,9 @@ msgstr "Datum van de originele publicatie"
 
 msgid "Default sorting for the category text list"
 msgstr "Standaar sortering voor de categorie tekstlijst"
+
+msgid "Default value if blank:"
+msgstr ""
 
 msgid "Deferred/Deleted texts"
 msgstr "Uitgestelde/verwijderde teksten"
@@ -769,6 +764,9 @@ msgstr "Voorbeeld"
 msgid "Existing redirections"
 msgstr "Bestaande verwijzingen"
 
+msgid "Expected pages"
+msgstr ""
+
 msgid "Failed"
 msgstr "Mislukt"
 
@@ -913,6 +911,11 @@ msgstr "Algemene instellingen"
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Generiek (past in A4 en US-Letter)"
 
+msgid ""
+"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
+"using the form you can find above. You can have one personal repository."
+msgstr ""
+
 msgid "Git console"
 msgstr "Git console"
 
@@ -987,6 +990,9 @@ msgstr ""
 msgid "Higher division factor means narrower margins"
 msgstr "Hogere deelfactor betekent smallere marges"
 
+msgid "How are you going to access Git?"
+msgstr ""
+
 msgid "How do I create a landing page?"
 msgstr "Hoe maak ik een landingspagina?"
 
@@ -1008,9 +1014,6 @@ msgstr "Hoe verwijs ik naar een andere pagina?"
 msgid "How to choose a password"
 msgstr "Hoe kies je een wachtwoord"
 
-msgid "How to work with a remote repo"
-msgstr "Hoe werk je met een externe repository"
-
 msgid ""
 "However, you can browse, search, download and read the texts\n"
 "  from mobile reading applications which support the so-called OPDS\n"
@@ -1023,8 +1026,14 @@ msgstr ""
 msgid "I am human"
 msgstr "Ik ben een mens"
 
+msgid "I have a system user with SSH access"
+msgstr ""
+
 msgid "I want an imposed (ready to print) PDF"
 msgstr "Ik wil een opgelegde (klaar om te printen) PDF"
+
+msgid "I will provide my remote repository"
+msgstr ""
 
 msgid "IRC channel on freenode"
 msgstr "IRC kanaal op freenode"
@@ -1044,6 +1053,11 @@ msgstr ""
 msgid ""
 "If it was not your intention, please just ignore this mail and\n"
 "your password will not be changed."
+msgstr ""
+
+msgid ""
+"If it's not the case, please open a bug report at https://github.com/"
+"melmothx/amusewiki/issues"
 msgstr ""
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
@@ -1618,6 +1632,14 @@ msgstr "Notificatiemail: leeg veld schakelt ze uit"
 msgid "Notify to"
 msgstr "Notifactie aan"
 
+msgid ""
+"Now it has been aligned to the site's archive, but this means that there are "
+"some missing commits."
+msgstr ""
+
+msgid "Now we are going to populate it and get it ready"
+msgstr ""
+
 msgid "Number of jobs"
 msgstr "Aantal taken"
 
@@ -1825,6 +1847,10 @@ msgstr ""
 "Gebruik niet de hogere niveaus (delen of hoofdstukken) voor korte artikelen "
 "met secties."
 
+#. (amw_group_name)
+msgid "Please ensure that your system user is member of the \"%1\" group"
+msgstr ""
+
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
 "        Just a fancy name, so we can know that multiple uploads come\n"
@@ -1833,6 +1859,11 @@ msgstr ""
 "Geef ons een gebruikersnaam. Het mag *geen* e-mailadres zijn.\n"
 "        Gewoon een mooie naam, zodat we weten dat verschillende\n"
 "        uploads van dezelfde persoon komen."
+
+msgid ""
+"Please initialized it empty, without any README,license, .gitignore or "
+"similar."
+msgstr ""
 
 msgid ""
 "Please keep in mind that filters are language-specific\n"
@@ -1891,6 +1922,11 @@ msgstr "Herlaad de pagina"
 
 msgid "Please remove this file from the body first"
 msgstr "Verwijder dit bestand eerst uit de hoofdtekst"
+
+msgid ""
+"Please replace the example URL in the next line with the real one with SSH "
+"protocol"
+msgstr ""
 
 msgid "Please select"
 msgstr "Selecteer"
@@ -2019,6 +2055,9 @@ msgstr "RSS feed"
 msgid "Random"
 msgstr "Willekeurig"
 
+msgid "Read about the file naming scheme if you need to add files to the tree."
+msgstr ""
+
 msgid "Read the whole text..."
 msgstr "Lees de hele tekst..."
 
@@ -2083,9 +2122,6 @@ msgstr "Externe repository %1 toegevoegd"
 msgid "Remote repository %1 removed"
 msgstr "Externe repository %1 verwijderd"
 
-msgid "Remotes"
-msgstr "Externen"
-
 msgid "Remove"
 msgstr "Verwijder"
 
@@ -2103,9 +2139,6 @@ msgstr "Herhaal e-mail"
 
 msgid "Repeat password"
 msgstr "Herhaal wachtwoord"
-
-msgid "Repository"
-msgstr "Repository"
 
 msgid "Request failed! Please report the the problem"
 msgstr "Verzoek mislukt! Vertel ons alsjeblieft over dit probleem"
@@ -2260,6 +2293,9 @@ msgstr "Stek een datum in de toekomst in als je het uit wil stellen."
 msgid "Settings loaded"
 msgstr ""
 
+msgid "Setup"
+msgstr ""
+
 msgid "Show _MENU_ entries"
 msgstr ""
 
@@ -2313,6 +2349,9 @@ msgstr "Sitenaam"
 
 msgid "Site slogan"
 msgstr "Siteslogan"
+
+msgid "Site users"
+msgstr ""
 
 msgid "Sites"
 msgstr "Sites"
@@ -2494,6 +2533,9 @@ msgstr ""
 "doen\n"
 "            met de volgende commando's. De laatste controleert of het\n"
 "            bestand gevonden kan worden."
+
+msgid "The changes will propagate automatically once you push."
+msgstr ""
 
 #. ($uri)
 msgid "The description for %1 has been updated"
@@ -2686,6 +2728,9 @@ msgstr "Deze tekst is nog niet gepubliceerd"
 msgid "This text will be deferred to %1"
 msgstr "Deze test zal worden uitgesteld tot %1"
 
+msgid "This user cannot be removed"
+msgstr ""
+
 msgid "Thumbnail"
 msgstr "Miniafbeelding"
 
@@ -2809,6 +2854,11 @@ msgstr ""
 "Onvoorwaardelijk alle zichtbaar hard spaties in de\n"
 "                verwijderen"
 
+#. (shared)
+msgid ""
+"Unfortunately, the shared repository located at %1 appeared out of sync."
+msgstr ""
+
 msgid "Unique ID for the text"
 msgstr "Unieke ID voor de tekst"
 
@@ -2895,6 +2945,7 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Gebruiker %1 aangemaakt!"
 
+#. ($user->username)
 #. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Gebruiker %1 verwijderd"
@@ -2930,6 +2981,11 @@ msgstr ""
 "een\n"
 "    andere computer met volgende formulier."
 
+msgid ""
+"Usually this is due to high traffic and bad luck, and it can be fixed by "
+"pushing the changes again."
+msgstr ""
+
 msgid "Verbatim block"
 msgstr "Letterlijk blok"
 
@@ -2944,6 +3000,11 @@ msgstr "Virtuele hosts, een per regel"
 
 msgid "What links here"
 msgstr "Wat hiernaartoe linkt"
+
+msgid ""
+"When creating a new text, do not populate the publication date if not "
+"provided by the user."
+msgstr ""
 
 msgid ""
 "When you start a bookbuilder session, at the end of the\n"
@@ -3050,6 +3111,12 @@ msgstr ""
 
 msgid "You are logged in now!"
 msgstr "Je bent nu ingelogd!"
+
+#. (backup)
+msgid ""
+"You can access the backup located at %1 or ask your host for help, "
+"forwarding this email"
+msgstr ""
 
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
@@ -3232,9 +3299,6 @@ msgstr "voor poezie"
 msgid "generic sectioning, good for articles"
 msgstr "generieke indeling, goed voor artikelen"
 
-msgid "if the repository is exported"
-msgstr "als de repository geexporteerd is"
-
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
 "als je een aangepast grootte wilt gebruiken, moet je zowel breedte als "
@@ -3267,13 +3331,6 @@ msgstr ""
 
 msgid "or"
 msgstr "of"
-
-msgid ""
-"or, if you have SSH access to the machine (but do not use the same user as "
-"amusewiki, it should be a read-only repo)"
-msgstr ""
-"of, als je SSH toegang hebt tot het apparaat (maar gebruik niet dezelfde "
-"gebruiker als amusewiki, het moet een alleen-lezen repo zijn)"
 
 msgid "ordered item"
 msgstr "bestelde item"
@@ -3365,6 +3422,39 @@ msgstr ""
 "\"Oude bewerking\" betekent dat de herziening was verlaten\n"
 "    tijdens het bewerken, maar hij is er nog steeds voor het geval dat\n"
 "    iemand er verder mee wil gaan bij het bewerken van een tekst."
+
+#~ msgid "Add or delete and add again the <user_repo_url> on this page."
+#~ msgstr ""
+#~ "Voeg toe of verwijder en voeg op nieuw toe de <user_repo_url> op deze "
+#~ "pagina."
+
+#~ msgid "Clone the repo locally and set it up"
+#~ msgstr "Kloon de repo lokaal en begin hem"
+
+#~ msgid ""
+#~ "Create an empty repository. Here we refer to its url as <user_repo_url>."
+#~ msgstr ""
+#~ "Maak een lege repository. Hier refereren we zijn zijn url als "
+#~ "<user_repo_url>."
+
+#~ msgid "How to work with a remote repo"
+#~ msgstr "Hoe werk je met een externe repository"
+
+#~ msgid "Remotes"
+#~ msgstr "Externen"
+
+#~ msgid "Repository"
+#~ msgstr "Repository"
+
+#~ msgid "if the repository is exported"
+#~ msgstr "als de repository geexporteerd is"
+
+#~ msgid ""
+#~ "or, if you have SSH access to the machine (but do not use the same user "
+#~ "as amusewiki, it should be a read-only repo)"
+#~ msgstr ""
+#~ "of, als je SSH toegang hebt tot het apparaat (maar gebruik niet dezelfde "
+#~ "gebruiker als amusewiki, het moet een alleen-lezen repo zijn)"
 
 #~ msgid "If you want to proceed, please visit the following url: %1"
 #~ msgstr "Als je verder wilt gaan, ga dan naar de volgende URL: %1"

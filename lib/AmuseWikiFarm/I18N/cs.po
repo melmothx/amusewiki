@@ -116,9 +116,6 @@ msgstr ""
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr ""
 
-msgid "Add or delete and add again the <user_repo_url> on this page."
-msgstr ""
-
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
 "(integer)"
@@ -406,9 +403,6 @@ msgstr ""
 msgid "Clone"
 msgstr ""
 
-msgid "Clone the repo locally and set it up"
-msgstr ""
-
 msgid "Close"
 msgstr ""
 
@@ -465,14 +459,15 @@ msgstr ""
 msgid "Create a new user"
 msgstr ""
 
+msgid ""
+"Create a public repository on GitLab, GitHub or similar services (or on your "
+"own server). "
+msgstr ""
+
 msgid "Create a topic alias"
 msgstr ""
 
 msgid "Create an author alias"
-msgstr ""
-
-msgid ""
-"Create an empty repository. Here we refer to its url as <user_repo_url>."
 msgstr ""
 
 msgid "Create new site"
@@ -507,6 +502,9 @@ msgid "Date of the original publication"
 msgstr ""
 
 msgid "Default sorting for the category text list"
+msgstr ""
+
+msgid "Default value if blank:"
 msgstr ""
 
 msgid "Deferred/Deleted texts"
@@ -696,6 +694,9 @@ msgstr ""
 msgid "Existing redirections"
 msgstr ""
 
+msgid "Expected pages"
+msgstr ""
+
 msgid "Failed"
 msgstr ""
 
@@ -832,6 +833,11 @@ msgstr ""
 msgid "Generic (fits in A4 and Letter)"
 msgstr ""
 
+msgid ""
+"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
+"using the form you can find above. You can have one personal repository."
+msgstr ""
+
 msgid "Git console"
 msgstr ""
 
@@ -893,6 +899,9 @@ msgstr ""
 msgid "Higher division factor means narrower margins"
 msgstr ""
 
+msgid "How are you going to access Git?"
+msgstr ""
+
 msgid "How do I create a landing page?"
 msgstr ""
 
@@ -914,9 +923,6 @@ msgstr ""
 msgid "How to choose a password"
 msgstr ""
 
-msgid "How to work with a remote repo"
-msgstr ""
-
 msgid ""
 "However, you can browse, search, download and read the texts\n"
 "  from mobile reading applications which support the so-called OPDS\n"
@@ -926,7 +932,13 @@ msgstr ""
 msgid "I am human"
 msgstr ""
 
+msgid "I have a system user with SSH access"
+msgstr ""
+
 msgid "I want an imposed (ready to print) PDF"
+msgstr ""
+
+msgid "I will provide my remote repository"
 msgstr ""
 
 msgid "IRC channel on freenode"
@@ -944,6 +956,11 @@ msgstr ""
 msgid ""
 "If it was not your intention, please just ignore this mail and\n"
 "your password will not be changed."
+msgstr ""
+
+msgid ""
+"If it's not the case, please open a bug report at https://github.com/"
+"melmothx/amusewiki/issues"
 msgstr ""
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
@@ -1443,6 +1460,14 @@ msgstr ""
 msgid "Notify to"
 msgstr ""
 
+msgid ""
+"Now it has been aligned to the site's archive, but this means that there are "
+"some missing commits."
+msgstr ""
+
+msgid "Now we are going to populate it and get it ready"
+msgstr ""
+
 msgid "Number of jobs"
 msgstr ""
 
@@ -1624,10 +1649,19 @@ msgid ""
 "sections."
 msgstr ""
 
+#. (amw_group_name)
+msgid "Please ensure that your system user is member of the \"%1\" group"
+msgstr ""
+
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
 "        Just a fancy name, so we can know that multiple uploads come\n"
 "        from the same person."
+msgstr ""
+
+msgid ""
+"Please initialized it empty, without any README,license, .gitignore or "
+"similar."
 msgstr ""
 
 msgid ""
@@ -1670,6 +1704,11 @@ msgid "Please reload your page"
 msgstr ""
 
 msgid "Please remove this file from the body first"
+msgstr ""
+
+msgid ""
+"Please replace the example URL in the next line with the real one with SSH "
+"protocol"
 msgstr ""
 
 msgid "Please select"
@@ -1785,6 +1824,9 @@ msgstr ""
 msgid "Random"
 msgstr ""
 
+msgid "Read about the file naming scheme if you need to add files to the tree."
+msgstr ""
+
 msgid "Read the whole text..."
 msgstr ""
 
@@ -1840,9 +1882,6 @@ msgstr ""
 msgid "Remote repository %1 removed"
 msgstr ""
 
-msgid "Remotes"
-msgstr ""
-
 msgid "Remove"
 msgstr ""
 
@@ -1859,9 +1898,6 @@ msgid "Repeat email"
 msgstr ""
 
 msgid "Repeat password"
-msgstr ""
-
-msgid "Repository"
 msgstr ""
 
 msgid "Request failed! Please report the the problem"
@@ -2017,6 +2053,9 @@ msgstr ""
 msgid "Settings loaded"
 msgstr ""
 
+msgid "Setup"
+msgstr ""
+
 msgid "Show _MENU_ entries"
 msgstr ""
 
@@ -2069,6 +2108,9 @@ msgid "Site name"
 msgstr ""
 
 msgid "Site slogan"
+msgstr ""
+
+msgid "Site users"
 msgstr ""
 
 msgid "Sites"
@@ -2237,6 +2279,9 @@ msgid ""
 "            The last one checks if the file can be found."
 msgstr ""
 
+msgid "The changes will propagate automatically once you push."
+msgstr ""
+
 #. ($uri)
 msgid "The description for %1 has been updated"
 msgstr ""
@@ -2400,6 +2445,9 @@ msgstr ""
 msgid "This text will be deferred to %1"
 msgstr ""
 
+msgid "This user cannot be removed"
+msgstr ""
+
 msgid "Thumbnail"
 msgstr ""
 
@@ -2512,6 +2560,11 @@ msgid ""
 "                spaces in the text"
 msgstr ""
 
+#. (shared)
+msgid ""
+"Unfortunately, the shared repository located at %1 appeared out of sync."
+msgstr ""
+
 msgid "Unique ID for the text"
 msgstr ""
 
@@ -2594,6 +2647,7 @@ msgstr ""
 msgid "User %1 created!"
 msgstr ""
 
+#. ($user->username)
 #. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr ""
@@ -2621,6 +2675,11 @@ msgid ""
 "    using the following form."
 msgstr ""
 
+msgid ""
+"Usually this is due to high traffic and bad luck, and it can be fixed by "
+"pushing the changes again."
+msgstr ""
+
 msgid "Verbatim block"
 msgstr ""
 
@@ -2634,6 +2693,11 @@ msgid "Virtual hosts, one per line"
 msgstr ""
 
 msgid "What links here"
+msgstr ""
+
+msgid ""
+"When creating a new text, do not populate the publication date if not "
+"provided by the user."
 msgstr ""
 
 msgid ""
@@ -2713,6 +2777,12 @@ msgid ""
 msgstr ""
 
 msgid "You are logged in now!"
+msgstr ""
+
+#. (backup)
+msgid ""
+"You can access the backup located at %1 or ask your host for help, "
+"forwarding this email"
 msgstr ""
 
 msgid ""
@@ -2882,9 +2952,6 @@ msgstr ""
 msgid "generic sectioning, good for articles"
 msgstr ""
 
-msgid "if the repository is exported"
-msgstr ""
-
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
 
@@ -2914,11 +2981,6 @@ msgid "only lowercase ASCII and hyphens"
 msgstr ""
 
 msgid "or"
-msgstr ""
-
-msgid ""
-"or, if you have SSH access to the machine (but do not use the same user as "
-"amusewiki, it should be a read-only repo)"
 msgstr ""
 
 msgid "ordered item"

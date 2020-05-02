@@ -125,11 +125,6 @@ msgstr ""
 "Aggiungi spazi invisibili che non devono spezzare la linea dove\n"
 "appropriato per il linguaggio"
 
-msgid "Add or delete and add again the <user_repo_url> on this page."
-msgstr ""
-"Aggiungi oppure rimovi e aggiungi nuovamente <user_repo_url> in questa "
-"pagina."
-
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
 "(integer)"
@@ -448,9 +443,6 @@ msgstr "Clicca sulle immagini per avere un PDF di esempio"
 msgid "Clone"
 msgstr "Clona"
 
-msgid "Clone the repo locally and set it up"
-msgstr "Clona il repositorio in locale e configuralo"
-
 msgid "Close"
 msgstr "Chiudi"
 
@@ -513,17 +505,16 @@ msgstr "Crea una nuova pagina speciale"
 msgid "Create a new user"
 msgstr "Crea una nuova utenza"
 
+msgid ""
+"Create a public repository on GitLab, GitHub or similar services (or on your "
+"own server). "
+msgstr ""
+
 msgid "Create a topic alias"
 msgstr "Crea un alias per un tema"
 
 msgid "Create an author alias"
 msgstr "Crea un alias per un autore"
-
-msgid ""
-"Create an empty repository. Here we refer to its url as <user_repo_url>."
-msgstr ""
-"Crea un repositorio vuoto. In questa pagina ci si riferisce al suo URL come "
-"<user_repo_url>"
 
 msgid "Create new site"
 msgstr "Crea un nuovo sito"
@@ -558,6 +549,9 @@ msgstr "Data della pubblicazione originale"
 
 msgid "Default sorting for the category text list"
 msgstr "Ordinamento di default per la lista dei testi delle categorie"
+
+msgid "Default value if blank:"
+msgstr ""
 
 msgid "Deferred/Deleted texts"
 msgstr "Testi non ancora pubblicati o rimossi"
@@ -765,6 +759,9 @@ msgstr "Esempio"
 msgid "Existing redirections"
 msgstr "Redirezioni esistenti"
 
+msgid "Expected pages"
+msgstr ""
+
 msgid "Failed"
 msgstr "Fallito"
 
@@ -909,6 +906,11 @@ msgstr "Configurazione generale"
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Formato generico (adatto per A4 e Letter)"
 
+msgid ""
+"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
+"using the form you can find above. You can have one personal repository."
+msgstr ""
+
 msgid "Git console"
 msgstr "Console git"
 
@@ -983,6 +985,9 @@ msgstr ""
 msgid "Higher division factor means narrower margins"
 msgstr "Un fattore di divisione più alto implica margini più stretti"
 
+msgid "How are you going to access Git?"
+msgstr ""
+
 msgid "How do I create a landing page?"
 msgstr "Come posso creare la pagina di default?"
 
@@ -1004,9 +1009,6 @@ msgstr "Come posso impostare una redirezione ad un'altra pagina?"
 msgid "How to choose a password"
 msgstr "Come scegliere una password"
 
-msgid "How to work with a remote repo"
-msgstr "Come lavorare su un archivio remoto"
-
 msgid ""
 "However, you can browse, search, download and read the texts\n"
 "  from mobile reading applications which support the so-called OPDS\n"
@@ -1019,8 +1021,14 @@ msgstr ""
 msgid "I am human"
 msgstr "Sono umano"
 
+msgid "I have a system user with SSH access"
+msgstr ""
+
 msgid "I want an imposed (ready to print) PDF"
 msgstr "Voglio un PDF pronto per la stampa"
+
+msgid "I will provide my remote repository"
+msgstr ""
 
 msgid "IRC channel on freenode"
 msgstr "Canale IRC su Freenode"
@@ -1043,6 +1051,11 @@ msgid ""
 msgstr ""
 "Se non era tua intenzione, ignora questo messaggio e la tua password resterà "
 "uguale"
+
+msgid ""
+"If it's not the case, please open a bug report at https://github.com/"
+"melmothx/amusewiki/issues"
+msgstr ""
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
@@ -1624,6 +1637,14 @@ msgstr "Mail di notifica: lasciare in bianco per disabilitare"
 msgid "Notify to"
 msgstr "Notifica a"
 
+msgid ""
+"Now it has been aligned to the site's archive, but this means that there are "
+"some missing commits."
+msgstr ""
+
+msgid "Now we are going to populate it and get it ready"
+msgstr ""
+
 msgid "Number of jobs"
 msgstr "Numero di lavori"
 
@@ -1830,6 +1851,10 @@ msgid ""
 msgstr ""
 "Non usare un alto livello (parte o capitolo) per articoli brevi con sezioni"
 
+#. (amw_group_name)
+msgid "Please ensure that your system user is member of the \"%1\" group"
+msgstr ""
+
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
 "        Just a fancy name, so we can know that multiple uploads come\n"
@@ -1838,6 +1863,11 @@ msgstr ""
 "Inserisci un nome utente. *Non* deve essere un indirizzo email, solo\n"
 "un nome di fantasia, in modo da sapere se vari testi provengono dallo\n"
 "stesso individuo."
+
+msgid ""
+"Please initialized it empty, without any README,license, .gitignore or "
+"similar."
+msgstr ""
 
 msgid ""
 "Please keep in mind that filters are language-specific\n"
@@ -1898,6 +1928,11 @@ msgstr "Ricarica la pagina"
 
 msgid "Please remove this file from the body first"
 msgstr "Cancella prima il file dal corpo del testo"
+
+msgid ""
+"Please replace the example URL in the next line with the real one with SSH "
+"protocol"
+msgstr ""
 
 msgid "Please select"
 msgstr "Seleziona"
@@ -2022,6 +2057,9 @@ msgstr "Feed RSS"
 msgid "Random"
 msgstr "Pagina casuale"
 
+msgid "Read about the file naming scheme if you need to add files to the tree."
+msgstr ""
+
 msgid "Read the whole text..."
 msgstr "Leggi il testo completo..."
 
@@ -2084,9 +2122,6 @@ msgstr "Aggiunto il repositorio remoto %1"
 msgid "Remote repository %1 removed"
 msgstr "Rimosso il repositorio remoto %1"
 
-msgid "Remotes"
-msgstr "Archivi remoti"
-
 msgid "Remove"
 msgstr "Rimuovi"
 
@@ -2104,9 +2139,6 @@ msgstr "Ripeti la mail"
 
 msgid "Repeat password"
 msgstr "Ripeti la password"
-
-msgid "Repository"
-msgstr "Repository"
 
 msgid "Request failed! Please report the the problem"
 msgstr "Richiesta fallita! Per cortesia contatta gli amministratori"
@@ -2261,6 +2293,9 @@ msgstr "Imposta una data nel futuro se vuoi rimandare la pubblicazione."
 msgid "Settings loaded"
 msgstr "Impostazioni caricate"
 
+msgid "Setup"
+msgstr ""
+
 msgid "Show _MENU_ entries"
 msgstr "Mostra _MENU_ record"
 
@@ -2314,6 +2349,9 @@ msgstr "Nome del sito"
 
 msgid "Site slogan"
 msgstr "Slogan del sito"
+
+msgid "Site users"
+msgstr ""
 
 msgid "Sites"
 msgstr "Siti"
@@ -2494,6 +2532,9 @@ msgstr ""
 "del file se è installato correttamente in TeXlive. Puoi farlo\n"
 "eseguendo i seguenti comandi. L'ultimo comando controlla se il file\n"
 "può essere trovato."
+
+msgid "The changes will propagate automatically once you push."
+msgstr ""
 
 #. ($uri)
 msgid "The description for %1 has been updated"
@@ -2689,6 +2730,9 @@ msgstr "Questo testo ancora non è stato pubblicato"
 msgid "This text will be deferred to %1"
 msgstr "Questo testo verrà pubblicato solo in data %1"
 
+msgid "This user cannot be removed"
+msgstr ""
+
 msgid "Thumbnail"
 msgstr "Miniatura"
 
@@ -2812,6 +2856,11 @@ msgstr ""
 "Rimuovi tutti gli spazi invisibili che impediscono di spezzare la\n"
 "riga"
 
+#. (shared)
+msgid ""
+"Unfortunately, the shared repository located at %1 appeared out of sync."
+msgstr ""
+
 msgid "Unique ID for the text"
 msgstr "Identificativo del testo"
 
@@ -2901,6 +2950,7 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Utenza %1 creata!"
 
+#. ($user->username)
 #. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Utenza %1 rimossa"
@@ -2934,6 +2984,11 @@ msgstr ""
 "altro. Devi semplicemente prendere nota del token e usare il form qui\n"
 "sotto per caricare la sessione."
 
+msgid ""
+"Usually this is due to high traffic and bad luck, and it can be fixed by "
+"pushing the changes again."
+msgstr ""
+
 msgid "Verbatim block"
 msgstr "Blocco letterale"
 
@@ -2948,6 +3003,11 @@ msgstr "Host virtuali, uno per riga"
 
 msgid "What links here"
 msgstr "Puntano qui"
+
+msgid ""
+"When creating a new text, do not populate the publication date if not "
+"provided by the user."
+msgstr ""
 
 msgid ""
 "When you start a bookbuilder session, at the end of the\n"
@@ -3049,6 +3109,12 @@ msgstr ""
 
 msgid "You are logged in now!"
 msgstr "Hai effettuato l'accesso!"
+
+#. (backup)
+msgid ""
+"You can access the backup located at %1 or ask your host for help, "
+"forwarding this email"
+msgstr ""
 
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
@@ -3236,9 +3302,6 @@ msgstr "per brani poetici"
 msgid "generic sectioning, good for articles"
 msgstr "sezione generica, raccomandata per gli articoli"
 
-msgid "if the repository is exported"
-msgstr "se il repositorio è esportato"
-
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
 "se vuoi usare una dimensione arbitraria, devi specificare sia la larghezza "
@@ -3271,14 +3334,6 @@ msgstr "solo ASCII minuscolo e trattini"
 
 msgid "or"
 msgstr "o"
-
-msgid ""
-"or, if you have SSH access to the machine (but do not use the same user as "
-"amusewiki, it should be a read-only repo)"
-msgstr ""
-"oppure, se hai accesso SSH alla macchina (ma non usare la stessa utenza di "
-"amusewiki, è consigliabile che sia un repositorio in sola lettura per "
-"l'applicazione)"
 
 msgid "ordered item"
 msgstr "elemento numerato"
@@ -3370,6 +3425,40 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "Add or delete and add again the <user_repo_url> on this page."
+#~ msgstr ""
+#~ "Aggiungi oppure rimovi e aggiungi nuovamente <user_repo_url> in questa "
+#~ "pagina."
+
+#~ msgid "Clone the repo locally and set it up"
+#~ msgstr "Clona il repositorio in locale e configuralo"
+
+#~ msgid ""
+#~ "Create an empty repository. Here we refer to its url as <user_repo_url>."
+#~ msgstr ""
+#~ "Crea un repositorio vuoto. In questa pagina ci si riferisce al suo URL "
+#~ "come <user_repo_url>"
+
+#~ msgid "How to work with a remote repo"
+#~ msgstr "Come lavorare su un archivio remoto"
+
+#~ msgid "Remotes"
+#~ msgstr "Archivi remoti"
+
+#~ msgid "Repository"
+#~ msgstr "Repository"
+
+#~ msgid "if the repository is exported"
+#~ msgstr "se il repositorio è esportato"
+
+#~ msgid ""
+#~ "or, if you have SSH access to the machine (but do not use the same user "
+#~ "as amusewiki, it should be a read-only repo)"
+#~ msgstr ""
+#~ "oppure, se hai accesso SSH alla macchina (ma non usare la stessa utenza "
+#~ "di amusewiki, è consigliabile che sia un repositorio in sola lettura per "
+#~ "l'applicazione)"
 
 #~ msgid "If you want to proceed, please visit the following url: %1"
 #~ msgstr "Se vuoi procedere, visita questo indirizzo: %1"

@@ -129,9 +129,6 @@ msgstr ""
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr "Shto hapësira të pa-ndërpera ku është e përshtatshme për gjuhën"
 
-msgid "Add or delete and add again the <user_repo_url> on this page."
-msgstr "Shto ose fshij dhe përsëri shto <user_repo_url> në këtë faqe."
-
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
 "(integer)"
@@ -452,9 +449,6 @@ msgstr "Kliko në imazhin që ta shkarkosh mostrën e PDF-it"
 msgid "Clone"
 msgstr ""
 
-msgid "Clone the repo locally and set it up"
-msgstr ""
-
 msgid "Close"
 msgstr "Mbyll"
 
@@ -511,15 +505,16 @@ msgstr "Krijo ne faqe të re speciale"
 msgid "Create a new user"
 msgstr "Krijo një përdorues të ri."
 
+msgid ""
+"Create a public repository on GitLab, GitHub or similar services (or on your "
+"own server). "
+msgstr ""
+
 msgid "Create a topic alias"
 msgstr "Krijo një pseudonim të temës"
 
 msgid "Create an author alias"
 msgstr "Krijo një pseudonim të autorit"
-
-msgid ""
-"Create an empty repository. Here we refer to its url as <user_repo_url>."
-msgstr ""
 
 msgid "Create new site"
 msgstr "Krijo faqën e re"
@@ -553,6 +548,9 @@ msgid "Date of the original publication"
 msgstr "Data e origjinale e botimit"
 
 msgid "Default sorting for the category text list"
+msgstr ""
+
+msgid "Default value if blank:"
 msgstr ""
 
 msgid "Deferred/Deleted texts"
@@ -757,6 +755,9 @@ msgstr "Shembull"
 msgid "Existing redirections"
 msgstr "Ridrejtime ekzistuese"
 
+msgid "Expected pages"
+msgstr ""
+
 msgid "Failed"
 msgstr ""
 
@@ -897,6 +898,11 @@ msgstr "Konfigurimi i përgjithshëm"
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Gjenerike (i përshtatet formatit A4 dhe A4 horizonatle - Letter)"
 
+msgid ""
+"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
+"using the form you can find above. You can have one personal repository."
+msgstr ""
+
 msgid "Git console"
 msgstr "Konsola Git"
 
@@ -967,6 +973,9 @@ msgstr ""
 msgid "Higher division factor means narrower margins"
 msgstr "Faktori më i lartë i ndarjes dmth. margjinat më të ngushta"
 
+msgid "How are you going to access Git?"
+msgstr ""
+
 msgid "How do I create a landing page?"
 msgstr "Si ta krijoj faqën kryesore (ballinën)"
 
@@ -988,9 +997,6 @@ msgstr "Si të kërcej në faqe tjetër"
 msgid "How to choose a password"
 msgstr "Si ta zgjedh fjalëkalimin?"
 
-msgid "How to work with a remote repo"
-msgstr ""
-
 msgid ""
 "However, you can browse, search, download and read the texts\n"
 "  from mobile reading applications which support the so-called OPDS\n"
@@ -1003,8 +1009,14 @@ msgstr ""
 msgid "I am human"
 msgstr "Unë jam njeri"
 
+msgid "I have a system user with SSH access"
+msgstr ""
+
 msgid "I want an imposed (ready to print) PDF"
 msgstr "E dëshiroj PDF-in e imponuar (të gatshëm për print)"
+
+msgid "I will provide my remote repository"
+msgstr ""
 
 msgid "IRC channel on freenode"
 msgstr "Kanali IRC në freenode"
@@ -1024,6 +1036,11 @@ msgstr ""
 msgid ""
 "If it was not your intention, please just ignore this mail and\n"
 "your password will not be changed."
+msgstr ""
+
+msgid ""
+"If it's not the case, please open a bug report at https://github.com/"
+"melmothx/amusewiki/issues"
 msgstr ""
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
@@ -1563,6 +1580,14 @@ msgstr "Mail informues: fusha e zbrazët do ti pamundësoj ato"
 msgid "Notify to"
 msgstr "Njofto  te"
 
+msgid ""
+"Now it has been aligned to the site's archive, but this means that there are "
+"some missing commits."
+msgstr ""
+
+msgid "Now we are going to populate it and get it ready"
+msgstr ""
+
 msgid "Number of jobs"
 msgstr ""
 
@@ -1757,6 +1782,10 @@ msgstr ""
 "Ju lutem mos përdorni nivele më të larta (pjesë të kapitullit) për artikuj "
 "të shkurtë me seksione."
 
+#. (amw_group_name)
+msgid "Please ensure that your system user is member of the \"%1\" group"
+msgstr ""
+
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
 "        Just a fancy name, so we can know that multiple uploads come\n"
@@ -1765,6 +1794,11 @@ msgstr ""
 "Ju lutem na jepni një emër shfrytëzuesi. Nuk duhet të jetë email adresë.\n"
 "     Thjesh një emër i trilluar, në mënyrë që mund ta dijmë se ngarkime \n"
 "      të shumëfishta vijnë nga i njëjti person. "
+
+msgid ""
+"Please initialized it empty, without any README,license, .gitignore or "
+"similar."
+msgstr ""
 
 msgid ""
 "Please keep in mind that filters are language-specific\n"
@@ -1823,6 +1857,11 @@ msgid "Please reload your page"
 msgstr "Të lutem rifresko faqën"
 
 msgid "Please remove this file from the body first"
+msgstr ""
+
+msgid ""
+"Please replace the example URL in the next line with the real one with SSH "
+"protocol"
 msgstr ""
 
 msgid "Please select"
@@ -1944,6 +1983,9 @@ msgstr ""
 msgid "Random"
 msgstr "Tekst i rëndomtë"
 
+msgid "Read about the file naming scheme if you need to add files to the tree."
+msgstr ""
+
 msgid "Read the whole text..."
 msgstr "Lexo tekstin e plotë..."
 
@@ -2009,9 +2051,6 @@ msgstr ""
 msgid "Remote repository %1 removed"
 msgstr ""
 
-msgid "Remotes"
-msgstr ""
-
 msgid "Remove"
 msgstr "Largo"
 
@@ -2029,9 +2068,6 @@ msgstr "Përsëriteni email-in"
 
 msgid "Repeat password"
 msgstr "Përsëriteni fjalëkalimin"
-
-msgid "Repository"
-msgstr ""
 
 msgid "Request failed! Please report the the problem"
 msgstr ""
@@ -2187,6 +2223,9 @@ msgstr "Cakto një datë të ardhshme nëse dëshiron që ta bësh këtë më vo
 msgid "Settings loaded"
 msgstr ""
 
+msgid "Setup"
+msgstr ""
+
 msgid "Show _MENU_ entries"
 msgstr ""
 
@@ -2240,6 +2279,9 @@ msgstr "Emri i faqës"
 
 msgid "Site slogan"
 msgstr "Slogani i faqës"
+
+msgid "Site users"
+msgstr ""
 
 msgid "Sites"
 msgstr "Faqet"
@@ -2409,6 +2451,9 @@ msgid ""
 "            or just a filename if you choose to install it in the\n"
 "            TeXlive tree. You can do so with the following commands.\n"
 "            The last one checks if the file can be found."
+msgstr ""
+
+msgid "The changes will propagate automatically once you push."
 msgstr ""
 
 #. ($uri)
@@ -2595,6 +2640,9 @@ msgstr "Ky tekst nuk është publikuar ende"
 msgid "This text will be deferred to %1"
 msgstr "Ky tekst është shtyrë për %1"
 
+msgid "This user cannot be removed"
+msgstr ""
+
 msgid "Thumbnail"
 msgstr ""
 
@@ -2722,6 +2770,11 @@ msgstr ""
 "Pa kushte largoji të gjitha hapsirat e pa-ndërprera\n"
 " të padukshme në tekst"
 
+#. (shared)
+msgid ""
+"Unfortunately, the shared repository located at %1 appeared out of sync."
+msgstr ""
+
 msgid "Unique ID for the text"
 msgstr "ID unike per tekst"
 
@@ -2806,6 +2859,7 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Shfrytëzuesi %1 u krijua!"
 
+#. ($user->username)
 #. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Shfrytëzuesi %1 u fshi"
@@ -2835,6 +2889,11 @@ msgid ""
 "    using the following form."
 msgstr ""
 
+msgid ""
+"Usually this is due to high traffic and bad luck, and it can be fixed by "
+"pushing the changes again."
+msgstr ""
+
 msgid "Verbatim block"
 msgstr "Bllok tekstual"
 
@@ -2848,6 +2907,11 @@ msgid "Virtual hosts, one per line"
 msgstr ""
 
 msgid "What links here"
+msgstr ""
+
+msgid ""
+"When creating a new text, do not populate the publication date if not "
+"provided by the user."
 msgstr ""
 
 msgid ""
@@ -2944,6 +3008,12 @@ msgstr ""
 
 msgid "You are logged in now!"
 msgstr "Ju tani jeni të kyçur!"
+
+#. (backup)
+msgid ""
+"You can access the backup located at %1 or ask your host for help, "
+"forwarding this email"
+msgstr ""
 
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
@@ -3123,9 +3193,6 @@ msgstr "për poezi"
 msgid "generic sectioning, good for articles"
 msgstr "seksionim gjenerik, e mirë për artikuj"
 
-msgid "if the repository is exported"
-msgstr ""
-
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
 "nëse dëshiron të përdorësh një madhësi të ndryshme, duhet të vendosësh "
@@ -3158,11 +3225,6 @@ msgstr ""
 
 msgid "or"
 msgstr "ose"
-
-msgid ""
-"or, if you have SSH access to the machine (but do not use the same user as "
-"amusewiki, it should be a read-only repo)"
-msgstr ""
 
 msgid "ordered item"
 msgstr "element i numëruar"
@@ -3254,6 +3316,9 @@ msgstr ""
 "“Ndryshim i mbetur” do të thotë që përpunimi është brakstisur\n"
 " gjatë ndryshimit por është ende aty në rast se dikush dëshiron të vazhdoj\n"
 " me ndryshimin e tekstit."
+
+#~ msgid "Add or delete and add again the <user_repo_url> on this page."
+#~ msgstr "Shto ose fshij dhe përsëri shto <user_repo_url> në këtë faqe."
 
 #~ msgid "If you want to proceed, please visit the following url: %1"
 #~ msgstr "Nëse dëshironi të vazhdoni, ju lutem vizitoni linkun në vazhdim: %1"
