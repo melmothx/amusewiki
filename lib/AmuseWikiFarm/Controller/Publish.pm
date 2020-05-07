@@ -76,25 +76,9 @@ sub pending :Chained('root') :PathPart('pending') :Args(0) {
 };
 
 sub all :Chained('root') :PathPart('all') :Args {
-    my ($self, $c, $page) = @_;
-    unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
-        $page = 1;
-    }
-    my $rs = $c->stash->{revisions};
-    my $me = $rs->current_source_alias;
-    my $revs = $rs->search(undef,
-                           {
-                            order_by => { -desc => ["$me.updated", "$me.id" ] },
-                            page => $page,
-                            rows => $c->stash->{site}->pagination_size,
-                           });
-    my $pager = $revs->pager;
-    my $format_link = sub {
-        return $c->uri_for_action('/publish/all', $_[0]);
-    };
+    my ($self, $c) = @_;
     $c->stash(
-              pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager, $format_link),
-              revisions => $revs->as_list,
+              revisions => $c->stash->{revisions}->as_list,
               page_title => $c->loc('All revisions'),
               return => 'all',
               load_datatables => 1,
