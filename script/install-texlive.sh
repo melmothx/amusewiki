@@ -4,7 +4,23 @@ set -e
 # needed packages
 # microtype koma-script graphics tools enumitem ulem bigfoot wrapfig
 # hyperref pdftexcmds infwarerr hycolor auxhook kvoptions zapfding
-# atveryendbookmark fontspec polyglossia
+# atveryend bookmark fontspec polyglossia xindy xetex luatex imakeidx
+# latex-bin epstopdf epstopdf-pkg
+# hyphen-afrikaans hyphen-ancientgreek hyphen-arabic hyphen-armenian
+# hyphen-base hyphen-basque hyphen-belarusian hyphen-bulgarian
+# hyphen-catalan hyphen-chinese hyphen-churchslavonic hyphen-coptic
+# hyphen-croatian hyphen-czech hyphen-danish hyphen-dutch hyphen-english
+# hyphen-esperanto hyphen-estonian hyphen-ethiopic hyphen-farsi
+# hyphen-finnish hyphen-french hyphen-friulan hyphen-galician
+# hyphen-georgian hyphen-german hyphen-greek hyphen-hungarian
+# hyphen-icelandic hyphen-indic hyphen-indonesian hyphen-interlingua
+# hyphen-irish hyphen-italian hyphen-kurmanji hyphen-latin
+# hyphen-latvian hyphen-lithuanian hyphen-macedonian hyphen-mongolian
+# hyphen-norwegian hyphen-occitan hyphen-piedmontese hyphen-polish
+# hyphen-portuguese hyphen-romanian hyphen-romansh hyphen-russian
+# hyphen-sanskrit hyphen-serbian hyphen-slovak hyphen-slovenian
+# hyphen-spanish hyphen-swedish hyphen-thai hyphen-turkish
+# hyphen-turkmen hyphen-ukrainian hyphen-uppersorbian hyphen-welsh
 
 TEXMIRROR=ctan.ijs.si/tex-archive
 cd "$HOME"
