@@ -57,8 +57,6 @@ TEXMFSYSVAR $homedir/local/texlive/2020/texmf-var
 TEXMFVAR ~/.texlive2020/texmf-var
 binary_$arch 1
 collection-basic 1
-collection-luatex 1
-collection-xetex 1
 instopt_adjustpath 1
 instopt_adjustrepo 1
 instopt_letter 0
