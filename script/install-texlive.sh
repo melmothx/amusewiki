@@ -86,7 +86,7 @@ $homedir/local/texlive/2020/bin/$arch/tlmgr install \
         microtype koma-script graphics tools enumitem ulem bigfoot wrapfig     \
         hyperref pdftexcmds infwarerr hycolor auxhook kvoptions zapfding       \
         atveryend bookmark fontspec polyglossia xindy xetex luatex imakeidx    \
-        latex-bin epstopdf epstopdf-pkg ncctools                               \
+        latex-bin epstopdf epstopdf-pkg ncctools luatexbase                    \
         hyphen-afrikaans hyphen-ancientgreek hyphen-arabic hyphen-armenian     \
         hyphen-base hyphen-basque hyphen-belarusian hyphen-bulgarian           \
         hyphen-catalan hyphen-chinese hyphen-churchslavonic hyphen-coptic      \
