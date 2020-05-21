@@ -17,6 +17,15 @@ fi
 
 home_dir=`pwd`
 
+localtex=`find $home_dir/local/texlive/*/bin -name xetex | sort | tail -1`
+
+if [ -n "$localtex" ]; then
+    texlivebin=`dirname $localtex`
+    export PATH=$texlivebin:$PATH
+    echo "PATH is now $PATH"
+fi
+
+
 mkdir -p opt/cache
 
 prepare_app () {
