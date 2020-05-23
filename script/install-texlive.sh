@@ -49,12 +49,12 @@ arch=`./install-tl --print-arch`
 cat <<EOF >> amusewiki.profile
 selected_scheme scheme-custom
 TEXDIR $homedir/local/texlive/2020
-TEXMFCONFIG ~/.texlive2020/texmf-config
+TEXMFCONFIG ~/.texlive2020amw/texmf-config
 TEXMFHOME ~/texmf
 TEXMFLOCAL $homedir/local/texlive/texmf-local
 TEXMFSYSCONFIG $homedir/local/texlive/2020/texmf-config
 TEXMFSYSVAR $homedir/local/texlive/2020/texmf-var
-TEXMFVAR ~/.texlive2020/texmf-var
+TEXMFVAR ~/.texlive2020amw/texmf-var
 binary_$arch 1
 collection-basic 1
 instopt_adjustpath 1
