@@ -94,9 +94,7 @@ Build-Depends-Indep: libbytes-random-secure-perl,
  git, fontconfig,
  cgit,
  fonts-cmu, fonts-texgyre,
- texlive-base, texlive-latex-base, texlive-latex-recommended, texlive-latex-extra,
- texlive-generic-recommended, texlive-fonts-recommended,
- texlive-luatex, texlive-xetex, texlive-lang-all
+ amusewiki-texlive
 Standards-Version: 3.9.6
 Homepage: https://amusewiki.org
 
@@ -195,9 +193,7 @@ Depends: ${misc:Depends}, ${perl:Depends},
  libcgi-compile-perl,
  cgit, ckeditor, nginx, git, fontconfig,
  fonts-cmu, fonts-texgyre,
- texlive-base, texlive-latex-base, texlive-latex-recommended, texlive-latex-extra,
- texlive-generic-recommended, texlive-fonts-recommended,
- texlive-luatex, texlive-xetex, texlive-lang-all
+ amusewiki-texlive | texlive-full
 Recommends: amusewiki-extra-fonts
 Description: library-oriented wiki engine, publishing and authoring platform
  Features: Multi-site engine, user-friendly markup borrowed from Emacs
