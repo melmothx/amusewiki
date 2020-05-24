@@ -14,9 +14,12 @@ xapian/*
 !xapian/README.txt
 bbfiles/*
 !bbfiles/README.txt
+dbic.pg
 dbic.yaml
+dbic.mysql
+dbic.sqlite
 !t/dbic.yaml
-root/git/cgit.cgi
+root/git/*
 root/static/images/font-preview/*
 root/static/js/ckeditor*
 root/static/js/highlight*
@@ -49,7 +52,7 @@ debian/amusewiki*.debhelper*
 debian/amusewiki.substvars
 lib/AmuseWikiFarm/I18N/*.mo
 .vagrant/
-
+cover_db
 # Carton module installation directory
 local/
 shared/
