@@ -86,7 +86,8 @@ $homedir/local/texlive/2020/bin/$arch/tlmgr install \
         microtype koma-script graphics tools enumitem ulem bigfoot wrapfig     \
         hyperref pdftexcmds infwarerr hycolor auxhook kvoptions zapfding       \
         atveryend bookmark fontspec polyglossia xindy xetex luatex imakeidx    \
-        latex-bin epstopdf epstopdf-pkg ncctools luatexbase texdoc             \
+        latex-bin epstopdf epstopdf-pkg ncctools luatexbase texdoc beamer      \
+        pstricks fp pst-text xcolor geometry bidi zref auxhook chngcntr        \
         hyphen-afrikaans hyphen-ancientgreek hyphen-arabic hyphen-armenian     \
         hyphen-base hyphen-basque hyphen-belarusian hyphen-bulgarian           \
         hyphen-catalan hyphen-chinese hyphen-churchslavonic hyphen-coptic      \
@@ -104,3 +105,4 @@ $homedir/local/texlive/2020/bin/$arch/tlmgr install \
         hyphen-turkmen hyphen-ukrainian hyphen-uppersorbian hyphen-welsh
 
 echo "TeXlive installed in $homedir/local/texlive, bin path is $homedir/local/texlive/2020/bin/$arch"
+
