@@ -42,6 +42,7 @@ function update_bulk_status() {
         $('.bulk-job-status').text(data.job.status);
         $('.job-completed').text(data.job.completed);
         var table = $('<table>');
+        var tbody = $('<tbody>');
         var spin_first = 1;
         table.attr('class', 'table table-striped table-condensed table-bordered');
         $.each(data.all_jobs, function(i, item) {
@@ -71,7 +72,7 @@ function update_bulk_status() {
             else if (item.status == 'completed') {
                 icon.attr("class", "fa fa-check-circle-o fa-2x text-success");
             }
-            table.append($('<tr>').append(
+            tbody.append($('<tr>').append(
                 $('<td>').css('text-align', 'center')
                     .append(icon, $('<span>').text(item.status).attr("class", "sr-only")),
                 $('<td>').append(alink),
@@ -79,6 +80,7 @@ function update_bulk_status() {
                 $('<td>').append(item.completed),
                 $('<td>').append(item.errors)));
         });
+        table.append(tbody);
         $('#bulk-job-table table').replaceWith(table);
         if (data.job.completed) {
             $('.bulk-job-eta').hide();
