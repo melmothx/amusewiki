@@ -11,6 +11,8 @@ else
     mkdir -p $tempdir
 fi
 
+. ./script/add-texlive-to-path.sh
+
 cat <<EOF > $tempdir/amusewiki-jobber.service
 [Unit]
 Description=Amusewiki jobber
