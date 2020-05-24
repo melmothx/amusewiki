@@ -812,7 +812,7 @@ lib/CatalystX/AmuseWiki/I18N.pm
 lib/CatalystX/Session/Store/AMW.pm
 LICENSE
 Makefile.PL
-MANIFEST			This list of files
+MANIFEST
 mkits/commit/body.txt
 mkits/commit/manifest.json
 mkits/git_action/body.txt
@@ -1374,6 +1374,7 @@ root/static/js/simpleUpload.js
 root/static/js/simpleUpload.min.js
 root/themes/test-theme/layout.tt
 root/themes/test-theme/library.tt
+script/add-texlive-to-path.sh
 script/amusewiki-bootstrap-archive
 script/amusewiki-check-compiler
 script/amusewiki-clone-site

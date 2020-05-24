@@ -21,4 +21,8 @@ root/static/cgit/.*
 root/static/.*\.zip$
 root/uploads/.*
 .gitignore
-Maildir/*
+Maildir/.*
+shared/.*
+local/.*
+cpanfile
+cpanfile\.snapshot
