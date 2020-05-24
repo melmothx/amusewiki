@@ -52,3 +52,4 @@ lib/AmuseWikiFarm/I18N/*.mo
 
 # Carton module installation directory
 local/
+shared/

@@ -15,16 +15,7 @@ if [ ! -f "lib/AmuseWikiFarm.pm" ]; then
     exit 2
 fi
 
-home_dir=`pwd`
-
-localtex=`find $home_dir/local/texlive/*/bin -name xetex | sort | tail -1`
-
-if [ -n "$localtex" ]; then
-    texlivebin=`dirname $localtex`
-    export PATH=$texlivebin:$PATH
-    echo "PATH is now $PATH"
-fi
-
+. ./script/add-texlive-to-path.sh
 
 mkdir -p opt/cache
 

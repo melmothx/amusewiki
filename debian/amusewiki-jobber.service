@@ -6,6 +6,7 @@ After=nss-user-lookup.target
 WorkingDirectory=/var/lib/amusewiki
 User=amusewiki
 Group=amusewiki
+Environment="PATH=/opt/amusewiki-texlive/current/bin/arch:/usr/local/bin:/usr/bin:/bin"
 ExecStart=/usr/bin/amusewiki-jobber
 Restart=always
 

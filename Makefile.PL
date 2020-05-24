@@ -6,6 +6,10 @@ use Module::Install::Catalyst; # Complain loudly if you don't have
                                # Catalyst::Devel installed or haven't said
                                # 'make dist' to create a standalone tarball.
 
+# if there are symlinks and it's dying
+# *ExtUtils::Manifest::manicheck = sub { return };
+# https://github.com/Perl-Toolchain-Gang/ExtUtils-Manifest/issues/5
+
 name 'AmuseWikiFarm';
 license 'perl';
 all_from 'lib/AmuseWikiFarm.pm';
@@ -16,16 +20,27 @@ do './cpanfile';
 catalyst_ignore('repo',
                 'shared',
                 'xapian',
+                'local',
                 'staging',
                 'opt',
                 'bbfiles',
                 'var',
                 'design',
+                'cpanfile',
+                'cpanfile\.snapshot',
                 'bootstrap-amw',
                 'current_version_is_.*txt',
-                'dbic.yaml',
+                'dbic\..*',
+                # hidden files
+                '\..*',
+                'restart',
+                '.*\.patch',
+                'Dockerfile',
+                'fontspec\.json.*',
+                'tmp',
                 'cover_db',
                 'log',
+                '.*\.log',
                 'cronjobs',
                 '.*local\.conf',
                 'ext-src',
