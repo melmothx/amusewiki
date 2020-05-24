@@ -1336,6 +1336,9 @@ root/static/js/imagesloaded.pkgd.js
 root/static/js/imagesloaded.pkgd.min.js
 root/static/js/jquery-1.11.1.js
 root/static/js/jquery-1.11.1.min.js
+root/static/js/jquery-3.5.1.js
+root/static/js/jquery-3.5.1.min.js
+root/static/js/jquery-3.5.1.min.map
 root/static/js/jquery-ui-1.10.4.custom.js
 root/static/js/jquery-ui-1.10.4.custom.min.js
 root/static/js/jquery-ui-1.12.1.custom/AUTHORS.txt
