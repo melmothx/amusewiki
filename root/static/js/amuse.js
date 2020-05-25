@@ -26,7 +26,7 @@ function use_named_toc () {
         if (anchor) {
             old_id = anchor.attr('href');
             if (old_id) {
-                console.log(new_id + ' => ' + old_id);
+                /* console.log(new_id + ' => ' + old_id); */
                 $(old_id).prepend($('<span>', { id: 'amw-toc-' + new_id }));
                 anchor.attr('href', '#amw-toc-' + new_id);
             }
@@ -54,7 +54,7 @@ $(document).ready(function(){
         $('.tableofcontentline').each(function() {
             var el = $(this);
             var anchor = el.find('a');
-            console.log(el.text() + anchor.length);
+            /* console.log(el.text() + anchor.length); */
             if (anchor.length) {
                 $('#amw-top-nav-toc').append($('<li>').append($('<a>', { "href": anchor.attr('href') })
                                                               .text(el.text())));
