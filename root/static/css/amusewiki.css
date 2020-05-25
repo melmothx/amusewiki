@@ -158,12 +158,6 @@ img.text-cover-preview {
     max-width: 250px;
 }
 
-img#text-cover-img {
-    max-width: 250px;
-    padding: 10px;
-    margin: 3px;
-}
-
 img.text-cover-img-mini {
     max-width: 150px;
     padding: 10px;
@@ -173,6 +167,26 @@ div.text-cover-img-mini-container {
     float:right;
     margin-left: 5px;
     margin-bottom: 5px;
+}
+
+img#text-cover-img {
+    margin: 10px 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 767px) {
+    div#text-cover-img-container {
+        float: none;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    div#text-cover-img-container {
+        width: 50%;
+        margin: 10px;
+        padding: 10px;
+    }
 }
 
 div#text-cover-img-container {

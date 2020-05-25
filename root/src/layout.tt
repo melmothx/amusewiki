@@ -125,8 +125,8 @@
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 40 }) %]" />
-    <script src="[% c.uri_for('/static/js/amuse.js', { v => 4 }) %]"></script>
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 41 }) %]" />
+    <script src="[% c.uri_for('/static/js/amuse.js', { v => 5 }) %]"></script>
     <script>
       function amw_confirm() { return confirm('[% lh.loc('Are you sure?') | escape_js %]') }
     </script>

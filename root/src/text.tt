@@ -64,7 +64,8 @@
   <div id="htmltextbody">
     [% IF text.valid_cover %]
     <div id="text-cover-img-container">
-      <img id="text-cover-img" src="[% text.valid_cover %]" alt="[% text.valid_cover %]" />
+      <img id="text-cover-img" src="[% text.valid_cover %]" alt="[% text.valid_cover %]"
+           class="img img-responsive" />
     </div>
     [% END %]
     [% IF text.is_deferred && text.teaser %]
