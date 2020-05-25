@@ -529,6 +529,19 @@ kpsewhich mylogo.pdf
       </div>
     </div>
 
+    <div class="form-group">
+      <div class="col-sm-offset-6 col-sm-6">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.use_named_toc %]checked="checked"[% END %]
+                 value="ON"
+                 name="use_named_toc" />
+          [% loc("Use named table of contents anchors instead of numeric ones") %]
+        </label>
+      </div>
+    </div>
+
+
 
     <div class="form-group">
       <div class="col-sm-offset-6 col-sm-6">

@@ -3249,6 +3249,7 @@ sub update_from_params {
                            home_page
                            express_publishing
                            no_autoassign_pubdate
+                           use_named_toc
                            show_preview_when_deferred
                            lists_are_always_flat
                            titles_category_default_sorting
@@ -3626,6 +3627,10 @@ sub get_option {
     else {
         return undef;
     }
+}
+
+sub use_named_toc {
+    return shift->get_option('use_named_toc') || '';
 }
 
 sub no_autoassign_pubdate {

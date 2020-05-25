@@ -1,4 +1,7 @@
 function use_named_toc () {
+    if (!$('#js-site-settings').data('use-named-toc')) {
+        return;
+    }
     var toc_entries = Object.create(null);
     $('.tableofcontentline').each(function() {
         var el = $(this);

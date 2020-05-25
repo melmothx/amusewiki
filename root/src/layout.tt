@@ -642,6 +642,9 @@
         <div id="amw-main-layout-column"
              class="col-sm-[% main_body_cols || 12 %][% IF left_layout_cols %] col-sm-push-[% left_layout_cols %][% END %]">
 
+          <div id="js-site-settings" style="display:none"
+               data-use-named-toc="[% site.use_named_toc %]"></div>
+
 [% IF c.sessionid %]
       [% IF c.flash.status_msg %]
       <div class="alert alert-success" id="status_message">
