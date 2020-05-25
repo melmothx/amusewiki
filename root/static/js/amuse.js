@@ -44,6 +44,16 @@ $(document).ready(function(){
         });
         console.log(toc_entries);
 
+        $('.tableofcontentline').each(function() {
+            var el = $(this);
+            var anchor = el.find('a');
+            console.log(el.text() + anchor.length);
+            if (anchor.length) {
+                $('#amw-top-nav-toc').append($('<li>').append($('<a>', { "href": anchor.attr('href') })
+                                                              .text(el.text())));
+            }
+        })
+
         $(".hidden-when-no-toc").show();
         var clonedtoc = $("div.table-of-contents").clone();
         clonedtoc.show();

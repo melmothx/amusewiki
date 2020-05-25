@@ -205,16 +205,18 @@
             </div>
           </form>
           <ul id="amw-top-nav-right-menu" class="nav navbar-nav navbar-right">
-            <li class="hidden-when-no-toc" style="display:none">
-              <a class="amw-navlogo" href="#"
-                 data-toggle="modal"
-                 title="[% loc('Table of Contents') %]"
-                 data-target="#myModal">
+            <li class="dropdown hidden-when-no-toc" style="display:none">
+              <a class="amw-navlogo dropdown-toggle" href="#"
+                 data-toggle="dropdown"
+                 title="[% loc('Table of Contents') %]">
                 <span class="fa fa-list text-primary fa-fw"></span>
                 <span class=" visible-xs-inline">
                   [% loc('Table of Contents') %]
                 </span>
+                <b class="caret hidden-sm"></b>
               </a>
+              <ul id="amw-top-nav-toc" class="dropdown-menu dropdown-menu-left">
+              </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle"
