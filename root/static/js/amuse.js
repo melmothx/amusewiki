@@ -3,13 +3,29 @@ function use_named_toc () {
         return;
     }
     var toc_entries = Object.create(null);
+
+    var regexp = "[^"
+        + "\\u0030-\\u0039" // 0-9
+        + "\\u0041-\\u005A" // A-Z
+        + "\\u0061-\\u007A" // a-z
+        + "\\u00C0-\\u00D6" // À Ö
+        + "\\u00D8-\\u00F6" // Ø ö
+        + "\\u00F8-\\u02B8" // until ʸ
+        + "\\u0391-\\u03A1" // greek uppercase
+        + "\\u03A3-\\u03F5" // greek lower
+        + "\\u03F7-\\u0481" // cryrillic  lower
+        + "\\u048A-\\u052F" // cyrillic
+        + "]";
+    // console.log(regexp);
+    var all_but_chars = new RegExp(regexp, 'g');
     $('.tableofcontentline').each(function() {
         var el = $(this);
         var text = el.text();
         var anchor = el.find('a');
         var old_id;
-        var new_id = text.replace(/[^\w\u00C0-\u02B8\u0386-\u052F]/g, '-')
+        var new_id = text.replace(all_but_chars, '-')
             .replace(/^-+/, '')
+            .replace(/-+$/, '')
             .replace(/--+/, '-');
         var base_id = new_id;
         var count = 1;
