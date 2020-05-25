@@ -10,8 +10,9 @@ $(document).ready(function(){
     $("div#htmltextbody table").addClass("table table-bordered");
     $(".center p").removeClass("text-justify").addClass("text-center");
     $(".right p").removeClass("text-justify").addClass("text-right");
-    if ($("div.table-of-contents").length > 0) {
-
+    var has_toc = $("div.table-of-contents").length;
+    var has_cover = $("#text-cover-img").length;
+    if (has_toc > 0) {
         var toc_entries = Object.create(null);
         $('.tableofcontentline').each(function() {
             var el = $(this);
@@ -55,11 +56,24 @@ $(document).ready(function(){
         })
 
         $(".hidden-when-no-toc").show();
-        var clonedtoc = $("div.table-of-contents").clone();
-        clonedtoc.show();
-        clonedtoc.appendTo("#pop-up-toc");
-        $("div.table-of-contents").addClass("well well-lg clearfix");
+        var originaltoc = $("div.table-of-contents").remove();
+        originaltoc.addClass("well well-lg");
+        var toc = $('<div>', { "class": "row" });
+        if (has_cover) {
+            toc.append($('<div>', { "class": "col-sm-6" }).append(originaltoc));
+            var img = $('#text-cover-img').attr('src');
+            $('#text-cover-img-container').remove();
+            toc.append($('<div>', { "class": "col-sm-6" })
+                       .append($('<img>', { "src": img,
+                                            "class": "img img-responsive img-thumbnail",
+                                            "alt": img })));
+        }
+        else {
+            toc.append($('<div>', { "class": "col-sm-12" }).append(originaltoc));
+        }
+        toc.insertAfter('#amw-blog-container-prepended');
     }
+
     // with this div we signal that the teaser contains the whole text
     $("div.amw-teaser-no-ellipsis").closest('.amw-listing-item').find(".amw-read-more-link").remove();
     // globally enable tooltips
