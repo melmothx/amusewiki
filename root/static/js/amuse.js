@@ -3,15 +3,38 @@ function use_named_toc () {
         return;
     }
     var toc_entries = Object.create(null);
+    var parent = "";
+    var current_name = "";
+    var current_level = 0;
     $('.tableofcontentline').each(function() {
         var el = $(this);
         var text = el.text();
         var anchor = el.find('a');
+        /* use the prefix to see how deep we are */
+        var level = el.find('span').text().length;
+
+        if (level > current_level) {
+            /* we go down, so the parent is the previous one */
+            console.log("Setting parent to " + current_level);
+            parent = current_name;
+        }
+        else if (level < current_level) {
+            /* we go up, reset */
+            console.log("Setting empty parent");
+            parent = "";
+        }
+        console.log(text + ' ' + level);
         var old_id;
         var new_id = text.replace(/[^\w\u00C0-\u02B8\u0386-\u052F]/g, '-')
             .replace(/^-+/, '')
             .replace(/--+/, '-');
         var base_id = new_id;
+
+        if (toc_entries[new_id] && parent) {
+            console.log("Trying with the parent");
+            new_id = parent + '-' + base_id;
+        }
+
         var count = 1;
         while (toc_entries[new_id]) {
             new_id = base_id + '-' + count;
@@ -31,6 +54,8 @@ function use_named_toc () {
                 anchor.attr('href', '#amw-toc-' + new_id);
             }
         }
+        current_name = new_id;
+        current_level = level;
     });
     console.log(toc_entries);
 }
