@@ -79,6 +79,10 @@
     [% text.html_body %]
   </div>
 
+  <script>
+   /* don't load it at document ready, but right now, otherwise Chrome will not jump */
+   use_named_toc();
+  </script>
 
   [%- IF attached_pdfs -%]
   <div id="amw-attached-pdfs" style="margin: 80px 0">

@@ -65,8 +65,6 @@ $(document).ready(function(){
     var has_toc = $("div.table-of-contents").length;
     var has_cover = $("#text-cover-img").length;
     if (has_toc > 0) {
-        var toc_entries = Object.create(null);
-        use_named_toc();
         $('.tableofcontentline').each(function() {
             var el = $(this);
             var anchor = el.find('a');
