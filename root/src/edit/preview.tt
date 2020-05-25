@@ -87,5 +87,8 @@
     <div id="htmltextbody">
       [% muse_doc.as_html %]
     </div>
+    <script>
+     use_named_toc();
+    </script>
 </div>
 <hr />
