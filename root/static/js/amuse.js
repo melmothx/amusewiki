@@ -41,7 +41,7 @@ function use_named_toc () {
         }
         if (anchor) {
             old_id = anchor.attr('href');
-            if (old_id) {
+            if (old_id && !old_id.match(/^#text-amuse-label/)) {
                 /* console.log(new_id + ' => ' + old_id); */
                 $(old_id).prepend($('<span>', { id: 'amw-toc-' + new_id }));
                 anchor.attr('href', '#amw-toc-' + new_id);
