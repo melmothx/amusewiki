@@ -138,6 +138,12 @@ fi
 
 su -c "rm -rfv /var/lib/amusewiki/var/cache" amusewiki
 
+amw_shell_profile="/var/lib/amusewiki/.profile"
+if ! grep -q amusewiki-texlive $amw_shell_profile 2> /dev/null; then
+    echo 'export PATH=/opt/amusewiki-texlive/current/bin/arch:$PATH' >> $amw_shell_profile
+    chown amusewiki:amusewiki $amw_shell_profile
+fi
+
 # upgrade the db, if needed
 amusewiki upgrade-db
 amusewiki generate-nginx-conf | tee -a /var/log/amusewiki/installation.log
