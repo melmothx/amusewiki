@@ -125,8 +125,8 @@
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 39 }) %]" />
-    <script src="[% c.uri_for('/static/js/amuse.js', { v => 3 }) %]"></script>
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 41 }) %]" />
+    <script src="[% c.uri_for('/static/js/amuse.js', { v => 5 }) %]"></script>
     <script>
       function amw_confirm() { return confirm('[% lh.loc('Are you sure?') | escape_js %]') }
     </script>
@@ -205,16 +205,18 @@
             </div>
           </form>
           <ul id="amw-top-nav-right-menu" class="nav navbar-nav navbar-right">
-            <li class="hidden-when-no-toc" style="display:none">
-              <a class="amw-navlogo" href="#"
-                 data-toggle="modal"
-                 title="[% loc('Table of Contents') %]"
-                 data-target="#myModal">
+            <li class="dropdown hidden-when-no-toc" style="display:none">
+              <a class="amw-navlogo dropdown-toggle" href="#"
+                 data-toggle="dropdown"
+                 title="[% loc('Table of Contents') %]">
                 <span class="fa fa-list text-primary fa-fw"></span>
                 <span class=" visible-xs-inline">
                   [% loc('Table of Contents') %]
                 </span>
+                <b class="caret hidden-sm"></b>
               </a>
+              <ul id="amw-top-nav-toc" class="dropdown-menu dropdown-menu-left">
+              </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle"
@@ -639,6 +641,9 @@
       <div class="row">
         <div id="amw-main-layout-column"
              class="col-sm-[% main_body_cols || 12 %][% IF left_layout_cols %] col-sm-push-[% left_layout_cols %][% END %]">
+
+          <div id="js-site-settings" style="display:none"
+               data-use-named-toc="[% site.use_named_toc %]"></div>
 
 [% IF c.sessionid %]
       [% IF c.flash.status_msg %]

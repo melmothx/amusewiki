@@ -1,4 +1,4 @@
-[% # -*- mode:html -*- %]
+[% # -*- mode:web -*- %]
 
 [% INCLUDE 'include/markitup.tt' %]
 
@@ -800,7 +800,10 @@ How smart a lash that speech doth giue my Conscience?
 <script type="text/javascript">
  function load_preview() {
      $('#amw-text-edit-preview-box').load("[% preview_uri %]?bare=1 #amw-text-preview-page",
-                                          function() { add_flag_to_internal_anchors() });
+                                          function() {
+                                              add_flag_to_internal_anchors();
+                                              use_named_toc();
+                                          });
  }
 $(document).ready(function(){
     $('#goto-diff').click(function() { window.open('[% diffing_uri %]', '_blank') });

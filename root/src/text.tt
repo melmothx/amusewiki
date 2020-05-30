@@ -1,5 +1,4 @@
-[% # -*- mode: html -*- %]
-
+[% # -*- mode: web -*- %]
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -65,7 +64,8 @@
   <div id="htmltextbody">
     [% IF text.valid_cover %]
     <div id="text-cover-img-container">
-      <img id="text-cover-img" src="[% text.valid_cover %]" alt="[% text.valid_cover %]" />
+      <img id="text-cover-img" src="[% text.valid_cover %]" alt="[% text.valid_cover %]"
+           class="img img-responsive" />
     </div>
     [% END %]
     [% IF text.is_deferred && text.teaser %]
@@ -79,6 +79,10 @@
     [% text.html_body %]
   </div>
 
+  <script>
+   /* don't load it at document ready, but right now, otherwise Chrome will not jump */
+   use_named_toc();
+  </script>
 
   [%- IF attached_pdfs -%]
   <div id="amw-attached-pdfs" style="margin: 80px 0">
