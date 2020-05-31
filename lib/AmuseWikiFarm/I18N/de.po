@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2020-04-14 09:03+0200\n"
+"PO-Revision-Date: 2020-05-31 13:28+0200\n"
 "Last-Translator: Stefan Hornburg (Racke) <racke@linuxia.de>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -715,7 +715,7 @@ msgid "Expected pages"
 msgstr ""
 
 msgid "Failed"
-msgstr ""
+msgstr "Fehlgeschlagen"
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
@@ -2247,7 +2247,7 @@ msgid "Start the document with an empty page"
 msgstr ""
 
 msgid "Started"
-msgstr ""
+msgstr "Begonnen"
 
 msgid "Static page without javascript"
 msgstr ""
