@@ -135,8 +135,9 @@ EOF
 fi
 
 # remove the site cache
-
 su -c "rm -rfv /var/lib/amusewiki/var/cache" amusewiki
+# create log directory
+su -c "mkdir -p /var/lib/amusewiki/log" amusewiki
 
 amw_shell_profile="/var/lib/amusewiki/.profile"
 if ! grep -q amusewiki-texlive $amw_shell_profile 2> /dev/null; then

@@ -1,3 +1,9 @@
+amusewiki (2.455-3+amw1) unstable; urgency=medium
+
+  * Rebuild again
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sun, 31 May 2020 10:03:09 +0200
+
 amusewiki (2.455-2+amw1) unstable; urgency=medium
 
   * Rebuild with a minor fix
