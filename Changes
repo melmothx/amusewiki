@@ -4,6 +4,18 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.455 2020-05-31
+
+ - Updated i18n (added PL)
+ - Support the use of a stripped down TeX Live installation (packaged
+   as amusewiki-texlive). Now the debian package depends on that OR on
+   texlive-full, but this is the supported solution.
+ - Update jquery to current 3.5.1
+ - Add opt-in to generate a named toc instead of toc1, toc2, etc.
+ - Remove modal ToC (which was not working as expected) and replaced
+   with navbar dropdown
+ - Improved cover handling for mobile
+
 2.454 2020-05-07
 
  - Fix redundant/harmful pagination on publish/all
