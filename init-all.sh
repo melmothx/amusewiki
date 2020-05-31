@@ -18,6 +18,7 @@ fi
 . ./script/add-texlive-to-path.sh
 
 mkdir -p opt/cache
+mkdir -p log
 
 prepare_app () {
 # this looks like a bit of an overkill, but better have the files
