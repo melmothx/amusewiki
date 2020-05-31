@@ -96,8 +96,6 @@ fi
 
 amusewiki populate-webfonts
 
-amusewiki upgrade-lexicon /var/lib/amusewiki/repo/*
-
 # install the log4perl file, if missing
 if [ ! -f "/var/lib/amusewiki/log4perl.conf" ]; then
     cat <<'EOF' > /var/lib/amusewiki/log4perl.conf
@@ -145,6 +143,7 @@ if ! grep -q amusewiki-texlive $amw_shell_profile 2> /dev/null; then
     chown amusewiki:amusewiki $amw_shell_profile
 fi
 
+amusewiki upgrade-lexicon /var/lib/amusewiki/repo/*
 # upgrade the db, if needed
 amusewiki upgrade-db
 amusewiki generate-nginx-conf | tee -a /var/log/amusewiki/installation.log
