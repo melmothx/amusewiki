@@ -26,7 +26,10 @@ missing and checks the existing one.
 
 =cut
 
-my @files = (path('fontspec.json'), map { path($_, qw/site_files fontspec.json/) } path('repo')->children);
+my @files = (path('fontspec.json'));
+if ( -d 'repo') {
+    push @files, map { path($_, qw/site_files fontspec.json/) } path('repo')->children;
+}
 
 foreach my $file (@files) {
     if ($file->exists) {
