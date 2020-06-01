@@ -605,6 +605,13 @@ CREATE TABLE title_attachment (
        PRIMARY KEY (title_id, attachment_id)
 );
 
+CREATE TABLE whitelist_ip (
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
+       ip VARCHAR(64),
+       PRIMARY KEY (site_id, ip)
+);
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),

@@ -883,6 +883,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 whitelist_ips
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::WhitelistIp>
+
+=cut
+
+__PACKAGE__->has_many(
+  "whitelist_ips",
+  "AmuseWikiFarm::Schema::Result::WhitelistIp",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 users
 
 Type: many_to_many
@@ -894,8 +909,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-04-12 07:40:33
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JOOx67O/X7RVY8xE0dPc9g
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-06-01 09:12:11
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Sws11H/ITCntVW5kn3zV3g
 
 =head2 other_sites
 
