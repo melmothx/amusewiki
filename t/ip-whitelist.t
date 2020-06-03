@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 52;
+use Test::More tests => 15;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -26,6 +26,7 @@ my $mech = Test::WWW::Mechanize::PSGI->new(app => $app,
                                                   },
                                           );
 foreach my $path ('/', '/mirror/index.html', '/git') {
+    $site->whitelist_ips->delete;
     $site->update({ mode => 'blog' });
     ok !$site->is_private;
 
@@ -38,6 +39,6 @@ foreach my $path ('/', '/mirror/index.html', '/git') {
     $mech->get('/');
     is $mech->status, 401;
 
-    # $site->add_to_ip_whitelists({ ip => '66.66.66.66' });
+    $site->add_to_whitelist_ips({ ip => '66.66.66.66' });
     $mech->get_ok('/');
 }
