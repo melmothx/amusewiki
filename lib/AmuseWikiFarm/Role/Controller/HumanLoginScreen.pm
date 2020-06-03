@@ -171,13 +171,6 @@ sub try_to_authenticate :Private {
         }
         $c->flash( error_msg => $ssl_warning || $c->loc("Wrong username or password") );
     }
-    # if it's whitelisted, pretend it's authenticated.
-    if (my $ip = $c->req->address) {
-        if ($site->whitelist_ips->find({ ip => $ip })) {
-            log_debug { "$ip is whitelisted" };
-            return 1;
-        }
-    }
 
     my @carry_on;
     foreach my $name (keys %params) {

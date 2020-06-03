@@ -186,7 +186,17 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
 
 sub site :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    $self->check_login($c) if $c->stash->{site}->is_private;
+    my $site = $c->stash->{site};
+    if ($site->is_private) {
+        if (my $ip = $c->req->address) {
+            if ($site->whitelist_ips->find({ ip => $ip })) {
+                log_info { "Granting access to private site to $ip is whitelisted" };
+                $c->stash(whitelisted_ip => $ip);
+                return 1;
+            }
+        }
+        $self->check_login($c);
+    }
 }
 
 sub site_robot_index :Chained('site') :PathPart('') :CaptureArgs(0) {
