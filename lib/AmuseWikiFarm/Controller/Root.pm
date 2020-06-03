@@ -70,12 +70,14 @@ sub check_unicode_errors :Chained('/') :PathPart('') :CaptureArgs(0) {
 
 sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    log_debug { "Starting request " . $c->request->uri->as_string };
+    my $req = $c->request;
+    # Dlog_debug { "Request $_" } $req;
+    log_debug { "Starting request " . $req->uri->as_string . " from IP " . $req->address };
 
-    $c->stash(amw_user_agent => HTTP::BrowserDetect->new($c->request->user_agent || ''));
+    $c->stash(amw_user_agent => HTTP::BrowserDetect->new($req->user_agent || ''));
 
     # catch the host. ->uri is an URI object, as per doc.
-    my $host = $c->request->uri->host;
+    my $host = $req->uri->host;
 
     # lookup in the db: first the canonical, then the vhosts
     my $site = $c->model('DB::Site')->find({ canonical => $host });
@@ -85,7 +87,7 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
             # permit the access to the site only if it's the canonical
             # one this is kind of questionable, but it's a common SEO
             # strategy to avoid splitting the results.
-            my $uri = $c->request->uri->clone;
+            my $uri = $req->uri->clone;
             $uri->host($site->canonical);
 
             # in case there is a session active, avoid crash
@@ -122,7 +124,7 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
         if ($session_site_id ne $site_id) {
             Dlog_info {
                 "Session mismatch, <$session_site_id> ne <$site_id>".
-                  " deleting session, requesting " . $c->request->uri . " " . $_
+                  " deleting session, requesting " . $req->uri . " " . $_
               } ($c->session);
             $c->delete_session;
             die "This shouldn't happen" if $c->user_exists;
@@ -139,11 +141,11 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
     my $locale = $site->locale || 'en';
     # in case something weird happened
     unless ($site->known_langs->{$locale}) {
-        log_error { "$locale is not recognized on $site_id " . $c->request->path };
+        log_error { "$locale is not recognized on $site_id " . $req->path };
         $locale = 'en';
     }
 
-    if (my $set_language = $c->request->query_params->{__language}) {
+    if (my $set_language = $req->query_params->{__language}) {
         $set_language .= ''; # force stringification. probably not needed.
         if ($site->known_langs->{$set_language}) {
             if ($c->user_exists) {
