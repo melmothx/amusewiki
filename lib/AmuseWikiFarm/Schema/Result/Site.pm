@@ -3239,6 +3239,8 @@ sub update_from_params {
     foreach my $textarea (qw/robots_txt_override/) {
         my $value = delete $params->{$textarea} || '';
         $value =~ s/\r\n/\n/g;
+        $value =~ s/^ +//gm;
+        $value =~ s/ +$//gm;
         chomp $value;
         $value .= "\n";
         push @options, {
@@ -3246,6 +3248,8 @@ sub update_from_params {
                         option_value => $value,
                        };
     }
+
+    my @whitelist_ips = grep { $_ } split(/\s+/, delete $params->{whitelist_ips} || '');
 
     # this is totally arbitrary
     foreach my $option (qw/html_special_page_bottom use_luatex
@@ -3318,7 +3322,6 @@ sub update_from_params {
                 $self->vhosts->create({ name => $vhost });
             }
         }
-        $self->site_links->delete;
         Dlog_info { "Updating links to $_" }
           +{
             from => [ map { +{ url => $_->url,
@@ -3327,9 +3330,21 @@ sub update_from_params {
                              } } $self->site_links ],
             to => \@site_links,
            };
+        $self->site_links->delete;
         foreach my $link (@site_links) {
             $self->site_links->create($link);
         }
+
+        Dlog_info { "Updating whitelist $_" }
+          +{
+            from => [ map { $_->ip } $self->whitelist_ips ],
+            to => \@whitelist_ips,
+           };
+        $self->whitelist_ips->delete;
+        foreach my $ip (@whitelist_ips) {
+            $self->add_to_whitelist_ips({ ip => $ip });
+        }
+
         Dlog_info { "Updating options to $_" }
           +{
             from => [ map { +{
