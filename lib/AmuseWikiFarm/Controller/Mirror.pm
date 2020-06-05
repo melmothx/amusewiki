@@ -34,7 +34,9 @@ sub root :Chained('/site') :PathPart('') :CaptureArgs(0) {
     # it has the same issues of the /git path, where we expose the
     # tree even if we have not published yet texts. So we do the same
     # check for /git, requiring logging in if not normally exposed.
-    $self->check_login($c) if $site->restrict_mirror;
+    if ($site->restrict_mirror) {
+        $self->check_login($c) unless $c->stash->{whitelisted_ip};
+    }
 }
 
 sub get_files :Chained('root') :PathPart('') :CaptureArgs(0) {

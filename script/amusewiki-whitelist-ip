@@ -1,0 +1,115 @@
+#!/usr/bin/env perl
+
+BEGIN { die "Do not run this as root" unless $>; }
+
+use strict;
+use warnings;
+use Cwd;
+use lib 'lib';
+use Getopt::Long;
+use Pod::Usage;
+use AmuseWikiFarm::Schema;
+
+my ($reset, $all_sites, $help, @add, @remove, @site_ids);
+
+GetOptions ('reset' => \$reset,
+            'help' => \$help,
+            'site=s' => \@site_ids,
+            'add=s' => \@add,
+            'remove=s' => \@remove,
+            'reset' => \$reset,
+            'all' => \$all_sites) or die;
+
+if ($help) {
+    pod2usage;
+    exit 2;
+}
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+amusewiki-whitelist-ip - Permit access to private sites by IP
+
+=head1 SYNOPSIS
+
+Usage: amusewiki-whitelist-ip [ --all | --site  <site_id> ] [ --add ip ] [ --remove ip ] [ --reset ]
+
+You need to be in the root directory of the application, i.e. where
+'repo' is located.
+
+=head2 OPTIONS
+
+=over 4
+
+=item --help
+
+Print this help and exit.
+
+=item --site <site_id>
+
+Repeatable. Set the site(s) you want to operate on. Use C<--all> if
+you want to operate on every site.
+
+=item --add <ip>
+
+Repeatable. Add the given ip to the whitelist
+
+=item --remove <ip>
+
+Repeatable. Remove the given ip from the whitelist
+
+=item --reset
+
+Clear the whitelist.
+
+=back
+
+=cut
+
+
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
+my @sites;
+if (@site_ids) {
+    @sites = $schema->resultset('Site')->search({ id => \@site_ids })->all;
+}
+elsif ($all_sites) {
+    @sites = $schema->resultset('Site')->all;
+}
+else {
+    die "No --site <site_id> nor --all passed.\n";
+      
+}
+
+unless (@sites) {
+    die "No site found!"
+}
+
+foreach my $site (@sites) {
+    my $site_id = $site->id;
+    if ($reset) {
+        print "Resetting whitelist for $site_id\n";
+        $site->whitelist_ips->delete;
+    }
+
+    foreach my $ip (@add) {
+        if ($site->whitelist_ips->find({ ip => $ip })) {
+            print "Cannot add $ip to $site_id, $ip already present\n";
+        }
+        else {
+            print "Adding $ip to $site_id\n";
+            $site->add_to_whitelist_ips({ ip => $ip });
+        }
+    }
+    foreach my $ip (@remove) {
+        if (my $wl = $site->whitelist_ips->find({ ip => $ip })) {
+            print "Removing $ip to $site_id\n";
+            $wl->delete;
+        }
+        else {
+            print "Cannot remove $ip to $site_id, $ip not found\n";
+        }
+    }
+}

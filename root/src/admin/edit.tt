@@ -714,9 +714,8 @@ kpsewhich mylogo.pdf
         <code>robots.txt</code>
       </label>
       <div class="col-sm-9">
-        <textarea rows="5" name="robots_txt_override" id="robots_txt_override" class="form-control">
-          [%- esite.robots_txt_override | html -%]
-        </textarea>
+        <textarea rows="5" name="robots_txt_override" id="robots_txt_override"
+                  class="form-control">[%- esite.robots_txt_override | html -%]</textarea>
         <p class="help-block">
           [% loc('Default value if blank:') %]
           <pre>[% esite.robots_txt_default | html %]</pre>
@@ -724,7 +723,21 @@ kpsewhich mylogo.pdf
       </div>
     </div>
 
+    <div class="form-group">
+      <label for="whitelist_ips" class="col-sm-3 control-label">
+        [% loc('Whitelisted IP (for backup, one per line)') %]
+      </label>
+      <div class="col-sm-9">
+        <textarea rows="5" name="whitelist_ips" id="whitelist_ips"
+                  class="form-control">
+          [%- SET wls = esite.whitelist_ips_rs -%]
+          [%- FOREACH wl IN wls.all %]
+          [%- wl.ip | html +%]
 
+          [%- END -%]</textarea>
+        </textarea>
+      </div>
+    </div>
 
     </div>
     </fieldset>

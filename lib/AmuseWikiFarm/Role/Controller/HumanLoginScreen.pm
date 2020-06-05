@@ -171,6 +171,7 @@ sub try_to_authenticate :Private {
         }
         $c->flash( error_msg => $ssl_warning || $c->loc("Wrong username or password") );
     }
+
     my @carry_on;
     foreach my $name (keys %params) {
         next if $name =~ m/^__/;

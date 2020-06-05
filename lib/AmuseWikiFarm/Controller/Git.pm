@@ -59,8 +59,10 @@ sub git :Chained('/site') :Args {
         return;
     }
     # we show /git to users and require authentication if
-    # cgit_integration is false.
-    $self->check_login($c) unless $site->cgit_integration;
+    # cgit_integration is false. Permit access if IP is whitelisted.
+    unless ($site->cgit_integration || $c->stash->{whitelisted_ip}) {
+        $self->check_login($c);
+    }
 
     my $cgit = $c->model('Cgit');
     unless ($cgit->enabled) {

@@ -883,6 +883,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 whitelist_ips
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::WhitelistIp>
+
+=cut
+
+__PACKAGE__->has_many(
+  "whitelist_ips",
+  "AmuseWikiFarm::Schema::Result::WhitelistIp",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 users
 
 Type: many_to_many
@@ -894,8 +909,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-04-12 07:40:33
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JOOx67O/X7RVY8xE0dPc9g
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-06-01 09:12:11
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Sws11H/ITCntVW5kn3zV3g
 
 =head2 other_sites
 
@@ -3224,6 +3239,8 @@ sub update_from_params {
     foreach my $textarea (qw/robots_txt_override/) {
         my $value = delete $params->{$textarea} || '';
         $value =~ s/\r\n/\n/g;
+        $value =~ s/^ +//gm;
+        $value =~ s/ +$//gm;
         chomp $value;
         $value .= "\n";
         push @options, {
@@ -3231,6 +3248,8 @@ sub update_from_params {
                         option_value => $value,
                        };
     }
+
+    my @whitelist_ips = grep { $_ } split(/\s+/, delete $params->{whitelist_ips} || '');
 
     # this is totally arbitrary
     foreach my $option (qw/html_special_page_bottom use_luatex
@@ -3303,7 +3322,6 @@ sub update_from_params {
                 $self->vhosts->create({ name => $vhost });
             }
         }
-        $self->site_links->delete;
         Dlog_info { "Updating links to $_" }
           +{
             from => [ map { +{ url => $_->url,
@@ -3312,9 +3330,21 @@ sub update_from_params {
                              } } $self->site_links ],
             to => \@site_links,
            };
+        $self->site_links->delete;
         foreach my $link (@site_links) {
             $self->site_links->create($link);
         }
+
+        Dlog_info { "Updating whitelist $_" }
+          +{
+            from => [ map { $_->ip } $self->whitelist_ips ],
+            to => \@whitelist_ips,
+           };
+        $self->whitelist_ips->delete;
+        foreach my $ip (@whitelist_ips) {
+            $self->add_to_whitelist_ips({ ip => $ip });
+        }
+
         Dlog_info { "Updating options to $_" }
           +{
             from => [ map { +{
