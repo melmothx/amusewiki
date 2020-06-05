@@ -86,7 +86,7 @@ sub mirror_site {
             chdir $basedir or die;
         }
         else {
-            system(git => clone => "git://$sitename/git/$git.git") and warn "Couldn't clone $git";
+            system(git => clone => "https://$sitename/git/$git") and warn "Couldn't clone $git";
         }
     }
                  
