@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 30;
+use Test::More tests => 33;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -74,3 +74,13 @@ foreach my $path ('/', '/mirror/index.html', '/git') {
     $other->get($path);
     is $other->status, 401;
 }
+
+$mech->get_ok('/login');
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+
+$mech->get_ok('/admin/sites/edit/' . $site->id);
+$mech->submit_form(with_fields => { whitelist_ips => "\n66.12.23.23\n\n111.111.111" },
+                   button => 'edit_site');
+
+is $site->get_from_storage->whitelist_ips->count, 2;
+
