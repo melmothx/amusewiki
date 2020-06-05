@@ -445,7 +445,7 @@
 <div>
   <p>
     <button type="button"
-            class="btn btn-small"
+            class="btn btn-default btn-small"
             data-toggle="collapse"
             data-target="#show-bb-cli"
             aria-expanded="false"
