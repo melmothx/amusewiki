@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 24;
+use Test::More tests => 30;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -55,6 +55,10 @@ foreach my $path ('/', '/mirror/index.html', '/git') {
     $mech->get_ok($path);
     $mech->get('/login');
     is $mech->uri->path, '/login', "whitelisting doesn't interfere with login";
+    $mech->get('/user/site');
+    is $mech->status, 401, "Can't access reserved parts despite whitelist";
+    $mech->get('/admin/sites');
+    is $mech->status, 401, "Can't access reserved parts despite whitelist";
 }
 
 
