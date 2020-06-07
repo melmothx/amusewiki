@@ -9,13 +9,13 @@ $(document).ready(function() {
         if (check) {
             return;
         }
-        var youtube = /^https?:\/\/(www\.)?youtube\.com\/(watch\?.*v=|embed\/)([a-zA-Z0-9_-]+)/;
+        var youtube = /^https?:\/\/(www\.)?(youtube\.com|youtu.be)\/(watch\?.*v=|embed\/)?([a-zA-Z0-9_-]+)/;
         var vimeo = /^https?:\/\/(player\.)?vimeo\.com\/(video\/)?([0-9]+)/;
         var gmaps = /^https?:\/\/www\.google\.com\/maps\/embed\?(.+)/;
         var src;
         var match;
         if (match = youtube.exec(target)) {
-            src = 'https://www.youtube.com/embed/' + match[3];
+            src = 'https://www.youtube.com/embed/' + match[4];
         }
         if (match = vimeo.exec(target)) {
             src = 'https://player.vimeo.com/video/' + match[3];
