@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 33;
+use Test::More tests => 37;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -79,8 +79,20 @@ $mech->get_ok('/login');
 $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 
 $mech->get_ok('/admin/sites/edit/' . $site->id);
+$mech->content_lacks('66.66.66.66'), "root ip not displayed";
+$mech->submit_form(with_fields => { whitelist_ips => "\n66.12.23.23\n\n111.111.111" },
+                   button => 'edit_site');
+
+# including the first one, which is from the CLI
+is $site->get_from_storage->whitelist_ips->count, 3;
+
+$site->whitelist_ips->update({ user_editable => 1 });
+
+
+
+$mech->get_ok('/admin/sites/edit/' . $site->id);
+$mech->content_contains('66.66.66.66'), "ip displayed";
 $mech->submit_form(with_fields => { whitelist_ips => "\n66.12.23.23\n\n111.111.111" },
                    button => 'edit_site');
 
 is $site->get_from_storage->whitelist_ips->count, 2;
-

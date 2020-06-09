@@ -3337,12 +3337,15 @@ sub update_from_params {
 
         Dlog_info { "Updating whitelist $_" }
           +{
-            from => [ map { $_->ip } $self->whitelist_ips ],
+            from => [ map { $_->ip } $self->whitelist_ips->editable ],
             to => \@whitelist_ips,
            };
-        $self->whitelist_ips->delete;
+        $self->whitelist_ips->editable->delete;
         foreach my $ip (@whitelist_ips) {
-            $self->add_to_whitelist_ips({ ip => $ip });
+            $self->add_to_whitelist_ips({
+                                         ip => $ip,
+                                         user_editable => 1,
+                                        }) unless $self->whitelist_ips->find({ ip => $ip });
         }
 
         Dlog_info { "Updating options to $_" }
@@ -4549,6 +4552,12 @@ sub edit_category_types_from_params {
     }
     $guard->commit;
     return $changed;
+}
+
+sub editable_whitelist_ips_rs {
+    my $self = shift;
+    my $rs = $self->whitelist_ips->editable;
+    return $rs;
 }
 
 after insert => sub {

@@ -10,7 +10,9 @@ use Getopt::Long;
 use Pod::Usage;
 use AmuseWikiFarm::Schema;
 
-my ($reset, $all_sites, $help, @add, @remove, @site_ids);
+my ($reset, $all_sites, $help,
+    $list,
+    @add, @remove, @site_ids);
 
 GetOptions ('reset' => \$reset,
             'help' => \$help,
@@ -18,6 +20,7 @@ GetOptions ('reset' => \$reset,
             'add=s' => \@add,
             'remove=s' => \@remove,
             'reset' => \$reset,
+            'list' => \$list,
             'all' => \$all_sites) or die;
 
 if ($help) {
@@ -35,7 +38,7 @@ amusewiki-whitelist-ip - Permit access to private sites by IP
 
 =head1 SYNOPSIS
 
-Usage: amusewiki-whitelist-ip [ --all | --site  <site_id> ] [ --add ip ] [ --remove ip ] [ --reset ]
+Usage: amusewiki-whitelist-ip [ --all | --site  <site_id> ] [ --add ip ] [ --remove ip ] [ --reset ] [ --list ]
 
 You need to be in the root directory of the application, i.e. where
 'repo' is located.
@@ -110,6 +113,11 @@ foreach my $site (@sites) {
         }
         else {
             print "Cannot remove $ip to $site_id, $ip not found\n";
+        }
+    }
+    if ($list) {
+        foreach my $wl ($site->whitelist_ips->all)  {
+            print $site_id . " " . $wl->ip . " " . ($wl->user_editable ? "site" : "root") . "\n";
         }
     }
 }
