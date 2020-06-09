@@ -609,6 +609,7 @@ CREATE TABLE whitelist_ip (
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                                     ON DELETE CASCADE ON UPDATE CASCADE,
        ip VARCHAR(64),
+       user_editable SMALLINT NOT NULL DEFAULT 0,
        PRIMARY KEY (site_id, ip)
 );
 
@@ -647,6 +648,7 @@ INSERT INTO table_comments (table_name, comment_text)
          ('amw_session', 'Session backend'),
          ('title_stat', 'Usage statistics'),
          ('title_attachment', 'Linking table from Title to Attachment'),
+         ('whitelist_ip', 'IP whitelisting for access to private sites'),
          ('node', 'Nestable nodes'),
          ('node_body', 'Nodes description'),
          ('node_title', 'Linking table from Node to Title'),

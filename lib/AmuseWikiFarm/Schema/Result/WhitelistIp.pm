@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::WhitelistIp;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::WhitelistIp
+AmuseWikiFarm::Schema::Result::WhitelistIp - IP whitelisting for access to private sites
 
 =cut
 
@@ -51,6 +51,12 @@ __PACKAGE__->table("whitelist_ip");
   is_nullable: 0
   size: 64
 
+=head2 user_editable
+
+  data_type: 'smallint'
+  default_value: 0
+  is_nullable: 0
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -58,6 +64,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
   "ip",
   { data_type => "varchar", is_nullable => 0, size => 64 },
+  "user_editable",
+  { data_type => "smallint", default_value => 0, is_nullable => 0 },
 );
 
 =head1 PRIMARY KEY
@@ -92,8 +100,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-06-01 09:12:11
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:m8ShPHUuYqsFIIRrK7FuVA
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-06-09 07:25:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TdQc53eMC99qqUN9fFLgMg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
