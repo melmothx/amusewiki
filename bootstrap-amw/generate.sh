@@ -3,7 +3,7 @@
 # cp bootstrap/dist/fonts/* ../root/static/fonts
 cp bootstrap/dist/js/bootstrap* ../root/static/js
 lessc -x amusewiki.less ../root/static/css/bootstrap.css
-for theme in amusecosmo amusewiki amusejournal robotojournal; do
+for theme in amusecosmo amusewiki amusejournal robotojournal purplejournal; do
     lessc -x $theme.less ../root/static/css/bootstrap.$theme.css
 done
 

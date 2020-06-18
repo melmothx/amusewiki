@@ -4039,6 +4039,7 @@ sub bootstrap_themes {
                      amusecosmo
                      amusejournal
                      robotojournal
+                     purplejournal
 
                      cerulean
                      cosmo
