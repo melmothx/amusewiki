@@ -244,7 +244,7 @@ CONFLICT: {
         $git->push;
     };
     ok $@, "Error while pushing: $@";
-    $git->pull;
+    $git->pull({ no_ff => 1 });
     diag join("\n", $git->show);
     ok scalar(grep { /^Merge:/ } $git->show), "Pulling creates a merge";
     my @emails = Email::Sender::Simple->default_transport->deliveries;
