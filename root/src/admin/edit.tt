@@ -65,7 +65,7 @@
       <label for="binary_upload_max_size_in_mega" class="col-sm-3 control-label">
         [% loc('Max size for uploads in Mb') %]
       </label>
-      <div class="col-sm-1">
+      <div class="col-sm-2">
         <input type="number" min="1"
                name="binary_upload_max_size_in_mega"
                id="binary_upload_max_size_in_mega"
