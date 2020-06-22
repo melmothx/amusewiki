@@ -962,6 +962,7 @@ use Encode ();
 use XML::FeedPP;
 use Git::Wrapper;
 use Bytes::Random::Secure;
+use Email::Address;
 
 =head2 repo_root_rel
 
@@ -3043,7 +3044,7 @@ sub update_from_params {
                       ssl_cert
                       ssl_ca_cert
                       ssl_chained_cert
-                      sitename siteslogan logo mail_notify mail_from
+                      sitename siteslogan logo mail_from
                       sitegroup ttdir/);
     foreach my $string (@strings) {
         my $param = delete $params->{$string};
@@ -3062,7 +3063,12 @@ sub update_from_params {
             push @errors, "$string is not defined!";
         }
     }
-
+    $self->mail_notify('');
+    if (my $mail_notify = delete $params->{mail_notify}) {
+        if ($mail_notify =~ m/\@/) {
+            $self->mail_notify(join(", ", map { $_->address } Email::Address->parse($mail_notify)));
+        }
+    }
     if ($params->{canonical} and
         $params->{canonical} =~ m/\A$RE{net}{domain}{-nospace}{-rfc1101}\z/) {
         my $canonical = delete $params->{canonical};
@@ -4330,8 +4336,11 @@ sub send_mail {
     my ($self, $mkit, $tokens) = @_;
     foreach my $f (qw/to from cc/) {
         if (length($tokens->{$f})) {
-            if (my $valid = Email::Valid->address($tokens->{$f})) {
-                $tokens->{$f} = $valid;
+            my $addresses = $tokens->{$f};
+            # $addresses =~ s/\r?\n/,/g;
+            if (my @addresses = Email::Address->parse($addresses)) {
+                $tokens->{$f} = join(', ', map { $_->address } @addresses);
+                log_debug { "Mail token $f is $tokens->{$f}" };
             }
             else {
                 log_error { "Invalid email for $f $tokens->{$f} for $mkit" };

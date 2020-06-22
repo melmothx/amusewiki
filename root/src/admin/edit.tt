@@ -444,10 +444,12 @@ kpsewhich mylogo.pdf
     <div class="form-group">
       <label for="mail_notify" class="col-sm-6 control-label">
         [% loc('Notify mail: blank field will disable them') %]
+        ([% loc('comma separated list') %])
       </label>
       <div class="col-sm-6">
-        <input type="email"  name="mail_notify" id="mail_notify"
-               class="form-control email" value="[% esite.mail_notify | html %]" />
+        <textarea name="mail_notify" id="mail_notify"
+                  rows="1"
+                  class="form-control">[% esite.mail_notify | html %]</textarea>
       </div>
     </div>
 

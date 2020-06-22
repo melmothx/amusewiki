@@ -74,6 +74,7 @@ requires 'Mail::Send';
 requires 'Email::Sender';
 requires 'Email::MIME::Kit' => '3';
 requires 'Email::MIME::Kit::Renderer::TT' => '1.001';
+requires 'Email::Address' => '1.910';
 
 requires 'HTTP::Tiny';
 requires 'Crypt::XkcdPassword';

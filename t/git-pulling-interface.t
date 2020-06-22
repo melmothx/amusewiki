@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 14;
+use Test::More tests => 15;
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
     $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';
@@ -22,6 +22,7 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use Path::Tiny;
+use Email::Sender::Simple;
 use constant { DEBUG => 0 };
 
 
@@ -32,7 +33,7 @@ $site->update({
                mail_from => 'test@amusewiki.org',
                secure_site => 0,
                locale => 'en',
-               mail_notify => 'test@amusewiki.org',
+               mail_notify => "   test\@amusewiki.org  \n\n  pippo\@amusewiki.org  ",
               });
 my $git = $site->git;
 ok ((-d $site->repo_root), "test site created");
@@ -91,10 +92,12 @@ ok($site->cgit_base_url) and diag $site->cgit_base_url;
 diag "Checkin mails";
 
 # check just the first.
-my ($mail) =  Email::Sender::Simple->default_transport->deliveries;
-if ($mail) {
+my (@mails) =  Email::Sender::Simple->default_transport->deliveries;
+# diag Dumper(\@mails);
+if ($mails[0]) {
     my $url = $site->cgit_base_url . '/commit/?id=3D';
-    like $mail->{email}->as_string, qr{^URL: \Q$url\E[0-9a-f]+}m;
+    like $mails[0]{email}->as_string, qr{^URL: \Q$url\E[0-9a-f]+}m;
+    is_deeply $mails[0]{successes}, [ 'test@amusewiki.org', 'pippo@amusewiki.org' ] or diag Dumper($mails[0]);
 }
 
 
