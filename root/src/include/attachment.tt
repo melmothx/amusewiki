@@ -10,16 +10,16 @@
       [% IF attachment.has_thumbnails %]
         <img src="[% c.uri_for(attachment.large_uri) %]"
              alt="[% attachment.uri %]"
-             class="img img-responsive img-thumbnail">
+             class="img img-responsive img-thumbnail amw-attachment-audio-thumbnail">
       [% ELSIF attachment.is_audio %]
-        <div class="embed-responsive embed-responsive-4by3">
+        <div class="embed-responsive embed-responsive-audio amw-attachment-audio">
           <audio controls class="embed-responsive-item">
             <source src="[% c.uri_for(attachment.full_uri) %]" type="[% attachment.mime_type %]">
             [% loc('Your browser does not support the audio tag.') %]
           </audio>
         </div>
       [% ELSIF attachment.is_video %]
-        <div class="embed-responsive embed-responsive-4by3">
+        <div class="embed-responsive embed-responsive-4by3 amw-attachment-video">
           <video controls class="embed-responsive-item">
             <source src="[% c.uri_for(attachment.full_uri) %]" type="[% attachment.mime_type %]">
             [% loc('Your browser does not support the video tag.') %]

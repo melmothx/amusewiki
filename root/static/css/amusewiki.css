@@ -465,3 +465,7 @@ table.dataTable thead .sorting_desc:after {
 textarea.form-control {
     font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
 }
+
+.embed-responsive-audio {
+    height: 40px;
+}

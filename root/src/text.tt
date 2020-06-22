@@ -97,9 +97,9 @@
     </div><div class="row">
     [% ELSE %]
     [%- IF attached_pdfs_gallery -%]
-    <div class="col-sm-4 pdf-gallery center">
+    <div class="amw-attachments-container col-sm-4 pdf-gallery center">
     [%- ELSE -%]
-    <div class="col-xs-offset-4 col-xs-4 center">
+    <div class="amw-attachments-container col-xs-offset-4 col-xs-4 center">
     [% END %]
     [% INCLUDE 'include/attachment.tt' %]
     </div>
