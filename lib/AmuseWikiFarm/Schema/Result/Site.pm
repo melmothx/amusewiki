@@ -3044,7 +3044,7 @@ sub update_from_params {
                       ssl_cert
                       ssl_ca_cert
                       ssl_chained_cert
-                      sitename siteslogan logo mail_notify mail_from
+                      sitename siteslogan logo mail_from
                       sitegroup ttdir/);
     foreach my $string (@strings) {
         my $param = delete $params->{$string};
@@ -3063,7 +3063,12 @@ sub update_from_params {
             push @errors, "$string is not defined!";
         }
     }
-
+    $self->mail_notify('');
+    if (my $mail_notify = delete $params->{mail_notify}) {
+        if ($mail_notify =~ m/\@/) {
+            $self->mail_notify(join(", ", map { $_->address } Email::Address->parse($mail_notify)));
+        }
+    }
     if ($params->{canonical} and
         $params->{canonical} =~ m/\A$RE{net}{domain}{-nospace}{-rfc1101}\z/) {
         my $canonical = delete $params->{canonical};
