@@ -1,4 +1,4 @@
-[%- # -*- mode: html -*- %]
+[%- # -*- mode: web -*- %]
 <div class="amw-post-listing-container">
 [% IF texts.count %]
 <div class="amw-post-inner-listing">
@@ -19,15 +19,23 @@
     [% END %]
   [% IF (!site.lists_are_always_flat && (text.teaser || text.cover_uri)) %]
   <div class="list-group-item clearfix">
-    [% IF text.cover_uri %]
+
     <div class="text-cover-img-mini-container">
+    [% IF site.fixed_category_list %]
+      <div class="amw-category-list-in-listing">
+        [% FOREACH fcat IN text.topics %]
+          <a href="[% fcat.full_uri %]"><span class="label label-primary">[% loc(fcat.name) %]</span></a>
+        [% END %]
+      </div>
+    [% END %]
+    [% IF text.cover_uri %]
       <a href="[% c.uri_for(text.full_uri) %]">
         <img src="[% c.uri_for(text.cover_small_uri) %]"
              alt="[% text.valid_cover %]"
              class="text-cover-img-mini img-thumbnail" />
       </a>
-    </div>
     [% END %]
+    </div>
     <div>
       <h2 class="amw-latest-listing-item-title h3">
         [%- IF text.author %]<small>[% text.author -%]</small><br />[% END -%]
@@ -36,11 +44,12 @@
         [%- IF site.multilanguage || (text.lang != current_locale_code) -%]
         <small class="amw-latest-listing-item-language">[[% text.lang %]]</small>
         [%- END -%]
-
       </h2>
+      <div>
       [% IF text.teaser %]
       [% text.teaser %]
       [% END %]
+      </div>
     </div>
     <div class="clearfix"></div>
     [% IF show_link %]

@@ -469,3 +469,8 @@ textarea.form-control {
 .embed-responsive-audio {
     height: 40px;
 }
+
+.amw-category-list-in-listing {
+    text-align: right;
+    padding-bottom: 5px;
+}
