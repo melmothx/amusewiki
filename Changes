@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.458 2020-06-22
+
+ - Permit multiple addresses in notification GH#346
+ - Show fixed categories in listings as labels
+
 2.457 2020-06-18
 
  - New themes: robotojournal and purplejournal
