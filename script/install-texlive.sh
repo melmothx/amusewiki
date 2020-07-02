@@ -88,6 +88,7 @@ $homedir/local/texlive/2020/bin/$arch/tlmgr install \
         atveryend bookmark fontspec polyglossia xindy xetex luatex imakeidx    \
         latex-bin epstopdf epstopdf-pkg ncctools luatexbase texdoc beamer      \
         pstricks fp pst-text xcolor geometry bidi zref auxhook chngcntr        \
+        xetex-pstricks \
         footmisc \
         hyphen-afrikaans hyphen-ancientgreek hyphen-arabic hyphen-armenian     \
         hyphen-base hyphen-basque hyphen-belarusian hyphen-bulgarian           \
