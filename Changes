@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.459 2020-07-03
+
+ - Store the feed teaser in the Xapian DB to improve Meta output
+
 2.458 2020-06-22
 
  - Permit multiple addresses in notification GH#346
