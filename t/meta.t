@@ -14,7 +14,7 @@ use JSON::MaybeXS;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use AmuseWikiMeta::Archive::Config;
-use Test::More tests => 7;
+use Test::More tests => 8;
 use Data::Dumper::Concise;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
