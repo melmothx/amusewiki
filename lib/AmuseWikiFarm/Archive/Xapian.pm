@@ -644,6 +644,7 @@ sub _do_faceted_search {
             $corrected_query = '';
         }
     }
+    Dlog_debug { "Results are $_" } \@matches;
     return AmuseWikiFarm::Archive::Xapian::Result->new(
                                                        selections => \%actives,
                                                        matches => \@matches,

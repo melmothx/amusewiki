@@ -315,8 +315,11 @@ sub texts {
     my @out;
     foreach my $match (@{$self->matches}) {
         try {
-            my $obj = AmuseWikiFarm::Archive::Xapian::Result::Text->new($match->{pagedata});
-            push @out, $obj;
+            my $data = $match->{pagedata};
+            if ($data->{full_uri} and $data->{site_id}) {
+                my $obj = AmuseWikiFarm::Archive::Xapian::Result::Text->new($match->{pagedata});
+                push @out, $obj;
+            }
         } catch {
             my $err = $_;
             # this happens when the Xapian DB is waiting to be
@@ -337,6 +340,7 @@ sub json_output {
         $sites_map = { $site->id => $site->canonical_url };
     }
     foreach my $match (@{$self->matches}) {
+        Dlog_debug { $_ } $match;
         my %text = %{$match->{pagedata}};
         $text{rank} = $match->{rank};
         $text{relevance} = $match->{relevance};

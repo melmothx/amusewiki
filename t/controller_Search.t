@@ -30,7 +30,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 }
 
 {
-    $mech->get_ok('/search?query=a');
+    $mech->get_ok('/search?query=a&bare=1');
     $mech->content_like(qr/second-test/, "Found a text") or die $mech->content;
     $mech->get_ok('/search?query=title:"My first test"&fmt=json');
     diag $mech->content;
@@ -90,7 +90,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
         diag $mech->content;
         $mech->get_ok("/search?query=uri:$uri&fmt=json");
         $mech->content_contains(qq{"uri":"$uri"}, "$uri is still present, no exception");
-        $mech->get_ok("/search?query=uri:$uri");
+        $mech->get_ok("/search?query=uri:$uri&bare=1");
         $mech->content_lacks(q{id="results"}) or diag $mech->content;
     }
 }
