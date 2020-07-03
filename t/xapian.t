@@ -11,7 +11,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 43;
+use Test::More tests => 55;
 use Data::Dumper;
 use File::Path qw/make_path/;
 
@@ -136,5 +136,8 @@ $site->xapian_reindex_all;
 foreach my $term ("état", "etat", "ÉTAT", "ETAT") {
     my ($total, @results) = $site->xapian->search($term);
     is $total->total_entries, 1, "Found one record searching for $term";
+    ok $results[0]->{pagedata}->{feed_teaser}, "Found the teaser";
+    ok !$results[0]->{pagedata}->{teaser}, "No manual teaser";
+    ok $results[0]->{pagedata}->{id}, "Found the DB ID";
 }
 

@@ -4455,7 +4455,7 @@ sub create_feed {
             push @lines, '<div>' . $teaser . '</div>';
         }
         else {
-            push @lines, '<div>' . $text->create_feed_teaser . '</div>';
+            push @lines, '<div>' . $text->feed_teaser . '</div>';
         }
         $item->description('<div>' . join('<br>', @lines) . '</div>');
         # if we provide epub, add it as attachment, so the poor

@@ -21,6 +21,7 @@ use Data::Dumper::Concise;
 
 sub imported_methods {
     my @methods = (qw/
+                     id
                      uri
                      full_uri
                      teaser
@@ -36,11 +37,13 @@ sub imported_methods {
                      text_qualification
                      pages_estimated
                      blob_container
+                     feed_teaser
                      /);
     return @methods;
 }
 
-has [ __PACKAGE__->imported_methods ] => (is => 'ro', required => 1);
+# not required because crashing on upgrade is silly
+has [ __PACKAGE__->imported_methods ] => (is => 'ro', required => 0);
 
 sub BUILDARGS {
     my ($self, @args) = @_;
