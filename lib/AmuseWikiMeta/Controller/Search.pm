@@ -114,7 +114,7 @@ sub feed :Chained('/root') :Args(0) {
                   '<strong>' . ucfirst($method) . '</strong>: ' . $string;
             }
         }
-        if (my $teaser = $text->{teaser}) {
+        if (my $teaser = $text->{teaser} || $text->{feed_teaser}) {
             push @lines, '<div>' . $teaser . '</div>';
         }
         $item->description('<div>' . join('<br>', @lines) . '</div>');

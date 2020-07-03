@@ -46,5 +46,6 @@ $mech->get_ok('/');
 $mech->content_contains('<!doctype html>', "Static pages served");
 $mech->get('/blablabla');
 is $mech->status, 404;
-
+$mech->get_ok('/feed');
+# diag $mech->content;
 path(AmuseWikiMeta::Archive::Config->new(config_file => $ENV{AMW_META_CONFIG_FILE})->stub_database)->remove;
