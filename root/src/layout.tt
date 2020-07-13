@@ -668,9 +668,11 @@
       [%- SET flash_cleared_output_suppressed = c.clear_flash -%]
 [% END %]
 
+        <div id="widepage-container">
           <div id="widepage">
             [% content %]
           </div>
+        </div>
           <div>&nbsp;</div>
           <div>&nbsp;</div>
         </div>
