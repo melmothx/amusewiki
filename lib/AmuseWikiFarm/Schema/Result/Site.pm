@@ -4586,6 +4586,11 @@ sub editable_whitelist_ips_rs {
     return $rs;
 }
 
+sub amuse_include_paths {
+    my $self = shift;
+    return [ map { $_->directory } $self->include_paths->search(undef, { order_by => 'sorting_pos' }) ];
+}
+
 after insert => sub {
     my $self = shift;
     $self->discard_changes;
