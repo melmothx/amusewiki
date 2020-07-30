@@ -613,6 +613,14 @@ CREATE TABLE whitelist_ip (
        PRIMARY KEY (site_id, ip)
 );
 
+CREATE TABLE include_path (
+       include_path_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
+       directory TEXT,
+       sorting_pos INTEGER NOT NULL DEFAULT 0
+);
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),
@@ -652,6 +660,7 @@ INSERT INTO table_comments (table_name, comment_text)
          ('node', 'Nestable nodes'),
          ('node_body', 'Nodes description'),
          ('node_title', 'Linking table from Node to Title'),
-         ('node_category', 'Linking table from Node to Category')
+         ('node_category', 'Linking table from Node to Category'),
+         ('include_path', 'Directories to search for file inclusions')
          ;
 

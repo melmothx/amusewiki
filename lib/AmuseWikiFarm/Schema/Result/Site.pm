@@ -673,6 +673,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 include_paths
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::IncludePath>
+
+=cut
+
+__PACKAGE__->has_many(
+  "include_paths",
+  "AmuseWikiFarm::Schema::Result::IncludePath",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 jobs
 
 Type: has_many
@@ -909,8 +924,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-06-01 09:12:11
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Sws11H/ITCntVW5kn3zV3g
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-07-30 15:07:47
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:RMd1UUcme0uL9Vw2EzTv6Q
 
 =head2 other_sites
 
