@@ -1038,6 +1038,7 @@ sub compile_options {
                 bare_html => 1,
                 epub => 1,
                 zip => 1,
+                include_paths => $self->amuse_include_paths,
                );
     if ($self->use_luatex) {
         $opts{luatex} = 1;
@@ -1048,7 +1049,6 @@ sub compile_options {
     if (my $dir = $self->valid_ttdir) {
         $opts{ttdir} = $dir;
     }
-
     # passing nocoverpage, as we used to, would kill the coverpage
     # globally. If you really want that, you need a custom format.
     if ($self->nocoverpage) {
@@ -4588,7 +4588,8 @@ sub editable_whitelist_ips_rs {
 
 sub amuse_include_paths {
     my $self = shift;
-    return [ map { $_->directory } $self->include_paths->search(undef, { order_by => 'sorting_pos' }) ];
+    return [ grep { length $_ and -d $_ }
+             map { $_->directory } $self->include_paths->search(undef, { order_by => 'sorting_pos' }) ];
 }
 
 after insert => sub {

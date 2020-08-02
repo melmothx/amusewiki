@@ -1162,7 +1162,9 @@ sub muse_object {
     my $self = shift;
     if (my $file = $self->f_full_path_name) {
         if ( -f $file ) {
-            return Text::Amuse->new(file => $file);
+            return Text::Amuse->new(file => $file,
+                                    include_paths => $self->site->amuse_include_paths,
+                                   );
         }
     }
     return;
