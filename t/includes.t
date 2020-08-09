@@ -1,8 +1,10 @@
 #!perl
 
+use utf8;
 use strict;
 use warnings;
-use utf8;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use Path::Tiny;
 use File::Spec::Functions qw/catdir/;
 use Test::More tests => 40;
@@ -13,7 +15,7 @@ use Data::Dumper::Concise;
 use AmuseWikiFarm::Archive::BookBuilder;
 use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
 
-BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0inc0');
