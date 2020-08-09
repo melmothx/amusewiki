@@ -1,0 +1,173 @@
+#!/usr/bin/env perl
+
+BEGIN { die "Do not run this as root" unless $>; }
+
+use strict;
+use warnings;
+use Cwd;
+use lib 'lib';
+use Getopt::Long;
+use Pod::Usage;
+use AmuseWikiFarm::Schema;
+use File::Spec;
+
+my ($reset, $all_sites, $help,
+    $list,
+    $repo,
+    @add, @remove, @site_ids);
+
+GetOptions ('reset' => \$reset,
+            'help' => \$help,
+            'site=s' => \@site_ids,
+            'add=s' => \@add,
+            'remove=s' => \@remove,
+            'reset' => \$reset,
+            'list' => \$list,
+            'repo' => \$repo,
+            'all' => \$all_sites) or die;
+
+if ($help) {
+    pod2usage;
+    exit 2;
+}
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+amusewiki-include-path - Permit file inclusion in muse files
+
+=head1 SYNOPSIS
+
+Usage: amusewiki-include-path [ --all | --site  <site_id> ] [ --add path ] [ --remove path ] [ --reset ]
+
+You need to be in the root directory of the application, i.e. where
+'repo' is located.
+
+Please note that if you include directories like "/", "/etc", "/home"
+and alike, nothing is stopping the application to include sensitive
+files which are readable by the application itsef.
+
+To mitigate this potential security problem, there is no web interface
+to set the include paths and they can be manipulated only by DB access
+or via this script.
+
+You are advised to enable this feature only on private sites or on
+sites where only trusted users have write access.
+
+This feature is disabled by default.
+
+=head2 OPTIONS
+
+=over 4
+
+=item --help
+
+Print this help and exit.
+
+=item --site <site_id>
+
+Repeatable. Set the site(s) you want to operate on. Use C<--all> if
+you want to operate on every site.
+
+=item --add <path>
+
+Repeatable. Add the given path to the site. It must be an absolute path.
+
+=item --remove <path>
+
+Repeatable. Remove the given path from the site.
+
+=item --repo
+
+Add the site repo to the include list (which is the sanest option)
+
+=item --reset
+
+Remove all the included paths.
+
+=back
+
+=cut
+
+
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
+my @sites;
+if (@site_ids) {
+    @sites = $schema->resultset('Site')->search({ id => \@site_ids })->all;
+}
+elsif ($all_sites) {
+    @sites = $schema->resultset('Site')->all;
+}
+else {
+    die "No --site <site_id> nor --all passed.\n";
+      
+}
+
+unless (@sites) {
+    die "No site found!";
+}
+
+foreach my $site (@sites) {
+    my $site_id = $site->id;
+    if ($reset) {
+        print "Resetting include paths for $site_id\n";
+        $site->include_paths->delete;
+    }
+
+    # 0 is reserved for the repo
+    my $pos = 1;
+    if (my $last = $site->include_paths->search(undef, { order_by => { -desc => 'sorting_pos' }})->first) {
+        $pos = $last->sorting_pos + 1;
+    }
+    foreach my $path (@add) {
+        if (File::Spec->file_name_is_absolute($path)) {
+            if (-d $path) {
+                $site->add_to_include_paths({
+                                             directory => $path,
+                                             sorting_pos => $pos,
+                                            });
+                $pos++;
+            }
+            else {
+                print "$path is not a directory, skipping\n"
+            }
+        }
+        else {
+            print "$path is not absolute, skipping\n";
+        }
+    }
+    foreach my $path (@remove) {
+        my $rs = $site->include_paths->search({ directory => $path });
+        if ($rs->count) {
+            print "Removing $path from $site_id\n";
+            $rs->delete;
+        }
+        else {
+            print "Cannot remove $path to $site_id, $path not found\n";
+        }
+    }
+    if ($repo) {
+        my $repo_dir = $site->repo_root;
+        unless ($site->include_paths->search({ directory => $repo_dir })->count) {
+            $site->add_to_include_paths({
+                                         directory => $repo_dir,
+                                         sorting_pos => 0,
+                                        });
+        }
+    }
+}
+
+# always print the summary.
+
+foreach my $site ($schema->resultset('Site')->all) {
+    if ($site->include_paths->count) {
+        print "Site: " . $site->id . " include paths:\n";
+        foreach my $path ($site->include_paths->search(undef, { order_by => 'sorting_pos' })) {
+            print " - " . $path->directory . "\n";
+        }
+        print "\n";
+    }
+}
