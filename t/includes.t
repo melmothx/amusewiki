@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Path::Tiny;
 use File::Spec::Functions qw/catdir/;
-use Test::More tests => 42;
+use Test::More tests => 47;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
@@ -62,7 +62,7 @@ my $leftover = qr{try-me\.muse.*try-another\.txt}s;
 
 MUSE
     $revision->commit_version;
-    $revision->publish_text;
+    $revision->publish_text(sub { diag @_ });
     like $revision->muse_doc->as_html, $check;
     unlike $revision->muse_doc->as_html, $leftover;
     like $revision->muse_doc->as_latex, $check;
@@ -128,6 +128,28 @@ MUSE
     unlike $tex, $leftover;
 }
 
+# test the bumping.
+{
+    diag "Testing if the changes in an included file trigger a job";
+    $site->jobs->delete;
+    sleep 2;
+
+    is $site->update_db_from_tree_async(sub { diag @_ })->total_jobs, 0, "Nothing changed";
+
+    # modify the file.
+    path($site->repo_root)->child('try-another.txt')->append_utf8("\n");
+
+    my $bulk = $site->update_db_from_tree_async(sub { diag @_ });
+    diag Dumper($bulk->expected_documents);
+    is $bulk->total_jobs, 1, "Found the job";
+
+    while (my $j = $site->jobs->dequeue) {
+        ok $j->dispatch_job;
+    }
+
+    is $site->update_db_from_tree_async(sub { diag @_ })->total_jobs, 0, "Nothing changed";
+}
+
 # now remove the includes and try again.
 
 $site->include_paths->delete;
@@ -159,7 +181,7 @@ $site->include_paths->delete;
     my $revision = $title->new_revision;
     $revision->edit($revision->muse_body . "\n\n");
     $revision->commit_version;
-    $revision->publish_text;
+    $revision->publish_text(sub { diag @_ });
     unlike $revision->muse_doc->as_html, $check;
     like $revision->muse_doc->as_html, $leftover;
     ok !scalar($revision->muse_doc->included_files);
@@ -174,8 +196,6 @@ $site->include_paths->delete;
     }
     ok !scalar($title->muse_object->included_files);
 }
-
-
 
 sub extract_file {
     my ($path, $target) = @_;

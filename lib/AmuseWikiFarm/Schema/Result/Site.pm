@@ -2493,6 +2493,27 @@ sub repo_find_changed_files {
     my $in_tree = $self->repo_find_files;
     Dlog_debug { "Files are $_" } $in_tree;
     my $in_db = $self->repo_find_tracked_files;
+
+  INCLUSION:
+    foreach my $included ($self->included_files) {
+        my $path = Path::Tiny::path($included->file_path);
+        if ($path->exists and $path->stat->mtime == $included->file_epoch) {
+            log_debug { "Included file $path unchanged" };
+            next INCLUSION
+        }
+        my $title = $included->title;
+        my $relpath = File::Spec->catfile($title->f_archive_rel_path,
+                                          $title->f_name . $title->f_suffix);
+        if (exists $in_db->{$relpath}) {
+            # signal that the file changed
+            log_info { "Included file $path changed, bumping $relpath" };
+            $in_db->{$relpath} = -1;
+        }
+        else {
+            log_error { $self->id . " $relpath not found in the tracked files! (included $path)" };
+        }
+    }
+
     foreach my $file (keys %$in_db) {
         if (exists $in_tree->{$file}) {
             if ($in_tree->{$file} != $in_db->{$file}) {
