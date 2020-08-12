@@ -2252,6 +2252,7 @@ sub index_file {
             }
         }
     }
+    $title->update_included_files($logger);
     $title->scan_and_store_links($logger) if $self->enable_backlinks;
     if (my $teaser_length = $self->automatic_teaser) {
         $title->autogenerate_teaser($teaser_length, $logger);

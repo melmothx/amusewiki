@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Path::Tiny;
 use File::Spec::Functions qw/catdir/;
-use Test::More tests => 40;
+use Test::More tests => 42;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
@@ -76,6 +76,10 @@ MUSE
     like $title->muse_body, qr{#include.*#include}s;
     like $title->html_body, $check;
     unlike $title->html_body, $leftover;
+    is $title->included_files->count, 2;
+    foreach my $i ($title->included_files) {
+      diag Dumper({ $i->get_columns });
+    }
     foreach my $ext (qw/html tex/) {
         my $f = $title->filepath_for_ext($ext);
         my $body = path($f)->slurp_utf8;
@@ -160,6 +164,7 @@ $site->include_paths->delete;
     like $revision->muse_doc->as_html, $leftover;
     ok !scalar($revision->muse_doc->included_files);
     $title = $title->get_from_storage;
+    is $title->included_files->count, 0;
     like $title->html_body, $leftover;
     foreach my $ext (qw/html tex/) {
         my $f = $title->filepath_for_ext($ext);
@@ -168,7 +173,6 @@ $site->include_paths->delete;
         like $body, $leftover;
     }
     ok !scalar($title->muse_object->included_files);
-
 }
 
 

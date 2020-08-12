@@ -1709,6 +1709,34 @@ sub display_categories {
     return \@out;
 }
 
+sub update_included_files {
+    my ($self, $logger) = @_;
+    my $muse = $self->muse_object;
+    $self->included_files->delete;
+    log_debug { "Updating included files" };
+    foreach my $f ($muse->included_files) {
+        log_debug { "Parsing $f" };
+        if ($f and -f $f) {
+            eval {
+                my $file = Path::Tiny::path($f);
+                my $epoch = $file->stat->mtime;
+                my $dt = DateTime->from_epoch(epoch => $epoch, time_zone => 'UTC');
+                $self->add_to_included_files({
+                                              site_id => $self->site_id,
+                                              file_path => $f,
+                                              file_epoch => $epoch,
+                                              file_timestamp => $dt,
+                                             });
+            };
+            if ($@) {
+                log_error { "Failure parsing $f in " . $self->filepath_for_ext('muse') . ": $@" };
+            }
+        }
+        else {
+            log_error { "Included file $f in " . $self->filepath_for_ext('muse') . "is empty or does not exist?" };
+        }
+    }
+}
 
 __PACKAGE__->meta->make_immutable;
 
