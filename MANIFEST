@@ -125,6 +125,8 @@ dbicdh/_source/deploy/61/001-auto-__VERSION.yml
 dbicdh/_source/deploy/61/001-auto.yml
 dbicdh/_source/deploy/62/001-auto-__VERSION.yml
 dbicdh/_source/deploy/62/001-auto.yml
+dbicdh/_source/deploy/63/001-auto-__VERSION.yml
+dbicdh/_source/deploy/63/001-auto.yml
 dbicdh/_source/deploy/7/001-auto-__VERSION.yml
 dbicdh/_source/deploy/7/001-auto.yml
 dbicdh/_source/deploy/8/001-auto-__VERSION.yml
@@ -247,6 +249,8 @@ dbicdh/MySQL/deploy/61/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/61/001-auto.sql
 dbicdh/MySQL/deploy/62/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/62/001-auto.sql
+dbicdh/MySQL/deploy/63/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/63/001-auto.sql
 dbicdh/MySQL/deploy/7/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/7/001-auto.sql
 dbicdh/MySQL/deploy/8/001-auto-__VERSION.sql
@@ -310,6 +314,7 @@ dbicdh/MySQL/upgrade/59-60/001-auto.sql
 dbicdh/MySQL/upgrade/6-7/001-auto.sql
 dbicdh/MySQL/upgrade/60-61/001-auto.sql
 dbicdh/MySQL/upgrade/61-62/001-auto.sql
+dbicdh/MySQL/upgrade/62-63/001-auto.sql
 dbicdh/MySQL/upgrade/7-8/001-auto.sql
 dbicdh/MySQL/upgrade/8-9/001-auto.sql
 dbicdh/MySQL/upgrade/9-10/001-auto.sql
@@ -429,6 +434,8 @@ dbicdh/PostgreSQL/deploy/61/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/61/001-auto.sql
 dbicdh/PostgreSQL/deploy/62/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/62/001-auto.sql
+dbicdh/PostgreSQL/deploy/63/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/63/001-auto.sql
 dbicdh/PostgreSQL/deploy/7/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/7/001-auto.sql
 dbicdh/PostgreSQL/deploy/8/001-auto-__VERSION.sql
@@ -492,6 +499,7 @@ dbicdh/PostgreSQL/upgrade/59-60/001-auto.sql
 dbicdh/PostgreSQL/upgrade/6-7/001-auto.sql
 dbicdh/PostgreSQL/upgrade/60-61/001-auto.sql
 dbicdh/PostgreSQL/upgrade/61-62/001-auto.sql
+dbicdh/PostgreSQL/upgrade/62-63/001-auto.sql
 dbicdh/PostgreSQL/upgrade/7-8/001-auto.sql
 dbicdh/PostgreSQL/upgrade/8-9/001-auto.sql
 dbicdh/PostgreSQL/upgrade/9-10/001-auto.sql
@@ -611,6 +619,8 @@ dbicdh/SQLite/deploy/61/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/61/001-auto.sql
 dbicdh/SQLite/deploy/62/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/62/001-auto.sql
+dbicdh/SQLite/deploy/63/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/63/001-auto.sql
 dbicdh/SQLite/deploy/7/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/7/001-auto.sql
 dbicdh/SQLite/deploy/8/001-auto-__VERSION.sql
@@ -674,6 +684,7 @@ dbicdh/SQLite/upgrade/59-60/001-auto.sql
 dbicdh/SQLite/upgrade/6-7/001-auto.sql
 dbicdh/SQLite/upgrade/60-61/001-auto.sql
 dbicdh/SQLite/upgrade/61-62/001-auto.sql
+dbicdh/SQLite/upgrade/62-63/001-auto.sql
 dbicdh/SQLite/upgrade/7-8/001-auto.sql
 dbicdh/SQLite/upgrade/8-9/001-auto.sql
 dbicdh/SQLite/upgrade/9-10/001-auto.sql
@@ -770,6 +781,7 @@ lib/AmuseWikiFarm/Schema/Result/CategoryDescription.pm
 lib/AmuseWikiFarm/Schema/Result/ColumnComment.pm
 lib/AmuseWikiFarm/Schema/Result/CustomFormat.pm
 lib/AmuseWikiFarm/Schema/Result/GlobalSiteFile.pm
+lib/AmuseWikiFarm/Schema/Result/IncludedFile.pm
 lib/AmuseWikiFarm/Schema/Result/IncludePath.pm
 lib/AmuseWikiFarm/Schema/Result/Job.pm
 lib/AmuseWikiFarm/Schema/Result/JobFile.pm
@@ -1481,6 +1493,7 @@ script/jobber.pl
 script/mirror-site.pl
 script/mirror-site.sh
 script/patch-cam-pdf.sh
+script/print-char-range.pl
 script/sync-remote-archive.pl
 script/test-dbic-upgrade-script.pl
 script/upgrade-to-secure-sites.pl
