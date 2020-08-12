@@ -1493,7 +1493,6 @@ script/jobber.pl
 script/mirror-site.pl
 script/mirror-site.sh
 script/patch-cam-pdf.sh
-script/print-char-range.pl
 script/sync-remote-archive.pl
 script/test-dbic-upgrade-script.pl
 script/upgrade-to-secure-sites.pl
