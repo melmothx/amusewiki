@@ -673,6 +673,36 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 include_paths
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::IncludePath>
+
+=cut
+
+__PACKAGE__->has_many(
+  "include_paths",
+  "AmuseWikiFarm::Schema::Result::IncludePath",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 included_files
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::IncludedFile>
+
+=cut
+
+__PACKAGE__->has_many(
+  "included_files",
+  "AmuseWikiFarm::Schema::Result::IncludedFile",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 jobs
 
 Type: has_many
@@ -909,8 +939,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-06-01 09:12:11
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Sws11H/ITCntVW5kn3zV3g
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-08-12 07:53:59
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ATTjOYTQyF1Mw++AIY4YoA
 
 =head2 other_sites
 
@@ -1023,6 +1053,7 @@ sub compile_options {
                 bare_html => 1,
                 epub => 1,
                 zip => 1,
+                include_paths => $self->amuse_include_paths,
                );
     if ($self->use_luatex) {
         $opts{luatex} = 1;
@@ -1033,7 +1064,6 @@ sub compile_options {
     if (my $dir = $self->valid_ttdir) {
         $opts{ttdir} = $dir;
     }
-
     # passing nocoverpage, as we used to, would kill the coverpage
     # globally. If you really want that, you need a custom format.
     if ($self->nocoverpage) {
@@ -2222,6 +2252,7 @@ sub index_file {
             }
         }
     }
+    $title->update_included_files($logger);
     $title->scan_and_store_links($logger) if $self->enable_backlinks;
     if (my $teaser_length = $self->automatic_teaser) {
         $title->autogenerate_teaser($teaser_length, $logger);
@@ -2403,7 +2434,15 @@ sub repo_find_files {
                   $files{$relpath} = (stat($file))[9];
               }
               else {
-                  warn "Discarding $relpath\n" if $relpath =~ m/\.muse$/;
+                  if ($relpath =~ m/\.muse$/) {
+                      my $expected = AmuseWikiFarm::Utils::Amuse::get_corrected_path($relpath);
+                      if ($expected and $expected ne $relpath) {
+                          warn "Discarding $relpath, expected path is $expected\n";
+                      }
+                      else {
+                          warn "Discarding $relpath, invalid path\n";
+                      }
+                  }
               }
           }, $root);
     return \%files;
@@ -2462,6 +2501,27 @@ sub repo_find_changed_files {
     my $in_tree = $self->repo_find_files;
     Dlog_debug { "Files are $_" } $in_tree;
     my $in_db = $self->repo_find_tracked_files;
+
+  INCLUSION:
+    foreach my $included ($self->included_files) {
+        my $path = Path::Tiny::path($included->file_path);
+        if ($path->exists and $path->stat->mtime == $included->file_epoch) {
+            log_debug { "Included file $path unchanged" };
+            next INCLUSION
+        }
+        my $title = $included->title;
+        my $relpath = File::Spec->catfile($title->f_archive_rel_path,
+                                          $title->f_name . $title->f_suffix);
+        if (exists $in_db->{$relpath}) {
+            # signal that the file changed
+            log_info { "Included file $path changed, bumping $relpath" };
+            $in_db->{$relpath} = -1;
+        }
+        else {
+            log_error { $self->id . " $relpath not found in the tracked files! (included $path)" };
+        }
+    }
+
     foreach my $file (keys %$in_db) {
         if (exists $in_tree->{$file}) {
             if ($in_tree->{$file} != $in_db->{$file}) {
@@ -4569,6 +4629,12 @@ sub editable_whitelist_ips_rs {
     my $self = shift;
     my $rs = $self->whitelist_ips->editable;
     return $rs;
+}
+
+sub amuse_include_paths {
+    my $self = shift;
+    return [ grep { length $_ and -d $_ }
+             map { $_->directory } $self->include_paths->search(undef, { order_by => 'sorting_pos' }) ];
 }
 
 after insert => sub {

@@ -353,6 +353,21 @@ __PACKAGE__->add_unique_constraint("uri_f_class_site_id_unique", ["uri", "f_clas
 
 =head1 RELATIONS
 
+=head2 included_files
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::IncludedFile>
+
+=cut
+
+__PACKAGE__->has_many(
+  "included_files",
+  "AmuseWikiFarm::Schema::Result::IncludedFile",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 muse_headers
 
 Type: has_many
@@ -544,8 +559,8 @@ Composing rels: L</node_titles> -> node
 __PACKAGE__->many_to_many("nodes", "node_titles", "node");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2020-01-06 09:52:22
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UIhojnruxBlEVwKux/yGvg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-08-12 07:53:59
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:N7LqvrcL8OXj9qEPzztHKw
 
 =head2 translations
 
@@ -1162,7 +1177,9 @@ sub muse_object {
     my $self = shift;
     if (my $file = $self->f_full_path_name) {
         if ( -f $file ) {
-            return Text::Amuse->new(file => $file);
+            return Text::Amuse->new(file => $file,
+                                    include_paths => $self->site->amuse_include_paths,
+                                   );
         }
     }
     return;
@@ -1692,6 +1709,34 @@ sub display_categories {
     return \@out;
 }
 
+sub update_included_files {
+    my ($self, $logger) = @_;
+    my $muse = $self->muse_object;
+    $self->included_files->delete;
+    log_debug { "Updating included files" };
+    foreach my $f ($muse->included_files) {
+        log_debug { "Parsing $f" };
+        if ($f and -f $f) {
+            eval {
+                my $file = Path::Tiny::path($f);
+                my $epoch = $file->stat->mtime;
+                my $dt = DateTime->from_epoch(epoch => $epoch, time_zone => 'UTC');
+                $self->add_to_included_files({
+                                              site_id => $self->site_id,
+                                              file_path => $f,
+                                              file_epoch => $epoch,
+                                              file_timestamp => $dt,
+                                             });
+            };
+            if ($@) {
+                log_error { "Failure parsing $f in " . $self->filepath_for_ext('muse') . ": $@" };
+            }
+        }
+        else {
+            log_error { "Included file $f in " . $self->filepath_for_ext('muse') . "is empty or does not exist?" };
+        }
+    }
+}
 
 __PACKAGE__->meta->make_immutable;
 

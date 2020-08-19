@@ -252,7 +252,11 @@ sub muse_doc {
     my $self = shift;
     my $file = $self->f_full_path_name;
     return '' unless -f $file;
-    my $doc = Text::Amuse->new(file => $file);
+    my $doc = Text::Amuse->new(file => $file,
+                               include_paths => $self->site->amuse_include_paths,
+                              );
+    Dlog_debug { "Inclusions $_" } [ $doc->include_paths, $doc->included_files ];
+
     return $doc;
 }
 

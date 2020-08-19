@@ -613,6 +613,25 @@ CREATE TABLE whitelist_ip (
        PRIMARY KEY (site_id, ip)
 );
 
+CREATE TABLE include_path (
+       include_path_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
+       directory TEXT,
+       sorting_pos INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE included_file (
+       included_file_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
+       title_id INTEGER NOT NULL REFERENCES title(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE,
+       file_path TEXT NOT NULL,
+       file_timestamp DATETIME,
+       file_epoch INTEGER
+);
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),
@@ -652,6 +671,8 @@ INSERT INTO table_comments (table_name, comment_text)
          ('node', 'Nestable nodes'),
          ('node_body', 'Nodes description'),
          ('node_title', 'Linking table from Node to Title'),
-         ('node_category', 'Linking table from Node to Category')
+         ('node_category', 'Linking table from Node to Category'),
+         ('included_file', 'Files included in muse documents'),
+         ('include_path', 'Directories to search for file inclusions')
          ;
 

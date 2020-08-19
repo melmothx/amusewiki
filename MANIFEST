@@ -123,6 +123,10 @@ dbicdh/_source/deploy/60/001-auto-__VERSION.yml
 dbicdh/_source/deploy/60/001-auto.yml
 dbicdh/_source/deploy/61/001-auto-__VERSION.yml
 dbicdh/_source/deploy/61/001-auto.yml
+dbicdh/_source/deploy/62/001-auto-__VERSION.yml
+dbicdh/_source/deploy/62/001-auto.yml
+dbicdh/_source/deploy/63/001-auto-__VERSION.yml
+dbicdh/_source/deploy/63/001-auto.yml
 dbicdh/_source/deploy/7/001-auto-__VERSION.yml
 dbicdh/_source/deploy/7/001-auto.yml
 dbicdh/_source/deploy/8/001-auto-__VERSION.yml
@@ -243,6 +247,10 @@ dbicdh/MySQL/deploy/60/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/60/001-auto.sql
 dbicdh/MySQL/deploy/61/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/61/001-auto.sql
+dbicdh/MySQL/deploy/62/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/62/001-auto.sql
+dbicdh/MySQL/deploy/63/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/63/001-auto.sql
 dbicdh/MySQL/deploy/7/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/7/001-auto.sql
 dbicdh/MySQL/deploy/8/001-auto-__VERSION.sql
@@ -305,6 +313,8 @@ dbicdh/MySQL/upgrade/58-59/001-auto.sql
 dbicdh/MySQL/upgrade/59-60/001-auto.sql
 dbicdh/MySQL/upgrade/6-7/001-auto.sql
 dbicdh/MySQL/upgrade/60-61/001-auto.sql
+dbicdh/MySQL/upgrade/61-62/001-auto.sql
+dbicdh/MySQL/upgrade/62-63/001-auto.sql
 dbicdh/MySQL/upgrade/7-8/001-auto.sql
 dbicdh/MySQL/upgrade/8-9/001-auto.sql
 dbicdh/MySQL/upgrade/9-10/001-auto.sql
@@ -422,6 +432,10 @@ dbicdh/PostgreSQL/deploy/60/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/60/001-auto.sql
 dbicdh/PostgreSQL/deploy/61/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/61/001-auto.sql
+dbicdh/PostgreSQL/deploy/62/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/62/001-auto.sql
+dbicdh/PostgreSQL/deploy/63/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/63/001-auto.sql
 dbicdh/PostgreSQL/deploy/7/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/7/001-auto.sql
 dbicdh/PostgreSQL/deploy/8/001-auto-__VERSION.sql
@@ -484,6 +498,8 @@ dbicdh/PostgreSQL/upgrade/58-59/001-auto.sql
 dbicdh/PostgreSQL/upgrade/59-60/001-auto.sql
 dbicdh/PostgreSQL/upgrade/6-7/001-auto.sql
 dbicdh/PostgreSQL/upgrade/60-61/001-auto.sql
+dbicdh/PostgreSQL/upgrade/61-62/001-auto.sql
+dbicdh/PostgreSQL/upgrade/62-63/001-auto.sql
 dbicdh/PostgreSQL/upgrade/7-8/001-auto.sql
 dbicdh/PostgreSQL/upgrade/8-9/001-auto.sql
 dbicdh/PostgreSQL/upgrade/9-10/001-auto.sql
@@ -601,6 +617,10 @@ dbicdh/SQLite/deploy/60/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/60/001-auto.sql
 dbicdh/SQLite/deploy/61/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/61/001-auto.sql
+dbicdh/SQLite/deploy/62/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/62/001-auto.sql
+dbicdh/SQLite/deploy/63/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/63/001-auto.sql
 dbicdh/SQLite/deploy/7/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/7/001-auto.sql
 dbicdh/SQLite/deploy/8/001-auto-__VERSION.sql
@@ -663,6 +683,8 @@ dbicdh/SQLite/upgrade/58-59/001-auto.sql
 dbicdh/SQLite/upgrade/59-60/001-auto.sql
 dbicdh/SQLite/upgrade/6-7/001-auto.sql
 dbicdh/SQLite/upgrade/60-61/001-auto.sql
+dbicdh/SQLite/upgrade/61-62/001-auto.sql
+dbicdh/SQLite/upgrade/62-63/001-auto.sql
 dbicdh/SQLite/upgrade/7-8/001-auto.sql
 dbicdh/SQLite/upgrade/8-9/001-auto.sql
 dbicdh/SQLite/upgrade/9-10/001-auto.sql
@@ -759,6 +781,8 @@ lib/AmuseWikiFarm/Schema/Result/CategoryDescription.pm
 lib/AmuseWikiFarm/Schema/Result/ColumnComment.pm
 lib/AmuseWikiFarm/Schema/Result/CustomFormat.pm
 lib/AmuseWikiFarm/Schema/Result/GlobalSiteFile.pm
+lib/AmuseWikiFarm/Schema/Result/IncludedFile.pm
+lib/AmuseWikiFarm/Schema/Result/IncludePath.pm
 lib/AmuseWikiFarm/Schema/Result/Job.pm
 lib/AmuseWikiFarm/Schema/Result/JobFile.pm
 lib/AmuseWikiFarm/Schema/Result/LegacyLink.pm
@@ -1443,6 +1467,7 @@ script/amusewiki-export-titles
 script/amusewiki-generate-meta-config
 script/amusewiki-generate-nginx-conf
 script/amusewiki-import-redirections
+script/amusewiki-include-path
 script/amusewiki-jobber
 script/amusewiki-letsencrypt
 script/amusewiki-populate-monthly
@@ -1591,6 +1616,8 @@ t/html-upload.t
 t/human-login-screens.t
 t/imager.t
 t/improve-diff-124.t
+t/include/try-me.muse
+t/includes.t
 t/indexer.t
 t/internal-linking.t
 t/ip-whitelist.t

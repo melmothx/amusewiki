@@ -1879,7 +1879,8 @@ sub compiler_options {
                          coverpage_only_if_toc => $self->coverpage_only_if_toc,
                         );
     # inherited from site
-    foreach my $setting (qw/luatex ttdir fontspec/) {
+    foreach my $setting (qw/luatex ttdir fontspec
+                            include_paths/) {
         if ($site_opts{$setting}) {
             $compiler_args{$setting} = $site_opts{$setting};
         }
