@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 91;
+use Test::More tests => 92;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -162,3 +162,5 @@ is (amw_meta_stripper('12345 678 ' x 16), ('12345 678 ' x 15) . '12345...');
 is (amw_meta_stripper('12345 678 ' x 15), ('12345 678 ' x 14) . '12345 678');
 is (amw_meta_stripper(('12345 678 ' x 15) . 'lkajsdalksdjflkakasdklf'),
     ('12345 678 ' x 14) . '12345 678...');
+
+is AmuseWikiFarm::Utils::Amuse::get_corrected_path('test.muse'), 't/tt/test.muse';

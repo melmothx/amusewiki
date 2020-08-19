@@ -2434,7 +2434,15 @@ sub repo_find_files {
                   $files{$relpath} = (stat($file))[9];
               }
               else {
-                  warn "Discarding $relpath\n" if $relpath =~ m/\.muse$/;
+                  if ($relpath =~ m/\.muse$/) {
+                      my $expected = AmuseWikiFarm::Utils::Amuse::get_corrected_path($relpath);
+                      if ($expected and $expected ne $relpath) {
+                          warn "Discarding $relpath, expected path is $expected\n";
+                      }
+                      else {
+                          warn "Discarding $relpath, invalid path\n";
+                      }
+                  }
               }
           }, $root);
     return \%files;

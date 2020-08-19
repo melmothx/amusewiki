@@ -926,4 +926,14 @@ sub known_langs {
            };
 }
 
+sub get_corrected_path {
+    my $file = shift;
+    if ($file) {
+        my ($name, $path, $suffix) = fileparse($file, qr{\.[a-z0-9]{3,}});
+        if (my $path = muse_get_full_path($name)) {
+            return path(@$path) . $suffix;
+        }
+    }
+}
+
 1;

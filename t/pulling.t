@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 52;
+use Test::More tests => 53;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -14,6 +14,7 @@ use Text::Amuse::Compile::Utils qw/write_file/;
 use Git::Wrapper;
 use File::Spec::Functions qw/catfile catdir/;
 use File::Copy qw/copy/;
+use Path::Tiny;
 
 use AmuseWikiFarm::Schema;
 use lib catdir(qw/t lib/);
@@ -231,3 +232,16 @@ ok (! $site->titles->find({ uri => "a-test-2" }), "$removed purged in the db");
 ok ($site->find_file_by_path(catfile(qw/a at/, "a-test-3.muse")), "Found $another_file in the db");
 ok ($site->titles->find({ uri => "a-test" }), "Found text in the db");
 ok ($site->titles->find({ uri => "a-test-3" }), "Found new text in the db");
+
+my $invalid = path($site->repo_root, qw/t t test.muse/);
+$invalid->parent->mkpath;
+$invalid->spew_utf8("test\n");
+
+{
+    my @warns;
+    local $SIG{__WARN__} = sub {
+        push @warns, @_;
+    };
+    $site->repo_find_files;
+    is_deeply \@warns, ["Discarding t/t/test.muse, expected path is t/tt/test.muse\n"], "Found warning";
+}
