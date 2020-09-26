@@ -109,7 +109,7 @@
 
     [%# base css for amuse texts %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amuse.css', { v => 7 }) %]" />
+          href="[% c.uri_for('/static/css/amuse.css', { v => 8 }) %]" />
 
     [%#  datatable on demand %]
     [%- IF load_datatables %]
