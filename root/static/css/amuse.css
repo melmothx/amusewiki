@@ -19,8 +19,9 @@ h1, h2, h3, h4, h5 {
 }
 
 sup, sub {
-    font-size: 8pt;
-    line-height: 0;
+    font-size: 75%;
+    position: relative;
+    vertical-align: baseline;
 }
 
 .comment {
