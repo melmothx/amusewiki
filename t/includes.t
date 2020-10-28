@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Path::Tiny;
 use File::Spec::Functions qw/catdir/;
-use Test::More tests => 47;
+use Test::More tests => 46;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
@@ -137,16 +137,18 @@ MUSE
     is $site->update_db_from_tree_async(sub { diag @_ })->total_jobs, 0, "Nothing changed";
 
     # modify the file.
-    path($site->repo_root)->child('try-another.txt')->append_utf8("\n");
+    path($site->repo_root)->child('try-another.txt')->append_utf8("\n\npippo!!!\n");
 
     my $bulk = $site->update_db_from_tree_async(sub { diag @_ });
     diag Dumper($bulk->expected_documents);
     is $bulk->total_jobs, 1, "Found the job";
 
     while (my $j = $site->jobs->dequeue) {
-        ok $j->dispatch_job;
+        $j->dispatch_job;
+        diag $j->logs;
     }
-
+    my $title = $site->titles->find({ uri => 'first' });
+    like $title->html_body, qr/pippo\!\!\!/;
     is $site->update_db_from_tree_async(sub { diag @_ })->total_jobs, 0, "Nothing changed";
 }
 

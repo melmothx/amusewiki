@@ -2516,6 +2516,13 @@ sub repo_find_changed_files {
             # signal that the file changed
             log_info { "Included file $path changed, bumping $relpath" };
             $in_db->{$relpath} = -1;
+            my $parent = Path::Tiny::path($self->repo_root, $relpath);
+            if ($parent->exists) {
+                $parent->touch;
+            }
+            else {
+                log_error { "$parent with included file $path does not exist!" };
+            }
         }
         else {
             log_error { $self->id . " $relpath not found in the tracked files! (included $path)" };
