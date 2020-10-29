@@ -264,5 +264,24 @@ sub check_human :Private {
     $c->detach();
 }
 
+sub ip_is_whitelisted {
+    my ($self, $c) = @_;
+    if ($c->stash->{whitelisted_ip}) {
+        # avoid double query
+        return 1;
+    }
+    my $site = $c->stash->{site};
+    if ($site) {
+        if (my $ip = $c->req->address) {
+            if ($site->whitelist_ips->find({ ip => $ip })) {
+                $c->stash(whitelisted_ip => $ip);
+                log_debug { "Granting access to " . $c->req->uri . ":  $ip is whitelisted" };
+                return 1;
+            }
+        }
+    }
+    log_debug { "Not granting access to " . $c->req->uri . " for " . $c->req->address };
+    return 0;
+}
 
 1;

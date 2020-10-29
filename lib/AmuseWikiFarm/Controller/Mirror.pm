@@ -35,7 +35,7 @@ sub root :Chained('/site') :PathPart('') :CaptureArgs(0) {
     # tree even if we have not published yet texts. So we do the same
     # check for /git, requiring logging in if not normally exposed.
     if ($site->restrict_mirror) {
-        $self->check_login($c) unless $c->stash->{whitelisted_ip};
+        $self->check_login($c) unless $self->ip_is_whitelisted($c);
     }
 }
 

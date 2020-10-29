@@ -188,14 +188,12 @@ sub site :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
     if ($site->is_private) {
-        if (my $ip = $c->req->address) {
-            if ($site->whitelist_ips->find({ ip => $ip })) {
-                log_info { "Granting access to private site to $ip is whitelisted" };
-                $c->stash(whitelisted_ip => $ip);
-                return 1;
-            }
+        if ($self->ip_is_whitelisted($c)) {
+            return 1;
         }
-        $self->check_login($c);
+        else {
+            $self->check_login($c);
+        }
     }
 }
 

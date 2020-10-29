@@ -79,7 +79,7 @@ $mech->get_ok('/login');
 $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 
 $mech->get_ok('/admin/sites/edit/' . $site->id);
-$mech->content_lacks('66.66.66.66'), "root ip not displayed";
+$mech->content_lacks('66.66.66.66', "root ip not displayed");
 $mech->submit_form(with_fields => { whitelist_ips => "\n66.12.23.23\n\n111.111.111" },
                    button => 'edit_site');
 
@@ -91,8 +91,31 @@ $site->whitelist_ips->update({ user_editable => 1 });
 
 
 $mech->get_ok('/admin/sites/edit/' . $site->id);
-$mech->content_contains('66.66.66.66'), "ip displayed";
+$mech->content_contains('66.66.66.66', "ip displayed");
 $mech->submit_form(with_fields => { whitelist_ips => "\n66.12.23.23\n\n111.111.111" },
                    button => 'edit_site');
 
 is $site->get_from_storage->whitelist_ips->count, 2;
+
+# check git
+
+{
+    $mech->get('/logout');
+    $site->update({
+                   mode => 'blog',
+                   cgit_integration => 0,
+                  });
+    $mech->get_ok('/', "Can access the home page");
+    $mech->get('/git');
+    is $mech->status, 401, "Cannot access /git";
+    $mech->get('/mirror');
+    is $mech->status, 401, "Cannot access /mirror";
+    $site->add_to_whitelist_ips({ ip => '66.66.66.66' });
+    $mech->get('/git');
+    is $mech->status, 200, "Can access /git";
+    $mech->get('/mirror');
+    is $mech->status, 200, "Can access /mirror";
+    
+    
+}
+
