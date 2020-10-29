@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 37;
+use Test::More tests => 42;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
