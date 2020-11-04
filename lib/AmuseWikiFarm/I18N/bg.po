@@ -1,0 +1,3473 @@
+# AmuseWiki i18n
+# This file is distributed under the same license as the AmuseWiki package.
+# Marco Pessotto <melmothx@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AmuseWiki 0.01\n"
+"POT-Creation-Date: 2014-03-06 10:16+0100\n"
+"PO-Revision-Date: 2020-11-03 16:10+0200\n"
+"Language-Team: Bulgarian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.1\n"
+"Last-Translator: \n"
+"Language: bg\n"
+"X-Poedit-Bookmarks: -1,847,-1,-1,-1,-1,-1,-1,-1,-1\n"
+
+#. ($filename)
+msgid "%1 doesn't exist"
+msgstr "%1 не съществува"
+
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr "%1 изтрити задачи"
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr "%1 разсрочени задачи"
+
+#. ($c->stash->{site}->full_name)
+#. (site.full_name)
+msgid "%1 on mobile"
+msgstr "%1 за мобилни"
+
+#. (text.pages_estimated)
+msgid "%1 pp."
+msgstr "%1 стр."
+
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr "(кавички, линкове, бележки под линиите, и т.н.)"
+
+msgid "A blank line (or more blank lines) starts a new paragraph."
+msgstr "Празен ред (или повече празни редове) започват нов параграф."
+
+msgid ""
+"A cover image was already added, but you can replace it uploading\n"
+"              a new one."
+msgstr ""
+"Вече е била добавена снимка на корицата, но можеш да я замениш\n"
+"              с друга."
+
+msgid ""
+"A footnote is a line which starts with a number between square\n"
+"          brackets, with no leading whitespace."
+msgstr ""
+"Бележка под линията е ред, който започва с число между квадратни\n"
+"          скоби без водещи интервали."
+
+msgid "A line which starts with 2 or more whitespaces is a quotation."
+msgstr "Ред, който започва с 2 или повече интервала, е цитат."
+
+msgid "A line which starts with 20 or more whitespaces is right-aligned."
+msgstr "Ред, който започва с 20 или повече интервала, е вдясно подравнен."
+
+msgid "A line which starts with 6 or more whitespaces is centered."
+msgstr "Ред, който започва с 6 или повече интервала, е центриран."
+
+msgid ""
+"A list of links and labels to insert into the top\n"
+"            bar. One per line, first the url, then the label,\n"
+"            separated by a space, e.g. \"http://test.me Test site\""
+msgstr ""
+"Списък с линкове и етикети за въвеждане в горната\n"
+"            лента. На ред по един, първо URL, после етикета,\n"
+"            отделени с интервал, например \"http://test.me Test site\""
+
+#. (location)
+msgid "A new text has been created at %1"
+msgstr "Нов текст: %1"
+
+msgid "A nice title"
+msgstr "Хубаво заглавие"
+
+msgid "A4 imposed PDF"
+msgstr "А4 PDF за печатане"
+
+msgid "A4 paper"
+msgstr "A4 формат"
+
+msgid "A5 paper"
+msgstr "А5 формат"
+
+msgid "A6 paper (also suitable for e-readers)"
+msgstr "А6 формат (подходящ за ечетци)"
+
+msgid "Abandoned editing in progress, feel free to check the diff and resume"
+msgstr ""
+"Изоставена редакция в ход, чувствай се свободен да провериш разликите и да "
+"продължиш"
+
+msgid "Action"
+msgstr "Действие"
+
+msgid "Activate the blog-style look and feel"
+msgstr "Активирай блог стил"
+
+msgid "Active"
+msgstr "Активно"
+
+msgid "Add a cover image (PNG or JPG)"
+msgstr "Добави снимка на корицата(PNG или JPG)"
+
+msgid "Add a new text"
+msgstr "Добави нов текст"
+
+msgid "Add an attachment"
+msgstr "Закачи"
+
+msgid "Add crop marks to the PDF"
+msgstr "Добави маркировки за изрзязване към PDF-а"
+
+msgid "Add new remote repository"
+msgstr "Добави ново дистанционно хранилище"
+
+msgid "Add non-breaking spaces where appropriate for the language"
+msgstr "Добавете неразделящ интервал, където е подходящо за езика"
+
+msgid ""
+"Add paginator for text listing when the number of texts is greater than "
+"(integer)"
+msgstr ""
+"Добави номерация за тексови списъци, когато броят на текстовете е по-голям "
+"от (цяло число)"
+
+msgid "Add sections to the bookbuilder"
+msgstr "Добави раздели към книгострояча"
+
+msgid "Add the OPDS URL"
+msgstr "Добави URL-а на OPDS"
+
+msgid "Add the selected parts to the bookbuilder"
+msgstr "Добави избраните части към книгострояча"
+
+msgid "Add the whole text"
+msgstr "Добави целия текст"
+
+msgid "Add this text to the bookbuilder"
+msgstr "Добави този текст към книгострояча"
+
+msgid ""
+"Additional information (full date, original title, translators, credits, "
+"etc)."
+msgstr ""
+"Допълнителна информация (пълна дата, заглавие на оригинала, преводачи, и т."
+"н.)."
+
+#. (c.uri_for_action('/console/unpublished')
+#. (c.uri_for_action("/console/unpublished").path)
+msgid ""
+"After the approval of the\n"
+"  change, it will appear under %1. There is a big red\n"
+"  button for each deleted text, and you can proceed with the purging."
+msgstr ""
+"След одобряване на\n"
+"  промяната, ще се появи под %1. Има голям червен\n"
+"  бутон за всеки изтрит текст, с който да го прочистиш изцяло."
+
+msgid "Age:"
+msgstr "Години:"
+
+msgid "Alias"
+msgstr "Псевдоним"
+
+msgid "Alias can't point to itself"
+msgstr "Псевдонимът не може да сочи към себе си"
+
+msgid ""
+"All kind of lists start with one or more leading\n"
+"        whitespace."
+msgstr ""
+"Всякакви видове списъци започват с един или повече\n"
+"        водещи интервала."
+
+msgid "All languages"
+msgstr "Всички езици"
+
+msgid "All revisions"
+msgstr "Всички ревизии"
+
+msgid "All sites"
+msgstr "Всички сайтове"
+
+msgid "All users"
+msgstr "Всички потребители"
+
+msgid ""
+"Allow binary uploads to logged in users: list of whitespace separate file "
+"extensions"
+msgstr ""
+"Позволи бинарно качване за регистрирани потребители: списък от отделни "
+"разширения на файлове с интервали"
+
+msgid ""
+"Also produce slides\n"
+"          from the document. Each section, no matter how deep, will\n"
+"          produce a slide. The text outside a section is ignored, so\n"
+"          if you do not have sections, you will get empty slides. If\n"
+"          you want to exclude a section, put a comment in the section\n"
+"          body with the string “noslide”."
+msgstr ""
+"Създай слайдове\n"
+"          от документа. Всеки раздел, независимо големината си,\n"
+"          ще стане слайд. Тексът отвъд разделите ще бъде игнориран,\n"
+"          затова ако нямаш раздели, ще получиш празни слайдове. Ако\n"
+"          искаш да не включиш даден раздел, сложи коментар в тялото\n"
+"          на раздела с низа \"noslide\"."
+
+msgid ""
+"An URI is a string which uniquely identifies the text\n"
+"      in the archive. In theory, it could be anything, but if you want\n"
+"      to set it yourself, please stick with the convention: author\n"
+"      name, title, language, eventual number for disambiguation, e.g.\n"
+"      errico-malatesta-anarchy-2. Please note that this is normally\n"
+"      not needed"
+msgstr ""
+"URI е низ, който е уникален идентификатор за текста\n"
+"      в архива. Теоретически, низът може да бъде съставен от каквито и да е "
+"символи, но\n"
+"      ако искаш да го зададеш сам, моля придържай се към установеното: "
+"автор\n"
+"      име, заглавие, език, евентуален номер за различаване, напр.\n"
+"      errico-malatesta-anarchy-2. По принцип това не е задължително"
+
+msgid "Apache is not currently supported"
+msgstr "Apache не се поддържа в момента"
+
+msgid "Archive"
+msgstr "Архив"
+
+msgid "Archive by month"
+msgstr "Архив по месеци"
+
+msgid "Archive history"
+msgstr "История на архивa"
+
+msgid "Are you sure?"
+msgstr "Сигурен ли си?"
+
+msgid "As cover in the header"
+msgstr "Като снимка на корицата в заглавната част"
+
+msgid "As regular image in the body"
+msgstr "Като изображение в главната част"
+
+msgid "Assign text to nodes"
+msgstr "Добави текст към бележките"
+
+msgid "Attach"
+msgstr "Прикачи"
+
+msgid "Attached images"
+msgstr "Прикачени изображения"
+
+msgid "Attachments"
+msgstr "Прикачени файлове"
+
+msgid "Author"
+msgstr "Автор"
+
+msgid "Author and title. If one side document: title."
+msgstr "Автор и заглавие. Ако документът е едностранен: заглавие."
+
+msgid "Authors"
+msgstr "Автори"
+
+msgid "Authors and topics listing"
+msgstr "Автори и списък с теми"
+
+msgid "Authors for indexing"
+msgstr "Автори за индексиране"
+
+msgid "Automatically generated"
+msgstr "Автоматично произведено"
+
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr ""
+"Автоматично заявяване и подновяване на SSL сертификати от Let's Encrypt"
+
+msgid "Available"
+msgstr "Достъпно"
+
+msgid "Available category tags for header"
+msgstr "Достъпни тагове за категории на заглавната част"
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
+"Избягвайте използването на полуслята дума като последна в изречение (може да "
+"създаде проблеми с редовете)"
+
+msgid "Back to the text"
+msgstr "Обратно към текста"
+
+msgid "Bad request"
+msgstr "Грешна заявка"
+
+msgid "Beamer color theme"
+msgstr "Beamer тема за цветовете"
+
+msgid "Beamer theme"
+msgstr "Beamer тема"
+
+msgid "Beside topics and authors you can add more categories here"
+msgstr "Освен теми и автори можеш да добавиш и нови категории тук"
+
+msgid "Binding correction in millimeters (additional inner margin)"
+msgstr "Корекция на границите в милиметри (допълнително вътрешно поле)"
+
+msgid ""
+"Blocks of 16 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+"Да бъдат сгънати два пъти и после обвързани заедно\n"
+"                съвкупности от 16 страници."
+
+msgid ""
+"Blocks of 8 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+"Да бъдат сгънати два пъти и после обвързани заедно\n"
+"                съвкупности от 8 страници."
+
+msgid "Blog"
+msgstr "Блог"
+
+msgid "Body"
+msgstr "Текст"
+
+msgid "Bold"
+msgstr "Получер"
+
+msgid "Bookbuilder"
+msgstr "Книгострояч"
+
+msgid "Bookbuilder page limit (integer)"
+msgstr "Максимален брой страници за книгострояча (цяло число)"
+
+msgid "Build it"
+msgstr "Построй го"
+
+msgid ""
+"By default, secondary footnotes use arabic numbering\n"
+"        between parens. With this option they will use per-page alpha\n"
+"        numbering"
+msgstr ""
+"По принцип, вторични бележки под линиите се маркират с арабски цифри\n"
+"        между скобите. С избирането на тази опция, те ще използват алфа "
+"нумериране\n"
+"        според страницата"
+
+msgid "By number of pages, ascending"
+msgstr "По брой страници във възходящ ред"
+
+msgid "By number of pages, descending"
+msgstr "По брой страници в низходящ ред"
+
+msgid "By relevance"
+msgstr "По уместност"
+
+msgid "By sku ascending"
+msgstr "По СКУ във възходящ ред"
+
+msgid "By sku descending"
+msgstr "По СКУ в низходящ ред"
+
+msgid "By title A-Z"
+msgstr "По заглавие А-Я"
+
+msgid "By title Z-A"
+msgstr "По заглавие Я-А"
+
+msgid "CSS Theme"
+msgstr "CSS тема"
+
+msgid "Cancel"
+msgstr "Отмени"
+
+msgid "Canonical name"
+msgstr "Основно име"
+
+msgid "Categories"
+msgstr "Категории"
+
+#. ($site->canonical)
+msgid "Category types for %1"
+msgstr "Видове категории за %1"
+
+msgid "Center all the sectioning titles."
+msgstr "Центрирай всички заглавия на разделите."
+
+msgid "Center the chapter titles."
+msgstr "Центрирай заглавията на главите."
+
+msgid "Changes"
+msgstr "Промени"
+
+msgid "Changes applied"
+msgstr "Приложени промени"
+
+#. ($c->stash->{revision}->title->uri)
+#. (revision.title.uri)
+#. (author_title)
+msgid "Changes for %1"
+msgstr "Промени за %1"
+
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr ""
+"Промените бяха запаметени, благодаря! Сега остава само да бъдат публикувани"
+
+msgid ""
+"Changing urls is a poor practice. Anyway, if you know what you’re\n"
+"doing, you can delete an existing text and point to another adding a\n"
+"#DELETED directive in the text header with a special syntax:"
+msgstr ""
+"Променянето на URL-ове е лоша практика. Както и да е, ако знаеш какво\n"
+"правиш, можеш да изтриеш вече съществуващ текст и да използваш URL-а да сочи "
+"към\n"
+"друг като добавиш #DELETED директива към заглавната част на текста със "
+"специалния синтаксис:"
+
+msgid "Chapter"
+msgstr "Глава"
+
+msgid "Chapter and section. If one side document: chapter."
+msgstr "Глава и раздел. Ако документът е едностранен: глава."
+
+msgid "Chapter, only for chapter divisions in books"
+msgstr "Глава, само за цели книги"
+
+msgid "Cheatsheet for the markup"
+msgstr "Резюме за използване на markup"
+
+msgid "Choose a paper format"
+msgstr "Избери хартиен формат"
+
+msgid "Clear the book list"
+msgstr "Изчисти списъка с книги"
+
+msgid "Click on the images to get the sample PDF"
+msgstr "Цъкни върху изображенията да получиш примерен PDF"
+
+msgid "Clone"
+msgstr "Клонирай"
+
+msgid "Close"
+msgstr "Затвори"
+
+msgid "Code"
+msgstr "Код"
+
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr "Ширина на лявата страна на страницата за редактиране на текста"
+
+msgid "Comma or semicolon separated list"
+msgstr "Списък, разделен със запетайки или точки и запетайки"
+
+msgid "Completed"
+msgstr "Завършено"
+
+msgid "Computing of differences took"
+msgstr "Изчисляването на разликите отне"
+
+msgid "Confirm"
+msgstr "Потвърди"
+
+msgid "Continuous footnote numbering across the whole document."
+msgstr "Непрекъснато номериране на бележките под линиите в целия документ."
+
+msgid "Convert to archive markup"
+msgstr "Конвертирай към архивния markup"
+
+msgid "Couldn't add the text"
+msgstr "Не беше възможно да се добави текстът"
+
+msgid "Couldn't automatically generate the URI!"
+msgstr "Не беше възможно да се произведе автоматично URI-ът!"
+
+msgid "Couldn't build that"
+msgstr "Не беше възможно да се построи това"
+
+msgid "Create"
+msgstr "Създай"
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
+"Създай нова категория. Моля използвай само малки букви по ASCII стандарта"
+
+msgid "Create a new format"
+msgstr "Създай нов формат"
+
+msgid "Create a new librarian"
+msgstr "Създай нов библиотекар"
+
+msgid "Create a new special page"
+msgstr "Създай нова, специална страница"
+
+msgid "Create a new user"
+msgstr "Създай нов потребител"
+
+msgid ""
+"Create a public repository on GitLab, GitHub or similar services (or on your "
+"own server). "
+msgstr ""
+"Създай публично хранилище в GitLab, GitHub или в подобни услуги (или в твой "
+"собствен сървър). "
+
+msgid "Create a topic alias"
+msgstr "Създай псевдоним за тема"
+
+msgid "Create an author alias"
+msgstr "Създай авторов псевдоним"
+
+msgid "Create new site"
+msgstr "Създай нов сайт"
+
+msgid "Create user and mail password"
+msgstr "Създай нов потребител и изпрати парола"
+
+msgid "Created"
+msgstr "Създадено"
+
+msgid "Created by"
+msgstr "Създадено от"
+
+msgid "Created new text"
+msgstr "Създаден е нов текст"
+
+msgid "Current time"
+msgstr "Текущо време"
+
+#. ($c->stash->{site}->canonical)
+msgid "Custom formats for %1"
+msgstr "Персонализиран формат за %1"
+
+msgid "Custom home page"
+msgstr "Използвайте тази страница като начална"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "Date of the original publication"
+msgstr "Дата на първоначалното публикуване"
+
+msgid "Default sorting for the category text list"
+msgstr "Сортиране по подразбиране за списъка с текстови категории"
+
+msgid "Default value if blank:"
+msgstr "Стойност по подразбиране, ако полето е оставено празно:"
+
+msgid "Deferred/Deleted texts"
+msgstr "Отложени/Изтрити текстове"
+
+msgid "Delete"
+msgstr "Изтрий"
+
+msgid "Delete permanently"
+msgstr "Изтрий завинаги"
+
+#. (remote.name)
+msgid "Delete remote repository %1"
+msgstr "Изтрий дистанционното хранилище %1"
+
+msgid ""
+"Deleting a revision is safe if a text has been\n"
+"    published. Otherwise deleting it you'll lose the unpublished changes"
+msgstr ""
+"Триенето на ревизии е безопасно, ако текстът вече\n"
+"    е бил публикуван. Ако не е бил публикуван, ще загубиш всички "
+"непубликувани промени"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "Description item"
+msgstr "Елемент на описание"
+
+msgid ""
+"Description lists use a double colon to separate the\n"
+"        term and the description."
+msgstr ""
+"Списъци с описания използват двойно двоеточие, за да отделят\n"
+"        термина от описанието."
+
+msgid "Desired URI"
+msgstr "Желан URI"
+
+msgid "Destination"
+msgstr "Дестинация"
+
+msgid "Did you mean:"
+msgstr "Да не би да имаше предвид:"
+
+msgid "Differences"
+msgstr "Разлики"
+
+msgid ""
+"Directory with templates in the site repository, e.g.\n"
+"        \"templates\" (ASCII only). Do not set it unless you know\n"
+"        exactly what you are doing"
+msgstr ""
+"Директория с шаблони в хранилището на уеб сайта, напр.\n"
+"        \"template\" (само с ASCII символи). Използвай тази опция само\n"
+"        ако знаеш какво правиш"
+
+msgid "Disable /mirror/ URL for anonymous users"
+msgstr "Деактивирай URL /mirror/ за анонимни потребители"
+
+msgid "Display url as"
+msgstr "Покажи URL като"
+
+msgid "Division factor"
+msgstr "Коефициент на разделяне"
+
+msgid "Do not create a cover page and start the text on the first page"
+msgstr "Не създавай страница за корицата и започни текса от първата страница"
+
+msgid "Do not enforce save message"
+msgstr "Не налагай запаметяване на съобщението"
+
+msgid "Do not use bold fonts"
+msgstr "Не използвай получерни шрифтове"
+
+msgid "Done"
+msgstr "Готово"
+
+msgid "Double bars"
+msgstr "Двойна лента"
+
+msgid "Downloads"
+msgstr "Изтегляния"
+
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr ""
+"Напр. някаква дума И заглавие(title:\"Моето Заглавие\") И автор(author:"
+"Автор) ИЛИ година(year:2017)"
+
+msgid "EPUB"
+msgstr "EPUB"
+
+msgid "EPUB (for mobile devices)"
+msgstr "EPUB (за мобилни устройства)"
+
+msgid "ETA"
+msgstr "ETA"
+
+msgid "Edit"
+msgstr "Редактирай"
+
+msgid "Edit attachment description"
+msgstr "Редактирай описанието на прикачения файл"
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr "Редактирай формат %1"
+
+msgid "Edit full site configuration"
+msgstr "Редактирай цялостната конфигурация на сайта"
+
+msgid "Edit screen layout options"
+msgstr "Редактирай опциите за оформление на екрана"
+
+#. (esite.id)
+msgid "Edit site %1"
+msgstr "Редактирай сайт %1"
+
+msgid "Edit site configuration"
+msgstr "Редактирай конфигурацията на сайта"
+
+msgid "Edit the text you want to unpublish and add this line to the header:"
+msgstr ""
+"Редактирай текста, който искаш да дръпнеш от публикация, и добави този ред "
+"към заглавната част:"
+
+msgid "Edit this text"
+msgstr "Редактирай този текст"
+
+#. (user.username)
+msgid "Edit user %1"
+msgstr "Редактирай потребител %1"
+
+msgid "Editing"
+msgstr "Редактиране"
+
+msgid "Email"
+msgstr "Имейл"
+
+msgid "Email sent!"
+msgstr "Имейлът беше изпратен!"
+
+msgid "Email updated"
+msgstr "Имейлът беше обновен"
+
+msgid "Emails do not match"
+msgstr "Имейлите не съвпадат"
+
+msgid "Embed fonts in the EPUB file"
+msgstr "Вгради шрифтове в EPUB файла"
+
+msgid "Enable \"What links here\" feature"
+msgstr "Активирай функцията \"Какви линкове тук\""
+
+msgid "Enable search suggestions (did you mean...)"
+msgstr "Активирай предложения за търсене (Имаше ли предвид...)"
+
+msgid "Enable title ordering by SKU"
+msgstr "Активирай сортиране на заглавията по SKU"
+
+msgid "Erase this revision"
+msgstr "Изтрий тази ревизия"
+
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr "Грешка при конвертиране на качения файл. Да не би да е HTML файл?"
+
+msgid "Error sending mail!"
+msgstr "Грешка при изпращането на поща!"
+
+msgid "Error while converting the HTML. Sorry."
+msgstr "Грешка при конвертирането на HTML файла."
+
+msgid "Errors"
+msgstr "Грешки"
+
+msgid "Estimated pages"
+msgstr "Приблизително преценени страници"
+
+msgid ""
+"Even if this site has a responsive, mobile-friendly layout,\n"
+"  it does not provide a dedicated mobile application."
+msgstr ""
+"Дори ако този уебсайт има отзивчив и удобен за мобилни устройства дизайн,\n"
+"  не съществува отделно мобилно приложение."
+
+msgid ""
+"Every\n"
+"        section will generate a slide. You need to do proper\n"
+"        sectioning for this to work."
+msgstr ""
+"Всеки\n"
+"        раздел ще създаде отделен слайд. Трябва да подредиш всичко\n"
+"        правилно, за да проработи тази функция."
+
+msgid ""
+"Exactly like 2up, but the sheets are meant to be cut\n"
+"        horizontally first and then stack on each other. This way you\n"
+"        can print, for example, A6 booklets on A4."
+msgstr ""
+"Точно като 2up, но листовете се режат\n"
+"        хоризонтално първо и после се трупат един върху друг. По този начин\n"
+"        могат да се принтират например А6 книжки/памфлети върху А4."
+
+msgid "Example"
+msgstr "Пример"
+
+msgid "Existing redirections"
+msgstr "Вече съществуващи пренасочвания"
+
+msgid "Expected pages"
+msgstr "Очаквани страници"
+
+msgid "Failed"
+msgstr "Неуспешно"
+
+#. ("$name $url")
+msgid "Failed to add remote repository %1"
+msgstr "Грешка при добавянето на дистанционното хранилище %1"
+
+#. ($name)
+msgid "Failed to remove Remote repository %1"
+msgstr "Грешка при премахването на дистанционното хранилище %1"
+
+msgid "File already in the body"
+msgstr "Файлът вече присъства в текста"
+
+msgid "File extension"
+msgstr "Разширение на файла"
+
+msgid "File format not allowed"
+msgstr "Този файлов формат не е поддържан"
+
+msgid "File too big"
+msgstr "Файлът е прекалено голям"
+
+msgid "File uploaded!"
+msgstr "Файлът е качен!"
+
+msgid "Files"
+msgstr "Файлове"
+
+msgid ""
+"Fill with blank pages before the last page if the signature is not full."
+msgstr ""
+"Добави празни страници, докато не стигнеш последната страница, ако "
+"групата(signature) не е пълна."
+
+msgid "Filter"
+msgstr "Филтър"
+
+msgid "Filters"
+msgstr "Филтри"
+
+msgid "Find the add catalogue menu."
+msgstr "Намери менюто за добавяне на каталог."
+
+msgid "Find the network library menu, or equivalent."
+msgstr "Намери менюто за мрежова библиотека."
+
+msgid "First"
+msgstr "Първо"
+
+msgid "First Author and Second Author"
+msgstr "Първи автор и втори автор"
+
+msgid "First Author, Second Author"
+msgstr "Първи автор, втори автор"
+
+msgid "First slide"
+msgstr "Първи слайд"
+
+msgid "First you have to unpublish it via #DELETED."
+msgstr "Първо трябва да го премахнеш чрез #DELETED."
+
+msgid "Fix typography (smart quotes)"
+msgstr "Коригирай типографията (умни кавички)"
+
+msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
+msgstr ""
+"Групи(signatures) от 16 страници на два листа с двойно единично сгъване."
+
+msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
+msgstr "Групи(signatures) от 16 страници на един лист с тройно сгъване."
+
+msgid ""
+"Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
+"and bound together."
+msgstr ""
+"Групи(signatures) от 8 страница, за хоризонтално режене, индивидуално "
+"сгъване и да бъдат обвързани заедно."
+
+msgid "Fixed topic list"
+msgstr "Фиксиран списък с теми"
+
+msgid "Font preview"
+msgstr "Преглед на шрифта"
+
+msgid "Font size"
+msgstr "Големина на шрифта"
+
+msgid "Footnotes"
+msgstr "Бележки под линиите"
+
+#. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
+msgid ""
+"Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
+"in the body (%4), ignoring changes."
+msgstr ""
+"Несъотвествие при бележките под линиите: намерени %1 бележки (%2) и намерени "
+"%3 референции за бележки под линиита в тялото (%4), игорирайки промените."
+
+msgid "For texts from the internet use"
+msgstr "За текстове от интернет употреба"
+
+msgid "For texts without a table of content, start text on the very first page"
+msgstr "При текстове без съдържание, започни текста от първата страница"
+
+msgid ""
+"For topics and authors redirections, you can create them\n"
+"  here"
+msgstr "Тук можеш да създадеш пренасочвания за теми и автори"
+
+msgid "Force a line break."
+msgstr "Принуди преминаване на следващ ред."
+
+msgid "Force publishing"
+msgstr "Принуди публикуване"
+
+msgid "Format name"
+msgstr "Име на формата"
+
+msgid "Format successfully created"
+msgstr "Форматът беше създаден успешно"
+
+msgid "Format successfully updated"
+msgstr "Форматът беше обновен успешно"
+
+msgid "Formats"
+msgstr "Формати"
+
+msgid "Full list of texts"
+msgstr "Пълен списък с текстове"
+
+msgid "Full tag cloud"
+msgstr "Tag cloud с теми и автори"
+
+msgid "Full text search"
+msgstr "Търсене на пълен текст"
+
+msgid "General configuration"
+msgstr "Обща конфигурация"
+
+msgid "Generic (fits in A4 and Letter)"
+msgstr "Неспецифично (събира и А4, и писмо(Letter))"
+
+msgid ""
+"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
+"using the form you can find above. You can have one personal repository."
+msgstr ""
+"Намери HTTPS URL-а на хранилишето (напр. https://example.com/git/test) и го "
+"добави, използвайки формата отгоре. Можеш да имаш само едно лично хранилище."
+
+msgid "Git console"
+msgstr "Git конзола"
+
+msgid "Git is not enabled on this site"
+msgstr "Git не е активиран на този сайт"
+
+msgid ""
+"HTML code to append to each regular page, inserted\n"
+"            verbatim, so be careful"
+msgstr ""
+"HTML код, който да бъде добавен към всяка една обикновена страница "
+"дословно,\n"
+"            така че бъди внимателен"
+
+msgid ""
+"HTML to append to each special page, inserted\n"
+"            verbatim, now you have a chance to screw up everything, so\n"
+"            be careful"
+msgstr ""
+"HTML, който ще бъде добавен до всяка една обикновена страница дословно.\n"
+"            Сега има вероятност да объркаш всичко, така че внимавай"
+
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr "HTML, който ще бъде вмъкнат във футъра под линковете"
+
+msgid "HTML to insert into the left sidebar"
+msgstr "HTML, който ще бъде вмъкнат в лявата странична лента"
+
+msgid "HTML to insert into the right sidebar"
+msgstr "HTML, който ще бъде вмъкнат в дясната странична лента"
+
+msgid "HTML to insert on the bottom of the layout, above the footer"
+msgstr ""
+"HTML, който ще бъде вмъкнат в долната част на страницата, но над футъра"
+
+msgid ""
+"HTML to insert on the top of the layout, behind the navigation bar and below "
+"the banner"
+msgstr ""
+"HTML, който ще бъде вмъкнат в горната част на страницата под менюто и банера"
+
+msgid "HTML/Word Importer"
+msgstr "Преобразувай HTML/Word в wiki формат"
+
+msgid "Half Letter paper"
+msgstr "Формат половин писмо(Letter)"
+
+msgid "Heading"
+msgstr "Заглавна част"
+
+msgid "Headings"
+msgstr "Заглавни части"
+
+msgid "Height:"
+msgstr "Височина:"
+
+msgid "Here you can find a preview of the Beamer themes and color themes"
+msgstr "Тук може да прегледаш Beamer и цветовите теми"
+
+msgid ""
+"Here you can save or load your templates. The text list\n"
+"      and the cover image are excluded by the saved settings. You can\n"
+"      use this to save paper/fonts/imposition and other options."
+msgstr ""
+"Тук може да запазваш или да качваш своите шаблони. Списъкът с текстове\n"
+"      и снимката на корицата не се запаметяват. Тук можеш да\n"
+"      запазваш своите листове/шрифтове и други опции."
+
+msgid "Higher division factor means narrower margins"
+msgstr ""
+"Колкото по-голям е коефициентът на разделяне, толкова по-тесен е маржът"
+
+msgid "How are you going to access Git?"
+msgstr "Как ще влезеш в Git?"
+
+msgid "How do I create a landing page?"
+msgstr "Как да направя целева страница?"
+
+msgid "How do I create a special page?"
+msgstr "Как да направя специална страница?"
+
+msgid "How do I delete a text?"
+msgstr "Как да изтрия даден текст?"
+
+msgid "How do I modify a special page?"
+msgstr "Как да променя дадена специална страница?"
+
+msgid "How do I purge a text?"
+msgstr "Как да прочистя даден текст?"
+
+msgid "How do I redirect to another page?"
+msgstr "Как да създам пренасочване към друга страница?"
+
+msgid "How to choose a password"
+msgstr "Как да си избера парола"
+
+msgid ""
+"However, you can browse, search, download and read the texts\n"
+"  from mobile reading applications which support the so-called OPDS\n"
+"  protocol."
+msgstr ""
+"Въпреки това можеш да разглеждаш, търсиш, теглиш и четеш текстове\n"
+"  от мобилни приложения, които поддържат т.нар. OPDS протокол."
+
+msgid "I am human"
+msgstr "Аз съм човек"
+
+msgid "I have a system user with SSH access"
+msgstr "Имам системен профил със SSH достъп"
+
+msgid "I want an imposed (ready to print) PDF"
+msgstr "Искам подготвен за печатане PDF"
+
+msgid "I will provide my remote repository"
+msgstr "Ще предоставя дистанционното си хранилище"
+
+msgid "IRC channel on freenode"
+msgstr "IRC канал във freenode"
+
+msgid "Id"
+msgstr "Id"
+
+msgid ""
+"If by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+"Ако се случи, така че вече да съществува текст със същото заглавие и написан "
+"от един и същ автор, избери URI от полето по-долу, добавяйки автор, заглавие "
+"и номер (напр. author-title-1)"
+
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+"Ако не си целял това, моля, игнорирай този имейл и\n"
+"паролата ти няма да бъде променена."
+
+msgid ""
+"If it's not the case, please open a bug report at https://github.com/"
+"melmothx/amusewiki/issues"
+msgstr ""
+"Ако не е така, моля отворете доклад за грешка в https://github.com/melmothx/"
+"amusewiki/issues"
+
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
+msgid "If not set %1 will be looked up from the application directory."
+msgstr ""
+"Ако %1 не е зададено, то ще бъде опитано да се попълни от директорията на "
+"приложението."
+
+msgid ""
+"If present, hide the\n"
+"          generated formats and the information box. This makes sense\n"
+"          with attachments, when the text version is poor or not\n"
+"          available and more relevance should be given to the attached\n"
+"          files."
+msgstr ""
+"Ако е налично, скрий\n"
+"          генерираните формати и информацията за текста. Това е "
+"препоръчително, ако\n"
+"          прикачените файлове са по-важни от текста, ако текстът е в лошо "
+"състояние или\n"
+"          не присъства изцяло."
+
+msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
+msgstr ""
+"Ако стойността е по-голяма от 0, автоматично създай преглед на текста с "
+"приблизително тази дължина"
+
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
+msgstr ""
+"Ако публикуването на даден текст е отложено, задай да се\n"
+"            покажат преглед на текста и корицата , но без да се дава\n"
+"            достъп до текста"
+
+msgid ""
+"If the user is allowed to publish, speed up the process skipping the "
+"revision page if there are no conflicts and automatically redirect to the "
+"published text once it is done."
+msgstr ""
+"Ако потребителят има правото да публикува, забързай процеса, пропускайки "
+"страницата за ревизии, ако няма никакви конфликти, и отиди директно към "
+"страницата за публикуване, когато е готов."
+
+msgid "If the user provided a mail, it's listed in the mail's CC field"
+msgstr ""
+"Ако потребителят, който е направил промени, е оставил имейл, то той е "
+"включен в СС списъка"
+
+msgid ""
+"If this line\n"
+"          is present, set the publication date (on this site) to the\n"
+"          date. The date may also be in the future, deferring the\n"
+"          publication. If this line is not present, the publication\n"
+"          date will be the time of the publishing, triggering a bump\n"
+"          on RSS and special pages at each editing."
+msgstr ""
+"Ако този ред е\n"
+"          налице, използвай я като дата на публикация (на този сайт).\n"
+"          Датата може да бъде бъдещна, отлагайки публикацията.\n"
+"          Ако редът не е налице обаче, датата на публикация ще бъде\n"
+"          зададена като датата на последната промяна на текста."
+
+msgid ""
+"If this line is\n"
+"          present and the reason is set to something, the text will be\n"
+"          stored in the archive, but will not be published."
+msgstr ""
+"Ако този ред е\n"
+"          налице и има дадена причина защо, текстът ще бъде\n"
+"          съхранен в архива, но няма да бъде публикуван."
+
+msgid ""
+"If this line is present, do not create a title page,\n"
+"          but instead start the text on the very first page and\n"
+"          produce a PDF styled like an article (chapters and parts\n"
+"          will not start on a new page)."
+msgstr ""
+"Ако този ред е налице, не създавай заглавна страница.\n"
+"          Вместо това започни текста още на първата страница и\n"
+"          създай PDF, стилизиран като статия(глави и други части\n"
+"          няма да започват на нови страници)."
+
+msgid "If this line is present, do not display the table of contents."
+msgstr "Ако тоз ред е налице, не показвай съдържанието."
+
+msgid "If you asked for imposition, select an imposition schema"
+msgstr "Ако си попитал за налагане, избери схема за налагане"
+
+msgid ""
+"If you edit some format options, like fonts or paper\n"
+"      dimensions, you may want to rebuild the generated files"
+msgstr ""
+"Ако редактираш някои опции на даден формат (напр. шрифтове, размер\n"
+"      на страниците), препоръчително е да построиш създадените файлове наново"
+
+msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+"Ако си забравил паролата си, можеш да избереш нова, като\n"
+"посетиш този линк(цъкни върху него или го копирай и го постави в браузъра "
+"си):"
+
+msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr ""
+"Ако имаш .doc или .odt файл, можеш лесно да го конвертираш, запазвайки го "
+"като HTML файл"
+
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
+msgstr ""
+"Ако направиш заявка за построяване наново, докато вече едно е в действие, "
+"ще\n"
+"    прекъснеш текущото."
+
+msgid ""
+"If you use it as a teaser image, the image will also\n"
+"      be placed on the first page of the PDF. You can set its width\n"
+"      adding the following line to the header, where the value is the\n"
+"      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
+"      on"
+msgstr ""
+"Ако ще го използваш като изображение за преглед, изображението също\n"
+"      ще бъде поставено в първата страница на PDF-а. Можеш да му зададеш\n"
+"      широчина, като добавиш следния ред към заглавната част, където "
+"стойността\n"
+"      е съотношение между широчината на текста и изображението. 1 ще зададе\n"
+"      широчина на изображението точно колкото тази на текста, 0.5 - "
+"половината и т.н."
+
+msgid ""
+"If your site doesn’t have that, just create a special page and assign\n"
+"the uri \"index\"."
+msgstr ""
+"Ако сайтът ти го няма, просто създай специална страница и ѝ постави\n"
+"URI \"index\"."
+
+msgid ""
+"If your site is multilanguage, you can create a language-specific\n"
+"  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
+"  URI \"index\", a dash, and the locale code."
+msgstr ""
+"Ако страницата ти е многоезична, можеш да направиш отделни\n"
+"  специфични за езиците целеви страници (напр. /special/index-bg\")\n"
+"  тоест - \"URI/index-<код за езика>\"."
+
+msgid "Image already set as cover"
+msgstr "Изображението e вече зададена като снимка на корицата"
+
+#. ($w, $h, $limit, $limit)
+msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
+msgstr ""
+"Размерите на изображението %1 х %2 надвишават лимита от %3 х %4 пиксела"
+
+msgid ""
+"Image uploading may be done on the next step, when you can\n"
+"        review and preview the upload."
+msgstr ""
+"В следващата стъпка ще можеш да качиш снимки, където\n"
+"        ще можеш и да прегледаш промените."
+
+msgid "Image url"
+msgstr "URL на изображението"
+
+msgid "Images"
+msgstr "Изображения"
+
+msgid "Imposition schemas"
+msgstr "Модели за прекъсване на текст"
+
+msgid "In both case you will get a reverse indentation."
+msgstr "И в двата случая текстът ще бъде форматиран с обратен отстъп."
+
+msgid ""
+"In the text, a number within square brackets is interpreted as a\n"
+"          footnote reference, if such footnote exists."
+msgstr ""
+"Число между квадратни скоби в текста бива интерпретатирано\n"
+"          като бележка под линията, ако такава бележка съществува."
+
+#. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
+msgid ""
+"In this example, we use FBreader, but the procedure is\n"
+"  pretty much the same for all applications. All you have to do is to\n"
+"  add %1 to the network libraries."
+msgstr ""
+"В този пример използваме FBreader, но процедурата е почти\n"
+"  една и съща за всички приложения. Единственото, което трябва да направиш,\n"
+"  е да добавиш %1 към мрежовата библиотека."
+
+msgid "Inline elements"
+msgstr "Вградени елементи"
+
+msgid "Insert the file into the body at the cursor position"
+msgstr "Постави файла в текста, където се намира курсорът"
+
+msgid "Internal list of translations"
+msgstr "Вътрешен списък с преводи"
+
+msgid "Invalid email"
+msgstr "Невалиден имейл"
+
+msgid "Invalid name"
+msgstr "Невалидно име"
+
+msgid "Invalid username"
+msgstr "Невалидно потребителско име"
+
+msgid ""
+"It is possible to have an additional set of\n"
+"          footnotes which you use to annote the text (e.g. critical\n"
+"          editions or translator's notes). They work the same way as\n"
+"          the regular footnotes, but they use curly brackets instead\n"
+"          of square brackets. Placing secondary footnote references\n"
+"          inside a regular footnote is permitted."
+msgstr ""
+"Възможно е да имаш допълнителен набор от\n"
+"          бележки под линиите, които можеш да използваш за анотиране\n"
+"          (напр. бележки на преводача). Те работят по същия начин като\n"
+"          обикновени бележки под линиите освен че използват къдрави скоби\n"
+"          вместо квадратни такива. Вкарването на референция към вторична\n"
+"          бележка под линията в обикновена такава е позволено."
+
+msgid ""
+"It is recommended to always set a publication\n"
+"                    date, so the system does not need to rely on the\n"
+"                    file timestamp. Also, you should bump the\n"
+"                    publication date only on major editing, leaving it\n"
+"                    untouched for minor ones."
+msgstr ""
+"Препоръчително е да се сложи дата на публикация,\n"
+"                    за да не трябва системата да разчита на клеймото\n"
+"                    за време на файла. Също е препоръчително да променяш\n"
+"                    датата на публикация само за големи редакции и да я\n"
+"                    оставяш непроменена за по-малки такива."
+
+msgid ""
+"It works the same as for regular page, but the link is hidden. Just\n"
+"append \"/edit\" to the url of the page."
+msgstr ""
+"Работи по същия начин като за обикновена страница, но линкът тук е скрит.\n"
+"Само добави \"/edit\" към url-а на страницата."
+
+msgid "Italic"
+msgstr "Курсив"
+
+msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr "Курсив, получер, monospace и код, нов ред..."
+
+msgid "JPG, PNG and PDF are always allowed."
+msgstr "JPG, PNG и PDF формати са винаги поддържани."
+
+msgid "Job status"
+msgstr "Статус на задачата"
+
+msgid "Jobs"
+msgstr "Задачи"
+
+msgid "Jobs (all sites)"
+msgstr "Задачи (всички сайтове)"
+
+msgid "Jobs waiting before yours:"
+msgstr "Задачи, чакащи преди твоите:"
+
+msgid "Just packs 2 consecutives logical pages on a physical one."
+msgstr "Вмъкват се две последователни логически страници на една физическа."
+
+msgid ""
+"Keep in mind that I’m cleaning the text and give it\n"
+"        back to you in the markup used on this site. It’s up to you to\n"
+"        check it and finally upload it. Some rarely used markup will\n"
+"        be lost in the process. Please check the preview on the next\n"
+"        step, where you can also insert images."
+msgstr ""
+"Не забравяй, че ще почистя текста и ще ти го върна в markup-а,\n"
+"        използван от сайта. От теб зависи да го провериш отново и да го "
+"качиш\n"
+"        запоследно. Някои рядко използвани функции на markup-а ще бъдат\n"
+"        изгубени в процеса. Моля провери прегледа на следващата страница,\n"
+"        където можеш и да вмъкваш изображения."
+
+msgid "Keep in mind that some character may be missing in the required font."
+msgstr ""
+"Не забравяй, че някои символи може да не присъстват в използвания шрифт."
+
+msgid ""
+"Keep in mind that unusually\n"
+"        complex formatting will be stripped. Is it possible to add\n"
+"        tables and images only on the next step."
+msgstr ""
+"Не забравяй, че по принцип\n"
+"        сложно оформление ще бъде премахнато. Възможно е\n"
+"        да добавиш таблици и изображения само на следващата страница."
+
+msgid "Language"
+msgstr "Език"
+
+msgid "Language code of the document (2 or 3 letters). "
+msgstr "Код за езика на документа (два или три символа). "
+
+msgid "Language selection"
+msgstr "Избери език"
+
+msgid "Languages supported"
+msgstr "Поддържани езици"
+
+msgid "Last"
+msgstr "Последно"
+
+msgid "Last successful rebuild"
+msgstr "Последно успешно построяване наново на текста"
+
+msgid "Last updated"
+msgstr "Последно обновление"
+
+msgid "Latest entries"
+msgstr "Последни записи"
+
+msgid "Layout"
+msgstr "Оформление"
+
+msgid "Leave it blank if you want it published right away."
+msgstr "Остави полето празно, ако искаш текстът да бъде публикуван мигновено."
+
+msgid "Leave this empty to have it automatically generated"
+msgstr "Остави го празно, ако искаш да бъде автоматично произведено"
+
+msgid "Letter imposed PDF"
+msgstr "PDF готов за печатане във формат тип писмо (Letter)"
+
+msgid "Letter paper"
+msgstr "Формат тип писмо (Letter)"
+
+msgid "Link"
+msgstr "Линк"
+
+msgid "Links"
+msgstr "Линкове"
+
+msgid "List of paths to attach to this node, one per line."
+msgstr ""
+"Линкове с пътища, които да бъдат закачени към този възел. По един на ред."
+
+msgid "List of texts on hold"
+msgstr "Списък с текстове на изчакване"
+
+msgid "Lists"
+msgstr "Списъци"
+
+msgid "Load"
+msgstr "Зареди"
+
+msgid "Load another session by token"
+msgstr "Зареди друга сесия чрез токен"
+
+#. ($pname)
+msgid "Loaded \"%1\" configuration"
+msgstr "Заредена бе конфигурация\"%1\""
+
+msgid "Loading"
+msgstr "Зарежда"
+
+msgid "Locked editing, no upload possible"
+msgstr "Редактирането е заключено, не може да качиш нищо"
+
+msgid "Log in"
+msgstr "Влез"
+
+msgid "Login"
+msgstr "Влез"
+
+msgid "Logout"
+msgstr "Излез"
+
+msgid "Look into the account’s menu, there is an entry for that."
+msgstr "Погледни в менюто на акаунта си, където има запис за това."
+
+msgid "Lost your password?"
+msgstr "Загубена парола?"
+
+msgid "Magic answer"
+msgstr "Магически отговор"
+
+msgid "Magic question"
+msgstr "Магически въпрос"
+
+msgid "Mail from"
+msgstr "Имейл от"
+
+msgid "Main canonical hostname, without protocol"
+msgstr "Главно основно име на сайта без протокол"
+
+msgid "Main font"
+msgstr "Главен шрифт"
+
+msgid "Main text"
+msgstr "Главен текст"
+
+msgid "Maintainer's FAQ"
+msgstr "Често задавани въпроси за поддръжниците"
+
+msgid "Make a link clickable"
+msgstr "Активирай линк"
+
+msgid "Make all links active"
+msgstr "Активирай всички линкове"
+
+msgid "Make all non-breaking spaces explicit and visible as ~~"
+msgstr "Промени всички неразделящи празни пространства да са видими като ~~"
+
+msgid "Manage categories"
+msgstr "Управление на категории"
+
+msgid "Max image dimension in pixels, applies to both width and height"
+msgstr ""
+"Максимален размер на изображение в пиксели. Важи и за широчината и за "
+"височината"
+
+msgid "Max size for uploads in Mb"
+msgstr "Максимална големина на файлове в Mb"
+
+msgid "Message"
+msgstr "Съобщение"
+
+#. (8)
+msgid "Minimum %1 characters"
+msgstr "Минимум %1 символa"
+
+msgid "Missing #title header in the text!"
+msgstr "Липсва #title в текста!"
+
+msgid "Missing alias"
+msgstr "Липсва псевдоним"
+
+msgid "Missing character will be reported"
+msgstr ""
+"Липсващи символи ще бъдат докладвани (Следните шрифтове поддържат кирилица: "
+"Linux Libertine, Computer Modern, Charis SIL)"
+
+msgid "Missing redirection"
+msgstr "Липсва пренасочване"
+
+msgid "Mobile"
+msgstr "Mobile"
+
+msgid "Mobile applications"
+msgstr "Мобилно приложение"
+
+msgid "Mode"
+msgstr "Начин"
+
+msgid "Moderated wiki"
+msgstr "Модерирано уики"
+
+msgid "Mono font"
+msgstr "Mono шрифт"
+
+msgid "More"
+msgstr "Повече"
+
+msgid "Move down"
+msgstr "Надолу"
+
+msgid "Move up"
+msgstr "Нагоре"
+
+msgid "Multilanguage: list of whitespace separated language codes"
+msgstr "Многоезичност: списък с кодове за езици, разделени с интервали"
+
+msgid "My description"
+msgstr "Моето описание"
+
+msgid "N/A"
+msgstr "N/A"
+
+msgid "Name"
+msgstr "Име"
+
+msgid "Name plural"
+msgstr "Име (множествено)"
+
+msgid "Name singular"
+msgstr "Име (единично)"
+
+msgid "Network library listing screen."
+msgstr "Списък със страници на мрежовия архив."
+
+msgid "Never display the cover"
+msgstr "Никога не показвай корицата"
+
+msgid "Never generate a table of content"
+msgstr "Никога не създавай съдържание"
+
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
+"Никога не създавай насловна страница със заглавие/автор/записки/лого/име на "
+"сайта"
+
+msgid "Never show teaser and/or cover in text lists"
+msgstr ""
+"Никога не показвай преглед на заглавната страница и/или корицата в списъци с "
+"текстове"
+
+msgid "New"
+msgstr "Ново"
+
+msgid "New revision"
+msgstr "Нова ревизия"
+
+msgid "New site id"
+msgstr "Ново id на сайта"
+
+msgid "Newer first"
+msgstr "По-новите първо"
+
+msgid "Newer texts"
+msgstr "По-нови текстове"
+
+msgid "Next"
+msgstr "Следващо"
+
+msgid "Nice title"
+msgstr "Хубаво заглавие"
+
+msgid "No"
+msgstr "Не"
+
+msgid "No data available in table"
+msgstr "Няма налични данни в таблицата"
+
+msgid "No editing yet!"
+msgstr "Все още няма редакции!"
+
+msgid "No matching records found"
+msgstr "Няма съотвестващи записи"
+
+msgid "No result found!"
+msgstr "Няма намерени резултати!"
+
+msgid "No revisions to show"
+msgstr "Няма ревизии"
+
+msgid "No text found!"
+msgstr "Не е намерен текста!"
+
+msgid "No text was added yet"
+msgstr "Все още не е бил добавен нито един текст"
+
+msgid "Nodes"
+msgstr "Възли"
+
+msgid "None"
+msgstr "Нито едно"
+
+#. ($c->loc('Save')
+msgid ""
+"Not finished yet! Please have a look at the text and then click on \"%1\" to "
+"finalize your submission!"
+msgstr ""
+"Все още не е готово! Моля, хвърли едно последно око върху текста и после "
+"цъкни върху \"%1\"!"
+
+msgid "Notes"
+msgstr "Бележки"
+
+msgid "Nothing to see here, so far"
+msgstr "За сега няма нищо тук"
+
+msgid "Nothing uploaded"
+msgstr "Нищо не беше качено"
+
+msgid "Notify mail: blank field will disable them"
+msgstr "Имейл известявания: ако оставиш полето празно, ще ги изключиш"
+
+msgid "Notify to"
+msgstr "Известяване до"
+
+msgid ""
+"Now it has been aligned to the site's archive, but this means that there are "
+"some missing commits."
+msgstr ""
+"Вече е изравнено с архива на сайта, но това означава, че все още липсват "
+"няколко commit-а."
+
+msgid "Now we are going to populate it and get it ready"
+msgstr "Сега ще го популираме и ще го приготвим"
+
+msgid "Number of jobs"
+msgstr "Брой задачи"
+
+msgid "Number of latest entries to display on the RSS (an integer)"
+msgstr "Брой последни записи, които ще се покажат на RSS feed-а (цяло число)"
+
+msgid "Number of results to show on paginated pages (an integer)"
+msgstr "Брой резултати за показване на страници с пагинация (цяло число)"
+
+msgid "OPDS"
+msgstr "OPDS"
+
+msgid "Older first"
+msgstr "По-старите първо"
+
+msgid "Older texts"
+msgstr "Стари текстове"
+
+msgid ""
+"One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr ""
+"Една страница на лист. Това е препоръчително, ако искаш да добавиш "
+"маркировки за изрязване"
+
+msgid "Open wiki"
+msgstr "Отвори уикито"
+
+msgid "Option templates"
+msgstr "Шаблони за опции"
+
+msgid "Optional, defaults to the author directive"
+msgstr ""
+"Не е задължително. По подразбиране ще бъде зададено като директивата на "
+"автора"
+
+msgid ""
+"Or create a new revision, at your own peril. Having multiple\n"
+"          concurrent revisions means that, unless someone takes care\n"
+"          of it, only one will be chosen. You can go ahead, or retry\n"
+"          later, or, better, contact the librarians before proceeding,\n"
+"          to avoid wasting energies."
+msgstr ""
+"Или направи нова ревизия на свой собствен риск. Ако има повече\n"
+"          от една текуща ревизия, само една ще бъде избрана, ако някой\n"
+"          не се погрижи. Можеш да продължиш, да опиташ отново по-късно\n"
+"          или най-добре да се свържеш с библиотекарите преди да продължиш,\n"
+"          за да не хабиш енергия."
+
+msgid "Or log in, if you have an account."
+msgstr "Или влез, ако имаш акаунт."
+
+msgid "Or provide an HTML file to upload"
+msgstr "Или предостави HTML файл за качване"
+
+msgid "Or wrap it in"
+msgstr "Или го обвий в"
+
+msgid "Ordered List"
+msgstr "Подреден списък"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "PDF logo"
+msgstr "Лого на PDF"
+
+msgid "PDFs cannot be used in the body."
+msgstr "Не може да се добавят PDF файлове в самия текст."
+
+#. ('#ATTACH')
+#. ("#ATTACH")
+msgid "PDFs not listed in the %1 directive will be stored but ignored."
+msgstr ""
+"PDF-ове, които не са налични в директивата %1, ще бъдат съхранени, но "
+"игнорирани."
+
+msgid "Page not found!"
+msgstr "Страницата не беше намерена!"
+
+msgid "Page where to start a chapter"
+msgstr "Страница, където да почне глава"
+
+msgid ""
+"Pages are not reordered. The first sheet contains\n"
+"        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
+"        This is not meant to be folded."
+msgstr ""
+"Страниците не са пренаредени. Първият лист съдържа\n"
+"        1-вата и 2-рата страница, вторият - 3-тата и 4-тата и т.н.\n"
+"        Този формат не е предназначен за сгъване."
+
+msgid ""
+"Pages are reordered, in one or more groups\n"
+"        (signatures), then folded in half. If you have more\n"
+"        signatures, you will have to bound them together like a book.\n"
+"        With this option, you may want to decide the size of the\n"
+"        signatures. This can be a fixed value (4,8,16, etc.), the\n"
+"        whole book in a single signature, or an optimized size to\n"
+"        reduce the number of blank pages."
+msgstr ""
+"Страниците са пренаредени в една или повече групи(signatures)\n"
+"        и после сгънати наполовина. Ако имаш повече групи\n"
+"        ще трябва да ги обвържеш заедно като книга.\n"
+"        Ако избереш тази опция, ще имаш и възможността да избереш\n"
+"        големината на групата. Може да бъде фиксирана стойност(4, 8, 18, т."
+"н.),\n"
+"        цялата книга в една група или оптимизирана големина, за да намалиш\n"
+"        броя празни страници."
+
+msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
+msgstr ""
+"Дебелина на листовете (0.10 би трябва да е подходящо за обикновена 80 г/м2 "
+"хартия)"
+
+msgid "Paragraphs"
+msgstr "Параграфи"
+
+msgid "Parent node"
+msgstr "По-висок възел"
+
+msgid "Part"
+msgstr "Част"
+
+msgid "Part and chapter. If one side document: part."
+msgstr "Част и глава. Ако документът е едностранен: част."
+
+msgid "Part of"
+msgstr "Част от"
+
+msgid "Part, for larger books only"
+msgstr "Част (само за по-големи книги)"
+
+msgid "Partial selection"
+msgstr "Частична селекция"
+
+msgid "Password"
+msgstr "Парола"
+
+msgid "Password too short"
+msgstr "Паролата е прекалено къса"
+
+msgid "Password updated"
+msgstr "Паролата беше обновена"
+
+msgid "Password, minimum 8 characters."
+msgstr "Парола (минимум 8 символа)"
+
+msgid "Passwords do not match"
+msgstr "Паролите не съвпадат"
+
+msgid "Payload"
+msgstr "Съдържание"
+
+msgid "Pending revisions"
+msgstr "Неуредени ревизии"
+
+msgid "Picture"
+msgstr "Снимка"
+
+msgid "Place it in the body with a description:"
+msgstr "Постави го в текста с описание:"
+
+msgid "Place it in the body without description:"
+msgstr "Постави го в текста без описание:"
+
+msgid "Place the notes on the back of the first page, impressum-style"
+msgstr "Постави бележките на гърба на страницата (стил импресум)"
+
+msgid "Plain PDF"
+msgstr "Обикновен PDF"
+
+msgid ""
+"Please check your inbox, we tried to deliver a mail to the address you "
+"specified with a password reset link"
+msgstr ""
+"Моля, провери пощенската си кутия. Изпратихме ти имейл с линк за промяна на "
+"паролата"
+
+msgid "Please choose the Beamer color theme"
+msgstr "Моля, избери цветова тема за Beamer"
+
+msgid "Please choose the Beamer theme"
+msgstr "Моля, избери тема за Beamer"
+
+msgid "Please choose the font size"
+msgstr "Моля, избери големина на шрифта"
+
+msgid "Please choose the main font"
+msgstr "Моля, избери основен шрифт"
+
+msgid "Please choose the mono font"
+msgstr "Моля, избери mono шрифт"
+
+msgid "Please choose the sans font"
+msgstr "Моля, избери шрифт без сериф"
+
+msgid "Please describe shortly what you did"
+msgstr "Моля, напиши кратко описание на това, което направи току-що"
+
+msgid "Please do not use a valuable password."
+msgstr "Моля, не използвай ценна парола."
+
+msgid ""
+"Please do not use higher levels (part or chapter) for short articles with "
+"sections."
+msgstr ""
+"Моля, за да изглежда по-добре, не използвай по-високи нива (част или глава) "
+"за кратки статии с раздели."
+
+#. (amw_group_name)
+msgid "Please ensure that your system user is member of the \"%1\" group"
+msgstr "Моля, осигури, че системният ти потребител е член на групата \"%1\""
+
+msgid ""
+"Please give us a username. It should *not* be a mail address.\n"
+"        Just a fancy name, so we can know that multiple uploads come\n"
+"        from the same person."
+msgstr ""
+"Моля, въведи потребителско име. *Не* трябва да бъде имейл адрес.\n"
+"        Просто някакво име, за да знаем, кои качвания идват от\n"
+"        едни и същи потребители."
+
+msgid ""
+"Please initialized it empty, without any README,license, .gitignore or "
+"similar."
+msgstr ""
+"Моля, направи празна инициализация без README, лиценз, .gitignore или "
+"подобни."
+
+msgid ""
+"Please keep in mind that filters are language-specific\n"
+"              and may or may not be available for the language of the\n"
+"              text. If not available, they will just leave the text as\n"
+"              is."
+msgstr ""
+"Моля, не забравяй, че филтрите са специфични за различните езици\n"
+"              и може да не са налични за езика на дадения текст.\n"
+"              Ако не са налични, те просто ще оставят текста, както\n"
+"              си е."
+
+msgid ""
+"Please keep in mind that if you see “Force publishing”\n"
+"    as action, it means that the revision has been superseded by\n"
+"    another one, so publishing this one, you'll end up reverting a\n"
+"    previous one. Try to avoid this, unless you know what you're\n"
+"    doing."
+msgstr ""
+"Моля, не забравяй, че ако видиш \"Принуди публикуване\"\n"
+"    като възможно действие, това означава, че ревизията е била\n"
+"    заместена от друга, така че ако публикуваш , текстът ще се \n"
+"    върне към миналата си версия. Опитай се да избягваш това освен\n"
+"    ако знаеш добре какво правиш."
+
+msgid "Please leave a mail if you want to be contacted about this change"
+msgstr "Моля, остави имейла си, ако искаш да се свържем с теб за тази промяна"
+
+msgid "Please note that wrapping tags must be placed on a line by themselves."
+msgstr ""
+"Моля, отбележи, че обвиващи тагове трябва да бъдат поставени на отделни "
+"редове."
+
+msgid ""
+"Please note that you may want to paste from a\n"
+"        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
+"        from word” button. This is supposed to preserve the markup."
+msgstr ""
+"Моля, отблежи, че ако ще поставяш нещо, копирано от\n"
+"        Word/OpenOffice/LibreOffice/HTML документ, препоръчително\n"
+"        е да използваш \"paste from word\" бутона. Така би трябвало да се\n"
+"        запази markup-a."
+
+msgid ""
+"Please note: without any prefix, protocol or hostname, just\n"
+"  the bare page name as shown above. External redirecting is not\n"
+"  supported."
+msgstr ""
+"Моля, отбележи - без префикс, протокол или име на сайт, само\n"
+"  име на страница. Външно пренасочване не е поддържано."
+
+msgid "Please prove you are a human"
+msgstr "Моля, докажи, че си човек"
+
+msgid "Please reload your page"
+msgstr "Моля, презареди страницата"
+
+msgid "Please remove this file from the body first"
+msgstr "Моля, първо премахни този файл от текста"
+
+msgid ""
+"Please replace the example URL in the next line with the real one with SSH "
+"protocol"
+msgstr ""
+"Моля, замени примерния URL на следващия ред с истинския URL със SSH протокол"
+
+msgid "Please select"
+msgstr "Моля, избери"
+
+msgid "Please select the desired fonts"
+msgstr "Моля, избери желан от теб шрифт"
+
+msgid "Please select the signature size:"
+msgstr "Моля, избери големината на групите(signatures):"
+
+msgid ""
+"Please select the size of each page including the crop marks, before the "
+"imposing"
+msgstr ""
+"Моля, избери големината на всяка страница (включително и маркировките за "
+"изрязване) преди подреждането на страниците"
+
+msgid ""
+"Please set the URI you desire. Author (if present),\n"
+"        title and eventually a number if the URI already exists is\n"
+"        usually a good choice"
+msgstr ""
+"Моля, въведи желания от теб URI. Обичайно автор (ако има),\n"
+"        заглавие и номер (ако такъв URI вече съществува)\n"
+"        е добър избор"
+
+msgid "Please setup the Beamer layout"
+msgstr "Моля, настрой оформлението на Beamer"
+
+msgid "Please upload your file again!"
+msgstr "Моля, отново качи файла си!"
+
+msgid "Poetry, bibliographies, plays, code blocks"
+msgstr "Поезия, библиографии, пиеси, кодови блокове"
+
+msgid "Pointing to"
+msgstr "Сочещ към"
+
+msgid "Popular texts"
+msgstr "Популярни текстове"
+
+msgid ""
+"Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
+"        “i.”, “I.”, depending on the list type you need."
+msgstr ""
+"Префиксите за подредени списъци могат да бъдат \"1.\", \"а.\",\n"
+"        \"А.\", \"i.\", \"I.\", зависимо вида списък, който ти е нужен."
+
+msgid "Preview"
+msgstr "Преглед"
+
+msgid "Preview box height in pixel"
+msgstr "Визочина на прозорчето за преглед (в пиксели)"
+
+msgid "Previous"
+msgstr "Предишно"
+
+msgid "Priority"
+msgstr "Приоритет"
+
+msgid "Private"
+msgstr "Лично"
+
+msgid "Procedure"
+msgstr "Процедура"
+
+msgid "Processing"
+msgstr "В обработка"
+
+msgid "Produce slides."
+msgstr "Създай слайдове."
+
+msgid "Produced"
+msgstr "Създадено"
+
+msgid "Publication date"
+msgstr "Дата на публикация"
+
+msgid "Publication date on this site"
+msgstr "Дата на публикация на този сайт"
+
+msgid "Publish"
+msgstr "Публикувай"
+
+msgid "Published in *A nice book*, published by My House, 2014"
+msgstr ""
+"Публикувано в \"Красива книга\", публикувано от Моето издателство, 2014"
+
+msgid "Purge"
+msgstr "Прочисти"
+
+msgid ""
+"Purging means removing it completely from the archive, not just hiding it."
+msgstr ""
+"Прочистване означава, че ще бъде изцяло изтрито от архива, няма просто да "
+"бъде скрие."
+
+msgid ""
+"Put additional information here (original\n"
+"\t  title, translators, credits, etc). Footnotes go in the\n"
+"\t  body."
+msgstr ""
+"Добави допълнителна информация тук (оригинално\n"
+"\t  заглавие, преводачи и т.н.) Бележки под линиите\n"
+"\t  се поставят в текста."
+
+msgid "Quarter Letter paper"
+msgstr "Формат четвъртина писмо (Letter)"
+
+msgid "Queue"
+msgstr "Опашка"
+
+msgid "Quota exceeded, too many pages"
+msgstr "Квотата е надвишена, твърде много страници"
+
+msgid "Quotes"
+msgstr "Цитати"
+
+msgid "RSS aggregator"
+msgstr "RSS агрегатор"
+
+msgid "RSS feed"
+msgstr "RSS feed"
+
+msgid "Random"
+msgstr "Случайна страница"
+
+msgid "Read about the file naming scheme if you need to add files to the tree."
+msgstr ""
+"Прочети за начина на именуване за файлове, ако искаш да добавиш файлове към "
+"дървото."
+
+msgid "Read the whole text..."
+msgstr "Прочети целия текст..."
+
+msgid "Real time help"
+msgstr "Помощ в реално време"
+
+msgid ""
+"Rearrange the footnotes, fixing the numbering,\n"
+"              considering only the order in which they were inserted.\n"
+"              Please leave unchecked if you don't know what this\n"
+"              means. This option could be destructive, please use with\n"
+"              caution and check the result. In case you encounter\n"
+"              problems, please save the result reporting them in the\n"
+"              message. The procedure tries to be safe and will ignore\n"
+"              the change if footnotes are missing or are too many."
+msgstr ""
+"Пренареди бележките под линиите и оправи номерирането,\n"
+"              имайки предвид само реда, в който са били въведени.\n"
+"              Моля остави това неотметнато, ако не знаеш какво означава.\n"
+"              Тази опция може да бъде деструктивна, затова, моля,\n"
+"              използвай я внимателно. В случай, че се сблъскаш с проблем,\n"
+"              моля, запази резултата и докладвай проблема в съобщение.\n"
+"              Тази процедура се опитва да бъде безопасна, затова игнорира\n"
+"              промени, ако бележките под линиите са повече или по-малко."
+
+msgid "Reason"
+msgstr "Причина"
+
+msgid "Reason for deletion"
+msgstr "Причина за изтриване"
+
+msgid "Rebuild"
+msgstr "Построяване наново"
+
+msgid "Rebuild all generated files"
+msgstr "Построй всички генерирани файлове наново"
+
+msgid "Rebuild the generated formats"
+msgstr "Построй всички генерирани формати наново"
+
+msgid "Rebuilding"
+msgstr "Построяване наново"
+
+msgid "Recheck"
+msgstr "Провери отново"
+
+msgid "Redirections"
+msgstr "Пренасочвания"
+
+msgid "Refresh and apply filters"
+msgstr "Презареди и приложи филтрите"
+
+msgid "Related projects"
+msgstr "Свързани проекти"
+
+#. ("$name $url")
+msgid "Remote repository %1 added"
+msgstr "Добавено дистанционно хранилище %1"
+
+#. ($name)
+msgid "Remote repository %1 removed"
+msgstr "Премахнато дистанционно хранилище %1"
+
+msgid "Remove"
+msgstr "Премахни"
+
+msgid "Remove cover image"
+msgstr "Премахни снимката на корицата"
+
+msgid "Remove this category"
+msgstr "Премахни тази категория"
+
+msgid "Rename to"
+msgstr "Преименувай на"
+
+msgid "Repeat email"
+msgstr "Повтори имейла си"
+
+msgid "Repeat password"
+msgstr "Повтори паролата си"
+
+msgid "Request failed! Please report the the problem"
+msgstr "Заяквата се провали! Моля, докладвай проблема"
+
+msgid "Reschedule"
+msgstr "Разсрочи"
+
+msgid "Reset all"
+msgstr "Нулирай всичко"
+
+msgid "Reset filters"
+msgstr "Нулирай филтрите"
+
+msgid "Reset password"
+msgstr "Промени паролата си"
+
+#. (username)
+msgid "Reset password for user %1"
+msgstr "Промени паролата за потребителя %1"
+
+msgid "Reset to site defaults"
+msgstr "Върни към настройките по подразбриране на сайта"
+
+msgid "Reset your password"
+msgstr "Промени паролата си"
+
+msgid "Restricted configuration variables"
+msgstr "Ограничена конфигурация"
+
+msgid "Restricted format options"
+msgstr "Ограничени опции за форматиране"
+
+msgid "Results per page:"
+msgstr "Резултати на страница:"
+
+msgid "Retrieved on DATE from URL"
+msgstr "Извлечено на ДАТА от URL-а"
+
+msgid "Retrieved on March 8, 2012 from"
+msgstr "Извлечено на 8 март 2012 от"
+
+msgid "Revision"
+msgstr "Ревизия"
+
+#. ($uri)
+msgid "Revision for %1 has been deleted"
+msgstr "Ревизията за %1 беше премахната"
+
+msgid "Roles"
+msgstr "Роли"
+
+msgid "Root node"
+msgstr "Root възел"
+
+msgid "Running headings"
+msgstr "Текущи заглавни части"
+
+msgid "SSL CA certificate path (Apache)"
+msgstr "SSL CA сертификат (Apache)"
+
+msgid "SSL certificate path (Apache)"
+msgstr "SSL сертификат (Apache)"
+
+msgid "SSL chained certificate path (Nginx)"
+msgstr "SSL комбиниран сертификат (Nginx)"
+
+msgid "SSL configuration"
+msgstr "SSL конфигурация"
+
+msgid "SSL key path"
+msgstr "SSL ключ"
+
+msgid "Same as above, for the Archive menu"
+msgstr "Същото като по-горе, но за менюто на архива"
+
+msgid "Same as above, for the Related Projects menu"
+msgstr "Същото като по-горе, но за менюто за свързани проекти"
+
+msgid "Sans font"
+msgstr "Шрифт без сериф"
+
+msgid "Save"
+msgstr "Запази"
+
+msgid "Save the current settings with a name"
+msgstr "Запази текущите настройки с име"
+
+#. ($pname)
+msgid "Saved \"%1\" configuration"
+msgstr "Запазена конфигурация \"%1\""
+
+msgid "Search"
+msgstr "Търсене"
+
+msgid "Search filters"
+msgstr "Филтри за търсене"
+
+msgid "Search results"
+msgstr "Резултати от търсенето"
+
+msgid "Search this column"
+msgstr "Потърси тази колона"
+
+msgid "Secondary footnotes"
+msgstr "Вторични бележки под линията"
+
+msgid "Section"
+msgstr "Раздел"
+
+msgid "Section and subsection. If one side document: section."
+msgstr "Раздел и подраздел. Ако документът е едностранен: раздел."
+
+msgid "See here for more details."
+msgstr "Погледни тук за повече детайли."
+
+msgid "See here for the full documentation."
+msgstr "Погледни тук за цялостната документация."
+
+msgid "See the full manual for more details (english)"
+msgstr "Погледни наръчник за повече детайли (има го само на английски)"
+
+msgid "Select"
+msgstr "Избери"
+
+msgid "Select all"
+msgstr "Избери всички"
+
+msgid "Select all for deletion"
+msgstr "Избери всички за изтриване"
+
+msgid "Select all for rescheduling"
+msgstr "Избери всички за разсрочване"
+
+msgid "Select individual parts for the bookbuilder"
+msgstr "Избери индивидуални части от книгострояча"
+
+msgid "Separate body fields"
+msgstr "Отделни текстови полета"
+
+msgid "Separate footer fields"
+msgstr "Отделни полета за бележки под линията"
+
+msgid "Separate header fields"
+msgstr "Отделни полета за заглавни части"
+
+msgid "Session sharing"
+msgstr "Споделяне на сесии"
+
+msgid "Set a date in the future if you want it deferred."
+msgstr "Въведи дата в бъдещето, ако искаш да го отложиш."
+
+msgid "Settings loaded"
+msgstr "Настройките бяха заредени"
+
+msgid "Setup"
+msgstr "Настройване"
+
+msgid "Show _MENU_ entries"
+msgstr "Покажи _MENU_ записите"
+
+msgid "Show cheatsheet"
+msgstr "Покажи резюме за форматиране на текстове"
+
+msgid "Show differences in other tab"
+msgstr "Покажи разликите в отделен таб"
+
+msgid "Show filters"
+msgstr "Покажи филтри"
+
+msgid "Show preview in other tab"
+msgstr "Покажи преглед в отделен таб"
+
+msgid "Show text type and number of pages in the listing"
+msgstr "Покажи вида и броя на страниците в списъците с текстове"
+
+msgid "Show the text infobox at the bottom of the texts"
+msgstr "Покажи информацията за текста в долната част на страницата"
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "Показване на 0 до 0 от 0 записи"
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr "Показване на _START_ до _END_ от _TOTAL_ записи"
+
+msgid "Single bars"
+msgstr "Единична лента"
+
+msgid "Site Map"
+msgstr "Карта на сайта"
+
+msgid "Site already exists"
+msgstr "Сайтът вече съществува"
+
+msgid "Site group"
+msgstr "Група на сайта"
+
+msgid "Site id"
+msgstr "Id на сайта"
+
+msgid "Site mail (From field)"
+msgstr "Имейл на сайта (от полето)"
+
+msgid "Site mode"
+msgstr "Начин на сайта"
+
+msgid "Site name"
+msgstr "Име на сайта"
+
+msgid "Site slogan"
+msgstr "Лозунг на сайта"
+
+msgid "Site users"
+msgstr "Потребители на сайта"
+
+msgid "Sites"
+msgstr "Сайтове"
+
+msgid "Slides"
+msgstr "Слайдове"
+
+msgid "Slides (PDF)"
+msgstr "Слайдове (PDF)"
+
+msgid "So we can be sure we are not mailing passwords to random people"
+msgstr "За да сме сигурни, че не изпращаме пароли на случайни хора"
+
+msgid "Some fields are missing, all are required"
+msgstr "Някои от полетата са празни, а всички са задължителни"
+
+msgid "Some fields are too long"
+msgstr "Някои от полетата са прекалено дълги"
+
+msgid "Some ongoing revisions were found"
+msgstr "Някои ревизии в обработване бяха намерени"
+
+msgid "Sorry, too many jobs pending, please try again later!"
+msgstr ""
+"Съжаляваме, в момента има прекалено много неуредени задачи, моля, опитай "
+"отново по-късно!"
+
+msgid "Sorting:"
+msgstr "Сортиране:"
+
+msgid "Source"
+msgstr "Източник"
+
+msgid "Source files"
+msgstr "Изходни файлове"
+
+msgid "Source files with attachments"
+msgstr "Изходни файлове с прикачени файлове"
+
+msgid "Source, notes..."
+msgstr "Източници, бележки..."
+
+msgid "Sources"
+msgstr "Източници"
+
+msgid "Special blocks"
+msgstr "Специални блокове"
+
+msgid "Special pages"
+msgstr "Специални страници"
+
+msgid "Specify a whitespace-separated list of languages to activate it."
+msgstr "Посочи списък с езици, разделени с интервали, за да го активираш."
+
+msgid "Stale editing"
+msgstr "Застояло редактиране"
+
+msgid "Standalone HTML (printer-friendly)"
+msgstr "Самостоятелен HTML (удобно за принтиране)"
+
+msgid "Standard"
+msgstr "Стандартно"
+
+msgid "Start the document with an empty page"
+msgstr "Започни документа с празна страница"
+
+msgid "Started"
+msgstr "Започнато"
+
+msgid "Static page without javascript"
+msgstr "Статична страница без javascript"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "Status changed"
+msgstr "Промен статус"
+
+msgid "Subsection"
+msgstr "Подраздел"
+
+msgid "Subsubsection or description item"
+msgstr "Елемент на подподраздел или описание"
+
+msgid "Subtitle"
+msgstr "Субтитри"
+
+msgid "Such an URI already exists"
+msgstr "Такъв URI вече съществува"
+
+msgid ""
+"Such an header will unpublish the text and put a\n"
+"  redirection in place, and will be listed here"
+msgstr ""
+"Такава заглавна част ще дръпне текста от публикация\n"
+"  и ще остави пренасочване, което ще бъде поставено тук"
+
+msgid "Such an user already exists!"
+msgstr "Такъв потребител вече съществува!"
+
+msgid "Such username already exists"
+msgstr "Такова потребителско име вече съществува"
+
+msgid "Suggested values:"
+msgstr "Възможни стойности:"
+
+msgid "Summary"
+msgstr "Обобщение"
+
+msgid "Supported directive in the header"
+msgstr "Поддържани директиви в заглавната част"
+
+msgid "Table of Contents"
+msgstr "Съдържание"
+
+msgid "Tables"
+msgstr "Таблици"
+
+msgid "Tag cloud with authors"
+msgstr "Tag cloud за автори"
+
+msgid "Tag cloud with topics"
+msgstr "Tag cloud за теми"
+
+msgid "Task"
+msgstr "Задача"
+
+msgid "TeX options (advanced)"
+msgstr "TeX опция (за напреднали)"
+
+msgid "Teaser"
+msgstr "Преглед"
+
+msgid "Teaser image"
+msgstr "Изображение за преглед"
+
+msgid "Term"
+msgstr "Термин"
+
+msgid "Test"
+msgstr "Тест"
+
+msgid "Tested applications, in this order of preference"
+msgstr "Тествани приложения в тази последователност"
+
+msgid "Text formatted with markup"
+msgstr "Текстът е форматиран с markup"
+
+msgid ""
+"Text redirections are set in the text itself, using the\n"
+"  DELETED header with this syntax"
+msgstr ""
+"Текстови пренасочвания трябва да бъдат въведени в самия текст, използвайки\n"
+"  DELETED таг с този синтаксис"
+
+msgid "Texts"
+msgstr "Текстове"
+
+msgid ""
+"The Beamer selections are relevant only if you activate the\n"
+"  slides output."
+msgstr ""
+"Beamer селекциите са от значение само ако активираш\n"
+"  създаването на слайдове."
+
+msgid "The OPDS address for this site is:"
+msgstr "OPDS адресът за този сайт е:"
+
+msgid ""
+"The PDF logo value can be either an absolute path\n"
+"            or just a filename if you choose to install it in the\n"
+"            TeXlive tree. You can do so with the following commands.\n"
+"            The last one checks if the file can be found."
+msgstr ""
+"Стойността на логото на PDF-а може да бъде или абсолютен път,\n"
+"            или обикновено име на файл, ако избереш да го инсталираш в\n"
+"            TeXlive дървото. Можеш да го направиш това чрез следните "
+"команди.\n"
+"            Последната проверява дали файлът може да бъде намерен."
+
+msgid "The changes will propagate automatically once you push."
+msgstr "Промените ще се разпространят веднага, щом ги пуснеш."
+
+#. ($uri)
+msgid "The description for %1 has been updated"
+msgstr "Описанието за %1 е било обновено"
+
+msgid ""
+"The differences between the list of footnotes and references is shown below."
+msgstr ""
+"Разликата между списъка с бележките под линиите и референциите към тях е "
+"показана отдолу."
+
+msgid "The file uploaded is not an HTML file!"
+msgstr "Каченият файл не е HTML!"
+
+msgid "The following settings provide the defaults for each format."
+msgstr ""
+"Следните настройки предоставят стойностите по подразбиране на всеки формат."
+
+msgid "The following values are used to generate the webserver configuration."
+msgstr ""
+"Следните стойности са използвани за генериране на конфигурацията на уеб "
+"сървъра."
+
+msgid ""
+"The generate webserver configuration will redirect\n"
+"          all the HTTP requests to HTTPS"
+msgstr ""
+"Конфигурацията на уеб сървъра ще пренасочи\n"
+"          всички HTTP заяки към HTTPS такива"
+
+msgid "The logo has the site name on itself"
+msgstr "Логото съдържа името на сайта"
+
+msgid "The optional subtitle"
+msgstr "Субтитри по избор"
+
+msgid ""
+"The page /special/index is twice special. It is assumed to be the\n"
+"default page to visit when loading the site’s root."
+msgstr ""
+"Страницата /special/index е двойно специална. Допуска се, че тя е\n"
+"страницата, която се отваря по подразбиране, когато се зарежда root-а на "
+"сайта."
+
+msgid "The password will be mailed at this address"
+msgstr "Паролата ще бъде изпратена на този адрес"
+
+msgid "The reset link will expire in a hour."
+msgstr "Линкът за пренабиране ще изтече след час."
+
+msgid "The revision has the following messages"
+msgstr "Ревизията съдържа следните съобщения"
+
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr ""
+"Сайтът ще покаже PDF-овете с миниятюра в края\n"
+"        на документа."
+
+msgid "The text structure is shown below."
+msgstr "Структурата на текста е посочена по-долу."
+
+msgid "The text to show on the homepage preview"
+msgstr "Текстът, който ще бъде видим в прегледа на началната страница"
+
+msgid "The text was added to the bookbuilder"
+msgstr "Текстът беше добавен към книгострояча"
+
+msgid ""
+"The title of the document, for sorting purposes. Useful\n"
+"          if you want to strip the article, if any. A text titled “A\n"
+"          nice title” could have this set to “Nice title”, and will be\n"
+"          listed under N, not under A."
+msgstr ""
+"Тази функция по принцип не се ползва за текстове на български език.\n"
+"(става дума за махането на 'A', \"An\" и \"The\" от текстове, за да се "
+"сортират по-добре заглавията."
+
+msgid "The title of the document. The only mandatory directive."
+msgstr "Заглавието на документа. Единствената задължителна директива."
+
+msgid ""
+"The webserver needs to be reconfigured. Please execute in a root shell the "
+"following commands:"
+msgstr ""
+"Уеб сървърът трябва да бъде преконфигуриран. Моля, изпълни следните команди "
+"в shell като root:"
+
+msgid "The whole book in as single signature"
+msgstr "Цялата книга в една група(signature)"
+
+msgid "Then approve the change as it would be a normal publishing."
+msgstr "След това одобри промяната като обичайно."
+
+msgid "Then fetch the updates from this page."
+msgstr "След това грабнете обновленията от тази страница."
+
+msgid "There are failed jobs"
+msgstr "Има неуспешни задачи"
+
+msgid "There are pending revisions"
+msgstr "Има още неуредени ревизии"
+
+msgid "These texts are missing the unique id."
+msgstr "Уникално ID липсва в този текст."
+
+msgid "They can be texts, special texts, authors or topics."
+msgstr "Могат да бъдат текстове, специални текстове, автори или теми."
+
+msgid ""
+"They should be paths relative to the webserver configuration root or "
+"absolute paths (recommended)."
+msgstr ""
+"Те трябва да бъдат или релативни пътища до конфигурацията на уеб сървъра, "
+"или абсолютни пътища(предпочътано)."
+
+msgid "This directive wants a whitespace separated list of filenames."
+msgstr ""
+"Директивата изисква списък от имената на файлове, разделени от интервали."
+
+msgid ""
+"This is a WYSIWYG editor. If you prefer to use\n"
+"        the wiki-like syntax leave it as is, fill the required fields\n"
+"        above and postpone the editing to the next step."
+msgstr ""
+"Това е WYSIWYG редактор. Ако предпочиташ да използваш\n"
+"        синтаксиса на уикито, остави го празно, попълни задължителните\n"
+"        полета отгоре и отложи редактирането за следващата стъпка."
+
+msgid "This is the caption"
+msgstr "Това е надписът"
+
+msgid ""
+"This mail has been sent to notify you about a new text\n"
+"creation, even if the uploading is not completed yet and the user\n"
+"still needs to finalize the upload. Another mail should follow soon.\n"
+"If this doesn't happen, it means that the uploading has been abandoned\n"
+"and you may want to check it out."
+msgstr ""
+"Този имейл беше изпратен да те уведоми, че нов текст е бил създаден\n"
+"ори ако текстът все още не е завършен и потребителят не го е публикувал.\n"
+"Трябва да получиш още един имейл скоро. Ако това не се случи, тогава\n"
+"потребителят е изоставил текста и е препоръчително да го провериш."
+
+msgid "This revision is already published, ignoring changes"
+msgstr ""
+"Тази ревизия вече е била публикувана. Промените, които не са били включени в "
+"ревизията, ще бъдат игнорирани и изтрити"
+
+msgid "This revision is being actively edited"
+msgstr "Тази ревизия бива редактирана в момента"
+
+msgid "This revision is being actively edited by you"
+msgstr "Тази ревизия бива редактирана от теб в момента"
+
+msgid "This revision is being edited by someone else!"
+msgstr "Тази ревизия бива редактирана от някого другиго!"
+
+msgid "This section will not produce a slide"
+msgstr "Този раздел няма да създаде слайд"
+
+msgid ""
+"This site is private and mobile applications should ask for your username "
+"and\n"
+"  password to access the OPDS."
+msgstr ""
+"Мобилни приложение трябва да те питат за твоето потребителско име и\n"
+"  парола, за да имат достъпност до ODPS."
+
+msgid "This text does not exist"
+msgstr "Този текст не съществува"
+
+msgid "This text is a book"
+msgstr "Този текст е книга"
+
+msgid "This text is an article"
+msgstr "Този текст е статия"
+
+msgid "This text is new"
+msgstr "Този текст е нов"
+
+msgid "This text is not available"
+msgstr "Този текст не е достъпен"
+
+msgid "This text is not public yet"
+msgstr "Този текст все още не е публичен"
+
+msgid "This text is not published yet"
+msgstr "Този текст все още не е публикуван"
+
+#. (rev.is_deferred)
+msgid "This text will be deferred to %1"
+msgstr "Този текст ще бъде отложен до %1"
+
+msgid "This user cannot be removed"
+msgstr "Този потребител не може да бъде премахнат"
+
+msgid "Thumbnail"
+msgstr "Миниятура"
+
+msgid "Title"
+msgstr "Заглавие"
+
+msgid "Title and chapter. If one side document: chapter."
+msgstr "Заглавие и глава. Ако документът е едностранен: глава."
+
+msgid "Title and section.  If one side document: section."
+msgstr "Заглавие и раздел. Ако документът е едностранен: раздел."
+
+msgid "Title and subtitle. If one side document: title."
+msgstr "Заглавие и субтитри. Ако документът е едностранен: заглавие."
+
+msgid "Title for sorting"
+msgstr "Заглавие за сортиране"
+
+msgid "Title, author, date..."
+msgstr "Заглавие, автор, дата..."
+
+msgid "Titles"
+msgstr "Заглавия"
+
+#. (pending_url)
+msgid "To apply the changes, you can visit %1"
+msgstr "За да приложиш промените, трябва да посетиш %1"
+
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr ""
+"За да се покажат PDF-овете, добави или вмъкни следния низ в заглавната част"
+
+msgid ""
+"To preserve the whitespaces and line breakings, wrap the paragraphs with"
+msgstr "За да запазиш празните места и новите редове, обвий параграфа с"
+
+msgid "To quickly format bibliographies wrap them in"
+msgstr "За да форматираш библиографии бързо, обвий ги в"
+
+msgid "To quickly format plays, use"
+msgstr "За да форматираш пиеси бързо, използвай"
+
+msgid "To resume the editing you can visit the following URL"
+msgstr ""
+"За да продължиш последната си сесия на редактиране, трябва да посетиш "
+"следния URL"
+
+#. (loc('Update')
+#. (loc("Update"))
+msgid ""
+"To save or update the templates, you need first to save\n"
+"    the options with the \"%1\" button"
+msgstr ""
+"За да запазиш или обновиш шаблоните, трябва първо\n"
+"    да запаметиш опциите като цъкнеш върху бутона \"%1\""
+
+msgid "To view the changes introduced, you can visit the following URL"
+msgstr "За да видиш новите промени, трябва да посетиш следния URL"
+
+msgid "Toggle fullscreen editor"
+msgstr "Превлючи редактора на цял екран"
+
+msgid "Topic"
+msgstr "Тема"
+
+msgid "Topics"
+msgstr "Теми"
+
+msgid "Total pages"
+msgstr "Общо страници"
+
+msgid "Triple bars"
+msgstr "Тройна лента"
+
+msgid "Try a random text if unsure"
+msgstr "Опитай със случаен текст, ако не си сигурен"
+
+msgid ""
+"Turn links to images into images (affects site display only, static formats "
+"have the link)"
+msgstr "Превърни линкове, който сочат към снимки, в снимки"
+
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"            Gmaps into widgets (affects site display only, static\n"
+"            formats have the link)"
+msgstr ""
+"Превърни линкове без описание към YouTube, Vimeo,\n"
+"            Gmaps в widgets (това променя само изгледа на сайта,\n"
+"            статични формати имат линка)"
+
+msgid "Two side layout"
+msgstr "Двустранно оформление"
+
+msgid "Type"
+msgstr "Вид"
+
+msgid "URI"
+msgstr "URI"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
+msgstr "URL-ът на новото дистанционно хранилище (HTTPS, HTTP или GIT)"
+
+msgid "UTC"
+msgstr "UTC"
+
+msgid "Unable to load the bookbuilder session"
+msgstr "Зареждането на сесията на книгострояча не беше успешно"
+
+msgid "Unbranded PDF (hide site name, logo, etc.)"
+msgstr "Анонимен PDF (без име на сайта, лого и т.н.)"
+
+msgid ""
+"Unconditionally remove all the invisible non-breaking\n"
+"                spaces in the text"
+msgstr ""
+"Безусловно махни всички невидими неразделящи\n"
+"                интервали в текста"
+
+#. (shared)
+msgid ""
+"Unfortunately, the shared repository located at %1 appeared out of sync."
+msgstr "За съжаление споделеното хранилище %1 е несинхронизирано."
+
+msgid "Unique ID for the text"
+msgstr "Уникално ID за текста"
+
+msgid "Unlimited"
+msgstr "Неограничено"
+
+msgid "Unordered List"
+msgstr "Неподреден списък"
+
+msgid "Unpublished texts"
+msgstr "Текстове, дръпнати от публикация"
+
+#. ($mime)
+#. ($mime_type)
+msgid "Unsupported file type %1"
+msgstr "Неподдържан тип на файла %1"
+
+msgid "Unused attachment"
+msgstr "Неизползвани прикачени файлове"
+
+msgid "Update"
+msgstr "Обнови"
+
+msgid "Update account info"
+msgstr "Обнови информацията за акаунта"
+
+msgid "Update category description"
+msgstr "Обнови описанието на категорията"
+
+msgid "Update to current settings"
+msgstr "Обнови до текущите настройки"
+
+msgid "Upload"
+msgstr "Прикачи"
+
+msgid "Upload the image and note its name. Files are always renamed."
+msgstr ""
+"Качи изображението и запомни името му. Файловете винаги биват преименувани."
+
+msgid ""
+"Uploaded and available images are shown and listed below the text preview."
+msgstr "Качени и налични изображения са показани под прегледа на текста."
+
+msgid "Url"
+msgstr "Url"
+
+msgid "Use JS syntax highlight for code blocks"
+msgstr "Използвай JavaScript оцветяване на синтаксиса в кодови блокове"
+
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
+msgstr "Използвай LuaLaTeX вместо XeLaTeX(по-бавно)"
+
+msgid "Use SSL for authenticated users"
+msgstr "Използвай SSL за удостоверени потребители"
+
+msgid "Use it as a teaser image adding to the header this line:"
+msgstr ""
+"Използвай като изображение за преглед, като добавиш ето този ред към "
+"заглавната част:"
+
+msgid "Use one of the site's formats"
+msgstr "Използвай някой от форматите на сайта"
+
+#. (sign)
+msgid "Use optimized signatures with %1 pages each"
+msgstr ""
+"Когато конвертираш текста, използвай оптимизирани групи(signatures) с по %1 "
+"страници за всеки"
+
+msgid "Use sans fonts for section titles"
+msgstr "Използвай  шрифтове без сериф за заглавията на раздели"
+
+msgid "Use the image as cover"
+msgstr "Използвай снимката като корица"
+
+msgid "Useful HTML snippets"
+msgstr "Полезни HTML откъси"
+
+msgid ""
+"Useful for footnotes or in the headers of the document, where you cannot put "
+"a blank line to mark a new paragraph."
+msgstr ""
+"Полезно за бележки под редовете или за залгавните части на документи, където "
+"не можеш да сложиш празен ред, за да маркираш нов параграф."
+
+#. ($user->username)
+msgid "User %1 created!"
+msgstr "Потребител %1 беше създаден!"
+
+#. ($user->username)
+#. ($c->stash->{user}->username)
+msgid "User %1 deleted"
+msgstr "Потребител %1 беше изтрит"
+
+#. ($user->username)
+msgid "User %1 updated"
+msgstr "Потребител %1 беше обновен"
+
+msgid "User created"
+msgstr "Потребителят беше създаден"
+
+msgid "Username"
+msgstr "Потребителско име"
+
+msgid "Username, alphanumerical only, no special characters, no uppercase"
+msgstr "Потребителско име(само малки буквено-цифрени символи)"
+
+msgid "Users"
+msgstr "Потребители"
+
+msgid ""
+"Using this token, you can load the bookbuilder settings\n"
+"    and the text list from another computer, or share it with someone\n"
+"    else. Just write it down and then load it from another computer\n"
+"    using the following form."
+msgstr ""
+"Използвайки този токен, можеш да заредиш настройки за книгострояча\n"
+"    и списъка с текстове от друг компютър или да ги споделиш с някого "
+"другиго.\n"
+"    Просто си го запиши и го набери на друг компютър използвайки следната "
+"форма."
+
+msgid ""
+"Usually this is due to high traffic and bad luck, and it can be fixed by "
+"pushing the changes again."
+msgstr ""
+"По принцип това бива причинено от пренатовареност на сайта или от лош късмет "
+"и може да бъде оправено, като внесеш отново промените."
+
+msgid "Verbatim block"
+msgstr "Предварително форматирана част"
+
+msgid "View history"
+msgstr "История"
+
+msgid "Virtual hosts"
+msgstr "Виртуални хостове"
+
+msgid "Virtual hosts, one per line"
+msgstr "Виртуално хостове; на ред по един"
+
+msgid "What links here"
+msgstr "Какво пренасочва към тук"
+
+msgid ""
+"When creating a new text, do not populate the publication date if not "
+"provided by the user."
+msgstr ""
+"Когато създаваш нов текст, не попълвай датата на публикация освен ако не е "
+"била оточнена от потребителя."
+
+msgid ""
+"When you start a bookbuilder session, at the end of the\n"
+"    bookbuilder page you can see a token for sharing the session. You\n"
+"    can load it here from another device to resume what you were\n"
+"    doing."
+msgstr ""
+"Когато започнеш сесия на книгострояча, най-отдолу на страницата\n"
+"    ще се появи токен за споделяне на сесията. Можеш да го запазиш\n"
+"    и да го набереш на мобилно устройство например, за да продължиш, "
+"откъдето\n"
+"    си бил стигнал."
+
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr ""
+"Когато искаш да качиш PDF, най-добре го раздели на отделни снимки и ги "
+"добави така"
+
+msgid "Where does this text come from?"
+msgstr "Откъде идва текстът?"
+
+msgid "Width of the cover image in percent of the text block width."
+msgstr ""
+"Широчина на снимката на корицата в проценти, спрямо широчината на текста."
+
+msgid "Width:"
+msgstr "Широчина:"
+
+msgid ""
+"With complex structures, e.g., a chapter with\n"
+"      subsections, selecting only the chapter is likely to select only\n"
+"      the chapter's title, so probably you want to select the chapter\n"
+"      and all its subsections."
+msgstr ""
+"При по-сложни структури(напр. глави с подраздели) е възможно при маркиране\n"
+"      само на главата да се селектира само заглавието на главата, затова е "
+"препоръчително\n"
+"      да маркираш главата и всичките ѝ подраздели."
+
+msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr ""
+"Можеш да зададеш markup-ът да не бъде интерпретиран чрез\n"
+"          тага \"verbatim\". Това по принцип не е нужно"
+
+msgid ""
+"With the bookbuilder you can change the layout (fonts,\n"
+"    dimensions, paper, margins) of the texts on the library. You can\n"
+"    also merge more texts to create your own booklet. Just try it!"
+msgstr ""
+"Можеш да промениш оформлението с книгострояча(шрифтове,\n"
+"    размери, хартия, маржове) на текстовете в библиотеката. Можеш\n"
+"    също да слееш няколко текста, за да си създадеш собствена книжка. Опитай!"
+
+msgid "Workflow"
+msgstr "Работен процес"
+
+msgid "Working locally?"
+msgstr "Работиш локално?"
+
+msgid ""
+"Wrapping tags cannot be used inside environments\n"
+"          which require leading space (notably, you cannot use them in\n"
+"          lists)."
+msgstr ""
+"Обвиването на тагове не може да бъде извършено в случаи,\n"
+"          където се изисква водещо празно място (напр. не можеш да "
+"използваш\n"
+"           тази функция в списъци."
+
+msgid "Wrong answer!"
+msgstr "Грешен отговор!"
+
+msgid "Wrong username or password"
+msgstr "Грешно потребителско име или парола"
+
+msgid "XeLaTeX source"
+msgstr "XeLaTeX източник"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid ""
+"You MUST specify a reason, otherwise the line will have no effect.\n"
+"The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
+"etc.) is irrelevant."
+msgstr ""
+"ТРЯБВА да посичиш причина, иначе редът няма да има никакъв ефект.\n"
+"Подреждането на редовете в заглавната част( където са \"#title\", \"#lang\"\n"
+"и т.н.) не е от значение."
+
+msgid "You are already logged in"
+msgstr "Вече си вписан"
+
+msgid ""
+"You are building a collection. Please provide a title and, optionally, any "
+"other information needed for the front cover (author, subtitle, date) and "
+"the back cover (source and notes)."
+msgstr ""
+"В момента създаваш колекция. Моля постави заглавие и по желание всякаква "
+"друга информация, нужна за предната корица (автор, подзаглавие, дата) и "
+"задната корица (източници и бележки)."
+
+msgid "You are logged in now!"
+msgstr "Вписан си!"
+
+#. (backup)
+msgid ""
+"You can access the backup located at %1 or ask your host for help, "
+"forwarding this email"
+msgstr ""
+"Можеш да намериш резервно копие, намиращо се в %1, или да помолите хоста си "
+"за помощ, препращайки този имейл"
+
+msgid ""
+"You can add texts to the bookbuilder clicking on the\n"
+"    “plus” icon near the downloads of each text. You can add and\n"
+"    remove the texts later."
+msgstr ""
+"Можеш да добавиш текстове към книгострояча, като цъкнеш\n"
+"    върху иконката с плюс, която стои до опцията за теглене на текстовете. "
+"Може да добавяш\n"
+"    или да премахваш текстовете по-късно."
+
+msgid ""
+"You can also link to a part of the text. Please refer to the manual for this "
+"feature"
+msgstr ""
+"Можеш също да създадеш връзка към част от текста. Моля, посъветсвай се с "
+"наръчника, относно тази функция"
+
+#. (create_url)
+msgid "You can create a peer at %1"
+msgstr "Можеш да създадеш peer на %1"
+
+msgid "You can do so answering a simple question."
+msgstr "Отговаряйки на лесен въпрос."
+
+msgid "You can tune them editing them here."
+msgstr "Можеш да ги настроиш тук."
+
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
+msgstr ""
+"Може да използваш следните префикси, за да потърсиш дума в специфично поле, "
+"напр. \"title:пример\"(където \"title\" означава заглавие)"
+
+msgid ""
+"You can't create a new revision because the text has not been published yet"
+msgstr ""
+"Не можеш да създадеш нова ревизия, защото тексът все още не е публикуван"
+
+msgid "You have logged out"
+msgstr "Излязъл си"
+
+msgid "You may want to resume the editing of one of them"
+msgstr "Може да възобновиш редактирането на едно от тях"
+
+msgid ""
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr ""
+"Това е препоръка за оформление на залгавия, което не се отнася за българския "
+"език. Отнася се за пропускането на водещи \"A\", \"An\" и \"The\" в "
+"заглавията на английски"
+
+msgid "You may want to use one of these images"
+msgstr "Може да използваш някое от тези изображения"
+
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
+"Изпрати идентификационни данни по некриптирана връзка. Моля, премини към "
+"HTTPS, влез и промени паролата си веднага. Това не трябва да се случва."
+
+#. (edit_url)
+msgid "You should change your password right away at %1"
+msgstr "Трябва да си смениш паролата веднага на %1"
+
+msgid "Your browser does not support the audio tag."
+msgstr "Уеб браузърът ти не поддържа този аудио таг."
+
+msgid "Your browser does not support the video tag."
+msgstr "Уеб браузърът ти не поддържа този видео таг."
+
+msgid ""
+"Your changes are saved and can be checked every time you hit Preview or Save"
+msgstr ""
+"Промените са запаметени. Можеш да ги провериш ако цъкнеш \"Преглед\" или "
+"\"Запазване\""
+
+msgid "Your chapter here..."
+msgstr "Твоята глава..."
+
+msgid "Your current bookbuilder token is:"
+msgstr "Сегашният токен за сесията ти за книгострояча е:"
+
+msgid "Your email"
+msgstr "Твоят имейл"
+
+msgid "Your file is ready"
+msgstr "Твоят файл е готов"
+
+msgid "Your part here..."
+msgstr "Твоят част..."
+
+#. (password)
+msgid "Your password is %1."
+msgstr "Твоята парола е %1."
+
+msgid "Your password was reset, now you can login with it"
+msgstr "Твоята парола беше променена, можеш да влезеш с нея сега"
+
+msgid "Your section here..."
+msgstr "Твоят раздел..."
+
+msgid "Your sub-sub-section (or description heading) here..."
+msgstr "Твоят подподраздел (или заглавието на описанието)"
+
+msgid "Your subsection here..."
+msgstr "Твоят подраздел..."
+
+#. (home)
+msgid "Your user at %1 has been created."
+msgstr "Твоят потребител е създаден на %1."
+
+#. (username)
+msgid "Your username is %1."
+msgstr "Твоето потребителско име е %1."
+
+msgid "aborted"
+msgstr "недовършено"
+
+msgid "about, links..."
+msgstr "за проекта, линкове..."
+
+msgid "activate to sort column ascending"
+msgstr "сортирай колоните във възходящ ред"
+
+msgid "activate to sort column descending"
+msgstr "сортирай колоните в низходящ ред"
+
+msgid "active"
+msgstr "активно"
+
+msgid "affects only the frontend webserver configuration"
+msgstr "засяга само конфигурацията на frontent уеб сървъра"
+
+msgid "any"
+msgstr "всякакви"
+
+msgid "automatically generated if not present, using author and title"
+msgstr "автоматично се произвежда, ако не присъстват автор и заглавие"
+
+msgid "code and monospace"
+msgstr "код с monospace шрифт"
+
+msgid "completed"
+msgstr "завършено"
+
+msgid "conflict"
+msgstr "конфликт"
+
+msgid "description"
+msgstr "описание"
+
+msgid "displayed text"
+msgstr "показан текст"
+
+msgid "edit, commit..."
+msgstr "радктирай, предай за съхранение..."
+
+msgid "editing"
+msgstr "редактиране"
+
+msgid "emphasis"
+msgstr "наблягане"
+
+msgid "failed"
+msgstr "неуспешно"
+
+msgid "filtered from _MAX_ total entries"
+msgstr "филтрирани от _MAX_ общи записи"
+
+msgid "for code, monospaced"
+msgstr "за код, monospace шрифт"
+
+msgid "for display"
+msgstr "за показване"
+
+msgid "for poetry"
+msgstr "за поезия"
+
+msgid "generic sectioning, good for articles"
+msgstr "неспецифично разделяне, пропръчително за статии"
+
+msgid "if you want to use a custom size, you need to set both width and height"
+msgstr ""
+"ако желаеш да използваш персонализиран размер, трябва да зададеш и "
+"широчината и височината на шрифта"
+
+msgid "image"
+msgstr "изображение"
+
+msgid "left"
+msgstr "ляво"
+
+msgid "mandatory"
+msgstr "задължително"
+
+msgid "markup *not* interpreted"
+msgstr "markup-ът *не* може да бъде интерпретиран"
+
+#. (site.binary_upload_max_size_in_mega)
+msgid "max %1 Mb"
+msgstr "максимално %1 Mb"
+
+msgid "minutes"
+msgstr "минути"
+
+msgid "new-example-uri"
+msgstr "new-example-uri"
+
+msgid "only lowercase ASCII and hyphens"
+msgstr "само ASCII малки букви и тирета"
+
+msgid "or"
+msgstr "или"
+
+msgid "ordered item"
+msgstr "подреден елемент"
+
+msgid "overstriked"
+msgstr "изтрито"
+
+msgid "pending"
+msgstr "чакащи"
+
+msgid "plain PDF"
+msgstr "обикновен PDF"
+
+msgid "plain text source"
+msgstr "източник за обикновен текст"
+
+msgid "processing"
+msgstr "обработва се"
+
+msgid "published"
+msgstr "публикувано"
+
+msgid "revision"
+msgstr "ревизия"
+
+msgid "right"
+msgstr "дясно"
+
+#. (args)
+msgid "string"
+msgstr "низ"
+
+msgid "strong emphasis"
+msgstr "силно наблягане"
+
+msgid "sub-sub-section"
+msgstr "подподсекция"
+
+msgid "subscript"
+msgstr "индекс"
+
+msgid "subsection"
+msgstr "подраздел"
+
+msgid "superscript"
+msgstr "горен индекс"
+
+msgid "taken"
+msgstr "вече заето"
+
+msgid "texts by authors, title, topic..."
+msgstr "текстове от автор, заглавие, тема..."
+
+msgid "texts sorted by author"
+msgstr "текстове сортирани поавтор"
+
+msgid "texts sorted by title"
+msgstr "текстове сортирани по заглавие"
+
+msgid "texts sorted by topics"
+msgstr "текстове сортирани по теми"
+
+msgid "the author of the text (as displayed)"
+msgstr "авторът на текста (както е показан)"
+
+msgid "this text will be unpublished"
+msgstr "този текст ще бъде дръпнат от публикация"
+
+msgid "topic"
+msgstr "тема"
+
+msgid "unordered item"
+msgstr "неподреден елемент"
+
+msgid "very strong emphasis"
+msgstr "много силно наблягане"
+
+msgid "with description"
+msgstr "с описание"
+
+msgid "without description"
+msgstr "без описание"
+
+msgid ""
+"“Stale editing” means that the revision was abandoned\n"
+"    while editing, but it's still there, in case someone wants to pick\n"
+"    it up when editing a text."
+msgstr ""
+"\"Застояло редактиране\" означава, че ревизията е била изоставена,\n"
+"    докато текстът е бил редактиран, но тя все още е присъства в случай, че "
+"някой\n"
+"    иска да започне от там нататък."
+
+msgid "RSS"
+msgstr "RSS"
+
+msgid "syndicate"
+msgstr "синдикация"

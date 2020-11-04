@@ -923,6 +923,7 @@ sub known_langs {
             da => 'Dansk',
             cs => 'Čeština',
             tr => 'Türkçe',
+            bg => 'Български',
            };
 }
 
