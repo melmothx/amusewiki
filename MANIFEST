@@ -732,6 +732,7 @@ lib/AmuseWikiFarm/Controller/Uploads.pm
 lib/AmuseWikiFarm/Controller/User.pm
 lib/AmuseWikiFarm/Controller/Utils.pm
 lib/AmuseWikiFarm/I18N/ar.po
+lib/AmuseWikiFarm/I18N/bg.po
 lib/AmuseWikiFarm/I18N/cs.po
 lib/AmuseWikiFarm/I18N/da.po
 lib/AmuseWikiFarm/I18N/de.po
