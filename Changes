@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.502 2020-11-05
+
+ - Updated i18n (added BG)
+
 2.501 2020-10-29
 
  - Fix access permissions to whitelisted IPs to /git and /mirror
