@@ -2,7 +2,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 114;
+use Test::More tests => 120;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf-8)";
 binmode $builder->failure_output, ":encoding(utf-8)";
