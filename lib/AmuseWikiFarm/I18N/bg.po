@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2020-11-03 16:10+0200\n"
+"PO-Revision-Date: 2020-11-05 20:13+0100\n"
 "Language-Team: Bulgarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -107,7 +107,7 @@ msgid "Activate the blog-style look and feel"
 msgstr "Активирай блог стил"
 
 msgid "Active"
-msgstr "Активно"
+msgstr "Активен"
 
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Добави снимка на корицата(PNG или JPG)"
@@ -116,7 +116,7 @@ msgid "Add a new text"
 msgstr "Добави нов текст"
 
 msgid "Add an attachment"
-msgstr "Закачи"
+msgstr "Прикачи"
 
 msgid "Add crop marks to the PDF"
 msgstr "Добави маркировки за изрзязване към PDF-а"
@@ -171,10 +171,10 @@ msgid "Age:"
 msgstr "Години:"
 
 msgid "Alias"
-msgstr "Псевдоним"
+msgstr "Пренасочване"
 
 msgid "Alias can't point to itself"
-msgstr "Псевдонимът не може да сочи към себе си"
+msgstr "Пренасочването не може да сочи към себе си"
 
 msgid ""
 "All kind of lists start with one or more leading\n"
@@ -520,10 +520,10 @@ msgstr ""
 "собствен сървър). "
 
 msgid "Create a topic alias"
-msgstr "Създай псевдоним за тема"
+msgstr "Създай пренасочване за тема"
 
 msgid "Create an author alias"
-msgstr "Създай авторов псевдоним"
+msgstr "Създай пренасочване за автор"
 
 msgid "Create new site"
 msgstr "Създай нов сайт"
@@ -535,7 +535,7 @@ msgid "Created"
 msgstr "Създадено"
 
 msgid "Created by"
-msgstr "Създадено от"
+msgstr "Създаден от"
 
 msgid "Created new text"
 msgstr "Създаден е нов текст"
@@ -832,7 +832,7 @@ msgid "First slide"
 msgstr "Първи слайд"
 
 msgid "First you have to unpublish it via #DELETED."
-msgstr "Първо трябва да го премахнеш чрез #DELETED."
+msgstr "Първо трябва да го премахнеш с #DELETED."
 
 msgid "Fix typography (smart quotes)"
 msgstr "Коригирай типографията (умни кавички)"
@@ -1049,9 +1049,9 @@ msgid ""
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
 msgstr ""
-"Ако се случи, така че вече да съществува текст със същото заглавие и написан "
-"от един и същ автор, избери URI от полето по-долу, добавяйки автор, заглавие "
-"и номер (напр. author-title-1)"
+"Ако се случи, така че вече съществува текст със същото заглавие и написан от "
+"един и същ автор, избери URI от полето по-долу, добавяйки автор, заглавие и "
+"номер (напр. author-title-1)"
 
 msgid ""
 "If it was not your intention, please just ignore this mail and\n"
@@ -1222,7 +1222,7 @@ msgid ""
 "  URI \"index\", a dash, and the locale code."
 msgstr ""
 "Ако страницата ти е многоезична, можеш да направиш отделни\n"
-"  специфични за езиците целеви страници (напр. /special/index-bg\")\n"
+"  ,специфични за езиците, целеви страници (напр. /special/index-bg\")\n"
 "  тоест - \"URI/index-<код за езика>\"."
 
 msgid "Image already set as cover"
@@ -1320,20 +1320,20 @@ msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
 msgstr ""
-"Работи по същия начин като за обикновена страница, но линкът тук е скрит.\n"
+"По същия начин като при обикновените страници, но линкът тук е скрит.\n"
 "Само добави \"/edit\" към url-а на страницата."
 
 msgid "Italic"
 msgstr "Курсив"
 
 msgid "Italics, bold, monospace and code, linebreaks..."
-msgstr "Курсив, получер, monospace и код, нов ред..."
+msgstr "Курсив, получер, monospace и код, нови редове..."
 
 msgid "JPG, PNG and PDF are always allowed."
 msgstr "JPG, PNG и PDF формати са винаги поддържани."
 
 msgid "Job status"
-msgstr "Статус на задачата"
+msgstr "Статус на задачите"
 
 msgid "Jobs"
 msgstr "Задачи"
@@ -1396,7 +1396,7 @@ msgid "Last updated"
 msgstr "Последно обновление"
 
 msgid "Latest entries"
-msgstr "Последни записи"
+msgstr "Последни текстове"
 
 msgid "Layout"
 msgstr "Оформление"
@@ -1424,7 +1424,7 @@ msgstr ""
 "Линкове с пътища, които да бъдат закачени към този възел. По един на ред."
 
 msgid "List of texts on hold"
-msgstr "Списък с текстове на изчакване"
+msgstr "Списък с отложени текстове"
 
 msgid "Lists"
 msgstr "Списъци"
@@ -1512,7 +1512,7 @@ msgid "Missing #title header in the text!"
 msgstr "Липсва #title в текста!"
 
 msgid "Missing alias"
-msgstr "Липсва псевдоним"
+msgstr "Липсва пренасочване"
 
 msgid "Missing character will be reported"
 msgstr ""
@@ -1615,19 +1615,19 @@ msgid "No editing yet!"
 msgstr "Все още няма редакции!"
 
 msgid "No matching records found"
-msgstr "Няма съотвестващи записи"
+msgstr "Не бяха намерени съотвестващи записи"
 
 msgid "No result found!"
-msgstr "Няма намерени резултати!"
+msgstr "Не бяха намерени резултати!"
 
 msgid "No revisions to show"
 msgstr "Няма ревизии"
 
 msgid "No text found!"
-msgstr "Не е намерен текста!"
+msgstr "Не бяха намерени текстове!"
 
 msgid "No text was added yet"
-msgstr "Все още не е бил добавен нито един текст"
+msgstr "Все още няма нито един добавен текст"
 
 msgid "Nodes"
 msgstr "Възли"
@@ -1672,7 +1672,7 @@ msgid "Number of jobs"
 msgstr "Брой задачи"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
-msgstr "Брой последни записи, които ще се покажат на RSS feed-а (цяло число)"
+msgstr "Брой последни текстове, които ще се покажат на RSS feed-а (цяло число)"
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Брой резултати за показване на страници с пагинация (цяло число)"
@@ -1693,7 +1693,7 @@ msgstr ""
 "маркировки за изрязване"
 
 msgid "Open wiki"
-msgstr "Отвори уикито"
+msgstr "Отворено уики"
 
 msgid "Option templates"
 msgstr "Шаблони за опции"
@@ -1865,7 +1865,7 @@ msgid "Please choose the sans font"
 msgstr "Моля, избери шрифт без сериф"
 
 msgid "Please describe shortly what you did"
-msgstr "Моля, напиши кратко описание на това, което направи току-що"
+msgstr "Моля, напиши кратко описание"
 
 msgid "Please do not use a valuable password."
 msgstr "Моля, не използвай ценна парола."
@@ -2013,7 +2013,7 @@ msgid "Preview"
 msgstr "Преглед"
 
 msgid "Preview box height in pixel"
-msgstr "Визочина на прозорчето за преглед (в пиксели)"
+msgstr "Височина на прозорчето за преглед (в пиксели)"
 
 msgid "Previous"
 msgstr "Предишно"
@@ -2022,7 +2022,7 @@ msgid "Priority"
 msgstr "Приоритет"
 
 msgid "Private"
-msgstr "Лично"
+msgstr "Личен"
 
 msgid "Procedure"
 msgstr "Процедура"
@@ -2034,7 +2034,7 @@ msgid "Produce slides."
 msgstr "Създай слайдове."
 
 msgid "Produced"
-msgstr "Създадено"
+msgstr "Произведено"
 
 msgid "Publication date"
 msgstr "Дата на публикация"
@@ -2055,8 +2055,8 @@ msgstr "Прочисти"
 msgid ""
 "Purging means removing it completely from the archive, not just hiding it."
 msgstr ""
-"Прочистване означава, че ще бъде изцяло изтрито от архива, няма просто да "
-"бъде скрие."
+"Прочистване означава, че текстът ще бъде изцяло изтрит от архива, няма "
+"просто да бъде скрит."
 
 msgid ""
 "Put additional information here (original\n"
@@ -2265,7 +2265,7 @@ msgid "Saved \"%1\" configuration"
 msgstr "Запазена конфигурация \"%1\""
 
 msgid "Search"
-msgstr "Търсене"
+msgstr "Потърси"
 
 msgid "Search filters"
 msgstr "Филтри за търсене"
@@ -2274,10 +2274,10 @@ msgid "Search results"
 msgstr "Резултати от търсенето"
 
 msgid "Search this column"
-msgstr "Потърси тази колона"
+msgstr "Потърси в тази колона"
 
 msgid "Secondary footnotes"
-msgstr "Вторични бележки под линията"
+msgstr "Вторични бележки под линиита"
 
 msgid "Section"
 msgstr "Раздел"
@@ -2322,7 +2322,7 @@ msgid "Session sharing"
 msgstr "Споделяне на сесии"
 
 msgid "Set a date in the future if you want it deferred."
-msgstr "Въведи дата в бъдещето, ако искаш да го отложиш."
+msgstr "Въведи бъдещна дата, ако искаш да го отложиш."
 
 msgid "Settings loaded"
 msgstr "Настройките бяха заредени"
@@ -2376,7 +2376,7 @@ msgid "Site mail (From field)"
 msgstr "Имейл на сайта (от полето)"
 
 msgid "Site mode"
-msgstr "Начин на сайта"
+msgstr "Режим на сайта"
 
 msgid "Site name"
 msgstr "Име на сайта"
@@ -2462,7 +2462,7 @@ msgid "Status"
 msgstr "Статус"
 
 msgid "Status changed"
-msgstr "Промен статус"
+msgstr "Променен статус"
 
 msgid "Subsection"
 msgstr "Подраздел"
@@ -2471,7 +2471,7 @@ msgid "Subsubsection or description item"
 msgstr "Елемент на подподраздел или описание"
 
 msgid "Subtitle"
-msgstr "Субтитри"
+msgstr "Подзаглавие"
 
 msgid "Such an URI already exists"
 msgstr "Такъв URI вече съществува"
@@ -2609,7 +2609,7 @@ msgid ""
 "default page to visit when loading the site’s root."
 msgstr ""
 "Страницата /special/index е двойно специална. Допуска се, че тя е\n"
-"страницата, която се отваря по подразбиране, когато се зарежда root-а на "
+"страницата, която се отваря по подразбиране, когато се зарежда root-ът на "
 "сайта."
 
 msgid "The password will be mailed at this address"
@@ -2625,7 +2625,7 @@ msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
-"Сайтът ще покаже PDF-овете с миниятюра в края\n"
+"Сайтът ще покаже PDF-овете с миниатюра в края\n"
 "        на документа."
 
 msgid "The text structure is shown below."
@@ -2709,7 +2709,7 @@ msgid ""
 "and you may want to check it out."
 msgstr ""
 "Този имейл беше изпратен да те уведоми, че нов текст е бил създаден\n"
-"ори ако текстът все още не е завършен и потребителят не го е публикувал.\n"
+"Дори ако текстът все още не е завършен и потребителят не го е публикувал.\n"
 "Трябва да получиш още един имейл скоро. Ако това не се случи, тогава\n"
 "потребителят е изоставил текста и е препоръчително да го провериш."
 
@@ -2767,7 +2767,7 @@ msgid "This user cannot be removed"
 msgstr "Този потребител не може да бъде премахнат"
 
 msgid "Thumbnail"
-msgstr "Миниятура"
+msgstr "Миниатюра"
 
 msgid "Title"
 msgstr "Заглавие"
@@ -2810,8 +2810,8 @@ msgstr "За да форматираш пиеси бързо, използвай
 
 msgid "To resume the editing you can visit the following URL"
 msgstr ""
-"За да продължиш последната си сесия на редактиране, трябва да посетиш "
-"следния URL"
+"За да продължиш последната си сесия на редакция, трябва да посетиш следния "
+"URL"
 
 #. (loc('Update')
 #. (loc("Update"))
@@ -2826,7 +2826,7 @@ msgid "To view the changes introduced, you can visit the following URL"
 msgstr "За да видиш новите промени, трябва да посетиш следния URL"
 
 msgid "Toggle fullscreen editor"
-msgstr "Превлючи редактора на цял екран"
+msgstr "Превключи редактора на цял екран"
 
 msgid "Topic"
 msgstr "Тема"
@@ -2870,7 +2870,7 @@ msgid "URL"
 msgstr "URL"
 
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
-msgstr "URL-ът на новото дистанционно хранилище (HTTPS, HTTP или GIT)"
+msgstr "URL-ът на ново дистанционно хранилище (HTTPS, HTTP или GIT)"
 
 msgid "UTC"
 msgstr "UTC"
@@ -2917,7 +2917,7 @@ msgid "Update"
 msgstr "Обнови"
 
 msgid "Update account info"
-msgstr "Обнови информацията за акаунта"
+msgstr "Обнови информацията за акаунта си"
 
 msgid "Update category description"
 msgstr "Обнови описанието на категорията"
@@ -2992,7 +2992,7 @@ msgid "User %1 updated"
 msgstr "Потребител %1 беше обновен"
 
 msgid "User created"
-msgstr "Потребителят беше създаден"
+msgstr "Нов потребител е бил създаден"
 
 msgid "Username"
 msgstr "Потребителско име"
@@ -3058,8 +3058,7 @@ msgstr ""
 
 msgid "When you upload a PDF, split it into images to be inserted in the body"
 msgstr ""
-"Когато искаш да качиш PDF, най-добре го раздели на отделни снимки и ги "
-"добави така"
+"Когато се качи PDF документ, раздели го на отделни снимки и го качи така"
 
 msgid "Where does this text come from?"
 msgstr "Откъде идва текстът?"
@@ -3102,7 +3101,7 @@ msgid "Workflow"
 msgstr "Работен процес"
 
 msgid "Working locally?"
-msgstr "Работиш локално?"
+msgstr "Локално ли работиш?"
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
@@ -3177,7 +3176,7 @@ msgstr ""
 
 #. (create_url)
 msgid "You can create a peer at %1"
-msgstr "Можеш да създадеш peer на %1"
+msgstr "Можеш да създадеш нови библиотекари в %1"
 
 msgid "You can do so answering a simple question."
 msgstr "Отговаряйки на лесен въпрос."
@@ -3222,7 +3221,7 @@ msgstr ""
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
-msgstr "Трябва да си смениш паролата веднага на %1"
+msgstr "Трябва веднага да смениш паролата си %1"
 
 msgid "Your browser does not support the audio tag."
 msgstr "Уеб браузърът ти не поддържа този аудио таг."
@@ -3253,7 +3252,7 @@ msgstr "Твоят част..."
 
 #. (password)
 msgid "Your password is %1."
-msgstr "Твоята парола е %1."
+msgstr "Паролата ти е %1."
 
 msgid "Your password was reset, now you can login with it"
 msgstr "Твоята парола беше променена, можеш да влезеш с нея сега"
@@ -3269,11 +3268,11 @@ msgstr "Твоят подраздел..."
 
 #. (home)
 msgid "Your user at %1 has been created."
-msgstr "Твоят потребител е създаден на %1."
+msgstr "Твоят потребител за %1 беше създаден."
 
 #. (username)
 msgid "Your username is %1."
-msgstr "Твоето потребителско име е %1."
+msgstr "Потребителското ти име е %1."
 
 msgid "aborted"
 msgstr "недовършено"
@@ -3462,7 +3461,7 @@ msgid ""
 "    it up when editing a text."
 msgstr ""
 "\"Застояло редактиране\" означава, че ревизията е била изоставена,\n"
-"    докато текстът е бил редактиран, но тя все още е присъства в случай, че "
+"    докато текстът е бил редактиран, но тя все още присъства в случай, че "
 "някой\n"
 "    иска да започне от там нататък."
 
