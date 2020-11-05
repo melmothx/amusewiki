@@ -188,6 +188,7 @@ sub datatables_lang :Chained('api') :PathPart('datatables-lang') :Args(0) {
             return;
         }
     }
+    $c->response->body("Not found");
     $c->response->status(404);
 }
 
