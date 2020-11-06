@@ -63,35 +63,46 @@ fi
 
 if [ "x$action" = "xrestart" ]; then
     cd /var/lib/amusewiki
+    tmppidfile=/var/lib/amusewiki/.amusewiki-backup.tmp.pid
     sudo -u amusewiki -- /usr/bin/plackup -s FCGI \
          --listen /var/lib/amusewiki/amusewiki.socket \
+         --pid $tmppidfile \
          --nproc 3 -E deployment \
          /usr/share/perl5/AmuseWikiFarm/psgi/amusewiki.psgi &
-    temp_pid=$!
 
-    echo "Started copy of the application with pid $temp_pid."
-    echo "If this script exits prematurely, please kill it yourself."
-    echo "Waiting for the backup app to come up..."
-    sleep 20
-    echo "Restarting the apps"
-    systemctl restart amusewiki-web amusewiki-jobber
-    echo "Waiting for the real app to come up..."
-    sleep 20
-    echo "Stopping the backup app $temp_pid"
-    for i in 1 2 3; do
-        if kill -0 $temp_pid >/dev/null 2>/dev/null; then
-            echo "Trying to kill $temp_pid"
-            kill $temp_pid || echo;
-            sleep 2
+    sleep 10
+    if [ -f "$tmppidfile" ]; then
+        temp_pid=`cat $tmppidfile`
+        if [ -n "$temp_pid" ]; then
+            echo "Started copy of the application with pid $temp_pid."
+            echo "If this script exits prematurely, please kill it yourself."
+            echo "Waiting for the backup app to come up..."
+            sleep 20
+            echo "Restarting the apps"
+            systemctl restart amusewiki-web amusewiki-jobber
+            echo "Waiting for the real app to come up..."
+            sleep 20
+            echo "Stopping the backup app $temp_pid"
+            for i in 1 2 3; do
+                if sudo -u amusewiki -- kill -0 $temp_pid >/dev/null 2>/dev/null; then
+                    echo "Trying to kill $temp_pid"
+                    sudo -u amusewiki -- kill $temp_pid || echo;
+                    sleep 2
+                fi
+            done
+
+            if sudo -u amusewiki -- kill -0 $temp_pid >/dev/null 2>/dev/null; then
+                echo "$temp_pid is still alive"
+            else
+                echo "All done, no errors"
+            fi
+            exit
+        else
+            echo "$tmppidfile is empty"
         fi
-    done
-
-    if kill -0 $temp_pid >/dev/null 2>/dev/null; then
-        echo "$temp_pid is still alive"
     else
-        echo "All done, no errors"
+        echo "Cannot find PID file for temporary amusewiki process, expecting $tmppidfile"
     fi
-    exit
 fi
 
 if [ ! -x "/usr/bin/amusewiki-$action" ]; then
