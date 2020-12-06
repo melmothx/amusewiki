@@ -74,11 +74,17 @@ sub get {
         my $in;
         run [ $self->cgit ], \$in, \$out, \$err, timeout(60) or die;
     };
-    if ($err) {
-        Dlog_error { "$err with $_" } [ $args, $params ];
-    }
     # Dlog_debug { "Environment is $_" } \%ENV;
     my $res = HTTP::Message->parse($out);
+
+    if ($err) {
+        if ($out) {
+            Dlog_info { "STDERR: $err with $_, with a response" } [ $args, $params, $out ];
+        }
+        else {
+            Dlog_error { "$err with $_, no respone" } [ $args, $params ];
+        }
+    }
     # Dlog_debug { "Res is $_" } $res;
     return $res;
 }
