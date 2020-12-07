@@ -26,7 +26,7 @@
     </a>
     </td>
     <td>
-      [% rev.updated.dmy %] [% rev.updated.hms %] [% loc('UTC') %]
+      [% rev.updated.ymd %] [% rev.updated.hms %] [% loc('UTC') %]
     </td>
     <td>
     [% IF rev.editing_ongoing %]

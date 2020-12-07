@@ -106,7 +106,7 @@
       </td>
       <td>
         [% # this is a bogus value created by HTML import %]
-        [% rev.updated.dmy %] [% rev.updated.hms %] [% loc('UTC') %]
+        [% rev.updated.ymd %] [% rev.updated.hms %] [% loc('UTC') %]
       </td>
     </tr>
     [% END %]
