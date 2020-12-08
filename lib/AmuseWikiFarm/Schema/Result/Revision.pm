@@ -1083,5 +1083,12 @@ sub only_one_pending {
     return 0;
 }
 
+sub updated_date_locale {
+    my ($self, $locale) = @_;
+    $locale ||= 'en';
+    my $dt = DateTime->from_object(object => $self->updated, locale => $locale);
+    return $dt->format_cldr($dt->locale->date_format_medium);
+}
+
 __PACKAGE__->meta->make_immutable;
 1;

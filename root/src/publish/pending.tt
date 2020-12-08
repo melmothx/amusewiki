@@ -104,9 +104,9 @@
       <td>
         [% rev.message | html %]
       </td>
-      <td>
+      <td data-sort="[% rev.updated.iso8601 %]">
         [% # this is a bogus value created by HTML import %]
-        [% rev.updated.ymd %] [% rev.updated.hms %] [% loc('UTC') %]
+        [% rev.updated_date_locale(current_locale_code) %] [% rev.updated.hms %] [% loc('UTC') %]
       </td>
     </tr>
     [% END %]
