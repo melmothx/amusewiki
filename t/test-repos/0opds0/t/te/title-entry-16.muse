@@ -4,5 +4,6 @@
 #pubdate 2016-01-16
 #subtitle Subtitle 16
 #lang en
+#topics Emile; Pinco; Pallino; This; Is; Another; Test 
 
 body

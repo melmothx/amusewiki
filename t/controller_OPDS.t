@@ -1,7 +1,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 303;
+use Test::More tests => 372;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -19,7 +19,7 @@ use File::Copy::Recursive qw/dircopy/;
 use File::Path qw/remove_tree make_path/;
 use File::Copy qw/copy/;
 use URI::Escape qw/uri_escape_utf8/;
-
+use Data::Dumper::Concise;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $id = '0opds0';
@@ -50,10 +50,10 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 my @urls;
 my $cats = $site->categories->active_only;
 while (my $cat = $cats->next) {
-    push @urls, { url => '/opds/' . $cat->type . 's/' . $cat->uri,
+    push @urls, { url => '/opds/category/' . $cat->type . '/' . $cat->uri,
                   contains => $cat->name,
                 };
-    push @urls, { url => '/opds/' . $cat->type . 's/' . $cat->uri  . '/1',
+    push @urls, { url => '/opds/category/' . $cat->type . '/' . $cat->uri  . '/1',
                   contains => $cat->name,
                 };
 }
@@ -63,8 +63,8 @@ foreach my $url ({ url => '/opds' },
                  { url => '/opds/new/1' },
                  { url => '/opds/titles' },
                  { url => '/opds/titles/1' },
-                 { url => '/opds/topics' },
-                 { url => '/opds/authors' },
+                 { url => '/opds/category/topic' },
+                 { url => '/opds/category/author' },
                  @urls,
                 ) {
     $mech->get_ok($url->{url});
@@ -110,29 +110,29 @@ my $expected =<< 'ATOM';
     <link rel="subsection" href="http://0opds0.amusewiki.org/opds/titles" type="application/atom+xml;profile=opds-catalog;kind=acquisition" title="Titles"/>
   </entry>
   <entry>
-    <title>Topics</title>
-    <id>http://0opds0.amusewiki.org/opds/topics</id>
+    <title>Authors</title>
+    <id>http://0opds0.amusewiki.org/opds/category/author</id>
     <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">texts sorted by topic</div>
+      <div xmlns="http://www.w3.org/1999/xhtml">Authors</div>
     </content>
     <updated>2016-03-01T00:00:00Z</updated>
-    <link rel="subsection" href="http://0opds0.amusewiki.org/opds/topics" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="Topics"/>
+    <link rel="subsection" href="http://0opds0.amusewiki.org/opds/category/author" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="Authors"/>
   </entry>
   <entry>
-    <title>Authors</title>
-    <id>http://0opds0.amusewiki.org/opds/authors</id>
+    <title>Topics</title>
+    <id>http://0opds0.amusewiki.org/opds/category/topic</id>
     <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">texts sorted by author</div>
+      <div xmlns="http://www.w3.org/1999/xhtml">Topics</div>
     </content>
     <updated>2016-03-01T00:00:00Z</updated>
-    <link rel="subsection" href="http://0opds0.amusewiki.org/opds/authors" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="Authors"/>
+    <link rel="subsection" href="http://0opds0.amusewiki.org/opds/category/topic" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="Topics"/>
   </entry>
 </feed>
 ATOM
 unified_diff;
 eq_or_diff ($mech->content, $expected, "Root ok");
 
-$mech->get('/opds/authors');
+$mech->get('/opds/category/author');
 $mech->content_lacks('http://opds-spec.org/sort/new') or diag $mech->content;
 
 $mech->get('/opds/titles');
@@ -684,3 +684,59 @@ $mech->content_contains('<link rel="http://opds-spec.org/image/thumbnail" href="
 $mech->content_contains('<link rel="http://opds-spec.org/image" href="http://0opds0.amusewiki.org/library/t-e-test.png" type="image/png"/>');
 $mech->get_ok('/library/t-e-test.png');
 $mech->get_ok('/uploads/0opds0/thumbnails/t-e-test.png.thumb.png');
+
+$mech->get_ok('/opds/topics');
+is $mech->uri->path, '/opds/category/topic';
+
+# diag $mech->content;
+# check the pagination
+$mech->content_contains(q{href="http://0opds0.amusewiki.org/opds/category/topic?page=1"});
+$mech->content_contains(q{href="http://0opds0.amusewiki.org/opds/category/topic?page=2"});
+
+
+{
+    $mech->get_ok('/opds/category/topic?page=1');
+    my $first_page = $mech->content;
+    $mech->content_contains(q{href="http://0opds0.amusewiki.org/opds/category/topic?page=1"});
+    $mech->content_contains(q{href="http://0opds0.amusewiki.org/opds/category/topic?page=2"});
+    $mech->get_ok('/opds/category/topic?page=2');
+    $mech->content_contains(q{href="http://0opds0.amusewiki.org/opds/category/topic?page=1"});
+    $mech->content_contains(q{href="http://0opds0.amusewiki.org/opds/category/topic?page=2"});
+    my $second_page = $mech->content;
+    $mech->get_ok('/opds/category/topic?page=3');
+    $mech->content_contains(q{href="http://0opds0.amusewiki.org/opds/category/topic?page=1"});
+    $mech->content_contains(q{href="http://0opds0.amusewiki.org/opds/category/topic?page=2"});
+    my $third_page = $mech->content;
+    $mech->get_ok('/opds/category/topic?page=4');
+    my $forth_page = $mech->content;
+    ok $third_page eq $forth_page;
+    ok $first_page ne $second_page;
+    ok $second_page ne $third_page;
+    my @uris;
+    while ($first_page =~ m{<entry>(.*?)</entry>}gs) {
+        push @uris, $1;
+    }
+    is scalar(@uris), 5;
+    @uris = ();
+    while ($second_page =~ m{<entry>(.*?)</entry>}gs) {
+        push @uris, $1;
+    }
+    is scalar(@uris), 2;
+    @uris = ();
+    while ($third_page =~ m{<entry>(.*?)</entry>}gs) {
+        push @uris, $1;
+    }
+    is scalar(@uris), 0;
+}
+
+$mech->get_ok('/opds/topics/emile/1');
+is $mech->uri->path, '/opds/category/topic/emile/1';
+
+
+$mech->get_ok('/opds/authors');
+is $mech->uri->path, '/opds/category/author';
+$mech->get_ok('/opds/authors/a1-11');
+is $mech->uri->path, '/opds/category/author/a1-11';
+$mech->get_ok('/opds/authors/a1-11/1');
+is $mech->uri->path, '/opds/category/author/a1-11/1';
+
