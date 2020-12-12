@@ -135,24 +135,25 @@ sub all_categories :Chained('clean_root') :PathPart('category') :CaptureArgs(1) 
     $c->stash(feed_rs => $cats,
               category_type => $ct,
              );
-    my $feed = $c->model('OPDS');
-    $feed->add_to_navigations_new_level(
-                                        href => '/opds/category/' . $category_type,
-                                        title => $c->loc($ct->name_plural),
-                                        description => $c->loc($ct->name_plural),
-                                       );
 }
 
 sub categories :Chained('all_categories') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
+    my $feed = $c->model('OPDS');
+    my $page = $self->validate_page($c->request->params->{page});
     my $ct = $c->stash->{category_type};
     my $ctype = $ct->category_type;
+    $feed->add_to_navigations_new_level(
+                                        href => "/opds/category/${ctype}?page=${page}",
+                                        title => $c->loc($ct->name_plural),
+                                        description => $c->loc($ct->name_plural),
+                                       );
+
     my $rs = $c->stash->{feed_rs}->search(undef, {
                                                   rows => 5,
-                                                  page => $self->validate_page($c->request->params->{page}),
+                                                  page => $page,
                                                  });
     my $pager = $rs->pager;
-    my $feed = $c->model('OPDS');
     while (my $cat = $rs->next) {
         $feed->add_to_navigations(
                                   href => '/opds/category/' . $ctype . '/'. $cat->uri,
@@ -170,10 +171,22 @@ sub category :Chained('all_categories') :PathPart('') :Args {
     my ($self, $c, $uri, $page) = @_;
     die "shouldn't happen" unless $uri;
     my $cats = $c->stash->{feed_rs};
+    my $feed = $c->model('OPDS');
     my $ct = $c->stash->{category_type};
     my $ctype = $ct->category_type;
+    # create the up rel
+    $feed->add_to_navigations_new_level(
+                                        href => "/opds/category/$ctype",
+                                        title => $c->loc($ct->name_plural),
+                                        description => $c->loc($ct->name_plural),
+                                       );
+
+
+
+
+
     if (my $cat = $cats->find({ uri => $uri })) {
-        my $feed = $c->model('OPDS');
+
         my $titles = $cat->titles->published_texts;
         if ($self->populate_acquisitions($feed, "/opds/category/$ctype/$uri/", $c->loc($cat->name),
                                          $titles,
@@ -225,6 +238,7 @@ sub crawlable :Chained('clean_root') :PathPart('crawlable') :Args(0) {
     my ($self, $c) = @_;
     my $feed = $c->model('OPDS');
     my $site = $c->stash->{site};
+    # this is wrong and should be cached anyway
     $feed->add_to_navigations_new_level(
                                         acquisition => 1,
                                         href => '/opds/crawlable',

@@ -1,7 +1,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 373;
+use Test::More tests => 372;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -687,6 +687,7 @@ $mech->get_ok('/uploads/0opds0/thumbnails/t-e-test.png.thumb.png');
 
 $mech->get_ok('/opds/topics');
 is $mech->uri->path, '/opds/category/topic';
+$mech->content_contains(q{link rel="self" href="http://0opds0.amusewiki.org/opds/category/topic?page=1"});
 
 # diag $mech->content;
 # check the pagination
@@ -696,37 +697,18 @@ $mech->content_contains(q{href="http://0opds0.amusewiki.org/opds/category/topic?
 
 {
     $mech->get_ok('/opds/category/topic?page=1');
-    my $first_page = $mech->content;
+    is count_entries($mech->content), 5;
     $mech->content_contains(q{href="http://0opds0.amusewiki.org/opds/category/topic?page=1"});
     $mech->content_contains(q{href="http://0opds0.amusewiki.org/opds/category/topic?page=2"});
     $mech->get_ok('/opds/category/topic?page=2');
     $mech->content_contains(q{href="http://0opds0.amusewiki.org/opds/category/topic?page=1"});
     $mech->content_contains(q{href="http://0opds0.amusewiki.org/opds/category/topic?page=2"});
-    my $second_page = $mech->content;
+    is count_entries($mech->content), 2;
     $mech->get_ok('/opds/category/topic?page=3');
     $mech->content_contains(q{href="http://0opds0.amusewiki.org/opds/category/topic?page=1"});
     $mech->content_contains(q{href="http://0opds0.amusewiki.org/opds/category/topic?page=2"});
-    my $third_page = $mech->content;
+    is count_entries($mech->content), 0;
     $mech->get_ok('/opds/category/topic?page=4');
-    my $forth_page = $mech->content;
-    ok $third_page eq $forth_page;
-    ok $first_page ne $second_page;
-    ok $second_page ne $third_page;
-    my @uris;
-    while ($first_page =~ m{<entry>(.*?)</entry>}gs) {
-        push @uris, $1;
-    }
-    is scalar(@uris), 5;
-    @uris = ();
-    while ($second_page =~ m{<entry>(.*?)</entry>}gs) {
-        push @uris, $1;
-    }
-    is scalar(@uris), 2;
-    @uris = ();
-    while ($third_page =~ m{<entry>(.*?)</entry>}gs) {
-        push @uris, $1;
-    }
-    is scalar(@uris), 0;
 }
 
 $mech->get_ok('/opds/topics/emile/1');
@@ -737,6 +719,16 @@ $mech->get_ok('/opds/authors');
 is $mech->uri->path, '/opds/category/author';
 $mech->get_ok('/opds/authors/a1-11');
 is $mech->uri->path, '/opds/category/author/a1-11';
+$mech->content_contains(q{link rel="up" href="http://0opds0.amusewiki.org/opds/category/author"});
 $mech->get_ok('/opds/authors/a1-11/1');
 is $mech->uri->path, '/opds/category/author/a1-11/1';
 
+sub count_entries {
+    my $feed = shift;
+    my @entries;
+    while ($feed =~ m{<entry>(.*?)</entry>}gs) {
+        push @entries, $1;
+    }
+    return scalar(@entries);
+
+}
