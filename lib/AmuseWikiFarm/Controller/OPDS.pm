@@ -32,39 +32,36 @@ sub root :Chained('/site') :PathPart('opds') :CaptureArgs(0) {
     my $prefix = $c->uri_for('/')->as_string;
     $prefix =~ s!/$!!;
     $feed->prefix($prefix);
-
+    my $site = $c->stash->{site};
     # add the favicon
-    if ($c->stash->{site}->has_site_file('favicon.ico')) {
+    if ($site->has_site_file('favicon.ico')) {
         $feed->icon('/favicon.ico');
     }
-    $feed->updated($c->stash->{site}->last_updated || DateTime->now);
-    $feed->author($c->stash->{site}->sitename);
+    $feed->updated($site->last_updated || DateTime->now);
+    $feed->author($site->sitename);
     $feed->author_uri($prefix);
     my %start = (
-                 title => $c->stash->{site}->sitename,
+                 title => $site->sitename,
                  href => '/opds',
                 );
     # populate the feed with the root
     $feed->add_to_navigations_new_level(%start);
     $start{rel} = 'start';
     $feed->add_to_navigations(%start);
-    foreach my $entry ({
+    my @opds_links =  ({
                         href => '/opds/titles',
                         title => $c->loc('Titles'),
                         description => $c->loc('texts sorted by title'),
                         acquisition => 1,
-                       },
-                       {
-                        href => '/opds/topics',
-                        title => $c->loc('Topics'),
-                        description => $c->loc('texts sorted by topics'),
-                       },
-                       {
-                        href => '/opds/authors',
-                        title => $c->loc('Authors'),
-                        description => $c->loc('texts sorted by author'),
-                       },
-                       {
+                       });
+    foreach my $ct ($site->site_category_types->active->ordered->all) {
+        push @opds_links, {
+                           href => '/opds/category/' . $ct->category_type,
+                           title => $c->loc($ct->name_plural),
+                           description => $c->loc($ct->name_plural),
+                          };
+    }
+    push @opds_links, ({
                         href => '/opds/new',
                         title => $c->loc('New'),
                         description => $c->loc('Latest entries'),
@@ -74,7 +71,7 @@ sub root :Chained('/site') :PathPart('opds') :CaptureArgs(0) {
                        {
                         href => '/opds/crawlable',
                         title => $c->loc('Titles'),
-                        description => 'Crawlable full catalog for robots',
+                        description => $c->loc('Full catalog for robots'),
                         rel => 'crawlable',
                         acquisition => 1,
                        },
@@ -82,8 +79,8 @@ sub root :Chained('/site') :PathPart('opds') :CaptureArgs(0) {
                         href => $c->uri_for_action('/search/opensearch')->path,
                         title => $c->loc('Search'),
                         rel => 'search',
-                       },
-                      ) {
+                       });
+    foreach my $entry (@opds_links) {
         $feed->add_to_navigations(%$entry);
     }
 }
@@ -97,7 +94,7 @@ sub titles :Chained('root') :PathPart('titles') :Args {
     my ($self, $c, $page) = @_;
     my $feed = $c->model('OPDS');
     my $titles = $c->stash->{site}->titles->published_texts;
-    if ($self->populate_acquistions($feed, '/opds/titles/',  $c->loc('Titles'), $titles, $page)) {
+    if ($self->populate_acquisitions($feed, '/opds/titles/',  $c->loc('Titles'), $titles, $page)) {
         $c->detach($c->view('Atom'));
     }
     else {
@@ -110,7 +107,7 @@ sub new_entries :Chained('root') :PathPart('new') :Args {
     my ($self, $c, $page) = @_;
     my $feed = $c->model('OPDS');
     my $titles = $c->stash->{site}->titles->published_texts->sort_by_pubdate_desc;
-    if ($self->populate_acquistions($feed, '/opds/new/',  $c->loc('Latest entries'), $titles, $page)) {
+    if ($self->populate_acquisitions($feed, '/opds/new/',  $c->loc('Latest entries'), $titles, $page)) {
         $c->detach($c->view('Atom'));
     }
     else {
@@ -126,83 +123,76 @@ sub clean_root :Chained('root') :PathPart('') :CaptureArgs(0) {
     $feed->navigations(\@navs);
 }
 
-sub all_topics :Chained('clean_root') :PathPart('topics') :CaptureArgs(0) {
-    my ($self, $c) = @_;
-    my $topics = $c->stash->{site}->categories->active_only_by_type('topic');
-    $c->stash(feed_rs => $topics);
-    my $feed = $c->model('OPDS');
-    $feed->add_to_navigations_new_level(
-                              href => '/opds/topics',
-                              title => $c->loc('Topics'),
-                              description => $c->loc('texts sorted by topics'),
-                             );
-}
-
-sub topics :Chained('all_topics') :PathPart('') :Args(0) {
-    my ($self, $c) = @_;
-    my $topics = $c->stash->{feed_rs};
-    my $feed = $c->model('OPDS');
-    while (my $topic = $topics->next) {
-        $feed->add_to_navigations(
-                                  href => '/opds/topics/' . $topic->uri,
-                                  title => $c->loc($topic->name),
-                                  acquisition => 1,
-                                 )
+sub all_categories :Chained('clean_root') :PathPart('category') :CaptureArgs(1) {
+    my ($self, $c, $category_type) = @_;
+    my $site = $c->stash->{site};
+    my $ct = $site->site_category_types->active->find({ category_type => $category_type });
+    unless ($ct) {
+        $c->detach('/not_found');
+        return;
     }
-    $c->detach($c->view('Atom'));
+    my $cats = $c->stash->{site}->categories->active_only_by_type($category_type);
+    $c->stash(feed_rs => $cats,
+              category_type => $ct,
+             );
 }
 
-sub topic :Chained('all_topics') :PathPart('') :Args {
-    my ($self, $c, $uri, $page) = @_;
-    die "shouldn't happen" unless $uri;
-    my $topics = $c->stash->{feed_rs};
-    if (my $topic = $topics->find({ uri => $uri })) {
-        my $feed = $c->model('OPDS');
-        my $titles = $topic->titles->published_texts;
-        if ($self->populate_acquistions($feed, "/opds/topics/$uri/", $c->loc($topic->name), $titles, $page)) {
-            $c->detach($c->view('Atom'));
-            return;
-        }
-    }
-    $c->detach('/not_found');
-}
-
-# and same stuff here
-sub all_authors :Chained('clean_root') :PathPart('authors') :CaptureArgs(0) {
+sub categories :Chained('all_categories') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    my $authors = $c->stash->{site}->categories->active_only_by_type('author');
-    $c->stash(feed_rs => $authors);
     my $feed = $c->model('OPDS');
+    my $page = $self->validate_page($c->request->params->{page});
+    my $ct = $c->stash->{category_type};
+    my $ctype = $ct->category_type;
     $feed->add_to_navigations_new_level(
-                              href => '/opds/authors',
-                              title => $c->loc('Authors'),
-                              description => $c->loc('texts sorted by author'),
-                             );
-}
+                                        href => "/opds/category/${ctype}?page=${page}",
+                                        title => $c->loc($ct->name_plural),
+                                        description => $c->loc($ct->name_plural),
+                                       );
 
-sub authors :Chained('all_authors') :PathPart('') :Args(0) {
-    my ($self, $c) = @_;
-    my $authors = $c->stash->{feed_rs};
-    my $feed = $c->model('OPDS');
-    while (my $author = $authors->next) {
+    my $rs = $c->stash->{feed_rs}->search(undef, {
+                                                  rows => 5,
+                                                  page => $page,
+                                                 });
+    my $pager = $rs->pager;
+    while (my $cat = $rs->next) {
         $feed->add_to_navigations(
-                                  href => '/opds/authors/' . $author->uri,
-                                  title => $author->name,
+                                  href => '/opds/category/' . $ctype . '/'. $cat->uri,
+                                  title => $c->loc($ct->name_singular) . ' / ' . $c->loc($cat->name),
                                   acquisition => 1,
                                  );
     }
+    $self->add_pager($feed, $pager,
+                     "/opds/category/" . $ct->category_type . '?page=',
+                     $c->loc($ct->name_plural));
     $c->detach($c->view('Atom'));
 }
 
-sub author :Chained('all_authors') :PathPart('') :Args {
+sub category :Chained('all_categories') :PathPart('') :Args {
     my ($self, $c, $uri, $page) = @_;
     die "shouldn't happen" unless $uri;
-    my $authors = $c->stash->{feed_rs};
-    if (my $author = $authors->find({ uri => $uri })) {
-        my $feed = $c->model('OPDS');
-        my $titles = $author->titles->published_texts;
-        if ($self->populate_acquistions($feed, "/opds/authors/$uri/", $author->name, $titles, $page)) {
+    my $cats = $c->stash->{feed_rs};
+    my $feed = $c->model('OPDS');
+    my $ct = $c->stash->{category_type};
+    my $ctype = $ct->category_type;
+    # create the up rel
+    $feed->add_to_navigations_new_level(
+                                        href => "/opds/category/$ctype",
+                                        title => $c->loc($ct->name_plural),
+                                        description => $c->loc($ct->name_plural),
+                                       );
+
+
+
+
+
+    if (my $cat = $cats->find({ uri => $uri })) {
+
+        my $titles = $cat->titles->published_texts;
+        if ($self->populate_acquisitions($feed, "/opds/category/$ctype/$uri/", $c->loc($cat->name),
+                                         $titles,
+                                         $page)) {
             $c->detach($c->view('Atom'));
+            return;
         }
     }
     $c->detach('/not_found');
@@ -248,6 +238,7 @@ sub crawlable :Chained('clean_root') :PathPart('crawlable') :Args(0) {
     my ($self, $c) = @_;
     my $feed = $c->model('OPDS');
     my $site = $c->stash->{site};
+    # this is wrong and should be cached anyway
     $feed->add_to_navigations_new_level(
                                         acquisition => 1,
                                         href => '/opds/crawlable',
@@ -319,6 +310,39 @@ sub crawlable :Chained('clean_root') :PathPart('crawlable') :Args(0) {
     $c->detach($c->view('Atom'));
 }
 
+# legacy
+
+
+sub authors :Chained('root') :PathPart('authors') :Args {
+    my ($self, $c, @args) = @_;
+    if (@args) {
+        my $uri = $c->uri_for_action('/opds/category', [ 'author' ],  @args);
+        log_debug { "Redirecting to $uri" };
+        $c->response->redirect($uri, 301);
+    }
+    else {
+        my $uri = $c->uri_for_action('/opds/categories', [ 'author' ]);
+        log_debug { "Redirecting to $uri" };
+        $c->response->redirect($uri, 301);
+    }
+}
+
+sub topics :Chained('root') :PathPart('topics') :Args {
+    my ($self, $c, @args) = @_;
+    if (@args) {
+        my $uri = $c->uri_for_action('/opds/category', [ 'topic' ], @args);
+        log_debug { "Redirecting to $uri" };
+        $c->response->redirect($uri, 301);
+    }
+    else {
+        my $uri = $c->uri_for_action('/opds/categories', [ 'topic' ]);
+        log_debug { "Redirecting to $uri" };
+        $c->response->redirect($uri, 301);
+    }
+}
+
+
+
 sub add_pager :Private {
     my ($self, $feed, $pager, $base, $description) = @_;
     if ($pager->current_page > $pager->last_page) {
@@ -344,7 +368,7 @@ sub add_pager :Private {
     }
 }
 
-sub populate_acquistions :Private {
+sub populate_acquisitions :Private {
     my ($self, $feed, $base, $description, $rs, $page) = @_;
     die unless ($feed && $base && $description && $rs);
     # this is a dbic search
