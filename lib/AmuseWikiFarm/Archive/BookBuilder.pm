@@ -1792,6 +1792,7 @@ sub as_cli {
     my @cli = ('muse-compile.pl');
 
     my %skipped = (
+                   include_paths => 1,
                    fontspec => 1,
                    epub_embed_fonts => 1,
                   );
