@@ -993,6 +993,7 @@ use XML::FeedPP;
 use Git::Wrapper;
 use Bytes::Random::Secure;
 use Email::Address;
+use XML::OPDS;
 
 =head2 repo_root_rel
 
@@ -4437,6 +4438,147 @@ sub send_mail {
     $tokens->{list_id} = $self->id . '.' . $self->canonical;
     $self->mailer->send_mail($mkit => $tokens);
 }
+
+sub crawlable_opds_feed_file {
+    my $self = shift;
+    return Path::Tiny::path($self->path_for_site_files, 'opds-crawlable.xml');
+}
+
+sub get_crawlable_opds_feed {
+    my $self = shift;
+    my $file = $self->crawlable_opds_feed_file;
+    if ($file->exists) {
+        return $file->slurp_utf8;
+    }
+    else {
+        return;
+    }
+}
+
+sub initialize_opds_feed {
+    my ($self, $feed) = @_;
+    $feed ||= XML::OPDS->new;
+    my $prefix = $self->canonical_url;
+    $feed->prefix($prefix);
+    my $lh = $self->localizer;
+    # add the favicon
+    if ($self->has_site_file('favicon.ico')) {
+        $feed->icon('/favicon.ico');
+    }
+    $feed->updated($self->last_updated || DateTime->now);
+    $feed->author($self->sitename);
+    $feed->author_uri($prefix);
+    my %start = (
+                 title => $self->sitename,
+                 href => '/opds',
+                );
+    # populate the feed with the root
+    $feed->add_to_navigations_new_level(%start);
+    $start{rel} = 'start';
+    $feed->add_to_navigations(%start);
+    my @opds_links =  ({
+                        href => '/opds/titles',
+                        title => $lh->loc('Titles'),
+                        description => $lh->loc('Full list of texts'),
+                        acquisition => 1,
+                       });
+    foreach my $ct ($self->site_category_types->active->ordered->all) {
+        push @opds_links, {
+                           href => '/opds/category/' . $ct->category_type,
+                           title => $lh->loc($ct->name_plural),
+                           description => $lh->loc($ct->name_plural),
+                          };
+    }
+    push @opds_links, ({
+                        href => '/opds/new',
+                        title => $lh->loc('New'),
+                        description => $lh->loc('Latest entries'),
+                        rel => 'new',
+                        acquisition => 1,
+                       },
+                       {
+                        href => '/opds/crawlable',
+                        title => $lh->loc('Titles'),
+                        description => $lh->loc('Full list of texts'),
+                        rel => 'crawlable',
+                        acquisition => 1,
+                       },
+                       {
+                        href => '/opensearch.xml',
+                        title => $lh->loc('Search'),
+                        rel => 'search',
+                       });
+    foreach my $entry (@opds_links) {
+        $feed->add_to_navigations(%$entry);
+    }
+    return $feed;
+}
+
+sub store_crawlable_opds_feed {
+    my $self = shift;
+    my $feed = $self->initialize_opds_feed;
+    my $lh = $self->localizer;
+    $feed->add_to_navigations_new_level(
+                                        acquisition => 1,
+                                        href => '/opds/crawlable',
+                                        title => $lh->loc('Titles'),
+                                        description => $lh->loc('Full list of texts'),
+                                       );
+    # This is as much optimized as it can get. The bottleneck now is
+    # in the XML generation, and there is nothing to do, I think.
+    my $texts_rs = $self->titles->published_texts->sort_by_pubdate_desc
+      ->search(undef,
+               {
+                result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                collapse => 1,
+                join => { title_categories => 'category' },
+                columns => [qw/me.uri
+                               me.title
+                               me.lang
+                               me.date
+                               me.pubdate
+                               me.subtitle
+                              /],,
+                '+columns' => {
+                               'title_categories.title_id' => 'title_categories.title_id',
+                               'title_categories.category_id' => 'title_categories.category_id',
+                               'title_categories.category.uri' => 'category.uri',
+                               'title_categories.category.type' => 'category.type',
+                               'title_categories.category.name' => 'category.name',
+                              }
+               });
+    my $dt_parser = $self->result_source->schema->storage->datetime_parser;
+    while (my $text = $texts_rs->next) {
+        my %entry = (
+                     title => AmuseWikiFarm::Utils::Amuse::clean_html($text->{title}),
+                     href => '/library/' . $text->{uri},
+                     epub => '/library/' . $text->{uri} . '.epub',
+                     language => $text->{lang} || 'en',
+                     issued => $text->{date} || '',
+                     summary => AmuseWikiFarm::Utils::Amuse::clean_html($text->{subtitle}),
+                     files => [ '/library/' . $text->{uri} . '.epub', ],
+                    );
+        if ($text->{pubdate}) {
+            $entry{updated} = $dt_parser->parse_datetime($text->{pubdate});
+        }
+        if (my $cats = $text->{title_categories}) {
+            foreach my $cat (@$cats) {
+                if (my $category = $cat->{category}) {
+                    if ($category->{type} eq 'author') {
+                        $entry{authors} ||= [];
+                        push @{$entry{authors}}, {
+                                                  name => $category->{name},
+                                                  uri => '/category/author/' . $category->{uri},
+                                                 };
+                    }
+                }
+            }
+        }
+        $feed->add_to_acquisitions(%entry);
+    }
+    $self->crawlable_opds_feed_file->spew_raw($feed->atom->as_xml);
+}
+
 
 sub rss_feed_file {
     my $self = shift;

@@ -29,60 +29,7 @@ sub root :Chained('/site') :PathPart('opds') :CaptureArgs(0) {
     my ($self, $c) = @_;
     # pick the model and stash it.
     my $feed = $c->model('OPDS');
-    my $prefix = $c->uri_for('/')->as_string;
-    $prefix =~ s!/$!!;
-    $feed->prefix($prefix);
-    my $site = $c->stash->{site};
-    # add the favicon
-    if ($site->has_site_file('favicon.ico')) {
-        $feed->icon('/favicon.ico');
-    }
-    $feed->updated($site->last_updated || DateTime->now);
-    $feed->author($site->sitename);
-    $feed->author_uri($prefix);
-    my %start = (
-                 title => $site->sitename,
-                 href => '/opds',
-                );
-    # populate the feed with the root
-    $feed->add_to_navigations_new_level(%start);
-    $start{rel} = 'start';
-    $feed->add_to_navigations(%start);
-    my @opds_links =  ({
-                        href => '/opds/titles',
-                        title => $c->loc('Titles'),
-                        description => $c->loc('texts sorted by title'),
-                        acquisition => 1,
-                       });
-    foreach my $ct ($site->site_category_types->active->ordered->all) {
-        push @opds_links, {
-                           href => '/opds/category/' . $ct->category_type,
-                           title => $c->loc($ct->name_plural),
-                           description => $c->loc($ct->name_plural),
-                          };
-    }
-    push @opds_links, ({
-                        href => '/opds/new',
-                        title => $c->loc('New'),
-                        description => $c->loc('Latest entries'),
-                        rel => 'new',
-                        acquisition => 1,
-                       },
-                       {
-                        href => '/opds/crawlable',
-                        title => $c->loc('Titles'),
-                        description => $c->loc('Full catalog for robots'),
-                        rel => 'crawlable',
-                        acquisition => 1,
-                       },
-                       {
-                        href => $c->uri_for_action('/search/opensearch')->path,
-                        title => $c->loc('Search'),
-                        rel => 'search',
-                       });
-    foreach my $entry (@opds_links) {
-        $feed->add_to_navigations(%$entry);
-    }
+    $c->stash->{site}->initialize_opds_feed($feed);
 }
 
 sub start :Chained('root') :PathPart('') :Args(0) {
@@ -236,78 +183,16 @@ sub search :Chained('clean_root') :PathPart('search') :Args(0) {
 
 sub crawlable :Chained('clean_root') :PathPart('crawlable') :Args(0) {
     my ($self, $c) = @_;
-    my $feed = $c->model('OPDS');
     my $site = $c->stash->{site};
-    # this is wrong and should be cached anyway
-    $feed->add_to_navigations_new_level(
-                                        acquisition => 1,
-                                        href => '/opds/crawlable',
-                                        title => $c->loc('Titles'),
-                                        description => $c->loc('texts sorted by title'),
-                                       );
-    # This is as much optimized as it can get. The bottleneck now is
-    # in the XML generation, and there is nothing to do, I think.
-    my $time = my $now = time();
-    my $texts_rs = $site->titles->published_texts->sorted_by_title
-      ->search(undef,
-               {
-                result_class => 'DBIx::Class::ResultClass::HashRefInflator',
-                collapse => 1,
-                join => { title_categories => 'category' },
-                columns => [qw/me.uri
-                               me.title
-                               me.lang
-                               me.date
-                               me.pubdate
-                               me.subtitle
-                              /],,
-                '+columns' => {
-                               'title_categories.title_id' => 'title_categories.title_id',
-                               'title_categories.category_id' => 'title_categories.category_id',
-                               'title_categories.category.uri' => 'category.uri',
-                               'title_categories.category.type' => 'category.type',
-                               'title_categories.category.name' => 'category.name',
-                              }
-               });
-    my $dt_parser = $c->model('DB')->storage->datetime_parser;
-    # Dlog_debug { "texts: $_" } [ \@texts, $c->model('DB')->storage->datetime_parser ];
-    log_debug { $now = time();
-                my $elapsed = $now - $time;
-                $time = $now;
-                "query done in $elapsed seconds" };
-    while (my $text = $texts_rs->next) {
-        my %entry = (
-                     title => clean_html($text->{title}),
-                     href => '/library/' . $text->{uri},
-                     epub => '/library/' . $text->{uri} . '.epub',
-                     language => $text->{lang} || 'en',
-                     issued => $text->{date} || '',
-                     summary => clean_html($text->{subtitle}),
-                     files => [ '/library/' . $text->{uri} . '.epub', ],
-                    );
-        if ($text->{pubdate}) {
-            $entry{updated} = $dt_parser->parse_datetime($text->{pubdate});
-        }
-        if (my $cats = $text->{title_categories}) {
-            foreach my $cat (@$cats) {
-                if (my $category = $cat->{category}) {
-                    if ($category->{type} eq 'author') {
-                        $entry{authors} ||= [];
-                        push @{$entry{authors}}, {
-                                                  name => $category->{name},
-                                                  uri => '/category/author/' . $category->{uri},
-                                                 };
-                    }
-                }
-            }
-        }
-        $feed->add_to_acquisitions(%entry);
+    my $file = $site->crawlable_opds_feed_file;
+    if ($file->exists) {
+        $c->response->content_type('application/atom+xml; charset=UTF-8');
+        $c->clear_encoding;
+        $c->response->body($file->slurp_raw);
     }
-    log_debug { $now = time();
-                my $elapsed = $now - $time;
-                $time = $now;
-                "parsing done in $elapsed seconds" };
-    $c->detach($c->view('Atom'));
+    else {
+        $c->detach('/not_found');
+    }
 }
 
 # legacy

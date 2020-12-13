@@ -795,6 +795,7 @@ sub dispatch_job_build_static_indexes {
     $self->site->static_indexes_generator->generate;
     $self->site->store_file_list_for_mirroring;
     $self->site->store_rss_feed;
+    $self->site->store_crawlable_opds_feed;
     $logger->("Generated static indexes " . (time() - $time) . " seconds\n");
     return;
 }
