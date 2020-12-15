@@ -4,6 +4,16 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.505 2020-12-15
+
+ - Fix an old bug with the amusewiki restart command not killing the
+   children.
+ - Improve logging for the /git route
+ - Improve sorting for revisions page
+ - Add pagination to OPDS category routes (and added custom categories)
+ - Cache /opds/crawlable which was too slow
+ - Updated I18N: PL
+
 2.504 2020-11-05
 
  - Updated i18n: BG
