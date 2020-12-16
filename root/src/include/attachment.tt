@@ -33,10 +33,10 @@
   [% IF attachment.comment_muse || c.user_exists %]
     <div class="panel-footer">
       [% IF attachment.comment_muse %]
-        <div class="center">[% attachment.comment_html %]</div>
+        <div class="text-center">[% attachment.comment_html %]</div>
       [% END %]
       [% IF c.user_exists %] 
-        <div class="center">
+        <div class="text-center">
           <span>
             <a href="[% c.uri_for_action('/attachments/edit', [ attachment.uri ]) %]" target="_blank">
               <span title="[% loc('Edit attachment description') %]"

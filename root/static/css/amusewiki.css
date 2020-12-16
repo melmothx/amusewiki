@@ -474,3 +474,7 @@ textarea.form-control {
     text-align: right;
     padding-bottom: 5px;
 }
+
+.panel-footer p {
+    margin-bottom: 0px;
+}
