@@ -40,6 +40,7 @@ $payload must be an hashref.
 
 sub handled_jobs_hashref {
     return {
+            save_bb_cli => 1,
             purge => 2,
             alias_delete => 3,
             alias_create => 4,

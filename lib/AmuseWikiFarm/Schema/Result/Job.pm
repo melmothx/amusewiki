@@ -854,6 +854,15 @@ sub dispatch_job_hourly_job {
     return;
 }
 
+sub dispatch_job_save_bb_cli {
+    my $self = shift;
+    local $ENV{GIT_COMMITTER_NAME}  = $self->committer_name;
+    local $ENV{GIT_COMMITTER_EMAIL} = $self->committer_mail;
+    local $ENV{GIT_AUTHOR_NAME}  = $self->committer_name;
+    local $ENV{GIT_AUTHOR_EMAIL} = $self->committer_mail;
+    $self->site->save_bb_cli;
+}
+
 before delete => sub {
     my $self = shift;
     my @leftovers = $self->produced_files;

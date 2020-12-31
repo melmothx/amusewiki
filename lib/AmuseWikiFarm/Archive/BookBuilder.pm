@@ -1786,7 +1786,7 @@ sub refresh_text_list {
 }
 
 sub as_cli {
-    my $self = shift;
+    my ($self, $options) = @_;
     my %c_args = $self->compiler_options;
     my %extra = %{ delete $c_args{extra} || {} };
     my @cli = ('muse-compile.pl');
@@ -1804,6 +1804,10 @@ sub as_cli {
         next if $skipped{$top};
         if (my $v = $c_args{$top}) {
             $top =~ s/_/-/g;
+            # special case, to be removed once muse-compile has --sl-pdf
+            if ($top eq 'sl-pdf') {
+                $top = 'slides';
+            }
             push @cli, "--" . $top;
             if (my $sub = $named{$top}) {
                 push @cli, $sub->($v);
@@ -1831,7 +1835,7 @@ sub as_cli {
             push @cli, $f->name_with_ext_and_fragments;
         }
     }
-    push @cli, "file.muse" unless @files;
+    push @cli, "\$file.muse" unless @files;
     if (my %imposer_args = $self->imposer_options) {
         push @cli, "\n\n";
         my @impcli;
@@ -1850,8 +1854,11 @@ sub as_cli {
             push @cli, '$i;', "done";
         }
         else {
-            push @cli, "pdf-impose.pl", @impcli, "file.pdf";
+            push @cli, "pdf-impose.pl", @impcli, "\$file.pdf";
         }
+    }
+    if ($options->{as_arrayref}) {
+        return \@cli;
     }
     return join(" ", @cli);
 }
