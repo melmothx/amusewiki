@@ -464,10 +464,10 @@ sub dispatch_job {
         eval {
             $output = $self->$method($logger);
         };
-        if ($@) {
+        if (my $err = $@) {
             $self->status('failed');
-            $self->errors($@);
-            log_error { $@ . ' ' . $self->logs };
+            $self->errors($err);
+            log_error { $err . ' ' . $self->logs };
         }
         else {
             $self->completed(DateTime->now);
