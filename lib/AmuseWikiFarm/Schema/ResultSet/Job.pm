@@ -161,6 +161,11 @@ sub publish_add {
     return $self->enqueue(publish => { id => $revision->id }, $username);
 }
 
+sub save_bb_cli_add {
+    my ($self, $username) = @_;
+    return $self->enqueue(save_bb_cli => {}, $username || "amusewiki");
+}
+
 =head2 git_action_add($payload)
 
 Enqueue a git action.

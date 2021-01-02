@@ -7,7 +7,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 66;
+use Test::More tests => 14;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -62,3 +62,42 @@ $j->dispatch_job;
 
 ok -d path($site->repo_root, 'bin');
 is scalar(path($site->repo_root, 'bin')->children), 4, "Found 4 scripts";
+
+my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => $site->canonical);
+
+$mech->get_ok('/login');
+$mech->submit_form(with_fields => {
+                                   __auth_user => 'root',
+                                   __auth_pass => 'root',
+                                  });
+
+$mech->get_ok('/settings/formats');
+$mech->submit_form(with_fields => {
+                                   format_name => 'EPUB with fonts',
+                                  });
+
+like $mech->uri, qr{formats/edit}, "New format created";
+
+$mech->submit_form(with_fields => {
+                                   format => 'epub',
+                                   epub_embed_fonts => 1,
+                                  },
+                   button => "update",
+                  );
+
+is scalar(path($site->repo_root, 'bin')->children), 4, "Found 4 scripts";
+
+while (my $j = $site->jobs->dequeue) {
+    $j->dispatch_job;
+    diag $j->logs;
+}
+
+is scalar(path($site->repo_root, 'bin')->children), 5, "Found 5 scripts";
+
+
+
+foreach my $c (path($site->repo_root, 'bin')->children) {
+    is system("$c", path($site->repo_root, t => tt => "test.muse")->stringify), 0, "$c executes fine";
+}
+

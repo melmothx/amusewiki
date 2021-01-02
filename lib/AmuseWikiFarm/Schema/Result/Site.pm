@@ -4799,6 +4799,7 @@ EOF
         $git->add("$bin");
         # any change?
         if ($git->status->get('indexed')) {
+            log_info { "Saving format definitions" };
             $git->commit({ message => "Updated format definitions" });
             $self->sync_remote_repo;
         }
