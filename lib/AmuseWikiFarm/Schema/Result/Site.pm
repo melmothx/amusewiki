@@ -4781,10 +4781,11 @@ sub save_bb_cli {
     foreach my $cf ($self->custom_formats->all) {
         my $exe = $bin->child('compile-' . $cf->code);
         my @cli = @{ $cf->bookbuilder->as_cli({ as_arrayref => 1 }) };
-        splice @cli, 1, 0, '--fontspec', "fontspec.json \\\n";
+        splice @cli, 1, 0, '--fontspec', "\$cwd/fontspec.json \\\n";
         $exe->spew_utf8(<<'EOF', join(' ', @cli), "\n");
 #!/bin/sh
 
+cwd=`pwd`
 file=`dirname $1`/`basename $1 .muse`
 
 if [ ! -f fontspec.json ]; then
