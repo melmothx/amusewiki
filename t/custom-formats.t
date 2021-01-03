@@ -59,6 +59,8 @@ foreach my $f (qw/epub pdf/) {
     ok($cf, "Found the format");
     push @cfs, $cf;
 }
+# remove the save_bb_cli
+$site->jobs->delete;
 
 foreach my $cf (@cfs) {
     my $name = $cf->format_name;
