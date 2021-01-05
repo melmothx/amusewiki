@@ -1692,6 +1692,7 @@ t/revisions-files.t
 t/revisions.t
 t/robots-txt.t
 t/robots.t
+t/save-cli.t
 t/schema.t
 t/secondary-footnotes.t
 t/secure-site.t
