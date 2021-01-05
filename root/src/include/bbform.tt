@@ -559,6 +559,16 @@
         reduce the number of blank pages.") %]
 
           </label>
+
+          <label>
+            <input type="radio" name="schema" value="duplex2up" id="schemaduplex2up"
+                   class="choose-schema"
+                   [% IF bb.schema == 'duplex2up' %]checked="checked"[% END %] />
+            <strong>duplex2up</strong>:
+            [% loc("Same as above, but for duplex printers") %]
+          </label>
+
+
           <div class="schema-preview schema-preview-single">
             <img src="[% c.uri_for('/static/images/schema-preview/schema-2up-1.png') %]"
                  alt="2up" />

@@ -1269,7 +1269,7 @@ Main method to create a structure to feed the jobber for the building
 
 sub signature_in_use {
     my $self = shift;
-    if ($self->schema eq '2up') {
+    if ($self->schema eq '2up' or $self->schema eq 'duplex2up') {
         return $self->signature_2up;
     }
     elsif ($self->schema eq '4up') {

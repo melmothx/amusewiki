@@ -351,7 +351,7 @@
 </div>
 [% END %]
 
-<script src="[% c.uri_for('/static/js/bookbuilder.js') %]"></script>
+<script src="[% c.uri_for('/static/js/bookbuilder.js', { v => 2 }) %]"></script>
 [% ELSE %]
 
 <div class="alert alert-warning">
