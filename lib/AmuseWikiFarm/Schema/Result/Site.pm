@@ -4774,6 +4774,39 @@ sub edit_category_types_from_params {
     return $changed;
 }
 
+sub save_bb_cli {
+    my $self = shift;
+    my $bin = Path::Tiny::path($self->repo_root, 'bin');
+    $bin->mkpath;
+    foreach my $cf ($self->custom_formats->all) {
+        my $exe = $bin->child('compile-' . $cf->code);
+        my @cli = @{ $cf->bookbuilder->as_cli({ as_arrayref => 1 }) };
+        splice @cli, 1, 0, '--fontspec', "\$cwd/fontspec.json \\\n";
+        $exe->spew_utf8(<<'EOF', join(' ', @cli), "\n");
+#!/bin/sh
+
+cwd=`pwd`
+file=`dirname $1`/`basename $1 .muse`
+
+if [ ! -f fontspec.json ]; then
+    muse-create-font-file.pl fontspec.json
+fi
+
+EOF
+        $exe->chmod(0755);
+    }
+    if (my $git = $self->git) {
+        $git->add("$bin");
+        # any change?
+        if ($git->status->get('indexed')) {
+            log_info { "Saving format definitions" };
+            $git->commit({ message => "Updated format definitions" });
+            $self->sync_remote_repo;
+        }
+    }
+
+}
+
 sub editable_whitelist_ips_rs {
     my $self = shift;
     my $rs = $self->whitelist_ips->editable;

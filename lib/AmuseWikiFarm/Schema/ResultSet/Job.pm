@@ -40,6 +40,7 @@ $payload must be an hashref.
 
 sub handled_jobs_hashref {
     return {
+            save_bb_cli => 1,
             purge => 2,
             alias_delete => 3,
             alias_create => 4,
@@ -158,6 +159,11 @@ sub bookbuilder_add {
 sub publish_add {
     my ($self, $revision, $username) = @_;
     return $self->enqueue(publish => { id => $revision->id }, $username);
+}
+
+sub save_bb_cli_add {
+    my ($self, $username) = @_;
+    return $self->enqueue(save_bb_cli => {}, $username || "amusewiki");
 }
 
 =head2 git_action_add($payload)

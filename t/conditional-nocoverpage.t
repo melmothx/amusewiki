@@ -98,6 +98,8 @@ my @cfs;
                            button => 'update',
                           ));
     }
+    # remove the save_bb_cli jobs.
+    $site->jobs->delete;
 }
 
 ok $site->discard_changes->nocoverpage, "Option picked up" or die;

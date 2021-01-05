@@ -464,10 +464,10 @@ sub dispatch_job {
         eval {
             $output = $self->$method($logger);
         };
-        if ($@) {
+        if (my $err = $@) {
             $self->status('failed');
-            $self->errors($@);
-            log_error { $@ . ' ' . $self->logs };
+            $self->errors($err);
+            log_error { $err . ' ' . $self->logs };
         }
         else {
             $self->completed(DateTime->now);
@@ -852,6 +852,15 @@ sub dispatch_job_hourly_job {
         $logger->("Scheduled reindex for " . $site->id . $title->full_uri . "\n");
     }
     return;
+}
+
+sub dispatch_job_save_bb_cli {
+    my $self = shift;
+    local $ENV{GIT_COMMITTER_NAME}  = $self->committer_name;
+    local $ENV{GIT_COMMITTER_EMAIL} = $self->committer_mail;
+    local $ENV{GIT_AUTHOR_NAME}  = $self->committer_name;
+    local $ENV{GIT_AUTHOR_EMAIL} = $self->committer_mail;
+    $self->site->save_bb_cli;
 }
 
 before delete => sub {

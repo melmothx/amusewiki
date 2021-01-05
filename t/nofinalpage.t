@@ -62,7 +62,8 @@ foreach my $f (@fields) {
     my $method = 'bb_' . $f;
     is $format->$method, 1, "$method is true";
 }
-
+# remove the save_bb_cli job, not relevant.
+$site->jobs->delete;
 $site->jobs->enqueue(rebuild => { id => $site->titles->first->id }, 15);
 {
     my $produced;

@@ -141,6 +141,8 @@ sub edit_format :Chained('get_format') :PathPart('') :Args(0) {
         else {
             $c->flash(status_msg => $c->loc('Format successfully updated'));
         }
+        # user should be always here
+        $c->stash->{site}->jobs->save_bb_cli_add($c->user->get('username'));
     }
     $c->stash(
               bb => $format->bookbuilder,
