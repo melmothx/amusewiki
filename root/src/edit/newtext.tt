@@ -108,14 +108,6 @@
   </div>
   [% END %]
 
-  [% IF site.multilanguage %]
-  <div class="form-group">
-    <label for="text-uid">[% loc('Unique ID for the text') %]</label>
-    <input class="form-control" name="uid" id="text-uid" type="text"
-           value="[% processed_params.uid | html %]" />
-  </div>
-  [% END %]
-
   <div class="form-group">
     <label for="date">[% loc('Date of the original publication') %]</label>
     <input class="form-control" id="date"
@@ -136,6 +128,15 @@
     </p>
   </div>
   [% END %]
+
+  [% IF site.multilanguage %]
+  <div class="form-group">
+    <label for="text-uid">[% loc('Unique ID for the text') %]</label>
+    <input class="form-control" name="uid" id="text-uid" type="text"
+           value="[% processed_params.uid | html %]" />
+  </div>
+  [% END %]
+
   <div class="form-group">
     [% SET current_language = processed_params.lang || current_locale_code %]
     <label for="lang">[% loc('Language') %]</label>

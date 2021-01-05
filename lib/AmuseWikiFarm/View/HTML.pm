@@ -257,9 +257,7 @@ sub add_navigation_menus {
 
     my @specials = map {
         +{ uri => $_->full_uri, name => $_->title || $_->rui }
-    } $site->titles->published_specials->search({ uri => { -not_like => 'index%' } },
-                                                { columns => [qw/title uri f_class/] });
-
+    } $site->titles->published_specials->without_index_uri->no_uid_or_localized($c->stash->{current_locale_code});
     my %out = (
                projects => \@related,
                specials => \@specials,

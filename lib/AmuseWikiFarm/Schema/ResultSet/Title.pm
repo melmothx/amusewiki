@@ -607,6 +607,29 @@ sub by_lang {
     return $self->search({ "$me.lang" => $lang });
 }
 
+sub without_index_uri {
+    my ($self, $lang) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({
+                          "$me.uri" => { -not_like => 'index%' },
+                         });
+}
+
+sub no_uid_or_localized {
+    my ($self, $lang) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search(
+                         [
+                          {
+                           "$me.uid" => [ '', undef ],
+                          },
+                          {
+                           "$me.lang" => $lang,
+                          }
+                         ]
+                        );
+}
+
 sub language_stats {
     my $self = shift;
     my $me = $self->current_source_alias;
