@@ -3367,11 +3367,19 @@ sub update_from_params {
                        };
     }
 
-    my @site_links = (
-                      $self->deserialize_links(delete $params->{site_links}, 'specials'),
-                      $self->deserialize_links(delete $params->{site_links_projects}, 'projects'),
-                      $self->deserialize_links(delete $params->{site_links_archive}, 'archive')
-                     );
+    my @site_links;
+
+    foreach my $spec ([ site_links => 'specials' ],
+                      [ site_links_projects =>  'projects' ],
+                      [ site_links_archive => 'archive' ]) {
+        my $res = $self->deserialize_links(delete $params->{$spec->[0]}, $spec->[1]);
+        if (@{$res->{errors}}) {
+            push @errors, @{$res->{errors}};
+        }
+        else {
+            push @site_links, @{$res->{links}};
+        }
+    }
 
     if (%$params) {
         push @errors, "Unprocessed parameters found: "
@@ -3438,7 +3446,7 @@ sub update_from_params {
     }
     # in any case discard the changes
     $self->discard_changes;
-    @errors ? return join("\n", @errors) : return;
+    @errors ? return join(" / ", @errors) : return;
 }
 
 sub configure_cgit {
@@ -3469,12 +3477,9 @@ sub git_notify_url {
 
 sub deserialize_links {
     my ($self, $string, $menu) = @_;
-    my @links;
-    return @links unless $string;
-    my @lines = grep { $_ } split(/\r?\n/, $string);
-    return @links unless @lines;
+    my (@links, @errors);
     my $order = 0;
-    foreach my $line (@lines) {
+    foreach my $line (grep { $_ } split(/\r?\n/, $string || '')) {
         if ($line =~ m{^\s*(\S+)\s+(.*?)\s*$}) {
             push @links, {
                           url => $1,
@@ -3483,8 +3488,11 @@ sub deserialize_links {
                           menu => $menu,
                          };
         }
+        else {
+            push @errors, "Invalid $menu link line $line";
+        }
     }
-    return @links;
+    return { links => \@links, errors => \@errors };
 }
 
 sub serialize_links {

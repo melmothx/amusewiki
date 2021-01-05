@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 34;
+use Test::More tests => 35;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -114,6 +114,13 @@ ok(!$errors, "No errors") or diag Dumper($errors);
 
 is $site->html_special_page_bottom, $html_injection, "html stored";
 
+$errors = $site->update_from_params({
+                                     %old,
+                                     site_links => "pincopallino\n",
+                                    });
+
+ok $errors, "Validate the links";
+
 # reset
 $errors = $site->update_from_params({ %old });
 
@@ -140,7 +147,7 @@ foreach my $link (@links) {
 }
 
 foreach my $type ('specials') {
-    my @outlinks = $site->deserialize_links($site->serialize_links($type), $type);
+    my @outlinks = @{ $site->deserialize_links($site->serialize_links($type), $type)->{links} };
     is_deeply(\@outlinks, \@links, "de/serialize works");
     diag $site->serialize_links($type);
 }
