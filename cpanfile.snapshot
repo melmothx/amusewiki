@@ -131,6 +131,27 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Authen-SASL-2.16
+    pathname: G/GB/GBARR/Authen-SASL-2.16.tar.gz
+    provides:
+      Authen::SASL 2.16
+      Authen::SASL::CRAM_MD5 2.14
+      Authen::SASL::EXTERNAL 2.14
+      Authen::SASL::Perl 2.14
+      Authen::SASL::Perl::ANONYMOUS 2.14
+      Authen::SASL::Perl::CRAM_MD5 2.14
+      Authen::SASL::Perl::DIGEST_MD5 2.14
+      Authen::SASL::Perl::EXTERNAL 2.14
+      Authen::SASL::Perl::GSSAPI 0.05
+      Authen::SASL::Perl::LOGIN 2.14
+      Authen::SASL::Perl::Layer 2.14
+      Authen::SASL::Perl::PLAIN 2.14
+    requirements:
+      Digest::HMAC_MD5 0
+      Digest::MD5 0
+      ExtUtils::MakeMaker 6.42
+      Test::More 0
+      perl 5.005
   B-Hooks-EndOfScope-0.24
     pathname: E/ET/ETHER/B-Hooks-EndOfScope-0.24.tar.gz
     provides:
@@ -236,6 +257,24 @@ DISTRIBUTIONS
       strict 0
       utf8 0
       warnings 0
+  CGI-Compile-0.22
+    pathname: M/MI/MIYAGAWA/CGI-Compile-0.22.tar.gz
+    provides:
+      CGI::Compile 0.22
+    requirements:
+      File::pushd 0
+      Module::Build::Tiny 0.034
+      perl 5.008001
+  CGI-Emulate-PSGI-0.23
+    pathname: T/TO/TOKUHIROM/CGI-Emulate-PSGI-0.23.tar.gz
+    provides:
+      CGI::Emulate::PSGI 0.23
+      CGI::Parse::PSGI undef
+    requirements:
+      CGI 3.63
+      ExtUtils::MakeMaker 0
+      HTTP::Response 0
+      perl 5.008001
   CGI-Simple-1.21
     pathname: M/MA/MANWAR/CGI-Simple-1.21.tar.gz
     provides:
@@ -267,36 +306,6 @@ DISTRIBUTIONS
       Regexp::RegGrp 1.001_001
       Test::File::Contents 0.21
       Test::More 0
-  Cache-Cache-1.08
-    pathname: R/RJ/RJBS/Cache-Cache-1.08.tar.gz
-    provides:
-      Cache::BaseCache undef
-      Cache::BaseCacheTester undef
-      Cache::Cache 1.08
-      Cache::CacheMetaData undef
-      Cache::CacheSizer undef
-      Cache::CacheTester undef
-      Cache::CacheUtils undef
-      Cache::FileBackend undef
-      Cache::FileCache undef
-      Cache::MemoryBackend undef
-      Cache::MemoryCache undef
-      Cache::NullCache undef
-      Cache::Object undef
-      Cache::SharedMemoryBackend undef
-      Cache::SharedMemoryCache undef
-      Cache::SizeAwareCache undef
-      Cache::SizeAwareCacheTester undef
-      Cache::SizeAwareFileCache undef
-      Cache::SizeAwareMemoryCache undef
-      Cache::SizeAwareSharedMemoryCache undef
-    requirements:
-      Digest::SHA1 2.02
-      Error 0.15
-      ExtUtils::MakeMaker 0
-      File::Spec 0.82
-      IPC::ShareLite 0.09
-      Storable 1.014
   Cache-FastMmap-1.47
     pathname: R/RO/ROBM/Cache-FastMmap-1.47.tar.gz
     provides:
@@ -398,36 +407,6 @@ DISTRIBUTIONS
       Moose 0
       Scalar::Util 0
       Test::More 0
-  Catalyst-Devel-1.40
-    pathname: J/JJ/JJNAPIORK/Catalyst-Devel-1.40.tar.gz
-    provides:
-      Catalyst::Devel 1.40
-      Catalyst::Helper 1.39
-      Catalyst::Restarter undef
-      Catalyst::Restarter::Forking undef
-      Catalyst::Restarter::Win32 undef
-      Module::Install::Catalyst undef
-    requirements:
-      Catalyst 5.90001
-      Catalyst::Action::RenderView 0.10
-      Catalyst::Plugin::ConfigLoader 0.30
-      Catalyst::Plugin::Static::Simple 0.28
-      Config::General 2.42
-      ExtUtils::MakeMaker 6.36
-      File::ChangeNotify 0.07
-      File::Copy::Recursive 0
-      File::ShareDir 0
-      Module::Install 1.02
-      Moose 0
-      MooseX::Daemonize 0
-      MooseX::Emulate::Class::Accessor::Fast 0
-      Path::Class 0.09
-      Starman 0
-      Template 2.14
-      Test::Fatal 0.003
-      Test::More 0.94
-      namespace::autoclean 0
-      namespace::clean 0
   Catalyst-Model-Adaptor-0.10
     pathname: B/BO/BOBTFISH/Catalyst-Model-Adaptor-0.10.tar.gz
     provides:
@@ -456,20 +435,16 @@ DISTRIBUTIONS
     requirements:
       Carp::Clan 0
       Catalyst::Component::InstancePerContext 0
-      Catalyst::Devel 1.0
       Catalyst::Runtime 5.80005
       CatalystX::Component::Traits 0.14
       DBD::SQLite 0
       DBIx::Class 0.08114
-      DBIx::Class::Cursor::Cached 0
-      DBIx::Class::Schema::Loader 0.04005
       ExtUtils::MakeMaker 6.59
       Hash::Merge 0
       List::MoreUtils 0
       Module::Runtime 0.012
       Moose 1.12
       MooseX::MarkAsMethods 0.13
-      MooseX::NonMoose 0.16
       MooseX::Types 0
       MooseX::Types::LoadableClass 0.009
       Storable 0
@@ -594,18 +569,6 @@ DISTRIBUTIONS
       MRO::Compat 0
       MooseX::Emulate::Class::Accessor::Fast 0
       Path::Class 0
-  Catalyst-Plugin-Static-Simple-0.36
-    pathname: I/IL/ILMARI/Catalyst-Plugin-Static-Simple-0.36.tar.gz
-    provides:
-      Catalyst::Plugin::Static::Simple 0.36
-    requirements:
-      Catalyst::Runtime 5.80008
-      ExtUtils::MakeMaker 6.36
-      MIME::Types 2.03
-      Moose 0
-      MooseX::Types 0
-      Test::More 0
-      namespace::autoclean 0
   Catalyst-Runtime-5.90124
     pathname: J/JJ/JJNAPIORK/Catalyst-Runtime-5.90124.tar.gz
     provides:
@@ -1003,14 +966,6 @@ DISTRIBUTIONS
       Module::Build::Tiny 0.035
       URI::Escape 0
       perl 5.008001
-  Cpanel-JSON-XS-4.08
-    pathname: R/RU/RURBAN/Cpanel-JSON-XS-4.08.tar.gz
-    provides:
-      Cpanel::JSON::XS 4.08
-      Cpanel::JSON::XS::Type undef
-    requirements:
-      ExtUtils::MakeMaker 0
-      Pod::Text 2.08
   Crypt-DES-2.07
     pathname: D/DP/DPARIS/Crypt-DES-2.07.tar.gz
     provides:
@@ -1505,19 +1460,6 @@ DISTRIBUTIONS
       MRO::Compat 0.11
       Sub::Exporter 0.982
       namespace::clean 0.18
-  DBIx-Class-Cursor-Cached-1.001004
-    pathname: A/AR/ARCANEZ/DBIx-Class-Cursor-Cached-1.001004.tar.gz
-    provides:
-      DBIx::Class::Cursor::Cached 1.001004
-    requirements:
-      Cache::FileCache 0
-      Carp::Clan 6.0
-      DBD::SQLite 1.25
-      DBIx::Class 0.08124
-      Digest::SHA 0
-      ExtUtils::MakeMaker 6.59
-      Test::More 0
-      perl 5.008001
   DBIx-Class-DeploymentHandler-0.002222
     pathname: F/FR/FREW/DBIx-Class-DeploymentHandler-0.002222.tar.gz
     provides:
@@ -3347,90 +3289,6 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.64
       parent 0
       perl 5.008001
-  Devel-CheckOS-1.83
-    pathname: D/DC/DCANTRELL/Devel-CheckOS-1.83.tar.gz
-    provides:
-      Devel::AssertOS 1.21
-      Devel::AssertOS::AIX 1.2
-      Devel::AssertOS::Amiga 1.2
-      Devel::AssertOS::Android 1.2
-      Devel::AssertOS::Apple 1.3
-      Devel::AssertOS::BSDOS 1.2
-      Devel::AssertOS::BeOS 1.4
-      Devel::AssertOS::Bitrig 1.0
-      Devel::AssertOS::Cygwin 1.3
-      Devel::AssertOS::DEC 1.4
-      Devel::AssertOS::DGUX 1.2
-      Devel::AssertOS::DragonflyBSD 1.2
-      Devel::AssertOS::Dynix 1.2
-      Devel::AssertOS::EBCDIC 1.0
-      Devel::AssertOS::FreeBSD 1.2
-      Devel::AssertOS::GNUkFreeBSD 1.1
-      Devel::AssertOS::HPUX 1.2
-      Devel::AssertOS::Haiku 1.1
-      Devel::AssertOS::Hurd 1.0
-      Devel::AssertOS::Interix 1.2
-      Devel::AssertOS::Irix 1.2
-      Devel::AssertOS::Linux 1.3
-      Devel::AssertOS::Linux::Debian 1.0
-      Devel::AssertOS::Linux::v2_6 1.3
-      Devel::AssertOS::MPEiX 1.2
-      Devel::AssertOS::MSDOS 1.2
-      Devel::AssertOS::MSWin32 1.3
-      Devel::AssertOS::MacOSX 1.2
-      Devel::AssertOS::MacOSX::v10_0 1.0
-      Devel::AssertOS::MacOSX::v10_1 1.0
-      Devel::AssertOS::MacOSX::v10_10 1.0
-      Devel::AssertOS::MacOSX::v10_11 1.0
-      Devel::AssertOS::MacOSX::v10_12 1.0
-      Devel::AssertOS::MacOSX::v10_2 1.0
-      Devel::AssertOS::MacOSX::v10_3 1.0
-      Devel::AssertOS::MacOSX::v10_4 1.4
-      Devel::AssertOS::MacOSX::v10_5 1.0
-      Devel::AssertOS::MacOSX::v10_6 1.0
-      Devel::AssertOS::MacOSX::v10_7 1.0
-      Devel::AssertOS::MacOSX::v10_8 1.0
-      Devel::AssertOS::MacOSX::v10_9 1.0
-      Devel::AssertOS::MacOSclassic 1.2
-      Devel::AssertOS::MachTen 1.2
-      Devel::AssertOS::MicrosoftWindows 1.3
-      Devel::AssertOS::MidnightBSD 1.1
-      Devel::AssertOS::Minix 1.0
-      Devel::AssertOS::MirOSBSD 1.2
-      Devel::AssertOS::NeXT 1.2
-      Devel::AssertOS::NetBSD 1.2
-      Devel::AssertOS::Netware 1.2
-      Devel::AssertOS::OS2 1.1
-      Devel::AssertOS::OS390 1.2
-      Devel::AssertOS::OS400 1.2
-      Devel::AssertOS::OSF 1.2
-      Devel::AssertOS::OSFeatures::POSIXShellRedirection 1.4
-      Devel::AssertOS::OpenBSD 1.2
-      Devel::AssertOS::POSIXBC 1.2
-      Devel::AssertOS::QNX 1.2
-      Devel::AssertOS::QNX::Neutrino 1.1
-      Devel::AssertOS::QNX::v4 1.1
-      Devel::AssertOS::RISCOS 1.2
-      Devel::AssertOS::Realtime 1.2
-      Devel::AssertOS::SCO 1.2
-      Devel::AssertOS::Solaris 1.2
-      Devel::AssertOS::Sun 1.3
-      Devel::AssertOS::SunOS 1.2
-      Devel::AssertOS::SysVr4 1.2
-      Devel::AssertOS::SysVr5 1.2
-      Devel::AssertOS::Unicos 1.2
-      Devel::AssertOS::Unix 1.6
-      Devel::AssertOS::VMESA 1.2
-      Devel::AssertOS::VMS 1.2
-      Devel::AssertOS::VOS 1.2
-      Devel::AssertOS::iOS 1.0
-      Devel::CheckOS 1.83
-    requirements:
-      ExtUtils::MakeMaker 0
-      File::Find::Rule 0.28
-      File::Temp 0.19
-      Test::More 0.88
-      perl 5.006000
   Devel-GlobalDestruction-0.14
     pathname: H/HA/HAARG/Devel-GlobalDestruction-0.14.tar.gz
     provides:
@@ -3581,10 +3439,10 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Email-Address-1.909
-    pathname: R/RJ/RJBS/Email-Address-1.909.tar.gz
+  Email-Address-1.912
+    pathname: R/RJ/RJBS/Email-Address-1.912.tar.gz
     provides:
-      Email::Address 1.909
+      Email::Address 1.912
     requirements:
       ExtUtils::MakeMaker 0
       overload 0
@@ -3804,24 +3662,6 @@ DISTRIBUTIONS
       Encode::Alias 0
       ExtUtils::MakeMaker 0
       perl 5.008
-  Error-0.17029
-    pathname: S/SH/SHLOMIF/Error-0.17029.tar.gz
-    provides:
-      Error 0.17029
-      Error::Simple 0.17029
-      Error::WarnDie 0.17029
-      Error::subs 0.17029
-    requirements:
-      Carp 0
-      Exporter 0
-      ExtUtils::MakeMaker 0
-      Module::Build 0.28
-      Scalar::Util 0
-      overload 0
-      perl 5.006
-      strict 0
-      vars 0
-      warnings 0
   Eval-Closure-0.14
     pathname: D/DO/DOY/Eval-Closure-0.14.tar.gz
     provides:
@@ -3967,31 +3807,6 @@ DISTRIBUTIONS
       IPC::System::Simple 0
       Module::Build 0.24
       Test::More 0
-  File-ChangeNotify-0.31
-    pathname: D/DR/DROLSKY/File-ChangeNotify-0.31.tar.gz
-    provides:
-      File::ChangeNotify 0.31
-      File::ChangeNotify::Event 0.31
-      File::ChangeNotify::Watcher 0.31
-      File::ChangeNotify::Watcher::Default 0.31
-      File::ChangeNotify::Watcher::Inotify 0.31
-      File::ChangeNotify::Watcher::KQueue 0.31
-    requirements:
-      Carp 0
-      ExtUtils::MakeMaker 0
-      Fcntl 0
-      File::Find 0
-      File::Spec 0
-      Module::Pluggable::Object 0
-      Module::Runtime 0
-      Moo 1.006
-      Moo::Role 0
-      Time::HiRes 0
-      Type::Utils 0
-      Types::Standard 0
-      namespace::autoclean 0
-      strict 0
-      warnings 0
   File-Copy-Recursive-0.44
     pathname: D/DM/DMUEY/File-Copy-Recursive-0.44.tar.gz
     provides:
@@ -4015,18 +3830,6 @@ DISTRIBUTIONS
       File::Spec 0
       URI::Escape 0
       perl 5.008006
-  File-Find-Rule-0.34
-    pathname: R/RC/RCLAMP/File-Find-Rule-0.34.tar.gz
-    provides:
-      File::Find::Rule 0.34
-      File::Find::Rule::Test::ATeam undef
-    requirements:
-      ExtUtils::MakeMaker 0
-      File::Find 0
-      File::Spec 0
-      Number::Compare 0
-      Test::More 0
-      Text::Glob 0.07
   File-HomeDir-1.004
     pathname: R/RE/REHSACK/File-HomeDir-1.004.tar.gz
     provides:
@@ -4080,22 +3883,6 @@ DISTRIBUTIONS
       File::DesktopEntry 0.04
       Pod::Usage 0
       perl 5.006001
-  File-Remove-1.58
-    pathname: S/SH/SHLOMIF/File-Remove-1.58.tar.gz
-    provides:
-      File::Remove 1.58
-    requirements:
-      Cwd 3.29
-      ExtUtils::MakeMaker 0
-      File::Glob 0
-      File::Path 0
-      File::Spec 3.29
-      Module::Build 0.28
-      constant 0
-      perl 5.006
-      strict 0
-      vars 0
-      warnings 0
   File-ShareDir-1.116
     pathname: R/RE/REHSACK/File-ShareDir-1.116.tar.gz
     provides:
@@ -4157,6 +3944,22 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       vars 0
+  File-pushd-1.016
+    pathname: D/DA/DAGOLDEN/File-pushd-1.016.tar.gz
+    provides:
+      File::pushd 1.016
+    requirements:
+      Carp 0
+      Cwd 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.17
+      File::Path 0
+      File::Spec 0
+      File::Temp 0
+      overload 0
+      perl 5.006
+      strict 0
+      warnings 0
   Filesys-Notify-Simple-0.13
     pathname: M/MI/MIYAGAWA/Filesys-Notify-Simple-0.13.tar.gz
     provides:
@@ -4521,14 +4324,6 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       HTTP::Headers 6
       perl 5.008001
-  HTTP-Parser-XS-0.17
-    pathname: K/KA/KAZUHO/HTTP-Parser-XS-0.17.tar.gz
-    provides:
-      HTTP::Parser::XS 0.17
-      HTTP::Parser::XS::PP undef
-    requirements:
-      ExtUtils::MakeMaker 6.36
-      Test::More 0.96
   HTTP-Request-AsCGI-1.2
     pathname: F/FL/FLORA/HTTP-Request-AsCGI-1.2.tar.gz
     provides:
@@ -4654,14 +4449,6 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       IO::Pty 1.08
       Test::More 0.47
-  IPC-ShareLite-0.17
-    pathname: A/AN/ANDYA/IPC-ShareLite-0.17.tar.gz
-    provides:
-      IPC::ShareLite 0.17
-    requirements:
-      ExtUtils::MakeMaker 0
-      File::Spec 0
-      Test::More 0
   IPC-System-Simple-1.25
     pathname: P/PJ/PJF/IPC-System-Simple-1.25.tar.gz
     provides:
@@ -4744,7 +4531,6 @@ DISTRIBUTIONS
       JSON::MaybeXS 1.004000
     requirements:
       Carp 0
-      Cpanel::JSON::XS 2.3310
       ExtUtils::MakeMaker 0
       JSON::PP 2.27300
       Scalar::Util 0
@@ -5325,62 +5111,6 @@ DISTRIBUTIONS
       Try::Tiny 0
       strict 0
       warnings 0
-  Module-Install-1.19
-    pathname: E/ET/ETHER/Module-Install-1.19.tar.gz
-    provides:
-      Module::AutoInstall 1.19
-      Module::Install 1.19
-      Module::Install::Admin 1.19
-      Module::Install::Admin::Bundle 1.19
-      Module::Install::Admin::Compiler 1.19
-      Module::Install::Admin::Find 1.19
-      Module::Install::Admin::Include 1.19
-      Module::Install::Admin::Makefile 1.19
-      Module::Install::Admin::Manifest 1.19
-      Module::Install::Admin::Metadata 1.19
-      Module::Install::Admin::ScanDeps 1.19
-      Module::Install::Admin::WriteAll 1.19
-      Module::Install::AutoInstall 1.19
-      Module::Install::Base 1.19
-      Module::Install::Base::FakeAdmin 1.19
-      Module::Install::Bundle 1.19
-      Module::Install::Can 1.19
-      Module::Install::Compiler 1.19
-      Module::Install::DSL 1.19
-      Module::Install::Deprecated 1.19
-      Module::Install::External 1.19
-      Module::Install::Fetch 1.19
-      Module::Install::Include 1.19
-      Module::Install::Inline 1.19
-      Module::Install::MakeMaker 1.19
-      Module::Install::Makefile 1.19
-      Module::Install::Metadata 1.19
-      Module::Install::PAR 1.19
-      Module::Install::Run 1.19
-      Module::Install::Scripts 1.19
-      Module::Install::Share 1.19
-      Module::Install::Win32 1.19
-      Module::Install::With 1.19
-      Module::Install::WriteAll 1.19
-      inc::Module::Install 1.19
-      inc::Module::Install::DSL 1.19
-    requirements:
-      Devel::PPPort 3.16
-      ExtUtils::Install 1.52
-      ExtUtils::MakeMaker 6.59
-      ExtUtils::ParseXS 2.19
-      File::Path 0
-      File::Remove 1.42
-      File::Spec 3.28
-      Module::Build 0.29
-      Module::CoreList 2.17
-      Module::ScanDeps 1.09
-      Parse::CPAN::Meta 1.4413
-      Test::Harness 3.13
-      Test::More 0.86
-      YAML::Tiny 1.38
-      autodie 0
-      perl 5.006
   Module-Pluggable-5.2
     pathname: S/SI/SIMONW/Module-Pluggable-5.2.tar.gz
     provides:
@@ -5418,19 +5148,6 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Module-ScanDeps-1.27
-    pathname: R/RS/RSCHUPP/Module-ScanDeps-1.27.tar.gz
-    provides:
-      Module::ScanDeps 1.27
-    requirements:
-      ExtUtils::MakeMaker 0
-      File::Spec 0
-      File::Temp 0
-      Getopt::Long 0
-      Module::Metadata 0
-      Text::ParseWords 0
-      perl 5.008001
-      version 0
   Moo-2.003004
     pathname: H/HA/HAARG/Moo-2.003004.tar.gz
     provides:
@@ -5846,34 +5563,6 @@ DISTRIBUTIONS
       parent 0.223
       strict 1.03
       warnings 1.03
-  MooseX-Daemonize-0.22
-    pathname: E/ET/ETHER/MooseX-Daemonize-0.22.tar.gz
-    provides:
-      MooseX::Daemonize 0.22
-      MooseX::Daemonize::Core 0.22
-      MooseX::Daemonize::Pid 0.22
-      MooseX::Daemonize::Pid::File 0.22
-      MooseX::Daemonize::WithPidFile 0.22
-      Test::MooseX::Daemonize 0.22
-    requirements:
-      Devel::AssertOS 0
-      Devel::CheckOS 1.63
-      ExtUtils::MakeMaker 0
-      File::Path 2.08
-      Module::Build::Tiny 0.034
-      Moose 0
-      Moose::Role 0
-      Moose::Util::TypeConstraints 0
-      MooseX::Getopt 0
-      MooseX::Getopt::OptionTypeMap 0
-      MooseX::Types::Path::Class 0
-      POSIX 0
-      Sub::Exporter 0
-      Test::Builder 0
-      namespace::autoclean 0
-      perl 5.008003
-      strict 0
-      warnings 0
   MooseX-Emulate-Class-Accessor-Fast-0.009032
     pathname: H/HA/HAARG/MooseX-Emulate-Class-Accessor-Fast-0.009032.tar.gz
     provides:
@@ -6086,19 +5775,6 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  MooseX-Types-Path-Class-0.09
-    pathname: E/ET/ETHER/MooseX-Types-Path-Class-0.09.tar.gz
-    provides:
-      MooseX::Types::Path::Class 0.09
-    requirements:
-      Module::Build::Tiny 0.034
-      MooseX::Types 0
-      MooseX::Types::Moose 0
-      Path::Class 0.16
-      if 0
-      perl 5.006
-      strict 0
-      warnings 0
   Mozilla-CA-20180117
     pathname: A/AB/ABH/Mozilla-CA-20180117.tar.gz
     provides:
@@ -6301,47 +5977,6 @@ DISTRIBUTIONS
       MIME::Base64 0
       Test::More 0.60_01
       perl 5.005
-  Net-Server-2.009
-    pathname: R/RH/RHANDOM/Net-Server-2.009.tar.gz
-    provides:
-      Net::Server 2.009
-      Net::Server::Daemonize 0.06
-      Net::Server::Fork undef
-      Net::Server::HTTP undef
-      Net::Server::INET undef
-      Net::Server::INET::Handle undef
-      Net::Server::Log::Log::Log4perl undef
-      Net::Server::Log::Sys::Syslog undef
-      Net::Server::MultiType undef
-      Net::Server::Multiplex undef
-      Net::Server::Multiplex::MUX undef
-      Net::Server::PSGI undef
-      Net::Server::PreFork undef
-      Net::Server::PreForkSimple undef
-      Net::Server::Proto undef
-      Net::Server::Proto::SSL undef
-      Net::Server::Proto::SSLEAY undef
-      Net::Server::Proto::TCP undef
-      Net::Server::Proto::UDP undef
-      Net::Server::Proto::UNIX undef
-      Net::Server::Proto::UNIXDGRAM undef
-      Net::Server::SIG 0.03
-      Net::Server::Single undef
-      Net::Server::TiedHandle 2.009
-    requirements:
-      ExtUtils::MakeMaker 6.30
-      File::Temp 0
-      IO::Socket 0
-      POSIX 0
-      Socket 0
-      Time::HiRes 0
-  Number-Compare-0.03
-    pathname: R/RC/RCLAMP/Number-Compare-0.03.tar.gz
-    provides:
-      Number::Compare 0.03
-    requirements:
-      ExtUtils::MakeMaker 0
-      Test::More 0
   Object-Signature-1.08
     pathname: E/ET/ETHER/Object-Signature-1.08.tar.gz
     provides:
@@ -6477,10 +6112,10 @@ DISTRIBUTIONS
       Test::More 0
       Type::Tiny 1
       namespace::clean 0
-  PDF-Imposition-0.25
-    pathname: M/ME/MELMOTHX/PDF-Imposition-0.25.tar.gz
+  PDF-Imposition-0.26
+    pathname: M/ME/MELMOTHX/PDF-Imposition-0.26.tar.gz
     provides:
-      PDF::Imposition 0.25
+      PDF::Imposition 0.26
       PDF::Imposition::Schema undef
       PDF::Imposition::Schema1repeat2side undef
       PDF::Imposition::Schema1repeat2top undef
@@ -6494,6 +6129,7 @@ DISTRIBUTIONS
       PDF::Imposition::Schema2x4x1 undef
       PDF::Imposition::Schema2x4x2 undef
       PDF::Imposition::Schema4up undef
+      PDF::Imposition::Schemaduplex2up undef
       PDF::Imposition::Schemaea4x4 undef
     requirements:
       ExtUtils::MakeMaker 0
@@ -7273,24 +6909,6 @@ DISTRIBUTIONS
       strict 0
       version 0.83
       warnings 0
-  Starman-0.4015
-    pathname: M/MI/MIYAGAWA/Starman-0.4015.tar.gz
-    provides:
-      HTTP::Server::PSGI::Net::Server::PreFork undef
-      Plack::Handler::Starman undef
-      Starman 0.4015
-      Starman::Server undef
-    requirements:
-      Data::Dump 0
-      HTTP::Date 0
-      HTTP::Parser::XS 0
-      HTTP::Status 0
-      Module::Build::Tiny 0.034
-      Net::Server 2.007
-      Plack 0.9971
-      Test::TCP 2.00
-      parent 0
-      perl 5.008001
   Stream-Buffered-0.03
     pathname: D/DO/DOY/Stream-Buffered-0.03.tar.gz
     provides:
@@ -7731,10 +7349,10 @@ DISTRIBUTIONS
       WWW::Mechanize 1.54
       namespace::clean 0.09
       perl 5.008004
-  Test-WWW-Mechanize-PSGI-0.38
-    pathname: O/OA/OALDERS/Test-WWW-Mechanize-PSGI-0.38.tar.gz
+  Test-WWW-Mechanize-PSGI-0.39
+    pathname: O/OA/OALDERS/Test-WWW-Mechanize-PSGI-0.39.tar.gz
     provides:
-      Test::WWW::Mechanize::PSGI 0.38
+      Test::WWW::Mechanize::PSGI 0.39
     requirements:
       Carp 0
       ExtUtils::MakeMaker 0
@@ -7765,10 +7383,10 @@ DISTRIBUTIONS
       Test::Builder 0
       Test::Builder::Tester 0.09
       perl 5.007003
-  Text-Amuse-1.51
-    pathname: M/ME/MELMOTHX/Text-Amuse-1.51.tar.gz
+  Text-Amuse-1.63
+    pathname: M/ME/MELMOTHX/Text-Amuse-1.63.tar.gz
     provides:
-      Text::Amuse 1.51
+      Text::Amuse 1.63
       Text::Amuse::Beamer undef
       Text::Amuse::Document undef
       Text::Amuse::Element undef
@@ -7784,10 +7402,10 @@ DISTRIBUTIONS
       File::Temp 0
       Test::More 0
       perl 5.010001
-  Text-Amuse-Compile-1.35
-    pathname: M/ME/MELMOTHX/Text-Amuse-Compile-1.35.tar.gz
+  Text-Amuse-Compile-1.50
+    pathname: M/ME/MELMOTHX/Text-Amuse-Compile-1.50.tar.gz
     provides:
-      Text::Amuse::Compile 1.35
+      Text::Amuse::Compile 1.50
       Text::Amuse::Compile::Devel undef
       Text::Amuse::Compile::File undef
       Text::Amuse::Compile::FileName undef
@@ -7796,6 +7414,8 @@ DISTRIBUTIONS
       Text::Amuse::Compile::Fonts::File undef
       Text::Amuse::Compile::Fonts::Import undef
       Text::Amuse::Compile::Fonts::Selected undef
+      Text::Amuse::Compile::Indexer undef
+      Text::Amuse::Compile::Indexer::Specification undef
       Text::Amuse::Compile::Merged undef
       Text::Amuse::Compile::MuseHeader undef
       Text::Amuse::Compile::TemplateOptions undef
@@ -7815,7 +7435,7 @@ DISTRIBUTIONS
       Path::Tiny 0
       Template::Tiny 1.12
       Test::More 0
-      Text::Amuse 1.51
+      Text::Amuse 1.6
       Type::Tiny 1
   Text-Amuse-Preprocessor-0.61
     pathname: M/ME/MELMOTHX/Text-Amuse-Preprocessor-0.61.tar.gz
@@ -7867,15 +7487,6 @@ DISTRIBUTIONS
       Text::German::Vorsilbe undef
     requirements:
       ExtUtils::MakeMaker 0
-  Text-Glob-0.11
-    pathname: R/RC/RCLAMP/Text-Glob-0.11.tar.gz
-    provides:
-      Text::Glob 0.11
-    requirements:
-      Exporter 0
-      ExtUtils::MakeMaker 0
-      constant 0
-      perl 5.00503
   Text-PDF-0.31
     pathname: B/BH/BHALLISSY/Text-PDF-0.31.tar.gz
     provides:
@@ -8543,20 +8154,6 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.008001
-  YAML-Tiny-1.73
-    pathname: E/ET/ETHER/YAML-Tiny-1.73.tar.gz
-    provides:
-      YAML::Tiny 1.73
-    requirements:
-      B 0
-      Carp 0
-      Exporter 0
-      ExtUtils::MakeMaker 0
-      Fcntl 0
-      Scalar::Util 0
-      perl 5.008001
-      strict 0
-      warnings 0
   aliased-0.34
     pathname: E/ET/ETHER/aliased-0.34.tar.gz
     provides:

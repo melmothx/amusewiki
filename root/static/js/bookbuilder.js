@@ -7,7 +7,7 @@ function show_opening() {
     }
 }
 function show_signature() {
-    if ($('#schema2up').is(":checked")) {
+    if ($('#schema2up').is(":checked") || $('#schemaduplex2up').is(":checked")) {
         $('#signature-explanation').show();
     }
     else {
