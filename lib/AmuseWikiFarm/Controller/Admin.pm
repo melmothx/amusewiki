@@ -309,7 +309,35 @@ sub delete_user :Chained('user_details') :PathPart('delete') :Args(0) {
 }
 
 
-
+sub test_mail :Chained('root') :PathPart('check-mailing') :Args(0) {
+    my ($self, $c) = @_;
+    if (my $to = $c->request->body_params->{to}) {
+        my $site = $c->stash->{site};
+        my $from = $site->mail_from;
+        my $tokens = {
+                      from => $from,
+                      to => $to,
+                      subject => "Test mail [1/2]",
+                      body => "Test mail from site [1/2]",
+                     };
+        if ($site->send_mail(generic => $tokens)) {
+            $site->jobs->enqueue(send_mail => {
+                                               type => 'generic',
+                                               tokens => {
+                                                          from => $from,
+                                                          to => $to,
+                                                          subject => "Test mail [2/2]",
+                                                          body => "Test mail from background job [2/2]",
+                                                         }
+                                              }, $c->user->get('username'));
+            $c->flash(status_msg => $c->loc("Sending test mails from [_1] to [_2]", $from, $to));
+        }
+        else {
+            $c->flash(error_msg => $c->loc("Unable to send mail from [_1] to [_2]!", $from || "NO MAIL FROM", $to));
+        }
+    }
+    $c->response->redirect($c->uri_for_action('/admin/list'));
+}
 
 
 =encoding utf8

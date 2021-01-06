@@ -70,7 +70,9 @@
     </tbody>
   </table>
 </div>
-
+<div>
+  <hr />
+</div>
 <div>
   <form action="[% c.uri_for_action('/admin/edit') %]" class="form-inline"
         method="POST" id="creation-site-form"
@@ -90,6 +92,26 @@
     <div class="form-group">
       <button type="submit" class="btn btn-default">
         [% loc('Create new site') %]
+      </button>
+    </div>
+  </form>
+</div>
+<div>
+  <hr />
+</div>
+<div>
+  <form action="[% c.uri_for_action('/admin/test_mail') %]" class="form-inline"
+        method="POST" id="test-mailing-form"
+        role="form">
+    <div class="form-group">
+      <label for="check-mailing-to">
+        [% loc('Check mail sending and send mail to:') %]
+      </label>
+      <input type="email" name="to" class="form-control" id="check-mailing-to" required/>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-default">
+        [% loc('Send mail') %]
       </button>
     </div>
   </form>

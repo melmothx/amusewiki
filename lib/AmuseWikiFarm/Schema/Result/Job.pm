@@ -863,6 +863,12 @@ sub dispatch_job_save_bb_cli {
     $self->site->save_bb_cli;
 }
 
+sub dispatch_job_send_mail {
+    my $self = shift;
+    my $payload = $self->job_data;
+    $self->site->send_mail($payload->{type}, $payload->{tokens});
+}
+
 before delete => sub {
     my $self = shift;
     my @leftovers = $self->produced_files;

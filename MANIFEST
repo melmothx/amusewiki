@@ -864,6 +864,8 @@ Makefile.PL
 MANIFEST
 mkits/commit/body.txt
 mkits/commit/manifest.json
+mkits/generic/body.txt
+mkits/generic/manifest.json
 mkits/git_action/body.txt
 mkits/git_action/manifest.json
 mkits/git_conflict/body.txt

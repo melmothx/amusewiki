@@ -1,0 +1,12 @@
+{
+    "renderer": "TT",
+    "header": [
+        { "From": "[% from %]" },
+        { "To": "[% to %]" },
+        { "Cc": "[% cc %]" },
+        { "List-Id": "[% list_id %]" },
+        { "Subject": "[% subject %]" }
+    ],
+    "type": "text/plain",
+    "path": "body.txt"
+}
