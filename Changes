@@ -4,6 +4,13 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.506 2021-01-06
+
+ - Save instructions to compile a format into the site repo under "bin"
+ - Add function to check mailing
+ - Add new imposition schema duplex2up (2up variant)
+ - Make Authen::SASL a requirement (for SMTP)
+
 2.505 2020-12-15
 
  - Fix an old bug with the amusewiki restart command not killing the
