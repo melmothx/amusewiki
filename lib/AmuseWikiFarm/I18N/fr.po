@@ -426,6 +426,9 @@ msgstr "Chapitre, seulement pour des divisions de chapitres dans des livres"
 msgid "Cheatsheet for the markup"
 msgstr "Antisèche pour le balisage"
 
+msgid "Check mail sending and send mail to:"
+msgstr ""
+
 msgid "Choose a paper format"
 msgstr "Choisissez un format papier"
 
@@ -2170,6 +2173,9 @@ msgstr "Configuration SSL"
 msgid "SSL key path"
 msgstr "Chemin de clé SSL"
 
+msgid "Same as above, but for duplex printers"
+msgstr ""
+
 msgid "Same as above, for the Archive menu"
 msgstr ""
 
@@ -2233,6 +2239,13 @@ msgstr ""
 
 msgid "Select individual parts for the bookbuilder"
 msgstr "Individuellement sélectionner des parties pour le générateur de livres"
+
+msgid "Send mail"
+msgstr ""
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
+msgstr ""
 
 msgid "Separate body fields"
 msgstr "Séparer les champs de corps de texte"
@@ -2805,6 +2818,10 @@ msgstr "UTC"
 msgid "Unable to load the bookbuilder session"
 msgstr "Impossibilité de charger la session du générateur de livres"
 
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr ""
+
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr "PDF sans marquages (cacher le nom de site, logo, etc.)"
 
@@ -2832,8 +2849,8 @@ msgstr "Liste à puces"
 msgid "Unpublished texts"
 msgstr "Textes non publiés"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Type de fichier %1 non pris en charge"
 
@@ -2878,6 +2895,9 @@ msgstr "Utiliser SSL pour les utilisateurs authentifiés"
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr ""
 "Utiliser comme image teaser en ajoutant la ligne suivante à l'en-tête :"
+
+msgid "Use named table of contents anchors instead of numeric ones"
+msgstr ""
 
 msgid "Use one of the site's formats"
 msgstr ""
@@ -2979,6 +2999,9 @@ msgstr ""
 
 msgid "Where does this text come from?"
 msgstr "D'où provient ce texte?"
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr ""
 
 msgid "Width of the cover image in percent of the text block width."
 msgstr ""
@@ -3215,6 +3238,9 @@ msgstr ""
 msgid "code and monospace"
 msgstr "code et caractères à espacement fixe"
 
+msgid "comma separated list"
+msgstr ""
+
 msgid "completed"
 msgstr "complété"
 
@@ -3345,9 +3371,6 @@ msgstr "textes triés par auteur·e"
 msgid "texts sorted by title"
 msgstr "textes triés par titre"
 
-msgid "texts sorted by topics"
-msgstr "textes triés par sujet"
-
 msgid "the author of the text (as displayed)"
 msgstr "l'auteur·e du texte (tel qu'affiché)"
 
@@ -3377,6 +3400,9 @@ msgstr ""
 "\"Modification périmée\" signifie que la révision a été abandonnée en cours "
 "d'édition, mais qu'elle est toujours là, au cas où quelqu'un·e souhaiterait "
 "la récupérer lors d'une modification du texte."
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "textes triés par sujet"
 
 #~ msgid "Add or delete and add again the <user_repo_url> on this page."
 #~ msgstr "Ajouter ou supprimer le <user_repo_url> de cette page."

@@ -433,6 +433,9 @@ msgstr "Capítulo, apenas para divisões em livros"
 msgid "Cheatsheet for the markup"
 msgstr "Cola para a markup"
 
+msgid "Check mail sending and send mail to:"
+msgstr ""
+
 msgid "Choose a paper format"
 msgstr "Escolha um formato de papel"
 
@@ -2172,6 +2175,9 @@ msgstr "SSL configuration"
 msgid "SSL key path"
 msgstr "SSL key path"
 
+msgid "Same as above, but for duplex printers"
+msgstr ""
+
 msgid "Same as above, for the Archive menu"
 msgstr "O mesmo que acima, para o menu arquivar"
 
@@ -2235,6 +2241,13 @@ msgstr ""
 
 msgid "Select individual parts for the bookbuilder"
 msgstr "Selecionar algumas partes para o bookbuilder"
+
+msgid "Send mail"
+msgstr ""
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
+msgstr ""
 
 msgid "Separate body fields"
 msgstr "Campos de corpo separados"
@@ -2801,6 +2814,10 @@ msgstr "UTC"
 msgid "Unable to load the bookbuilder session"
 msgstr "Impossível de carregar a sessão do bookbuilder"
 
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr ""
+
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr "PDF sem marca (esconde nome do site, logo, etc.)"
 
@@ -2827,8 +2844,8 @@ msgstr "Lista não ordenada"
 msgid "Unpublished texts"
 msgstr "Textos não publicados"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Tipo de arquivo não suportado %1"
 
@@ -2871,6 +2888,9 @@ msgstr "Usar SSL para usuários autenticados"
 
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr "Use como imagem de \"teaser\" adicionando ao cabeçalho esta linha:"
+
+msgid "Use named table of contents anchors instead of numeric ones"
+msgstr ""
 
 msgid "Use one of the site's formats"
 msgstr ""
@@ -2977,6 +2997,9 @@ msgstr ""
 
 msgid "Where does this text come from?"
 msgstr "De onde este texto vem?"
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr ""
 
 msgid "Width of the cover image in percent of the text block width."
 msgstr "Largura da imagem de capa em percentual da largura do bloco de texto."
@@ -3206,6 +3229,9 @@ msgstr "gerado automaticamente se não estiver presente, usando autor e título"
 msgid "code and monospace"
 msgstr "código e monoespaçamento"
 
+msgid "comma separated list"
+msgstr ""
+
 msgid "completed"
 msgstr "completado"
 
@@ -3336,9 +3362,6 @@ msgstr "textos ordenados por autor"
 msgid "texts sorted by title"
 msgstr "textos ordenados por título"
 
-msgid "texts sorted by topics"
-msgstr "textos ordenados por tópicos"
-
 msgid "the author of the text (as displayed)"
 msgstr "o autor do texto (como exibido)"
 
@@ -3368,6 +3391,9 @@ msgstr ""
 "\"Edição obsoleta\" significa que a revisão foi abandonada enquanto "
 "editando, mas ainda está lá, caso alguém queira continuar desse ponto quando "
 "editando um texto."
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "textos ordenados por tópicos"
 
 #~ msgid "Add or delete and add again the <user_repo_url> on this page."
 #~ msgstr "Adicione ou apague a <user_repo_url> nesta página."

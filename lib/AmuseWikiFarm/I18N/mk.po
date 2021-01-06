@@ -429,6 +429,9 @@ msgstr "Поглавје, само за цели книги"
 msgid "Cheatsheet for the markup"
 msgstr "Потсетник за обликување на текстот"
 
+msgid "Check mail sending and send mail to:"
+msgstr ""
+
 msgid "Choose a paper format"
 msgstr "Избери формат на хартијата"
 
@@ -2188,6 +2191,9 @@ msgstr "SSL конфигурација"
 msgid "SSL key path"
 msgstr "Клуч SSL"
 
+msgid "Same as above, but for duplex printers"
+msgstr ""
+
 msgid "Same as above, for the Archive menu"
 msgstr "Исто како горе наведеното, но за Архивата"
 
@@ -2251,6 +2257,13 @@ msgstr "Избери сѐ за презакажување"
 
 msgid "Select individual parts for the bookbuilder"
 msgstr "Избери поединечни делови за збирка"
+
+msgid "Send mail"
+msgstr ""
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
+msgstr ""
 
 msgid "Separate body fields"
 msgstr "Одвојуваат делови од текстот"
@@ -2809,6 +2822,10 @@ msgstr "UTC"
 msgid "Unable to load the bookbuilder session"
 msgstr "Вчитувањето на сесијата не успеа"
 
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr ""
+
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr "Анонимен PDF, без име на сајтот и без лого"
 
@@ -2835,8 +2852,8 @@ msgstr "Ненумерирана листа"
 msgid "Unpublished texts"
 msgstr "Необјавени текстови"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Погрешен вид на фајл %1"
 
@@ -2882,6 +2899,9 @@ msgstr "Користи SSL за овластени корисници"
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr ""
 "Користи ја како слика за преглед додавајќи го следниот ред во заглавјето:"
+
+msgid "Use named table of contents anchors instead of numeric ones"
+msgstr ""
 
 msgid "Use one of the site's formats"
 msgstr "Користи некој од форматите на сајтот"
@@ -2987,6 +3007,9 @@ msgstr ""
 
 msgid "Where does this text come from?"
 msgstr "Од каде е овој текст?"
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr ""
 
 msgid "Width of the cover image in percent of the text block width."
 msgstr ""
@@ -3220,6 +3243,9 @@ msgstr "се генерира автоматски доколку недости
 msgid "code and monospace"
 msgstr "обликување на кодот"
 
+msgid "comma separated list"
+msgstr ""
+
 msgid "completed"
 msgstr "готово"
 
@@ -3348,9 +3374,6 @@ msgstr "текстови според автор"
 msgid "texts sorted by title"
 msgstr "текстови според наслов"
 
-msgid "texts sorted by topics"
-msgstr "текстови според тема"
-
 msgid "the author of the text (as displayed)"
 msgstr "автор на текстот (за насловна страница)"
 
@@ -3379,6 +3402,9 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "текстови според тема"
 
 #~ msgid "Add or delete and add again the <user_repo_url> on this page."
 #~ msgstr ""

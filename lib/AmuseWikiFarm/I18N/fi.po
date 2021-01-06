@@ -400,6 +400,9 @@ msgstr "Luku, vain kirjan eri lukuihin"
 msgid "Cheatsheet for the markup"
 msgstr "Merkintäohjeet"
 
+msgid "Check mail sending and send mail to:"
+msgstr ""
+
 msgid "Choose a paper format"
 msgstr "Valitse paperityyppi"
 
@@ -2028,6 +2031,9 @@ msgstr ""
 msgid "SSL key path"
 msgstr ""
 
+msgid "Same as above, but for duplex printers"
+msgstr ""
+
 msgid "Same as above, for the Archive menu"
 msgstr ""
 
@@ -2090,6 +2096,13 @@ msgid "Select all for rescheduling"
 msgstr ""
 
 msgid "Select individual parts for the bookbuilder"
+msgstr ""
+
+msgid "Send mail"
+msgstr ""
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
 msgstr ""
 
 msgid "Separate body fields"
@@ -2617,6 +2630,10 @@ msgstr ""
 msgid "Unable to load the bookbuilder session"
 msgstr ""
 
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr ""
+
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr ""
 
@@ -2642,8 +2659,8 @@ msgstr "Luettelo"
 msgid "Unpublished texts"
 msgstr "Julkaisemattomat tekstit"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Tiedostotyyppi %1 ei ole tuettu"
 
@@ -2685,6 +2702,9 @@ msgid "Use SSL for authenticated users"
 msgstr ""
 
 msgid "Use it as a teaser image adding to the header this line:"
+msgstr ""
+
+msgid "Use named table of contents anchors instead of numeric ones"
 msgstr ""
 
 msgid "Use one of the site's formats"
@@ -2781,6 +2801,9 @@ msgstr ""
 
 msgid "Where does this text come from?"
 msgstr "Mistä teksti on peräisin?"
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr ""
 
 msgid "Width of the cover image in percent of the text block width."
 msgstr "Kansikuvan leveys prosentteina tekstiosan leveydestä."
@@ -2990,6 +3013,9 @@ msgstr "luodaan automaattisesti kirjoittajan ja otsikon pohjalta"
 msgid "code and monospace"
 msgstr "koodi ja tasavälinen teksti"
 
+msgid "comma separated list"
+msgstr ""
+
 msgid "completed"
 msgstr "valmis"
 
@@ -3118,9 +3144,6 @@ msgstr "tekstit kirjoittajan mukaan lajiteltuna"
 msgid "texts sorted by title"
 msgstr "tekstit otsikon mukaan lajiteltuna"
 
-msgid "texts sorted by topics"
-msgstr "tekstit aiheen mukaan lajiteltuna"
-
 msgid "the author of the text (as displayed)"
 msgstr "Tekstin kirjoittaja (kuten se tulee näkymään)"
 
@@ -3149,6 +3172,9 @@ msgid ""
 msgstr ""
 "\"Vanha muokkaus\" tarkoittaa sitä, että versio hylättiin\n"
 "    kesken muokkauksen, mutta se on yhä odottamassa jatkajaansa"
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "tekstit aiheen mukaan lajiteltuna"
 
 #~ msgid "Job deleted"
 #~ msgstr "Työ poistettu"

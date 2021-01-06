@@ -390,6 +390,9 @@ msgstr ""
 msgid "Cheatsheet for the markup"
 msgstr ""
 
+msgid "Check mail sending and send mail to:"
+msgstr ""
+
 msgid "Choose a paper format"
 msgstr ""
 
@@ -1970,6 +1973,9 @@ msgstr ""
 msgid "SSL key path"
 msgstr ""
 
+msgid "Same as above, but for duplex printers"
+msgstr ""
+
 msgid "Same as above, for the Archive menu"
 msgstr ""
 
@@ -2032,6 +2038,13 @@ msgid "Select all for rescheduling"
 msgstr ""
 
 msgid "Select individual parts for the bookbuilder"
+msgstr ""
+
+msgid "Send mail"
+msgstr ""
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
 msgstr ""
 
 msgid "Separate body fields"
@@ -2551,6 +2564,10 @@ msgstr ""
 msgid "Unable to load the bookbuilder session"
 msgstr ""
 
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr ""
+
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr ""
 
@@ -2576,8 +2593,8 @@ msgstr ""
 msgid "Unpublished texts"
 msgstr ""
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr ""
 
@@ -2619,6 +2636,9 @@ msgid "Use SSL for authenticated users"
 msgstr ""
 
 msgid "Use it as a teaser image adding to the header this line:"
+msgstr ""
+
+msgid "Use named table of contents anchors instead of numeric ones"
 msgstr ""
 
 msgid "Use one of the site's formats"
@@ -2710,6 +2730,9 @@ msgid "When you upload a PDF, split it into images to be inserted in the body"
 msgstr ""
 
 msgid "Where does this text come from?"
+msgstr ""
+
+msgid "Whitelisted IP (for backup, one per line)"
 msgstr ""
 
 msgid "Width of the cover image in percent of the text block width."
@@ -2912,6 +2935,9 @@ msgstr ""
 msgid "code and monospace"
 msgstr ""
 
+msgid "comma separated list"
+msgstr ""
+
 msgid "completed"
 msgstr ""
 
@@ -3038,9 +3064,6 @@ msgid "texts sorted by author"
 msgstr ""
 
 msgid "texts sorted by title"
-msgstr ""
-
-msgid "texts sorted by topics"
 msgstr ""
 
 msgid "the author of the text (as displayed)"

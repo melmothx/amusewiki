@@ -422,6 +422,9 @@ msgstr "Kapitel, kun for kapitelinddeling i bøger"
 msgid "Cheatsheet for the markup"
 msgstr "Manual til opmærkningen"
 
+msgid "Check mail sending and send mail to:"
+msgstr ""
+
 msgid "Choose a paper format"
 msgstr "Vælg papirformatet"
 
@@ -2135,6 +2138,9 @@ msgstr "SSL konfiguration"
 msgid "SSL key path"
 msgstr "SSL nøgle sti"
 
+msgid "Same as above, but for duplex printers"
+msgstr ""
+
 msgid "Same as above, for the Archive menu"
 msgstr ""
 
@@ -2198,6 +2204,13 @@ msgstr ""
 
 msgid "Select individual parts for the bookbuilder"
 msgstr "Vælg enkelte dele til bogbyggeren"
+
+msgid "Send mail"
+msgstr ""
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
+msgstr ""
 
 msgid "Separate body fields"
 msgstr "Separate brødtekst felter"
@@ -2730,6 +2743,10 @@ msgstr "UTC"
 msgid "Unable to load the bookbuilder session"
 msgstr "Ikke i stand til at indlæse bogbygger sessionen"
 
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr ""
+
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr "Umærket PDF (skjul hjemmesidenavn, logo, etc.)"
 
@@ -2755,8 +2772,8 @@ msgstr "Punkttegns liste"
 msgid "Unpublished texts"
 msgstr "Ikke offentliggjorte tekster"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Ikke understøttet filtype %1"
 
@@ -2800,6 +2817,9 @@ msgstr "Brug SSL for verificerede brugere"
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr ""
 "Brug det som et teaser billede ved at tilføje følgende linje til sidehovedet:"
+
+msgid "Use named table of contents anchors instead of numeric ones"
+msgstr ""
 
 msgid "Use one of the site's formats"
 msgstr ""
@@ -2901,6 +2921,9 @@ msgstr ""
 
 msgid "Where does this text come from?"
 msgstr "Hvor kommer denne tekst fra?"
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr ""
 
 msgid "Width of the cover image in percent of the text block width."
 msgstr "Omslagsbilledets bredde i procent af tekstblokkens bredde."
@@ -3127,6 +3150,9 @@ msgstr ""
 msgid "code and monospace"
 msgstr "kode og monospatieret"
 
+msgid "comma separated list"
+msgstr ""
+
 msgid "completed"
 msgstr "færdig"
 
@@ -3257,9 +3283,6 @@ msgstr "tekster sorteret efter forfatternavn"
 msgid "texts sorted by title"
 msgstr "tekster sorteret efter titel"
 
-msgid "texts sorted by topics"
-msgstr "tekster sorteret efter emner"
-
 msgid "the author of the text (as displayed)"
 msgstr "tekstens forfatter (som vist)"
 
@@ -3290,6 +3313,9 @@ msgstr ""
 "    under redigeringen, men den er stadig der, hvis nogen skulle få lyst "
 "til\n"
 "    at samle den op under redigeringen af en tekst."
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "tekster sorteret efter emner"
 
 #~ msgid "Add or delete and add again the <user_repo_url> on this page."
 #~ msgstr "Tilføj eller slet og tilføj igen <user_repo_url> på denne side."

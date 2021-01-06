@@ -437,6 +437,9 @@ msgstr "Kapitull, vetëm për ndarje  në libra"
 msgid "Cheatsheet for the markup"
 msgstr "Cheatsheet për markup"
 
+msgid "Check mail sending and send mail to:"
+msgstr ""
+
 msgid "Choose a paper format"
 msgstr "Zgjidh formatin e letrës"
 
@@ -2140,6 +2143,9 @@ msgstr "Parametrat e SLL"
 msgid "SSL key path"
 msgstr ""
 
+msgid "Same as above, but for duplex printers"
+msgstr ""
+
 msgid "Same as above, for the Archive menu"
 msgstr ""
 
@@ -2204,6 +2210,13 @@ msgstr ""
 
 msgid "Select individual parts for the bookbuilder"
 msgstr "Zgjedh pjesët e veçanta për krijuesin e librit."
+
+msgid "Send mail"
+msgstr ""
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
+msgstr ""
 
 msgid "Separate body fields"
 msgstr "Fushat e ndara të trupit të dokumentit "
@@ -2760,6 +2773,10 @@ msgstr "UTC"
 msgid "Unable to load the bookbuilder session"
 msgstr ""
 
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr ""
+
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr ""
 
@@ -2787,8 +2804,8 @@ msgstr "Lista e renditur"
 msgid "Unpublished texts"
 msgstr "Tekst i papublikuar"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Tip i dokumentit i pasuportuar %1"
 
@@ -2830,6 +2847,9 @@ msgid "Use SSL for authenticated users"
 msgstr ""
 
 msgid "Use it as a teaser image adding to the header this line:"
+msgstr ""
+
+msgid "Use named table of contents anchors instead of numeric ones"
 msgstr ""
 
 msgid "Use one of the site's formats"
@@ -2926,6 +2946,9 @@ msgstr ""
 
 msgid "Where does this text come from?"
 msgstr "Prej nga vjen ky tekst?"
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr ""
 
 msgid "Width of the cover image in percent of the text block width."
 msgstr ""
@@ -3154,6 +3177,9 @@ msgstr ""
 msgid "code and monospace"
 msgstr "Kodi dhe monospace"
 
+msgid "comma separated list"
+msgstr ""
+
 msgid "completed"
 msgstr "i kompletuar"
 
@@ -3284,9 +3310,6 @@ msgstr "tekstet e renditura sipas autorit"
 msgid "texts sorted by title"
 msgstr "tekstet e renditura sipas titullit"
 
-msgid "texts sorted by topics"
-msgstr "tekstet e renditura sipas temës"
-
 msgid "the author of the text (as displayed)"
 msgstr "autori i tekstit (ashtu siç është i paraqitur)"
 
@@ -3316,6 +3339,9 @@ msgstr ""
 "“Ndryshim i mbetur” do të thotë që përpunimi është brakstisur\n"
 " gjatë ndryshimit por është ende aty në rast se dikush dëshiron të vazhdoj\n"
 " me ndryshimin e tekstit."
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "tekstet e renditura sipas temës"
 
 #~ msgid "Add or delete and add again the <user_repo_url> on this page."
 #~ msgstr "Shto ose fshij dhe përsëri shto <user_repo_url> në këtë faqe."

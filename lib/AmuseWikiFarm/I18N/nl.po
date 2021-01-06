@@ -437,6 +437,9 @@ msgstr "Hoofdstuk, alleen voor hoofdstukindeling in boeken"
 msgid "Cheatsheet for the markup"
 msgstr "Spiekbriefje voor de opmaak"
 
+msgid "Check mail sending and send mail to:"
+msgstr ""
+
 msgid "Choose a paper format"
 msgstr "Kies een papierformaat"
 
@@ -2211,6 +2214,9 @@ msgstr "SSL configuratie"
 msgid "SSL key path"
 msgstr "SSL sleutelpad"
 
+msgid "Same as above, but for duplex printers"
+msgstr ""
+
 msgid "Same as above, for the Archive menu"
 msgstr "Zelfde als boven, voor het Archiefmenu"
 
@@ -2274,6 +2280,13 @@ msgstr ""
 
 msgid "Select individual parts for the bookbuilder"
 msgstr "Selecteer individuele delen voor de boekmaker"
+
+msgid "Send mail"
+msgstr ""
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
+msgstr ""
 
 msgid "Separate body fields"
 msgstr "Scheid hoofdtekstvelden"
@@ -2844,6 +2857,10 @@ msgstr "UTC"
 msgid "Unable to load the bookbuilder session"
 msgstr "Niet in staat om de boekmakersessie te laden"
 
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr ""
+
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr "Ongemerkte PDF (verberg sitenaam, logo etc.)"
 
@@ -2871,8 +2888,8 @@ msgstr "Ongeordende lijst"
 msgid "Unpublished texts"
 msgstr "Ongepubliceerde teksten"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Niet-ondersteund bestandsformaat %1"
 
@@ -2917,6 +2934,9 @@ msgid "Use it as a teaser image adding to the header this line:"
 msgstr ""
 "Gebruik het als een teaserafbeelding, waarbij deze regel aan de koptekst "
 "wordt toegevoegd:"
+
+msgid "Use named table of contents anchors instead of numeric ones"
+msgstr ""
 
 msgid "Use one of the site's formats"
 msgstr ""
@@ -3024,6 +3044,9 @@ msgstr ""
 
 msgid "Where does this text come from?"
 msgstr "Waar komt deze tekst vandaan?"
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr ""
 
 msgid "Width of the cover image in percent of the text block width."
 msgstr "Breedte van de omslagafbeelding in procent van de tekstblokbreedte."
@@ -3260,6 +3283,9 @@ msgstr ""
 msgid "code and monospace"
 msgstr "code en niet-proportioneel (monospace)"
 
+msgid "comma separated list"
+msgstr ""
+
 msgid "completed"
 msgstr "voltooid"
 
@@ -3390,9 +3416,6 @@ msgstr "teksten gesorteerd op auteur"
 msgid "texts sorted by title"
 msgstr "teksten gesorteerd op titel"
 
-msgid "texts sorted by topics"
-msgstr "teksten gesorteerd op onderwerp"
-
 msgid "the author of the text (as displayed)"
 msgstr "de auteur van de tekst (zoals weergegeven)"
 
@@ -3422,6 +3445,9 @@ msgstr ""
 "\"Oude bewerking\" betekent dat de herziening was verlaten\n"
 "    tijdens het bewerken, maar hij is er nog steeds voor het geval dat\n"
 "    iemand er verder mee wil gaan bij het bewerken van een tekst."
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "teksten gesorteerd op onderwerp"
 
 #~ msgid "Add or delete and add again the <user_repo_url> on this page."
 #~ msgstr ""

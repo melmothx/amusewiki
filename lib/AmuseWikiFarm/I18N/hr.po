@@ -417,6 +417,9 @@ msgstr "Poglavlje, samo za cijele knjige"
 msgid "Cheatsheet for the markup"
 msgstr "Sažetak za oblikovanje teksta"
 
+msgid "Check mail sending and send mail to:"
+msgstr ""
+
 msgid "Choose a paper format"
 msgstr "Izaberi format papira"
 
@@ -2143,6 +2146,9 @@ msgstr "SSL konfiguracija"
 msgid "SSL key path"
 msgstr "Ključ SSL"
 
+msgid "Same as above, but for duplex printers"
+msgstr ""
+
 msgid "Same as above, for the Archive menu"
 msgstr "Isto kao gore navedeno, ali za Arhivu"
 
@@ -2206,6 +2212,13 @@ msgstr ""
 
 msgid "Select individual parts for the bookbuilder"
 msgstr "Izaberi pojedinačne dijelove za zbirku"
+
+msgid "Send mail"
+msgstr ""
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
+msgstr ""
 
 msgid "Separate body fields"
 msgstr "Odvajaju dijelove tijela"
@@ -2754,6 +2767,10 @@ msgstr "UTC"
 msgid "Unable to load the bookbuilder session"
 msgstr "Očitovanje sesije nije uspjelo"
 
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr ""
+
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr "Anonimni PDF, bez imena sajta i bez loga"
 
@@ -2779,8 +2796,8 @@ msgstr "Običan popis"
 msgid "Unpublished texts"
 msgstr "Neobjavljeni tekstovi"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Pogrešna vrsta fajla: %1"
 
@@ -2823,6 +2840,9 @@ msgstr "Koristi SSL za ovlaštene korisnike"
 
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr "Koristi je kao sliku za pregled dodajući slijedeći redak zaglavlju:"
+
+msgid "Use named table of contents anchors instead of numeric ones"
+msgstr ""
 
 msgid "Use one of the site's formats"
 msgstr ""
@@ -2926,6 +2946,9 @@ msgstr ""
 
 msgid "Where does this text come from?"
 msgstr "Odakle dolazi ovaj tekst?"
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr ""
 
 msgid "Width of the cover image in percent of the text block width."
 msgstr "Širina naslovne slike u postotku širine teksta."
@@ -3155,6 +3178,9 @@ msgstr "automatski generiran ako nedostaje, s autorom i naslovom"
 msgid "code and monospace"
 msgstr "oblikovanje koda"
 
+msgid "comma separated list"
+msgstr ""
+
 msgid "completed"
 msgstr "gotovo"
 
@@ -3283,9 +3309,6 @@ msgstr "tekstovi po autoru"
 msgid "texts sorted by title"
 msgstr "tekstovi po naslovu"
 
-msgid "texts sorted by topics"
-msgstr "tekstovi po temi"
-
 msgid "the author of the text (as displayed)"
 msgstr "autor teksta (za naslovnicu)"
 
@@ -3314,6 +3337,9 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "tekstovi po temi"
 
 #~ msgid "Add or delete and add again the <user_repo_url> on this page."
 #~ msgstr "Dodaj ili izbriši i ponovo dodaj URL repositorija na ovoj stranici"

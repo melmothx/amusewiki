@@ -405,6 +405,9 @@ msgstr "Kapitel, endast för kapitelindelning i böcker"
 msgid "Cheatsheet for the markup"
 msgstr "Fusklapp för kodningen"
 
+msgid "Check mail sending and send mail to:"
+msgstr ""
+
 msgid "Choose a paper format"
 msgstr "Välj ett pappersformat"
 
@@ -2047,6 +2050,9 @@ msgstr ""
 msgid "SSL key path"
 msgstr ""
 
+msgid "Same as above, but for duplex printers"
+msgstr ""
+
 msgid "Same as above, for the Archive menu"
 msgstr ""
 
@@ -2109,6 +2115,13 @@ msgid "Select all for rescheduling"
 msgstr ""
 
 msgid "Select individual parts for the bookbuilder"
+msgstr ""
+
+msgid "Send mail"
+msgstr ""
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
 msgstr ""
 
 msgid "Separate body fields"
@@ -2641,6 +2654,10 @@ msgstr "UTC"
 msgid "Unable to load the bookbuilder session"
 msgstr ""
 
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr ""
+
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr ""
 
@@ -2666,8 +2683,8 @@ msgstr "Punktlista"
 msgid "Unpublished texts"
 msgstr "Opublicerade texter"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Filtypen stöds inte %1"
 
@@ -2709,6 +2726,9 @@ msgid "Use SSL for authenticated users"
 msgstr "Använd SSL för verifierade användare"
 
 msgid "Use it as a teaser image adding to the header this line:"
+msgstr ""
+
+msgid "Use named table of contents anchors instead of numeric ones"
 msgstr ""
 
 msgid "Use one of the site's formats"
@@ -2804,6 +2824,9 @@ msgstr ""
 
 msgid "Where does this text come from?"
 msgstr "Vartifrån kommer denna text?"
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr ""
 
 msgid "Width of the cover image in percent of the text block width."
 msgstr "Omslagsbildens bredd i procent av textblockets bredd."
@@ -3015,6 +3038,9 @@ msgstr "genereras automatiskt om saknad, genom författare och titel"
 msgid "code and monospace"
 msgstr "kod och monospace"
 
+msgid "comma separated list"
+msgstr ""
+
 msgid "completed"
 msgstr "slutförd"
 
@@ -3143,9 +3169,6 @@ msgstr "text sorterad efter författare"
 msgid "texts sorted by title"
 msgstr "texter sorterade efter titel"
 
-msgid "texts sorted by topics"
-msgstr "texter sorterade efter ämnen"
-
 msgid "the author of the text (as displayed)"
 msgstr "textens författare (såsom det visas)"
 
@@ -3175,6 +3198,9 @@ msgstr ""
 "\"Förlegad redigering\" innebär att revideringen övergavs    under "
 "redigeringens gång, men den är fortfarande där, utifall att     någon vill "
 "återuppta den, medans den redigerar en text."
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "texter sorterade efter ämnen"
 
 #~ msgid "Remotes"
 #~ msgstr "Avlägsnade"

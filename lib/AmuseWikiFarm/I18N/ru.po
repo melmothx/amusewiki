@@ -425,6 +425,9 @@ msgstr "Глава. Только для выделения глав в книг�
 msgid "Cheatsheet for the markup"
 msgstr "Шпаргалка по разметке"
 
+msgid "Check mail sending and send mail to:"
+msgstr ""
+
 msgid "Choose a paper format"
 msgstr "Выберите размер бумаги"
 
@@ -2142,6 +2145,9 @@ msgstr "Конфигурация SSL"
 msgid "SSL key path"
 msgstr "Путь к SSL-ключу"
 
+msgid "Same as above, but for duplex printers"
+msgstr ""
+
 msgid "Same as above, for the Archive menu"
 msgstr "Так же, как выше, для меню Архив"
 
@@ -2205,6 +2211,13 @@ msgstr ""
 
 msgid "Select individual parts for the bookbuilder"
 msgstr "Выбрать отдельные части для конструктора книг"
+
+msgid "Send mail"
+msgstr ""
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
+msgstr ""
 
 msgid "Separate body fields"
 msgstr "Разделить поля тела сообщения"
@@ -2761,6 +2774,10 @@ msgstr "UTC"
 msgid "Unable to load the bookbuilder session"
 msgstr "Невозможно загрузить сессию конструктора книг"
 
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr ""
+
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr "PDF без имени сайта, логотипа и т.д."
 
@@ -2786,8 +2803,8 @@ msgstr "Маркированный список"
 msgid "Unpublished texts"
 msgstr "Неопубликованные тексты"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Неподдерживаемый формат файла %1"
 
@@ -2831,6 +2848,9 @@ msgstr "Использовать SSL для авторизованных пол�
 
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr "Используйте это как обложку, добавив следующую строку в заголовок:"
+
+msgid "Use named table of contents anchors instead of numeric ones"
+msgstr ""
 
 msgid "Use one of the site's formats"
 msgstr ""
@@ -2935,6 +2955,9 @@ msgstr ""
 
 msgid "Where does this text come from?"
 msgstr "Откуда этот текст?"
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr ""
 
 msgid "Width of the cover image in percent of the text block width."
 msgstr "Ширина обложки в процентном отношении к блоку."
@@ -3166,6 +3189,9 @@ msgstr ""
 msgid "code and monospace"
 msgstr "код и моноширинный"
 
+msgid "comma separated list"
+msgstr ""
+
 msgid "completed"
 msgstr "завершено"
 
@@ -3296,9 +3322,6 @@ msgstr "тексты отсортированы по автору"
 msgid "texts sorted by title"
 msgstr "тексты отсортированы по названию"
 
-msgid "texts sorted by topics"
-msgstr "тексты отсортированы по теме"
-
 msgid "the author of the text (as displayed)"
 msgstr "автор текста (как отображается)"
 
@@ -3328,6 +3351,9 @@ msgstr ""
 "«Устаревшее редактирование» означает, что правка не была доделана, но всё "
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "тексты отсортированы по теме"
 
 #~ msgid "Add or delete and add again the <user_repo_url> on this page."
 #~ msgstr ""

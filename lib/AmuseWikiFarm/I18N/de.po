@@ -406,6 +406,9 @@ msgstr "Kapitel, nur für Kapiteltrennung in Büchern"
 msgid "Cheatsheet for the markup"
 msgstr "Spickzettel für die Formatierung"
 
+msgid "Check mail sending and send mail to:"
+msgstr ""
+
 msgid "Choose a paper format"
 msgstr "Wähle ein Papierformat"
 
@@ -2038,6 +2041,9 @@ msgstr ""
 msgid "SSL key path"
 msgstr ""
 
+msgid "Same as above, but for duplex printers"
+msgstr ""
+
 msgid "Same as above, for the Archive menu"
 msgstr ""
 
@@ -2100,6 +2106,13 @@ msgid "Select all for rescheduling"
 msgstr ""
 
 msgid "Select individual parts for the bookbuilder"
+msgstr ""
+
+msgid "Send mail"
+msgstr ""
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
 msgstr ""
 
 msgid "Separate body fields"
@@ -2638,6 +2651,10 @@ msgstr "UTC"
 msgid "Unable to load the bookbuilder session"
 msgstr ""
 
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr ""
+
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr ""
 
@@ -2663,8 +2680,8 @@ msgstr "Aufzählung"
 msgid "Unpublished texts"
 msgstr "Unveröffentlichte Texte"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr ""
 
@@ -2706,6 +2723,9 @@ msgid "Use SSL for authenticated users"
 msgstr ""
 
 msgid "Use it as a teaser image adding to the header this line:"
+msgstr ""
+
+msgid "Use named table of contents anchors instead of numeric ones"
 msgstr ""
 
 msgid "Use one of the site's formats"
@@ -2801,6 +2821,9 @@ msgstr ""
 
 msgid "Where does this text come from?"
 msgstr "Woher kommt dieser Text?"
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr ""
 
 msgid "Width of the cover image in percent of the text block width."
 msgstr ""
@@ -3016,6 +3039,9 @@ msgstr ""
 msgid "code and monospace"
 msgstr "Code und Monospace"
 
+msgid "comma separated list"
+msgstr ""
+
 msgid "completed"
 msgstr "fertig gestellt"
 
@@ -3144,9 +3170,6 @@ msgstr "Texte nach Autor"
 msgid "texts sorted by title"
 msgstr "Texte nach Titeln sortiert"
 
-msgid "texts sorted by topics"
-msgstr "Texte nach Themen sortiert"
-
 msgid "the author of the text (as displayed)"
 msgstr "die AutorIn des Texts (wie angezeigt)"
 
@@ -3177,6 +3200,9 @@ msgstr ""
 " Bearbeitung, auf Eis gelegt wurde, aber immer noch\n"
 " erhalten ist, falls sie jemand wieder aufnehmen will wenn sie den\n"
 " Text bearbeitet. "
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "Texte nach Themen sortiert"
 
 #~ msgid "Remotes"
 #~ msgstr "unzugänglich"
