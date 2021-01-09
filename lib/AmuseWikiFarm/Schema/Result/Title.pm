@@ -116,6 +116,31 @@ __PACKAGE__->table("title");
   is_nullable: 1
   size: 255
 
+=head2 publisher
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 isbn
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 rights
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 seriesname
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 seriesnumber
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 f_path
 
   data_type: 'text'
@@ -277,6 +302,16 @@ __PACKAGE__->add_columns(
   },
   "parent",
   { data_type => "varchar", is_nullable => 1, size => 255 },
+  "publisher",
+  { data_type => "text", is_nullable => 1 },
+  "isbn",
+  { data_type => "text", is_nullable => 1 },
+  "rights",
+  { data_type => "text", is_nullable => 1 },
+  "seriesname",
+  { data_type => "text", is_nullable => 1 },
+  "seriesnumber",
+  { data_type => "text", is_nullable => 1 },
   "f_path",
   { data_type => "text", is_nullable => 0 },
   "f_name",
@@ -559,8 +594,8 @@ Composing rels: L</node_titles> -> node
 __PACKAGE__->many_to_many("nodes", "node_titles", "node");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-08-12 07:53:59
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:N7LqvrcL8OXj9qEPzztHKw
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-01-09 08:37:34
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:51HskxE4MvmKjcnupCLrow
 
 =head2 translations
 
