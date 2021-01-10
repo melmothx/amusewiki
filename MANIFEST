@@ -1626,6 +1626,7 @@ t/full-blog-mode.t
 t/git-pulling-async.t
 t/git-pulling-interface.t
 t/git-revision.t
+t/headers.t
 t/html-upload.t
 t/human-login-screens.t
 t/imager.t
