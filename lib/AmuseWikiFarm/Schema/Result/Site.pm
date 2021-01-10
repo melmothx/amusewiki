@@ -1731,8 +1731,13 @@ sub import_text_from_html_params {
                               SORTtopics date uid cat
                               slides
                               sku
-                              source lang pubdate/) {
-
+                              source lang pubdate
+                              publisher
+                              isbn
+                              rights
+                              seriesname
+                              seriesnumber
+                             /) {
         $self->_add_directive($fh, $directive, $params->{$directive});
     }
     # add the notes
