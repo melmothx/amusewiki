@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 11;
+use Test::More tests => 17;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -47,10 +47,11 @@ is $title->seriesname, 'My book series';
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 $mech->get_ok('/');
-$mech->get_ok('/library/pinco-pallino');
-
-foreach my $v (values %headers) {
-    $mech->content_contains($v);
+foreach my $url ('/library/pinco-pallino', '/library/pinco-pallino.html') {
+    $mech->get_ok($url);
+    foreach my $v (values %headers) {
+        $mech->content_contains($v);
+    }
 }
 
 
