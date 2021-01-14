@@ -63,6 +63,11 @@ is_deeply $site->title_fields, {
                                 attachment_index => 1,
                                 blob_container => 1,
                                 parent => 1,
+                                publisher => 1,
+                                isbn => 1,
+                                rights => 1,
+                                seriesname => 1,
+                                seriesnumber => 1,
                             }, "the archive knows the title fields";
 
 ok(!$site->index_file);
