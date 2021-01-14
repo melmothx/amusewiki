@@ -213,7 +213,7 @@ __PACKAGE__->table("title");
 
   data_type: 'varchar'
   is_nullable: 1
-  size: 255
+  size: 32
 
 =head2 text_size
 
@@ -310,7 +310,7 @@ __PACKAGE__->add_columns(
   "sku",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 64 },
   "text_qualification",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "varchar", is_nullable => 1, size => 32 },
   "text_size",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "attachment_index",
@@ -559,8 +559,8 @@ Composing rels: L</node_titles> -> node
 __PACKAGE__->many_to_many("nodes", "node_titles", "node");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-08-12 07:53:59
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:N7LqvrcL8OXj9qEPzztHKw
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-01-14 10:51:28
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sUa9XFjoTPC3PlE7hxnkBw
 
 =head2 translations
 
