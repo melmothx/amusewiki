@@ -951,6 +951,9 @@ msgstr ""
 msgid "IRC channel on freenode"
 msgstr ""
 
+msgid "ISBN"
+msgstr ""
+
 msgid "Id"
 msgstr ""
 
@@ -1800,6 +1803,9 @@ msgstr ""
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr ""
 
+msgid "Publisher"
+msgstr ""
+
 msgid "Purge"
 msgstr ""
 
@@ -2062,6 +2068,9 @@ msgid "Separate footer fields"
 msgstr ""
 
 msgid "Separate header fields"
+msgstr ""
+
+msgid "Series"
 msgstr ""
 
 msgid "Session sharing"

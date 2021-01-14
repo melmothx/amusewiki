@@ -1002,6 +1002,9 @@ msgstr ""
 msgid "IRC channel on freenode"
 msgstr "IRC kanal na mreži Freenode"
 
+msgid "ISBN"
+msgstr ""
+
 msgid "Id"
 msgstr "Id"
 
@@ -1955,6 +1958,9 @@ msgstr "Objavi"
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Objavljeno u *Lijepa knjiga*, objavila Izdavačka kuća, 2014."
 
+msgid "Publisher"
+msgstr ""
+
 msgid "Purge"
 msgstr "Očisti"
 
@@ -2228,6 +2234,9 @@ msgstr "Odvajaju dijelove podnožja"
 
 msgid "Separate header fields"
 msgstr "Odvajaju dijelove zaglavlja"
+
+msgid "Series"
+msgstr ""
 
 msgid "Session sharing"
 msgstr "Dijeli sesiju"

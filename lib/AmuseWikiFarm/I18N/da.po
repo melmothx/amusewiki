@@ -1009,6 +1009,9 @@ msgstr ""
 msgid "IRC channel on freenode"
 msgstr "IRC kanal på freenode"
 
+msgid "ISBN"
+msgstr ""
+
 msgid "Id"
 msgstr "Id"
 
@@ -1943,6 +1946,9 @@ msgstr "Offentliggør"
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Offentliggjort i *En god bog*, udgivet af Mit Forlag, 2017"
 
+msgid "Publisher"
+msgstr ""
+
 msgid "Purge"
 msgstr "Slet fuldstændigt"
 
@@ -2220,6 +2226,9 @@ msgstr "Separate sidefods felter"
 
 msgid "Separate header fields"
 msgstr "Separate overskrift felter"
+
+msgid "Series"
+msgstr ""
 
 msgid "Session sharing"
 msgstr "Sessions deling"

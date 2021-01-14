@@ -164,7 +164,7 @@ msgstr ""
 msgid "Add the whole text"
 msgstr ""
 
-#: root/src/include/preamble.tt:149 root/src/include/preamble.tt:151
+#: root/src/include/preamble.tt:182 root/src/include/preamble.tt:184
 msgid "Add this text to the bookbuilder"
 msgstr ""
 
@@ -283,7 +283,7 @@ msgstr ""
 msgid "Attachments"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1700 root/src/bookbuilder/index.tt:123 root/src/console/unpublished.tt:9 root/src/edit/newtext.tt:63 root/src/static-indexes.tt:70
+#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1735 root/src/bookbuilder/index.tt:123 root/src/console/unpublished.tt:9 root/src/edit/newtext.tt:63 root/src/static-indexes.tt:70
 msgid "Author"
 msgstr ""
 
@@ -291,7 +291,7 @@ msgstr ""
 msgid "Author and title. If one side document: title."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1700 root/src/edit/preview.tt:25
+#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1735 root/src/edit/preview.tt:25
 msgid "Authors"
 msgstr ""
 
@@ -734,7 +734,7 @@ msgstr ""
 msgid "Double bars"
 msgstr ""
 
-#: root/src/include/preamble.tt:100
+#: root/src/include/preamble.tt:133
 msgid "Downloads"
 msgstr ""
 
@@ -788,7 +788,7 @@ msgstr ""
 msgid "Edit the text you want to unpublish and add this line to the header:"
 msgstr ""
 
-#: root/src/include/preamble.tt:136 root/src/include/preamble.tt:138
+#: root/src/include/preamble.tt:169 root/src/include/preamble.tt:171
 msgid "Edit this text"
 msgstr ""
 
@@ -1042,7 +1042,7 @@ msgstr ""
 msgid "Formats"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Listing.pm:41 lib/AmuseWikiFarm/Role/Controller/RegularListing.pm:31 lib/AmuseWikiFarm/Schema/Result/Site.pm:4490 lib/AmuseWikiFarm/Schema/Result/Site.pm:4510 lib/AmuseWikiFarm/Schema/Result/Site.pm:4533
+#: lib/AmuseWikiFarm/Controller/Listing.pm:41 lib/AmuseWikiFarm/Role/Controller/RegularListing.pm:31 lib/AmuseWikiFarm/Schema/Result/Site.pm:4495 lib/AmuseWikiFarm/Schema/Result/Site.pm:4515 lib/AmuseWikiFarm/Schema/Result/Site.pm:4538
 msgid "Full list of texts"
 msgstr ""
 
@@ -1199,6 +1199,10 @@ msgstr ""
 
 #: root/src/admin/edit.tt:614
 msgid "IRC channel on freenode"
+msgstr ""
+
+#: root/src/include/preamble.tt:96
+msgid "ISBN"
 msgstr ""
 
 #: root/src/admin/jobs.tt:43 root/src/admin/list.tt:12
@@ -1511,7 +1515,7 @@ msgstr ""
 msgid "Last updated"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Latest.pm:58 lib/AmuseWikiFarm/Controller/OPDS.pm:57 lib/AmuseWikiFarm/Schema/Result/Site.pm:4503 root/src/admin/edit.tt:668 root/src/layout.tt:269 root/src/layout.tt:270 root/src/layout.tt:734 root/src/text.tt:176
+#: lib/AmuseWikiFarm/Controller/Latest.pm:58 lib/AmuseWikiFarm/Controller/OPDS.pm:57 lib/AmuseWikiFarm/Schema/Result/Site.pm:4508 root/src/admin/edit.tt:668 root/src/layout.tt:269 root/src/layout.tt:270 root/src/layout.tt:734 root/src/text.tt:176
 msgid "Latest entries"
 msgstr ""
 
@@ -1749,7 +1753,7 @@ msgstr ""
 msgid "Never show teaser and/or cover in text lists"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4502 root/src/publish/pending.tt:34
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4507 root/src/publish/pending.tt:34
 msgid "New"
 msgstr ""
 
@@ -2251,6 +2255,10 @@ msgstr ""
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr ""
 
+#: root/src/include/preamble.tt:105
+msgid "Publisher"
+msgstr ""
+
 #: root/src/console/unpublished.tt:14 root/src/console/unpublished.tt:46
 msgid "Purge"
 msgstr ""
@@ -2326,7 +2334,7 @@ msgstr ""
 msgid "Reason for deletion"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4350 root/src/tasks/rebuild.tt:26
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4355 root/src/tasks/rebuild.tt:26
 msgid "Rebuild"
 msgstr ""
 
@@ -2334,7 +2342,7 @@ msgstr ""
 msgid "Rebuild all generated files"
 msgstr ""
 
-#: root/src/include/preamble.tt:171 root/src/include/preamble.tt:172
+#: root/src/include/preamble.tt:204 root/src/include/preamble.tt:205
 msgid "Rebuild the generated formats"
 msgstr ""
 
@@ -2515,7 +2523,7 @@ msgstr ""
 msgid "Saved \"%1\" configuration"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Search.pm:101 lib/AmuseWikiFarm/Schema/Result/Site.pm:4516 root/src/admin/edit.tt:646 root/src/layout.tt:195 root/src/layout.tt:196 root/src/layout.tt:200 root/src/search/index.tt:24 root/src/search/index.tt:9 root/src/static-indexes.tt:172
+#: lib/AmuseWikiFarm/Controller/Search.pm:101 lib/AmuseWikiFarm/Schema/Result/Site.pm:4521 root/src/admin/edit.tt:646 root/src/layout.tt:195 root/src/layout.tt:196 root/src/layout.tt:200 root/src/search/index.tt:24 root/src/search/index.tt:9 root/src/static-indexes.tt:172
 msgid "Search"
 msgstr ""
 
@@ -2571,7 +2579,7 @@ msgstr ""
 msgid "Select all for rescheduling"
 msgstr ""
 
-#: root/src/include/preamble.tt:161 root/src/include/preamble.tt:163
+#: root/src/include/preamble.tt:194 root/src/include/preamble.tt:196
 msgid "Select individual parts for the bookbuilder"
 msgstr ""
 
@@ -2594,6 +2602,10 @@ msgstr ""
 
 #: root/src/edit/edit.tt:654
 msgid "Separate header fields"
+msgstr ""
+
+#: root/src/include/preamble.tt:114
+msgid "Series"
 msgstr ""
 
 #: root/src/bookbuilder/index.tt:400
@@ -3144,7 +3156,7 @@ msgstr ""
 msgid "Title, author, date..."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:44 lib/AmuseWikiFarm/Schema/Result/Site.pm:4489 lib/AmuseWikiFarm/Schema/Result/Site.pm:4509 lib/AmuseWikiFarm/Schema/Result/Site.pm:4532 root/src/layout.tt:237 root/src/layout.tt:721
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:44 lib/AmuseWikiFarm/Schema/Result/Site.pm:4494 lib/AmuseWikiFarm/Schema/Result/Site.pm:4514 lib/AmuseWikiFarm/Schema/Result/Site.pm:4537 root/src/layout.tt:237 root/src/layout.tt:721
 msgid "Titles"
 msgstr ""
 
@@ -3189,11 +3201,11 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1700
+#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1735
 msgid "Topic"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1700 root/src/edit/edit.tt:688 root/src/edit/newtext.tt:99 root/src/edit/preview.tt:39 root/src/layout.tt:253
+#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1735 root/src/edit/edit.tt:688 root/src/edit/newtext.tt:99 root/src/edit/preview.tt:39 root/src/layout.tt:253
 msgid "Topics"
 msgstr ""
 
@@ -3419,7 +3431,7 @@ msgstr ""
 msgid "Verbatim block"
 msgstr ""
 
-#: root/src/admin/edit.tt:494 root/src/include/preamble.tt:125 root/src/include/preamble.tt:127
+#: root/src/admin/edit.tt:494 root/src/include/preamble.tt:158 root/src/include/preamble.tt:160
 msgid "View history"
 msgstr ""
 
@@ -3431,7 +3443,7 @@ msgstr ""
 msgid "Virtual hosts, one per line"
 msgstr ""
 
-#: root/src/include/preamble.tt:180 root/src/text.tt:237
+#: root/src/include/preamble.tt:213 root/src/text.tt:237
 msgid "What links here"
 msgstr ""
 

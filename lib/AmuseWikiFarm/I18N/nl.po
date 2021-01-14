@@ -1041,6 +1041,9 @@ msgstr ""
 msgid "IRC channel on freenode"
 msgstr "IRC kanaal op freenode"
 
+msgid "ISBN"
+msgstr ""
+
 msgid "Id"
 msgstr "Id"
 
@@ -2019,6 +2022,9 @@ msgid "Published in *A nice book*, published by My House, 2014"
 msgstr ""
 "Gepubliceerd in *Een mooi boek*, gepubliceerd door Mijn Uitgeverij, 2014"
 
+msgid "Publisher"
+msgstr ""
+
 msgid "Purge"
 msgstr "Opschonen"
 
@@ -2296,6 +2302,9 @@ msgstr "Scheid voettekstvelden"
 
 msgid "Separate header fields"
 msgstr "Scheid koptekstvelden"
+
+msgid "Series"
+msgstr ""
 
 msgid "Session sharing"
 msgstr "Sessie delen"

@@ -1036,6 +1036,9 @@ msgstr ""
 msgid "IRC channel on freenode"
 msgstr "Canale IRC su Freenode"
 
+msgid "ISBN"
+msgstr ""
+
 msgid "Id"
 msgstr "Id"
 
@@ -2022,6 +2025,9 @@ msgstr "Pubblica"
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Pubblicato in *Un bel libro*, edito da Casa Editrice, 2014"
 
+msgid "Publisher"
+msgstr ""
+
 msgid "Purge"
 msgstr "Purga"
 
@@ -2296,6 +2302,9 @@ msgstr "Separano i campi dei piedini"
 
 msgid "Separate header fields"
 msgstr "Separano i campi dell'intestazione"
+
+msgid "Series"
+msgstr ""
 
 msgid "Session sharing"
 msgstr "Condivisione"

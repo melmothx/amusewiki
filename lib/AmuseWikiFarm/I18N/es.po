@@ -1030,6 +1030,9 @@ msgstr ""
 msgid "IRC channel on freenode"
 msgstr "Canal IRC en freenode"
 
+msgid "ISBN"
+msgstr ""
+
 msgid "Id"
 msgstr "Id"
 
@@ -1974,6 +1977,9 @@ msgstr "Publicar"
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Publicado un *Lindo libro*, publicado por Mi Casa, 2014"
 
+msgid "Publisher"
+msgstr ""
+
 msgid "Purge"
 msgstr "Purge"
 
@@ -2250,6 +2256,9 @@ msgstr "Campos separados del footer"
 
 msgid "Separate header fields"
 msgstr "Campos separados del encabezado"
+
+msgid "Series"
+msgstr ""
 
 msgid "Session sharing"
 msgstr "Compartir sesión"
