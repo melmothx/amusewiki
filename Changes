@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.507 2021-01-14
+
+ - Store and display isbn, publisher, series info, copyright info if
+   provided by the muse document. These fields are documented and
+   display in the generated formats, but were not in the web app.
+
 2.506 2021-01-06
 
  - Save instructions to compile a format into the site repo under "bin"
