@@ -345,6 +345,12 @@ CREATE TABLE title (
         -- just a string
         parent      VARCHAR(255),
 
+        publisher TEXT,
+        isbn TEXT,
+        rights TEXT,
+        seriesname TEXT,
+        seriesnumber TEXT,
+
         -- from the scanner
         f_path      TEXT NOT NULL,
         f_name      VARCHAR(255) NOT NULL,
@@ -367,7 +373,7 @@ CREATE TABLE title (
 
         sorting_pos INTEGER NOT NULL DEFAULT 0,
         sku VARCHAR(64) NOT NULL DEFAULT '',
-        text_qualification VARCHAR(255),
+        text_qualification VARCHAR(32),
         text_size INTEGER NOT NULL DEFAULT 0,
         attachment_index INTEGER NOT NULL DEFAULT 0,
         blob_container INTEGER(1) NOT NULL DEFAULT 0,

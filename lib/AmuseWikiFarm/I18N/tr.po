@@ -1023,6 +1023,9 @@ msgstr ""
 msgid "IRC channel on freenode"
 msgstr "Freenode IRC kanalı"
 
+msgid "ISBN"
+msgstr ""
+
 msgid "Id"
 msgstr "Kimlik"
 
@@ -1982,6 +1985,9 @@ msgstr "Yayınla"
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "*İyi bir kitap* ta basıldı, Benim Evim tarafından, 2014'te basıldı"
 
+msgid "Publisher"
+msgstr ""
+
 msgid "Purge"
 msgstr "Yok et"
 
@@ -2256,6 +2262,9 @@ msgstr "Altlık alanlarını ayır"
 
 msgid "Separate header fields"
 msgstr "Üstlük alanlarını ayır"
+
+msgid "Series"
+msgstr ""
 
 msgid "Session sharing"
 msgstr "Oturum paylaşma"

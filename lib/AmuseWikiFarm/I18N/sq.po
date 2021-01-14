@@ -1024,6 +1024,9 @@ msgstr ""
 msgid "IRC channel on freenode"
 msgstr "Kanali IRC në freenode"
 
+msgid "ISBN"
+msgstr ""
+
 msgid "Id"
 msgstr "ID"
 
@@ -1949,6 +1952,9 @@ msgstr "Publiko"
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "E publikuar në *Një libër i mire*, e publikuar nga Shtëpia Ime, 2014"
 
+msgid "Publisher"
+msgstr ""
+
 msgid "Purge"
 msgstr "Spastro"
 
@@ -2226,6 +2232,9 @@ msgstr "Ndaji fushat "
 
 msgid "Separate header fields"
 msgstr "Fushat e ndara të pjesës së sipërme të dokumentit "
+
+msgid "Series"
+msgstr ""
 
 msgid "Session sharing"
 msgstr ""

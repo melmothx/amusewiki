@@ -959,6 +959,9 @@ msgstr ""
 msgid "IRC channel on freenode"
 msgstr ""
 
+msgid "ISBN"
+msgstr ""
+
 msgid "Id"
 msgstr "Tunniste"
 
@@ -1848,6 +1851,9 @@ msgid "Published in *A nice book*, published by My House, 2014"
 msgstr ""
 "Julkaistu nimellä *Hauska kirja*, kustantajana Kustannusosuuskunta, 2013"
 
+msgid "Publisher"
+msgstr ""
+
 msgid "Purge"
 msgstr "Poista"
 
@@ -2113,6 +2119,9 @@ msgstr "Erillinen alaosio"
 
 msgid "Separate header fields"
 msgstr "Erillinen yläosio"
+
+msgid "Series"
+msgstr ""
 
 msgid "Session sharing"
 msgstr ""

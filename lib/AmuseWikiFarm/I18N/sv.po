@@ -968,6 +968,9 @@ msgstr ""
 msgid "IRC channel on freenode"
 msgstr ""
 
+msgid "ISBN"
+msgstr ""
+
 msgid "Id"
 msgstr "Id"
 
@@ -1859,6 +1862,9 @@ msgstr "Publicera"
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Publicerad  i *En trevlig bok*, publicerad av Mitt Hus, 2014"
 
+msgid "Publisher"
+msgstr ""
+
 msgid "Purge"
 msgstr "Rensa"
 
@@ -2132,6 +2138,9 @@ msgstr "Separera fält för sidfot"
 
 msgid "Separate header fields"
 msgstr "Separera fält för sidhuvud"
+
+msgid "Series"
+msgstr ""
 
 msgid "Session sharing"
 msgstr ""

@@ -89,6 +89,39 @@
       [% text.notes %]
     </div>
     [% END %]
+
+    [% IF text.isbn %]
+    <div id="preambleisbn">
+      <span id="preambleisbn-label">
+        <strong>[% loc('ISBN') %]:</strong>
+      </span>
+      [% text.isbn %]
+    </div>
+    [% END %]
+
+    [% IF text.publisher %]
+    <div id="preamblepublisher">
+      <span id="preamblepublisher-label">
+        <strong>[% loc('Publisher') %]:</strong>
+      </span>
+      [% text.publisher %]
+    </div>
+    [% END %]
+
+    [% IF text.seriesname %]
+    <div id="preambleseries">
+      <span id="preambleseries-label">
+        <strong>[% loc('Series') %]:</strong>
+      </span>
+      [% text.seriesname %] [% text.seriesnumber %]
+    </div>
+
+    [% END %]
+    [% IF text.rights %]
+    <div id="preamblerights">
+      <strong>[% text.rights %]</strong>
+    </div>
+    [% END %]
   </div>
 
   <!-- end of the preamble -->
