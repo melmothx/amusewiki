@@ -345,6 +345,12 @@ CREATE TABLE title (
         -- just a string
         parent      VARCHAR(255),
 
+        publisher TEXT,
+        isbn TEXT,
+        rights TEXT,
+        seriesname TEXT,
+        seriesnumber TEXT,
+
         -- from the scanner
         f_path      TEXT NOT NULL,
         f_name      VARCHAR(255) NOT NULL,
