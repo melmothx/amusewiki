@@ -503,6 +503,19 @@
           be interpreted, usually not needed') %]
 
         </li>
+        <li>
+          <code>&lt;sc&gt;[% loc('Small Caps') %]&lt;/sc&gt;</code><br />
+          <span class="muse-sc" style="font-variant: small-caps">[% loc('Small Caps') %]</span>
+        </li>
+        <li>
+          <code>&lt;sf&gt;[% loc('Sans font') %]&lt;/sf&gt;</code><br />
+          <span class="muse-sf">
+            [% loc('Sans font') %].
+
+            [% loc('This is relevant only for the generated files, where you may need to have an alternate set of fonts. It has no effect in the web application if already using a sans font.') %]
+
+          </span>
+        </li>
       </ul>
 
       <h4 id="csfootnotes">[% loc('Footnotes') %]</h4>

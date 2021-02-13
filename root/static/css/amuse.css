@@ -162,3 +162,13 @@ p.fnline, p.secondary-fnline {
 }
 
 /* end footnotes */
+
+/* special fonts */
+
+.muse-sc {
+   font-variant: small-caps;
+}
+
+.muse-sf {
+    font-family: Helvetica, Arial, sans-serif;
+}
