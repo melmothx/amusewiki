@@ -2344,6 +2344,9 @@ msgstr "Slaytlar"
 msgid "Slides (PDF)"
 msgstr "Slaytlar (PDF)"
 
+msgid "Small Caps"
+msgstr ""
+
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
 "Böylece rastgele insanlara şifre postası göndermediğimize emin olabiliriz"
@@ -2640,6 +2643,12 @@ msgstr ""
 "Bu bir WYSIWYG editordür. Eğer wiki-tarzı bir\n"
 "        sentaks kullanmak istiyorsan olduğu gibi bırak, yukarıda\n"
 "        gerekli alanları doldur ve düzenlemeyi bir sonraki adımda yap."
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
 
 msgid "This is the caption"
 msgstr "Bu resim yazısı"

@@ -2220,6 +2220,9 @@ msgstr ""
 msgid "Slides (PDF)"
 msgstr ""
 
+msgid "Small Caps"
+msgstr ""
+
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
 "Så att vi kan vara säkra på att vi inte mailar lösenord till random folk"
@@ -2497,6 +2500,12 @@ msgstr ""
 "Detta är en WYSIWYG redigerare. Om du föredrar att använda         den wiki-"
 "liknande syntaxen, lämna den som den är, fyll i         de nödvändiga fälten "
 "ovan och skjut upp redigerandet         till nästa steg."
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
 
 msgid "This is the caption"
 msgstr "Detta är överskriften"

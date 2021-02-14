@@ -2308,6 +2308,9 @@ msgstr ""
 msgid "Slides (PDF)"
 msgstr ""
 
+msgid "Small Caps"
+msgstr ""
+
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
 "Så vi kan være sikre på at vi ikke sender kodeord til tilfældige mennesker"
@@ -2580,6 +2583,12 @@ msgstr ""
 "        Hvis du foretrækker at bruge den wiki-lignende syntaks,\n"
 "        så lad den være som den er, udfyld de obligatoriske felter\n"
 "        ovenfor og vent med redigering til næste trin."
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
 
 msgid "This is the caption"
 msgstr "Dette er billedteksten"

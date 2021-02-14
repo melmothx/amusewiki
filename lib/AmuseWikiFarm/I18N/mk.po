@@ -2361,6 +2361,9 @@ msgstr "Слајдови"
 msgid "Slides (PDF)"
 msgstr "Слајдови (PDF)"
 
+msgid "Small Caps"
+msgstr ""
+
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr "За да не праќаме лозинки на погрешни личности"
 
@@ -2652,6 +2655,12 @@ msgstr ""
 "Ова е WYSIWYG уредувач на текст. Ако сакаш да ја користиш wiki синтаксата "
 "остави го празно, пополни ги останатите полиња и одложи ја измената за "
 "следниот чекор."
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
 
 msgid "This is the caption"
 msgstr "Ова е описот"

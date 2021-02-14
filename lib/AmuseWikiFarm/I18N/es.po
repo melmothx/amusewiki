@@ -2338,6 +2338,9 @@ msgstr "Diapositivas"
 msgid "Slides (PDF)"
 msgstr "Diapositivas (PDF)"
 
+msgid "Small Caps"
+msgstr ""
+
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
 "Así podemos estar seguros que no estamos enviando contraseñas a personas al "
@@ -2637,6 +2640,12 @@ msgstr ""
 "        siglas en inglés. Si prefieres dejar la sintaxis del lenguaje\n"
 "        de marcado como está, llena los campos anteriores y pospón la\n"
 "        edición para el siguiente paso."
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
 
 msgid "This is the caption"
 msgstr "Esta es la leyenda"

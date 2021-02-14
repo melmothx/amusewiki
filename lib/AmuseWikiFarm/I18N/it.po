@@ -2384,6 +2384,9 @@ msgstr "Diapositive"
 msgid "Slides (PDF)"
 msgstr "Diapositive (PDF)"
 
+msgid "Small Caps"
+msgstr ""
+
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr "Così siamo sicuri di non inviare le password a gente casuale"
 
@@ -2687,6 +2690,12 @@ msgstr ""
 "Questo è un editor WYSIWYG. Se preferisci usare la sintassi wiki,\n"
 "lascialo vuoto, compila gli altri campi e rimanda la modifica al passo\n"
 "successivo."
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
 
 msgid "This is the caption"
 msgstr "Questa è la didascalia"

@@ -2261,6 +2261,9 @@ msgstr ""
 msgid "Slides (PDF)"
 msgstr "Slajdy (PDF)"
 
+msgid "Small Caps"
+msgstr ""
+
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
 
@@ -2532,6 +2535,12 @@ msgstr ""
 "        przy użyciu komend w bibliotecznej składni, zostaw to go pustego, "
 "wypełnij wymagane pola\n"
 "        powyżej, i przełóż edycję na dalszy krok."
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
 
 msgid "This is the caption"
 msgstr "To jest podpis"

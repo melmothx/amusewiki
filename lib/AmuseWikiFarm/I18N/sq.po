@@ -2314,6 +2314,9 @@ msgstr ""
 msgid "Slides (PDF)"
 msgstr ""
 
+msgid "Small Caps"
+msgstr ""
+
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
 "në mënjyrë që t'jemi të sigurtë që nuk jemi duke e dërguar fjalëkalimin tek "
@@ -2596,6 +2599,12 @@ msgstr ""
 "që ta përdorni sintaksën që ngjason në Wiki, atëhere lejeni \n"
 "ashtu siç është, mbushini fushat që kërkohen më lartë,\n"
 "dhe shtyjeni përpunimin deri në hapin e ardhshëm."
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
 
 msgid "This is the caption"
 msgstr "Kjo është fjalë/fjali përshkruese"

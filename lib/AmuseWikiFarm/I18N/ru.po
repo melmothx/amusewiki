@@ -2315,6 +2315,9 @@ msgstr "Слайды"
 msgid "Slides (PDF)"
 msgstr "Слайды (PDF)"
 
+msgid "Small Caps"
+msgstr ""
+
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr "Чтобы мы были уверены, что не отсылаем пароли третьим лицам"
 
@@ -2605,6 +2608,12 @@ msgstr ""
 "Это WYSIWYG-редактор. Если вы предпочитаете вики-подобный синтаксис, "
 "оставьте всё как есть, заполните необходимые поля сверху и переходите к "
 "следующему шагу."
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
 
 msgid "This is the caption"
 msgstr "Это подпись"

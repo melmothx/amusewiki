@@ -2343,6 +2343,9 @@ msgstr "Diapositives"
 msgid "Slides (PDF)"
 msgstr "Diapositives (PDF)"
 
+msgid "Small Caps"
+msgstr ""
+
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
 "Pour que nous puissions nous assurer de ne pas envoyer des mots de passe à "
@@ -2640,6 +2643,12 @@ msgstr ""
 "Ceci est un éditeur de texte WYSIWYG. Si vous préférez utiliser l'éditeur à "
 "syntaxe wiki, laissez le texte tel quel, remplissez les champs requis ci-"
 "dessus et faites l'édition à l'étape suivante."
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
 
 msgid "This is the caption"
 msgstr "Ceci est la légende"

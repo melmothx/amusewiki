@@ -2345,6 +2345,9 @@ msgstr "Slides"
 msgid "Slides (PDF)"
 msgstr "Slides (PDF)"
 
+msgid "Small Caps"
+msgstr ""
+
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
 "De forma que estejamos certos de não enviar senha para pessoas aleatórias"
@@ -2641,6 +2644,12 @@ msgstr ""
 "        uma sintaxe estilo Wiki, deixe como está, preencha os campos "
 "necessários\n"
 "        acima e adie a edição para o próximo passo."
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
 
 msgid "This is the caption"
 msgstr "Essa é a legenda"
