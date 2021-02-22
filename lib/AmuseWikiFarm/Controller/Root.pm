@@ -289,6 +289,15 @@ sub not_permitted :Private {
     return;
 }
 
+sub gone :Private {
+    my ($self, $c) = @_;
+    log_info { "Accessed a deleted file: " . $c->request->uri };
+    $c->stash(error_msg => $c->loc("Page not found!"));
+    $c->stash(template => "error.tt");
+    $c->response->status(410);
+    return;
+}
+
 =head2 random
 
 Path: /random

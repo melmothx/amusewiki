@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 97;
+use Test::More tests => 98;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -131,7 +131,7 @@ foreach my $path (qw{/library /archive archive/en}) {
     $mech->content_lacks('/library/pippo-deleted-text');
 }
 $mech->get('/library/pippo-deferred-text');
-is $mech->status, '404', "deferred not found";
+is $mech->status, '410', "deferred not found";
 
 $mech->get_ok('/login');
 ok($mech->form_id('login-form'), "Found the login-form");
@@ -151,7 +151,11 @@ $mech->get_ok('/library');
 $mech->content_lacks('/library/pippo-deferred-text');
 $mech->content_lacks('/library/pippo-deleted-text');
 $mech->get('/library/pippo-deferred-text');
-is $mech->status, '404', "deferred not found";
+is $mech->status, '410', "deferred not found";
+$mech->get('/library/pippo-deferred-textx');
+is $mech->status, '404', "not found is not found";
+
+
 
 stop_jobber();
 
