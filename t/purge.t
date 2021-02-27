@@ -8,7 +8,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 9;
+use Test::More tests => 10;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -39,8 +39,11 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 $mech->get_ok('/');
 
+my $text = $site->titles->first;
+ok $text->is_gone;
+
 $mech->get('/library/first-testx');
-is $mech->status, 404;
+is $mech->status, 410;
 
 
 $mech->get('/console/unpublished');
@@ -62,3 +65,4 @@ $mech->get_ok($status_page);
 $mech->follow_link_ok({ text => 'Done'}, "Found /console/unpublished link");
 
                    
+

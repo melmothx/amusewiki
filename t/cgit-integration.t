@@ -180,7 +180,7 @@ PULLING: {
         diag $j->logs;
     }
     $mech->get($uri);
-    is $mech->status, 404;
+    is $mech->status, 410;
 
     # now purge from the site
     $site->jobs->purge_add({
