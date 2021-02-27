@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 16;
+use Test::More tests => 34;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -76,3 +76,74 @@ my %auth = (
     diag Dumper($res);
 }
 
+{
+    $mech->post('/remote/create/special', {
+                                           %auth,
+                                           title => 'test',
+                                           body => 'prova',
+                                          });
+    my $res = from_json($mech->content);
+    diag Dumper($res);
+}
+
+$site->jobs->delete;
+
+foreach my $type (qw/library special/) {
+    my $res;
+    my $body = "#title bau\n\nThis is a test";
+    $mech->post("/remote/create/$type", {
+                                         %auth,
+                                         title => 'API Test',
+                                         textbody => '<p>This is a <em>test</em></p> <p><b>Hello</b></p>',
+                                        });
+    $res = from_json($mech->content);
+    diag Dumper($res);
+
+    while (my $job = $site->jobs->dequeue) {
+        $job->dispatch_job;
+    }
+    $mech->post("/remote/edit/$type/testxx", {
+                                              %auth,
+                                              body => $body,
+                                              message => "Here we go",
+                                             });
+    $res = from_json($mech->content);
+    diag Dumper($res);
+    is $res->{error}, "This text does not exist";
+
+    # som ete
+    $mech->post("/remote/edit/$type/api-test", {
+                                              %auth,
+                                              body => $body,
+                                             });
+    $res = from_json($mech->content);
+    diag Dumper($res);
+    ok $res->{error};
+
+    $mech->post("/remote/edit/$type/api-test", {
+                                              %auth,
+                                             });
+    $res = from_json($mech->content);
+    diag Dumper($res);
+    ok $res->{error};
+
+    $mech->post("/remote/edit/$type/api-test", {
+                                                %auth,
+                                                body => $body,
+                                                message => "Here we go",
+                                               });
+
+
+    $res = from_json($mech->content);
+    diag Dumper($res);
+    ok !$res->{error};
+    ok $res->{job};
+    ok $res->{url};
+
+    while (my $job = $site->jobs->dequeue) {
+        $job->dispatch_job;
+    }
+    $mech->get_ok("/$type/api-test");
+    $mech->get_ok("/$type/api-test.muse");
+    $mech->content_is($body . "\n");
+}

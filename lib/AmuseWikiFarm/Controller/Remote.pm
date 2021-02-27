@@ -5,6 +5,7 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Utils::Amuse qw/clean_username/;
+use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
 
@@ -27,17 +28,23 @@ sub root :Chained('/site_user_required') :PathPart('remote') :CaptureArgs(0) {
     my ($self, $c) = @_;
 }
 
-sub create :Chained('root') :PathPart('create') :Args(0) {
-    my ($self, $c) = @_;
+sub create :Chained('root') :PathPart('create') :Args {
+    my ($self, $c, $f_class) = @_;
     die "Shouldn't happen" unless $c->user_exists;
+    $f_class ||= 'library';
     my %params = %{$c->request->body_params};
     foreach my $k (keys %params) {
         delete $params{$k} if $k =~ m/^__/;
     }
     my $response = {};
-    if ($params{title} && $params{textbody}) {
+
+    my %classes = (
+                   library => 'text',
+                   special => 'special',
+                  );
+    if ($classes{$f_class} && $params{title} && $params{textbody}) {
         my $site = $c->stash->{site};
-        my ($revision, $error) = $site->create_new_text(\%params, 'text');
+        my ($revision, $error) = $site->create_new_text(\%params, $classes{$f_class});
         my $user = $c->user->get("username");
         if ($revision) {
             $revision->commit_version("Upload from /remote/create",
@@ -51,15 +58,74 @@ sub create :Chained('root') :PathPart('create') :Args(0) {
             $response->{error} = $error;
         }
     }
+    elsif (!$classes{$f_class}) {
+        $response->{error} = "Invalid entry type: it should be library or special";
+    }
     else {
         $response->{error} = "Missing mandatory title and textbody parameters";
     }
     $c->stash(json => $response);
     $c->logout;
     $c->detach($c->view('JSON'));
-
 }
 
+sub edit :Chained('root') :PathPart('edit') :Args(2) {
+    my ($self, $c, $type, $uri) = @_;
+    die "Shouldn't happen" unless $c->user_exists;
+    my %params = %{$c->request->body_params};
+    foreach my $k (keys %params) {
+        delete $params{$k} if $k =~ m/^__/;
+    }
+    my %response;
+    my %classes = (
+                   library => 'text',
+                   special => 'special',
+                  );
+    my $site = $c->stash->{site};
+    if ($params{body} && $params{message}) {
+        if (my $f_class = $classes{$type}) {
+            if (my $title = $site->titles->find({
+                                                 f_class => $f_class,
+                                                 uri => $uri,
+                                                })) {
+                if ($title->can_spawn_revision) {
+                    log_info { "Creating new revision from API" };
+                    my $revision = $title->new_revision;
+                    my $commit = delete $params{message};
+                    my $error;
+                    my $ok;
+                    eval {
+                        $error = $revision->edit(\%params);
+                        unless ($error) {
+                            $revision->commit_version($commit, clean_username($c->user->get("username")));
+                            my $job = $site->jobs->publish_add($revision, $c->user->get("username"));
+                            $response{url} = $c->uri_for($revision->title->full_uri)->as_string;
+                            $response{job} = $c->uri_for_action('/tasks/display',  [$job->id])->as_string;
+                        }
+                    };
+                    if (my $err = $@ || $error) {
+                        $response{error} = $err;
+                    }
+                }
+                else {
+                    $response{error} = "This text cannot be edited";
+                }
+            }
+            else {
+                $response{error} = "This text does not exist";
+            }
+        }
+        else {
+            $response{error} = "Invalid text type. It should be library or special";
+        }
+    }
+    else {
+        $response{error} = "Missing mandatory parameters body and message";
+    }
+    $c->stash(json => \%response);
+    $c->logout;
+    $c->detach($c->view('JSON'));
+}
 
 =encoding utf8
 
