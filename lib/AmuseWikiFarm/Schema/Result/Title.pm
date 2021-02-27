@@ -1773,6 +1773,20 @@ sub update_included_files {
     }
 }
 
+sub is_gone {
+    my $self = shift;
+    if ($self->deleted) {
+        if (!$self->site->redirections->search({
+                                                type => $self->f_class,
+                                                uri => $self->uri,
+                                               })->count) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+
 __PACKAGE__->meta->make_immutable;
 
 1;

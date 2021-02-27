@@ -121,7 +121,7 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
             $c->response->redirect($c->uri_for_action('/console/unpublished'));
             $c->detach();
         }
-        elsif ($unavailable_text) {
+        elsif ($unavailable_text and $unavailable_text->is_gone) {
             $c->detach('/gone');
         }
         else {

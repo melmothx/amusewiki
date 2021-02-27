@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 98;
+use Test::More tests => 100;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -30,6 +30,10 @@ my $host = $site->canonical;
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $host);
+my $mech_nologin = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                                       host => $host);
+
+
 
 $mech->get_ok('/');
 $mech->get('/action/text/new');
@@ -104,10 +108,16 @@ MUSE
     if ($spec->{status} eq 'deferred') {
         $mech->get_ok($full_uri);
         $mech->content_contains('This text is not published yet');
+
+        $mech_nologin->get($full_uri);
+        is $mech_nologin->status, 404;
     }
     elsif ($spec->{status} eq 'deleted') {
         $mech->get($full_uri);
         is $mech->uri->path, '/console/unpublished', "Bounced to console/unpublished";
+
+        $mech_nologin->get($full_uri);
+        is $mech_nologin->status, 410;
     }
     $mech->get_ok('/console/unpublished');
     $mech->content_contains($full_uri);
@@ -131,7 +141,7 @@ foreach my $path (qw{/library /archive archive/en}) {
     $mech->content_lacks('/library/pippo-deleted-text');
 }
 $mech->get('/library/pippo-deferred-text');
-is $mech->status, '410', "deferred not found";
+is $mech->status, '404', "deferred not found";
 
 $mech->get_ok('/login');
 ok($mech->form_id('login-form'), "Found the login-form");
@@ -151,7 +161,7 @@ $mech->get_ok('/library');
 $mech->content_lacks('/library/pippo-deferred-text');
 $mech->content_lacks('/library/pippo-deleted-text');
 $mech->get('/library/pippo-deferred-text');
-is $mech->status, '410', "deferred not found";
+is $mech->status, '404', "deferred not found";
 $mech->get('/library/pippo-deferred-textx');
 is $mech->status, '404', "not found is not found";
 
