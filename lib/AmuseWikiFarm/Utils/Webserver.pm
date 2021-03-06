@@ -379,6 +379,8 @@ INCLUDE
     }
     location /private/repo/ {
         internal;
+        add_header X-Robots-Tag \$upstream_http_x_robots_tag;
+        add_header ETag \$upstream_http_etag;
         alias $amw_home/repo/;
     }
     location /private/bbfiles/ {
