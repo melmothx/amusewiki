@@ -995,6 +995,21 @@ kpsewhich mylogo.pdf
         <span class="caret"></span>
       </legend>
       <div id="amw-config-layout" class="collapse">
+
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-9">
+            <label>
+              <input type="checkbox"
+                     [% IF esite.layout_always_fluid %]checked="checked"[% END %]
+                     value="ON"
+                     name="layout_always_fluid" />
+              [% loc("Full width, fluid layout") %]
+            </label>
+          </div>
+        </div>
+
+
+
     <div class="form-group">
         <div class="col-sm-3">
           <label for="html_special_page_bottom" class="control-label">

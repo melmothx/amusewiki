@@ -3348,6 +3348,7 @@ sub update_from_params {
                            express_publishing
                            no_autoassign_pubdate
                            use_named_toc
+                           layout_always_fluid
                            show_preview_when_deferred
                            lists_are_always_flat
                            titles_category_default_sorting
@@ -3751,6 +3752,10 @@ sub get_option {
 
 sub use_named_toc {
     return shift->get_option('use_named_toc') || '';
+}
+
+sub layout_always_fluid {
+    return shift->get_option('layout_always_fluid' || '');
 }
 
 sub no_autoassign_pubdate {

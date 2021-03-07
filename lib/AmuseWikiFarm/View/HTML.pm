@@ -57,7 +57,11 @@ before process => sub {
         # layout adjustments
         my $theme = $site->bootstrap_theme;
         my $columns = 12;
-        unless ($c->stash->{full_page_no_side_columns}) {
+        if ($c->stash->{full_page_no_side_columns}) {
+            $c->stash(layout_always_fluid => 1);
+        }
+        else {
+            $c->stash(layout_always_fluid => $site->layout_always_fluid);
             my $left_column = $site->left_layout_html;
             my $right_column = $site->right_layout_html;
             if ($left_column || $right_column) {
