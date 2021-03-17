@@ -23,11 +23,11 @@ msgstr "%1 не существует"
 
 #. ([$total])
 msgid "%1 jobs deleted"
-msgstr ""
+msgstr "%1 задач удалено"
 
 #. ([$total])
 msgid "%1 jobs rescheduled"
-msgstr ""
+msgstr "%1 задач перезапущено"
 
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
@@ -381,7 +381,7 @@ msgstr "Категории"
 
 #. ($site->canonical)
 msgid "Category types for %1"
-msgstr ""
+msgstr "Типы категорий для %1"
 
 msgid "Center all the sectioning titles."
 msgstr "Центрировать все заголовки разделов."
@@ -426,7 +426,7 @@ msgid "Cheatsheet for the markup"
 msgstr "Шпаргалка по разметке"
 
 msgid "Check mail sending and send mail to:"
-msgstr ""
+msgstr "Проверить отправку почти и отправить письмо на:"
 
 msgid "Choose a paper format"
 msgstr "Выберите размер бумаги"
@@ -444,7 +444,7 @@ msgid "Close"
 msgstr "Закрыть"
 
 msgid "Code"
-msgstr ""
+msgstr "Код"
 
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
@@ -714,7 +714,7 @@ msgid "Errors"
 msgstr "Ошибки"
 
 msgid "Estimated pages"
-msgstr ""
+msgstr "Оценка числа страниц"
 
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
@@ -746,7 +746,7 @@ msgid "Existing redirections"
 msgstr "Существующее перенаправление"
 
 msgid "Expected pages"
-msgstr ""
+msgstr "Ожидаемое число страниц"
 
 msgid "Failed"
 msgstr "Неудача"
@@ -775,7 +775,7 @@ msgid "File uploaded!"
 msgstr "Файл загружен!"
 
 msgid "Files"
-msgstr ""
+msgstr "Файлы"
 
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
@@ -783,7 +783,7 @@ msgstr ""
 "Добавить пустые страницы перед последней страницей, если тетрадки неполные."
 
 msgid "Filter"
-msgstr ""
+msgstr "Фильтр"
 
 msgid "Filters"
 msgstr "Опции"
@@ -795,7 +795,7 @@ msgid "Find the network library menu, or equivalent."
 msgstr "Найдите меню сетевых библиотек или что-то подобное."
 
 msgid "First"
-msgstr ""
+msgstr "Первый"
 
 msgid "First Author and Second Author"
 msgstr "Первый Автор и Второй Автор"
@@ -964,7 +964,7 @@ msgid "Higher division factor means narrower margins"
 msgstr "Чем больше число — тем уже поля"
 
 msgid "How are you going to access Git?"
-msgstr ""
+msgstr "Как вы собираетесь получать доступ к Git?"
 
 msgid "How do I create a landing page?"
 msgstr "Как мне создать стартовую страницу?"
@@ -1001,19 +1001,19 @@ msgid "I am human"
 msgstr "Я человек"
 
 msgid "I have a system user with SSH access"
-msgstr ""
+msgstr "У меня есть системный пользователь с SSH-доступом"
 
 msgid "I want an imposed (ready to print) PDF"
 msgstr "Сделать спуск полос (готовый к печати PDF)"
 
 msgid "I will provide my remote repository"
-msgstr ""
+msgstr "Я предоставлю удаленный репозиторий"
 
 msgid "IRC channel on freenode"
 msgstr "IRC-канал на Freenode"
 
 msgid "ISBN"
-msgstr ""
+msgstr "ISBN"
 
 msgid "Id"
 msgstr "Id"
@@ -1030,11 +1030,15 @@ msgid ""
 "If it was not your intention, please just ignore this mail and\n"
 "your password will not be changed."
 msgstr ""
+"Если вы не собирались этого делать, просто проигнорируйте это письмо, и ваш "
+"пароль не будет изменен."
 
 msgid ""
 "If it's not the case, please open a bug report at https://github.com/"
 "melmothx/amusewiki/issues"
 msgstr ""
+"Если это не так, пожалуйста сообщите об ошибке на https://github.com/"
+"melmothx/amusewiki/issues"
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
@@ -1075,6 +1079,9 @@ msgid ""
 "revision page if there are no conflicts and automatically redirect to the "
 "published text once it is done."
 msgstr ""
+"Если пользователю разрешено публиковать, ускорить процесс, пропуская "
+"страницу с проверкой в случае отсутствия конфликтов и автоматически "
+"перенаправляя на опубликованный текст после завершения."
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr "Если редактор указывает e-mail, то он добавляется в поле CC"
@@ -1128,6 +1135,8 @@ msgid ""
 "If you forgot your password, you can choose a new one visiting\n"
 "this link (click on it or copy and paste it in your browser):"
 msgstr ""
+"Если вы забыли свой пароль, вы можете выбрать новый, пройдя по этой ссылке "
+"(нажмите на нее или скопируйте и вставьте в ваш браузер):"
 
 msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
@@ -1270,7 +1279,7 @@ msgid "Italics, bold, monospace and code, linebreaks..."
 msgstr "Курсив, жирный, моноширинный и код, переводы строки..."
 
 msgid "JPG, PNG and PDF are always allowed."
-msgstr ""
+msgstr "JPG, PNG и PDF всегда разрешены."
 
 msgid "Job status"
 msgstr "Статус заданий"
@@ -1322,7 +1331,7 @@ msgid "Languages supported"
 msgstr "Поддерживаемые языки"
 
 msgid "Last"
-msgstr ""
+msgstr "Последний"
 
 msgid "Last successful rebuild"
 msgstr "Последняя успешная пересборка"
@@ -1374,7 +1383,7 @@ msgid "Loaded \"%1\" configuration"
 msgstr "Загружена конфигурация «%1»"
 
 msgid "Loading"
-msgstr ""
+msgstr "Загрузка"
 
 msgid "Locked editing, no upload possible"
 msgstr "Редактирование заблокировано, загрузка невозможна"
@@ -1440,7 +1449,7 @@ msgstr "Сообщение"
 
 #. (8)
 msgid "Minimum %1 characters"
-msgstr ""
+msgstr "Минимум %1 символов"
 
 msgid "Missing #title header in the text!"
 msgstr "Отсутствующий заголовок #title в тексте!"
@@ -1491,10 +1500,10 @@ msgid "Name"
 msgstr "Имя"
 
 msgid "Name plural"
-msgstr ""
+msgstr "Имя в множественном числе"
 
 msgid "Name singular"
-msgstr ""
+msgstr "Имя в единственном числе"
 
 msgid "Network library listing screen."
 msgstr "Экран списка сетевых библиотек."
@@ -1713,7 +1722,7 @@ msgid "Part and chapter. If one side document: part."
 msgstr "Часть и глава. Если документ односторонний: часть."
 
 msgid "Part of"
-msgstr ""
+msgstr "Часть"
 
 msgid "Part, for larger books only"
 msgstr "Часть (только для больших текстов)"
@@ -1800,6 +1809,8 @@ msgstr ""
 #. (amw_group_name)
 msgid "Please ensure that your system user is member of the \"%1\" group"
 msgstr ""
+"Пожалуйста, убедитесь что системный пользователь является членом группы "
+"\"%1\""
 
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
@@ -1939,7 +1950,7 @@ msgid "Procedure"
 msgstr "Процедура"
 
 msgid "Processing"
-msgstr ""
+msgstr "Обработка"
 
 msgid "Produce slides."
 msgstr "Произвести слайды."
@@ -1960,7 +1971,7 @@ msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Опубликовано в *Хорошей книге* выпущенной Моим Издательством, 2014"
 
 msgid "Publisher"
-msgstr ""
+msgstr "Издатель"
 
 msgid "Purge"
 msgstr "Вычистить"
@@ -2084,7 +2095,7 @@ msgid "Request failed! Please report the the problem"
 msgstr "Запрос завершился с ошибкой! Пожалуйста, сообщите о проблеме"
 
 msgid "Reschedule"
-msgstr ""
+msgstr "Перезапустить"
 
 msgid "Reset all"
 msgstr "Сбросить всё"
@@ -2097,13 +2108,13 @@ msgstr "Сбросить пароль"
 
 #. (username)
 msgid "Reset password for user %1"
-msgstr ""
+msgstr "Сбросить пароль для пользователя %1"
 
 msgid "Reset to site defaults"
 msgstr "Восстановить настройки сайта по умолчанию"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "Сбросить пароль"
 
 msgid "Restricted configuration variables"
 msgstr "Ограничить настройки переменных"
@@ -2152,7 +2163,7 @@ msgid "SSL key path"
 msgstr "Путь к SSL-ключу"
 
 msgid "Same as above, but for duplex printers"
-msgstr ""
+msgstr "То же что и выше, но для двусторонних принтеров"
 
 msgid "Same as above, for the Archive menu"
 msgstr "Так же, как выше, для меню Архив"
@@ -2210,20 +2221,20 @@ msgid "Select all"
 msgstr "Выбрать всё"
 
 msgid "Select all for deletion"
-msgstr ""
+msgstr "Выбрать все для удаления"
 
 msgid "Select all for rescheduling"
-msgstr ""
+msgstr "Выбрать все для перезапуска"
 
 msgid "Select individual parts for the bookbuilder"
 msgstr "Выбрать отдельные части для конструктора книг"
 
 msgid "Send mail"
-msgstr ""
+msgstr "Отправить почту"
 
 #. ($from, $to)
 msgid "Sending test mails from %1 to %2"
-msgstr ""
+msgstr "Отправляем проверочные письма с %1 на %2"
 
 msgid "Separate body fields"
 msgstr "Разделить поля тела сообщения"
@@ -2244,7 +2255,7 @@ msgid "Set a date in the future if you want it deferred."
 msgstr "Установите дату, чтобы текст опубликовался позже."
 
 msgid "Settings loaded"
-msgstr ""
+msgstr "Настройки загружены"
 
 msgid "Setup"
 msgstr ""
@@ -2304,7 +2315,7 @@ msgid "Site slogan"
 msgstr "Слоган сайта"
 
 msgid "Site users"
-msgstr ""
+msgstr "Пользователи сайта"
 
 msgid "Sites"
 msgstr "Сайты"
@@ -2528,7 +2539,7 @@ msgid "The password will be mailed at this address"
 msgstr "Пароль будет отправлен на этот адрес"
 
 msgid "The reset link will expire in a hour."
-msgstr ""
+msgstr "Ссылка для сброса активна в течение часа."
 
 msgid "The revision has the following messages"
 msgstr "Для правки есть следующие сообщения"
@@ -2679,7 +2690,7 @@ msgid "This text will be deferred to %1"
 msgstr "Текст будет отложен до %1"
 
 msgid "This user cannot be removed"
-msgstr ""
+msgstr "Этот пользователь не может быть удален"
 
 msgid "Thumbnail"
 msgstr "Эскиз"
@@ -2784,7 +2795,7 @@ msgid "URL"
 msgstr "URL"
 
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
-msgstr ""
+msgstr "URL нового удаленного репозитория (HTTPS, HTTP или Git)"
 
 msgid "UTC"
 msgstr "UTC"
@@ -2794,7 +2805,7 @@ msgstr "Невозможно загрузить сессию конструкт�
 
 #. ($from || "NO MAIL FROM", $to)
 msgid "Unable to send mail from %1 to %2!"
-msgstr ""
+msgstr "Невозможно отправить письмо с %1 на %2!"
 
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr "PDF без имени сайта, логотипа и т.д."
@@ -2871,7 +2882,7 @@ msgid "Use named table of contents anchors instead of numeric ones"
 msgstr ""
 
 msgid "Use one of the site's formats"
-msgstr ""
+msgstr "Использовать один из форматов сайта"
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
@@ -3113,7 +3124,7 @@ msgid ""
 msgstr "Возможно вы захотите отделить «О», «Об» и др. от названия"
 
 msgid "You may want to use one of these images"
-msgstr ""
+msgstr "Вы можете захотеть использовать одно из следующих изображений"
 
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
