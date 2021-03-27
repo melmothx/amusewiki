@@ -36,7 +36,7 @@ sub create :Chained('root') :PathPart('create') :Args {
     foreach my $k (keys %params) {
         delete $params{$k} if $k =~ m/^__/;
     }
-    my $response = {};
+    my %response;
 
     my %classes = (
                    library => 'text',
@@ -47,24 +47,25 @@ sub create :Chained('root') :PathPart('create') :Args {
         my ($revision, $error) = $site->create_new_text(\%params, $classes{$f_class});
         my $user = $c->user->get("username");
         if ($revision) {
+            $response{attachments} = $self->_add_files_to_revision($c, $revision);
             $revision->commit_version("Upload from /remote/create",
                                       clean_username($user));
             $revision->discard_changes;
             my $job = $site->jobs->publish_add($revision);
-            $response->{url} = $c->uri_for($revision->title->full_uri)->as_string;
-            $response->{job} = $c->uri_for_action('/tasks/display',  [$job->id])->as_string;
+            $response{url} = $c->uri_for($revision->title->full_uri)->as_string;
+            $response{job} = $c->uri_for_action('/tasks/display',  [$job->id])->as_string;
         }
         else {
-            $response->{error} = $error;
+            $response{error} = $error;
         }
     }
     elsif (!$classes{$f_class}) {
-        $response->{error} = "Invalid entry type: it should be library or special";
+        $response{error} = "Invalid entry type: it should be library or special";
     }
     else {
-        $response->{error} = "Missing mandatory title and textbody parameters";
+        $response{error} = "Missing mandatory title and textbody parameters";
     }
-    $c->stash(json => $response);
+    $c->stash(json => \%response);
     $c->logout;
     $c->detach($c->view('JSON'));
 }
@@ -96,6 +97,7 @@ sub edit :Chained('root') :PathPart('edit') :Args(2) {
                     my $ok;
                     eval {
                         $error = $revision->edit(\%params);
+                        $response{attachments} = $self->_add_files_to_revision($c, $revision);
                         unless ($error) {
                             $revision->commit_version($commit, clean_username($c->user->get("username")));
                             my $job = $site->jobs->publish_add($revision, $c->user->get("username"));
@@ -125,6 +127,33 @@ sub edit :Chained('root') :PathPart('edit') :Args(2) {
     $c->stash(json => \%response);
     $c->logout;
     $c->detach($c->view('JSON'));
+}
+
+=comment
+
+curl -F __auth_user=$username \
+       -F __auth_pass=$password \
+       -F title=Test \
+       -F textbody='Hello <em>hello</em>' \
+       -F 'attachment=@prova.png' \
+       https://staging.amusewiki.org/remote/create
+
+=cut
+
+sub _add_files_to_revision {
+    my ($self, $c, $revision) = @_;
+    die "Wrong usage" unless $c && $revision;
+    my @out;
+    foreach my $upload ($c->request->upload('attachment')) {
+        my $mime_type = AmuseWikiFarm::Utils::Amuse::mimetype($upload->tempname);
+        if ($c->stash->{site}->allowed_binary_uploads(restricted => !$c->user_exists)->{$mime_type}) {
+            push @out, $revision->embed_attachment($upload->tempname);
+        }
+        else {
+            push @out, { error => "Unsupported type $mime_type" };
+        }
+    }
+    return \@out;
 }
 
 =encoding utf8
