@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 34;
+use Test::More tests => 112;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -12,6 +12,7 @@ use AmuseWikiFarm::Schema;
 use Data::Dumper::Concise;
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
+use Path::Tiny;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0api0');
@@ -75,6 +76,8 @@ my %auth = (
     ok $res->{error};
     diag Dumper($res);
 }
+
+# test the attachments
 
 {
     $mech->post('/remote/create/special', {
@@ -147,3 +150,74 @@ foreach my $type (qw/library special/) {
     $mech->get_ok("/$type/api-test.muse");
     $mech->content_is($body . "\n");
 }
+
+foreach my $type (qw/library special/) {
+    foreach my $filename (qw/shot.jpg shot.png shot.pdf/) {
+        my $binary = path(qw/t files/, $filename);
+        $mech->post("/remote/create/$type",
+                    Content_Type => 'form-data',
+                    Content => [
+                                attachment => [ "$binary" ],
+                                attachment => [ "$binary" ],
+                                %auth,
+                                title => "$type attachment $filename",
+                                textbody => "<p>Test</p>",
+                               ]);
+        my $res = from_json($mech->content);
+        my $url = $res->{url};
+        diag Dumper($res);
+        while (my $job = $site->jobs->dequeue) {
+            $job->dispatch_job;
+        }
+        $mech->get_ok($url);
+        $mech->get_ok("$url.muse");
+        my $muse = $mech->content;
+        diag $muse;
+        foreach my $att (@{$res->{attachments}->{uris} || []}) {
+            $mech->get_ok("/$type/$att");
+            ok index($muse, "[[$att f]]") > 0, "Found $att in content";
+        }
+        my @fragments = split(/\//, $url);
+        my $text_uri = pop @fragments;
+        diag "Test the editing now";
+        $mech->post("/remote/edit/$type/$text_uri",
+                    Content_Type => 'form-data',
+                    Content => [
+                                attachment => [ "$binary" ],
+                                attachment => [ "$binary" ],
+                                %auth,
+                                body => $muse,
+                                message => "Added more files",
+                               ]);
+        $res = from_json($mech->content);
+        my $url = $res->{url};
+        diag Dumper($res);
+        while (my $job = $site->jobs->dequeue) {
+            $job->dispatch_job;
+        }
+        $mech->get_ok($url);
+        $mech->get_ok("$url.muse");
+        my $muse = $mech->content;
+        diag $muse;
+        foreach my $att (@{$res->{attachments}->{uris} || []}) {
+            $mech->get_ok("/$type/$att");
+            ok index($muse, "[[$att f]]") > 0, "Found $att in content";
+        }
+    }
+    my $binary = __FILE__;
+    $mech->post("/remote/create/$type",
+                Content_Type => 'form-data',
+                Content => [
+                            attachment => [ "$binary" ],
+                            attachment => [ "$binary" ],
+                            %auth,
+                            title => "Test attachment failure",
+                            textbody => "<p>Test</p>",
+                           ]);
+    my $res = from_json($mech->content);
+    diag Dumper($res);
+    is_deeply $res->{attachments}->{uris}, [];
+    ok $res->{attachments}->{errors};
+    like $res->{attachments}->{errors}->[0], qr/Unsupported type/;
+}
+

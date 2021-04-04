@@ -143,17 +143,26 @@ curl -F __auth_user=$username \
 sub _add_files_to_revision {
     my ($self, $c, $revision) = @_;
     die "Wrong usage" unless $c && $revision;
-    my @out;
+    my (@errors, @uris);
     foreach my $upload ($c->request->upload('attachment')) {
         my $mime_type = AmuseWikiFarm::Utils::Amuse::mimetype($upload->tempname);
         if ($c->stash->{site}->allowed_binary_uploads(restricted => !$c->user_exists)->{$mime_type}) {
-            push @out, $revision->embed_attachment($upload->tempname);
+            my $res = $revision->embed_attachment($upload->tempname);
+            if ($res->{uris} and ref($res->{uris}) eq 'ARRAY') {
+                push @uris, @{$res->{uris}};
+            }
+            else {
+                push @errors, "Failure to add attachment " . $upload->filename;
+            }
         }
         else {
-            push @out, { error => "Unsupported type $mime_type" };
+            push @errors, "Unsupported type $mime_type for "  . $upload->filename;
         }
     }
-    return \@out;
+    return {
+            uris => \@uris,
+            errors => @errors ? \@errors : undef,
+           };
 }
 
 =encoding utf8
