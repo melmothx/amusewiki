@@ -80,8 +80,10 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     if (!$user_exists and $site->show_preview_when_deferred) {
         $c->stash(no_full_text_if_not_published => 1);
     }
+    # do a copy, because later we overwrite query.
+    my %link_params = %params;
     my $format_link = sub {
-        return $c->uri_for($c->action, { %params, page => $_[0] });
+        return $c->uri_for($c->action, { %link_params, page => $_[0] });
     };
     my $facets = $baseres->facet_tokens;
     my $has_facets = 0;

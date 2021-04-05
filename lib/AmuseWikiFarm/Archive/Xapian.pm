@@ -120,6 +120,12 @@ has stem_search => (
                     default => sub { return 1 },
                    );
 
+has enable_xapian_suggestions => (
+                                  is => 'ro',
+                                  isa => Bool,
+                                  default => sub { return 1 },
+                                 );
+
 has show_deferred => (is => 'rw',
                       isa => Bool,
                       default => sub { return 0 });
@@ -633,7 +639,7 @@ sub _do_faceted_search {
         $facets{$spy_name} = \@got;
     }
     Dlog_debug { "Selections: $_ " } \%actives;
-    my $corrected_query = $qp->get_corrected_query_string;
+    my $corrected_query = $self->enable_xapian_suggestions ? $qp->get_corrected_query_string : '';
     if ($corrected_query) {
         eval {
             $corrected_query = Encode::decode('UTF-8', $corrected_query);

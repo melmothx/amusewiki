@@ -34,6 +34,10 @@ $site->site_options->update_or_create({
                                        option_value => 1,
                                       });
 $site->site_options->update_or_create({
+                                       option_name => 'enable_xapian_suggestions',
+                                       option_value => 1,
+                                      });
+$site->site_options->update_or_create({
                                        option_name => 'automatic_teaser',
                                        option_value => 1,
                                       });

@@ -1792,6 +1792,7 @@ sub xapian {
                                                # disable stemming for search on multilang environment
                                                stem_search => !$self->multilanguage,
                                                show_deferred => $self->show_preview_when_deferred,
+                                               enable_xapian_suggestions => !!$self->enable_xapian_suggestions,
                                               );
 }
 
