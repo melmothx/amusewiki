@@ -4,6 +4,13 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.510 2021-04-05
+
+ - Add support for images in the API
+ - Add option to keep the layout always fluid
+ - Update I18N: RU (thanks to @link2xt)
+ - Carry on ETag and X-Robots-Tag when serving static files from nginx
+
 2.509 2021-02-27
 
  - Return 410 when the text is deleted without a redirection.
