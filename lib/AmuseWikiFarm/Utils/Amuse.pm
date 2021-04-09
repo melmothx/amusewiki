@@ -908,6 +908,7 @@ sub known_langs {
             sr => 'Srpski',
             hr => 'Hrvatski',
             mk => 'Македонски',
+            el => 'Ελληνικά',
             fi => 'Suomi',
             id => 'Bahasa Indonesia',
             it => 'Italiano',
