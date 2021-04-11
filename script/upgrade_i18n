@@ -12,7 +12,7 @@ cat $filelist
 carton exec xgettext.pl -P perl=* -P tt2=* -P generic=js \
     --output=lib/AmuseWikiFarm/I18N/messages.pot -f $filelist
 
-for i in hr fi es mk ru id it de fr nl en sq sr sv pl pt da cs tr ar fa he; do
+for i in hr fi es el mk ru id it de fr nl en sq sr sv pl pt da cs tr ar fa he; do
     msgmerge --no-fuzzy-matching --update --no-location \
              lib/AmuseWikiFarm/I18N/$i.po \
              lib/AmuseWikiFarm/I18N/messages.pot
