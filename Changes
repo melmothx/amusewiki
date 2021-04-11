@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.511 2021-04-11
+
+ - Add Greek I18N
+ - Do not trigger Xapian suggestions if not enabled (#366)
+
 2.510 2021-04-05
 
  - Add support for images in the API
