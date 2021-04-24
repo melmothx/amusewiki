@@ -8,7 +8,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 66;
+use Test::More tests => 72;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -263,3 +263,16 @@ $mech->get('/git-notify');
 is $mech->status, 404;
 $mech->get('/git-notify/blabla');
 is $mech->status, 403;
+
+$mech->get_ok('/login');
+ok($mech->form_id('login-form'), "Found the login-form");
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+$mech->get_ok('/admin/sites/edit/' . $site->id);
+ok $mech->submit_form(with_fields => { canonical => '0cgit0xxx.amusewiki.org' } ,
+                      button => 'edit_site');
+{
+    my $hook = $site->remote_repo_root->child('hooks')->child('post-receive');
+    diag $hook;
+    ok -x $hook, "$hook is executable";
+    like $hook->slurp_utf8, qr{0cgit0xxx}, "Hook updated";
+}

@@ -36,8 +36,12 @@ sub create_site {
         $job->delete;
     }
     if (my $stray = $schema->resultset('Site')->find($id)) {
-        if ( -d $stray->repo_root) {
-            remove_tree($stray->repo_root);
+        foreach my $dir ($stray->repo_root,
+                         $stray->remote_repo_root) {
+            if (-d $dir) {
+                # print "Removing the tree $dir\n";
+                remove_tree($dir);
+            }
         }
         $stray->delete;
     }
@@ -56,9 +60,12 @@ sub create_site {
 
     remove_tree($site->repo_root) if -d $site->repo_root;
     remove_tree($site->xapian->xapian_dir) if -d $site->xapian->xapian_dir;
+    # print "Initialing the git\n";
     $site->initialize_git;
     $site->archive_remote_repo;
+    # print "Configuring cgit\n";
     $site->configure_cgit;
+    # print "Done\n";
     $site->index_site_files;
     return $site;
 }

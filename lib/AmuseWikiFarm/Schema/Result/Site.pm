@@ -2766,12 +2766,6 @@ sub initialize_remote_repo {
             }
             $self->git->remote(add => shared => "$target");
             $self->git->push(shared => 'master');
-            my $hook = Path::Tiny::path($target, hooks => 'post-receive');
-            my $notify_url = $self->git_notify_url;
-            $hook->spew_utf8(sprintf("#!/bin/sh\nwget --tries=1 -q -O- %s || curl -s %s || echo 'Cannot notify site'\n",
-                                     $notify_url, $notify_url));
-            $hook->chmod(0755);
-            log_info { "Created hook $hook" };
             $out = $target;
         } catch {
             my $err = $_;
@@ -2780,6 +2774,29 @@ sub initialize_remote_repo {
     }
     else {
         log_info { "Generating $target not needed" };
+    }
+    # populate the hook for the automatic pulling
+    my $hook = Path::Tiny::path($target, hooks => 'post-receive');
+    if (my $notify_url = $self->git_notify_url) {
+        my $cmd = sprintf("#!/bin/sh\nwget --tries=1 -q -O- %s || curl -s %s || echo 'Cannot notify site'\n",
+                          $notify_url, $notify_url);
+        # log_info { "Notify: $cmd" };
+        my $existing = '';
+        if ($hook->exists) {
+            $existing = $hook->slurp_utf8;
+        }
+        Dlog_debug { "Existing is $_" } $existing;
+        if ($existing ne $cmd) {
+            if ($existing) {
+                log_info { "Updated hook: $hook from $existing to $cmd" };
+            }
+            else {
+                log_info { "Creating $hook: $cmd" };
+            }
+            # spew is atomic so the permissions need a refresh
+            $hook->spew_utf8($cmd);
+            $hook->chmod(0755);
+        }
     }
     return $out;
 }
