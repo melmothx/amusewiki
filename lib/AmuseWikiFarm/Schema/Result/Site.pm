@@ -2777,7 +2777,8 @@ sub initialize_remote_repo {
     }
     # populate the hook for the automatic pulling
     my $hook = Path::Tiny::path($target, hooks => 'post-receive');
-    if (my $notify_url = $self->git_notify_url) {
+    if (-d $hook->parent) {
+        my $notify_url = $self->git_notify_url;
         my $cmd = sprintf("#!/bin/sh\nwget --tries=1 -q -O- %s || curl -s %s || echo 'Cannot notify site'\n",
                           $notify_url, $notify_url);
         # log_info { "Notify: $cmd" };
