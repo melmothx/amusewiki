@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2021-04-09 13:27+0200\n"
+"PO-Revision-Date: 2021-04-22 00:56+0300\n"
 "Language-Team: Greek\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -243,7 +243,7 @@ msgstr "Όλες οι γλώσσες"
 
 #: lib/AmuseWikiFarm/Controller/Publish.pm:82 root/src/layout.tt:425
 msgid "All revisions"
-msgstr "Όλες οι εκδόσεις"
+msgstr "Όλες οι διορθώσεις"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:68
 msgid "All sites"
@@ -302,7 +302,7 @@ msgstr "Το Apache δεν υποστηρίζεται αυτή τη στιγμή
 
 #: root/src/layout.tt:228
 msgid "Archive"
-msgstr "Αρχειοθέτηση"
+msgstr "Αρχείο"
 
 #: lib/AmuseWikiFarm/Controller/Monthly.pm:35
 #: lib/AmuseWikiFarm/Controller/Monthly.pm:39 root/src/admin/edit.tt:657
@@ -767,7 +767,7 @@ msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
 msgstr ""
-"Η διαγραφή μιας έκδοσης είναι ασφαλής αν ένα κείμενο έχει δημοσιευτεί.\n"
+"Η διαγραφή μιας διόρθωσης είναι ασφαλής αν ένα κείμενο έχει δημοσιευτεί.\n"
 "Αλλιώς, με τη διαγραφή θα χάσεις τις μη δημοσιευμένες αλλαγές"
 
 #: root/src/attachments/edit.tt:27 root/src/attachments/list.tt:18
@@ -839,7 +839,7 @@ msgstr "Μη χρησιμοποιείς έντονη γραμματοσειρά 
 
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:81 root/src/help/opds.tt:110
 msgid "Done"
-msgstr "Έγινε"
+msgstr "Τέλος"
 
 #: root/src/edit/edit.tt:667
 msgid "Double bars"
@@ -957,7 +957,7 @@ msgstr "Ενεργοποίηση της ταξινόμησης τίτλων κα
 
 #: root/src/publish/pending.tt:84
 msgid "Erase this revision"
-msgstr "Διαγραφή αυτής της έκδοσης"
+msgstr "Διαγραφή αυτής της διόρθωσης"
 
 #: lib/AmuseWikiFarm/Schema/Result/Site.pm:1668
 msgid "Error converting the upload file. Is it an HTML file?"
@@ -985,9 +985,9 @@ msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
 msgstr ""
-"Ακόμη και αν αυτός ο ιστότοπος έχει μια ευέλικτη, φιλική προς τις φορητές "
-"συσκευές διάταξη,\n"
-"δεν παρέχει μια ειδική εφαρμογή για κινητά."
+"Αυτός ο ιστότοπος έχει μια ευέλικτη και φιλική προς φορητές συσκευές "
+"διάταξη,\n"
+"εντούτοις, δεν παρέχει μια ειδική εφαρμογή για κινητά."
 
 #: root/src/edit/newtext.tt:161
 msgid ""
@@ -1358,8 +1358,8 @@ msgid ""
 "  from mobile reading applications which support the so-called OPDS\n"
 "  protocol."
 msgstr ""
-"Ωστόσο, μπορείς να περιηγηθείς, να αναζητήσεις, να κατεβάσεις και να "
-"διαβάσεις τα κείμενα\n"
+"Μπορείς όμως να περιηγηθείς, να αναζητήσεις, να κατεβάσεις και να διαβάσεις "
+"τα κείμενα\n"
 "  από εφαρμογές ανάγνωσης για κινητά που υποστηρίζουν\n"
 "το λεγόμενο πρωτόκολλο OPDS."
 
@@ -1397,9 +1397,9 @@ msgid ""
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
 msgstr ""
-"Εάν κατά τύχη υπάρχει άλλο κείμενο με τον ίδιο συγγραφέα και τίτλο, επίλεξε "
-"το επιθυμητό URI χρησιμοποιώντας το παρακάτω πεδίο εισάγοντας τον συγγραφέα, "
-"τον τίτλο και έναν αριθμό, π.χ. my-author-my-title-1"
+"Εάν κατά τύχη υπάρχει άλλο κείμενο με τον/ην ίδιο/α συγγραφέα και τίτλο, "
+"επίλεξε το επιθυμητό URI χρησιμοποιώντας το παρακάτω πεδίο εισάγοντας τον "
+"συγγραφέα, τον τίτλο και έναν αριθμό, π.χ. my-author-my-title-1"
 
 #: mkits/resetpassword/body.txt:6
 msgid ""
@@ -1464,7 +1464,7 @@ msgid ""
 "published text once it is done."
 msgstr ""
 "Αν ο χρήστης έχει δικαίωμα δημοσίευσης, επιτάχυνε τη διαδικασία "
-"παρακάμπτοντας τη σελίδα αναθεώρησης αν δεν υπάρχουν conflicts και "
+"παρακάμπτοντας τη σελίδα διόρθωσης αν δεν υπάρχουν conflicts και "
 "ανακατεύθυνε αυτόματα στο δημοσιευμένο κείμενο μόλις ολοκληρωθεί."
 
 #: mkits/commit/body.txt:10
@@ -1545,7 +1545,7 @@ msgid ""
 "HTML"
 msgstr ""
 "Εάν έχετε ένα αρχείο σε .doc ή .odt, μπορείτε εύκολα να το μετατρέψετε και "
-"να το αποθηκεύσετε ως HTML."
+"να το αποθηκεύσετε ως HTML"
 
 #: root/src/tasks/rebuild.tt:7
 msgid ""
@@ -1607,12 +1607,12 @@ msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
-"Το ανέβασμα της εικόνας μπορεί να γίνει στο επόμενο βήμα, όταν μπορείτε να\n"
-"        επανεξετάσετε και να κάνετε προεπισκόπηση της μεταφόρτωσης."
+"Το ανέβασμα εικόνας μπορεί να γίνει στο επόμενο βήμα, όταν θα μπορείς να\n"
+"        επανεξετάσεις και να κάνεις προεπισκόπηση του ανεβάσματος."
 
 #: root/src/include/markitup.tt:60
 msgid "Image url"
-msgstr "url εικόνας"
+msgstr "Url εικόνας"
 
 #: root/src/edit/edit.tt:378 root/src/edit/edit.tt:641
 msgid "Images"
@@ -1732,7 +1732,7 @@ msgstr "Τα JPG, PNG και PDF επιτρέπονται πάντα."
 
 #: root/src/layout.tt:501
 msgid "Job status"
-msgstr "Κατάσταση εργασίας"
+msgstr "Κατάσταση εργασιών"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:156
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:198
@@ -1759,14 +1759,14 @@ msgid ""
 "        be lost in the process. Please check the preview on the next\n"
 "        step, where you can also insert images."
 msgstr ""
-"Λάβετε υπόψη ότι καθαρίζω το κείμενο και το δίνω\n"
-"        πίσω σε εσάς στο markup που χρησιμοποιείται σε αυτόν τον ιστότοπο. "
-"Είναι στο χέρι σας να\n"
-"        το ελέγξετε και τελικά να το ανεβάσετε. Κάποια σπάνια "
+"Λάβε υπόψη ότι καθαρίζω το κείμενο και το δίνω\n"
+"        πίσω σε εσένα στη διαμόρφωση markup που χρησιμοποιείται σε αυτόν τον "
+"ιστότοπο. Είναι στο χέρι σου να\n"
+"        το ελέγξεις και τελικά να το ανεβάσεις. Κάποια σπάνια "
 "χρησιμοποιούμενα markup θα\n"
-"        χαθούν κατά τη διαδικασία. Παρακαλούμε ελέγξτε την προεπισκόπηση στο "
+"        χαθούν κατά τη διαδικασία. Παρακαλώ έλεγξε την προεπισκόπηση στο "
 "επόμενο\n"
-"        βήμα, όπου μπορείτε επίσης να εισαγάγετε εικόνες."
+"        βήμα, όπου μπορείς επίσης να εισάγεις εικόνες."
 
 #: root/src/include/bbform.tt:37
 msgid "Keep in mind that some character may be missing in the required font."
@@ -1780,9 +1780,9 @@ msgid ""
 "        complex formatting will be stripped. Is it possible to add\n"
 "        tables and images only on the next step."
 msgstr ""
-"Λάβετε υπόψη ότι η ασυνήθιστα\n"
-"        πολύπλοκη μορφοποίηση θα αφαιρεθεί. Είναι δυνατόν να προσθέσετε\n"
-"        πίνακες και εικόνες μόνο στο επόμενο βήμα."
+"Λάβε υπόψη ότι η ασυνήθιστα\n"
+"        πολύπλοκη μορφοποίηση θα αφαιρεθεί. Η προσθήκη πινάκων και εικόνων\n"
+"        μπορεί να γίνει μόνο στο επόμενο βήμα."
 
 #: root/src/admin/edit.tt:349 root/src/admin/list.tt:16
 #: root/src/edit/newtext.tt:142
@@ -1791,7 +1791,7 @@ msgstr "Γλώσσα"
 
 #: root/src/edit/edit.tt:718
 msgid "Language code of the document (2 or 3 letters). "
-msgstr "Κωδικός γλώσσας του εγγράφου (2 ή 3 γράμματα)."
+msgstr "Κωδικός γλώσσας του εγγράφου (2 ή 3 γράμματα). "
 
 #: root/src/layout.tt:357 root/src/layout.tt:361
 msgid "Language selection"
@@ -1987,7 +1987,7 @@ msgstr "Έλλειψη ανακατεύθυνσης"
 
 #: root/src/layout.tt:574 root/src/layout.tt:738
 msgid "Mobile"
-msgstr "Κινητό"
+msgstr "Φορητή συσκευή"
 
 #: root/src/layout.tt:577
 msgid "Mobile applications"
@@ -2064,7 +2064,7 @@ msgid ""
 "Never generate the standard final page with title/author/notes/logo/site name"
 msgstr ""
 "Ποτέ μην δημιουργείτε την τυπική τελική σελίδα με τίτλο/συγγραφέα/σημειώσεις/"
-"λογότυπο/όνομα ιστότοπου."
+"λογότυπο/όνομα ιστότοπου"
 
 #: root/src/admin/edit.tt:266
 msgid "Never show teaser and/or cover in text lists"
@@ -2076,7 +2076,7 @@ msgstr "Νέο/α"
 
 #: root/src/edit/revs.tt:73
 msgid "New revision"
-msgstr "Νέα τροποποίηση"
+msgstr "Νέα διόρθωση"
 
 #: root/src/admin/list.tt:82
 msgid "New site id"
@@ -2122,7 +2122,7 @@ msgstr "Δεν βρέθηκε αποτέλεσμα!"
 
 #: root/src/publish/pending.tt:140
 msgid "No revisions to show"
-msgstr "Δεν υπάρχουν αναθεωρήσεις για προβολή"
+msgstr "Δεν υπάρχουν διορθώσεις προς προβολή"
 
 #: root/src/include/posts.tt:95 root/src/library.tt:76
 msgid "No text found!"
@@ -2218,7 +2218,7 @@ msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
 "Μία σελίδα ανά φύλλο. Αυτό είναι χρήσιμο μόνο αν θέλετε να προσθέσετε τα "
-"σημάδια αποκοπής."
+"σημάδια αποκοπής"
 
 #: root/src/admin/edit.tt:211
 msgid "Open wiki"
@@ -2240,13 +2240,13 @@ msgid ""
 "          later, or, better, contact the librarians before proceeding,\n"
 "          to avoid wasting energies."
 msgstr ""
-"Ή δημιουργήστε μια νέα αναθεώρηση, με δική σας ευθύνη. Έχοντας πολλαπλές\n"
+"Ή δημιούργησε μια νέα διόρθωση, με δική σου ευθύνη. Έχοντας πολλαπλές\n"
 "          ταυτόχρονες αναθεωρήσεις σημαίνει ότι, αν κάποι@ δεν\n"
-"          το φροντίσει, μόνο μία θα επιλεγεί. Μπορείτε να προχωρήσετε ή να "
-"επαναλάβετε\n"
-"          αργότερα, ή, καλύτερα, επικοινωνήστε με τους βιβλιοθηκονόμους πριν "
-"προχωρήσετε,\n"
-"          για να αποφύγετε τη σπατάλη ενέργειας."
+"          το φροντίσει, μόνο μία θα επιλεγεί. Μπορείς να προχωρήσεις ή να "
+"επαναλάβεις\n"
+"          αργότερα, ή, καλύτερα, επικοινώνησε με τους/τις βιβλιοθηκονόμους "
+"πριν προχωρήσεις,\n"
+"          για να αποφύγεις τη σπατάλη χρόνου και ενέργειας."
 
 #: root/src/user/human.tt:26
 msgid "Or log in, if you have an account."
@@ -2383,7 +2383,7 @@ msgstr "Payload"
 
 #: lib/AmuseWikiFarm/Controller/Publish.pm:71 root/src/layout.tt:414
 msgid "Pending revisions"
-msgstr "Εκκρεµείς αναθεωρήσεις"
+msgstr "Εκκρεµείς διορθώσεις"
 
 #: root/src/include/markitup.tt:54
 msgid "Picture"
@@ -2401,7 +2401,7 @@ msgstr "Τοποθετήστε το στο σώμα χωρίς περιγραφ�
 msgid "Place the notes on the back of the first page, impressum-style"
 msgstr ""
 "Τοποθετήστε τις σημειώσεις στο πίσω μέρος της πρώτης σελίδας, σε στυλ "
-"impressum."
+"impressum"
 
 #: lib/AmuseWikiFarm/Schema/Result/Site.pm:1245
 msgid "Plain PDF"
@@ -2414,7 +2414,7 @@ msgid ""
 msgstr ""
 "Ελέγξτε τα εισερχόμενά σας, προσπαθήσαμε να παραδώσουμε ένα μήνυμα "
 "ηλεκτρονικού ταχυδρομείου στη διεύθυνση που δηλώσατε με έναν σύνδεσμο "
-"επαναφοράς κωδικού πρόσβασης."
+"επαναφοράς κωδικού πρόσβασης"
 
 #: root/src/include/bbform.tt:151
 msgid "Please choose the Beamer color theme"
@@ -2461,7 +2461,7 @@ msgstr ""
 #: root/src/console/git_display.tt:110
 msgid "Please ensure that your system user is member of the \"%1\" group"
 msgstr ""
-"Βεβαιωθείτε ότι ο/η χρήστης του συστήματός σας είναι μέλος της ομάδας \"%1\"."
+"Βεβαιωθείτε ότι ο/η χρήστης του συστήματός σας είναι μέλος της ομάδας \"%1\""
 
 #: root/src/edit/edit.tt:326
 msgid ""
@@ -2502,11 +2502,11 @@ msgid ""
 "    previous one. Try to avoid this, unless you know what you're\n"
 "    doing."
 msgstr ""
-"Λάβετε υπόψη σας ότι αν δείτε την ένδειξη \"Επιβολή δημοσίευσης\"\n"
-"    ως ενέργεια, αυτό σημαίνει ότι η αναθεώρηση έχει αντικατασταθεί από\n"
-"    μια άλλη, οπότε δημοσιεύοντας αυτή, θα καταλήξετε να επαναφέρετε μια\n"
-"    προηγούμενη. Προσπαθήστε να το αποφύγετε αυτό, εκτός αν ξέρετε τι\n"
-"    τι κάνετε."
+"Λάβε υπόψιν σου ότι αν δεις την ένδειξη \"Επιβολή δημοσίευσης\"\n"
+"    ως ενέργεια, αυτό σημαίνει ότι η διόρθωση έχει αντικατασταθεί από\n"
+"    μια άλλη, οπότε δημοσιεύοντας αυτή, θα καταλήξεις να επαναφέρεις μια\n"
+"    προηγούμενη. Προσπάθησε να το αποφύγεις αυτό, εκτός κι αν ξέρεις τι\n"
+"    κάνεις."
 
 #: root/src/edit/edit.tt:312
 msgid "Please leave a mail if you want to be contacted about this change"
@@ -2583,7 +2583,7 @@ msgid ""
 "imposing"
 msgstr ""
 "Επίλεξε το μέγεθος κάθε σελίδας, συμπεριλαμβανομένων των σημείων περικοπής, "
-"πριν από την διαμόρφωση."
+"πριν από την διαμόρφωση"
 
 #: root/src/edit/newtext.tt:13
 msgid ""
@@ -2593,7 +2593,7 @@ msgid ""
 msgstr ""
 "Όρισε το URI που επιθυμείς. Συγγραφέας (εάν υπάρχει),\n"
 "        τίτλος και τελικά ένας αριθμός εάν το URI υπάρχει ήδη είναι\n"
-"        συνήθως μια καλή επιλογή."
+"        συνήθως μια καλή επιλογή"
 
 #: root/src/include/bbform.tt:122
 msgid "Please setup the Beamer layout"
@@ -2702,9 +2702,9 @@ msgid ""
 "\t  title, translators, credits, etc). Footnotes go in the\n"
 "\t  body."
 msgstr ""
-"Βάλτε πρόσθετες πληροφορίες εδώ (αρχικός\n"
+"Βάλε πρόσθετες πληροφορίες εδώ (αρχικός\n"
 "\t  τίτλος, μεταφραστές, τίτλοι κ.λπ.). Οι υποσημειώσεις μπαίνουν στο\n"
-"\t  σώμα."
+"\t  σώμα του κειμένου."
 
 #: root/src/admin/edit.tt:7
 msgid "Quarter Letter paper"
@@ -2896,7 +2896,7 @@ msgstr "Αποτελέσματα ανά σελίδα:"
 
 #: root/src/edit/newtext.tt:127
 msgid "Retrieved on DATE from URL"
-msgstr "Ανακτήθηκε την ΗΜΕΡΟΜΗΝΙΑ από URL"
+msgstr "Ανακτήθηκε στις ΗΜΕΡΟΜΗΝΙΑ από URL"
 
 #: root/src/edit/edit.tt:713
 msgid "Retrieved on March 8, 2012 from"
@@ -2904,12 +2904,12 @@ msgstr "Ανακτήθηκε στις 8 Μαρτίου 2012 από"
 
 #: root/src/publish/pending.tt:14
 msgid "Revision"
-msgstr "Αναθεώρηση"
+msgstr "Διόρθωση"
 
 #. ($uri)
 #: lib/AmuseWikiFarm/Controller/Publish.pm:156
 msgid "Revision for %1 has been deleted"
-msgstr "Η αναθεώρηση για το %1 έχει διαγραφεί"
+msgstr "Η διόρθωση για το %1 έχει διαγραφεί"
 
 #: root/src/admin/show_user_details.tt:42 root/src/admin/show_users.tt:12
 #: root/src/siteadmin/show_users.tt:12
@@ -3142,7 +3142,7 @@ msgstr "Id ιστότοπου"
 
 #: root/src/admin/edit.tt:458
 msgid "Site mail (From field)"
-msgstr "email ιστοτόπου"
+msgstr "Email ιστοτόπου"
 
 #: root/src/admin/edit.tt:193
 msgid "Site mode"
@@ -3194,7 +3194,7 @@ msgstr "Ορισμένα πεδία είναι πολύ μεγάλα"
 
 #: root/src/edit/revs.tt:9
 msgid "Some ongoing revisions were found"
-msgstr "Διαπιστώθηκαν ορισμένες τρέχουσες αναθεωρήσεις"
+msgstr "Διαπιστώθηκαν ορισμένες τρέχουσες διορθώσεις"
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:89
 #: lib/AmuseWikiFarm/Controller/Publish.pm:125
@@ -3480,7 +3480,7 @@ msgstr "Ο σύνδεσμος επαναφοράς θα λήξει σε μια �
 
 #: mkits/commit/body.txt:6
 msgid "The revision has the following messages"
-msgstr "Η αναθεώρηση έχει τα ακόλουθα μηνύματα"
+msgstr "Η διόρθωση έχει τα ακόλουθα μηνύματα"
 
 #: root/src/edit/edit.tt:763
 msgid ""
@@ -3548,7 +3548,7 @@ msgstr "Υπάρχουν αποτυχημένες εργασίες"
 
 #: root/src/layout.tt:416
 msgid "There are pending revisions"
-msgstr "Εκκρεμούν αναθεωρήσεις"
+msgstr "Εκκρεμούν διορθώσεις"
 
 #: root/src/console/translations.tt:21
 msgid "These texts are missing the unique id."
@@ -3615,19 +3615,19 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:314
 msgid "This revision is already published, ignoring changes"
-msgstr "Αυτή η αναθεώρηση έχει ήδη δημοσιευθεί, οι αλλαγές θα αγνοηθούν"
+msgstr "Αυτή η διόρθωση έχει ήδη δημοσιευθεί, οι αλλαγές θα αγνοηθούν"
 
 #: root/src/edit/revs.tt:37
 msgid "This revision is being actively edited"
-msgstr "Αυτή η αναθεώρηση βρίσκεται υπό επεξεργασία ενεργά"
+msgstr "Αυτή η δίορθωση βρίσκεται υπό επεξεργασία ενεργά"
 
 #: root/src/edit/revs.tt:35
 msgid "This revision is being actively edited by you"
-msgstr "Αυτή η αναθεώρηση βρίσκεται υπό επεξεργασία ενεργά από εσάς"
+msgstr "Αυτή η διόρθωση βρίσκεται υπό επεξεργασία ενεργά από εσάς"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:309
 msgid "This revision is being edited by someone else!"
-msgstr "Αυτή η αναθεώρηση βρίσκεται υπό επεξεργασία από κάποιον άλλον!"
+msgstr "Αυτή η διόρθωση βρίσκεται υπό επεξεργασία από κάποιο άλλο άτομο!"
 
 #: root/src/edit/edit.tt:798
 msgid "This section will not produce a slide"
@@ -3765,7 +3765,7 @@ msgid ""
 msgstr ""
 "Για να αποθηκεύσετε ή να ενημερώσετε τα πρότυπα, πρέπει πρώτα να "
 "αποθηκεύσετε\n"
-"    τις επιλογές με το κουμπί \"%1\"."
+"    τις επιλογές με το κουμπί \"%1\""
 
 #: mkits/commit/body.txt:16
 msgid "To view the changes introduced, you can visit the following URL"
@@ -3798,7 +3798,7 @@ msgstr "Τριπλές μπάρες"
 
 #: root/src/bookbuilder/index.tt:374
 msgid "Try a random text if unsure"
-msgstr "Δοκιμάστε ένα τυχαίο κείμενο αν δεν είστε σίγουρ@"
+msgstr "Δοκίμασε ένα τυχαίο κείμενο αν δεν είσαι σίγουρ@"
 
 #: root/src/admin/edit.tt:238
 msgid ""
@@ -4092,17 +4092,17 @@ msgid ""
 "    can load it here from another device to resume what you were\n"
 "    doing."
 msgstr ""
-"Όταν ξεκινάτε μια συνεδρία του βιβλιοχτίστη, στο τέλος της σελίδας του\n"
-"    βιβλιοχτίστη μπορείτε να δείτε ένα σύμβολο για την κοινή χρήση της "
+"Όταν ξεκινάς μια συνεδρία στο βιβλιοχτίστη, στο τέλος της σελίδας του\n"
+"    βιβλιοχτίστη μπορείς να δεις ένα σύμβολο για την κοινή χρήση της "
 "συνεδρίας.\n"
-"    Μπορείτε να το φορτώσετε εδώ από άλλη συσκευή για να συνεχίσετε αυτό "
-"που\n"
-"    κάνατε."
+"    Μπορείς να το φορτώσεις εδώ από άλλη συσκευή έτσι ώστε να συνεχίσεις "
+"αυτό που\n"
+"    έκανες."
 
 #: root/src/edit/edit.tt:202
 msgid "When you upload a PDF, split it into images to be inserted in the body"
 msgstr ""
-"Όταν ανεβάζετε ένα PDF, χωρίστε το σε εικόνες που θα εισαχθούν στο σώμα."
+"Όταν ανεβάζετε ένα PDF, χωρίστε το σε εικόνες που θα εισαχθούν στο σώμα"
 
 #: root/src/edit/edit.tt:714
 msgid "Where does this text come from?"
@@ -4150,10 +4150,10 @@ msgid ""
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
 msgstr ""
-"Με το βιβλιοχτίστη μπορείτε να αλλάξετε τη διάταξη (γραμματοσειρές,\n"
-"    διαστάσεις, χαρτί, περιθώρια) των κειμένων της βιβλιοθήκης. Μπορείτε\n"
-"    επίσης να συγχωνεύσετε περισσότερα κείμενα για να δημιουργήσετε το δικό "
-"σας φυλλάδιο. Απλά δοκιμάστε το!"
+"Με το βιβλιοχτίστη μπορείς να αλλάξεις τη διάταξη (γραμματοσειρές,\n"
+"    διαστάσεις, χαρτί, περιθώρια) των κειμένων της βιβλιοθήκης. Μπορείς\n"
+"    επίσης να συγχωνεύσεις περισσότερα κείμενα για να δημιουργήσεις το δικό "
+"σου φυλλάδιο. Δοκίμασέ το!"
 
 #: root/src/console/git_display.tt:101 root/src/console/git_display.tt:141
 msgid "Workflow"
@@ -4274,7 +4274,7 @@ msgstr ""
 msgid ""
 "You can't create a new revision because the text has not been published yet"
 msgstr ""
-"Δεν μπορείτε να δημιουργήσετε μια νέα αναθεώρηση επειδή το κείμενο δεν έχει "
+"Δεν μπορείς να δημιουργήσεις μια νέα αναθεώρηση επειδή το κείμενο δεν έχει "
 "δημοσιευτεί ακόμα"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:142
@@ -4283,14 +4283,14 @@ msgstr "Έχεις αποσυνδεθεί"
 
 #: root/src/edit/revs.tt:10
 msgid "You may want to resume the editing of one of them"
-msgstr "Ίσως θελήσεις να συνεχίσεις την επεξεργασία ενός από αυτά."
+msgstr "Ίσως θελήσεις να συνεχίσεις την επεξεργασία ενός από αυτά"
 
 #: root/src/edit/newtext.tt:57
 msgid ""
 "You may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
 "Ίσως να θέλεις να αφαιρέσεις τα άρθρα/αντωνυμίες \"Ένα(ς)/Μία\", \"Ο/Η/Το\" "
-"κ.ο.κ. από τον τίτλο."
+"κ.ο.κ. από τον τίτλο"
 
 #: root/src/bookbuilder/index.tt:192
 msgid "You may want to use one of these images"
@@ -4323,7 +4323,7 @@ msgid ""
 "Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
 "Οι αλλαγές σας αποθηκεύονται και μπορούν να ελέγχονται κάθε φορά που πατάτε "
-"Προεπισκόπηση ή Αποθήκευση."
+"Προεπισκόπηση ή Αποθήκευση"
 
 #: root/src/include/markitup.tt:24
 msgid "Your chapter here..."
@@ -4463,7 +4463,7 @@ msgstr ""
 
 #: root/src/edit/newtext.tt:64
 msgid "for display"
-msgstr "για προβολή"
+msgstr "προς προβολή"
 
 #: root/src/edit/edit.tt:552
 msgid "for poetry"
@@ -4553,7 +4553,7 @@ msgstr "δημοσιευμένο"
 
 #: root/src/edit/diff.tt:5
 msgid "revision"
-msgstr "αναθεώρηση"
+msgstr "διόρθωση"
 
 #: root/src/admin/edit.tt:868
 msgid "right"
@@ -4606,7 +4606,7 @@ msgstr "ο συγγραφέας του κειμένου (όπως εμφανίζ
 
 #: root/src/publish/pending.tt:59
 msgid "this text will be unpublished"
-msgstr "το κείμενο αυτό θα αποδημοσιευτεί."
+msgstr "το κείμενο αυτό θα αποδημοσιευτεί"
 
 #: root/src/edit/edit.tt:700
 msgid "topic"
@@ -4635,7 +4635,7 @@ msgid ""
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
-"\"Παρωχημένη επεξεργασία\" σημαίνει ότι η αναθεώρηση εγκαταλείφθηκε.\n"
+"\"Παρωχημένη επεξεργασία\" σημαίνει ότι η διόρθωση εγκαταλείφθηκε.\n"
 "    κατά τη διάρκεια της επεξεργασίας, αλλά είναι ακόμα εκεί, σε περίπτωση "
-"που κάποιος θέλει να\n"
+"που κάποιο άτομο θέλει να\n"
 "    την ανακτήσει κατά την επεξεργασία ενός κειμένου."
