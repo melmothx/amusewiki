@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.512 2021-04-25
+
+ - Update i18n: el
+ - Refresh the shared repo's hook when the site is reconfigured
+
 2.511 2021-04-11
 
  - Add Greek I18N
