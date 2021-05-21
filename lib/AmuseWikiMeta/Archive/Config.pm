@@ -9,6 +9,7 @@ use YAML;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse;
 use Path::Tiny;
+use HTML::Entities qw/encode_entities/;
 
 has config_file => (is => 'ro', isa => Str, required  => 1);
 has schema => (is => 'ro', isa => Object);
@@ -83,9 +84,17 @@ sub generate_config {
                                         canonical_url => $_->canonical_url,
                                         sitename => $_->sitename,
                                         xapian => path($_->xapian->xapian_dir)->absolute->stringify,
+                                        languages => [ $_->supported_locales ],
                                        }
                                   } $self->schema->resultset('Site')->public_only->all
-                             ]
+                             ],
+                    meta => {
+                             name => 'Site Name',
+                             description => 'Site Description',
+                             adult_content => 0,
+                             icon_url => 'https://amusewiki.org/favicon.ico',
+                             is_private => 0,
+                            },
                    });
 }
 
@@ -95,5 +104,20 @@ sub generate_xapian_stub_db {
     Dlog_info { "Generated $file with content: " . $file->slurp };
 }
 
+sub meta_info {
+    my $self = shift;
+    my %meta = %{ $self->config->{meta} || {} };
+    foreach my $k (qw/name description/) {
+        $meta{$k} = '' unless defined $meta{$k};
+        $meta{$k} = encode_entities($meta{$k}, q{<>&"'});
+    }
+    my @all_langs = map { @{ $_->{languages} } } @{ $self->site_list };
+    my %langs;
+    foreach my $l (@all_langs) {
+        $langs{$l}++ if $l =~ m/\A[a-z]{2}\z/a;
+    }
+    $meta{languages} = [ sort keys %langs ];
+    return \%meta;
+}
 
 1;

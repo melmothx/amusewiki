@@ -1,4 +1,4 @@
-package AmuseWikiFarm::View::Atom;
+package AmuseWikiMeta::View::Atom;
 use Moose;
 use namespace::autoclean;
 
@@ -16,7 +16,9 @@ sub process {
     }
     else {
         Dlog_error { "Stash is $_ forwarded to Atom view!" } $c->stash;
-        $c->detach('/not_found');
+        $c->response->content_type('text/plain');
+        $c->response->body('Not found');
+        $c->response->status(404);
     }
 }
 

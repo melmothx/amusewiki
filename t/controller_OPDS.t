@@ -1,7 +1,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 372;
+use Test::More tests => 374;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -163,7 +163,7 @@ $expected =<< 'ATOM';
   </author>
   <entry>
     <id>http://0opds0.amusewiki.org/library/title-entry-10</id>
-    <title>Title 10</title>
+    <title>Title 10 đćčšžĐĆČŠŽ</title>
     <updated>2016-01-10T00:00:00Z</updated>
     <dc:language xmlns:dc="http://purl.org/dc/elements/1.1/">en</dc:language>
     <author>
@@ -667,7 +667,7 @@ $expected = <<'XML';
   </entry>
   <entry>
     <id>http://0opds0.amusewiki.org/library/title-entry-10</id>
-    <title>Title 10</title>
+    <title>Title 10 đćčšžĐĆČŠŽ</title>
     <updated>2016-01-10T00:00:00Z</updated>
     <dc:language xmlns:dc="http://purl.org/dc/elements/1.1/">en</dc:language>
     <author>
@@ -729,6 +729,10 @@ is $mech->uri->path, '/opds/category/author/a1-11';
 $mech->content_contains(q{link rel="up" href="http://0opds0.amusewiki.org/opds/category/author"});
 $mech->get_ok('/opds/authors/a1-11/1');
 is $mech->uri->path, '/opds/category/author/a1-11/1';
+
+$site->update({ locale => 'ru' });
+$mech->get_ok('/opds');
+$mech->content_contains('Последние загруженные');
 
 sub count_entries {
     my $feed = shift;
