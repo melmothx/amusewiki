@@ -875,6 +875,9 @@ msgstr "Tag cloud s temama i autorima"
 msgid "Full text search"
 msgstr "Pretraga čitavog testa"
 
+msgid "Full width, fluid layout"
+msgstr ""
+
 msgid "General configuration"
 msgstr "Opća konfiguracija"
 
@@ -998,9 +1001,6 @@ msgstr "Želim PDF spreman za štampu"
 
 msgid "I will provide my remote repository"
 msgstr ""
-
-msgid "IRC channel on freenode"
-msgstr "IRC kanal na mreži Freenode"
 
 msgid "ISBN"
 msgstr ""
@@ -2779,6 +2779,9 @@ msgstr "URL"
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
 
+msgid "URL pointing to an embeddable webchat"
+msgstr ""
+
 msgid "UTC"
 msgstr "UTC"
 
@@ -3355,6 +3358,9 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "IRC channel on freenode"
+#~ msgstr "IRC kanal na mreži Freenode"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "tekstovi po temi"

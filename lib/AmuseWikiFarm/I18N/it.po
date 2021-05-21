@@ -903,6 +903,9 @@ msgstr "Nuvola dei tag completa"
 msgid "Full text search"
 msgstr "Ricerca a tutto testo"
 
+msgid "Full width, fluid layout"
+msgstr ""
+
 msgid "General configuration"
 msgstr "Configurazione generale"
 
@@ -1032,9 +1035,6 @@ msgstr "Voglio un PDF pronto per la stampa"
 
 msgid "I will provide my remote repository"
 msgstr ""
-
-msgid "IRC channel on freenode"
-msgstr "Canale IRC su Freenode"
 
 msgid "ISBN"
 msgstr ""
@@ -2871,6 +2871,9 @@ msgstr "URL"
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr "URL del Git remoto (HTTPS, HTTP or GIT)"
 
+msgid "URL pointing to an embeddable webchat"
+msgstr ""
+
 msgid "UTC"
 msgstr "UTC"
 
@@ -3466,6 +3469,9 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "IRC channel on freenode"
+#~ msgstr "Canale IRC su Freenode"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "testi per argomento"

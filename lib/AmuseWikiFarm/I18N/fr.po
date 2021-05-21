@@ -897,6 +897,9 @@ msgstr "Nuage d'étiquettes complet"
 msgid "Full text search"
 msgstr "Recherche en texte intégral"
 
+msgid "Full width, fluid layout"
+msgstr ""
+
 msgid "General configuration"
 msgstr "Configuration générale"
 
@@ -1022,9 +1025,6 @@ msgstr "Je veux un PDF imposé (prêt pour impression)"
 
 msgid "I will provide my remote repository"
 msgstr ""
-
-msgid "IRC channel on freenode"
-msgstr "Canal IRC sur freenode"
 
 msgid "ISBN"
 msgstr ""
@@ -2830,6 +2830,9 @@ msgstr "URL"
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
 
+msgid "URL pointing to an embeddable webchat"
+msgstr ""
+
 msgid "UTC"
 msgstr "UTC"
 
@@ -3418,6 +3421,9 @@ msgstr ""
 "\"Modification périmée\" signifie que la révision a été abandonnée en cours "
 "d'édition, mais qu'elle est toujours là, au cas où quelqu'un·e souhaiterait "
 "la récupérer lors d'une modification du texte."
+
+#~ msgid "IRC channel on freenode"
+#~ msgstr "Canal IRC sur freenode"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "textes triés par sujet"

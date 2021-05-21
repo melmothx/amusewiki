@@ -883,6 +883,9 @@ msgstr "Полное облако тегов"
 msgid "Full text search"
 msgstr "Полнотекстовый поиск"
 
+msgid "Full width, fluid layout"
+msgstr ""
+
 msgid "General configuration"
 msgstr "Основные настройки"
 
@@ -1008,9 +1011,6 @@ msgstr "Сделать спуск полос (готовый к печати PDF
 
 msgid "I will provide my remote repository"
 msgstr "Я предоставлю удаленный репозиторий"
-
-msgid "IRC channel on freenode"
-msgstr "IRC-канал на Freenode"
 
 msgid "ISBN"
 msgstr "ISBN"
@@ -2797,6 +2797,9 @@ msgstr "URL"
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr "URL нового удаленного репозитория (HTTPS, HTTP или Git)"
 
+msgid "URL pointing to an embeddable webchat"
+msgstr ""
+
 msgid "UTC"
 msgstr "UTC"
 
@@ -3380,6 +3383,9 @@ msgstr ""
 "«Устаревшее редактирование» означает, что правка не была доделана, но всё "
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
+
+#~ msgid "IRC channel on freenode"
+#~ msgstr "IRC-канал на Freenode"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "тексты отсортированы по теме"

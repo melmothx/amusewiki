@@ -899,6 +899,9 @@ msgstr "Nube de etiquetas completa"
 msgid "Full text search"
 msgstr "Búsqueda de texto completa"
 
+msgid "Full width, fluid layout"
+msgstr ""
+
 msgid "General configuration"
 msgstr "Configuración general"
 
@@ -1026,9 +1029,6 @@ msgstr "Quiero un PDF en cuadernillo (listo para imprimir)"
 
 msgid "I will provide my remote repository"
 msgstr ""
-
-msgid "IRC channel on freenode"
-msgstr "Canal IRC en freenode"
 
 msgid "ISBN"
 msgstr ""
@@ -2816,6 +2816,9 @@ msgstr "URL"
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
 
+msgid "URL pointing to an embeddable webchat"
+msgstr ""
+
 msgid "UTC"
 msgstr "UTC"
 
@@ -3396,6 +3399,9 @@ msgstr ""
 "\"Edición abandonada\" significa que la revisión fue abandonada\n"
 "    mientras se estaba editando, pero todavía está ahí, en caso de que\n"
 "    alguien quiera modificarla cuando edite un texto."
+
+#~ msgid "IRC channel on freenode"
+#~ msgstr "Canal IRC en freenode"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "Textos ordenados por temas"

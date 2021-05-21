@@ -891,6 +891,9 @@ msgstr "Tag cloud со теми и автори"
 msgid "Full text search"
 msgstr "Пребарување на целиот текст"
 
+msgid "Full width, fluid layout"
+msgstr ""
+
 msgid "General configuration"
 msgstr "Општа конфигурација"
 
@@ -1013,9 +1016,6 @@ msgstr "Сакам PDF подготвен за печатење"
 
 msgid "I will provide my remote repository"
 msgstr ""
-
-msgid "IRC channel on freenode"
-msgstr "IRC канал на мрежата Freenode"
 
 msgid "ISBN"
 msgstr ""
@@ -2834,6 +2834,9 @@ msgstr "URL"
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
 
+msgid "URL pointing to an embeddable webchat"
+msgstr ""
+
 msgid "UTC"
 msgstr "UTC"
 
@@ -3420,6 +3423,9 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "IRC channel on freenode"
+#~ msgstr "IRC канал на мрежата Freenode"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "текстови според тема"

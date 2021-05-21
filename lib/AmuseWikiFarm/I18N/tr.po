@@ -894,6 +894,9 @@ msgstr "Tüm etkiket bulutu"
 msgid "Full text search"
 msgstr "Tam metin arama"
 
+msgid "Full width, fluid layout"
+msgstr ""
+
 msgid "General configuration"
 msgstr "Genel konfigürasyon"
 
@@ -1019,9 +1022,6 @@ msgstr "Empose (baskıya hazır) PDF istiyorum"
 
 msgid "I will provide my remote repository"
 msgstr ""
-
-msgid "IRC channel on freenode"
-msgstr "Freenode IRC kanalı"
 
 msgid "ISBN"
 msgstr ""
@@ -2824,6 +2824,9 @@ msgstr "URL"
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
 
+msgid "URL pointing to an embeddable webchat"
+msgstr ""
+
 msgid "UTC"
 msgstr "UTC"
 
@@ -3402,6 +3405,9 @@ msgstr ""
 "\"Yarım kalmış düzenleme\", versiyon düzenlenirken yarıda bırakılmış,\n"
 "    ama birisi metni düzenlemek için oradan devam edebilir\n"
 "    demektir."
+
+#~ msgid "IRC channel on freenode"
+#~ msgstr "Freenode IRC kanalı"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "konuya göre sıralı metinler"
