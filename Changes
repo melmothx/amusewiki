@@ -4,6 +4,14 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.513 2021-05-21
+
+ - Update i18n strings
+ - Do not rely on Freenode for the webchat. Instead, make the iframe
+   url editable. Nothing by default. The iframe with the webchat
+   didn't seem to work anyway.
+ - AMW-Meta: Implement OPDS
+
 2.512 2021-04-25
 
  - Update i18n: el
