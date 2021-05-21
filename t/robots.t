@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 130;
+use Test::More tests => 128;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 
@@ -41,7 +41,6 @@ my @yesrobots = (
                  '/library/first-test',
                  '/random',
                  '/help/opds',
-                 '/help/irc',
                  '/help/faq',
                  '/topics',
                  '/topics/ecole',

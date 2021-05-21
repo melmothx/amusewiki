@@ -70,7 +70,7 @@ $mech->get('/apple-touch-icon.png');
 is $mech->status, 404 or die;
 
 
-push @urls, qw[ /search /help/opds /help/irc /latest/2 ];
+push @urls, qw[ /search /help/opds /latest/2 ];
 
 ok $site->index_site_files;
 

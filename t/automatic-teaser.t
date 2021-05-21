@@ -40,7 +40,7 @@ my $stub = <<'MUSE';
 
             Centering
 
-[[../help/opds]] [[another-text]] [[/help/irc]]
+[[../help/opds]] [[another-text]]
 
 Russian (русский)	Здра́вствуйте! Czech (čeština) Dobrý <den>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 'do'
