@@ -882,6 +882,9 @@ msgstr "Hele tagskyen"
 msgid "Full text search"
 msgstr "Fuldtekst søgning"
 
+msgid "Full width, fluid layout"
+msgstr ""
+
 msgid "General configuration"
 msgstr "Generel konfiguration"
 
@@ -1005,9 +1008,6 @@ msgstr ""
 
 msgid "I will provide my remote repository"
 msgstr ""
-
-msgid "IRC channel on freenode"
-msgstr "IRC kanal på freenode"
 
 msgid "ISBN"
 msgstr ""
@@ -2755,6 +2755,9 @@ msgstr "URL"
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
 
+msgid "URL pointing to an embeddable webchat"
+msgstr ""
+
 msgid "UTC"
 msgstr "UTC"
 
@@ -3331,6 +3334,9 @@ msgstr ""
 "    under redigeringen, men den er stadig der, hvis nogen skulle få lyst "
 "til\n"
 "    at samle den op under redigeringen af en tekst."
+
+#~ msgid "IRC channel on freenode"
+#~ msgstr "IRC kanal på freenode"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "tekster sorteret efter emner"

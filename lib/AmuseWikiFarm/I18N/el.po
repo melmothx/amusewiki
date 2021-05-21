@@ -7,52 +7,43 @@ msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
 "PO-Revision-Date: 2021-04-22 00:56+0300\n"
+"Last-Translator: \n"
 "Language-Team: Greek\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.4.2\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: el\n"
 
 #. ($filename)
-#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:540
 msgid "%1 doesn't exist"
 msgstr "%1 δεν υπάρχει"
 
 #. ([$total])
-#: lib/AmuseWikiFarm/Role/Controller/Jobs.pm:30
 msgid "%1 jobs deleted"
 msgstr "%1 διαγραμμένες εργασίες"
 
 #. ([$total])
-#: lib/AmuseWikiFarm/Role/Controller/Jobs.pm:42
 msgid "%1 jobs rescheduled"
 msgstr "%1 αναπρογραμματισμένες εργασίες"
 
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
-#: lib/AmuseWikiFarm/Controller/Help.pm:35 root/src/help/opds.tt:2
 msgid "%1 on mobile"
 msgstr "%1 σε κινητό"
 
 #. (text.pages_estimated)
-#: root/src/include/show_type_and_number_of_pages.tt:45
-#: root/src/static-indexes.tt:147
 msgid "%1 pp."
 msgstr "%1 σελ."
 
-#: root/src/edit/edit.tt:214
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(έξυπνα εισαγωγικά, σύνδεσμοι, υποσημειώσεις, κλπ.)"
 
-#: root/src/edit/edit.tt:411
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr ""
 "Μια κενή γραμμή (ή περισσότερες κενές γραμμές) ξεκινά μια νέα παράγραφο."
 
-#: root/src/bookbuilder/index.tt:169
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
@@ -60,7 +51,6 @@ msgstr ""
 "Μια εικόνα εξωφύλλου έχει ήδη προστεθεί, αλλά μπορείτε να την "
 "αντικαταστήσετε ανεβάζοντας μια νέα."
 
-#: root/src/edit/edit.tt:529
 msgid ""
 "A footnote is a line which starts with a number between square\n"
 "          brackets, with no leading whitespace."
@@ -69,24 +59,20 @@ msgstr ""
 "μεταξύ \n"
 "          αγκύλων, χωρίς κενό διάστημα στην αρχή."
 
-#: root/src/edit/edit.tt:414
 msgid "A line which starts with 2 or more whitespaces is a quotation."
 msgstr ""
 "Μια γραμμή που αρχίζει με 2 ή περισσότερα κενά διαστήματα αποτελεί μια "
 "παράθεση (quotation)."
 
-#: root/src/edit/edit.tt:421
 msgid "A line which starts with 20 or more whitespaces is right-aligned."
 msgstr ""
 "Μια γραμμή που αρχίζει με 20 ή περισσότερα κενά διαστήματα στοιχίζεται δεξιά."
 
-#: root/src/edit/edit.tt:417
 msgid "A line which starts with 6 or more whitespaces is centered."
 msgstr ""
 "Μια γραμμή που αρχίζει με 6 ή περισσότερα κενά διαστήματα στοιχίζεται στη "
 "μέση."
 
-#: root/src/admin/edit.tt:577
 msgid ""
 "A list of links and labels to insert into the top\n"
 "            bar. One per line, first the url, then the label,\n"
@@ -97,79 +83,57 @@ msgstr ""
 "διαχωρισμένα με κενό, π.χ. \"http://test.me Test site\""
 
 #. (location)
-#: mkits/newtext/body.txt:1
 msgid "A new text has been created at %1"
 msgstr "Δημιουργήθηκε ένα νέο κείμενο στο %1"
 
-#: root/src/edit/edit.tt:674
 msgid "A nice title"
 msgstr "Ένας ωραίος τίτλος"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1258
 msgid "A4 imposed PDF"
 msgstr "PDF σε Α4"
 
-#: root/src/admin/edit.tt:2
 msgid "A4 paper"
 msgstr "Α4"
 
-#: root/src/admin/edit.tt:3
 msgid "A5 paper"
 msgstr "Α5"
 
-#: root/src/admin/edit.tt:4
 msgid "A6 paper (also suitable for e-readers)"
 msgstr "Α6 (κατάλληλο για e-readers)"
 
-#: root/src/edit/revs.tt:41
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr ""
 "Εγκαταλειμμένη επεξεργασία σε εξέλιξη, μη διστάσετε να ελέγξετε τις διαφορές "
 "και να συνεχίσετε"
 
-#: root/src/bookbuilder/index.tt:21 root/src/console/alias_display.tt:103
-#: root/src/console/git_display.tt:16 root/src/publish/pending.tt:17
 msgid "Action"
 msgstr "Ενέργεια"
 
-#: root/src/admin/edit.tt:222
 msgid "Activate the blog-style look and feel"
 msgstr "Ενεργοποίηση της εμφάνισης και αίσθησης σε στυλ blog"
 
-#: root/src/admin/edit.tt:92 root/src/admin/list.tt:13
-#: root/src/admin/show_user_details.tt:38 root/src/admin/show_users.tt:11
-#: root/src/console/list_categories.tt:13 root/src/settings/categories.tt:10
-#: root/src/settings/formats.tt:11 root/src/siteadmin/show_users.tt:11
 msgid "Active"
 msgstr "Ενεργός/η/ο"
 
-#: root/src/bookbuilder/index.tt:166
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Προσθήκη εικόνας εξωφύλλου (PNG ή JPG)"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:65 root/src/layout.tt:297
-#: root/src/layout.tt:599 root/src/layout.tt:602 root/src/layout.tt:743
 msgid "Add a new text"
 msgstr "Προσθήκη νέου κειμένου"
 
-#: root/src/edit/edit.tt:172
 msgid "Add an attachment"
 msgstr "Προσθήκη συνημμένου"
 
-#: root/src/include/bbform.tt:797
 msgid "Add crop marks to the PDF"
 msgstr "Προσθήκη σημαδιών περικοπής στο PDF"
 
-#: root/src/console/git_display.tt:73
 msgid "Add new remote repository"
 msgstr "Προσθήκη νέο απομακρυσμένου αποθετηρίου"
 
-#: root/src/edit/edit.tt:275
 #, fuzzy
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr "Προσθήκη μη διακεκομμένων κενών όπου ενδείκνυται για τη γλώσσα"
 
-#: root/src/admin/edit.tt:702
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
 "(integer)"
@@ -177,27 +141,21 @@ msgstr ""
 "Προσθήκη σελιδοποιητή για την οργάνωση των κειμένων όταν ο αριθμός τους "
 "είναι μεγαλύτερος από (integer)"
 
-#: root/src/library/bbselect.tt:4
 msgid "Add sections to the bookbuilder"
 msgstr "Προσθήκη ενοτήτων στο βιβλιοχτίστη"
 
-#: root/src/help/opds.tt:93
 msgid "Add the OPDS URL"
 msgstr "Προσθήκη του OPDS URL"
 
-#: root/src/library/bbselect.tt:42 root/src/library/bbselect.tt:81
 msgid "Add the selected parts to the bookbuilder"
 msgstr "Προσθήκη των επιλεγμένων τμημάτων στο βιβλιοχτίστη"
 
-#: root/src/library/bbselect.tt:31
 msgid "Add the whole text"
 msgstr "Προσθήκη ολόκληρου του κειμένου"
 
-#: root/src/include/preamble.tt:182 root/src/include/preamble.tt:184
 msgid "Add this text to the bookbuilder"
 msgstr "Προσθήκη αυτού του κειμένου στο βιβλιοχτίστη"
 
-#: root/src/edit/edit.tt:710
 msgid ""
 "Additional information (full date, original title, translators, credits, "
 "etc)."
@@ -207,7 +165,6 @@ msgstr ""
 
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
-#: root/src/help/faq.tt:76 root/src/help/faq.tt:77
 msgid ""
 "After the approval of the\n"
 "  change, it will appear under %1. There is a big red\n"
@@ -217,19 +174,15 @@ msgstr ""
 "  Υπάρχει ένα μεγάλο κόκκινο κουμπί για κάθε διαγραμμένο κείμενο \n"
 "  και μπορείτε να προχωρήσετε στην εκκαθάριση."
 
-#: root/src/admin/jobs.tt:26
 msgid "Age:"
 msgstr "Ηλικία:"
 
-#: root/src/console/alias_display.tt:35 root/src/console/alias_display.tt:67
 msgid "Alias"
 msgstr "Ψευδώνυμο"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:243
 msgid "Alias can't point to itself"
 msgstr "Το ψευδώνυμο δεν γίνεται να δείχνει στον εαυτό του"
 
-#: root/src/edit/edit.tt:606
 msgid ""
 "All kind of lists start with one or more leading\n"
 "        whitespace."
@@ -237,23 +190,18 @@ msgstr ""
 "Όλες οι λίστες ξεκινούν με ένα ή περισσότερα\n"
 "   κενά στην αρχή."
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:206 root/src/library.tt:16
 msgid "All languages"
 msgstr "Όλες οι γλώσσες"
 
-#: lib/AmuseWikiFarm/Controller/Publish.pm:82 root/src/layout.tt:425
 msgid "All revisions"
 msgstr "Όλες οι διορθώσεις"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:68
 msgid "All sites"
 msgstr "Όλες οι ιστοσελίδες"
 
-#: root/src/admin/show_users.tt:1
 msgid "All users"
 msgstr "Όλοι οι χρήστες"
 
-#: root/src/admin/edit.tt:380
 msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
 "extensions"
@@ -261,7 +209,6 @@ msgstr ""
 "Να επιτρέπεται η μεταφόρτωση binary αρχείων από συνδεδεμένους χρήστες: λίστα "
 "με επεκτάσεις αρχείων διαχωρισμένες με κενό διάστημα"
 
-#: root/src/edit/edit.tt:783
 msgid ""
 "Also produce slides\n"
 "          from the document. Each section, no matter how deep, will\n"
@@ -278,7 +225,6 @@ msgstr ""
 "          θέλετε να αποκλείσετε μια ενότητα, βάλτε ένα σχόλιο στην ενότητα\n"
 "          με τη συμβολοσειρά \"noslide\"."
 
-#: root/src/edit/newtext.tt:247
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
 "      in the archive. In theory, it could be anything, but if you want\n"
@@ -296,92 +242,66 @@ msgstr ""
 "π.χ. ερρίκο-μαλατέστα-αναρχία-2. \n"
 "Να σημειωθεί πως αυτό φυσιολογικά δεν είναι απαραίτητο"
 
-#: root/src/admin/edit.tt:1234
 msgid "Apache is not currently supported"
 msgstr "Το Apache δεν υποστηρίζεται αυτή τη στιγμή"
 
-#: root/src/layout.tt:228
 msgid "Archive"
 msgstr "Αρχείο"
 
-#: lib/AmuseWikiFarm/Controller/Monthly.pm:35
-#: lib/AmuseWikiFarm/Controller/Monthly.pm:39 root/src/admin/edit.tt:657
-#: root/src/layout.tt:278 root/src/layout.tt:279
 msgid "Archive by month"
 msgstr "Αρχειοθέτηση ανά μήνα"
 
-#: root/src/git/git.tt:2
 msgid "Archive history"
 msgstr "Ιστορικό αρχείων"
 
-#: root/src/layout.tt:131
 msgid "Are you sure?"
 msgstr "Είστε σίγουρος/η/ο;"
 
-#: root/src/edit/edit.tt:82
 msgid "As cover in the header"
 msgstr "Ως εξώφυλλο στην επικεφαλίδα"
 
-#: root/src/edit/edit.tt:81
 msgid "As regular image in the body"
 msgstr "Ως κανονική εικόνα στο σώμα"
 
-#: root/src/edit/newtext.tt:289
 msgid "Assign text to nodes"
 msgstr "Ανάθεση κειμένου σε κόμβους"
 
-#: root/static/js/amw-batch-upload.js:89
 msgid "Attach"
 msgstr "Επισύναψη"
 
-#: root/src/edit/edit.tt:69
 msgid "Attached images"
 msgstr "Συνημμένες εικόνες"
 
-#: lib/AmuseWikiFarm/Controller/Attachments.pm:33 mkits/commit/body.txt:28
-#: root/src/layout.tt:451 root/src/publish/pending.tt:15
 msgid "Attachments"
 msgstr "Συνημμένα"
 
-#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1735
-#: root/src/bookbuilder/index.tt:123 root/src/console/unpublished.tt:9
-#: root/src/edit/newtext.tt:63 root/src/static-indexes.tt:70
 msgid "Author"
 msgstr "Συγγραφέας"
 
-#: root/src/include/bbform.tt:498
 msgid "Author and title. If one side document: title."
 msgstr "Συγγραφέας και τίτλος. Εάν το έγγραφο είναι μονόπλευρο: τίτλος."
 
-#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1735 root/src/edit/preview.tt:25
 msgid "Authors"
 msgstr "Συγγραφείς"
 
-#: root/src/admin/edit.tt:679
 msgid "Authors and topics listing"
 msgstr "Λίστα συγγραφέων και θεμάτων"
 
-#: root/src/edit/edit.tt:685 root/src/edit/newtext.tt:72
 msgid "Authors for indexing"
 msgstr "Συγγραφείς για ευρετηρίαση"
 
-#: root/src/edit/preview.tt:66
 msgid "Automatically generated"
 msgstr "Δημιουργημένο αυτόματα"
 
-#: root/src/admin/edit.tt:1225
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr "Αυτόματη αίτηση και ανανέωση πιστοποιητικών SSL από το Let's Encrypt"
 
-#: root/src/admin/edit.tt:386
 msgid "Available"
 msgstr "Διαθέσιμος/η/ο"
 
-#: root/src/edit/edit.tt:115
 msgid "Available category tags for header"
 msgstr "Διαθέσιμες ετικέτες για την επικεφαλίδα"
 
-#: root/src/include/bbform.tt:433
 msgid ""
 "Avoid hyphenation on the last word of a sentence (it could result in bad "
 "spacing)"
@@ -389,33 +309,26 @@ msgstr ""
 "Αποφύγετε την παύλα στην τελευταία λέξη μια πρότασης (μπορεί να οδηγήσει σε "
 "κακή διάταξη)"
 
-#: root/src/bookbuilder/index.tt:6
 msgid "Back to the text"
 msgstr "Πίσω στο κείμενο"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:259
 msgid "Bad request"
 msgstr "Κακό αίτημα"
 
-#: root/src/admin/edit.tt:949
 msgid "Beamer color theme"
 msgstr "Θέμα χρώματος σλάιντ"
 
-#: root/src/admin/edit.tt:932
 msgid "Beamer theme"
 msgstr "Θέμα σλάιντ"
 
-#: root/src/admin/edit.tt:427
 msgid "Beside topics and authors you can add more categories here"
 msgstr ""
 "Πέρα από θέματα και συγγραφείς μπορείτε να προσθέσετε περισσότερες "
 "κατηγορίες εδώ"
 
-#: root/src/admin/edit.tt:831 root/src/include/bbform.tt:303
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Διόρθωση βιβλιοδεσίας σε χιλιοστά (πρόσθετο εσωτερικό περιθώριο)"
 
-#: root/src/include/bbform.tt:705
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -423,7 +336,6 @@ msgstr ""
 "Μπλοκ 16 σελίδων που διπλώνονται δύο φορές και στη συνέχεια \n"
 "βιβλιοδετούνται μαζί."
 
-#: root/src/include/bbform.tt:685
 msgid ""
 "Blocks of 8 pages to be folded twice and then bound\n"
 "                together."
@@ -431,32 +343,24 @@ msgstr ""
 "Μπλοκ 8 σελίδων που διπλώνονται δύο φορές και στη συνέχεια \n"
 "βιβλιοδετούνται μαζί."
 
-#: root/src/admin/edit.tt:207
 msgid "Blog"
 msgstr "Ιστολόγιο"
 
-#: root/src/include/edit_node.tt:65
 msgid "Body"
 msgstr "Σώμα"
 
-#: root/src/include/markitup.tt:45
 msgid "Bold"
 msgstr "Έντονη γραφή"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:36 root/src/layout.tt:562
-#: root/src/layout.tt:566
 msgid "Bookbuilder"
 msgstr "Βιβλιοχτίστης"
 
-#: root/src/admin/edit.tt:468
 msgid "Bookbuilder page limit (integer)"
 msgstr "Όριο σελίδων βιβλιοχτίστη (integer)"
 
-#: root/src/bookbuilder/index.tt:238
 msgid "Build it"
 msgstr "Χτίσιμο"
 
-#: root/src/include/bbform.tt:413
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -466,86 +370,65 @@ msgstr ""
 "αρίθμηση μεταξύ των παρενθέσεων\n"
 "Με αυτήν την επιλογή θα χρησιμοποιούν την αλφαριθμητική αρίθμηση"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:450 root/src/search/index.tt:73
 msgid "By number of pages, ascending"
 msgstr "Κατά αριθμό σελίδων, αύξοντα"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:460 root/src/search/index.tt:76
 msgid "By number of pages, descending"
 msgstr "Κατά αριθμό σελίδων, φθίνοντα"
 
-#: root/src/search/index.tt:58
 msgid "By relevance"
 msgstr "Κατά σχετικότητα"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:405
 msgid "By sku ascending"
 msgstr "Κατά SKU, αύξοντα"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:412
 msgid "By sku descending"
 msgstr "Κατά SKU, φθίνοντα"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:419 root/src/search/index.tt:61
 msgid "By title A-Z"
 msgstr "Ανά τίτλο Α-Ω"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:426 root/src/search/index.tt:64
 msgid "By title Z-A"
 msgstr "Ανά τίτλο Ω-Α"
 
-#: root/src/admin/edit.tt:333
 msgid "CSS Theme"
 msgstr "Θέμα CSS"
 
-#: root/src/include/bulk_job.tt:32
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: root/src/admin/list.tt:20
 msgid "Canonical name"
 msgstr "Κανονικό όνομα"
 
-#: root/src/edit/newtext.tt:84
 msgid "Categories"
 msgstr "Κατηγορίες"
 
 #. ($site->canonical)
-#: lib/AmuseWikiFarm/Controller/Settings.pm:223
 msgid "Category types for %1"
 msgstr "Τύποι κατηγορίας για %1"
 
-#: root/src/edit/edit.tt:756 root/src/include/bbform.tt:527
 msgid "Center all the sectioning titles."
 msgstr "Κεντράρισμα όλων των τίτλων των ενοτήτων."
 
-#: root/src/edit/edit.tt:752 root/src/include/bbform.tt:520
 msgid "Center the chapter titles."
 msgstr "Κεντράρισμα όλων των τίτλων των κεφάλαιων."
 
-#: root/src/edit/edit.tt:48 root/src/publish/pending.tt:24
 msgid "Changes"
 msgstr "Αλλαγές"
 
-#: lib/AmuseWikiFarm/Controller/Settings.pm:239
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:80
 msgid "Changes applied"
 msgstr "Οι αλλαγές εφαρμόστηκαν"
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 #. (author_title)
-#: lib/AmuseWikiFarm/Controller/Edit.pm:673 mkits/commit/body.txt:1
-#: root/src/edit/diff.tt:4
 msgid "Changes for %1"
 msgstr "Αλλαγές για %1"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:590
 msgid "Changes saved, thanks! They are now waiting to be published"
 msgstr ""
 "Οι αλλαγές αποθηκεύτηκαν, ευχαριστώ! Βρίσκονται σε αναμονή για δημοσίευση"
 
-#: root/src/help/faq.tt:87
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
 "doing, you can delete an existing text and point to another adding a\n"
@@ -556,52 +439,39 @@ msgstr ""
 "προσθέτοντας ένα #DELETED στην επικεφαλίδα του κειμένου με μια ειδική "
 "σύνταξη:"
 
-#: root/src/edit/edit.tt:393
 msgid "Chapter"
 msgstr "Κεφάλαιο"
 
-#: root/src/include/bbform.tt:499
 msgid "Chapter and section. If one side document: chapter."
 msgstr "Κεφάλαιο και ενότητα. Αν είναι μονόπλευρο έγγραφο: κεφάλαιο."
 
-#: root/src/include/markitup.tt:22
 msgid "Chapter, only for chapter divisions in books"
 msgstr "Κεφάλαιο, μόνο για το διαχωρισμό κεφάλαιων ενός βιβλίου"
 
-#: root/src/edit/edit.tt:147 root/src/edit/edit.tt:353
 msgid "Cheatsheet for the markup"
 msgstr "Σύνοψη του markup"
 
-#: root/src/admin/list.tt:108
 msgid "Check mail sending and send mail to:"
 msgstr "Έλεγχος αποστολής email και αποστολή email στο:"
 
-#: root/src/admin/edit.tt:794 root/src/include/bbform.tt:170
 msgid "Choose a paper format"
 msgstr "Διάλεξε τύπο χαρτιού"
 
-#: root/src/bookbuilder/index.tt:65
 msgid "Clear the book list"
 msgstr "Εκκαθάριση λίστας βιβλίων"
 
-#: root/src/bookbuilder/fonts.tt:6
 msgid "Click on the images to get the sample PDF"
 msgstr "Κλίκαρε πάνω στις εικόνες για να λάβεις το δείγμα PDF"
 
-#: root/src/settings/formats.tt:12
 msgid "Clone"
 msgstr "Κλωνοποιήση"
 
-#: root/src/text.tt:15 root/src/text.tt:235 root/src/text.tt:253
-#: root/src/text.tt:7
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: root/src/settings/categories.tt:9 root/src/settings/formats.tt:8
 msgid "Code"
 msgstr "Κώδικας"
 
-#: root/src/include/editing-options.tt:29
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -609,72 +479,52 @@ msgstr ""
 "Στήλες για την αριστερή πλευρά της σελίδας επεξεργασίας, με το πλαίσιο "
 "επεξεργασίας (μέχρι 12)"
 
-#: root/src/edit/edit.tt:686 root/src/edit/edit.tt:701
-#: root/src/edit/newtext.tt:106 root/src/edit/newtext.tt:78
 msgid "Comma or semicolon separated list"
 msgstr "Λίστα διαχωρισμένη με κόμμα ή άνω τελεία"
 
-#: root/src/admin/jobs.tt:64 root/src/include/bulk_job.tt:15
 msgid "Completed"
 msgstr "Ολοκληρωμένο"
 
-#: root/src/edit/diff.tt:62
 msgid "Computing of differences took"
 msgstr ""
 
-#: root/src/help/opds.tt:102
 msgid "Confirm"
 msgstr "Επιβεβαίωση"
 
-#: root/src/edit/edit.tt:748 root/src/include/bbform.tt:450
 msgid "Continuous footnote numbering across the whole document."
 msgstr "Συνεχής αρίθμηση στις υποσημειώσεις σε ολόκληρο το έγγραφο."
 
-#: root/src/utils/import.tt:18
 msgid "Convert to archive markup"
 msgstr "Μετατροπή στο markup του αρχείου"
 
-#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:1069
 msgid "Couldn't add the text"
 msgstr "Η προσθήκη του κειμένου δεν ήταν δυνατή"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1610
 msgid "Couldn't automatically generate the URI!"
 msgstr "Η αυτόματη δημιουργία URI δεν ήταν δυνατή!"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:103
 msgid "Couldn't build that"
 msgstr "Το χτίσιμο δεν ήταν δυνατό"
 
-#: root/src/console/alias_display.tt:54 root/src/console/alias_display.tt:86
-#: root/src/edit/newtext.tt:283 root/src/nodes/node_root.tt:27
-#: root/src/nodes/node_root.tt:55
 msgid "Create"
 msgstr "Δημιουργία"
 
-#: root/src/settings/categories.tt:43
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 "Δημιουργία νέου τύπου κατηγορίας. Χρησιμοποίησε μόνο μικρούς ASCII χαρακτήρες"
 
-#: root/src/settings/formats.tt:87
 msgid "Create a new format"
 msgstr "Δημιουργία νέας μορφής"
 
-#: root/src/layout.tt:469 root/src/user/create.tt:3
 msgid "Create a new librarian"
 msgstr "Δημιουργία νέου βιβλιοθηκάριου"
 
-#: root/src/layout.tt:400
 msgid "Create a new special page"
 msgstr "Δημιουργία νέας ειδικής σελίδας"
 
-#: root/src/admin/show_users.tt:63 root/src/admin/show_users.tt:77
-#: root/src/siteadmin/show_users.tt:55
 msgid "Create a new user"
 msgstr "Δημιουργία νέου χρήστη"
 
-#: root/src/console/git_display.tt:117
 msgid ""
 "Create a public repository on GitLab, GitHub or similar services (or on your "
 "own server). "
@@ -682,87 +532,62 @@ msgstr ""
 "Δημιούργησε ένα δημόσιο αποθετήριο στο Gitlab, Github ή σε παρόμοιες "
 "υπηρεσίες (ή στο δικό σου σέρβερ). "
 
-#: root/src/console/alias_display.tt:59
 msgid "Create a topic alias"
 msgstr "Δημιουργία ψευδωνύμου θέματος"
 
-#: root/src/console/alias_display.tt:27
 msgid "Create an author alias"
 msgstr "Δημιουργία ψευδωνύμου συγγραφέα"
 
-#: root/src/admin/list.tt:94
 msgid "Create new site"
 msgstr "Δημιουργία νέας ιστοσελίδας"
 
-#: root/src/user/create.tt:52
 msgid "Create user and mail password"
 msgstr "Δημιουργία χρήστη και υποβολή κωδικού πρόσβασης"
 
-#: root/src/admin/jobs.tt:58
 msgid "Created"
 msgstr "Δημιουργήθηκε"
 
-#: root/src/admin/show_users.tt:8 root/src/siteadmin/show_users.tt:8
 msgid "Created by"
 msgstr "Δημιουργήθηκε από"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:108 root/src/publish/pending.tt:98
 msgid "Created new text"
 msgstr "Δημιουργήθηκε νέο κείμενο"
 
-#: root/src/tasks/rebuild.tt:14
 msgid "Current time"
 msgstr "Τρέχουσα ώρα"
 
 #. ($c->stash->{site}->canonical)
-#: lib/AmuseWikiFarm/Controller/Settings.pm:48
-#: lib/AmuseWikiFarm/Controller/Settings.pm:78
 msgid "Custom formats for %1"
 msgstr "Ειδικές μορφές για %1"
 
-#: root/src/admin/edit.tt:320
 msgid "Custom home page"
 msgstr "Ειδική αρχική σελίδα"
 
-#: root/src/bookbuilder/index.tt:134 root/src/edit/preview.tt:32
-#: root/src/include/preamble.tt:52 root/src/publish/pending.tt:26
 msgid "Date"
 msgstr "Ημερομηνία"
 
-#: root/src/edit/edit.tt:705 root/src/edit/newtext.tt:112
 msgid "Date of the original publication"
 msgstr "Ημερομηνία αρχικής δημοσίευσης"
 
-#: root/src/admin/edit.tt:305
 msgid "Default sorting for the category text list"
 msgstr "Προεπιλεγμένη ταξινόμηση για τη λίστα κειμένων κατηγοριών"
 
-#: root/src/admin/edit.tt:722
 msgid "Default value if blank:"
 msgstr "Προεπιλεγμένη τιμή αν είναι κενή:"
 
-#: root/src/layout.tt:431
 msgid "Deferred/Deleted texts"
 msgstr "Αναβληθέντα/Διαγραμμένα κείμενα"
 
-#: root/src/admin/jobs.tt:76 root/src/admin/show_users.tt:33
-#: root/src/admin/show_users.tt:9 root/src/bookbuilder/index.tt:284
-#: root/src/bookbuilder/index.tt:47 root/src/category-details-edit.tt:22
-#: root/src/console/alias_display.tt:126 root/src/publish/pending.tt:21
-#: root/src/siteadmin/show_users.tt:9
 msgid "Delete"
 msgstr "Διαγραφή"
 
-#: root/src/include/edit_node.tt:115
 msgid "Delete permanently"
 msgstr "Μόνιμη διαγραφή"
 
 #. (remote.name)
-#: root/src/console/git_display.tt:46
 msgid "Delete remote repository %1"
 msgstr "Διαγραφή απομακρυσμένου αποθετηρίου %1"
 
-#: root/src/publish/pending.tt:133
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
@@ -770,16 +595,12 @@ msgstr ""
 "Η διαγραφή μιας διόρθωσης είναι ασφαλής αν ένα κείμενο έχει δημοσιευτεί.\n"
 "Αλλιώς, με τη διαγραφή θα χάσεις τις μη δημοσιευμένες αλλαγές"
 
-#: root/src/attachments/edit.tt:27 root/src/attachments/list.tt:18
-#: root/src/settings/edit_format.tt:25 root/src/settings/formats.tt:10
 msgid "Description"
 msgstr "Περιγραφή"
 
-#: root/src/edit/edit.tt:616 root/src/edit/edit.tt:617
 msgid "Description item"
 msgstr "Αντικείμενο περιγραφής"
 
-#: root/src/edit/edit.tt:620
 msgid ""
 "Description lists use a double colon to separate the\n"
 "        term and the description."
@@ -787,23 +608,18 @@ msgstr ""
 "Οι λίστες περιγραφής χρησιμοποιούν διπλή άνω και κάτω τελεία\n"
 "για τον διαχωρισμό του όρου και της περιγραφής."
 
-#: root/src/edit/newtext.tt:12 root/src/edit/newtext.tt:242
 msgid "Desired URI"
 msgstr "Επιθυμητό URI"
 
-#: root/src/console/alias_display.tt:100
 msgid "Destination"
 msgstr "Προορισμός"
 
-#: root/src/search/index.tt:39
 msgid "Did you mean:"
 msgstr "Μήπως εννοούσες:"
 
-#: root/src/edit/revs.tt:18
 msgid "Differences"
 msgstr "Διαφορές"
 
-#: root/src/admin/edit.tt:112
 msgid ""
 "Directory with templates in the site repository, e.g.\n"
 "        \"templates\" (ASCII only). Do not set it unless you know\n"
@@ -813,174 +629,129 @@ msgstr ""
 "\"templates\" (μόνο ASCII). Μη το αλλάξεις εκτός κι αν γνωρίζεις ακριβώς τι "
 "κάνεις"
 
-#: root/src/admin/edit.tt:505
 msgid "Disable /mirror/ URL for anonymous users"
 msgstr "Απενεργοποίηση του /mirror/ URL για ανώνυμους χρήστες"
 
-#: root/src/include/markitup.tt:85
 msgid "Display url as"
 msgstr "Προβολή url ως"
 
-#: root/src/admin/edit.tt:811 root/src/include/bbform.tt:236
 msgid "Division factor"
 msgstr "Συντελεστής διαίρεσης"
 
-#: root/src/include/bbform.tt:380
 msgid "Do not create a cover page and start the text on the first page"
 msgstr "Μη δημιουργήσεις εξώφυλλο και ξεκινήσεις το κείμενο στην πρώτη σελίδα"
 
-#: root/src/admin/edit.tt:554
 msgid "Do not enforce save message"
 msgstr "Μην κάνεις το μήνυμα αποθήκευσης υποχρεωτικό"
 
-#: root/src/include/bbform.tt:405
 msgid "Do not use bold fonts"
 msgstr "Μη χρησιμοποιείς έντονη γραμματοσειρά (bold)"
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:81 root/src/help/opds.tt:110
 msgid "Done"
 msgstr "Τέλος"
 
-#: root/src/edit/edit.tt:667
 msgid "Double bars"
 msgstr "Διπλές μπάρες"
 
-#: root/src/include/preamble.tt:133
 msgid "Downloads"
 msgstr "Λήψεις"
 
-#: root/src/search/index.tt:23
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr ""
 "Π.χ. κάποια λέξη ΚΑΙ title: \"Ο Τίτλος μου\" ΚΑΙ author: Συγγραφέας Ή year: "
 "2017"
 
-#: root/src/include/bbform.tt:24
 msgid "EPUB"
 msgstr "EPUB"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1097
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (για φορητές συσκευές)"
 
-#: root/src/include/bulk_job.tt:19
 msgid "ETA"
 msgstr "Εκτιμώμενος χρόνος"
 
-#: root/src/attachments/list.tt:24 root/src/console/alias_display.tt:134
-#: root/src/console/translations.tt:33 root/src/nodes/display.tt:52
 msgid "Edit"
 msgstr "Επεξεργασία"
 
-#: root/src/include/attachment.tt:42
 msgid "Edit attachment description"
 msgstr "Επεξεργασία περιγραφής συνημμένου"
 
 #. ($format->format_name)
-#: lib/AmuseWikiFarm/Controller/Settings.pm:149
 msgid "Edit format %1"
 msgstr "Επεξεργασία μορφής %1"
 
-#: root/src/layout.tt:528
 msgid "Edit full site configuration"
 msgstr "Επεξεργασία ρυθμίσεων ολόκληρου ιστοτόπου"
 
-#: root/src/admin/edit.tt:1179 root/src/layout.tt:481
-#: root/src/user/edit_options.tt:5
 msgid "Edit screen layout options"
 msgstr "Επεξεργασία επιλογών διάταξης οθόνης"
 
 #. (esite.id)
-#: root/src/admin/edit.tt:20
 msgid "Edit site %1"
 msgstr "Επεξεργασία ιστοτόπου %1"
 
-#: lib/AmuseWikiFarm/Controller/Settings.pm:33 root/src/layout.tt:489
 msgid "Edit site configuration"
 msgstr "Επεξεργασία ρυθμίσεων ιστοτόπου"
 
-#: root/src/help/faq.tt:48
 msgid "Edit the text you want to unpublish and add this line to the header:"
 msgstr ""
 "Επεξεργάσου το κείμενο που θέλεις να αποδημοσιεύσεις και πρόσθεσε αυτή τη "
 "γραμμή στην επικεφαλίδα:"
 
-#: root/src/include/preamble.tt:169 root/src/include/preamble.tt:171
 msgid "Edit this text"
 msgstr "Επεξεργάσου αυτό το κείμενο"
 
 #. (user.username)
-#: root/src/admin/show_user_details.tt:6 root/src/user/edit.tt:3
-#: root/src/user/edit_options.tt:4
 msgid "Edit user %1"
 msgstr "Επεξεργασία χρήστη %1"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:189 root/src/edit/edit.tt:104
-#: root/src/edit/edit.tt:19 root/src/edit/revs.tt:3
 msgid "Editing"
 msgstr "Επεξεργασία"
 
-#: root/src/admin/show_user_details.tt:27 root/src/admin/show_users.tt:10
-#: root/src/siteadmin/show_users.tt:10 root/src/user/create.tt:37
-#: root/src/user/edit.tt:26
 msgid "Email"
 msgstr "Email"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:226
 msgid "Email sent!"
 msgstr "To email εστάλη!"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:269
 msgid "Email updated"
 msgstr "Το email ενημερώθηκε"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:113
 msgid "Emails do not match"
 msgstr "Τα emails δεν ταιριάζουν"
 
-#: root/src/include/bbform.tt:116
 msgid "Embed fonts in the EPUB file"
 msgstr "Ενσωμάτωση γραμματοσειρών στο αρχείο EPUB"
 
-#: root/src/admin/edit.tt:282
 #, fuzzy
 msgid "Enable \"What links here\" feature"
 msgstr "Ενεργοποίηση της λειτουργίας \""
 
-#: root/src/admin/edit.tt:298
 msgid "Enable search suggestions (did you mean...)"
 msgstr "Ενεργοποίηση προτάσεων αναζήτησης (μήπως εννοούσατε...)"
 
-#: root/src/admin/edit.tt:274
 msgid "Enable title ordering by SKU"
 msgstr "Ενεργοποίηση της ταξινόμησης τίτλων κατά SKU"
 
-#: root/src/publish/pending.tt:84
 msgid "Erase this revision"
 msgstr "Διαγραφή αυτής της διόρθωσης"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1668
 msgid "Error converting the upload file. Is it an HTML file?"
 msgstr ""
 "Σφάλμα μετατροπής του αρχείου για μεταφόρτωση. Μήπως είναι αρχείο HTML;"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:229
 msgid "Error sending mail!"
 msgstr "Σφάλμα στην αποστολή email!"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1684
 msgid "Error while converting the HTML. Sorry."
 msgstr "Σφάλμα κατά τη μετατροπή του HTML. Συγγνώμη."
 
-#: lib/AmuseWikiFarm/Controller/User.pm:300 root/src/admin/jobs.tt:73
 msgid "Errors"
 msgstr "Σφάλματα"
 
-#: root/src/static-indexes.tt:76
 msgid "Estimated pages"
 msgstr "Εκτιμώμενες σελίδες"
 
-#: root/src/help/opds.tt:6
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
@@ -989,7 +760,6 @@ msgstr ""
 "διάταξη,\n"
 "εντούτοις, δεν παρέχει μια ειδική εφαρμογή για κινητά."
 
-#: root/src/edit/newtext.tt:161
 msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
@@ -999,123 +769,92 @@ msgstr ""
 "ενότητα θα δημιουργήσει ένα σλάιντ. Για να λειτουργήσει αυτό,\n"
 "πρέπει να κάνετε σωστή διαίρεση ενοτήτων."
 
-#: root/src/include/bbform.tt:615
 msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
 msgstr ""
 
-#: root/src/edit/edit.tt:526 root/src/edit/edit.tt:532
-#: root/src/edit/edit.tt:545 root/src/edit/edit.tt:547
-#: root/src/include/edit_node.tt:84 root/src/include/edit_node.tt:93
 msgid "Example"
 msgstr "Παράδειγμα"
 
-#: root/src/console/alias_display.tt:91
 msgid "Existing redirections"
 msgstr "Υπάρχουσες ανακατευθύνσεις"
 
-#: mkits/git_action/body.txt:5
 msgid "Expected pages"
 msgstr "Αναμενόμενες σελίδες"
 
-#: root/src/include/bulk_job.tt:12
 msgid "Failed"
 msgstr "Απέτυχε"
 
 #. ("$name $url")
-#: lib/AmuseWikiFarm/Controller/Console.pm:88
 msgid "Failed to add remote repository %1"
 msgstr "Αποτυχία στην προσθήκη απομακρυσμένου αποθετηρίου %1"
 
 #. ($name)
-#: lib/AmuseWikiFarm/Controller/Console.pm:102
 msgid "Failed to remove Remote repository %1"
 msgstr "Αποτυχία στην αφαίρεση απομακρυσμένου αποθετηρίου %1"
 
-#: root/static/js/amw-batch-upload.js:83
 msgid "File already in the body"
 msgstr "Το αρχείο υπάρχει ήδη στο σώμα"
 
-#: root/src/settings/formats.tt:14
 msgid "File extension"
 msgstr "Επέκταση αρχείου"
 
-#: lib/AmuseWikiFarm/Controller/API.pm:54
-#: lib/AmuseWikiFarm/Controller/API.pm:55
 msgid "File format not allowed"
 msgstr "Αυτός ο τύπος αρχείου δεν επιτρέπεται"
 
-#: lib/AmuseWikiFarm/Controller/API.pm:56
 msgid "File too big"
 msgstr "Αρχείο πολύ μεγάλο"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:516
 msgid "File uploaded!"
 msgstr "Το αρχείο ανέβηκε!"
 
-#: root/src/static-indexes.tt:74
 msgid "Files"
 msgstr "Αρχεία"
 
-#: root/src/include/bbform.tt:891
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 "Συμπλήρωση με κενές σελίδες πριν από την τελευταία σελίδα αν η υπογραφή δεν "
 "είναι πλήρης."
 
-#: root/src/static-indexes.tt:82 root/src/static-indexes.tt:83
-#: root/src/static-indexes.tt:85
 msgid "Filter"
 msgstr "Φίλτρο"
 
-#: root/src/edit/edit.tt:213
 msgid "Filters"
 msgstr "Φίλτρα"
 
-#: root/src/help/opds.tt:85
 msgid "Find the add catalogue menu."
 msgstr "Βρες το μενού προσθήκης καταλόγου."
 
-#: root/src/help/opds.tt:71
 msgid "Find the network library menu, or equivalent."
 msgstr "Βρες το μενού βιβλιοθήκης δικτύου, ή κάτι παρόμοιο."
 
-#: root/src/static-indexes.tt:175
 msgid "First"
 msgstr "Πρώτη"
 
-#: root/src/edit/edit.tt:678
 msgid "First Author and Second Author"
 msgstr "Πρώτος Συγγραφέας και Δεύτερος Συγγραφέας"
 
-#: root/src/edit/edit.tt:683
 msgid "First Author, Second Author"
 msgstr "Πρώτος Συγγραφέας, Δεύτερος Συγγραφέας"
 
-#: root/src/edit/edit.tt:792
 msgid "First slide"
 msgstr "Πρώτο σλάιντ"
 
-#: root/src/help/faq.tt:73
 msgid "First you have to unpublish it via #DELETED."
 msgstr "Πρώτα θα πρέπει να το αποδημοσιεύσεις με τη χρήση του #DELETED."
 
-#: root/src/edit/edit.tt:232
 msgid "Fix typography (smart quotes)"
 msgstr "Διόρθωση τυπογραφίας (έξυπνα εισαγωγικά)"
 
-#: root/src/include/bbform.tt:764
 msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
 msgstr "Σταθετές υπογραφές 16 σελίδων σε 2 φύλλα με διπλή ατομική αναδίπλωση."
 
-#: root/src/include/bbform.tt:745
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr "Σταθερές υπογραφές 16 σελίδων σε ένα μόνο φύλλο, με τριπλή αναδίπλωση."
 
-#: root/src/bookbuilder/schemas.tt:37 root/src/include/bbform.tt:729
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
@@ -1123,25 +862,19 @@ msgstr ""
 "Σταθερές υπογραφές 8 σελίδων, που πρέπει να κοπούν οριζόντια, να διπλωθούν "
 "χωριστά και να δεθούν μαζί."
 
-#: root/src/admin/edit.tt:420
 msgid "Fixed topic list"
 msgstr "Σταθερή λίστα θεμάτων"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:324
-#: root/src/bookbuilder/fonts.tt:4
 msgid "Font preview"
 msgstr "Προεπισκόπηση γραμματοσειράς"
 
-#: root/src/admin/edit.tt:851
 msgid "Font size"
 msgstr "Μέγεθος γραμματοσειράς"
 
-#: root/src/edit/edit.tt:369 root/src/edit/edit.tt:521
 msgid "Footnotes"
 msgstr "Υποσημειώσεις"
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
-#: lib/AmuseWikiFarm/Controller/Edit.pm:421
 msgid ""
 "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
 "in the body (%4), ignoring changes."
@@ -1149,17 +882,14 @@ msgstr ""
 "Αναντιστοιχία υποσημειώσεων: βρέθηκαν %1 υποσημειώσεις (%2) και βρέθηκαν %3 "
 "αναφορές υποσημειώσεων στο σώμα (%4), αγνοώντας τις αλλαγές."
 
-#: root/src/edit/newtext.tt:126
 msgid "For texts from the internet use"
 msgstr "Για κείμενα από το διαδίκτυο χρησιμοποιήστε"
 
-#: root/src/admin/edit.tt:982 root/src/include/bbform.tt:457
 msgid "For texts without a table of content, start text on the very first page"
 msgstr ""
 "Για κείμενα χωρίς πίνακα περιεχομένων, ξεκινήστε το κείμενο από την πρώτη "
 "κιόλας σελίδα"
 
-#: root/src/console/alias_display.tt:23
 msgid ""
 "For topics and authors redirections, you can create them\n"
 "  here"
@@ -1168,55 +898,42 @@ msgstr ""
 "δημιουργήσετε\n"
 "  εδώ"
 
-#: root/src/edit/edit.tt:485
 msgid "Force a line break."
 msgstr "Επιβάλλετε αλλαγής γραμμής."
 
-#: root/src/publish/pending.tt:54
 msgid "Force publishing"
 msgstr "Επιβολή δημοσίευσης"
 
-#: root/src/settings/formats.tt:81
 msgid "Format name"
 msgstr "Μορφή ονόματος"
 
-#: lib/AmuseWikiFarm/Controller/Settings.pm:100
 msgid "Format successfully created"
 msgstr "Η μορφή δημιουργήθηκε επιτυχώς"
 
-#: lib/AmuseWikiFarm/Controller/Settings.pm:142
 msgid "Format successfully updated"
 msgstr "Η μορφή ενημερώθηκε επιτυχώς"
 
-#: root/src/admin/edit.tt:752
 msgid "Formats"
 msgstr "Μορφές"
 
-#: lib/AmuseWikiFarm/Controller/Listing.pm:41
-#: lib/AmuseWikiFarm/Role/Controller/RegularListing.pm:31
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4495
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4515
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4538
 msgid "Full list of texts"
 msgstr "Πλήρης κατάλογος κειμένων"
 
-#: root/src/admin/edit.tt:1105
 msgid "Full tag cloud"
 msgstr "Πλήρες σύννεφο ετικετών"
 
-#: root/src/search/index.tt:20
 msgid "Full text search"
 msgstr "Πλήρης αναζήτηση κειμένου"
 
-#: root/src/admin/edit.tt:177
+msgid "Full width, fluid layout"
+msgstr ""
+
 msgid "General configuration"
 msgstr "Γενική ρύθμιση παραμέτρων"
 
-#: root/src/admin/edit.tt:8
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Γενικό (ταιριάζει με A4 και Letter)"
 
-#: root/src/console/git_display.tt:123
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
 "using the form you can find above. You can have one personal repository."
@@ -1225,16 +942,12 @@ msgstr ""
 "τη χρησιμοποιώντας τη φόρμα που θα βρεις από πάνω. Μπορείς να έχεις ένα "
 "προσωπικό αποθετήριο."
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:73
-#: root/src/tasks/show_bulk_job.tt:13
 msgid "Git console"
 msgstr "Κονσόλα Git"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:49
 msgid "Git is not enabled on this site"
 msgstr "Το Git δεν είναι ενεργοποιημένο σε αυτόν τον ιστότοπο"
 
-#: root/src/admin/edit.tt:1017
 msgid ""
 "HTML code to append to each regular page, inserted\n"
 "            verbatim, so be careful"
@@ -1242,7 +955,6 @@ msgstr ""
 "Ο κώδικας που είναι να εισαχθεί σε κάθε κανονική σελίδα, πρέπει να εισαχθεί "
 "αυτολεξεί, γι'αυτό να είσαι προσεκτικ@"
 
-#: root/src/admin/edit.tt:1001
 msgid ""
 "HTML to append to each special page, inserted\n"
 "            verbatim, now you have a chance to screw up everything, so\n"
@@ -1252,23 +964,18 @@ msgstr ""
 "πρέπει να γίνει αυτολεξεί, τώρα έχεις την ευκαιρία να τα γαμήσεις όλα\n"
 "γι'αυτό να είσαι προσεκτικ@"
 
-#: root/src/admin/edit.tt:1061
 msgid "HTML to insert in the footer of the layout, below the links"
 msgstr "HTML για εισαγωγή στο υποσέλιδο της διάταξης, κάτω από τους συνδέσμους"
 
-#: root/src/admin/edit.tt:1076
 msgid "HTML to insert into the left sidebar"
 msgstr "HTML για εισαγωγή στην αριστερή πλαϊνή μπάρα"
 
-#: root/src/admin/edit.tt:1090
 msgid "HTML to insert into the right sidebar"
 msgstr "HTML για εισαγωγή στην δεξιά πλαϊνή μπάρα"
 
-#: root/src/admin/edit.tt:1047
 msgid "HTML to insert on the bottom of the layout, above the footer"
 msgstr "HTML για εισαγωγή στο κάτω μέρος της διάταξης, πάνω από το υποσέλιδο"
 
-#: root/src/admin/edit.tt:1033
 msgid ""
 "HTML to insert on the top of the layout, behind the navigation bar and below "
 "the banner"
@@ -1276,35 +983,25 @@ msgstr ""
 "HTML για εισαγωγή στην κορυφή της διάταξης, πίσω από τη γραμμή πλοήγησης και "
 "κάτω από το banner"
 
-#: root/src/edit/edit.tt:153 root/src/utils/import.tt:6
 msgid "HTML/Word Importer"
 msgstr "Εισαγωγέας HTML/Word"
 
-#: root/src/admin/edit.tt:6
 msgid "Half Letter paper"
 msgstr "Μισό χαρτί \"Letter\""
 
-#: root/src/include/markitup.tt:17 root/src/include/markitup.tt:22
-#: root/src/include/markitup.tt:27 root/src/include/markitup.tt:32
-#: root/src/include/markitup.tt:37
 msgid "Heading"
 msgstr "Επικεφαλίδα"
 
-#: root/src/edit/edit.tt:362 root/src/edit/edit.tt:387
 msgid "Headings"
 msgstr "Επικεφαλίδες"
 
-#: root/src/include/bbform.tt:209 root/src/include/bbform.tt:276
-#: root/src/include/bbform.tt:845
 msgid "Height:"
 msgstr "Ύψος:"
 
-#: root/src/include/bbform.tt:126
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
 "Εδώ μπορείς να βρεις μια προεπισκόπηση θεμάτων Beamer και χρωματικών θεμάτων"
 
-#: root/src/bookbuilder/index.tt:269
 msgid ""
 "Here you can save or load your templates. The text list\n"
 "      and the cover image are excluded by the saved settings. You can\n"
@@ -1316,43 +1013,33 @@ msgstr ""
 "Μπορείτε να το χρησιμοποιήσετε για να αποθηκεύσετε το χαρτί/τις "
 "γραμματοσειρές/την διάταξη και άλλες επιλογές."
 
-#: root/src/admin/edit.tt:812 root/src/include/bbform.tt:237
 msgid "Higher division factor means narrower margins"
 msgstr "Υψηλότερος συντελεστής διαίρεσης σημαίνει στενότερα περιθώρια"
 
-#: root/src/console/git_display.tt:80
 msgid "How are you going to access Git?"
 msgstr "Πώς θα έχεις πρόσβαση στο Git;"
 
-#: root/src/help/faq.tt:27 root/src/help/faq.tt:8
 msgid "How do I create a landing page?"
 msgstr "Πώς μπορώ να δημιουργήσω μια σελίδα προορισμού;"
 
-#: root/src/help/faq.tt:15 root/src/help/faq.tt:6
 msgid "How do I create a special page?"
 msgstr "Πώς μπορώ να δημιουργήσω μια ειδική σελίδα;"
 
-#: root/src/help/faq.tt:44 root/src/help/faq.tt:9
 msgid "How do I delete a text?"
 msgstr "Πώς μπορώ να διαγράψω ένα κείμενο;"
 
-#: root/src/help/faq.tt:20 root/src/help/faq.tt:7
 msgid "How do I modify a special page?"
 msgstr "Πώς μπορώ να τροποποιήσω μια ειδική σελίδα;"
 
-#: root/src/help/faq.tt:10 root/src/help/faq.tt:65
 msgid "How do I purge a text?"
 msgstr "Πώς μπορώ να καθαρίσω ένα κείμενο;"
 
-#: root/src/help/faq.tt:11 root/src/help/faq.tt:83
 msgid "How do I redirect to another page?"
 msgstr "Πώς μπορώ να ανακατευθύνω σε μια άλλη σελίδα;"
 
-#: root/src/user/create.tt:59 root/src/user/edit.tt:46
 msgid "How to choose a password"
 msgstr "Πώς να επιλέξεις έναν κωδικό πρόσβασης"
 
-#: root/src/help/opds.tt:10
 msgid ""
 "However, you can browse, search, download and read the texts\n"
 "  from mobile reading applications which support the so-called OPDS\n"
@@ -1363,35 +1050,24 @@ msgstr ""
 "  από εφαρμογές ανάγνωσης για κινητά που υποστηρίζουν\n"
 "το λεγόμενο πρωτόκολλο OPDS."
 
-#: root/src/user/human.tt:22
 msgid "I am human"
 msgstr "Είμαι άνθρωπος"
 
-#: root/src/console/git_display.tt:85
 msgid "I have a system user with SSH access"
 msgstr "Έχω έναν χρήστη με πρόσβαση SSH"
 
-#: root/src/include/bbform.tt:537
 msgid "I want an imposed (ready to print) PDF"
 msgstr "Θέλω ένα διαμορφωμένο (έτοιμο για εκτύπωση) PDF"
 
-#: root/src/console/git_display.tt:89
 msgid "I will provide my remote repository"
 msgstr "Θα παράσχω το απομακρυσμένο αποθετήριο μου"
 
-#: root/src/admin/edit.tt:614
-msgid "IRC channel on freenode"
-msgstr "Κανάλι IRC στο freenode"
-
-#: root/src/include/preamble.tt:96
 msgid "ISBN"
 msgstr "ISBN"
 
-#: root/src/admin/jobs.tt:43 root/src/admin/list.tt:12
 msgid "Id"
 msgstr "Id"
 
-#: root/src/edit/newtext.tt:34
 msgid ""
 "If by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
@@ -1401,7 +1077,6 @@ msgstr ""
 "επίλεξε το επιθυμητό URI χρησιμοποιώντας το παρακάτω πεδίο εισάγοντας τον "
 "συγγραφέα, τον τίτλο και έναν αριθμό, π.χ. my-author-my-title-1"
 
-#: mkits/resetpassword/body.txt:6
 msgid ""
 "If it was not your intention, please just ignore this mail and\n"
 "your password will not be changed."
@@ -1409,7 +1084,6 @@ msgstr ""
 "Αν δεν ήταν στην πρόθεσή σου, απλά αγνόησε αυτό το μήνυμα και ο κωδικός "
 "πρόσβασής σου δε θα αλλάξει."
 
-#: mkits/git_conflict/body.txt:7
 msgid ""
 "If it's not the case, please open a bug report at https://github.com/"
 "melmothx/amusewiki/issues"
@@ -1425,12 +1099,9 @@ msgstr ""
 #. ("ssl/' _ esite.canonical _ '/fullchain.pem")
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
-#: root/src/admin/edit.tt:1248 root/src/admin/edit.tt:1262
-#: root/src/admin/edit.tt:1276 root/src/admin/edit.tt:1290
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Αν δεν οριστεί, το %1 θα αναζητηθεί από τον κατάλογο της εφαρμογής."
 
-#: root/src/edit/edit.tt:767
 msgid ""
 "If present, hide the\n"
 "          generated formats and the information box. This makes sense\n"
@@ -1439,7 +1110,6 @@ msgid ""
 "          files."
 msgstr ""
 
-#: root/src/admin/edit.tt:625
 msgid ""
 "If set to a number greater than 0, automatically generate a teaser, with "
 "roughly this length"
@@ -1447,7 +1117,6 @@ msgstr ""
 "Αν οριστεί ένας αριθμός μεγαλύτερος του 0, δημιουργείται αυτόματα ένα "
 "teaser, με περίπου αυτό το μήκος"
 
-#: root/src/admin/edit.tt:256
 msgid ""
 "If the publication of a text is deferred, list it\n"
 "            with the teaser and the cover without providing access to\n"
@@ -1457,7 +1126,6 @@ msgstr ""
 "παράθεσέ το με το teaser και το εξώφυλλο,\n"
 "χωρίς να παρέχεις πρόσβαση στο σώμα του κειμένου"
 
-#: root/src/admin/edit.tt:517
 msgid ""
 "If the user is allowed to publish, speed up the process skipping the "
 "revision page if there are no conflicts and automatically redirect to the "
@@ -1467,11 +1135,9 @@ msgstr ""
 "παρακάμπτοντας τη σελίδα διόρθωσης αν δεν υπάρχουν conflicts και "
 "ανακατεύθυνε αυτόματα στο δημοσιευμένο κείμενο μόλις ολοκληρωθεί."
 
-#: mkits/commit/body.txt:10
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr "Εάν ο χρήστης έδωσε email, εμφανίζεται στο πεδίο CC του μηνύματος"
 
-#: root/src/edit/edit.tt:722
 msgid ""
 "If this line\n"
 "          is present, set the publication date (on this site) to the\n"
@@ -1490,7 +1156,6 @@ msgstr ""
 "          θα είναι η ώρα της δημοσίευσης, προκαλώντας ένα ανέβασμα\n"
 "          στο RSS και στις ειδικές σελίδες σε κάθε επεξεργασία."
 
-#: root/src/edit/edit.tt:738
 msgid ""
 "If this line is\n"
 "          present and the reason is set to something, the text will be\n"
@@ -1500,7 +1165,6 @@ msgstr ""
 "          και η αιτιολογία έχει οριστεί, το κείμενο θα\n"
 "          αποθηκευτεί στο αρχείο, αλλά δεν θα δημοσιευτεί."
 
-#: root/src/edit/edit.tt:775
 msgid ""
 "If this line is present, do not create a title page,\n"
 "          but instead start the text on the very first page and\n"
@@ -1512,15 +1176,12 @@ msgstr ""
 "          παράγετε ένα PDF που θα μοιάζει με άρθρο (κεφάλαια και μέρη\n"
 "          δεν θα ξεκινήσουν σε νέα σελίδα)."
 
-#: root/src/edit/edit.tt:744
 msgid "If this line is present, do not display the table of contents."
 msgstr "Εάν υπάρχει αυτή η γραμμή, μην εμφανίζετε τον πίνακα περιεχομένων."
 
-#: root/src/include/bbform.tt:543
 msgid "If you asked for imposition, select an imposition schema"
 msgstr ""
 
-#: root/src/admin/edit.tt:1315 root/src/tasks/rebuild.tt:3
 msgid ""
 "If you edit some format options, like fonts or paper\n"
 "      dimensions, you may want to rebuild the generated files"
@@ -1529,7 +1190,6 @@ msgstr ""
 "διαστάσεις\n"
 "      χαρτιού, μπορεί να θέλετε να ξαναδημιουργήσετε τα παραγόμενα αρχεία"
 
-#: mkits/resetpassword/body.txt:1
 msgid ""
 "If you forgot your password, you can choose a new one visiting\n"
 "this link (click on it or copy and paste it in your browser):"
@@ -1539,7 +1199,6 @@ msgstr ""
 "αυτόν τον σύνδεσμο (κάντε κλικ σε αυτόν ή αντιγράψτε και επικολλήστε τον στο "
 "πρόγραμμα περιήγησής σας):"
 
-#: root/src/edit/newtext.tt:200
 msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
@@ -1547,7 +1206,6 @@ msgstr ""
 "Εάν έχετε ένα αρχείο σε .doc ή .odt, μπορείτε εύκολα να το μετατρέψετε και "
 "να το αποθηκεύσετε ως HTML"
 
-#: root/src/tasks/rebuild.tt:7
 msgid ""
 "If you request a rebuild when one is ongoing, you will\n"
 "    abort the current one."
@@ -1555,7 +1213,6 @@ msgstr ""
 "Εάν ζητήσετε μια ανακατασκευή όταν αυτή βρίσκεται σε εξέλιξη, θα\n"
 "    ματαιώσει την τρέχουσα."
 
-#: root/src/edit/edit.tt:656
 msgid ""
 "If you use it as a teaser image, the image will also\n"
 "      be placed on the first page of the PDF. You can set its width\n"
@@ -1572,7 +1229,6 @@ msgstr ""
 "το 0,5 είναι το μισό, και ούτω καθεξής\n"
 "      στο"
 
-#: root/src/help/faq.tt:34
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
 "the uri \"index\"."
@@ -1581,7 +1237,6 @@ msgstr ""
 "σελίδα και αναθέστε\n"
 "το uri \"index\"."
 
-#: root/src/help/faq.tt:39
 msgid ""
 "If your site is multilanguage, you can create a language-specific\n"
 "  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
@@ -1592,17 +1247,14 @@ msgstr ""
 "  σελίδα προορισμού δημιουργώντας, π.χ. \"/special/index-it\", δηλ. το\n"
 "  URI \"index\", μια παύλα και τον κωδικό της τοπικής γλώσσας."
 
-#: root/static/js/amw-batch-upload.js:112
 msgid "Image already set as cover"
 msgstr "Η εικόνα έχει ήδη οριστεί ως εξώφυλλο"
 
 #. ($w, $h, $limit, $limit)
-#: lib/AmuseWikiFarm/Controller/Edit.pm:360
 msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
 msgstr ""
 "Οι διαστάσεις της εικόνας %1 x %2 υπερβαίνουν το όριο των %3 x %4 pixels"
 
-#: root/src/edit/newtext.tt:181
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -1610,24 +1262,18 @@ msgstr ""
 "Το ανέβασμα εικόνας μπορεί να γίνει στο επόμενο βήμα, όταν θα μπορείς να\n"
 "        επανεξετάσεις και να κάνεις προεπισκόπηση του ανεβάσματος."
 
-#: root/src/include/markitup.tt:60
 msgid "Image url"
 msgstr "Url εικόνας"
 
-#: root/src/edit/edit.tt:378 root/src/edit/edit.tt:641
 msgid "Images"
 msgstr "Εικόνες"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:330
-#: root/src/bookbuilder/schemas.tt:3 root/src/include/bbform.tt:532
 msgid "Imposition schemas"
 msgstr "Σχήματα διάταξης"
 
-#: root/src/edit/edit.tt:561
 msgid "In both case you will get a reverse indentation."
 msgstr "Και στις δύο περιπτώσεις θα έχετε μια αντίστροφη εσοχή."
 
-#: root/src/edit/edit.tt:524
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
@@ -1637,7 +1283,6 @@ msgstr ""
 
 #. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
-#: root/src/help/opds.tt:59
 msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
@@ -1648,31 +1293,24 @@ msgstr ""
 "είναι\n"
 "  να προσθέσετε το %1 στις βιβλιοθήκες δικτύου."
 
-#: root/src/edit/edit.tt:457
 msgid "Inline elements"
 msgstr "Ενσωματωμένα στοιχεία"
 
-#: root/src/edit/edit.tt:194 root/static/js/amw-batch-upload.js:86
 msgid "Insert the file into the body at the cursor position"
 msgstr "Εισαγωγή του αρχείου στη θέση του κέρσορα"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:270 root/src/layout.tt:407
 msgid "Internal list of translations"
 msgstr "Εσωτερικός κατάλογος μεταφράσεων"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:81
 msgid "Invalid email"
 msgstr "Μη έγκυρο email"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:125
 msgid "Invalid name"
 msgstr "Μη έγκυρο όνομα"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:71
 msgid "Invalid username"
 msgstr "Μη έγκυρο όνομα χρήστη"
 
-#: root/src/edit/edit.tt:538
 msgid ""
 "It is possible to have an additional set of\n"
 "          footnotes which you use to annote the text (e.g. critical\n"
@@ -1691,7 +1329,6 @@ msgstr ""
 "          για τετράγωνες αγκύλες. Η τοποθέτηση δευτερευουσών υποσημειώσεων\n"
 "          μέσα σε μια κανονική υποσημείωση επιτρέπεται."
 
-#: root/src/edit/edit.tt:730
 msgid ""
 "It is recommended to always set a publication\n"
 "                    date, so the system does not need to rely on the\n"
@@ -1708,7 +1345,6 @@ msgstr ""
 "αφήνοντάς την\n"
 "                    ανέπαφη για τις δευτερεύουσες."
 
-#: root/src/help/faq.tt:22
 msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
@@ -1717,41 +1353,31 @@ msgstr ""
 "Απλά\n"
 "προσθέστε το \"/edit\" στο url της σελίδας."
 
-#: root/src/include/markitup.tt:42
 msgid "Italic"
 msgstr "Πλάγια"
 
-#: root/src/edit/edit.tt:366
 msgid "Italics, bold, monospace and code, linebreaks..."
 msgstr ""
 "Πλάγια γραφή, έντονη γραφή, μονοδιάστημα και κώδικας, αλλαγή γραμμής..."
 
-#: root/src/admin/edit.tt:389
 msgid "JPG, PNG and PDF are always allowed."
 msgstr "Τα JPG, PNG και PDF επιτρέπονται πάντα."
 
-#: root/src/layout.tt:501
 msgid "Job status"
 msgstr "Κατάσταση εργασιών"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:156
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:198
 msgid "Jobs"
 msgstr "Εργασίες"
 
-#: root/src/layout.tt:540
 msgid "Jobs (all sites)"
 msgstr "Εργασίες (όλοι οι ιστότοποι)"
 
-#: root/src/tasks/display.tt:13 root/src/tasks/display.tt:73
 msgid "Jobs waiting before yours:"
 msgstr "Εργασίες σε αναμονή πριν τη δική σου:"
 
-#: root/src/bookbuilder/schemas.tt:24
 msgid "Just packs 2 consecutives logical pages on a physical one."
 msgstr "Απλά συσκευάζει 2 διαδοχικές λογικές σελίδες σε μια φυσική σελίδα."
 
-#: root/src/edit/newtext.tt:274
 msgid ""
 "Keep in mind that I’m cleaning the text and give it\n"
 "        back to you in the markup used on this site. It’s up to you to\n"
@@ -1768,13 +1394,11 @@ msgstr ""
 "επόμενο\n"
 "        βήμα, όπου μπορείς επίσης να εισάγεις εικόνες."
 
-#: root/src/include/bbform.tt:37
 msgid "Keep in mind that some character may be missing in the required font."
 msgstr ""
 "Λάβετε υπόψη ότι κάποιος χαρακτήρας μπορεί να λείπει από την απαιτούμενη "
 "γραμματοσειρά."
 
-#: root/src/edit/newtext.tt:185
 msgid ""
 "Keep in mind that unusually\n"
 "        complex formatting will be stripped. Is it possible to add\n"
@@ -1784,364 +1408,267 @@ msgstr ""
 "        πολύπλοκη μορφοποίηση θα αφαιρεθεί. Η προσθήκη πινάκων και εικόνων\n"
 "        μπορεί να γίνει μόνο στο επόμενο βήμα."
 
-#: root/src/admin/edit.tt:349 root/src/admin/list.tt:16
-#: root/src/edit/newtext.tt:142
 msgid "Language"
 msgstr "Γλώσσα"
 
-#: root/src/edit/edit.tt:718
 msgid "Language code of the document (2 or 3 letters). "
 msgstr "Κωδικός γλώσσας του εγγράφου (2 ή 3 γράμματα). "
 
-#: root/src/layout.tt:357 root/src/layout.tt:361
 msgid "Language selection"
 msgstr "Επιλογή Γλώσσας"
 
-#: root/src/admin/edit.tt:570
 msgid "Languages supported"
 msgstr "Υποστηριζόμενες γλώσσες"
 
-#: root/src/static-indexes.tt:176
 msgid "Last"
 msgstr "Τελευταία"
 
-#: root/src/tasks/rebuild.tt:18
 msgid "Last successful rebuild"
 msgstr "Τελευταία επιτυχής ανακατασκευή"
 
-#: root/src/edit/revs.tt:16
 msgid "Last updated"
 msgstr "Τελευταία ενημέρωση"
 
-#: lib/AmuseWikiFarm/Controller/Latest.pm:58
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:57
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4508 root/src/admin/edit.tt:668
-#: root/src/layout.tt:269 root/src/layout.tt:270 root/src/layout.tt:734
-#: root/src/text.tt:176
 msgid "Latest entries"
 msgstr "Τελευταίες καταχωρήσεις"
 
-#: root/src/admin/edit.tt:994
 msgid "Layout"
 msgstr "Διάταξη"
 
-#: root/src/edit/newtext.tt:267
 msgid "Leave it blank if you want it published right away."
 msgstr "Άφησέ το κενό αν θες να δημοσιευτεί αμέσως."
 
-#: root/src/edit/newtext.tt:227
 msgid "Leave this empty to have it automatically generated"
 msgstr "Άφησέ το κενό αν θες να δημιουργηθεί αυτόματα"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1274
 msgid "Letter imposed PDF"
 msgstr "PDF σε μορφή Letter"
 
-#: root/src/admin/edit.tt:5
 msgid "Letter paper"
 msgstr "Χαρτί Letter"
 
-#: root/src/include/markitup.tt:75
 msgid "Link"
 msgstr "Σύνδεσμος"
 
-#: root/src/edit/edit.tt:377 root/src/edit/edit.tt:627
 msgid "Links"
 msgstr "Σύνδεσμοι"
 
-#: root/src/include/edit_node.tt:82
 msgid "List of paths to attach to this node, one per line."
 msgstr ""
 "Λίστα μονοπατιών που πρέπει να προσαρτηθούν σε αυτόν τον κόμβο, ένα ανά "
 "γραμμή."
 
-#: root/src/console/unpublished.tt:1
 msgid "List of texts on hold"
 msgstr "Κατάλογος κειμένων σε αναμονή"
 
-#: root/src/edit/edit.tt:376 root/src/edit/edit.tt:604
 msgid "Lists"
 msgstr "Λίστες"
 
-#: root/src/bookbuilder/index.tt:281
 msgid "Load"
 msgstr "Φόρτωση"
 
-#: root/src/bookbuilder/index.tt:433
 msgid "Load another session by token"
 msgstr "Φόρτωση άλλης συνεδρίας με token"
 
 #. ($pname)
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:275
 msgid "Loaded \"%1\" configuration"
 msgstr "Φορτώθηκε η διαμόρφωση \"%1\""
 
-#: root/src/static-indexes.tt:170
 msgid "Loading"
 msgstr "Φόρτωση"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:326
 msgid "Locked editing, no upload possible"
 msgstr "Κλειδωμένη επεξεργασία, δεν είναι δυνατή η μεταφόρτωση"
 
-#: root/src/user/login.tt:21
 msgid "Log in"
 msgstr "Είσοδος"
 
-#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:205
 msgid "Login"
 msgstr "Είσοδος"
 
-#: root/src/layout.tt:553
 msgid "Logout"
 msgstr "Έξοδος"
 
-#: root/src/help/faq.tt:17
 msgid "Look into the account’s menu, there is an entry for that."
 msgstr "Κοιτάξτε στο μενού του λογαριασμού, υπάρχει μια καταχώρηση γι' αυτό."
 
-#: root/src/user/login.tt:28
 msgid "Lost your password?"
 msgstr "Ξέχασες τον κωδικό σου;"
 
-#: root/src/admin/edit.tt:410
 msgid "Magic answer"
 msgstr "Μαγική απάντηση"
 
-#: root/src/admin/edit.tt:400
 msgid "Magic question"
 msgstr "Μαγική ερώτηση"
 
-#: root/src/admin/list.tt:18
 msgid "Mail from"
 msgstr "Email από"
 
-#: root/src/admin/edit.tt:43 root/src/admin/list.tt:88
 msgid "Main canonical hostname, without protocol"
 msgstr "Κύριο κανονικό όνομα κεντρικού υπολογιστή, χωρίς πρωτόκολλο"
 
-#: root/src/admin/edit.tt:884
 msgid "Main font"
 msgstr "Κύρια γραμματοσειρά"
 
-#: root/src/edit/newtext.tt:168
 msgid "Main text"
 msgstr "Κύριο κείμενο"
 
-#: lib/AmuseWikiFarm/Controller/Help.pm:40 root/src/help/faq.tt:2
-#: root/src/layout.tt:547
 msgid "Maintainer's FAQ"
 msgstr "Συχνές ερωτήσεις του συντηρητή"
 
-#: root/src/edit/edit.tt:629
 msgid "Make a link clickable"
 msgstr "Κάντε έναν σύνδεσμο με δυνατότητα κλικ"
 
-#: root/src/edit/edit.tt:241
 msgid "Make all links active"
 msgstr "Κάντε όλους τους συνδέσμους ενεργούς"
 
-#: root/src/edit/edit.tt:263
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Κάντε όλα τα μη διακεκομμένα κενά ρητά και ορατά ως ~~"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:286 root/src/layout.tt:437
 msgid "Manage categories"
 msgstr "Διαχείριση κατηγοριών"
 
-#: root/src/admin/edit.tt:478
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr ""
 "Μέγιστη διάσταση εικόνας σε pixels, ισχύει τόσο για το πλάτος όσο και για το "
 "ύψος"
 
-#: root/src/admin/edit.tt:66
 msgid "Max size for uploads in Mb"
 msgstr "Μέγιστο μέγεθος για μεταφορτώσεις σε Mb"
 
-#: root/src/publish/pending.tt:25
 msgid "Message"
 msgstr "Μήνυμα"
 
 #. (8)
-#: root/src/user/reset_password_confirm.tt:18
-#: root/src/user/reset_password_confirm.tt:28
 msgid "Minimum %1 characters"
 msgstr "Ελάχιστοι %1 χαρακτήρες"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:611
 msgid "Missing #title header in the text!"
 msgstr "Λείπει η επικεφαλίδα #title στο κείμενο!"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:237
 msgid "Missing alias"
 msgstr "Λείπει το ψευδώνυμο"
 
-#: root/src/include/bbform.tt:38
 msgid "Missing character will be reported"
 msgstr "Ο χαρακτήρας που λείπει θα αναφερθεί"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:240
 msgid "Missing redirection"
 msgstr "Έλλειψη ανακατεύθυνσης"
 
-#: root/src/layout.tt:574 root/src/layout.tt:738
 msgid "Mobile"
 msgstr "Φορητή συσκευή"
 
-#: root/src/layout.tt:577
 msgid "Mobile applications"
 msgstr "Εφαρμογές για κινητά"
 
-#: root/src/admin/list.tt:15
 msgid "Mode"
 msgstr "Λειτουργία"
 
-#: root/src/admin/edit.tt:203
 msgid "Moderated wiki"
 msgstr "Συντονισμένο wiki"
 
-#: root/src/admin/edit.tt:916
 msgid "Mono font"
 msgstr "Γραμματοσειρά Mono"
 
-#: root/src/layout.tt:317
 msgid "More"
 msgstr "Περισσότερα"
 
-#: root/src/bookbuilder/index.tt:43
 msgid "Move down"
 msgstr "Μετακίνηση προς τα κάτω"
 
-#: root/src/bookbuilder/index.tt:40
 msgid "Move up"
 msgstr "Μετακίνηση προς τα πάνω"
 
-#: root/src/admin/edit.tt:367
 msgid "Multilanguage: list of whitespace separated language codes"
 msgstr ""
 "Πολλαπλές γλώσσες: κατάλογος γλωσσικών κωδικών που χωρίζονται με κενό "
 "διάστημα"
 
-#: root/src/edit/edit.tt:651
 msgid "My description"
 msgstr "Η περιγραφή μου"
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:178 root/src/include/bulk_job.tt:20
-#: root/src/static-indexes.tt:127 root/src/static-indexes.tt:131
 msgid "N/A"
 msgstr "N/A"
 
-#: root/src/admin/list.tt:17 root/src/attachments/list.tt:12
-#: root/src/bookbuilder/index.tt:280 root/src/console/git_display.tt:10
-#: root/src/console/list_categories.tt:12 root/src/settings/edit_format.tt:12
-#: root/src/settings/formats.tt:9
 msgid "Name"
 msgstr "Όνομα"
 
-#: root/src/settings/categories.tt:13
 msgid "Name plural"
 msgstr "Όνομα στον πληθυντικό"
 
-#: root/src/settings/categories.tt:12
 msgid "Name singular"
 msgstr "Όνομα στον ενικό"
 
-#: root/src/help/opds.tt:78
 msgid "Network library listing screen."
 msgstr "Οθόνη καταλόγου βιβλιοθηκών δικτύου."
 
-#: root/src/include/bbform.tt:441
 msgid "Never display the cover"
 msgstr "Μη δείχνεις ποτέ το εξώφυλλο"
 
-#: root/src/include/bbform.tt:359
 msgid "Never generate a table of content"
 msgstr "Μη δημιουργήσεις ποτέ πίνακα περιεχομένων"
 
-#: root/src/include/bbform.tt:366
 msgid ""
 "Never generate the standard final page with title/author/notes/logo/site name"
 msgstr ""
 "Ποτέ μην δημιουργείτε την τυπική τελική σελίδα με τίτλο/συγγραφέα/σημειώσεις/"
 "λογότυπο/όνομα ιστότοπου"
 
-#: root/src/admin/edit.tt:266
 msgid "Never show teaser and/or cover in text lists"
 msgstr "Ποτέ μην εμφανίζετε το teaser ή/και το εξώφυλλο σε λίστες κειμένου"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4507 root/src/publish/pending.tt:34
 msgid "New"
 msgstr "Νέο/α"
 
-#: root/src/edit/revs.tt:73
 msgid "New revision"
 msgstr "Νέα διόρθωση"
 
-#: root/src/admin/list.tt:82
 msgid "New site id"
 msgstr "Νέο ID ιστότοπου"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:436 root/src/search/index.tt:70
 msgid "Newer first"
 msgstr "Νεότερα πρώτα"
 
-#: root/src/text.tt:222
 msgid "Newer texts"
 msgstr "Νεότερα κείμενα"
 
-#: root/src/static-indexes.tt:177 root/src/text.tt:219
 msgid "Next"
 msgstr "Επόμενο"
 
-#: root/src/edit/edit.tt:690
 msgid "Nice title"
 msgstr "Ωραίος τίτλος"
 
-#: root/src/admin/show_users.tt:42 root/src/settings/categories.tt:22
-#: root/src/siteadmin/show_users.tt:41
 msgid "No"
 msgstr "Όχι"
 
-#: root/src/static-indexes.tt:163
 msgid "No data available in table"
 msgstr "Δεν υπάρχουν διαθέσιμα στοιχεία στον πίνακα"
 
-#: root/src/edit/diff.tt:73 root/src/edit/revs.tt:53
-#: root/src/publish/pending.tt:100
 msgid "No editing yet!"
 msgstr "Καμία επεξεργασία ακόμα!"
 
-#: root/src/static-indexes.tt:173
 msgid "No matching records found"
 msgstr "Δεν βρέθηκαν ταιριαστές εγγραφές"
 
-#: root/src/search/index.tt:128
 msgid "No result found!"
 msgstr "Δεν βρέθηκε αποτέλεσμα!"
 
-#: root/src/publish/pending.tt:140
 msgid "No revisions to show"
 msgstr "Δεν υπάρχουν διορθώσεις προς προβολή"
 
-#: root/src/include/posts.tt:95 root/src/library.tt:76
 msgid "No text found!"
 msgstr "Δεν βρέθηκε κείμενο!"
 
-#: root/src/bookbuilder/index.tt:358
 msgid "No text was added yet"
 msgstr "Δεν έχει προστεθεί ακόμη κείμενο"
 
-#: root/src/layout.tt:444
 msgid "Nodes"
 msgstr "Κόμβοι"
 
-#: root/src/bookbuilder/index.tt:205 root/src/include/bbform.tt:495
 msgid "None"
 msgstr "Κανένα"
 
 #. ($c->loc('Save')
-#: lib/AmuseWikiFarm/Controller/Edit.pm:109
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
 "finalize your submission!"
@@ -2149,29 +1676,21 @@ msgstr ""
 "Δεν έχει τελειώσει ακόμα! Ρίξτε μια ματιά στο κείμενο και στη συνέχεια κάντε "
 "κλικ στο \"%1\" για να ολοκληρώσετε την υποβολή σας!"
 
-#: root/src/bookbuilder/index.tt:154 root/src/edit/newtext.tt:205
-#: root/src/edit/preview.tt:53 root/src/edit/revs.tt:17
-#: root/src/include/preamble.tt:87
 msgid "Notes"
 msgstr "Σημειώσεις"
 
-#: root/src/console/unpublished.tt:60 root/src/stats/popular.tt:18
 msgid "Nothing to see here, so far"
 msgstr "Τίποτα αξιοσημείωτο εδώ, μέχρι στιγμής"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:394
 msgid "Nothing uploaded"
 msgstr "Τίποτα δεν έχει μεταφορτωθεί"
 
-#: root/src/admin/edit.tt:446
 msgid "Notify mail: blank field will disable them"
 msgstr "Ειδοποίηση email: το κενό πεδίο θα τα απενεργοποιήσει"
 
-#: root/src/admin/list.tt:19
 msgid "Notify to"
 msgstr "Ειδοποιήστε τ@"
 
-#: mkits/git_conflict/body.txt:3
 msgid ""
 "Now it has been aligned to the site's archive, but this means that there are "
 "some missing commits."
@@ -2179,60 +1698,46 @@ msgstr ""
 "Τώρα έχει ευθυγραμμιστεί με το αρχείο του ιστότοπου, αλλά αυτό σημαίνει ότι "
 "λείπουν κάποιες αλλαγές."
 
-#: root/src/console/git_display.tt:126
 msgid "Now we are going to populate it and get it ready"
 msgstr "Τώρα θα το συμπληρώσουμε και θα το ετοιμάσουμε"
 
-#: root/src/include/bulk_job.tt:9
 msgid "Number of jobs"
 msgstr "Αριθμός εργασιών"
 
-#: root/src/admin/edit.tt:690
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr ""
 "Αριθμός των τελευταίων καταχωρήσεων που θα εμφανίζονται στο RSS (ακέραιος "
 "αριθμός)"
 
-#: root/src/admin/edit.tt:635 root/src/admin/edit.tt:645
-#: root/src/admin/edit.tt:656 root/src/admin/edit.tt:667
-#: root/src/admin/edit.tt:678
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 "Αριθμός αποτελεσμάτων που θα εμφανίζονται στις σελιδωτές σελίδες (ακέραιος "
 "αριθμός)"
 
-#: root/src/layout.tt:32
 msgid "OPDS"
 msgstr "OPDS"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:443 root/src/search/index.tt:67
 msgid "Older first"
 msgstr "Παλαιότερα πρώτα"
 
-#: root/src/text.tt:207
 msgid "Older texts"
 msgstr "Παλαιότερα κείμενα"
 
-#: root/src/include/bbform.tt:789
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
 "Μία σελίδα ανά φύλλο. Αυτό είναι χρήσιμο μόνο αν θέλετε να προσθέσετε τα "
 "σημάδια αποκοπής"
 
-#: root/src/admin/edit.tt:211
 msgid "Open wiki"
 msgstr "Άνοιγμα wiki"
 
-#: root/src/bookbuilder/index.tt:260
 msgid "Option templates"
 msgstr "Πρότυπα επιλογών"
 
-#: root/src/edit/edit.tt:687
 msgid "Optional, defaults to the author directive"
 msgstr "Προαιρετικό, προεπιλεγμένη η οδηγία του συγγραφέα"
 
-#: root/src/edit/revs.tt:63
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
 "          concurrent revisions means that, unless someone takes care\n"
@@ -2248,51 +1753,39 @@ msgstr ""
 "πριν προχωρήσεις,\n"
 "          για να αποφύγεις τη σπατάλη χρόνου και ενέργειας."
 
-#: root/src/user/human.tt:26
 msgid "Or log in, if you have an account."
 msgstr "Ή συνδέσου, αν έχεις λογαριασμό."
 
-#: root/src/edit/newtext.tt:197
 msgid "Or provide an HTML file to upload"
 msgstr "Ή δώσε ένα αρχείο HTML για μεταφόρτωση"
 
-#: root/src/edit/edit.tt:415 root/src/edit/edit.tt:418
-#: root/src/edit/edit.tt:422
 msgid "Or wrap it in"
 msgstr "Ή τύλιξέ το σε"
 
-#: root/src/include/markitup.tt:51
 msgid "Ordered List"
 msgstr "Διατεταγμένη λίστα"
 
-#: root/src/include/bbform.tt:9
 msgid "PDF"
 msgstr "PDF"
 
-#: root/src/admin/edit.tt:146
 msgid "PDF logo"
 msgstr "PDF logo"
 
-#: root/src/edit/edit.tt:762
 msgid "PDFs cannot be used in the body."
 msgstr "Τα PDF δεν μπορούν να χρησιμοποιηθούν στο σώμα."
 
 #. ('#ATTACH')
 #. ("#ATTACH")
-#: root/src/edit/edit.tt:761
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 "Τα PDF που δεν αναφέρονται στην οδηγία %1 θα αποθηκευτούν αλλά θα αγνοηθούν."
 
-#: lib/AmuseWikiFarm/Controller/Root.pm:280
 msgid "Page not found!"
 msgstr "Η σελίδα δεν βρέθηκε!"
 
-#: root/src/admin/edit.tt:867 root/src/include/bbform.tt:471
 msgid "Page where to start a chapter"
 msgstr "Σελίδα για να ξεκινήσετε ένα κεφάλαιο"
 
-#: root/src/include/bbform.tt:664
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
@@ -2303,7 +1796,6 @@ msgstr ""
 "δίπλα.\n"
 "        Αυτό δεν προορίζεται για αναδίπλωση."
 
-#: root/src/include/bbform.tt:553
 msgid ""
 "Pages are reordered, in one or more groups\n"
 "        (signatures), then folded in half. If you have more\n"
@@ -2323,91 +1815,69 @@ msgstr ""
 "μέγεθος για τη\n"
 "        μείωση του αριθμού των κενών σελίδων."
 
-#: root/src/include/bbform.tt:870
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
 msgstr ""
 "Πάχος χαρτιού (0,10 θα πρέπει να είναι κατάλληλο για κοινό χαρτί 80g/m2)"
 
-#: root/src/edit/edit.tt:363 root/src/edit/edit.tt:409
 msgid "Paragraphs"
 msgstr "Παράγραφοι"
 
-#: root/src/include/edit_node.tt:12 root/src/nodes/node_root.tt:42
 msgid "Parent node"
 msgstr "Γονικός κόμβος"
 
-#: root/src/edit/edit.tt:390
 msgid "Part"
 msgstr "Μέρος"
 
-#: root/src/include/bbform.tt:496
 msgid "Part and chapter. If one side document: part."
 msgstr "Μέρος και κεφάλαιο. Εάν το έγγραφο είναι μιας πλευράς: μέρος."
 
-#: root/src/include/preamble.tt:43
 msgid "Part of"
 msgstr "Μέρος από"
 
-#: root/src/include/markitup.tt:17
 msgid "Part, for larger books only"
 msgstr "Μέρος, μόνο για μεγαλύτερα βιβλία"
 
-#: root/src/bookbuilder/index.tt:20
 msgid "Partial selection"
 msgstr "Μερική επιλογή"
 
-#: root/src/user/login.tt:16 root/src/user/login.tt:18
 msgid "Password"
 msgstr "Κωδικός πρόσβασης"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:95
 msgid "Password too short"
 msgstr "Πολύ μικρός κωδικός πρόσβασης"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:263
 msgid "Password updated"
 msgstr "Ο κωδικός πρόσβασης ενημερώθηκε"
 
-#: root/src/admin/show_user_details.tt:12 root/src/user/create.tt:20
-#: root/src/user/edit.tt:11 root/src/user/reset_password_confirm.tt:12
 msgid "Password, minimum 8 characters."
 msgstr "Κωδικός πρόσβασης, τουλάχιστον 8 χαρακτήρες."
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:100
 msgid "Passwords do not match"
 msgstr "Οι κωδικοί πρόσβασης δεν ταιριάζουν"
 
-#: root/src/admin/jobs.tt:52
 msgid "Payload"
 msgstr "Payload"
 
-#: lib/AmuseWikiFarm/Controller/Publish.pm:71 root/src/layout.tt:414
 msgid "Pending revisions"
 msgstr "Εκκρεµείς διορθώσεις"
 
-#: root/src/include/markitup.tt:54
 msgid "Picture"
 msgstr "Εικόνα"
 
-#: root/src/edit/edit.tt:650
 msgid "Place it in the body with a description:"
 msgstr "Τοποθετήστε το στο σώμα με μια περιγραφή:"
 
-#: root/src/edit/edit.tt:647
 msgid "Place it in the body without description:"
 msgstr "Τοποθετήστε το στο σώμα χωρίς περιγραφή:"
 
-#: root/src/include/bbform.tt:389
 msgid "Place the notes on the back of the first page, impressum-style"
 msgstr ""
 "Τοποθετήστε τις σημειώσεις στο πίσω μέρος της πρώτης σελίδας, σε στυλ "
 "impressum"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1245
 msgid "Plain PDF"
 msgstr "Απλό PDF"
 
-#: root/src/user/reset_password.tt:5
 msgid ""
 "Please check your inbox, we tried to deliver a mail to the address you "
 "specified with a password reset link"
@@ -2416,40 +1886,30 @@ msgstr ""
 "ηλεκτρονικού ταχυδρομείου στη διεύθυνση που δηλώσατε με έναν σύνδεσμο "
 "επαναφοράς κωδικού πρόσβασης"
 
-#: root/src/include/bbform.tt:151
 msgid "Please choose the Beamer color theme"
 msgstr "Επιλέξτε το θέμα χρώματος Beamer"
 
-#: root/src/include/bbform.tt:134
 msgid "Please choose the Beamer theme"
 msgstr "Επιλέξτε το θέμα Beamer"
 
-#: root/src/include/bbform.tt:98
 msgid "Please choose the font size"
 msgstr "Επιλέξτε το μέγεθος της γραμματοσειράς"
 
-#: root/src/include/bbform.tt:46
 msgid "Please choose the main font"
 msgstr "Επιλέξτε την κύρια γραμματοσειρά"
 
-#: root/src/include/bbform.tt:81
 msgid "Please choose the mono font"
 msgstr "Επιλέξτε τη γραμματοσειρά mono"
 
-#: root/src/include/bbform.tt:63
 msgid "Please choose the sans font"
 msgstr "Επιλέξτε τη γραμματοσειρά sans"
 
-#: root/src/edit/edit.tt:303
 msgid "Please describe shortly what you did"
 msgstr "Περιγράψτε σύντομα τι κάνατε"
 
-#: root/src/admin/show_user_details.tt:13 root/src/user/create.tt:21
-#: root/src/user/edit.tt:12 root/src/user/reset_password_confirm.tt:13
 msgid "Please do not use a valuable password."
 msgstr "Μην χρησιμοποιείτε πολύτιμο κωδικό πρόσβασης."
 
-#: root/src/edit/edit.tt:406
 msgid ""
 "Please do not use higher levels (part or chapter) for short articles with "
 "sections."
@@ -2458,12 +1918,10 @@ msgstr ""
 "με ενότητες."
 
 #. (amw_group_name)
-#: root/src/console/git_display.tt:110
 msgid "Please ensure that your system user is member of the \"%1\" group"
 msgstr ""
 "Βεβαιωθείτε ότι ο/η χρήστης του συστήματός σας είναι μέλος της ομάδας \"%1\""
 
-#: root/src/edit/edit.tt:326
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
 "        Just a fancy name, so we can know that multiple uploads come\n"
@@ -2475,13 +1933,11 @@ msgstr ""
 "μεταφορτώσεις έρχονται\n"
 "        από το ίδιο άτομο."
 
-#: root/src/console/git_display.tt:120
 msgid ""
 "Please initialized it empty, without any README,license, .gitignore or "
 "similar."
 msgstr ""
 
-#: root/src/edit/edit.tt:221
 msgid ""
 "Please keep in mind that filters are language-specific\n"
 "              and may or may not be available for the language of the\n"
@@ -2494,7 +1950,6 @@ msgstr ""
 "              κειμένου. Εάν δεν είναι διαθέσιμα, θα αφήσουν το κείμενο όπως\n"
 "              είναι."
 
-#: root/src/publish/pending.tt:121
 msgid ""
 "Please keep in mind that if you see “Force publishing”\n"
 "    as action, it means that the revision has been superseded by\n"
@@ -2508,19 +1963,16 @@ msgstr ""
 "    προηγούμενη. Προσπάθησε να το αποφύγεις αυτό, εκτός κι αν ξέρεις τι\n"
 "    κάνεις."
 
-#: root/src/edit/edit.tt:312
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 "Παρακαλώ αφήστε ένα μήνυμα αν θέλετε να επικοινωνήσουμε μαζί σας σχετικά με "
 "αυτή την αλλαγή"
 
-#: root/src/edit/edit.tt:427 root/src/edit/edit.tt:565
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
 "Λάβετε υπόψη ότι οι ετικέτες περιτύλιξης πρέπει να τοποθετούνται σε μια "
 "γραμμή μόνες τους."
 
-#: root/src/edit/newtext.tt:171
 msgid ""
 "Please note that you may want to paste from a\n"
 "        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
@@ -2531,7 +1983,6 @@ msgstr ""
 "\"επικόλληση\".\n"
 "        από το word\". Αυτό υποτίθεται ότι διατηρεί τη σήμανση."
 
-#: root/src/help/faq.tt:97
 msgid ""
 "Please note: without any prefix, protocol or hostname, just\n"
 "  the bare page name as shown above. External redirecting is not\n"
@@ -2543,20 +1994,15 @@ msgstr ""
 "δεν\n"
 "  υποστηρίζεται."
 
-#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:263
-#: root/src/user/human.tt:5
 msgid "Please prove you are a human"
 msgstr "Απόδειξε ότι είσαι άνθρωπος"
 
-#: root/src/tasks/display.tt:45
 msgid "Please reload your page"
 msgstr "Επαναφόρτωσε τη σελίδα σου"
 
-#: root/static/js/amw-batch-upload.js:123
 msgid "Please remove this file from the body first"
 msgstr "Αφαίρεσε πρώτα αυτό το αρχείο από το σώμα"
 
-#: root/src/console/git_display.tt:135
 msgid ""
 "Please replace the example URL in the next line with the real one with SSH "
 "protocol"
@@ -2564,20 +2010,15 @@ msgstr ""
 "Αντικαταστήστε τη διεύθυνση URL του παραδείγματος στην επόμενη γραμμή με την "
 "πραγματική με πρωτόκολλο SSH"
 
-#: root/src/console/alias_display.tt:37 root/src/console/alias_display.tt:46
-#: root/src/console/alias_display.tt:69 root/src/console/alias_display.tt:78
 msgid "Please select"
 msgstr "Επίλεξε"
 
-#: root/src/include/bbform.tt:32
 msgid "Please select the desired fonts"
 msgstr "Επίλεξε τις επιθυμητές γραμματοσειρές"
 
-#: root/src/include/bbform.tt:588 root/src/include/bbform.tt:635
 msgid "Please select the signature size:"
 msgstr "Επίλεξε το μέγεθος της υπογραφής:"
 
-#: root/src/include/bbform.tt:804
 msgid ""
 "Please select the size of each page including the crop marks, before the "
 "imposing"
@@ -2585,7 +2026,6 @@ msgstr ""
 "Επίλεξε το μέγεθος κάθε σελίδας, συμπεριλαμβανομένων των σημείων περικοπής, "
 "πριν από την διαμόρφωση"
 
-#: root/src/edit/newtext.tt:13
 msgid ""
 "Please set the URI you desire. Author (if present),\n"
 "        title and eventually a number if the URI already exists is\n"
@@ -2595,27 +2035,21 @@ msgstr ""
 "        τίτλος και τελικά ένας αριθμός εάν το URI υπάρχει ήδη είναι\n"
 "        συνήθως μια καλή επιλογή"
 
-#: root/src/include/bbform.tt:122
 msgid "Please setup the Beamer layout"
 msgstr "Ρύθμισε τη διάταξη Beamer"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:142
 msgid "Please upload your file again!"
 msgstr "Παρακαλούμε ανεβάστε ξανά το αρχείο σας!"
 
-#: root/src/edit/edit.tt:373
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Ποίηση, βιβλιογραφίες, θεατρικά έργα, μπλοκ κωδικών"
 
-#: root/src/console/alias_display.tt:44 root/src/console/alias_display.tt:76
 msgid "Pointing to"
 msgstr "Δείχνοντας προς"
 
-#: lib/AmuseWikiFarm/Controller/Stats.pm:65
 msgid "Popular texts"
 msgstr "Δημοφιλή κείμενα"
 
-#: root/src/edit/edit.tt:624
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
@@ -2624,79 +2058,57 @@ msgstr ""
 "\", \"A.\",\n"
 "        \"i.\", \"I.\", ανάλογα με τον τύπο της λίστας που χρειάζεστε."
 
-#: mkits/commit/body.txt:20 root/src/admin/edit.tt:770
-#: root/src/edit/edit.tt:137 root/src/edit/edit.tt:40
-#: root/src/edit/preview.tt:3
 msgid "Preview"
 msgstr "Προεπισκόπηση"
 
-#: root/src/include/editing-options.tt:5
 msgid "Preview box height in pixel"
 msgstr "Ύψος πλαισίου προεπισκόπησης σε pixel"
 
-#: root/src/static-indexes.tt:178 root/src/text.tt:204
 msgid "Previous"
 msgstr "Προηγούμενο"
 
-#: root/src/admin/jobs.tt:67 root/src/settings/categories.tt:11
-#: root/src/settings/formats.tt:13
 msgid "Priority"
 msgstr "Προτεραιότητα"
 
-#: root/src/admin/edit.tt:199
 msgid "Private"
 msgstr "Ιδιωτικό"
 
-#: root/src/help/opds.tt:56
 msgid "Procedure"
 msgstr "Διαδικασία"
 
-#: root/src/static-indexes.tt:171
 msgid "Processing"
 msgstr "Σε επεξεργασία"
 
-#: root/src/edit/newtext.tt:161
 msgid "Produce slides."
 msgstr "Δημιουργία διαφανειών."
 
-#: root/src/admin/jobs.tt:70
 msgid "Produced"
 msgstr "Δημιουργημένο"
 
-#: mkits/publish/body.txt:3 root/src/console/unpublished.tt:13
-#: root/src/include/preamble.tt:65 root/src/include/preamble.tt:7
-#: root/src/static-indexes.tt:75
 msgid "Publication date"
 msgstr "Ημερομηνία δημοσίευσης"
 
-#: root/src/edit/newtext.tt:261
 msgid "Publication date on this site"
 msgstr "Ημερομηνία δημοσίευσης σε αυτόν τον ιστότοπο"
 
-#: root/src/publish/pending.tt:52
 msgid "Publish"
 msgstr "Δημοσίευση"
 
-#: root/src/edit/edit.tt:708
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Δημοσιεύθηκε στο *Ένα ωραίο βιβλίο*, εκδόσεις Σπιτάκι Μου, 2014"
 
-#: root/src/include/preamble.tt:105
 msgid "Publisher"
 msgstr "Εκδότης"
 
-#: root/src/console/unpublished.tt:14 root/src/console/unpublished.tt:46
 msgid "Purge"
 msgstr "Εκκαθάριση"
 
-#: root/src/help/faq.tt:69
 msgid ""
 "Purging means removing it completely from the archive, not just hiding it."
 msgstr ""
 "Η εκκαθάριση σημαίνει την πλήρη αφαίρεσή του από το αρχείο, όχι απλώς την "
 "απόκρυψή του."
 
-#: root/src/edit/newtext.tt:207
 msgid ""
 "Put additional information here (original\n"
 "\t  title, translators, credits, etc). Footnotes go in the\n"
@@ -2706,49 +2118,38 @@ msgstr ""
 "\t  τίτλος, μεταφραστές, τίτλοι κ.λπ.). Οι υποσημειώσεις μπαίνουν στο\n"
 "\t  σώμα του κειμένου."
 
-#: root/src/admin/edit.tt:7
 msgid "Quarter Letter paper"
 msgstr "Χαρτί Quarter Letter"
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:96
 msgid "Queue"
 msgstr "Ουρά"
 
-#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:1064
 msgid "Quota exceeded, too many pages"
 msgstr "Υπέρβαση ορίου, πάρα πολλές σελίδες"
 
-#: root/src/include/markitup.tt:96
 msgid "Quotes"
 msgstr "Αποσπάσματα"
 
-#: root/src/admin/edit.tt:1155
 msgid "RSS aggregator"
 msgstr "Συλλέκτης RSS"
 
-#: root/src/layout.tt:582 root/src/layout.tt:585 root/src/layout.tt:716
 msgid "RSS feed"
 msgstr "Ροή RSS"
 
-#: root/src/layout.tt:590 root/src/layout.tt:593 root/src/layout.tt:712
 msgid "Random"
 msgstr "Τυχαίο"
 
-#: root/src/console/git_display.tt:160
 msgid "Read about the file naming scheme if you need to add files to the tree."
 msgstr ""
 "Διαβάστε σχετικά με το σύστημα ονοματοδοσίας αρχείων αν χρειαστεί να "
 "προσθέσετε αρχεία στο δέντρο."
 
-#: root/src/include/posts.tt:65
 msgid "Read the whole text..."
 msgstr "Διάβασε ολόκληρο το κείμενο..."
 
-#: lib/AmuseWikiFarm/Controller/Help.pm:45 root/src/layout.tt:302
 msgid "Real time help"
 msgstr "Βοήθεια σε πραγματικό χρόνο"
 
-#: root/src/edit/edit.tt:286
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
 "              considering only the order in which they were inserted.\n"
@@ -2773,530 +2174,384 @@ msgstr ""
 "αγνοήσει\n"
 "              την αλλαγή εάν λείπουν υποσημειώσεις ή είναι πάρα πολλές."
 
-#: root/src/console/unpublished.tt:12 root/src/edit/edit.tt:738
 msgid "Reason"
 msgstr "Αιτιολογία"
 
-#: root/src/help/faq.tt:52
 msgid "Reason for deletion"
 msgstr "Λόγος διαγραφής"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4355 root/src/tasks/rebuild.tt:26
 msgid "Rebuild"
 msgstr "Ανακατασκευή"
 
-#: root/src/layout.tt:495
 msgid "Rebuild all generated files"
 msgstr "Επαναδημιουργία όλων των παραγόμενων αρχείων"
 
-#: root/src/include/preamble.tt:204 root/src/include/preamble.tt:205
 msgid "Rebuild the generated formats"
 msgstr "Επαναδημιουργία των παραγόμενων μορφοτύπων"
 
-#: root/src/tasks/show_bulk_job.tt:5
 msgid "Rebuilding"
 msgstr "Ανακατασκευή"
 
-#: root/src/edit/diff.tt:54
 msgid "Recheck"
 msgstr "Επανέλεγχος"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:211
-#: root/src/console/alias_display.tt:3 root/src/layout.tt:463
 msgid "Redirections"
 msgstr "Επανακατευθύνσεις"
 
-#: root/src/edit/edit.tt:137
 msgid "Refresh and apply filters"
 msgstr "Ανανέωση και εφαρμογή φίλτρων"
 
-#: root/src/layout.tt:334 root/src/layout.tt:338
 msgid "Related projects"
 msgstr "Σχετικά έργα"
 
 #. ("$name $url")
-#: lib/AmuseWikiFarm/Controller/Console.pm:85
 msgid "Remote repository %1 added"
 msgstr "Προστέθηκε το απομακρυσμένο αποθετήριο %1"
 
 #. ($name)
-#: lib/AmuseWikiFarm/Controller/Console.pm:99
 msgid "Remote repository %1 removed"
 msgstr "Απομακρυσμένο αποθετήριο %1 αφαιρέθηκε"
 
-#: root/src/console/git_display.tt:19 root/static/js/amw-batch-upload.js:123
 msgid "Remove"
 msgstr "Αφαίρεση"
 
-#: root/src/bookbuilder/index.tt:177
 msgid "Remove cover image"
 msgstr "Αφαίρεση εικόνας εξωφύλλου"
 
-#: root/src/category-details.tt:20
 msgid "Remove this category"
 msgstr "Αφαίρεση αυτής της κατηγορίας"
 
-#: root/src/bookbuilder/index.tt:282
 msgid "Rename to"
 msgstr "Μετονομασία σε"
 
-#: root/src/user/create.tt:45 root/src/user/edit.tt:33
 msgid "Repeat email"
 msgstr "Επανάληψη email"
 
-#: root/src/admin/show_user_details.tt:20 root/src/user/create.tt:29
-#: root/src/user/edit.tt:19 root/src/user/reset_password_confirm.tt:23
 msgid "Repeat password"
 msgstr "Επανάληψη κωδικού πρόσβασης"
 
-#: lib/AmuseWikiFarm/Controller/API.pm:57
 msgid "Request failed! Please report the the problem"
 msgstr "Το αίτημα απέτυχε! Αναφέρετε το πρόβλημα"
 
-#: root/src/admin/jobs.tt:79
 msgid "Reschedule"
 msgstr "Επαναπρογραμματισμός"
 
-#: root/src/bookbuilder/index.tt:68
 msgid "Reset all"
 msgstr "Επαναφορά όλων"
 
-#: root/src/search/index.tt:110 root/src/search/index.tt:84
 msgid "Reset filters"
 msgstr "Επαναφορά φίλτρων"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:80 root/src/user/reset_password.tt:15
 msgid "Reset password"
 msgstr "Επαναφορά κωδικού πρόσβασης"
 
 #. (username)
-#: root/src/user/reset_password_confirm.tt:3
 msgid "Reset password for user %1"
 msgstr "Επαναφορά κωδικού πρόσβασης για τον χρήστη %1"
 
-#: root/src/settings/edit_format.tt:41
 msgid "Reset to site defaults"
 msgstr "Επαναφορά στις προεπιλογές της τοποθεσίας"
 
-#: mkits/resetpassword/manifest.json:7
 msgid "Reset your password"
 msgstr "Επαναφέρετε τον κωδικό πρόσβασής σας"
 
-#: root/src/admin/edit.tt:36
 msgid "Restricted configuration variables"
 msgstr "Περιορισμένες μεταβλητές διαμόρφωσης"
 
-#: root/src/admin/edit.tt:105
 msgid "Restricted format options"
 msgstr "Περιορισμένες επιλογές μορφής"
 
-#: root/src/include/pagination-widget.tt:18
 msgid "Results per page:"
 msgstr "Αποτελέσματα ανά σελίδα:"
 
-#: root/src/edit/newtext.tt:127
 msgid "Retrieved on DATE from URL"
 msgstr "Ανακτήθηκε στις ΗΜΕΡΟΜΗΝΙΑ από URL"
 
-#: root/src/edit/edit.tt:713
 msgid "Retrieved on March 8, 2012 from"
 msgstr "Ανακτήθηκε στις 8 Μαρτίου 2012 από"
 
-#: root/src/publish/pending.tt:14
 msgid "Revision"
 msgstr "Διόρθωση"
 
 #. ($uri)
-#: lib/AmuseWikiFarm/Controller/Publish.pm:156
 msgid "Revision for %1 has been deleted"
 msgstr "Η διόρθωση για το %1 έχει διαγραφεί"
 
-#: root/src/admin/show_user_details.tt:42 root/src/admin/show_users.tt:12
-#: root/src/siteadmin/show_users.tt:12
 msgid "Roles"
 msgstr "Ρόλοι"
 
-#: root/src/include/edit_node.tt:15 root/src/nodes/node_root.tt:45
 msgid "Root node"
 msgstr "Ριζικός κόμβος"
 
-#: root/src/include/bbform.tt:490
 msgid "Running headings"
 msgstr "Τρέχουσες επικεφαλίδες"
 
-#: root/src/admin/edit.tt:1282
 msgid "SSL CA certificate path (Apache)"
 msgstr "Διαδρομή πιστοποιητικού SSL CA (Apache)"
 
-#: root/src/admin/edit.tt:1268
 msgid "SSL certificate path (Apache)"
 msgstr "Διαδρομή πιστοποιητικού SSL (Apache)"
 
-#: root/src/admin/edit.tt:1254
 msgid "SSL chained certificate path (Nginx)"
 msgstr "Διαδρομή αλυσιδωτού πιστοποιητικού SSL (Nginx)"
 
-#: root/src/admin/edit.tt:1196
 msgid "SSL configuration"
 msgstr "Ρύθμιση SSL"
 
-#: root/src/admin/edit.tt:1240
 msgid "SSL key path"
 msgstr "Διαδρομή κλειδιού SSL"
 
-#: root/src/include/bbform.tt:568
 msgid "Same as above, but for duplex printers"
 msgstr "Όπως παραπάνω, αλλά για εκτυπωτές διπλής όψης"
 
-#: root/src/admin/edit.tt:603
 msgid "Same as above, for the Archive menu"
 msgstr "Το ίδιο όπως παραπάνω, για το μενού Αρχείο"
 
-#: root/src/admin/edit.tt:591
 msgid "Same as above, for the Related Projects menu"
 msgstr "Το ίδιο όπως παραπάνω, για το μενού Σχετικά έργα"
 
-#: root/src/admin/edit.tt:900 root/src/edit/edit.tt:511
-#: root/src/edit/edit.tt:513
 msgid "Sans font"
 msgstr "Γραμματοσειρά Sans"
 
-#: root/src/edit/edit.tt:336
 msgid "Save"
 msgstr "Αποθήκευση"
 
-#: root/src/bookbuilder/index.tt:336
 msgid "Save the current settings with a name"
 msgstr "Αποθήκευση των τρεχουσών ρυθμίσεων με ένα όνομα"
 
 #. ($pname)
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:268
 msgid "Saved \"%1\" configuration"
 msgstr "Αποθηκευμένη διαμόρφωση \"%1\""
 
-#: lib/AmuseWikiFarm/Controller/Search.pm:101
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4521 root/src/admin/edit.tt:646
-#: root/src/layout.tt:195 root/src/layout.tt:196 root/src/layout.tt:200
-#: root/src/search/index.tt:24 root/src/search/index.tt:9
-#: root/src/static-indexes.tt:172
 msgid "Search"
 msgstr "Αναζήτηση"
 
-#: root/src/search/index.tt:51
 msgid "Search filters"
 msgstr "Φίλτρα αναζήτησης"
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:159
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:171 root/src/search/index.tt:120
 msgid "Search results"
 msgstr "Αποτελέσματα αναζήτησης"
 
-#: root/src/admin/jobs.tt:85 root/src/admin/jobs.tt:86
-#: root/src/admin/jobs.tt:87 root/src/admin/jobs.tt:88
-#: root/src/admin/jobs.tt:93 root/src/admin/jobs.tt:94
 msgid "Search this column"
 msgstr "Αναζήτηση σε αυτή τη στήλη"
 
-#: root/src/edit/edit.tt:370 root/src/edit/edit.tt:536
 msgid "Secondary footnotes"
 msgstr "Δευτερεύουσες υποσημειώσεις"
 
-#: root/src/edit/edit.tt:396 root/src/edit/edit.tt:790
-#: root/src/edit/edit.tt:794 root/src/library/bbselect.tt:48
 msgid "Section"
 msgstr "Ενότητα"
 
-#: root/src/include/bbform.tt:500
 msgid "Section and subsection. If one side document: section."
 msgstr "Ενότητα και υποενότητα. Εάν το έγγραφο της μίας πλευράς: ενότητα."
 
-#: root/src/include/bbform.tt:747 root/src/include/bbform.tt:766
 msgid "See here for more details."
 msgstr "Δες εδώ για περισσότερες λεπτομέρειες."
 
-#: root/src/console/git_display.tt:159
 msgid "See here for the full documentation."
 msgstr "Δες εδώ τις πλήρεις οδηγίες."
 
-#: root/src/edit/edit.tt:804
 msgid "See the full manual for more details (english)"
 msgstr "Δείτε το πλήρες εγχειρίδιο για περισσότερες λεπτομέρειες (αγγλικά)"
 
-#: root/src/library/bbselect.tt:49
 msgid "Select"
 msgstr "Επιλογή"
 
-#: root/src/library/bbselect.tt:29
 msgid "Select all"
 msgstr "Επιλογή όλων"
 
-#: root/src/admin/jobs.tt:108
 msgid "Select all for deletion"
 msgstr "Επιλογή όλων για διαγραφή"
 
-#: root/src/admin/jobs.tt:109
 msgid "Select all for rescheduling"
 msgstr "Επιλογή όλων για επαναπρογραμματισμό"
 
-#: root/src/include/preamble.tt:194 root/src/include/preamble.tt:196
 msgid "Select individual parts for the bookbuilder"
 msgstr "Επιλογή μεμονωμένων τμημάτων για το βιβλιοχτίστη"
 
-#: root/src/admin/list.tt:114
 msgid "Send mail"
 msgstr "Αποστολή email"
 
 #. ($from, $to)
-#: lib/AmuseWikiFarm/Controller/Admin.pm:333
 msgid "Sending test mails from %1 to %2"
 msgstr "Αποστολή δοκιμαστικών email από %1 σε %2"
 
-#: root/src/edit/edit.tt:668
 msgid "Separate body fields"
 msgstr "Ξεχωριστά πεδία σώματος"
 
-#: root/src/edit/edit.tt:666
 msgid "Separate footer fields"
 msgstr "Ξεχωριστά πεδία υποσέλιδου"
 
-#: root/src/edit/edit.tt:667
 msgid "Separate header fields"
 msgstr "Ξεχωριστά πεδία επικεφαλίδων"
 
-#: root/src/include/preamble.tt:114
 msgid "Series"
 msgstr "Σειρά"
 
-#: root/src/bookbuilder/index.tt:400
 msgid "Session sharing"
 msgstr "Κοινή χρήση εισόδου"
 
-#: root/src/edit/newtext.tt:268
 msgid "Set a date in the future if you want it deferred."
 msgstr "Ορίστε μια ημερομηνία στο μέλλον αν θέλετε να μετατεθεί."
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:364
 msgid "Settings loaded"
 msgstr "Οι ρυθμίσεις φορτώθηκαν"
 
-#: root/src/console/git_display.tt:129 root/src/console/git_display.tt:95
 msgid "Setup"
 msgstr "Εγκατάσταση"
 
-#: root/src/static-indexes.tt:169
 msgid "Show _MENU_ entries"
 msgstr ""
 
-#: root/src/include/editing-options.tt:63
 msgid "Show cheatsheet"
 msgstr "Εμφάνιση σκονακιού"
 
-#: root/src/edit/edit.tt:46 root/src/edit/revs.tt:50
-#: root/src/publish/pending.tt:95
 msgid "Show differences in other tab"
 msgstr "Εμφάνιση διαφορών σε άλλη καρτέλα"
 
-#: root/src/include/editing-options.tt:54
 msgid "Show filters"
 msgstr "Εμφάνιση φίλτρων"
 
-#: root/src/edit/edit.tt:42
 msgid "Show preview in other tab"
 msgstr "Εμφάνιση προεπισκόπησης σε άλλη καρτέλα"
 
-#: root/src/admin/edit.tt:290
 msgid "Show text type and number of pages in the listing"
 msgstr "Εμφάνιση τύπου κειμένου και αριθμού σελίδων στην καταχώριση"
 
-#: root/src/admin/edit.tt:230
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Εμφάνιση του infobox κειμένου στο κάτω μέρος των κειμένων"
 
-#: root/src/static-indexes.tt:165
 msgid "Showing 0 to 0 of 0 entries"
 msgstr "Προβολή 0 έως 0 από 0 καταχωρήσεις"
 
-#: root/src/static-indexes.tt:164
 msgid "Showing _START_ to _END_ of _TOTAL_ entries"
 msgstr ""
 
-#: root/src/edit/edit.tt:668
 msgid "Single bars"
 msgstr "Μονές μπάρες"
 
-#: lib/AmuseWikiFarm/Controller/Nodes.pm:30 root/src/nodes/node_root.tt:5
 msgid "Site Map"
 msgstr "Χάρτης Ιστοσελίδας"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:102
 msgid "Site already exists"
 msgstr "Ο ιστότοπος υπάρχει ήδη"
 
-#: root/src/admin/edit.tt:78 root/src/admin/list.tt:14
 msgid "Site group"
 msgstr "Ομάδα τοποθεσίας"
 
-#: root/src/admin/jobs.tt:46
 msgid "Site id"
 msgstr "Id ιστότοπου"
 
-#: root/src/admin/edit.tt:458
 msgid "Site mail (From field)"
 msgstr "Email ιστοτόπου"
 
-#: root/src/admin/edit.tt:193
 msgid "Site mode"
 msgstr "Λειτουργία ιστότοπου"
 
-#: root/src/admin/edit.tt:183
 msgid "Site name"
 msgstr "Όνομα ιστοτόπου"
 
-#: root/src/admin/edit.tt:436
 msgid "Site slogan"
 msgstr "Σλόγκαν της ιστοσελίδας"
 
-#: lib/AmuseWikiFarm/Controller/SiteAdmin.pm:57 root/src/layout.tt:519
-#: root/src/siteadmin/show_users.tt:1
 msgid "Site users"
 msgstr "Χρήστες της ιστοσελίδας"
 
-#: root/src/admin/show_user_details.tt:54 root/src/admin/show_users.tt:13
-#: root/src/layout.tt:534
 msgid "Sites"
 msgstr "Ιστοσελίδες"
 
-#: root/src/include/bbform.tt:17
 msgid "Slides"
 msgstr "Σλάιντς"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1290
 msgid "Slides (PDF)"
 msgstr "Σλάιντς (PDF)"
 
-#: root/src/edit/edit.tt:507 root/src/edit/edit.tt:508
 msgid "Small Caps"
 msgstr ""
 
-#: root/src/user/create.tt:47
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
 "Έτσι μπορούμε να είμαστε σίγουροι ότι δεν στέλνουμε κωδικούς πρόσβασης σε "
 "τυχαία άτομα"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:180
 msgid "Some fields are missing, all are required"
 msgstr "Ορισμένα πεδία λείπουν, όλα είναι υποχρεωτικά"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:58
 msgid "Some fields are too long"
 msgstr "Ορισμένα πεδία είναι πολύ μεγάλα"
 
-#: root/src/edit/revs.tt:9
 msgid "Some ongoing revisions were found"
 msgstr "Διαπιστώθηκαν ορισμένες τρέχουσες διορθώσεις"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:89
-#: lib/AmuseWikiFarm/Controller/Publish.pm:125
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 "Συγγνώμη, εκκρεμούν πάρα πολλές εργασίες, παρακαλούμε προσπαθήστε ξανά "
 "αργότερα!"
 
-#: root/src/include/edit_node.tt:28 root/src/include/pagination-widget.tt:7
-#: root/src/search/index.tt:54
 msgid "Sorting:"
 msgstr "Ταξινόμηση:"
 
-#: root/src/bookbuilder/index.tt:145 root/src/edit/newtext.tt:120
-#: root/src/edit/preview.tt:46 root/src/include/preamble.tt:78
 msgid "Source"
 msgstr "Πηγή"
 
-#: root/src/tasks/display.tt:26 root/src/tasks/display.tt:53
 msgid "Source files"
 msgstr "Αρχεία πηγής"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1129
 msgid "Source files with attachments"
 msgstr "Αρχεία πηγής με συνημμένα"
 
-#: root/src/library/bbselect.tt:60
 msgid "Source, notes..."
 msgstr "Πηγές, σημειώσεις..."
 
-#: root/src/tasks/display.tt:82 root/src/tasks/display.tt:98
 msgid "Sources"
 msgstr "Πηγές"
 
-#: root/src/edit/edit.tt:549
 msgid "Special blocks"
 msgstr "Ειδικά μπλοκ"
 
-#: lib/AmuseWikiFarm/Controller/Special.pm:26
 msgid "Special pages"
 msgstr "Ειδικές σελίδες"
 
-#: root/src/admin/edit.tt:569
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr ""
 "Καθορίστε μια λίστα γλωσσών που διαχωρίζεται με κενό διάστημα για να την "
 "ενεργοποιήσετε."
 
-#: root/src/publish/pending.tt:71
 msgid "Stale editing"
 msgstr "Παρωχημένη επεξεργασία"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1105
 msgid "Standalone HTML (printer-friendly)"
 msgstr "Standalone HTML (φιλικό προς εκτυπωτές)"
 
-#: root/src/include/bbform.tt:201 root/src/include/bbform.tt:221
-#: root/src/include/bbform.tt:268 root/src/include/bbform.tt:290
-#: root/src/include/bbform.tt:837 root/src/include/bbform.tt:858
 msgid "Standard"
 msgstr "Standard"
 
-#: root/src/include/bbform.tt:424
 msgid "Start the document with an empty page"
 msgstr "Ξεκινήστε το έγγραφο με μια κενή σελίδα"
 
-#: root/src/admin/jobs.tt:61 root/src/include/bulk_job.tt:13
 msgid "Started"
 msgstr "Ξεκίνησε"
 
-#: root/src/tasks/display.tt:111
 msgid "Static page without javascript"
 msgstr "Στατική σελίδα χωρίς javascript"
 
-#: root/src/admin/jobs.tt:55 root/src/console/unpublished.tt:11
-#: root/src/tasks/display.tt:10 root/src/tasks/display.tt:45
-#: root/src/tasks/display.tt:68
 msgid "Status"
 msgstr "Κατάσταση"
 
-#: mkits/publish/body.txt:4
 msgid "Status changed"
 msgstr "Η κατάσταση άλλαξε"
 
-#: root/src/edit/edit.tt:399
 msgid "Subsection"
 msgstr "Υποενότητα"
 
-#: root/src/edit/edit.tt:402
 msgid "Subsubsection or description item"
 msgstr "Υποενότητα ή αντικείμενο περιγραφής"
 
-#: root/src/bookbuilder/index.tt:113 root/src/edit/newtext.tt:42
-#: root/src/edit/preview.tt:18 root/src/include/preamble.tt:24
 msgid "Subtitle"
 msgstr "Υπότιτλος"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1618
 msgid "Such an URI already exists"
 msgstr "Ένα τέτοιο URI υπάρχει ήδη"
 
-#: root/src/console/alias_display.tt:18
 msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
@@ -3304,81 +2559,57 @@ msgstr ""
 "Μια τέτοια επικεφαλίδα θα ξεδημοσιεύσει το κείμενο και θα βάλει μία\n"
 "  ανακατεύθυνση στη θέση της, και θα αναφέρεται εδώ"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:187
 msgid "Such an user already exists!"
 msgstr "Ένας τέτοιος χρήστης υπάρχει ήδη!"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:200
 msgid "Such username already exists"
 msgstr "Τέτοιο όνομα χρήστη υπάρχει ήδη"
 
-#: root/src/admin/edit.tt:392
 msgid "Suggested values:"
 msgstr "Προτεινόμενες τιμές:"
 
-#: root/src/edit/edit.tt:360
 msgid "Summary"
 msgstr "Σύνοψη"
 
-#: root/src/edit/edit.tt:382 root/src/edit/edit.tt:671
 msgid "Supported directive in the header"
 msgstr "Υποστηριζόμενη οδηγία στην επικεφαλίδα"
 
-#: root/src/include/show_text_type.tt:4
-#: root/src/include/show_type_and_number_of_pages.tt:27 root/src/layout.tt:211
-#: root/src/layout.tt:214 root/src/text.tt:9
 msgid "Table of Contents"
 msgstr "Πίνακας περιεχομένων"
 
-#: root/src/edit/edit.tt:379 root/src/edit/edit.tt:664
 msgid "Tables"
 msgstr "Πίνακες"
 
-#: root/src/admin/edit.tt:1118
 msgid "Tag cloud with authors"
 msgstr "Σύννεφο ετικετών με συγγραφείς"
 
-#: root/src/admin/edit.tt:1130
 msgid "Tag cloud with topics"
 msgstr "Σύννεφο ετικετών με θέματα"
 
-#: root/src/admin/jobs.tt:49
 msgid "Task"
 msgstr "Εργασία"
 
-#: root/src/include/bbform.tt:321
 msgid "TeX options (advanced)"
 msgstr "Επιλογές TeX (προχωρημένες)"
 
-#: root/src/edit/newtext.tt:220 root/src/edit/preview.tt:60
-#: root/src/edit/preview.tt:65
 msgid "Teaser"
 msgstr "Teaser"
 
-#: root/src/edit/preview.tt:71
 msgid "Teaser image"
 msgstr "Εικόνα Teaser"
 
-#: root/src/edit/edit.tt:616 root/src/edit/edit.tt:617
 msgid "Term"
 msgstr "Όρος"
 
-#: lib/AmuseWikiFarm/Archive/Lexicon.pm:37
 msgid "Test"
 msgstr "Δοκιμή"
 
-#: root/src/help/opds.tt:27
 msgid "Tested applications, in this order of preference"
 msgstr "Δοκιμασμένες εφαρμογές, με αυτή τη σειρά προτίμησης"
 
-#: root/src/edit/edit.tt:434 root/src/edit/edit.tt:439
-#: root/src/edit/edit.tt:442 root/src/edit/edit.tt:447
-#: root/src/edit/edit.tt:450 root/src/edit/edit.tt:455
-#: root/src/utils/import.tt:25
 msgid "Text formatted with markup"
 msgstr "Κείμενο διαμορφωμένο με markup"
 
-#: root/src/console/alias_display.tt:6
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
@@ -3387,11 +2618,9 @@ msgstr ""
 "την εντολή\n"
 "  #DELETED με αυτή τη σύνταξη"
 
-#: root/src/console/translations.tt:12
 msgid "Texts"
 msgstr "Κείμενα"
 
-#: root/src/admin/edit.tt:767
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
@@ -3399,11 +2628,9 @@ msgstr ""
 "Οι επιλογές του Beamer είναι σχετικές μόνο αν ενεργοποιήσετε την\n"
 "  έξοδο διαφανειών."
 
-#: root/src/help/opds.tt:16
 msgid "The OPDS address for this site is:"
 msgstr "Η διεύθυνση του OPDS για αυτόν τον ιστότοπο είναι:"
 
-#: root/src/admin/edit.tt:154
 msgid ""
 "The PDF logo value can be either an absolute path\n"
 "            or just a filename if you choose to install it in the\n"
@@ -3415,37 +2642,30 @@ msgstr ""
 "            TeXlive. Μπορείτε να το κάνετε με τις ακόλουθες εντολές.\n"
 "            Η τελευταία ελέγχει αν το αρχείο μπορεί να βρεθεί."
 
-#: root/src/console/git_display.tt:109
 msgid "The changes will propagate automatically once you push."
 msgstr "Οι αλλαγές θα διαδοθούν αυτόματα μόλις τις προωθήσετε."
 
 #. ($uri)
-#: lib/AmuseWikiFarm/Controller/Attachments.pm:87
 msgid "The description for %1 has been updated"
 msgstr "Η περιγραφή για %1 έχει ενημερωθεί"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:423
 msgid ""
 "The differences between the list of footnotes and references is shown below."
 msgstr ""
 "Οι διαφορές μεταξύ του καταλόγου των υποσημειώσεων και των παραπομπών "
 "παρουσιάζονται παρακάτω."
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1674
 msgid "The file uploaded is not an HTML file!"
 msgstr "Το αρχείο που μεταφορτώθηκε δεν είναι αρχείο HTML!"
 
-#: root/src/admin/edit.tt:761
 msgid "The following settings provide the defaults for each format."
 msgstr "Οι ακόλουθες ρυθμίσεις παρέχουν τις προεπιλογές για κάθε μορφή."
 
-#: root/src/admin/edit.tt:1232
 msgid "The following values are used to generate the webserver configuration."
 msgstr ""
 "Οι ακόλουθες τιμές χρησιμοποιούνται για τη δημιουργία των ρυθμίσεων του "
 "διακομιστή ιστού."
 
-#: root/src/admin/edit.tt:1216
 msgid ""
 "The generate webserver configuration will redirect\n"
 "          all the HTTP requests to HTTPS"
@@ -3453,15 +2673,12 @@ msgstr ""
 "Η ρύθμιση παραμέτρων του webserver θα ανακατευθύνει\n"
 "          όλες τις αιτήσεις HTTP σε HTTPS"
 
-#: root/src/admin/edit.tt:139
 msgid "The logo has the site name on itself"
 msgstr "Το λογότυπο έχει το όνομα του ιστότοπου πάνω του"
 
-#: root/src/edit/edit.tt:697
 msgid "The optional subtitle"
 msgstr "Ο προαιρετικός υπότιτλος"
 
-#: root/src/help/faq.tt:29
 msgid ""
 "The page /special/index is twice special. It is assumed to be the\n"
 "default page to visit when loading the site’s root."
@@ -3470,19 +2687,15 @@ msgstr ""
 "προεπιλεγμένη σελίδα που επισκέπτεστε κατά τη φόρτωση της ρίζας του "
 "ιστότοπου."
 
-#: root/src/user/create.tt:39
 msgid "The password will be mailed at this address"
 msgstr "Ο κωδικός πρόσβασης θα αποσταλεί σε αυτή τη διεύθυνση"
 
-#: mkits/resetpassword/body.txt:9
 msgid "The reset link will expire in a hour."
 msgstr "Ο σύνδεσμος επαναφοράς θα λήξει σε μια ώρα."
 
-#: mkits/commit/body.txt:6
 msgid "The revision has the following messages"
 msgstr "Η διόρθωση έχει τα ακόλουθα μηνύματα"
 
-#: root/src/edit/edit.tt:763
 msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
@@ -3490,19 +2703,15 @@ msgstr ""
 "Ο ιστότοπος θα εμφανίζει τα PDF με μια μικρογραφία στο\n"
 "        στο τέλος του εγγράφου."
 
-#: root/src/library/bbselect.tt:20
 msgid "The text structure is shown below."
 msgstr "Η δομή του κειμένου φαίνεται παρακάτω."
 
-#: root/src/edit/newtext.tt:222
 msgid "The text to show on the homepage preview"
 msgstr "Το κείμενο που θα εμφανίζεται στην προεπισκόπηση της αρχικής σελίδας"
 
-#: root/src/layout.tt:654
 msgid "The text was added to the bookbuilder"
 msgstr "Το κείμενο προστέθηκε στο bookbuilder"
 
-#: root/src/edit/edit.tt:691
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -3516,11 +2725,9 @@ msgstr ""
 "θα \n"
 "          καταχωρηθεί στην κατηγορία Ω (ωραίος), όχι στην κατηγορία Ε (Ένας)."
 
-#: root/src/edit/edit.tt:675
 msgid "The title of the document. The only mandatory directive."
 msgstr "Ο τίτλος του εγγράφου. Η μόνη υποχρεωτική οδηγία."
 
-#: root/src/admin/edit.tt:12
 msgid ""
 "The webserver needs to be reconfigured. Please execute in a root shell the "
 "following commands:"
@@ -3528,37 +2735,29 @@ msgstr ""
 "Ο διακομιστής ιστού πρέπει να ρυθμιστεί εκ νέου. Εκτελέστε από το root shell "
 "τις ακόλουθες εντολές:"
 
-#: root/src/include/bbform.tt:599 root/src/include/bbform.tt:646
 msgid "The whole book in as single signature"
 msgstr "Όλο το βιβλίο σε μία μόνο υπογραφή"
 
-#: root/src/help/faq.tt:62
 msgid "Then approve the change as it would be a normal publishing."
 msgstr ""
 "Στη συνέχεια, εγκρίνετε την αλλαγή όπως θα γινόταν με μια κανονική "
 "δημοσίευση."
 
-#: root/src/console/git_display.tt:153
 msgid "Then fetch the updates from this page."
 msgstr "Στη συνέχεια, λάβετε τις ενημερώσεις από αυτή τη σελίδα."
 
-#: root/src/layout.tt:503
 msgid "There are failed jobs"
 msgstr "Υπάρχουν αποτυχημένες εργασίες"
 
-#: root/src/layout.tt:416
 msgid "There are pending revisions"
 msgstr "Εκκρεμούν διορθώσεις"
 
-#: root/src/console/translations.tt:21
 msgid "These texts are missing the unique id."
 msgstr "Από τα κείμενα αυτά λείπει το μοναδικό αναγνωριστικό."
 
-#: root/src/include/edit_node.tt:83
 msgid "They can be texts, special texts, authors or topics."
 msgstr "Μπορεί να είναι κείμενα, ειδικά κείμενα, συγγραφείς ή θέματα."
 
-#: root/src/admin/edit.tt:1233
 msgid ""
 "They should be paths relative to the webserver configuration root or "
 "absolute paths (recommended)."
@@ -3566,13 +2765,11 @@ msgstr ""
 "Θα πρέπει να είναι διαδρομές σχετικές με τη ρίζα ρυθμίσεων του διακομιστή "
 "ιστού ή απόλυτες διαδρομές (συνιστάται)."
 
-#: root/src/edit/edit.tt:760
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
 "Αυτή η οδηγία θέλει μια λίστα ονομάτων αρχείων διαχωρισμένων με κενό "
 "διάστημα."
 
-#: root/src/edit/newtext.tt:176
 msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
@@ -3583,7 +2780,6 @@ msgstr ""
 "απαιτούμενα πεδία\n"
 "        παραπάνω και αναβάλλετε την επεξεργασία για το επόμενο βήμα."
 
-#: root/src/edit/edit.tt:515
 msgid ""
 "This is relevant only for the generated files, where you may need to have an "
 "alternate set of fonts. It has no effect in the web application if already "
@@ -3593,11 +2789,9 @@ msgstr ""
 "έχετε ένα εναλλακτικό σύνολο γραμματοσειρών. Δεν έχει καμία επίδραση στην "
 "εφαρμογή ιστού, εάν ήδη χρησιμοποιείτε μια γραμματοσειρά sans."
 
-#: root/src/edit/edit.tt:669
 msgid "This is the caption"
 msgstr "Αυτή είναι η λεζάντα"
 
-#: mkits/newtext/body.txt:3
 msgid ""
 "This mail has been sent to notify you about a new text\n"
 "creation, even if the uploading is not completed yet and the user\n"
@@ -3613,27 +2807,21 @@ msgstr ""
 "Εάν αυτό δεν συμβεί, σημαίνει ότι η φόρτωση έχει εγκαταλειφθεί\n"
 "και ίσως να θέλετε να το ελέγξετε."
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:314
 msgid "This revision is already published, ignoring changes"
 msgstr "Αυτή η διόρθωση έχει ήδη δημοσιευθεί, οι αλλαγές θα αγνοηθούν"
 
-#: root/src/edit/revs.tt:37
 msgid "This revision is being actively edited"
 msgstr "Αυτή η δίορθωση βρίσκεται υπό επεξεργασία ενεργά"
 
-#: root/src/edit/revs.tt:35
 msgid "This revision is being actively edited by you"
 msgstr "Αυτή η διόρθωση βρίσκεται υπό επεξεργασία ενεργά από εσάς"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:309
 msgid "This revision is being edited by someone else!"
 msgstr "Αυτή η διόρθωση βρίσκεται υπό επεξεργασία από κάποιο άλλο άτομο!"
 
-#: root/src/edit/edit.tt:798
 msgid "This section will not produce a slide"
 msgstr "Αυτό το τμήμα δεν θα παράγει μια διαφάνεια"
 
-#: root/src/help/opds.tt:50
 msgid ""
 "This site is private and mobile applications should ask for your username "
 "and\n"
@@ -3643,114 +2831,79 @@ msgstr ""
 "ζητούν το όνομα χρήστη σας και\n"
 "  κωδικό πρόσβασης για πρόσβαση στο OPDS."
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:195
 msgid "This text does not exist"
 msgstr "Αυτό το κείμενο δεν υπάρχει"
 
-#: root/src/include/show_text_type.tt:8
-#: root/src/include/show_type_and_number_of_pages.tt:31
-#: root/src/static-indexes.tt:101
 msgid "This text is a book"
 msgstr "Το κείμενο αυτό είναι ένα βιβλίο"
 
-#: root/src/include/show_text_type.tt:10
-#: root/src/include/show_type_and_number_of_pages.tt:33
-#: root/src/static-indexes.tt:103
 msgid "This text is an article"
 msgstr "Το κείμενο αυτό είναι ένα άρθρο"
 
-#: mkits/commit/body.txt:4 root/src/edit/diff.tt:8
 msgid "This text is new"
 msgstr "Το κείμενο αυτό είναι νέο"
 
-#: root/src/text.tt:62
 msgid "This text is not available"
 msgstr "Αυτό το κείμενο δεν είναι διαθέσιμο"
 
-#: root/src/text.tt:75
 msgid "This text is not public yet"
 msgstr "Το κείμενο αυτό δεν είναι ακόμη δημόσιο"
 
-#: root/src/include/preamble.tt:9
 msgid "This text is not published yet"
 msgstr "Το κείμενο αυτό δεν έχει δημοσιευθεί ακόμη"
 
 #. (rev.is_deferred)
-#: root/src/publish/pending.tt:61
 msgid "This text will be deferred to %1"
 msgstr "Αυτό το κείμενο θα αναβληθεί στο %1"
 
-#: lib/AmuseWikiFarm/Controller/SiteAdmin.pm:88
 msgid "This user cannot be removed"
 msgstr "Αυτός ο χρήστης δεν μπορεί να αφαιρεθεί"
 
-#: root/src/attachments/list.tt:21
 msgid "Thumbnail"
 msgstr "Thumbnail"
 
-#: root/src/attachments/edit.tt:17 root/src/attachments/list.tt:15
-#: root/src/bookbuilder/index.tt:103 root/src/console/unpublished.tt:10
-#: root/src/edit/newtext.tt:24 root/src/edit/preview.tt:12
-#: root/src/include/edit_node.tt:52 root/src/include/preamble.tt:17
-#: root/src/static-indexes.tt:69
 msgid "Title"
 msgstr "Τίτλος"
 
-#: root/src/include/bbform.tt:501
 msgid "Title and chapter. If one side document: chapter."
 msgstr "Τίτλος και κεφάλαιο. Εάν το έγγραφο είναι μονόπλευρο: κεφάλαιο."
 
-#: root/src/include/bbform.tt:502
 msgid "Title and section.  If one side document: section."
 msgstr "Τίτλος και τμήμα.  Εάν το έγγραφο είναι μονόπλευρο: τμήμα."
 
-#: root/src/include/bbform.tt:497
 msgid "Title and subtitle. If one side document: title."
 msgstr "Τίτλος και υπότιτλος. Εάν το έγγραφο είναι μονόπλευρο: τίτλος."
 
-#: root/src/edit/newtext.tt:52
 msgid "Title for sorting"
 msgstr "Τίτλος για ταξινόμηση"
 
-#: root/src/library/bbselect.tt:58
 msgid "Title, author, date..."
 msgstr "Τίτλος, συγγραφέας, ημερομηνία..."
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:44
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4494
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4514
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4537 root/src/layout.tt:237
-#: root/src/layout.tt:721
 msgid "Titles"
 msgstr "Τίτλοι"
 
 #. (pending_url)
-#: mkits/commit/body.txt:24
 msgid "To apply the changes, you can visit %1"
 msgstr "Για να εφαρμόσετε τις αλλαγές, μπορείτε να επισκεφθείτε το %1"
 
-#: root/src/edit/edit.tt:89
 msgid "To display the PDFs, set or append the following string in the header"
 msgstr ""
 "Για να εμφανίσετε τα PDF, ορίστε ή προσθέστε την ακόλουθη συμβολοσειρά στην "
 "επικεφαλίδα"
 
-#: root/src/edit/edit.tt:551
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr ""
 "Για να διατηρήσετε τα κενά διαστήματα και τις διαχωριστικές γραμμές, τυλίξτε "
 "τις παραγράφους με"
 
-#: root/src/edit/edit.tt:557
 msgid "To quickly format bibliographies wrap them in"
 msgstr "Για να μορφοποιήσετε γρήγορα τις βιβλιογραφίες τυλίξτε τις σε"
 
-#: root/src/edit/edit.tt:559
 msgid "To quickly format plays, use"
 msgstr "Για να μορφοποιήσετε γρήγορα τις αναπαραγωγές, χρησιμοποιήστε"
 
-#: mkits/commit/body.txt:12
 msgid "To resume the editing you can visit the following URL"
 msgstr ""
 "Για να συνεχίσετε την επεξεργασία μπορείτε να επισκεφθείτε την ακόλουθη "
@@ -3758,7 +2911,6 @@ msgstr ""
 
 #. (loc('Update')
 #. (loc("Update"))
-#: root/src/bookbuilder/index.tt:263
 msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
@@ -3767,40 +2919,29 @@ msgstr ""
 "αποθηκεύσετε\n"
 "    τις επιλογές με το κουμπί \"%1\""
 
-#: mkits/commit/body.txt:16
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr ""
 "Για να δείτε τις αλλαγές που επήλθαν, μπορείτε να επισκεφθείτε την ακόλουθη "
 "διεύθυνση URL"
 
-#: root/src/attachments/edit.tt:24 root/src/category-details-edit.tt:33
-#: root/src/edit/edit.tt:132
 msgid "Toggle fullscreen editor"
 msgstr "Ενεργοποίηση/Απενεργοποίηση επεξεργαστή πλήρους οθόνης"
 
-#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1735
 msgid "Topic"
 msgstr "Θέμα"
 
-#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1735 root/src/edit/edit.tt:701
-#: root/src/edit/newtext.tt:99 root/src/edit/preview.tt:39
-#: root/src/layout.tt:253
 msgid "Topics"
 msgstr "Θέματα"
 
-#: root/src/bookbuilder/index.tt:56
 msgid "Total pages"
 msgstr "Σύνολο σελίδων"
 
-#: root/src/edit/edit.tt:666
 msgid "Triple bars"
 msgstr "Τριπλές μπάρες"
 
-#: root/src/bookbuilder/index.tt:374
 msgid "Try a random text if unsure"
 msgstr "Δοκίμασε ένα τυχαίο κείμενο αν δεν είσαι σίγουρ@"
 
-#: root/src/admin/edit.tt:238
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
@@ -3808,7 +2949,6 @@ msgstr ""
 "Μετατρέψτε τους συνδέσμους προς εικόνες σε εικόνες (επηρεάζει μόνο την "
 "προβολή του ιστότοπου, οι στατικές μορφές έχουν τον σύνδεσμο)"
 
-#: root/src/admin/edit.tt:246
 msgid ""
 "Turn links without description to YouTube, Vimeo,\n"
 "            Gmaps into widgets (affects site display only, static\n"
@@ -3819,46 +2959,37 @@ msgstr ""
 "στατικές\n"
 "            μορφές έχουν μόνο το σύνδεσμο)"
 
-#: root/src/admin/edit.tt:971 root/src/include/bbform.tt:464
 msgid "Two side layout"
 msgstr "Διάταξη δύο πλευρών"
 
-#: root/src/console/list_categories.tt:11
 msgid "Type"
 msgstr "Τύπος"
 
-#: root/src/bookbuilder/index.tt:19 root/src/console/alias_display.tt:97
-#: root/src/console/unpublished.tt:8 root/src/edit/revs.tt:15
-#: root/src/nodes/node_root.tt:33
 msgid "URI"
 msgstr "URI"
 
-#: root/src/console/git_display.tt:13
 msgid "URL"
 msgstr "URL"
 
-#: root/src/console/git_display.tt:65
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr "URL του νέου απομακρυσμένου αποθετηρίου (HTTPS, HTTP ή GIT)"
 
-#: root/src/edit/revs.tt:29 root/src/publish/pending.tt:109
+msgid "URL pointing to an embeddable webchat"
+msgstr ""
+
 msgid "UTC"
 msgstr "UTC"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:344
 msgid "Unable to load the bookbuilder session"
 msgstr "Αδυναμία φόρτωσης της συνεδρίας βιβλιοχτίστη"
 
 #. ($from || "NO MAIL FROM", $to)
-#: lib/AmuseWikiFarm/Controller/Admin.pm:336
 msgid "Unable to send mail from %1 to %2!"
 msgstr "Αδυναμία αποστολής αλληλογραφίας από %1 σε %2!"
 
-#: root/src/include/bbform.tt:373
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr "Unbranded PDF (απόκρυψη ονόματος ιστότοπου, λογότυπου κ.λπ.)"
 
-#: root/src/edit/edit.tt:251
 msgid ""
 "Unconditionally remove all the invisible non-breaking\n"
 "                spaces in the text"
@@ -3867,128 +2998,94 @@ msgstr ""
 "                κενά στο κείμενο"
 
 #. (shared)
-#: mkits/git_conflict/body.txt:1
 msgid ""
 "Unfortunately, the shared repository located at %1 appeared out of sync."
 msgstr ""
 "Δυστυχώς, το κοινόχρηστο αποθετήριο που βρίσκεται στη διεύθυνση %1 "
 "εμφανίστηκε εκτός συγχρονισμού."
 
-#: root/src/edit/newtext.tt:134
 msgid "Unique ID for the text"
 msgstr "Μοναδικό αναγνωριστικό για το κείμενο"
 
-#: root/src/include/editing-options.tt:18
 msgid "Unlimited"
 msgstr "Απεριόριστα"
 
-#: root/src/include/markitup.tt:48
 msgid "Unordered List"
 msgstr "Μη διατεταγμένη λίστα"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:139
 msgid "Unpublished texts"
 msgstr "Αδημοσίευτα κείμενα"
 
 #. ($mime_type)
 #. ($mime)
-#: lib/AmuseWikiFarm/Controller/Edit.pm:345
-#: lib/AmuseWikiFarm/Controller/Edit.pm:500
-#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:551
 msgid "Unsupported file type %1"
 msgstr "Μη υποστηριζόμενος τύπος αρχείου %1"
 
-#: root/static/js/amw-batch-upload.js:73 root/static/js/amw-batch-upload.js:75
 msgid "Unused attachment"
 msgstr "Αχρησιμοποίητο συνημμένο"
 
-#: root/src/admin/edit.tt:1303 root/src/admin/jobs.tt:107
-#: root/src/admin/show_user_details.tt:70 root/src/attachments/edit.tt:33
-#: root/src/bookbuilder/index.tt:241 root/src/bookbuilder/index.tt:263
-#: root/src/category-details-edit.tt:41 root/src/include/edit_node.tt:109
-#: root/src/settings/categories.tt:50 root/src/settings/edit_format.tt:38
-#: root/src/user/edit.tt:39 root/src/user/edit_options.tt:19
-#: root/src/user/reset_password_confirm.tt:32
 msgid "Update"
 msgstr "Ενημέρωση"
 
-#: root/src/layout.tt:475
 msgid "Update account info"
 msgstr "Ενημέρωση πληροφοριών λογαριασμού"
 
-#: root/src/category-details-edit.tt:7 root/src/category-details.tt:15
 msgid "Update category description"
 msgstr "Ενημέρωση περιγραφής κατηγορίας"
 
-#: root/src/bookbuilder/index.tt:283
 msgid "Update to current settings"
 msgstr "Ενημέρωση στις τρέχουσες ρυθμίσεις"
 
-#: root/src/edit/edit.tt:186
 msgid "Upload"
 msgstr "Ανέβασμα"
 
-#: root/src/edit/edit.tt:643
 msgid "Upload the image and note its name. Files are always renamed."
 msgstr ""
 "Ανεβάστε την εικόνα και σημειώστε το όνομά της. Τα αρχεία μετονομάζονται "
 "πάντα."
 
-#: root/src/edit/edit.tt:644
 msgid ""
 "Uploaded and available images are shown and listed below the text preview."
 msgstr ""
 "Οι ανεβασμένες και διαθέσιμες εικόνες εμφανίζονται και απαριθμούνται κάτω "
 "από την προεπισκόπηση κειμένου."
 
-#: root/src/include/markitup.tt:81
 msgid "Url"
 msgstr "Url"
 
-#: root/src/admin/edit.tt:561
 msgid "Use JS syntax highlight for code blocks"
 msgstr ""
 
-#: root/src/admin/edit.tt:128
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
 msgstr ""
 
-#: root/src/admin/edit.tt:1208
 msgid "Use SSL for authenticated users"
 msgstr ""
 
-#: root/src/edit/edit.tt:653
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr ""
 "Χρησιμοποιήστε την ως εικόνα για να την αναδείξετε προσθέτοντας στην "
 "επικεφαλίδα αυτή τη γραμμή:"
 
-#: root/src/admin/edit.tt:541
 msgid "Use named table of contents anchors instead of numeric ones"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:80
 msgid "Use one of the site's formats"
 msgstr "Χρησιμοποιήστε μία από τις μορφές του ιστότοπου"
 
 #. (sign)
-#: root/src/include/bbform.tt:597 root/src/include/bbform.tt:644
 msgid "Use optimized signatures with %1 pages each"
 msgstr ""
 
-#: root/src/include/bbform.tt:396
 msgid "Use sans fonts for section titles"
 msgstr ""
 
-#: root/static/js/amw-batch-upload.js:113
 msgid "Use the image as cover"
 msgstr "Χρησιμοποιήστε την εικόνα ως εξώφυλλο"
 
-#: root/src/admin/edit.tt:1102
 msgid "Useful HTML snippets"
 msgstr "Χρήσιμα αποσπάσματα HTML"
 
-#: root/src/edit/edit.tt:486
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
 "a blank line to mark a new paragraph."
@@ -3997,44 +3094,32 @@ msgstr ""
 "μπορείτε να βάλετε μια κενή γραμμή για να επισημάνετε μια νέα παράγραφο."
 
 #. ($user->username)
-#: lib/AmuseWikiFarm/Controller/User.pm:211
 msgid "User %1 created!"
 msgstr "Ο/Η χρήστης %1 δημιουργήθηκε!"
 
 #. ($user->username)
 #. ($c->stash->{user}->username)
-#: lib/AmuseWikiFarm/Controller/Admin.pm:305
-#: lib/AmuseWikiFarm/Controller/SiteAdmin.pm:84
 msgid "User %1 deleted"
 msgstr "Ο/Η χρήστης %1 διαγράφηκε"
 
 #. ($user->username)
-#: lib/AmuseWikiFarm/Controller/Admin.pm:289
-#: lib/AmuseWikiFarm/Controller/User.pm:295
 msgid "User %1 updated"
 msgstr "Ο/H χρήστης %1 ενημερώθηκε"
 
-#: mkits/newuser/manifest.json:8
 msgid "User created"
 msgstr "Ο/H χρήστης δημιούργησε"
 
-#: root/src/admin/show_users.tt:7 root/src/admin/show_users.tt:71
-#: root/src/siteadmin/show_users.tt:7 root/src/user/login.tt:11
-#: root/src/user/login.tt:13
 msgid "Username"
 msgstr "Όνομα χρήστη"
 
-#: root/src/user/create.tt:12
 msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
 "Όνομα χρήστη, μόνο αλφαριθμητικά, χωρίς ειδικούς χαρακτήρες, χωρίς κεφαλαία "
 "γράμματα"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:212 root/src/layout.tt:514
 msgid "Users"
 msgstr "Χρήστες"
 
-#: root/src/bookbuilder/index.tt:409
 msgid ""
 "Using this token, you can load the bookbuilder settings\n"
 "    and the text list from another computer, or share it with someone\n"
@@ -4048,7 +3133,6 @@ msgstr ""
 "άλλο υπολογιστή\n"
 "    χρησιμοποιώντας την ακόλουθη φόρμα."
 
-#: mkits/git_conflict/body.txt:5
 msgid ""
 "Usually this is due to high traffic and bad luck, and it can be fixed by "
 "pushing the changes again."
@@ -4056,28 +3140,21 @@ msgstr ""
 "Συνήθως αυτό οφείλεται σε υψηλή επισκεψιμότητα και κακή τύχη, και μπορεί να "
 "διορθωθεί με την εκ νέου προώθηση των αλλαγών."
 
-#: root/src/include/markitup.tt:101
 msgid "Verbatim block"
 msgstr ""
 
-#: root/src/admin/edit.tt:494 root/src/include/preamble.tt:158
-#: root/src/include/preamble.tt:160
 msgid "View history"
 msgstr "Προβολή ιστορικού"
 
-#: root/src/admin/list.tt:21
 msgid "Virtual hosts"
 msgstr ""
 
-#: root/src/admin/edit.tt:52
 msgid "Virtual hosts, one per line"
 msgstr ""
 
-#: root/src/include/preamble.tt:213 root/src/text.tt:237
 msgid "What links here"
 msgstr "Ποιοι σύνδεσμοι κατευθύνουν εδώ"
 
-#: root/src/admin/edit.tt:529
 msgid ""
 "When creating a new text, do not populate the publication date if not "
 "provided by the user."
@@ -4085,7 +3162,6 @@ msgstr ""
 "Κατά τη δημιουργία ενός νέου κειμένου, μην συμπληρώνετε την ημερομηνία "
 "δημοσίευσης εάν δεν την έχει δηλώσει ο χρήστης."
 
-#: root/src/bookbuilder/index.tt:416
 msgid ""
 "When you start a bookbuilder session, at the end of the\n"
 "    bookbuilder page you can see a token for sharing the session. You\n"
@@ -4099,30 +3175,23 @@ msgstr ""
 "αυτό που\n"
 "    έκανες."
 
-#: root/src/edit/edit.tt:202
 msgid "When you upload a PDF, split it into images to be inserted in the body"
 msgstr ""
 "Όταν ανεβάζετε ένα PDF, χωρίστε το σε εικόνες που θα εισαχθούν στο σώμα"
 
-#: root/src/edit/edit.tt:714
 msgid "Where does this text come from?"
 msgstr "Από πού προέρχεται αυτό το κείμενο;"
 
-#: root/src/admin/edit.tt:730
 msgid "Whitelisted IP (for backup, one per line)"
 msgstr "Whitelisted IP (για backup, μία ανά γραμμή)"
 
-#: root/src/bookbuilder/index.tt:217
 msgid "Width of the cover image in percent of the text block width."
 msgstr ""
 "Πλάτος της εικόνας εξωφύλλου σε ποσοστό του πλάτους του μπλοκ κειμένου."
 
-#: root/src/include/bbform.tt:189 root/src/include/bbform.tt:254
-#: root/src/include/bbform.tt:824
 msgid "Width:"
 msgstr "Πλάτος:"
 
-#: root/src/library/bbselect.tt:14
 msgid ""
 "With complex structures, e.g., a chapter with\n"
 "      subsections, selecting only the chapter is likely to select only\n"
@@ -4136,7 +3205,6 @@ msgstr ""
 "κεφάλαιο\n"
 "      και όλες τις υποενότητές του."
 
-#: root/src/edit/edit.tt:502
 msgid ""
 "With the \"verbatim\" tag you can avoid the markup to\n"
 "          be interpreted, usually not needed"
@@ -4144,7 +3212,6 @@ msgstr ""
 "Με την ετικέτα \"verbatim\" μπορείτε να αποφύγετε την ερμηνεία του markup\n"
 "          συνήθως δεν χρειάζεται"
 
-#: root/src/bookbuilder/index.tt:363
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
@@ -4155,15 +3222,12 @@ msgstr ""
 "    επίσης να συγχωνεύσεις περισσότερα κείμενα για να δημιουργήσεις το δικό "
 "σου φυλλάδιο. Δοκίμασέ το!"
 
-#: root/src/console/git_display.tt:101 root/src/console/git_display.tt:141
 msgid "Workflow"
 msgstr "Ροή εργασίας"
 
-#: root/src/bookbuilder/index.tt:453 root/src/settings/edit_format.tt:56
 msgid "Working locally?"
 msgstr "Εργάζεστε τοπικά;"
 
-#: root/src/edit/edit.tt:429 root/src/edit/edit.tt:567
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
 "          which require leading space (notably, you cannot use them in\n"
@@ -4174,24 +3238,18 @@ msgstr ""
 "χρησιμοποιήσετε σε\n"
 "          λίστες)."
 
-#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:250
 msgid "Wrong answer!"
 msgstr "Λάθος απάντηση!"
 
-#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:172
 msgid "Wrong username or password"
 msgstr "Λάθος όνομα χρήστη ή κωδικός πρόσβασης"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1113
 msgid "XeLaTeX source"
 msgstr ""
 
-#: root/src/admin/show_users.tt:40 root/src/bookbuilder/index.tt:31
-#: root/src/settings/categories.tt:23 root/src/siteadmin/show_users.tt:39
 msgid "Yes"
 msgstr "Ναι"
 
-#: root/src/help/faq.tt:56
 msgid ""
 "You MUST specify a reason, otherwise the line will have no effect.\n"
 "The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
@@ -4202,11 +3260,9 @@ msgstr ""
 "Η διάταξη των γραμμών της επικεφαλίδας (όπου υπάρχει \"#title\", \"#lang\",\n"
 "κ.λπ.) δεν έχει σημασία."
 
-#: lib/AmuseWikiFarm/Controller/User.pm:59
 msgid "You are already logged in"
 msgstr "Έχετε ήδη συνδεθεί"
 
-#: root/src/bookbuilder/index.tt:97
 msgid ""
 "You are building a collection. Please provide a title and, optionally, any "
 "other information needed for the front cover (author, subtitle, date) and "
@@ -4216,12 +3272,10 @@ msgstr ""
 "οποιαδήποτε άλλη πληροφορία χρειάζεται για το εξώφυλλο (συγγραφέας, "
 "υπότιτλος, ημερομηνία) και το οπισθόφυλλο (πηγή και σημειώσεις)."
 
-#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:155
 msgid "You are logged in now!"
 msgstr "Είσαι συνδεδεμέν@ τώρα!"
 
 #. (backup)
-#: mkits/git_conflict/body.txt:9
 msgid ""
 "You can access the backup located at %1 or ask your host for help, "
 "forwarding this email"
@@ -4230,7 +3284,6 @@ msgstr ""
 "διεύθυνση %1 ή να ζητήσετε βοήθεια από τον οικοδεσπότη σας, προωθώντας αυτό "
 "το email"
 
-#: root/src/bookbuilder/index.tt:368
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"
@@ -4241,7 +3294,6 @@ msgstr ""
 "προσθέσετε και\n"
 "    να αφαιρέσετε τα κείμενα αργότερα."
 
-#: root/src/edit/edit.tt:637
 msgid ""
 "You can also link to a part of the text. Please refer to the manual for this "
 "feature"
@@ -4250,19 +3302,15 @@ msgstr ""
 "εγχειρίδιο για αυτή τη λειτουργία"
 
 #. (create_url)
-#: mkits/newuser/body.txt:10
 msgid "You can create a peer at %1"
 msgstr "Μπορείτε να δημιουργήσετε έναν ομότιμο στο %1"
 
-#: root/src/user/human.tt:7
 msgid "You can do so answering a simple question."
 msgstr "Μπορείτε να το κάνετε απαντώντας σε μια απλή ερώτηση."
 
-#: root/src/admin/edit.tt:763
 msgid "You can tune them editing them here."
 msgstr "Μπορείτε να τα συντονίσετε με την επεξεργασία τους εδώ."
 
-#: root/src/search/index.tt:28
 msgid ""
 "You can use the following prefixes to search a word in a specific field, e."
 "g. \"title:example\""
@@ -4270,33 +3318,27 @@ msgstr ""
 "Μπορείτε να χρησιμοποιήσετε τα ακόλουθα προθέματα για να αναζητήσετε μια "
 "λέξη σε ένα συγκεκριμένο πεδίο, π.χ. \"title:παράδειγμα\""
 
-#: root/src/edit/revs.tt:80
 msgid ""
 "You can't create a new revision because the text has not been published yet"
 msgstr ""
 "Δεν μπορείς να δημιουργήσεις μια νέα αναθεώρηση επειδή το κείμενο δεν έχει "
 "δημοσιευτεί ακόμα"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:142
 msgid "You have logged out"
 msgstr "Έχεις αποσυνδεθεί"
 
-#: root/src/edit/revs.tt:10
 msgid "You may want to resume the editing of one of them"
 msgstr "Ίσως θελήσεις να συνεχίσεις την επεξεργασία ενός από αυτά"
 
-#: root/src/edit/newtext.tt:57
 msgid ""
 "You may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
 "Ίσως να θέλεις να αφαιρέσεις τα άρθρα/αντωνυμίες \"Ένα(ς)/Μία\", \"Ο/Η/Το\" "
 "κ.ο.κ. από τον τίτλο"
 
-#: root/src/bookbuilder/index.tt:192
 msgid "You may want to use one of these images"
 msgstr "Μπορεί να θέλεις να χρησιμοποιήσεις μία από αυτές τις εικόνες"
 
-#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:138
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
@@ -4306,330 +3348,244 @@ msgstr ""
 "Αυτό δεν θα έπρεπε να συμβαίνει."
 
 #. (edit_url)
-#: mkits/newuser/body.txt:8
 msgid "You should change your password right away at %1"
 msgstr "Θα πρέπει να αλλάξετε τον κωδικό πρόσβασής σας αμέσως στο %1"
 
-#: root/src/include/attachment.tt:18
 msgid "Your browser does not support the audio tag."
 msgstr "Το πρόγραμμα περιήγησής σας δεν υποστηρίζει την ετικέτα ήχου."
 
-#: root/src/include/attachment.tt:25
 msgid "Your browser does not support the video tag."
 msgstr "Το πρόγραμμα περιήγησής σας δεν υποστηρίζει την ετικέτα βίντεο."
 
-#: root/src/edit/diff.tt:23
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
 "Οι αλλαγές σας αποθηκεύονται και μπορούν να ελέγχονται κάθε φορά που πατάτε "
 "Προεπισκόπηση ή Αποθήκευση"
 
-#: root/src/include/markitup.tt:24
 msgid "Your chapter here..."
 msgstr "Το κεφάλαιό σας εδώ..."
 
-#: root/src/bookbuilder/index.tt:405
 msgid "Your current bookbuilder token is:"
 msgstr "Το τρέχον token βιβλιοχτίστη σου είναι:"
 
-#: root/src/user/reset_password.tt:10
 msgid "Your email"
 msgstr "Το email σου"
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:79
 msgid "Your file is ready"
 msgstr "Το αρχείο σου είναι έτοιμο"
 
-#: root/src/include/markitup.tt:19
 msgid "Your part here..."
 msgstr "Το κομμάτι σου εδώ..."
 
 #. (password)
-#: mkits/newuser/body.txt:6
 msgid "Your password is %1."
 msgstr "Ο κωδικός πρόσβασής σου είναι %1."
 
-#: lib/AmuseWikiFarm/Controller/User.pm:125
 msgid "Your password was reset, now you can login with it"
 msgstr ""
 "Ο κωδικός πρόσβασής σου επαναφέρθηκε, τώρα μπορείς να συνδεθείς με αυτόν"
 
-#: root/src/include/markitup.tt:30
 msgid "Your section here..."
 msgstr "Η ενότητά σου εδώ..."
 
-#: root/src/include/markitup.tt:40
 msgid "Your sub-sub-section (or description heading) here..."
 msgstr "Η υπο-υποενότητα (ή η επικεφαλίδα περιγραφής) εδώ..."
 
-#: root/src/include/markitup.tt:35
 msgid "Your subsection here..."
 msgstr "Η υποενότητά σου εδώ..."
 
 #. (home)
-#: mkits/newuser/body.txt:2
 msgid "Your user at %1 has been created."
 msgstr "Ο χρήστης σας στο %1 έχει δημιουργηθεί."
 
 #. (username)
-#: mkits/newuser/body.txt:4
 msgid "Your username is %1."
 msgstr "Το όνομα χρήστη σου είναι %1."
 
-#: root/src/include/bulk_job.tt:2
 msgid "aborted"
 msgstr "ματαιώθηκε"
 
-#: root/src/layout.tt:313
 msgid "about, links..."
 msgstr "περιγραφή, σύνδεσμοι..."
 
-#: root/src/static-indexes.tt:181
 msgid "activate to sort column ascending"
 msgstr "ενεργοποίηση για την αύξουσα ταξινόμηση της στήλης"
 
-#: root/src/static-indexes.tt:182
 msgid "activate to sort column descending"
 msgstr "ενεργοποίηση για την φθίνουσα ταξινόμηση της στήλης"
 
-#: root/src/include/bulk_job.tt:2
 msgid "active"
 msgstr "ενεργό"
 
-#: root/src/admin/edit.tt:93
 msgid "affects only the frontend webserver configuration"
 msgstr "επηρεάζει μόνο τη διαμόρφωση του frontend webserver"
 
-#: root/src/admin/edit.tt:868
 msgid "any"
 msgstr "οποιοδήποτε"
 
-#: root/src/edit/newtext.tt:243
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 "δημιουργείται αυτόματα εάν δεν υπάρχει, χρησιμοποιώντας τον συγγραφέα και "
 "τον τίτλο"
 
-#: root/src/edit/edit.tt:479 root/src/edit/edit.tt:480
-#: root/src/edit/edit.tt:482
 msgid "code and monospace"
 msgstr "κώδικας και monospace"
 
-#: root/src/admin/edit.tt:447
 msgid "comma separated list"
 msgstr "λίστα διαχωρισμένη με κόμμα"
 
-#: root/src/admin/jobs.tt:12 root/src/include/bulk_job.tt:2
-#: root/src/tasks/display.tt:4
 msgid "completed"
 msgstr "ολοκληρωμένο"
 
-#: root/src/publish/pending.tt:4
 msgid "conflict"
 msgstr "σύγκρουση"
 
-#: root/src/include/markitup.tt:64
 msgid "description"
 msgstr "περιγραφή"
 
-#: root/src/edit/edit.tt:630
 msgid "displayed text"
 msgstr "εμφανιζόμενο κείμενο"
 
-#: root/src/console/git_display.tt:104 root/src/console/git_display.tt:148
 msgid "edit, commit..."
 msgstr "επεξεργασία, προώθηση..."
 
-#: root/src/publish/pending.tt:1
 msgid "editing"
 msgstr "επεξεργασία"
 
-#: root/src/edit/edit.tt:461 root/src/edit/edit.tt:463
 msgid "emphasis"
 msgstr "έμφαση"
 
-#: root/src/admin/jobs.tt:13 root/src/tasks/display.tt:5
 msgid "failed"
 msgstr "αποτυχημένο"
 
-#: root/src/static-indexes.tt:166
 msgid "filtered from _MAX_ total entries"
 msgstr ""
 
-#: root/src/edit/edit.tt:554
 msgid "for code, monospaced"
 msgstr ""
 
-#: root/src/edit/newtext.tt:64
 msgid "for display"
 msgstr "προς προβολή"
 
-#: root/src/edit/edit.tt:552
 msgid "for poetry"
 msgstr "για ποίηση"
 
-#: root/src/include/markitup.tt:27
 msgid "generic sectioning, good for articles"
 msgstr "γενική τμηματοποίηση, καλή για άρθρα"
 
-#: root/src/include/bbform.tt:171 root/src/include/bbform.tt:238
-#: root/src/include/bbform.tt:805
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
 "αν θέλετε να χρησιμοποιήσετε ένα προσαρμοσμένο μέγεθος, πρέπει να ορίσετε "
 "τόσο το πλάτος όσο και το ύψος"
 
-#: root/src/edit/edit.tt:648 root/src/edit/edit.tt:651
-#: root/src/edit/edit.tt:654
 msgid "image"
 msgstr "εικόνα"
 
-#: root/src/admin/edit.tt:868
 msgid "left"
 msgstr "αριστερά"
 
-#: root/src/bookbuilder/index.tt:103 root/src/edit/newtext.tt:25
 msgid "mandatory"
 msgstr "υποχρεωτικό"
 
-#: root/src/edit/edit.tt:496 root/src/edit/edit.tt:499
 msgid "markup *not* interpreted"
 msgstr "το markup *δεν* ερμηνεύτηκε"
 
 #. (site.binary_upload_max_size_in_mega)
-#: root/src/edit/edit.tt:173
 msgid "max %1 Mb"
 msgstr "μέγιστο %1 Mb"
 
-#: root/src/admin/jobs.tt:28
 msgid "minutes"
 msgstr "λεπτά"
 
-#: root/src/help/faq.tt:93
 msgid "new-example-uri"
 msgstr "νέο-παράδειγμα-uri"
 
-#: root/src/nodes/node_root.tt:34
 msgid "only lowercase ASCII and hyphens"
 msgstr "μόνο πεζά ASCII και παύλες"
 
-#: root/src/edit/edit.tt:436 root/src/edit/edit.tt:444
-#: root/src/edit/edit.tt:452 root/src/edit/edit.tt:461
-#: root/src/edit/edit.tt:467 root/src/edit/edit.tt:473
-#: root/src/edit/edit.tt:479 root/src/edit/edit.tt:553
-#: root/src/edit/edit.tt:554 root/src/edit/edit.tt:632
 msgid "or"
 msgstr "ή"
 
-#: root/src/edit/edit.tt:613 root/src/edit/edit.tt:614
 msgid "ordered item"
 msgstr "παραγγελθέν αντικείμενο"
 
-#: root/src/edit/edit.tt:490 root/src/edit/edit.tt:493
 msgid "overstriked"
 msgstr ""
 
-#: root/src/admin/jobs.tt:11 root/src/publish/pending.tt:2
-#: root/src/tasks/display.tt:2
 msgid "pending"
 msgstr "σε εκκρεμότητα"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1244
 msgid "plain PDF"
 msgstr "απλό PDF"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1121
 msgid "plain text source"
 msgstr "πηγή απλού κειμένου"
 
-#: root/src/publish/pending.tt:3
 msgid "processing"
 msgstr "επεξεργασία"
 
-#: root/src/publish/pending.tt:5
 msgid "published"
 msgstr "δημοσιευμένο"
 
-#: root/src/edit/diff.tt:5
 msgid "revision"
 msgstr "διόρθωση"
 
-#: root/src/admin/edit.tt:868
 msgid "right"
 msgstr "δεξιά"
 
 #. (args)
-#: lib/CatalystX/AmuseWiki/I18N.pm:49 lib/CatalystX/AmuseWiki/I18N.pm:55
 msgid "string"
 msgstr "συμβολοσειρά"
 
-#: root/src/edit/edit.tt:467 root/src/edit/edit.tt:469
 msgid "strong emphasis"
 msgstr "μεγάλη έμφαση"
 
-#: root/src/include/markitup.tt:37
 msgid "sub-sub-section"
 msgstr "υπο-υποενότητα"
 
-#: root/src/edit/edit.tt:488 root/src/edit/edit.tt:491
 msgid "subscript"
 msgstr ""
 
-#: root/src/include/markitup.tt:32
 msgid "subsection"
 msgstr "υποενότητα"
 
-#: root/src/edit/edit.tt:489 root/src/edit/edit.tt:492
 msgid "superscript"
 msgstr ""
 
-#: root/src/admin/jobs.tt:14 root/src/tasks/display.tt:3
 msgid "taken"
 msgstr "παρμένο"
 
-#: root/src/layout.tt:224
 msgid "texts by authors, title, topic..."
 msgstr "κείμενα με βάση τους συγγραφείς, τον τίτλο, το θέμα..."
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:160
 msgid "texts sorted by author"
 msgstr "κείμενα ταξινομημένα κατά συγγραφέα"
 
-#: root/src/layout.tt:236 root/src/layout.tt:721
 msgid "texts sorted by title"
 msgstr "κείμενα ταξινομημένα κατά τίτλο"
 
-#: root/src/edit/edit.tt:679
 msgid "the author of the text (as displayed)"
 msgstr "ο συγγραφέας του κειμένου (όπως εμφανίζεται)"
 
-#: root/src/publish/pending.tt:59
 msgid "this text will be unpublished"
 msgstr "το κείμενο αυτό θα αποδημοσιευτεί"
 
-#: root/src/edit/edit.tt:700
 msgid "topic"
 msgstr "θέμα"
 
-#: root/src/edit/edit.tt:610 root/src/edit/edit.tt:611
 msgid "unordered item"
 msgstr "μη ταξινομημένο στοιχείο"
 
-#: root/src/edit/edit.tt:473 root/src/edit/edit.tt:474
-#: root/src/edit/edit.tt:476
 msgid "very strong emphasis"
 msgstr "πολύ μεγάλη έμφαση"
 
-#: root/src/edit/edit.tt:631
 msgid "with description"
 msgstr "με περιγραφή"
 
-#: root/src/edit/edit.tt:633
 msgid "without description"
 msgstr "χωρίς περιγραφή"
 
-#: root/src/publish/pending.tt:128
 msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"
@@ -4639,3 +3595,6 @@ msgstr ""
 "    κατά τη διάρκεια της επεξεργασίας, αλλά είναι ακόμα εκεί, σε περίπτωση "
 "που κάποιο άτομο θέλει να\n"
 "    την ανακτήσει κατά την επεξεργασία ενός κειμένου."
+
+#~ msgid "IRC channel on freenode"
+#~ msgstr "Κανάλι IRC στο freenode"

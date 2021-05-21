@@ -3359,7 +3359,7 @@ sub update_from_params {
                            footer_layout_html
                            do_not_enforce_commit_message
                            text_infobox_at_the_bottom
-                           freenode_irc_channel
+                           webchat_url
                            turn_links_to_images_into_images
                            enable_video_widgets
                            restrict_mirror
@@ -3703,8 +3703,8 @@ sub paginate_archive_after {
     return shift->get_option('paginate_archive_after') || 25;
 }
 
-sub freenode_irc_channel {
-    return shift->get_option('freenode_irc_channel') || '#amusewiki';
+sub webchat_url {
+    return shift->get_option('webchat_url');
 }
 
 sub turn_links_to_images_into_images {

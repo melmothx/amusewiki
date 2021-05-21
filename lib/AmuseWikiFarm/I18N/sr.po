@@ -831,6 +831,9 @@ msgstr ""
 msgid "Full text search"
 msgstr ""
 
+msgid "Full width, fluid layout"
+msgstr ""
+
 msgid "General configuration"
 msgstr ""
 
@@ -943,9 +946,6 @@ msgid "I want an imposed (ready to print) PDF"
 msgstr ""
 
 msgid "I will provide my remote repository"
-msgstr ""
-
-msgid "IRC channel on freenode"
 msgstr ""
 
 msgid "ISBN"
@@ -2576,6 +2576,9 @@ msgid "URL"
 msgstr ""
 
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
+msgstr ""
+
+msgid "URL pointing to an embeddable webchat"
 msgstr ""
 
 msgid "UTC"

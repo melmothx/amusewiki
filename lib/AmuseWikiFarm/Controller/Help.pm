@@ -42,7 +42,12 @@ sub faq :Chained('root') :Args(0) {
 
 sub irc :Chained('root') :Args(0) {
     my ($self, $c) = @_;
-    $c->stash(page_title => $c->loc("Real time help"));
+    if ($c->stash->{site}->webchat_url) {
+        $c->stash(page_title => $c->loc("Real time help"));
+    }
+    else {
+        $c->detach('/not_found');
+    }
 }
 
 

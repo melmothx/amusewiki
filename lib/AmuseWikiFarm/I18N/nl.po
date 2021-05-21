@@ -908,6 +908,9 @@ msgstr "Volledige tagwolk"
 msgid "Full text search"
 msgstr "Volledige tekst doorzoeken"
 
+msgid "Full width, fluid layout"
+msgstr ""
+
 msgid "General configuration"
 msgstr "Algemene instellingen"
 
@@ -1037,9 +1040,6 @@ msgstr "Ik wil een opgelegde (klaar om te printen) PDF"
 
 msgid "I will provide my remote repository"
 msgstr ""
-
-msgid "IRC channel on freenode"
-msgstr "IRC kanaal op freenode"
 
 msgid "ISBN"
 msgstr ""
@@ -2869,6 +2869,9 @@ msgstr "URL"
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
 
+msgid "URL pointing to an embeddable webchat"
+msgstr ""
+
 msgid "UTC"
 msgstr "UTC"
 
@@ -3463,6 +3466,9 @@ msgstr ""
 "\"Oude bewerking\" betekent dat de herziening was verlaten\n"
 "    tijdens het bewerken, maar hij is er nog steeds voor het geval dat\n"
 "    iemand er verder mee wil gaan bij het bewerken van een tekst."
+
+#~ msgid "IRC channel on freenode"
+#~ msgstr "IRC kanaal op freenode"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "teksten gesorteerd op onderwerp"

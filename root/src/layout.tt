@@ -297,6 +297,8 @@
                     [% loc('Add a new text') %]
                   </a>
                 </li>
+                [% END %]
+                [% IF site.webchat_url %]
                 <li id="amw-irc-channel-menu-entry">
                   <a href="[% c.uri_for_action('/help/irc') %]">
                     [% loc('Real time help') %]

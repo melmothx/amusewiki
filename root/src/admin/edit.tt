@@ -610,13 +610,13 @@ kpsewhich mylogo.pdf
         </div>
     </div>
     <div class="form-group">
-      <label for="freenode_irc_channel" class="col-sm-3 control-label">
-        [% loc('IRC channel on freenode') %]
+      <label for="webchat_url" class="col-sm-3 control-label">
+        [% loc('URL pointing to an embeddable webchat') %]
       </label>
       <div class="col-sm-9">
-        <input type="text" name="freenode_irc_channel" id="freenode_irc_channel"
+        <input type="text" name="webchat_url" id="webchat_url"
                class="form-control"
-               value="[% esite.freenode_irc_channel | html %]" />
+               value="[% esite.webchat_url | html %]" />
       </div>
     </div>
 

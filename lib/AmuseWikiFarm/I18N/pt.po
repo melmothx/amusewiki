@@ -887,6 +887,9 @@ msgstr "Nuvem de tags/etiquetas completa"
 msgid "Full text search"
 msgstr "Pesquisa em texto completo"
 
+msgid "Full width, fluid layout"
+msgstr ""
+
 msgid "General configuration"
 msgstr "Configurações gerais"
 
@@ -1015,9 +1018,6 @@ msgstr "Preparar o arquivo para impressão em PDF (imposar)"
 
 msgid "I will provide my remote repository"
 msgstr ""
-
-msgid "IRC channel on freenode"
-msgstr "Canal do IRC no freenode"
 
 msgid "ISBN"
 msgstr ""
@@ -2826,6 +2826,9 @@ msgstr "URL"
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
 
+msgid "URL pointing to an embeddable webchat"
+msgstr ""
+
 msgid "UTC"
 msgstr "UTC"
 
@@ -3409,6 +3412,9 @@ msgstr ""
 "\"Edição obsoleta\" significa que a revisão foi abandonada enquanto "
 "editando, mas ainda está lá, caso alguém queira continuar desse ponto quando "
 "editando um texto."
+
+#~ msgid "IRC channel on freenode"
+#~ msgstr "Canal do IRC no freenode"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "textos ordenados por tópicos"

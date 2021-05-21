@@ -895,6 +895,9 @@ msgstr ""
 msgid "Full text search"
 msgstr "Kërkim me tekst të plotë"
 
+msgid "Full width, fluid layout"
+msgstr ""
+
 msgid "General configuration"
 msgstr "Konfigurimi i përgjithshëm"
 
@@ -1020,9 +1023,6 @@ msgstr "E dëshiroj PDF-in e imponuar (të gatshëm për print)"
 
 msgid "I will provide my remote repository"
 msgstr ""
-
-msgid "IRC channel on freenode"
-msgstr "Kanali IRC në freenode"
 
 msgid "ISBN"
 msgstr ""
@@ -2785,6 +2785,9 @@ msgstr "URL"
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
 
+msgid "URL pointing to an embeddable webchat"
+msgstr ""
+
 msgid "UTC"
 msgstr "UTC"
 
@@ -3357,6 +3360,9 @@ msgstr ""
 "“Ndryshim i mbetur” do të thotë që përpunimi është brakstisur\n"
 " gjatë ndryshimit por është ende aty në rast se dikush dëshiron të vazhdoj\n"
 " me ndryshimin e tekstit."
+
+#~ msgid "IRC channel on freenode"
+#~ msgstr "Kanali IRC në freenode"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "tekstet e renditura sipas temës"
