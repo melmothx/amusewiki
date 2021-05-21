@@ -875,9 +875,12 @@ lib/AmuseWikiFarm/View/JSON.pm
 lib/AmuseWikiFarm/View/StaticFile.pm
 lib/AmuseWikiMeta.pm
 lib/AmuseWikiMeta/Archive/Config.pm
+lib/AmuseWikiMeta/Controller/OPDS.pm
 lib/AmuseWikiMeta/Controller/Root.pm
 lib/AmuseWikiMeta/Controller/Search.pm
 lib/AmuseWikiMeta/Model/DB.pm
+lib/AmuseWikiMeta/Model/OPDS.pm
+lib/AmuseWikiMeta/View/Atom.pm
 lib/AmuseWikiMeta/View/HTML.pm
 lib/AmuseWikiMeta/View/JSON.pm
 lib/CatalystX/AmuseWiki/I18N.pm
