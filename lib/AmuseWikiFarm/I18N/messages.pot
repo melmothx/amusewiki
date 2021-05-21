@@ -2310,7 +2310,7 @@ msgstr ""
 msgid "Read the whole text..."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Help.pm:46 root/src/layout.tt:303
+#: lib/AmuseWikiFarm/Controller/Help.pm:46 root/src/layout.tt:304
 msgid "Real time help"
 msgstr ""
 
