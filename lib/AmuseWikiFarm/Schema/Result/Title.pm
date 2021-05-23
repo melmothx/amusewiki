@@ -1520,8 +1520,10 @@ sub scan_and_store_links {
             my($tag, %links) = @_;
             if ($tag eq 'a') {
                 if (my $uri = $links{href}) {
-                    if (!$uri->host || $vhosts{$uri->host}) {
-                        push @uris, $uri;
+                    if ($uri->can('host')) {
+                        if (!$uri->host || $vhosts{$uri->host}) {
+                            push @uris, $uri;
+                        }
                     }
                 }
             }

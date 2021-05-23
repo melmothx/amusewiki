@@ -36,6 +36,8 @@ This one references [[LINK4#toc11][one]] [[/library/LINK5/edit][two]] [[./LINK6?
 
 And link to itself [[TITLE]] [[./TITLE][myself]]
 
+[[xmpp:foo@bar.net?join][join our xmpp chat]]
+
 MUSE
 
 # we need to create 8 texts + 8 specials with the same name
