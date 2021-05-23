@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.514 2021-05-23
+
+ - Fix bug with links which URI doesn't understand (reported by anelki
+   on the #amusewiki channel)
+
 2.513 2021-05-21
 
  - Update i18n strings
