@@ -563,7 +563,7 @@ kpsewhich mylogo.pdf
           <input type="checkbox"
                  [% IF esite.display_latest_entries_on_special %]checked="checked"[% END %]
                  name="display_latest_entries_on_special" />
-          [% loc('Display the latest entries on special page') %]
+          [% loc('Display the latest entries on special pages') %]
         </label>
       </div>
     </div>
