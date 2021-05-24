@@ -3381,6 +3381,7 @@ sub update_from_params {
                            show_type_and_number_of_pages
                            enable_xapian_suggestions
                            allow_binary_uploads
+                           display_latest_entries_on_special
                           /) {
         my $value = delete $params->{$option} || '';
         # clean it up from leading and trailing spaces
@@ -3811,6 +3812,10 @@ sub bottom_layout_html {
 
 sub footer_layout_html {
     return shift->get_option('footer_layout_html') || '';
+}
+
+sub display_latest_entries_on_special {
+    return shift->get_option('display_latest_entries_on_special') // 1;
 }
 
 sub titles_available_sortings {

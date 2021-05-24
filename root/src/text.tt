@@ -170,6 +170,8 @@
          id="special-pages-logo-img" />
   </div>
   [% END %]
+
+  [% IF site.display_latest_entries_on_special %]
   <div id="amw-latest-entries-block">
     <div class="amw-spacer-20"></div>
     <div class="center">
@@ -192,6 +194,8 @@
        }
    });
   </script>
+  [% END %]
+
   [% END %]
 </div>
 

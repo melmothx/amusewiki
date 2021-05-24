@@ -556,6 +556,19 @@ kpsewhich mylogo.pdf
       </div>
     </div>
 
+
+    <div class="form-group">
+      <div class="col-sm-offset-6 col-sm-6">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.display_latest_entries_on_special %]checked="checked"[% END %]
+                 name="display_latest_entries_on_special" />
+          [% loc('Display the latest entries on special page') %]
+        </label>
+      </div>
+    </div>
+
+
     <div class="form-group">
       <label class="col-sm-6 control-label">
           [% loc('Use JS syntax highlight for code blocks') %].

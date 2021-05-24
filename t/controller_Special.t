@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 12;
+use Test::More tests => 14;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catdir catfile/;
@@ -59,6 +59,11 @@ while (my $j = $site->jobs->dequeue) {
 $mech->get_ok( '/special/index' );
 $mech->content_contains('$("#amw-latest-entries-special-page").load("/latest',
                         "Found the latest entries");
+
+$site->update_option_value('display_latest_entries_on_special', '');
+$mech->get_ok('/special/index');
+$mech->content_lacks('amw-latest-entries-special-page');
+
 $mech->get_ok('/latest');
 $mech->content_contains('test.muse', "Found the latest entries");
 
