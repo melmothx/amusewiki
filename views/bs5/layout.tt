@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="[% current_locale_code %]">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      [%- IF page_title -%]
+      [%- page_title | html -%] |
+      [%- END %] [% site.sitename | html -%]</title>
+    [%- UNLESS please_index %]
+    <meta name="robots" content="noindex,nofollow" />
+    [%- END %]
+    <meta name="generator" content="AMuseWiki - https://amusewiki.org" />
+    [%- IF meta_description %]
+    <meta name="description" content="[% meta_description | html %]" />
+    [%- END -%]
+    [%- IF site.has_site_file('favicon.ico') %]
+    <link rel="shortcut icon"
+          href="[% c.uri_for_action('/sitefiles/local_files',
+                                    [ site.id, 'favicon.ico']) %]" />
+    [% END %]
+    [%- IF apple_touch_icon %]
+    <link rel="icon"             href="[% apple_touch_icon %]" type="[% apple_touch_icon_mime_type %]" />
+    <link rel="apple-touch-icon" href="[% apple_touch_icon %]" type="[% apple_touch_icon_mime_type %]" />
+    [%- END %]
+    <link rel="search" href="[% c.uri_for_action('/search/opensearch') %]"
+          type="application/opensearchdescription+xml"
+          title="[% site.sitename | html %]">
+    <link rel="alternate" type="application/rss+xml"
+          title="[% site.sitename | html %]" href="[% c.uri_for('/feed') %]" />
+    <link rel="alternate" type="application/atom+xml;profile=opds-catalog;kind=navigation"
+          href="[% c.uri_for_action('/opds/start') %]" title="[% loc('OPDS') %]"/>
+    [% IF base_url %]<base href="[% base_url %]" />[% END %]
+
+    [% IF pager %]
+    [% IF pager.next_url %]
+    <link rel="next" href="[% pager.next_url | html %]" />
+    [% END %]
+    [% IF pager.prev_url %]
+    <link rel="prev" href="[% pager.prev_url | html %]" />
+    [% END %]
+    [% END %]
+
+    [%- IF open_graph %]
+    <!-- open graph stanza -->
+    [%- FOREACH open_graph_meta IN open_graph %]
+    <meta property="[% open_graph_meta.p | html %]" content="[% open_graph_meta.c | html %]" />
+    [%- END %]
+    <!-- end graph stanza -->
+    [%- END -%]
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="[% c.uri_for('/static/js/jquery-3.5.1.min.js') %]">
+    </script>
+    <link rel="stylesheet"
+          href="[% c.uri_for((bootstrap_css || '/static/css/bootstrap.css'), { v => 5 }) %]" />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="[% c.uri_for('/static/js/bs5-bootstrap.bundle.min.js', { v => 1 }) %]">
+    </script>
+
+    <link rel="stylesheet"
+          href="[% c.uri_for('/static/css/fork-awesome.min.css', { v => 3 }) %]" />
+
+    <!-- jquery-ui for the highlight effect everywhere and autocompletion
+         source in [% c.uri_for('/static/js/jquery-ui-1.10.4.custom.js') %] -->
+
+    <script src="[% c.uri_for('/static/js/jquery-ui-1.12.1.custom/jquery-ui.min.js') %]" >
+    </script>
+
+    [%- IF nav == 'console' -%]
+    <script src="[% c.uri_for('/static/js/select2/select2.min.js') %]" >
+    </script>
+    <link rel="stylesheet"
+          href="[% c.uri_for('/static/css/select2/select2.css') %]" />
+    <link rel="stylesheet"
+          href="[% c.uri_for('/static/css/select2/select2-bootstrap.css') %]" />
+    [%- END -%]
+
+    [% IF load_highlight %]
+    [% IF c.model('Webserver').highlight_use_cdn %]
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+    [% ELSE %]
+    <link rel="stylesheet" href="[% c.uri_for('/static/js/highlight/styles/default.css') %]">
+    <script src="[% c.uri_for('/static/js/highlight/highlight.min.js') %]"></script>
+    [% END %]
+    <script>
+      $(document).ready(function() {
+          hljs.configure([% load_highlight %]);
+          $('pre.example').each(function(i, block) {
+              hljs.highlightBlock(block);
+          });
+      });
+     </script>
+    [% END %]
+
+    [%- IF load_markitup_css -%]
+    <link rel="stylesheet" type="text/css"
+          href="[% c.uri_for('/static/js/markitup/skins/amw/style.css') %]" />
+    <link rel="stylesheet" type="text/css"
+          href="[% c.uri_for('/static/js/markitup/sets/muse/style.css') %]" />
+    [%- END -%]
+
+    [%# base css for amuse texts %]
+    <link rel="stylesheet" type="text/css"
+          href="[% c.uri_for('/static/css/amuse.css', { v => 9 }) %]" />
+
+    [%#  datatable on demand %]
+    [%- IF load_datatables %]
+      <link rel="stylesheet" type="text/css"
+            href="[% c.uri_for('/static/js/datatables/datatables.min.css') %]" />
+      <script type="text/javascript"
+              src="[% c.uri_for('/static/js/datatables/datatables.min.js') %]">
+      </script>
+      <script type="text/javascript"
+              src="[% c.uri_for('/static/js/amw-datatables.js') %]">
+      </script>
+    [% END %]
+
+    [%# our css for the web application %]
+    <link rel="stylesheet" type="text/css"
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 43 }) %]" />
+    <script src="[% c.uri_for('/static/js/amuse.js', { v => 5 }) %]"></script>
+    <script>
+      function amw_confirm() { return confirm('[% lh.loc('Are you sure?') | escape_js %]') }
+    </script>
+    [%- IF cgit_page %]
+    <link rel="stylesheet" type="text/css"
+          href="[% c.uri_for('/static/css/cgit.css', { v => 3 }) %]" />
+    [%- END %]
+
+    [%- IF site.has_site_file('local.css') -%]
+    <link rel="stylesheet" type="text/css"
+          href="[% c.uri_for_action('/sitefiles/local_files',
+                                    [ site.id, 'local.css']) %]" />
+    [%- END %]
+    [%- IF site.has_site_file('local.js') %]
+    <script src="[% c.uri_for_action('/sitefiles/local_files',
+                                    [ site.id, 'local.js']) %]">
+    </script>
+    [%- END -%]
+    [%- IF site.enable_video_widgets  %]
+    <script src="[% c.uri_for('/static/js/amw-widgets.js', { v => 1 }) %]"></script>
+    [%- END -%]
+    [%- IF site.turn_links_to_images_into_images %]
+    <script src="[% c.uri_for('/static/js/amw-extimg.js', { v => 1 }) %]"></script>
+    [%- END -%]
+    <script src="[% c.uri_for('/static/js/imagesloaded.pkgd.min.js', { v => 1 }) %]"></script>
+    <script src="[% c.uri_for('/static/js/amw-anchors.js', { v => 2 }) %]"></script>
+    <script type="application/ld+json">
+[% sitelinks_searchbox %]
+    </script>
+  </head>
+  <body>
+    <div id="amw-nav-bar-top" class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse"
+                  data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span>
+          [%- IF site.has_site_file('navlogo.png') -%]
+          <a class="amw-navlogo" href="[% c.uri_for('/') %]">
+            <img src="[% c.uri_for_action('/sitefiles/local_files',
+                      [ site.id, 'navlogo.png' ]) %]"
+                 title="[% site.sitename | html %]"
+                 class="amw-navlogo-img"
+                 alt="[% site.sitename | html %]" />
+          </a>
+          [% ELSE %]
+          <a class="navbar-brand" href="[% c.uri_for('/') %]"
+             title="[% site.sitename | html %]">
+            <small>[%  site.sitename | html %]</small>
+          </a>
+          [%- END -%]
+          </span>
+        </div>
+        <div class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right"
+                method="get" role="search"
+                id="formsearchbox" action="[% c.uri_for('/search') %]">
+            <div class="form-group">
+              <div class="input-group">
+		        <input type="text" class="form-control search-autocomplete"
+                       aria-label="[% loc('Search') %]"
+                       placeholder="[% loc('Search') %]"
+                       name="query" value=""/>
+                <div class="input-group-btn">
+                  <button type="submit" class="btn btn-primary">
+                    <span class="sr-only">[% loc('Search') %]</span>
+                    <span class="fa fa-search fa-fw"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <ul id="amw-top-nav-right-menu" class="nav navbar-nav navbar-right">
+            <li class="dropdown hidden-when-no-toc" style="display:none">
+              <a class="amw-navlogo dropdown-toggle" href="#"
+                 data-toggle="dropdown"
+                 title="[% loc('Table of Contents') %]">
+                <span class="fa fa-list text-primary fa-fw"></span>
+                <span class=" visible-xs-inline">
+                  [% loc('Table of Contents') %]
+                </span>
+                <b class="caret hidden-sm"></b>
+              </a>
+              <ul id="amw-top-nav-toc" class="dropdown-menu dropdown-menu-left">
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle"
+                 id="amw-top-nav-archive-menu"
+                 title="[% loc('texts by authors, title, topic...') %]"
+                 data-toggle="dropdown">
+                <span class="fa fa-heart fa-fw"></span>
+                <span class="hidden-sm" id="amw-catalog-label">
+                  [% loc('Archive') %]
+                </span>
+                <b class="caret hidden-sm"></b>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-left">
+	            <li[% IF nav == 'titles' %] class="active" [% END %]
+                      id="amw-nav-bar-titles">
+                  <a href="[% c.uri_for('/listing') %]"
+		             title="[% loc('texts sorted by title') %]">
+                    [% loc('Titles') %]
+                  </a>
+                </li>
+
+                [% FOREACH sitectype IN category_types_navbar_display %]
+                  <li[% IF nav == sitectype.ctype %] class="active" [% END %]
+                                                     id="amw-nav-bar-[% sitectype.ctype %]s">
+                    <a href="[% c.uri_for_action('/category/category_list_display', [ sitectype.ctype ]) %]"
+		               title="[% loc(sitectype.title) %]">
+                      [% loc(sitectype.title) %]
+                    </a>
+                  </li>
+                [% END %]
+                [% IF site.fixed_category_list %]
+                <li role="presentation" class="divider"></li>
+                <li role="presentation" class="dropdown-header">
+                  [% loc('Topics') %]
+                </li>
+                [%     FOREACH fixedcat IN site.list_fixed_categories %]
+                <li>
+                  <a href="[% c.uri_for_action('/category/single_category_display',
+                                               [ 'topic', fixedcat ]) %]">
+                    [% loc(fixedcat) %]
+                  </a>
+                </li>
+                [%     END  %]
+                [% END %]
+                <li role="presentation" class="divider"
+                    id="amw-nav-bar-latest-separator"></li>
+                <li[% IF nav == 'latest' %] class="active"[% END %]
+                   id="amw-nav-bar-latest">
+                  <a href="[% c.uri_for_action('/latest/index') %]"
+		             title="[% loc('Latest entries') %]">
+                    [% loc('Latest entries') %]
+                  </a>
+                </li>
+
+                [% IF blog_style %]
+                  <li[% IF nav == 'monthly' %] class="active"[% END %]
+                                               id="amw-top-nav-archive-monthly-archive">
+                  <a href="[% c.uri_for_action('/monthly/list') %]"
+		             title="[% loc('Archive by month') %]">
+                    [% loc('Archive by month') %]
+                  </a>
+                </li>
+                [% END %]
+
+                [% IF navigation.archive %]
+                [% FOREACH link IN navigation.archive %]
+                <li [% IF link.active %] class="active"[% END %]>
+                  <a href="[% link.uri | html %]">[% link.name | html %]</a>
+                </li>
+                [% END %]
+                [% END %]
+
+
+                [% IF c.user_exists || site.human_can_edit %]
+                <li role="presentation" class="divider"></li>
+                <li[% IF nav == 'add-to-library' %] class="active"[% END %]>
+                  <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">
+                    [% loc('Add a new text') %]
+                  </a>
+                </li>
+                [% END %]
+                [% IF site.webchat_url %]
+                <li id="amw-irc-channel-menu-entry">
+                  <a href="[% c.uri_for_action('/help/irc') %]">
+                    [% loc('Real time help') %]
+                  </a>
+                </li>
+                [% END %]
+              </ul>
+            </li>
+            [% IF navigation %]
+
+            [% IF navigation.specials %]
+            <li class="dropdown" id="amw-top-nav-specials">
+              <a href="#" class="dropdown-toggle"
+                 title="[% loc('about, links...') %]"
+                 data-toggle="dropdown">
+                <span class="fa fa-ellipsis-h fa-fw"></span>
+                <span class="visible-lg-inline visible-xs-inline" id="awm-special-label">
+                  [% loc('More') %]
+                </span>
+                <b class="caret hidden-sm"></b>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-left">
+                [% FOREACH link IN navigation.specials %]
+                <li[% IF link.active %] class="active"[% END %]>
+                  <a href="[% link.uri | html %]">[% link.name | html %]</a>
+                </li>
+                [% END %]
+              </ul>
+            </li>
+            [% END %]
+
+            [% IF navigation.projects %]
+            <li class="dropdown" id="amw-top-nav-projects">
+              <a href="#" class="dropdown-toggle"
+                 title="[% loc('Related projects') %]"
+                 data-toggle="dropdown">
+                <span class="fa fa-th fa-fw"></span>
+                <span class="hidden-sm" id="amw-sitegroup-label">
+                  [% loc('Related projects') %]
+                </span>
+                <b class="caret hidden-sm"></b>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-left">
+                [% FOREACH link IN navigation.projects %]
+                <li [% IF link.active %] class="active"[% END %]>
+                  <a href="[% link.uri | html %]">[% link.name | html %]</a>
+                </li>
+                [% END   %]
+              </ul>
+            </li>
+            [% END %]
+
+            [% END %]
+
+            [% IF site.multilanguage %]
+            <li class="dropdown" id="amw-top-nav-multilanguage">
+              <a href="#" class="dropdown-toggle"
+                 title="[% loc('Language selection') %]"
+                 data-toggle="dropdown">
+                <span class="fa fa-globe fa-fw"></span>
+                <span class="visible-xs-inline">
+                  [% loc('Language selection') %]
+                </span>
+                <b class="caret hidden-sm"></b>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-left">
+                [% FOREACH lang IN site.multilanguage_list %]
+                <li [% IF current_locale_code == lang.code -%]
+                    class="active"
+                    [%- END %]
+                    id="select-lang-[% lang.code %]">
+                  <a href="?__language=[% lang.code %]">
+                    [% lang.label %]
+                  </a>
+                </li>
+                [% END %]
+              </ul>
+            </li>
+            [% END %]
+
+            [%- # this menu is reserved for logged in users -%]
+            [% IF c.user_exists %]
+            <li class="dropdown">
+              <a href="#"
+                 class="dropdown-toggle"
+                 title="[% c.user.get('username') | html %]"
+                 data-toggle="dropdown">
+                <span class="fa fa-user fa-fw"></span>
+                <span class="visible-xs-inline">
+                  [% c.user.get('username') | html %]
+                </span>
+                <b class="caret hidden-sm"></b>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-left">
+                <li role="presentation" class="dropdown-header hidden-xs">
+                  [% c.user.get('username') %]
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/edit/newtext', ['special']) %]">
+                    <span class="fa fa-plus-square fa-fw" aria-hidden="true"></span>
+                    [% loc('Create a new special page') %]
+                  </a>
+                </li>
+                [% IF site.multilanguage %]
+                <li>
+                  <a href="[% c.uri_for_action('/console/translations') %]">
+                    <span class="fa fa-language fa-fw" aria-hidden="true"></span>
+                    [% loc('Internal list of translations') %]
+                  </a>
+                </li>
+                [% END %]
+                <li>
+                  <a href="[% c.uri_for_action('/publish/pending') %]">
+                    <span class="fa fa-inbox fa-fw" aria-hidden="true"></span>
+                    [% loc('Pending revisions') %]
+                    [% IF site_pending_revisions %]
+                    <span title="[% loc('There are pending revisions') %]">
+                      <span class="badge">[%- site_pending_revisions -%]</span>
+                    </span>
+                    [% END %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/publish/all') %]">
+                    <span class="fa fa-archive fa-fw" aria-hidden="true"></span>
+                    [% loc('All revisions') %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/console/unpublished') %]">
+                    <span class="fa fa-trash fa-fw" aria-hidden="true"></span>
+                    [% loc('Deferred/Deleted texts') %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/console/list_categories') %]">
+                    <span class="fa fa-tags fa-fw" aria-hidden="true"></span>
+                    [% loc('Manage categories') %]
+                  </a>
+                </li>
+                <!--
+                <li>
+                  <a href="[% c.uri_for_action('/nodes/node_root') %]">
+                    <span class="fa fa-tags fa-fw" aria-hidden="true"></span>
+                    [% loc('Nodes') %]
+                  </a>
+                </li>
+                -->
+                <li>
+                  <a href="[% c.uri_for_action('/attachments/list') %]">
+                    <span class="fa fa-file-image-o fa-fw" aria-hidden="true"></span>
+                    [% loc('Attachments') %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/console/git_display') %]">
+                    <span class="fa fa-code-fork fa-fw" aria-hidden="true"></span>
+                    Git
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/console/alias_display') %]">
+                    <span class="fa fa-exchange fa-fw" aria-hidden="true"></span>
+                    [% loc('Redirections') %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/user/create') %]">
+                    <span class="fa fa-user-plus fa-fw" aria-hidden="true"></span>
+                    [% loc('Create a new librarian') %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/user/edit', [c.user.get('id')]) %]">
+                    <span class="fa fa-id-card-o fa-fw" aria-hidden="true"></span>
+                    [% loc('Update account info') %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/user/edit_options', [c.user.get('id')]) %]">
+                    <span class="fa fa-object-group fa-fw" aria-hidden="true"></span>
+                    [% loc('Edit screen layout options') %]
+                  </a>
+                </li>
+                [%# and these are for root %]
+                [% IF c.check_any_user_role('admin', 'root') %]
+                <li>
+                  <a href="[% c.uri_for_action('/user/site_config') %]">
+                    <span class="fa fa-cog fa-fw" aria-hidden="true"></span>
+                    [% loc('Edit site configuration') %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/tasks/rebuild') %]">
+                    <span class="fa fa-refresh fa-fw" aria-hidden="true"></span>
+                    [% loc('Rebuild all generated files') %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/tasks/jobs') %]">
+                    <span class="fa fa-tasks fa-fw" aria-hidden="true"></span>
+                    [% loc("Job status") %]
+                    [% IF site_failed_jobs %]
+                    <span title="[% loc('There are failed jobs') %]">
+                      <span class="badge">[%- site_failed_jobs -%]</span>
+                      <span class="fa fa-warning"></span>
+                    </span>
+                    [% END %]
+                  </a>
+                </li>
+                <li>
+                  [% IF c.check_user_roles('root') %]
+                  <a href="[% c.uri_for_action('/admin/show_users') %]">
+                    <span class="fa fa-users fa-fw" aria-hidden="true"></span>
+                    [% loc('Users') %]
+                  </a>
+                  [% ELSE %]
+                  <a href="[% c.uri_for_action('/siteadmin/show_users') %]">
+                    <span class="fa fa-users fa-fw" aria-hidden="true"></span>
+                    [% loc('Site users') %]
+                  </a>
+                  [% END %]
+                </li>
+                [% END %]
+                [% IF c.check_user_roles('root') %]
+                <li>
+                  <a href="[% c.uri_for_action('/admin/edit', site.id) %]">
+                    <span class="fa fa-cogs fa-fw" aria-hidden="true"></span>
+                    [% loc('Edit full site configuration') %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/admin/list') %]">
+                    <span class="fa fa-sitemap fa-fw" aria-hidden="true"></span>
+                    [% loc('Sites') %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/admin/jobs') %]">
+                    <span class="fa fa-tasks fa-fw" aria-hidden="true"></span>
+                    [% loc('Jobs (all sites)') %]
+                  </a>
+                </li>
+                [% END %]
+                <li>
+                  <a href="[% c.uri_for_action('/help/faq') %]">
+                    <span class="fa fa-support fa-fw" aria-hidden="true"></span>
+                    [% loc("Maintainer's FAQ") %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for('/logout') %]">
+                    <span class="fa fa-sign-out fa-fw" aria-hidden="true"></span>
+                    [% loc('Logout') %]
+                  </a>
+                </li>
+              </ul>
+            </li>
+            [% END %]
+            [%- # the menu for logged in ends here -%]
+
+            <li [% IF nav == 'bookbuilder' %] class="active" [% END %] id="amw-top-nav-bookbuilder">
+              <a href="[% c.uri_for('/bookbuilder') %]" title="[% loc('Bookbuilder') %]">
+                [% SET bb_count_texts = c.model('BookBuilder').total_texts %]
+                <span class="fa fa-book [% IF bb_count_texts %]text-primary[% END %] fa-fw"></span>
+                <span class="visible-lg-inline visible-xs-inline">
+                  [% loc('Bookbuilder') %]
+                </span>
+                [% IF bb_count_texts %]
+                <strong>([% bb_count_texts %])</strong>
+                [% END %]
+              </a>
+            </li>
+            <li id="amw-navbar-opds-link">
+              <a href="[% c.uri_for('/help/opds') %]" title="[% loc('Mobile') %]">
+                <span class="fa fa-tablet fa-fw"></span>
+                <span class="visible-xs-inline">
+                  [% loc('Mobile applications') %]
+                </span>
+              </a>
+            </li>
+            <li id="amw-navbar-feed-link">
+              <a href="[% c.uri_for('/feed') %]" title="[% loc('RSS feed') %]">
+                <span class="fa fa-rss fa-fw"></span>
+                <span class="visible-xs-inline">
+                  [% loc('RSS feed') %]
+                </span>
+              </a>
+            </li>
+            <li id="amw-navbar-opds-random">
+              <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">
+                <span class="fa fa-random fa-fw"></span>
+                <span class="visible-xs-inline">
+                  [% loc('Random') %]
+                </span>
+              </a>
+            </li>
+            [% IF c.user_exists || site.human_can_edit %]
+            <li id="awm-navbar-add-new-text-icon">
+              <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]" title="[% loc('Add a new text') %]">
+                <span class="fa fa-plus fa-fw"></span>
+                <span class="visible-xs-inline">
+                  [% loc('Add a new text') %]
+                </span>
+              </a>
+            </li>
+            [% END %]
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div id="wrap">
+      <div id="main"
+           role="main"
+           class="container[% IF layout_always_fluid  %]-fluid[% END %] clear-top">
+      [% IF site.has_site_file('widebanner.png') %]
+      <div class="row">
+        <div class="col-12-sm hidden-xs">
+          <div class="amw-wide-banner-container">
+            <a class="amw-wide-banner" href="[% c.uri_for('/') %]">
+              <img src="[% c.uri_for_action('/sitefiles/local_files',
+                        [ site.id, 'widebanner.png' ]) %]"
+                   title="[% site.sitename | html %]"
+                   class="amw-wide-banner-img img-responsive"
+                   alt="[% site.sitename | html %]" />
+            </a>
+          </div>
+        </div>
+        <div>&nbsp;
+        </div>
+      </div>
+      [% END %]
+      [% IF top_layout_html %]
+      <div class="row" id="amw-top-layout-row">
+        <div class="col-12-xs">
+          [% top_layout_html %]
+        </div>
+      </div>
+      [% END %]
+
+
+      <div class="row">
+        <div id="amw-main-layout-column"
+             class="col-sm-[% main_body_cols || 12 %][% IF left_layout_cols %] col-sm-push-[% left_layout_cols %][% END %]">
+
+          <div id="js-site-settings" style="display:none"
+               data-use-named-toc="[% site.use_named_toc %]"></div>
+
+[% IF c.sessionid %]
+      [% IF c.flash.status_msg %]
+      <div class="alert alert-success" id="status_message">
+        [% IF c.flash.status_msg == 'BOOKBUILDER_ADDED' %]
+        <a href="[% c.uri_for_action('/bookbuilder/index') %]"
+           style="color: black">
+          [% loc('The text was added to the bookbuilder') %]
+        </a>
+        [% ELSE %]
+        [% c.flash.status_msg | html %]
+        [% END %]
+      </div>
+      [% END %]
+      [% IF c.flash.error_msg %]
+      <div class="alert alert-warning" id="error_message">
+        <span class="fa fa-exclamation-triangle"></span>
+        [% c.flash.error_msg | html %]
+      </div>
+      [% END %]
+      [%- # all rendered, clear this -%]
+      [%- SET flash_cleared_output_suppressed = c.clear_flash -%]
+[% END %]
+
+        <div id="widepage-container">
+          <div id="widepage">
+            [% content %]
+          </div>
+        </div>
+          <div>&nbsp;</div>
+          <div>&nbsp;</div>
+        </div>
+        [% IF left_layout_html %]
+        <div id="amw-left-layout-column"
+             class="col-sm-[% left_layout_cols %] col-sm-pull-[% main_body_cols %]">
+          [% left_layout_html %]
+          <div>&nbsp;</div>
+          <div>&nbsp;</div>
+        </div>
+        [% END %]
+        [% IF right_layout_html %]
+        <div id="amw-right-layout-column"
+             class="col-sm-[% right_layout_cols %]">
+          [% right_layout_html %]
+          <div>&nbsp;</div>
+          <div>&nbsp;</div>
+        </div>
+        [% END %]
+      </div>
+      <!-- end of row  -->
+      [% IF bottom_layout_html %]
+      <div class="row">
+        <div class="col-xs-12" id="amw-bottom-layout-row">
+          [% bottom_layout_html %]
+        </div>
+      </div>
+      [% END %]
+      <div class="clearfix">&nbsp;</div>
+      <div class="clearfix">&nbsp;</div>
+    </div><!-- end of main -->
+    </div><!-- end of wrap -->
+    <div id="footer" role="contentinfo">
+      <div class="footer">
+        <div class="center">
+        <span id="amw-footer-link-random">
+          <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">[% loc('Random') %]</a>
+        </span>
+        <span id="amw-footer-link-random-sep">|</span>
+        <span id="amw-footer-link-feeds">
+          <a href="[% c.uri_for('/feed') %]">[% loc('RSS feed') %]</a>
+        </span>
+        <span id="amw-footer-link-feeds-sep">|</span>
+        <span id="amw-footer-link-library">
+      <a href="[% c.uri_for('/listing') %]"
+		 title="[% loc('texts sorted by title') %]">[% loc('Titles') %]</a>
+        </span>
+
+        [% FOREACH sitectype IN category_types_navbar_display %]
+          <span id="amw-footer-link-[% sitectype.ctype %]s-sep">|</span>
+          <span id="amw-footer-link-[% sitectype.ctype %]s">
+            <a href="[% c.uri_for_action('/category/category_list_display', [ sitectype.ctype ]) %]"
+		       title="[% loc(sitectype.title) %]">[% loc(sitectype.title) %]</a>
+          </span>
+        [% END %]
+
+        <span id="amw-footer-link-latest-sep">|</span>
+        <span id="amw-footer-link-latest">
+      <a href="[% c.uri_for_action('/latest/index') %]">[% loc('Latest entries') %]</a>
+        </span>
+        <span id="amw-footer-link-opds-sep">|</span>
+        <span id="amw-footer-link-opds">
+      <a href="[% c.uri_for_action('/help/opds') %]">[% loc('Mobile') %]</a>
+        </span>
+      [% IF c.user_exists || site.human_can_edit %]
+        <span id="amw-footer-link-newtext">
+        <span id="amw-footer-link-newtext-sep">|</span>
+      <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">[% loc('Add a new text') %]</a>
+        </span>
+      [% END %]
+        </div>
+        [% IF footer_layout_html %]
+        <div>
+          [% footer_layout_html %]
+        </div>
+        [% END %]
+      </div>
+    </div>
+    <script src="[% c.uri_for('/static/js/amw-autosuggest.js') %]"></script>
+    <script src="[% c.uri_for('/static/js/amw-navbar.js') %]"></script>
+  </body>
+</html>
+

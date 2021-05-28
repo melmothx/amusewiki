@@ -36,6 +36,9 @@ before process => sub {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
     return unless $site;
+    if ($site->is_using_bs5_theme) {
+        $c->stash->{additional_template_paths} = [ $c->path_to('views', 'bs5') ];
+    }
     if ($c->request->query_params->{bare}) {
         $c->stash(no_wrapper => 1);
     }
