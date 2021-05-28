@@ -4151,48 +4151,44 @@ sub populate_monthly_archives {
 
 sub bootstrap_themes {
     my $self = shift;
-    my @themes = (qw/amusewiki
-                     amusecosmo
-                     amusejournal
-                     robotojournal
-                     purplejournal
-
-                     cerulean
-                     cosmo
-                     cyborg
-                     darkly
-                     flatly
-                     journal
-                     lumen
-                     readable
-                     simplex
-                     slate
-                     spacelab
-                     united
-                     paper
-                     sandstone
-                     superhero
-                     yeti
-                    /);
+    my $css_dir = AmuseWikiFarm::Utils::Paths::static_file_location()->child('css');
+    my @themes;
+    foreach my $css (sort $css_dir->children(qr/\.css$/)) {
+        if ($css->basename =~ m/\Abootstrap\.(.*?)\.css\z/) {
+            push @themes, $1;
+        }
+    }
     return @themes;
 }
 
 sub bootstrap_theme {
     my $self = shift;
-    my $theme = $self->theme || 'amusewiki';
-    my %avail = map { $_ => 1 } $self->bootstrap_themes;
-    if ($avail{$theme}) {
-        return $theme;
+    return $self->theme || 'amusewiki';
+}
+
+sub is_using_bs5_theme {
+    my $self = shift;
+    if ($self->bootstrap_theme =~ m/-bs5$/) {
+        return 1;
     }
     else {
-        log_error { "Theme $theme not found! for site " . $self->canonical };
-        return 'amusewiki';
+        return 0;
     }
 }
 
 sub bootstrap_theme_list {
     my $self = shift;
-    my @themes = map { +{ name => $_, label => ucfirst($_) } } $self->bootstrap_themes;
+    my @themes;
+    foreach my $theme ($self->bootstrap_themes) {
+        my $label;
+        if ($theme =~ m/(.*?)-bs5/) {
+            $label = ucfirst($1) . " (Bootstrap 5)";
+        }
+        else {
+            $label = ucfirst($theme);
+        }
+        push @themes, { name => $theme, label => $label };
+    }
     Dlog_debug { "Themes are $_" } \@themes;
     return @themes;
 }

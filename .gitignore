@@ -51,6 +51,7 @@ debian/amusewiki/*
 debian/amusewiki*.debhelper*
 debian/amusewiki.substvars
 lib/AmuseWikiFarm/I18N/*.mo
+bootstrap-amw/.sass-cache
 .vagrant/
 cover_db
 # Carton module installation directory

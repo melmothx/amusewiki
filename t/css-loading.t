@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+use Data::Dumper::Concise;
 use Test::More tests => 11;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
@@ -47,3 +48,5 @@ $mech->get('/category/topic/miao/edit');
 diag $mech->uri;
 $mech->content_contains($mk_css);
 
+diag Dumper([$site->bootstrap_themes]);
+diag Dumper([$site->bootstrap_theme_list]);
