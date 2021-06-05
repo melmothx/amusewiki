@@ -13,7 +13,7 @@ use Text::Amuse::Compile::Utils qw/write_file/;
 
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
-use Test::More tests => 5;
+use Test::More tests => 11;
 use Path::Tiny;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
@@ -33,6 +33,11 @@ ok ($site->has_site_file('local.js'));
 ok (-f $js && -l $js, "$js exists and it's a symlink");
 
 
+$mech->get_ok('/sitefiles/' . $site->id . '/local.css');
+$mech->get_ok('/sitefiles/' . $site->id . '/local.js');
+
+unlink $js;
+symlink "/etc/passwd", $js;
 $mech->get_ok('/sitefiles/' . $site->id . '/local.css');
 $mech->get('/sitefiles/' . $site->id . '/local.js');
 is $mech->status, 404, "Symlink return a 404";

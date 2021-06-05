@@ -11,12 +11,31 @@ use AmuseWikiFarm::Utils::Paths;
 use Cwd;
 use constant ROOT => getcwd();
 
+sub _allowed_symlink {
+    my ($self, $c, $file) = @_;
+    if (my $site = $c->stash->{site}) {
+        if (Path::Tiny::path($site->repo_root)->realpath->subsumes(Path::Tiny::path($file)->realpath)) {
+            log_debug { "Serving $file, internal symlink" };
+            return 1;
+        }
+        else {
+            log_error { "$file is outside the site tree! Not serving" };
+        }
+    }
+    return 0;
+}
+
 sub process {
     my ($self, $c) = @_;
     my $file = $c->stash->{serve_static_file};
     log_debug { "Serving $file" };
-    unless ($file and -f $file and ! -l $file) {
-        log_error { "$file is not a file! (symlink maybe)" };
+    if (-l $file and !$self->_allowed_symlink($c, $file)) {
+        $c->response->status(404);
+        $c->response->body('Not found');
+        return;
+    }
+    unless ($file and -f $file) {
+        log_error { "$file is not a file!" };
         $c->response->status(404);
         $c->response->body('Not found');
         return;
