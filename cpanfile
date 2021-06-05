@@ -108,7 +108,7 @@ requires 'Text::Amuse::Preprocessor' => '0.61';
 requires 'MooseX::MarkAsMethods';
 requires 'File::MimeInfo';
 requires 'Moo';
-requires 'Path::Tiny' => '0.015';
+requires 'Path::Tiny' => '0.048';
 requires 'Locale::Maketext::Lexicon';
 requires 'Locale::PO';
 
