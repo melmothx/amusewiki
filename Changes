@@ -4,6 +4,15 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.515 2021-06-05
+
+ - When pulling a remote git, remove symlinks pointing outside the
+   tree. This is a security patch against potential symlink-based
+   attacks coming from remote repository, tricking the application to
+   access files outside the site root. [SECURITY]
+ - Serve symlinks if they point inside the tree.
+ - New option to toggle the display of latest entries on special pages
+
 2.514 2021-05-23
 
  - Fix bug with links which URI doesn't understand (reported by anelki
