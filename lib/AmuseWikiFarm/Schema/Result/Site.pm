@@ -2664,6 +2664,7 @@ sub update_db_from_tree {
 
 sub _pre_update_db_from_tree {
     my ($self, $logger) = @_;
+    $self->scan_and_remove_rogue_symlinks;
     $logger ||= sub { print @_ };
     my $todo = $self->repo_find_changed_files;
     # first delete
@@ -4859,6 +4860,49 @@ sub amuse_include_paths {
     my $self = shift;
     return [ grep { length $_ and -d $_ }
              map { $_->directory } $self->include_paths->search(undef, { order_by => 'sorting_pos' }) ];
+}
+
+sub scan_and_remove_rogue_symlinks {
+    my $self = shift;
+    my $git = $self->git;
+    # no attack surface if no git.
+    return unless $git;
+
+    my $root = $self->repo_root;
+    my $root_path = Path::Tiny::path($root)->realpath;
+    my %symlinks;
+    find({
+          wanted => sub {
+              my $file = $File::Find::name;
+              if (-l $file) {
+                  $symlinks{$file} = Path::Tiny::path($file)->realpath;
+              }
+          }
+         }, $root);
+    Dlog_debug { "Found symlinks: $_" } \%symlinks;
+
+    my $removals = 0;
+    foreach my $link (keys %symlinks) {
+        my $target = $symlinks{$link};
+        if ($root_path->subsumes($target)) {
+            log_debug { "$link => $target is legit" };
+        }
+        else {
+            log_info { "$link => $target needs to be removed, symlink outside the tree" };
+            try {
+                $git->rm($link);
+                $removals++;
+            }
+            catch {
+                my $err = $_;
+                log_error { "Error removing $link => $target: $err" };
+            };
+        }
+    }
+    if ($removals) {
+        $git->commit({ message => "Removed symlinks pointing outside the tree" });
+        $self->sync_remote_repo;
+    }
 }
 
 after insert => sub {
