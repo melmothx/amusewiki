@@ -1625,6 +1625,7 @@ t/entities.json
 t/entities.t
 t/express-publishing.t
 t/fail-on-cropmarks-109.t
+t/failure-reason-371.t
 t/files/amw-version-22.pdf
 t/files/big.jpeg
 t/files/manual.pdf
