@@ -13,7 +13,7 @@ use Text::Amuse::Compile::Utils qw/write_file/;
 
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
-use Test::More tests => 8;
+use Test::More tests => 9;
 use Path::Tiny;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
@@ -50,8 +50,6 @@ MUSE
     ok $url, "Target is $url";
     diag $rev->title->deleted;
     like $rev->title->deleted, qr{xxxx.*does not exist};
-
-
     $mech->get($url);
     is $mech->uri->path, "/console/unpublished";
     $mech->content_like(qr{xxxx.*does not exist});
@@ -76,9 +74,8 @@ MUSE
     my $url = $rev->title->full_uri;
     ok $url, "Target is $url";
     diag $rev->title->deleted;
-    
+    $mech->get_ok("/console/unpublished?bare=1");
+    $mech->content_contains('Do not &lt;publish&gt;', "Found escaped reason"); 
 }
 
-$mech->get_ok("/console/unpublished?bare=1");
-diag $mech->content;
 

@@ -22,6 +22,7 @@
         [% text.full_uri %]
       </a>
     </td>
+    [% # all these fields are already escaped %]
     <td>
       [% text.author %]
     </td>
