@@ -834,9 +834,8 @@ sub _check_status_file {
         return;
     }
 
-    my $statusline = read_file($statusfile) || '';
-
-    if ($statusline =~ m/^(OK|DELETED|FAILED)/) {
+    my ($statusline, @reasons) = Path::Tiny::path($statusfile)->lines_utf8;
+    if ($statusline and $statusline =~ m/^(OK|DELETED|FAILED)/) {
         my $status = $1;
         if ($status eq 'OK') {
             # nothing to do
@@ -845,7 +844,8 @@ sub _check_status_file {
             warn "This should not happen! $statusline, but we're published!\n";
         }
         elsif ($status eq 'FAILED') {
-            $self->deleted('Compilation failed!');
+            $self->deleted(encode_entities(join('', grep { /\w/ } @reasons) || 'Compilation failed!',
+                                           q{<>&"'}));
             $self->status('deleted');
             $self->update;
             warn "Compilation failed, setting status to deleted\n";
