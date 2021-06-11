@@ -349,6 +349,18 @@ __PACKAGE__->table("custom_formats");
   default_value: 0
   is_nullable: 0
 
+=head2 bb_geometry_top_margin
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
+=head2 bb_geometry_outer_margin
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
 =head2 bb_fussy_last_word
 
   data_type: 'smallint'
@@ -526,6 +538,10 @@ __PACKAGE__->add_columns(
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "bb_areaset_width",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "bb_geometry_top_margin",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "bb_geometry_outer_margin",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
   "bb_fussy_last_word",
   { data_type => "smallint", default_value => 0, is_nullable => 1 },
   "bb_tex_emergencystretch",
@@ -596,8 +612,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-12-02 15:58:05
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Gni+5Pu1BhLcmfkSkNadKQ
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-06-11 16:13:41
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:WolgXpk1RpXq71++2PrZKw
 
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;
