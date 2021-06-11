@@ -554,6 +554,10 @@ sub areasizes_in_mm {
     return [ 0, (30..300) ];
 }
 
+sub margins_in_mm {
+    return [ 0..150 ];
+}
+
 has areaset_width => (is => 'rw',
                       isa => Enum[ @{__PACKAGE__->areasizes_in_mm} ],
                       default => sub { 0 });
@@ -582,6 +586,15 @@ sub computed_areaset_width {
     }
 }
 
+has geometry_top_margin => (is => 'rw',
+                            isa => Int,
+                            default => sub { 0 }
+                           );
+
+has geometry_outer_margin => (is => 'rw',
+                              isa => Int,
+                              default => sub { 0 }
+                             );
 
 sub tex_emergencystretch_values {
     return [ 0..60 ];
@@ -597,11 +610,11 @@ sub tex_tolerances {
 
 has tex_tolerance => (is => 'rw',
                       isa => Int,
-                      default => 200);
+                      default => sub { 200 });
 
 has tex_emergencystretch => (is => 'rw',
                              isa => Int,
-                             default => 30);
+                             default => sub { 30 });
 
 has fussy_last_word => (is => 'rw',
                         isa => Bool,
@@ -1254,6 +1267,8 @@ sub profile_methods {
               unbranded
               areaset_height
               areaset_width
+              geometry_top_margin
+              geometry_outer_margin
               fussy_last_word
               tex_emergencystretch
               tex_tolerance
@@ -1324,7 +1339,12 @@ sub as_job {
                                     ignore_cover         => $self->ignore_cover,
                                     areaset_height       => $self->computed_areaset_height,
                                     areaset_width        => $self->computed_areaset_width,
-
+                                    geometry_outer_margin => ($self->geometry_outer_margin
+                                                              ? $self->geometry_outer_margin . 'mm'
+                                                              : ''),
+                                    geometry_top_margin   => ($self->geometry_top_margin
+                                                              ? $self->geometry_top_margin . 'mm'
+                                                              : ''),
                                     ($self->is_single_file ? ()
                                      : (
                                         # when we provide these, they take precedence over the file defined
