@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 12;
+use Test::More tests => 15;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -76,6 +76,21 @@ run_all_jobs($schema);
     $mech->content_contains('\\setlength{\\emergencystretch}{50pt}');
     $mech->content_contains('areaset[current]{40mm}{40mm}');
 }
+
+sleep 1;
+
+$cf->update({
+             bb_geometry_top_margin => '10',
+             bb_geometry_outer_margin => '10',
+            });
+$muse->append_utf8("\n");
+
+$site->update_db_from_tree;
+run_all_jobs($schema);
+$mech->get_ok('/library/test.' . $cf_code . '.tex');
+$mech->content_lacks('areaset[current]');
+$mech->content_contains('{geometry}');
+# diag $mech->content;
 
 $target_dir->child($cf_code . '-latex.tt')->spew_utf8("% this is my template\n",
                                                       ${ Text::Amuse::Compile::Templates->new->latex });
