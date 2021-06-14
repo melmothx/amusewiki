@@ -1,3 +1,5 @@
+$(document).ready(function(){
+
 function show_opening() {
     if ($('#twoside').is(":checked")) {
         $('#choose-opening').show('fast');
@@ -85,6 +87,9 @@ function handle_papersize(prefix) {
 }
 
 function show_hide_standard_papersizes(prefix) {
+    if (prefix == 'geometry') {
+        return;
+    }
     var hid = '#' + prefix + '-paper-height';
     var wid = '#' + prefix + '-paper-width';
     var standard = '#papersize';
@@ -98,9 +103,11 @@ function show_hide_standard_papersizes(prefix) {
     var width  = $(wid).val();
     if (height && width && (height != "0") && (width != "0")) {
         $(standard).hide('fast');
+        $(standard + '-container').hide('fast');
     }
     else {
         $(standard).show('fast');
+        $(standard + '-container').show('fast');
     }
 }
 
@@ -113,7 +120,15 @@ function show_conditional_nocoverpage() {
     }
 }
 
-$(document).ready(function(){
+function show_geometry() {
+    if ($('#areaset-paper-width').val() != "0" && $('#areaset-paper-height').val() != "0") {
+        $('.geometry').show('fast');
+    }
+    else {
+        $('.geometry').hide('fast');
+    }
+}
+
     show_format_options();
     show_imposition();
     show_signature();
@@ -123,7 +138,10 @@ $(document).ready(function(){
     handle_papersize('crop');
     handle_papersize('logical');
     handle_papersize('areaset');
+    // misnamed
+    handle_papersize('geometry');
     show_conditional_nocoverpage();
+    show_geometry();
     $('#imposed').click(function() {
         show_imposition();
     });
@@ -152,6 +170,7 @@ $(document).ready(function(){
         else {
             show_hide_standard_papersizes(prefix);
         }
+        show_geometry();
     });
     $("#bb-profiles-instructions").hide();
     $("form#bbform :input").change(function() {

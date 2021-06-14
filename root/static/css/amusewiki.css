@@ -361,9 +361,19 @@ ul.ui-autocomplete {
     margin-bottom: 1em;
 }
 
+.mb-2 {
+    margin-bottom: 2em;
+}
+
+
 .mt-1 {
     margin-top: 1em;
 }
+
+.mt-2 {
+    margin-top: 2em;
+}
+
 
 legend.amw-facet-title {
     font-weight: bold;

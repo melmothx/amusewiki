@@ -230,28 +230,37 @@
       </div>
     </div>
     <div class="form-group pdf-option">
-      <div class="row">
-        <div class="col-sm-3">
+      <div class="row mb-2">
+        <div class="col-sm-3 mt-1">
           <label for="division">
-            [% loc('Division factor') %]
-            ([% loc('Higher division factor means narrower margins') %];
-            [% loc('if you want to use a custom size, you need to set both width and height') %])
+            [% loc("Margins: please choose a division factor or set width and height") %]
           </label>
         </div>
         <div class="col-sm-9">
-          <select name="division" id="division" class="form-control">
-            [% FOREACH division IN bb.divs_values %]
-            <option value="[% division %]"
-                    [% IF bb.division == division %]selected="selected"[% END %]>
-              [% division %]
-            </option>
-            [% END %]
-          </select>
+          <div class="row mt-1" id="division-container">
+            <div class="col-xs-8">
+              <label for="division">
+                [% loc('Division factor') %]:
+              </label>
+            </div>
+            <div class="col-xs-4">
+              <select name="division" id="division" class="form-control">
+                [% FOREACH division IN bb.divs_values %]
+                  <option value="[% division %]"
+                          [% IF bb.division == division %]selected="selected"[% END %]>
+                    [% division %]
+                    [% IF loop.first %][% loc('(wider margins)') %][% END %]
+                    [% IF loop.last %][% loc('(narrower margins)') %][% END %]
+                  </option>
+                [% END %]
+              </select>
+            </div>
+          </div>
 
           <div class="row mt-1">
             <div class="col-xs-2">
               <label for="areaset-paper-width">
-                [% loc('Width:') %]
+                [% loc('Text width') %]
               </label>
             </div>
             <div class="col-xs-4">
@@ -265,7 +274,7 @@
                   [% IF areaset_size %]
                   [% areaset_size %] mm
                   [% ELSE %]
-                  [% loc('Standard') %]
+                  [% loc('Auto') %]
                   [% END %]
                 </option>
                 [% END %]
@@ -273,7 +282,7 @@
             </div>
             <div class="col-xs-2">
               <label for="areaset-paper-height">
-                [% loc('Height:') %]
+                [% loc('Text height') %]
               </label>
             </div>
             <div class="col-xs-4">
@@ -287,22 +296,23 @@
                   [% IF areaset_size %]
                   [% areaset_size %] mm
                   [% ELSE %]
-                  [% loc('Standard') %]
+                  [% loc('Auto') %]
                   [% END %]
                 </option>
                 [% END %]
               </select>
             </div>
           </div>
-          <div class="row mt-1 mb-1">
+          <div class="row mt-1 mb-2 geometry">
             <div class="col-xs-2">
               <label for="geometry-outer-margin">
                 [% loc('Outer margin') %]
               </label>
             </div>
             <div class="col-xs-4">
-              <select name="geometry_outer_margin" id="geometry-outer-margin"
-                      class="form-control">
+              <select name="geometry_outer_margin" id="geometry-paper-width"
+                      data-prefix="geometry"
+                      class="form-control paper-select-handle">
                 [% FOREACH margin_size IN bb.margins_in_mm %]
                   <option value="[% margin_size %]"
                           [% IF bb.geometry_outer_margin == margin_size %]selected="selected"[% END %]>
@@ -321,8 +331,9 @@
               </label>
             </div>
             <div class="col-xs-4">
-              <select name="geometry_top_margin" id="geometry-top-margin"
-                      class="form-control">
+              <select name="geometry_top_margin" id="geometry-paper-height"
+                      data-prefix="geometry"
+                      class="form-control paper-select-handle">
                 [% FOREACH margin_size IN bb.margins_in_mm %]
                   <option value="[% margin_size %]"
                           [% IF bb.geometry_top_margin == margin_size %]selected="selected"[% END %]>
