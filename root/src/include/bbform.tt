@@ -187,6 +187,7 @@
               <div class="col-xs-2">
                 <label for="logical-paper-width">
                   [% loc('Width:') %]
+                  <small id="logical-paper-width-label" class="text-danger">[% loc('Please set') %]</small>
                 </label>
               </div>
               <div class="col-xs-4">
@@ -207,6 +208,7 @@
               <div class="col-xs-2">
                 <label for="logical-paper-height">
                   [% loc('Height:') %]
+                  <small id="logical-paper-height-label" class="text-danger">[% loc('Please set') %]</small>
                 </label>
               </div>
               <div class="col-xs-4">
@@ -249,8 +251,8 @@
                   <option value="[% division %]"
                           [% IF bb.division == division %]selected="selected"[% END %]>
                     [% division %]
-                    [% IF loop.first %][% loc('(wider margins)') %][% END %]
-                    [% IF loop.last %][% loc('(narrower margins)') %][% END %]
+                    [% IF loop.first %][% loc('(widest)') %][% END %]
+                    [% IF loop.last %][% loc('(narrowest)') %][% END %]
                   </option>
                 [% END %]
               </select>
@@ -261,6 +263,7 @@
             <div class="col-xs-2">
               <label for="areaset-paper-width">
                 [% loc('Text width') %]
+                <small id="areaset-paper-width-label" class="text-danger">[% loc('Please set') %]</small>
               </label>
             </div>
             <div class="col-xs-4">
@@ -283,6 +286,8 @@
             <div class="col-xs-2">
               <label for="areaset-paper-height">
                 [% loc('Text height') %]
+                <small id="areaset-paper-height-label" class="text-danger">[% loc('Please set') %]</small>
+
               </label>
             </div>
             <div class="col-xs-4">
@@ -305,8 +310,9 @@
           </div>
           <div class="row mt-1 mb-2 geometry">
             <div class="col-xs-2">
-              <label for="geometry-outer-margin">
+              <label for="geometry-paper-width">
                 [% loc('Outer margin') %]
+                <small id="geometry-paper-width-label" class="text-danger">[% loc('Please set') %]</small>
               </label>
             </div>
             <div class="col-xs-4">
@@ -326,8 +332,9 @@
               </select>
             </div>
             <div class="col-xs-2">
-              <label for="geometry-top-margin">
+              <label for="geometry-paper-height">
                 [% loc('Top margin') %]
+                <small id="geometry-paper-height-label" class="text-danger">[% loc('Please set') %]</small>
               </label>
             </div>
             <div class="col-xs-4">
@@ -875,6 +882,7 @@
                 <div class="col-xs-2">
                   <label for="crop-paper-width">
                     [% loc('Width:') %]
+                    <small id="crop-paper-width-label" class="text-danger">[% loc('Please set') %]</small>
                   </label>
                 </div>
                 <div class="col-xs-4">
@@ -896,6 +904,7 @@
                 <div class="col-xs-2">
                   <label for="crop-paper-height">
                     [% loc('Height:') %]
+                    <small id="crop-paper-height-label" class="text-danger">[% loc('Please set') %]</small>
                   </label>
                 </div>
                 <div class="col-xs-4">

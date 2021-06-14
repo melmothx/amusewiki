@@ -87,20 +87,33 @@ function handle_papersize(prefix) {
 }
 
 function show_hide_standard_papersizes(prefix) {
-    if (prefix == 'geometry') {
-        return;
-    }
     var hid = '#' + prefix + '-paper-height';
     var wid = '#' + prefix + '-paper-width';
+
+    var hi_label = $(hid + '-label');
+    var wi_label = $(wid + '-label');
+    hi_label.hide();
+    wi_label.hide();
+
+    var height = $(hid).val();
+    var width  = $(wid).val();
+    if ((height === "0") && (width !== "0")) {
+        hi_label.show('fast');
+    }
+    else if ((height !== "0") && (width === "0")) {
+        wi_label.show('fast');
+    }
+
     var standard = '#papersize';
     if (prefix == "crop") {
         standard = '#crop_papersize';
     }
-    if (prefix == "areaset") {
+    else if (prefix == "areaset") {
         standard  = '#division';
     }
-    var height = $(hid).val();
-    var width  = $(wid).val();
+    else if (prefix == 'geometry') {
+        return;
+    }
     if (height && width && (height != "0") && (width != "0")) {
         $(standard).hide('fast');
         $(standard + '-container').hide('fast');
