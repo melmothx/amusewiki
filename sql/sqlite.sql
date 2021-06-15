@@ -165,6 +165,8 @@ CREATE TABLE custom_formats (
        bb_unbranded SMALLINT DEFAULT 0,
        bb_areaset_height  INTEGER NOT NULL DEFAULT 0,
        bb_areaset_width   INTEGER NOT NULL DEFAULT 0,
+       bb_geometry_top_margin INTEGER NOT NULL DEFAULT 0,
+       bb_geometry_outer_margin INTEGER NOT NULL DEFAULT 0,
        bb_fussy_last_word SMALLINT DEFAULT 0,
        bb_tex_emergencystretch INTEGER NOT NULL DEFAULT 30,
        bb_tex_tolerance INTEGER NOT NULL DEFAULT 200,
