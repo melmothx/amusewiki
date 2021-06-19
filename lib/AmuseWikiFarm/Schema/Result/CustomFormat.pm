@@ -110,14 +110,14 @@ __PACKAGE__->table("custom_formats");
   data_type: 'varchar'
   default_value: 'dove'
   is_nullable: 0
-  size: 255
+  size: 32
 
 =head2 bb_beamertheme
 
   data_type: 'varchar'
   default_value: 'default'
   is_nullable: 0
-  size: 255
+  size: 32
 
 =head2 bb_cover
 
@@ -136,7 +136,7 @@ __PACKAGE__->table("custom_formats");
   data_type: 'varchar'
   default_value: 'a4'
   is_nullable: 0
-  size: 255
+  size: 32
 
 =head2 bb_crop_paper_height
 
@@ -174,7 +174,7 @@ __PACKAGE__->table("custom_formats");
   data_type: 'varchar'
   default_value: 0
   is_nullable: 0
-  size: 255
+  size: 64
 
 =head2 bb_imposed
 
@@ -284,7 +284,7 @@ __PACKAGE__->table("custom_formats");
   data_type: 'varchar'
   default_value: 'generic'
   is_nullable: 0
-  size: 255
+  size: 32
 
 =head2 bb_paper_height
 
@@ -303,7 +303,7 @@ __PACKAGE__->table("custom_formats");
   data_type: 'varchar'
   default_value: '2up'
   is_nullable: 0
-  size: 255
+  size: 64
 
 =head2 bb_signature
 
@@ -344,6 +344,18 @@ __PACKAGE__->table("custom_formats");
   is_nullable: 0
 
 =head2 bb_areaset_width
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
+=head2 bb_geometry_top_margin
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
+=head2 bb_geometry_outer_margin
 
   data_type: 'integer'
   default_value: 0
@@ -408,26 +420,21 @@ __PACKAGE__->add_columns(
     data_type => "varchar",
     default_value => "dove",
     is_nullable => 0,
-    size => 255,
+    size => 32,
   },
   "bb_beamertheme",
   {
     data_type => "varchar",
     default_value => "default",
     is_nullable => 0,
-    size => 255,
+    size => 32,
   },
   "bb_cover",
   { data_type => "smallint", default_value => 1, is_nullable => 1 },
   "bb_crop_marks",
   { data_type => "smallint", default_value => 0, is_nullable => 1 },
   "bb_crop_papersize",
-  {
-    data_type => "varchar",
-    default_value => "a4",
-    is_nullable => 0,
-    size => 255,
-  },
+  { data_type => "varchar", default_value => "a4", is_nullable => 0, size => 32 },
   "bb_crop_paper_height",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "bb_crop_paper_width",
@@ -444,7 +451,7 @@ __PACKAGE__->add_columns(
   "bb_fontsize",
   { data_type => "integer", default_value => 10, is_nullable => 0 },
   "bb_headings",
-  { data_type => "varchar", default_value => 0, is_nullable => 0, size => 255 },
+  { data_type => "varchar", default_value => 0, is_nullable => 0, size => 64 },
   "bb_imposed",
   { data_type => "smallint", default_value => 0, is_nullable => 1 },
   "bb_mainfont",
@@ -489,7 +496,7 @@ __PACKAGE__->add_columns(
     data_type => "varchar",
     default_value => "generic",
     is_nullable => 0,
-    size => 255,
+    size => 32,
   },
   "bb_paper_height",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
@@ -500,7 +507,7 @@ __PACKAGE__->add_columns(
     data_type => "varchar",
     default_value => "2up",
     is_nullable => 0,
-    size => 255,
+    size => 64,
   },
   "bb_signature",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
@@ -525,6 +532,10 @@ __PACKAGE__->add_columns(
   "bb_areaset_height",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "bb_areaset_width",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "bb_geometry_top_margin",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "bb_geometry_outer_margin",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "bb_fussy_last_word",
   { data_type => "smallint", default_value => 0, is_nullable => 1 },
@@ -596,8 +607,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-12-02 15:58:05
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Gni+5Pu1BhLcmfkSkNadKQ
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-06-15 08:26:03
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:V/gvk18hItiy14Diw1IdrQ
 
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;
