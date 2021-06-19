@@ -159,7 +159,9 @@ if [ -f /var/lib/amusewiki/amw.tmp.pid ]; then
     echo "Backup amusewiki $killpid found, waiting 30 seconds then shutting it down"
     # kill as amusewiki to avoid killing random processes as root with stale files etc.
     sleep 30
-    su -c "kill $killpid" amusewiki
+    if su -c "kill $killpid" amusewiki; then
+        echo "Killed $killpid"
+    fi
     echo "Waiting $killpid to terminate"
     sleep 2
     if kill -0 $killpid 2>/dev/null; then
