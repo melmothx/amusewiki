@@ -26,6 +26,7 @@ homedir=`pwd`
 # hyphen-spanish hyphen-swedish hyphen-thai hyphen-turkish
 # hyphen-turkmen hyphen-ukrainian hyphen-uppersorbian hyphen-welsh
 
+year=2021
 
 if [ -d $homedir/local/texlive ]; then
     echo "Moving old installation to backup directory"
@@ -36,25 +37,25 @@ mkdir -p $homedir/local/install-texlive
 cd $homedir/local/install-texlive
 
 TEXMIRROR=ctan.ijs.si/tex-archive
-echo "Installing TeX live 2020"
+echo "Installing TeX live $year"
 # remove all stray files
 rm -rfv install-tl-*
 wget -O install-tl-unx.tar.gz \
-     http://$TEXMIRROR/systems/texlive/tlnet/install-tl-unx.tar.gz
+     https://$TEXMIRROR/systems/texlive/tlnet/install-tl-unx.tar.gz
 tar -xzvf install-tl-unx.tar.gz
 # use shell expansion
-cd install-tl-20*
+cd install-tl-$year*
 arch=`./install-tl --print-arch`
 
 cat <<EOF >> amusewiki.profile
 selected_scheme scheme-custom
-TEXDIR $homedir/local/texlive/2020
-TEXMFCONFIG ~/.texlive2020amw/texmf-config
+TEXDIR $homedir/local/texlive/$year
+TEXMFCONFIG ~/.amusewiki-texlive-$year/texmf-config
 TEXMFHOME ~/texmf
 TEXMFLOCAL $homedir/local/texlive/texmf-local
-TEXMFSYSCONFIG $homedir/local/texlive/2020/texmf-config
-TEXMFSYSVAR $homedir/local/texlive/2020/texmf-var
-TEXMFVAR ~/.texlive2020amw/texmf-var
+TEXMFSYSCONFIG $homedir/local/texlive/$year/texmf-config
+TEXMFSYSVAR $homedir/local/texlive/$year/texmf-var
+TEXMFVAR ~/.amusewiki-texlive-$year/texmf-var
 binary_$arch 1
 collection-basic 1
 instopt_adjustpath 1
@@ -78,11 +79,11 @@ tlpdbopt_w32_multi_user 1
 
 EOF
 
-./install-tl -repository http://$TEXMIRROR/systems/texlive/tlnet \
+./install-tl -repository https://$TEXMIRROR/systems/texlive/tlnet \
              -profile amusewiki.profile
 
-export PATH="$homedir/local/texlive/2020/bin/$arch:$PATH"
-$homedir/local/texlive/2020/bin/$arch/tlmgr install \
+export PATH="$homedir/local/texlive/$year/bin/$arch:$PATH"
+$homedir/local/texlive/$year/bin/$arch/tlmgr install \
         microtype koma-script graphics tools enumitem ulem bigfoot wrapfig     \
         hyperref pdftexcmds infwarerr hycolor auxhook kvoptions zapfding       \
         atveryend bookmark fontspec polyglossia xindy xetex luatex imakeidx    \
@@ -106,5 +107,5 @@ $homedir/local/texlive/2020/bin/$arch/tlmgr install \
         hyphen-spanish hyphen-swedish hyphen-thai hyphen-turkish               \
         hyphen-turkmen hyphen-ukrainian hyphen-uppersorbian hyphen-welsh
 
-echo "TeXlive installed in $homedir/local/texlive, bin path is $homedir/local/texlive/2020/bin/$arch"
+echo "TeXlive installed in $homedir/local/texlive, bin path is $homedir/local/texlive/$year/bin/$arch"
 
