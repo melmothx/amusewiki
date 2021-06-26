@@ -547,11 +547,11 @@ sub papersize_values {
 }
 
 sub papersizes_in_mm {
-    return [ 0, (80..300) ];
+    return [ 0, (80..500) ];
 }
 
 sub areasizes_in_mm {
-    return [ 0, (30..300) ];
+    return [ 0, (30..500) ];
 }
 
 sub margins_in_mm {
