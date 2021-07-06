@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-use Test::More tests => 25;
+use Test::More tests => 37;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -61,7 +61,14 @@ foreach my $spec ({
                   },
                   {
                    imposed => 1,
-                  }) {
+                  },
+                  {
+                   geometry_top_margin => 10,
+                   geometry_outer_margin => 10,
+                   areaset_width => 50,
+                   areaset_height => 70,
+                  }
+                 ) {
     $job_id++;
     my $bb = AmuseWikiFarm::Archive::BookBuilder->new(centerchapter => 1,
                                                       site => $site,
@@ -101,5 +108,11 @@ foreach my $spec ({
     else {
         like $tex_body, qr/backslash\{\}vskip 3cm/m;
     }
+    if ($spec->{areaset_height}) {
+        foreach my $k (grep { /^(geometry|areaset)_/ } keys %$spec) {
+            like $cli, qr{--extra \Q$k\E=\Q$spec->{$k}\E}, "Found $k in cli";
+        }
+    }
     $bbfile->remove;
+    diag $cli;
 }
