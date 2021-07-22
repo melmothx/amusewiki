@@ -210,6 +210,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 mirror_info
+
+Type: might_have
+
+Related object: L<AmuseWikiFarm::Schema::Result::MirrorInfo>
+
+=cut
+
+__PACKAGE__->might_have(
+  "mirror_info",
+  "AmuseWikiFarm::Schema::Result::MirrorInfo",
+  { "foreign.attachment_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 site
 
 Type: belongs_to
@@ -251,8 +266,8 @@ Composing rels: L</title_attachments> -> title
 __PACKAGE__->many_to_many("titles", "title_attachments", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-11-14 11:10:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TtFhWnF0NA8fGItNIMOgPw
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-07-22 14:55:51
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gC6yxJt4W8A9v1PNZEr5mQ
 
 =head2 File classes
 

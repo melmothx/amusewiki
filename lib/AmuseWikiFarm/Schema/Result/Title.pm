@@ -403,6 +403,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 mirror_info
+
+Type: might_have
+
+Related object: L<AmuseWikiFarm::Schema::Result::MirrorInfo>
+
+=cut
+
+__PACKAGE__->might_have(
+  "mirror_info",
+  "AmuseWikiFarm::Schema::Result::MirrorInfo",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 muse_headers
 
 Type: has_many
@@ -594,8 +609,8 @@ Composing rels: L</node_titles> -> node
 __PACKAGE__->many_to_many("nodes", "node_titles", "node");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-01-14 10:59:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:PyIy5c0rVUAMJx7Oz55sKg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-07-22 14:55:51
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:epoFFeSHNxWFi0ogIw3Xrg
 
 =head2 translations
 

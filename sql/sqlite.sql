@@ -642,6 +642,41 @@ CREATE TABLE included_file (
        file_epoch INTEGER
 );
 
+CREATE TABLE mirror_origin (
+       mirror_origin_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
+       remote_domain VARCHAR(255) NOT NULL,
+       remote_path VARCHAR(255) NOT NULL,
+       active INTEGER(1) NOT NULL DEFAULT 0
+);
+
+CREATE TABLE mirror_exclusion (
+       mirror_exclusion_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       mirror_origin_id INTEGER NULL REFERENCES mirror_origin(mirror_origin_id)
+                                ON DELETE CASCADE ON UPDATE CASCADE,
+       mirror_info_id INTEGER NOT NULL REFERENCES mirror_info(mirror_info_id)
+                                ON DELETE CASCADE ON UPDATE CASCADE,
+       exclusion_type VARCHAR(32) NOT NULL,
+       exclusion_timestamp DATETIME
+);
+
+CREATE TABLE mirror_info (
+       mirror_info_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       title_id INTEGER NULL REFERENCES title(id)
+                             ON DELETE CASCADE ON UPDATE CASCADE,
+       attachment_id INTEGER NULL REFERENCES attachment(id)
+                             ON DELETE CASCADE ON UPDATE CASCADE,
+       mirror_origin_id INTEGER NULL REFERENCES mirror_origin(mirror_origin_id)
+                                ON DELETE SET NULL ON UPDATE CASCADE,
+       fetched_unix_timestamp INTEGER,
+       md5sum VARCHAR(64) NOT NULL
+);
+
+CREATE UNIQUE INDEX unique_mirror_info_title_id ON mirror_info(title_id);
+CREATE UNIQUE INDEX unique_mirror_info_attachment_id ON mirror_info(attachment_id);
+
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),
