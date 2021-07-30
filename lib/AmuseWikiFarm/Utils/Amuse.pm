@@ -199,6 +199,11 @@ sub muse_file_info {
             $details->{$mandatory} = '';
         }
     }
+    # limit the length of #uid to 250 chars
+    if (length($details->{uid}) > 250) {
+        $details->{uid} = substr $details->{uid}, 0, 250;
+    }
+
     return $details;
 }
 

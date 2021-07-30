@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 68;
+use Test::More tests => 70;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Date::Parse qw/str2time/;
@@ -331,6 +331,28 @@ MUSE
                                              uri => 'miao',
                                             },
                                            ], "author ok");
+}
+
+{
+    my $body = <<'MUSE';
+#title too long
+#author test
+#lang en
+#uid this is broken asdfl aklsdfl asdflk asdfasdf asdfl aklsdfl
+asdflk asdfasdfasdfl aklsdfl asdflk asdfasdf
+asdflk asdfasdfasdfl aklsdfl asdflk asdfasdf
+asdflk asdfasdfasdfl aklsdfl asdflk asdfasdf
+asdflk asdfasdfasdfl aklsdfl asdflk asdfasdf
+asdflk asdfasdfasdfl aklsdfl asdflk asdfasdf
+asdflk asdfasdfasdfl aklsdfl asdflk asdfasdf
+asdflk asdfasdfasdfl aklsdfl asdflk asdfasdf
+
+x
+MUSE
+    write_file($testfile, $body);
+    $info = muse_file_info($testfile, $reporoot);
+    is length($info->{uid}), 250;
+    like $info->{uid}, qr/^this is broken/;
 }
 
 
