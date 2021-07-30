@@ -5,7 +5,7 @@ use warnings;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 14;
+use Test::More tests => 16;
 
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -13,6 +13,7 @@ use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Catalyst::Test 'AmuseWikiFarm';
 use Data::Dumper;
+use Path::Tiny;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -24,6 +25,9 @@ my $res = request('/', { host => 'pincopallino.org' });
 is $res->code, '403', "Access forbidden against non-existent host";
 
 my $site = create_site($schema, $site_id);
+
+path(qw/t files shot.png/)->copy(path($site->path_for_site_files, 'navlogo.png'));
+$site->index_site_files;
 
 $res = request('/library', { host => $host });
 
@@ -79,4 +83,12 @@ is_deeply([$site->all_site_hostnames],
            'example.amusewiki.org' ])
   or diag Dumper([$site->all_site_hostnames]);
 
+$site->site_options->update_or_create({ option_name => 'allow_hostname_aliases',
+                                        option_value => 1 });
+
+$res = request('/library', { host => $host });
+is $res->code, 200;
+
+my $canonical = $site->canonical;
+unlike $res->content, qr/\Q$canonical\E/, "$canonical not found in the response";
 $site->delete;

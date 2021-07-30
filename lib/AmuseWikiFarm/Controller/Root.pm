@@ -84,20 +84,23 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
     unless ($site) {
         if (my $vhost = $c->model('DB::Vhost')->find($host)) {
             $site = $vhost->site;
-            # permit the access to the site only if it's the canonical
-            # one this is kind of questionable, but it's a common SEO
-            # strategy to avoid splitting the results.
-            my $uri = $req->uri->clone;
-            $uri->host($site->canonical);
 
-            # in case there is a session active, avoid crash
-            $c->stash(site => $site);
+            unless ($site->allow_hostname_aliases) {
+                # permit the access to the site only if it's the canonical
+                # one this is kind of questionable, but it's a common SEO
+                # strategy to avoid splitting the results.
+                my $uri = $req->uri->clone;
+                $uri->host($site->canonical);
 
-            # log_debug { "Redirecting to " . $uri->as_string };
-            # place a permanent redirect
-            $c->response->redirect($uri->as_string, 301);
-            $c->detach();
-            return;
+                # in case there is a session active, avoid crash
+                $c->stash(site => $site);
+
+                # log_debug { "Redirecting to " . $uri->as_string };
+                # place a permanent redirect
+                $c->response->redirect($uri->as_string, 301);
+                $c->detach();
+                return;
+            }
         }
         else {
             log_info { "$host not found in vhosts" };

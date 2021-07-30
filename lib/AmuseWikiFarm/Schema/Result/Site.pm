@@ -3058,6 +3058,7 @@ sub update_from_params_restricted {
                         ttdir             => 'value',
 
                         use_luatex               => 'option',
+                        allow_hostname_aliases   => 'option',
 
                         vhosts            => 'delete',
 
@@ -3352,6 +3353,7 @@ sub update_from_params {
 
     # this is totally arbitrary
     foreach my $option (qw/html_special_page_bottom use_luatex
+                           allow_hostname_aliases
                            html_regular_page_bottom
                            left_layout_html
                            right_layout_html
@@ -3918,6 +3920,10 @@ sub show_preview_when_deferred {
 sub use_luatex {
     my ($self) = @_;
     $self->get_option('use_luatex') ? 1 : 0;
+}
+
+sub allow_hostname_aliases {
+    shift->get_option('allow_hostname_aliases') ? 1 : 0;
 }
 
 sub do_not_enforce_commit_message {

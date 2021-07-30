@@ -94,6 +94,19 @@
           </label>
         </div>
     </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+          <label>
+            <input type="checkbox"
+                   [% IF esite.allow_hostname_aliases %]checked="checked"[% END %]
+                   name="allow_hostname_aliases" />
+            [% loc('Do not redirect aliases to canonical') %]
+          </label>
+        </div>
+    </div>
+
+
       </div>
     </fieldset>
     <fieldset>

@@ -230,16 +230,16 @@ sub add_open_graph {
                                p => 'og:image:height',
                                c => $image->image_height,
                               });
+
+            # if we're here, we are already serving the canonical or an allowed alias.
             my $uri = $c->request->uri->clone;
             my %query = $uri->query_form; # don't mind if the param is repeated twice.
             foreach my $k (keys %query) {
                 delete $query{$k} if $k =~ m/^__/;
             }
-            $uri->query_form(%query);
-            my $base = $site->canonical_url_secure;
             # unclear what happens if the app is mounted, but in this
             # case I think that's the last of our problems.
-            push @opengraph, { p => 'og:url', c => $base . $uri->path_query };
+            push @opengraph, { p => 'og:url', c => "$uri" };
 
             if (my $site_name = $site->sitename) {
                 push @opengraph, { p => 'og:site_name', c => $site_name  };
