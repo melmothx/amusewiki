@@ -513,6 +513,11 @@ sub _insert_server_stanza {
     $out .= "    error_log " . File::Spec->catfile($self->nginx_log_dir, $canonical . '.err.log') . ";\n";
     $out .= '    client_max_body_size ' . $site->binary_upload_max_size_in_mega . "m;\n";
 
+    if (my $additional = $site->additional_nginx_conf) {
+        if ($additional =~ m/\w/) {
+            $out .= "### CUSTOM CODE FROM SITE\n$additional\n### END\n\n";
+        }
+    }
     # the common config
     $out .= "    include ${amwbase}_include;\n";
 

@@ -105,6 +105,15 @@
           </label>
         </div>
     </div>
+    <div class="form-group">
+        <label for="additional_nginx_conf" class="col-sm-3 control-label">
+            [% loc('Additional nginx configuration') %]
+        </label>
+        <div class="col-sm-9">
+          <textarea rows="3" name="additional_nginx_conf" id="additional_nginx_conf"
+                    class="form-control">[% esite.additional_nginx_conf | html %]</textarea>
+        </div>
+    </div>
 
 
       </div>

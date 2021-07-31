@@ -3059,6 +3059,7 @@ sub update_from_params_restricted {
 
                         use_luatex               => 'option',
                         allow_hostname_aliases   => 'option',
+                        additional_nginx_conf    => 'option',
 
                         vhosts            => 'delete',
 
@@ -3354,6 +3355,7 @@ sub update_from_params {
     # this is totally arbitrary
     foreach my $option (qw/html_special_page_bottom use_luatex
                            allow_hostname_aliases
+                           additional_nginx_conf
                            html_regular_page_bottom
                            left_layout_html
                            right_layout_html
@@ -3924,6 +3926,10 @@ sub use_luatex {
 
 sub allow_hostname_aliases {
     shift->get_option('allow_hostname_aliases') ? 1 : 0;
+}
+
+sub additional_nginx_conf {
+    shift->get_option('additional_nginx_conf');
 }
 
 sub do_not_enforce_commit_message {
