@@ -3130,6 +3130,20 @@ sub update_from_params {
         }
     }
 
+    # this needs validation
+    {
+        my @available_themes = $self->bootstrap_themes;
+        foreach my $theme (qw/theme bootstrap_alt_theme/) {
+            if (my $got = $params->{$theme}) {
+                unless (grep { $_ eq $got } @available_themes ) {
+                    push @errors, "$theme $got is invalid!";
+                }
+            }
+        }
+    }
+
+
+
     # strings: same here, nothing which should go too wrong, save for
     # the the length.
     my @strings = (qw/magic_answer magic_question fixed_category_list
@@ -3387,6 +3401,7 @@ sub update_from_params {
                            enable_xapian_suggestions
                            allow_binary_uploads
                            display_latest_entries_on_special
+                           bootstrap_alt_theme
                           /) {
         my $value = delete $params->{$option} || '';
         # clean it up from leading and trailing spaces
@@ -4208,6 +4223,10 @@ sub bootstrap_theme_list {
     my @themes = map { +{ name => $_, label => ucfirst($_) } } $self->bootstrap_themes;
     Dlog_debug { "Themes are $_" } \@themes;
     return @themes;
+}
+
+sub bootstrap_alt_theme {
+    return shift->get_option('bootstrap_alt_theme');
 }
 
 sub xapian_reindex_all {

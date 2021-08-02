@@ -56,6 +56,12 @@ before process => sub {
 
         # layout adjustments
         my $theme = $site->bootstrap_theme;
+        if (my $alt_theme = $site->bootstrap_alt_theme) {
+            $c->stash(site_has_alt_theme => 1);
+            if ($c->stash->{use_alternate_theme}) {
+                $theme = $alt_theme;
+            }
+        }
         my $columns = 12;
         if ($c->stash->{full_page_no_side_columns}) {
             $c->stash(layout_always_fluid => 1);

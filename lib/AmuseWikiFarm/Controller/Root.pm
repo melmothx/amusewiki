@@ -165,6 +165,10 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
                        );
         }
     }
+    if (my $switch_theme = $req->query_params->{__switch_theme}) {
+        my $use_alternate = !$c->session->{use_alternate_theme};
+        $c->session(use_alternate_theme => $use_alternate);
+    }
 
         if ($c->sessionid) {
             if (my $user_locale = $c->session->{user_locale}) {
@@ -173,6 +177,9 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
                     # validated by now
                     $locale = $user_locale;
                 }
+            }
+            if ($c->session->{use_alternate_theme}) {
+                $c->stash(use_alternate_theme => 1);
             }
         }
 

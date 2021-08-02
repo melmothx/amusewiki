@@ -597,7 +597,7 @@
               </a>
             </li>
             [% IF c.user_exists || site.human_can_edit %]
-            <li id="awm-navbar-add-new-text-icon">
+            <li id="amw-navbar-add-new-text-icon">
               <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]" title="[% loc('Add a new text') %]">
                 <span class="fa fa-plus fa-fw"></span>
                 <span class="visible-xs-inline">
@@ -605,6 +605,17 @@
                 </span>
               </a>
             </li>
+            [% END %]
+            [% IF site_has_alt_theme %]
+              <li id="amw-navbar-theme-switcher">
+                <a rel="nofollow" href="?__switch_theme=1" title="[% loc('Switch theme') %]">
+                  [% IF use_alternate_theme %]
+                    <span class="fa fa-sun-o"></span>
+                  [% ELSE %]
+                    <span class="fa fa-moon-o"></span>
+                  [% END %]
+                </a>
+              </li>
             [% END %]
           </ul>
         </div><!--/.nav-collapse -->
