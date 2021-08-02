@@ -4,6 +4,15 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.517 2021-08-02
+
+ - Fix crash on debian package when temporary process is gone
+ - Increase paper size valeus
+ - Prevent db insertion crash on #uid too long
+ - New restricted option preventing redirection on aliases to canonical
+ - New restricted option to inject nginx configuration snippets into site stanza
+ - Theme switcher (dark/light toggler)
+
 2.516 2021-06-19
 
  - Display the fail details on compilation failure (#371)
