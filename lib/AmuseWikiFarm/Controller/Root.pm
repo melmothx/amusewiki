@@ -167,7 +167,9 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
     }
     if (my $switch_theme = $req->query_params->{__switch_theme}) {
         my $use_alternate = !$c->session->{use_alternate_theme};
-        $c->session(use_alternate_theme => $use_alternate);
+        $c->session(use_alternate_theme => $use_alternate,
+                    site_id => $site->id,
+                   );
     }
 
         if ($c->sessionid) {

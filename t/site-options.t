@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 44;
+use Test::More tests => 52;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -201,6 +201,19 @@ $mech->submit_form(with_fields => {
                    button => 'edit_site');
 is $site->site_links->count, 0;
 is $site->get_from_storage->bootstrap_alt_theme, 'darkly', "Option set";
+$mech->get_ok('/');
+$mech->content_lacks('darkly');
+$mech->get_ok('/?__switch_theme=1');
+$mech->content_contains('darkly');
+$mech->get_ok('/');
+$mech->content_contains('darkly');
+$mech->get_ok('/?__switch_theme=1');
+$mech->content_lacks('darkly');
+
+# start a new session
+$mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => "blog.amusewiki.org");
+
 $mech->get_ok('/');
 $mech->content_lacks('darkly');
 $mech->get_ok('/?__switch_theme=1');
