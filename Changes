@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.518 2021-08-03
+
+ - Fix theme-switcher persistence for non-logged in (reported by
+   anelki on the #amusewiki channel)
+
 2.517 2021-08-02
 
  - Fix crash on debian package when temporary process is gone
