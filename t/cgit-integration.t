@@ -8,7 +8,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 72;
+use Test::More tests => 76;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -127,6 +127,7 @@ $git->clone($site->remote_repo_root, "$local");
 diag "Using $local";
 die "Not cloned" unless $local->child('.git')->exists;
 
+my $triggered_job_id;
 PUSHING: {
     $site->jobs->delete;
     my $testfile = path($local, 'specials', 'index.muse');
@@ -139,6 +140,7 @@ PUSHING: {
     # it manually.
     $mech->get_ok($site->git_notify_url);
     is $site->jobs->count, 1;
+    $triggered_job_id = $site->jobs->first->id;
     diag Dumper($site->jobs->hri->all);
     while (my $j = $site->jobs->dequeue) {
         $j->dispatch_job;
@@ -264,10 +266,24 @@ is $mech->status, 404;
 $mech->get('/git-notify/blabla');
 is $mech->status, 403;
 
+# the git pull job is not for anons
+
+$mech->get('/tasks/status/' . $triggered_job_id);
+$mech->submit_form(with_fields => { __auth_human => $site->magic_answer });
+is $mech->status, 404;
+$mech->get('/tasks/status/' . $triggered_job_id . '/ajax');
+is $mech->status, 404;
+diag $mech->content;
+
 $mech->get_ok('/login');
 ok($mech->form_id('login-form'), "Found the login-form");
 $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+$mech->get_ok('/tasks/status/' . $triggered_job_id);
+$mech->get_ok('/tasks/status/' . $triggered_job_id . '/ajax');
+
+
 $mech->get_ok('/admin/sites/edit/' . $site->id);
+
 ok $mech->submit_form(with_fields => { canonical => '0cgit0xxx.amusewiki.org' } ,
                       button => 'edit_site');
 {
@@ -276,3 +292,4 @@ ok $mech->submit_form(with_fields => { canonical => '0cgit0xxx.amusewiki.org' } 
     ok -x $hook, "$hook is executable";
     like $hook->slurp_utf8, qr{0cgit0xxx}, "Hook updated";
 }
+

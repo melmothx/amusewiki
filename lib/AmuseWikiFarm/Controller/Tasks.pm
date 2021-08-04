@@ -47,6 +47,12 @@ sub check_job :Chained('root') :PathPart('status') :CaptureArgs(1) {
                 }
             }
         }
+        # restrict anonymous git jobs
+        elsif ($job->task eq 'git') {
+            if ($c->user_exists) {
+                $got = $job;
+            }
+        }
         else {
             # job doesn't define an username
             $got = $job;
