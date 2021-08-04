@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.519 2021-08-04
+
+ - Deny access to git pull logs to anonymous users. This fixes a
+   potential information disclosure (git logs) when using the
+   pulling with a system user. [SECURITY]
+
 2.518 2021-08-03
 
  - Fix theme-switcher persistence for non-logged in (reported by
