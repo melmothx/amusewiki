@@ -179,6 +179,7 @@ sub start_jobber {
 
 sub stop_jobber {
     my $pid = shift || $job_pid;
+    die "Missing $pid" unless $pid;
     kill TERM => $pid;
     wait;
     die "$pid is not killed yet" if kill(0, $pid);

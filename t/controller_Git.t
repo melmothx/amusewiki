@@ -102,12 +102,13 @@ foreach my $text ({
 COMMON: {
     $mech->get_ok('/git');
     $site->update({ cgit_integration => 0 });
-    $mech->get_ok($site->titles->published_texts->first->full_uri);
+    my $test_url = $site->titles->published_texts->first->full_uri;
+    $mech->get_ok($test_url);
     $mech->content_lacks("/git/");
     $mech->get('/git');
     is $mech->status, 401;
     ok $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }) or die;
     $mech->get_ok('/git');
-    $mech->get_ok($site->titles->published_texts->first->full_uri);
+    $mech->get_ok($test_url);
     $mech->content_contains("/git/");
 }
