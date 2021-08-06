@@ -62,16 +62,21 @@ __PACKAGE__->table("mirror_info");
   is_foreign_key: 1
   is_nullable: 1
 
-=head2 fetched_unix_timestamp
-
-  data_type: 'integer'
-  is_nullable: 1
-
-=head2 md5sum
+=head2 sha1sum
 
   data_type: 'varchar'
   is_nullable: 0
   size: 64
+
+=head2 download_destination
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 download_unix_timestamp
+
+  data_type: 'integer'
+  is_nullable: 1
 
 =cut
 
@@ -84,10 +89,12 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "mirror_origin_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
-  "fetched_unix_timestamp",
-  { data_type => "integer", is_nullable => 1 },
-  "md5sum",
+  "sha1sum",
   { data_type => "varchar", is_nullable => 0, size => 64 },
+  "download_destination",
+  { data_type => "text", is_nullable => 1 },
+  "download_unix_timestamp",
+  { data_type => "integer", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -206,8 +213,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-07-30 10:11:41
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ywD6hlWBps1h+r4gQo/geQ
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-08-06 07:41:38
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:dnJ3LSkWXSCer8WNqkcLLw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

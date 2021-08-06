@@ -669,8 +669,9 @@ CREATE TABLE mirror_info (
                              ON DELETE CASCADE ON UPDATE CASCADE,
        mirror_origin_id INTEGER NULL REFERENCES mirror_origin(mirror_origin_id)
                                 ON DELETE SET NULL ON UPDATE CASCADE,
-       fetched_unix_timestamp INTEGER,
-       md5sum VARCHAR(64) NOT NULL
+       sha1sum VARCHAR(64) NOT NULL,
+       download_destination TEXT,
+       download_unix_timestamp INTEGER
 );
 
 CREATE UNIQUE INDEX unique_mirror_info_title_id ON mirror_info(title_id);
