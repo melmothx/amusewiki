@@ -1803,6 +1803,10 @@ sub is_gone {
     return 0;
 }
 
+sub mirror_manifest {
+    my $self = shift;
+    $self->result_source->resultset->by_id($self->id)->mirror_manifest;
+}
 
 __PACKAGE__->meta->make_immutable;
 

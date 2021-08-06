@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 2;
+use Test::More tests => 26;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catdir catfile/;
@@ -17,13 +17,14 @@ use Data::Dumper::Concise;
 use Path::Tiny;
 use File::Copy::Recursive qw/dircopy/;
 use File::Path qw/remove_tree make_path/;
+use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-my $site_1 = create_site($schema, '0federation0');
-my $site_2 = create_site($schema, '0federation1');
+my $site_1 = $schema->resultset('Site')->find('0federation0') || create_site($schema, '0federation0');
+my $site_2 = $schema->resultset('Site')->find('0federation0') || create_site($schema, '0federation1');
 
-{
+if (0) {
     my $src = catdir(qw/t test-repos 0opds0/);
     my $dest = catdir(repo => $site_1->id);
     remove_tree($dest);
@@ -38,6 +39,33 @@ my $site_2 = create_site($schema, '0federation1');
 
     is $site_1->attachments->count,
       $site_1->attachments->search_related('mirror_info')->count, "Mirror info generated for attachments";
+}
+
+# diag Dumper($site_1->titles->mirror_manifest);
+is scalar(@{$site_1->titles->mirror_manifest}), $site_1->titles->count + $site_1->attachments->count;
+
+my $just_one = $site_1->titles->search({ 'me.uri' => 'first-test' })->mirror_manifest;
+diag Dumper($just_one);
+
+is_deeply([ sort map { $_->{uri} } @$just_one ],
+          ['f-t-cata.jpg', 'f-t-testimage.png', 'first-test' ]);
+
+my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => $site_1->canonical);
+
+foreach my $m (qw|
+                     /manifest.json
+                     /category/author/cao/manifest.json
+                     /category/author/cao/en/manifest.json
+                     /category/topic/ecole/manifest.json
+                     /category/topic/ecole/en/manifest.json
+                     /library/first-test/manifest.json
+                 |) {
+    $mech->get_ok($m);
+    my $data = from_json($mech->content);
+    ok $data->[0]->{f_class};
+    ok $data->[0]->{sha1sum};
+    ok $data->[0]->{uri};
 }
 
 __END__

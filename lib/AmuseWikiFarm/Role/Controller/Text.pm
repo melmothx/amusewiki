@@ -264,6 +264,12 @@ sub json :Chained('match') PathPart('json') :Args(0) {
     $c->detach($c->view('JSON'));
 }
 
+sub mirror_manifest :Chained('match') PathPart('manifest.json') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(json => $c->stash->{text}->mirror_manifest);
+    $c->detach($c->view('JSON'));
+}
+
 sub toc :Chained('match') PathPart('toc') :Args(0) {
     my ($self, $c) = @_;
     my @struct = $c->stash->{text}->text_parts->ordered->toc_entries->hri;

@@ -43,14 +43,10 @@ sub listing :Chained('filter_texts') :PathPart('listing') :Args(0) {
              );
 }
 
-sub manifest :Chained('filter_texts') :PathPart('manifest.json') :Args(0) {
+sub manifest :Chained('select_texts') :PathPart('manifest.json') :Args(0) {
     my ($self, $c) = @_;
-    my $rs = $c->stash->{texts};
-    $rs->search(undef, {
-                        columns => [qw/uri checksum/],
-                        rows => undef,
-                        page => 1,
-                       });
+    $c->stash(json => $c->stash->{texts}->mirror_manifest);
+    $c->detach($c->view('JSON'));
 }
 
 
