@@ -669,7 +669,7 @@ CREATE TABLE mirror_info (
                              ON DELETE CASCADE ON UPDATE CASCADE,
        mirror_origin_id INTEGER NULL REFERENCES mirror_origin(mirror_origin_id)
                                 ON DELETE SET NULL ON UPDATE CASCADE,
-       sha1sum VARCHAR(64) NOT NULL,
+       sha1sum VARCHAR(64),
        download_destination TEXT,
        download_unix_timestamp INTEGER
 );
