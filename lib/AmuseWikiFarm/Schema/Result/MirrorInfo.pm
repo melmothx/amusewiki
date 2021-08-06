@@ -216,7 +216,27 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-08-06 09:25:32
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:imkhJo+ku2KTq66c0He2NA
 
+use Digest::SHA;
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+
+sub compute_checksum {
+    my $self = shift;
+    if (my $file = $self->get_file_path) {
+        if (-f $file) {
+            $self->update({ sha1sum => Digest::SHA->new('SHA-1')->addfile($file)->hexdigest });
+        }
+    }
+}
+
+sub get_file_path {
+    my $self = shift;
+    if (my $obj = $self->attachment || $self->title) {
+        return $obj->f_full_path_name;
+    }
+    else {
+        return;
+    }
+}
+
 __PACKAGE__->meta->make_immutable;
 1;

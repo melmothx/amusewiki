@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 15;
+use Test::More tests => 2;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catdir catfile/;
@@ -14,11 +14,31 @@ use AmuseWiki::Tests qw/create_site run_all_jobs/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper::Concise;
+use Path::Tiny;
+use File::Copy::Recursive qw/dircopy/;
+use File::Path qw/remove_tree make_path/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site_1 = create_site($schema, '0federation0');
 my $site_2 = create_site($schema, '0federation1');
+
+{
+    my $src = catdir(qw/t test-repos 0opds0/);
+    my $dest = catdir(repo => $site_1->id);
+    remove_tree($dest);
+    die "dest exists" if -d $dest;
+    dircopy($src, $dest);
+    dircopy(catdir(qw/t test-repos 0blog0 f/),
+            catdir($dest, 'f'));
+    $site_1->update_db_from_tree(sub { diag join(' ', @_) });
+
+    is $site_1->titles->count,
+      $site_1->titles->search_related('mirror_info')->count, "Mirror info generated for titles";
+
+    is $site_1->attachments->count,
+      $site_1->attachments->search_related('mirror_info')->count, "Mirror info generated for attachments";
+}
 
 __END__
 
