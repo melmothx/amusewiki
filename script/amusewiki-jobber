@@ -98,6 +98,24 @@ try {
     log_error { "Error at startup: $err" };
 };
 
+# check if there are missing checksums
+try {
+    foreach my $class (qw/Title Attachment/) {
+        foreach my $obj ($schema->resultset($class)->search({
+                                                               'mirror_info.mirror_info_id' => undef,
+                                                              },
+                                                              {
+                                                               join => 'mirror_info',
+                                                              }
+                                                             )->all) {
+            $obj->create_related(mirror_info => {})->discard_changes->compute_checksum;
+        }
+    }
+} catch {
+    my $err = $_;
+    log_error { "Error while checking the mirror info: $err" };
+};
+
 # double fork and upgrade xapian if needed
 
 XAPIAN_UPGRADE: {
