@@ -21,10 +21,16 @@ use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-my $site_1 = $schema->resultset('Site')->find('0federation0') || create_site($schema, '0federation0');
+my ($bootstrap_1, $site_1);
+
+unless ($site_1 = $schema->resultset('Site')->find('0federation0')) {
+    $site_1 = create_site($schema, '0federation0');
+    $bootstrap_1 = 1;
+}
+
 my $site_2 = $schema->resultset('Site')->find('0federation0') || create_site($schema, '0federation1');
 
-if (0) {
+if ($bootstrap_1) {
     my $src = catdir(qw/t test-repos 0opds0/);
     my $dest = catdir(repo => $site_1->id);
     remove_tree($dest);
