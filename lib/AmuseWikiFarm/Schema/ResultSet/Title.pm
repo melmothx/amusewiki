@@ -687,6 +687,7 @@ sub mirror_manifest {
                              join => [qw/mirror_info/]
                             });
     while (my $i = $trs->next) {
+        $i->{class} = 'Title';
         push @out, $i;
     }
     my $ars = $base->search_related('title_attachments')
@@ -699,6 +700,7 @@ sub mirror_manifest {
                 join => [qw/mirror_info/]
                });
     while (my $i = $ars->next) {
+        $i->{class} = 'Attachment';
         push @out, $i;
     }
     return \@out;

@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 26;
+use Test::More tests => 34;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catdir catfile/;
@@ -72,7 +72,32 @@ foreach my $m (qw|
     ok $data->[0]->{f_class};
     ok $data->[0]->{sha1sum};
     ok $data->[0]->{uri};
+    my %sites;
+    foreach my $i (@$data) {
+        $sites{$i->{site_id}}++;
+    }
+    is scalar(keys %sites), 1, "No site leaks";
 }
+
+# now, create a mirror source for the site2
+
+$site_2->add_to_mirror_origins({
+                                remote_domain => $site_1->canonical,
+                                remote_path => '/',
+                                active => 1,
+                               });
+
+{
+    my $remote = $site_2->mirror_origins->first;
+    $remote->ua($mech);
+    my $res = $remote->fetch_remote;
+    ok $res->{data};
+    ok !$res->{error};
+    diag Dumper($res);
+}
+
+
+
 
 __END__
 

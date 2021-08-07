@@ -148,7 +148,49 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-07-30 10:11:41
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OYMUpnr7342chqJHHweWng
 
+use LWP::UserAgent;
+use JSON::MaybeXS;
+use Try::Tiny;
+use AmuseWikiFarm::Log::Contextual;
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+has ua => (is => 'rw',
+           isa => 'Object',
+           lazy => 1,
+           builder => '_build_ua',
+          );
+
+sub _build_ua {
+    return LWP::UserAgent->new(timeout => 5);
+}
+
+sub fetch_remote {
+    my ($self) = @_;
+    my $url = $self->manifest_url;
+    my $res = $self->ua->get($self->manifest_url);
+    my %out;
+    if ($res->is_success) {
+        try {
+            $out{data} = decode_json($res->content);
+        }
+        catch {
+            my $err = $_;
+            $out{error} = $err;
+            log_error { "Failure decoding $url output "};
+        };
+    }
+    else {
+        $out{error} = $res->status_line;
+        log_error { "Failure downloading $url " . $res->status_line };
+    }
+    return \%out;
+}
+
+sub manifest_url {
+    my $self = shift;
+    my $path = $self->remote_path;
+    $path =~ s/\/\z//;
+    return 'https://' . $self->remote_domain . $self->remote_path . '/manifest.json';
+}
+
 __PACKAGE__->meta->make_immutable;
 1;
