@@ -152,6 +152,7 @@ use LWP::UserAgent;
 use JSON::MaybeXS;
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;
+use DateTime;
 
 has ua => (is => 'rw',
            isa => 'Object',
@@ -190,6 +191,59 @@ sub manifest_url {
     my $path = $self->remote_path;
     $path =~ s/\/\z//;
     return 'https://' . $self->remote_domain . $self->remote_path . '/manifest.json';
+}
+
+sub prepare_download {
+    my ($self, $list) = @_;
+    my $site = $self->site;
+    # here we loop over the list of files to mirror, and we create the
+    # placeholder records.
+    foreach my $i (@$list) {
+        my $rs;
+        my %search = (
+                      uri => $i->{uri},
+                      f_class => $i->{f_class},
+                     );
+        my %bogus = (
+                     f_path => '',
+                     f_archive_rel_path => '',
+                     f_full_path_name => '',
+                     f_name => '',
+                     f_suffix => '',
+                     f_timestamp => DateTime->from_epoch(epoch => 1),
+                    );
+        if ($i->{class} eq 'Title') {
+            $rs = $site->titles->search(\%search);
+            $bogus{status} = 'editing';
+            $bogus{pubdate} = DateTime->now;
+        }
+        elsif ($i->{class} eq 'Attachment') {
+            $rs = $site->attachments->search(\%search);
+        }
+        my $obj;
+        if ($rs->count) {
+            log_debug { "$i->{f_class} $i->{uri} exists" };
+            $obj = $rs->single;
+        }
+        else {
+            log_debug { "$i->{f_class} $i->{uri} missing, creating" };
+            $obj = $rs->create({
+                                %bogus,
+                               });
+        }
+        my $mirror_info = $obj->mirror_info || $obj->create_related('mirror_info',
+                                                                    {
+                                                                     mirror_origin_id => $self->mirror_origin_id,
+                                                                    })->discard_changes;
+        # now compare the sha1sums.
+        # if they differ (or dest doesn't exist)
+        # => if the mirror_origin_id is the same => download
+        # => if the mirror_origin_id does not exist => download and add it to the mirror info
+        # otherwise place a conflict exception. We can fix it aligning to remote
+
+        # we still need to remove mirror_origin_id from vanished files
+        # and probably put a notice somewhere.
+    }
 }
 
 __PACKAGE__->meta->make_immutable;

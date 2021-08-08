@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 34;
+use Test::More tests => 36;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catdir catfile/;
@@ -23,19 +23,22 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my ($bootstrap_1, $site_1);
 
+# remove when devel is done.
 unless ($site_1 = $schema->resultset('Site')->find('0federation0')) {
     $site_1 = create_site($schema, '0federation0');
     $bootstrap_1 = 1;
 }
 
-my $site_2 = $schema->resultset('Site')->find('0federation0') || create_site($schema, '0federation1');
+my $site_2 = create_site($schema, '0federation2');
 
-if ($bootstrap_1) {
+SKIP: {
+    skip "Site already created", 2 unless $bootstrap_1;
     my $src = catdir(qw/t test-repos 0opds0/);
     my $dest = catdir(repo => $site_1->id);
-    remove_tree($dest);
-    die "dest exists" if -d $dest;
-    dircopy($src, $dest);
+    remove_tree(catdir($dest, 't'));
+    remove_tree(catdir($dest, 'f'));
+    dircopy(catdir($src, 't'),
+            catdir($dest, 't'));
     dircopy(catdir(qw/t test-repos 0blog0 f/),
             catdir($dest, 'f'));
     $site_1->update_db_from_tree(sub { diag join(' ', @_) });
@@ -46,6 +49,16 @@ if ($bootstrap_1) {
     is $site_1->attachments->count,
       $site_1->attachments->search_related('mirror_info')->count, "Mirror info generated for attachments";
 }
+
+{
+    my $dest = catdir(repo => $site_2->id, 'f');
+    remove_tree($dest);
+    die "dest exists" if -d $dest;
+    dircopy(catdir(qw/t test-repos 0blog0 f/), $dest);
+    $site_2->update_db_from_tree(sub { diag join(' ', @_) });
+
+}
+
 
 # diag Dumper($site_1->titles->mirror_manifest);
 is scalar(@{$site_1->titles->mirror_manifest}), $site_1->titles->count + $site_1->attachments->count;
@@ -94,9 +107,10 @@ $site_2->add_to_mirror_origins({
     ok $res->{data};
     ok !$res->{error};
     diag Dumper($res);
+    $remote->prepare_download($res->{data});
+
+    # TODO: check what happens if you try to edit a text with the same uri
 }
-
-
 
 
 __END__
