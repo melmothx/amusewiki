@@ -62,11 +62,11 @@ __PACKAGE__->table("mirror_info");
   is_foreign_key: 1
   is_nullable: 1
 
-=head2 sha1sum
+=head2 checksum
 
   data_type: 'varchar'
   is_nullable: 1
-  size: 64
+  size: 128
 
 =head2 download_destination
 
@@ -89,8 +89,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "mirror_origin_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
-  "sha1sum",
-  { data_type => "varchar", is_nullable => 1, size => 64 },
+  "checksum",
+  { data_type => "varchar", is_nullable => 1, size => 128 },
   "download_destination",
   { data_type => "text", is_nullable => 1 },
   "download_unix_timestamp",
@@ -213,8 +213,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-08-06 09:25:32
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:imkhJo+ku2KTq66c0He2NA
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-08-14 10:16:25
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7/3VnsKoVxkQObrs3V0SoQ
 
 use Digest::SHA;
 
@@ -223,7 +223,7 @@ sub compute_checksum {
     my $self = shift;
     if (my $file = $self->get_file_path) {
         if (-f $file) {
-            $self->update({ sha1sum => Digest::SHA->new('SHA-1')->addfile($file)->hexdigest });
+            $self->update({ checksum => Digest::SHA->new('SHA-1')->addfile($file)->hexdigest });
         }
     }
 }

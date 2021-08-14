@@ -682,8 +682,8 @@ sub mirror_manifest {
     my $trs = $base->search({ 'mirror_info.mirror_info_id' => { '!=' => undef } },
                             {
                              result_class => 'DBIx::Class::ResultClass::HashRefInflator',
-                             select => ["$me.site_id", "$me.uri", "$me.f_class", "mirror_info.sha1sum"],
-                             as => [qw/site_id uri f_class sha1sum/],
+                             select => ["$me.site_id", "$me.uri", "$me.f_class", "mirror_info.checksum"],
+                             as => [qw/site_id uri f_class checksum/],
                              join => [qw/mirror_info/]
                             });
     while (my $i = $trs->next) {
@@ -695,8 +695,8 @@ sub mirror_manifest {
       ->search({ 'mirror_info.mirror_info_id' => { '!=' => undef } },
                {
                 result_class => 'DBIx::Class::ResultClass::HashRefInflator',
-                select => ["attachment.site_id", "attachment.uri", "attachment.f_class", "mirror_info.sha1sum"],
-                as => [qw/site_id uri f_class sha1sum/],
+                select => ["attachment.site_id", "attachment.uri", "attachment.f_class", "mirror_info.checksum"],
+                as => [qw/site_id uri f_class checksum/],
                 join => [qw/mirror_info/]
                });
     while (my $i = $ars->next) {

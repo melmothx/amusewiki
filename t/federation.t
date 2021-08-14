@@ -83,7 +83,7 @@ foreach my $m (qw|
     $mech->get_ok($m);
     my $data = from_json($mech->content);
     ok $data->[0]->{f_class};
-    ok $data->[0]->{sha1sum};
+    ok $data->[0]->{checksum};
     ok $data->[0]->{uri};
     my %sites;
     foreach my $i (@$data) {
