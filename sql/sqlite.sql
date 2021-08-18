@@ -651,16 +651,6 @@ CREATE TABLE mirror_origin (
        active INTEGER(1) NOT NULL DEFAULT 0
 );
 
-CREATE TABLE mirror_exclusion (
-       mirror_exclusion_id INTEGER PRIMARY KEY AUTOINCREMENT,
-       mirror_origin_id INTEGER NULL REFERENCES mirror_origin(mirror_origin_id)
-                                ON DELETE CASCADE ON UPDATE CASCADE,
-       mirror_info_id INTEGER NOT NULL REFERENCES mirror_info(mirror_info_id)
-                                ON DELETE CASCADE ON UPDATE CASCADE,
-       exclusion_type VARCHAR(32) NOT NULL,
-       exclusion_timestamp DATETIME
-);
-
 CREATE TABLE mirror_info (
        mirror_info_id INTEGER PRIMARY KEY AUTOINCREMENT,
        title_id INTEGER NULL REFERENCES title(id)
@@ -671,7 +661,8 @@ CREATE TABLE mirror_info (
                                 ON DELETE SET NULL ON UPDATE CASCADE,
        checksum VARCHAR(128),
        download_destination TEXT,
-       download_unix_timestamp INTEGER
+       mirror_exception VARCHAR(32) NOT NULL DEFAULT '',
+       last_updated DATETIME
 );
 
 CREATE UNIQUE INDEX unique_mirror_info_title_id ON mirror_info(title_id);

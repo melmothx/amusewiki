@@ -99,21 +99,6 @@ __PACKAGE__->set_primary_key("mirror_origin_id");
 
 =head1 RELATIONS
 
-=head2 mirror_exclusions
-
-Type: has_many
-
-Related object: L<AmuseWikiFarm::Schema::Result::MirrorExclusion>
-
-=cut
-
-__PACKAGE__->has_many(
-  "mirror_exclusions",
-  "AmuseWikiFarm::Schema::Result::MirrorExclusion",
-  { "foreign.mirror_origin_id" => "self.mirror_origin_id" },
-  { cascade_copy => 0, cascade_delete => 0 },
-);
-
 =head2 mirror_infos
 
 Type: has_many
@@ -145,8 +130,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-07-30 10:11:41
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OYMUpnr7342chqJHHweWng
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-08-18 15:29:28
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:SQC9JCZwNS1IHmoLEh58Fg
 
 use LWP::UserAgent;
 use JSON::MaybeXS;

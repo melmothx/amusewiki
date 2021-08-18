@@ -73,9 +73,16 @@ __PACKAGE__->table("mirror_info");
   data_type: 'text'
   is_nullable: 1
 
-=head2 download_unix_timestamp
+=head2 mirror_exception
 
-  data_type: 'integer'
+  data_type: 'varchar'
+  default_value: (empty string)
+  is_nullable: 0
+  size: 32
+
+=head2 last_updated
+
+  data_type: 'datetime'
   is_nullable: 1
 
 =cut
@@ -93,8 +100,10 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 128 },
   "download_destination",
   { data_type => "text", is_nullable => 1 },
-  "download_unix_timestamp",
-  { data_type => "integer", is_nullable => 1 },
+  "mirror_exception",
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 32 },
+  "last_updated",
+  { data_type => "datetime", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -157,21 +166,6 @@ __PACKAGE__->belongs_to(
   },
 );
 
-=head2 mirror_exclusions
-
-Type: has_many
-
-Related object: L<AmuseWikiFarm::Schema::Result::MirrorExclusion>
-
-=cut
-
-__PACKAGE__->has_many(
-  "mirror_exclusions",
-  "AmuseWikiFarm::Schema::Result::MirrorExclusion",
-  { "foreign.mirror_info_id" => "self.mirror_info_id" },
-  { cascade_copy => 0, cascade_delete => 0 },
-);
-
 =head2 mirror_origin
 
 Type: belongs_to
@@ -213,8 +207,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-08-14 10:16:25
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7/3VnsKoVxkQObrs3V0SoQ
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-08-18 15:29:28
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:88Uzk1uSoCD5VnWH/pW66g
 
 use Digest::SHA;
 
