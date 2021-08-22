@@ -240,7 +240,12 @@ has non_blocking => (is => 'rw',
                      default => sub { 0 });
 
 sub can_be_non_blocking {
-    return shift->task eq 'build_custom_format';
+    my $self = shift;
+    my %non_blocking = (
+                        build_custom_format => 1,
+                        download_remote => 1,
+                       );
+    return $non_blocking{$self->task};
 }
 
 sub _build_bookbuilder {
@@ -443,7 +448,8 @@ trigger a job.
 =cut
 
 sub dispatch_job {
-    my $self = shift;
+    # options are used for debugging.
+    my ($self, $options) = @_;
     $self->update({
                    status => 'taken',
                    started => DateTime->now,
@@ -462,7 +468,7 @@ sub dispatch_job {
         $logger->("Job $task started at " . localtime() . "\n");
         my $output;
         eval {
-            $output = $self->$method($logger);
+            $output = $self->$method($logger, $options);
         };
         if (my $err = $@) {
             $self->status('failed');
@@ -868,6 +874,23 @@ sub dispatch_job_send_mail {
     my $payload = $self->job_data;
     $self->site->send_mail($payload->{type}, $payload->{tokens});
 }
+
+sub dispatch_job_download_remote {
+    my ($self, $logger, $opts) = @_;
+    my $schema = $self->result_source->schema;
+    if (my $info = $schema->resultset('MirrorInfo')->find($self->job_data->{id})) {
+        if (my $origin = $info->mirror_origin) {
+            # just in case
+            if ($origin->site_id eq $self->site_id) {
+                $origin->download_file($info, $opts);
+            }
+            else {
+                die $origin->site_id . ' is not ' . $self->site_id;
+            }
+        }
+    }
+}
+
 
 before delete => sub {
     my $self = shift;

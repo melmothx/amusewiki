@@ -18,6 +18,13 @@ sub reindexes {
     return $self->search({ "$me.task" => 'reindex' });
 }
 
+sub mirrors {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.task" => 'mirror' });
+}
+
+
 sub active_bulk_jobs {
     my $self = shift;
     my $me = $self->current_source_alias;

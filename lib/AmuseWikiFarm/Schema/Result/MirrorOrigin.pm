@@ -133,11 +133,15 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-08-18 15:29:28
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:SQC9JCZwNS1IHmoLEh58Fg
 
+use Cwd;
+use constant ROOT => getcwd();
 use LWP::UserAgent;
 use JSON::MaybeXS;
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;
 use DateTime;
+use AmuseWikiFarm::Utils::Amuse;
+use Path::Tiny ();
 
 has ua => (is => 'rw',
            isa => 'Object',
@@ -181,8 +185,11 @@ sub manifest_url {
 sub prepare_download {
     my ($self, $list) = @_;
     my $site = $self->site;
+    my $now = DateTime->now;
     # here we loop over the list of files to mirror, and we create the
     # placeholder records.
+    my %seen;
+    my @downloads;
     foreach my $i (@$list) {
         my $rs;
         my %search = (
@@ -216,18 +223,102 @@ sub prepare_download {
                                 %bogus,
                                });
         }
+        my $our_origin_id = $self->mirror_origin_id;
         my $mirror_info = $obj->mirror_info || $obj->create_related('mirror_info',
                                                                     {
-                                                                     mirror_origin_id => $self->mirror_origin_id,
+                                                                     last_updated => $now,
+                                                                     mirror_origin_id => $our_origin_id,
                                                                     })->discard_changes;
-        # now compare the sha1sums.
-        # if they differ (or dest doesn't exist)
-        # => if the mirror_origin_id is the same => download
-        # => if the mirror_origin_id does not exist => download and add it to the mirror info
-        # otherwise place a conflict exception. We can fix it aligning to remote
 
-        # we still need to remove mirror_origin_id from vanished files
-        # and probably put a notice somewhere.
+        $seen{$mirror_info->mirror_info_id}++;
+        # same origin: download if checksum missing or mismatching
+        if (my $their_origin_id = $mirror_info->mirror_origin_id) {
+            # if same origin: download if mismatch, otherwise nothing to do: either
+            # they are not ours or don't need download.
+            if ($their_origin_id == $our_origin_id) {
+                # same origin and no exception:
+                if (!$mirror_info->mirror_exception) {
+                    push @downloads, $mirror_info->mirror_info_id;
+                    log_info { "Download " . $i->{uri} };
+                }
+            }
+        }
+        # not taken but matching checksum: take for future updates
+        elsif (($mirror_info->checksum // '') eq $i->{checksum})  {
+            if (!$mirror_info->mirror_exception) {
+                log_info { "Taking $i->{uri} for future downloads" };
+                $mirror_info->update({
+                                      mirror_origin_id => $self->mirror_origin_id,
+                                      last_updated => $now,
+                                     });
+            }
+        }
+        # not taken but with mismatches
+        else {
+            # these have local modifications.
+            # Place an exception if not already placed.
+            if (my $exception = $mirror_info->mirror_exception) {
+
+                # to be implemented: this is an exception to the
+                # exception. Something in the admin where you can turn
+                # "conflict" into "force_download".
+                if ($exception eq 'force_download') {
+                    log_info { "Forced download for " . $i->{uri} };
+                    push @downloads, $mirror_info->mirror_info_id;
+                }
+            }
+            else {
+                log_info { "Placing exception for " . $i->{uri} };
+                $mirror_info->update({
+                                      mirror_exception => 'conflict',
+                                      last_updated => $now,
+                                     });
+            }
+        }
+    }
+    # Now check the vanished files. We place an exception so it will pop up in the console
+    $self->mirror_infos->search({ mirror_info_id => { -not_in => [ sort keys %seen ] } })
+      ->update({
+                mirror_exception => 'removed_upstream',
+                last_updated => $now,
+               });
+    # and create the bulk job
+    $site->bulk_jobs->mirrors->create({
+                                       created => $now,
+                                       status => (scalar(@downloads) ? 'active' : 'completed'),
+                                       completed => (scalar(@downloads) ? undef : $now),
+                                       username => 'amusewiki',
+                                       jobs => [
+                                                map {
+                                                    +{
+                                                      site_id => $site->id,
+                                                      username => 'amusewiki',
+                                                      task => 'download_remote',
+                                                      status => 'pending',
+                                                      created => $now,
+                                                      priority => 26, # before static indexes
+                                                      payload => AmuseWikiFarm::Utils::Amuse::to_json({ id => $_ }),
+                                                     }
+                                                } @downloads ]
+                                      });
+}
+
+sub download_file {
+    my ($self, $info, $opts) = @_;
+    $opts ||= {};
+    my $ua = $opts->{ua} || $self->ua;
+    my $suffix = $info->is_attachment ? '' : '.muse';
+    my $src = join('', "https://", $self->remote_domain, $info->full_uri, $suffix);
+    my $dest = Path::Tiny::path(ROOT, qw/var cache mirroring/, $info->mirror_origin_id, $info->mirror_info_id . $suffix);
+    $dest->parent->mkpath;
+    log_info { "Retrieving $src and storing in $dest" };
+    my $res = $ua->get($src);
+    if ($res->is_success) {
+        $dest->spew_raw($res->content);
+        $info->update({ download_destination => "$dest" });
+    }
+    else {
+        die "Error downloading $src:" . $res->status_line;
     }
 }
 

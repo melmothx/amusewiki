@@ -57,6 +57,7 @@ sub handled_jobs_hashref {
             # testing
             testing => 10,
             testing_high => 5,
+            download_remote => 26,
            };
 }
 

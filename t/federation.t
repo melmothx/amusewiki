@@ -55,6 +55,7 @@ SKIP: {
     remove_tree($dest);
     die "dest exists" if -d $dest;
     dircopy(catdir(qw/t test-repos 0blog0 f/), $dest);
+    path($dest, ft => 'first-test.muse')->append_utf8("\n\n");
     $site_2->update_db_from_tree(sub { diag join(' ', @_) });
 
 }
@@ -102,15 +103,36 @@ $site_2->add_to_mirror_origins({
 
 {
     my $remote = $site_2->mirror_origins->first;
+    ok !$remote->mirror_infos->count;
     $remote->ua($mech);
     my $res = $remote->fetch_remote;
     ok $res->{data};
     ok !$res->{error};
     diag Dumper($res);
-    $remote->prepare_download($res->{data});
+    my $bulk_job = $remote->prepare_download($res->{data});
+
+    is $bulk_job->status('active');
 
     # TODO: check what happens if you try to edit a text with the same uri
+
+    is $site_2->titles->search_related(mirror_info => { mirror_exception  => 'conflict' })->count, 1;
+    is $site_2->titles->search_related(mirror_info => { mirror_origin_id  => undef })->count, 1;
+    ok $site_2->titles->search_related(mirror_info => { mirror_exception  => '' })->count;
+    is $site_2->titles->search_related(mirror_info => { mirror_exception  => 'removed_upstream' })->count, 0;
+    ok $remote->mirror_infos->count, "Origins added";
+    foreach my $info ($remote->mirror_infos) {
+        diag $info->full_uri;
+    }
+    my $res = $mech->get('https://0federation0.amusewiki.org/library/title-entry-21.muse') or die;
+    # mirror doesn't work.
+    # $mech->mirror('https://0federation0.amusewiki.org/library/title-entry-21.muse', "var/cache/test.muse");
+    while (my $job = $site_2->jobs->dequeue) {
+        $job->dispatch_job({ ua => $mech });
+        is $job->status, 'completed';
+    }
+    is $bulk_job->discard_changes->status, 'completed';
 }
+
 
 
 __END__

@@ -211,13 +211,16 @@ __PACKAGE__->belongs_to(
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:88Uzk1uSoCD5VnWH/pW66g
 
 use Digest::SHA;
-
+use DateTime;
 
 sub compute_checksum {
     my $self = shift;
     if (my $file = $self->get_file_path) {
         if (-f $file) {
-            $self->update({ checksum => Digest::SHA->new('SHA-1')->addfile($file)->hexdigest });
+            $self->update({
+                           checksum => Digest::SHA->new('SHA-1')->addfile($file)->hexdigest,
+                           last_updated => DateTime->now,
+                          });
         }
     }
 }
@@ -230,6 +233,16 @@ sub get_file_path {
     else {
         return;
     }
+}
+
+sub full_uri {
+    my $self = shift;
+    my $obj = $self->attachment || $self->title;
+    return $obj->full_uri;
+}
+
+sub is_attachment {
+    shift->attachment_id ? 1 : 0;
 }
 
 __PACKAGE__->meta->make_immutable;
