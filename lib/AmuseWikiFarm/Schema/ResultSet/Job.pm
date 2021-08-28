@@ -58,6 +58,7 @@ sub handled_jobs_hashref {
             testing => 10,
             testing_high => 5,
             download_remote => 26,
+            install_downloaded => 27,
            };
 }
 

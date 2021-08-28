@@ -240,6 +240,7 @@ sub check_and_set_complete {
     }
     elsif (!$self->completed && !$self->jobs->unfinished->count) {
         log_debug { "no unfinished jobs" };
+        $self->handle_bulk_job_completed;
         $self->update({
                        completed => DateTime->now,
                        status => 'completed',
@@ -270,6 +271,18 @@ sub is_reindex {
 
 sub is_rebuild {
     return shift->task eq 'rebuild';
+}
+
+sub is_mirror {
+    return shift->task eq 'mirror';
+}
+
+sub handle_bulk_job_completed {
+    my $self = shift;
+    if ($self->is_mirror) {
+        # add the job to copy the files over to their destination + git.
+        $self->site->jobs->enqueue(install_downloaded  => {}, $self->username);
+    }
 }
 
 sub expected_documents {

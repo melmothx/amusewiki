@@ -891,6 +891,9 @@ sub dispatch_job_download_remote {
     }
 }
 
+sub dispatch_job_install_downloaded {
+    my ($self, $logger, $opts) = @_;
+}
 
 before delete => sub {
     my $self = shift;

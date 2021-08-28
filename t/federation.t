@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 36;
+use Test::More tests => 69;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catdir catfile/;
@@ -111,7 +111,7 @@ $site_2->add_to_mirror_origins({
     diag Dumper($res);
     my $bulk_job = $remote->prepare_download($res->{data});
 
-    is $bulk_job->status('active');
+    is $bulk_job->status, 'active';
 
     # TODO: check what happens if you try to edit a text with the same uri
 
@@ -123,7 +123,6 @@ $site_2->add_to_mirror_origins({
     foreach my $info ($remote->mirror_infos) {
         diag $info->full_uri;
     }
-    my $res = $mech->get('https://0federation0.amusewiki.org/library/title-entry-21.muse') or die;
     # mirror doesn't work.
     # $mech->mirror('https://0federation0.amusewiki.org/library/title-entry-21.muse', "var/cache/test.muse");
     while (my $job = $site_2->jobs->dequeue) {
