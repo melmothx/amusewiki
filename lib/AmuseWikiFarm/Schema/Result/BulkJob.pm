@@ -78,6 +78,11 @@ __PACKAGE__->table("bulk_job");
   is_nullable: 1
   size: 32
 
+=head2 payload
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 username
 
   data_type: 'varchar'
@@ -101,6 +106,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
   "status",
   { data_type => "varchar", is_nullable => 1, size => 32 },
+  "payload",
+  { data_type => "text", is_nullable => 1 },
   "username",
   { data_type => "varchar", is_nullable => 1, size => 255 },
 );
@@ -150,8 +157,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-02-17 19:36:30
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4+/448d+421Azz6R2JnvJg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-08-28 09:54:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:5e1pzUF928SaKo/w4es7oQ
 
 use DateTime;
 use AmuseWikiFarm::Log::Contextual;

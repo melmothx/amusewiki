@@ -285,6 +285,7 @@ CREATE TABLE bulk_job (
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
        status    VARCHAR(32),
+       payload   TEXT, -- the JSON stuff
        username  VARCHAR(255)
 );
 
