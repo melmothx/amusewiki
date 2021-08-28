@@ -893,6 +893,12 @@ sub dispatch_job_download_remote {
 
 sub dispatch_job_install_downloaded {
     my ($self, $logger, $opts) = @_;
+    my $spec = $self->job_data;
+    if (my $id = $spec->{mirror_origin_id}) {
+        if (my $origin = $self->site->mirror_origins->find($id)) {
+            $origin->install_downloaded($logger, $opts);
+        }
+    }
 }
 
 before delete => sub {

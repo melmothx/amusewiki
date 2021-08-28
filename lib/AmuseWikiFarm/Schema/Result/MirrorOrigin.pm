@@ -283,11 +283,13 @@ sub prepare_download {
                 last_updated => $now,
                });
     # and create the bulk job
+    my $payload = AmuseWikiFarm::Utils::Amuse::to_json({ mirror_origin_id => $self->mirror_origin_id });
     $site->bulk_jobs->mirrors->create({
                                        created => $now,
                                        status => (scalar(@downloads) ? 'active' : 'completed'),
                                        completed => (scalar(@downloads) ? undef : $now),
                                        username => 'amusewiki',
+                                       payload => $payload,
                                        jobs => [
                                                 map {
                                                     +{
@@ -320,6 +322,11 @@ sub download_file {
     else {
         die "Error downloading $src:" . $res->status_line;
     }
+}
+
+sub install_downloaded {
+    my ($self, $logger, $opts) = @_;
+    $logger->("Installing downloaded files");
 }
 
 __PACKAGE__->meta->make_immutable;

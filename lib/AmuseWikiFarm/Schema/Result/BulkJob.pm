@@ -162,6 +162,7 @@ __PACKAGE__->belongs_to(
 
 use DateTime;
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Utils::Amuse qw/to_json from_json/;
 
 before delete => sub {
     my $self = shift;
@@ -288,8 +289,17 @@ sub handle_bulk_job_completed {
     my $self = shift;
     if ($self->is_mirror) {
         # add the job to copy the files over to their destination + git.
-        $self->site->jobs->enqueue(install_downloaded  => {}, $self->username);
+        $self->site->jobs->enqueue(install_downloaded  => $self->decoded_payload, $self->username);
     }
+}
+
+sub decoded_payload {
+    my $self = shift;
+    my $data;
+    if (my $json = $self->payload) {
+        eval { $data = from_json($json) };
+    }
+    return $data;
 }
 
 sub expected_documents {
