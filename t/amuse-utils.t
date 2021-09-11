@@ -1,10 +1,11 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 111;
+use Test::More tests => 136;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
+use Data::Dumper::Concise;
 
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_parse_file_path
@@ -15,6 +16,7 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    clean_username
                                    amw_meta_stripper
                                    build_full_uri
+                                   build_repo_path
                                   /;
 
 is_deeply(muse_get_full_path("cacca"), [ "c", "ca", "cacca" ]);
@@ -166,122 +168,139 @@ is (amw_meta_stripper(('12345 678 ' x 15) . 'lkajsdalksdjflkakasdklf'),
 
 is AmuseWikiFarm::Utils::Amuse::get_corrected_path('test.muse'), 't/tt/test.muse';
 
-is build_full_uri({}), undef;
-is build_full_uri({
-                   class => 'Title',
-                  }), undef;
-is build_full_uri({
-                   f_class => 'text',
-                  }), undef;
+foreach my $spec ([ {}, undef ],
+                  [
+                   {
+                    class => 'Title',
+                   }, undef, undef
+                  ],
+                  [
+                   {
+                    f_class => 'text',
+                   }, undef, undef
+                  ],
+                  [{
+                    class => 'Title',
+                    f_class => 'text',
+                   }, '/library', undef ],
+                  [{
+                    class => 'Title',
+                    f_class => 'text',
+                    uri => '',
+                   }, '/library/', undef],
 
-is build_full_uri({
-                   class => 'Title',
-                   f_class => 'text',
-                  }), '/library';
-is build_full_uri({
-                   class => 'Title',
-                   f_class => 'text',
-                   uri => '',
-                  }), '/library/';
+                  [{
+                    class => 'Title',
+                    f_class => 'text',
+                    uri => 'pizza',
+                   }, '/library/pizza', 'p/pa/pizza'],
 
-is build_full_uri({
-                   class => 'Title',
-                   f_class => 'text',
-                   uri => 'pizza',
-                  }), '/library/pizza';
+                  [{
+                    class => 'Title',
+                    f_class => 'text',
+                    uri => 'pizza.muse',
+                   }, '/library/pizza.muse', 'p/pa/pizza.muse'],
 
-is build_full_uri({
-                   class => 'Title',
-                   f_class => 'special',
-                  }), '/special';
-is build_full_uri({
-                   class => 'Title',
-                   f_class => 'special',
-                   uri => '',
-                  }), '/special/';
+                  [{
+                    class => 'Title',
+                    f_class => 'special',
+                   }, '/special', undef],
+                  [{
+                    class => 'Title',
+                    f_class => 'special',
+                    uri => '',
+                   }, '/special/', undef],
 
-is build_full_uri({
-                   class => 'Title',
-                   f_class => 'special',
-                   uri => 'pizza',
-                  }), '/special/pizza';
+                  [{
+                    class => 'Title',
+                    f_class => 'special',
+                    uri => 'pizza',
+                   }, '/special/pizza', 'specials/pizza'],
 
+                  [{
+                    class => 'Title',
+                    f_class => 'special',
+                    uri => 'pizza.muse',
+                   }, '/special/pizza.muse', 'specials/pizza.muse'],
 
-eval {
-    build_full_uri({
+                  [{
                     class => 'Titlex',
                     f_class => 'special',
                     uri => 'pizza',
-                   });
-};
-ok $@, "Exception $@";
-
-eval {
-    build_full_uri({
+                   }, undef, undef],
+                  [{
                     class => 'Title',
                     f_class => 'specialxx',
                     uri => 'pizza',
-                   });
-};
-ok $@, "Exception $@";
-
-eval {
-    build_full_uri({
+                   }, undef , undef],
+                  [{
                     class => 'Attachment',
                     f_class => 'asdfa',
                     uri => 'pizza',
-                   });
-};
-ok $@, "Exception $@";
+                   }, undef, undef],
+                   [{
+                    class => 'Attachment',
+                    f_class => 'image',
+                   }, '/library', undef],
 
-is build_full_uri({
-                   class => 'Attachment',
-                   f_class => 'image',
-                  }), '/library';
+                  [{
+                    class => 'Attachment',
+                    f_class => 'image',
+                    uri => 'pizza.jpg',
+                   }, '/library/pizza.jpg', 'p/pa/pizza.jpg'
+                  ],
 
-is build_full_uri({
-                   class => 'Attachment',
-                   f_class => 'image',
-                   uri => 'pizza.jpg',
-                  }), '/library/pizza.jpg';
+                  [{
+                    class => 'Attachment',
+                    f_class => 'special_image',
+                    uri => 'pizza.jpg',
+                   }, '/special/pizza.jpg',
+                   'specials/pizza.jpg'
+                  ],
 
-
-is build_full_uri({
-                   class => 'Attachment',
-                   f_class => 'special_image',
-                   uri => 'pizza.jpg',
-                  }), '/special/pizza.jpg';
-
-eval {
-    build_full_uri({
+                  [{
+                    class => 'Attachment',
+                    f_class => 'special_image',
+                    uri => 'pizza.jpg',
+                    site_id => 'xx'
+                   }, '/special/pizza.jpg',
+                   'repo/xx/specials/pizza.jpg'
+                  ],
+                  [{
                     class => 'Attachment',
                     f_class => 'upload_pdf',
                     uri => 'pizza.pdf',
-                   });
-};
-ok $@, "Exception $@";
-
-eval {
-    build_full_uri({
+                   }, undef, 'uploads/pizza.pdf'],
+                   [{
+                    class => 'Attachment',
+                    f_class => 'upload_binary',
+                     uri => 'pizza.mov',
+                    }, undef, 'uploads/pizza.mov'],
+                  [{
+                    class => 'Attachment',
+                    f_class => 'upload_pdf',
+                    uri => 'pizza.pdf',
+                    site_id => 'blog',
+                   }, '/uploads/blog/pizza.pdf',
+                   'repo/blog/uploads/pizza.pdf'
+                  ],
+                  [{
                     class => 'Attachment',
                     f_class => 'upload_binary',
                     uri => 'pizza.mov',
-                   });
-};
-ok $@, "Exception $@";
-
-is build_full_uri({
-                   class => 'Attachment',
-                   f_class => 'upload_pdf',
-                   uri => 'pizza.pdf',
-                   site_id => 'blog',
-                  }), '/uploads/blog/pizza.pdf';
-
-
-is build_full_uri({
-                   class => 'Attachment',
-                   f_class => 'upload_binary',
-                   uri => 'pizza.mov',
-                   site_id => 'blog',
-                  }), '/uploads/blog/pizza.mov';
+                    site_id => 'blog',
+                   }, '/uploads/blog/pizza.mov',
+                   'repo/blog/uploads/pizza.mov'
+                  ],
+                 ) {
+    diag Dumper($spec);
+    my ($spec, $full_uri, $repo_path) = @$spec;
+    my ($outcome, $outpath);
+    eval { $outcome = build_full_uri($spec) };
+    diag $@ if $@;
+    is $outcome, $full_uri, "Expected OK";
+    eval { $outpath = build_repo_path($spec) };
+    diag $@ if $@;
+    is $outpath, $repo_path, "Repo path OK";
+}
 

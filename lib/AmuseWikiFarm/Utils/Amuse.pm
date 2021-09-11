@@ -36,6 +36,7 @@ our @EXPORT_OK = qw/muse_file_info
                     to_json
                     from_json
                     build_full_uri
+                    build_repo_path
                     amw_meta_stripper
                     unicode_uri_fragment
                     cover_filename_is_valid
@@ -555,7 +556,46 @@ sub build_full_uri {
 }
 
 sub build_repo_path {
-    my ($class, $f_class, $uri) = @_;
+    my $spec = shift;
+    my ($class, $f_class, $uri, $site_id) = @$spec{qw/class f_class uri site_id/};
+    return unless $uri && $class && $f_class;
+
+    # strip the suffix
+    my $suffix = '';
+    if ($uri =~  m/\A([a-z0-9-]+)(\.[a-z0-9]{3,})?\z/) {
+        ($uri, $suffix) = ($1, $2 || '');
+    }
+    else {
+        die "Invalid uri $uri";
+    }
+
+    my @pieces;
+    # site id is option
+    if ($site_id) {
+        push @pieces, repo => $site_id;
+    }
+    if (($class eq 'Title' && $f_class eq 'text') or
+        ($class eq 'Attachment' && $f_class eq 'image')) {
+        if (my $regular_path = muse_get_full_path($uri)) {
+            push @pieces, $regular_path->[0], $regular_path->[1];
+        }
+        else {
+            die "Unparsable $class $f_class $uri";
+        }
+    }
+    elsif (($class eq 'Title' && $f_class eq 'special') or
+           ($class eq 'Attachment' && $f_class eq 'special_image')) {
+        push @pieces, 'specials';
+    }
+    elsif ($class eq 'Attachment' and ($f_class eq 'upload_pdf' or
+                                       $f_class eq 'upload_binary')) {
+        push @pieces, 'uploads';
+    }
+    else {
+        die "Invalid class  $class/ f_class $f_class";
+    }
+    push @pieces, $uri . $suffix;
+    return path(@pieces);
 }
 
 sub _parse_category {
