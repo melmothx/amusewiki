@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 92;
+use Test::More tests => 111;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -14,6 +14,7 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_attachment_basename_for
                                    clean_username
                                    amw_meta_stripper
+                                   build_full_uri
                                   /;
 
 is_deeply(muse_get_full_path("cacca"), [ "c", "ca", "cacca" ]);
@@ -164,3 +165,123 @@ is (amw_meta_stripper(('12345 678 ' x 15) . 'lkajsdalksdjflkakasdklf'),
     ('12345 678 ' x 14) . '12345 678...');
 
 is AmuseWikiFarm::Utils::Amuse::get_corrected_path('test.muse'), 't/tt/test.muse';
+
+is build_full_uri({}), undef;
+is build_full_uri({
+                   class => 'Title',
+                  }), undef;
+is build_full_uri({
+                   f_class => 'text',
+                  }), undef;
+
+is build_full_uri({
+                   class => 'Title',
+                   f_class => 'text',
+                  }), '/library';
+is build_full_uri({
+                   class => 'Title',
+                   f_class => 'text',
+                   uri => '',
+                  }), '/library/';
+
+is build_full_uri({
+                   class => 'Title',
+                   f_class => 'text',
+                   uri => 'pizza',
+                  }), '/library/pizza';
+
+is build_full_uri({
+                   class => 'Title',
+                   f_class => 'special',
+                  }), '/special';
+is build_full_uri({
+                   class => 'Title',
+                   f_class => 'special',
+                   uri => '',
+                  }), '/special/';
+
+is build_full_uri({
+                   class => 'Title',
+                   f_class => 'special',
+                   uri => 'pizza',
+                  }), '/special/pizza';
+
+
+eval {
+    build_full_uri({
+                    class => 'Titlex',
+                    f_class => 'special',
+                    uri => 'pizza',
+                   });
+};
+ok $@, "Exception $@";
+
+eval {
+    build_full_uri({
+                    class => 'Title',
+                    f_class => 'specialxx',
+                    uri => 'pizza',
+                   });
+};
+ok $@, "Exception $@";
+
+eval {
+    build_full_uri({
+                    class => 'Attachment',
+                    f_class => 'asdfa',
+                    uri => 'pizza',
+                   });
+};
+ok $@, "Exception $@";
+
+is build_full_uri({
+                   class => 'Attachment',
+                   f_class => 'image',
+                  }), '/library';
+
+is build_full_uri({
+                   class => 'Attachment',
+                   f_class => 'image',
+                   uri => 'pizza.jpg',
+                  }), '/library/pizza.jpg';
+
+
+is build_full_uri({
+                   class => 'Attachment',
+                   f_class => 'special_image',
+                   uri => 'pizza.jpg',
+                  }), '/special/pizza.jpg';
+
+eval {
+    build_full_uri({
+                    class => 'Attachment',
+                    f_class => 'upload_pdf',
+                    uri => 'pizza.pdf',
+                   });
+};
+ok $@, "Exception $@";
+
+eval {
+    build_full_uri({
+                    class => 'Attachment',
+                    f_class => 'upload_binary',
+                    uri => 'pizza.mov',
+                   });
+};
+ok $@, "Exception $@";
+
+is build_full_uri({
+                   class => 'Attachment',
+                   f_class => 'upload_pdf',
+                   uri => 'pizza.pdf',
+                   site_id => 'blog',
+                  }), '/uploads/blog/pizza.pdf';
+
+
+is build_full_uri({
+                   class => 'Attachment',
+                   f_class => 'upload_binary',
+                   uri => 'pizza.mov',
+                   site_id => 'blog',
+                  }), '/uploads/blog/pizza.mov';
+

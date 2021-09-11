@@ -35,6 +35,7 @@ our @EXPORT_OK = qw/muse_file_info
                     clean_html
                     to_json
                     from_json
+                    build_full_uri
                     amw_meta_stripper
                     unicode_uri_fragment
                     cover_filename_is_valid
@@ -510,6 +511,51 @@ sub muse_get_full_path {
   push @path, $filename;
   die "bad filename" if $#path < 2;
   return \@path;
+}
+
+sub build_full_uri {
+    my $spec = shift;
+    my ($class, $f_class) = @$spec{qw/class f_class/};
+    return unless $class && $f_class;
+    my @pieces = ('');
+    if ($class eq 'Title') {
+        if ($f_class eq 'text') {
+            push @pieces, 'library';
+        }
+        elsif ($f_class eq 'special') {
+            push @pieces, 'special';
+        }
+        else {
+            die "unknown $class f_class $f_class";
+        }
+    }
+    elsif ($class eq 'Attachment') {
+        if ($f_class eq 'image') {
+            push @pieces, 'library';
+        }
+        elsif ($f_class eq 'special_image') {
+            push @pieces, 'special';
+        }
+        elsif ($f_class eq 'upload_pdf' or $f_class eq 'upload_binary') {
+            die "Missing site id to compute full uri for $class/$f_class" unless $spec->{site_id};
+            push @pieces, 'uploads', $spec->{site_id};
+        }
+        else {
+            die "unknown $class f_class $f_class"
+        }
+    }
+    else {
+        die "Unknown class $class";
+    }
+
+    if (defined $spec->{uri}) {
+        push @pieces, $spec->{uri};
+    }
+    return join('/', @pieces);
+}
+
+sub build_repo_path {
+    my ($class, $f_class, $uri) = @_;
 }
 
 sub _parse_category {

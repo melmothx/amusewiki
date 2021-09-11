@@ -678,7 +678,7 @@ use File::Copy qw/copy/;
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse;
 use HTML::Entities qw/decode_entities encode_entities/;
-use AmuseWikiFarm::Utils::Amuse qw/cover_filename_is_valid to_json from_json/;
+use AmuseWikiFarm::Utils::Amuse qw/cover_filename_is_valid to_json from_json build_full_uri/;
 use Path::Tiny qw//;
 use HTML::LinkExtor; # from HTML::Parser
 use HTML::TreeBuilder;
@@ -1048,22 +1048,20 @@ catalyst app url, instead of calling uri_for with 2 or 3 arguments
 
 sub full_uri {
     my ($self, $uri) = @_;
-    $uri ||= $self->uri;
-    return $self->base_path . $uri;
+    return build_full_uri({
+                           class => 'Title',
+                           f_class => $self->f_class,
+                           uri => $uri || $self->uri,
+                          });
 }
 
 sub base_path {
     my $self = shift;
-    my $class = $self->f_class;
-    if ($class eq 'special') {
-        return '/special/';
-    }
-    elsif ($class eq 'text') {
-        return '/library/';
-    }
-    else {
-        die "WTF";
-    }
+    return build_full_uri({
+                           class => 'Title',
+                           f_class => $self->f_class,
+                           uri => '',
+                          });
 }
 
 sub full_edit_uri {

@@ -298,6 +298,7 @@ Return false if it's a PDF, false otherwise
 use Text::Amuse::Functions qw/muse_format_line muse_to_html/;
 use AmuseWikiFarm::Log::Contextual;
 use Path::Tiny;
+use AmuseWikiFarm::Utils::Amuse qw/build_full_uri/;
 
 sub can_be_inlined {
     my $self = shift;
@@ -311,24 +312,17 @@ sub can_be_inlined {
 
 sub full_uri {
     my $self = shift;
-    my %type = (
-                image => sub { '/library/' . $self->uri },
-                special_image => sub { '/special/' . $self->uri },
-                upload_pdf => sub { '/uploads/' . $self->site->id . '/' . $self->uri },
-                upload_binary => sub { '/uploads/' . $self->site->id . '/' . $self->uri },
-               );
-    if (my $sub = $type{$self->f_class}) {
-        return $sub->();
-    }
-    else {
-        log_error { $self->f_class . ' for ' . $self->f_full_path_name . ' is not recognized' };
-    }
-    return undef;
+    return build_full_uri({
+                           class => 'Attachment',
+                           f_class => $self->f_class,
+                           uri => $self->uri,
+                           site_id => $self->site_id,
+                          });
 }
 
 sub thumbnail_base_path {
     my $self = shift;
-    return '/uploads/' . $self->site->id . '/thumbnails/' . $self->uri;
+    return '/uploads/' . $self->site_id . '/thumbnails/' . $self->uri;
 }
 
 sub thumbnail_uri {
