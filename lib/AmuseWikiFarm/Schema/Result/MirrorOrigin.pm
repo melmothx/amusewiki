@@ -140,7 +140,7 @@ use JSON::MaybeXS;
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;
 use DateTime;
-use AmuseWikiFarm::Utils::Amuse;
+use AmuseWikiFarm::Utils::Amuse qw/build_full_uri/;
 use Path::Tiny ();
 
 has ua => (is => 'rw',
@@ -190,7 +190,13 @@ sub prepare_download {
     # placeholder records.
     my %seen;
     my @downloads;
+
+  ITEM:
     foreach my $i (@$list) {
+        unless ($i->{uri} =~ m/\A[a-z0-9-]+\.[a-z0-9]{3,}?\z/) {
+            Dlog_error { "Invalid specification $_" } $i;
+            next ITEM;
+        }
         my $rs;
         my %search = (
                       uri => $i->{uri},
@@ -208,9 +214,21 @@ sub prepare_download {
             $rs = $site->titles->search(\%search);
             $bogus{status} = 'editing';
             $bogus{pubdate} = DateTime->now;
+            unless ($i->{f_class} =~ m/\A (?: text | special ) \z/x) {
+                Dlog_error { "Invalid f_class" } $i;
+                next ITEM;
+            }
         }
         elsif ($i->{class} eq 'Attachment') {
             $rs = $site->attachments->search(\%search);
+            unless ($i->{f_class} =~ m/\A (?: special_image | image | upload_binary | upload_pdf ) \z/x) {
+                Dlog_error { "Invalid f_class" } $i;
+                next ITEM;
+            }
+        }
+        else {
+            Dlog_error { "Invalid class $_" } $i;
+            next ITEM;
         }
         my $obj;
         if ($rs->count) {
@@ -223,12 +241,19 @@ sub prepare_download {
                                 %bogus,
                                });
         }
+
+        my $full_uri = build_full_uri($i);
+        unless ($full_uri) {
+            Dlog_error { "Cannot build url from $_" } $i;
+            next ITEM;
+        }
         my $our_origin_id = $self->mirror_origin_id;
-        my $mirror_info = $obj->mirror_info || $obj->create_related('mirror_info',
-                                                                    {
-                                                                     last_updated => $now,
-                                                                     mirror_origin_id => $our_origin_id,
-                                                                    })->discard_changes;
+        my %spec = (
+                    last_updated => $now,
+                    mirror_origin_id => $our_origin_id,
+                    download_source => join('', "https://", $self->remote_domain, $full_uri),
+                   );
+        my $mirror_info = $obj->mirror_info || $obj->create_related('mirror_info', \%spec)->discard_changes;
 
         $seen{$mirror_info->mirror_info_id}++;
         # same origin: download if checksum missing or mismatching
@@ -239,18 +264,16 @@ sub prepare_download {
                 # same origin and no exception:
                 if (!$mirror_info->mirror_exception) {
                     push @downloads, $mirror_info->mirror_info_id;
-                    log_info { "Download " . $i->{uri} };
+                    $mirror_info->update(\%spec);
+                    log_info { "Downloading $spec{download_source}" };
                 }
             }
         }
         # not taken but matching checksum: take for future updates
         elsif (($mirror_info->checksum // '') eq $i->{checksum})  {
             if (!$mirror_info->mirror_exception) {
-                log_info { "Taking $i->{uri} for future downloads" };
-                $mirror_info->update({
-                                      mirror_origin_id => $self->mirror_origin_id,
-                                      last_updated => $now,
-                                     });
+                log_info { "Taking $spec{download_source} for future downloads" };
+                $mirror_info->update(\%spec);
             }
         }
         # not taken but with mismatches
@@ -310,7 +333,7 @@ sub download_file {
     $opts ||= {};
     my $ua = $opts->{ua} || $self->ua;
     my $suffix = $info->is_attachment ? '' : '.muse';
-    my $src = join('', "https://", $self->remote_domain, $info->full_uri, $suffix);
+    my $src = $info->download_source;
     my $dest = Path::Tiny::path(ROOT, qw/var cache mirroring/, $info->mirror_origin_id, $info->mirror_info_id . $suffix);
     $dest->parent->mkpath;
     log_info { "Retrieving $src and storing in $dest" };

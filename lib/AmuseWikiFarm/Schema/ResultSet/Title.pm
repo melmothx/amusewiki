@@ -688,6 +688,7 @@ sub mirror_manifest {
                             });
     while (my $i = $trs->next) {
         $i->{class} = 'Title';
+        $i->{uri} .= '.muse';
         push @out, $i;
     }
     my $ars = $base->search_related('title_attachments')
