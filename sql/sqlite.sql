@@ -661,6 +661,7 @@ CREATE TABLE mirror_info (
        mirror_origin_id INTEGER NULL REFERENCES mirror_origin(mirror_origin_id)
                                 ON DELETE SET NULL ON UPDATE CASCADE,
        checksum VARCHAR(128),
+       download_source TEXT,
        download_destination TEXT,
        mirror_exception VARCHAR(32) NOT NULL DEFAULT '',
        last_updated DATETIME

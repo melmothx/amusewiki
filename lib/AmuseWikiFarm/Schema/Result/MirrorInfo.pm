@@ -68,6 +68,11 @@ __PACKAGE__->table("mirror_info");
   is_nullable: 1
   size: 128
 
+=head2 download_source
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 download_destination
 
   data_type: 'text'
@@ -98,6 +103,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "checksum",
   { data_type => "varchar", is_nullable => 1, size => 128 },
+  "download_source",
+  { data_type => "text", is_nullable => 1 },
   "download_destination",
   { data_type => "text", is_nullable => 1 },
   "mirror_exception",
@@ -207,8 +214,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-08-18 15:29:28
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:88Uzk1uSoCD5VnWH/pW66g
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-09-12 08:22:29
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:PaK7k1kIeHja/8NVwQatqw
 
 use Digest::SHA;
 use DateTime;
