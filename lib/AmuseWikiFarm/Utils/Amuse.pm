@@ -21,6 +21,8 @@ use AmuseWikiFarm::Log::Contextual;
 use Path::Tiny;
 use File::MimeInfo::Magic qw/mimetype/;
 use Imager;
+use Cwd;
+use constant ROOT => getcwd();
 
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw/muse_file_info
@@ -571,8 +573,13 @@ sub build_repo_path {
 
     my @pieces;
     # site id is option
-    if ($site_id) {
-        push @pieces, repo => $site_id;
+    if ($spec->{absolute}) {
+        if ($spec->{site_id}) {
+            push @pieces, ROOT, repo => $site_id;
+        }
+        else {
+            die "Cannot get absolute path for " . Dumper($spec);
+        }
     }
     if (($class eq 'Title' && $f_class eq 'text') or
         ($class eq 'Attachment' && $f_class eq 'image')) {

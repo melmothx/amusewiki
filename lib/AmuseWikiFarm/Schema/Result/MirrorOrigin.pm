@@ -142,6 +142,7 @@ use AmuseWikiFarm::Log::Contextual;
 use DateTime;
 use AmuseWikiFarm::Utils::Amuse qw/build_full_uri/;
 use Path::Tiny ();
+use File::Copy qw/move/;
 
 has ua => (is => 'rw',
            isa => 'Object',
@@ -349,7 +350,31 @@ sub download_file {
 
 sub install_downloaded {
     my ($self, $logger, $opts) = @_;
-    $logger->("Installing downloaded files");
+    $logger->("Installing downloaded files\n");
+    my @files;
+    foreach my $mi ($self->mirror_infos->download_completed->all) {
+        if (my $repo_path = $mi->compute_repo_path) {
+            $logger->("Installing " . $mi->full_uri . ' into ' . $repo_path . "\n");
+            $repo_path->parent->mkpath;
+            move($mi->download_destination, "$repo_path");
+            $mi->update({ download_destination => '' });
+            push @files, "$repo_path";
+        }
+    }
+    my $site = $self->site;
+    if (@files) {
+        if (my $git = $site->git) {
+            foreach my $f (@files) {
+                $git->add($f);
+            }
+            if ($git->status->get('indexed')) {
+                my $msg = "Remote changes from " . $self->remote_domain . $self->remote_path;
+                log_info { "Committing $msg" };
+                $git->commit({ message => $msg });
+            }
+        }
+    }
+    $site->update_db_from_tree_async;
 }
 
 __PACKAGE__->meta->make_immutable;

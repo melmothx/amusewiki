@@ -219,6 +219,13 @@ __PACKAGE__->belongs_to(
 
 use Digest::SHA;
 use DateTime;
+use AmuseWikiFarm::Utils::Amuse qw/build_repo_path/;
+use Path::Tiny qw/path/;
+
+sub repo_object {
+    my $self = shift;
+    return $self->attachment || $self->title;
+}
 
 sub compute_checksum {
     my $self = shift;
@@ -233,24 +240,33 @@ sub compute_checksum {
 }
 
 sub get_file_path {
-    my $self = shift;
-    if (my $obj = $self->attachment || $self->title) {
-        return $obj->f_full_path_name;
-    }
-    else {
-        return;
-    }
+    shift->repo_object->f_full_path_name;
 }
 
 sub full_uri {
-    my $self = shift;
-    my $obj = $self->attachment || $self->title;
-    return $obj->full_uri;
+    shift->repo_object->full_uri;
 }
 
 sub is_attachment {
     shift->attachment_id ? 1 : 0;
 }
+
+sub compute_repo_path {
+    my $self = shift;
+    if (my $obj = $self->repo_object) {
+        return build_repo_path({
+                                class => $self->is_attachment ? 'Attachment' : 'Title',
+                                f_class => $obj->f_class,
+                                uri => $obj->uri,
+                                site_id => $obj->site_id,
+                                absolute => 1,
+                               });
+    }
+    else {
+        die "Missing object!";
+    }
+}
+
 
 __PACKAGE__->meta->make_immutable;
 1;

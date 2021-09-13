@@ -896,6 +896,10 @@ sub dispatch_job_install_downloaded {
     my $spec = $self->job_data;
     if (my $id = $spec->{mirror_origin_id}) {
         if (my $origin = $self->site->mirror_origins->find($id)) {
+            local $ENV{GIT_COMMITTER_NAME}  = $self->committer_name;
+            local $ENV{GIT_COMMITTER_EMAIL} = $self->committer_mail;
+            local $ENV{GIT_AUTHOR_NAME}  = $self->committer_name;
+            local $ENV{GIT_AUTHOR_EMAIL} = $self->committer_mail;
             $origin->install_downloaded($logger, $opts);
         }
     }
