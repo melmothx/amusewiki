@@ -254,13 +254,20 @@ sub is_attachment {
 sub compute_repo_path {
     my $self = shift;
     if (my $obj = $self->repo_object) {
-        return build_repo_path({
-                                class => $self->is_attachment ? 'Attachment' : 'Title',
-                                f_class => $obj->f_class,
-                                uri => $obj->uri,
-                                site_id => $obj->site_id,
-                                absolute => 1,
-                               });
+        my %spec = (
+                    f_class => $obj->f_class,
+                    uri => $obj->uri,
+                    site_id => $obj->site_id,
+                    absolute => 1,
+                   );
+        if ($self->is_attachment) {
+            $spec{class} = 'Attachment';
+        }
+        else {
+            $spec{class} = 'Title';
+            $spec{uri} .= '.muse';
+        }
+        return build_repo_path(\%spec);
     }
     else {
         die "Missing object!";

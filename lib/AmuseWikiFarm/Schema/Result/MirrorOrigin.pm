@@ -143,6 +143,7 @@ use DateTime;
 use AmuseWikiFarm::Utils::Amuse qw/build_full_uri/;
 use Path::Tiny ();
 use File::Copy qw/move/;
+use Data::Dumper::Concise;
 
 has ua => (is => 'rw',
            isa => 'Object',
@@ -194,7 +195,11 @@ sub prepare_download {
 
   ITEM:
     foreach my $i (@$list) {
-        unless ($i->{uri} =~ m/\A[a-z0-9-]+\.[a-z0-9]{3,}?\z/) {
+        my ($base, $suffix);
+        if ($i->{uri} =~ m/\A([a-z0-9-]+)(\.[a-z0-9]{3,})?\z/) {
+            ($base, $suffix) = ($1, $2);
+        }
+        else {
             Dlog_error { "Invalid specification $_" } $i;
             next ITEM;
         }
@@ -212,13 +217,18 @@ sub prepare_download {
                      f_timestamp => DateTime->from_epoch(epoch => 1),
                     );
         if ($i->{class} eq 'Title') {
-            $rs = $site->titles->search(\%search);
             $bogus{status} = 'editing';
             $bogus{pubdate} = DateTime->now;
             unless ($i->{f_class} =~ m/\A (?: text | special ) \z/x) {
-                Dlog_error { "Invalid f_class" } $i;
+                Dlog_error { "Invalid f_class for $_" } $i;
                 next ITEM;
             }
+            unless ($suffix eq '.muse') {
+                Dlog_error { "Suffix must be .muse in $_" } $i;
+                next ITEM;
+            }
+            $search{uri} = $base;
+            $rs = $site->titles->search(\%search);
         }
         elsif ($i->{class} eq 'Attachment') {
             $rs = $site->attachments->search(\%search);
@@ -360,7 +370,11 @@ sub install_downloaded {
             $mi->update({ download_destination => '' });
             push @files, "$repo_path";
         }
+        else {
+            $logger->("Skipping " . Dumper({ $mi->get_columns }));
+        }
     }
+    Dlog_debug { "Files to add to git are $_" } \@files;
     my $site = $self->site;
     if (@files) {
         if (my $git = $site->git) {

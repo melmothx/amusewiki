@@ -75,6 +75,8 @@ MUSE
     die "dest exists" if -d $dest;
     dircopy(catdir(qw/t test-repos 0blog0 f/), $dest);
     path($dest, ft => 'first-test.muse')->append_utf8("\n\n");
+    $site_2->git->add("f");
+    $site_2->git->commit({ message => "Add first-test" });
     $site_2->update_db_from_tree(sub { diag join(' ', @_) });
 
 }
@@ -141,7 +143,8 @@ $site_2->add_to_mirror_origins({
 
     # TODO: check what happens if you try to edit a text with the same uri
 
-    is $site_2->titles->search_related(mirror_info => { mirror_exception  => 'conflict' })->count, 1;
+    is $site_2->titles->search_related(mirror_info => { mirror_exception  => 'conflict' })->count, 1,
+      "Found a conflict for local modified text";
     is $site_2->titles->search_related(mirror_info => { mirror_origin_id  => undef })->count, 1;
     ok $site_2->titles->search_related(mirror_info => { mirror_exception  => '' })->count;
     is $site_2->titles->search_related(mirror_info => { mirror_exception  => 'removed_upstream' })->count, 0;
