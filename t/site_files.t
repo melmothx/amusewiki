@@ -13,6 +13,7 @@ use Data::Dumper;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
+use Path::Tiny;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_id = '0sf2';
@@ -95,6 +96,28 @@ foreach my $f ($site->site_files) {
         is $mech->content, 'Access denied';
     }
 }
+
+PUBLIC_FILES: {
+    foreach my $f (
+                   ['local.css' => 'xxx' ],
+                   ['index.html' => 'xxx'],
+                   ['index.css' => 'xxx']
+                  ) {
+        my $file = path($basedir, public => $f->[0]);
+        $file->parent->mkpath;
+        $file->spew_utf8($f->[1]);
+    }
+    $site->index_site_files;
+    is $site->public_files->count, 2;
+    $mech->get_ok('/p/index');
+    $mech->content_contains('xxx');
+    ok length($mech->content) > 10;
+    $mech->get_ok('/p/index.html');
+    is $mech->content, 'xxx';
+    $mech->get_ok('/p/index.css');
+    is $mech->content, 'xxx';
+}
+
 
 # delete and recheck
 foreach my $localf (@localfiles) {

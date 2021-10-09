@@ -27,6 +27,12 @@ sub thumbnails {
     return $self->search({ "$me.file_type" => 'thumbnail' });
 }
 
+sub public_files {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.file_type" => 'public' });
+}
+
 # See Attachments::generate_thumbnails
 
 sub thumb {
