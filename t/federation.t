@@ -163,11 +163,14 @@ $site_2->add_to_mirror_origins({
 }
 
 
-foreach my $obj ($site_1->titles->all, $site_1->attachments->all) {
-    $mech->get_ok($obj->full_uri);
-}
+# foreach my $obj ($site_1->titles->all, $site_1->attachments->all) {
+#     $mech->get_ok($obj->full_uri);
+# }
 
 __END__
+
+        f/ft/f-t-cata.jpg
+        f/ft/f-t-testimage.png
 
 
 * Origin:
