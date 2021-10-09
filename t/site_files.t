@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 92;
+use Test::More tests => 100;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/write_file read_file/;
@@ -108,7 +108,7 @@ PUBLIC_FILES: {
         $file->spew_utf8($f->[1]);
     }
     $site->index_site_files;
-    is $site->public_files->count, 2;
+    is $site->public_files->count, 3;
     $mech->get_ok('/p/index');
     $mech->content_contains('xxx');
     ok length($mech->content) > 10;
