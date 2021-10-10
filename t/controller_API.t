@@ -3,7 +3,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 30;
+use Test::More tests => 33;
 
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
@@ -59,3 +59,6 @@ $mech->get_ok("/api/datatables-lang?__language=hr");
 $mech->content_contains(encode('UTF-8', 'Prikaži'));
 $mech->get_ok("/api/datatables-lang?__language=en");
 $mech->content_contains('Showing');
+$mech->get_ok("/api/latest");
+$mech->content_contains(q{"category_id"});
+$mech->content_contains(q{"title_categories"});
