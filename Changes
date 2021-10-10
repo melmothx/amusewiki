@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.521 2021-10-10
+
+ - Fix /api/latest missing critical key
+ - Fix /p/xx sitemap and robots
+
 2.520 2021-10-10
 
  - Add experimental routes p/xxx mapping to repo/site_files/public to
