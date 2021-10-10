@@ -224,6 +224,7 @@ sub latest :Chained('api') :PathPart('latest') :Args {
                                       cover
                                       teaser
                                       sku
+                                      uri
                                      /],
                        prefetch => [
                                     'muse_headers',
