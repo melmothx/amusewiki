@@ -6,7 +6,6 @@ dbicdh/_common/upgrade/20-21/000-fix-sites.pl
 dbicdh/_common/upgrade/23-24/002-populate-monthly-archives.pl
 dbicdh/_common/upgrade/31-32/002-clear-thumbnails.pl
 dbicdh/_common/upgrade/32-33/002-null-bb-job-owners.pl
-dbicdh/_common/upgrade/36-37/002-rebuild-files-since-april-2017.pl
 dbicdh/_common/upgrade/45-46/002-migrate-sessions.pl
 dbicdh/_common/upgrade/55-56/001-populate-custom-category-types.pl
 dbicdh/_source/deploy/10/001-auto-__VERSION.yml
@@ -135,6 +134,8 @@ dbicdh/_source/deploy/66/001-auto-__VERSION.yml
 dbicdh/_source/deploy/66/001-auto.yml
 dbicdh/_source/deploy/67/001-auto-__VERSION.yml
 dbicdh/_source/deploy/67/001-auto.yml
+dbicdh/_source/deploy/68/001-auto-__VERSION.yml
+dbicdh/_source/deploy/68/001-auto.yml
 dbicdh/_source/deploy/7/001-auto-__VERSION.yml
 dbicdh/_source/deploy/7/001-auto.yml
 dbicdh/_source/deploy/8/001-auto-__VERSION.yml
@@ -267,6 +268,8 @@ dbicdh/MySQL/deploy/66/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/66/001-auto.sql
 dbicdh/MySQL/deploy/67/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/67/001-auto.sql
+dbicdh/MySQL/deploy/68/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/68/001-auto.sql
 dbicdh/MySQL/deploy/7/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/7/001-auto.sql
 dbicdh/MySQL/deploy/8/001-auto-__VERSION.sql
@@ -335,6 +338,7 @@ dbicdh/MySQL/upgrade/63-64/001-auto.sql
 dbicdh/MySQL/upgrade/64-65/001-auto.sql
 dbicdh/MySQL/upgrade/65-66/001-auto.sql
 dbicdh/MySQL/upgrade/66-67/001-auto.sql
+dbicdh/MySQL/upgrade/67-68/001-auto.sql
 dbicdh/MySQL/upgrade/7-8/001-auto.sql
 dbicdh/MySQL/upgrade/8-9/001-auto.sql
 dbicdh/MySQL/upgrade/9-10/001-auto.sql
@@ -464,6 +468,8 @@ dbicdh/PostgreSQL/deploy/66/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/66/001-auto.sql
 dbicdh/PostgreSQL/deploy/67/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/67/001-auto.sql
+dbicdh/PostgreSQL/deploy/68/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/68/001-auto.sql
 dbicdh/PostgreSQL/deploy/7/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/7/001-auto.sql
 dbicdh/PostgreSQL/deploy/8/001-auto-__VERSION.sql
@@ -532,6 +538,7 @@ dbicdh/PostgreSQL/upgrade/63-64/001-auto.sql
 dbicdh/PostgreSQL/upgrade/64-65/001-auto.sql
 dbicdh/PostgreSQL/upgrade/65-66/001-auto.sql
 dbicdh/PostgreSQL/upgrade/66-67/001-auto.sql
+dbicdh/PostgreSQL/upgrade/67-68/001-auto.sql
 dbicdh/PostgreSQL/upgrade/7-8/001-auto.sql
 dbicdh/PostgreSQL/upgrade/8-9/001-auto.sql
 dbicdh/PostgreSQL/upgrade/9-10/001-auto.sql
@@ -661,6 +668,8 @@ dbicdh/SQLite/deploy/66/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/66/001-auto.sql
 dbicdh/SQLite/deploy/67/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/67/001-auto.sql
+dbicdh/SQLite/deploy/68/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/68/001-auto.sql
 dbicdh/SQLite/deploy/7/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/7/001-auto.sql
 dbicdh/SQLite/deploy/8/001-auto-__VERSION.sql
@@ -729,6 +738,7 @@ dbicdh/SQLite/upgrade/63-64/001-auto.sql
 dbicdh/SQLite/upgrade/64-65/001-auto.sql
 dbicdh/SQLite/upgrade/65-66/001-auto.sql
 dbicdh/SQLite/upgrade/66-67/001-auto.sql
+dbicdh/SQLite/upgrade/67-68/001-auto.sql
 dbicdh/SQLite/upgrade/7-8/001-auto.sql
 dbicdh/SQLite/upgrade/8-9/001-auto.sql
 dbicdh/SQLite/upgrade/9-10/001-auto.sql
@@ -959,6 +969,7 @@ root/src/git/git.tt
 root/src/help/faq.tt
 root/src/help/irc.tt
 root/src/help/opds.tt
+root/src/html-body.tt
 root/src/include/attachment.tt
 root/src/include/bbform.tt
 root/src/include/breadcrumbs.tt
