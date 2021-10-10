@@ -386,6 +386,11 @@ sub sitemap_txt :Chained('/site') :PathPart('sitemap.txt') :Args(0) {
         my $cat = shift @$categories;
         push @urls, $base . $cat->{full_uri};
     }
+    foreach my $f ($site->public_files->search({ file_name => { like => '%.html' } })->all) {
+        my $name = $f->file_name;
+        $name =~ s/\.html//;
+        push @urls, $base . "/p/$name";
+    }
     $c->response->content_type('text/plain');
     $c->response->body(join("\n", @urls) . "\n");
 }

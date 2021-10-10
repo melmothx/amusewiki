@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 101;
+use Test::More tests => 104;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/write_file read_file/;
@@ -111,6 +111,7 @@ PUBLIC_FILES: {
     is $site->public_files->count, 3;
     $mech->get_ok('/p/index');
     $mech->content_contains('xxx');
+    $mech->content_lacks('noindex,nofollow');
     ok length($mech->content) > 10;
     $mech->get_ok('/p/index.html');
     is $mech->content, 'xxx';
@@ -118,6 +119,9 @@ PUBLIC_FILES: {
     is $mech->content, 'xxx';
     $mech->get('/p/xxxx');
     is $mech->status, 404;
+    $mech->get_ok('/sitemap.txt');
+    diag $mech->content;
+    $mech->content_contains("amusewiki.org/p/index\n");
 }
 
 

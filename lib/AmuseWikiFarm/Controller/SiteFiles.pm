@@ -66,7 +66,7 @@ sub local_files :Chained('root') :PathPart('') :Args(1) {
     $c->detach('/not_found');
 }
 
-sub public :Chained('/site') :PathPart('p') :Args(1) {
+sub public :Chained('/site_robot_index') :PathPart('p') :Args(1) {
     my ($self, $c, $file) = @_;
     my $site = $c->stash->{site};
     if (my $f = $site->public_files->find({ file_name => $file })) {
