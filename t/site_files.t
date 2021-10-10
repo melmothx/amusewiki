@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 100;
+use Test::More tests => 101;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/write_file read_file/;
@@ -116,6 +116,8 @@ PUBLIC_FILES: {
     is $mech->content, 'xxx';
     $mech->get_ok('/p/index.css');
     is $mech->content, 'xxx';
+    $mech->get('/p/xxxx');
+    is $mech->status, 404;
 }
 
 

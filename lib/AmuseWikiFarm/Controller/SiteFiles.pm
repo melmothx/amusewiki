@@ -80,6 +80,9 @@ sub public :Chained('/site') :PathPart('p') :Args(1) {
                   template => 'html-body.tt',
                  );
     }
+    else {
+        $c->detach('/not_found');
+    }
 }
 
 
