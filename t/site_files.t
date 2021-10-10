@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 92;
+use Test::More tests => 101;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/write_file read_file/;
@@ -13,6 +13,7 @@ use Data::Dumper;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
+use Path::Tiny;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_id = '0sf2';
@@ -95,6 +96,30 @@ foreach my $f ($site->site_files) {
         is $mech->content, 'Access denied';
     }
 }
+
+PUBLIC_FILES: {
+    foreach my $f (
+                   ['local.css' => 'xxx' ],
+                   ['index.html' => 'xxx'],
+                   ['index.css' => 'xxx']
+                  ) {
+        my $file = path($basedir, public => $f->[0]);
+        $file->parent->mkpath;
+        $file->spew_utf8($f->[1]);
+    }
+    $site->index_site_files;
+    is $site->public_files->count, 3;
+    $mech->get_ok('/p/index');
+    $mech->content_contains('xxx');
+    ok length($mech->content) > 10;
+    $mech->get_ok('/p/index.html');
+    is $mech->content, 'xxx';
+    $mech->get_ok('/p/index.css');
+    is $mech->content, 'xxx';
+    $mech->get('/p/xxxx');
+    is $mech->status, 404;
+}
+
 
 # delete and recheck
 foreach my $localf (@localfiles) {

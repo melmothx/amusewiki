@@ -1405,12 +1405,17 @@ sub thumbnails {
     return shift->global_site_files->thumbnails;
 }
 
+sub public_files {
+    return shift->global_site_files->public_files;
+}
+
 
 sub index_site_files {
     my $self = shift;
     my $dir = Path::Tiny::path($self->path_for_site_files);
     my $guard = $self->result_source->schema->txn_scope_guard;
     $self->site_files->delete;
+    $self->public_files->delete;
     if ($dir->exists) {
         foreach my $path ($dir->children(qr{^[a-z0-9]([a-z0-9-]*[a-z0-9])?\.[a-z0-9]+$})) {
             my ($w, $h) = AmuseWikiFarm::Utils::Amuse::image_dimensions($path);
@@ -1420,6 +1425,17 @@ sub index_site_files {
                                                     image_width => $w,
                                                     image_height => $h,
                                                    });
+        }
+        if (my $pubdir = $dir->child('public')) {
+            if ($pubdir->exists) {
+                # be very tolerant with paths
+                foreach my $path ($pubdir->children(qr{^\w})) {
+                    $self->public_files->create({
+                                                 file_path => "$path",
+                                                 file_name => $path->basename,
+                                                });
+                }
+            }
         }
     }
     $guard->commit;

@@ -7,3 +7,30 @@ amuse:
   RaiseError: 1
   sqlite_unicode: 1
   quote_names: 1
+
+amuse_sqlite:
+  dsn: 'dbi:SQLite:test.db'
+  user: ''
+  password: ''
+  on_connect_do: 'PRAGMA foreign_keys = ON'
+  AutoCommit: 1
+  RaiseError: 1
+  sqlite_unicode: 1
+  quote_names: 1
+
+amuse_mysql:
+  dsn: 'dbi:mysql:amusewiki'
+  user: 'amusewiki'
+  password: 'Pa55Word'
+  mysql_enable_utf8: 1
+  AutoCommit: 1
+  RaiseError: 1
+  quote_names: 1
+
+amuse_pg:
+  dsn: 'dbi:Pg:host=localhost;database=amusewiki'
+  user: 'amusewiki'
+  password: 'Pa55Word'
+  AutoCommit: 1
+  RaiseError: 1
+  quote_names: 1

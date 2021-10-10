@@ -4,6 +4,9 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use AmuseWikiFarm::Log::Contextual;
+use Path::Tiny ();
+
 =head1 NAME
 
 AmuseWikiFarm::Controller::SiteFiles - Catalyst Controller
@@ -61,6 +64,25 @@ sub local_files :Chained('root') :PathPart('') :Args(1) {
         }
     }
     $c->detach('/not_found');
+}
+
+sub public :Chained('/site') :PathPart('p') :Args(1) {
+    my ($self, $c, $file) = @_;
+    my $site = $c->stash->{site};
+    if (my $f = $site->public_files->find({ file_name => $file })) {
+        $c->stash(serve_static_file => $f->file_path);
+        $c->detach($c->view('StaticFile'));
+        return;
+    }
+    elsif (my $html = $site->public_files->find({ file_name => "$file.html" })) {
+        $c->stash(
+                  html_source => Path::Tiny::path($html->file_path)->slurp_utf8,
+                  template => 'html-body.tt',
+                 );
+    }
+    else {
+        $c->detach('/not_found');
+    }
 }
 
 

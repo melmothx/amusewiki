@@ -193,6 +193,47 @@ sub datatables_lang :Chained('api') :PathPart('datatables-lang') :Args(0) {
     $c->response->status(404);
 }
 
+sub latest :Chained('api') :PathPart('latest') :Args {
+    my ($self, $c, $page) = @_;
+    my $site = $c->stash->{site};
+    my @out = $site->titles->status_is_published
+      ->texts_only
+      ->order_by('pubdate_desc')
+      ->page_number($page)
+      ->rows_number($site->pagination_size_latest)
+      ->search(undef, {
+                       columns => [qw/id
+                                      title
+                                      subtitle
+                                      lang
+                                      date
+                                      notes
+                                      source
+                                      list_title
+                                      author
+                                      uid
+                                      attach
+                                      pubdate
+                                      status
+                                      parent
+                                      publisher
+                                      isbn
+                                      rights
+                                      seriesname
+                                      seriesnumber
+                                      cover
+                                      teaser
+                                      sku
+                                     /],
+                       prefetch => [
+                                    'muse_headers',
+                                    { title_categories => 'category'},
+                                   ],
+                       result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                      })->all;
+    $c->stash(json => \@out);
+    $c->detach($c->view('JSON'));
+}
 
 =head1 AUTHOR
 

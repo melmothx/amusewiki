@@ -110,7 +110,7 @@ CREATE TABLE global_site_files (
        file_path TEXT NOT NULL,
        image_width INTEGER NULL,
        image_height INTEGER NULL,
-       PRIMARY KEY (site_id, file_name)
+       PRIMARY KEY (site_id, file_name, file_type)
 );
 
 CREATE TABLE custom_formats (

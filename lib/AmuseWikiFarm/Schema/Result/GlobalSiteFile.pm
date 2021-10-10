@@ -105,11 +105,13 @@ __PACKAGE__->add_columns(
 
 =item * L</file_name>
 
+=item * L</file_type>
+
 =back
 
 =cut
 
-__PACKAGE__->set_primary_key("site_id", "file_name");
+__PACKAGE__->set_primary_key("site_id", "file_name", "file_type");
 
 =head1 RELATIONS
 
@@ -149,8 +151,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-29 09:48:38
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NN5qBAlfstPYQQEA81PWkA
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-10-09 11:05:51
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qQEkbgQUN31jYf7yunKT8w
 
 
 use Path::Tiny;
