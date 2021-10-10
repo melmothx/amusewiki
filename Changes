@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.520 2021-10-10
+
+ - Add experimental routes p/xxx mapping to repo/site_files/public to
+   build arbitrary custom pages.
+ - add /api/latest exposing the title info as JSON
+
 2.519 2021-08-04
 
  - Deny access to git pull logs to anonymous users. This fixes a
