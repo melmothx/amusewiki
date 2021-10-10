@@ -25,7 +25,7 @@ use AmuseWiki::Tests qw/run_all_jobs/;
 
 diag "Using DBIC $DBIx::Class::VERSION\n";
 
-plan tests => 21;
+plan tests => 20;
 
 my $script_dir = AmuseWikiFarm::Utils::Paths::dbicdh_location();
 diag "Script dir is $script_dir";
@@ -70,21 +70,26 @@ if (-f 'test.db') {
                                                  });
     $dh->install({ version => 2 });
     $dh->upgrade;
+}
+
+if (-f 'test.db') {
     unlink 'test.db' or die $!;
 }
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-DBIx::Class::DeploymentHandler->new({
-                                     schema => $schema,
-                                     databases => [qw/SQLite MySQL PostgreSQL/],
-                                     sql_translator_args => { add_drop_table => 0,
-                                                              quote_identifiers => 1,
-                                                            },
-                                     script_directory => "$script_dir",
-                                    })->install;
+if ($schema->storage->sqlt_type eq 'SQLite') {
+    DBIx::Class::DeploymentHandler->new({
+                                         schema => $schema,
+                                         databases => [qw/SQLite MySQL PostgreSQL/],
+                                         sql_translator_args => { add_drop_table => 0,
+                                                                  quote_identifiers => 1,
+                                                                },
+                                         script_directory => "$script_dir",
+                                        })->install;
+}
 
-ok (-f 'test.db', "test.db created");
+
 ok($schema, "Schema exists now");
 
 # we create two repos, 0blog0 and 0test0
