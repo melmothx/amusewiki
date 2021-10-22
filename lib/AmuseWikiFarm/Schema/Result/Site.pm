@@ -4198,6 +4198,7 @@ sub bootstrap_themes {
     my @themes = (qw/amusewiki
                      amusecosmo
                      amusejournal
+                     amusebaskerville
                      robotojournal
                      purplejournal
 
