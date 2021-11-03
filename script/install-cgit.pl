@@ -88,16 +88,7 @@ CGIT_CONFIG=$rcfile $system_wide_location "\$\@"
 CGI
         close $fh;
         chmod 0755, $cgitsetup->cgi;
-        chmod 0777, $cgitsetup->cache;
-    print <<"EOF";
-Directory for cgit cache is $paths{cache}.
-
-Permissions right now are wide open. Please consider to chown it to
-www-data (or whatever user is running fcgiwrap, and restore it to a
-sensible 755.
-
-EOF
-
+        chmod 0755, $cgitsetup->cache;
         print "Wrapper installed in " . $cgitsetup->cgi . ", exiting now\n";
         exit;
     }
@@ -138,19 +129,13 @@ sub compile {
 
     chdir $amw_home or die $!;
     if (-f $paths{cgi}) {
-        sysexec('strip', '--strip-unneeded', $paths{cgi});
+        if (system('strip', '--strip-unneeded', $paths{cgi})) {
+            warn "Could not run strip --strip-unneeded $paths{cgi}, but proceeding anyway\n";
+        }
     } else {
         die "$paths{cgi} was not installed!\n";
     }
-    chmod 0777, $paths{cache};
-    print <<"EOF";
-Directory for cgit cache is $paths{cache}.
-
-Permissions right now are wide open. Please consider to chown it to
-www-data (or whatever user is running fcgiwrap, and restore it to a
-sensible 755.
-
-EOF
+    chmod 0755, $paths{cache};
 }
 
 sub sysexec {

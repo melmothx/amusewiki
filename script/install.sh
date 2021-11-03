@@ -4,6 +4,12 @@
 
 set -e
 
+# enforce the correct path
+cd `dirname $0`
+cd ..
+
+echo "Working in `pwd`"
+
 missing='no'
 for command in perl carton fc-cache update-mime-database xapian-check openssl \
                cpanm \
