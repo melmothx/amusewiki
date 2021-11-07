@@ -19,6 +19,9 @@ fi
 
 mkdir -p opt/cache
 mkdir -p log
+export TMPDIR=$(pwd)/var/tmp
+mkdir -p $TMPDIR
+
 
 prepare_app () {
 # this looks like a bit of an overkill, but better have the files
