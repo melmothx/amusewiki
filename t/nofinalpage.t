@@ -16,6 +16,7 @@ use Data::Dumper;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
+$schema->resultset('User')->update({ preferred_language => undef });
 my $site_id = '0nofinal0';
 my $site = create_site($schema, $site_id);
 $site->update({ secure_site => 0 });

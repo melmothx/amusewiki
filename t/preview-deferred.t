@@ -20,6 +20,7 @@ use DateTime;
 # reuse the 
 my $site_id = '0deferred1';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
+$schema->resultset('User')->update({ preferred_language => undef });
 my $site = create_site($schema, $site_id);
 $site->update({ secure_site => 0,
                 epub => 1,
