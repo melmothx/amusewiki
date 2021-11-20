@@ -23,6 +23,10 @@ use AmuseWikiFarm::Schema;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/run_all_jobs/;
 
+my $xelatex = `which xelatex`;
+
+die "No xelatex found in the path!, cannot continue" unless $xelatex;
+
 diag "Using DBIC $DBIx::Class::VERSION\n";
 
 plan tests => 20;
