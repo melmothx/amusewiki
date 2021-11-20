@@ -96,10 +96,10 @@ requires 'Imager';
 requires 'PDF::API2';
 
 # our own dogfood
-requires 'Text::Amuse' => '1.76';
+requires 'Text::Amuse' => '1.77';
 requires 'PDF::Imposition' => '0.26';
 requires 'Text::Amuse::Compile' => '1.65';
-requires 'Text::Amuse::Preprocessor' => '0.61';
+requires 'Text::Amuse::Preprocessor' => '0.65';
 
 # devel things to be removed at the end of the development cycle
 # requires 'Catalyst::Plugin::StackTrace';
