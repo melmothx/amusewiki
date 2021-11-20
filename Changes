@@ -4,10 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-2.523 2021-11-20
+2.530 2021-11-20
 
  - Add linespacing PDF option (via Text::Amuse::Compile bump)
  - Exclude pseudo TLD from Let's Encrypt renewals (#385)
+ - Add Esperanto i18n
 
 2.522 2021-10-22
 
