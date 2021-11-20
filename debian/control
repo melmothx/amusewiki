@@ -2,7 +2,7 @@ Source: amusewiki
 Section: perl
 Priority: optional
 Maintainer: melmothX <melmothx@gmail.com>
-Build-Depends: debhelper (>= 9), dh-systemd
+Build-Depends: debhelper (>= 9)
 Build-Depends-Indep: libbytes-random-secure-perl,
  libcam-pdf-perl,
  libcatalyst-action-renderview-perl,
