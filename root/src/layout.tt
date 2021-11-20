@@ -492,6 +492,12 @@
                   </a>
                 </li>
                 <li>
+                  <a href="[% c.uri_for_action('/settings/formats') %]">
+                    <span class="fa fa-book fa-fw" aria-hidden="true"></span>
+                    [% loc('Custom formats for [_1]', site.canonical) %]
+                  </a>
+                </li>
+                <li>
                   <a href="[% c.uri_for_action('/tasks/rebuild') %]">
                     <span class="fa fa-refresh fa-fw" aria-hidden="true"></span>
                     [% loc('Rebuild all generated files') %]

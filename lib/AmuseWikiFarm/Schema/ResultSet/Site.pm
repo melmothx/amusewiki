@@ -71,7 +71,7 @@ sub check_and_update_acme_certificates {
                   ->new(directory => "$directory",
                         root => "$root",
                         mailto => $site->mail_notify || 'root@' . $canonical,
-                        names => [ $site->all_site_hostnames ],
+                        names => [ $site->all_site_hostnames_for_renewal ],
                         staging => $ENV{AMW_LETSENCRYPT_STAGING} || 0,
                        );
                 if ($le->live_cert_is_valid) {

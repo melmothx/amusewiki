@@ -359,6 +359,30 @@
       <div class="form-group pdf-option" style="margin-top: 15px">
         <div class="row">
           <div class="col-sm-3">
+            <label for="linespacing">
+              [% loc('Line spacing') %]:
+            </label>
+          </div>
+          <div class="col-sm-9">
+            <select name="linespacing" id="linespacing" class="form-control">
+              <option value="0" [% IF bb.linespacing == "0" %]selected=selected[% END %]>[% loc('Default') %]</option>
+              <option value="1" [% IF bb.linespacing == "1" %]selected=selected[% END %]>1.1</option>
+              <option value="2" [% IF bb.linespacing == "2" %]selected=selected[% END %]>1.2</option>
+              <option value="3" [% IF bb.linespacing == "3" %]selected=selected[% END %]>1.3</option>
+              <option value="4" [% IF bb.linespacing == "4" %]selected=selected[% END %]>1.4</option>
+              <option value="5" [% IF bb.linespacing == "5" %]selected=selected[% END %]>1.5</option>
+              <option value="6" [% IF bb.linespacing == "6" %]selected=selected[% END %]>1.6</option>
+              <option value="7" [% IF bb.linespacing == "7" %]selected=selected[% END %]>1.7</option>
+              <option value="8" [% IF bb.linespacing == "8" %]selected=selected[% END %]>1.8</option>
+              <option value="9" [% IF bb.linespacing == "9" %]selected=selected[% END %]>1.9</option>
+              <option value="10" [% IF bb.linespacing == "10" %]selected=selected[% END %]>2</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pdf-option" style="margin-top: 15px">
+        <div class="row">
+          <div class="col-sm-3">
             <label for="bcor">
               [% loc('Binding correction in millimeters (additional inner margin)') %]:
             </label>

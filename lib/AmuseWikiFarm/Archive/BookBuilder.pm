@@ -624,6 +624,20 @@ has ignore_cover => (is => 'rw',
                      isa => Bool,
                      default => sub { 0 });
 
+has linespacing => (is => 'rw',
+                    isa => Int,
+                    default => sub { 0 });
+
+sub linespacing_as_string {
+    my $self = shift;
+    if ($self->linespacing > 0) {
+        return sprintf('%.1f', 1 + ($self->linespacing / 10));
+    }
+    else {
+        return '';
+    }
+}
+
 
 sub papersize_values_as_hashref {
     my $list = __PACKAGE__->papersize_values;
@@ -665,6 +679,8 @@ has papersize => (
 =head2 fussy_last_word
 
 =head2 ignore_cover
+
+=head2 linespacing
 
 =cut
 
@@ -1273,6 +1289,7 @@ sub profile_methods {
               tex_emergencystretch
               tex_tolerance
               ignore_cover
+              linespacing
               cover/;
 }
 
@@ -1345,6 +1362,7 @@ sub as_job {
                                     geometry_top_margin   => ($self->geometry_top_margin
                                                               ? $self->geometry_top_margin . 'mm'
                                                               : ''),
+                                    linespacing => $self->linespacing_as_string,
                                     ($self->is_single_file ? ()
                                      : (
                                         # when we provide these, they take precedence over the file defined

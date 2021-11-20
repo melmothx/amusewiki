@@ -5,7 +5,7 @@ use warnings;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 16;
+use Test::More tests => 18;
 
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -91,4 +91,25 @@ is $res->code, 200;
 
 my $canonical = $site->canonical;
 unlike $res->content, qr/\Q$canonical\E/, "$canonical not found in the response";
+
+$site->add_to_vhosts({ name => $site_id . '.amusewiki.onion' });
+$site->add_to_vhosts({ name => $site_id . '.amusewiki.exit' });
+$site->add_to_vhosts({ name => $site_id . '.amusewiki.i2p' });
+
+is_deeply([ $site->all_site_hostnames_for_renewal ],
+          ['blablabla.amusewiki.org',
+           '00aaaa.amusewiki.org',
+           '0canonicals0.amusewiki.org',
+           'example.amusewiki.org' ]);
+
+is_deeply([ $site->all_site_hostnames ],
+          ['blablabla.amusewiki.org',
+           '00aaaa.amusewiki.org',
+           '0canonicals0.amusewiki.exit',
+           '0canonicals0.amusewiki.i2p',
+           '0canonicals0.amusewiki.onion',
+           '0canonicals0.amusewiki.org',
+           'example.amusewiki.org',
+          ]);
+
 $site->delete;
