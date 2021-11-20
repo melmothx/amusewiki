@@ -7350,10 +7350,10 @@ DISTRIBUTIONS
       Test::Builder 0
       Test::Builder::Tester 0.09
       perl 5.007003
-  Text-Amuse-1.76
-    pathname: M/ME/MELMOTHX/Text-Amuse-1.76.tar.gz
+  Text-Amuse-1.77
+    pathname: M/ME/MELMOTHX/Text-Amuse-1.77.tar.gz
     provides:
-      Text::Amuse 1.76
+      Text::Amuse 1.77
       Text::Amuse::Beamer undef
       Text::Amuse::Document undef
       Text::Amuse::Element undef
@@ -7404,10 +7404,10 @@ DISTRIBUTIONS
       Test::More 0
       Text::Amuse 1.76
       Type::Tiny 1
-  Text-Amuse-Preprocessor-0.61
-    pathname: M/ME/MELMOTHX/Text-Amuse-Preprocessor-0.61.tar.gz
+  Text-Amuse-Preprocessor-0.65
+    pathname: M/ME/MELMOTHX/Text-Amuse-Preprocessor-0.65.tar.gz
     provides:
-      Text::Amuse::Preprocessor 0.61
+      Text::Amuse::Preprocessor 0.65
       Text::Amuse::Preprocessor::Footnotes undef
       Text::Amuse::Preprocessor::HTML 0.59
       Text::Amuse::Preprocessor::Parser undef
