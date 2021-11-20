@@ -1,0 +1,3477 @@
+# AmuseWiki i18n
+# This file is distributed under the same license as the AmuseWiki package.
+# Marco Pessotto <melmothx@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AmuseWiki 0.01\n"
+"POT-Creation-Date: 2014-03-06 10:16+0100\n"
+"PO-Revision-Date: 2021-11-20 10:42+0100\n"
+"Last-Translator: Marco <melmothx@gmail.com>\n"
+"Language-Team: Esperanto\n"
+"Language: eo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0\n"
+
+#. ($filename)
+msgid "%1 doesn't exist"
+msgstr "% 1 ne ekzistas"
+
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr "% 1 laborpostenoj forigitaj"
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr "% 1-laborpostenoj postdatigitaj"
+
+#. ($c->stash->{site}->full_name)
+#. (site.full_name)
+msgid "%1 on mobile"
+msgstr "% 1 poŝtelefone"
+
+#. (text.pages_estimated)
+msgid "%1 pp."
+msgstr "%1 pp."
+
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr "(inteligentaj citaĵoj, ligoj, piednotoj, ktp.)"
+
+msgid "A blank line (or more blank lines) starts a new paragraph."
+msgstr "Malplena linio (aŭ pli malplenaj linioj) komencas novan alineon."
+
+msgid ""
+"A cover image was already added, but you can replace it uploading\n"
+"              a new one."
+msgstr ""
+"Kovrilbildo jam estis aldonita, sed vi povas anstataŭigi ĝin alŝutante&#10; "
+"novan."
+
+msgid ""
+"A footnote is a line which starts with a number between square\n"
+"          brackets, with no leading whitespace."
+msgstr ""
+"Piednoto estas linio, kiu komenciĝas per nombro inter kvadrato&#10; krampoj, "
+"sen ĉefa blanka spaco."
+
+msgid "A line which starts with 2 or more whitespaces is a quotation."
+msgstr "Linio, kiu komenciĝas per 2 aŭ pli da blankaj spacoj, estas citaĵo."
+
+msgid "A line which starts with 20 or more whitespaces is right-aligned."
+msgstr ""
+"Linio, kiu komenciĝas per 20 aŭ pli da blankaj spacoj, estas dekstre "
+"vicigita."
+
+msgid "A line which starts with 6 or more whitespaces is centered."
+msgstr "Linio, kiu komenciĝas per 6 aŭ pli da blankaj spacoj, estas centrita."
+
+msgid ""
+"A list of links and labels to insert into the top\n"
+"            bar. One per line, first the url, then the label,\n"
+"            separated by a space, e.g. \"http://test.me Test site\""
+msgstr ""
+"Listo de ligoj kaj etikedoj por enmeti en la supron&#10; trinkejo. Unu po "
+"linio, unue la url, poste la etikedo,&#10; apartigita per spaco, ekz. "
+"\"http://test.me Test-ejo\""
+
+#. (location)
+msgid "A new text has been created at %1"
+msgstr "Nova teksto kreiĝis ĉe% 1"
+
+msgid "A nice title"
+msgstr "Bela titolo"
+
+msgid "A4 imposed PDF"
+msgstr "A4 imposed PDF"
+
+msgid "A4 paper"
+msgstr "A4-papero"
+
+msgid "A5 paper"
+msgstr "A5-papero"
+
+msgid "A6 paper (also suitable for e-readers)"
+msgstr "A6-papero (ankaŭ taŭga por e-legantoj)"
+
+msgid "Abandoned editing in progress, feel free to check the diff and resume"
+msgstr ""
+"Forlasita redaktado en progreso, bonvolu kontroli la diferencon kaj rekomenci"
+
+msgid "Action"
+msgstr "Ago"
+
+msgid "Activate the blog-style look and feel"
+msgstr "Aktivigu la blog-stilan aspekton"
+
+msgid "Active"
+msgstr "Aktiva"
+
+msgid "Add a cover image (PNG or JPG)"
+msgstr "Aldoni kovrilan bildon (PNG aŭ JPG)"
+
+msgid "Add a new text"
+msgstr "Aldonu novan tekston"
+
+msgid "Add an attachment"
+msgstr "Aldoni aldonaĵon"
+
+msgid "Add crop marks to the PDF"
+msgstr "Aldonu kropajn markojn al la PDF"
+
+msgid "Add new remote repository"
+msgstr "Aldonu novan foran deponejon"
+
+msgid "Add non-breaking spaces where appropriate for the language"
+msgstr "Aldonu nerompajn spacojn, kie taŭgas por la lingvo"
+
+msgid ""
+"Add paginator for text listing when the number of texts is greater than "
+"(integer)"
+msgstr ""
+"Aldonu paginatoro por tekstolisto kiam la nombro de tekstoj estas pli granda "
+"ol (entjero)"
+
+msgid "Add sections to the bookbuilder"
+msgstr "Aldonu sekciojn al la librokonstruanto"
+
+msgid "Add the OPDS URL"
+msgstr "Aldonu la URL de OPDS"
+
+msgid "Add the selected parts to the bookbuilder"
+msgstr "Aldonu la elektitajn partojn al la librokonstruisto"
+
+msgid "Add the whole text"
+msgstr "Aldonu la tutan tekston"
+
+msgid "Add this text to the bookbuilder"
+msgstr "Aldonu ĉi tiun tekston al la librokonstruisto"
+
+msgid ""
+"Additional information (full date, original title, translators, credits, "
+"etc)."
+msgstr ""
+"Pliaj informoj (plena dato, originala titolo, tradukistoj, kreditoj, ktp)."
+
+#. (c.uri_for_action('/console/unpublished')
+#. (c.uri_for_action("/console/unpublished").path)
+msgid ""
+"After the approval of the\n"
+"  change, it will appear under %1. There is a big red\n"
+"  button for each deleted text, and you can proceed with the purging."
+msgstr ""
+"Post la aprobo de la\n"
+"   ŝanĝo, ĝi aperos sub% 1. Estas granda ruĝo\n"
+"   butonon por ĉiu forigita teksto, kaj vi povas daŭrigi la purigon."
+
+msgid "Age:"
+msgstr "Aĝo:"
+
+msgid "Alias"
+msgstr "Kaŝnomo"
+
+msgid "Alias can't point to itself"
+msgstr "Kaŝnomo ne povas montri sin al si mem"
+
+msgid ""
+"All kind of lists start with one or more leading\n"
+"        whitespace."
+msgstr ""
+"Ĉiaj listoj komenciĝas per unu aŭ pluraj gvidaj\n"
+"         blanka spaco."
+
+msgid "All languages"
+msgstr "Ĉiuj lingvoj"
+
+msgid "All revisions"
+msgstr "Ĉiuj revizioj"
+
+msgid "All sites"
+msgstr "Ĉiuj retejoj"
+
+msgid "All users"
+msgstr "Ĉiuj uzantoj"
+
+msgid ""
+"Allow binary uploads to logged in users: list of whitespace separate file "
+"extensions"
+msgstr ""
+"Permesu al duumaj alŝutoj ensalutintaj uzantojn: listo de blankaj spacaj "
+"apartaj dosieraj etendaĵoj"
+
+msgid ""
+"Also produce slides\n"
+"          from the document. Each section, no matter how deep, will\n"
+"          produce a slide. The text outside a section is ignored, so\n"
+"          if you do not have sections, you will get empty slides. If\n"
+"          you want to exclude a section, put a comment in the section\n"
+"          body with the string “noslide”."
+msgstr ""
+"Ankaŭ produktu lumbildojn\n"
+"           el la dokumento. Ĉiu sekcio, kiom ajn profunda, estos\n"
+"           produkti glitadon. La teksto ekster sekcio estas ignorata, do\n"
+"           se vi ne havas sekciojn, vi ricevos malplenajn lumbildojn. Se\n"
+"           vi volas ekskludi sekcion, metu komenton en la sekcion\n"
+"           korpo kun la ŝnuro \"noslide\"."
+
+msgid ""
+"An URI is a string which uniquely identifies the text\n"
+"      in the archive. In theory, it could be anything, but if you want\n"
+"      to set it yourself, please stick with the convention: author\n"
+"      name, title, language, eventual number for disambiguation, e.g.\n"
+"      errico-malatesta-anarchy-2. Please note that this is normally\n"
+"      not needed"
+msgstr ""
+"URI estas ĉeno, kiu unike identigas la tekston\n"
+"       en la arkivo. Teorie ĝi povus esti io ajn, sed se vi volas\n"
+"       por agordi ĝin mem, bonvolu resti ĉe la kongreso: aŭtoro\n"
+"       nomo, titolo, lingvo, eventuala numero por malambiguigo, ekz.\n"
+"       errico-malatesta-anarchy-2. Bonvolu noti, ke tio estas normale\n"
+"       ne bezonata"
+
+msgid "Apache is not currently supported"
+msgstr "Apache ne estas nuntempe subtenata"
+
+msgid "Archive"
+msgstr "Arkivo"
+
+msgid "Archive by month"
+msgstr "Arkivo laŭ monato"
+
+msgid "Archive history"
+msgstr "Arkiva historio"
+
+msgid "Are you sure?"
+msgstr "Ĉu vi certas?"
+
+msgid "As cover in the header"
+msgstr "Kiel kovrilo en la kaplinio"
+
+msgid "As regular image in the body"
+msgstr "Kiel regula bildo en la korpo"
+
+msgid "Assign text to nodes"
+msgstr "Asignu tekston al nodoj"
+
+msgid "Attach"
+msgstr "Aligu"
+
+msgid "Attached images"
+msgstr "Aldonitaj bildoj"
+
+msgid "Attachments"
+msgstr "Aldonaĵoj"
+
+msgid "Author"
+msgstr "Aŭtoro"
+
+msgid "Author and title. If one side document: title."
+msgstr "Aŭtoro kaj titolo. Se unu flanka dokumento: titolo."
+
+msgid "Authors"
+msgstr "Aŭtoroj"
+
+msgid "Authors and topics listing"
+msgstr "Aŭtoroj kaj listoj de temoj"
+
+msgid "Authors for indexing"
+msgstr "Aŭtoroj por indeksado"
+
+msgid "Automatically generated"
+msgstr "Aŭtomate generita"
+
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr "Aŭtomate petu kaj renovigu SSL-atestilojn de Let's Encrypt"
+
+msgid "Available"
+msgstr "Disponebla"
+
+msgid "Available category tags for header"
+msgstr "Haveblaj kategoriaj etikedoj por kaplinio"
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
+"Evitu streketon sur la lasta vorto de frazo (ĝi povus rezultigi malbonan "
+"interspacon)"
+
+msgid "Back to the text"
+msgstr "Reen al la teksto"
+
+msgid "Bad request"
+msgstr "Malbona peto"
+
+msgid "Beamer color theme"
+msgstr "Beamer kolora temo"
+
+msgid "Beamer theme"
+msgstr "Beamer-temo"
+
+msgid "Beside topics and authors you can add more categories here"
+msgstr "Apud temoj kaj aŭtoroj vi povas aldoni pli da kategorioj ĉi tie"
+
+msgid "Binding correction in millimeters (additional inner margin)"
+msgstr "Liga korekto en milimetroj (aldona interna rando)"
+
+msgid ""
+"Blocks of 16 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+"Blokoj de 16 paĝoj faldotaj dufoje kaj poste ligotaj\n"
+"                 kune."
+
+msgid ""
+"Blocks of 8 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+"Blokoj de 8 paĝoj faldotaj dufoje kaj poste binditaj\n"
+"                 kune."
+
+msgid "Blog"
+msgstr "Blogo"
+
+msgid "Body"
+msgstr "Korpo"
+
+msgid "Bold"
+msgstr "Aŭdaca"
+
+msgid "Bookbuilder"
+msgstr "Librokonstruisto"
+
+msgid "Bookbuilder page limit (integer)"
+msgstr "Paĝo-limo de Bookbuilder (entjero)"
+
+msgid "Build it"
+msgstr "Konstruu ĝin"
+
+msgid ""
+"By default, secondary footnotes use arabic numbering\n"
+"        between parens. With this option they will use per-page alpha\n"
+"        numbering"
+msgstr ""
+"By default, secondary footnotes use arabic numbering\n"
+"        in parentheses. With this option they will use per-page alpha\n"
+"        numbering"
+
+msgid "By number of pages, ascending"
+msgstr "Laŭ nombro de paĝoj, suprenirante"
+
+msgid "By number of pages, descending"
+msgstr "Laŭ nombro de paĝoj, descende"
+
+msgid "By relevance"
+msgstr "Laŭ graveco"
+
+msgid "By sku ascending"
+msgstr "Per sku supreniranta"
+
+msgid "By sku descending"
+msgstr "Per sku malsupreniranta"
+
+msgid "By title A-Z"
+msgstr "Laŭ titolo A-Z"
+
+msgid "By title Z-A"
+msgstr "Laŭ titolo Z-A"
+
+msgid "CSS Theme"
+msgstr "CSS-Temo"
+
+msgid "Cancel"
+msgstr "Nuligi"
+
+msgid "Canonical name"
+msgstr "Kanonika nomo"
+
+msgid "Categories"
+msgstr "Kategorioj"
+
+#. ($site->canonical)
+msgid "Category types for %1"
+msgstr "Kategorioj por% 1"
+
+msgid "Center all the sectioning titles."
+msgstr "Center all section titles."
+
+msgid "Center the chapter titles."
+msgstr "Center chapter titles."
+
+msgid "Changes"
+msgstr "Ŝanĝoj"
+
+msgid "Changes applied"
+msgstr "Ŝanĝoj aplikitaj"
+
+#. ($c->stash->{revision}->title->uri)
+#. (revision.title.uri)
+#. (author_title)
+msgid "Changes for %1"
+msgstr "Ŝanĝoj por% 1"
+
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr "Ŝanĝoj konservitaj, dankon! Ili nun atendas publikigon"
+
+msgid ""
+"Changing urls is a poor practice. Anyway, if you know what you’re\n"
+"doing, you can delete an existing text and point to another adding a\n"
+"#DELETED directive in the text header with a special syntax:"
+msgstr ""
+"Ŝanĝi urlojn estas malbona praktiko. Ĉiuokaze, se vi scias, kio vi estas\n"
+"farante, vi povas forigi ekzistantan tekston kaj indiki alian aldonante\n"
+"Direktivo #DELETED en la teksto-kapo kun speciala sintakso:"
+
+msgid "Chapter"
+msgstr "Ĉapitro"
+
+msgid "Chapter and section. If one side document: chapter."
+msgstr "Ĉapitro kaj sekcio. Se unu flanka dokumento: ĉapitro."
+
+msgid "Chapter, only for chapter divisions in books"
+msgstr "Ĉapitro, nur por ĉapitraj dividoj en libroj"
+
+msgid "Cheatsheet for the markup"
+msgstr "Markup cheatsheet"
+
+msgid "Check mail sending and send mail to:"
+msgstr "Kontrolu retpoŝton kaj sendu poŝton al:"
+
+msgid "Choose a paper format"
+msgstr "Elektu paperan formaton"
+
+msgid "Clear the book list"
+msgstr "Forigu la libroliston"
+
+msgid "Click on the images to get the sample PDF"
+msgstr "Alklaku la bildojn por akiri la ekzemplan PDF"
+
+msgid "Clone"
+msgstr "Klono"
+
+msgid "Close"
+msgstr "Fermu"
+
+msgid "Code"
+msgstr "Kodo"
+
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr ""
+"Kolumnoj por la maldekstra flanko de la redaktopaĝo, kun la redakta skatolo "
+"(el 12)"
+
+msgid "Comma or semicolon separated list"
+msgstr "Koma aŭ punktokomo apartigita listo"
+
+msgid "Completed"
+msgstr "Kompletigita"
+
+msgid "Computing of differences took"
+msgstr "Komputado de diferencoj prenis"
+
+msgid "Confirm"
+msgstr "Konfirmu"
+
+msgid "Continuous footnote numbering across the whole document."
+msgstr "Kontinua piednota numerado tra la tuta dokumento."
+
+msgid "Convert to archive markup"
+msgstr "Konverti al arkiva markado"
+
+msgid "Couldn't add the text"
+msgstr "Ne povis aldoni la tekston"
+
+msgid "Couldn't automatically generate the URI!"
+msgstr "Ne povis aŭtomate generi la URI!"
+
+msgid "Couldn't build that"
+msgstr "Ne povis konstrui tion"
+
+msgid "Create"
+msgstr "Kreu"
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr "Kreu novan kategorion. Bonvolu uzi nur minusklajn ASCII-literojn"
+
+msgid "Create a new format"
+msgstr "Kreu novan formaton"
+
+msgid "Create a new librarian"
+msgstr "Kreu novan bibliotekiston"
+
+msgid "Create a new special page"
+msgstr "Kreu novan specialan paĝon"
+
+msgid "Create a new user"
+msgstr "Kreu novan uzanton"
+
+msgid ""
+"Create a public repository on GitLab, GitHub or similar services (or on your "
+"own server). "
+msgstr ""
+"Kreu publikan deponejon en GitLab, GitHub aŭ similaj servoj (aŭ en via "
+"propra servilo)"
+
+msgid "Create a topic alias"
+msgstr "Kreu teman kaŝnomon"
+
+msgid "Create an author alias"
+msgstr "Kreu aŭtoran kaŝnomon"
+
+msgid "Create new site"
+msgstr "Kreu novan retejon"
+
+msgid "Create user and mail password"
+msgstr "Kreu pasvorton de uzanto kaj poŝto"
+
+msgid "Created"
+msgstr "Kreita"
+
+msgid "Created by"
+msgstr "Kreita de"
+
+msgid "Created new text"
+msgstr "Kreita nova teksto"
+
+msgid "Current time"
+msgstr "Nuna tempo"
+
+#. ($c->stash->{site}->canonical)
+msgid "Custom formats for %1"
+msgstr "Propraj formatoj por% 1"
+
+msgid "Custom home page"
+msgstr "Propra hejmpaĝo"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Date of the original publication"
+msgstr "Dato de la originala eldono"
+
+msgid "Default sorting for the category text list"
+msgstr "Defaŭlta ordigo por la kategoria tekstolisto"
+
+msgid "Default value if blank:"
+msgstr "Apriora valoro se malplena:"
+
+msgid "Deferred/Deleted texts"
+msgstr "Prokrastitaj / Forigitaj tekstoj"
+
+msgid "Delete"
+msgstr "Forigi"
+
+msgid "Delete permanently"
+msgstr "Forigu konstante"
+
+#. (remote.name)
+msgid "Delete remote repository %1"
+msgstr "Forigi foran deponejon% 1"
+
+msgid ""
+"Deleting a revision is safe if a text has been\n"
+"    published. Otherwise deleting it you'll lose the unpublished changes"
+msgstr ""
+"Forigi revizion estas sekura se teksto estis\n"
+"     eldonita. Alie forigante ĝin, vi perdos la neeldonitajn ŝanĝojn"
+
+msgid "Description"
+msgstr "Priskribo"
+
+msgid "Description item"
+msgstr "Priskribo"
+
+msgid ""
+"Description lists use a double colon to separate the\n"
+"        term and the description."
+msgstr ""
+"Priskribaj listoj uzas duoblan dupunkton por apartigi la\n"
+"         termino kaj la priskribo."
+
+msgid "Desired URI"
+msgstr "Dezirata URI"
+
+msgid "Destination"
+msgstr "Celo"
+
+msgid "Did you mean:"
+msgstr "Ĉu vi intencis:"
+
+msgid "Differences"
+msgstr "Diferencoj"
+
+msgid ""
+"Directory with templates in the site repository, e.g.\n"
+"        \"templates\" (ASCII only). Do not set it unless you know\n"
+"        exactly what you are doing"
+msgstr ""
+"Adresaro kun ŝablonoj en la reteja deponejo, ekz.\n"
+"         \"ŝablonoj\" (nur ASCII). Ne starigu ĝin krom se vi scias\n"
+"         precize kion vi faras"
+
+msgid "Disable /mirror/ URL for anonymous users"
+msgstr "Malŝalti / speguli / URL por anonimaj uzantoj"
+
+msgid "Display url as"
+msgstr "Montri url kiel"
+
+msgid "Division factor"
+msgstr "Divida faktoro"
+
+msgid "Do not create a cover page and start the text on the first page"
+msgstr "Ne kreu kovrilpaĝon kaj komencu la tekston sur la unua paĝo"
+
+msgid "Do not enforce save message"
+msgstr "Ne plenumu konservi mesaĝon"
+
+msgid "Do not use bold fonts"
+msgstr "Ne uzu grasajn tiparojn"
+
+msgid "Done"
+msgstr "Farita"
+
+msgid "Double bars"
+msgstr "Duoblaj stangoj"
+
+msgid "Downloads"
+msgstr "Downloads"
+
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr ""
+"Ekz. iu vorto KAJ titolo: \"Mia Titolo\" KAJ aŭtoro: Aŭtoro A year jaro: 2017"
+
+msgid "EPUB"
+msgstr "EPUB"
+
+msgid "EPUB (for mobile devices)"
+msgstr "EPUB (for mobile devices)"
+
+msgid "ETA"
+msgstr "ETA"
+
+msgid "Edit"
+msgstr "Redaktu"
+
+msgid "Edit attachment description"
+msgstr "Redaktu aldonan priskribon"
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr "Redaktu formaton% 1"
+
+msgid "Edit full site configuration"
+msgstr "Redaktu kompletan retejan agordon"
+
+msgid "Edit screen layout options"
+msgstr "Redakti eblojn de redaktado de ekrano"
+
+#. (esite.id)
+msgid "Edit site %1"
+msgstr "Redaktu retejon% 1"
+
+msgid "Edit site configuration"
+msgstr "Redaktu retejan agordon"
+
+msgid "Edit the text you want to unpublish and add this line to the header:"
+msgstr ""
+"Redaktu la tekston, kiun vi volas eldoni, kaj aldonu ĉi tiun linion al la "
+"kaplinio:"
+
+msgid "Edit this text"
+msgstr "Redaktu ĉi tiun tekston"
+
+#. (user.username)
+msgid "Edit user %1"
+msgstr "Redaktu uzanton% 1"
+
+msgid "Editing"
+msgstr "Redaktado"
+
+msgid "Email"
+msgstr "Retpoŝto"
+
+msgid "Email sent!"
+msgstr "Retpoŝto sendita!"
+
+msgid "Email updated"
+msgstr "Retpoŝto ĝisdatigita"
+
+msgid "Emails do not match"
+msgstr "Retpoŝtoj ne kongruas"
+
+msgid "Embed fonts in the EPUB file"
+msgstr "Enmetu tiparojn en la dosieron EPUB"
+
+msgid "Enable \"What links here\" feature"
+msgstr "Ebligu la funkcion \"Kiaj ligoj ĉi tie\""
+
+msgid "Enable search suggestions (did you mean...)"
+msgstr "Ebligu serĉajn sugestojn (ĉu vi celis ...)"
+
+msgid "Enable title ordering by SKU"
+msgstr "Ebligu titolan mendadon de SKU"
+
+msgid "Erase this revision"
+msgstr "Forigu ĉi tiun revizion"
+
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr "Eraro dum konvertado de la alŝuta dosiero. Ĉu ĝi estas HTML-dosiero?"
+
+msgid "Error sending mail!"
+msgstr "Eraro dum sendado de poŝto!"
+
+msgid "Error while converting the HTML. Sorry."
+msgstr "Eraro dum konvertado de la HTML. Pardonu."
+
+msgid "Errors"
+msgstr "Eraroj"
+
+msgid "Estimated pages"
+msgstr "Taksitaj paĝoj"
+
+msgid ""
+"Even if this site has a responsive, mobile-friendly layout,\n"
+"  it does not provide a dedicated mobile application."
+msgstr ""
+"Eĉ se ĉi tiu retejo havas respondeman, moveblan aranĝon,\n"
+"   ĝi ne provizas dediĉitan poŝtelefonon."
+
+msgid ""
+"Every\n"
+"        section will generate a slide. You need to do proper\n"
+"        sectioning for this to work."
+msgstr ""
+"Ĉiu\n"
+"         sekcio generos glitadon. Vi bezonas fari taŭge\n"
+"         sekcante por tio funkcii."
+
+msgid ""
+"Exactly like 2up, but the sheets are meant to be cut\n"
+"        horizontally first and then stack on each other. This way you\n"
+"        can print, for example, A6 booklets on A4."
+msgstr ""
+"Ekzakte kiel 2up, sed la folioj estas tranĉotaj\n"
+"         horizontale unue kaj poste stakigu unu la alian. Tiel vi\n"
+"         povas presi, ekzemple, A6-libretojn sur A4."
+
+msgid "Example"
+msgstr "Ekzemplo"
+
+msgid "Existing redirections"
+msgstr "Ekzistantaj alidirektiloj"
+
+msgid "Expected pages"
+msgstr "Atenditaj paĝoj"
+
+msgid "Failed"
+msgstr "Malsukcesis"
+
+#. ("$name $url")
+msgid "Failed to add remote repository %1"
+msgstr "Malsukcesis aldoni foran deponejon% 1"
+
+#. ($name)
+msgid "Failed to remove Remote repository %1"
+msgstr "Malsukcesis forigi Foran deponejon% 1"
+
+msgid "File already in the body"
+msgstr "Dosiero jam en la korpo"
+
+msgid "File extension"
+msgstr "Dosiera etendo"
+
+msgid "File format not allowed"
+msgstr "Dosiera formato ne permesita"
+
+msgid "File too big"
+msgstr "Dosiero tro granda"
+
+msgid "File uploaded!"
+msgstr "Dosiero alŝutita!"
+
+msgid "Files"
+msgstr "Dosieroj"
+
+msgid ""
+"Fill with blank pages before the last page if the signature is not full."
+msgstr ""
+"Plenigu per malplenaj paĝoj antaŭ la lasta paĝo, se la subskribo ne plenas."
+
+msgid "Filter"
+msgstr "Filtrilo"
+
+msgid "Filters"
+msgstr "Filtriloj"
+
+msgid "Find the add catalogue menu."
+msgstr "Trovu la aldonan katalogan menuon."
+
+msgid "Find the network library menu, or equivalent."
+msgstr "Trovu la retan bibliotekan menuon, aŭ ekvivalenton."
+
+msgid "First"
+msgstr "Unue"
+
+msgid "First Author and Second Author"
+msgstr "Unua Aŭtoro kaj Dua Aŭtoro"
+
+msgid "First Author, Second Author"
+msgstr "Unua Aŭtoro, Dua Aŭtoro"
+
+msgid "First slide"
+msgstr "Unua glitado"
+
+msgid "First you have to unpublish it via #DELETED."
+msgstr "Unue vi devas neeldoni ĝin per #DELETED."
+
+msgid "Fix typography (smart quotes)"
+msgstr "Ripari tipografion (inteligentaj citaĵoj)"
+
+msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
+msgstr ""
+"Riparis 16 paĝajn subskribojn sur 2 folioj, kun duobla individua faldado."
+
+msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
+msgstr "Riparis 16 paĝajn subskribojn sur unu folio, kun triobla faldado."
+
+msgid ""
+"Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
+"and bound together."
+msgstr ""
+"Fiksitaj subskriboj de 8 paĝoj, por esti tranĉitaj horizontale, individue "
+"falditaj kaj kunligitaj."
+
+msgid "Fixed topic list"
+msgstr "Fiksita listo de temoj"
+
+msgid "Font preview"
+msgstr "Antaŭvido de tiparo"
+
+msgid "Font size"
+msgstr "Tiparo"
+
+msgid "Footnotes"
+msgstr "Piednotoj"
+
+#. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
+msgid ""
+"Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
+"in the body (%4), ignoring changes."
+msgstr ""
+"Piednotoj ne kongruas: trovis% 1 piednotojn (% 2) kaj trovis% 3 piednotajn "
+"referencojn en la korpo (% 4), ignorante ŝanĝojn."
+
+msgid "For texts from the internet use"
+msgstr "Por tekstoj el interreta uzo"
+
+msgid "For texts without a table of content, start text on the very first page"
+msgstr "Por tekstoj sen enhavtabelo, komencu tekston en la unua paĝo"
+
+msgid ""
+"For topics and authors redirections, you can create them\n"
+"  here"
+msgstr ""
+"Por alidirektoj pri temoj kaj aŭtoroj, vi povas krei ilin\n"
+"   ĉi tie"
+
+msgid "Force a line break."
+msgstr "Devigi linian rompon."
+
+msgid "Force publishing"
+msgstr "Devigi eldonadon"
+
+msgid "Format name"
+msgstr "Formata nomo"
+
+msgid "Format successfully created"
+msgstr "Formato sukcese kreita"
+
+msgid "Format successfully updated"
+msgstr "Formato sukcese ĝisdatigita"
+
+msgid "Formats"
+msgstr "Formatoj"
+
+msgid "Full list of texts"
+msgstr "Plena listo de tekstoj"
+
+msgid "Full tag cloud"
+msgstr "Plena etikednubo"
+
+msgid "Full text search"
+msgstr "Full text search"
+
+msgid "Full width, fluid layout"
+msgstr "Plena larĝo, fluida aranĝo"
+
+msgid "General configuration"
+msgstr "Ĝenerala agordo"
+
+msgid "Generic (fits in A4 and Letter)"
+msgstr "Ĝenerala (kongruas kun A4 kaj Letero)"
+
+msgid ""
+"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
+"using the form you can find above. You can have one personal repository."
+msgstr ""
+"Akiru la adreson HTTPS-URL, ekz. https://example.com/git/test kaj aldonu ĝin "
+"per la formo, kiun vi povas trovi supre. Vi povas havi unu personan "
+"deponejon."
+
+msgid "Git console"
+msgstr "Git-konzolo"
+
+msgid "Git is not enabled on this site"
+msgstr "Git ne estas ebligita en ĉi tiu retejo"
+
+msgid ""
+"HTML code to append to each regular page, inserted\n"
+"            verbatim, so be careful"
+msgstr ""
+"HTML-kodo por aldoni al ĉiu regula paĝo, enmetita\n"
+"             laŭvorte, do zorgu"
+
+msgid ""
+"HTML to append to each special page, inserted\n"
+"            verbatim, now you have a chance to screw up everything, so\n"
+"            be careful"
+msgstr ""
+"HTML aldonebla al ĉiu speciala paĝo, enmetita\n"
+"             laŭvorte, nun vi havas ŝancon fuŝi ĉion, do\n"
+"             atentu"
+
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr "HTML por enmeti en la piedlinion de la aranĝo, sub la ligoj"
+
+msgid "HTML to insert into the left sidebar"
+msgstr "HTML por enmeti en la maldekstran flankobreton"
+
+msgid "HTML to insert into the right sidebar"
+msgstr "HTML por enmeti en la dekstran flankobreton"
+
+msgid "HTML to insert on the bottom of the layout, above the footer"
+msgstr "HTML por enmeti sur la fundon de la aranĝo, super la piedlinio"
+
+msgid ""
+"HTML to insert on the top of the layout, behind the navigation bar and below "
+"the banner"
+msgstr ""
+"HTML por enmeti sur la supron de la aranĝo, malantaŭ la navigacia stango kaj "
+"sub la standardo"
+
+msgid "HTML/Word Importer"
+msgstr "HTML / Vorta Importilo"
+
+msgid "Half Letter paper"
+msgstr "Duonlitera papero"
+
+msgid "Heading"
+msgstr "Titolo"
+
+msgid "Headings"
+msgstr "Titoloj"
+
+msgid "Height:"
+msgstr "Alteco:"
+
+msgid "Here you can find a preview of the Beamer themes and color themes"
+msgstr ""
+"Ĉi tie vi povas vidi antaŭrigardon de la temoj kaj koloraj temoj de Beamer"
+
+msgid ""
+"Here you can save or load your templates. The text list\n"
+"      and the cover image are excluded by the saved settings. You can\n"
+"      use this to save paper/fonts/imposition and other options."
+msgstr ""
+"Ĉi tie vi povas konservi aŭ ŝarĝi viajn ŝablonojn. La tekstolisto\n"
+"       kaj la kovrilbildo estas ekskluditaj de la konservitaj agordoj. Vi "
+"povas\n"
+"       uzu ĉi tion por ŝpari paperon / tiparojn / altrudon kaj aliajn eblojn."
+
+msgid "Higher division factor means narrower margins"
+msgstr "Pli alta divida faktoro signifas pli mallarĝajn randojn"
+
+msgid "How are you going to access Git?"
+msgstr "Kiel vi aliros Git?"
+
+msgid "How do I create a landing page?"
+msgstr "Kiel krei surteriĝan paĝon?"
+
+msgid "How do I create a special page?"
+msgstr "Kiel krei specialan paĝon?"
+
+msgid "How do I delete a text?"
+msgstr "Kiel mi forigas tekston?"
+
+msgid "How do I modify a special page?"
+msgstr "Kiel mi modifas specialan paĝon?"
+
+msgid "How do I purge a text?"
+msgstr "Kiel mi purigas tekston?"
+
+msgid "How do I redirect to another page?"
+msgstr "Kiel mi redirektas al alia paĝo?"
+
+msgid "How to choose a password"
+msgstr "Kiel elekti pasvorton"
+
+msgid ""
+"However, you can browse, search, download and read the texts\n"
+"  from mobile reading applications which support the so-called OPDS\n"
+"  protocol."
+msgstr ""
+"Tamen vi povas trarigardi, serĉi, elŝuti kaj legi la tekstojn\n"
+"   de moveblaj legaj programoj, kiuj subtenas la tiel nomatan OPDS\n"
+"   protokolo."
+
+msgid "I am human"
+msgstr "Mi estas homo"
+
+msgid "I have a system user with SSH access"
+msgstr "Mi havas sistemuzanton kun SSH-aliro"
+
+msgid "I want an imposed (ready to print) PDF"
+msgstr "Mi volas truditan (pretan presi) PDF"
+
+msgid "I will provide my remote repository"
+msgstr "Mi provizos mian foran deponejon"
+
+msgid "ISBN"
+msgstr "ISBN"
+
+msgid "Id"
+msgstr "Id"
+
+msgid ""
+"If by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+"Se hazarde ekzistas alia teksto kun la sama aŭtoro kaj titolo, elektu la "
+"deziratan URI per la suba kampo enmetante aŭtoron, titolon kaj numeron, ekz. "
+"mia-aŭtoro-mia-titolo-1"
+
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+"Se ĝi ne estis via intenco, bonvolu simple ignori ĉi tiun poŝton kaj\n"
+"via pasvorto ne estos ŝanĝita."
+
+msgid ""
+"If it's not the case, please open a bug report at https://github.com/"
+"melmothx/amusewiki/issues"
+msgstr ""
+"Se ĝi ne estas la kazo, bonvolu malfermi cimon-raporton ĉe https://github."
+"com/melmothx/amusewiki/issues"
+
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
+msgid "If not set %1 will be looked up from the application directory."
+msgstr "Se ne starigita% 1 estos serĉata el la aplika dosierujo."
+
+msgid ""
+"If present, hide the\n"
+"          generated formats and the information box. This makes sense\n"
+"          with attachments, when the text version is poor or not\n"
+"          available and more relevance should be given to the attached\n"
+"          files."
+msgstr ""
+"Se ĉeestas, kaŝu la\n"
+"           generitaj formatoj kaj la informkesto. Ĉi tio havas sencon\n"
+"           kun aldonaĵoj, kiam la tekstversio estas malbona aŭ ne\n"
+"           disponebla kaj pli da graveco devas esti donita al la aligita\n"
+"           dosieroj."
+
+msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
+msgstr ""
+"Se agordita al nombro pli granda ol 0, aŭtomate generu teaser, kun "
+"proksimume ĉi tiu longo"
+
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
+msgstr ""
+"Se la publikigo de teksto estas prokrastita, listigu ĝin\n"
+"             kun la teaser kaj la kovrilo sen doni aliron al\n"
+"             la korpo"
+
+msgid ""
+"If the user is allowed to publish, speed up the process skipping the "
+"revision page if there are no conflicts and automatically redirect to the "
+"published text once it is done."
+msgstr ""
+"Se la uzanto rajtas publikigi, plirapidigu la procezon preterlasante la "
+"revizian paĝon se ne ekzistas konfliktoj kaj aŭtomate alidirektas al la "
+"publikigita teksto post kiam ĝi finiĝis."
+
+msgid "If the user provided a mail, it's listed in the mail's CC field"
+msgstr ""
+"Se la uzanto provizis poŝton, ĝi estas listigita en la kampo CC de la poŝto"
+
+msgid ""
+"If this line\n"
+"          is present, set the publication date (on this site) to the\n"
+"          date. The date may also be in the future, deferring the\n"
+"          publication. If this line is not present, the publication\n"
+"          date will be the time of the publishing, triggering a bump\n"
+"          on RSS and special pages at each editing."
+msgstr ""
+"Se ĉi tiu linio\n"
+"           ĉeestas, starigu la publikigan daton (en ĉi tiu retejo) al la\n"
+"           dato. La dato eble ankaŭ estontece prokrastos la\n"
+"           publikigo. Se ĉi tiu linio ne ĉeestas, la publikigo\n"
+"           dato estos la tempo de la eldono, kaŭzante baton\n"
+"           en RSS kaj specialaj paĝoj ĉe ĉiu redaktado."
+
+msgid ""
+"If this line is\n"
+"          present and the reason is set to something, the text will be\n"
+"          stored in the archive, but will not be published."
+msgstr ""
+"Se ĉi tiu linio estas\n"
+"           ĉeestanta kaj la kialo estas difinita al io, la teksto estos\n"
+"           stokita en la arkivo, sed ne eldonita."
+
+msgid ""
+"If this line is present, do not create a title page,\n"
+"          but instead start the text on the very first page and\n"
+"          produce a PDF styled like an article (chapters and parts\n"
+"          will not start on a new page)."
+msgstr ""
+"Se ĉi tiu linio ĉeestas, ne kreu titolan paĝon,\n"
+"           sed anstataŭe komencu la tekston en la unua paĝo kaj\n"
+"           produkti PDF-stilon kiel artikolo (ĉapitroj kaj partoj\n"
+"           ne komenciĝos en nova paĝo)."
+
+msgid "If this line is present, do not display the table of contents."
+msgstr "Se ĉi tiu linio ĉeestas, ne aperigu la enhavtabelon."
+
+msgid "If you asked for imposition, select an imposition schema"
+msgstr "Se vi petis altrudon, elektu altrudan skemon"
+
+msgid ""
+"If you edit some format options, like fonts or paper\n"
+"      dimensions, you may want to rebuild the generated files"
+msgstr ""
+"Se vi redaktas iujn formatajn eblojn, kiel tiparoj aŭ papero\n"
+"       dimensioj, eble vi volas rekonstrui la generitajn dosierojn"
+
+msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+"Se vi forgesis vian pasvorton, vi povas elekti novan viziton\n"
+"ĉi tiu ligilo (alklaku ĝin aŭ kopiu kaj batu ĝin en via retumilo):"
+
+msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr ""
+"Se vi havas dosieron en .doc aŭ .odt, vi povas facile konverti ĝin "
+"konservante ĝin kiel HTML"
+
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
+msgstr ""
+"Se vi petos rekonstruon kiam unu daŭros, vi faros\n"
+"     ĉesigu la nunan."
+
+msgid ""
+"If you use it as a teaser image, the image will also\n"
+"      be placed on the first page of the PDF. You can set its width\n"
+"      adding the following line to the header, where the value is the\n"
+"      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
+"      on"
+msgstr ""
+"Se vi uzas ĝin kiel teaser-bildon, la bildo ankaŭ funkcios\n"
+"       estu metita sur la unuan paĝon de la PDF. Vi povas agordi ĝian "
+"larĝon\n"
+"       aldonante la sekvan linion al la kaplinio, kie la valoro estas la\n"
+"       proporcio de larĝa teksto. 1 estas la larĝa teksto, 0,5 estas duono, "
+"kaj tiel\n"
+"       plu"
+
+msgid ""
+"If your site doesn’t have that, just create a special page and assign\n"
+"the uri \"index\"."
+msgstr ""
+"Se via retejo ne havas tion, simple kreu specialan paĝon kaj atribuu\n"
+"la uri \"indekso\"."
+
+msgid ""
+"If your site is multilanguage, you can create a language-specific\n"
+"  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
+"  URI \"index\", a dash, and the locale code."
+msgstr ""
+"Se via retejo estas plurlingva, vi povas krei lingvon specifan\n"
+"   surteriĝa paĝo kreante, ekz. \"/ special / index-it\", t.e., la\n"
+"   URI-indekso, streketo kaj la loka kodo."
+
+msgid "Image already set as cover"
+msgstr "Bildo jam agordita kiel kovrilo"
+
+#. ($w, $h, $limit, $limit)
+msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
+msgstr "Bildaj dimensioj% 1 x% 2 superas limon de% 3 x% 4 rastrumeroj"
+
+msgid ""
+"Image uploading may be done on the next step, when you can\n"
+"        review and preview the upload."
+msgstr ""
+"Bildo-alŝutado povas esti farita ĉe la sekva paŝo, kiam vi povas\n"
+"         revizii kaj antaŭrigardi la alŝuton."
+
+msgid "Image url"
+msgstr "Bilda URL"
+
+msgid "Images"
+msgstr "Bildoj"
+
+msgid "Imposition schemas"
+msgstr "Imponaj skemoj"
+
+msgid "In both case you will get a reverse indentation."
+msgstr "Ambaŭkaze vi ricevos inversan deŝovon."
+
+msgid ""
+"In the text, a number within square brackets is interpreted as a\n"
+"          footnote reference, if such footnote exists."
+msgstr ""
+"En la teksto, nombro inter kvadrataj krampoj estas interpretata kiel a\n"
+"           piednota referenco, se tia piednoto ekzistas."
+
+#. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
+msgid ""
+"In this example, we use FBreader, but the procedure is\n"
+"  pretty much the same for all applications. All you have to do is to\n"
+"  add %1 to the network libraries."
+msgstr ""
+"En ĉi tiu ekzemplo, ni uzas FBreader, sed la procedo estas\n"
+"   preskaŭ same por ĉiuj aplikoj. Vi nur devas fari\n"
+"   aldonu% 1 al la retaj bibliotekoj."
+
+msgid "Inline elements"
+msgstr "Enliniaj elementoj"
+
+msgid "Insert the file into the body at the cursor position"
+msgstr "Enmetu la dosieron en la korpon ĉe la kursora pozicio"
+
+msgid "Internal list of translations"
+msgstr "Interna listo de tradukoj"
+
+msgid "Invalid email"
+msgstr "Nevalida Retpoŝto"
+
+msgid "Invalid name"
+msgstr "Nevalida nomo"
+
+msgid "Invalid username"
+msgstr "Nevalida salutnomo"
+
+msgid ""
+"It is possible to have an additional set of\n"
+"          footnotes which you use to annote the text (e.g. critical\n"
+"          editions or translator's notes). They work the same way as\n"
+"          the regular footnotes, but they use curly brackets instead\n"
+"          of square brackets. Placing secondary footnote references\n"
+"          inside a regular footnote is permitted."
+msgstr ""
+"Eblas havi plian aron de\n"
+"           piednotoj, kiujn vi uzas por noti la tekston (ekz. kritika\n"
+"           eldonoj aŭ notoj de tradukisto). Ili funkcias same kiel\n"
+"           la regulaj piednotoj, sed ili anstataŭe uzas buklajn krampojn\n"
+"           de kvadrataj krampoj. Metante duarangajn piednotajn referencojn\n"
+"           ene de regula piednoto estas permesata."
+
+msgid ""
+"It is recommended to always set a publication\n"
+"                    date, so the system does not need to rely on the\n"
+"                    file timestamp. Also, you should bump the\n"
+"                    publication date only on major editing, leaving it\n"
+"                    untouched for minor ones."
+msgstr ""
+"Oni rekomendas ĉiam agordi eldonaĵon\n"
+"                     dato, do la sistemo ne bezonas fidi je la\n"
+"                     dosiera tempostampo. Ankaŭ vi devas frapi la\n"
+"                     eldondato nur ĉe ĉefa redaktado, forlasante ĝin\n"
+"                     netuŝita por neplenaĝuloj."
+
+msgid ""
+"It works the same as for regular page, but the link is hidden. Just\n"
+"append \"/edit\" to the url of the page."
+msgstr ""
+"Ĝi funkcias same kiel por regula paĝo, sed la ligilo estas kaŝita. Nur\n"
+"aldonu \"/ redakti\" al la url de la paĝo."
+
+msgid "Italic"
+msgstr "Kursiva"
+
+msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr "Kursivo, aŭdaca, monospaco kaj kodo, liniaj rompoj ..."
+
+msgid "JPG, PNG and PDF are always allowed."
+msgstr "JPG, PNG kaj PDF estas ĉiam permesataj."
+
+msgid "Job status"
+msgstr "Laborposteno"
+
+msgid "Jobs"
+msgstr "Laborpostenoj"
+
+msgid "Jobs (all sites)"
+msgstr "Laborpostenoj (ĉiuj retejoj)"
+
+msgid "Jobs waiting before yours:"
+msgstr "Laborpostenoj atendantaj antaŭ la viaj:"
+
+msgid "Just packs 2 consecutives logical pages on a physical one."
+msgstr "Nur pakas 2 konsekvencajn logikajn paĝojn sur fizika."
+
+msgid ""
+"Keep in mind that I’m cleaning the text and give it\n"
+"        back to you in the markup used on this site. It’s up to you to\n"
+"        check it and finally upload it. Some rarely used markup will\n"
+"        be lost in the process. Please check the preview on the next\n"
+"        step, where you can also insert images."
+msgstr ""
+"Memoru, ke mi purigas la tekston kaj donas ĝin\n"
+"         reen al vi en la markado uzata en ĉi tiu retejo. Dependas de vi\n"
+"         kontrolu ĝin kaj fine alŝutu ĝin. Iuj malofte uzataj markoj faros\n"
+"         perdiĝos en la procezo. Bonvolu kontroli la antaŭrigardon en la "
+"sekva\n"
+"         paŝo, kie vi ankaŭ povas enmeti bildojn."
+
+msgid "Keep in mind that some character may be missing in the required font."
+msgstr "Memoru, ke iu signo eble mankas en la bezonata tiparo."
+
+msgid ""
+"Keep in mind that unusually\n"
+"        complex formatting will be stripped. Is it possible to add\n"
+"        tables and images only on the next step."
+msgstr ""
+"Memoru tion nekutime\n"
+"         kompleksa formatado estos senigita. Ĉu eblas aldoni\n"
+"         tabloj kaj bildoj nur sur la sekva paŝo."
+
+msgid "Language"
+msgstr "Lingvo"
+
+msgid "Language code of the document (2 or 3 letters). "
+msgstr "Lingva kodo de la dokumento (2 aŭ 3 literoj)"
+
+msgid "Language selection"
+msgstr "Lingva elekto"
+
+msgid "Languages supported"
+msgstr "Subtenataj lingvoj"
+
+msgid "Last"
+msgstr "Laste"
+
+msgid "Last successful rebuild"
+msgstr "Lasta sukcesa rekonstruado"
+
+msgid "Last updated"
+msgstr "Laste ĝisdatigita"
+
+msgid "Latest entries"
+msgstr "Lastaj enskriboj"
+
+msgid "Layout"
+msgstr "Aranĝo"
+
+msgid "Leave it blank if you want it published right away."
+msgstr "Lasu ĝin malplena se vi volas ĝin publikigi tuj."
+
+msgid "Leave this empty to have it automatically generated"
+msgstr "Lasu ĉi tion malplena por aŭtomate generi ĝin"
+
+msgid "Letter imposed PDF"
+msgstr "Letter imposed PDF"
+
+msgid "Letter paper"
+msgstr "Letera papero"
+
+msgid "Link"
+msgstr "Ligilo"
+
+msgid "Links"
+msgstr "Ligiloj"
+
+msgid "List of paths to attach to this node, one per line."
+msgstr "Listo de vojoj por alfiksi al ĉi tiu nodo, po po unu linio."
+
+msgid "List of texts on hold"
+msgstr "Listo de tekstoj en atendo"
+
+msgid "Lists"
+msgstr "Listoj"
+
+msgid "Load"
+msgstr "Ŝarĝi"
+
+msgid "Load another session by token"
+msgstr "Ŝarĝu alian kunsidon per signo"
+
+#. ($pname)
+msgid "Loaded \"%1\" configuration"
+msgstr "Ŝarĝita agordo \"% 1\""
+
+msgid "Loading"
+msgstr "Ŝarĝante"
+
+msgid "Locked editing, no upload possible"
+msgstr "Ŝlosita redaktado, neniu alŝuto eblas"
+
+msgid "Log in"
+msgstr "Ensaluti"
+
+msgid "Login"
+msgstr "Ensaluti"
+
+msgid "Logout"
+msgstr "Elsaluti"
+
+msgid "Look into the account’s menu, there is an entry for that."
+msgstr "Rigardu la menuon de la konto, estas eniro por tio."
+
+msgid "Lost your password?"
+msgstr "Ĉu vi perdis vian pasvorton?"
+
+msgid "Magic answer"
+msgstr "Magia respondo"
+
+msgid "Magic question"
+msgstr "Magia demando"
+
+msgid "Mail from"
+msgstr "Poŝto de"
+
+msgid "Main canonical hostname, without protocol"
+msgstr "Ĉefa kanona gastignomo, sen protokolo"
+
+msgid "Main font"
+msgstr "Ĉefa tiparo"
+
+msgid "Main text"
+msgstr "Ĉefa teksto"
+
+msgid "Maintainer's FAQ"
+msgstr "Demandoj pri Subtenanto"
+
+msgid "Make a link clickable"
+msgstr "Faru ligon klakebla"
+
+msgid "Make all links active"
+msgstr "Aktivigu ĉiujn ligojn"
+
+msgid "Make all non-breaking spaces explicit and visible as ~~"
+msgstr "Faru ĉiujn nerompajn spacojn eksplicitaj kaj videblaj kiel ~~"
+
+msgid "Manage categories"
+msgstr "Administri kategoriojn"
+
+msgid "Max image dimension in pixels, applies to both width and height"
+msgstr "Maksimuma bilda dimensio en pikseloj, validas por kaj larĝo kaj alto"
+
+msgid "Max size for uploads in Mb"
+msgstr "Maksimuma grandeco por alŝutoj en Mb"
+
+msgid "Message"
+msgstr "Mesaĝo"
+
+#. (8)
+msgid "Minimum %1 characters"
+msgstr "Minimumaj% 1 signoj"
+
+msgid "Missing #title header in the text!"
+msgstr "Mankas # titolo titolo en la teksto!"
+
+msgid "Missing alias"
+msgstr "Mankas kaŝnomo"
+
+msgid "Missing character will be reported"
+msgstr "Mankanta rolulo estos raportita"
+
+msgid "Missing redirection"
+msgstr "Mankas redirekto"
+
+msgid "Mobile"
+msgstr "Poŝtelefono"
+
+msgid "Mobile applications"
+msgstr "Poŝtelefonaj programoj"
+
+msgid "Mode"
+msgstr "Reĝimo"
+
+msgid "Moderated wiki"
+msgstr "Modera vikio"
+
+msgid "Mono font"
+msgstr "Mono-tiparo"
+
+msgid "More"
+msgstr "Pli"
+
+msgid "Move down"
+msgstr "Movu malsupren"
+
+msgid "Move up"
+msgstr "Supreniĝi"
+
+msgid "Multilanguage: list of whitespace separated language codes"
+msgstr "Plurlingva: listo de blankaj spacaj lingvokodoj"
+
+msgid "My description"
+msgstr "Mia priskribo"
+
+msgid "N/A"
+msgstr "N/A"
+
+msgid "Name"
+msgstr "Nomo"
+
+msgid "Name plural"
+msgstr "Nomu pluralon"
+
+msgid "Name singular"
+msgstr "Nomo unuopa"
+
+msgid "Network library listing screen."
+msgstr "Lerta ekrano de retbiblioteko."
+
+msgid "Never display the cover"
+msgstr "Neniam montru la kovrilon"
+
+msgid "Never generate a table of content"
+msgstr "Never generate a table of contents"
+
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
+"Neniam generu la norman finan paĝon kun titolo / aŭtoro / notoj / logo / "
+"retejo"
+
+msgid "Never show teaser and/or cover in text lists"
+msgstr "Neniam montru teaser kaj / aŭ kovrilon en tekstolistoj"
+
+msgid "New"
+msgstr "Nova"
+
+msgid "New revision"
+msgstr "Nova revizio"
+
+msgid "New site id"
+msgstr "Nova retejo-identigilo"
+
+msgid "Newer first"
+msgstr "Pli nova unue"
+
+msgid "Newer texts"
+msgstr "Pli novaj tekstoj"
+
+msgid "Next"
+msgstr "Poste"
+
+msgid "Nice title"
+msgstr "Bela titolo"
+
+msgid "No"
+msgstr "Ne"
+
+msgid "No data available in table"
+msgstr "Neniuj datumoj haveblaj en tabelo"
+
+msgid "No editing yet!"
+msgstr "Ankoraŭ ne redaktas!"
+
+msgid "No matching records found"
+msgstr "Neniuj kongruaj rekordoj trovitaj"
+
+msgid "No result found!"
+msgstr "Neniu rezulto trovita!"
+
+msgid "No revisions to show"
+msgstr "Neniu revizio por montri"
+
+msgid "No text found!"
+msgstr "Neniu teksto trovita!"
+
+msgid "No text was added yet"
+msgstr "Ankoraŭ neniu teksto estis aldonita"
+
+msgid "Nodes"
+msgstr "Nodoj"
+
+msgid "None"
+msgstr "Neniu"
+
+#. ($c->loc('Save')
+msgid ""
+"Not finished yet! Please have a look at the text and then click on \"%1\" to "
+"finalize your submission!"
+msgstr ""
+"Ankoraŭ ne finita! Bonvolu rigardi la tekston kaj poste alklaki \"% 1\" por "
+"fini vian proponon!"
+
+msgid "Notes"
+msgstr "Notes"
+
+msgid "Nothing to see here, so far"
+msgstr "Nenio videbla ĉi tie, ĝis nun"
+
+msgid "Nothing uploaded"
+msgstr "Nenio alŝutita"
+
+msgid "Notify mail: blank field will disable them"
+msgstr "Sciigu poŝton: malplena kampo malebligos ilin"
+
+msgid "Notify to"
+msgstr "Sciigu al"
+
+msgid ""
+"Now it has been aligned to the site's archive, but this means that there are "
+"some missing commits."
+msgstr ""
+"Nun ĝi estis vicigita al la ar archiveivo de la retejo, sed ĉi tio signifas, "
+"ke mankas iuj komisioj."
+
+msgid "Now we are going to populate it and get it ready"
+msgstr "Nun ni plenigos ĝin kaj pretigos ĝin"
+
+msgid "Number of jobs"
+msgstr "Nombro de laborpostenoj"
+
+msgid "Number of latest entries to display on the RSS (an integer)"
+msgstr "Nombro de la plej novaj afiŝoj montrotaj en la RSS (entjero)"
+
+msgid "Number of results to show on paginated pages (an integer)"
+msgstr "Nombro de rezultoj montrotaj sur paĝigitaj paĝoj (entjero)"
+
+msgid "OPDS"
+msgstr "OPDS"
+
+msgid "Older first"
+msgstr "Pli malnova unue"
+
+msgid "Older texts"
+msgstr "Pli malnovaj tekstoj"
+
+msgid ""
+"One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr "Unu paĝo por folio. Ĉi tio utilas nur se vi volas aldoni la markilojn"
+
+msgid "Open wiki"
+msgstr "Malfermu vikion"
+
+msgid "Option templates"
+msgstr "Opcioŝablonoj"
+
+msgid "Optional, defaults to the author directive"
+msgstr "Laŭvola, defaŭlte al la aŭtoro-direktivo"
+
+msgid ""
+"Or create a new revision, at your own peril. Having multiple\n"
+"          concurrent revisions means that, unless someone takes care\n"
+"          of it, only one will be chosen. You can go ahead, or retry\n"
+"          later, or, better, contact the librarians before proceeding,\n"
+"          to avoid wasting energies."
+msgstr ""
+"Aŭ kreu novan revizion, laŭ via propra danĝero. Havante multnombraj\n"
+"           samtempaj revizioj signifas tion, krom se iu zorgas\n"
+"           el ĝi, nur unu estos elektita. Vi povas antaŭeniri aŭ reprovi\n"
+"           poste, aŭ, pli bone, kontaktu la bibliotekistojn antaŭ ol "
+"daŭrigi,\n"
+"           por eviti malŝpari energiojn."
+
+msgid "Or log in, if you have an account."
+msgstr "Aŭ ensalutu, se vi havas konton."
+
+msgid "Or provide an HTML file to upload"
+msgstr "Aŭ provizu HTML-dosieron por alŝuti"
+
+msgid "Or wrap it in"
+msgstr "Aŭ envolvi ĝin"
+
+msgid "Ordered List"
+msgstr "Ordered list"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "PDF logo"
+msgstr "PDF-logoo"
+
+msgid "PDFs cannot be used in the body."
+msgstr "PDF-oj ne uzeblas en la korpo."
+
+#. ('#ATTACH')
+#. ("#ATTACH")
+msgid "PDFs not listed in the %1 directive will be stored but ignored."
+msgstr ""
+"PDF-oj ne listigitaj en la direktivo% 1 estos konservitaj sed ignorataj."
+
+msgid "Page not found!"
+msgstr "Paĝo ne trovita!"
+
+msgid "Page where to start a chapter"
+msgstr "Paĝo kie komenci ĉapitron"
+
+msgid ""
+"Pages are not reordered. The first sheet contains\n"
+"        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
+"        This is not meant to be folded."
+msgstr ""
+"Paĝoj ne estas reordigitaj. La unua folio enhavas\n"
+"         paĝoj 1 kaj 2, la dua 3 kaj 4, kaj tiel plu, unu apud la alia.\n"
+"         Ĉi tio ne celas faldi."
+
+msgid ""
+"Pages are reordered, in one or more groups\n"
+"        (signatures), then folded in half. If you have more\n"
+"        signatures, you will have to bound them together like a book.\n"
+"        With this option, you may want to decide the size of the\n"
+"        signatures. This can be a fixed value (4,8,16, etc.), the\n"
+"        whole book in a single signature, or an optimized size to\n"
+"        reduce the number of blank pages."
+msgstr ""
+"Paĝoj estas reordigitaj, en unu aŭ pluraj grupoj\n"
+"         (subskriboj), tiam faldita en duonon. Se vi havas pli\n"
+"         subskriboj, vi devos kunligi ilin kiel libron.\n"
+"         Kun ĉi tiu opcio, vi eble volas decidi la grandecon de la\n"
+"         subskriboj. Ĉi tio povas esti fiksa valoro (4,8,16, ktp), la\n"
+"         tuta libro en ununura subskribo, aŭ optimumigita grandeco al\n"
+"         redukti la nombron da malplenaj paĝoj."
+
+msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
+msgstr "Papera dikeco (0,10 taŭgas por ofta 80g / m2-papero)"
+
+msgid "Paragraphs"
+msgstr "Paragrafoj"
+
+msgid "Parent node"
+msgstr "Gepatra nodo"
+
+msgid "Part"
+msgstr "Parto"
+
+msgid "Part and chapter. If one side document: part."
+msgstr "Parto kaj ĉapitro. Se unu flanka dokumento: parto."
+
+msgid "Part of"
+msgstr "Parto de"
+
+msgid "Part, for larger books only"
+msgstr "Parto, nur por pli grandaj libroj"
+
+msgid "Partial selection"
+msgstr "Parta elekto"
+
+msgid "Password"
+msgstr "Pasvorto"
+
+msgid "Password too short"
+msgstr "Pasvorto tro mallonga"
+
+msgid "Password updated"
+msgstr "Pasvorto ĝisdatigita"
+
+msgid "Password, minimum 8 characters."
+msgstr "Pasvorto, minimume 8 signoj."
+
+msgid "Passwords do not match"
+msgstr "Pasvortoj ne egalas"
+
+msgid "Payload"
+msgstr "Utila ŝarĝo"
+
+msgid "Pending revisions"
+msgstr "Atendataj revizioj"
+
+msgid "Picture"
+msgstr "Bildo"
+
+msgid "Place it in the body with a description:"
+msgstr "Metu ĝin en la korpon kun priskribo:"
+
+msgid "Place it in the body without description:"
+msgstr "Metu ĝin en la korpon sen priskribo:"
+
+msgid "Place the notes on the back of the first page, impressum-style"
+msgstr "Metu la notojn sur la dorsan flankon de la unua paĝo, impres-stila"
+
+msgid "Plain PDF"
+msgstr "Klara PDF"
+
+msgid ""
+"Please check your inbox, we tried to deliver a mail to the address you "
+"specified with a password reset link"
+msgstr ""
+"Bonvolu kontroli vian enirkeston, ni provis sendi retpoŝton al la adreso, "
+"kiun vi indikis, per pasvorta restariga ligilo"
+
+msgid "Please choose the Beamer color theme"
+msgstr "Bonvolu elekti la koloran temon Beamer"
+
+msgid "Please choose the Beamer theme"
+msgstr "Bonvolu elekti la temon Beamer"
+
+msgid "Please choose the font size"
+msgstr "Bonvolu elekti la tiparon"
+
+msgid "Please choose the main font"
+msgstr "Bonvolu elekti la ĉefan tiparon"
+
+msgid "Please choose the mono font"
+msgstr "Bonvolu elekti la mono-tiparon"
+
+msgid "Please choose the sans font"
+msgstr "Bonvolu elekti la sans tiparon"
+
+msgid "Please describe shortly what you did"
+msgstr "Please briefly describe what you did"
+
+msgid "Please do not use a valuable password."
+msgstr "Bonvolu ne uzi valoran pasvorton."
+
+msgid ""
+"Please do not use higher levels (part or chapter) for short articles with "
+"sections."
+msgstr ""
+"Bonvolu ne uzi pli altajn nivelojn (parto aŭ ĉapitro) por mallongaj "
+"artikoloj kun sekcioj."
+
+#. (amw_group_name)
+msgid "Please ensure that your system user is member of the \"%1\" group"
+msgstr "Bonvolu certigi, ke via sistemuzanto estas membro de la grupo \"% 1\""
+
+msgid ""
+"Please give us a username. It should *not* be a mail address.\n"
+"        Just a fancy name, so we can know that multiple uploads come\n"
+"        from the same person."
+msgstr ""
+"Please provide a username. It should *not* be an email address. Just a fancy "
+"name, so we know when multiple uploads come from the same person."
+
+msgid ""
+"Please initialized it empty, without any README,license, .gitignore or "
+"similar."
+msgstr ""
+"Bonvolu inicializi ĝin malplena, sen README, permesilo, .gitignore aŭ simile."
+
+msgid ""
+"Please keep in mind that filters are language-specific\n"
+"              and may or may not be available for the language of the\n"
+"              text. If not available, they will just leave the text as\n"
+"              is."
+msgstr ""
+"Bonvolu memori, ke filtriloj estas lingvospecifaj\n"
+"               kaj eble aŭ ne disponeblas por la lingvo de la\n"
+"               teksto. Se ne disponeblas, ili simple lasos la tekston kiel\n"
+"               estas."
+
+msgid ""
+"Please keep in mind that if you see “Force publishing”\n"
+"    as action, it means that the revision has been superseded by\n"
+"    another one, so publishing this one, you'll end up reverting a\n"
+"    previous one. Try to avoid this, unless you know what you're\n"
+"    doing."
+msgstr ""
+"Bonvolu memori, ke se vi vidas \"Devigi eldonadon\"\n"
+"     kiel ago, ĝi signifas, ke la revizio estis anstataŭita de\n"
+"     alia, do publikigante ĉi tiun, vi finos reverti a\n"
+"     antaŭa. Provu eviti ĉi tion, krom se vi scias, kio vi estas\n"
+"     farante."
+
+msgid "Please leave a mail if you want to be contacted about this change"
+msgstr ""
+"Enter your email address if you would like to be contacted about this change"
+
+msgid "Please note that wrapping tags must be placed on a line by themselves."
+msgstr "Bonvolu noti, ke envolvi etikedojn devas esti metitaj sur linion mem."
+
+msgid ""
+"Please note that you may want to paste from a\n"
+"        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
+"        from word” button. This is supposed to preserve the markup."
+msgstr ""
+"Bonvolu noti, ke vi eble volas bati de\n"
+"         Vorto / OpenOffice / LibreOffice / HTML-dokumento per la \"almeti\n"
+"         de vorto ”butono. Ĉi tio supozeble konservas la markadon."
+
+msgid ""
+"Please note: without any prefix, protocol or hostname, just\n"
+"  the bare page name as shown above. External redirecting is not\n"
+"  supported."
+msgstr ""
+"Bonvolu noti: sen ajna prefikso, protokolo aŭ gastiganta nomo, nur\n"
+"   la nuda paĝa nomo kiel montrita supre. Ekstera alidirektado ne estas\n"
+"   subtenata."
+
+msgid "Please prove you are a human"
+msgstr "Bonvolu pruvi, ke vi estas homo"
+
+msgid "Please reload your page"
+msgstr "Bonvolu reŝargi vian paĝon"
+
+msgid "Please remove this file from the body first"
+msgstr "Bonvolu unue forigi ĉi tiun dosieron de la korpo"
+
+msgid ""
+"Please replace the example URL in the next line with the real one with SSH "
+"protocol"
+msgstr ""
+"Bonvolu anstataŭigi la ekzemplan URL en la sekva linio per la vera kun SSH-"
+"protokolo"
+
+msgid "Please select"
+msgstr "Bonvolu elekti"
+
+msgid "Please select the desired fonts"
+msgstr "Bonvolu elekti la deziratajn tiparojn"
+
+msgid "Please select the signature size:"
+msgstr "Bonvolu elekti la subskriban grandecon:"
+
+msgid ""
+"Please select the size of each page including the crop marks, before the "
+"imposing"
+msgstr ""
+"Bonvolu elekti la grandecon de ĉiu paĝo inkluzive de la markoj, antaŭ la "
+"impona"
+
+msgid ""
+"Please set the URI you desire. Author (if present),\n"
+"        title and eventually a number if the URI already exists is\n"
+"        usually a good choice"
+msgstr ""
+"Bonvolu agordi la URI-on, kiun vi volas. Aŭtoro (se ĉeestas),\n"
+"         titolo kaj eventuale nombro se la URI jam ekzistas estas\n"
+"         kutime bona elekto"
+
+msgid "Please setup the Beamer layout"
+msgstr "Bonvolu agordi la aranĝon de Beamer"
+
+msgid "Please upload your file again!"
+msgstr "Bonvolu alŝuti vian dosieron denove!"
+
+msgid "Poetry, bibliographies, plays, code blocks"
+msgstr "Poezio, bibliografioj, teatraĵoj, kodblokoj"
+
+msgid "Pointing to"
+msgstr "Montrante al"
+
+msgid "Popular texts"
+msgstr "Popularaj tekstoj"
+
+msgid ""
+"Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
+"        “i.”, “I.”, depending on the list type you need."
+msgstr ""
+"Prefikso por ordigitaj listoj povas esti \"1.\", \"a.\", \"A.\",\n"
+"         \"I.\", \"I.\", depende de la listo, kiun vi bezonas."
+
+msgid "Preview"
+msgstr "Antaŭrigardo"
+
+msgid "Preview box height in pixel"
+msgstr "Antaŭrigardi kestaltecon en pikseloj"
+
+msgid "Previous"
+msgstr "Antaŭa"
+
+msgid "Priority"
+msgstr "Prioritato"
+
+msgid "Private"
+msgstr "Privata"
+
+msgid "Procedure"
+msgstr "Proceduro"
+
+msgid "Processing"
+msgstr "Prilaborado"
+
+msgid "Produce slides."
+msgstr "Produktu lumbildojn."
+
+msgid "Produced"
+msgstr "Produktita"
+
+msgid "Publication date"
+msgstr "Eldondato"
+
+msgid "Publication date on this site"
+msgstr "Eldondato en ĉi tiu retejo"
+
+msgid "Publish"
+msgstr "Publikigi"
+
+msgid "Published in *A nice book*, published by My House, 2014"
+msgstr "Eldonita en * Bela libro *, eldonita de Mia domo, 2014"
+
+msgid "Publisher"
+msgstr "Eldonisto"
+
+msgid "Purge"
+msgstr "Elpurigo"
+
+msgid ""
+"Purging means removing it completely from the archive, not just hiding it."
+msgstr "Purigi signifas forigi ĝin tute de la arkivo, ne nur kaŝi ĝin."
+
+msgid ""
+"Put additional information here (original\n"
+"\t  title, translators, credits, etc). Footnotes go in the\n"
+"\t  body."
+msgstr ""
+"Metu pliajn informojn ĉi tie (originalan\n"
+"\t  titolo, tradukistoj, kreditoj, ktp). Piednotoj iras en la\n"
+"\t  korpo."
+
+msgid "Quarter Letter paper"
+msgstr "Kvaronlitera papero"
+
+msgid "Queue"
+msgstr "Vico"
+
+msgid "Quota exceeded, too many pages"
+msgstr "Kvoto superis, tro multaj paĝoj"
+
+msgid "Quotes"
+msgstr "Citaĵoj"
+
+msgid "RSS aggregator"
+msgstr "RSS-agregilo"
+
+msgid "RSS feed"
+msgstr "RSS-fluo"
+
+msgid "Random"
+msgstr "Hazarda"
+
+msgid "Read about the file naming scheme if you need to add files to the tree."
+msgstr ""
+"Legu pri la dosiernoma skemo se vi bezonas aldoni dosierojn al la arbo."
+
+msgid "Read the whole text..."
+msgstr "Legu la tutan tekston ..."
+
+msgid "Real time help"
+msgstr "Realtempa helpo"
+
+msgid ""
+"Rearrange the footnotes, fixing the numbering,\n"
+"              considering only the order in which they were inserted.\n"
+"              Please leave unchecked if you don't know what this\n"
+"              means. This option could be destructive, please use with\n"
+"              caution and check the result. In case you encounter\n"
+"              problems, please save the result reporting them in the\n"
+"              message. The procedure tries to be safe and will ignore\n"
+"              the change if footnotes are missing or are too many."
+msgstr ""
+"Reordigu la piednotojn, fiksante la numeradon,\n"
+"               konsiderante nur la ordon en kiu ili estis enmetitaj.\n"
+"               Bonvolu lasi sen kontrolo se vi ne scias, kio ĉi tio\n"
+"               signifas. Ĉi tiu opcio povus esti detrua, bonvolu uzi kun\n"
+"               singardemo kaj kontrolu la rezulton. Se vi renkontas\n"
+"               problemoj, bonvolu konservi la rezulton raportante ilin en "
+"la\n"
+"               mesaĝo. La procedo provas esti sekura kaj ignoros\n"
+"               la ŝanĝo se piednotoj mankas aŭ estas tro multaj."
+
+msgid "Reason"
+msgstr "Kialo"
+
+msgid "Reason for deletion"
+msgstr "Kialo por forigo"
+
+msgid "Rebuild"
+msgstr "Rekonstruu"
+
+msgid "Rebuild all generated files"
+msgstr "Rekonstruu ĉiujn generitajn dosierojn"
+
+msgid "Rebuild the generated formats"
+msgstr "Rekonstruu la generitajn formatojn"
+
+msgid "Rebuilding"
+msgstr "Rekonstruado"
+
+msgid "Recheck"
+msgstr "Rekontrolu"
+
+msgid "Redirections"
+msgstr "Alidirektiloj"
+
+msgid "Refresh and apply filters"
+msgstr "Refreŝigu kaj apliki filtrilojn"
+
+msgid "Related projects"
+msgstr "Rilataj projektoj"
+
+#. ("$name $url")
+msgid "Remote repository %1 added"
+msgstr "Aldonita fora deponejo% 1"
+
+#. ($name)
+msgid "Remote repository %1 removed"
+msgstr "Forigita deponejo% 1 forigita"
+
+msgid "Remove"
+msgstr "Forigi"
+
+msgid "Remove cover image"
+msgstr "Forigu kovrilan bildon"
+
+msgid "Remove this category"
+msgstr "Forigu ĉi tiun kategorion"
+
+msgid "Rename to"
+msgstr "Renomi al"
+
+msgid "Repeat email"
+msgstr "Ripetu retpoŝton"
+
+msgid "Repeat password"
+msgstr "Ripetu pasvorton"
+
+msgid "Request failed! Please report the the problem"
+msgstr "Peto malsukcesis! Bonvolu raporti la problemon"
+
+msgid "Reschedule"
+msgstr "Riprogrami"
+
+msgid "Reset all"
+msgstr "Restarigi ĉiujn"
+
+msgid "Reset filters"
+msgstr "Restarigi filtrilojn"
+
+msgid "Reset password"
+msgstr "Restarigi pasvorton"
+
+#. (username)
+msgid "Reset password for user %1"
+msgstr "Restarigi pasvorton por uzanto% 1"
+
+msgid "Reset to site defaults"
+msgstr "Restarigi la retejajn defaŭltojn"
+
+msgid "Reset your password"
+msgstr "Restarigu vian pasvorton"
+
+msgid "Restricted configuration variables"
+msgstr "Limigitaj agordaj variabloj"
+
+msgid "Restricted format options"
+msgstr "Limigitaj formataj opcioj"
+
+msgid "Results per page:"
+msgstr "Rezultoj por paĝo:"
+
+msgid "Retrieved on DATE from URL"
+msgstr "Elŝutita DATE de URL"
+
+msgid "Retrieved on March 8, 2012 from"
+msgstr "Prenite la 8an de marto 2012 de"
+
+msgid "Revision"
+msgstr "Revizio"
+
+#. ($uri)
+msgid "Revision for %1 has been deleted"
+msgstr "Revizio por% 1 estis forigita"
+
+msgid "Roles"
+msgstr "Roloj"
+
+msgid "Root node"
+msgstr "Radika nodo"
+
+msgid "Running headings"
+msgstr "Kurantaj rubrikoj"
+
+msgid "SSL CA certificate path (Apache)"
+msgstr "SSL-atestila vojo (Apache)"
+
+msgid "SSL certificate path (Apache)"
+msgstr "SSL-atestila vojo (Apache)"
+
+msgid "SSL chained certificate path (Nginx)"
+msgstr "SSL ĉenita atestila vojo (Nginx)"
+
+msgid "SSL configuration"
+msgstr "SSL-agordo"
+
+msgid "SSL key path"
+msgstr "SSL-ŝlosila vojo"
+
+msgid "Same as above, but for duplex printers"
+msgstr "Sama kiel supre, sed por dupleksaj presiloj"
+
+msgid "Same as above, for the Archive menu"
+msgstr "Same kiel supre, por la menuo Arkivo"
+
+msgid "Same as above, for the Related Projects menu"
+msgstr "Same kiel supre, por la menuo Rilataj Projektoj"
+
+msgid "Sans font"
+msgstr "Sans tiparo"
+
+msgid "Save"
+msgstr "Savi"
+
+msgid "Save the current settings with a name"
+msgstr "Konservu la aktualajn agordojn kun nomo"
+
+#. ($pname)
+msgid "Saved \"%1\" configuration"
+msgstr "Konservita agordo \"% 1\""
+
+msgid "Search"
+msgstr "Serĉu"
+
+msgid "Search filters"
+msgstr "Serĉaj filtriloj"
+
+msgid "Search results"
+msgstr "Serĉrezultoj"
+
+msgid "Search this column"
+msgstr "Serĉu ĉi tiun kolumnon"
+
+msgid "Secondary footnotes"
+msgstr "Malĉefaj piednotoj"
+
+msgid "Section"
+msgstr "Sekcio"
+
+msgid "Section and subsection. If one side document: section."
+msgstr "Sekcio kaj subsekcio. Se unu flanka dokumento: sekcio."
+
+msgid "See here for more details."
+msgstr "Vidu ĉi tie por pliaj detaloj."
+
+msgid "See here for the full documentation."
+msgstr "Vidu ĉi tie por la kompleta dokumentado."
+
+msgid "See the full manual for more details (english)"
+msgstr "Vidu la kompletan manlibron por pliaj detaloj (angla)"
+
+msgid "Select"
+msgstr "Elektu"
+
+msgid "Select all"
+msgstr "Elekti ĉiujn"
+
+msgid "Select all for deletion"
+msgstr "Elektu ĉion por forigo"
+
+msgid "Select all for rescheduling"
+msgstr "Elektu ĉiujn por reprogrami"
+
+msgid "Select individual parts for the bookbuilder"
+msgstr "Elektu unuopajn partojn por la librokonstruisto"
+
+msgid "Send mail"
+msgstr "Sendu poŝton"
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
+msgstr "Sendante testajn retpoŝtojn de% 1 al% 2"
+
+msgid "Separate body fields"
+msgstr "Apartaj korpokampoj"
+
+msgid "Separate footer fields"
+msgstr "Apartaj piedliniaj kampoj"
+
+msgid "Separate header fields"
+msgstr "Apartaj kapkampoj"
+
+msgid "Series"
+msgstr "Serio"
+
+msgid "Session sharing"
+msgstr "Kunsidado"
+
+msgid "Set a date in the future if you want it deferred."
+msgstr "Starigu daton estonte, se vi volas ĝin prokrastita."
+
+msgid "Settings loaded"
+msgstr "Agordoj ŝarĝitaj"
+
+msgid "Setup"
+msgstr "Agordi"
+
+msgid "Show _MENU_ entries"
+msgstr "Montri enirojn de _MENU_"
+
+msgid "Show cheatsheet"
+msgstr "Montri trompilon"
+
+msgid "Show differences in other tab"
+msgstr "Montri diferencojn en alia langeto"
+
+msgid "Show filters"
+msgstr "Montri filtrilojn"
+
+msgid "Show preview in other tab"
+msgstr "Montru antaŭrigardon en alia langeto"
+
+msgid "Show text type and number of pages in the listing"
+msgstr "Montru tekstospecon kaj nombron de paĝoj en la listo"
+
+msgid "Show the text infobox at the bottom of the texts"
+msgstr "Montru la tekstan informkeston sube de la tekstoj"
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "Montrante 0 ĝis 0 el 0 eniroj"
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr "Montrante _START_ ĝis _END_ el _TOTAL_ eniroj"
+
+msgid "Single bars"
+msgstr "Unuopaj stangoj"
+
+msgid "Site Map"
+msgstr "Reteja Mapo"
+
+msgid "Site already exists"
+msgstr "Retejo jam ekzistas"
+
+msgid "Site group"
+msgstr "Reteja grupo"
+
+msgid "Site id"
+msgstr "Reteja identigilo"
+
+msgid "Site mail (From field)"
+msgstr "Reteja poŝto (De kampo)"
+
+msgid "Site mode"
+msgstr "Reteja reĝimo"
+
+msgid "Site name"
+msgstr "Reteja nomo"
+
+msgid "Site slogan"
+msgstr "Reteja slogano"
+
+msgid "Site users"
+msgstr "Uzantoj de la retejo"
+
+msgid "Sites"
+msgstr "Retejoj"
+
+msgid "Slides"
+msgstr "Diapozitivoj"
+
+msgid "Slides (PDF)"
+msgstr "Bildoj (PDF)"
+
+msgid "Small Caps"
+msgstr "Malgrandaj ĉapoj"
+
+msgid "So we can be sure we are not mailing passwords to random people"
+msgstr "Do ni povas esti certaj, ke ni ne sendas pasvortojn al hazardaj homoj"
+
+msgid "Some fields are missing, all are required"
+msgstr "Iuj kampoj mankas, ĉiuj estas bezonataj"
+
+msgid "Some fields are too long"
+msgstr "Iuj kampoj estas tro longaj"
+
+msgid "Some ongoing revisions were found"
+msgstr "Iuj daŭrantaj revizioj estis trovitaj"
+
+msgid "Sorry, too many jobs pending, please try again later!"
+msgstr "Pardonu, tro multaj laboroj atendas, bonvolu reprovi poste!"
+
+msgid "Sorting:"
+msgstr "Ordigo:"
+
+msgid "Source"
+msgstr "Source"
+
+msgid "Source files"
+msgstr "Fontaj dosieroj"
+
+msgid "Source files with attachments"
+msgstr "Fontaj dosieroj kun aldonaĵoj"
+
+msgid "Source, notes..."
+msgstr "Fonto, notoj ..."
+
+msgid "Sources"
+msgstr "Fontoj"
+
+msgid "Special blocks"
+msgstr "Specialaj blokoj"
+
+msgid "Special pages"
+msgstr "Specialaj paĝoj"
+
+msgid "Specify a whitespace-separated list of languages to activate it."
+msgstr "Specifu liston de lingvoj apartigita en blanka spaco por aktivigi ĝin."
+
+msgid "Stale editing"
+msgstr "Malfreŝa redaktado"
+
+msgid "Standalone HTML (printer-friendly)"
+msgstr "Standalone HTML (printer-friendly)"
+
+msgid "Standard"
+msgstr "Norma"
+
+msgid "Start the document with an empty page"
+msgstr "Komencu la dokumenton per malplena paĝo"
+
+msgid "Started"
+msgstr "Komencita"
+
+msgid "Static page without javascript"
+msgstr "Senmova paĝo sen ĝavaskripto"
+
+msgid "Status"
+msgstr "Statuso"
+
+msgid "Status changed"
+msgstr "Stato ŝanĝiĝis"
+
+msgid "Subsection"
+msgstr "Subsekcio"
+
+msgid "Subsubsection or description item"
+msgstr "Subsubsekcio aŭ priskribobjekto"
+
+msgid "Subtitle"
+msgstr "Subtitle"
+
+msgid "Such an URI already exists"
+msgstr "Tia URI jam ekzistas"
+
+msgid ""
+"Such an header will unpublish the text and put a\n"
+"  redirection in place, and will be listed here"
+msgstr ""
+"Tia kaplinio malpublikigos la tekston kaj metos a\n"
+"   alidirektilo en loko, kaj estos listigita ĉi tie"
+
+msgid "Such an user already exists!"
+msgstr "Tia uzanto jam ekzistas!"
+
+msgid "Such username already exists"
+msgstr "Tia salutnomo jam ekzistas"
+
+msgid "Suggested values:"
+msgstr "Proponitaj valoroj:"
+
+msgid "Summary"
+msgstr "Resumo"
+
+msgid "Supported directive in the header"
+msgstr "Subtenita direktivo en la kaplinio"
+
+msgid "Table of Contents"
+msgstr "Enhavtabelo"
+
+msgid "Tables"
+msgstr "Tabloj"
+
+msgid "Tag cloud with authors"
+msgstr "Etikeda nubo kun aŭtoroj"
+
+msgid "Tag cloud with topics"
+msgstr "Etikeda nubo kun temoj"
+
+msgid "Task"
+msgstr "Tasko"
+
+msgid "TeX options (advanced)"
+msgstr "TeX-opcioj (altnivelaj)"
+
+msgid "Teaser"
+msgstr "Teaser"
+
+msgid "Teaser image"
+msgstr "Teaser-bildo"
+
+msgid "Term"
+msgstr "Terminon"
+
+msgid "Test"
+msgstr "Testo"
+
+msgid "Tested applications, in this order of preference"
+msgstr "Provitaj kandidatiĝoj laŭ ĉi tiu ordo de prefero"
+
+msgid "Text formatted with markup"
+msgstr "Teksto formatita per markado"
+
+msgid ""
+"Text redirections are set in the text itself, using the\n"
+"  DELETED header with this syntax"
+msgstr ""
+"Tekstaj alidirektiloj estas agorditaj en la teksto mem, uzante la\n"
+"   Forigita kaplinio kun ĉi tiu sintakso"
+
+msgid "Texts"
+msgstr "Tekstoj"
+
+msgid ""
+"The Beamer selections are relevant only if you activate the\n"
+"  slides output."
+msgstr ""
+"La elektoj de Beamer gravas nur se vi aktivigas la\n"
+"   diapozitivoj."
+
+msgid "The OPDS address for this site is:"
+msgstr "La OPDS-adreso por ĉi tiu retejo estas:"
+
+msgid ""
+"The PDF logo value can be either an absolute path\n"
+"            or just a filename if you choose to install it in the\n"
+"            TeXlive tree. You can do so with the following commands.\n"
+"            The last one checks if the file can be found."
+msgstr ""
+"La PDF-logo-valoro povas esti aŭ absoluta vojo\n"
+"             aŭ nur dosiernomo, se vi elektas instali ĝin en la\n"
+"             TeXlive-arbo. Vi povas fari tion per la jenaj komandoj.\n"
+"             La lasta kontrolas ĉu la dosiero troveblas."
+
+msgid "The changes will propagate automatically once you push."
+msgstr "La ŝanĝoj disvastiĝos aŭtomate post kiam vi premos."
+
+#. ($uri)
+msgid "The description for %1 has been updated"
+msgstr "La priskribo por% 1 estis ĝisdatigita"
+
+msgid ""
+"The differences between the list of footnotes and references is shown below."
+msgstr ""
+"La diferencoj inter la listo de piednotoj kaj referencoj estas montritaj "
+"sube."
+
+msgid "The file uploaded is not an HTML file!"
+msgstr "La alŝutita dosiero ne estas HTML-dosiero!"
+
+msgid "The following settings provide the defaults for each format."
+msgstr "La jenaj agordoj donas la defaŭltojn por ĉiu formato."
+
+msgid "The following values are used to generate the webserver configuration."
+msgstr "La jenaj valoroj estas uzataj por generi la retservan agordon."
+
+msgid ""
+"The generate webserver configuration will redirect\n"
+"          all the HTTP requests to HTTPS"
+msgstr ""
+"La generi retejan agordon redirektos\n"
+"           ĉiuj HTTP-petoj al HTTPS"
+
+msgid "The logo has the site name on itself"
+msgstr "La emblemo havas la retejan nomon sur si mem"
+
+msgid "The optional subtitle"
+msgstr "La nedeviga subtitolo"
+
+msgid ""
+"The page /special/index is twice special. It is assumed to be the\n"
+"default page to visit when loading the site’s root."
+msgstr ""
+"La paĝo / special / index estas dufoje speciala. Oni supozas, ke ĝi estas "
+"la\n"
+"defaŭlta paĝo vizitenda ŝarĝante la radikon de la retejo."
+
+msgid "The password will be mailed at this address"
+msgstr "La pasvorto estos sendita per ĉi tiu adreso"
+
+msgid "The reset link will expire in a hour."
+msgstr "La reagorda ligilo eksvalidiĝos post unu horo."
+
+msgid "The revision has the following messages"
+msgstr "La revizio havas la jenajn mesaĝojn"
+
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr ""
+"La retejo montros la PDFojn kun bildeto ĉe la\n"
+"         fino de la dokumento."
+
+msgid "The text structure is shown below."
+msgstr "La tekstostrukturo estas montrita sube."
+
+msgid "The text to show on the homepage preview"
+msgstr "La teksto montrota en la antaŭpaĝa antaŭpaĝo"
+
+msgid "The text was added to the bookbuilder"
+msgstr "La teksto estis aldonita al la librokonstruisto"
+
+msgid ""
+"The title of the document, for sorting purposes. Useful\n"
+"          if you want to strip the article, if any. A text titled “A\n"
+"          nice title” could have this set to “Nice title”, and will be\n"
+"          listed under N, not under A."
+msgstr ""
+"La titolo de la dokumento, por ordigi celojn. Utila\n"
+"           se vi volas senigi la artikolon, se ekzistas. Teksto titolita "
+"\"A\n"
+"           bela titolo \"povus havi ĉi tiun agordon kiel\" Bela titolo \", "
+"kaj estos\n"
+"           listigita sub N, ne sub A."
+
+msgid "The title of the document. The only mandatory directive."
+msgstr "La titolo de la dokumento. La sola deviga direktivo."
+
+msgid ""
+"The webserver needs to be reconfigured. Please execute in a root shell the "
+"following commands:"
+msgstr ""
+"La reteja servilo devas esti reagordita. Bonvolu plenumi en radika ŝelo la "
+"jenajn komandojn:"
+
+msgid "The whole book in as single signature"
+msgstr "La tuta libro estas kiel ununura subskribo"
+
+msgid "Then approve the change as it would be a normal publishing."
+msgstr "Poste aprobu la ŝanĝon, ĉar ĝi estus normala eldonado."
+
+msgid "Then fetch the updates from this page."
+msgstr "Poste alportu la ĝisdatigojn de ĉi tiu paĝo."
+
+msgid "There are failed jobs"
+msgstr "Estas malsukcesaj laborpostenoj"
+
+msgid "There are pending revisions"
+msgstr "Estas pritraktataj revizioj"
+
+msgid "These texts are missing the unique id."
+msgstr "Al ĉi tiuj tekstoj mankas la unika identigilo."
+
+msgid "They can be texts, special texts, authors or topics."
+msgstr "Ili povas esti tekstoj, specialaj tekstoj, aŭtoroj aŭ temoj."
+
+msgid ""
+"They should be paths relative to the webserver configuration root or "
+"absolute paths (recommended)."
+msgstr ""
+"Ili estu vojoj rilate al la radika agorda radiko aŭ absolutaj vojoj "
+"(rekomendinda)."
+
+msgid "This directive wants a whitespace separated list of filenames."
+msgstr "Ĉi tiu direktivo volas blankan apartan liston de dosiernomoj."
+
+msgid ""
+"This is a WYSIWYG editor. If you prefer to use\n"
+"        the wiki-like syntax leave it as is, fill the required fields\n"
+"        above and postpone the editing to the next step."
+msgstr ""
+"Ĉi tio estas redaktoro WYSIWYG. Se vi preferas uzi\n"
+"         la vikia-simila sintakso lasas ĝin tia, kia estas, plenigu la "
+"bezonatajn kampojn\n"
+"         supre kaj prokrastu la redaktadon al la sekva paŝo."
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
+"Ĉi tio gravas nur por la generitaj dosieroj, kie vi eble bezonos "
+"alternativan tiparon. Ĝi havas nenian efikon en la retprogramo, se jam uzas "
+"sen tiparon."
+
+msgid "This is the caption"
+msgstr "Jen la apudskribo"
+
+msgid ""
+"This mail has been sent to notify you about a new text\n"
+"creation, even if the uploading is not completed yet and the user\n"
+"still needs to finalize the upload. Another mail should follow soon.\n"
+"If this doesn't happen, it means that the uploading has been abandoned\n"
+"and you may want to check it out."
+msgstr ""
+"Ĉi tiu poŝto estis sendita por sciigi vin pri nova teksto\n"
+"kreo, eĉ se la alŝutado ankoraŭ ne finiĝis kaj la uzanto\n"
+"ankoraŭ bezonas fini la alŝuton. Alia poŝto devas sekvi baldaŭ.\n"
+"Se ĉi tio ne okazas, ĝi signifas, ke la alŝutado estis forlasita\n"
+"kaj vi eble volas kontroli ĝin."
+
+msgid "This revision is already published, ignoring changes"
+msgstr "Ĉi tiu revizio jam estas publikigita, ignorante ŝanĝojn"
+
+msgid "This revision is being actively edited"
+msgstr "Ĉi tiu revizio estas aktive redaktita"
+
+msgid "This revision is being actively edited by you"
+msgstr "Ĉi tiu revizio estas aktive redaktita de vi"
+
+msgid "This revision is being edited by someone else!"
+msgstr "Ĉi tiu revizio estas redaktita de iu alia!"
+
+msgid "This section will not produce a slide"
+msgstr "Ĉi tiu sekcio ne produktos diapozitivon"
+
+msgid ""
+"This site is private and mobile applications should ask for your username "
+"and\n"
+"  password to access the OPDS."
+msgstr ""
+"Ĉi tiu retejo estas privata kaj poŝtelefonaj programoj devas peti vian "
+"salutnomon kaj\n"
+"   pasvorton por aliri la OPDS."
+
+msgid "This text does not exist"
+msgstr "Ĉi tiu teksto ne ekzistas"
+
+msgid "This text is a book"
+msgstr "Ĉi tiu teksto estas libro"
+
+msgid "This text is an article"
+msgstr "Ĉi tiu teksto estas artikolo"
+
+msgid "This text is new"
+msgstr "Ĉi tiu teksto estas nova"
+
+msgid "This text is not available"
+msgstr "Ĉi tiu teksto ne disponeblas"
+
+msgid "This text is not public yet"
+msgstr "Ĉi tiu teksto ankoraŭ ne estas publika"
+
+msgid "This text is not published yet"
+msgstr "Ĉi tiu teksto ankoraŭ ne estas publikigita"
+
+#. (rev.is_deferred)
+msgid "This text will be deferred to %1"
+msgstr "Ĉi tiu teksto estos prokrastita al% 1"
+
+msgid "This user cannot be removed"
+msgstr "Ĉi tiu uzanto ne povas esti forigita"
+
+msgid "Thumbnail"
+msgstr "Bildeto"
+
+msgid "Title"
+msgstr "Title"
+
+msgid "Title and chapter. If one side document: chapter."
+msgstr "Titolo kaj ĉapitro. Se unu flanka dokumento: ĉapitro."
+
+msgid "Title and section.  If one side document: section."
+msgstr "Titolo kaj sekcio. Se unu flanka dokumento: sekcio."
+
+msgid "Title and subtitle. If one side document: title."
+msgstr "Titolo kaj subtitolo. Se unu flanka dokumento: titolo."
+
+msgid "Title for sorting"
+msgstr "Titolo por ordigo"
+
+msgid "Title, author, date..."
+msgstr "Titolo, aŭtoro, dato ..."
+
+msgid "Titles"
+msgstr "Titles"
+
+#. (pending_url)
+msgid "To apply the changes, you can visit %1"
+msgstr "Por apliki la ŝanĝojn, vi povas viziti% 1"
+
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr "Por montri la PDFojn, starigu aŭ aldonu la jenan ĉenon en la kaplinio"
+
+msgid ""
+"To preserve the whitespaces and line breakings, wrap the paragraphs with"
+msgstr "Por konservi la blankajn spacojn kaj linifinojn, volvu la alineojn per"
+
+msgid "To quickly format bibliographies wrap them in"
+msgstr "Por rapide formati bibliografiojn envolvi ilin"
+
+msgid "To quickly format plays, use"
+msgstr "Por rapide formati teatraĵojn, uzu"
+
+msgid "To resume the editing you can visit the following URL"
+msgstr "Por rekomenci la redaktadon, vi povas viziti la jenan URL"
+
+#. (loc('Update')
+#. (loc("Update"))
+msgid ""
+"To save or update the templates, you need first to save\n"
+"    the options with the \"%1\" button"
+msgstr ""
+"Por konservi aŭ ĝisdatigi la ŝablonojn, vi devas unue konservi\n"
+"     la ebloj per la butono \"% 1\""
+
+msgid "To view the changes introduced, you can visit the following URL"
+msgstr "Por vidi la enkondukitajn ŝanĝojn, vi povas viziti la jenan URL"
+
+msgid "Toggle fullscreen editor"
+msgstr "Baskuli plenekranan redaktilon"
+
+msgid "Topic"
+msgstr "Temo"
+
+msgid "Topics"
+msgstr "Topics"
+
+msgid "Total pages"
+msgstr "Entute paĝoj"
+
+msgid "Triple bars"
+msgstr "Trioblaj stangoj"
+
+msgid "Try a random text if unsure"
+msgstr "Provu hazardan tekston se vi ne certas"
+
+msgid ""
+"Turn links to images into images (affects site display only, static formats "
+"have the link)"
+msgstr ""
+"Transformi ligojn al bildoj en bildojn (nur efikas al reteja montrado, "
+"statikaj formatoj havas la ligon)"
+
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"            Gmaps into widgets (affects site display only, static\n"
+"            formats have the link)"
+msgstr ""
+"Turnu ligojn sen priskribo al YouTube, Vimeo,\n"
+"             Gmaps en fenestraĵojn (influas retejon nur statike\n"
+"             formatoj havas la ligon)"
+
+msgid "Two side layout"
+msgstr "Two sided layout"
+
+msgid "Type"
+msgstr "Tajpu"
+
+msgid "URI"
+msgstr "URI"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
+msgstr "URL de la nova fora deponejo (HTTPS, HTTP aŭ GIT)"
+
+msgid "URL pointing to an embeddable webchat"
+msgstr "URL montranta enkonstrueblan retbabilon"
+
+msgid "UTC"
+msgstr "UTC"
+
+msgid "Unable to load the bookbuilder session"
+msgstr "Ne eblas ŝarĝi la librokonstruan sesion"
+
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr "Ne eblas sendi poŝton de% 1 al% 2!"
+
+msgid "Unbranded PDF (hide site name, logo, etc.)"
+msgstr "Senmarka PDF (kaŝu retejan nomon, emblemon, ktp)"
+
+msgid ""
+"Unconditionally remove all the invisible non-breaking\n"
+"                spaces in the text"
+msgstr ""
+"Senkondiĉe forigu ĉiujn nevideblajn nerompajn\n"
+"                 spacoj en la teksto"
+
+#. (shared)
+msgid ""
+"Unfortunately, the shared repository located at %1 appeared out of sync."
+msgstr "Bedaŭrinde la komuna deponejo situanta ĉe% 1 aperis ne sinkronigita."
+
+msgid "Unique ID for the text"
+msgstr "Unika identigilo por la teksto"
+
+msgid "Unlimited"
+msgstr "Senlima"
+
+msgid "Unordered List"
+msgstr "Unordered list"
+
+msgid "Unpublished texts"
+msgstr "Neeldonitaj tekstoj"
+
+#. ($mime_type)
+#. ($mime)
+msgid "Unsupported file type %1"
+msgstr "Ne subtenata dosiertipo% 1"
+
+msgid "Unused attachment"
+msgstr "Neuzata alligitaĵo"
+
+msgid "Update"
+msgstr "Ĝisdatigu"
+
+msgid "Update account info"
+msgstr "Ĝisdatigu informojn pri konto"
+
+msgid "Update category description"
+msgstr "Ĝisdatigi kategorian priskribon"
+
+msgid "Update to current settings"
+msgstr "Ĝisdatigu al aktualaj agordoj"
+
+msgid "Upload"
+msgstr "Alŝuti"
+
+msgid "Upload the image and note its name. Files are always renamed."
+msgstr "Alŝutu la bildon kaj notu ĝian nomon. Dosieroj estas ĉiam alinomitaj."
+
+msgid ""
+"Uploaded and available images are shown and listed below the text preview."
+msgstr ""
+"Alŝutitaj kaj haveblaj bildoj estas montritaj kaj listigitaj sub la "
+"antaŭvido de teksto."
+
+msgid "Url"
+msgstr "Url"
+
+msgid "Use JS syntax highlight for code blocks"
+msgstr "Uzu JS-sintaksan reliefon por kodaj blokoj"
+
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
+msgstr "Uzu LuaLaTeX anstataŭ XeLaTeX (pli malrapide)"
+
+msgid "Use SSL for authenticated users"
+msgstr "Uzu SSL por aŭtentikigitaj uzantoj"
+
+msgid "Use it as a teaser image adding to the header this line:"
+msgstr "Uzu ĝin kiel teaser-bildon aldonante al la kaplinio ĉi tiun linion:"
+
+msgid "Use named table of contents anchors instead of numeric ones"
+msgstr "Uzu nomitajn enhavtabelojn ankrojn anstataŭ numerajn"
+
+msgid "Use one of the site's formats"
+msgstr "Uzu unu el la formatoj de la retejo"
+
+#. (sign)
+msgid "Use optimized signatures with %1 pages each"
+msgstr "Uzu optimumigitajn subskribojn kun% 1 paĝoj ĉiu"
+
+msgid "Use sans fonts for section titles"
+msgstr "Uzu sans-tiparojn por sekciotitoloj"
+
+msgid "Use the image as cover"
+msgstr "Uzu la bildon kiel kovrilon"
+
+msgid "Useful HTML snippets"
+msgstr "Utilaj HTML-fragmentoj"
+
+msgid ""
+"Useful for footnotes or in the headers of the document, where you cannot put "
+"a blank line to mark a new paragraph."
+msgstr ""
+"Utila por piednotoj aŭ en la titoloj de la dokumento, kie vi ne povas meti "
+"malplenan linion por marki novan alineon."
+
+#. ($user->username)
+msgid "User %1 created!"
+msgstr "Uzanto% 1 kreita!"
+
+#. ($user->username)
+#. ($c->stash->{user}->username)
+msgid "User %1 deleted"
+msgstr "Uzanto% 1 forigita"
+
+#. ($user->username)
+msgid "User %1 updated"
+msgstr "Uzanto% 1 ĝisdatigita"
+
+msgid "User created"
+msgstr "Uzanto kreita"
+
+msgid "Username"
+msgstr "Uzantnomo"
+
+msgid "Username, alphanumerical only, no special characters, no uppercase"
+msgstr "Uzantnomo, nur alfanombra, sen specialaj signoj, majuskle"
+
+msgid "Users"
+msgstr "Uzantoj"
+
+msgid ""
+"Using this token, you can load the bookbuilder settings\n"
+"    and the text list from another computer, or share it with someone\n"
+"    else. Just write it down and then load it from another computer\n"
+"    using the following form."
+msgstr ""
+"Uzante ĉi tiun signon, vi povas ŝarĝi la agordojn de librokonstruisto\n"
+"     kaj la tekstolisto de alia komputilo, aŭ dividu ĝin kun iu\n"
+"     alie. Simple skribu ĝin kaj poste ŝarĝu ĝin de alia komputilo\n"
+"     uzante la sekvan formon."
+
+msgid ""
+"Usually this is due to high traffic and bad luck, and it can be fixed by "
+"pushing the changes again."
+msgstr ""
+"Kutime tio ŝuldiĝas al alta trafiko kaj malbonŝanco, kaj ĝi povas esti "
+"riparita puŝante la ŝanĝojn denove."
+
+msgid "Verbatim block"
+msgstr "Laŭvorta bloko"
+
+msgid "View history"
+msgstr "Vidi historion"
+
+msgid "Virtual hosts"
+msgstr "Virtualaj gastigantoj"
+
+msgid "Virtual hosts, one per line"
+msgstr "Virtualaj gastigantoj, po po linio"
+
+msgid "What links here"
+msgstr "Kiaj ligoj ĉi tie"
+
+msgid ""
+"When creating a new text, do not populate the publication date if not "
+"provided by the user."
+msgstr ""
+"Kreante novan tekston, ne plenigu la publikigdaton, se la uzanto ne provizas "
+"ĝin."
+
+msgid ""
+"When you start a bookbuilder session, at the end of the\n"
+"    bookbuilder page you can see a token for sharing the session. You\n"
+"    can load it here from another device to resume what you were\n"
+"    doing."
+msgstr ""
+"Kiam vi komencas librokonstruan sesion, fine de la\n"
+"     librokonstrua paĝo vi povas vidi signon por dividi la kunsidon. Vi\n"
+"     povas ŝarĝi ĝin ĉi tie de alia aparato por rekomenci, kio vi estis\n"
+"     farante."
+
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr "Kiam vi alŝutas PDF, dividu ĝin en bildojn por enmeti en la korpon"
+
+msgid "Where does this text come from?"
+msgstr "De kie venas ĉi tiu teksto?"
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr "Blanklistigita IP (por sekurkopio, unu po linio)"
+
+msgid "Width of the cover image in percent of the text block width."
+msgstr "Larĝo de la kovrila bildo en procento de la larĝa teksto."
+
+msgid "Width:"
+msgstr "Larĝo:"
+
+msgid ""
+"With complex structures, e.g., a chapter with\n"
+"      subsections, selecting only the chapter is likely to select only\n"
+"      the chapter's title, so probably you want to select the chapter\n"
+"      and all its subsections."
+msgstr ""
+"Kun kompleksaj strukturoj, ekzemple ĉapitro kun\n"
+"       subsekcioj, elekti nur la ĉapitron verŝajne elektos nur\n"
+"       la titolo de la ĉapitro, do probable vi volas elekti la ĉapitron\n"
+"       kaj ĉiuj ĝiaj subsekcioj."
+
+msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr ""
+"Per la \"laŭvorta\" etikedo vi povas eviti la markadon al\n"
+"           estu interpretata, kutime ne bezonata"
+
+msgid ""
+"With the bookbuilder you can change the layout (fonts,\n"
+"    dimensions, paper, margins) of the texts on the library. You can\n"
+"    also merge more texts to create your own booklet. Just try it!"
+msgstr ""
+"Per la librokonstruisto vi povas ŝanĝi la aranĝon (tiparoj,\n"
+"     dimensioj, papero, randoj) de la tekstoj en la biblioteko. Vi povas\n"
+"     kunfandi ankaŭ pli da tekstoj por krei vian propran libreton. Provu ĝin!"
+
+msgid "Workflow"
+msgstr "Laborfluo"
+
+msgid "Working locally?"
+msgstr "Ĉu vi laboras loke?"
+
+msgid ""
+"Wrapping tags cannot be used inside environments\n"
+"          which require leading space (notably, you cannot use them in\n"
+"          lists)."
+msgstr ""
+"Envolvaj etikedoj ne uzeblas en medioj\n"
+"           kiuj postulas gvidan spacon (precipe vi ne povas uzi ilin en\n"
+"           listoj)."
+
+msgid "Wrong answer!"
+msgstr "Malĝusta respondo!"
+
+msgid "Wrong username or password"
+msgstr "Malĝusta uzantnomo aŭ pasvorto"
+
+msgid "XeLaTeX source"
+msgstr "XeLaTeX source"
+
+msgid "Yes"
+msgstr "Jes"
+
+msgid ""
+"You MUST specify a reason, otherwise the line will have no effect.\n"
+"The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
+"etc.) is irrelevant."
+msgstr ""
+"Vi DEVAS specifi kialon, alie la linio efikas.\n"
+"La ordo de la kaplinioj (kie estas \"#titolo\", \"#lango\",\n"
+"ktp) estas senrilata."
+
+msgid "You are already logged in"
+msgstr "Vi jam ensalutis"
+
+msgid ""
+"You are building a collection. Please provide a title and, optionally, any "
+"other information needed for the front cover (author, subtitle, date) and "
+"the back cover (source and notes)."
+msgstr ""
+"Vi konstruas kolekton. Bonvolu doni titolon kaj, laŭvole, iujn aliajn "
+"informojn necesajn por la fronto (aŭtoro, subtitolo, dato) kaj la malantaŭa "
+"kovrilo (fonto kaj notoj)."
+
+msgid "You are logged in now!"
+msgstr "Vi estas ensalutinta nun!"
+
+#. (backup)
+msgid ""
+"You can access the backup located at %1 or ask your host for help, "
+"forwarding this email"
+msgstr ""
+"Vi povas aliri la sekurkopion situantan ĉe% 1 aŭ peti helpon de via "
+"gastiganto, plusendante ĉi tiun retpoŝton"
+
+msgid ""
+"You can add texts to the bookbuilder clicking on the\n"
+"    “plus” icon near the downloads of each text. You can add and\n"
+"    remove the texts later."
+msgstr ""
+"Vi povas aldoni tekstojn al la librokonstruisto alklakante la\n"
+"     \"Plus\" -ikono proksime al la elŝutoj de ĉiu teksto. Vi povas aldoni "
+"kaj\n"
+"     forigu la tekstojn poste."
+
+msgid ""
+"You can also link to a part of the text. Please refer to the manual for this "
+"feature"
+msgstr ""
+"Vi ankaŭ povas ligi al parto de la teksto. Bonvolu raporti al la manlibro "
+"por ĉi tiu funkcio"
+
+#. (create_url)
+msgid "You can create a peer at %1"
+msgstr "Vi povas krei samrangulon ĉe% 1"
+
+msgid "You can do so answering a simple question."
+msgstr "Vi povas fari tion respondante simplan demandon."
+
+msgid "You can tune them editing them here."
+msgstr "You can tune them by editing them here."
+
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
+msgstr ""
+"Vi povas uzi la jenajn prefiksojn por serĉi vorton en specifa kampo, ekz. "
+"\"titolo: ekzemplo\""
+
+msgid ""
+"You can't create a new revision because the text has not been published yet"
+msgstr ""
+"Vi ne povas krei novan revizion, ĉar la teksto ankoraŭ ne estis publikigita"
+
+msgid "You have logged out"
+msgstr "Vi elsalutis"
+
+msgid "You may want to resume the editing of one of them"
+msgstr "Vi eble volas rekomenci la redaktadon de unu el ili"
+
+msgid ""
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr ""
+"Vi eble volas forigi la ĉefajn \"A\", \"An\", \"La\", kaj tiel plu de la "
+"titolo"
+
+msgid "You may want to use one of these images"
+msgstr "Vi eble volas uzi unu el ĉi tiuj bildoj"
+
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
+"Vi sendis atestilojn per neĉifrita konekto. Bonvolu ŝanĝi al HTTPS, ensaluti "
+"kaj ŝanĝi vian pasvorton tuj. Ĉi tio ne okazu."
+
+#. (edit_url)
+msgid "You should change your password right away at %1"
+msgstr "Vi devas ŝanĝi vian pasvorton tuj ĉe% 1"
+
+msgid "Your browser does not support the audio tag."
+msgstr "Via retumilo ne subtenas la sonetikedon."
+
+msgid "Your browser does not support the video tag."
+msgstr "Via retumilo ne subtenas la video-etikedon."
+
+msgid ""
+"Your changes are saved and can be checked every time you hit Preview or Save"
+msgstr ""
+"Viaj ŝanĝoj estas konservitaj kaj kontroleblaj ĉiufoje, kiam vi premas "
+"Antaŭrigardi aŭ Konservi"
+
+msgid "Your chapter here..."
+msgstr "Via ĉapitro ĉi tie ..."
+
+msgid "Your current bookbuilder token is:"
+msgstr "Via nuna librokonstrua signo estas:"
+
+msgid "Your email"
+msgstr "Via Retpoŝto"
+
+msgid "Your file is ready"
+msgstr "Via dosiero estas preta"
+
+msgid "Your part here..."
+msgstr "Via parto ĉi tie ..."
+
+#. (password)
+msgid "Your password is %1."
+msgstr "Via pasvorto estas% 1."
+
+msgid "Your password was reset, now you can login with it"
+msgstr "Via pasvorto estis rekomencigita, nun vi povas ensaluti per ĝi"
+
+msgid "Your section here..."
+msgstr "Via sekcio ĉi tie ..."
+
+msgid "Your sub-sub-section (or description heading) here..."
+msgstr "Via subsekcio (aŭ priskriba rubriko) ĉi tie ..."
+
+msgid "Your subsection here..."
+msgstr "Via subsekcio ĉi tie ..."
+
+#. (home)
+msgid "Your user at %1 has been created."
+msgstr "Via uzanto ĉe% 1 estis kreita."
+
+#. (username)
+msgid "Your username is %1."
+msgstr "Via salutnomo estas% 1."
+
+msgid "aborted"
+msgstr "abortita"
+
+msgid "about, links..."
+msgstr "pri, ligoj ..."
+
+msgid "activate to sort column ascending"
+msgstr "aktivigi por ordigi kolumnon supren"
+
+msgid "activate to sort column descending"
+msgstr "aktivigi por ordigi kolumnon malsupren"
+
+msgid "active"
+msgstr "aktiva"
+
+msgid "affects only the frontend webserver configuration"
+msgstr "influas nur la agordon de reteja servilo"
+
+msgid "any"
+msgstr "iu ajn"
+
+msgid "automatically generated if not present, using author and title"
+msgstr "aŭtomate generita se ne ĉeestanta, uzante aŭtoron kaj titolon"
+
+msgid "code and monospace"
+msgstr "kodo kaj monospaco"
+
+msgid "comma separated list"
+msgstr "listo kun komo"
+
+msgid "completed"
+msgstr "kompletigita"
+
+msgid "conflict"
+msgstr "konflikto"
+
+msgid "description"
+msgstr "priskribo"
+
+msgid "displayed text"
+msgstr "montrita teksto"
+
+msgid "edit, commit..."
+msgstr "redakti, fari ..."
+
+msgid "editing"
+msgstr "redaktado"
+
+msgid "emphasis"
+msgstr "emfazo"
+
+msgid "failed"
+msgstr "malsukcesis"
+
+msgid "filtered from _MAX_ total entries"
+msgstr "filtrita de _MAX_ entute enskriboj"
+
+msgid "for code, monospaced"
+msgstr "por kodo, monospacita"
+
+msgid "for display"
+msgstr "por montrado"
+
+msgid "for poetry"
+msgstr "por poezio"
+
+msgid "generic sectioning, good for articles"
+msgstr "ĝenerala sekcio, bona por artikoloj"
+
+msgid "if you want to use a custom size, you need to set both width and height"
+msgstr ""
+"se vi volas uzi laŭmendan grandecon, vi devas agordi kaj larĝon kaj altecon"
+
+msgid "image"
+msgstr "bildo"
+
+msgid "left"
+msgstr "maldekstre"
+
+msgid "mandatory"
+msgstr "deviga"
+
+msgid "markup *not* interpreted"
+msgstr "markado * ne * interpretita"
+
+#. (site.binary_upload_max_size_in_mega)
+msgid "max %1 Mb"
+msgstr "maks% 1 Mb"
+
+msgid "minutes"
+msgstr "minutoj"
+
+msgid "new-example-uri"
+msgstr "nova-ekzemplo-uri"
+
+msgid "only lowercase ASCII and hyphens"
+msgstr "nur minuskle Askio kaj streketoj"
+
+msgid "or"
+msgstr "aŭ"
+
+msgid "ordered item"
+msgstr "mendita aĵo"
+
+msgid "overstriked"
+msgstr "trotraktis"
+
+msgid "pending"
+msgstr "decidota"
+
+msgid "plain PDF"
+msgstr "plain PDF"
+
+msgid "plain text source"
+msgstr "plain text source"
+
+msgid "processing"
+msgstr "prilaborado"
+
+msgid "published"
+msgstr "eldonita"
+
+msgid "revision"
+msgstr "revizio"
+
+msgid "right"
+msgstr "ĝuste"
+
+#. (args)
+msgid "string"
+msgstr "kordo"
+
+msgid "strong emphasis"
+msgstr "forta emfazo"
+
+msgid "sub-sub-section"
+msgstr "sub-sub-sekcio"
+
+msgid "subscript"
+msgstr "indekso"
+
+msgid "subsection"
+msgstr "subsekcio"
+
+msgid "superscript"
+msgstr "superskribo"
+
+msgid "taken"
+msgstr "prenita"
+
+msgid "texts by authors, title, topic..."
+msgstr "tekstoj de aŭtoroj, titolo, temo ..."
+
+msgid "texts sorted by author"
+msgstr "texts sorted by author"
+
+msgid "texts sorted by title"
+msgstr "texts sorted by title"
+
+msgid "the author of the text (as displayed)"
+msgstr "la aŭtoro de la teksto (kiel montrita)"
+
+msgid "this text will be unpublished"
+msgstr "ĉi tiu teksto estos neeldonita"
+
+msgid "topic"
+msgstr "temo"
+
+msgid "unordered item"
+msgstr "neordigita ero"
+
+msgid "very strong emphasis"
+msgstr "tre forta emfazo"
+
+msgid "with description"
+msgstr "kun priskribo"
+
+msgid "without description"
+msgstr "sen priskribo"
+
+msgid ""
+"“Stale editing” means that the revision was abandoned\n"
+"    while editing, but it's still there, in case someone wants to pick\n"
+"    it up when editing a text."
+msgstr ""
+"\"Senfina redaktado\" signifas, ke la revizio estis forlasita\n"
+"     dum redaktado, sed ĝi ankoraŭ estas tie, por se iu volas elekti\n"
+"     ĝin supren redaktante tekston."
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "texts sorted by topic"
+
+#~ msgid "RSS"
+#~ msgstr "RSS"
+
+#~ msgid "syndicate"
+#~ msgstr "syndicate"

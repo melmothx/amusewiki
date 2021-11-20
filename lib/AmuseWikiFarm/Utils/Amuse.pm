@@ -930,6 +930,7 @@ sub known_langs {
             cs => 'Čeština',
             tr => 'Türkçe',
             bg => 'Български',
+            eo => 'Esperanto',
            };
 }
 

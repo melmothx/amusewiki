@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 217;
+use Test::More tests => 221;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -276,3 +276,7 @@ $mech->content_lacks(   '/library/a-test-id3-en');
 $mech->content_lacks(   '/library/a-test-id3-hr');
 $mech->content_contains('/library/a-test-id3-it');
 $mech->content_like(qr{Italiano.*3.*Hrvatski.*3.*English.*3}s);
+
+$mech->get_ok("/?__language=eo");
+$mech->get_ok("/api/datatables-lang");
+# diag $mech->content;
