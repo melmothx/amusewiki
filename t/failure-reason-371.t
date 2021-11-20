@@ -27,7 +27,6 @@ $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root'
 
 
 MISSING_IMAGE: {
-    my $url;
     my ($rev, $err) = $site->create_new_text({
                                               title => 'Failed',
                                               lang => 'en',
@@ -56,7 +55,6 @@ MUSE
 }
 
 DELETION: {
-    my $url;
     my ($rev, $err) = $site->create_new_text({
                                               title => 'Deleted',
                                               lang => 'en',
