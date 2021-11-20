@@ -3717,6 +3717,14 @@ sub all_site_hostnames {
     return @hostnames;
 }
 
+sub all_site_hostnames_for_renewal {
+    my $self = shift;
+    # exclude pseudo top level domanis
+    my @hostnames = grep { !/\.(exit|i2p|onion)\z/ } $self->all_site_hostnames;
+    return @hostnames;
+}
+
+
 sub alternate_hostnames {
     my $self = shift;
     return sort map { $_->name } $self->vhosts;
