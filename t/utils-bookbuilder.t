@@ -265,7 +265,7 @@ my $expected = {
                                        secondary_footnotes_alpha => undef,
                                        opening => 'right',
                                        headings => 0,
-                                       linespacing => 0,
+                                       linespacing => '',
                                       },
                 'title' => 'Pippuzzo *va* in **montagna**'
                };
