@@ -257,24 +257,6 @@ DISTRIBUTIONS
       strict 0
       utf8 0
       warnings 0
-  CGI-Compile-0.22
-    pathname: M/MI/MIYAGAWA/CGI-Compile-0.22.tar.gz
-    provides:
-      CGI::Compile 0.22
-    requirements:
-      File::pushd 0
-      Module::Build::Tiny 0.034
-      perl 5.008001
-  CGI-Emulate-PSGI-0.23
-    pathname: T/TO/TOKUHIROM/CGI-Emulate-PSGI-0.23.tar.gz
-    provides:
-      CGI::Emulate::PSGI 0.23
-      CGI::Parse::PSGI undef
-    requirements:
-      CGI 3.63
-      ExtUtils::MakeMaker 0
-      HTTP::Response 0
-      perl 5.008001
   CGI-Simple-1.21
     pathname: M/MA/MANWAR/CGI-Simple-1.21.tar.gz
     provides:
@@ -3944,22 +3926,6 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       vars 0
-  File-pushd-1.016
-    pathname: D/DA/DAGOLDEN/File-pushd-1.016.tar.gz
-    provides:
-      File::pushd 1.016
-    requirements:
-      Carp 0
-      Cwd 0
-      Exporter 0
-      ExtUtils::MakeMaker 6.17
-      File::Path 0
-      File::Spec 0
-      File::Temp 0
-      overload 0
-      perl 5.006
-      strict 0
-      warnings 0
   Filesys-Notify-Simple-0.13
     pathname: M/MI/MIYAGAWA/Filesys-Notify-Simple-0.13.tar.gz
     provides:
@@ -4531,6 +4497,7 @@ DISTRIBUTIONS
       JSON::MaybeXS 1.004000
     requirements:
       Carp 0
+      Cpanel::JSON::XS 2.3310
       ExtUtils::MakeMaker 0
       JSON::PP 2.27300
       Scalar::Util 0
@@ -7402,10 +7369,10 @@ DISTRIBUTIONS
       File::Temp 0
       Test::More 0
       perl 5.010001
-  Text-Amuse-Compile-1.64
-    pathname: M/ME/MELMOTHX/Text-Amuse-Compile-1.64.tar.gz
+  Text-Amuse-Compile-1.65
+    pathname: M/ME/MELMOTHX/Text-Amuse-Compile-1.65.tar.gz
     provides:
-      Text::Amuse::Compile 1.64
+      Text::Amuse::Compile 1.65
       Text::Amuse::Compile::Devel undef
       Text::Amuse::Compile::File undef
       Text::Amuse::Compile::FileName undef
