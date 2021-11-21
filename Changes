@@ -4,6 +4,13 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.531 2021-11-21
+
+ - Always provide an https:// site. This aligns the behavior to the
+   expected one. Now "Use SSL for authenticated users" means exactly
+   that, i.e. redirect login and authenticated users to https, while
+   so far disabling that would have prevented https altogether. (#385)
+
 2.530 2021-11-20
 
  - Add linespacing PDF option (via Text::Amuse::Compile bump)
