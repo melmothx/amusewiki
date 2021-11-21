@@ -3,7 +3,7 @@ use warnings;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 12;
+use Test::More tests => 13;
 use Test::WWW::Mechanize::Catalyst;
 use File::Spec;
 use File::Copy qw/move/;
@@ -65,6 +65,7 @@ $mech->get($mech->uri . '?__language=en');
 
 {
     $site->update_option_value(additional_nginx_conf => 'add_header X-Lame 666$request_uri;');
+    $site->update({ secure_site => 0 });
     $site = $site->get_from_storage;
     my $ws = AmuseWikiFarm::Utils::Webserver->new;
     my $directions = $ws->generate_nginx_config($site);
@@ -74,8 +75,11 @@ $mech->get($mech->uri . '?__language=en');
         ok $file->exists;
         diag $file;
         my $content = $file->slurp_utf8;
+        diag $content;
         like $content, qr{client_max_body_size 8m};
         like $content, qr{add_header X-Lame 666\$request_uri;\n\#\#};
+        like $content, qr{ssl_certificate_key.*amusewiki.key},
+          "nginx conf with a https even if not explicitely requested";
     }
 }
 

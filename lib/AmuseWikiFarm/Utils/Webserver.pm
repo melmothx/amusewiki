@@ -495,7 +495,8 @@ sub _insert_server_stanza {
         }
     }
 
-    if ($site->secure_site || $site->secure_site_only) {
+    # used to be a conditional.
+    ALWAYS: {
         $out .= "    listen 443 ssl;\n";
         unless ($self->ipv4_only) {
             $out .= "    listen [::]:443 ssl;\n";
