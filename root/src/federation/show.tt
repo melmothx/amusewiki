@@ -1,0 +1,74 @@
+<form action="[% c.uri_for_action('federation/edit') %]" method="POST">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Domain</th>
+        <th>Path</th>
+        <th>Active</th>
+      </tr>
+    </thead>
+    <tbody>
+      [% FOREACH origin IN origins %]
+        <tr>
+          <td>
+            [% origin.mirror_origin_id %]
+          </td>
+          <td>
+            [% origin.remote_domain %]
+          </td>
+          <td>
+            [% origin.remote_path %]
+          </td>
+          <td class="indicator" data-active="[% origin.active %]">
+            <span class="indicator-active">[% loc('Yes') %]</span>
+            <span class="indicator-inactive">[% loc('No') %]</span>
+            <button type="button"
+                    data-id="[% origin.mirror_origin_id %]"
+                    class="toggle-active btn btn-primary">[% loc('Toggle') %]</button>
+          </td>
+        </tr>
+      [% END %]
+    </tbody>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td><input class="form-control" name="remote_domain" placeholder="example.tld" required></td>
+        <td><input class="form-control" name="remote_path" placeholder="/" required></td>
+        <td><button type="submit" name="create" value="1" class="btn btn-primary">[% loc('Add') %]</button></td>
+      </tr>
+    </tfoot>
+  </table>
+</form>
+
+<script>
+ $(document).ready(function() {
+     $('.indicator').each(function() {
+         var el = $(this);
+         if (el.data('active')) {
+             el.find('.indicator-active').show();
+             el.find('.indicator-inactive').hide();
+         }
+         else {
+             el.find('.indicator-active').hide();
+             el.find('.indicator-inactive').show();
+         }
+     });
+     $('.toggle-active').on('click', function() {
+         var button = $(this);
+         var id = button.data('id');
+         console.log("toggling " + id);
+         if (id) {
+             var target = button.closest('form').attr('action');
+             console.log(target || 'none');
+             if (target) {
+                 $.post(target, { toggle: id }, function(data) {
+                     console.log(data);
+                     button.parent().find('.indicator-active').toggle();
+                     button.parent().find('.indicator-inactive').toggle();
+                 });
+             }
+         }
+     })
+ });
+</script>

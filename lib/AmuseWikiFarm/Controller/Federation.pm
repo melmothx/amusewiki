@@ -36,13 +36,39 @@ sub sources :Chained('root') :PathPart('sources') :CaptureArgs(0) {
 
 sub show :Chained('sources') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    my $origins = [ $c->stash->{origins_rs}->hri->all ];
+    my $origins = [ $c->stash->{origins_rs}->all ];
     $c->stash(origins => $origins);
     Dlog_debug { "Origins: $_" } $origins;
-    $c->response->body("OK");
 }
 
-sub details :Chained('sources') :PathPart('') :Args(1) {
+sub edit :Chained('sources') :PathPart('edit') :Args(0) {
+    my ($self, $c) = @_;
+    my %params = %{ $c->request->body_parameters };
+    Dlog_debug { "Params: $_" } \%params;
+    my $rs = $c->stash->{origins_rs};
+    if ($params{create} && $params{remote_domain} && $params{remote_path}) {
+        $rs->create({
+                     remote_domain => $params{remote_domain},
+                     remote_path => $params{remote_path},
+                    });
+        $c->res->redirect($c->uri_for_action('/federation/show'));
+        return;
+    }
+    my %out;
+    if (my $edit = $params{toggle}) {
+        if (my $origin = $rs->find($edit)) {
+            $origin->update({ active => $origin->active ? 0 : 1 });
+            $out{toggled} = $edit;
+        }
+        else {
+            $out{error} = "$edit not found";
+        }
+    }
+    $c->stash(json => \%out);
+    $c->detach($c->view('JSON'));
+}
+
+sub details :Chained('sources') :PathPart('details') :Args(1) {
     my ($self, $c, $id) = @_;
     if (my $origin = $c->stash->{origins_rs}->find($id)) {
         my @exceptions = $origin->mirror_infos->with_exceptions->all;
