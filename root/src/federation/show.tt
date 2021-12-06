@@ -52,6 +52,12 @@
                  class="connectivity-status connectivity-status-not-ok"><i class="fa fa-2x fa-thumbs-down"></i></div>
             </div>
           </td>
+          <td>
+            <a href="[% c.uri_for_action('federation/fetch', [ origin.mirror_origin_id ]) %]"
+               class="btn btn-primary">
+              [% c.loc('Fetch') %]
+            </a>
+          </td>
         </tr>
       [% END %]
     </tbody>

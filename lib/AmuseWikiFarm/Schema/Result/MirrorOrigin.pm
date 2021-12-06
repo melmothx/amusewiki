@@ -180,10 +180,16 @@ sub fetch_remote {
 sub manifest_url {
     my $self = shift;
     my $path = $self->remote_path;
-    my $domain = $self->remote_domain;
-    s/\/+\z// for ($path, $domain);
+    my $base_url = $self->remote_url;
+    s/\/+\z// for ($path, $base_url);
+    return "${base_url}${path}/manifest.json";
+}
+
+sub remote_url {
+    my $self = shift;
     my $protocol = $ENV{AMW_MIRROR_USE_HTTP} ? 'http' : 'https';
-    return "${protocol}://${domain}${path}/manifest.json";
+    my $domain = $self->remote_domain;
+    return "${protocol}://${domain}"
 }
 
 sub prepare_download {
@@ -194,7 +200,7 @@ sub prepare_download {
     # placeholder records.
     my %seen;
     my @downloads;
-
+    my $base_url = $self->remote_url;
   ITEM:
     foreach my $i (@$list) {
         my ($base, $suffix);
@@ -264,7 +270,7 @@ sub prepare_download {
         my %spec = (
                     last_updated => $now,
                     mirror_origin_id => $our_origin_id,
-                    download_source => join('', "https://", $self->remote_domain, $full_uri),
+                    download_source => join('', $base_url, $full_uri),
                    );
         my $mirror_info = $obj->mirror_info || $obj->create_related('mirror_info', \%spec)->discard_changes;
 
@@ -273,17 +279,17 @@ sub prepare_download {
         if (my $their_origin_id = $mirror_info->mirror_origin_id) {
             # if same origin: download if mismatch, otherwise nothing to do: either
             # they are not ours or don't need download.
-            if ($their_origin_id == $our_origin_id) {
-                # same origin and no exception:
-                if (!$mirror_info->mirror_exception) {
-                    push @downloads, $mirror_info->mirror_info_id;
-                    $mirror_info->update(\%spec);
-                    log_info { "Downloading $spec{download_source}" };
-                }
+            if ($their_origin_id == $our_origin_id
+                and !$mirror_info->mirror_exception
+                and ($mirror_info->checksum // '') ne ($i->{checksum} // '')) {
+
+                push @downloads, $mirror_info->mirror_info_id;
+                $mirror_info->update(\%spec);
+                log_info { "Downloading $spec{download_source}" };
             }
         }
         # not taken but matching checksum: take for future updates
-        elsif (($mirror_info->checksum // '') eq $i->{checksum})  {
+        elsif ($i->{checksum} and $mirror_info->checksum and $mirror_info->checksum eq $i->{checksum})  {
             if (!$mirror_info->mirror_exception) {
                 log_info { "Taking $spec{download_source} for future downloads" };
                 $mirror_info->update(\%spec);
@@ -320,7 +326,7 @@ sub prepare_download {
                });
     # and create the bulk job
     my $payload = AmuseWikiFarm::Utils::Amuse::to_json({ mirror_origin_id => $self->mirror_origin_id });
-    $site->bulk_jobs->mirrors->create({
+    return $site->bulk_jobs->mirrors->create({
                                        created => $now,
                                        status => (scalar(@downloads) ? 'active' : 'completed'),
                                        completed => (scalar(@downloads) ? undef : $now),
