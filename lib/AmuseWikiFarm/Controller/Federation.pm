@@ -26,6 +26,10 @@ Catalyst Controller.
 
 sub root :Chained('/site_user_required') :PathPart('federation') :CaptureArgs(0) {
     my ($self, $c) = @_;
+    unless ($c->check_any_user_role(qw/admin root/)) {
+        $c->detach('/not_permitted');
+        return;
+    }
 }
 
 sub sources :Chained('root') :PathPart('sources') :CaptureArgs(0) {
