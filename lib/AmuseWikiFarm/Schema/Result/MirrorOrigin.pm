@@ -171,7 +171,7 @@ sub fetch_remote {
         };
     }
     else {
-        $out{error} = $res->status_line;
+        $out{error} = $url . ': ' . $res->status_line;
         log_error { "Failure downloading $url " . $res->status_line };
     }
     return \%out;
@@ -180,8 +180,10 @@ sub fetch_remote {
 sub manifest_url {
     my $self = shift;
     my $path = $self->remote_path;
-    $path =~ s/\/\z//;
-    return 'https://' . $self->remote_domain . $self->remote_path . '/manifest.json';
+    my $domain = $self->remote_domain;
+    s/\/+\z// for ($path, $domain);
+    my $protocol = $ENV{AMW_MIRROR_USE_HTTP} ? 'http' : 'https';
+    return "${protocol}://${domain}${path}/manifest.json";
 }
 
 sub prepare_download {
@@ -337,6 +339,10 @@ sub prepare_download {
                                                      }
                                                 } @downloads ]
                                       });
+}
+
+sub total_files {
+    shift->mirror_infos->count;
 }
 
 sub download_file {

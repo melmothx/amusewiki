@@ -1,3 +1,8 @@
+<div style="display:none"
+     class="alert alert-danger"
+     id="connectivity-status-error"></div>
+</div>
+
 <form action="[% c.uri_for_action('federation/edit') %]" method="POST">
   <table class="table table-striped">
     <thead>
@@ -5,6 +10,7 @@
         <th>ID</th>
         <th>Domain</th>
         <th>Path</th>
+        <th>Files</th>
         <th>Active</th>
       </tr>
     </thead>
@@ -12,7 +18,7 @@
       [% FOREACH origin IN origins %]
         <tr>
           <td>
-            [% origin.mirror_origin_id %]
+            <a href="[% c.uri_for_action('federation/details', origin.mirror_origin_id) %]">[% origin.mirror_origin_id %]</a>
           </td>
           <td>
             [% origin.remote_domain %]
@@ -20,12 +26,31 @@
           <td>
             [% origin.remote_path %]
           </td>
-          <td class="indicator" data-active="[% origin.active %]">
+          <td>
+            [% origin.total_files %]
+          </td>
+          <td>
             <span class="indicator-active">[% loc('Yes') %]</span>
             <span class="indicator-inactive">[% loc('No') %]</span>
+          </td>
+          <td class="indicator" data-active="[% origin.active %]">
             <button type="button"
                     data-id="[% origin.mirror_origin_id %]"
                     class="toggle-active btn btn-primary">[% loc('Toggle') %]</button>
+          </td>
+          <td>
+            <button type="button"
+                    class="check-connectivity btn btn-primary"
+                    data-url="[% c.uri_for_action('federation/check', origin.mirror_origin_id) %]">
+              [% loc('Check') %]
+            </button>
+          </td>
+          <td>
+            <div style="display:none"
+                 class="connectivity-status connectivity-status-ok"><i class="fa fa-2x fa-thumbs-up"></i></div>
+            <div style="display:none"
+                 class="connectivity-status connectivity-status-not-ok"><i class="fa fa-2x fa-thumbs-down"></i></div>
+            </div>
           </td>
         </tr>
       [% END %]
@@ -45,13 +70,14 @@
  $(document).ready(function() {
      $('.indicator').each(function() {
          var el = $(this);
+         var parent = el.closest('tr');
          if (el.data('active')) {
-             el.find('.indicator-active').show();
-             el.find('.indicator-inactive').hide();
+             parent.find('.indicator-active').show();
+             parent.find('.indicator-inactive').hide();
          }
          else {
-             el.find('.indicator-active').hide();
-             el.find('.indicator-inactive').show();
+             parent.find('.indicator-active').hide();
+             parent.find('.indicator-inactive').show();
          }
      });
      $('.toggle-active').on('click', function() {
@@ -64,11 +90,29 @@
              if (target) {
                  $.post(target, { toggle: id }, function(data) {
                      console.log(data);
-                     button.parent().find('.indicator-active').toggle();
-                     button.parent().find('.indicator-inactive').toggle();
+                     button.closest('tr').find('.indicator-active').toggle();
+                     button.closest('tr').find('.indicator-inactive').toggle();
                  });
              }
          }
      })
+     $('.check-connectivity').on('click', function() {
+         var el = $(this);
+         var parent = el.closest('tr');
+         parent.find('.connectivity-status').hide();
+         $('#connectivity-status-error').text('').hide();
+         $.get(el.data('url'), function(res) {
+             console.log(res);
+             if (res.data && res.data.length) {
+                 parent.find('.connectivity-status-ok').show('fast');
+             }
+             else  {
+                 parent.find('.connectivity-status-not-ok').show('fast');
+             }
+             if (res.error) {
+                 $('#connectivity-status-error').text(res.error).show('fast');
+             }
+         });
+     });
  });
 </script>

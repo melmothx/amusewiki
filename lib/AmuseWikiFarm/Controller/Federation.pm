@@ -38,7 +38,7 @@ sub show :Chained('sources') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $origins = [ $c->stash->{origins_rs}->all ];
     $c->stash(origins => $origins);
-    Dlog_debug { "Origins: $_" } $origins;
+    # Dlog_debug { "Origins: $_" } $origins;
 }
 
 sub edit :Chained('sources') :PathPart('edit') :Args(0) {
@@ -82,6 +82,20 @@ sub details :Chained('sources') :PathPart('details') :Args(1) {
     else {
         $c->detach('/not_found');        
     }
+}
+
+sub check :Chained('sources') :PathPart('check') :Args(1) {
+    my ($self, $c, $id) = @_;
+    my %out;
+    if (my $origin = $c->stash->{origins_rs}->find($id)) {
+        my $res = $origin->fetch_remote;
+        %out = %$res;
+    }
+    else {
+        $out{error} = "Invalid ID $id";
+    }
+    $c->stash(json => \%out);
+    $c->detach($c->view('JSON'));
 }
 
 =encoding utf8
