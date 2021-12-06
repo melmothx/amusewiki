@@ -18,7 +18,7 @@
       [% FOREACH origin IN origins %]
         <tr>
           <td>
-            <a href="[% c.uri_for_action('federation/details', origin.mirror_origin_id) %]">[% origin.mirror_origin_id %]</a>
+            <a href="[% c.uri_for_action('federation/details', [ origin.mirror_origin_id ]) %]">[% origin.mirror_origin_id %]</a>
           </td>
           <td>
             [% origin.remote_domain %]
@@ -41,7 +41,7 @@
           <td>
             <button type="button"
                     class="check-connectivity btn btn-primary"
-                    data-url="[% c.uri_for_action('federation/check', origin.mirror_origin_id) %]">
+                    data-url="[% c.uri_for_action('federation/check', [ origin.mirror_origin_id ]) %]">
               [% loc('Check') %]
             </button>
           </td>

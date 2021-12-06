@@ -72,34 +72,38 @@ sub edit :Chained('sources') :PathPart('edit') :Args(0) {
     $c->detach($c->view('JSON'));
 }
 
-sub details :Chained('sources') :PathPart('details') :Args(1) {
+sub single :Chained('sources') :PathPart('') :CaptureArgs(1) {
     my ($self, $c, $id) = @_;
     if (my $origin = $c->stash->{origins_rs}->find($id)) {
-        my @exceptions = $origin->mirror_infos->with_exceptions->all;
-        Dlog_debug { "Exceptions are $_"  } \@exceptions;
-        $c->stash(
-                  mirror_exceptions => \@exceptions,
-                  mirror_origin => { $origin->get_columns }
-                 );
-        $c->response->body("OK");
+        $c->stash(mirror_origin => $origin);
     }
     else {
         $c->detach('/not_found');        
     }
 }
 
-sub check :Chained('sources') :PathPart('check') :Args(1) {
-    my ($self, $c, $id) = @_;
-    my %out;
-    if (my $origin = $c->stash->{origins_rs}->find($id)) {
-        my $res = $origin->fetch_remote;
-        %out = %$res;
-    }
-    else {
-        $out{error} = "Invalid ID $id";
-    }
-    $c->stash(json => \%out);
+sub details :Chained('single') :PathPart('details') :Args(0) {
+    my ($self, $c) = @_;
+    my $origin = $c->stash->{mirror_origin};
+    my @exceptions = $origin->mirror_infos->with_exceptions->all;
+    Dlog_debug { "Exceptions are $_"  } \@exceptions;
+    $c->stash(
+              mirror_exceptions => \@exceptions,
+              mirror_origin => { $origin->get_columns }
+             );
+    $c->response->body("OK");
+}
+
+sub check :Chained('single') :PathPart('check') :Args(0) {
+    my ($self, $c) = @_;
+    my $origin = $c->stash->{mirror_origin};
+    my $res = $origin->fetch_remote;
+    $c->stash(json => $res);
     $c->detach($c->view('JSON'));
+}
+
+sub force_fetch :Chained('single') :PathPart('fetch') :Args(0) {
+
 }
 
 =encoding utf8
