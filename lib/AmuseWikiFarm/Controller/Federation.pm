@@ -6,6 +6,7 @@ BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
 use Data::Dumper::Concise;
+use AmuseWikiFarm::Utils::Amuse qw/build_full_uri/;
 
 =head1 NAME
 
@@ -85,13 +86,23 @@ sub single :Chained('sources') :PathPart('') :CaptureArgs(1) {
 sub details :Chained('single') :PathPart('details') :Args(0) {
     my ($self, $c) = @_;
     my $origin = $c->stash->{mirror_origin};
-    my @exceptions = $origin->mirror_infos->with_exceptions->all;
-    Dlog_debug { "Exceptions are $_"  } \@exceptions;
+    my @entries = $origin->mirror_infos->search(undef, { prefetch => [qw/title attachment/] })->hri->all;
+    foreach my $entry (@entries) {
+        if (my $title = delete $entry->{title}) {
+            $title->{class} = 'Title';
+            $entry->{full_uri} = build_full_uri($title);
+        }
+        elsif (my $att = delete $entry->{attachment}) {
+            $att->{class} = 'Attachment';
+            $entry->{full_uri} = build_full_uri($att);
+        }
+    }
+    Dlog_debug { "$_" } \@entries;
     $c->stash(
-              mirror_exceptions => \@exceptions,
-              mirror_origin => { $origin->get_columns }
+              mirror_entries => \@entries,
+              mirror_origin => { $origin->get_columns },
+              load_datatables => 1,
              );
-    $c->response->body("OK");
 }
 
 sub check :Chained('single') :PathPart('check') :Args(0) {
