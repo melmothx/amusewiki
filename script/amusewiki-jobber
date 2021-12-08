@@ -108,7 +108,7 @@ try {
                                                                join => 'mirror_info',
                                                               }
                                                              )->all) {
-            $obj->create_related(mirror_info => {})->discard_changes->compute_checksum;
+            $obj->create_related(mirror_info => { site_id => $obj->site_id })->discard_changes->compute_checksum;
         }
     }
 } catch {

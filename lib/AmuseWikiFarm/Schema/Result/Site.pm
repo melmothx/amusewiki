@@ -2152,7 +2152,8 @@ sub index_file {
             my $err = $_;
             Dlog_error { "Error generating thumbnails for $_" } $details;
         };
-        my $mirror_info = $attachment->mirror_info || $attachment->create_related('mirror_info', {})->discard_changes;
+        my $mirror_info = $attachment->mirror_info
+          || $attachment->create_related('mirror_info', { site_id => $self->id })->discard_changes;
         $mirror_info->compute_checksum;
         return $attachment;
     }
@@ -2322,7 +2323,8 @@ sub index_file {
             $title->add_to_attachments($att);
         }
     }
-    my $mirror_info = $title->mirror_info || $title->create_related('mirror_info', {})->discard_changes;
+    my $mirror_info = $title->mirror_info
+      || $title->create_related('mirror_info', { site_id => $self->id })->discard_changes;
     $mirror_info->compute_checksum;
     $guard->commit;
 

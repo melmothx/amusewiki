@@ -286,7 +286,8 @@ sub prepare_download {
                     mirror_origin_id => $our_origin_id,
                     download_source => join('', $base_url, $full_uri),
                    );
-        my $mirror_info = $obj->mirror_info || $obj->create_related('mirror_info', \%spec)->discard_changes;
+        my $mirror_info = $obj->mirror_info
+          || $obj->create_related('mirror_info', { %spec, site_id => $self->site_id })->discard_changes;
 
         $seen{$mirror_info->mirror_info_id}++;
         # same origin: download if checksum missing or mismatching
