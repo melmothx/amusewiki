@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::MirrorInfo;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::MirrorInfo
+AmuseWikiFarm::Schema::Result::MirrorInfo - Mirror meta-info
 
 =cut
 
@@ -62,6 +62,13 @@ __PACKAGE__->table("mirror_info");
   is_foreign_key: 1
   is_nullable: 1
 
+=head2 site_id
+
+  data_type: 'varchar'
+  is_foreign_key: 1
+  is_nullable: 0
+  size: 16
+
 =head2 checksum
 
   data_type: 'varchar'
@@ -101,6 +108,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "mirror_origin_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
+  "site_id",
+  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
   "checksum",
   { data_type => "varchar", is_nullable => 1, size => 128 },
   "download_source",
@@ -193,6 +202,21 @@ __PACKAGE__->belongs_to(
   },
 );
 
+=head2 site
+
+Type: belongs_to
+
+Related object: L<AmuseWikiFarm::Schema::Result::Site>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "site",
+  "AmuseWikiFarm::Schema::Result::Site",
+  { id => "site_id" },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
+);
+
 =head2 title
 
 Type: belongs_to
@@ -214,8 +238,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-09-12 08:22:29
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:PaK7k1kIeHja/8NVwQatqw
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-12-08 10:10:36
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rAQJC0ZhpkiutMIrLZUGMA
 
 use Digest::SHA;
 use DateTime;

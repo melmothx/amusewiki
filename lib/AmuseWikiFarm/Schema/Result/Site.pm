@@ -733,6 +733,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 mirror_infos
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::MirrorInfo>
+
+=cut
+
+__PACKAGE__->has_many(
+  "mirror_infos",
+  "AmuseWikiFarm::Schema::Result::MirrorInfo",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 mirror_origins
 
 Type: has_many
@@ -954,8 +969,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-07-22 14:55:51
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rfZmUYcKaOJzUK9cXWadkQ
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-12-08 10:10:36
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ToXh5OKwK34xAQRAqBzWjw
 
 =head2 other_sites
 

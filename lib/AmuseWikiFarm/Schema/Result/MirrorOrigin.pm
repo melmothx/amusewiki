@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::MirrorOrigin;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::MirrorOrigin
+AmuseWikiFarm::Schema::Result::MirrorOrigin - Mirror origin
 
 =cut
 
@@ -70,6 +70,16 @@ __PACKAGE__->table("mirror_origin");
   is_nullable: 0
   size: 1
 
+=head2 status_message
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 last_downloaded
+
+  data_type: 'datetime'
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -83,6 +93,10 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "active",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
+  "status_message",
+  { data_type => "text", is_nullable => 1 },
+  "last_downloaded",
+  { data_type => "datetime", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -130,8 +144,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-08-18 15:29:28
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:SQC9JCZwNS1IHmoLEh58Fg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-12-08 10:10:36
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:oTI0MJmbotyuc+25c1x7rg
 
 use Cwd;
 use constant ROOT => getcwd();

@@ -649,7 +649,9 @@ CREATE TABLE mirror_origin (
                                     ON DELETE CASCADE ON UPDATE CASCADE,
        remote_domain VARCHAR(255) NOT NULL,
        remote_path VARCHAR(255) NOT NULL,
-       active INTEGER(1) NOT NULL DEFAULT 0
+       active INTEGER(1) NOT NULL DEFAULT 0,
+       status_message TEXT,
+       last_downloaded DATETIME
 );
 
 CREATE TABLE mirror_info (
@@ -660,6 +662,8 @@ CREATE TABLE mirror_info (
                              ON DELETE CASCADE ON UPDATE CASCADE,
        mirror_origin_id INTEGER NULL REFERENCES mirror_origin(mirror_origin_id)
                                 ON DELETE SET NULL ON UPDATE CASCADE,
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
        checksum VARCHAR(128),
        download_source TEXT,
        download_destination TEXT,
@@ -711,6 +715,8 @@ INSERT INTO table_comments (table_name, comment_text)
          ('node_body', 'Nodes description'),
          ('node_title', 'Linking table from Node to Title'),
          ('node_category', 'Linking table from Node to Category'),
+         ('mirror_info', 'Mirror meta-info'),
+         ('mirror_origin', 'Mirror origin'),
          ('included_file', 'Files included in muse documents'),
          ('include_path', 'Directories to search for file inclusions')
          ;
