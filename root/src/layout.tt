@@ -516,6 +516,12 @@
                   </a>
                 </li>
                 <li>
+                  <a href="[% c.uri_for_action('/federation/show') %]">
+                    <i class="fa fa-handshake-o fa-fw"></i>
+                    [% loc('Federation') %]
+                  </a>
+                </li>
+                <li>
                   [% IF c.check_user_roles('root') %]
                   <a href="[% c.uri_for_action('/admin/show_users') %]">
                     <span class="fa fa-users fa-fw" aria-hidden="true"></span>

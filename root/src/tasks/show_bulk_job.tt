@@ -4,18 +4,20 @@
     <li>
       <a href="[% c.uri_for_action('/tasks/rebuild') %]">[% loc('Rebuilding') %]</a>
     </li>
-    <li class="active">
-      [% (site.sitename || site.canonical) | html %]
-    </li>
     [% END %]
     [% IF bulk_job.is_reindex %]
     <li>
       <a href="[% c.uri_for_action('/console/git_display') %]">[% loc('Git console') %]</a>
     </li>
-    <li class="active">
-      [% (site.sitename || site.canonical) | html %]
+    [% END %]
+    [% IF bulk_job.is_mirror %]
+    <li>
+      <a href="[% c.uri_for_action('/federation/show') %]">[% loc('Federation') %]</a>
     </li>
     [% END %]
+    <li class="active">
+      [% bulk_job.job_title | html %]
+    </li>
   </ol>
 </div>
 

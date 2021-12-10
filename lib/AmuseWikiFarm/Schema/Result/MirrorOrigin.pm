@@ -191,15 +191,20 @@ sub fetch_remote {
     return \%out;
 }
 
-sub manifest_url {
+sub remote_target_url {
     my $self = shift;
     my $path = $self->remote_path;
-    my $base_url = $self->remote_url;
+    my $base_url = $self->remote_base_url;
     s/\/+\z// for ($path, $base_url);
-    return "${base_url}${path}/manifest.json";
+    return "${base_url}${path}";
 }
 
-sub remote_url {
+
+sub manifest_url {
+    shift->remote_target_url . "/manifest.json";
+}
+
+sub remote_base_url {
     my $self = shift;
     my $protocol = $ENV{AMW_MIRROR_USE_HTTP} ? 'http' : 'https';
     my $domain = $self->remote_domain;
@@ -214,7 +219,7 @@ sub prepare_download {
     # placeholder records.
     my %seen;
     my @downloads;
-    my $base_url = $self->remote_url;
+    my $base_url = $self->remote_base_url;
   ITEM:
     foreach my $i (@$list) {
         my ($base, $suffix);

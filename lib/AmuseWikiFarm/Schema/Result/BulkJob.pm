@@ -285,6 +285,22 @@ sub is_mirror {
     return shift->task eq 'mirror';
 }
 
+sub job_title {
+    my $self = shift;
+    my $site = $self->site;
+    if ($self->is_mirror) {
+        if (my $data = $self->decoded_payload) {
+            if (my $mid = $data->{mirror_origin_id}) {
+                if (my $origin = $site->mirror_origins->find($mid)) {
+                    return $origin->remote_target_url;
+                }
+            }
+        }
+    }
+    return $site->sitename || $site->canonical;
+}
+
+
 sub handle_bulk_job_completed {
     my $self = shift;
     if ($self->is_mirror) {

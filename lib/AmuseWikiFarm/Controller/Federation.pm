@@ -5,8 +5,6 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
-use Data::Dumper::Concise;
-use AmuseWikiFarm::Utils::Amuse qw/build_full_uri/;
 
 =head1 NAME
 
@@ -36,14 +34,18 @@ sub root :Chained('/site_user_required') :PathPart('federation') :CaptureArgs(0)
 sub sources :Chained('root') :PathPart('sources') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my $rs = $c->stash->{site}->mirror_origins;
-    $c->stash(origins_rs => $rs);
+    $c->stash(origins_rs => $rs,
+              page_title => $c->loc("Federation"),
+             );
 }
 
 sub show :Chained('sources') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $origins = [ $c->stash->{origins_rs}->all ];
-    $c->stash(origins => $origins);
-    # Dlog_debug { "Origins: $_" } $origins;
+    $c->stash(origins => $origins,
+              load_datatables => 1,
+              mirror_entries => $c->stash->{site}->mirror_infos->without_origin->detail_list,
+             );
 }
 
 sub edit :Chained('sources') :PathPart('edit') :Args(0) {
@@ -86,21 +88,8 @@ sub single :Chained('sources') :PathPart('') :CaptureArgs(1) {
 sub details :Chained('single') :PathPart('details') :Args(0) {
     my ($self, $c) = @_;
     my $origin = $c->stash->{mirror_origin};
-    my @entries = $origin->mirror_infos->search(undef, { prefetch => [qw/title attachment/] })->hri->all;
-    foreach my $entry (@entries) {
-        if (my $title = delete $entry->{title}) {
-            $title->{class} = 'Title';
-            $entry->{full_uri} = build_full_uri($title);
-        }
-        elsif (my $att = delete $entry->{attachment}) {
-            $att->{class} = 'Attachment';
-            $entry->{full_uri} = build_full_uri($att);
-        }
-    }
-    Dlog_debug { "$_" } \@entries;
     $c->stash(
-              mirror_entries => \@entries,
-              mirror_origin => { $origin->get_columns },
+              mirror_entries => $origin->mirror_infos->detail_list,
               load_datatables => 1,
              );
 }
