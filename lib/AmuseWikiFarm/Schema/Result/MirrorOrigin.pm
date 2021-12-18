@@ -372,7 +372,7 @@ sub total_files {
 }
 
 sub download_file {
-    my ($self, $info, $opts) = @_;
+    my ($self, $info, $logger, $opts) = @_;
     $opts ||= {};
     my $ua = $opts->{ua} || $self->ua;
     my $suffix = $info->is_attachment ? '' : '.muse';
@@ -381,6 +381,7 @@ sub download_file {
     $dest->parent->mkpath;
     log_info { "Retrieving $src and storing in $dest" };
     my $res = $ua->get($src);
+    $logger->("Downloading $src: " . $res->status_line . "\n");
     if ($res->is_success) {
         $dest->spew_raw($res->content);
         $info->update({ download_destination => "$dest" });

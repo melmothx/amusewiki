@@ -882,13 +882,17 @@ sub dispatch_job_download_remote {
         if (my $origin = $info->mirror_origin) {
             # just in case
             if ($origin->site_id eq $self->site_id) {
-                $origin->download_file($info, $opts);
+                $origin->download_file($info, $logger, $opts);
             }
             else {
                 die $origin->site_id . ' is not ' . $self->site_id;
             }
         }
     }
+    if (my $bulk = $self->bulk_job_id) {
+        return "/tasks/job/$bulk/show";
+    }
+    return;
 }
 
 sub dispatch_job_install_downloaded {
