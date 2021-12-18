@@ -1,3 +1,14 @@
+<div class="amw-breadcrumbs">
+  <ol class="breadcrumb">
+    <li>
+      <a href="[% c.uri_for_action('/federation/show') %]">[% loc('Federation') %]</a>
+    </li>
+    <li>
+      [% loc('Local pages') %]
+    </li>
+  </ol>
+</div>
+
 <div class="center">
   <div class="page-header">
     <h2>[% loc('Federation') %]</h2>
