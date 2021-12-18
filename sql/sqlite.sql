@@ -286,6 +286,7 @@ CREATE TABLE bulk_job (
                           ON DELETE CASCADE ON UPDATE CASCADE,
        status    VARCHAR(32),
        payload   TEXT, -- the JSON stuff
+       produced  VARCHAR(255),
        username  VARCHAR(255)
 );
 
