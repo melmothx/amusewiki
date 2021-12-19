@@ -969,6 +969,7 @@ root/src/category.tt
 root/src/cloud/show.tt
 root/src/console/alias_display.tt
 root/src/console/git_display.tt
+root/src/console/git_fine_diff.tt
 root/src/console/list_categories.tt
 root/src/console/translations.tt
 root/src/console/unpublished.tt
@@ -991,6 +992,7 @@ root/src/include/ckeditor.tt
 root/src/include/edit_node.tt
 root/src/include/editing-options.tt
 root/src/include/hide_type_and_number_of_pages.tt
+root/src/include/js-diff.tt
 root/src/include/markitup.tt
 root/src/include/node_breadcrumbs.tt
 root/src/include/pagination-widget.tt
@@ -1804,6 +1806,7 @@ t/site-options.t
 t/site_files.t
 t/sitemap.t
 t/sorting.t
+t/sqlite-deadlock.t
 t/static-indexes.t
 t/status_file.t
 t/stemmer-crash.t
