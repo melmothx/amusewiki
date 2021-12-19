@@ -2617,6 +2617,7 @@ sub _repo_git_action {
                 $git->fetch($remote);
                 # safe interpolation, as we checked it.
                 @out = $git->RUN(log => "HEAD..$remote/master");
+                push @out, "\n";
                 push @out, $git->pull({ ff_only => 1 }, $remote, 'master');
             };
             $fatal = $@;
