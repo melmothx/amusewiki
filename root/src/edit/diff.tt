@@ -23,18 +23,6 @@
   [% loc('Your changes are saved and can be checked every time you hit Preview or Save') %]
 </div>
 
-<!--
-Source at
-[% c.uri_for('/static/js/diff/diff_match_patch_uncompressed.js') %]
--->
-
-<script type="text/javascript"
-        src="[% c.uri_for('/static/js/diff/diff_match_patch.js') %]">
-</script>
-
-
-
-
 <div class="row">
   <div class="col-md-6">
     <textarea rows="10" id="original" class="form-control" readonly="readonly">[%-
@@ -55,17 +43,7 @@ Source at
   </button>
 </div>
 
-<div style="margin:20px">
-  <div id="outputdiv"></div>
-</div>
-
-<div class="well">[% loc('Computing of differences took')%]
-  <span id="timing"></span>
-</div>
-
-<script type="text/javascript"
-        src="[% c.uri_for('/static/js/amw-diff.js') %]">
-</script>
+[% INCLUDE 'include/js-diff.tt' %]
 
 [% ELSE %]
 

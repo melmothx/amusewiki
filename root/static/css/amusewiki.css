@@ -129,10 +129,14 @@ blockquote {
 
 .amw-diff-deletion {
     color: red;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .amw-diff-insertion {
     color: green;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .amw-paging-anchor {
@@ -487,4 +491,9 @@ textarea.form-control {
 
 .panel-footer p {
     margin-bottom: 0px;
+}
+
+.js-diff-output {
+    font-size: 16px;
+    font-family: monospace;
 }

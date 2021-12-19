@@ -1,0 +1,13 @@
+<div class="mt-2 js-diff-output-container" style="display:none">
+  <div class="panel panel-default">
+    <div class="panel-body js-diff-output" id="outputdiv"></div>
+  </div>
+</div>
+
+<div id="timing-container" class="well" style="display:none">[% loc('Computing of differences took')%]
+  <span id="timing"></span>
+</div>
+
+<!-- Source at [% c.uri_for('/static/js/diff/diff_match_patch_uncompressed.js') %] -->
+<script type="text/javascript" src="[% c.uri_for('/static/js/diff/diff_match_patch.js') %]"></script>
+<script type="text/javascript" src="[% c.uri_for('/static/js/amw-diff.js') %]"></script>
