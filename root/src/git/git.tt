@@ -9,6 +9,14 @@
     </a>
   </small>
 [% END %]
+[% IF c.user_exists %]
+<span class="pull-right">
+  <a class="btn btn-default" href="[% c.uri_for_action('console/git_fine_diff') %]">
+    <span class="fa fa-plus"></span>
+    <span class="fa fa-minus"></span>
+  </a>
+</span>
+[% END %]
 </h2>
 
 [% cgit_body %]

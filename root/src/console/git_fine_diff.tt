@@ -1,5 +1,12 @@
-<div class="page-header">
-  <h1>[% loc('Git diff') %]</h1>
+<div class="amw-breadcrumbs">
+  <ol class="breadcrumb">
+    <li>
+      <a href="[% c.uri_for_action('/git/git') %]">[% loc('Git') %]</a>
+    </li>
+    <li class="active">
+      [% loc('Diff') %]
+    </li>
+  </ol>
 </div>
 
 <form id="refine-git-form" method="GET" action="">
@@ -10,11 +17,11 @@
     [% END %]
   </select>
   <div class="input-group mt-1">
-    <span class="input-group-addon">[% loc('Commit ID') %]</span>
+    <span class="input-group-addon">[% loc('Commit ID') %] <strong>A</strong></span>
     <input id="id-from" type="text" class="form-control" required/>
   </div>
   <div class="input-group mt-1">
-    <span class="input-group-addon">[% loc('Commit ID') %]</span>
+    <span class="input-group-addon">[% loc('Commit ID') %] <strong>B</strong></span>
     <input id="id-to" type="text" class="form-control" required/>
   </div>
   <div class="mt-1 text-center">
