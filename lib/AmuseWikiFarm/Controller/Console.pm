@@ -309,6 +309,11 @@ sub toggle_category :Chained('categories') :PathPart('toggle') :Args(0) {
     $c->detach($c->view('JSON'));
 }
 
+sub git_fine_diff :Chained('root') :PathPart('git-fine-diff') :Args {
+    my ($self, $c) = @_;
+    $c->stash(git_urls => $c->stash->{site}->titles->sorted_by_title->list_git_file_urls);
+}
+
 =head1 AUTHOR
 
 Marco Pessotto <melmothx@gmail.com>

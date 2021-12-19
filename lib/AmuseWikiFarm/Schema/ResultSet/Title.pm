@@ -648,4 +648,21 @@ sub language_stats {
                   });
 }
 
+sub list_git_file_urls {
+    my $self = shift;
+    my $all = $self->search(undef,
+                            {
+                             result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                             columns => [qw/site_id f_archive_rel_path f_name f_suffix author title/],
+                            });
+    my @out;
+    while (my $r = $all->next) {
+        push @out, {
+                    value => "/git/$r->{site_id}/plain/$r->{f_archive_rel_path}/$r->{f_name}$r->{f_suffix}",
+                    label => join(' — ', grep { $_ } $r->{title}, $r->{author}),
+                   };
+    }
+    return \@out;
+}
+
 1;

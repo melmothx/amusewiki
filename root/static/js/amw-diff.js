@@ -42,10 +42,8 @@ function amw_diff_display (diffs) {
     return html.join('');
 }
 
-var dmp = new diff_match_patch();
-$(document).ready(function () {
-    var text1 = $('#original').val();
-    var text2 = $('#current').val();
+function amw_do_diff(text1, text2) {
+    var dmp = new diff_match_patch();
     dmp.Diff_Timeout = 0;
     dmp.Diff_EditCost = 4;
     var ms_start = (new Date()).getTime();
@@ -54,5 +52,39 @@ $(document).ready(function () {
     dmp.diff_cleanupSemantic(d);
     var ds = amw_diff_display(d);
     $('#outputdiv').html(ds);
+    $('.js-diff-output-container').show();
     $('#timing').text((ms_end - ms_start) / 1000 + 's');
+    $('#timing-container').show();
+}
+
+$(document).ready(function () {
+    var text1 = $('#original').val();
+    var text2 = $('#current').val();
+    if (text1 && text2) {
+        amw_do_diff(text1, text2);
+        return;
+    }
+    $('#custom-check').on('click', function(e) {
+        document.querySelector('#refine-git-form').reportValidity();
+        console.log("Clicked");
+        $('#outputdiv').children().remove();
+        var from = $('#id-from').val().trim();
+        var to = $('#id-to').val().trim();
+        var base_url = $('#base-url').val().trim();
+        if (base_url && from && to) {
+            var from_url = base_url + '?id=' + from;
+            var to_url = base_url + '?id=' + to;
+            $.get(from_url, function(text_from) {
+                console.log("Got " + from_url);
+                $.get(to_url, function(text_to) {
+                    console.log("Got " + to_url);
+                    amw_do_diff(text_from, text_to);
+                }).fail(function() {
+                    alert("Failed to get " + to_url);
+                });
+            }).fail(function() {
+                alert("Failed to get " + from_url);
+            });
+        }
+    });
 });

@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 69;
+use Test::More tests => 70;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -144,4 +144,4 @@ ok($mech->content_lacks('git-delete'));
 ok($mech->submit_form(with_fields => {name => 'root', url => '/etc' }), "Added root fails");
 ok(!$site->remote_gits_hashref->{root}, "no path allowed");
 
-
+ok scalar(@{$site->titles->list_git_file_urls});
