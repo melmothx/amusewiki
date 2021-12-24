@@ -311,7 +311,15 @@ sub toggle_category :Chained('categories') :PathPart('toggle') :Args(0) {
 
 sub git_fine_diff :Chained('root') :PathPart('git-fine-diff') :Args {
     my ($self, $c) = @_;
-    $c->stash(git_urls => $c->stash->{site}->titles->sorted_by_title->list_git_file_urls);
+    my $urls = $c->stash->{site}->titles->sorted_by_title->list_git_file_urls;
+    my $selected = $c->req->params->{base_url} // '';
+    log_debug { "Selected is $selected" };
+    foreach my $u (@$urls) {
+        if ($u->{value} eq $selected) {
+            $u->{selected} = 1;
+        }
+    }
+    $c->stash(git_urls => $urls);
 }
 
 =head1 AUTHOR

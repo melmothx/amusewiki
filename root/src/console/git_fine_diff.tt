@@ -13,16 +13,16 @@
   <select id="base-url" class="form-control mt-1" required>
     <option value="">[% loc('Please choose a text') %]</option>
     [% FOREACH entry IN git_urls %]
-      <option value="[% entry.value | html %]">[% entry.label | html %]</option>
+      <option value="[% entry.value | html %]" [% IF entry.selected %]selected[% END %]>[% entry.label | html %]</option>
     [% END %]
   </select>
   <div class="input-group mt-1">
     <span class="input-group-addon">[% loc('Commit ID') %] <strong>A</strong></span>
-    <input id="id-from" type="text" class="form-control" required/>
+    <input id="id-from" type="text" class="form-control" value="[% c.req.params.id_from | html %]" required/>
   </div>
   <div class="input-group mt-1">
     <span class="input-group-addon">[% loc('Commit ID') %] <strong>B</strong></span>
-    <input id="id-to" type="text" class="form-control" required/>
+    <input id="id-to" type="text" class="form-control" value="[% c.req.params.id_to | html %]" required/>
   </div>
   <div class="mt-1 text-center">
     <button type="button" id="custom-check" class="btn btn-primary">[% loc('Run diff') %]</button>

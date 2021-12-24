@@ -11,12 +11,46 @@
 [% END %]
 [% IF c.user_exists %]
 <span class="pull-right">
-  <a class="btn btn-default" href="[% c.uri_for_action('console/git_fine_diff') %]">
-    <span class="fa fa-plus"></span>
-    <span class="fa fa-minus"></span>
-  </a>
+  <form id="git-refine" method="GET" action="[% c.uri_for_action('/console/git_fine_diff') %]" style="display:none">
+    <button class="btn btn-default" type="submit">
+      <input type="hidden" id="git-fine-diff-id-from" name="id_from" value="" />
+      <input type="hidden" id="git-fine-diff-id-to" name="id_to" value="" />
+      <input type="hidden" id="git-fine-diff-base-url" name="base_url" value="" />
+      <span class="fa fa-plus"></span>
+      <span class="fa fa-minus"></span>
+    </button>
+  </form>
 </span>
 [% END %]
 </h2>
 
 [% cgit_body %]
+
+
+<script>
+ $(document).ready(function() {
+     var location = window.location;
+     var current = location.pathname;
+     var commit = location.search;
+     console.log(current + commit);
+     if (current.match(/^\/git\/[a-z0-9-]+\/commit\//)) {
+         var target = current.replace('/commit/', '/plain/');
+         console.log(target)
+         var id_a;
+         var id_b = commit.replace('?id=', '');
+         console.log(id_b);
+         // find the parent
+         $('.commit-info').find('.sha1').each(function() {
+             if ($(this).closest('tr').children('th').first().text() === 'parent') {
+                 id_a = $(this).find('a').first().text();
+             }
+         });
+         if (target && id_a && id_b) {
+             $('#git-fine-diff-id-from').val(id_a);
+             $('#git-fine-diff-id-to').val(id_b);
+             $('#git-fine-diff-base-url').val(target);
+             $('#git-refine').show();
+         }
+     }
+ });
+</script>
