@@ -1,0 +1,3243 @@
+# AmuseWiki i18n
+# This file is distributed under the same license as the AmuseWiki package.
+# Marco Pessotto <melmothx@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AmuseWiki 0.01\n"
+"POT-Creation-Date: 2014-03-06 10:16+0100\n"
+"PO-Revision-Date: 2021-12-20 17:28+0800\n"
+"Last-Translator: Marco <melmothx@gmail.com>\n"
+"Language-Team: English\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. ($filename)
+msgid "%1 doesn't exist"
+msgstr "%1不存在"
+
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr "%1个任务已删除"
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr "%1个任务已改期"
+
+#. ($c->stash->{site}->full_name)
+#. (site.full_name)
+msgid "%1 on mobile"
+msgstr "%1移动版"
+
+#. (text.pages_estimated)
+msgid "%1 pp."
+msgstr "%1页"
+
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr "（智能引号、链接、脚注等）"
+
+msgid "A blank line (or more blank lines) starts a new paragraph."
+msgstr "空行（或多个空行）开始新段落。"
+
+msgid ""
+"A cover image was already added, but you can replace it uploading\n"
+"              a new one."
+msgstr "己经有了题图，但是你可以上传新的替代它。"
+
+msgid ""
+"A footnote is a line which starts with a number between square\n"
+"          brackets, with no leading whitespace."
+msgstr "脚注行由一对半角方括号开头，括号中应是一个数字，括号前没有空格。"
+
+msgid "A line which starts with 2 or more whitespaces is a quotation."
+msgstr "引用行由两个或以上空格开头。"
+
+msgid "A line which starts with 20 or more whitespaces is right-aligned."
+msgstr "右对齐行由二十个或以上空格开头。"
+
+msgid "A line which starts with 6 or more whitespaces is centered."
+msgstr "中间对齐行由六个或以上空格开头。"
+
+msgid ""
+"A list of links and labels to insert into the top\n"
+"            bar. One per line, first the url, then the label,\n"
+"            separated by a space, e.g. \"http://test.me Test site\""
+msgstr ""
+"顶栏里插入的链接、标签列表。一行一个，地址在前，标签在后，中间一个空格，比如"
+"「http://test.me 测试」。"
+
+#. (location)
+msgid "A new text has been created at %1"
+msgstr "%1 处已生成新文章"
+
+msgid "A nice title"
+msgstr "好标题"
+
+msgid "A4 imposed PDF"
+msgstr "A4纸张的 PDF"
+
+msgid "A4 paper"
+msgstr "A4纸张"
+
+msgid "A5 paper"
+msgstr "A5纸张"
+
+msgid "A6 paper (also suitable for e-readers)"
+msgstr "A6纸张（也适合电子阅读器）"
+
+msgid "Abandoned editing in progress, feel free to check the diff and resume"
+msgstr "放弃进行中的编辑，可以检查区别并继续"
+
+msgid "Action"
+msgstr "行动"
+
+msgid "Activate the blog-style look and feel"
+msgstr "启用博客外观"
+
+msgid "Active"
+msgstr "活跃"
+
+msgid "Add a cover image (PNG or JPG)"
+msgstr "添加题图（PNG或JPG）"
+
+msgid "Add a new text"
+msgstr "添加新文章"
+
+msgid "Add an attachment"
+msgstr "添加附件"
+
+msgid "Add crop marks to the PDF"
+msgstr "添加PDF切割线"
+
+msgid "Add new remote repository"
+msgstr "添加新远程仓库"
+
+msgid "Add non-breaking spaces where appropriate for the language"
+msgstr "添加语言合适的不换行空格"
+
+msgid ""
+"Add paginator for text listing when the number of texts is greater than "
+"(integer)"
+msgstr "当文章数量超过（整数）时添加分页器"
+
+msgid "Add sections to the bookbuilder"
+msgstr "在建书器中添加节"
+
+msgid "Add the OPDS URL"
+msgstr "添加OPDS地址"
+
+msgid "Add the selected parts to the bookbuilder"
+msgstr "将选中内容添加进建书器"
+
+msgid "Add the whole text"
+msgstr "添加全文"
+
+msgid "Add this text to the bookbuilder"
+msgstr "将此文添加进建书器"
+
+msgid ""
+"Additional information (full date, original title, translators, credits, "
+"etc)."
+msgstr "更多信息（完整日期、原题、译者、作者等）"
+
+#. (c.uri_for_action('/console/unpublished')
+#. (c.uri_for_action("/console/unpublished").path)
+msgid ""
+"After the approval of the\n"
+"  change, it will appear under %1. There is a big red\n"
+"  button for each deleted text, and you can proceed with the purging."
+msgstr ""
+"修改批准后，它会在%1下出现。每个被删除的文章会有一个大红色的按钮，并且你可以"
+"继续抹除。"
+
+msgid "Age:"
+msgstr "年龄："
+
+msgid "Alias"
+msgstr "别名"
+
+msgid "Alias can't point to itself"
+msgstr "名号不能指向自身"
+
+msgid ""
+"All kind of lists start with one or more leading\n"
+"        whitespace."
+msgstr "各种列表由一个或以上的空格开头。"
+
+msgid "All languages"
+msgstr "所有语言"
+
+msgid "All revisions"
+msgstr "所有更新"
+
+msgid "All sites"
+msgstr "所有网站"
+
+msgid "All users"
+msgstr "所有用户"
+
+msgid ""
+"Allow binary uploads to logged in users: list of whitespace separate file "
+"extensions"
+msgstr "允许已登录用户上传二进制文件上传：空格间隔文件拓展名列表"
+
+msgid ""
+"Also produce slides\n"
+"          from the document. Each section, no matter how deep, will\n"
+"          produce a slide. The text outside a section is ignored, so\n"
+"          if you do not have sections, you will get empty slides. If\n"
+"          you want to exclude a section, put a comment in the section\n"
+"          body with the string “noslide”."
+msgstr ""
+"同时由文档生成幻灯片。每一节，无论级层多深，都会生成一张幻灯片。在一节之外的"
+"文字会被忽略，所以如果你没有节的话，生成的会是空白幻灯片。如果你想要排除一个"
+"节，在一节正文中用字节串「noslide」注释。"
+
+msgid ""
+"An URI is a string which uniquely identifies the text\n"
+"      in the archive. In theory, it could be anything, but if you want\n"
+"      to set it yourself, please stick with the convention: author\n"
+"      name, title, language, eventual number for disambiguation, e.g.\n"
+"      errico-malatesta-anarchy-2. Please note that this is normally\n"
+"      not needed"
+msgstr ""
+"URI是资料库文章的唯一标识。理论上来说，它可以是任意的，但是如果你想要自己设定"
+"的话，请按照以下的规范：作者名，标题，语言，最后用于去歧义的数字标识，比如"
+"「errico-malatesta-anarchy-2」。请注意一般来说这是没必要的"
+
+msgid "Apache is not currently supported"
+msgstr "目前不支持Apache"
+
+msgid "Archive"
+msgstr "资料库"
+
+msgid "Archive by month"
+msgstr "资料库按月划分"
+
+msgid "Archive history"
+msgstr "资料库历史记录"
+
+msgid "Are you sure?"
+msgstr "确定？"
+
+msgid "As cover in the header"
+msgstr "作为题图"
+
+msgid "As regular image in the body"
+msgstr "作为正文中的普通图片"
+
+msgid "Assign text to nodes"
+msgstr "把文章指派给节点"
+
+msgid "Attach"
+msgstr "插入附件"
+
+msgid "Attached images"
+msgstr "图片附件"
+
+msgid "Attachments"
+msgstr "附件"
+
+msgid "Author"
+msgstr "作者"
+
+msgid "Author and title. If one side document: title."
+msgstr "作者和标题。如果是单面文档的话：标题。"
+
+msgid "Authors"
+msgstr "（多个）作者"
+
+msgid "Authors and topics listing"
+msgstr "作者和主题"
+
+msgid "Authors for indexing"
+msgstr "用于索引的作者"
+
+msgid "Automatically generated"
+msgstr "自动生成的"
+
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr "自动从Let’s Encrypt处请求并更新SSL证书"
+
+msgid "Available"
+msgstr "可用"
+
+msgid "Available category tags for header"
+msgstr "页头的可用类别标签"
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr "句子最后一个词避免使用连字符（可能导致糟糕的留空）"
+
+msgid "Back to the text"
+msgstr "回到文章"
+
+msgid "Bad request"
+msgstr "错误请求"
+
+msgid "Beamer color theme"
+msgstr "Beamer颜色主题"
+
+msgid "Beamer theme"
+msgstr "Beamer主题"
+
+msgid "Beside topics and authors you can add more categories here"
+msgstr "除了主题和作者，你可以在这里添加更多的类别"
+
+msgid "Binding correction in millimeters (additional inner margin)"
+msgstr "由毫米计的订书纠正（额外内缘）"
+
+msgid ""
+"Blocks of 16 pages to be folded twice and then bound\n"
+"                together."
+msgstr "16页，折叠两次后订在一起。"
+
+msgid ""
+"Blocks of 8 pages to be folded twice and then bound\n"
+"                together."
+msgstr "8页，折叠两次后订在一起。"
+
+msgid "Blog"
+msgstr "博客"
+
+msgid "Body"
+msgstr "正文"
+
+msgid "Bold"
+msgstr "粗体"
+
+msgid "Bookbuilder"
+msgstr "建书器"
+
+msgid "Bookbuilder page limit (integer)"
+msgstr "建书器页数上限（整数）"
+
+msgid "Build it"
+msgstr "建书"
+
+msgid ""
+"By default, secondary footnotes use arabic numbering\n"
+"        between parens. With this option they will use per-page alpha\n"
+"        numbering"
+msgstr ""
+"二级脚注默认使用括号中夹着阿拉伯数字（「(1)」）。用这个选项的话，它会用分页字"
+"母标识（「(a)」」"
+
+msgid "By number of pages, ascending"
+msgstr "页数升序"
+
+msgid "By number of pages, descending"
+msgstr "页数降序"
+
+msgid "By relevance"
+msgstr "相关度"
+
+msgid "By sku ascending"
+msgstr "按sku升序"
+
+msgid "By sku descending"
+msgstr "按sku降序"
+
+msgid "By title A-Z"
+msgstr "标题A–Z"
+
+msgid "By title Z-A"
+msgstr "标题Z–A"
+
+msgid "CSS Theme"
+msgstr "CSS主题"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Canonical name"
+msgstr "正统名称"
+
+msgid "Categories"
+msgstr "类别"
+
+#. ($site->canonical)
+msgid "Category types for %1"
+msgstr "%1的类别"
+
+msgid "Center all the sectioning titles."
+msgstr "节标题居中。"
+
+msgid "Center the chapter titles."
+msgstr "Center chapter titles."
+
+msgid "Changes"
+msgstr "改变"
+
+msgid "Changes applied"
+msgstr "确认的改变"
+
+#. ($c->stash->{revision}->title->uri)
+#. (revision.title.uri)
+#. (author_title)
+msgid "Changes for %1"
+msgstr "%1的改变"
+
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr "改变已保存，多谢！等待发布中"
+
+msgid ""
+"Changing urls is a poor practice. Anyway, if you know what you’re\n"
+"doing, you can delete an existing text and point to another adding a\n"
+"#DELETED directive in the text header with a special syntax:"
+msgstr ""
+"改变URL不可取。总之，如果你懂行的话，你可以删除已有的文章并指向另一个，使用特"
+"殊语法在文章页头中添加一个#DELETED指示："
+
+msgid "Chapter"
+msgstr "章"
+
+msgid "Chapter and section. If one side document: chapter."
+msgstr "章和节。如果是单面文档：章。"
+
+msgid "Chapter, only for chapter divisions in books"
+msgstr "章，仅适用于书籍的分章"
+
+msgid "Cheatsheet for the markup"
+msgstr "标记大全"
+
+msgid "Check mail sending and send mail to:"
+msgstr "确认发送邮件并致件于："
+
+msgid "Choose a paper format"
+msgstr "选择纸张格式"
+
+msgid "Clear the book list"
+msgstr "清除书单"
+
+msgid "Click on the images to get the sample PDF"
+msgstr "点击图像以获得样本PDF"
+
+msgid "Clone"
+msgstr "克隆"
+
+msgid "Close"
+msgstr "关闭"
+
+msgid "Code"
+msgstr "代码"
+
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr "编辑页面左侧的列，带有编辑框（共12个）"
+
+msgid "Comma or semicolon separated list"
+msgstr "半角逗号或者半角分号分割列表"
+
+msgid "Completed"
+msgstr "已完成"
+
+msgid "Computing of differences took"
+msgstr "计算差异总用时"
+
+msgid "Confirm"
+msgstr "确认"
+
+msgid "Continuous footnote numbering across the whole document."
+msgstr "在整个文档中连续的脚注编号。"
+
+msgid "Convert to archive markup"
+msgstr "转换成资料库标记"
+
+msgid "Couldn't add the text"
+msgstr "无法添加文章"
+
+msgid "Couldn't automatically generate the URI!"
+msgstr "无法自动生成URI！"
+
+msgid "Couldn't build that"
+msgstr "无法建书"
+
+msgid "Create"
+msgstr "新建"
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr "新建类别。请只用小写ASCII字符"
+
+msgid "Create a new format"
+msgstr "新建格式"
+
+msgid "Create a new librarian"
+msgstr "新建图书馆员"
+
+msgid "Create a new special page"
+msgstr "新建特殊页"
+
+msgid "Create a new user"
+msgstr "新建用户"
+
+msgid ""
+"Create a public repository on GitLab, GitHub or similar services (or on your "
+"own server). "
+msgstr ""
+"在GitLab、GItHub或者相似的服务上（或者自己的服务器）新建公开repository。"
+
+msgid "Create a topic alias"
+msgstr "新建话题别名"
+
+msgid "Create an author alias"
+msgstr "新建作者别名"
+
+msgid "Create new site"
+msgstr "新建网站"
+
+msgid "Create user and mail password"
+msgstr "新建用户和邮件密码"
+
+msgid "Created"
+msgstr "已新建"
+
+msgid "Created by"
+msgstr "建立者为"
+
+msgid "Created new text"
+msgstr "已新建文章"
+
+msgid "Current time"
+msgstr "现在时间"
+
+#. ($c->stash->{site}->canonical)
+msgid "Custom formats for %1"
+msgstr "%1的自定义格式"
+
+msgid "Custom home page"
+msgstr "自定义主页"
+
+msgid "Date"
+msgstr "日期"
+
+msgid "Date of the original publication"
+msgstr "原出版日期"
+
+msgid "Default sorting for the category text list"
+msgstr "类别文章列表默认排序"
+
+msgid "Default value if blank:"
+msgstr "如果空白的话，默认值："
+
+msgid "Deferred/Deleted texts"
+msgstr "搁置／删除的文章"
+
+msgid "Delete"
+msgstr "删除"
+
+msgid "Delete permanently"
+msgstr "永久删除"
+
+#. (remote.name)
+msgid "Delete remote repository %1"
+msgstr "删除远程仓库%1"
+
+msgid ""
+"Deleting a revision is safe if a text has been\n"
+"    published. Otherwise deleting it you'll lose the unpublished changes"
+msgstr ""
+"如果一个文章已被发表，可以安全地删除一个版本。不然删掉它的话会丢失未发表的改"
+"变"
+
+msgid "Description"
+msgstr "描述"
+
+msgid "Description item"
+msgstr "描述项"
+
+msgid ""
+"Description lists use a double colon to separate the\n"
+"        term and the description."
+msgstr "描述列表使用两个半角冒号来分割术语和描述。"
+
+msgid "Desired URI"
+msgstr "想要的URI"
+
+msgid "Destination"
+msgstr "终点"
+
+msgid "Did you mean:"
+msgstr "你的意思是不是："
+
+msgid "Differences"
+msgstr "差异"
+
+msgid ""
+"Directory with templates in the site repository, e.g.\n"
+"        \"templates\" (ASCII only). Do not set it unless you know\n"
+"        exactly what you are doing"
+msgstr ""
+"站点仓库中包含模板的目录，例如「模板」（仅限ASCII）。除非你懂行的话，否则不要"
+"设置它"
+
+msgid "Disable /mirror/ URL for anonymous users"
+msgstr "为匿名用户禁用 /mirror/ URL"
+
+msgid "Display url as"
+msgstr "显示URL为"
+
+msgid "Division factor"
+msgstr "除法系数"
+
+msgid "Do not create a cover page and start the text on the first page"
+msgstr "不要创建封面并在第一页上开始文本"
+
+msgid "Do not enforce save message"
+msgstr "不强制保存消息"
+
+msgid "Do not use bold fonts"
+msgstr "不要使用粗体字体"
+
+msgid "Done"
+msgstr "完成"
+
+msgid "Double bars"
+msgstr "双杠"
+
+msgid "Downloads"
+msgstr "下载"
+
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr "例如，一些单词AND标题：“我的标题\" AND author:作者 OR year:2017"
+
+msgid "EPUB"
+msgstr "EPUB"
+
+msgid "EPUB (for mobile devices)"
+msgstr "EPUB（适用于移动设备）"
+
+msgid "ETA"
+msgstr "预计到达时间"
+
+msgid "Edit"
+msgstr "编辑"
+
+msgid "Edit attachment description"
+msgstr "编辑附件描述"
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr "编辑格式%1"
+
+msgid "Edit full site configuration"
+msgstr "编辑全站配置"
+
+msgid "Edit screen layout options"
+msgstr "编辑屏幕布局选项"
+
+#. (esite.id)
+msgid "Edit site %1"
+msgstr "编辑站点%1"
+
+msgid "Edit site configuration"
+msgstr "编辑站点配置"
+
+msgid "Edit the text you want to unpublish and add this line to the header:"
+msgstr "编辑你想要取消发布的文本并把此行加入到页头："
+
+msgid "Edit this text"
+msgstr "编辑此文本"
+
+#. (user.username)
+msgid "Edit user %1"
+msgstr "编辑用户%1"
+
+msgid "Editing"
+msgstr "编辑中"
+
+msgid "Email"
+msgstr "邮件"
+
+msgid "Email sent!"
+msgstr "邮件已发送！"
+
+msgid "Email updated"
+msgstr "邮件已更新"
+
+msgid "Emails do not match"
+msgstr "邮件不匹配"
+
+msgid "Embed fonts in the EPUB file"
+msgstr "在EPUB文件中植入字体"
+
+msgid "Enable \"What links here\" feature"
+msgstr "启用「什么地方链接到这里」功能"
+
+msgid "Enable search suggestions (did you mean...)"
+msgstr "启用搜索提议（你的意思是不是…）"
+
+msgid "Enable title ordering by SKU"
+msgstr "启用按照SKU标题排序"
+
+msgid "Erase this revision"
+msgstr "抹去这个版本"
+
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr "转换上传文件时出错。它是HTML文件吗？"
+
+msgid "Error sending mail!"
+msgstr "发送邮件时出错！"
+
+msgid "Error while converting the HTML. Sorry."
+msgstr "转换HTML时出错。抱歉。"
+
+msgid "Errors"
+msgstr "错误"
+
+msgid "Estimated pages"
+msgstr "估计页数"
+
+msgid ""
+"Even if this site has a responsive, mobile-friendly layout,\n"
+"  it does not provide a dedicated mobile application."
+msgstr "就算此站有响应式、移动端友好的布局，它不提供专门的移动应用程序。"
+
+msgid ""
+"Every\n"
+"        section will generate a slide. You need to do proper\n"
+"        sectioning for this to work."
+msgstr "每一节都会生成一张幻灯片。要好好分节才能用这个功能。"
+
+msgid ""
+"Exactly like 2up, but the sheets are meant to be cut\n"
+"        horizontally first and then stack on each other. This way you\n"
+"        can print, for example, A6 booklets on A4."
+msgstr "和2up一样，但是纸张是用来先水平切割再堆叠。这样你可以用A4打印A6册子。"
+
+msgid "Example"
+msgstr "例子"
+
+msgid "Existing redirections"
+msgstr "现存重定向"
+
+msgid "Expected pages"
+msgstr "预计页数"
+
+msgid "Failed"
+msgstr "失败"
+
+#. ("$name $url")
+msgid "Failed to add remote repository %1"
+msgstr "添加远程仓库%1失败"
+
+#. ($name)
+msgid "Failed to remove Remote repository %1"
+msgstr "移除远程仓库%1失败"
+
+msgid "File already in the body"
+msgstr "文件已在正文中"
+
+msgid "File extension"
+msgstr "文件扩展名"
+
+msgid "File format not allowed"
+msgstr "文件格式不允许"
+
+msgid "File too big"
+msgstr "文件太大"
+
+msgid "File uploaded!"
+msgstr "文件已上传！"
+
+msgid "Files"
+msgstr "文件"
+
+msgid ""
+"Fill with blank pages before the last page if the signature is not full."
+msgstr "如果签名未满，则在最后一页之前填充空白页。"
+
+msgid "Filter"
+msgstr "筛选"
+
+msgid "Filters"
+msgstr "筛选器"
+
+msgid "Find the add catalogue menu."
+msgstr "找到添加目录菜单。"
+
+msgid "Find the network library menu, or equivalent."
+msgstr "找到网络库菜单或等同的。"
+
+msgid "First"
+msgstr "第一"
+
+msgid "First Author and Second Author"
+msgstr "第一作者和第二作者"
+
+msgid "First Author, Second Author"
+msgstr "第一作者，第二作者"
+
+msgid "First slide"
+msgstr "第一张幻灯片"
+
+msgid "First you have to unpublish it via #DELETED."
+msgstr "首先，您必须通过 #DELETED 取消发布它。"
+
+msgid "Fix typography (smart quotes)"
+msgstr "修复排版（智能引号）"
+
+msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
+msgstr "修复了2张纸上的16页签名，具有双重单独折叠。"
+
+msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
+msgstr "修复了单张纸上的16页签名，并带有三重折叠。"
+
+msgid ""
+"Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
+"and bound together."
+msgstr "固定签名为8页，水平切割，单独折叠并装订在一起。"
+
+msgid "Fixed topic list"
+msgstr "固定主题列表"
+
+msgid "Font preview"
+msgstr "字体预览"
+
+msgid "Font size"
+msgstr "字体大小"
+
+msgid "Footnotes"
+msgstr "脚注"
+
+#. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
+msgid ""
+"Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
+"in the body (%4), ignoring changes."
+msgstr ""
+"脚注不匹配：发现%1 脚注（%2）并在正文中发现%3 脚注引用（%4），忽略更改。"
+
+msgid "For texts from the internet use"
+msgstr "对于来自互联网的文本使用"
+
+msgid "For texts without a table of content, start text on the very first page"
+msgstr "对于没有目录的文本，请在第一页开始文本"
+
+msgid ""
+"For topics and authors redirections, you can create them\n"
+"  here"
+msgstr "对于主题和作者重定向，您可以在这里创建它们"
+
+msgid "Force a line break."
+msgstr "强制换行。"
+
+msgid "Force publishing"
+msgstr "强制发布"
+
+msgid "Format name"
+msgstr "格式名称"
+
+msgid "Format successfully created"
+msgstr "已成功创建格式"
+
+msgid "Format successfully updated"
+msgstr "已成功更新格式"
+
+msgid "Formats"
+msgstr "格式"
+
+msgid "Full list of texts"
+msgstr "文本完全列表"
+
+msgid "Full tag cloud"
+msgstr "完整标签云"
+
+msgid "Full text search"
+msgstr "Full text search"
+
+msgid "Full width, fluid layout"
+msgstr "全宽度，流性排版"
+
+msgid "General configuration"
+msgstr "一般配置"
+
+msgid "Generic (fits in A4 and Letter)"
+msgstr "通用（适合A4和字母）"
+
+msgid ""
+"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
+"using the form you can find above. You can have one personal repository."
+msgstr ""
+"获取仓库HTTPS URL，例如 https://example.com/git/test，并使用上面可以找到的表"
+"单添加它。您可以有一个个人仓库。"
+
+msgid "Git console"
+msgstr "Git 控制台"
+
+msgid "Git is not enabled on this site"
+msgstr "此站点上未启用 Git"
+
+msgid ""
+"HTML code to append to each regular page, inserted\n"
+"            verbatim, so be careful"
+msgstr "要附加到每个常规页面的 HTML 代码，原文插入，所以要小心"
+
+msgid ""
+"HTML to append to each special page, inserted\n"
+"            verbatim, now you have a chance to screw up everything, so\n"
+"            be careful"
+msgstr "要附加到每个特殊页面的 HTML，原文插入，现在你有机会搞砸一切，所以小心"
+
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr "要插入到布局页脚中链接下方的 HTML"
+
+msgid "HTML to insert into the left sidebar"
+msgstr "要插入左侧边栏的 HTML"
+
+msgid "HTML to insert into the right sidebar"
+msgstr "要插入右侧边栏的 HTML"
+
+msgid "HTML to insert on the bottom of the layout, above the footer"
+msgstr "要插入到布局页脚中链接下方的 HTML"
+
+msgid ""
+"HTML to insert on the top of the layout, behind the navigation bar and below "
+"the banner"
+msgstr "要插入到布局顶部的 HTML，导航栏后面，横幅下面"
+
+msgid "HTML/Word Importer"
+msgstr "HTML/Word 导入器"
+
+msgid "Half Letter paper"
+msgstr "半书信纸"
+
+msgid "Heading"
+msgstr "页首"
+
+msgid "Headings"
+msgstr "页首"
+
+msgid "Height:"
+msgstr "高度："
+
+msgid "Here you can find a preview of the Beamer themes and color themes"
+msgstr "这里你能找到Beamer主题和色彩主题的预览"
+
+msgid ""
+"Here you can save or load your templates. The text list\n"
+"      and the cover image are excluded by the saved settings. You can\n"
+"      use this to save paper/fonts/imposition and other options."
+msgstr ""
+"这里你能保存或载入你的模板。文本列表和题图不被保存。你可以用它来保存纸张／字"
+"体和其它选项。"
+
+msgid "Higher division factor means narrower margins"
+msgstr "更高的分割系数意味着更窄的边距"
+
+msgid "How are you going to access Git?"
+msgstr "你要怎样获取Git？"
+
+msgid "How do I create a landing page?"
+msgstr "怎样创造引导页？"
+
+msgid "How do I create a special page?"
+msgstr "怎样创造特殊页面？"
+
+msgid "How do I delete a text?"
+msgstr "怎样删除文本？"
+
+msgid "How do I modify a special page?"
+msgstr "怎样修改特殊页面？"
+
+msgid "How do I purge a text?"
+msgstr "怎样清除文本？"
+
+msgid "How do I redirect to another page?"
+msgstr "怎样重定向？"
+
+msgid "How to choose a password"
+msgstr "怎样选择密码"
+
+msgid ""
+"However, you can browse, search, download and read the texts\n"
+"  from mobile reading applications which support the so-called OPDS\n"
+"  protocol."
+msgstr "然而，你可以用支持所谓OPDS的移动阅读程序浏览、搜索、下载、阅读文本。"
+
+msgid "I am human"
+msgstr "我是人类"
+
+msgid "I have a system user with SSH access"
+msgstr "我是有SSH权限的系统用户"
+
+msgid "I want an imposed (ready to print) PDF"
+msgstr "我要强制（可以打印的）PDF"
+
+msgid "I will provide my remote repository"
+msgstr "我会提供远程仓库"
+
+msgid "ISBN"
+msgstr "ISBN码"
+
+msgid "Id"
+msgstr "Id"
+
+msgid ""
+"If by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+"如果偶然存在另一个具有相同作者和标题的文本，请使用下面的字段选择所需的URI，并"
+"插入作者、标题和数字，例如：my-author-my-title-1"
+
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr "如果这不是你的本意，请忽略这封邮件，你的密码将不会被更改。"
+
+msgid ""
+"If it's not the case, please open a bug report at https://github.com/"
+"melmothx/amusewiki/issues"
+msgstr ""
+"如果不是这样，请在https://github.com/melmothx/amusewiki/issues，开一个错误报"
+"告"
+
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
+msgid "If not set %1 will be looked up from the application directory."
+msgstr "如果没有设置，%1将从应用程序目录中查找。"
+
+msgid ""
+"If present, hide the\n"
+"          generated formats and the information box. This makes sense\n"
+"          with attachments, when the text version is poor or not\n"
+"          available and more relevance should be given to the attached\n"
+"          files."
+msgstr ""
+"如果存在，隐藏生成的格式和信息框。这对附件是有意义的，当文本版本很差或不可用"
+"时，应该给附件文件更多的相关性。"
+
+msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
+msgstr "如果设置为大于0的数字，则自动生成一个预告，其长度大致如下"
+
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
+msgstr ""
+"如果一个文本的出版被推迟，则将其与预告和封面一起列出，而不提供对正文的访问"
+
+msgid ""
+"If the user is allowed to publish, speed up the process skipping the "
+"revision page if there are no conflicts and automatically redirect to the "
+"published text once it is done."
+msgstr ""
+"如果用户被允许发布，如果没有冲突，就加快进程，跳过修订页，一旦完成就自动重定"
+"向到已发布的文本。"
+
+msgid "If the user provided a mail, it's listed in the mail's CC field"
+msgstr "如果用户提供了一个邮件，它就会被列在邮件的抄送栏里"
+
+msgid ""
+"If this line\n"
+"          is present, set the publication date (on this site) to the\n"
+"          date. The date may also be in the future, deferring the\n"
+"          publication. If this line is not present, the publication\n"
+"          date will be the time of the publishing, triggering a bump\n"
+"          on RSS and special pages at each editing."
+msgstr ""
+"如果有这一行，将出版日期（在本站点）设置为日期。该日期也可以是未来的，推迟出"
+"版。如果这一行不存在，出版日期将是出版的时间，在每次编辑时触发对RSS和特殊页面"
+"的上升。"
+
+msgid ""
+"If this line is\n"
+"          present and the reason is set to something, the text will be\n"
+"          stored in the archive, but will not be published."
+msgstr "如果这一行存在，并且理由也被设置，文本将被保存在档案中，但不会被发布。"
+
+msgid ""
+"If this line is present, do not create a title page,\n"
+"          but instead start the text on the very first page and\n"
+"          produce a PDF styled like an article (chapters and parts\n"
+"          will not start on a new page)."
+msgstr ""
+"如果有这一行，就不要创建标题页，而是从第一页开始文本，并产生一个像文章一样的"
+"PDF（章节和部不会从新页开始）。"
+
+msgid "If this line is present, do not display the table of contents."
+msgstr "如果有这一行，则不显示目录。"
+
+msgid "If you asked for imposition, select an imposition schema"
+msgstr "如果你要求强制执行，请选择一个强制执行模式"
+
+msgid ""
+"If you edit some format options, like fonts or paper\n"
+"      dimensions, you may want to rebuild the generated files"
+msgstr "如果你编辑了一些格式选项，如字体或纸张尺寸，你可能要重建生成的文件"
+
+msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+"如果你忘记了你的密码，你可以访问这个链接选择一个新的密码（点击它或在你的浏览"
+"器中复制和粘贴它）："
+
+msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr "如果你有一个.doc或.odt格式的文件，你可以很容易地将其转换为HTML格式"
+
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
+msgstr "如果你在重建过程中请求重建，你将中止当前的重建。"
+
+msgid ""
+"If you use it as a teaser image, the image will also\n"
+"      be placed on the first page of the PDF. You can set its width\n"
+"      adding the following line to the header, where the value is the\n"
+"      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
+"      on"
+msgstr ""
+"如果你把它作为一个预告图片，该图片也将被放置在PDF的第一页。你可以设置它的宽"
+"度，在页首中加入以下一行，其中的数值是文本宽度比例。1是全部文本宽度，0.5是一"
+"半，以此类推"
+
+msgid ""
+"If your site doesn’t have that, just create a special page and assign\n"
+"the uri \"index\"."
+msgstr "如果你的网站没有它的话，只需创建一个特殊的页面并指定URI为「index」。"
+
+msgid ""
+"If your site is multilanguage, you can create a language-specific\n"
+"  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
+"  URI \"index\", a dash, and the locale code."
+msgstr ""
+"如果你的网站是多语言的，你可以创建一个特定语言的登陆页面，例如「/special/"
+"index-it」，即URI「index」，一个连字符，和地区代码。"
+
+msgid "Image already set as cover"
+msgstr "图片已设为封面"
+
+#. ($w, $h, $limit, $limit)
+msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
+msgstr "图片尺寸%1 × %2 超过%3 × %4像素的上限"
+
+msgid ""
+"Image uploading may be done on the next step, when you can\n"
+"        review and preview the upload."
+msgstr "图片上传可在下一步完成，此时你可以审查和预览上传。"
+
+msgid "Image url"
+msgstr "图片URL"
+
+msgid "Images"
+msgstr "图片"
+
+msgid "Imposition schemas"
+msgstr "强制模式"
+
+msgid "In both case you will get a reverse indentation."
+msgstr "在这两种情况下，你都会得到一个反向缩进。"
+
+msgid ""
+"In the text, a number within square brackets is interpreted as a\n"
+"          footnote reference, if such footnote exists."
+msgstr "在文本中，方括号内的数字被解释为脚注参考，如果存在这种脚注。"
+
+#. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
+msgid ""
+"In this example, we use FBreader, but the procedure is\n"
+"  pretty much the same for all applications. All you have to do is to\n"
+"  add %1 to the network libraries."
+msgstr ""
+"在这个例子中，我们使用FBreader，但这个所有的应用程序的流程都是差不多的。你所"
+"要做的就是把%1添加到网络库中。"
+
+msgid "Inline elements"
+msgstr "行内元素"
+
+msgid "Insert the file into the body at the cursor position"
+msgstr "把文件插入到正文光标位置"
+
+msgid "Internal list of translations"
+msgstr "内部翻译列表"
+
+msgid "Invalid email"
+msgstr "无效邮箱"
+
+msgid "Invalid name"
+msgstr "无效名称"
+
+msgid "Invalid username"
+msgstr "无效用户名"
+
+msgid ""
+"It is possible to have an additional set of\n"
+"          footnotes which you use to annote the text (e.g. critical\n"
+"          editions or translator's notes). They work the same way as\n"
+"          the regular footnotes, but they use curly brackets instead\n"
+"          of square brackets. Placing secondary footnote references\n"
+"          inside a regular footnote is permitted."
+msgstr ""
+"可以有一组额外的脚注，用于注释文本（如批判性的版本或译者的注释）。它们的工作"
+"方式与普通脚注相同，但它们使用大括号而不是方括号。允许在常规脚注内放置二级脚"
+"注参考。"
+
+msgid ""
+"It is recommended to always set a publication\n"
+"                    date, so the system does not need to rely on the\n"
+"                    file timestamp. Also, you should bump the\n"
+"                    publication date only on major editing, leaving it\n"
+"                    untouched for minor ones."
+msgstr ""
+"建议总是设置一个出版日期，这样系统就不需要依赖文件的时间戳。另外，你应该只为"
+"重大编辑工作更新出版日期，而对不重要的编辑工作则不做任何改动。"
+
+msgid ""
+"It works the same as for regular page, but the link is hidden. Just\n"
+"append \"/edit\" to the url of the page."
+msgstr ""
+"它与普通页面的工作原理相同，但链接是隐藏的。只要把「/edit」加到页面的网址上就"
+"可以了。"
+
+msgid "Italic"
+msgstr "斜体"
+
+msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr "斜体、粗体、等距、代码、换行…"
+
+msgid "JPG, PNG and PDF are always allowed."
+msgstr "JPG、PNG、PDF总是允许的。"
+
+msgid "Job status"
+msgstr "工作状况"
+
+msgid "Jobs"
+msgstr "工作"
+
+msgid "Jobs (all sites)"
+msgstr "工作（所有站点）"
+
+msgid "Jobs waiting before yours:"
+msgstr "在你的工作前等待的："
+
+msgid "Just packs 2 consecutives logical pages on a physical one."
+msgstr "把两个连续的页面放在一个物理页面上。"
+
+msgid ""
+"Keep in mind that I’m cleaning the text and give it\n"
+"        back to you in the markup used on this site. It’s up to you to\n"
+"        check it and finally upload it. Some rarely used markup will\n"
+"        be lost in the process. Please check the preview on the next\n"
+"        step, where you can also insert images."
+msgstr ""
+"请记住，我正在清理文本，并将其以本网站使用的标记方式还给你。由你来检查并最终"
+"上传。在这个过程中，一些很少使用的标记将被丢失。请检查下一步的预览，在那里你"
+"也可以插入图片。"
+
+msgid "Keep in mind that some character may be missing in the required font."
+msgstr "请记住，在所需的字体中可能缺少一些字符。"
+
+msgid ""
+"Keep in mind that unusually\n"
+"        complex formatting will be stripped. Is it possible to add\n"
+"        tables and images only on the next step."
+msgstr "请记住，异常复杂的格式会被剥离。可以只在下一步添加表格和图片。"
+
+msgid "Language"
+msgstr "语言"
+
+msgid "Language code of the document (2 or 3 letters). "
+msgstr "文档的语言码（2或3个字符）。"
+
+msgid "Language selection"
+msgstr "语言选择"
+
+msgid "Languages supported"
+msgstr "支持的语言"
+
+msgid "Last"
+msgstr "最后"
+
+msgid "Last successful rebuild"
+msgstr "最后成功的重建"
+
+msgid "Last updated"
+msgstr "最后更新"
+
+msgid "Latest entries"
+msgstr "最新项"
+
+msgid "Layout"
+msgstr "排版"
+
+msgid "Leave it blank if you want it published right away."
+msgstr "想要立刻发布的话，留空。"
+
+msgid "Leave this empty to have it automatically generated"
+msgstr "想要自动生成的话，留空"
+
+msgid "Letter imposed PDF"
+msgstr "强制信纸的PDF"
+
+msgid "Letter paper"
+msgstr "信纸尺寸"
+
+msgid "Link"
+msgstr "链接"
+
+msgid "Links"
+msgstr "链接"
+
+msgid "List of paths to attach to this node, one per line."
+msgstr "附加到该节点的路径列表，每行一个。"
+
+msgid "List of texts on hold"
+msgstr "被搁置的文本列表"
+
+msgid "Lists"
+msgstr "列表"
+
+msgid "Load"
+msgstr "加载"
+
+msgid "Load another session by token"
+msgstr "通过令牌加载另一个会话"
+
+#. ($pname)
+msgid "Loaded \"%1\" configuration"
+msgstr "已加载「%1」配置"
+
+msgid "Loading"
+msgstr "加载中"
+
+msgid "Locked editing, no upload possible"
+msgstr "编辑已锁定，无法上传"
+
+msgid "Log in"
+msgstr "登录"
+
+msgid "Login"
+msgstr "登录"
+
+msgid "Logout"
+msgstr "登出"
+
+msgid "Look into the account’s menu, there is an entry for that."
+msgstr "看看帐号菜单，有一个用于它的条目。"
+
+msgid "Lost your password?"
+msgstr "丢失了密码？"
+
+msgid "Magic answer"
+msgstr "魔法答案"
+
+msgid "Magic question"
+msgstr "魔法问题"
+
+msgid "Mail from"
+msgstr "发送邮件"
+
+msgid "Main canonical hostname, without protocol"
+msgstr "主要的规范化主机名，不含协议"
+
+msgid "Main font"
+msgstr "主要字体"
+
+msgid "Main text"
+msgstr "主要文本"
+
+msgid "Maintainer's FAQ"
+msgstr "维护者的最热门问题"
+
+msgid "Make a link clickable"
+msgstr "使一个链接可以点击"
+
+msgid "Make all links active"
+msgstr "使所有链接活跃"
+
+msgid "Make all non-breaking spaces explicit and visible as ~~"
+msgstr "使所有不换行的空格突出显示为~~"
+
+msgid "Manage categories"
+msgstr "管理类别"
+
+msgid "Max image dimension in pixels, applies to both width and height"
+msgstr "最大图形像素尺寸，用于宽与高"
+
+msgid "Max size for uploads in Mb"
+msgstr "上传的最大文件大小（Mb）"
+
+msgid "Message"
+msgstr "消息"
+
+#. (8)
+msgid "Minimum %1 characters"
+msgstr "最少%1字节"
+
+msgid "Missing #title header in the text!"
+msgstr "文本中丢失#title页首！"
+
+msgid "Missing alias"
+msgstr "缺少别名"
+
+msgid "Missing character will be reported"
+msgstr "缺少的字符将会被报告"
+
+msgid "Missing redirection"
+msgstr "缺少重定向"
+
+msgid "Mobile"
+msgstr "移动"
+
+msgid "Mobile applications"
+msgstr "移动应用"
+
+msgid "Mode"
+msgstr "模式"
+
+msgid "Moderated wiki"
+msgstr "管理的wiki"
+
+msgid "Mono font"
+msgstr "等距字体"
+
+msgid "More"
+msgstr "更多"
+
+msgid "Move down"
+msgstr "下移"
+
+msgid "Move up"
+msgstr "上移"
+
+msgid "Multilanguage: list of whitespace separated language codes"
+msgstr "多语言：空格分隔的语言码列表"
+
+msgid "My description"
+msgstr "我的描述"
+
+msgid "N/A"
+msgstr "N/A"
+
+msgid "Name"
+msgstr "名称"
+
+msgid "Name plural"
+msgstr "复数名称"
+
+msgid "Name singular"
+msgstr "单数名称"
+
+msgid "Network library listing screen."
+msgstr "网络库显示。"
+
+msgid "Never display the cover"
+msgstr "永不显示封面"
+
+msgid "Never generate a table of content"
+msgstr "Never generate a table of contents"
+
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr "永不用标题／作者／备注／图标、站点名生成标准末页"
+
+msgid "Never show teaser and/or cover in text lists"
+msgstr "永不在文本列表中显示预告和／或封面"
+
+msgid "New"
+msgstr "新"
+
+msgid "New revision"
+msgstr "新修订"
+
+msgid "New site id"
+msgstr "新站点id"
+
+msgid "Newer first"
+msgstr "从新到旧"
+
+msgid "Newer texts"
+msgstr "较新的文本"
+
+msgid "Next"
+msgstr "下一个"
+
+msgid "Nice title"
+msgstr "漂亮的标题"
+
+msgid "No"
+msgstr "否"
+
+msgid "No data available in table"
+msgstr "表格中无数据"
+
+msgid "No editing yet!"
+msgstr "无编辑！"
+
+msgid "No matching records found"
+msgstr "没有找到匹配的记录"
+
+msgid "No result found!"
+msgstr "没有找到结果！"
+
+msgid "No revisions to show"
+msgstr "没有可显示的修订"
+
+msgid "No text found!"
+msgstr "找不到文本！"
+
+msgid "No text was added yet"
+msgstr "还未添加文本"
+
+msgid "Nodes"
+msgstr "节点"
+
+msgid "None"
+msgstr "无"
+
+#. ($c->loc('Save')
+msgid ""
+"Not finished yet! Please have a look at the text and then click on \"%1\" to "
+"finalize your submission!"
+msgstr "还没有完成！请看一下文本，然后点击”%1“以最终完成您的提交！"
+
+msgid "Notes"
+msgstr "备注"
+
+msgid "Nothing to see here, so far"
+msgstr "目前这没什么东西"
+
+msgid "Nothing uploaded"
+msgstr "没有上传"
+
+msgid "Notify mail: blank field will disable them"
+msgstr "通知邮件：空白字段将使其失效"
+
+msgid "Notify to"
+msgstr "通知"
+
+msgid ""
+"Now it has been aligned to the site's archive, but this means that there are "
+"some missing commits."
+msgstr "它已经被调整到网站的档案中，但这意味着有一些遗漏的提交。"
+
+msgid "Now we are going to populate it and get it ready"
+msgstr "现在我们要对其进行填充，并使其做好准备"
+
+msgid "Number of jobs"
+msgstr "任务数"
+
+msgid "Number of latest entries to display on the RSS (an integer)"
+msgstr "在RSS上显示的最新条目数（整数）"
+
+msgid "Number of results to show on paginated pages (an integer)"
+msgstr "在分页页面上显示的结果数量（整数）。"
+
+msgid "OPDS"
+msgstr "OPDS"
+
+msgid "Older first"
+msgstr "从旧到新"
+
+msgid "Older texts"
+msgstr "更旧的文本"
+
+msgid ""
+"One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr "一页一张纸。这只有在你想添加裁剪标记时才有用"
+
+msgid "Open wiki"
+msgstr "打开wiki"
+
+msgid "Option templates"
+msgstr "选项模板"
+
+msgid "Optional, defaults to the author directive"
+msgstr "可选，默认使用作者指令"
+
+msgid ""
+"Or create a new revision, at your own peril. Having multiple\n"
+"          concurrent revisions means that, unless someone takes care\n"
+"          of it, only one will be chosen. You can go ahead, or retry\n"
+"          later, or, better, contact the librarians before proceeding,\n"
+"          to avoid wasting energies."
+msgstr ""
+"或者创建一个新的修订版，后果自负。拥有多个同时进行的修订意味着，除非有人处理"
+"好的话，只有一个会被选中。你可以继续，或稍后重试，或者，最好在进行之前联系图"
+"书馆管理员。以避免浪费精力。"
+
+msgid "Or log in, if you have an account."
+msgstr "或者登录，如果你有账户。"
+
+msgid "Or provide an HTML file to upload"
+msgstr "或者提供用以上传的HTML文件"
+
+msgid "Or wrap it in"
+msgstr "或者折起来"
+
+msgid "Ordered List"
+msgstr "有序列表"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "PDF logo"
+msgstr "PDF图标"
+
+msgid "PDFs cannot be used in the body."
+msgstr "不能在正文中使用PDF，"
+
+#. ('#ATTACH')
+#. ("#ATTACH")
+msgid "PDFs not listed in the %1 directive will be stored but ignored."
+msgstr "在%1指令中未列出的PDF将被储存并忽略。"
+
+msgid "Page not found!"
+msgstr "页面未找到！"
+
+msgid "Page where to start a chapter"
+msgstr "新建章节的页面"
+
+msgid ""
+"Pages are not reordered. The first sheet contains\n"
+"        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
+"        This is not meant to be folded."
+msgstr ""
+"页面没有重新排序。第一张包含第1和第2页，第二张包含第3和第4页，以此类推，并排"
+"排列。这不是用来折叠的。"
+
+msgid ""
+"Pages are reordered, in one or more groups\n"
+"        (signatures), then folded in half. If you have more\n"
+"        signatures, you will have to bound them together like a book.\n"
+"        With this option, you may want to decide the size of the\n"
+"        signatures. This can be a fixed value (4,8,16, etc.), the\n"
+"        whole book in a single signature, or an optimized size to\n"
+"        reduce the number of blank pages."
+msgstr ""
+"页面被重新排序，分为一组或多组（签名），然后对折。如果你有更多的签名，你将不"
+"得不把它们像书一样装订在一起。有了这个选项，你可能想决定签名的大小。这可以是"
+"一个固定的值（4，8，16等），整本书都在一个签名中，或者是一个优化的尺寸以减少"
+"空白页的数量。"
+
+msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
+msgstr "纸张厚度（0.10应适用于普通80g/m2的纸张）。"
+
+msgid "Paragraphs"
+msgstr "段落"
+
+msgid "Parent node"
+msgstr "母节点"
+
+msgid "Part"
+msgstr "部"
+
+msgid "Part and chapter. If one side document: part."
+msgstr "部和章。如果是单面文档：部。"
+
+msgid "Part of"
+msgstr "部分"
+
+msgid "Part, for larger books only"
+msgstr "部，只用于很大的书"
+
+msgid "Partial selection"
+msgstr "部分选择"
+
+msgid "Password"
+msgstr "密码"
+
+msgid "Password too short"
+msgstr "密码太短"
+
+msgid "Password updated"
+msgstr "密码已更新"
+
+msgid "Password, minimum 8 characters."
+msgstr "密码，最少8个字符。"
+
+msgid "Passwords do not match"
+msgstr "密码不匹配"
+
+msgid "Payload"
+msgstr "有效载荷"
+
+msgid "Pending revisions"
+msgstr "等待中的修订"
+
+msgid "Picture"
+msgstr "图片"
+
+msgid "Place it in the body with a description:"
+msgstr "将其放在正文中，并加以说明："
+
+msgid "Place it in the body without description:"
+msgstr "把它放在正文中，不加说明："
+
+msgid "Place the notes on the back of the first page, impressum-style"
+msgstr "将注释放在第一页的背面，像法律通知一样"
+
+msgid "Plain PDF"
+msgstr "简单PDF"
+
+msgid ""
+"Please check your inbox, we tried to deliver a mail to the address you "
+"specified with a password reset link"
+msgstr "请检查您的收件箱，我们试图向您指定的地址发送一封带有密码重置链接的邮件"
+
+msgid "Please choose the Beamer color theme"
+msgstr "请选择Beamer色彩主题"
+
+msgid "Please choose the Beamer theme"
+msgstr "请选择Beamer主题"
+
+msgid "Please choose the font size"
+msgstr "请选择字体大小"
+
+msgid "Please choose the main font"
+msgstr "请选择主字体"
+
+msgid "Please choose the mono font"
+msgstr "请选择等距字体"
+
+msgid "Please choose the sans font"
+msgstr "请选择无衬线字体"
+
+msgid "Please describe shortly what you did"
+msgstr "请简单描述你做了什么"
+
+msgid "Please do not use a valuable password."
+msgstr "请不要用很重要的密码。"
+
+msgid ""
+"Please do not use higher levels (part or chapter) for short articles with "
+"sections."
+msgstr "请不要在用节的短文中使用更高级的（部或者章）"
+
+#. (amw_group_name)
+msgid "Please ensure that your system user is member of the \"%1\" group"
+msgstr "请确保你的系统用户是「%1」组的成员"
+
+msgid ""
+"Please give us a username. It should *not* be a mail address.\n"
+"        Just a fancy name, so we can know that multiple uploads come\n"
+"        from the same person."
+msgstr ""
+"Please provide a username. It should *not* be an email address. Just a fancy "
+"name, so we know when multiple uploads come from the same person."
+
+msgid ""
+"Please initialized it empty, without any README,license, .gitignore or "
+"similar."
+msgstr "请将它空白初始化，不佳任何README，许可，.gitignore或者类似。"
+
+msgid ""
+"Please keep in mind that filters are language-specific\n"
+"              and may or may not be available for the language of the\n"
+"              text. If not available, they will just leave the text as\n"
+"              is."
+msgstr ""
+"请记住，过滤器是针对特定语言的，对文本的语言可能有，也可能没有。如果没有，它"
+"们就会让文本保持原样。"
+
+msgid ""
+"Please keep in mind that if you see “Force publishing”\n"
+"    as action, it means that the revision has been superseded by\n"
+"    another one, so publishing this one, you'll end up reverting a\n"
+"    previous one. Try to avoid this, unless you know what you're\n"
+"    doing."
+msgstr ""
+"请记住，如果你看到「强制发布」的动作，这意味着这个修订已经被另一个修订所取"
+"代，所以发布这个修订，你最终会恢复之前的修订。尽量避免这种情况，除非你知道自"
+"己在做什么。"
+
+msgid "Please leave a mail if you want to be contacted about this change"
+msgstr "如果您想就这一变化获得联系，请留下邮件"
+
+msgid "Please note that wrapping tags must be placed on a line by themselves."
+msgstr "请注意，包装标签必须单独放在一行中。"
+
+msgid ""
+"Please note that you may want to paste from a\n"
+"        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
+"        from word” button. This is supposed to preserve the markup."
+msgstr ""
+"请注意，你可能想使用「从Word粘贴」按钮从Word/OpenOffice/LibreOffice/HTML文档"
+"中粘贴。这应该可以保留标记。"
+
+msgid ""
+"Please note: without any prefix, protocol or hostname, just\n"
+"  the bare page name as shown above. External redirecting is not\n"
+"  supported."
+msgstr ""
+"请注意：没有任何前缀、协议或主机名，只有如上所示的裸页面名称。不支持外部重定"
+"向。"
+
+msgid "Please prove you are a human"
+msgstr "请证明你是人类"
+
+msgid "Please reload your page"
+msgstr "请重新载入页面"
+
+msgid "Please remove this file from the body first"
+msgstr "请先把此文件从正文中移除"
+
+msgid ""
+"Please replace the example URL in the next line with the real one with SSH "
+"protocol"
+msgstr "请将下一行中的示例URL替换为具有SSH协议的真实URL"
+
+msgid "Please select"
+msgstr "请选择"
+
+msgid "Please select the desired fonts"
+msgstr "请选择想用的字体"
+
+msgid "Please select the signature size:"
+msgstr "请选择签名大小："
+
+msgid ""
+"Please select the size of each page including the crop marks, before the "
+"imposing"
+msgstr "请选择每页的尺寸，包括裁剪标记，然后再强加"
+
+msgid ""
+"Please set the URI you desire. Author (if present),\n"
+"        title and eventually a number if the URI already exists is\n"
+"        usually a good choice"
+msgstr ""
+"请设置你想要的URI。作者（如果存在）、标题和最终的数字（如果URI已经存在）通常"
+"是一个好的选择"
+
+msgid "Please setup the Beamer layout"
+msgstr "请配置Beamer排版"
+
+msgid "Please upload your file again!"
+msgstr "请重新上传你的文件！"
+
+msgid "Poetry, bibliographies, plays, code blocks"
+msgstr "诗歌、书目、戏剧、代码块"
+
+msgid "Pointing to"
+msgstr "指向"
+
+msgid "Popular texts"
+msgstr "热门文本"
+
+msgid ""
+"Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
+"        “i.”, “I.”, depending on the list type you need."
+msgstr ""
+"有序列表前置符可以是「1.」、「a.」、「A.」、「i.」、「I.」，由你想要的列表类"
+"型决定。"
+
+msgid "Preview"
+msgstr "预览"
+
+msgid "Preview box height in pixel"
+msgstr "预览框高度（像素）"
+
+msgid "Previous"
+msgstr "前一页"
+
+msgid "Priority"
+msgstr "优先"
+
+msgid "Private"
+msgstr "私有"
+
+msgid "Procedure"
+msgstr "程序"
+
+msgid "Processing"
+msgstr "处理中"
+
+msgid "Produce slides."
+msgstr "生成幻灯片。"
+
+msgid "Produced"
+msgstr "已生成"
+
+msgid "Publication date"
+msgstr "发表日期"
+
+msgid "Publication date on this site"
+msgstr "在本站的发表日期"
+
+msgid "Publish"
+msgstr "发表"
+
+msgid "Published in *A nice book*, published by My House, 2014"
+msgstr "在「一部好书」中，由我家发表，2014"
+
+msgid "Publisher"
+msgstr "出版商"
+
+msgid "Purge"
+msgstr "清除"
+
+msgid ""
+"Purging means removing it completely from the archive, not just hiding it."
+msgstr "抹除意味着从资料库中完全移除，而不只是隐藏起来。"
+
+msgid ""
+"Put additional information here (original\n"
+"\t  title, translators, credits, etc). Footnotes go in the\n"
+"\t  body."
+msgstr "在这里添加更多详细（原题、译者、提名等）。脚注应在正文中。"
+
+msgid "Quarter Letter paper"
+msgstr "四分之一信纸"
+
+msgid "Queue"
+msgstr "队列"
+
+msgid "Quota exceeded, too many pages"
+msgstr "超出配额，页数过多"
+
+msgid "Quotes"
+msgstr "配额"
+
+msgid "RSS aggregator"
+msgstr "RSS 聚合器"
+
+msgid "RSS feed"
+msgstr "RSS订阅"
+
+msgid "Random"
+msgstr "随机"
+
+msgid "Read about the file naming scheme if you need to add files to the tree."
+msgstr "如果需要将文件添加到树中，请阅读有关文件命名方案的信息。"
+
+msgid "Read the whole text..."
+msgstr "阅读全文…"
+
+msgid "Real time help"
+msgstr "实时帮助"
+
+msgid ""
+"Rearrange the footnotes, fixing the numbering,\n"
+"              considering only the order in which they were inserted.\n"
+"              Please leave unchecked if you don't know what this\n"
+"              means. This option could be destructive, please use with\n"
+"              caution and check the result. In case you encounter\n"
+"              problems, please save the result reporting them in the\n"
+"              message. The procedure tries to be safe and will ignore\n"
+"              the change if footnotes are missing or are too many."
+msgstr ""
+"重新排列脚注，固定编号，只考虑它们的插入顺序。如果你不知道这意味着什么，请不"
+"要勾选。这个选项可能是破坏性的，请谨慎使用并检查结果。如果你遇到了问题，请保"
+"存结果并在信息中报告。该程序尽量安全，如果缺少脚注或脚注太多，将忽略该变化。"
+
+msgid "Reason"
+msgstr "理由"
+
+msgid "Reason for deletion"
+msgstr "删除理由"
+
+msgid "Rebuild"
+msgstr "重建"
+
+msgid "Rebuild all generated files"
+msgstr "重建所有生成的文件"
+
+msgid "Rebuild the generated formats"
+msgstr "重建已生成的格式"
+
+msgid "Rebuilding"
+msgstr "重建中"
+
+msgid "Recheck"
+msgstr "重新检查"
+
+msgid "Redirections"
+msgstr "重定向"
+
+msgid "Refresh and apply filters"
+msgstr "刷新并应用筛选器"
+
+msgid "Related projects"
+msgstr "相关项目"
+
+#. ("$name $url")
+msgid "Remote repository %1 added"
+msgstr "远程仓库%1 已添加"
+
+#. ($name)
+msgid "Remote repository %1 removed"
+msgstr "远程仓库%1 已移除"
+
+msgid "Remove"
+msgstr "移除"
+
+msgid "Remove cover image"
+msgstr "移除题图"
+
+msgid "Remove this category"
+msgstr "移除这个类别"
+
+msgid "Rename to"
+msgstr "重命名为"
+
+msgid "Repeat email"
+msgstr "重复邮箱"
+
+msgid "Repeat password"
+msgstr "重复密码"
+
+msgid "Request failed! Please report the the problem"
+msgstr "请求失败！请报告问题"
+
+msgid "Reschedule"
+msgstr "重新排期"
+
+msgid "Reset all"
+msgstr "重置所有"
+
+msgid "Reset filters"
+msgstr "重置筛选器"
+
+msgid "Reset password"
+msgstr "重置密码"
+
+#. (username)
+msgid "Reset password for user %1"
+msgstr "为用户%1重置密码"
+
+msgid "Reset to site defaults"
+msgstr "重置为站默认"
+
+msgid "Reset your password"
+msgstr "重置你的密码"
+
+msgid "Restricted configuration variables"
+msgstr "被限制的配置变量"
+
+msgid "Restricted format options"
+msgstr "被限制的格式选项"
+
+msgid "Results per page:"
+msgstr "每页结果数："
+
+msgid "Retrieved on DATE from URL"
+msgstr "于DATE从URL拾获"
+
+msgid "Retrieved on March 8, 2012 from"
+msgstr "于2012年3月8日拾获于"
+
+msgid "Revision"
+msgstr "修订"
+
+#. ($uri)
+msgid "Revision for %1 has been deleted"
+msgstr "%1的修订已被删除"
+
+msgid "Roles"
+msgstr "角色"
+
+msgid "Root node"
+msgstr "根节点"
+
+msgid "Running headings"
+msgstr "延续标题"
+
+msgid "SSL CA certificate path (Apache)"
+msgstr "SSL CA 证书路径（Apache）"
+
+msgid "SSL certificate path (Apache)"
+msgstr "SSL证书路径（Apache）"
+
+msgid "SSL chained certificate path (Nginx)"
+msgstr "SSL chained 证书路径（Nginx）"
+
+msgid "SSL configuration"
+msgstr "SSL 配置"
+
+msgid "SSL key path"
+msgstr "SSL钥路径"
+
+msgid "Same as above, but for duplex printers"
+msgstr "与上述相同，但用于双面打印机"
+
+msgid "Same as above, for the Archive menu"
+msgstr "与上述相同，用于存档菜单"
+
+msgid "Same as above, for the Related Projects menu"
+msgstr "与上述相同，对于相关项目菜单"
+
+msgid "Sans font"
+msgstr "无衬线字体"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Save the current settings with a name"
+msgstr "用一个名字保存当前设置"
+
+#. ($pname)
+msgid "Saved \"%1\" configuration"
+msgstr "已保存「%1」配置"
+
+msgid "Search"
+msgstr "搜索"
+
+msgid "Search filters"
+msgstr "搜索筛选器"
+
+msgid "Search results"
+msgstr "搜索结果"
+
+msgid "Search this column"
+msgstr "在此列中搜索"
+
+msgid "Secondary footnotes"
+msgstr "次级尾注"
+
+msgid "Section"
+msgstr "节"
+
+msgid "Section and subsection. If one side document: section."
+msgstr "节和次级节。如果是单面文档的话：节。"
+
+msgid "See here for more details."
+msgstr "这里有更多细节。"
+
+msgid "See here for the full documentation."
+msgstr "这里有完整说明书。"
+
+msgid "See the full manual for more details (english)"
+msgstr "更多细节请查阅完整使用手册（英文）。"
+
+msgid "Select"
+msgstr "选择"
+
+msgid "Select all"
+msgstr "全选"
+
+msgid "Select all for deletion"
+msgstr "全选删除"
+
+msgid "Select all for rescheduling"
+msgstr "全选重新排期"
+
+msgid "Select individual parts for the bookbuilder"
+msgstr "为选择建书器选择单个部分"
+
+msgid "Send mail"
+msgstr "发送邮件"
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
+msgstr "从%1向%2发送测试邮件"
+
+msgid "Separate body fields"
+msgstr "分割正文域"
+
+msgid "Separate footer fields"
+msgstr "分割脚注域"
+
+msgid "Separate header fields"
+msgstr "分割页头域"
+
+msgid "Series"
+msgstr "系列"
+
+msgid "Session sharing"
+msgstr "会话分享"
+
+msgid "Set a date in the future if you want it deferred."
+msgstr "若要搁置，选择一个未来的日期。"
+
+msgid "Settings loaded"
+msgstr "设置已载入"
+
+msgid "Setup"
+msgstr "设置"
+
+msgid "Show _MENU_ entries"
+msgstr "显示_MENU_项"
+
+msgid "Show cheatsheet"
+msgstr "显示大全"
+
+msgid "Show differences in other tab"
+msgstr "显示另一标签页的区别"
+
+msgid "Show filters"
+msgstr "选择筛选器"
+
+msgid "Show preview in other tab"
+msgstr "在另一标签页中显示预览"
+
+msgid "Show text type and number of pages in the listing"
+msgstr "显示列表中的文本类型和页数"
+
+msgid "Show the text infobox at the bottom of the texts"
+msgstr "在文本的底部显示文本信息框"
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "显示从第0页到第0页，总计0项"
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr "显示从第_START_页到第_END_页，总计_TOTAL_项"
+
+msgid "Single bars"
+msgstr "单杠"
+
+msgid "Site Map"
+msgstr "站点地图"
+
+msgid "Site already exists"
+msgstr "站点已存在"
+
+msgid "Site group"
+msgstr "站点组"
+
+msgid "Site id"
+msgstr "站点id"
+
+msgid "Site mail (From field)"
+msgstr "站点邮件（来自域）"
+
+msgid "Site mode"
+msgstr "站点模式"
+
+msgid "Site name"
+msgstr "站点名称"
+
+msgid "Site slogan"
+msgstr "站点口号"
+
+msgid "Site users"
+msgstr "站点用户"
+
+msgid "Sites"
+msgstr "站点"
+
+msgid "Slides"
+msgstr "幻灯片"
+
+msgid "Slides (PDF)"
+msgstr "幻灯片（PDF）"
+
+msgid "Small Caps"
+msgstr "小型大写字母"
+
+msgid "So we can be sure we are not mailing passwords to random people"
+msgstr "这样我们可以确定我们没有把密码邮寄给随机的人"
+
+msgid "Some fields are missing, all are required"
+msgstr "有些字段缺失，所有字段都是必须的"
+
+msgid "Some fields are too long"
+msgstr "有些域太长了"
+
+msgid "Some ongoing revisions were found"
+msgstr "发现一些正在进行的修订工作"
+
+msgid "Sorry, too many jobs pending, please try again later!"
+msgstr "对不起，有太多的工作要做，请稍后再试！"
+
+msgid "Sorting:"
+msgstr "排序："
+
+msgid "Source"
+msgstr "源"
+
+msgid "Source files"
+msgstr "源文件"
+
+msgid "Source files with attachments"
+msgstr "带附件的源文件"
+
+msgid "Source, notes..."
+msgstr "源文件、备注…"
+
+msgid "Sources"
+msgstr "源文件"
+
+msgid "Special blocks"
+msgstr "特殊块"
+
+msgid "Special pages"
+msgstr "特殊页面"
+
+msgid "Specify a whitespace-separated list of languages to activate it."
+msgstr "指定一个用空格分隔的语言列表来激活它。"
+
+msgid "Stale editing"
+msgstr "陈旧编辑"
+
+msgid "Standalone HTML (printer-friendly)"
+msgstr "Standalone HTML (printer-friendly)"
+
+msgid "Standard"
+msgstr "标准"
+
+msgid "Start the document with an empty page"
+msgstr "以一个空页开始文件"
+
+msgid "Started"
+msgstr "已开始"
+
+msgid "Static page without javascript"
+msgstr "无javascript脚本的静态页面"
+
+msgid "Status"
+msgstr "状况"
+
+msgid "Status changed"
+msgstr "状况已改变"
+
+msgid "Subsection"
+msgstr "次级节"
+
+msgid "Subsubsection or description item"
+msgstr "次级节或者描述项"
+
+msgid "Subtitle"
+msgstr "副标题"
+
+msgid "Such an URI already exists"
+msgstr "URI已存在"
+
+msgid ""
+"Such an header will unpublish the text and put a\n"
+"  redirection in place, and will be listed here"
+msgstr "这样的页首会取消发布文本，产生一个重定向，并会在这里列出"
+
+msgid "Such an user already exists!"
+msgstr "用户已存在！"
+
+msgid "Such username already exists"
+msgstr "用户名已存在"
+
+msgid "Suggested values:"
+msgstr "建议值："
+
+msgid "Summary"
+msgstr "摘要"
+
+msgid "Supported directive in the header"
+msgstr "页首中支持的指令"
+
+msgid "Table of Contents"
+msgstr "目录"
+
+msgid "Tables"
+msgstr "表格"
+
+msgid "Tag cloud with authors"
+msgstr "作者标签云"
+
+msgid "Tag cloud with topics"
+msgstr "话题标签云"
+
+msgid "Task"
+msgstr "任务"
+
+msgid "TeX options (advanced)"
+msgstr "TeX选项（高级）"
+
+msgid "Teaser"
+msgstr "预告"
+
+msgid "Teaser image"
+msgstr "预告片图像"
+
+msgid "Term"
+msgstr "术语"
+
+msgid "Test"
+msgstr "测试"
+
+msgid "Tested applications, in this order of preference"
+msgstr "已测试的应用，按照这个喜好顺序"
+
+msgid "Text formatted with markup"
+msgstr "用标记格式的文本"
+
+msgid ""
+"Text redirections are set in the text itself, using the\n"
+"  DELETED header with this syntax"
+msgstr "文本重定向在文本中设定，用此语法使用DELETED页首"
+
+msgid "Texts"
+msgstr "文本"
+
+msgid ""
+"The Beamer selections are relevant only if you activate the\n"
+"  slides output."
+msgstr "Beamer选择只在你启用幻灯片输出时才有用。"
+
+msgid "The OPDS address for this site is:"
+msgstr "此站的OPDS地址是："
+
+msgid ""
+"The PDF logo value can be either an absolute path\n"
+"            or just a filename if you choose to install it in the\n"
+"            TeXlive tree. You can do so with the following commands.\n"
+"            The last one checks if the file can be found."
+msgstr ""
+"PDF图标值可以是绝对路径，或者只是个文件名，如果你选择把它安装在TeXlive树中。"
+"你可以用下列的命令达到这个目的。最后一个检查文件是否存在。"
+
+msgid "The changes will propagate automatically once you push."
+msgstr "一旦推送，变化会自动散布。"
+
+#. ($uri)
+msgid "The description for %1 has been updated"
+msgstr "%1 的描述已更新"
+
+msgid ""
+"The differences between the list of footnotes and references is shown below."
+msgstr "脚注和参考文献清单之间的差异如下所示。"
+
+msgid "The file uploaded is not an HTML file!"
+msgstr "上传的文件不是一个HTML文件！"
+
+msgid "The following settings provide the defaults for each format."
+msgstr "下面的设置提供了每种格式的默认值。"
+
+msgid "The following values are used to generate the webserver configuration."
+msgstr "以下数值用于生成webserver配置。"
+
+msgid ""
+"The generate webserver configuration will redirect\n"
+"          all the HTTP requests to HTTPS"
+msgstr "生成的webserver配置将所有的HTTP请求重定向到HTTPS"
+
+msgid "The logo has the site name on itself"
+msgstr "图标上有网站名称本身"
+
+msgid "The optional subtitle"
+msgstr "可选的副标题"
+
+msgid ""
+"The page /special/index is twice special. It is assumed to be the\n"
+"default page to visit when loading the site’s root."
+msgstr ""
+"页面/special/index有两重特殊性。它被假定为加载网站根目录时要访问的默认页面。"
+
+msgid "The password will be mailed at this address"
+msgstr "密码将被邮寄到这个地址"
+
+msgid "The reset link will expire in a hour."
+msgstr "重置链接将在一小时后失效。"
+
+msgid "The revision has the following messages"
+msgstr "该修订版有以下信息"
+
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr "该网站将在文件的末尾以缩略图显示PDF文件。"
+
+msgid "The text structure is shown below."
+msgstr "文本结构如下所示。"
+
+msgid "The text to show on the homepage preview"
+msgstr "在主页预览中显示的文本"
+
+msgid "The text was added to the bookbuilder"
+msgstr "该文本已被添加到建书器中"
+
+msgid ""
+"The title of the document, for sorting purposes. Useful\n"
+"          if you want to strip the article, if any. A text titled “A\n"
+"          nice title” could have this set to “Nice title”, and will be\n"
+"          listed under N, not under A."
+msgstr ""
+"文件的标题，用于排序。如果你想对文章进行剥离的话，这很有用。一个标题为「一个"
+"漂亮的标题」的文本可以将其设置为「漂亮的标题」并将被列在「漂」下，而不是"
+"「一」下。"
+
+msgid "The title of the document. The only mandatory directive."
+msgstr "文件的标题。唯一的强制性指令。"
+
+msgid ""
+"The webserver needs to be reconfigured. Please execute in a root shell the "
+"following commands:"
+msgstr "webserver需要重新配置。请在root shell中执行以下命令"
+
+msgid "The whole book in as single signature"
+msgstr "单一签名的全书"
+
+msgid "Then approve the change as it would be a normal publishing."
+msgstr "然后批准该更改，就像正常的出版一样。"
+
+msgid "Then fetch the updates from this page."
+msgstr "然后从这个页面获取更新。"
+
+msgid "There are failed jobs"
+msgstr "有失败的工作"
+
+msgid "There are pending revisions"
+msgstr "有进行中的修订"
+
+msgid "These texts are missing the unique id."
+msgstr "这些文本缺少唯一的ID。"
+
+msgid "They can be texts, special texts, authors or topics."
+msgstr "它们可以是文本、特殊文本、作者或话题。"
+
+msgid ""
+"They should be paths relative to the webserver configuration root or "
+"absolute paths (recommended)."
+msgstr "它们应该是相对于webserver配置根的路径或绝对路径（推荐）。"
+
+msgid "This directive wants a whitespace separated list of filenames."
+msgstr "这条指令要一个以空格分隔的文件名列表。"
+
+msgid ""
+"This is a WYSIWYG editor. If you prefer to use\n"
+"        the wiki-like syntax leave it as is, fill the required fields\n"
+"        above and postpone the editing to the next step."
+msgstr ""
+"这是一个所见即所得的编辑器。如果你喜欢使用类似wiki的语法，请保持原样，填写上"
+"面的必填项，并将编辑工作推迟到下一步。"
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
+"这只与生成的文件有关，在那里你可能需要有一套备用的字体。如果已经使用无衬线字"
+"体，它在网络应用中没有任何影响。"
+
+msgid "This is the caption"
+msgstr "这是说明"
+
+msgid ""
+"This mail has been sent to notify you about a new text\n"
+"creation, even if the uploading is not completed yet and the user\n"
+"still needs to finalize the upload. Another mail should follow soon.\n"
+"If this doesn't happen, it means that the uploading has been abandoned\n"
+"and you may want to check it out."
+msgstr ""
+"这封邮件是为了通知你一个新的文本已创建，即使上传还没有完成，用户仍然需要最终"
+"完成上传。另一封邮件应该很快就会出现。如果这没有发生，这意味着上传已经被放弃"
+"了，你可能得去检查以下。"
+
+msgid "This revision is already published, ignoring changes"
+msgstr "本修订版已经发表，忽略了变化"
+
+msgid "This revision is being actively edited"
+msgstr "本修订版正在积极编辑中"
+
+msgid "This revision is being actively edited by you"
+msgstr "该修订版正在被你积极编辑中"
+
+msgid "This revision is being edited by someone else!"
+msgstr "这个修订版正在被其它人编辑中！"
+
+msgid "This section will not produce a slide"
+msgstr "这一节不会生成幻灯片"
+
+msgid ""
+"This site is private and mobile applications should ask for your username "
+"and\n"
+"  password to access the OPDS."
+msgstr "该网站是私有的，移动应用程序应要求您提供用户名和密码以访问OPDS。"
+
+msgid "This text does not exist"
+msgstr "文本不存在"
+
+msgid "This text is a book"
+msgstr "此文本是一本书"
+
+msgid "This text is an article"
+msgstr "此文本是一篇文章"
+
+msgid "This text is new"
+msgstr "此文本是新的"
+
+msgid "This text is not available"
+msgstr "此文本不可用"
+
+msgid "This text is not public yet"
+msgstr "此文本尚未公开"
+
+msgid "This text is not published yet"
+msgstr "此文本尚未发表"
+
+#. (rev.is_deferred)
+msgid "This text will be deferred to %1"
+msgstr "此文本将被推迟到%1"
+
+msgid "This user cannot be removed"
+msgstr "该用户不能被删除"
+
+msgid "Thumbnail"
+msgstr "缩略图"
+
+msgid "Title"
+msgstr "标题"
+
+msgid "Title and chapter. If one side document: chapter."
+msgstr "标题和章。如果是单面文档：章。"
+
+msgid "Title and section.  If one side document: section."
+msgstr "标题和节。如果是单边文档：节。"
+
+msgid "Title and subtitle. If one side document: title."
+msgstr "标题和副标题。如果是单面文档：标题。"
+
+msgid "Title for sorting"
+msgstr "用于排序的标题"
+
+msgid "Title, author, date..."
+msgstr "标题、作者、日期…"
+
+msgid "Titles"
+msgstr "标题"
+
+#. (pending_url)
+msgid "To apply the changes, you can visit %1"
+msgstr "要应用这些变化，你可以访问 %1"
+
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr "为了显示PDF，在页首中设置或附加以下字符串"
+
+msgid ""
+"To preserve the whitespaces and line breakings, wrap the paragraphs with"
+msgstr "为了保留空白和断行，换行用"
+
+msgid "To quickly format bibliographies wrap them in"
+msgstr "要想快速格式化书目，请将它们包在"
+
+msgid "To quickly format plays, use"
+msgstr "要快速格式化戏剧，请使用"
+
+msgid "To resume the editing you can visit the following URL"
+msgstr "要恢复编辑，你可以访问以下网址"
+
+#. (loc('Update')
+#. (loc("Update"))
+msgid ""
+"To save or update the templates, you need first to save\n"
+"    the options with the \"%1\" button"
+msgstr "要保存或更新模板，你首先需要用「%1」按钮保存选项"
+
+msgid "To view the changes introduced, you can visit the following URL"
+msgstr "要查看引入的变化，你可以访问以下网址"
+
+msgid "Toggle fullscreen editor"
+msgstr "切换全屏编辑器"
+
+msgid "Topic"
+msgstr "话题"
+
+msgid "Topics"
+msgstr "话题"
+
+msgid "Total pages"
+msgstr "总页数"
+
+msgid "Triple bars"
+msgstr "三杠"
+
+msgid "Try a random text if unsure"
+msgstr "不确定的话，试试任意文本"
+
+msgid ""
+"Turn links to images into images (affects site display only, static formats "
+"have the link)"
+msgstr "将指向图像的链接变成图像（只影响显示，静态格式仍有链接）"
+
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"            Gmaps into widgets (affects site display only, static\n"
+"            formats have the link)"
+msgstr ""
+"将没有描述的YouTube、Vimeo、Gmaps链接变成widget（只影响网站显示，静态格式有链"
+"接）。"
+
+msgid "Two side layout"
+msgstr "两侧布局"
+
+msgid "Type"
+msgstr "类"
+
+msgid "URI"
+msgstr "URI"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
+msgstr "新的远程仓库的URL（HTTPS、HTTP或Git）。"
+
+msgid "URL pointing to an embeddable webchat"
+msgstr "指向可嵌入webchat的URL"
+
+msgid "UTC"
+msgstr "UTC"
+
+msgid "Unable to load the bookbuilder session"
+msgstr "无法加载建书器会话"
+
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr "无法从%1发送邮件到%2！"
+
+msgid "Unbranded PDF (hide site name, logo, etc.)"
+msgstr "无品牌的PDF（隐藏网站名称、标志等）。"
+
+msgid ""
+"Unconditionally remove all the invisible non-breaking\n"
+"                spaces in the text"
+msgstr "无条件地删除文本中所有不可见的非换行的空格"
+
+#. (shared)
+msgid ""
+"Unfortunately, the shared repository located at %1 appeared out of sync."
+msgstr "糟糕，位于%1的共享仓库出现了不同步的情况。"
+
+msgid "Unique ID for the text"
+msgstr "文本的唯一ID"
+
+msgid "Unlimited"
+msgstr "无限的"
+
+msgid "Unordered List"
+msgstr "无序列表"
+
+msgid "Unpublished texts"
+msgstr "未发表的文本"
+
+#. ($mime_type)
+#. ($mime)
+msgid "Unsupported file type %1"
+msgstr "不支持的文件类型%1"
+
+msgid "Unused attachment"
+msgstr "没用到的插件"
+
+msgid "Update"
+msgstr "更新"
+
+msgid "Update account info"
+msgstr "更新账户消息"
+
+msgid "Update category description"
+msgstr "更新类标描述"
+
+msgid "Update to current settings"
+msgstr "更新至现在的设置"
+
+msgid "Upload"
+msgstr "上传"
+
+msgid "Upload the image and note its name. Files are always renamed."
+msgstr "上传图像并记录文件名。文件总是会被重命名。"
+
+msgid ""
+"Uploaded and available images are shown and listed below the text preview."
+msgstr "已上传，可用图像在文章预览下显示列出。"
+
+msgid "Url"
+msgstr "URL"
+
+msgid "Use JS syntax highlight for code blocks"
+msgstr "代码块使用JS语法高亮"
+
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
+msgstr "使用LuaLaTeX而不是XeLaTeX（速度较慢）"
+
+msgid "Use SSL for authenticated users"
+msgstr "对认证的用户使用SSL"
+
+msgid "Use it as a teaser image adding to the header this line:"
+msgstr "用作预览图像，向页头添加这一行："
+
+msgid "Use named table of contents anchors instead of numeric ones"
+msgstr "使用命名的目录锚，而不是数字式的目录锚"
+
+msgid "Use one of the site's formats"
+msgstr "使用该站点的一种格式"
+
+#. (sign)
+msgid "Use optimized signatures with %1 pages each"
+msgstr "使用优化的签名，每个签名有%1页"
+
+msgid "Use sans fonts for section titles"
+msgstr "节标题使用无衬线字体"
+
+msgid "Use the image as cover"
+msgstr "用作题图"
+
+msgid "Useful HTML snippets"
+msgstr "有用的HTML代码段"
+
+msgid ""
+"Useful for footnotes or in the headers of the document, where you cannot put "
+"a blank line to mark a new paragraph."
+msgstr "对脚注或文档的页首很有用，因为在这些地方你不能放空行来标记新的段落。"
+
+#. ($user->username)
+msgid "User %1 created!"
+msgstr "用户%1已创建！"
+
+#. ($user->username)
+#. ($c->stash->{user}->username)
+msgid "User %1 deleted"
+msgstr "用户%1已删除"
+
+#. ($user->username)
+msgid "User %1 updated"
+msgstr "用户%1已更新"
+
+msgid "User created"
+msgstr "用户已创建"
+
+msgid "Username"
+msgstr "用户名"
+
+msgid "Username, alphanumerical only, no special characters, no uppercase"
+msgstr "用户名，只有字母数字，没有特殊字符，没有大写字母"
+
+msgid "Users"
+msgstr "用户"
+
+msgid ""
+"Using this token, you can load the bookbuilder settings\n"
+"    and the text list from another computer, or share it with someone\n"
+"    else. Just write it down and then load it from another computer\n"
+"    using the following form."
+msgstr ""
+"使用这个令牌，你可以从另一台电脑上加载建书器设置和文本列表，或与其他人分享。"
+"只要把它写下来，然后用下面的表格从另一台电脑上加载它。"
+
+msgid ""
+"Usually this is due to high traffic and bad luck, and it can be fixed by "
+"pushing the changes again."
+msgstr "通常这是由高流量和坏运气造成的，它可以通过再次推送修改来修复。"
+
+msgid "Verbatim block"
+msgstr "逐字块"
+
+msgid "View history"
+msgstr "显示历史"
+
+msgid "Virtual hosts"
+msgstr "虚拟主机"
+
+msgid "Virtual hosts, one per line"
+msgstr "虚拟主机，每行一个"
+
+msgid "What links here"
+msgstr "什么地方链接到这里"
+
+msgid ""
+"When creating a new text, do not populate the publication date if not "
+"provided by the user."
+msgstr "当创建一个新的文本时，如果用户没有提供，就不要填入出版日期。"
+
+msgid ""
+"When you start a bookbuilder session, at the end of the\n"
+"    bookbuilder page you can see a token for sharing the session. You\n"
+"    can load it here from another device to resume what you were\n"
+"    doing."
+msgstr ""
+"当你开始一个建书器会话时，在建书者页面的最后，你可以看到一个用于分享会话的令"
+"牌。你可以在这里从另一个设备上加载它来恢复你正在做的事情。"
+
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr "上传PDF是，把它分隔成图像，以便插入正文"
+
+msgid "Where does this text come from?"
+msgstr "此文出于何处？"
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr "IP白名单（备份用，一行一个）"
+
+msgid "Width of the cover image in percent of the text block width."
+msgstr "题图宽度占文章块宽度的百分比。"
+
+msgid "Width:"
+msgstr "宽度："
+
+msgid ""
+"With complex structures, e.g., a chapter with\n"
+"      subsections, selecting only the chapter is likely to select only\n"
+"      the chapter's title, so probably you want to select the chapter\n"
+"      and all its subsections."
+msgstr ""
+"如果结构复杂的话，比如有次级节的一章，只选择章或许会只选择章的标题，所以你多"
+"半得选择章以及其所有的次级节。"
+
+msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr "使用「verbatim」标签，你可以避免对标记进行解释，通常是不需要的"
+
+msgid ""
+"With the bookbuilder you can change the layout (fonts,\n"
+"    dimensions, paper, margins) of the texts on the library. You can\n"
+"    also merge more texts to create your own booklet. Just try it!"
+msgstr ""
+"通过建书器，你可以改变图书馆中文本的布局（字体、尺寸、纸张、页边距）。你还可"
+"以合并更多的文本来创建你自己的小册子。试一下吧！"
+
+msgid "Workflow"
+msgstr "工作流程"
+
+msgid "Working locally?"
+msgstr "离线工作？"
+
+msgid ""
+"Wrapping tags cannot be used inside environments\n"
+"          which require leading space (notably, you cannot use them in\n"
+"          lists)."
+msgstr "包裹标签不能在需要前置空格的环境中使用（特别是不能在列表中使用）。"
+
+msgid "Wrong answer!"
+msgstr "错误答案！"
+
+msgid "Wrong username or password"
+msgstr "用户名或密码错误"
+
+msgid "XeLaTeX source"
+msgstr "XeLaTeX 源码"
+
+msgid "Yes"
+msgstr "是"
+
+msgid ""
+"You MUST specify a reason, otherwise the line will have no effect.\n"
+"The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
+"etc.) is irrelevant."
+msgstr ""
+"您必须指定一个原因，否则该行将不起作用。标题行的顺序（其中有 \"#title"
+"\"，\"#lang\" 等）是无关紧要的。"
+
+msgid "You are already logged in"
+msgstr "您已经登录"
+
+msgid ""
+"You are building a collection. Please provide a title and, optionally, any "
+"other information needed for the front cover (author, subtitle, date) and "
+"the back cover (source and notes)."
+msgstr ""
+"你正在建立一个集合。请提供一个标题，并可选择提供封面（作者、副标题、日期）和"
+"封底（来源和注释）所需的任何其他信息。"
+
+msgid "You are logged in now!"
+msgstr "你已登录！"
+
+#. (backup)
+msgid ""
+"You can access the backup located at %1 or ask your host for help, "
+"forwarding this email"
+msgstr "你可以访问位于%1的备份，或向你的主机寻求帮助，正转发此邮件"
+
+msgid ""
+"You can add texts to the bookbuilder clicking on the\n"
+"    “plus” icon near the downloads of each text. You can add and\n"
+"    remove the texts later."
+msgstr ""
+"你可以点击每个文本的下载处附近的「加号」图标，将文本添加到建书者中。你可以在"
+"以后添加和删除这些文本。"
+
+msgid ""
+"You can also link to a part of the text. Please refer to the manual for this "
+"feature"
+msgstr "你也可以链接到文本的某个部分。请参考说明书"
+
+#. (create_url)
+msgid "You can create a peer at %1"
+msgstr "你可以在%1创建一个对等体"
+
+msgid "You can do so answering a simple question."
+msgstr "你可以通过回答一个简单的问题来做到这一点。"
+
+msgid "You can tune them editing them here."
+msgstr "你可以在这里调整编辑它们。"
+
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
+msgstr "你可以使用以下前缀来搜索特定领域的单词，例如「title:example」。"
+
+msgid ""
+"You can't create a new revision because the text has not been published yet"
+msgstr "你不能创建一个新的修订，因为该文本还没有发布"
+
+msgid "You have logged out"
+msgstr "你已退出"
+
+msgid "You may want to resume the editing of one of them"
+msgstr "你或许想继续编辑其中一个"
+
+msgid ""
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr "你或许想从标题中省略前缀的「A」、「An」、「The」之类的"
+
+msgid "You may want to use one of these images"
+msgstr "你或许想用以下图像中的一个"
+
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
+"你通过一个未加密的连接发送证书。请切换到HTTPS，登录，并立即更改密码。这种情况"
+"不应该发生。"
+
+#. (edit_url)
+msgid "You should change your password right away at %1"
+msgstr "你应该马上更改你的密码，地址是%1"
+
+msgid "Your browser does not support the audio tag."
+msgstr "您的浏览器不支持音频标签。"
+
+msgid "Your browser does not support the video tag."
+msgstr "您的浏览器不支持视频标签。"
+
+msgid ""
+"Your changes are saved and can be checked every time you hit Preview or Save"
+msgstr "你的修改被保存下来，每次点击预览或保存时都可以检查"
+
+msgid "Your chapter here..."
+msgstr "你的章在这里…"
+
+msgid "Your current bookbuilder token is:"
+msgstr "你目前的建书器令牌是："
+
+msgid "Your email"
+msgstr "你的邮箱"
+
+msgid "Your file is ready"
+msgstr "你的文件准备好了"
+
+msgid "Your part here..."
+msgstr "你的部在这里…"
+
+#. (password)
+msgid "Your password is %1."
+msgstr "你的密码是%1。"
+
+msgid "Your password was reset, now you can login with it"
+msgstr "你的密码已重置，现在你可以用它登录"
+
+msgid "Your section here..."
+msgstr "你的节在这里…"
+
+msgid "Your sub-sub-section (or description heading) here..."
+msgstr "你的次次级节（或者描述页头）在这里…"
+
+msgid "Your subsection here..."
+msgstr "你的次级节在这里…"
+
+#. (home)
+msgid "Your user at %1 has been created."
+msgstr "你在%1的用户已创建。"
+
+#. (username)
+msgid "Your username is %1."
+msgstr "你的用户名是%1。"
+
+msgid "aborted"
+msgstr "停止了"
+
+msgid "about, links..."
+msgstr "关于、链接等…"
+
+msgid "activate to sort column ascending"
+msgstr "启用以用列升序排序"
+
+msgid "activate to sort column descending"
+msgstr "启用以用列降序排序"
+
+msgid "active"
+msgstr "活跃"
+
+msgid "affects only the frontend webserver configuration"
+msgstr "只影响到前端webserver的配置"
+
+msgid "any"
+msgstr "任意"
+
+msgid "automatically generated if not present, using author and title"
+msgstr "不存在的话使用作者和标题自动生成"
+
+msgid "code and monospace"
+msgstr "代码和等距文本"
+
+msgid "comma separated list"
+msgstr "半角逗号分割的列表"
+
+msgid "completed"
+msgstr "完成的"
+
+msgid "conflict"
+msgstr "冲突"
+
+msgid "description"
+msgstr "描述"
+
+msgid "displayed text"
+msgstr "现实的文本"
+
+msgid "edit, commit..."
+msgstr "编辑、提交…"
+
+msgid "editing"
+msgstr "编辑中"
+
+msgid "emphasis"
+msgstr "重点"
+
+msgid "failed"
+msgstr "已失败"
+
+msgid "filtered from _MAX_ total entries"
+msgstr "从共 _MAX_ 项中筛选出"
+
+msgid "for code, monospaced"
+msgstr "代码用，使用单空格"
+
+msgid "for display"
+msgstr "显示用"
+
+msgid "for poetry"
+msgstr "诗歌用"
+
+msgid "generic sectioning, good for articles"
+msgstr "一般分节，适用于文章"
+
+msgid "if you want to use a custom size, you need to set both width and height"
+msgstr "如果你想用自定义大小的话，需要设置宽度和高度"
+
+msgid "image"
+msgstr "图像"
+
+msgid "left"
+msgstr "左"
+
+msgid "mandatory"
+msgstr "强制"
+
+msgid "markup *not* interpreted"
+msgstr "标注未解释"
+
+#. (site.binary_upload_max_size_in_mega)
+msgid "max %1 Mb"
+msgstr "最大 %1 Mb"
+
+msgid "minutes"
+msgstr "分钟"
+
+msgid "new-example-uri"
+msgstr "new-example-uri"
+
+msgid "only lowercase ASCII and hyphens"
+msgstr "只用小写ASCII和连字符"
+
+msgid "or"
+msgstr "或者"
+
+msgid "ordered item"
+msgstr "有序项"
+
+msgid "overstriked"
+msgstr "重打的"
+
+msgid "pending"
+msgstr "等待中"
+
+msgid "plain PDF"
+msgstr "简单PDF"
+
+msgid "plain text source"
+msgstr "纯文本源"
+
+msgid "processing"
+msgstr "处理中"
+
+msgid "published"
+msgstr "已发布"
+
+msgid "revision"
+msgstr "版本"
+
+msgid "right"
+msgstr "右"
+
+#. (args)
+msgid "string"
+msgstr "字符串"
+
+msgid "strong emphasis"
+msgstr "强调"
+
+msgid "sub-sub-section"
+msgstr "次次级节"
+
+msgid "subscript"
+msgstr "下标"
+
+msgid "subsection"
+msgstr "次级节"
+
+msgid "superscript"
+msgstr "上标"
+
+msgid "taken"
+msgstr "已用"
+
+msgid "texts by authors, title, topic..."
+msgstr "按照作者、标题、话题文章分类…"
+
+msgid "texts sorted by author"
+msgstr "按照作者文章分类"
+
+msgid "texts sorted by title"
+msgstr "按照标题文章分类"
+
+msgid "the author of the text (as displayed)"
+msgstr "文章的作者（如图所示）"
+
+msgid "this text will be unpublished"
+msgstr "此文本将被取消发布"
+
+msgid "topic"
+msgstr "话题"
+
+msgid "unordered item"
+msgstr "无序项目"
+
+msgid "very strong emphasis"
+msgstr "非常强调"
+
+msgid "with description"
+msgstr "带描述"
+
+msgid "without description"
+msgstr "无描述"
+
+msgid ""
+"“Stale editing” means that the revision was abandoned\n"
+"    while editing, but it's still there, in case someone wants to pick\n"
+"    it up when editing a text."
+msgstr ""
+"「陈旧编辑」意味着版本已在编辑时被放弃，但它仍然存在，以防有人在编辑文本时继"
+"续使用它。"
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "texts sorted by topic"
+
+#~ msgid "RSS"
+#~ msgstr "RSS"
+
+#~ msgid "syndicate"
+#~ msgstr "syndicate"

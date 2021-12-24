@@ -931,6 +931,7 @@ sub known_langs {
             tr => 'Türkçe',
             bg => 'Български',
             eo => 'Esperanto',
+            zh => '中文',
            };
 }
 
