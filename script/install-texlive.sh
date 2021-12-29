@@ -106,7 +106,20 @@ $homedir/local/texlive/$year/bin/$arch/tlmgr install \
         hyphen-portuguese hyphen-romanian hyphen-romansh hyphen-russian        \
         hyphen-sanskrit hyphen-serbian hyphen-slovak hyphen-slovenian          \
         hyphen-spanish hyphen-swedish hyphen-thai hyphen-turkish               \
-        hyphen-turkmen hyphen-ukrainian hyphen-uppersorbian hyphen-welsh
+        hyphen-turkmen hyphen-ukrainian hyphen-uppersorbian hyphen-welsh       \
+        babel-albanian babel-azerbaijani babel-basque babel-belarusian         \
+        babel-bosnian babel-breton babel-bulgarian babel-catalan               \
+        babel-croatian babel-czech babel-danish babel-dutch babel-english      \
+        babel-esperanto babel-estonian babel-finnish babel-french              \
+        babel-friulan babel-galician babel-georgian babel-german babel-greek   \
+        babel-hebrew babel-hungarian babel-icelandic babel-indonesian          \
+        babel-interlingua babel-irish babel-italian babel-japanese             \
+        babel-kurmanji babel-latin babel-latvian babel-macedonian babel-malay  \
+        babel-norsk babel-occitan babel-piedmontese babel-polish               \
+        babel-portuges babel-romanian babel-romansh babel-russian babel-samin  \
+        babel-scottish babel-serbian babel-serbianc babel-slovak               \
+        babel-slovenian babel-sorbian babel-spanish babel-swedish babel-thai   \
+        babel-turkish babel-ukrainian babel-vietnamese babel-welsh
 
 echo "TeXlive installed in $homedir/local/texlive, bin path is $homedir/local/texlive/$year/bin/$arch"
 
