@@ -97,7 +97,7 @@ Build-Depends-Indep: libbytes-random-secure-perl,
  poppler-utils,
  git, fontconfig,
  cgit,
- fonts-cmu, fonts-texgyre,
+ fonts-cmu, fonts-texgyre, fonts-fandol,
  amusewiki-texlive
 Standards-Version: 3.9.6
 Homepage: https://amusewiki.org
@@ -197,7 +197,7 @@ Depends: ${misc:Depends}, ${perl:Depends},
  libcgi-emulate-psgi-perl,
  libcgi-compile-perl,
  cgit, ckeditor, nginx, git, fontconfig,
- fonts-cmu, fonts-texgyre,
+ fonts-cmu, fonts-texgyre, fonts-fandol,
  amusewiki-texlive | texlive-full
 Recommends: amusewiki-extra-fonts
 Description: library-oriented wiki engine, publishing and authoring platform
