@@ -5,6 +5,7 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
+use Regexp::Common qw/net/;
 
 =head1 NAME
 
@@ -54,10 +55,35 @@ sub edit :Chained('sources') :PathPart('edit') :Args(0) {
     Dlog_debug { "Params: $_" } \%params;
     my $rs = $c->stash->{origins_rs};
     if ($params{create} && $params{remote_domain} && $params{remote_path}) {
-        $rs->create({
-                     remote_domain => $params{remote_domain},
-                     remote_path => $params{remote_path},
-                    });
+        s/\s+//g for ($params{remote_domain}, $params{remote_domain});
+        if ($params{remote_domain} =~ m/\A$RE{net}{domain}{-nospace}{-rfc1101}\z/) {
+            # try to see if it's possible to get a response
+            my $src = $rs->create({
+                                   remote_domain => $params{remote_domain},
+                                   remote_path => $params{remote_path},
+                                  });
+            my $got_ok = 0;
+            if (my $res = $src->fetch_remote) {
+                Dlog_info { $_ } $res;
+                if ($res->{data}) {
+                    $c->flash(status_msg => $c->loc("Added"));
+                    $got_ok = 1;
+                }
+                else {
+                    $c->flash(error_msg => $c->loc("Invalid response"));
+                }
+            }
+            else {
+                $c->flash(error_msg => $c->loc("Failure fetching the source"));
+            }
+            unless ($got_ok) {
+                log_info { "Failed response, removing the new source" };
+                $src->delete;
+            }
+        }
+        else {
+            $c->flash(error_msg => $c->loc("Invalid domain"));
+        }
         $c->res->redirect($c->uri_for_action('/federation/show'));
         return;
     }
