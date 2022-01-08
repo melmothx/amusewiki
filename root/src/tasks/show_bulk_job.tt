@@ -46,6 +46,13 @@ function update_bulk_status() {
         var table = $('<table>');
         var tbody = $('<tbody>');
         var spin_first = 1;
+        if (data.job.produced) {
+            $('.bulk-job-produced-link').attr('href', data.job.produced).text(data.job.produced);
+            $('.bulk-job-produced').show();
+        }
+        else {
+            $('.bulk-job-produced').hide();
+        }
         table.attr('class', 'table table-striped table-condensed table-bordered');
         $.each(data.all_jobs, function(i, item) {
             var link = base + '/tasks/status/' + item.id;

@@ -313,7 +313,10 @@ sub handle_bulk_job_completed {
     my $self = shift;
     if ($self->is_mirror) {
         # add the job to copy the files over to their destination + git.
-        $self->site->jobs->enqueue(install_downloaded  => $self->decoded_payload, $self->username);
+        my $j = $self->site->jobs->enqueue(install_downloaded  => $self->decoded_payload,
+                                           $self->username);
+        log_info { "Enqueued install_downloaded" };
+        $self->update({ produced => '/tasks/status/' . $j->id });
     }
 }
 

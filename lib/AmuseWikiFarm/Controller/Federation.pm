@@ -150,6 +150,15 @@ sub fetch :Chained('single') :PathPart('fetch') :Args(0) {
     $c->response->redirect($c->uri_for_action('federation/show'));
 }
 
+sub remove :Chained('single') :PathPart('remove') :Args(0) {
+    my ($self, $c) = @_;
+    my $origin = $c->stash->{mirror_origin};
+    $origin->delete;
+    $c->flash(status_msg => $c->loc("Source removed"));
+    $c->response->redirect($c->uri_for_action('federation/show'));
+}
+
+
 =encoding utf8
 
 =head1 AUTHOR

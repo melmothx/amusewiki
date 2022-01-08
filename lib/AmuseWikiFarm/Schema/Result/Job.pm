@@ -904,9 +904,11 @@ sub dispatch_job_install_downloaded {
             local $ENV{GIT_COMMITTER_EMAIL} = $self->committer_mail;
             local $ENV{GIT_AUTHOR_NAME}  = $self->committer_name;
             local $ENV{GIT_AUTHOR_EMAIL} = $self->committer_mail;
-            $origin->install_downloaded($logger, $opts);
+            my $bulk = $origin->install_downloaded($logger, $opts);
+            return "/tasks/job/" . $bulk->bulk_job_id . "/show";
         }
     }
+    return;
 }
 
 before delete => sub {

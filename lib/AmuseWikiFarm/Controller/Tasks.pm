@@ -183,6 +183,7 @@ sub show_bulk_job_ajax :Chained('get_bulk_job') :PathPart('ajax') :Args(0) {
                 started => $job->created_locale($locale),
                 eta => $job->eta_locale($locale) || $c->loc("N/A"),
                 status => $job->status,
+                produced => $job->produced,
                );
     $c->stash(json => {
                        job => \%data,

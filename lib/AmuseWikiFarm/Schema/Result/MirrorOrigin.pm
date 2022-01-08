@@ -385,6 +385,7 @@ sub download_file {
     if ($res->is_success) {
         $dest->spew_raw($res->content);
         $info->update({ download_destination => "$dest" });
+        return $src;
     }
     else {
         die "Error downloading $src:" . $res->status_line;
@@ -423,6 +424,15 @@ sub install_downloaded {
     }
     $site->update_db_from_tree_async;
 }
+
+before delete => sub {
+    my $self = shift;
+    # when deleting an origin, reset the exceptions and the download source
+    $self->mirror_infos->update({
+                                 download_source => undef,
+                                 mirror_exception => '',
+                                });
+};
 
 __PACKAGE__->meta->make_immutable;
 1;

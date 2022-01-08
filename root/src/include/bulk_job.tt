@@ -19,6 +19,11 @@
         <strong>[% loc("ETA") %]</strong>:
         <span class="job-eta">[% bulk_job.eta_locale(current_locale_code) || loc("N/A") %]</span>
       </li>
+      <li class="bulk-job-produced">
+        <a class="bulk-job-produced-link"
+           href="[% IF bulk_job.produced %][% c.uri_for(bulk_job.produced) %][% ELSE %]#[% END %]"
+        >[% bulk_job.produced | html %]</a>
+      </li>
     </ul>
   </div>
 </div>

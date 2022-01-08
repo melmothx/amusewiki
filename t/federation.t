@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 102;
+use Test::More tests => 132;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catdir catfile/;
@@ -24,7 +24,7 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my ($bootstrap_1, $site_1);
 
 # remove when devel is done.
-unless (1 and $site_1 = $schema->resultset('Site')->find('0federation0')) {
+unless ($site_1 = $schema->resultset('Site')->find('0federation0')) {
     $site_1 = create_site($schema, '0federation0');
     $bootstrap_1 = 1;
 }
@@ -101,6 +101,10 @@ is_deeply([ sort map { $_->{uri} } @$just_one ],
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site_1->canonical);
 
+my $mech_2 = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                                 host => $site_2->canonical);
+
+
 foreach my $m (qw|
                      /manifest.json
                      /category/author/cao/manifest.json
@@ -132,14 +136,7 @@ $site_2->add_to_mirror_origins({
 {
     my $remote = $site_2->mirror_origins->first;
     ok !$remote->mirror_infos->count;
-    $remote->ua($mech);
-    my $res = $remote->fetch_remote;
-    ok $res->{data};
-    ok !$res->{error};
-    diag Dumper($res);
-    my $bulk_job = $remote->prepare_download($res->{data});
-
-    is $bulk_job->status, 'active';
+    _check_bulk_with_jobs($mech, $remote);
 
     # TODO: check what happens if you try to edit a text with the same uri
 
@@ -152,16 +149,71 @@ $site_2->add_to_mirror_origins({
     foreach my $info ($remote->mirror_infos) {
         diag $info->full_uri;
     }
-    # mirror doesn't work.
-    # $mech->mirror('https://0federation0.amusewiki.org/library/title-entry-21.muse', "var/cache/test.muse");
+
+    # nothing changed, bulk job is already completed.
+    _check_bulk_without_jobs($mech, $remote);
+
+
+    # add a new file in the src site
+    my $test_file = path($site_1->repo_root, f => ft => "for-the-test.muse");
+    $test_file->spew_utf8("#title For the test\n#lang en\n\nTest me\n");
+    $site_1->update_db_from_tree(sub { diag join(' ', @_) });
+    # and check again
+    _check_bulk_with_jobs($mech, $remote);
+
+    # modify
+    $test_file->append_utf8("test again\n\n");
+    $site_1->update_db_from_tree(sub { diag join(' ', @_) });
+    _check_bulk_with_jobs($mech, $remote);
+
+
+    # and removal
+    $test_file->remove;
+    $site_1->update_db_from_tree(sub { diag join(' ', @_) });
+    _check_bulk_without_jobs($mech, $remote);
+    is $site_2->titles->search_related(mirror_info => { mirror_exception  => 'removed_upstream' })->count, 1;
+    $mech->get("/library/for-the-test");
+    is $mech->status, 404;
+    $mech_2->get_ok("/library/for-the-test");
+
+    $remote->delete;
+    is $site_2->search_related(mirror_infos => { mirror_origin_id  => { '!=' => undef } })->count, 0;
+    is $site_2->search_related(mirror_infos => { download_source  => { '!=' => undef } })->count, 0;
+    is $site_2->search_related(mirror_infos => { mirror_exception  => 'removed_upstream' })->count, 0;
+    is $site_2->search_related(mirror_infos => { mirror_exception  => 'conflict' })->count, 1;
+}
+
+sub _check_bulk_without_jobs {
+    my ($mech, $remote) = @_;
+    $remote->ua($mech);
+    my $res = $remote->fetch_remote;
+    diag Dumper($res);
+    my $bulk_job = $remote->prepare_download($res->{data});
+    is $bulk_job->discard_changes->status, 'completed';
+    ok !$bulk_job->produced, "Nothing produced";
+}
+
+sub _check_bulk_with_jobs {
+    my ($mech, $remote) = @_;
+    $remote->ua($mech);
+    my $res = $remote->fetch_remote;
+    diag Dumper($res);
+    ok $res->{data};
+    ok !$res->{error};
+    my $bulk_job = $remote->prepare_download($res->{data});
+    is $bulk_job->discard_changes->status, 'active';
     while (my $job = $site_2->jobs->dequeue) {
+        diag "Job is " . $job->task;
         $job->dispatch_job({ ua => $mech });
         is $job->status, 'completed';
         diag $job->logs;
+        diag "Produced: " . ($job->produced || "nothing");
+        diag "Parent is " . ($job->bulk_job_id || "none");
     }
     is $bulk_job->discard_changes->status, 'completed';
+    diag $bulk_job->produced;
+    ok $bulk_job->produced;
 }
-
 
 # foreach my $obj ($site_1->titles->all, $site_1->attachments->all) {
 #     $mech->get_ok($obj->full_uri);
