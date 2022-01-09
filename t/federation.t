@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 132;
+use Test::More tests => 155;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catdir catfile/;
@@ -136,7 +136,7 @@ $site_2->add_to_mirror_origins({
 {
     my $remote = $site_2->mirror_origins->first;
     ok !$remote->mirror_infos->count;
-    _check_bulk_with_jobs($mech, $remote);
+    _check_bulk_with_jobs($mech, $remote, "Initial load");
 
     # TODO: check what happens if you try to edit a text with the same uri
 
@@ -151,7 +151,7 @@ $site_2->add_to_mirror_origins({
     }
 
     # nothing changed, bulk job is already completed.
-    _check_bulk_without_jobs($mech, $remote);
+    _check_bulk_without_jobs($mech, $remote, "Nothing changed");
 
 
     # add a new file in the src site
@@ -159,22 +159,49 @@ $site_2->add_to_mirror_origins({
     $test_file->spew_utf8("#title For the test\n#lang en\n\nTest me\n");
     $site_1->update_db_from_tree(sub { diag join(' ', @_) });
     # and check again
-    _check_bulk_with_jobs($mech, $remote);
+    _check_bulk_with_jobs($mech, $remote, "Check after new file in source");
 
     # modify
     $test_file->append_utf8("test again\n\n");
     $site_1->update_db_from_tree(sub { diag join(' ', @_) });
-    _check_bulk_with_jobs($mech, $remote);
+    _check_bulk_with_jobs($mech, $remote, "Check after modification");
+
+
+    # modify locally and it will be overwritten
+    # 1:1
+    _check_bulk_without_jobs($mech, $remote, "Nothing changed after modification");
+    # modify
+    my $test_file_local = path($site_2->repo_root, f => ft => "for-the-test.muse");
+    $test_file_local->spew_utf8("#title XXXX For the test\n#lang en\n\nTestXXX me\n");
+    $site_2->update_db_from_tree(sub { diag join(' ', @_) });
+    # overwrite
+    _check_bulk_with_jobs($mech, $remote, "Overwritten after local modification");
+
+    # 1:1
+    _check_bulk_without_jobs($mech, $remote, "Check, nothing changed");
+
+
+    # place a an exception and modify, it's not overwritten and no download is triggered.
+    my $test_entry = $site_2->titles->by_full_uri('/library/for-the-test');
+    $test_entry->mirror_info->update({ mirror_exception => 'conflict' });
+    $test_file_local->spew_utf8("#title XXXX For the test\n#lang en\n\nTestXXX me\n");
+    $site_2->update_db_from_tree(sub { diag join(' ', @_) });
+    _check_bulk_without_jobs($mech, $remote, "Exception placed, nothing downloaded");
+
+    # remove the exception and it will be fetched again
+    $test_entry->mirror_info->update({ mirror_exception => '' });
+    _check_bulk_with_jobs($mech, $remote, "Exception removed, download triggered");
 
 
     # and removal
     $test_file->remove;
     $site_1->update_db_from_tree(sub { diag join(' ', @_) });
-    _check_bulk_without_jobs($mech, $remote);
+    _check_bulk_without_jobs($mech, $remote, "Check removal");
     is $site_2->titles->search_related(mirror_info => { mirror_exception  => 'removed_upstream' })->count, 1;
     $mech->get("/library/for-the-test");
     is $mech->status, 404;
     $mech_2->get_ok("/library/for-the-test");
+
 
     $remote->delete;
     is $site_2->search_related(mirror_infos => { mirror_origin_id  => { '!=' => undef } })->count, 0;
@@ -184,24 +211,24 @@ $site_2->add_to_mirror_origins({
 }
 
 sub _check_bulk_without_jobs {
-    my ($mech, $remote) = @_;
+    my ($mech, $remote, $msg) = @_;
     $remote->ua($mech);
     my $res = $remote->fetch_remote;
-    diag Dumper($res);
+    # diag Dumper($res);
     my $bulk_job = $remote->prepare_download($res->{data});
-    is $bulk_job->discard_changes->status, 'completed';
-    ok !$bulk_job->produced, "Nothing produced";
+    is $bulk_job->discard_changes->status, 'completed', $msg;
+    ok !$bulk_job->produced, "Nothing produced for $msg";
 }
 
 sub _check_bulk_with_jobs {
-    my ($mech, $remote) = @_;
+    my ($mech, $remote, $msg) = @_;
     $remote->ua($mech);
     my $res = $remote->fetch_remote;
     diag Dumper($res);
-    ok $res->{data};
-    ok !$res->{error};
+    ok $res->{data}, "data for $msg";
+    ok !$res->{error}, "no error for $msg";
     my $bulk_job = $remote->prepare_download($res->{data});
-    is $bulk_job->discard_changes->status, 'active';
+    is $bulk_job->discard_changes->status, 'active', $msg;
     while (my $job = $site_2->jobs->dequeue) {
         diag "Job is " . $job->task;
         $job->dispatch_job({ ua => $mech });
@@ -210,9 +237,9 @@ sub _check_bulk_with_jobs {
         diag "Produced: " . ($job->produced || "nothing");
         diag "Parent is " . ($job->bulk_job_id || "none");
     }
-    is $bulk_job->discard_changes->status, 'completed';
+    is $bulk_job->discard_changes->status, 'completed', $msg;
     diag $bulk_job->produced;
-    ok $bulk_job->produced;
+    ok $bulk_job->produced, $msg;
 }
 
 # foreach my $obj ($site_1->titles->all, $site_1->attachments->all) {
