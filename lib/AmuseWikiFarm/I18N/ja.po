@@ -1,0 +1,4221 @@
+# AmuseWiki i18n
+# This file is distributed under the same license as the AmuseWiki package.
+# Marco Pessotto <melmothx@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AmuseWiki 0.01\n"
+"POT-Creation-Date: 2014-03-06 10:16+0100\n"
+"PO-Revision-Date: 2022-01-10 16:34+0100\n"
+"Last-Translator: Marco <melmothx@gmail.com>\n"
+"Language-Team: Japan\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0\n"
+
+#: %E9%80%9A%E3%81%97
+msgid "en"
+msgstr "ja"
+
+#: 1
+msgid "Message id"
+msgstr "メッセージID"
+
+#: 2
+msgid "%1 doesn't exist"
+msgstr "％1存在しません"
+
+#: 3
+msgid "%1 jobs deleted"
+msgstr "％1ジョブ削除済"
+
+#: 4
+msgid "%1 jobs rescheduled"
+msgstr "％1ジョブ再スケジュール済"
+
+#: 5
+msgid "%1 on mobile"
+msgstr "％1モバイルで"
+
+#: 6
+msgid "%1 pp."
+msgstr "％1 pp"
+
+#: 7
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr "（スマート引用符、リンク、脚注など）"
+
+#: 8
+msgid "A blank line (or more blank lines) starts a new paragraph."
+msgstr "１行（またはそれ以上）の空白行は新しい段落を開始します。"
+
+#: 9
+msgid ""
+"A cover image was already added, but you can replace it uploading\n"
+"  a new one."
+msgstr ""
+"カバー画像は既に追加されているが、新しいものをアップロードして置き換えることが"
+"できます。"
+
+#: 10
+msgid ""
+"A footnote is a line which starts with a number between square\n"
+"  brackets, with no leading whitespace."
+msgstr "脚注は、先頭に空白なしで、角かっこで囲まれた数字で始まる行です。"
+
+#: 11
+msgid "A line which starts with 2 or more whitespaces is a quotation."
+msgstr "二つ以上の空白で始まる行は引用符です。"
+
+#: 12
+msgid "A line which starts with 20 or more whitespaces is right-aligned."
+msgstr "二十個以上の空白で始まる行は右寄せです。"
+
+#: 13
+msgid "A line which starts with 6 or more whitespaces is centered."
+msgstr "六つ以上の空白で始まる行が中央寄せです。"
+
+#: 14
+msgid ""
+"A list of links and labels to insert into the top\n"
+"  bar. One per line, first the url, then the label,\n"
+"  separated by a space, e.g. \"http://test.me Test site\""
+msgstr ""
+"トップバーに挿入するリンクとラベルのリスト。１行に１つずつ、頭にURL、その後一"
+"つの空白で区切りラベルを入れる。例： \"http://test.me Test site\""
+
+#: 15
+msgid "A new text has been created at %1"
+msgstr "％1で新しいテキストが作成されました"
+
+#: 16
+msgid "A nice title"
+msgstr "素敵なタイトル"
+
+#: 17
+msgid "A4 imposed PDF"
+msgstr "A4用紙に面付けしたPDF"
+
+#: 18
+msgid "A4 paper"
+msgstr "A4紙"
+
+#: 19
+msgid "A5 paper"
+msgstr "A5紙"
+
+#: 20
+msgid "A6 paper (also suitable for e-readers)"
+msgstr "A6紙（電子書籍リーダーにも適しています）"
+
+#: 21
+msgid "Abandoned editing in progress, feel free to check the diff and resume"
+msgstr "中止された編集が進行中です。差分を確認し再開してもかまいません。"
+
+#: 22
+msgid "Action"
+msgstr "アクション"
+
+#: 23
+msgid "Activate the blog-style look and feel"
+msgstr "ブログ・スタイルのルック・アンド・フィールをアクティブにします"
+
+#: 24
+msgid "Active"
+msgstr "アクティブ"
+
+#: 25
+msgid "Add a cover image (PNG or JPG)"
+msgstr "カバー画像を追加する（PNGまたはJPG）"
+
+#: 26
+msgid "Add a new text"
+msgstr "新しいテキストを追加"
+
+#: 27
+msgid "Add an attachment"
+msgstr "添付ファイルを追加"
+
+#: 28
+msgid "Add crop marks to the PDF"
+msgstr "PDFに断裁トンボを追加"
+
+#: 29
+msgid "Add new remote repository"
+msgstr "新しいリモートリポジトリを追加"
+
+#: 30
+msgid "Add non-breaking spaces where appropriate for the language"
+msgstr "言語によってはノーブレークスペースを追加します"
+
+#: 31
+msgid ""
+"Add paginator for text listing when the number of texts is greater than "
+"(integer)"
+msgstr ""
+"テキストの数が（整数）より大きい場合、テキストリストのページネーターを追加しま"
+"す"
+
+#: 32
+msgid "Add sections to the bookbuilder"
+msgstr "Bookbuilderにセクションを追加"
+
+#: 33
+msgid "Add the OPDS URL"
+msgstr "OPDS URLを追加"
+
+#: 34
+msgid "Add the selected parts to the bookbuilder"
+msgstr "選択した部分をbookbuilderに追加"
+
+#: 35
+msgid "Add the whole text"
+msgstr "テキスト全体を追加"
+
+#: 36
+msgid "Add this text to the bookbuilder"
+msgstr "このテキストをbookbuilderに追加"
+
+#: 37
+msgid ""
+"Additional information (full date, original title, translators, credits, etc)."
+msgstr "追加情報（完全な日付、オリジナルタイトル、翻訳者、クレジットなど）"
+
+#: 38
+msgid ""
+"After the approval of the\n"
+"  change, it will appear under %1. There is a big red\n"
+"  button for each deleted text, and you can proceed with the purging."
+msgstr ""
+"変更承認後、％1の下に表示されます。削除されたテキストごとに大きな赤いボタンが"
+"あり、パージを続行できます。"
+
+#: 39
+msgid "Age:"
+msgstr "年齢："
+
+#: 40
+msgid "Alias"
+msgstr "エイリアス"
+
+#: 41
+msgid "Alias can't point to itself"
+msgstr "エイリアスはそれ自体を指すことができません"
+
+#: 42
+msgid ""
+"All kind of lists start with one or more leading\n"
+"  whitespace."
+msgstr "全ての種類のリストは１つ以上の先頭空白で始まります。"
+
+#: 43
+msgid "All languages"
+msgstr "全ての言語"
+
+#: 44
+msgid "All revisions"
+msgstr "全てのリビジョン"
+
+#: 45
+msgid "All sites"
+msgstr "全てのサイト"
+
+#: 46
+msgid "All users"
+msgstr "全てのユーザー"
+
+#: 47
+msgid ""
+"Allow binary uploads to logged in users: list of whitespace separate file "
+"extensions"
+msgstr ""
+"ログインしたユーザーへのバイナリアップロードを許可：空白で区切った個別のファイ"
+"ル拡張子のリスト"
+
+#: 48
+msgid ""
+"Also produce slides\n"
+"  from the document. Each section, no matter how deep, will\n"
+"  produce a slide. The text outside a section is ignored, so\n"
+"  if you do not have sections, you will get empty slides. If\n"
+"  you want to exclude a section, put a comment in the section\n"
+"  body with the string “noslide”."
+msgstr ""
+"ドキュメントからスライドも作成します。各セクションは、深さに関係なくスライドを"
+"作成します。セクションの外側のテキストは無視されるため、セクションがない場合は"
+"空のスライドが表示されます。セクションを除外する場合 、「noslide」という文字列"
+"を使用し、セクション本文にコメントを入力してください。"
+
+#: 49
+msgid ""
+"An URI is a string which uniquely identifies the text\n"
+"  in the archive. In theory, it could be anything, but if you want\n"
+"  to set it yourself, please stick with the convention: author\n"
+"  name, title, language, eventual number for disambiguation, e.g.\n"
+"  errico-malatesta-anarchy-2. Please note that this is normally\n"
+"  not needed"
+msgstr ""
+"URIはアーカイブ内のテキストを一意に識別する文字列です。理論的には何でもかまわ"
+"ないが、自分で設定する場合は、著者名、タイトル、言語、明確にするための最終的な"
+"番号などの規則に従ってください。 例：errico-malatesta-anarchy-2。最後の文を「※"
+"これは通常、必要になることはありません。"
+
+#: 50
+msgid "Apache is not currently supported"
+msgstr "Apacheは現在サポートされていません"
+
+#: 51
+msgid "Archive"
+msgstr "アーカイブ"
+
+#: 52
+msgid "Archive by month"
+msgstr "月ごとのアーカイブ"
+
+#: 53
+msgid "Archive history"
+msgstr "アーカイブ履歴"
+
+#: 54
+msgid "Are you sure?"
+msgstr "よろしいですか？"
+
+#: 55
+msgid "As cover in the header"
+msgstr "ヘッダーのカバーとして"
+
+#: 56
+msgid "As regular image in the body"
+msgstr "ボディの通常の画像として"
+
+#: 57
+msgid "Assign text to nodes"
+msgstr "テキストをノードに割り当てます"
+
+#: 58
+msgid "Attach"
+msgstr "添付"
+
+#: 59
+msgid "Attached images"
+msgstr "添付画像"
+
+#: 60
+msgid "Attachments"
+msgstr "添付ファイル"
+
+#: 61
+msgid "Author"
+msgstr "著者名"
+
+#: 62
+msgid "Author and title. If one side document: title."
+msgstr "著者名とタイトル。片側が文書の場合：タイトル。"
+
+#: 63
+msgid "Authors"
+msgstr "著者名"
+
+#: 64
+msgid "Authors and topics listing"
+msgstr "著者名とトピックのリスト"
+
+#: 65
+msgid "Authors for indexing"
+msgstr "インデックス作成用の著者名"
+
+#: 66
+msgid "Automatically generated"
+msgstr "自動的に生成完了"
+
+#: 67
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr "Let's EncryptからSSL証明書を自動的に要求して更新"
+
+#: 68
+msgid "Available"
+msgstr "利用可能"
+
+#: 69
+msgid "Available category tags for header"
+msgstr "ヘッダーの利用可能なカテゴリタグ"
+
+#: 70
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
+"（悪いスペーシングの可能性があるので、）文の最後の単語のハイフネーションを避け"
+"てください"
+
+#: 71
+msgid "Back to the text"
+msgstr "テキストに戻る"
+
+#: 72
+msgid "Bad request"
+msgstr "不正なリクエスト"
+
+#: 73
+msgid "Beamer color theme"
+msgstr "ビーマーカラーテーマ"
+
+#: 74
+msgid "Beamer theme"
+msgstr "ビーマーテーマ"
+
+#: 75
+msgid "Beside topics and authors you can add more categories here"
+msgstr "トピックと著者のほかに、ここでさらにカテゴリが追加できます"
+
+#: 76
+msgid "Binding correction in millimeters (additional inner margin)"
+msgstr "ミリメートル単位のバインディング補正（追加の内側マージン）"
+
+#: 77
+msgid ""
+"Blocks of 16 pages to be folded twice and then bound\n"
+"  together."
+msgstr "各16ページのブロックを2回折りたたんでから、一緒に綴じます。"
+
+#: 78
+msgid ""
+"Blocks of 8 pages to be folded twice and then bound\n"
+"  together."
+msgstr "各8ページのブロックを2回折りたたんでから、一緒に綴じます。"
+
+#: 79
+msgid "Blog"
+msgstr "ブログ"
+
+#: 80
+msgid "Body"
+msgstr "ボディ"
+
+#: 81
+msgid "Bold"
+msgstr "ボールド"
+
+#: 82
+msgid "Bookbuilder"
+msgstr "Bookbuilder"
+
+#: 83
+msgid "Bookbuilder page limit (integer)"
+msgstr "Bookbuilderページ制限（整数）"
+
+#: 84
+msgid "Build it"
+msgstr "作成"
+
+#: 85
+msgid ""
+"By default, secondary footnotes use arabic numbering\n"
+"  between parens. With this option they will use per-page alpha\n"
+"  numbering"
+msgstr ""
+"デフォルト設定により、二次脚注は、丸括弧の間でアラビア数字を使用します。 この"
+"オプションでは、ページごとのアルファ番号を使用します"
+
+#: 86
+msgid "By number of pages, ascending"
+msgstr "昇順ページ数"
+
+#: 87
+msgid "By number of pages, descending"
+msgstr "降順のページ数"
+
+#: 88
+msgid "By relevance"
+msgstr "関連性による"
+
+#: 89
+msgid "By sku ascending"
+msgstr "SKU昇順による"
+
+#: 90
+msgid "By sku descending"
+msgstr "SKU降順による"
+
+#: 91
+msgid "By title A-Z"
+msgstr "タイトルをA-Z順に"
+
+#: 92
+msgid "By title Z-A"
+msgstr "タイトルをZ-A順に"
+
+#: 93
+msgid "CSS Theme"
+msgstr "CSSテーマ"
+
+#: 94
+msgid "Cancel"
+msgstr "キャンセルする"
+
+#: 95
+msgid "Canonical name"
+msgstr "正規名称"
+
+#: 96
+msgid "Categories"
+msgstr "カテゴリー"
+
+#: 97
+msgid "Category types for %1"
+msgstr "％1のカテゴリタイプ"
+
+#: 98
+msgid "Center all the sectioning titles."
+msgstr "セクションタイトルを全て中央寄せに。"
+
+#: 99
+msgid "Center the chapter titles."
+msgstr "章タイトルを全て中央寄せに。"
+
+#: 100
+msgid "Changes"
+msgstr "変更"
+
+#: 101
+msgid "Changes applied"
+msgstr "変更完了"
+
+#: 102
+msgid "Changes for %1"
+msgstr "％1の変更"
+
+#: 103
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr "ありがとうございます。変更が保存されました。今現在、公開待ちです。"
+
+#: 104
+msgid ""
+"Changing urls is a poor practice. Anyway, if you know what you’re\n"
+" doing, you can delete an existing text and point to another adding a\n"
+" #DELETED directive in the text header with a special syntax:"
+msgstr ""
+"URLの変更はお勧めしません。分かってやっているのであれば、既存のテキストを削除"
+"して、特別な構文でテキストヘッダーに追加する別の#DELETEDディレクティブを指定で"
+"きます。"
+
+#: 105
+msgid "Chapter"
+msgstr "章"
+
+#: 106
+msgid "Chapter and section. If one side document: chapter."
+msgstr "章およびセクション。片側が文書の場合：章。"
+
+#: 107
+msgid "Chapter, only for chapter divisions in books"
+msgstr "章（本の中身を区切る章のみ）"
+
+#: 108
+msgid "Cheatsheet for the markup"
+msgstr "マークアップ用チートシート"
+
+#: 109
+msgid "Check mail sending and send mail to:"
+msgstr "メールの内容を確認し、次の宛先に送信:"
+
+#: 110
+msgid "Choose a paper format"
+msgstr "用紙の様式選択"
+
+#: 111
+msgid "Clear the book list"
+msgstr "ブックリストをクリア"
+
+#: 112
+msgid "Click on the images to get the sample PDF"
+msgstr "画像をクリックしてサンプルPDFを取得"
+
+#: 113
+msgid "Clone"
+msgstr "クローン"
+
+#: 114
+msgid "Close"
+msgstr "閉じる"
+
+#: 115
+msgid "Code"
+msgstr "コード"
+
+#: 116
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr "編集ボックスのある編集ページの左側の列（12のうち）"
+
+#: 117
+msgid "Comma or semicolon separated list"
+msgstr "カンマまたはセミコロン区切りリスト"
+
+#: 118
+msgid "Completed"
+msgstr "完成"
+
+#: 119
+msgid "Computing of differences took"
+msgstr "相違計算済み"
+
+#: 120
+msgid "Confirm"
+msgstr "承認"
+
+#: 121
+msgid "Continuous footnote numbering across the whole document."
+msgstr "ドキュメント全体にわたる継続的な脚注の番号付け。"
+
+#: 122
+msgid "Convert to archive markup"
+msgstr "アーカイブマークアップに変換する"
+
+#: 123
+msgid "Couldn't add the text"
+msgstr "テキストを追加できませんでした"
+
+#: 124
+msgid "Couldn't automatically generate the URI!"
+msgstr "自動的にURIを生成できませんでした"
+
+#: 125
+msgid "Couldn't build that"
+msgstr "作成できませんでした"
+
+#: 126
+msgid "Create"
+msgstr "作成"
+
+#: 127
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr "新しいカテゴリタイプを作成。 小文字のASCII文字のみご使用ください"
+
+#: 128
+msgid "Create a new format"
+msgstr "新しいフォーマットを作成"
+
+#: 129
+msgid "Create a new librarian"
+msgstr "新しいライブラリアンを作成"
+
+#: 130
+msgid "Create a new special page"
+msgstr "新しい特別ページを作成"
+
+#: 131
+msgid "Create a new user"
+msgstr "新しいユーザーを作成"
+
+#: 132
+msgid ""
+"Create a public repository on GitLab, GitHub or similar services (or on your "
+"own server)."
+msgstr ""
+"gitlab、github、または類似のサービス（または自分のサーバー上）にパブリックリポ"
+"ジトリを作成"
+
+#: 133
+msgid "Create a topic alias"
+msgstr "トピックエイリアスを作成"
+
+#: 134
+msgid "Create an author alias"
+msgstr "著者のエイリアスを作成"
+
+#: 135
+msgid "Create new site"
+msgstr "新しいサイトを作成"
+
+#: 136
+msgid "Create user and mail password"
+msgstr "ユーザーとメールパスワードを作成"
+
+#: 137
+msgid "Created"
+msgstr "作成済み"
+
+#: 138
+msgid "Created by"
+msgstr "により作成済み"
+
+#: 139
+msgid "Created new text"
+msgstr "新しいテキスト作成済み"
+
+#: 140
+msgid "Current time"
+msgstr "現在の時刻"
+
+#: 141
+msgid "Custom formats for %1"
+msgstr "％1のカスタムフォーマット"
+
+#: 142
+msgid "Custom home page"
+msgstr "カスタムホームページ"
+
+#: 143
+msgid "Date"
+msgstr "日にち"
+
+#: 144
+msgid "Date of the original publication"
+msgstr "元の発行日"
+
+#: 145
+msgid "Default sorting for the category text list"
+msgstr "カテゴリテキストリストのデフォルト設定の並べ替え"
+
+#: 146
+msgid "Default value if blank:"
+msgstr "空白の場合はデフォルト設定値"
+
+#: 147
+msgid "Deferred/Deleted texts"
+msgstr "遅延/削除されたテキスト"
+
+#: 148
+msgid "Delete"
+msgstr "削除"
+
+#: 149
+msgid "Delete permanently"
+msgstr "永久に削除"
+
+#: 150
+msgid "Delete remote repository %1"
+msgstr "リモートリポジトリ％1を削除"
+
+#: 151
+msgid ""
+"Deleting a revision is safe if a text has been\n"
+"  published. Otherwise deleting it you'll lose the unpublished changes"
+msgstr ""
+"テキストが公開されている場合、リビジョンを削除してもかまいません。 それ以外の"
+"場合は削除すると、未公開の変更が失われます"
+
+#: 152
+msgid "Description"
+msgstr "説明"
+
+#: 153
+msgid "Description item"
+msgstr "説明項目"
+
+#: 154
+msgid ""
+"Description lists use a double colon to separate the\n"
+"  term and the description."
+msgstr "説明リストでは、二重コロンを使用して用語と説明を区切ります。"
+
+#: 155
+msgid "Desired URI"
+msgstr "希望するURI"
+
+#: 156
+msgid "Destination"
+msgstr "行き先"
+
+#: 157
+msgid "Did you mean:"
+msgstr "もしかしたら："
+
+#: 158
+msgid "Differences"
+msgstr "相違点"
+
+#: 159
+msgid ""
+"Directory with templates in the site repository, e.g.\n"
+"  \"templates\" (ASCII only). Do not set it unless you know\n"
+"  exactly what you are doing"
+msgstr ""
+"サイトリポジトリにテンプレートがあるディレクトリ。例：  \"テンプレート"
+"\"（ASCIIのみ）。何をしているのかよく理解していない限り、設定しないでください"
+
+#: 160
+msgid "Disable /mirror/ URL for anonymous users"
+msgstr "匿名ユーザーの/ mirror / URLを無効に"
+
+#: 161
+msgid "Display url as"
+msgstr "URLを　として表示"
+
+#: 162
+msgid "Division factor"
+msgstr "除数"
+
+#: 163
+msgid "Do not create a cover page and start the text on the first page"
+msgstr "表紙を作成して最初のページからテキストを開始しないでください"
+
+#: 164
+msgid "Do not enforce save message"
+msgstr "メッセージ保存を実施しないでください"
+
+#: 165
+msgid "Do not use bold fonts"
+msgstr "太字のフォントは使用しないでください"
+
+#: 166
+msgid "Done"
+msgstr "完成"
+
+#: 167
+msgid "Double bars"
+msgstr "ダブルバー"
+
+#: 168
+msgid "Downloads"
+msgstr "ダウンロード"
+
+#: 169
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr "例：いくつかの単語ANDタイトル： \"My Title\" AND 著者：著者OR年：2017"
+
+#: 170
+msgid "EPUB"
+msgstr "EPUB"
+
+#: 171
+msgid "EPUB (for mobile devices)"
+msgstr "EPUB（モバイル機器用）"
+
+#: 172
+msgid "ETA"
+msgstr "ETA"
+
+#: 173
+msgid "Edit"
+msgstr "編集"
+
+#: 174
+msgid "Edit attachment description"
+msgstr "添付ファイルの説明を編集"
+
+#: 175
+msgid "Edit format %1"
+msgstr "フォーマット％1を編集"
+
+#: 176
+msgid "Edit full site configuration"
+msgstr "フルサイトの設定を編集"
+
+#: 177
+msgid "Edit screen layout options"
+msgstr "画面レイアウトオプションを編集"
+
+#: 178
+msgid "Edit site %1"
+msgstr "サイト1％を編集"
+
+#: 179
+msgid "Edit site configuration"
+msgstr "サイト構成を編集"
+
+#: 180
+msgid "Edit the text you want to unpublish and add this line to the header:"
+msgstr "非公開にしたいテキストを編集して、次の行をヘッダーに追加してください："
+
+#: 181
+msgid "Edit this text"
+msgstr "このテキストを編集"
+
+#: 182
+msgid "Edit user %1"
+msgstr "ユーザー%1を編集"
+
+#: 183
+msgid "Editing"
+msgstr "編集"
+
+#: 184
+msgid "Email"
+msgstr "Eメール"
+
+#: 185
+msgid "Email sent!"
+msgstr "Eメール送信完了！"
+
+#: 186
+msgid "Email updated"
+msgstr "Eメール更新完了"
+
+#: 187
+msgid "Emails do not match"
+msgstr "Eメールが一致していません"
+
+#: 188
+msgid "Embed fonts in the EPUB file"
+msgstr "EPUBファイルにフォントを埋め込み"
+
+#: 189
+msgid "Enable \"What links here\" feature"
+msgstr "「ここにリンクするもの」機能を有効に"
+
+#: 190
+msgid "Enable search suggestions (did you mean...)"
+msgstr "検索候補を有効に（もしかしたら...）"
+
+#: 191
+msgid "Enable title ordering by SKU"
+msgstr "SKUによるタイトル順序付けを有効に"
+
+#: 192
+msgid "Erase this revision"
+msgstr "このリビジョンを削除"
+
+#: 193
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr ""
+"アップロードファイルの変換中にエラーが発生しました。  HTMLファイルでよろしいで"
+"すか？"
+
+#: 194
+msgid "Error sending mail!"
+msgstr "メール送信エラー！"
+
+#: 195
+msgid "Error while converting the HTML. Sorry."
+msgstr "HTMLの変換中にエラーが発生しました。 申し訳ありません。"
+
+#: 196
+msgid "Errors"
+msgstr "エラー"
+
+#: 197
+msgid "Estimated pages"
+msgstr "推定ページ数"
+
+#: 198
+msgid ""
+"Even if this site has a responsive, mobile-friendly layout,\n"
+"  it does not provide a dedicated mobile application."
+msgstr ""
+"本サイトは敏感でモバイルフレンドリーなレイアウトですが、専用のモバイルアプリ"
+"ケーションは提供していません。"
+
+#: 199
+msgid ""
+"Every\n"
+"  section will generate a slide. You need to do proper\n"
+"  sectioning for this to work."
+msgstr ""
+"全てのセクションはスライドを生成します。 これを機能させるには、適切なセクショ"
+"ニングを行う必要があります。"
+
+#: 200
+msgid ""
+"Exactly like 2up, but the sheets are meant to be cut\n"
+"  horizontally first and then stack on each other. This way you\n"
+"  can print, for example, A6 booklets on A4."
+msgstr ""
+"2upと同様に、シートはまず水平にカットされてから、互いに積み重ねられるように"
+"なっています。 このようにして、たとえば、A6サイズの小冊子をA4用紙に印刷するこ"
+"とができます。"
+
+#: 201
+msgid "Example"
+msgstr "例"
+
+#: 202
+msgid "Existing redirections"
+msgstr "既存のリダイレクト"
+
+#: 203
+msgid "Expected pages"
+msgstr "期待されるページ"
+
+#: 204
+msgid "Failed"
+msgstr "失敗"
+
+#: 205
+msgid "Failed to add remote repository %1"
+msgstr "リモートリポジトリ％1追加"
+
+#: 206
+msgid "Failed to remove Remote repository %1"
+msgstr "リモートリポジトリ％削除不可"
+
+#: 207
+msgid "File already in the body"
+msgstr "既にボディにあるファイル"
+
+#: 208
+msgid "File extension"
+msgstr "ファイル拡張子"
+
+#: 209
+msgid "File format not allowed"
+msgstr "ファイル形式不可"
+
+#: 210
+msgid "File too big"
+msgstr "ファイルサイズオーバー"
+
+#: 211
+msgid "File uploaded!"
+msgstr "ファイルアップロード完了！"
+
+#: 212
+msgid "Files"
+msgstr "ファイル"
+
+#: 213
+msgid "Fill with blank pages before the last page if the signature is not full."
+msgstr ""
+"署名がいっぱいでない場合は、最終ページの前の空白ページに入力してください。"
+
+#: 214
+msgid "Filter"
+msgstr "フィルター"
+
+#: 215
+msgid "Filters"
+msgstr "フィルター"
+
+#: 216
+msgid "Find the add catalogue menu."
+msgstr "カタログの追加メニューを探す。"
+
+#: 217
+msgid "Find the network library menu, or equivalent."
+msgstr "ネットワークライブラリメニュー、または同等のものを探す。"
+
+#: 218
+msgid "First"
+msgstr "最初"
+
+#: 219
+msgid "First Author and Second Author"
+msgstr "第一著者と第二著者"
+
+#: 220
+msgid "First Author, Second Author"
+msgstr "第一著者、第二著者"
+
+#: 221
+msgid "First slide"
+msgstr "最初のスライド"
+
+#: 222
+msgid "First you have to unpublish it via #DELETED."
+msgstr "まず、＃DELETEDを介して非公開にする必要があります。"
+
+#: 223
+msgid "Fix typography (smart quotes)"
+msgstr "タイポグラフィを修正（スマートクォート）"
+
+#: 224
+msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
+msgstr "二重個体折りたたみで、二枚の一六つのページ署名固定完了。"
+
+#: 225
+msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
+msgstr "三重個体折りたたみで、一枚の八つのページ署名固定完了。"
+
+#: 226
+msgid ""
+"Fixed signatures of 8 pages, to be cut horizontally, folded individually, and "
+"bound together."
+msgstr ""
+"八つのページの署名固定完了。水平方向にカットし、個別に折りたたんで、まとめま"
+"す。"
+
+#: 227
+msgid "Fixed topic list"
+msgstr "トピックリスト固定完了"
+
+#: 228
+msgid "Font preview"
+msgstr "フォントプレビュー"
+
+#: 229
+msgid "Font size"
+msgstr "フォントサイズ"
+
+#: 230
+msgid "Footnotes"
+msgstr "脚注"
+
+#: 231
+msgid ""
+"Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
+"in the body (%4), ignoring changes."
+msgstr ""
+"脚注ミスマッチ：％1脚注（％2）とボディ内の％3脚注（％4）の参照を発見し、変更を"
+"無視しました。"
+
+#: 232
+msgid "For texts from the internet use"
+msgstr "インターネットからのテキスト使用に"
+
+#: 233
+msgid "For texts without a table of content, start text on the very first page"
+msgstr "目次のないテキストの場合は、最初のページからテキストを開始"
+
+#: 234
+msgid ""
+"For topics and authors redirections, you can create them\n"
+"  here"
+msgstr "トピックと作成者のリダイレクトについては、こちらで作成可能"
+
+#: 235
+msgid "Force a line break."
+msgstr "ラインブレークを強制。"
+
+#: 236
+msgid "Force publishing"
+msgstr "強制公開"
+
+#: 237
+msgid "Format name"
+msgstr "フォーマット名"
+
+#: 238
+msgid "Format successfully created"
+msgstr "フォーマット作成済み"
+
+#: 239
+msgid "Format successfully updated"
+msgstr "フォーマット更新済み"
+
+#: 240
+msgid "Formats"
+msgstr "フォーマット"
+
+#: 241
+msgid "Full list of texts"
+msgstr "テキストの全リスト"
+
+#: 242
+msgid "Full tag cloud"
+msgstr "全タグクラウド"
+
+#: 243
+msgid "Full text search"
+msgstr "全文検索"
+
+#: 244
+msgid "Full width, fluid layout"
+msgstr "全幅、流動的レイアウト"
+
+#: 245
+msgid "General configuration"
+msgstr "一般構成"
+
+#: 246
+msgid "Generic (fits in A4 and Letter)"
+msgstr "一般（A4とレターサイズに収まる）"
+
+#: 247
+msgid ""
+"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
+"using the form you can find above. You can have one personal repository."
+msgstr ""
+"リポジトリのHTTPS URL（例：  https://example.com/git/test）を取得し、上記の"
+"フォームを使用して追加してください。 個人リポジトリを１つ持つことができます。"
+
+#: 248
+msgid "Git console"
+msgstr "Git Console"
+
+#: 249
+msgid "Git is not enabled on this site"
+msgstr "本サイトはGit無効"
+
+#: 250
+msgid ""
+"HTML code to append to each regular page, inserted\n"
+"  verbatim, so be careful"
+msgstr ""
+"通常の各ページに追加するHTMLコードは逐語的に挿入されるため、ご注意ください"
+
+#: 251
+msgid ""
+"HTML to append to each special page, inserted\n"
+"  verbatim, now you have a chance to screw up everything, so\n"
+"  be careful"
+msgstr ""
+"「HTMLを各特別ページに追加し、逐語的に挿入します。全てを台無しにする可能性があ"
+"るので、ご注意ください」"
+
+#: 252
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr "リンクの下のレイアウトのフッターに挿入するHTML"
+
+#: 253
+msgid "HTML to insert into the left sidebar"
+msgstr "左側のサイドバーに挿入するHTML"
+
+#: 254
+msgid "HTML to insert into the right sidebar"
+msgstr "右側のサイドバーに挿入するHTML"
+
+#: 255
+msgid "HTML to insert on the bottom of the layout, above the footer"
+msgstr "レイアウトの下部、フッターの上に挿入するHTML"
+
+#: 256
+msgid ""
+"HTML to insert on the top of the layout, behind the navigation bar and below "
+"the banner"
+msgstr "レイアウトの上部、ナビゲーションバーの後ろ、バナーの下に挿入するHTML"
+
+#: 257
+msgid "HTML/Word Importer"
+msgstr "HTML / Word Importer"
+
+#: 258
+msgid "Half Letter paper"
+msgstr "ハーフレター用紙"
+
+#: 259
+msgid "Heading"
+msgstr "見出し"
+
+#: 260
+msgid "Headings"
+msgstr "見出し"
+
+#: 261
+msgid "Height:"
+msgstr "高さ："
+
+#: 262
+msgid "Here you can find a preview of the Beamer themes and color themes"
+msgstr ""
+"こちらでは、ビーマーのテーマとカラーのテーマのプレビューを見つけることができま"
+"す"
+
+#: 263
+msgid ""
+"Here you can save or load your templates. The text list\n"
+"  and the cover image are excluded by the saved settings. You can\n"
+"  use this to save paper/fonts/imposition and other options."
+msgstr ""
+"ここでは、テンプレートを保存、またはロードできます。 テキストリストと表紙画像"
+"は、保存された設定によって除外されます。 これを使用して、用紙/フォント/面付け"
+"やその他のオプションを保存できます。"
+
+#: 264
+msgid "Higher division factor means narrower margins"
+msgstr "除数係数が高いほど、マージンが狭くなります"
+
+#: 265
+msgid "How are you going to access Git?"
+msgstr "どのようにGitにアクセスしますか？"
+
+#: 266
+msgid "How do I create a landing page?"
+msgstr "ランディングページを作成するにはどうすればよいですか。"
+
+#: 267
+msgid "How do I create a special page?"
+msgstr "特別ページを作成するにはどうすればよいですか。"
+
+#: 268
+msgid "How do I delete a text?"
+msgstr "テキストを削除するにはどうすればよいですか。"
+
+#: 269
+msgid "How do I modify a special page?"
+msgstr "特別ページを変更するにはどうすればよいですか。"
+
+#: 270
+msgid "How do I purge a text?"
+msgstr "テキストをパージするにはどうすればよいですか？"
+
+#: 271
+msgid "How do I redirect to another page?"
+msgstr "別ページにリダイレクトするにはどうすればよいですか？"
+
+#: 272
+msgid "How to choose a password"
+msgstr "パスワード選択方法"
+
+#: 273
+msgid ""
+"However, you can browse, search, download and read the texts\n"
+"  from mobile reading applications which support the so-called OPDS\n"
+"  protocol."
+msgstr ""
+"ただし、いわゆるOPDSプロトコルをサポートするモバイル読書アプリケーションからテ"
+"キストを閲覧、検索、ダウンロード、および読むことができます。"
+
+#: 274
+msgid "I am human"
+msgstr "私は人間です"
+
+#: 275
+msgid "I have a system user with SSH access"
+msgstr "SSHアクセスを持つシステムユーザーがいます"
+
+#: 276
+msgid "I want an imposed (ready to print) PDF"
+msgstr "面付けした（印刷準備完了）PDFが欲しい"
+
+#: 277
+msgid "I will provide my remote repository"
+msgstr "自分のリモートリポジトリを提供します"
+
+#: 278
+msgid "ISBN"
+msgstr "ISBN"
+
+#: 279
+msgid "Id"
+msgstr "Id"
+
+#: 280
+msgid ""
+"If by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+"偶然に同じ著者とタイトルの別のテキストが存在する場合は、著者、タイトル、番号を"
+"挿入する下のフィールドを使用して、目的のURIを選択してください。  my-author-my-"
+"title-1"
+
+#: 281
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+" your password will not be changed."
+msgstr ""
+"以上があなたの意図ではなかった場合は、このメールを無視してください。パスワード"
+"は変更されません。"
+
+#: 282
+msgid ""
+"If it's not the case, please open a bug report at https://github.com/melmothx/"
+"amusewiki/issues"
+msgstr ""
+"そうでない場合は、https：//github.com/melmothx/amusewiki/issuesでバグレポート"
+"を開いてください。"
+
+#: 283
+msgid "If not set %1 will be looked up from the application directory."
+msgstr ""
+"設定されていない場合、％1はアプリケーションディレクトリから検索されます。"
+
+#: 284
+msgid ""
+"If present, hide the\n"
+"  generated formats and the information box. This makes sense\n"
+"  with attachments, when the text version is poor or not\n"
+"  available and more relevance should be given to the attached\n"
+"  files."
+msgstr ""
+"存在する場合は、生成されたフォーマットと情報ボックスを非表示にします。 これ"
+"は、テキストバージョンが不十分もしくは利用できない場合に、添付ファイルにより多"
+"くの関連性を与える必要があります。"
+
+#: 285
+msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
+msgstr ""
+"0より大きい数値に設定すると、おおよそこの長さのティーザーが自動的に生成されま"
+"す"
+
+#: 286
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"  with the teaser and the cover without providing access to\n"
+"  the body"
+msgstr ""
+"テキストの公開が延期された場合は、本文へのアクセスを提供せずにティーザーと表紙"
+"を付けてリストしてください"
+
+#: 287
+msgid ""
+"If the user is allowed to publish, speed up the process skipping the revision "
+"page if there are no conflicts and automatically redirect to the published "
+"text once it is done."
+msgstr ""
+"ユーザーが公開を許可している場合、競合がなければ改訂ページをスキップしてプロセ"
+"スを高速化し、公開されたテキストに自動的にリダイレクトしてください。"
+
+#: 288
+msgid "If the user provided a mail, it's listed in the mail's CC field"
+msgstr ""
+"ユーザーがメールを提供した場合、それはメールのCCフィールドにリストされます"
+
+#: 289
+msgid ""
+"If this line\n"
+"  is present, set the publication date (on this site) to the\n"
+"  date. The date may also be in the future, deferring the\n"
+"  publication. If this line is not present, the publication\n"
+"  date will be the time of the publishing, triggering a bump\n"
+"  on RSS and special pages at each editing."
+msgstr ""
+"この行が存在する場合は、（本サイトでの）公開日を日付に設定します。 公開を延期"
+"する場合は、将来の日付でも構いません。 この行がない場合、公開日は発行時刻にな"
+"り、編集のたびにRSSと特別ページが急増します。"
+
+#: 290
+msgid ""
+"If this line is\n"
+"  present and the reason is set to something, the text will be\n"
+"  stored in the archive, but will not be published."
+msgstr ""
+"この行があり、理由が何かに設定されている場合、テキストはアーカイブに保存されま"
+"すが、公開されません。"
+
+#: 291
+msgid ""
+"If this line is present, do not create a title page,\n"
+"  but instead start the text on the very first page and\n"
+"  produce a PDF styled like an article (chapters and parts\n"
+"  will not start on a new page)."
+msgstr ""
+"この行がある場合は、タイトルページを作成せずに、最初のページからテキストを開始"
+"し、記事のようなスタイルのPDFを作成してください（章とパーツは新しいページから"
+"開始されない)。"
+
+#: 292
+msgid "If this line is present, do not display the table of contents."
+msgstr "この行がある場合は、目次を表示しないでください。"
+
+#: 293
+msgid "If you asked for imposition, select an imposition schema"
+msgstr "面付けを求めた場合は、面付け図を選択してください"
+
+#: 294
+msgid ""
+"If you edit some format options, like fonts or paper\n"
+"  dimensions, you may want to rebuild the generated files"
+msgstr ""
+"フォントや用紙サイズなどのいくつかのフォーマットオプションを編集する場合は、生"
+"成されたファイルを再構築することをお勧めします"
+
+#: 295
+msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+" this link (click on it or copy and paste it in your browser):"
+msgstr ""
+"パスワードを忘れた場合は、このリンクにアクセスして新しいパスワードを選択できま"
+"す（リンクをクリックするか、コピーしてブラウザに貼り付けてください）："
+
+#: 296
+msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr ""
+".docまたは.odtにファイルがある場合は、簡単に変換してHTMLとして保存でます。"
+
+#: 297
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"  abort the current one."
+msgstr "進行中に再構築を要求すると、現在の再構築を中止します。"
+
+#: 298
+msgid ""
+"If you use it as a teaser image, the image will also\n"
+"  be placed on the first page of the PDF. You can set its width\n"
+"  adding the following line to the header, where the value is the\n"
+"  text width ratio. 1 is the full text width, 0.5 is half, and so\n"
+"  on"
+msgstr ""
+"ティーザー画像として使用する場合、画像はPDFの最初のページにも配置されます。"
+"ヘッダーに次の行を追加して幅を設定できます。1は全幅、0.5は半幅など、値はテキス"
+"トの幅の比率です。 "
+
+#: 299
+msgid ""
+"If your site doesn’t have that, just create a special page and assign\n"
+" the uri \"index\"."
+msgstr ""
+"サイトにそれがない場合は、特別なページを作成してURI\"index\"を割り当てるだけで"
+"す。"
+
+#: 300
+msgid ""
+"If your site is multilanguage, you can create a language-specific\n"
+"  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
+"  URI \"index\", a dash, and the locale code."
+msgstr ""
+"サイトが多言語の場合は、言語固有のランディングページが作成できます。例： \"/"
+"special/ index-it\"、つまりURI \"index\"、ダッシュ、およびロケールコード。"
+
+#: 301
+msgid "Image already set as cover"
+msgstr "カバーとして既に設定されている画像"
+
+#: 302
+msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
+msgstr "画像寸法％1×％2が％3×％4ピクセルの限界を超えています"
+
+#: 303
+msgid ""
+"Image uploading may be done on the next step, when you can\n"
+"  review and preview the upload."
+msgstr ""
+"画像のアップロードは、アップロードを確認してプレビューできる次のステップで実行"
+"できます。"
+
+#: 304
+msgid "Image url"
+msgstr "画像のURL"
+
+#: 305
+msgid "Images"
+msgstr "画像"
+
+#: 306
+msgid "Imposition schemas"
+msgstr "面付け図"
+
+#: 307
+msgid "In both case you will get a reverse indentation."
+msgstr "どちらの場合も、逆インデントが発生します。"
+
+#: 308
+msgid ""
+"In the text, a number within square brackets is interpreted as a\n"
+"  footnote reference, if such footnote exists."
+msgstr ""
+"本文では、角括弧内の数字は、そのような脚注が存在する場合、脚注参照として解釈さ"
+"れます。"
+
+#: 309
+msgid ""
+"In this example, we use FBreader, but the procedure is\n"
+"  pretty much the same for all applications. All you have to do is to\n"
+"  add %1 to the network libraries."
+msgstr ""
+"この例では、FBreaderを使用しているが、手順は全てのアプリケーションでほぼ同じで"
+"す。 あなたがしなければならないのは、ネットワークライブラリに％1を追加すること"
+"です。"
+
+#: 310
+msgid "Inline elements"
+msgstr "インライン要素"
+
+#: 311
+msgid "Insert the file into the body at the cursor position"
+msgstr "カーソル位置でファイルを本文に挿入"
+
+#: 312
+msgid "Internal list of translations"
+msgstr "翻訳の内部リスト"
+
+#: 313
+msgid "Invalid email"
+msgstr "無効なEメール"
+
+#: 314
+msgid "Invalid name"
+msgstr "無効な名前"
+
+#: 315
+msgid "Invalid username"
+msgstr "無効なユーザー名"
+
+#: 316
+msgid ""
+"It is possible to have an additional set of\n"
+"  footnotes which you use to annote the text (e.g. critical\n"
+"  editions or translator's notes). They work the same way as\n"
+"  the regular footnotes, but they use curly brackets instead\n"
+"  of square brackets. Placing secondary footnote references\n"
+"  inside a regular footnote is permitted."
+msgstr ""
+"テキストに注釈を付けるために使用する追加の脚注のセットを作成することができます"
+"（重要な版や翻訳者のメモなど）。これらは通常の脚注と同じように機能しますが、角"
+"かっこではなく中かっこを使用します。通常の脚注内に二次脚注参照を配置することは"
+"許可されています。"
+
+#: 317
+msgid ""
+"It is recommended to always set a publication\n"
+"  date, so the system does not need to rely on the\n"
+"  file timestamp. Also, you should bump the\n"
+"  publication date only on major editing, leaving it\n"
+"  untouched for minor ones."
+msgstr ""
+"システムがファイルのタイムスタンプに依存する必要がないように、常に公開日を設定"
+"することをお勧めします。また、メジャー編集の場合にのみ発行日を変更し、マイナー"
+"編集の場合はそのままにしておく必要があります。"
+
+#: 318
+msgid ""
+"It works the same as for regular page, but the link is hidden. Just\n"
+" append \"/edit\" to the url of the page."
+msgstr ""
+"通常のページと同じように機能しますが、リンクは非表示になっています。ページの"
+"URLに「/ edit」を追加するだけです。"
+
+#: 319
+msgid "Italic"
+msgstr "イタリック"
+
+#: 320
+msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr "イタリック体、太字、モノ、コード、ラインブレイクなど"
+
+#: 321
+msgid "JPG, PNG and PDF are always allowed."
+msgstr "JPG、PNG、PDFは常に許可されています。"
+
+#: 322
+msgid "Job status"
+msgstr "ジョブの状況"
+
+#: 323
+msgid "Jobs"
+msgstr "ジョブ"
+
+#: 324
+msgid "Jobs (all sites)"
+msgstr "ジョブ（全てのサイト）"
+
+#: 325
+msgid "Jobs waiting before yours:"
+msgstr "あなたの前に待っているジョブ："
+
+#: 326
+msgid "Just packs 2 consecutives logical pages on a physical one."
+msgstr "2つの連続する論理ページを物理ページに詰め込むだけです。"
+
+#: 327
+msgid ""
+"Keep in mind that I’m cleaning the text and give it\n"
+"  back to you in the markup used on this site. It’s up to you to\n"
+"  check it and finally upload it. Some rarely used markup will\n"
+"  be lost in the process. Please check the preview on the next\n"
+"  step, where you can also insert images."
+msgstr ""
+"私はテキストを整理していて、このサイトで使用されているマークアップであなたに返"
+"していることを忘れないでください。確認して最終的にアップロードするのはあなた次"
+"第です。まれにしか使用されないマークアップの一部は、その過程で失われます。次の"
+"ステップでプレビューを確認してください。画像を挿入することもできます。"
+
+#: 328
+msgid "Keep in mind that some character may be missing in the required font."
+msgstr ""
+"必要なフォントにいくつかの文字が欠けている可能性があることにご注意ください。"
+
+#: 329
+msgid ""
+"Keep in mind that unusually\n"
+"  complex formatting will be stripped. Is it possible to add\n"
+"  tables and images only on the next step."
+msgstr ""
+"非常に複雑なフォーマットが削除されることにご注意ください。次のステップでのみ"
+"テーブルと画像を追加することは可能です。"
+
+#: 330
+msgid "Language"
+msgstr "言語"
+
+#: 331
+msgid "Language code of the document (2 or 3 letters)."
+msgstr "文書の言語コード（2または3文字）。"
+
+#: 332
+msgid "Language selection"
+msgstr "言語選択"
+
+#: 333
+msgid "Languages supported"
+msgstr "サポートされている言語"
+
+#: 334
+msgid "Last"
+msgstr "最後"
+
+#: 335
+msgid "Last successful rebuild"
+msgstr "最後に成功した再構築"
+
+#: 336
+msgid "Last updated"
+msgstr "最終更新"
+
+#: 337
+msgid "Latest entries"
+msgstr "最新のエントリ"
+
+#: 338
+msgid "Layout"
+msgstr "レイアウト"
+
+#: 339
+msgid "Leave it blank if you want it published right away."
+msgstr "すぐに公開する場合は、空白のままに。"
+
+#: 340
+msgid "Leave this empty to have it automatically generated"
+msgstr "空のままにすると、自動的に生成されます"
+
+#: 341
+msgid "Letter imposed PDF"
+msgstr "レターサイズの面付けしたPDF"
+
+#: 342
+msgid "Letter paper"
+msgstr "手紙用紙"
+
+#: 343
+msgid "Link"
+msgstr "リンク"
+
+#: 344
+msgid "Links"
+msgstr "リンク"
+
+#: 345
+msgid "List of paths to attach to this node, one per line."
+msgstr "このノードに添付するパスの一覧、１行に１つ。"
+
+#: 346
+msgid "List of texts on hold"
+msgstr "保留中のテキストのリスト"
+
+#: 347
+msgid "Lists"
+msgstr "リスト"
+
+#: 348
+msgid "Load"
+msgstr "ロード"
+
+#: 349
+msgid "Load another session by token"
+msgstr "トークンで別のセッションをロード"
+
+#: 350
+msgid "Loaded \"%1\" configuration"
+msgstr "ロードされた \"％1\"の設定"
+
+#: 351
+msgid "Loading"
+msgstr "ローディング中"
+
+#: 352
+msgid "Locked editing, no upload possible"
+msgstr "ロックされた編集、アップロード可能"
+
+#: 353
+msgid "Log in"
+msgstr "ログイン"
+
+#: 354
+msgid "Login"
+msgstr "ログイン"
+
+#: 355
+msgid "Logout"
+msgstr "ログアウト"
+
+#: 356
+msgid "Look into the account’s menu, there is an entry for that."
+msgstr "アカウントのメニューを調べてください。そのエントリーがあります。"
+
+#: 357
+msgid "Lost your password?"
+msgstr "パスワードを忘れましたか？"
+
+#: 358
+msgid "Magic answer"
+msgstr "マジック・アンサー"
+
+#: 359
+msgid "Magic question"
+msgstr "マジック・クエッション"
+
+#: 360
+msgid "Mail from"
+msgstr "からのメール"
+
+#: 361
+msgid "Main canonical hostname, without protocol"
+msgstr "プロトコルなしで、主要な正規のホスト名"
+
+#: 362
+msgid "Main font"
+msgstr "メインフォント"
+
+#: 363
+msgid "Main text"
+msgstr "メインテキスト"
+
+#: 364
+msgid "Maintainer's FAQ"
+msgstr "メンテナのFAQ"
+
+#: 365
+msgid "Make a link clickable"
+msgstr "リンクをクリック可能に"
+
+#: 366
+msgid "Make all links active"
+msgstr "全てのリンクをアクティブに"
+
+#: 367
+msgid "Make all non-breaking spaces explicit and visible as ~~"
+msgstr "改行しないスペースを全て明示的にし、~~として表示。"
+
+#: 368
+msgid "Manage categories"
+msgstr "カテゴリを管理"
+
+#: 369
+msgid "Max image dimension in pixels, applies to both width and height"
+msgstr "最大画像寸法はピクセル単位で、幅と高さの両方に適用されます。"
+
+#: 370
+msgid "Max size for uploads in Mb"
+msgstr "アップロードの最大サイズ（Mb）"
+
+#: 371
+msgid "Message"
+msgstr "メッセージ"
+
+#: 372
+msgid "Minimum %1 characters"
+msgstr "最小％1文字"
+
+#: 373
+msgid "Missing #title header in the text!"
+msgstr "テキストに#titleヘッダーが見つかりません！"
+
+#: 374
+msgid "Missing alias"
+msgstr "不足しているエイリアス"
+
+#: 375
+msgid "Missing character will be reported"
+msgstr "不足している文字は報告されます"
+
+#: 376
+msgid "Missing redirection"
+msgstr "リダイレクトがありません"
+
+#: 377
+msgid "Mobile"
+msgstr "モバイル"
+
+#: 378
+msgid "Mobile applications"
+msgstr "モバイルアプリケーション"
+
+#: 379
+msgid "Mode"
+msgstr "モード"
+
+#: 380
+msgid "Moderated wiki"
+msgstr "モデレートウィキ"
+
+#: 381
+msgid "Mono font"
+msgstr "モノフォント"
+
+#: 382
+msgid "More"
+msgstr "もっと"
+
+#: 383
+msgid "Move down"
+msgstr "下に移動"
+
+#: 384
+msgid "Move up"
+msgstr "上に移動"
+
+#: 385
+msgid "Multilanguage: list of whitespace separated language codes"
+msgstr "多言語：空白で区切られた言語コードのリスト"
+
+#: 386
+msgid "My description"
+msgstr "私の説明"
+
+#: 387
+msgid "N/A"
+msgstr "該当なし"
+
+#: 388
+msgid "Name"
+msgstr "名前"
+
+#: 389
+msgid "Name plural"
+msgstr "名前の複数形"
+
+#: 390
+msgid "Name singular"
+msgstr "名前の単数形"
+
+#: 391
+msgid "Network library listing screen."
+msgstr "ネットワークライブラリ一覧画面"
+
+#: 392
+msgid "Never display the cover"
+msgstr "カバーは絶対に表示しないでください"
+
+#: 393
+msgid "Never generate a table of content"
+msgstr "目次を作成しないでください"
+
+#: 394
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
+"タイトル/著者名/メモ/ロゴ/サイト名で標準の最終ページを作成しないでください"
+
+#: 395
+msgid "Never show teaser and/or cover in text lists"
+msgstr "テキストリストにティーザーやカバーを表示しないでください"
+
+#: 396
+msgid "New"
+msgstr "新着"
+
+#: 397
+msgid "New revision"
+msgstr "新リビジョン"
+
+#: 398
+msgid "New site id"
+msgstr "新しいサイトID"
+
+#: 399
+msgid "Newer first"
+msgstr "新着順"
+
+#: 400
+msgid "Newer texts"
+msgstr "より新しいテキスト"
+
+#: 401
+msgid "Next"
+msgstr "次"
+
+#: 402
+msgid "Nice title"
+msgstr "素敵なタイトル"
+
+#: 403
+msgid "No"
+msgstr "番号"
+
+#: 404
+msgid "No data available in table"
+msgstr "テーブル内はデータ無し"
+
+#: 405
+msgid "No editing yet!"
+msgstr "編集はまだです！"
+
+#: 406
+msgid "No matching records found"
+msgstr "該当する記録が見つかりません"
+
+#: 407
+msgid "No result found!"
+msgstr "結果が見つかりません！"
+
+#: 408
+msgid "No revisions to show"
+msgstr "条件に一致するリビジョンはありません"
+
+#: 409
+msgid "No text found!"
+msgstr "テキストが見つかりません！"
+
+#: 410
+msgid "No text was added yet"
+msgstr "テキストはまだ追加されていません"
+
+#: 411
+msgid "Nodes"
+msgstr "ノード"
+
+#: 412
+msgid "None"
+msgstr "無し"
+
+#: 413
+msgid ""
+"Not finished yet! Please have a look at the text and then click on \"%1\" to "
+"finalize your submission!"
+msgstr ""
+"投稿はまだ完了していません！テキストをご覧になり、「％1」をクリックして送信を"
+"完了してください。"
+
+#: 414
+msgid "Notes"
+msgstr "ノート"
+
+#: 415
+msgid "Nothing to see here, so far"
+msgstr "これまでのところ、ここには何も表示されていません"
+
+#: 416
+msgid "Nothing uploaded"
+msgstr "何もアップロードされていません"
+
+#: 417
+msgid "Notify mail: blank field will disable them"
+msgstr "メール通知：空白のフィールドには、それらを無効にします。"
+
+#: 418
+msgid "Notify to"
+msgstr "に通知"
+
+#: 419
+msgid ""
+"Now it has been aligned to the site's archive, but this means that there are "
+"some missing commits."
+msgstr ""
+"現在サイトのアーカイブに並んでいますが、それは一部欠落しているコミットがあると"
+"いうことです。"
+
+#: 420
+msgid "Now we are going to populate it and get it ready"
+msgstr "次に、データを入力して準備します"
+
+#: 421
+msgid "Number of jobs"
+msgstr "ジョブの数"
+
+#: 422
+msgid "Number of latest entries to display on the RSS (an integer)"
+msgstr "RSSに表示する最新のエントリ数（整数）"
+
+#: 423
+msgid "Number of results to show on paginated pages (an integer)"
+msgstr "ページ番号付きのページに表示する結果の数（整数）"
+
+#: 424
+msgid "OPDS"
+msgstr "OPDS"
+
+#: 425
+msgid "Older first"
+msgstr "投稿順"
+
+#: 426
+msgid "Older texts"
+msgstr "より古いテキスト"
+
+#: 427
+msgid "One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr "シートごとに1ページ。断裁トンボを追加する場合にのみ有効です"
+
+#: 428
+msgid "Open wiki"
+msgstr "オープンウィキ"
+
+#: 429
+msgid "Option templates"
+msgstr "オプションテンプレート"
+
+#: 430
+msgid "Optional, defaults to the author directive"
+msgstr "任意、著者ディレクティブにデフォルト"
+
+#: 431
+msgid ""
+"Or create a new revision, at your own peril. Having multiple\n"
+"  concurrent revisions means that, unless someone takes care\n"
+"  of it, only one will be chosen. You can go ahead, or retry\n"
+"  later, or, better, contact the librarians before proceeding,\n"
+"  to avoid wasting energies."
+msgstr ""
+"または、あなたの自己責任で新しいリビジョンを作成してください。複数のリビジョン"
+"が混在している状況では、その処理をしない限り、１つのリビジョンのみが選択されま"
+"す。時間を無駄にしないように、そのまま進むか、後で再試行するか、進む前にライブ"
+"ラリアンに連絡することをお勧めします。"
+
+#: 432
+msgid "Or log in, if you have an account."
+msgstr "または、アカウントを持っている場合は、ログインしてください。"
+
+#: 433
+msgid "Or provide an HTML file to upload"
+msgstr "またはアップロードするHTMLファイルを提供してください。"
+
+#: 434
+msgid "Or wrap it in"
+msgstr "それか、ラップして"
+
+#: 435
+msgid "Ordered List"
+msgstr "順序付きリスト"
+
+#: 436
+msgid "PDF"
+msgstr "PDF"
+
+#: 437
+msgid "PDF logo"
+msgstr "PDFロゴ"
+
+#: 438
+msgid "PDFs cannot be used in the body."
+msgstr "PDFは、本文で使用することはできません。"
+
+#: 439
+msgid "PDFs not listed in the %1 directive will be stored but ignored."
+msgstr ""
+"％1ディレクティブに記載されていないPDFファイルが保存されますが、無視されます。"
+
+#: 440
+msgid "Page not found!"
+msgstr "ページが見つかりません！"
+
+#: 441
+msgid "Page where to start a chapter"
+msgstr "章を開始するページ"
+
+#: 442
+msgid ""
+"Pages are not reordered. The first sheet contains\n"
+"  pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
+"  This is not meant to be folded."
+msgstr ""
+"ページは並べ替えされていません。第1シートにページ1・2が含まれています、第2シー"
+"トにページ3・4の様に並んでいます。\n"
+"  折り畳まれるということではありません。"
+
+#: 443
+msgid ""
+"Pages are reordered, in one or more groups\n"
+"  (signatures), then folded in half. If you have more\n"
+"  signatures, you will have to bound them together like a book.\n"
+"  With this option, you may want to decide the size of the\n"
+"  signatures. This can be a fixed value (4,8,16, etc.), the\n"
+"  whole book in a single signature, or an optimized size to\n"
+"  reduce the number of blank pages."
+msgstr ""
+"ページは、1つ以上のグループ（署名）で並べ替えられてから、半分に折りたたまれま"
+"す。より多くの署名がある場合は、本のようにそれらをまとめる必要があります。この"
+"オプションを使用すると、署名のサイズを決定する必要があります。それは、固定値"
+"（4、8、16など）か、本全体を単一の署名とするか、または空白ページの数を減らして"
+"最適なサイズにすることができます。"
+
+#: 444
+msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
+msgstr "紙の厚さ（0.10とするのが一般的な80g/m2紙に適切です）"
+
+#: 445
+msgid "Paragraphs"
+msgstr "段落"
+
+#: 446
+msgid "Parent node"
+msgstr "親ノード"
+
+#: 447
+msgid "Part"
+msgstr "部"
+
+#: 448
+msgid "Part and chapter. If one side document: part."
+msgstr "部と章。片側が文書の場合：一部。"
+
+#: 449
+msgid "Part of"
+msgstr "の一部"
+
+#: 450
+msgid "Part, for larger books only"
+msgstr "一部、大型本のみ"
+
+#: 451
+msgid "Partial selection"
+msgstr "部分的な選択"
+
+#: 452
+msgid "Password"
+msgstr "パスワード"
+
+#: 453
+msgid "Password too short"
+msgstr "パスワードが短すぎます"
+
+#: 454
+msgid "Password updated"
+msgstr "パスワード更新"
+
+#: 455
+msgid "Password, minimum 8 characters."
+msgstr "パスワード、最小8つの文字。"
+
+#: 456
+msgid "Passwords do not match"
+msgstr "パスワードが一致していません。"
+
+#: 457
+msgid "Payload"
+msgstr "ペイロード"
+
+#: 458
+msgid "Pending revisions"
+msgstr "保留中の改訂"
+
+#: 459
+msgid "Picture"
+msgstr "画像"
+
+#: 460
+msgid "Place it in the body with a description:"
+msgstr "説明付きで本文に入れてください:"
+
+#: 461
+msgid "Place it in the body without description:"
+msgstr "説明なしで本文に入れてください:"
+
+#: 462
+msgid "Place the notes on the back of the first page, impressum-style"
+msgstr "最初のページの裏に、奥付として注釈を入れてください"
+
+#: 463
+msgid "Plain PDF"
+msgstr "プレーンPDF"
+
+#: 464
+msgid ""
+"Please check your inbox, we tried to deliver a mail to the address you "
+"specified with a password reset link"
+msgstr ""
+"受信トレイを確認してください。ご登録いただいたメールアドレスにパスワード再設定"
+"のメールをお送りいたしました。"
+
+#: 465
+msgid "Please choose the Beamer color theme"
+msgstr "ビーマーのカラーテーマを選択してください。"
+
+#: 466
+msgid "Please choose the Beamer theme"
+msgstr "ビーマーのテーマを選択してください。"
+
+#: 467
+msgid "Please choose the font size"
+msgstr "フォントサイズを選択して下さい。"
+
+#: 468
+msgid "Please choose the main font"
+msgstr "主なフォントを選択してください。"
+
+#: 469
+msgid "Please choose the mono font"
+msgstr "モノフォントを選択してください。"
+
+#: 470
+msgid "Please choose the sans font"
+msgstr "サンズフォントを選択してください。"
+
+#: 471
+msgid "Please describe shortly what you did"
+msgstr "あなたがしたことを簡単に説明してください。"
+
+#: 472
+msgid "Please do not use a valuable password."
+msgstr "貴重なパスワードを使用しないでください。"
+
+#: 473
+msgid ""
+"Please do not use higher levels (part or chapter) for short articles with "
+"sections."
+msgstr ""
+"セクションのある短い記事では、より高いレベル（部または章）を使用しないでくださ"
+"い。"
+
+#: 474
+msgid "Please ensure that your system user is member of the \"%1\" group"
+msgstr ""
+"お使いのシステムのユーザーは「％1」グループのメンバーですことを確認してくださ"
+"い。"
+
+#: 475
+msgid ""
+"Please give us a username. It should *not* be a mail address.\n"
+"  Just a fancy name, so we can know that multiple uploads come\n"
+"  from the same person."
+msgstr ""
+"ユーザー名を教えてください。メールアドレスであってはなりません。\n"
+"複数のアップロードが同じ方からのものであることがわかるために必要です。"
+
+#: 476
+msgid ""
+"Please initialized it empty, without any README,license, .gitignore or "
+"similar."
+msgstr ""
+"任意のREADME、ライセンス、.gitignoreまたは類似せず、それが空に初期化してくださ"
+"い。"
+
+#: 477
+msgid ""
+"Please keep in mind that filters are language-specific\n"
+"  and may or may not be available for the language of the\n"
+"  text. If not available, they will just leave the text as\n"
+"  is."
+msgstr ""
+"フィルタは言語固有ですことをご注意ください。それでテキストの言語で利用可能です"
+"とではないこともあります。利用できない場合、テキストをそのままに残します。"
+
+#: 478
+msgid ""
+"Please keep in mind that if you see “Force publishing”\n"
+"  as action, it means that the revision has been superseded by\n"
+"  another one, so publishing this one, you'll end up reverting a\n"
+"  previous one. Try to avoid this, unless you know what you're\n"
+"  doing."
+msgstr ""
+"「強制公開」をアクションとして表示する場合は、リビジョンが別のリビジョンに置き"
+"換えられていることを意味するため、これを公開すると、前のリビジョンに戻ることに"
+"なりますのでご注意ください。何をしているのかよく理解していない限り、これは避け"
+"てください。"
+
+#: 479
+msgid "Please leave a mail if you want to be contacted about this change"
+msgstr "この変更について連絡を希望する場合は、メールを残してください。"
+
+#: 480
+msgid "Please note that wrapping tags must be placed on a line by themselves."
+msgstr ""
+"ラッピングタグは自分でライン上に配置しなければならないことにご注意ください。"
+
+#: 481
+msgid ""
+"Please note that you may want to paste from a\n"
+"  Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
+"  from word” button. This is supposed to preserve the markup."
+msgstr ""
+"「Wordから貼り付け」ボタンを使用してWord/OpenOffice/LibreOffice/HTMLドキュメン"
+"トから貼り付けたいときがあるかもしれません。マークアップを保つための機能で、使"
+"用可能です。"
+
+#: 482
+msgid ""
+"Please note: without any prefix, protocol or hostname, just\n"
+"  the bare page name as shown above. External redirecting is not\n"
+"  supported."
+msgstr ""
+"注意:プレフィックス、プロトコルまたはホストネームがなければ、上記表示されてい"
+"るようにただのベアーページとして表示されます。外部リダイレクトがサポートされて"
+"いません。"
+
+#: 483
+msgid "Please prove you are a human"
+msgstr "人間であることを証明してください。"
+
+#: 484
+msgid "Please reload your page"
+msgstr "ページを再読み込みしてください。"
+
+#: 485
+msgid "Please remove this file from the body first"
+msgstr "最初に、本文からこのファイルを削除してください。"
+
+#: 486
+msgid ""
+"Please replace the example URL in the next line with the real one with SSH "
+"protocol"
+msgstr "SSHプロトコルで現実のものと次の行の例のURLを交換してください。"
+
+#: 487
+msgid "Please select"
+msgstr "選択してください。"
+
+#: 488
+msgid "Please select the desired fonts"
+msgstr "希望するフォントを選択してください。"
+
+#: 489
+msgid "Please select the signature size:"
+msgstr "署名のサイズを選択してください。"
+
+#: 490
+msgid ""
+"Please select the size of each page including the crop marks, before the "
+"imposing"
+msgstr "面付けの前に、断裁トンボを含む各ページのサイズを選択してください。"
+
+#: 491
+msgid ""
+"Please set the URI you desire. Author (if present),\n"
+"  title and eventually a number if the URI already exists is\n"
+"  usually a good choice"
+msgstr ""
+"希望するURIを設定してください。（著者がいる場合は）著者名とタイトル、URIが既に"
+"存在している場合は数を入れるのもよい選択です。"
+
+#: 492
+msgid "Please setup the Beamer layout"
+msgstr "ビーマーレイアウトしてを設定してください"
+
+#: 493
+msgid "Please upload your file again!"
+msgstr "もう一度ファイルをアップロードしてください！"
+
+#: 494
+msgid "Poetry, bibliographies, plays, code blocks"
+msgstr "詩、書誌、演劇、コードブロック"
+
+#: 495
+msgid "Pointing to"
+msgstr "を指しています"
+
+#: 496
+msgid "Popular texts"
+msgstr "人気のテキスト"
+
+#: 497
+msgid ""
+"Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
+"  “i.”, “I.”, depending on the list type you need."
+msgstr ""
+"順番リストのプレフィックスは必要に応じて「1」、又は「a」、「A.」「i.」、「I.」"
+"になります。"
+
+#: 498
+msgid "Preview"
+msgstr "プレビュー"
+
+#: 499
+msgid "Preview box height in pixel"
+msgstr "ピクセルでプレビューボックスの高さ"
+
+#: 500
+msgid "Previous"
+msgstr "前"
+
+#: 501
+msgid "Priority"
+msgstr "優先"
+
+#: 502
+msgid "Private"
+msgstr "プライベート"
+
+#: 503
+msgid "Procedure"
+msgstr "手順"
+
+#: 504
+msgid "Processing"
+msgstr "処理中"
+
+#: 505
+msgid "Produce slides."
+msgstr "スライド作成"
+
+#: 506
+msgid "Produced"
+msgstr "作成完了"
+
+#: 507
+msgid "Publication date"
+msgstr "発行日"
+
+#: 508
+msgid "Publication date on this site"
+msgstr "本サイト上の投稿日"
+
+#: 509
+msgid "Publish"
+msgstr "投稿します"
+
+#: 510
+msgid "Published in *A nice book*, published by My House, 2014"
+msgstr "マイハウスで2014年に出版され「素敵な本」に掲載されました"
+
+#: 511
+msgid "Publisher"
+msgstr "出版社"
+
+#: 512
+msgid "Purge"
+msgstr "パージ"
+
+#: 513
+msgid ""
+"Purging means removing it completely from the archive, not just hiding it."
+msgstr ""
+"パージとはアーカイブから完全に除去することで、非表示にするだけではありません。"
+
+#: 514
+msgid ""
+"Put additional information here (original\n"
+"  title, translators, credits, etc). Footnotes go in the\n"
+"  body."
+msgstr ""
+"ここには、追加の情報（元タイトル、翻訳者、クレジット、など）を入れてください。"
+"脚注は本文に記載します。"
+
+#: 515
+msgid "Quarter Letter paper"
+msgstr "印刷用紙サイズの4分の１"
+
+#: 516
+msgid "Queue"
+msgstr "キュー"
+
+#: 517
+msgid "Quota exceeded, too many pages"
+msgstr "ページ数が多すぎて、クォータを超えています。"
+
+#: 518
+msgid "Quotes"
+msgstr "引用"
+
+#: 519
+msgid "RSS aggregator"
+msgstr "RSSアグリゲータ"
+
+#: 520
+msgid "RSS feed"
+msgstr "RSSフィード"
+
+#: 521
+msgid "Random"
+msgstr "ランダム"
+
+#: 522
+msgid "Read about the file naming scheme if you need to add files to the tree."
+msgstr ""
+"あなたがツリーにファイルを追加する必要がある場合は、ファイルの命名体系について"
+"の記事を読んでください。"
+
+#: 523
+msgid "Read the whole text..."
+msgstr "全文を読んでください。"
+
+#: 524
+msgid "Real time help"
+msgstr "リアルタイムのヘルプ"
+
+#: 525
+msgid ""
+"Rearrange the footnotes, fixing the numbering,\n"
+"  considering only the order in which they were inserted.\n"
+"  Please leave unchecked if you don't know what this\n"
+"  means. This option could be destructive, please use with\n"
+"  caution and check the result. In case you encounter\n"
+"  problems, please save the result reporting them in the\n"
+"  message. The procedure tries to be safe and will ignore\n"
+"  the change if footnotes are missing or are too many."
+msgstr ""
+"脚注が挿入された順序だけを考慮し、ナンバリングを固定し、脚注を再配置してくださ"
+"い。この文の意味が分からなければ、チェックせずに進んでください。このオプション"
+"は有害な影響を与えることがありますので、注意して使い、結果を確認してください。"
+"問題が発生する場合は、結果を保存して、メッセージで報告してください。この手順は"
+"安全で、脚注が見つからないか、脚注が多すぎる場合は、無視します。"
+
+#: 526
+msgid "Reason"
+msgstr "理由"
+
+#: 527
+msgid "Reason for deletion"
+msgstr "削除理由"
+
+#: 528
+msgid "Rebuild"
+msgstr "再構築"
+
+#: 529
+msgid "Rebuild all generated files"
+msgstr "生成されたファイルを全て再構築"
+
+#: 530
+msgid "Rebuild the generated formats"
+msgstr "生成されたフォーマットを再構築"
+
+#: 531
+msgid "Rebuilding"
+msgstr "再構築中"
+
+#: 532
+msgid "Recheck"
+msgstr "再確認"
+
+#: 533
+msgid "Redirections"
+msgstr "リダイレクト"
+
+#: 534
+msgid "Refresh and apply filters"
+msgstr "更新・フィルタを適用"
+
+#: 535
+msgid "Related projects"
+msgstr "関連プロジェクト"
+
+#: 536
+msgid "Remote repository %1 added"
+msgstr "リモートリポジトリ％1が追加"
+
+#: 537
+msgid "Remote repository %1 removed"
+msgstr "リモートリポジトリ％1が削除"
+
+#: 538
+msgid "Remove"
+msgstr "削除"
+
+#: 539
+msgid "Remove cover image"
+msgstr "表紙画像を削除"
+
+#: 540
+msgid "Remove this category"
+msgstr "このカテゴリを除去"
+
+#: 541
+msgid "Rename to"
+msgstr "へ名前を変更"
+
+#: 542
+msgid "Repeat email"
+msgstr "メールを繰り返す"
+
+#: 543
+msgid "Repeat password"
+msgstr "パスワードを再度入力してください"
+
+#: 544
+msgid "Request failed! Please report the the problem"
+msgstr "リクエスト失敗！問題を報告してください。"
+
+#: 545
+msgid "Reschedule"
+msgstr "リスケジュール"
+
+#: 546
+msgid "Reset all"
+msgstr "全てリセット"
+
+#: 547
+msgid "Reset filters"
+msgstr "リセットフィルタ"
+
+#: 548
+msgid "Reset password"
+msgstr "パスワードを再設定"
+
+#: 549
+msgid "Reset password for user %1"
+msgstr "ユーザー％1のパスワードを再設定"
+
+#: 550
+msgid "Reset to site defaults"
+msgstr "サイトのデフォルトにリセット"
+
+#: 551
+msgid "Reset your password"
+msgstr "パスワードをリセット"
+
+#: 552
+msgid "Restricted configuration variables"
+msgstr "制限付き設定変数"
+
+#: 553
+msgid "Restricted format options"
+msgstr "制限付きフォーマットオプション"
+
+#: 554
+msgid "Results per page:"
+msgstr "ページ毎の結果"
+
+#: 555
+msgid "Retrieved on DATE from URL"
+msgstr "URLから取得されたDATE"
+
+#: 556
+msgid "Retrieved on March 8, 2012 from"
+msgstr "から2012年3月8日に取得"
+
+#: 557
+msgid "Revision"
+msgstr "リビジョン"
+
+#: 558
+msgid "Revision for %1 has been deleted"
+msgstr "％1のリビジョンが削除されています"
+
+#: 559
+msgid "Roles"
+msgstr "役割"
+
+#: 560
+msgid "Root node"
+msgstr "ルートノード"
+
+#: 561
+msgid "Running headings"
+msgstr "欄外見出し"
+
+#: 562
+msgid "SSL CA certificate path (Apache)"
+msgstr "SSL CA証明書パス（アパッチ）"
+
+#: 563
+msgid "SSL certificate path (Apache)"
+msgstr "SSL証明書パス（アパッチ）"
+
+#: 564
+msgid "SSL chained certificate path (Nginx)"
+msgstr "SSLチェーン証明書パス（Nginx）"
+
+#: 565
+msgid "SSL configuration"
+msgstr "SSLの設定"
+
+#: 566
+msgid "SSL key path"
+msgstr "SSLキーパス"
+
+#: 567
+msgid "Same as above, but for duplex printers"
+msgstr "上記と同様だが、二重プリンタ用"
+
+#: 568
+msgid "Same as above, for the Archive menu"
+msgstr "上記と同様だが、アーカイブメニュー用"
+
+#: 569
+msgid "Same as above, for the Related Projects menu"
+msgstr "上記と同様だが、関連プロジェクトメニューの"
+
+#: 570
+msgid "Sans font"
+msgstr "サンセリフフォント"
+
+#: 571
+msgid "Save"
+msgstr "保存"
+
+#: 572
+msgid "Save the current settings with a name"
+msgstr "名前をつけて現在の設定を保存"
+
+#: 573
+msgid "Saved \"%1\" configuration"
+msgstr "保存された「％1」の構成"
+
+#: 574
+msgid "Search"
+msgstr "検索"
+
+#: 575
+msgid "Search filters"
+msgstr "検索フィルタ"
+
+#: 576
+msgid "Search results"
+msgstr "検索結果"
+
+#: 577
+msgid "Search this column"
+msgstr "この列で検索"
+
+#: 578
+msgid "Secondary footnotes"
+msgstr "二次脚注"
+
+#: 579
+msgid "Section"
+msgstr "セクション"
+
+#: 580
+msgid "Section and subsection. If one side document: section."
+msgstr "セクションおよびサブセクション。片側が文書の場合：セクション"
+
+#: 581
+msgid "See here for more details."
+msgstr "詳細はこちらをご覧ください。"
+
+#: 582
+msgid "See here for the full documentation."
+msgstr "完全なドキュメントについてはこちらをご覧ください。"
+
+#: 583
+msgid "See the full manual for more details (english)"
+msgstr "詳細（英語）フルマニュアルを参照してください。"
+
+#: 584
+msgid "Select"
+msgstr "選択"
+
+#: 585
+msgid "Select all"
+msgstr "全てを選択"
+
+#: 586
+msgid "Select all for deletion"
+msgstr "削除のために全てを選択"
+
+#: 587
+msgid "Select all for rescheduling"
+msgstr "再スケジューリングのために全てを選択"
+
+#: 588
+msgid "Select individual parts for the bookbuilder"
+msgstr "Bookbuilderのための個々のパーツを選択"
+
+#: 589
+msgid "Send mail"
+msgstr "メールを送信"
+
+#: 590
+msgid "Sending test mails from %1 to %2"
+msgstr "％1から％2にテストメールを送信しています。"
+
+#: 591
+msgid "Separate body fields"
+msgstr "別の本文フィールド"
+
+#: 592
+msgid "Separate footer fields"
+msgstr "別のフッターフィールド"
+
+#: 593
+msgid "Separate header fields"
+msgstr "別のヘッダーフィールド"
+
+#: 594
+msgid "Series"
+msgstr "シリーズ"
+
+#: 595
+msgid "Session sharing"
+msgstr "セッション共有"
+
+#: 596
+msgid "Set a date in the future if you want it deferred."
+msgstr "延期したい場合には、将来の日付を設定してください。"
+
+#: 597
+msgid "Settings loaded"
+msgstr "設定が読み込まれています。"
+
+#: 598
+msgid "Setup"
+msgstr "セットアップ"
+
+#: 599
+msgid "Show _MENU_ entries"
+msgstr "_MENU_エントリを表示"
+
+#: 600
+msgid "Show cheatsheet"
+msgstr "チートシートを表示"
+
+#: 601
+msgid "Show differences in other tab"
+msgstr "別のタブで違いを表示"
+
+#: 602
+msgid "Show filters"
+msgstr "フィルタを表示"
+
+#: 603
+msgid "Show preview in other tab"
+msgstr "別のタブでプレビューを表示"
+
+#: 604
+msgid "Show text type and number of pages in the listing"
+msgstr "リスト内にページ数とテキストタイプを表示"
+
+#: 605
+msgid "Show the text infobox at the bottom of the texts"
+msgstr "テキストの下部にテキストインフォボックスを表示"
+
+#: 606
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "０エントリの内、０から０までを表示"
+
+#: 607
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr "_START_ to _END_ of _TOTAL_ のエントリを表示"
+
+#: 608
+msgid "Single bars"
+msgstr "シングルバー"
+
+#: 609
+msgid "Site Map"
+msgstr "サイトマップ"
+
+#: 610
+msgid "Site already exists"
+msgstr "サイトは既に存在しています"
+
+#: 611
+msgid "Site group"
+msgstr "サイトグループ"
+
+#: 612
+msgid "Site id"
+msgstr "サイトID"
+
+#: 613
+msgid "Site mail (From field)"
+msgstr "サイトメール（Fromフィールド）"
+
+#: 614
+msgid "Site mode"
+msgstr "サイトモード"
+
+#: 615
+msgid "Site name"
+msgstr "サイト名"
+
+#: 616
+msgid "Site slogan"
+msgstr "サイトスローガン"
+
+#: 617
+msgid "Site users"
+msgstr "サイトユーザー"
+
+#: 618
+msgid "Sites"
+msgstr "サイト"
+
+#: 619
+msgid "Slides"
+msgstr "スライド"
+
+#: 620
+msgid "Slides (PDF)"
+msgstr "スライド（PDF）"
+
+#: 621
+msgid "Small Caps"
+msgstr "スモールキャピタル"
+
+#: 622
+msgid "So we can be sure we are not mailing passwords to random people"
+msgstr "手当たり次第に人にパスワードを送信していないことを確認できるように"
+
+#: 623
+msgid "Some fields are missing, all are required"
+msgstr "一部のフィールドは抜けています。全て必須です。"
+
+#: 624
+msgid "Some fields are too long"
+msgstr "一部のフィールドは長すぎます"
+
+#: 625
+msgid "Some ongoing revisions were found"
+msgstr "いくつかの進行中の改訂が見つかりました"
+
+#: 626
+msgid "Sorry, too many jobs pending, please try again later!"
+msgstr ""
+"申し訳ありませんが、あまりにも多くのジョブが保留中なので、後ほど再度お試しくだ"
+"さい！"
+
+#: 627
+msgid "Sorting:"
+msgstr "並べ替え："
+
+#: 628
+msgid "Source"
+msgstr "ソース"
+
+#: 629
+msgid "Source files"
+msgstr "ソースファイル"
+
+#: 630
+msgid "Source files with attachments"
+msgstr "添付ファイル付きのソースファイル"
+
+#: 631
+msgid "Source, notes..."
+msgstr "ソース、ノートなど"
+
+#: 632
+msgid "Sources"
+msgstr "ソース"
+
+#: 633
+msgid "Special blocks"
+msgstr "特殊ブロック"
+
+#: 634
+msgid "Special pages"
+msgstr "特殊ページ"
+
+#: 635
+msgid "Specify a whitespace-separated list of languages to activate it."
+msgstr "有効にするために空白で区切られた言語リストを指定してください。"
+
+#: 636
+msgid "Stale editing"
+msgstr "古い編集"
+
+#: 637
+msgid "Standalone HTML (printer-friendly)"
+msgstr "スタンドアロンのHTML（プリンタフレンドリー）"
+
+#: 638
+msgid "Standard"
+msgstr "標準"
+
+#: 639
+msgid "Start the document with an empty page"
+msgstr "文書を空白ページで開始"
+
+#: 640
+msgid "Started"
+msgstr "開始"
+
+#: 641
+msgid "Static page without javascript"
+msgstr "JavaScriptなしの静的ページ"
+
+#: 642
+msgid "Status"
+msgstr "ステータス"
+
+#: 643
+msgid "Status changed"
+msgstr "ステータス変更済"
+
+#: 644
+msgid "Subsection"
+msgstr "サブセクション"
+
+#: 645
+msgid "Subsubsection or description item"
+msgstr "サブサブセクション又は説明項目"
+
+#: 646
+msgid "Subtitle"
+msgstr "字幕"
+
+#: 647
+msgid "Such an URI already exists"
+msgstr "このURIは既に存在しています"
+
+#: 648
+msgid ""
+"Such an header will unpublish the text and put a\n"
+"  redirection in place, and will be listed here"
+msgstr ""
+"このようなヘッダーは、テキストを非公開に、リダイレクトを有効にして、ここにリス"
+"ト化されます"
+
+#: 649
+msgid "Such an user already exists!"
+msgstr "このユーザー名が既に存在しています！"
+
+#: 650
+msgid "Such username already exists"
+msgstr "このなユーザー名は既に存在します"
+
+#: 651
+msgid "Suggested values:"
+msgstr "推奨値"
+
+#: 652
+msgid "Summary"
+msgstr "概要"
+
+#: 653
+msgid "Supported directive in the header"
+msgstr "ヘッダーにサポートされているディレクティブ"
+
+#: 654
+msgid "Table of Contents"
+msgstr "目次"
+
+#: 655
+msgid "Tables"
+msgstr "表"
+
+#: 656
+msgid "Tag cloud with authors"
+msgstr "著者入りのタグクラウド"
+
+#: 657
+msgid "Tag cloud with topics"
+msgstr "トピック入りのタグクラウド"
+
+#: 658
+msgid "Task"
+msgstr "タスク"
+
+#: 659
+msgid "TeX options (advanced)"
+msgstr "TeXのオプション（詳細）"
+
+#: 660
+msgid "Teaser"
+msgstr "ティーザー"
+
+#: 661
+msgid "Teaser image"
+msgstr "ティーザー画像"
+
+#: 662
+msgid "Term"
+msgstr "期間"
+
+#: 663
+msgid "Test"
+msgstr "テスト"
+
+#: 664
+msgid "Tested applications, in this order of preference"
+msgstr "好みの順でテスト済みのアプリケーション"
+
+#: 665
+msgid "Text formatted with markup"
+msgstr "テキストマークアップでフォーマット"
+
+#: 666
+msgid ""
+"Text redirections are set in the text itself, using the\n"
+"  DELETED header with this syntax"
+msgstr ""
+"この構文で削除ヘッダーを使用して、テキスト自体でキストリダイレクトが設定されて"
+"いる。"
+
+#: 667
+msgid "Texts"
+msgstr "テキスト"
+
+#: 668
+msgid ""
+"The Beamer selections are relevant only if you activate the\n"
+"  slides output."
+msgstr ""
+"ビーマーの選択は、スライド出力をアクティベートする場合にのみ関連しています。"
+
+#: 669
+msgid "The OPDS address for this site is:"
+msgstr "本サイトのOPDSのアドレスは次のとおりです。"
+
+#: 670
+msgid ""
+"The PDF logo value can be either an absolute path\n"
+"  or just a filename if you choose to install it in the\n"
+"  TeXlive tree. You can do so with the following commands.\n"
+"  The last one checks if the file can be found."
+msgstr ""
+"PDFロゴ値をTeXliveツリーにインストールする場合は、PDFロゴ値は絶対パスまたは"
+"ファイル名だけのいずれかになります。以下のコマンドで行うことができます。ファイ"
+"ルが見つけれるかどうか、最後のコマンドが確認します。"
+
+#: 671
+msgid "The changes will propagate automatically once you push."
+msgstr "押すと、変更は自動的に反映されます。"
+
+#: 672
+msgid "The description for %1 has been updated"
+msgstr "％1の説明が更新されました"
+
+#: 673
+msgid ""
+"The differences between the list of footnotes and references is shown below."
+msgstr "脚注と参考文献のリストの違いを以下に示します。"
+
+#: 674
+msgid "The file uploaded is not an HTML file!"
+msgstr "アップロードされたファイルはHTMLファイルではありません！"
+
+#: 675
+msgid "The following settings provide the defaults for each format."
+msgstr "下記のような設定は、各フォーマットのデフォルトを設定します。"
+
+#: 676
+msgid "The following values are used to generate the webserver configuration."
+msgstr "下記の値は、Webサーバの構成を生成するために使用されています。"
+
+#: 677
+msgid ""
+"The generate webserver configuration will redirect\n"
+"  all the HTTP requests to HTTPS"
+msgstr ""
+"生成するWebサーバの設定は、全てのHTTPリクエストをHTTPSへリダイレクトします。"
+
+#: 678
+msgid "The logo has the site name on itself"
+msgstr "ロゴには、自身のサイト名が載っています。"
+
+#: 679
+msgid "The optional subtitle"
+msgstr "オプションの字幕"
+
+#: 680
+msgid ""
+"The page /special/index is twice special. It is assumed to be the\n"
+" default page to visit when loading the site’s root."
+msgstr ""
+"ページ/特別/インデックスは二回特別です。サイトのルートを読み込むときに訪問する"
+"デフォルトのページとして仮定されています。"
+
+#: 681
+msgid "The password will be mailed at this address"
+msgstr "パスワードは、このアドレスに送信されます"
+
+#: 682
+msgid "The reset link will expire in a hour."
+msgstr "リセットリンクは1時間で期限切れになります。"
+
+#: 683
+msgid "The revision has the following messages"
+msgstr "リビジョンには次のメッセージが表示されます"
+
+#: 684
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"  end of the document."
+msgstr "サイトは、文書の終わりにサムネイル付きのPDFを表示します 。"
+
+#: 685
+msgid "The text structure is shown below."
+msgstr "テキスト構造が下記に表示されています。"
+
+#: 686
+msgid "The text to show on the homepage preview"
+msgstr "ホームページプレビューに表示されるテキスト"
+
+#: 687
+msgid "The text was added to the bookbuilder"
+msgstr "テキストはbookbuilderに追加されました"
+
+#: 688
+msgid ""
+"The title of the document, for sorting purposes. Useful\n"
+"  if you want to strip the article, if any. A text titled “A\n"
+"  nice title” could have this set to “Nice title”, and will be\n"
+"  listed under N, not under A."
+msgstr ""
+"ソート用の文書タイトル。該当の場合は、記事を削除したい時に便利。 「A Nice "
+"Title」 というタイトルのテキストルは 「Nice Title」に設定できます。その場合はA"
+"ではなく、Nのリストに記載されます。"
+
+#: 689
+msgid "The title of the document. The only mandatory directive."
+msgstr "ドキュメントのタイトル。唯一の必須ディレクティブ。"
+
+#: 690
+msgid ""
+"The webserver needs to be reconfigured. Please execute in a root shell the "
+"following commands:"
+msgstr ""
+"ウェブサーバを再設定する必要があります。ルートシェルで下記のコマンドを実行して"
+"ください："
+
+#: 691
+msgid "The whole book in as single signature"
+msgstr "単一の署名​​がされた一冊の本"
+
+#: 692
+msgid "Then approve the change as it would be a normal publishing."
+msgstr "その後、通常の出版のように変更を承認してください。"
+
+#: 693
+msgid "Then fetch the updates from this page."
+msgstr "次に、このページから更新を取得してください。"
+
+#: 694
+msgid "There are failed jobs"
+msgstr "失敗したジョブがあります。"
+
+#: 695
+msgid "There are pending revisions"
+msgstr "保留中のリビジョンがあります。"
+
+#: 696
+msgid "These texts are missing the unique id."
+msgstr "これらのテキストは、一意のIDが欠落しています。"
+
+#: 697
+msgid "They can be texts, special texts, authors or topics."
+msgstr "テキスト、特殊なテキスト、著者またはトピックです。"
+
+#: 698
+msgid ""
+"They should be paths relative to the webserver configuration root or absolute "
+"paths (recommended)."
+msgstr "ウェブサーバの構成ルートまたは絶対パス（推奨）に相対パスですべきです。"
+
+#: 699
+msgid "This directive wants a whitespace separated list of filenames."
+msgstr "このディレクティブは、ファイル名を空白で区切ったリストが必要です。"
+
+#: 700
+msgid ""
+"This is a WYSIWYG editor. If you prefer to use\n"
+"  the wiki-like syntax leave it as is, fill the required fields\n"
+"  above and postpone the editing to the next step."
+msgstr ""
+"WYSIWYGエディタです。wikiのような構文を使用することが希望の場合は、構文をその"
+"ままにし、上記の必要なフィールドに記入し、編集をの次のステップに延期してくださ"
+"い。"
+
+#: 701
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
+"フォントの代替が必要になる可能性がある生成されたファイルのみに関連します。既に"
+"Sansフォントを使用した場合は、Webアプリケーションでは効果がありません。"
+
+#: 702
+msgid "This is the caption"
+msgstr "これはキャプションです"
+
+#: 703
+msgid ""
+"This mail has been sent to notify you about a new text\n"
+" creation, even if the uploading is not completed yet and the user\n"
+" still needs to finalize the upload. Another mail should follow soon.\n"
+" If this doesn't happen, it means that the uploading has been abandoned\n"
+" and you may want to check it out."
+msgstr ""
+"このメールは、アップロードが完了しておらずユーザーがまだアップロードを確定する"
+"必要があっても、新しいテキストの作成について通知するために送信しました。もう少"
+"ししたら、あと１つのメールが届きます。届かない場合は、アップロードが放棄され、"
+"確認が必要です。"
+
+#: 704
+msgid "This revision is already published, ignoring changes"
+msgstr "このリビジョンは、修正を無視してすでに公開されています"
+
+#: 705
+msgid "This revision is being actively edited"
+msgstr "このリビジョンは、積極的に編集されています"
+
+#: 706
+msgid "This revision is being actively edited by you"
+msgstr "このリビジョンは、積極的にあなたによって編集されています"
+
+#: 707
+msgid "This revision is being edited by someone else!"
+msgstr "このリビジョンは、他の誰かによって編集されています！"
+
+#: 708
+msgid "This section will not produce a slide"
+msgstr "このセクションでは、スライドを生成しません。"
+
+#: 709
+msgid ""
+"This site is private and mobile applications should ask for your username "
+"and\n"
+"  password to access the OPDS."
+msgstr ""
+"本サイトは非公式なので、モバイルアプリケーションが OPDSにアクセスするための"
+"ユーザー名とパスワードを求める必要があります。"
+
+#: 710
+msgid "This text does not exist"
+msgstr "このテキストは存在しません。"
+
+#: 711
+msgid "This text is a book"
+msgstr "このテキストは本です"
+
+#: 712
+msgid "This text is an article"
+msgstr "このテキストは記事です"
+
+#: 713
+msgid "This text is new"
+msgstr "このテキストは新しいです"
+
+#: 714
+msgid "This text is not available"
+msgstr "このテキストは使用できません。"
+
+#: 715
+msgid "This text is not public yet"
+msgstr "このテキストは、まだ公開されていません"
+
+#: 716
+msgid "This text is not published yet"
+msgstr "このテキストは、まだ公開されていません"
+
+#: 717
+msgid "This text will be deferred to %1"
+msgstr "このテキストは％1に延期されます"
+
+#: 718
+msgid "This user cannot be removed"
+msgstr "このユーザーは削除することはできません"
+
+#: 719
+msgid "Thumbnail"
+msgstr "サムネイル"
+
+#: 720
+msgid "Title"
+msgstr "題名"
+
+#: 721
+msgid "Title and chapter. If one side document: chapter."
+msgstr "タイトルと章。片側が文書の場合：章"
+
+#: 722
+msgid "Title and section. If one side document: section."
+msgstr "タイトルとセクション。片側が文書の場合：セクション"
+
+#: 723
+msgid "Title and subtitle. If one side document: title."
+msgstr "タイトルとサブタイトル。片側が文書の場合：タイトル"
+
+#: 724
+msgid "Title for sorting"
+msgstr "ソートするためのタイトル"
+
+#: 725
+msgid "Title, author, date..."
+msgstr "タイトル、著者名、日付など"
+
+#: 726
+msgid "Titles"
+msgstr "タイトル"
+
+#: 727
+msgid "To apply the changes, you can visit %1"
+msgstr "変更内容を適用するには、％1を訪問することができます"
+
+#: 728
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr "PDFを表示するには、セットまたは次の列をヘッダーに付けてください。"
+
+#: 729
+msgid "To preserve the whitespaces and line breakings, wrap the paragraphs with"
+msgstr "空白と改行を保持するには、段落を　でラップしてください"
+
+#: 730
+msgid "To quickly format bibliographies wrap them in"
+msgstr "参考書目を素早くフォーマットするには、　にラップしてください"
+
+#: 731
+msgid "To quickly format plays, use"
+msgstr "再生を素早くフォーマットするには、　を使用してください"
+
+#: 732
+msgid "To resume the editing you can visit the following URL"
+msgstr "編集を再開するには、次のURLを参照してください"
+
+#: 733
+msgid ""
+"To save or update the templates, you need first to save\n"
+"  the options with the \"%1\" button"
+msgstr ""
+"テンプレートを保存または更新するには、最初  「％1」ボタンでオプションを保存す"
+"ることが必要です。"
+
+#: 734
+msgid "To view the changes introduced, you can visit the following URL"
+msgstr "導入された変更を表示するには、次のURLを参照してください。"
+
+#: 735
+msgid "Toggle fullscreen editor"
+msgstr "フルスクリーンエディタをトグル"
+
+#: 736
+msgid "Topic"
+msgstr "トピック"
+
+#: 737
+msgid "Topics"
+msgstr "トピック"
+
+#: 738
+msgid "Total pages"
+msgstr "総ページ"
+
+#: 739
+msgid "Triple bars"
+msgstr "トリプルバー"
+
+#: 740
+msgid "Try a random text if unsure"
+msgstr "よくわからない場合はランダムなテキストをお試しください"
+
+#: 741
+msgid ""
+"Turn links to images into images (affects site display only, static formats "
+"have the link)"
+msgstr ""
+"画像に画像へのリンクに変更（スタティックフォーマットにリンクが含まれていますの"
+"で、サイト表示のみに影響があります）"
+
+#: 742
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"  Gmaps into widgets (affects site display only, static\n"
+"  formats have the link)"
+msgstr ""
+"YouTube, VimeoとGmapsの解説無しのリンクをウィジェットに変更（スタティック"
+"フォーマットにはリンクが含まれていますので、サイト表示のみに影響があります）"
+
+#: 743
+msgid "Two side layout"
+msgstr "二面レイアウト"
+
+#: 744
+msgid "Type"
+msgstr "タイプ"
+
+#: 745
+msgid "URI"
+msgstr "URI"
+
+#: 746
+msgid "URL"
+msgstr "URL"
+
+#: 747
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
+msgstr "新しいリモートリポジトリのURL（HTTPS、HTTPまたはGIT）"
+
+#: 748
+msgid "URL pointing to an embeddable webchat"
+msgstr "組み込み可能なウェブチャットを指すURL"
+
+#: 749
+msgid "UTC"
+msgstr "UTC"
+
+#: 750
+msgid "Unable to load the bookbuilder session"
+msgstr "Bookbuilderセッションを読み込むことができません"
+
+#: 751
+msgid "Unable to send mail from %1 to %2!"
+msgstr "％1から％2にメールを送信することができません！"
+
+#: 752
+msgid "Unbranded PDF (hide site name, logo, etc.)"
+msgstr "無印PDF（サイト名、ロゴなどが非表示）"
+
+#: 753
+msgid ""
+"Unconditionally remove all the invisible non-breaking\n"
+"  spaces in the text"
+msgstr "全ての目に見えないテキスト内の非改行スペースを無条件に削除"
+
+#: 754
+msgid "Unfortunately, the shared repository located at %1 appeared out of sync."
+msgstr "残念ながら、％1にある共有リポジトリは同期していないようでした。"
+
+#: 755
+msgid "Unique ID for the text"
+msgstr "テキストの一意ID"
+
+#: 756
+msgid "Unlimited"
+msgstr "無限"
+
+#: 757
+msgid "Unordered List"
+msgstr "順不同リスト"
+
+#: 758
+msgid "Unpublished texts"
+msgstr "未公開テキスト"
+
+#: 759
+msgid "Unsupported file type %1"
+msgstr "サポートされていないファイルタイプ％1"
+
+#: 760
+msgid "Unused attachment"
+msgstr "未使用の添付ファイル"
+
+#: 761
+msgid "Update"
+msgstr "更新"
+
+#: 762
+msgid "Update account info"
+msgstr "アカウント情報を更新"
+
+#: 763
+msgid "Update category description"
+msgstr "カテゴリ説明を更新"
+
+#: 764
+msgid "Update to current settings"
+msgstr "現在の設定を更新"
+
+#: 765
+msgid "Upload"
+msgstr "アップロード"
+
+#: 766
+msgid "Upload the image and note its name. Files are always renamed."
+msgstr ""
+"画像をアップロードし、ファイル名をメモしてください。ファイル名は常に変更されて"
+"います。"
+
+#: 767
+msgid ""
+"Uploaded and available images are shown and listed below the text preview."
+msgstr ""
+"アップロードされた利用可能な画像が示されて、テキストのプレビューの下に表示され"
+"ます。"
+
+#: 768
+msgid "Url"
+msgstr "URL"
+
+#: 769
+msgid "Use JS syntax highlight for code blocks"
+msgstr "コードブロックのためにJS構文ハイライトを使用してください。"
+
+#: 770
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
+msgstr "XeLaTeX（遅い）の代わりにLuaLaTeXを使用してください。"
+
+#: 771
+msgid "Use SSL for authenticated users"
+msgstr "認証されたユーザーのためのSSLを使用してください。"
+
+#: 772
+msgid "Use it as a teaser image adding to the header this line:"
+msgstr ""
+"ヘッダーにこの行を追加して、ティーザー画像としてそれを使用してください。"
+
+#: 773
+msgid "Use named table of contents anchors instead of numeric ones"
+msgstr "数字アンカーの代わりに名前の付けた目次アンカーを使用してください。"
+
+#: 774
+msgid "Use one of the site's formats"
+msgstr "サイトのいずれかの形式を使用してください。"
+
+#: 775
+msgid "Use optimized signatures with %1 pages each"
+msgstr "％1ページごとに最適化された署名を使用してください。"
+
+#: 776
+msgid "Use sans fonts for section titles"
+msgstr "セクションタイトルにはサンセリフフォントを使用してください。"
+
+#: 777
+msgid "Use the image as cover"
+msgstr "カバーとして画像を使用してください。"
+
+#: 778
+msgid "Useful HTML snippets"
+msgstr "便利なHTMLスニペット"
+
+#: 779
+msgid ""
+"Useful for footnotes or in the headers of the document, where you cannot put "
+"a blank line to mark a new paragraph."
+msgstr ""
+"新しい段落をマークするために空白行を置くことができない文書の脚注もしくはヘッ"
+"ダーに便利です。"
+
+#: 780
+msgid "User %1 created!"
+msgstr "ユーザー％1が作成されました！"
+
+#: 781
+msgid "User %1 deleted"
+msgstr "ユーザ％1は削除されました。"
+
+#: 782
+msgid "User %1 updated"
+msgstr "ユーザー％1は更新されました。"
+
+#: 783
+msgid "User created"
+msgstr "ユーザーが作成されました。"
+
+#: 784
+msgid "Username"
+msgstr "ユーザー名"
+
+#: 785
+msgid "Username, alphanumerical only, no special characters, no uppercase"
+msgstr "大文字、特殊文字無し、英数字のみのユーザー名"
+
+#: 786
+msgid "Users"
+msgstr "ユーザー"
+
+#: 787
+msgid ""
+"Using this token, you can load the bookbuilder settings\n"
+"  and the text list from another computer, or share it with someone\n"
+"  else. Just write it down and then load it from another computer\n"
+"  using the following form."
+msgstr ""
+"このトークンを使用して、bookbuilderの設定と別のコンピュータからのテキストリス"
+"トを読み込むことができます。または誰かと共有できます。以下のフォームを使用し簡"
+"単に書いて、別のコンピュータから読み込んでください。"
+
+#: 788
+msgid ""
+"Usually this is due to high traffic and bad luck, and it can be fixed by "
+"pushing the changes again."
+msgstr ""
+"通常、高トラフィック又は不運によるもので、再び変更をプッシュして直すことができ"
+"ます。"
+
+#: 789
+msgid "Verbatim block"
+msgstr "逐語的ブロック"
+
+#: 790
+msgid "View history"
+msgstr "閲覧履歴"
+
+#: 791
+msgid "Virtual hosts"
+msgstr "仮想ホスト"
+
+#: 792
+msgid "Virtual hosts, one per line"
+msgstr "仮想ホスト、1行に1つずつ"
+
+#: 793
+msgid "What links here"
+msgstr "ここにリンクするもの"
+
+#: 794
+msgid ""
+"When creating a new text, do not populate the publication date if not "
+"provided by the user."
+msgstr ""
+"新しいテキストを作成する際、ユーザによって提供されていない場合は発行日を移入し"
+"ないでください。"
+
+#: 795
+msgid ""
+"When you start a bookbuilder session, at the end of the\n"
+"  bookbuilder page you can see a token for sharing the session. You\n"
+"  can load it here from another device to resume what you were\n"
+"  doing."
+msgstr ""
+"Bookbuilderセッションを開始すると bookbuilderページの最後にセッションを共有す"
+"るためのトークンがあります。再開するために他デバイスからここで読み込むことがで"
+"きます。"
+
+#: 796
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr "PDFをアップロードする際に、本文に挿入する画像に分割してください。"
+
+#: 797
+msgid "Where does this text come from?"
+msgstr "このテキストはどこから来たのですか？"
+
+#: 798
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr "ホワイトリストのIP（バックアップ用、１行に１つずつ）"
+
+#: 799
+msgid "Width of the cover image in percent of the text block width."
+msgstr "テキストブロックの幅のパーセントカバー画像の幅"
+
+#: 800
+msgid "Width:"
+msgstr "幅"
+
+#: 801
+msgid ""
+"With complex structures, e.g., a chapter with\n"
+"  subsections, selecting only the chapter is likely to select only\n"
+"  the chapter's title, so probably you want to select the chapter\n"
+"  and all its subsections."
+msgstr ""
+"サブセクションのある章など複雑な構造の場合は、章を選択すると、章のタイトルのみ"
+"が選択される可能性があるため、おそらく、章とその章のサブセクション全てを選択し"
+"た方がよいと思われます。"
+
+#: 802
+msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"  be interpreted, usually not needed"
+msgstr ""
+"「verbatim」タグを使用すると、マークアップが解釈されるのを回避できます。通常は"
+"必要ありません。"
+
+#: 803
+msgid ""
+"With the bookbuilder you can change the layout (fonts,\n"
+"  dimensions, paper, margins) of the texts on the library. You can\n"
+"  also merge more texts to create your own booklet. Just try it!"
+msgstr ""
+"Bookbuilderを使用すると、ライブラリ上のレイアウト（フォント、テキストの大き"
+"さ、紙、余白）を変更することができます。また、より多くのテキストをマージして独"
+"自の冊子を作成することもできます。やってみてください！"
+
+#: 804
+msgid "Workflow"
+msgstr "ワークフロー"
+
+#: 805
+msgid "Working locally?"
+msgstr "ローカルで作業していますか？"
+
+#: 806
+msgid ""
+"Wrapping tags cannot be used inside environments\n"
+"  which require leading space (notably, you cannot use them in\n"
+"  lists)."
+msgstr ""
+"ラッピングタグは、先行スペースを必要とする環境内で使用できません（特に、リスト"
+"で使用できません）。"
+
+#: 807
+msgid "Wrong answer!"
+msgstr "答えが間違っています！"
+
+#: 808
+msgid "Wrong username or password"
+msgstr "ユーザー名またはパスワードが間違っています。"
+
+#: 809
+msgid "XeLaTeX source"
+msgstr "XeLaTeXソース"
+
+#: 810
+msgid "Yes"
+msgstr "はい"
+
+#: 811
+msgid ""
+"You MUST specify a reason, otherwise the line will have no effect.\n"
+" The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
+" etc.) is irrelevant."
+msgstr ""
+"理由を指定しないと効果がありません。ヘッダーの行の順序（「#title」、「#lang」"
+"などがある場合）は無関係です。"
+
+#: 812
+msgid "You are already logged in"
+msgstr "既にログインしています"
+
+#: 813
+msgid ""
+"You are building a collection. Please provide a title and, optionally, any "
+"other information needed for the front cover (author, subtitle, date) and the "
+"back cover (source and notes)."
+msgstr ""
+"コレクションを構築しています。 タイトルと、任意ですがフロントカバー（作者、サ"
+"ブタイトル、日付）とバックカバー（ソース、注釈）に必要な他の情報を提供してくだ"
+"さい。"
+
+#: 814
+msgid "You are logged in now!"
+msgstr "今ログインされました！"
+
+#: 815
+msgid ""
+"You can access the backup located at %1 or ask your host for help, forwarding "
+"this email"
+msgstr ""
+"％1にあるバックアップにアクセスすること、またはこのメールを転送してホストにヘ"
+"ルプを頼むことができます。"
+
+#: 816
+msgid ""
+"You can add texts to the bookbuilder clicking on the\n"
+"  “plus” icon near the downloads of each text. You can add and\n"
+"  remove the texts later."
+msgstr ""
+"各テキストのダウンロードの近くにある「プラス」アイコンにクリックすることで"
+"bookbuilderにテキストを追加できます。その後、テキストを追加したり、削除したり"
+"できます。"
+
+#: 817
+msgid ""
+"You can also link to a part of the text. Please refer to the manual for this "
+"feature"
+msgstr ""
+"テキストの一部にリンクすることができます。この機能はマニュアルを参照してくださ"
+"い。"
+
+#: 818
+msgid "You can create a peer at %1"
+msgstr "％1でピアを作成できます。"
+
+#: 819
+msgid "You can do so answering a simple question."
+msgstr "簡単な質問に答えてできます。"
+
+#: 820
+msgid "You can tune them editing them here."
+msgstr "ここで編集することでチューンできます。"
+
+#: 821
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e.g. "
+"\"title:example\""
+msgstr ""
+"次のプレフィックスを使用して特定のフィールドで単語を検索できます、例：「タイト"
+"ル：例」。"
+
+#: 822
+msgid ""
+"You can't create a new revision because the text has not been published yet"
+msgstr "テキストはまだ公開されていないので、新しいリビジョンを作成できません。"
+
+#: 823
+msgid "You have logged out"
+msgstr "ログアウトしました。"
+
+#: 824
+msgid "You may want to resume the editing of one of them"
+msgstr "いずれかの編集を再開できます。"
+
+#: 825
+msgid ""
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr "タイトルから「A」、「An」、「The」等を省略するといいです。"
+
+#: 826
+msgid "You may want to use one of these images"
+msgstr "これらの画像のいずれかを使用できます。"
+
+#: 827
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
+"暗号化されていない接続を介して認証情報が送信されました。 HTTPSに切り替えて、ロ"
+"グインして、すぐにパスワードを変更してください。起こるべきことではありません。"
+
+#: 828
+msgid "You should change your password right away at %1"
+msgstr "１％で、すぐにパスワードを変更してください。"
+
+#: 829
+msgid "Your browser does not support the audio tag."
+msgstr "お使いのブラウザは、オーディオタグをサポートしていません。"
+
+#: 830
+msgid "Your browser does not support the video tag."
+msgstr "お使いのブラウザは、videoタグをサポートしていません。"
+
+#: 831
+msgid ""
+"Your changes are saved and can be checked every time you hit Preview or Save"
+msgstr ""
+"変更が保存され、[プレビュー]や[保存]をヒットするたびに確認することができます。"
+
+#: 832
+msgid "Your chapter here..."
+msgstr "ここにあなたの章を"
+
+#: 833
+msgid "Your current bookbuilder token is:"
+msgstr "あなたの現在のbookbuilderトークンは次のとおりです。"
+
+#: 834
+msgid "Your email"
+msgstr "あなたのメールアドレス"
+
+#: 835
+msgid "Your file is ready"
+msgstr "あなたのファイルは準備ができています。"
+
+#: 836
+msgid "Your part here..."
+msgstr "ここにあなたの部分を"
+
+#: 837
+msgid "Your password is %1."
+msgstr "あなたのパスワードは％1です。"
+
+#: 838
+msgid "Your password was reset, now you can login with it"
+msgstr ""
+"あなたのパスワードがリセットされました。今はそれを使ってログインできます。"
+
+#: 839
+msgid "Your section here..."
+msgstr "ここにあなたのセクションを"
+
+#: 840
+msgid "Your sub-sub-section (or description heading) here..."
+msgstr "ここにあなたのサブサブセクション（または説明の見出し）を"
+
+#: 841
+msgid "Your subsection here..."
+msgstr "ここにあなたのサブセクションを"
+
+#: 842
+msgid "Your user at %1 has been created."
+msgstr "％1でユーザーが作成されました。"
+
+#: 843
+msgid "Your username is %1."
+msgstr "あなたのユーザ名は％1です。"
+
+#: 844
+msgid "aborted"
+msgstr "中止"
+
+#: 845
+msgid "about, links..."
+msgstr "概要、リンクなど"
+
+#: 846
+msgid "activate to sort column ascending"
+msgstr "列の昇順にソートするために有効にする"
+
+#: 847
+msgid "activate to sort column descending"
+msgstr "列の降順にソートするために有効にする"
+
+#: 848
+msgid "active"
+msgstr "アクティブ"
+
+#: 849
+msgid "affects only the frontend webserver configuration"
+msgstr "フロントエンドのWebサーバの設定のみに影響があります。"
+
+#: 850
+msgid "any"
+msgstr "どれでも"
+
+#: 851
+msgid "automatically generated if not present, using author and title"
+msgstr "存在しない場合は、著者とタイトルを使用して自動生成"
+
+#: 852
+msgid "code and monospace"
+msgstr "コードとモノスペース"
+
+#: 853
+msgid "comma separated list"
+msgstr "カンマ区切りのリスト"
+
+#: 854
+msgid "completed"
+msgstr "完成"
+
+#: 855
+msgid "conflict"
+msgstr "競合"
+
+#: 856
+msgid "description"
+msgstr "説明"
+
+#: 857
+msgid "displayed text"
+msgstr "表示されるテキスト"
+
+#: 858
+msgid "edit, commit..."
+msgstr "編集、コミットなど"
+
+#: 859
+msgid "editing"
+msgstr "編集"
+
+#: 860
+msgid "emphasis"
+msgstr "強調"
+
+#: 861
+msgid "failed"
+msgstr "失敗"
+
+#: 862
+msgid "filtered from _MAX_ total entries"
+msgstr "_MAX_ total エントリーからフィルタリング"
+
+#: 863
+msgid "for code, monospaced"
+msgstr "コードの場合は、等幅"
+
+#: 864
+msgid "for display"
+msgstr "ディスプレイ用"
+
+#: 865
+msgid "for poetry"
+msgstr "詩用"
+
+#: 866
+msgid "generic sectioning, good for articles"
+msgstr "記事に適している一般的な区分け"
+
+#: 867
+msgid "if you want to use a custom size, you need to set both width and height"
+msgstr ""
+"カスタムサイズを使用したい場合は、幅と高さの両方を設定する必要があります。"
+
+#: 868
+msgid "image"
+msgstr "画像"
+
+#: 869
+msgid "left"
+msgstr "左"
+
+#: 870
+msgid "mandatory"
+msgstr "必須"
+
+#: 871
+msgid "markup *not* interpreted"
+msgstr "マークアップ* 解釈*されていません"
+
+#: 872
+msgid "max %1 Mb"
+msgstr "最大％1メガビット"
+
+#: 873
+msgid "minutes"
+msgstr "分"
+
+#: 874
+msgid "new-example-uri"
+msgstr "新-例-URI"
+
+#: 875
+msgid "only lowercase ASCII and hyphens"
+msgstr "小文字のASCIIとハイフンのみ"
+
+#: 876
+msgid "or"
+msgstr "もしくは"
+
+#: 877
+msgid "ordered item"
+msgstr "注文したアイテム"
+
+#: 878
+msgid "overstriked"
+msgstr "重ね打ち"
+
+#: 879
+msgid "pending"
+msgstr "保留中"
+
+#: 880
+msgid "plain PDF"
+msgstr "プレーンPDF"
+
+#: 881
+msgid "plain text source"
+msgstr "プレーンテキストソース"
+
+#: 882
+msgid "processing"
+msgstr "処理中"
+
+#: 883
+msgid "published"
+msgstr "公開済み"
+
+#: 884
+msgid "revision"
+msgstr "リビジョン"
+
+#: 885
+msgid "right"
+msgstr "右"
+
+#: 886
+msgid "string"
+msgstr "ストリング"
+
+#: 887
+msgid "strong emphasis"
+msgstr "強い強調"
+
+#: 888
+msgid "sub-sub-section"
+msgstr "サブサブセクション"
+
+#: 889
+msgid "subscript"
+msgstr "添字"
+
+#: 890
+msgid "subsection"
+msgstr "サブセクション"
+
+#: 891
+msgid "superscript"
+msgstr "上つき"
+
+#: 892
+msgid "taken"
+msgstr "使用中"
+
+#: 893
+msgid "texts by authors, title, topic..."
+msgstr "著者、タイトル、トピック等ごとのテキスト"
+
+#: 894
+msgid "texts sorted by author"
+msgstr "著者順に並べ替えされたテキスト"
+
+#: 895
+msgid "texts sorted by title"
+msgstr "タイトル順に並べ替えされたテキスト"
+
+#: 896
+msgid "the author of the text (as displayed)"
+msgstr "テキストの著者（表示されているように）"
+
+#: 897
+msgid "this text will be unpublished"
+msgstr "このテキストは未公開となります"
+
+#: 898
+msgid "topic"
+msgstr "トピック"
+
+#: 899
+msgid "unordered item"
+msgstr "順不同項目"
+
+#: 900
+msgid "very strong emphasis"
+msgstr "非常に強い強調"
+
+#: 901
+msgid "with description"
+msgstr "説明付き"
+
+#: 902
+msgid "without description"
+msgstr "説明なし"
+
+#: 903
+msgid ""
+"“Stale editing” means that the revision was abandoned\n"
+"  while editing, but it's still there, in case someone wants to pick\n"
+"  it up when editing a text."
+msgstr ""
+"「古い編集」とは編集中に修正が中止されたという意味ですが、誰かが再度テキストの"
+"編集をする時のために、まだ残されています。"
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "texts sorted by topic"
+
+#~ msgid "RSS"
+#~ msgstr "RSS"
+
+#~ msgid "syndicate"
+#~ msgstr "syndicate"
