@@ -3,8 +3,10 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 223;
+use Test::More;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
+plan tests => 177 + 2 * scalar(keys %{ AmuseWikiFarm::Utils::Amuse::known_langs() });
 
 use File::Spec::Functions qw/catfile catdir/;
 use File::Path qw/make_path/;

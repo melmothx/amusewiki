@@ -2,7 +2,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 138;
+use Test::More;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf-8)";
 binmode $builder->failure_output, ":encoding(utf-8)";
@@ -16,6 +16,8 @@ use AmuseWikiFarm::Archive::Lexicon;
 use Locale::PO;
 use Data::Dumper;
 use AmuseWikiFarm::Utils::Amuse ();
+
+plan tests => 12 + ((scalar(keys %{ AmuseWikiFarm::Utils::Amuse::known_langs() }) - 2) * 6);
 
 my $temp_root = Path::Tiny->tempdir(CLEANUP => !DEBUG);
 my $temp = path($temp_root, qw/amw site_files locales/);

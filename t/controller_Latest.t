@@ -1,13 +1,16 @@
 use strict;
 use warnings;
-use Test::More tests => 44;
+use Test::More;
 use Data::Dumper;
+use AmuseWikiFarm::Utils::Amuse;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf8)";
 binmode $builder->failure_output, ":encoding(utf8)";
 binmode $builder->todo_output,    ":encoding(utf8)";
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
+plan tests => 21 + scalar(keys %{ AmuseWikiFarm::Utils::Amuse::known_langs() });
 
 use Text::Amuse::Compile::Utils qw/write_file read_file/;
 use File::Spec::Functions qw/catfile catdir/;
