@@ -35,6 +35,7 @@ our @EXPORT_OK = qw/muse_file_info
                     to_json
                     from_json
                     amw_meta_stripper
+                    unicode_uri_fragment
                     cover_filename_is_valid
                     muse_filename_is_valid/;
 
@@ -118,7 +119,7 @@ sub muse_file_info {
         !defined $parsed_header{sortauthors} and
         $header->author =~ /\w/) {
         Dlog_debug { "Using #author instead of #authors $_" . $header->author } \%parsed_header;
-        push @cats, _parse_category(author => muse_format_line(html => $header->author, $lang));
+        push @cats, _parse_category(author => muse_format_line(html => $header->author, $lang), $opts);
     }
 
     # defaults
@@ -151,7 +152,7 @@ sub muse_file_info {
                 # we got the separator, so split it.
                 foreach my $p (grep { /\w/ } split($separator, $mstring)) {
                     # convert to html and build the structure.
-                    push @cats, _parse_category($ctype->{name}, muse_format_line(html => $p, $lang));
+                    push @cats, _parse_category($ctype->{name}, muse_format_line(html => $p, $lang), $opts);
                 }
             }
             delete $details->{$f};
@@ -365,6 +366,20 @@ are found.
 # 2000 requests => 1.258 seconds
 # new algo => 0.451 seconds
 
+sub unicode_uri_fragment {
+    my $orig = my $dirtyline = shift;
+    # remove everything which is not a word and replace with -
+    unless ((defined $dirtyline) and ($dirtyline ne "")) {
+        return "";
+    }
+    $dirtyline =~ s/\W/-/g;
+    $dirtyline =~ s/-+/-/;
+    $dirtyline = substr(lc($dirtyline), 0, 50);
+    $dirtyline =~ s/\A-+//;
+    $dirtyline =~ s/-+\z//;
+    return $dirtyline;
+}
+
 sub muse_naming_algo {
     my $dirtyline = shift;
     unless ((defined $dirtyline) and ($dirtyline ne "")) {
@@ -497,8 +512,9 @@ sub muse_get_full_path {
 }
 
 sub _parse_category {
-    my ($type, $string) = @_;
+    my ($type, $string, $opts) = @_;
     return unless $type && $string;
+    $opts ||= {};
     # given that we get the HTML, first we strip the tags.
     $string =~ s/<.*?>//g;
     unless ($string =~ /\w/) {
@@ -508,7 +524,7 @@ sub _parse_category {
     # then we decode the entities
     $string = decode_entities($string);
     log_debug { "Parsing $string" };
-    my $uri = muse_naming_algo($string);
+    my $uri = $opts->{category_uri_use_unicode} ? unicode_uri_fragment($string) : muse_naming_algo($string);
     return {
             name => encode_entities($string, q{<>&"'}),
             uri => $uri,

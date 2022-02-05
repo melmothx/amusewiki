@@ -6,7 +6,7 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
-use AmuseWikiFarm::Utils::Amuse qw/muse_naming_algo/;
+use AmuseWikiFarm::Utils::Amuse qw/muse_naming_algo unicode_uri_fragment/;
 use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
@@ -126,9 +126,9 @@ sub category_list_display :Chained('category') :PathPart('') :Args(0) {
 
 sub select_texts :Chained('category') :PathPart('') :CaptureArgs(1) {
     my ($self, $c, $uri) = @_;
-    my $canonical = muse_naming_algo($uri);
-    my $cat = $c->stash->{categories_rs}->find({ uri => $canonical });
     my $site = $c->stash->{site};
+    my $canonical = $site->category_uri_use_unicode ? unicode_uri_fragment($uri) : muse_naming_algo($uri);
+    my $cat = $c->stash->{categories_rs}->find({ uri => $canonical });
     if ($cat) {
         log_debug { "Category id is " . $cat->id; };
         if ($cat->uri ne $uri) {

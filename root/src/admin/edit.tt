@@ -608,6 +608,17 @@ kpsewhich mylogo.pdf
       </div>
     </div>
 
+    <div class="form-group">
+      <div class="col-sm-offset-6 col-sm-6">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.category_uri_use_unicode %]checked="checked"[% END %]
+                 name="category_uri_use_unicode" />
+          [% loc('Allow Unicode URIs for categories (author, topics). Recommended for CJK languages.') %]
+        </label>
+      </div>
+    </div>
+
 
     <div class="form-group">
       <label class="col-sm-6 control-label">

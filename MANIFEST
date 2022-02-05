@@ -1870,6 +1870,7 @@ t/text-structure.t
 t/title-rs.t
 t/topic-loc-291.t
 t/topic-management.t
+t/unicode-category-uri.t
 t/unicode-exception-old-cat.t
 t/update-or-create.t
 t/uri-clash-119.t

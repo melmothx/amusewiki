@@ -2087,7 +2087,11 @@ sub index_file {
         return;
     }
 
-    my $details = muse_file_info($file, $self->repo_root, { category_types => $self->custom_category_types });
+    my $details = muse_file_info($file, $self->repo_root, {
+                                                           category_types => $self->custom_category_types,
+                                                           category_uri_use_unicode => $self->category_uri_use_unicode,
+                                                          });
+    Dlog_debug { "Details are $_"  } $details;
     # unparsable
     return unless $details;
 
@@ -3419,6 +3423,7 @@ sub update_from_params {
                            allow_binary_uploads
                            display_latest_entries_on_special
                            bootstrap_alt_theme
+                           category_uri_use_unicode
                           /) {
         my $value = delete $params->{$option} || '';
         # clean it up from leading and trailing spaces
@@ -3861,6 +3866,10 @@ sub footer_layout_html {
 
 sub display_latest_entries_on_special {
     return shift->get_option('display_latest_entries_on_special') // 1;
+}
+
+sub category_uri_use_unicode {
+    return shift->get_option('category_uri_use_unicode') || '';
 }
 
 sub titles_available_sortings {
