@@ -181,6 +181,8 @@ sub datatables_lang :Chained('api') :PathPart('datatables-lang') :Args(0) {
                  eo => 'Esperanto',
                  zh => 'Chinese',
                  ja => 'Japanese',
+                 tl => 'English',
+                 ceb => 'English',
                 );
     my $lang = $c->stash->{current_locale_code} || 'en';
     if (my $data_file = $langs{$lang}) {

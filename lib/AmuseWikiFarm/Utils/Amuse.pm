@@ -933,6 +933,8 @@ sub known_langs {
             eo => 'Esperanto',
             zh => '中文',
             ja => '日本語',
+            tl => 'Tagalog',
+            ceb => 'Cebuano',
            };
 }
 

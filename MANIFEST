@@ -798,6 +798,7 @@ lib/AmuseWikiFarm/Controller/User.pm
 lib/AmuseWikiFarm/Controller/Utils.pm
 lib/AmuseWikiFarm/I18N/ar.po
 lib/AmuseWikiFarm/I18N/bg.po
+lib/AmuseWikiFarm/I18N/ceb.po
 lib/AmuseWikiFarm/I18N/cs.po
 lib/AmuseWikiFarm/I18N/da.po
 lib/AmuseWikiFarm/I18N/de.po
@@ -812,6 +813,7 @@ lib/AmuseWikiFarm/I18N/he.po
 lib/AmuseWikiFarm/I18N/hr.po
 lib/AmuseWikiFarm/I18N/id.po
 lib/AmuseWikiFarm/I18N/it.po
+lib/AmuseWikiFarm/I18N/ja.po
 lib/AmuseWikiFarm/I18N/messages.pot
 lib/AmuseWikiFarm/I18N/mk.po
 lib/AmuseWikiFarm/I18N/nl.po
@@ -821,6 +823,7 @@ lib/AmuseWikiFarm/I18N/ru.po
 lib/AmuseWikiFarm/I18N/sq.po
 lib/AmuseWikiFarm/I18N/sr.po
 lib/AmuseWikiFarm/I18N/sv.po
+lib/AmuseWikiFarm/I18N/tl.po
 lib/AmuseWikiFarm/I18N/tr.po
 lib/AmuseWikiFarm/I18N/zh.po
 lib/AmuseWikiFarm/Log/Contextual.pm
