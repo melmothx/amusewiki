@@ -3,13 +3,15 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 69;
+use Test::More tests => 78;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Utils::Amuse;
+use Test::WWW::Mechanize::Catalyst;
+use URI::Escape;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf-8)";
@@ -79,15 +81,18 @@ check_uri_fragment("问答", "问答");
 check_uri_fragment("伦佐·纳威托", "伦佐-纳威托");
 check_uri_fragment("虚无主义", "虚无主义");
 check_uri_fragment("厄休拉·勒古恩", "厄休拉-勒古恩");
-check_uri_fragment("虚构文学", "虚构文学");
+check_uri_fragment("虚  构  文  学", "虚-构-文-学");
 check_uri_fragment("加文·曼德尔-格利森", "加文-曼德尔-格利森");
-
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 $schema->resultset('Job')->delete;
 my $site = create_site($schema, '0unicodeuris0');
 $site->site_options->update_or_create({ option_name => 'category_uri_use_unicode',
                                         option_value => 1 });
+
+my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => $site->canonical);
+
 
 {
     my ($rev, $err) =  $site->create_new_text({ author => 'pinco',
@@ -98,7 +103,7 @@ $site->site_options->update_or_create({ option_name => 'category_uri_use_unicode
 
     my $muse = <<'MUSE';
 #title 等等
-#author 来 来/来
+#author &来^ 来</来!
 #topics 等等, /test/, <xx>, "test-me", //等等等等//, 就是这个
 #lang en
 #pubdate 2022-02-05T09:24:24
@@ -113,6 +118,11 @@ MUSE
 ok $site->categories->find({ type => 'topic', uri => '等等' });
 ok $site->categories->find({ type => 'author', uri => '来-来-来' });
 
+$mech->get_ok('/category/topic/等等');
+is $mech->uri->path, '/category/topic/' . uri_escape_utf8('等等');
+$mech->get_ok('/category/author/来-来-来');
+is $mech->uri->path, '/category/author/' . uri_escape_utf8('来-来-来');
+
 $site->site_options->update_or_create({ option_name => 'category_uri_use_unicode',
                                         option_value => 0 });
 
@@ -122,6 +132,14 @@ $site->get_from_storage->compile_and_index_files([$site->titles->first->filepath
 ok !$site->categories->find({ type => 'topic', uri => '等等' });
 ok $site->categories->find({ type => 'topic', uri => 'deng-deng' });
 ok !$site->categories->find({ type => 'author', uri => '来-来-来' });
+
+$mech->get_ok('/category/topic/等等');
+is $mech->uri->path, '/category/topic/deng-deng';
+$mech->get_ok('/category/author/来-来-来');
+is $mech->uri->path, '/category/author/lai-lai-lai', "redirected to unidecode";
+
+
+$mech->get_ok('/category/topic/deng-deng');
 
 sub check_uri_fragment {
     my ($piece, $exp) = @_;

@@ -373,7 +373,7 @@ sub unicode_uri_fragment {
         return "";
     }
     $dirtyline =~ s/\W/-/g;
-    $dirtyline =~ s/-+/-/;
+    $dirtyline =~ s/-+/-/g;
     $dirtyline = substr(lc($dirtyline), 0, 50);
     $dirtyline =~ s/\A-+//;
     $dirtyline =~ s/-+\z//;

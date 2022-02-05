@@ -614,7 +614,7 @@ kpsewhich mylogo.pdf
           <input type="checkbox"
                  [% IF esite.category_uri_use_unicode %]checked="checked"[% END %]
                  name="category_uri_use_unicode" />
-          [% loc('Allow Unicode URIs for categories (author, topics). Recommended for CJK languages.') %]
+          [% loc('Allow Unicode URIs for categories (author, topics). Recommended for non-latin scripts.') %]
         </label>
       </div>
     </div>
