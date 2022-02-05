@@ -68,6 +68,9 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
     my $site    = $c->stash->{site};
     my $f_class = $c->stash->{f_class} or die;
 
+    if ($site->category_uri_use_unicode) {
+        $c->stash(pop_uri_field_to_the_top => 1);
+    }
 
     # create a working copy of the params
     my $params = { %{$c->request->body_params} };
