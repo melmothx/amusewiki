@@ -932,6 +932,7 @@ sub known_langs {
             bg => 'Български',
             eo => 'Esperanto',
             zh => '中文',
+            ja => '日本語',
            };
 }
 
