@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2021-12-30 17:02+0800\n"
+"PO-Revision-Date: 2022-01-04 15:19+0800\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: English\n"
 "Language: zh_CN\n"
@@ -255,7 +255,7 @@ msgid "Authors and topics listing"
 msgstr "作者和主题"
 
 msgid "Authors for indexing"
-msgstr "用于索引的作者"
+msgstr "作者（索引）"
 
 msgid "Automatically generated"
 msgstr "自动生成的"
@@ -960,7 +960,7 @@ msgid ""
 msgstr "然而，你可以用支持所谓OPDS的移动阅读程序浏览、搜索、下载、阅读文本。"
 
 msgid "I am human"
-msgstr "我是人类"
+msgstr "我是人"
 
 msgid "I have a system user with SSH access"
 msgstr "我是有SSH权限的系统用户"
@@ -1284,7 +1284,7 @@ msgid "Leave this empty to have it automatically generated"
 msgstr "想要自动生成的话，留空"
 
 msgid "Letter imposed PDF"
-msgstr "强制信纸的PDF"
+msgstr "信纸排版的PDF"
 
 msgid "Letter paper"
 msgstr "信纸尺寸"
@@ -1574,7 +1574,7 @@ msgstr ""
 "书馆管理员。以避免浪费精力。"
 
 msgid "Or log in, if you have an account."
-msgstr "或者登录，如果你有账户。"
+msgstr "有帐号的话，登录"
 
 msgid "Or provide an HTML file to upload"
 msgstr "或者提供用以上传的HTML文件"
@@ -1667,7 +1667,7 @@ msgid "Passwords do not match"
 msgstr "密码不匹配"
 
 msgid "Payload"
-msgstr "有效载荷"
+msgstr "载荷"
 
 msgid "Pending revisions"
 msgstr "等待中的修订"
@@ -2957,7 +2957,7 @@ msgid "You can create a peer at %1"
 msgstr "你可以在%1创建一个对等体"
 
 msgid "You can do so answering a simple question."
-msgstr "你可以通过回答一个简单的问题来做到这一点。"
+msgstr "回答一个简单的问题"
 
 msgid "You can tune them editing them here."
 msgstr "你可以在这里调整编辑它们。"
@@ -3105,7 +3105,7 @@ msgid "for code, monospaced"
 msgstr "代码用，使用单空格"
 
 msgid "for display"
-msgstr "显示用"
+msgstr "显示"
 
 msgid "for poetry"
 msgstr "诗歌用"
