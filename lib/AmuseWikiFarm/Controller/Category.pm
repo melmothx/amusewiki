@@ -144,7 +144,7 @@ sub select_texts :Chained('category') :PathPart('') :CaptureArgs(1) {
                  );
     }
     else {
-        $c->stash(uri => $cat->uri);
+        $c->stash(uri => muse_naming_algo($uri));
         $c->detach('/not_found');
     }
 }
