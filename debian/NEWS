@@ -1,3 +1,11 @@
+amusewiki (2.534-1+amw1) unstable; urgency=medium
+
+    This version migrates from polyglossia to babel for the language
+    support in the PDF. Some features are relatively new, so we
+    start requiring the amusewiki-texlive package.
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sat, 12 Feb 2022 11:04:51 +0100
+
 amusewiki (2.202-1+amw1) unstable; urgency=medium
 
     Given that XeTeX chocks on woff files (see debian bug #861938), this

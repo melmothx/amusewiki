@@ -4,6 +4,15 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.534 2022-02-12
+
+ - Bump prerequisites: require amusewiki-texlive
+ - Migrate from polyglossia to babel via
+   Text::Amuse/Text::Amuse::Compile, greatly extending the supported
+   languages.
+ - Add option to use Unicode category names. This should be used when
+   the ASCII category names are not accurate (notably Japanese)
+
 2.533 2021-12-24
 
  - Add proper links to /console/git-fine-diff
