@@ -15,9 +15,23 @@
         usually a good choice') %]).
     </label>
     <br>
-    <input class="form-control" type="text" name="uri" id="uri" size="50"
+    <input class="form-control ajax-check-uri" type="text" name="uri" id="uri" size="50"
            value="[% processed_params.uri | html %]"
            required />
+    <p class="help-block">
+      <div class="check-success" style="display:none; color:green">
+        <i class="fa fa-check"></i>
+        [% loc('URI is available and valid') %]
+      </div>
+      <div class="check-failure" style="display:none">
+        <i class="fa fa-warning" style="color:red">
+        </i>
+        <span class="check-message" style="color:red"></span>
+        <div class="help-block">
+          [% loc('URI should be be an ASCII string, separated by hyphens, without spaces. E.g. my-author-title-1') %]
+        </div>
+      </div>
+    </p>
   </div>
   [% END %]
   <div class="form-group">
@@ -318,6 +332,25 @@
           $('#textbody').ckeditor();
           $('#notes').ckeditor({ height: 100 });
           $('#teaser').ckeditor({ height: 100 });
+      });
+      $('.ajax-check-uri').on('keyup', function() {
+          var el = $(this);
+          var query = { uri: el.val() };
+          label = el.closest('div').find('label');
+          $.post("[% c.uri_for_action('/api/check_existing_uri') %]", query, function(data) {
+              console.log(data);
+              label.removeClass('mandatory');
+              $('.check-failure').hide();
+              $('.check-success').hide();
+              if (data.success) {
+                  $('.check-success').show();
+              }
+              else {
+                  label.addClass('mandatory');
+                  $('.check-failure').find('.check-message').text(data.error)
+                  $('.check-failure').show();
+              }
+          });
       });
   });
 </script>

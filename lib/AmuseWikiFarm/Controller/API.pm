@@ -6,6 +6,7 @@ BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Paths;
+use AmuseWikiFarm::Utils::Amuse;
 use IO::File;
 
 =head1 NAME
@@ -45,6 +46,28 @@ sub autocompletion :Chained('api') :Args(1) {
     }
     Dlog_debug { "Found list for $type:  $_" } \@list;
     $c->stash(json => \@list);
+    $c->detach($c->view('JSON'));
+}
+
+sub check_existing_uri :Chained('api') :PathPart('check-existing-uri') :Args(0) {
+    my ($self, $c) = @_;
+    my %out;
+    if (my $uri = $c->request->params->{uri}) {
+        # check if valid
+        my $cleaned = AmuseWikiFarm::Utils::Amuse::muse_naming_algo($uri);
+        if ($uri eq $cleaned) {
+            if ($c->stash->{site}->titles->search({ uri => "$uri" })->count) {
+                $out{error} = $c->loc("Such URI already exists");
+            }
+            else {
+                $out{success} = $uri;
+            }
+        }
+        else {
+            $out{error} = $c->loc("Invalid URI");
+        }
+    }
+    $c->stash(json => \%out);
     $c->detach($c->view('JSON'));
 }
 
