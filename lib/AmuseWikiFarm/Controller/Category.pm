@@ -127,8 +127,9 @@ sub category_list_display :Chained('category') :PathPart('') :Args(0) {
 sub select_texts :Chained('category') :PathPart('') :CaptureArgs(1) {
     my ($self, $c, $uri) = @_;
     my $site = $c->stash->{site};
-    my $canonical = $site->category_uri_use_unicode ? unicode_uri_fragment($uri) : muse_naming_algo($uri);
-    my $cat = $c->stash->{categories_rs}->find({ uri => $canonical });
+    my $rs = $c->stash->{categories_rs};
+    my $cat = $rs->find({ uri => muse_naming_algo($uri) }) || $rs->find({ uri => unicode_uri_fragment($uri) });
+
     if ($cat) {
         log_debug { "Category id is " . $cat->id; };
         if ($cat->uri ne $uri) {
@@ -139,11 +140,11 @@ sub select_texts :Chained('category') :PathPart('') :CaptureArgs(1) {
         my $texts_rs = $cat->titles->texts_only;
         $c->stash(texts => $texts_rs,
                   category_object => $cat,
-                  category_uri => $canonical,
+                  category_uri => $cat->uri,
                  );
     }
     else {
-        $c->stash(uri => $canonical);
+        $c->stash(uri => $cat->uri);
         $c->detach('/not_found');
     }
 }

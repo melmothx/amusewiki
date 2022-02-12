@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 78;
+use Test::More tests => 90;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -126,6 +126,12 @@ is $mech->uri->path, '/category/author/' . uri_escape_utf8('来-来-来');
 $site->site_options->update_or_create({ option_name => 'category_uri_use_unicode',
                                         option_value => 0 });
 
+# check if we can still access the uri when we flip the flag
+$mech->get_ok('/category/topic/等等');
+is $mech->uri->path, '/category/topic/' . uri_escape_utf8('等等');
+$mech->get_ok('/category/author/来-来-来');
+is $mech->uri->path, '/category/author/' . uri_escape_utf8('来-来-来');
+
 $site->categories->delete;
 $site->get_from_storage->compile_and_index_files([$site->titles->first->filepath_for_ext('muse')], sub { diag @_ });
 
@@ -140,6 +146,16 @@ is $mech->uri->path, '/category/author/lai-lai-lai', "redirected to unidecode";
 
 
 $mech->get_ok('/category/topic/deng-deng');
+
+$mech->get_ok('/api/check-existing-uri?uri=pinco-pallino');
+$mech->content_like(qr{error.*already exists}i);
+$mech->get_ok('/api/check-existing-uri?uri=p');
+$mech->content_like(qr{error.*invalid uri}i);
+$mech->get_ok('/api/check-existing-uri?uri=pp');
+$mech->content_like(qr{error.*invalid uri}i);
+$mech->get_ok('/api/check-existing-uri?uri=pp-xx');
+$mech->content_contains('success');
+
 
 sub check_uri_fragment {
     my ($piece, $exp) = @_;
