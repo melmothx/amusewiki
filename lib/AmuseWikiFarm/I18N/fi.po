@@ -36,7 +36,13 @@ msgstr ""
 msgid "%1 pp."
 msgstr ""
 
+msgid "(narrowest)"
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
+msgstr ""
+
+msgid "(widest)"
 msgstr ""
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
@@ -145,6 +151,9 @@ msgid ""
 "etc)."
 msgstr "Lisätietoja (päivämäärä, alkuperäinen otsikko, kääntäjät jne.)."
 
+msgid "Additional nginx configuration"
+msgstr ""
+
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
 msgid ""
@@ -177,6 +186,11 @@ msgid "All sites"
 msgstr "Kaikki sivustot"
 
 msgid "All users"
+msgstr ""
+
+msgid ""
+"Allow Unicode URIs for categories (author, topics). Recommended for non-"
+"latin scripts."
 msgstr ""
 
 msgid ""
@@ -254,6 +268,9 @@ msgstr ""
 
 msgid "Authors for indexing"
 msgstr "Kirjoittajat hakemistoa varten"
+
+msgid "Auto"
+msgstr ""
 
 msgid "Automatically generated"
 msgstr ""
@@ -345,6 +362,9 @@ msgstr ""
 msgid "By title Z-A"
 msgstr ""
 
+msgid "CSS Alternate Theme (Dark mode, optional)"
+msgstr ""
+
 msgid "CSS Theme"
 msgstr ""
 
@@ -429,6 +449,9 @@ msgstr ""
 msgid "Comma or semicolon separated list"
 msgstr "Pilkulla tai puolipisteellä erotettu lista"
 
+msgid "Commit ID"
+msgstr ""
+
 msgid "Completed"
 msgstr "Valmis"
 
@@ -501,6 +524,7 @@ msgid "Current time"
 msgstr ""
 
 #. ($c->stash->{site}->canonical)
+#. (site.canonical)
 msgid "Custom formats for %1"
 msgstr ""
 
@@ -512,6 +536,9 @@ msgstr "Päivämäärä"
 
 msgid "Date of the original publication"
 msgstr "Alkuperäisen julkaisun päivämäärä"
+
+msgid "Default"
+msgstr ""
 
 msgid "Default sorting for the category text list"
 msgstr ""
@@ -559,6 +586,9 @@ msgstr "Kohde"
 msgid "Did you mean:"
 msgstr ""
 
+msgid "Diff"
+msgstr ""
+
 msgid "Differences"
 msgstr "Eroavaisuudet"
 
@@ -571,6 +601,9 @@ msgstr ""
 msgid "Disable /mirror/ URL for anonymous users"
 msgstr ""
 
+msgid "Display the latest entries on special pages"
+msgstr ""
+
 msgid "Display url as"
 msgstr "Osoitteen näyttömuoto"
 
@@ -581,6 +614,9 @@ msgid "Do not create a cover page and start the text on the first page"
 msgstr ""
 
 msgid "Do not enforce save message"
+msgstr ""
+
+msgid "Do not redirect aliases to canonical"
 msgstr ""
 
 msgid "Do not use bold fonts"
@@ -854,6 +890,9 @@ msgstr "Yleinen (sopii kokoihin A4 ja Letter)"
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
 "using the form you can find above. You can have one personal repository."
+msgstr ""
+
+msgid "Git"
 msgstr ""
 
 msgid "Git console"
@@ -1138,6 +1177,9 @@ msgstr ""
 msgid "Internal list of translations"
 msgstr "Sisäinen luettelo käännöksistä"
 
+msgid "Invalid URI"
+msgstr ""
+
 msgid "Invalid email"
 msgstr "Virheellinen sähköposti"
 
@@ -1260,6 +1302,9 @@ msgstr "Letter tulostusvalmis PDF"
 msgid "Letter paper"
 msgstr "Letter "
 
+msgid "Line spacing"
+msgstr ""
+
 msgid "Link"
 msgstr "Linkki"
 
@@ -1337,6 +1382,9 @@ msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
 msgid "Manage categories"
+msgstr ""
+
+msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
 msgid "Max image dimension in pixels, applies to both width and height"
@@ -1559,6 +1607,9 @@ msgstr "Tai sen voi laittaa tageihin"
 msgid "Ordered List"
 msgstr "Numerolista"
 
+msgid "Outer margin"
+msgstr ""
+
 msgid "PDF"
 msgstr ""
 
@@ -1669,6 +1720,9 @@ msgstr "Puhdas PDF"
 msgid ""
 "Please check your inbox, we tried to deliver a mail to the address you "
 "specified with a password reset link"
+msgstr ""
+
+msgid "Please choose a text"
 msgstr ""
 
 msgid "Please choose the Beamer color theme"
@@ -1783,6 +1837,9 @@ msgstr "Valitse signaturen koko:"
 msgid ""
 "Please select the size of each page including the crop marks, before the "
 "imposing"
+msgstr ""
+
+msgid "Please set"
 msgstr ""
 
 msgid ""
@@ -2017,6 +2074,9 @@ msgid "Roles"
 msgstr ""
 
 msgid "Root node"
+msgstr ""
+
+msgid "Run diff"
 msgstr ""
 
 msgid "Running headings"
@@ -2279,6 +2339,9 @@ msgstr "Alaosion alaosio tai kuvaus"
 msgid "Subtitle"
 msgstr "Alaotsikko"
 
+msgid "Such URI already exists"
+msgstr ""
+
 msgid "Such an URI already exists"
 msgstr ""
 
@@ -2303,6 +2366,9 @@ msgstr "Yhteenveto"
 
 msgid "Supported directive in the header"
 msgstr "Otsakkeen merkinnät"
+
+msgid "Switch theme"
+msgstr ""
 
 msgid "Table of Contents"
 msgstr "Sisällysluettelo"
@@ -2340,12 +2406,18 @@ msgstr ""
 msgid "Text formatted with markup"
 msgstr ""
 
+msgid "Text height"
+msgstr ""
+
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
 msgstr ""
 "Tekstin uudelleenohjaukset asetetaan itse tekstissä\n"
 "  DELETED otsakkeella, syntaksi"
+
+msgid "Text width"
+msgstr ""
 
 msgid "Texts"
 msgstr "Tekstit"
@@ -2601,6 +2673,9 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr ""
 
+msgid "Top margin"
+msgstr ""
+
 msgid "Topic"
 msgstr "Aihe"
 
@@ -2634,6 +2709,14 @@ msgid "Type"
 msgstr ""
 
 msgid "URI"
+msgstr ""
+
+msgid "URI is available and valid"
+msgstr ""
+
+msgid ""
+"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
+"my-author-title-1"
 msgstr ""
 
 msgid "URL"

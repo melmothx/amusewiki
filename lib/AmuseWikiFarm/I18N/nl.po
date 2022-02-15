@@ -37,8 +37,14 @@ msgstr "%1 op mobiel"
 msgid "%1 pp."
 msgstr "%1 pp."
 
+msgid "(narrowest)"
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(slimme citaten, links, voetnoten, etc.)"
+
+msgid "(widest)"
+msgstr ""
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr ""
@@ -159,6 +165,9 @@ msgstr ""
 "Extra informatie (volledige datum,  originele titel, vertalers, erkenningen, "
 "etc.)"
 
+msgid "Additional nginx configuration"
+msgstr ""
+
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
 msgid ""
@@ -198,6 +207,11 @@ msgstr "Alle sites"
 
 msgid "All users"
 msgstr "Alle gebruiken"
+
+msgid ""
+"Allow Unicode URIs for categories (author, topics). Recommended for non-"
+"latin scripts."
+msgstr ""
 
 msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
@@ -281,6 +295,9 @@ msgstr "Auteurs en onderwerpen lijst"
 
 msgid "Authors for indexing"
 msgstr "Auteurs voor indexering"
+
+msgid "Auto"
+msgstr ""
 
 msgid "Automatically generated"
 msgstr "Automatisch gegenereerd"
@@ -377,6 +394,9 @@ msgstr "Op titel A-Z"
 msgid "By title Z-A"
 msgstr "Op titel Z-A"
 
+msgid "CSS Alternate Theme (Dark mode, optional)"
+msgstr ""
+
 msgid "CSS Theme"
 msgstr "CSS Thema"
 
@@ -468,6 +488,9 @@ msgstr ""
 msgid "Comma or semicolon separated list"
 msgstr "Komma of puntkomma gescheiden lijst"
 
+msgid "Commit ID"
+msgstr ""
+
 msgid "Completed"
 msgstr "Voltooid"
 
@@ -540,6 +563,7 @@ msgid "Current time"
 msgstr "Huidige tijd"
 
 #. ($c->stash->{site}->canonical)
+#. (site.canonical)
 msgid "Custom formats for %1"
 msgstr "Aangepaste formaten voor %1"
 
@@ -551,6 +575,9 @@ msgstr "Datum"
 
 msgid "Date of the original publication"
 msgstr "Datum van de originele publicatie"
+
+msgid "Default"
+msgstr ""
 
 msgid "Default sorting for the category text list"
 msgstr "Standaar sortering voor de categorie tekstlijst"
@@ -603,6 +630,9 @@ msgstr "Bestemming"
 msgid "Did you mean:"
 msgstr ""
 
+msgid "Diff"
+msgstr ""
+
 msgid "Differences"
 msgstr "Verschillen"
 
@@ -618,6 +648,9 @@ msgstr ""
 msgid "Disable /mirror/ URL for anonymous users"
 msgstr ""
 
+msgid "Display the latest entries on special pages"
+msgstr ""
+
 msgid "Display url as"
 msgstr "Toon URL als"
 
@@ -629,6 +662,9 @@ msgstr "Maak geen omslagpagina aan en begin de tekst op de eerste pagina"
 
 msgid "Do not enforce save message"
 msgstr "Dwing geen opslaan-bericht af"
+
+msgid "Do not redirect aliases to canonical"
+msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Gebruik geen vette lettertpyes"
@@ -920,6 +956,9 @@ msgstr "Generiek (past in A4 en US-Letter)"
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
 "using the form you can find above. You can have one personal repository."
+msgstr ""
+
+msgid "Git"
 msgstr ""
 
 msgid "Git console"
@@ -1265,6 +1304,9 @@ msgstr "Voeg het bestand in de hoofdtekst in bij de cursorpositie"
 msgid "Internal list of translations"
 msgstr "Interne lijst van vertalingen"
 
+msgid "Invalid URI"
+msgstr ""
+
 msgid "Invalid email"
 msgstr "Ongeldige e-mail"
 
@@ -1402,6 +1444,9 @@ msgstr "US-letter opgelegde PDF"
 msgid "Letter paper"
 msgstr "US-letter papier"
 
+msgid "Line spacing"
+msgstr ""
+
 msgid "Link"
 msgstr "Link"
 
@@ -1479,6 +1524,9 @@ msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Maak alle harde spaties expliciet en zichtbaar als ~~"
 
 msgid "Manage categories"
+msgstr ""
+
+msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
 msgid "Max image dimension in pixels, applies to both width and height"
@@ -1705,6 +1753,9 @@ msgstr "Of verpak het ik"
 msgid "Ordered List"
 msgstr "Georderde lijst"
 
+msgid "Outer margin"
+msgstr ""
+
 msgid "PDF"
 msgstr "PDF"
 
@@ -1821,6 +1872,9 @@ msgid ""
 msgstr ""
 "Controleer je inbox, we hebben geprobeerd een e-mail af te leveren bij het "
 "adres dat je hebt opgegeven met een wachtwoord-reset link"
+
+msgid "Please choose a text"
+msgstr ""
 
 msgid "Please choose the Beamer color theme"
 msgstr "Kies het Beamer kleurthema"
@@ -1949,6 +2003,9 @@ msgid ""
 msgstr ""
 "Selecteer de grootte van iedere pagina inclusief de snijmarkeringen, voor "
 "het opleggen"
+
+msgid "Please set"
+msgstr ""
 
 msgid ""
 "Please set the URI you desire. Author (if present),\n"
@@ -2200,6 +2257,9 @@ msgid "Roles"
 msgstr "Rollen"
 
 msgid "Root node"
+msgstr ""
+
+msgid "Run diff"
 msgstr ""
 
 msgid "Running headings"
@@ -2464,6 +2524,9 @@ msgstr "Subsubsectie of beschrijvingsitem"
 msgid "Subtitle"
 msgstr "Ondertitel"
 
+msgid "Such URI already exists"
+msgstr ""
+
 msgid "Such an URI already exists"
 msgstr "Zo'n URI bestaat al"
 
@@ -2489,6 +2552,9 @@ msgstr "Samenvatting"
 
 msgid "Supported directive in the header"
 msgstr "Ondersteunde instructie in de koptekst"
+
+msgid "Switch theme"
+msgstr ""
 
 msgid "Table of Contents"
 msgstr "Inhoudsopgave"
@@ -2526,12 +2592,18 @@ msgstr "Geteste toepassing, in deze volgorde van voorkeur"
 msgid "Text formatted with markup"
 msgstr "Opgemaakte tekst"
 
+msgid "Text height"
+msgstr ""
+
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
 msgstr ""
 "Tekstverwijzingen zijn in de tekst zelf ingesteld,\n"
 "  met gebruikt van de DELETED koptekst met deze syntax"
+
+msgid "Text width"
+msgstr ""
 
 msgid "Texts"
 msgstr "Teksten"
@@ -2823,6 +2895,9 @@ msgstr "Om de ingediende wijzigingen te zien ga je naar de volgende URL"
 msgid "Toggle fullscreen editor"
 msgstr "Kies schermvullende editor"
 
+msgid "Top margin"
+msgstr ""
+
 msgid "Topic"
 msgstr "Onderwerp"
 
@@ -2862,6 +2937,14 @@ msgstr ""
 
 msgid "URI"
 msgstr "URI"
+
+msgid "URI is available and valid"
+msgstr ""
+
+msgid ""
+"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
+"my-author-title-1"
+msgstr ""
 
 msgid "URL"
 msgstr "URL"

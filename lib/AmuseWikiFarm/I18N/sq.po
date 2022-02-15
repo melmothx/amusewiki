@@ -36,8 +36,14 @@ msgstr "%1 në pajisje mobile"
 msgid "%1 pp."
 msgstr ""
 
+msgid "(narrowest)"
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(smart quotes, linqe, fusnota, etj.)"
+
+msgid "(widest)"
+msgstr ""
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "Një rresht i zbrazët (ose më shumë ) krijon  një paragraf të ri."
@@ -158,6 +164,9 @@ msgstr ""
 "Informatat shtesë (data e plotë, titulli origjinal, përkthyesit, "
 "pjesëmarrësit etj.)"
 
+msgid "Additional nginx configuration"
+msgstr ""
+
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
 msgid ""
@@ -197,6 +206,11 @@ msgstr "Të gjitha faqet"
 
 msgid "All users"
 msgstr "Të gjithë përdoruesit"
+
+msgid ""
+"Allow Unicode URIs for categories (author, topics). Recommended for non-"
+"latin scripts."
+msgstr ""
 
 msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
@@ -283,6 +297,9 @@ msgstr ""
 
 msgid "Authors for indexing"
 msgstr "Autorët për indeksim"
+
+msgid "Auto"
+msgstr ""
 
 msgid "Automatically generated"
 msgstr ""
@@ -377,6 +394,9 @@ msgstr ""
 msgid "By title Z-A"
 msgstr ""
 
+msgid "CSS Alternate Theme (Dark mode, optional)"
+msgstr ""
+
 msgid "CSS Theme"
 msgstr ""
 
@@ -466,6 +486,9 @@ msgstr ""
 msgid "Comma or semicolon separated list"
 msgstr "Listë e ndarë me presje ose pikëpresje"
 
+msgid "Commit ID"
+msgstr ""
+
 msgid "Completed"
 msgstr "E përfunduar"
 
@@ -538,6 +561,7 @@ msgid "Current time"
 msgstr ""
 
 #. ($c->stash->{site}->canonical)
+#. (site.canonical)
 msgid "Custom formats for %1"
 msgstr ""
 
@@ -549,6 +573,9 @@ msgstr "Data"
 
 msgid "Date of the original publication"
 msgstr "Data e origjinale e botimit"
+
+msgid "Default"
+msgstr ""
 
 msgid "Default sorting for the category text list"
 msgstr ""
@@ -599,6 +626,9 @@ msgstr "Destinacioni"
 msgid "Did you mean:"
 msgstr ""
 
+msgid "Diff"
+msgstr ""
+
 msgid "Differences"
 msgstr "Dallimet"
 
@@ -611,6 +641,9 @@ msgstr ""
 msgid "Disable /mirror/ URL for anonymous users"
 msgstr ""
 
+msgid "Display the latest entries on special pages"
+msgstr ""
+
 msgid "Display url as"
 msgstr "Paraqit url saktësisht sikur"
 
@@ -621,6 +654,9 @@ msgid "Do not create a cover page and start the text on the first page"
 msgstr ""
 
 msgid "Do not enforce save message"
+msgstr ""
+
+msgid "Do not redirect aliases to canonical"
 msgstr ""
 
 msgid "Do not use bold fonts"
@@ -907,6 +943,9 @@ msgstr "Gjenerike (i përshtatet formatit A4 dhe A4 horizonatle - Letter)"
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
 "using the form you can find above. You can have one personal repository."
+msgstr ""
+
+msgid "Git"
 msgstr ""
 
 msgid "Git console"
@@ -1226,6 +1265,9 @@ msgstr ""
 msgid "Internal list of translations"
 msgstr "Lista e brendshme e përkthimeve"
 
+msgid "Invalid URI"
+msgstr ""
+
 msgid "Invalid email"
 msgstr "Email i pavlefshëm"
 
@@ -1350,6 +1392,9 @@ msgstr ""
 msgid "Letter paper"
 msgstr ""
 
+msgid "Line spacing"
+msgstr ""
+
 msgid "Link"
 msgstr "Linku"
 
@@ -1427,6 +1472,9 @@ msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
 msgid "Manage categories"
+msgstr ""
+
+msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
 msgid "Max image dimension in pixels, applies to both width and height"
@@ -1649,6 +1697,9 @@ msgstr "Ose shtoje brenda"
 msgid "Ordered List"
 msgstr "Lista Numerike"
 
+msgid "Outer margin"
+msgstr ""
+
 msgid "PDF"
 msgstr ""
 
@@ -1756,6 +1807,9 @@ msgid ""
 msgstr ""
 "Të lutem shiko inbox-in tend. Kemi provuar ta dërgojmë një email me një link "
 "për resetim të fjalëkalimit në email adresën që e ke paraqitur."
+
+msgid "Please choose a text"
+msgstr ""
 
 msgid "Please choose the Beamer color theme"
 msgstr ""
@@ -1882,6 +1936,9 @@ msgstr "Të lutem zgjidh madhësinë e nënshkrimit"
 msgid ""
 "Please select the size of each page including the crop marks, before the "
 "imposing"
+msgstr ""
+
+msgid "Please set"
 msgstr ""
 
 msgid ""
@@ -2129,6 +2186,9 @@ msgid "Roles"
 msgstr "Rrolet"
 
 msgid "Root node"
+msgstr ""
+
+msgid "Run diff"
 msgstr ""
 
 msgid "Running headings"
@@ -2396,6 +2456,9 @@ msgstr "Nënseksioni apo përshkrimi i artikulit"
 msgid "Subtitle"
 msgstr "Nëntitulli"
 
+msgid "Such URI already exists"
+msgstr ""
+
 msgid "Such an URI already exists"
 msgstr "URI i tillë egziston"
 
@@ -2418,6 +2481,9 @@ msgstr "Përmbledhja"
 
 msgid "Supported directive in the header"
 msgstr "Direktiva mbështetëse e pjesës së sipërme të dokumentit"
+
+msgid "Switch theme"
+msgstr ""
 
 msgid "Table of Contents"
 msgstr "Përmbajtja"
@@ -2455,9 +2521,15 @@ msgstr "Aplikacionet e testuara"
 msgid "Text formatted with markup"
 msgstr "Teksti i formatuar me përmirësime"
 
+msgid "Text height"
+msgstr ""
+
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
+msgstr ""
+
+msgid "Text width"
 msgstr ""
 
 msgid "Texts"
@@ -2742,6 +2814,9 @@ msgstr "Për ti ruajtur ndryshimet e bëra, ju lutem klikoni linkun në vazhdim"
 msgid "Toggle fullscreen editor"
 msgstr ""
 
+msgid "Top margin"
+msgstr ""
+
 msgid "Topic"
 msgstr "Tema"
 
@@ -2778,6 +2853,14 @@ msgstr ""
 
 msgid "URI"
 msgstr "URI"
+
+msgid "URI is available and valid"
+msgstr ""
+
+msgid ""
+"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
+"my-author-title-1"
+msgstr ""
 
 msgid "URL"
 msgstr "URL"

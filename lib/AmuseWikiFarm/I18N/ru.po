@@ -38,8 +38,14 @@ msgstr "%1 на мобильных устройствах"
 msgid "%1 pp."
 msgstr "%1 стр."
 
+msgid "(narrowest)"
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(умные кавычки, ссылки, сноски и т.д.)"
+
+msgid "(widest)"
+msgstr ""
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr ""
@@ -152,6 +158,9 @@ msgid ""
 msgstr ""
 "Дополнительная информация (дата, название в оригинале, переводчики и др.)."
 
+msgid "Additional nginx configuration"
+msgstr ""
+
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
 msgid ""
@@ -187,6 +196,11 @@ msgstr "Все сайты"
 
 msgid "All users"
 msgstr "Все пользователи"
+
+msgid ""
+"Allow Unicode URIs for categories (author, topics). Recommended for non-"
+"latin scripts."
+msgstr ""
 
 msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
@@ -269,6 +283,9 @@ msgstr "Список авторов и тем"
 
 msgid "Authors for indexing"
 msgstr "Авторы (для индексации)"
+
+msgid "Auto"
+msgstr ""
 
 msgid "Automatically generated"
 msgstr "Сгенерировано автоматически"
@@ -367,6 +384,9 @@ msgstr "По названию А-Я"
 msgid "By title Z-A"
 msgstr "По названию Я-А"
 
+msgid "CSS Alternate Theme (Dark mode, optional)"
+msgstr ""
+
 msgid "CSS Theme"
 msgstr "CSS-тема"
 
@@ -454,6 +474,9 @@ msgstr "Колонок для левой части страницы редак�
 msgid "Comma or semicolon separated list"
 msgstr "Список, разделённый запятой или точкой с запятой"
 
+msgid "Commit ID"
+msgstr ""
+
 msgid "Completed"
 msgstr "Завершено"
 
@@ -526,6 +549,7 @@ msgid "Current time"
 msgstr "Текущее время"
 
 #. ($c->stash->{site}->canonical)
+#. (site.canonical)
 msgid "Custom formats for %1"
 msgstr "Пользовательские форматы для %1"
 
@@ -537,6 +561,9 @@ msgstr "Дата"
 
 msgid "Date of the original publication"
 msgstr "Дата оригинальной публикации"
+
+msgid "Default"
+msgstr ""
 
 msgid "Default sorting for the category text list"
 msgstr "Порядок по умолчанию для списка категорий текстов"
@@ -586,6 +613,9 @@ msgstr "Назначение"
 msgid "Did you mean:"
 msgstr "Возможно, вы имели в виду:"
 
+msgid "Diff"
+msgstr ""
+
 msgid "Differences"
 msgstr "Различия"
 
@@ -600,6 +630,9 @@ msgstr ""
 msgid "Disable /mirror/ URL for anonymous users"
 msgstr "Отключить путь /mirror/ для анонимных пользователей"
 
+msgid "Display the latest entries on special pages"
+msgstr ""
+
 msgid "Display url as"
 msgstr "Отобразить URL как"
 
@@ -611,6 +644,9 @@ msgstr "Не создавать обложку в начале текста на
 
 msgid "Do not enforce save message"
 msgstr "Не требовать сообщения для сохранения"
+
+msgid "Do not redirect aliases to canonical"
+msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Не использовать жирный шрифт"
@@ -895,6 +931,9 @@ msgstr "Универсальный (умещается на A4 и Letter)"
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
 "using the form you can find above. You can have one personal repository."
+msgstr ""
+
+msgid "Git"
 msgstr ""
 
 msgid "Git console"
@@ -1232,6 +1271,9 @@ msgstr "Вставить файл в текст после курсора"
 msgid "Internal list of translations"
 msgstr "Внутренний список переводов"
 
+msgid "Invalid URI"
+msgstr ""
+
 msgid "Invalid email"
 msgstr "Неправильный адрес электронной почты"
 
@@ -1357,6 +1399,9 @@ msgstr "Спуск полос на Letter"
 msgid "Letter paper"
 msgstr "Letter"
 
+msgid "Line spacing"
+msgstr ""
+
 msgid "Link"
 msgstr "Ссылка"
 
@@ -1435,6 +1480,9 @@ msgstr "Сделать все неразрывные пробелы явными
 
 msgid "Manage categories"
 msgstr "Управление категориями"
+
+msgid "Margins: please choose a division factor or set width and height"
+msgstr ""
 
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr ""
@@ -1662,6 +1710,9 @@ msgstr "Или поместите текст в тег"
 msgid "Ordered List"
 msgstr "Список с нумерацией"
 
+msgid "Outer margin"
+msgstr ""
+
 msgid "PDF"
 msgstr "PDF"
 
@@ -1772,6 +1823,9 @@ msgid ""
 msgstr ""
 "Пожалуйста, проверьте свой ящик, мы попытались доставить письмо со ссылкой "
 "сброса пароля на указанный вами адрес"
+
+msgid "Please choose a text"
+msgstr ""
 
 msgid "Please choose the Beamer color theme"
 msgstr "Полажуйста, выберите цветовую схему Beamer"
@@ -1900,6 +1954,9 @@ msgid ""
 msgstr ""
 "Пожалуйста, выберите размер каждой страницы, включая метки обрезки, перед "
 "спуском полос"
+
+msgid "Please set"
+msgstr ""
 
 msgid ""
 "Please set the URI you desire. Author (if present),\n"
@@ -2143,6 +2200,9 @@ msgstr "Роли"
 
 msgid "Root node"
 msgstr "Корневой узел"
+
+msgid "Run diff"
+msgstr ""
 
 msgid "Running headings"
 msgstr "Бегущие заголовки"
@@ -2404,6 +2464,9 @@ msgstr "Подраздел второго уровня или описание"
 msgid "Subtitle"
 msgstr "Подзаголовок"
 
+msgid "Such URI already exists"
+msgstr ""
+
 msgid "Such an URI already exists"
 msgstr "Текст с таким URI уже существует. Вы можете указать свой URI"
 
@@ -2428,6 +2491,9 @@ msgstr "Краткое описание"
 
 msgid "Supported directive in the header"
 msgstr "Поддерживаемые указатели в шапке"
+
+msgid "Switch theme"
+msgstr ""
 
 msgid "Table of Contents"
 msgstr "Содержание"
@@ -2465,12 +2531,18 @@ msgstr "Протестированные приложения, в порядке
 msgid "Text formatted with markup"
 msgstr "Текст, отформатированный с помощью разметки"
 
+msgid "Text height"
+msgstr ""
+
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
 msgstr ""
 "Перенаправление текста устанавливается в тексте используя заголовок DELETED "
 "с этим синтаксисом"
+
+msgid "Text width"
+msgstr ""
 
 msgid "Texts"
 msgstr "Тексты"
@@ -2751,6 +2823,9 @@ msgstr "Для просмотра внесённых изменений прой
 msgid "Toggle fullscreen editor"
 msgstr "Переключить редактор в полноэкранный режим"
 
+msgid "Top margin"
+msgstr ""
+
 msgid "Topic"
 msgstr "Тема"
 
@@ -2790,6 +2865,14 @@ msgstr "Тип"
 
 msgid "URI"
 msgstr "URI"
+
+msgid "URI is available and valid"
+msgstr ""
+
+msgid ""
+"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
+"my-author-title-1"
+msgstr ""
 
 msgid "URL"
 msgstr "URL"

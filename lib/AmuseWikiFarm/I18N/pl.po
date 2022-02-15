@@ -38,8 +38,14 @@ msgstr "%1 na urządzeniach mobilnych"
 msgid "%1 pp."
 msgstr ""
 
+msgid "(narrowest)"
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(inteligentne cytaty, linki, przypisy, itd.)"
+
+msgid "(widest)"
+msgstr ""
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "Pusty wiersz (lub więcej pustych wierszy) rozpoczyna nowy akapit."
@@ -152,6 +158,9 @@ msgstr ""
 "Dodatkowe informacje (pełna data, tytuł oryginalny, tłumacze, podziękowania, "
 "itd.)"
 
+msgid "Additional nginx configuration"
+msgstr ""
+
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
 msgid ""
@@ -187,6 +196,11 @@ msgstr "Wszystkie strony"
 
 msgid "All users"
 msgstr "Wszyscy użytkownicy"
+
+msgid ""
+"Allow Unicode URIs for categories (author, topics). Recommended for non-"
+"latin scripts."
+msgstr ""
 
 msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
@@ -264,6 +278,9 @@ msgstr "Lista osób autorskich i tematów"
 
 msgid "Authors for indexing"
 msgstr "Osoby autorskie do indeksowania"
+
+msgid "Auto"
+msgstr ""
 
 msgid "Automatically generated"
 msgstr "Automatycznie wygenerowane"
@@ -365,6 +382,9 @@ msgstr "Według tytułu A-Z"
 msgid "By title Z-A"
 msgstr "Według tytułu Z-A"
 
+msgid "CSS Alternate Theme (Dark mode, optional)"
+msgstr ""
+
 msgid "CSS Theme"
 msgstr ""
 
@@ -453,6 +473,9 @@ msgstr ""
 msgid "Comma or semicolon separated list"
 msgstr "Lista z kolejnymi elementami oddzielonymi przecinkiem lub średnikiem"
 
+msgid "Commit ID"
+msgstr ""
+
 msgid "Completed"
 msgstr "Zakończono"
 
@@ -525,6 +548,7 @@ msgid "Current time"
 msgstr "Aktualny czas"
 
 #. ($c->stash->{site}->canonical)
+#. (site.canonical)
 msgid "Custom formats for %1"
 msgstr ""
 
@@ -536,6 +560,9 @@ msgstr "Data"
 
 msgid "Date of the original publication"
 msgstr "Data pierwotnej publikacji"
+
+msgid "Default"
+msgstr ""
 
 msgid "Default sorting for the category text list"
 msgstr ""
@@ -584,6 +611,9 @@ msgstr "Cel"
 msgid "Did you mean:"
 msgstr "Czy miałeś na myśli:"
 
+msgid "Diff"
+msgstr ""
+
 msgid "Differences"
 msgstr "Różnice"
 
@@ -596,6 +626,9 @@ msgstr ""
 msgid "Disable /mirror/ URL for anonymous users"
 msgstr ""
 
+msgid "Display the latest entries on special pages"
+msgstr ""
+
 msgid "Display url as"
 msgstr "Wyświetl adres url jako"
 
@@ -606,6 +639,9 @@ msgid "Do not create a cover page and start the text on the first page"
 msgstr "Nie twórz strony tytułowej i zacznij tekst na pierwszej stronie"
 
 msgid "Do not enforce save message"
+msgstr ""
+
+msgid "Do not redirect aliases to canonical"
 msgstr ""
 
 msgid "Do not use bold fonts"
@@ -886,6 +922,9 @@ msgstr "Ogólny (mieści się w formatach A4 i listowym)"
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
 "using the form you can find above. You can have one personal repository."
+msgstr ""
+
+msgid "Git"
 msgstr ""
 
 msgid "Git console"
@@ -1188,6 +1227,9 @@ msgstr "Wstaw plik w tekst w pozycji kursora"
 msgid "Internal list of translations"
 msgstr ""
 
+msgid "Invalid URI"
+msgstr ""
+
 msgid "Invalid email"
 msgstr "Niepoprawny e-mail"
 
@@ -1315,6 +1357,9 @@ msgstr "PDF z impozycją na arkusz listowy"
 msgid "Letter paper"
 msgstr "Arkusz listowy"
 
+msgid "Line spacing"
+msgstr ""
+
 msgid "Link"
 msgstr "Link"
 
@@ -1392,6 +1437,9 @@ msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Spraw, by wszystkie twarde spacje były widoczne jako ~~"
 
 msgid "Manage categories"
+msgstr ""
+
+msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
 msgid "Max image dimension in pixels, applies to both width and height"
@@ -1613,6 +1661,9 @@ msgstr ""
 msgid "Ordered List"
 msgstr "Uporządkowana lista"
 
+msgid "Outer margin"
+msgstr ""
+
 msgid "PDF"
 msgstr "PDF"
 
@@ -1714,6 +1765,9 @@ msgstr "Czysty PDF"
 msgid ""
 "Please check your inbox, we tried to deliver a mail to the address you "
 "specified with a password reset link"
+msgstr ""
+
+msgid "Please choose a text"
 msgstr ""
 
 msgid "Please choose the Beamer color theme"
@@ -1832,6 +1886,9 @@ msgstr ""
 msgid ""
 "Please select the size of each page including the crop marks, before the "
 "imposing"
+msgstr ""
+
+msgid "Please set"
 msgstr ""
 
 msgid ""
@@ -2077,6 +2134,9 @@ msgid "Roles"
 msgstr ""
 
 msgid "Root node"
+msgstr ""
+
+msgid "Run diff"
 msgstr ""
 
 msgid "Running headings"
@@ -2339,6 +2399,9 @@ msgstr "Pod-podsekcja lub element opisowy"
 msgid "Subtitle"
 msgstr "Podtytuł"
 
+msgid "Such URI already exists"
+msgstr ""
+
 msgid "Such an URI already exists"
 msgstr "Taki URI już istnieje"
 
@@ -2362,6 +2425,9 @@ msgid "Summary"
 msgstr "Streszczenie"
 
 msgid "Supported directive in the header"
+msgstr ""
+
+msgid "Switch theme"
 msgstr ""
 
 msgid "Table of Contents"
@@ -2400,9 +2466,15 @@ msgstr "Sprawdzone aplikacje, w kolejności preferencji"
 msgid "Text formatted with markup"
 msgstr "Tekst sformatowany z adiustacją"
 
+msgid "Text height"
+msgstr ""
+
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
+msgstr ""
+
+msgid "Text width"
 msgstr ""
 
 msgid "Texts"
@@ -2671,6 +2743,9 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr "Włącz / Wyłącz edytor pełnoekranowy"
 
+msgid "Top margin"
+msgstr ""
+
 msgid "Topic"
 msgstr "Temat"
 
@@ -2705,6 +2780,14 @@ msgstr "Typ"
 
 msgid "URI"
 msgstr "URI"
+
+msgid "URI is available and valid"
+msgstr ""
+
+msgid ""
+"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
+"my-author-title-1"
+msgstr ""
 
 msgid "URL"
 msgstr "Adres URL"

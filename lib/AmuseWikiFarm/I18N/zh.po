@@ -37,8 +37,14 @@ msgstr "%1移动版"
 msgid "%1 pp."
 msgstr "%1页"
 
+msgid "(narrowest)"
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "（智能引号、链接、脚注等）"
+
+msgid "(widest)"
+msgstr ""
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "空行（或多个空行）开始新段落。"
@@ -144,6 +150,9 @@ msgid ""
 "etc)."
 msgstr "更多信息（完整日期、原题、译者、作者等）"
 
+msgid "Additional nginx configuration"
+msgstr ""
+
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
 msgid ""
@@ -179,6 +188,11 @@ msgstr "所有网站"
 
 msgid "All users"
 msgstr "所有用户"
+
+msgid ""
+"Allow Unicode URIs for categories (author, topics). Recommended for non-"
+"latin scripts."
+msgstr ""
 
 msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
@@ -256,6 +270,9 @@ msgstr "作者和主题"
 
 msgid "Authors for indexing"
 msgstr "作者（索引）"
+
+msgid "Auto"
+msgstr ""
 
 msgid "Automatically generated"
 msgstr "自动生成的"
@@ -349,6 +366,9 @@ msgstr "标题A–Z"
 msgid "By title Z-A"
 msgstr "标题Z–A"
 
+msgid "CSS Alternate Theme (Dark mode, optional)"
+msgstr ""
+
 msgid "CSS Theme"
 msgstr "CSS主题"
 
@@ -435,6 +455,9 @@ msgstr "编辑页面左侧的列，带有编辑框（共12个）"
 msgid "Comma or semicolon separated list"
 msgstr "半角逗号或者半角分号分割列表"
 
+msgid "Commit ID"
+msgstr ""
+
 msgid "Completed"
 msgstr "已完成"
 
@@ -507,6 +530,7 @@ msgid "Current time"
 msgstr "现在时间"
 
 #. ($c->stash->{site}->canonical)
+#. (site.canonical)
 msgid "Custom formats for %1"
 msgstr "%1的自定义格式"
 
@@ -518,6 +542,9 @@ msgstr "日期"
 
 msgid "Date of the original publication"
 msgstr "原出版日期"
+
+msgid "Default"
+msgstr ""
 
 msgid "Default sorting for the category text list"
 msgstr "类别文章列表默认排序"
@@ -565,6 +592,9 @@ msgstr "终点"
 msgid "Did you mean:"
 msgstr "你的意思是不是："
 
+msgid "Diff"
+msgstr ""
+
 msgid "Differences"
 msgstr "差异"
 
@@ -579,6 +609,9 @@ msgstr ""
 msgid "Disable /mirror/ URL for anonymous users"
 msgstr "为匿名用户禁用 /mirror/ URL"
 
+msgid "Display the latest entries on special pages"
+msgstr ""
+
 msgid "Display url as"
 msgstr "显示URL为"
 
@@ -590,6 +623,9 @@ msgstr "不要创建封面并在第一页上开始文本"
 
 msgid "Do not enforce save message"
 msgstr "不强制保存消息"
+
+msgid "Do not redirect aliases to canonical"
+msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "不要使用粗体字体"
@@ -865,6 +901,9 @@ msgid ""
 msgstr ""
 "获取仓库HTTPS URL，例如 https://example.com/git/test，并使用上面可以找到的表"
 "单添加它。您可以有一个个人仓库。"
+
+msgid "Git"
+msgstr ""
 
 msgid "Git console"
 msgstr "Git 控制台"
@@ -1168,6 +1207,9 @@ msgstr "把文件插入到正文光标位置"
 msgid "Internal list of translations"
 msgstr "内部翻译列表"
 
+msgid "Invalid URI"
+msgstr ""
+
 msgid "Invalid email"
 msgstr "无效邮箱"
 
@@ -1289,6 +1331,9 @@ msgstr "信纸排版的PDF"
 msgid "Letter paper"
 msgstr "信纸尺寸"
 
+msgid "Line spacing"
+msgstr ""
+
 msgid "Link"
 msgstr "链接"
 
@@ -1367,6 +1412,9 @@ msgstr "使所有不换行的空格突出显示为~~"
 
 msgid "Manage categories"
 msgstr "管理类别"
+
+msgid "Margins: please choose a division factor or set width and height"
+msgstr ""
 
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr "最大图形像素尺寸，用于宽与高"
@@ -1585,6 +1633,9 @@ msgstr "或者折起来"
 msgid "Ordered List"
 msgstr "有序列表"
 
+msgid "Outer margin"
+msgstr ""
+
 msgid "PDF"
 msgstr "PDF"
 
@@ -1691,6 +1742,9 @@ msgid ""
 "Please check your inbox, we tried to deliver a mail to the address you "
 "specified with a password reset link"
 msgstr "请检查您的收件箱，我们试图向您指定的地址发送一封带有密码重置链接的邮件"
+
+msgid "Please choose a text"
+msgstr ""
 
 msgid "Please choose the Beamer color theme"
 msgstr "请选择Beamer色彩主题"
@@ -1807,6 +1861,9 @@ msgid ""
 "Please select the size of each page including the crop marks, before the "
 "imposing"
 msgstr "请选择每页的尺寸，包括裁剪标记，然后再强加"
+
+msgid "Please set"
+msgstr ""
 
 msgid ""
 "Please set the URI you desire. Author (if present),\n"
@@ -2045,6 +2102,9 @@ msgstr "角色"
 
 msgid "Root node"
 msgstr "根节点"
+
+msgid "Run diff"
+msgstr ""
 
 msgid "Running headings"
 msgstr "延续标题"
@@ -2306,6 +2366,9 @@ msgstr "次级节或者描述项"
 msgid "Subtitle"
 msgstr "副标题"
 
+msgid "Such URI already exists"
+msgstr ""
+
 msgid "Such an URI already exists"
 msgstr "URI已存在"
 
@@ -2328,6 +2391,9 @@ msgstr "摘要"
 
 msgid "Supported directive in the header"
 msgstr "页首中支持的指令"
+
+msgid "Switch theme"
+msgstr ""
 
 msgid "Table of Contents"
 msgstr "目录"
@@ -2365,10 +2431,16 @@ msgstr "已测试的应用，顺序按照喜好"
 msgid "Text formatted with markup"
 msgstr "用标记格式的文本"
 
+msgid "Text height"
+msgstr ""
+
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
 msgstr "文本重定向在文本中设定，用此语法使用DELETED页首"
+
+msgid "Text width"
+msgstr ""
 
 msgid "Texts"
 msgstr "文本"
@@ -2632,6 +2704,9 @@ msgstr "要查看引入的变化，你可以访问以下网址"
 msgid "Toggle fullscreen editor"
 msgstr "切换全屏编辑器"
 
+msgid "Top margin"
+msgstr ""
+
 msgid "Topic"
 msgstr "话题"
 
@@ -2668,6 +2743,14 @@ msgstr "类"
 
 msgid "URI"
 msgstr "URI"
+
+msgid "URI is available and valid"
+msgstr ""
+
+msgid ""
+"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
+"my-author-title-1"
+msgstr ""
 
 msgid "URL"
 msgstr "URL"

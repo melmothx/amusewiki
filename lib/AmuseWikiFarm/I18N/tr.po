@@ -37,8 +37,14 @@ msgstr "Mobilde %1"
 msgid "%1 pp."
 msgstr "%1 sayfa."
 
+msgid "(narrowest)"
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(akıllı tırnaklar, bağlantılar, dipnotlar, vb.)"
+
+msgid "(widest)"
+msgstr ""
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "Bir (ya da daha fazla) boş satır yeni paragraf başlatır."
@@ -152,6 +158,9 @@ msgid ""
 "etc)."
 msgstr "Ek bilgi (tam tarih, orjinal başlık, çevirmenler, vb)."
 
+msgid "Additional nginx configuration"
+msgstr ""
+
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
 msgid ""
@@ -190,6 +199,11 @@ msgstr "Bütün siteler"
 
 msgid "All users"
 msgstr "Bütün kullanıcılar"
+
+msgid ""
+"Allow Unicode URIs for categories (author, topics). Recommended for non-"
+"latin scripts."
+msgstr ""
 
 msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
@@ -274,6 +288,9 @@ msgstr "Yazarlar ve konular listesi"
 
 msgid "Authors for indexing"
 msgstr "İndexleme için yazarlar"
+
+msgid "Auto"
+msgstr ""
 
 msgid "Automatically generated"
 msgstr "Otomatik üretilen"
@@ -372,6 +389,9 @@ msgstr "Başlığa göre A-Z"
 msgid "By title Z-A"
 msgstr "Başlığa göre Z-A"
 
+msgid "CSS Alternate Theme (Dark mode, optional)"
+msgstr ""
+
 msgid "CSS Theme"
 msgstr "CSS Teması"
 
@@ -461,6 +481,9 @@ msgstr ""
 msgid "Comma or semicolon separated list"
 msgstr "Virgül ya da noktalı virgülle ayrılmış liste"
 
+msgid "Commit ID"
+msgstr ""
+
 msgid "Completed"
 msgstr "Tamamlandı"
 
@@ -533,6 +556,7 @@ msgid "Current time"
 msgstr "Şu anda"
 
 #. ($c->stash->{site}->canonical)
+#. (site.canonical)
 msgid "Custom formats for %1"
 msgstr "%1 için özel biçimler"
 
@@ -544,6 +568,9 @@ msgstr "Tarih"
 
 msgid "Date of the original publication"
 msgstr "Orijinal yayın tarihi"
+
+msgid "Default"
+msgstr ""
 
 msgid "Default sorting for the category text list"
 msgstr "Kategori metin listesi için varsayılan sıralama"
@@ -593,6 +620,9 @@ msgstr "Hedef"
 msgid "Did you mean:"
 msgstr "Bunu mu demek istediniz:"
 
+msgid "Diff"
+msgstr ""
+
 msgid "Differences"
 msgstr "Farklar"
 
@@ -608,6 +638,9 @@ msgstr ""
 msgid "Disable /mirror/ URL for anonymous users"
 msgstr "Anonim kullanıcılar için /mirror/ URL i etkisizleştir"
 
+msgid "Display the latest entries on special pages"
+msgstr ""
+
 msgid "Display url as"
 msgstr "URL'i şöyle göster"
 
@@ -619,6 +652,9 @@ msgstr "Kapak sayfası yaratma ve metni ilk sayfadan başlat"
 
 msgid "Do not enforce save message"
 msgstr "Mesaj kaydetmeyi zorlama"
+
+msgid "Do not redirect aliases to canonical"
+msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Kalın fontları kullanma"
@@ -906,6 +942,9 @@ msgstr "Genel (A4 ve Letter'a sığar)"
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
 "using the form you can find above. You can have one personal repository."
+msgstr ""
+
+msgid "Git"
 msgstr ""
 
 msgid "Git console"
@@ -1241,6 +1280,9 @@ msgstr "Dosyayı gövdenin içine imlecin olduğu yere ekle"
 msgid "Internal list of translations"
 msgstr "Çevirilerin iç listesi"
 
+msgid "Invalid URI"
+msgstr ""
+
 msgid "Invalid email"
 msgstr "Geçersiz eposta"
 
@@ -1371,6 +1413,9 @@ msgstr "Letter empoze PDF"
 msgid "Letter paper"
 msgstr "Letter sayfa"
 
+msgid "Line spacing"
+msgstr ""
+
 msgid "Link"
 msgstr "Bağlantı"
 
@@ -1449,6 +1494,9 @@ msgstr "Bütün ayırıcı olmayan boşlukları belirgin ve ~~ şeklinde görün
 
 msgid "Manage categories"
 msgstr "Kategorileri yönet"
+
+msgid "Margins: please choose a division factor or set width and height"
+msgstr ""
 
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr "Max resim boyutları, hem genişlik hem yükseklik için (pixel)"
@@ -1675,6 +1723,9 @@ msgstr "Ya da içeri kaydır"
 msgid "Ordered List"
 msgstr "Sıralı Liste"
 
+msgid "Outer margin"
+msgstr ""
+
 msgid "PDF"
 msgstr "PDF"
 
@@ -1787,6 +1838,9 @@ msgid ""
 msgstr ""
 "Lütfen post kutuna bak, verdiğin adrese şifre sıfırlama linki içeren bir "
 "posta göndermeye çalıştık"
+
+msgid "Please choose a text"
+msgstr ""
 
 msgid "Please choose the Beamer color theme"
 msgstr "Lütfen Beamer renk temasını seç"
@@ -1914,6 +1968,9 @@ msgid ""
 "imposing"
 msgstr ""
 "Lütfen empoze öncesi kesme çizgileri dahil her bir sayfanın büyüklüğünü seç"
+
+msgid "Please set"
+msgstr ""
 
 msgid ""
 "Please set the URI you desire. Author (if present),\n"
@@ -2161,6 +2218,9 @@ msgstr "Roller"
 
 msgid "Root node"
 msgstr "Kök düğüm"
+
+msgid "Run diff"
+msgstr ""
 
 msgid "Running headings"
 msgstr "Yinelenen başlıklar"
@@ -2423,6 +2483,9 @@ msgstr "Alt alt bölüm ya da açıklama öğesi"
 msgid "Subtitle"
 msgstr "Alt başlık"
 
+msgid "Such URI already exists"
+msgstr ""
+
 msgid "Such an URI already exists"
 msgstr "Böyle bir URI zaten var"
 
@@ -2447,6 +2510,9 @@ msgstr "Özet"
 
 msgid "Supported directive in the header"
 msgstr "Üstlükte desteklenen komut"
+
+msgid "Switch theme"
+msgstr ""
 
 msgid "Table of Contents"
 msgstr "İçindekiler"
@@ -2484,12 +2550,18 @@ msgstr "Test edilen uygulamalar, buradaki sıraya göre tercih edilir"
 msgid "Text formatted with markup"
 msgstr "Metin biçimlendirildi"
 
+msgid "Text height"
+msgstr ""
+
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
 msgstr ""
 "Metin yönlendirmeleri metnin içinde, DELETED\n"
 "  üstlüğü ile bu şekilde verilir"
+
+msgid "Text width"
+msgstr ""
 
 msgid "Texts"
 msgstr "Metinler"
@@ -2778,6 +2850,9 @@ msgstr "Uygulanan değişiklikleri görmek için, bu URL'e gidebilirsin"
 msgid "Toggle fullscreen editor"
 msgstr "Tam ekran düzenleyiciyi aç/kapat"
 
+msgid "Top margin"
+msgstr ""
+
 msgid "Topic"
 msgstr "Konu"
 
@@ -2817,6 +2892,14 @@ msgstr "Tip"
 
 msgid "URI"
 msgstr "URI"
+
+msgid "URI is available and valid"
+msgstr ""
+
+msgid ""
+"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
+"my-author-title-1"
+msgstr ""
 
 msgid "URL"
 msgstr "URL"

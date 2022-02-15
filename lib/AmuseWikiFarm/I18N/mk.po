@@ -36,8 +36,14 @@ msgstr "за мобилни"
 msgid "%1 pp."
 msgstr "%1 стр."
 
+msgid "(narrowest)"
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(наводници, линкови, фусноти, инт.)"
+
+msgid "(widest)"
+msgstr ""
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "Празен ред (или повеќе празни редови) започнуваат нов пасус."
@@ -154,6 +160,9 @@ msgid ""
 msgstr ""
 "Дополнителни информации (полн датум, наслов на оригиналот, преведувачи, итн.)"
 
+msgid "Additional nginx configuration"
+msgstr ""
+
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
 msgid ""
@@ -191,6 +200,11 @@ msgstr "Сите сајтови"
 
 msgid "All users"
 msgstr "Сите корисници"
+
+msgid ""
+"Allow Unicode URIs for categories (author, topics). Recommended for non-"
+"latin scripts."
+msgstr ""
 
 msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
@@ -277,6 +291,9 @@ msgid "Authors for indexing"
 msgstr ""
 "Автори за индексирање - во заграда наведи го и изворното писмо - пр.: \"Џон "
 "Зерзан (John Zerzan)\""
+
+msgid "Auto"
+msgstr ""
 
 msgid "Automatically generated"
 msgstr "Автоматски"
@@ -370,6 +387,9 @@ msgstr "Според наслов А-Ш"
 msgid "By title Z-A"
 msgstr "Според наслов Ш-А"
 
+msgid "CSS Alternate Theme (Dark mode, optional)"
+msgstr ""
+
 msgid "CSS Theme"
 msgstr "CSS тема"
 
@@ -458,6 +478,9 @@ msgstr "Ширина на левата страна на страницата з
 msgid "Comma or semicolon separated list"
 msgstr "Листа разделена со запирка или точка-запирка"
 
+msgid "Commit ID"
+msgstr ""
+
 msgid "Completed"
 msgstr "Готово"
 
@@ -530,6 +553,7 @@ msgid "Current time"
 msgstr "Време"
 
 #. ($c->stash->{site}->canonical)
+#. (site.canonical)
 msgid "Custom formats for %1"
 msgstr "Посебни формати за %1"
 
@@ -541,6 +565,9 @@ msgstr "Датум"
 
 msgid "Date of the original publication"
 msgstr "Датум на оригиналното издание"
+
+msgid "Default"
+msgstr ""
 
 msgid "Default sorting for the category text list"
 msgstr "Зададено сортирање"
@@ -590,6 +617,9 @@ msgstr "Одредиште"
 msgid "Did you mean:"
 msgstr "Можеби е:"
 
+msgid "Diff"
+msgstr ""
+
 msgid "Differences"
 msgstr "Разлики"
 
@@ -605,6 +635,9 @@ msgstr ""
 msgid "Disable /mirror/ URL for anonymous users"
 msgstr "Оневозможи URL /mirror/ за анонимни корисници"
 
+msgid "Display the latest entries on special pages"
+msgstr ""
+
 msgid "Display url as"
 msgstr "Покажи го URL kako"
 
@@ -616,6 +649,9 @@ msgstr "Баз насловна страница, текстот почнува 
 
 msgid "Do not enforce save message"
 msgstr "Не форсирај порака кога текстот ќе се подготви"
+
+msgid "Do not redirect aliases to canonical"
+msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Не користи здебелен фонт"
@@ -903,6 +939,9 @@ msgstr "Генеричен формат (го собира и на А4 и на L
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
 "using the form you can find above. You can have one personal repository."
+msgstr ""
+
+msgid "Git"
 msgstr ""
 
 msgid "Git console"
@@ -1242,6 +1281,9 @@ msgstr "Додај ја датотеката на текстот онаму ка
 msgid "Internal list of translations"
 msgstr "Внатрешна листа на преводи"
 
+msgid "Invalid URI"
+msgstr ""
+
 msgid "Invalid email"
 msgstr "Погрешен e-mail"
 
@@ -1374,6 +1416,9 @@ msgstr "PDF спремен за печатење во letter формат"
 msgid "Letter paper"
 msgstr "Letter формат"
 
+msgid "Line spacing"
+msgstr ""
+
 msgid "Link"
 msgstr "Линк"
 
@@ -1454,6 +1499,9 @@ msgstr "Покажи го неразделивиот празен постор �
 
 msgid "Manage categories"
 msgstr "Управување со категории"
+
+msgid "Margins: please choose a division factor or set width and height"
+msgstr ""
 
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr "Максимална големина на сликите во пиксели, и за ширина и за висина"
@@ -1679,6 +1727,9 @@ msgstr "Или вметни помеѓу"
 msgid "Ordered List"
 msgstr "Нумерирана листа"
 
+msgid "Outer margin"
+msgstr ""
+
 msgid "PDF"
 msgstr "PDF"
 
@@ -1794,6 +1845,9 @@ msgid ""
 msgstr ""
 "Провери го својот мејл, се обидовме да пратиме мејл на наведената адреса со "
 "упатства за нова лозинка"
+
+msgid "Please choose a text"
+msgstr ""
 
 msgid "Please choose the Beamer color theme"
 msgstr "Ибзери тема за боја на слајдовите"
@@ -1927,6 +1981,9 @@ msgstr ""
 "Избери ја димензијата на страницата вклучувајќи ги и контролните ознаи, но "
 "пред\n"
 " сложувањето на страниците"
+
+msgid "Please set"
+msgstr ""
 
 msgid ""
 "Please set the URI you desire. Author (if present),\n"
@@ -2178,6 +2235,9 @@ msgstr "Улоги"
 
 msgid "Root node"
 msgstr "Највисок јазол"
+
+msgid "Run diff"
+msgstr ""
 
 msgid "Running headings"
 msgstr "Заглавје на страницата"
@@ -2439,6 +2499,9 @@ msgstr "Пододдел или елемент на опис"
 msgid "Subtitle"
 msgstr "Поднаслов"
 
+msgid "Such URI already exists"
+msgstr ""
+
 msgid "Such an URI already exists"
 msgstr "Такво URI веќе постои"
 
@@ -2463,6 +2526,9 @@ msgstr "Резиме"
 
 msgid "Supported directive in the header"
 msgstr "Поддржани полиња во заглавието"
+
+msgid "Switch theme"
+msgstr ""
 
 msgid "Table of Contents"
 msgstr "Содржина"
@@ -2500,12 +2566,18 @@ msgstr "Тестирани апликации"
 msgid "Text formatted with markup"
 msgstr "Текст во wiki формат"
 
+msgid "Text height"
+msgstr ""
+
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
 msgstr ""
 "Пренасочувањата се одредени во самиот текст, користејќи го заглавието "
 "#DELETED со оваа синтакса."
+
+msgid "Text width"
+msgstr ""
 
 msgid "Texts"
 msgstr "Текстови"
@@ -2789,6 +2861,9 @@ msgstr "За да ги видиш внесените промени, можеш 
 msgid "Toggle fullscreen editor"
 msgstr "Прикажи/сокриј го едиторот за целосен екран"
 
+msgid "Top margin"
+msgstr ""
+
 msgid "Topic"
 msgstr "Тема"
 
@@ -2827,6 +2902,14 @@ msgstr "Вид"
 
 msgid "URI"
 msgstr "URI"
+
+msgid "URI is available and valid"
+msgstr ""
+
+msgid ""
+"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
+"my-author-title-1"
+msgstr ""
 
 msgid "URL"
 msgstr "URL"

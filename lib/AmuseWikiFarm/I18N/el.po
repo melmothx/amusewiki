@@ -37,8 +37,14 @@ msgstr "%1 σε κινητό"
 msgid "%1 pp."
 msgstr "%1 σελ."
 
+msgid "(narrowest)"
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(έξυπνα εισαγωγικά, σύνδεσμοι, υποσημειώσεις, κλπ.)"
+
+msgid "(widest)"
+msgstr ""
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr ""
@@ -163,6 +169,9 @@ msgstr ""
 "Πρόσθετες πληροφορίες (πλήρης ημερομηνία, αρχικός τίτλος, μεταφραστές, "
 "συντελεστές, κλπ.)"
 
+msgid "Additional nginx configuration"
+msgstr ""
+
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
 msgid ""
@@ -201,6 +210,11 @@ msgstr "Όλες οι ιστοσελίδες"
 
 msgid "All users"
 msgstr "Όλοι οι χρήστες"
+
+msgid ""
+"Allow Unicode URIs for categories (author, topics). Recommended for non-"
+"latin scripts."
+msgstr ""
 
 msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
@@ -289,6 +303,9 @@ msgstr "Λίστα συγγραφέων και θεμάτων"
 
 msgid "Authors for indexing"
 msgstr "Συγγραφείς για ευρετηρίαση"
+
+msgid "Auto"
+msgstr ""
 
 msgid "Automatically generated"
 msgstr "Δημιουργημένο αυτόματα"
@@ -391,6 +408,9 @@ msgstr "Ανά τίτλο Α-Ω"
 msgid "By title Z-A"
 msgstr "Ανά τίτλο Ω-Α"
 
+msgid "CSS Alternate Theme (Dark mode, optional)"
+msgstr ""
+
 msgid "CSS Theme"
 msgstr "Θέμα CSS"
 
@@ -482,6 +502,9 @@ msgstr ""
 msgid "Comma or semicolon separated list"
 msgstr "Λίστα διαχωρισμένη με κόμμα ή άνω τελεία"
 
+msgid "Commit ID"
+msgstr ""
+
 msgid "Completed"
 msgstr "Ολοκληρωμένο"
 
@@ -557,6 +580,7 @@ msgid "Current time"
 msgstr "Τρέχουσα ώρα"
 
 #. ($c->stash->{site}->canonical)
+#. (site.canonical)
 msgid "Custom formats for %1"
 msgstr "Ειδικές μορφές για %1"
 
@@ -568,6 +592,9 @@ msgstr "Ημερομηνία"
 
 msgid "Date of the original publication"
 msgstr "Ημερομηνία αρχικής δημοσίευσης"
+
+msgid "Default"
+msgstr ""
 
 msgid "Default sorting for the category text list"
 msgstr "Προεπιλεγμένη ταξινόμηση για τη λίστα κειμένων κατηγοριών"
@@ -617,6 +644,9 @@ msgstr "Προορισμός"
 msgid "Did you mean:"
 msgstr "Μήπως εννοούσες:"
 
+msgid "Diff"
+msgstr ""
+
 msgid "Differences"
 msgstr "Διαφορές"
 
@@ -632,6 +662,9 @@ msgstr ""
 msgid "Disable /mirror/ URL for anonymous users"
 msgstr "Απενεργοποίηση του /mirror/ URL για ανώνυμους χρήστες"
 
+msgid "Display the latest entries on special pages"
+msgstr ""
+
 msgid "Display url as"
 msgstr "Προβολή url ως"
 
@@ -643,6 +676,9 @@ msgstr "Μη δημιουργήσεις εξώφυλλο και ξεκινήσε
 
 msgid "Do not enforce save message"
 msgstr "Μην κάνεις το μήνυμα αποθήκευσης υποχρεωτικό"
+
+msgid "Do not redirect aliases to canonical"
+msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Μη χρησιμοποιείς έντονη γραμματοσειρά (bold)"
@@ -941,6 +977,9 @@ msgstr ""
 "Πάρε τη διεύθυνση HTTPS URL, π.χ. https://example.com/git/test και πρόσθεσέ "
 "τη χρησιμοποιώντας τη φόρμα που θα βρεις από πάνω. Μπορείς να έχεις ένα "
 "προσωπικό αποθετήριο."
+
+msgid "Git"
+msgstr ""
 
 msgid "Git console"
 msgstr "Κονσόλα Git"
@@ -1302,6 +1341,9 @@ msgstr "Εισαγωγή του αρχείου στη θέση του κέρσο
 msgid "Internal list of translations"
 msgstr "Εσωτερικός κατάλογος μεταφράσεων"
 
+msgid "Invalid URI"
+msgstr ""
+
 msgid "Invalid email"
 msgstr "Μη έγκυρο email"
 
@@ -1447,6 +1489,9 @@ msgstr "PDF σε μορφή Letter"
 msgid "Letter paper"
 msgstr "Χαρτί Letter"
 
+msgid "Line spacing"
+msgstr ""
+
 msgid "Link"
 msgstr "Σύνδεσμος"
 
@@ -1527,6 +1572,9 @@ msgstr "Κάντε όλα τα μη διακεκομμένα κενά ρητά �
 
 msgid "Manage categories"
 msgstr "Διαχείριση κατηγοριών"
+
+msgid "Margins: please choose a division factor or set width and height"
+msgstr ""
 
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr ""
@@ -1765,6 +1813,9 @@ msgstr "Ή τύλιξέ το σε"
 msgid "Ordered List"
 msgstr "Διατεταγμένη λίστα"
 
+msgid "Outer margin"
+msgstr ""
+
 msgid "PDF"
 msgstr "PDF"
 
@@ -1885,6 +1936,9 @@ msgstr ""
 "Ελέγξτε τα εισερχόμενά σας, προσπαθήσαμε να παραδώσουμε ένα μήνυμα "
 "ηλεκτρονικού ταχυδρομείου στη διεύθυνση που δηλώσατε με έναν σύνδεσμο "
 "επαναφοράς κωδικού πρόσβασης"
+
+msgid "Please choose a text"
+msgstr ""
 
 msgid "Please choose the Beamer color theme"
 msgstr "Επιλέξτε το θέμα χρώματος Beamer"
@@ -2025,6 +2079,9 @@ msgid ""
 msgstr ""
 "Επίλεξε το μέγεθος κάθε σελίδας, συμπεριλαμβανομένων των σημείων περικοπής, "
 "πριν από την διαμόρφωση"
+
+msgid "Please set"
+msgstr ""
 
 msgid ""
 "Please set the URI you desire. Author (if present),\n"
@@ -2282,6 +2339,9 @@ msgstr "Ρόλοι"
 
 msgid "Root node"
 msgstr "Ριζικός κόμβος"
+
+msgid "Run diff"
+msgstr ""
 
 msgid "Running headings"
 msgstr "Τρέχουσες επικεφαλίδες"
@@ -2549,6 +2609,9 @@ msgstr "Υποενότητα ή αντικείμενο περιγραφής"
 msgid "Subtitle"
 msgstr "Υπότιτλος"
 
+msgid "Such URI already exists"
+msgstr ""
+
 msgid "Such an URI already exists"
 msgstr "Ένα τέτοιο URI υπάρχει ήδη"
 
@@ -2573,6 +2636,9 @@ msgstr "Σύνοψη"
 
 msgid "Supported directive in the header"
 msgstr "Υποστηριζόμενη οδηγία στην επικεφαλίδα"
+
+msgid "Switch theme"
+msgstr ""
 
 msgid "Table of Contents"
 msgstr "Πίνακας περιεχομένων"
@@ -2610,6 +2676,9 @@ msgstr "Δοκιμασμένες εφαρμογές, με αυτή τη σειρ
 msgid "Text formatted with markup"
 msgstr "Κείμενο διαμορφωμένο με markup"
 
+msgid "Text height"
+msgstr ""
+
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
@@ -2617,6 +2686,9 @@ msgstr ""
 "Οι ανακατευθύνσεις κειμένου ορίζονται στο ίδιο το κείμενο, χρησιμοποιώντας "
 "την εντολή\n"
 "  #DELETED με αυτή τη σύνταξη"
+
+msgid "Text width"
+msgstr ""
 
 msgid "Texts"
 msgstr "Κείμενα"
@@ -2927,6 +2999,9 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr "Ενεργοποίηση/Απενεργοποίηση επεξεργαστή πλήρους οθόνης"
 
+msgid "Top margin"
+msgstr ""
+
 msgid "Topic"
 msgstr "Θέμα"
 
@@ -2967,6 +3042,14 @@ msgstr "Τύπος"
 
 msgid "URI"
 msgstr "URI"
+
+msgid "URI is available and valid"
+msgstr ""
+
+msgid ""
+"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
+"my-author-title-1"
+msgstr ""
 
 msgid "URL"
 msgstr "URL"
