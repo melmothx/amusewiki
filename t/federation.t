@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 155;
+use Test::More tests => 159;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catdir catfile/;
@@ -24,7 +24,7 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my ($bootstrap_1, $site_1);
 
 # remove when devel is done.
-unless ($site_1 = $schema->resultset('Site')->find('0federation0')) {
+unless (0 and $site_1 = $schema->resultset('Site')->find('0federation0')) {
     $site_1 = create_site($schema, '0federation0');
     $bootstrap_1 = 1;
 }
@@ -173,9 +173,31 @@ $site_2->add_to_mirror_origins({
     # modify
     my $test_file_local = path($site_2->repo_root, f => ft => "for-the-test.muse");
     $test_file_local->spew_utf8("#title XXXX For the test\n#lang en\n\nTestXXX me\n");
-    $site_2->update_db_from_tree(sub { diag join(' ', @_) });
+
+    diag "Checking manifest, here they should match, before the registering";
+    diag Dumper([ $site_1->titles->search({ 'me.uri' => 'for-the-test' })->mirror_manifest ]);
+    diag Dumper([ $site_2->titles->search({ 'me.uri' => 'for-the-test' })->mirror_manifest ]);
+    is $site_1->titles->search({ 'me.uri' => 'for-the-test' })->mirror_manifest->[0]->{checksum},
+      $site_2->titles->search({ 'me.uri' => 'for-the-test' })->mirror_manifest->[0]->{checksum},
+      "Checksums matching";
+
     # overwrite
+    $site_2->update_db_from_tree(sub { diag join(' ', @_) });
+
+    diag "After the update_db_from_tree";
+    diag Dumper([ $site_1->titles->search({ 'me.uri' => 'for-the-test' })->mirror_manifest ]);
+    diag Dumper([ $site_2->titles->search({ 'me.uri' => 'for-the-test' })->mirror_manifest ]);
+    isnt $site_1->titles->search({ 'me.uri' => 'for-the-test' })->mirror_manifest->[0]->{checksum},
+      $site_2->titles->search({ 'me.uri' => 'for-the-test' })->mirror_manifest->[0]->{checksum},
+      "Checksums differ now";
+
     _check_bulk_with_jobs($mech, $remote, "Overwritten after local modification");
+    diag "After the overwriting";
+    diag Dumper([ $site_1->titles->search({ 'me.uri' => 'for-the-test' })->mirror_manifest ]);
+    diag Dumper([ $site_2->titles->search({ 'me.uri' => 'for-the-test' })->mirror_manifest ]);
+    is $site_1->titles->search({ 'me.uri' => 'for-the-test' })->mirror_manifest->[0]->{checksum},
+      $site_2->titles->search({ 'me.uri' => 'for-the-test' })->mirror_manifest->[0]->{checksum},
+      "Checksums matching" or die;
 
     # 1:1
     _check_bulk_without_jobs($mech, $remote, "Check, nothing changed");
@@ -212,16 +234,19 @@ $site_2->add_to_mirror_origins({
 
 sub _check_bulk_without_jobs {
     my ($mech, $remote, $msg) = @_;
+    sleep 1;
     $remote->ua($mech);
     my $res = $remote->fetch_remote;
     # diag Dumper($res);
     my $bulk_job = $remote->prepare_download($res->{data});
-    is $bulk_job->discard_changes->status, 'completed', $msg;
+    is $bulk_job->discard_changes->status, 'completed', $msg or die Dumper([ $res->{data},
+                                                                             $bulk_job->expected_documents ]);
     ok !$bulk_job->produced, "Nothing produced for $msg";
 }
 
 sub _check_bulk_with_jobs {
     my ($mech, $remote, $msg) = @_;
+    sleep 1;
     $remote->ua($mech);
     my $res = $remote->fetch_remote;
     diag Dumper($res);

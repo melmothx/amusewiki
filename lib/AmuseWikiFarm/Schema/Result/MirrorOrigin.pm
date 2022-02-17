@@ -295,47 +295,34 @@ sub prepare_download {
           || $obj->create_related('mirror_info', { %spec, site_id => $self->site_id })->discard_changes;
 
         $seen{$mirror_info->mirror_info_id}++;
-        # same origin: download if checksum missing or mismatching
+
+        # if there's a mirror exception, leave it alone.
+        next ITEM if $mirror_info->mirror_exception;
+
+        my $checksum_mismatch = ($mirror_info->checksum // '') ne ($i->{checksum} // '') ? 1 : 0;
+
+        # has an origin?
         if (my $their_origin_id = $mirror_info->mirror_origin_id) {
             # if same origin: download if mismatch, otherwise nothing to do: either
             # they are not ours or don't need download.
-            if ($their_origin_id == $our_origin_id
-                and !$mirror_info->mirror_exception
-                and ($mirror_info->checksum // '') ne ($i->{checksum} // '')) {
-
+            if ($their_origin_id == $our_origin_id and $checksum_mismatch) {
                 push @downloads, $mirror_info->mirror_info_id;
                 $mirror_info->update(\%spec);
-                log_info { "Downloading $spec{download_source}" };
+                log_info { "Downloading $spec{download_source} because mismatching/missing checksum" };
             }
         }
         # not taken but matching checksum: take for future updates
-        elsif ($i->{checksum} and $mirror_info->checksum and $mirror_info->checksum eq $i->{checksum})  {
-            if (!$mirror_info->mirror_exception) {
-                log_info { "Taking $spec{download_source} for future downloads" };
-                $mirror_info->update(\%spec);
-            }
+        elsif ($i->{checksum} and !$checksum_mismatch)  {
+            log_info { "Taking $spec{download_source} for future downloads" };
+            $mirror_info->update(\%spec);
         }
         # not taken but with mismatches
         else {
-            # these have local modifications.
-            # Place an exception if not already placed.
-            if (my $exception = $mirror_info->mirror_exception) {
-
-                # to be implemented: this is an exception to the
-                # exception. Something in the admin where you can turn
-                # "conflict" into "force_download".
-                if ($exception eq 'force_download') {
-                    log_info { "Forced download for " . $i->{uri} };
-                    push @downloads, $mirror_info->mirror_info_id;
-                }
-            }
-            else {
-                log_info { "Placing exception for " . $i->{uri} };
-                $mirror_info->update({
-                                      mirror_exception => 'conflict',
-                                      last_updated => $now,
-                                     });
-            }
+            log_info { "Placing exception for " . $i->{uri} };
+            $mirror_info->update({
+                                  mirror_exception => 'conflict',
+                                  last_updated => $now,
+                                 });
         }
     }
     # Now check the vanished files. We place an exception so it will pop up in the console
