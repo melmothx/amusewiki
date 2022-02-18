@@ -173,6 +173,11 @@ sub remove :Chained('single') :PathPart('remove') :Args(0) {
     $c->response->redirect($c->uri_for_action('federation/show'));
 }
 
+sub mirror_info_edit :Chained('root') :PathPart('mirror_info_edit') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(json => { ok => 1 });
+    $c->detach($c->view('JSON'));
+}
 
 =encoding utf8
 

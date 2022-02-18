@@ -15,6 +15,7 @@
 <div class="table-responsive">
   <table id="mirror-table"
          data-src="[% mirror_info_src | html %]"
+         data-target="[% c.uri_for_action('/federation/mirror_info_edit') %]"
          class="table table-striped table-condensed table-bordered">
     <thead>
       <tr>
@@ -48,9 +49,19 @@ $(document).ready(function() {
          }
      }
      function render_dropdown(src, data, row) {
-         console.log("Rendering " + data + " from " + src);
+         var field;
+         if (src === '#select-mirror') {
+             field = 'mirror_origin_id';
+         }
+         else if (src == '#mirror-exceptions') {
+             field = 'mirror_exception';
+         }
+         else {
+             return;
+         }
          var template = $(src).clone();
-         var out = $('<select>', { class: "form-control",
+         var out = $('<select>', { "class": "form-control",
+                                   "data-field": field,
                                    "data-id": row.mirror_info_id
          });
          template.children().each(function() {
@@ -58,7 +69,6 @@ $(document).ready(function() {
              if (opt.attr('value') == data) {
                  opt.attr('selected', 'selected');
              }
-             console.log(opt.prop('outerHTML'));
              out.append(opt);
          });
          return out.prop('outerHTML');
@@ -111,6 +121,17 @@ $(document).ready(function() {
          }
      };
      el.DataTable(init);
+     el.on("change", "select", function() {
+         var changed = $(this);
+         var send = {
+             "id": changed.data('id'),
+             "field": changed.data('field'),
+             "value": changed.val()
+         };
+         $.post(el.data('target'), send, function(data) {
+             console.log(data);
+         });
+     });
  });
 
 </script>
