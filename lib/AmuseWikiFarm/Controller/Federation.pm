@@ -36,15 +36,14 @@ sub sources :Chained('root') :PathPart('sources') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my $rs = $c->stash->{site}->mirror_origins;
     $c->stash(origins_rs => $rs,
+              all_mirror_origins => [ $rs->all ],
               page_title => $c->loc("Federation"),
              );
 }
 
 sub show :Chained('sources') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    my $origins = [ $c->stash->{origins_rs}->all ];
-    $c->stash(origins => $origins,
-              load_datatables => 1,
+    $c->stash(load_datatables => 1,
               mirror_info_src => $c->uri_for_action('/federation/local_ajax'),
              );
 }
