@@ -1,7 +1,10 @@
 <div class="table-responsive">
-  <table id="site-table" class="table table-striped table-condensed table-bordered amw-datatable">
+  <table id="mirror-table"
+         data-src="[% mirror_info_src | html %]"
+         class="table table-striped table-condensed table-bordered">
     <thead>
       <tr>
+        <th>[% loc('ID') %]</th>
         <th>[% loc('Source') %]</th>
         <th>[% loc('Destination') %]</th>
         <th>[% loc('Exception') %]</th>
@@ -9,20 +12,53 @@
       </tr>
     </thead>
     <tbody>
-      [% FOREACH info IN mirror_entries %]
-        <tr>
-          <td>
-            [% IF info.download_source %]
-              <a href="[% info.download_source | html %]">[% info.download_source | html %]</a></td>
-            [% ELSE %]
-              -
-            [% END %]
-          <td><a href="[% c.uri_for(info.full_uri) | html %]">[% info.full_uri %]</a></td>
-          [%# loc('removed_uptream') %]
-          <td>[% IF info.mirror_exception %][% loc(info.mirror_exception) %][% END %]</td>
-          <td>[% info.last_updated %]</td>
-        </tr>
-      [% END %]
     </tbody>
   </table>
 </div>
+
+<script>
+$(document).ready(function() {
+     var el = $('#mirror-table');
+     function render_link(data, type, row, meta) {
+         if (type === 'display') {
+             if (data) {
+                 return $('<a>', { href: data }).text(data).prop('outerHTML');
+             }
+             else {
+                 return "-";
+             }
+         }
+         else {
+             return data;
+         }
+     }
+     var init = {
+         "ajax": el.data('src'),
+         "columns": [
+             {
+                 data: "mirror_info_id",
+             },
+             {
+                 data: "download_source",
+                 render: render_link
+             },
+             {
+                 data: "full_uri",
+                 render: render_link
+             },
+             { data: "mirror_exception" },
+             { data: "last_updated" }
+         ],
+         "lengthMenu": [
+             [10, 25, 50, 100, 200, -1],
+             [10, 25, 50, 100, 200, "∞"]
+         ],
+         "pageLength": 25,
+         "language": {
+             "url": "/api/datatables-lang"
+         }
+     };
+     el.DataTable(init);
+ });
+
+</script>

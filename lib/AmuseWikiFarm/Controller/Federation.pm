@@ -45,8 +45,15 @@ sub show :Chained('sources') :PathPart('') :Args(0) {
     my $origins = [ $c->stash->{origins_rs}->all ];
     $c->stash(origins => $origins,
               load_datatables => 1,
-              mirror_entries => $c->stash->{site}->mirror_infos->without_origin->detail_list,
+              mirror_info_src => $c->uri_for_action('/federation/local_ajax'),
              );
+}
+
+sub local_ajax :Chained('root') :PathPart('local-ajax') :Args(0) {
+    my ($self, $c) = @_;
+    my $data = $c->stash->{site}->mirror_infos->without_origin->detail_list;
+    $c->stash(json => { data => $data });
+    $c->detach($c->view('JSON'));
 }
 
 sub edit :Chained('sources') :PathPart('edit') :Args(0) {
@@ -115,10 +122,19 @@ sub details :Chained('single') :PathPart('details') :Args(0) {
     my ($self, $c) = @_;
     my $origin = $c->stash->{mirror_origin};
     $c->stash(
-              mirror_entries => $origin->mirror_infos->detail_list,
+              mirror_info_src => $c->uri_for_action('/federation/ajax', [ $origin->mirror_origin_id ]),
               load_datatables => 1,
              );
 }
+
+sub ajax :Chained('single') :PathPart('ajax') :Args(0) {
+    my ($self, $c) = @_;
+    my $origin = $c->stash->{mirror_origin};
+    my $data = $origin->mirror_infos->detail_list;
+    $c->stash(json => { data => $data });
+    $c->detach($c->view('JSON'));
+}
+
 
 sub check :Chained('single') :PathPart('check') :Args(0) {
     my ($self, $c) = @_;
