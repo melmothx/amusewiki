@@ -173,9 +173,48 @@ sub remove :Chained('single') :PathPart('remove') :Args(0) {
     $c->response->redirect($c->uri_for_action('federation/show'));
 }
 
-sub mirror_info_edit :Chained('root') :PathPart('mirror_info_edit') :Args(0) {
+sub mirror_info_edit :Chained('root') :PathPart('mirror-info-edit') :Args(0) {
     my ($self, $c) = @_;
-    $c->stash(json => { ok => 1 });
+    my %params = %{ $c->request->body_parameters || {} };
+    my $site = $c->stash->{site};
+    my %out;
+    if ($params{id} and $params{id} =~ m/\A[0-9]+\z/) {
+        if (my $target = $site->mirror_infos->find($params{id}))  {
+
+            my $value = $params{value};
+
+            if ($params{field} eq 'mirror_exception') {
+                # update to whatever value is sent.
+                $target->update({ mirror_exception => $value // ''});
+                $out{ok} = 1;
+            }
+            elsif ($params{field} eq 'mirror_origin_id') {
+                if ($value
+                    and $value =~ m/\A[0-9]+\z/
+                    and $site->mirror_origins->find($value)) {
+                    $target->update({ mirror_origin_id => $value });
+                    $out{ok} = 1;
+                }
+                elsif (!$value) {
+                    $target->update({ mirror_origin_id => undef });
+                    $out{ok} = 1;
+                }
+                else {
+                    $out{error} = $c->loc("Invalid parameter");
+                }
+            }
+            else {
+                $out{error} = $c->loc("Invalid field");
+            }
+        }
+        else {
+            $out{error} = $c->loc("Invalid target");
+        }
+    }
+    else {
+        $out{error} = $c->loc("Invalid ID");
+    }
+    $c->stash(json => \%out);
     $c->detach($c->view('JSON'));
 }
 

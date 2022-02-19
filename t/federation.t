@@ -3,14 +3,14 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 159;
+use Test::More tests => 173;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
 use lib catdir(qw/t lib/);
 
-use AmuseWiki::Tests qw/create_site run_all_jobs/;
+use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper::Concise;
@@ -18,16 +18,12 @@ use Path::Tiny;
 use File::Copy::Recursive qw/dircopy/;
 use File::Path qw/remove_tree make_path/;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
+use JSON::MaybeXS;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-my ($bootstrap_1, $site_1);
-
-# remove when devel is done.
-unless (0 and $site_1 = $schema->resultset('Site')->find('0federation0')) {
-    $site_1 = create_site($schema, '0federation0');
-    $bootstrap_1 = 1;
-}
+my $site_1 = create_site($schema, '0federation0');
+my $bootstrap_1 = 1;
 
 $site_1->site_options->update_or_create({ option_name => 'allow_binary_uploads',
                                           option_value => 'flac mp3 ogg' });
@@ -231,6 +227,112 @@ $site_2->add_to_mirror_origins({
     is $site_2->search_related(mirror_infos => { mirror_exception  => 'removed_upstream' })->count, 0;
     is $site_2->search_related(mirror_infos => { mirror_exception  => 'conflict' })->count, 1;
 }
+
+diag "Now testing ajax editing";
+undef $mech;
+
+{
+    my $other_id = $site_1->mirror_infos->first->mirror_info_id;
+    $site_2->add_to_mirror_origins({
+                                    remote_domain => $site_1->canonical,
+                                    remote_path => '/',
+                                    active => 1,
+                                   });
+
+    $mech_2->get('/federation/mirror-info-edit');
+    is $mech_2->status, 401;
+    $mech_2->get('/federation/sources');
+    is $mech_2->status, 401;
+    ok($mech_2->form_id('login-form'), "Found the login-form");
+    $mech_2->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root'});
+    $mech_2->get_ok('/federation/mirror-info-edit');
+    diag $mech_2->content;
+
+    my $target = $site_2->mirror_infos->first;
+
+    foreach my $try ({
+                      data => {},
+                     },
+                     {
+                      data => { id => 'xxxx' },
+                     },
+                     {
+                      data => {
+                               id => $other_id,
+                               field => 'mirror_exception',
+                               value => 'cross-site post',
+                              },
+                     },
+                     {
+                      data => {
+                               id => $target->mirror_info_id,
+                               field => 'pippo',
+                              },
+                     },
+                     {
+                      data => {
+                               id => $target->mirror_info_id,
+                               field => 'mirror_exception',
+                               value => 'local',
+                              },
+                      ok => 1,
+                     },
+                     {
+                      data => {
+                               id => $target->mirror_info_id,
+                               field => 'mirror_exception',
+                               value => '',
+                              },
+                      ok => 1,
+                     },
+                     {
+                      data => {
+                               id => $target->mirror_info_id,
+                               field => 'mirror_origin_id',
+                               value => 'local',
+                              },
+                     },
+                     {
+                      data => {
+                               id => $target->mirror_info_id,
+                               field => 'mirror_origin_id',
+                               value => 99999,
+                              },
+                     },
+                     {
+                      data => {
+                               id => $target->mirror_info_id,
+                               field => 'mirror_origin_id',
+                               value => $site_2->mirror_origins->first->mirror_origin_id,
+                              },
+                      ok => 1,
+                     },
+                     {
+                      data => {
+                               id => $target->mirror_info_id,
+                               field => 'mirror_origin_id',
+                               value => '',
+                              },
+                      ok => 1,
+                     }
+                    ) {
+        diag Dumper($try->{data});
+        # $target->update({ last_updated => DateTime->now });
+        # sleep 1;
+        $mech_2->post('/federation/mirror-info-edit', $try->{data});
+        # sleep 1;
+        # $target->update({ last_updated => DateTime->now });
+        my $data = decode_json($mech_2->content);
+        diag Dumper($data);
+        if ($try->{ok}) {
+            ok $data->{ok}, "Response to " . encode_json($try->{data}) . " is fine";
+        }
+        else {
+            ok $data->{error}, "Response to " . encode_json($try->{data}) . " is error";
+        }
+    }
+}
+
 
 sub _check_bulk_without_jobs {
     my ($mech, $remote, $msg) = @_;
