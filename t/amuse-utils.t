@@ -264,7 +264,7 @@ foreach my $spec ([ {}, undef ],
                     uri => 'pizza.jpg',
                     site_id => 'xx'
                    }, '/special/pizza.jpg',
-                   'repo/xx/specials/pizza.jpg'
+                   'specials/pizza.jpg'
                   ],
                   [{
                     class => 'Attachment',
@@ -282,7 +282,7 @@ foreach my $spec ([ {}, undef ],
                     uri => 'pizza.pdf',
                     site_id => 'blog',
                    }, '/uploads/blog/pizza.pdf',
-                   'repo/blog/uploads/pizza.pdf'
+                   'uploads/pizza.pdf'
                   ],
                   [{
                     class => 'Attachment',
@@ -290,7 +290,7 @@ foreach my $spec ([ {}, undef ],
                     uri => 'pizza.mov',
                     site_id => 'blog',
                    }, '/uploads/blog/pizza.mov',
-                   'repo/blog/uploads/pizza.mov'
+                   'uploads/pizza.mov'
                   ],
                  ) {
     diag Dumper($spec);
