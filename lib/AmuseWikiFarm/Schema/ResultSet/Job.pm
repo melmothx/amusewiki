@@ -134,6 +134,7 @@ sub enqueue_global_job {
                      created => DateTime->now,
                      priority => $priority,
                      site => $site,
+                     username => 'amusewiki',
                     };
     my $job = $self->create($insertion)->discard_changes;
     $job->make_room_for_logs;
