@@ -191,6 +191,25 @@ sub fetch_remote {
     return \%out;
 }
 
+sub fetch_and_prepare_download {
+    my $self = shift;
+    my %out;
+    if (my $res = $self->fetch_remote) {
+        if (my $list = $res->{data}) {
+            # unclear if too slow and requiring a job
+            $out{job} = $self->prepare_download($list);
+        }
+        else {
+            $out{error} = $res->{error} || "No data";
+        }
+    }
+    else {
+        $out{error} = "Could not fetch, should not happen";
+    }
+    return \%out;
+}
+
+
 sub remote_target_url {
     my $self = shift;
     my $path = $self->remote_path;

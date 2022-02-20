@@ -19,4 +19,10 @@ sub hri {
     return $self->search(undef, { result_class => 'DBIx::Class::ResultClass::HashRefInflator' });
 }
 
+sub active {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.active" => 1 });
+}
+
 1;

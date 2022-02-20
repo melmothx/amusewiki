@@ -145,24 +145,14 @@ sub check :Chained('single') :PathPart('check') :Args(0) {
 
 sub fetch :Chained('single') :PathPart('fetch') :Args(0) {
     my ($self, $c) = @_;
-    my $origin = $c->stash->{mirror_origin};
-    my $err;
-    if (my $res = $origin->fetch_remote) {
-        if (my $list = $res->{data}) {
-            # unclear if too slow and requiring a job
-            my $job = $origin->prepare_download($list);
-            $c->response->redirect($c->uri_for_action('/tasks/show_bulk_job', [ $job->bulk_job_id ]));
-            return;
-        }
-        else {
-            $err = $res->{error} || "No data"
-        }
+    my $res = $c->stash->{mirror_origin}->fetch_and_prepare_download;
+    if (my $job = $res->{job}) {
+        $c->response->redirect($c->uri_for_action('/tasks/show_bulk_job', [ $job->bulk_job_id ]));
     }
     else {
-        die "Shouldn't happen";
+        $c->flash(error_msg => $c->loc("Error: [_1]", $res->{error} || "Unknwon error"));
+        $c->response->redirect($c->uri_for_action('federation/show'));
     }
-    $c->flash(error_msg => $c->loc("Failure: $err"));
-    $c->response->redirect($c->uri_for_action('federation/show'));
 }
 
 sub remove :Chained('single') :PathPart('remove') :Args(0) {

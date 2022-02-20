@@ -857,6 +857,17 @@ sub dispatch_job_hourly_job {
         $site->jobs->reindex_add({ path => $file }, $username);
         $logger->("Scheduled reindex for " . $site->id . $title->full_uri . "\n");
     }
+    my $origins = $schema->resultset('MirrorOrigin')->active;
+    while (my $origin = $origins->next) {
+        $logger->($origin->site_id . " - Downloading " . $origin->remote_target_url . "\n");
+        my $res = $origin->fetch_and_prepare_download;
+        if (my $job = $res->{job}) {
+            $logger->("Created bulk job " . $job->bulk_job_id . "\n");
+        }
+        if ($res->{error}) {
+            $logger->("ERROR: $res->{error}\n");
+        }
+    }
     return;
 }
 
