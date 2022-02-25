@@ -85,6 +85,7 @@ $(document).ready(function(){
             $('#text-cover-img-container').remove();
             toc.append($('<div>', { "class": "col-sm-6" })
                        .append($('<img>', { "src": img,
+                                            "id": 'text-cover-img-relocated',
                                             "class": "img img-responsive mb-1",
                                             "alt": img })));
         }
