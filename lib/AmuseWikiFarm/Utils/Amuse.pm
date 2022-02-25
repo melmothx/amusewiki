@@ -12,6 +12,7 @@ use HTML::Entities qw/decode_entities encode_entities/;
 use Encode;
 use Digest::MD5 qw/md5_hex/;
 use DateTime;
+use DateTime::Locale;
 use Date::Parse qw/str2time/;
 use Text::Unidecode qw/unidecode/;
 use JSON::MaybeXS ();
@@ -949,10 +950,28 @@ sub known_langs {
             eo => 'Esperanto',
             zh => '中文',
             ja => '日本語',
-            # tl => 'Tagalog',
-            # ceb => 'Cebuano',
+            tl => 'Tagalog',
+            ceb => 'Cebuano',
            };
 }
+
+sub load_all_datetime_locales {
+    my @all = keys %{ known_langs() };
+    my $en = DateTime::Locale->load('en');
+    my %default = $en->locale_data;
+    foreach my $lang (@all) {
+        eval {
+            DateTime::Locale->load($lang);
+        };
+        if (my $err = $@) {
+            log_warn { "Error loading $lang => $err" };
+            # provide a fallback
+            my %new = (%default, code => $lang);
+            DateTime::Locale->register_from_data(%new);
+        }
+    }
+}
+
 
 sub get_corrected_path {
     my $file = shift;

@@ -95,6 +95,10 @@ our $VERSION = '2.534';
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Log::Contextual::App;
 use File::Spec;
+use AmuseWikiFarm::Utils::Amuse;
+
+# load the locales
+AmuseWikiFarm::Utils::Amuse::load_all_datetime_locales();
 
 # Configure the application.
 #
