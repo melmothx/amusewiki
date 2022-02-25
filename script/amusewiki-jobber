@@ -11,6 +11,11 @@ use AmuseWikiFarm::Log::Contextual;
 use Try::Tiny;
 use Getopt::Long;
 use AmuseWikiFarm::Utils::CgitSetup;
+use AmuseWikiFarm::Utils::Amuse;
+
+# load the locales, in case it's needed
+AmuseWikiFarm::Utils::Amuse::load_all_datetime_locales();
+
 
 my $max_parallel = 3;
 # legacy
