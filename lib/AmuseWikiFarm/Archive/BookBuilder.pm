@@ -628,6 +628,10 @@ has linespacing => (is => 'rw',
                     isa => Int,
                     default => sub { 0 });
 
+has parindent => (is => 'rw',
+                  isa => Int,
+                  default => sub { 15 });
+
 sub linespacing_as_string {
     my $self = shift;
     if ($self->linespacing > 0) {
@@ -681,6 +685,8 @@ has papersize => (
 =head2 ignore_cover
 
 =head2 linespacing
+
+=head2 parindent
 
 =cut
 
@@ -1290,6 +1296,7 @@ sub profile_methods {
               tex_tolerance
               ignore_cover
               linespacing
+              parindent
               cover/;
 }
 
@@ -1363,6 +1370,7 @@ sub as_job {
                                                               ? $self->geometry_top_margin . 'mm'
                                                               : ''),
                                     linespacing => $self->linespacing_as_string,
+                                    parindent => $self->parindent,
                                     ($self->is_single_file ? ()
                                      : (
                                         # when we provide these, they take precedence over the file defined

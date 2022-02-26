@@ -380,6 +380,25 @@
           </div>
         </div>
       </div>
+
+      <div class="form-group pdf-option" style="margin-top: 15px">
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="parindent">
+              [% loc('Paragraph indentation in points (pt)') %]
+            </label>
+          </div>
+          <div class="col-sm-3">
+            <input type="number"
+                   name="parindent"
+                   id="parindent"
+                   value="[% bb.parindent %]"
+                   step="1"
+                   class="form-control"
+                   required />
+          </div>
+      </div>
+
       <div class="form-group pdf-option" style="margin-top: 15px">
         <div class="row">
           <div class="col-sm-3">

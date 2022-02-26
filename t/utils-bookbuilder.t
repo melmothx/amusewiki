@@ -266,6 +266,7 @@ my $expected = {
                                        opening => 'right',
                                        headings => 0,
                                        linespacing => '',
+                                       parindent => 15,
                                       },
                 'title' => 'Pippuzzo *va* in **montagna**'
                };
