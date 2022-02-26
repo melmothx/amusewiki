@@ -1744,6 +1744,9 @@ msgstr ""
 "Trashësia e letrës (0.10 duhet të jetë e përshtatshme për letrën e zakonshme "
 "80g/m2)"
 
+msgid "Paragraph indentation in points (pt)"
+msgstr ""
+
 msgid "Paragraphs"
 msgstr "Paragrafet"
 

@@ -1807,6 +1807,9 @@ msgstr ""
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
 msgstr "Papierdikte, (0.10 zou voldoende moeten zijn gewoon 80g/m2 papier)"
 
+msgid "Paragraph indentation in points (pt)"
+msgstr ""
+
 msgid "Paragraphs"
 msgstr "Alineas"
 

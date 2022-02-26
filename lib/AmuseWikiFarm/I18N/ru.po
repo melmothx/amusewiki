@@ -1760,6 +1760,9 @@ msgstr ""
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
 msgstr "Толщина бумаги (0,10 должно подходить для типичной 80г/м2 бумаги)"
 
+msgid "Paragraph indentation in points (pt)"
+msgstr ""
+
 msgid "Paragraphs"
 msgstr "Параграфы"
 

@@ -1812,6 +1812,9 @@ msgstr ""
 "Spessore della carta (0.10 dovrebbe essere corretto per la normale carta 80g/"
 "m2)"
 
+msgid "Paragraph indentation in points (pt)"
+msgstr ""
+
 msgid "Paragraphs"
 msgstr "Paragrafi"
 

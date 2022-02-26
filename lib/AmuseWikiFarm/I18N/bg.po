@@ -1839,6 +1839,9 @@ msgstr ""
 "Дебелина на листовете (0.10 би трябва да е подходящо за обикновена 80 г/м2 "
 "хартия)"
 
+msgid "Paragraph indentation in points (pt)"
+msgstr ""
+
 msgid "Paragraphs"
 msgstr "Параграфи"
 

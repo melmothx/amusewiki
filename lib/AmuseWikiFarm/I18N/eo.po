@@ -1814,6 +1814,9 @@ msgstr ""
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
 msgstr "Papera dikeco (0,10 taŭgas por ofta 80g / m2-papero)"
 
+msgid "Paragraph indentation in points (pt)"
+msgstr ""
+
 msgid "Paragraphs"
 msgstr "Paragrafoj"
 

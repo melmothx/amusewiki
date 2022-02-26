@@ -1768,6 +1768,9 @@ msgstr ""
 "Espesor del papel (0.10 debería ser apropiado para papel común de         "
 "80gr/m2)"
 
+msgid "Paragraph indentation in points (pt)"
+msgstr ""
+
 msgid "Paragraphs"
 msgstr "Párrafos"
 

@@ -1749,6 +1749,9 @@ msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
 msgstr ""
 "Debljina papira (0.10 trebalo bi biti dovoljno za uobičajen papir 80g/m2)"
 
+msgid "Paragraph indentation in points (pt)"
+msgstr ""
+
 msgid "Paragraphs"
 msgstr "Odlomci"
 

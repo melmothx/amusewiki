@@ -1681,6 +1681,9 @@ msgstr ""
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
 msgstr "纸张厚度（0.10应适用于普通80g/m2的纸张）。"
 
+msgid "Paragraph indentation in points (pt)"
+msgstr ""
+
 msgid "Paragraphs"
 msgstr "段落"
 

@@ -1781,6 +1781,9 @@ msgstr ""
 "Дебелина на хартијата (0.10 би требало да биде доволно за вообичаената "
 "хартија од 80г/м2)"
 
+msgid "Paragraph indentation in points (pt)"
+msgstr ""
+
 msgid "Paragraphs"
 msgstr "Пасуси"
 
