@@ -136,7 +136,7 @@ $(document).ready(function() {
                  changed.addClass('amw-select-success');
                  changed.data('original-value', data);
                  var indicator = $('<i>',
-                                   { "class" : "fa fa-check federation-change-notification text-success" });
+                                   { "class" : "fa fa-chevron-circle-down federation-change-notification text-success" });
                  changed.closest('tr').find('td').last().append(' ', indicator.clone());
                  changed.closest('tr').find('td').first().append(' ', indicator.clone());
 
