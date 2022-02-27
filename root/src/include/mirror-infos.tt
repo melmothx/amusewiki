@@ -60,8 +60,9 @@ $(document).ready(function() {
              return;
          }
          var template = $(src).clone();
-         var out = $('<select>', { "class": "form-control",
+         var out = $('<select>', { "class": "form-control federation-dropdown",
                                    "data-field": field,
+                                   "data-original-value": data,
                                    "data-id": row.mirror_info_id
          });
          template.children().each(function() {
@@ -122,6 +123,7 @@ $(document).ready(function() {
      };
      el.DataTable(init);
      el.on("change", "select", function() {
+         $('.federation-change-notification').hide('slow').remove();
          var changed = $(this);
          var send = {
              "id": changed.data('id'),
@@ -130,6 +132,19 @@ $(document).ready(function() {
          };
          $.post(el.data('target'), send, function(data) {
              console.log(data);
+             if (data.ok) {
+                 changed.addClass('amw-select-success');
+                 changed.data('original-value', data);
+                 var indicator = $('<i>',
+                                   { "class" : "fa fa-check federation-change-notification text-success" });
+                 changed.closest('tr').find('td').last().append(' ', indicator.clone());
+                 changed.closest('tr').find('td').first().append(' ', indicator.clone());
+
+             }
+             else {
+                 alert(data.error || "Error!");
+                 changed.val(changed.data('original-value'));
+             }
          });
      });
  });
