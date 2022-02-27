@@ -298,6 +298,16 @@ sub compute_repo_path {
     }
 }
 
+sub active_download_url {
+    my $self = shift;
+    if ($self->mirror_origin and !$self->mirror_exception) {
+        return $self->download_source;
+    }
+    else {
+        return;
+    }
+}
+
 
 __PACKAGE__->meta->make_immutable;
 1;

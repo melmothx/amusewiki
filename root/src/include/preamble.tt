@@ -122,6 +122,14 @@
       <strong>[% text.rights %]</strong>
     </div>
     [% END %]
+
+    [% SET text_mirror_source = text.mirror_source %]
+    [% IF text_mirror_source %]
+      <div id="text-mirror-link">
+        <strong>[% loc('Mirror of:') %]</strong>
+        <a href="[% text_mirror_source | html %]">[% text_mirror_source | html %]</a>
+      </div>
+    [% END %]
   </div>
 
   <!-- end of the preamble -->
@@ -159,7 +167,9 @@
       </span>
         [% END %]
       [% END %]
-      [% IF c.user_exists || site.human_can_edit %]
+      [% IF text_mirror_source %]
+        <!-- no editing, it's a mirror -->
+      [% ELSIF c.user_exists || site.human_can_edit %]
       <span id="text-edit-button">
         <a href="[% c.uri_for(text.full_edit_uri) %]">
           <span class="fa fa-edit fa-2x fa-border"

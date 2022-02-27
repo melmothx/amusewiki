@@ -1806,6 +1806,14 @@ sub mirror_manifest {
     $self->result_source->resultset->by_id($self->id)->mirror_manifest;
 }
 
+sub mirror_source {
+    my $self = shift;
+    if (my $mi = $self->mirror_info) {
+        return $mi->active_download_url;
+    }
+    return;
+}
+
 __PACKAGE__->meta->make_immutable;
 
 1;
