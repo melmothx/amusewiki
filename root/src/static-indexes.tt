@@ -94,8 +94,6 @@
           <tr>
             <td data-sort="[% text.sorting_pos %]">
             <i aria-hidden="true"
-               data-toggle="tooltip"
-               data-placement="top"
                [% IF text.text_qualification == 'book' %]
                class="awm-show-text-type-icon fa fa-book"
                title="[% loc('This text is a book') %]"
@@ -125,17 +123,13 @@
             [%- IF format.is_slides && !text.slides %]
             <span class="fa fa-2x fa-border fa-ban"
                   title="[% format.desc %] [% lh.loc('N/A') %]"
-                  aria-hidden="true"
-                  data-toggle="tooltip"
-                  data-placement="top">
+                  aria-hidden="true">
             </span><span class="sr-only">[% format.desc %] [% lh.loc('N/A') %]</span>
             [%- ELSE %]
             <a class="force-black" href="[% text.in_tree_uri %][% format.ext %]">
               <span class="fa fa-2x fa-border [% format.icon %]"
                     title="[% format.desc %]"
-                    aria-hidden="true"
-                    data-toggle="tooltip"
-                    data-placement="top">
+                    aria-hidden="true">
               </span><span class="sr-only">[% format.desc %]</span></a>
             [%- END %]
             [%- END %]
@@ -153,7 +147,6 @@
     </div>
     <script>
     $(document).ready(function() {
-         $('[data-toggle="tooltip"]').tooltip();
          var table = $('#title-listing-table').DataTable({
              "lengthMenu": [
                  [10, 25, 50, 100, 200, -1],
