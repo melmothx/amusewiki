@@ -9,7 +9,7 @@
   <option value="">[% loc('None') %]</option>
   <option value="conflict">[% loc('Conflict') %]</option>
   <option value="local">[% loc('Local') %]</option>
-  <option value="removed_uptream">[% loc('Removed Upstream') %]</option>
+  <option value="removed_upstream">[% loc('Removed Upstream') %]</option>
 </select>
 
 <div class="table-responsive">
