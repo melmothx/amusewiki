@@ -518,7 +518,7 @@
                 <li>
                   <a href="[% c.uri_for_action('/federation/show') %]">
                     <i class="fa fa-handshake-o fa-fw"></i>
-                    [% loc('Federation') %]
+                    [% loc('Federation') %] [EXP]
                   </a>
                 </li>
                 <li>
