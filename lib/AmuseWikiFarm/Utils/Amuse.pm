@@ -21,6 +21,8 @@ use AmuseWikiFarm::Log::Contextual;
 use Path::Tiny;
 use File::MimeInfo::Magic qw/mimetype/;
 use Imager;
+use Cwd;
+use constant ROOT => getcwd();
 
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw/muse_file_info
@@ -35,6 +37,8 @@ our @EXPORT_OK = qw/muse_file_info
                     clean_html
                     to_json
                     from_json
+                    build_full_uri
+                    build_repo_path
                     amw_meta_stripper
                     unicode_uri_fragment
                     cover_filename_is_valid
@@ -510,6 +514,95 @@ sub muse_get_full_path {
   push @path, $filename;
   die "bad filename" if $#path < 2;
   return \@path;
+}
+
+sub build_full_uri {
+    my $spec = shift;
+    my ($class, $f_class) = @$spec{qw/class f_class/};
+    return unless $class && $f_class;
+    my @pieces = ('');
+    if ($class eq 'Title') {
+        if ($f_class eq 'text') {
+            push @pieces, 'library';
+        }
+        elsif ($f_class eq 'special') {
+            push @pieces, 'special';
+        }
+        else {
+            die "unknown $class f_class $f_class";
+        }
+    }
+    elsif ($class eq 'Attachment') {
+        if ($f_class eq 'image') {
+            push @pieces, 'library';
+        }
+        elsif ($f_class eq 'special_image') {
+            push @pieces, 'special';
+        }
+        elsif ($f_class eq 'upload_pdf' or $f_class eq 'upload_binary') {
+            die "Missing site id to compute full uri for $class/$f_class" unless $spec->{site_id};
+            push @pieces, 'uploads', $spec->{site_id};
+        }
+        else {
+            die "unknown $class f_class $f_class"
+        }
+    }
+    else {
+        die "Unknown class $class";
+    }
+
+    if (defined $spec->{uri}) {
+        push @pieces, $spec->{uri};
+    }
+    return join('/', @pieces);
+}
+
+sub build_repo_path {
+    my $spec = shift;
+    my ($class, $f_class, $uri, $site_id) = @$spec{qw/class f_class uri site_id/};
+    return unless $uri && $class && $f_class;
+
+    # strip the suffix
+    my $suffix = '';
+    if ($uri =~  m/\A([a-z0-9-]+)(\.[a-z0-9]{3,})?\z/) {
+        ($uri, $suffix) = ($1, $2 || '');
+    }
+    else {
+        die "Invalid uri $uri";
+    }
+
+    my @pieces;
+    # site id is option
+    if ($spec->{absolute}) {
+        if ($spec->{site_id}) {
+            push @pieces, ROOT, repo => $site_id;
+        }
+        else {
+            die "Cannot get absolute path for " . Dumper($spec);
+        }
+    }
+    if (($class eq 'Title' && $f_class eq 'text') or
+        ($class eq 'Attachment' && $f_class eq 'image')) {
+        if (my $regular_path = muse_get_full_path($uri)) {
+            push @pieces, $regular_path->[0], $regular_path->[1];
+        }
+        else {
+            die "Unparsable $class $f_class $uri";
+        }
+    }
+    elsif (($class eq 'Title' && $f_class eq 'special') or
+           ($class eq 'Attachment' && $f_class eq 'special_image')) {
+        push @pieces, 'specials';
+    }
+    elsif ($class eq 'Attachment' and ($f_class eq 'upload_pdf' or
+                                       $f_class eq 'upload_binary')) {
+        push @pieces, 'uploads';
+    }
+    else {
+        die "Invalid class  $class/ f_class $f_class";
+    }
+    push @pieces, $uri . $suffix;
+    return path(@pieces);
 }
 
 sub _parse_category {

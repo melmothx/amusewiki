@@ -1,10 +1,11 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 92;
+use Test::More tests => 136;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
+use Data::Dumper::Concise;
 
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_parse_file_path
@@ -14,6 +15,8 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_attachment_basename_for
                                    clean_username
                                    amw_meta_stripper
+                                   build_full_uri
+                                   build_repo_path
                                   /;
 
 is_deeply(muse_get_full_path("cacca"), [ "c", "ca", "cacca" ]);
@@ -164,3 +167,140 @@ is (amw_meta_stripper(('12345 678 ' x 15) . 'lkajsdalksdjflkakasdklf'),
     ('12345 678 ' x 14) . '12345 678...');
 
 is AmuseWikiFarm::Utils::Amuse::get_corrected_path('test.muse'), 't/tt/test.muse';
+
+foreach my $spec ([ {}, undef ],
+                  [
+                   {
+                    class => 'Title',
+                   }, undef, undef
+                  ],
+                  [
+                   {
+                    f_class => 'text',
+                   }, undef, undef
+                  ],
+                  [{
+                    class => 'Title',
+                    f_class => 'text',
+                   }, '/library', undef ],
+                  [{
+                    class => 'Title',
+                    f_class => 'text',
+                    uri => '',
+                   }, '/library/', undef],
+
+                  [{
+                    class => 'Title',
+                    f_class => 'text',
+                    uri => 'pizza',
+                   }, '/library/pizza', 'p/pa/pizza'],
+
+                  [{
+                    class => 'Title',
+                    f_class => 'text',
+                    uri => 'pizza.muse',
+                   }, '/library/pizza.muse', 'p/pa/pizza.muse'],
+
+                  [{
+                    class => 'Title',
+                    f_class => 'special',
+                   }, '/special', undef],
+                  [{
+                    class => 'Title',
+                    f_class => 'special',
+                    uri => '',
+                   }, '/special/', undef],
+
+                  [{
+                    class => 'Title',
+                    f_class => 'special',
+                    uri => 'pizza',
+                   }, '/special/pizza', 'specials/pizza'],
+
+                  [{
+                    class => 'Title',
+                    f_class => 'special',
+                    uri => 'pizza.muse',
+                   }, '/special/pizza.muse', 'specials/pizza.muse'],
+
+                  [{
+                    class => 'Titlex',
+                    f_class => 'special',
+                    uri => 'pizza',
+                   }, undef, undef],
+                  [{
+                    class => 'Title',
+                    f_class => 'specialxx',
+                    uri => 'pizza',
+                   }, undef , undef],
+                  [{
+                    class => 'Attachment',
+                    f_class => 'asdfa',
+                    uri => 'pizza',
+                   }, undef, undef],
+                   [{
+                    class => 'Attachment',
+                    f_class => 'image',
+                   }, '/library', undef],
+
+                  [{
+                    class => 'Attachment',
+                    f_class => 'image',
+                    uri => 'pizza.jpg',
+                   }, '/library/pizza.jpg', 'p/pa/pizza.jpg'
+                  ],
+
+                  [{
+                    class => 'Attachment',
+                    f_class => 'special_image',
+                    uri => 'pizza.jpg',
+                   }, '/special/pizza.jpg',
+                   'specials/pizza.jpg'
+                  ],
+
+                  [{
+                    class => 'Attachment',
+                    f_class => 'special_image',
+                    uri => 'pizza.jpg',
+                    site_id => 'xx'
+                   }, '/special/pizza.jpg',
+                   'specials/pizza.jpg'
+                  ],
+                  [{
+                    class => 'Attachment',
+                    f_class => 'upload_pdf',
+                    uri => 'pizza.pdf',
+                   }, undef, 'uploads/pizza.pdf'],
+                   [{
+                    class => 'Attachment',
+                    f_class => 'upload_binary',
+                     uri => 'pizza.mov',
+                    }, undef, 'uploads/pizza.mov'],
+                  [{
+                    class => 'Attachment',
+                    f_class => 'upload_pdf',
+                    uri => 'pizza.pdf',
+                    site_id => 'blog',
+                   }, '/uploads/blog/pizza.pdf',
+                   'uploads/pizza.pdf'
+                  ],
+                  [{
+                    class => 'Attachment',
+                    f_class => 'upload_binary',
+                    uri => 'pizza.mov',
+                    site_id => 'blog',
+                   }, '/uploads/blog/pizza.mov',
+                   'uploads/pizza.mov'
+                  ],
+                 ) {
+    diag Dumper($spec);
+    my ($spec, $full_uri, $repo_path) = @$spec;
+    my ($outcome, $outpath);
+    eval { $outcome = build_full_uri($spec) };
+    diag $@ if $@;
+    is $outcome, $full_uri, "Expected OK";
+    eval { $outpath = build_repo_path($spec) };
+    diag $@ if $@;
+    is $outpath, $repo_path, "Repo path OK";
+}
+

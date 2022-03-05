@@ -57,6 +57,8 @@ sub handled_jobs_hashref {
             # testing
             testing => 10,
             testing_high => 5,
+            download_remote => 26,
+            install_downloaded => 27,
            };
 }
 
@@ -132,6 +134,7 @@ sub enqueue_global_job {
                      created => DateTime->now,
                      priority => $priority,
                      site => $site,
+                     username => 'amusewiki',
                     };
     my $job = $self->create($insertion)->discard_changes;
     $job->make_room_for_logs;

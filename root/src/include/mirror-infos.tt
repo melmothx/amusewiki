@@ -1,0 +1,152 @@
+<select id="select-mirror" class="form-control" style="display: none">
+  <option value="">[% loc('None') %]</option>
+  [% FOREACH origin IN all_mirror_origins %]
+    <option value="[% origin.mirror_origin_id %]">[% origin.remote_target_url %]</option>
+  [% END %]
+</select>
+
+<select id="mirror-exceptions" class="form-control" style="display: none">
+  <option value="">[% loc('None') %]</option>
+  <option value="conflict">[% loc('Conflict') %]</option>
+  <option value="local">[% loc('Local') %]</option>
+  <option value="removed_upstream">[% loc('Removed Upstream') %]</option>
+</select>
+
+<div class="table-responsive">
+  <table id="mirror-table"
+         data-src="[% mirror_info_src | html %]"
+         data-target="[% c.uri_for_action('/federation/mirror_info_edit') %]"
+         class="table table-striped table-condensed table-bordered">
+    <thead>
+      <tr>
+        <th>[% loc('ID') %]</th>
+        <th>[% loc('Mirror') %]</th>
+        <th>[% loc('Source') %]</th>
+        <th>[% loc('Destination') %]</th>
+        <th>[% loc('Exception') %]</th>
+        <th>[% loc('Last updated') %]
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+
+<script>
+$(document).ready(function() {
+     var el = $('#mirror-table');
+     function render_link(data, type, row, meta) {
+         if (type === 'display') {
+             if (data) {
+                 return $('<a>', { href: data }).text(data).prop('outerHTML');
+             }
+             else {
+                 return "-";
+             }
+         }
+         else {
+             return data;
+         }
+     }
+     function render_dropdown(src, data, row) {
+         var field;
+         if (src === '#select-mirror') {
+             field = 'mirror_origin_id';
+         }
+         else if (src == '#mirror-exceptions') {
+             field = 'mirror_exception';
+         }
+         else {
+             return;
+         }
+         var template = $(src).clone();
+         var out = $('<select>', { "class": "form-control federation-dropdown",
+                                   "data-field": field,
+                                   "data-original-value": data,
+                                   "data-id": row.mirror_info_id
+         });
+         template.children().each(function() {
+             var opt = $(this).clone();
+             if (opt.attr('value') == data) {
+                 opt.attr('selected', 'selected');
+             }
+             out.append(opt);
+         });
+         return out.prop('outerHTML');
+     }
+     var init = {
+         "ajax": el.data('src'),
+         "columns": [
+             {
+                 data: "mirror_info_id",
+             },
+             {
+                 data: "mirror_origin_id",
+                 render: function(data, type,  row, meta) {
+                     if (type === 'display') {
+                         return render_dropdown('#select-mirror', data, row);
+                     }
+                     else {
+                         return data;
+                     }
+                 }
+             },
+             {
+                 data: "download_source",
+                 render: render_link
+             },
+             {
+                 data: "full_uri",
+                 render: render_link
+             },
+             {
+                 data: "mirror_exception",
+                 render: function(data, type,  row, meta) {
+                     if (type === 'display') {
+                         return render_dropdown('#mirror-exceptions', data, row);
+                     }
+                     else {
+                         return data;
+                     }
+                 }
+             },
+             { data: "last_updated" }
+         ],
+         "lengthMenu": [
+             [10, 25, 50, 100, 200, -1],
+             [10, 25, 50, 100, 200, "∞"]
+         ],
+         "pageLength": 25,
+         "language": {
+             "url": "/api/datatables-lang"
+         }
+     };
+     el.DataTable(init);
+     el.on("change", "select", function() {
+         $('.federation-change-notification').hide('slow').remove();
+         var changed = $(this);
+         var send = {
+             "id": changed.data('id'),
+             "field": changed.data('field'),
+             "value": changed.val()
+         };
+         $.post(el.data('target'), send, function(data) {
+             console.log(data);
+             if (data.ok) {
+                 changed.addClass('amw-select-success');
+                 changed.data('original-value', data);
+                 var indicator = $('<i>',
+                                   { "class" : "fa fa-chevron-circle-down federation-change-notification text-success" });
+                 changed.closest('tr').find('td').last().append(' ', indicator.clone());
+                 changed.closest('tr').find('td').first().append(' ', indicator.clone());
+
+             }
+             else {
+                 alert(data.error || "Error!");
+                 changed.val(changed.data('original-value'));
+             }
+         });
+     });
+ });
+
+</script>

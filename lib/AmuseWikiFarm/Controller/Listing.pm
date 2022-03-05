@@ -43,6 +43,12 @@ sub listing :Chained('filter_texts') :PathPart('listing') :Args(0) {
              );
 }
 
+sub manifest :Chained('select_texts') :PathPart('manifest.json') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(json => $c->stash->{texts}->mirror_manifest);
+    $c->detach($c->view('JSON'));
+}
+
 
 =encoding utf8
 

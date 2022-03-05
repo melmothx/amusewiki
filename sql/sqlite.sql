@@ -285,6 +285,8 @@ CREATE TABLE bulk_job (
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
        status    VARCHAR(32),
+       payload   TEXT, -- the JSON stuff
+       produced  VARCHAR(255),
        username  VARCHAR(255)
 );
 
@@ -642,6 +644,38 @@ CREATE TABLE included_file (
        file_epoch INTEGER
 );
 
+CREATE TABLE mirror_origin (
+       mirror_origin_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
+       remote_domain VARCHAR(255) NOT NULL,
+       remote_path VARCHAR(255) NOT NULL,
+       active INTEGER(1) NOT NULL DEFAULT 0,
+       status_message TEXT,
+       last_downloaded DATETIME
+);
+
+CREATE TABLE mirror_info (
+       mirror_info_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       title_id INTEGER NULL REFERENCES title(id)
+                             ON DELETE CASCADE ON UPDATE CASCADE,
+       attachment_id INTEGER NULL REFERENCES attachment(id)
+                             ON DELETE CASCADE ON UPDATE CASCADE,
+       mirror_origin_id INTEGER NULL REFERENCES mirror_origin(mirror_origin_id)
+                                ON DELETE SET NULL ON UPDATE CASCADE,
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
+       checksum VARCHAR(128),
+       download_source TEXT,
+       download_destination TEXT,
+       mirror_exception VARCHAR(32) NOT NULL DEFAULT '',
+       last_updated DATETIME
+);
+
+CREATE UNIQUE INDEX unique_mirror_info_title_id ON mirror_info(title_id);
+CREATE UNIQUE INDEX unique_mirror_info_attachment_id ON mirror_info(attachment_id);
+
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),
@@ -682,6 +716,8 @@ INSERT INTO table_comments (table_name, comment_text)
          ('node_body', 'Nodes description'),
          ('node_title', 'Linking table from Node to Title'),
          ('node_category', 'Linking table from Node to Category'),
+         ('mirror_info', 'Mirror meta-info'),
+         ('mirror_origin', 'Mirror origin'),
          ('included_file', 'Files included in muse documents'),
          ('include_path', 'Directories to search for file inclusions')
          ;

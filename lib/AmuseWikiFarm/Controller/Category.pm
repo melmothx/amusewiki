@@ -149,6 +149,12 @@ sub select_texts :Chained('category') :PathPart('') :CaptureArgs(1) {
     }
 }
 
+sub single_category_manifest :Chained('select_texts') :PathPart('manifest.json') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(json => $c->stash->{texts}->mirror_manifest);
+    $c->detach($c->view('JSON'));
+}
+
 # chained from AmuseWikiFarm::Role::Controller::Listing;
 
 sub single_category :Chained('filter_texts') :PathPart('') :CaptureArgs(0) {
@@ -263,6 +269,13 @@ sub single_category_by_lang :Chained('single_category') :PathPart('') :CaptureAr
     else {
         $c->detach('/not_found');
     }
+}
+
+sub single_category_by_lang_manifest :Chained('single_category_by_lang') :PathPart('manifest.json') :Args(0) {
+    my ($self, $c) = @_;
+    # reset the sorting
+    $c->stash(json => $c->stash->{texts}->search(undef, { order_by => undef })->mirror_manifest);
+    $c->detach($c->view('JSON'));
 }
 
 sub single_category_by_lang_display :Chained('single_category_by_lang') :PathPart('') :Args(0) {

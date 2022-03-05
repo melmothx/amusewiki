@@ -1,0 +1,12 @@
+<div class="amw-breadcrumbs">
+  <ol class="breadcrumb">
+    <li>
+      <a href="[% c.uri_for_action('/federation/show') %]">[% loc('Federation') %]</a>
+    </li>
+    <li>
+      [% mirror_origin.remote_target_url | html %]
+    </li>
+  </ol>
+</div>
+
+[% INCLUDE 'include/mirror-infos.tt' %]

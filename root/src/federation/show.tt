@@ -1,0 +1,160 @@
+<div class="amw-breadcrumbs">
+  <ol class="breadcrumb">
+    <li>
+      <a href="[% c.uri_for_action('/federation/show') %]">[% loc('Federation') %]</a>
+    </li>
+    <li>
+      [% loc('Local pages') %]
+    </li>
+  </ol>
+</div>
+
+<div class="center">
+  <div class="page-header">
+    <h2>[% loc('Federation') %]</h2>
+  </div>
+</div>
+
+
+<div style="display:none"
+     class="alert alert-danger"
+     id="connectivity-status-error"></div>
+</div>
+
+<form action="[% c.uri_for_action('federation/edit') %]" method="POST">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>[% loc('Details') %]</th>
+        <th>[% loc('Domain') %]</th>
+        <th>[% loc('Path') %]</th>
+        <th>[% loc('Files') %]</th>
+        <th>[% loc('Active') %]</th>
+      </tr>
+    </thead>
+    <tbody>
+      [% FOREACH origin IN all_mirror_origins %]
+        <tr>
+          <td class="text-center">
+            <a href="[% c.uri_for_action('federation/details', [ origin.mirror_origin_id ]) %]">
+              <i class="fa fa-list fa-lg"></i>
+            </a>
+          </td>
+          <td>
+            <a href="[% origin.remote_target_url %]">
+              [% origin.remote_domain %]
+            </a>
+          </td>
+          <td>
+            [% origin.remote_path %]
+          </td>
+          <td>
+            [% origin.total_files %]
+          </td>
+          <td>
+            <span class="indicator-active">[% loc('Yes') %]</span>
+            <span class="indicator-inactive">[% loc('No') %]</span>
+          </td>
+          <td class="indicator" data-active="[% origin.active %]">
+            <button type="button"
+                    data-id="[% origin.mirror_origin_id %]"
+                    class="toggle-active btn btn-primary">[% loc('Toggle') %]</button>
+          </td>
+          <td>
+            <button type="button"
+                    class="check-connectivity btn btn-primary"
+                    data-url="[% c.uri_for_action('federation/check', [ origin.mirror_origin_id ]) %]">
+              [% loc('Check') %]
+            </button>
+          </td>
+          <td>
+            <div style="display:none"
+                 class="connectivity-status connectivity-status-ok"><i class="fa fa-2x fa-thumbs-up"></i></div>
+            <div style="display:none"
+                 class="connectivity-status connectivity-status-not-ok"><i class="fa fa-2x fa-thumbs-down"></i></div>
+            </div>
+          </td>
+          <td>
+            <a href="[% c.uri_for_action('federation/fetch', [ origin.mirror_origin_id ]) %]"
+               class="btn btn-primary">
+              [% c.loc('Fetch') %]
+            </a>
+          </td>
+          <td>
+            <a href="[% c.uri_for_action('federation/remove', [ origin.mirror_origin_id ]) %]"
+               class="btn btn-primary">
+              [% c.loc('Remove') %]
+            </a>
+          </td>
+        </tr>
+      [% END %]
+    </tbody>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td><input class="form-control" name="remote_domain" placeholder="example.tld" required></td>
+        <td><input class="form-control" name="remote_path" placeholder="/" required></td>
+        <td><button type="submit" name="create" value="1" class="btn btn-primary">[% loc('Add') %]</button></td>
+      </tr>
+    </tfoot>
+  </table>
+</form>
+
+<div class="center">
+  <div class="page-header">
+    <h2>[% loc('Local pages') %]</h2>
+  </div>
+</div>
+
+[% INCLUDE 'include/mirror-infos.tt' %]
+
+<script>
+ $(document).ready(function() {
+     $('.indicator').each(function() {
+         var el = $(this);
+         var parent = el.closest('tr');
+         if (el.data('active')) {
+             parent.find('.indicator-active').show();
+             parent.find('.indicator-inactive').hide();
+         }
+         else {
+             parent.find('.indicator-active').hide();
+             parent.find('.indicator-inactive').show();
+         }
+     });
+     $('.toggle-active').on('click', function() {
+         var button = $(this);
+         var id = button.data('id');
+         console.log("toggling " + id);
+         if (id) {
+             var target = button.closest('form').attr('action');
+             console.log(target || 'none');
+             if (target) {
+                 $.post(target, { toggle: id }, function(data) {
+                     console.log(data);
+                     button.closest('tr').find('.indicator-active').toggle();
+                     button.closest('tr').find('.indicator-inactive').toggle();
+                 });
+             }
+         }
+     })
+     $('.check-connectivity').on('click', function() {
+         var el = $(this);
+         var parent = el.closest('tr');
+         parent.find('.connectivity-status').hide();
+         $('#connectivity-status-error').text('').hide();
+         $.get(el.data('url'), function(res) {
+             console.log(res);
+             if (res.data && res.data.length) {
+                 parent.find('.connectivity-status-ok').show('fast');
+             }
+             else  {
+                 parent.find('.connectivity-status-not-ok').show('fast');
+             }
+             if (res.error) {
+                 $('#connectivity-status-error').text(res.error).show('fast');
+             }
+         });
+     });
+ });
+</script>

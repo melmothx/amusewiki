@@ -109,6 +109,12 @@ sub status_is_deferred {
 }
 
 
+sub by_id {
+    my ($self, $id) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.id" => $id });
+}
+
 sub sorted_by_title {
     return shift->order_by('title_asc');
 }
@@ -661,6 +667,42 @@ sub list_git_file_urls {
                     value => "/git/$r->{site_id}/plain/$r->{f_archive_rel_path}/$r->{f_name}$r->{f_suffix}",
                     label => join(' — ', grep { $_ } $r->{title}, $r->{author}),
                    };
+    }
+    return \@out;
+}
+
+sub mirror_manifest {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+
+    # manifest only for published texts.
+    my $base = $self->status_is_published;
+
+    my @out;
+    my $trs = $base->search({ 'mirror_info.mirror_info_id' => { '!=' => undef } },
+                            {
+                             result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                             select => ["$me.site_id", "$me.uri", "$me.f_class", "mirror_info.checksum"],
+                             as => [qw/site_id uri f_class checksum/],
+                             join => [qw/mirror_info/]
+                            });
+    while (my $i = $trs->next) {
+        $i->{class} = 'Title';
+        $i->{uri} .= '.muse';
+        push @out, $i;
+    }
+    my $ars = $base->search_related('title_attachments')
+      ->search_related('attachment')
+      ->search({ 'mirror_info.mirror_info_id' => { '!=' => undef } },
+               {
+                result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                select => ["attachment.site_id", "attachment.uri", "attachment.f_class", "mirror_info.checksum"],
+                as => [qw/site_id uri f_class checksum/],
+                join => [qw/mirror_info/]
+               });
+    while (my $i = $ars->next) {
+        $i->{class} = 'Attachment';
+        push @out, $i;
     }
     return \@out;
 }

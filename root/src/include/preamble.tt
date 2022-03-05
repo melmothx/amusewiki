@@ -122,6 +122,14 @@
       <strong>[% text.rights %]</strong>
     </div>
     [% END %]
+
+    [% SET text_mirror_source = text.mirror_source %]
+    [% IF text_mirror_source %]
+      <div id="text-mirror-link">
+        <strong>[% loc('Mirror of:') %]</strong>
+        <a href="[% text_mirror_source | html %]">[% text_mirror_source | html %]</a>
+      </div>
+    [% END %]
   </div>
 
   <!-- end of the preamble -->
@@ -143,7 +151,6 @@
             <span class="fa [% cformat.icon %] fa-2x fa-border"
                   aria-hidden="true"
                   title="[% loc(cformat.desc) %]"
-                  data-toggle="tooltip" data-placement="top"
                   ></span><span class="sr-only">[% loc(cformat.format_name) %] [% loc(cformat.desc) %]</span></a>
         </span>
       </span>
@@ -156,18 +163,18 @@
           <span class="fa fa-history fa-2x fa-border"
                 aria-hidden="true"
                 title="[% loc('View history') %]"
-                data-toggle="tooltip" data-placement="top"
                 ></span><span class="sr-only" >[% loc('View history') %]</span></a>
       </span>
         [% END %]
       [% END %]
-      [% IF c.user_exists || site.human_can_edit %]
+      [% IF text_mirror_source %]
+        <!-- no editing, it's a mirror -->
+      [% ELSIF c.user_exists || site.human_can_edit %]
       <span id="text-edit-button">
         <a href="[% c.uri_for(text.full_edit_uri) %]">
           <span class="fa fa-edit fa-2x fa-border"
                 aria-hidden="true"
                 title="[% loc('Edit this text') %]"
-                data-toggle="tooltip" data-placement="top"
                 ></span><span class="sr-only" >[% loc('Edit this text') %]</span></a>
       </span>
       [% END %]
@@ -180,7 +187,6 @@
           <span class="fa fa-book fa-2x fa-border"
                 aria-hidden="true"
                 title="[% loc('Add this text to the bookbuilder') %]"
-                data-toggle="tooltip" data-placement="top"
                 ></span><span class="sr-only" >[% loc('Add this text to the bookbuilder') %]</span></a>
       </span>
       <span id="book-builder-add-text-partial">
@@ -192,7 +198,6 @@
           <span class="fa fa-list-alt fa-2x fa-border"
                 aria-hidden="true"
                 title="[% loc('Select individual parts for the bookbuilder') %]"
-                data-toggle="tooltip" data-placement="top"
                 ></span><span class="sr-only" >[% loc('Select individual parts for the bookbuilder') %]</span></a>
       </span>
       [% IF c.user_exists %]
@@ -200,7 +205,6 @@
         <a href="[% c.uri_for(text.full_rebuild_uri) %]">
           <span class="fa fa-refresh fa-2x fa-border"
                 aria-hidden="true"
-                data-toggle="tooltip" data-placement="top"
                 title="[% loc('Rebuild the generated formats') %]"></span><span class="sr-only" >
             [% loc('Rebuild the generated formats') %]
         </span></a>

@@ -142,6 +142,8 @@ dbicdh/_source/deploy/7/001-auto-__VERSION.yml
 dbicdh/_source/deploy/7/001-auto.yml
 dbicdh/_source/deploy/70/001-auto-__VERSION.yml
 dbicdh/_source/deploy/70/001-auto.yml
+dbicdh/_source/deploy/71/001-auto-__VERSION.yml
+dbicdh/_source/deploy/71/001-auto.yml
 dbicdh/_source/deploy/8/001-auto-__VERSION.yml
 dbicdh/_source/deploy/8/001-auto.yml
 dbicdh/_source/deploy/9/001-auto-__VERSION.yml
@@ -280,6 +282,8 @@ dbicdh/MySQL/deploy/7/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/7/001-auto.sql
 dbicdh/MySQL/deploy/70/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/70/001-auto.sql
+dbicdh/MySQL/deploy/71/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/71/001-auto.sql
 dbicdh/MySQL/deploy/8/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/8/001-auto.sql
 dbicdh/MySQL/deploy/9/001-auto-__VERSION.sql
@@ -350,6 +354,7 @@ dbicdh/MySQL/upgrade/67-68/001-auto.sql
 dbicdh/MySQL/upgrade/68-69/001-auto.sql
 dbicdh/MySQL/upgrade/69-70/001-auto.sql
 dbicdh/MySQL/upgrade/7-8/001-auto.sql
+dbicdh/MySQL/upgrade/70-71/001-auto.sql
 dbicdh/MySQL/upgrade/8-9/001-auto.sql
 dbicdh/MySQL/upgrade/9-10/001-auto.sql
 dbicdh/PostgreSQL/deploy/10/001-auto-__VERSION.sql
@@ -486,6 +491,8 @@ dbicdh/PostgreSQL/deploy/7/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/7/001-auto.sql
 dbicdh/PostgreSQL/deploy/70/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/70/001-auto.sql
+dbicdh/PostgreSQL/deploy/71/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/71/001-auto.sql
 dbicdh/PostgreSQL/deploy/8/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/8/001-auto.sql
 dbicdh/PostgreSQL/deploy/9/001-auto-__VERSION.sql
@@ -556,6 +563,7 @@ dbicdh/PostgreSQL/upgrade/67-68/001-auto.sql
 dbicdh/PostgreSQL/upgrade/68-69/001-auto.sql
 dbicdh/PostgreSQL/upgrade/69-70/001-auto.sql
 dbicdh/PostgreSQL/upgrade/7-8/001-auto.sql
+dbicdh/PostgreSQL/upgrade/70-71/001-auto.sql
 dbicdh/PostgreSQL/upgrade/8-9/001-auto.sql
 dbicdh/PostgreSQL/upgrade/9-10/001-auto.sql
 dbicdh/SQLite/deploy/10/001-auto-__VERSION.sql
@@ -692,6 +700,8 @@ dbicdh/SQLite/deploy/7/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/7/001-auto.sql
 dbicdh/SQLite/deploy/70/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/70/001-auto.sql
+dbicdh/SQLite/deploy/71/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/71/001-auto.sql
 dbicdh/SQLite/deploy/8/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/8/001-auto.sql
 dbicdh/SQLite/deploy/9/001-auto-__VERSION.sql
@@ -762,6 +772,7 @@ dbicdh/SQLite/upgrade/67-68/001-auto.sql
 dbicdh/SQLite/upgrade/68-69/001-auto.sql
 dbicdh/SQLite/upgrade/69-70/001-auto.sql
 dbicdh/SQLite/upgrade/7-8/001-auto.sql
+dbicdh/SQLite/upgrade/70-71/001-auto.sql
 dbicdh/SQLite/upgrade/8-9/001-auto.sql
 dbicdh/SQLite/upgrade/9-10/001-auto.sql
 lib/AmuseWikiFarm.pm
@@ -784,6 +795,7 @@ lib/AmuseWikiFarm/Controller/Cloud.pm
 lib/AmuseWikiFarm/Controller/Console.pm
 lib/AmuseWikiFarm/Controller/Custom.pm
 lib/AmuseWikiFarm/Controller/Edit.pm
+lib/AmuseWikiFarm/Controller/Federation.pm
 lib/AmuseWikiFarm/Controller/Feed.pm
 lib/AmuseWikiFarm/Controller/Git.pm
 lib/AmuseWikiFarm/Controller/Help.pm
@@ -869,6 +881,8 @@ lib/AmuseWikiFarm/Schema/Result/IncludePath.pm
 lib/AmuseWikiFarm/Schema/Result/Job.pm
 lib/AmuseWikiFarm/Schema/Result/JobFile.pm
 lib/AmuseWikiFarm/Schema/Result/LegacyLink.pm
+lib/AmuseWikiFarm/Schema/Result/MirrorInfo.pm
+lib/AmuseWikiFarm/Schema/Result/MirrorOrigin.pm
 lib/AmuseWikiFarm/Schema/Result/MonthlyArchive.pm
 lib/AmuseWikiFarm/Schema/Result/MuseHeader.pm
 lib/AmuseWikiFarm/Schema/Result/Node.pm
@@ -904,6 +918,8 @@ lib/AmuseWikiFarm/Schema/ResultSet/CategoryDescription.pm
 lib/AmuseWikiFarm/Schema/ResultSet/CustomFormat.pm
 lib/AmuseWikiFarm/Schema/ResultSet/GlobalSiteFile.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Job.pm
+lib/AmuseWikiFarm/Schema/ResultSet/MirrorInfo.pm
+lib/AmuseWikiFarm/Schema/ResultSet/MirrorOrigin.pm
 lib/AmuseWikiFarm/Schema/ResultSet/MuseHeader.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Node.pm
 lib/AmuseWikiFarm/Schema/ResultSet/NodeBody.pm
@@ -994,6 +1010,8 @@ root/src/edit/newtext.tt
 root/src/edit/preview.tt
 root/src/edit/revs.tt
 root/src/error.tt
+root/src/federation/details.tt
+root/src/federation/show.tt
 root/src/git/git.tt
 root/src/help/faq.tt
 root/src/help/irc.tt
@@ -1009,6 +1027,7 @@ root/src/include/editing-options.tt
 root/src/include/hide_type_and_number_of_pages.tt
 root/src/include/js-diff.tt
 root/src/include/markitup.tt
+root/src/include/mirror-infos.tt
 root/src/include/node_breadcrumbs.tt
 root/src/include/pagination-widget.tt
 root/src/include/pagination.tt
@@ -1711,6 +1730,7 @@ t/entities.t
 t/express-publishing.t
 t/fail-on-cropmarks-109.t
 t/failure-reason-371.t
+t/federation.t
 t/files/amw-version-22.pdf
 t/files/big.jpeg
 t/files/manual.pdf

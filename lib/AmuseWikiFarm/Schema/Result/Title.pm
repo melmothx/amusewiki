@@ -403,6 +403,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 mirror_info
+
+Type: might_have
+
+Related object: L<AmuseWikiFarm::Schema::Result::MirrorInfo>
+
+=cut
+
+__PACKAGE__->might_have(
+  "mirror_info",
+  "AmuseWikiFarm::Schema::Result::MirrorInfo",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 muse_headers
 
 Type: has_many
@@ -594,8 +609,8 @@ Composing rels: L</node_titles> -> node
 __PACKAGE__->many_to_many("nodes", "node_titles", "node");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-01-14 10:59:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:PyIy5c0rVUAMJx7Oz55sKg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-07-22 14:55:51
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:epoFFeSHNxWFi0ogIw3Xrg
 
 =head2 translations
 
@@ -663,7 +678,7 @@ use File::Copy qw/copy/;
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse;
 use HTML::Entities qw/decode_entities encode_entities/;
-use AmuseWikiFarm::Utils::Amuse qw/cover_filename_is_valid to_json from_json/;
+use AmuseWikiFarm::Utils::Amuse qw/cover_filename_is_valid to_json from_json build_full_uri/;
 use Path::Tiny qw//;
 use HTML::LinkExtor; # from HTML::Parser
 use HTML::TreeBuilder;
@@ -1033,22 +1048,20 @@ catalyst app url, instead of calling uri_for with 2 or 3 arguments
 
 sub full_uri {
     my ($self, $uri) = @_;
-    $uri ||= $self->uri;
-    return $self->base_path . $uri;
+    return build_full_uri({
+                           class => 'Title',
+                           f_class => $self->f_class,
+                           uri => $uri || $self->uri,
+                          });
 }
 
 sub base_path {
     my $self = shift;
-    my $class = $self->f_class;
-    if ($class eq 'special') {
-        return '/special/';
-    }
-    elsif ($class eq 'text') {
-        return '/library/';
-    }
-    else {
-        die "WTF";
-    }
+    return build_full_uri({
+                           class => 'Title',
+                           f_class => $self->f_class,
+                           uri => '',
+                          });
 }
 
 sub full_edit_uri {
@@ -1788,6 +1801,18 @@ sub is_gone {
     return 0;
 }
 
+sub mirror_manifest {
+    my $self = shift;
+    $self->result_source->resultset->by_id($self->id)->mirror_manifest;
+}
+
+sub mirror_source {
+    my $self = shift;
+    if (my $mi = $self->mirror_info) {
+        return $mi->active_download_url;
+    }
+    return;
+}
 
 __PACKAGE__->meta->make_immutable;
 

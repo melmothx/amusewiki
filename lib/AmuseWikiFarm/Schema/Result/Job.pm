@@ -240,7 +240,12 @@ has non_blocking => (is => 'rw',
                      default => sub { 0 });
 
 sub can_be_non_blocking {
-    return shift->task eq 'build_custom_format';
+    my $self = shift;
+    my %non_blocking = (
+                        build_custom_format => 1,
+                        download_remote => 1,
+                       );
+    return $non_blocking{$self->task};
 }
 
 sub _build_bookbuilder {
@@ -443,7 +448,8 @@ trigger a job.
 =cut
 
 sub dispatch_job {
-    my $self = shift;
+    # options are used for debugging.
+    my ($self, $options) = @_;
     $self->update({
                    status => 'taken',
                    started => DateTime->now,
@@ -462,7 +468,7 @@ sub dispatch_job {
         $logger->("Job $task started at " . localtime() . "\n");
         my $output;
         eval {
-            $output = $self->$method($logger);
+            $output = $self->$method($logger, $options);
         };
         if (my $err = $@) {
             $self->status('failed');
@@ -851,6 +857,17 @@ sub dispatch_job_hourly_job {
         $site->jobs->reindex_add({ path => $file }, $username);
         $logger->("Scheduled reindex for " . $site->id . $title->full_uri . "\n");
     }
+    my $origins = $schema->resultset('MirrorOrigin')->active;
+    while (my $origin = $origins->next) {
+        $logger->($origin->site_id . " - Downloading " . $origin->remote_target_url . "\n");
+        my $res = $origin->fetch_and_prepare_download;
+        if (my $job = $res->{job}) {
+            $logger->("Created bulk job " . $job->bulk_job_id . "\n");
+        }
+        if ($res->{error}) {
+            $logger->("ERROR: $res->{error}\n");
+        }
+    }
     return;
 }
 
@@ -867,6 +884,42 @@ sub dispatch_job_send_mail {
     my $self = shift;
     my $payload = $self->job_data;
     $self->site->send_mail($payload->{type}, $payload->{tokens});
+}
+
+sub dispatch_job_download_remote {
+    my ($self, $logger, $opts) = @_;
+    my $schema = $self->result_source->schema;
+    if (my $info = $schema->resultset('MirrorInfo')->find($self->job_data->{id})) {
+        if (my $origin = $info->mirror_origin) {
+            # just in case
+            if ($origin->site_id eq $self->site_id) {
+                $origin->download_file($info, $logger, $opts);
+            }
+            else {
+                die $origin->site_id . ' is not ' . $self->site_id;
+            }
+        }
+    }
+    if (my $bulk = $self->bulk_job_id) {
+        return "/tasks/job/$bulk/show";
+    }
+    return;
+}
+
+sub dispatch_job_install_downloaded {
+    my ($self, $logger, $opts) = @_;
+    my $spec = $self->job_data;
+    if (my $id = $spec->{mirror_origin_id}) {
+        if (my $origin = $self->site->mirror_origins->find($id)) {
+            local $ENV{GIT_COMMITTER_NAME}  = $self->committer_name;
+            local $ENV{GIT_COMMITTER_EMAIL} = $self->committer_mail;
+            local $ENV{GIT_AUTHOR_NAME}  = $self->committer_name;
+            local $ENV{GIT_AUTHOR_EMAIL} = $self->committer_mail;
+            my $bulk = $origin->install_downloaded($logger, $opts);
+            return "/tasks/job/" . $bulk->bulk_job_id . "/show";
+        }
+    }
+    return;
 }
 
 before delete => sub {

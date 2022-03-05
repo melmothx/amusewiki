@@ -78,6 +78,17 @@ __PACKAGE__->table("bulk_job");
   is_nullable: 1
   size: 32
 
+=head2 payload
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 produced
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 username
 
   data_type: 'varchar'
@@ -101,6 +112,10 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
   "status",
   { data_type => "varchar", is_nullable => 1, size => 32 },
+  "payload",
+  { data_type => "text", is_nullable => 1 },
+  "produced",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "username",
   { data_type => "varchar", is_nullable => 1, size => 255 },
 );
@@ -150,11 +165,12 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-02-17 19:36:30
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4+/448d+421Azz6R2JnvJg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-12-18 08:11:15
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:en7UEJMAX2CR0CRFai+ZPQ
 
 use DateTime;
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Utils::Amuse qw/to_json from_json/;
 
 before delete => sub {
     my $self = shift;
@@ -240,6 +256,7 @@ sub check_and_set_complete {
     }
     elsif (!$self->completed && !$self->jobs->unfinished->count) {
         log_debug { "no unfinished jobs" };
+        $self->handle_bulk_job_completed;
         $self->update({
                        completed => DateTime->now,
                        status => 'completed',
@@ -270,6 +287,46 @@ sub is_reindex {
 
 sub is_rebuild {
     return shift->task eq 'rebuild';
+}
+
+sub is_mirror {
+    return shift->task eq 'mirror';
+}
+
+sub job_title {
+    my $self = shift;
+    my $site = $self->site;
+    if ($self->is_mirror) {
+        if (my $data = $self->decoded_payload) {
+            if (my $mid = $data->{mirror_origin_id}) {
+                if (my $origin = $site->mirror_origins->find($mid)) {
+                    return $origin->remote_target_url;
+                }
+            }
+        }
+    }
+    return $site->sitename || $site->canonical;
+}
+
+
+sub handle_bulk_job_completed {
+    my $self = shift;
+    if ($self->is_mirror) {
+        # add the job to copy the files over to their destination + git.
+        my $j = $self->site->jobs->enqueue(install_downloaded  => $self->decoded_payload,
+                                           $self->username);
+        log_info { "Enqueued install_downloaded" };
+        $self->update({ produced => '/tasks/status/' . $j->id });
+    }
+}
+
+sub decoded_payload {
+    my $self = shift;
+    my $data;
+    if (my $json = $self->payload) {
+        eval { $data = from_json($json) };
+    }
+    return $data;
 }
 
 sub expected_documents {
