@@ -105,6 +105,9 @@ msgstr "ブログ・スタイルのルック・アンド・フィールをアク
 msgid "Active"
 msgstr "アクティブ"
 
+msgid "Add"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "カバー画像を追加する（PNGまたはJPG）"
 
@@ -144,6 +147,9 @@ msgstr "テキスト全体を追加"
 
 msgid "Add this text to the bookbuilder"
 msgstr "このテキストをbookbuilderに追加"
+
+msgid "Added"
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -420,6 +426,9 @@ msgstr "章（本の中身を区切る章のみ）"
 msgid "Cheatsheet for the markup"
 msgstr "マークアップ用チートシート"
 
+msgid "Check"
+msgstr ""
+
 msgid "Check mail sending and send mail to:"
 msgstr "メールの内容を確認し、次の宛先に送信:"
 
@@ -460,6 +469,9 @@ msgstr "相違計算済み"
 
 msgid "Confirm"
 msgstr "承認"
+
+msgid "Conflict"
+msgstr ""
 
 msgid "Continuous footnote numbering across the whole document."
 msgstr "ドキュメント全体にわたる継続的な脚注の番号付け。"
@@ -581,6 +593,9 @@ msgstr "希望するURI"
 msgid "Destination"
 msgstr "行き先"
 
+msgid "Details"
+msgstr ""
+
 msgid "Did you mean:"
 msgstr "もしかしたら："
 
@@ -619,6 +634,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "太字のフォントは使用しないでください"
+
+msgid "Domain"
+msgstr ""
 
 msgid "Done"
 msgstr "完成"
@@ -715,6 +733,10 @@ msgstr "メール送信エラー！"
 msgid "Error while converting the HTML. Sorry."
 msgstr "HTMLの変換中にエラーが発生しました。 申し訳ありません。"
 
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr ""
+
 msgid "Errors"
 msgstr "エラー"
 
@@ -743,6 +765,9 @@ msgstr ""
 msgid "Example"
 msgstr "例"
 
+msgid "Exception"
+msgstr ""
+
 msgid "Existing redirections"
 msgstr "既存のリダイレクト"
 
@@ -759,6 +784,15 @@ msgstr "リモートリポジトリ％1追加"
 #. ($name)
 msgid "Failed to remove Remote repository %1"
 msgstr "リモートリポジトリ％削除不可"
+
+msgid "Failure fetching the source"
+msgstr ""
+
+msgid "Federation"
+msgstr ""
+
+msgid "Fetch"
+msgstr ""
 
 msgid "File already in the body"
 msgstr "既にボディにあるファイル"
@@ -1010,6 +1044,9 @@ msgstr "面付けした（印刷準備完了）PDFが欲しい"
 msgid "I will provide my remote repository"
 msgstr "自分のリモートリポジトリを提供します"
 
+msgid "ID"
+msgstr ""
+
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -1201,14 +1238,32 @@ msgstr "カーソル位置でファイルを本文に挿入"
 msgid "Internal list of translations"
 msgstr "翻訳の内部リスト"
 
+msgid "Invalid ID"
+msgstr ""
+
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid domain"
 msgstr ""
 
 msgid "Invalid email"
 msgstr "無効なEメール"
 
+msgid "Invalid field"
+msgstr ""
+
 msgid "Invalid name"
 msgstr "無効な名前"
+
+msgid "Invalid parameter"
+msgstr ""
+
+msgid "Invalid response"
+msgstr ""
+
+msgid "Invalid target"
+msgstr ""
 
 msgid "Invalid username"
 msgstr "無効なユーザー名"
@@ -1347,6 +1402,12 @@ msgstr "ロードされた \"％1\"の設定"
 msgid "Loading"
 msgstr "ローディング中"
 
+msgid "Local"
+msgstr ""
+
+msgid "Local pages"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "ロックされた編集、アップロード可能"
 
@@ -1413,6 +1474,12 @@ msgstr "メッセージ"
 #. (8)
 msgid "Minimum %1 characters"
 msgstr "最小％1文字"
+
+msgid "Mirror"
+msgstr ""
+
+msgid "Mirror of:"
+msgstr ""
 
 msgid "Missing #title header in the text!"
 msgstr "テキストに#titleヘッダーが見つかりません！"
@@ -1702,6 +1769,9 @@ msgstr "パスワード、最小8つの文字。"
 
 msgid "Passwords do not match"
 msgstr "パスワードが一致していません。"
+
+msgid "Path"
+msgstr ""
 
 msgid "Payload"
 msgstr "ペイロード"
@@ -2025,6 +2095,9 @@ msgstr "表紙画像を削除"
 msgid "Remove this category"
 msgstr "このカテゴリを除去"
 
+msgid "Removed Upstream"
+msgstr ""
+
 msgid "Rename to"
 msgstr "へ名前を変更"
 
@@ -2303,6 +2376,9 @@ msgstr "ソースファイル"
 
 msgid "Source files with attachments"
 msgstr "添付ファイル付きのソースファイル"
+
+msgid "Source removed"
+msgstr ""
 
 msgid "Source, notes..."
 msgstr "ソース、ノートなど"
@@ -2685,6 +2761,9 @@ msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "導入された変更を表示するには、次のURLを参照してください。"
+
+msgid "Toggle"
+msgstr ""
 
 msgid "Toggle fullscreen editor"
 msgstr "フルスクリーンエディタをトグル"

@@ -107,6 +107,9 @@ msgstr "启用博客外观"
 msgid "Active"
 msgstr "活跃"
 
+msgid "Add"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "添加题图（PNG或JPG）"
 
@@ -144,6 +147,9 @@ msgstr "添加全文"
 
 msgid "Add this text to the bookbuilder"
 msgstr "将此文添加进建书器"
+
+msgid "Added"
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -426,6 +432,9 @@ msgstr "章，仅适用于书籍的分章"
 msgid "Cheatsheet for the markup"
 msgstr "标记大全"
 
+msgid "Check"
+msgstr ""
+
 msgid "Check mail sending and send mail to:"
 msgstr "确认发送邮件并致件于："
 
@@ -466,6 +475,9 @@ msgstr "计算差异总用时"
 
 msgid "Confirm"
 msgstr "确认"
+
+msgid "Conflict"
+msgstr ""
 
 msgid "Continuous footnote numbering across the whole document."
 msgstr "在整个文档中连续的脚注编号。"
@@ -589,6 +601,9 @@ msgstr "想要的URI"
 msgid "Destination"
 msgstr "终点"
 
+msgid "Details"
+msgstr ""
+
 msgid "Did you mean:"
 msgstr "你的意思是不是："
 
@@ -629,6 +644,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "不要使用粗体字体"
+
+msgid "Domain"
+msgstr ""
 
 msgid "Done"
 msgstr "完成"
@@ -723,6 +741,10 @@ msgstr "发送邮件时出错！"
 msgid "Error while converting the HTML. Sorry."
 msgstr "转换HTML时出错。抱歉。"
 
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr ""
+
 msgid "Errors"
 msgstr "错误"
 
@@ -749,6 +771,9 @@ msgstr "和2up一样，但是纸张是用来先水平切割再堆叠。这样你
 msgid "Example"
 msgstr "例子"
 
+msgid "Exception"
+msgstr ""
+
 msgid "Existing redirections"
 msgstr "现存重定向"
 
@@ -765,6 +790,15 @@ msgstr "添加远程仓库%1失败"
 #. ($name)
 msgid "Failed to remove Remote repository %1"
 msgstr "移除远程仓库%1失败"
+
+msgid "Failure fetching the source"
+msgstr ""
+
+msgid "Federation"
+msgstr ""
+
+msgid "Fetch"
+msgstr ""
 
 msgid "File already in the body"
 msgstr "文件已在正文中"
@@ -1010,6 +1044,9 @@ msgstr "我要拼板的（可以打印的）PDF"
 msgid "I will provide my remote repository"
 msgstr "我会提供远程仓库"
 
+msgid "ID"
+msgstr ""
+
 msgid "ISBN"
 msgstr "ISBN码"
 
@@ -1207,14 +1244,32 @@ msgstr "把文件插入到正文光标位置"
 msgid "Internal list of translations"
 msgstr "内部翻译列表"
 
+msgid "Invalid ID"
+msgstr ""
+
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid domain"
 msgstr ""
 
 msgid "Invalid email"
 msgstr "无效邮箱"
 
+msgid "Invalid field"
+msgstr ""
+
 msgid "Invalid name"
 msgstr "无效名称"
+
+msgid "Invalid parameter"
+msgstr ""
+
+msgid "Invalid response"
+msgstr ""
+
+msgid "Invalid target"
+msgstr ""
 
 msgid "Invalid username"
 msgstr "无效用户名"
@@ -1362,6 +1417,12 @@ msgstr "已加载「%1」配置"
 msgid "Loading"
 msgstr "加载中"
 
+msgid "Local"
+msgstr ""
+
+msgid "Local pages"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "编辑已锁定，无法上传"
 
@@ -1428,6 +1489,12 @@ msgstr "消息"
 #. (8)
 msgid "Minimum %1 characters"
 msgstr "最少%1字节"
+
+msgid "Mirror"
+msgstr ""
+
+msgid "Mirror of:"
+msgstr ""
 
 msgid "Missing #title header in the text!"
 msgstr "文本中丢失#title页首！"
@@ -1719,6 +1786,9 @@ msgstr "密码，最少8个字符。"
 
 msgid "Passwords do not match"
 msgstr "密码不匹配"
+
+msgid "Path"
+msgstr ""
 
 msgid "Payload"
 msgstr "载荷"
@@ -2044,6 +2114,9 @@ msgstr "移除题图"
 msgid "Remove this category"
 msgstr "移除这个类别"
 
+msgid "Removed Upstream"
+msgstr ""
+
 msgid "Rename to"
 msgstr "重命名为"
 
@@ -2320,6 +2393,9 @@ msgstr "源文件"
 
 msgid "Source files with attachments"
 msgstr "带附件的源文件"
+
+msgid "Source removed"
+msgstr ""
 
 msgid "Source, notes..."
 msgstr "来源、备注…"
@@ -2703,6 +2779,9 @@ msgstr "要保存或更新模板，你首先需要用「%1」按钮保存选项"
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "要查看引入的变化，你可以访问以下网址"
+
+msgid "Toggle"
+msgstr ""
 
 msgid "Toggle fullscreen editor"
 msgstr "切换全屏编辑器"

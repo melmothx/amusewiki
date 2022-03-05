@@ -115,6 +115,9 @@ msgstr "Aktivigu la blog-stilan aspekton"
 msgid "Active"
 msgstr "Aktiva"
 
+msgid "Add"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Aldoni kovrilan bildon (PNG aŭ JPG)"
 
@@ -154,6 +157,9 @@ msgstr "Aldonu la tutan tekston"
 
 msgid "Add this text to the bookbuilder"
 msgstr "Aldonu ĉi tiun tekston al la librokonstruisto"
+
+msgid "Added"
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -456,6 +462,9 @@ msgstr "Ĉapitro, nur por ĉapitraj dividoj en libroj"
 msgid "Cheatsheet for the markup"
 msgstr "Markup cheatsheet"
 
+msgid "Check"
+msgstr ""
+
 msgid "Check mail sending and send mail to:"
 msgstr "Kontrolu retpoŝton kaj sendu poŝton al:"
 
@@ -498,6 +507,9 @@ msgstr "Komputado de diferencoj prenis"
 
 msgid "Confirm"
 msgstr "Konfirmu"
+
+msgid "Conflict"
+msgstr ""
 
 msgid "Continuous footnote numbering across the whole document."
 msgstr "Kontinua piednota numerado tra la tuta dokumento."
@@ -625,6 +637,9 @@ msgstr "Dezirata URI"
 msgid "Destination"
 msgstr "Celo"
 
+msgid "Details"
+msgstr ""
+
 msgid "Did you mean:"
 msgstr "Ĉu vi intencis:"
 
@@ -666,6 +681,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Ne uzu grasajn tiparojn"
+
+msgid "Domain"
+msgstr ""
 
 msgid "Done"
 msgstr "Farita"
@@ -763,6 +781,10 @@ msgstr "Eraro dum sendado de poŝto!"
 msgid "Error while converting the HTML. Sorry."
 msgstr "Eraro dum konvertado de la HTML. Pardonu."
 
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr ""
+
 msgid "Errors"
 msgstr "Eraroj"
 
@@ -797,6 +819,9 @@ msgstr ""
 msgid "Example"
 msgstr "Ekzemplo"
 
+msgid "Exception"
+msgstr ""
+
 msgid "Existing redirections"
 msgstr "Ekzistantaj alidirektiloj"
 
@@ -813,6 +838,15 @@ msgstr "Malsukcesis aldoni foran deponejon% 1"
 #. ($name)
 msgid "Failed to remove Remote repository %1"
 msgstr "Malsukcesis forigi Foran deponejon% 1"
+
+msgid "Failure fetching the source"
+msgstr ""
+
+msgid "Federation"
+msgstr ""
+
+msgid "Fetch"
+msgstr ""
 
 msgid "File already in the body"
 msgstr "Dosiero jam en la korpo"
@@ -1079,6 +1113,9 @@ msgstr "Mi volas truditan (pretan presi) PDF"
 msgid "I will provide my remote repository"
 msgstr "Mi provizos mian foran deponejon"
 
+msgid "ID"
+msgstr ""
+
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -1314,14 +1351,32 @@ msgstr "Enmetu la dosieron en la korpon ĉe la kursora pozicio"
 msgid "Internal list of translations"
 msgstr "Interna listo de tradukoj"
 
+msgid "Invalid ID"
+msgstr ""
+
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid domain"
 msgstr ""
 
 msgid "Invalid email"
 msgstr "Nevalida Retpoŝto"
 
+msgid "Invalid field"
+msgstr ""
+
 msgid "Invalid name"
 msgstr "Nevalida nomo"
+
+msgid "Invalid parameter"
+msgstr ""
+
+msgid "Invalid response"
+msgstr ""
+
+msgid "Invalid target"
+msgstr ""
 
 msgid "Invalid username"
 msgstr "Nevalida salutnomo"
@@ -1481,6 +1536,12 @@ msgstr "Ŝarĝita agordo \"% 1\""
 msgid "Loading"
 msgstr "Ŝarĝante"
 
+msgid "Local"
+msgstr ""
+
+msgid "Local pages"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "Ŝlosita redaktado, neniu alŝuto eblas"
 
@@ -1547,6 +1608,12 @@ msgstr "Mesaĝo"
 #. (8)
 msgid "Minimum %1 characters"
 msgstr "Minimumaj% 1 signoj"
+
+msgid "Mirror"
+msgstr ""
+
+msgid "Mirror of:"
+msgstr ""
 
 msgid "Missing #title header in the text!"
 msgstr "Mankas # titolo titolo en la teksto!"
@@ -1852,6 +1919,9 @@ msgstr "Pasvorto, minimume 8 signoj."
 
 msgid "Passwords do not match"
 msgstr "Pasvortoj ne egalas"
+
+msgid "Path"
+msgstr ""
 
 msgid "Payload"
 msgstr "Utila ŝarĝo"
@@ -2204,6 +2274,9 @@ msgstr "Forigu kovrilan bildon"
 msgid "Remove this category"
 msgstr "Forigu ĉi tiun kategorion"
 
+msgid "Removed Upstream"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Renomi al"
 
@@ -2480,6 +2553,9 @@ msgstr "Fontaj dosieroj"
 
 msgid "Source files with attachments"
 msgstr "Fontaj dosieroj kun aldonaĵoj"
+
+msgid "Source removed"
+msgstr ""
 
 msgid "Source, notes..."
 msgstr "Fonto, notoj ..."
@@ -2897,6 +2973,9 @@ msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Por vidi la enkondukitajn ŝanĝojn, vi povas viziti la jenan URL"
+
+msgid "Toggle"
+msgstr ""
 
 msgid "Toggle fullscreen editor"
 msgstr "Baskuli plenekranan redaktilon"

@@ -112,6 +112,9 @@ msgstr "Aktiver blog-lignende udseende og stil "
 msgid "Active"
 msgstr "Aktiv"
 
+msgid "Add"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Tilføj et omslagsbillede (PNG eller JPG)"
 
@@ -151,6 +154,9 @@ msgstr "Tilføj hele teksten"
 
 msgid "Add this text to the bookbuilder"
 msgstr "Tilføj denne tekst til bogbyggeren"
+
+msgid "Added"
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -442,6 +448,9 @@ msgstr "Kapitel, kun for kapitelinddeling i bøger"
 msgid "Cheatsheet for the markup"
 msgstr "Manual til opmærkningen"
 
+msgid "Check"
+msgstr ""
+
 msgid "Check mail sending and send mail to:"
 msgstr ""
 
@@ -482,6 +491,9 @@ msgstr "Beregning af forskelle tog"
 
 msgid "Confirm"
 msgstr "Godkend"
+
+msgid "Conflict"
+msgstr ""
 
 msgid "Continuous footnote numbering across the whole document."
 msgstr ""
@@ -607,6 +619,9 @@ msgstr "Den ønskede URI"
 msgid "Destination"
 msgstr "Destination"
 
+msgid "Details"
+msgstr ""
+
 msgid "Did you mean:"
 msgstr ""
 
@@ -644,6 +659,9 @@ msgid "Do not redirect aliases to canonical"
 msgstr ""
 
 msgid "Do not use bold fonts"
+msgstr ""
+
+msgid "Domain"
 msgstr ""
 
 msgid "Done"
@@ -741,6 +759,10 @@ msgstr "Fejl ved sending af mail!"
 msgid "Error while converting the HTML. Sorry."
 msgstr "Fejl under konverteringen af HTML. Undskyld."
 
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr ""
+
 msgid "Errors"
 msgstr "Fejl"
 
@@ -775,6 +797,9 @@ msgstr ""
 msgid "Example"
 msgstr "Eksempel"
 
+msgid "Exception"
+msgstr ""
+
 msgid "Existing redirections"
 msgstr "Eksisterende omdirigeringer"
 
@@ -791,6 +816,15 @@ msgstr "Tilføjelsen af fjernarkivet %1 mislykkedes"
 #. ($name)
 msgid "Failed to remove Remote repository %1"
 msgstr "Sletningen af fjernarkivet %1 mislykkedes"
+
+msgid "Failure fetching the source"
+msgstr ""
+
+msgid "Federation"
+msgstr ""
+
+msgid "Fetch"
+msgstr ""
 
 msgid "File already in the body"
 msgstr ""
@@ -1048,6 +1082,9 @@ msgstr ""
 msgid "I will provide my remote repository"
 msgstr ""
 
+msgid "ID"
+msgstr ""
+
 msgid "ISBN"
 msgstr ""
 
@@ -1253,14 +1290,32 @@ msgstr ""
 msgid "Internal list of translations"
 msgstr "Intern liste over oversættelser"
 
+msgid "Invalid ID"
+msgstr ""
+
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid domain"
 msgstr ""
 
 msgid "Invalid email"
 msgstr "Ugyldig e-mail"
 
+msgid "Invalid field"
+msgstr ""
+
 msgid "Invalid name"
 msgstr "Ugyldigt navn"
+
+msgid "Invalid parameter"
+msgstr ""
+
+msgid "Invalid response"
+msgstr ""
+
+msgid "Invalid target"
+msgstr ""
 
 msgid "Invalid username"
 msgstr "Ugyldigt brugernavn"
@@ -1411,6 +1466,12 @@ msgstr "Indlæste \"%1\" konfiguration"
 msgid "Loading"
 msgstr ""
 
+msgid "Local"
+msgstr ""
+
+msgid "Local pages"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr ""
 
@@ -1476,6 +1537,12 @@ msgstr "Besked"
 
 #. (8)
 msgid "Minimum %1 characters"
+msgstr ""
+
+msgid "Mirror"
+msgstr ""
+
+msgid "Mirror of:"
 msgstr ""
 
 msgid "Missing #title header in the text!"
@@ -1779,6 +1846,9 @@ msgstr "Kodeord, mindst 8 tegn."
 
 msgid "Passwords do not match"
 msgstr "Kodeordene stemmer ikke overens"
+
+msgid "Path"
+msgstr ""
 
 msgid "Payload"
 msgstr ""
@@ -2124,6 +2194,9 @@ msgstr "Fjern omslagsbillede"
 msgid "Remove this category"
 msgstr ""
 
+msgid "Removed Upstream"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Omdøb til"
 
@@ -2401,6 +2474,9 @@ msgstr "Kilde filer"
 
 msgid "Source files with attachments"
 msgstr "Kilde filer med vedhæftede filer"
+
+msgid "Source removed"
+msgstr ""
 
 msgid "Source, notes..."
 msgstr "Kilde, notater..."
@@ -2785,6 +2861,9 @@ msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "For at se de indføjede ændringer kan du besøge følgende URL"
+
+msgid "Toggle"
+msgstr ""
 
 msgid "Toggle fullscreen editor"
 msgstr ""

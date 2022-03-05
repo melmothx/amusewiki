@@ -111,6 +111,9 @@ msgstr "Attiva lo stile blog"
 msgid "Active"
 msgstr "Attivo"
 
+msgid "Add"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Aggiungi un'immagine di copertina (PNG o JPG)"
 
@@ -152,6 +155,9 @@ msgstr "Aggiungi tutto il testo"
 
 msgid "Add this text to the bookbuilder"
 msgstr "Aggiungi questo testo all'impaginatore"
+
+msgid "Added"
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -451,6 +457,9 @@ msgstr "Capitolo, da usare esclusivamente per i capitoli di un libro"
 msgid "Cheatsheet for the markup"
 msgstr "Markup in sintesi"
 
+msgid "Check"
+msgstr ""
+
 msgid "Check mail sending and send mail to:"
 msgstr ""
 
@@ -493,6 +502,9 @@ msgstr "Il calcolo delle differenze ha impiegato"
 
 msgid "Confirm"
 msgstr "Conferma"
+
+msgid "Conflict"
+msgstr ""
 
 msgid "Continuous footnote numbering across the whole document."
 msgstr ""
@@ -623,6 +635,9 @@ msgstr "URI a scelta"
 msgid "Destination"
 msgstr "Destinazione"
 
+msgid "Details"
+msgstr ""
+
 msgid "Did you mean:"
 msgstr "Volevi dire forse:"
 
@@ -664,6 +679,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Non usare caratteri in grassetto"
+
+msgid "Domain"
+msgstr ""
 
 msgid "Done"
 msgstr "Fatto"
@@ -763,6 +781,10 @@ msgstr "Errore nell'invio dell'e-mail"
 msgid "Error while converting the HTML. Sorry."
 msgstr "Errore nella conversione dell'HTML. Siamo spiacenti."
 
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr ""
+
 msgid "Errors"
 msgstr "Errori"
 
@@ -795,6 +817,9 @@ msgstr ""
 msgid "Example"
 msgstr "Esempio"
 
+msgid "Exception"
+msgstr ""
+
 msgid "Existing redirections"
 msgstr "Redirezioni esistenti"
 
@@ -811,6 +836,15 @@ msgstr "Errore nell'aggiungere il repo remoto %1"
 #. ($name)
 msgid "Failed to remove Remote repository %1"
 msgstr "Errore nel rimuovere il repo remoto %1"
+
+msgid "Failure fetching the source"
+msgstr ""
+
+msgid "Federation"
+msgstr ""
+
+msgid "Fetch"
+msgstr ""
 
 msgid "File already in the body"
 msgstr "File già presente nel corpo del testo"
@@ -1075,6 +1109,9 @@ msgstr "Voglio un PDF pronto per la stampa"
 msgid "I will provide my remote repository"
 msgstr ""
 
+msgid "ID"
+msgstr ""
+
 msgid "ISBN"
 msgstr ""
 
@@ -1308,14 +1345,32 @@ msgstr ""
 msgid "Internal list of translations"
 msgstr "Lista interna delle traduzioni"
 
+msgid "Invalid ID"
+msgstr ""
+
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid domain"
 msgstr ""
 
 msgid "Invalid email"
 msgstr "E-mail non valida"
 
+msgid "Invalid field"
+msgstr ""
+
 msgid "Invalid name"
 msgstr "Nome non valido"
+
+msgid "Invalid parameter"
+msgstr ""
+
+msgid "Invalid response"
+msgstr ""
+
+msgid "Invalid target"
+msgstr ""
 
 msgid "Invalid username"
 msgstr "Nome utente non valido"
@@ -1475,6 +1530,12 @@ msgstr "La configurazione \"%1\" è stata caricata"
 msgid "Loading"
 msgstr "Caricamento"
 
+msgid "Local"
+msgstr ""
+
+msgid "Local pages"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "Modifiche bloccate, caricamento non permesso"
 
@@ -1544,6 +1605,12 @@ msgstr "Messaggio"
 #. (8)
 msgid "Minimum %1 characters"
 msgstr "Minimo %1 caratteri"
+
+msgid "Mirror"
+msgstr ""
+
+msgid "Mirror of:"
+msgstr ""
 
 msgid "Missing #title header in the text!"
 msgstr "Manca l'intestazione #title nel testo!"
@@ -1850,6 +1917,9 @@ msgstr "Password, minimo otto caratteri."
 
 msgid "Passwords do not match"
 msgstr "Le password non coincidono"
+
+msgid "Path"
+msgstr ""
 
 msgid "Payload"
 msgstr "Contenuto"
@@ -2200,6 +2270,9 @@ msgstr "Rimuovi immagine di copertina"
 msgid "Remove this category"
 msgstr "Rimuovi questa categoria"
 
+msgid "Removed Upstream"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Rinomina"
 
@@ -2478,6 +2551,9 @@ msgstr "Sorgenti"
 
 msgid "Source files with attachments"
 msgstr "File sorgenti con allegati"
+
+msgid "Source removed"
+msgstr ""
 
 msgid "Source, notes..."
 msgstr "Fonti, note"
@@ -2896,6 +2972,9 @@ msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Per vedere le modifiche introdotte, puoi visitare il seguente URL"
+
+msgid "Toggle"
+msgstr ""
 
 msgid "Toggle fullscreen editor"
 msgstr "Attiva/disattiva editor a tutto schermo"

@@ -118,6 +118,9 @@ msgstr "Activeer het blog-stijl uiterlijk"
 msgid "Active"
 msgstr "Actief"
 
+msgid "Add"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Voeg een omslagafbeelding toe (PNG of JPG)"
 
@@ -157,6 +160,9 @@ msgstr "Voeg de hele tekst toe"
 
 msgid "Add this text to the bookbuilder"
 msgstr "Voeg deze tekst toe aan de boekmaker"
+
+msgid "Added"
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -457,6 +463,9 @@ msgstr "Hoofdstuk, alleen voor hoofdstukindeling in boeken"
 msgid "Cheatsheet for the markup"
 msgstr "Spiekbriefje voor de opmaak"
 
+msgid "Check"
+msgstr ""
+
 msgid "Check mail sending and send mail to:"
 msgstr ""
 
@@ -499,6 +508,9 @@ msgstr "Berekenen van de verschillen kostte"
 
 msgid "Confirm"
 msgstr "Bevestig"
+
+msgid "Conflict"
+msgstr ""
 
 msgid "Continuous footnote numbering across the whole document."
 msgstr ""
@@ -627,6 +639,9 @@ msgstr "Gewenste URL"
 msgid "Destination"
 msgstr "Bestemming"
 
+msgid "Details"
+msgstr ""
+
 msgid "Did you mean:"
 msgstr ""
 
@@ -668,6 +683,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Gebruik geen vette lettertpyes"
+
+msgid "Domain"
+msgstr ""
 
 msgid "Done"
 msgstr "Voltooid"
@@ -765,6 +783,10 @@ msgstr "Probleem bij het verzenden van e-mail!"
 msgid "Error while converting the HTML. Sorry."
 msgstr "Fout bij het omzetten van de HTML. Sorry."
 
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr ""
+
 msgid "Errors"
 msgstr "Fouten"
 
@@ -800,6 +822,9 @@ msgstr ""
 msgid "Example"
 msgstr "Voorbeeld"
 
+msgid "Exception"
+msgstr ""
+
 msgid "Existing redirections"
 msgstr "Bestaande verwijzingen"
 
@@ -816,6 +841,15 @@ msgstr "Niet gelukt om externe repository %1 toe te voegen"
 #. ($name)
 msgid "Failed to remove Remote repository %1"
 msgstr "Niet gelukt om externe repository %1 te verwijderen"
+
+msgid "Failure fetching the source"
+msgstr ""
+
+msgid "Federation"
+msgstr ""
+
+msgid "Fetch"
+msgstr ""
 
 msgid "File already in the body"
 msgstr "Bestand bestaat al in de hoofdtekst"
@@ -1080,6 +1114,9 @@ msgstr "Ik wil een opgelegde (klaar om te printen) PDF"
 msgid "I will provide my remote repository"
 msgstr ""
 
+msgid "ID"
+msgstr ""
+
 msgid "ISBN"
 msgstr ""
 
@@ -1304,14 +1341,32 @@ msgstr "Voeg het bestand in de hoofdtekst in bij de cursorpositie"
 msgid "Internal list of translations"
 msgstr "Interne lijst van vertalingen"
 
+msgid "Invalid ID"
+msgstr ""
+
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid domain"
 msgstr ""
 
 msgid "Invalid email"
 msgstr "Ongeldige e-mail"
 
+msgid "Invalid field"
+msgstr ""
+
 msgid "Invalid name"
 msgstr "Ongeldige naam"
+
+msgid "Invalid parameter"
+msgstr ""
+
+msgid "Invalid response"
+msgstr ""
+
+msgid "Invalid target"
+msgstr ""
 
 msgid "Invalid username"
 msgstr "Ongeldige gebruikersnaam"
@@ -1475,6 +1530,12 @@ msgstr "Configuratie \"%1\" geladen"
 msgid "Loading"
 msgstr ""
 
+msgid "Local"
+msgstr ""
+
+msgid "Local pages"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "Bewerken vergrendeld, geen upload mogelijk"
 
@@ -1540,6 +1601,12 @@ msgstr "Bericht"
 
 #. (8)
 msgid "Minimum %1 characters"
+msgstr ""
+
+msgid "Mirror"
+msgstr ""
+
+msgid "Mirror of:"
 msgstr ""
 
 msgid "Missing #title header in the text!"
@@ -1845,6 +1912,9 @@ msgstr "Wachtwoord, minimaal 8 karakters."
 
 msgid "Passwords do not match"
 msgstr "Wachtwoorden komen niet overeen"
+
+msgid "Path"
+msgstr ""
 
 msgid "Payload"
 msgstr "Payload"
@@ -2200,6 +2270,9 @@ msgstr "Verwijder omslagafbeelding"
 msgid "Remove this category"
 msgstr ""
 
+msgid "Removed Upstream"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Hernoem naar"
 
@@ -2478,6 +2551,9 @@ msgstr "Bronbestanden"
 
 msgid "Source files with attachments"
 msgstr "Bronbestanden met bijlages"
+
+msgid "Source removed"
+msgstr ""
 
 msgid "Source, notes..."
 msgstr "Bron, notities..."
@@ -2894,6 +2970,9 @@ msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Om de ingediende wijzigingen te zien ga je naar de volgende URL"
+
+msgid "Toggle"
+msgstr ""
 
 msgid "Toggle fullscreen editor"
 msgstr "Kies schermvullende editor"

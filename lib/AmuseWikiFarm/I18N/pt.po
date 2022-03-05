@@ -116,6 +116,9 @@ msgstr "Ativar visual tipo blog"
 msgid "Active"
 msgstr "Ativar"
 
+msgid "Add"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Adicionar uma imagem de capa (PNG ou JPG)"
 
@@ -155,6 +158,9 @@ msgstr "Adicionar o texto completo"
 
 msgid "Add this text to the bookbuilder"
 msgstr "Adicionar este texto ao construtor de livros"
+
+msgid "Added"
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -453,6 +459,9 @@ msgstr "Capítulo, apenas para divisões em livros"
 msgid "Cheatsheet for the markup"
 msgstr "Cola para a markup"
 
+msgid "Check"
+msgstr ""
+
 msgid "Check mail sending and send mail to:"
 msgstr ""
 
@@ -495,6 +504,9 @@ msgstr "Computar as diferenças levou"
 
 msgid "Confirm"
 msgstr "Confirmar"
+
+msgid "Conflict"
+msgstr ""
 
 msgid "Continuous footnote numbering across the whole document."
 msgstr "Numeração de notas de rodapé contínua ao longo do documento."
@@ -616,6 +628,9 @@ msgstr "URI desejada"
 msgid "Destination"
 msgstr ""
 
+msgid "Details"
+msgstr ""
+
 msgid "Did you mean:"
 msgstr ""
 
@@ -657,6 +672,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Não utilize fontes Bold"
+
+msgid "Domain"
+msgstr ""
 
 msgid "Done"
 msgstr "Pronto"
@@ -753,6 +771,10 @@ msgstr "Erro ao enviar e-mail!"
 msgid "Error while converting the HTML. Sorry."
 msgstr "Erro ao converter o HTML."
 
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr ""
+
 msgid "Errors"
 msgstr "Erros"
 
@@ -783,6 +805,9 @@ msgstr ""
 msgid "Example"
 msgstr "Exemplo"
 
+msgid "Exception"
+msgstr ""
+
 msgid "Existing redirections"
 msgstr "Redirecionamentos existentes"
 
@@ -799,6 +824,15 @@ msgstr "Falha ao adicionar repositório remoto %1"
 #. ($name)
 msgid "Failed to remove Remote repository %1"
 msgstr "Falha ao remover o repositório remoto %1"
+
+msgid "Failure fetching the source"
+msgstr ""
+
+msgid "Federation"
+msgstr ""
+
+msgid "Fetch"
+msgstr ""
 
 msgid "File already in the body"
 msgstr "Arquivo já no corpo"
@@ -1058,6 +1092,9 @@ msgstr "Preparar o arquivo para impressão em PDF (imposar)"
 msgid "I will provide my remote repository"
 msgstr ""
 
+msgid "ID"
+msgstr ""
+
 msgid "ISBN"
 msgstr ""
 
@@ -1271,14 +1308,32 @@ msgstr "Insira o arquivo no corpo na posição do cursor"
 msgid "Internal list of translations"
 msgstr "Lista de traduções internas"
 
+msgid "Invalid ID"
+msgstr ""
+
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid domain"
 msgstr ""
 
 msgid "Invalid email"
 msgstr "E-mal inválido"
 
+msgid "Invalid field"
+msgstr ""
+
 msgid "Invalid name"
 msgstr "Nome inválido"
+
+msgid "Invalid parameter"
+msgstr ""
+
+msgid "Invalid response"
+msgstr ""
+
+msgid "Invalid target"
+msgstr ""
 
 msgid "Invalid username"
 msgstr "Nome de usuário inválido"
@@ -1441,6 +1496,12 @@ msgstr "Aberta a configuração \"%1\""
 msgid "Loading"
 msgstr ""
 
+msgid "Local"
+msgstr ""
+
+msgid "Local pages"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "Edição travada, não é possível fazer upload."
 
@@ -1506,6 +1567,12 @@ msgstr "Mensagem"
 
 #. (8)
 msgid "Minimum %1 characters"
+msgstr ""
+
+msgid "Mirror"
+msgstr ""
+
+msgid "Mirror of:"
 msgstr ""
 
 msgid "Missing #title header in the text!"
@@ -1808,6 +1875,9 @@ msgstr "Senha com no mínimo 8 caracteres."
 
 msgid "Passwords do not match"
 msgstr "As senhas não correspondem"
+
+msgid "Path"
+msgstr ""
 
 msgid "Payload"
 msgstr "Carga"
@@ -2161,6 +2231,9 @@ msgstr "Remover imagem de capa"
 msgid "Remove this category"
 msgstr ""
 
+msgid "Removed Upstream"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Renomear para"
 
@@ -2439,6 +2512,9 @@ msgstr "Arquivos fonte"
 
 msgid "Source files with attachments"
 msgstr "Arquivos fonte com anexos"
+
+msgid "Source removed"
+msgstr ""
 
 msgid "Source, notes..."
 msgstr "Fonte, notas..."
@@ -2851,6 +2927,9 @@ msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Para ver as mudanças introduzidas, você pode visitar a seguinte URL"
+
+msgid "Toggle"
+msgstr ""
 
 msgid "Toggle fullscreen editor"
 msgstr "Mudar para o editor em tela cheia"

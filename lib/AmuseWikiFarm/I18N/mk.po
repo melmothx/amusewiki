@@ -113,6 +113,9 @@ msgstr "Активирај блог стил"
 msgid "Active"
 msgstr "Активно"
 
+msgid "Add"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Додади слика за насловна страница (PNG или JPG)"
 
@@ -153,6 +156,9 @@ msgstr "Додади го целиот текст"
 
 msgid "Add this text to the bookbuilder"
 msgstr "Додади го овој текст на збирката"
+
+msgid "Added"
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -449,6 +455,9 @@ msgstr "Поглавје, само за цели книги"
 msgid "Cheatsheet for the markup"
 msgstr "Потсетник за обликување на текстот"
 
+msgid "Check"
+msgstr ""
+
 msgid "Check mail sending and send mail to:"
 msgstr ""
 
@@ -489,6 +498,9 @@ msgstr "За пресметување на разликите беше потр�
 
 msgid "Confirm"
 msgstr "Потврди"
+
+msgid "Conflict"
+msgstr ""
 
 msgid "Continuous footnote numbering across the whole document."
 msgstr "Продолжи со означување на фуснотите низ целиот текст."
@@ -614,6 +626,9 @@ msgstr "URI по желба"
 msgid "Destination"
 msgstr "Одредиште"
 
+msgid "Details"
+msgstr ""
+
 msgid "Did you mean:"
 msgstr "Можеби е:"
 
@@ -655,6 +670,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Не користи здебелен фонт"
+
+msgid "Domain"
+msgstr ""
 
 msgid "Done"
 msgstr "Готово"
@@ -751,6 +769,10 @@ msgstr "Грешка при праќање на e-mail-от !"
 msgid "Error while converting the HTML. Sorry."
 msgstr "Грешка при конвертирањето на ХТМЛ датотеката."
 
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr ""
+
 msgid "Errors"
 msgstr "Грешки"
 
@@ -782,6 +804,9 @@ msgstr ""
 msgid "Example"
 msgstr "Пример"
 
+msgid "Exception"
+msgstr ""
+
 msgid "Existing redirections"
 msgstr "Постоечки пренасочувања"
 
@@ -798,6 +823,15 @@ msgstr "Грешка при додавањето оддалечен репози
 #. ($name)
 msgid "Failed to remove Remote repository %1"
 msgstr "Грешка при бришењето на оддалечениот репозиториум %1"
+
+msgid "Failure fetching the source"
+msgstr ""
+
+msgid "Federation"
+msgstr ""
+
+msgid "Fetch"
+msgstr ""
 
 msgid "File already in the body"
 msgstr "Датотеката веќе е присутна во текстот"
@@ -1056,6 +1090,9 @@ msgstr "Сакам PDF подготвен за печатење"
 msgid "I will provide my remote repository"
 msgstr ""
 
+msgid "ID"
+msgstr ""
+
 msgid "ISBN"
 msgstr ""
 
@@ -1281,14 +1318,32 @@ msgstr "Додај ја датотеката на текстот онаму ка
 msgid "Internal list of translations"
 msgstr "Внатрешна листа на преводи"
 
+msgid "Invalid ID"
+msgstr ""
+
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid domain"
 msgstr ""
 
 msgid "Invalid email"
 msgstr "Погрешен e-mail"
 
+msgid "Invalid field"
+msgstr ""
+
 msgid "Invalid name"
 msgstr "Погрешно име"
+
+msgid "Invalid parameter"
+msgstr ""
+
+msgid "Invalid response"
+msgstr ""
+
+msgid "Invalid target"
+msgstr ""
 
 msgid "Invalid username"
 msgstr "Погрешно корисничко име"
@@ -1447,6 +1502,12 @@ msgstr "Користејќи %1 конфигурација"
 msgid "Loading"
 msgstr ""
 
+msgid "Local"
+msgstr ""
+
+msgid "Local pages"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr ""
 
@@ -1515,6 +1576,12 @@ msgstr "Порака"
 #. (8)
 msgid "Minimum %1 characters"
 msgstr "Најмалку %1 букви"
+
+msgid "Mirror"
+msgstr ""
+
+msgid "Mirror of:"
+msgstr ""
 
 msgid "Missing #title header in the text!"
 msgstr "#title недостига во текстот!"
@@ -1819,6 +1886,9 @@ msgstr "Лозинка, минимум 8 карактери"
 
 msgid "Passwords do not match"
 msgstr "Лозинките не се совпаѓаат"
+
+msgid "Path"
+msgstr ""
 
 msgid "Payload"
 msgstr "Содржина"
@@ -2177,6 +2247,9 @@ msgstr "Отстрани ја насловната слика"
 msgid "Remove this category"
 msgstr "Отстрани ја оваа категорија"
 
+msgid "Removed Upstream"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Преименување"
 
@@ -2453,6 +2526,9 @@ msgstr "Изворни датотеки"
 
 msgid "Source files with attachments"
 msgstr "Изворни датотеки со прилози"
+
+msgid "Source removed"
+msgstr ""
 
 msgid "Source, notes..."
 msgstr "Извори, забелешки..."
@@ -2860,6 +2936,9 @@ msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "За да ги видиш внесените промени, можеш да одиш на овој URL"
+
+msgid "Toggle"
+msgstr ""
 
 msgid "Toggle fullscreen editor"
 msgstr "Прикажи/сокриј го едиторот за целосен екран"

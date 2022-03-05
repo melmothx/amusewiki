@@ -121,6 +121,9 @@ msgstr "Ενεργοποίηση της εμφάνισης και αίσθηση
 msgid "Active"
 msgstr "Ενεργός/η/ο"
 
+msgid "Add"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Προσθήκη εικόνας εξωφύλλου (PNG ή JPG)"
 
@@ -161,6 +164,9 @@ msgstr "Προσθήκη ολόκληρου του κειμένου"
 
 msgid "Add this text to the bookbuilder"
 msgstr "Προσθήκη αυτού του κειμένου στο βιβλιοχτίστη"
+
+msgid "Added"
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -471,6 +477,9 @@ msgstr "Κεφάλαιο, μόνο για το διαχωρισμό κεφάλα
 msgid "Cheatsheet for the markup"
 msgstr "Σύνοψη του markup"
 
+msgid "Check"
+msgstr ""
+
 msgid "Check mail sending and send mail to:"
 msgstr "Έλεγχος αποστολής email και αποστολή email στο:"
 
@@ -513,6 +522,9 @@ msgstr ""
 
 msgid "Confirm"
 msgstr "Επιβεβαίωση"
+
+msgid "Conflict"
+msgstr ""
 
 msgid "Continuous footnote numbering across the whole document."
 msgstr "Συνεχής αρίθμηση στις υποσημειώσεις σε ολόκληρο το έγγραφο."
@@ -641,6 +653,9 @@ msgstr "Επιθυμητό URI"
 msgid "Destination"
 msgstr "Προορισμός"
 
+msgid "Details"
+msgstr ""
+
 msgid "Did you mean:"
 msgstr "Μήπως εννοούσες:"
 
@@ -682,6 +697,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Μη χρησιμοποιείς έντονη γραμματοσειρά (bold)"
+
+msgid "Domain"
+msgstr ""
 
 msgid "Done"
 msgstr "Τέλος"
@@ -782,6 +800,10 @@ msgstr "Σφάλμα στην αποστολή email!"
 msgid "Error while converting the HTML. Sorry."
 msgstr "Σφάλμα κατά τη μετατροπή του HTML. Συγγνώμη."
 
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr ""
+
 msgid "Errors"
 msgstr "Σφάλματα"
 
@@ -814,6 +836,9 @@ msgstr ""
 msgid "Example"
 msgstr "Παράδειγμα"
 
+msgid "Exception"
+msgstr ""
+
 msgid "Existing redirections"
 msgstr "Υπάρχουσες ανακατευθύνσεις"
 
@@ -830,6 +855,15 @@ msgstr "Αποτυχία στην προσθήκη απομακρυσμένου 
 #. ($name)
 msgid "Failed to remove Remote repository %1"
 msgstr "Αποτυχία στην αφαίρεση απομακρυσμένου αποθετηρίου %1"
+
+msgid "Failure fetching the source"
+msgstr ""
+
+msgid "Federation"
+msgstr ""
+
+msgid "Fetch"
+msgstr ""
 
 msgid "File already in the body"
 msgstr "Το αρχείο υπάρχει ήδη στο σώμα"
@@ -1101,6 +1135,9 @@ msgstr "Θέλω ένα διαμορφωμένο (έτοιμο για εκτύπ
 msgid "I will provide my remote repository"
 msgstr "Θα παράσχω το απομακρυσμένο αποθετήριο μου"
 
+msgid "ID"
+msgstr ""
+
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -1341,14 +1378,32 @@ msgstr "Εισαγωγή του αρχείου στη θέση του κέρσο
 msgid "Internal list of translations"
 msgstr "Εσωτερικός κατάλογος μεταφράσεων"
 
+msgid "Invalid ID"
+msgstr ""
+
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid domain"
 msgstr ""
 
 msgid "Invalid email"
 msgstr "Μη έγκυρο email"
 
+msgid "Invalid field"
+msgstr ""
+
 msgid "Invalid name"
 msgstr "Μη έγκυρο όνομα"
+
+msgid "Invalid parameter"
+msgstr ""
+
+msgid "Invalid response"
+msgstr ""
+
+msgid "Invalid target"
+msgstr ""
 
 msgid "Invalid username"
 msgstr "Μη έγκυρο όνομα χρήστη"
@@ -1522,6 +1577,12 @@ msgstr "Φορτώθηκε η διαμόρφωση \"%1\""
 msgid "Loading"
 msgstr "Φόρτωση"
 
+msgid "Local"
+msgstr ""
+
+msgid "Local pages"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "Κλειδωμένη επεξεργασία, δεν είναι δυνατή η μεταφόρτωση"
 
@@ -1590,6 +1651,12 @@ msgstr "Μήνυμα"
 #. (8)
 msgid "Minimum %1 characters"
 msgstr "Ελάχιστοι %1 χαρακτήρες"
+
+msgid "Mirror"
+msgstr ""
+
+msgid "Mirror of:"
+msgstr ""
 
 msgid "Missing #title header in the text!"
 msgstr "Λείπει η επικεφαλίδα #title στο κείμενο!"
@@ -1908,6 +1975,9 @@ msgstr "Κωδικός πρόσβασης, τουλάχιστον 8 χαρακτ
 
 msgid "Passwords do not match"
 msgstr "Οι κωδικοί πρόσβασης δεν ταιριάζουν"
+
+msgid "Path"
+msgstr ""
 
 msgid "Payload"
 msgstr "Payload"
@@ -2281,6 +2351,9 @@ msgstr "Αφαίρεση εικόνας εξωφύλλου"
 msgid "Remove this category"
 msgstr "Αφαίρεση αυτής της κατηγορίας"
 
+msgid "Removed Upstream"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Μετονομασία σε"
 
@@ -2561,6 +2634,9 @@ msgstr "Αρχεία πηγής"
 
 msgid "Source files with attachments"
 msgstr "Αρχεία πηγής με συνημμένα"
+
+msgid "Source removed"
+msgstr ""
 
 msgid "Source, notes..."
 msgstr "Πηγές, σημειώσεις..."
@@ -2998,6 +3074,9 @@ msgid "To view the changes introduced, you can visit the following URL"
 msgstr ""
 "Για να δείτε τις αλλαγές που επήλθαν, μπορείτε να επισκεφθείτε την ακόλουθη "
 "διεύθυνση URL"
+
+msgid "Toggle"
+msgstr ""
 
 msgid "Toggle fullscreen editor"
 msgstr "Ενεργοποίηση/Απενεργοποίηση επεξεργαστή πλήρους οθόνης"

@@ -108,6 +108,9 @@ msgstr ""
 msgid "Active"
 msgstr ""
 
+msgid "Add"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Lisää kansikuva (PNG tai JPG)"
 
@@ -145,6 +148,9 @@ msgstr ""
 
 msgid "Add this text to the bookbuilder"
 msgstr "Lisää kirjantekijään"
+
+msgid "Added"
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -420,6 +426,9 @@ msgstr "Luku, vain kirjan eri lukuihin"
 msgid "Cheatsheet for the markup"
 msgstr "Merkintäohjeet"
 
+msgid "Check"
+msgstr ""
+
 msgid "Check mail sending and send mail to:"
 msgstr ""
 
@@ -459,6 +468,9 @@ msgid "Computing of differences took"
 msgstr "Erojen laskeminen kesti"
 
 msgid "Confirm"
+msgstr ""
+
+msgid "Conflict"
 msgstr ""
 
 msgid "Continuous footnote numbering across the whole document."
@@ -583,6 +595,9 @@ msgstr "Haluttu osoite"
 msgid "Destination"
 msgstr "Kohde"
 
+msgid "Details"
+msgstr ""
+
 msgid "Did you mean:"
 msgstr ""
 
@@ -620,6 +635,9 @@ msgid "Do not redirect aliases to canonical"
 msgstr ""
 
 msgid "Do not use bold fonts"
+msgstr ""
+
+msgid "Domain"
 msgstr ""
 
 msgid "Done"
@@ -715,6 +733,10 @@ msgstr "Virhe sähköpostin lähetyksessä!"
 msgid "Error while converting the HTML. Sorry."
 msgstr ""
 
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr ""
+
 msgid "Errors"
 msgstr "Virheet"
 
@@ -741,6 +763,9 @@ msgstr ""
 msgid "Example"
 msgstr "Esimerkki"
 
+msgid "Exception"
+msgstr ""
+
 msgid "Existing redirections"
 msgstr "Nykyiset uudelleenohjaukset"
 
@@ -756,6 +781,15 @@ msgstr ""
 
 #. ($name)
 msgid "Failed to remove Remote repository %1"
+msgstr ""
+
+msgid "Failure fetching the source"
+msgstr ""
+
+msgid "Federation"
+msgstr ""
+
+msgid "Fetch"
 msgstr ""
 
 msgid "File already in the body"
@@ -998,6 +1032,9 @@ msgstr "Haluan tulostusvalmiin PDF:n"
 msgid "I will provide my remote repository"
 msgstr ""
 
+msgid "ID"
+msgstr ""
+
 msgid "ISBN"
 msgstr ""
 
@@ -1177,14 +1214,32 @@ msgstr ""
 msgid "Internal list of translations"
 msgstr "Sisäinen luettelo käännöksistä"
 
+msgid "Invalid ID"
+msgstr ""
+
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid domain"
 msgstr ""
 
 msgid "Invalid email"
 msgstr "Virheellinen sähköposti"
 
+msgid "Invalid field"
+msgstr ""
+
 msgid "Invalid name"
 msgstr "Virheellinen nimi"
+
+msgid "Invalid parameter"
+msgstr ""
+
+msgid "Invalid response"
+msgstr ""
+
+msgid "Invalid target"
+msgstr ""
 
 msgid "Invalid username"
 msgstr "Virheellinen käyttäjänimi"
@@ -1333,6 +1388,12 @@ msgstr ""
 msgid "Loading"
 msgstr ""
 
+msgid "Local"
+msgstr ""
+
+msgid "Local pages"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr ""
 
@@ -1398,6 +1459,12 @@ msgstr "Viesti"
 
 #. (8)
 msgid "Minimum %1 characters"
+msgstr ""
+
+msgid "Mirror"
+msgstr ""
+
+msgid "Mirror of:"
 msgstr ""
 
 msgid "Missing #title header in the text!"
@@ -1698,6 +1765,9 @@ msgstr "Salasana, vähintään 8 merkkiä."
 
 msgid "Passwords do not match"
 msgstr "Salasanat ei täsmää"
+
+msgid "Path"
+msgstr ""
 
 msgid "Payload"
 msgstr ""
@@ -2017,6 +2087,9 @@ msgstr "Poista kansikuva"
 msgid "Remove this category"
 msgstr ""
 
+msgid "Removed Upstream"
+msgstr ""
+
 msgid "Rename to"
 msgstr ""
 
@@ -2293,6 +2366,9 @@ msgstr "Lähdetiedostot"
 
 msgid "Source files with attachments"
 msgstr "Lähdetiedostot liitteineen"
+
+msgid "Source removed"
+msgstr ""
 
 msgid "Source, notes..."
 msgstr ""
@@ -2671,6 +2747,9 @@ msgid ""
 msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
+msgstr ""
+
+msgid "Toggle"
 msgstr ""
 
 msgid "Toggle fullscreen editor"

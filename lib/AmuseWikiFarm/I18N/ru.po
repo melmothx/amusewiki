@@ -113,6 +113,9 @@ msgstr "Включить оформление в стиле блога"
 msgid "Active"
 msgstr "Активно"
 
+msgid "Add"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Добавить обложку (PNG или JPG)"
 
@@ -151,6 +154,9 @@ msgstr "Добавить полный текст"
 
 msgid "Add this text to the bookbuilder"
 msgstr "Добавить этот текст в конструктор книг"
+
+msgid "Added"
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -445,6 +451,9 @@ msgstr "Глава. Только для выделения глав в книг�
 msgid "Cheatsheet for the markup"
 msgstr "Шпаргалка по разметке"
 
+msgid "Check"
+msgstr ""
+
 msgid "Check mail sending and send mail to:"
 msgstr "Проверить отправку почти и отправить письмо на:"
 
@@ -485,6 +494,9 @@ msgstr "Вычисление различий заняло"
 
 msgid "Confirm"
 msgstr "Подтвердите"
+
+msgid "Conflict"
+msgstr ""
 
 msgid "Continuous footnote numbering across the whole document."
 msgstr "Сквозная нумерация сносок по всему тексту."
@@ -610,6 +622,9 @@ msgstr "Желаемый URI"
 msgid "Destination"
 msgstr "Назначение"
 
+msgid "Details"
+msgstr ""
+
 msgid "Did you mean:"
 msgstr "Возможно, вы имели в виду:"
 
@@ -650,6 +665,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Не использовать жирный шрифт"
+
+msgid "Domain"
+msgstr ""
 
 msgid "Done"
 msgstr "Готово"
@@ -746,6 +764,10 @@ msgstr "Ошибка при отправке письма!"
 msgid "Error while converting the HTML. Sorry."
 msgstr "Ошибка при конвертации HTML."
 
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr ""
+
 msgid "Errors"
 msgstr "Ошибки"
 
@@ -778,6 +800,9 @@ msgstr ""
 msgid "Example"
 msgstr "Пример"
 
+msgid "Exception"
+msgstr ""
+
 msgid "Existing redirections"
 msgstr "Существующее перенаправление"
 
@@ -794,6 +819,15 @@ msgstr "Не удалось добавить удалённый репозито
 #. ($name)
 msgid "Failed to remove Remote repository %1"
 msgstr "Не удалось удалить удалённый репозиторий %1"
+
+msgid "Failure fetching the source"
+msgstr ""
+
+msgid "Federation"
+msgstr ""
+
+msgid "Fetch"
+msgstr ""
 
 msgid "File already in the body"
 msgstr "Файл уже в тексте"
@@ -1051,6 +1085,9 @@ msgstr "Сделать спуск полос (готовый к печати PDF
 msgid "I will provide my remote repository"
 msgstr "Я предоставлю удаленный репозиторий"
 
+msgid "ID"
+msgstr ""
+
 msgid "ISBN"
 msgstr "ISBN"
 
@@ -1271,14 +1308,32 @@ msgstr "Вставить файл в текст после курсора"
 msgid "Internal list of translations"
 msgstr "Внутренний список переводов"
 
+msgid "Invalid ID"
+msgstr ""
+
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid domain"
 msgstr ""
 
 msgid "Invalid email"
 msgstr "Неправильный адрес электронной почты"
 
+msgid "Invalid field"
+msgstr ""
+
 msgid "Invalid name"
 msgstr "Неправильное имя"
+
+msgid "Invalid parameter"
+msgstr ""
+
+msgid "Invalid response"
+msgstr ""
+
+msgid "Invalid target"
+msgstr ""
 
 msgid "Invalid username"
 msgstr "Неправильное имя пользователя"
@@ -1430,6 +1485,12 @@ msgstr "Загружена конфигурация «%1»"
 msgid "Loading"
 msgstr "Загрузка"
 
+msgid "Local"
+msgstr ""
+
+msgid "Local pages"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "Редактирование заблокировано, загрузка невозможна"
 
@@ -1498,6 +1559,12 @@ msgstr "Сообщение"
 #. (8)
 msgid "Minimum %1 characters"
 msgstr "Минимум %1 символов"
+
+msgid "Mirror"
+msgstr ""
+
+msgid "Mirror of:"
+msgstr ""
 
 msgid "Missing #title header in the text!"
 msgstr "Отсутствующий заголовок #title в тексте!"
@@ -1798,6 +1865,9 @@ msgstr "Пароль, минимум 8 символов."
 
 msgid "Passwords do not match"
 msgstr "Пароли не совпадают"
+
+msgid "Path"
+msgstr ""
 
 msgid "Payload"
 msgstr "Полезные данные"
@@ -2142,6 +2212,9 @@ msgstr "Удалить изображение"
 msgid "Remove this category"
 msgstr "Удалить эту категорию"
 
+msgid "Removed Upstream"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Переименовать в"
 
@@ -2418,6 +2491,9 @@ msgstr "Исходные файлы"
 
 msgid "Source files with attachments"
 msgstr "Исходные файлы с вложениями"
+
+msgid "Source removed"
+msgstr ""
 
 msgid "Source, notes..."
 msgstr "Источник, дополнительная информация..."
@@ -2822,6 +2898,9 @@ msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Для просмотра внесённых изменений пройдите по следующей ссылке"
+
+msgid "Toggle"
+msgstr ""
 
 msgid "Toggle fullscreen editor"
 msgstr "Переключить редактор в полноэкранный режим"

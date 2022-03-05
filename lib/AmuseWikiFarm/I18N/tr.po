@@ -113,6 +113,9 @@ msgstr "Blog-stili görünümü etkinleştir"
 msgid "Active"
 msgstr "Etkinleştir"
 
+msgid "Add"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Kapak resmi ekle (PNG ya da JPG)"
 
@@ -152,6 +155,9 @@ msgstr "Bütün metni ekle"
 
 msgid "Add this text to the bookbuilder"
 msgstr "Bu metni kitap yapıcıya ekle"
+
+msgid "Added"
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -450,6 +456,9 @@ msgstr "Kısım, sadece kitaplarda kısımları ayırmak için"
 msgid "Cheatsheet for the markup"
 msgstr "Biçimlendirme için kısayollar"
 
+msgid "Check"
+msgstr ""
+
 msgid "Check mail sending and send mail to:"
 msgstr ""
 
@@ -492,6 +501,9 @@ msgstr "Farkları hesaplama zamanı"
 
 msgid "Confirm"
 msgstr "Onayla"
+
+msgid "Conflict"
+msgstr ""
 
 msgid "Continuous footnote numbering across the whole document."
 msgstr "Bütün döküman boyunca sürekli artan dipnot numaralandırması."
@@ -617,6 +629,9 @@ msgstr "İstenilen URI"
 msgid "Destination"
 msgstr "Hedef"
 
+msgid "Details"
+msgstr ""
+
 msgid "Did you mean:"
 msgstr "Bunu mu demek istediniz:"
 
@@ -658,6 +673,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Kalın fontları kullanma"
+
+msgid "Domain"
+msgstr ""
 
 msgid "Done"
 msgstr "Bitti"
@@ -753,6 +771,10 @@ msgstr "Eposta gönderirken hata!"
 msgid "Error while converting the HTML. Sorry."
 msgstr "HTML dönüştürürken hata. Üzgünüm."
 
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr ""
+
 msgid "Errors"
 msgstr "Hatalar"
 
@@ -787,6 +809,9 @@ msgstr ""
 msgid "Example"
 msgstr "Örnek"
 
+msgid "Exception"
+msgstr ""
+
 msgid "Existing redirections"
 msgstr "Mevcut yönlendirmeler"
 
@@ -803,6 +828,15 @@ msgstr "% uzak veri deposu eklenemedi"
 #. ($name)
 msgid "Failed to remove Remote repository %1"
 msgstr "% uzak veri deposu silinemedi"
+
+msgid "Failure fetching the source"
+msgstr ""
+
+msgid "Federation"
+msgstr ""
+
+msgid "Fetch"
+msgstr ""
 
 msgid "File already in the body"
 msgstr "Dosya zaten gövdede"
@@ -1062,6 +1096,9 @@ msgstr "Empose (baskıya hazır) PDF istiyorum"
 msgid "I will provide my remote repository"
 msgstr ""
 
+msgid "ID"
+msgstr ""
+
 msgid "ISBN"
 msgstr ""
 
@@ -1280,14 +1317,32 @@ msgstr "Dosyayı gövdenin içine imlecin olduğu yere ekle"
 msgid "Internal list of translations"
 msgstr "Çevirilerin iç listesi"
 
+msgid "Invalid ID"
+msgstr ""
+
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid domain"
 msgstr ""
 
 msgid "Invalid email"
 msgstr "Geçersiz eposta"
 
+msgid "Invalid field"
+msgstr ""
+
 msgid "Invalid name"
 msgstr "Geçersiz isim"
+
+msgid "Invalid parameter"
+msgstr ""
+
+msgid "Invalid response"
+msgstr ""
+
+msgid "Invalid target"
+msgstr ""
 
 msgid "Invalid username"
 msgstr "Geçersiz kullanıcı adı"
@@ -1444,6 +1499,12 @@ msgstr "\"%1\" konfigürasyonu yüklendi"
 msgid "Loading"
 msgstr ""
 
+msgid "Local"
+msgstr ""
+
+msgid "Local pages"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "Düzenleme kilitlendi, yükleme mümkün değil"
 
@@ -1509,6 +1570,12 @@ msgstr "Mesaj"
 
 #. (8)
 msgid "Minimum %1 characters"
+msgstr ""
+
+msgid "Mirror"
+msgstr ""
+
+msgid "Mirror of:"
 msgstr ""
 
 msgid "Missing #title header in the text!"
@@ -1813,6 +1880,9 @@ msgstr "Şifre, en az 8 karakter."
 
 msgid "Passwords do not match"
 msgstr "Şifreler aynı değil"
+
+msgid "Path"
+msgstr ""
 
 msgid "Payload"
 msgstr "Yük"
@@ -2160,6 +2230,9 @@ msgstr "Kapak resimini kaldır"
 msgid "Remove this category"
 msgstr "Bu kategoriyi kaldır"
 
+msgid "Removed Upstream"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Yeniden adlandır"
 
@@ -2437,6 +2510,9 @@ msgstr "Kaynak dosyalar"
 
 msgid "Source files with attachments"
 msgstr "Ek dosyalarla birlikte kaynak dosyalar"
+
+msgid "Source removed"
+msgstr ""
 
 msgid "Source, notes..."
 msgstr "Kaynak, notlar..."
@@ -2849,6 +2925,9 @@ msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Uygulanan değişiklikleri görmek için, bu URL'e gidebilirsin"
+
+msgid "Toggle"
+msgstr ""
 
 msgid "Toggle fullscreen editor"
 msgstr "Tam ekran düzenleyiciyi aç/kapat"

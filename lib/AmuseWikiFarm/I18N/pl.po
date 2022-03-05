@@ -111,6 +111,9 @@ msgstr "Aktywuj wygląd i feeling w stylu bloga"
 msgid "Active"
 msgstr "Aktywny"
 
+msgid "Add"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Dodaj grafikę okładki (plik PNG lub JPG)"
 
@@ -150,6 +153,9 @@ msgstr "Dodaj cały tekst"
 
 msgid "Add this text to the bookbuilder"
 msgstr "Dodaj ten tekst do kreatora książek"
+
+msgid "Added"
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -444,6 +450,9 @@ msgstr "Rozdział, tylko dla podziału na rozdziały w książkach"
 msgid "Cheatsheet for the markup"
 msgstr "Ściąga do adiustacji"
 
+msgid "Check"
+msgstr ""
+
 msgid "Check mail sending and send mail to:"
 msgstr ""
 
@@ -484,6 +493,9 @@ msgstr ""
 
 msgid "Confirm"
 msgstr "Potwierdź"
+
+msgid "Conflict"
+msgstr ""
 
 msgid "Continuous footnote numbering across the whole document."
 msgstr "Ciągła numeracja przypisów w całym dokumencie."
@@ -608,6 +620,9 @@ msgstr "URI na zamówienie"
 msgid "Destination"
 msgstr "Cel"
 
+msgid "Details"
+msgstr ""
+
 msgid "Did you mean:"
 msgstr "Czy miałeś na myśli:"
 
@@ -646,6 +661,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Nie używaj pogrubionych czcionek"
+
+msgid "Domain"
+msgstr ""
 
 msgid "Done"
 msgstr "Gotowe"
@@ -743,6 +761,10 @@ msgstr "Błąd podczas wysyłania maila!"
 msgid "Error while converting the HTML. Sorry."
 msgstr "Błąd w trakcie konwertowania pliku HTML. Wybacz."
 
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr ""
+
 msgid "Errors"
 msgstr "Błędy"
 
@@ -772,6 +794,9 @@ msgstr ""
 msgid "Example"
 msgstr "Przykład"
 
+msgid "Exception"
+msgstr ""
+
 msgid "Existing redirections"
 msgstr "Istniejące przekierowania"
 
@@ -787,6 +812,15 @@ msgstr ""
 
 #. ($name)
 msgid "Failed to remove Remote repository %1"
+msgstr ""
+
+msgid "Failure fetching the source"
+msgstr ""
+
+msgid "Federation"
+msgstr ""
+
+msgid "Fetch"
 msgstr ""
 
 msgid "File already in the body"
@@ -1037,6 +1071,9 @@ msgstr "Chcę PDF z impozycją (gotowy do druku)"
 msgid "I will provide my remote repository"
 msgstr ""
 
+msgid "ID"
+msgstr ""
+
 msgid "ISBN"
 msgstr ""
 
@@ -1227,14 +1264,32 @@ msgstr "Wstaw plik w tekst w pozycji kursora"
 msgid "Internal list of translations"
 msgstr ""
 
+msgid "Invalid ID"
+msgstr ""
+
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid domain"
 msgstr ""
 
 msgid "Invalid email"
 msgstr "Niepoprawny e-mail"
 
+msgid "Invalid field"
+msgstr ""
+
 msgid "Invalid name"
 msgstr "Niepoprawna nazwa"
+
+msgid "Invalid parameter"
+msgstr ""
+
+msgid "Invalid response"
+msgstr ""
+
+msgid "Invalid target"
+msgstr ""
 
 msgid "Invalid username"
 msgstr "Niepoprawna nazwa użytkownika"
@@ -1388,6 +1443,12 @@ msgstr ""
 msgid "Loading"
 msgstr "Ładowanie"
 
+msgid "Local"
+msgstr ""
+
+msgid "Local pages"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "Ograniczone edytowanie, przesłanie niemożliwe"
 
@@ -1453,6 +1514,12 @@ msgstr "Wiadomość"
 
 #. (8)
 msgid "Minimum %1 characters"
+msgstr ""
+
+msgid "Mirror"
+msgstr ""
+
+msgid "Mirror of:"
 msgstr ""
 
 msgid "Missing #title header in the text!"
@@ -1741,6 +1808,9 @@ msgstr "Hasło, minimum 8 znaków."
 
 msgid "Passwords do not match"
 msgstr "Hasła nie są jednakowe"
+
+msgid "Path"
+msgstr ""
 
 msgid "Payload"
 msgstr "Ładunek"
@@ -2077,6 +2147,9 @@ msgstr "Usuń grafikę okładki"
 msgid "Remove this category"
 msgstr "Usuń tę kategorię"
 
+msgid "Removed Upstream"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Zmień nazwę na"
 
@@ -2353,6 +2426,9 @@ msgstr "Pliki źródłowe"
 
 msgid "Source files with attachments"
 msgstr "Pliki źródłowe z załącznikami"
+
+msgid "Source removed"
+msgstr ""
 
 msgid "Source, notes..."
 msgstr "Źródło, uwagi..."
@@ -2742,6 +2818,9 @@ msgstr ""
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr ""
 "Aby zobaczyć wprowadzone zmiany, możesz odwiedzić następujący adres URL"
+
+msgid "Toggle"
+msgstr ""
 
 msgid "Toggle fullscreen editor"
 msgstr "Włącz / Wyłącz edytor pełnoekranowy"
