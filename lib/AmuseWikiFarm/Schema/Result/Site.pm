@@ -1859,10 +1859,12 @@ sub collation_index {
     my $collator = Unicode::Collate::Locale->new(locale => $self->locale);
     my $changes = 0;
     my $ttime = time();
+    # use hri here
     my @texts = sort {
         # warn $a->id . ' <=>  ' . $b->id;
-        $collator->cmp($a->list_title // '', $b->list_title // '')
+        $collator->cmp($a->{list_title} // '', $b->{list_title} // '')
     } $self->titles->search(undef, { order_by => 'sorting_pos',
+                                     result_class => 'DBIx::Class::ResultClass::HashRefInflator',
                                      columns => [qw/id sorting_pos list_title/] })->all;
 
     log_debug { "Sorting texts done in " . (time() - $ttime) . " seconds" };
@@ -1872,10 +1874,13 @@ sub collation_index {
     # speeds things up because it doesn't hit the disk
     my $guard = $self->result_source->schema->txn_scope_guard;
 
+    # revert to plain DBI for performance
+    my $dbh = $self->result_source->schema->storage->dbh;
+    my $sth = $dbh->prepare('UPDATE title SET sorting_pos = ? WHERE id = ?');
     my $i = 1;
     foreach my $title (@texts) {
-        if ($title->sorting_pos != $i) {
-            $title->update({ sorting_pos => $i });
+        if ($title->{sorting_pos} != $i) {
+            $sth->execute($i, $title->{id});
             $changes++;
         }
         $i++;
@@ -1884,21 +1889,31 @@ sub collation_index {
     $ttime = time();
 
     # and then sort the categories
+    # use hri
     my @categories = sort {
         # warn $a->id . ' <=> ' . $b->id;
-        $collator->cmp($a->sorting_fragments->[0], $b->sorting_fragments->[0]) or
-          $a->sorting_fragments->[1] <=> $b->sorting_fragments->[1] or
-          $collator->cmp($a->sorting_fragments->[2], $b->sorting_fragments->[2])
-    } $self->categories->search(undef, { order_by => 'sorting_pos',
-                                         columns => [qw/id sorting_pos name/] })->all;
+        $collator->cmp($a->{sorting_fragments}->[0], $b->{sorting_fragments}->[0]) or
+          $a->{sorting_fragments}->[1] <=> $b->{sorting_fragments}->[1] or
+          $collator->cmp($a->{sorting_fragments}->[2], $b->{sorting_fragments}->[2])
+      }
+      map {
+          + {
+             id => $_->id,
+             sorting_pos => $_->sorting_pos,
+             sorting_fragments => $_->sorting_fragments,
+            }
+      } $self->categories->search(undef, { order_by => 'sorting_pos',
+                                           columns => [qw/id sorting_pos name/] })->all;
 
     log_debug { "Sorting categories done in " . (time() - $ttime) . " seconds" };
     $ttime = time();
 
+    $sth = $dbh->prepare('UPDATE category SET sorting_pos = ? WHERE id = ?');
     $i = 1;
+
     foreach my $cat (@categories) {
-        if ($cat->sorting_pos != $i) {
-            $cat->update({ sorting_pos => $i });
+        if ($cat->{sorting_pos} != $i) {
+            $sth->execute($i, $cat->{id});
             $changes++;
         }
         $i++;

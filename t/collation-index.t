@@ -31,7 +31,7 @@ $site->categories->delete;
 my @records;
 # 1024..1278
 foreach my $char (65..90, 256..383) {
-    foreach my $suffix (1..2) {
+    foreach my $suffix (1..200) {
         push @records, {
                         name => "name $char $suffix",
                         list => chr($char) . " " . $suffix,
@@ -44,6 +44,8 @@ my $collator = Unicode::Collate::Locale->new(locale => 'hr');
 my $now = DateTime->now;
 diag "Inserting " . scalar(@records) . " records\n";
 my $guard = $schema->txn_scope_guard;
+
+my $order  = 0;
 foreach my $record (reverse @records) {
     my $uri = $record->{name};
     $uri =~ s/ /-/g;
@@ -59,20 +61,24 @@ foreach my $record (reverse @records) {
                            f_full_path_name => $uri,
                            f_suffix => "muse",
                            f_class => 'title',
+                           sorting_pos => $order++,
                           });
     $site->categories->create({
                                name => $record->{list},
                                uri => $uri,
                                type => 'author',
+                               sorting_pos => $order++,
                               });
 }
 $guard->commit;
 
-is ($site->categories->search(undef, { order_by => 'sorting_pos' })->first->uri, 'name-383-2');
-is ($site->titles->search(undef, { order_by => 'sorting_pos' })->first->uri, 'name-383-2');
+is ($site->categories->search(undef, { order_by => 'sorting_pos' })->first->uri, 'name-383-200');
+is ($site->titles->search(undef, { order_by => 'sorting_pos' })->first->uri, 'name-383-200');
 my $time = time();
 
-$site->collation_index;
+my $total = $site->collation_index;
+
+diag "Total $total changes";
 
 is ($site->categories->search(undef, { order_by => 'sorting_pos' })->first->uri, 'name-65-1');
 is ($site->titles->search(undef, { order_by => 'sorting_pos' })->first->uri, 'name-65-1');
