@@ -13,7 +13,7 @@ use Text::Amuse::Compile::Utils qw/write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
-use Test::More tests => 2483; # test spamming
+use Test::More tests => 2463; # test spamming
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0authen0');
@@ -92,7 +92,6 @@ my @open_if_public = ('/api/autocompletion/topic',
                       "/monthly/2016",
                       "/opds/authors/myauthor",
                       "/opds/authors",
-                      "/opds/crawlable",
                       "/opds/new",
                       "/opds/search",
                       "/opds",
