@@ -64,89 +64,17 @@
         </div>
       </div>
       <table id="title-listing-table" class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>[% loc('Title') %]</th>
-            <th>[% loc('Author') %]</th>
-            [% FOREACH cat IN categories %]
-              <th data-orderable="false">[% loc(cat.name_plural) %]</th>
-            [% END %]
-            <th data-orderable="false" >[% loc('Files') %]</th>
-            <th>[% loc('Publication date') %]</th>
-            <th>[% loc('Estimated pages') %]
-            </th>
-          </tr>
-        </thead>
-        <tfoot>
-          <tr>
-            <th><input type="text" size="10" placeholder="[% loc('Filter') %]"/></th>
-            <th><input type="text" size="10" placeholder="[% loc('Filter') %]"/></th>
-            [% FOREACH cat IN categories %]
-              <th><input type="text" size="5" placeholder="[% loc('Filter') %]"/></th>
-            [% END %]
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </tfoot>
-        <tbody>
-        [% FOREACH text IN list %]
-          <tr>
-            <td data-sort="[% text.sorting_pos %]">
-            <i aria-hidden="true"
-               [% IF text.text_qualification == 'book' %]
-               class="awm-show-text-type-icon fa fa-book"
-               title="[% loc('This text is a book') %]"
-               [% ELSE %]
-               title="[% loc('This text is an article') %]"
-               class="awm-show-text-type-icon fa fa-file-text-o"
-               [% END %]>
-            </i>
-            <a href="[% text.in_tree_uri %].html">
-              [% text.title %]
-              [% IF text.lang %]<small>[[% text.lang %]]</small>[% END %]
-            </a>
-            </td>
-            <td>
-              [% IF text.author %][% text.author %][% END %]
-            </td>
-            [% FOREACH ctype IN text.categories %]
-              <td>
-                [% FOREACH cat IN ctype %]
-                  <div data-category-type="[% cat.type %]" data-category-uri="[% cat.uri %]">[% lh.site_loc_html(cat.name) %]</div>
-                [% END  %]
-              </td>
-            [% END %]
-
-            <td>
-            [%- FOREACH format IN formats %]
-            [%- IF format.is_slides && !text.slides %]
-            <span class="fa fa-2x fa-border fa-ban"
-                  title="[% format.desc %] [% lh.loc('N/A') %]"
-                  aria-hidden="true">
-            </span><span class="sr-only">[% format.desc %] [% lh.loc('N/A') %]</span>
-            [%- ELSE %]
-            <a class="force-black" href="[% text.in_tree_uri %][% format.ext %]">
-              <span class="fa fa-2x fa-border [% format.icon %]"
-                    title="[% format.desc %]"
-                    aria-hidden="true">
-              </span><span class="sr-only">[% format.desc %]</span></a>
-            [%- END %]
-            [%- END %]
-            </td>
-            <td data-sort="[% text.pubdate_int %]">
-            <small>[% text.pubdate %]</small><br>
-            </td>
-            <td data-sort="[% text.pages_estimated %]">
-            <small>[% loc('[_1] pp.', text.pages_estimated) %]</small>
-            </td>
-          </tr>
-        [%- END %]
-        </tbody>
       </table>
     </div>
     <script>
+    // https://datatables.net/examples/data_sources/js_array
+// https://datatables.net/examples/ajax/orthogonal-data.html
     $(document).ready(function() {
+         var titles = [% list %];
+        // var categories = [% categories %];
+        // var formats = [% categories %];
+
+        var columns = [% columns %];
          var table = $('#title-listing-table').DataTable({
              "lengthMenu": [
                  [10, 25, 50, 100, 200, -1],
@@ -174,15 +102,9 @@
 		             "sSortAscending":  ": [% loc('activate to sort column ascending') %]",
 		             "sSortDescending": ": [% loc('activate to sort column descending') %]"
 	             }
-             }
-         });
-         table.columns().every(function() {
-             var that = this;
-             $('input', this.footer()).on('keyup change', function () {
-                 if ( that.search() !== this.value ) {
-                     that.search( this.value ).draw();
-                 }
-             });
+             },
+             "data": titles,
+             "columns": columns,
          });
     });
     </script>
