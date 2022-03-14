@@ -98,7 +98,7 @@ sub generate {
                        {
                         title => $lh->loc_html('Title'),
                         data => {
-                                 _ => 'title',
+                                 _ => 'display_title',
                                  sort => 'sorting_pos',
                                 },
                        },
@@ -184,7 +184,7 @@ TEMPLATE
 
     my $title_template = <<'TEMPLATE';
 <i aria-hidden="true" class="awm-show-text-type-icon fa %s" title="%s"></i>
-<a href="%s.html">%s<small>[%s]</small></a>
+ <a href="%s.html">%s <small>[%s]</small></a>
 TEMPLATE
 
     $file_template =~ s/\n//g;
