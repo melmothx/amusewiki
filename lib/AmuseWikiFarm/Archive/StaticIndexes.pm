@@ -218,7 +218,7 @@ TEMPLATE
 
                 $cat_by_type{$cat->{type}} ||= [];
 
-                my $name = $translations{$cat->{name}} ||= $lh->loc_html($cat->{name});
+                my $name = $translations{$cat->{name}} ||= $lh->site_loc_html($cat->{name});
                 push @{$cat_by_type{$cat->{type}}}, $name;
             }
         }
