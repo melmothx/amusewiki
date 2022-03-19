@@ -4,6 +4,18 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.542 2022-03-19
+
+ - Remove crawlable OPDS page. This is huge performance and bandwith
+   waste.
+
+ - Optimize the static indexes production. This will let datatable do
+   the actual table rendering while the app will just provide the JSON
+   data with some predigested HTML. The gain is huge.
+
+ - Remove the asciified indexing in Xapian. Doing this unconditionally
+   is a mistake. To be restored for selected languages only, in case.
+
 2.541 2022-03-12
 
  - Update ja i18n
