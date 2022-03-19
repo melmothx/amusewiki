@@ -91,6 +91,7 @@ $homedir/local/texlive/$year/bin/$arch/tlmgr install \
         pstricks fp pst-text xcolor geometry bidi zref auxhook chngcntr        \
         xetex-pstricks \
         footmisc \
+        scalefnt carlisle tocstyle lua-uni-algos \
         xecjk luatexja ctex \
         hyphen-afrikaans hyphen-ancientgreek hyphen-arabic hyphen-armenian     \
         hyphen-base hyphen-basque hyphen-belarusian hyphen-bulgarian           \
