@@ -68,10 +68,10 @@ foreach my $url ('/category/topic',
                  '/search',
                  '/mirror/topics.html') {
     $mech->get_ok($url);
-    $mech->content_contains($cat);
-    $mech->content_lacks($xcat);
-    $mech->content_lacks($it);
-    $mech->content_contains($xit);
+    $mech->content_contains($cat, "Should have $cat")  or diag join(' ', $mech->uri, $mech->content);
+    $mech->content_lacks($xcat, "Should not have $xcat")  or diag join(' ', $mech->uri, $mech->content);
+    $mech->content_lacks($it, "Should not have $it") or diag join(' ', $mech->uri, $mech->content);
+    $mech->content_contains($xit, "Expecting $xit") or diag join(' ', $mech->uri, $mech->content);
 }
 
 $mech->get_ok('/login');

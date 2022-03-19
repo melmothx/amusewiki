@@ -683,13 +683,6 @@ sub _index_html {
         my $text = $tree->as_text;
         # log_debug { "Text is $text" };
         $indexer->index_text($text);
-        try {
-            $indexer->index_text(Text::Unidecode::unidecode($text));
-            # log_debug { Text::Unidecode::unidecode($line) };
-        } catch {
-            my $error = $_;
-            log_warn { "Cannot unidecode $text: $_" } ;
-        };
         $tree->delete;
     }
 }

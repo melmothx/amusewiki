@@ -101,8 +101,6 @@ $mech->content_contains($cat->full_uri);
 $site->jobs->dequeue->dispatch_job;
 $mech->get_ok("/mirror/index.html");
 foreach my $type (qw/topic author/) {
-    $mech->content_contains(qq{data-category-type="$type" data-category-uri="}
-                            . $cat->uri  . q{">});
-    $mech->content_lacks(   qq{data-category-type="$type" data-category-uri="}
-                            . $site->categories->inactive->by_type($type)->first->uri  . q{">});
+    $mech->content_contains(qq{"} . $cat->uri  . q{"});
+    $mech->content_lacks(qq{"} . $site->categories->inactive->by_type($type)->first->uri  . q{"});
 }

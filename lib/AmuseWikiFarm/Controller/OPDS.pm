@@ -181,20 +181,6 @@ sub search :Chained('clean_root') :PathPart('search') :Args(0) {
     $c->detach($c->view('Atom'));
 }
 
-sub crawlable :Chained('clean_root') :PathPart('crawlable') :Args(0) {
-    my ($self, $c) = @_;
-    my $site = $c->stash->{site};
-    my $file = $site->crawlable_opds_feed_file;
-    if ($file->exists) {
-        $c->response->content_type('application/atom+xml; charset=UTF-8');
-        $c->clear_encoding;
-        $c->response->body($file->slurp_raw);
-    }
-    else {
-        $c->detach('/not_found');
-    }
-}
-
 # legacy
 
 

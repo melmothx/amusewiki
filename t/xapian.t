@@ -11,7 +11,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 55;
+use Test::More tests => 44;
 use Data::Dumper;
 use File::Path qw/make_path/;
 
@@ -117,8 +117,8 @@ write_file($target, $russian);
 
 $site->update_db_from_tree;
 $site->xapian_reindex_all;
-foreach my $term ('умеренными', '1887', 'ravno', 'protiv', 'ИЗГНАНИЕМ',
-                  'kofiero', 'малатеста') {
+foreach my $term ('умеренными', '1887', 'ИЗГНАНИЕМ',
+                  'малатеста') {
     my ($total, @results) = $site->xapian->search($term, 1, 'ru');
     is $total->total_entries, 1, "Found one record searching for $term";
 }
@@ -133,7 +133,7 @@ sleep 1;
 write_file($target, "#title XXXX#lang fr\n#SORTtopics prova\n\nBla bla État\n");
 $site->update_db_from_tree;
 $site->xapian_reindex_all;
-foreach my $term ("état", "etat", "ÉTAT", "ETAT") {
+foreach my $term ("état", "ÉTAT") {
     my ($total, @results) = $site->xapian->search($term);
     is $total->total_entries, 1, "Found one record searching for $term";
     ok $results[0]->{pagedata}->{feed_teaser}, "Found the teaser";

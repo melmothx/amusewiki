@@ -798,11 +798,16 @@ sub dispatch_job_build_static_indexes {
         $logger->("Populating text structure for " . $text->full_uri . "\n");
         $text->text_html_structure(1);
     }
+    $logger->("Generating main index\n");
     $self->site->static_indexes_generator->generate;
+    $logger->("Generated main in " . (time() - $time) . " seconds\n");
+
+    $time = time();
     $self->site->store_file_list_for_mirroring;
+    $logger->("Stored file list in " . (time() - $time) . " seconds\n");
+    $time = time();
     $self->site->store_rss_feed;
-    $self->site->store_crawlable_opds_feed;
-    $logger->("Generated static indexes " . (time() - $time) . " seconds\n");
+    $logger->("Stored RSS feed in " . (time() - $time) . " seconds\n");
     return;
 }
 

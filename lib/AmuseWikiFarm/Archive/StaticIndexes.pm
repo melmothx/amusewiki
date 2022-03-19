@@ -10,10 +10,12 @@ use Types::Standard qw/Object Str HashRef ArrayRef/;
 use File::Spec;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Paths;
+use AmuseWikiFarm::Utils::Amuse qw/to_json/;
 use Template;
 use Path::Tiny;
 use Date::Parse;
 use HTML::Packer;
+use Data::Dumper;
 
 # when we bump the version, we make sure to copy the files again.
 sub version {
@@ -70,7 +72,7 @@ sub generate {
     my $self = shift;
     $self->copy_static_files;
     my $site = $self->site;
-    my $localizer = $site->localizer,
+    my $lh = $site->localizer,
     my $lang = $site->locale;
     my $formats = $site->formats_definitions(localize => 1);
     my $prefix = $self->target_subdir->relative($site->repo_root);
@@ -88,29 +90,62 @@ sub generate {
             $f->remove;
         }
     }
+    log_debug { "Getting the titles" };
     if (my $titles = $self->create_titles) {
         my $content;
+        log_debug { "Creating the file" };
+        my @columns = (
+                       {
+                        title => $lh->loc_html('Title'),
+                        data => {
+                                 _ => 'display_title',
+                                 sort => 'sorting_pos',
+                                },
+                       },
+                       {
+                        title => $lh->loc_html('Author'),
+                        data => "author",
+                       },
+                      );
+        foreach my $ctype (@{ $self->category_types }) {
+            push @columns, (
+                            {
+                             title => $lh->loc_html($ctype->name_plural),
+                             data => 'category_' . $ctype->category_type,
+                            }
+                           );
+        }
+        push @columns, ({
+                         title => $lh->loc_html('Files'),
+                         data => "files",
+                        },
+                        {
+                         title => $lh->loc_html('Publication date'),
+                         data => {
+                                  _ => 'pubdate',
+                                  sort => 'pubdate_int',
+                                 }
+                        },
+                        {
+                         title => $lh->loc_html('Estimated pages'),
+                         data => "pages_estimated",
+                        }
+                       );
         $tt->process('static-indexes.tt',
                            {
-                            list => $titles,
-                            title   => 'Titles',
-                            categories => $self->category_types,
+                            list => to_json($titles, canonical => 1),
+                            title => 'Titles',
+                            columns => to_json(\@columns),
                             total_items => scalar(@$titles),
                             site => $site,
-                            formats => $formats,
-                            lh => $localizer,
+                            lh => $lh,
                             lang => $lang,
                             css_files => \@css_files,
                             javascript_files => \@javascript_files,
                            },
                      \$content) or die $tt->error;
-        my $packer = HTML::Packer->init();
-        $packer->minify(\$content, {
-                                    remove_comments => 1,
-                                    do_javascript => 'best',
-                                    do_stylesheet => 'minify',
-                                   });
         $self->output_file->spew_utf8($content);
+        log_debug { "Done" };
     }
 }
 
@@ -134,6 +169,29 @@ sub create_titles {
       ->all;
     my $locale = $site->locale || 'en';
 
+    my @ctypes = map { $_->category_type } @{ $self->category_types };
+    my @formats = @{ $site->formats_definitions(localize => 1) };
+
+    my %translations;
+    my $lh = $site->localizer;
+
+    my $file_template = <<'TEMPLATE';
+<a class="force-black" target="_blank" href="%s%s">
+<span class="fa fa-2x fa-border %s" title="%s" aria-hidden="true">
+</span><span class="sr-only">%s</span>
+</a>
+TEMPLATE
+
+    my $title_template = <<'TEMPLATE';
+<i aria-hidden="true" class="awm-show-text-type-icon fa %s" title="%s"></i>
+ <a href="%s.html">%s <small>[%s]</small></a>
+TEMPLATE
+
+    $file_template =~ s/\n//g;
+    $title_template =~ s/\n//g;
+    my $book_note = $lh->loc_html('This text is a book');
+    my $art_note = $lh->loc_html('This text is an article');
+
     foreach my $title (@texts) {
         _in_tree_uri($title);
         $title->{pubdate_int} = str2time($title->{pubdate});
@@ -142,14 +200,14 @@ sub create_titles {
         $title->{pubdate} = $dt->format_cldr($dt->locale->date_format_medium);
         $title->{pages_estimated} = int($title->{text_size} / 2000);
 
-        Dlog_debug { "Title is $_ " } $title;
+        # Dlog_debug { "Title is $_ " } $title;
 
         my %cat_by_type;
         if (my $ct = delete $title->{title_categories}) {
             my @sorted = sort {
                 $a->{category}->{sorting_pos} <=> $b->{category}->{sorting_pos}
             } @$ct;
-            Dlog_debug { "Categories are $_" } \@sorted;
+            # Dlog_debug { "Categories are $_" } \@sorted;
 
           CATEGORY:
             while (@sorted) {
@@ -159,16 +217,36 @@ sub create_titles {
                 next CATEGORY unless $cat->{active};
 
                 $cat_by_type{$cat->{type}} ||= [];
-                push @{$cat_by_type{$cat->{type}}}, $cat;
+
+                my $name = $translations{$cat->{name}} ||= $lh->site_loc_html($cat->{name});
+                push @{$cat_by_type{$cat->{type}}}, $name;
             }
         }
         my @categories;
-        foreach my $ctype (@{$self->category_types}) {
-            push @categories, $cat_by_type{$ctype->category_type};
+        foreach my $ctype (@ctypes) {
+            my $list = $cat_by_type{$ctype};
+            $title->{"category_" . $ctype} = join('<br>', @{$list || []});
         }
-        $title->{categories} = \@categories;
+        my @files;
+        foreach my $f (@formats) {
+            unless ($f->{is_slides} and !$title->{slides}) {
+                push @files, sprintf($file_template,
+                                     $title->{in_tree_uri},
+                                     $f->{ext},
+                                     $f->{icon},
+                                     $f->{desc},
+                                     $f->{desc});
+            }
+        }
+        $title->{files} = join(" ", @files);
+        $title->{display_title} = sprintf($title_template,
+                                          $title->{text_qualification} eq 'book' ? 'fa-book' : 'fa-file-text-o',
+                                          $title->{text_qualification} eq 'book' ? $book_note : $art_note,
+                                          $title->{in_tree_uri},
+                                          $title->{title},
+                                          $title->{lang});
     }
-    Dlog_debug { "Created titles in " . (time() - $time) . " seconds: $_" } \@texts;
+    Dlog_debug { "$_ Created titles in " . (time() - $time) . " seconds" } \@texts;
     return \@texts;
 }
 
