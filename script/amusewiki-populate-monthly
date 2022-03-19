@@ -16,7 +16,7 @@ amusewiki-populate-monthly - refresh the monthly archives
 
 =head1 SYNOPSIS
 
- amusewiki-bootstrap-archive [ <site-id>, <site-id-2>, ... ]
+ amusewiki-populate-monthly [ <site-id>, <site-id-2>, ... ]
 
 =cut
 
