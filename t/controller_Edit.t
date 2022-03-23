@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 120;
+use Test::More tests => 125;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -316,4 +316,20 @@ $mech->content_like(qr{porchetta.*going-to-abandon-this}si, "First the committed
             like $muse_body, qr{\#\Q$k\E \Q$params{$k}\E}, "$k ok";
         }
     }
+    $mech->field(body => " #title test\nhello");
+    $mech->click("commit");
+    ok $mech->form_id('museform'), "Found the form";
+    $mech->content_contains('Missing #title header in the text!');
+
+    $mech->field(body => "#lang it\n #title test\nhello");
+    $mech->click("commit");
+    ok $mech->form_id('museform'), "Found the form";
+
+    diag $mech->uri;
+
+    $mech->content_contains('Missing #title header in the text!');
+    $mech->field(body => "#lang it\n#title test\nhello");
+    $mech->click("commit");
+
+    is $mech->uri->path, "/publish/pending";
 }

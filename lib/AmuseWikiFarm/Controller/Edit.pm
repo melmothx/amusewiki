@@ -533,7 +533,7 @@ sub edit :Chained('edit_revision') :PathPart('') :Args(0) {
 
             # validate the body, it should at least contain a #title
             if ($params->{body} and
-                (index($params->{body}, '#title ') >= 0)) {
+                ($params->{body} =~ m/^\#title /m)) {
 
                 # append the message to the existing one
                 my $rev_message = $params->{message} || '<no message>';
