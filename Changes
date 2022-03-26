@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.543 2022-03-26
+
+ - Improve check on #title upon submitting
+ - Fix startup crash on older distributions GH#389
+
 2.542 2022-03-19
 
  - Remove crawlable OPDS page. This is huge performance and bandwith
