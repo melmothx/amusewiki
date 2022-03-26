@@ -1049,18 +1049,30 @@ sub known_langs {
 }
 
 sub load_all_datetime_locales {
-    my @all = keys %{ known_langs() };
+    my $known_langs = known_langs();
+    my @all = keys %$known_langs;
     my $en = DateTime::Locale->load('en');
-    my %default = $en->locale_data;
-    foreach my $lang (@all) {
-        eval {
-            DateTime::Locale->load($lang);
-        };
-        if (my $err = $@) {
-            log_warn { "Error loading $lang => $err" };
-            # provide a fallback
-            my %new = (%default, code => $lang);
-            DateTime::Locale->register_from_data(%new);
+    # with DateTime::Locale >= 1.27
+    if ($en->can('locale_data')) {
+        my %default = $en->locale_data;
+        foreach my $lang (@all) {
+            eval {
+                DateTime::Locale->load($lang);
+            };
+            if (my $err = $@) {
+                log_warn { "Error loading $lang $known_langs->{$lang} => $err, using a fallback" };
+                # provide a fallback
+                my %new = (%default, code => $lang);
+                DateTime::Locale->register_from_data(%new);
+            }
+        }
+    }
+    else {
+        foreach my $lang (@all) {
+            eval { DateTime::Locale->load($lang) };
+            if ($@) {
+                log_error { "Failed to load DateTime::Locale for $lang and cannot create a surrogate. You will not be able to use $known_langs->{$lang} in the interface, unless you upgrade DateTime::Locale" };
+            }
         }
     }
 }
