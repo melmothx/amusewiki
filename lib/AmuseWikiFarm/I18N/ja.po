@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-04 23:04+0200\n"
-"PO-Revision-Date: 2022-03-11 10:24+0700\n"
+"PO-Revision-Date: 2022-03-13 21:08+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -85,7 +85,7 @@ msgstr ""
 
 #: 15
 msgid "A new text has been created at %1"
-msgstr "%1で新しいテキストが作成されました"
+msgstr "%1で新規追加されました"
 
 #: 16
 msgid "A nice title"
@@ -129,7 +129,7 @@ msgstr "カバー画像を追加する（PNGまたはJPG）"
 
 #: 26
 msgid "Add a new text"
-msgstr "新しいテキストを追加"
+msgstr "新規追加"
 
 #: 27
 msgid "Add an attachment"
@@ -152,8 +152,7 @@ msgid ""
 "Add paginator for text listing when the number of texts is greater than "
 "(integer)"
 msgstr ""
-"テキストの数が（整数）より大きい場合、テキストリストのページネーターを追加し"
-"ます"
+"記事の数が（整数）より大きい場合、記事リストのページネーターを追加します"
 
 #: 32
 msgid "Add sections to the bookbuilder"
@@ -169,11 +168,11 @@ msgstr "選択した部分をbookbuilderに追加"
 
 #: 35
 msgid "Add the whole text"
-msgstr "テキスト全体を追加"
+msgstr "記事全体を追加"
 
 #: 36
 msgid "Add this text to the bookbuilder"
-msgstr "このテキストをbookbuilderに追加"
+msgstr "この記事をbookbuilderに追加"
 
 #: 37
 msgid ""
@@ -187,8 +186,8 @@ msgid ""
 "  change, it will appear under %1. There is a big red\n"
 "  button for each deleted text, and you can proceed with the purging."
 msgstr ""
-"変更承認後、%1の下に表示されます。削除されたテキストごとに大きな赤いボタンが"
-"あり、パージを続行できます。"
+"変更承認後、%1の下に表示されます。削除された記事ごとに大きな赤いボタンがあ"
+"り、パージを続行できます。"
 
 #: 39
 msgid "Age:"
@@ -242,9 +241,9 @@ msgid ""
 "  body with the string “noslide”."
 msgstr ""
 "ドキュメントからスライドも作成します。各セクションは、深さに関係なくスライド"
-"を作成します。セクションの外側のテキストは無視されるため、セクションがない場"
-"合は空のスライドが表示されます。セクションを除外する場合 、「noslide」という"
-"文字列を使用し、セクション本文にコメントを入力してください。"
+"を作成します。セクションの外側の記事は無視されるため、セクションがない場合は"
+"空のスライドが表示されます。セクションを除外する場合 、「noslide」という文字"
+"列を使用し、セクション本文にコメントを入力してください。"
 
 #: 49
 msgid ""
@@ -255,10 +254,10 @@ msgid ""
 "  errico-malatesta-anarchy-2. Please note that this is normally\n"
 "  not needed"
 msgstr ""
-"URIはアーカイブ内のテキストを一意に識別する文字列です。理論的には何でもかまい"
-"ませんが、自分で設定する場合は、「著者名」→「タイトル」→「言語」→「区分するた"
-"めの数字」という順番に従ってください。 例：errico-malatesta-anarchy-2。※これ"
-"は通常、必要ではありません"
+"URIはアーカイブ内の記事を一意に識別する文字列です。理論的には何でもかまいませ"
+"んが、自分で設定する場合は、「著者名」→「タイトル」→「言語」→「区分するための"
+"数字」という順番に従ってください。 例：errico-malatesta-anarchy-2。※これは通"
+"常、必要ではありません"
 
 #: 50
 msgid "Apache is not currently supported"
@@ -290,7 +289,7 @@ msgstr "ボディの通常の画像として"
 
 #: 57
 msgid "Assign text to nodes"
-msgstr "テキストをノードに割り当てます"
+msgstr "記事をノードに割り当てます"
 
 #: 58
 msgid "Attach"
@@ -322,11 +321,11 @@ msgstr "著者名とトピックのリスト"
 
 #: 65
 msgid "Authors for indexing"
-msgstr "インデックス作成用の著者名"
+msgstr "索引用著者名"
 
 #: 66
 msgid "Automatically generated"
-msgstr "自動的に生成完了"
+msgstr "自動生成された"
 
 #: 67
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
@@ -350,7 +349,7 @@ msgstr ""
 
 #: 71
 msgid "Back to the text"
-msgstr "テキストに戻る"
+msgstr "記事に戻る"
 
 #: 72
 msgid "Bad request"
@@ -488,7 +487,7 @@ msgstr "%1の変更"
 #: 103
 msgid "Changes saved, thanks! They are now waiting to be published"
 msgstr ""
-"ありがとうございます。変更が保存されました。公開されるまでしばらくお待ちくだ"
+"ありがとうございます。編集が更新されました。公開されるまでしばらくお待ちくだ"
 "さい"
 
 #: 104
@@ -497,9 +496,9 @@ msgid ""
 " doing, you can delete an existing text and point to another adding a\n"
 " #DELETED directive in the text header with a special syntax:"
 msgstr ""
-"URLの変更はお勧めしません。十分にご理解の上作業しているのであれば、既存のテキ"
-"ストを削除して、次の特別シンタクスを使用し、#DELETEDディレクティブをテキスト"
-"ヘッダーに追加して新しいテキストを設定できます："
+"URLの変更はお勧めしません。十分にご理解の上作業しているのであれば、既存の記事"
+"を削除して、次の特別シンタクスを使用し、#DELETEDディレクティブを記事ヘッダー"
+"に追加して新しい記事を設定できます："
 
 #: 105
 msgid "Chapter"
@@ -553,7 +552,7 @@ msgstr "編集ボックスのある編集ページの左側の列（12のうち�
 
 #: 117
 msgid "Comma or semicolon separated list"
-msgstr "カンマまたはセミコロン区切りリスト"
+msgstr "コンマまたはセミコロン区切りリスト"
 
 #: 118
 msgid "Completed"
@@ -577,11 +576,11 @@ msgstr "アーカイブマークアップに変換する"
 
 #: 123
 msgid "Couldn't add the text"
-msgstr "テキストを追加できませんでした"
+msgstr "記事を追加できませんでした"
 
 #: 124
 msgid "Couldn't automatically generate the URI!"
-msgstr "自動的にURIを生成できませんでした!"
+msgstr "URIを自動生成できませんでした!"
 
 #: 125
 msgid "Couldn't build that"
@@ -645,7 +644,7 @@ msgstr "により作成済み"
 
 #: 139
 msgid "Created new text"
-msgstr "新しいテキスト作成済み"
+msgstr "新規追加されました"
 
 #: 140
 msgid "Current time"
@@ -661,7 +660,7 @@ msgstr "カスタムホームページ"
 
 #: 143
 msgid "Date"
-msgstr "日にち"
+msgstr "発行日"
 
 #: 144
 msgid "Date of the original publication"
@@ -669,7 +668,7 @@ msgstr "元の発行日"
 
 #: 145
 msgid "Default sorting for the category text list"
-msgstr "カテゴリテキストリストのデフォルト設定の並べ替え"
+msgstr "カテゴリ記事リストのデフォルト設定の並べ替え"
 
 #: 146
 msgid "Default value if blank:"
@@ -677,7 +676,7 @@ msgstr "空白の場合はデフォルト設定値："
 
 #: 147
 msgid "Deferred/Deleted texts"
-msgstr "遅延/削除されたテキスト"
+msgstr "遅延/削除された記事"
 
 #: 148
 msgid "Delete"
@@ -696,8 +695,8 @@ msgid ""
 "Deleting a revision is safe if a text has been\n"
 "  published. Otherwise deleting it you'll lose the unpublished changes"
 msgstr ""
-"テキストが公開されている場合、リビジョンを削除してもかまいません。 それ以外の"
-"場合は削除すると、未公開の変更が失われます"
+"記事が公開されている場合、リビジョンを削除してもかまいません。 それ以外の場合"
+"は削除すると、未公開の変更が失われます"
 
 #: 152
 msgid "Description"
@@ -752,7 +751,7 @@ msgstr "除数"
 
 #: 163
 msgid "Do not create a cover page and start the text on the first page"
-msgstr "表紙を作成して最初のページからテキストを開始しないでください"
+msgstr "表紙を作成して最初のページから記事を開始しないでください"
 
 #: 164
 msgid "Do not enforce save message"
@@ -820,11 +819,11 @@ msgstr "サイト構成を編集"
 
 #: 180
 msgid "Edit the text you want to unpublish and add this line to the header:"
-msgstr "非公開にしたいテキストを編集して、次の行をヘッダーに追加してください："
+msgstr "非公開にしたい記事を編集して、次の行をヘッダーに追加してください："
 
 #: 181
 msgid "Edit this text"
-msgstr "このテキストを編集"
+msgstr "この記事を編集"
 
 #: 182
 msgid "Edit user %1"
@@ -1055,11 +1054,11 @@ msgstr ""
 
 #: 232
 msgid "For texts from the internet use"
-msgstr "インターネットからのテキスト使用に"
+msgstr "インターネットソース"
 
 #: 233
 msgid "For texts without a table of content, start text on the very first page"
-msgstr "目次のないテキストの場合は、最初のページからテキストを開始"
+msgstr "目次のない記事の場合は、最初のページから記事を開始"
 
 #: 234
 msgid ""
@@ -1093,7 +1092,7 @@ msgstr "フォーマット"
 
 #: 241
 msgid "Full list of texts"
-msgstr "テキストの全リスト"
+msgstr "記事の全リスト"
 
 #: 242
 msgid "Full tag cloud"
@@ -1201,9 +1200,9 @@ msgid ""
 "  and the cover image are excluded by the saved settings. You can\n"
 "  use this to save paper/fonts/imposition and other options."
 msgstr ""
-"ここでは、テンプレートを保存、またはロードできます。 テキストリストと表紙画像"
-"は、保存された設定によって除外されます。 これを使用して、用紙/フォント/面付け"
-"やその他のオプションを保存できます。"
+"ここでは、テンプレートを保存、またはロードできます。 記事リストと表紙画像は、"
+"保存された設定によって除外されます。 これを使用して、用紙/フォント/面付けやそ"
+"の他のオプションを保存できます。"
 
 #: 264
 msgid "Higher division factor means narrower margins"
@@ -1223,7 +1222,7 @@ msgstr "特別ページを作成するにはどうすればよいですか。"
 
 #: 268
 msgid "How do I delete a text?"
-msgstr "テキストを削除するにはどうすればよいですか。"
+msgstr "記事を削除するにはどうすればよいですか。"
 
 #: 269
 msgid "How do I modify a special page?"
@@ -1231,7 +1230,7 @@ msgstr "特別ページを変更するにはどうすればよいですか。"
 
 #: 270
 msgid "How do I purge a text?"
-msgstr "テキストをパージするにはどうすればよいですか？"
+msgstr "記事をパージするにはどうすればよいですか？"
 
 #: 271
 msgid "How do I redirect to another page?"
@@ -1248,7 +1247,7 @@ msgid ""
 "  protocol."
 msgstr ""
 "ただし、いわゆるOPDSプロトコルをサポートするモバイル読書アプリケーションから"
-"テキストを閲覧、検索、ダウンロード、および読むことができます。"
+"記事を閲覧、検索、ダウンロード、および読むことができます。"
 
 #: 274
 msgid "I am human"
@@ -1280,17 +1279,16 @@ msgid ""
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
 msgstr ""
-"偶然に同じ著者とタイトルの別のテキストが存在する場合は、著者、タイトル、番号"
-"を挿入する下のフィールドを使用して、目的のURIを選択してください。  my-author-"
-"my-title-1"
+"同じ著者とタイトルの記事が存在する場合は、著者、タイトル、数字を入力し、ご希"
+"望のURIを設定してください。  my-author-my-title-1"
 
 #: 281
 msgid ""
 "If it was not your intention, please just ignore this mail and\n"
 " your password will not be changed."
 msgstr ""
-"以上があなたの意図ではなかった場合は、このメールを無視してください。パスワー"
-"ドは変更されません。"
+"このメールにお心当たりがない場合は、そのまま削除してください。パスワードは変"
+"更されません。"
 
 #: 282
 msgid ""
@@ -1314,16 +1312,15 @@ msgid ""
 "  files."
 msgstr ""
 "存在する場合は、生成されたフォーマットと情報ボックスを非表示にします。 これ"
-"は、テキストバージョンが不十分もしくは利用できない場合に、添付ファイルにより"
-"多くの関連性を与える必要があります。"
+"は、記事バージョンが不十分もしくは利用できない場合に、添付ファイルにより多く"
+"の関連性を与える必要があります。"
 
 #: 285
 msgid ""
 "If set to a number greater than 0, automatically generate a teaser, with "
 "roughly this length"
 msgstr ""
-"0より大きい数値に設定すると、おおよそこの長さのティーザーが自動的に生成されま"
-"す"
+"0より大きい数値に設定すると、おおよそこの長さのティーザーを自動生成する"
 
 #: 286
 msgid ""
@@ -1331,8 +1328,8 @@ msgid ""
 "  with the teaser and the cover without providing access to\n"
 "  the body"
 msgstr ""
-"テキストの公開が延期された場合は、本文へのアクセスを提供せずにティーザーと表"
-"紙を付けてリストしてください"
+"記事の公開が延期された場合は、本文へのアクセスを提供せずにティーザーと表紙を"
+"付けてリストしてください"
 
 #: 287
 msgid ""
@@ -1341,7 +1338,7 @@ msgid ""
 "published text once it is done."
 msgstr ""
 "ユーザーが公開を許可している場合、競合がなければ改訂ページをスキップしてプロ"
-"セスを高速化し、公開されたテキストに自動的にリダイレクトしてください。"
+"セスを高速化し、公開された記事に自動的にリダイレクトしてください。"
 
 #: 288
 msgid "If the user provided a mail, it's listed in the mail's CC field"
@@ -1367,8 +1364,8 @@ msgid ""
 "  present and the reason is set to something, the text will be\n"
 "  stored in the archive, but will not be published."
 msgstr ""
-"この行があり、理由が何かに設定されている場合、テキストはアーカイブに保存され"
-"ますが、公開されません。"
+"この行があり、理由が何かに設定されている場合、記事はアーカイブに保存されます"
+"が、公開されません。"
 
 #: 291
 msgid ""
@@ -1377,9 +1374,9 @@ msgid ""
 "  produce a PDF styled like an article (chapters and parts\n"
 "  will not start on a new page)."
 msgstr ""
-"この行がある場合は、タイトルページを作成せずに、最初のページからテキストを開"
-"始し、記事のようなスタイルのPDFを作成してください（章とパーツは新しいページか"
-"ら開始されない)。"
+"この行がある場合は、タイトルページを作成せずに、最初のページから記事を開始"
+"し、記事のようなスタイルのPDFを作成してください（章とパーツは新しいページから"
+"開始されない)。"
 
 #: 292
 msgid "If this line is present, do not display the table of contents."
@@ -1411,7 +1408,7 @@ msgid ""
 "HTML"
 msgstr ""
 "DOXファイルまたはODTファイルをお持ちの場合は、簡単に変換してHTMLとして保存で"
-"ます"
+"きます"
 
 #: 297
 msgid ""
@@ -1428,8 +1425,8 @@ msgid ""
 "  on"
 msgstr ""
 "ティーザー画像として使用する場合、画像はPDFの最初のページにも配置されます。"
-"ヘッダーに次の行を追加して幅を設定できます。1は全幅、0.5は半幅など、値はテキ"
-"ストの幅の比率です"
+"ヘッダーに次の行を追加して幅を設定できます。1は全幅、0.5は半幅など、値は記事"
+"の幅の比率です"
 
 #: 299
 msgid ""
@@ -1531,10 +1528,10 @@ msgid ""
 "  of square brackets. Placing secondary footnote references\n"
 "  inside a regular footnote is permitted."
 msgstr ""
-"テキストに注釈を付けるために使用する追加の脚注のセットを作成することができま"
-"す（重要な版や翻訳者のメモなど）。これらは通常の脚注と同じように機能します"
-"が、角かっこではなく中かっこを使用します。通常の脚注内に二次脚注参照を配置す"
-"ることは許可されています。"
+"記事に注釈を付けるために使用する追加の脚注のセットを作成することができます"
+"（重要な版や翻訳者のメモなど）。これらは通常の脚注と同じように機能しますが、"
+"角かっこではなく中かっこを使用します。通常の脚注内に二次脚注参照を配置するこ"
+"とは許可されています。"
 
 #: 317
 msgid ""
@@ -1582,7 +1579,7 @@ msgstr "ジョブ（全てのサイト）"
 
 #: 325
 msgid "Jobs waiting before yours:"
-msgstr "あなたの前に待っているジョブ："
+msgstr "未処理のジョブ："
 
 #: 326
 msgid "Just packs 2 consecutives logical pages on a physical one."
@@ -1596,11 +1593,10 @@ msgid ""
 "  be lost in the process. Please check the preview on the next\n"
 "  step, where you can also insert images."
 msgstr ""
-"私はテキストを整理していて、このサイトで使用されているマークアップであなたに"
-"返していることを忘れないでください。確認して最終的にアップロードするのはあな"
-"た次第です。まれにしか使用されないマークアップの一部は、その過程で失われま"
-"す。次のステップでプレビューを確認してください。画像を挿入することもできま"
-"す。"
+"私は記事を整理していて、このサイトで使用されているマークアップであなたに返し"
+"ていることを忘れないでください。確認して最終的にアップロードするのはあなた次"
+"第です。まれにしか使用されないマークアップの一部は、その過程で失われます。次"
+"のステップでプレビューを確認してください。画像を挿入することもできます。"
 
 #: 328
 msgid "Keep in mind that some character may be missing in the required font."
@@ -1654,11 +1650,11 @@ msgstr "レイアウト"
 
 #: 339
 msgid "Leave it blank if you want it published right away."
-msgstr "すぐに公開する場合は、空白のままに。"
+msgstr "今すぐ公開は、空白のままに。"
 
 #: 340
 msgid "Leave this empty to have it automatically generated"
-msgstr "空のままにすると、自動的に生成されます"
+msgstr "空のままにすると、自動生成されます"
 
 #: 341
 msgid "Letter imposed PDF"
@@ -1682,7 +1678,7 @@ msgstr "このノードに添付するパスの一覧、１行に１つ。"
 
 #: 346
 msgid "List of texts on hold"
-msgstr "保留中のテキストのリスト"
+msgstr "保留中の記事のリスト"
 
 #: 347
 msgid "Lists"
@@ -1790,7 +1786,7 @@ msgstr "最小%1文字"
 
 #: 373
 msgid "Missing #title header in the text!"
-msgstr "テキストに#titleヘッダーが見つかりません！"
+msgstr "#titleヘッダーが見つかりません！"
 
 #: 374
 msgid "Missing alias"
@@ -1880,7 +1876,7 @@ msgstr ""
 
 #: 395
 msgid "Never show teaser and/or cover in text lists"
-msgstr "テキストリストにティーザーやカバーを表示しないでください"
+msgstr "記事一覧にティーザーやカバー画像を表示しないでください"
 
 #: 396
 msgid "New"
@@ -1900,7 +1896,7 @@ msgstr "新着順"
 
 #: 400
 msgid "Newer texts"
-msgstr "より新しいテキスト"
+msgstr "新しい記事"
 
 #: 401
 msgid "Next"
@@ -1936,11 +1932,11 @@ msgstr "条件に一致するリビジョンはありません"
 
 #: 409
 msgid "No text found!"
-msgstr "テキストが見つかりません！"
+msgstr "記事が見つかりません！"
 
 #: 410
 msgid "No text was added yet"
-msgstr "テキストはまだ追加されていません"
+msgstr "記事はまだ追加されていません"
 
 #: 411
 msgid "Nodes"
@@ -1955,8 +1951,8 @@ msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
 "finalize your submission!"
 msgstr ""
-"投稿はまだ完了していません！テキストをご覧になり、「%1」をクリックして送信を"
-"完了してください！"
+"投稿はまだ完了していません！原稿をご確認し、「%1」をクリックして送信を完了し"
+"てください！"
 
 #: 414
 msgid "Notes"
@@ -2012,7 +2008,7 @@ msgstr "投稿順"
 
 #: 426
 msgid "Older texts"
-msgstr "より古いテキスト"
+msgstr "古い記事"
 
 #: 427
 msgid ""
@@ -2075,7 +2071,7 @@ msgstr "PDFは、本文で使用することはできません。"
 #: 439
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
-"%1ディレクティブに記載されていないPDFファイルが保存されますが、無視されます。"
+"%1ディレクティブに記載されていないPDFファイルが保存されますが、放置されます。"
 
 #: 440
 msgid "Page not found!"
@@ -2269,8 +2265,7 @@ msgid ""
 "  text. If not available, they will just leave the text as\n"
 "  is."
 msgstr ""
-"フィルタは言語固有ですことをご注意ください。それでテキストの言語で利用可能で"
-"すとではないこともあります。利用できない場合、テキストをそのままに残します。"
+"フィルタは言語固有です。記事の言語によって利用できない可能性もあります。"
 
 #: 478
 msgid ""
@@ -2377,7 +2372,7 @@ msgstr "を指しています"
 
 #: 496
 msgid "Popular texts"
-msgstr "人気のテキスト"
+msgstr "人気記事"
 
 #: 497
 msgid ""
@@ -2433,7 +2428,7 @@ msgstr "投稿日"
 
 #: 509
 msgid "Publish"
-msgstr "投稿します"
+msgstr "公開"
 
 #: 510
 msgid "Published in *A nice book*, published by My House, 2014"
@@ -2640,7 +2635,7 @@ msgstr "ページ毎の結果："
 
 #: 555
 msgid "Retrieved on DATE from URL"
-msgstr "URLから取得されたDATE"
+msgstr "URL検索年月日"
 
 #: 556
 msgid "Retrieved on March 8, 2012 from"
@@ -2704,7 +2699,7 @@ msgstr "サンセリフフォント"
 
 #: 571
 msgid "Save"
-msgstr "保存"
+msgstr "更新"
 
 #: 572
 msgid "Save the current settings with a name"
@@ -2804,7 +2799,7 @@ msgstr "セッション共有"
 
 #: 596
 msgid "Set a date in the future if you want it deferred."
-msgstr "延期したい場合には、将来の日付を設定してください。"
+msgstr "後で公開は、将来の日付を設定してください。"
 
 #: 597
 msgid "Settings loaded"
@@ -2824,7 +2819,7 @@ msgstr "チートシートを表示"
 
 #: 601
 msgid "Show differences in other tab"
-msgstr "別のタブで違いを表示"
+msgstr "別のタブで開く"
 
 #: 602
 msgid "Show filters"
@@ -2836,11 +2831,11 @@ msgstr "別のタブでプレビューを表示"
 
 #: 604
 msgid "Show text type and number of pages in the listing"
-msgstr "リスト内にページ数とテキストタイプを表示"
+msgstr "リスト内にページ数と記事タイプを表示"
 
 #: 605
 msgid "Show the text infobox at the bottom of the texts"
-msgstr "テキストの下部にテキストインフォボックスを表示"
+msgstr "記事の下にインフォボックスを表示"
 
 #: 606
 msgid "Showing 0 to 0 of 0 entries"
@@ -3017,8 +3012,8 @@ msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
 msgstr ""
-"このようなヘッダーは、テキストを非公開に、リダイレクトを有効にして、ここにリ"
-"スト化されます"
+"このようなヘッダーは、記事を非公開に、リダイレクトを有効にして、ここにリスト"
+"化されます"
 
 #: 649
 msgid "Such an user already exists!"
@@ -3086,19 +3081,19 @@ msgstr "好みの順でテスト済みのアプリケーション"
 
 #: 665
 msgid "Text formatted with markup"
-msgstr "テキストマークアップでフォーマット"
+msgstr "マークアップでフォーマットされた記事"
 
 #: 666
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
 msgstr ""
-"このシンタクスとともにDELETEDヘッダーを使用して、テキスト自体でキストリダイレ"
-"クトが設定されている"
+"このシンタクスとともにDELETEDヘッダーを使用して、記事自体でキストリダイレクト"
+"が設定されている"
 
 #: 667
 msgid "Texts"
-msgstr "テキスト"
+msgstr "記事"
 
 #: 668
 msgid ""
@@ -3190,15 +3185,15 @@ msgstr "サイトは、文書の終わりにサムネイル付きのPDFを表示
 
 #: 685
 msgid "The text structure is shown below."
-msgstr "テキスト構造が下記に表示されています。"
+msgstr "記事構造が下記に表示されています。"
 
 #: 686
 msgid "The text to show on the homepage preview"
-msgstr "ホームページプレビューに表示されるテキスト"
+msgstr "ホームページプレビューに表示される記事"
 
 #: 687
 msgid "The text was added to the bookbuilder"
-msgstr "テキストはbookbuilderに追加されました"
+msgstr "記事はbookbuilderに追加されました"
 
 #: 688
 msgid ""
@@ -3208,8 +3203,8 @@ msgid ""
 "  listed under N, not under A."
 msgstr ""
 "ソート用の文書タイトル。該当の場合は、記事を削除したい時に便利。 「A Nice "
-"Title」 というタイトルのテキストルは 「Nice Title」に設定できます。その場合は"
-"Aではなく、Nのリストに記載されます。"
+"Title」 というタイトルの記事ルは 「Nice Title」に設定できます。その場合はAで"
+"はなく、Nのリストに記載されます。"
 
 #: 689
 msgid "The title of the document. The only mandatory directive."
@@ -3245,11 +3240,11 @@ msgstr "保留中のリビジョンがあります"
 
 #: 696
 msgid "These texts are missing the unique id."
-msgstr "これらのテキストは、一意のIDが欠落しています。"
+msgstr "これらの記事は、一意のIDが欠落しています。"
 
 #: 697
 msgid "They can be texts, special texts, authors or topics."
-msgstr "テキスト、特殊なテキスト、著者またはトピックです。"
+msgstr "記事、特殊な記事、著者またはトピックです。"
 
 #: 698
 msgid ""
@@ -3293,9 +3288,9 @@ msgid ""
 " and you may want to check it out."
 msgstr ""
 "このメールは、アップロードが完了しておらずユーザーがまだアップロードを確定す"
-"る必要があっても、新しいテキストの作成について通知するために送信しました。も"
-"う少ししたら、あと１つのメールが届きます。届かない場合は、アップロードが放棄"
-"され、確認が必要です。"
+"る必要があっても、新しい記事の作成について通知するために送信しました。もう少"
+"ししたら、あと１つのメールが届きます。届かない場合は、アップロードが放棄さ"
+"れ、確認が必要です。"
 
 #: 704
 msgid "This revision is already published, ignoring changes"
@@ -3328,35 +3323,35 @@ msgstr ""
 
 #: 710
 msgid "This text does not exist"
-msgstr "このテキストは存在しません"
+msgstr "この記事は存在しません"
 
 #: 711
 msgid "This text is a book"
-msgstr "このテキストは本です"
+msgstr "この記事は本です"
 
 #: 712
 msgid "This text is an article"
-msgstr "このテキストは記事です"
+msgstr "この記事は記事（Article）です"
 
 #: 713
 msgid "This text is new"
-msgstr "このテキストは新しいです"
+msgstr "この記事は新規追加です"
 
 #: 714
 msgid "This text is not available"
-msgstr "このテキストは使用できません"
+msgstr "記事が見つかりません"
 
 #: 715
 msgid "This text is not public yet"
-msgstr "このテキストは、まだ公開されていません"
+msgstr "この記事はまだ未公開です"
 
 #: 716
 msgid "This text is not published yet"
-msgstr "このテキストは、まだ公開されていません"
+msgstr "この記事は、まだ公開されていません"
 
 #: 717
 msgid "This text will be deferred to %1"
-msgstr "このテキストは%1に延期されます"
+msgstr "この記事は%1に延期されます"
 
 #: 718
 msgid "This user cannot be removed"
@@ -3396,7 +3391,7 @@ msgstr "タイトル"
 
 #: 727
 msgid "To apply the changes, you can visit %1"
-msgstr "変更内容を適用するには、%1に移動してください"
+msgstr "変更を適用するには、%1に移動してください"
 
 #: 728
 msgid "To display the PDFs, set or append the following string in the header"
@@ -3453,7 +3448,7 @@ msgstr "トリプルバー"
 
 #: 740
 msgid "Try a random text if unsure"
-msgstr "ご不明の際ははランダムなテキストをお試しください"
+msgstr "ご不明の際ははランダムな記事をお試しください"
 
 #: 741
 msgid ""
@@ -3516,7 +3511,7 @@ msgstr "無印PDF（サイト名、ロゴなどが非表示）"
 msgid ""
 "Unconditionally remove all the invisible non-breaking\n"
 "  spaces in the text"
-msgstr "全ての目に見えないテキスト内の非改行スペースを無条件に削除"
+msgstr "全ての目に見えない記事内の非改行スペースを無条件に削除"
 
 #: 754
 msgid ""
@@ -3525,7 +3520,7 @@ msgstr "残念ながら、%1にある共有リポジトリは同期していな�
 
 #: 755
 msgid "Unique ID for the text"
-msgstr "テキストの一意ID"
+msgstr "記事の一意ID"
 
 #: 756
 msgid "Unlimited"
@@ -3537,7 +3532,7 @@ msgstr "順不同リスト"
 
 #: 758
 msgid "Unpublished texts"
-msgstr "未公開テキスト"
+msgstr "未公開記事"
 
 #: 759
 msgid "Unsupported file type %1"
@@ -3576,9 +3571,7 @@ msgstr ""
 #: 767
 msgid ""
 "Uploaded and available images are shown and listed below the text preview."
-msgstr ""
-"アップロードされた利用可能な画像が示されて、テキストのプレビューの下に表示さ"
-"れます。"
+msgstr "アップロードされた画像は記事プレビュー欄の下に表示されます。"
 
 #: 768
 msgid "Url"
@@ -3668,9 +3661,9 @@ msgid ""
 "  else. Just write it down and then load it from another computer\n"
 "  using the following form."
 msgstr ""
-"このトークンを使用して、bookbuilderの設定と別のコンピュータからのテキストリス"
-"トを読み込むことができます。または誰かと共有できます。以下のフォームを使用し"
-"簡単に書いて、別のコンピュータから読み込んでください。"
+"このトークンを使用して、bookbuilderの設定と別のコンピュータからの記事リストを"
+"読み込むことができます。または誰かと共有できます。以下のフォームを使用し簡単"
+"に書いて、別のコンピュータから読み込んでください。"
 
 #: 788
 msgid ""
@@ -3705,8 +3698,8 @@ msgid ""
 "When creating a new text, do not populate the publication date if not "
 "provided by the user."
 msgstr ""
-"新しいテキストを作成する際、ユーザによって提供されていない場合は発行日を移入"
-"しないでください。"
+"新規追加の際、ユーザによって提供されていない場合は発行日を移入しないでくださ"
+"い。"
 
 #: 795
 msgid ""
@@ -3725,7 +3718,7 @@ msgstr "PDFをアップロードする際に、本文に挿入する画像に分
 
 #: 797
 msgid "Where does this text come from?"
-msgstr "このテキストはどこから来たのですか？"
+msgstr "この記事はどこからの記事ですか？"
 
 #: 798
 msgid "Whitelisted IP (for backup, one per line)"
@@ -3733,7 +3726,7 @@ msgstr "ホワイトリストのIP（バックアップ用、１行に１つず�
 
 #: 799
 msgid "Width of the cover image in percent of the text block width."
-msgstr "テキストブロックの幅のパーセントカバー画像の幅。"
+msgstr "記事ブロックの幅のパーセントカバー画像の幅。"
 
 #: 800
 msgid "Width:"
@@ -3764,9 +3757,9 @@ msgid ""
 "  dimensions, paper, margins) of the texts on the library. You can\n"
 "  also merge more texts to create your own booklet. Just try it!"
 msgstr ""
-"Bookbuilderを使用すると、ライブラリ上のレイアウト（フォント、テキストの大き"
-"さ、紙、余白）を変更することができます。また、より多くのテキストをマージして"
-"独自の冊子を作成することもできます。やってみてください！"
+"Bookbuilderを使用すると、ライブラリの記事のレイアウト（フォント、余白など）を"
+"変更することができます。また、いくつかの記事をマージし、冊子を作成することも"
+"できます。ぜひお試ししてください！"
 
 #: 804
 msgid "Workflow"
@@ -3842,17 +3835,16 @@ msgid ""
 "  “plus” icon near the downloads of each text. You can add and\n"
 "  remove the texts later."
 msgstr ""
-"各テキストのダウンロードの近くにある「プラス」アイコンにクリックすることで"
-"bookbuilderにテキストを追加できます。その後、テキストを追加したり、削除したり"
-"できます。"
+"各記事のダウンロードの近くにある「プラス」アイコンにクリックすることで"
+"bookbuilderに記事を追加できます。その後、記事を追加したり、削除したりできま"
+"す。"
 
 #: 817
 msgid ""
 "You can also link to a part of the text. Please refer to the manual for this "
 "feature"
 msgstr ""
-"テキストの一部にリンクすることができます。この機能はマニュアルを参照してくだ"
-"さい"
+"記事の一部にリンクすることができます。この機能はマニュアルを参照してください"
 
 #: 818
 msgid "You can create a peer at %1"
@@ -3877,7 +3869,7 @@ msgstr ""
 #: 822
 msgid ""
 "You can't create a new revision because the text has not been published yet"
-msgstr "テキストはまだ公開されていないので、新しいリビジョンを作成できません"
+msgstr "記事はまだ公開されていないので、新しいリビジョンを作成できません"
 
 #: 823
 msgid "You have logged out"
@@ -3921,15 +3913,16 @@ msgstr "お使いのブラウザは、videoタグをサポートしていませ�
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
-"変更が保存され、[プレビュー]や[保存]をヒットするたびに確認することができます"
+"編集が更新されました！「プレビュー」または「更新」をクリックすると確認するこ"
+"とができます"
 
 #: 832
 msgid "Your chapter here..."
-msgstr "ここにあなたの章を"
+msgstr "ここ章を"
 
 #: 833
 msgid "Your current bookbuilder token is:"
-msgstr "あなたの現在のbookbuilderトークンは次のとおりです："
+msgstr "現在のbookbuilderトークン："
 
 #: 834
 msgid "Your email"
@@ -3941,7 +3934,7 @@ msgstr "ファイルの準備完了"
 
 #: 836
 msgid "Your part here..."
-msgstr "ここにあなたの部分を"
+msgstr "ここに部分を"
 
 #: 837
 msgid "Your password is %1."
@@ -3950,19 +3943,19 @@ msgstr "あなたのパスワードは%1です。"
 #: 838
 msgid "Your password was reset, now you can login with it"
 msgstr ""
-"パスワードを再設定しました。新しいパスワードで改めてログインしてください。"
+"パスワードを再設定しました。新しいパスワードで改めてログインしてください"
 
 #: 839
 msgid "Your section here..."
-msgstr "ここにあなたのセクションを"
+msgstr "ここにセクションを"
 
 #: 840
 msgid "Your sub-sub-section (or description heading) here..."
-msgstr "ここにあなたのサブサブセクション（または説明の見出し）を"
+msgstr "ここにサブサブセクション（または説明の見出し）を"
 
 #: 841
 msgid "Your subsection here..."
-msgstr "ここにあなたのサブセクションを"
+msgstr "ここにサブセクションを"
 
 #: 842
 msgid "Your user at %1 has been created."
@@ -4002,7 +3995,7 @@ msgstr "どれでも"
 
 #: 851
 msgid "automatically generated if not present, using author and title"
-msgstr "存在しない場合は、著者とタイトルを使用して自動生成"
+msgstr "存在しない場合は、著者名とタイトルを使用して自動生成"
 
 #: 852
 msgid "code and monospace"
@@ -4010,7 +4003,7 @@ msgstr "コードとモノスペース"
 
 #: 853
 msgid "comma separated list"
-msgstr "カンマ区切りのリスト"
+msgstr "コンマ区切りのリスト"
 
 #: 854
 msgid "completed"
@@ -4026,7 +4019,7 @@ msgstr "説明"
 
 #: 857
 msgid "displayed text"
-msgstr "表示されるテキスト"
+msgstr "表示される記事"
 
 #: 858
 msgid "edit, commit..."
@@ -4054,7 +4047,7 @@ msgstr "コードの場合は、等幅"
 
 #: 864
 msgid "for display"
-msgstr "ディスプレイ用"
+msgstr "表示用"
 
 #: 865
 msgid "for poetry"
@@ -4123,7 +4116,7 @@ msgstr "プレーンPDF"
 
 #: 881
 msgid "plain text source"
-msgstr "プレーンテキストソース"
+msgstr "プレーン記事ソース"
 
 #: 882
 msgid "processing"
@@ -4171,23 +4164,23 @@ msgstr "使用中"
 
 #: 893
 msgid "texts by authors, title, topic..."
-msgstr "著者、タイトル、トピック等ごとのテキスト。"
+msgstr "著者・タイトル・新着ごとの記事"
 
 #: 894
 msgid "texts sorted by author"
-msgstr "著者順に並べ替えされたテキスト"
+msgstr "著者ごとの記事一覧"
 
 #: 895
 msgid "texts sorted by title"
-msgstr "タイトル順に並べ替えされたテキスト"
+msgstr "タイトルごとの記事一覧"
 
 #: 896
 msgid "the author of the text (as displayed)"
-msgstr "テキストの著者（表示されているように）"
+msgstr "著者（表示用）"
 
 #: 897
 msgid "this text will be unpublished"
-msgstr "このテキストは未公開となります"
+msgstr "この記事は未公開となります"
 
 #: 898
 msgid "topic"
@@ -4215,5 +4208,5 @@ msgid ""
 "  while editing, but it's still there, in case someone wants to pick\n"
 "  it up when editing a text."
 msgstr ""
-"「無効編集」とは編集中に修正が中止されたという意味ですが、誰かが再度テキスト"
-"の編集をする時のために、まだ残されています。"
+"「無効編集」とは編集中に修正が中止されたという意味ですが、誰かが再度記事の編"
+"集をする時のために、まだ残されています。"
