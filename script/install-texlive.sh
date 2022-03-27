@@ -44,7 +44,7 @@ wget -O install-tl-unx.tar.gz \
      https://$TEXMIRROR/systems/texlive/tlnet/install-tl-unx.tar.gz
 tar -xzvf install-tl-unx.tar.gz
 # use shell expansion
-cd install-tl-$year*
+cd install-tl-20*
 arch=`./install-tl --print-arch`
 
 cat <<EOF >> amusewiki.profile
