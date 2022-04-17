@@ -3475,6 +3475,7 @@ sub update_from_params {
                            display_latest_entries_on_special
                            bootstrap_alt_theme
                            category_uri_use_unicode
+                           enforce_manual_uri
                           /) {
         my $value = delete $params->{$option} || '';
         # clean it up from leading and trailing spaces
@@ -3921,6 +3922,10 @@ sub display_latest_entries_on_special {
 
 sub category_uri_use_unicode {
     return shift->get_option('category_uri_use_unicode') || '';
+}
+
+sub enforce_manual_uri {
+    return shift->get_option('enforce_manual_uri') || '';
 }
 
 sub titles_available_sortings {
