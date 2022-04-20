@@ -128,6 +128,19 @@ sub try_to_authenticate :Private {
     if ($username && $password) {
         $username .= '';
         $password .= '';
+
+        if ($username =~ m/\@/) {
+          LOGIN_BY_EMAIL:
+            foreach my $u ($c->model('DB::User')->search({ email => $username },
+                                                         { order_by => 'username' })->all) {
+                if ($u->can_login_into($site->id, $password)) {
+                    log_info { "Login by email: $username => " . $u->username };
+                    $username = $u->username;
+                    last LOGIN_BY_EMAIL;
+                }
+            }
+        }
+
         my $ssl_warning;
         if ($site->https_available && !$c->request->secure ) {
             log_warn {
@@ -142,10 +155,7 @@ sub try_to_authenticate :Private {
             log_debug { "User $username found" };
             # authenticate only if the user is a superuser
             # or if the site id matches the current site id
-            if (($user->sites->find($site->id) or
-                 $user->roles->find({ role => 'root' })) and
-                $user->active and
-                $user->check_password($password)) {
+            if ($user->can_login_into($site->id, $password)) {
                 # we're good
                 if ($form_auth) {
                     die "This shouldn't happen, we checked the password"

@@ -397,6 +397,20 @@ sub update_bb_profile {
     return;
 }
 
+sub can_login_into {
+    my ($self, $site_id, $password) = @_;
+    return 0 unless $site_id && $password;
+    if (($self->sites->find($site_id) or $self->roles->find({ role => 'root' }))
+        and $self->active
+        and $self->check_password($password)
+       ) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
 __PACKAGE__->meta->make_immutable;
 
 1;

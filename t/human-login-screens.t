@@ -6,7 +6,7 @@ BEGIN {
 
 use strict;
 use warnings;
-use Test::More tests => 24;
+use Test::More tests => 43;
 use File::Spec::Functions qw/catfile catdir/;
 use Data::Dumper;
 use lib catdir(qw/t lib/);
@@ -42,3 +42,67 @@ foreach my $mode (qw/private blog modwiki openwiki/) {
         }
     }
 }
+
+{
+    my $user = $site->update_or_create_user({ username => 'pinco1',
+                                              password => 'pizza',
+                                              email => 'pinco@pallino.hr',
+                                            }, 'librarian');
+    my $mech = Test::WWW::Mechanize::Catalyst
+      ->new(catalyst_app => 'AmuseWikiFarm',
+            agent => 'Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0 Iceweasel/38.8.0',
+            agent_alias => 'Windows IE 6',
+            host => $site->canonical);
+
+    $mech->get('/login');
+    $mech->submit_form(with_fields => { __auth_user => 'pinco@pallino.hr', __auth_pass => 'pizza' });
+    $mech->content_contains(q{pinco1});
+    is $mech->status, 200;
+    $mech->get('/logout');
+
+    # same email, same password
+    my $other = $site->update_or_create_user({
+                                              username => 'pinco2',
+                                              password => 'pizza',
+                                              email => 'pinco@pallino.hr',
+                                             }, 'librarian');
+
+    # at this point we don't care which one logs in, it's the same person.
+    $mech->get('/login');
+    $mech->submit_form(with_fields => { __auth_user => 'pinco@pallino.hr', __auth_pass => 'pizza' });
+    is $mech->status, 200;
+    $mech->content_contains(q{pinco1});
+    $mech->get('/logout');
+
+    $other->update({ password => 'pizza2' });
+
+    # wrong password
+    $mech->get('/user/create');
+    $mech->submit_form(with_fields => { __auth_user => 'pinco@pallino.hr', __auth_pass => 'asdflasdfa' });
+    is $mech->status, 401;
+
+    $mech->submit_form(with_fields => { __auth_user => 'pinco@xxpallino.hr', __auth_pass => 'asdflasdfa' });
+    is $mech->status, 401;
+
+
+    $mech->submit_form(with_fields => { __auth_user => 'pinco@pallino.hr', __auth_pass => 'pizza2' });
+    is $mech->status, 200;
+    $mech->content_contains(q{pinco2});
+
+
+    is $other->can_login_into('0hls0', 'pizza2'), 1;
+    is $other->can_login_into('0hls0', 'pizza'), 0;
+    is $other->can_login_into('0hls0', 'pizza2x'), 0;
+    is $other->can_login_into('0hls0x', 'pizza2x'), 0;
+    is $other->can_login_into('', 'pizza2x'), 0;
+    is $other->can_login_into('0hls0', ''), 0;
+    is $other->can_login_into('', ''), 0;
+    is $other->can_login_into('0blog0', 'pizza2'), 0;
+    $other->add_to_roles({ role => 'root' });
+    is $other->can_login_into('0blog0', 'pizza2'), 1, "root role can login in other sites";
+    $other->update({ active => 0 });
+    is $other->can_login_into('0hls0', 'pizza2'), 0;
+    is $other->can_login_into('0blog0', 'pizza2'), 0;
+    $other->delete;
+}
+
