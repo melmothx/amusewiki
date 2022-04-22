@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 124;
+use Test::More tests => 125;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -76,6 +76,9 @@ test_revision($site, special => 2);
 
     $mech->get_ok('/attachments/list');
     $mech->get_ok('/federation/local-ajax');
+    diag Dumper($rev->attached_files);
+    $rev->purge_working_tree;
+    is_deeply $rev->attached_files, [];
 }
 
 

@@ -900,7 +900,7 @@ Implementation and alias for C<can_spawn_revision>
 
 sub muse_file_exists_in_tree {
     my $self = shift;
-    if (-f $self->f_full_path_name) {
+    if ($self->f_full_path_name and -f $self->f_full_path_name) {
         return 1;
     }
     else {

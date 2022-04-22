@@ -364,10 +364,18 @@ Return an array reference to the list of attached basenames.
 
 sub all_attachments {
     my $self = shift;
-    my @files = Path::Tiny::path($self->working_dir)->children(qr{\w\.(pdf|jpe?g|png)$});
-    my $blobs = Path::Tiny::path($self->blob_directory);
-    if ($blobs->exists) {
-        push @files, $blobs->children;
+    my $wd = Path::Tiny::path($self->working_dir);
+    my @files;
+    if ($wd->exists) {
+        push @files, $wd->children(qr{\w\.(pdf|jpe?g|png)$});
+        my $blobs = Path::Tiny::path($self->blob_directory);
+        if ($blobs->exists) {
+            push @files, $blobs->children;
+        }
+    }
+    else {
+        my %data = $self->get_columns;
+        Dlog_error { "$wd does not exist! How so? $_" } \%data;
     }
     return @files;
 }
@@ -945,6 +953,9 @@ sub purge_working_tree {
     if ($wd->exists) {
         log_info { "Removing $wd" };
         $wd->remove_tree;
+    }
+    else {
+        log_info { "$wd already removed" };
     }
 }
 
