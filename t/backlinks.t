@@ -62,6 +62,7 @@ foreach my $type (qw/text special/) {
         push @titles, $rev->title;
     }
 }
+
 foreach my $title ($site->titles) {
     is $title->text_internal_links->count, 0, "0 links found in the text";
 }
@@ -102,5 +103,13 @@ foreach my $title ($site->titles) {
     foreach my $backlink ($title->backlinks->all) {
         $mech->content_contains($backlink->full_uri);
     }
+}
+
+{
+    # a delete one
+    my ($rev, $err) = $site->create_new_text({ title => 'removed', lang => 'en' }, 'text');
+    $rev->edit("#DELETED redirect: webchat\n" . $stub);
+    $rev->commit_version;
+    $rev->publish_text;
 }
 

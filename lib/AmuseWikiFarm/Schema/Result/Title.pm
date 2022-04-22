@@ -1545,7 +1545,7 @@ sub scan_and_store_links {
         $parser->parse_file($file);
     }
     else {
-        log_error { "$file doesn't exist for link storing" };
+        $logger->("Nothing to parse for backlinks\n");
     }
 
     # now we collected all the uris which reference titles in the same site.
