@@ -3,7 +3,7 @@ use utf8;
 use strict;
 use warnings;
 
-use Data::Dumper;
+use Data::Dumper::Concise;
 use File::Spec;
 use File::Basename;
 use Text::Amuse::Functions qw/muse_fast_scan_header muse_format_line/;
@@ -529,7 +529,8 @@ sub build_full_uri {
             push @pieces, 'special';
         }
         else {
-            die "unknown $class f_class $f_class";
+            Dlog_error { "unknown $class f_class $f_class $_"  } $spec;
+            return undef;
         }
     }
     elsif ($class eq 'Attachment') {
@@ -544,7 +545,8 @@ sub build_full_uri {
             push @pieces, 'uploads', $spec->{site_id};
         }
         else {
-            die "unknown $class f_class $f_class"
+            Dlog_error { "unknown $class f_class $f_class $_"  } $spec;
+            return undef;
         }
     }
     else {
@@ -568,7 +570,7 @@ sub build_repo_path {
         ($uri, $suffix) = ($1, $2 || '');
     }
     else {
-        die "Invalid uri $uri";
+        die "Invalid uri $uri: " . Dumper($spec);
     }
 
     my @pieces;

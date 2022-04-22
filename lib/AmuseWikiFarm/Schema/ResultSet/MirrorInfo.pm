@@ -41,17 +41,23 @@ sub without_origin {
 sub detail_list {
     my $self = shift;
     my @entries = $self->search(undef, { prefetch => [qw/title attachment/] })->hri->all;
-    foreach my $entry (@entries) {
+    my @good;
+    while (@entries) {
+        my $entry = shift @entries;
         if (my $title = delete $entry->{title}) {
             $title->{class} = 'Title';
             $entry->{full_uri} = build_full_uri($title);
+            push @good, $entry;
         }
         elsif (my $att = delete $entry->{attachment}) {
-            $att->{class} = 'Attachment';
-            $entry->{full_uri} = build_full_uri($att);
+            if ($att->{f_class} and $att->{f_class} ne 'attachment') {
+                $att->{class} = 'Attachment';
+                $entry->{full_uri} = build_full_uri($att);
+                push @good, $entry;
+            }
         }
     }
-    return \@entries;
+    return \@good;
 }
 
 1;

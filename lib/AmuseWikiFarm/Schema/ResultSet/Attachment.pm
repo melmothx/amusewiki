@@ -74,5 +74,17 @@ sub with_descriptions {
                          ]);
 }
 
+sub public_only {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    # ignore "attachment" which is the staging name. This ones have a valid uri.
+    return $self->search({
+                          "$me.f_class" => [qw/special_image
+                                               image
+                                               upload_binary
+                                               upload_pdf/]
+                         });
+}
+
 1;
 

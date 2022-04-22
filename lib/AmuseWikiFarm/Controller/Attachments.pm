@@ -47,9 +47,7 @@ sub list :Chained('root') :Args {
     my ($self, $c, $page) = @_;
     my @list;
     my $site = $c->stash->{site};
-    my $all = $c->stash->{attachments}->search(undef, {
-                                                       order_by => 'uri',
-                                                      });
+    my $all = $c->stash->{attachments}->public_only->search(undef, { order_by => 'uri' });
     while (my $att = $all->next) {
         push @list, {
                      full_uri => $c->uri_for($att->full_uri),

@@ -25,6 +25,9 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_1 = create_site($schema, '0federation0');
 my $bootstrap_1 = 1;
 
+$schema->resultset('Job')->delete;
+$schema->resultset('BulkJob')->delete;
+
 $site_1->site_options->update_or_create({ option_name => 'allow_binary_uploads',
                                           option_value => 'flac mp3 ogg' });
 
@@ -74,10 +77,10 @@ MUSE
     $site_2->git->add("f");
     $site_2->git->commit({ message => "Add first-test" });
     $site_2->update_db_from_tree(sub { diag join(' ', @_) });
-
 }
 
-foreach my $mi ($schema->resultset('MirrorInfo')->all) {
+foreach my $mi ($schema->resultset('Site')->search({ id => [qw/0federation2 0federation0/] })
+                ->search_related('mirror_infos')->all) {
     diag $mi->repo_object->f_full_path_name;
     diag $mi->compute_repo_path;
     diag $mi->repo_object->f_class;

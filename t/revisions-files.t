@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 122;
+use Test::More tests => 124;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -16,6 +16,7 @@ use Path::Tiny;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
+use Test::WWW::Mechanize::Catalyst;
 
 my @source_files = map { catfile(qw/t files/, $_) } qw/shot.jpg shot.png shot.pdf/;
 
@@ -40,6 +41,43 @@ test_revision($site, text => 1);
 # extension will shift and the serie will start anew (it's the same
 # base filename)
 test_revision($site, special => 2);
+
+# now testing crashes because of pending attachments
+
+{
+    my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                                   host => $site->canonical);
+
+    $mech->get('/login');
+    $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+
+    my ($rev) = $site->create_new_text({ title => 'pizzaaa',
+                                         lang => 'hr',
+                                         textbody => '<p>ciao</p>'
+                                       }, 'text');
+    foreach my $att (@attach) {
+        $rev->add_attachment($att);
+    }
+
+    foreach my $class (qw/Title Attachment/) {
+        foreach my $obj ($schema->resultset($class)->search({
+                                                             'me.site_id' => $site->id,
+                                                             'mirror_info.mirror_info_id' => undef,
+                                                            },
+                                                            {
+                                                             join => 'mirror_info',
+                                                            }
+                                                           )->all) {
+            diag "Adding mirror_info";
+            $obj->create_related(mirror_info => { site_id => $obj->site_id })->discard_changes->compute_checksum;
+        }
+    }
+
+
+    $mech->get_ok('/attachments/list');
+    $mech->get_ok('/federation/local-ajax');
+}
+
 
 
 sub test_revision {
