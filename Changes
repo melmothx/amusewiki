@@ -8,6 +8,8 @@ dedicated tree.
 
  - Fix puzzling crashes on attachment list, federation page and
    pending revisions.
+ - Implement login by email instead of username (transparent)
+ - Add option to enforce manual URI 
 
 2.544 2022-03-29
 
