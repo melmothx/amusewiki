@@ -38,7 +38,7 @@
     <label for="title" class="mandatory">[% loc('Title') %]
       ([% loc('mandatory') %])
     </label>
-    <input class="form-control" type="text" name="title"
+    <input class="form-control uri-maker" type="text" name="title"
            maxlength="250" id="title"
            size="30"
            value="[% processed_params.title | html %]"
@@ -76,7 +76,7 @@
   <div class="form-group">
     <label for="author">[% loc('Author') %]</label>
     ([% loc('for display') %])
-    <input class="form-control amwautocomplete"
+    <input class="form-control amwautocomplete uri-maker"
            type="text" name="author" id="author"
                maxlength="250"
                value="[% processed_params.author | html %]" />
@@ -154,7 +154,7 @@
   <div class="form-group">
     [% SET current_language = processed_params.lang || current_locale_code %]
     <label for="lang">[% loc('Language') %]</label>
-    <select name="lang" id="lang" class="form-control">
+    <select name="lang" id="lang" class="form-control uri-maker">
 
     [% known_langs = site.known_langs %]
     [% FOREACH lang IN known_langs.keys.sort %]
@@ -249,26 +249,29 @@
   [% END %]
   [% END %]
 
-  <div>
-    <br /><br />
+  <div style="margin-top: 10px">
   [% UNLESS pop_uri_field_to_the_top %]
-  <p id="choose-uri">
+  <div id="choose-uri">
     <label for="uri">[% loc('Desired URI') %]
     ([% loc('automatically generated if not present, using author and title') %])
     </label>
-    <br />
 
+    <div class="input-group">
+      <input class="form-control" type="text" name="uri" id="uri" size="50"
+             value="[% processed_params.uri | html %]"/>
+      <span class="input-group-btn">
+        <button class="btn btn-default" id="get-generated-uri" type="button">[% loc('Get generated URI') %]</button>
+      </span>
+    </div>
+    <p class="help-block">
     [% loc("An URI is a string which uniquely identifies the text
       in the archive. In theory, it could be anything, but if you want
       to set it yourself, please stick with the convention: author
       name, title, language, eventual number for disambiguation, e.g.
       errico-malatesta-anarchy-2. Please note that this is normally
       not needed") %]
-
-
-    <input class="form-control" type="text" name="uri" id="uri" size="50"
-           value="[% processed_params.uri | html %]"/>
-  </p>
+    </p>
+  </div>
   [% END %]
   </div>
   <div class="form-group">
@@ -354,6 +357,32 @@
       });
   });
 </script>
+
+[% UNLESS pop_uri_field_to_the_top %]
+  <script>
+   $(document).ready(function() {
+       function build_uri() {
+           var data = {}
+           $('.uri-maker').each(function() {
+               var el = $(this);
+               data[el.attr('name')] = el.val();
+           })
+           $.post("[% c.uri_for_action('/api/get_generated_uri') %]", data, function(data) {
+               console.log(data);
+               if (data.uri) {
+                   $('#uri').val(data.uri);
+               }
+               else if (data.error) {
+                   alert(data.error);
+               }
+           });
+       }
+       build_uri();
+       $('#get-generated-uri').on('click', build_uri);
+       $('.uri-maker').on('change', build_uri);
+   });
+  </script>
+[% END %]
 
 [% IF f_class == 'text' %]
 

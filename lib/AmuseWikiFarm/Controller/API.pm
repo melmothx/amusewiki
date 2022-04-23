@@ -71,6 +71,37 @@ sub check_existing_uri :Chained('api') :PathPart('check-existing-uri') :Args(0) 
     $c->detach($c->view('JSON'));
 }
 
+sub get_generated_uri :Chained('api') :PathPart('get-generated-uri') :Args(0) {
+    my ($self, $c) = @_;
+    my $params = {
+                  %{$c->request->query_params},
+                  %{$c->request->body_params}
+                 };
+    Dlog_debug { "Params are $_" } $params;
+
+    my $uri;
+    my $site = $c->stash->{site};
+    my $author = $params->{author} // "";
+    my $title  = $params->{title}  // "";
+    my $lang = $params->{lang} || $site->locale;
+    if ($title =~ m/\w/) {
+        my $string = "$author $title";
+        if ($site->multilanguage or $lang ne $site->locale) {
+            $string = substr($string, 0, 90) . ' ' . $lang;
+        }
+        my $base = AmuseWikiFarm::Utils::Amuse::muse_naming_algo($string);
+        $uri = $base;
+        my $count = 0;
+        while ($count < 100 and $site->titles->search({ uri => "$uri" })->count) {
+            log_info { "$uri already exists" };
+            $count++;
+            $uri = $base . '-' . $count;
+        }
+    }
+    $c->stash(json => { uri => $uri });
+    $c->detach($c->view('JSON'));
+}
+
 sub lexicon :Chained('api') :PathPart('lexicon.json') :Args(0) {
     my ($self, $c) = @_;
     my %out = (

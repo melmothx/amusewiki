@@ -3,7 +3,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 34;
+use Test::More tests => 44;
 
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
@@ -63,3 +63,14 @@ $mech->get_ok("/api/latest");
 $mech->content_contains(q{"category_id"});
 $mech->content_contains(q{"title_categories"});
 $mech->content_contains(q{"uri"});
+
+$mech->get_ok("/api/get-generated-uri?title=pizza_test");
+$mech->content_contains(q{"pizza-test"});
+$mech->get_ok("/api/get-generated-uri?title=pizza_test&author=My");
+$mech->content_contains(q{"my-pizza-test"});
+$mech->get_ok("/api/get-generated-uri?title=pizza_test&author=My&lang=bg");
+$mech->content_contains(q{"my-pizza-test-bg"});
+$mech->get_ok("/api/get-generated-uri?title=pizza_test&author=My&lang=" . $site->locale);
+$mech->content_contains(q{"my-pizza-test"});
+$mech->get_ok("/api/get-generated-uri?title=test&author=first&lang=" . $site->locale);
+$mech->content_contains(q{"first-test-1"});
