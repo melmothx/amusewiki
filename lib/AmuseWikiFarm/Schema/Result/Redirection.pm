@@ -149,7 +149,7 @@ sub uri_prefix {
                    text => 'library',
                    topic => 'category/topic',
                    author => 'category/author',
-                   special => 'specials',
+                   special => 'special',
                   };
     my $prefix = $uri_map->{$self->type};
     die "Unhandle type " . $self->type unless $prefix;
