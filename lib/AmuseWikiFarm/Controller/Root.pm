@@ -244,7 +244,7 @@ sub not_found :Private {
                                                          type => $f_class,
                                                          uri => $uri
                                                         })) {
-                    $c->response->redirect($c->uri_for($red->full_dest_uri));
+                    $c->response->redirect($c->uri_for($red->full_dest_uri), 301);
                     $c->detach();
                     return;
                 }

@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 62;
+use Test::More tests => 68;
 use Data::Dumper;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -222,3 +222,15 @@ is_deeply decode_json($mech->content), {
                                         '/x?p=10' => '/login',
                                         '/?page=topics' => '/category/topic',
                                        };
+
+$mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                            host => $site->canonical,
+                                            max_redirect => 0,
+                                           );
+foreach my $uri (@text_aliases) {
+    $mech->get("/library/$uri");
+    is $mech->status, 301;
+    my $loc = $mech->response->headers->header('location');
+    diag "Permanent redirect to $loc";
+    $mech->get_ok($loc);
+}
