@@ -207,11 +207,13 @@ Display the aliases
 
 sub alias_display :Chained('alias') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
+    my $site = $c->stash->{site};
     $c->stash(
               page_title => $c->loc('Redirections'),
               redirections => [ $c->stash->{aliases}->all ],
-              author_list  => [ $c->stash->{site}->my_authors ],
-              topic_list   => [ $c->stash->{site}->my_topics  ],
+              author_list  => [ $site->my_authors ],
+              topic_list   => [ $site->my_topics  ],
+              uri_list => $site->my_title_uris,
              );
 }
 
@@ -259,6 +261,10 @@ sub alias_create :Chained('alias') :PathPart('create') :Args(0) {
         $c->flash(error_msg => $c->loc("Bad request"));
     }
     $c->response->redirect($c->uri_for_action('/console/alias_display'));
+}
+
+sub rename_uri :Chained('root') :PathPart('rename-uri') :Args(0) {
+    my ($self, $c) = @_;
 }
 
 sub translations :Chained('root') :PathPart('translations') :Args(0) {
