@@ -265,6 +265,19 @@ sub alias_create :Chained('alias') :PathPart('create') :Args(0) {
 
 sub rename_uri :Chained('root') :PathPart('rename-uri') :Args(0) {
     my ($self, $c) = @_;
+    my $params = $c->request->params;
+    if ($params->{rename_from} && $params->{rename_to}) {
+        my $job = $c->stash->{site}->jobs->enqueue(rename_uri => {
+                                                                  id => $params->{rename_from},
+                                                                  uri => $params->{rename_to}
+                                                                 },
+                                                   $c->user->get('username'));
+        $c->res->redirect($c->uri_for_action('/tasks/display',
+                                             [$job->id]));
+    }
+    else {
+        $c->response->redirect($c->uri_for_action('/console/alias_display'));
+    }
 }
 
 sub translations :Chained('root') :PathPart('translations') :Args(0) {

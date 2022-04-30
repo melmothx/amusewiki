@@ -33,7 +33,7 @@ Text...
   <div class="form-inline">
     <div class="form-group">
       <label for="rename_from">[% loc('URI') %]</label>
-      <select class="form-control" name="rename_from" id="rename_from" style="width: 200px">
+      <select class="form-control" name="rename_from" id="rename_from" style="width: 200px" required>
         <option value="">[% loc('Please select') %]</option>
         [% FOREACH uri IN uri_list %]
           <option value="[% uri.id %]">[% uri.uri | html %]</option>
