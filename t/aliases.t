@@ -4,7 +4,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 15;
+use Test::More tests => 27;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catdir/;
 use lib catdir(qw/t lib/);
@@ -26,6 +26,8 @@ foreach my $i (0..3) {
                                          SORTtopics => "topic-$i",
                                          lang => 'en',
                                        }, 'text');
+    my $att = $rev->add_attachment('t/files/big.jpeg');
+    $rev->edit($rev->muse_body . "\n\nOriginal body\n[[$att->{attachment}]]\n[[$att->{attachment}]]\n");
     $rev->commit_version;
     $rev->publish_text;
 }
@@ -71,7 +73,29 @@ foreach my $url (@private) {
     is $mech->status, 404;
 }
 
-
-
 diag Dumper(\@private);
 
+diag Dumper($site->my_title_uris);
+
+{
+    my $text_id = $site->my_title_uris->[0]->{id};
+    my $orig_uri = $site->my_title_uris->[0]->{uri};
+    my $uri = 'renamed-to-this';
+    is $site->attachments->count, 4;
+    my $job = $site->jobs->enqueue(rename_uri => { id => $text_id, uri => 'renamed-to-this' });
+    $job->dispatch_job;
+    diag $job->logs;
+    is $site->attachments->count, 5;
+    $mech->get_ok("/library/$uri");
+    is $mech->uri->path, "/library/renamed-to-this";
+
+    $mech->get_ok("/library/$uri.html");
+    $mech->content_like(qr{src="r-t-renamed-to-this-1.jpg".*src="r-t-renamed-to-this-1.jpg"}si);
+    $mech->get_ok("/library/r-t-renamed-to-this-1.jpg");
+    foreach my $att ($site->attachments) {
+        diag $att->full_uri;
+        $mech->get_ok($att->full_uri);
+    }
+}
+
+diag Dumper($site->my_title_uris);

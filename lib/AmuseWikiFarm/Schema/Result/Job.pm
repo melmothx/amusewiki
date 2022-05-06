@@ -939,15 +939,7 @@ sub dispatch_job_rename_uri {
                     local $ENV{GIT_COMMITTER_EMAIL} = $self->committer_mail;
                     local $ENV{GIT_AUTHOR_NAME}  = $self->committer_name;
                     local $ENV{GIT_AUTHOR_EMAIL} = $self->committer_mail;
-                    $src->rename_to($uri);
-                    # find the target destination
-                    # if the directory changed, copy over the attachments
-                    # rewrite the body with the same #title, #author and #DELETED ...
-                    # commit the tree and trigger a rescan.
-                    # this will call the sync_remote_repo as well.
-                    my $bulk = $site->update_db_from_tree_async($logger, $self->username);
-                    $bulk->update({ produced => '/console/alias' });
-                    my $url = '/tasks/job/' . $bulk->id . '/show';
+                    my $url = $src->rename_to($uri, $logger);
                     return $url;
                 }
                 else {

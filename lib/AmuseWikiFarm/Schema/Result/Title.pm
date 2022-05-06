@@ -683,6 +683,7 @@ use Path::Tiny qw//;
 use HTML::LinkExtor; # from HTML::Parser
 use HTML::TreeBuilder;
 use URI;
+use Data::Dumper::Concise;
 use constant { PAPER_PAGE_SIZE => 2000 };
 
 has selected_formats => (is => 'ro',
@@ -1812,6 +1813,57 @@ sub mirror_source {
         return $mi->active_download_url;
     }
     return;
+}
+
+sub rename_to {
+    my ($self, $uri, $logger) = @_;
+    $logger ||= sub {};
+    my $site = $self->site;
+    my ($rev, $err) = $site->create_new_text({
+                                              uri => $uri,
+                                              title => $self->title || 'dummy',
+                                              author => $self->author,
+                                              lang => $self->lang,
+                                             }, $self->f_class);
+    unless ($rev) {
+        die $err;
+    }
+    my $body = $self->muse_body;
+
+
+    # other binary files does not need a rename
+    foreach my $img ($self->attachments->images_only) {
+        # this will copy it over
+        my $att = $rev->add_attachment($img->f_full_path_name);
+        my $img_src = $img->uri;
+        if (my $img_uri = $att->{attachment}) {
+            $logger->("Replacing $img_src with $img_uri\n");
+            $body =~ s/\b\Q$img_src\E\b/$img_uri/g;
+        }
+        else {
+            $logger->("Cannot move $img_src!" . Dumper($att->{error}));
+        }
+    }
+    $rev->edit($body);
+
+    $rev->commit_version;
+    my $produced = $rev->title->uri;
+    my $return = $rev->publish_text($logger);
+    my $removal = $self->new_revision;
+    my $headers = $self->raw_headers;
+    $headers->{title} ||= "Dummy";
+    $headers->{author} ||= "Dummy";
+    my $redirect = <<"MUSE";
+#DELETED redirect: $produced
+#title $headers->{title}
+#author $headers->{author}
+
+This text has moved.
+MUSE
+    $removal->edit($redirect);
+    $removal->commit_version;
+    $removal->publish_text($logger);
+    return $return;
 }
 
 __PACKAGE__->meta->make_immutable;
