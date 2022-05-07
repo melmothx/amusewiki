@@ -589,8 +589,8 @@ sub add_attachment {
         try {
             AmuseWikiFarm::Utils::Amuse::strip_image($filename, $target);
         } catch {
-            my $err = $_;
-            log_error { "Failure to strip $filename $target: $err" };
+            $failure = $_;
+            log_error { "Failure to strip $filename $target: $failure" };
         };
         # here
         unless (-f $target) {

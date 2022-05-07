@@ -3109,6 +3109,21 @@ sub my_authors {
     return $self->categories->by_type('author');
 }
 
+sub my_title_uris {
+    my $self = shift;
+    my $rs = $self->titles->status_is_published_or_deferred->search(undef,
+                                                                    {
+                                                                     columns => [qw/id title uri f_class/],
+                                                                     order_by => [qw/f_class uri/],
+                                                                    });
+    my @out;
+    while (my $title = $rs->next) {
+        push @out, { id => $title->id, uri => $title->full_uri };
+    }
+    return \@out;
+}
+
+
 =head2 update_from_params(\%params)
 
 If the params is valid, perform an update, otherwise return the error.

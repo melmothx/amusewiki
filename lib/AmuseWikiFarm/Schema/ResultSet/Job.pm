@@ -48,6 +48,7 @@ sub handled_jobs_hashref {
             publish => 5,
             bookbuilder => 6,
             git => 7,
+            rename_uri => 8,
             hourly_job => 9,
             daily_job => 10,
             rebuild => 20,

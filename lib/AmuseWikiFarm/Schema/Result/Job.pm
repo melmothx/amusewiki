@@ -927,6 +927,30 @@ sub dispatch_job_install_downloaded {
     return;
 }
 
+sub dispatch_job_rename_uri {
+    my ($self, $logger, $opts) = @_;
+    my $spec = $self->job_data;
+    my $site = $self->site;
+    if (my $id = $spec->{id}) {
+        if (my $src = $site->titles->find($id)) {
+            if (my $uri = $spec->{uri}) {
+                if ($site->titles->search({ uri => $uri })->count == 0) {
+                    local $ENV{GIT_COMMITTER_NAME}  = $self->committer_name;
+                    local $ENV{GIT_COMMITTER_EMAIL} = $self->committer_mail;
+                    local $ENV{GIT_AUTHOR_NAME}  = $self->committer_name;
+                    local $ENV{GIT_AUTHOR_EMAIL} = $self->committer_mail;
+                    my $url = $src->rename_to($uri, $logger, $self->username);
+                    return $url;
+                }
+                else {
+                    die "$uri already exists";
+                }
+            }
+        }
+    }
+    return;
+}
+
 before delete => sub {
     my $self = shift;
     my @leftovers = $self->produced_files;
