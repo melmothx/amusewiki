@@ -939,7 +939,7 @@ sub dispatch_job_rename_uri {
                     local $ENV{GIT_COMMITTER_EMAIL} = $self->committer_mail;
                     local $ENV{GIT_AUTHOR_NAME}  = $self->committer_name;
                     local $ENV{GIT_AUTHOR_EMAIL} = $self->committer_mail;
-                    my $url = $src->rename_to($uri, $logger);
+                    my $url = $src->rename_to($uri, $logger, $self->username);
                     return $url;
                 }
                 else {

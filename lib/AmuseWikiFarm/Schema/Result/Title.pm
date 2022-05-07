@@ -1816,7 +1816,7 @@ sub mirror_source {
 }
 
 sub rename_to {
-    my ($self, $uri, $logger) = @_;
+    my ($self, $uri, $logger, $username) = @_;
     $logger ||= sub {};
     my $site = $self->site;
     my ($rev, $err) = $site->create_new_text({
@@ -1846,7 +1846,7 @@ sub rename_to {
     }
     $rev->edit($body);
 
-    $rev->commit_version;
+    $rev->commit_version(sprintf("Renamed %s to %s", $self->uri, $uri), $username);
     my $produced = $rev->title->uri;
     my $return = $rev->publish_text($logger);
     my $removal = $self->new_revision;
@@ -1861,7 +1861,7 @@ sub rename_to {
 This text has moved.
 MUSE
     $removal->edit($redirect);
-    $removal->commit_version;
+    $removal->commit_version(sprintf("Renamed %s to %s", $self->uri, $uri), $username);
     $removal->publish_text($logger);
     return $return;
 }

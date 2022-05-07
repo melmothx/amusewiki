@@ -84,7 +84,7 @@ diag Dumper($site->my_title_uris);
     my $orig_uri = $site->my_title_uris->[0]->{uri};
     my $uri = 'renamed-to-this';
     is $site->attachments->count, 8;
-    my $job = $site->jobs->enqueue(rename_uri => { id => $text_id, uri => 'renamed-to-this' });
+    my $job = $site->jobs->enqueue(rename_uri => { id => $text_id, uri => 'renamed-to-this' }, "pippo");
     $job->dispatch_job;
     diag $job->logs;
     is $site->attachments->count, 10;
