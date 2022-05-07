@@ -260,7 +260,7 @@
       <input class="form-control" type="text" name="uri" id="uri" size="50"
              value="[% processed_params.uri | html %]"/>
       <span class="input-group-btn">
-        <button class="btn btn-default" id="get-generated-uri" type="button">[% loc('Get generated URI') %]</button>
+        <a class="btn btn-default" href="#uri" id="get-generated-uri">[% loc('Get generated URI') %]</a>
       </span>
     </div>
     <p class="help-block">
