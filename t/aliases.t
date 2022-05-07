@@ -4,7 +4,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 27;
+use Test::More tests => 32;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catdir/;
 use lib catdir(qw/t lib/);
@@ -28,6 +28,8 @@ foreach my $i (0..3) {
                                        }, 'text');
     my $att = $rev->add_attachment('t/files/big.jpeg');
     $rev->edit($rev->muse_body . "\n\nOriginal body\n[[$att->{attachment}]]\n[[$att->{attachment}]]\n");
+    my $cover = $rev->add_attachment('t/files/shot.png');
+    $rev->edit("#cover $cover->{attachment}\n" . $rev->muse_body);
     $rev->commit_version;
     $rev->publish_text;
 }
@@ -81,11 +83,11 @@ diag Dumper($site->my_title_uris);
     my $text_id = $site->my_title_uris->[0]->{id};
     my $orig_uri = $site->my_title_uris->[0]->{uri};
     my $uri = 'renamed-to-this';
-    is $site->attachments->count, 4;
+    is $site->attachments->count, 8;
     my $job = $site->jobs->enqueue(rename_uri => { id => $text_id, uri => 'renamed-to-this' });
     $job->dispatch_job;
     diag $job->logs;
-    is $site->attachments->count, 5;
+    is $site->attachments->count, 10;
     $mech->get_ok("/library/$uri");
     is $mech->uri->path, "/library/renamed-to-this";
 
