@@ -822,9 +822,6 @@ msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr "如果签名未满，则在最后一页之前填充空白页。"
 
-msgid "Filter"
-msgstr "筛选"
-
 msgid "Filters"
 msgstr "筛选器"
 
@@ -928,6 +925,9 @@ msgstr "一般配置"
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "通用（适合A4和信纸）"
+
+msgid "Get generated URI"
+msgstr ""
 
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
@@ -1664,6 +1664,9 @@ msgstr "从旧到新"
 msgid "Older texts"
 msgstr "更旧的文本"
 
+msgid "On text creation, enforce user to choose the URI"
+msgstr ""
+
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr "一页一张纸。这只有在你想添加裁剪标记时才有用"
@@ -2117,6 +2120,12 @@ msgstr "移除这个类别"
 msgid "Removed Upstream"
 msgstr ""
 
+msgid "Rename"
+msgstr ""
+
+msgid "Rename text URI"
+msgstr ""
+
 msgid "Rename to"
 msgstr "重命名为"
 
@@ -2506,6 +2515,9 @@ msgstr "测试"
 
 msgid "Tested applications, in this order of preference"
 msgstr "已测试的应用，顺序按照喜好"
+
+msgid "Text body only (no title, no final pages)"
+msgstr ""
 
 msgid "Text formatted with markup"
 msgstr "用标记格式的文本"
@@ -3395,6 +3407,9 @@ msgid ""
 msgstr ""
 "「陈旧编辑」意味着版本已在编辑时被放弃，但它仍然存在，以防有人在编辑文本时继"
 "续使用它。"
+
+#~ msgid "Filter"
+#~ msgstr "筛选"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "texts sorted by topic"

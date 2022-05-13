@@ -862,9 +862,6 @@ msgstr ""
 "Llena con páginas en blanco antes de la última página si la encuadernación "
 "no está completa."
 
-msgid "Filter"
-msgstr ""
-
 msgid "Filters"
 msgstr "Filtros"
 
@@ -977,6 +974,9 @@ msgstr "Configuración general"
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Genérico (para tamaños carta y A4)"
+
+msgid "Get generated URI"
+msgstr ""
 
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
@@ -1742,6 +1742,9 @@ msgstr ""
 msgid "Older texts"
 msgstr "Textos más antiguos"
 
+msgid "On text creation, enforce user to choose the URI"
+msgstr ""
+
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
@@ -2227,6 +2230,12 @@ msgstr ""
 msgid "Removed Upstream"
 msgstr ""
 
+msgid "Rename"
+msgstr ""
+
+msgid "Rename text URI"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Renombrar a"
 
@@ -2621,6 +2630,9 @@ msgstr "Prueba"
 
 msgid "Tested applications, in this order of preference"
 msgstr "Aplicaciones probadas, en este orden de preferencia"
+
+msgid "Text body only (no title, no final pages)"
+msgstr ""
 
 msgid "Text formatted with markup"
 msgstr "Texto formateado con marcado"

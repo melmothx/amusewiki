@@ -852,9 +852,6 @@ msgid ""
 msgstr ""
 "Добавить пустые страницы перед последней страницей, если тетрадки неполные."
 
-msgid "Filter"
-msgstr "Фильтр"
-
 msgid "Filters"
 msgstr "Опции"
 
@@ -961,6 +958,9 @@ msgstr "Основные настройки"
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Универсальный (умещается на A4 и Letter)"
+
+msgid "Get generated URI"
+msgstr ""
 
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
@@ -1738,6 +1738,9 @@ msgstr "Сначала более старые"
 msgid "Older texts"
 msgstr "Более старые тексты"
 
+msgid "On text creation, enforce user to choose the URI"
+msgstr ""
+
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
@@ -2215,6 +2218,12 @@ msgstr "Удалить эту категорию"
 msgid "Removed Upstream"
 msgstr ""
 
+msgid "Rename"
+msgstr ""
+
+msgid "Rename text URI"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Переименовать в"
 
@@ -2606,6 +2615,9 @@ msgstr "Тест"
 
 msgid "Tested applications, in this order of preference"
 msgstr "Протестированные приложения, в порядке предпочтения"
+
+msgid "Text body only (no title, no final pages)"
+msgstr ""
 
 msgid "Text formatted with markup"
 msgstr "Текст, отформатированный с помощью разметки"
@@ -3548,6 +3560,9 @@ msgstr ""
 "«Устаревшее редактирование» означает, что правка не была доделана, но всё "
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
+
+#~ msgid "Filter"
+#~ msgstr "Фильтр"
 
 #~ msgid "IRC channel on freenode"
 #~ msgstr "IRC-канал на Freenode"

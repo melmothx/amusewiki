@@ -880,9 +880,6 @@ msgstr ""
 "Добави празни страници, докато не стигнеш последната страница, ако "
 "групата(signature) не е пълна."
 
-msgid "Filter"
-msgstr "Филтър"
-
 msgid "Filters"
 msgstr "Филтри"
 
@@ -990,6 +987,9 @@ msgstr "Обща конфигурация"
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Неспецифично (събира и А4, и писмо(Letter))"
+
+msgid "Get generated URI"
+msgstr ""
 
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
@@ -1807,6 +1807,9 @@ msgstr "По-старите първо"
 msgid "Older texts"
 msgstr "Стари текстове"
 
+msgid "On text creation, enforce user to choose the URI"
+msgstr ""
+
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
@@ -2307,6 +2310,12 @@ msgstr "Премахни тази категория"
 msgid "Removed Upstream"
 msgstr ""
 
+msgid "Rename"
+msgstr ""
+
+msgid "Rename text URI"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Преименувай на"
 
@@ -2700,6 +2709,9 @@ msgstr "Тест"
 
 msgid "Tested applications, in this order of preference"
 msgstr "Тествани приложения в тази последователност"
+
+msgid "Text body only (no title, no final pages)"
+msgstr ""
 
 msgid "Text formatted with markup"
 msgstr "Текстът е форматиран с markup"
@@ -3673,6 +3685,9 @@ msgstr ""
 "    докато текстът е бил редактиран, но тя все още присъства в случай, че "
 "някой\n"
 "    иска да започне от там нататък."
+
+#~ msgid "Filter"
+#~ msgstr "Филтър"
 
 #~ msgid "IRC channel on freenode"
 #~ msgstr "IRC канал във freenode"

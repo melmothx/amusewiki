@@ -815,9 +815,6 @@ msgid ""
 msgstr ""
 "Täytä tyhjillä sivuilla ennen viimeistä sivua, jos sivut eivät mene tasan."
 
-msgid "Filter"
-msgstr ""
-
 msgid "Filters"
 msgstr ""
 
@@ -920,6 +917,9 @@ msgstr ""
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Yleinen (sopii kokoihin A4 ja Letter)"
+
+msgid "Get generated URI"
+msgstr ""
 
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
@@ -1635,6 +1635,9 @@ msgstr ""
 msgid "Older texts"
 msgstr ""
 
+msgid "On text creation, enforce user to choose the URI"
+msgstr ""
+
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
@@ -2090,6 +2093,12 @@ msgstr ""
 msgid "Removed Upstream"
 msgstr ""
 
+msgid "Rename"
+msgstr ""
+
+msgid "Rename text URI"
+msgstr ""
+
 msgid "Rename to"
 msgstr ""
 
@@ -2480,6 +2489,9 @@ msgid "Test"
 msgstr ""
 
 msgid "Tested applications, in this order of preference"
+msgstr ""
+
+msgid "Text body only (no title, no final pages)"
 msgstr ""
 
 msgid "Text formatted with markup"

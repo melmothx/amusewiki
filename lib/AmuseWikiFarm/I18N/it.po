@@ -870,9 +870,6 @@ msgstr ""
 "Riempi con pagine bianche prima dell'ultima pagina se la segnatura non è "
 "completa"
 
-msgid "Filter"
-msgstr "Filtra"
-
 msgid "Filters"
 msgstr "Filtri"
 
@@ -981,6 +978,9 @@ msgstr "Configurazione generale"
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Formato generico (adatto per A4 e Letter)"
+
+msgid "Get generated URI"
+msgstr ""
 
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
@@ -1784,6 +1784,9 @@ msgstr "Comincia con i più vecchi"
 msgid "Older texts"
 msgstr "Testi più vecchi"
 
+msgid "On text creation, enforce user to choose the URI"
+msgstr ""
+
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
@@ -2273,6 +2276,12 @@ msgstr "Rimuovi questa categoria"
 msgid "Removed Upstream"
 msgstr ""
 
+msgid "Rename"
+msgstr ""
+
+msgid "Rename text URI"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Rinomina"
 
@@ -2668,6 +2677,9 @@ msgstr "Test"
 
 msgid "Tested applications, in this order of preference"
 msgstr "Applicazioni funzionanti, in questo ordine di preferenza"
+
+msgid "Text body only (no title, no final pages)"
+msgstr ""
 
 msgid "Text formatted with markup"
 msgstr "Testo formattato con il markup"
@@ -3634,6 +3646,9 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "Filter"
+#~ msgstr "Filtra"
 
 #~ msgid "IRC channel on freenode"
 #~ msgstr "Canale IRC su Freenode"

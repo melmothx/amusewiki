@@ -848,9 +848,6 @@ msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr "Indsæt tomme sider inden den sidste side hvis trykarket ikke er fyldt."
 
-msgid "Filter"
-msgstr ""
-
 msgid "Filters"
 msgstr "Filtre"
 
@@ -960,6 +957,9 @@ msgstr "Generel konfiguration"
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Generel (passer på A4 og Letter)"
+
+msgid "Get generated URI"
+msgstr ""
 
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
@@ -1715,6 +1715,9 @@ msgstr ""
 msgid "Older texts"
 msgstr "Ældre tekster"
 
+msgid "On text creation, enforce user to choose the URI"
+msgstr ""
+
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
@@ -2197,6 +2200,12 @@ msgstr ""
 msgid "Removed Upstream"
 msgstr ""
 
+msgid "Rename"
+msgstr ""
+
+msgid "Rename text URI"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Omdøb til"
 
@@ -2587,6 +2596,9 @@ msgid "Test"
 msgstr "Test"
 
 msgid "Tested applications, in this order of preference"
+msgstr ""
+
+msgid "Text body only (no title, no final pages)"
 msgstr ""
 
 msgid "Text formatted with markup"

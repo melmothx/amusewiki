@@ -866,9 +866,6 @@ msgstr ""
 "Mbush me faqe të zbrazëta para faqes së fundit nëse nënshkrimi nuk është "
 "plot. "
 
-msgid "Filter"
-msgstr ""
-
 msgid "Filters"
 msgstr "Filterët"
 
@@ -973,6 +970,9 @@ msgstr "Konfigurimi i përgjithshëm"
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Gjenerike (i përshtatet formatit A4 dhe A4 horizonatle - Letter)"
+
+msgid "Get generated URI"
+msgstr ""
 
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
@@ -1727,6 +1727,9 @@ msgstr ""
 msgid "Older texts"
 msgstr "Tekstet më të vjetra"
 
+msgid "On text creation, enforce user to choose the URI"
+msgstr ""
+
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
@@ -2202,6 +2205,12 @@ msgstr ""
 msgid "Removed Upstream"
 msgstr ""
 
+msgid "Rename"
+msgstr ""
+
+msgid "Rename text URI"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Ndërro emërtimin"
 
@@ -2596,6 +2605,9 @@ msgstr "Test "
 
 msgid "Tested applications, in this order of preference"
 msgstr "Aplikacionet e testuara"
+
+msgid "Text body only (no title, no final pages)"
+msgstr ""
 
 msgid "Text formatted with markup"
 msgstr "Teksti i formatuar me përmirësime"

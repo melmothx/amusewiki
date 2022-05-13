@@ -844,9 +844,6 @@ msgstr ""
 "Ubaci prazne stranice prije zadnje stranice ako nedostaju stranice da\n"
 "bi se popunio svezak."
 
-msgid "Filter"
-msgstr ""
-
 msgid "Filters"
 msgstr "Filteri"
 
@@ -953,6 +950,9 @@ msgstr "Opća konfiguracija"
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Generičan format (može stati i na A4 i na Letter)"
+
+msgid "Get generated URI"
+msgstr ""
 
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
@@ -1727,6 +1727,9 @@ msgstr "Najstariji prvi"
 msgid "Older texts"
 msgstr "Stariji tekstovi"
 
+msgid "On text creation, enforce user to choose the URI"
+msgstr ""
+
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
@@ -2205,6 +2208,12 @@ msgstr "Ukloni ovu kategoriju"
 msgid "Removed Upstream"
 msgstr ""
 
+msgid "Rename"
+msgstr ""
+
+msgid "Rename text URI"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Preimenovanje"
 
@@ -2596,6 +2605,9 @@ msgstr "Test"
 
 msgid "Tested applications, in this order of preference"
 msgstr "Testirane aplikacije"
+
+msgid "Text body only (no title, no final pages)"
+msgstr ""
 
 msgid "Text formatted with markup"
 msgstr "Tekst u wiki formatu"

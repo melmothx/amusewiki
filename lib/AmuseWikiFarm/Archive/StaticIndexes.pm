@@ -127,6 +127,7 @@ sub generate {
                                  }
                         },
                         {
+                         # loc('Estimated pages')
                          title => $lh->loc_html('Estimated pages'),
                          data => "pages_estimated",
                         }
