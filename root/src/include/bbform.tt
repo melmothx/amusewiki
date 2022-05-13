@@ -479,6 +479,14 @@
           [% loc('Do not create a cover page and start the text on the first page') %]
         </label>
       </div>
+      <!-- compiler 1.86 -->
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="body_only" value="1" id="body_only"
+                 [% IF bb.body_only %]checked="checked"[% END %]/>
+          [% loc('Text body only (no title, no final pages)') %]
+        </label>
+      </div>
 
       <!-- compiler 0.97 -->
       <div class="checkbox">

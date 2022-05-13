@@ -632,6 +632,10 @@ has parindent => (is => 'rw',
                   isa => Int,
                   default => sub { 15 });
 
+has body_only => (is => 'rw',
+                  isa => Bool,
+                  default => sub { 0 });
+
 sub linespacing_as_string {
     my $self = shift;
     if ($self->linespacing > 0) {
@@ -687,6 +691,8 @@ has papersize => (
 =head2 linespacing
 
 =head2 parindent
+
+=head2 body_only
 
 =cut
 
@@ -1297,6 +1303,7 @@ sub profile_methods {
               ignore_cover
               linespacing
               parindent
+              body_only
               cover/;
 }
 
@@ -1371,6 +1378,7 @@ sub as_job {
                                                               : ''),
                                     linespacing => $self->linespacing_as_string,
                                     parindent => $self->parindent,
+                                    body_only => $self->body_only,
                                     ($self->is_single_file ? ()
                                      : (
                                         # when we provide these, they take precedence over the file defined

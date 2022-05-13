@@ -397,6 +397,12 @@ __PACKAGE__->table("custom_formats");
   default_value: 15
   is_nullable: 0
 
+=head2 bb_body_only
+
+  data_type: 'smallint'
+  default_value: 0
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -561,6 +567,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "bb_parindent",
   { data_type => "integer", default_value => 15, is_nullable => 0 },
+  "bb_body_only",
+  { data_type => "smallint", default_value => 0, is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -623,8 +631,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2022-02-26 07:35:49
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NJcg3EtDHvIXdNgHJwH2wg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2022-05-13 07:31:25
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:T/6UDJe64ztMbp4b1KQR9g
 
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;

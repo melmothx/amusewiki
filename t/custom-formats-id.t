@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 19;
+use Test::More tests => 21;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -77,6 +77,7 @@ run_all_jobs($schema);
     $mech->content_contains('areaset[current]{40mm}{40mm}');
     $mech->content_lacks('baselinestretch');
     $mech->content_contains("{\\parindent}{15pt}");
+    $mech->content_contains('% end closing pages');
 }
 
 sleep 1;
@@ -86,6 +87,7 @@ $cf->update({
              bb_geometry_outer_margin => '10',
              bb_linespacing => 5,
              bb_parindent => 40,
+             bb_body_only => 1,
             });
 $muse->append_utf8("\n");
 
@@ -96,6 +98,7 @@ $mech->content_lacks('areaset[current]');
 $mech->content_contains('{geometry}');
 $mech->content_contains("{\\baselinestretch}{1.5}");
 $mech->content_contains("{\\parindent}{40pt}");
+$mech->content_lacks('% end closing pages');
 # diag $mech->content;
 
 $target_dir->child($cf_code . '-latex.tt')->spew_utf8("% this is my template\n",

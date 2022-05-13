@@ -172,7 +172,8 @@ CREATE TABLE custom_formats (
        bb_tex_tolerance INTEGER NOT NULL DEFAULT 200,
        bb_ignore_cover SMALLINT DEFAULT 0,
        bb_linespacing INTEGER NOT NULL DEFAULT 0,
-       bb_parindent INTEGER NOT NULL DEFAULT 15
+       bb_parindent INTEGER NOT NULL DEFAULT 15,
+       bb_body_only SMALLINT DEFAULT 0
 );
 
 CREATE UNIQUE INDEX unique_custom_formats_site_code ON custom_formats (site_id,format_code);
