@@ -858,9 +858,6 @@ msgstr ""
 "за да\n"
 " се пополни табакот."
 
-msgid "Filter"
-msgstr "Филтер"
-
 msgid "Filters"
 msgstr "Филтри"
 
@@ -969,6 +966,9 @@ msgstr "Општа конфигурација"
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Генеричен формат (го собира и на А4 и на Letter)"
+
+msgid "Get generated URI"
+msgstr ""
 
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
@@ -1755,6 +1755,9 @@ msgstr "Најстарите први"
 msgid "Older texts"
 msgstr "Постари текстови"
 
+msgid "On text creation, enforce user to choose the URI"
+msgstr ""
+
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
@@ -2250,6 +2253,12 @@ msgstr "Отстрани ја оваа категорија"
 msgid "Removed Upstream"
 msgstr ""
 
+msgid "Rename"
+msgstr ""
+
+msgid "Rename text URI"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Преименување"
 
@@ -2641,6 +2650,9 @@ msgstr "Тест"
 
 msgid "Tested applications, in this order of preference"
 msgstr "Тестирани апликации"
+
+msgid "Text body only (no title, no final pages)"
+msgstr ""
 
 msgid "Text formatted with markup"
 msgstr "Текст во wiki формат"
@@ -3588,6 +3600,9 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Filter"
+#~ msgstr "Филтер"
 
 #~ msgid "IRC channel on freenode"
 #~ msgstr "IRC канал на мрежата Freenode"

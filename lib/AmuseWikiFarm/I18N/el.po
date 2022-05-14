@@ -889,9 +889,6 @@ msgstr ""
 "Συμπλήρωση με κενές σελίδες πριν από την τελευταία σελίδα αν η υπογραφή δεν "
 "είναι πλήρης."
 
-msgid "Filter"
-msgstr "Φίλτρο"
-
 msgid "Filters"
 msgstr "Φίλτρα"
 
@@ -1003,6 +1000,9 @@ msgstr "Γενική ρύθμιση παραμέτρων"
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Γενικό (ταιριάζει με A4 και Letter)"
+
+msgid "Get generated URI"
+msgstr ""
 
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
@@ -1838,6 +1838,9 @@ msgstr "Παλαιότερα πρώτα"
 msgid "Older texts"
 msgstr "Παλαιότερα κείμενα"
 
+msgid "On text creation, enforce user to choose the URI"
+msgstr ""
+
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
@@ -2354,6 +2357,12 @@ msgstr "Αφαίρεση αυτής της κατηγορίας"
 msgid "Removed Upstream"
 msgstr ""
 
+msgid "Rename"
+msgstr ""
+
+msgid "Rename text URI"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Μετονομασία σε"
 
@@ -2751,6 +2760,9 @@ msgstr "Δοκιμή"
 
 msgid "Tested applications, in this order of preference"
 msgstr "Δοκιμασμένες εφαρμογές, με αυτή τη σειρά προτίμησης"
+
+msgid "Text body only (no title, no final pages)"
+msgstr ""
 
 msgid "Text formatted with markup"
 msgstr "Κείμενο διαμορφωμένο με markup"
@@ -3760,6 +3772,9 @@ msgstr ""
 "    κατά τη διάρκεια της επεξεργασίας, αλλά είναι ακόμα εκεί, σε περίπτωση "
 "που κάποιο άτομο θέλει να\n"
 "    την ανακτήσει κατά την επεξεργασία ενός κειμένου."
+
+#~ msgid "Filter"
+#~ msgstr "Φίλτρο"
 
 #~ msgid "IRC channel on freenode"
 #~ msgstr "Κανάλι IRC στο freenode"

@@ -871,9 +871,6 @@ msgid ""
 msgstr ""
 "Plenigu per malplenaj paĝoj antaŭ la lasta paĝo, se la subskribo ne plenas."
 
-msgid "Filter"
-msgstr "Filtrilo"
-
 msgid "Filters"
 msgstr "Filtriloj"
 
@@ -983,6 +980,9 @@ msgstr "Ĝenerala agordo"
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Ĝenerala (kongruas kun A4 kaj Letero)"
+
+msgid "Get generated URI"
+msgstr ""
 
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
@@ -1789,6 +1789,9 @@ msgstr "Pli malnova unue"
 msgid "Older texts"
 msgstr "Pli malnovaj tekstoj"
 
+msgid "On text creation, enforce user to choose the URI"
+msgstr ""
+
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr "Unu paĝo por folio. Ĉi tio utilas nur se vi volas aldoni la markilojn"
@@ -2277,6 +2280,12 @@ msgstr "Forigu ĉi tiun kategorion"
 msgid "Removed Upstream"
 msgstr ""
 
+msgid "Rename"
+msgstr ""
+
+msgid "Rename text URI"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Renomi al"
 
@@ -2668,6 +2677,9 @@ msgstr "Testo"
 
 msgid "Tested applications, in this order of preference"
 msgstr "Provitaj kandidatiĝoj laŭ ĉi tiu ordo de prefero"
+
+msgid "Text body only (no title, no final pages)"
+msgstr ""
 
 msgid "Text formatted with markup"
 msgstr "Teksto formatita per markado"
@@ -3631,6 +3643,9 @@ msgstr ""
 "\"Senfina redaktado\" signifas, ke la revizio estis forlasita\n"
 "     dum redaktado, sed ĝi ankoraŭ estas tie, por se iu volas elekti\n"
 "     ĝin supren redaktante tekston."
+
+#~ msgid "Filter"
+#~ msgstr "Filtrilo"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "texts sorted by topic"

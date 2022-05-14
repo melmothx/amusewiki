@@ -845,9 +845,6 @@ msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 
-msgid "Filter"
-msgstr "Filtr"
-
 msgid "Filters"
 msgstr "Filtry"
 
@@ -952,6 +949,9 @@ msgstr ""
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Ogólny (mieści się w formatach A4 i listowym)"
+
+msgid "Get generated URI"
+msgstr ""
 
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
@@ -1695,6 +1695,9 @@ msgstr "Najpierw starsze"
 msgid "Older texts"
 msgstr "Starsze teksty"
 
+msgid "On text creation, enforce user to choose the URI"
+msgstr ""
+
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
@@ -2150,6 +2153,12 @@ msgstr "Usuń tę kategorię"
 msgid "Removed Upstream"
 msgstr ""
 
+msgid "Rename"
+msgstr ""
+
+msgid "Rename text URI"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Zmień nazwę na"
 
@@ -2541,6 +2550,9 @@ msgstr "Test"
 
 msgid "Tested applications, in this order of preference"
 msgstr "Sprawdzone aplikacje, w kolejności preferencji"
+
+msgid "Text body only (no title, no final pages)"
+msgstr ""
 
 msgid "Text formatted with markup"
 msgstr "Tekst sformatowany z adiustacją"
@@ -3463,6 +3475,9 @@ msgstr ""
 "“Niedokończone edytowanie” oznacza, że korekta została porzucona\n"
 "    w trakcie edytowania, ale nadal istnieje, w razie gdyby ktoś chciał\n"
 "    kontynuować ją przy edycji tekstu."
+
+#~ msgid "Filter"
+#~ msgstr "Filtr"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "teksty posortowane według tematów"

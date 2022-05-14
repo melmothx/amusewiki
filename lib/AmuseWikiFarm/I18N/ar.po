@@ -802,9 +802,6 @@ msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 
-msgid "Filter"
-msgstr ""
-
 msgid "Filters"
 msgstr ""
 
@@ -906,6 +903,9 @@ msgid "General configuration"
 msgstr ""
 
 msgid "Generic (fits in A4 and Letter)"
+msgstr ""
+
+msgid "Get generated URI"
 msgstr ""
 
 msgid ""
@@ -1606,6 +1606,9 @@ msgstr ""
 msgid "Older texts"
 msgstr ""
 
+msgid "On text creation, enforce user to choose the URI"
+msgstr ""
+
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
@@ -2032,6 +2035,12 @@ msgstr ""
 msgid "Removed Upstream"
 msgstr ""
 
+msgid "Rename"
+msgstr ""
+
+msgid "Rename text URI"
+msgstr ""
+
 msgid "Rename to"
 msgstr ""
 
@@ -2420,6 +2429,9 @@ msgid "Test"
 msgstr ""
 
 msgid "Tested applications, in this order of preference"
+msgstr ""
+
+msgid "Text body only (no title, no final pages)"
 msgstr ""
 
 msgid "Text formatted with markup"

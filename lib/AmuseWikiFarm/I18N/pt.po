@@ -858,9 +858,6 @@ msgstr ""
 "Complete com páginas em bracno antes da última página se a assinatura não "
 "estiver completa."
 
-msgid "Filter"
-msgstr ""
-
 msgid "Filters"
 msgstr "Filtros"
 
@@ -964,6 +961,9 @@ msgid "General configuration"
 msgstr "Configurações gerais"
 
 msgid "Generic (fits in A4 and Letter)"
+msgstr ""
+
+msgid "Get generated URI"
 msgstr ""
 
 msgid ""
@@ -1745,6 +1745,9 @@ msgstr "Mais antigo primeiro"
 msgid "Older texts"
 msgstr "Textos mais antigos"
 
+msgid "On text creation, enforce user to choose the URI"
+msgstr ""
+
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
@@ -2234,6 +2237,12 @@ msgstr ""
 msgid "Removed Upstream"
 msgstr ""
 
+msgid "Rename"
+msgstr ""
+
+msgid "Rename text URI"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Renomear para"
 
@@ -2628,6 +2637,9 @@ msgstr "Teste"
 
 msgid "Tested applications, in this order of preference"
 msgstr "Aplicações testadas, na ordem de preferência"
+
+msgid "Text body only (no title, no final pages)"
+msgstr ""
 
 msgid "Text formatted with markup"
 msgstr "Texto formato com markup"
