@@ -1,0 +1,62 @@
+#!/usr/bin/env perl
+
+BEGIN { die "Do not run this as root" unless $>; }
+
+use strict;
+use warnings;
+use lib 'lib';
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+amusewiki-generate-static-indexes - generate the static indexes
+
+=head1 SYNOPSIS
+
+ amusewiki-generate-static-indexes [ <site-id>, <site-id-2>, ... ]
+
+=cut
+
+
+use Getopt::Long;
+use Pod::Usage;
+use AmuseWikiFarm::Schema;
+
+my ($help);
+GetOptions (
+            help => \$help,
+           ) or die;
+
+if ($help || !@ARGV) {
+    pod2usage;
+    exit 2;
+}
+
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
+
+my $logger = sub { print @_ };
+
+foreach my $code (@ARGV) {
+    my $site = $schema->resultset('Site')->find($code);
+    if ($site) {
+        my $time = time();
+        print "Processing $code\n";
+        $site->static_indexes_generator->generate;
+        $logger->("Generated main in " . (time() - $time) . " seconds\n");
+
+        $time = time();
+        $site->store_file_list_for_mirroring;
+        $logger->("Stored file list in " . (time() - $time) . " seconds\n");
+
+        $time = time();
+        $site->store_rss_feed;
+        $logger->("Stored RSS feed in " . (time() - $time) . " seconds\n");
+
+    }
+    else {
+        warn "$code not found in sites\n";
+    }
+}
