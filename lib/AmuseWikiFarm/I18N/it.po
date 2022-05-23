@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2020-01-08 09:47+0100\n"
+"PO-Revision-Date: 2022-05-23 08:42+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -37,13 +37,13 @@ msgid "%1 pp."
 msgstr "%1 pp."
 
 msgid "(narrowest)"
-msgstr ""
+msgstr "(più stretti)"
 
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "virgolette tipografiche, collegamenti, note a piè di pagina, ecc."
 
 msgid "(widest)"
-msgstr ""
+msgstr "(più larghi)"
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "Una o più linee vuote marcano l'inizio di un nuovo paragrafo"
@@ -112,7 +112,7 @@ msgid "Active"
 msgstr "Attivo"
 
 msgid "Add"
-msgstr ""
+msgstr "Aggiungi"
 
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Aggiungi un'immagine di copertina (PNG o JPG)"
@@ -157,7 +157,7 @@ msgid "Add this text to the bookbuilder"
 msgstr "Aggiungi questo testo all'impaginatore"
 
 msgid "Added"
-msgstr ""
+msgstr "Aggiunto"
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -166,7 +166,7 @@ msgstr ""
 "Informazioni aggiuntive (data completa, titolo originale, traduttori, ecc.)"
 
 msgid "Additional nginx configuration"
-msgstr ""
+msgstr "Configurazione addizionale di nginx"
 
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
@@ -207,7 +207,7 @@ msgstr "Tutte le utenze"
 msgid ""
 "Allow Unicode URIs for categories (author, topics). Recommended for non-"
 "latin scripts."
-msgstr ""
+msgstr "Consenti URI in Unicode per le categorie (autore, argomenti). Raccomandato per scritture non latine."
 
 msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
@@ -293,7 +293,7 @@ msgid "Authors for indexing"
 msgstr "Autori indicizzati"
 
 msgid "Auto"
-msgstr ""
+msgstr "Automatico"
 
 msgid "Automatically generated"
 msgstr "Generato automaticamente"
@@ -396,7 +396,7 @@ msgid "By title Z-A"
 msgstr "Per titolo, dalla Z alla A"
 
 msgid "CSS Alternate Theme (Dark mode, optional)"
-msgstr ""
+msgstr "Tema CSS alternativo (modalità notturna, opzionale)"
 
 msgid "CSS Theme"
 msgstr "Tema CSS"
@@ -458,10 +458,10 @@ msgid "Cheatsheet for the markup"
 msgstr "Markup in sintesi"
 
 msgid "Check"
-msgstr ""
+msgstr "Controlla"
 
 msgid "Check mail sending and send mail to:"
-msgstr ""
+msgstr "Controlla l'invio di email spedendone una a:"
 
 msgid "Choose a paper format"
 msgstr "Scegli un formato della carta"
@@ -492,7 +492,7 @@ msgid "Comma or semicolon separated list"
 msgstr "Lista separata da virgola o punto e virgola"
 
 msgid "Commit ID"
-msgstr ""
+msgstr "ID della revisione"
 
 msgid "Completed"
 msgstr "Completato"
@@ -504,7 +504,7 @@ msgid "Confirm"
 msgstr "Conferma"
 
 msgid "Conflict"
-msgstr ""
+msgstr "Conflitto"
 
 msgid "Continuous footnote numbering across the whole document."
 msgstr ""
@@ -546,7 +546,7 @@ msgstr "Crea una nuova utenza"
 msgid ""
 "Create a public repository on GitLab, GitHub or similar services (or on your "
 "own server). "
-msgstr ""
+msgstr "Crea un archivio pubblico su GitLab, GitHub o servizi simili (o sul tuo server)."
 
 msgid "Create a topic alias"
 msgstr "Crea un alias per un tema"
@@ -587,13 +587,13 @@ msgid "Date of the original publication"
 msgstr "Data della pubblicazione originale"
 
 msgid "Default"
-msgstr ""
+msgstr "Default"
 
 msgid "Default sorting for the category text list"
 msgstr "Ordinamento di default per la lista dei testi delle categorie"
 
 msgid "Default value if blank:"
-msgstr ""
+msgstr "Valore di default se lasciato in bianco:"
 
 msgid "Deferred/Deleted texts"
 msgstr "Testi non ancora pubblicati o rimossi"
@@ -636,13 +636,13 @@ msgid "Destination"
 msgstr "Destinazione"
 
 msgid "Details"
-msgstr ""
+msgstr "Dettagli"
 
 msgid "Did you mean:"
 msgstr "Volevi dire forse:"
 
 msgid "Diff"
-msgstr ""
+msgstr "Differenze"
 
 msgid "Differences"
 msgstr "Differenze"
@@ -660,7 +660,7 @@ msgid "Disable /mirror/ URL for anonymous users"
 msgstr "Disabilita l'accesso all'URL /mirror/ agli utenti anonimi"
 
 msgid "Display the latest entries on special pages"
-msgstr ""
+msgstr "Mostra gli ultimi testi nelle pagine speciali"
 
 msgid "Display url as"
 msgstr "Mostra l'URL come"
@@ -675,13 +675,13 @@ msgid "Do not enforce save message"
 msgstr "Rendi il messaggio del salvataggio facoltativo"
 
 msgid "Do not redirect aliases to canonical"
-msgstr ""
+msgstr "Non reindirizzare gli alias al dominio canonico"
 
 msgid "Do not use bold fonts"
 msgstr "Non usare caratteri in grassetto"
 
 msgid "Domain"
-msgstr ""
+msgstr "Dominio"
 
 msgid "Done"
 msgstr "Fatto"
@@ -783,7 +783,7 @@ msgstr "Errore nella conversione dell'HTML. Siamo spiacenti."
 
 #. ($res->{error} || "Unknwon error")
 msgid "Error: %1"
-msgstr ""
+msgstr "Errore: %1"
 
 msgid "Errors"
 msgstr "Errori"
@@ -818,13 +818,13 @@ msgid "Example"
 msgstr "Esempio"
 
 msgid "Exception"
-msgstr ""
+msgstr "Eccezione"
 
 msgid "Existing redirections"
 msgstr "Redirezioni esistenti"
 
 msgid "Expected pages"
-msgstr ""
+msgstr "Pagine stimate"
 
 msgid "Failed"
 msgstr "Fallito"
@@ -838,13 +838,13 @@ msgid "Failed to remove Remote repository %1"
 msgstr "Errore nel rimuovere il repo remoto %1"
 
 msgid "Failure fetching the source"
-msgstr ""
+msgstr "Scaricamento della fonte fallito"
 
 msgid "Federation"
-msgstr ""
+msgstr "Federazione"
 
 msgid "Fetch"
-msgstr ""
+msgstr "Recupera"
 
 msgid "File already in the body"
 msgstr "File già presente nel corpo del testo"
@@ -971,7 +971,7 @@ msgid "Full text search"
 msgstr "Ricerca a tutto testo"
 
 msgid "Full width, fluid layout"
-msgstr ""
+msgstr "Larghezza piena, layout fluido"
 
 msgid "General configuration"
 msgstr "Configurazione generale"
@@ -980,15 +980,15 @@ msgid "Generic (fits in A4 and Letter)"
 msgstr "Formato generico (adatto per A4 e Letter)"
 
 msgid "Get generated URI"
-msgstr ""
+msgstr "Usa l'URI generato dal server"
 
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
 "using the form you can find above. You can have one personal repository."
-msgstr ""
+msgstr "Annota l'URL HTTPS dell'archivio Git, ad esempio https://example.com/git/test e aggiungilo usando il formulario qui sopra. Puoi avere un solo archivio personale."
 
 msgid "Git"
-msgstr ""
+msgstr "Git"
 
 msgid "Git console"
 msgstr "Console git"
@@ -1065,7 +1065,7 @@ msgid "Higher division factor means narrower margins"
 msgstr "Un fattore di divisione più alto implica margini più stretti"
 
 msgid "How are you going to access Git?"
-msgstr ""
+msgstr "Come intendi accedere a Git"
 
 msgid "How do I create a landing page?"
 msgstr "Come posso creare la pagina di default?"
@@ -1101,19 +1101,19 @@ msgid "I am human"
 msgstr "Sono umano"
 
 msgid "I have a system user with SSH access"
-msgstr ""
+msgstr "Ho un utente di sistema con accesso SSH"
 
 msgid "I want an imposed (ready to print) PDF"
 msgstr "Voglio un PDF pronto per la stampa"
 
 msgid "I will provide my remote repository"
-msgstr ""
+msgstr "Fornirò il mio archivio Git remoto"
 
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgid "ISBN"
-msgstr ""
+msgstr "ISBN"
 
 msgid "Id"
 msgstr "Id"
@@ -1137,7 +1137,7 @@ msgstr ""
 msgid ""
 "If it's not the case, please open a bug report at https://github.com/"
 "melmothx/amusewiki/issues"
-msgstr ""
+msgstr "Se così non fosse, per cortesia riferisci il problema qui: https://github.com/melmothx/amusewiki/issues"
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
@@ -1346,31 +1346,31 @@ msgid "Internal list of translations"
 msgstr "Lista interna delle traduzioni"
 
 msgid "Invalid ID"
-msgstr ""
+msgstr "ID non valido"
 
 msgid "Invalid URI"
-msgstr ""
+msgstr "URI non valido"
 
 msgid "Invalid domain"
-msgstr ""
+msgstr "Dominio non valido"
 
 msgid "Invalid email"
 msgstr "E-mail non valida"
 
 msgid "Invalid field"
-msgstr ""
+msgstr "Campo non valido"
 
 msgid "Invalid name"
 msgstr "Nome non valido"
 
 msgid "Invalid parameter"
-msgstr ""
+msgstr "Parametro invalido"
 
 msgid "Invalid response"
-msgstr ""
+msgstr "Risposta non valida"
 
 msgid "Invalid target"
-msgstr ""
+msgstr "Destinazione non valida"
 
 msgid "Invalid username"
 msgstr "Nome utente non valido"
@@ -1500,7 +1500,7 @@ msgid "Letter paper"
 msgstr "Carta Letter"
 
 msgid "Line spacing"
-msgstr ""
+msgstr "Interlinea"
 
 msgid "Link"
 msgstr "Collegamento"
@@ -1531,10 +1531,10 @@ msgid "Loading"
 msgstr "Caricamento"
 
 msgid "Local"
-msgstr ""
+msgstr "Locale"
 
 msgid "Local pages"
-msgstr ""
+msgstr "Pagine locali"
 
 msgid "Locked editing, no upload possible"
 msgstr "Modifiche bloccate, caricamento non permesso"
@@ -1590,7 +1590,7 @@ msgid "Manage categories"
 msgstr "Gestione delle categorie"
 
 msgid "Margins: please choose a division factor or set width and height"
-msgstr ""
+msgstr "Margini: per cortesia scegli un fattore di divisione o imposta altezza e larghezza"
 
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr ""
@@ -1607,10 +1607,10 @@ msgid "Minimum %1 characters"
 msgstr "Minimo %1 caratteri"
 
 msgid "Mirror"
-msgstr ""
+msgstr "Mirror"
 
 msgid "Mirror of:"
-msgstr ""
+msgstr "Mirror di:"
 
 msgid "Missing #title header in the text!"
 msgstr "Manca l'intestazione #title nel testo!"
@@ -1761,10 +1761,10 @@ msgstr "Notifica a"
 msgid ""
 "Now it has been aligned to the site's archive, but this means that there are "
 "some missing commits."
-msgstr ""
+msgstr "Ora è stato allineato all'archivio del sito, ma ciò significa che ci sono dei cambiamenti mancanti."
 
 msgid "Now we are going to populate it and get it ready"
-msgstr ""
+msgstr "Ora stiamo per popolarlo e prepararlo"
 
 msgid "Number of jobs"
 msgstr "Numero di lavori"
@@ -1785,7 +1785,7 @@ msgid "Older texts"
 msgstr "Testi più vecchi"
 
 msgid "On text creation, enforce user to choose the URI"
-msgstr ""
+msgstr "Durante la creazione del testo, obbliga l'utente a scegliere un URI"
 
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
@@ -1828,7 +1828,7 @@ msgid "Ordered List"
 msgstr "Lista numerata"
 
 msgid "Outer margin"
-msgstr ""
+msgstr "Margine esterno"
 
 msgid "PDF"
 msgstr "PDF"
@@ -1883,7 +1883,7 @@ msgstr ""
 "m2)"
 
 msgid "Paragraph indentation in points (pt)"
-msgstr ""
+msgstr "Rientro paragrafo in punti (pt)"
 
 msgid "Paragraphs"
 msgstr "Paragrafi"
@@ -1922,7 +1922,7 @@ msgid "Passwords do not match"
 msgstr "Le password non coincidono"
 
 msgid "Path"
-msgstr ""
+msgstr "Percorso"
 
 msgid "Payload"
 msgstr "Contenuto"
@@ -1955,7 +1955,7 @@ msgstr ""
 "hai specificato con un link per reimpostare la password"
 
 msgid "Please choose a text"
-msgstr ""
+msgstr "Per cortesia scegli un testo"
 
 msgid "Please choose the Beamer color theme"
 msgstr "Scegli il tema del colore per le diapositive"
@@ -1989,7 +1989,7 @@ msgstr ""
 
 #. (amw_group_name)
 msgid "Please ensure that your system user is member of the \"%1\" group"
-msgstr ""
+msgstr "Per cortesia assicurati che il tuo utente di sistema sia membro del gruppo \"%1\""
 
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
@@ -2003,7 +2003,7 @@ msgstr ""
 msgid ""
 "Please initialized it empty, without any README,license, .gitignore or "
 "similar."
-msgstr ""
+msgstr "Crealo vuoto, senza alcun README, licenza, .gitignore o file simili."
 
 msgid ""
 "Please keep in mind that filters are language-specific\n"
@@ -2068,7 +2068,7 @@ msgstr "Cancella prima il file dal corpo del testo"
 msgid ""
 "Please replace the example URL in the next line with the real one with SSH "
 "protocol"
-msgstr ""
+msgstr "Sostituisci l'URL di esempio nella seguente linea con quello reale, usando il protocollo SSH"
 
 msgid "Please select"
 msgstr "Seleziona"
@@ -2087,7 +2087,7 @@ msgstr ""
 "ritaglio, prima dell'imposizione"
 
 msgid "Please set"
-msgstr ""
+msgstr "Per cortesia imposta"
 
 msgid ""
 "Please set the URI you desire. Author (if present),\n"
@@ -2159,7 +2159,7 @@ msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Pubblicato in *Un bel libro*, edito da Casa Editrice, 2014"
 
 msgid "Publisher"
-msgstr ""
+msgstr "Editore"
 
 msgid "Purge"
 msgstr "Purga"
@@ -2200,7 +2200,7 @@ msgid "Random"
 msgstr "Pagina casuale"
 
 msgid "Read about the file naming scheme if you need to add files to the tree."
-msgstr ""
+msgstr "Leggi a proposito della convenzione dei nomi di file se devi aggiungerne di nuovi."
 
 msgid "Read the whole text..."
 msgstr "Leggi il testo completo..."
@@ -2274,13 +2274,13 @@ msgid "Remove this category"
 msgstr "Rimuovi questa categoria"
 
 msgid "Removed Upstream"
-msgstr ""
+msgstr "Rimosso a monte"
 
 msgid "Rename"
-msgstr ""
+msgstr "Rinomina"
 
 msgid "Rename text URI"
-msgstr ""
+msgstr "Rinomina l'URI del testo"
 
 msgid "Rename to"
 msgstr "Rinomina"
@@ -2345,7 +2345,7 @@ msgid "Root node"
 msgstr "Nodo radice"
 
 msgid "Run diff"
-msgstr ""
+msgstr "Trova le differenze"
 
 msgid "Running headings"
 msgstr "Testatine"
@@ -2366,7 +2366,7 @@ msgid "SSL key path"
 msgstr "Percorso della chiave SSL"
 
 msgid "Same as above, but for duplex printers"
-msgstr ""
+msgstr "Come sopra, ma per stampanti fronte-retro"
 
 msgid "Same as above, for the Archive menu"
 msgstr "Come sopra, ma per il menù Archivio"
@@ -2433,11 +2433,11 @@ msgid "Select individual parts for the bookbuilder"
 msgstr "Seleziona singole parti per l'impaginatore"
 
 msgid "Send mail"
-msgstr ""
+msgstr "Manda una mail"
 
 #. ($from, $to)
 msgid "Sending test mails from %1 to %2"
-msgstr ""
+msgstr "Invio di mail di esempio da %1 a %2"
 
 msgid "Separate body fields"
 msgstr "Separano i campi del corpo"
@@ -2449,7 +2449,7 @@ msgid "Separate header fields"
 msgstr "Separano i campi dell'intestazione"
 
 msgid "Series"
-msgstr ""
+msgstr "Serie"
 
 msgid "Session sharing"
 msgstr "Condivisione"
@@ -2461,7 +2461,7 @@ msgid "Settings loaded"
 msgstr "Impostazioni caricate"
 
 msgid "Setup"
-msgstr ""
+msgstr "Impostazione"
 
 msgid "Show _MENU_ entries"
 msgstr "Mostra _MENU_ record"
@@ -2518,7 +2518,7 @@ msgid "Site slogan"
 msgstr "Slogan del sito"
 
 msgid "Site users"
-msgstr ""
+msgstr "Utenti del sito"
 
 msgid "Sites"
 msgstr "Siti"
@@ -2530,7 +2530,7 @@ msgid "Slides (PDF)"
 msgstr "Diapositive (PDF)"
 
 msgid "Small Caps"
-msgstr ""
+msgstr "Maiuscoletto"
 
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr "Così siamo sicuri di non inviare le password a gente casuale"
@@ -2562,7 +2562,7 @@ msgid "Source files with attachments"
 msgstr "File sorgenti con allegati"
 
 msgid "Source removed"
-msgstr ""
+msgstr "Fonte rimossa"
 
 msgid "Source, notes..."
 msgstr "Fonti, note"
@@ -2615,7 +2615,7 @@ msgid "Subtitle"
 msgstr "Sottotitolo"
 
 msgid "Such URI already exists"
-msgstr ""
+msgstr "Questo URI esiste già"
 
 msgid "Such an URI already exists"
 msgstr "URI già esistente"
@@ -2643,7 +2643,7 @@ msgid "Supported directive in the header"
 msgstr "Direttive nell'intestazione supportate"
 
 msgid "Switch theme"
-msgstr ""
+msgstr "Cambia tema"
 
 msgid "Table of Contents"
 msgstr "Sommario"
@@ -2679,13 +2679,13 @@ msgid "Tested applications, in this order of preference"
 msgstr "Applicazioni funzionanti, in questo ordine di preferenza"
 
 msgid "Text body only (no title, no final pages)"
-msgstr ""
+msgstr "Solo corpo del testo (senza titolo e pagine finali)"
 
 msgid "Text formatted with markup"
 msgstr "Testo formattato con il markup"
 
 msgid "Text height"
-msgstr ""
+msgstr "Altezza del testo"
 
 msgid ""
 "Text redirections are set in the text itself, using the\n"
@@ -2695,7 +2695,7 @@ msgstr ""
 "#DELETED con la seguente sintassi"
 
 msgid "Text width"
-msgstr ""
+msgstr "Larghezza del testo"
 
 msgid "Texts"
 msgstr "Testi"
@@ -2722,7 +2722,7 @@ msgstr ""
 "può essere trovato."
 
 msgid "The changes will propagate automatically once you push."
-msgstr ""
+msgstr "I cambiamenti saranno propagati automaticamente dopo \"git push\"."
 
 #. ($uri)
 msgid "The description for %1 has been updated"
@@ -2858,7 +2858,7 @@ msgid ""
 "This is relevant only for the generated files, where you may need to have an "
 "alternate set of fonts. It has no effect in the web application if already "
 "using a sans font."
-msgstr ""
+msgstr "un altro"
 
 msgid "This is the caption"
 msgstr "Questa è la didascalia"
@@ -2925,7 +2925,7 @@ msgid "This text will be deferred to %1"
 msgstr "Questo testo verrà pubblicato solo in data %1"
 
 msgid "This user cannot be removed"
-msgstr ""
+msgstr "Questo utente non può essere rimosso"
 
 msgid "Thumbnail"
 msgstr "Miniatura"
@@ -2986,13 +2986,13 @@ msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Per vedere le modifiche introdotte, puoi visitare il seguente URL"
 
 msgid "Toggle"
-msgstr ""
+msgstr "Attiva/Disattiva"
 
 msgid "Toggle fullscreen editor"
 msgstr "Attiva/disattiva editor a tutto schermo"
 
 msgid "Top margin"
-msgstr ""
+msgstr "Margine superiore"
 
 msgid "Topic"
 msgstr "Argomento"
@@ -3035,12 +3035,12 @@ msgid "URI"
 msgstr "URI"
 
 msgid "URI is available and valid"
-msgstr ""
+msgstr "URI disponibile e valido"
 
 msgid ""
 "URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
 "my-author-title-1"
-msgstr ""
+msgstr "L'URI deve essere una stringa ASCII, senza accenti o diacritici e senza spazi, per esempio \"il-mio-autore-titolo-1\""
 
 msgid "URL"
 msgstr "URL"
@@ -3049,7 +3049,7 @@ msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr "URL del Git remoto (HTTPS, HTTP or GIT)"
 
 msgid "URL pointing to an embeddable webchat"
-msgstr ""
+msgstr "URL che punta a una webchat"
 
 msgid "UTC"
 msgstr "UTC"
@@ -3059,7 +3059,7 @@ msgstr "Errore nel caricamento della sessione"
 
 #. ($from || "NO MAIL FROM", $to)
 msgid "Unable to send mail from %1 to %2!"
-msgstr ""
+msgstr "Impossibile mandare una mail da %1 a %2!"
 
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr "PDF anonimo, senza logo o indicazione del sito d'origine"
@@ -3074,7 +3074,7 @@ msgstr ""
 #. (shared)
 msgid ""
 "Unfortunately, the shared repository located at %1 appeared out of sync."
-msgstr ""
+msgstr "Sfortunatamente, l'archivio Git condiviso situato in %1 è stato trovato non sincronizzato."
 
 msgid "Unique ID for the text"
 msgstr "Identificativo del testo"
@@ -3139,7 +3139,7 @@ msgstr ""
 "Usala come immagine d'anteprima aggiungendo alle intestazioni questa linea:"
 
 msgid "Use named table of contents anchors instead of numeric ones"
-msgstr ""
+msgstr "in stato non"
 
 msgid "Use one of the site's formats"
 msgstr "Usa uno dei formati del sito"
@@ -3205,7 +3205,7 @@ msgstr ""
 msgid ""
 "Usually this is due to high traffic and bad luck, and it can be fixed by "
 "pushing the changes again."
-msgstr ""
+msgstr "Di solito ciò accade per alto traffico o semplice sfortuna, e può essere risolto ripetendo il \"git push\""
 
 msgid "Verbatim block"
 msgstr "Blocco letterale"
@@ -3226,6 +3226,8 @@ msgid ""
 "When creating a new text, do not populate the publication date if not "
 "provided by the user."
 msgstr ""
+"Quando si crea un nuovo testo, non inserire la data di pubblicazione\n"
+"se non fornita dall'utente."
 
 msgid ""
 "When you start a bookbuilder session, at the end of the\n"
@@ -3246,7 +3248,7 @@ msgid "Where does this text come from?"
 msgstr "Da dove proviene il testo?"
 
 msgid "Whitelisted IP (for backup, one per line)"
-msgstr ""
+msgstr "IP Autorizzati (per il backup, uno per linea)"
 
 msgid "Width of the cover image in percent of the text block width."
 msgstr ""
@@ -3335,7 +3337,7 @@ msgstr "Hai effettuato l'accesso!"
 msgid ""
 "You can access the backup located at %1 or ask your host for help, "
 "forwarding this email"
-msgstr ""
+msgstr "Puoi accedere al backup situato a %1 o chiedere aiuto al tuo amministratore inoltrando questa mail."
 
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
@@ -3485,7 +3487,7 @@ msgid "code and monospace"
 msgstr "formattazione codice"
 
 msgid "comma separated list"
-msgstr ""
+msgstr "lista separata da virgole"
 
 msgid "completed"
 msgstr "completato"
