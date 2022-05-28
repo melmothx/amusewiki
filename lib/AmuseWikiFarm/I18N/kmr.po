@@ -1,0 +1,3292 @@
+# AmuseWiki i18n
+# This file is distributed under the same license as the AmuseWiki package.
+# Marco Pessotto <melmothx@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AmuseWiki 0.01\n"
+"POT-Creation-Date: 2014-03-06 10:16+0100\n"
+"PO-Revision-Date: 2018-07-28 15:02+0200\n"
+"Last-Translator: Marco <melmothx@gmail.com>\n"
+"Language-Team: Kurmanji\n"
+"Language: kmr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. ($filename)
+msgid "%1 doesn't exist"
+msgstr ""
+
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr ""
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr ""
+
+#. ($c->stash->{site}->full_name)
+#. (site.full_name)
+msgid "%1 on mobile"
+msgstr ""
+
+#. (text.pages_estimated)
+msgid "%1 pp."
+msgstr ""
+
+msgid "(narrowest)"
+msgstr ""
+
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr ""
+
+msgid "(widest)"
+msgstr ""
+
+msgid "A blank line (or more blank lines) starts a new paragraph."
+msgstr ""
+
+msgid ""
+"A cover image was already added, but you can replace it uploading\n"
+"              a new one."
+msgstr ""
+
+msgid ""
+"A footnote is a line which starts with a number between square\n"
+"          brackets, with no leading whitespace."
+msgstr ""
+
+msgid "A line which starts with 2 or more whitespaces is a quotation."
+msgstr ""
+
+msgid "A line which starts with 20 or more whitespaces is right-aligned."
+msgstr ""
+
+msgid "A line which starts with 6 or more whitespaces is centered."
+msgstr ""
+
+msgid ""
+"A list of links and labels to insert into the top\n"
+"            bar. One per line, first the url, then the label,\n"
+"            separated by a space, e.g. \"http://test.me Test site\""
+msgstr ""
+
+#. (location)
+msgid "A new text has been created at %1"
+msgstr ""
+
+msgid "A nice title"
+msgstr ""
+
+msgid "A4 imposed PDF"
+msgstr ""
+
+msgid "A4 paper"
+msgstr ""
+
+msgid "A5 paper"
+msgstr ""
+
+msgid "A6 paper (also suitable for e-readers)"
+msgstr ""
+
+msgid "Abandoned editing in progress, feel free to check the diff and resume"
+msgstr ""
+
+msgid "Action"
+msgstr ""
+
+msgid "Activate the blog-style look and feel"
+msgstr ""
+
+msgid "Active"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Add a cover image (PNG or JPG)"
+msgstr ""
+
+msgid "Add a new text"
+msgstr ""
+
+msgid "Add an attachment"
+msgstr ""
+
+msgid "Add crop marks to the PDF"
+msgstr ""
+
+msgid "Add new remote repository"
+msgstr ""
+
+msgid "Add non-breaking spaces where appropriate for the language"
+msgstr ""
+
+msgid ""
+"Add paginator for text listing when the number of texts is greater than "
+"(integer)"
+msgstr ""
+
+msgid "Add sections to the bookbuilder"
+msgstr ""
+
+msgid "Add the OPDS URL"
+msgstr ""
+
+msgid "Add the selected parts to the bookbuilder"
+msgstr ""
+
+msgid "Add the whole text"
+msgstr ""
+
+msgid "Add this text to the bookbuilder"
+msgstr ""
+
+msgid "Added"
+msgstr ""
+
+msgid ""
+"Additional information (full date, original title, translators, credits, "
+"etc)."
+msgstr ""
+
+msgid "Additional nginx configuration"
+msgstr ""
+
+#. (c.uri_for_action('/console/unpublished')
+#. (c.uri_for_action("/console/unpublished").path)
+msgid ""
+"After the approval of the\n"
+"  change, it will appear under %1. There is a big red\n"
+"  button for each deleted text, and you can proceed with the purging."
+msgstr ""
+
+msgid "Age:"
+msgstr ""
+
+msgid "Alias"
+msgstr ""
+
+msgid "Alias can't point to itself"
+msgstr ""
+
+msgid ""
+"All kind of lists start with one or more leading\n"
+"        whitespace."
+msgstr ""
+
+msgid "All languages"
+msgstr ""
+
+msgid "All revisions"
+msgstr ""
+
+msgid "All sites"
+msgstr ""
+
+msgid "All users"
+msgstr ""
+
+msgid ""
+"Allow Unicode URIs for categories (author, topics). Recommended for non-"
+"latin scripts."
+msgstr ""
+
+msgid ""
+"Allow binary uploads to logged in users: list of whitespace separate file "
+"extensions"
+msgstr ""
+
+msgid ""
+"Also produce slides\n"
+"          from the document. Each section, no matter how deep, will\n"
+"          produce a slide. The text outside a section is ignored, so\n"
+"          if you do not have sections, you will get empty slides. If\n"
+"          you want to exclude a section, put a comment in the section\n"
+"          body with the string “noslide”."
+msgstr ""
+
+msgid ""
+"An URI is a string which uniquely identifies the text\n"
+"      in the archive. In theory, it could be anything, but if you want\n"
+"      to set it yourself, please stick with the convention: author\n"
+"      name, title, language, eventual number for disambiguation, e.g.\n"
+"      errico-malatesta-anarchy-2. Please note that this is normally\n"
+"      not needed"
+msgstr ""
+
+msgid "Apache is not currently supported"
+msgstr ""
+
+msgid "Archive"
+msgstr ""
+
+msgid "Archive by month"
+msgstr ""
+
+msgid "Archive history"
+msgstr ""
+
+msgid "Are you sure?"
+msgstr ""
+
+msgid "As cover in the header"
+msgstr ""
+
+msgid "As regular image in the body"
+msgstr ""
+
+msgid "Assign text to nodes"
+msgstr ""
+
+msgid "Attach"
+msgstr ""
+
+msgid "Attached images"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+msgid "Author"
+msgstr ""
+
+msgid "Author and title. If one side document: title."
+msgstr ""
+
+msgid "Authors"
+msgstr ""
+
+msgid "Authors and topics listing"
+msgstr ""
+
+msgid "Authors for indexing"
+msgstr ""
+
+msgid "Auto"
+msgstr ""
+
+msgid "Automatically generated"
+msgstr ""
+
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr ""
+
+msgid "Available"
+msgstr ""
+
+msgid "Available category tags for header"
+msgstr ""
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
+
+msgid "Back to the text"
+msgstr ""
+
+msgid "Bad request"
+msgstr ""
+
+msgid "Beamer color theme"
+msgstr ""
+
+msgid "Beamer theme"
+msgstr ""
+
+msgid "Beside topics and authors you can add more categories here"
+msgstr ""
+
+msgid "Binding correction in millimeters (additional inner margin)"
+msgstr ""
+
+msgid ""
+"Blocks of 16 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+
+msgid ""
+"Blocks of 8 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+
+msgid "Blog"
+msgstr ""
+
+msgid "Body"
+msgstr ""
+
+msgid "Bold"
+msgstr ""
+
+msgid "Bookbuilder"
+msgstr ""
+
+msgid "Bookbuilder page limit (integer)"
+msgstr ""
+
+msgid "Build it"
+msgstr ""
+
+msgid ""
+"By default, secondary footnotes use arabic numbering\n"
+"        between parens. With this option they will use per-page alpha\n"
+"        numbering"
+msgstr ""
+
+msgid "By number of pages, ascending"
+msgstr ""
+
+msgid "By number of pages, descending"
+msgstr ""
+
+msgid "By relevance"
+msgstr ""
+
+msgid "By sku ascending"
+msgstr ""
+
+msgid "By sku descending"
+msgstr ""
+
+msgid "By title A-Z"
+msgstr ""
+
+msgid "By title Z-A"
+msgstr ""
+
+msgid "CSS Alternate Theme (Dark mode, optional)"
+msgstr ""
+
+msgid "CSS Theme"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Canonical name"
+msgstr ""
+
+msgid "Categories"
+msgstr ""
+
+#. ($site->canonical)
+msgid "Category types for %1"
+msgstr ""
+
+msgid "Center all the sectioning titles."
+msgstr ""
+
+msgid "Center the chapter titles."
+msgstr ""
+
+msgid "Changes"
+msgstr ""
+
+msgid "Changes applied"
+msgstr ""
+
+#. ($c->stash->{revision}->title->uri)
+#. (revision.title.uri)
+#. (author_title)
+msgid "Changes for %1"
+msgstr ""
+
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr ""
+
+msgid ""
+"Changing urls is a poor practice. Anyway, if you know what you’re\n"
+"doing, you can delete an existing text and point to another adding a\n"
+"#DELETED directive in the text header with a special syntax:"
+msgstr ""
+
+msgid "Chapter"
+msgstr ""
+
+msgid "Chapter and section. If one side document: chapter."
+msgstr ""
+
+msgid "Chapter, only for chapter divisions in books"
+msgstr ""
+
+msgid "Cheatsheet for the markup"
+msgstr ""
+
+msgid "Check"
+msgstr ""
+
+msgid "Check mail sending and send mail to:"
+msgstr ""
+
+msgid "Choose a paper format"
+msgstr ""
+
+msgid "Clear the book list"
+msgstr ""
+
+msgid "Click on the images to get the sample PDF"
+msgstr ""
+
+msgid "Clone"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Code"
+msgstr ""
+
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr ""
+
+msgid "Comma or semicolon separated list"
+msgstr ""
+
+msgid "Commit ID"
+msgstr ""
+
+msgid "Completed"
+msgstr ""
+
+msgid "Computing of differences took"
+msgstr ""
+
+msgid "Confirm"
+msgstr ""
+
+msgid "Conflict"
+msgstr ""
+
+msgid "Continuous footnote numbering across the whole document."
+msgstr ""
+
+msgid "Convert to archive markup"
+msgstr ""
+
+msgid "Couldn't add the text"
+msgstr ""
+
+msgid "Couldn't automatically generate the URI!"
+msgstr ""
+
+msgid "Couldn't build that"
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
+
+msgid "Create a new format"
+msgstr ""
+
+msgid "Create a new librarian"
+msgstr ""
+
+msgid "Create a new special page"
+msgstr ""
+
+msgid "Create a new user"
+msgstr ""
+
+msgid ""
+"Create a public repository on GitLab, GitHub or similar services (or on your "
+"own server). "
+msgstr ""
+
+msgid "Create a topic alias"
+msgstr ""
+
+msgid "Create an author alias"
+msgstr ""
+
+msgid "Create new site"
+msgstr ""
+
+msgid "Create user and mail password"
+msgstr ""
+
+msgid "Created"
+msgstr ""
+
+msgid "Created by"
+msgstr ""
+
+msgid "Created new text"
+msgstr ""
+
+msgid "Current time"
+msgstr ""
+
+#. ($c->stash->{site}->canonical)
+#. (site.canonical)
+msgid "Custom formats for %1"
+msgstr ""
+
+msgid "Custom home page"
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+msgid "Date of the original publication"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "Default sorting for the category text list"
+msgstr ""
+
+msgid "Default value if blank:"
+msgstr ""
+
+msgid "Deferred/Deleted texts"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Delete permanently"
+msgstr ""
+
+#. (remote.name)
+msgid "Delete remote repository %1"
+msgstr ""
+
+msgid ""
+"Deleting a revision is safe if a text has been\n"
+"    published. Otherwise deleting it you'll lose the unpublished changes"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Description item"
+msgstr ""
+
+msgid ""
+"Description lists use a double colon to separate the\n"
+"        term and the description."
+msgstr ""
+
+msgid "Desired URI"
+msgstr ""
+
+msgid "Destination"
+msgstr ""
+
+msgid "Details"
+msgstr ""
+
+msgid "Did you mean:"
+msgstr ""
+
+msgid "Diff"
+msgstr ""
+
+msgid "Differences"
+msgstr ""
+
+msgid ""
+"Directory with templates in the site repository, e.g.\n"
+"        \"templates\" (ASCII only). Do not set it unless you know\n"
+"        exactly what you are doing"
+msgstr ""
+
+msgid "Disable /mirror/ URL for anonymous users"
+msgstr ""
+
+msgid "Display the latest entries on special pages"
+msgstr ""
+
+msgid "Display url as"
+msgstr ""
+
+msgid "Division factor"
+msgstr ""
+
+msgid "Do not create a cover page and start the text on the first page"
+msgstr ""
+
+msgid "Do not enforce save message"
+msgstr ""
+
+msgid "Do not redirect aliases to canonical"
+msgstr ""
+
+msgid "Do not use bold fonts"
+msgstr ""
+
+msgid "Domain"
+msgstr ""
+
+msgid "Done"
+msgstr ""
+
+msgid "Double bars"
+msgstr ""
+
+msgid "Downloads"
+msgstr ""
+
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr ""
+
+msgid "EPUB"
+msgstr ""
+
+msgid "EPUB (for mobile devices)"
+msgstr ""
+
+msgid "ETA"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Edit attachment description"
+msgstr ""
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr ""
+
+msgid "Edit full site configuration"
+msgstr ""
+
+msgid "Edit screen layout options"
+msgstr ""
+
+#. (esite.id)
+msgid "Edit site %1"
+msgstr ""
+
+msgid "Edit site configuration"
+msgstr ""
+
+msgid "Edit the text you want to unpublish and add this line to the header:"
+msgstr ""
+
+msgid "Edit this text"
+msgstr ""
+
+#. (user.username)
+msgid "Edit user %1"
+msgstr ""
+
+msgid "Editing"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Email sent!"
+msgstr ""
+
+msgid "Email updated"
+msgstr ""
+
+msgid "Emails do not match"
+msgstr ""
+
+msgid "Embed fonts in the EPUB file"
+msgstr ""
+
+msgid "Enable \"What links here\" feature"
+msgstr ""
+
+msgid "Enable search suggestions (did you mean...)"
+msgstr ""
+
+msgid "Enable title ordering by SKU"
+msgstr ""
+
+msgid "Erase this revision"
+msgstr ""
+
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr ""
+
+msgid "Error sending mail!"
+msgstr ""
+
+msgid "Error while converting the HTML. Sorry."
+msgstr ""
+
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr ""
+
+msgid "Errors"
+msgstr ""
+
+msgid "Estimated pages"
+msgstr ""
+
+msgid ""
+"Even if this site has a responsive, mobile-friendly layout,\n"
+"  it does not provide a dedicated mobile application."
+msgstr ""
+
+msgid ""
+"Every\n"
+"        section will generate a slide. You need to do proper\n"
+"        sectioning for this to work."
+msgstr ""
+
+msgid ""
+"Exactly like 2up, but the sheets are meant to be cut\n"
+"        horizontally first and then stack on each other. This way you\n"
+"        can print, for example, A6 booklets on A4."
+msgstr ""
+
+msgid "Example"
+msgstr ""
+
+msgid "Exception"
+msgstr ""
+
+msgid "Existing redirections"
+msgstr ""
+
+msgid "Expected pages"
+msgstr ""
+
+msgid "Failed"
+msgstr ""
+
+#. ("$name $url")
+msgid "Failed to add remote repository %1"
+msgstr ""
+
+#. ($name)
+msgid "Failed to remove Remote repository %1"
+msgstr ""
+
+msgid "Failure fetching the source"
+msgstr ""
+
+msgid "Federation"
+msgstr ""
+
+msgid "Fetch"
+msgstr ""
+
+msgid "File already in the body"
+msgstr ""
+
+msgid "File extension"
+msgstr ""
+
+msgid "File format not allowed"
+msgstr ""
+
+msgid "File too big"
+msgstr ""
+
+msgid "File uploaded!"
+msgstr ""
+
+msgid "Files"
+msgstr ""
+
+msgid ""
+"Fill with blank pages before the last page if the signature is not full."
+msgstr ""
+
+msgid "Filters"
+msgstr ""
+
+msgid "Find the add catalogue menu."
+msgstr ""
+
+msgid "Find the network library menu, or equivalent."
+msgstr ""
+
+msgid "First"
+msgstr ""
+
+msgid "First Author and Second Author"
+msgstr ""
+
+msgid "First Author, Second Author"
+msgstr ""
+
+msgid "First slide"
+msgstr ""
+
+msgid "First you have to unpublish it via #DELETED."
+msgstr ""
+
+msgid "Fix typography (smart quotes)"
+msgstr ""
+
+msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
+msgstr ""
+
+msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
+msgstr ""
+
+msgid ""
+"Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
+"and bound together."
+msgstr ""
+
+msgid "Fixed topic list"
+msgstr ""
+
+msgid "Font preview"
+msgstr ""
+
+msgid "Font size"
+msgstr ""
+
+msgid "Footnotes"
+msgstr ""
+
+#. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
+msgid ""
+"Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
+"in the body (%4), ignoring changes."
+msgstr ""
+
+msgid "For texts from the internet use"
+msgstr ""
+
+msgid "For texts without a table of content, start text on the very first page"
+msgstr ""
+
+msgid ""
+"For topics and authors redirections, you can create them\n"
+"  here"
+msgstr ""
+
+msgid "Force a line break."
+msgstr ""
+
+msgid "Force publishing"
+msgstr ""
+
+msgid "Format name"
+msgstr ""
+
+msgid "Format successfully created"
+msgstr ""
+
+msgid "Format successfully updated"
+msgstr ""
+
+msgid "Formats"
+msgstr ""
+
+msgid "Full list of texts"
+msgstr ""
+
+msgid "Full tag cloud"
+msgstr ""
+
+msgid "Full text search"
+msgstr ""
+
+msgid "Full width, fluid layout"
+msgstr ""
+
+msgid "General configuration"
+msgstr ""
+
+msgid "Generic (fits in A4 and Letter)"
+msgstr ""
+
+msgid "Get generated URI"
+msgstr ""
+
+msgid ""
+"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
+"using the form you can find above. You can have one personal repository."
+msgstr ""
+
+msgid "Git"
+msgstr ""
+
+msgid "Git console"
+msgstr ""
+
+msgid "Git is not enabled on this site"
+msgstr ""
+
+msgid ""
+"HTML code to append to each regular page, inserted\n"
+"            verbatim, so be careful"
+msgstr ""
+
+msgid ""
+"HTML to append to each special page, inserted\n"
+"            verbatim, now you have a chance to screw up everything, so\n"
+"            be careful"
+msgstr ""
+
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr ""
+
+msgid "HTML to insert into the left sidebar"
+msgstr ""
+
+msgid "HTML to insert into the right sidebar"
+msgstr ""
+
+msgid "HTML to insert on the bottom of the layout, above the footer"
+msgstr ""
+
+msgid ""
+"HTML to insert on the top of the layout, behind the navigation bar and below "
+"the banner"
+msgstr ""
+
+msgid "HTML/Word Importer"
+msgstr ""
+
+msgid "Half Letter paper"
+msgstr ""
+
+msgid "Heading"
+msgstr ""
+
+msgid "Headings"
+msgstr ""
+
+msgid "Height:"
+msgstr ""
+
+msgid "Here you can find a preview of the Beamer themes and color themes"
+msgstr ""
+
+msgid ""
+"Here you can save or load your templates. The text list\n"
+"      and the cover image are excluded by the saved settings. You can\n"
+"      use this to save paper/fonts/imposition and other options."
+msgstr ""
+
+msgid "Higher division factor means narrower margins"
+msgstr ""
+
+msgid "How are you going to access Git?"
+msgstr ""
+
+msgid "How do I create a landing page?"
+msgstr ""
+
+msgid "How do I create a special page?"
+msgstr ""
+
+msgid "How do I delete a text?"
+msgstr ""
+
+msgid "How do I modify a special page?"
+msgstr ""
+
+msgid "How do I purge a text?"
+msgstr ""
+
+msgid "How do I redirect to another page?"
+msgstr ""
+
+msgid "How to choose a password"
+msgstr ""
+
+msgid ""
+"However, you can browse, search, download and read the texts\n"
+"  from mobile reading applications which support the so-called OPDS\n"
+"  protocol."
+msgstr ""
+
+msgid "I am human"
+msgstr ""
+
+msgid "I have a system user with SSH access"
+msgstr ""
+
+msgid "I want an imposed (ready to print) PDF"
+msgstr ""
+
+msgid "I will provide my remote repository"
+msgstr ""
+
+msgid "ID"
+msgstr ""
+
+msgid "ISBN"
+msgstr ""
+
+msgid "Id"
+msgstr ""
+
+msgid ""
+"If by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+
+msgid ""
+"If it's not the case, please open a bug report at https://github.com/"
+"melmothx/amusewiki/issues"
+msgstr ""
+
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
+msgid "If not set %1 will be looked up from the application directory."
+msgstr ""
+
+msgid ""
+"If present, hide the\n"
+"          generated formats and the information box. This makes sense\n"
+"          with attachments, when the text version is poor or not\n"
+"          available and more relevance should be given to the attached\n"
+"          files."
+msgstr ""
+
+msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
+msgstr ""
+
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
+msgstr ""
+
+msgid ""
+"If the user is allowed to publish, speed up the process skipping the "
+"revision page if there are no conflicts and automatically redirect to the "
+"published text once it is done."
+msgstr ""
+
+msgid "If the user provided a mail, it's listed in the mail's CC field"
+msgstr ""
+
+msgid ""
+"If this line\n"
+"          is present, set the publication date (on this site) to the\n"
+"          date. The date may also be in the future, deferring the\n"
+"          publication. If this line is not present, the publication\n"
+"          date will be the time of the publishing, triggering a bump\n"
+"          on RSS and special pages at each editing."
+msgstr ""
+
+msgid ""
+"If this line is\n"
+"          present and the reason is set to something, the text will be\n"
+"          stored in the archive, but will not be published."
+msgstr ""
+
+msgid ""
+"If this line is present, do not create a title page,\n"
+"          but instead start the text on the very first page and\n"
+"          produce a PDF styled like an article (chapters and parts\n"
+"          will not start on a new page)."
+msgstr ""
+
+msgid "If this line is present, do not display the table of contents."
+msgstr ""
+
+msgid "If you asked for imposition, select an imposition schema"
+msgstr ""
+
+msgid ""
+"If you edit some format options, like fonts or paper\n"
+"      dimensions, you may want to rebuild the generated files"
+msgstr ""
+
+msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+
+msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr ""
+
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
+msgstr ""
+
+msgid ""
+"If you use it as a teaser image, the image will also\n"
+"      be placed on the first page of the PDF. You can set its width\n"
+"      adding the following line to the header, where the value is the\n"
+"      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
+"      on"
+msgstr ""
+
+msgid ""
+"If your site doesn’t have that, just create a special page and assign\n"
+"the uri \"index\"."
+msgstr ""
+
+msgid ""
+"If your site is multilanguage, you can create a language-specific\n"
+"  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
+"  URI \"index\", a dash, and the locale code."
+msgstr ""
+
+msgid "Image already set as cover"
+msgstr ""
+
+#. ($w, $h, $limit, $limit)
+msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
+msgstr ""
+
+msgid ""
+"Image uploading may be done on the next step, when you can\n"
+"        review and preview the upload."
+msgstr ""
+
+msgid "Image url"
+msgstr ""
+
+msgid "Images"
+msgstr ""
+
+msgid "Imposition schemas"
+msgstr ""
+
+msgid "In both case you will get a reverse indentation."
+msgstr ""
+
+msgid ""
+"In the text, a number within square brackets is interpreted as a\n"
+"          footnote reference, if such footnote exists."
+msgstr ""
+
+#. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
+msgid ""
+"In this example, we use FBreader, but the procedure is\n"
+"  pretty much the same for all applications. All you have to do is to\n"
+"  add %1 to the network libraries."
+msgstr ""
+
+msgid "Inline elements"
+msgstr ""
+
+msgid "Insert the file into the body at the cursor position"
+msgstr ""
+
+msgid "Internal list of translations"
+msgstr ""
+
+msgid "Invalid ID"
+msgstr ""
+
+msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid domain"
+msgstr ""
+
+msgid "Invalid email"
+msgstr ""
+
+msgid "Invalid field"
+msgstr ""
+
+msgid "Invalid name"
+msgstr ""
+
+msgid "Invalid parameter"
+msgstr ""
+
+msgid "Invalid response"
+msgstr ""
+
+msgid "Invalid target"
+msgstr ""
+
+msgid "Invalid username"
+msgstr ""
+
+msgid ""
+"It is possible to have an additional set of\n"
+"          footnotes which you use to annote the text (e.g. critical\n"
+"          editions or translator's notes). They work the same way as\n"
+"          the regular footnotes, but they use curly brackets instead\n"
+"          of square brackets. Placing secondary footnote references\n"
+"          inside a regular footnote is permitted."
+msgstr ""
+
+msgid ""
+"It is recommended to always set a publication\n"
+"                    date, so the system does not need to rely on the\n"
+"                    file timestamp. Also, you should bump the\n"
+"                    publication date only on major editing, leaving it\n"
+"                    untouched for minor ones."
+msgstr ""
+
+msgid ""
+"It works the same as for regular page, but the link is hidden. Just\n"
+"append \"/edit\" to the url of the page."
+msgstr ""
+
+msgid "Italic"
+msgstr ""
+
+msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr ""
+
+msgid "JPG, PNG and PDF are always allowed."
+msgstr ""
+
+msgid "Job status"
+msgstr ""
+
+msgid "Jobs"
+msgstr ""
+
+msgid "Jobs (all sites)"
+msgstr ""
+
+msgid "Jobs waiting before yours:"
+msgstr ""
+
+msgid "Just packs 2 consecutives logical pages on a physical one."
+msgstr ""
+
+msgid ""
+"Keep in mind that I’m cleaning the text and give it\n"
+"        back to you in the markup used on this site. It’s up to you to\n"
+"        check it and finally upload it. Some rarely used markup will\n"
+"        be lost in the process. Please check the preview on the next\n"
+"        step, where you can also insert images."
+msgstr ""
+
+msgid "Keep in mind that some character may be missing in the required font."
+msgstr ""
+
+msgid ""
+"Keep in mind that unusually\n"
+"        complex formatting will be stripped. Is it possible to add\n"
+"        tables and images only on the next step."
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Language code of the document (2 or 3 letters). "
+msgstr ""
+
+msgid "Language selection"
+msgstr ""
+
+msgid "Languages supported"
+msgstr ""
+
+msgid "Last"
+msgstr ""
+
+msgid "Last successful rebuild"
+msgstr ""
+
+msgid "Last updated"
+msgstr ""
+
+msgid "Latest entries"
+msgstr ""
+
+msgid "Layout"
+msgstr ""
+
+msgid "Leave it blank if you want it published right away."
+msgstr ""
+
+msgid "Leave this empty to have it automatically generated"
+msgstr ""
+
+msgid "Letter imposed PDF"
+msgstr ""
+
+msgid "Letter paper"
+msgstr ""
+
+msgid "Line spacing"
+msgstr ""
+
+msgid "Link"
+msgstr ""
+
+msgid "Links"
+msgstr ""
+
+msgid "List of paths to attach to this node, one per line."
+msgstr ""
+
+msgid "List of texts on hold"
+msgstr ""
+
+msgid "Lists"
+msgstr ""
+
+msgid "Load"
+msgstr ""
+
+msgid "Load another session by token"
+msgstr ""
+
+#. ($pname)
+msgid "Loaded \"%1\" configuration"
+msgstr ""
+
+msgid "Loading"
+msgstr ""
+
+msgid "Local"
+msgstr ""
+
+msgid "Local pages"
+msgstr ""
+
+msgid "Locked editing, no upload possible"
+msgstr ""
+
+msgid "Log in"
+msgstr ""
+
+msgid "Login"
+msgstr ""
+
+msgid "Logout"
+msgstr ""
+
+msgid "Look into the account’s menu, there is an entry for that."
+msgstr ""
+
+msgid "Lost your password?"
+msgstr ""
+
+msgid "Magic answer"
+msgstr ""
+
+msgid "Magic question"
+msgstr ""
+
+msgid "Mail from"
+msgstr ""
+
+msgid "Main canonical hostname, without protocol"
+msgstr ""
+
+msgid "Main font"
+msgstr ""
+
+msgid "Main text"
+msgstr ""
+
+msgid "Maintainer's FAQ"
+msgstr ""
+
+msgid "Make a link clickable"
+msgstr ""
+
+msgid "Make all links active"
+msgstr ""
+
+msgid "Make all non-breaking spaces explicit and visible as ~~"
+msgstr ""
+
+msgid "Manage categories"
+msgstr ""
+
+msgid "Margins: please choose a division factor or set width and height"
+msgstr ""
+
+msgid "Max image dimension in pixels, applies to both width and height"
+msgstr ""
+
+msgid "Max size for uploads in Mb"
+msgstr ""
+
+msgid "Message"
+msgstr ""
+
+#. (8)
+msgid "Minimum %1 characters"
+msgstr ""
+
+msgid "Mirror"
+msgstr ""
+
+msgid "Mirror of:"
+msgstr ""
+
+msgid "Missing #title header in the text!"
+msgstr ""
+
+msgid "Missing alias"
+msgstr ""
+
+msgid "Missing character will be reported"
+msgstr ""
+
+msgid "Missing redirection"
+msgstr ""
+
+msgid "Mobile"
+msgstr ""
+
+msgid "Mobile applications"
+msgstr ""
+
+msgid "Mode"
+msgstr ""
+
+msgid "Moderated wiki"
+msgstr ""
+
+msgid "Mono font"
+msgstr ""
+
+msgid "More"
+msgstr ""
+
+msgid "Move down"
+msgstr ""
+
+msgid "Move up"
+msgstr ""
+
+msgid "Multilanguage: list of whitespace separated language codes"
+msgstr ""
+
+msgid "My description"
+msgstr ""
+
+msgid "N/A"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Name plural"
+msgstr ""
+
+msgid "Name singular"
+msgstr ""
+
+msgid "Network library listing screen."
+msgstr ""
+
+msgid "Never display the cover"
+msgstr ""
+
+msgid "Never generate a table of content"
+msgstr ""
+
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
+
+msgid "Never show teaser and/or cover in text lists"
+msgstr ""
+
+msgid "New"
+msgstr ""
+
+msgid "New revision"
+msgstr ""
+
+msgid "New site id"
+msgstr ""
+
+msgid "Newer first"
+msgstr ""
+
+msgid "Newer texts"
+msgstr ""
+
+msgid "Next"
+msgstr ""
+
+msgid "Nice title"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "No data available in table"
+msgstr ""
+
+msgid "No editing yet!"
+msgstr ""
+
+msgid "No matching records found"
+msgstr ""
+
+msgid "No result found!"
+msgstr ""
+
+msgid "No revisions to show"
+msgstr ""
+
+msgid "No text found!"
+msgstr ""
+
+msgid "No text was added yet"
+msgstr ""
+
+msgid "Nodes"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+#. ($c->loc('Save')
+msgid ""
+"Not finished yet! Please have a look at the text and then click on \"%1\" to "
+"finalize your submission!"
+msgstr ""
+
+msgid "Notes"
+msgstr ""
+
+msgid "Nothing to see here, so far"
+msgstr ""
+
+msgid "Nothing uploaded"
+msgstr ""
+
+msgid "Notify mail: blank field will disable them"
+msgstr ""
+
+msgid "Notify to"
+msgstr ""
+
+msgid ""
+"Now it has been aligned to the site's archive, but this means that there are "
+"some missing commits."
+msgstr ""
+
+msgid "Now we are going to populate it and get it ready"
+msgstr ""
+
+msgid "Number of jobs"
+msgstr ""
+
+msgid "Number of latest entries to display on the RSS (an integer)"
+msgstr ""
+
+msgid "Number of results to show on paginated pages (an integer)"
+msgstr ""
+
+msgid "OPDS"
+msgstr ""
+
+msgid "Older first"
+msgstr ""
+
+msgid "Older texts"
+msgstr ""
+
+msgid "On text creation, enforce user to choose the URI"
+msgstr ""
+
+msgid ""
+"One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr ""
+
+msgid "Open wiki"
+msgstr ""
+
+msgid "Option templates"
+msgstr ""
+
+msgid "Optional, defaults to the author directive"
+msgstr ""
+
+msgid ""
+"Or create a new revision, at your own peril. Having multiple\n"
+"          concurrent revisions means that, unless someone takes care\n"
+"          of it, only one will be chosen. You can go ahead, or retry\n"
+"          later, or, better, contact the librarians before proceeding,\n"
+"          to avoid wasting energies."
+msgstr ""
+
+msgid "Or log in, if you have an account."
+msgstr ""
+
+msgid "Or provide an HTML file to upload"
+msgstr ""
+
+msgid "Or wrap it in"
+msgstr ""
+
+msgid "Ordered List"
+msgstr ""
+
+msgid "Outer margin"
+msgstr ""
+
+msgid "PDF"
+msgstr ""
+
+msgid "PDF logo"
+msgstr ""
+
+msgid "PDFs cannot be used in the body."
+msgstr ""
+
+#. ('#ATTACH')
+#. ("#ATTACH")
+msgid "PDFs not listed in the %1 directive will be stored but ignored."
+msgstr ""
+
+msgid "Page not found!"
+msgstr ""
+
+msgid "Page where to start a chapter"
+msgstr ""
+
+msgid ""
+"Pages are not reordered. The first sheet contains\n"
+"        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
+"        This is not meant to be folded."
+msgstr ""
+
+msgid ""
+"Pages are reordered, in one or more groups\n"
+"        (signatures), then folded in half. If you have more\n"
+"        signatures, you will have to bound them together like a book.\n"
+"        With this option, you may want to decide the size of the\n"
+"        signatures. This can be a fixed value (4,8,16, etc.), the\n"
+"        whole book in a single signature, or an optimized size to\n"
+"        reduce the number of blank pages."
+msgstr ""
+
+msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
+msgstr ""
+
+msgid "Paragraph indentation in points (pt)"
+msgstr ""
+
+msgid "Paragraphs"
+msgstr ""
+
+msgid "Parent node"
+msgstr ""
+
+msgid "Part"
+msgstr ""
+
+msgid "Part and chapter. If one side document: part."
+msgstr ""
+
+msgid "Part of"
+msgstr ""
+
+msgid "Part, for larger books only"
+msgstr ""
+
+msgid "Partial selection"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Password too short"
+msgstr ""
+
+msgid "Password updated"
+msgstr ""
+
+msgid "Password, minimum 8 characters."
+msgstr ""
+
+msgid "Passwords do not match"
+msgstr ""
+
+msgid "Path"
+msgstr ""
+
+msgid "Payload"
+msgstr ""
+
+msgid "Pending revisions"
+msgstr ""
+
+msgid "Picture"
+msgstr ""
+
+msgid "Place it in the body with a description:"
+msgstr ""
+
+msgid "Place it in the body without description:"
+msgstr ""
+
+msgid "Place the notes on the back of the first page, impressum-style"
+msgstr ""
+
+msgid "Plain PDF"
+msgstr ""
+
+msgid ""
+"Please check your inbox, we tried to deliver a mail to the address you "
+"specified with a password reset link"
+msgstr ""
+
+msgid "Please choose a text"
+msgstr ""
+
+msgid "Please choose the Beamer color theme"
+msgstr ""
+
+msgid "Please choose the Beamer theme"
+msgstr ""
+
+msgid "Please choose the font size"
+msgstr ""
+
+msgid "Please choose the main font"
+msgstr ""
+
+msgid "Please choose the mono font"
+msgstr ""
+
+msgid "Please choose the sans font"
+msgstr ""
+
+msgid "Please describe shortly what you did"
+msgstr ""
+
+msgid "Please do not use a valuable password."
+msgstr ""
+
+msgid ""
+"Please do not use higher levels (part or chapter) for short articles with "
+"sections."
+msgstr ""
+
+#. (amw_group_name)
+msgid "Please ensure that your system user is member of the \"%1\" group"
+msgstr ""
+
+msgid ""
+"Please give us a username. It should *not* be a mail address.\n"
+"        Just a fancy name, so we can know that multiple uploads come\n"
+"        from the same person."
+msgstr ""
+
+msgid ""
+"Please initialized it empty, without any README,license, .gitignore or "
+"similar."
+msgstr ""
+
+msgid ""
+"Please keep in mind that filters are language-specific\n"
+"              and may or may not be available for the language of the\n"
+"              text. If not available, they will just leave the text as\n"
+"              is."
+msgstr ""
+
+msgid ""
+"Please keep in mind that if you see “Force publishing”\n"
+"    as action, it means that the revision has been superseded by\n"
+"    another one, so publishing this one, you'll end up reverting a\n"
+"    previous one. Try to avoid this, unless you know what you're\n"
+"    doing."
+msgstr ""
+
+msgid "Please leave a mail if you want to be contacted about this change"
+msgstr ""
+
+msgid "Please note that wrapping tags must be placed on a line by themselves."
+msgstr ""
+
+msgid ""
+"Please note that you may want to paste from a\n"
+"        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
+"        from word” button. This is supposed to preserve the markup."
+msgstr ""
+
+msgid ""
+"Please note: without any prefix, protocol or hostname, just\n"
+"  the bare page name as shown above. External redirecting is not\n"
+"  supported."
+msgstr ""
+
+msgid "Please prove you are a human"
+msgstr ""
+
+msgid "Please reload your page"
+msgstr ""
+
+msgid "Please remove this file from the body first"
+msgstr ""
+
+msgid ""
+"Please replace the example URL in the next line with the real one with SSH "
+"protocol"
+msgstr ""
+
+msgid "Please select"
+msgstr ""
+
+msgid "Please select the desired fonts"
+msgstr ""
+
+msgid "Please select the signature size:"
+msgstr ""
+
+msgid ""
+"Please select the size of each page including the crop marks, before the "
+"imposing"
+msgstr ""
+
+msgid "Please set"
+msgstr ""
+
+msgid ""
+"Please set the URI you desire. Author (if present),\n"
+"        title and eventually a number if the URI already exists is\n"
+"        usually a good choice"
+msgstr ""
+
+msgid "Please setup the Beamer layout"
+msgstr ""
+
+msgid "Please upload your file again!"
+msgstr ""
+
+msgid "Poetry, bibliographies, plays, code blocks"
+msgstr ""
+
+msgid "Pointing to"
+msgstr ""
+
+msgid "Popular texts"
+msgstr ""
+
+msgid ""
+"Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
+"        “i.”, “I.”, depending on the list type you need."
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Preview box height in pixel"
+msgstr ""
+
+msgid "Previous"
+msgstr ""
+
+msgid "Priority"
+msgstr ""
+
+msgid "Private"
+msgstr ""
+
+msgid "Procedure"
+msgstr ""
+
+msgid "Processing"
+msgstr ""
+
+msgid "Produce slides."
+msgstr ""
+
+msgid "Produced"
+msgstr ""
+
+msgid "Publication date"
+msgstr ""
+
+msgid "Publication date on this site"
+msgstr ""
+
+msgid "Publish"
+msgstr ""
+
+msgid "Published in *A nice book*, published by My House, 2014"
+msgstr ""
+
+msgid "Publisher"
+msgstr ""
+
+msgid "Purge"
+msgstr ""
+
+msgid ""
+"Purging means removing it completely from the archive, not just hiding it."
+msgstr ""
+
+msgid ""
+"Put additional information here (original\n"
+"\t  title, translators, credits, etc). Footnotes go in the\n"
+"\t  body."
+msgstr ""
+
+msgid "Quarter Letter paper"
+msgstr ""
+
+msgid "Queue"
+msgstr ""
+
+msgid "Quota exceeded, too many pages"
+msgstr ""
+
+msgid "Quotes"
+msgstr ""
+
+msgid "RSS aggregator"
+msgstr ""
+
+msgid "RSS feed"
+msgstr ""
+
+msgid "Random"
+msgstr ""
+
+msgid "Read about the file naming scheme if you need to add files to the tree."
+msgstr ""
+
+msgid "Read the whole text..."
+msgstr ""
+
+msgid "Real time help"
+msgstr ""
+
+msgid ""
+"Rearrange the footnotes, fixing the numbering,\n"
+"              considering only the order in which they were inserted.\n"
+"              Please leave unchecked if you don't know what this\n"
+"              means. This option could be destructive, please use with\n"
+"              caution and check the result. In case you encounter\n"
+"              problems, please save the result reporting them in the\n"
+"              message. The procedure tries to be safe and will ignore\n"
+"              the change if footnotes are missing or are too many."
+msgstr ""
+
+msgid "Reason"
+msgstr ""
+
+msgid "Reason for deletion"
+msgstr ""
+
+msgid "Rebuild"
+msgstr ""
+
+msgid "Rebuild all generated files"
+msgstr ""
+
+msgid "Rebuild the generated formats"
+msgstr ""
+
+msgid "Rebuilding"
+msgstr ""
+
+msgid "Recheck"
+msgstr ""
+
+msgid "Redirections"
+msgstr ""
+
+msgid "Refresh and apply filters"
+msgstr ""
+
+msgid "Related projects"
+msgstr ""
+
+#. ("$name $url")
+msgid "Remote repository %1 added"
+msgstr ""
+
+#. ($name)
+msgid "Remote repository %1 removed"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Remove cover image"
+msgstr ""
+
+msgid "Remove this category"
+msgstr ""
+
+msgid "Removed Upstream"
+msgstr ""
+
+msgid "Rename"
+msgstr ""
+
+msgid "Rename text URI"
+msgstr ""
+
+msgid "Rename to"
+msgstr ""
+
+msgid "Repeat email"
+msgstr ""
+
+msgid "Repeat password"
+msgstr ""
+
+msgid "Request failed! Please report the the problem"
+msgstr ""
+
+msgid "Reschedule"
+msgstr ""
+
+msgid "Reset all"
+msgstr ""
+
+msgid "Reset filters"
+msgstr ""
+
+msgid "Reset password"
+msgstr ""
+
+#. (username)
+msgid "Reset password for user %1"
+msgstr ""
+
+msgid "Reset to site defaults"
+msgstr ""
+
+msgid "Reset your password"
+msgstr ""
+
+msgid "Restricted configuration variables"
+msgstr ""
+
+msgid "Restricted format options"
+msgstr ""
+
+msgid "Results per page:"
+msgstr ""
+
+msgid "Retrieved on DATE from URL"
+msgstr ""
+
+msgid "Retrieved on March 8, 2012 from"
+msgstr ""
+
+msgid "Revision"
+msgstr ""
+
+#. ($uri)
+msgid "Revision for %1 has been deleted"
+msgstr ""
+
+msgid "Roles"
+msgstr ""
+
+msgid "Root node"
+msgstr ""
+
+msgid "Run diff"
+msgstr ""
+
+msgid "Running headings"
+msgstr ""
+
+msgid "SSL CA certificate path (Apache)"
+msgstr ""
+
+msgid "SSL certificate path (Apache)"
+msgstr ""
+
+msgid "SSL chained certificate path (Nginx)"
+msgstr ""
+
+msgid "SSL configuration"
+msgstr ""
+
+msgid "SSL key path"
+msgstr ""
+
+msgid "Same as above, but for duplex printers"
+msgstr ""
+
+msgid "Same as above, for the Archive menu"
+msgstr ""
+
+msgid "Same as above, for the Related Projects menu"
+msgstr ""
+
+msgid "Sans font"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Save the current settings with a name"
+msgstr ""
+
+#. ($pname)
+msgid "Saved \"%1\" configuration"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Search filters"
+msgstr ""
+
+msgid "Search results"
+msgstr ""
+
+msgid "Search this column"
+msgstr ""
+
+msgid "Secondary footnotes"
+msgstr ""
+
+msgid "Section"
+msgstr ""
+
+msgid "Section and subsection. If one side document: section."
+msgstr ""
+
+msgid "See here for more details."
+msgstr ""
+
+msgid "See here for the full documentation."
+msgstr ""
+
+msgid "See the full manual for more details (english)"
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Select all"
+msgstr ""
+
+msgid "Select all for deletion"
+msgstr ""
+
+msgid "Select all for rescheduling"
+msgstr ""
+
+msgid "Select individual parts for the bookbuilder"
+msgstr ""
+
+msgid "Send mail"
+msgstr ""
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
+msgstr ""
+
+msgid "Separate body fields"
+msgstr ""
+
+msgid "Separate footer fields"
+msgstr ""
+
+msgid "Separate header fields"
+msgstr ""
+
+msgid "Series"
+msgstr ""
+
+msgid "Session sharing"
+msgstr ""
+
+msgid "Set a date in the future if you want it deferred."
+msgstr ""
+
+msgid "Settings loaded"
+msgstr ""
+
+msgid "Setup"
+msgstr ""
+
+msgid "Show _MENU_ entries"
+msgstr ""
+
+msgid "Show cheatsheet"
+msgstr ""
+
+msgid "Show differences in other tab"
+msgstr ""
+
+msgid "Show filters"
+msgstr ""
+
+msgid "Show preview in other tab"
+msgstr ""
+
+msgid "Show text type and number of pages in the listing"
+msgstr ""
+
+msgid "Show the text infobox at the bottom of the texts"
+msgstr ""
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr ""
+
+msgid "Single bars"
+msgstr ""
+
+msgid "Site Map"
+msgstr ""
+
+msgid "Site already exists"
+msgstr ""
+
+msgid "Site group"
+msgstr ""
+
+msgid "Site id"
+msgstr ""
+
+msgid "Site mail (From field)"
+msgstr ""
+
+msgid "Site mode"
+msgstr ""
+
+msgid "Site name"
+msgstr ""
+
+msgid "Site slogan"
+msgstr ""
+
+msgid "Site users"
+msgstr ""
+
+msgid "Sites"
+msgstr ""
+
+msgid "Slides"
+msgstr ""
+
+msgid "Slides (PDF)"
+msgstr ""
+
+msgid "Small Caps"
+msgstr ""
+
+msgid "So we can be sure we are not mailing passwords to random people"
+msgstr ""
+
+msgid "Some fields are missing, all are required"
+msgstr ""
+
+msgid "Some fields are too long"
+msgstr ""
+
+msgid "Some ongoing revisions were found"
+msgstr ""
+
+msgid "Sorry, too many jobs pending, please try again later!"
+msgstr ""
+
+msgid "Sorting:"
+msgstr ""
+
+msgid "Source"
+msgstr ""
+
+msgid "Source files"
+msgstr ""
+
+msgid "Source files with attachments"
+msgstr ""
+
+msgid "Source removed"
+msgstr ""
+
+msgid "Source, notes..."
+msgstr ""
+
+msgid "Sources"
+msgstr ""
+
+msgid "Special blocks"
+msgstr ""
+
+msgid "Special pages"
+msgstr ""
+
+msgid "Specify a whitespace-separated list of languages to activate it."
+msgstr ""
+
+msgid "Stale editing"
+msgstr ""
+
+msgid "Standalone HTML (printer-friendly)"
+msgstr ""
+
+msgid "Standard"
+msgstr ""
+
+msgid "Start the document with an empty page"
+msgstr ""
+
+msgid "Started"
+msgstr ""
+
+msgid "Static page without javascript"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Status changed"
+msgstr ""
+
+msgid "Subsection"
+msgstr ""
+
+msgid "Subsubsection or description item"
+msgstr ""
+
+msgid "Subtitle"
+msgstr ""
+
+msgid "Such URI already exists"
+msgstr ""
+
+msgid "Such an URI already exists"
+msgstr ""
+
+msgid ""
+"Such an header will unpublish the text and put a\n"
+"  redirection in place, and will be listed here"
+msgstr ""
+
+msgid "Such an user already exists!"
+msgstr ""
+
+msgid "Such username already exists"
+msgstr ""
+
+msgid "Suggested values:"
+msgstr ""
+
+msgid "Summary"
+msgstr ""
+
+msgid "Supported directive in the header"
+msgstr ""
+
+msgid "Switch theme"
+msgstr ""
+
+msgid "Table of Contents"
+msgstr ""
+
+msgid "Tables"
+msgstr ""
+
+msgid "Tag cloud with authors"
+msgstr ""
+
+msgid "Tag cloud with topics"
+msgstr ""
+
+msgid "Task"
+msgstr ""
+
+msgid "TeX options (advanced)"
+msgstr ""
+
+msgid "Teaser"
+msgstr ""
+
+msgid "Teaser image"
+msgstr ""
+
+msgid "Term"
+msgstr ""
+
+msgid "Test"
+msgstr ""
+
+msgid "Tested applications, in this order of preference"
+msgstr ""
+
+msgid "Text body only (no title, no final pages)"
+msgstr ""
+
+msgid "Text formatted with markup"
+msgstr ""
+
+msgid "Text height"
+msgstr ""
+
+msgid ""
+"Text redirections are set in the text itself, using the\n"
+"  DELETED header with this syntax"
+msgstr ""
+
+msgid "Text width"
+msgstr ""
+
+msgid "Texts"
+msgstr ""
+
+msgid ""
+"The Beamer selections are relevant only if you activate the\n"
+"  slides output."
+msgstr ""
+
+msgid "The OPDS address for this site is:"
+msgstr ""
+
+msgid ""
+"The PDF logo value can be either an absolute path\n"
+"            or just a filename if you choose to install it in the\n"
+"            TeXlive tree. You can do so with the following commands.\n"
+"            The last one checks if the file can be found."
+msgstr ""
+
+msgid "The changes will propagate automatically once you push."
+msgstr ""
+
+#. ($uri)
+msgid "The description for %1 has been updated"
+msgstr ""
+
+msgid ""
+"The differences between the list of footnotes and references is shown below."
+msgstr ""
+
+msgid "The file uploaded is not an HTML file!"
+msgstr ""
+
+msgid "The following settings provide the defaults for each format."
+msgstr ""
+
+msgid "The following values are used to generate the webserver configuration."
+msgstr ""
+
+msgid ""
+"The generate webserver configuration will redirect\n"
+"          all the HTTP requests to HTTPS"
+msgstr ""
+
+msgid "The logo has the site name on itself"
+msgstr ""
+
+msgid "The optional subtitle"
+msgstr ""
+
+msgid ""
+"The page /special/index is twice special. It is assumed to be the\n"
+"default page to visit when loading the site’s root."
+msgstr ""
+
+msgid "The password will be mailed at this address"
+msgstr ""
+
+msgid "The reset link will expire in a hour."
+msgstr ""
+
+msgid "The revision has the following messages"
+msgstr ""
+
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr ""
+
+msgid "The text structure is shown below."
+msgstr ""
+
+msgid "The text to show on the homepage preview"
+msgstr ""
+
+msgid "The text was added to the bookbuilder"
+msgstr ""
+
+msgid ""
+"The title of the document, for sorting purposes. Useful\n"
+"          if you want to strip the article, if any. A text titled “A\n"
+"          nice title” could have this set to “Nice title”, and will be\n"
+"          listed under N, not under A."
+msgstr ""
+
+msgid "The title of the document. The only mandatory directive."
+msgstr ""
+
+msgid ""
+"The webserver needs to be reconfigured. Please execute in a root shell the "
+"following commands:"
+msgstr ""
+
+msgid "The whole book in as single signature"
+msgstr ""
+
+msgid "Then approve the change as it would be a normal publishing."
+msgstr ""
+
+msgid "Then fetch the updates from this page."
+msgstr ""
+
+msgid "There are failed jobs"
+msgstr ""
+
+msgid "There are pending revisions"
+msgstr ""
+
+msgid "These texts are missing the unique id."
+msgstr ""
+
+msgid "They can be texts, special texts, authors or topics."
+msgstr ""
+
+msgid ""
+"They should be paths relative to the webserver configuration root or "
+"absolute paths (recommended)."
+msgstr ""
+
+msgid "This directive wants a whitespace separated list of filenames."
+msgstr ""
+
+msgid ""
+"This is a WYSIWYG editor. If you prefer to use\n"
+"        the wiki-like syntax leave it as is, fill the required fields\n"
+"        above and postpone the editing to the next step."
+msgstr ""
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
+
+msgid "This is the caption"
+msgstr ""
+
+msgid ""
+"This mail has been sent to notify you about a new text\n"
+"creation, even if the uploading is not completed yet and the user\n"
+"still needs to finalize the upload. Another mail should follow soon.\n"
+"If this doesn't happen, it means that the uploading has been abandoned\n"
+"and you may want to check it out."
+msgstr ""
+
+msgid "This revision is already published, ignoring changes"
+msgstr ""
+
+msgid "This revision is being actively edited"
+msgstr ""
+
+msgid "This revision is being actively edited by you"
+msgstr ""
+
+msgid "This revision is being edited by someone else!"
+msgstr ""
+
+msgid "This section will not produce a slide"
+msgstr ""
+
+msgid ""
+"This site is private and mobile applications should ask for your username "
+"and\n"
+"  password to access the OPDS."
+msgstr ""
+
+msgid "This text does not exist"
+msgstr ""
+
+msgid "This text is a book"
+msgstr ""
+
+msgid "This text is an article"
+msgstr ""
+
+msgid "This text is new"
+msgstr ""
+
+msgid "This text is not available"
+msgstr ""
+
+msgid "This text is not public yet"
+msgstr ""
+
+msgid "This text is not published yet"
+msgstr ""
+
+#. (rev.is_deferred)
+msgid "This text will be deferred to %1"
+msgstr ""
+
+msgid "This user cannot be removed"
+msgstr ""
+
+msgid "Thumbnail"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Title and chapter. If one side document: chapter."
+msgstr ""
+
+msgid "Title and section.  If one side document: section."
+msgstr ""
+
+msgid "Title and subtitle. If one side document: title."
+msgstr ""
+
+msgid "Title for sorting"
+msgstr ""
+
+msgid "Title, author, date..."
+msgstr ""
+
+msgid "Titles"
+msgstr ""
+
+#. (pending_url)
+msgid "To apply the changes, you can visit %1"
+msgstr ""
+
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr ""
+
+msgid ""
+"To preserve the whitespaces and line breakings, wrap the paragraphs with"
+msgstr ""
+
+msgid "To quickly format bibliographies wrap them in"
+msgstr ""
+
+msgid "To quickly format plays, use"
+msgstr ""
+
+msgid "To resume the editing you can visit the following URL"
+msgstr ""
+
+#. (loc('Update')
+#. (loc("Update"))
+msgid ""
+"To save or update the templates, you need first to save\n"
+"    the options with the \"%1\" button"
+msgstr ""
+
+msgid "To view the changes introduced, you can visit the following URL"
+msgstr ""
+
+msgid "Toggle"
+msgstr ""
+
+msgid "Toggle fullscreen editor"
+msgstr ""
+
+msgid "Top margin"
+msgstr ""
+
+msgid "Topic"
+msgstr ""
+
+msgid "Topics"
+msgstr ""
+
+msgid "Total pages"
+msgstr ""
+
+msgid "Triple bars"
+msgstr ""
+
+msgid "Try a random text if unsure"
+msgstr ""
+
+msgid ""
+"Turn links to images into images (affects site display only, static formats "
+"have the link)"
+msgstr ""
+
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"            Gmaps into widgets (affects site display only, static\n"
+"            formats have the link)"
+msgstr ""
+
+msgid "Two side layout"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "URI"
+msgstr ""
+
+msgid "URI is available and valid"
+msgstr ""
+
+msgid ""
+"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
+"my-author-title-1"
+msgstr ""
+
+msgid "URL"
+msgstr ""
+
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
+msgstr ""
+
+msgid "URL pointing to an embeddable webchat"
+msgstr ""
+
+msgid "UTC"
+msgstr ""
+
+msgid "Unable to load the bookbuilder session"
+msgstr ""
+
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr ""
+
+msgid "Unbranded PDF (hide site name, logo, etc.)"
+msgstr ""
+
+msgid ""
+"Unconditionally remove all the invisible non-breaking\n"
+"                spaces in the text"
+msgstr ""
+
+#. (shared)
+msgid ""
+"Unfortunately, the shared repository located at %1 appeared out of sync."
+msgstr ""
+
+msgid "Unique ID for the text"
+msgstr ""
+
+msgid "Unlimited"
+msgstr ""
+
+msgid "Unordered List"
+msgstr ""
+
+msgid "Unpublished texts"
+msgstr ""
+
+#. ($mime_type)
+#. ($mime)
+msgid "Unsupported file type %1"
+msgstr ""
+
+msgid "Unused attachment"
+msgstr ""
+
+msgid "Update"
+msgstr ""
+
+msgid "Update account info"
+msgstr ""
+
+msgid "Update category description"
+msgstr ""
+
+msgid "Update to current settings"
+msgstr ""
+
+msgid "Upload"
+msgstr ""
+
+msgid "Upload the image and note its name. Files are always renamed."
+msgstr ""
+
+msgid ""
+"Uploaded and available images are shown and listed below the text preview."
+msgstr ""
+
+msgid "Url"
+msgstr ""
+
+msgid "Use JS syntax highlight for code blocks"
+msgstr ""
+
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
+msgstr ""
+
+msgid "Use SSL for authenticated users"
+msgstr ""
+
+msgid "Use it as a teaser image adding to the header this line:"
+msgstr ""
+
+msgid "Use named table of contents anchors instead of numeric ones"
+msgstr ""
+
+msgid "Use one of the site's formats"
+msgstr ""
+
+#. (sign)
+msgid "Use optimized signatures with %1 pages each"
+msgstr ""
+
+msgid "Use sans fonts for section titles"
+msgstr ""
+
+msgid "Use the image as cover"
+msgstr ""
+
+msgid "Useful HTML snippets"
+msgstr ""
+
+msgid ""
+"Useful for footnotes or in the headers of the document, where you cannot put "
+"a blank line to mark a new paragraph."
+msgstr ""
+
+#. ($user->username)
+msgid "User %1 created!"
+msgstr ""
+
+#. ($user->username)
+#. ($c->stash->{user}->username)
+msgid "User %1 deleted"
+msgstr ""
+
+#. ($user->username)
+msgid "User %1 updated"
+msgstr ""
+
+msgid "User created"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "Username, alphanumerical only, no special characters, no uppercase"
+msgstr ""
+
+msgid "Users"
+msgstr ""
+
+msgid ""
+"Using this token, you can load the bookbuilder settings\n"
+"    and the text list from another computer, or share it with someone\n"
+"    else. Just write it down and then load it from another computer\n"
+"    using the following form."
+msgstr ""
+
+msgid ""
+"Usually this is due to high traffic and bad luck, and it can be fixed by "
+"pushing the changes again."
+msgstr ""
+
+msgid "Verbatim block"
+msgstr ""
+
+msgid "View history"
+msgstr ""
+
+msgid "Virtual hosts"
+msgstr ""
+
+msgid "Virtual hosts, one per line"
+msgstr ""
+
+msgid "What links here"
+msgstr ""
+
+msgid ""
+"When creating a new text, do not populate the publication date if not "
+"provided by the user."
+msgstr ""
+
+msgid ""
+"When you start a bookbuilder session, at the end of the\n"
+"    bookbuilder page you can see a token for sharing the session. You\n"
+"    can load it here from another device to resume what you were\n"
+"    doing."
+msgstr ""
+
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr ""
+
+msgid "Where does this text come from?"
+msgstr ""
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr ""
+
+msgid "Width of the cover image in percent of the text block width."
+msgstr ""
+
+msgid "Width:"
+msgstr ""
+
+msgid ""
+"With complex structures, e.g., a chapter with\n"
+"      subsections, selecting only the chapter is likely to select only\n"
+"      the chapter's title, so probably you want to select the chapter\n"
+"      and all its subsections."
+msgstr ""
+
+msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr ""
+
+msgid ""
+"With the bookbuilder you can change the layout (fonts,\n"
+"    dimensions, paper, margins) of the texts on the library. You can\n"
+"    also merge more texts to create your own booklet. Just try it!"
+msgstr ""
+
+msgid "Workflow"
+msgstr ""
+
+msgid "Working locally?"
+msgstr ""
+
+msgid ""
+"Wrapping tags cannot be used inside environments\n"
+"          which require leading space (notably, you cannot use them in\n"
+"          lists)."
+msgstr ""
+
+msgid "Wrong answer!"
+msgstr ""
+
+msgid "Wrong username or password"
+msgstr ""
+
+msgid "XeLaTeX source"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid ""
+"You MUST specify a reason, otherwise the line will have no effect.\n"
+"The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
+"etc.) is irrelevant."
+msgstr ""
+
+msgid "You are already logged in"
+msgstr ""
+
+msgid ""
+"You are building a collection. Please provide a title and, optionally, any "
+"other information needed for the front cover (author, subtitle, date) and "
+"the back cover (source and notes)."
+msgstr ""
+
+msgid "You are logged in now!"
+msgstr ""
+
+#. (backup)
+msgid ""
+"You can access the backup located at %1 or ask your host for help, "
+"forwarding this email"
+msgstr ""
+
+msgid ""
+"You can add texts to the bookbuilder clicking on the\n"
+"    “plus” icon near the downloads of each text. You can add and\n"
+"    remove the texts later."
+msgstr ""
+
+msgid ""
+"You can also link to a part of the text. Please refer to the manual for this "
+"feature"
+msgstr ""
+
+#. (create_url)
+msgid "You can create a peer at %1"
+msgstr ""
+
+msgid "You can do so answering a simple question."
+msgstr ""
+
+msgid "You can tune them editing them here."
+msgstr ""
+
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
+msgstr ""
+
+msgid ""
+"You can't create a new revision because the text has not been published yet"
+msgstr ""
+
+msgid "You have logged out"
+msgstr ""
+
+msgid "You may want to resume the editing of one of them"
+msgstr ""
+
+msgid ""
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr ""
+
+msgid "You may want to use one of these images"
+msgstr ""
+
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
+
+#. (edit_url)
+msgid "You should change your password right away at %1"
+msgstr ""
+
+msgid "Your browser does not support the audio tag."
+msgstr ""
+
+msgid "Your browser does not support the video tag."
+msgstr ""
+
+msgid ""
+"Your changes are saved and can be checked every time you hit Preview or Save"
+msgstr ""
+
+msgid "Your chapter here..."
+msgstr ""
+
+msgid "Your current bookbuilder token is:"
+msgstr ""
+
+msgid "Your email"
+msgstr ""
+
+msgid "Your file is ready"
+msgstr ""
+
+msgid "Your part here..."
+msgstr ""
+
+#. (password)
+msgid "Your password is %1."
+msgstr ""
+
+msgid "Your password was reset, now you can login with it"
+msgstr ""
+
+msgid "Your section here..."
+msgstr ""
+
+msgid "Your sub-sub-section (or description heading) here..."
+msgstr ""
+
+msgid "Your subsection here..."
+msgstr ""
+
+#. (home)
+msgid "Your user at %1 has been created."
+msgstr ""
+
+#. (username)
+msgid "Your username is %1."
+msgstr ""
+
+msgid "aborted"
+msgstr ""
+
+msgid "about, links..."
+msgstr ""
+
+msgid "activate to sort column ascending"
+msgstr ""
+
+msgid "activate to sort column descending"
+msgstr ""
+
+msgid "active"
+msgstr ""
+
+msgid "affects only the frontend webserver configuration"
+msgstr ""
+
+msgid "any"
+msgstr ""
+
+msgid "automatically generated if not present, using author and title"
+msgstr ""
+
+msgid "code and monospace"
+msgstr ""
+
+msgid "comma separated list"
+msgstr ""
+
+msgid "completed"
+msgstr ""
+
+msgid "conflict"
+msgstr ""
+
+msgid "description"
+msgstr ""
+
+msgid "displayed text"
+msgstr ""
+
+msgid "edit, commit..."
+msgstr ""
+
+msgid "editing"
+msgstr ""
+
+msgid "emphasis"
+msgstr ""
+
+msgid "failed"
+msgstr ""
+
+msgid "filtered from _MAX_ total entries"
+msgstr ""
+
+msgid "for code, monospaced"
+msgstr ""
+
+msgid "for display"
+msgstr ""
+
+msgid "for poetry"
+msgstr ""
+
+msgid "generic sectioning, good for articles"
+msgstr ""
+
+msgid "if you want to use a custom size, you need to set both width and height"
+msgstr ""
+
+msgid "image"
+msgstr ""
+
+msgid "left"
+msgstr ""
+
+msgid "mandatory"
+msgstr ""
+
+msgid "markup *not* interpreted"
+msgstr ""
+
+#. (site.binary_upload_max_size_in_mega)
+msgid "max %1 Mb"
+msgstr ""
+
+msgid "minutes"
+msgstr ""
+
+msgid "new-example-uri"
+msgstr ""
+
+msgid "only lowercase ASCII and hyphens"
+msgstr ""
+
+msgid "or"
+msgstr ""
+
+msgid "ordered item"
+msgstr ""
+
+msgid "overstriked"
+msgstr ""
+
+msgid "pending"
+msgstr ""
+
+msgid "plain PDF"
+msgstr ""
+
+msgid "plain text source"
+msgstr ""
+
+msgid "processing"
+msgstr ""
+
+msgid "published"
+msgstr ""
+
+msgid "revision"
+msgstr ""
+
+msgid "right"
+msgstr ""
+
+#. (args)
+msgid "string"
+msgstr ""
+
+msgid "strong emphasis"
+msgstr ""
+
+msgid "sub-sub-section"
+msgstr ""
+
+msgid "subscript"
+msgstr ""
+
+msgid "subsection"
+msgstr ""
+
+msgid "superscript"
+msgstr ""
+
+msgid "taken"
+msgstr ""
+
+msgid "texts by authors, title, topic..."
+msgstr ""
+
+msgid "texts sorted by author"
+msgstr ""
+
+msgid "texts sorted by title"
+msgstr ""
+
+msgid "the author of the text (as displayed)"
+msgstr ""
+
+msgid "this text will be unpublished"
+msgstr ""
+
+msgid "topic"
+msgstr ""
+
+msgid "unordered item"
+msgstr ""
+
+msgid "very strong emphasis"
+msgstr ""
+
+msgid "with description"
+msgstr ""
+
+msgid "without description"
+msgstr ""
+
+msgid ""
+"“Stale editing” means that the revision was abandoned\n"
+"    while editing, but it's still there, in case someone wants to pick\n"
+"    it up when editing a text."
+msgstr ""

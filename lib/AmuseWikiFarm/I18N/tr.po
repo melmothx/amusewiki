@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2022-05-21 14:39+0300\n"
+"PO-Revision-Date: 2022-05-27 12:55+0300\n"
 "Last-Translator: Rojen Zaman <rojen@riseup.net>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -1019,7 +1019,7 @@ msgid "HTML to insert into the right sidebar"
 msgstr "Sağ yan sütuna eklenecek HTML"
 
 msgid "HTML to insert on the bottom of the layout, above the footer"
-msgstr "Yerleşimin dibine, altlık kısmının üstine eklenecek HTML"
+msgstr "Yerleşimin dibine, altlık kısmının üstüne eklenecek HTML"
 
 msgid ""
 "HTML to insert on the top of the layout, behind the navigation bar and below "
@@ -3302,7 +3302,7 @@ msgstr ""
 "diğer bilgileri verin."
 
 msgid "You are logged in now!"
-msgstr "Şmdi giriş yaptın!"
+msgstr "Şimdi giriş yaptın!"
 
 #. (backup)
 msgid ""

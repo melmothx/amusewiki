@@ -1047,6 +1047,7 @@ sub known_langs {
             ja => '日本語',
             tl => 'Tagalog',
             ceb => 'Cebuano',
+            kmr => 'Kurmancî',
            };
 }
 
