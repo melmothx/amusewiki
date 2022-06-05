@@ -555,6 +555,7 @@ CREATE TABLE muse_header (
                           ON DELETE CASCADE ON UPDATE CASCADE,
        muse_header VARCHAR(255) NOT NULL,
        muse_value TEXT,
+       muse_value_html TEXT,
        PRIMARY KEY (title_id, muse_header)
 );
 
