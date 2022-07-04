@@ -19,4 +19,10 @@ sub ordered {
     return $self->search(undef, { order_by => 'priority' });
 }
 
+sub with_index_page {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.generate_index" => 1 });
+}
+
 1;

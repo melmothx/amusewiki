@@ -32,8 +32,12 @@
       <span id="[% ctype.identifier %]-label">
         <strong>[% loc(ctype.title) %]:</strong>
       </span>
-      [% FOREACH ccat IN ctype.entries -%]
+      [% IF ctype.entries %]
+        [% FOREACH ccat IN ctype.entries -%]
         <a href="[% c.uri_for(ccat.uri) %]" class="text-[% ctype.identifier %]-item">[%- lh.site_loc_html(ccat.name) -%]</a>[% UNLESS loop.last %],[% END %]
+        [% END %]
+      [% ELSE %]
+        [% ctype.html_value %]
       [% END %]
       </div>
     [% END %]

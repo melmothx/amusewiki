@@ -2465,7 +2465,7 @@ sub supported_locales {
 sub category_types_navbar_display {
     my ($self, $logged_in) = @_;
     my @out;
-    foreach my $ct ($self->site_category_types->active->all) {
+    foreach my $ct ($self->site_category_types->active->with_index_page->ordered->all) {
         my $type = $ct->category_type;
         # special case, already listed
         if ($type eq 'topic' and $self->fixed_category_list) {

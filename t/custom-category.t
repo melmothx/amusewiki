@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 96;
+use Test::More tests => 111;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -142,4 +142,12 @@ ok $site->edit_category_types_from_params({
 
 foreach my $cat ($site->categories) {
     diag $cat->name . ' ' . $cat->full_uri;
+}
+
+foreach my $text ($site->titles) {
+    foreach my $header ($text->muse_headers) {
+        diag $header->muse_header;
+        ok $header->as_html;
+        diag $header->as_html;
+    }
 }

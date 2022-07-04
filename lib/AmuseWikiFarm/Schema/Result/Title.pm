@@ -1737,7 +1737,22 @@ sub display_categories {
             last PARENT;
         }
     }
-    foreach my $ctype ($self->site->site_category_types->active->all) {
+
+    my %muse_headers = map { $_->muse_header => $_->as_html } $self->muse_headers;
+
+  CTYPE:
+    foreach my $ctype ($self->site->site_category_types->active->ordered->all) {
+        unless ($ctype->generate_index) {
+            if (my $header = $muse_headers{$ctype->category_type}) {
+                push @out, {
+                            title => $ctype->name_singular,
+                            identifier => $ctype->category_type . 's',
+                            code => $ctype->category_type,
+                            html_value => $header,
+                           }
+            }
+            next CTYPE;
+        }
         my $rs = $text->categories->by_type($ctype->category_type)->with_active_flag_on;
         my @list;
         while (my $cat = $rs->next) {
