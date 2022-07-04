@@ -78,20 +78,34 @@
     ([% loc('for display') %])
     <input class="form-control amwautocomplete uri-maker"
            type="text" name="author" id="author"
+           data-category-type="displayed_author"
                maxlength="250"
                value="[% processed_params.author | html %]" />
   </div>
 
-  <div class="form-group">
-    <label for="SORTauthors">[% loc('Authors for indexing') %]</label>
-    <input class="form-control amwautocomplete" id="SORTauthors"
-           maxlength="250"
-           name="SORTauthors"
-           value="[% processed_params.SORTauthors | html %]" />
-    <p class="help-block">
-      [% loc('Comma or semicolon separated list') %].
-    </p>
-  </div>
+  [% FOREACH cct IN site.custom_category_types %]
+    [% SET cct_name = cct.header %]
+    [% IF cct.active && !cct.custom_form%]
+      <div class="form-group">
+        <label for="cct-[% cct_name %]">
+          [% IF cct.generate_index %]
+            [% loc(cct.name_plural) %]
+          [% ELSE %]
+            [% loc(cct.name_singular) %]
+          [% END %]
+        </label>
+        <input id="cct-[% cct_name %]" class="form-control[% IF cct.generate_index %] amwautocomplete[% END %]"
+               data-category-type="[% cct.category_type %]"
+               maxlength="250" name="[% cct_name %]"
+               value="[% processed_params.$cct_name | html %]">
+        [% IF cct.generate_index %]
+          <p class="help-block">
+            [% loc('Comma or semicolon separated list') %]
+          </p>
+        [% END %]
+      </div>
+    [% END %]
+  [% END %]
 
   [% IF site.fixed_category_list %]
   <div id="fixed-category-choose" class="form-group">
@@ -107,18 +121,6 @@
       </label>
     </div>
     [% END %]
-  </div>
-  [% ELSE %]
-  <div class="form-group">
-    <label for="SORTtopics">[% loc('Topics') %]</label>
-    <input class="form-control amwautocomplete" id="SORTtopics"
-           size="50"
-           maxlength="250"
-           name="SORTtopics"
-           value="[% processed_params.SORTtopics | html %]" />
-    <p class="help-block">
-      [% loc('Comma or semicolon separated list') %].
-    </p>
   </div>
   [% END %]
 
@@ -389,63 +391,40 @@
 <script type="text/javascript">
     $(document).ready(function() {
         var separator = /[;,]\s*/;
-        var all_terms = {
-            topic: [],
-            author: [],
-            adisplay: [],
-        };
-        var availableTerms = [];
-
-        for (var key in all_terms) {
+        var all_terms = {};
+        $('.amwautocomplete').each(function () {
+            var el = $(this);
+            var key = el.data('category-type');
             $.ajax({
                 url: "/api/autocompletion/" + key,
-                async: false,
                 dataType: 'json',
-                success: function(response) {
-                    all_terms[key] = response;
-                }
-            });
-        }
-
-            $( ".amwautocomplete")
-                .bind( "keydown", function( event ) {
-                        if ( event.keyCode === $.ui.keyCode.TAB &&
-                             $( this ).data( "ui-autocomplete" ).menu.active ) {
+                success: function(available) {
+                    el.bind("keydown", function(event) {
+                        if (event.keyCode === $.ui.keyCode.TAB &&
+                            $(this).data( "ui-autocomplete" ).menu.active ) {
                             event.preventDefault();
                         }
-                var target = $(this).attr('name');
-                if (target === 'SORTauthors') {
-                    availableTerms = all_terms.author;
-                }
-                else if (target == 'SORTtopics') {
-                    availableTerms = all_terms.topic;
-                }
-                else if (target == 'author') {
-                    availableTerms = all_terms.adisplay;
-                }
-                else {
-                    console.log("Autocomplete not available for " + target);
-                    availableTerms = [];
-                }
-                })
-                .autocomplete({
+                    }).autocomplete({
                         minLength: 0,
                         source: function( request, response ) {
                             // delegate back to autocomplete, but extract the last term
                             response( $.ui.autocomplete.filter(
-                                    availableTerms, request.term.split(separator).pop()));
+                                available, request.term.split(separator).pop()));
                         },
                         focus: function() {
                             return false;
                         },
-                        select: function( event, ui ) {
+                        select: function(event, ui) {
                             var terms = this.value.split(separator);
                             terms.pop();
-                            terms.push( ui.item.value );
-                            this.value = terms.join( ", " );
+                            terms.push(ui.item.value);
+                            this.value = terms.join( "; " );
                             return false;
                         }
-                });
+                    });
+                }
+            });
+        });
     });
 </script>
 

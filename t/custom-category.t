@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 88;
+use Test::More tests => 96;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -57,13 +57,14 @@ foreach my $i (1..3) {
     my ($rev) = $site->create_new_text({
                                         title => "$i Hello $i",
                                         textbody => 'Hey',
+                                        publisher => "Pinco $i, Pallino $i",
+                                        location => "Washington, DC; Zagreb, Croatia; 東京, Japan;",
+                                        season => q{summer $i my'"&"'<stuff>"},
                                        }, "text");
-    my $preamble =<<"EOF";
-#publisher Pinco $i, Pallino $i
-#location Washington, DC; Zagreb, Croatia; 東京, Japan;
-#season summer $i my'"&"'<stuff>
-EOF
-    $rev->edit($preamble . $rev->muse_body);
+    diag $rev->muse_body;
+    like $rev->muse_body, qr{#publisher Pinco};
+    like $rev->muse_body, qr{#location Wash};
+    like $rev->muse_body, qr{#season summer};
     $rev->commit_version;
     $rev->publish_text;
 }
@@ -73,6 +74,12 @@ ok $site->categories->count;
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 $mech->get_ok('/');
+$mech->get_ok('/login');
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+$mech->get_ok('/action/text/new');
+$mech->content_contains('name="location"');
+$mech->content_contains('name="publisher"');
+$mech->content_contains('name="season"');
 foreach my $c ($site->categories) {
     diag join(' ', $c->type, $c->uri, $c->name, $c->titles->count);
     $mech->get_ok($c->full_uri);
@@ -128,3 +135,11 @@ ok $site->edit_category_types_from_params({
     is $cc->name_singular, 'P';
 }
 
+{
+    $site = $site->get_from_storage;
+    diag Dumper($site->custom_category_types);
+}
+
+foreach my $cat ($site->categories) {
+    diag $cat->name . ' ' . $cat->full_uri;
+}

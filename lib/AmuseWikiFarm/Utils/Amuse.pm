@@ -129,11 +129,21 @@ sub muse_file_info {
 
     # defaults
     my $default_ctypes = [
-                          { name => 'author', fields => [qw/authors sortauthors/] },
-                          { name => 'topic', fields => [qw/cat sorttopics topics/], },
+                          {
+                           name => 'author',
+                           fields => [qw/authors sortauthors/],
+                           generate_index => 1,
+                          },
+                          {
+                           name => 'topic',
+                           fields => [qw/cat sorttopics topics/],
+                           generate_index => 1,
+                          },
                          ];
 
+  CTYPE:
     foreach my $ctype (@{ $opts->{category_types} || $default_ctypes }) {
+        next CTYPE unless $ctype->{generate_index};
         foreach my $f (@{$ctype->{fields}}) {
             # this is the muse string
             my $mstring = $parsed_header{$f};

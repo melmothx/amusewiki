@@ -35,14 +35,13 @@ sub autocompletion :Chained('api') :Args(1) {
     my ($self, $c, $type) = @_;
     my $query = lc($type);
     my @list;
-    if ($type =~ m/(topic|author)/) {
-        my $type = $1;
+    if ($type eq 'displayed_author') {
+        @list = @{$c->stash->{site}->titles->list_display_authors};
+    }
+    else {
         # include the deferred
         @list = map { $_->{name} }
           @{$c->stash->{site}->categories->with_texts(deferred => 1)->by_type($type)->listing_tokens};
-    }
-    elsif ($type eq 'adisplay') {
-        @list = @{$c->stash->{site}->titles->list_display_authors};
     }
     Dlog_debug { "Found list for $type:  $_" } \@list;
     $c->stash(json => \@list);

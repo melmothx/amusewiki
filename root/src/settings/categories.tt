@@ -8,6 +8,7 @@
       <tr>
         <th>[% loc('Code') %]</th>
         <th>[% loc('Active') %]</th>
+        <th>[% loc('Generate Index') %]</th>
         <th>[% loc('Priority') %]</th>
         <th>[% loc('Name singular') %]</th>
         <th>[% loc('Name plural') %]</th>
@@ -21,6 +22,12 @@
             <select name="[% ct.category_type %]_active" required>
               <option value="0"[% IF ct.active == '0' %] selected[% END %]>[% loc('No') %]</option>
               <option value="1"[% IF ct.active == '1' %] selected[% END %]>[% loc('Yes') %]</option>
+            </select>
+          </td>
+          <td>
+            <select name="[% ct.category_type %]_generate_index" required>
+              <option value="0"[% IF ct.generate_index == '0' %] selected[% END %]>[% loc('No') %]</option>
+              <option value="1"[% IF ct.generate_index == '1' %] selected[% END %]>[% loc('Yes') %]</option>
             </select>
           </td>
           <td>
@@ -41,12 +48,12 @@
       [% END %]
       <tr>
         <td colspan="3">[% loc('Create a new category type. Please use only lowercase ASCII letters') %]</td>
-        <td colspan="2">
+        <td colspan="3">
           <input type="text" name="create" pattern="[a-z]{1,16}" class="form-control" />
         </td>
       </tr>
       <tr>
-        <td colspan="5" class="text-center">
+        <td colspan="6" class="text-center">
           <button class="btn btn-primary" type="submit">[% loc('Update') %]</button>
         </td>
       </tr>

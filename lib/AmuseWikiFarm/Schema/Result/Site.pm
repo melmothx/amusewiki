@@ -1523,10 +1523,19 @@ sub _build_custom_category_types {
     my $self = shift;
     my @out;
     foreach my $ct ($self->site_category_types->search(undef, { order_by => 'priority'})->all) {
-        push @out, {
-                    name => $ct->category_type,
-                    fields => $ct->header_fields,
-                   };
+        my %details = (
+                       $ct->get_columns,
+                       name => $ct->category_type,
+                       fields => $ct->header_fields,
+                       header => $ct->header_fields->[0],
+                      );
+        if ($ct->category_type eq 'topic') {
+            if ($self->fixed_category_list) {
+                $details{header} = 'cat';
+                $details{custom_form} = 1;
+            }
+        }
+        push @out, \%details;
     }
     return \@out;
 }
@@ -1783,7 +1792,9 @@ sub import_text_from_html_params {
                               rights
                               seriesname
                               seriesnumber
-                             /) {
+                             /,
+                           map { $_->{header} } @{ $self->custom_category_types || [] }
+                          ) {
         $self->_add_directive($fh, $directive, $params->{$directive});
     }
     # add the notes
@@ -4839,7 +4850,7 @@ sub edit_category_types_from_params {
     foreach my $cc ($self->site_category_types->all) {
         $count++;
         my $code = $cc->category_type;
-        foreach my $f (qw/active priority name_singular name_plural/) {
+        foreach my $f (qw/active priority name_singular name_plural generate_index/) {
             my $cgi = $code . '_' . $f;
             if (exists $params{$cgi}) {
                 $cc->$f($params{$cgi})
@@ -4858,6 +4869,7 @@ sub edit_category_types_from_params {
                                                     active => 1,
                                                     name_singular => ucfirst($params{create}),
                                                     name_plural => ucfirst($params{create} . 's'),
+                                                    generate_index => $params{generate_index} ? 1 : 0,
                                                    });
         $changed++;
     }

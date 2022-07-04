@@ -142,7 +142,7 @@ sub header_fields {
     # support.
     my %fields = (
                   author => [qw/authors sortauthors/],
-                  topic => [qw/cat sorttopics topics/],
+                  topic => [qw/topics cat sorttopics/],
                  );
     my $f = $self->category_type;
     return $fields{$f} || [ $f ];
