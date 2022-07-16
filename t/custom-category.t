@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 111;
+use Test::More tests => 117;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -12,6 +12,7 @@ use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper::Concise;
+use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf-8)";
@@ -88,6 +89,12 @@ foreach my $c ($site->categories) {
         my $url = $title->full_uri;
         $mech->content_contains($title->full_uri, "Found $url in " . $c->full_uri);
     }
+}
+
+foreach my $ct (qw/location publisher season/) {
+    $mech->get_ok("/api/autocompletion/$ct");
+    my $data = from_json($mech->response->content);
+    ok (scalar(@$data), Dumper($data));
 }
 
 $site->site_category_types->update({ active => 0 });

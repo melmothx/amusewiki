@@ -33,7 +33,11 @@ sub api :Chained('/site') :CaptureArgs(0) {
 
 sub autocompletion :Chained('api') :Args(1) {
     my ($self, $c, $type) = @_;
-    my $query = lc($type);
+
+    # legacy
+    if ($type =~ m/^(sort|list)?(topic|author)s$/) {
+        $type = $2;
+    }
     my @list;
     if ($type eq 'displayed_author') {
         @list = @{$c->stash->{site}->titles->list_display_authors};

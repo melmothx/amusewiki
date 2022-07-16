@@ -3,7 +3,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 44;
+use Test::More tests => 48;
 
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
@@ -26,7 +26,7 @@ is ($empty->text_count, 0);
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => 'blog.amusewiki.org');
-foreach my $target (qw/sorttopics listtopics listauthors authors author topic/) {
+foreach my $target (qw/author displayed_author topic sorttopics listtopics listauthors topics authors/) {
     $mech->get_ok("/api/autocompletion/$target");
     my $data = from_json($mech->response->content);
     ok (scalar(@$data), Dumper($data));
@@ -46,7 +46,7 @@ ok $config->{toolbar_AmuseWiki};
 
 $empty->delete;
 
-$mech->get_ok("/api/autocompletion/adisplay");
+$mech->get_ok("/api/autocompletion/displayed_author");
 my $adisplays = from_json($mech->content);
 ok @$adisplays == 3;
 ok scalar(grep { $_ eq 'Marco & C.' }  @$adisplays);
