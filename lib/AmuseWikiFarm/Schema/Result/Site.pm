@@ -1010,6 +1010,7 @@ use File::Find;
 use Data::Dumper::Concise;
 use AmuseWikiFarm::Archive::BookBuilder;
 use Text::Amuse::Compile::Utils ();
+use Text::Amuse::Functions qw/muse_format_line/;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::CgitSetup;
 use AmuseWikiFarm::Utils::LexiconMigration;
@@ -2334,6 +2335,7 @@ sub index_file {
                 $title->muse_headers->create({
                                               muse_header => $k,
                                               muse_value => $header{$k},
+                                              muse_value_html => muse_format_line(html => $header{$k}) || '',
                                              });
             }
         }

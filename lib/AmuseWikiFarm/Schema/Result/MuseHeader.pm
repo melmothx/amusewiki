@@ -108,17 +108,8 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07049 @ 2022-06-05 09:02:32
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sU2OMLEdKfIgQPWD0P5IHw
 
-use Text::Amuse::Functions qw/muse_format_line/;
-
 sub as_html {
-    my $self = shift;
-    my $html = $self->muse_value_html;
-    unless (defined $html) {
-        my $v = $self->muse_value;
-        $html = muse_format_line(html => $v);
-        $self->update({ muse_value_html => $html });
-    }
-    return $html;
+    shift->muse_value_html;
 }
 
 
