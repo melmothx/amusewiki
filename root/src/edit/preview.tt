@@ -20,24 +20,22 @@
         </p>
         [% END %]
 
-        [% IF (text.SORTauthors || text.author) %]
-        <p id="authors">
-          <strong>[% loc('Authors') %]:</strong>
-          [% text.SORTauthors || text.author %]
-        </p>
+        [% FOREACH header IN revision.document_preview_fields %]
+          <p id="cf-[% header.ctype %]">
+            <strong>[% lh.site_loc_html(header.label) %]:</strong>
+            [% IF header.html %]<span class="cf-preview-target-html">[% header.html %]</span>[% END %]
+            [% IF header.target_list %]
+              [% FOREACH hlu IN header.target_list %]
+                <a class="cf-preview-target-url" href="[% c.uri_for_action('/category/single_category_display', [ header.ctype, hlu.uri ]) %]">[% hlu.name %]</a>
+              [% END %]
+            [% END %]
+          </p>
         [% END %]
 
         [% IF text.date %]
         <p id="textdate">
           <strong>[% loc('Date') %]:</strong>
           [% text.date %]
-        </p>
-        [% END %]
-
-        [% IF text.SORTtopics %]
-        <p id="topics">
-          <strong>[% loc('Topics') %]:</strong>
-          [% text.SORTtopics %]
         </p>
         [% END %]
 

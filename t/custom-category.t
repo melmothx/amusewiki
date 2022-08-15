@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 117;
+use Test::More tests => 137;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -29,10 +29,10 @@ is $site->site_category_types->count, 2;
 $site->init_category_types;
 
 foreach my $ctype ({
-                    category_type => 'publisher',
+                    category_type => 'publisherx',
                     active => 1,
                     priority => 2,
-                    name_singular => 'Publisher',
+                    name_singular => 'Publisherx',
                     name_plural => 'Publishers',
                    },
                    {
@@ -58,12 +58,12 @@ foreach my $i (1..3) {
     my ($rev) = $site->create_new_text({
                                         title => "$i Hello $i",
                                         textbody => 'Hey',
-                                        publisher => "Pinco $i, Pallino $i",
+                                        publisherx => "Pinco $i, Pallino $i",
                                         location => "Washington, DC; Zagreb, Croatia; 東京, Japan;",
                                         season => q{summer $i my'"&"'<stuff>"},
                                        }, "text");
     diag $rev->muse_body;
-    like $rev->muse_body, qr{#publisher Pinco};
+    like $rev->muse_body, qr{#publisherx Pinco};
     like $rev->muse_body, qr{#location Wash};
     like $rev->muse_body, qr{#season summer};
     $rev->commit_version;
@@ -79,7 +79,7 @@ $mech->get_ok('/login');
 $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 $mech->get_ok('/action/text/new');
 $mech->content_contains('name="location"');
-$mech->content_contains('name="publisher"');
+$mech->content_contains('name="publisherx"');
 $mech->content_contains('name="season"');
 foreach my $c ($site->categories) {
     diag join(' ', $c->type, $c->uri, $c->name, $c->titles->count);
@@ -91,7 +91,7 @@ foreach my $c ($site->categories) {
     }
 }
 
-foreach my $ct (qw/location publisher season/) {
+foreach my $ct (qw/location publisherx season/) {
     $mech->get_ok("/api/autocompletion/$ct");
     my $data = from_json($mech->response->content);
     ok (scalar(@$data), Dumper($data));
@@ -121,10 +121,10 @@ foreach my $t ($site->titles) {
 
 ok $site->edit_category_types_from_params({
                                            create => 'pippo',
-                                           publisher_active => 0,
-                                           publisher_priority => 4,
-                                           publisher_name_singular => 'P',
-                                           publisher_name_plural => 'PP',
+                                           publisherx_active => 0,
+                                           publisherx_priority => 4,
+                                           publisherx_name_singular => 'P',
+                                           publisherx_name_plural => 'PP',
                                           });
 {
     my $cc = $site->site_category_types->find({ category_type => 'pippo' });
@@ -135,7 +135,7 @@ ok $site->edit_category_types_from_params({
 
 }
 {
-    my $cc = $site->site_category_types->find({ category_type => 'publisher' });
+    my $cc = $site->site_category_types->find({ category_type => 'publisherx' });
     ok $cc;
     ok !$cc->active;
     is $cc->name_plural, 'PP';
@@ -158,3 +158,61 @@ foreach my $text ($site->titles) {
         diag $header->as_html;
     }
 }
+{
+    my $rev = $site->titles->first->new_revision;
+    diag Dumper($rev->document_html_headers);
+    diag Dumper($rev->document_preview_fields);
+}
+
+{
+    my @indexed = (qw/pippo season/);
+    my @not_indexed = (qw/publisherx location/);
+
+    $site->site_category_types->search({ category_type => \@not_indexed })
+      ->update({ generate_index => 0, active => 1 });
+    $site->site_category_types->search({ category_type => \@indexed })
+      ->update({ generate_index => 1, active => 1 });
+    $site = $site->get_from_storage;
+    diag Dumper($site->custom_category_types);
+    $mech->get_ok('/action/text/new');
+    my $form = $mech->content;
+    # check the form
+    my %submit = (title => 'test-custom-fields', uri => 'test-custom-fields', textbody => "<p>TEst</p>");
+    foreach my $f (@indexed, @not_indexed) {
+        like $form, qr{name="\Q$f\E"}, "Form contains $f field";
+        $mech->get_ok("/api/autocompletion/$f", "autocompletion for $f ok");
+        diag $mech->content;
+        $submit{$f} = "<$f>";
+    }
+    $mech->get_ok('/action/text/new');
+    $mech->submit_form(with_fields => \%submit, button => 'go');
+    my $html = $mech->content;
+    if ($html =~ m{<textarea.*?>(.*?)</textarea>}s) {
+        my $muse_body = $1;
+        diag "Body is $muse_body";
+        foreach my $f (@indexed, @not_indexed) {
+            like $muse_body, qr{\#\Q$f\E \&lt\;\Q$f\E\&gt\;\n}, "$f found in muse body";
+        }
+    }
+    else {
+        die "textarea not found";
+    }
+    $mech->uri =~ m{/(\d+)$};
+    my $rev = $schema->resultset('Revision')->find($1);
+    diag Dumper($rev->document_preview_fields);
+    my $preview = $mech->uri . '/preview?bare=1';
+    $mech->get_ok($preview);
+    my $preview_html = $mech->content;
+    foreach my $f (@indexed) {
+        like $preview_html, qr{<a class="cf-preview-target-url".*?>\&lt\;\Q$f\E\&gt\;</a>\E};
+    }
+    foreach my $f (@not_indexed) {
+        like $preview_html, qr{<span class="cf-preview-target-html">\&lt\;\Q$f\E\&gt\;</span>\E};
+    }
+    $rev->commit_version;
+    my $uri = $rev->publish_text;
+    $mech->get_ok($uri . '?bare=1');
+    my $final_html = $mech->content;
+    diag $final_html;
+}
+

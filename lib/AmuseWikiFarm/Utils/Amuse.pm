@@ -82,7 +82,7 @@ sub muse_file_info {
 
     $opts ||= {};
 
-    my $details = muse_parse_file_path($file, $root);
+    my $details = muse_parse_file_path($file, $root, $opts->{skip_path_checking});
     return unless $details;
 
     if ($details->{f_suffix} ne '.muse') {
