@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 137;
+use Test::More tests => 165;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -182,7 +182,7 @@ foreach my $text ($site->titles) {
         like $form, qr{name="\Q$f\E"}, "Form contains $f field";
         $mech->get_ok("/api/autocompletion/$f", "autocompletion for $f ok");
         diag $mech->content;
-        $submit{$f} = "<$f>";
+        $submit{$f} = "<1$f>; <2$f>";
     }
     $mech->get_ok('/action/text/new');
     $mech->submit_form(with_fields => \%submit, button => 'go');
@@ -191,7 +191,7 @@ foreach my $text ($site->titles) {
         my $muse_body = $1;
         diag "Body is $muse_body";
         foreach my $f (@indexed, @not_indexed) {
-            like $muse_body, qr{\#\Q$f\E \&lt\;\Q$f\E\&gt\;\n}, "$f found in muse body";
+            like $muse_body, qr{\#\Q$f\E \&lt\;1\Q$f\E\&gt\;\; \&lt\;2\Q$f\E\&gt\;\n}, "$f found in muse body";
         }
     }
     else {
@@ -204,15 +204,39 @@ foreach my $text ($site->titles) {
     $mech->get_ok($preview);
     my $preview_html = $mech->content;
     foreach my $f (@indexed) {
-        like $preview_html, qr{<a class="cf-preview-target-url".*?>\&lt\;\Q$f\E\&gt\;</a>\E};
+        like $preview_html, qr{<a class="cf-preview-target-url".*?>\&lt\;1\Q$f\E\&gt\;</a>\E};
     }
     foreach my $f (@not_indexed) {
-        like $preview_html, qr{<span class="cf-preview-target-html">\&lt\;\Q$f\E\&gt\;</span>\E};
+        like $preview_html, qr{<span class="cf-preview-target-html">\&lt\;1\Q$f\E\&gt\;\; \&lt\;\Q2$f\E\&gt\;</span>\E};
     }
     $rev->commit_version;
     my $uri = $rev->publish_text;
     $mech->get_ok($uri . '?bare=1');
     my $final_html = $mech->content;
     diag $final_html;
+    foreach my $f (@indexed) {
+        like $final_html, qr{<a .*?class="text-\Q$f\Es-item">\&lt\;1\Q$f\E\&gt\;</a>\E};
+        like $final_html, qr{<a .*?class="text-\Q$f\Es-item">\&lt\;2\Q$f\E\&gt\;</a>\E};
+        $mech->get_ok("/category/$f");
+    }
+    foreach my $f (@not_indexed) {
+        $mech->get("/category/$f");
+        is $mech->status, 404;
+        like $final_html, qr{<span class="text-cf-\Q$f\Es-html">\&lt\;1\Q$f\E\&gt\;\; \&lt\;\Q2$f\E\&gt\;</span>\E};
+    }
+    # now flip the indexed flag and check if the texts flip
+    $site->site_category_types->search({ category_type => \@not_indexed })
+      ->update({ generate_index => 1, active => 1 });
+    $mech->get_ok($uri . '?bare=1');
+    my $updated_final_html = $mech->content;
+    foreach my $f (@indexed, @not_indexed) {
+        like $updated_final_html, qr{<a .*?class="text-\Q$f\Es-item">\&lt\;1\Q$f\E\&gt\;</a>\E};
+        like $updated_final_html, qr{<a .*?class="text-\Q$f\Es-item">\&lt\;2\Q$f\E\&gt\;</a>\E};
+    }
+    $mech->get_ok($preview);
+    my $updated_preview_html = $mech->content;
+    foreach my $f (@indexed, @not_indexed) {
+        like $updated_preview_html, qr{<a class="cf-preview-target-url".*?>\&lt\;1\Q$f\E\&gt\;</a>\E};
+        $mech->get_ok("/category/$f");
+    }
 }
-

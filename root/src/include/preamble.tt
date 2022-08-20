@@ -37,7 +37,7 @@
         <a href="[% c.uri_for(ccat.uri) %]" class="text-[% ctype.identifier %]-item">[%- lh.site_loc_html(ccat.name) -%]</a>[% UNLESS loop.last %],[% END %]
         [% END %]
       [% ELSE %]
-        [% ctype.html_value %]
+        <span class="text-cf-[% ctype.identifier %]-html">[% ctype.html_value %]</span>
       [% END %]
       </div>
     [% END %]
