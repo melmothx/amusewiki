@@ -10,6 +10,7 @@ use AmuseWikiFarm::Log::Contextual;
 use Data::Page;
 use DateTime;
 use Try::Tiny;
+use HTML::Entities;
 use namespace::clean;
 
 has multisite => (is => 'ro', isa => Bool,  default => sub { 0 } );
@@ -113,6 +114,21 @@ sub facet_tokens {
                 facets => $self->authors,
                 name => 'filter_author',
                } unless $self->multisite;
+
+    if (my $site = $self->site) {
+        foreach my $cct (@{ $site->custom_category_types }) {
+            if ($cct->{xapian_custom_slot}) {
+                my $slot = 'custom' . $cct->{xapian_custom_slot};
+                my $list = $self->unpack_json_facets($self->facets->{$slot});
+                $self->_add_category_labels($cct->{category_type}, $list);
+                push @out, {
+                            label => $loc->($cct->{name_plural}),
+                            facets => $list,
+                            name => 'filter_' . $slot,
+                           };
+            }
+        }
+    }
     push @out, {
                 label => $loc->('Document type'),
                 facets => $self->text_types,
@@ -169,7 +185,10 @@ sub _add_category_labels {
         my $i = shift @$list;
         # skip the missing ones
         if (my $label = $map->{$i->{value}}) {
-            $i->{label} = $label;
+
+            # in the html we have [% checkbox.label | html %] but in
+            # the db we have html, although normally not used.
+            $i->{label} = decode_entities($label);
             push @out, $i;
         }
     }

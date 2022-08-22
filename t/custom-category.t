@@ -251,4 +251,10 @@ foreach my $text ($site->titles) {
     %check_colophon = map { $_ => "$_" } (@indexed, @not_indexed);
     like $site->_autocreate_colophon(\%check_colophon), qr{\*\*Location\*\*:.*location};
 
+    my $res = $site->xapian->faceted_search(site => $site,
+                                            lh => $site->localizer,
+                                            locale => 'en',
+                                            query => '',
+                                           );
+    diag Dumper($res->facet_tokens);
 }

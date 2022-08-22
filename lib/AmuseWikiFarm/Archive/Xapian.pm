@@ -708,6 +708,7 @@ sub _do_faceted_search {
         $facets{$spy_name} = \@got;
     }
     Dlog_debug { "Selections: $_ " } \%actives;
+    Dlog_debug { "Facets: $_ " } \%facets;
     my $corrected_query = $self->enable_xapian_suggestions ? $qp->get_corrected_query_string : '';
     if ($corrected_query) {
         eval {
