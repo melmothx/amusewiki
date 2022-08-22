@@ -78,5 +78,5 @@
 </div>
 
 <div class="help">
-  [% loc('To enable the search engine facets for a given custom category, you need to assign a Search Engine Slot to it. If you change it later, you need to reindex the site.') %]
+  [% loc('To enable the search engine facets for a given custom category, you need to set Generate Index to Yes AND assign a Search Engine Slot to it. If you change it later, you need to reindex the site.') %]
 </div>
