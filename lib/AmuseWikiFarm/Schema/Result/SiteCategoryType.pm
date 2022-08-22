@@ -87,6 +87,11 @@ __PACKAGE__->table("site_category_type");
   default_value: 0
   is_nullable: 0
 
+=head2 xapian_custom_slot
+
+  data_type: 'smallint'
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -106,6 +111,8 @@ __PACKAGE__->add_columns(
   { data_type => "smallint", default_value => 1, is_nullable => 0 },
   "in_colophon",
   { data_type => "smallint", default_value => 0, is_nullable => 0 },
+  "xapian_custom_slot",
+  { data_type => "smallint", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -140,8 +147,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2022-08-22 10:30:03
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:5qaKtLucFiqPGfhluBWqeg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2022-08-22 15:04:14
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:zQfEFX69SjE3ebaWC/iFsA
 
 
 sub header_fields {

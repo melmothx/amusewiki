@@ -469,6 +469,7 @@ CREATE TABLE site_category_type (
        name_plural VARCHAR(255) NOT NULL,
        generate_index SMALLINT NOT NULL DEFAULT 1,
        in_colophon SMALLINT NOT NULL DEFAULT 0,
+       xapian_custom_slot SMALLINT NULL,
        PRIMARY KEY (site_id, category_type)
 );
 
