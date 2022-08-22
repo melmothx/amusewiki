@@ -9,6 +9,7 @@
         <th>[% loc('Code') %]</th>
         <th>[% loc('Active') %]</th>
         <th>[% loc('Generate Index') %]</th>
+        <th>[% loc('Add to colophon') %]</th>
         <th>[% loc('Priority') %]</th>
         <th>[% loc('Name singular') %]</th>
         <th>[% loc('Name plural') %]</th>
@@ -31,6 +32,12 @@
             </select>
           </td>
           <td>
+            <select name="[% ct.category_type %]_in_colophon" required>
+              <option value="0"[% IF ct.in_colophon == '0' %] selected[% END %]>[% loc('No') %]</option>
+              <option value="1"[% IF ct.in_colophon == '1' %] selected[% END %]>[% loc('Yes') %]</option>
+            </select>
+          </td>
+          <td>
             <input type="number" name="[% ct.category_type %]_priority"
                    class="form-control" value="[% ct.priority %]" min="0" required/>
           </td>
@@ -47,13 +54,13 @@
         </tr>
       [% END %]
       <tr>
-        <td colspan="3">[% loc('Create a new category type. Please use only lowercase ASCII letters') %]</td>
-        <td colspan="3">
+        <td colspan="4">[% loc('Create a new category type. Please use only lowercase ASCII letters') %]</td>
+        <td colspan="4">
           <input type="text" name="create" pattern="[a-z]{1,16}" class="form-control" />
         </td>
       </tr>
       <tr>
-        <td colspan="6" class="text-center">
+        <td colspan="7" class="text-center">
           <button class="btn btn-primary" type="submit">[% loc('Update') %]</button>
         </td>
       </tr>

@@ -1802,7 +1802,9 @@ sub import_text_from_html_params {
     foreach my $field (qw/notes teaser/) {
         $self->_add_directive($fh, $field => html_to_muse($params->{$field}));
     }
-
+    if (my $colophon = $self->_autocreate_colophon($params)) {
+        $self->_add_directive($fh, colophon => $colophon);
+    }
     # separator
     print $fh "\n";
 
@@ -1832,6 +1834,33 @@ sub _add_directive {
     $text =~ s/  +/ /gs; # pack the whitespaces
     return unless length($text);
     print $fh '#' . $directive . ' ' . $text . "\n";
+}
+
+sub _autocreate_colophon {
+    my ($self, $params) = @_;
+    my @pieces;
+    foreach my $cf (@{ $self->custom_category_types || [] }) {
+        if ($cf->{in_colophon}) {
+            my $value = $params->{$cf->{header}};
+            if (length($value)) {
+                my $sep = qr{\s*\,\s*};
+                if ($value =~ m/\;/) {
+                    $sep = qr{\s*\;\s*};
+                }
+                if (my @values = grep { /\w/ } split($sep, $value)) {
+                    push @pieces, '**'
+                      . (@values > 1 ? $cf->{name_plural} : $cf->{name_singular})
+                      . '**: ' . $value;
+                }
+            }
+        }
+    }
+    if (@pieces) {
+        return join(' <br> ', @pieces);
+    }
+    else {
+        return;
+    }
 }
 
 =head2 xapian
@@ -2260,6 +2289,7 @@ sub index_file {
             }
         }
     }
+    delete $details->{colophon};
     if (%$details) {
         $logger->("Custom directives: " . join(", ", %$details) . "\n");
     }
@@ -4852,7 +4882,7 @@ sub edit_category_types_from_params {
     foreach my $cc ($self->site_category_types->all) {
         $count++;
         my $code = $cc->category_type;
-        foreach my $f (qw/active priority name_singular name_plural generate_index/) {
+        foreach my $f (qw/active priority name_singular name_plural generate_index in_colophon/) {
             my $cgi = $code . '_' . $f;
             if (exists $params{$cgi}) {
                 $cc->$f($params{$cgi})
@@ -4872,6 +4902,7 @@ sub edit_category_types_from_params {
                                                     name_singular => ucfirst($params{create}),
                                                     name_plural => ucfirst($params{create} . 's'),
                                                     generate_index => $params{generate_index} ? 1 : 0,
+                                                    in_colophon => $params{in_colophon} ? 1 : 0,
                                                    });
         $changed++;
     }

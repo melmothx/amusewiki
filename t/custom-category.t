@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 165;
+use Test::More tests => 167;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -239,4 +239,13 @@ foreach my $text ($site->titles) {
         like $updated_preview_html, qr{<a class="cf-preview-target-url".*?>\&lt\;1\Q$f\E\&gt\;</a>\E};
         $mech->get_ok("/category/$f");
     }
+    $site->site_category_types->search({ category_type => [ @indexed, @not_indexed ] })
+      ->update({ in_colophon => 1 });
+
+    $site = $site->get_from_storage;
+    my %check_colophon = map { $_ => "$_, $_" } (@indexed, @not_indexed);
+    like $site->_autocreate_colophon(\%check_colophon), qr{\*\*Locations\*\*:.*location};
+    %check_colophon = map { $_ => "$_" } (@indexed, @not_indexed);
+    like $site->_autocreate_colophon(\%check_colophon), qr{\*\*Location\*\*:.*location};
+
 }
