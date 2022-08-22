@@ -70,6 +70,17 @@
           <img src="[% text.cover %]" alt="[% text.cover %]" class="img-responsive img-thumbnail"/>
         </p>
         [% END %]
+
+        [% IF text.colophon %]
+          <div id="text-preview-colophon" style="margin-top: 20px">
+            <strong>[% loc('Colophon (displayed in the generated files):') %]</strong>
+            <div>
+              [% text.colophon %]
+            </div>
+          </div>
+        [% END %]
+
+
       </div>
     </div>
 
