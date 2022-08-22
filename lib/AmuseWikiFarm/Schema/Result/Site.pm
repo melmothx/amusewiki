@@ -4882,7 +4882,8 @@ sub edit_category_types_from_params {
     foreach my $cc ($self->site_category_types->all) {
         $count++;
         my $code = $cc->category_type;
-        foreach my $f (qw/active priority name_singular name_plural generate_index in_colophon/) {
+        foreach my $f (qw/active priority name_singular name_plural generate_index in_colophon
+                         xapian_custom_slot/) {
             my $cgi = $code . '_' . $f;
             if (exists $params{$cgi}) {
                 $cc->$f($params{$cgi})

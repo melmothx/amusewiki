@@ -13,6 +13,7 @@
         <th>[% loc('Priority') %]</th>
         <th>[% loc('Name singular') %]</th>
         <th>[% loc('Name plural') %]</th>
+        <th>[% loc('Search Engine Slot') %]</th>
       </tr>
       [% FOREACH ct IN site_category_types %]
         <tr>
@@ -51,6 +52,15 @@
                    class="form-control"
                    value="[% ct.name_plural | html %]" required/>
           </td>
+          <td>
+            [% IF (ct.category_type == 'topic' || ct.category_type == 'author') %]
+              [% loc('Built-in') %]
+            [% ELSE %]
+              <input type="number" name="[% ct.category_type %]_xapian_custom_slot"
+                     class="form-control"
+                     value="[% ct.xapian_custom_slot %]" min="0" max="9"/>
+            [% END %]
+          </td>
         </tr>
       [% END %]
       <tr>
@@ -60,9 +70,13 @@
         </td>
       </tr>
       <tr>
-        <td colspan="7" class="text-center">
+        <td colspan="8" class="text-center">
           <button class="btn btn-primary" type="submit">[% loc('Update') %]</button>
         </td>
       </tr>
     </table>
+</div>
+
+<div class="help">
+  [% loc('To enable the search engine facets for a given custom category, you need to assign a Search Engine Slot to it. If you change it later, you need to reindex the site.') %]
 </div>
