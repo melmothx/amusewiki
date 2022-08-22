@@ -81,6 +81,12 @@ __PACKAGE__->table("site_category_type");
   default_value: 1
   is_nullable: 0
 
+=head2 in_colophon
+
+  data_type: 'smallint'
+  default_value: 0
+  is_nullable: 0
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -98,6 +104,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "generate_index",
   { data_type => "smallint", default_value => 1, is_nullable => 0 },
+  "in_colophon",
+  { data_type => "smallint", default_value => 0, is_nullable => 0 },
 );
 
 =head1 PRIMARY KEY
@@ -132,8 +140,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2022-06-05 09:42:03
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:AtEz0ajUx/xRLEFLHvGtog
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2022-08-22 10:30:03
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:5qaKtLucFiqPGfhluBWqeg
 
 
 sub header_fields {
