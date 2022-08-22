@@ -34,6 +34,7 @@ foreach my $ctype ({
                     priority => 2,
                     name_singular => 'Publisherx',
                     name_plural => 'Publishers',
+                    xapian_custom_slot => 1,
                    },
                    {
                     category_type => 'location',
@@ -41,6 +42,7 @@ foreach my $ctype ({
                     priority => 3,
                     name_singular => 'Location',
                     name_plural => 'Locations',
+                    xapian_custom_slot => 2,
                    },
                    {
                     category_type => 'season',
@@ -48,6 +50,7 @@ foreach my $ctype ({
                     priority => 4,
                     name_singular => 'Season',
                     name_plural => 'Seasons',
+                    xapian_custom_slot => 3,
                    }) {
     $site->site_category_types->find_or_create($ctype);
 }
@@ -204,10 +207,10 @@ foreach my $text ($site->titles) {
     $mech->get_ok($preview);
     my $preview_html = $mech->content;
     foreach my $f (@indexed) {
-        like $preview_html, qr{<a class="cf-preview-target-url".*?>\&lt\;1\Q$f\E\&gt\;</a>\E};
+        like $preview_html, qr{<a class="cf-preview-target-url".*?>\&lt\;1\Q$f\E\&gt\;</a>};
     }
     foreach my $f (@not_indexed) {
-        like $preview_html, qr{<span class="cf-preview-target-html">\&lt\;1\Q$f\E\&gt\;\; \&lt\;\Q2$f\E\&gt\;</span>\E};
+        like $preview_html, qr{<span class="cf-preview-target-html">\&lt\;1\Q$f\E\&gt\;\; \&lt\;\Q2$f\E\&gt\;</span>};
     }
     $rev->commit_version;
     my $uri = $rev->publish_text;
@@ -215,14 +218,14 @@ foreach my $text ($site->titles) {
     my $final_html = $mech->content;
     diag $final_html;
     foreach my $f (@indexed) {
-        like $final_html, qr{<a .*?class="text-\Q$f\Es-item">\&lt\;1\Q$f\E\&gt\;</a>\E};
-        like $final_html, qr{<a .*?class="text-\Q$f\Es-item">\&lt\;2\Q$f\E\&gt\;</a>\E};
+        like $final_html, qr{<a .*?class="text-\Q$f\Es-item">\&lt\;1\Q$f\E\&gt\;</a>};
+        like $final_html, qr{<a .*?class="text-\Q$f\Es-item">\&lt\;2\Q$f\E\&gt\;</a>};
         $mech->get_ok("/category/$f");
     }
     foreach my $f (@not_indexed) {
         $mech->get("/category/$f");
         is $mech->status, 404;
-        like $final_html, qr{<span class="text-cf-\Q$f\Es-html">\&lt\;1\Q$f\E\&gt\;\; \&lt\;\Q2$f\E\&gt\;</span>\E};
+        like $final_html, qr{<span class="text-cf-\Q$f\Es-html">\&lt\;1\Q$f\E\&gt\;\; \&lt\;\Q2$f\E\&gt\;</span>};
     }
     # now flip the indexed flag and check if the texts flip
     $site->site_category_types->search({ category_type => \@not_indexed })
@@ -230,13 +233,13 @@ foreach my $text ($site->titles) {
     $mech->get_ok($uri . '?bare=1');
     my $updated_final_html = $mech->content;
     foreach my $f (@indexed, @not_indexed) {
-        like $updated_final_html, qr{<a .*?class="text-\Q$f\Es-item">\&lt\;1\Q$f\E\&gt\;</a>\E};
-        like $updated_final_html, qr{<a .*?class="text-\Q$f\Es-item">\&lt\;2\Q$f\E\&gt\;</a>\E};
+        like $updated_final_html, qr{<a .*?class="text-\Q$f\Es-item">\&lt\;1\Q$f\E\&gt\;</a>};
+        like $updated_final_html, qr{<a .*?class="text-\Q$f\Es-item">\&lt\;2\Q$f\E\&gt\;</a>};
     }
     $mech->get_ok($preview);
     my $updated_preview_html = $mech->content;
     foreach my $f (@indexed, @not_indexed) {
-        like $updated_preview_html, qr{<a class="cf-preview-target-url".*?>\&lt\;1\Q$f\E\&gt\;</a>\E};
+        like $updated_preview_html, qr{<a class="cf-preview-target-url".*?>\&lt\;1\Q$f\E\&gt\;</a>};
         $mech->get_ok("/category/$f");
     }
     $site->site_category_types->search({ category_type => [ @indexed, @not_indexed ] })
