@@ -4883,7 +4883,7 @@ sub edit_category_types_from_params {
         $count++;
         my $code = $cc->category_type;
         foreach my $f (qw/active priority name_singular name_plural generate_index in_colophon
-                         xapian_custom_slot/) {
+                         description/) {
             my $cgi = $code . '_' . $f;
             if (exists $params{$cgi}) {
                 $cc->$f($params{$cgi})
@@ -4892,6 +4892,14 @@ sub edit_category_types_from_params {
                 Dlog_info { "Updating $code $_" } +{ $cc->get_dirty_columns };
                 $cc->update;
                 $changed++;
+            }
+        }
+        if ($params{$code . "_assign_xapian_custom_slot"}) {
+            if ($cc->assign_xapian_custom_slot) {
+                $changed++;
+            }
+            else {
+                log_error { "Could not assign a Xapian slot. Out of slots for " . $self->id . "?" };
             }
         }
     }

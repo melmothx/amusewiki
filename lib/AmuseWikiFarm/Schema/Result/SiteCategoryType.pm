@@ -170,6 +170,31 @@ sub header_fields {
     return $fields{$f} || [ $f ];
 }
 
+sub assign_xapian_custom_slot {
+    my $self = shift;
+    # already assigned?
+    return if $self->xapian_custom_slot;
+    my %taken;
+    foreach my $cc ($self->site->site_category_types->all) {
+        if (my $slot = $cc->xapian_custom_slot) {
+            $taken{$slot}++;
+        }
+    }
+    my $done = 0;
+  ASSIGN_ID:
+    foreach my $i (1..9) {
+        unless ($taken{$i}) {
+            $self->update({
+                           xapian_custom_slot => $i,
+                           generate_index => 1,
+                          });
+            $done = 1;
+            last ASSIGN_ID;
+        }
+    }
+    return $done;
+}
+
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;

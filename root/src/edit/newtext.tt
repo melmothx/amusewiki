@@ -85,7 +85,7 @@
 
   [% FOREACH cct IN site.custom_category_types %]
     [% SET cct_name = cct.header %]
-    [% IF cct.active && !cct.custom_form%]
+    [% IF cct.active && !cct.custom_form %]
       <div class="form-group">
         <label for="cct-[% cct_name %]">
           [% IF cct.generate_index %]
@@ -98,9 +98,14 @@
                data-category-type="[% cct.category_type %]"
                maxlength="250" name="[% cct_name %]"
                value="[% processed_params.$cct_name | html %]">
-        [% IF cct.generate_index %]
+        [% IF cct.generate_index || cct.description%]
           <p class="help-block">
-            [% loc('Comma or semicolon separated list') %]
+            [% IF cct.description %]
+              [% cct.description | html %]
+            [% END %]
+            [% IF cct.generate_index %]
+              [% loc('Comma or semicolon separated list') %]
+            [% END %]
           </p>
         [% END %]
       </div>

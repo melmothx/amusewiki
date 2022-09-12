@@ -257,6 +257,8 @@ foreach my $text ($site->titles) {
                                             query => '',
                                            );
     diag Dumper($res->facet_tokens);
+    my ($season_facets) = grep { $_->{name} eq 'filter_custom3' } @{ $res->facet_tokens };
+    ok scalar(@{$season_facets->{facets}}), "Found facets for season";
 }
 {
     $mech->get_ok('/action/text/new');
@@ -298,4 +300,21 @@ foreach my $text ($site->titles) {
     foreach my $check (values %submit) {
         $mech->content_contains($check);
     }
+}
+
+{
+    my $cc = $site->site_category_types->create({
+                                                 category_type => 'dummy',
+                                                 active => 1,
+                                                 priority => 9,
+                                                 name_singular => 'Dummy',
+                                                 name_plural => 'Dummy',
+                                                 description => "Dummy entry",
+                                                 generate_index => 0,
+                                                });
+    $cc->discard_changes;
+    is $cc->generate_index, 0;
+    ok $cc->assign_xapian_custom_slot, "Assigned xapian custom slot";
+    is $cc->xapian_custom_slot, 4;
+    is $cc->generate_index, 1, "Generate index has been turned on";
 }
