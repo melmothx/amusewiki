@@ -470,6 +470,7 @@ CREATE TABLE site_category_type (
        generate_index SMALLINT NOT NULL DEFAULT 1,
        in_colophon SMALLINT NOT NULL DEFAULT 0,
        xapian_custom_slot SMALLINT NULL,
+       description TEXT,
        PRIMARY KEY (site_id, category_type)
 );
 
