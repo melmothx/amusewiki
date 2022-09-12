@@ -133,6 +133,55 @@
            value="[% processed_params.date | html %]" />
   </div>
 
+  <div class="form-group">
+    <label for="sku">[% loc('SKU') %]</label>
+    <input class="form-control" id="sku"
+           size="50"
+           maxlength="250"
+           name="sku"
+           value="[% processed_params.sku | html %]" />
+  </div>
+  <div class="form-group">
+    <label for="publisher">[% loc('Publisher') %]</label>
+    <input class="form-control" id="publisher"
+           size="50"
+           maxlength="250"
+           name="publisher"
+           value="[% processed_params.publisher | html %]" />
+  </div>
+  <div class="form-group">
+    <label for="seriesname">[% loc('Series Name') %]</label>
+    <input class="form-control" id="seriesname"
+           size="50"
+           maxlength="250"
+           name="seriesname"
+           value="[% processed_params.seriesname | html %]" />
+  </div>
+  <div class="form-group">
+    <label for="seriesnumber">[% loc('Series Number') %]</label>
+    <input class="form-control" id="seriesnumber"
+           size="50"
+           maxlength="250"
+           name="seriesnumber"
+           value="[% processed_params.seriesnumber | html %]" />
+  </div>
+  <div class="form-group">
+    <label for="isbn">[% loc('ISBN') %]</label>
+    <input class="form-control" id="isbn"
+           size="50"
+           maxlength="250"
+           name="isbn"
+           value="[% processed_params.isbn | html %]" />
+  </div>
+  <div class="form-group">
+    <label for="rights">[% loc('Rights') %]</label>
+    <input class="form-control" id="rights"
+           size="50"
+           maxlength="250"
+           name="rights"
+           value="[% processed_params.rights | html %]" />
+  </div>
+
   <div class="form-group"><label for="source">[% loc('Source') %]</label>
 
 

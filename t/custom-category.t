@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 167;
+use Test::More tests => 197;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -257,4 +257,45 @@ foreach my $text ($site->titles) {
                                             query => '',
                                            );
     diag Dumper($res->facet_tokens);
+}
+{
+    $mech->get_ok('/action/text/new');
+    my %submit = (
+                  title => 'MY TITLE',
+                  sku => 'MY SKU',
+                  rights => 'MY COPYRIGHT',
+                  seriesname => 'MY SERIES NAME',
+                  seriesnumber => 'MY SERIES NUMBER',
+                  isbn => 'MY ISBN',
+                  publisher => 'MY PUBLISHER',
+                 );
+    $mech->submit_form(with_fields => \%submit, button => 'go');
+    my $html = $mech->content;
+    if ($html =~ m{<textarea.*?>(.*?)</textarea>}s) {
+        my $muse_body = $1;
+        diag "Body is $muse_body";
+        foreach my $f (keys %submit) {
+            like $muse_body, qr{\#\Q$f\E \Q$submit{$f}\E\n}, "$f found in muse body";
+        }
+    }
+    else {
+        die "textarea not found";
+    }
+    $mech->uri =~ m{/(\d+)$};
+    my $rev = $schema->resultset('Revision')->find($1);
+    my $preview = $mech->uri . '/preview?bare=1';
+    foreach my $check (values %submit) {
+        $mech->content_contains($check);
+    }
+    $rev->commit_version;
+    my $uri = $rev->publish_text;
+    $mech->get_ok($uri . '?bare=1');
+    foreach my $check (values %submit) {
+        $mech->content_contains($check);
+    }
+    $mech->get_ok($uri . '.html');
+    delete $submit{sku}; # special case, doesn't enter the formats
+    foreach my $check (values %submit) {
+        $mech->content_contains($check);
+    }
 }

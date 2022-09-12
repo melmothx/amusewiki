@@ -32,26 +32,79 @@
           </p>
         [% END %]
 
+
         [% IF text.date %]
-        <p id="textdate">
-          <strong>[% loc('Date') %]:</strong>
-          [% text.date %]
-        </p>
+          <div id="textdate">
+            <span id="textdate-label">
+              <strong>[% loc('Date') %]:</strong>
+            </span>
+            [% text.date %]
+          </div>
         [% END %]
 
         [% IF text.source %]
-        <p id="preamblesrc">
-          <strong>[% loc('Source') %]:</strong>
-          [% text.source %]
-        </p>
+          <div id="preamblesrc">
+            <span id="preamblesrc-label">
+              <strong>[% loc('Source') %]:</strong>
+            </span>
+            [% text.source %]
+          </div>
         [% END %]
 
         [% IF text.notes %]
-        <p id="preamblenotes">
-          <strong>[% loc('Notes') %]:</strong>
-          [% text.notes %]
-        </p>
+          <div id="preamblenotes">
+            <span id="preamblenotes-label">
+              <strong>[% loc('Notes') %]:</strong>
+            </span>
+            [% text.notes %]
+          </div>
         [% END %]
+
+        [% IF text.isbn %]
+          <div id="preambleisbn">
+            <span id="preambleisbn-label">
+              <strong>[% loc('ISBN') %]:</strong>
+            </span>
+            [% text.isbn %]
+          </div>
+        [% END %]
+
+        [% IF text.publisher %]
+          <div id="preamblepublisher">
+            <span id="preamblepublisher-label">
+              <strong>[% loc('Publisher') %]:</strong>
+            </span>
+            [% text.publisher %]
+          </div>
+        [% END %]
+
+        [% IF text.seriesname || text.seriesnumber %]
+          <div id="preambleseries">
+            <span id="preambleseries-label">
+              <strong>[% loc('Series') %]:</strong>
+            </span>
+            [% text.seriesname %] [% text.seriesnumber %]
+          </div>
+
+        [% END %]
+        [% IF text.rights %]
+          <div id="preamblerights">
+            <span id="preamblerights-label">
+              <strong>[% loc('Rights') %]:</strong>
+            </span>
+            [% text.rights %]
+          </div>
+        [% END %]
+
+        [% IF text.sku %]
+          <div id="preamblesku">
+            <span id="preamblesku-label">
+              <strong>[% loc('SKU') %]:</strong>
+            </span>
+            [% text.sku %]
+          </div>
+        [% END %]
+
 
         [% IF text.teaser  %]
         <p id="teaser-preview">

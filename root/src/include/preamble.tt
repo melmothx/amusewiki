@@ -119,12 +119,24 @@
       </span>
       [% text.seriesname %] [% text.seriesnumber %]
     </div>
-
     [% END %]
+
     [% IF text.rights %]
-    <div id="preamblerights">
-      <strong>[% text.rights %]</strong>
-    </div>
+      <div id="preamblerights">
+        <span id="preamblerights-label">
+          <strong>[% loc('Rights') %]:</strong>
+        </span>
+        [% text.rights %]
+      </div>
+    [% END %]
+
+    [% IF text.sku %]
+      <div id="preamblesku">
+        <span id="preamblesku-label">
+          <strong>[% loc('SKU') %]:</strong>
+        </span>
+        [% text.sku %]
+      </div>
     [% END %]
 
     [% SET text_mirror_source = text.mirror_source %]
