@@ -4919,18 +4919,28 @@ sub edit_category_types_from_params {
                 $cc->$f($params{$cgi})
             }
             if ($cc->is_changed) {
-                Dlog_info { "Updating $code $_" } +{ $cc->get_dirty_columns };
+                my %dirty = $cc->get_dirty_columns;
+                Dlog_info { "Updating $code $_" } \%dirty;
                 $cc->update;
-                $changed++;
+                if ($dirty{generate_index} or $dirty{active}) {
+                    $changed = 2;
+                }
+                else {
+                    $changed ||= 1;
+                }
             }
         }
-        if ($params{$code . "_assign_xapian_custom_slot"}) {
+        if ($code eq 'topic' or $code eq 'author') {
+            log_debug { "Skipping built-in $code" };
+        }
+        elsif ($params{$code . "_assign_xapian_custom_slot"}) {
             if ($cc->assign_xapian_custom_slot) {
-                $changed++;
+                $changed = 2;
             }
-            else {
-                log_error { "Could not assign a Xapian slot. Out of slots for " . $self->id . "?" };
-            }
+        }
+        elsif ($cc->xapian_custom_slot) {
+            $cc->update({ xapian_custom_slot => undef });
+            $changed = 2;
         }
     }
     if ($params{create} and $params{create} =~ m/\A[a-z]{1,16}\z/) {
@@ -4943,7 +4953,7 @@ sub edit_category_types_from_params {
                                                     generate_index => $params{generate_index} ? 1 : 0,
                                                     in_colophon => $params{in_colophon} ? 1 : 0,
                                                    });
-        $changed++;
+        $changed = 2;
     }
     $guard->commit;
     return $changed;

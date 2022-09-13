@@ -55,13 +55,15 @@
           </td>
           <td>
             [% IF ct.category_type == 'topic' || ct.category_type == 'author' %]
-              [% loc('Built-in') %]
-            [% ELSIF ct.xapian_custom_slot  %]
-              [% loc('Yes') %]
-            [% ELSE %]
-              Handle turning this off. Add boolean for showing the built-in in the form.
               <input type="checkbox" name="[% ct.category_type %]_assign_xapian_custom_slot"
-                     value="1" />
+                     value="1"
+                     checked="checked" onclick="return false;" />
+              <small>[% loc('Built-in') %]</small>
+            [% ELSE %]
+              <input type="checkbox" name="[% ct.category_type %]_assign_xapian_custom_slot"
+                     value="1"
+                     [% IF ct.xapian_custom_slot %]checked="checked"[% END %]
+              />
             [% END %]
           </td>
           <td>
