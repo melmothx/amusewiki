@@ -23,7 +23,10 @@
   [% END %]
   <form id="site-rebuild-form" action="[% c.uri_for_action('/tasks/rebuild') %]" method="POST">
     <button type="submit" class="btn btn-primary" name="rebuild" value="1">
-      [% loc("Rebuild") %]
+      [% loc("Rebuild formats") %]
+    </button>
+    <button type="submit" class="btn btn-primary" name="reindex" value="1">
+      [% loc("Reindex site") %]
     </button>
   </form>
 </div>

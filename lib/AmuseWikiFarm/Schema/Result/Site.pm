@@ -4522,7 +4522,16 @@ sub update_db_from_tree_async {
     my ($self, $logger, $username) = @_;
     $logger ||= sub { print @_ };
     my @files = $self->_pre_update_db_from_tree($logger);
+    $self->create_reindex_bulk_job(files => \@files, username => $username);
+}
+
+sub create_reindex_bulk_job {
+    my ($self, %opts) = @_;
+    die "Missing required option files" unless $opts{files};
+    my @files = @{$opts{files}};
+    my $username = $opts{username};
     my $now = DateTime->now;
+    my $site_id = $self->id;
     return $self->bulk_jobs->reindexes->create({
                                      created => $now,
                                      status => (scalar(@files) ? 'active' : 'completed'),
@@ -4531,7 +4540,7 @@ sub update_db_from_tree_async {
                                      jobs => [
                                               map {
                                                   +{
-                                                    site_id => $self->id,
+                                                    site_id => $site_id,
                                                     username => $username,
                                                     task => 'reindex',
                                                     status => 'pending',
@@ -4542,6 +4551,27 @@ sub update_db_from_tree_async {
                                               } @files ]
                                     });
 }
+
+sub reindex_site {
+    my ($self, %opts) = @_;
+    my $username = $opts{username};
+    my $files = [
+                 map { $_->{f_full_path_name} }
+                 $self->titles->published_or_deferred_all
+                 ->search(undef,
+                          {
+                           result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                           columns => [qw/f_full_path_name/],
+                          })->all
+                ];
+    Dlog_debug { "Texts to reindex are $_" } $files;
+    if ($username) {
+        $username =  AmuseWikiFarm::Utils::Amuse::clean_username($username);
+    }
+    return $self->create_reindex_bulk_job(username => $username, files => $files);
+}
+
+
 
 sub rebuild_formats {
     my ($self, $username) = @_;
