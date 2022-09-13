@@ -236,7 +236,7 @@ sub edit_categories :Chained('list_categories') :PathPart('edit') :Args(0) {
     my %params = %{ $c->request->body_parameters };
     try {
         if ($site->edit_category_types_from_params(\%params)) {
-            $c->flash(status_msg => $c->loc("Changes applied"));
+            $c->flash(status_msg => $c->loc("Changes applied. Please reindex the site when done."));
         }
     } catch {
         my $err = $_;
