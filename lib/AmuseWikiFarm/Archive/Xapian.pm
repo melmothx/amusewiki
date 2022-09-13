@@ -454,6 +454,15 @@ sub index_text {
                     $self->_index_html($indexer, $thing);
                 }
             }
+            # built-ins fields
+            # Dlog_debug { "Row is $_" } +{ $title->get_columns };
+            foreach my $method (qw/rights isbn seriesname seriesnumber publisher sku/) {
+                # log_debug { "Calling $method against title" };
+                if (my $thing = $title->$method) {
+                    # log_debug { "Indexing $method $thing" };
+                    $indexer->index_text($thing);
+                }
+            }
             my %muse_headers = map { $_->muse_header => $_->as_html } $title->muse_headers;
             foreach my $cct (@$custom_category_types) {
                 if (my $header = $muse_headers{$cct->{category_type}}) {
