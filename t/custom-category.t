@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 197;
+use Test::More tests => 203;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -128,6 +128,7 @@ ok $site->edit_category_types_from_params({
                                            publisherx_priority => 4,
                                            publisherx_name_singular => 'P',
                                            publisherx_name_plural => 'PP',
+                                           publisherx_assign_xapian_custom_slot => 1,
                                           });
 {
     my $cc = $site->site_category_types->find({ category_type => 'pippo' });
@@ -314,6 +315,7 @@ foreach my $text ($site->titles) {
                                                 });
     $cc->discard_changes;
     is $cc->generate_index, 0;
+    is $cc->xapian_custom_slot, undef;
     ok $cc->assign_xapian_custom_slot, "Assigned xapian custom slot";
     is $cc->xapian_custom_slot, 4;
     is $cc->generate_index, 1, "Generate index has been turned on";

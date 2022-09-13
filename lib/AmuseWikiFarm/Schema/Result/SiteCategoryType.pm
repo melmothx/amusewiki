@@ -157,6 +157,7 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07049 @ 2022-09-12 09:21:26
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2BgaWnHrvxMW98vKj0Oixg
 
+use AmuseWikiFarm::Log::Contextual;
 
 sub header_fields {
     my $self = shift;
@@ -181,6 +182,7 @@ sub assign_xapian_custom_slot {
         }
     }
     my $done = 0;
+    Dlog_debug { "Slots are $_" } \%taken;
   ASSIGN_ID:
     foreach my $i (1..9) {
         unless ($taken{$i}) {

@@ -4378,6 +4378,29 @@ sub bootstrap_alt_theme {
     return shift->get_option('bootstrap_alt_theme');
 }
 
+sub built_in_directives {
+    my $self = shift;
+    # loc('Copyright notice'); loc('ISBN'); loc('Series Number');
+    # loc('Series Name'); loc('Publisher'); loc('SKU');
+    my %builtins = (
+                    rights => 'Copyright notice',
+                    isbn => 'ISBN',
+                    seriesnumber => 'Series Number',
+                    seriesname => 'Series Name',
+                    publisher => 'Publisher',
+                    sku => 'SKU',
+                   );
+    my @out;
+    foreach my $f (sort keys %builtins) {
+        push @out, {
+                    name => $f,
+                    description => $builtins{$f},
+                    active => $self->get_option("active_built_in_directive_$f") // 1,
+                   };
+    }
+    return \@out;
+}
+
 sub xapian_reindex_all {
     my ($self, $logger) = @_;
     $logger ||= sub { return };
@@ -4909,9 +4932,14 @@ sub edit_category_types_from_params {
     my $count = 0;
     my $changed = 0;
     my $guard = $self->result_source->schema->txn_scope_guard;
+    my %existing;
+  CATEGORY_TYPE:
     foreach my $cc ($self->site_category_types->all) {
         $count++;
         my $code = $cc->category_type;
+        $existing{code}++;
+        # skip editing if not passed
+        next CATEGORY_TYPE unless exists $params{$code . "_active"};
         foreach my $f (qw/active priority name_singular name_plural generate_index in_colophon
                          description/) {
             my $cgi = $code . '_' . $f;
@@ -4943,7 +4971,24 @@ sub edit_category_types_from_params {
             $changed = 2;
         }
     }
-    if ($params{create} and $params{create} =~ m/\A[a-z]{1,16}\z/) {
+    # then the built-in directives
+    foreach my $bir (@{$self->built_in_directives || []}) {
+        my $option = "active_built_in_directive_" . $bir->{name};
+        $existing{$bir->{name}}++;
+        if (defined $params{$option}) {
+            log_debug { "Updating $option $params{$option}" };
+            my $existing = $self->get_option($option);
+            if (!defined($existing) or $existing ne $params{$option}) {
+                log_debug { "Updating $option from $existing to $params{$option}" };
+                $self->site_options->update_or_create({
+                                                       option_name => $option,
+                                                       option_value => $params{$option},
+                                                      });
+                $changed ||= 1;
+            }
+        }
+    }
+    if ($params{create} and $params{create} =~ m/\A[a-z]{1,16}\z/ and !$existing{$params{create}}) {
         $self->site_category_types->find_or_create({
                                                     category_type => $params{create},
                                                     priority => $count + 1,
