@@ -84,7 +84,7 @@
               <option value="0" [% UNLESS builtindir.active %]selected[% END %]>
                 [% loc('No') %]
               </option>
-            </select>
+            </select>&nbsp;<a href="#builtinexplanation"><strong>*</strong></a>
           </td>
           <td>[% loc('No') %]</td>
           <td>[% loc('Built-in') %]</td>
@@ -118,3 +118,7 @@
   </form>
 </div>
 
+<p class="help-block" id="builtinexplanation">
+  <strong>*</strong>[% loc('This setting affects only the text creation form.') %]
+  <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]"><i class="fa fa-share"></i></a>
+</p>

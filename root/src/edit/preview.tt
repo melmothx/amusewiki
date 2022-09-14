@@ -62,15 +62,13 @@
 
         [% FOREACH builtindir IN site.built_in_directives %]
           [% SET builtindir_name = builtindir.name %]
-          [% IF builtindir.active %]
-            [% IF text.$builtindir_name %]
-              <div id="preamble[% builtindir_name %]">
-                <span id="preamble[% builtindir_name %]-label">
-                  <strong>[% loc(builtindir.description) %]:</strong>
-                  [% text.$builtindir_name %]
-                </span>
-              </div>
-            [% END %]
+          [% IF text.$builtindir_name %]
+            <div id="preamble[% builtindir_name %]">
+              <span id="preamble[% builtindir_name %]-label">
+                <strong>[% loc(builtindir.description) %]:</strong>
+                [% text.$builtindir_name %]
+              </span>
+            </div>
           [% END %]
         [% END %]
 

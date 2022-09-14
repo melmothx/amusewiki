@@ -54,6 +54,17 @@ foreach my $ctype ({
                    }) {
     $site->site_category_types->find_or_create($ctype);
 }
+
+# activate them for the form
+foreach my $dir (@{ $site->built_in_directives }) {
+    $site->site_options->update_or_create({
+                                           option_name => "active_built_in_directive_" . $dir->{name},
+                                           option_value => 1,
+                                          });
+}
+
+
+
 $site->discard_changes;
 is $site->site_category_types->count, 5;
 

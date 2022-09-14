@@ -4395,7 +4395,7 @@ sub built_in_directives {
         push @out, {
                     name => $f,
                     description => $builtins{$f},
-                    active => $self->get_option("active_built_in_directive_$f") // 1,
+                    active => $self->get_option("active_built_in_directive_$f") || 0,
                    };
     }
     return \@out;
