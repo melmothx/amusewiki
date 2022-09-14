@@ -7,6 +7,7 @@
     <table class="table table-striped table-condensed table-bordered">
       <tr>
         <th>[% loc('Code') %]</th>
+        <th>[% loc('Headers') %]</th>
         <th>
           [% loc('Active') %]
         </th>
@@ -22,6 +23,11 @@
         <tr>
           <td>
             <code>[% ct.category_type %]</code>
+          </td>
+          <td>
+            [% FOREACH header IN ct.header_fields %]
+              <code>#[% header %]</code>
+            [% END %]
           </td>
           <td>
             <select name="[% ct.category_type %]_active" required>
@@ -69,13 +75,15 @@
             [% END %]
           </td>
           <td>
-            <textarea name="[% ct.category_type %]_description">[% ct.description | html %]</textarea>
+            <textarea class="form-control"
+                      name="[% ct.category_type %]_description">[% ct.description | html %]</textarea>
           </td>
         </tr>
       [% END %]
       [% FOREACH builtindir IN site.built_in_directives %]
         <tr>
           <td><code>[% builtindir.name %]</code></td>
+          <td><code>#[% builtindir.name %]</code></td>
           <td>
             <select name="active_built_in_directive_[% builtindir.name %]" required>
               <option value="1" [% IF builtindir.active %]selected[% END %]>
@@ -96,13 +104,13 @@
         </tr>
       [% END %]
       <tr>
-        <td colspan="4">[% loc('Create a new category type. Please use only lowercase ASCII letters') %]</td>
-        <td colspan="4">
+        <td colspan="5">[% loc('Create a new category type. Please use only lowercase ASCII letters') %]</td>
+        <td colspan="5">
           <input type="text" name="create" pattern="[a-z]{1,16}" class="form-control" />
         </td>
       </tr>
       <tr>
-        <td colspan="8" class="text-center">
+        <td colspan="10" class="text-center">
           <button class="btn btn-primary" type="submit">[% loc('Update') %]</button>
         </td>
       </tr>
