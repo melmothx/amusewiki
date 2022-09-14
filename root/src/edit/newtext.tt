@@ -34,7 +34,7 @@
     </p>
   </div>
   [% END %]
-  <div class="form-group">
+  <div id="create-block-title" class="form-group">
     <label for="title" class="mandatory">[% loc('Title') %]
       ([% loc('mandatory') %])
     </label>
@@ -52,7 +52,7 @@
     </p>
   </div>
 
-  <div class="form-group">
+  <div id="create-block-subtitle" class="form-group">
     <label for="subtitle">[% loc('Subtitle') %]</label>
     <input class="form-control" type="text" name="subtitle" id="subtitle"
            maxlength="250"
@@ -62,7 +62,7 @@
 
   [% IF f_class == 'text' %]
 
-  <div class="form-group">
+  <div id="create-block-listtitle" class="form-group">
     <label for="LISTtitle">[% loc('Title for sorting') %]</label>
     <input class="form-control" type="text" name="LISTtitle" id="LISTtitle"
            maxlength="250" size="30"
@@ -73,7 +73,7 @@
   </div>
 
 
-  <div class="form-group">
+  <div id="create-block-author" class="form-group">
     <label for="author">[% loc('Author') %]</label>
     ([% loc('for display') %])
     <input class="form-control amwautocomplete uri-maker"
@@ -86,7 +86,7 @@
   [% FOREACH cct IN site.custom_category_types %]
     [% SET cct_name = cct.header %]
     [% IF cct.active && !cct.custom_form %]
-      <div class="form-group">
+      <div id="create-block-[% cct_name %]" class="form-group">
         <label for="cct-[% cct_name %]">
           [% IF cct.generate_index %]
             [% loc(cct.name_plural) %]
@@ -129,7 +129,7 @@
   </div>
   [% END %]
 
-  <div class="form-group">
+  <div id="create-block-date" class="form-group">
     <label for="date">[% loc('Date of the original publication') %]</label>
     <input class="form-control" id="date"
            size="50"
@@ -153,7 +153,8 @@
     [% END %]
   [% END %]
 
-  <div class="form-group"><label for="source">[% loc('Source') %]</label>
+  <div id="create-block-source" class="form-group">
+    <label for="source">[% loc('Source') %]</label>
 
 
     <input class="form-control" id="source" size="50" maxlength="250"
@@ -166,14 +167,14 @@
   [% END %]
 
   [% IF site.multilanguage %]
-  <div class="form-group">
+  <div id="create-block-uid" class="form-group">
     <label for="text-uid">[% loc('Unique ID for the text') %]</label>
     <input class="form-control" name="uid" id="text-uid" type="text"
            value="[% processed_params.uid | html %]" />
   </div>
   [% END %]
 
-  <div class="form-group">
+  <div id="create-block-lang" class="form-group">
     [% SET current_language = processed_params.lang || current_locale_code %]
     <label for="lang">[% loc('Language') %]</label>
     <select name="lang" id="lang" class="form-control uri-maker">
@@ -189,7 +190,7 @@
   </div>
 
   [% IF site.sl_pdf %]
-  <div class="checkbox">
+  <div id="create-block-slides" class="checkbox">
     <label>
       <input type="checkbox"
              [% IF c.req.params.slides %]checked="checked"[% END %]
@@ -200,7 +201,7 @@
     </label>
   </div>
   [% END %]
-
+  <div id="create-block-muse-body">
   <h3>[% loc('Main text') %]</h3>
   <div>
     <p>
@@ -236,8 +237,9 @@
       [% loc('If you have a file in .doc or .odt, you can easily convert it saving it as HTML') %]
     </p>
   </div>
-
+  </div>
   [% IF f_class == 'text' %]
+    <div id="create-block-notes">
   <h3>[% loc('Notes') %]</h3>
   <div>
     [% loc('Put additional information here (original
@@ -249,10 +251,12 @@
     <textarea id="notes" name="notes" cols="80"
               rows="5">[%- processed_params.notes | html %]</textarea>
   </div>
+    </div>
   [% END %]
 
   [% IF blog_style %]
   [% IF f_class == 'text' %]
+    <div id="create-block-teaser">
   <h3>[% loc('Teaser') %]</h3>
   <div>
     [% loc('The text to show on the homepage preview') %]
@@ -268,6 +272,7 @@
     <textarea id="teaser" name="teaser" cols="80"
               rows="10">[%- processed_params.teaser | html %]</textarea>
   </div>
+    </div>
   [% END %]
   [% END %]
 
@@ -296,7 +301,7 @@
   </div>
   [% END %]
   </div>
-  <div class="form-group">
+  <div id="create-block-pubdate" class="form-group">
     <label for="pubdate">[% loc('Publication date on this site') %]</label>
     <input class="form-control" id="pubdate"
            type="date"
@@ -325,6 +330,7 @@
     </div>
   </div>
   [% IF node_checkboxes %]
+    <div id="create-block-nodes">
     <h3>[% loc('Assign text to nodes') %]</h3>
     <div class="form-group">
       [% FOREACH node IN node_checkboxes %]
@@ -340,6 +346,7 @@
           </div>
         </div>
       [% END %]
+    </div>
     </div>
   [% END %]
 </form>
