@@ -141,13 +141,13 @@
         <pre id="editing-warnings-inline-footnotes" style="display:none"></pre>
       </div>
     </div>
-    <div>
+    <div id="edit-cheatsheet-link">
       <a href="#cheatsheet">
         <span class="fa fa-hand-o-right"></span>
         [% loc('Cheatsheet for the markup') %]
       </a>
     </div>
-    <div>
+    <div id="edit-utils-import-link">
       <a href="[% c.uri_for_action('utils/import') %]" target="_blank">
         <span class="fa fa-hand-o-right"></span>
         [% loc('HTML/Word Importer') %]
@@ -167,7 +167,7 @@
     <div class="row">
       <div class="col-xs-12" id="upload-progress"></div>
     </div>
-    <div>
+    <div id="edit-add-attachment-block">
       <label for="attachment">
         [% loc('Add an attachment') %] ([% allowed_upload_extensions | html %],
         [% loc('max [_1] Mb', site.binary_upload_max_size_in_mega) %])
@@ -186,7 +186,7 @@
         [% loc('Upload') %]
       </button>
     </div>
-    <div class="checkbox">
+    <div id="edit-add-attachment-to-body-block" class="checkbox">
       <label>
       <input id="add-attachment-to-body"
              value="1"
@@ -194,7 +194,7 @@
       [% loc("Insert the file into the body at the cursor position") %]
       </label>
     </div>
-    <div class="checkbox">
+    <div id="edit-split-pdf-block" class="checkbox">
       <label>
       <input id="split-pdf"
              value="1"
@@ -202,7 +202,7 @@
       [% loc('When you upload a PDF, split it into images to be inserted in the body') %]
       </label>
     </div>
-    <div>
+    <div id="edit-toggle-filters-block">
       <label role="button"
          data-target="#filters"
          data-toggle="collapse"
@@ -223,7 +223,7 @@
               text. If not available, they will just leave the text as
               is.') %]
     </p>
-    <div class="checkbox">
+    <div id="edit-fix-typography-block" class="checkbox">
       <label>
       <input id="fix-typo"
              [% IF c.req.params.fix_typography %]checked="checked"[% END %]
@@ -232,7 +232,7 @@
       [% loc('Fix typography (smart quotes)') %]
       </label>
     </div>
-    <div class="checkbox">
+    <div id="edit-fix-links-block" class="checkbox">
       <label>
         <input id="fix-links"
                [% IF c.req.params.fix_links %]checked="checked"[% END %]
@@ -241,7 +241,7 @@
         [% loc('Make all links active') %]
       </label>
     </div>
-    <div class="checkbox fix-nbsp-related-stuff">
+    <div id="edit-remove-nbsp-block" class="checkbox fix-nbsp-related-stuff">
       <label>
         <input id="remove-nbsp"
                [% IF c.req.params.remove_nbsp %]checked="checked"[% END %]
@@ -254,7 +254,7 @@
       </label>
     </div>
 
-    <div class="checkbox">
+    <div id="edit-show-nbsp-block" class="checkbox">
       <label>
         <input id="show-nbsp"
                [% IF c.req.params.show_nbsp %]checked="checked"[% END %]
@@ -266,7 +266,7 @@
 
 
 
-    <div class="checkbox fix-nbsp-related-stuff">
+    <div id="edit-fix-nbsp-block" class="checkbox fix-nbsp-related-stuff">
       <label>
         <input id="fix-nbsp"
                [% IF c.req.params.fix_nbsp %]checked="checked"[% END %]
@@ -276,7 +276,7 @@
       </label>
     </div>
 
-    <div class="checkbox">
+    <div id="edit-fix-footnotes-block" class="checkbox">
       <label>
         <input id="fix-footnotes"
                [% IF c.req.params.fix_footnotes %]checked="checked"[% END %]
@@ -298,7 +298,7 @@
     <!-- end of filters -->
     <div>&nbsp;</div>
 
-    <div>
+    <div id="edit-rev-message-block">
       <label for="rev-message">
         [% loc('Please describe shortly what you did') %]
       </label>
@@ -307,7 +307,7 @@
                 name="message" class="form-control" [% UNLESS site.do_not_enforce_commit_message %]required[% END %]>[%- c.req.params.message | html -%]</textarea>
       <br />
     </div>
-    <div>
+    <div id="edit-leave-mail-block">
       <label for="email">
         [% loc('Please leave a mail if you want to be contacted about this change') %]
       </label>
@@ -342,7 +342,7 @@
     </div>
     </div>
 
-    <div class="panel panel-default">
+    <div id="edit-cheatsheet-block-toggler-block" class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title"
             role="button"
