@@ -4824,17 +4824,16 @@ sub create_feed {
     }
 
     foreach my $text (@specials, @texts) {
-        my $pubdate_epoch = $text->pubdate->epoch;
+        my $ts = $text->pubdate->epoch;
 
         # to fool the scrapers, set the permalink for specials
         # adding a version with the timestamp of the file, so we
         # catch updates
-        my $ts = $text->is_regular ? $pubdate_epoch : $text->f_timestamp_epoch;
         my $link = $self->canonical_url . $text->full_uri . "?v=$ts";
 
         my $item = $feed->add_item($link);
         $item->title(AmuseWikiFarm::Utils::Amuse::clean_html($text->author_title));
-        $item->pubDate($pubdate_epoch);
+        $item->pubDate($ts);
         $item->guid(undef, isPermaLink => 1);
 
         my @lines;
