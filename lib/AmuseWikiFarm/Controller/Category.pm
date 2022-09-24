@@ -81,6 +81,7 @@ sub category :Chained('root') :PathPart('category') :CaptureArgs(1) {
     if (my $ctype = $site->site_category_types->single({
                                                         category_type => $type,
                                                         active => 1,
+                                                        generate_index => 1,
                                                        })) {
         $name = $c->loc($ctype->name_plural);
     }

@@ -140,6 +140,12 @@ sub rebuild :Chained('bulks') :PathPart('rebuild') :Args(0) {
         $c->detach;
         return;
     }
+    elsif ($c->request->body_params->{reindex}) {
+        my $job = $c->stash->{site}->reindex_site(username => $c->user->get('username'));
+        $c->response->redirect($c->uri_for_action('/tasks/show_bulk_job', [ $job->bulk_job_id ]));
+        $c->detach;
+        return;
+    }
     elsif ($c->request->body_params->{cancel}) {
         $rs->abort_all;
     }

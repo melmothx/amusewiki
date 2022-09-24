@@ -498,6 +498,12 @@
                   </a>
                 </li>
                 <li>
+                  <a href="[% c.uri_for_action('/settings/categories') %]">
+                    <span class="fa fa-cogs fa-fw" aria-hidden="true"></span>
+                    [% loc('Category types for [_1]', site.canonical) %]
+                  </a>
+                </li>
+                <li>
                   <a href="[% c.uri_for_action('/tasks/rebuild') %]">
                     <span class="fa fa-refresh fa-fw" aria-hidden="true"></span>
                     [% loc('Rebuild all generated files') %]

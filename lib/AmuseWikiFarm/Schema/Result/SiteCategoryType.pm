@@ -75,6 +75,28 @@ __PACKAGE__->table("site_category_type");
   is_nullable: 0
   size: 255
 
+=head2 generate_index
+
+  data_type: 'smallint'
+  default_value: 1
+  is_nullable: 0
+
+=head2 in_colophon
+
+  data_type: 'smallint'
+  default_value: 0
+  is_nullable: 0
+
+=head2 xapian_custom_slot
+
+  data_type: 'smallint'
+  is_nullable: 1
+
+=head2 description
+
+  data_type: 'text'
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -90,6 +112,14 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "name_plural",
   { data_type => "varchar", is_nullable => 0, size => 255 },
+  "generate_index",
+  { data_type => "smallint", default_value => 1, is_nullable => 0 },
+  "in_colophon",
+  { data_type => "smallint", default_value => 0, is_nullable => 0 },
+  "xapian_custom_slot",
+  { data_type => "smallint", is_nullable => 1 },
+  "description",
+  { data_type => "text", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -124,9 +154,10 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-11-16 11:01:49
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:mvkxzurO+uiYrdGz00M17A
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2022-09-12 09:21:26
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2BgaWnHrvxMW98vKj0Oixg
 
+use AmuseWikiFarm::Log::Contextual;
 
 sub header_fields {
     my $self = shift;
@@ -134,10 +165,36 @@ sub header_fields {
     # support.
     my %fields = (
                   author => [qw/authors sortauthors/],
-                  topic => [qw/cat sorttopics topics/],
+                  topic => [qw/topics cat sorttopics/],
                  );
     my $f = $self->category_type;
     return $fields{$f} || [ $f ];
+}
+
+sub assign_xapian_custom_slot {
+    my $self = shift;
+    # already assigned?
+    return if $self->xapian_custom_slot;
+    my %taken;
+    foreach my $cc ($self->site->site_category_types->all) {
+        if (my $slot = $cc->xapian_custom_slot) {
+            $taken{$slot}++;
+        }
+    }
+    my $done = 0;
+    Dlog_debug { "Slots are $_" } \%taken;
+  ASSIGN_ID:
+    foreach my $i (1..9) {
+        unless ($taken{$i}) {
+            $self->update({
+                           xapian_custom_slot => $i,
+                           generate_index => 1,
+                          });
+            $done = 1;
+            last ASSIGN_ID;
+        }
+    }
+    return $done;
 }
 
 

@@ -55,6 +55,11 @@ __PACKAGE__->table("muse_header");
   data_type: 'text'
   is_nullable: 1
 
+=head2 muse_value_html
+
+  data_type: 'text'
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -63,6 +68,8 @@ __PACKAGE__->add_columns(
   "muse_header",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "muse_value",
+  { data_type => "text", is_nullable => 1 },
+  "muse_value_html",
   { data_type => "text", is_nullable => 1 },
 );
 
@@ -98,10 +105,13 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-05-12 16:43:01
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sr59ZH+GRKolpReS/e+bfg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2022-06-05 09:02:32
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sU2OMLEdKfIgQPWD0P5IHw
+
+sub as_html {
+    shift->muse_value_html;
+}
 
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
 1;

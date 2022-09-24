@@ -183,6 +183,7 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_parse_file_path
                                    muse_attachment_basename_for
                                    clean_username
+                                   muse_file_info
                                    muse_naming_algo/;
 use Text::Amuse::Preprocessor;
 use AmuseWikiFarm::Log::Contextual;
@@ -992,13 +993,50 @@ sub author_mail {
 sub document_html_headers {
     my $self = shift;
     my $header = $self->muse_doc->header_as_html;
-    Dlog_debug { "Header is $_" } $header;
     if ($header->{cover}) {
         unless ($header->{cover} =~ m/\A[0-9a-z]+([0-9a-z-][0-9a-z]+)*\.(jpe?g|png)\z/) {
             $header->{cover} = 'file_not_found.png';
         }
     }
     return $header;
+}
+
+sub document_preview_fields {
+    my $self = shift;
+    my $site = $self->site;
+    my $ctypes = $site->custom_category_types;
+    my $parsed = muse_file_info($self->f_full_path_name,
+                                $self->working_dir,
+                                {
+                                 skip_path_checking => 1,
+                                 category_types => $ctypes,
+                                 category_uri_use_unicode => $site->category_uri_use_unicode,
+                                });
+    my @cats = @{ $parsed->{parsed_categories} || [] };
+    my $headers = $self->document_html_headers;
+    my @out;
+    foreach my $ctype (@$ctypes) {
+        next unless $ctype->{active};
+        if ($ctype->{generate_index}) {
+            if (my @found = grep { $_->{type} eq $ctype->{name} } @cats) {
+                push @out, {
+                            ctype => $ctype->{category_type},
+                            target_list => \@found, # name and uri
+                            label => @found > 1 ? $ctype->{name_plural} : $ctype->{name_singular},
+                           };
+            }
+        }
+        else {
+            if (my $html = $headers->{$ctype->{category_type}}) {
+                push @out, {
+                            label => $ctype->{name_singular},
+                            ctype => $ctype->{category_type},
+                            html => $html,
+                           },
+            }
+        }
+    }
+    return \@out;
 }
 
 sub append_to_revision_body {

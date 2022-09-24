@@ -8,6 +8,7 @@ use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Paths;
 use AmuseWikiFarm::Utils::Amuse;
 use IO::File;
+use HTML::Entities;
 
 =head1 NAME
 
@@ -33,16 +34,19 @@ sub api :Chained('/site') :CaptureArgs(0) {
 
 sub autocompletion :Chained('api') :Args(1) {
     my ($self, $c, $type) = @_;
-    my $query = lc($type);
-    my @list;
-    if ($type =~ m/(topic|author)/) {
-        my $type = $1;
-        # include the deferred
-        @list = map { $_->{name} }
-          @{$c->stash->{site}->categories->with_texts(deferred => 1)->by_type($type)->listing_tokens};
+
+    # legacy
+    if ($type =~ m/^(sort|list)?(topic|author)s$/) {
+        $type = $2;
     }
-    elsif ($type eq 'adisplay') {
+    my @list;
+    if ($type eq 'displayed_author') {
         @list = @{$c->stash->{site}->titles->list_display_authors};
+    }
+    else {
+        # include the deferred
+        @list = map { decode_entities($_->{name}) }
+          @{$c->stash->{site}->categories->with_texts(deferred => 1)->by_type($type)->listing_tokens};
     }
     Dlog_debug { "Found list for $type:  $_" } \@list;
     $c->stash(json => \@list);

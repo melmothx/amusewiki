@@ -235,8 +235,12 @@ sub edit_categories :Chained('list_categories') :PathPart('edit') :Args(0) {
     my $site = $c->stash->{site};
     my %params = %{ $c->request->body_parameters };
     try {
-        if ($site->edit_category_types_from_params(\%params)) {
-            $c->flash(status_msg => $c->loc("Changes applied"));
+        if (my $changed = $site->edit_category_types_from_params(\%params)) {
+            my $msg = $c->loc("Changes applied.");
+            if ($changed > 1) {
+                $msg .= " " . $c->loc("Please reindex the site.");
+            }
+            $c->flash(status_msg => $msg);
         }
     } catch {
         my $err = $_;

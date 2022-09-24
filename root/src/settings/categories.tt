@@ -7,15 +7,27 @@
     <table class="table table-striped table-condensed table-bordered">
       <tr>
         <th>[% loc('Code') %]</th>
-        <th>[% loc('Active') %]</th>
+        <th>[% loc('Headers') %]</th>
+        <th>
+          [% loc('Active') %]
+        </th>
+        <th>[% loc('Generate Index') %]</th>
+        <th>[% loc('Add to colophon') %]</th>
         <th>[% loc('Priority') %]</th>
         <th>[% loc('Name singular') %]</th>
         <th>[% loc('Name plural') %]</th>
+        <th>[% loc('Search Engine Facets') %]</th>
+        <th>[% loc('Help Text') %]</th>
       </tr>
       [% FOREACH ct IN site_category_types %]
         <tr>
           <td>
             <code>[% ct.category_type %]</code>
+          </td>
+          <td>
+            [% FOREACH header IN ct.header_fields %]
+              <code>#[% header %]</code>
+            [% END %]
           </td>
           <td>
             <select name="[% ct.category_type %]_active" required>
@@ -24,7 +36,19 @@
             </select>
           </td>
           <td>
-            <input type="number" name="[% ct.category_type %]_priority"
+            <select name="[% ct.category_type %]_generate_index" required>
+              <option value="0"[% IF ct.generate_index == '0' %] selected[% END %]>[% loc('No') %]</option>
+              <option value="1"[% IF ct.generate_index == '1' %] selected[% END %]>[% loc('Yes') %]</option>
+            </select>
+          </td>
+          <td>
+            <select name="[% ct.category_type %]_in_colophon" required>
+              <option value="0"[% IF ct.in_colophon == '0' %] selected[% END %]>[% loc('No') %]</option>
+              <option value="1"[% IF ct.in_colophon == '1' %] selected[% END %]>[% loc('Yes') %]</option>
+            </select>
+          </td>
+          <td>
+            <input type="number" name="[% ct.category_type %]_priority" style="width:70px"
                    class="form-control" value="[% ct.priority %]" min="0" required/>
           </td>
           <td>
@@ -37,18 +61,72 @@
                    class="form-control"
                    value="[% ct.name_plural | html %]" required/>
           </td>
+          <td>
+            [% IF ct.category_type == 'topic' || ct.category_type == 'author' %]
+              <input type="checkbox" name="[% ct.category_type %]_assign_xapian_custom_slot"
+                     value="1"
+                     checked="checked" onclick="return false;" />
+              <small>[% loc('Built-in') %]</small>
+            [% ELSE %]
+              <input type="checkbox" name="[% ct.category_type %]_assign_xapian_custom_slot"
+                     value="1"
+                     [% IF ct.xapian_custom_slot %]checked="checked"[% END %]
+              />
+            [% END %]
+          </td>
+          <td>
+            <textarea class="form-control"
+                      name="[% ct.category_type %]_description">[% ct.description | html %]</textarea>
+          </td>
+        </tr>
+      [% END %]
+      [% FOREACH builtindir IN site.built_in_directives %]
+        <tr>
+          <td><code>[% builtindir.name %]</code></td>
+          <td><code>#[% builtindir.name %]</code></td>
+          <td>
+            <select name="active_built_in_directive_[% builtindir.name %]" required>
+              <option value="1" [% IF builtindir.active %]selected[% END %]>
+                [% loc('Yes') %]
+              </option>
+              <option value="0" [% UNLESS builtindir.active %]selected[% END %]>
+                [% loc('No') %]
+              </option>
+            </select>&nbsp;<a href="#builtinexplanation"><strong>*</strong></a>
+          </td>
+          <td>[% loc('No') %]</td>
+          <td>[% loc('Built-in') %]</td>
+          <td>-</td>
+          <td>[% loc(builtindir.description) %]</td>
+          <td>-</td>
+          <td>[% loc('No') %]</td>
+          <td></td>
         </tr>
       [% END %]
       <tr>
-        <td colspan="3">[% loc('Create a new category type. Please use only lowercase ASCII letters') %]</td>
-        <td colspan="2">
+        <td colspan="5">[% loc('Create a new category type. Please use only lowercase ASCII letters') %]</td>
+        <td colspan="5">
           <input type="text" name="create" pattern="[a-z]{1,16}" class="form-control" />
         </td>
       </tr>
       <tr>
-        <td colspan="5" class="text-center">
+        <td colspan="10" class="text-center">
           <button class="btn btn-primary" type="submit">[% loc('Update') %]</button>
         </td>
       </tr>
     </table>
+  </form>
 </div>
+
+<div class="center">
+  <form id="site-rebuild-form" action="[% c.uri_for_action('/tasks/rebuild') %]" method="POST">
+    <button type="submit" class="btn btn-primary" name="reindex" value="1">
+      [% loc("Reindex site") %]
+    </button>
+  </form>
+</div>
+
+<p class="help-block" id="builtinexplanation">
+  <strong>*</strong>[% loc('This setting affects only the text creation form.') %]
+  <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]"><i class="fa fa-share"></i></a>
+</p>

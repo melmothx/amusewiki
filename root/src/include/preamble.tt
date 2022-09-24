@@ -32,8 +32,12 @@
       <span id="[% ctype.identifier %]-label">
         <strong>[% loc(ctype.title) %]:</strong>
       </span>
-      [% FOREACH ccat IN ctype.entries -%]
+      [% IF ctype.entries %]
+        [% FOREACH ccat IN ctype.entries -%]
         <a href="[% c.uri_for(ccat.uri) %]" class="text-[% ctype.identifier %]-item">[%- lh.site_loc_html(ccat.name) -%]</a>[% UNLESS loop.last %],[% END %]
+        [% END %]
+      [% ELSE %]
+        <span class="text-cf-[% ctype.identifier %]-html">[% ctype.html_value %]</span>
       [% END %]
       </div>
     [% END %]
@@ -90,37 +94,16 @@
     </div>
     [% END %]
 
-    [% IF text.isbn %]
-    <div id="preambleisbn">
-      <span id="preambleisbn-label">
-        <strong>[% loc('ISBN') %]:</strong>
-      </span>
-      [% text.isbn %]
-    </div>
-    [% END %]
-
-    [% IF text.publisher %]
-    <div id="preamblepublisher">
-      <span id="preamblepublisher-label">
-        <strong>[% loc('Publisher') %]:</strong>
-      </span>
-      [% text.publisher %]
-    </div>
-    [% END %]
-
-    [% IF text.seriesname %]
-    <div id="preambleseries">
-      <span id="preambleseries-label">
-        <strong>[% loc('Series') %]:</strong>
-      </span>
-      [% text.seriesname %] [% text.seriesnumber %]
-    </div>
-
-    [% END %]
-    [% IF text.rights %]
-    <div id="preamblerights">
-      <strong>[% text.rights %]</strong>
-    </div>
+    [% FOREACH builtindir IN site.built_in_directives %]
+      [% SET builtindir_name = builtindir.name %]
+      [% IF text.$builtindir_name %]
+        <div id="preamble[% builtindir_name %]">
+          <span id="preamble[% builtindir_name %]-label">
+            <strong>[% loc(builtindir.description) %]:</strong>
+            [% text.$builtindir_name %]
+          </span>
+        </div>
+      [% END %]
     [% END %]
 
     [% SET text_mirror_source = text.mirror_source %]

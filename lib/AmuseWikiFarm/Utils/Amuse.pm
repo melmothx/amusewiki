@@ -82,7 +82,7 @@ sub muse_file_info {
 
     $opts ||= {};
 
-    my $details = muse_parse_file_path($file, $root);
+    my $details = muse_parse_file_path($file, $root, $opts->{skip_path_checking});
     return unless $details;
 
     if ($details->{f_suffix} ne '.muse') {
@@ -129,10 +129,17 @@ sub muse_file_info {
 
     # defaults
     my $default_ctypes = [
-                          { name => 'author', fields => [qw/authors sortauthors/] },
-                          { name => 'topic', fields => [qw/cat sorttopics topics/], },
+                          {
+                           name => 'author',
+                           fields => [qw/authors sortauthors/],
+                          },
+                          {
+                           name => 'topic',
+                           fields => [qw/cat sorttopics topics/],
+                          },
                          ];
 
+  CTYPE:
     foreach my $ctype (@{ $opts->{category_types} || $default_ctypes }) {
         foreach my $f (@{$ctype->{fields}}) {
             # this is the muse string

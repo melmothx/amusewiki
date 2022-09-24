@@ -467,6 +467,10 @@ CREATE TABLE site_category_type (
        priority INTEGER NOT NULL DEFAULT 0,
        name_singular VARCHAR(255) NOT NULL,
        name_plural VARCHAR(255) NOT NULL,
+       generate_index SMALLINT NOT NULL DEFAULT 1,
+       in_colophon SMALLINT NOT NULL DEFAULT 0,
+       xapian_custom_slot SMALLINT NULL,
+       description TEXT,
        PRIMARY KEY (site_id, category_type)
 );
 
@@ -555,6 +559,7 @@ CREATE TABLE muse_header (
                           ON DELETE CASCADE ON UPDATE CASCADE,
        muse_header VARCHAR(255) NOT NULL,
        muse_value TEXT,
+       muse_value_html TEXT,
        PRIMARY KEY (title_id, muse_header)
 );
 

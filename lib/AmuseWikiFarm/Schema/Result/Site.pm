@@ -1010,6 +1010,7 @@ use File::Find;
 use Data::Dumper::Concise;
 use AmuseWikiFarm::Archive::BookBuilder;
 use Text::Amuse::Compile::Utils ();
+use Text::Amuse::Functions qw/muse_format_line/;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::CgitSetup;
 use AmuseWikiFarm::Utils::LexiconMigration;
@@ -1523,10 +1524,19 @@ sub _build_custom_category_types {
     my $self = shift;
     my @out;
     foreach my $ct ($self->site_category_types->search(undef, { order_by => 'priority'})->all) {
-        push @out, {
-                    name => $ct->category_type,
-                    fields => $ct->header_fields,
-                   };
+        my %details = (
+                       $ct->get_columns,
+                       name => $ct->category_type,
+                       fields => $ct->header_fields,
+                       header => $ct->header_fields->[0],
+                      );
+        if ($ct->category_type eq 'topic') {
+            if ($self->fixed_category_list) {
+                $details{header} = 'cat';
+                $details{custom_form} = 1;
+            }
+        }
+        push @out, \%details;
     }
     return \@out;
 }
@@ -1783,14 +1793,18 @@ sub import_text_from_html_params {
                               rights
                               seriesname
                               seriesnumber
-                             /) {
+                             /,
+                           map { $_->{header} } @{ $self->custom_category_types || [] }
+                          ) {
         $self->_add_directive($fh, $directive, $params->{$directive});
     }
     # add the notes
     foreach my $field (qw/notes teaser/) {
         $self->_add_directive($fh, $field => html_to_muse($params->{$field}));
     }
-
+    if (my $colophon = $self->_autocreate_colophon($params)) {
+        $self->_add_directive($fh, colophon => $colophon);
+    }
     # separator
     print $fh "\n";
 
@@ -1820,6 +1834,33 @@ sub _add_directive {
     $text =~ s/  +/ /gs; # pack the whitespaces
     return unless length($text);
     print $fh '#' . $directive . ' ' . $text . "\n";
+}
+
+sub _autocreate_colophon {
+    my ($self, $params) = @_;
+    my @pieces;
+    foreach my $cf (@{ $self->custom_category_types || [] }) {
+        if ($cf->{in_colophon}) {
+            my $value = $params->{$cf->{header}};
+            if (length($value)) {
+                my $sep = qr{\s*\,\s*};
+                if ($value =~ m/\;/) {
+                    $sep = qr{\s*\;\s*};
+                }
+                if (my @values = grep { /\w/ } split($sep, $value)) {
+                    push @pieces, '**'
+                      . (@values > 1 ? $cf->{name_plural} : $cf->{name_singular})
+                      . '**: ' . $value;
+                }
+            }
+        }
+    }
+    if (@pieces) {
+        return join(' <br> ', @pieces);
+    }
+    else {
+        return;
+    }
 }
 
 =head2 xapian
@@ -2248,6 +2289,7 @@ sub index_file {
             }
         }
     }
+    delete $details->{colophon};
     if (%$details) {
         $logger->("Custom directives: " . join(", ", %$details) . "\n");
     }
@@ -2323,6 +2365,7 @@ sub index_file {
                 $title->muse_headers->create({
                                               muse_header => $k,
                                               muse_value => $header{$k},
+                                              muse_value_html => muse_format_line(html => $header{$k}) || '',
                                              });
             }
         }
@@ -2454,7 +2497,7 @@ sub supported_locales {
 sub category_types_navbar_display {
     my ($self, $logged_in) = @_;
     my @out;
-    foreach my $ct ($self->site_category_types->active->all) {
+    foreach my $ct ($self->site_category_types->active->with_index_page->ordered->all) {
         my $type = $ct->category_type;
         # special case, already listed
         if ($type eq 'topic' and $self->fixed_category_list) {
@@ -4335,6 +4378,29 @@ sub bootstrap_alt_theme {
     return shift->get_option('bootstrap_alt_theme');
 }
 
+sub built_in_directives {
+    my $self = shift;
+    # loc('Copyright notice'); loc('ISBN'); loc('Series Number');
+    # loc('Series Name'); loc('Publisher'); loc('SKU');
+    my %builtins = (
+                    rights => 'Copyright notice',
+                    isbn => 'ISBN',
+                    seriesnumber => 'Series Number',
+                    seriesname => 'Series Name',
+                    publisher => 'Publisher',
+                    sku => 'SKU',
+                   );
+    my @out;
+    foreach my $f (sort keys %builtins) {
+        push @out, {
+                    name => $f,
+                    description => $builtins{$f},
+                    active => $self->get_option("active_built_in_directive_$f") || 0,
+                   };
+    }
+    return \@out;
+}
+
 sub xapian_reindex_all {
     my ($self, $logger) = @_;
     $logger ||= sub { return };
@@ -4479,7 +4545,16 @@ sub update_db_from_tree_async {
     my ($self, $logger, $username) = @_;
     $logger ||= sub { print @_ };
     my @files = $self->_pre_update_db_from_tree($logger);
+    $self->create_reindex_bulk_job(files => \@files, username => $username);
+}
+
+sub create_reindex_bulk_job {
+    my ($self, %opts) = @_;
+    die "Missing required option files" unless $opts{files};
+    my @files = @{$opts{files}};
+    my $username = $opts{username};
     my $now = DateTime->now;
+    my $site_id = $self->id;
     return $self->bulk_jobs->reindexes->create({
                                      created => $now,
                                      status => (scalar(@files) ? 'active' : 'completed'),
@@ -4488,7 +4563,7 @@ sub update_db_from_tree_async {
                                      jobs => [
                                               map {
                                                   +{
-                                                    site_id => $self->id,
+                                                    site_id => $site_id,
                                                     username => $username,
                                                     task => 'reindex',
                                                     status => 'pending',
@@ -4499,6 +4574,27 @@ sub update_db_from_tree_async {
                                               } @files ]
                                     });
 }
+
+sub reindex_site {
+    my ($self, %opts) = @_;
+    my $username = $opts{username};
+    my $files = [
+                 map { $_->{f_full_path_name} }
+                 $self->titles->published_or_deferred_all
+                 ->search(undef,
+                          {
+                           result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                           columns => [qw/f_full_path_name/],
+                          })->all
+                ];
+    Dlog_debug { "Texts to reindex are $_" } $files;
+    if ($username) {
+        $username =  AmuseWikiFarm::Utils::Amuse::clean_username($username);
+    }
+    return $self->create_reindex_bulk_job(username => $username, files => $files);
+}
+
+
 
 sub rebuild_formats {
     my ($self, $username) = @_;
@@ -4728,17 +4824,16 @@ sub create_feed {
     }
 
     foreach my $text (@specials, @texts) {
-        my $pubdate_epoch = $text->pubdate->epoch;
+        my $ts = $text->pubdate->epoch;
 
         # to fool the scrapers, set the permalink for specials
         # adding a version with the timestamp of the file, so we
         # catch updates
-        my $ts = $text->is_regular ? $pubdate_epoch : $text->f_timestamp_epoch;
         my $link = $self->canonical_url . $text->full_uri . "?v=$ts";
 
         my $item = $feed->add_item($link);
         $item->title(AmuseWikiFarm::Utils::Amuse::clean_html($text->author_title));
-        $item->pubDate($pubdate_epoch);
+        $item->pubDate($ts);
         $item->guid(undef, isPermaLink => 1);
 
         my @lines;
@@ -4836,30 +4931,73 @@ sub edit_category_types_from_params {
     my $count = 0;
     my $changed = 0;
     my $guard = $self->result_source->schema->txn_scope_guard;
+    my %existing;
+  CATEGORY_TYPE:
     foreach my $cc ($self->site_category_types->all) {
         $count++;
         my $code = $cc->category_type;
-        foreach my $f (qw/active priority name_singular name_plural/) {
+        $existing{code}++;
+        # skip editing if not passed
+        next CATEGORY_TYPE unless exists $params{$code . "_active"};
+        foreach my $f (qw/active priority name_singular name_plural generate_index in_colophon
+                         description/) {
             my $cgi = $code . '_' . $f;
             if (exists $params{$cgi}) {
                 $cc->$f($params{$cgi})
             }
             if ($cc->is_changed) {
-                Dlog_info { "Updating $code $_" } +{ $cc->get_dirty_columns };
+                my %dirty = $cc->get_dirty_columns;
+                Dlog_info { "Updating $code $_" } \%dirty;
                 $cc->update;
-                $changed++;
+                if ($dirty{generate_index} or $dirty{active}) {
+                    $changed = 2;
+                }
+                else {
+                    $changed ||= 1;
+                }
+            }
+        }
+        if ($code eq 'topic' or $code eq 'author') {
+            log_debug { "Skipping built-in $code" };
+        }
+        elsif ($params{$code . "_assign_xapian_custom_slot"}) {
+            if ($cc->assign_xapian_custom_slot) {
+                $changed = 2;
+            }
+        }
+        elsif ($cc->xapian_custom_slot) {
+            $cc->update({ xapian_custom_slot => undef });
+            $changed = 2;
+        }
+    }
+    # then the built-in directives
+    foreach my $bir (@{$self->built_in_directives || []}) {
+        my $option = "active_built_in_directive_" . $bir->{name};
+        $existing{$bir->{name}}++;
+        if (defined $params{$option}) {
+            log_debug { "Updating $option $params{$option}" };
+            my $existing = $self->get_option($option);
+            if (!defined($existing) or $existing ne $params{$option}) {
+                log_debug { "Updating $option from $existing to $params{$option}" };
+                $self->site_options->update_or_create({
+                                                       option_name => $option,
+                                                       option_value => $params{$option},
+                                                      });
+                $changed ||= 1;
             }
         }
     }
-    if ($params{create} and $params{create} =~ m/\A[a-z]{1,16}\z/) {
+    if ($params{create} and $params{create} =~ m/\A[a-z]{1,16}\z/ and !$existing{$params{create}}) {
         $self->site_category_types->find_or_create({
                                                     category_type => $params{create},
                                                     priority => $count + 1,
                                                     active => 1,
                                                     name_singular => ucfirst($params{create}),
                                                     name_plural => ucfirst($params{create} . 's'),
+                                                    generate_index => $params{generate_index} ? 1 : 0,
+                                                    in_colophon => $params{in_colophon} ? 1 : 0,
                                                    });
-        $changed++;
+        $changed = 2;
     }
     $guard->commit;
     return $changed;

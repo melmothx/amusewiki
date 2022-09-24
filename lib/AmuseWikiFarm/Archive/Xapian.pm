@@ -79,6 +79,51 @@ my %SLOTS = (
                           prefix => 'H',
                           singlesite => 0,
                          },
+             custom1 => {
+                         slot => 11,
+                         prefix => 'XCA',
+                         singlesite => 1,
+                        },
+             custom2 => {
+                         slot => 12,
+                         prefix => 'XCB',
+                         singlesite => 1,
+                        },
+             custom3 => {
+                         slot => 13,
+                         prefix => 'XCC',
+                         singlesite => 1,
+                        },
+             custom4 => {
+                         slot => 14,
+                         prefix => 'XCD',
+                         singlesite => 1,
+                        },
+             custom5 => {
+                         slot => 15,
+                         prefix => 'XCE',
+                         singlesite => 1,
+                        },
+             custom6 => {
+                         slot => 16,
+                         prefix => 'XCF',
+                         singlesite => 1,
+                        },
+             custom7 => {
+                         slot => 17,
+                         prefix => 'XCG',
+                         singlesite => 1,
+                        },
+             custom8 => {
+                         slot => 18,
+                         prefix => 'XCH',
+                         singlesite => 1,
+                        },
+             custom9 => {
+                         slot => 19,
+                         prefix => 'XCI',
+                         singlesite => 1,
+                        },
             );
 
 sub sortings {
@@ -323,6 +368,8 @@ sub index_text {
             if (my $subtitle = $title->subtitle) {
                 $indexer->index_text($subtitle, 2, 'S');
             }
+            my $site = $title->site;
+            my $custom_category_types = $site ? $site->custom_category_types : [];
 
             my %cats = (
                         author => { key => 'A', index => 2, rs => 'authors_only' },
@@ -340,6 +387,22 @@ sub index_text {
                 }
                 $doc->add_value($SLOTS{$cat}{slot}, encode_json(\@list));
             }
+
+            Dlog_debug { "Category types are $_" } $custom_category_types;
+            foreach my $cct (@$custom_category_types) {
+                if ($cct->{xapian_custom_slot} and $cct->{generate_index}) {
+                    my @list;
+                    my $slot = "custom" . $cct->{xapian_custom_slot};
+                    my $spec = $SLOTS{$slot};
+                    my $index = 0;
+                    foreach my $item ($title->categories->by_type($cct->{category_type})->all) {
+                        push @list, $item->full_uri;
+                        $doc->add_boolean_term($SLOTS{$slot}{prefix} . $item->full_uri);
+                    }
+                    $doc->add_value($SLOTS{$slot}{slot}, encode_json(\@list));
+                }
+            }
+
 
             if (my $decade = $title->date_decade) {
                 $doc->add_value($SLOTS{date}{slot}, $decade);
@@ -364,7 +427,7 @@ sub index_text {
                 $doc->add_value($SLOTS{language}{slot}, $lang);
                 $doc->add_boolean_term($SLOTS{language}{prefix} . $lang);
             }
-            if (my $site = $title->site) {
+            if ($site) {
                 if (my $canonical = $site->canonical) {
                     $doc->add_value($SLOTS{hostname}{slot}, $canonical);
                     $doc->add_boolean_term($SLOTS{hostname}{prefix} . $canonical);
@@ -389,6 +452,21 @@ sub index_text {
             foreach my $method (qw/title subtitle author teaser source notes/) {
                 if (my $thing = $title->$method) {
                     $self->_index_html($indexer, $thing);
+                }
+            }
+            # built-ins fields
+            # Dlog_debug { "Row is $_" } +{ $title->get_columns };
+            foreach my $method (qw/rights isbn seriesname seriesnumber publisher sku/) {
+                # log_debug { "Calling $method against title" };
+                if (my $thing = $title->$method) {
+                    # log_debug { "Indexing $method $thing" };
+                    $indexer->index_text($thing);
+                }
+            }
+            my %muse_headers = map { $_->muse_header => $_->as_html } $title->muse_headers;
+            foreach my $cct (@$custom_category_types) {
+                if (my $header = $muse_headers{$cct->{category_type}}) {
+                    $self->_index_html($indexer, $header);
                 }
             }
             my $file = Path::Tiny::path($title->filepath_for_ext('bare.html'));
@@ -639,6 +717,7 @@ sub _do_faceted_search {
         $facets{$spy_name} = \@got;
     }
     Dlog_debug { "Selections: $_ " } \%actives;
+    Dlog_debug { "Facets: $_ " } \%facets;
     my $corrected_query = $self->enable_xapian_suggestions ? $qp->get_corrected_query_string : '';
     if ($corrected_query) {
         eval {
@@ -681,7 +760,7 @@ sub _index_html {
     if (my $tree = HTML::TreeBuilder->new_from_content($html)) {
         $tree->elementify;
         my $text = $tree->as_text;
-        # log_debug { "Text is $text" };
+        log_debug { "Text is $text" };
         $indexer->index_text($text);
         $tree->delete;
     }
