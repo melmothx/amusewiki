@@ -159,6 +159,9 @@ msgstr "Adicionar o texto completo"
 msgid "Add this text to the bookbuilder"
 msgstr "Adicionar este texto ao construtor de livros"
 
+msgid "Add to colophon"
+msgstr ""
+
 msgid "Added"
 msgstr ""
 
@@ -366,6 +369,9 @@ msgstr "Limite de páginas do construtor de livros (número inteiro)"
 msgid "Build it"
 msgstr "Construir"
 
+msgid "Built-in"
+msgstr ""
+
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -413,6 +419,7 @@ msgid "Categories"
 msgstr "Categorias"
 
 #. ($site->canonical)
+#. (site.canonical)
 msgid "Category types for %1"
 msgstr ""
 
@@ -427,6 +434,9 @@ msgstr "Mudanças"
 
 msgid "Changes applied"
 msgstr "Mudanças aplicadas"
+
+msgid "Changes applied."
+msgstr ""
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
@@ -483,6 +493,9 @@ msgstr "Fechar"
 msgid "Code"
 msgstr ""
 
+msgid "Colophon (displayed in the generated files):"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -513,6 +526,9 @@ msgstr "Numeração de notas de rodapé contínua ao longo do documento."
 
 msgid "Convert to archive markup"
 msgstr "Converter para markup de arquivo"
+
+msgid "Copyright notice"
+msgstr ""
 
 msgid "Couldn't add the text"
 msgstr "Não foi possível adicionar o texto"
@@ -960,6 +976,9 @@ msgstr ""
 msgid "General configuration"
 msgstr "Configurações gerais"
 
+msgid "Generate Index"
+msgstr ""
+
 msgid "Generic (fits in A4 and Letter)"
 msgstr ""
 
@@ -1021,6 +1040,9 @@ msgstr "Importar HTML/Word"
 msgid "Half Letter paper"
 msgstr ""
 
+msgid "Headers"
+msgstr ""
+
 msgid "Heading"
 msgstr "Título"
 
@@ -1029,6 +1051,9 @@ msgstr "Títulos"
 
 msgid "Height:"
 msgstr "Altura:"
+
+msgid "Help Text"
+msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
@@ -1553,6 +1578,9 @@ msgstr "Fazer todos os espaços explícitos e visíveis como ~~"
 msgid "Manage categories"
 msgstr ""
 
+msgid "Manage category types"
+msgstr ""
+
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
@@ -2017,6 +2045,9 @@ msgstr ""
 msgid "Please prove you are a human"
 msgstr "Prove que você é um humano."
 
+msgid "Please reindex the site."
+msgstr ""
+
 msgid "Please reload your page"
 msgstr "Por favor recarregue sua página"
 
@@ -2199,6 +2230,9 @@ msgstr "Reconstruir"
 msgid "Rebuild all generated files"
 msgstr "Reconstruir todos os arquivos gerados"
 
+msgid "Rebuild formats"
+msgstr ""
+
 msgid "Rebuild the generated formats"
 msgstr "Reconstruir os formatos gerados"
 
@@ -2213,6 +2247,9 @@ msgstr "Redirecionamentos"
 
 msgid "Refresh and apply filters"
 msgstr "Atualizar e aplicar filtros"
+
+msgid "Reindex site"
+msgstr ""
 
 msgid "Related projects"
 msgstr "Projetos semelhantes"
@@ -2311,6 +2348,9 @@ msgstr ""
 msgid "Running headings"
 msgstr "Títulos para páginas"
 
+msgid "SKU"
+msgstr ""
+
 msgid "SSL CA certificate path (Apache)"
 msgstr "SSL CA certificate path (Apache)"
 
@@ -2350,6 +2390,9 @@ msgstr "Configuração %1 salva"
 
 msgid "Search"
 msgstr "Buscar"
+
+msgid "Search Engine Facets"
+msgstr ""
 
 msgid "Search filters"
 msgstr ""
@@ -2409,7 +2452,10 @@ msgstr "Campos de rodapé separados"
 msgid "Separate header fields"
 msgstr "Campos de cabeçalho separados"
 
-msgid "Series"
+msgid "Series Name"
+msgstr ""
+
+msgid "Series Number"
 msgstr ""
 
 msgid "Session sharing"
@@ -2845,6 +2891,9 @@ msgstr "Esta revisão está sendo editada por outra pessoa. "
 
 msgid "This section will not produce a slide"
 msgstr "Esta seção não produzirá um slide"
+
+msgid "This setting affects only the text creation form."
+msgstr ""
 
 msgid ""
 "This site is private and mobile applications should ask for your username "

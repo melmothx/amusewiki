@@ -143,6 +143,9 @@ msgstr "記事全体を追加"
 msgid "Add this text to the bookbuilder"
 msgstr "この記事をbookbuilderに追加"
 
+msgid "Add to colophon"
+msgstr ""
+
 msgid "Added"
 msgstr ""
 
@@ -336,6 +339,9 @@ msgstr "Bookbuilderページ制限（整数）"
 msgid "Build it"
 msgstr "作成"
 
+msgid "Built-in"
+msgstr ""
+
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -379,6 +385,7 @@ msgid "Categories"
 msgstr "カテゴリー"
 
 #. ($site->canonical)
+#. (site.canonical)
 msgid "Category types for %1"
 msgstr "%1のカテゴリタイプ"
 
@@ -393,6 +400,9 @@ msgstr "変更"
 
 msgid "Changes applied"
 msgstr "変更完了"
+
+msgid "Changes applied."
+msgstr ""
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
@@ -447,6 +457,9 @@ msgstr "閉じる"
 msgid "Code"
 msgstr "コード"
 
+msgid "Colophon (displayed in the generated files):"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -475,6 +488,9 @@ msgstr "ドキュメント全体にわたる継続的な脚注の番号付け。
 
 msgid "Convert to archive markup"
 msgstr "アーカイブマークアップに変換する"
+
+msgid "Copyright notice"
+msgstr ""
 
 msgid "Couldn't add the text"
 msgstr "記事を追加できませんでした"
@@ -918,6 +934,9 @@ msgstr "全幅、流動的レイアウト"
 msgid "General configuration"
 msgstr "一般構成"
 
+msgid "Generate Index"
+msgstr ""
+
 msgid "Generic (fits in A4 and Letter)"
 msgstr "一般（A4とレターサイズに収まる）"
 
@@ -974,6 +993,9 @@ msgstr "HTML / Word Importer"
 msgid "Half Letter paper"
 msgstr "ハーフレター用紙"
 
+msgid "Headers"
+msgstr ""
+
 msgid "Heading"
 msgstr "見出し"
 
@@ -982,6 +1004,9 @@ msgstr "見出し"
 
 msgid "Height:"
 msgstr "高さ："
+
+msgid "Help Text"
+msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
@@ -1455,6 +1480,9 @@ msgstr "改行しないスペースを全て明示的にし、~~として表示"
 msgid "Manage categories"
 msgstr "カテゴリを管理"
 
+msgid "Manage category types"
+msgstr ""
+
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
@@ -1892,6 +1920,9 @@ msgstr ""
 msgid "Please prove you are a human"
 msgstr "人間であることを証明してください"
 
+msgid "Please reindex the site."
+msgstr ""
+
 msgid "Please reload your page"
 msgstr "ページを再読み込みしてください"
 
@@ -2058,6 +2089,9 @@ msgstr "再構築"
 msgid "Rebuild all generated files"
 msgstr "生成されたファイルを全て再構築"
 
+msgid "Rebuild formats"
+msgstr ""
+
 msgid "Rebuild the generated formats"
 msgstr "生成されたフォーマットを再構築"
 
@@ -2072,6 +2106,9 @@ msgstr "リダイレクト"
 
 msgid "Refresh and apply filters"
 msgstr "更新・フィルタを適用"
+
+msgid "Reindex site"
+msgstr ""
 
 msgid "Related projects"
 msgstr "関連プロジェクト"
@@ -2170,6 +2207,9 @@ msgstr ""
 msgid "Running headings"
 msgstr "欄外見出し"
 
+msgid "SKU"
+msgstr ""
+
 msgid "SSL CA certificate path (Apache)"
 msgstr "SSL CA証明書パス（アパッチ）"
 
@@ -2209,6 +2249,9 @@ msgstr "保存された「%1」の構成"
 
 msgid "Search"
 msgstr "検索"
+
+msgid "Search Engine Facets"
+msgstr ""
 
 msgid "Search filters"
 msgstr "検索フィルタ"
@@ -2268,8 +2311,11 @@ msgstr "別のフッターフィールド"
 msgid "Separate header fields"
 msgstr "別のヘッダーフィールド"
 
-msgid "Series"
-msgstr "シリーズ"
+msgid "Series Name"
+msgstr ""
+
+msgid "Series Number"
+msgstr ""
 
 msgid "Session sharing"
 msgstr "セッション共有"
@@ -2678,6 +2724,9 @@ msgstr "このリビジョンは、他の誰かによって編集されていま
 
 msgid "This section will not produce a slide"
 msgstr "このセクションでは、スライドを生成しません"
+
+msgid "This setting affects only the text creation form."
+msgstr ""
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
@@ -3390,6 +3439,9 @@ msgid ""
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
+
+#~ msgid "Series"
+#~ msgstr "シリーズ"
 
 #~ msgid "en"
 #~ msgstr "ja"

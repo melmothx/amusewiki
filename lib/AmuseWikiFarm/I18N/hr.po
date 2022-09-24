@@ -153,6 +153,9 @@ msgstr "Dodaj cijeli tekst"
 msgid "Add this text to the bookbuilder"
 msgstr "Dodaj ovaj tekst zbirci"
 
+msgid "Add to colophon"
+msgstr ""
+
 msgid "Added"
 msgstr ""
 
@@ -353,6 +356,9 @@ msgstr "Maksimalni broj stranica zbirke"
 msgid "Build it"
 msgstr "Stvori"
 
+msgid "Built-in"
+msgstr ""
+
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -398,6 +404,7 @@ msgid "Categories"
 msgstr "Teme"
 
 #. ($site->canonical)
+#. (site.canonical)
 msgid "Category types for %1"
 msgstr ""
 
@@ -412,6 +419,9 @@ msgstr "Izmjene"
 
 msgid "Changes applied"
 msgstr "Unesene izmjene"
+
+msgid "Changes applied."
+msgstr ""
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
@@ -467,6 +477,9 @@ msgstr "Zatvori"
 msgid "Code"
 msgstr ""
 
+msgid "Colophon (displayed in the generated files):"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -495,6 +508,9 @@ msgstr "Nastavi brojanje fusnota kroz cijeli tekst."
 
 msgid "Convert to archive markup"
 msgstr "Pretvori u format koji se koristi u arhivu"
+
+msgid "Copyright notice"
+msgstr ""
 
 msgid "Couldn't add the text"
 msgstr "Nije bilo moguće dodati tekst"
@@ -948,6 +964,9 @@ msgstr ""
 msgid "General configuration"
 msgstr "Opća konfiguracija"
 
+msgid "Generate Index"
+msgstr ""
+
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Generičan format (može stati i na A4 i na Letter)"
 
@@ -1006,6 +1025,9 @@ msgstr "Pretvori HTML/Word u wiki format"
 msgid "Half Letter paper"
 msgstr "Polovica “Letter” papira"
 
+msgid "Headers"
+msgstr ""
+
 msgid "Heading"
 msgstr "Zaglavlje"
 
@@ -1014,6 +1036,9 @@ msgstr "Zaglavlja"
 
 msgid "Height:"
 msgstr "Visina"
+
+msgid "Help Text"
+msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr "Ovdje možeš naći pregled tema i boja za slajdove"
@@ -1537,6 +1562,9 @@ msgstr "Pokaži neodvojivi razmak kao ~~"
 msgid "Manage categories"
 msgstr "Upravljanje kategorijama"
 
+msgid "Manage category types"
+msgstr ""
+
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
@@ -1991,6 +2019,9 @@ msgstr ""
 msgid "Please prove you are a human"
 msgstr "Dokaži da si ljudsko biće"
 
+msgid "Please reindex the site."
+msgstr ""
+
 msgid "Please reload your page"
 msgstr "Ponovno učitaj tvoju stranicu."
 
@@ -2170,6 +2201,9 @@ msgstr "Regeneracija"
 msgid "Rebuild all generated files"
 msgstr "Regeneriraj sve datoteke s tekstovima"
 
+msgid "Rebuild formats"
+msgstr ""
+
 msgid "Rebuild the generated formats"
 msgstr "Regeneriraj datoteke s tekstovima"
 
@@ -2184,6 +2218,9 @@ msgstr "Preusmjeravanja"
 
 msgid "Refresh and apply filters"
 msgstr "Osvježi i koristi filtere"
+
+msgid "Reindex site"
+msgstr ""
 
 msgid "Related projects"
 msgstr "Povezani projekti"
@@ -2282,6 +2319,9 @@ msgstr ""
 msgid "Running headings"
 msgstr "Zaglavlje stranice"
 
+msgid "SKU"
+msgstr ""
+
 msgid "SSL CA certificate path (Apache)"
 msgstr "SSL CA certifikat (Apache)"
 
@@ -2321,6 +2361,9 @@ msgstr "Spremljena konfiguracija \"%1\""
 
 msgid "Search"
 msgstr "Traži"
+
+msgid "Search Engine Facets"
+msgstr ""
 
 msgid "Search filters"
 msgstr "Filtriranje rezultata"
@@ -2380,7 +2423,10 @@ msgstr "Odvajaju dijelove podnožja"
 msgid "Separate header fields"
 msgstr "Odvajaju dijelove zaglavlja"
 
-msgid "Series"
+msgid "Series Name"
+msgstr ""
+
+msgid "Series Number"
 msgstr ""
 
 msgid "Session sharing"
@@ -2804,6 +2850,9 @@ msgstr "Ova izmjena je u toku od strane nekog drugog!"
 
 msgid "This section will not produce a slide"
 msgstr "Ovaj odjeljak neće proizvoditi slajd"
+
+msgid "This setting affects only the text creation form."
+msgstr ""
 
 msgid ""
 "This site is private and mobile applications should ask for your username "

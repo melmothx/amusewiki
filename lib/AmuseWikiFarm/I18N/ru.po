@@ -155,6 +155,9 @@ msgstr "Добавить полный текст"
 msgid "Add this text to the bookbuilder"
 msgstr "Добавить этот текст в конструктор книг"
 
+msgid "Add to colophon"
+msgstr ""
+
 msgid "Added"
 msgstr ""
 
@@ -361,6 +364,9 @@ msgstr "Лимит страницы конструктора книг (цело�
 msgid "Build it"
 msgstr "Создать"
 
+msgid "Built-in"
+msgstr ""
+
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -406,6 +412,7 @@ msgid "Categories"
 msgstr "Категории"
 
 #. ($site->canonical)
+#. (site.canonical)
 msgid "Category types for %1"
 msgstr "Типы категорий для %1"
 
@@ -420,6 +427,9 @@ msgstr "Изменения"
 
 msgid "Changes applied"
 msgstr "Изменения применены"
+
+msgid "Changes applied."
+msgstr ""
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
@@ -475,6 +485,9 @@ msgstr "Закрыть"
 msgid "Code"
 msgstr "Код"
 
+msgid "Colophon (displayed in the generated files):"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -503,6 +516,9 @@ msgstr "Сквозная нумерация сносок по всему тек�
 
 msgid "Convert to archive markup"
 msgstr "Преобразовать в разметку архива"
+
+msgid "Copyright notice"
+msgstr ""
 
 msgid "Couldn't add the text"
 msgstr "Нельзя добавить текст"
@@ -956,6 +972,9 @@ msgstr ""
 msgid "General configuration"
 msgstr "Основные настройки"
 
+msgid "Generate Index"
+msgstr ""
+
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Универсальный (умещается на A4 и Letter)"
 
@@ -1015,6 +1034,9 @@ msgstr "Импорт HTML/Word"
 msgid "Half Letter paper"
 msgstr "Половина Letter"
 
+msgid "Headers"
+msgstr ""
+
 msgid "Heading"
 msgstr "Заголовок"
 
@@ -1023,6 +1045,9 @@ msgstr "Заголовки"
 
 msgid "Height:"
 msgstr "Высота:"
+
+msgid "Help Text"
+msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr "Здесь вы можете посмотреть на темы и цветовые схемы Beamer"
@@ -1542,6 +1567,9 @@ msgstr "Сделать все неразрывные пробелы явными
 msgid "Manage categories"
 msgstr "Управление категориями"
 
+msgid "Manage category types"
+msgstr ""
+
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
@@ -2004,6 +2032,9 @@ msgstr ""
 msgid "Please prove you are a human"
 msgstr "Пожалуйста, докажите что вы человек"
 
+msgid "Please reindex the site."
+msgstr ""
+
 msgid "Please reload your page"
 msgstr "Пожалуйста, перезагрузите страницу"
 
@@ -2180,6 +2211,9 @@ msgstr "Пересобрать"
 msgid "Rebuild all generated files"
 msgstr "Пересобрать все произведённые файлы"
 
+msgid "Rebuild formats"
+msgstr ""
+
 msgid "Rebuild the generated formats"
 msgstr "Пересобрать все произведённые форматы"
 
@@ -2194,6 +2228,9 @@ msgstr "Перенаправления"
 
 msgid "Refresh and apply filters"
 msgstr "Перезагрузить и применить фильтры"
+
+msgid "Reindex site"
+msgstr ""
 
 msgid "Related projects"
 msgstr "На других языках"
@@ -2292,6 +2329,9 @@ msgstr ""
 msgid "Running headings"
 msgstr "Бегущие заголовки"
 
+msgid "SKU"
+msgstr ""
+
 msgid "SSL CA certificate path (Apache)"
 msgstr "Путь к SSL-сертификату УЦ (Apache)"
 
@@ -2331,6 +2371,9 @@ msgstr "Сохранена конфигурация «%1»"
 
 msgid "Search"
 msgstr "Поиск"
+
+msgid "Search Engine Facets"
+msgstr ""
 
 msgid "Search filters"
 msgstr "Поисковые фильтры"
@@ -2390,7 +2433,10 @@ msgstr "Разделить поля футера"
 msgid "Separate header fields"
 msgstr "Разделить поля шапки"
 
-msgid "Series"
+msgid "Series Name"
+msgstr ""
+
+msgid "Series Number"
 msgstr ""
 
 msgid "Session sharing"
@@ -2818,6 +2864,9 @@ msgstr "Правка редактируется кем-то другим!"
 
 msgid "This section will not produce a slide"
 msgstr "Этот раздел не произведёт слайд"
+
+msgid "This setting affects only the text creation form."
+msgstr ""
 
 msgid ""
 "This site is private and mobile applications should ask for your username "

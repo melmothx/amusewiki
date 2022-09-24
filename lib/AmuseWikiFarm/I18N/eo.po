@@ -158,6 +158,9 @@ msgstr "Aldonu la tutan tekston"
 msgid "Add this text to the bookbuilder"
 msgstr "Aldonu ĉi tiun tekston al la librokonstruisto"
 
+msgid "Add to colophon"
+msgstr ""
+
 msgid "Added"
 msgstr ""
 
@@ -371,6 +374,9 @@ msgstr "Paĝo-limo de Bookbuilder (entjero)"
 msgid "Build it"
 msgstr "Konstruu ĝin"
 
+msgid "Built-in"
+msgstr ""
+
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -417,6 +423,7 @@ msgid "Categories"
 msgstr "Kategorioj"
 
 #. ($site->canonical)
+#. (site.canonical)
 msgid "Category types for %1"
 msgstr "Kategorioj por% 1"
 
@@ -431,6 +438,9 @@ msgstr "Ŝanĝoj"
 
 msgid "Changes applied"
 msgstr "Ŝanĝoj aplikitaj"
+
+msgid "Changes applied."
+msgstr ""
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
@@ -486,6 +496,9 @@ msgstr "Fermu"
 msgid "Code"
 msgstr "Kodo"
 
+msgid "Colophon (displayed in the generated files):"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -516,6 +529,9 @@ msgstr "Kontinua piednota numerado tra la tuta dokumento."
 
 msgid "Convert to archive markup"
 msgstr "Konverti al arkiva markado"
+
+msgid "Copyright notice"
+msgstr ""
 
 msgid "Couldn't add the text"
 msgstr "Ne povis aldoni la tekston"
@@ -978,6 +994,9 @@ msgstr "Plena larĝo, fluida aranĝo"
 msgid "General configuration"
 msgstr "Ĝenerala agordo"
 
+msgid "Generate Index"
+msgstr ""
+
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Ĝenerala (kongruas kun A4 kaj Letero)"
 
@@ -1042,6 +1061,9 @@ msgstr "HTML / Vorta Importilo"
 msgid "Half Letter paper"
 msgstr "Duonlitera papero"
 
+msgid "Headers"
+msgstr ""
+
 msgid "Heading"
 msgstr "Titolo"
 
@@ -1050,6 +1072,9 @@ msgstr "Titoloj"
 
 msgid "Height:"
 msgstr "Alteco:"
+
+msgid "Help Text"
+msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
@@ -1593,6 +1618,9 @@ msgstr "Faru ĉiujn nerompajn spacojn eksplicitaj kaj videblaj kiel ~~"
 msgid "Manage categories"
 msgstr "Administri kategoriojn"
 
+msgid "Manage category types"
+msgstr ""
+
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
@@ -2058,6 +2086,9 @@ msgstr ""
 msgid "Please prove you are a human"
 msgstr "Bonvolu pruvi, ke vi estas homo"
 
+msgid "Please reindex the site."
+msgstr ""
+
 msgid "Please reload your page"
 msgstr "Bonvolu reŝargi vian paĝon"
 
@@ -2242,6 +2273,9 @@ msgstr "Rekonstruu"
 msgid "Rebuild all generated files"
 msgstr "Rekonstruu ĉiujn generitajn dosierojn"
 
+msgid "Rebuild formats"
+msgstr ""
+
 msgid "Rebuild the generated formats"
 msgstr "Rekonstruu la generitajn formatojn"
 
@@ -2256,6 +2290,9 @@ msgstr "Alidirektiloj"
 
 msgid "Refresh and apply filters"
 msgstr "Refreŝigu kaj apliki filtrilojn"
+
+msgid "Reindex site"
+msgstr ""
 
 msgid "Related projects"
 msgstr "Rilataj projektoj"
@@ -2354,6 +2391,9 @@ msgstr ""
 msgid "Running headings"
 msgstr "Kurantaj rubrikoj"
 
+msgid "SKU"
+msgstr ""
+
 msgid "SSL CA certificate path (Apache)"
 msgstr "SSL-atestila vojo (Apache)"
 
@@ -2393,6 +2433,9 @@ msgstr "Konservita agordo \"% 1\""
 
 msgid "Search"
 msgstr "Serĉu"
+
+msgid "Search Engine Facets"
+msgstr ""
 
 msgid "Search filters"
 msgstr "Serĉaj filtriloj"
@@ -2452,8 +2495,11 @@ msgstr "Apartaj piedliniaj kampoj"
 msgid "Separate header fields"
 msgstr "Apartaj kapkampoj"
 
-msgid "Series"
-msgstr "Serio"
+msgid "Series Name"
+msgstr ""
+
+msgid "Series Number"
+msgstr ""
 
 msgid "Session sharing"
 msgstr "Kunsidado"
@@ -2892,6 +2938,9 @@ msgstr "Ĉi tiu revizio estas redaktita de iu alia!"
 
 msgid "This section will not produce a slide"
 msgstr "Ĉi tiu sekcio ne produktos diapozitivon"
+
+msgid "This setting affects only the text creation form."
+msgstr ""
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
@@ -3643,6 +3692,9 @@ msgstr ""
 "\"Senfina redaktado\" signifas, ke la revizio estis forlasita\n"
 "     dum redaktado, sed ĝi ankoraŭ estas tie, por se iu volas elekti\n"
 "     ĝin supren redaktante tekston."
+
+#~ msgid "Series"
+#~ msgstr "Serio"
 
 #~ msgid "Filter"
 #~ msgstr "Filtrilo"

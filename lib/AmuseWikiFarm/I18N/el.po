@@ -165,6 +165,9 @@ msgstr "Προσθήκη ολόκληρου του κειμένου"
 msgid "Add this text to the bookbuilder"
 msgstr "Προσθήκη αυτού του κειμένου στο βιβλιοχτίστη"
 
+msgid "Add to colophon"
+msgstr ""
+
 msgid "Added"
 msgstr ""
 
@@ -384,6 +387,9 @@ msgstr "Όριο σελίδων βιβλιοχτίστη (integer)"
 msgid "Build it"
 msgstr "Χτίσιμο"
 
+msgid "Built-in"
+msgstr ""
+
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -430,6 +436,7 @@ msgid "Categories"
 msgstr "Κατηγορίες"
 
 #. ($site->canonical)
+#. (site.canonical)
 msgid "Category types for %1"
 msgstr "Τύποι κατηγορίας για %1"
 
@@ -444,6 +451,9 @@ msgstr "Αλλαγές"
 
 msgid "Changes applied"
 msgstr "Οι αλλαγές εφαρμόστηκαν"
+
+msgid "Changes applied."
+msgstr ""
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
@@ -501,6 +511,9 @@ msgstr "Κλείσιμο"
 msgid "Code"
 msgstr "Κώδικας"
 
+msgid "Colophon (displayed in the generated files):"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -531,6 +544,9 @@ msgstr "Συνεχής αρίθμηση στις υποσημειώσεις σε
 
 msgid "Convert to archive markup"
 msgstr "Μετατροπή στο markup του αρχείου"
+
+msgid "Copyright notice"
+msgstr ""
 
 msgid "Couldn't add the text"
 msgstr "Η προσθήκη του κειμένου δεν ήταν δυνατή"
@@ -998,6 +1014,9 @@ msgstr ""
 msgid "General configuration"
 msgstr "Γενική ρύθμιση παραμέτρων"
 
+msgid "Generate Index"
+msgstr ""
+
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Γενικό (ταιριάζει με A4 και Letter)"
 
@@ -1062,6 +1081,9 @@ msgstr "Εισαγωγέας HTML/Word"
 msgid "Half Letter paper"
 msgstr "Μισό χαρτί \"Letter\""
 
+msgid "Headers"
+msgstr ""
+
 msgid "Heading"
 msgstr "Επικεφαλίδα"
 
@@ -1070,6 +1092,9 @@ msgstr "Επικεφαλίδες"
 
 msgid "Height:"
 msgstr "Ύψος:"
+
+msgid "Help Text"
+msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
@@ -1634,6 +1659,9 @@ msgstr "Κάντε όλα τα μη διακεκομμένα κενά ρητά �
 msgid "Manage categories"
 msgstr "Διαχείριση κατηγοριών"
 
+msgid "Manage category types"
+msgstr ""
+
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
@@ -2127,6 +2155,9 @@ msgstr ""
 msgid "Please prove you are a human"
 msgstr "Απόδειξε ότι είσαι άνθρωπος"
 
+msgid "Please reindex the site."
+msgstr ""
+
 msgid "Please reload your page"
 msgstr "Επαναφόρτωσε τη σελίδα σου"
 
@@ -2319,6 +2350,9 @@ msgstr "Ανακατασκευή"
 msgid "Rebuild all generated files"
 msgstr "Επαναδημιουργία όλων των παραγόμενων αρχείων"
 
+msgid "Rebuild formats"
+msgstr ""
+
 msgid "Rebuild the generated formats"
 msgstr "Επαναδημιουργία των παραγόμενων μορφοτύπων"
 
@@ -2333,6 +2367,9 @@ msgstr "Επανακατευθύνσεις"
 
 msgid "Refresh and apply filters"
 msgstr "Ανανέωση και εφαρμογή φίλτρων"
+
+msgid "Reindex site"
+msgstr ""
 
 msgid "Related projects"
 msgstr "Σχετικά έργα"
@@ -2431,6 +2468,9 @@ msgstr ""
 msgid "Running headings"
 msgstr "Τρέχουσες επικεφαλίδες"
 
+msgid "SKU"
+msgstr ""
+
 msgid "SSL CA certificate path (Apache)"
 msgstr "Διαδρομή πιστοποιητικού SSL CA (Apache)"
 
@@ -2470,6 +2510,9 @@ msgstr "Αποθηκευμένη διαμόρφωση \"%1\""
 
 msgid "Search"
 msgstr "Αναζήτηση"
+
+msgid "Search Engine Facets"
+msgstr ""
 
 msgid "Search filters"
 msgstr "Φίλτρα αναζήτησης"
@@ -2529,8 +2572,11 @@ msgstr "Ξεχωριστά πεδία υποσέλιδου"
 msgid "Separate header fields"
 msgstr "Ξεχωριστά πεδία επικεφαλίδων"
 
-msgid "Series"
-msgstr "Σειρά"
+msgid "Series Name"
+msgstr ""
+
+msgid "Series Number"
+msgstr ""
 
 msgid "Session sharing"
 msgstr "Κοινή χρήση εισόδου"
@@ -2984,6 +3030,9 @@ msgstr "Αυτή η διόρθωση βρίσκεται υπό επεξεργα�
 
 msgid "This section will not produce a slide"
 msgstr "Αυτό το τμήμα δεν θα παράγει μια διαφάνεια"
+
+msgid "This setting affects only the text creation form."
+msgstr ""
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
@@ -3772,6 +3821,9 @@ msgstr ""
 "    κατά τη διάρκεια της επεξεργασίας, αλλά είναι ακόμα εκεί, σε περίπτωση "
 "που κάποιο άτομο θέλει να\n"
 "    την ανακτήσει κατά την επεξεργασία ενός κειμένου."
+
+#~ msgid "Series"
+#~ msgstr "Σειρά"
 
 #~ msgid "Filter"
 #~ msgstr "Φίλτρο"

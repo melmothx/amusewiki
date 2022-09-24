@@ -152,6 +152,9 @@ msgstr ""
 msgid "Add this text to the bookbuilder"
 msgstr "Lägg till denna text i bokskaparen"
 
+msgid "Add to colophon"
+msgstr ""
+
 msgid "Added"
 msgstr ""
 
@@ -346,6 +349,9 @@ msgstr "Bokskapare sidbegränsning (heltal)"
 msgid "Build it"
 msgstr "Skapa den"
 
+msgid "Built-in"
+msgstr ""
+
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -389,6 +395,7 @@ msgid "Categories"
 msgstr "Kategorier"
 
 #. ($site->canonical)
+#. (site.canonical)
 msgid "Category types for %1"
 msgstr ""
 
@@ -403,6 +410,9 @@ msgstr "Ändringar"
 
 msgid "Changes applied"
 msgstr "Ändrigar utförda"
+
+msgid "Changes applied."
+msgstr ""
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
@@ -455,6 +465,9 @@ msgstr "Stäng"
 msgid "Code"
 msgstr ""
 
+msgid "Colophon (displayed in the generated files):"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -482,6 +495,9 @@ msgid "Continuous footnote numbering across the whole document."
 msgstr ""
 
 msgid "Convert to archive markup"
+msgstr ""
+
+msgid "Copyright notice"
 msgstr ""
 
 msgid "Couldn't add the text"
@@ -924,6 +940,9 @@ msgstr ""
 msgid "General configuration"
 msgstr ""
 
+msgid "Generate Index"
+msgstr ""
+
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Generisk (passar i A4 och Brev)"
 
@@ -978,6 +997,9 @@ msgstr ""
 msgid "Half Letter paper"
 msgstr "Halvt brevpapper"
 
+msgid "Headers"
+msgstr ""
+
 msgid "Heading"
 msgstr "Rubrik"
 
@@ -985,6 +1007,9 @@ msgid "Headings"
 msgstr "Rubriker"
 
 msgid "Height:"
+msgstr ""
+
+msgid "Help Text"
 msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
@@ -1452,6 +1477,9 @@ msgstr ""
 msgid "Manage categories"
 msgstr ""
 
+msgid "Manage category types"
+msgstr ""
+
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
@@ -1902,6 +1930,9 @@ msgstr ""
 msgid "Please prove you are a human"
 msgstr "Vänligen bevisa att du är en människa"
 
+msgid "Please reindex the site."
+msgstr ""
+
 msgid "Please reload your page"
 msgstr "Ladda gärna om sidan"
 
@@ -2074,6 +2105,9 @@ msgstr ""
 msgid "Rebuild all generated files"
 msgstr ""
 
+msgid "Rebuild formats"
+msgstr ""
+
 msgid "Rebuild the generated formats"
 msgstr ""
 
@@ -2087,6 +2121,9 @@ msgid "Redirections"
 msgstr "Omdirigeringar"
 
 msgid "Refresh and apply filters"
+msgstr ""
+
+msgid "Reindex site"
 msgstr ""
 
 msgid "Related projects"
@@ -2186,6 +2223,9 @@ msgstr ""
 msgid "Running headings"
 msgstr ""
 
+msgid "SKU"
+msgstr ""
+
 msgid "SSL CA certificate path (Apache)"
 msgstr ""
 
@@ -2225,6 +2265,9 @@ msgstr ""
 
 msgid "Search"
 msgstr "Sök"
+
+msgid "Search Engine Facets"
+msgstr ""
 
 msgid "Search filters"
 msgstr ""
@@ -2284,7 +2327,10 @@ msgstr "Separera fält för sidfot"
 msgid "Separate header fields"
 msgstr "Separera fält för sidhuvud"
 
-msgid "Series"
+msgid "Series Name"
+msgstr ""
+
+msgid "Series Number"
 msgstr ""
 
 msgid "Session sharing"
@@ -2694,6 +2740,9 @@ msgid "This revision is being edited by someone else!"
 msgstr "Revideringen redigeras av någon annan!"
 
 msgid "This section will not produce a slide"
+msgstr ""
+
+msgid "This setting affects only the text creation form."
 msgstr ""
 
 msgid ""

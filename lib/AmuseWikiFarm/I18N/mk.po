@@ -157,6 +157,9 @@ msgstr "Додади го целиот текст"
 msgid "Add this text to the bookbuilder"
 msgstr "Додади го овој текст на збирката"
 
+msgid "Add to colophon"
+msgstr ""
+
 msgid "Added"
 msgstr ""
 
@@ -366,6 +369,9 @@ msgstr "Максимален број на страници на збиркат�
 msgid "Build it"
 msgstr "Направи"
 
+msgid "Built-in"
+msgstr ""
+
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -409,6 +415,7 @@ msgid "Categories"
 msgstr "Теми"
 
 #. ($site->canonical)
+#. (site.canonical)
 msgid "Category types for %1"
 msgstr ""
 
@@ -423,6 +430,9 @@ msgstr "Измени"
 
 msgid "Changes applied"
 msgstr "Внесени измени"
+
+msgid "Changes applied."
+msgstr ""
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
@@ -479,6 +489,9 @@ msgstr "Затвори"
 msgid "Code"
 msgstr ""
 
+msgid "Colophon (displayed in the generated files):"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -507,6 +520,9 @@ msgstr "Продолжи со означување на фуснотите ни�
 
 msgid "Convert to archive markup"
 msgstr "Претвори во формат кој се користи во архивата"
+
+msgid "Copyright notice"
+msgstr ""
 
 msgid "Couldn't add the text"
 msgstr "Не беше возможно да се додаде текстот"
@@ -964,6 +980,9 @@ msgstr ""
 msgid "General configuration"
 msgstr "Општа конфигурација"
 
+msgid "Generate Index"
+msgstr ""
+
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Генеричен формат (го собира и на А4 и на Letter)"
 
@@ -1020,6 +1039,9 @@ msgstr "Претвори го HTML/Word во wiki формат"
 msgid "Half Letter paper"
 msgstr "Половина „Letter“ формат"
 
+msgid "Headers"
+msgstr ""
+
 msgid "Heading"
 msgstr "Заглавие"
 
@@ -1028,6 +1050,9 @@ msgstr "Заглавија"
 
 msgid "Height:"
 msgstr "Висина"
+
+msgid "Help Text"
+msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr "Овде можеш да најдеш преглед на темите и боите за слајдови"
@@ -1561,6 +1586,9 @@ msgstr "Покажи го неразделивиот празен постор �
 msgid "Manage categories"
 msgstr "Управување со категории"
 
+msgid "Manage category types"
+msgstr ""
+
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
@@ -2030,6 +2058,9 @@ msgstr ""
 msgid "Please prove you are a human"
 msgstr "Докажи дека си човек"
 
+msgid "Please reindex the site."
+msgstr ""
+
 msgid "Please reload your page"
 msgstr "Вчитај ја повторно твојата страница"
 
@@ -2215,6 +2246,9 @@ msgstr "Регенерација"
 msgid "Rebuild all generated files"
 msgstr "Регенерирај ги сите датотеки со текстови"
 
+msgid "Rebuild formats"
+msgstr ""
+
 msgid "Rebuild the generated formats"
 msgstr "Регенерирај ги датотеките со текстови"
 
@@ -2229,6 +2263,9 @@ msgstr "Пренасочувања"
 
 msgid "Refresh and apply filters"
 msgstr "Освежи и користи филтри"
+
+msgid "Reindex site"
+msgstr ""
 
 msgid "Related projects"
 msgstr "Поврзани проекти"
@@ -2327,6 +2364,9 @@ msgstr ""
 msgid "Running headings"
 msgstr "Заглавје на страницата"
 
+msgid "SKU"
+msgstr ""
+
 msgid "SSL CA certificate path (Apache)"
 msgstr "SSL CA сертификат (Apache)"
 
@@ -2366,6 +2406,9 @@ msgstr "Зачувана конфигурација \"%1\" "
 
 msgid "Search"
 msgstr "Барај"
+
+msgid "Search Engine Facets"
+msgstr ""
 
 msgid "Search filters"
 msgstr "Филтрирање на резултатите"
@@ -2425,7 +2468,10 @@ msgstr "Одвојуваат делови од подножјето"
 msgid "Separate header fields"
 msgstr "Одвојуваат делови од заглавието"
 
-msgid "Series"
+msgid "Series Name"
+msgstr ""
+
+msgid "Series Number"
 msgstr ""
 
 msgid "Session sharing"
@@ -2854,6 +2900,9 @@ msgstr "Оваа измена е во тек од страна на некој �
 
 msgid "This section will not produce a slide"
 msgstr "Овој оддел нема да создаде слајд"
+
+msgid "This setting affects only the text creation form."
+msgstr ""
 
 msgid ""
 "This site is private and mobile applications should ask for your username "

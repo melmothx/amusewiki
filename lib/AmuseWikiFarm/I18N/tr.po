@@ -156,11 +156,15 @@ msgstr "Bütün metni ekle"
 msgid "Add this text to the bookbuilder"
 msgstr "Bu metni kitap yapıcıya ekle"
 
+msgid "Add to colophon"
+msgstr ""
+
 msgid "Added"
 msgstr "Eklendi"
 
 msgid ""
-"Additional information (full date, original title, translators, credits, etc)."
+"Additional information (full date, original title, translators, credits, "
+"etc)."
 msgstr "Ek bilgi (tam tarih, orjinal başlık, çevirmenler, vb)."
 
 msgid "Additional nginx configuration"
@@ -206,8 +210,8 @@ msgid "All users"
 msgstr "Bütün kullanıcılar"
 
 msgid ""
-"Allow Unicode URIs for categories (author, topics). Recommended for non-latin "
-"scripts."
+"Allow Unicode URIs for categories (author, topics). Recommended for non-"
+"latin scripts."
 msgstr ""
 "Kategoriler (yazar, konular) için Unicode URI'lerine izin verin. "
 "Latinceolmayan alfabeler için önerilir."
@@ -367,6 +371,9 @@ msgstr "Kitap yapıcı sayfa sınırı (tamsayı)"
 msgid "Build it"
 msgstr "Yap"
 
+msgid "Built-in"
+msgstr ""
+
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -413,6 +420,7 @@ msgid "Categories"
 msgstr "Kategoriler"
 
 #. ($site->canonical)
+#. (site.canonical)
 msgid "Category types for %1"
 msgstr "%1 için kategori tipleri"
 
@@ -427,6 +435,9 @@ msgstr "Değişiklikler"
 
 msgid "Changes applied"
 msgstr "Uygulanan değişiklikler"
+
+msgid "Changes applied."
+msgstr ""
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
@@ -482,12 +493,15 @@ msgstr "Kapat"
 msgid "Code"
 msgstr "Kod"
 
+msgid "Colophon (displayed in the generated files):"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
 msgstr ""
-"Düzenleme kutusuyla birlite, sayfasının sol yanı için sütun sayısı (toplam 12 "
-"içinden)"
+"Düzenleme kutusuyla birlite, sayfasının sol yanı için sütun sayısı (toplam "
+"12 içinden)"
 
 msgid "Comma or semicolon separated list"
 msgstr "Virgül ya da noktalı virgülle ayrılmış liste"
@@ -512,6 +526,9 @@ msgstr "Bütün döküman boyunca sürekli artan dipnot numaralandırması."
 
 msgid "Convert to archive markup"
 msgstr "Arşiv biçimlendirmesine dönüştür"
+
+msgid "Copyright notice"
+msgstr ""
 
 msgid "Couldn't add the text"
 msgstr "Metin eklenemedi"
@@ -545,8 +562,8 @@ msgid ""
 "Create a public repository on GitLab, GitHub or similar services (or on your "
 "own server). "
 msgstr ""
-"GitLab, GitHub veya benzeri servislerde (veya kendi sunucunuzda) herkese açık "
-"bir depo oluştur."
+"GitLab, GitHub veya benzeri servislerde (veya kendi sunucunuzda) herkese "
+"açık bir depo oluştur."
 
 msgid "Create a topic alias"
 msgstr "Konu rumuzu yarat"
@@ -861,7 +878,8 @@ msgstr "Dosya yüklendi!"
 msgid "Files"
 msgstr "Dosyalar"
 
-msgid "Fill with blank pages before the last page if the signature is not full."
+msgid ""
+"Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 "Eğer forma dolu değilse son sayfadan önceki sayfaları boş sayfalarla doldur."
 
@@ -900,8 +918,8 @@ msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr "Tek tabakaya 3 kere katlayarak sabit 16 sayfalık formalar."
 
 msgid ""
-"Fixed signatures of 8 pages, to be cut horizontally, folded individually, and "
-"bound together."
+"Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
+"and bound together."
 msgstr ""
 "Yatay kesilip ayrı ayrı katlanıp beraber bağlanan sabit 8 sayfalık formalar."
 
@@ -971,6 +989,9 @@ msgstr "Tam genişlik, değişken düzen"
 msgid "General configuration"
 msgstr "Genel konfigürasyon"
 
+msgid "Generate Index"
+msgstr ""
+
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Genel (A4 ve Letter'a sığar)"
 
@@ -1034,6 +1055,9 @@ msgstr "HTML/Word İçeri Aktarıcı"
 msgid "Half Letter paper"
 msgstr "Yarım Letter sayfa"
 
+msgid "Headers"
+msgstr ""
+
 msgid "Heading"
 msgstr "Üst bilgi"
 
@@ -1042,6 +1066,9 @@ msgstr "Üst bilgiler"
 
 msgid "Height:"
 msgstr "Yükseklik:"
+
+msgid "Help Text"
+msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr "Burada Beamer temaları ve renk temalarının önizlemesini bulabilirsin"
@@ -1127,8 +1154,8 @@ msgstr ""
 "şifren değiştirilmeyecek."
 
 msgid ""
-"If it's not the case, please open a bug report at https://github.com/melmothx/"
-"amusewiki/issues"
+"If it's not the case, please open a bug report at https://github.com/"
+"melmothx/amusewiki/issues"
 msgstr ""
 "Durum böyle değilse, lütfen https://github.com/melmothx/amusewiki/issues "
 "adresinde bir hata raporu aç"
@@ -1172,15 +1199,16 @@ msgstr ""
 "            listele"
 
 msgid ""
-"If the user is allowed to publish, speed up the process skipping the revision "
-"page if there are no conflicts and automatically redirect to the published "
-"text once it is done."
+"If the user is allowed to publish, speed up the process skipping the "
+"revision page if there are no conflicts and automatically redirect to the "
+"published text once it is done."
 msgstr ""
-"Eğer kullanıcının yayınlama yetkisi varsa ve çakışma yoksa versiyon sayfasını "
-"atla ve yayınlandıktan sonra metne yönlendirerek süreci hızlandır."
+"Eğer kullanıcının yayınlama yetkisi varsa ve çakışma yoksa versiyon "
+"sayfasını atla ve yayınlandıktan sonra metne yönlendirerek süreci hızlandır."
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
-msgstr "Eğer kullanıcı bir eposta verdiyse, bu postanın CC bölümünde listelenir"
+msgstr ""
+"Eğer kullanıcı bir eposta verdiyse, bu postanın CC bölümünde listelenir"
 
 msgid ""
 "If this line\n"
@@ -1567,6 +1595,9 @@ msgstr "Bütün ayırıcı olmayan boşlukları belirgin ve ~~ şeklinde görün
 msgid "Manage categories"
 msgstr "Kategorileri yönet"
 
+msgid "Manage category types"
+msgstr ""
+
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 "Kenar boşlukları: lütfen bir bölme katsayısı seç veya genişlik ve yüksekliği "
@@ -1768,9 +1799,11 @@ msgstr "Eski metinler"
 msgid "On text creation, enforce user to choose the URI"
 msgstr "Metin oluşturmada, kullanıcıyı URI'yi belirlemeye zorla"
 
-msgid "One page per sheet. This is useful only if you want to add the cropmarks"
+msgid ""
+"One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
-"Her kağıtta tek sayfa. Bu sadece kesme işaretleri eklemek istiyorsan işe yarar"
+"Her kağıtta tek sayfa. Bu sadece kesme işaretleri eklemek istiyorsan işe "
+"yarar"
 
 msgid "Open wiki"
 msgstr "Wikiyi aç"
@@ -2032,6 +2065,9 @@ msgstr ""
 msgid "Please prove you are a human"
 msgstr "Lütfen insan olduğunu kanıtla"
 
+msgid "Please reindex the site."
+msgstr ""
+
 msgid "Please reload your page"
 msgstr "Lütfen sayfayı yeniden yükleyin"
 
@@ -2215,6 +2251,9 @@ msgstr "Tekrar oluştur"
 msgid "Rebuild all generated files"
 msgstr "Üretilen dosyaları yeniden oluştur"
 
+msgid "Rebuild formats"
+msgstr ""
+
 msgid "Rebuild the generated formats"
 msgstr "Üretilen biçimleri yeniden oluştur"
 
@@ -2229,6 +2268,9 @@ msgstr "Yönlendirmeler"
 
 msgid "Refresh and apply filters"
 msgstr "Yenile ve filtreleri uygula"
+
+msgid "Reindex site"
+msgstr ""
 
 msgid "Related projects"
 msgstr "İlgili projeler"
@@ -2327,6 +2369,9 @@ msgstr "Çalıştır: diff"
 msgid "Running headings"
 msgstr "Yinelenen başlıklar"
 
+msgid "SKU"
+msgstr ""
+
 msgid "SSL CA certificate path (Apache)"
 msgstr "SSL CA sertifika yolu (Apache)"
 
@@ -2366,6 +2411,9 @@ msgstr "\"%1\" konfigurasyonu kaydedildi"
 
 msgid "Search"
 msgstr "Ara"
+
+msgid "Search Engine Facets"
+msgstr ""
 
 msgid "Search filters"
 msgstr "Arama filtreleri"
@@ -2425,8 +2473,11 @@ msgstr "Altlık alanlarını ayır"
 msgid "Separate header fields"
 msgstr "Üstlük alanlarını ayır"
 
-msgid "Series"
-msgstr "Dizi"
+msgid "Series Name"
+msgstr ""
+
+msgid "Series Number"
+msgstr ""
 
 msgid "Session sharing"
 msgstr "Oturum paylaşma"
@@ -2806,11 +2857,11 @@ msgid "They can be texts, special texts, authors or topics."
 msgstr "Bunlar metin, özel metin, yazar ya da konu olabilir."
 
 msgid ""
-"They should be paths relative to the webserver configuration root or absolute "
-"paths (recommended)."
+"They should be paths relative to the webserver configuration root or "
+"absolute paths (recommended)."
 msgstr ""
-"Bunlar web sunucusunda ayarlanmış kök dizine göre dosya yolu (path) ya da tam "
-"yol (absolute path) olmalı (tavsiye edilen)."
+"Bunlar web sunucusunda ayarlanmış kök dizine göre dosya yolu (path) ya da "
+"tam yol (absolute path) olmalı (tavsiye edilen)."
 
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr "Bu komut dosya adlarının listesini boşluklarla ayırarak istiyor."
@@ -2861,6 +2912,9 @@ msgstr "Bu versiyon başkası tarafında düzenleniyor!"
 
 msgid "This section will not produce a slide"
 msgstr "Bu bölüm bir slayt üretmeyecek"
+
+msgid "This setting affects only the text creation form."
+msgstr ""
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
@@ -2931,7 +2985,8 @@ msgid "To display the PDFs, set or append the following string in the header"
 msgstr ""
 "PDF'leri görmek için, üstlüğe aşağıdaki kelimeleri yaz ya da sonuna ekle"
 
-msgid "To preserve the whitespaces and line breakings, wrap the paragraphs with"
+msgid ""
+"To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr ""
 "Beyaz boşlukları ve satır sonlarını korumak için paragrafların etrafına "
 "bunları ekle"
@@ -3013,8 +3068,8 @@ msgid ""
 "URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
 "my-author-title-1"
 msgstr ""
-"URI, boşluksuz, kısa çizgilerle ayrılmış bir ASCII dizesi olmalıdır. Örneğin. "
-"yazar-baslik-1"
+"URI, boşluksuz, kısa çizgilerle ayrılmış bir ASCII dizesi olmalıdır. "
+"Örneğin. yazar-baslik-1"
 
 msgid "URL"
 msgstr "URL"
@@ -3046,7 +3101,8 @@ msgstr ""
 "                boşlukları kaldır"
 
 #. (shared)
-msgid "Unfortunately, the shared repository located at %1 appeared out of sync."
+msgid ""
+"Unfortunately, the shared repository located at %1 appeared out of sync."
 msgstr ""
 "Ne yazık ki, %1 konumunda bulunan paylaşılan depo, senkronizasyon dışı "
 "göründü."
@@ -3294,20 +3350,20 @@ msgstr "Zaten giriş yaptın"
 
 msgid ""
 "You are building a collection. Please provide a title and, optionally, any "
-"other information needed for the front cover (author, subtitle, date) and the "
-"back cover (source and notes)."
+"other information needed for the front cover (author, subtitle, date) and "
+"the back cover (source and notes)."
 msgstr ""
 "Bir koleksiyon yapıyorsun. Lütfen bir başlık ve opsiyonel olarak ön kapak "
-"için (yazar, alt başlık, tarih) ve arka kapak için (kaynak ve notlar) gereken "
-"diğer bilgileri verin."
+"için (yazar, alt başlık, tarih) ve arka kapak için (kaynak ve notlar) "
+"gereken diğer bilgileri verin."
 
 msgid "You are logged in now!"
 msgstr "Şimdi giriş yaptın!"
 
 #. (backup)
 msgid ""
-"You can access the backup located at %1 or ask your host for help, forwarding "
-"this email"
+"You can access the backup located at %1 or ask your host for help, "
+"forwarding this email"
 msgstr ""
 "%1'de bulunan yedeğe erişebilir veya bu e-postayı ileterek sunucudan yardım "
 "isteyebilirsin"
@@ -3339,8 +3395,8 @@ msgid "You can tune them editing them here."
 msgstr "Onları burada düzenleyererek ayarlayabilirsin."
 
 msgid ""
-"You can use the following prefixes to search a word in a specific field, e.g. "
-"\"title:example\""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
 msgstr ""
 "Bir kelimeyi belirli alanlarda aramak için aşağıdaki önekleri "
 "kullanabilirsin, örn. \"başlık:örnek\""
@@ -3611,6 +3667,9 @@ msgstr ""
 "    ama birisi metni düzenlemek için oradan devam edebilir\n"
 "    demektir."
 
+#~ msgid "Series"
+#~ msgstr "Dizi"
+
 #~ msgid "Filter"
 #~ msgstr "Filtre"
 
@@ -3684,8 +3743,8 @@ msgstr ""
 #~ msgstr "eğer veri deposu dışa aktarılırsa"
 
 #~ msgid ""
-#~ "or, if you have SSH access to the machine (but do not use the same user as "
-#~ "amusewiki, it should be a read-only repo)"
+#~ "or, if you have SSH access to the machine (but do not use the same user "
+#~ "as amusewiki, it should be a read-only repo)"
 #~ msgstr ""
 #~ "ya da, makinaya SSH erişimin varsa (ama amusewiki ile aynı kullanıcıyı "
 #~ "kullanma, veri deposunun sadece okunur olması gerekiyor)"

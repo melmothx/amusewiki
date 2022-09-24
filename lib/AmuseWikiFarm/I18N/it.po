@@ -156,6 +156,9 @@ msgstr "Aggiungi tutto il testo"
 msgid "Add this text to the bookbuilder"
 msgstr "Aggiungi questo testo all'impaginatore"
 
+msgid "Add to colophon"
+msgstr ""
+
 msgid "Added"
 msgstr "Aggiunto"
 
@@ -207,7 +210,9 @@ msgstr "Tutte le utenze"
 msgid ""
 "Allow Unicode URIs for categories (author, topics). Recommended for non-"
 "latin scripts."
-msgstr "Consenti URI in Unicode per le categorie (autore, argomenti). Raccomandato per scritture non latine."
+msgstr ""
+"Consenti URI in Unicode per le categorie (autore, argomenti). Raccomandato "
+"per scritture non latine."
 
 msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
@@ -365,6 +370,9 @@ msgstr "Massimo di pagine per l'impaginatore (numero intero)"
 msgid "Build it"
 msgstr "Impagina"
 
+msgid "Built-in"
+msgstr ""
+
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -411,6 +419,7 @@ msgid "Categories"
 msgstr "Categorie"
 
 #. ($site->canonical)
+#. (site.canonical)
 msgid "Category types for %1"
 msgstr "Tipi di categoria per %1"
 
@@ -425,6 +434,9 @@ msgstr "Modifiche"
 
 msgid "Changes applied"
 msgstr "Modifiche applicate"
+
+msgid "Changes applied."
+msgstr ""
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
@@ -481,6 +493,9 @@ msgstr "Chiudi"
 msgid "Code"
 msgstr "Codice"
 
+msgid "Colophon (displayed in the generated files):"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -514,6 +529,9 @@ msgstr ""
 msgid "Convert to archive markup"
 msgstr "Converti nel markup dell'archivio"
 
+msgid "Copyright notice"
+msgstr ""
+
 msgid "Couldn't add the text"
 msgstr "Aggiunta del testo fallita"
 
@@ -546,7 +564,9 @@ msgstr "Crea una nuova utenza"
 msgid ""
 "Create a public repository on GitLab, GitHub or similar services (or on your "
 "own server). "
-msgstr "Crea un archivio pubblico su GitLab, GitHub o servizi simili (o sul tuo server)."
+msgstr ""
+"Crea un archivio pubblico su GitLab, GitHub o servizi simili (o sul tuo "
+"server)."
 
 msgid "Create a topic alias"
 msgstr "Crea un alias per un tema"
@@ -976,6 +996,9 @@ msgstr "Larghezza piena, layout fluido"
 msgid "General configuration"
 msgstr "Configurazione generale"
 
+msgid "Generate Index"
+msgstr ""
+
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Formato generico (adatto per A4 e Letter)"
 
@@ -985,7 +1008,10 @@ msgstr "Usa l'URI generato dal server"
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
 "using the form you can find above. You can have one personal repository."
-msgstr "Annota l'URL HTTPS dell'archivio Git, ad esempio https://example.com/git/test e aggiungilo usando il formulario qui sopra. Puoi avere un solo archivio personale."
+msgstr ""
+"Annota l'URL HTTPS dell'archivio Git, ad esempio https://example.com/git/"
+"test e aggiungilo usando il formulario qui sopra. Puoi avere un solo "
+"archivio personale."
 
 msgid "Git"
 msgstr "Git"
@@ -1039,6 +1065,9 @@ msgstr "Importatore HTML/Word"
 msgid "Half Letter paper"
 msgstr "Mezzo foglio “Letter”"
 
+msgid "Headers"
+msgstr ""
+
 msgid "Heading"
 msgstr "Sezioni"
 
@@ -1047,6 +1076,9 @@ msgstr "Sezione"
 
 msgid "Height:"
 msgstr "Altezza:"
+
+msgid "Help Text"
+msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr "Qui puoi trovare un'anteprima dei temi e dei colori delle diapositive"
@@ -1137,7 +1169,9 @@ msgstr ""
 msgid ""
 "If it's not the case, please open a bug report at https://github.com/"
 "melmothx/amusewiki/issues"
-msgstr "Se così non fosse, per cortesia riferisci il problema qui: https://github.com/melmothx/amusewiki/issues"
+msgstr ""
+"Se così non fosse, per cortesia riferisci il problema qui: https://github."
+"com/melmothx/amusewiki/issues"
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
@@ -1589,8 +1623,13 @@ msgstr ""
 msgid "Manage categories"
 msgstr "Gestione delle categorie"
 
+msgid "Manage category types"
+msgstr ""
+
 msgid "Margins: please choose a division factor or set width and height"
-msgstr "Margini: per cortesia scegli un fattore di divisione o imposta altezza e larghezza"
+msgstr ""
+"Margini: per cortesia scegli un fattore di divisione o imposta altezza e "
+"larghezza"
 
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr ""
@@ -1761,7 +1800,9 @@ msgstr "Notifica a"
 msgid ""
 "Now it has been aligned to the site's archive, but this means that there are "
 "some missing commits."
-msgstr "Ora è stato allineato all'archivio del sito, ma ciò significa che ci sono dei cambiamenti mancanti."
+msgstr ""
+"Ora è stato allineato all'archivio del sito, ma ciò significa che ci sono "
+"dei cambiamenti mancanti."
 
 msgid "Now we are going to populate it and get it ready"
 msgstr "Ora stiamo per popolarlo e prepararlo"
@@ -1989,7 +2030,9 @@ msgstr ""
 
 #. (amw_group_name)
 msgid "Please ensure that your system user is member of the \"%1\" group"
-msgstr "Per cortesia assicurati che il tuo utente di sistema sia membro del gruppo \"%1\""
+msgstr ""
+"Per cortesia assicurati che il tuo utente di sistema sia membro del gruppo "
+"\"%1\""
 
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
@@ -2059,6 +2102,9 @@ msgstr ""
 msgid "Please prove you are a human"
 msgstr "Dimostra di essere un umano"
 
+msgid "Please reindex the site."
+msgstr ""
+
 msgid "Please reload your page"
 msgstr "Ricarica la pagina"
 
@@ -2068,7 +2114,9 @@ msgstr "Cancella prima il file dal corpo del testo"
 msgid ""
 "Please replace the example URL in the next line with the real one with SSH "
 "protocol"
-msgstr "Sostituisci l'URL di esempio nella seguente linea con quello reale, usando il protocollo SSH"
+msgstr ""
+"Sostituisci l'URL di esempio nella seguente linea con quello reale, usando "
+"il protocollo SSH"
 
 msgid "Please select"
 msgstr "Seleziona"
@@ -2200,7 +2248,9 @@ msgid "Random"
 msgstr "Pagina casuale"
 
 msgid "Read about the file naming scheme if you need to add files to the tree."
-msgstr "Leggi a proposito della convenzione dei nomi di file se devi aggiungerne di nuovi."
+msgstr ""
+"Leggi a proposito della convenzione dei nomi di file se devi aggiungerne di "
+"nuovi."
 
 msgid "Read the whole text..."
 msgstr "Leggi il testo completo..."
@@ -2238,6 +2288,9 @@ msgstr "Rigenera"
 msgid "Rebuild all generated files"
 msgstr "Rigenera tutti i file generati dal sito"
 
+msgid "Rebuild formats"
+msgstr ""
+
 msgid "Rebuild the generated formats"
 msgstr "Rigenera i formati"
 
@@ -2252,6 +2305,9 @@ msgstr "Redirezioni"
 
 msgid "Refresh and apply filters"
 msgstr "Aggiorna e applica i filtri"
+
+msgid "Reindex site"
+msgstr ""
 
 msgid "Related projects"
 msgstr "Progetti correlati"
@@ -2350,6 +2406,9 @@ msgstr "Trova le differenze"
 msgid "Running headings"
 msgstr "Testatine"
 
+msgid "SKU"
+msgstr ""
+
 msgid "SSL CA certificate path (Apache)"
 msgstr "Percorso del file certificato SSL CA (Apache)"
 
@@ -2389,6 +2448,9 @@ msgstr "La configurazione \"%1\" è stata salvata"
 
 msgid "Search"
 msgstr "Cerca"
+
+msgid "Search Engine Facets"
+msgstr ""
 
 msgid "Search filters"
 msgstr "Filtri la ricerca"
@@ -2448,8 +2510,11 @@ msgstr "Separano i campi dei piedini"
 msgid "Separate header fields"
 msgstr "Separano i campi dell'intestazione"
 
-msgid "Series"
-msgstr "Serie"
+msgid "Series Name"
+msgstr ""
+
+msgid "Series Number"
+msgstr ""
 
 msgid "Session sharing"
 msgstr "Condivisione"
@@ -2891,6 +2956,9 @@ msgstr "Questa revisione è in corso di modifica da qualcun altro!"
 msgid "This section will not produce a slide"
 msgstr "Questa sezione non produrrà diapositive"
 
+msgid "This setting affects only the text creation form."
+msgstr ""
+
 msgid ""
 "This site is private and mobile applications should ask for your username "
 "and\n"
@@ -3040,7 +3108,9 @@ msgstr "URI disponibile e valido"
 msgid ""
 "URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
 "my-author-title-1"
-msgstr "L'URI deve essere una stringa ASCII, senza accenti o diacritici e senza spazi, per esempio \"il-mio-autore-titolo-1\""
+msgstr ""
+"L'URI deve essere una stringa ASCII, senza accenti o diacritici e senza "
+"spazi, per esempio \"il-mio-autore-titolo-1\""
 
 msgid "URL"
 msgstr "URL"
@@ -3074,7 +3144,9 @@ msgstr ""
 #. (shared)
 msgid ""
 "Unfortunately, the shared repository located at %1 appeared out of sync."
-msgstr "Sfortunatamente, l'archivio Git condiviso situato in %1 è stato trovato non sincronizzato."
+msgstr ""
+"Sfortunatamente, l'archivio Git condiviso situato in %1 è stato trovato non "
+"sincronizzato."
 
 msgid "Unique ID for the text"
 msgstr "Identificativo del testo"
@@ -3205,7 +3277,9 @@ msgstr ""
 msgid ""
 "Usually this is due to high traffic and bad luck, and it can be fixed by "
 "pushing the changes again."
-msgstr "Di solito ciò accade per alto traffico o semplice sfortuna, e può essere risolto ripetendo il \"git push\""
+msgstr ""
+"Di solito ciò accade per alto traffico o semplice sfortuna, e può essere "
+"risolto ripetendo il \"git push\""
 
 msgid "Verbatim block"
 msgstr "Blocco letterale"
@@ -3337,7 +3411,9 @@ msgstr "Hai effettuato l'accesso!"
 msgid ""
 "You can access the backup located at %1 or ask your host for help, "
 "forwarding this email"
-msgstr "Puoi accedere al backup situato a %1 o chiedere aiuto al tuo amministratore inoltrando questa mail."
+msgstr ""
+"Puoi accedere al backup situato a %1 o chiedere aiuto al tuo amministratore "
+"inoltrando questa mail."
 
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
@@ -3648,6 +3724,9 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "Series"
+#~ msgstr "Serie"
 
 #~ msgid "Filter"
 #~ msgstr "Filtra"

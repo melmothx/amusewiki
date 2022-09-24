@@ -148,6 +148,9 @@ msgstr "添加全文"
 msgid "Add this text to the bookbuilder"
 msgstr "将此文添加进建书器"
 
+msgid "Add to colophon"
+msgstr ""
+
 msgid "Added"
 msgstr ""
 
@@ -343,6 +346,9 @@ msgstr "建书器页数上限（整数）"
 msgid "Build it"
 msgstr "建书"
 
+msgid "Built-in"
+msgstr ""
+
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -388,6 +394,7 @@ msgid "Categories"
 msgstr "类别"
 
 #. ($site->canonical)
+#. (site.canonical)
 msgid "Category types for %1"
 msgstr "%1的类别"
 
@@ -402,6 +409,9 @@ msgstr "改变"
 
 msgid "Changes applied"
 msgstr "确认的改变"
+
+msgid "Changes applied."
+msgstr ""
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
@@ -456,6 +466,9 @@ msgstr "关闭"
 msgid "Code"
 msgstr "代码"
 
+msgid "Colophon (displayed in the generated files):"
+msgstr ""
+
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -484,6 +497,9 @@ msgstr "在整个文档中连续的脚注编号。"
 
 msgid "Convert to archive markup"
 msgstr "转换成资料库标记"
+
+msgid "Copyright notice"
+msgstr ""
 
 msgid "Couldn't add the text"
 msgstr "无法添加文章"
@@ -923,6 +939,9 @@ msgstr "全宽度，流性排版"
 msgid "General configuration"
 msgstr "一般配置"
 
+msgid "Generate Index"
+msgstr ""
+
 msgid "Generic (fits in A4 and Letter)"
 msgstr "通用（适合A4和信纸）"
 
@@ -979,6 +998,9 @@ msgstr "HTML/Word 导入器"
 msgid "Half Letter paper"
 msgstr "半书信纸"
 
+msgid "Headers"
+msgstr ""
+
 msgid "Heading"
 msgstr "页首"
 
@@ -987,6 +1009,9 @@ msgstr "页首"
 
 msgid "Height:"
 msgstr "高度："
+
+msgid "Help Text"
+msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr "这里你能找到Beamer主题和色彩主题的预览"
@@ -1474,6 +1499,9 @@ msgstr "使所有不换行的空格突出显示为~~"
 msgid "Manage categories"
 msgstr "管理类别"
 
+msgid "Manage category types"
+msgstr ""
+
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
@@ -1913,6 +1941,9 @@ msgstr ""
 msgid "Please prove you are a human"
 msgstr "请证明你是人类"
 
+msgid "Please reindex the site."
+msgstr ""
+
 msgid "Please reload your page"
 msgstr "请重新载入页面"
 
@@ -2082,6 +2113,9 @@ msgstr "重建"
 msgid "Rebuild all generated files"
 msgstr "重建所有生成的文件"
 
+msgid "Rebuild formats"
+msgstr ""
+
 msgid "Rebuild the generated formats"
 msgstr "重建已生成的格式"
 
@@ -2096,6 +2130,9 @@ msgstr "重定向"
 
 msgid "Refresh and apply filters"
 msgstr "刷新并应用筛选器"
+
+msgid "Reindex site"
+msgstr ""
 
 msgid "Related projects"
 msgstr "相关项目"
@@ -2194,6 +2231,9 @@ msgstr ""
 msgid "Running headings"
 msgstr "延续标题"
 
+msgid "SKU"
+msgstr ""
+
 msgid "SSL CA certificate path (Apache)"
 msgstr "SSL CA 证书路径（Apache）"
 
@@ -2233,6 +2273,9 @@ msgstr "已保存「%1」配置"
 
 msgid "Search"
 msgstr "搜索"
+
+msgid "Search Engine Facets"
+msgstr ""
 
 msgid "Search filters"
 msgstr "搜索筛选器"
@@ -2292,8 +2335,11 @@ msgstr "分割脚注域"
 msgid "Separate header fields"
 msgstr "分割页头域"
 
-msgid "Series"
-msgstr "系列"
+msgid "Series Name"
+msgstr ""
+
+msgid "Series Number"
+msgstr ""
 
 msgid "Session sharing"
 msgstr "会话分享"
@@ -2703,6 +2749,9 @@ msgstr "这个修订版正在被其它人编辑中！"
 
 msgid "This section will not produce a slide"
 msgstr "这一节不会生成幻灯片"
+
+msgid "This setting affects only the text creation form."
+msgstr ""
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
@@ -3407,6 +3456,9 @@ msgid ""
 msgstr ""
 "「陈旧编辑」意味着版本已在编辑时被放弃，但它仍然存在，以防有人在编辑文本时继"
 "续使用它。"
+
+#~ msgid "Series"
+#~ msgstr "系列"
 
 #~ msgid "Filter"
 #~ msgstr "筛选"
