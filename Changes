@@ -4,6 +4,15 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.560 2022-09-24
+
+ - Extend the custom categories with new option. Include them in
+   Xapian facets, in the creation form, in the colophon.
+ - Improve preview on edit with all the relevant fields
+ - Honor the pubdate in the RSS for special pages
+ - Add kmr localization support
+ - Updated it and tr i18n
+
 2.551 2022-05-14
 
  - New body_only option for CF and BB
