@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2022-05-27 12:55+0300\n"
+"PO-Revision-Date: 2022-09-29 00:57+0300\n"
 "Last-Translator: Rojen Zaman <rojen@riseup.net>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #. ($filename)
 msgid "%1 doesn't exist"
@@ -157,7 +157,7 @@ msgid "Add this text to the bookbuilder"
 msgstr "Bu metni kitap yapıcıya ekle"
 
 msgid "Add to colophon"
-msgstr ""
+msgstr "Kolofona ekle"
 
 msgid "Added"
 msgstr "Eklendi"
@@ -213,8 +213,8 @@ msgid ""
 "Allow Unicode URIs for categories (author, topics). Recommended for non-"
 "latin scripts."
 msgstr ""
-"Kategoriler (yazar, konular) için Unicode URI'lerine izin verin. "
-"Latinceolmayan alfabeler için önerilir."
+"Kategoriler (yazar, konular) için Unicode URI'lerine izin verin. Latince "
+"olmayan alfabeler için önerilir."
 
 msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
@@ -249,7 +249,7 @@ msgstr ""
 "URI, arşivdeki metni tekil olarak tanımlar.\n"
 "      Teorik olarak herhangi bir şey olabilir ama kendiniz\n"
 "      belirlemek istiyorsanız, lütfen geleceğe bağlı kalın: yazar\n"
-"      adı, başlık, dil, ayırıcı sayı, örn. errico-malatesta-anarşi-2.\n"
+"      adı, başlık, dil, ayırıcı sayı, örn. errico-malatesta-anarsi-2.\n"
 "      Not: normalde bu gerekli olmaz"
 
 msgid "Apache is not currently supported"
@@ -298,7 +298,7 @@ msgid "Authors and topics listing"
 msgstr "Yazarlar ve konular listesi"
 
 msgid "Authors for indexing"
-msgstr "İndexleme için yazarlar"
+msgstr "İndeksleme için yazarlar"
 
 msgid "Auto"
 msgstr "Otomatik"
@@ -372,7 +372,7 @@ msgid "Build it"
 msgstr "Yap"
 
 msgid "Built-in"
-msgstr ""
+msgstr "Yerleşik"
 
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
@@ -437,7 +437,7 @@ msgid "Changes applied"
 msgstr "Uygulanan değişiklikler"
 
 msgid "Changes applied."
-msgstr ""
+msgstr "Değişiklikler uygulandı."
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
@@ -494,7 +494,7 @@ msgid "Code"
 msgstr "Kod"
 
 msgid "Colophon (displayed in the generated files):"
-msgstr ""
+msgstr "Kolofon (oluşturulan dosyalarda gözükür)"
 
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
@@ -528,7 +528,7 @@ msgid "Convert to archive markup"
 msgstr "Arşiv biçimlendirmesine dönüştür"
 
 msgid "Copyright notice"
-msgstr ""
+msgstr "Telif hakkı bildirimi"
 
 msgid "Couldn't add the text"
 msgstr "Metin eklenemedi"
@@ -758,16 +758,16 @@ msgid "Editing"
 msgstr "Düzenleme"
 
 msgid "Email"
-msgstr "Eposta"
+msgstr "E-posta"
 
 msgid "Email sent!"
-msgstr "Eposta gönderildi!"
+msgstr "E-posta gönderildi!"
 
 msgid "Email updated"
-msgstr "Eposta güncellendi"
+msgstr "E-posta güncellendi"
 
 msgid "Emails do not match"
-msgstr "Epostalar aynı değil"
+msgstr "E-postalar aynı değil"
 
 msgid "Embed fonts in the EPUB file"
 msgstr "EPUB dosyasında gömülü fontlar"
@@ -788,7 +788,7 @@ msgid "Error converting the upload file. Is it an HTML file?"
 msgstr "Yüklenen dosyayı dönüştürürken hata. HTML dosyası mı?"
 
 msgid "Error sending mail!"
-msgstr "Eposta gönderirken hata!"
+msgstr "E-posta gönderilirken hata gerçekleşti!"
 
 msgid "Error while converting the HTML. Sorry."
 msgstr "HTML dönüştürürken hata gerçekleşti. Üzgünüm."
@@ -944,7 +944,7 @@ msgstr ""
 "bulundu (%4), değişiklikler yok sayılıyor."
 
 msgid "For texts from the internet use"
-msgstr "İnternet kullanımından metinler için"
+msgstr "İnternetten alınan metinler için"
 
 msgid "For texts without a table of content, start text on the very first page"
 msgstr "İçindekiler kısmı olmayan metinler için, metni ilk sayfadan başlat"
@@ -990,7 +990,7 @@ msgid "General configuration"
 msgstr "Genel konfigürasyon"
 
 msgid "Generate Index"
-msgstr ""
+msgstr "Dizin oluştur"
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Genel (A4 ve Letter'a sığar)"
@@ -1031,7 +1031,7 @@ msgstr ""
 "            herşeyi mahvedebilir"
 
 msgid "HTML to insert in the footer of the layout, below the links"
-msgstr "Yerleşimin alt lık kısmına, bağlantıların altına eklenecek HTML"
+msgstr "Yerleşimin alt kısmına, bağlantıların altına eklenecek HTML"
 
 msgid "HTML to insert into the left sidebar"
 msgstr "Sol yan sütuna eklenecek HTML"
@@ -1056,7 +1056,7 @@ msgid "Half Letter paper"
 msgstr "Yarım Letter sayfa"
 
 msgid "Headers"
-msgstr ""
+msgstr "Başlıklar"
 
 msgid "Heading"
 msgstr "Üst bilgi"
@@ -1068,7 +1068,7 @@ msgid "Height:"
 msgstr "Yükseklik:"
 
 msgid "Help Text"
-msgstr ""
+msgstr "Yardım metni"
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr "Burada Beamer temaları ve renk temalarının önizlemesini bulabilirsin"
@@ -1208,7 +1208,7 @@ msgstr ""
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
-"Eğer kullanıcı bir eposta verdiyse, bu postanın CC bölümünde listelenir"
+"Eğer kullanıcı bir e-posta verdiyse, bu postanın CC bölümünde listelenir"
 
 msgid ""
 "If this line\n"
@@ -1366,7 +1366,7 @@ msgid "Invalid domain"
 msgstr "Geçersiz alan adı"
 
 msgid "Invalid email"
-msgstr "Geçersiz eposta"
+msgstr "Geçersiz e-posta"
 
 msgid "Invalid field"
 msgstr "Geçersiz alan"
@@ -1596,7 +1596,7 @@ msgid "Manage categories"
 msgstr "Kategorileri yönet"
 
 msgid "Manage category types"
-msgstr ""
+msgstr "Kategori tiplerini yönet"
 
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
@@ -1707,7 +1707,7 @@ msgid "Newer first"
 msgstr "Önce yeniler"
 
 msgid "Newer texts"
-msgstr "Yeni metinler"
+msgstr "Sonraki metin"
 
 msgid "Next"
 msgstr "Sonraki"
@@ -1794,7 +1794,7 @@ msgid "Older first"
 msgstr "Önce eskiler"
 
 msgid "Older texts"
-msgstr "Eski metinler"
+msgstr "Önceki metin"
 
 msgid "On text creation, enforce user to choose the URI"
 msgstr "Metin oluşturmada, kullanıcıyı URI'yi belirlemeye zorla"
@@ -2004,7 +2004,7 @@ msgid ""
 "        Just a fancy name, so we can know that multiple uploads come\n"
 "        from the same person."
 msgstr ""
-"Lütfen bize bir kullanıcı adı ver. Bu bir eposta adresi *olmamalı*.\n"
+"Lütfen bize bir kullanıcı adı ver. Bu bir e-posta adresi *olmamalı*.\n"
 "        Sadece hayali bir isim ki aynı kişiden gelen yüklemeleri bilelim."
 
 msgid ""
@@ -2037,7 +2037,7 @@ msgstr ""
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 "Bu değişiklik konusunda seninle iletişime geçilmesini istiyorsan lütfen bir "
-"eposta bırak"
+"e-posta bırak"
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
@@ -2066,7 +2066,7 @@ msgid "Please prove you are a human"
 msgstr "Lütfen insan olduğunu kanıtla"
 
 msgid "Please reindex the site."
-msgstr ""
+msgstr "Lütfen siteyi yeniden indeksle."
 
 msgid "Please reload your page"
 msgstr "Lütfen sayfayı yeniden yükleyin"
@@ -2252,7 +2252,7 @@ msgid "Rebuild all generated files"
 msgstr "Üretilen dosyaları yeniden oluştur"
 
 msgid "Rebuild formats"
-msgstr ""
+msgstr "Biçimleri yeniden oluştur."
 
 msgid "Rebuild the generated formats"
 msgstr "Üretilen biçimleri yeniden oluştur"
@@ -2270,7 +2270,7 @@ msgid "Refresh and apply filters"
 msgstr "Yenile ve filtreleri uygula"
 
 msgid "Reindex site"
-msgstr ""
+msgstr "Siteyi yeniden indeksle"
 
 msgid "Related projects"
 msgstr "İlgili projeler"
@@ -2305,10 +2305,10 @@ msgid "Rename to"
 msgstr "Yeniden adlandır"
 
 msgid "Repeat email"
-msgstr "Tekrar eposta"
+msgstr "E-postayı tekrardan gir"
 
 msgid "Repeat password"
-msgstr "Tekrar şifre"
+msgstr "Şifreyi tekrar gir"
 
 msgid "Request failed! Please report the the problem"
 msgstr "İstek başarısız! Lütfen problemi raporla"
@@ -2370,7 +2370,7 @@ msgid "Running headings"
 msgstr "Yinelenen başlıklar"
 
 msgid "SKU"
-msgstr ""
+msgstr "SKU"
 
 msgid "SSL CA certificate path (Apache)"
 msgstr "SSL CA sertifika yolu (Apache)"
@@ -2413,7 +2413,7 @@ msgid "Search"
 msgstr "Ara"
 
 msgid "Search Engine Facets"
-msgstr ""
+msgstr "Arama kısmında kategorilendir"
 
 msgid "Search filters"
 msgstr "Arama filtreleri"
@@ -2474,10 +2474,10 @@ msgid "Separate header fields"
 msgstr "Üstlük alanlarını ayır"
 
 msgid "Series Name"
-msgstr ""
+msgstr "Seri Adı"
 
 msgid "Series Number"
-msgstr ""
+msgstr "Seri Numarası"
 
 msgid "Session sharing"
 msgstr "Oturum paylaşma"
@@ -2914,7 +2914,7 @@ msgid "This section will not produce a slide"
 msgstr "Bu bölüm bir slayt üretmeyecek"
 
 msgid "This setting affects only the text creation form."
-msgstr ""
+msgstr "Bu ayar yalnızca metin oluşturma formunu etkiler."
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
@@ -3062,7 +3062,7 @@ msgid "URI"
 msgstr "URI"
 
 msgid "URI is available and valid"
-msgstr "URI is available and valid"
+msgstr "URI mevcut ve geçerli"
 
 msgid ""
 "URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
@@ -3446,7 +3446,7 @@ msgid "Your current bookbuilder token is:"
 msgstr "Şu andaki kitap yapıcı anahtarın:"
 
 msgid "Your email"
-msgstr "Epostan"
+msgstr "E-postan"
 
 msgid "Your file is ready"
 msgstr "Dosyan hazır"
