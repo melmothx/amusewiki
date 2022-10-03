@@ -389,7 +389,7 @@ kpsewhich mylogo.pdf
         [% loc('Language') %]
       </label>
       <div class="col-sm-6">
-        <select id="locale" name="locale" id="lang" class="form-control">
+        <select id="locale" name="locale" class="form-control">
           [% known_langs = esite.known_langs %]
           [% SET current_language = esite.locale %]
           [% FOREACH lang IN known_langs.keys.sort %]
@@ -630,8 +630,28 @@ kpsewhich mylogo.pdf
         </label>
       </div>
     </div>
-
-
+    <div class="form-group">
+      <label for="feed_enclosure_method" class="col-sm-6 control-label">
+        [% loc('Feed enclosure method (OPDS and RSS)') %]
+      </label>
+      <div class="col-sm-6">
+        <select id="feed_enclosure_method" name="feed_enclosure_method" class="form-control">
+          [% SET current_feed_enclosure_method = esite.feed_enclosure_method %]
+          <option value="stock_epub"
+                  [% IF current_feed_enclosure_method == 'stock_epub' %]selected="selected"[% END %]>
+            [% loc('EPUB') %]
+          </option>
+          <option value="first_format"
+                  [% IF current_feed_enclosure_method == 'first_format' %]selected="selected"[% END %]>
+            [% loc('Highest priority format') %]
+          </option>
+          <option value="first_attachment"
+                  [% IF current_feed_enclosure_method == 'first_attachment' %]selected="selected"[% END %]>
+            [% loc('First text attachment or EPUB') %]
+          </option>
+        </select>
+      </div>
+    </div>
     <div class="form-group">
       <label class="col-sm-6 control-label">
           [% loc('Use JS syntax highlight for code blocks') %].

@@ -2080,6 +2080,8 @@ sub compile_and_index_files {
     my $changed = $self->collation_index;
     $logger->("Updated $changed records in " . (time() - $time) . " seconds\n");
     $self->generate_static_indexes($logger);
+    # this is regenerated after the indexes as well. This is supposed
+    # to be reasonably fast, no reason to defer it.
     $self->store_rss_feed;
     my $now = DateTime->now;
     $self->update({ last_updated => $now })
@@ -3534,6 +3536,7 @@ sub update_from_params {
                            bootstrap_alt_theme
                            category_uri_use_unicode
                            enforce_manual_uri
+                           feed_enclosure_method
                           /) {
         my $value = delete $params->{$option} || '';
         # clean it up from leading and trailing spaces
@@ -3890,6 +3893,10 @@ sub lists_are_always_flat {
 
 sub max_image_dimension {
     return shift->get_option('max_image_dimension') || 4000;
+}
+
+sub feed_enclosure_method {
+    return shift->get_option('feed_enclosure_method') || 'stock_epub';
 }
 
 sub pagination_needed {
@@ -4855,15 +4862,10 @@ sub create_feed {
         $item->description('<div>' . join('<br>', @lines) . '</div>');
         # if we provide epub, add it as attachment, so the poor
         # bastards with phones can actually read something.
-        if ($self->epub) {
-            my $epub_local_file = $text->filepath_for_ext('epub');
-            if (-f $epub_local_file) {
-                my $epub_url = $self->canonical_url . $text->full_uri . '.epub';
-                log_debug { "EPUB path = $epub_local_file" };
-                $item->set('enclosure@url' => $epub_url);
-                $item->set('enclosure@type' => 'application/epub+zip');
-                $item->set('enclosure@length' => -s $epub_local_file);
-            }
+        if (my $enclosure = $text->get_feed_enclosure) {
+            $item->set('enclosure@url' => $enclosure->{url});
+            $item->set('enclosure@type' => $enclosure->{type});
+            $item->set('enclosure@length' => $enclosure->{size});
         }
     }
     return $feed->to_string;

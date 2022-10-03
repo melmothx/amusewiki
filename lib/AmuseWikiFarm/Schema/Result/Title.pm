@@ -684,6 +684,7 @@ use HTML::LinkExtor; # from HTML::Parser
 use HTML::TreeBuilder;
 use URI;
 use Data::Dumper::Concise;
+use AmuseWikiFarm::Utils::Paths;
 use constant { PAPER_PAGE_SIZE => 2000 };
 
 has selected_formats => (is => 'ro',
@@ -1396,9 +1397,55 @@ sub sorted_categories {
       grep { $_->type eq $type } $self->categories->all;
 }
 
+sub get_feed_enclosure {
+    my $self = shift;
+    my $site = $self->site;
+    my $method = $site->feed_enclosure_method;
+    my $extension = 'epub';
+    # confusion with ext with dot and without
+    # return url (with protocol, host), path, type, size
+    if ($method eq 'first_format') {
+        my $ext = $site->formats_definitions->[0]->{ext};
+        $ext =~ s/^\.//;
+        if ($self->check_if_file_exists($ext)) {
+            $extension = $ext;
+        }
+    }
+    elsif ($method eq 'first_attachment') {
+        my ($attachment) = $self->attached_objects;
+        if ($attachment) {
+            return {
+                    url => $site->canonical_url . $attachment->full_uri,
+                    path => $attachment->full_uri,
+                    type => $attachment->mime_type,
+                    size => -s $attachment->f_full_path_name,
+                    file => $attachment->f_full_path_name,
+                   };
+        }
+    }
+    if (my $local_file = $self->filepath_for_ext($extension)) {
+        if (-f $local_file) {
+            # could have the code in it:
+            my $suffix = $extension;
+            $suffix =~ s/\A.*\.//g;
+            if (my $type = AmuseWikiFarm::Utils::Paths::served_mime_types()->{$suffix}) {
+                my $full_uri = $self->full_uri . '.' . $extension;
+                return {
+                        url => $site->canonical_url . $full_uri,
+                        path => $full_uri,
+                        type => $type,
+                        size => -s $local_file,
+                        file => $local_file,
+                       };
+            }
+        }
+    }
+}
+
 sub opds_entry {
     my ($self) = @_;
-    return unless $self->check_if_file_exists('epub');
+    my $enclosure = $self->get_feed_enclosure;
+    return unless $enclosure;
     my %out = (
                title => $self->_clean_html($self->title),
                href => $self->full_uri,
@@ -1409,7 +1456,7 @@ sub opds_entry {
                issued => $self->date || '',
                updated => $self->pubdate,
                summary => $self->_clean_html($self->subtitle || ''),
-               files => [ $self->full_uri . '.epub' ],
+               files => [ $enclosure->{path} ],
               );
     my @desc;
     if (my $teaser = $self->teaser) {
