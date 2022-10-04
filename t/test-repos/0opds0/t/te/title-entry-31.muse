@@ -7,5 +7,6 @@
 #notes Notes
 #source Source
 #cover t-e-test.png
+#attach manual.pdf
 
 body

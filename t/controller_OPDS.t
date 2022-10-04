@@ -1,7 +1,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 372;
+use Test::More tests => 381;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -36,12 +36,12 @@ my $site = $schema->resultset('Site')->update_or_create({
                                                sitename => 'OPDS test',
                                                siteslogan => 'Test',
                                                a4_pdf => 0,
-                                               pdf => 0,
+                                               pdf => 1,
                                                lt_pdf => 0,
                                                canonical => "$id.amusewiki.org",
                                                secure_site => 0,
                                               })->discard_changes;
-
+$site->check_and_update_custom_formats;
 $site->jobs->delete;
 $site->update_db_from_tree(sub { diag join(' ', @_) });
 $site->update({ last_updated => DateTime->new(year => 2016, month => 3, day => 1) });
@@ -356,6 +356,26 @@ $site->update({ locale => 'ru' });
 $mech->get_ok('/opds');
 $mech->content_contains('Последние загруженные');
 
+foreach my $feed_enclosure_method (qw/first_format first_attachment anything_else/) {
+    $site->update_option_value(feed_enclosure_method => $feed_enclosure_method);
+    $site->store_rss_feed;
+    $mech->get_ok('/opds/category/author/a1-31', "$feed_enclosure_method get OK");
+    my ($path, $type);
+    if ($mech->content =~ m/<link
+                            \s+rel="http:\/\/opds-spec.org\/acquisition"
+                            \s+href="http:\/\/0opds0.amusewiki.org(.*)"
+                            \s+type="(.*)"\/>/x) {
+        ($path, $type) = ($1, $2);
+        diag "$path is $type";
+    }
+    else {
+        diag $mech->content;
+    }
+    $mech->get_ok('/feed');
+    # very loose check
+    $mech->content_like(qr{\Q$type\E[^>]+\Q$path\E});
+}
+
 sub count_entries {
     my $feed = shift;
     my @entries;
@@ -363,5 +383,4 @@ sub count_entries {
         push @entries, $1;
     }
     return scalar(@entries);
-
 }
