@@ -839,6 +839,9 @@ msgstr ""
 msgid "Federation"
 msgstr ""
 
+msgid "Feed enclosure method (OPDS and RSS)"
+msgstr ""
+
 msgid "Fetch"
 msgstr ""
 
@@ -883,6 +886,9 @@ msgid "First Author, Second Author"
 msgstr "Første Forfatter, Anden Forfatter"
 
 msgid "First slide"
+msgstr ""
+
+msgid "First text attachment or EPUB"
 msgstr ""
 
 msgid "First you have to unpublish it via #DELETED."
@@ -1060,6 +1066,9 @@ msgstr ""
 
 msgid "Higher division factor means narrower margins"
 msgstr "Højere divisor betyder smallere margener"
+
+msgid "Highest priority format"
+msgstr ""
 
 msgid "How are you going to access Git?"
 msgstr ""

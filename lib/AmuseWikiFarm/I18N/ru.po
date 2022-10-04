@@ -842,6 +842,9 @@ msgstr ""
 msgid "Federation"
 msgstr ""
 
+msgid "Feed enclosure method (OPDS and RSS)"
+msgstr ""
+
 msgid "Fetch"
 msgstr ""
 
@@ -888,6 +891,9 @@ msgstr "Первый Автор, Второй Автор"
 
 msgid "First slide"
 msgstr "Первый слайд"
+
+msgid "First text attachment or EPUB"
+msgstr ""
 
 msgid "First you have to unpublish it via #DELETED."
 msgstr "Сначала вы должны отменить публикацию с помощью #DELETED."
@@ -1063,6 +1069,9 @@ msgstr ""
 
 msgid "Higher division factor means narrower margins"
 msgstr "Чем больше число — тем уже поля"
+
+msgid "Highest priority format"
+msgstr ""
 
 msgid "How are you going to access Git?"
 msgstr "Как вы собираетесь получать доступ к Git?"

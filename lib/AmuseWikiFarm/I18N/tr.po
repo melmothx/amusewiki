@@ -857,6 +857,9 @@ msgstr "Kaynak getirilemedi"
 msgid "Federation"
 msgstr "Federasyon"
 
+msgid "Feed enclosure method (OPDS and RSS)"
+msgstr ""
+
 msgid "Fetch"
 msgstr "Getir"
 
@@ -903,6 +906,9 @@ msgstr "Birinci Yazar, İkinci Yazar"
 
 msgid "First slide"
 msgstr "İlk slayt"
+
+msgid "First text attachment or EPUB"
+msgstr ""
 
 msgid "First you have to unpublish it via #DELETED."
 msgstr "Önce #DELETED ile yayından kaldırmalısın."
@@ -1084,6 +1090,9 @@ msgstr ""
 
 msgid "Higher division factor means narrower margins"
 msgstr "Yüksek bölme katsayısı demek daha dar kenar boşluğu demektir"
+
+msgid "Highest priority format"
+msgstr ""
 
 msgid "How are you going to access Git?"
 msgstr "Git'e nasıl erişeceksin?"

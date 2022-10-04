@@ -804,6 +804,9 @@ msgstr ""
 msgid "Federation"
 msgstr ""
 
+msgid "Feed enclosure method (OPDS and RSS)"
+msgstr ""
+
 msgid "Fetch"
 msgstr ""
 
@@ -850,6 +853,9 @@ msgstr "第一著者、第二著者"
 
 msgid "First slide"
 msgstr "最初のスライド"
+
+msgid "First text attachment or EPUB"
+msgstr ""
 
 msgid "First you have to unpublish it via #DELETED."
 msgstr "まず、＃DELETEDを介して非公開にする必要があります。"
@@ -1021,6 +1027,9 @@ msgstr ""
 
 msgid "Higher division factor means narrower margins"
 msgstr "除数係数が高いほど、マージンが狭くなります"
+
+msgid "Highest priority format"
+msgstr ""
 
 msgid "How are you going to access Git?"
 msgstr "どのようにGitにアクセスしますか？"

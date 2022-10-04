@@ -863,6 +863,9 @@ msgstr "Scaricamento della fonte fallito"
 msgid "Federation"
 msgstr "Federazione"
 
+msgid "Feed enclosure method (OPDS and RSS)"
+msgstr ""
+
 msgid "Fetch"
 msgstr "Recupera"
 
@@ -910,6 +913,9 @@ msgstr "Primo Autore, Secondo Autore"
 
 msgid "First slide"
 msgstr "Prima diapositiva"
+
+msgid "First text attachment or EPUB"
+msgstr ""
 
 msgid "First you have to unpublish it via #DELETED."
 msgstr "Prima devi rimuoverlo con #DELETED."
@@ -1095,6 +1101,9 @@ msgstr ""
 
 msgid "Higher division factor means narrower margins"
 msgstr "Un fattore di divisione più alto implica margini più stretti"
+
+msgid "Highest priority format"
+msgstr ""
 
 msgid "How are you going to access Git?"
 msgstr "Come intendi accedere a Git"

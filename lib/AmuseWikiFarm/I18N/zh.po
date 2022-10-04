@@ -813,6 +813,9 @@ msgstr ""
 msgid "Federation"
 msgstr ""
 
+msgid "Feed enclosure method (OPDS and RSS)"
+msgstr ""
+
 msgid "Fetch"
 msgstr ""
 
@@ -858,6 +861,9 @@ msgstr "第一作者，第二作者"
 
 msgid "First slide"
 msgstr "第一张幻灯片"
+
+msgid "First text attachment or EPUB"
+msgstr ""
 
 msgid "First you have to unpublish it via #DELETED."
 msgstr "首先，您必须通过 #DELETED 取消发布它。"
@@ -1026,6 +1032,9 @@ msgstr ""
 
 msgid "Higher division factor means narrower margins"
 msgstr "更高的分割系数意味着更窄的边距"
+
+msgid "Highest priority format"
+msgstr ""
 
 msgid "How are you going to access Git?"
 msgstr "你要怎样获取Git？"
