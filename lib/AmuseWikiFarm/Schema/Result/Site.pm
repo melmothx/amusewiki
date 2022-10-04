@@ -3627,6 +3627,8 @@ sub update_from_params {
     }
     # in any case discard the changes
     $self->discard_changes;
+    # and remove the RSS
+    $self->reset_rss_file;
     @errors ? return join(" / ", @errors) : return;
 }
 
@@ -4772,6 +4774,12 @@ sub initialize_opds_feed {
         $feed->add_to_navigations(%$entry);
     }
     return $feed;
+}
+
+sub reset_rss_file {
+    my $self = shift;
+    my $file = $self->rss_feed_file;
+    $file->remove if $file->exists;
 }
 
 sub rss_feed_file {
