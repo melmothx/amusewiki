@@ -314,7 +314,7 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <p class="help-block">
+      <p id="create-block-submit-warning" class="help-block">
         [% loc('Keep in mind that I’m cleaning the text and give it
         back to you in the markup used on this site. It’s up to you to
         check it and finally upload it. Some rarely used markup will
