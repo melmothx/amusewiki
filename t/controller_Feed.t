@@ -5,7 +5,7 @@ use warnings;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 35;
+use Test::More tests => 39;
 use Data::Dumper;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf8)";
@@ -34,8 +34,10 @@ my $muse = <<'MUSE';
 
 FULL TEXT HERE
 MUSE
+my $days = 1;
 foreach my $num (1..2) {
-    foreach my $type (qw/special text/) {
+    foreach my $type (qw/text special/) {
+        $days++;
         my ($rev) = $site->create_new_text({
                                             uri => "test-$type-$num",
                                             title => "Ža Third & *test* **$type** <sup>$num</sup>",
@@ -44,7 +46,7 @@ foreach my $num (1..2) {
                                              $type eq 'special' ? () :
                                              (teaser => "Teaser *with* *$type* <sup>$num</sup>")
                                             ),
-                                            pubdate => DateTime->now->subtract(days => $num)->ymd,
+                                            pubdate => DateTime->now->subtract(days => $days)->ymd,
                                            }, $type);
         $rev->edit($rev->muse_body . $muse);
         $rev->commit_version;
@@ -85,3 +87,14 @@ $mech->content_contains("<channel>");
 ok !$mech->response->header('Access-Control-Allow-Origin');
 
 ok $site->rss_feed_file->exists;
+
+$site->update_option_value(latest_entries_for_rss => 1);
+$site->discard_changes;
+is $site->latest_entries_for_rss, 1;
+$site->store_rss_feed;
+$mech->get_ok('/feed');
+diag $mech->content;
+$mech->content_contains('/library/test-text-1');
+# threat the specials exactly like the normal entries, so older will
+# fall out unless the pubdate is bumped.
+$mech->content_lacks('/library/test-special-1');
