@@ -3858,11 +3858,19 @@ sub full_name {
 
 sub latest_entries_for_rss_rs {
     my $self = shift;
-    return $self->titles->latest($self->latest_entries_for_rss);
+    return $self->titles->status_is_published->sort_by_pubdate_desc
+      ->rows_number($self->latest_entries_for_rss);
 }
 
 sub latest_entries_for_rss {
-    return shift->get_option('latest_entries_for_rss') || 25;
+    my $self = shift;
+    my $num = $self->get_option('latest_entries_for_rss');
+    if ($num and $num =~ m/^[1-9][0-9]*$/s) {
+        return $num;
+    }
+    else {
+        return 25;
+    }
 }
 
 sub paginate_archive_after {
@@ -4818,8 +4826,7 @@ sub feed_link {
 
 sub create_feed {
     my $self = shift;
-    my @texts = $self->latest_entries_for_rss_rs;
-    my @specials = $self->titles->published_specials;
+    my @texts = $self->latest_entries_for_rss_rs->all;
     my $feed = XML::FeedPP::RSS->new;
     my $lh = $self->localizer;
     # set up the channel
@@ -4838,10 +4845,9 @@ sub create_feed {
         $feed->pubDate($texts[0]->pubdate->epoch);
     }
 
-    foreach my $text (@specials, @texts) {
+    foreach my $text (@texts) {
         my $ts = $text->pubdate->epoch;
-
-        # to fool the scrapers, set the permalink for specials
+        # to fool the scrapers, set the permalink
         # adding a version with the timestamp of the file, so we
         # catch updates
         my $link = $self->canonical_url . $text->full_uri . "?v=$ts";
