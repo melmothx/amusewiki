@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
-use Test::More tests => 283;
+use Test::More tests => 319;
 use Data::Dumper::Concise;
 use YAML qw/Dump Load/;
 use Path::Tiny;
@@ -280,4 +280,42 @@ foreach my $uri (@check) {
         ok $res->{success};
     }
     ok scalar($rev->all_attachments) == 0;
+}
+
+foreach my $str ('-', 'no', 'none', 'off') {
+    my ($rev) = $site->create_new_text({ title => "No formats $str",
+                                         lang => 'en',
+                                         textbody => 'ciao',
+                                       }, 'text');
+    $rev->edit("#formats $str\n" . $rev->muse_body);
+    $rev->commit_version;
+    $rev->publish_text(sub { diag @_ });
+    $mech->get_ok($rev->title->full_uri);
+    $mech->content_lacks('download-format-');
+    $mech->content_lacks('add-to-bookbuilder');
+
+    diag "The #formats directive must be just off/no/none/-";
+    ($rev) = $site->create_new_text({
+                                     title => "Has formats $str",
+                                     lang => 'en',
+                                     textbody => 'ciao',
+                                    }, 'text');
+    $rev->edit("#formats x $str\n" . $rev->muse_body);
+    $rev->commit_version;
+    $rev->publish_text(sub { diag @_ });
+    $mech->get_ok($rev->title->full_uri);
+    $mech->content_contains('download-format-');
+    $mech->content_contains('add-to-bookbuilder');
+
+    ($rev) = $site->create_new_text({
+                                     title => "It has formats $str",
+                                     lang => 'en',
+                                     textbody => 'ciao',
+                                    }, 'text');
+    $rev->edit("#formats $str x\n" . $rev->muse_body);
+    $rev->commit_version;
+    $rev->publish_text(sub { diag @_ });
+    $mech->get_ok($rev->title->full_uri);
+    $mech->content_contains('download-format-');
+    $mech->content_contains('add-to-bookbuilder');
 }

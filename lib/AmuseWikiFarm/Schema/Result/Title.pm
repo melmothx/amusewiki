@@ -704,6 +704,21 @@ sub _build_selected_formats {
     return undef;
 }
 
+has show_formats => (is => 'ro',
+                     isa => 'Bool',
+                     lazy => 1,
+                     builder => '_build_show_formats');
+
+sub _build_show_formats {
+    my $self = shift;
+    if (my $formats = $self->muse_headers->header_value_by_name('formats')) {
+        if ($formats =~ m/\A\s*(no|none|off|-)\s*\z/i) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
 =head2 listing
 
 The following methods return a string, which may be empty if no

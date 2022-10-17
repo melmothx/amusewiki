@@ -124,6 +124,7 @@
       <!-- <strong>[% loc('Downloads') %]</strong> -->
     </div>
     <div id="downloadformats-list">
+      [% IF text.show_formats %]
       [% FOREACH cformat IN site.formats_definitions %]
       [% IF text.check_if_file_exists(cformat.code) %]
       <span [% IF cformat.oldid %] id="[% cformat.oldid %]" [% END %]>
@@ -137,6 +138,7 @@
                   ></span><span class="sr-only">[% loc(cformat.format_name) %] [% loc(cformat.desc) %]</span></a>
         </span>
       </span>
+      [% END %]
       [% END %]
       [% END %]
       [% IF (cgit_link = text.recent_changes_uri) %]
@@ -161,6 +163,7 @@
                 ></span><span class="sr-only" >[% loc('Edit this text') %]</span></a>
       </span>
       [% END %]
+      [% IF text.show_formats %]
       <span id="book-builder-add-text">
         <a href="[% c.uri_for_action('/bookbuilder/add', text.uri) %]"
            id="add-to-bookbuilder"
@@ -183,6 +186,7 @@
                 title="[% loc('Select individual parts for the bookbuilder') %]"
                 ></span><span class="sr-only" >[% loc('Select individual parts for the bookbuilder') %]</span></a>
       </span>
+      [% END %]
       [% IF c.user_exists %]
       <span id="create-rebuild-job">
         <a href="[% c.uri_for(text.full_rebuild_uri) %]">
@@ -228,3 +232,9 @@
     </div>
   </div>
   [% END %]
+
+  <script>
+   if (!$('#downloadformats-list').children().length) {
+       $('#preamble').css('padding-bottom', '0px');
+   }
+  </script>
