@@ -364,27 +364,29 @@ sub sitemap_txt :Chained('/site') :PathPart('sitemap.txt') :Args(0) {
     my $site = $c->stash->{site};
     my @urls;
     my $base = $site->canonical_url_secure;
-    foreach my $root ('opds',
-                      'feed',
-                      'latest',
-                      'listing',
-                      'library',
-                      'search',
-                      'category/topic',
-                      'category/author') {
+    foreach my $root (qw/opds
+                         feed
+                         latest
+                         listing
+                         library
+                         search
+                        /) {
         push @urls, $base . '/' . $root;
     }
     my $texts = $site->titles->published_all
       ->search(undef, { order_by => [qw/f_class sorting_pos/] })->listing_tokens_plain;
-    my $categories = $site->categories->with_texts(deferred => $c->user_exists,
-                                                   sort => 'type')->listing_tokens;
     while (@$texts) {
         my $text = shift @$texts;
         push @urls, $base . $text->{full_uri};
     }
-    while (@$categories) {
-        my $cat = shift @$categories;
-        push @urls, $base . $cat->{full_uri};
+    foreach my $ct ($site->site_category_types->active->with_index_page->ordered->all) {
+        push @urls, $base . $ct->full_uri;
+        my $categories = $site->categories->by_type($ct->category_type)->with_texts(deferred => $c->user_exists,
+                                                                                    sort => 'type')->listing_tokens;
+        while (@$categories) {
+            my $cat = shift @$categories;
+            push @urls, $base . $cat->{full_uri};
+        }
     }
     foreach my $f ($site->public_files->search({ file_name => { like => '%.html' } })->all) {
         my $name = $f->file_name;

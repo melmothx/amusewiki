@@ -171,6 +171,10 @@ sub header_fields {
     return $fields{$f} || [ $f ];
 }
 
+sub full_uri {
+    return '/category/' . shift->category_type;
+}
+
 sub assign_xapian_custom_slot {
     my $self = shift;
     # already assigned?

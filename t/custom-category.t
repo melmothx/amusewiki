@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 203;
+use Test::More tests => 223;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -239,6 +239,32 @@ foreach my $text ($site->titles) {
         is $mech->status, 404;
         like $final_html, qr{<span class="text-cf-\Q$f\Es-html">\&lt\;1\Q$f\E\&gt\;\; \&lt\;\Q2$f\E\&gt\;</span>};
     }
+
+
+    $mech->get_ok('/opds');
+    my $opds = $mech->content;
+    $mech->get_ok('/sitemap.txt');
+    my $sitemap = $mech->content;
+    foreach my $cc ($site->discard_changes->site_category_types) {
+        my $cc_id = '<id>https://0cc0.amusewiki.org/opds/category/' . $cc->category_type . '</id>';
+        my $cc_uri = "/category/" . $cc->category_type;
+        if ($cc->generate_index) {
+            like $opds, qr{\Q$cc_id\E}, "OPDS has $cc_id";
+            like $sitemap, qr{\Q$cc_uri\E}, "Sitemap has $cc_uri";
+            $mech->get_ok('/opds/category/' . $cc->category_type);
+        }
+        else {
+            unlike $opds, qr{\Q$cc_id\E}, "OPDS lacks $cc_id";
+            unlike $sitemap, qr{\Q$cc_uri\E}, "Sitemap lacks $cc_uri";
+            $mech->get('/opds/category/' . $cc->category_type);
+            is $mech->status, 404;
+        }
+    }
+    diag $opds;
+    diag $sitemap;
+
+
+
     # now flip the indexed flag and check if the texts flip
     $site->site_category_types->search({ category_type => \@not_indexed })
       ->update({ generate_index => 1, active => 1 });

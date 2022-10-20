@@ -4759,7 +4759,7 @@ sub initialize_opds_feed {
                         description => $lh->loc('Full list of texts'),
                         acquisition => 1,
                        });
-    foreach my $ct ($self->site_category_types->active->ordered->all) {
+    foreach my $ct ($self->site_category_types->active->with_index_page->ordered->all) {
         push @opds_links, {
                            href => '/opds/category/' . $ct->category_type,
                            title => $lh->loc($ct->name_plural),

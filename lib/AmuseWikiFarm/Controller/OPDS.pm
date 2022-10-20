@@ -73,7 +73,7 @@ sub clean_root :Chained('root') :PathPart('') :CaptureArgs(0) {
 sub all_categories :Chained('clean_root') :PathPart('category') :CaptureArgs(1) {
     my ($self, $c, $category_type) = @_;
     my $site = $c->stash->{site};
-    my $ct = $site->site_category_types->active->find({ category_type => $category_type });
+    my $ct = $site->site_category_types->active->with_index_page->find({ category_type => $category_type });
     unless ($ct) {
         $c->detach('/not_found');
         return;
