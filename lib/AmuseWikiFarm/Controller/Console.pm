@@ -300,7 +300,9 @@ sub categories :Chained('root') :PathPart('categories') :CaptureArgs(0) {
 
 sub list_categories :Chained('categories') :PathPart('list') :Args(0) {
     my ($self, $c) = @_;
-    my @all = $c->stash->{site}->categories->sorted->all;
+    my $site = $c->stash->{site};
+    my @types = map { $_->category_type } $site->site_category_types->active->with_index_page->all;
+    my @all = $site->categories->by_type(\@types)->sorted->all;
     $c->stash(
               page_title => $c->loc('Manage categories'),
               categories => \@all,
