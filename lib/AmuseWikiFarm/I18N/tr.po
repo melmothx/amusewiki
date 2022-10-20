@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2022-10-08 23:44+0300\n"
+"PO-Revision-Date: 2022-10-20 15:22+0300\n"
 "Last-Translator: Rojen Zaman <rojen@riseup.net>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -933,7 +933,7 @@ msgid "Fixed topic list"
 msgstr "Sabit konu listesi"
 
 msgid "Font preview"
-msgstr "Font önizleme"
+msgstr "Font ön izleme"
 
 msgid "Font size"
 msgstr "Font büyüklüğü"
@@ -1077,7 +1077,7 @@ msgid "Help Text"
 msgstr "Yardım metni"
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
-msgstr "Burada Beamer temaları ve renk temalarının önizlemesini bulabilirsin"
+msgstr "Burada Beamer temaları ve renk temalarının ön izlemesini bulabilirsin"
 
 msgid ""
 "Here you can save or load your templates. The text list\n"
@@ -1462,7 +1462,7 @@ msgstr ""
 "Unutma ki metni temizliyorum ve bu siteden kullanılan\n"
 "        biçimlendirme ile sana geri veriyorum. Bunu kontrol ettikten\n"
 "        sonra yüklemek sana kalmış. Nadir kullanılan bazı biçimlendirmeler\n"
-"        bu süreçte kaybolabilir. Lütfen bir sonraki adımdaki önizlemeyi\n"
+"        bu süreçte kaybolabilir. Lütfen bir sonraki adımdaki ön izlemeyi\n"
 "        kontrol et. Orada aynı zamanda resimleri ekleyebilirsin."
 
 msgid "Keep in mind that some character may be missing in the required font."
@@ -1967,7 +1967,7 @@ msgid ""
 "Please check your inbox, we tried to deliver a mail to the address you "
 "specified with a password reset link"
 msgstr ""
-"Lütfen post kutuna bak, verdiğin adrese şifre sıfırlama linki içeren bir "
+"Lütfen posta kutuna bak, verdiğin adrese şifre sıfırlama linki içeren bir "
 "posta göndermeye çalıştık"
 
 msgid "Please choose a text"
@@ -2140,10 +2140,10 @@ msgstr ""
 "        “1.”, “a.”, “A.”,“i.”, “I.” olabilir."
 
 msgid "Preview"
-msgstr "Önizleme"
+msgstr "Ön izleme"
 
 msgid "Preview box height in pixel"
-msgstr "Önizleme kutusunun yüksekliği (piksel)"
+msgstr "Ön izleme kutusunun yüksekliği (piksel)"
 
 msgid "Previous"
 msgstr "Önceki"
@@ -2471,7 +2471,7 @@ msgstr "Posta gönder"
 
 #. ($from, $to)
 msgid "Sending test mails from %1 to %2"
-msgstr "%1'den %2'ye test postaları gönderiliyor"
+msgstr "%1 adresinden %2 adresine test postaları gönderiliyor"
 
 msgid "Separate body fields"
 msgstr "Gövde alanlarını ayır"
@@ -2805,7 +2805,7 @@ msgid "The reset link will expire in a hour."
 msgstr "Sıfırlama bağlantısı bir saat içinde geçersiz olacak."
 
 msgid "The revision has the following messages"
-msgstr "Version için aşağıdaki mesajlar var"
+msgstr "Versiyon için aşağıdaki mesajlar var"
 
 msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
@@ -2857,7 +2857,7 @@ msgid "There are failed jobs"
 msgstr "Başarısız olan işler var"
 
 msgid "There are pending revisions"
-msgstr "Bekleyen versionlar var"
+msgstr "Bekleyen versiyonlar var"
 
 msgid "These texts are missing the unique id."
 msgstr "Bu metinlerde tekil kimlik eksik."
@@ -2903,9 +2903,9 @@ msgid ""
 "If this doesn't happen, it means that the uploading has been abandoned\n"
 "and you may want to check it out."
 msgstr ""
-"Bu posta sana yeni bir metin yaratıldığı bildirimek için gönderildi.\n"
+"Bu posta yeni bir metin yaratıldığını sana bildirmek için gönderildi.\n"
 "Yükleme devam ediyor olabilir. Birazdan bir posta daha gelmeli.\n"
-"Gelmezse yükleme iptal edilmiştir ve kontrol etmek isteyebilirisin."
+"Gelmezse yükleme iptal edilmiş demektir, kontrol edebilirsin."
 
 msgid "This revision is already published, ignoring changes"
 msgstr "Bu versiyon zaten yayınlandı, değişiklikler yok sayılıyor"
@@ -2988,7 +2988,7 @@ msgstr "Başlıklar"
 
 #. (pending_url)
 msgid "To apply the changes, you can visit %1"
-msgstr "Değişiklikleri uygulamak için, %1 i ziyaret edebilirsin"
+msgstr "Değişiklikleri uygulamak için şurayı ziyaret edebilirsin: %1"
 
 msgid "To display the PDFs, set or append the following string in the header"
 msgstr ""
@@ -3007,7 +3007,7 @@ msgid "To quickly format plays, use"
 msgstr "Oyunları hızlıca biçimlendirmek için, bunu kullan"
 
 msgid "To resume the editing you can visit the following URL"
-msgstr "Düzenlemeye devam etmek için bu URL'e gidebilirsin"
+msgstr "Düzenlemeye devam etmek için aşağıdaki URL'ye gidebilirsin"
 
 #. (loc('Update')
 #. (loc("Update"))
@@ -3019,7 +3019,7 @@ msgstr ""
 "   seçenekleri \"%1\" düğmesi ile kaydetmelisin"
 
 msgid "To view the changes introduced, you can visit the following URL"
-msgstr "Uygulanan değişiklikleri görmek için, bu URL'e gidebilirsin"
+msgstr "Uygulanan değişiklikleri görmek için, aşağıdaki URL'ye gidebilirsin"
 
 msgid "Toggle"
 msgstr "Aç/kapat"
@@ -3157,7 +3157,7 @@ msgstr "Resmi yükle ve ismini not al. Dosyaların adı her zaman deiştirilir."
 msgid ""
 "Uploaded and available images are shown and listed below the text preview."
 msgstr ""
-"Yüklenen ve kullanılabilir resimler metin önizleme kısmının altında "
+"Yüklenen ve kullanılabilir resimler metin ön izleme kısmının altında "
 "listelenmiştir."
 
 msgid "Url"
