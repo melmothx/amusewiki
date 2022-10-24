@@ -781,6 +781,9 @@ msgstr "Arama önerilerini etkinleştir (bunu mu demek istediniz...)"
 msgid "Enable title ordering by SKU"
 msgstr "SKU ya göre başlık sıralamasını etkinleştir"
 
+msgid "Enforce e-mail on submission"
+msgstr ""
+
 msgid "Erase this revision"
 msgstr "Bu versiyonu sil"
 

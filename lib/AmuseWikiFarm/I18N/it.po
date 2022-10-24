@@ -789,6 +789,9 @@ msgstr ""
 msgid "Enable title ordering by SKU"
 msgstr "Abilita l'ordinamento dei titoli per numero di inventario"
 
+msgid "Enforce e-mail on submission"
+msgstr ""
+
 msgid "Erase this revision"
 msgstr "Cancella questa revisione"
 

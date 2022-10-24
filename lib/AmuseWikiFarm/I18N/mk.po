@@ -773,6 +773,9 @@ msgstr "Овозможи предлози при пребарувањето (\"�
 msgid "Enable title ordering by SKU"
 msgstr "Овозможи сортирање според СКУ"
 
+msgid "Enforce e-mail on submission"
+msgstr ""
+
 msgid "Erase this revision"
 msgstr "Избриши ја измената"
 

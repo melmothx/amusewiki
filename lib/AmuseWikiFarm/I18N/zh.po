@@ -745,6 +745,9 @@ msgstr "启用搜索提议（你的意思是不是…）"
 msgid "Enable title ordering by SKU"
 msgstr "启用按照SKU标题排序"
 
+msgid "Enforce e-mail on submission"
+msgstr ""
+
 msgid "Erase this revision"
 msgstr "抹去这个版本"
 

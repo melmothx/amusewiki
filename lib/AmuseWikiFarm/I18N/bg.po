@@ -793,6 +793,9 @@ msgstr "Активирай предложения за търсене (Имаш�
 msgid "Enable title ordering by SKU"
 msgstr "Активирай сортиране на заглавията по SKU"
 
+msgid "Enforce e-mail on submission"
+msgstr ""
+
 msgid "Erase this revision"
 msgstr "Изтрий тази ревизия"
 

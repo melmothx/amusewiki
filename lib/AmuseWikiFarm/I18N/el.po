@@ -803,6 +803,9 @@ msgstr "Ενεργοποίηση προτάσεων αναζήτησης (μήπ
 msgid "Enable title ordering by SKU"
 msgstr "Ενεργοποίηση της ταξινόμησης τίτλων κατά SKU"
 
+msgid "Enforce e-mail on submission"
+msgstr ""
+
 msgid "Erase this revision"
 msgstr "Διαγραφή αυτής της διόρθωσης"
 

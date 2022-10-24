@@ -760,6 +760,9 @@ msgstr "Omogući prijedloge kod pretrage (\"možda je to bilo...\")"
 msgid "Enable title ordering by SKU"
 msgstr "Omogući sortiranje po SKU-u"
 
+msgid "Enforce e-mail on submission"
+msgstr ""
+
 msgid "Erase this revision"
 msgstr "Izbriši izmjenu"
 

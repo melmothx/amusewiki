@@ -732,6 +732,9 @@ msgstr "検索候補を有効に（もしかしたら...）"
 msgid "Enable title ordering by SKU"
 msgstr "SKUによるタイトル順序付けを有効に"
 
+msgid "Enforce e-mail on submission"
+msgstr ""
+
 msgid "Erase this revision"
 msgstr "このリビジョンを削除"
 

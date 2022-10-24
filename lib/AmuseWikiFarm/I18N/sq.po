@@ -777,6 +777,9 @@ msgstr ""
 msgid "Enable title ordering by SKU"
 msgstr ""
 
+msgid "Enforce e-mail on submission"
+msgstr ""
+
 msgid "Erase this revision"
 msgstr "Fshije këtë përmirësim"
 

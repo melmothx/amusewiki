@@ -785,6 +785,9 @@ msgstr "Ebligu serĉajn sugestojn (ĉu vi celis ...)"
 msgid "Enable title ordering by SKU"
 msgstr "Ebligu titolan mendadon de SKU"
 
+msgid "Enforce e-mail on submission"
+msgstr ""
+
 msgid "Erase this revision"
 msgstr "Forigu ĉi tiun revizion"
 
