@@ -311,7 +311,9 @@
       <label for="email">
         [% loc('Please leave a mail if you want to be contacted about this change') %]
       </label>
-      <input type="email" name="email" id="email" class="form-control" value="[% c.req.params.email | html %]"/>
+      <input type="email" name="email" id="email" class="form-control"
+             value="[% commit_email | html %]"
+             [% IF site.enforce_email_commit %]required[% END %]/>
       <br />
     </div>
     <div>

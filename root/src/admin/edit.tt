@@ -596,6 +596,18 @@ kpsewhich mylogo.pdf
       </div>
     </div>
 
+    <div class="form-group">
+      <div class="col-sm-offset-6 col-sm-6">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.enforce_email_commit %]checked="checked"[% END %]
+                 name="enforce_email_commit" />
+          [% loc('Enforce e-mail on submission') %]
+        </label>
+      </div>
+    </div>
+
+
 
     <div class="form-group">
       <div class="col-sm-offset-6 col-sm-6">

@@ -3509,6 +3509,7 @@ sub update_from_params {
                            bottom_layout_html
                            footer_layout_html
                            do_not_enforce_commit_message
+                           enforce_email_commit
                            text_infobox_at_the_bottom
                            webchat_url
                            turn_links_to_images_into_images
@@ -4115,6 +4116,10 @@ sub additional_nginx_conf {
 sub do_not_enforce_commit_message {
     my ($self) = @_;
     $self->get_option('do_not_enforce_commit_message') ? 1 : 0;
+}
+
+sub enforce_email_commit {
+    shift->get_option('enforce_email_commit') ? 1 : 0;
 }
 
 sub use_js_highlight {

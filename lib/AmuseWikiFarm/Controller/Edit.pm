@@ -444,9 +444,14 @@ sub edit :Chained('edit_revision') :PathPart('') :Args(0) {
     my $params = $c->request->body_params;
     my $revision = $c->stash->{revision};
     my $site = $c->stash->{site};
+    my $email = $params->{email};
+    if (!$email && $site->enforce_email_commit && $c->user_exists) {
+        $email = $c->user->get("email");
+    }
     $c->stash(
               load_highlight => $site->use_js_highlight,
               load_markitup_css => 1,
+              commit_email => $email,
              );
 
     {
