@@ -445,7 +445,7 @@
                             var terms = this.value.split(separator);
                             terms.pop();
                             terms.push(ui.item.value);
-                            this.value = terms.join( "; " );
+                            this.value = terms.join( ", " );
                             return false;
                         }
                     });
