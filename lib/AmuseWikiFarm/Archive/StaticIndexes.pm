@@ -190,7 +190,7 @@ TEMPLATE
 
     my $title_template = <<'TEMPLATE';
 <i aria-hidden="true" class="awm-show-text-type-icon fa %s" title="%s"></i>
- <a href="%s.html">%s <small>[%s]</small></a>
+ <a href="%s">%s <small>[%s]</small></a>
 TEMPLATE
 
     my $attachment_template =<< 'TEMPLATE';
@@ -202,9 +202,10 @@ TEMPLATE
     $title_template =~ s/\n//g;
     my $book_note = $lh->loc_html('This text is a book');
     my $art_note = $lh->loc_html('This text is an article');
-
+    my $use_first_attachment_link = $site->feed_enclosure_method eq 'first_attachment' ? 1 : 0;
     foreach my $title (@texts) {
         _in_tree_uri($title);
+        my $main_link = $title->{in_tree_uri} . '.html';
         $title->{pubdate_int} = str2time($title->{pubdate});
         my $dt = DateTime->from_epoch(epoch => $title->{pubdate_int},
                                       locale => $locale);
@@ -251,12 +252,17 @@ TEMPLATE
         }
         if ($title->{attach}) {
             # see Title.attached_objects
+            my $replaced_main_link = 0;
             foreach my $enc_uri (split(/[\s;,]+/, $title->{attach})) {
                 my ($attachment) = map { $_->{attachment} }
                   grep { $_->{attachment}->{uri} eq $enc_uri }
                   @{$title->{title_attachments} || []};
                 if ($attachment) {
                     _in_tree_uri($attachment);
+                    if ($use_first_attachment_link && !$replaced_main_link) {
+                        $main_link = $attachment->{in_tree_uri};
+                        $replaced_main_link++;
+                    }
                     my $thumb_name = $attachment->{uri} . ".small.png";
                     my $thumb_src = $thumbnail_src->child($thumb_name);
                     if ($thumb_src->exists) {
@@ -274,7 +280,7 @@ TEMPLATE
         $title->{display_title} = sprintf($title_template,
                                           $title->{text_qualification} eq 'book' ? 'fa-book' : 'fa-file-text-o',
                                           $title->{text_qualification} eq 'book' ? $book_note : $art_note,
-                                          $title->{in_tree_uri},
+                                          $main_link,
                                           $title->{title},
                                           $title->{lang});
     }
