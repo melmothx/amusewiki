@@ -164,10 +164,15 @@ sub create_titles {
     my $time = time();
     log_debug { "Creating titles" };
     my $site = $self->site;
+    my $site_id = $site->id;
+    my $thumbnail_src = path(thumbnails => $site->id);
+    my $thumbnails_dest = $self->target_subdir->child('thumbnails');
+    $thumbnails_dest->mkpath;
     my @texts = $site->titles->published_texts
       ->static_index_tokens
       ->order_by($site->titles_category_default_sorting)
       ->all;
+    Dlog_debug { $_ } \@texts;
     my $locale = $site->locale || 'en';
 
     my @ctypes = map { $_->category_type } @{ $self->category_types };
@@ -186,6 +191,11 @@ TEMPLATE
     my $title_template = <<'TEMPLATE';
 <i aria-hidden="true" class="awm-show-text-type-icon fa %s" title="%s"></i>
  <a href="%s.html">%s <small>[%s]</small></a>
+TEMPLATE
+
+    my $attachment_template =<< 'TEMPLATE';
+<br>
+<a href="%s"><img src="%s" alt="%s" class="img img-responsive img-thumbnail" /></a>
 TEMPLATE
 
     $file_template =~ s/\n//g;
@@ -237,6 +247,27 @@ TEMPLATE
                                      $f->{icon},
                                      $f->{desc},
                                      $f->{desc});
+            }
+        }
+        if ($title->{attach}) {
+            # see Title.attached_objects
+            foreach my $enc_uri (split(/[\s;,]+/, $title->{attach})) {
+                my ($attachment) = map { $_->{attachment} }
+                  grep { $_->{attachment}->{uri} eq $enc_uri }
+                  @{$title->{title_attachments} || []};
+                if ($attachment) {
+                    _in_tree_uri($attachment);
+                    my $thumb_name = $attachment->{uri} . ".small.png";
+                    my $thumb_src = $thumbnail_src->child($thumb_name);
+                    if ($thumb_src->exists) {
+                        $attachment->{thumbnail} = "./site_files/__static_indexes/thumbnails/$thumb_name";
+                        $thumb_src->copy($thumbnails_dest);
+                    }
+                    push @files, sprintf($attachment_template,
+                                         $attachment->{in_tree_uri},
+                                         $attachment->{thumbnail},
+                                         $attachment->{uri});
+                }
             }
         }
         $title->{files} = join(" ", @files);
