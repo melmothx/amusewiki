@@ -56,12 +56,22 @@ before process => sub {
 
         # layout adjustments
         my $theme = $site->bootstrap_theme;
+        my $navlogo;
         if (my $alt_theme = $site->bootstrap_alt_theme) {
             $c->stash(site_has_alt_theme => 1);
             if ($c->stash->{use_alternate_theme}) {
                 $theme = $alt_theme;
+                if ($site->has_site_file('navlogo-alt.png')) {
+                    $navlogo = 'navlogo-alt.png';
+                }
             }
         }
+        unless ($navlogo) {
+            if ($site->has_site_file('navlogo.png')) {
+                $navlogo = 'navlogo.png';
+            }
+        }
+        $c->stash(navigation_logo_filename => $navlogo);
         my $columns = 12;
         if ($c->stash->{full_page_no_side_columns}) {
             $c->stash(layout_always_fluid => 1);
