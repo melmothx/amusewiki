@@ -182,7 +182,7 @@ sub create_titles {
     my $lh = $site->localizer;
 
     my $file_template = <<'TEMPLATE';
-<a class="force-black" target="_blank" href="%s%s">
+<a class="force-black static-index-download-format-%s" target="_blank" href="%s%s">
 <span class="fa fa-2x fa-border %s" title="%s" aria-hidden="true">
 </span><span class="sr-only">%s</span>
 </a>
@@ -195,7 +195,8 @@ TEMPLATE
 
     my $attachment_template =<< 'TEMPLATE';
 <br>
-<a href="%s"><img src="%s" alt="%s" class="img img-responsive img-thumbnail" /></a>
+<a class="static-index-attachment" href="%s"><img src="%s" alt="%s"
+   class="img img-responsive img-thumbnail" /></a>
 TEMPLATE
 
     $file_template =~ s/\n//g;
@@ -243,6 +244,7 @@ TEMPLATE
         foreach my $f (@formats) {
             unless ($f->{is_slides} and !$title->{slides}) {
                 push @files, sprintf($file_template,
+                                     $f->{code},
                                      $title->{in_tree_uri},
                                      $f->{ext},
                                      $f->{icon},
