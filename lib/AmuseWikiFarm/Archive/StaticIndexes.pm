@@ -125,13 +125,15 @@ sub generate {
                                   _ => 'pubdate',
                                   sort => 'pubdate_int',
                                  }
-                        },
+                        });
+        if ($site->show_type_and_number_of_pages) {
+            push @columns,
                         {
                          # loc('Estimated pages')
                          title => $lh->loc_html('Estimated pages'),
                          data => "pages_estimated",
-                        }
-                       );
+                        };
+        }
         $tt->process('static-indexes.tt',
                            {
                             list => to_json($titles, canonical => 1),
@@ -177,6 +179,7 @@ sub create_titles {
 
     my @ctypes = map { $_->category_type } @{ $self->category_types };
     my @formats = @{ $site->formats_definitions(localize => 1) };
+    my $show_type_and_number_of_pages = $site->show_type_and_number_of_pages;
 
     my %translations;
     my $lh = $site->localizer;
@@ -189,7 +192,7 @@ sub create_titles {
 TEMPLATE
 
     my $title_template = <<'TEMPLATE';
-<i aria-hidden="true" class="awm-show-text-type-icon fa %s" title="%s"></i>
+<i aria-hidden="true" class="awm-show-text-type-icon %s" title="%s"></i>
  <a href="%s">%s <small>[%s]</small></a>
 TEMPLATE
 
@@ -279,9 +282,15 @@ TEMPLATE
             }
         }
         $title->{files} = join(" ", @files);
+        my $title_icon_class = "no-icon";
+        my $title_icon_title = "";
+        if ($show_type_and_number_of_pages) {
+            $title_icon_class = $title->{text_qualification} eq 'book' ? 'fa fa-book' : 'fa fa-file-text-o';
+            $title_icon_title = $title->{text_qualification} eq 'book' ? $book_note : $art_note;
+        }
         $title->{display_title} = sprintf($title_template,
-                                          $title->{text_qualification} eq 'book' ? 'fa-book' : 'fa-file-text-o',
-                                          $title->{text_qualification} eq 'book' ? $book_note : $art_note,
+                                          $title_icon_class,
+                                          $title_icon_title,
                                           $main_link,
                                           $title->{title},
                                           $title->{lang});
