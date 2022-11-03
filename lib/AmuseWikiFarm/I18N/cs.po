@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2018-03-19 08:51+0100\n"
+"PO-Revision-Date: 2022-10-29 14:17+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Czech\n"
 "Language: cs\n"
@@ -14,150 +14,154 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #. ($filename)
 msgid "%1 doesn't exist"
-msgstr ""
+msgstr "%1 neexistuje"
 
 #. ([$total])
 msgid "%1 jobs deleted"
-msgstr ""
+msgstr "%1 úkoly smazány"
 
 #. ([$total])
 msgid "%1 jobs rescheduled"
-msgstr ""
+msgstr "%1 úkoly znovu naplánovány"
 
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
-msgstr ""
+msgstr "%1 na mobilu"
 
 #. (text.pages_estimated)
 msgid "%1 pp."
-msgstr ""
+msgstr "%1 str."
 
 msgid "(narrowest)"
-msgstr ""
+msgstr "(nejužší)"
 
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr ""
 
 msgid "(widest)"
-msgstr ""
+msgstr "(nejširší)"
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
-msgstr ""
+msgstr "Prázdný řádek (nebo více prázdných řádků) začne nový odstavec."
 
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
 msgstr ""
+"Obrázek na přebal byl již přidán, ale můžete jej nahradit nahráním\n"
+"              nového."
 
 msgid ""
 "A footnote is a line which starts with a number between square\n"
 "          brackets, with no leading whitespace."
 msgstr ""
+"Poznámka pod čarou je řádek, který začíná číslem ve hranatých\n"
+"          závorkách, a nemá před sebou mezery."
 
 msgid "A line which starts with 2 or more whitespaces is a quotation."
-msgstr ""
+msgstr "Řádek, který začíná 2 nebo více mezerami, je citace."
 
 msgid "A line which starts with 20 or more whitespaces is right-aligned."
-msgstr ""
+msgstr "Řáde, který začíná 20 nebo více mezerami, je zarovnán doprava."
 
 msgid "A line which starts with 6 or more whitespaces is centered."
-msgstr ""
+msgstr "Řádek, který začíná 6 nebo více mezerami, je zarovnaný na střed."
 
 msgid ""
 "A list of links and labels to insert into the top\n"
 "            bar. One per line, first the url, then the label,\n"
 "            separated by a space, e.g. \"http://test.me Test site\""
 msgstr ""
+"Seznam odkazů a štítků, které se mají vložit na vrchní\n"
+"            lištu. Jeden na řádek, nejprve url, potom štítek\n"
+"            oddělený mezerou, např. \"http://test.me Testovací stránka\""
 
 #. (location)
 msgid "A new text has been created at %1"
-msgstr ""
+msgstr "Nový text byl vytvořen v %1"
 
 msgid "A nice title"
-msgstr ""
+msgstr "Pěkný nadpis"
 
 msgid "A4 imposed PDF"
 msgstr ""
 
 msgid "A4 paper"
-msgstr ""
+msgstr "papír A4"
 
 msgid "A5 paper"
-msgstr ""
+msgstr "papír A6"
 
 msgid "A6 paper (also suitable for e-readers)"
 msgstr ""
 
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
-msgstr ""
+msgstr "Opuštěné nedokončené úpravy, nezdráhejte se zkontrolovat diff a pokračovat"
 
 msgid "Action"
-msgstr ""
+msgstr "Akce"
 
 msgid "Activate the blog-style look and feel"
-msgstr ""
+msgstr "Aktivuj vzhled blogového stylu"
 
 msgid "Active"
-msgstr ""
+msgstr "Aktivuj"
 
 msgid "Add"
-msgstr ""
+msgstr "Přidej"
 
 msgid "Add a cover image (PNG or JPG)"
-msgstr ""
+msgstr "Přidej obrázek na přebal (PNG nebo JPG)"
 
 msgid "Add a new text"
-msgstr ""
+msgstr "Přidej nový text"
 
 msgid "Add an attachment"
-msgstr ""
+msgstr "Přidej přílohu"
 
 msgid "Add crop marks to the PDF"
-msgstr ""
+msgstr "Přidej ořezové značky do PDF"
 
 msgid "Add new remote repository"
-msgstr ""
+msgstr "Přidej nový vzdálený repozitář"
 
 msgid "Add non-breaking spaces where appropriate for the language"
-msgstr ""
+msgstr "Přidej pevné mezery tam, kde jsou v jazyce vhodné"
 
-msgid ""
-"Add paginator for text listing when the number of texts is greater than "
-"(integer)"
-msgstr ""
+msgid "Add paginator for text listing when the number of texts is greater than (integer)"
+msgstr "Přidej rozdělení na stránky pro zobrazení textů, když je počet textů větší než(celé číslo)"
 
 msgid "Add sections to the bookbuilder"
-msgstr ""
+msgstr "Přidej sekce do bookbuilderu"
 
 msgid "Add the OPDS URL"
-msgstr ""
+msgstr "Přidej OPDS URL"
 
 msgid "Add the selected parts to the bookbuilder"
-msgstr ""
+msgstr "Přij vybrané části do bookbuilderu"
 
 msgid "Add the whole text"
-msgstr ""
+msgstr "Přidej celý text"
 
 msgid "Add this text to the bookbuilder"
-msgstr ""
+msgstr "Přidej tento text do bookbuilderu"
 
 msgid "Add to colophon"
-msgstr ""
+msgstr "Přidej do tiráže"
 
 msgid "Added"
-msgstr ""
+msgstr "Přidáno"
 
-msgid ""
-"Additional information (full date, original title, translators, credits, "
-"etc)."
-msgstr ""
+msgid "Additional information (full date, original title, translators, credits, etc)."
+msgstr "Dodatečné informace (plné datum, originální název, překladači*ky, zásluhy, atd.)."
 
 msgid "Additional nginx configuration"
-msgstr ""
+msgstr "Další konfigurace programu nginx"
 
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
@@ -166,42 +170,43 @@ msgid ""
 "  change, it will appear under %1. There is a big red\n"
 "  button for each deleted text, and you can proceed with the purging."
 msgstr ""
+"Po schválení\n"
+"  změny se objeví pod %1. Je tam velké červené\n"
+"  tlačítko pro každý smazaný text a můžeš pokračovat s odstraňováním dočista."
 
 msgid "Age:"
-msgstr ""
+msgstr "Stáří:"
 
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 msgid "Alias can't point to itself"
-msgstr ""
+msgstr "Alias nemůže odkazovat sám na sebe"
 
 msgid ""
 "All kind of lists start with one or more leading\n"
 "        whitespace."
 msgstr ""
+"Všechny možné druhy seznamů začínají jedním nebo více \n"
+"        úvodními mezerami."
 
 msgid "All languages"
-msgstr ""
+msgstr "Všechny jazyky"
 
 msgid "All revisions"
-msgstr ""
+msgstr "Všechny revize"
 
 msgid "All sites"
-msgstr ""
+msgstr "Všechny stránky"
 
 msgid "All users"
-msgstr ""
+msgstr "Všichni uživatelé"
 
-msgid ""
-"Allow Unicode URIs for categories (author, topics). Recommended for non-"
-"latin scripts."
-msgstr ""
+msgid "Allow Unicode URIs for categories (author, topics). Recommended for non-latin scripts."
+msgstr "Povol Unicodeová URI pro kateforie (autor, téma). Doporučeno propísma, která nejsou latinka."
 
-msgid ""
-"Allow binary uploads to logged in users: list of whitespace separate file "
-"extensions"
-msgstr ""
+msgid "Allow binary uploads to logged in users: list of whitespace separate file extensions"
+msgstr "Povol přihlášeným uživatelům nahrávat binární soubory: seznam souborovýchrozšíření oddělených mezerami"
 
 msgid ""
 "Also produce slides\n"
@@ -211,6 +216,12 @@ msgid ""
 "          you want to exclude a section, put a comment in the section\n"
 "          body with the string “noslide”."
 msgstr ""
+"Taky udělej slajdy\n"
+"          z dokumentu. Každá sekce, nezávisle na tom jak hluboko,\n"
+"          vytvoří slajd. Text mimo sekci je ignorován, takže\n"
+"          pokud nebudeš mít sekce, dostaneš prázdné slajdy. Pokud\n"
+"          chceš vyloučit sekci, přidej komentář do těla sekce\n"
+"          s textovým řetězcem „noslide“."
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
@@ -220,582 +231,607 @@ msgid ""
 "      errico-malatesta-anarchy-2. Please note that this is normally\n"
 "      not needed"
 msgstr ""
+"URI je textový řetězec, který jednoznačně identifikuje text\n"
+"      v archivu. Teoreticky to může být cokoliv, ale pokud ho chceš\n"
+"      nastavit samostatně, prosím přidržuj se konvence: autorské\n"
+"      jméno, název, jazyk, případné číslo pro odlišení, např. \n"
+"      errico-malatesta-anarchy-2. Prosím ber na vědomí, že toto běžně\n"
+"      není potřeba"
 
 msgid "Apache is not currently supported"
-msgstr ""
+msgstr "Apache právě nepodporujeme"
 
 msgid "Archive"
-msgstr ""
+msgstr "Archiv"
 
 msgid "Archive by month"
-msgstr ""
+msgstr "Archiv podle měsíce"
 
 msgid "Archive history"
-msgstr ""
+msgstr "Historie archivu"
 
 msgid "Are you sure?"
-msgstr ""
+msgstr "Jsi si jistý?"
 
 msgid "As cover in the header"
-msgstr ""
+msgstr "Jako přebal v záhlaví"
 
 msgid "As regular image in the body"
-msgstr ""
+msgstr "Jako běžný obrázek v těle"
 
 msgid "Assign text to nodes"
-msgstr ""
+msgstr "Přiřaď text uzlům"
 
 msgid "Attach"
-msgstr ""
+msgstr "Přilož"
 
 msgid "Attached images"
-msgstr ""
+msgstr "Přiložené obrázky"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Přílohy"
 
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 msgid "Author and title. If one side document: title."
-msgstr ""
+msgstr "Autor a název. Pokud jedna strana dokumentu: název."
 
 msgid "Authors"
-msgstr ""
+msgstr "Autoři"
 
 msgid "Authors and topics listing"
-msgstr ""
+msgstr "Autoři a zobrazení témat"
 
 msgid "Authors for indexing"
-msgstr ""
+msgstr "Autoři pro indexování"
 
 msgid "Auto"
-msgstr ""
+msgstr "Auto"
 
 msgid "Automatically generated"
-msgstr ""
+msgstr "Automaticky generované"
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
-msgstr ""
+msgstr "Automaticky požaduj a obnov SSL certifikát od Let's Encrypt"
 
 msgid "Available"
-msgstr ""
+msgstr "Dostupné"
 
 msgid "Available category tags for header"
-msgstr ""
+msgstr "Dostupná štítky pro kategorie pro hlavičku"
 
-msgid ""
-"Avoid hyphenation on the last word of a sentence (it could result in bad "
-"spacing)"
-msgstr ""
+msgid "Avoid hyphenation on the last word of a sentence (it could result in bad spacing)"
+msgstr "Vyhni se dělení slov na posledním slově věty (mohlo by to mít za následekšpatné rozpoložení textu.)"
 
 msgid "Back to the text"
-msgstr ""
+msgstr "Zpátky k textu"
 
 msgid "Bad request"
-msgstr ""
+msgstr "Špatný request"
 
 msgid "Beamer color theme"
-msgstr ""
+msgstr "Barevný motiv pro Beameru"
 
 msgid "Beamer theme"
-msgstr ""
+msgstr "Motiv pro Beameru"
 
 msgid "Beside topics and authors you can add more categories here"
-msgstr ""
+msgstr "Krom témat a autorů můžeš přidat více kategorií zde"
 
 msgid "Binding correction in millimeters (additional inner margin)"
-msgstr ""
+msgstr "Opravy vazeb v milimetrech (dodatečný vnitřní okraj)"
 
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
 msgstr ""
+"Bloky 16 stran, které mají být dvakrát přeloženy a potom spolu\n"
+"                svázány."
 
 msgid ""
 "Blocks of 8 pages to be folded twice and then bound\n"
 "                together."
 msgstr ""
+"Bloky 8 stran, které mají být dvakrát přeloženy a poté spolu\n"
+"                svázány."
 
 msgid "Blog"
-msgstr ""
+msgstr "Blog"
 
 msgid "Body"
-msgstr ""
+msgstr "Tělo"
 
 msgid "Bold"
-msgstr ""
+msgstr "Tučné"
 
 msgid "Bookbuilder"
-msgstr ""
+msgstr "Bookbuilder"
 
 msgid "Bookbuilder page limit (integer)"
-msgstr ""
+msgstr "Limit stran bookbuilderu (celé číslo)"
 
 msgid "Build it"
-msgstr ""
+msgstr "Započni sestavování"
 
 msgid "Built-in"
-msgstr ""
+msgstr "Zabudované"
 
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
 "        numbering"
 msgstr ""
+"Ve výchozím nastavení jsou sekundární poznámky pod čarou číslovány arabsky\n"
+"        mezi rodiči. S touto volbou budou používat alfanumerické číslování\n"
+"        na každou stranu"
 
 msgid "By number of pages, ascending"
-msgstr ""
+msgstr "Podle počtu stran, vzestupně"
 
 msgid "By number of pages, descending"
-msgstr ""
+msgstr "Podle počtu stran, sestupně"
 
 msgid "By relevance"
-msgstr ""
+msgstr "Podle relevance"
 
 msgid "By sku ascending"
-msgstr ""
+msgstr "Podle sku vzestupně"
 
 msgid "By sku descending"
-msgstr ""
+msgstr "Podle sku sestupně"
 
 msgid "By title A-Z"
-msgstr ""
+msgstr "Podle názvu A-Z"
 
 msgid "By title Z-A"
-msgstr ""
+msgstr "Podle názvu Z-A"
 
 msgid "CSS Alternate Theme (Dark mode, optional)"
-msgstr ""
+msgstr "CSS Alternativní vzhled (dark mode, volitelné)"
 
 msgid "CSS Theme"
-msgstr ""
+msgstr "CSS Vzhled"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Zrušit"
 
 msgid "Canonical name"
-msgstr ""
+msgstr "Kanonické jméno"
 
 msgid "Categories"
-msgstr ""
+msgstr "Kategorie"
 
 #. ($site->canonical)
 #. (site.canonical)
 msgid "Category types for %1"
-msgstr ""
+msgstr "Typy kategorií pro %1"
 
 msgid "Center all the sectioning titles."
-msgstr ""
+msgstr "Zarovnej všechny tituly sekcí na střed."
 
 msgid "Center the chapter titles."
-msgstr ""
+msgstr "Zarovnej všechny názvy kapitol na střed."
 
 msgid "Changes"
-msgstr ""
+msgstr "Změny"
 
 msgid "Changes applied"
-msgstr ""
+msgstr "Změny aplikovány"
 
 msgid "Changes applied."
-msgstr ""
+msgstr "Změny aplikovány."
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 #. (author_title)
 msgid "Changes for %1"
-msgstr ""
+msgstr "Změny pro %1"
 
 msgid "Changes saved, thanks! They are now waiting to be published"
-msgstr ""
+msgstr "Změny uloženy, děkujeme! Nyní čekají na publikaci"
 
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
 "doing, you can delete an existing text and point to another adding a\n"
 "#DELETED directive in the text header with a special syntax:"
 msgstr ""
+"Změna url adres je špatná praxe. Každopádně, pokud víš, co děláš,\n"
+"můžeš smazat existující text a ukázat na jiný tím že přidáš\n"
+"direktivu #DELETED do hlavičky textu speciální syntaxí:"
 
 msgid "Chapter"
-msgstr ""
+msgstr "Kapitola"
 
 msgid "Chapter and section. If one side document: chapter."
-msgstr ""
+msgstr "Kapitola a sekce. Pokud jedna strana dokumentu: kapitola."
 
 msgid "Chapter, only for chapter divisions in books"
-msgstr ""
+msgstr "Kapitola, jen pro oddělení kapitol v knihách"
 
 msgid "Cheatsheet for the markup"
-msgstr ""
+msgstr "Tahák pro markup"
 
 msgid "Check"
-msgstr ""
+msgstr "Zkontroluj"
 
 msgid "Check mail sending and send mail to:"
-msgstr ""
+msgstr "Zkontroluj odeslání e-mailu a taky pošli e-mail:"
 
 msgid "Choose a paper format"
-msgstr ""
+msgstr "Vyber formát papíru"
 
 msgid "Clear the book list"
-msgstr ""
+msgstr "Vyčisti seznam knih"
 
 msgid "Click on the images to get the sample PDF"
-msgstr ""
+msgstr "Klikni na obrázek pro dostání ukázky PDF"
 
 msgid "Clone"
-msgstr ""
+msgstr "Klonuj"
 
 msgid "Close"
-msgstr ""
+msgstr "Zavři"
 
 msgid "Code"
-msgstr ""
+msgstr "Kód"
 
 msgid "Colophon (displayed in the generated files):"
-msgstr ""
+msgstr "Tiráž (zobrazená v generovaných souborech)"
 
-msgid ""
-"Columns for the left side of the editing page, with the editing box (out of "
-"12)"
-msgstr ""
+msgid "Columns for the left side of the editing page, with the editing box (out of 12)"
+msgstr "Sloupce pro levou stranu editovací stránky s editovacím boxem (z 12) 12)"
 
 msgid "Comma or semicolon separated list"
-msgstr ""
+msgstr "Seznamy oddělené čárkou nebo středníkem"
 
 msgid "Commit ID"
-msgstr ""
+msgstr "ID commitu"
 
 msgid "Completed"
-msgstr ""
+msgstr "Dokončeno"
 
 msgid "Computing of differences took"
-msgstr ""
+msgstr "Počítání rozdílů zabralo"
 
 msgid "Confirm"
-msgstr ""
+msgstr "Potvrď"
 
 msgid "Conflict"
-msgstr ""
+msgstr "Konflikt"
 
 msgid "Continuous footnote numbering across the whole document."
-msgstr ""
+msgstr "Nepřetržité číslování poznámek pod čarou skrz celý dokument."
 
 msgid "Convert to archive markup"
 msgstr ""
 
 msgid "Copyright notice"
-msgstr ""
+msgstr "Upozornění na autorská práva"
 
 msgid "Couldn't add the text"
-msgstr ""
+msgstr "Text nemohl být přidán"
 
 msgid "Couldn't automatically generate the URI!"
-msgstr ""
+msgstr "URI nemohlo být automaticky vygenerováno!"
 
 msgid "Couldn't build that"
-msgstr ""
+msgstr "Toto nešlo sestavit"
 
 msgid "Create"
-msgstr ""
+msgstr "Vytvořit"
 
 msgid "Create a new category type. Please use only lowercase ASCII letters"
-msgstr ""
+msgstr "Vytvoř nový typ kategorie. Prosím používej pouze malá písmena ASCII"
 
 msgid "Create a new format"
-msgstr ""
+msgstr "Vytvoř nový formát"
 
 msgid "Create a new librarian"
-msgstr ""
+msgstr "Vytvoř nového knihovníka*ci"
 
 msgid "Create a new special page"
-msgstr ""
+msgstr "Vytvoř novou zvláštní stránku"
 
 msgid "Create a new user"
-msgstr ""
+msgstr "Vytvoř nového uživatele"
 
-msgid ""
-"Create a public repository on GitLab, GitHub or similar services (or on your "
-"own server). "
-msgstr ""
+msgid "Create a public repository on GitLab, GitHub or similar services (or on your own server). "
+msgstr "Vytvoř veřejný repozitář na GitLabu, GitHubu nebo podobných službách (nebo na svém vlastním serveru). "
 
 msgid "Create a topic alias"
-msgstr ""
+msgstr "Vytvoř alias pro téma"
 
 msgid "Create an author alias"
-msgstr ""
+msgstr "Vytvoř alias pro autora"
 
 msgid "Create new site"
-msgstr ""
+msgstr "Vytvoř novou stránku"
 
 msgid "Create user and mail password"
 msgstr ""
 
 msgid "Created"
-msgstr ""
+msgstr "Vytvořeno"
 
 msgid "Created by"
-msgstr ""
+msgstr "Vytvořil*a"
 
 msgid "Created new text"
-msgstr ""
+msgstr "Vytvořen nový text"
 
 msgid "Current time"
-msgstr ""
+msgstr "Aktuální čas"
 
 #. ($c->stash->{site}->canonical)
 #. (site.canonical)
 msgid "Custom formats for %1"
-msgstr ""
+msgstr "Vlastní formáty pro %1"
 
 msgid "Custom home page"
-msgstr ""
+msgstr "Vlastní domovská stránka"
 
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 msgid "Date of the original publication"
-msgstr ""
+msgstr "Datum původní publikace"
 
 msgid "Default"
-msgstr ""
+msgstr "Výchozí"
 
 msgid "Default sorting for the category text list"
-msgstr ""
+msgstr "Výchozí řazení pro textový seznam kategorií"
 
 msgid "Default value if blank:"
-msgstr ""
+msgstr "Výchozí hodnota, pokud prázdné:"
 
 msgid "Deferred/Deleted texts"
-msgstr ""
+msgstr "Odložené/Smazané texty"
 
 msgid "Delete"
-msgstr ""
+msgstr "Odstraň"
 
 msgid "Delete permanently"
-msgstr ""
+msgstr "Odstraň permanentně"
 
 #. (remote.name)
 msgid "Delete remote repository %1"
-msgstr ""
+msgstr "Odstraň vzdálený repozitář"
 
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
 msgstr ""
+"Odstranění revize je bezpečné, pokud text byl\n"
+"    publikovaný. Jinak její odstranění zatratí nepublikované změny"
 
 msgid "Description"
-msgstr ""
+msgstr "Popis"
 
 msgid "Description item"
-msgstr ""
+msgstr "Položka popisu"
 
 msgid ""
 "Description lists use a double colon to separate the\n"
 "        term and the description."
 msgstr ""
+"Seznamy popisů používají dvě dvojtečky k oddělení\n"
+"        pojmu a popisu."
 
 msgid "Desired URI"
-msgstr ""
+msgstr "Požadované URI"
 
 msgid "Destination"
-msgstr ""
+msgstr "Destinace"
 
 msgid "Details"
-msgstr ""
+msgstr "Detaily"
 
 msgid "Did you mean:"
-msgstr ""
+msgstr "Bylo tím myšleno:"
 
 msgid "Diff"
-msgstr ""
+msgstr "Diff"
 
 msgid "Differences"
-msgstr ""
+msgstr "Rozdíly"
 
 msgid ""
 "Directory with templates in the site repository, e.g.\n"
 "        \"templates\" (ASCII only). Do not set it unless you know\n"
 "        exactly what you are doing"
 msgstr ""
+"Adresář se šablonami v repozitáři stránky, např.\n"
+"        \"templates\" (pouze ASCII). Nenastavuj, pokud nevíš\n"
+"        přesně, co děláš"
 
 msgid "Disable /mirror/ URL for anonymous users"
-msgstr ""
+msgstr "Zakázat /mirror/ URL pro anonymní uživatele"
 
 msgid "Display the latest entries on special pages"
-msgstr ""
+msgstr "Zobrazovat pouze nejnovější záznamy na zvláštních stránkách"
 
 msgid "Display url as"
-msgstr ""
+msgstr "Zobraz url jako"
 
 msgid "Division factor"
-msgstr ""
+msgstr "Dělící faktor"
 
 msgid "Do not create a cover page and start the text on the first page"
-msgstr ""
+msgstr "Nevytvářet přebalovou stránku a začít text na první straně"
 
 msgid "Do not enforce save message"
-msgstr ""
+msgstr "Nevynucovat zprávu o uložení"
 
 msgid "Do not redirect aliases to canonical"
-msgstr ""
+msgstr "Nepřesměrovávat aliasy na kanonické"
 
 msgid "Do not use bold fonts"
-msgstr ""
+msgstr "Nepoužívat tučné fonty"
 
 msgid "Domain"
-msgstr ""
+msgstr "Doména"
 
 msgid "Done"
-msgstr ""
+msgstr "Hotovo"
 
 msgid "Double bars"
 msgstr ""
 
 msgid "Downloads"
-msgstr ""
+msgstr "Stažené soubory"
 
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
-msgstr ""
+msgstr "Např. některé slovo A název:\"Můj název\" A autor:Autor NEBO rok:2017"
 
 msgid "EPUB"
-msgstr ""
+msgstr "EPUB"
 
 msgid "EPUB (for mobile devices)"
-msgstr ""
+msgstr "EPUB (pro mobilní zařízení)"
 
 msgid "ETA"
-msgstr ""
+msgstr "ETA"
 
 msgid "Edit"
-msgstr ""
+msgstr "Upravuj"
 
 msgid "Edit attachment description"
-msgstr ""
+msgstr "Upravuj popis přílohy"
 
 #. ($format->format_name)
 msgid "Edit format %1"
-msgstr ""
+msgstr "Upravuj formát %1"
 
 msgid "Edit full site configuration"
-msgstr ""
+msgstr "Upravuj plnou konfiguraci stránek"
 
 msgid "Edit screen layout options"
-msgstr ""
+msgstr "Upravuj možnosti rozvržení na obrazovce"
 
 #. (esite.id)
 msgid "Edit site %1"
-msgstr ""
+msgstr "Upravuj stránku %1"
 
 msgid "Edit site configuration"
-msgstr ""
+msgstr "Upravuj nastavení stránky"
 
 msgid "Edit the text you want to unpublish and add this line to the header:"
-msgstr ""
+msgstr "Upravuj text, který chceš od-publikovat a přidej tento řádek do hlavičky:"
 
 msgid "Edit this text"
-msgstr ""
+msgstr "Upravuj tento text"
 
 #. (user.username)
 msgid "Edit user %1"
-msgstr ""
+msgstr "Upravuj uživatele %1"
 
 msgid "Editing"
-msgstr ""
+msgstr "Upravuji"
 
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 msgid "Email sent!"
-msgstr ""
+msgstr "Email odeslán!"
 
 msgid "Email updated"
-msgstr ""
+msgstr "Email aktualizován"
 
 msgid "Emails do not match"
-msgstr ""
+msgstr "Emaily se neshodují"
 
 msgid "Embed fonts in the EPUB file"
-msgstr ""
+msgstr "Vlož fonty do EPUB souboru"
 
 msgid "Enable \"What links here\" feature"
 msgstr ""
 
 msgid "Enable search suggestions (did you mean...)"
-msgstr ""
+msgstr "Umožni návrhy vyhledávání (bylo tím myšleno...)"
 
 msgid "Enable title ordering by SKU"
-msgstr ""
+msgstr "Umožni řazení názvů podle SKU"
 
 msgid "Enforce e-mail on submission"
 msgstr ""
 
 msgid "Erase this revision"
-msgstr ""
+msgstr "Odstraň revizi"
 
 msgid "Error converting the upload file. Is it an HTML file?"
-msgstr ""
+msgstr "Chyba při konvertování nahraného souboru. Je to HTML soubor?"
 
 msgid "Error sending mail!"
-msgstr ""
+msgstr "Chyba při odesílání pošty!"
 
 msgid "Error while converting the HTML. Sorry."
-msgstr ""
+msgstr "Chyba při konvertování HTML. Omlouváme se."
 
 #. ($res->{error} || "Unknwon error")
 msgid "Error: %1"
-msgstr ""
+msgstr "Chyba: %1"
 
 msgid "Errors"
-msgstr ""
+msgstr "Chyby"
 
 msgid "Estimated pages"
-msgstr ""
+msgstr "Odhadované stránky"
 
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
 msgstr ""
+"I když tato stránka má responsivní rozložení vhodné pro mobily,\n"
+"  nenabízí dedikovanou mobilní aplikaci."
 
 msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
 "        sectioning for this to work."
 msgstr ""
+"Každá\n"
+"        sekce vygeneruje slajd. Je třeba udělat pořádné\n"
+"        členění na sekce, aby to fungovalo."
 
 msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
 msgstr ""
+"Přesně jako 2up, ale listy jsou nejprve určeny k\n"
+"        horizontálnímu řezání a pak k poskládání na sebe. Tímto\n"
+"        způsobem lze tisknout například A6 brožurky na A4."
 
 msgid "Example"
-msgstr ""
+msgstr "Příklad"
 
 msgid "Exception"
-msgstr ""
+msgstr "Výjimka"
 
 msgid "Existing redirections"
-msgstr ""
+msgstr "Existující přesměrování"
 
 msgid "Expected pages"
-msgstr ""
+msgstr "Očekávané stránky"
 
 msgid "Failed"
-msgstr ""
+msgstr "Selhalo"
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
-msgstr ""
+msgstr "Přidání vzdáleného repozitáře %1 selhalo"
 
 #. ($name)
 msgid "Failed to remove Remote repository %1"
-msgstr ""
+msgstr "Odstranění vzdáleného repozitáře %1 selhalo"
 
 msgid "Failure fetching the source"
 msgstr ""
 
 msgid "Federation"
-msgstr ""
+msgstr "Federace"
 
 msgid "Feed enclosure method (OPDS and RSS)"
 msgstr ""
@@ -804,91 +840,86 @@ msgid "Fetch"
 msgstr ""
 
 msgid "File already in the body"
-msgstr ""
+msgstr "Soubor již existuje v těle"
 
 msgid "File extension"
-msgstr ""
+msgstr "Přípona souboru"
 
 msgid "File format not allowed"
-msgstr ""
+msgstr "Formát souboru není povolen"
 
 msgid "File too big"
-msgstr ""
+msgstr "Soubor příliš velký"
 
 msgid "File uploaded!"
-msgstr ""
+msgstr "Soubor nahrán!"
 
 msgid "Files"
-msgstr ""
+msgstr "Soubory"
 
-msgid ""
-"Fill with blank pages before the last page if the signature is not full."
-msgstr ""
+msgid "Fill with blank pages before the last page if the signature is not full."
+msgstr "Vyplnit prázdnými stranami před poslední stranou, pokud signatura není úplná."
 
 msgid "Filters"
-msgstr ""
+msgstr "Filtry"
 
 msgid "Find the add catalogue menu."
-msgstr ""
+msgstr "Najít menu přidání katalogu."
 
 msgid "Find the network library menu, or equivalent."
-msgstr ""
+msgstr "Najdi menu síťové knihovny, nebo ekvivalent."
 
 msgid "First"
-msgstr ""
+msgstr "První"
 
 msgid "First Author and Second Author"
-msgstr ""
+msgstr "První autor*ka a Druhý*á autor*ka"
 
 msgid "First Author, Second Author"
-msgstr ""
+msgstr "První autor*ka, Druhý*á autor*ka"
 
 msgid "First slide"
-msgstr ""
+msgstr "První slajd"
 
 msgid "First text attachment or EPUB"
-msgstr ""
+msgstr "První textová příloha nebo EPUB"
 
 msgid "First you have to unpublish it via #DELETED."
-msgstr ""
+msgstr "Nejprve je třeba od-publikovat to přes #DELETED."
 
 msgid "Fix typography (smart quotes)"
-msgstr ""
+msgstr "Oprav typografii (chytré uvozovky)"
 
 msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
-msgstr ""
+msgstr "Fixní 16stránková signatura na 2 listech s dvojitým individuálním přehnutím."
 
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
-msgstr ""
+msgstr "Fixní 16stránková signatura na jednom listu s trojitým přehnutím."
 
-msgid ""
-"Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
-"and bound together."
-msgstr ""
+msgid "Fixed signatures of 8 pages, to be cut horizontally, folded individually, and bound together."
+msgstr "Fixní 8stránková signatura určena k horizontálnímu řezu, jednotlivém přehnutí a společném svázání."
 
 msgid "Fixed topic list"
-msgstr ""
+msgstr "Fixní seznam témat"
 
 msgid "Font preview"
-msgstr ""
+msgstr "Náhled fontu"
 
 msgid "Font size"
-msgstr ""
+msgstr "Velikost fontu"
 
 msgid "Footnotes"
-msgstr ""
+msgstr "Poznámky pod čarou"
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
-msgid ""
-"Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
-"in the body (%4), ignoring changes."
-msgstr ""
+msgid "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references in the body (%4), ignoring changes."
+msgstr "Poznámky pod čarou se neshodují: nalezeno %1 poznámek pod čarou (%2) a nalezeno %3 odkazy na poznámky pod čarou v těle textu (%4), ignoruji změny."
 
 msgid "For texts from the internet use"
-msgstr ""
+msgstr "Pro texty z internetu použij"
 
 msgid "For texts without a table of content, start text on the very first page"
-msgstr ""
+msgstr "Pro texty bez obsahu začni text na úplně první straně"
 
 msgid ""
 "For topics and authors redirections, you can create them\n"
@@ -896,191 +927,194 @@ msgid ""
 msgstr ""
 
 msgid "Force a line break."
-msgstr ""
+msgstr "Vynutit zalomení řádku."
 
 msgid "Force publishing"
-msgstr ""
+msgstr "Vynutit publikaci"
 
 msgid "Format name"
-msgstr ""
+msgstr "Jméno formátu"
 
 msgid "Format successfully created"
-msgstr ""
+msgstr "Formát úspěšně vytvořen"
 
 msgid "Format successfully updated"
-msgstr ""
+msgstr "Formát úspěšně updatován"
 
 msgid "Formats"
-msgstr ""
+msgstr "Formáty"
 
 msgid "Full list of texts"
-msgstr ""
+msgstr "Celý seznam textů"
 
 msgid "Full tag cloud"
-msgstr ""
+msgstr "Plný oblak štítků"
 
 msgid "Full text search"
-msgstr ""
+msgstr "Plné textové vyhledávání"
 
 msgid "Full width, fluid layout"
-msgstr ""
+msgstr "Plná šířka, fluidní rozvržení"
 
 msgid "General configuration"
-msgstr ""
+msgstr "Obecná nastavení"
 
 msgid "Generate Index"
-msgstr ""
+msgstr "Generovat Index"
 
 msgid "Generic (fits in A4 and Letter)"
-msgstr ""
+msgstr "Generické (vejde se do A4 a do Letter)"
 
 msgid "Get generated URI"
-msgstr ""
+msgstr "Dostaň vygenerované URI"
 
-msgid ""
-"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
-"using the form you can find above. You can have one personal repository."
-msgstr ""
+msgid "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it using the form you can find above. You can have one personal repository."
+msgstr "Dostaň HTTPS URL repozitáře, např. https://example.com/git/test a přidej ho za použití formuláře, který lze najít výše. Lze mít jeden osobní repozitář."
 
 msgid "Git"
-msgstr ""
+msgstr "Git"
 
 msgid "Git console"
-msgstr ""
+msgstr "Gitová konzole"
 
 msgid "Git is not enabled on this site"
-msgstr ""
+msgstr "Git není na této stránce povolen"
 
 msgid ""
 "HTML code to append to each regular page, inserted\n"
 "            verbatim, so be careful"
 msgstr ""
+"HTML kód ke připojení na konec každé regulérní stránky,\n"
+"            vložen verbatim, tak pozor"
 
 msgid ""
 "HTML to append to each special page, inserted\n"
 "            verbatim, now you have a chance to screw up everything, so\n"
 "            be careful"
 msgstr ""
+"HTML kód ke připojení na konec každé zvláštní stránky,\n"
+"            vložen verbatim, nyní máš šanci všechno pokazit, tak pozor"
 
 msgid "HTML to insert in the footer of the layout, below the links"
-msgstr ""
+msgstr "HTML ke vložení do patičky rozložení, pod odkazy"
 
 msgid "HTML to insert into the left sidebar"
-msgstr ""
+msgstr "HTML ke vložení do levého postranního panelu"
 
 msgid "HTML to insert into the right sidebar"
-msgstr ""
+msgstr "HTML ke vložení do pravého postranního panelu"
 
 msgid "HTML to insert on the bottom of the layout, above the footer"
-msgstr ""
+msgstr "HTML ke vložení do spodní části rozložení, nad patičku"
 
-msgid ""
-"HTML to insert on the top of the layout, behind the navigation bar and below "
-"the banner"
-msgstr ""
+msgid "HTML to insert on the top of the layout, behind the navigation bar and below the banner"
+msgstr "HTML ke vložení na vrchol rozložení, za navigační lištu a pod baner"
 
 msgid "HTML/Word Importer"
-msgstr ""
+msgstr "HTML/Word Importér"
 
 msgid "Half Letter paper"
 msgstr ""
 
 msgid "Headers"
-msgstr ""
+msgstr "Záhlaví"
 
 msgid "Heading"
-msgstr ""
+msgstr "Nadpis"
 
 msgid "Headings"
-msgstr ""
+msgstr "Nadpisy"
 
 msgid "Height:"
-msgstr ""
+msgstr "Výška:"
 
 msgid "Help Text"
 msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
-msgstr ""
+msgstr "Zde lze najít náhled motivů Beameru a barevných motivů"
 
 msgid ""
 "Here you can save or load your templates. The text list\n"
 "      and the cover image are excluded by the saved settings. You can\n"
 "      use this to save paper/fonts/imposition and other options."
 msgstr ""
+"Zde můžeš uložit a načíst šablony. Seznam textů\n"
+"      a přebalový obrázek jsou vyřazeny uloženým nastavením. Můžeš\n"
+"      to využít k uložení formátu/fontu/archové montáže (impozice) a jiných možností."
 
 msgid "Higher division factor means narrower margins"
-msgstr ""
+msgstr "Větší dělitel znamená užší okraje"
 
 msgid "Highest priority format"
-msgstr ""
+msgstr "Formát nejvyšší priority"
 
 msgid "How are you going to access Git?"
-msgstr ""
+msgstr "Jak chceš přistupovat ke Gitu?"
 
 msgid "How do I create a landing page?"
-msgstr ""
+msgstr "Jak vytvořím vstupní stránku?"
 
 msgid "How do I create a special page?"
-msgstr ""
+msgstr "Jak vytvořím speciální stránku?"
 
 msgid "How do I delete a text?"
-msgstr ""
+msgstr "Jak odstraním text?"
 
 msgid "How do I modify a special page?"
-msgstr ""
+msgstr "Jak modifikuju speciální stránku?"
 
 msgid "How do I purge a text?"
-msgstr ""
+msgstr "Jak dočista odstraním test?"
 
 msgid "How do I redirect to another page?"
-msgstr ""
+msgstr "Jak přesměruji na jinou stránku?"
 
 msgid "How to choose a password"
-msgstr ""
+msgstr "Jak vybrat heslo"
 
 msgid ""
 "However, you can browse, search, download and read the texts\n"
 "  from mobile reading applications which support the so-called OPDS\n"
 "  protocol."
 msgstr ""
+"Nicméně, můžeš procházet, vyhledávat, stahovat a číst texty\n"
+"  z mobilních čtecích aplikací, které podporují tzv. OPDS\n"
+"  protokol."
 
 msgid "I am human"
-msgstr ""
+msgstr "Jsem člověk"
 
 msgid "I have a system user with SSH access"
-msgstr ""
+msgstr "Mám systémového uživatele s SSH přístupem"
 
 msgid "I want an imposed (ready to print) PDF"
-msgstr ""
+msgstr "Chci PDF s provedenou archovou montáží (připravené k tisku)"
 
 msgid "I will provide my remote repository"
-msgstr ""
+msgstr "Dodám vlastní vzdálený repozitář"
 
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgid "ISBN"
-msgstr ""
+msgstr "ISBN"
 
 msgid "Id"
-msgstr ""
+msgstr "Id"
 
-msgid ""
-"If by chance another text with the same author and title exists, choose the "
-"desired URI using the field below inserting author, title and a number, e.g. "
-"my-author-my-title-1"
-msgstr ""
+msgid "If by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1"
+msgstr "Pokud náhodou existuje jiný text se stejným autorem a názvem, vyber požadovené URI použitím pole níže. Vlož autora, název a číslo, např. můj-autor-můj-název-1"
 
 msgid ""
 "If it was not your intention, please just ignore this mail and\n"
 "your password will not be changed."
 msgstr ""
+"Pokud to nebyl tvůj záměr, prosím ignoruj tento e-mail a\n"
+"tvé heslo nebude změněno."
 
-msgid ""
-"If it's not the case, please open a bug report at https://github.com/"
-"melmothx/amusewiki/issues"
-msgstr ""
+msgid "If it's not the case, please open a bug report at https://github.com/melmothx/amusewiki/issues"
+msgstr "Pokud to tak není, prosím otevři bug report na https://github.com/melmothx/amusewiki/issues"
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
@@ -1091,7 +1125,7 @@ msgstr ""
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
-msgstr ""
+msgstr "Pokud to není nastaveno, %1 bude vyhledáno z adresáře aplikací."
 
 msgid ""
 "If present, hide the\n"
@@ -1100,26 +1134,28 @@ msgid ""
 "          available and more relevance should be given to the attached\n"
 "          files."
 msgstr ""
+"Pokud přítomny, schovej\n"
+"          generované formáty a informační box. To dává smyl\n"
+"          s přílohami, když verze textu je špatná nebo nedostupná\n"
+"          a více relevance by mělo být dáno přiloženým souborům."
 
-msgid ""
-"If set to a number greater than 0, automatically generate a teaser, with "
-"roughly this length"
-msgstr ""
+msgid "If set to a number greater than 0, automatically generate a teaser, with roughly this length"
+msgstr "Pokud nastaveno na číslo větší než 0, automaticky generuj upoutávku se zhrubatouto délkou"
 
 msgid ""
 "If the publication of a text is deferred, list it\n"
 "            with the teaser and the cover without providing access to\n"
 "            the body"
 msgstr ""
+"Pokud je publikace textu odložena, uveď jej\n"
+"            spolu s upoutávkou a přebalem bez umožnění přístupu\n"
+"            k tělu textu"
 
-msgid ""
-"If the user is allowed to publish, speed up the process skipping the "
-"revision page if there are no conflicts and automatically redirect to the "
-"published text once it is done."
-msgstr ""
+msgid "If the user is allowed to publish, speed up the process skipping the revision page if there are no conflicts and automatically redirect to the published text once it is done."
+msgstr "Když je uživateli dovoleno publikovat, urychli proces tím, že se přeskočí stránka revizí, pokud nejsou žádné konflikty a automaticky se přesměruje na publikovaný text, jakmile je to hotovo."
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
-msgstr ""
+msgstr "Když uživatel dodal e-mail, je uveden v kopii e-mailu"
 
 msgid ""
 "If this line\n"
@@ -1129,12 +1165,21 @@ msgid ""
 "          date will be the time of the publishing, triggering a bump\n"
 "          on RSS and special pages at each editing."
 msgstr ""
+"Pokud je tento řádek\n"
+"          přítomen, nastav publikační datum (na této stránce)\n"
+"          na to datum. To datum může být v budoucnu, což odloží\n"
+"          publikaci. Pokud tento řádek není přítomen, publikační datum\n"
+"          bude datum, kdy se provede publikace, což spustí aktualizaci\n"
+"          RSS a speciálních stránek po každé editaci."
 
 msgid ""
 "If this line is\n"
 "          present and the reason is set to something, the text will be\n"
 "          stored in the archive, but will not be published."
 msgstr ""
+"Pokud je tento řádek\n"
+"          přítomen a důvod je nastaven na něco, text bude uložen\n"
+"          v archivu, ale nebude publikován."
 
 msgid ""
 "If this line is present, do not create a title page,\n"
@@ -1142,32 +1187,40 @@ msgid ""
 "          produce a PDF styled like an article (chapters and parts\n"
 "          will not start on a new page)."
 msgstr ""
+"Pokud je tento řádek přítomen, nevytvářej titulní stranu,\n"
+"          ale místo toho začni text na úplně první straně\n"
+"          a vytvoř PDF se stylem článku (kapitoly a části\n"
+"          nezačnou novou stránku)."
 
 msgid "If this line is present, do not display the table of contents."
-msgstr ""
+msgstr "Pokud je tento řádek přítomen, nezobrazuj obsah."
 
 msgid "If you asked for imposition, select an imposition schema"
-msgstr ""
+msgstr "Pokud jsi žádal*a o archovou montáž (impozici), vyber její schéma"
 
 msgid ""
 "If you edit some format options, like fonts or paper\n"
 "      dimensions, you may want to rebuild the generated files"
 msgstr ""
+"Pokud upravíš některé možnosti formátování jako font a rozměry\n"
+"      archu, možná se ti bude hodit znovu sestavit vygenerované soubory"
 
 msgid ""
 "If you forgot your password, you can choose a new one visiting\n"
 "this link (click on it or copy and paste it in your browser):"
 msgstr ""
+"Pokud jsi zapomněl svoje heslo, můžeš si vybrat nové tím, že navštívíš\n"
+"tento odkaz (klikni na něj, nebo jej zkopíruj a vlož do prohlížeče):"
 
-msgid ""
-"If you have a file in .doc or .odt, you can easily convert it saving it as "
-"HTML"
-msgstr ""
+msgid "If you have a file in .doc or .odt, you can easily convert it saving it as HTML"
+msgstr "Pokud máš soubor ve formátu .doc nebo .odr, můžeš ho jednoduše konvertovat,když jej uložíš jako HTML"
 
 msgid ""
 "If you request a rebuild when one is ongoing, you will\n"
 "    abort the current one."
 msgstr ""
+"Když požádáš o nové sestavení, zatímco jiné sestavování běží,\n"
+"    ukončíš to, které běží."
 
 msgid ""
 "If you use it as a teaser image, the image will also\n"
@@ -1176,41 +1229,53 @@ msgid ""
 "      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
 "      on"
 msgstr ""
+"Pokud to používáš jako obrázek pro upoutávku, ten obrázek bude taky\n"
+"      vložen na první stranu PDF. Můžeš také nastavit jeho šířku\n"
+"      tím, že přidáš následující řádek do hlavičky, kde hodnota je\n"
+"      poměr šířky textu. 1 je plná šířka textu, 0.5 je polovina\n"
+"      a tak dále"
 
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
 "the uri \"index\"."
 msgstr ""
+"Pokud tvoje stránka tohle nemá, prostě vytvoř speciální stránku a přiřaď\n"
+"uri \"index\"."
 
 msgid ""
 "If your site is multilanguage, you can create a language-specific\n"
 "  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
 "  URI \"index\", a dash, and the locale code."
 msgstr ""
+"Pokud je vaše stránka vícejazyčná, můžeš vytvořit úvodní stránku\n"
+"  pro daný jazyk tím, že vytvoříš, např. \"/special/index-it\", tj.,\n"
+"  URI \"index\", a pomlčka a kód locale."
 
 msgid "Image already set as cover"
-msgstr ""
+msgstr "Obrázek je již nastaven jako přebal"
 
 #. ($w, $h, $limit, $limit)
 msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
-msgstr ""
+msgstr "Rozměry obrázku %1 x %2 přesahují limit %3 x %4 pixelů"
 
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
+"Nahrávání obrázků můžeš udělat v příštím kroku, kde můžeš\n"
+"        posoudit a podívat se na náhled nahraného souboru."
 
 msgid "Image url"
-msgstr ""
+msgstr "Url obrázku"
 
 msgid "Images"
-msgstr ""
+msgstr "Obrázky"
 
 msgid "Imposition schemas"
-msgstr ""
+msgstr "Schémata archové montáže (impozice)"
 
 msgid "In both case you will get a reverse indentation."
-msgstr ""
+msgstr "V obou případech dostaneš obrácené odsazení."
 
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
@@ -1226,43 +1291,43 @@ msgid ""
 msgstr ""
 
 msgid "Inline elements"
-msgstr ""
+msgstr "Prvky v řádku"
 
 msgid "Insert the file into the body at the cursor position"
-msgstr ""
+msgstr "Vlož soubor do těla a na pozici kurzoru"
 
 msgid "Internal list of translations"
-msgstr ""
+msgstr "Interní seznam překladů"
 
 msgid "Invalid ID"
-msgstr ""
+msgstr "Neplatné ID"
 
 msgid "Invalid URI"
-msgstr ""
+msgstr "Neplatné URI"
 
 msgid "Invalid domain"
-msgstr ""
+msgstr "Neplatná doména"
 
 msgid "Invalid email"
-msgstr ""
+msgstr "Neplatný email"
 
 msgid "Invalid field"
-msgstr ""
+msgstr "Neplatné pole"
 
 msgid "Invalid name"
-msgstr ""
+msgstr "Neplatné jméno"
 
 msgid "Invalid parameter"
-msgstr ""
+msgstr "Neplatný parametr"
 
 msgid "Invalid response"
-msgstr ""
+msgstr "Neplatná odezva"
 
 msgid "Invalid target"
-msgstr ""
+msgstr "Neplatný cíl"
 
 msgid "Invalid username"
-msgstr ""
+msgstr "Neplatné uživatelské jméno"
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -1272,6 +1337,13 @@ msgid ""
 "          of square brackets. Placing secondary footnote references\n"
 "          inside a regular footnote is permitted."
 msgstr ""
+"Je možné mít dodatečnou sadu\n"
+"          poznámek pod čarou, které lze použít pro anotaci textu \n"
+"          (např. kritické úpravy, nebo překladatelské poznámky).\n"
+"          Budou fungovat stejně jako běžné poznámky pod čarou,\n"
+"          ale používají složené závorky namísto hranatých závorek.\n"
+"          Vložení druhotných odkazů na poznámky pod čarou do\n"
+"          běžných poznámek pod čarou je povoleno."
 
 msgid ""
 "It is recommended to always set a publication\n"
@@ -1280,35 +1352,38 @@ msgid ""
 "                    publication date only on major editing, leaving it\n"
 "                    untouched for minor ones."
 msgstr ""
+"Doporučuje se vždycky nastavit publikační datum,\n"
+"                    aby systém nemusel vždy spoléhat čas uložený v souboru.\n"
+"                    Dále, publikační datum by se mělo aktualizovat jen\n"
+"                    při velkých úpravách a neměnit při malých."
 
 msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
 msgstr ""
-
-msgid "Italic"
-msgstr ""
+"Funguje to stejně jako pro běžnou stránku, ale link je schován.\n"
+"Prostě připni \"/edit\" k url stránky."
 
 msgid "Italics, bold, monospace and code, linebreaks..."
-msgstr ""
+msgstr "Kurzíva, tučné písmo, neproporcionální (monospace) font a kód, zalomení řádku..."
 
 msgid "JPG, PNG and PDF are always allowed."
-msgstr ""
+msgstr "JPG, PNG a PDF jsou vždy povoleny."
 
 msgid "Job status"
-msgstr ""
+msgstr "Status úkolu"
 
 msgid "Jobs"
-msgstr ""
+msgstr "Úkoly"
 
 msgid "Jobs (all sites)"
-msgstr ""
+msgstr "Úkoly (všechny stránky)"
 
 msgid "Jobs waiting before yours:"
-msgstr ""
+msgstr "Úkoly čekající před tvým:"
 
 msgid "Just packs 2 consecutives logical pages on a physical one."
-msgstr ""
+msgstr "Prostě sbal 2 následující logické stránky na fyzickou stránku."
 
 msgid ""
 "Keep in mind that I’m cleaning the text and give it\n"
@@ -1317,48 +1392,56 @@ msgid ""
 "        be lost in the process. Please check the preview on the next\n"
 "        step, where you can also insert images."
 msgstr ""
+"Pamatuj, že čistím text a vracím ti ho v markupu,\n"
+"        který používá tato stránka. Je na tobě ho zkontrolovat\n"
+"        a konečně ho nahrát. Některý zřídka použitý markup bude ztracen\n"
+"        v procesu. Prosím zkontroluj si náhled v dalším kroku,\n"
+"        kde také můžeš vkládat obrázky."
 
 msgid "Keep in mind that some character may be missing in the required font."
-msgstr ""
+msgstr "Měj na paměti, že některé znaky mohou chybět v požadovaném fontu."
 
 msgid ""
 "Keep in mind that unusually\n"
 "        complex formatting will be stripped. Is it possible to add\n"
 "        tables and images only on the next step."
 msgstr ""
+"Měj na paměti, že neobvykle\n"
+"        komplexní formátování bude odděleno. Tabulky obrázky je\n"
+"        možné přidat pouze v dalším kroku."
 
 msgid "Language"
-msgstr ""
+msgstr "Jazyk"
 
 msgid "Language code of the document (2 or 3 letters). "
-msgstr ""
+msgstr "Jazykový kód dokumentu (2 nebo 3 písmena). "
 
 msgid "Language selection"
-msgstr ""
+msgstr "Výběr jazyku"
 
 msgid "Languages supported"
-msgstr ""
+msgstr "Podporované jazyky"
 
 msgid "Last"
-msgstr ""
+msgstr "Poslední"
 
 msgid "Last successful rebuild"
-msgstr ""
+msgstr "Poslední úspěšné sestavení"
 
 msgid "Last updated"
-msgstr ""
+msgstr "Naposledy aktualizováno"
 
 msgid "Latest entries"
-msgstr ""
+msgstr "Poslední vstupy"
 
 msgid "Layout"
-msgstr ""
+msgstr "Rozvržení"
 
 msgid "Leave it blank if you want it published right away."
-msgstr ""
+msgstr "Ponech prázdné, jestli to chceš publikované hned."
 
 msgid "Leave this empty to have it automatically generated"
-msgstr ""
+msgstr "Ponech prázdné, aby se automaticky vygenerovalo"
 
 msgid "Letter imposed PDF"
 msgstr ""
@@ -1367,253 +1450,250 @@ msgid "Letter paper"
 msgstr ""
 
 msgid "Line spacing"
-msgstr ""
+msgstr "Řádkování"
 
 msgid "Link"
-msgstr ""
+msgstr "Odkaz"
 
 msgid "Links"
-msgstr ""
+msgstr "Odkazy"
 
 msgid "List of paths to attach to this node, one per line."
-msgstr ""
+msgstr "Seznam cest, které se mají připojit k tomuto uzlu, jedna na řádek."
 
 msgid "List of texts on hold"
-msgstr ""
+msgstr "Seznam textů k držení"
 
 msgid "Lists"
-msgstr ""
+msgstr "Seznamy"
 
 msgid "Load"
-msgstr ""
+msgstr "Načti"
 
 msgid "Load another session by token"
-msgstr ""
+msgstr "Načti další sezení tímto tokenem"
 
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
-msgstr ""
+msgstr "Načtěna konfigurace \"%1\""
 
 msgid "Loading"
-msgstr ""
+msgstr "Načítání"
 
 msgid "Local"
-msgstr ""
+msgstr "Lokální"
 
 msgid "Local pages"
-msgstr ""
+msgstr "Lokální stránky"
 
 msgid "Locked editing, no upload possible"
-msgstr ""
+msgstr "Uzavřené úpravy, nahrání není možné"
 
 msgid "Log in"
-msgstr ""
+msgstr "Přihlásit se"
 
 msgid "Login"
-msgstr ""
+msgstr "Přihlášení"
 
 msgid "Logout"
-msgstr ""
+msgstr "Odhlášení"
 
 msgid "Look into the account’s menu, there is an entry for that."
-msgstr ""
+msgstr "Podívej se do menu účtu, je na to vstup."
 
 msgid "Lost your password?"
-msgstr ""
+msgstr "Ztratil jsi své heslo?"
 
 msgid "Magic answer"
-msgstr ""
+msgstr "Magická odpověň"
 
 msgid "Magic question"
-msgstr ""
+msgstr "Magická otázka"
 
 msgid "Mail from"
-msgstr ""
+msgstr "Pošta od"
 
 msgid "Main canonical hostname, without protocol"
-msgstr ""
+msgstr "Hlavní kanonický hostname, bez protokolu"
 
 msgid "Main font"
-msgstr ""
+msgstr "Hlavní font"
 
 msgid "Main text"
-msgstr ""
+msgstr "Hlavní text"
 
 msgid "Maintainer's FAQ"
-msgstr ""
+msgstr "FAQ pro udržovatele"
 
 msgid "Make a link clickable"
-msgstr ""
+msgstr "Udělej odkaz klikatelný"
 
 msgid "Make all links active"
-msgstr ""
+msgstr "Aktivuj všechny odkazy"
 
 msgid "Make all non-breaking spaces explicit and visible as ~~"
-msgstr ""
+msgstr "Udělej všechny pevné mezery explicitní a viditelné jako ~~"
 
 msgid "Manage categories"
-msgstr ""
+msgstr "Spravuj kategorie"
 
 msgid "Manage category types"
-msgstr ""
+msgstr "Spravuj typy kategorií"
 
 msgid "Margins: please choose a division factor or set width and height"
-msgstr ""
+msgstr "Okraje: prosím vyber dělitele, nebo nastav šířku a výšku"
 
 msgid "Max image dimension in pixels, applies to both width and height"
-msgstr ""
+msgstr "Maximální rozměr v pixelech, platí jak na šířku, tak na výšku"
 
 msgid "Max size for uploads in Mb"
-msgstr ""
+msgstr "Maximální velikost pro nahrané soubory v Mb"
 
 msgid "Message"
-msgstr ""
+msgstr "Zpráva"
 
 #. (8)
 msgid "Minimum %1 characters"
-msgstr ""
+msgstr "Nejméně %1 znaků"
 
 msgid "Mirror"
-msgstr ""
+msgstr "Mirror"
 
 msgid "Mirror of:"
-msgstr ""
+msgstr "Mirror od:"
 
 msgid "Missing #title header in the text!"
-msgstr ""
+msgstr "Chybí #název hlavička v textu!"
 
 msgid "Missing alias"
-msgstr ""
+msgstr "Chybí alias"
 
 msgid "Missing character will be reported"
-msgstr ""
+msgstr "Chybějící znak bude nahlášen"
 
 msgid "Missing redirection"
-msgstr ""
+msgstr "Chybějící přesměrování"
 
 msgid "Mobile"
-msgstr ""
+msgstr "Mobilní"
 
 msgid "Mobile applications"
-msgstr ""
+msgstr "Mobilní aplikace"
 
 msgid "Mode"
-msgstr ""
+msgstr "Mód"
 
 msgid "Moderated wiki"
-msgstr ""
+msgstr "Moderovaná wiki"
 
 msgid "Mono font"
-msgstr ""
+msgstr "Mono font"
 
 msgid "More"
-msgstr ""
+msgstr "Více"
 
 msgid "Move down"
-msgstr ""
+msgstr "Pohni dolů"
 
 msgid "Move up"
-msgstr ""
+msgstr "Pohni nahoru"
 
 msgid "Multilanguage: list of whitespace separated language codes"
-msgstr ""
+msgstr "Vícejazykové: seznam jazykových kódů oddělených mezerou"
 
 msgid "My description"
-msgstr ""
+msgstr "Můj popis"
 
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 msgid "Name"
-msgstr ""
+msgstr "Jméno"
 
 msgid "Name plural"
-msgstr ""
+msgstr "Jméno plurál"
 
 msgid "Name singular"
-msgstr ""
+msgstr "Jméno singulár"
 
 msgid "Network library listing screen."
-msgstr ""
+msgstr "Obrazovka se seznamem síťové knihovny."
 
 msgid "Never display the cover"
-msgstr ""
+msgstr "Nikdy nezobrazuj přebal"
 
 msgid "Never generate a table of content"
-msgstr ""
+msgstr "Nikdy negeneruj obsah"
 
-msgid ""
-"Never generate the standard final page with title/author/notes/logo/site name"
-msgstr ""
+msgid "Never generate the standard final page with title/author/notes/logo/site name"
+msgstr "Nikdy negeneruj standardní konečnou stránku s názvem/autorem/poznámkami/logem/názvem stránky"
 
 msgid "Never show teaser and/or cover in text lists"
-msgstr ""
+msgstr "Nikdy neukazuj upoutávku a/nebo přebal v seznamech textů"
 
 msgid "New"
-msgstr ""
+msgstr "Nové"
 
 msgid "New revision"
-msgstr ""
+msgstr "Nová revize"
 
 msgid "New site id"
-msgstr ""
+msgstr "Nové id stránky"
 
 msgid "Newer first"
-msgstr ""
+msgstr "Novější dříve"
 
 msgid "Newer texts"
-msgstr ""
+msgstr "Novější texty"
 
 msgid "Next"
-msgstr ""
+msgstr "Další"
 
 msgid "Nice title"
-msgstr ""
+msgstr "Pěkný název"
 
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 msgid "No data available in table"
-msgstr ""
+msgstr "Žádná data nejsou dostupná v tabulce"
 
 msgid "No editing yet!"
-msgstr ""
+msgstr "Ještě žádné editování!"
 
 msgid "No matching records found"
-msgstr ""
+msgstr "Žádné shodující se záznamy nenalezeny"
 
 msgid "No result found!"
-msgstr ""
+msgstr "Žádné výsledky nenalezeny!"
 
 msgid "No revisions to show"
-msgstr ""
+msgstr "Žádné revize k ukázání"
 
 msgid "No text found!"
-msgstr ""
+msgstr "Žádný text nenalezen!"
 
 msgid "No text was added yet"
-msgstr ""
+msgstr "Žádný text zatím nebyl přidán"
 
 msgid "Nodes"
-msgstr ""
+msgstr "Uzly"
 
 msgid "None"
-msgstr ""
+msgstr "Žádné"
 
 #. ($c->loc('Save')
-msgid ""
-"Not finished yet! Please have a look at the text and then click on \"%1\" to "
-"finalize your submission!"
-msgstr ""
+msgid "Not finished yet! Please have a look at the text and then click on \"%1\" to finalize your submission!"
+msgstr "Ještě není dokončeno! Prosím podívej se na text a poté klikni na \"%1\" pro finalizaci svého příspěvku!"
 
 msgid "Notes"
-msgstr ""
+msgstr "Poznámky"
 
 msgid "Nothing to see here, so far"
-msgstr ""
+msgstr "Tady není nic k vidění, zatím"
 
 msgid "Nothing uploaded"
-msgstr ""
+msgstr "Nic nenahráno"
 
 msgid "Notify mail: blank field will disable them"
 msgstr ""
@@ -1621,47 +1701,44 @@ msgstr ""
 msgid "Notify to"
 msgstr ""
 
-msgid ""
-"Now it has been aligned to the site's archive, but this means that there are "
-"some missing commits."
-msgstr ""
+msgid "Now it has been aligned to the site's archive, but this means that there are some missing commits."
+msgstr "Nyní to bylo zarovnáno archivu webu, ale to znamená, že tam jsou nějaké chybějící commity."
 
 msgid "Now we are going to populate it and get it ready"
-msgstr ""
+msgstr "Nyní to budeme populovat a připravíme to"
 
 msgid "Number of jobs"
-msgstr ""
+msgstr "Počet úkolů"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
-msgstr ""
+msgstr "Počet posledních vstupů, které se mají zobrazit v RSS (celé číslo)"
 
 msgid "Number of results to show on paginated pages (an integer)"
-msgstr ""
+msgstr "Počet výsledků, které se mají ukázat na stránkovaných stránkách (celé číslo)"
 
 msgid "OPDS"
-msgstr ""
+msgstr "OPDS"
 
 msgid "Older first"
-msgstr ""
+msgstr "Starší dříve"
 
 msgid "Older texts"
-msgstr ""
+msgstr "Starší texty"
 
 msgid "On text creation, enforce user to choose the URI"
-msgstr ""
+msgstr "Při vytvoření textu vynutit uživateli výběr URI"
 
-msgid ""
-"One page per sheet. This is useful only if you want to add the cropmarks"
-msgstr ""
+msgid "One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr "Jedna stránka na list. To je vhodné jenom pokud chceš přidat ořezové značky"
 
 msgid "Open wiki"
-msgstr ""
+msgstr "Otevři wiki"
 
 msgid "Option templates"
-msgstr ""
+msgstr "Šablony možností"
 
 msgid "Optional, defaults to the author directive"
-msgstr ""
+msgstr "Volitelný, výchozí nastavení je autorská direktiva"
 
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
@@ -1670,47 +1747,55 @@ msgid ""
 "          later, or, better, contact the librarians before proceeding,\n"
 "          to avoid wasting energies."
 msgstr ""
+"Nebo vytvoř novou revizi na vlastní nebezpečí. Existence více\n"
+"          souběžných revizí znamená, že pokud se o to někdo nepostará,\n"
+"          jen jedna bude zvolena. Můžeš pokračovat, zkusit to znovu později,\n"
+"          nebo, lépe, kontaktovat knihovnictvo před tím, než budeš pokračovat,\n"
+"          aby nedošlo ke plýtvání energií."
 
 msgid "Or log in, if you have an account."
-msgstr ""
+msgstr "Nebo se přihlaš, pokud máš účet."
 
 msgid "Or provide an HTML file to upload"
-msgstr ""
+msgstr "Nebo poskytni HTML soubor k nahrání"
 
 msgid "Or wrap it in"
-msgstr ""
+msgstr "Nebo to zabal"
 
 msgid "Ordered List"
-msgstr ""
+msgstr "Číslovaný Seznam"
 
 msgid "Outer margin"
-msgstr ""
+msgstr "Vnější okraj"
 
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 msgid "PDF logo"
-msgstr ""
+msgstr "PDF logo"
 
 msgid "PDFs cannot be used in the body."
-msgstr ""
+msgstr "PDF soubory nelze použít v těle."
 
 #. ('#ATTACH')
 #. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
-msgstr ""
+msgstr "PDF soubory neuvedeny v direktivě %1 budou uloženy ale ignorovány."
 
 msgid "Page not found!"
-msgstr ""
+msgstr "Stránka nenalezena!"
 
 msgid "Page where to start a chapter"
-msgstr ""
+msgstr "Stránka, kde začít kapitolu"
 
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
 "        This is not meant to be folded."
 msgstr ""
+"Stránky nejsou seřazeny znovu. První list obsahuje\n"
+"        stránky 1 a 2, druhý 3 a 4 a tak dále, vedle sebe.\n"
+"        Toto není určeno ke skládání."
 
 msgid ""
 "Pages are reordered, in one or more groups\n"
@@ -1721,124 +1806,128 @@ msgid ""
 "        whole book in a single signature, or an optimized size to\n"
 "        reduce the number of blank pages."
 msgstr ""
+"Stránky jsou seřazeny znovu do jedné nebo více skupin\n"
+"        (signatur), poté přehnuty napůl. Pokud máš více\n"
+"        signatur, budeš je muset svázat dohromady jako knihu.\n"
+"        S touto možností můžeš určit velikost těchto signatur.\n"
+"        to může být fixní hodnota (4,8,16, atd.), celá\n"
+"        kniha v jedné signatuře, nebo optimalizovaná\n"
+"        velikost, aby se omezil počet prázdných stran."
 
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
-msgstr ""
+msgstr "Tloušťka papíru (0,10 by měla být vhodná pro běžný papír 80g/m2)"
 
 msgid "Paragraph indentation in points (pt)"
-msgstr ""
+msgstr "Odsazení odstavce v bodech (pt)"
 
 msgid "Paragraphs"
-msgstr ""
+msgstr "Odstavce"
 
 msgid "Parent node"
-msgstr ""
+msgstr "Rodičovský uzel"
 
 msgid "Part"
-msgstr ""
+msgstr "Část"
 
 msgid "Part and chapter. If one side document: part."
-msgstr ""
+msgstr "Část a kapitola. Pokud jednostranný dokument: část."
 
 msgid "Part of"
-msgstr ""
+msgstr "Část z"
 
 msgid "Part, for larger books only"
-msgstr ""
+msgstr "Část, pouze pro větší knihy"
 
 msgid "Partial selection"
-msgstr ""
+msgstr "Částečný výběr"
 
 msgid "Password"
-msgstr ""
+msgstr "Heslo"
 
 msgid "Password too short"
-msgstr ""
+msgstr "Heslo příliš krátké"
 
 msgid "Password updated"
-msgstr ""
+msgstr "Heslo aktualizováno"
 
 msgid "Password, minimum 8 characters."
-msgstr ""
+msgstr "Heslo, nejméně 8 znaků."
 
 msgid "Passwords do not match"
-msgstr ""
+msgstr "Hesla se neshodují"
 
 msgid "Path"
-msgstr ""
+msgstr "Cesta"
 
 msgid "Payload"
 msgstr ""
 
 msgid "Pending revisions"
-msgstr ""
+msgstr "Čekající revize"
 
 msgid "Picture"
-msgstr ""
+msgstr "Obrázek"
 
 msgid "Place it in the body with a description:"
-msgstr ""
+msgstr "Vložit do těla s popisem:"
 
 msgid "Place it in the body without description:"
-msgstr ""
+msgstr "Vložit do těla bez popisu:"
 
 msgid "Place the notes on the back of the first page, impressum-style"
-msgstr ""
+msgstr "Vložit poznámky na zadní část první strany, jako impresum"
 
 msgid "Plain PDF"
-msgstr ""
+msgstr "Prázdná PDF"
 
-msgid ""
-"Please check your inbox, we tried to deliver a mail to the address you "
-"specified with a password reset link"
-msgstr ""
+msgid "Please check your inbox, we tried to deliver a mail to the address you specified with a password reset link"
+msgstr "Prosím zkontroluj si doručenou poštu, pokusili jsme se doručit email odkazem na resetování hesla na specifikovanou adresu"
 
 msgid "Please choose a text"
-msgstr ""
+msgstr "Prosím vyber text"
 
 msgid "Please choose the Beamer color theme"
-msgstr ""
+msgstr "Prosím vyber barevný motiv pro Beamer"
 
 msgid "Please choose the Beamer theme"
-msgstr ""
+msgstr "Prosím vyber motiv pro Beamer"
 
 msgid "Please choose the font size"
-msgstr ""
+msgstr "Prosím vyber velikost fontu"
 
 msgid "Please choose the main font"
-msgstr ""
+msgstr "Prosím vyber hlavní font"
 
 msgid "Please choose the mono font"
-msgstr ""
+msgstr "Prosím vyber mono font"
 
 msgid "Please choose the sans font"
-msgstr ""
+msgstr "Prosím vyber bezpatkový font"
 
 msgid "Please describe shortly what you did"
-msgstr ""
+msgstr "Prosím krátce popiš změny"
 
 msgid "Please do not use a valuable password."
-msgstr ""
+msgstr "Prosím nepoužívej hodnotné heslo."
 
-msgid ""
-"Please do not use higher levels (part or chapter) for short articles with "
-"sections."
-msgstr ""
+msgid "Please do not use higher levels (part or chapter) for short articles with sections."
+msgstr "Prosím nepoužívej vyšší úrovně (část nebo kapitolu) pro krátké články se sekcemi."
 
 #. (amw_group_name)
 msgid "Please ensure that your system user is member of the \"%1\" group"
-msgstr ""
+msgstr "Prosím ujisti se, že tvůj systémový uživatel je člen skupiny \"%1\""
 
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
 "        Just a fancy name, so we can know that multiple uploads come\n"
 "        from the same person."
 msgstr ""
+"Prosím dej nám uživatelské jméno. *Ne*měla by to být emailová adresa.\n"
+"        Prostě nějaké fešácké jméno, abychom mohli vědět, že více\n"
+"        nahraných souborů pochází od jedné osoby."
 
-msgid ""
-"Please initialized it empty, without any README,license, .gitignore or "
-"similar."
-msgstr ""
+msgid "Please initialized it empty, without any README,license, .gitignore or similar."
+msgstr "Prosím inicializuj prázdné, bez README, licence, .gitignore nebo podobného."
 
 msgid ""
 "Please keep in mind that filters are language-specific\n"
@@ -1846,6 +1935,9 @@ msgid ""
 "              text. If not available, they will just leave the text as\n"
 "              is."
 msgstr ""
+"Prosím měj na paměti, že filtry jsou specifické pro jazyk\n"
+"              a mohohou nebo nemusí být dostupné pro jazyk textu.\n"
+"              Pokud nejsou dostupné, prostě text ponechají nezměněný."
 
 msgid ""
 "Please keep in mind that if you see “Force publishing”\n"
@@ -1854,169 +1946,182 @@ msgid ""
 "    previous one. Try to avoid this, unless you know what you're\n"
 "    doing."
 msgstr ""
+"Prosím měj na paměti, že pokud vidíš „vynutit publikaci“\n"
+"    jako akci, znamená to, že revize byla nahrazena jinou,\n"
+"    takže pokud publikuješ tuto, vrátíš tím zpět předchozí revizi.\n"
+"    Pokus se tomu vyhnout, pokud nevíš, co děláš."
 
 msgid "Please leave a mail if you want to be contacted about this change"
-msgstr ""
+msgstr "Prosím zanech zde mail, pokud chceš dostat ohledně této změny zprávu"
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
-msgstr ""
+msgstr "Vezmi na vědomí, že obalové značky musí být umístěny na řádku samy o sobě."
 
 msgid ""
 "Please note that you may want to paste from a\n"
 "        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
 "        from word” button. This is supposed to preserve the markup."
 msgstr ""
+"Vezmi na vědomí, že můžeš chtít vložit\n"
+"        z Word/OpenOffice/LibreOffice/HTML dokumentu za použití tlačítka\n"
+"        „vlož z Wordu“. To by mělo zanechat markup."
 
 msgid ""
 "Please note: without any prefix, protocol or hostname, just\n"
 "  the bare page name as shown above. External redirecting is not\n"
 "  supported."
 msgstr ""
+"Vezmi na vědomí: bez předpony, protokolu, nebo hostname, se\n"
+"  zorazí jen holý název stránky jak je ukázáno výše. Externí\n"
+"  přesměrování není podporováno."
 
 msgid "Please prove you are a human"
-msgstr ""
+msgstr "Prosím dokaž, že jsi člověk"
 
 msgid "Please reindex the site."
-msgstr ""
+msgstr "Prosím reindexuj stránku."
 
 msgid "Please reload your page"
-msgstr ""
+msgstr "Prosím znovu načti stránku"
 
 msgid "Please remove this file from the body first"
-msgstr ""
+msgstr "Prosím nejprve odstraň tento soubor z těla"
 
-msgid ""
-"Please replace the example URL in the next line with the real one with SSH "
-"protocol"
-msgstr ""
+msgid "Please replace the example URL in the next line with the real one with SSH protocol"
+msgstr "Prosím nahraď příklad URL na prvním řádku opravdovým URL s SSH protokolem"
 
 msgid "Please select"
-msgstr ""
+msgstr "Prosím vyber"
 
 msgid "Please select the desired fonts"
-msgstr ""
+msgstr "Prosím vyber požadované fonty"
 
 msgid "Please select the signature size:"
-msgstr ""
+msgstr "Prosím vyber velikost signatur:"
 
-msgid ""
-"Please select the size of each page including the crop marks, before the "
-"imposing"
-msgstr ""
+msgid "Please select the size of each page including the crop marks, before the imposing"
+msgstr "Prosím vyber velikost každé strany se zahrnutím ořezových značek, před archovou montáží (impozicí)"
 
 msgid "Please set"
-msgstr ""
+msgstr "Prosím nastav"
 
 msgid ""
 "Please set the URI you desire. Author (if present),\n"
 "        title and eventually a number if the URI already exists is\n"
 "        usually a good choice"
 msgstr ""
+"Prosím nastav URI, které požaduješ. Autor*ka (pokud existuje)\n"
+"        název a nakonec číslo, pokud URI již existuje,\n"
+"        je většinou dobrá volba"
 
 msgid "Please setup the Beamer layout"
-msgstr ""
+msgstr "Prosím nastav rozložení pro Beamer"
 
 msgid "Please upload your file again!"
-msgstr ""
+msgstr "Prosím nahraj svůj soubor znovu!"
 
 msgid "Poetry, bibliographies, plays, code blocks"
-msgstr ""
+msgstr "Poezie, bibliografie, hry, bloky kódu"
 
 msgid "Pointing to"
-msgstr ""
+msgstr "Ukazující na"
 
 msgid "Popular texts"
-msgstr ""
+msgstr "Populární texty"
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
+"Předpona pro číslované seznamy může být „1.“, „a.“, „A.“,\n"
+"        „i.“, „I.“, podle toho, který typ seznamu potřebuješ."
 
 msgid "Preview"
-msgstr ""
+msgstr "Náhled"
 
 msgid "Preview box height in pixel"
-msgstr ""
+msgstr "Výška náhledového boxu v pixelech"
 
 msgid "Previous"
-msgstr ""
+msgstr "Předchozí"
 
 msgid "Priority"
-msgstr ""
+msgstr "Prioritní"
 
 msgid "Private"
-msgstr ""
+msgstr "Soukromé"
 
 msgid "Procedure"
-msgstr ""
+msgstr "Procedura"
 
 msgid "Processing"
-msgstr ""
+msgstr "Zpracovává se"
 
 msgid "Produce slides."
-msgstr ""
+msgstr "Vytvoř slajdy."
 
 msgid "Produced"
-msgstr ""
+msgstr "Vytvořeno"
 
 msgid "Publication date"
-msgstr ""
+msgstr "Publikační datum"
 
 msgid "Publication date on this site"
-msgstr ""
+msgstr "Publikační datum na této stránce"
 
 msgid "Publish"
-msgstr ""
+msgstr "Publikuj"
 
 msgid "Published in *A nice book*, published by My House, 2014"
-msgstr ""
+msgstr "Publikuj v *Pěkná kníha*, publikováno v Mém nakladatelství, 2014"
 
 msgid "Publisher"
-msgstr ""
+msgstr "Vydavatel"
 
 msgid "Purge"
-msgstr ""
+msgstr "Dočista odstraň"
 
-msgid ""
-"Purging means removing it completely from the archive, not just hiding it."
-msgstr ""
+msgid "Purging means removing it completely from the archive, not just hiding it."
+msgstr "Odstraňování dočista znamená odebrat to kompletně z archivu, nejen to skrýt."
 
 msgid ""
 "Put additional information here (original\n"
 "\t  title, translators, credits, etc). Footnotes go in the\n"
 "\t  body."
 msgstr ""
+"Dej dodatečné informace sem (původní\n"
+"\t  název, překladatelstvo, zásluhy, atd.). Poznámky pod čarou\n"
+"\t  patří do těla."
 
 msgid "Quarter Letter paper"
 msgstr ""
 
 msgid "Queue"
-msgstr ""
+msgstr "Fronta"
 
 msgid "Quota exceeded, too many pages"
-msgstr ""
+msgstr "Kvóta přeplněna, příliš mnoho stran"
 
 msgid "Quotes"
 msgstr ""
 
 msgid "RSS aggregator"
-msgstr ""
+msgstr "RSS agregátor"
 
 msgid "RSS feed"
-msgstr ""
+msgstr "RSS feed"
 
 msgid "Random"
-msgstr ""
+msgstr "Náhodné"
 
 msgid "Read about the file naming scheme if you need to add files to the tree."
-msgstr ""
+msgstr "Přečti si o schématu pojmenovávání souborů, jestli potřebuješ přidat soubory do stromu."
 
 msgid "Read the whole text..."
-msgstr ""
+msgstr "Přečti si celý text..."
 
 msgid "Real time help"
-msgstr ""
+msgstr "Pomoc v reálném čase"
 
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
@@ -2028,495 +2133,509 @@ msgid ""
 "              message. The procedure tries to be safe and will ignore\n"
 "              the change if footnotes are missing or are too many."
 msgstr ""
+"Přeuspořádej poznámky pod čarou, čímž se opraví číslování,\n"
+"              s ohledem pouze na pořadí, ve kterém byly vloženy.\n"
+"              Prosím nech nezaškrtnuto, pokud nevíš, co to znamená.\n"
+"              Tato možnost může být destruktivní, prosím používej\n"
+"              opatrně a zkontroluj si výsledek. V případě, že se setkáš\n"
+"              s problémy, prosím ulož výsledek a nahlaš chyby ve zprávě.\n"
+"              Tato procedure je se snaží být bezpečná a bude ignorovat\n"
+"              změnu, pokud poznámky pod čarou chybí, nebo pokud jich je příliš mnoho."
 
 msgid "Reason"
-msgstr ""
+msgstr "Důvod"
 
 msgid "Reason for deletion"
-msgstr ""
+msgstr "Důvod pro odstranění"
 
 msgid "Rebuild"
-msgstr ""
+msgstr "Znovu sestav"
 
 msgid "Rebuild all generated files"
-msgstr ""
+msgstr "Znovu sestav všechny vygenerované soubory"
 
 msgid "Rebuild formats"
-msgstr ""
+msgstr "Znovu sestav formáty"
 
 msgid "Rebuild the generated formats"
-msgstr ""
+msgstr "Znovu sestav generované formáty"
 
 msgid "Rebuilding"
-msgstr ""
+msgstr "Znovu sestavuji"
 
 msgid "Recheck"
-msgstr ""
+msgstr "Znovu zkontroluj"
 
 msgid "Redirections"
-msgstr ""
+msgstr "Přesměrování"
 
 msgid "Refresh and apply filters"
-msgstr ""
+msgstr "Znovu načti a aplikuj filtry"
 
 msgid "Reindex site"
-msgstr ""
+msgstr "Přeindexuj stránku"
 
 msgid "Related projects"
-msgstr ""
+msgstr "Příbuzné projekty"
 
 #. ("$name $url")
 msgid "Remote repository %1 added"
-msgstr ""
+msgstr "Vzdálený repozitář %1 přidán"
 
 #. ($name)
 msgid "Remote repository %1 removed"
-msgstr ""
+msgstr "Vzdálený repozitář %1 odebrán"
 
 msgid "Remove"
-msgstr ""
+msgstr "Odeber"
 
 msgid "Remove cover image"
-msgstr ""
+msgstr "Odeber přebalový obrázek"
 
 msgid "Remove this category"
-msgstr ""
+msgstr "Odeber tuto kategorii"
 
 msgid "Removed Upstream"
-msgstr ""
+msgstr "Odebráno na upstreamu"
 
 msgid "Rename"
-msgstr ""
+msgstr "Přejmenuj"
 
 msgid "Rename text URI"
-msgstr ""
+msgstr "Přejmenuj URI textu"
 
 msgid "Rename to"
-msgstr ""
+msgstr "Přejmenuj na"
 
 msgid "Repeat email"
-msgstr ""
+msgstr "Opakuj email"
 
 msgid "Repeat password"
-msgstr ""
+msgstr "Opakuj heslo"
 
 msgid "Request failed! Please report the the problem"
-msgstr ""
+msgstr "Žádost selhala! Prosím nahlaš problém"
 
 msgid "Reschedule"
-msgstr ""
+msgstr "Znovu naplánuj"
 
 msgid "Reset all"
-msgstr ""
+msgstr "Resetuj vše"
 
 msgid "Reset filters"
-msgstr ""
+msgstr "Resetuj filtry"
 
 msgid "Reset password"
-msgstr ""
+msgstr "Resetuj heslo"
 
 #. (username)
 msgid "Reset password for user %1"
-msgstr ""
+msgstr "Resetuj heslo pro uživatele %1"
 
 msgid "Reset to site defaults"
-msgstr ""
+msgstr "Resetuj na výchozí nastavení stránky"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "Resetuj své heslo"
 
 msgid "Restricted configuration variables"
-msgstr ""
+msgstr "Omezené konfigurační proměnné"
 
 msgid "Restricted format options"
-msgstr ""
+msgstr "Omezené možnosti formátování"
 
 msgid "Results per page:"
-msgstr ""
+msgstr "Výsledky na stránku:"
 
 msgid "Retrieved on DATE from URL"
-msgstr ""
+msgstr "Získáno v DATU z URL"
 
 msgid "Retrieved on March 8, 2012 from"
-msgstr ""
+msgstr "Získáno 8. března, 2012 od"
 
 msgid "Revision"
-msgstr ""
+msgstr "Revize"
 
 #. ($uri)
 msgid "Revision for %1 has been deleted"
-msgstr ""
+msgstr "Revize pro %1 byla smazána"
 
 msgid "Roles"
-msgstr ""
+msgstr "Role"
 
 msgid "Root node"
-msgstr ""
+msgstr "Kořenový uzel"
 
 msgid "Run diff"
-msgstr ""
+msgstr "Spusti diff"
 
 msgid "Running headings"
 msgstr ""
 
 msgid "SKU"
-msgstr ""
+msgstr "SKU"
 
 msgid "SSL CA certificate path (Apache)"
-msgstr ""
+msgstr "Cesta k souboru SSL CA certifikát (Apache)"
 
 msgid "SSL certificate path (Apache)"
-msgstr ""
+msgstr "Cesta k SSL certifikátu (Apache)"
 
 msgid "SSL chained certificate path (Nginx)"
-msgstr ""
+msgstr "Cesta k SSL chained certifikátu (Nginx)"
 
 msgid "SSL configuration"
-msgstr ""
+msgstr "SSL konfigurace"
 
 msgid "SSL key path"
-msgstr ""
+msgstr "Cesta k SSL klíči"
 
 msgid "Same as above, but for duplex printers"
-msgstr ""
+msgstr "Stejné jako výše, ale jen pro duplexní tiskárny"
 
 msgid "Same as above, for the Archive menu"
-msgstr ""
+msgstr "Stejné jako výše, ale pro menu Archivů"
 
 msgid "Same as above, for the Related Projects menu"
-msgstr ""
+msgstr "Stejné jako výše, ale pro menu Příbuzných projektů"
 
 msgid "Sans font"
-msgstr ""
+msgstr "Bezpatkový font"
 
 msgid "Save"
-msgstr ""
+msgstr "Uložit"
 
 msgid "Save the current settings with a name"
-msgstr ""
+msgstr "Uložit aktuální nastavení se jménem"
 
 #. ($pname)
 msgid "Saved \"%1\" configuration"
-msgstr ""
+msgstr "Uložena konfigurace \"%1\""
 
 msgid "Search"
-msgstr ""
+msgstr "Hledat"
 
 msgid "Search Engine Facets"
-msgstr ""
+msgstr "Aspekty vyhledávače"
 
 msgid "Search filters"
-msgstr ""
+msgstr "Vyhledávací filtry"
 
 msgid "Search results"
-msgstr ""
+msgstr "Výsledky vyhledávání"
 
 msgid "Search this column"
-msgstr ""
+msgstr "Vyhledej v tomto sloupci"
 
 msgid "Secondary footnotes"
-msgstr ""
+msgstr "Sekundární poznámky pod čarou"
 
 msgid "Section"
-msgstr ""
+msgstr "Sekce"
 
 msgid "Section and subsection. If one side document: section."
-msgstr ""
+msgstr "Sekce a podsekce. Pokud jedna strana dokumentu: sekce."
 
 msgid "See here for more details."
-msgstr ""
+msgstr "Podívej se sem pro více detailů."
 
 msgid "See here for the full documentation."
-msgstr ""
+msgstr "Podívej se sem pro plnou dokumentaci."
 
 msgid "See the full manual for more details (english)"
-msgstr ""
+msgstr "Podívej se na celý manuál pro více detailů (anglicky)"
 
 msgid "Select"
-msgstr ""
+msgstr "Vybrat"
 
 msgid "Select all"
-msgstr ""
+msgstr "Vybrat vše"
 
 msgid "Select all for deletion"
-msgstr ""
+msgstr "Vyber vše pro smazání"
 
 msgid "Select all for rescheduling"
-msgstr ""
+msgstr "Vyber vše přeplánování"
 
 msgid "Select individual parts for the bookbuilder"
-msgstr ""
+msgstr "Vyber jednotlivé části pro bookbuilder"
 
 msgid "Send mail"
-msgstr ""
+msgstr "Odeslat mail"
 
 #. ($from, $to)
 msgid "Sending test mails from %1 to %2"
-msgstr ""
+msgstr "Odesílají se zkušební emaily od %1 do %2"
 
 msgid "Separate body fields"
-msgstr ""
+msgstr "Oddělená pole pro tělo"
 
 msgid "Separate footer fields"
-msgstr ""
+msgstr "Oddělená políčka pro patičku"
 
 msgid "Separate header fields"
-msgstr ""
+msgstr "Oddělená políčka pro hlavičku"
 
 msgid "Series Name"
-msgstr ""
+msgstr "Název série"
 
 msgid "Series Number"
-msgstr ""
+msgstr "Číslo série"
 
 msgid "Session sharing"
-msgstr ""
+msgstr "Sdílení sezení"
 
 msgid "Set a date in the future if you want it deferred."
-msgstr ""
+msgstr "Nastav datum v budoucnu, pokud to chceš odložit."
 
 msgid "Settings loaded"
-msgstr ""
+msgstr "Nastavení načteno"
 
 msgid "Setup"
-msgstr ""
+msgstr "Nastavení"
 
 msgid "Show _MENU_ entries"
-msgstr ""
+msgstr "Ukázat vstupy do _MENU_"
 
 msgid "Show cheatsheet"
-msgstr ""
+msgstr "Ukázat tahák"
 
 msgid "Show differences in other tab"
-msgstr ""
+msgstr "Ukázat rozdíly v další záložce"
 
 msgid "Show filters"
-msgstr ""
+msgstr "Ukázat filtry"
 
 msgid "Show preview in other tab"
-msgstr ""
+msgstr "Ukázat náhled v další záložce"
 
 msgid "Show text type and number of pages in the listing"
-msgstr ""
+msgstr "Ukázat typ textu a počet stránek ve výpisu"
 
 msgid "Show the text infobox at the bottom of the texts"
-msgstr ""
+msgstr "Ukázat textový infobox na spodku textů"
 
 msgid "Showing 0 to 0 of 0 entries"
-msgstr ""
+msgstr "Ukazuje se od 0 do 0 z 0 vstupů"
 
 msgid "Showing _START_ to _END_ of _TOTAL_ entries"
-msgstr ""
+msgstr "Ukazuje se od _START_ do _END_ z _TOTAL_ vstupů"
 
 msgid "Single bars"
 msgstr ""
 
 msgid "Site Map"
-msgstr ""
+msgstr "Mapa stránky"
 
 msgid "Site already exists"
-msgstr ""
+msgstr "Stránka již existuje"
 
 msgid "Site group"
-msgstr ""
+msgstr "Skupina stránek"
 
 msgid "Site id"
-msgstr ""
+msgstr "Id stránky"
 
 msgid "Site mail (From field)"
-msgstr ""
+msgstr "Email stránky (Pole Od)"
 
 msgid "Site mode"
-msgstr ""
+msgstr "Mód stránky"
 
 msgid "Site name"
-msgstr ""
+msgstr "Název stránky"
 
 msgid "Site slogan"
-msgstr ""
+msgstr "Slogan stránky"
 
 msgid "Site users"
-msgstr ""
+msgstr "Uživatelé stránky"
 
 msgid "Sites"
-msgstr ""
+msgstr "Stránky"
 
 msgid "Slides"
-msgstr ""
+msgstr "Slajdy"
 
 msgid "Slides (PDF)"
-msgstr ""
+msgstr "Slajdy (PDF)"
 
 msgid "Small Caps"
-msgstr ""
+msgstr "Kapitálky"
 
 msgid "So we can be sure we are not mailing passwords to random people"
-msgstr ""
+msgstr "Abychom si mohli být jistí, že neposíláme hesla náhodným lidem"
 
 msgid "Some fields are missing, all are required"
-msgstr ""
+msgstr "Některá políča chybí, ale všechna jsou vyžadovaná"
 
 msgid "Some fields are too long"
-msgstr ""
+msgstr "Některá políčka jsou příliš dlouhá"
 
 msgid "Some ongoing revisions were found"
-msgstr ""
+msgstr "Některé revize v průběhu byly nalezeny"
 
 msgid "Sorry, too many jobs pending, please try again later!"
-msgstr ""
+msgstr "Omlouváme se, ale příliš mnoho úkolů čeká na vyřízení, prosím zkus to později!"
 
 msgid "Sorting:"
-msgstr ""
+msgstr "Třídění:"
 
 msgid "Source"
-msgstr ""
+msgstr "Zdroj"
 
 msgid "Source files"
-msgstr ""
+msgstr "Zdrojové soubory"
 
 msgid "Source files with attachments"
-msgstr ""
+msgstr "Zdrojové soubory s přílohami"
 
 msgid "Source removed"
-msgstr ""
+msgstr "Zdroj odebrán"
 
 msgid "Source, notes..."
-msgstr ""
+msgstr "Zdroj, poznámky..."
 
 msgid "Sources"
-msgstr ""
+msgstr "Zdroje"
 
 msgid "Special blocks"
-msgstr ""
+msgstr "Speciální bloky"
 
 msgid "Special pages"
-msgstr ""
+msgstr "Speciální stránky"
 
 msgid "Specify a whitespace-separated list of languages to activate it."
-msgstr ""
+msgstr "Specifikuj seznam jazyků oddělených mezerami, pro aktivaci."
 
 msgid "Stale editing"
-msgstr ""
+msgstr "Zastaralá úprava"
 
 msgid "Standalone HTML (printer-friendly)"
-msgstr ""
+msgstr "Samostatné HTML"
 
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 msgid "Start the document with an empty page"
-msgstr ""
+msgstr "Začni dokument prázdnou stranou"
 
 msgid "Started"
-msgstr ""
+msgstr "Započato"
 
 msgid "Static page without javascript"
-msgstr ""
+msgstr "Statická stránka bez javascriptu"
 
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 msgid "Status changed"
-msgstr ""
+msgstr "Status změněn"
 
 msgid "Subsection"
-msgstr ""
+msgstr "Podsekce"
 
 msgid "Subsubsection or description item"
-msgstr ""
+msgstr "Podpodsekce, nebo popisná položka"
 
 msgid "Subtitle"
-msgstr ""
+msgstr "Podtitul"
 
 msgid "Such URI already exists"
-msgstr ""
+msgstr "Takové URI již existuje"
 
 msgid "Such an URI already exists"
-msgstr ""
+msgstr "Takové URI již existuje"
 
 msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
 msgstr ""
+"Taková hlavička od-publikuje text, dá místo něj\n"
+"  přesměrování, a bude zde uvedeno"
 
 msgid "Such an user already exists!"
-msgstr ""
+msgstr "Takový uživatel již existuje!"
 
 msgid "Such username already exists"
-msgstr ""
+msgstr "Takové uživatelské jméno již existuje"
 
 msgid "Suggested values:"
-msgstr ""
+msgstr "Doporučené hodnoty:"
 
 msgid "Summary"
-msgstr ""
+msgstr "Shrnutí"
 
 msgid "Supported directive in the header"
-msgstr ""
+msgstr "Podporované direktivy v hlavičce"
 
 msgid "Switch theme"
-msgstr ""
+msgstr "Změň vzhled"
 
 msgid "Table of Contents"
-msgstr ""
+msgstr "Obsah"
 
 msgid "Tables"
-msgstr ""
+msgstr "Tabulky"
 
 msgid "Tag cloud with authors"
-msgstr ""
+msgstr "Oblak štítků s autory"
 
 msgid "Tag cloud with topics"
-msgstr ""
+msgstr "Oblak štítků s tématy"
 
 msgid "Task"
-msgstr ""
+msgstr "Zadání"
 
 msgid "TeX options (advanced)"
-msgstr ""
+msgstr "Možnosti TeXu (pokročilé)"
 
 msgid "Teaser"
-msgstr ""
+msgstr "Upoutávka"
 
 msgid "Teaser image"
-msgstr ""
+msgstr "Obrázek upoutávky"
 
 msgid "Term"
-msgstr ""
+msgstr "Období"
 
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 msgid "Tested applications, in this order of preference"
-msgstr ""
+msgstr "Testované aplikace, v tomto pořadí preference"
 
 msgid "Text body only (no title, no final pages)"
-msgstr ""
+msgstr "Pouze tělo textu (bez názvu, žádné konečné stránky)"
 
 msgid "Text formatted with markup"
-msgstr ""
+msgstr "Text formátovaný s označením"
 
 msgid "Text height"
-msgstr ""
+msgstr "Výška textu"
 
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
 msgstr ""
+"Přesměrování textu jsou nastavena v textu samotném za použití\n"
+"  hlavičky DELETED s touto syntaxí"
 
 msgid "Text width"
-msgstr ""
+msgstr "Šířka textu"
 
 msgid "Texts"
-msgstr ""
+msgstr "Texty"
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
 msgstr ""
+"Možnosti pro Beamer jsou relevantní jenom pokud aktivuješ\n"
+"  output slajdů."
 
 msgid "The OPDS address for this site is:"
-msgstr ""
+msgstr "OPDS adresa této stránky je:"
 
 msgid ""
 "The PDF logo value can be either an absolute path\n"
@@ -2524,26 +2643,29 @@ msgid ""
 "            TeXlive tree. You can do so with the following commands.\n"
 "            The last one checks if the file can be found."
 msgstr ""
+"Hodnota PDF loga může být buď absolutní cesta, nebo jen jméno souboru,\n"
+"            pokud si vybereš ho nainstalovat ve stromu TeXlive.\n"
+"            Můžeš to udělat následujícími příkazy.\n"
+"            Poslední z nich kontroluje, jestli soubor lze najít."
 
 msgid "The changes will propagate automatically once you push."
-msgstr ""
+msgstr "Změny se budou automaticky propagovat, jakmile provedeš push."
 
 #. ($uri)
 msgid "The description for %1 has been updated"
-msgstr ""
+msgstr "Popis pro %1 byl upraven"
 
-msgid ""
-"The differences between the list of footnotes and references is shown below."
-msgstr ""
+msgid "The differences between the list of footnotes and references is shown below."
+msgstr "Rozdíly mezi seznamy poznámek pod čarou a odkazy jsou ukázány níže."
 
 msgid "The file uploaded is not an HTML file!"
-msgstr ""
+msgstr "Nahraný soubor není ve formátu HTML!"
 
 msgid "The following settings provide the defaults for each format."
-msgstr ""
+msgstr "Následující nastavení poskytují výchozí hodnoty pro každý formát."
 
 msgid "The following values are used to generate the webserver configuration."
-msgstr ""
+msgstr "Následující hodnoty jsou použity pro generování konfigurace webserveru."
 
 msgid ""
 "The generate webserver configuration will redirect\n"
@@ -2551,38 +2673,42 @@ msgid ""
 msgstr ""
 
 msgid "The logo has the site name on itself"
-msgstr ""
+msgstr "Logo má na sobě název stránky"
 
 msgid "The optional subtitle"
-msgstr ""
+msgstr "Volitelný podtitul"
 
 msgid ""
 "The page /special/index is twice special. It is assumed to be the\n"
 "default page to visit when loading the site’s root."
 msgstr ""
+"Stránka /special/index je dvakrát speciální. Očekává se, že to je\n"
+"výchozí stránky k návštěvě, když se načítá kořen stránky."
 
 msgid "The password will be mailed at this address"
-msgstr ""
+msgstr "Heslo bude posláno mailem na tuto adresu"
 
 msgid "The reset link will expire in a hour."
-msgstr ""
+msgstr "Resetovací odkaz vyprší za hodinu."
 
 msgid "The revision has the following messages"
-msgstr ""
+msgstr "Revize má následující zprávy"
 
 msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
+"Stránka bude zobrazovat PDF soubory s miniaturou na konci\n"
+"        dokumentu."
 
 msgid "The text structure is shown below."
-msgstr ""
+msgstr "Struktura textu je ukázána níže."
 
 msgid "The text to show on the homepage preview"
-msgstr ""
+msgstr "Text k ukázání je ne náhledu domovské stránky"
 
 msgid "The text was added to the bookbuilder"
-msgstr ""
+msgstr "Text byl přidán do bookbuilderu"
 
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
@@ -2590,58 +2716,58 @@ msgid ""
 "          nice title” could have this set to “Nice title”, and will be\n"
 "          listed under N, not under A."
 msgstr ""
+"Název dokumentu pro účely řazení. Hodí se, když\n"
+"          chcete oddělit článek, pokud vůbec. Text s názvem\n"
+"          „A nice title“ by toto mohl přenastavit na „Nice title“,\n"
+"          čímž by se pak text řadil pod N, nikoliv pod A."
 
 msgid "The title of the document. The only mandatory directive."
-msgstr ""
+msgstr "Název dokumentu. Jediná povinná direktiva."
 
-msgid ""
-"The webserver needs to be reconfigured. Please execute in a root shell the "
-"following commands:"
-msgstr ""
+msgid "The webserver needs to be reconfigured. Please execute in a root shell the following commands:"
+msgstr "Webserver potřebuje rekonfiguraci. Prosím spusťte v root shellu následující příkazy:"
 
 msgid "The whole book in as single signature"
-msgstr ""
+msgstr "Celá knížka jako jediná signatura"
 
 msgid "Then approve the change as it would be a normal publishing."
-msgstr ""
+msgstr "Potom schval změny, jako kdyby to bylo normální publikování."
 
 msgid "Then fetch the updates from this page."
 msgstr ""
 
 msgid "There are failed jobs"
-msgstr ""
+msgstr "Vyskytují se selhané úkoly"
 
 msgid "There are pending revisions"
-msgstr ""
+msgstr "Vyskytují se revize čekající na schválení"
 
 msgid "These texts are missing the unique id."
-msgstr ""
+msgstr "Tyto texty postrádají své unikátní id."
 
 msgid "They can be texts, special texts, authors or topics."
-msgstr ""
+msgstr "Mohou to být texty, speciální texty, autoři, nebo témata."
 
-msgid ""
-"They should be paths relative to the webserver configuration root or "
-"absolute paths (recommended)."
-msgstr ""
+msgid "They should be paths relative to the webserver configuration root or absolute paths (recommended)."
+msgstr "Měly by to být cesty k souborům relativní ke kořenu konfigurace webserveru, nebo absolutní cesty (doporučeno)."
 
 msgid "This directive wants a whitespace separated list of filenames."
-msgstr ""
+msgstr "Tato direktiva chce seznam jmen souborů oddělených mezerami."
 
 msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
 msgstr ""
+"Toto je WYSIWIG editor. Pokud preferuješ používání\n"
+"        syntaxe podobné wiki, ponechej to, jak to je, vyplň\n"
+"        požadovaná polířka a odlož editaci do dalšího kroku."
 
-msgid ""
-"This is relevant only for the generated files, where you may need to have an "
-"alternate set of fonts. It has no effect in the web application if already "
-"using a sans font."
-msgstr ""
+msgid "This is relevant only for the generated files, where you may need to have an alternate set of fonts. It has no effect in the web application if already using a sans font."
+msgstr "Toto je relevantní pouze pro vygenerované soubory, kde je třeba mít alternativní sadu fontů. Nemá to žádný efekt na webovou aplikaci, pokud se už používá bezpatkový font."
 
 msgid "This is the caption"
-msgstr ""
+msgstr "Toto je popisek"
 
 msgid ""
 "This mail has been sent to notify you about a new text\n"
@@ -2650,102 +2776,107 @@ msgid ""
 "If this doesn't happen, it means that the uploading has been abandoned\n"
 "and you may want to check it out."
 msgstr ""
+"Tento mail byl odeslán, aby tě upozornil na nový text ve výrobě,\n"
+"i když jeho nahrávání ještě není dokončeno a uživatel stále potřebuje\n"
+"dokončit nahrávání. Další mail bude brzy následovat.\n"
+"Pokud se to nestane, znamená to, že proces nahrávání byl opuštěn\n"
+"a možná budeš chtít to obhlédnout."
 
 msgid "This revision is already published, ignoring changes"
-msgstr ""
+msgstr "Tato revize je již publikovaná, ignoruji změny"
 
 msgid "This revision is being actively edited"
-msgstr ""
+msgstr "Tuto revize právě někdo aktivně edituje"
 
 msgid "This revision is being actively edited by you"
-msgstr ""
+msgstr "Tuto revizi právě aktvně edituješ"
 
 msgid "This revision is being edited by someone else!"
-msgstr ""
+msgstr "Tuto revizi právě aktivně edituje někdo jiný!"
 
 msgid "This section will not produce a slide"
-msgstr ""
+msgstr "Tato sekce nevyprodukuje slajd"
 
 msgid "This setting affects only the text creation form."
-msgstr ""
+msgstr "Toto nastavení má vliv pouze na formulář k vytvoření textu."
 
 msgid ""
-"This site is private and mobile applications should ask for your username "
-"and\n"
+"This site is private and mobile applications should ask for your username and\n"
 "  password to access the OPDS."
 msgstr ""
+"Tato stránka je soukromá a mobilní aplikace by měly vyžadovat tvé uživatelské\n"
+"  jméno a heslo pro přístup na OPDS."
 
 msgid "This text does not exist"
-msgstr ""
+msgstr "Tento text neexistuje"
 
 msgid "This text is a book"
-msgstr ""
+msgstr "Tento text je kniha"
 
 msgid "This text is an article"
-msgstr ""
+msgstr "Tento text je článek"
 
 msgid "This text is new"
-msgstr ""
+msgstr "Tento text je nový"
 
 msgid "This text is not available"
-msgstr ""
+msgstr "Tento text není dostupný"
 
 msgid "This text is not public yet"
-msgstr ""
+msgstr "Tento text zatím není veřejný"
 
 msgid "This text is not published yet"
-msgstr ""
+msgstr "Tento text zatím není publikovaný"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
-msgstr ""
+msgstr "Tento text bude odložen na %1"
 
 msgid "This user cannot be removed"
-msgstr ""
+msgstr "Tento uživatel nemůže být odstraněn"
 
 msgid "Thumbnail"
-msgstr ""
+msgstr "Miniatura"
 
 msgid "Title"
-msgstr ""
+msgstr "Název"
 
 msgid "Title and chapter. If one side document: chapter."
-msgstr ""
+msgstr "Název a kapitola. Pokud jedna strana dokumentu: kapitola."
 
 msgid "Title and section.  If one side document: section."
-msgstr ""
+msgstr "Název a sekce. Pokud jedna strana dokumentu: sekce."
 
 msgid "Title and subtitle. If one side document: title."
-msgstr ""
+msgstr "Název a podtitul. Pokud jedna strana dokumentu: název."
 
 msgid "Title for sorting"
-msgstr ""
+msgstr "Název pro řazení"
 
 msgid "Title, author, date..."
-msgstr ""
+msgstr "Název, autorstvo, datum..."
 
 msgid "Titles"
-msgstr ""
+msgstr "Názvy"
 
 #. (pending_url)
 msgid "To apply the changes, you can visit %1"
-msgstr ""
+msgstr "Pro aplikaci změn můžeš navštívit %1"
 
 msgid "To display the PDFs, set or append the following string in the header"
-msgstr ""
+msgstr "Pro zobrazení PDF souborů nastav nebo připoj následující textový řetězec do hlavičky"
 
-msgid ""
-"To preserve the whitespaces and line breakings, wrap the paragraphs with"
-msgstr ""
+msgid "To preserve the whitespaces and line breakings, wrap the paragraphs with"
+msgstr "Pro zachování mezer a zalomení řádků obal paragrafy"
 
 msgid "To quickly format bibliographies wrap them in"
-msgstr ""
+msgstr "Pro rychlé formátování bibliografie je obal"
 
 msgid "To quickly format plays, use"
-msgstr ""
+msgstr "Pro rychlé formátování her použij"
 
 msgid "To resume the editing you can visit the following URL"
-msgstr ""
+msgstr "Pro pokračování v editaci můžeš navštívit následující URL"
 
 #. (loc('Update')
 #. (loc("Update"))
@@ -2753,37 +2884,37 @@ msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
 msgstr ""
+"Pro uložení nebo updatování šablon musíš nejprve uložit\n"
+"    možnosti pomocí tlačítka \"%1\""
 
 msgid "To view the changes introduced, you can visit the following URL"
-msgstr ""
+msgstr "Pro zobrazení zavedených změn můžeš navštívit následující URL"
 
 msgid "Toggle"
-msgstr ""
+msgstr "Přepnout"
 
 msgid "Toggle fullscreen editor"
-msgstr ""
+msgstr "Přepnout editor na celou obrazovku"
 
 msgid "Top margin"
-msgstr ""
+msgstr "Vrchní okraj"
 
 msgid "Topic"
-msgstr ""
+msgstr "Téma"
 
 msgid "Topics"
-msgstr ""
+msgstr "Témata"
 
 msgid "Total pages"
-msgstr ""
+msgstr "Celkové stránky"
 
 msgid "Triple bars"
 msgstr ""
 
 msgid "Try a random text if unsure"
-msgstr ""
+msgstr "Zkus náhodný text, pokud postrádáš jistotu"
 
-msgid ""
-"Turn links to images into images (affects site display only, static formats "
-"have the link)"
+msgid "Turn links to images into images (affects site display only, static formats have the link)"
 msgstr ""
 
 msgid ""
@@ -2791,161 +2922,160 @@ msgid ""
 "            Gmaps into widgets (affects site display only, static\n"
 "            formats have the link)"
 msgstr ""
+"Přeměň odkazy bez popisu na YouTube, Vimeo,\n"
+"            Gmaps do widgetů (ovlivní pouze zobrazení webu,\n"
+"            statické formáty mají link)"
 
 msgid "Two side layout"
-msgstr ""
+msgstr "Dvojstranné rozložené"
 
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 msgid "URI"
-msgstr ""
+msgstr "URI"
 
 msgid "URI is available and valid"
-msgstr ""
+msgstr "URI je dostupné a validní"
 
-msgid ""
-"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
-"my-author-title-1"
-msgstr ""
+msgid "URI should be be an ASCII string, separated by hyphens, without spaces. E.g. my-author-title-1"
+msgstr "URI by mělo být ASCII textový řetězec, oddělený pomlčmaku, bez mezer. Např. muj-autor-nazev-1"
 
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
-msgstr ""
+msgstr "URL nového vzdáleného repozitáře (HTTPS, HTTP nebo GIT)"
 
 msgid "URL pointing to an embeddable webchat"
-msgstr ""
+msgstr "URL ukazující na zabudovatelný webchat"
 
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 msgid "Unable to load the bookbuilder session"
-msgstr ""
+msgstr "Nelze načíst sezení bookbuilderu"
 
 #. ($from || "NO MAIL FROM", $to)
 msgid "Unable to send mail from %1 to %2!"
-msgstr ""
+msgstr "Nelze odeslat mail od %1 do %2!"
 
 msgid "Unbranded PDF (hide site name, logo, etc.)"
-msgstr ""
+msgstr "PDF bez značky (skryj název stránky, logo, atp.)"
 
 msgid ""
 "Unconditionally remove all the invisible non-breaking\n"
 "                spaces in the text"
 msgstr ""
+"Bezpodmínečně odstraň všechny neviditelné pevné\n"
+"                mezery v textu"
 
 #. (shared)
-msgid ""
-"Unfortunately, the shared repository located at %1 appeared out of sync."
-msgstr ""
+msgid "Unfortunately, the shared repository located at %1 appeared out of sync."
+msgstr "Naneštěstí se sdílený repozitář na místě %1 zdál být nesynchronizovaný."
 
 msgid "Unique ID for the text"
-msgstr ""
+msgstr "Jedinečné ID pro text"
 
 msgid "Unlimited"
-msgstr ""
+msgstr "Nelimitované"
 
 msgid "Unordered List"
-msgstr ""
+msgstr "Nečíslovaný seznam"
 
 msgid "Unpublished texts"
-msgstr ""
+msgstr "Nepublikované texty"
 
 #. ($mime_type)
 #. ($mime)
 msgid "Unsupported file type %1"
-msgstr ""
+msgstr "Nepodporovaný formát souboru %1"
 
 msgid "Unused attachment"
-msgstr ""
+msgstr "Nepoužitá příloha"
 
 msgid "Update"
-msgstr ""
+msgstr "Aktualizovat"
 
 msgid "Update account info"
-msgstr ""
+msgstr "Aktualizovat informace o účtu"
 
 msgid "Update category description"
-msgstr ""
+msgstr "Aktualizovat popis kategorií"
 
 msgid "Update to current settings"
-msgstr ""
+msgstr "Aktualizovat nynější nastavení"
 
 msgid "Upload"
-msgstr ""
+msgstr "Nahrát"
 
 msgid "Upload the image and note its name. Files are always renamed."
-msgstr ""
+msgstr "Nahraj obrázek a poznamenej si jeho jméno. Soubory jsou vždy přejmenovány."
 
-msgid ""
-"Uploaded and available images are shown and listed below the text preview."
-msgstr ""
+msgid "Uploaded and available images are shown and listed below the text preview."
+msgstr "Nahrané a dostupné obrázky jsou zobrazeny a uvedeny pod náhledem textu."
 
 msgid "Url"
-msgstr ""
+msgstr "Url"
 
 msgid "Use JS syntax highlight for code blocks"
-msgstr ""
+msgstr "Použít JS zvýraznění syntaxe pro bloky kódu"
 
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
-msgstr ""
+msgstr "Použít LuaLaTeX místo XeLaTeXu (pomalejší)"
 
 msgid "Use SSL for authenticated users"
-msgstr ""
+msgstr "Použít SSL pro autentikované uživatele"
 
 msgid "Use it as a teaser image adding to the header this line:"
-msgstr ""
+msgstr "Použít to jako ukázkový obrázek tím, že do hlavičky přidáš následující řádek:"
 
 msgid "Use named table of contents anchors instead of numeric ones"
-msgstr ""
+msgstr "Použít pojmenované kotvy pro obsah namísto číselných"
 
 msgid "Use one of the site's formats"
-msgstr ""
+msgstr "Použít jeden z formátů stránky"
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
-msgstr ""
+msgstr "Použít optimalizované signatury s %1 stránkami na každou"
 
 msgid "Use sans fonts for section titles"
-msgstr ""
+msgstr "Použít bezpatkové fonty pro nadpisy sekcí"
 
 msgid "Use the image as cover"
-msgstr ""
+msgstr "Použít obrázek jako přebal"
 
 msgid "Useful HTML snippets"
-msgstr ""
+msgstr "Užitečné kousky HTML"
 
-msgid ""
-"Useful for footnotes or in the headers of the document, where you cannot put "
-"a blank line to mark a new paragraph."
-msgstr ""
+msgid "Useful for footnotes or in the headers of the document, where you cannot put a blank line to mark a new paragraph."
+msgstr "Hodí se pro poznámky pod čarou nebo v hlavičkách dokumentu, kde nemůžeš dát prázdný řádek pro označení nového odstavce."
 
 #. ($user->username)
 msgid "User %1 created!"
-msgstr ""
+msgstr "Uživatel %1 vytvořen!"
 
 #. ($user->username)
 #. ($c->stash->{user}->username)
 msgid "User %1 deleted"
-msgstr ""
+msgstr "Uživatel %1 odstraněn"
 
 #. ($user->username)
 msgid "User %1 updated"
-msgstr ""
+msgstr "Uživatel %1 aktualizován"
 
 msgid "User created"
-msgstr ""
+msgstr "Uživatel vytvořen"
 
 msgid "Username"
-msgstr ""
+msgstr "Uživatelské jméno"
 
 msgid "Username, alphanumerical only, no special characters, no uppercase"
-msgstr ""
+msgstr "Uživatelské jméno, pouze alfanumerické, bez speciálních znaků, bez velkých písmen"
 
 msgid "Users"
-msgstr ""
+msgstr "Uživatelé"
 
 msgid ""
 "Using this token, you can load the bookbuilder settings\n"
@@ -2953,31 +3083,31 @@ msgid ""
 "    else. Just write it down and then load it from another computer\n"
 "    using the following form."
 msgstr ""
+"Použitím tohoto tokenu lze načíst nastavení bookbuilderu\n"
+"    a seznam textů z jiného počítače, nebo ho sdílet s někým jiným.\n"
+"    Prostě si ho napiš a načti jej z jiného počítače\n"
+"    použitím následujícího formuláře."
 
-msgid ""
-"Usually this is due to high traffic and bad luck, and it can be fixed by "
-"pushing the changes again."
-msgstr ""
+msgid "Usually this is due to high traffic and bad luck, and it can be fixed by pushing the changes again."
+msgstr "Většinou to je kvůli velkému zatížení a smůle, ale můžeš to opravit tím, že znovu provedeš push změn."
 
 msgid "Verbatim block"
-msgstr ""
+msgstr "Blok verbatim"
 
 msgid "View history"
-msgstr ""
+msgstr "Zobraz historii"
 
 msgid "Virtual hosts"
-msgstr ""
+msgstr "Virtuální hosti"
 
 msgid "Virtual hosts, one per line"
-msgstr ""
+msgstr "Virtuální hosti, jeden na řádek"
 
 msgid "What links here"
-msgstr ""
+msgstr "Co odkazuje sem"
 
-msgid ""
-"When creating a new text, do not populate the publication date if not "
-"provided by the user."
-msgstr ""
+msgid "When creating a new text, do not populate the publication date if not provided by the user."
+msgstr "Když vytváříš nový text, nevyplňuj publikační datum, pokud jej uživatel nedodá."
 
 msgid ""
 "When you start a bookbuilder session, at the end of the\n"
@@ -2985,21 +3115,24 @@ msgid ""
 "    can load it here from another device to resume what you were\n"
 "    doing."
 msgstr ""
+"Když začneš sezení s bookbuilderem, na konci stránky\n"
+"    bookbuildera lze vidět token pro sdílení sezení. Můžeš\n"
+"    ho načíst z jiného zařízení pro obnovení toho předchozí práce."
 
 msgid "When you upload a PDF, split it into images to be inserted in the body"
-msgstr ""
+msgstr "Když nahraješ PDF soubor, rozděl jej na obrázky, které se pak vloží do těla"
 
 msgid "Where does this text come from?"
-msgstr ""
+msgstr "Odkud pochází tento text?"
 
 msgid "Whitelisted IP (for backup, one per line)"
-msgstr ""
+msgstr "IP adresy na whitelistu (pro backup, jedna na řádek)"
 
 msgid "Width of the cover image in percent of the text block width."
-msgstr ""
+msgstr "Šířka přebalového obrázku v procentech šířky textového bloku."
 
 msgid "Width:"
-msgstr ""
+msgstr "Šířka:"
 
 msgid ""
 "With complex structures, e.g., a chapter with\n"
@@ -3007,348 +3140,355 @@ msgid ""
 "      the chapter's title, so probably you want to select the chapter\n"
 "      and all its subsections."
 msgstr ""
+"Se složitými strukturami, např. kapitola\n"
+"      s podsekcemi, vybrání jenom kapitoly pravděpodobně vybere pouze\n"
+"      název kapitoly, takže pravděpodobně chceš vybrat kapitolu a všechny\n"
+"      její podsekce."
 
 msgid ""
 "With the \"verbatim\" tag you can avoid the markup to\n"
 "          be interpreted, usually not needed"
 msgstr ""
+"S tagem \"verbatim\" se můžeš vyhnout tomu, aby markup\n"
+"          byl interpretován, většinou to ale není potřeba"
 
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
 msgstr ""
+"S bookbuilderem můžeš změnit rozvržení (fonty,\n"
+"    rozměry, formát papíru, okraje) textů na knihovně. Můžeš\n"
+"    Také sloužit více textů, čímž vytvoříš vlastní brožurku. Zkus to!"
 
 msgid "Workflow"
-msgstr ""
+msgstr "Pracovní postup"
 
 msgid "Working locally?"
-msgstr ""
+msgstr "Pracuješ lokálně?"
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
 "          which require leading space (notably, you cannot use them in\n"
 "          lists)."
 msgstr ""
+"Obalující tagy nelze použít uvnitř prostředí,\n"
+"          které požadují mezeru na začáku (zejména nelze tyto tagy\n"
+"          použít v seznamech)."
 
 msgid "Wrong answer!"
-msgstr ""
+msgstr "Špatná odpověď!"
 
 msgid "Wrong username or password"
-msgstr ""
+msgstr "Špatné uživatelské jméno nebo heslo"
 
 msgid "XeLaTeX source"
-msgstr ""
+msgstr "XeLaTeXový zdroj"
 
 msgid "Yes"
-msgstr ""
+msgstr "Ano"
 
 msgid ""
 "You MUST specify a reason, otherwise the line will have no effect.\n"
 "The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
 "etc.) is irrelevant."
 msgstr ""
+"MUSÍŠ specifikovat důvod, jinak tento řádek nebude mít efekt.\n"
+"Řazení řádků v hlavičce (kde se nachází \"#title\", \"#lang\",\n"
+"atd.) je irelevantní."
 
 msgid "You are already logged in"
-msgstr ""
+msgstr "Jsi již přihlášen*a"
 
-msgid ""
-"You are building a collection. Please provide a title and, optionally, any "
-"other information needed for the front cover (author, subtitle, date) and "
-"the back cover (source and notes)."
-msgstr ""
+msgid "You are building a collection. Please provide a title and, optionally, any other information needed for the front cover (author, subtitle, date) and the back cover (source and notes)."
+msgstr "Stavíš sbírku. Prosím dodej název a, volitelně, jakékoliv jiné informace potřebné pro přední část přebal (autorstvo, podtitul, datum) a zadní část přebalu (zdroj a poznámky)."
 
 msgid "You are logged in now!"
-msgstr ""
+msgstr "Právě jsi přihlášen*a!"
 
 #. (backup)
-msgid ""
-"You can access the backup located at %1 or ask your host for help, "
-"forwarding this email"
-msgstr ""
+msgid "You can access the backup located at %1 or ask your host for help, forwarding this email"
+msgstr "Můžeš přistoupit k záloze, která se nachází v %1, nebo zažádat o pomoc přeposláním emailu"
 
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"
 "    remove the texts later."
 msgstr ""
+"Můžeš přidat texty do bookbuilderu tím, že klikneš\n"
+"    na ikonku „plusu“ blízko stažení každého souboru.\n"
+"    Můžeš přidat nebo odstranit texty později."
 
-msgid ""
-"You can also link to a part of the text. Please refer to the manual for this "
-"feature"
-msgstr ""
+msgid "You can also link to a part of the text. Please refer to the manual for this feature"
+msgstr "Můžeš také odkazovat na část textu. Prosím podívej se na manuál této featury"
 
 #. (create_url)
 msgid "You can create a peer at %1"
 msgstr ""
 
 msgid "You can do so answering a simple question."
-msgstr ""
+msgstr "Můžeš to udělat tím, že zodpovíš jednoduchou otázku."
 
 msgid "You can tune them editing them here."
-msgstr ""
+msgstr "Můžeš je vyladit tím, že je zde upravíš."
 
-msgid ""
-"You can use the following prefixes to search a word in a specific field, e."
-"g. \"title:example\""
-msgstr ""
+msgid "You can use the following prefixes to search a word in a specific field, e.g. \"title:example\""
+msgstr "Můžeš použít následující předpony pro vyhledání slova ve specifickém poli, např. \"title:example\""
 
-msgid ""
-"You can't create a new revision because the text has not been published yet"
-msgstr ""
+msgid "You can't create a new revision because the text has not been published yet"
+msgstr "Nemůžeš vytvořit novou revizi, protože text ještě nebyl publikován"
 
 msgid "You have logged out"
-msgstr ""
+msgstr "Odhlásil*a jsi se"
 
 msgid "You may want to resume the editing of one of them"
-msgstr ""
+msgstr "Můžeš chtít pokračovat úpravy jednoho z nich"
 
-msgid ""
-"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
-msgstr ""
+msgid "You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr "Můžeš chtít oddělit počáteční „A“, „An“, „The“ atd. z názvu"
 
 msgid "You may want to use one of these images"
-msgstr ""
+msgstr "Můžeš chtít použít jeden z těchto obrázků"
 
-msgid ""
-"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
-"login, and change your password right away. This shouldn't happen."
-msgstr ""
+msgid "You sent credentials over an unencrypted connection. Please switch to HTTPS, login, and change your password right away. This shouldn't happen."
+msgstr "Poslal*a jsi údaje přes nezašifrované připojení. Prosím přepni na HTTP, přihlaš se a hned si změň heslo. Tohle by se nemělo stát."
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
-msgstr ""
+msgstr "Měl*a by sis rovno uzměnit heslo na %1"
 
 msgid "Your browser does not support the audio tag."
-msgstr ""
+msgstr "Tvůj prohlížeč nepodporuje štítek pro audio."
 
 msgid "Your browser does not support the video tag."
-msgstr ""
+msgstr "Tvůj prohlížeč nepodporuje štítek pro video."
 
-msgid ""
-"Your changes are saved and can be checked every time you hit Preview or Save"
-msgstr ""
+msgid "Your changes are saved and can be checked every time you hit Preview or Save"
+msgstr "Tvé změny jsou uloženy a můžeš si je prohlédnout pokaždé, když zmáčkneš Náhled nebo Uložit"
 
 msgid "Your chapter here..."
-msgstr ""
+msgstr "Tvoje kapitola zde..."
 
 msgid "Your current bookbuilder token is:"
-msgstr ""
+msgstr "Tvůj aktuální token bookbuilderu je:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Tvůj email"
 
 msgid "Your file is ready"
-msgstr ""
+msgstr "Tvůj soubor je připraven"
 
 msgid "Your part here..."
-msgstr ""
+msgstr "Tvoje část tady..."
 
 #. (password)
 msgid "Your password is %1."
-msgstr ""
+msgstr "Tvoje heslo je %1."
 
 msgid "Your password was reset, now you can login with it"
-msgstr ""
+msgstr "Tvoje heslo bylo resetováno, nyní se s ním můžeš přihlásit"
 
 msgid "Your section here..."
-msgstr ""
+msgstr "Tvoje sekce zde..."
 
 msgid "Your sub-sub-section (or description heading) here..."
-msgstr ""
+msgstr "Tvoje pod-pod-sekce (nebo popisný nadpis) zde..."
 
 msgid "Your subsection here..."
-msgstr ""
+msgstr "Tvoje podsekce zde..."
 
 #. (home)
 msgid "Your user at %1 has been created."
-msgstr ""
+msgstr "Tvůj uživatel v %1 byl vytvořen."
 
 #. (username)
 msgid "Your username is %1."
-msgstr ""
+msgstr "Tvoje uživatelské jméno bylo vytvořeno."
 
 msgid "aborted"
-msgstr ""
+msgstr "přerušeno"
 
 msgid "about, links..."
-msgstr ""
+msgstr "o nás, odkazy..."
 
 msgid "activate to sort column ascending"
-msgstr ""
+msgstr "aktivuj nebo seřaď sloupce vzestupně"
 
 msgid "activate to sort column descending"
-msgstr ""
+msgstr "aktivuj nebo seřaď sloupce sestupně"
 
 msgid "active"
-msgstr ""
+msgstr "aktivní"
 
 msgid "affects only the frontend webserver configuration"
-msgstr ""
+msgstr "ovlivňuje pouze konfiguraci frontendu webserveru"
 
 msgid "any"
-msgstr ""
+msgstr "jakékoliv"
 
 msgid "automatically generated if not present, using author and title"
-msgstr ""
+msgstr "automaticky generované, pokud nepřítomné, za použití autora a názvu"
 
 msgid "code and monospace"
-msgstr ""
+msgstr "kód a neproporcionální (monospace)"
 
 msgid "comma separated list"
-msgstr ""
+msgstr "seznam oddělený čárkami"
 
 msgid "completed"
-msgstr ""
+msgstr "dokončeno"
 
 msgid "conflict"
-msgstr ""
+msgstr "konflikt"
 
 msgid "description"
-msgstr ""
+msgstr "popis"
 
 msgid "displayed text"
-msgstr ""
+msgstr "zobrazený text"
 
 msgid "edit, commit..."
-msgstr ""
+msgstr "upravit, vytvoř commit..."
 
 msgid "editing"
-msgstr ""
+msgstr "edituji"
 
 msgid "emphasis"
-msgstr ""
+msgstr "zvýraznění"
 
 msgid "failed"
-msgstr ""
+msgstr "selhalo"
 
 msgid "filtered from _MAX_ total entries"
-msgstr ""
+msgstr "filtrováno z _MAX_ celkových vstupů"
 
 msgid "for code, monospaced"
-msgstr ""
+msgstr "pro kód, neproporcionální (monospace)"
 
 msgid "for display"
-msgstr ""
+msgstr "pro displej"
 
 msgid "for poetry"
-msgstr ""
+msgstr "pro poezii"
 
 msgid "generic sectioning, good for articles"
-msgstr ""
+msgstr "obecné členění na sekce, dobré pro články"
 
 msgid "if you want to use a custom size, you need to set both width and height"
-msgstr ""
+msgstr "pokud chceš použít vlastní velikost, musíš nastavit jak šířku, tak výšku"
 
 msgid "image"
-msgstr ""
+msgstr "obrázek"
 
 msgid "left"
-msgstr ""
+msgstr "vlevo"
 
 msgid "mandatory"
-msgstr ""
+msgstr "povinné"
 
 msgid "markup *not* interpreted"
-msgstr ""
+msgstr "markup *není* interpretován"
 
 #. (site.binary_upload_max_size_in_mega)
 msgid "max %1 Mb"
-msgstr ""
+msgstr "maximálně %1 Mb"
 
 msgid "minutes"
-msgstr ""
+msgstr "minuty"
 
 msgid "new-example-uri"
-msgstr ""
+msgstr "new-example-uri"
 
 msgid "only lowercase ASCII and hyphens"
-msgstr ""
+msgstr "jen malá ASCII písmena a pomlčky"
 
 msgid "or"
-msgstr ""
+msgstr "nebo"
 
 msgid "ordered item"
-msgstr ""
+msgstr "číslovaná položka"
 
 msgid "overstriked"
 msgstr ""
 
 msgid "pending"
-msgstr ""
+msgstr "čekající"
 
 msgid "plain PDF"
-msgstr ""
+msgstr "obyčejné PDF"
 
 msgid "plain text source"
-msgstr ""
+msgstr "obyčejný textový zdroj"
 
 msgid "processing"
-msgstr ""
+msgstr "procesuji"
 
 msgid "published"
-msgstr ""
+msgstr "publikováno"
 
 msgid "revision"
-msgstr ""
+msgstr "revize"
 
 msgid "right"
-msgstr ""
+msgstr "vpravo"
 
 #. (args)
 msgid "string"
-msgstr ""
+msgstr "textový řetězec"
 
 msgid "strong emphasis"
-msgstr ""
+msgstr "silné zvýraznění"
 
 msgid "sub-sub-section"
-msgstr ""
+msgstr "pod-pod-sekce"
 
 msgid "subscript"
-msgstr ""
+msgstr "spodní index"
 
 msgid "subsection"
-msgstr ""
+msgstr "podsekce"
 
 msgid "superscript"
-msgstr ""
+msgstr "vrchní index"
 
 msgid "taken"
-msgstr ""
+msgstr "zabráno"
 
 msgid "texts by authors, title, topic..."
-msgstr ""
+msgstr "texty od autorstev, název, téma..."
 
 msgid "texts sorted by author"
-msgstr ""
+msgstr "texty řazené podle autorstev"
 
 msgid "texts sorted by title"
-msgstr ""
+msgstr "texty řazené podle názvu"
 
 msgid "the author of the text (as displayed)"
-msgstr ""
+msgstr "autorstvo textu (jak zobrazeno)"
 
 msgid "this text will be unpublished"
-msgstr ""
+msgstr "tento text bude nepublikován"
 
 msgid "topic"
-msgstr ""
+msgstr "téma"
 
 msgid "unordered item"
-msgstr ""
+msgstr "nečíslovaná položka"
 
 msgid "very strong emphasis"
-msgstr ""
+msgstr "velmi silné zvýraznění"
 
 msgid "with description"
-msgstr ""
+msgstr "s popisem"
 
 msgid "without description"
-msgstr ""
+msgstr "bez popisu"
 
 msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
+"„Zastaralé úpravy“ znamená, že revize byla opuštěna\n"
+"    během editace, ale stále tu je, kdyby v ní náhodou\n"
+"    někdo chtěl pokračovat při úpravách textu."
