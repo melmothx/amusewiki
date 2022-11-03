@@ -1155,6 +1155,8 @@ stored in the tree and indexed in the db, or nothing.
 
 =cut
 
+# see StaticIndex::create_titles
+
 sub attached_objects {
     my $self = shift;
     my $string = $self->attach;

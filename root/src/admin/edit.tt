@@ -660,6 +660,7 @@ kpsewhich mylogo.pdf
           <option value="first_attachment"
                   [% IF current_feed_enclosure_method == 'first_attachment' %]selected="selected"[% END %]>
             [% loc('First text attachment or EPUB') %]
+            [% loc('(use that as main link in static mirror as well)') %]
           </option>
         </select>
       </div>

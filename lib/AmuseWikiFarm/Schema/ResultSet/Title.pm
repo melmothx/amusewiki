@@ -537,7 +537,10 @@ sub static_index_tokens {
                   {
                    result_class => 'DBIx::Class::ResultClass::HashRefInflator',
                    collapse => 1,
-                   join => { title_categories => 'category' },
+                   join => {
+                            title_categories => 'category',
+                            title_attachments => 'attachment',
+                           },
                    order_by => ["$me.sorting_pos",  "$me.title", "$me.id" ],
                    columns => [
                                "$me.uri",
@@ -550,6 +553,7 @@ sub static_index_tokens {
                                "$me.text_size",
                                "$me.text_qualification",
                                "$me.slides",
+                               "$me.attach",
                               ],
                    '+columns' => {
                                   'title_categories.title_id' => 'title_categories.title_id',
@@ -559,6 +563,11 @@ sub static_index_tokens {
                                   'title_categories.category.name' => 'category.name',
                                   'title_categories.category.active' => 'category.active',
                                   'title_categories.category.sorting_pos' => 'category.sorting_pos',
+                                  'title_attachments.attachment_id' => 'title_attachments.attachment_id',
+                                  'title_attachments.title_id' => 'title_attachments.title_id',
+                                  'title_attachments.attachment.attachment_id' => 'attachment.id',
+                                  'title_attachments.attachment.uri' => 'attachment.uri',
+                                  'title_attachments.attachment.f_archive_rel_path' => 'attachment.f_archive_rel_path',
                                  }
                   });
 }

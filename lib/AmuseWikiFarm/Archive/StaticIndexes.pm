@@ -125,13 +125,15 @@ sub generate {
                                   _ => 'pubdate',
                                   sort => 'pubdate_int',
                                  }
-                        },
+                        });
+        if ($site->show_type_and_number_of_pages) {
+            push @columns,
                         {
                          # loc('Estimated pages')
                          title => $lh->loc_html('Estimated pages'),
                          data => "pages_estimated",
-                        }
-                       );
+                        };
+        }
         $tt->process('static-indexes.tt',
                            {
                             list => to_json($titles, canonical => 1),
@@ -164,37 +166,50 @@ sub create_titles {
     my $time = time();
     log_debug { "Creating titles" };
     my $site = $self->site;
+    my $site_id = $site->id;
+    my $thumbnail_src = path(thumbnails => $site->id);
+    my $thumbnails_dest = $self->target_subdir->child('thumbnails');
+    $thumbnails_dest->mkpath;
     my @texts = $site->titles->published_texts
       ->static_index_tokens
       ->order_by($site->titles_category_default_sorting)
       ->all;
+    Dlog_debug { $_ } \@texts;
     my $locale = $site->locale || 'en';
 
     my @ctypes = map { $_->category_type } @{ $self->category_types };
     my @formats = @{ $site->formats_definitions(localize => 1) };
+    my $show_type_and_number_of_pages = $site->show_type_and_number_of_pages;
 
     my %translations;
     my $lh = $site->localizer;
 
     my $file_template = <<'TEMPLATE';
-<a class="force-black" target="_blank" href="%s%s">
+<a class="force-black static-index-download-format-%s" target="_blank" href="%s%s">
 <span class="fa fa-2x fa-border %s" title="%s" aria-hidden="true">
 </span><span class="sr-only">%s</span>
 </a>
 TEMPLATE
 
     my $title_template = <<'TEMPLATE';
-<i aria-hidden="true" class="awm-show-text-type-icon fa %s" title="%s"></i>
- <a href="%s.html">%s <small>[%s]</small></a>
+<i aria-hidden="true" class="awm-show-text-type-icon %s" title="%s"></i>
+ <a href="%s">%s <small>[%s]</small></a>
+TEMPLATE
+
+    my $attachment_template =<< 'TEMPLATE';
+<br>
+<a class="static-index-attachment" href="%s"><img src="%s" alt="%s"
+   class="img img-responsive img-thumbnail" /></a>
 TEMPLATE
 
     $file_template =~ s/\n//g;
     $title_template =~ s/\n//g;
     my $book_note = $lh->loc_html('This text is a book');
     my $art_note = $lh->loc_html('This text is an article');
-
+    my $use_first_attachment_link = $site->feed_enclosure_method eq 'first_attachment' ? 1 : 0;
     foreach my $title (@texts) {
         _in_tree_uri($title);
+        my $main_link = $title->{in_tree_uri} . '.html';
         $title->{pubdate_int} = str2time($title->{pubdate});
         my $dt = DateTime->from_epoch(epoch => $title->{pubdate_int},
                                       locale => $locale);
@@ -232,6 +247,7 @@ TEMPLATE
         foreach my $f (@formats) {
             unless ($f->{is_slides} and !$title->{slides}) {
                 push @files, sprintf($file_template,
+                                     $f->{code},
                                      $title->{in_tree_uri},
                                      $f->{ext},
                                      $f->{icon},
@@ -239,11 +255,43 @@ TEMPLATE
                                      $f->{desc});
             }
         }
+        if ($title->{attach}) {
+            # see Title.attached_objects
+            my $replaced_main_link = 0;
+            foreach my $enc_uri (split(/[\s;,]+/, $title->{attach})) {
+                my ($attachment) = map { $_->{attachment} }
+                  grep { $_->{attachment}->{uri} eq $enc_uri }
+                  @{$title->{title_attachments} || []};
+                if ($attachment) {
+                    _in_tree_uri($attachment);
+                    if ($use_first_attachment_link && !$replaced_main_link) {
+                        $main_link = $attachment->{in_tree_uri};
+                        $replaced_main_link++;
+                    }
+                    my $thumb_name = $attachment->{uri} . ".small.png";
+                    my $thumb_src = $thumbnail_src->child($thumb_name);
+                    if ($thumb_src->exists) {
+                        $attachment->{thumbnail} = "./site_files/__static_indexes/thumbnails/$thumb_name";
+                        $thumb_src->copy($thumbnails_dest);
+                    }
+                    push @files, sprintf($attachment_template,
+                                         $attachment->{in_tree_uri},
+                                         $attachment->{thumbnail},
+                                         $attachment->{uri});
+                }
+            }
+        }
         $title->{files} = join(" ", @files);
+        my $title_icon_class = "no-icon";
+        my $title_icon_title = "";
+        if ($show_type_and_number_of_pages) {
+            $title_icon_class = $title->{text_qualification} eq 'book' ? 'fa fa-book' : 'fa fa-file-text-o';
+            $title_icon_title = $title->{text_qualification} eq 'book' ? $book_note : $art_note;
+        }
         $title->{display_title} = sprintf($title_template,
-                                          $title->{text_qualification} eq 'book' ? 'fa-book' : 'fa-file-text-o',
-                                          $title->{text_qualification} eq 'book' ? $book_note : $art_note,
-                                          $title->{in_tree_uri},
+                                          $title_icon_class,
+                                          $title_icon_title,
+                                          $main_link,
                                           $title->{title},
                                           $title->{lang});
     }
