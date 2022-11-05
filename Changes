@@ -4,6 +4,15 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.561 2022-11-05
+
+ - I18N: cs (new), tr (updated)
+ - Improve enclosure handling for RSS, OPDS, static indexes
+ - Minor adjustments for custom categories
+ - Support navlog-alt.png and local-alt.css for theming
+ - New option to enforce the email on submission
+ - Support `#formats none` in the header
+
 2.560 2022-09-24
 
  - Extend the custom categories with new option. Include them in
