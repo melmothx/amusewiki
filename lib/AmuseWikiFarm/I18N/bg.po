@@ -44,6 +44,9 @@ msgstr ""
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(кавички, линкове, бележки под линиите, и т.н.)"
 
+msgid "(use that as main link in static mirror as well)"
+msgstr ""
+
 msgid "(widest)"
 msgstr ""
 

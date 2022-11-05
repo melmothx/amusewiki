@@ -43,6 +43,9 @@ msgstr "(en dar)"
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(akıllı tırnaklar, bağlantılar, dipnotlar, vb.)"
 
+msgid "(use that as main link in static mirror as well)"
+msgstr ""
+
 msgid "(widest)"
 msgstr "(en geniş)"
 

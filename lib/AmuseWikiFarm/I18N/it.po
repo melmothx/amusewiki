@@ -42,6 +42,9 @@ msgstr "(più stretti)"
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "virgolette tipografiche, collegamenti, note a piè di pagina, ecc."
 
+msgid "(use that as main link in static mirror as well)"
+msgstr ""
+
 msgid "(widest)"
 msgstr "(più larghi)"
 

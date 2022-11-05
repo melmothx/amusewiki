@@ -43,6 +43,9 @@ msgstr ""
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(slimme citaten, links, voetnoten, etc.)"
 
+msgid "(use that as main link in static mirror as well)"
+msgstr ""
+
 msgid "(widest)"
 msgstr ""
 
