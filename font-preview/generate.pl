@@ -14,17 +14,31 @@ my ($file, $dest) = @ARGV;
 die "Missing input file.json" unless ($file && -f $file);
 die "Missing destination directory" unless ($dest && -d $dest);
 
-my @fonts = sort map { $_->name } Text::Amuse::Compile::Fonts->new($file)->all_fonts;
-print Dumper(\@fonts);
+my @fonts = Text::Amuse::Compile::Fonts->new($file)->all_fonts;
 
-foreach my $font (@fonts) {
+foreach my $ff (@fonts) {
+    my $font = $ff->name;
     my $pdf = $font;
     $pdf =~ s/ /-/g;
     $pdf .= '.pdf';
     my $fdest = path($dest, $pdf);
     next if $fdest->exists;
+
+    my $muse = 'font-preview.muse';
+    if ($ff->has_languages) {
+        foreach my $lang (@{ $ff->languages }) {
+            if (-f "$lang.muse") {
+                $muse = "$lang.muse";
+                last;
+            }
+        }
+    }
+    my $muse_pdf = $muse;
+    $muse_pdf =~ s/\.muse$/\.pdf/;
+
     my $c = Text::Amuse::Compile->new(
                                       pdf => 1,
+                                      luatex => 1,
                                       fontspec => $file,
                                       cleanup => 1,
                                       extra => {
@@ -34,16 +48,17 @@ foreach my $font (@fonts) {
                                                 nocoverpage => 1,
                                                 fontsize => 11,
                                                 mainfont => $font,
+                                                body_only => 1,
                                                },
                                      );
-    $c->purge('font-preview.muse');
-    $c->compile('font-preview.muse');
+    $c->purge($muse);
+    $c->compile($muse);
     my $png = "$fdest";
     $png =~ s/\.pdf$/.png/;
-    system(qw/convert -density 150 -trim -quality 100 -sharpen 0x1.0/,  'font-preview.pdf[1]',  $png) == 0
+    system(qw/convert -density 150 -trim -quality 100 -sharpen 0x1.0/,  $muse_pdf . '[0]',  $png) == 0
       or die "Couldn't convert $pdf to $png $!";
-    path('font-preview.pdf')->move("$fdest");
-    $c->purge('font-preview.muse');
+    path($muse_pdf)->move("$fdest");
+    $c->purge($muse);
     print "Generated $fdest\n";
 }
 
