@@ -24,6 +24,8 @@ files in the
 [GitHub repository](https://github.com/melmothx/amusewiki-site).
 Notable entries are listed below.
 
+For Docker images please look at https://github.com/rojenzaman/amusewiki-docker
+
 ### Install and upgrade
 
  - https://amusewiki.org/library/install or
