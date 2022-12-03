@@ -18,6 +18,11 @@
         <input type="text" id="title_muse" name="title_muse"
                value="[% attachment.title_muse | html %]" class="form-control"/>
       </div>
+      <div class="form-group">
+        <label for="title_muse">[% c.loc('Alternate Text') %]</label>
+        <input type="text" id="alt_text" name="alt_text"
+               value="[% attachment.alt_text | html %]" class="form-control"/>
+      </div>
       <div class="form-group" id="fullscreen-markitup">
         <div id="fullscreen-markitup-toggle-button">
           <button class="btn btn-default btn-sm" type="button" id="fullscreen-markitup-toggle">

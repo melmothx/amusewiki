@@ -56,6 +56,7 @@ sub list :Chained('root') :Args {
                      title => $att->title_html,
                      desc => $att->comment_html,
                      has_thumbnails => $att->has_thumbnails,
+                     alt_text => $att->alt_text,
                     };
     }
     $c->stash(attachments_list => \@list,
@@ -77,10 +78,12 @@ sub edit :Chained('attachment') :Args(0) {
     my ($self, $c) = @_;
     my $att = $c->stash->{attachment};
     my $uri = $att->uri;
-    if ($c->request->body_params->{update}) {
+    my $params = $c->request->body_params;
+    if ($params->{update}) {
         $att->edit(
-                   title_muse => $c->request->body_params->{title_muse},
-                   comment_muse => $c->request->body_params->{desc_muse},
+                   title_muse => $params->{title_muse},
+                   comment_muse => $params->{desc_muse},
+                   alt_text => $params->{alt_text},
                   );
         $c->flash(status_msg => $c->loc('The description for [_1] has been updated', $uri));
     }

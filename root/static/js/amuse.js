@@ -97,5 +97,20 @@ $(document).ready(function(){
 
     // with this div we signal that the teaser contains the whole text
     $("div.amw-teaser-no-ellipsis").closest('.amw-listing-item').find(".amw-read-more-link").remove();
+
+    // alt images if available
+    $("#htmltextbody img").each(function() {
+        var el = $(this);
+        var img_name = el.attr('alt');
+        if (img_name) {
+            $.get('/api/attachment/' + img_name, function(data) {
+                // console.log(data);
+                if (data.alt_text) {
+                    el.attr('alt', data.alt_text)
+                }
+            });
+        }
+    });
+
 });
 

@@ -15,13 +15,13 @@
         [% loc('Title') %]
       </th>
       <th>
+        [% loc('Alternate Text') %]
+      </th>
+      <th>
         [% loc('Description') %]
       </th>
       <th>
         [% loc('Thumbnail') %]
-      </th>
-      <th>
-        [% loc('Edit') %]
       </th>
     </tr>
     </thead>
@@ -32,10 +32,18 @@
         <a href="[% att.full_uri %]">
           [% att.name %]
         </a>
+        <a href="[% c.uri_for_action('/attachments/edit', [ att.name ]) %]">
+          <span class="fa fa-edit fa-border" aria-hidden="true"></span>
+        </a>
       </td>
       <td>
         [% IF att.title %]
         [% att.title %]
+        [% END %]
+      </td>
+      <td>
+        [% IF att.alt_text %]
+          [% att.alt_text | html %]
         [% END %]
       </td>
       <td>
@@ -50,11 +58,6 @@
           [% ELSE %]
             <i title="[% att.uri %]" class="fa fa-file-o fa-4x fa-border"></i>
           [% END %]
-        </a>
-      </td>
-      <td>
-        <a href="[% c.uri_for_action('/attachments/edit', [ att.name ]) %]">
-          <span class="fa fa-edit fa-2x fa-border" aria-hidden="true"></span>
         </a>
       </td>
     </tr>

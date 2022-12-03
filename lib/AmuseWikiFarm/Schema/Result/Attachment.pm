@@ -352,7 +352,7 @@ sub alt_title {
 sub edit {
     my ($self, %args) = @_;
     my %update;
-    foreach my $k (qw/title_muse comment_muse/) {
+    foreach my $k (qw/title_muse comment_muse alt_text/) {
         $update{$k} = defined($args{$k}) ? $args{$k} : '';
     }
     $update{title_html} = muse_format_line(html => $update{title_muse});
