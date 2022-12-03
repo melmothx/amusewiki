@@ -105,8 +105,9 @@ $(document).ready(function(){
         if (img_name) {
             $.get('/api/attachment/' + img_name, function(data) {
                 // console.log(data);
-                if (data.alt_text) {
-                    el.attr('alt', data.alt_text)
+                var alt_text = data.alt_text || data.title_muse;
+                if (alt_text) {
+                    el.attr('alt', alt_text);
                 }
             });
         }
