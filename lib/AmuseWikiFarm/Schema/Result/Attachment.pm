@@ -115,6 +115,11 @@ __PACKAGE__->table("attachment");
   data_type: 'text'
   is_nullable: 1
 
+=head2 alt_text
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 mime_type
 
   data_type: 'varchar'
@@ -158,6 +163,8 @@ __PACKAGE__->add_columns(
   "title_html",
   { data_type => "text", is_nullable => 1 },
   "comment_html",
+  { data_type => "text", is_nullable => 1 },
+  "alt_text",
   { data_type => "text", is_nullable => 1 },
   "mime_type",
   { data_type => "varchar", is_nullable => 1, size => 255 },
@@ -266,8 +273,8 @@ Composing rels: L</title_attachments> -> title
 __PACKAGE__->many_to_many("titles", "title_attachments", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-07-22 14:55:51
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gC6yxJt4W8A9v1PNZEr5mQ
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2022-12-03 08:41:26
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:N/F52Irfr1ha3ZBk0CuUjA
 
 =head2 File classes
 
