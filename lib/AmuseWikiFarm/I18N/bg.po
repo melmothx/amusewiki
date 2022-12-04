@@ -243,6 +243,9 @@ msgstr ""
 "          искаш да не включиш даден раздел, сложи коментар в тялото\n"
 "          на раздела с низа \"noslide\"."
 
+msgid "Alternate Text"
+msgstr ""
+
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
 "      in the archive. In theory, it could be anything, but if you want\n"

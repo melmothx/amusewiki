@@ -244,6 +244,9 @@ msgstr ""
 "       dëshiron të përjashtosh një seksion, vendos një koment në trup\n"
 "       të seksionit me stringun “noslide”."
 
+msgid "Alternate Text"
+msgstr ""
+
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
 "      in the archive. In theory, it could be anything, but if you want\n"

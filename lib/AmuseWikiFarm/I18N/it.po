@@ -238,6 +238,9 @@ msgstr ""
 "escludere una sezione bisogna inserire un commento (una linea che\n"
 "comincia con un punto e virgola) con la parola chiave “noslide”."
 
+msgid "Alternate Text"
+msgstr ""
+
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
 "      in the archive. In theory, it could be anything, but if you want\n"

@@ -228,6 +228,9 @@ msgid ""
 "          body with the string “noslide”."
 msgstr ""
 
+msgid "Alternate Text"
+msgstr ""
+
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
 "      in the archive. In theory, it could be anything, but if you want\n"

@@ -245,6 +245,9 @@ msgstr ""
 "          je een sectie wil uitsluiten, stop dan een commentaar in de\n"
 "          hoofdttekst van de sectie met de tekst \"noslide\"."
 
+msgid "Alternate Text"
+msgstr ""
+
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
 "      in the archive. In theory, it could be anything, but if you want\n"

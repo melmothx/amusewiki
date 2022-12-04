@@ -238,6 +238,9 @@ msgstr ""
 "          diapositivas vacías. Si quieres excluir una sección, pon un\n"
 "          comentario en el cuerpo de la sección con la palabra “noslide”."
 
+msgid "Alternate Text"
+msgstr ""
+
 #, fuzzy
 msgid ""
 "An URI is a string which uniquely identifies the text\n"

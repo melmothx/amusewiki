@@ -239,6 +239,9 @@ msgstr ""
 "seção, ponha um comentário no corpo da seção com a cadeia de caracteres "
 "\"noslide\"."
 
+msgid "Alternate Text"
+msgstr ""
+
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
 "      in the archive. In theory, it could be anything, but if you want\n"

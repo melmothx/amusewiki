@@ -223,6 +223,9 @@ msgstr ""
 "文字会被忽略，所以如果你没有节的话，生成的会是空白幻灯片。如果你想要排除一个"
 "节，在一节正文中用字节串「noslide」注释。"
 
+msgid "Alternate Text"
+msgstr ""
+
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
 "      in the archive. In theory, it could be anything, but if you want\n"

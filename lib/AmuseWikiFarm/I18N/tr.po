@@ -241,6 +241,9 @@ msgstr ""
 "          Bir bölümü hariç tutmak istiyorsanız, bölüm gövdesine\n"
 "          \"noslide\" yazan bir yorum ekleyin."
 
+msgid "Alternate Text"
+msgstr ""
+
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
 "      in the archive. In theory, it could be anything, but if you want\n"

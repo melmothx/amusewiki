@@ -242,6 +242,9 @@ msgstr ""
 "           vi volas ekskludi sekcion, metu komenton en la sekcion\n"
 "           korpo kun la ŝnuro \"noslide\"."
 
+msgid "Alternate Text"
+msgstr ""
+
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
 "      in the archive. In theory, it could be anything, but if you want\n"

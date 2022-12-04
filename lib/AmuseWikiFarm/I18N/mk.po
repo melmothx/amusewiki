@@ -240,6 +240,9 @@ msgstr ""
 " сакаш да прескокнеш еден оддел, додади коментар со зборот \"noslide\",\n"
 " нпр. \"; no slide\""
 
+msgid "Alternate Text"
+msgstr ""
+
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
 "      in the archive. In theory, it could be anything, but if you want\n"

@@ -251,6 +251,9 @@ msgstr ""
 "          θέλετε να αποκλείσετε μια ενότητα, βάλτε ένα σχόλιο στην ενότητα\n"
 "          με τη συμβολοσειρά \"noslide\"."
 
+msgid "Alternate Text"
+msgstr ""
+
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
 "      in the archive. In theory, it could be anything, but if you want\n"

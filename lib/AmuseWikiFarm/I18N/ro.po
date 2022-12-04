@@ -13,7 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n%100<=19) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n"
+"%100<=19) ? 1 : 2);\n"
 "X-Generator: Poedit 3.2\n"
 
 #. ($filename)
@@ -247,6 +248,9 @@ msgstr ""
 "          dacă nu aveți secțiuni, veți obține diapozitive goale. Dacă\n"
 "          doriți să excludeți o secțiune, puneți un comentariu în corpul\n"
 "          secțiunii cu șirul de caractere \"noslide\"."
+
+msgid "Alternate Text"
+msgstr ""
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"

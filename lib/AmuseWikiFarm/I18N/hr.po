@@ -232,6 +232,9 @@ msgstr ""
 "hoćeš preskočiti jedan odjeljak, dodaj komentar s riječi \"noslide\",\n"
 "npr. \"; no slide\""
 
+msgid "Alternate Text"
+msgstr ""
+
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
 "      in the archive. In theory, it could be anything, but if you want\n"
