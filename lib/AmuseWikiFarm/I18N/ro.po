@@ -1,0 +1,3816 @@
+# AmuseWiki i18n
+# This file is distributed under the same license as the AmuseWiki package.
+# Marco Pessotto <melmothx@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AmuseWiki 0.01\n"
+"POT-Creation-Date: 2014-03-06 10:16+0100\n"
+"PO-Revision-Date: 2022-12-03 18:31+0200\n"
+"Last-Translator: Marco <melmothx@gmail.com>\n"
+"Language-Team: English\n"
+"Language: ro_RO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n"
+"%100<=19) ? 1 : 2);\n"
+"X-Generator: Poedit 3.2\n"
+
+#. ($filename)
+msgid "%1 doesn't exist"
+msgstr "%1 nu există"
+
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr "%1 sarcini șterse"
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr "%1 sarcini reprogramate"
+
+#. ($c->stash->{site}->full_name)
+#. (site.full_name)
+msgid "%1 on mobile"
+msgstr "%1 pe aparate mobile"
+
+#. (text.pages_estimated)
+msgid "%1 pp."
+msgstr "%1 pp."
+
+msgid "(narrowest)"
+msgstr "(narrowest)"
+
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr "(smart quotes, links, footnotes, etc.)"
+
+msgid "(use that as main link in static mirror as well)"
+msgstr "(use that as main link in static mirror as well)"
+
+msgid "(widest)"
+msgstr "(widest)"
+
+msgid "A blank line (or more blank lines) starts a new paragraph."
+msgstr "O linie goală(sau mai multe linii goale)începe un nou paragraf."
+
+msgid ""
+"A cover image was already added, but you can replace it uploading\n"
+"              a new one."
+msgstr ""
+"O imagine de copertă a fost deja adăugată, dar o puteți înlocui încărcând\n"
+"              una nouă."
+
+msgid ""
+"A footnote is a line which starts with a number between square\n"
+"          brackets, with no leading whitespace."
+msgstr ""
+"O notă de subsol este o linie care începe cu un număr între pătrate\n"
+"          paranteze drepte, fără spații albe la început."
+
+msgid "A line which starts with 2 or more whitespaces is a quotation."
+msgstr "O linie care începe cu 2 sau mai multe spații albe este un citat."
+
+msgid "A line which starts with 20 or more whitespaces is right-aligned."
+msgstr ""
+"O linie care începe cu 20 sau mai multe spații albe este aliniată la dreapta."
+
+msgid "A line which starts with 6 or more whitespaces is centered."
+msgstr "O linie care începe cu 6 sau mai multe spații albe este centrată."
+
+msgid ""
+"A list of links and labels to insert into the top\n"
+"            bar. One per line, first the url, then the label,\n"
+"            separated by a space, e.g. \"http://test.me Test site\""
+msgstr ""
+"O listă de linkuri și etichete de inserat în spațiul de\n"
+"            căutare. Câte unul pe linie, mai întâi adresa URL, apoi "
+"eticheta,\n"
+"            separate prin câte un spațiu, de exemplu \"http://test.me Test "
+"site\""
+
+#. (location)
+msgid "A new text has been created at %1"
+msgstr "A fost creat un text nou la %1"
+
+msgid "A nice title"
+msgstr "Un titlu frumos"
+
+msgid "A4 imposed PDF"
+msgstr "A4 impus PDF"
+
+msgid "A4 paper"
+msgstr "Hârtie A4"
+
+msgid "A5 paper"
+msgstr "Hârtie A5"
+
+msgid "A6 paper (also suitable for e-readers)"
+msgstr "Hârtie A6"
+
+msgid "Abandoned editing in progress, feel free to check the diff and resume"
+msgstr ""
+"Abandonat editare în curs de desfășurare, nu ezitați să verificați diff și "
+"să reluați"
+
+msgid "Action"
+msgstr "Acțiune"
+
+msgid "Activate the blog-style look and feel"
+msgstr "Activați aspectul de tip blog"
+
+msgid "Active"
+msgstr "Activ"
+
+msgid "Add"
+msgstr "Adăugați"
+
+msgid "Add a cover image (PNG or JPG)"
+msgstr "Adăugați o imagine de copertă (PNG sau JPG)"
+
+msgid "Add a new text"
+msgstr "Adăugați un text nou"
+
+msgid "Add an attachment"
+msgstr "Adăugați un atașament"
+
+msgid "Add crop marks to the PDF"
+msgstr "Adăugați semne de tăiere la PDF"
+
+msgid "Add new remote repository"
+msgstr "Adăugați un nou depozit la distanță"
+
+msgid "Add non-breaking spaces where appropriate for the language"
+msgstr "Adaugă spații fără întrerupere unde se potrivește cu limbajul"
+
+msgid ""
+"Add paginator for text listing when the number of texts is greater than "
+"(integer)"
+msgstr ""
+"Adăugați paginator pentru listarea textului atunci când numărul de texte "
+"este mai mare de (număr întreg)"
+
+msgid "Add sections to the bookbuilder"
+msgstr "Adăugați secțiuni la bookbuilder"
+
+msgid "Add the OPDS URL"
+msgstr "Adăugați URL-ul OPDS"
+
+msgid "Add the selected parts to the bookbuilder"
+msgstr "Adăugați piesele selectate în bookbuilder"
+
+msgid "Add the whole text"
+msgstr "Adăugați întregul text"
+
+msgid "Add this text to the bookbuilder"
+msgstr "Adăugați acest text la bookbuilder"
+
+msgid "Add to colophon"
+msgstr "Adăugați la colophon"
+
+msgid "Added"
+msgstr "Adăugat"
+
+msgid ""
+"Additional information (full date, original title, translators, credits, "
+"etc)."
+msgstr ""
+"Informații suplimentare (data completă, titlul original, traducători, "
+"credite etc.)."
+
+msgid "Additional nginx configuration"
+msgstr "Configurație suplimentară nginx"
+
+#. (c.uri_for_action('/console/unpublished')
+#. (c.uri_for_action("/console/unpublished").path)
+msgid ""
+"After the approval of the\n"
+"  change, it will appear under %1. There is a big red\n"
+"  button for each deleted text, and you can proceed with the purging."
+msgstr ""
+"După aprobarea\n"
+"  modificării, aceasta va apărea la %1. Există un mare semn roșu\n"
+"  pentru fiecare text șters și puteți continua cu epurarea."
+
+msgid "Age:"
+msgstr "Vârstă:"
+
+msgid "Alias"
+msgstr "Pseudonim"
+
+msgid "Alias can't point to itself"
+msgstr "Pseudonimul nu poate indica spre el însuși"
+
+msgid ""
+"All kind of lists start with one or more leading\n"
+"        whitespace."
+msgstr ""
+"Toate tipurile de liste încep cu unul sau mai multe\n"
+"        spații alb."
+
+msgid "All languages"
+msgstr "Toate limbile"
+
+msgid "All revisions"
+msgstr "Toate reviziile"
+
+msgid "All sites"
+msgstr "Toate site-urile"
+
+msgid "All users"
+msgstr "Toți utilizatorii"
+
+msgid ""
+"Allow Unicode URIs for categories (author, topics). Recommended for non-"
+"latin scripts."
+msgstr ""
+"Permiteți URI-uri Unicode pentru categorii (autor, subiecte). Recomandat "
+"pentru scripturile non-latine."
+
+msgid ""
+"Allow binary uploads to logged in users: list of whitespace separate file "
+"extensions"
+msgstr ""
+"Permiteți încărcarea de fișiere binare pentru utilizatorii autentificați: "
+"listă de extensii de fișiere separate prin spații albe"
+
+msgid ""
+"Also produce slides\n"
+"          from the document. Each section, no matter how deep, will\n"
+"          produce a slide. The text outside a section is ignored, so\n"
+"          if you do not have sections, you will get empty slides. If\n"
+"          you want to exclude a section, put a comment in the section\n"
+"          body with the string “noslide”."
+msgstr ""
+"De asemenea, produceți diapozitive\n"
+"          din document. Fiecare secțiune, indiferent de adâncimea ei, va\n"
+"          produce un diapozitiv. Textul din afara unei secțiuni este "
+"ignorat, deci\n"
+"          dacă nu aveți secțiuni, veți obține diapozitive goale. Dacă\n"
+"          doriți să excludeți o secțiune, puneți un comentariu în corpul\n"
+"          secțiunii cu șirul de caractere \"noslide\"."
+
+msgid ""
+"An URI is a string which uniquely identifies the text\n"
+"      in the archive. In theory, it could be anything, but if you want\n"
+"      to set it yourself, please stick with the convention: author\n"
+"      name, title, language, eventual number for disambiguation, e.g.\n"
+"      errico-malatesta-anarchy-2. Please note that this is normally\n"
+"      not needed"
+msgstr ""
+"Un URI este un șir de caractere care identifică în mod unic textul\n"
+"      în arhivă. Teoretic, ar putea fi orice, dar dacă doriți ca\n"
+"      să îl stabiliți singur, vă rugăm să respectați convenția: autor\n"
+"      nume, titlu, limbă, eventual număr pentru dezambiguizare, de exemplu\n"
+"      errico-malatesta-anarhie-2. Vă rugăm să rețineți că, în mod normal, "
+"acest lucru este\n"
+"      nu este necesar"
+
+msgid "Apache is not currently supported"
+msgstr "Apache nu este susținut în prezent"
+
+msgid "Archive"
+msgstr "Arhivă"
+
+msgid "Archive by month"
+msgstr "Arhiva în funcție de lună"
+
+msgid "Archive history"
+msgstr "Istoricul arhivei"
+
+msgid "Are you sure?"
+msgstr "Sunteți sigur?"
+
+msgid "As cover in the header"
+msgstr "Ca acoperire în antet"
+
+msgid "As regular image in the body"
+msgstr "Ca imagine obișnuită în corp"
+
+msgid "Assign text to nodes"
+msgstr "Atribuiți text nodurilor"
+
+msgid "Attach"
+msgstr "Atașează"
+
+msgid "Attached images"
+msgstr "Imagini atașate"
+
+msgid "Attachments"
+msgstr "Atașamente"
+
+msgid "Author"
+msgstr "Autor"
+
+msgid "Author and title. If one side document: title."
+msgstr "Autor și titlu. Dacă este un document cu o singură parte: titlu."
+
+msgid "Authors"
+msgstr "Autori"
+
+msgid "Authors and topics listing"
+msgstr "Listarea autorilor și subiectelor"
+
+msgid "Authors for indexing"
+msgstr "Autori pentru indexare"
+
+msgid "Auto"
+msgstr "Auto"
+
+msgid "Automatically generated"
+msgstr "Generat automat"
+
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr "Solicitați și reînnoiți automat certificate SSL de la Let's Encrypt"
+
+msgid "Available"
+msgstr "Disponibil"
+
+msgid "Available category tags for header"
+msgstr "Etichete de categorie disponibile pentru antet"
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
+"Evitați folosirea cratimei pe ultimul cuvânt al unei propoziții (ar putea "
+"duce la o spațiere proastă)"
+
+msgid "Back to the text"
+msgstr "Înapoi spre text"
+
+msgid "Bad request"
+msgstr "Cerere necorespunzătoare"
+
+msgid "Beamer color theme"
+msgstr "Tema de culoare Beamer"
+
+msgid "Beamer theme"
+msgstr "Tema Beamer"
+
+msgid "Beside topics and authors you can add more categories here"
+msgstr "Pe lângă subiecte și autori, puteți adăuga mai multe categorii aici"
+
+msgid "Binding correction in millimeters (additional inner margin)"
+msgstr "Corecția legăturii în milimetri (marja interioară suplimentară)"
+
+msgid ""
+"Blocks of 16 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+"Blocuri de 16 pagini care se pliază de două ori și apoi se leagă.\n"
+"                împreună."
+
+msgid ""
+"Blocks of 8 pages to be folded twice and then bound\n"
+"                together."
+msgstr "Blocuri de 8 pagini care se pliază de două ori și apoi se leagă."
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "Body"
+msgstr "Corp"
+
+msgid "Bold"
+msgstr "Bold"
+
+msgid "Bookbuilder"
+msgstr "Bookbuilder"
+
+msgid "Bookbuilder page limit (integer)"
+msgstr "Limita de pagini Bookbuilder (număr întreg)"
+
+msgid "Build it"
+msgstr "Construiți-l"
+
+msgid "Built-in"
+msgstr "Built-in"
+
+msgid ""
+"By default, secondary footnotes use arabic numbering\n"
+"        between parens. With this option they will use per-page alpha\n"
+"        numbering"
+msgstr ""
+"În mod implicit, notele de subsol secundare utilizează numerotarea arabă.\n"
+"        în paranteze"
+
+msgid "By number of pages, ascending"
+msgstr "După numărul de pagini, în ordine crescătoare"
+
+msgid "By number of pages, descending"
+msgstr "După numărul de pagini, descrescător"
+
+msgid "By relevance"
+msgstr "După relevanță"
+
+msgid "By sku ascending"
+msgstr "După sku, în ordine crescătoare"
+
+msgid "By sku descending"
+msgstr "După sku, în ordine descrescătoare"
+
+msgid "By title A-Z"
+msgstr "După titlu A-Z"
+
+msgid "By title Z-A"
+msgstr "După titlu Z-A"
+
+msgid "CSS Alternate Theme (Dark mode, optional)"
+msgstr "Temă alternativă CSS (modul întunecat, opțional)"
+
+msgid "CSS Theme"
+msgstr "Tema CSS"
+
+msgid "Cancel"
+msgstr "Anulează"
+
+msgid "Canonical name"
+msgstr "Nume canonic"
+
+msgid "Categories"
+msgstr "Categorii"
+
+#. ($site->canonical)
+#. (site.canonical)
+msgid "Category types for %1"
+msgstr "Tipuri de categorii pentru %1"
+
+msgid "Center all the sectioning titles."
+msgstr "Centrați toate titlurile de secționare."
+
+msgid "Center the chapter titles."
+msgstr "Centrați titlurile capitolelor."
+
+msgid "Changes"
+msgstr "Schimbări"
+
+msgid "Changes applied"
+msgstr "Schimbări aplicate"
+
+msgid "Changes applied."
+msgstr "Schimbări aplicate."
+
+#. ($c->stash->{revision}->title->uri)
+#. (revision.title.uri)
+#. (author_title)
+msgid "Changes for %1"
+msgstr "Schimbări pentru %1"
+
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr ""
+"Schimbările au fost salvate! Acum sunt în așteptare pentru a fi publicate"
+
+msgid ""
+"Changing urls is a poor practice. Anyway, if you know what you’re\n"
+"doing, you can delete an existing text and point to another adding a\n"
+"#DELETED directive in the text header with a special syntax:"
+msgstr ""
+"Schimbarea url-urilor este o practică proastă. Oricum, dacă știi ce vrei să "
+"faci\n"
+"puteți șterge un text existent și să indicați un alt text adăugând un\n"
+"#DELETED în antetul textului cu o sintaxă specială:"
+
+msgid "Chapter"
+msgstr "Capitol"
+
+msgid "Chapter and section. If one side document: chapter."
+msgstr ""
+"Capitolul și secțiunea. În cazul unui document cu o singură față: capitolul."
+
+msgid "Chapter, only for chapter divisions in books"
+msgstr "Capitolul, numai pentru diviziunile de capitole din cărți"
+
+msgid "Cheatsheet for the markup"
+msgstr "Markup cheatsheet"
+
+msgid "Check"
+msgstr "Verifică"
+
+msgid "Check mail sending and send mail to:"
+msgstr "Verificați trimiterea corespondenței și trimiteți corespondența la:"
+
+msgid "Choose a paper format"
+msgstr "Alege un format pentru hârtie"
+
+msgid "Clear the book list"
+msgstr "Șterge lista de cărți"
+
+msgid "Click on the images to get the sample PDF"
+msgstr "Faceți clic pe imagini pentru a obține exemplul PDF"
+
+msgid "Clone"
+msgstr "Clonează"
+
+msgid "Close"
+msgstr "Închide"
+
+msgid "Code"
+msgstr "Codează"
+
+msgid "Colophon (displayed in the generated files):"
+msgstr "Colophon (afișat în fișierele generate):"
+
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr ""
+"Coloane pentru partea stângă a paginii de editare, cu caseta de editare (din "
+"12)"
+
+msgid "Comma or semicolon separated list"
+msgstr "Listă separată prin virgulă sau punct și virgulă"
+
+msgid "Commit ID"
+msgstr "Commit ID"
+
+msgid "Completed"
+msgstr "Completat"
+
+msgid "Computing of differences took"
+msgstr "Computing of differences took"
+
+msgid "Confirm"
+msgstr "Confirmă"
+
+msgid "Conflict"
+msgstr "Conflict"
+
+msgid "Continuous footnote numbering across the whole document."
+msgstr "Numerotarea continuă a notelor de subsol în întregul document."
+
+msgid "Convert to archive markup"
+msgstr "Convertiți în markup-ul arhivei"
+
+msgid "Copyright notice"
+msgstr "Notă privind drepturile de autor"
+
+msgid "Couldn't add the text"
+msgstr "Nu s-a putut adăuga textul"
+
+msgid "Couldn't automatically generate the URI!"
+msgstr "Nu s-a putut genera automat URI-ul!"
+
+msgid "Couldn't build that"
+msgstr "Nu s-a putut construi asta"
+
+msgid "Create"
+msgstr "Creează"
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
+"Creați un nou tip de categorie. Vă rugăm să folosiți numai litere ASCII mici"
+
+msgid "Create a new format"
+msgstr "Creează un nou format"
+
+msgid "Create a new librarian"
+msgstr "Creează un nou librar"
+
+msgid "Create a new special page"
+msgstr "Creează o nouă pagina specială"
+
+msgid "Create a new user"
+msgstr "Creează un nou utilizator"
+
+msgid ""
+"Create a public repository on GitLab, GitHub or similar services (or on your "
+"own server). "
+msgstr ""
+"Creați un depozit public pe GitLab, GitHub sau alte servicii similare (sau "
+"pe propriul server). "
+
+msgid "Create a topic alias"
+msgstr "Creează un alias de subiect"
+
+msgid "Create an author alias"
+msgstr "Creează un alias de autor"
+
+msgid "Create new site"
+msgstr "Creează un nou site"
+
+msgid "Create user and mail password"
+msgstr "Creează un utilizator și parolă de mail"
+
+msgid "Created"
+msgstr "Creată"
+
+msgid "Created by"
+msgstr "Creată de"
+
+msgid "Created new text"
+msgstr "Creat un text nou"
+
+msgid "Current time"
+msgstr "Timpul actual"
+
+#. ($c->stash->{site}->canonical)
+#. (site.canonical)
+msgid "Custom formats for %1"
+msgstr "Formate personalizate pentru %1"
+
+msgid "Custom home page"
+msgstr "Pagina principală personalizată"
+
+msgid "Date"
+msgstr "Dată"
+
+msgid "Date of the original publication"
+msgstr "Data publicării originale"
+
+msgid "Default"
+msgstr "Default"
+
+msgid "Default sorting for the category text list"
+msgstr "Sortare implicită pentru lista de text a categoriilor"
+
+msgid "Default value if blank:"
+msgstr "Valoare implicită dacă este necompletată:"
+
+msgid "Deferred/Deleted texts"
+msgstr "Texte amânate/șterse"
+
+msgid "Delete"
+msgstr "Ștergeți"
+
+msgid "Delete permanently"
+msgstr "Ștergeți permanent"
+
+#. (remote.name)
+msgid "Delete remote repository %1"
+msgstr "Ștergeți depozitul la distanță %1"
+
+msgid ""
+"Deleting a revision is safe if a text has been\n"
+"    published. Otherwise deleting it you'll lose the unpublished changes"
+msgstr ""
+"Ștergerea unei revizuiri este sigură în cazul în care un text a fost\n"
+"    publicat. În caz contrar, dacă o ștergeți, veți pierde modificările "
+"nepublicate"
+
+msgid "Description"
+msgstr "Descriere"
+
+msgid "Description item"
+msgstr "Descriere element"
+
+msgid ""
+"Description lists use a double colon to separate the\n"
+"        term and the description."
+msgstr ""
+"Listele de descriere utilizează două puncte pentru a separa\n"
+"        termenul și descrierea."
+
+msgid "Desired URI"
+msgstr "URI-ul dorit"
+
+msgid "Destination"
+msgstr "Destinație"
+
+msgid "Details"
+msgstr "Detalii"
+
+msgid "Did you mean:"
+msgstr "Ai vrut să spui:"
+
+msgid "Diff"
+msgstr "Diff"
+
+msgid "Differences"
+msgstr "Diferențe"
+
+msgid ""
+"Directory with templates in the site repository, e.g.\n"
+"        \"templates\" (ASCII only). Do not set it unless you know\n"
+"        exactly what you are doing"
+msgstr ""
+"Directorul cu șabloanele din depozitul site-ului, de exemplu.\n"
+"        \"templates\" (numai în format ASCII). Nu îl setați decât dacă "
+"știți\n"
+"        exact ceea ce faceți"
+
+msgid "Disable /mirror/ URL for anonymous users"
+msgstr "Dezactivați URL-ul /mirror/ pentru utilizatorii anonimi"
+
+msgid "Display the latest entries on special pages"
+msgstr "Afișați cele mai recente proiecte pe pagini speciale"
+
+msgid "Display url as"
+msgstr "Afișează adresa URL ca"
+
+msgid "Division factor"
+msgstr "Factorul de divizare"
+
+msgid "Do not create a cover page and start the text on the first page"
+msgstr "Nu creați o pagină de copertă și nu începeți textul pe prima pagină"
+
+msgid "Do not enforce save message"
+msgstr "Nu aplicați mesajul de salvare"
+
+msgid "Do not redirect aliases to canonical"
+msgstr "Nu redirecționați pseudonimele către canonic"
+
+msgid "Do not use bold fonts"
+msgstr "Nu folosiți fonturi bold"
+
+msgid "Domain"
+msgstr "Domeniu"
+
+msgid "Done"
+msgstr "Realizat"
+
+msgid "Double bars"
+msgstr "Double bars"
+
+msgid "Downloads"
+msgstr "Descărcări"
+
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+
+msgid "EPUB"
+msgstr "EPUB"
+
+msgid "EPUB (for mobile devices)"
+msgstr "EPUB (pentru aparate mobile)"
+
+msgid "ETA"
+msgstr "ETA"
+
+msgid "Edit"
+msgstr "Editează"
+
+msgid "Edit attachment description"
+msgstr "Editează descrierea atașamentului"
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr "Editează formatul %1"
+
+msgid "Edit full site configuration"
+msgstr "Editați configurația completă a site-ului"
+
+msgid "Edit screen layout options"
+msgstr "Editează opțiunile de aranjare a ecranului"
+
+#. (esite.id)
+msgid "Edit site %1"
+msgstr "Editează site-ul %1"
+
+msgid "Edit site configuration"
+msgstr "Editează configurația site-ului"
+
+msgid "Edit the text you want to unpublish and add this line to the header:"
+msgstr ""
+"Editează textul pe care dorești să îl scoți din publicare și adăugă această "
+"linie la antet:"
+
+msgid "Edit this text"
+msgstr "Editează acest text"
+
+#. (user.username)
+msgid "Edit user %1"
+msgstr "Editează utilizatorul %1"
+
+msgid "Editing"
+msgstr "Editare"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Email sent!"
+msgstr "Email trimis!"
+
+msgid "Email updated"
+msgstr "Email actualizat"
+
+msgid "Emails do not match"
+msgstr "Email-urile nu se potrivesc"
+
+msgid "Embed fonts in the EPUB file"
+msgstr "Încorporează fonturi în fișierul EPUB"
+
+msgid "Enable \"What links here\" feature"
+msgstr "Activați funcția \"Ce linkuri redirecționează aici\""
+
+msgid "Enable search suggestions (did you mean...)"
+msgstr "Activează sugestiile de căutare (ai vrut să spui...)"
+
+msgid "Enable title ordering by SKU"
+msgstr "Activează ordonarea titlurilor în funcție de SKU"
+
+msgid "Enforce e-mail on submission"
+msgstr "Aplicați e-mailul la depunere"
+
+msgid "Erase this revision"
+msgstr "Șterge această revizie"
+
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr "Eroare de conversie a fișierului încărcat. Este un fișier HTML?"
+
+msgid "Error sending mail!"
+msgstr "Eroare la trimiterea mail-ului!"
+
+msgid "Error while converting the HTML. Sorry."
+msgstr "Eroare în timpul conversiei HTML. Ne pare rău."
+
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr "Eroare: %1"
+
+msgid "Errors"
+msgstr "Erori"
+
+msgid "Estimated pages"
+msgstr "Pagini estimate"
+
+msgid ""
+"Even if this site has a responsive, mobile-friendly layout,\n"
+"  it does not provide a dedicated mobile application."
+msgstr ""
+"Chiar dacă acest site are un aspect responsiv, adaptat la aparate mobile,\n"
+"  nu oferă o aplicație mobilă dedicată."
+
+msgid ""
+"Every\n"
+"        section will generate a slide. You need to do proper\n"
+"        sectioning for this to work."
+msgstr ""
+"Fiecare\n"
+"        secțiune va genera un diapozitiv. Trebuie să faceți corect\n"
+"        secționarea pentru ca acest lucru să funcționeze."
+
+msgid ""
+"Exactly like 2up, but the sheets are meant to be cut\n"
+"        horizontally first and then stack on each other. This way you\n"
+"        can print, for example, A6 booklets on A4."
+msgstr ""
+"Exact ca și 2up, dar foile sunt făcute pentru a fi tăiate.\n"
+"        orizontal mai întâi și apoi să fie plasate una peste alta. În acest "
+"fel\n"
+"        puteți imprima, de exemplu, broșuri A6 pe A4."
+
+msgid "Example"
+msgstr "Exemplu"
+
+msgid "Exception"
+msgstr "Excepție"
+
+msgid "Existing redirections"
+msgstr "Redirecții existente"
+
+msgid "Expected pages"
+msgstr "Pagini așteptate"
+
+msgid "Failed"
+msgstr "Eșuat"
+
+#. ("$name $url")
+msgid "Failed to add remote repository %1"
+msgstr "Nu s-a reușit adăugarea depozitului la distanță %1"
+
+#. ($name)
+msgid "Failed to remove Remote repository %1"
+msgstr "Nu s-a reușit eliminarea depozitului de la distanță %1"
+
+msgid "Failure fetching the source"
+msgstr "Eșecul obținerii sursei"
+
+msgid "Federation"
+msgstr "Federație"
+
+msgid "Feed enclosure method (OPDS and RSS)"
+msgstr "Metoda de închidere a fluxurilor (OPDS și RSS)"
+
+msgid "Fetch"
+msgstr "Obține"
+
+msgid "File already in the body"
+msgstr "Fișierul se află deja în corp"
+
+msgid "File extension"
+msgstr "Extensia fișierului"
+
+msgid "File format not allowed"
+msgstr "Formatul fișierului nu e permis"
+
+msgid "File too big"
+msgstr "Fișier prea mare"
+
+msgid "File uploaded!"
+msgstr "Fișier încărcat!"
+
+msgid "Files"
+msgstr "Fișiere"
+
+msgid ""
+"Fill with blank pages before the last page if the signature is not full."
+msgstr ""
+"Completați cu pagini albe înainte de ultima pagină, dacă semnătura nu este "
+"completă."
+
+msgid "Filters"
+msgstr "Filtre"
+
+msgid "Find the add catalogue menu."
+msgstr "Găsiți meniul de adăugare a catalogului."
+
+msgid "Find the network library menu, or equivalent."
+msgstr "Găsiți meniul bibliotecii de rețea sau un meniu echivalent."
+
+msgid "First"
+msgstr "Primul"
+
+msgid "First Author and Second Author"
+msgstr "Prima autoare și a doua autoare"
+
+msgid "First Author, Second Author"
+msgstr "Prima autoare, A doua autoare"
+
+msgid "First slide"
+msgstr "Primul diapozitiv"
+
+msgid "First text attachment or EPUB"
+msgstr "Primul atașament text sau EPUB"
+
+msgid "First you have to unpublish it via #DELETED."
+msgstr "Mai întâi, trebuie să o dezpublicați prin #DELETED."
+
+msgid "Fix typography (smart quotes)"
+msgstr "Corectează tipografia (ghilimele inteligente)"
+
+msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
+msgstr "16 pagini fixe pe 2 foi, cu pliere individuală dublă."
+
+msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
+msgstr "16 pagini fixe pe o singură foaie, cu pliere triplă."
+
+msgid ""
+"Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
+"and bound together."
+msgstr ""
+"Semnături fixe de 8 pagini, care se taie orizontal, se pliază individual și "
+"se leagă împreună."
+
+msgid "Fixed topic list"
+msgstr "Listă de subiecte fixă"
+
+msgid "Font preview"
+msgstr "Previzualizare font"
+
+msgid "Font size"
+msgstr "Dimensiune font"
+
+msgid "Footnotes"
+msgstr "Note de subsol"
+
+#. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
+msgid ""
+"Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
+"in the body (%4), ignoring changes."
+msgstr ""
+"Neconcordanță între notele de subsol: a găsit %1 note de subsol (%2) și a "
+"găsit %3 referințe de note de subsol în corp (%4), ignorând modificările."
+
+msgid "For texts from the internet use"
+msgstr "Pentru texte de pe internet, utilizați"
+
+msgid "For texts without a table of content, start text on the very first page"
+msgstr "În cazul textelor fără cuprins, începeți textul pe prima pagină"
+
+msgid ""
+"For topics and authors redirections, you can create them\n"
+"  here"
+msgstr ""
+"Pentru redirecționări la subiecte și autori, le puteți crea\n"
+"  aici"
+
+msgid "Force a line break."
+msgstr "Force a line break."
+
+msgid "Force publishing"
+msgstr "Forțează publicarea"
+
+msgid "Format name"
+msgstr "Nume de format"
+
+msgid "Format successfully created"
+msgstr "Format creat cu succes"
+
+msgid "Format successfully updated"
+msgstr "Format actualizat cu succes"
+
+msgid "Formats"
+msgstr "Formaturi"
+
+msgid "Full list of texts"
+msgstr "Lista întreagă de texte"
+
+msgid "Full tag cloud"
+msgstr "Full tag cloud"
+
+msgid "Full text search"
+msgstr "Căutare text completă"
+
+msgid "Full width, fluid layout"
+msgstr "Lățime completă, aspect fluid"
+
+msgid "General configuration"
+msgstr "Configurare generală"
+
+msgid "Generate Index"
+msgstr "Generază index"
+
+msgid "Generic (fits in A4 and Letter)"
+msgstr "Generic (se potrivește în format A4 și Letter)"
+
+msgid "Get generated URI"
+msgstr "Obține URI generat"
+
+msgid ""
+"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
+"using the form you can find above. You can have one personal repository."
+msgstr ""
+"Obțineți URL-ul HTTPS al depozitului, de exemplu https://example.com/git/"
+"test și adăugați-l folosind formularul pe care îl puteți găsi mai sus. "
+"Puteți avea un singur depozit personal."
+
+msgid "Git"
+msgstr "Git"
+
+msgid "Git console"
+msgstr "Git console"
+
+msgid "Git is not enabled on this site"
+msgstr "Git nu este activat pe acest site"
+
+#, fuzzy
+msgid ""
+"HTML code to append to each regular page, inserted\n"
+"            verbatim, so be careful"
+msgstr ""
+"HTML code to append to each regular page, inserted\n"
+"            verbatim, so be careful"
+
+#, fuzzy
+msgid ""
+"HTML to append to each special page, inserted\n"
+"            verbatim, now you have a chance to screw up everything, so\n"
+"            be careful"
+msgstr ""
+"HTML to append to each special page, inserted\n"
+"            verbatim, now you have a chance to screw up everything, so\n"
+"            be careful"
+
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr "HTML de inserat în subsolul machetei, sub linkuri"
+
+msgid "HTML to insert into the left sidebar"
+msgstr "HTML de inserat în bara laterală din stânga"
+
+msgid "HTML to insert into the right sidebar"
+msgstr "HTML de inserat în bara laterală din dreapta"
+
+msgid "HTML to insert on the bottom of the layout, above the footer"
+msgstr "HTML de inserat în partea de jos a machetei, deasupra subsolului"
+
+msgid ""
+"HTML to insert on the top of the layout, behind the navigation bar and below "
+"the banner"
+msgstr ""
+"HTML de inserat în partea de sus a layout-ului, în spatele barei de navigare "
+"și sub banner"
+
+msgid "HTML/Word Importer"
+msgstr "Importator HTML/Word"
+
+msgid "Half Letter paper"
+msgstr "Hârtie Half Letter"
+
+msgid "Headers"
+msgstr "Antete/Headers"
+
+msgid "Heading"
+msgstr "Rubrică/Heading"
+
+msgid "Headings"
+msgstr "Rubrici/Headings"
+
+msgid "Height:"
+msgstr "Înălțime:"
+
+msgid "Help Text"
+msgstr "Text de ajutor"
+
+msgid "Here you can find a preview of the Beamer themes and color themes"
+msgstr "Aici poți previzualiza temele Beamer și de culori"
+
+msgid ""
+"Here you can save or load your templates. The text list\n"
+"      and the cover image are excluded by the saved settings. You can\n"
+"      use this to save paper/fonts/imposition and other options."
+msgstr ""
+"Aici puteți salva sau încărca șabloanele. Lista de text\n"
+"      și imaginea de copertă sunt excluse de setările salvate. Puteți\n"
+"      folosi acest lucru pentru a salva hârtia/fonturi/impoziția și alte "
+"opțiuni."
+
+msgid "Higher division factor means narrower margins"
+msgstr "Un factor de divizare mai mare înseamnă marje mai mici"
+
+msgid "Highest priority format"
+msgstr "Formatul cu cea mai mare prioritate"
+
+msgid "How are you going to access Git?"
+msgstr "Cum vei accesa Git?"
+
+msgid "How do I create a landing page?"
+msgstr "Cum pot crea o pagină de destinație?"
+
+msgid "How do I create a special page?"
+msgstr "Cum pot crea o pagină specială?"
+
+msgid "How do I delete a text?"
+msgstr "Cum pot șterge un text?"
+
+msgid "How do I modify a special page?"
+msgstr "Cum pot modifica o pagină specială?"
+
+msgid "How do I purge a text?"
+msgstr "Cum pot șterge un text?"
+
+msgid "How do I redirect to another page?"
+msgstr "Cum pot redirecționa către o altă pagină?"
+
+msgid "How to choose a password"
+msgstr "Cum să alegi o parolă"
+
+msgid ""
+"However, you can browse, search, download and read the texts\n"
+"  from mobile reading applications which support the so-called OPDS\n"
+"  protocol."
+msgstr ""
+"Cu toate acestea, puteți naviga, căuta, descărca și citi textele\n"
+"  din aplicațiile mobile de citire care acceptă așa-numitul OPDS\n"
+"  protocol."
+
+msgid "I am human"
+msgstr "Sunt om"
+
+msgid "I have a system user with SSH access"
+msgstr "Am un utilizator de sistem cu acces SSH"
+
+msgid "I want an imposed (ready to print) PDF"
+msgstr "Vreau un PDF impus (gata de tipar)"
+
+msgid "I will provide my remote repository"
+msgstr "Voi furniza depozitul meu la distanță"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "ISBN"
+msgstr "ISBN"
+
+msgid "Id"
+msgstr "Id"
+
+msgid ""
+"If by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+"Dacă din întâmplare există un alt text cu același autor și titlu, alegeți "
+"URI-ul dorit folosind câmpul de mai jos, inserând autorul, titlul și un "
+"număr, de exemplu: autorul meu - titlul meu - titlul meu-1"
+
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+"Dacă nu a fost intenția dvs., vă rugăm să ignorați acest e-mail și\n"
+"parola dvs. nu va fi schimbată."
+
+msgid ""
+"If it's not the case, please open a bug report at https://github.com/"
+"melmothx/amusewiki/issues"
+msgstr ""
+"Dacă nu este cazul, vă rugăm să deschideți un raport de eroare la https://"
+"github.com/melmothx/amusewiki/issues"
+
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
+msgid "If not set %1 will be looked up from the application directory."
+msgstr "Dacă nu este setat, %1 va fi căutat din directorul aplicației."
+
+msgid ""
+"If present, hide the\n"
+"          generated formats and the information box. This makes sense\n"
+"          with attachments, when the text version is poor or not\n"
+"          available and more relevance should be given to the attached\n"
+"          files."
+msgstr ""
+"Dacă este prezentă, ascundeți\n"
+"          formatele generate și caseta de informații. Acest lucru are sens\n"
+"          în cazul atașamentelor, atunci când versiunea text este slabă sau "
+"nu este\n"
+"          disponibilă și ar trebui să se acorde mai multă relevanță anexei\n"
+"          fișierelor atașate."
+
+msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
+msgstr ""
+"Dacă este setat la un număr mai mare decât 0, generează automat un teaser, "
+"cu aproximativ această lungime"
+
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
+msgstr ""
+"În cazul în care publicarea unui text este amânată, listați-l\n"
+"            cu teaserul și coperta, fără a oferi acces la\n"
+"            corpului"
+
+msgid ""
+"If the user is allowed to publish, speed up the process skipping the "
+"revision page if there are no conflicts and automatically redirect to the "
+"published text once it is done."
+msgstr ""
+"În cazul în care utilizatorul are permisiunea de a publica, accelerați "
+"procesul, sărind peste pagina de revizuire dacă nu există conflicte și "
+"redirecționați automat către textul publicat odată ce acesta este gata."
+
+msgid "If the user provided a mail, it's listed in the mail's CC field"
+msgstr ""
+"Dacă utilizatorul a furnizat un e-mail, acesta este listat în câmpul CC al e-"
+"mailului"
+
+msgid ""
+"If this line\n"
+"          is present, set the publication date (on this site) to the\n"
+"          date. The date may also be in the future, deferring the\n"
+"          publication. If this line is not present, the publication\n"
+"          date will be the time of the publishing, triggering a bump\n"
+"          on RSS and special pages at each editing."
+msgstr ""
+"În cazul în care această linie\n"
+"          este prezentă, setați data publicării (pe acest site) la data.\n"
+"          Data poate fi, de asemenea, în viitor, amânând astfel publicarea\n"
+"          publicarea. Dacă această linie nu este prezentă, data publicării\n"
+"          va fi data publicării, declanșând un bump\n"
+"          pe RSS și pe paginile speciale la fiecare editare."
+
+msgid ""
+"If this line is\n"
+"          present and the reason is set to something, the text will be\n"
+"          stored in the archive, but will not be published."
+msgstr ""
+"În cazul în care această linie este\n"
+"          prezentă și motivul este setat la ceva, textul va fi\n"
+"          stocat în arhivă, dar nu va fi publicat."
+
+msgid ""
+"If this line is present, do not create a title page,\n"
+"          but instead start the text on the very first page and\n"
+"          produce a PDF styled like an article (chapters and parts\n"
+"          will not start on a new page)."
+msgstr ""
+"Dacă această linie este prezentă, nu creați o pagină de titlu,\n"
+"          ci, în schimb, începeți textul chiar de pe prima pagină și\n"
+"          produceți un PDF stilizat ca un articol (capitole și părți\n"
+"          nu vor începe pe o pagină nouă)."
+
+msgid "If this line is present, do not display the table of contents."
+msgstr "Dacă această linie este prezentă, nu se afișează cuprinsul."
+
+msgid "If you asked for imposition, select an imposition schema"
+msgstr "Dacă ați solicitat impunerea, selectați o schemă de impunere"
+
+msgid ""
+"If you edit some format options, like fonts or paper\n"
+"      dimensions, you may want to rebuild the generated files"
+msgstr ""
+"Dacă editați unele opțiuni de format, cum ar fi fonturile sau hârtia\n"
+"      dimensiuni ale hârtiei, este posibil să doriți să reconstruiți "
+"fișierele generate"
+
+msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+"Dacă v-ați uitat parola, puteți alege una nouă vizitând\n"
+"acest link (faceți clic pe el sau copiați-l și lipiți-l în browserul dvs.):"
+
+msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr ""
+"Dacă aveți un fișier în format .doc sau .odt, îl puteți converti cu ușurință "
+"salvându-l ca HTML"
+
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
+msgstr ""
+"Dacă solicitați o reconstrucție atunci când una este în curs, veți\n"
+"    anulați reconstrucția în curs."
+
+msgid ""
+"If you use it as a teaser image, the image will also\n"
+"      be placed on the first page of the PDF. You can set its width\n"
+"      adding the following line to the header, where the value is the\n"
+"      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
+"      on"
+msgstr ""
+"Dacă o folosiți ca imagine de prezentare, imaginea va fi, de asemenea\n"
+"      plasată pe prima pagină a PDF-ului. Puteți seta lățimea acesteia\n"
+"      adăugând următoarea linie în antet, unde valoarea este\n"
+"      raportul de lățime a textului. 1 reprezintă lățimea completă a "
+"textului, 0,5 reprezintă jumătate și așa mai departe"
+
+msgid ""
+"If your site doesn’t have that, just create a special page and assign\n"
+"the uri \"index\"."
+msgstr ""
+"Dacă site-ul dvs. nu are așa ceva, creați o pagină specială și atribuiți\n"
+"uri \"index\"."
+
+msgid ""
+"If your site is multilanguage, you can create a language-specific\n"
+"  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
+"  URI \"index\", a dash, and the locale code."
+msgstr ""
+"Dacă site-ul dvs. este multilingv, puteți crea o pagină de internet "
+"specifică unei limbi.\n"
+"  pagină de destinație creând, de exemplu, \"/special/index-it\", adică "
+"pagina de\n"
+"  URI \"index\", o liniuță și codul localității."
+
+msgid "Image already set as cover"
+msgstr "Imagine deja setată ca și copertă"
+
+#. ($w, $h, $limit, $limit)
+msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
+msgstr "Dimensiunile imaginii %1 x %2 depășesc limita de %3 x %4 pixeli"
+
+msgid ""
+"Image uploading may be done on the next step, when you can\n"
+"        review and preview the upload."
+msgstr ""
+"Încărcarea imaginilor se poate face la pasul următor, când puteți\n"
+"        revizui și previzualiza încărcarea."
+
+msgid "Image url"
+msgstr "URL imagine"
+
+msgid "Images"
+msgstr "Imagini"
+
+msgid "Imposition schemas"
+msgstr "Scheme de impoziție"
+
+msgid "In both case you will get a reverse indentation."
+msgstr "În ambele cazuri, veți obține o indentare inversă."
+
+msgid ""
+"In the text, a number within square brackets is interpreted as a\n"
+"          footnote reference, if such footnote exists."
+msgstr ""
+"În text, un număr între paranteze pătrate este interpretat ca fiind o\n"
+"          referință la o notă de subsol, în cazul în care o astfel de notă "
+"există."
+
+#. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
+msgid ""
+"In this example, we use FBreader, but the procedure is\n"
+"  pretty much the same for all applications. All you have to do is to\n"
+"  add %1 to the network libraries."
+msgstr ""
+"În acest exemplu, folosim FBreader, dar procedura este\n"
+"  destul de asemănătoare pentru toate aplicațiile. Tot ce trebuie să faceți "
+"este să\n"
+"  adăugați %1 la bibliotecile de rețea."
+
+msgid "Inline elements"
+msgstr "Elemente în linie"
+
+msgid "Insert the file into the body at the cursor position"
+msgstr "Introduceți fișierul în corp la poziția cursorului"
+
+msgid "Internal list of translations"
+msgstr "Lista internă de traduceri"
+
+msgid "Invalid ID"
+msgstr "Invalid ID"
+
+msgid "Invalid URI"
+msgstr "Invalid URI"
+
+msgid "Invalid domain"
+msgstr "Invalid domain"
+
+msgid "Invalid email"
+msgstr "Invalid email"
+
+msgid "Invalid field"
+msgstr "Invalid field"
+
+msgid "Invalid name"
+msgstr "Invalid name"
+
+msgid "Invalid parameter"
+msgstr "Invalid parameter"
+
+msgid "Invalid response"
+msgstr "Invalid response"
+
+msgid "Invalid target"
+msgstr "Invalid target"
+
+msgid "Invalid username"
+msgstr "Nume de utilizator nevalid"
+
+msgid ""
+"It is possible to have an additional set of\n"
+"          footnotes which you use to annote the text (e.g. critical\n"
+"          editions or translator's notes). They work the same way as\n"
+"          the regular footnotes, but they use curly brackets instead\n"
+"          of square brackets. Placing secondary footnote references\n"
+"          inside a regular footnote is permitted."
+msgstr ""
+"Este posibil să aveți un set suplimentar de\n"
+"          note de subsol pe care să le folosiți pentru a adnota textul (de "
+"exemplu, note critice, ediții critice sau note ale traducătorului). Acestea "
+"funcționează în același mod ca și\n"
+"          notele de subsol obișnuite, însă acestea folosesc acolade\n"
+"          în loc de paranteze drepte. Plasarea notelor de subsol secundare\n"
+"          în interiorul unei note de subsol obișnuite este permisă."
+
+msgid ""
+"It is recommended to always set a publication\n"
+"                    date, so the system does not need to rely on the\n"
+"                    file timestamp. Also, you should bump the\n"
+"                    publication date only on major editing, leaving it\n"
+"                    untouched for minor ones."
+msgstr ""
+"Se recomandă să setați întotdeauna o dată de publicație\n"
+"                    astfel încât sistemul să nu fie nevoit să se bazeze pe "
+"data și ora fișierului."
+
+msgid ""
+"It works the same as for regular page, but the link is hidden. Just\n"
+"append \"/edit\" to the url of the page."
+msgstr ""
+"Funcționează la fel ca pentru o pagină obișnuită, dar link-ul este ascuns. "
+"Doar\n"
+"adăugați \"/edit\" la adresa URL a paginii."
+
+msgid "Italic"
+msgstr "Italic"
+
+msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr "Italic, bold, monospațiu și cod, linii de întrerupere..."
+
+msgid "JPG, PNG and PDF are always allowed."
+msgstr "JPG, PNG și PDF sunt întotdeauna permise."
+
+#, fuzzy
+msgid "Job status"
+msgstr "Statutul postului"
+
+msgid "Jobs"
+msgstr "Posturi"
+
+msgid "Jobs (all sites)"
+msgstr "Posturi(toate site-urile)"
+
+msgid "Jobs waiting before yours:"
+msgstr "Posturi în așteptare înainte de a ta:"
+
+msgid "Just packs 2 consecutives logical pages on a physical one."
+msgstr "Doar împachetează 2 pagini logice consecutive pe una fizică."
+
+msgid ""
+"Keep in mind that I’m cleaning the text and give it\n"
+"        back to you in the markup used on this site. It’s up to you to\n"
+"        check it and finally upload it. Some rarely used markup will\n"
+"        be lost in the process. Please check the preview on the next\n"
+"        step, where you can also insert images."
+msgstr ""
+"Țineți cont de faptul că eu curăț textul și îi dau\n"
+"        înapoi în markup-ul folosit pe acest site. Depinde de dvs. să\n"
+"        verificați și în final să îl încărcați. Unele markup-uri folosite "
+"rar vor fi\n"
+"        fi pierdute în acest proces. Vă rugăm să verificați previzualizarea "
+"de pe următorul\n"
+"        pas, unde puteți, de asemenea, să inserați imagini."
+
+msgid "Keep in mind that some character may be missing in the required font."
+msgstr ""
+"Țineți cont de faptul că este posibil ca unele caractere să lipsească din "
+"fontul necesar."
+
+msgid ""
+"Keep in mind that unusually\n"
+"        complex formatting will be stripped. Is it possible to add\n"
+"        tables and images only on the next step."
+msgstr ""
+"Țineți cont de faptul că formatting neobișnuit de complex\n"
+"        va fi eliminat. Este posibil să se adauge\n"
+"        tabele și imagini doar în etapa următoare."
+
+msgid "Language"
+msgstr "Limbaj"
+
+msgid "Language code of the document (2 or 3 letters). "
+msgstr "Codul lingvistic al documentului (2 sau 3 litere). "
+
+msgid "Language selection"
+msgstr "Selectarea limbii"
+
+msgid "Languages supported"
+msgstr "Limbi acceptate"
+
+msgid "Last"
+msgstr "Ultima"
+
+msgid "Last successful rebuild"
+msgstr "Ultima reconstrucție reușită"
+
+msgid "Last updated"
+msgstr "Ultima actualizare"
+
+msgid "Latest entries"
+msgstr "Ultimele publicări"
+
+msgid "Layout"
+msgstr "Layout"
+
+msgid "Leave it blank if you want it published right away."
+msgstr "Lăsați-l gol dacă doriți să fie publicat imediat."
+
+msgid "Leave this empty to have it automatically generated"
+msgstr "Lăsați acest lucru gol pentru a fi generat automat"
+
+msgid "Letter imposed PDF"
+msgstr "Scrisoare impusă PDF"
+
+msgid "Letter paper"
+msgstr "Hârtie de scrisoare"
+
+msgid "Line spacing"
+msgstr "Spațierea liniilor"
+
+msgid "Link"
+msgstr "Link"
+
+msgid "Links"
+msgstr "Link-uri"
+
+msgid "List of paths to attach to this node, one per line."
+msgstr "Lista căilor de atașare la acest nod, una pe linie."
+
+msgid "List of texts on hold"
+msgstr "Lista de texte în așteptare"
+
+msgid "Lists"
+msgstr "Liste"
+
+msgid "Load"
+msgstr "Încărcați"
+
+msgid "Load another session by token"
+msgstr "Încărcați o altă sesiune prin token"
+
+#. ($pname)
+msgid "Loaded \"%1\" configuration"
+msgstr "Configurație \"%1\" încărcată"
+
+msgid "Loading"
+msgstr "Se încarcă"
+
+msgid "Local"
+msgstr "Local"
+
+msgid "Local pages"
+msgstr "Local pages"
+
+msgid "Locked editing, no upload possible"
+msgstr "Editare blocată, nu este posibilă încărcarea"
+
+msgid "Log in"
+msgstr "Autentificare"
+
+msgid "Login"
+msgstr "Autentificare"
+
+msgid "Logout"
+msgstr "Ieșire"
+
+msgid "Look into the account’s menu, there is an entry for that."
+msgstr "Uitați-vă în meniul contului."
+
+msgid "Lost your password?"
+msgstr "V-ați pierdut parola?"
+
+msgid "Magic answer"
+msgstr "Răspuns magic"
+
+msgid "Magic question"
+msgstr "Întrebare magică"
+
+msgid "Mail from"
+msgstr "Mail de la"
+
+msgid "Main canonical hostname, without protocol"
+msgstr "Numele de gazdă principal canonic, fără protocol"
+
+msgid "Main font"
+msgstr "Font principal"
+
+msgid "Main text"
+msgstr "Text principal"
+
+msgid "Maintainer's FAQ"
+msgstr "Întrebări frecvente ale întreținătorilor"
+
+msgid "Make a link clickable"
+msgstr "Faceți ca un link să poată fi accesat"
+
+msgid "Make all links active"
+msgstr "Faceți toate link-urile active"
+
+msgid "Make all non-breaking spaces explicit and visible as ~~"
+msgstr "Faceți toate spațiile fără întrerupere explicite și vizibile ca ~~"
+
+msgid "Manage categories"
+msgstr "Gestionați categoriile"
+
+msgid "Manage category types"
+msgstr "Gestionați tipurile de categorii"
+
+msgid "Margins: please choose a division factor or set width and height"
+msgstr ""
+"Marginile: vă rugăm să alegeți un factor de divizare sau să setați lățimea "
+"și înălțimea"
+
+msgid "Max image dimension in pixels, applies to both width and height"
+msgstr ""
+"Dimensiunea maximă a imaginii în pixeli, se aplică atât la lățime, cât și la "
+"înălțime"
+
+msgid "Max size for uploads in Mb"
+msgstr "Dimensiunea maximă pentru încărcări în Mb"
+
+msgid "Message"
+msgstr "Mesaj"
+
+#. (8)
+msgid "Minimum %1 characters"
+msgstr "Minimum %1 caractere"
+
+msgid "Mirror"
+msgstr "Mirror"
+
+msgid "Mirror of:"
+msgstr "Mirror of:"
+
+msgid "Missing #title header in the text!"
+msgstr "Missing #title header in the text!"
+
+msgid "Missing alias"
+msgstr "Missing alias"
+
+msgid "Missing character will be reported"
+msgstr "Missing character will be reported"
+
+msgid "Missing redirection"
+msgstr "Caracterul lipsă va fi raportat"
+
+msgid "Mobile"
+msgstr "Mobile"
+
+msgid "Mobile applications"
+msgstr "Mobile applications"
+
+msgid "Mode"
+msgstr "Mobile applications"
+
+msgid "Moderated wiki"
+msgstr "Wiki moderat"
+
+msgid "Mono font"
+msgstr "Mono font"
+
+msgid "More"
+msgstr "Mai mult"
+
+msgid "Move down"
+msgstr "Move down"
+
+msgid "Move up"
+msgstr "Move up"
+
+msgid "Multilanguage: list of whitespace separated language codes"
+msgstr "Multilanguage: listă de coduri de limbă separate prin spații albe"
+
+msgid "My description"
+msgstr "Descrierea mea"
+
+msgid "N/A"
+msgstr "N/A"
+
+msgid "Name"
+msgstr "Nume"
+
+msgid "Name plural"
+msgstr "Nume plural"
+
+msgid "Name singular"
+msgstr "Nume singular"
+
+msgid "Network library listing screen."
+msgstr "Network library listing screen."
+
+msgid "Never display the cover"
+msgstr "Never display the cover"
+
+msgid "Never generate a table of content"
+msgstr "Nu generați niciodată un tabel de conținut"
+
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
+"Nu generați niciodată pagina finală standard cu titlu/autor/note/logo/nume "
+"site"
+
+msgid "Never show teaser and/or cover in text lists"
+msgstr "Nu afișați niciodată teaser și/sau coperta în listele de text"
+
+msgid "New"
+msgstr "Nou"
+
+msgid "New revision"
+msgstr "Revizie nouă"
+
+msgid "New site id"
+msgstr "ID site nou"
+
+msgid "Newer first"
+msgstr "Mai noi mai întâi"
+
+msgid "Newer texts"
+msgstr "Texte mai noi"
+
+msgid "Next"
+msgstr "Următorul"
+
+msgid "Nice title"
+msgstr "Titlu frumos"
+
+msgid "No"
+msgstr "Nu"
+
+msgid "No data available in table"
+msgstr "Nu există date disponibile în tabel"
+
+msgid "No editing yet!"
+msgstr "Fără editare momentan!"
+
+msgid "No matching records found"
+msgstr "Nu s-au găsit înregistrări corespunzătoare"
+
+msgid "No result found!"
+msgstr "Nu s-a găsit niciun rezultat!"
+
+msgid "No revisions to show"
+msgstr "Nu există revizuiri de arătat"
+
+msgid "No text found!"
+msgstr "Nu s-a găsit niciun text!"
+
+msgid "No text was added yet"
+msgstr "Nici un text nu a fost adăugat încă"
+
+msgid "Nodes"
+msgstr "Nodes"
+
+msgid "None"
+msgstr "Nu există"
+
+#. ($c->loc('Save')
+msgid ""
+"Not finished yet! Please have a look at the text and then click on \"%1\" to "
+"finalize your submission!"
+msgstr ""
+"Nu este încă terminat! Vă rugăm să vă uitați la text și apoi dați click pe "
+"\"%1\" pentru a finaliza trimiterea!"
+
+msgid "Notes"
+msgstr "Notițe"
+
+msgid "Nothing to see here, so far"
+msgstr "Nimic de văzut aici, deocamdată"
+
+msgid "Nothing uploaded"
+msgstr "Nimic încărcat"
+
+msgid "Notify mail: blank field will disable them"
+msgstr "Notificare mail: câmpul gol le va dezactiva"
+
+msgid "Notify to"
+msgstr "Notificare către"
+
+msgid ""
+"Now it has been aligned to the site's archive, but this means that there are "
+"some missing commits."
+msgstr ""
+"Acum a fost aliniată la arhiva site-ului, dar acest lucru înseamnă că "
+"lipsesc câteva ”commits”/comenzi."
+
+msgid "Now we are going to populate it and get it ready"
+msgstr "Acum îl vom umple și îl vom pregăti"
+
+msgid "Number of jobs"
+msgstr "Număr de posturi"
+
+msgid "Number of latest entries to display on the RSS (an integer)"
+msgstr ""
+"Numărul celor mai recente înregistrări care urmează să fie afișate pe RSS "
+"(un număr întreg)"
+
+msgid "Number of results to show on paginated pages (an integer)"
+msgstr ""
+"Numărul de rezultate care trebuie afișate pe paginile paginate (un număr "
+"întreg)"
+
+msgid "OPDS"
+msgstr "OPDS"
+
+msgid "Older first"
+msgstr "Mai vechi"
+
+msgid "Older texts"
+msgstr "Texte mai vechi"
+
+msgid "On text creation, enforce user to choose the URI"
+msgstr "La crearea textului, impuneți utilizatorului să aleagă URI-ul"
+
+msgid ""
+"One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr ""
+"O pagină pe foaie. Acest lucru este util doar dacă doriți să adăugați "
+"semnele de tăiere"
+
+msgid "Open wiki"
+msgstr "Open wiki"
+
+msgid "Option templates"
+msgstr "Șabloane de opțiuni"
+
+msgid "Optional, defaults to the author directive"
+msgstr "Optional, defaults to the author directive"
+
+msgid ""
+"Or create a new revision, at your own peril. Having multiple\n"
+"          concurrent revisions means that, unless someone takes care\n"
+"          of it, only one will be chosen. You can go ahead, or retry\n"
+"          later, or, better, contact the librarians before proceeding,\n"
+"          to avoid wasting energies."
+msgstr ""
+"Sau creați o nouă revizuire, pe propria răspundere. Având mai multe\n"
+"          revizuiri simultane înseamnă că, dacă nu se ocupă cineva de\n"
+"          de ea, doar una va fi aleasă. Puteți merge mai departe, sau puteți "
+"încerca din nou\n"
+"          mai târziu, sau, mai bine, contactați bibliotecarii înainte de a "
+"continua,\n"
+"          pentru a evita irosirea energiilor."
+
+msgid "Or log in, if you have an account."
+msgstr "Sau conectați-vă, dacă aveți un cont."
+
+msgid "Or provide an HTML file to upload"
+msgstr "Sau furnizați un fișier HTML pentru a încărca"
+
+#, fuzzy
+msgid "Or wrap it in"
+msgstr "Or wrap it in"
+
+msgid "Ordered List"
+msgstr "Listă ordonată"
+
+msgid "Outer margin"
+msgstr "Margină exterioară"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "PDF logo"
+msgstr "logo PDF"
+
+msgid "PDFs cannot be used in the body."
+msgstr "PDF-urile nu pot fi utilizate în corp."
+
+#. ('#ATTACH')
+#. ("#ATTACH")
+msgid "PDFs not listed in the %1 directive will be stored but ignored."
+msgstr ""
+"PDF-urile care nu sunt enumerate în directiva %1 vor fi stocate, dar "
+"ignorate."
+
+msgid "Page not found!"
+msgstr "Pagina nu a fost găsită!"
+
+msgid "Page where to start a chapter"
+msgstr "Pagina de unde să înceapă un capitol"
+
+msgid ""
+"Pages are not reordered. The first sheet contains\n"
+"        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
+"        This is not meant to be folded."
+msgstr ""
+"Paginile nu sunt reordonate. Prima foaie conține\n"
+"        paginile 1 și 2, a doua 3 și 4, și așa mai departe, una lângă alta.\n"
+"        Aceasta nu este menită să fie pliată."
+
+msgid ""
+"Pages are reordered, in one or more groups\n"
+"        (signatures), then folded in half. If you have more\n"
+"        signatures, you will have to bound them together like a book.\n"
+"        With this option, you may want to decide the size of the\n"
+"        signatures. This can be a fixed value (4,8,16, etc.), the\n"
+"        whole book in a single signature, or an optimized size to\n"
+"        reduce the number of blank pages."
+msgstr ""
+"Paginile sunt reordonate, în unul sau mai multe grupuri\n"
+"        (semnături), apoi se pliază în două. În cazul în care aveți mai "
+"multe\n"
+"        semnături, va trebui să le legați împreună ca pe o carte.\n"
+"        Cu această opțiune, este posibil să doriți să decideți dimensiunea\n"
+"        semnăturilor. Aceasta poate fi o valoare fixă (4,8,16, etc.), se "
+"poate alege valoarea\n"
+"        întreaga carte într-o singură semnătură, sau o dimensiune optimizată "
+"pentru a\n"
+"        a reduce numărul de pagini albe."
+
+msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
+msgstr ""
+"Grosimea hârtiei (0,10 ar trebui să fie adecvată pentru hârtia obișnuită de "
+"80 g/m2)"
+
+msgid "Paragraph indentation in points (pt)"
+msgstr "Indentarea paragrafului în puncte (pt)"
+
+msgid "Paragraphs"
+msgstr "Paragrafe"
+
+msgid "Parent node"
+msgstr "Nodul părinte"
+
+msgid "Part"
+msgstr "Parte"
+
+#, fuzzy
+msgid "Part and chapter. If one side document: part."
+msgstr "Partea și capitolul. În cazul unui document cu o singură parte: parte."
+
+msgid "Part of"
+msgstr "Parte a"
+
+msgid "Part, for larger books only"
+msgstr "Parte, numai pentru cărți mai mari"
+
+msgid "Partial selection"
+msgstr "Selecție parțială"
+
+msgid "Password"
+msgstr "Parolă"
+
+msgid "Password too short"
+msgstr "Parolă prea scurtă"
+
+msgid "Password updated"
+msgstr "Parolă actualizată"
+
+msgid "Password, minimum 8 characters."
+msgstr "Parolă, minim 8 caractere."
+
+msgid "Passwords do not match"
+msgstr "Parolele nu se potrivesc"
+
+msgid "Path"
+msgstr "Path"
+
+msgid "Payload"
+msgstr "Payload"
+
+msgid "Pending revisions"
+msgstr "Revizuiri în așteptare"
+
+msgid "Picture"
+msgstr "Poză"
+
+msgid "Place it in the body with a description:"
+msgstr "Puneți-l în corp cu o descriere:"
+
+msgid "Place it in the body without description:"
+msgstr "Așezați-o în corp fără descriere:"
+
+msgid "Place the notes on the back of the first page, impressum-style"
+msgstr "Așezați notele pe spatele primei pagini, în stil impressum"
+
+msgid "Plain PDF"
+msgstr "PDF simplu"
+
+msgid ""
+"Please check your inbox, we tried to deliver a mail to the address you "
+"specified with a password reset link"
+msgstr ""
+"Vă rugăm să vă verificați căsuța de primire, am încercat să trimitem un e-"
+"mail la adresa pe care ați specificat-o cu un link de resetare a parolei"
+
+msgid "Please choose a text"
+msgstr "Vă rugăm să alegeți un text"
+
+msgid "Please choose the Beamer color theme"
+msgstr "Vă rugăm să alegeți tema de culoare Beamer"
+
+msgid "Please choose the Beamer theme"
+msgstr "Vă rugăm să alegeți tema Beamer"
+
+msgid "Please choose the font size"
+msgstr "Vă rugăm să alegeți dimensiunea fontului"
+
+msgid "Please choose the main font"
+msgstr "Vă rugăm să alegeți fontul principal"
+
+msgid "Please choose the mono font"
+msgstr "Vă rugăm să alegeți fontul mono"
+
+msgid "Please choose the sans font"
+msgstr "Vă rugăm să alegeți fontul sans"
+
+msgid "Please describe shortly what you did"
+msgstr "Vă rugăm să descrieți pe scurt ceea ce ați făcut"
+
+msgid "Please do not use a valuable password."
+msgstr "Vă rugăm să nu folosiți o parolă valoroasă."
+
+msgid ""
+"Please do not use higher levels (part or chapter) for short articles with "
+"sections."
+msgstr ""
+"Vă rugăm să nu utilizați niveluri superioare (parte sau capitol) pentru "
+"articole scurte cu secțiuni."
+
+#. (amw_group_name)
+msgid "Please ensure that your system user is member of the \"%1\" group"
+msgstr ""
+"Vă rugăm să vă asigurați că utilizatorul dvs. de sistem este membru al "
+"grupului \"%1\""
+
+msgid ""
+"Please give us a username. It should *not* be a mail address.\n"
+"        Just a fancy name, so we can know that multiple uploads come\n"
+"        from the same person."
+msgstr ""
+"Vă rugăm să ne dați un nume de utilizator. Acesta nu trebuie să fie o adresă "
+"de e-mail.\n"
+"        Doar un nume de fantezie, ca să putem ști că încărcările multiple "
+"vin\n"
+"        de la aceeași persoană."
+
+msgid ""
+"Please initialized it empty, without any README,license, .gitignore or "
+"similar."
+msgstr ""
+"Please initialize it empty, without any README,license, .gitignore or "
+"similar."
+
+msgid ""
+"Please keep in mind that filters are language-specific\n"
+"              and may or may not be available for the language of the\n"
+"              text. If not available, they will just leave the text as\n"
+"              is."
+msgstr ""
+"Vă rugăm să rețineți că filtrele sunt specifice limbii\n"
+"              și pot fi sau nu disponibile pentru limba în care se "
+"utilizează aplicația\n"
+"              textului. În cazul în care nu sunt disponibile, acestea vor "
+"lăsa pur și simplu textul ca\n"
+"              atare."
+
+msgid ""
+"Please keep in mind that if you see “Force publishing”\n"
+"    as action, it means that the revision has been superseded by\n"
+"    another one, so publishing this one, you'll end up reverting a\n"
+"    previous one. Try to avoid this, unless you know what you're\n"
+"    doing."
+msgstr ""
+"Vă rugăm să rețineți că dacă vedeți \"Forțați publicarea\"\n"
+"    ca acțiune, înseamnă că revizuirea a fost înlocuită de\n"
+"    alta, așa că, publicând-o pe aceasta, veți ajunge să reveniți la o\n"
+"    una anterioară. Încercați să evitați acest lucru, cu excepția cazului în "
+"care știți ce faceți\n"
+"    ce faceți."
+
+msgid "Please leave a mail if you want to be contacted about this change"
+msgstr ""
+"Vă rugăm să lăsați un mail dacă doriți să fiți contactat în legătură cu "
+"această schimbare"
+
+msgid "Please note that wrapping tags must be placed on a line by themselves."
+msgstr ""
+"Vă rugăm să rețineți că etichetele de împachetare trebuie să fie plasate pe "
+"o singură linie."
+
+msgid ""
+"Please note that you may want to paste from a\n"
+"        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
+"        from word” button. This is supposed to preserve the markup."
+msgstr ""
+"Vă rugăm să rețineți că este posibil să lipiți de pe un fișier\n"
+"        document Word/OpenOffice/LibreOffice/HTML utilizând funcția \"paste"
+"\".\n"
+"        din Word\". Acest lucru ar trebui să păstreze markup-ul."
+
+msgid ""
+"Please note: without any prefix, protocol or hostname, just\n"
+"  the bare page name as shown above. External redirecting is not\n"
+"  supported."
+msgstr ""
+"Notă: fără prefix, protocol sau nume de gazdă, doar\n"
+"  doar numele gol al paginii, așa cum se arată mai sus. Redirecționarea "
+"externă nu este\n"
+"  acceptată."
+
+msgid "Please prove you are a human"
+msgstr "Te rog dovedește ca ești om"
+
+msgid "Please reindex the site."
+msgstr "Vă rugăm să reindexați site-ul."
+
+msgid "Please reload your page"
+msgstr "Vă rugăm să reîncărcați pagina"
+
+msgid "Please remove this file from the body first"
+msgstr "Vă rugăm să eliminați mai întâi acest fișier din corp"
+
+msgid ""
+"Please replace the example URL in the next line with the real one with SSH "
+"protocol"
+msgstr ""
+"Vă rugăm să înlocuiți URL-ul de exemplu din linia următoare cu cel real cu "
+"protocol SSH"
+
+msgid "Please select"
+msgstr "Te rog selectează"
+
+msgid "Please select the desired fonts"
+msgstr "Te rog selectează fonturile dorite"
+
+msgid "Please select the signature size:"
+msgstr "Vă rugăm să selectați dimensiunea semnăturii:"
+
+msgid ""
+"Please select the size of each page including the crop marks, before the "
+"imposing"
+msgstr ""
+"Vă rugăm să selectați dimensiunea fiecărei pagini, inclusiv semnele de "
+"tăiere, înainte de impunere"
+
+msgid "Please set"
+msgstr "Te rog setează"
+
+msgid ""
+"Please set the URI you desire. Author (if present),\n"
+"        title and eventually a number if the URI already exists is\n"
+"        usually a good choice"
+msgstr ""
+"Vă rugăm să setați URI-ul pe care îl doriți. Autor (dacă este prezent),\n"
+"        titlul și, eventual, un număr dacă URI-ul există deja este\n"
+"        de obicei o alegere bună"
+
+msgid "Please setup the Beamer layout"
+msgstr "Vă rugăm să configurați aspectul Beamer"
+
+msgid "Please upload your file again!"
+msgstr "Vă rugăm să încărcați din nou fișierul dumneavoastră!"
+
+msgid "Poetry, bibliographies, plays, code blocks"
+msgstr "Poezie, bibliografii, piese de teatru, blocuri de coduri"
+
+msgid "Pointing to"
+msgstr "Arătând spre"
+
+msgid "Popular texts"
+msgstr "Texte populare"
+
+msgid ""
+"Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
+"        “i.”, “I.”, depending on the list type you need."
+msgstr ""
+"Prefixul pentru listele ordonate poate fi \"1.\", \"a.\", \"A.\",\n"
+"        \"i.\", \"I.\", în funcție de tipul de listă de care aveți nevoie."
+
+msgid "Preview"
+msgstr "Previzualizare"
+
+msgid "Preview box height in pixel"
+msgstr "Previzualizează înălțimea cutiei în pixeli"
+
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "Priority"
+msgstr "Prioritate"
+
+msgid "Private"
+msgstr "Privat"
+
+msgid "Procedure"
+msgstr "Procedură"
+
+msgid "Processing"
+msgstr "Procesare"
+
+msgid "Produce slides."
+msgstr "Produceți diapozitive."
+
+msgid "Produced"
+msgstr "Produs"
+
+msgid "Publication date"
+msgstr "Data publicării"
+
+msgid "Publication date on this site"
+msgstr "Data publicării pe acest site"
+
+msgid "Publish"
+msgstr "Publicați"
+
+msgid "Published in *A nice book*, published by My House, 2014"
+msgstr "Publicat în ”A nice book”, publicat în My House, 2014"
+
+msgid "Publisher"
+msgstr "Editor"
+
+msgid "Purge"
+msgstr "Epurare"
+
+msgid ""
+"Purging means removing it completely from the archive, not just hiding it."
+msgstr ""
+"Epurarea înseamnă eliminarea completă din arhivă, nu doar ascunderea ei."
+
+msgid ""
+"Put additional information here (original\n"
+"\t  title, translators, credits, etc). Footnotes go in the\n"
+"\t  body."
+msgstr ""
+"Puneți aici informații suplimentare (titlul original, traducători, credite, "
+"etc.). Notele de subsol se pun\n"
+"\t  în corp."
+
+msgid "Quarter Letter paper"
+msgstr "Hârtie Quarter Letter"
+
+msgid "Queue"
+msgstr "Coadă"
+
+msgid "Quota exceeded, too many pages"
+msgstr "Cotă depășită, prea multe pagini"
+
+msgid "Quotes"
+msgstr "Citate"
+
+msgid "RSS aggregator"
+msgstr "RSS aggregator"
+
+msgid "RSS feed"
+msgstr "Flux RSS"
+
+msgid "Random"
+msgstr "Aleatoriu"
+
+msgid "Read about the file naming scheme if you need to add files to the tree."
+msgstr ""
+"Read about the file naming scheme if you need to add files to the tree."
+
+msgid "Read the whole text..."
+msgstr "Citiți întregul text..."
+
+msgid "Real time help"
+msgstr "Ajutor în timp real"
+
+msgid ""
+"Rearrange the footnotes, fixing the numbering,\n"
+"              considering only the order in which they were inserted.\n"
+"              Please leave unchecked if you don't know what this\n"
+"              means. This option could be destructive, please use with\n"
+"              caution and check the result. In case you encounter\n"
+"              problems, please save the result reporting them in the\n"
+"              message. The procedure tries to be safe and will ignore\n"
+"              the change if footnotes are missing or are too many."
+msgstr ""
+"Reorganizați notele de subsol, corectând numerotarea,\n"
+"              luând în considerare doar ordinea în care au fost inserate.\n"
+"              Vă rugăm să lăsați nebifată dacă nu știți ce înseamnă acest "
+"lucru\n"
+"             Această opțiune poate fi distructivă, vă rugăm să o utilizați "
+"cu\n"
+"              prudență și verificați rezultatul. În cazul în care întâlniți\n"
+"              probleme, vă rugăm să salvați rezultatul raportându-le în\n"
+"              mesaj. Procedura încearcă să fie sigură și va ignora\n"
+"              modificarea dacă notele de subsol lipsesc sau sunt prea multe."
+
+msgid "Reason"
+msgstr "Motiv"
+
+msgid "Reason for deletion"
+msgstr "Motiv pentru ștergere"
+
+msgid "Rebuild"
+msgstr "Recontruiește"
+
+msgid "Rebuild all generated files"
+msgstr "Reconstruiește toate fișierele generate"
+
+msgid "Rebuild formats"
+msgstr "Reconstruiește formaturile"
+
+msgid "Rebuild the generated formats"
+msgstr "Reconstruiește formaturile generate"
+
+msgid "Rebuilding"
+msgstr "În curs de reconstruire"
+
+msgid "Recheck"
+msgstr "Verifică din nou"
+
+msgid "Redirections"
+msgstr "Redirecționări"
+
+msgid "Refresh and apply filters"
+msgstr "Reîmprospătați și aplicați filtre"
+
+msgid "Reindex site"
+msgstr "Reindexați site-ul"
+
+msgid "Related projects"
+msgstr "Proiecte relevante"
+
+#. ("$name $url")
+msgid "Remote repository %1 added"
+msgstr "Remote repository %1 added"
+
+#. ($name)
+msgid "Remote repository %1 removed"
+msgstr "Remote repository %1 removed"
+
+msgid "Remove"
+msgstr "Remove"
+
+msgid "Remove cover image"
+msgstr "Înlăturați imaginea de copertă"
+
+msgid "Remove this category"
+msgstr "Scoateți această categorie"
+
+#, fuzzy
+msgid "Removed Upstream"
+msgstr "Removed Upstream"
+
+msgid "Rename"
+msgstr "Renumiți"
+
+msgid "Rename text URI"
+msgstr "Renumește URI-ul textului"
+
+msgid "Rename to"
+msgstr "Renumește în"
+
+msgid "Repeat email"
+msgstr "Repetați e-mailul"
+
+msgid "Repeat password"
+msgstr "Repetați parola"
+
+msgid "Request failed! Please report the the problem"
+msgstr "Cererea a eșuat! Vă rugăm să raportați problema"
+
+msgid "Reschedule"
+msgstr "Reprogramați"
+
+msgid "Reset all"
+msgstr "Resetați tot"
+
+msgid "Reset filters"
+msgstr "Resetați filtre"
+
+msgid "Reset password"
+msgstr "Resetați parola"
+
+#. (username)
+msgid "Reset password for user %1"
+msgstr "Resetați parola pentru utilizatorul %1"
+
+msgid "Reset to site defaults"
+msgstr "Resetați la site default"
+
+msgid "Reset your password"
+msgstr "Resetați-vă parola"
+
+msgid "Restricted configuration variables"
+msgstr "Variabile de configurare restricționate"
+
+msgid "Restricted format options"
+msgstr "Opțiuni de format restricționat"
+
+msgid "Results per page:"
+msgstr "Rezultate pe pagină:"
+
+msgid "Retrieved on DATE from URL"
+msgstr "Preluat la DATA de la URL"
+
+msgid "Retrieved on March 8, 2012 from"
+msgstr "Preluat la 8 martie 2012 din"
+
+msgid "Revision"
+msgstr "Revizie"
+
+#. ($uri)
+msgid "Revision for %1 has been deleted"
+msgstr "Revizuirea pentru %1 a fost ștearsă"
+
+msgid "Roles"
+msgstr "Roluri"
+
+msgid "Root node"
+msgstr "Root node"
+
+msgid "Run diff"
+msgstr "Run diff"
+
+msgid "Running headings"
+msgstr "Running headings"
+
+msgid "SKU"
+msgstr "SKU"
+
+msgid "SSL CA certificate path (Apache)"
+msgstr "SSL CA certificate path (Apache)"
+
+msgid "SSL certificate path (Apache)"
+msgstr "SSL certificate path (Apache)"
+
+msgid "SSL chained certificate path (Nginx)"
+msgstr "SSL chained certificate path (Nginx)"
+
+msgid "SSL configuration"
+msgstr "SSL configuration"
+
+msgid "SSL key path"
+msgstr "SSL key path"
+
+msgid "Same as above, but for duplex printers"
+msgstr "La fel ca mai sus, dar pentru imprimantele duplex"
+
+msgid "Same as above, for the Archive menu"
+msgstr "La fel ca mai sus, pentru meniul Arhivă"
+
+msgid "Same as above, for the Related Projects menu"
+msgstr "La fel ca mai sus, pentru meniul Proiecte Relevante"
+
+msgid "Sans font"
+msgstr "Font sans"
+
+msgid "Save"
+msgstr "Salvați"
+
+msgid "Save the current settings with a name"
+msgstr "Salvați setările actuale cu un nume"
+
+#. ($pname)
+msgid "Saved \"%1\" configuration"
+msgstr "Configurația \"%1\" salvată"
+
+msgid "Search"
+msgstr "Căutați"
+
+msgid "Search Engine Facets"
+msgstr "Search Engine Facets"
+
+msgid "Search filters"
+msgstr "Filtre de căutare"
+
+msgid "Search results"
+msgstr "Rezultate ale căutării"
+
+msgid "Search this column"
+msgstr "Caută în coloana aceasta"
+
+msgid "Secondary footnotes"
+msgstr "Note de subsol secundare"
+
+msgid "Section"
+msgstr "Secțiune"
+
+msgid "Section and subsection. If one side document: section."
+msgstr "Secțiune și subsecțiune. Dacă documentul are doar o parte: secțiune."
+
+msgid "See here for more details."
+msgstr "Vedeți aici pentru mai multe detalii."
+
+msgid "See here for the full documentation."
+msgstr "Vedeți aici documentația completă."
+
+msgid "See the full manual for more details (english)"
+msgstr "Consultați manualul complet pentru mai multe detalii"
+
+msgid "Select"
+msgstr "Selectați"
+
+msgid "Select all"
+msgstr "Selectați tot"
+
+msgid "Select all for deletion"
+msgstr "Selectați tot pentru ștergere"
+
+msgid "Select all for rescheduling"
+msgstr "Selectați tot pentru reprogramare"
+
+msgid "Select individual parts for the bookbuilder"
+msgstr "Selectați părți individuale pentru bookbuilder"
+
+msgid "Send mail"
+msgstr "Trimiteți mail"
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
+msgstr "Trimiterea de e-mailuri de test de la %1 la %2"
+
+msgid "Separate body fields"
+msgstr "Câmpuri separate pentru corp"
+
+msgid "Separate footer fields"
+msgstr "Câmpuri de subsol separate"
+
+msgid "Separate header fields"
+msgstr "Câmpuri de antet separate"
+
+msgid "Series Name"
+msgstr "Denumirea seriei"
+
+msgid "Series Number"
+msgstr "Numărul seriei"
+
+msgid "Session sharing"
+msgstr "Partajarea sesiunii"
+
+msgid "Set a date in the future if you want it deferred."
+msgstr "Stabiliți o dată în viitor dacă doriți să o amânați."
+
+msgid "Settings loaded"
+msgstr "Setări încărcate"
+
+msgid "Setup"
+msgstr "Setup"
+
+msgid "Show _MENU_ entries"
+msgstr "Show _MENU_ entries"
+
+msgid "Show cheatsheet"
+msgstr "Arată cheatsheet"
+
+msgid "Show differences in other tab"
+msgstr "Afișați diferențele în altă filă"
+
+msgid "Show filters"
+msgstr "Arată filtrele"
+
+msgid "Show preview in other tab"
+msgstr "Arată previzualizare în altă filă"
+
+msgid "Show text type and number of pages in the listing"
+msgstr "Afișați tipul de text și numărul de pagini din listă"
+
+msgid "Show the text infobox at the bottom of the texts"
+msgstr "Afișarea infoboxului textului în partea de jos a textelor"
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "Se afișează de la 0 la 0 din 0 intrări"
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr "Showing _START_ to _END_ of _TOTAL_ entries"
+
+msgid "Single bars"
+msgstr "Single bars"
+
+#, fuzzy
+msgid "Site Map"
+msgstr "Site Map"
+
+msgid "Site already exists"
+msgstr "Site-ul deja există"
+
+msgid "Site group"
+msgstr "Site group"
+
+msgid "Site id"
+msgstr "Site id"
+
+msgid "Site mail (From field)"
+msgstr "Site mail(From field)"
+
+msgid "Site mode"
+msgstr "Site mode"
+
+msgid "Site name"
+msgstr "Numele site-ului"
+
+msgid "Site slogan"
+msgstr "Sloganul site-ului"
+
+msgid "Site users"
+msgstr "Utilizatorii site-ului"
+
+msgid "Sites"
+msgstr "Site-uri"
+
+msgid "Slides"
+msgstr "Diapozitive"
+
+msgid "Slides (PDF)"
+msgstr "Diapozitive(PDF)"
+
+msgid "Small Caps"
+msgstr "Small Caps"
+
+msgid "So we can be sure we are not mailing passwords to random people"
+msgstr ""
+"Ca să putem fi siguri că nu trimitem parolele prin mail unor persoane la "
+"întâmplare"
+
+msgid "Some fields are missing, all are required"
+msgstr "Unele câmpuri lipsesc, toate sunt obligatorii"
+
+msgid "Some fields are too long"
+msgstr "Unele câmpuri sunt prea lungi"
+
+msgid "Some ongoing revisions were found"
+msgstr "S-au constatat unele revizuiri în curs de desfășurare"
+
+msgid "Sorry, too many jobs pending, please try again later!"
+msgstr ""
+"Ne pare rău, prea multe posturi în așteptare, vă rugăm să încercați din nou "
+"mai târziu!"
+
+msgid "Sorting:"
+msgstr "Sortare:"
+
+msgid "Source"
+msgstr "Sursă"
+
+msgid "Source files"
+msgstr "Source files"
+
+msgid "Source files with attachments"
+msgstr "Fișiere din sursă cu atașamente"
+
+msgid "Source removed"
+msgstr "Sursă înlăturată"
+
+msgid "Source, notes..."
+msgstr "Sursa, notițe..."
+
+msgid "Sources"
+msgstr "Surse"
+
+#, fuzzy
+msgid "Special blocks"
+msgstr "Special blocks"
+
+msgid "Special pages"
+msgstr "Pagini speciale"
+
+msgid "Specify a whitespace-separated list of languages to activate it."
+msgstr ""
+"Specificați o listă de limbi, separate prin spații albe, pentru a-l activa."
+
+#, fuzzy
+msgid "Stale editing"
+msgstr "Stale editing"
+
+msgid "Standalone HTML (printer-friendly)"
+msgstr "HTML de sine stătător (ușor de tipărit)"
+
+msgid "Standard"
+msgstr "Standard"
+
+msgid "Start the document with an empty page"
+msgstr "Începeți documentul cu o pagină goală"
+
+msgid "Started"
+msgstr "Început"
+
+msgid "Static page without javascript"
+msgstr "Pagina statică fără javascript"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Status changed"
+msgstr "Status schimbat"
+
+msgid "Subsection"
+msgstr "Subsecțiune"
+
+msgid "Subsubsection or description item"
+msgstr "Subsecțiune sau element de descriere"
+
+msgid "Subtitle"
+msgstr "Subtitle"
+
+msgid "Such URI already exists"
+msgstr "Astfel de URI-uri deja există"
+
+msgid "Such an URI already exists"
+msgstr "Un astfel de URI deja există"
+
+msgid ""
+"Such an header will unpublish the text and put a\n"
+"  redirection in place, and will be listed here"
+msgstr ""
+"Un astfel de antet va dezactiva textul și va pune o\n"
+"  redirecționare, și va fi listat aici"
+
+msgid "Such an user already exists!"
+msgstr "Un astfel de utilizator există deja!"
+
+msgid "Such username already exists"
+msgstr "Un astfel de nume de utilizator există deja"
+
+msgid "Suggested values:"
+msgstr "Valori sugerate:"
+
+msgid "Summary"
+msgstr "Sumar"
+
+msgid "Supported directive in the header"
+msgstr "Directiva acceptată în antet"
+
+msgid "Switch theme"
+msgstr "Schimbă tema"
+
+msgid "Table of Contents"
+msgstr "Cuprins"
+
+msgid "Tables"
+msgstr "Tabele"
+
+msgid "Tag cloud with authors"
+msgstr "Tag cloud cu autori"
+
+msgid "Tag cloud with topics"
+msgstr "Tag cloud cu subiecte"
+
+msgid "Task"
+msgstr "Sarcină"
+
+msgid "TeX options (advanced)"
+msgstr "Opțiuni TeX (avansate)"
+
+msgid "Teaser"
+msgstr "Teaser"
+
+msgid "Teaser image"
+msgstr "Imaginea teaser"
+
+msgid "Term"
+msgstr "Term"
+
+msgid "Test"
+msgstr "Test"
+
+msgid "Tested applications, in this order of preference"
+msgstr "Aplicații testate, în această ordine de preferință"
+
+msgid "Text body only (no title, no final pages)"
+msgstr "Numai corpul textului (fără titlu, fără pagini finale)"
+
+msgid "Text formatted with markup"
+msgstr "Text formatat cu markup"
+
+msgid "Text height"
+msgstr "Înălțimea textului"
+
+#, fuzzy
+msgid ""
+"Text redirections are set in the text itself, using the\n"
+"  DELETED header with this syntax"
+msgstr ""
+"Redirecționările de text sunt setate în textul propriu-zis, folosind "
+"opțiunea\n"
+"  DELETED cu următoarea sintaxă"
+
+msgid "Text width"
+msgstr "Lățimea textului"
+
+msgid "Texts"
+msgstr "Texte"
+
+msgid ""
+"The Beamer selections are relevant only if you activate the\n"
+"  slides output."
+msgstr ""
+"Selecțiile Beamer sunt relevante numai dacă activați output-ul "
+"diapozitivelor."
+
+msgid "The OPDS address for this site is:"
+msgstr "Adresa OPDS pentru acest site este:"
+
+msgid ""
+"The PDF logo value can be either an absolute path\n"
+"            or just a filename if you choose to install it in the\n"
+"            TeXlive tree. You can do so with the following commands.\n"
+"            The last one checks if the file can be found."
+msgstr ""
+"Valoarea logo-ului PDF poate fi fie un absolute path\n"
+"            sau doar un nume de fișier, dacă alegeți să o instalați în "
+"fișierul\n"
+"            TeXlive. Puteți face acest lucru cu următoarele comenzi.\n"
+"            Ultima comandă verifică dacă fișierul poate fi găsit."
+
+#, fuzzy
+msgid "The changes will propagate automatically once you push."
+msgstr "Modificările se vor propaga automat după ce faceți push."
+
+#. ($uri)
+msgid "The description for %1 has been updated"
+msgstr "Descrierea pentru %1 a fost actualizată"
+
+msgid ""
+"The differences between the list of footnotes and references is shown below."
+msgstr ""
+"Diferențele dintre lista de note de subsol și cea de referințe sunt "
+"prezentate mai jos."
+
+msgid "The file uploaded is not an HTML file!"
+msgstr "Fișierul încărcat nu este un fișier HTML!"
+
+msgid "The following settings provide the defaults for each format."
+msgstr "Următoarele setări oferă valorile implicite pentru fiecare format."
+
+msgid "The following values are used to generate the webserver configuration."
+msgstr ""
+"Următoarele valori sunt utilizate pentru a genera configurația serverului "
+"web."
+
+#, fuzzy
+msgid ""
+"The generate webserver configuration will redirect\n"
+"          all the HTTP requests to HTTPS"
+msgstr ""
+"The generate webserver configuration will redirect\n"
+"          all the HTTP requests to HTTPS"
+
+msgid "The logo has the site name on itself"
+msgstr "Logo-ul are numele site-ului pe el însuși"
+
+msgid "The optional subtitle"
+msgstr "Subtitlul opțional"
+
+msgid ""
+"The page /special/index is twice special. It is assumed to be the\n"
+"default page to visit when loading the site’s root."
+msgstr ""
+"Pagina /special/index este dublu specială. Se presupune că este\n"
+"pagina implicită care se vizitează la încărcarea rădăcinii site-ului."
+
+msgid "The password will be mailed at this address"
+msgstr "Parola va fi trimisă prin emailla această adresă"
+
+msgid "The reset link will expire in a hour."
+msgstr "Linkul de resetare va expira peste o oră."
+
+msgid "The revision has the following messages"
+msgstr "Revizuirea are următoarele mesaje"
+
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr ""
+"Site-ul va afișa PDF-urile cu un thumbnail\n"
+"        la sfârșitul documentului."
+
+msgid "The text structure is shown below."
+msgstr "Structura textului este prezentată mai jos."
+
+msgid "The text to show on the homepage preview"
+msgstr "Textul care va fi afișat în previzualizarea paginii de pornire"
+
+msgid "The text was added to the bookbuilder"
+msgstr "Textul a fost adăugat la bookbuilder"
+
+msgid ""
+"The title of the document, for sorting purposes. Useful\n"
+"          if you want to strip the article, if any. A text titled “A\n"
+"          nice title” could have this set to “Nice title”, and will be\n"
+"          listed under N, not under A."
+msgstr ""
+"Titlul documentului, în scopul sortării. Util\n"
+"          dacă doriți să eliminați articolul, dacă există. Un text intitulat "
+"\"Un\n"
+"          titlu frumos\" ar putea avea acest lucru setat la \"Titlu frumos"
+"\", și va fi\n"
+"          listat sub T, nu sub U."
+
+msgid "The title of the document. The only mandatory directive."
+msgstr "Titlul documentului. Singura directivă obligatorie."
+
+msgid ""
+"The webserver needs to be reconfigured. Please execute in a root shell the "
+"following commands:"
+msgstr ""
+"Serverul web trebuie reconfigurat. Vă rugăm să executați următoarele comenzi "
+"într-un shell root:"
+
+#, fuzzy
+msgid "The whole book in as single signature"
+msgstr "Întreaga carte într-o singură semnătură"
+
+msgid "Then approve the change as it would be a normal publishing."
+msgstr "Apoi, aprobați modificarea ca și cum ar fi o publicare normală."
+
+msgid "Then fetch the updates from this page."
+msgstr "Apoi, preluați actualizările de pe această pagină."
+
+msgid "There are failed jobs"
+msgstr "Există sarcini eșuate"
+
+msgid "There are pending revisions"
+msgstr "Există revizuiri în așteptare"
+
+msgid "These texts are missing the unique id."
+msgstr "Acestor texte le lipsește ID-ul unic."
+
+msgid "They can be texts, special texts, authors or topics."
+msgstr "Acestea pot fi texte, texte speciale, autori sau subiecte."
+
+msgid ""
+"They should be paths relative to the webserver configuration root or "
+"absolute paths (recommended)."
+msgstr ""
+"Acestea trebuie să fie paths relative la rădăcina de configurare a "
+"serverului web sau absolute paths(recomandate)."
+
+msgid "This directive wants a whitespace separated list of filenames."
+msgstr ""
+"Această directivă dorește o listă de nume de fișiere separate prin spații "
+"albe."
+
+msgid ""
+"This is a WYSIWYG editor. If you prefer to use\n"
+"        the wiki-like syntax leave it as is, fill the required fields\n"
+"        above and postpone the editing to the next step."
+msgstr ""
+"Acesta este un editor WYSIWYG. Dacă preferați să utilizați\n"
+"        sintaxa de tip wiki, lăsați-o așa cum este, completați câmpurile "
+"obligatorii\n"
+"        de mai sus și amânați editarea la pasul următor."
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
+"Acest lucru este relevant numai pentru fișierele generate, unde este posibil "
+"să aveți nevoie de un set alternativ de fonturi. Nu are niciun efect în "
+"aplicația web dacă se utilizează deja un font sans."
+
+msgid "This is the caption"
+msgstr "Acesta este caption-ul"
+
+msgid ""
+"This mail has been sent to notify you about a new text\n"
+"creation, even if the uploading is not completed yet and the user\n"
+"still needs to finalize the upload. Another mail should follow soon.\n"
+"If this doesn't happen, it means that the uploading has been abandoned\n"
+"and you may want to check it out."
+msgstr ""
+"Acest mail a fost trimis pentru a vă anunța despre o nouă creație de text, "
+"chiar dacă încărcarea nu este încă finalizată și utilizatorul tot\n"
+"trebuie să finalizeze încărcarea. Un alt e-mail ar trebui să urmeze în "
+"curând.\n"
+"Dacă acest lucru nu se întâmplă, înseamnă că încărcarea a fost abandonată\n"
+"și este posibil să doriți să o verificați."
+
+#, fuzzy
+msgid "This revision is already published, ignoring changes"
+msgstr "Această revizuire este deja publicată,se ignoră modificările"
+
+msgid "This revision is being actively edited"
+msgstr "Această revizuire este în curs de editare"
+
+msgid "This revision is being actively edited by you"
+msgstr "Această revizuire este în curs de editare de către tine"
+
+msgid "This revision is being edited by someone else!"
+msgstr "Această revizuire este în curs de editare de altcineva!"
+
+msgid "This section will not produce a slide"
+msgstr "Această secție nu va produce un diapozitiv"
+
+msgid "This setting affects only the text creation form."
+msgstr "Această setare afectează numai creearea textului."
+
+msgid ""
+"This site is private and mobile applications should ask for your username "
+"and\n"
+"  password to access the OPDS."
+msgstr ""
+"Acest site este privat și aplicațiile mobile ar trebui să vă ceară username-"
+"ul și parola pentru a accesa OPDS-ul."
+
+msgid "This text does not exist"
+msgstr "Acest text nu există"
+
+msgid "This text is a book"
+msgstr "Acest text este o carte"
+
+msgid "This text is an article"
+msgstr "Acest text este un articol"
+
+msgid "This text is new"
+msgstr "Acest text este nou"
+
+msgid "This text is not available"
+msgstr "Acest text nu este disponibil"
+
+msgid "This text is not public yet"
+msgstr "Acest text nu este public încă"
+
+msgid "This text is not published yet"
+msgstr "Acest text nu este publicat încă"
+
+#. (rev.is_deferred)
+#, fuzzy
+msgid "This text will be deferred to %1"
+msgstr "Acest text va fi amânat pana la %1"
+
+msgid "This user cannot be removed"
+msgstr "Acest utilizator nu poate fi scos"
+
+msgid "Thumbnail"
+msgstr "Thumbnail"
+
+msgid "Title"
+msgstr "TItlu"
+
+msgid "Title and chapter. If one side document: chapter."
+msgstr "Titlu și capitol. Dacă documentul are doar o parte: capitol."
+
+msgid "Title and section.  If one side document: section."
+msgstr "Titlu și secțiune. Dacă documentul are doar o parte: secțiune."
+
+msgid "Title and subtitle. If one side document: title."
+msgstr "Titlu și subtitlu. Dacă documentul are doar o parte: subtitlu."
+
+msgid "Title for sorting"
+msgstr "Titlu pentru sortare"
+
+msgid "Title, author, date..."
+msgstr "Titlu, autor, dată..."
+
+msgid "Titles"
+msgstr "Titluri"
+
+#. (pending_url)
+msgid "To apply the changes, you can visit %1"
+msgstr "Pentru a pune în aplicare schimbările, poți vizita %1"
+
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr ""
+"Pentru a afișa PDF-urile, setați sau adăugați următorul șir de caractere în "
+"antet"
+
+msgid ""
+"To preserve the whitespaces and line breakings, wrap the paragraphs with"
+msgstr ""
+"Pentru a păstra spațiile albe și line break-urile, înconjurați paragrafele cu"
+
+msgid "To quickly format bibliographies wrap them in"
+msgstr "Pentru a formata rapid bibliografiile, înconjurați-le în"
+
+msgid "To quickly format plays, use"
+msgstr "Pentru a formata ”plays” rapid, folosește"
+
+msgid "To resume the editing you can visit the following URL"
+msgstr "Pentru a relua editarea poți vizitaa următorul URL"
+
+#. (loc('Update')
+#. (loc("Update"))
+msgid ""
+"To save or update the templates, you need first to save\n"
+"    the options with the \"%1\" button"
+msgstr ""
+"Pentru a salva sau actualiza șabloanele, trebuie mai întâi să salvați\n"
+"    opțiunile cu ajutorul butonului \"%1\""
+
+msgid "To view the changes introduced, you can visit the following URL"
+msgstr "Pentru a vizualiza modificările introduse, puteți vizita următorul URL"
+
+msgid "Toggle"
+msgstr "Toggle"
+
+msgid "Toggle fullscreen editor"
+msgstr "Toggle fullscreen editor"
+
+msgid "Top margin"
+msgstr "Margine superioară"
+
+msgid "Topic"
+msgstr "Subiect"
+
+msgid "Topics"
+msgstr "Subiecte"
+
+msgid "Total pages"
+msgstr "Pagini totale"
+
+msgid "Triple bars"
+msgstr "Triple bars"
+
+msgid "Try a random text if unsure"
+msgstr "Dacă ești nesigur, încearcă un text aleatoriu"
+
+msgid ""
+"Turn links to images into images (affects site display only, static formats "
+"have the link)"
+msgstr ""
+"Transformă linkurile către imagini în imagini (afectează doar afișarea pe "
+"site, formatele statice au linkul)"
+
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"            Gmaps into widgets (affects site display only, static\n"
+"            formats have the link)"
+msgstr ""
+"Întoarceți linkurile fără descriere către YouTube, Vimeo,\n"
+"            Gmaps în widget-uri (afectează doar afișarea pe site, statică\n"
+"            formatele statice au linkul)"
+
+msgid "Two side layout"
+msgstr "Aspect two side"
+
+msgid "Type"
+msgstr "Tip"
+
+msgid "URI"
+msgstr "URI"
+
+msgid "URI is available and valid"
+msgstr "URI-ul este disponibil și valid"
+
+msgid ""
+"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
+"my-author-title-1"
+msgstr ""
+"URI trebuie să fie un șir ASCII, separat prin cratimă, fără spații. De "
+"exemplu, autor-titlu-1"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
+msgstr "URL-ul noului remote repository(HTTPS, HTTP sau GIT)"
+
+msgid "URL pointing to an embeddable webchat"
+msgstr "URL care indică un webchat incorporabil"
+
+msgid "UTC"
+msgstr "UTC"
+
+msgid "Unable to load the bookbuilder session"
+msgstr "Nu s-a putut încărca sesiunea bookbuilder"
+
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr "Nu s-a putut trimite mail de la %1 la %2!"
+
+msgid "Unbranded PDF (hide site name, logo, etc.)"
+msgstr "Unbranded PDF (ascundeți numele site-ului, logo-ul etc.)"
+
+msgid ""
+"Unconditionally remove all the invisible non-breaking\n"
+"                spaces in the text"
+msgstr ""
+"Îndepărtează necondiționat toate space-urile non-breaking\n"
+"                din text"
+
+#. (shared)
+msgid ""
+"Unfortunately, the shared repository located at %1 appeared out of sync."
+msgstr ""
+"Din nefericire, repository-ul partajat situat la %1 nu a fost sincronizat."
+
+msgid "Unique ID for the text"
+msgstr "ID-ul unic pentru text"
+
+msgid "Unlimited"
+msgstr "Nelimitat"
+
+msgid "Unordered List"
+msgstr "Listă neordonată"
+
+msgid "Unpublished texts"
+msgstr "Texte nepublicate"
+
+#. ($mime_type)
+#. ($mime)
+msgid "Unsupported file type %1"
+msgstr "Nu este suportat file type-ul %1"
+
+msgid "Unused attachment"
+msgstr "Atașament neutilizat"
+
+msgid "Update"
+msgstr "Actualizare"
+
+msgid "Update account info"
+msgstr "Actualizează informațiile contului"
+
+msgid "Update category description"
+msgstr "Actualizează descrierea categoriei"
+
+msgid "Update to current settings"
+msgstr "Actualizează la setările curente"
+
+msgid "Upload"
+msgstr "Încarcă"
+
+msgid "Upload the image and note its name. Files are always renamed."
+msgstr "Încarcă imaginea și notează-i numele. Fișiere mereu sunt redenumite."
+
+msgid ""
+"Uploaded and available images are shown and listed below the text preview."
+msgstr ""
+"Imagini disponibile și încărcate sunt arătate și listate sub previzualizarea "
+"textului."
+
+msgid "Url"
+msgstr "Url"
+
+msgid "Use JS syntax highlight for code blocks"
+msgstr "Use JS syntax highlight for code blocks"
+
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
+msgstr "Use LuaLaTeX instead of XeLaTeX (slower)"
+
+msgid "Use SSL for authenticated users"
+msgstr "Use SSL for authenticated users"
+
+msgid "Use it as a teaser image adding to the header this line:"
+msgstr "Folosește ca teaser image adăugând la antet următorul line:"
+
+msgid "Use named table of contents anchors instead of numeric ones"
+msgstr ""
+"Folosește table of contents anchors denumiți în loc de anchors numerotate"
+
+msgid "Use one of the site's formats"
+msgstr "Folosește unul din formaturile site-ului"
+
+#. (sign)
+msgid "Use optimized signatures with %1 pages each"
+msgstr "Folosește semnaturi optimizate cu %1 pagini de fiecare"
+
+msgid "Use sans fonts for section titles"
+msgstr "Folosește fonturi sans pentru titluri de secțiune"
+
+msgid "Use the image as cover"
+msgstr "Folosește imaginea ca și copertă"
+
+msgid "Useful HTML snippets"
+msgstr "Fragmente HTML utile"
+
+msgid ""
+"Useful for footnotes or in the headers of the document, where you cannot put "
+"a blank line to mark a new paragraph."
+msgstr ""
+"Utile pentru notele de subsol sau în antetul documentului, unde nu puteți "
+"pune o linie goală pentru a marca un nou paragraf."
+
+#. ($user->username)
+msgid "User %1 created!"
+msgstr "Utilizator %1 creat!"
+
+#. ($user->username)
+#. ($c->stash->{user}->username)
+msgid "User %1 deleted"
+msgstr "Utiilizator %1 șters"
+
+#. ($user->username)
+msgid "User %1 updated"
+msgstr "Utilizator %1 actualizat"
+
+msgid "User created"
+msgstr "Utilizator creat"
+
+msgid "Username"
+msgstr "Nume de utilizator"
+
+msgid "Username, alphanumerical only, no special characters, no uppercase"
+msgstr ""
+"Nume de utilizator, doar alfanumerice, fără caractere speciale, fără litere "
+"mari"
+
+msgid "Users"
+msgstr "Utilizatori"
+
+msgid ""
+"Using this token, you can load the bookbuilder settings\n"
+"    and the text list from another computer, or share it with someone\n"
+"    else. Just write it down and then load it from another computer\n"
+"    using the following form."
+msgstr ""
+"Folosind acest token, puteți încărca setările bookbuilder-ului\n"
+"    și lista de texte de pe un alt computer sau să le partajați cu cineva.\n"
+"    Doar scrieți-o și apoi încărcați-o de pe un alt computer\n"
+"    utilizând următorul formular."
+
+msgid ""
+"Usually this is due to high traffic and bad luck, and it can be fixed by "
+"pushing the changes again."
+msgstr ""
+"De obicei, acest lucru se datorează traficului mare și ghinionului și poate "
+"fi rezolvat prin introducerea din nou a modificărilor."
+
+msgid "Verbatim block"
+msgstr "Verbatim block"
+
+msgid "View history"
+msgstr "Vezi istoricul"
+
+#, fuzzy
+msgid "Virtual hosts"
+msgstr "Virtual hosts"
+
+msgid "Virtual hosts, one per line"
+msgstr "Virtual hosts, 1 per line"
+
+msgid "What links here"
+msgstr "Ce link duce aici"
+
+msgid ""
+"When creating a new text, do not populate the publication date if not "
+"provided by the user."
+msgstr ""
+"La crearea unui text nou, nu se completează data publicării dacă aceasta nu "
+"este furnizată de utilizator."
+
+msgid ""
+"When you start a bookbuilder session, at the end of the\n"
+"    bookbuilder page you can see a token for sharing the session. You\n"
+"    can load it here from another device to resume what you were\n"
+"    doing."
+msgstr ""
+"Atunci când începeți o sesiune bookbuilder, la sfârșitul paginii puteți "
+"vedea un token pentru partajarea sesiunii. \n"
+"    îl puteți încărca aici de pe un alt dispozitiv pentru a relua ceea ce "
+"făceați."
+
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr ""
+"Când încărcați un PDF, împărțiți-l în imagini care să fie inserate în corp"
+
+msgid "Where does this text come from?"
+msgstr "De unde provine acest text?"
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr "Whitelisted IP (for backup, one per line)"
+
+#, fuzzy
+msgid "Width of the cover image in percent of the text block width."
+msgstr "Lățimea imaginii de copertă în procente din lățimea blocului de text."
+
+msgid "Width:"
+msgstr "Lățime:"
+
+msgid ""
+"With complex structures, e.g., a chapter with\n"
+"      subsections, selecting only the chapter is likely to select only\n"
+"      the chapter's title, so probably you want to select the chapter\n"
+"      and all its subsections."
+msgstr ""
+"În cazul structurilor complexe, de exemplu, un capitol cu\n"
+"      subsecțiuni, dacă se selectează numai capitolul, este posibil să se "
+"selecteze numai\n"
+"      titlul capitolului, așa că, probabil, e de preferat să selectați "
+"capitolul\n"
+"      și toate subsecțiunile sale."
+
+msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr ""
+"Cu ajutorul tag-ului \"verbatim\" puteți evita markup-ul\n"
+"          să fie interpretat, de obicei nu este necesară"
+
+msgid ""
+"With the bookbuilder you can change the layout (fonts,\n"
+"    dimensions, paper, margins) of the texts on the library. You can\n"
+"    also merge more texts to create your own booklet. Just try it!"
+msgstr ""
+"Cu ajutorul bookbuilder-ului puteți modifica aspectul (fonturi,\n"
+"    dimensiuni, hârtie, margini) a textelor din bibliotecă. Puteți\n"
+"    de asemenea, să îmbinați mai multe texte pentru a vă crea propria "
+"broșură. Încercați!"
+
+msgid "Workflow"
+msgstr "Workflow"
+
+#, fuzzy
+msgid "Working locally?"
+msgstr "Lucrezi local?"
+
+#, fuzzy
+msgid ""
+"Wrapping tags cannot be used inside environments\n"
+"          which require leading space (notably, you cannot use them in\n"
+"          lists)."
+msgstr ""
+"Wrapping tag-uri nu pot fi utilizate în interiorul mediilor\n"
+"          care necesită un spațiu înainte (în special, nu se pot utiliza în\n"
+"          liste)."
+
+msgid "Wrong answer!"
+msgstr "Răspuns greșit!"
+
+msgid "Wrong username or password"
+msgstr "Nume de utilizator sau parolă greșit"
+
+msgid "XeLaTeX source"
+msgstr "XeLaTeX source"
+
+msgid "Yes"
+msgstr "Da"
+
+msgid ""
+"You MUST specify a reason, otherwise the line will have no effect.\n"
+"The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
+"etc.) is irrelevant."
+msgstr ""
+"Trebuie să specifici un motiv, altfel line-ul nu va avea niciun efect.\n"
+"Ordine line-urilor din antet(unde este ”#title”, ”#lang#”, etc.) este "
+"irelevant."
+
+msgid "You are already logged in"
+msgstr "Deja sunteți conectați"
+
+#, fuzzy
+msgid ""
+"You are building a collection. Please provide a title and, optionally, any "
+"other information needed for the front cover (author, subtitle, date) and "
+"the back cover (source and notes)."
+msgstr ""
+"Vă construiți o colecție. Vă rugăm să furnizați un titlu și, opțional, orice "
+"alte informații necesare pentru prima copertă (autor, subtitlu, dată) și "
+"pentru a doua copertă (sursă și note)."
+
+msgid "You are logged in now!"
+msgstr "Sunteți conectați!"
+
+#. (backup)
+msgid ""
+"You can access the backup located at %1 or ask your host for help, "
+"forwarding this email"
+msgstr ""
+"Construiți o colecție. Vă rugăm să furnizați un titlu și, opțional, orice "
+"alte informații necesare pentru prima copertă (autor, subtitlu, dată) și "
+"pentru a doua copertă (sursă și note)"
+
+msgid ""
+"You can add texts to the bookbuilder clicking on the\n"
+"    “plus” icon near the downloads of each text. You can add and\n"
+"    remove the texts later."
+msgstr ""
+"Puteți adăuga texte în bookbuilder făcând clic pe butonul\n"
+"    \"plus\" de lângă download-urile fiecărui text. Puteți adăuga și\n"
+"    scoate textele ulterior."
+
+msgid ""
+"You can also link to a part of the text. Please refer to the manual for this "
+"feature"
+msgstr ""
+"Puteți face un link către o alta parte a textului. Vă rugăm să vă uitați la "
+"manual pentru această opțiune"
+
+#. (create_url)
+msgid "You can create a peer at %1"
+msgstr "Puteți crea un peer la %1"
+
+msgid "You can do so answering a simple question."
+msgstr "Puteți face acest lucru răspunzând la o întrebare simplă."
+
+msgid "You can tune them editing them here."
+msgstr "Puteți să le ajustați editându-le aici."
+
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
+msgstr ""
+"Puteți utiliza următoarele prefixe pentru a căuta un cuvânt într-un anumit "
+"câmp, de exemplu, \"title:example\""
+
+msgid ""
+"You can't create a new revision because the text has not been published yet"
+msgstr ""
+"Nu puteți crea o nouă revizuire deoarece textul nu a fost încă publicat"
+
+msgid "You have logged out"
+msgstr "V-ați deconectat"
+
+msgid "You may want to resume the editing of one of them"
+msgstr "Este posibil să doriți să reluați editarea unuia dintre ele"
+
+msgid ""
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr "Este posibil să doriți să eliminați prepoziții din începutul titlului"
+
+msgid "You may want to use one of these images"
+msgstr "Este posibil să doriți să utilizați una dintre aceste imagini"
+
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen./Ați "
+"trimis acreditările printr-o conexiune necriptată. Vă rugăm să treceți la "
+"HTTPS, să vă conectați și să vă schimbați imediat parola. Acest lucru nu ar "
+"trebui să se întâmple."
+
+#. (edit_url)
+msgid "You should change your password right away at %1"
+msgstr "Ar trebui să vă schimbați imediat parola la %1"
+
+msgid "Your browser does not support the audio tag."
+msgstr "Browserul dvs. nu acceptă tag-ul audio."
+
+msgid "Your browser does not support the video tag."
+msgstr "Browserul dumneavoastră nu acceptă tag-ul video."
+
+msgid ""
+"Your changes are saved and can be checked every time you hit Preview or Save"
+msgstr ""
+"Modificările dvs. sunt salvate și pot fi verificate de fiecare dată când "
+"apăsați Previzualizare sau Salvare"
+
+msgid "Your chapter here..."
+msgstr "Capitolul tău aici..."
+
+msgid "Your current bookbuilder token is:"
+msgstr "Tokenul dvs. actual de bookbuilder este:"
+
+msgid "Your email"
+msgstr "Email-ul tău"
+
+msgid "Your file is ready"
+msgstr "Fișierul dvs. este gata"
+
+msgid "Your part here..."
+msgstr "Partea ta aici..."
+
+#. (password)
+msgid "Your password is %1."
+msgstr "Parola ta este %1."
+
+msgid "Your password was reset, now you can login with it"
+msgstr "Parola dvs. a fost resetată, acum vă puteți conecta cu ea"
+
+msgid "Your section here..."
+msgstr "Secțiunea ta aici..."
+
+msgid "Your sub-sub-section (or description heading) here..."
+msgstr "Sub-sub-secțiunea ta (sau description heading) aici..."
+
+msgid "Your subsection here..."
+msgstr "Subsecțiunea ta aici..."
+
+#. (home)
+msgid "Your user at %1 has been created."
+msgstr "Contul tău de utilizator la %1 a fost creat."
+
+#. (username)
+msgid "Your username is %1."
+msgstr "Numele tău de utilizator este %1."
+
+msgid "aborted"
+msgstr "aborted"
+
+msgid "about, links..."
+msgstr "about, links..."
+
+msgid "activate to sort column ascending"
+msgstr "activați pentru a sorta coloana în ordine crescătoare"
+
+msgid "activate to sort column descending"
+msgstr "activați pentru a sorta coloana descrescător"
+
+msgid "active"
+msgstr "active"
+
+msgid "affects only the frontend webserver configuration"
+msgstr "affects only the frontend webserver configuration"
+
+msgid "any"
+msgstr "any"
+
+msgid "automatically generated if not present, using author and title"
+msgstr "generată automat dacă nu este prezentă, folosind autorul și titlul"
+
+msgid "code and monospace"
+msgstr "code and monospace"
+
+msgid "comma separated list"
+msgstr "comma separated list"
+
+msgid "completed"
+msgstr "completed"
+
+msgid "conflict"
+msgstr "conflict"
+
+msgid "description"
+msgstr "descriere"
+
+msgid "displayed text"
+msgstr "text afișat"
+
+msgid "edit, commit..."
+msgstr "edit, commit..."
+
+msgid "editing"
+msgstr "editing"
+
+msgid "emphasis"
+msgstr "emphasis"
+
+msgid "failed"
+msgstr "failed"
+
+msgid "filtered from _MAX_ total entries"
+msgstr "filtered from _MAX_ total entries"
+
+msgid "for code, monospaced"
+msgstr "for code, monospaced"
+
+msgid "for display"
+msgstr "for display"
+
+msgid "for poetry"
+msgstr "for poetry"
+
+msgid "generic sectioning, good for articles"
+msgstr "secționare generică, potrivit pentru articole"
+
+msgid "if you want to use a custom size, you need to set both width and height"
+msgstr ""
+"dacă doriți să utilizați o dimensiune personalizată, trebuie să setați atât "
+"lățimea, cât și înălțimea"
+
+msgid "image"
+msgstr "imagine"
+
+msgid "left"
+msgstr "stânga"
+
+msgid "mandatory"
+msgstr "mandatoriu"
+
+msgid "markup *not* interpreted"
+msgstr "markup *not* interpreted"
+
+#. (site.binary_upload_max_size_in_mega)
+msgid "max %1 Mb"
+msgstr "max %1 Mb"
+
+msgid "minutes"
+msgstr "minutes"
+
+msgid "new-example-uri"
+msgstr "new-example-uri"
+
+msgid "only lowercase ASCII and hyphens"
+msgstr "numai litere mici ASCII și cratimă"
+
+msgid "or"
+msgstr "ori"
+
+msgid "ordered item"
+msgstr "element ordonat"
+
+msgid "overstriked"
+msgstr "overstriked"
+
+msgid "pending"
+msgstr "pending"
+
+msgid "plain PDF"
+msgstr "plain PDF"
+
+msgid "plain text source"
+msgstr "plain text source"
+
+msgid "processing"
+msgstr "processing"
+
+msgid "published"
+msgstr "publicat"
+
+msgid "revision"
+msgstr "revizuire"
+
+msgid "right"
+msgstr "dreapta"
+
+#. (args)
+msgid "string"
+msgstr "string/șir"
+
+msgid "strong emphasis"
+msgstr "strong emphasis"
+
+msgid "sub-sub-section"
+msgstr "sub-sub-section"
+
+msgid "subscript"
+msgstr "subscript"
+
+msgid "subsection"
+msgstr "subsecțiune"
+
+msgid "superscript"
+msgstr "superscript"
+
+#, fuzzy
+msgid "taken"
+msgstr "taken/deja folosit"
+
+msgid "texts by authors, title, topic..."
+msgstr "texte dupa autor, titlu, subiect..."
+
+msgid "texts sorted by author"
+msgstr "texte sortate după autor"
+
+msgid "texts sorted by title"
+msgstr "texte sortate după titlu"
+
+msgid "the author of the text (as displayed)"
+msgstr "autorul textului(așa cum este afișat)"
+
+msgid "this text will be unpublished"
+msgstr "acest text va fi dezpublicat"
+
+msgid "topic"
+msgstr "subiect"
+
+msgid "unordered item"
+msgstr "element neordonat"
+
+msgid "very strong emphasis"
+msgstr "very strong emphasis"
+
+msgid "with description"
+msgstr "cu descriere"
+
+msgid "without description"
+msgstr "fără descriere"
+
+msgid ""
+"“Stale editing” means that the revision was abandoned\n"
+"    while editing, but it's still there, in case someone wants to pick\n"
+"    it up when editing a text."
+msgstr ""
+"\"Stale editing\" înseamnă că revizuirea a fost abandonată\n"
+"    în timpul editării, dar este încă acolo, în cazul în care cineva dorește "
+"să o ia.\n"
+"    să o preia atunci când editează un text."
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "texts sorted by topic"
+
+#~ msgid "RSS"
+#~ msgstr "RSS"
+
+#~ msgid "syndicate"
+#~ msgstr "syndicate"
