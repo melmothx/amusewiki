@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.562 2022-12-04
+
+ - I18N: ro (new)
+ - Add missing font preview (#403)
+ - Support images' alt text via ajax call (#421)
+
 2.561 2022-11-05
 
  - I18N: cs (new), tr (updated)
