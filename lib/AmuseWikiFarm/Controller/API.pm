@@ -301,6 +301,22 @@ sub latest :Chained('api') :PathPart('latest') :Args {
     $c->detach($c->view('JSON'));
 }
 
+sub attachments :Chained('api') :PathPart('attachment') :Args(1) {
+    my ($self, $c, $uri) = @_;
+    my $site = $c->stash->{site};
+    my %out;
+    if (my $att = $site->attachments->by_uri($uri)) {
+        my %all = $att->get_columns;
+        my @cols = (qw/uri id comment_muse comment_html title_muse title_html alt_text mime_type/);
+        @out{@cols} = @all{@cols};
+    }
+    else {
+        $out{error} = "not found";
+    }
+    $c->stash(json => \%out);
+    $c->detach($c->view('JSON'));
+}
+
 =head1 AUTHOR
 
 Marco Pessotto <melmothx@gmail.com>

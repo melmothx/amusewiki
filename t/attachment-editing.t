@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 use Cwd;
 use File::Spec::Functions qw/catfile catdir/;
-use Test::More tests => 14;
+use Test::More tests => 19;
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
     $ENV{AMW_NO_404_FALLBACK} = 1;
@@ -13,7 +13,7 @@ BEGIN {
 
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
-
+use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use Data::Dumper;
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Schema;
@@ -54,6 +54,7 @@ ok $mech->follow_link(url_regex => qr/attachments.*edit/);
 ok ($mech->submit_form(with_fields => {
                                        desc_muse => "Hello *there*,\nthis is my **description**",
                                        title_muse => 'Hello *there*',
+                                       alt_text => "The alt text",
                                       },
                        button => 'update',
                       ), "Form submitted ok");
@@ -63,3 +64,18 @@ $mech->content_contains("this is my <strong>description</strong>");
 $mech->get_ok('/attachments/list');
 $mech->content_contains("Hello <em>there</em>");
 $mech->content_contains("this is my <strong>description</strong>");
+
+$mech->get_ok('/api/attachment/' . $attachment);
+{
+    my $data = from_json($mech->content);
+    is $data->{alt_text}, "The alt text";
+    ok !$data->{error};
+}
+$mech->get_ok('/api/attachment/garbage');
+{
+    my $data = from_json($mech->content);
+    ok $data->{error};
+}
+
+
+
