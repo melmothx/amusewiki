@@ -1055,6 +1055,7 @@ sub known_langs {
             tl => 'Tagalog',
             ceb => 'Cebuano',
             kmr => 'Kurmancî',
+            ro => 'Română',
            };
 }
 
