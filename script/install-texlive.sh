@@ -89,6 +89,7 @@ $homedir/local/texlive/$year/bin/$arch/tlmgr install \
         atveryend bookmark fontspec polyglossia xindy xetex luatex imakeidx    \
         latex-bin epstopdf epstopdf-pkg ncctools luatexbase texdoc beamer      \
         pstricks fp pst-text xcolor geometry bidi zref auxhook chngcntr        \
+        marginnote pst-barcode \
         xetex-pstricks \
         footmisc \
         carlisle lua-uni-algos \
