@@ -17,6 +17,7 @@ use File::Spec;
 use Getopt::Long;
 use Path::Tiny;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path muse_naming_algo/;
+use YAML qw/DumpFile/;
 
 my %opts;
 
@@ -28,6 +29,7 @@ GetOptions(\%opts,
            'topic-prefix=s',
            'merge-children=s',
            'skip-main',
+           'no-image-download',
           ) or die;
 
 binmode STDOUT, ':encoding(UTF-8)';
@@ -66,9 +68,8 @@ $posts = $posts->published;
 my @errors;
 
 print "Total " . $posts->count . " posts\n";
-
+my $count = 0;
 unless ($opts{'skip-main'}) {
-    my $count = 0;
     while (my $post = $posts->next) {
         if (++$count % 100 == 0) {
             print "Done $count\n";
@@ -155,8 +156,14 @@ if ($opts{grandparent}) {
         # as a poor man's category description, though.
         # there's the need for the legacy mapping though
 
+        my @legacy_links;
+        my @categories;
+
         while (my $top = $tops->next) {
+            print "Done ($title) " . ++$count . "\n";
             my $html = $top->html_body;
+            my $topic = $topic_prefix . ($top->post_title || $top->post_name);
+            $topic =~ s/;/,/g;
             my @lines;
             while ($html =~ m/(<img[^>]+?>)/g) {
                 push @lines, $1;
@@ -165,6 +172,13 @@ if ($opts{grandparent}) {
                                                                        order_by => [qw/menu_order post_name/],
                                                                       })->all) {
                 push @lines, sprintf('<p><a href="%s">%s</a></p>', $art->clean_url, $art->post_title);
+                my $new_path = "/library/" . muse_naming_algo($top->post_name . '-' . $art->post_name);
+                foreach my $legacy_path ($art->clean_url, $art->permalink) {
+                    push @legacy_links, {
+                                         legacy_path => $legacy_path,
+                                         new_path => $new_path,
+                                        };
+                }
             }
 
             my %post = (
@@ -174,9 +188,24 @@ if ($opts{grandparent}) {
                         SORTtopics => $title,
                         DELETED => "Not needed",
                        );
-            parse_html(\%post);
-            # now we can provide the list of legacy urls and build the topic descriptions
+            if (my $saved = parse_html(\%post)) {
+                my $muse_body = join("\n", grep { /^\[\[[0-9a-z-]+\.(png|jpe?g)\]\]/ } $saved->lines_utf8);
+                if ($muse_body) {
+                    push @categories, {
+                                       name => $topic,
+                                       type => 'topic',
+                                       category_descriptions => [{
+                                                                  muse_body => $muse_body,
+                                                                  lang => $lang,
+                                                                 }],
+                                      };
+                }
+            }
         }
+        my $autoimport_dir = path($repo, site_files => 'autoimport');
+        $autoimport_dir->mkpath;
+        DumpFile($autoimport_dir->child('categories.yml'), \@categories);
+        DumpFile($autoimport_dir->child('legacy_links.yml'), \@legacy_links);
     }
 }
 
@@ -274,6 +303,7 @@ sub parse_html {
         my $out;
         my $pp = Text::Amuse::Preprocessor->new(input => \$body, output => "$final", fix_typography => 1);
         $pp->process;
+        return $final;
     }
     else {
         die Dumper($text);
@@ -289,6 +319,9 @@ sub download_and_insert_image {
         my $file = lc($fragments[-1]);
         $file =~ s/[^a-z0-9\.\-]//g;
         my $target = $dir->child($img_basename . '-' . $file);
+        if ($opts{'no-image-download'}) {
+            return "<div>[[" . $target->basename . "]]</div>";
+        }
         my $res = $ua->mirror($src, "$target");
         if ($res->is_success or $res->code eq '304') {
             if ($file =~ m/\A(.+)\.gif\z/i) {
