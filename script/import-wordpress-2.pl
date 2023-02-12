@@ -73,7 +73,7 @@ unless ($opts{'skip-main'}) {
         if (++$count % 100 == 0) {
             print "Done $count\n";
         }
-        import_post($post) 
+        import_post($post);
     }
 }
 
@@ -291,7 +291,16 @@ sub download_and_insert_image {
         my $target = $dir->child($img_basename . '-' . $file);
         my $res = $ua->mirror($src, "$target");
         if ($res->is_success or $res->code eq '304') {
-            print "Downloaded $src " . $res->code . "\n";
+            if ($file =~ m/\A(.+)\.gif\z/i) {
+                my $png = $1 . '.png';
+                my $destination = $dir->child($img_basename . '-' . $png);
+                if (!$destination->exists or $destination->stat->mtime < $target->stat->mtime) {
+                    print "Converting $target to $destination\n";
+                    system(convert => -strip => "$target", "$destination");
+                }
+                return "<div>[[" . $destination->basename . "]]</div>"
+            }
+            print "Downloaded $src\n" if $res->is_success;
             return "<div>[[" . $target->basename . "]]</div>";
         }
         else {
