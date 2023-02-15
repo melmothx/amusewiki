@@ -614,6 +614,10 @@ sub build_repo_path {
     return path(@pieces);
 }
 
+sub parse_category {
+    _parse_category(@_);
+}
+
 sub _parse_category {
     my ($type, $string, $opts) = @_;
     return unless $type && $string;

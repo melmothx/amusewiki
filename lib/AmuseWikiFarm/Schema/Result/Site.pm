@@ -1010,7 +1010,7 @@ use File::Find;
 use Data::Dumper::Concise;
 use AmuseWikiFarm::Archive::BookBuilder;
 use Text::Amuse::Compile::Utils ();
-use Text::Amuse::Functions qw/muse_format_line/;
+use Text::Amuse::Functions qw/muse_format_line muse_to_object/;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::CgitSetup;
 use AmuseWikiFarm::Utils::LexiconMigration;
@@ -1025,6 +1025,7 @@ use Git::Wrapper;
 use Bytes::Random::Secure;
 use Email::Address;
 use XML::OPDS;
+use YAML ();
 
 =head2 repo_root_rel
 
@@ -1445,6 +1446,7 @@ sub index_site_files {
     my $self = shift;
     my $dir = Path::Tiny::path($self->path_for_site_files);
     my $guard = $self->result_source->schema->txn_scope_guard;
+    $self->process_autoimport_files;
     $self->site_files->delete;
     $self->public_files->delete;
     if ($dir->exists) {
@@ -2426,6 +2428,11 @@ sub list_fixed_categories {
 sub locales_dir {
     my $self = shift;
     return File::Spec->catdir($self->path_for_site_files, 'locales');
+}
+
+sub autoimport_dir {
+    my $self = shift;
+    return File::Spec->catdir($self->path_for_site_files, 'autoimport');
 }
 
 sub lexicon_file {
@@ -5109,6 +5116,47 @@ sub scan_and_remove_rogue_symlinks {
     if ($removals) {
         $git->commit({ message => "Removed symlinks pointing outside the tree" });
         $self->sync_remote_repo;
+    }
+}
+
+sub process_autoimport_files {
+    my $self = shift;
+    my $dir = Path::Tiny::path($self->autoimport_dir);
+    # for now we support the categories (with descriptions) and the
+    # legacy links, as they can't be inferred from the archive itself.
+    foreach my $type (qw/categories legacy_links/) {
+        my $file =  $dir->child($type . '.yml');
+        if ($file->exists) {
+            try {
+                my $list = YAML::LoadFile("$file");
+                Dlog_debug { "$type $_ " } $list;
+                my $cat_ref_opts = {
+                                    category_uri_use_unicode => $self->category_uri_use_unicode,
+                                   };
+                my $locale = $self->locale;
+                foreach my $item (@$list) {
+                    if ($type eq 'categories' && $item->{name} && $item->{type}) {
+                        my $html = muse_format_line(html => $item->{name}, $locale);
+                        my $cat_ref = AmuseWikiFarm::Utils::Amuse::parse_category($item->{type},
+                                                                                  $html,
+                                                                                  $cat_ref_opts);
+                        my $cat = $self->categories->find_or_create($cat_ref, { key => 'uri_site_id_type_unique' });
+                        foreach my $desc (@{ $item->{category_descriptions} || [] }) {
+                            $desc->{html_body} = muse_to_object($desc->{muse_body})->as_html;
+                            $desc->{last_modified_by} = 'automated import';
+                            $cat->category_descriptions->find_or_create($desc, { key => 'category_id_lang_unique' });
+                        }
+                    }
+                    else {
+                        $self->$type->update_or_create($item);
+                    }
+                }
+            }
+            catch {
+                my $err = $_;
+                log_error { "Failure importing categories: $err" };
+            };
+        }
     }
 }
 

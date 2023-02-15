@@ -1700,6 +1700,7 @@ script/cleanup-tests.sh
 script/configure.sh
 script/create_schema_icons.pl
 script/generate-systemd-unit-files
+script/import-wordpress-2.pl
 script/import-wordpress.pl
 script/init-fcgi.pl
 script/install-cgit.pl
@@ -1917,6 +1918,7 @@ t/schema.t
 t/secondary-footnotes.t
 t/secure-site.t
 t/serialize-site-2.t
+t/serialize-site-3.t
 t/serialize-site.t
 t/session-crash-202.t
 t/simple-gallery.t
