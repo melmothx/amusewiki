@@ -332,6 +332,35 @@ sub thumbnail_base_path {
     return '/uploads/' . $self->site_id . '/thumbnails/' . $self->uri;
 }
 
+sub has_thumbnail_file {
+    my ($self, $method) = @_;
+    my %types = (
+                 thumb => 1,
+                 small => 1,
+                 large => 1,
+                );
+    if ($types{$method}) {
+        return $self->thumbnails->$method->count;
+    }
+    else {
+        return;
+    }
+}
+
+sub icon_class {
+    my $self = shift;
+    my $mime_type = $self->mime_type || '';
+    if ($mime_type =~ m{^image/}) {
+        return 'file-image-o';
+    }
+    elsif ($mime_type eq 'application/pdf') {
+        return 'file-pdf-o';
+    }
+    else {
+        return 'file';
+    }
+}
+
 sub thumbnail_uri {
     return shift->thumbnail_base_path . '.thumb.png';
 }

@@ -8,9 +8,16 @@
   <div class="panel-body">
     <a href="[% c.uri_for(attachment.full_uri) %]">
       [% IF attachment.has_thumbnails %]
+        [% IF attachment.has_thumbnail_file('large') %]
         <img src="[% c.uri_for(attachment.large_uri) %]"
              alt="[% attachment.uri %]"
              class="img img-responsive img-thumbnail amw-attachment-audio-thumbnail">
+        [% ELSE %]
+        <a href="[% c.uri_for(attachment.full_uri) %]"
+           alt="[% attachment.alt_title | html %]"
+           title="[% attachment.alt_title | html %]">
+          <span class="fa fa-[% attachment.icon_class %] fa-2x fa-border failed-thumbnail-generation-attachment"></span></a>
+        [% END %]
       [% ELSIF attachment.is_audio %]
         <div class="embed-responsive embed-responsive-audio amw-attachment-audio">
           <audio controls class="embed-responsive-item">
