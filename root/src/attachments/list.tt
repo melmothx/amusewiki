@@ -54,9 +54,9 @@
       <td>
         <a href="[% att.full_uri | html %]">
           [% IF att.has_thumbnails %]
-            <img class="img img-thumbnail" src="[% att.thumb %]" alt="[% att.name %]" />
+            <img class="img img-thumbnail attachment-with-thumb" src="[% att.thumb %]" alt="[% att.name %]" />
           [% ELSE %]
-            <i title="[% att.uri %]" class="fa fa-file-o fa-4x fa-border"></i>
+            <i title="[% att.name | html %]" class="fa fa-file-o fa-4x fa-border attachment-without-thumb"></i>
           [% END %]
         </a>
       </td>

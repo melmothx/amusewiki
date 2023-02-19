@@ -49,7 +49,7 @@ sub list :Chained('root') :Args {
     my $site = $c->stash->{site};
     my $all = $c->stash->{attachments}->public_only->search(undef, { order_by => 'uri' });
     while (my $att = $all->next) {
-        push @list, {
+        my $ainfo = {
                      full_uri => $c->uri_for($att->full_uri),
                      name => $att->uri,
                      thumb => $c->uri_for($att->small_uri),
@@ -58,6 +58,11 @@ sub list :Chained('root') :Args {
                      has_thumbnails => $att->has_thumbnails,
                      alt_text => $att->alt_text,
                     };
+        if ($ainfo->{has_thumbnails}) {
+            $ainfo->{has_thumbnails} = 0 unless $att->has_thumbnail_file('small');
+        }
+        push @list, $ainfo;
+
     }
     $c->stash(attachments_list => \@list,
               load_datatables => 1,

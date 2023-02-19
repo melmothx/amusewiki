@@ -211,12 +211,19 @@
         [% IF attachment.separator %]
           [% # nothing to do %]
         [% ELSIF attachment.has_thumbnails %]
+          [% IF attachment.has_thumbnail_file('thumb') %]
           <a href="[% c.uri_for(attachment.full_uri) %]">
             <img src="[% c.uri_for(attachment.thumbnail_uri) %]"
-                 style="margin-bottom: 10px"
+                 style="margin-bottom: 10px; max-height: 36px"
                  alt="[% attachment.alt_title | html %]"
                  title="[% attachment.alt_title | html %]"
                  class="img img-responsive img-thumbnail" /></a>
+          [% ELSE %]
+            <a href="[% c.uri_for(attachment.full_uri) %]"
+               alt="[% attachment.alt_title | html %]"
+               title="[% attachment.alt_title | html %]">
+              <span class="fa fa-[% attachment.icon_class %] fa-2x fa-border failed-thumbnail-generation-preamble"></span></a>
+          [% END %]
         [% ELSIF attachment.is_audio %]
             <a href="[% c.uri_for(attachment.full_uri) %]"
                alt="[% attachment.alt_title | html %]"
