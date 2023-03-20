@@ -9,6 +9,7 @@ use Email::Valid;
 use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
 use AmuseWikiFarm::Log::Contextual;
 use Bytes::Random::Secure; # who knows how much is really secure, but hey
+use AmuseWikiFarm::Utils::Amuse ();
 
 =head1 NAME
 
@@ -63,6 +64,14 @@ sub validate_params {
     if (@errors) {
         return undef, @errors;
     }
+    if (exists $params{preferred_language}) {
+        my $select_lang = $params{preferred_language} || '';
+        my $langs = AmuseWikiFarm::Utils::Amuse::known_langs();
+        unless ($langs->{$select_lang}) {
+            $select_lang = '';
+        }
+        $validated{preferred_language} = $select_lang;
+    }
     if (exists $params{username}) {
         if ($params{username} and $params{username} =~ m/\A([0-9a-z]{2,50})\z/) {
             $validated{username} = $1;
@@ -81,7 +90,6 @@ sub validate_params {
             # $c->loc('Invalid email');
             push @errors, 'Invalid email';
         }
-
     }
 
     if (exists $params{password}) {
