@@ -71,6 +71,7 @@ sub with_descriptions {
     return $self->search([
                           { "$me.title_muse"   => { '!=' => '' } },
                           { "$me.comment_muse" => { '!=' => '' } },
+                          { "$me.alt_text"   => { '!=' => '' } },
                          ]);
 }
 

@@ -4270,6 +4270,7 @@ sub serialize_site {
                                    comment_muse => $_->comment_muse,
                                    title_html => $_->title_html,
                                    comment_html => $_->comment_html,
+                                   alt_text => $_->alt_text,
                                   } } $self->attachments->with_descriptions->all ];
     return \%data;
 }

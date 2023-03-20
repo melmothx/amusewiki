@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 use Cwd;
 use File::Spec::Functions qw/catfile catdir/;
-use Test::More tests => 19;
+use Test::More tests => 21;
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
     $ENV{AMW_NO_404_FALLBACK} = 1;
@@ -77,5 +77,14 @@ $mech->get_ok('/api/attachment/garbage');
     ok $data->{error};
 }
 
+diag Dumper($site->serialize_site->{attachments});
+ok $site->serialize_site->{attachments}->[0]->{alt_text};
 
-
+$site->attachments->first->update({
+                                   title_muse => '',
+                                   comment_muse => '',
+                                   title_html => '',
+                                   comment_html => '',
+                                  });
+diag Dumper($site->serialize_site->{attachments});
+ok $site->serialize_site->{attachments}->[0]->{alt_text};
