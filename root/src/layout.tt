@@ -404,6 +404,12 @@
                   [% c.user.get('username') %]
                 </li>
                 <li>
+                  <a href="[% c.uri_for_action('/user/edit', [c.user.get('id')]) %]">
+                    <span class="fa fa-id-card-o fa-fw" aria-hidden="true"></span>
+                    [% loc('Update account info') %]
+                  </a>
+                </li>
+                <li>
                   <a href="[% c.uri_for_action('/edit/newtext', ['special']) %]">
                     <span class="fa fa-plus-square fa-fw" aria-hidden="true"></span>
                     [% loc('Create a new special page') %]
@@ -476,18 +482,6 @@
                   <a href="[% c.uri_for_action('/user/create') %]">
                     <span class="fa fa-user-plus fa-fw" aria-hidden="true"></span>
                     [% loc('Create a new librarian') %]
-                  </a>
-                </li>
-                <li>
-                  <a href="[% c.uri_for_action('/user/edit', [c.user.get('id')]) %]">
-                    <span class="fa fa-id-card-o fa-fw" aria-hidden="true"></span>
-                    [% loc('Update account info') %]
-                  </a>
-                </li>
-                <li>
-                  <a href="[% c.uri_for_action('/user/edit_options', [c.user.get('id')]) %]">
-                    <span class="fa fa-object-group fa-fw" aria-hidden="true"></span>
-                    [% loc('Edit screen layout options') %]
                   </a>
                 </li>
                 [%# and these are for root %]
