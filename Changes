@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.564 2023-03-20
+
+ - Make the language selection explicit in the user preferences. So
+   far it was a side effect of changing the site language.
+
 2.563 2023-02-19
 
  - Display an icon if the attachment thumbnail generation failed (#422)
