@@ -37,6 +37,9 @@ msgstr "% 1 poŝtelefone"
 msgid "%1 pp."
 msgstr "%1 pp."
 
+msgid "(leave blank to keep the current one)"
+msgstr ""
+
 msgid "(narrowest)"
 msgstr ""
 
@@ -775,6 +778,9 @@ msgstr "Retpoŝto sendita!"
 
 msgid "Email updated"
 msgstr "Retpoŝto ĝisdatigita"
+
+msgid "Email, password, locale"
+msgstr ""
 
 msgid "Emails do not match"
 msgstr "Retpoŝtoj ne kongruas"
@@ -1585,6 +1591,9 @@ msgstr ""
 msgid "Local pages"
 msgstr ""
 
+msgid "Locale updated"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "Ŝlosita redaktado, neniu alŝuto eblas"
 
@@ -2162,6 +2171,9 @@ msgstr "Montrante al"
 
 msgid "Popular texts"
 msgstr "Popularaj tekstoj"
+
+msgid "Preferred language"
+msgstr ""
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
@@ -3218,6 +3230,9 @@ msgstr "Uzu sans-tiparojn por sekciotitoloj"
 
 msgid "Use the image as cover"
 msgstr "Uzu la bildon kiel kovrilon"
+
+msgid "Use the site locale"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr "Utilaj HTML-fragmentoj"

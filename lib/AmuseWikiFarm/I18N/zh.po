@@ -37,6 +37,9 @@ msgstr "%1移动版"
 msgid "%1 pp."
 msgstr "%1页"
 
+msgid "(leave blank to keep the current one)"
+msgstr ""
+
 msgid "(narrowest)"
 msgstr ""
 
@@ -735,6 +738,9 @@ msgstr "邮件已发送！"
 
 msgid "Email updated"
 msgstr "邮件已更新"
+
+msgid "Email, password, locale"
+msgstr ""
 
 msgid "Emails do not match"
 msgstr "邮件不匹配"
@@ -1466,6 +1472,9 @@ msgstr ""
 msgid "Local pages"
 msgstr ""
 
+msgid "Locale updated"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "编辑已锁定，无法上传"
 
@@ -2012,6 +2021,9 @@ msgstr "指向"
 
 msgid "Popular texts"
 msgstr "热门文本"
+
+msgid "Preferred language"
+msgstr ""
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
@@ -3017,6 +3029,9 @@ msgstr "节标题使用无衬线字体"
 
 msgid "Use the image as cover"
 msgstr "用作题图"
+
+msgid "Use the site locale"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr "有用的HTML代码段"

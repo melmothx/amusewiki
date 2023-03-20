@@ -37,6 +37,9 @@ msgstr "%1 σε κινητό"
 msgid "%1 pp."
 msgstr "%1 σελ."
 
+msgid "(leave blank to keep the current one)"
+msgstr ""
+
 msgid "(narrowest)"
 msgstr ""
 
@@ -792,6 +795,9 @@ msgstr "To email εστάλη!"
 
 msgid "Email updated"
 msgstr "Το email ενημερώθηκε"
+
+msgid "Email, password, locale"
+msgstr ""
 
 msgid "Emails do not match"
 msgstr "Τα emails δεν ταιριάζουν"
@@ -1626,6 +1632,9 @@ msgstr ""
 msgid "Local pages"
 msgstr ""
 
+msgid "Locale updated"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "Κλειδωμένη επεξεργασία, δεν είναι δυνατή η μεταφόρτωση"
 
@@ -2231,6 +2240,9 @@ msgstr "Δείχνοντας προς"
 
 msgid "Popular texts"
 msgstr "Δημοφιλή κείμενα"
+
+msgid "Preferred language"
+msgstr ""
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
@@ -3326,6 +3338,9 @@ msgstr ""
 
 msgid "Use the image as cover"
 msgstr "Χρησιμοποιήστε την εικόνα ως εξώφυλλο"
+
+msgid "Use the site locale"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr "Χρήσιμα αποσπάσματα HTML"

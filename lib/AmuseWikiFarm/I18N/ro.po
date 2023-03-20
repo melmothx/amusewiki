@@ -38,6 +38,9 @@ msgstr "%1 pe aparate mobile"
 msgid "%1 pp."
 msgstr "%1 pp."
 
+msgid "(leave blank to keep the current one)"
+msgstr ""
+
 msgid "(narrowest)"
 msgstr "(narrowest)"
 
@@ -785,6 +788,9 @@ msgstr "Email trimis!"
 
 msgid "Email updated"
 msgstr "Email actualizat"
+
+msgid "Email, password, locale"
+msgstr ""
 
 msgid "Emails do not match"
 msgstr "Email-urile nu se potrivesc"
@@ -1606,6 +1612,9 @@ msgstr "Local"
 msgid "Local pages"
 msgstr "Local pages"
 
+msgid "Locale updated"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "Editare blocată, nu este posibilă încărcarea"
 
@@ -2216,6 +2225,9 @@ msgstr "Arătând spre"
 
 msgid "Popular texts"
 msgstr "Texte populare"
+
+msgid "Preferred language"
+msgstr ""
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
@@ -3301,6 +3313,9 @@ msgstr "Folosește fonturi sans pentru titluri de secțiune"
 
 msgid "Use the image as cover"
 msgstr "Folosește imaginea ca și copertă"
+
+msgid "Use the site locale"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr "Fragmente HTML utile"

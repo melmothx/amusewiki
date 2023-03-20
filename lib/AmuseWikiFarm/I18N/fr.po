@@ -37,6 +37,9 @@ msgstr "%1 sur portable\t"
 msgid "%1 pp."
 msgstr "%1 pp."
 
+msgid "(leave blank to keep the current one)"
+msgstr ""
+
 msgid "(narrowest)"
 msgstr ""
 
@@ -764,6 +767,9 @@ msgstr "Courriel envoyé!"
 
 msgid "Email updated"
 msgstr "Email mis à jour"
+
+msgid "Email, password, locale"
+msgstr ""
 
 msgid "Emails do not match"
 msgstr "Les emails ne correspondent pas"
@@ -1542,6 +1548,9 @@ msgstr ""
 msgid "Local pages"
 msgstr ""
 
+msgid "Locale updated"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr ""
 
@@ -2117,6 +2126,9 @@ msgstr "Se référant à"
 
 msgid "Popular texts"
 msgstr "Textes populaires"
+
+msgid "Preferred language"
+msgstr ""
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
@@ -3175,6 +3187,9 @@ msgid "Use sans fonts for section titles"
 msgstr ""
 
 msgid "Use the image as cover"
+msgstr ""
+
+msgid "Use the site locale"
 msgstr ""
 
 msgid "Useful HTML snippets"

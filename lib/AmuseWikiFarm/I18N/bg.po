@@ -38,6 +38,9 @@ msgstr "%1 за мобилни"
 msgid "%1 pp."
 msgstr "%1 стр."
 
+msgid "(leave blank to keep the current one)"
+msgstr ""
+
 msgid "(narrowest)"
 msgstr ""
 
@@ -783,6 +786,9 @@ msgstr "Имейлът беше изпратен!"
 
 msgid "Email updated"
 msgstr "Имейлът беше обновен"
+
+msgid "Email, password, locale"
+msgstr ""
 
 msgid "Emails do not match"
 msgstr "Имейлите не съвпадат"
@@ -1597,6 +1603,9 @@ msgstr ""
 msgid "Local pages"
 msgstr ""
 
+msgid "Locale updated"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "Редактирането е заключено, не може да качиш нищо"
 
@@ -2189,6 +2198,9 @@ msgstr "Сочещ към"
 
 msgid "Popular texts"
 msgstr "Популярни текстове"
+
+msgid "Preferred language"
+msgstr ""
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
@@ -3252,6 +3264,9 @@ msgstr "Използвай  шрифтове без сериф за заглав
 
 msgid "Use the image as cover"
 msgstr "Използвай снимката като корица"
+
+msgid "Use the site locale"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr "Полезни HTML откъси"

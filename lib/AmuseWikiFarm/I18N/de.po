@@ -37,6 +37,9 @@ msgstr ""
 msgid "%1 pp."
 msgstr ""
 
+msgid "(leave blank to keep the current one)"
+msgstr ""
+
 msgid "(narrowest)"
 msgstr ""
 
@@ -733,6 +736,9 @@ msgstr "E-mail gesendet"
 
 msgid "Email updated"
 msgstr "E-mail aktualisiert"
+
+msgid "Email, password, locale"
+msgstr ""
 
 msgid "Emails do not match"
 msgstr "E-mails stimmen nicht überein"
@@ -1451,6 +1457,9 @@ msgstr ""
 msgid "Local pages"
 msgstr ""
 
+msgid "Locale updated"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr ""
 
@@ -1997,6 +2006,9 @@ msgid "Pointing to"
 msgstr "verweist auf"
 
 msgid "Popular texts"
+msgstr ""
+
+msgid "Preferred language"
 msgstr ""
 
 msgid ""
@@ -3005,6 +3017,9 @@ msgstr ""
 
 msgid "Use the image as cover"
 msgstr "Als Titelbild verwenden"
+
+msgid "Use the site locale"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr ""

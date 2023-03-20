@@ -33,6 +33,9 @@ msgstr "%1スマートフォンで"
 msgid "%1 pp."
 msgstr "%1 pp."
 
+msgid "(leave blank to keep the current one)"
+msgstr ""
+
 msgid "(narrowest)"
 msgstr ""
 
@@ -722,6 +725,9 @@ msgstr "Eメール送信完了！"
 
 msgid "Email updated"
 msgstr "Eメール更新完了"
+
+msgid "Email, password, locale"
+msgstr ""
 
 msgid "Emails do not match"
 msgstr "Eメールが一致していません"
@@ -1447,6 +1453,9 @@ msgstr ""
 msgid "Local pages"
 msgstr ""
 
+msgid "Locale updated"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "ロックされた編集、アップロード可能"
 
@@ -1989,6 +1998,9 @@ msgstr "を指しています"
 
 msgid "Popular texts"
 msgstr "人気記事"
+
+msgid "Preferred language"
+msgstr ""
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
@@ -2997,6 +3009,9 @@ msgstr "セクションタイトルにはサンセリフフォントを使用"
 
 msgid "Use the image as cover"
 msgstr "カバーとして画像を使用"
+
+msgid "Use the site locale"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr "便利なHTMLスニペット"

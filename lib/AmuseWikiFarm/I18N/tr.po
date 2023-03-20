@@ -37,6 +37,9 @@ msgstr "Mobilde %1"
 msgid "%1 pp."
 msgstr "%1 sayfa."
 
+msgid "(leave blank to keep the current one)"
+msgstr ""
+
 msgid "(narrowest)"
 msgstr "(en dar)"
 
@@ -771,6 +774,9 @@ msgstr "E-posta gönderildi!"
 
 msgid "Email updated"
 msgstr "E-posta güncellendi"
+
+msgid "Email, password, locale"
+msgstr ""
 
 msgid "Emails do not match"
 msgstr "E-postalar aynı değil"
@@ -1562,6 +1568,9 @@ msgstr "Lokal"
 msgid "Local pages"
 msgstr "Lokal sayfalar"
 
+msgid "Locale updated"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "Düzenleme kilitlendi, yükleme mümkün değil"
 
@@ -2140,6 +2149,9 @@ msgstr "Bunu gösteriyor"
 
 msgid "Popular texts"
 msgstr "Popüler metinler"
+
+msgid "Preferred language"
+msgstr ""
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
@@ -3199,6 +3211,9 @@ msgstr "Bölüm başlıkları için sans font kullan"
 
 msgid "Use the image as cover"
 msgstr "Resmi kapak olarak kullan"
+
+msgid "Use the site locale"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr "Kullanışlı HTML parçaları"
