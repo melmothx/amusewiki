@@ -36,6 +36,9 @@ msgstr "%1 në pajisje mobile"
 msgid "%1 pp."
 msgstr ""
 
+msgid "(leave blank to keep the current one)"
+msgstr ""
+
 msgid "(narrowest)"
 msgstr ""
 
@@ -767,6 +770,9 @@ msgstr "Emaili është dërguar"
 
 msgid "Email updated"
 msgstr "Email është përditësuar"
+
+msgid "Email, password, locale"
+msgstr ""
 
 msgid "Emails do not match"
 msgstr "Email-at nuk pëputhen"
@@ -1527,6 +1533,9 @@ msgstr ""
 msgid "Local pages"
 msgstr ""
 
+msgid "Locale updated"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr ""
 
@@ -2086,6 +2095,9 @@ msgstr "Aludon në"
 
 msgid "Popular texts"
 msgstr "Tekste të kërkuara"
+
+msgid "Preferred language"
+msgstr ""
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
@@ -3128,6 +3140,9 @@ msgid "Use sans fonts for section titles"
 msgstr ""
 
 msgid "Use the image as cover"
+msgstr ""
+
+msgid "Use the site locale"
 msgstr ""
 
 msgid "Useful HTML snippets"

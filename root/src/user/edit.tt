@@ -1,6 +1,24 @@
 [%# -*- mode:html -*- %]
 
-<h2>[% loc('Edit user [_1]', user.username) %]</h2>
+<div class="center">
+  <div class="page-header">
+    <h1>[% loc('Edit user [_1]', user.username) %]</h1>
+  </div>
+</div>
+
+<ul class="nav nav-tabs" style="margin-bottom:30px">
+  <li class="active" role="presentation">
+    <a href="[% c.uri_for_action('/user/edit', [ user.id]) %]">
+      [% loc('Email, password, locale') %]
+    </a>
+  </li>
+  <li role="presentation">
+    <a href="[% c.uri_for_action('/user/edit_options', [user.id]) %]">
+      [% loc('Edit screen layout options') %]
+    </a>
+  </li>
+</ul>
+
 
 <div class="row">
   <div class="col-sm-6">
@@ -8,8 +26,10 @@
       <div class="form-group">
         <p>
           <label for="password">
-            [% loc('Password, minimum 8 characters.') %] <br />
-            <strong>[% loc('Please do not use a valuable password.') %]</strong>
+            [% loc('Password, minimum 8 characters.') %]
+            [% loc('(leave blank to keep the current one)') %]
+            <br>
+            [% loc('Please do not use a valuable password.') %]
           </label>
           <input class="form-control" type="password" name="password"
                  id="password" value="" />
@@ -24,6 +44,7 @@
         <p>
           <label for="email">
             [% loc('Email') %]
+            [% loc('(leave blank to keep the current one)') %]
           </label>
           <input class="form-control" type="text" name="email"
                  id="email" value="[% user.email | html %]" />
@@ -35,6 +56,18 @@
           <input class="form-control" type="text" name="emailrepeat"
                  id="emailrepeat" value="" />
         </p>
+        <p>
+          <label for="preferred_language">[% loc('Preferred language') %]</label>
+          <select name="preferred_language" id="preferred_language" class="form-control">
+            [% FOREACH lang IN known_langs.keys.sort %]
+              <option [% IF current_language == lang %]selected="selected"[% END %]
+                                                       value="[% lang %]">
+                [% known_langs.$lang %]
+              </option>
+            [% END %]
+          </select>
+        </p>
+
         <button type="submit" class="btn btn-default" name="update" value="update">
           [% loc('Update') %]
         </button>

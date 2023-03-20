@@ -37,6 +37,9 @@ msgstr "%1 na mobilu"
 msgid "%1 pp."
 msgstr "%1 str."
 
+msgid "(leave blank to keep the current one)"
+msgstr ""
+
 msgid "(narrowest)"
 msgstr "(nejužší)"
 
@@ -773,6 +776,9 @@ msgstr "Email odeslán!"
 
 msgid "Email updated"
 msgstr "Email aktualizován"
+
+msgid "Email, password, locale"
+msgstr ""
 
 msgid "Emails do not match"
 msgstr "Emaily se neshodují"
@@ -1568,6 +1574,9 @@ msgstr "Lokální"
 msgid "Local pages"
 msgstr "Lokální stránky"
 
+msgid "Locale updated"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "Uzavřené úpravy, nahrání není možné"
 
@@ -2145,6 +2154,9 @@ msgstr "Ukazující na"
 
 msgid "Popular texts"
 msgstr "Populární texty"
+
+msgid "Preferred language"
+msgstr ""
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
@@ -3202,6 +3214,9 @@ msgstr "Použít bezpatkové fonty pro nadpisy sekcí"
 
 msgid "Use the image as cover"
 msgstr "Použít obrázek jako přebal"
+
+msgid "Use the site locale"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr "Užitečné kousky HTML"

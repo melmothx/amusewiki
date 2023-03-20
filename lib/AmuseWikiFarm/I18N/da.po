@@ -37,6 +37,9 @@ msgstr "%1 på mobil"
 msgid "%1 pp."
 msgstr ""
 
+msgid "(leave blank to keep the current one)"
+msgstr ""
+
 msgid "(narrowest)"
 msgstr ""
 
@@ -753,6 +756,9 @@ msgstr "E-mail blev sendt!"
 
 msgid "Email updated"
 msgstr "E-mail opdateret"
+
+msgid "Email, password, locale"
+msgstr ""
 
 msgid "Emails do not match"
 msgstr "E-mails matcher ikke"
@@ -1515,6 +1521,9 @@ msgstr ""
 msgid "Local pages"
 msgstr ""
 
+msgid "Locale updated"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr ""
 
@@ -2081,6 +2090,9 @@ msgstr "Henviser til"
 
 msgid "Popular texts"
 msgstr "Populære tekster"
+
+msgid "Preferred language"
+msgstr ""
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
@@ -3097,6 +3109,9 @@ msgid "Use sans fonts for section titles"
 msgstr ""
 
 msgid "Use the image as cover"
+msgstr ""
+
+msgid "Use the site locale"
 msgstr ""
 
 msgid "Useful HTML snippets"

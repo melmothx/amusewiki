@@ -36,6 +36,9 @@ msgstr "за мобилни"
 msgid "%1 pp."
 msgstr "%1 стр."
 
+msgid "(leave blank to keep the current one)"
+msgstr ""
+
 msgid "(narrowest)"
 msgstr ""
 
@@ -763,6 +766,9 @@ msgstr "Email-от е пратен!"
 
 msgid "Email updated"
 msgstr "Email-от е ажуриран"
+
+msgid "Email, password, locale"
+msgstr ""
 
 msgid "Emails do not match"
 msgstr "E-mail-овите не се поклопуваат"
@@ -1551,6 +1557,9 @@ msgstr ""
 msgid "Local pages"
 msgstr ""
 
+msgid "Locale updated"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr ""
 
@@ -2132,6 +2141,9 @@ msgstr "Поврзува"
 
 msgid "Popular texts"
 msgstr "Најчитани текстови"
+
+msgid "Preferred language"
+msgstr ""
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
@@ -3180,6 +3192,9 @@ msgstr "Употреби sans фонтови за насловите на дел
 
 msgid "Use the image as cover"
 msgstr "Употреби ја сликата како насловна страница"
+
+msgid "Use the site locale"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr "Корисни делови од HTML кодот"

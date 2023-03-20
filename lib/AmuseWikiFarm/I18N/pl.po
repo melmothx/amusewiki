@@ -38,6 +38,9 @@ msgstr "%1 na urządzeniach mobilnych"
 msgid "%1 pp."
 msgstr ""
 
+msgid "(leave blank to keep the current one)"
+msgstr ""
+
 msgid "(narrowest)"
 msgstr ""
 
@@ -755,6 +758,9 @@ msgstr "E-mail wysłano!"
 
 msgid "Email updated"
 msgstr "E-mail zaktualizowany"
+
+msgid "Email, password, locale"
+msgstr ""
 
 msgid "Emails do not match"
 msgstr "E-maile nie są zgodne"
@@ -1492,6 +1498,9 @@ msgstr ""
 msgid "Local pages"
 msgstr ""
 
+msgid "Locale updated"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "Ograniczone edytowanie, przesłanie niemożliwe"
 
@@ -2039,6 +2048,9 @@ msgstr ""
 
 msgid "Popular texts"
 msgstr "Popularne teksty"
+
+msgid "Preferred language"
+msgstr ""
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
@@ -3058,6 +3070,9 @@ msgstr "Użyj czcionek sans dla tytułów sekcji"
 
 msgid "Use the image as cover"
 msgstr "Użyj tej grafiki jako okładki"
+
+msgid "Use the site locale"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr ""

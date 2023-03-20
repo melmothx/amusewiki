@@ -50,6 +50,7 @@ use URI;
 use URI::QueryParam;
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Utils::Amuse ();
 use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
 
 # used by /login and /reset_password
@@ -254,8 +255,9 @@ sub edit :Chained('get_user') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $user = $c->stash->{user} or die;
     my %params = %{ $c->request->body_params };
+    my $current_lang_choice = $user->preferred_language || '';
     if ($params{update}) {
-        my %validate;
+        my %validate = (preferred_language => $params{preferred_language} || '');
         my @msgs;
         if ($params{passwordrepeat} && $params{password}) {
             $validate{passwordrepeat} = $params{passwordrepeat};
@@ -268,16 +270,30 @@ sub edit :Chained('get_user') :PathPart('') :Args(0) {
             $validate{email} = $params{email};
             push @msgs, $c->loc("Email updated");
         }
+        if ($current_lang_choice ne $validate{preferred_language}) {
+            push @msgs, $c->loc("Locale updated");
+        }
+        Dlog_debug { "Params for validation are $_" } \%validate;
         my ($validated, @errors) = $c->model('DB::User')->validate_params(%validate);
+        Dlog_debug { "Validated params are $_" } $validated;
         if ($validated and %$validated) {
             $user->update($validated);
             $user->discard_changes;
+            $current_lang_choice = $validated->{preferred_language};
+            $c->session(user_locale => $current_lang_choice);
             $c->flash(status_msg => join("\n", @msgs));
+            return $c->response->redirect($c->uri_for_action('/user/edit', [ $user->id ]));
         }
         if (@errors) {
             $c->flash(error_msg => join("\n", map { $c->loc($_) } @errors));
         }
     }
+    my %langs = %{ AmuseWikiFarm::Utils::Amuse::known_langs() };
+    $langs{''} = $c->loc("Use the site locale");
+    $c->stash(
+              known_langs => \%langs,
+              current_language => $current_lang_choice,
+             );
 }
 
 sub edit_options :Chained('get_user') :PathPart('options') :Args(0) {

@@ -38,6 +38,9 @@ msgstr "%1 на мобильных устройствах"
 msgid "%1 pp."
 msgstr "%1 стр."
 
+msgid "(leave blank to keep the current one)"
+msgstr ""
+
 msgid "(narrowest)"
 msgstr ""
 
@@ -758,6 +761,9 @@ msgstr "Письмо отправлено!"
 
 msgid "Email updated"
 msgstr "Электронная почта обновлена"
+
+msgid "Email, password, locale"
+msgstr ""
 
 msgid "Emails do not match"
 msgstr "Электронная почта не совпадает"
@@ -1534,6 +1540,9 @@ msgstr ""
 msgid "Local pages"
 msgstr ""
 
+msgid "Locale updated"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr "Редактирование заблокировано, загрузка невозможна"
 
@@ -2105,6 +2114,9 @@ msgstr "Указывает на"
 
 msgid "Popular texts"
 msgstr "Популярные тексты"
+
+msgid "Preferred language"
+msgstr ""
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
@@ -3141,6 +3153,9 @@ msgstr "Использовать шрифт без засечек для заг�
 
 msgid "Use the image as cover"
 msgstr "Использовать изображение как обложку"
+
+msgid "Use the site locale"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr "Полезные HTML-заготовки"

@@ -1,10 +1,24 @@
 [%# -*- mode:html -*- %]
 <div class="center">
   <div class="page-header">
-    <h1>[% loc('Edit user [_1]', user.username) %]
-      <small>[% loc('Edit screen layout options') %]</small></h1>
+    <h1>[% loc('Edit user [_1]', user.username) %]</h1>
   </div>
 </div>
+
+<ul class="nav nav-tabs" style="margin-bottom:30px">
+  <li role="presentation">
+    <a href="[% c.uri_for_action('/user/edit', [ user.id]) %]">
+      [% loc('Email, password, locale') %]
+    </a>
+  </li>
+  <li class="active" role="presentation">
+    <a href="[% c.uri_for_action('/user/edit_options', [user.id]) %]">
+      [% loc('Edit screen layout options') %]
+    </a>
+  </li>
+</ul>
+
+
 <form method="post" class="form-horizontal" id="user-edit-options">
   <fieldset>
 [% SET editobject = user %]

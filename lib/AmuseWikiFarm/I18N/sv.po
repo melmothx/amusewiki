@@ -36,6 +36,9 @@ msgstr ""
 msgid "%1 pp."
 msgstr ""
 
+msgid "(leave blank to keep the current one)"
+msgstr ""
+
 msgid "(narrowest)"
 msgstr ""
 
@@ -732,6 +735,9 @@ msgstr "Email skickat!"
 
 msgid "Email updated"
 msgstr "Email uppdaterad"
+
+msgid "Email, password, locale"
+msgstr ""
 
 msgid "Emails do not match"
 msgstr "Email matchar inte"
@@ -1444,6 +1450,9 @@ msgstr ""
 msgid "Local pages"
 msgstr ""
 
+msgid "Locale updated"
+msgstr ""
+
 msgid "Locked editing, no upload possible"
 msgstr ""
 
@@ -1998,6 +2007,9 @@ msgid "Pointing to"
 msgstr "Hänvisar till"
 
 msgid "Popular texts"
+msgstr ""
+
+msgid "Preferred language"
 msgstr ""
 
 msgid ""
@@ -3007,6 +3019,9 @@ msgid "Use sans fonts for section titles"
 msgstr ""
 
 msgid "Use the image as cover"
+msgstr ""
+
+msgid "Use the site locale"
 msgstr ""
 
 msgid "Useful HTML snippets"
