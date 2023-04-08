@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2022-10-20 15:22+0300\n"
+"PO-Revision-Date: 2023-04-08 14:43+0300\n"
 "Last-Translator: Rojen Zaman <rojen@riseup.net>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. ($filename)
 msgid "%1 doesn't exist"
@@ -38,7 +38,7 @@ msgid "%1 pp."
 msgstr "%1 sayfa."
 
 msgid "(leave blank to keep the current one)"
-msgstr ""
+msgstr "(geçerli olanı korumak için boş bırak)"
 
 msgid "(narrowest)"
 msgstr "(en dar)"
@@ -47,7 +47,7 @@ msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(akıllı tırnaklar, bağlantılar, dipnotlar, vb.)"
 
 msgid "(use that as main link in static mirror as well)"
-msgstr ""
+msgstr "(statik yansıda da ana bağlantı olarak bunu kullan)"
 
 msgid "(widest)"
 msgstr "(en geniş)"
@@ -245,7 +245,7 @@ msgstr ""
 "          \"noslide\" yazan bir yorum ekleyin."
 
 msgid "Alternate Text"
-msgstr ""
+msgstr "Alternatif Metin"
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
@@ -776,7 +776,7 @@ msgid "Email updated"
 msgstr "E-posta güncellendi"
 
 msgid "Email, password, locale"
-msgstr ""
+msgstr "Eposta, şifre, lokal"
 
 msgid "Emails do not match"
 msgstr "E-postalar aynı değil"
@@ -794,7 +794,7 @@ msgid "Enable title ordering by SKU"
 msgstr "SKU ya göre başlık sıralamasını etkinleştir"
 
 msgid "Enforce e-mail on submission"
-msgstr ""
+msgstr "Gönderim sırasında kullanıcıyı e-postayı girmeye zorla"
 
 msgid "Erase this revision"
 msgstr "Bu versiyonu sil"
@@ -1569,7 +1569,7 @@ msgid "Local pages"
 msgstr "Lokal sayfalar"
 
 msgid "Locale updated"
-msgstr ""
+msgstr "Lokal güncellendi"
 
 msgid "Locked editing, no upload possible"
 msgstr "Düzenleme kilitlendi, yükleme mümkün değil"
@@ -2151,7 +2151,7 @@ msgid "Popular texts"
 msgstr "Popüler metinler"
 
 msgid "Preferred language"
-msgstr ""
+msgstr "Tercih edilen dil"
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
@@ -3213,7 +3213,7 @@ msgid "Use the image as cover"
 msgstr "Resmi kapak olarak kullan"
 
 msgid "Use the site locale"
-msgstr ""
+msgstr "Sitenin lokalini kullan"
 
 msgid "Useful HTML snippets"
 msgstr "Kullanışlı HTML parçaları"
