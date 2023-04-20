@@ -1,0 +1,282 @@
+name: linux
+
+on:
+  push:
+    branches: ['*']
+    tags-ignore: ['*']
+  pull_request:
+  
+env:
+  # test_runner: prove, make-test, matrix 
+  test_runner: matrix
+  
+  OREPAN_VERSION: 0.08
+  # DBIC_TRACE: 4
+  # DBIC_TRACE_PROFILE: console_monochrome
+  
+  DEBIAN_FRONTEND: noninteractive
+
+  CPAN_MIRROR: http://www.cpan.org
+  VERBOSE: '' # --verbose
+     
+  
+jobs:
+ 
+#=
+#
+# This step lists t/**.t, so that we can run the tests in a matrix on it in github.
+#   When you run each test as it's own step we get the results testing broken up into a 
+# nice list in the side bar, and github can schedule the test however it likes. 
+#
+# It's worth noting that we skip having t/00-prepare-tests in this list because it is run
+# before each test in the matrix.
+  testlist: 
+    runs-on: ubuntu-latest
+    outputs:
+      tests: ${{ steps.tests.outputs.files }}
+    steps:
+      - uses: actions/checkout@v3
+        # set-output is deprecated, but it looks like you can't read from $GITHUB_ENV in the matrix: section
+      - id: tests
+        run: |
+          find t/ -type f -name '*.t' | \
+          perl -nlE '
+            push @files, $_ unless /00-prepare-tests.t/ 
+            }{
+            printf q{::set-output name=files::[%s]}, ($ENV{test_runner} eq "matrix") ? (join ",", map qq/"$_"/, @files) : (qq/"all"/)
+          '
+
+#=
+#
+# This step sets up the github worker to run the tests, and then runs the tests
+# env.test_runner can be used to pick how we run the tests 
+#
+# I've included 3 of them because I couldn't decide which is the best choice.
+# (and maybe it would make a nice matrix axis to test both types of release work right)
+  test:
+    needs: [ depends, testlist ]
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        test_file: ${{ fromJson(needs.testlist.outputs.tests) }}
+# this matrix is repeated in other build steps.
+        perl-version: 
+        #  'latest' or 'threaded' might upsest the build cache
+#          - '5.8.8' # 
+#          - '5.16'  # 2023-04-04T12:55:57.3582453Z ! Installing the dependencies failed: Installed version (6.63_02) of ExtUtils::MakeMaker is not in range '6.64'
+        #  - '5.24'
+        #  - '5.25' #
+        #  - '5.26' # first with PERL_USE_UNSAFE_INC 
+          - '5.36'
+          
+    container:
+      image: perl:${{ matrix.perl-version }}
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: actions/cache/restore@v3
+        id: restore-dists
+        with:
+          path: ~/dists/
+          key: ${{ runner.os }}-build-${{ matrix.perl-version }}-${{ hashFiles('cpanfile.snapshot') }}
+          
+      - uses: actions/cache/restore@v3
+        id: restore-local
+        with:
+          path: local/
+          key: ${{ runner.os }}-local-${{ matrix.perl-version }}-${{ hashFiles('cpanfile.snapshot') }}
+          
+# This should use a debian tool to install the things from debian/control's Build-Depends-Indep section 
+# instead of relying on me copy/pasting them into here like a caveperson 
+# libtext-amuse-compile-perl depends on a bunch of fonts, but I hard-coded them here
+# https://amusewiki.org/library/install
+      - name: apt-get update + install 
+        run: |
+          apt-get update && apt-get install -y \
+          fonts-dejavu-extra fonts-dejavu-core fonts-linuxlibertine fonts-cmu fonts-texgyre fonts-cmu fonts-texgyre texlive-fonts-extra \
+          libxapian-dev texlive-xetex \
+          graphicsmagick ghostscript imagemagick \
+          xapian-tools libxapian-dev \
+          poppler-utils \
+          shared-mime-info \
+          openssl libssl-dev \
+          carton git fontconfig cgit rsync \
+          devscripts dput lintian sudo \
+
+# I think this might be causing the failre I see in t/cgit-integration.t, but it's not clear:
+      - name: git config
+        run: |
+            git config --global user.email "im-sorry-my-ci-build-is-harssing-you-from@amusewiki.github.com"; 
+            git config --global user.name "Amuse wiki CI biuld of $GITHUB_REF"
+          
+# this >> $GITHUB_ENV thing doesn't last beyond this job
+# we are in /__w/amusewiki/amusewiki/, it's not named after my fork
+# cpanm -L local, puts .pm files in local/lib/perl5 and scripts in local/bin/
+      - name: set PATH + PERL5LIB, github style
+        run: |
+          echo "PERL5LIB=`pwd`:`pwd`/local/lib/perl5:`pwd`/lib/:$PERL5LIB" >> $GITHUB_ENV
+          echo "PATH=./local/bin/:$PATH" >> $GITHUB_ENV
+
+      - name: dbconf + install_js + install_fonts + amusewiki-populate-webfonts + configure.sh
+        # I'm betting some of this stuff is only needed to bootstrap a proper app, and not needed for testing:
+        run: |
+          cp dbic.yaml.sqlite.example dbic.yaml ; 
+          perl -i -ple 's/^/#/ if /not run this as root/' ./script/amusewiki-upgrade-db ;
+          # amusewiki/script/upgrade_db - nope, it won't deploy the first version. 
+          # perl ./script/amusewiki-upgrade-db ;
+          
+          #./script/install.sh does these (and a carton install) : 
+          script/install_js.sh
+          script/install_fonts.sh
+          
+          perl -i -ple 's/^/#/ if /not run this as root/' script/amusewiki-populate-webfonts 
+          script/amusewiki-populate-webfonts
+          
+          # add the virtual host here: 
+          perl -i -ple 's/^/#/ if /not run this as root/' script/amusewiki-create-doc-site 
+          perl -i -ple 's/^/#/ if /not run this as root/' script/amusewiki-generate-nginx-conf
+          script/configure.sh amusewiki.github.com
+          
+          # dumping out a table list is an ok way to cause the tests to fail when the db is not configured:
+          perl -MAmuseWikiFarm::Schema -MData::Dumper -E '
+              my $schema=AmuseWikiFarm::Schema->connect("amuse");
+              $schema->storage->dbh or die "bad schema config";
+              my $dbh = $schema->storage->dbh;
+              
+              my $sql = q{SELECT name FROM sqlite_schema 
+                WHERE type IN ("table","view") 
+                AND name NOT LIKE "sqlite_%"
+                ORDER BY 1
+              };
+              say "The database has these tables in it: "
+                . join ", ", @{
+                    $dbh->selectcol_arrayref( $sql, {Columns=>[1]} ) ||[] 
+                };
+          ' ;
+
+# -- prove
+      - name: Run Tests under prove 
+        if: env.test_runner == 'prove'
+        run: prove --merge --verbose --rules='seq=t/0*' --rules='par=**' t/
+        
+# -- Makefile.PL
+      - name: Makefile.PL
+        if: env.test_runner == 'make-test'
+        env:
+          PERL_USE_UNSAFE_INC: 1 
+        run:  perl Makefile.PL 
+
+# this works fine, but it puts all the (often verbose) output from the make test into
+# a single readmore in the github ui, which is pretty upsetting on my 22017 macbook
+    #  - name: make test 
+    #    if: env.test_runner == 'make-test'
+    #    env:
+    #      PERL_USE_UNSAFE_INC: 1 
+    #    run: make test
+        
+      - name: prove ${{ matrix.test_file }}
+        if: env.test_runner == 'matrix'
+        run: |
+          PERL_DL_NONLAZY=1 perl -MExtUtils::Command::MM -MTest::Harness -e "
+            undef *Test::Harness::Switches; 
+            test_harness(0, 'inc', 'blib/lib', 'blib/arch')
+          " -- t/00-prepare-tests.t ${{ matrix.test_file }}
+
+# it might be nice to get a tarball out of this processs instead of just a greeen check mark
+#  - name: make dist 
+    #    if: env.test_runner == 'make-test'
+    #    env:
+    #      PERL_USE_UNSAFE_INC: 1 
+    #    run:  make dist
+
+
+#=
+#
+# We use cpanm to install the dependencies into local/ (it's already in the perl image)
+# This usess the cached dists from last time, if there are any.
+# We then cache the local/, so we don't have to do the install again next time.
+#
+# We get carton from dpkg in a later step because we have a self-test that looks for carton in $PATH
+  depends:
+    needs: orepan
+    runs-on: ubuntu-latest
+    env:
+      DEBIAN_FRONTEND: noninteractive
+    strategy:
+      matrix:
+        perl-version:
+          - '5.36'
+          
+    container:
+      image: perl:${{ matrix.perl-version }}
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Cache dists
+        uses: actions/cache@v3
+        with:
+          path: ~/dists/
+          key: ${{ runner.os }}-build-${{ matrix.perl-version }}-${{ hashFiles('cpanfile.snapshot') }}
+          restore-keys: ${{ runner.os }}-build-${{ matrix.perl-version }}-${{ hashFiles('cpanfile.snapshot') }}
+
+      - name: Cache local
+        uses: actions/cache@v3
+        id: local-cache
+        with:
+          path: local/
+          key: ${{ runner.os }}-local-${{ matrix.perl-version }}-${{ hashFiles('cpanfile.snapshot') }}
+          restore-keys: ${{ runner.os }}-local-${{ matrix.perl-version }}-${{ hashFiles('cpanfile.snapshot') }}
+          
+      # need these for the cpanm install to work: 
+      - name: apt-get install 
+        if: steps.local-cache.outputs.cache-hit != 'true'
+        run: apt-get update && apt-get install -y libxapian-dev texlive-xetex 
+        
+      - name: Install Dependencies
+        if: steps.local-cache.outputs.cache-hit != 'true'
+#       run: cpanm -L extlib/ Carton; env PERL5LIB=`pwd`/extlib/lib/perl5/:$PERL5LIB extlib/bin/carton install --verbose --deployment
+        run: |
+          cpanm --notest $VERBOSE --save-dists $HOME/dists/ --mirror file://$HOME/dists/ --mirror $CPAN_MIRROR -L local/ --installdeps . ;
+          cpanm --notest $VERBOSE --save-dists $HOME/dists/ --mirror file://$HOME/dists/ --mirror $CPAN_MIRROR -L local/ inc::Module::Install@1.02  Module::Install::Catalyst;
+
+      - uses: actions/cache/restore@v3
+        id: restore-orepan
+        if: steps.local-cache.outputs.cache-hit != 'true'
+        with:
+          path: ~/orepan
+          key: ${{ runner.os }}-orepan-${{ matrix.perl-version }}-${{ env.OREPAN_VERSION }}
+          
+      - name: re-index dists with OrePAN
+        if: steps.local-cache.outputs.cache-hit != 'true'
+        run: perl -I$HOME/orepan/lib/perl5 $HOME/orepan/bin/orepan_index.pl -r $HOME/dists/
+   
+#=
+#
+# First we install a cpan indexer, so we can re-use the downloaded dists for installing dependencies
+  orepan:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        perl-version:
+          - '5.36'
+           
+    container:
+      image: perl:${{ matrix.perl-version }}
+
+    steps:
+      - name: Cache orepan
+        uses: actions/cache@v3
+        id: orepan-cache
+        with:
+          path: ~/orepan
+          key: ${{ runner.os }}-orepan-${{ matrix.perl-version }}-${{ env.OREPAN_VERSION }}
+          restore-keys: ${{ runner.os }}-orepan-${{ matrix.perl-version }}-${{ env.OREPAN_VERSION }}
+
+      - name: setup OrePAN
+        if: steps.orepan-cache.outputs.cache-hit != 'true'
+        run: mkdir -p $HOME/orepan/ $HOME/dists/authors $HOME/dists/modules; cpanm --save-dists $HOME/dists/  --mirror file://$HOME/dists --mirror $CPAN_MIRROR $VERBOSE --notest -L $HOME/orepan OrePAN@$OREPAN_VERSION; 
+    
