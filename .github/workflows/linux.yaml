@@ -121,43 +121,6 @@ jobs:
           echo "PERL5LIB=`pwd`:`pwd`/local/lib/perl5:`pwd`/lib/:$PERL5LIB" >> $GITHUB_ENV
           echo "PATH=./local/bin/:$PATH" >> $GITHUB_ENV
 
-      - name: dbconf + install_js + install_fonts + amusewiki-populate-webfonts + configure.sh
-        # I'm betting some of this stuff is only needed to bootstrap a proper app, and not needed for testing:
-        run: |
-          cp dbic.yaml.sqlite.example dbic.yaml ; 
-          perl -i -ple 's/^/#/ if /not run this as root/' ./script/amusewiki-upgrade-db ;
-          # amusewiki/script/upgrade_db - nope, it won't deploy the first version. 
-          # perl ./script/amusewiki-upgrade-db ;
-          
-          #./script/install.sh does these (and a carton install) : 
-          script/install_js.sh
-          script/install_fonts.sh
-          
-          perl -i -ple 's/^/#/ if /not run this as root/' script/amusewiki-populate-webfonts 
-          script/amusewiki-populate-webfonts
-          
-          # add the virtual host here: 
-          perl -i -ple 's/^/#/ if /not run this as root/' script/amusewiki-create-doc-site 
-          perl -i -ple 's/^/#/ if /not run this as root/' script/amusewiki-generate-nginx-conf
-          script/configure.sh amusewiki.github.com
-          
-          # dumping out a table list is an ok way to cause the tests to fail when the db is not configured:
-          perl -MAmuseWikiFarm::Schema -MData::Dumper -E '
-              my $schema=AmuseWikiFarm::Schema->connect("amuse");
-              $schema->storage->dbh or die "bad schema config";
-              my $dbh = $schema->storage->dbh;
-              
-              my $sql = q{SELECT name FROM sqlite_schema 
-                WHERE type IN ("table","view") 
-                AND name NOT LIKE "sqlite_%"
-                ORDER BY 1
-              };
-              say "The database has these tables in it: "
-                . join ", ", @{
-                    $dbh->selectcol_arrayref( $sql, {Columns=>[1]} ) ||[] 
-                };
-          ' ;
-
 # -- prove
       - name: Run Tests under prove 
         if: env.test_runner == 'prove'
