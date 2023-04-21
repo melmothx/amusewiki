@@ -8,7 +8,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 76;
+use Test::More tests => 79;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -96,9 +96,12 @@ foreach my $f ('t/tt/t-t-2.jpeg', 't/tt/t-t-1.png', 'uploads/shot.pdf') {
     my $res = $mech->response;
     diag Dumper({ $res->headers->flatten });
     ok $res->headers->header('Content-Disposition'), "$f is a download file";
-    my $got_sha = Digest::SHA->new('SHA-1')->add($mech->content);
+    my $content = $mech->content;
+    ok path($site->repo_root, $f)->exists;
+    my $got_sha = Digest::SHA->new('SHA-1')->add($content);
     my $src_sha = Digest::SHA->new('SHA-1')->addfile(path($site->repo_root, $f)->stringify);
-    is $got_sha->hexdigest, $src_sha->hexdigest, "$f is fine";
+    is($got_sha->hexdigest, $src_sha->hexdigest, "$f is fine")
+      or diag hexdump($content);
 }
 
 $mech->get("/git/0cgit0/tree/asdfasdf");
@@ -293,3 +296,23 @@ ok $mech->submit_form(with_fields => { canonical => '0cgit0xxx.amusewiki.org' } 
     like $hook->slurp_utf8, qr{0cgit0xxx}, "Hook updated";
 }
 
+# https://www.perlmonks.org/?node_id=132401
+sub hexdump {
+    my $str = ref $_[0] ? ${$_[0]} : $_[0];
+
+    return "[ZERO-LENGTH STRING]\n" unless length $str;
+
+    # split input up into 16-byte chunks:
+    my @chunks = $str =~ /([\0-\377]{1,16})/g;
+    # format and print:
+    my @print;
+    for (@chunks) {
+        my $hex = unpack "H*", $_;
+        tr/ -~/./c;                   # mask non-print chars
+        $hex =~ s/(..)(?!$)/$1 /g;      # insert spaces in hex
+        # make sure our hex output has the correct length
+        $hex .= ' ' x ( length($hex) < 48 ? 48 - length($hex) : 0 );
+        push @print, "$hex $_\n";
+    }
+    wantarray ? @print : join '', @print;
+}
