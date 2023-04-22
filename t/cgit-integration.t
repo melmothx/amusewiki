@@ -18,7 +18,7 @@ use Path::Tiny;
 use Digest::SHA;
 use Data::Dumper::Concise;
 use Email::MIME;
-
+use AmuseWikiFarm::Utils::CgitSetup;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -89,6 +89,9 @@ foreach my $url ('/git/0cgit0/tree/t/tt/to-test.muse',
     $mech->get_ok($url);
     $mech->content_contains('Все смешалось в доме Облонских. Жена узнала, что муж был в');
 }
+
+AmuseWikiFarm::Utils::CgitSetup->new(schema => $schema)->blow_cache;
+
 foreach my $f ('t/tt/t-t-2.jpeg', 't/tt/t-t-1.png', 'uploads/shot.pdf') {
     $mech->get_ok('/git/0cgit0/tree/' . $f);
     $mech->get_ok('/git/0cgit0/commit/' . $f);
