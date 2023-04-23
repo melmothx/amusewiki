@@ -8,7 +8,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 79;
+use Test::More tests => 85;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -90,19 +90,24 @@ foreach my $url ('/git/0cgit0/tree/t/tt/to-test.muse',
     $mech->content_contains('Все смешалось в доме Облонских. Жена узнала, что муж был в');
 }
 
-AmuseWikiFarm::Utils::CgitSetup->new(schema => $schema)->blow_cache;
 
 foreach my $f ('t/tt/t-t-2.jpeg', 't/tt/t-t-1.png', 'uploads/shot.pdf') {
+    AmuseWikiFarm::Utils::CgitSetup->new(schema => $schema)->blow_cache;
     $mech->get_ok('/git/0cgit0/tree/' . $f);
     $mech->get_ok('/git/0cgit0/commit/' . $f);
     $mech->get_ok('/git/0cgit0/plain/' . $f);
     my $res = $mech->response;
-    diag Dumper({ $res->headers->flatten });
-    ok $res->headers->header('Content-Disposition'), "$f is a download file";
+    my $repo_file = path($site->repo_root, $f);
+    ok $repo_file->exists;
+    my $file_size = -s $repo_file;
+    diag "$repo_file size is $file_size";
+    my $response_headers = { $res->headers->flatten };
+    is $response_headers->{'Content-Length'}, $file_size, "Decleared content length is fine";
     my $content = $mech->content;
-    ok path($site->repo_root, $f)->exists;
+    is length($content), $file_size, "File length is ok";
+    ok $res->headers->header('Content-Disposition'), "$f is a download file";
     my $got_sha = Digest::SHA->new('SHA-1')->add($content);
-    my $src_sha = Digest::SHA->new('SHA-1')->addfile(path($site->repo_root, $f)->stringify);
+    my $src_sha = Digest::SHA->new('SHA-1')->addfile("$repo_file");
     is($got_sha->hexdigest, $src_sha->hexdigest, "$f is fine")
       or diag hexdump($content);
 }
@@ -172,6 +177,8 @@ PULLING: {
     ok($file->exists, "new file propaged") or die;
     # confirm
     $mech->get_ok($uri);
+
+    sleep 2;
 
     # now add the #DELETED directive
     my $content = $file->slurp_utf8;
