@@ -784,7 +784,7 @@
       </div>
     </div>
     <script src="[% c.uri_for('/static/js/amw-autosuggest.js') %]"></script>
-    <script src="[% c.uri_for('/static/js/amw-navbar.js') %]"></script>
+    <script src="[% c.uri_for('/static/js/amw-navbar.js', { v => 2 }) %]"></script>
   </body>
 </html>
 
