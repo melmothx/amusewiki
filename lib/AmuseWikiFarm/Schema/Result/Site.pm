@@ -4923,7 +4923,7 @@ ROBOTS
     if (!$self->restrict_mirror) {
         my $mirror_url = $self->canonical_url . '/mirror.txt';
         $robots .= <<"MIRROR";
-# Istant mirror:
+# Instant mirror:
 # wget -q -O - $mirror_url | wget -x -N -q -i -
 MIRROR
     }
