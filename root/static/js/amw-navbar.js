@@ -9,7 +9,7 @@ $(document).ready(function() {
         if (hash === newhash && scroll > 0 && scroll < previous) {
             if ((previous - scroll) > 120) {
                 $('#amw-nav-bar-top').addClass('navbar-fixed-top');
-                $('body').css('margin-top', navbarheight * 2);
+                $('body').css('margin-top', navbarheight);
                 previous = scroll;
             }
             /*
