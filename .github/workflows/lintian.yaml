@@ -60,7 +60,7 @@ jobs:
             dpkg-buildpackage --build=all; 
             
           echo "== lint the package\n";
-            (cd ..; ls -d *.deb |grep -v "[-]build-deps$" | while read deb ; do lintian $deb | tee /lintz/lintian-$deb.txt; done)
+            (cd ..; ls -d *.deb |grep -v "[-]build-deps$" | while read deb ; do lintian --verbose $deb | tee /lintz/lintian-$deb.txt; done)
           '
           
       - uses: actions/upload-artifact@v3
