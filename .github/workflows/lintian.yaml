@@ -4,10 +4,6 @@ on:
   push:
     branches: ['*']
     tags-ignore: ['*']
-  pull_request:
-  
-env:
-  DEBIAN_FRONTEND: noninteractive
 
 jobs:
 #=
