@@ -7,6 +7,10 @@ BEGIN { extends 'Catalyst::Controller'; }
 use AmuseWikiFarm::Utils::Amuse qw/clean_username/;
 use AmuseWikiFarm::Log::Contextual;
 
+=pod 
+
+=encoding utf8
+
 =head1 NAME
 
 AmuseWikiFarm::Controller::Remote - Catalyst Controller
@@ -17,10 +21,22 @@ Catalyst Controller.
 
 =head1 METHODS
 
-=cut
+=head2 C<index>
 
+=head2 C<create>
 
-=head2 index
+=head2 C<edit>
+
+=head2 C<_add_files_to_revision>
+
+=head1 AUTHOR
+
+Marco,,,
+
+=head1 LICENSE
+
+This library is free software. You can redistribute it and/or modify
+it under the same terms as Perl itself.
 
 =cut
 
@@ -129,7 +145,7 @@ sub edit :Chained('root') :PathPart('edit') :Args(2) {
     $c->detach($c->view('JSON'));
 }
 
-=comment
+=for comment
 
 curl -F __auth_user=$username \
        -F __auth_pass=$password \
@@ -165,18 +181,8 @@ sub _add_files_to_revision {
            };
 }
 
-=encoding utf8
 
-=head1 AUTHOR
 
-Marco,,,
-
-=head1 LICENSE
-
-This library is free software. You can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
 
 __PACKAGE__->meta->make_immutable;
 
