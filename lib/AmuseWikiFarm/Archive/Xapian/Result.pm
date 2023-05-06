@@ -1,5 +1,15 @@
 package AmuseWikiFarm::Archive::Xapian::Result;
 
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+AmuseWikiFarm::Archive::Xapian::Result - A Xapian Result 
+
+=cut 
+
 use utf8;
 use strict;
 use warnings;
