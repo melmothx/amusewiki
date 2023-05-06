@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.566 2023-05-06
+
+ - I18N: tr (updated)
+ - Try to address the content jumping when the navbar becomes fixed
+
 2.565 2023-03-20
 
  - Save the alt_text on site serialization
