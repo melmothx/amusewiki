@@ -49,3 +49,4 @@ set foreign_key_checks=1;
 
 -- then set the client connection:
 -- and the in dbic.yaml change:   mysql_enable_utf8mb4: 1 instead of mysql_enable_utf8: 1
+-- and restart amw
