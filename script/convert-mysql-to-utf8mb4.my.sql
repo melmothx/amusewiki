@@ -1,5 +1,12 @@
+-- Check the situation with:
+--  SELECT table_name, column_name, character_set_name FROM information_schema.`COLUMNS`  WHERE table_schema = 'amuse';
+
+-- Alter the db (probably not even needed):
 -- ALTER DATABASE amuse CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+-- otherwise the conversion will abort:
 set foreign_key_checks=0;
+
 alter table job_file                              convert to character set utf8mb4 collate utf8mb4_unicode_ci;
 alter table title                                 convert to character set utf8mb4 collate utf8mb4_unicode_ci;
 alter table muse_header                           convert to character set utf8mb4 collate utf8mb4_unicode_ci;
@@ -39,4 +46,6 @@ alter table user_site                             convert to character set utf8m
 alter table title_stat                            convert to character set utf8mb4 collate utf8mb4_unicode_ci;
 alter table node                                  convert to character set utf8mb4 collate utf8mb4_unicode_ci;
 set foreign_key_checks=1;
--- and the in dbic.yaml   mysql_enable_utf8mb4: 1 instead of mysql_enable_utf8
+
+-- then set the client connection:
+-- and the in dbic.yaml change:   mysql_enable_utf8mb4: 1 instead of mysql_enable_utf8: 1
