@@ -1,0 +1,66 @@
+name: lintian
+
+on:
+  push:
+    branches: ['*']
+    tags-ignore: ['*']
+
+jobs:
+#=
+#
+# build a package, and see what lintian thinks about it 
+# This check deletes the t/ directory, since running all those pesky tests takes forever.
+#
+#XXX cache the items from packages.amusewiki.org so the same PR won't hammer the repo
+#XXX this never fails (because of the tee) but I don't think anyone wants their CI to fail for lintian 
+
+  dpkg-buildpackage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - run: id
+      - run: uname -a 
+      - run: lsb_release -a 
+      
+      - run: |
+          docker run  \
+          -e DEBIAN_FRONTEND=noninteractive \
+          -v `pwd`:`pwd` -v ~/lintz:/lintz -w`pwd` debian:bullseye sh -c '
+          echo "== debian\n";
+            id ;
+            uname -a ;
+            lsb_release -a ;
+          
+          echo "== tools\n";
+           (apt-get update || apt-get update || apt-get update) && 
+            apt-get install -y ca-certificates wget gnupg2 devscripts lintian apt-utils bash-completion;
+            
+          echo "== steps from https://packages.amusewiki.org/\n";
+            wget --no-verbose -O - https://packages.amusewiki.org/amusewiki.gpg.key | apt-key add - ;  # APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
+            echo "deb http://packages.amusewiki.org/debian bullseye main"   > /etc/apt/sources.list.d/amusewiki.list ;
+            
+          echo "== update\n";
+            apt-get update;
+            
+          echo "== confirm the source\n";
+            echo "=== key list\n";     apt-key list;
+            echo "=== policy\n";       apt-cache policy;
+            echo "=== sources list\n"; cat /etc/apt/sources.list;
+           
+          echo "== build the package without rurnning the tests\n";
+            mk-build-deps --install \
+                          --tool="apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends --yes" \
+                          debian/control && 
+            (rm -fr t/; mkdir t/; echo "use Test::More; ok(1, q[running the tests takes time.]); done_testing" > "t/0-basic.t" ) &&
+            dpkg-buildpackage --build=all; 
+            
+          echo "== lint the package\n";
+            (cd ..; ls -d *.deb |grep -v "[-]build-deps$" | while read deb ; do lintian --verbose $deb | tee /lintz/lintian-$deb.txt; done)
+          '
+          
+      - uses: actions/upload-artifact@v3
+        with:
+          name: lintian-reports
+          path: ~/lintz/*
+        

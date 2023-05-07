@@ -26,7 +26,7 @@ if ($help) {
 
 =head1 NAME
 
-amusewiki-set-site-variable
+amusewiki-set-site-variable - Set a site option from the command line.
 
 =head1 SYNOPSIS
 
