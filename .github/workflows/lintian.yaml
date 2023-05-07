@@ -52,8 +52,7 @@ jobs:
             mk-build-deps --install \
                           --tool="apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends --yes" \
                           debian/control && 
-            (rm -fr t/; mkdir t/; echo "use Test::More; ok(1, q[running the tests takes time.]); done_testing" > "t/0-basic.t" ) &&
-            dpkg-buildpackage --build=all; 
+            DEB_BUILD_OPTIONS=nocheck dpkg-buildpackage --build=all;
             
           echo "== lint the package\n";
             (cd ..; ls -d *.deb |grep -v "[-]build-deps$" | while read deb ; do lintian --verbose $deb | tee /lintz/lintian-$deb.txt; done)
