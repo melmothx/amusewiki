@@ -725,6 +725,7 @@ INSERT INTO table_comments (table_name, comment_text)
          ('node_category', 'Linking table from Node to Category'),
          ('mirror_info', 'Mirror meta-info'),
          ('mirror_origin', 'Mirror origin'),
+         ('site_category_type', 'Table with the category types'),
          ('included_file', 'Files included in muse documents'),
          ('include_path', 'Directories to search for file inclusions')
          ;

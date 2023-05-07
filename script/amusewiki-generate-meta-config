@@ -20,3 +20,19 @@ my $conf = AmuseWikiMeta::Archive::Config->new(config_file => "$out",
                                                schema => $schema)->generate_config;
 print "Configuration file left in $out\n";
 
+__END__
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+amusewiki-generate-meta-config - generate a amw-meta-config.yml
+
+=head1 SYNOPSIS
+
+Usage: amusewiki-generate-meta-config 
+
+Generate a meta config in a /tmp so you can grab it. 
+
+=cut

@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::SiteCategoryType;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::SiteCategoryType
+AmuseWikiFarm::Schema::Result::SiteCategoryType - Table with the category types
 
 =cut
 
@@ -154,8 +154,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2022-09-12 09:21:26
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2BgaWnHrvxMW98vKj0Oixg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-07 15:43:51
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:hJIoIY+w8K5dGp9uxYbKng
 
 use AmuseWikiFarm::Log::Contextual;
 
