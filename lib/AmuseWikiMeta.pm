@@ -11,11 +11,11 @@ use Catalyst::Runtime 5.90075;
 
 =encoding utf8
 
-=head1 AmuseWikiMeta
+=head1 NAME 
 
-This was hacked in an hurry so it's a bit of a mess.
+AmuseWikiMeta - An Amusewiki Aggregator
 
-Setup:
+=head1 SYNOPSIS
 
 You need to set the following environment variables
 
@@ -48,6 +48,8 @@ if not set. This is a Xapian stub database. Automatically generated if
 doesn't exist, using the list of sites from the configuration site.
 
 =back
+
+Note: this was hacked in an hurry so it's a bit of a mess.
 
 =cut
 
