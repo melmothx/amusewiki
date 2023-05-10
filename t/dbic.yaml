@@ -22,7 +22,7 @@ amuse_mysql:
   dsn: 'dbi:mysql:amusewiki'
   user: 'amusewiki'
   password: 'Pa55Word'
-  mysql_enable_utf8: 1
+  mysql_enable_utf8mb4: 1
   AutoCommit: 1
   RaiseError: 1
   quote_names: 1

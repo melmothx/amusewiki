@@ -6,7 +6,7 @@ dbc_generate_include="sh:$amusewiki_dbc_include_file"
 dbc_generate_include_owner="amusewiki"
 dbc_generate_include_perms="0600"
 dbc_first_version="1.994"
-dbc_mysql_createdb_encoding="utf8"
+dbc_mysql_createdb_encoding="utf8mb4"
 dbc_dbfile_owner="amusewiki"
 dbc_dbfile_perms="0600"
 
@@ -60,7 +60,7 @@ amuse:
   password: '$dbpass'
   AutoCommit: 1
   RaiseError: 1
-  mysql_enable_utf8: 1
+  mysql_enable_utf8mb4: 1
   quote_names: 1
 EOF
                     ;;
