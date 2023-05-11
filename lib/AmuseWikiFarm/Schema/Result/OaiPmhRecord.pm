@@ -68,6 +68,12 @@ __PACKAGE__->table("oai_pmh_record");
   is_foreign_key: 1
   is_nullable: 1
 
+=head2 custom_formats_id
+
+  data_type: 'integer'
+  is_foreign_key: 1
+  is_nullable: 1
+
 =head2 metadata_identifier
 
   data_type: 'varchar'
@@ -84,7 +90,7 @@ __PACKAGE__->table("oai_pmh_record");
 
   data_type: 'varchar'
   is_nullable: 1
-  size: 64
+  size: 32
 
 =head2 deleted
 
@@ -106,12 +112,14 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "attachment_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
+  "custom_formats_id",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "metadata_identifier",
   { data_type => "varchar", is_nullable => 1, size => 512 },
   "metadata_type",
   { data_type => "varchar", is_nullable => 1, size => 32 },
   "metadata_format",
-  { data_type => "varchar", is_nullable => 1, size => 64 },
+  { data_type => "varchar", is_nullable => 1, size => 32 },
   "deleted",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
 );
@@ -142,6 +150,26 @@ __PACKAGE__->belongs_to(
   "attachment",
   "AmuseWikiFarm::Schema::Result::Attachment",
   { id => "attachment_id" },
+  {
+    is_deferrable => 0,
+    join_type     => "LEFT",
+    on_delete     => "SET NULL",
+    on_update     => "CASCADE",
+  },
+);
+
+=head2 custom_format
+
+Type: belongs_to
+
+Related object: L<AmuseWikiFarm::Schema::Result::CustomFormat>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "custom_format",
+  "AmuseWikiFarm::Schema::Result::CustomFormat",
+  { custom_formats_id => "custom_formats_id" },
   {
     is_deferrable => 0,
     join_type     => "LEFT",
@@ -211,8 +239,8 @@ Composing rels: L</oai_pmh_record_sets> -> oai_pmh_set
 __PACKAGE__->many_to_many("oai_pmh_sets", "oai_pmh_record_sets", "oai_pmh_set");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-11 11:36:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:WF7SNZSTbX/SCdgsJJUQKw
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-11 11:48:05
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3vCLuEEB+t1UL37i6kNUBQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

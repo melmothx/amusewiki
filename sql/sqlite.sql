@@ -687,7 +687,7 @@ CREATE TABLE oai_pmh_record (
        identifier VARCHAR(512) NOT NULL PRIMARY KEY,
        datestamp DATETIME,
 
-       -- our internal refereces:
+       -- our internal references:
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                                     ON DELETE CASCADE ON UPDATE CASCADE,
 
@@ -696,13 +696,15 @@ CREATE TABLE oai_pmh_record (
                              ON DELETE SET NULL ON UPDATE CASCADE,
        attachment_id INTEGER NULL REFERENCES attachment(id)
                              ON DELETE SET NULL ON UPDATE CASCADE,
+       custom_formats_id INTEGER NULL REFERENCES custom_formats(custom_formats_id)
+                                 ON DELETE SET NULL ON UPDATE CASCADE,
 
        -- metadata specific for each file
        -- we have the uri at 255, so we need to add the host and the suffix, doubling it should be fine
        metadata_identifier VARCHAR(512), -- the actual URL with the correct extension
 
        metadata_type VARCHAR(32), -- text/image/sound https://www.dublincore.org/specifications/dublin-core/type-element/
-       metadata_format VARCHAR(64), -- mime type
+       metadata_format VARCHAR(32), -- mime type, but at runtime we should append the custom format description
 
        -- flag for deletion
        deleted INTEGER(1) NOT NULL DEFAULT 0
