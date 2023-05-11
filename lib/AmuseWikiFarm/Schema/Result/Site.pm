@@ -793,6 +793,36 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 oai_pmh_records
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::OaiPmhRecord>
+
+=cut
+
+__PACKAGE__->has_many(
+  "oai_pmh_records",
+  "AmuseWikiFarm::Schema::Result::OaiPmhRecord",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 oai_pmh_sets
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::OaiPmhSet>
+
+=cut
+
+__PACKAGE__->has_many(
+  "oai_pmh_sets",
+  "AmuseWikiFarm::Schema::Result::OaiPmhSet",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 redirections
 
 Type: has_many
@@ -969,8 +999,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-12-08 10:10:36
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ToXh5OKwK34xAQRAqBzWjw
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-11 11:21:16
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:RCs7bR+Ayhr47kzoal15/g
 
 =head2 other_sites
 

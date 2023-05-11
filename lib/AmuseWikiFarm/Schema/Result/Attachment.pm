@@ -232,6 +232,21 @@ __PACKAGE__->might_have(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 oai_pmh_records
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::OaiPmhRecord>
+
+=cut
+
+__PACKAGE__->has_many(
+  "oai_pmh_records",
+  "AmuseWikiFarm::Schema::Result::OaiPmhRecord",
+  { "foreign.attachment_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 site
 
 Type: belongs_to
@@ -273,8 +288,8 @@ Composing rels: L</title_attachments> -> title
 __PACKAGE__->many_to_many("titles", "title_attachments", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2022-12-03 08:41:26
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:N/F52Irfr1ha3ZBk0CuUjA
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-11 11:21:16
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:K9JySnrsd8/WE3cVhAodBA
 
 =head2 File classes
 

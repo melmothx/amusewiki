@@ -448,6 +448,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 oai_pmh_records
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::OaiPmhRecord>
+
+=cut
+
+__PACKAGE__->has_many(
+  "oai_pmh_records",
+  "AmuseWikiFarm::Schema::Result::OaiPmhRecord",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 revisions
 
 Type: has_many
@@ -609,8 +624,8 @@ Composing rels: L</node_titles> -> node
 __PACKAGE__->many_to_many("nodes", "node_titles", "node");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-07-22 14:55:51
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:epoFFeSHNxWFi0ogIw3Xrg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-11 11:21:16
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qx0/jlUYtl3Wv69Cb9SQdQ
 
 =head2 translations
 
