@@ -45,6 +45,8 @@ my $site = create_site($schema, $site_id);
 $site->update({ pdf => 1, a4_pdf => 1 });
 $site->check_and_update_custom_formats;
 
+my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => $site->canonical);
 
 
 my $oai_pmh = AmuseWikiFarm::Archive::OAI::PMH->new(site => $site);
@@ -101,15 +103,27 @@ foreach my $att ($site->attachments) {
               );
 }
 
-$oai_pmh->update_site_records;
-
-{
+for (1..2) {
+    $oai_pmh->update_site_records;
     ok $site->oai_pmh_records->search({ attachment_id => { '>', 0 } })->count, "Has attachments";
     ok $site->oai_pmh_records->search({ title_id => { '>', 0 } })->count, "Has texts";
     # check if they have all the fields
     foreach my $f (qw/metadata_format metadata_type metadata_identifier datestamp/) {
         ok !$site->oai_pmh_records->search({ $f => [ undef, '' ] })->count, "No records without $f";
     }
+    ok !$site->oai_pmh_records->search({ deleted => 1 })->count, "No deleted records";
+    sleep 2;
+}
+
+foreach my $rec ($site->oai_pmh_records) {
+    is $rec->datestamp->time_zone->name, 'UTC';
+    $mech->get_ok($rec->metadata_identifier);
+}
+
+{
+    ok path($site->repo_root, qw/t tt to-test.a4.pdf/)->remove;
+    $oai_pmh->update_site_records;
+    is $site->oai_pmh_records->search({ deleted => 1 })->count, 1, "Found the deletion";
 }
 
 done_testing;
