@@ -250,7 +250,7 @@ __PACKAGE__->many_to_many("oai_pmh_sets", "oai_pmh_record_sets", "oai_pmh_set");
 # Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-12 11:29:36
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:m6MSrfj/ePYBslQhU72bpg
 
+__PACKAGE__->add_columns('+datestamp' => { timezone => 'UTC' });
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
 1;

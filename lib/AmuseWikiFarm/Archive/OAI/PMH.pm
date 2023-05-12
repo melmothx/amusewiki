@@ -71,6 +71,7 @@ sub update_site_records {
                      };
     }
     my $guard = $schema->txn_scope_guard;
+    my $now = time();
     foreach my $f (@files) {
         if (my $file = delete $f->{file}) {
             if ($file->exists) {
@@ -78,10 +79,19 @@ sub update_site_records {
                                                  time_zone => 'UTC');
                 $f->{site_id} = $site_id;
                 $f->{datestamp} = $mtime;
+                $f->{update_run} = $now;
                 $site->oai_pmh_records->update_or_create($f);
             }
         }
     }
+    my $now_utc = DateTime->now(time_zone => 'UTC');
+    $site->oai_pmh_records->search({
+                                    deleted => 0,
+                                    update_run => { '<>' => $now },
+                                   })->update({
+                                               deleted => 1,
+                                               datestamp => $now_utc,
+                                              });
     $guard->commit;
 }
 
