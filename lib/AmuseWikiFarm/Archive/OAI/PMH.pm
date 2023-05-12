@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 use Moo;
-use Types::Standard qw/Object Str HashRef ArrayRef/;
+use Types::Standard qw/Object Str HashRef ArrayRef InstanceOf/;
 use AmuseWikiFarm::Log::Contextual;
 use DateTime;
 use AmuseWikiFarm::Utils::Paths;
@@ -16,6 +16,8 @@ has site => (
              required => 1,
              isa => Object,
             );
+
+has oai_pmh_url => (is => 'ro', isa => InstanceOf['URI']);
 
 sub update_site_records {
     my ($self) = @_;

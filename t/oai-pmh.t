@@ -138,4 +138,6 @@ foreach my $rec ($site->oai_pmh_records) {
     is $site->oai_pmh_records->search({ deleted => 1 })->count, 1, "Found the deletion";
 }
 
+$mech->get_ok('/oai_pmh');
+
 done_testing;
