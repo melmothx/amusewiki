@@ -73,11 +73,13 @@ __PACKAGE__->add_columns(
 
 =item * L</set_spec>
 
+=item * L</site_id>
+
 =back
 
 =cut
 
-__PACKAGE__->set_primary_key("set_spec");
+__PACKAGE__->set_primary_key("set_spec", "site_id");
 
 =head1 RELATIONS
 
@@ -122,8 +124,8 @@ Composing rels: L</oai_pmh_record_sets> -> oai_pmh_record
 __PACKAGE__->many_to_many("oai_pmh_records", "oai_pmh_record_sets", "oai_pmh_record");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-11 11:36:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sFba/3fT9HROu5fz/WOcnQ
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-12 17:01:48
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4cjnvsydGIQRLG1doz1TSg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

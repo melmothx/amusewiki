@@ -720,10 +720,11 @@ CREATE TABLE oai_pmh_record_set (
 );
 
 CREATE TABLE oai_pmh_set (
-       set_spec VARCHAR(255) PRIMARY KEY,
+       set_spec VARCHAR(255) NOT NULL,
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                                     ON DELETE CASCADE ON UPDATE CASCADE,
-       set_name TEXT
+       set_name TEXT,
+       PRIMARY KEY (set_spec, site_id)
 );
 
 
