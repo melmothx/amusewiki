@@ -59,21 +59,33 @@ ok $oai_pmh;
 #author My author
 #title Test me
 #topics One topic; And another;
-#lang ru
+#lang it
 #attach shot.pdf
 
-Все смешалось в доме Облонских. Жена узнала, что муж был в связи с
-бывшею в их доме француженкою-гувернанткой, и объявила мужу, что не
-может жить с ним в одном доме. Положение это продолжалось уже третий
-день и мучительно чувствовалось и самими супругами, и всеми членами
-семьи, и домочадцами. Все члены семьи и домочадцы чувствовали, что нет
-смысла в их сожительстве и что на каждом постоялом дворе случайно
-сошедшиеся люди более связаны между собой, чем они, члены семьи и
-домочадцы Облонских. Жена не выходила из своих комнат, мужа третий
-день не было дома. Дети бегали по всему дому, как потерянные;
-англичанка поссорилась с экономкой и написала записку приятельнице,
-прося приискать ей новое место; повар ушел еще вчера со двора, во
-время обеда; черная кухарка и кучер просили расчета. 
+> Tirsi morir volea,
+> Gl'occhi mirando di colei ch'adora;
+> Quand'ella, che di lui non meno ardea,
+> Gli disse: "Ahimè, ben mio,
+> Deh, non morir ancora,
+> Che teco bramo di morir anch'io."
+>
+> Frenò Tirsi il desio,
+> Ch'ebbe di pur sua vit'allor finire;
+> Ma (E) sentea morte,in (e) non poter morire.
+> E mentr'il guardo suo fisso tenea
+> Ne' begl'occhi divini
+> E'l nettare amoroso indi bevea,
+>
+> La bella Ninfa sua, che già vicini
+> Sentea i messi d'Amore,
+> Disse, con occhi languidi e tremanti:
+> "Mori, cor mio, ch'io moro."
+> Cui rispose il Pastore:
+> "Ed io, mia vita, moro."
+>
+> Cosi moriro i fortunati amanti
+> Di morte si soave e si gradita,
+> Che per anco morir tornaro in vita.
 
 [[t-t-1.png]]
 
