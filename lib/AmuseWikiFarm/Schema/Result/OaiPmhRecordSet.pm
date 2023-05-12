@@ -47,10 +47,9 @@ __PACKAGE__->table("oai_pmh_record_set");
 
 =head2 oai_pmh_set_id
 
-  data_type: 'varchar'
+  data_type: 'integer'
   is_foreign_key: 1
   is_nullable: 0
-  size: 255
 
 =cut
 
@@ -58,7 +57,7 @@ __PACKAGE__->add_columns(
   "oai_pmh_record_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 512 },
   "oai_pmh_set_id",
-  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 255 },
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
 );
 
 =head1 PRIMARY KEY
@@ -108,8 +107,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-12 17:16:20
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/HGZgFkxwQlN8ic0ZVH76w
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-12 17:27:20
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wupxWiEWCJpKxSaQVFAlew
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

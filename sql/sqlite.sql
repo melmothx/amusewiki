@@ -714,7 +714,7 @@ CREATE TABLE oai_pmh_record (
 CREATE TABLE oai_pmh_record_set (
        oai_pmh_record_id VARCHAR(512) NOT NULL REFERENCES oai_pmh_record(identifier)
                                ON DELETE CASCADE ON UPDATE CASCADE,
-       oai_pmh_set_id VARCHAR(255) NOT NULL REFERENCES oai_pmh_set(oai_pmh_set_id)
+       oai_pmh_set_id INTEGER NOT NULL REFERENCES oai_pmh_set(oai_pmh_set_id)
                                ON DELETE CASCADE ON UPDATE CASCADE,
        PRIMARY KEY (oai_pmh_record_id, oai_pmh_set_id)
 );
