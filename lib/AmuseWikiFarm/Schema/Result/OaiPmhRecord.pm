@@ -99,6 +99,12 @@ __PACKAGE__->table("oai_pmh_record");
   is_nullable: 0
   size: 1
 
+=head2 update_run
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -122,6 +128,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 32 },
   "deleted",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
+  "update_run",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
 );
 
 =head1 PRIMARY KEY
@@ -239,8 +247,8 @@ Composing rels: L</oai_pmh_record_sets> -> oai_pmh_set
 __PACKAGE__->many_to_many("oai_pmh_sets", "oai_pmh_record_sets", "oai_pmh_set");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-11 11:48:05
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3vCLuEEB+t1UL37i6kNUBQ
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-12 11:29:36
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:m6MSrfj/ePYBslQhU72bpg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
