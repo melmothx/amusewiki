@@ -10,6 +10,7 @@ use AmuseWikiFarm::Log::Contextual;
 use DateTime;
 use AmuseWikiFarm::Utils::Paths;
 use Path::Tiny;
+use XML::Writer;
 
 has site => (
              is => 'ro',
@@ -97,6 +98,123 @@ sub update_site_records {
     $guard->commit;
 }
 
+sub process_request {
+    my ($self, $params) = @_;
+    my $w = XML::Writer->new(OUTPUT => "self",
+                             DATA_INDENT => 2,
+                             ENCODING => "UTF-8",
+                             DATA_MODE => 1);
+    $w->xmlDecl;
+    my %verbs = (
+                 GetRecord => 'get_record',
+                 Identify => 'identify',
+                 ListIdentifiers => 'list_identifiers',
+                 ListMetadataFormats => 'list_metadata_formats',
+                 ListRecords => 'list_records',
+                 ListSets => 'list_sets',
+                );
+    my $verb = $params->{verb} || 'MISSING';
+    my $res;
+    if (my $method = $verbs{$verb}) {
+        $res = $self->$method($params);
+    }
+    else {
+        $res = {
+                error_code => 'badVerb',
+                error_message => "Bad verb: $verb",
+               };
+    }
+    my @response;
+    my %fatals = (
+                  badVerb => 1,
+                  badArgument => 1,
+                 );
+    if (my $errcode = $res->{error_code}) {
+        push @response, [
+                         error => [ code => $errcode ],
+                         $res->{error_message} || $errcode
+                        ];
+        if ($fatals{$errcode}) {
+            # In cases where the request that generated this response
+            # resulted in a badVerb or badArgument error condition,
+            # the repository must return the base URL of the protocol
+            # request only. Attributes must not be provided in these
+            # cases.
+            $params = {};
+        }
+    }
+    if ($res->{xml}) {
+        push @response, @{$res->{xml}};
+    }
+    my $data = [
+                'OAI-PMH' => [
+                              xmlns => "http://www.openarchives.org/OAI/2.0/" ,
+                              'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
+                              'xsi:schemaLocation' => join(' ',
+                                                           "http://www.openarchives.org/OAI/2.0/",
+                                                           "http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd"
+                                                          ),
+                             ],
+                [
+                 [ responseDate => DateTime->now(time_zone => 'UTC')->iso8601 . 'Z' ],
+                 [ request => [ %$params ], $self->oai_pmh_url->as_string ],
+                 @response,
+                ]
+               ];
+    _generate_xml($w, @$data);
+    $w->end;
+    return "$w";
+}
 
+sub _generate_xml {
+    my ($w, $name, @args) = @_;
+    my ($attrs, $value);
+    if (@args == 0) {
+        # all undef
+    }
+    elsif (@args == 1) {
+        $attrs = [];
+        $value = $args[0];
+    }
+    elsif (@args == 2) {
+        ($attrs, $value) = @args;
+    }
+    else {
+        die "Bad usage";
+    }
+    if (defined $value) {
+        $w->startTag($name, @$attrs);
+        if (ref($value)) {
+            foreach my $v (@$value) {
+                # recursive call
+                _generate_xml($w, @$v)
+            }
+        }
+        else {
+            $w->characters($value);
+        }
+        $w->endTag;
+    }
+    else {
+        $w->emptyTag($name, @$attrs);
+    }
+}
 
+sub get_record {
+}
+
+sub identify {
+}
+
+sub list_identifiers {
+}
+
+sub list_metadata_formats {
+}
+
+sub list_records {
+}
+
+sub list_sets {
+}
 1;

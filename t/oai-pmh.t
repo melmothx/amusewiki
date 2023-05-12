@@ -9,7 +9,6 @@ BEGIN {
 };
 
 
-use XML::Writer;
 use Data::Dumper;
 use Test::More;
 use AmuseWikiFarm::Schema;
@@ -27,18 +26,6 @@ binmode $builder->failure_output, ":encoding(utf-8)";
 binmode $builder->todo_output,    ":encoding(utf-8)";
 binmode STDOUT, ":encoding(UTF-8)";
 
-my $writer = XML::Writer->new(OUTPUT => 'self',
-                              DATA_INDENT => 2,
-                              ENCODING => 'utf-8',
-                              DATA_MODE => 1);
-$writer->xmlDecl;
-$writer->startTag("Container");
-$writer->dataElement('dc:test', 'testà');
-$writer->dataElement('dc:test', 'testć');
-$writer->endTag;
-$writer->end;
-diag "$writer";
-
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_id = '0oai0';
 my $site = create_site($schema, $site_id);
@@ -49,8 +36,11 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 
 
-my $oai_pmh = AmuseWikiFarm::Archive::OAI::PMH->new(site => $site);
+my $oai_pmh = AmuseWikiFarm::Archive::OAI::PMH->new(site => $site,
+                                                    oai_pmh_url => URI->new($site->canonical_url));
 ok $oai_pmh;
+diag $oai_pmh->process_request;
+diag $oai_pmh->process_request({ verb => 'pippo' });
 
 {
     my $muse = path($site->repo_root, qw/t tt to-test.muse/);
@@ -138,6 +128,12 @@ foreach my $rec ($site->oai_pmh_records) {
     is $site->oai_pmh_records->search({ deleted => 1 })->count, 1, "Found the deletion";
 }
 
-$mech->get_ok('/oai_pmh');
+$mech->get_ok('/oai-pmh');
+$mech->content_contains('<request>https://0oai0.amusewiki.org/oai-pmh</request>');
+$mech->content_contains('<error code="badVerb">Bad verb: MISSING</error>');
+$mech->get_ok('/oai-pmh?verb=pippo');
+$mech->content_contains('<error code="badVerb">Bad verb: pippo</error>');
+$mech->get_ok('/oai-pmh?verb=Identify');
+$mech->content_contains('<request verb="Identify">https://0oai0.amusewiki.org/oai-pmh</request>');
 
 done_testing;
