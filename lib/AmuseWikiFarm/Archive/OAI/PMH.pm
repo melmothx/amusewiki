@@ -11,6 +11,7 @@ use DateTime;
 use AmuseWikiFarm::Utils::Paths;
 use Path::Tiny;
 use XML::Writer;
+use Data::Dumper::Concise;
 
 has site => (
              is => 'ro',
@@ -184,11 +185,14 @@ sub _generate_xml {
     }
     if (defined $value) {
         $w->startTag($name, @$attrs);
-        if (ref($value)) {
+        if (ref($value) eq 'ARRAY') {
             foreach my $v (@$value) {
                 # recursive call
                 _generate_xml($w, @$v)
             }
+        }
+        elsif (ref($value)) {
+            die "Not an array ref! " . Dumper($value);
         }
         else {
             $w->characters($value);
@@ -204,6 +208,60 @@ sub get_record {
 }
 
 sub identify {
+    my ($self, $params) = @_;
+    my $site = $self->site;
+    my @res = (
+               [ repositoryName => $site->sitename || $site->canonical ],
+               [ baseURL => $self->oai_pmh_url->as_string ],
+               [ protocolVersion => '2.0' ],
+               # I don't think we want more spam
+               [ adminEmail => 'postmaster+do-not-use@' . $site->canonical ],
+               [ earliestDatestamp => $self->earliest_datestamp ],
+
+               # we keep track but if the instance migrates it's
+               # probably lost, no don't make promises for now.
+               [ deletedRecord => 'transient' ],
+               [ granularity => 'YYYY-MM-DDThh:mm:ssZ' ],
+               # let's keep this for later, as it makes validation harder
+               # [ description => [
+               #                   [ 'oai-identifier',
+               #                     [
+               #                      xmlns => "http://www.openarchives.org/OAI/2.0/oai-identifier",
+               #                      "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
+               #                      "xsi:schemaLocation" =>
+               #                      join(" ",
+               #                           "http://www.openarchives.org/OAI/2.0/oai-identifier",
+               #                           "http://www.openarchives.org/OAI/2.0/oai-identifier.xsd")
+               #                     ],
+               #                     [
+               #                      [ scheme => 'oai' ],
+               #                      [ repositoryIdentifier => $site->canonical ],
+               #                      [ delimiter => ':' ],
+               #                      [ sampleIdentifier => join(":",'oai' . $site->canonical . "/library/test") ],
+               #                     ]
+               #                   ]
+               #                  ]
+               # ],
+              );
+    return {
+            xml => [[ Identify => \@res  ]]
+           };
+}
+
+sub earliest_datestamp {
+    my $self = shift;
+    my $first = $self->site->oai_pmh_records->search(undef,
+                                                     {
+                                                      order_by => { -asc => 'datestamp' },
+                                                      rows => 1,
+                                                      columns => [qw/datestamp/]
+                                                     })->first;
+    if ($first) {
+        return $first->datestamp->iso8601 . 'Z';
+    }
+    else {
+        return DateTime->now(time_zone => 'UTC')->iso8601 . 'Z';
+    }
 }
 
 sub list_identifiers {

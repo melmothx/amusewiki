@@ -40,7 +40,7 @@ my $oai_pmh = AmuseWikiFarm::Archive::OAI::PMH->new(site => $site,
                                                     oai_pmh_url => URI->new($site->canonical_url));
 ok $oai_pmh;
 diag $oai_pmh->process_request;
-diag $oai_pmh->process_request({ verb => 'pippo' });
+diag $oai_pmh->process_request({ verb => 'Identify' });
 
 {
     my $muse = path($site->repo_root, qw/t tt to-test.muse/);
