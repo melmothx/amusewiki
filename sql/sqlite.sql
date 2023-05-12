@@ -707,7 +707,8 @@ CREATE TABLE oai_pmh_record (
        metadata_format VARCHAR(32), -- mime type, but at runtime we should append the custom format description
 
        -- flag for deletion
-       deleted INTEGER(1) NOT NULL DEFAULT 0
+       deleted INTEGER(1) NOT NULL DEFAULT 0,
+       update_run INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE TABLE oai_pmh_record_set (
