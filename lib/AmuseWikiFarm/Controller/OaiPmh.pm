@@ -28,9 +28,12 @@ There is a single entry point.
 
 sub root :Chained('/site') :PathPart('oai-pmh') :Args(0) {
     my ($self, $c) = @_;
-    my $oaipmh = $c->model('OaiPmh');
-    log_debug { "Base url is " . $oaipmh->oai_pmh_url };
-    $c->res->body('OK');
+    my $params = $c->request->params;
+    my $xml = $c->model('OaiPmh')->process_request($params);
+    # 3.1.2.1
+    $c->response->content_type('text/xml');
+    $c->response->body($xml);
+    # compression is handled by the frontend server
 }
 
 =encoding utf8
