@@ -321,6 +321,7 @@ use Text::Amuse::Functions qw/muse_format_line muse_to_html/;
 use AmuseWikiFarm::Log::Contextual;
 use Path::Tiny;
 use AmuseWikiFarm::Utils::Amuse qw/build_full_uri/;
+use HTML::Entities qw/encode_entities/;
 
 sub can_be_inlined {
     my $self = shift;
@@ -480,6 +481,18 @@ sub is_video {
 sub has_thumbnails {
     return shift->f_class ne 'upload_binary';
 }
+
+sub dublin_core_entry {
+    my $self = shift;
+    return {
+            # we encode the alt text because in the output we decode and clean
+            title => [ grep { $_ } ($self->title_html, encode_entities($self->alt_text || '')) ],
+            description => $self->comment_html,
+           };
+}
+
+
+
 
 __PACKAGE__->meta->make_immutable;
 1;

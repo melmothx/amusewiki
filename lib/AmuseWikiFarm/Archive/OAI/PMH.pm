@@ -181,7 +181,7 @@ sub _generate_xml {
         ($attrs, $value) = @args;
     }
     else {
-        die "Bad usage";
+        die "Bad usage" . Dumper(\@_);
     }
     if (defined $value) {
         $w->startTag($name, @$attrs);
@@ -205,6 +205,37 @@ sub _generate_xml {
 }
 
 sub get_record {
+    my ($self, $params) = @_;
+    my $id = $params->{identifier};
+    my $prefix = $params->{metadataPrefix};
+    unless ($id && $prefix) {
+        return {
+                error_code => 'badArgument',
+                error_message => "Required arguments: identifier and metadataPrefix",
+               };
+    }
+    if ($prefix ne 'oai_dc') {
+        return {
+                error_code => 'cannotDisseminateFormat',
+                error_message => "Only oai_dc is supported at the moment",
+               };
+    }
+    if (my $record = $self->site->oai_pmh_records->find($id)) {
+        return {
+                xml => [
+                        [ GetRecord => [
+                                        [ record => $record->as_xml_structure($prefix) ]
+                                       ]
+                        ]
+                       ]
+               };
+    }
+    else {
+        return {
+                error_code => 'idDoesNotExist',
+                error_message => "$id not found",
+               };
+    }
 }
 
 sub identify {

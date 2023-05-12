@@ -252,5 +252,87 @@ __PACKAGE__->many_to_many("oai_pmh_sets", "oai_pmh_record_sets", "oai_pmh_set");
 
 __PACKAGE__->add_columns('+datestamp' => { timezone => 'UTC' });
 
+use AmuseWikiFarm::Utils::Amuse;
+
+sub as_xml_structure {
+    my ($self, $prefix) = @_;
+    my @sets;
+    foreach my $set ($self->oai_pmh_sets) {
+        push @sets, [ setSpec => $set->set_spec ];
+    }
+    my @out = ([ header => [ $self->deleted ? (status => 'deleted') : () ], # header
+                 # children
+                 [
+                  [ identifier => $self->identifier ],
+                  [ datestamp => $self->datestamp->iso8601 . 'Z' ],
+                  @sets
+                 ]
+               ]);
+    if ($prefix eq 'oai_dc') {
+        push @out, [ 'oai_dc:dc',
+                     [
+                      'xmlns:oai_dc' => "http://www.openarchives.org/OAI/2.0/oai_dc/",
+                      'xmlns:dc' => "http://purl.org/dc/elements/1.1/",
+                      'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
+                      'xsi:schemaLocation' => join(' ',
+                                                   "http://www.openarchives.org/OAI/2.0/oai_dc/",
+                                                   "http://www.openarchives.org/OAI/2.0/oai_dc.xsd"
+                                                  ),
+                     ],
+                     $self->dublin_core_record,
+                   ];
+    }
+    return \@out;
+}
+
+sub dublin_core_record {
+    my $self = shift;
+    my $obj = $self->title || $self->attachment;
+    die "Nor a title nor an attachment?" unless $obj;
+    my $data = $obj->dublin_core_entry;
+    if ($self->custom_format) {
+        $data->{identifier} = $self->metadata_identifier;
+        $data->{format} = $self->metadata_format;
+        $data->{type} = $self->metadata_type;
+    }
+    my @out;
+    foreach my $k (qw/title
+                      creator
+                      subject
+                      description
+                      publisher
+                      contributor
+                      date
+                      type
+                      format
+                      identifier
+                      source
+                      language
+                      relation
+                      coverage
+                      rights/) {
+        if (my $v = $data->{$k}) {
+            my @list = ref($v) ? (@$v) : ($v);
+            foreach my $value (@list) {
+                my $cleaned = AmuseWikiFarm::Utils::Amuse::clean_html($value);
+                $cleaned =~ s/\A\s+//;
+                $cleaned =~ s/\s+\z//;
+                if ($cleaned) {
+                    push @out, [ 'dc:' . $k => $cleaned ];
+                }
+            }
+            if ($k eq 'description') {
+                if (my $cf = $self->custom_format) {
+                    if (my $cf_name = $cf->format_name) {
+                        push @out, [ 'dc:' . $k, $cf_name ]
+                    }
+                }
+            }
+        }
+    }
+    return \@out;
+}
+
+
 __PACKAGE__->meta->make_immutable;
 1;
