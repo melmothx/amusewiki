@@ -140,15 +140,56 @@ foreach my $rec ($site->oai_pmh_records) {
     is $site->oai_pmh_records->search({ deleted => 1 })->count, 1, "Found the deletion";
 }
 
-$mech->get_ok('/oai-pmh');
-$mech->content_contains('<request>https://0oai0.amusewiki.org/oai-pmh</request>');
-$mech->content_contains('<error code="badVerb">Bad verb: MISSING</error>');
-$mech->get_ok('/oai-pmh?verb=pippo');
-$mech->content_contains('<error code="badVerb">Bad verb: pippo</error>');
-$mech->get_ok('/oai-pmh?verb=Identify');
-$mech->content_contains('<request verb="Identify">https://0oai0.amusewiki.org/oai-pmh</request>');
-$mech->get_ok('/oai-pmh?verb=ListMetadataFormats');
-$mech->content_contains('<metadataNamespace>http://www.openarchives.org/OAI/2.0/oai_dc/</metadataNamespace>');
-$mech->content_contains('<metadataPrefix>oai_dc</metadataPrefix>');
+foreach my $test ({
+                   args => {},
+                   expect => [
+                              '<request>https://0oai0.amusewiki.org/oai-pmh</request>',
+                              '<error code="badVerb">Bad verb: MISSING</error>',
+                             ],
+                  },
+                  {
+                   args => {
+                            verb => 'Pippo',
+                           },
+                   expect => [
+                              '<error code="badVerb">Bad verb: Pippo</error>',
+                             ],
+                  },
+                  {
+                   args => {
+                            verb => 'Identify',
+                           },
+                   expect => [
+                              '<request verb="Identify">https://0oai0.amusewiki.org/oai-pmh</request>'
+                             ],
+                  },
+                  {
+                   args => {
+                            verb => 'ListMetadataFormats',
+                           },
+                   expect => [
+                              '<metadataNamespace>http://www.openarchives.org/OAI/2.0/oai_dc/</metadataNamespace>',
+                              '<metadataPrefix>oai_dc</metadataPrefix>',
+                              '<request verb="ListMetadataFormats">https://0oai0.amusewiki.org/oai-pmh</request>',
+                             ]
+                  },
+                  {
+                   args => {
+                            verb => 'ListSets',
+                           },
+                   expect => [
+                              '<request verb="ListSets">https://0oai0.amusewiki.org/oai-pmh</request>'
+                             ],
+                  }) {
+    my $uri = URI->new($site->canonical_url);
+    $uri->path('/oai-pmh');
+    $uri->query_form($test->{args});
+    $mech->get_ok("$uri");
+    diag $mech->content;
+    foreach my $exp (@{$test->{expect}}) {
+        $mech->content_contains($exp);
+    }
+}
+
 
 done_testing;
