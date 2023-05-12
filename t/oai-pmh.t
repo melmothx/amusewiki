@@ -44,6 +44,13 @@ diag $oai_pmh->process_request({ verb => 'Identify' });
 diag $oai_pmh->process_request({ verb => 'ListMetadataFormats' });
 $site->oai_pmh_sets->delete;
 diag $oai_pmh->process_request({ verb => 'ListSets' });
+
+diag $oai_pmh->process_request({
+                                verb => 'GetRecord',
+                                identifier => 'oai:0oai0.amusewiki.org:/library/to-test.muse',
+                                metadataPrefix => 'oai_dc',
+                               });
+
 {
     my $set = $site->oai_pmh_sets->create({
                                            set_spec => 'test',
@@ -60,9 +67,14 @@ diag $oai_pmh->process_request({ verb => 'ListSets' });
     $muse->spew_utf8(<<"MUSE");
 #author My author
 #title Test me
-#topics One topic; And another;
+#authors One <author>; and & anotherrxx
+#source From "the" internet
+#rights No <copycat>
+#topics One topic; And <another>; xAnd&another;
 #lang it
 #attach shot.pdf
+#publisher <testing> publisher
+#date 1923 and something else
 
 > Tirsi morir volea,
 > Gl'occhi mirando di colei ch'adora;
@@ -148,6 +160,50 @@ foreach my $test ({
                              ],
                   },
                   {
+                   args => { verb => 'GetRecord' },
+                   expect => [
+                              '<error code="badArgument">',
+                             ],
+                  },
+                  {
+                   args => {
+                            verb => 'GetRecord',
+                            metadataPrefix => 'oai_dc',
+                           },
+                   expect => [
+                              '<error code="badArgument">',
+                             ],
+                  },
+                  {
+                   args => {
+                            verb => 'GetRecord',
+                            metadataPrefix => 'X',
+                           },
+                   expect => [
+                              '<error code="badArgument">',
+                             ],
+                  },
+                  {
+                   args => {
+                            verb => 'GetRecord',
+                            metadataPrefix => 'X',
+                            identifier => 'X'
+                           },
+                   expect => [
+                              '<error code="cannotDisseminateFormat">',
+                             ],
+                  },
+                  {
+                   args => {
+                            verb => 'GetRecord',
+                            metadataPrefix => 'oai_dc',
+                            identifier => 'X'
+                           },
+                   expect => [
+                              '<error code="idDoesNotExist">',
+                             ],
+                  },
+                  {
                    args => {
                             verb => 'Pippo',
                            },
@@ -180,7 +236,38 @@ foreach my $test ({
                    expect => [
                               '<request verb="ListSets">https://0oai0.amusewiki.org/oai-pmh</request>'
                              ],
-                  }) {
+                  },
+                  {
+                   args => {
+                            verb => 'GetRecord',
+                            metadataPrefix => 'oai_dc',
+                            identifier => $site->oai_pmh_records->search({ title_id => { '>', 0 } })->first->identifier,
+                           },
+                   expect => [
+                              '<dc:title>Test me</dc:title>',
+                              '<dc:creator>One &lt;author&gt;</dc:creator>',
+                              '<dc:creator>and &amp; anotherrxx</dc:creator>',
+                              '<dc:subject>One topic</dc:subject>',
+                              '<dc:subject>And &lt;another&gt;</dc:subject>',
+                              '<dc:subject>xAnd&amp;another</dc:subject>',
+                              '<dc:publisher>&lt;testing&gt; publisher</dc:publisher>',
+                              '<dc:date>1923</dc:date>',
+                              '<dc:source>From "the" internet</dc:source>',
+                              '<dc:language>it</dc:language>',
+                              '<dc:rights>No &lt;copycat&gt;</dc:rights>',
+                             ],
+                  },
+                  {
+                   args => {
+                            verb => 'GetRecord',
+                            metadataPrefix => 'oai_dc',
+                            identifier => $site->oai_pmh_records->search({ attachment_id => { '>', 0 } })->first->identifier,
+                           },
+                   expect => [
+                              '<dc:title>t-t-1.png description</dc:title>'
+                             ],
+                  },
+                 ) {
     my $uri = URI->new($site->canonical_url);
     $uri->path('/oai-pmh');
     $uri->query_form($test->{args});

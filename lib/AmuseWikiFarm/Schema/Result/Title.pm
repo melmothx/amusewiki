@@ -1511,6 +1511,36 @@ sub opds_entry {
     return \%out;
 }
 
+# this should be done for each format, I think. Then the can define a
+# set called "muse" which excludes the generated formats.
+
+sub dublin_core_entry {
+    # we need one per format
+    my ($self) = @_;
+    my @cats = $self->categories;
+    my $data = {
+                title => $self->title,
+                creator => [
+                            map { $_->name }
+                            grep { $_->type eq 'author' }
+                            @cats
+                           ],
+                subject => [
+                            map { $_->name }
+                            grep { $_->type eq 'topic' }
+                            @cats
+                           ],
+                description => $self->teaser,
+                publisher => $self->publisher,
+                date => $self->date_year || $self->pubdate->ymd,
+                source => $self->source,
+                language => $self->lang || 'en',
+                rights => $self->rights,
+               };
+    return $data;
+}
+
+
 sub _clean_html {
     my ($self, $string) = @_;
     return "" unless defined $string;
