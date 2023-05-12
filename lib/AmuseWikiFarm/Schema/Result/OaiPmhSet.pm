@@ -38,6 +38,12 @@ __PACKAGE__->table("oai_pmh_set");
 
 =head1 ACCESSORS
 
+=head2 oai_pmh_set_id
+
+  data_type: 'integer'
+  is_auto_increment: 1
+  is_nullable: 0
+
 =head2 set_spec
 
   data_type: 'varchar'
@@ -59,6 +65,8 @@ __PACKAGE__->table("oai_pmh_set");
 =cut
 
 __PACKAGE__->add_columns(
+  "oai_pmh_set_id",
+  { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "set_spec",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "site_id",
@@ -71,6 +79,20 @@ __PACKAGE__->add_columns(
 
 =over 4
 
+=item * L</oai_pmh_set_id>
+
+=back
+
+=cut
+
+__PACKAGE__->set_primary_key("oai_pmh_set_id");
+
+=head1 UNIQUE CONSTRAINTS
+
+=head2 C<set_spec_site_id_unique>
+
+=over 4
+
 =item * L</set_spec>
 
 =item * L</site_id>
@@ -79,7 +101,7 @@ __PACKAGE__->add_columns(
 
 =cut
 
-__PACKAGE__->set_primary_key("set_spec", "site_id");
+__PACKAGE__->add_unique_constraint("set_spec_site_id_unique", ["set_spec", "site_id"]);
 
 =head1 RELATIONS
 
@@ -94,7 +116,7 @@ Related object: L<AmuseWikiFarm::Schema::Result::OaiPmhRecordSet>
 __PACKAGE__->has_many(
   "oai_pmh_record_sets",
   "AmuseWikiFarm::Schema::Result::OaiPmhRecordSet",
-  { "foreign.oai_pmh_set_id" => "self.set_spec" },
+  { "foreign.oai_pmh_set_id" => "self.oai_pmh_set_id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
@@ -124,8 +146,8 @@ Composing rels: L</oai_pmh_record_sets> -> oai_pmh_record
 __PACKAGE__->many_to_many("oai_pmh_records", "oai_pmh_record_sets", "oai_pmh_record");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-12 17:01:48
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4cjnvsydGIQRLG1doz1TSg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-12 17:16:20
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3eULPtUvgg1EVQj7Cy4Bpg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

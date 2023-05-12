@@ -268,11 +268,42 @@ sub list_identifiers {
 }
 
 sub list_metadata_formats {
+    return {
+            xml => [[ ListMetadataFormats => [
+                                              [ metadataFormat => [
+                                                                   [ metadataPrefix => 'oai_dc' ],
+                                                                   [ schema => 'http://www.openarchives.org/OAI/2.0/oai_dc.xsd' ],
+                                                                   [ metadataNamespace => 'http://www.openarchives.org/OAI/2.0/oai_dc/' ],
+                                                                  ]
+                                              ]
+                                             ]
+                    ]],
+            };
 }
 
 sub list_records {
 }
 
 sub list_sets {
+    my $self = shift;
+    my $site = $self->site;
+    my @out;
+    foreach my $set ($site->oai_pmh_sets->all) {
+        push @out, [ set => [
+                             [ setSpec => $set->set_spec ],
+                             [ setName => $set->set_name ],
+                            ]];
+    }
+    if (@out) {
+        return {
+                xml => [[ ListSets => \@out ]]
+               };
+    }
+    else {
+        return {
+                error_code => 'noSetHierarchy',
+                error_message => "No sets present",
+               }
+    }
 }
 1;

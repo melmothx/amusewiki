@@ -103,13 +103,13 @@ Related object: L<AmuseWikiFarm::Schema::Result::OaiPmhSet>
 __PACKAGE__->belongs_to(
   "oai_pmh_set",
   "AmuseWikiFarm::Schema::Result::OaiPmhSet",
-  { set_spec => "oai_pmh_set_id" },
+  { oai_pmh_set_id => "oai_pmh_set_id" },
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-11 11:36:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rRWEA+8+pZgREWpnJ905mA
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-12 17:16:20
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/HGZgFkxwQlN8ic0ZVH76w
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

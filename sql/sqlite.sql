@@ -714,18 +714,20 @@ CREATE TABLE oai_pmh_record (
 CREATE TABLE oai_pmh_record_set (
        oai_pmh_record_id VARCHAR(512) NOT NULL REFERENCES oai_pmh_record(identifier)
                                ON DELETE CASCADE ON UPDATE CASCADE,
-       oai_pmh_set_id VARCHAR(255) NOT NULL REFERENCES oai_pmh_set(set_spec)
+       oai_pmh_set_id VARCHAR(255) NOT NULL REFERENCES oai_pmh_set(oai_pmh_set_id)
                                ON DELETE CASCADE ON UPDATE CASCADE,
        PRIMARY KEY (oai_pmh_record_id, oai_pmh_set_id)
 );
 
 CREATE TABLE oai_pmh_set (
+       -- https://www.sqlite.org/autoinc.html autoincrement not needed.
+       oai_pmh_set_id INTEGER PRIMARY KEY,
        set_spec VARCHAR(255) NOT NULL,
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                                     ON DELETE CASCADE ON UPDATE CASCADE,
-       set_name TEXT,
-       PRIMARY KEY (set_spec, site_id)
+       set_name TEXT
 );
+CREATE UNIQUE INDEX oai_pmh_set_oai_pmh_set_id_site_id ON oai_pmh_set(set_spec, site_id);
 
 
 INSERT INTO table_comments (table_name, comment_text)

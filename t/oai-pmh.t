@@ -37,10 +37,22 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 
 my $oai_pmh = AmuseWikiFarm::Archive::OAI::PMH->new(site => $site,
-                                                    oai_pmh_url => URI->new($site->canonical_url));
+                                                    oai_pmh_url => URI->new($site->canonical_url . '/oai-pmh'));
 ok $oai_pmh;
 diag $oai_pmh->process_request;
 diag $oai_pmh->process_request({ verb => 'Identify' });
+diag $oai_pmh->process_request({ verb => 'ListMetadataFormats' });
+$site->oai_pmh_sets->delete;
+diag $oai_pmh->process_request({ verb => 'ListSets' });
+{
+    my $set = $site->oai_pmh_sets->create({
+                                           set_spec => 'test',
+                                           set_name => 'Test',
+                                          });
+    diag $oai_pmh->process_request({ verb => 'ListSets' });
+    $set->delete;
+}
+
 
 {
     my $muse = path($site->repo_root, qw/t tt to-test.muse/);
@@ -135,5 +147,8 @@ $mech->get_ok('/oai-pmh?verb=pippo');
 $mech->content_contains('<error code="badVerb">Bad verb: pippo</error>');
 $mech->get_ok('/oai-pmh?verb=Identify');
 $mech->content_contains('<request verb="Identify">https://0oai0.amusewiki.org/oai-pmh</request>');
+$mech->get_ok('/oai-pmh?verb=ListMetadataFormats');
+$mech->content_contains('<metadataNamespace>http://www.openarchives.org/OAI/2.0/oai_dc/</metadataNamespace>');
+$mech->content_contains('<metadataPrefix>oai_dc</metadataPrefix>');
 
 done_testing;
