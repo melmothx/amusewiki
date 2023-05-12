@@ -1223,6 +1223,7 @@ sub formats_definitions {
                     desc => $custom->format_name,
                     oldid => $old_id,
                     is_slides => $custom->is_slides,
+                    custom_formats_id => $custom->custom_formats_id,
                    };
     }
     push @out, @all;
