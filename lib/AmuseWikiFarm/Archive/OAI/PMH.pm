@@ -33,6 +33,11 @@ sub update_site_records {
     my $mime_types = AmuseWikiFarm::Utils::Paths::served_mime_types();
     Dlog_debug { "Formats and mime types:" . $_ } [ $formats, $mime_types ];
 
+    my $amwset = $site->oai_pmh_sets->update_or_create({
+                                                        set_spec => 'amusewiki',
+                                                        set_name => 'Files needed to regenerate the archive',
+                                                       },
+                                                       { key => 'set_spec_site_id_unique' });
     my @files;
     foreach my $title ($site->titles->published_texts->all) {
         # loop over the formats and check the date
@@ -46,32 +51,35 @@ sub update_site_records {
             push @files, {
                           file => $file,
                           identifier => $identifier . $f->{ext},
-                          metadata_identifier => $canonical_url . $title->full_uri . $f->{ext},
                           title_id => $title_id,
-                          metadata_type => 'text',
+                          metadata_identifier => $canonical_url . $title->full_uri . $f->{ext},
                           metadata_format => $mime_types->{$ext},
+                          sets => $ext eq 'muse' ? [ $amwset ] : [],
+                         };
+        }
+        foreach my $attachment ($title->attachments->all) {
+            push @files, {
+                          file => path($attachment->f_full_path_name),
+                          identifier => $base_identifier . $attachment->full_uri,
+                          attachment_id => $attachment->id,
+                          metadata_identifier => $canonical_url . $attachment->full_uri,
+                          metadata_format => $attachment->mime_type,
+                          sets => [ $amwset ],
                          };
         }
     }
-    foreach my $attachment ($site->attachments->with_descriptions->all) {
-        my $identifier = $base_identifier . $attachment->full_uri;
-        my $file = path($attachment->f_full_path_name);
-        my $mime = $attachment->mime_type;
-        # https://www.dublincore.org/specifications/dublin-core/type-element/
-        my $dc_type = 'text';
-        if ($mime =~ m{^audio\/}) {
-            $dc_type = 'audio';
-        }
-        elsif ($mime =~ m{^(image|video)/}) {
-            $dc_type = 'image';
-        }
+    my %done = map { $_->{attachment_id} => 1 } grep { $_->{attachment_id} } @files;
+    # and the others
+    foreach my $attachment ($site->attachments->with_descriptions
+                            ->excluding_ids([ map { $_->{attachment_id} } grep { $_->{attachment_id} } @files ])
+                            ->all) {
+        # these don't belong to a text, but they could belong to a special. No set
         push @files, {
-                      file => $file,
-                      identifier => $identifier,
+                      file => path($attachment->f_full_path_name),
+                      identifier => $base_identifier . $attachment->full_uri,
                       attachment_id => $attachment->id,
                       metadata_identifier => $canonical_url . $attachment->full_uri,
-                      metadata_type => $dc_type,
-                      metadata_format => $mime,
+                      metadata_format => $attachment->mime_type,
                      };
     }
     my $guard = $schema->txn_scope_guard;
@@ -84,7 +92,20 @@ sub update_site_records {
                 $f->{site_id} = $site_id;
                 $f->{datestamp} = $mtime;
                 $f->{update_run} = $now;
-                $site->oai_pmh_records->update_or_create($f);
+
+                # https://www.dublincore.org/specifications/dublin-core/type-element/
+                my $dc_type = 'text';
+                my $mime = $f->{metadata_format};
+                if ($mime =~ m{^audio\/}) {
+                    $dc_type = 'audio';
+                }
+                elsif ($mime =~ m{^(image|video)/}) {
+                    $dc_type = 'image';
+                }
+                $f->{metadata_type} = $dc_type;
+                my $sets = delete $f->{sets} || [];
+                my $rec = $site->oai_pmh_records->update_or_create($f);
+                $rec->set_oai_pmh_sets($sets);
             }
         }
     }

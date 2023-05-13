@@ -290,11 +290,9 @@ sub dublin_core_record {
     my $obj = $self->title || $self->attachment;
     die "Nor a title nor an attachment?" unless $obj;
     my $data = $obj->dublin_core_entry;
-    if ($self->custom_format) {
-        $data->{identifier} = $self->metadata_identifier;
-        $data->{format} = $self->metadata_format;
-        $data->{type} = $self->metadata_type;
-    }
+    $data->{identifier} = $self->metadata_identifier;
+    $data->{format} = $self->metadata_format;
+    $data->{type} = $self->metadata_type;
     my @out;
     foreach my $k (qw/title
                       creator
