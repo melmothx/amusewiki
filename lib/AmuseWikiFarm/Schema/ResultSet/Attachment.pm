@@ -87,5 +87,11 @@ sub public_only {
                          });
 }
 
+sub excluding_ids {
+    my ($self, $ids) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.id" => { -not_in => $ids } });
+}
+
 1;
 

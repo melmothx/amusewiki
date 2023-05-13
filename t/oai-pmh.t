@@ -234,14 +234,19 @@ foreach my $test ({
                             verb => 'ListSets',
                            },
                    expect => [
-                              '<request verb="ListSets">https://0oai0.amusewiki.org/oai-pmh</request>'
+                              '<request verb="ListSets">https://0oai0.amusewiki.org/oai-pmh</request>',
+                              '<setSpec>amusewiki</setSpec>',
+                              '<setName>Files needed to regenerate the archive</setName>',
                              ],
                   },
                   {
                    args => {
                             verb => 'GetRecord',
                             metadataPrefix => 'oai_dc',
-                            identifier => $site->oai_pmh_records->search({ title_id => { '>', 0 } })->first->identifier,
+                            identifier => $site->oai_pmh_records->search({
+                                                                          title_id => { '>', 0 },
+                                                                          identifier => { -like => '%.pdf' },
+                                                                         })->first->identifier,
                            },
                    expect => [
                               '<dc:title>Test me</dc:title>',
@@ -255,8 +260,41 @@ foreach my $test ({
                               '<dc:source>From "the" internet</dc:source>',
                               '<dc:language>it</dc:language>',
                               '<dc:rights>No &lt;copycat&gt;</dc:rights>',
+                              '<dc:type>text</dc:type>',
+                              '<dc:format>application/pdf</dc:format>',
+                             ],
+                   lacks => [
+                             '<setSpec>amusewiki</setSpec>'
+                            ],
+                  },
+                  {
+                   args => {
+                            verb => 'GetRecord',
+                            metadataPrefix => 'oai_dc',
+                            identifier => $site->oai_pmh_records->search({
+                                                                          title_id => { '>', 0 },
+                                                                          identifier => { -like => '%.muse' },
+                                                                         })->first->identifier,
+                           },
+                   expect => [
+                              '<dc:title>Test me</dc:title>',
+                              '<dc:creator>One &lt;author&gt;</dc:creator>',
+                              '<dc:creator>and &amp; anotherrxx</dc:creator>',
+                              '<dc:subject>One topic</dc:subject>',
+                              '<dc:subject>And &lt;another&gt;</dc:subject>',
+                              '<dc:subject>xAnd&amp;another</dc:subject>',
+                              '<dc:publisher>&lt;testing&gt; publisher</dc:publisher>',
+                              '<dc:date>1923</dc:date>',
+                              '<dc:source>From "the" internet</dc:source>',
+                              '<dc:language>it</dc:language>',
+                              '<dc:rights>No &lt;copycat&gt;</dc:rights>',
+                              '<setSpec>amusewiki</setSpec>',
+                              '<dc:format>text/plain</dc:format>',
+                              '<dc:type>text</dc:type>',
                              ],
                   },
+
+
                   {
                    args => {
                             verb => 'GetRecord',
@@ -264,7 +302,10 @@ foreach my $test ({
                             identifier => $site->oai_pmh_records->search({ attachment_id => { '>', 0 } })->first->identifier,
                            },
                    expect => [
-                              '<dc:title>t-t-1.png description</dc:title>'
+                              '<dc:title>t-t-1.png description</dc:title>',
+                              '<setSpec>amusewiki</setSpec>',
+                              '<dc:format>image/png</dc:format>',
+                              '<dc:type>image</dc:type>',
                              ],
                   },
                  ) {
@@ -276,6 +317,10 @@ foreach my $test ({
     foreach my $exp (@{$test->{expect}}) {
         $mech->content_contains($exp);
     }
+    foreach my $lacks (@{$test->{lacks} || []}) {
+        $mech->content_lacks($lacks);
+    }
+
 }
 
 
