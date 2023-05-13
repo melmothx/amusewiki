@@ -224,6 +224,7 @@ use File::Copy qw/copy move/;
 use Text::Amuse::Compile::Utils qw/read_file append_file/;
 use DateTime;
 use AmuseWikiFarm::Archive::BookBuilder;
+use AmuseWikiFarm::Archive::OAI::PMH;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse qw/clean_username to_json
                                    from_json/;
@@ -808,6 +809,9 @@ sub dispatch_job_build_static_indexes {
     $time = time();
     $self->site->store_rss_feed;
     $logger->("Stored RSS feed in " . (time() - $time) . " seconds\n");
+    $time = time();
+    AmuseWikiFarm::Archive::OAI::PMH->new(site => $self->site)->update_site_records;
+    $logger->("Updated OAI-PMH records in " . (time() - $time) . " seconds\n");
     return;
 }
 
