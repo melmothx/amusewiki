@@ -12,6 +12,7 @@ use AmuseWikiFarm::Utils::Paths;
 use Path::Tiny;
 use XML::Writer;
 use Data::Dumper::Concise;
+use Date::Parse;
 
 has site => (
              is => 'ro',
@@ -225,6 +226,100 @@ sub _generate_xml {
     }
 }
 
+sub list_records {
+    my ($self, $params) = @_;
+    $self->_list_records(ListRecords => $params);
+}
+
+sub list_identifiers {
+    my ($self, $params) = @_;
+    $self->_list_records(ListIdentifiers => $params);
+}
+
+sub _list_records {
+    my ($self, $action, $params) = @_;
+    die "Bad usage" unless $action;
+    if (my $token = $params->{resumptionToken}) {
+        die "Not implemented yet";
+    }
+    my $prefix = $params->{metadataPrefix};
+    unless ($prefix) {
+        return {
+                error_code => 'badArgument',
+                error_message => "Required argument: metadataPrefix",
+               };
+    }
+    if ($prefix ne 'oai_dc') {
+        return {
+                error_code => 'cannotDisseminateFormat',
+                error_message => "Only oai_dc is supported at the moment",
+               };
+    }
+    my %search;
+    foreach my $date (qw/from until/) {
+        if (my $string = $params->{$date}) {
+            my $epoch;
+            eval {
+                $epoch = str2time($string, 'UTC');
+            };
+            if (my $err = $@) {
+                log_error { "Bad date $string $err" };
+            }
+            if ($epoch) {
+                $search{$date} = DateTime->from_epoch(epoch => $epoch,
+                                                      time_zone => 'UTC');
+            }
+            else {
+                return {
+                        error_code => 'badArgument',
+                        error_message => "Invalid date format for $date argument",
+                       };
+            }
+        }
+    }
+    my $site = $self->site;
+    if (my $set = $params->{set}) {
+        if (my $dbset = $site->oai_pmh_sets->find({ set_spec => $set })) {
+            $search{set} = $dbset;
+        }
+        else {
+            return {
+                    error_code => 'badArgument',
+                    error_message => "Invalid set required",
+                   };
+        }
+    }
+    my $rs = $search{set} ? $search{set}->oai_pmh_records : $site->oai_pmh_records;
+    $rs = $rs->in_range($search{from}, $search{until});
+    my @records;
+    my $ids_only = $action eq 'ListIdentifiers' ? 1 : 0;
+    while (my $rec = $rs->next) {
+        my $xml = $rec->as_xml_structure($prefix,  $ids_only ? { header_only => 1 } : {});
+        if ($ids_only) {
+            push @records, @$xml;
+        }
+        else {
+            push @records, [ record => $xml ];
+        }
+
+    }
+    # Dlog_debug { $_ } \@records;
+    if (@records) {
+        return {
+                xml => [
+                        [ $action => \@records ]
+                       ],
+               };
+    }
+    else {
+        return {
+                error_code => 'noRecordsMatch',
+                error_message => "No results",
+               }
+    }
+}
+
+
 sub get_record {
     my ($self, $params) = @_;
     my $id = $params->{identifier};
@@ -316,8 +411,6 @@ sub earliest_datestamp {
     }
 }
 
-sub list_identifiers {
-}
 
 sub list_metadata_formats {
     return {
@@ -331,9 +424,6 @@ sub list_metadata_formats {
                                              ]
                     ]],
             };
-}
-
-sub list_records {
 }
 
 sub list_sets {
