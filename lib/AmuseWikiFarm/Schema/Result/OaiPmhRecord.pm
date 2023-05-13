@@ -255,7 +255,7 @@ __PACKAGE__->add_columns('+datestamp' => { timezone => 'UTC' });
 use AmuseWikiFarm::Utils::Amuse;
 
 sub as_xml_structure {
-    my ($self, $prefix) = @_;
+    my ($self, $prefix, $opts) = @_;
     my @sets;
     foreach my $set ($self->oai_pmh_sets) {
         push @sets, [ setSpec => $set->set_spec ];
@@ -268,19 +268,21 @@ sub as_xml_structure {
                   @sets
                  ]
                ]);
+    return \@out if $opts->{header_only};
     if ($prefix eq 'oai_dc') {
-        push @out, [ 'oai_dc:dc',
-                     [
-                      'xmlns:oai_dc' => "http://www.openarchives.org/OAI/2.0/oai_dc/",
-                      'xmlns:dc' => "http://purl.org/dc/elements/1.1/",
-                      'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
-                      'xsi:schemaLocation' => join(' ',
-                                                   "http://www.openarchives.org/OAI/2.0/oai_dc/",
-                                                   "http://www.openarchives.org/OAI/2.0/oai_dc.xsd"
-                                                  ),
-                     ],
-                     $self->dublin_core_record,
-                   ];
+        my $dc = [ 'oai_dc:dc',
+                   [
+                    'xmlns:oai_dc' => "http://www.openarchives.org/OAI/2.0/oai_dc/",
+                    'xmlns:dc' => "http://purl.org/dc/elements/1.1/",
+                    'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
+                    'xsi:schemaLocation' => join(' ',
+                                                 "http://www.openarchives.org/OAI/2.0/oai_dc/",
+                                                 "http://www.openarchives.org/OAI/2.0/oai_dc.xsd"
+                                                ),
+                   ],
+                   $self->dublin_core_record,
+                 ];
+        push @out, [ metadata => [ $dc ] ];
     }
     return \@out;
 }
