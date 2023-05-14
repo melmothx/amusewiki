@@ -308,6 +308,99 @@ foreach my $test ({
                               '<dc:type>image</dc:type>',
                              ],
                   },
+                  {
+                   args => {
+                            verb => 'GetRecord',
+                            metadataPrefix => 'oai_dc',
+                            identifier => $site->oai_pmh_records->search({
+                                                                          deleted => 1,
+                                                                         })->first->identifier,
+                           },
+                   expect => [
+                              '<header status="deleted">',
+                             ],
+                  },
+                  {
+                   args => {
+                            verb => 'ListRecords',
+                            metadataPrefix => 'oai_dc',
+                            set => 'amusewiki',
+                           },
+                   expect => [
+                              'to-test.muse</identifier>',
+                              '<setSpec>amusewiki</setSpec>',
+                              '/uploads/0oai0/shot.pdf</identifier>',
+                              '<dc:identifier>https://0oai0.amusewiki.org/uploads/0oai0/shot.pdf</dc:identifier>'
+                             ],
+                   lacks => [
+                             'to-test.pdf</identifier>',
+                            ]
+                  },
+                  {
+                   args => {
+                            verb => 'ListIdentifiers',
+                            metadataPrefix => 'oai_dc',
+                            set => 'amusewiki',
+                           },
+                   expect => [
+                              'to-test.muse</identifier>',
+                              '<setSpec>amusewiki</setSpec>',
+                              '/uploads/0oai0/shot.pdf</identifier>',
+                             ],
+                   lacks => [
+                             'to-test.pdf</identifier>',
+                            ],
+                  },
+                  {
+                   args => {
+                            verb => 'ListIdentifiers',
+                            metadataPrefix => 'oai_dc',
+                           },
+                   expect => [
+                              'to-test.pdf</identifier>',
+                              'to-test.a4.pdf</identifier>',
+                             ],
+                  },
+                  {
+                   args => {
+                            verb => 'ListRecords',
+                            metadataPrefix => 'oai_dc',
+                           },
+                   expect => [
+                              'to-test.pdf</identifier>',
+                              'to-test.a4.pdf</identifier>',
+                             ],
+                  },
+                  {
+                   args => {
+                            verb => 'ListRecords',
+                            metadataPrefix => 'oai_dc',
+                            until => DateTime->now->add(days => 1)->ymd,
+                           },
+                   expect => [
+                              '<error code="badArgument">The date for until is in the future!</error>',
+                             ],
+                  },
+                  {
+                   args => {
+                            verb => 'ListRecords',
+                            metadataPrefix => 'oai_dc',
+                            until => DateTime->now->add(days => 1)->ymd . 'x',
+                           },
+                   expect => [
+                              '<error code="badArgument">Invalid until format</error>',
+                             ],
+                  },
+                  {
+                   args => {
+                            verb => 'ListRecords',
+                            metadataPrefix => 'oai_dc',
+                            from => DateTime->now->add(days => 1)->ymd . 'x',
+                           },
+                   expect => [
+                              '<error code="badArgument">Invalid from format</error>',
+                             ],
+                  },
                  ) {
     my $uri = URI->new($site->canonical_url);
     $uri->path('/oai-pmh');
@@ -323,5 +416,6 @@ foreach my $test ({
 
 }
 
+ok $site->oai_pmh_records->oldest_record;
 
 done_testing;
