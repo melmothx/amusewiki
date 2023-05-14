@@ -110,14 +110,7 @@ sub update_site_records {
             }
         }
     }
-    my $now_utc = DateTime->now(time_zone => 'UTC');
-    $site->oai_pmh_records->search({
-                                    deleted => 0,
-                                    update_run => { '<>' => $now },
-                                   })->update({
-                                               deleted => 1,
-                                               datestamp => $now_utc,
-                                              });
+    $site->oai_pmh_records->set_deleted_flag_on_obsolete_records($now);
     $guard->commit;
 }
 
@@ -139,7 +132,8 @@ sub process_request {
     my $verb = $params->{verb} || 'MISSING';
     my $res;
     if (my $method = $verbs{$verb}) {
-        $res = $self->$method($params);
+        # pass a copy
+        $res = $self->$method({ %$params });
     }
     else {
         $res = {
@@ -258,6 +252,14 @@ sub _list_records {
     my %search;
     foreach my $date (qw/from until/) {
         if (my $string = $params->{$date}) {
+            # 3.3.1
+            # The legitimate formats are YYYY-MM-DD and YYYY-MM-DDThh:mm:ssZ
+            unless ($string =~ m/\A\d{4}-\d{2}-\d{2}(?:\d{2}:\d{2}:\d{2}Z)?\z/) {
+                return {
+                        error_code => 'badArgument',
+                        error_message => "Invalid $date format",
+                       };
+            }
             my $epoch;
             eval {
                 $epoch = str2time($string, 'UTC');
@@ -266,6 +268,12 @@ sub _list_records {
                 log_error { "Bad date $string $err" };
             }
             if ($epoch) {
+                if ($epoch > time()) {
+                    return {
+                            error_code => 'badArgument',
+                            error_message => "The date for $date is in the future!",
+                           };
+                }
                 $search{$date} = DateTime->from_epoch(epoch => $epoch,
                                                       time_zone => 'UTC');
             }
@@ -289,6 +297,12 @@ sub _list_records {
                    };
         }
     }
+
+    $search{until} ||= DateTime->now(time_zone => 'UTC');
+    $search{from}  ||= $site->oai_pmh_records->oldest_record->datestamp;
+
+    log_debug { "Query is from: $search{from} until: $search{until} set: $search{set}" };
+
     my $rs = $search{set} ? $search{set}->oai_pmh_records : $site->oai_pmh_records;
     $rs = $rs->in_range($search{from}, $search{until});
     my @records;
@@ -397,13 +411,7 @@ sub identify {
 
 sub earliest_datestamp {
     my $self = shift;
-    my $first = $self->site->oai_pmh_records->search(undef,
-                                                     {
-                                                      order_by => { -asc => 'datestamp' },
-                                                      rows => 1,
-                                                      columns => [qw/datestamp/]
-                                                     })->first;
-    if ($first) {
+    if (my $first = $self->site->oai_pmh_records->oldest_record) {
         return $first->datestamp->iso8601 . 'Z';
     }
     else {
