@@ -31,7 +31,6 @@ sub update_site_records {
     my $site = $self->site;
     my $schema = $site->result_source->schema;
     # we need to generate an id: oai:
-    my $base_identifier = join(':', oai => $site->canonical, '');
     my $canonical_url = $site->canonical_url;
     my $site_id = $site->id;
     my $formats = $site->formats_definitions;
@@ -46,7 +45,7 @@ sub update_site_records {
     my @files;
     foreach my $title ($site->titles->published_texts->all) {
         # loop over the formats and check the date
-        my $identifier = $base_identifier . $title->full_uri;
+        my $identifier = $title->full_uri;
         my $title_id = $title->id;
         # loop over the formats, same as the preamble
         foreach my $f (@$formats) {
@@ -65,7 +64,7 @@ sub update_site_records {
         foreach my $attachment ($title->attachments->all) {
             push @files, {
                           file => path($attachment->f_full_path_name),
-                          identifier => $base_identifier . $attachment->full_uri,
+                          identifier => $attachment->full_uri,
                           attachment_id => $attachment->id,
                           metadata_identifier => $canonical_url . $attachment->full_uri,
                           metadata_format => $attachment->mime_type,
@@ -81,7 +80,7 @@ sub update_site_records {
         # these don't belong to a text, but they could belong to a special. No set
         push @files, {
                       file => path($attachment->f_full_path_name),
-                      identifier => $base_identifier . $attachment->full_uri,
+                      identifier => $attachment->full_uri,
                       attachment_id => $attachment->id,
                       metadata_identifier => $canonical_url . $attachment->full_uri,
                       metadata_format => $attachment->mime_type,
@@ -109,7 +108,7 @@ sub update_site_records {
                 }
                 $f->{metadata_type} = $dc_type;
                 my $sets = delete $f->{sets} || [];
-                my $rec = $site->oai_pmh_records->update_or_create($f);
+                my $rec = $site->oai_pmh_records->update_or_create($f, { key => 'identifier_site_id_unique' });
                 $rec->set_oai_pmh_sets($sets);
             }
         }
@@ -299,6 +298,7 @@ sub _list_records {
         }
     }
     my $site = $self->site;
+    my $site_identifier = $site->oai_pmh_base_identifier;
     if (my $set = $params->{set}) {
         if (my $dbset = $site->oai_pmh_sets->find({ set_spec => $set })) {
             $search{set} = $dbset;
@@ -322,6 +322,7 @@ sub _list_records {
     my $ids_only = $action eq 'ListIdentifiers' ? 1 : 0;
     my $total = $done_so_far + $rs->count;
     my @items;
+    my %xmlargs = (site_identifier => $site_identifier);
   RECORD:
     while (my $rec = $rs->next) {
         my $ts = $rec->datestamp;
@@ -343,7 +344,7 @@ sub _list_records {
             }
         }
         push @items, $ts;
-        my $xml = $rec->as_xml_structure($prefix,  $ids_only ? { header_only => 1 } : {});
+        my $xml = $rec->as_xml_structure($prefix,  $ids_only ? { header_only => 1, %xmlargs } : { %xmlargs });
         if ($ids_only) {
             push @records, @$xml;
         }
@@ -394,7 +395,8 @@ sub get_record {
                 error_message => "Only oai_dc is supported at the moment",
                };
     }
-    if (my $record = $self->site->oai_pmh_records->find($id)) {
+    my ($proto, $canonical, $identifier) = split(':', $id);
+    if ($identifier and my $record = $self->site->oai_pmh_records->find({ identifier => $identifier })) {
         return {
                 xml => [
                         [ GetRecord => [

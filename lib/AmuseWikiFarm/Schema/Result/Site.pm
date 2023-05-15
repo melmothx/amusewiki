@@ -5151,6 +5151,11 @@ sub scan_and_remove_rogue_symlinks {
     }
 }
 
+sub oai_pmh_base_identifier {
+    my $self = shift;
+    return join(':', oai => $self->canonical, '');
+}
+
 sub process_autoimport_files {
     my $self = shift;
     my $dir = Path::Tiny::path($self->autoimport_dir);

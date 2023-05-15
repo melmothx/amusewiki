@@ -292,11 +292,13 @@ sub as_xml_structure {
     unless ($self->title || $self->attachment) {
         $deleted = 1;
     }
+    # optimization, so we don't need the site object in the loop. Meh for get_record.
+    my $base_id = $opts->{site_identifier} || $self->site->oai_pmh_base_identifier;
 
     my @out = ([ header => [ $deleted ? (status => 'deleted') : () ], # header
                  # children
                  [
-                  [ identifier => $self->identifier ],
+                  [ identifier => $base_id . $self->identifier ],
                   [ datestamp => $self->zulu_datestamp ],
                   @sets
                  ]

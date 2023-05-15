@@ -458,6 +458,9 @@ foreach my $test ({
                  ) {
     my $uri = URI->new($site->canonical_url);
     $uri->path('/oai-pmh');
+    if ($test->{args}->{identifier}) {
+        $test->{args}->{identifier} = $site->oai_pmh_base_identifier . $test->{args}->{identifier}
+    }
     $uri->query_form($test->{args});
     $mech->get_ok("$uri");
     diag $mech->content;
@@ -476,7 +479,7 @@ ok $site->oai_pmh_records->oldest_record;
                                     datestamp => DateTime->now,
                                     identifier => 'testxx',
                                    });
-    $mech->get_ok('/oai-pmh?verb=GetRecord&identifier=testxx&metadataPrefix=oai_dc');
+    $mech->get_ok('/oai-pmh?verb=GetRecord&identifier=oai%3A0oai0.amusewiki.org%3Atestxx&metadataPrefix=oai_dc');
     diag $mech->content;
     $mech->content_contains('<dc:title>Removed entry</dc:title>');
     $mech->content_contains('<dc:description>This entry was deleted</dc:description>');
