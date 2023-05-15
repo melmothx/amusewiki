@@ -18,11 +18,17 @@ sub in_range {
         $search{'<='} = $dtf->format_datetime($until);
     }
     if (%search) {
-        return $self->search({ datestamp => \%search });
+        return $self->search({ "$me.datestamp" => \%search });
     }
     else {
         return $self;
     }
+}
+
+sub sorted_for_oai_list {
+    my ($self) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search(undef, { order_by => { -asc => "$me.datestamp" } });
 }
 
 sub oldest_record {
@@ -40,9 +46,10 @@ sub set_deleted_flag_on_obsolete_records {
     die "Missing epoch argument" unless $last_run;
     my $dt = $self->result_source->schema->storage->datetime_parser
       ->format_datetime(DateTime->now(time_zone => 'UTC'));
+    my $me = $self->current_source_alias;
     $self->search({
-                   deleted => 0,
-                   update_run => { '<>' => $last_run },
+                   "$me.deleted" => 0,
+                   "$me.update_run" => { '!=' => $last_run },
                   })->update({
                               deleted => 1,
                               datestamp => $dt,

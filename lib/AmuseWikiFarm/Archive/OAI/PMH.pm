@@ -13,6 +13,10 @@ use Path::Tiny;
 use XML::Writer;
 use Data::Dumper::Concise;
 use Date::Parse;
+use JSON::MaybeXS;
+use MIME::Base64;
+
+use constant AMW_OAI_PMH_PAGE_SIZE => $ENV{AMW_OAI_PMH_PAGE_SIZE} || 100;
 
 has site => (
              is => 'ro',
@@ -233,8 +237,17 @@ sub list_identifiers {
 sub _list_records {
     my ($self, $action, $params) = @_;
     die "Bad usage" unless $action;
+    my $done_so_far = 0;
     if (my $token = $params->{resumptionToken}) {
-        die "Not implemented yet";
+        # overwrite the parameters
+        $params = $self->decode_resumption_token($token);
+        unless ($params) {
+            return {
+                    error_code => 'badResumptionToken',
+                    error_message => 'Invalid resumption token',
+                   };
+        }
+        $done_so_far = delete $params->{done_so_far};
     }
     my $prefix = $params->{metadataPrefix};
     unless ($prefix) {
@@ -249,12 +262,12 @@ sub _list_records {
                 error_message => "Only oai_dc is supported at the moment",
                };
     }
-    my %search;
+    my %search = (set => '');
     foreach my $date (qw/from until/) {
         if (my $string = $params->{$date}) {
             # 3.3.1
             # The legitimate formats are YYYY-MM-DD and YYYY-MM-DDThh:mm:ssZ
-            unless ($string =~ m/\A\d{4}-\d{2}-\d{2}(?:\d{2}:\d{2}:\d{2}Z)?\z/) {
+            unless ($string =~ m/\A\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}Z)?\z/) {
                 return {
                         error_code => 'badArgument',
                         error_message => "Invalid $date format",
@@ -304,10 +317,32 @@ sub _list_records {
     log_debug { "Query is from: $search{from} until: $search{until} set: $search{set}" };
 
     my $rs = $search{set} ? $search{set}->oai_pmh_records : $site->oai_pmh_records;
-    $rs = $rs->in_range($search{from}, $search{until});
+    $rs = $rs->in_range($search{from}, $search{until})->sorted_for_oai_list;
     my @records;
     my $ids_only = $action eq 'ListIdentifiers' ? 1 : 0;
+    my $total = $done_so_far + $rs->count;
+    my @items;
+  RECORD:
     while (my $rec = $rs->next) {
+        my $ts = $rec->datestamp;
+        if (@items > AMW_OAI_PMH_PAGE_SIZE) {
+            # be sure that the last element timestamp is different from the current.
+            if ($ts->epoch > $items[-1]->epoch) {
+                log_debug { "Item datestamp is $ts and last is " . $items[-1] };
+                # prepare the next query
+                push @records, $self->encode_resumption_token({
+                                                               metadataPrefix => $prefix,
+                                                               from => $ts->iso8601 . 'Z',
+                                                               until => $search{until}->iso8601 . 'Z',
+                                                               # the original set parameter
+                                                               set => $params->{set},
+                                                               total => $total,
+                                                               done_so_far => $done_so_far,
+                                                              });
+                last RECORD;
+            }
+        }
+        push @items, $ts;
         my $xml = $rec->as_xml_structure($prefix,  $ids_only ? { header_only => 1 } : {});
         if ($ids_only) {
             push @records, @$xml;
@@ -315,6 +350,15 @@ sub _list_records {
         else {
             push @records, [ record => $xml ];
         }
+    }
+
+    # final part of an incomplete list
+    if ($done_so_far) {
+        push @records, $self->encode_resumption_token({
+                                                       final => 1,
+                                                       total => $total,
+                                                       done_so_far => $done_so_far,
+                                                      });
 
     }
     # Dlog_debug { $_ } \@records;
@@ -456,4 +500,36 @@ sub list_sets {
                }
     }
 }
+
+sub decode_resumption_token {
+    my ($self, $token) = @_;
+    my $out;
+    eval {
+        $out = decode_json(decode_base64($token));
+        die "Not an hashref" unless ref($out) eq 'HASH';
+        foreach my $k (qw/metadataPrefix from until set done_so_far total/) {
+            die "Bad token, missing $k" unless exists $out->{$k};
+        }
+        Dlog_debug { "Token: $_" } $out;
+    };
+    if (my $err = $@) {
+        log_error { "Error decoding resumption token: $token: $err" };
+    }
+    return $out;
+}
+
+sub encode_resumption_token {
+    my ($self, $spec) = @_;
+    my $token;
+    unless ($spec->{final}) {
+        Dlog_debug { "Next token is $_" } $spec;
+        $token = encode_base64(encode_json($spec));
+        $token =~ s/\s+//g;
+    }
+    return [ resumptionToken => [
+                                 completeListSize => $spec->{total},
+                                 cursor => $spec->{done_so_far},
+                                ], $token ];
+}
+
 1;
