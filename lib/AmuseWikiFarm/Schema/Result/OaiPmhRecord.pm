@@ -38,6 +38,12 @@ __PACKAGE__->table("oai_pmh_record");
 
 =head1 ACCESSORS
 
+=head2 oai_pmh_record_id
+
+  data_type: 'integer'
+  is_auto_increment: 1
+  is_nullable: 0
+
 =head2 identifier
 
   data_type: 'varchar'
@@ -47,7 +53,7 @@ __PACKAGE__->table("oai_pmh_record");
 =head2 datestamp
 
   data_type: 'datetime'
-  is_nullable: 1
+  is_nullable: 0
 
 =head2 site_id
 
@@ -108,10 +114,12 @@ __PACKAGE__->table("oai_pmh_record");
 =cut
 
 __PACKAGE__->add_columns(
+  "oai_pmh_record_id",
+  { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "identifier",
   { data_type => "varchar", is_nullable => 0, size => 512 },
   "datestamp",
-  { data_type => "datetime", is_nullable => 1 },
+  { data_type => "datetime", is_nullable => 0 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
   "title_id",
@@ -136,13 +144,29 @@ __PACKAGE__->add_columns(
 
 =over 4
 
-=item * L</identifier>
+=item * L</oai_pmh_record_id>
 
 =back
 
 =cut
 
-__PACKAGE__->set_primary_key("identifier");
+__PACKAGE__->set_primary_key("oai_pmh_record_id");
+
+=head1 UNIQUE CONSTRAINTS
+
+=head2 C<identifier_site_id_unique>
+
+=over 4
+
+=item * L</identifier>
+
+=item * L</site_id>
+
+=back
+
+=cut
+
+__PACKAGE__->add_unique_constraint("identifier_site_id_unique", ["identifier", "site_id"]);
 
 =head1 RELATIONS
 
@@ -197,7 +221,7 @@ Related object: L<AmuseWikiFarm::Schema::Result::OaiPmhRecordSet>
 __PACKAGE__->has_many(
   "oai_pmh_record_sets",
   "AmuseWikiFarm::Schema::Result::OaiPmhRecordSet",
-  { "foreign.oai_pmh_record_id" => "self.identifier" },
+  { "foreign.oai_pmh_record_id" => "self.oai_pmh_record_id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
@@ -247,8 +271,8 @@ Composing rels: L</oai_pmh_record_sets> -> oai_pmh_set
 __PACKAGE__->many_to_many("oai_pmh_sets", "oai_pmh_record_sets", "oai_pmh_set");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-12 11:29:36
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:m6MSrfj/ePYBslQhU72bpg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-15 14:35:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rGDID57glhtZ5In7l7k3Uw
 
 __PACKAGE__->add_columns('+datestamp' => { timezone => 'UTC' });
 

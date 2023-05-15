@@ -40,10 +40,9 @@ __PACKAGE__->table("oai_pmh_record_set");
 
 =head2 oai_pmh_record_id
 
-  data_type: 'varchar'
+  data_type: 'integer'
   is_foreign_key: 1
   is_nullable: 0
-  size: 512
 
 =head2 oai_pmh_set_id
 
@@ -55,7 +54,7 @@ __PACKAGE__->table("oai_pmh_record_set");
 
 __PACKAGE__->add_columns(
   "oai_pmh_record_id",
-  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 512 },
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "oai_pmh_set_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
 );
@@ -87,7 +86,7 @@ Related object: L<AmuseWikiFarm::Schema::Result::OaiPmhRecord>
 __PACKAGE__->belongs_to(
   "oai_pmh_record",
   "AmuseWikiFarm::Schema::Result::OaiPmhRecord",
-  { identifier => "oai_pmh_record_id" },
+  { oai_pmh_record_id => "oai_pmh_record_id" },
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
@@ -107,8 +106,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-12 17:27:20
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wupxWiEWCJpKxSaQVFAlew
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-15 14:35:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:YNpaP+4nAvLqF61kWGpDkw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

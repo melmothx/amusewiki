@@ -683,9 +683,11 @@ CREATE UNIQUE INDEX unique_mirror_info_title_id ON mirror_info(title_id);
 CREATE UNIQUE INDEX unique_mirror_info_attachment_id ON mirror_info(attachment_id);
 
 CREATE TABLE oai_pmh_record (
+       oai_pmh_record_id INTEGER PRIMARY KEY AUTOINCREMENT,
+
        -- header part
-       identifier VARCHAR(512) NOT NULL PRIMARY KEY,
-       datestamp DATETIME,
+       identifier VARCHAR(512) NOT NULL,
+       datestamp DATETIME NOT NULL,
 
        -- our internal references:
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
@@ -711,13 +713,7 @@ CREATE TABLE oai_pmh_record (
        update_run INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE TABLE oai_pmh_record_set (
-       oai_pmh_record_id VARCHAR(512) NOT NULL REFERENCES oai_pmh_record(identifier)
-                               ON DELETE CASCADE ON UPDATE CASCADE,
-       oai_pmh_set_id INTEGER NOT NULL REFERENCES oai_pmh_set(oai_pmh_set_id)
-                               ON DELETE CASCADE ON UPDATE CASCADE,
-       PRIMARY KEY (oai_pmh_record_id, oai_pmh_set_id)
-);
+CREATE UNIQUE INDEX unique_oai_pmh_record_identifier_site_id ON oai_pmh_record(identifier, site_id);
 
 CREATE TABLE oai_pmh_set (
        -- https://www.sqlite.org/autoinc.html autoincrement not needed.
@@ -728,6 +724,14 @@ CREATE TABLE oai_pmh_set (
        set_name TEXT
 );
 CREATE UNIQUE INDEX oai_pmh_set_oai_pmh_set_id_site_id ON oai_pmh_set(set_spec, site_id);
+
+CREATE TABLE oai_pmh_record_set (
+       oai_pmh_record_id INTEGER NOT NULL REFERENCES oai_pmh_record(oai_pmh_record_id)
+                               ON DELETE CASCADE ON UPDATE CASCADE,
+       oai_pmh_set_id INTEGER NOT NULL REFERENCES oai_pmh_set(oai_pmh_set_id)
+                               ON DELETE CASCADE ON UPDATE CASCADE,
+       PRIMARY KEY (oai_pmh_record_id, oai_pmh_set_id)
+);
 
 
 INSERT INTO table_comments (table_name, comment_text)
