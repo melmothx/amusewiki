@@ -264,7 +264,12 @@ sub as_xml_structure {
     foreach my $set ($self->oai_pmh_sets) {
         push @sets, [ setSpec => $set->set_spec ];
     }
-    my @out = ([ header => [ $self->deleted ? (status => 'deleted') : () ], # header
+    my $deleted = $self->deleted;
+    unless ($self->title || $self->attachment) {
+        $deleted = 1;
+    }
+
+    my @out = ([ header => [ $deleted ? (status => 'deleted') : () ], # header
                  # children
                  [
                   [ identifier => $self->identifier ],
@@ -294,6 +299,12 @@ sub as_xml_structure {
 sub dublin_core_record {
     my $self = shift;
     my $obj = $self->title || $self->attachment;
+    unless ($obj) {
+        return [
+                [ 'dc:title' => 'Removed entry' ],
+                [ 'dc:description' => 'This entry was deleted' ],
+               ];
+    }
     die "Nor a title nor an attachment?" unless $obj;
     my $data = $obj->dublin_core_entry;
     $data->{identifier} = $self->metadata_identifier;

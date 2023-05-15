@@ -11,7 +11,7 @@ BEGIN {
 
 
 use Data::Dumper;
-use Test::More;
+use Test::More tests => 143;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::OAI::PMH;
 use File::Spec::Functions qw/catfile catdir/;
@@ -319,6 +319,10 @@ foreach my $test ({
                               '<dc:format>image/png</dc:format>',
                               '<dc:type>image</dc:type>',
                              ],
+                   lacks => [
+                             '<header status="deleted">',
+                            ],
+
                   },
                   {
                    args => {
@@ -467,4 +471,14 @@ foreach my $test ({
 
 ok $site->oai_pmh_records->oldest_record;
 
-done_testing;
+{
+    $site->oai_pmh_records->create({
+                                    datestamp => DateTime->now,
+                                    identifier => 'testxx',
+                                   });
+    $mech->get_ok('/oai-pmh?verb=GetRecord&identifier=testxx&metadataPrefix=oai_dc');
+    diag $mech->content;
+    $mech->content_contains('<dc:title>Removed entry</dc:title>');
+    $mech->content_contains('<dc:description>This entry was deleted</dc:description>');
+    $mech->content_contains('<header status="deleted">');
+}
