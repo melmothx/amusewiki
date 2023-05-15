@@ -429,26 +429,25 @@ sub identify {
                # probably lost, no don't make promises for now.
                [ deletedRecord => 'transient' ],
                [ granularity => 'YYYY-MM-DDThh:mm:ssZ' ],
-               # let's keep this for later, as it makes validation harder
-               # [ description => [
-               #                   [ 'oai-identifier',
-               #                     [
-               #                      xmlns => "http://www.openarchives.org/OAI/2.0/oai-identifier",
-               #                      "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
-               #                      "xsi:schemaLocation" =>
-               #                      join(" ",
-               #                           "http://www.openarchives.org/OAI/2.0/oai-identifier",
-               #                           "http://www.openarchives.org/OAI/2.0/oai-identifier.xsd")
-               #                     ],
-               #                     [
-               #                      [ scheme => 'oai' ],
-               #                      [ repositoryIdentifier => $site->canonical ],
-               #                      [ delimiter => ':' ],
-               #                      [ sampleIdentifier => join(":",'oai' . $site->canonical . "/library/test") ],
-               #                     ]
-               #                   ]
-               #                  ]
-               # ],
+               [ description => [
+                                 [ 'oai-identifier',
+                                   [
+                                    xmlns => "http://www.openarchives.org/OAI/2.0/oai-identifier",
+                                    "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
+                                    "xsi:schemaLocation" =>
+                                    join(" ",
+                                         "http://www.openarchives.org/OAI/2.0/oai-identifier",
+                                         "http://www.openarchives.org/OAI/2.0/oai-identifier.xsd")
+                                   ],
+                                   [
+                                    [ scheme => 'oai' ],
+                                    [ repositoryIdentifier => $site->canonical ],
+                                    [ delimiter => ':' ],
+                                    [ sampleIdentifier => $site->oai_pmh_base_identifier . "/library/test" ],
+                                   ]
+                                 ]
+                                ]
+               ],
               );
     return {
             xml => [[ Identify => \@res  ]]
