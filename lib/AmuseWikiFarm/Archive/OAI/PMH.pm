@@ -320,6 +320,8 @@ sub _list_records {
     my $total = $done_so_far + $rs->count;
     my @items;
     my %xmlargs = (site_identifier => $site_identifier);
+    my $is_incomplete = 0;
+
   RECORD:
     while (my $rec = $rs->next) {
         my $ts = $rec->datestamp;
@@ -338,6 +340,7 @@ sub _list_records {
                                                                cursor => $done_so_far,
                                                                done_so_far => $done_so_far + @items,
                                                               });
+                $is_incomplete = 1;
                 last RECORD;
             }
         }
@@ -352,7 +355,7 @@ sub _list_records {
     }
 
     # final part of an incomplete list
-    if ($done_so_far) {
+    if (!$is_incomplete and $done_so_far) {
         push @records, $self->encode_resumption_token({
                                                        final => 1,
                                                        total => $total,
