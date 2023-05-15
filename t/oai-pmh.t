@@ -6,6 +6,7 @@ use warnings;
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
     $ENV{DBI_TRACE} = 0;
+    $ENV{AMW_OAI_PMH_PAGE_SIZE} = 8;
 };
 
 
@@ -152,6 +153,19 @@ foreach my $rec ($site->oai_pmh_records) {
     is $site->oai_pmh_records->search({ deleted => 1 })->count, 1, "Found the deletion";
 }
 
+my $latest_ts = $site->oai_pmh_records->search(undef, { order_by => { -desc => 'datestamp' } })->first->zulu_datestamp;
+
+# make up a resumption token
+my $resumption_token = $oai_pmh->encode_resumption_token({
+                                                          metadataPrefix => 'oai_dc',
+                                                          from => $latest_ts,
+                                                          until => $latest_ts,
+                                                          done_so_far => 9, # made up
+                                                          total => 10, # made up
+                                                          set => '',
+                                                         })->[2];
+ok $resumption_token, "Resumption toke is fine";
+
 foreach my $test ({
                    args => {},
                    expect => [
@@ -293,8 +307,6 @@ foreach my $test ({
                               '<dc:type>text</dc:type>',
                              ],
                   },
-
-
                   {
                    args => {
                             verb => 'GetRecord',
@@ -353,26 +365,6 @@ foreach my $test ({
                   },
                   {
                    args => {
-                            verb => 'ListIdentifiers',
-                            metadataPrefix => 'oai_dc',
-                           },
-                   expect => [
-                              'to-test.pdf</identifier>',
-                              'to-test.a4.pdf</identifier>',
-                             ],
-                  },
-                  {
-                   args => {
-                            verb => 'ListRecords',
-                            metadataPrefix => 'oai_dc',
-                           },
-                   expect => [
-                              'to-test.pdf</identifier>',
-                              'to-test.a4.pdf</identifier>',
-                             ],
-                  },
-                  {
-                   args => {
                             verb => 'ListRecords',
                             metadataPrefix => 'oai_dc',
                             until => DateTime->now->add(days => 1)->ymd,
@@ -401,6 +393,64 @@ foreach my $test ({
                               '<error code="badArgument">Invalid from format</error>',
                              ],
                   },
+                  {
+                   args => {
+                            verb => 'ListIdentifiers',
+                            metadataPrefix => 'oai_dc',
+                           },
+                   expect => [
+                              'to-test.pdf</identifier>',
+                              '<resumptionToken completeListSize="10" cursor="0">',
+                             ],
+                   lacks => [
+                             'to-test.a4.pdf</identifier>',
+                              '<resumptionToken completeListSize="10" cursor="9" />',
+                            ],
+
+                  },
+                  {
+                   args => {
+                            verb => 'ListIdentifiers',
+                            resumptionToken => $resumption_token,
+                           },
+                   expect => [
+                              'to-test.a4.pdf</identifier>',
+                              '<resumptionToken completeListSize="10" cursor="9" />',
+                             ],
+                   lacks => [
+                             'to-test.pdf</identifier>',
+                              '<resumptionToken completeListSize="10" cursor="0">',
+                            ],
+                  },
+                  {
+                   args => {
+                            verb => 'ListRecords',
+                            metadataPrefix => 'oai_dc',
+                           },
+                   expect => [
+                              'to-test.pdf</identifier>',
+                              '<resumptionToken completeListSize="10" cursor="0">',
+                             ],
+                   lacks => [
+                             'to-test.a4.pdf</identifier>',
+                              '<resumptionToken completeListSize="10" cursor="9" />',
+                            ],
+                  },
+                  {
+                   args => {
+                            verb => 'ListRecords',
+                            resumptionToken => $resumption_token,
+                           },
+                   expect => [
+                              'to-test.a4.pdf</identifier>',
+                              '<resumptionToken completeListSize="10" cursor="9" />',
+                             ],
+                   lacks => [
+                             'to-test.pdf</identifier>',
+                              '<resumptionToken completeListSize="10" cursor="0">',
+                            ],
+
+                  },
                  ) {
     my $uri = URI->new($site->canonical_url);
     $uri->path('/oai-pmh');
@@ -413,7 +463,6 @@ foreach my $test ({
     foreach my $lacks (@{$test->{lacks} || []}) {
         $mech->content_lacks($lacks);
     }
-
 }
 
 ok $site->oai_pmh_records->oldest_record;

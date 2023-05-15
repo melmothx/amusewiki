@@ -254,6 +254,10 @@ __PACKAGE__->add_columns('+datestamp' => { timezone => 'UTC' });
 
 use AmuseWikiFarm::Utils::Amuse;
 
+sub zulu_datestamp {
+    shift->datestamp->iso8601 . 'Z'
+}
+
 sub as_xml_structure {
     my ($self, $prefix, $opts) = @_;
     my @sets;
@@ -264,7 +268,7 @@ sub as_xml_structure {
                  # children
                  [
                   [ identifier => $self->identifier ],
-                  [ datestamp => $self->datestamp->iso8601 . 'Z' ],
+                  [ datestamp => $self->zulu_datestamp ],
                   @sets
                  ]
                ]);
