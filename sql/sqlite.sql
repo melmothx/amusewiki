@@ -686,7 +686,7 @@ CREATE TABLE oai_pmh_record (
        oai_pmh_record_id INTEGER PRIMARY KEY AUTOINCREMENT,
 
        -- header part
-       identifier VARCHAR(512) NOT NULL,
+       identifier VARCHAR(255) NOT NULL,
        datestamp DATETIME NOT NULL,
 
        -- our internal references:

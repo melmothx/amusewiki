@@ -48,7 +48,7 @@ __PACKAGE__->table("oai_pmh_record");
 
   data_type: 'varchar'
   is_nullable: 0
-  size: 512
+  size: 255
 
 =head2 datestamp
 
@@ -117,7 +117,7 @@ __PACKAGE__->add_columns(
   "oai_pmh_record_id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "identifier",
-  { data_type => "varchar", is_nullable => 0, size => 512 },
+  { data_type => "varchar", is_nullable => 0, size => 255 },
   "datestamp",
   { data_type => "datetime", is_nullable => 0 },
   "site_id",
@@ -271,8 +271,8 @@ Composing rels: L</oai_pmh_record_sets> -> oai_pmh_set
 __PACKAGE__->many_to_many("oai_pmh_sets", "oai_pmh_record_sets", "oai_pmh_set");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-15 14:35:06
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rGDID57glhtZ5In7l7k3Uw
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-15 16:42:28
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Z2NQj0otfRAI7JYapP25Jg
 
 __PACKAGE__->add_columns('+datestamp' => { timezone => 'UTC' });
 
