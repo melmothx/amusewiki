@@ -16,7 +16,7 @@ use Date::Parse;
 use JSON::MaybeXS;
 use MIME::Base64;
 
-use constant AMW_OAI_PMH_PAGE_SIZE => $ENV{AMW_OAI_PMH_PAGE_SIZE} || 100;
+use constant AMW_OAI_PMH_PAGE_SIZE => $ENV{AMW_OAI_PMH_PAGE_SIZE} || 40;
 
 has site => (
              is => 'ro',
