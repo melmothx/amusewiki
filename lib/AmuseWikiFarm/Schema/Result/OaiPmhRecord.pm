@@ -80,12 +80,6 @@ __PACKAGE__->table("oai_pmh_record");
   is_foreign_key: 1
   is_nullable: 1
 
-=head2 metadata_identifier
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 512
-
 =head2 metadata_type
 
   data_type: 'varchar'
@@ -128,8 +122,6 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "custom_formats_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
-  "metadata_identifier",
-  { data_type => "varchar", is_nullable => 1, size => 512 },
   "metadata_type",
   { data_type => "varchar", is_nullable => 1, size => 32 },
   "metadata_format",
@@ -271,8 +263,8 @@ Composing rels: L</oai_pmh_record_sets> -> oai_pmh_set
 __PACKAGE__->many_to_many("oai_pmh_sets", "oai_pmh_record_sets", "oai_pmh_set");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-15 16:42:28
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Z2NQj0otfRAI7JYapP25Jg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-15 17:57:21
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:F9R4sGRGGvtgz6wLvOY0xQ
 
 __PACKAGE__->add_columns('+datestamp' => { timezone => 'UTC' });
 

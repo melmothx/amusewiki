@@ -701,10 +701,6 @@ CREATE TABLE oai_pmh_record (
        custom_formats_id INTEGER NULL REFERENCES custom_formats(custom_formats_id)
                                  ON DELETE SET NULL ON UPDATE CASCADE,
 
-       -- metadata specific for each file
-       -- we have the uri at 255, so we need to add the host and the suffix, doubling it should be fine
-       metadata_identifier VARCHAR(512), -- the actual URL with the correct extension
-
        metadata_type VARCHAR(32), -- text/image/sound https://www.dublincore.org/specifications/dublin-core/type-element/
        metadata_format VARCHAR(32), -- mime type, but at runtime we should append the custom format description
 
