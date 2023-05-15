@@ -335,7 +335,8 @@ sub _list_records {
                                                                # the original set parameter
                                                                set => $params->{set},
                                                                total => $total,
-                                                               done_so_far => $done_so_far,
+                                                               cursor => $done_so_far,
+                                                               done_so_far => $done_so_far + @items,
                                                               });
                 last RECORD;
             }
@@ -355,7 +356,8 @@ sub _list_records {
         push @records, $self->encode_resumption_token({
                                                        final => 1,
                                                        total => $total,
-                                                       done_so_far => $done_so_far,
+                                                       cursor => $done_so_far,
+                                                       done_so_far => $done_so_far + @items,
                                                       });
 
     }
@@ -526,7 +528,7 @@ sub encode_resumption_token {
     }
     return [ resumptionToken => [
                                  completeListSize => $spec->{total},
-                                 cursor => $spec->{done_so_far},
+                                 cursor => $spec->{cursor},
                                 ], $token ];
 }
 
