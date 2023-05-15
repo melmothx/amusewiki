@@ -323,7 +323,7 @@ sub as_xml_structure {
 }
 
 sub dublin_core_record {
-    my $self = shift;
+    my ($self) = @_;
     my $obj = $self->title || $self->attachment;
     unless ($obj) {
         return [
@@ -333,7 +333,7 @@ sub dublin_core_record {
     }
     die "Nor a title nor an attachment?" unless $obj;
     my $data = $obj->dublin_core_entry;
-    $data->{identifier} = $self->metadata_identifier;
+    $data->{identifier} = $self->site->canonical_url . $self->identifier;
     $data->{format} = $self->metadata_format;
     $data->{type} = $self->metadata_type;
     my @out;

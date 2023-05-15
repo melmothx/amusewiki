@@ -11,7 +11,7 @@ BEGIN {
 
 
 use Data::Dumper;
-use Test::More tests => 143;
+use Test::More tests => 151;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::OAI::PMH;
 use File::Spec::Functions qw/catfile catdir/;
@@ -135,7 +135,7 @@ for (1..2) {
     ok $site->oai_pmh_records->search({ attachment_id => { '>', 0 } })->count, "Has attachments";
     ok $site->oai_pmh_records->search({ title_id => { '>', 0 } })->count, "Has texts";
     # check if they have all the fields
-    foreach my $f (qw/metadata_format metadata_type metadata_identifier datestamp/) {
+    foreach my $f (qw/metadata_format metadata_type datestamp/) {
         ok !$site->oai_pmh_records->search({ $f => [ undef, '' ] })->count, "No records without $f";
     }
     ok !$site->oai_pmh_records->search({ deleted => 1 })->count, "No deleted records";
@@ -144,7 +144,8 @@ for (1..2) {
 
 foreach my $rec ($site->oai_pmh_records) {
     is $rec->datestamp->time_zone->name, 'UTC';
-    $mech->get_ok($rec->metadata_identifier);
+    $mech->get_ok($site->canonical_url . $rec->identifier);
+    ok $rec->identifier, "Identifier is fine" . $rec->identifier;
 }
 
 {

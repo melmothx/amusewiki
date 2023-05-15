@@ -56,7 +56,6 @@ sub update_site_records {
                           file => $file,
                           identifier => $identifier . $f->{ext},
                           title_id => $title_id,
-                          metadata_identifier => $canonical_url . $title->full_uri . $f->{ext},
                           metadata_format => $mime_types->{$ext},
                           sets => $ext eq 'muse' ? [ $amwset ] : [],
                          };
@@ -66,7 +65,6 @@ sub update_site_records {
                           file => path($attachment->f_full_path_name),
                           identifier => $attachment->full_uri,
                           attachment_id => $attachment->id,
-                          metadata_identifier => $canonical_url . $attachment->full_uri,
                           metadata_format => $attachment->mime_type,
                           sets => [ $amwset ],
                          };
@@ -82,7 +80,6 @@ sub update_site_records {
                       file => path($attachment->f_full_path_name),
                       identifier => $attachment->full_uri,
                       attachment_id => $attachment->id,
-                      metadata_identifier => $canonical_url . $attachment->full_uri,
                       metadata_format => $attachment->mime_type,
                      };
     }
