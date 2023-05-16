@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.571 2023-05-16
+
+ - Optimization for the OAI-PMH update run, which was too slow.
+
 2.570 2023-05-16
 
  - Implement the OAI-PMH protocol at /oai-pmh
