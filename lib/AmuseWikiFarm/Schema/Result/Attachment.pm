@@ -486,7 +486,7 @@ sub dublin_core_entry {
     my $self = shift;
     return {
             # we encode the alt text because in the output we decode and clean
-            title => [ grep { $_ } ($self->title_html, encode_entities($self->alt_text || '')) ],
+            title => $self->title_html || encode_entities($self->alt_text || '') || $self->uri,
             description => $self->comment_html,
            };
 }

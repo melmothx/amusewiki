@@ -354,11 +354,11 @@ sub dublin_core_record {
                     push @out, [ 'dc:' . $k => $cleaned ];
                 }
             }
-            if ($k eq 'description') {
-                if (my $cf = $self->custom_format) {
-                    if (my $cf_name = $cf->format_name) {
-                        push @out, [ 'dc:' . $k, $cf_name ]
-                    }
+        }
+        if ($k eq 'description') {
+            if (my $cf = $self->custom_format) {
+                if (my $cf_name = $cf->format_name) {
+                    push @out, [ 'dc:' . $k, $cf_name ]
                 }
             }
         }

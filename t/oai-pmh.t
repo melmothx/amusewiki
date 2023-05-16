@@ -11,7 +11,7 @@ BEGIN {
 
 
 use Data::Dumper;
-use Test::More tests => 151;
+use Test::More tests => 153;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::OAI::PMH;
 use File::Spec::Functions qw/catfile catdir/;
@@ -122,9 +122,9 @@ while (my $j = $site->jobs->dequeue) {
     $j->dispatch_job;
     diag $j->logs;
 }
-foreach my $att ($site->attachments) {
+if (my $att = $site->attachments->find({ uri => 't-t-1.png' })) {
     $att->edit(
-               title_muse => $att->uri, 
+               title_muse => $att->uri . " *title*",
                comment_muse => $att->uri . " *comment*",
                alt_text => $att->uri . " description ",
               );
@@ -315,7 +315,7 @@ foreach my $test ({
                             identifier => $site->oai_pmh_records->search({ attachment_id => { '>', 0 } })->first->identifier,
                            },
                    expect => [
-                              '<dc:title>t-t-1.png description</dc:title>',
+                              '<dc:title>t-t-1.png title</dc:title>',
                               '<setSpec>amusewiki</setSpec>',
                               '<dc:format>image/png</dc:format>',
                               '<dc:type>image</dc:type>',
@@ -323,7 +323,6 @@ foreach my $test ({
                    lacks => [
                              '<header status="deleted">',
                             ],
-
                   },
                   {
                    args => {
@@ -434,6 +433,7 @@ foreach my $test ({
                            },
                    expect => [
                               'to-test.pdf</identifier>',
+                              '<dc:description>Plain PDF</dc:description>',
                               '<resumptionToken completeListSize="10" cursor="0">',
                              ],
                    lacks => [
@@ -448,6 +448,7 @@ foreach my $test ({
                            },
                    expect => [
                               'to-test.a4.pdf</identifier>',
+                              '<dc:description>A4 imposed PDF</dc:description>',
                               '<resumptionToken completeListSize="10" cursor="9" />',
                              ],
                    lacks => [

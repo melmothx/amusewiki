@@ -56,6 +56,7 @@ sub update_site_records {
                           file => $file,
                           identifier => $identifier . $f->{ext},
                           title_id => $title_id,
+                          custom_formats_id => $f->{custom_formats_id},
                           metadata_format => $mime_types->{$ext},
                           sets => $ext eq 'muse' ? [ $amwset ] : [],
                          };
