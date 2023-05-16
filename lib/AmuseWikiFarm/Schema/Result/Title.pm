@@ -448,6 +448,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 oai_pmh_records
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::OaiPmhRecord>
+
+=cut
+
+__PACKAGE__->has_many(
+  "oai_pmh_records",
+  "AmuseWikiFarm::Schema::Result::OaiPmhRecord",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 revisions
 
 Type: has_many
@@ -609,8 +624,8 @@ Composing rels: L</node_titles> -> node
 __PACKAGE__->many_to_many("nodes", "node_titles", "node");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2021-07-22 14:55:51
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:epoFFeSHNxWFi0ogIw3Xrg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-11 11:21:16
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qx0/jlUYtl3Wv69Cb9SQdQ
 
 =head2 translations
 
@@ -1495,6 +1510,36 @@ sub opds_entry {
     }
     return \%out;
 }
+
+# this should be done for each format, I think. Then the can define a
+# set called "muse" which excludes the generated formats.
+
+sub dublin_core_entry {
+    # we need one per format
+    my ($self) = @_;
+    my @cats = $self->categories;
+    my $data = {
+                title => $self->title,
+                creator => [
+                            map { $_->name }
+                            grep { $_->type eq 'author' }
+                            @cats
+                           ],
+                subject => [
+                            map { $_->name }
+                            grep { $_->type eq 'topic' }
+                            @cats
+                           ],
+                description => $self->teaser,
+                publisher => $self->publisher,
+                date => $self->date_year || $self->pubdate->ymd,
+                source => $self->source,
+                language => $self->lang || 'en',
+                rights => $self->rights,
+               };
+    return $data;
+}
+
 
 sub _clean_html {
     my ($self, $string) = @_;

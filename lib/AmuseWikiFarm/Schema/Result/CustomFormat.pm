@@ -615,6 +615,21 @@ __PACKAGE__->add_unique_constraint("site_id_format_code_unique", ["site_id", "fo
 
 =head1 RELATIONS
 
+=head2 oai_pmh_records
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::OaiPmhRecord>
+
+=cut
+
+__PACKAGE__->has_many(
+  "oai_pmh_records",
+  "AmuseWikiFarm::Schema::Result::OaiPmhRecord",
+  { "foreign.custom_formats_id" => "self.custom_formats_id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 site
 
 Type: belongs_to
@@ -631,8 +646,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2022-05-13 07:31:25
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:T/6UDJe64ztMbp4b1KQR9g
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-11 11:48:05
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:PrMpPA57+WXdDiDnpVEZPw
 
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;

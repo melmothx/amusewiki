@@ -682,6 +682,53 @@ CREATE TABLE mirror_info (
 CREATE UNIQUE INDEX unique_mirror_info_title_id ON mirror_info(title_id);
 CREATE UNIQUE INDEX unique_mirror_info_attachment_id ON mirror_info(attachment_id);
 
+CREATE TABLE oai_pmh_record (
+       oai_pmh_record_id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+       -- header part
+       identifier VARCHAR(255) NOT NULL,
+       datestamp DATETIME NOT NULL,
+
+       -- our internal references:
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
+
+       -- on deletion, we don't remove this record:
+       title_id INTEGER NULL REFERENCES title(id)
+                             ON DELETE SET NULL ON UPDATE CASCADE,
+       attachment_id INTEGER NULL REFERENCES attachment(id)
+                             ON DELETE SET NULL ON UPDATE CASCADE,
+       custom_formats_id INTEGER NULL REFERENCES custom_formats(custom_formats_id)
+                                 ON DELETE SET NULL ON UPDATE CASCADE,
+
+       metadata_type VARCHAR(32), -- text/image/sound https://www.dublincore.org/specifications/dublin-core/type-element/
+       metadata_format VARCHAR(32), -- mime type, but at runtime we should append the custom format description
+
+       -- flag for deletion
+       deleted INTEGER(1) NOT NULL DEFAULT 0,
+       update_run INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE UNIQUE INDEX unique_oai_pmh_record_identifier_site_id ON oai_pmh_record(identifier, site_id);
+
+CREATE TABLE oai_pmh_set (
+       -- https://www.sqlite.org/autoinc.html autoincrement not needed.
+       oai_pmh_set_id INTEGER PRIMARY KEY,
+       set_spec VARCHAR(255) NOT NULL,
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
+       set_name TEXT
+);
+CREATE UNIQUE INDEX oai_pmh_set_oai_pmh_set_id_site_id ON oai_pmh_set(set_spec, site_id);
+
+CREATE TABLE oai_pmh_record_set (
+       oai_pmh_record_id INTEGER NOT NULL REFERENCES oai_pmh_record(oai_pmh_record_id)
+                               ON DELETE CASCADE ON UPDATE CASCADE,
+       oai_pmh_set_id INTEGER NOT NULL REFERENCES oai_pmh_set(oai_pmh_set_id)
+                               ON DELETE CASCADE ON UPDATE CASCADE,
+       PRIMARY KEY (oai_pmh_record_id, oai_pmh_set_id)
+);
+
 
 INSERT INTO table_comments (table_name, comment_text)
        values
@@ -726,6 +773,9 @@ INSERT INTO table_comments (table_name, comment_text)
          ('mirror_info', 'Mirror meta-info'),
          ('mirror_origin', 'Mirror origin'),
          ('site_category_type', 'Table with the category types'),
+         ('oai_pmh_set', 'OAI-PMH Sets definition'), 
+         ('oai_pmh_record', 'OAI-PMH Records'), 
+         ('oai_pmh_record_set', 'OAI-PMH brigde table between records and sets'), 
          ('included_file', 'Files included in muse documents'),
          ('include_path', 'Directories to search for file inclusions')
          ;

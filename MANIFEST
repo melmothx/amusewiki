@@ -156,6 +156,8 @@ dbicdh/_source/deploy/76/001-auto-__VERSION.yml
 dbicdh/_source/deploy/76/001-auto.yml
 dbicdh/_source/deploy/77/001-auto-__VERSION.yml
 dbicdh/_source/deploy/77/001-auto.yml
+dbicdh/_source/deploy/78/001-auto-__VERSION.yml
+dbicdh/_source/deploy/78/001-auto.yml
 dbicdh/_source/deploy/8/001-auto-__VERSION.yml
 dbicdh/_source/deploy/8/001-auto.yml
 dbicdh/_source/deploy/9/001-auto-__VERSION.yml
@@ -308,6 +310,8 @@ dbicdh/MySQL/deploy/76/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/76/001-auto.sql
 dbicdh/MySQL/deploy/77/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/77/001-auto.sql
+dbicdh/MySQL/deploy/78/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/78/001-auto.sql
 dbicdh/MySQL/deploy/8/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/8/001-auto.sql
 dbicdh/MySQL/deploy/9/001-auto-__VERSION.sql
@@ -385,6 +389,7 @@ dbicdh/MySQL/upgrade/73-74/001-auto.sql
 dbicdh/MySQL/upgrade/74-75/001-auto.sql
 dbicdh/MySQL/upgrade/75-76/001-auto.sql
 dbicdh/MySQL/upgrade/76-77/001-auto.sql
+dbicdh/MySQL/upgrade/77-78/001-auto.sql
 dbicdh/MySQL/upgrade/8-9/001-auto.sql
 dbicdh/MySQL/upgrade/9-10/001-auto.sql
 dbicdh/PostgreSQL/deploy/10/001-auto-__VERSION.sql
@@ -535,6 +540,8 @@ dbicdh/PostgreSQL/deploy/76/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/76/001-auto.sql
 dbicdh/PostgreSQL/deploy/77/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/77/001-auto.sql
+dbicdh/PostgreSQL/deploy/78/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/78/001-auto.sql
 dbicdh/PostgreSQL/deploy/8/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/8/001-auto.sql
 dbicdh/PostgreSQL/deploy/9/001-auto-__VERSION.sql
@@ -612,6 +619,7 @@ dbicdh/PostgreSQL/upgrade/73-74/001-auto.sql
 dbicdh/PostgreSQL/upgrade/74-75/001-auto.sql
 dbicdh/PostgreSQL/upgrade/75-76/001-auto.sql
 dbicdh/PostgreSQL/upgrade/76-77/001-auto.sql
+dbicdh/PostgreSQL/upgrade/77-78/001-auto.sql
 dbicdh/PostgreSQL/upgrade/8-9/001-auto.sql
 dbicdh/PostgreSQL/upgrade/9-10/001-auto.sql
 dbicdh/SQLite/deploy/10/001-auto-__VERSION.sql
@@ -762,6 +770,8 @@ dbicdh/SQLite/deploy/76/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/76/001-auto.sql
 dbicdh/SQLite/deploy/77/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/77/001-auto.sql
+dbicdh/SQLite/deploy/78/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/78/001-auto.sql
 dbicdh/SQLite/deploy/8/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/8/001-auto.sql
 dbicdh/SQLite/deploy/9/001-auto-__VERSION.sql
@@ -839,6 +849,7 @@ dbicdh/SQLite/upgrade/73-74/001-auto.sql
 dbicdh/SQLite/upgrade/74-75/001-auto.sql
 dbicdh/SQLite/upgrade/75-76/001-auto.sql
 dbicdh/SQLite/upgrade/76-77/001-auto.sql
+dbicdh/SQLite/upgrade/77-78/001-auto.sql
 dbicdh/SQLite/upgrade/8-9/001-auto.sql
 dbicdh/SQLite/upgrade/9-10/001-auto.sql
 lib/AmuseWikiFarm.pm
@@ -847,6 +858,7 @@ lib/AmuseWikiFarm/Archive/CgitEmulated.pm
 lib/AmuseWikiFarm/Archive/Lexicon.pm
 lib/AmuseWikiFarm/Archive/Lexicon/Handles.pm
 lib/AmuseWikiFarm/Archive/Lexicon/Site.pm
+lib/AmuseWikiFarm/Archive/OAI/PMH.pm
 lib/AmuseWikiFarm/Archive/StaticIndexes.pm
 lib/AmuseWikiFarm/Archive/Xapian.pm
 lib/AmuseWikiFarm/Archive/Xapian/Result.pm
@@ -871,6 +883,7 @@ lib/AmuseWikiFarm/Controller/Listing.pm
 lib/AmuseWikiFarm/Controller/Mirror.pm
 lib/AmuseWikiFarm/Controller/Monthly.pm
 lib/AmuseWikiFarm/Controller/Nodes.pm
+lib/AmuseWikiFarm/Controller/OaiPmh.pm
 lib/AmuseWikiFarm/Controller/OPDS.pm
 lib/AmuseWikiFarm/Controller/Publish.pm
 lib/AmuseWikiFarm/Controller/Remote.pm
@@ -925,6 +938,7 @@ lib/AmuseWikiFarm/Model/BookBuilder.pm
 lib/AmuseWikiFarm/Model/Cgit.pm
 lib/AmuseWikiFarm/Model/DB.pm
 lib/AmuseWikiFarm/Model/Lexicon.pm
+lib/AmuseWikiFarm/Model/OaiPmh.pm
 lib/AmuseWikiFarm/Model/OPDS.pm
 lib/AmuseWikiFarm/Model/Webserver.pm
 lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm
@@ -957,6 +971,9 @@ lib/AmuseWikiFarm/Schema/Result/Node.pm
 lib/AmuseWikiFarm/Schema/Result/NodeBody.pm
 lib/AmuseWikiFarm/Schema/Result/NodeCategory.pm
 lib/AmuseWikiFarm/Schema/Result/NodeTitle.pm
+lib/AmuseWikiFarm/Schema/Result/OaiPmhRecord.pm
+lib/AmuseWikiFarm/Schema/Result/OaiPmhRecordSet.pm
+lib/AmuseWikiFarm/Schema/Result/OaiPmhSet.pm
 lib/AmuseWikiFarm/Schema/Result/Redirection.pm
 lib/AmuseWikiFarm/Schema/Result/Revision.pm
 lib/AmuseWikiFarm/Schema/Result/Role.pm
@@ -991,6 +1008,7 @@ lib/AmuseWikiFarm/Schema/ResultSet/MirrorOrigin.pm
 lib/AmuseWikiFarm/Schema/ResultSet/MuseHeader.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Node.pm
 lib/AmuseWikiFarm/Schema/ResultSet/NodeBody.pm
+lib/AmuseWikiFarm/Schema/ResultSet/OaiPmhRecord.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Redirection.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Revision.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Site.pm
@@ -1698,6 +1716,7 @@ script/amusewiki-whitelist-ip
 script/amusewikifarm_create.pl
 script/cleanup-tests.sh
 script/configure.sh
+script/convert-mysql-to-utf8mb4.my.sql
 script/create_schema_icons.pl
 script/generate-systemd-unit-files
 script/import-wordpress-2.pl
@@ -1881,6 +1900,7 @@ t/not-found.t
 t/not/parsable/ciao.muse
 t/notify-deferred.t
 t/numeric-collation-cats.t
+t/oai-pmh.t
 t/open-graph.t
 t/other-sites.t
 t/pagination-sizes.t
