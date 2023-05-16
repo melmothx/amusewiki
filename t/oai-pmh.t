@@ -11,7 +11,7 @@ BEGIN {
 
 
 use Data::Dumper;
-use Test::More tests => 153;
+use Test::More tests => 159;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::OAI::PMH;
 use File::Spec::Functions qw/catfile catdir/;
@@ -456,6 +456,32 @@ foreach my $test ({
                               '<resumptionToken completeListSize="10" cursor="0">',
                             ],
 
+                  },
+                  {
+                   args => {
+                            verb => 'ListRecords',
+                            metadataPrefix => 'oai_dc',
+                            from => DateTime->today->ymd,
+                            until => DateTime->today->ymd,
+                           },
+                   expect => [
+                              'to-test.pdf</identifier>',
+                              '<resumptionToken completeListSize="10" cursor="0">',
+                             ],
+                   lacks => [
+                             '<error code="noRecordsMatch">',
+                            ],
+                  },
+                  {
+                   args => {
+                            verb => 'ListIdentifiers',
+                            metadataPrefix => 'oai_dc',
+                            from => DateTime->today->subtract(years => 1)->ymd,
+                            until => DateTime->today->subtract(years => 1)->ymd,
+                           },
+                   expect => [
+                             '<error code="noRecordsMatch">',
+                             ],
                   },
                  ) {
     my $uri = URI->new($site->canonical_url);

@@ -264,7 +264,11 @@ sub _list_records {
         if (my $string = $params->{$date}) {
             # 3.3.1
             # The legitimate formats are YYYY-MM-DD and YYYY-MM-DDThh:mm:ssZ
-            unless ($string =~ m/\A\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}Z)?\z/) {
+            my $second_granularity;
+            if ($string =~ m/\A\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}:\d{2}Z)?\z/) {
+                $second_granularity = $1;
+            }
+            else {
                 return {
                         error_code => 'badArgument',
                         error_message => "Invalid $date format",
@@ -286,6 +290,11 @@ sub _list_records {
                 }
                 $search{$date} = DateTime->from_epoch(epoch => $epoch,
                                                       time_zone => 'UTC');
+                # if it has day granularity, the until should cover the whole day up to now.
+                log_debug { "Second granularity for $date is " . ($second_granularity || "day") };
+                if ($date eq 'until' and !$second_granularity) {
+                    $search{until}->add(days => 1);
+                }
             }
             else {
                 return {
