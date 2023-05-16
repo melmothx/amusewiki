@@ -35,8 +35,6 @@ sub update_site_records {
     my $site_id = $site->id;
     my $formats = $site->formats_definitions;
     my $mime_types = AmuseWikiFarm::Utils::Paths::served_mime_types();
-    Dlog_debug { "Formats and mime types:" . $_ } [ $formats, $mime_types ];
-
     my $amwset = $site->oai_pmh_sets->update_or_create({
                                                         set_spec => 'amusewiki',
                                                         set_name => 'Files needed to regenerate the archive',
@@ -86,14 +84,35 @@ sub update_site_records {
     }
     my $guard = $schema->txn_scope_guard;
     my $now = time();
+
+    my %all = map { $_->{identifier} => $_ }
+      $site->oai_pmh_records->search({ deleted => 0 },
+                                     {
+                                      result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                                      columns => [qw/oai_pmh_record_id identifier datestamp/],
+                                     })->all;
+    # Dlog_debug { "All: $_ " } \%all;
+    # Dlog_debug { "Files: $_ " } [ map { "$_->{file}" } @files ];
+    my $dtf = $schema->storage->datetime_parser;
+
+  FILE:
     foreach my $f (@files) {
         if (my $file = delete $f->{file}) {
             if ($file->exists) {
                 my $mtime = DateTime->from_epoch(epoch => $file->stat->mtime,
                                                  time_zone => 'UTC');
+                if (my $existing_rec = delete $all{$f->{identifier}}) {
+                    # Dlog_debug { "Evaluating $_" } $existing_rec;
+                    if ($dtf->format_datetime($mtime) eq $existing_rec->{datestamp}) {
+                        # Dlog_debug { "Skipping $_" } $existing_rec;
+                        next FILE;
+                    }
+                }
+                log_debug { "Updating/Creating " . $f->{identifier} };
                 $f->{site_id} = $site_id;
                 $f->{datestamp} = $mtime;
                 $f->{update_run} = $now;
+                $f->{deleted} = 0;
 
                 # https://www.dublincore.org/specifications/dublin-core/type-element/
                 my $dc_type = 'text';
@@ -111,7 +130,11 @@ sub update_site_records {
             }
         }
     }
-    $site->oai_pmh_records->set_deleted_flag_on_obsolete_records($now);
+    if (my @removals = map { $_->{oai_pmh_record_id} } values %all) {
+        Dlog_info { "Marking those records as removed: $_" } \@removals;
+        $site->oai_pmh_records->set_deleted_flag_on_obsolete_records(\@removals);
+    }
+
     $guard->commit;
 }
 

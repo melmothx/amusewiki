@@ -11,7 +11,7 @@ BEGIN {
 
 
 use Data::Dumper;
-use Test::More tests => 159;
+use Test::More tests => 163;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::OAI::PMH;
 use File::Spec::Functions qw/catfile catdir/;
@@ -513,3 +513,12 @@ ok $site->oai_pmh_records->oldest_record;
     $mech->content_contains('<dc:description>This entry was deleted</dc:description>');
     $mech->content_contains('<header status="deleted">');
 }
+
+
+is $site->oai_pmh_records->find({ identifier => 'testxx' })->deleted, 0;
+is $site->oai_pmh_records->find({ identifier => '/library/to-test.a4.pdf' })->deleted, 1;
+sleep 1;
+path($site->repo_root, qw/t tt to-test.a4.pdf/)->spew_raw("test");
+$oai_pmh->update_site_records;
+is $site->oai_pmh_records->find({ identifier => 'testxx' })->deleted, 1;
+is $site->oai_pmh_records->find({ identifier => '/library/to-test.a4.pdf' })->deleted, 0;
