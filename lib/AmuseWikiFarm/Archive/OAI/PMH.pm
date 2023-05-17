@@ -58,7 +58,7 @@ sub update_site_records {
         my $title_id = $title->id;
         # loop over the formats, same as the preamble
         foreach my $f (@$formats) {
-            my $file = path($title->filepath_for_ext($f->{code}));
+            my $file = $title->filepath_for_ext($f->{code});
             my $ext = $f->{ext};
             $ext =~ s/.*\.//;
             push @files, {
@@ -103,31 +103,30 @@ sub update_site_records {
       $site->oai_pmh_records->search({ deleted => 0 },
                                      {
                                       result_class => 'DBIx::Class::ResultClass::HashRefInflator',
-                                      columns => [qw/oai_pmh_record_id identifier datestamp/],
+                                      columns => [qw/oai_pmh_record_id identifier update_run/],
                                      })->all;
     # Dlog_debug { "All: $_ " } \%all;
     # Dlog_debug { "Files: $_ " } [ map { "$_->{file}" } @files ];
     $self->logger->("Collected existing records\n");
 
-    my $dtf = $schema->storage->datetime_parser;
-
   FILE:
     foreach my $f (@files) {
         if (my $file = delete $f->{file}) {
-            if ($file->exists) {
-                my $mtime = DateTime->from_epoch(epoch => $file->stat->mtime,
-                                                 time_zone => 'UTC');
+            if (-f $file) {
+                # $self->logger->("Updating/Creating " . $f->{identifier} . "\n");
+                my $epoch_timestamp = (stat($file))[9];
                 if (my $existing_rec = delete $all{$f->{identifier}}) {
-                    # Dlog_debug { "Evaluating $_" } $existing_rec;
-                    if ($dtf->format_datetime($mtime) eq $existing_rec->{datestamp}) {
-                        # Dlog_debug { "Skipping $_" } $existing_rec;
-                        next FILE;
-                    }
+                    # not modified since last update
+                    next FILE if $existing_rec->{update_run} >= $epoch_timestamp;
                 }
+                # $self->logger->("Updating/Creating " . $f->{identifier} . "\n");
                 log_debug { "Updating/Creating " . $f->{identifier} };
                 $f->{site_id} = $site_id;
-                $f->{datestamp} = $mtime;
+
+                # if the record is present in the DB, use the current time.
                 $f->{update_run} = $now;
+                $f->{datestamp} = DateTime->from_epoch(epoch => $now,
+                                                       time_zone => 'UTC');
                 $f->{deleted} = 0;
 
                 # https://www.dublincore.org/specifications/dublin-core/type-element/
