@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 use Moo;
-use Types::Standard qw/Object Str HashRef ArrayRef InstanceOf/;
+use Types::Standard qw/Object Str CodeRef HashRef ArrayRef InstanceOf/;
 use AmuseWikiFarm::Log::Contextual;
 use DateTime;
 use AmuseWikiFarm::Utils::Paths;
@@ -24,6 +24,12 @@ has site => (
              isa => Object,
             );
 
+has logger => (
+               is => 'ro',
+               isa => CodeRef,
+               default => sub { sub {} },
+              );
+
 has oai_pmh_url => (is => 'ro', isa => InstanceOf['URI']);
 
 sub update_site_records {
@@ -41,7 +47,12 @@ sub update_site_records {
                                                        },
                                                        { key => 'set_spec_site_id_unique' });
     my @files;
-    foreach my $title ($site->titles->published_texts->all) {
+    my $rs = $site->titles->published_texts->search(undef,
+                                                    {
+                                                     prefetch => { title_attachments => 'attachment' }
+                                                    });
+    my %done;
+    while (my $title = $rs->next) {
         # loop over the formats and check the date
         my $identifier = $title->full_uri;
         my $title_id = $title->id;
@@ -67,21 +78,24 @@ sub update_site_records {
                           metadata_format => $attachment->mime_type,
                           sets => [ $amwset ],
                          };
+            $done{$attachment->id}++;
         }
     }
-    my %done = map { $_->{attachment_id} => 1 } grep { $_->{attachment_id} } @files;
-    # and the others
-    foreach my $attachment ($site->attachments->with_descriptions
-                            ->excluding_ids([ map { $_->{attachment_id} } grep { $_->{attachment_id} } @files ])
-                            ->all) {
-        # these don't belong to a text, but they could belong to a special. No set
-        push @files, {
-                      file => path($attachment->f_full_path_name),
-                      identifier => $attachment->full_uri,
-                      attachment_id => $attachment->id,
-                      metadata_format => $attachment->mime_type,
-                     };
+    $self->logger->("Processing " . scalar(@files) . " files for texts\n");
+    $rs = $site->attachments->with_descriptions;
+  ATTACHMENT:
+    while (my $attachment = $rs->next) {
+        unless ($done{$attachment->id}) {
+            # these don't belong to a text, but they could belong to a special. No set
+            push @files, {
+                          file => path($attachment->f_full_path_name),
+                          identifier => $attachment->full_uri,
+                          attachment_id => $attachment->id,
+                          metadata_format => $attachment->mime_type,
+                         };
+        }
     }
+    $self->logger->("Processing " . scalar(@files) . " (including attachments)\n");
     my $guard = $schema->txn_scope_guard;
     my $now = time();
 
@@ -93,6 +107,8 @@ sub update_site_records {
                                      })->all;
     # Dlog_debug { "All: $_ " } \%all;
     # Dlog_debug { "Files: $_ " } [ map { "$_->{file}" } @files ];
+    $self->logger->("Collected existing records\n");
+
     my $dtf = $schema->storage->datetime_parser;
 
   FILE:
@@ -130,12 +146,15 @@ sub update_site_records {
             }
         }
     }
+    $self->logger->("Updated existing records\n");
+
     if (my @removals = map { $_->{oai_pmh_record_id} } values %all) {
         Dlog_info { "Marking those records as removed: $_" } \@removals;
         $site->oai_pmh_records->set_deleted_flag_on_obsolete_records(\@removals);
     }
-
+    $self->logger->("Handled removals\n");
     $guard->commit;
+    $self->logger->("Finished\n");
 }
 
 sub process_request {
