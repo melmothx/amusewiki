@@ -1,7 +1,8 @@
 -- Check the situation with:
 --  SELECT table_name, column_name, character_set_name FROM information_schema.`COLUMNS`  WHERE table_schema = 'amuse';
 
--- Alter the db (probably not even needed):
+-- Alter the db (IMPORTANT, otherwise when creating new tables the FK will fail).
+
 -- ALTER DATABASE amuse CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 -- otherwise the conversion will abort:
