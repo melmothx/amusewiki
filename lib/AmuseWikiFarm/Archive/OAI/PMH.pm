@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 use Moo;
-use Types::Standard qw/Object Str HashRef ArrayRef InstanceOf/;
+use Types::Standard qw/Object Str CodeRef HashRef ArrayRef InstanceOf/;
 use AmuseWikiFarm::Log::Contextual;
 use DateTime;
 use AmuseWikiFarm::Utils::Paths;
@@ -24,6 +24,12 @@ has site => (
              isa => Object,
             );
 
+has logger => (
+               is => 'ro',
+               isa => CodeRef,
+               default => sub { sub {} },
+              );
+
 has oai_pmh_url => (is => 'ro', isa => InstanceOf['URI']);
 
 sub update_site_records {
@@ -41,13 +47,18 @@ sub update_site_records {
                                                        },
                                                        { key => 'set_spec_site_id_unique' });
     my @files;
-    foreach my $title ($site->titles->published_texts->all) {
+    my $rs = $site->titles->published_texts->search(undef,
+                                                    {
+                                                     prefetch => { title_attachments => 'attachment' }
+                                                    });
+    my %done;
+    while (my $title = $rs->next) {
         # loop over the formats and check the date
         my $identifier = $title->full_uri;
         my $title_id = $title->id;
         # loop over the formats, same as the preamble
         foreach my $f (@$formats) {
-            my $file = path($title->filepath_for_ext($f->{code}));
+            my $file = $title->filepath_for_ext($f->{code});
             my $ext = $f->{ext};
             $ext =~ s/.*\.//;
             push @files, {
@@ -67,51 +78,51 @@ sub update_site_records {
                           metadata_format => $attachment->mime_type,
                           sets => [ $amwset ],
                          };
+            $done{$attachment->id}++;
         }
     }
-    my %done = map { $_->{attachment_id} => 1 } grep { $_->{attachment_id} } @files;
-    # and the others
-    foreach my $attachment ($site->attachments->with_descriptions
-                            ->excluding_ids([ map { $_->{attachment_id} } grep { $_->{attachment_id} } @files ])
-                            ->all) {
-        # these don't belong to a text, but they could belong to a special. No set
-        push @files, {
-                      file => path($attachment->f_full_path_name),
-                      identifier => $attachment->full_uri,
-                      attachment_id => $attachment->id,
-                      metadata_format => $attachment->mime_type,
-                     };
+    $self->logger->("Processing " . scalar(@files) . " files for texts\n");
+    $rs = $site->attachments->with_descriptions;
+  ATTACHMENT:
+    while (my $attachment = $rs->next) {
+        unless ($done{$attachment->id}) {
+            # these don't belong to a text, but they could belong to a special. No set
+            push @files, {
+                          file => path($attachment->f_full_path_name),
+                          identifier => $attachment->full_uri,
+                          attachment_id => $attachment->id,
+                          metadata_format => $attachment->mime_type,
+                         };
+        }
     }
-    my $guard = $schema->txn_scope_guard;
-    my $now = time();
-
+    $self->logger->("Processing " . scalar(@files) . " (including attachments)\n");
     my %all = map { $_->{identifier} => $_ }
       $site->oai_pmh_records->search({ deleted => 0 },
                                      {
                                       result_class => 'DBIx::Class::ResultClass::HashRefInflator',
-                                      columns => [qw/oai_pmh_record_id identifier datestamp/],
+                                      columns => [qw/oai_pmh_record_id identifier update_run/],
                                      })->all;
     # Dlog_debug { "All: $_ " } \%all;
     # Dlog_debug { "Files: $_ " } [ map { "$_->{file}" } @files ];
-    my $dtf = $schema->storage->datetime_parser;
+    $self->logger->("Collected existing records\n");
 
+    my $now = time();
   FILE:
     foreach my $f (@files) {
         if (my $file = delete $f->{file}) {
-            if ($file->exists) {
-                my $mtime = DateTime->from_epoch(epoch => $file->stat->mtime,
-                                                 time_zone => 'UTC');
+            if (-f $file) {
+                # $self->logger->("Updating/Creating " . $f->{identifier} . "\n");
+                my $epoch_timestamp = (stat($file))[9];
                 if (my $existing_rec = delete $all{$f->{identifier}}) {
-                    # Dlog_debug { "Evaluating $_" } $existing_rec;
-                    if ($dtf->format_datetime($mtime) eq $existing_rec->{datestamp}) {
-                        # Dlog_debug { "Skipping $_" } $existing_rec;
-                        next FILE;
-                    }
+                    # not modified since last check, skip
+                    next FILE if $existing_rec->{update_run} >= $epoch_timestamp;
                 }
-                log_debug { "Updating/Creating " . $f->{identifier} };
                 $f->{site_id} = $site_id;
-                $f->{datestamp} = $mtime;
+
+                # as datestamp, use the current run
                 $f->{update_run} = $now;
+                $f->{datestamp} = DateTime->from_epoch(epoch => $now,
+                                                       time_zone => 'UTC');
                 $f->{deleted} = 0;
 
                 # https://www.dublincore.org/specifications/dublin-core/type-element/
@@ -130,12 +141,13 @@ sub update_site_records {
             }
         }
     }
+    $self->logger->("Updated existing records\n");
     if (my @removals = map { $_->{oai_pmh_record_id} } values %all) {
         Dlog_info { "Marking those records as removed: $_" } \@removals;
-        $site->oai_pmh_records->set_deleted_flag_on_obsolete_records(\@removals);
+        $site->oai_pmh_records->set_deleted_flag_on_obsolete_records(\@removals, $now);
     }
-
-    $guard->commit;
+    $self->logger->("Handled removals\n");
+    $self->logger->("Finished\n");
 }
 
 sub process_request {

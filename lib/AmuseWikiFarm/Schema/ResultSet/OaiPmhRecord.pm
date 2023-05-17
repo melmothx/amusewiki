@@ -42,16 +42,18 @@ sub oldest_record {
 }
 
 sub set_deleted_flag_on_obsolete_records {
-    my ($self, $ids) = @_;
+    my ($self, $ids, $now) = @_;
     die "Missing ids" unless $ids && ref($ids) eq 'ARRAY';
+    die "Missing now epoch" unless $now;
     my $dt = $self->result_source->schema->storage->datetime_parser
-      ->format_datetime(DateTime->now(time_zone => 'UTC'));
+      ->format_datetime(DateTime->from_epoch(epoch => $now, time_zone => 'UTC'));
     my $me = $self->current_source_alias;
     $self->search({
                    "$me.oai_pmh_record_id" => { -in => $ids },
                   })->update({
                               deleted => 1,
                               datestamp => $dt,
+                              update_run => $now,
                              });
 }
 

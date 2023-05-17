@@ -1706,6 +1706,7 @@ script/amusewiki-import-redirections
 script/amusewiki-include-path
 script/amusewiki-jobber
 script/amusewiki-letsencrypt
+script/amusewiki-oai-pmh-index
 script/amusewiki-populate-monthly
 script/amusewiki-populate-webfonts
 script/amusewiki-reset-password
