@@ -96,9 +96,6 @@ sub update_site_records {
         }
     }
     $self->logger->("Processing " . scalar(@files) . " (including attachments)\n");
-    my $guard = $schema->txn_scope_guard;
-    my $now = time();
-
     my %all = map { $_->{identifier} => $_ }
       $site->oai_pmh_records->search({ deleted => 0 },
                                      {
@@ -109,6 +106,7 @@ sub update_site_records {
     # Dlog_debug { "Files: $_ " } [ map { "$_->{file}" } @files ];
     $self->logger->("Collected existing records\n");
 
+    my $now = time();
   FILE:
     foreach my $f (@files) {
         if (my $file = delete $f->{file}) {
@@ -116,14 +114,12 @@ sub update_site_records {
                 # $self->logger->("Updating/Creating " . $f->{identifier} . "\n");
                 my $epoch_timestamp = (stat($file))[9];
                 if (my $existing_rec = delete $all{$f->{identifier}}) {
-                    # not modified since last update
+                    # not modified since last check, skip
                     next FILE if $existing_rec->{update_run} >= $epoch_timestamp;
                 }
-                # $self->logger->("Updating/Creating " . $f->{identifier} . "\n");
-                log_debug { "Updating/Creating " . $f->{identifier} };
                 $f->{site_id} = $site_id;
 
-                # if the record is present in the DB, use the current time.
+                # as datestamp, use the current run
                 $f->{update_run} = $now;
                 $f->{datestamp} = DateTime->from_epoch(epoch => $now,
                                                        time_zone => 'UTC');
@@ -146,13 +142,11 @@ sub update_site_records {
         }
     }
     $self->logger->("Updated existing records\n");
-
     if (my @removals = map { $_->{oai_pmh_record_id} } values %all) {
         Dlog_info { "Marking those records as removed: $_" } \@removals;
-        $site->oai_pmh_records->set_deleted_flag_on_obsolete_records(\@removals);
+        $site->oai_pmh_records->set_deleted_flag_on_obsolete_records(\@removals, $now);
     }
     $self->logger->("Handled removals\n");
-    $guard->commit;
     $self->logger->("Finished\n");
 }
 
