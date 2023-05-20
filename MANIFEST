@@ -1749,6 +1749,7 @@ t/archive-cache.t
 t/archive.t
 t/atr-lexicon.json
 t/attachment-editing.t
+t/attachment-pruning.t
 t/authentication.t
 t/author-update.t
 t/auto-pubdate.t

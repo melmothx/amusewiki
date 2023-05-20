@@ -93,5 +93,16 @@ sub excluding_ids {
     return $self->search({ "$me.id" => { -not_in => $ids } });
 }
 
+sub orphans {
+    my ($self) = @_;
+    my $me = $self->current_source_alias;
+    $self->search(undef,
+                  {
+                   join => 'title_attachments',
+                   distinct => 1, # generates group by
+                   having => \'COUNT(title_attachments.title_id) = 0'
+                  });
+}
+
 1;
 
