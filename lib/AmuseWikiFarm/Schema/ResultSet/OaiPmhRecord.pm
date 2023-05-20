@@ -42,9 +42,9 @@ sub oldest_record {
 }
 
 sub set_deleted_flag_on_obsolete_records {
-    my ($self, $ids, $now) = @_;
+    my ($self, $ids) = @_;
     die "Missing ids" unless $ids && ref($ids) eq 'ARRAY';
-    die "Missing now epoch" unless $now;
+    my $now = time();
     my $dt = $self->result_source->schema->storage->datetime_parser
       ->format_datetime(DateTime->from_epoch(epoch => $now, time_zone => 'UTC'));
     my $me = $self->current_source_alias;

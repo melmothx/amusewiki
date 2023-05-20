@@ -106,7 +106,6 @@ sub update_site_records {
     # Dlog_debug { "Files: $_ " } [ map { "$_->{file}" } @files ];
     $self->logger->("Collected existing records\n");
 
-    my $now = time();
   FILE:
     foreach my $f (@files) {
         if (my $file = delete $f->{file}) {
@@ -120,7 +119,7 @@ sub update_site_records {
                 $f->{site_id} = $site_id;
 
                 # as datestamp, use the current run
-                $f->{update_run} = $now;
+                my $now = $f->{update_run} = time();
                 $f->{datestamp} = DateTime->from_epoch(epoch => $now,
                                                        time_zone => 'UTC');
                 $f->{deleted} = 0;
@@ -144,7 +143,7 @@ sub update_site_records {
     $self->logger->("Updated existing records\n");
     if (my @removals = map { $_->{oai_pmh_record_id} } values %all) {
         Dlog_info { "Marking those records as removed: $_" } \@removals;
-        $site->oai_pmh_records->set_deleted_flag_on_obsolete_records(\@removals, $now);
+        $site->oai_pmh_records->set_deleted_flag_on_obsolete_records(\@removals);
     }
     $self->logger->("Handled removals\n");
     $self->logger->("Finished\n");
