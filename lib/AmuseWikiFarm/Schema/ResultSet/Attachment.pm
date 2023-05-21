@@ -17,6 +17,12 @@ Find an attachment by uri
 
 =cut
 
+sub by_id {
+    my ($self, $ids) = @_;
+    my $me = $self->current_source_alias;
+    $self->search({ "$me.id" => $ids });
+}
+
 sub by_uri {
     my ($self, $uri) = @_;
     return $self->single({ uri => $uri });

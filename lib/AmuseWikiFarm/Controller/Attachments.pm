@@ -43,6 +43,47 @@ sub root :Chained('/site_user_required') :PathPart('attachments') :CaptureArgs(0
              );
 }
 
+sub orphans :Chained('root') :Args(0) {
+    my ($self, $c, $page) = @_;
+    my @list;
+    my $site = $c->stash->{site};
+    my $all = $c->stash->{attachments}->public_only->orphans;
+    while (my $att = $all->next) {
+        my $ainfo = {
+                     id => $att->id,
+                     full_uri => $c->uri_for($att->full_uri),
+                     name => $att->uri,
+                     thumb => $c->uri_for($att->small_uri),
+                     has_thumbnails => $att->has_thumbnails,
+                    };
+        if ($ainfo->{has_thumbnails}) {
+            $ainfo->{has_thumbnails} = 0 unless $att->has_thumbnail_file('small');
+        }
+        push @list, $ainfo;
+    }
+    push @{$c->stash->{breadcrumbs}},
+      {
+       uri => $c->uri_for_action('/attachments/orphans'),
+       label => $c->loc('Files not referenced by any text'),
+      };
+    $c->stash(attachments_list => \@list);
+}
+
+sub prune :Chained('root') :Args(0) {
+    my ($self, $c) = @_;
+    my $site = $c->stash->{site};
+    if (my $removals = $c->request->body_params->{prune}) {
+        my $job = $site->jobs->enqueue(prune_orphans => {
+                                                         prune => ref($removals) ? $removals : [ $removals ],
+                                                        }, $c->user->get('username'));
+        $c->res->redirect($c->uri_for_action('/tasks/display',
+                                             [$job->id]));
+    }
+    else {
+        $c->response->redirect($c->uri_for_action('/attachments/orphans'));
+    }
+}
+
 sub list :Chained('root') :Args {
     my ($self, $c, $page) = @_;
     my @list;

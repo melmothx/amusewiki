@@ -9,7 +9,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More; # tests => 163;
+use Test::More tests => 16;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -71,7 +71,36 @@ foreach my $text ($site->titles->all) {
     is $text->attachments->count, 0;
 }
 
+ok path($site->repo_root)->child('uploads')->exists;
 is $site->attachments->count, 8;
 is $site->attachments->orphans->count, 8;
 
-done_testing;
+{
+    my $job = $site->jobs->enqueue(prune_orphans => {
+                                                     prune => [
+                                                               undef,
+                                                               "",
+                                                               $site->attachments->orphans->first->id,
+                                                              ],
+                                                    }, "test");
+    $job->dispatch_job;
+    diag $job->logs;
+}
+
+is $site->attachments->count, 7;
+
+{
+    my $job = $site->jobs->enqueue(prune_orphans => {
+                                                     prune => [
+                                                               undef,
+                                                               "",
+                                                               map { $_->id } ($site->attachments->orphans->all),
+                                                              ],
+                                                    }, "test");
+    $job->dispatch_job;
+    diag $job->logs;
+}
+
+is $site->attachments->count, 0;
+ok !path($site->repo_root)->child('uploads')->exists;
+

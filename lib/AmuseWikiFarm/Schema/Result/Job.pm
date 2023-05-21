@@ -546,17 +546,24 @@ sub dispatch_job_purge {
     die $text->title . " is not deleted!\n" unless $text->deleted;
     my $user = $data->{username};
     die "No user!" unless $user;
-    my $path = $text->f_full_path_name;
-    my $uri = $text->full_uri;
+    $self->purge_repo_file($text, "deleted by $user", $logger);
+    return '/console/unpublished';
+}
+
+sub purge_repo_file {
+    my ($self, $object, $message, $logger) = @_;
+    my $site = $self->site;
+    my $path = $object->f_full_path_name;
+    my $uri = $object->full_uri;
     log_info { "Removing $path, purge job" };
-    $logger->("Purging " . $text->full_uri . "\n");
+    $logger->("Purging " . $object->full_uri . "\n");
     if (my $git = $site->git) {
         local $ENV{GIT_COMMITTER_NAME}  = $self->committer_name;
         local $ENV{GIT_COMMITTER_EMAIL} = $self->committer_mail;
         local $ENV{GIT_AUTHOR_NAME}  = $self->committer_name;
         local $ENV{GIT_AUTHOR_EMAIL} = $self->committer_mail;
         $git->rm($path);
-        $git->commit({ message => "$uri deleted by $user" });
+        $git->commit({ message => "$uri removed: $message" });
         # tested
         log_info { "Syncing the remote repository" };
         $site->sync_remote_repo;
@@ -564,10 +571,21 @@ sub dispatch_job_purge {
     else {
         unlink $path or die "Couldn't delete $path $!\n";
     }
-    $text->delete;
-    return '/console/unpublished';
+    $object->delete;
 }
 
+sub dispatch_job_prune_orphans {
+    my ($self, $logger) = @_;
+    my $site = $self->site;
+    my $files = $site->attachments->public_only->orphans->by_id([ map { $_ + 0 }
+                                                                  grep { $_ }
+                                                                  @{ $self->job_data->{prune} || [] }
+                                                                ]);
+    while (my $file = $files->next) {
+        $self->purge_repo_file($file, "orphan file", $logger);
+    }
+    return '/attachments/orphans';
+}
 
 sub dispatch_job_publish {
     my ($self, $logger) = @_;
