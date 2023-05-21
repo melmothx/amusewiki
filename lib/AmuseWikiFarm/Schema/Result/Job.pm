@@ -230,6 +230,7 @@ use AmuseWikiFarm::Utils::Amuse qw/clean_username to_json
                                    from_json/;
 use Text::Amuse::Compile;
 use HTML::Entities qw/encode_entities/;
+use Path::Tiny ();
 
 has bookbuilder => (is => 'ro',
                     isa => 'Maybe[Object]',
@@ -553,8 +554,13 @@ sub dispatch_job_purge {
 sub purge_repo_file {
     my ($self, $object, $message, $logger) = @_;
     my $site = $self->site;
-    my $path = $object->f_full_path_name;
     my $uri = $object->full_uri;
+
+    my $full_path = Path::Tiny::path($object->f_full_path_name)->realpath;
+    my $root_path = Path::Tiny::path($site->repo_root)->realpath;
+    die "$full_path is not inside $root_path" unless $root_path->subsumes($full_path);
+    my $path = $full_path->stringify;
+
     log_info { "Removing $path, purge job" };
     $logger->("Purging " . $object->full_uri . "\n");
     if (my $git = $site->git) {
