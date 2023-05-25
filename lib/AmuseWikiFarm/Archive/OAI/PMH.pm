@@ -70,7 +70,7 @@ sub update_site_records {
                           sets => $ext eq 'muse' ? [ $amwset ] : [],
                          };
         }
-        foreach my $attachment ($title->attachments->all) {
+        foreach my $attachment ($title->attachments->public_only->all) {
             push @files, {
                           file => path($attachment->f_full_path_name),
                           identifier => $attachment->full_uri,
@@ -82,7 +82,7 @@ sub update_site_records {
         }
     }
     $self->logger->("Processing " . scalar(@files) . " files for texts\n");
-    $rs = $site->attachments->with_descriptions;
+    $rs = $site->attachments->public_only->with_descriptions;
   ATTACHMENT:
     while (my $attachment = $rs->next) {
         unless ($done{$attachment->id}) {
