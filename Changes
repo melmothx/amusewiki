@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.573 2023-05-29
+
+ - Implement attachment pruning
+ - i18n: cs (updated)
+ - minor corrections to AOI-PMH code
+
 2.572 2023-05-17
 
  - Another round of optimization for the OAI-PMH update run. It turned
