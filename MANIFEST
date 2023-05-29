@@ -1077,6 +1077,7 @@ root/src/admin/show_user_details.tt
 root/src/admin/show_users.tt
 root/src/attachments/edit.tt
 root/src/attachments/list.tt
+root/src/attachments/orphans.tt
 root/src/bookbuilder/fonts.tt
 root/src/bookbuilder/index.tt
 root/src/bookbuilder/schemas.tt
@@ -1749,6 +1750,7 @@ t/archive-cache.t
 t/archive.t
 t/atr-lexicon.json
 t/attachment-editing.t
+t/attachment-pruning.t
 t/authentication.t
 t/author-update.t
 t/auto-pubdate.t

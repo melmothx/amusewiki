@@ -230,6 +230,7 @@ use AmuseWikiFarm::Utils::Amuse qw/clean_username to_json
                                    from_json/;
 use Text::Amuse::Compile;
 use HTML::Entities qw/encode_entities/;
+use Path::Tiny ();
 
 has bookbuilder => (is => 'ro',
                     isa => 'Maybe[Object]',
@@ -546,17 +547,29 @@ sub dispatch_job_purge {
     die $text->title . " is not deleted!\n" unless $text->deleted;
     my $user = $data->{username};
     die "No user!" unless $user;
-    my $path = $text->f_full_path_name;
-    my $uri = $text->full_uri;
+    $self->purge_repo_file($text, "deleted by $user", $logger);
+    return '/console/unpublished';
+}
+
+sub purge_repo_file {
+    my ($self, $object, $message, $logger) = @_;
+    my $site = $self->site;
+    my $uri = $object->full_uri;
+
+    my $full_path = Path::Tiny::path($object->f_full_path_name)->realpath;
+    my $root_path = Path::Tiny::path($site->repo_root)->realpath;
+    die "$full_path is not inside $root_path" unless $root_path->subsumes($full_path);
+    my $path = $full_path->stringify;
+
     log_info { "Removing $path, purge job" };
-    $logger->("Purging " . $text->full_uri . "\n");
+    $logger->("Purging " . $object->full_uri . "\n");
     if (my $git = $site->git) {
         local $ENV{GIT_COMMITTER_NAME}  = $self->committer_name;
         local $ENV{GIT_COMMITTER_EMAIL} = $self->committer_mail;
         local $ENV{GIT_AUTHOR_NAME}  = $self->committer_name;
         local $ENV{GIT_AUTHOR_EMAIL} = $self->committer_mail;
         $git->rm($path);
-        $git->commit({ message => "$uri deleted by $user" });
+        $git->commit({ message => "$uri removed: $message" });
         # tested
         log_info { "Syncing the remote repository" };
         $site->sync_remote_repo;
@@ -564,10 +577,21 @@ sub dispatch_job_purge {
     else {
         unlink $path or die "Couldn't delete $path $!\n";
     }
-    $text->delete;
-    return '/console/unpublished';
+    $object->delete;
 }
 
+sub dispatch_job_prune_orphans {
+    my ($self, $logger) = @_;
+    my $site = $self->site;
+    my $files = $site->attachments->public_only->orphans->by_id([ map { $_ + 0 }
+                                                                  grep { $_ }
+                                                                  @{ $self->job_data->{prune} || [] }
+                                                                ]);
+    while (my $file = $files->next) {
+        $self->purge_repo_file($file, "orphan file", $logger);
+    }
+    return '/attachments/orphans';
+}
 
 sub dispatch_job_publish {
     my ($self, $logger) = @_;

@@ -17,6 +17,12 @@ Find an attachment by uri
 
 =cut
 
+sub by_id {
+    my ($self, $ids) = @_;
+    my $me = $self->current_source_alias;
+    $self->search({ "$me.id" => $ids });
+}
+
 sub by_uri {
     my ($self, $uri) = @_;
     return $self->single({ uri => $uri });
@@ -91,6 +97,17 @@ sub excluding_ids {
     my ($self, $ids) = @_;
     my $me = $self->current_source_alias;
     return $self->search({ "$me.id" => { -not_in => $ids } });
+}
+
+sub orphans {
+    my ($self) = @_;
+    my $me = $self->current_source_alias;
+    $self->search(undef,
+                  {
+                   join => 'title_attachments',
+                   distinct => 1, # generates group by
+                   having => \'COUNT(title_attachments.title_id) = 0'
+                  });
 }
 
 1;

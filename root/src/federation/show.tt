@@ -77,13 +77,13 @@
           <td>
             <a href="[% c.uri_for_action('federation/fetch', [ origin.mirror_origin_id ]) %]"
                class="btn btn-primary">
-              [% c.loc('Fetch') %]
+              [% loc('Fetch') %]
             </a>
           </td>
           <td>
             <a href="[% c.uri_for_action('federation/remove', [ origin.mirror_origin_id ]) %]"
                class="btn btn-primary">
-              [% c.loc('Remove') %]
+              [% loc('Remove') %]
             </a>
           </td>
         </tr>

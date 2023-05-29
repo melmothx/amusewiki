@@ -1,0 +1,61 @@
+[% # -*- mode:html -*- -%]
+[% INCLUDE 'include/breadcrumbs.tt' %]
+
+<div class="center">
+  <div class="page-header">
+    <h1>[% loc('Files not referenced by any text') %]</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="table-responsive">
+      <form action="[% c.uri_for_action('/attachments/prune') %]" method="POST">
+        <table class="table table-striped table-condensed table-bordered table-text-centered">
+          <thead>
+            <tr>
+              <th>
+                [% loc('Name') %]
+              </th>
+              <th>
+                [% loc('Thumbnail') %]
+              </th>
+              <th>
+                [% loc('Delete') %]
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            [% FOREACH att IN attachments_list %]
+              <tr>
+                <td>
+                  <a href="[% att.full_uri %]">
+                    [% att.name %]
+                  </a>
+                </td>
+                <td>
+                  <a href="[% att.full_uri | html %]">
+                    [% IF att.has_thumbnails %]
+                      <img class="img img-thumbnail attachment-with-thumb" src="[% att.thumb %]" alt="[% att.name %]" />
+                    [% ELSE %]
+                      <i title="[% att.name | html %]" class="fa fa-file-o fa-4x fa-border attachment-without-thumb"></i>
+                    [% END %]
+                  </a>
+                </td>
+                <td>
+                  <label>
+                    <i class="fa fa-trash fa-2x text-danger"></i><br>
+                    <input type="checkbox" name="prune" value="[% att.id %]" />
+                  </label>
+                </td>
+              </tr>
+            [% END %]
+          </tbody>
+        </table>
+        <div class="text-center">
+          <button class="btn btn-primary" type="submit" name="prune">[% loc('Delete selected attachments') %]</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

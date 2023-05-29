@@ -209,7 +209,7 @@ check_jobber($mech);
 
 {
     my ($log) = $git->log;
-    is $log->message, "$text deleted by root\n", "Deletion found in the git";
+    is $log->message, "$text removed: deleted by root\n", "Deletion found in the git";
     is $log->attr->{author}, $git_author, "author set correctly";
 }
 
