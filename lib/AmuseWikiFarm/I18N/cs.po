@@ -215,7 +215,7 @@ msgid "All sites"
 msgstr "Všechny stránky"
 
 msgid "All users"
-msgstr "Všichni uživatelé"
+msgstr "Uživatelstvo"
 
 msgid ""
 "Allow Unicode URIs for categories (author, topics). Recommended for non-"
@@ -228,7 +228,7 @@ msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
 "extensions"
 msgstr ""
-"Povol přihlášeným uživatelům nahrávat binární soubory: seznam "
+"Povol přihlášenému uživatelstvu nahrávat binární soubory: seznam "
 "souborovýchrozšíření oddělených mezerami"
 
 msgid ""
@@ -561,13 +561,13 @@ msgid "Create a new format"
 msgstr "Vytvoř nový formát"
 
 msgid "Create a new librarian"
-msgstr "Vytvoř nového knihovníka*ci"
+msgstr "Vytvoř nové knihovnictvo"
 
 msgid "Create a new special page"
 msgstr "Vytvoř novou zvláštní stránku"
 
 msgid "Create a new user"
-msgstr "Vytvoř nového uživatele"
+msgstr "Vytvoř nové uživatelstvo"
 
 msgid ""
 "Create a public repository on GitLab, GitHub or similar services (or on your "
@@ -684,7 +684,7 @@ msgstr ""
 "        přesně, co děláš"
 
 msgid "Disable /mirror/ URL for anonymous users"
-msgstr "Zakázat /mirror/ URL pro anonymní uživatele"
+msgstr "Zakázat /mirror/ URL pro anonymní uživatelstvo"
 
 msgid "Display the latest entries on special pages"
 msgstr "Zobrazovat pouze nejnovější záznamy na zvláštních stránkách"
@@ -763,7 +763,7 @@ msgstr "Upravuj tento text"
 
 #. (user.username)
 msgid "Edit user %1"
-msgstr "Upravuj uživatele %1"
+msgstr "Upravuj uživatelstvo %1"
 
 msgid "Editing"
 msgstr "Upravuji"
@@ -1145,7 +1145,7 @@ msgid "I am human"
 msgstr "Jsem člověk"
 
 msgid "I have a system user with SSH access"
-msgstr "Mám systémového uživatele s SSH přístupem"
+msgstr ""
 
 msgid "I want an imposed (ready to print) PDF"
 msgstr "Chci PDF s provedenou archovou montáží (připravené k tisku)"
@@ -1229,12 +1229,12 @@ msgid ""
 "revision page if there are no conflicts and automatically redirect to the "
 "published text once it is done."
 msgstr ""
-"Když je uživateli dovoleno publikovat, urychli proces tím, že se přeskočí "
+"Když je uživatelstvu dovoleno publikovat, urychli proces tím, že se přeskočí "
 "stránka revizí, pokud nejsou žádné konflikty a automaticky se přesměruje na "
 "publikovaný text, jakmile je to hotovo."
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
-msgstr "Když uživatel dodal e-mail, je uveden v kopii e-mailu"
+msgstr "Když uživatelstvo dodalo e-mail, je uveden v kopii e-mailu"
 
 msgid ""
 "If this line\n"
@@ -1330,7 +1330,7 @@ msgid ""
 "  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
 "  URI \"index\", a dash, and the locale code."
 msgstr ""
-"Pokud je vaše stránka vícejazyčná, můžeš vytvořit úvodní stránku\n"
+"Pokud je tvoje stránka vícejazyčná, můžeš vytvořit úvodní stránku\n"
 "  pro daný jazyk tím, že vytvoříš, např. \"/special/index-it\", tj.,\n"
 "  URI \"index\", a pomlčka a kód locale."
 
@@ -1363,7 +1363,8 @@ msgstr "V obou případech dostaneš obrácené odsazení."
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
-msgstr ""
+msgstr "V textu se číslo ve hranatých závorkách interpretuje jako"
+"odkaz na poznámku pod čarou, pokud taková poznámka existuje."
 
 #. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
@@ -1371,7 +1372,9 @@ msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
 "  add %1 to the network libraries."
-msgstr ""
+msgstr "V tomto příkladu používáme FBreader, ale procedure je\n"
+"  v podstatě stejná pro všechny aplikace. Vše, co musíš udělat, je\n"
+"  přidat %1 do síťových knihoven."
 
 msgid "Inline elements"
 msgstr "Prvky v řádku"
@@ -1614,7 +1617,7 @@ msgid "Main text"
 msgstr "Hlavní text"
 
 msgid "Maintainer's FAQ"
-msgstr "FAQ pro udržovatele"
+msgstr "FAQ pro knihovnictvo"
 
 msgid "Make a link clickable"
 msgstr "Udělej odkaz klikatelný"
@@ -1829,7 +1832,7 @@ msgid "Older texts"
 msgstr "Starší texty"
 
 msgid "On text creation, enforce user to choose the URI"
-msgstr "Při vytvoření textu vynutit uživateli výběr URI"
+msgstr "Při vytvoření textu vynutit uživatelstvu výběr URI"
 
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
@@ -1985,7 +1988,7 @@ msgid "Place the notes on the back of the first page, impressum-style"
 msgstr "Vložit poznámky na zadní část první strany, jako impresum"
 
 msgid "Plain PDF"
-msgstr "Prázdná PDF"
+msgstr "Jednoduchá PDF"
 
 msgid ""
 "Please check your inbox, we tried to deliver a mail to the address you "
@@ -2019,7 +2022,7 @@ msgid "Please describe shortly what you did"
 msgstr "Prosím krátce popiš změny"
 
 msgid "Please do not use a valuable password."
-msgstr "Prosím nepoužívej hodnotné heslo."
+msgstr "Prosím nepoužívej heslo, které používáte na jiné stránce."
 
 msgid ""
 "Please do not use higher levels (part or chapter) for short articles with "
@@ -2030,7 +2033,7 @@ msgstr ""
 
 #. (amw_group_name)
 msgid "Please ensure that your system user is member of the \"%1\" group"
-msgstr "Prosím ujisti se, že tvůj systémový uživatel je člen skupiny \"%1\""
+msgstr ""
 
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
@@ -2054,7 +2057,7 @@ msgid ""
 "              is."
 msgstr ""
 "Prosím měj na paměti, že filtry jsou specifické pro jazyk\n"
-"              a mohohou nebo nemusí být dostupné pro jazyk textu.\n"
+"              a mohou nebo nemusí být dostupné pro jazyk textu.\n"
 "              Pokud nejsou dostupné, prostě text ponechají nezměněný."
 
 msgid ""
@@ -2091,7 +2094,7 @@ msgid ""
 "  supported."
 msgstr ""
 "Vezmi na vědomí: bez předpony, protokolu, nebo hostname, se\n"
-"  zorazí jen holý název stránky jak je ukázáno výše. Externí\n"
+"  zobrazí jen holý název stránky jak je ukázáno výše. Externí\n"
 "  přesměrování není podporováno."
 
 msgid "Please prove you are a human"
@@ -2272,8 +2275,8 @@ msgstr ""
 "              Tato možnost může být destruktivní, prosím používej\n"
 "              opatrně a zkontroluj si výsledek. V případě, že se setkáš\n"
 "              s problémy, prosím ulož výsledek a nahlaš chyby ve zprávě.\n"
-"              Tato procedure je se snaží být bezpečná a bude ignorovat\n"
-"              změnu, pokud poznámky pod čarou chybí, nebo pokud jich je "
+"              Tato procedure se snaží být bezpečná a bude ignorovat\n"
+"              změnu, pokud poznámky pod čarou chybí, nebo pokud jich je"
 "příliš mnoho."
 
 msgid "Reason"
@@ -2364,7 +2367,7 @@ msgstr "Resetuj heslo"
 
 #. (username)
 msgid "Reset password for user %1"
-msgstr "Resetuj heslo pro uživatele %1"
+msgstr "Resetuj heslo pro uživatelstvo %1"
 
 msgid "Reset to site defaults"
 msgstr "Resetuj na výchozí nastavení stránky"
@@ -2382,10 +2385,10 @@ msgid "Results per page:"
 msgstr "Výsledky na stránku:"
 
 msgid "Retrieved on DATE from URL"
-msgstr "Získáno v DATU z URL"
+msgstr "Získáno DATUM z URL"
 
 msgid "Retrieved on March 8, 2012 from"
-msgstr "Získáno 8. března, 2012 od"
+msgstr "Získáno 8. března, 2012 z"
 
 msgid "Revision"
 msgstr "Revize"
@@ -2583,7 +2586,7 @@ msgid "Site slogan"
 msgstr "Slogan stránky"
 
 msgid "Site users"
-msgstr "Uživatelé stránky"
+msgstr "Uživatelstvo stránky"
 
 msgid "Sites"
 msgstr "Stránky"
@@ -2691,7 +2694,7 @@ msgstr ""
 "  přesměrování, a bude zde uvedeno"
 
 msgid "Such an user already exists!"
-msgstr "Takový uživatel již existuje!"
+msgstr "Takové uživatelstvo již existuje!"
 
 msgid "Such username already exists"
 msgstr "Takové uživatelské jméno již existuje"
@@ -2745,7 +2748,7 @@ msgid "Text body only (no title, no final pages)"
 msgstr "Pouze tělo textu (bez názvu, žádné konečné stránky)"
 
 msgid "Text formatted with markup"
-msgstr "Text formátovaný s označením"
+msgstr "Text formátovaný markupem od Amuse Wiki"
 
 msgid "Text height"
 msgstr "Výška textu"
@@ -2929,7 +2932,7 @@ msgid ""
 "and you may want to check it out."
 msgstr ""
 "Tento mail byl odeslán, aby tě upozornil na nový text ve výrobě,\n"
-"i když jeho nahrávání ještě není dokončeno a uživatel stále potřebuje\n"
+"i když jeho nahrávání ještě není dokončeno a uživatelstvo stále potřebuje\n"
 "dokončit nahrávání. Další mail bude brzy následovat.\n"
 "Pokud se to nestane, znamená to, že proces nahrávání byl opuštěn\n"
 "a možná budeš chtít to obhlédnout."
@@ -2987,7 +2990,7 @@ msgid "This text will be deferred to %1"
 msgstr "Tento text bude odložen na %1"
 
 msgid "This user cannot be removed"
-msgstr "Tento uživatel nemůže být odstraněn"
+msgstr "Tento účet nemůže být odstraněn"
 
 msgid "Thumbnail"
 msgstr "Miniatura"
@@ -3193,7 +3196,7 @@ msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
 msgstr "Použít LuaLaTeX místo XeLaTeXu (pomalejší)"
 
 msgid "Use SSL for authenticated users"
-msgstr "Použít SSL pro autentikované uživatele"
+msgstr "Použít SSL pro autentifikované uživatelstvo"
 
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr ""
@@ -3230,19 +3233,19 @@ msgstr ""
 
 #. ($user->username)
 msgid "User %1 created!"
-msgstr "Uživatel %1 vytvořen!"
+msgstr "Uživatelstvo %1 vytvořeno!"
 
 #. ($user->username)
 #. ($c->stash->{user}->username)
 msgid "User %1 deleted"
-msgstr "Uživatel %1 odstraněn"
+msgstr "Uživatelstvo %1 odstraněno"
 
 #. ($user->username)
 msgid "User %1 updated"
-msgstr "Uživatel %1 aktualizován"
+msgstr "Uživatelstvo %1 aktualizováno"
 
 msgid "User created"
-msgstr "Uživatel vytvořen"
+msgstr "Uživatelstvo vytvořeno"
 
 msgid "Username"
 msgstr "Uživatelské jméno"
@@ -3253,7 +3256,7 @@ msgstr ""
 "písmen"
 
 msgid "Users"
-msgstr "Uživatelé"
+msgstr "Uživatelstvo"
 
 msgid ""
 "Using this token, you can load the bookbuilder settings\n"
@@ -3292,7 +3295,7 @@ msgid ""
 "When creating a new text, do not populate the publication date if not "
 "provided by the user."
 msgstr ""
-"Když vytváříš nový text, nevyplňuj publikační datum, pokud jej uživatel "
+"Když vytváříš nový text, nevyplňuj publikační datum, pokud jej uživatelstvo "
 "nedodá."
 
 msgid ""
@@ -3512,7 +3515,7 @@ msgstr "Tvoje podsekce zde..."
 
 #. (home)
 msgid "Your user at %1 has been created."
-msgstr "Tvůj uživatel v %1 byl vytvořen."
+msgstr "Tvoje uživatelstvo v %1 bylo vytvořeno."
 
 #. (username)
 msgid "Your username is %1."
@@ -3540,7 +3543,7 @@ msgid "any"
 msgstr "jakékoliv"
 
 msgid "automatically generated if not present, using author and title"
-msgstr "automaticky generované, pokud nepřítomné, za použití autora a názvu"
+msgstr "automaticky generované, pokud chybí, za použití autora a názvu"
 
 msgid "code and monospace"
 msgstr "kód a neproporcionální (monospace)"
