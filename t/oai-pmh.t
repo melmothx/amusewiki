@@ -11,7 +11,7 @@ BEGIN {
 
 
 use Data::Dumper;
-use Test::More tests => 163;
+use Test::More tests => 164;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::OAI::PMH;
 use File::Spec::Functions qw/catfile catdir/;
@@ -76,6 +76,7 @@ diag $oai_pmh->process_request({
 #attach shot.pdf
 #publisher <testing> publisher
 #date 1923 and something else
+#subtitle This is a subtitle
 
 > Tirsi morir volea,
 > Gl'occhi mirando di colei ch'adora;
@@ -265,6 +266,7 @@ foreach my $test ({
                            },
                    expect => [
                               '<dc:title>Test me</dc:title>',
+                              '<dc:title>This is a subtitle</dc:title>',
                               '<dc:creator>One &lt;author&gt;</dc:creator>',
                               '<dc:creator>and &amp; anotherrxx</dc:creator>',
                               '<dc:subject>One topic</dc:subject>',
