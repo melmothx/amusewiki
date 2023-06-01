@@ -287,10 +287,14 @@ sub _list_records {
                 error_message => "Required argument: metadataPrefix",
                };
     }
-    if ($prefix ne 'oai_dc') {
+    my %prefixes = (
+                    oai_dc => 1,
+                    marc21 => 1,
+                   );
+    unless ($prefixes{$prefix}) {
         return {
                 error_code => 'cannotDisseminateFormat',
-                error_message => "Only oai_dc is supported at the moment",
+                error_message => "Supported formats: " . join(', ', keys %prefixes),,
                };
     }
     my %search = (set => '');
@@ -519,8 +523,14 @@ sub list_metadata_formats {
                                                                    [ schema => 'http://www.openarchives.org/OAI/2.0/oai_dc.xsd' ],
                                                                    [ metadataNamespace => 'http://www.openarchives.org/OAI/2.0/oai_dc/' ],
                                                                   ]
-                                              ]
-                                             ]
+                                              ],
+                                              [ metadataFormat => [
+                                                                   [ metadataPrefix => 'marc21' ],
+                                                                   [ schema => 'http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd' ],
+                                                                   [ metadataNamespace => 'http://www.loc.gov/MARC21/slim' ],
+                                                                  ],
+                                              ],
+                                             ],
                     ]],
             };
 }

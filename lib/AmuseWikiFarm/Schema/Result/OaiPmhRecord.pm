@@ -269,6 +269,7 @@ __PACKAGE__->many_to_many("oai_pmh_sets", "oai_pmh_record_sets", "oai_pmh_set");
 __PACKAGE__->add_columns('+datestamp' => { timezone => 'UTC' });
 
 use AmuseWikiFarm::Utils::Amuse;
+use AmuseWikiFarm::Log::Contextual;
 
 sub zulu_datestamp {
     shift->datestamp->iso8601 . 'Z'
@@ -307,23 +308,115 @@ sub as_xml_structure {
                                                  "http://www.openarchives.org/OAI/2.0/oai_dc.xsd"
                                                 ),
                    ],
-                   $self->dublin_core_record,
+                   $self->dublin_core_record({ prefix => 'dc:' }),
                  ];
         push @out, [ metadata => [ $dc ] ];
+    }
+    elsif ($prefix eq 'marc21') {
+        my $schema_location = join(' ',
+                                   "http://www.loc.gov/MARC21/slim",
+                                   "http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd"
+                                  );
+        my $marc21 = [
+                      record => [
+                                 'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
+                                 'xmlns' => "http://www.loc.gov/MARC21/slim",
+                                 'xsi:schemaLocation' => $schema_location,
+                                ],
+                      $self->marc21_record,
+                     ];
+        push @out, [ metadata => [ $marc21 ] ];
+    }
+    return \@out;
+}
+
+sub marc21_record {
+    my $self = shift;
+    my $dcs = $self->dublin_core_record({ prefix => '' });
+    my %rec;
+    foreach my $i (@$dcs) {
+        my $dc_field = $i->[0];
+        my $dc_value = $i->[1];
+        $rec{$dc_field} ||= [];
+        push @{$rec{$dc_field}}, $dc_value;
+    }
+    # Dlog_debug { "marc21 is $_" } \%rec;
+    my @out;
+    my $type = $rec{type}[0] || '';
+    my %leaders = (
+                   collection =>  'p',
+                   dataset => 'm',
+                   event  => 'r',
+                   image  => 'k',
+                   'interactive resource' =>  'm',
+                   service  => 'm',
+                   software  => 'm',
+                   sound  => 'i',
+                   text  => 'a',
+                  );
+    my $leader06 = $leaders{$type} || 'a';
+    my $leader07 = $type eq 'collection' ? 'c' : 'm';
+    push @out,
+      # taken from https://www.loc.gov/standards/marcxml/xslt/DC2MARC21slim.xsl
+      [ leader => '      ' . $leader06 . $leader07 . '         3u     '],
+      [ datafield => [ tag => '042', ind1 => ' ', ind2 => ' ' ],
+        [
+         [ subfield => [ code => 'a' ], 'dc' ]
+        ]
+      ];
+
+    my @datafields = (
+                      [ contributor => '720', '0', '0', 'a', e => 'collaborator' ],
+                      [ coverage    => '500', ' ', ' ', 'a' ],
+                      [ creator     => '720', ' ', ' ', 'a', e => 'author' ],
+                      [ date        => '260', ' ', ' ', 'c' ],
+                      [ description => '520', ' ', ' ', 'a' ],
+                      [ format      => '856', ' ', ' ', 'q' ],
+                      [ identifier  => '024', '8', ' ', 'a' ],
+                      [ language    => '546', ' ', ' ', 'a' ],
+                      [ publisher   => '260', ' ', ' ', 'b' ],
+                      [ relation    => '787', '0', ' ', 'n' ],
+                      [ rights      => '540', ' ', ' ', 'a' ],
+                      [ source      => '786', '0', ' ', 'n' ],
+                      [ subject     => '653', ' ', ' ', 'a' ],
+                      [ 'title[0]'  => '245', '0', '0', 'a' ],
+                      [ 'title[1]'  => '246', '3', '3', 'a' ],
+                      [ type        => '655', '7', ' ', 'a', '2', 'local' ],
+                     );
+    foreach my $df (@datafields) {
+        my ($name, $tag, $ind1, $ind2, $code, @rest) = @$df;
+        my $limit;
+        if ($name =~ m/(\w+)\[(\d+)\]/) {
+            ($name, $limit) = ($1, $2);
+        }
+        if (my $all = $rec{$name}) {
+            my @list = defined $limit ? ($all->[$limit]) : (@$all);
+            foreach my $i (grep { length $_ } @list) {
+                push @out, [ datafield => [ tag => $tag, ind1 => $ind1, ind2 => $ind2 ],
+                             [
+                              [ subfield => [ code => $code ], $i ],
+                              (@rest ? [ subfield => [ code => $rest[0] ], $rest[1] ] : ())
+                             ]
+                           ];
+            }
+        }
     }
     return \@out;
 }
 
 sub dublin_core_record {
-    my ($self) = @_;
+    my ($self, $opts) = @_;
+    my $prefix = "dc:";
+    if ($opts and exists $opts->{prefix}) {
+        $prefix = $opts->{prefix};
+    }
     my $obj = $self->title || $self->attachment;
     unless ($obj) {
         return [
-                [ 'dc:title' => 'Removed entry' ],
-                [ 'dc:description' => 'This entry was deleted' ],
+                [ $prefix . 'title' => 'Removed entry' ],
+                [ $prefix . 'description' => 'This entry was deleted' ],
                ];
     }
-    die "Nor a title nor an attachment?" unless $obj;
     my $data = $obj->dublin_core_entry;
     $data->{identifier} = $self->site->canonical_url . $self->identifier;
     $data->{format} = $self->metadata_format;
@@ -351,14 +444,14 @@ sub dublin_core_record {
                 $cleaned =~ s/\A\s+//;
                 $cleaned =~ s/\s+\z//;
                 if ($cleaned) {
-                    push @out, [ 'dc:' . $k => $cleaned ];
+                    push @out, [ $prefix . $k => $cleaned ];
                 }
             }
         }
         if ($k eq 'description') {
             if (my $cf = $self->custom_format) {
                 if (my $cf_name = $cf->format_name) {
-                    push @out, [ 'dc:' . $k, $cf_name ]
+                    push @out, [ $prefix . $k =>  $cf_name ]
                 }
             }
         }

@@ -11,7 +11,7 @@ BEGIN {
 
 
 use Data::Dumper;
-use Test::More tests => 164;
+use Test::More tests => 172;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::OAI::PMH;
 use File::Spec::Functions qw/catfile catdir/;
@@ -77,6 +77,7 @@ diag $oai_pmh->process_request({
 #publisher <testing> publisher
 #date 1923 and something else
 #subtitle This is a subtitle
+#teaser This is the teaser
 
 > Tirsi morir volea,
 > Gl'occhi mirando di colei ch'adora;
@@ -142,6 +143,8 @@ for (1..2) {
     ok !$site->oai_pmh_records->search({ deleted => 1 })->count, "No deleted records";
     sleep 2;
 }
+
+
 
 foreach my $rec ($site->oai_pmh_records) {
     is $rec->datestamp->time_zone->name, 'UTC';
@@ -485,6 +488,26 @@ foreach my $test ({
                              '<error code="noRecordsMatch">',
                              ],
                   },
+                  {
+                   args => {
+                            verb => 'ListRecords',
+                            metadataPrefix => 'marc21',
+                            from => DateTime->today->ymd,
+                            until => DateTime->today->ymd,
+                           },
+                   expect => [
+                              'to-test.pdf</identifier>',
+                              '<resumptionToken completeListSize="10" cursor="0">',
+                              '<leader>      am         3u     </leader>',
+                              '<datafield tag="246" ind1="3" ind2="3">',
+                              '<subfield code="a">This is a subtitle</subfield>',
+                             ],
+                   lacks => [
+                             '<error code="noRecordsMatch">',
+                             '<subfield code="a" />',
+                            ],
+                  },
+
                  ) {
     my $uri = URI->new($site->canonical_url);
     $uri->path('/oai-pmh');
@@ -524,3 +547,4 @@ path($site->repo_root, qw/t tt to-test.a4.pdf/)->spew_raw("test");
 $oai_pmh->update_site_records;
 is $site->oai_pmh_records->find({ identifier => 'testxx' })->deleted, 1;
 is $site->oai_pmh_records->find({ identifier => '/library/to-test.a4.pdf' })->deleted, 0;
+
