@@ -294,7 +294,7 @@ sub _list_records {
     unless ($prefixes{$prefix}) {
         return {
                 error_code => 'cannotDisseminateFormat',
-                error_message => "Supported formats: " . join(', ', keys %prefixes),,
+                error_message => "Supported formats: " . join(', ', keys %prefixes),
                };
     }
     my %search = (set => '');
