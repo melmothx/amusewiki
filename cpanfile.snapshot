@@ -15,138 +15,6 @@ DISTRIBUTIONS
       Algorithm::Diff::_impl 1.201
     requirements:
       ExtUtils::MakeMaker 0
-  Alien-Build-2.80
-    pathname: P/PL/PLICEASE/Alien-Build-2.80.tar.gz
-    provides:
-      Alien::Base 2.80
-      Alien::Base::PkgConfig 2.80
-      Alien::Base::Wrapper 2.80
-      Alien::Build 2.80
-      Alien::Build::CommandSequence 2.80
-      Alien::Build::Helper 2.80
-      Alien::Build::Interpolate 2.80
-      Alien::Build::Interpolate::Default 2.80
-      Alien::Build::Interpolate::Helper 2.80
-      Alien::Build::Log 2.80
-      Alien::Build::Log::Abbreviate 2.80
-      Alien::Build::Log::Default 2.80
-      Alien::Build::MM 2.80
-      Alien::Build::Meta 2.80
-      Alien::Build::Plugin 2.80
-      Alien::Build::Plugin::Build::Autoconf 2.80
-      Alien::Build::Plugin::Build::CMake 2.80
-      Alien::Build::Plugin::Build::Copy 2.80
-      Alien::Build::Plugin::Build::MSYS 2.80
-      Alien::Build::Plugin::Build::Make 2.80
-      Alien::Build::Plugin::Build::SearchDep 2.80
-      Alien::Build::Plugin::Core::CleanInstall 2.80
-      Alien::Build::Plugin::Core::Download 2.80
-      Alien::Build::Plugin::Core::FFI 2.80
-      Alien::Build::Plugin::Core::Gather 2.80
-      Alien::Build::Plugin::Core::Legacy 2.80
-      Alien::Build::Plugin::Core::Override 2.80
-      Alien::Build::Plugin::Core::Setup 2.80
-      Alien::Build::Plugin::Core::Tail 2.80
-      Alien::Build::Plugin::Decode::DirListing 2.80
-      Alien::Build::Plugin::Decode::DirListingFtpcopy 2.80
-      Alien::Build::Plugin::Decode::HTML 2.80
-      Alien::Build::Plugin::Decode::Mojo 2.80
-      Alien::Build::Plugin::Digest::Negotiate 2.80
-      Alien::Build::Plugin::Digest::SHA 2.80
-      Alien::Build::Plugin::Digest::SHAPP 2.80
-      Alien::Build::Plugin::Download::Negotiate 2.80
-      Alien::Build::Plugin::Extract::ArchiveTar 2.80
-      Alien::Build::Plugin::Extract::ArchiveZip 2.80
-      Alien::Build::Plugin::Extract::CommandLine 2.80
-      Alien::Build::Plugin::Extract::Directory 2.80
-      Alien::Build::Plugin::Extract::File 2.80
-      Alien::Build::Plugin::Extract::Negotiate 2.80
-      Alien::Build::Plugin::Fetch::CurlCommand 2.80
-      Alien::Build::Plugin::Fetch::HTTPTiny 2.80
-      Alien::Build::Plugin::Fetch::LWP 2.80
-      Alien::Build::Plugin::Fetch::Local 2.80
-      Alien::Build::Plugin::Fetch::LocalDir 2.80
-      Alien::Build::Plugin::Fetch::NetFTP 2.80
-      Alien::Build::Plugin::Fetch::Wget 2.80
-      Alien::Build::Plugin::Gather::IsolateDynamic 2.80
-      Alien::Build::Plugin::PkgConfig::CommandLine 2.80
-      Alien::Build::Plugin::PkgConfig::LibPkgConf 2.80
-      Alien::Build::Plugin::PkgConfig::MakeStatic 2.80
-      Alien::Build::Plugin::PkgConfig::Negotiate 2.80
-      Alien::Build::Plugin::PkgConfig::PP 2.80
-      Alien::Build::Plugin::Prefer::BadVersion 2.80
-      Alien::Build::Plugin::Prefer::GoodVersion 2.80
-      Alien::Build::Plugin::Prefer::SortVersions 2.80
-      Alien::Build::Plugin::Probe::CBuilder 2.80
-      Alien::Build::Plugin::Probe::CommandLine 2.80
-      Alien::Build::Plugin::Probe::Vcpkg 2.80
-      Alien::Build::Plugin::Test::Mock 2.80
-      Alien::Build::PluginMeta 2.80
-      Alien::Build::Temp 2.80
-      Alien::Build::TempDir 2.80
-      Alien::Build::Util 2.80
-      Alien::Build::Version::Basic 2.80
-      Alien::Build::rc 2.80
-      Alien::Role 2.80
-      Alien::Util 2.80
-      Test::Alien 2.80
-      Test::Alien::Build 2.80
-      Test::Alien::CanCompile 2.80
-      Test::Alien::CanPlatypus 2.80
-      Test::Alien::Diag 2.80
-      Test::Alien::Run 2.80
-      Test::Alien::Synthetic 2.80
-      alienfile 2.80
-    requirements:
-      Capture::Tiny 0.17
-      Digest::SHA 0
-      ExtUtils::CBuilder 0
-      ExtUtils::MakeMaker 6.64
-      ExtUtils::ParseXS 3.30
-      FFI::CheckLib 0.11
-      File::Which 1.10
-      File::chdir 0
-      JSON::PP 0
-      List::Util 1.33
-      Path::Tiny 0.077
-      PkgConfig 0.14026
-      Test2::API 1.302096
-      Text::ParseWords 3.26
-      parent 0
-      perl 5.008004
-  Alien-Build-Plugin-Download-GitLab-0.01
-    pathname: P/PL/PLICEASE/Alien-Build-Plugin-Download-GitLab-0.01.tar.gz
-    provides:
-      Alien::Build::Plugin::Download::GitLab 0.01
-    requirements:
-      Alien::Build::Plugin 0
-      ExtUtils::MakeMaker 0
-      JSON::PP 0
-      Path::Tiny 0
-      URI 0
-      URI::Escape 0
-      perl 5.008004
-  Alien-Libxml2-0.19
-    pathname: P/PL/PLICEASE/Alien-Libxml2-0.19.tar.gz
-    provides:
-      Alien::Libxml2 0.19
-    requirements:
-      Alien::Base 2.37
-      Alien::Build 2.37
-      Alien::Build::MM 2.37
-      Alien::Build::Plugin::Build::SearchDep 0.35
-      Alien::Build::Plugin::Download::GitLab 0
-      Alien::Build::Plugin::Prefer::BadVersion 1.05
-      Alien::Build::Plugin::Probe::Vcpkg 0
-      Config 0
-      ExtUtils::CBuilder 0
-      ExtUtils::MakeMaker 6.52
-      HTTP::Tiny 0.044
-      IO::Socket::SSL 1.56
-      Mozilla::CA 0
-      Net::SSLeay 1.49
-      URI 0
-      perl 5.006
   Apache-LogFormat-Compiler-0.36
     pathname: K/KA/KAZEBURO/Apache-LogFormat-Compiler-0.36.tar.gz
     provides:
@@ -283,13 +151,6 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.42
       Test::More 0
       perl 5.005
-  B-COW-0.007
-    pathname: A/AT/ATOOMIC/B-COW-0.007.tar.gz
-    provides:
-      B::COW 0.007
-    requirements:
-      ExtUtils::MakeMaker 0
-      perl 5.008
   B-Hooks-EndOfScope-0.26
     pathname: E/ET/ETHER/B-Hooks-EndOfScope-0.26.tar.gz
     provides:
@@ -365,35 +226,6 @@ DISTRIBUTIONS
       Test::More 0
       Text::PDF 0.29
       perl v5.6.0
-  CGI-4.57
-    pathname: L/LE/LEEJO/CGI-4.57.tar.gz
-    provides:
-      CGI 4.57
-      CGI::Carp 4.57
-      CGI::Cookie 4.56
-      CGI::File::Temp 4.57
-      CGI::HTML::Functions undef
-      CGI::MultipartBuffer 4.57
-      CGI::Pretty 4.57
-      CGI::Push 4.57
-      CGI::Util 4.56
-      Fh 4.57
-    requirements:
-      Carp 0
-      Config 0
-      Encode 0
-      Exporter 0
-      ExtUtils::MakeMaker 0
-      File::Spec 0.82
-      File::Temp 0.17
-      HTML::Entities 3.69
-      if 0
-      overload 0
-      parent 0.225
-      perl 5.008001
-      strict 0
-      utf8 0
-      warnings 0
   CGI-Simple-1.280
     pathname: M/MA/MANWAR/CGI-Simple-1.280.tar.gz
     provides:
@@ -412,20 +244,6 @@ DISTRIBUTIONS
       Storable 0
       Test::Deep 0
       Test::More 0
-  CPAN-Meta-Check-0.017
-    pathname: L/LE/LEONT/CPAN-Meta-Check-0.017.tar.gz
-    provides:
-      CPAN::Meta::Check 0.017
-    requirements:
-      CPAN::Meta::Prereqs 2.132830
-      CPAN::Meta::Requirements 2.121
-      Exporter 0
-      ExtUtils::MakeMaker 0
-      Module::Metadata 1.000023
-      base 0
-      perl 5.006
-      strict 0
-      warnings 0
   CSS-Packer-2.08
     pathname: L/LE/LEEJO/CSS-Packer-2.08.tar.gz
     provides:
@@ -563,7 +381,6 @@ DISTRIBUTIONS
       Module::Runtime 0.012
       Moose 1.12
       MooseX::MarkAsMethods 0.13
-      MooseX::NonMoose 0.16
       MooseX::Types 0
       MooseX::Types::LoadableClass 0.009
       Storable 0
@@ -3335,14 +3152,6 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.64
       parent 0
       perl 5.008001
-  Devel-Cycle-1.12
-    pathname: L/LD/LDS/Devel-Cycle-1.12.tar.gz
-    provides:
-      Devel::Cycle 1.12
-    requirements:
-      ExtUtils::MakeMaker 0
-      Scalar::Util 0
-      Test::More 0
   Devel-GlobalDestruction-0.14
     pathname: H/HA/HAARG/Devel-GlobalDestruction-0.14.tar.gz
     provides:
@@ -3850,22 +3659,6 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       XSLoader 0
       perl 5.006
-  FCGI-Client-0.09
-    pathname: T/TO/TOKUHIROM/FCGI-Client-0.09.tar.gz
-    provides:
-      FCGI::Client 0.09
-      FCGI::Client::Connection undef
-      FCGI::Client::Constant undef
-      FCGI::Client::Record undef
-      FCGI::Client::RecordFactory undef
-      FCGI::Client::RecordHeader undef
-    requirements:
-      IO::Socket::UNIX 0
-      Module::Build::Tiny 0.035
-      Moo 2
-      Test::More 0
-      Type::Tiny 0
-      perl 5.008001
   FCGI-ProcManager-0.28
     pathname: A/AR/ARODLAND/FCGI-ProcManager-0.28.tar.gz
     provides:
@@ -3873,15 +3666,6 @@ DISTRIBUTIONS
       FCGI::ProcManager::Constrained undef
     requirements:
       ExtUtils::MakeMaker 0
-  FFI-CheckLib-0.31
-    pathname: P/PL/PLICEASE/FFI-CheckLib-0.31.tar.gz
-    provides:
-      FFI::CheckLib 0.31
-    requirements:
-      ExtUtils::MakeMaker 0
-      File::Which 0
-      List::Util 1.33
-      perl 5.006
   Fennec-Lite-0.004
     pathname: E/EX/EXODIST/Fennec-Lite-0.004.tar.gz
     provides:
@@ -3997,7 +3781,14 @@ DISTRIBUTIONS
     provides:
       File::ShareDir::Install 0.14
     requirements:
+      Carp 0
+      Exporter 0
       ExtUtils::MakeMaker 0
+      File::Spec 0
+      IO::Dir 0
+      perl 5.006
+      strict 0
+      warnings 0
   File-Slurp-9999.32
     pathname: C/CA/CAPOEIRAB/File-Slurp-9999.32.tar.gz
     provides:
@@ -4039,22 +3830,6 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       vars 0
-  File-pushd-1.016
-    pathname: D/DA/DAGOLDEN/File-pushd-1.016.tar.gz
-    provides:
-      File::pushd 1.016
-    requirements:
-      Carp 0
-      Cwd 0
-      Exporter 0
-      ExtUtils::MakeMaker 6.17
-      File::Path 0
-      File::Spec 0
-      File::Temp 0
-      overload 0
-      perl 5.006
-      strict 0
-      warnings 0
   Filesys-Notify-Simple-0.14
     pathname: M/MI/MIYAGAWA/Filesys-Notify-Simple-0.14.tar.gz
     provides:
@@ -4324,24 +4099,6 @@ DISTRIBUTIONS
       locale 0
       perl 5.008001
       strict 0
-  HTTP-Daemon-6.16
-    pathname: O/OA/OALDERS/HTTP-Daemon-6.16.tar.gz
-    provides:
-      HTTP::Daemon 6.16
-    requirements:
-      Carp 0
-      ExtUtils::MakeMaker 0
-      HTTP::Date 6
-      HTTP::Request 6
-      HTTP::Response 6
-      HTTP::Status 6
-      IO::Socket::IP 0.32
-      LWP::MediaTypes 6
-      Module::Build::Tiny 0.034
-      Socket 0
-      perl 5.006
-      strict 0
-      warnings 0
   HTTP-Date-6.05
     pathname: O/OA/OALDERS/HTTP-Date-6.05.tar.gz
     provides:
@@ -4461,17 +4218,6 @@ DISTRIBUTIONS
       IO::File 0
       Test::More 0
       URI::Escape 0
-  HTTP-Server-Simple-0.52
-    pathname: B/BP/BPS/HTTP-Server-Simple-0.52.tar.gz
-    provides:
-      HTTP::Server::Simple 0.52
-      HTTP::Server::Simple::CGI undef
-      HTTP::Server::Simple::CGI::Environment undef
-    requirements:
-      CGI 0
-      ExtUtils::MakeMaker 6.36
-      Socket 1.94
-      Test::More 0
   HTTP-Tiny-UA-0.006
     pathname: D/DA/DAGOLDEN/HTTP-Tiny-UA-0.006.tar.gz
     provides:
@@ -4550,14 +4296,6 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       Test::More 0.47
-  IPC-Run3-0.048
-    pathname: R/RJ/RJBS/IPC-Run3-0.048.tar.gz
-    provides:
-      IPC::Run3 0.048
-    requirements:
-      ExtUtils::MakeMaker 0
-      Test::More 0.31
-      Time::HiRes 0
   IPC-System-Simple-1.30
     pathname: J/JK/JKEENAN/IPC-System-Simple-1.30.tar.gz
     provides:
@@ -4629,13 +4367,6 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Importer-0.026
-    pathname: E/EX/EXODIST/Importer-0.026.tar.gz
-    provides:
-      Importer 0.026
-    requirements:
-      ExtUtils::MakeMaker 0
-      perl 5.008001
   JSON-4.10
     pathname: I/IS/ISHIGAKI/JSON-4.10.tar.gz
     provides:
@@ -6039,6 +5770,19 @@ DISTRIBUTIONS
       perl 5.006002
       strict 0
       warnings 0
+  Net-SSLeay-1.92
+    pathname: C/CH/CHRISN/Net-SSLeay-1.92.tar.gz
+    provides:
+      Net::SSLeay 1.92
+      Net::SSLeay::Handle 1.92
+    requirements:
+      English 0
+      ExtUtils::MakeMaker 0
+      File::Spec::Functions 0
+      MIME::Base64 0
+      Text::Wrap 0
+      constant 0
+      perl 5.008001
   Object-Signature-1.08
     pathname: E/ET/ETHER/Object-Signature-1.08.tar.gz
     provides:
@@ -6275,13 +6019,6 @@ DISTRIBUTIONS
       Module::Runtime 0.013
       perl 5.006
       strictures 2.000000
-  PadWalker-2.5
-    pathname: R/RO/ROBIN/PadWalker-2.5.tar.gz
-    provides:
-      PadWalker 2.5
-    requirements:
-      ExtUtils::MakeMaker 0
-      perl 5.008001
   Params-Classify-0.015
     pathname: Z/ZE/ZEFRAM/Params-Classify-0.015.tar.gz
     provides:
@@ -6434,14 +6171,6 @@ DISTRIBUTIONS
       perl 5.008
       strict 0
       warnings 0
-  PkgConfig-0.25026
-    pathname: P/PL/PLICEASE/PkgConfig-0.25026.tar.gz
-    provides:
-      PkgConfig 0.25026
-    requirements:
-      ExtUtils::MakeMaker 6.56
-      Test::More 0.94
-      perl 5.006000
   Plack-1.0050
     pathname: M/MI/MIYAGAWA/Plack-1.0050.tar.gz
     provides:
@@ -7050,13 +6779,6 @@ DISTRIBUTIONS
       strict 0
       version 0.83
       warnings 0
-  Spiffy-0.46
-    pathname: I/IN/INGY/Spiffy-0.46.tar.gz
-    provides:
-      Spiffy 0.46
-      Spiffy::mixin undef
-    requirements:
-      ExtUtils::MakeMaker 6.30
   Stream-Buffered-0.03
     pathname: D/DO/DOY/Stream-Buffered-0.03.tar.gz
     provides:
@@ -7304,79 +7026,6 @@ DISTRIBUTIONS
       Exporter 0
       ExtUtils::CBuilder 0
       ExtUtils::MakeMaker 0
-  Term-Table-0.016
-    pathname: E/EX/EXODIST/Term-Table-0.016.tar.gz
-    provides:
-      Term::Table 0.016
-      Term::Table::Cell 0.016
-      Term::Table::CellStack 0.016
-      Term::Table::HashBase 0.016
-      Term::Table::LineBreak 0.016
-      Term::Table::Spacer 0.016
-      Term::Table::Util 0.016
-    requirements:
-      Carp 0
-      ExtUtils::MakeMaker 0
-      Importer 0.024
-      List::Util 0
-      Scalar::Util 0
-      perl 5.008001
-  Test-Base-0.89
-    pathname: I/IN/INGY/Test-Base-0.89.tar.gz
-    provides:
-      Test::Base 0.89
-      Test::Base::Block 0.89
-      Test::Base::Filter undef
-      Test::Base::Handle 0.89
-    requirements:
-      ExtUtils::MakeMaker 0
-      Filter::Util::Call 0
-      Scalar::Util 1.07
-      Spiffy 0.40
-      Test::More 0.88
-      perl 5.008001
-  Test-Class-0.52
-    pathname: S/SZ/SZABGAB/Test-Class-0.52.tar.gz
-    provides:
-      Test::Class 0.52
-      Test::Class::Load 0.52
-      Test::Class::MethodInfo 0.52
-    requirements:
-      Attribute::Handlers 0.77
-      Carp 0
-      ExtUtils::MakeMaker 0
-      File::Find 0
-      File::Spec 0
-      MRO::Compat 0.11
-      Module::Runtime 0
-      Storable 2.04
-      Test::Builder 0.78
-      Test::Builder::Tester 1.02
-      Test::Simple 0.78
-      Try::Tiny 0
-      constant 0
-      perl 5.008001
-      strict 0
-      warnings 0
-  Test-CleanNamespaces-0.24
-    pathname: E/ET/ETHER/Test-CleanNamespaces-0.24.tar.gz
-    provides:
-      Test::CleanNamespaces 0.24
-    requirements:
-      CPAN::Meta::Requirements 2.120620
-      Exporter 5.57
-      ExtUtils::MakeMaker 0
-      File::Find 0
-      File::Spec 0
-      Module::Metadata 0
-      Module::Runtime 0
-      Package::Stash 0.14
-      Role::Tiny 1.003000
-      Sub::Identify 0
-      Test::Builder 0
-      perl 5.006
-      strict 0
-      warnings 0
   Test-Deep-1.204
     pathname: R/RJ/RJBS/Test-Deep-1.204.tar.gz
     provides:
@@ -7464,18 +7113,6 @@ DISTRIBUTIONS
       perl 5.006001
       strict 0
       warnings 0
-  Test-FailWarnings-0.008
-    pathname: D/DA/DAGOLDEN/Test-FailWarnings-0.008.tar.gz
-    provides:
-      Test::FailWarnings 0.008
-    requirements:
-      Carp 0
-      Cwd 0
-      ExtUtils::MakeMaker 6.17
-      File::Spec 0
-      Test::More 0.86
-      strict 0
-      warnings 0
   Test-Fatal-0.017
     pathname: R/RJ/RJBS/Test-Fatal-0.017.tar.gz
     provides:
@@ -7488,14 +7125,6 @@ DISTRIBUTIONS
       Try::Tiny 0.07
       strict 0
       warnings 0
-  Test-File-1.993
-    pathname: B/BD/BDFOY/Test-File-1.993.tar.gz
-    provides:
-      Test::File 1.993
-    requirements:
-      ExtUtils::MakeMaker 6.64
-      File::Spec::Functions 0
-      perl 5.008
   Test-File-Contents-0.242
     pathname: A/AR/ARISTOTLE/Test-File-Contents-0.242.tar.gz
     provides:
@@ -7506,48 +7135,6 @@ DISTRIBUTIONS
       Test::Builder 0.70
       Text::Diff 0.35
       perl 5.008003
-  Test-File-ShareDir-1.001002
-    pathname: K/KE/KENTNL/Test-File-ShareDir-1.001002.tar.gz
-    provides:
-      Test::File::ShareDir 1.001002
-      Test::File::ShareDir::Dist 1.001002
-      Test::File::ShareDir::Module 1.001002
-      Test::File::ShareDir::Object::Dist 1.001002
-      Test::File::ShareDir::Object::Inc 1.001002
-      Test::File::ShareDir::Object::Module 1.001002
-      Test::File::ShareDir::TempDirObject 1.001002
-      Test::File::ShareDir::Utils 1.001002
-    requirements:
-      Carp 0
-      Class::Tiny 0
-      Exporter 5.57
-      ExtUtils::MakeMaker 0
-      File::Copy::Recursive 0
-      File::ShareDir 1.00
-      Path::Tiny 0.018
-      Scope::Guard 0
-      parent 0
-      perl 5.006
-      strict 0
-      warnings 0
-  Test-Inter-1.10
-    pathname: S/SB/SBECK/Test-Inter-1.10.tar.gz
-    provides:
-      Test::Inter 1.10
-    requirements:
-      Cwd 0
-      ExtUtils::MakeMaker 6.30
-      File::Basename 0
-      IO::File 0
-      perl 5.006
-  Test-LeakTrace-0.17
-    pathname: L/LE/LEEJO/Test-LeakTrace-0.17.tar.gz
-    provides:
-      Test::LeakTrace 0.17
-      Test::LeakTrace::Script undef
-    requirements:
-      Exporter 5.57
-      ExtUtils::MakeMaker 0
   Test-LongString-0.17
     pathname: R/RG/RGARCIA/Test-LongString-0.17.tar.gz
     provides:
@@ -7556,35 +7143,6 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Test::Builder 0.12
       Test::Builder::Tester 1.04
-  Test-Memory-Cycle-1.06
-    pathname: P/PE/PETDANCE/Test-Memory-Cycle-1.06.tar.gz
-    provides:
-      Test::Memory::Cycle 1.06
-    requirements:
-      Devel::Cycle 1.07
-      ExtUtils::MakeMaker 0
-      Getopt::Long 0
-      PadWalker 0
-      Test::Builder 0
-      Test::Builder::Tester 0
-      Test::More 0
-      Test::Simple 0.62
-  Test-MockTime-0.17
-    pathname: D/DD/DDICK/Test-MockTime-0.17.tar.gz
-    provides:
-      Test::MockTime 0.17
-    requirements:
-      ExtUtils::MakeMaker 0
-      Test::More 0
-      Time::Local 0
-      Time::Piece 1.08
-  Test-Needs-0.002010
-    pathname: H/HA/HAARG/Test-Needs-0.002010.tar.gz
-    provides:
-      Test::Needs 0.002010
-    requirements:
-      ExtUtils::MakeMaker 0
-      perl 5.006
   Test-NoWarnings-1.06
     pathname: H/HA/HAARG/Test-NoWarnings-1.06.tar.gz
     provides:
@@ -7594,27 +7152,6 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Test::Builder 0.86
       perl 5.006
-  Test-Output-1.033
-    pathname: B/BD/BDFOY/Test-Output-1.033.tar.gz
-    provides:
-      Test::Output 1.033
-    requirements:
-      Capture::Tiny 0.17
-      ExtUtils::MakeMaker 6.64
-      File::Spec::Functions 0
-      File::Temp 0.17
-      perl 5.008
-  Test-Pod-1.52
-    pathname: E/ET/ETHER/Test-Pod-1.52.tar.gz
-    provides:
-      Test::Pod 1.52
-    requirements:
-      ExtUtils::MakeMaker 0
-      File::Find 0
-      Pod::Simple 3.05
-      Test::Builder::Tester 1.02
-      Test::More 0.62
-      perl 5.008
   Test-Requires-0.11
     pathname: T/TO/TOKUHIROM/Test-Requires-0.11.tar.gz
     provides:
@@ -7624,29 +7161,6 @@ DISTRIBUTIONS
       Test::Builder::Module 0
       Test::More 0.47
       perl 5.006
-  Test-RequiresInternet-0.05
-    pathname: M/MA/MALLEN/Test-RequiresInternet-0.05.tar.gz
-    provides:
-      Test::RequiresInternet 0.05
-    requirements:
-      ExtUtils::MakeMaker 0
-      Socket 0
-      strict 0
-      warnings 0
-  Test-Roo-1.004
-    pathname: D/DA/DAGOLDEN/Test-Roo-1.004.tar.gz
-    provides:
-      Test::Roo 1.004
-      Test::Roo::Class 1.004
-      Test::Roo::Cookbook 1.004
-      Test::Roo::Role 1.004
-    requirements:
-      ExtUtils::MakeMaker 6.17
-      Moo 1.000008
-      MooX::Types::MooseLike::Base 0
-      Sub::Install 0
-      Test::More 0.96
-      strictures 0
   Test-SharedFork-0.35
     pathname: E/EX/EXODIST/Test-SharedFork-0.35.tar.gz
     provides:
@@ -7661,89 +7175,6 @@ DISTRIBUTIONS
       Test::Builder::Module 0
       Test::More 0.88
       perl 5.008_001
-  Test-Simple-1.302195
-    pathname: E/EX/EXODIST/Test-Simple-1.302195.tar.gz
-    provides:
-      Test2 1.302195
-      Test2::API 1.302195
-      Test2::API::Breakage 1.302195
-      Test2::API::Context 1.302195
-      Test2::API::Instance 1.302195
-      Test2::API::InterceptResult 1.302195
-      Test2::API::InterceptResult::Event 1.302195
-      Test2::API::InterceptResult::Facet 1.302195
-      Test2::API::InterceptResult::Hub 1.302195
-      Test2::API::InterceptResult::Squasher 1.302195
-      Test2::API::Stack 1.302195
-      Test2::Event 1.302195
-      Test2::Event::Bail 1.302195
-      Test2::Event::Diag 1.302195
-      Test2::Event::Encoding 1.302195
-      Test2::Event::Exception 1.302195
-      Test2::Event::Fail 1.302195
-      Test2::Event::Generic 1.302195
-      Test2::Event::Note 1.302195
-      Test2::Event::Ok 1.302195
-      Test2::Event::Pass 1.302195
-      Test2::Event::Plan 1.302195
-      Test2::Event::Skip 1.302195
-      Test2::Event::Subtest 1.302195
-      Test2::Event::TAP::Version 1.302195
-      Test2::Event::V2 1.302195
-      Test2::Event::Waiting 1.302195
-      Test2::EventFacet 1.302195
-      Test2::EventFacet::About 1.302195
-      Test2::EventFacet::Amnesty 1.302195
-      Test2::EventFacet::Assert 1.302195
-      Test2::EventFacet::Control 1.302195
-      Test2::EventFacet::Error 1.302195
-      Test2::EventFacet::Hub 1.302195
-      Test2::EventFacet::Info 1.302195
-      Test2::EventFacet::Info::Table 1.302195
-      Test2::EventFacet::Meta 1.302195
-      Test2::EventFacet::Parent 1.302195
-      Test2::EventFacet::Plan 1.302195
-      Test2::EventFacet::Render 1.302195
-      Test2::EventFacet::Trace 1.302195
-      Test2::Formatter 1.302195
-      Test2::Formatter::TAP 1.302195
-      Test2::Hub 1.302195
-      Test2::Hub::Interceptor 1.302195
-      Test2::Hub::Interceptor::Terminator 1.302195
-      Test2::Hub::Subtest 1.302195
-      Test2::IPC 1.302195
-      Test2::IPC::Driver 1.302195
-      Test2::IPC::Driver::Files 1.302195
-      Test2::Tools::Tiny 1.302195
-      Test2::Util 1.302195
-      Test2::Util::ExternalMeta 1.302195
-      Test2::Util::Facets2Legacy 1.302195
-      Test2::Util::HashBase 1.302195
-      Test2::Util::Trace 1.302195
-      Test::Builder 1.302195
-      Test::Builder::Formatter 1.302195
-      Test::Builder::IO::Scalar 2.114
-      Test::Builder::Module 1.302195
-      Test::Builder::Tester 1.302195
-      Test::Builder::Tester::Color 1.302195
-      Test::Builder::Tester::Tie 1.302195
-      Test::Builder::TodoDiag 1.302195
-      Test::More 1.302195
-      Test::Simple 1.302195
-      Test::Tester 1.302195
-      Test::Tester::Capture 1.302195
-      Test::Tester::CaptureRunner 1.302195
-      Test::Tester::Delegate 1.302195
-      Test::use::ok 1.302195
-      ok 1.302195
-    requirements:
-      ExtUtils::MakeMaker 0
-      File::Spec 0
-      File::Temp 0
-      Scalar::Util 1.13
-      Storable 0
-      perl 5.006002
-      utf8 0
   Test-TCP-2.22
     pathname: M/MI/MIYAGAWA/Test-TCP-2.22.tar.gz
     provides:
@@ -7758,52 +7189,6 @@ DISTRIBUTIONS
       Test::SharedFork 0.29
       Time::HiRes 0
       perl 5.008001
-  Test-Taint-1.08
-    pathname: P/PE/PETDANCE/Test-Taint-1.08.tar.gz
-    provides:
-      Test::Taint 1.08
-    requirements:
-      ExtUtils::MakeMaker 0
-      Scalar::Util 0
-      Test::Builder 0
-      Test::More 0
-      Tie::Array 0
-      Tie::Hash 0
-      Tie::Scalar 0
-      overload 0
-  Test-Time-0.092
-    pathname: A/AN/ANATOFUZ/Test-Time-0.092.tar.gz
-    provides:
-      Test::Time 0.092
-    requirements:
-      ExtUtils::MakeMaker 6.64
-      Test::More 0
-  Test-Trap-v0.3.5
-    pathname: E/EB/EBHANSSEN/Test-Trap-v0.3.5.tar.gz
-    provides:
-      Test::Trap v0.3.5
-      Test::Trap::Builder v0.3.5
-      Test::Trap::Builder::PerlIO v0.3.5
-      Test::Trap::Builder::SystemSafe v0.3.5
-      Test::Trap::Builder::TempFile v0.3.5
-    requirements:
-      Carp 0
-      Config 0
-      Data::Dump 0
-      Exporter 0
-      File::Temp 0
-      IO::Handle 0
-      Module::Build 0
-      Test::Builder 0
-      Test::More 0
-      Test::Tester 0.107
-      base 0
-      constant 0
-      lib 0
-      perl v5.6.2
-      strict 0
-      version 0
-      warnings 0
   Test-WWW-Mechanize-1.60
     pathname: P/PE/PETDANCE/Test-WWW-Mechanize-1.60.tar.gz
     provides:
@@ -7865,37 +7250,6 @@ DISTRIBUTIONS
       Test::Builder 0.13
       Test::Builder::Tester 1.02
       perl 5.006
-  Test-Warnings-0.031
-    pathname: E/ET/ETHER/Test-Warnings-0.031.tar.gz
-    provides:
-      Test::Warnings 0.031
-    requirements:
-      Carp 0
-      Exporter 0
-      ExtUtils::MakeMaker 0
-      Test::Builder 0
-      parent 0
-      perl 5.006
-      strict 0
-      warnings 0
-  Test-Without-Module-0.21
-    pathname: C/CO/CORION/Test-Without-Module-0.21.tar.gz
-    provides:
-      Test::Without::Module 0.21
-    requirements:
-      Carp 0
-      ExtUtils::MakeMaker 0
-      File::Find 0
-      File::Spec 0
-      Test::More 0
-  Test-YAML-1.07
-    pathname: T/TI/TINITA/Test-YAML-1.07.tar.gz
-    provides:
-      Test::YAML 1.07
-      Test::YAML::Filter 1.07
-    requirements:
-      ExtUtils::MakeMaker 0
-      Test::Base 0.89
   Test-utf8-1.02
     pathname: M/MA/MARKF/Test-utf8-1.02.tar.gz
     provides:
@@ -7905,157 +7259,6 @@ DISTRIBUTIONS
       Test::Builder 0
       Test::Builder::Tester 0.09
       perl 5.007003
-  Test2-Plugin-NoWarnings-0.09
-    pathname: D/DR/DROLSKY/Test2-Plugin-NoWarnings-0.09.tar.gz
-    provides:
-      Test2::Event::Warning 0.09
-      Test2::Plugin::NoWarnings 0.09
-    requirements:
-      Carp 0
-      ExtUtils::MakeMaker 0
-      Test2 1.302167
-      Test2::API 0
-      Test2::Event 0
-      Test2::Util::HashBase 0
-      parent 0
-      strict 0
-      warnings 0
-  Test2-Suite-0.000155
-    pathname: E/EX/EXODIST/Test2-Suite-0.000155.tar.gz
-    provides:
-      Test2::AsyncSubtest 0.000155
-      Test2::AsyncSubtest::Event::Attach 0.000155
-      Test2::AsyncSubtest::Event::Detach 0.000155
-      Test2::AsyncSubtest::Formatter 0.000155
-      Test2::AsyncSubtest::Hub 0.000155
-      Test2::Bundle 0.000155
-      Test2::Bundle::Extended 0.000155
-      Test2::Bundle::More 0.000155
-      Test2::Bundle::Simple 0.000155
-      Test2::Compare 0.000155
-      Test2::Compare::Array 0.000155
-      Test2::Compare::Bag 0.000155
-      Test2::Compare::Base 0.000155
-      Test2::Compare::Bool 0.000155
-      Test2::Compare::Custom 0.000155
-      Test2::Compare::DeepRef 0.000155
-      Test2::Compare::Delta 0.000155
-      Test2::Compare::Event 0.000155
-      Test2::Compare::EventMeta 0.000155
-      Test2::Compare::Float 0.000155
-      Test2::Compare::Hash 0.000155
-      Test2::Compare::Isa 0.000155
-      Test2::Compare::Meta 0.000155
-      Test2::Compare::Negatable 0.000155
-      Test2::Compare::Number 0.000155
-      Test2::Compare::Object 0.000155
-      Test2::Compare::OrderedSubset 0.000155
-      Test2::Compare::Pattern 0.000155
-      Test2::Compare::Ref 0.000155
-      Test2::Compare::Regex 0.000155
-      Test2::Compare::Scalar 0.000155
-      Test2::Compare::Set 0.000155
-      Test2::Compare::String 0.000155
-      Test2::Compare::Undef 0.000155
-      Test2::Compare::Wildcard 0.000155
-      Test2::Manual 0.000155
-      Test2::Manual::Anatomy 0.000155
-      Test2::Manual::Anatomy::API 0.000155
-      Test2::Manual::Anatomy::Context 0.000155
-      Test2::Manual::Anatomy::EndToEnd 0.000155
-      Test2::Manual::Anatomy::Event 0.000155
-      Test2::Manual::Anatomy::Hubs 0.000155
-      Test2::Manual::Anatomy::IPC 0.000155
-      Test2::Manual::Anatomy::Utilities 0.000155
-      Test2::Manual::Concurrency 0.000155
-      Test2::Manual::Contributing 0.000155
-      Test2::Manual::Testing 0.000155
-      Test2::Manual::Testing::Introduction 0.000155
-      Test2::Manual::Testing::Migrating 0.000155
-      Test2::Manual::Testing::Planning 0.000155
-      Test2::Manual::Testing::Todo 0.000155
-      Test2::Manual::Tooling 0.000155
-      Test2::Manual::Tooling::FirstTool 0.000155
-      Test2::Manual::Tooling::Formatter 0.000155
-      Test2::Manual::Tooling::Nesting 0.000155
-      Test2::Manual::Tooling::Plugin::TestExit 0.000155
-      Test2::Manual::Tooling::Plugin::TestingDone 0.000155
-      Test2::Manual::Tooling::Plugin::ToolCompletes 0.000155
-      Test2::Manual::Tooling::Plugin::ToolStarts 0.000155
-      Test2::Manual::Tooling::Subtest 0.000155
-      Test2::Manual::Tooling::TestBuilder 0.000155
-      Test2::Manual::Tooling::Testing 0.000155
-      Test2::Mock 0.000155
-      Test2::Plugin 0.000155
-      Test2::Plugin::BailOnFail 0.000155
-      Test2::Plugin::DieOnFail 0.000155
-      Test2::Plugin::ExitSummary 0.000155
-      Test2::Plugin::SRand 0.000155
-      Test2::Plugin::Times 0.000155
-      Test2::Plugin::UTF8 0.000155
-      Test2::Require 0.000155
-      Test2::Require::AuthorTesting 0.000155
-      Test2::Require::EnvVar 0.000155
-      Test2::Require::Fork 0.000155
-      Test2::Require::Module 0.000155
-      Test2::Require::Perl 0.000155
-      Test2::Require::RealFork 0.000155
-      Test2::Require::Threads 0.000155
-      Test2::Suite 0.000155
-      Test2::Todo 0.000155
-      Test2::Tools 0.000155
-      Test2::Tools::AsyncSubtest 0.000155
-      Test2::Tools::Basic 0.000155
-      Test2::Tools::Class 0.000155
-      Test2::Tools::ClassicCompare 0.000155
-      Test2::Tools::Compare 0.000155
-      Test2::Tools::Defer 0.000155
-      Test2::Tools::Encoding 0.000155
-      Test2::Tools::Event 0.000155
-      Test2::Tools::Exception 0.000155
-      Test2::Tools::Exports 0.000155
-      Test2::Tools::GenTemp 0.000155
-      Test2::Tools::Grab 0.000155
-      Test2::Tools::Mock 0.000155
-      Test2::Tools::Ref 0.000155
-      Test2::Tools::Refcount 0.000155
-      Test2::Tools::Spec 0.000155
-      Test2::Tools::Subtest 0.000155
-      Test2::Tools::Target 0.000155
-      Test2::Tools::Tester 0.000155
-      Test2::Tools::Warnings 0.000155
-      Test2::Util::Grabber 0.000155
-      Test2::Util::Guard 0.000155
-      Test2::Util::Importer 0.000155
-      Test2::Util::Ref 0.000155
-      Test2::Util::Stash 0.000155
-      Test2::Util::Sub 0.000155
-      Test2::Util::Table 0.000155
-      Test2::Util::Table::Cell 0.000155
-      Test2::Util::Table::LineBreak 0.000155
-      Test2::Util::Term 0.000155
-      Test2::Util::Times 0.000155
-      Test2::V0 0.000155
-      Test2::Workflow 0.000155
-      Test2::Workflow::BlockBase 0.000155
-      Test2::Workflow::Build 0.000155
-      Test2::Workflow::Runner 0.000155
-      Test2::Workflow::Task 0.000155
-      Test2::Workflow::Task::Action 0.000155
-      Test2::Workflow::Task::Group 0.000155
-    requirements:
-      B 0
-      Carp 0
-      Data::Dumper 0
-      Exporter 0
-      ExtUtils::MakeMaker 0
-      Scalar::Util 0
-      Term::Table 0.013
-      Test2::API 1.302176
-      Time::HiRes 0
-      overload 0
-      perl 5.008001
-      utf8 0
   Text-Amuse-1.83
     pathname: M/ME/MELMOTHX/Text-Amuse-1.83.tar.gz
     provides:
