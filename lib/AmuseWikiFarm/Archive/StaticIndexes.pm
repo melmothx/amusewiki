@@ -303,7 +303,7 @@ TEMPLATE
 sub javascript_files {
     my $self = shift;
     my @out = (
-               path(js => 'jquery-1.11.1.min.js'),
+               path(js => 'jquery-3.7.0.min.js'),
                path(js => 'bootstrap.min.js'),
                path(js => datatables => 'datatables.min.js'),
               );
