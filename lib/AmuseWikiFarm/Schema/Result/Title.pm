@@ -1519,7 +1519,7 @@ sub dublin_core_entry {
     my ($self) = @_;
     my @cats = $self->categories;
     my $data = {
-                title => $self->title,
+                title => [ grep { length($_) } ($self->title, $self->subtitle) ],
                 creator => [
                             map { $_->name }
                             grep { $_->type eq 'author' }
