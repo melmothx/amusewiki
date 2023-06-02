@@ -4,6 +4,13 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.574 2023-06-02
+
+ - Upgraded jquery to latest
+ - Upgraded jquery-ui to latest
+ - Implement MARCXML output for AOI-PMH
+ - Upgrade TeXlive! script
+
 2.573 2023-05-29
 
  - Implement attachment pruning
