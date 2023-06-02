@@ -51,6 +51,8 @@ export PERL_USE_UNSAFE_INC=1
 carton install --deployment || cpanm -L local --installdeps .
 export PERL_USE_UNSAFE_INC=""
 
+. ./script/add-texlive-to-path.sh
+
 echo -n "Checking installation of TeX live: "
 if which xelatex > /dev/null; then
     echo "OK"
@@ -64,7 +66,9 @@ fi
 
 echo "Installing needed JS"
 script/install_js.sh
+echo "Installing fonts"
 script/install_fonts.sh
+
 
 echo "Creating fontspec.json"
 carton exec script/amusewiki-populate-webfonts
@@ -72,3 +76,4 @@ carton exec script/amusewiki-populate-webfonts
 echo "Installing cgit"
 carton exec script/install-cgit.pl
 
+echo "All installed, ready to be configured"

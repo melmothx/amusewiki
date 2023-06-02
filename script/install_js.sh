@@ -2,7 +2,7 @@
 set -e
 home_dir=`pwd`
 js_dir="root/static/js"
-ckeditor_version=4.14.0
+ckeditor_version=4.21.0
 ckeditor_zip=ckeditor_${ckeditor_version}_standard.zip
 
 if [ "x$1" = "x--clean" ]; then
@@ -28,9 +28,9 @@ if [ ! -d "$js_dir/highlight" ]; then
     else
         mkdir highlight
         cd highlight
-        wget https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js
+        wget https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js
         mkdir styles
-        wget -O styles/default.css https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css
+        wget -O styles/default.css https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css
     fi
     cd "$home_dir"
 fi
