@@ -13,7 +13,7 @@ use AmuseWikiFarm::Utils::CgitSetup;
 
 binmode STDOUT, ":encoding(utf-8)";
 
-my $cgitversion = 'v1.1';
+my $cgitversion = 'v1.2.3';
 my ($reinstall, $help);
 
 GetOptions(
