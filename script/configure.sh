@@ -1,6 +1,7 @@
 #!/bin/sh
 
 set -e
+. ./script/add-texlive-to-path.sh
 
 hostname=$1
 

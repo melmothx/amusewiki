@@ -1,21 +1,37 @@
 #!/bin/sh
 
 set -e
+# set -x
 
+# enforce the correct path
+cd `dirname $0`
+cd ..
+
+cwd=$(pwd)
 echo "Checking and installing missing fonts"
 
+has_local_tlmgr=""
+
+for i in $cwd/local/texlive/*/bin/*/tlmgr; do
+    if [ -x $i ]; then
+        echo "Found local tlmgr: $i"
+        has_local_tlmgr=$i
+    fi
+done
+
 linkfont () {
-    rm -fv "$(basename "$1")"
-    for texfontsdir in "$HOME/texlive/2018/texmf-dist/fonts" \
-                       "$HOME/texlive/2017/texmf-dist/fonts" \
-                       "$HOME/texlive/2016/texmf-dist/fonts" \
-                       "$HOME/texlive/2015/texmf-dist/fonts" \
-                       "$HOME/texlive/2014/texmf-dist/fonts" \
+    package=$(basename "$1")
+    if [ -n "$package" ]; then
+        if [ -n "$has_local_tlmgr" ]; then
+            $has_local_tlmgr install $package
+        fi
+    fi
+    for texfontsdir in $cwd/local/texlive/*/texmf-dist/fonts \
                        "/usr/local/share/texmf-dist/fonts" \
                        "/usr/share/texmf/fonts" \
                        "/usr/share/texlive/texmf-dist/fonts"; do
         if [ -d "$texfontsdir/$1" ]; then
-            ln -s "$texfontsdir/$1"
+            ln -sf "$texfontsdir/$1"
             return 0
         fi
     done
@@ -40,8 +56,6 @@ for font in 'CMU Serif'            \
             'Iwona'                \
             'PT Serif'             \
             'PT Sans'              \
-            'Noto Sans' \
-            'Noto Serif' \
             'DejaVu Sans'          \
             'DejaVu Sans Mono'; do
     if fc-list "$font" | grep -q style; then
@@ -70,16 +84,14 @@ for font in 'CMU Serif'            \
             Iwona*)
                 linkfont opentype/nowacki/iwona
                 ;;
-            Noto*)
-                linkfont truetype/google/noto
-                ;;
             DejaVu*)
-                linkfont "$texfontsdir/truetype/public/dejavu"
+                linkfont truetype/public/dejavu
                 ;;
             *Charis*)
                 rm -fv charis
-                wget -O "$HOME/CharisSIL-4.114.zip" 'http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=CharisSIL-4.114.zip&filename=CharisSIL-4.114.zip'
-                unzip -d "$HOME/.fonts/charis" "$HOME/CharisSIL-4.114.zip"
+                wget -O "$HOME/CharisSIL.zip" \
+                     https://software.sil.org/downloads/r/charis/CharisSIL-6.200.zip
+                unzip -d "$HOME/.fonts/charis" "$HOME/CharisSIL.zip"
                 ;;
             *)
                 echo "Unhandled font $font!"

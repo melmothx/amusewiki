@@ -125,3 +125,12 @@ $homedir/local/texlive/$year/bin/$arch/tlmgr install \
 
 echo "TeXlive installed in $homedir/local/texlive, bin path is $homedir/local/texlive/$year/bin/$arch"
 
+# patch serbian data, so the default is latin, not the cyrillic
+
+cd $homedir
+
+cat local/texlive/$year/texmf-dist/tex/generic/babel/locale/sr/babel-sr-Latn.ini > local/texlive/$year/texmf-dist/tex/generic/babel/locale/sr/babel-sr.ini
+
+# in the italian indexer, parse diacritics as well for slavic languages.
+
+cat doc/italian-utf8.xdy > local/texlive/$year/texmf-dist/xindy/modules/lang/italian/utf8.xdy
