@@ -11,7 +11,7 @@ BEGIN {
 
 
 use Data::Dumper;
-use Test::More tests => 172;
+use Test::More tests => 187;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::OAI::PMH;
 use File::Spec::Functions qw/catfile catdir/;
@@ -256,6 +256,8 @@ foreach my $test ({
                               '<request verb="ListSets">https://0oai0.amusewiki.org/oai-pmh</request>',
                               '<setSpec>amusewiki</setSpec>',
                               '<setName>Files needed to regenerate the archive</setName>',
+                              '<setSpec>web</setSpec>',
+                              '<setName>Links to web pages</setName>',
                              ],
                   },
                   {
@@ -364,11 +366,12 @@ foreach my $test ({
                             set => 'amusewiki',
                            },
                    expect => [
-                              'to-test.muse</identifier>',
+                              '/to-test.muse</identifier>',
                               '<setSpec>amusewiki</setSpec>',
                               '/uploads/0oai0/shot.pdf</identifier>',
                              ],
                    lacks => [
+                             '/to-test</identifier>',
                              'to-test.pdf</identifier>',
                             ],
                   },
@@ -409,11 +412,11 @@ foreach my $test ({
                            },
                    expect => [
                               'to-test.pdf</identifier>',
-                              '<resumptionToken completeListSize="10" cursor="0">',
+                              '<resumptionToken completeListSize="11" cursor="0">',
                              ],
                    lacks => [
                              'to-test.a4.pdf</identifier>',
-                              '<resumptionToken completeListSize="10" cursor="9" />',
+                              '<resumptionToken completeListSize="11" cursor="9" />',
                             ],
 
                   },
@@ -439,11 +442,11 @@ foreach my $test ({
                    expect => [
                               'to-test.pdf</identifier>',
                               '<dc:description>Plain PDF</dc:description>',
-                              '<resumptionToken completeListSize="10" cursor="0">',
+                              '<resumptionToken completeListSize="11" cursor="0">',
                              ],
                    lacks => [
                              'to-test.a4.pdf</identifier>',
-                              '<resumptionToken completeListSize="10" cursor="9" />',
+                              '<resumptionToken completeListSize="11" cursor="9" />',
                             ],
                   },
                   {
@@ -471,7 +474,7 @@ foreach my $test ({
                            },
                    expect => [
                               'to-test.pdf</identifier>',
-                              '<resumptionToken completeListSize="10" cursor="0">',
+                              '<resumptionToken completeListSize="11" cursor="0">',
                              ],
                    lacks => [
                              '<error code="noRecordsMatch">',
@@ -497,7 +500,7 @@ foreach my $test ({
                            },
                    expect => [
                               'to-test.pdf</identifier>',
-                              '<resumptionToken completeListSize="10" cursor="0">',
+                              '<resumptionToken completeListSize="11" cursor="0">',
                               '<leader>      am         3u     </leader>',
                               '<datafield tag="246" ind1="3" ind2="3">',
                               '<subfield code="a">This is a subtitle</subfield>',
@@ -506,6 +509,23 @@ foreach my $test ({
                              '<error code="noRecordsMatch">',
                              '<subfield code="a" />',
                             ],
+                  },
+                  {
+                   args => {
+                            verb => 'ListRecords',
+                            metadataPrefix => 'oai_dc',
+                            set => 'web',
+                           },
+                   expect => [
+                              '/library/to-test</identifier>',
+                              '<setSpec>web</setSpec>',
+                              '<dc:identifier>https://0oai0.amusewiki.org/library/to-test</dc:identifier>'
+                             ],
+                   lacks => [
+                             'to-test.html</identifier>',
+                             'to-test.pdf</identifier>',
+                              '/uploads/0oai0/shot.pdf</identifier>',
+                            ]
                   },
 
                  ) {
@@ -528,17 +548,30 @@ foreach my $test ({
 ok $site->oai_pmh_records->oldest_record;
 
 {
+    sleep 2;
+    my $now = DateTime->now;
     $site->oai_pmh_records->create({
-                                    datestamp => DateTime->now,
+                                    datestamp => $now,
                                     identifier => 'testxx',
+                                    update_run => $now->epoch,
                                    });
     $mech->get_ok('/oai-pmh?verb=GetRecord&identifier=oai%3A0oai0.amusewiki.org%3Atestxx&metadataPrefix=oai_dc');
     diag $mech->content;
     $mech->content_contains('<dc:title>Removed entry</dc:title>');
     $mech->content_contains('<dc:description>This entry was deleted</dc:description>');
     $mech->content_contains('<header status="deleted">');
-}
 
+    my $uri = URI->new($site->canonical_url);
+    $uri->path('/oai-pmh');
+    $uri->query_form({ from => $now->iso8601 . 'Z', metadataPrefix => 'oai_dc', verb => 'ListRecords' });
+    $mech->get_ok($uri);
+    my $xml = $mech->content;
+    my @identifiers;
+    while ($xml =~ m{<identifier>(.*)</identifier>}g) {
+        push @identifiers, $1;
+    }
+    is_deeply(\@identifiers, [ 'oai:0oai0.amusewiki.org:testxx' ]) or diag $mech->content;
+}
 
 is $site->oai_pmh_records->find({ identifier => 'testxx' })->deleted, 0;
 is $site->oai_pmh_records->find({ identifier => '/library/to-test.a4.pdf' })->deleted, 1;

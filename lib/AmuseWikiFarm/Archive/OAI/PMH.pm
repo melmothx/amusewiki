@@ -46,6 +46,13 @@ sub update_site_records {
                                                         set_name => 'Files needed to regenerate the archive',
                                                        },
                                                        { key => 'set_spec_site_id_unique' });
+
+    my $webset = $site->oai_pmh_sets->update_or_create({
+                                                        set_spec => 'web',
+                                                        set_name => 'Links to web pages',
+                                                       },
+                                                       { key => 'set_spec_site_id_unique' });
+
     my @files;
     my $rs = $site->titles->published_texts->search(undef,
                                                     {
@@ -79,6 +86,16 @@ sub update_site_records {
                           sets => [ $amwset ],
                          };
             $done{$attachment->id}++;
+        }
+        # skip the web if it's a child text
+        unless ($title->parent) {
+            push @files, {
+                          file => $title->filepath_for_ext('bare.html'),
+                          identifier => $identifier,
+                          title_id => $title_id,
+                          metadata_format => 'text/html',
+                          sets => [ $webset ],
+                         };
         }
     }
     $self->logger->("Processing " . scalar(@files) . " files for texts\n");
