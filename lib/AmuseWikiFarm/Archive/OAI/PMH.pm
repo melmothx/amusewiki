@@ -304,15 +304,8 @@ sub _list_records {
                 error_message => "Required argument: metadataPrefix",
                };
     }
-    my %prefixes = (
-                    oai_dc => 1,
-                    marc21 => 1,
-                   );
-    unless ($prefixes{$prefix}) {
-        return {
-                error_code => 'cannotDisseminateFormat',
-                error_message => "Supported formats: " . join(', ', keys %prefixes),
-               };
+    if (my $err = $self->_bad_prefix($prefix)) {
+        return $err;
     }
     my %search = (set => '');
     foreach my $date (qw/from until/) {
@@ -446,6 +439,23 @@ sub _list_records {
 }
 
 
+sub _bad_prefix {
+    my ($self, $prefix) = @_;
+    my %prefixes = (
+                    oai_dc => 1,
+                    marc21 => 1,
+                   );
+    if ($prefix and $prefixes{$prefix}) {
+        return;
+    }
+    else {
+        return {
+                error_code => 'cannotDisseminateFormat',
+                error_message => "Supported formats: " . join(', ', keys %prefixes),
+               };
+    }
+}
+
 sub get_record {
     my ($self, $params) = @_;
     my $id = $params->{identifier};
@@ -456,15 +466,8 @@ sub get_record {
                 error_message => "Required arguments: identifier and metadataPrefix",
                };
     }
-    my %prefixes = (
-                    oai_dc => 1,
-                    marc21 => 1,
-                   );
-    unless ($prefixes{$prefix}) {
-        return {
-                error_code => 'cannotDisseminateFormat',
-                error_message => "Only oai_dc is supported at the moment",
-               };
+    if (my $err = $self->_bad_prefix($prefix)) {
+        return $err;
     }
     my ($proto, $canonical, $identifier) = split(':', $id);
     if ($identifier and my $record = $self->site->oai_pmh_records->find({ identifier => $identifier })) {

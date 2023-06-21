@@ -11,7 +11,7 @@ BEGIN {
 
 
 use Data::Dumper;
-use Test::More tests => 194;
+use Test::More tests => 196;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::OAI::PMH;
 use File::Spec::Functions qw/catfile catdir/;
@@ -205,6 +205,16 @@ foreach my $test ({
                   {
                    args => {
                             verb => 'GetRecord',
+                            metadataPrefix => 'X',
+                            identifier => 'X'
+                           },
+                   expect => [
+                              '<error code="cannotDisseminateFormat">',
+                             ],
+                  },
+                  {
+                   args => {
+                            verb => 'ListRecords',
                             metadataPrefix => 'X',
                             identifier => 'X'
                            },
