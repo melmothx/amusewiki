@@ -11,7 +11,7 @@ BEGIN {
 
 
 use Data::Dumper;
-use Test::More tests => 187;
+use Test::More tests => 194;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::OAI::PMH;
 use File::Spec::Functions qw/catfile catdir/;
@@ -507,6 +507,23 @@ foreach my $test ({
                              ],
                    lacks => [
                              '<error code="noRecordsMatch">',
+                             '<subfield code="a" />',
+                            ],
+                  },
+                  {
+                   args => {
+                            verb => 'GetRecord',
+                            metadataPrefix => 'marc21',
+                            identifier => '/library/to-test.pdf',
+                           },
+                   expect => [
+                              'to-test.pdf</identifier>',
+                              '<leader>      am         3u     </leader>',
+                              '<datafield tag="246" ind1="3" ind2="3">',
+                              '<subfield code="a">This is a subtitle</subfield>',
+                             ],
+                   lacks => [
+                             '<error code="cannotDisseminateFormat">',
                              '<subfield code="a" />',
                             ],
                   },

@@ -456,7 +456,11 @@ sub get_record {
                 error_message => "Required arguments: identifier and metadataPrefix",
                };
     }
-    if ($prefix ne 'oai_dc') {
+    my %prefixes = (
+                    oai_dc => 1,
+                    marc21 => 1,
+                   );
+    unless ($prefixes{$prefix}) {
         return {
                 error_code => 'cannotDisseminateFormat',
                 error_message => "Only oai_dc is supported at the moment",
