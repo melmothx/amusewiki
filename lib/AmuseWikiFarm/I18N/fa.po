@@ -6,163 +6,168 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2018-07-28 15:03+0200\n"
+"PO-Revision-Date: 2023-06-26 14:15-0400\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Persian\n"
-"Language: fa\n"
+"Language: fa_IR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #. ($filename)
 msgid "%1 doesn't exist"
-msgstr ""
+msgstr "%1 وجود ندارد"
 
 #. ([$total])
 msgid "%1 jobs deleted"
-msgstr ""
+msgstr "%1 عملیات پاک شد"
 
 #. ([$total])
 msgid "%1 jobs rescheduled"
-msgstr ""
+msgstr "%1 عملیات به تاخیر افتاده‌است"
 
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
-msgstr ""
+msgstr "%1 در موبایل"
 
 #. (text.pages_estimated)
 msgid "%1 pp."
-msgstr ""
+msgstr "صفحات %1 ."
 
 msgid "(leave blank to keep the current one)"
-msgstr ""
+msgstr "(خالی بماند)"
 
 msgid "(narrowest)"
-msgstr ""
+msgstr "(باریک‌تر)"
 
 msgid "(smart quotes, links, footnotes, etc.)"
-msgstr ""
+msgstr "(نقل قول، پیوست، پاورقی و...)"
 
 msgid "(use that as main link in static mirror as well)"
-msgstr ""
+msgstr "(استفاده به عنوان پیوست اصلی در الگویی ایستا)"
 
 msgid "(widest)"
-msgstr ""
+msgstr "(عریض‌تر)"
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
-msgstr ""
+msgstr "خط خالی (یا جاهای خالی) شروع کردن پاراگراف جدید."
 
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
 msgstr ""
+"عکس پس‌زمینه قبلا انتخاب شده، اما با آپلود کردن فایل جدید\n"
+" قابل جایگزین است."
 
 msgid ""
 "A footnote is a line which starts with a number between square\n"
 "          brackets, with no leading whitespace."
 msgstr ""
+"پاورقی خطی است که با عدد داخل کروشه و بدون فاصله\n"
+"  شروع می‌شود."
 
 msgid "A line which starts with 2 or more whitespaces is a quotation."
-msgstr ""
+msgstr "نقل قول خطی است که با بیشتر از ۲ فضای خالی(whitespace) شروع می‌شود."
 
 msgid "A line which starts with 20 or more whitespaces is right-aligned."
-msgstr ""
+msgstr "راست تراز(right-alinged) خطی است که با بیشتر از ۲۰ فضای خالی(whitespace) شروع می‌شود."
 
 msgid "A line which starts with 6 or more whitespaces is centered."
-msgstr ""
+msgstr "مرکز تراز (centered) خطی است که با بیشتر از ۶ فضای خالی(whitespace) شروع می‌شود."
 
 msgid ""
 "A list of links and labels to insert into the top\n"
 "            bar. One per line, first the url, then the label,\n"
 "            separated by a space, e.g. \"http://test.me Test site\""
 msgstr ""
+"لیستی از لینک‌ها و برچسب‌ها(lables) برای درج در نوار بالا.\n"
+"هرکدام در یک خط، اول URL سپس lable،\n"
+"جدا شده با فاصله. مثال: \"http://test.me Test site\""
 
 #. (location)
 msgid "A new text has been created at %1"
-msgstr ""
+msgstr "%1 از متن کامل شده‌است"
 
 msgid "A nice title"
-msgstr ""
+msgstr "عنوان مناسب"
 
 msgid "A4 imposed PDF"
-msgstr ""
+msgstr "تغییر دادن A4 به PDF"
 
 msgid "A4 paper"
-msgstr ""
+msgstr "کاغذ A4"
 
 msgid "A5 paper"
-msgstr ""
+msgstr "کاغذ A5"
 
 msgid "A6 paper (also suitable for e-readers)"
-msgstr ""
+msgstr "کاغذ A6‌(مناسب کتاب خوان الکترونیکی)"
 
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
-msgstr ""
+msgstr "ویرایش کامل نشده در حال انجام است، تفاوت را بررسی و ادامه دهید"
 
 msgid "Action"
-msgstr ""
+msgstr "اقدام"
 
 msgid "Activate the blog-style look and feel"
-msgstr ""
+msgstr "فعال سازی حالت بلاگ(blog-style)"
 
 msgid "Active"
-msgstr ""
+msgstr "فعال سازی"
 
 msgid "Add"
-msgstr ""
+msgstr "افزودن"
 
 msgid "Add a cover image (PNG or JPG)"
-msgstr ""
+msgstr "افزودن تصویر پس‌زمینه(PNG یا JPG)"
 
 msgid "Add a new text"
-msgstr ""
+msgstr "افزودن متن جدید"
 
 msgid "Add an attachment"
-msgstr ""
+msgstr "افزودن ضمیمه"
 
 msgid "Add crop marks to the PDF"
-msgstr ""
+msgstr "اضافه کردن علامت بُرِش به PDF"
 
 msgid "Add new remote repository"
-msgstr ""
+msgstr "افزودن ریپازیتوری راه دور جدید"
 
 msgid "Add non-breaking spaces where appropriate for the language"
-msgstr ""
+msgstr "افزودن فاصله‌ی طولانی بین کلمات در جای مناسب"
 
-msgid ""
-"Add paginator for text listing when the number of texts is greater than "
-"(integer)"
-msgstr ""
+msgid "Add paginator for text listing when the number of texts is greater than (integer)"
+msgstr "افزودن شماره صفحه به فهرست زمانی که تعداد مضوعات زیاد است"
 
 msgid "Add sections to the bookbuilder"
-msgstr ""
+msgstr "افزودن دسته‌بندی به کتاب‌ساز (bookbuilder)"
 
 msgid "Add the OPDS URL"
-msgstr ""
+msgstr "افزودن URL ‌سیستم توزیع انتشار باز(OPDS)"
 
 msgid "Add the selected parts to the bookbuilder"
-msgstr ""
+msgstr "افزودن قسمت‌های انتخاب شده به کتاب‌ساز"
 
 msgid "Add the whole text"
-msgstr ""
+msgstr "افزودن کل متن"
 
 msgid "Add this text to the bookbuilder"
-msgstr ""
+msgstr "افزودن این متن به کتاب‌ساز"
 
 msgid "Add to colophon"
-msgstr ""
+msgstr "افزودن به صفحه آخر کتاب"
 
 msgid "Added"
-msgstr ""
+msgstr "افزوده شد"
 
-msgid ""
-"Additional information (full date, original title, translators, credits, "
-"etc)."
-msgstr ""
+msgid "Additional information (full date, original title, translators, credits, etc)."
+msgstr "اطلاعات تکمیلی(تاریخ کامل، عنوان اصلی، مترجم،عوامل و ..)."
 
 msgid "Additional nginx configuration"
-msgstr ""
+msgstr "پیکربندی اضافی nginx"
 
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
@@ -171,42 +176,46 @@ msgid ""
 "  change, it will appear under %1. There is a big red\n"
 "  button for each deleted text, and you can proceed with the purging."
 msgstr ""
+"پس از تایید تغییرات در زیر %1 ظاهر میشود.\n"
+"دکمه‌ی بزرگ قرمز رنگی برای هر متن حذف شده وجود دارد،\n"
+"و می‌توانید عملیات پاکسازی را انجام دهید."
 
 msgid "Age:"
-msgstr ""
+msgstr "سن:"
 
 msgid "Alias"
-msgstr ""
+msgstr "نام مستعار"
 
 msgid "Alias can't point to itself"
-msgstr ""
+msgstr "نام مستعار نمی‌تواند به خودش اشاره کند"
 
 msgid ""
 "All kind of lists start with one or more leading\n"
 "        whitespace."
-msgstr ""
+msgstr "اسامی فهرست با یک یا چند فاصله شروع می‌شوند."
 
 msgid "All languages"
-msgstr ""
+msgstr "زبان‌ها"
 
 msgid "All revisions"
-msgstr ""
+msgstr "تجدید نظر‌ها"
 
 msgid "All sites"
-msgstr ""
+msgstr "سایت‌ها"
 
 msgid "All users"
-msgstr ""
+msgstr "کاربران"
 
 msgid ""
-"Allow Unicode URIs for categories (author, topics). Recommended for non-"
-"latin scripts."
+"Allow Unicode URIs for categories (author, topics). Recommended for non-latin scripts."
 msgstr ""
+"اجازه دادن به URI برای دسترسی داشتن به دسته بندی‌ها(نویسنده، موضوعات). پیشنهاد شده برای "
+"اسکریپت‌های غیر لاتین زبان."
 
-msgid ""
-"Allow binary uploads to logged in users: list of whitespace separate file "
-"extensions"
+msgid "Allow binary uploads to logged in users: list of whitespace separate file extensions"
 msgstr ""
+"اجازه دادن آپلود کردن به کاربرانی که وارد سیستم شده‌اند: لیستی از فضای‌خالی که پسوند فایل‌ها "
+"را جدا می‌کند"
 
 msgid ""
 "Also produce slides\n"
@@ -216,9 +225,14 @@ msgid ""
 "          you want to exclude a section, put a comment in the section\n"
 "          body with the string “noslide”."
 msgstr ""
+"همچنین اسلایدهایی از متن بسازید.\n"
+"هر بخش( section) بدون در نظر گرفتن اندازه یک اسلاید می‌سازد. متن خارج از بخش نادیده گرفته "
+"می‌شود،\n"
+"اگر بخش نداشته باشید، اسلایدها خالی خواهند بود.\n"
+"اگر نمی‌خواهید بخش داشته باشد، در بدنه‌ی بخش رشته‌ای(string) با نام ''noslide'' بگذارید."
 
 msgid "Alternate Text"
-msgstr ""
+msgstr "متن جایگزین"
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
@@ -228,870 +242,898 @@ msgid ""
 "      errico-malatesta-anarchy-2. Please note that this is normally\n"
 "      not needed"
 msgstr ""
+"یوآرآی(URI) رشته‌ای است یونیک که متن را در آرشیو مشخص می‌کند.\n"
+"در تئوری می‌تواند هر چیزی باشد، اما اگر می‌خواهید خودتان آنرا تنظیم کنید،\n"
+"لطفا قراردادها را رعایت کنید: نویسنده، عنوان، زبان، شماره نهایی برای ابهام‌زدایی.\n"
+"مثال: اریکو-مالاتستا-آنارشی-۲. لطفا توجه داشته باشید که معمولا این کار نیاز نیست"
 
 msgid "Apache is not currently supported"
-msgstr ""
+msgstr "آپاچی(Apache) در حال حاضر ساپورت نمی‌شود"
 
 msgid "Archive"
-msgstr ""
+msgstr "آرشیو"
 
 msgid "Archive by month"
-msgstr ""
+msgstr "آرشیو ماهیانه"
 
 msgid "Archive history"
-msgstr ""
+msgstr "تاریخ آرشیو"
 
 msgid "Are you sure?"
-msgstr ""
+msgstr "مطمئن هستید؟"
 
 msgid "As cover in the header"
-msgstr ""
+msgstr "به عنوان کاور در هدر"
 
 msgid "As regular image in the body"
-msgstr ""
+msgstr "به عنوان تصویر ثابت در بدنه(body)"
 
 msgid "Assign text to nodes"
-msgstr ""
+msgstr "متن را به گره‌ها(nodes) نسبت دهید"
 
 msgid "Attach"
-msgstr ""
+msgstr "ضمیمه کردن"
 
 msgid "Attached images"
-msgstr ""
+msgstr "تصویر ضمیمه شده"
 
 msgid "Attachments"
-msgstr ""
+msgstr "ضمیمه"
 
 msgid "Author"
-msgstr ""
+msgstr "نویسنده"
 
 msgid "Author and title. If one side document: title."
-msgstr ""
+msgstr "نویسنده و عنوان. اگر متن یک طرفه است: عنوان."
 
 msgid "Authors"
-msgstr ""
+msgstr "نویسندگان"
 
 msgid "Authors and topics listing"
-msgstr ""
+msgstr "نویسندگان و فهرست موضوعات"
 
 msgid "Authors for indexing"
-msgstr ""
+msgstr "نویسندگان برای شاخص گذاری(indexing)"
 
 msgid "Auto"
-msgstr ""
+msgstr "خودکار"
 
 msgid "Automatically generated"
-msgstr ""
+msgstr "به صورت خودکار ایجاد شده"
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
-msgstr ""
+msgstr "به صورت خودکار گواهی SSl از Let's Encrypt درخواست و احیا شود"
 
 msgid "Available"
-msgstr ""
+msgstr "در دسترس"
 
 msgid "Available category tags for header"
-msgstr ""
+msgstr "تگ‌های دسته‌بندی موجود برای هدر"
 
-msgid ""
-"Avoid hyphenation on the last word of a sentence (it could result in bad "
-"spacing)"
-msgstr ""
+msgid "Avoid hyphenation on the last word of a sentence (it could result in bad spacing)"
+msgstr "از نوشتن خط تیره در آخرین کلمه‌ی جمله پرهیز کنید(موجب فاصله گذاری بد می‌شود)"
 
 msgid "Back to the text"
-msgstr ""
+msgstr "بازگشت به متن"
 
 msgid "Bad request"
-msgstr ""
+msgstr "درخواست نادرست"
 
 msgid "Beamer color theme"
-msgstr ""
+msgstr "تم رنگی بیمر(Beamer)"
 
 msgid "Beamer theme"
-msgstr ""
+msgstr "تم بیمر(Beamer)"
 
 msgid "Beside topics and authors you can add more categories here"
-msgstr ""
+msgstr "غیر از موضوعات و نویسندگان میتوانید دسته‌بندی‌های دیگری اضافه کنید"
 
 msgid "Binding correction in millimeters (additional inner margin)"
-msgstr ""
+msgstr "ویرایش الزامی به میلی‌متر(حاشیه‌ی اضافی داخلی)"
 
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
-msgstr ""
+msgstr "بلاک‌های ۱۶ صفحه باید دو بار تا زده شوند و سپس به هم چسبانده شوند."
 
 msgid ""
 "Blocks of 8 pages to be folded twice and then bound\n"
 "                together."
-msgstr ""
+msgstr "بلاک‌های ۸ صفحه باید دو بار تا زده شوند و سپس به هم چسبانده شوند."
 
 msgid "Blog"
-msgstr ""
+msgstr "وبلاگ"
 
 msgid "Body"
-msgstr ""
+msgstr "بدنه"
 
 msgid "Bold"
-msgstr ""
+msgstr "برجسته"
 
 msgid "Bookbuilder"
-msgstr ""
+msgstr "کتاب‌ساز"
 
 msgid "Bookbuilder page limit (integer)"
-msgstr ""
+msgstr "محدودیت صفحه کتاب‌ساز(integer)"
 
 msgid "Build it"
-msgstr ""
+msgstr "آن‌ را بساز"
 
 msgid "Built-in"
-msgstr ""
+msgstr "از پیش ساخته شده"
 
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
 "        numbering"
 msgstr ""
+"به صورت پیش فرض، پی‌نوشت دوم از شماره گذاری عربی بین پرانتز استفاده می‌کند.\n"
+"با این ویژگی از شماره گذاری الفبایی برای هر صحفه استفاده می‌شود"
 
 msgid "By number of pages, ascending"
-msgstr ""
+msgstr "بر اساس تعداد صفحات، بالارونده"
 
 msgid "By number of pages, descending"
-msgstr ""
+msgstr "بر اساس تعداد صفحات، پایین‌رونده"
 
 msgid "By relevance"
-msgstr ""
+msgstr "براساس اهمیت"
 
 msgid "By sku ascending"
-msgstr ""
+msgstr "براساس واحد(sku) بالارونده"
 
 msgid "By sku descending"
-msgstr ""
+msgstr "براساس واحد(sku) پایین‌رونده"
 
 msgid "By title A-Z"
-msgstr ""
+msgstr "بر اساس حرف الف-ی"
 
 msgid "By title Z-A"
-msgstr ""
+msgstr "بر اساس حرف ی-الف"
 
 msgid "CSS Alternate Theme (Dark mode, optional)"
-msgstr ""
+msgstr "تم جایگزین CSS(حالت تاریک، اختیاری)"
 
 msgid "CSS Theme"
-msgstr ""
+msgstr "تم CSS"
 
 msgid "Cancel"
-msgstr ""
+msgstr "لغو"
 
 msgid "Canonical name"
-msgstr ""
+msgstr "نام رسمی"
 
 msgid "Categories"
-msgstr ""
+msgstr "دسته‌بندی‌ها"
 
 #. ($site->canonical)
 #. (site.canonical)
 msgid "Category types for %1"
-msgstr ""
+msgstr "انواع دسته‌بندی برای %1"
 
 msgid "Center all the sectioning titles."
-msgstr ""
+msgstr "در مرکز قرار دادن عناوین بخش بندی شده."
 
 msgid "Center the chapter titles."
-msgstr ""
+msgstr "در مرکز قرار دادن عنوان فصل."
 
 msgid "Changes"
-msgstr ""
+msgstr "تغییرات"
 
 msgid "Changes applied"
-msgstr ""
+msgstr "اعمال تغییرات"
 
 msgid "Changes applied."
-msgstr ""
+msgstr "اعمال تغییرات."
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 #. (author_title)
 msgid "Changes for %1"
-msgstr ""
+msgstr "تغییرات برای %1"
 
 msgid "Changes saved, thanks! They are now waiting to be published"
-msgstr ""
+msgstr "تغییرات با موفقیت اعمال شد، باتشکر! در صف انتشار قرار گرفته‌اند"
 
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
 "doing, you can delete an existing text and point to another adding a\n"
 "#DELETED directive in the text header with a special syntax:"
 msgstr ""
+"تغییر url مناسب نیست. اگر می‌دانید در حال انجام چه کاری هستید،\n"
+"می‌توانید متن موجود را حذف و به یکی دیگر با دستور DELETED# در\n"
+" هدر متن با سینتکس مخصوص به خود اشاره کنید:"
 
 msgid "Chapter"
-msgstr ""
+msgstr "فصل"
 
 msgid "Chapter and section. If one side document: chapter."
-msgstr ""
+msgstr "فصل و بخش. اگر متن یک طرفه است: فصل."
 
 msgid "Chapter, only for chapter divisions in books"
-msgstr ""
+msgstr "فصل، فقط برای تقسیم فصل در کتاب‌ها"
 
 msgid "Cheatsheet for the markup"
-msgstr ""
+msgstr "چیت‌شیت(cheetsheet) برای نشانه گذاری"
 
 msgid "Check"
-msgstr ""
+msgstr "بررسی"
 
 msgid "Check mail sending and send mail to:"
-msgstr ""
+msgstr "بررسی ایمیل و فرستادن به:"
 
 msgid "Choose a paper format"
-msgstr ""
+msgstr "انتخاب فرمت کاغذ"
 
 msgid "Clear the book list"
-msgstr ""
+msgstr "پاک کردن فهرست کتاب"
 
 msgid "Click on the images to get the sample PDF"
-msgstr ""
+msgstr "برای دریافت PDF بر روی تصویر کلیک کنید"
 
 msgid "Clone"
-msgstr ""
+msgstr "تکثیر"
 
 msgid "Close"
-msgstr ""
+msgstr "بستن"
 
 msgid "Code"
-msgstr ""
+msgstr "کد"
 
 msgid "Colophon (displayed in the generated files):"
-msgstr ""
+msgstr "نشان ویژه(نمایش داده شده در فایل‌های ایجاد شده):"
 
-msgid ""
-"Columns for the left side of the editing page, with the editing box (out of "
-"12)"
-msgstr ""
+msgid "Columns for the left side of the editing page, with the editing box (out of 12)"
+msgstr "ستون‌های سمت چپ صفحه‌ی ویرایش، با کادر ویرایش(از ۱۲ تا)"
 
 msgid "Comma or semicolon separated list"
-msgstr ""
+msgstr "کاما یا نقطه‌ویرگول فهرست را جدا می‌کند"
 
 msgid "Commit ID"
-msgstr ""
+msgstr "شناسه تعهد (Commit ID)"
 
 msgid "Completed"
-msgstr ""
+msgstr "تکمیل شد"
 
 msgid "Computing of differences took"
-msgstr ""
+msgstr "محاسبه‌ی تفاوت‌ها انجام شد"
 
 msgid "Confirm"
-msgstr ""
+msgstr "تایید کردن"
 
 msgid "Conflict"
-msgstr ""
+msgstr "مغایرت داشتن"
 
 msgid "Continuous footnote numbering across the whole document."
-msgstr ""
+msgstr "شماره گذاری پی‌نوشت سرتاسر کل متن."
 
 msgid "Convert to archive markup"
-msgstr ""
+msgstr "تبدیل به آرشیو نشانه گذاری(markup)"
 
 msgid "Copyright notice"
-msgstr ""
+msgstr "اعلان حق چاپ"
 
 msgid "Couldn't add the text"
-msgstr ""
+msgstr "متن افزوده نمی‌شود"
 
 msgid "Couldn't automatically generate the URI!"
-msgstr ""
+msgstr "به صورت اتوماتیک URI ساخته نمی‌شود!"
 
 msgid "Couldn't build that"
-msgstr ""
+msgstr "ساخته نمی‌شود"
 
 msgid "Create"
-msgstr ""
+msgstr "ساختن"
 
 msgid "Create a new category type. Please use only lowercase ASCII letters"
-msgstr ""
+msgstr "ایجاد کردن دسته‌بندی جدید. لطفا فقط از حروف کوچک ASCII استفاده کنید"
 
 msgid "Create a new format"
-msgstr ""
+msgstr "فرمت جدیدی ایجاد کنید"
 
 msgid "Create a new librarian"
-msgstr ""
+msgstr "ایجاد کردن کتاب‌دار جدید"
 
 msgid "Create a new special page"
-msgstr ""
+msgstr "ایجاد کردن صفحه‌ی ویژه"
 
 msgid "Create a new user"
-msgstr ""
+msgstr "ایجادکردن کاربر جدید"
 
 msgid ""
-"Create a public repository on GitLab, GitHub or similar services (or on your "
-"own server). "
-msgstr ""
+"Create a public repository on GitLab, GitHub or similar services (or on your own server). "
+msgstr "ایجاد کردن ریپازیتوری عمومی در GitLab ,GitHub یا سرویس‌های مشابه(یا روی سرور خود). "
 
 msgid "Create a topic alias"
-msgstr ""
+msgstr "ایجاد کردن موضوع ساختگی"
 
 msgid "Create an author alias"
-msgstr ""
+msgstr "ایجاد کردن نام مستعار"
 
 msgid "Create new site"
-msgstr ""
+msgstr "ایجاد سایت جدید"
 
 msgid "Create user and mail password"
-msgstr ""
+msgstr "ایجاد کردن رمز عبور کاربر و ایمیل"
 
 msgid "Created"
-msgstr ""
+msgstr "ایجاد شد"
 
 msgid "Created by"
-msgstr ""
+msgstr "ساخته شده توسط"
 
 msgid "Created new text"
-msgstr ""
+msgstr "متن جدید ساخته شد"
 
 msgid "Current time"
-msgstr ""
+msgstr "زمان فعلی"
 
 #. ($c->stash->{site}->canonical)
 #. (site.canonical)
 msgid "Custom formats for %1"
-msgstr ""
+msgstr "دستی سازی فرمت‌ها برای %1"
 
 msgid "Custom home page"
-msgstr ""
+msgstr "شخصی‌سازی صفحه‌ی اصلی"
 
 msgid "Date"
-msgstr ""
+msgstr "زمان"
 
 msgid "Date of the original publication"
-msgstr ""
+msgstr "تاریخ اولین انتشار"
 
 msgid "Default"
-msgstr ""
+msgstr "پیش‌فرض"
 
 msgid "Default sorting for the category text list"
-msgstr ""
+msgstr "مرتب‌سازی پیش‌فرض برای دسته‌بندی فهرست متن"
 
 msgid "Default value if blank:"
-msgstr ""
+msgstr "ارزش پیش‌فرض در صورت خالی بودن:"
 
 msgid "Deferred/Deleted texts"
-msgstr ""
+msgstr "متون معوقه / حذف شده"
 
 msgid "Delete"
-msgstr ""
+msgstr "حذف کردن"
 
 msgid "Delete permanently"
-msgstr ""
+msgstr "حذف کردن دائمی"
 
 #. (remote.name)
 msgid "Delete remote repository %1"
-msgstr ""
+msgstr "حذف کردن ریپازیتوری راه دور %1"
 
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
 msgstr ""
+"اگر متنی منتشر شده باشد، حذف یک نسخه بی‌خطر است. در غیر این صورت\n"
+" با حذف آن، تغییرات منتشر نشده را از دست خواهید داد"
 
 msgid "Description"
-msgstr ""
+msgstr "توضیحات"
 
 msgid "Description item"
-msgstr ""
+msgstr "بخش توضیحات"
 
 msgid ""
 "Description lists use a double colon to separate the\n"
 "        term and the description."
-msgstr ""
+msgstr "فهرست توضیحات از :: برای جدا کردن عبارت و توضیحات استفاده می کنند."
 
 msgid "Desired URI"
-msgstr ""
+msgstr "موردنظر URI"
 
 msgid "Destination"
-msgstr ""
+msgstr "مقصد"
 
 msgid "Details"
-msgstr ""
+msgstr "جزئیات"
 
 msgid "Did you mean:"
-msgstr ""
+msgstr "منظور:"
 
 msgid "Diff"
-msgstr ""
+msgstr "تفاوت‌"
 
 msgid "Differences"
-msgstr ""
+msgstr "تفاوت‌ها"
 
 msgid ""
 "Directory with templates in the site repository, e.g.\n"
 "        \"templates\" (ASCII only). Do not set it unless you know\n"
 "        exactly what you are doing"
 msgstr ""
+"دایرکتوری با الگوهای موجود در ریپازیتوری سایت،\n"
+" مثال \"templates\" (فقط ASCII). از تنظیم آن خودداری کنید \n"
+"به شرط آن‌که بدانید در حال انجام چه کاری هستید"
 
 msgid "Disable /mirror/ URL for anonymous users"
-msgstr ""
+msgstr "غیرفعال کردن قرینه‌سازی و URL برای کاربران ناشناس"
 
 msgid "Display the latest entries on special pages"
-msgstr ""
+msgstr "نمایش آخرین محتویات در صفحه‌ی ویژه"
 
 msgid "Display url as"
-msgstr ""
+msgstr "نمایش URL به عنوان"
 
 msgid "Division factor"
-msgstr ""
+msgstr "معیار تقسیم‌بندی"
 
 msgid "Do not create a cover page and start the text on the first page"
-msgstr ""
+msgstr "متن را از صفحه‌ی اول شروع کنید و صفحه‌ای به عنوان جلد ایجاد نکنید"
 
 msgid "Do not enforce save message"
-msgstr ""
+msgstr "پیام ذخیره را اجرا نکنید"
 
 msgid "Do not redirect aliases to canonical"
-msgstr ""
+msgstr "نام مستعار را از نام قانونی نگیرید"
 
 msgid "Do not use bold fonts"
-msgstr ""
+msgstr "از فونت برجسته استفاده نکنید"
 
 msgid "Domain"
-msgstr ""
+msgstr "دامنه"
 
 msgid "Done"
-msgstr ""
+msgstr "انجام شد"
 
 msgid "Double bars"
 msgstr ""
 
 msgid "Downloads"
-msgstr ""
+msgstr "دانلودها"
 
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
-msgstr ""
+msgstr "مثال، موضوع:«موضوع» و نویسنده:نویسنده یا سال:۲۰۱۷"
 
 msgid "EPUB"
-msgstr ""
+msgstr "فرمت EPUB"
 
 msgid "EPUB (for mobile devices)"
-msgstr ""
+msgstr "فرمت EPUB (برای موبایل)"
 
 msgid "ETA"
 msgstr ""
 
 msgid "Edit"
-msgstr ""
+msgstr "ویرایش"
 
 msgid "Edit attachment description"
-msgstr ""
+msgstr "ویرایش توضیحات ضمیمه شده"
 
 #. ($format->format_name)
 msgid "Edit format %1"
-msgstr ""
+msgstr "ویرایش فرمت %1"
 
 msgid "Edit full site configuration"
-msgstr ""
+msgstr "ویرایش پیکربندی تمام سایت"
 
 msgid "Edit screen layout options"
-msgstr ""
+msgstr "ویرایش قابلیت‌های طرح‌بندی صفحه"
 
 #. (esite.id)
 msgid "Edit site %1"
-msgstr ""
+msgstr "ویرایش سایت ‌%1"
 
 msgid "Edit site configuration"
-msgstr ""
+msgstr "ویرایش پیکربندی سایت"
 
 msgid "Edit the text you want to unpublish and add this line to the header:"
-msgstr ""
+msgstr "متنی را که می خواهید لغو انتشار کنید ویرایش و این خط را به هدر اضافه کنید:"
 
 msgid "Edit this text"
-msgstr ""
+msgstr "ویرایش متن"
 
 #. (user.username)
 msgid "Edit user %1"
-msgstr ""
+msgstr "ویرایش کاربر %1"
 
 msgid "Editing"
-msgstr ""
+msgstr "در حال ویرایش"
 
 msgid "Email"
-msgstr ""
+msgstr "ایمیل"
 
 msgid "Email sent!"
-msgstr ""
+msgstr "ایمیل فرستاده شد!"
 
 msgid "Email updated"
-msgstr ""
+msgstr "ایمیل بروزرسانی شد"
 
 msgid "Email, password, locale"
-msgstr ""
+msgstr "ایمیل، رمزعبور، محل"
 
 msgid "Emails do not match"
-msgstr ""
+msgstr "ایمیل‌ها یکسان نیستند"
 
 msgid "Embed fonts in the EPUB file"
-msgstr ""
+msgstr "قراردادن فونت‌ها در فایل EPUB"
 
 msgid "Enable \"What links here\" feature"
-msgstr ""
+msgstr "فعال‌سازی قابلیت \"لینک اینجا\""
 
 msgid "Enable search suggestions (did you mean...)"
-msgstr ""
+msgstr "فعال‌سازی پیشنهادات جستجو(منظورتان این بود...)"
 
 msgid "Enable title ordering by SKU"
-msgstr ""
+msgstr "فعال‌سازی مرتب‌بندی عنوان بوسیله SKU"
 
 msgid "Enforce e-mail on submission"
-msgstr ""
+msgstr "آدرس ایمیل برای ثبت‌نام الزامی است"
 
 msgid "Erase this revision"
-msgstr ""
+msgstr "پاک کردن متن اصلاح شده"
 
 msgid "Error converting the upload file. Is it an HTML file?"
-msgstr ""
+msgstr "خطا هنگام تبدیل کردن فایل آپلود شده. آیا فایل HTML است؟"
 
 msgid "Error sending mail!"
-msgstr ""
+msgstr "خطای فرستادن ایمیل!"
 
 msgid "Error while converting the HTML. Sorry."
-msgstr ""
+msgstr "خطای تبدیل کردن HTML. متاسفانه."
 
 #. ($res->{error} || "Unknwon error")
 msgid "Error: %1"
-msgstr ""
+msgstr "خطای: %1"
 
 msgid "Errors"
-msgstr ""
+msgstr "خطاها"
 
 msgid "Estimated pages"
-msgstr ""
+msgstr "صفحات پیشنهادی"
 
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
 msgstr ""
+"حتی اگر این سایت کنش‌پذیر باشد و طرح‌بندی سازگار با موبایل داشته باشد،\n"
+"اپلیکیشن اختصاصی برای موبایل ارائه نمی‌کند."
 
 msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
 "        sectioning for this to work."
-msgstr ""
+msgstr "هر بخش یک اسلاید تولید می کند. برای این کار باید بخش بندی مناسبی انجام دهید."
 
 msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
 msgstr ""
+"دقیقاً مانند 2up، اما قرار است ورق ها ابتدا به صورت افقی بریده\n"
+" و سپس روی یکدیگر چیده شوند. به این ترتیب می توانید\n"
+"برای مثال جزوات A6 را در A4 چاپ کنید."
 
 msgid "Example"
-msgstr ""
+msgstr "مثال"
 
 msgid "Exception"
-msgstr ""
+msgstr "استثناء"
 
 msgid "Existing redirections"
-msgstr ""
+msgstr "تغییر مسیرهای موجود"
 
 msgid "Expected pages"
-msgstr ""
+msgstr "صفحات مدنظر"
 
 msgid "Failed"
-msgstr ""
+msgstr "ناموفق"
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
-msgstr ""
+msgstr "ناموفق در افزودن ریپازیتوری راه دور %1"
 
 #. ($name)
 msgid "Failed to remove Remote repository %1"
-msgstr ""
+msgstr "ناموفق در حذف کردن ریپازیتوری راه دور %1"
 
 msgid "Failure fetching the source"
-msgstr ""
+msgstr "ناموفق در دسترسی داشتن به منبع"
 
 msgid "Federation"
-msgstr ""
+msgstr "فدراسیون"
 
 msgid "Feed enclosure method (OPDS and RSS)"
-msgstr ""
+msgstr "روش ضمیمه کردن محتوا (OPDS ,RSS)"
 
 msgid "Fetch"
-msgstr ""
+msgstr "دسترسی داشتن"
 
 msgid "File already in the body"
-msgstr ""
+msgstr "فایل در بدنه وجود دارد"
 
 msgid "File extension"
-msgstr ""
+msgstr "افزونه‌ی فایل"
 
 msgid "File format not allowed"
-msgstr ""
+msgstr "فرمت فایل مجاز نیست"
 
 msgid "File too big"
-msgstr ""
+msgstr "فایل بزرگ است"
 
 msgid "File uploaded!"
-msgstr ""
+msgstr "فایل آپلود شد!"
 
 msgid "Files"
-msgstr ""
+msgstr "فایل‌ها"
 
-msgid ""
-"Fill with blank pages before the last page if the signature is not full."
-msgstr ""
+msgid "Fill with blank pages before the last page if the signature is not full."
+msgstr "اگر جای امضا خالی است قبل از آخرین صفحه فایل را با صفحات خالی پر کنید."
 
 msgid "Filters"
-msgstr ""
+msgstr "فیلترها"
 
 msgid "Find the add catalogue menu."
-msgstr ""
+msgstr "منوی افزودن کاتالوگ را پیدا کنید."
 
 msgid "Find the network library menu, or equivalent."
-msgstr ""
+msgstr "منوی شبکه‌ی کتابخانه یا معادل آن را پیدا کنید."
 
 msgid "First"
-msgstr ""
+msgstr "اولین"
 
 msgid "First Author and Second Author"
-msgstr ""
+msgstr "نویسنده اول و نویسنده دوم"
 
 msgid "First Author, Second Author"
-msgstr ""
+msgstr "نویسنده اول، نویسنده دوم"
 
 msgid "First slide"
-msgstr ""
+msgstr "اسلاید اول"
 
 msgid "First text attachment or EPUB"
-msgstr ""
+msgstr "اولین متن ضمیمه شده یا EPUB"
 
 msgid "First you have to unpublish it via #DELETED."
-msgstr ""
+msgstr "اول باید آنرا از طریق DELETED# لغو انتشار کنید."
 
 msgid "Fix typography (smart quotes)"
-msgstr ""
+msgstr "تصحیح تایپوگرافی( نقل قول)"
 
 msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
-msgstr ""
+msgstr "۱۶ صفحه امضا در دو برگه با دسته‌های دوتایی تثبیت شد."
 
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
-msgstr ""
+msgstr "۱۶ صفحه امضا در یک برگه با دسته‌های سه‌تایی تثبیت شد."
 
 msgid ""
-"Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
-"and bound together."
-msgstr ""
+"Fixed signatures of 8 pages, to be cut horizontally, folded individually, and bound "
+"together."
+msgstr "امضاهای ۸ صفحه همراه با برش افقی در دسته‌های تکی تثبیت و بهم چسبانده شدند."
 
 msgid "Fixed topic list"
-msgstr ""
+msgstr "لیست موضوعات"
 
 msgid "Font preview"
-msgstr ""
+msgstr "پیش نمایش فونت"
 
 msgid "Font size"
-msgstr ""
+msgstr "اندازه فونت"
 
 msgid "Footnotes"
-msgstr ""
+msgstr "پی‌نوشت"
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
-"Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
-"in the body (%4), ignoring changes."
-msgstr ""
+"Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references in the body "
+"(%4), ignoring changes."
+msgstr "عدم تطابق پی‌نوشت: پی‌نوشت %1، (%2) و %3 برگرفته از متن(%4)، صرف نظر از تغییرات."
 
 msgid "For texts from the internet use"
-msgstr ""
+msgstr "برای استفاده اینترنت از متن‌ها"
 
 msgid "For texts without a table of content, start text on the very first page"
-msgstr ""
+msgstr "برای متن‌هایی که از صفحه‌ی اول شروع می‌شوند و فهرست ندارند"
 
 msgid ""
 "For topics and authors redirections, you can create them\n"
 "  here"
-msgstr ""
+msgstr "برای بازهدایت به موضوعات و نویسندگان، می‌توانید آنها را اینجا ایجاد کنید"
 
 msgid "Force a line break."
-msgstr ""
+msgstr "وجود خط خالی بین پاراگراف‌ها اجباری است."
 
 msgid "Force publishing"
-msgstr ""
+msgstr "انتشار اجباری"
 
 msgid "Format name"
-msgstr ""
+msgstr "نام فرمت"
 
 msgid "Format successfully created"
-msgstr ""
+msgstr "فرمت با موفقیت ساخته شد"
 
 msgid "Format successfully updated"
-msgstr ""
+msgstr "فرمت با موفقیت بروزرسانی شد"
 
 msgid "Formats"
-msgstr ""
+msgstr "فرمت‌ها"
 
 msgid "Full list of texts"
-msgstr ""
+msgstr "فهزست تمام متن‌ها"
 
 msgid "Full tag cloud"
-msgstr ""
+msgstr "تمام برچسب‌های ‌cloud"
 
 msgid "Full text search"
-msgstr ""
+msgstr "جستحوی تمام متن"
 
 msgid "Full width, fluid layout"
-msgstr ""
+msgstr "عرض کامل، طرح سیال"
 
 msgid "General configuration"
-msgstr ""
+msgstr "پیکربندی کلی"
 
 msgid "Generate Index"
-msgstr ""
+msgstr "ساخت ایندکس"
 
 msgid "Generic (fits in A4 and Letter)"
-msgstr ""
+msgstr "عمومی (مناسب در A4 و Letter)"
 
 msgid "Get generated URI"
-msgstr ""
+msgstr "دریافت URI ساخته شده"
 
 msgid ""
-"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
-"using the form you can find above. You can have one personal repository."
+"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it using the form "
+"you can find above. You can have one personal repository."
 msgstr ""
+"دریافت ریپازیتوری HTTPS URL، مثال: https://example.com/git/test و با فرمی که در بالاست آن "
+"را بیافزایید. می‌توانید ریپازیتوری شخصی خود را داشته باشید."
 
 msgid "Git"
-msgstr ""
+msgstr "گیت"
 
 msgid "Git console"
-msgstr ""
+msgstr "کنسول گیت"
 
 msgid "Git is not enabled on this site"
-msgstr ""
+msgstr "گیت در این سایت فعال نیست"
 
 msgid ""
 "HTML code to append to each regular page, inserted\n"
 "            verbatim, so be careful"
 msgstr ""
+"کد HTML برای اضافه کردن به هر صفحه معمولی، کلمه به کلمه درج شده است،\n"
+" بنابراین مراقب باشید"
 
 msgid ""
 "HTML to append to each special page, inserted\n"
 "            verbatim, now you have a chance to screw up everything, so\n"
 "            be careful"
 msgstr ""
+"کد HTML برای اضافه کردن به هر صفحه خاص، کلمه به کلمه درج شده است،\n"
+" اکنون فرصت دارید همه چیز را خراب کنید، پس مراقب باشید"
 
 msgid "HTML to insert in the footer of the layout, below the links"
-msgstr ""
+msgstr "کد HTML برای درج در فوتر، زیر لینک‌ها"
 
 msgid "HTML to insert into the left sidebar"
-msgstr ""
+msgstr "کد HTML برای درج در نوار کناری سمت چپ"
 
 msgid "HTML to insert into the right sidebar"
-msgstr ""
+msgstr "کد HTML برای درج در نوار کناری سمت راست"
 
 msgid "HTML to insert on the bottom of the layout, above the footer"
-msgstr ""
+msgstr "کد HTML برای درج در پایین طرح، بالای فوتر"
 
 msgid ""
-"HTML to insert on the top of the layout, behind the navigation bar and below "
-"the banner"
-msgstr ""
+"HTML to insert on the top of the layout, behind the navigation bar and below the banner"
+msgstr "کد HTML برای درج در بالای طرح، پشت نوار مسیریابی و زیر بنر"
 
 msgid "HTML/Word Importer"
-msgstr ""
+msgstr "ورودی HTML/Word"
 
 msgid "Half Letter paper"
-msgstr ""
+msgstr "کاغذ A5"
 
 msgid "Headers"
-msgstr ""
+msgstr "هدرها"
 
 msgid "Heading"
-msgstr ""
+msgstr "سرفصل"
 
 msgid "Headings"
-msgstr ""
+msgstr "سرفصل‌ها"
 
 msgid "Height:"
-msgstr ""
+msgstr "ارتفاع:"
 
 msgid "Help Text"
-msgstr ""
+msgstr "متن کمکی"
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
-msgstr ""
+msgstr "اینجا می‌توانید پیش‌نمایش تم بیمر و رنگ تم را پیدا کنید"
 
 msgid ""
 "Here you can save or load your templates. The text list\n"
 "      and the cover image are excluded by the saved settings. You can\n"
 "      use this to save paper/fonts/imposition and other options."
 msgstr ""
+"در اینجا می توانید قالب های خود را ذخیره یا بارگذاری کنید. لیست متن \n"
+"و تصویر جلد توسط تنظیمات ذخیره شده حذف می‌شوند. می‌توانید \n"
+"از این برای ذخیره کاغذ / فونت / وضع و سایر گزینه ها استفاده کنید."
 
 msgid "Higher division factor means narrower margins"
-msgstr ""
+msgstr "ضریب تقسیم بالاتر به معنای حاشیه های باریک‌تر است"
 
 msgid "Highest priority format"
-msgstr ""
+msgstr "فرمت با بالاترین اولویت"
 
 msgid "How are you going to access Git?"
-msgstr ""
+msgstr "چگونه می خواهید به Git دسترسی پیدا کنید؟"
 
 msgid "How do I create a landing page?"
-msgstr ""
+msgstr "چگونه یک صفحه فرود (صفحه اول) ایجاد کنم؟"
 
 msgid "How do I create a special page?"
-msgstr ""
+msgstr "چگونه یک صفحه خاص ایجاد کنم؟"
 
 msgid "How do I delete a text?"
-msgstr ""
+msgstr "چگونه یک متن را حذف کنم؟"
 
 msgid "How do I modify a special page?"
-msgstr ""
+msgstr "چگونه یک صفحه خاص را اصلاح کنم؟"
 
 msgid "How do I purge a text?"
-msgstr ""
+msgstr "چگونه یک متن را پاک کنم؟"
 
 msgid "How do I redirect to another page?"
-msgstr ""
+msgstr "چگونه به صفحه‌ی دیگری هدایت کنم؟"
 
 msgid "How to choose a password"
-msgstr ""
+msgstr "چگونه رمزعبور انتخاب کنم"
 
 msgid ""
 "However, you can browse, search, download and read the texts\n"
 "  from mobile reading applications which support the so-called OPDS\n"
 "  protocol."
 msgstr ""
+"با این حال، می توانید متون را از برنامه های تلفن همراه\n"
+" که از پروتکل OPDS پشتیبانی می کنند،\n"
+" مرور، جستجو، دانلود و بخوانید."
 
 msgid "I am human"
-msgstr ""
+msgstr "من انسان هستم"
 
 msgid "I have a system user with SSH access"
-msgstr ""
+msgstr "من یک کاربر سیستم با دسترسی SSH دارم"
 
 msgid "I want an imposed (ready to print) PDF"
-msgstr ""
+msgstr "من یک PDF (آماده برای چاپ) می‌خواهم"
 
 msgid "I will provide my remote repository"
-msgstr ""
+msgstr "من ریپازیتوری راه دور خود را ارائه خواهم داد"
 
 msgid "ID"
-msgstr ""
+msgstr "شناسه(ID)"
 
 msgid "ISBN"
-msgstr ""
+msgstr "شابک(ISBN)"
 
 msgid "Id"
-msgstr ""
+msgstr "شناسه(ID)"
 
 msgid ""
-"If by chance another text with the same author and title exists, choose the "
-"desired URI using the field below inserting author, title and a number, e.g. "
-"my-author-my-title-1"
+"If by chance another text with the same author and title exists, choose the desired URI "
+"using the field below inserting author, title and a number, e.g. my-author-my-title-1"
 msgstr ""
+"اگر تصادفاً متن دیگری با همان نویسنده و عنوان وجود دارد، با استفاده از قسمت زیر با درج "
+"نویسنده، عنوان و یک عدد، URI مورد نظر را انتخاب کنید. مثال: نوسنده-عنوان-۱"
 
 msgid ""
 "If it was not your intention, please just ignore this mail and\n"
 "your password will not be changed."
 msgstr ""
+"اگر قصد شما این نبود، لطفا این ایمیل را نادیده بگیرید و رمز عبور شما تغییر نخواهد کرد."
 
 msgid ""
-"If it's not the case, please open a bug report at https://github.com/"
-"melmothx/amusewiki/issues"
+"If it's not the case, please open a bug report at https://github.com/melmothx/amusewiki/"
+"issues"
 msgstr ""
+"اگر مشکل شما این نیست، لطفا گزارش مشکل خود را در این آدرس ثبت کنید https://github.com/"
+"melmothx/amusewiki/issues"
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
@@ -1102,7 +1144,7 @@ msgstr ""
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
-msgstr ""
+msgstr "اگر تنظیم نشده باشد %1 از فهرست برنامه جستجو می شود."
 
 msgid ""
 "If present, hide the\n"
@@ -1111,26 +1153,33 @@ msgid ""
 "          available and more relevance should be given to the attached\n"
 "          files."
 msgstr ""
+"در صورت وجود، فرمت‌های تولید شده و جعبه اطلاعات را پنهان کنید.\n"
+" این در مورد پیوست‌ها منطقی است، زمانی که نسخه‌ی متنی ضعیف یا\n"
+" در دسترس نیست و باید ارتباط بیشتری به فایل‌های پیوست داده شود."
 
 msgid ""
-"If set to a number greater than 0, automatically generate a teaser, with "
-"roughly this length"
+"If set to a number greater than 0, automatically generate a teaser, with roughly this "
+"length"
 msgstr ""
+"اگر روی عددی بزرگتر از 0 تنظیم شود، به طور خودکار یک پیش‌نمایش تقریباً با این طول تولید کنید"
 
 msgid ""
 "If the publication of a text is deferred, list it\n"
 "            with the teaser and the cover without providing access to\n"
 "            the body"
 msgstr ""
+"اگر انتشار متنی به تعویق افتاد،\n"
+" بدون دسترسی به متن، آن را همراه با پیش‌نمایش و جلد فهرست کنید"
 
 msgid ""
-"If the user is allowed to publish, speed up the process skipping the "
-"revision page if there are no conflicts and automatically redirect to the "
-"published text once it is done."
+"If the user is allowed to publish, speed up the process skipping the revision page if "
+"there are no conflicts and automatically redirect to the published text once it is done."
 msgstr ""
+"اگر کاربر مجاز به انتشار باشد، در صورت عدم وجود تضاد در صفحه‌ی بازبینی شده، روند را تسریع "
+"کنید و پس از اتمام به طور خودکار به متن منتشر شده هدایت کنید."
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
-msgstr ""
+msgstr "اگر کاربر ایمیل داده باشد، در قسمت CC ایمیل فهرست شده است"
 
 msgid ""
 "If this line\n"
@@ -1140,12 +1189,18 @@ msgid ""
 "          date will be the time of the publishing, triggering a bump\n"
 "          on RSS and special pages at each editing."
 msgstr ""
+"اگر این خط وجود دارد، تاریخ انتشار (در این سایت) را روی تاریخ روز تنظیم کنید.\n"
+"تاریخ نیز ممکن است در آینده باشد و انتشار را به تعویق بیاندازد.\n"
+" اگر این خط وجود نداشته باشد، تاریخ انتشار زمان انتشار خواهد بود و\n"
+" در هر ویرایش یک RSS و صفحات ویژه ایجاد می شود."
 
 msgid ""
 "If this line is\n"
 "          present and the reason is set to something, the text will be\n"
 "          stored in the archive, but will not be published."
 msgstr ""
+"اگر این خط وجود دارد و دلیلی داشته باشد،\n"
+" متن در آرشیو ذخیره می شود، اما منتشر نمی‌شود."
 
 msgid ""
 "If this line is present, do not create a title page,\n"
@@ -1153,32 +1208,39 @@ msgid ""
 "          produce a PDF styled like an article (chapters and parts\n"
 "          will not start on a new page)."
 msgstr ""
+"اگر این خط وجود دارد، صفحه عنوان ایجاد نکنید،\n"
+" بلکه متن را از همان صفحه اول شروع و یک PDF به سبک\n"
+" مقاله تولید کنید (فصل‌ها و بخش‌ها در صفحه جدید شروع نشوند)."
 
 msgid "If this line is present, do not display the table of contents."
-msgstr ""
+msgstr "اگر این خط وجود دارد، فهرست مطالب را نمایش ندهید."
 
 msgid "If you asked for imposition, select an imposition schema"
-msgstr ""
+msgstr "اگر درخواست طرح دارید، لطفا طرح خود را انتخاب کنید"
 
 msgid ""
 "If you edit some format options, like fonts or paper\n"
 "      dimensions, you may want to rebuild the generated files"
 msgstr ""
+"اگر برخی از گزینه‌های قالب را مانند فونت‌ها یا ابعاد کاغذ را ویرایش می‌کنید،\n"
+" ممکن است بخواهید فایل‌های تولید شده را دوباره بسازید"
 
 msgid ""
 "If you forgot your password, you can choose a new one visiting\n"
 "this link (click on it or copy and paste it in your browser):"
 msgstr ""
+"اگر رمز عبور خود را فراموش کرده‌اید، می‌توانید با بازدید از این سایت\n"
+"رمز حدید خود را انتخاب کنید(کلیک کنید یا آن‌را در مرورگر خود کپی کنید):"
 
-msgid ""
-"If you have a file in .doc or .odt, you can easily convert it saving it as "
-"HTML"
-msgstr ""
+msgid "If you have a file in .doc or .odt, you can easily convert it saving it as HTML"
+msgstr "اگر فایلی با فرمت doc. یا odt. دارید، می‌توانید به راحتی آن را به HTML تبدیل کنید"
 
 msgid ""
 "If you request a rebuild when one is ongoing, you will\n"
 "    abort the current one."
 msgstr ""
+"اگر درخواست بازسازی کنید درحالی که یکی دیگر در حال انجام است، پردازش فعلی را لغو خواهید "
+"کرد."
 
 msgid ""
 "If you use it as a teaser image, the image will also\n"
@@ -1187,46 +1249,53 @@ msgid ""
 "      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
 "      on"
 msgstr ""
+"اگر از آن به عنوان تصویر پیش‌نمایش استفاده کنید، تصویر در صفحه اول PDF قرار می گیرد.\n"
+" می توانید عرض آن را با افزودن خط زیر به هدر تنظیم کنید، جایی که مقدار، نسبت عرض متن است.\n"
+" عرض متن کامل 1 است، 0.5 نصف است و غیره"
 
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
 "the uri \"index\"."
-msgstr ""
+msgstr "اگر سایت شما آن را ندارد، یک صفحه‌ی خاص بسازید و URI را قرار دهید \"index\"."
 
 msgid ""
 "If your site is multilanguage, you can create a language-specific\n"
 "  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
 "  URI \"index\", a dash, and the locale code."
 msgstr ""
+"اگر سایت شما چند زبانه است، می توانید یک صفحه فرود(اول) مخصوص زبان ایجاد کنید، \n"
+"مثال. \"special / index-it/\"، یعنی \"URI \"index، خط تیره، و کد محلی."
 
 msgid "Image already set as cover"
-msgstr ""
+msgstr "تصویر به عنوان جلد انتخاب شده است"
 
 #. ($w, $h, $limit, $limit)
 msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
-msgstr ""
+msgstr "ابعاد تصویر %1 * %2 از پیکسل‌های حد مجاز %3 * %4 بیشتر است"
 
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
+"آپلود تصویر ممکن است در مرحله بعدی انجام شود،\n"
+" زمانی که می توانید تصویر را بررسی و قبل از آپلود ببینید."
 
 msgid "Image url"
-msgstr ""
+msgstr "آدرس URL عکس"
 
 msgid "Images"
-msgstr ""
+msgstr "عکس‌ها"
 
 msgid "Imposition schemas"
-msgstr ""
+msgstr "طرح‌های انتخابی"
 
 msgid "In both case you will get a reverse indentation."
-msgstr ""
+msgstr "در هر دو مورد، یک تورفتگی معکوس دریافت خواهید کرد."
 
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
-msgstr ""
+msgstr "در صورت وجود پی‌نوشت در متن، عددی داخل پرانتز به عنوان مرجع پی‌نوشت مشخص می‌شود."
 
 #. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
@@ -1235,45 +1304,48 @@ msgid ""
 "  pretty much the same for all applications. All you have to do is to\n"
 "  add %1 to the network libraries."
 msgstr ""
+"در این مثال، ما از FBreader استفاده می کنیم، اما رویه تقریباً برای همه برنامه ها یکسان "
+"است.\n"
+" تنها کاری که باید انجام دهید این است که %1 را به کتابخانه های شبکه اضافه کنید."
 
 msgid "Inline elements"
-msgstr ""
+msgstr "عناصر درون خطی"
 
 msgid "Insert the file into the body at the cursor position"
-msgstr ""
+msgstr "فایل را در بدنه در موقعیت مکان‌نما(کرسر)ا قرار دهید"
 
 msgid "Internal list of translations"
-msgstr ""
+msgstr "فهرست ترجمه‌های داخلی"
 
 msgid "Invalid ID"
-msgstr ""
+msgstr "شناسه نامعتبر(ID)"
 
 msgid "Invalid URI"
-msgstr ""
+msgstr "آدرس URI نامعتبر"
 
 msgid "Invalid domain"
-msgstr ""
+msgstr "دامنه‌ی نامعتبر"
 
 msgid "Invalid email"
-msgstr ""
+msgstr "ایمیل نامعتبر"
 
 msgid "Invalid field"
-msgstr ""
+msgstr "فیلد نامعتبر"
 
 msgid "Invalid name"
-msgstr ""
+msgstr "نام نامعتبر"
 
 msgid "Invalid parameter"
-msgstr ""
+msgstr "پارامتر نامعتبر"
 
 msgid "Invalid response"
-msgstr ""
+msgstr "پاسخ نامعتبر"
 
 msgid "Invalid target"
-msgstr ""
+msgstr "هدف نامعتبر"
 
 msgid "Invalid username"
-msgstr ""
+msgstr "نام کاربری نامعتبر"
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -1283,6 +1355,10 @@ msgid ""
 "          of square brackets. Placing secondary footnote references\n"
 "          inside a regular footnote is permitted."
 msgstr ""
+"ممکن است مجموعه‌ای از پی‌نوشت‌های اضافی داشته باشید که از آن برای توضیحات در متن\n"
+" استفاده می‌کنید (مثلاً نسخه‌های انتقادی یا یادداشت‌های مترجم). آنها مانند پی‌نوشت‌های معمولی\n"
+" کار می کنند، اما از براکت های فرفری {} به جای براکت های مربعی [] استفاده می کنند.\n"
+" قرار دادن ارجاعات پاورقی ثانویه در پاورقی معمولی مجاز است."
 
 msgid ""
 "It is recommended to always set a publication\n"
@@ -1291,35 +1367,41 @@ msgid ""
 "                    publication date only on major editing, leaving it\n"
 "                    untouched for minor ones."
 msgstr ""
+"توصیه می شود همیشه تاریخ انتشار را تعیین کنید، بنابراین سیستم نیازی به تکیه بر مهر "
+"زمانی(timestamp) فایل ندارد.\n"
+" همچنین، باید تاریخ انتشار را فقط در ویرایش اصلی بنویسید، و آن را برای ویرایش‌های جزئی دست "
+"نخورده نگه دارید."
 
 msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
 msgstr ""
+"مانند صفحه معمولی کار می کند، اما لینک پنهان است.\n"
+" فقط \" edit/\" را به URL صفحه اضافه کنید."
 
 msgid "Italic"
-msgstr ""
+msgstr "ایتالیک"
 
 msgid "Italics, bold, monospace and code, linebreaks..."
-msgstr ""
+msgstr "ایتالیک، برجسته، هم‌عرض و کد، فاصله بین خطوط و..."
 
 msgid "JPG, PNG and PDF are always allowed."
-msgstr ""
+msgstr "فرمت‌های JPG، PNG و PDF همیشه مجاز هستند."
 
 msgid "Job status"
-msgstr ""
+msgstr "وضعیت برنامه"
 
 msgid "Jobs"
-msgstr ""
+msgstr "عملیات‌ها"
 
 msgid "Jobs (all sites)"
-msgstr ""
+msgstr "عملیات‌ها (همه‌ی سایت‌ها)"
 
 msgid "Jobs waiting before yours:"
-msgstr ""
+msgstr "عملیات‌های در انتظار شما:"
 
 msgid "Just packs 2 consecutives logical pages on a physical one."
-msgstr ""
+msgstr "فقط 2 صفحه لاجیکال متوالی را در یک صفحه‌ی فیزیکی بسته بندی می‌کند."
 
 msgid ""
 "Keep in mind that I’m cleaning the text and give it\n"
@@ -1328,354 +1410,364 @@ msgid ""
 "        be lost in the process. Please check the preview on the next\n"
 "        step, where you can also insert images."
 msgstr ""
+"به خاطر داشته باشید که من متن را پاک می کنم و در نشانه گذاری استفاده شده در این سایت به "
+"شما برمیگردانم.\n"
+" این به شما بستگی دارد که آن را بررسی کنید و در نهایت آن را آپلود کنید. برخی از "
+"نشانه‌گذاری‌هایی که به ندرت\n"
+" استفاده می‌شوند در این فرآیند از بین خواهند رفت. لطفاً پیش نمایش را در مرحله بعدی بررسی، و "
+"در صورت نیاز\n"
+" تصاویر را اضافه کنید."
 
 msgid "Keep in mind that some character may be missing in the required font."
 msgstr ""
+"به خاطر داشته باشید که ممکن است برخی از کاراکترها در فونت مورد نظر وجود نداشته باشند."
 
 msgid ""
 "Keep in mind that unusually\n"
 "        complex formatting will be stripped. Is it possible to add\n"
 "        tables and images only on the next step."
 msgstr ""
+"به خاطر داشته باشید که قالب بندی پیچیده و غیرمعمول حذف خواهد شد.\n"
+" امکان افزودن فهرست و تصاویر فقط در مرحله بعد وجود دارد."
 
 msgid "Language"
-msgstr ""
+msgstr "زبان"
 
 msgid "Language code of the document (2 or 3 letters). "
-msgstr ""
+msgstr "کد زبان متن (2 یا 3 حرف). "
 
 msgid "Language selection"
-msgstr ""
+msgstr "انتخاب زبان"
 
 msgid "Languages supported"
-msgstr ""
+msgstr "زبان‌های پشتیبانی شده"
 
 msgid "Last"
-msgstr ""
+msgstr "آخرین"
 
 msgid "Last successful rebuild"
-msgstr ""
+msgstr "آخرین بازنگری موفقیت‌آمیز"
 
 msgid "Last updated"
-msgstr ""
+msgstr "آخرین بروزرسانی"
 
 msgid "Latest entries"
-msgstr ""
+msgstr "آخرین ورودی‌ها"
 
 msgid "Layout"
-msgstr ""
+msgstr "طرح‌بندی"
 
 msgid "Leave it blank if you want it published right away."
-msgstr ""
+msgstr "اگر می‌خواهید فوراً منتشر شود، این قسمت را خالی بگذارید."
 
 msgid "Leave this empty to have it automatically generated"
-msgstr ""
+msgstr "این را خالی بگذارید تا به طور خودکار تولید شود"
 
 msgid "Letter imposed PDF"
-msgstr ""
+msgstr "تبدیل به PDF"
 
 msgid "Letter paper"
-msgstr ""
+msgstr "تقریبا اندازه کاغذ A4"
 
 msgid "Line spacing"
-msgstr ""
+msgstr "فاصله گذاری بین خطوط"
 
 msgid "Link"
-msgstr ""
+msgstr "لینک"
 
 msgid "Links"
-msgstr ""
+msgstr "لینک‌ها"
 
 msgid "List of paths to attach to this node, one per line."
-msgstr ""
+msgstr "لیست مسیرهایی که باید به این گره متصل شوند، یکی در هر خط."
 
 msgid "List of texts on hold"
-msgstr ""
+msgstr "فهرست متون در انتظار"
 
 msgid "Lists"
-msgstr ""
+msgstr "فهرست‌ها"
 
 msgid "Load"
-msgstr ""
+msgstr "بارگیری"
 
 msgid "Load another session by token"
 msgstr ""
 
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
-msgstr ""
+msgstr "پیکربندی \"%1\" بارگیری شد"
 
 msgid "Loading"
-msgstr ""
+msgstr "درحال بارگیری"
 
 msgid "Local"
-msgstr ""
+msgstr "محلی"
 
 msgid "Local pages"
-msgstr ""
+msgstr "صفحات محلی"
 
 msgid "Locale updated"
-msgstr ""
+msgstr "محلی آپدیت شد"
 
 msgid "Locked editing, no upload possible"
-msgstr ""
+msgstr "ویرایش قفل شده است، امکان آپلود وجود ندارد"
 
 msgid "Log in"
-msgstr ""
+msgstr "ورود"
 
 msgid "Login"
-msgstr ""
+msgstr "ورود"
 
 msgid "Logout"
-msgstr ""
+msgstr "خروج"
 
 msgid "Look into the account’s menu, there is an entry for that."
-msgstr ""
+msgstr "به منوی حساب نگاه کنید، یک ورودی برای آن وجود دارد."
 
 msgid "Lost your password?"
-msgstr ""
+msgstr "فراموش کردن گذرواژه؟"
 
 msgid "Magic answer"
-msgstr ""
+msgstr "جواب جادویی"
 
 msgid "Magic question"
-msgstr ""
+msgstr "سوال جادویی"
 
 msgid "Mail from"
-msgstr ""
+msgstr "ایمیل از"
 
 msgid "Main canonical hostname, without protocol"
-msgstr ""
+msgstr "نام اصلی هاست، بدون پروتکل"
 
 msgid "Main font"
-msgstr ""
+msgstr "فونت اصلی"
 
 msgid "Main text"
-msgstr ""
+msgstr "متن اصلی"
 
 msgid "Maintainer's FAQ"
-msgstr ""
+msgstr "نگهدارنده سوالات متداول"
 
 msgid "Make a link clickable"
-msgstr ""
+msgstr "قابل کلیک کردن لینک"
 
 msgid "Make all links active"
-msgstr ""
+msgstr "فعال کردن همه‌ی لینک‌ها"
 
 msgid "Make all non-breaking spaces explicit and visible as ~~"
-msgstr ""
+msgstr "همه فضاهای بدون شکست را به صورت ~~ واضح و قابل مشاهده کنید"
 
 msgid "Manage categories"
-msgstr ""
+msgstr "مدیریت دسته‌بندی‌ها"
 
 msgid "Manage category types"
-msgstr ""
+msgstr "مدیریت انواع دسته‌بندی‌ها"
 
 msgid "Margins: please choose a division factor or set width and height"
-msgstr ""
+msgstr "حاشیه: لطفاً یک ضریب تقسیم را انتخاب کنید یا عرض و ارتفاع را تنظیم کنید"
 
 msgid "Max image dimension in pixels, applies to both width and height"
-msgstr ""
+msgstr "حداکثر ابعاد تصویر در پیکسل، هم برای عرض و هم برای ارتفاع اعمال می‌شود"
 
 msgid "Max size for uploads in Mb"
-msgstr ""
+msgstr "حداکثر اندازه برای آپلود به مگابایت"
 
 msgid "Message"
-msgstr ""
+msgstr "پیام‌"
 
 #. (8)
 msgid "Minimum %1 characters"
-msgstr ""
+msgstr "حداقل %1 کلمه‌ها"
 
 msgid "Mirror"
-msgstr ""
+msgstr "قرینه‌سازی"
 
 msgid "Mirror of:"
-msgstr ""
+msgstr "قرینه‌ی:"
 
 msgid "Missing #title header in the text!"
-msgstr ""
+msgstr "سرصفحه title# در متن وجود ندارد!"
 
 msgid "Missing alias"
-msgstr ""
+msgstr "نام مستعار وجود ندارد"
 
 msgid "Missing character will be reported"
-msgstr ""
+msgstr "کاراکتر گم شده گزارش خواهد شد"
 
 msgid "Missing redirection"
-msgstr ""
+msgstr "تغییر مسیر وجود ندارد"
 
 msgid "Mobile"
-msgstr ""
+msgstr "موبایل"
 
 msgid "Mobile applications"
-msgstr ""
+msgstr "برنامه‌ی موبایل"
 
 msgid "Mode"
-msgstr ""
+msgstr "طرزعمل"
 
 msgid "Moderated wiki"
-msgstr ""
+msgstr "ویکی تعدیل شده"
 
 msgid "Mono font"
-msgstr ""
+msgstr "فونت مونو"
 
 msgid "More"
-msgstr ""
+msgstr "بیشتر"
 
 msgid "Move down"
-msgstr ""
+msgstr "به سمت پایین"
 
 msgid "Move up"
-msgstr ""
+msgstr "به سمت بالا"
 
 msgid "Multilanguage: list of whitespace separated language codes"
-msgstr ""
+msgstr "چند زبانه: فهرستی از کدهای زبان جدا شده با فاصله"
 
 msgid "My description"
-msgstr ""
+msgstr "شرح من"
 
 msgid "N/A"
-msgstr ""
+msgstr "بدون پاسخ"
 
 msgid "Name"
-msgstr ""
+msgstr "نام"
 
 msgid "Name plural"
-msgstr ""
+msgstr "اسم جمع"
 
 msgid "Name singular"
-msgstr ""
+msgstr "اسم مفرد"
 
 msgid "Network library listing screen."
-msgstr ""
+msgstr "صفحه‌ی فهرست کتابخانه شبکه."
 
 msgid "Never display the cover"
-msgstr ""
+msgstr "هرگز جلد را نمایش ندهید"
 
 msgid "Never generate a table of content"
-msgstr ""
+msgstr "هرگز جدولی از محتوا تولید نکنید"
 
-msgid ""
-"Never generate the standard final page with title/author/notes/logo/site name"
-msgstr ""
+msgid "Never generate the standard final page with title/author/notes/logo/site name"
+msgstr "هرگز آخرین صفحه را با عنوان / نویسنده / یادداشت‌ها / لوگو / اسم سایت پر نکنید"
 
 msgid "Never show teaser and/or cover in text lists"
-msgstr ""
+msgstr "هرگز پیش‌نمایش و/ یا تصویر جلد را در فهرست‌های متنی نشان ندهید"
 
 msgid "New"
-msgstr ""
+msgstr "جدید"
 
 msgid "New revision"
-msgstr ""
+msgstr "بازنگری جدید"
 
 msgid "New site id"
-msgstr ""
+msgstr "شناسه جدید سایت"
 
 msgid "Newer first"
-msgstr ""
+msgstr "اول جدیدترین"
 
 msgid "Newer texts"
-msgstr ""
+msgstr "متن‌های حدیدتر"
 
 msgid "Next"
-msgstr ""
+msgstr "بعدی"
 
 msgid "Nice title"
-msgstr ""
+msgstr "عنوان مناسب"
 
 msgid "No"
-msgstr ""
+msgstr "خیر"
 
 msgid "No data available in table"
-msgstr ""
+msgstr "داده‌ای در جدول وجود ندارد"
 
 msgid "No editing yet!"
-msgstr ""
+msgstr "ویرایش نشده!"
 
 msgid "No matching records found"
-msgstr ""
+msgstr "سوابق منطبقی یافت نشد"
 
 msgid "No result found!"
-msgstr ""
+msgstr "هیچ نتیجه‌ای یافت نشد!"
 
 msgid "No revisions to show"
-msgstr ""
+msgstr "هیچ ویرایشی برای نمایش وجود ندارد"
 
 msgid "No text found!"
-msgstr ""
+msgstr "متن وجود ندارد!"
 
 msgid "No text was added yet"
-msgstr ""
+msgstr "هنوز متنی اضافه نشده است"
 
 msgid "Nodes"
-msgstr ""
+msgstr "گره‌ها(Nodes)"
 
 msgid "None"
-msgstr ""
+msgstr "هیچ چیز"
 
 #. ($c->loc('Save')
 msgid ""
-"Not finished yet! Please have a look at the text and then click on \"%1\" to "
-"finalize your submission!"
-msgstr ""
+"Not finished yet! Please have a look at the text and then click on \"%1\" to finalize your "
+"submission!"
+msgstr "هنوز تمام نشده! لطفاً به متن نگاه کنید و سپس بر روی \"%1\" کلیک کنید تا ارسال شود!"
 
 msgid "Notes"
-msgstr ""
+msgstr "یادداشت‌ها"
 
 msgid "Nothing to see here, so far"
-msgstr ""
+msgstr "تا الان، چیزی برای دیدن وجود ندارد"
 
 msgid "Nothing uploaded"
-msgstr ""
+msgstr "چیزی آپلود نشده است"
 
 msgid "Notify mail: blank field will disable them"
-msgstr ""
+msgstr "خبررسانی ایمیل: فیلد خالی آنها را غیرفعال می‌کند"
 
 msgid "Notify to"
-msgstr ""
+msgstr "اطلاع‌رسانی به"
 
 msgid ""
-"Now it has been aligned to the site's archive, but this means that there are "
-"some missing commits."
+"Now it has been aligned to the site's archive, but this means that there are some missing "
+"commits."
 msgstr ""
+"اکنون با آرشیو سایت هماهنگ شده است، اما به این معنی است که برخی از نسخه‌های بازنگری ناپدید "
+"شده‌اند."
 
 msgid "Now we are going to populate it and get it ready"
-msgstr ""
+msgstr "حالا می‌خواهیم آن را وارد کامپیوتر و آماده کنیم"
 
 msgid "Number of jobs"
-msgstr ""
+msgstr "تعداد برنامه‌ها"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
-msgstr ""
+msgstr "تعداد آخرین ورودی ها برای نمایش در RSS (عدد)"
 
 msgid "Number of results to show on paginated pages (an integer)"
-msgstr ""
+msgstr "تعداد نتایج برای نمایش در صفحات صفحه‌بندی شده (عدد)"
 
 msgid "OPDS"
-msgstr ""
+msgstr "توزیع OPDS"
 
 msgid "Older first"
-msgstr ""
+msgstr "اول قدیمی‌ترین"
 
 msgid "Older texts"
-msgstr ""
+msgstr "متن‌های قدیمی‌تر"
 
 msgid "On text creation, enforce user to choose the URI"
-msgstr ""
+msgstr "هنگام ایجاد متن، کاربر را مجبور به انتخاب URI کنید"
 
-msgid ""
-"One page per sheet. This is useful only if you want to add the cropmarks"
-msgstr ""
+msgid "One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr "یک صفحه در هر برگ این فقط در صورتی مفید است که بخواهید نشانه‌های برش را اضافه کنید"
 
 msgid "Open wiki"
-msgstr ""
+msgstr "ویکی را باز کنید"
 
 msgid "Option templates"
-msgstr ""
+msgstr "قالب‌های گزینه"
 
 msgid "Optional, defaults to the author directive"
-msgstr ""
+msgstr "اختیاری، به طور پیش فرض به دستور نویسنده است"
 
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
@@ -1684,47 +1776,54 @@ msgid ""
 "          later, or, better, contact the librarians before proceeding,\n"
 "          to avoid wasting energies."
 msgstr ""
+"یا یک بازبینی جدید با مسئولیت خود ایجاد کنید. داشتن چندین بازبینی همزمان\n"
+" به این معنی است که، تنها یکی انتخاب می‌شود، مگر اینکه کسی از آن مراقبت کند.\n"
+"می‌توانید ادامه دهید، یا بعداً دوباره امتحان کنید، یا بهتر است قبل از ادامه دادن\n"
+" با کتابداران تماس بگیرید تا از اتلاف انرژی جلوگیری کنید."
 
 msgid "Or log in, if you have an account."
-msgstr ""
+msgstr "یا وارد شوید اگر حساب کاربری دارید."
 
 msgid "Or provide an HTML file to upload"
-msgstr ""
+msgstr "یا یک فایل HTML برای آپلود آماده کنید"
 
 msgid "Or wrap it in"
-msgstr ""
+msgstr "یا آن را پوشش دهید"
 
 msgid "Ordered List"
-msgstr ""
+msgstr "فهرست مرتب‌شده"
 
 msgid "Outer margin"
-msgstr ""
+msgstr "حاشیه‌ی خارجی"
 
 msgid "PDF"
-msgstr ""
+msgstr "فرمت PDF"
 
 msgid "PDF logo"
-msgstr ""
+msgstr "لوگوی PDF"
 
 msgid "PDFs cannot be used in the body."
-msgstr ""
+msgstr "فایل های PDF را نمی‌توان در بدنه استفاده کرد."
 
 #. ('#ATTACH')
 #. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
+"فایل‌های PDF که در دستورالعمل %1 فهرست نشده اند ذخیره می شوند اما نادیده گرفته می‌شوند."
 
 msgid "Page not found!"
-msgstr ""
+msgstr "صفحه پیدا نشد!"
 
 msgid "Page where to start a chapter"
-msgstr ""
+msgstr "صفحه‌ای که فصل با آن شروع می‌شود"
 
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
 "        This is not meant to be folded."
 msgstr ""
+"صفحات دوباره مرتب نمی‌شوند. برگه اول شامل صفحات 1 و 2،\n"
+"برگه دوم 3 و 4 و غیره در کنار هم قرار می‌گیرند. این صفحات نباید تا شوند."
 
 msgid ""
 "Pages are reordered, in one or more groups\n"
@@ -1735,124 +1834,129 @@ msgid ""
 "        whole book in a single signature, or an optimized size to\n"
 "        reduce the number of blank pages."
 msgstr ""
+"صفحات دوباره مرتب می شوند، در یک یا چند گروه (بخش)، سپس از وسط تا می شوند\n"
+"اگر بخش‌های بیشتری دارید، باید آنها را مانند یک کتاب به هم بچسبانید. ممکن است بخواهید\n"
+" اندازه بخش‌ها را تعیین کنید. این می‌تواند یک مقدار ثابت باشد (4، 8، 16 و غیره)،\n"
+" کل کتاب در یک بخش، یا اندازه بهینه شده برای کاهش تعداد صفحات خالی."
 
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
-msgstr ""
+msgstr "ضخامت کاغذ (0.10 باید برای کاغذ معمولی 80g/m2 مناسب باشد)"
 
 msgid "Paragraph indentation in points (pt)"
-msgstr ""
+msgstr "فاصله‌گذاریمناسب پاراگراف(pt)"
 
 msgid "Paragraphs"
-msgstr ""
+msgstr "پاراگراف‌ها"
 
 msgid "Parent node"
-msgstr ""
+msgstr "گره والد"
 
 msgid "Part"
-msgstr ""
+msgstr "بخش"
 
 msgid "Part and chapter. If one side document: part."
-msgstr ""
+msgstr "بخش و فصل. اگر متن یک طرفه است: بخش."
 
 msgid "Part of"
-msgstr ""
+msgstr "قسمتی از"
 
 msgid "Part, for larger books only"
-msgstr ""
+msgstr "بخش، فقط برای کتاب‌های بزرگ"
 
 msgid "Partial selection"
-msgstr ""
+msgstr "انتخاب جزئی"
 
 msgid "Password"
-msgstr ""
+msgstr "رمزعبور"
 
 msgid "Password too short"
-msgstr ""
+msgstr "رمزعبور کوتاه است"
 
 msgid "Password updated"
-msgstr ""
+msgstr "رمزعبور بروزرسانی شد"
 
 msgid "Password, minimum 8 characters."
-msgstr ""
+msgstr "حداقل رمزعبور، 8 کاراکتر."
 
 msgid "Passwords do not match"
-msgstr ""
+msgstr "گذرواژه‌‌ها یکسان نیستند"
 
 msgid "Path"
-msgstr ""
+msgstr "مسیر"
 
 msgid "Payload"
-msgstr ""
+msgstr "پی‌لود(Payload)"
 
 msgid "Pending revisions"
-msgstr ""
+msgstr "در انتظار بازبینی"
 
 msgid "Picture"
-msgstr ""
+msgstr "تصویر"
 
 msgid "Place it in the body with a description:"
-msgstr ""
+msgstr "با این توضیحات در بدنه قرار دهید:"
 
 msgid "Place it in the body without description:"
-msgstr ""
+msgstr "بدون توضیحات در بدنه قرار دهید:"
 
 msgid "Place the notes on the back of the first page, impressum-style"
-msgstr ""
+msgstr "یادداشت ها را در پشت صفحه اول، (به سبک \"about\" در وب‌سایت‌ها) قرار دهید"
 
 msgid "Plain PDF"
-msgstr ""
+msgstr "فایل PDF ساده"
 
 msgid ""
-"Please check your inbox, we tried to deliver a mail to the address you "
-"specified with a password reset link"
+"Please check your inbox, we tried to deliver a mail to the address you specified with a "
+"password reset link"
 msgstr ""
+"لطفا صندوق ورودی خود را بررسی کنید، ما سعی کردیم با لینک بازنشانی گذرواژه، ایمیلی را به "
+"آدرسی که مشخص کرده‌اید بفرستیم"
 
 msgid "Please choose a text"
-msgstr ""
+msgstr "لطفا یک متن انتخاب کنید"
 
 msgid "Please choose the Beamer color theme"
-msgstr ""
+msgstr "لطفا رنگ Beamer را انتخاب کنید"
 
 msgid "Please choose the Beamer theme"
-msgstr ""
+msgstr "لطفا تم Beamer را انتخاب کنید"
 
 msgid "Please choose the font size"
-msgstr ""
+msgstr "لطفا اندازه‌ی فونت را انتخاب کنید"
 
 msgid "Please choose the main font"
-msgstr ""
+msgstr "لطفا فونت اصلی را انتخاب کنید"
 
 msgid "Please choose the mono font"
-msgstr ""
+msgstr "لظفا فونت مونو را انتخاب کنید"
 
 msgid "Please choose the sans font"
-msgstr ""
+msgstr "لطفا فونت sans انتخاب کنید"
 
 msgid "Please describe shortly what you did"
-msgstr ""
+msgstr "لظفا به‌صورت کوتاه توضیح دهید چه‌کاری انجام داده‌اید"
 
 msgid "Please do not use a valuable password."
-msgstr ""
+msgstr "لطفا از رمزعبور ارزشمند استفاده نکنید."
 
-msgid ""
-"Please do not use higher levels (part or chapter) for short articles with "
-"sections."
-msgstr ""
+msgid "Please do not use higher levels (part or chapter) for short articles with sections."
+msgstr "لطفاً از بخش یا فصل برای مقالات کوتاه دارای قسمت استفاده نکنید."
 
 #. (amw_group_name)
 msgid "Please ensure that your system user is member of the \"%1\" group"
-msgstr ""
+msgstr "لطفا اطمینان حاصل کنید که کاربر سیستم‌تان عضو گروه %1 است"
 
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
 "        Just a fancy name, so we can know that multiple uploads come\n"
 "        from the same person."
 msgstr ""
+"لطفا نام کاربری بدهید. نباید آدرس ایمیل باشد.\n"
+"فقط یک نام خیالی، تا ما بدانیم که یک شخص در حال بارگذاری فایلهاست."
 
-msgid ""
-"Please initialized it empty, without any README,license, .gitignore or "
-"similar."
+msgid "Please initialized it empty, without any README,license, .gitignore or similar."
 msgstr ""
+"لطفا مقدار دهی اولیه را خالی بگذارید بدون هیچ‌گونه gitignore ،license ،README و موارد مشابه."
 
 msgid ""
 "Please keep in mind that filters are language-specific\n"
@@ -1860,6 +1964,9 @@ msgid ""
 "              text. If not available, they will just leave the text as\n"
 "              is."
 msgstr ""
+"لطفاً به خاطر داشته باشید که فیلترها مختص زبان هستند و\n"
+" ممکن است برای زبان متن در دسترس باشند یا نباشند. اگر\n"
+" در دسترس نباشند، متن را همانطور که هست می‌گذارند."
 
 msgid ""
 "Please keep in mind that if you see “Force publishing”\n"
@@ -1868,172 +1975,183 @@ msgid ""
 "    previous one. Try to avoid this, unless you know what you're\n"
 "    doing."
 msgstr ""
+"لطفاً به خاطر داشته باشید که اگر «انتشار اجباری» را مشاهده کردید، \n"
+"به این معنی است که ویرایش دیگری جایگزین آن شده است، بنابراین\n"
+" با انتشار این ویرایش، در نهایت نسخه قبلی را دوباره منتشر می‌کنید.\n"
+" سعی کنید از این کار اجتناب کنید، مگر اینکه بدانید در حال انجام چه کاری هستید."
 
 msgid "Please leave a mail if you want to be contacted about this change"
-msgstr ""
+msgstr "لطفا ایمیل خود را بگذارید اگر می‌خواهید در مورد تغییرات با شما ارتباط برقرار کنیم"
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
-msgstr ""
+msgstr "لطفا توجه داشته باشید که تگ‌ها باید به تنهایی روی یک خط قرار داده شوند."
 
 msgid ""
 "Please note that you may want to paste from a\n"
 "        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
 "        from word” button. This is supposed to preserve the markup."
 msgstr ""
+"لطفاً توجه داشته باشید که ممکن است بخواهید از یک\n"
+" داکیومنت Word / OpenOffice / LibreOffice / HTML کپی کنید، این‌کار را با استفاده\n"
+" از دکمه\"paste from word\" انجام دهید. این قرار است نشانه گذاری را حفظ کند."
 
 msgid ""
 "Please note: without any prefix, protocol or hostname, just\n"
 "  the bare page name as shown above. External redirecting is not\n"
 "  supported."
 msgstr ""
+"لطفا توجه داشته باشید: بدون هیچ پیشوند، پروتکل یا نام هاست، \n"
+"فقط نام صفحه خالی همانطور که در بالا نشان داده شده است\n"
+". تغییر مسیر خارجی پشتیبانی نمی‌شود."
 
 msgid "Please prove you are a human"
-msgstr ""
+msgstr "لطفا ثابت کنید که انسان هستید"
 
 msgid "Please reindex the site."
-msgstr ""
+msgstr "لطفا سایت را مجددا شاخص‌گذاری کنید."
 
 msgid "Please reload your page"
-msgstr ""
+msgstr "لطفا صفحه خود را دوباره بارگذاری کنید"
 
 msgid "Please remove this file from the body first"
-msgstr ""
+msgstr "لطفا ابتدا این فایل را از بدنه حذف کنید"
 
-msgid ""
-"Please replace the example URL in the next line with the real one with SSH "
-"protocol"
-msgstr ""
+msgid "Please replace the example URL in the next line with the real one with SSH protocol"
+msgstr "لطفاً مثال URL در خط بعدی را با آدرس واقعی و با پروتکل SSH جایگزین کنید"
 
 msgid "Please select"
-msgstr ""
+msgstr "لطفا انتخاب کنید"
 
 msgid "Please select the desired fonts"
-msgstr ""
+msgstr "لطفا فونت‌های مورد نظر را انتخاب کنید"
 
 msgid "Please select the signature size:"
-msgstr ""
+msgstr "لطفا اندازه امضا را انتخاب کنید:"
 
-msgid ""
-"Please select the size of each page including the crop marks, before the "
-"imposing"
-msgstr ""
+msgid "Please select the size of each page including the crop marks, before the imposing"
+msgstr "لطفاً اندازه هر صفحه از جمله علائم برش را قبل از پایان انتخاب کنید"
 
 msgid "Please set"
-msgstr ""
+msgstr "لطفا تنظیم کنید"
 
 msgid ""
 "Please set the URI you desire. Author (if present),\n"
 "        title and eventually a number if the URI already exists is\n"
 "        usually a good choice"
 msgstr ""
+"لطفاً URI مورد نظر خود را تنظیم کنید. نویسنده (در صورت وجود)،\n"
+" عنوان و در نهایت عدد، اگر URI از قبل وجود داشته باشد معمولاً انتخاب خوبی است"
 
 msgid "Please setup the Beamer layout"
-msgstr ""
+msgstr "لطفا طرح Beamer را تنظیم کنید"
 
 msgid "Please upload your file again!"
-msgstr ""
+msgstr "لطفا فایل خود را دوباره بارگذاری کنید!"
 
 msgid "Poetry, bibliographies, plays, code blocks"
-msgstr ""
+msgstr "شعر، کتابشناسی، نمایشنامه، بلاک‌های کد"
 
 msgid "Pointing to"
-msgstr ""
+msgstr "با اشاره به"
 
 msgid "Popular texts"
-msgstr ""
+msgstr "متن های محبوب"
 
 msgid "Preferred language"
-msgstr ""
+msgstr "زبان ترجیحی"
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
+"پیشوند لیست‌های مرتب شده بسته به نوع لیست مورد نیاز شما ممکن است \".1 \"، \".آ \"، \"ّّّI\"، "
+"باشد."
 
 msgid "Preview"
-msgstr ""
+msgstr "پیش‌نمایش"
 
 msgid "Preview box height in pixel"
-msgstr ""
+msgstr "پیش‌نمایش ارتفاع جعبه به پیکسل"
 
 msgid "Previous"
-msgstr ""
+msgstr "قبلی"
 
 msgid "Priority"
-msgstr ""
+msgstr "اولویت"
 
 msgid "Private"
-msgstr ""
+msgstr "شخصی"
 
 msgid "Procedure"
-msgstr ""
+msgstr "طرز عمل"
 
 msgid "Processing"
-msgstr ""
+msgstr "درحال پردازش"
 
 msgid "Produce slides."
-msgstr ""
+msgstr "تولید کردن اسلاید‌ها."
 
 msgid "Produced"
-msgstr ""
+msgstr "تولید شده"
 
 msgid "Publication date"
-msgstr ""
+msgstr "تاریخ انتشار"
 
 msgid "Publication date on this site"
-msgstr ""
+msgstr "تاریخ انتشار در این سایت"
 
 msgid "Publish"
-msgstr ""
+msgstr "منتشر کردن"
 
 msgid "Published in *A nice book*, published by My House, 2014"
-msgstr ""
+msgstr "منتشر شده در *یک کتاب خوب*، انتشارات خانه من، 2014"
 
 msgid "Publisher"
-msgstr ""
+msgstr "ناشر"
 
 msgid "Purge"
-msgstr ""
+msgstr "پاکسازی"
 
-msgid ""
-"Purging means removing it completely from the archive, not just hiding it."
-msgstr ""
+msgid "Purging means removing it completely from the archive, not just hiding it."
+msgstr "پاکسازی به معنای حذف کامل آن از بایگانی است، نه فقط پنهان کردن آن."
 
 msgid ""
 "Put additional information here (original\n"
 "\t  title, translators, credits, etc). Footnotes go in the\n"
 "\t  body."
 msgstr ""
+"اطلاعات اضافی (عنوان اصلی، مترجمان، عوامل و غیره) را در اینجا قرار دهید.\n"
+" پی‌نوشت‌ها در بدنه قرار دارند."
 
 msgid "Quarter Letter paper"
-msgstr ""
+msgstr "یک چهارم کاغذ تقریبا A4"
 
 msgid "Queue"
-msgstr ""
+msgstr "در صف"
 
 msgid "Quota exceeded, too many pages"
-msgstr ""
+msgstr "تعداد صفحات بیش از حد مجاز است"
 
 msgid "Quotes"
-msgstr ""
+msgstr "نقل‌قول‌ها"
 
 msgid "RSS aggregator"
-msgstr ""
+msgstr "گردآورنده RSS"
 
 msgid "RSS feed"
 msgstr ""
 
 msgid "Random"
-msgstr ""
+msgstr "تصادفی"
 
 msgid "Read about the file naming scheme if you need to add files to the tree."
-msgstr ""
+msgstr "در صورت نیاز به افزودن فایل به درخت، طرح نامگذاری فایل را بخوانید."
 
 msgid "Read the whole text..."
-msgstr ""
+msgstr "تمام متن را بخوانید..."
 
 msgid "Real time help"
-msgstr ""
+msgstr "کمک فوری"
 
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
@@ -2045,127 +2163,133 @@ msgid ""
 "              message. The procedure tries to be safe and will ignore\n"
 "              the change if footnotes are missing or are too many."
 msgstr ""
+"پی‌نوشت‌ها را دوباره مرتب کنید، شماره گذاری را ثابت کنید،\n"
+"فقط ترتیب درج آنها را در نظر بگیرید. اگر نمی‌دانید این به چه معناست لطفاً علامت نزنید.\n"
+"این گزینه می تواند مخرب باشد، لطفا با احتیاط استفاده کنید و نتیجه را بررسی کنید.\n"
+" در صورت مواجه شدن با این مشکل، لطفاً نتیجه را در قالب پیام گزارش دهید. \n"
+"این روش سعی می‌کند بی‌خطر باشد و اگر پی‌نوشت‌ها گم شده یا خیلی زیاد باشند\n"
+"، این تغییر را نادیده می‌گیرد."
 
 msgid "Reason"
-msgstr ""
+msgstr "دلیل"
 
 msgid "Reason for deletion"
-msgstr ""
+msgstr "دلیل حذف کردن"
 
 msgid "Rebuild"
-msgstr ""
+msgstr "بازسازی"
 
 msgid "Rebuild all generated files"
-msgstr ""
+msgstr "بازسازی فایل‌های تولید شده"
 
 msgid "Rebuild formats"
-msgstr ""
+msgstr "بازسازی فرمت‌ها"
 
 msgid "Rebuild the generated formats"
-msgstr ""
+msgstr "بازسازی فرمت‌های تولید شده"
 
 msgid "Rebuilding"
-msgstr ""
+msgstr "بازسازی کردن"
 
 msgid "Recheck"
-msgstr ""
+msgstr "بررسی دوباره"
 
 msgid "Redirections"
-msgstr ""
+msgstr "تغییر مسیرها"
 
 msgid "Refresh and apply filters"
-msgstr ""
+msgstr "بازخوانی و اعمال فیلترها"
 
 msgid "Reindex site"
-msgstr ""
+msgstr "شاخص گذاری مجدد سایت"
 
 msgid "Related projects"
-msgstr ""
+msgstr "پروژه‌های مربوطه"
 
 #. ("$name $url")
 msgid "Remote repository %1 added"
-msgstr ""
+msgstr "ریپازیتوری راه دور %1 افزوده شد"
 
 #. ($name)
 msgid "Remote repository %1 removed"
-msgstr ""
+msgstr "ریپازیتوری راه دور %1 حذف شد"
 
 msgid "Remove"
-msgstr ""
+msgstr "حذف کردن"
 
 msgid "Remove cover image"
-msgstr ""
+msgstr "حذف کردن تصویر پس‌زمینه"
 
 msgid "Remove this category"
-msgstr ""
+msgstr "حذف کردن این دسته"
 
 msgid "Removed Upstream"
 msgstr ""
 
 msgid "Rename"
-msgstr ""
+msgstr "تغییر نام"
 
 msgid "Rename text URI"
-msgstr ""
+msgstr "تغییر متن URI"
 
 msgid "Rename to"
-msgstr ""
+msgstr "تغییر نام به"
 
 msgid "Repeat email"
-msgstr ""
+msgstr "تکرار ایمیل"
 
 msgid "Repeat password"
-msgstr ""
+msgstr "تکرار گذرواژه"
 
 msgid "Request failed! Please report the the problem"
-msgstr ""
+msgstr "درخواست ناموفق بود! لطفا مشکل را گزارش دهید"
 
 msgid "Reschedule"
-msgstr ""
+msgstr "برنامه‌ریزی دوباره"
 
 msgid "Reset all"
-msgstr ""
+msgstr "بازنشانی همه"
 
 msgid "Reset filters"
-msgstr ""
+msgstr "بازنشانی فیلترها"
 
 msgid "Reset password"
-msgstr ""
+msgstr "بازنشانی گذرواژه"
 
 #. (username)
 msgid "Reset password for user %1"
-msgstr ""
+msgstr "بازنشانی گذرواژه‌ی کاربر %1"
 
 msgid "Reset to site defaults"
-msgstr ""
+msgstr "بازنشانی به پیش فرض‌های سایت"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "بازنشانی گذرواژه"
 
 msgid "Restricted configuration variables"
-msgstr ""
+msgstr "متغیرهای محدود پیکربندی"
 
 msgid "Restricted format options"
-msgstr ""
+msgstr "گزینه‌های محدود فرمت"
 
 msgid "Results per page:"
-msgstr ""
+msgstr "نتایج در هر صفحه:"
 
 msgid "Retrieved on DATE from URL"
-msgstr ""
+msgstr "تاریخ روز بوسیله URL بازیابی شد"
 
 msgid "Retrieved on March 8, 2012 from"
-msgstr ""
+msgstr "بازبینی شده در 8 مارس 2012 از"
 
 msgid "Revision"
-msgstr ""
+msgstr "بازبینی"
 
 #. ($uri)
 msgid "Revision for %1 has been deleted"
-msgstr ""
+msgstr "بازبینی %1 پاک شده است"
 
 msgid "Roles"
-msgstr ""
+msgstr "نقش‌ها"
 
 msgid "Root node"
 msgstr ""
@@ -2174,10 +2298,10 @@ msgid "Run diff"
 msgstr ""
 
 msgid "Running headings"
-msgstr ""
+msgstr "سرفصل‌های در حال اجرا"
 
 msgid "SKU"
-msgstr ""
+msgstr "واحد نگهداری موجودی(SKU)"
 
 msgid "SSL CA certificate path (Apache)"
 msgstr ""
@@ -2195,345 +2319,351 @@ msgid "SSL key path"
 msgstr ""
 
 msgid "Same as above, but for duplex printers"
-msgstr ""
+msgstr "مانند بالا، اما برای چاپگرهای پشت و رو"
 
 msgid "Same as above, for the Archive menu"
-msgstr ""
+msgstr "مانند بالا، برای منوی آرشیو"
 
 msgid "Same as above, for the Related Projects menu"
-msgstr ""
+msgstr "مانند بالا، برای منوی پروژه‌های مرتبط"
 
 msgid "Sans font"
-msgstr ""
+msgstr "فونت sans"
 
 msgid "Save"
-msgstr ""
+msgstr "ذخیره"
 
 msgid "Save the current settings with a name"
-msgstr ""
+msgstr "تنظیمات فعلی را با یک نام ذخیره کنید"
 
 #. ($pname)
 msgid "Saved \"%1\" configuration"
-msgstr ""
+msgstr "پیکربندی \"%1\" ذخیره شد"
 
 msgid "Search"
-msgstr ""
+msgstr "جستجو"
 
 msgid "Search Engine Facets"
 msgstr ""
 
 msgid "Search filters"
-msgstr ""
+msgstr "جستجوی فیلترها"
 
 msgid "Search results"
-msgstr ""
+msgstr "نتیجه‌ی جست‌وجو"
 
 msgid "Search this column"
-msgstr ""
+msgstr "جستحو کردن این ستون"
 
 msgid "Secondary footnotes"
-msgstr ""
+msgstr "پی‌نوشت ثانویه"
 
 msgid "Section"
-msgstr ""
+msgstr "بخش"
 
 msgid "Section and subsection. If one side document: section."
-msgstr ""
+msgstr "بخش و زیربخش. اگر متن یک طرفه است: بخش."
 
 msgid "See here for more details."
-msgstr ""
+msgstr "برای دیدن اطلاعات بیشتر اینجا را ببینید."
 
 msgid "See here for the full documentation."
-msgstr ""
+msgstr "برای دیدن تمام داکیومنتیشن اینجا را ببینید."
 
 msgid "See the full manual for more details (english)"
-msgstr ""
+msgstr "دیدن کتابچه‌ی راهنما برای جزئیات بیشتر(english)"
 
 msgid "Select"
-msgstr ""
+msgstr "انتخاب"
 
 msgid "Select all"
-msgstr ""
+msgstr "انتخاب همه"
 
 msgid "Select all for deletion"
-msgstr ""
+msgstr "انتخاب برای پاک کرن"
 
 msgid "Select all for rescheduling"
-msgstr ""
+msgstr "انتخاب همه برای برنامه‌ریزی دوباره"
 
 msgid "Select individual parts for the bookbuilder"
-msgstr ""
+msgstr "انتخاب بخش‌های جداگانه را برای کتاب‌ساز"
 
 msgid "Send mail"
-msgstr ""
+msgstr "فرستادن ایمیل"
 
 #. ($from, $to)
 msgid "Sending test mails from %1 to %2"
-msgstr ""
+msgstr "فرستادن ایمیل آزمایشی از %1 به %2"
 
 msgid "Separate body fields"
-msgstr ""
+msgstr "جدا کردن فیلد‌های بدنه"
 
 msgid "Separate footer fields"
-msgstr ""
+msgstr "جدا کردن فیلدهای پی‌نوشت"
 
 msgid "Separate header fields"
-msgstr ""
+msgstr "جدا کردن فیلدهای هدر"
 
 msgid "Series Name"
-msgstr ""
+msgstr "نام فَروَست(Series)"
 
 msgid "Series Number"
-msgstr ""
+msgstr "شماره فَروَست(Series)"
 
 msgid "Session sharing"
-msgstr ""
+msgstr "اشتراک گذاری session"
 
 msgid "Set a date in the future if you want it deferred."
 msgstr ""
 
 msgid "Settings loaded"
-msgstr ""
+msgstr "تنظیمات بارگیری شد"
 
 msgid "Setup"
-msgstr ""
+msgstr "تنظیم کردن"
 
 msgid "Show _MENU_ entries"
 msgstr ""
 
 msgid "Show cheatsheet"
-msgstr ""
+msgstr "نمایش cheatsheet"
 
 msgid "Show differences in other tab"
-msgstr ""
+msgstr "نمایش تفاوت‌ها در برگه‌‌ای دیگر"
 
 msgid "Show filters"
-msgstr ""
+msgstr "نمایش فیلترها"
 
 msgid "Show preview in other tab"
-msgstr ""
+msgstr "نمایش پیش‌نمایش در برگه‌ای دیگر"
 
 msgid "Show text type and number of pages in the listing"
-msgstr ""
+msgstr "نمایش نوع متن و تعداد صفحات موجود در فهرست"
 
 msgid "Show the text infobox at the bottom of the texts"
-msgstr ""
+msgstr "نمایش کادر اطلاعات متنی در پایین متون"
 
 msgid "Showing 0 to 0 of 0 entries"
-msgstr ""
+msgstr "نمایش 0 تا 0 از 0 ورودی"
 
 msgid "Showing _START_ to _END_ of _TOTAL_ entries"
 msgstr ""
 
 msgid "Single bars"
-msgstr ""
+msgstr "قالب تک"
 
 msgid "Site Map"
-msgstr ""
+msgstr "نقشه‌ی سایت"
 
 msgid "Site already exists"
-msgstr ""
+msgstr "این سایت قبلا وجود دارد"
 
 msgid "Site group"
-msgstr ""
+msgstr "گروه سایت"
 
 msgid "Site id"
-msgstr ""
+msgstr "شناسه سایت"
 
 msgid "Site mail (From field)"
-msgstr ""
+msgstr "ایمیل سایت"
 
 msgid "Site mode"
-msgstr ""
+msgstr "حالت سایت"
 
 msgid "Site name"
-msgstr ""
+msgstr "اسم سایت"
 
 msgid "Site slogan"
-msgstr ""
+msgstr "شعار سایت"
 
 msgid "Site users"
-msgstr ""
+msgstr "کاربران سایت"
 
 msgid "Sites"
-msgstr ""
+msgstr "سایت‌ها"
 
 msgid "Slides"
-msgstr ""
+msgstr "اسلاید‌ها"
 
 msgid "Slides (PDF)"
-msgstr ""
+msgstr "اسلایدها(PDF)"
 
 msgid "Small Caps"
-msgstr ""
+msgstr "حروف کوچک"
 
 msgid "So we can be sure we are not mailing passwords to random people"
-msgstr ""
+msgstr "بنابراین می توانیم مطمئن باشیم که رمز عبور را برای افراد تصادفی پست نمی‌کنیم"
 
 msgid "Some fields are missing, all are required"
-msgstr ""
+msgstr "برخی از فیلدها خالی هستند، همه‌شان الزامی است"
 
 msgid "Some fields are too long"
-msgstr ""
+msgstr "برخی از فیلدها بیش از حد طولانی هستند"
 
 msgid "Some ongoing revisions were found"
-msgstr ""
+msgstr "برخی از اصلاحات در حال انجام یافت شد"
 
 msgid "Sorry, too many jobs pending, please try again later!"
-msgstr ""
+msgstr "متأسفیم، تعداد زیادی کار در حال انتظار هستند، لطفاً بعداً دوباره امتحان کنید!"
 
 msgid "Sorting:"
-msgstr ""
+msgstr "مرتب سازی:"
 
 msgid "Source"
-msgstr ""
+msgstr "منبع"
 
 msgid "Source files"
-msgstr ""
+msgstr "فایل‌های منبع"
 
 msgid "Source files with attachments"
-msgstr ""
+msgstr "فایل‌های منبع همراه با پیوست‌ها"
 
 msgid "Source removed"
-msgstr ""
+msgstr "منبع حذف شد"
 
 msgid "Source, notes..."
-msgstr ""
+msgstr "منبع، یادداشت‌ها..."
 
 msgid "Sources"
-msgstr ""
+msgstr "منابع"
 
 msgid "Special blocks"
 msgstr ""
 
 msgid "Special pages"
-msgstr ""
+msgstr "صفحات ویژه"
 
 msgid "Specify a whitespace-separated list of languages to activate it."
-msgstr ""
+msgstr "برای فعال کردن، فهرستی از زبان‌های جدا شده با فضای خالی را مشخص کنید."
 
 msgid "Stale editing"
-msgstr ""
+msgstr "ویرایش قدیمی"
 
 msgid "Standalone HTML (printer-friendly)"
-msgstr ""
+msgstr "فایل HTML مستقل(مختص چاپ کردن)"
 
 msgid "Standard"
-msgstr ""
+msgstr "استاندارد"
 
 msgid "Start the document with an empty page"
-msgstr ""
+msgstr "فایل را با صفحه‌ای خالی شروع کنید"
 
 msgid "Started"
-msgstr ""
+msgstr "شروع شده"
 
 msgid "Static page without javascript"
-msgstr ""
+msgstr "صفحه‌ی ایستا بدون جاوا اسکریپت"
 
 msgid "Status"
-msgstr ""
+msgstr "وضعیت"
 
 msgid "Status changed"
-msgstr ""
+msgstr "وضعیت تغییر کرد"
 
 msgid "Subsection"
-msgstr ""
+msgstr "زیربخش"
 
 msgid "Subsubsection or description item"
-msgstr ""
+msgstr "زیربخش یا آیتم توضیحات"
 
 msgid "Subtitle"
-msgstr ""
+msgstr "عنوان فرعی"
 
 msgid "Such URI already exists"
-msgstr ""
+msgstr "این URI از قبل وجود دارد"
 
 msgid "Such an URI already exists"
-msgstr ""
+msgstr "این URI از قبل وجود دارد"
 
 msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
 msgstr ""
+"چنین هدری موجب لغو انتشار و تغییر مسیر\n"
+"می‌شود، و اینجا فهرست می‌شود"
 
 msgid "Such an user already exists!"
-msgstr ""
+msgstr "چنین کاربری از قبل وجود دارد!"
 
 msgid "Such username already exists"
-msgstr ""
+msgstr "این نام کاربری از قبل وجود دارد"
 
 msgid "Suggested values:"
-msgstr ""
+msgstr "مقادیر پیشنهادی:"
 
 msgid "Summary"
-msgstr ""
+msgstr "خلاصه"
 
 msgid "Supported directive in the header"
-msgstr ""
+msgstr "دستورالعمل پشتیبانی شده در هدر"
 
 msgid "Switch theme"
-msgstr ""
+msgstr "تغییر تم"
 
 msgid "Table of Contents"
-msgstr ""
+msgstr "فهرست مطالب"
 
 msgid "Tables"
-msgstr ""
+msgstr "جداول"
 
 msgid "Tag cloud with authors"
-msgstr ""
+msgstr "ابر(cloud) را با نویسندگان تگ کنید"
 
 msgid "Tag cloud with topics"
-msgstr ""
+msgstr "ابر(cloud) را با موضوعات تگ کنید"
 
 msgid "Task"
-msgstr ""
+msgstr "وظیفه"
 
 msgid "TeX options (advanced)"
-msgstr ""
+msgstr "گزینه های TeX (پیشرفته)"
 
 msgid "Teaser"
-msgstr ""
+msgstr "پیش‌نمایش"
 
 msgid "Teaser image"
-msgstr ""
+msgstr "پیش‌نمایش تصویر"
 
 msgid "Term"
-msgstr ""
+msgstr "شرایط"
 
 msgid "Test"
-msgstr ""
+msgstr "آزمایش"
 
 msgid "Tested applications, in this order of preference"
-msgstr ""
+msgstr "برنامه‌های آزمایش شده، به ترتیب اولویت"
 
 msgid "Text body only (no title, no final pages)"
-msgstr ""
+msgstr "فقط متن (بدون عنوان، بدون صفحات پایانی)"
 
 msgid "Text formatted with markup"
-msgstr ""
+msgstr "متن با نشانه‌گذاری قالب‌بندی شد‌ه‌است"
 
 msgid "Text height"
-msgstr ""
+msgstr "ارتفاع متن"
 
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
 msgstr ""
+"تغییر مسیرهای متن در خود متن با استفاده از\n"
+" هدر DELETED به این نحو تنظیم می‌شود"
 
 msgid "Text width"
-msgstr ""
+msgstr "عرض متن"
 
 msgid "Texts"
-msgstr ""
+msgstr "متن‌ها"
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
 msgstr ""
+"انتخاب های Beamer فقط در صورتی مرتبط هستند که خروجی\n"
+"اسلایدها را فعال کنید."
 
 msgid "The OPDS address for this site is:"
-msgstr ""
+msgstr "آدرس OPDS برای این سایت:"
 
 msgid ""
 "The PDF logo value can be either an absolute path\n"
@@ -2541,65 +2671,71 @@ msgid ""
 "            TeXlive tree. You can do so with the following commands.\n"
 "            The last one checks if the file can be found."
 msgstr ""
+"اگر بخواهید آن را در درخت TeXlive نصب کنید، مقدار لوگوی PDF می تواند \n"
+"یک مسیر کامل یا فقط یک نام فایل باشد. با دستورات زیر می‌توانید این کار را\n"
+" انجام دهید. آخرین مورد بررسی می‌کند که آیا فایل را می‌توان یافت یا نه."
 
 msgid "The changes will propagate automatically once you push."
-msgstr ""
+msgstr "پس از ارسال کردن، تغییرات به طور خودکار منتشر می‌شوند."
 
 #. ($uri)
 msgid "The description for %1 has been updated"
-msgstr ""
+msgstr "توضیحات %1 بروزرسانی شد"
 
-msgid ""
-"The differences between the list of footnotes and references is shown below."
-msgstr ""
+msgid "The differences between the list of footnotes and references is shown below."
+msgstr "تفاوت بین فهرست پاورقی‌ها و مراجع در زیر نشان داده شده است."
 
 msgid "The file uploaded is not an HTML file!"
-msgstr ""
+msgstr "فایلی که آپلود شده است HTML نیست!"
 
 msgid "The following settings provide the defaults for each format."
-msgstr ""
+msgstr "تنظیمات زیر پیش‌فرض های هر فرمت را ارائه می‌کنند."
 
 msgid "The following values are used to generate the webserver configuration."
-msgstr ""
+msgstr "مقادیر زیر برای ایجاد پیکربندی وب سرور استفاده می‌شوند."
 
 msgid ""
 "The generate webserver configuration will redirect\n"
 "          all the HTTP requests to HTTPS"
-msgstr ""
+msgstr "پیکربندی وب سرور، تمام درخواست های HTTP را به HTTPS تبدیل می‌کند"
 
 msgid "The logo has the site name on itself"
-msgstr ""
+msgstr "لوگو نام سایت را روی خود دارد"
 
 msgid "The optional subtitle"
-msgstr ""
+msgstr "عنوان فرعی اختیاری"
 
 msgid ""
 "The page /special/index is twice special. It is assumed to be the\n"
 "default page to visit when loading the site’s root."
 msgstr ""
+"صفحه special/index/ دو برابر خاص است. هنگام \n"
+"بارگیری روت(root) سایت فرض بر این است که این صفحه‌ی پیش‌فرض است."
 
 msgid "The password will be mailed at this address"
-msgstr ""
+msgstr "رمز عبور به این آدرس ایمیل می‌شود"
 
 msgid "The reset link will expire in a hour."
-msgstr ""
+msgstr "لینک تنظیم مجدد یک ساعت دیگر به پایان می‌رسد."
 
 msgid "The revision has the following messages"
-msgstr ""
+msgstr "این ویرایش دارای پیام های زیر است"
 
 msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
+"سایت، فایل‌های PDF را با یک تصویر کوچک\n"
+" در انتهای متن نمایش می‌دهد."
 
 msgid "The text structure is shown below."
-msgstr ""
+msgstr "ساختار متن در زیر نشان داده شده است."
 
 msgid "The text to show on the homepage preview"
-msgstr ""
+msgstr "متنی که در پیش‌نمایش صفحه‌ی اصلی نشان داده می‌شود"
 
 msgid "The text was added to the bookbuilder"
-msgstr ""
+msgstr "متن به کتاب‌ساز اضافه شد"
 
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
@@ -2607,58 +2743,66 @@ msgid ""
 "          nice title” could have this set to “Nice title”, and will be\n"
 "          listed under N, not under A."
 msgstr ""
+"عنوان متن، برای اهداف مرتب سازی. اگر می‌خواهید مقاله را حذف کنید،\n"
+" مفید است. متنی با عنوان «یک عنوان خوب» می‌تواند با «عنوان خوب» تنظیم شود\n"
+" و در زیر «ع» فهرست شود نه زیر «ی»."
 
 msgid "The title of the document. The only mandatory directive."
-msgstr ""
+msgstr "عنوان متن تنها شیوه‌نامه‌ی الزامی است."
 
 msgid ""
-"The webserver needs to be reconfigured. Please execute in a root shell the "
-"following commands:"
+"The webserver needs to be reconfigured. Please execute in a root shell the following "
+"commands:"
 msgstr ""
+"وب سرور نیاز به پیکربندی مجدد دارد. لطفاً دستورات زیر را در روت شل(root shell) اجرا کنید:"
 
 msgid "The whole book in as single signature"
-msgstr ""
+msgstr "کل کتاب به صورت یک بخش"
 
 msgid "Then approve the change as it would be a normal publishing."
-msgstr ""
+msgstr "سپس اعمال تغییر را تأیید کنید همچون انتشار کردن."
 
 msgid "Then fetch the updates from this page."
-msgstr ""
+msgstr "سپس به روز رسانی‌ها را از این صفحه انتقال دهید."
 
 msgid "There are failed jobs"
-msgstr ""
+msgstr "عملیات‌های ناموفق وجود دارد"
 
 msgid "There are pending revisions"
-msgstr ""
+msgstr "بازنگری‌هایی درصف انتظار وجود دارد"
 
 msgid "These texts are missing the unique id."
-msgstr ""
+msgstr "این متن‌ها فاقد شناسه خاص هستند.(unique id)"
 
 msgid "They can be texts, special texts, authors or topics."
-msgstr ""
+msgstr "آنها می‌توانند متن، متن‌های خاص، نویسنده یا موضوع باشند."
 
 msgid ""
-"They should be paths relative to the webserver configuration root or "
-"absolute paths (recommended)."
+"They should be paths relative to the webserver configuration root or absolute paths "
+"(recommended)."
 msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
-msgstr ""
+msgstr "این دستورالعمل فهرستی از نام فایل‌ها(جدا شده با فاصله) می‌خواهد."
 
 msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
 msgstr ""
+"این یک ویرایشگر WYSIWYG است. اگر ترجیح می‌دهید ازسینتکس ویکی استفاده کنید،\n"
+" آن را همانطور که هست بگذارید، فیلدهای الزامی بالا را پر کنید و ویرایش را به مرحله بعد "
+"موکول کنید."
 
 msgid ""
-"This is relevant only for the generated files, where you may need to have an "
-"alternate set of fonts. It has no effect in the web application if already "
-"using a sans font."
+"This is relevant only for the generated files, where you may need to have an alternate set "
+"of fonts. It has no effect in the web application if already using a sans font."
 msgstr ""
+"این فقط به فایل‌های تولید شده مرتبط است، جایی که ممکن است به مجموعه‌ای از فونت‌های جایگزین "
+"نیاز داشته باشید. اگر قبلاً از فونت sans استفاده کردید تأثیری در برنامه‌ی وب ندارد."
 
 msgid "This is the caption"
-msgstr ""
+msgstr "این کپشن است"
 
 msgid ""
 "This mail has been sent to notify you about a new text\n"
@@ -2667,102 +2811,106 @@ msgid ""
 "If this doesn't happen, it means that the uploading has been abandoned\n"
 "and you may want to check it out."
 msgstr ""
+"این ایمیل برای اطلاع رسانی در مورد ایجاد یک متن جدید ارسال شده است،\n"
+" حتی اگر آپلود هنوز کامل نشده باشد و کاربر باید آنرا را نهایی کند.\n"
+" ایمیل دیگری باید به زودی فرستاده شود. اگر این اتفاق نیفتاد، به این معنی است\n"
+" که آپلود متوقف شده و ممکن است بخواهید آن را بررسی کنید."
 
 msgid "This revision is already published, ignoring changes"
-msgstr ""
+msgstr "این ویرایش قبلاً بدون توجه به تغییرات منتشر شده است"
 
 msgid "This revision is being actively edited"
-msgstr ""
+msgstr "این بازنگری در حال ویرایش است"
 
 msgid "This revision is being actively edited by you"
-msgstr ""
+msgstr "این بازنگری بوسیله شما در حال ویرایش است"
 
 msgid "This revision is being edited by someone else!"
-msgstr ""
+msgstr "این بازنگری بوسیله شخص دیگری در حال ویرایش است!"
 
 msgid "This section will not produce a slide"
-msgstr ""
+msgstr "این بخش اسلاید تولید نمی‌کند"
 
 msgid "This setting affects only the text creation form."
-msgstr ""
+msgstr "این تنظیم فقط بر شیوه‌ی ایجاد متن تأثیر می‌گذارد."
 
 msgid ""
-"This site is private and mobile applications should ask for your username "
-"and\n"
+"This site is private and mobile applications should ask for your username and\n"
 "  password to access the OPDS."
 msgstr ""
+"این سایت خصوصی(private) است و برنامه‌های موبایل باید برای\\n\n"
+" دسترسی به OPDS نام کاربری و رمز عبور شما را دریافت کنند."
 
 msgid "This text does not exist"
-msgstr ""
+msgstr "متن وجود ندارد"
 
 msgid "This text is a book"
-msgstr ""
+msgstr "این متن یک کتاب است"
 
 msgid "This text is an article"
-msgstr ""
+msgstr "این متن یک مقاله است"
 
 msgid "This text is new"
-msgstr ""
+msgstr "متن جدید است"
 
 msgid "This text is not available"
-msgstr ""
+msgstr "متن در دسترس نیست"
 
 msgid "This text is not public yet"
-msgstr ""
+msgstr "این متن هنوز عمومی نیست"
 
 msgid "This text is not published yet"
-msgstr ""
+msgstr "متن هنوز منتشر نشده است"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
-msgstr ""
+msgstr "این متن به %1 موکول خواهد شد"
 
 msgid "This user cannot be removed"
-msgstr ""
+msgstr "کاربر قابل حذف شدن نیست"
 
 msgid "Thumbnail"
-msgstr ""
+msgstr "تصویرکوچک"
 
 msgid "Title"
-msgstr ""
+msgstr "عنوان"
 
 msgid "Title and chapter. If one side document: chapter."
-msgstr ""
+msgstr "عنوان و فصل. اگر متن یک طرفه است: فصل."
 
 msgid "Title and section.  If one side document: section."
-msgstr ""
+msgstr "عنوان و بخش. اگر متن یک طرفه است: بخش."
 
 msgid "Title and subtitle. If one side document: title."
-msgstr ""
+msgstr "عنوان اصلی و عنوان فرعی. اگر متن یک طرفه است: عنوان اصلی."
 
 msgid "Title for sorting"
-msgstr ""
+msgstr "عنوان برای مرتب‌سازی"
 
 msgid "Title, author, date..."
-msgstr ""
+msgstr "عنوان، نویسنده، تاریخ..."
 
 msgid "Titles"
-msgstr ""
+msgstr "عنوان‌ها"
 
 #. (pending_url)
 msgid "To apply the changes, you can visit %1"
-msgstr ""
+msgstr "برای اعمال تغییرات از %1 بازدید کنید"
 
 msgid "To display the PDFs, set or append the following string in the header"
-msgstr ""
+msgstr "برای نمایش فایل‌های PDF، رشته زیر را در هدر تنظیم یا اضافه کنید"
 
-msgid ""
-"To preserve the whitespaces and line breakings, wrap the paragraphs with"
-msgstr ""
+msgid "To preserve the whitespaces and line breakings, wrap the paragraphs with"
+msgstr "برای حفظ فضاهای خالی و شکستگی خطوط، پاراگراف‌ها را با"
 
 msgid "To quickly format bibliographies wrap them in"
-msgstr ""
+msgstr "برای قالب‌بندی سریع کتاب‌شناسی‌ها، آنها را بسته‌بندی کنید"
 
 msgid "To quickly format plays, use"
-msgstr ""
+msgstr "برای قالب‌بندی سریع نمایش‌ها، استفاده کنید"
 
 msgid "To resume the editing you can visit the following URL"
-msgstr ""
+msgstr "برای از سرگیری ویرایش می توانید به آدرس زیر مراجعه کنید"
 
 #. (loc('Update')
 #. (loc("Update"))
@@ -2770,9 +2918,11 @@ msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
 msgstr ""
+"برای ذخیره یا بروزرسانی الگوها، ابتدا باید گزینه ها\n"
+" را با دکمه \"%1\" ذخیره کنید"
 
 msgid "To view the changes introduced, you can visit the following URL"
-msgstr ""
+msgstr "برای مشاهده تغییرات معرفی شده می توانید به آدرس زیر مراجعه کنید"
 
 msgid "Toggle"
 msgstr ""
@@ -2781,50 +2931,55 @@ msgid "Toggle fullscreen editor"
 msgstr ""
 
 msgid "Top margin"
-msgstr ""
+msgstr "حاشیه‌ی بالایی"
 
 msgid "Topic"
-msgstr ""
+msgstr "موضوع"
 
 msgid "Topics"
-msgstr ""
+msgstr "موضوعات"
 
 msgid "Total pages"
-msgstr ""
+msgstr "تمام صفحات"
 
 msgid "Triple bars"
 msgstr ""
 
 msgid "Try a random text if unsure"
-msgstr ""
+msgstr "اگر مطمئن نیستید یک متن را شانسی امتحان کنید"
 
 msgid ""
-"Turn links to images into images (affects site display only, static formats "
-"have the link)"
+"Turn links to images into images (affects site display only, static formats have the link)"
 msgstr ""
+"لینک‌های تصاویر را به تصویر تبدیل کنید (فقط بر نمایش سایت تأثیر می‌گذارد، فرمت‌های ایستا لینک "
+"را دارند)"
 
 msgid ""
 "Turn links without description to YouTube, Vimeo,\n"
 "            Gmaps into widgets (affects site display only, static\n"
 "            formats have the link)"
 msgstr ""
+"لینک‌های بدون شرح YouTube، Vimeo، Gmaps را به ویجت(widget) تبدیل کنید (فقط بر نمایش سایت "
+"تأثیر می‌گذارد، فرمت‌های ایستا لینک را دارند)"
 
 msgid "Two side layout"
 msgstr ""
 
 msgid "Type"
-msgstr ""
+msgstr "نوشتن"
 
 msgid "URI"
 msgstr ""
 
 msgid "URI is available and valid"
-msgstr ""
+msgstr "این URI در دسترس و معتبر است"
 
 msgid ""
-"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
-"my-author-title-1"
+"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. my-author-"
+"title-1"
 msgstr ""
+"این URI باید یک رشته ASCII باشد که با خط تیره و بدون فاصله از هم جدا شده‌اند. به عنوان "
+"مثال. نویسنده-من-عنوان-۱"
 
 msgid "URL"
 msgstr ""
@@ -2843,62 +2998,60 @@ msgstr ""
 
 #. ($from || "NO MAIL FROM", $to)
 msgid "Unable to send mail from %1 to %2!"
-msgstr ""
+msgstr "امکان ارسال نامه از %1 به %2 وجود ندارد!"
 
 msgid "Unbranded PDF (hide site name, logo, etc.)"
-msgstr ""
+msgstr "فایل PDF بدون مارک (پنهان کردن نام سایت، لوگو و غیره)"
 
 msgid ""
 "Unconditionally remove all the invisible non-breaking\n"
 "                spaces in the text"
-msgstr ""
+msgstr "بدون قید و شرط تمام فضاهای غیرقابل مشاهده نامرئی را در متن حذف کنید"
 
 #. (shared)
-msgid ""
-"Unfortunately, the shared repository located at %1 appeared out of sync."
+msgid "Unfortunately, the shared repository located at %1 appeared out of sync."
 msgstr ""
 
 msgid "Unique ID for the text"
-msgstr ""
+msgstr "شناسه خاص برای متن"
 
 msgid "Unlimited"
-msgstr ""
+msgstr "نامحدود"
 
 msgid "Unordered List"
-msgstr ""
+msgstr "لیست نامرتب"
 
 msgid "Unpublished texts"
-msgstr ""
+msgstr "متن‌های منتشر نشده"
 
 #. ($mime_type)
 #. ($mime)
 msgid "Unsupported file type %1"
-msgstr ""
+msgstr "فایل %1 پشتیبانی نمی‌شود"
 
 msgid "Unused attachment"
-msgstr ""
+msgstr "پیوست استفاده نشده"
 
 msgid "Update"
-msgstr ""
+msgstr "بروزرسانی"
 
 msgid "Update account info"
-msgstr ""
+msgstr "بروزرسانی اطلاعات حساب"
 
 msgid "Update category description"
 msgstr ""
 
 msgid "Update to current settings"
-msgstr ""
+msgstr "به تنظیمات فعلی بروزرسانی کنید"
 
 msgid "Upload"
-msgstr ""
+msgstr "آپلود"
 
 msgid "Upload the image and note its name. Files are always renamed."
-msgstr ""
+msgstr "تصویر را آپلود و نام آن را یادداشت کنید. فایل ها همیشه تغییر نام می‌دهند."
 
-msgid ""
-"Uploaded and available images are shown and listed below the text preview."
-msgstr ""
+msgid "Uploaded and available images are shown and listed below the text preview."
+msgstr "تصاویر آپلود شده و موجود در زیر پیش‌نمایش متن فهرست و نشان داده شده‌اند."
 
 msgid "Url"
 msgstr ""
@@ -2907,65 +3060,67 @@ msgid "Use JS syntax highlight for code blocks"
 msgstr ""
 
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
-msgstr ""
+msgstr "از LuaLaTeX به جای XeLaTeX استفاده کنید(آهسته‌تر)"
 
 msgid "Use SSL for authenticated users"
-msgstr ""
+msgstr "از SSL برای کاربران احراز هویت شده استفاده کنید"
 
 msgid "Use it as a teaser image adding to the header this line:"
-msgstr ""
+msgstr "از آن به عنوان یک پیش‌نمایش تصویر استفاده و این خط را به هدر اضافه کنید:"
 
 msgid "Use named table of contents anchors instead of numeric ones"
 msgstr ""
 
 msgid "Use one of the site's formats"
-msgstr ""
+msgstr "از یکی از فرمت‌های سایت استفاده کنید"
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
-msgstr ""
+msgstr "از امضاهای بهینه شده با %1 صفحه استفاده کنید"
 
 msgid "Use sans fonts for section titles"
-msgstr ""
+msgstr "از فونت sans برای بخش عنوان‌ها استفاده کنید"
 
 msgid "Use the image as cover"
-msgstr ""
+msgstr "از تصویر به عنوان جلد استفاده کنید"
 
 msgid "Use the site locale"
-msgstr ""
+msgstr "از بومی‌سازی سایت استفاده کنید"
 
 msgid "Useful HTML snippets"
-msgstr ""
+msgstr "کدهای مفید HTML"
 
 msgid ""
-"Useful for footnotes or in the headers of the document, where you cannot put "
-"a blank line to mark a new paragraph."
+"Useful for footnotes or in the headers of the document, where you cannot put a blank line "
+"to mark a new paragraph."
 msgstr ""
+"برای پاورقی‌ها یا در سرفصل های متن مفید است،\n"
+" جایی که نمی‌توانید یک خط خالی برای علامت گذاری پاراگراف جدید قرار دهید."
 
 #. ($user->username)
 msgid "User %1 created!"
-msgstr ""
+msgstr "کاربر %1 ایجاد شد!"
 
 #. ($user->username)
 #. ($c->stash->{user}->username)
 msgid "User %1 deleted"
-msgstr ""
+msgstr "کاربر %1 حذف شد"
 
 #. ($user->username)
 msgid "User %1 updated"
-msgstr ""
+msgstr "کاربر %1 بروزرسانی شد"
 
 msgid "User created"
-msgstr ""
+msgstr "کاربر ایجاد شد"
 
 msgid "Username"
-msgstr ""
+msgstr "نام کاربری"
 
 msgid "Username, alphanumerical only, no special characters, no uppercase"
-msgstr ""
+msgstr "نام کاربری، فقط حروف و عدد، بدون کاراکتر خاص، بدون حروف بزرگ"
 
 msgid "Users"
-msgstr ""
+msgstr "کاربران"
 
 msgid ""
 "Using this token, you can load the bookbuilder settings\n"
@@ -2973,31 +3128,34 @@ msgid ""
 "    else. Just write it down and then load it from another computer\n"
 "    using the following form."
 msgstr ""
+"با استفاده از این توکن(token)، می‌توانید تنظیمات کتاب‌ساز و فهرست متن را \n"
+"با کامپیوتر دیگری بارگیری کنید یا آن را با شخص دیگری به اشتراک بگذارید\n"
+"فقط آن را یادداشت کنید و سپس با استفاده از روش زیر آن را با کامپیوتر دیگری بارگیری کنید."
 
 msgid ""
-"Usually this is due to high traffic and bad luck, and it can be fixed by "
-"pushing the changes again."
-msgstr ""
+"Usually this is due to high traffic and bad luck, and it can be fixed by pushing the "
+"changes again."
+msgstr "معمولاً به دلیل ترافیک زیاد و بدشانسی است و با ارسال کردن مجدد تغییرات برطرف می‌شود."
 
 msgid "Verbatim block"
 msgstr ""
 
 msgid "View history"
-msgstr ""
+msgstr "مشاهده تاریخچه"
 
 msgid "Virtual hosts"
-msgstr ""
+msgstr "هاست‌های مجازی"
 
 msgid "Virtual hosts, one per line"
-msgstr ""
+msgstr "هاست‌های مجازی، هر کدام در یک خط"
 
 msgid "What links here"
-msgstr ""
+msgstr "چه لینک‌هایی اینجاست"
 
 msgid ""
-"When creating a new text, do not populate the publication date if not "
-"provided by the user."
+"When creating a new text, do not populate the publication date if not provided by the user."
 msgstr ""
+"هنگام ایجاد یک متن جدید، تاریخ انتشار را در صورتی که از طرف کاربر ارائه نشده بود، پر نکنید."
 
 msgid ""
 "When you start a bookbuilder session, at the end of the\n"
@@ -3005,21 +3163,24 @@ msgid ""
 "    can load it here from another device to resume what you were\n"
 "    doing."
 msgstr ""
+"هنگامی که یک جلسه(session) کتاب‌ساز را شروع می کنید، در انتهای صفحه‌ی کتاب‌ساز\n"
+" می‌توانید توکن‌ای برای اشتراک گذاری جلسه مشاهده کنید. می‌توانید آن را با دستگاه دیگری\n"
+" در اینجا بارگیری کنید تا کاری را که انجام می‌دادید از سر بگیرید."
 
 msgid "When you upload a PDF, split it into images to be inserted in the body"
-msgstr ""
+msgstr "وقتی یک PDF آپلود می کنید، آن را به تصاویر تقسیم کنید تا در بدنه درج شود"
 
 msgid "Where does this text come from?"
-msgstr ""
+msgstr "این متن از کجا آمده است؟"
 
 msgid "Whitelisted IP (for backup, one per line)"
 msgstr ""
 
 msgid "Width of the cover image in percent of the text block width."
-msgstr ""
+msgstr "عرض تصویر جلد بر حسب درصد عرض بلوک متن(text block)"
 
 msgid "Width:"
-msgstr ""
+msgstr "عرض:"
 
 msgid ""
 "With complex structures, e.g., a chapter with\n"
@@ -3027,220 +3188,239 @@ msgid ""
 "      the chapter's title, so probably you want to select the chapter\n"
 "      and all its subsections."
 msgstr ""
+"با ساختارهای پیچیده، به عنوان مثال: یک فصل با بخش‌های فرعی، \n"
+"انتخاب کل فصل فقط عنوان فصل را انتخاب می‌کند، بنابراین بهتر است\n"
+" که فصل و همه‌ی زیربخش‌های آن را انتخاب کنید."
 
 msgid ""
 "With the \"verbatim\" tag you can avoid the markup to\n"
 "          be interpreted, usually not needed"
 msgstr ""
+"با تگ \"verbatim\" می توانید از انجام دادن نشانه گذاری اجتناب کنید. معمولاً مورد نیاز نیست"
 
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
 msgstr ""
+"با کتاب‌ساز می توانید طرح (فونت، ابعاد، کاغذ، حاشیه) متون موجود\n"
+" در کتابخانه را تغییر دهید. همچنین می توانید متون بیشتری را برای ایجاد\n"
+" کتابچه‌ی(booklet) خود ادغام کنید. فقط امتحانش کن!"
 
 msgid "Workflow"
-msgstr ""
+msgstr "روندکار"
 
 msgid "Working locally?"
-msgstr ""
+msgstr "کار محلی؟"
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
 "          which require leading space (notably, you cannot use them in\n"
 "          lists)."
 msgstr ""
+"تگ‌های بسته‌بندی را نمی توان در محیط هایی که به فضای اصلی\n"
+" نیاز دارند استفاده کرد (به ویژه، نمی‌توانید از آنها در لیست‌ها استفاده کنید)."
 
 msgid "Wrong answer!"
-msgstr ""
+msgstr "جواب نادرست است!"
 
 msgid "Wrong username or password"
-msgstr ""
+msgstr "نام‌کابری و گذرواژه نادرست است"
 
 msgid "XeLaTeX source"
 msgstr ""
 
 msgid "Yes"
-msgstr ""
+msgstr "آری"
 
 msgid ""
 "You MUST specify a reason, otherwise the line will have no effect.\n"
 "The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
 "etc.) is irrelevant."
 msgstr ""
+"شما باید یک دلیل را مشخص کنید، در غیر این صورت خط هیچ تاثیری نخواهد داشت.\n"
+"ترتیب خطوط هدر(جایی که \"lang\", \"#title#\" و غیره وجود دارد) بی‌معنی است."
 
 msgid "You are already logged in"
-msgstr ""
+msgstr "شما پیشتر وارد شده‌اید - لاگین کرده‌اید"
 
 msgid ""
-"You are building a collection. Please provide a title and, optionally, any "
-"other information needed for the front cover (author, subtitle, date) and "
-"the back cover (source and notes)."
+"You are building a collection. Please provide a title and, optionally, any other "
+"information needed for the front cover (author, subtitle, date) and the back cover (source "
+"and notes)."
 msgstr ""
+"شما در حال ساختن یک مجموعه هستید. لطفاً عنوان و در صورت تمایل، هر گونه اطلاعات دیگری که "
+"برای جلد اول (نویسنده، عنوان‌فرعی، تاریخ) و پشت جلد (منبع و یادداشت‌ها) مورد نیاز است، ارائه "
+"دهید."
 
 msgid "You are logged in now!"
-msgstr ""
+msgstr "شما در حال حاضر وارد شده‌اید!"
 
 #. (backup)
 msgid ""
-"You can access the backup located at %1 or ask your host for help, "
-"forwarding this email"
+"You can access the backup located at %1 or ask your host for help, forwarding this email"
 msgstr ""
+"می توانید به نسخه پشتیبان در %1 دسترسی داشته باشید یا از هاست خود کمک بخواهید و این ایمیل "
+"را برایش ارسال کنید"
 
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"
 "    remove the texts later."
 msgstr ""
+"می‌توانید با کلیک بر روی آیکون «+» نزدیک دانلودهای هر متن،\n"
+" متن‌هایی را به کتاب‌ساز اضافه کنید. بعداً متن ها را اضافه و حذف کنید."
 
-msgid ""
-"You can also link to a part of the text. Please refer to the manual for this "
-"feature"
+msgid "You can also link to a part of the text. Please refer to the manual for this feature"
 msgstr ""
+"همچنین می توانید به بخشی از متن پیوند دهید. لطفاً برای این ویژگی به دفترچه راهنما مراجعه "
+"کنید"
 
 #. (create_url)
 msgid "You can create a peer at %1"
-msgstr ""
+msgstr "می توانید یک جفت(peer) در %1 ایجاد کنید"
 
 msgid "You can do so answering a simple question."
-msgstr ""
+msgstr "می‌توانید این کار را با پاسخ دادن به یک سوال ساده انجام دهید."
 
 msgid "You can tune them editing them here."
-msgstr ""
+msgstr "می‌توانید آنها را با ویرایش در اینجا تنظیم کنید."
 
 msgid ""
-"You can use the following prefixes to search a word in a specific field, e."
-"g. \"title:example\""
+"You can use the following prefixes to search a word in a specific field, e.g. \"title:"
+"example\""
 msgstr ""
+"می توانید از پیشوندهای زیر برای جستجوی یک کلمه در یک فیلد خاص استفاده کنید، برای مثال. "
+"\"عنوان: کلمه\""
 
-msgid ""
-"You can't create a new revision because the text has not been published yet"
-msgstr ""
+msgid "You can't create a new revision because the text has not been published yet"
+msgstr "شما نمی‌توانید یک ویرایش جدید ایجاد کنید زیرا متن هنوز منتشر نشده است"
 
 msgid "You have logged out"
-msgstr ""
+msgstr "شما خارج شده‌اید"
 
 msgid "You may want to resume the editing of one of them"
-msgstr ""
+msgstr "ممکن است بخواهید ویرایش یکی از آنها را از سر بگیرید"
 
-msgid ""
-"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
-msgstr ""
+msgid "You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr "ممکن است بخواهید «A»، «An»، «The» و غیره را از عنوان حذف کنید.(برای ما کاربرد ندارد)"
 
 msgid "You may want to use one of these images"
-msgstr ""
+msgstr "ممکن است بخواهید از یکی از این تصاویر استفاده کنید"
 
 msgid ""
-"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
-"login, and change your password right away. This shouldn't happen."
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, login, and "
+"change your password right away. This shouldn't happen."
 msgstr ""
+"شما اطلاعات کاربری را از طریق یک اتصال رمزگذاری نشده ارسال کردید. لطفاً فوراً به HTTPS تغییر "
+"دهید، وارد شوید و رمز عبور خود را تغییر دهید. این اتفاق نباید بیفتد."
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
-msgstr ""
+msgstr "باید رمز عبور خود را در %1 تغییر دهید"
 
 msgid "Your browser does not support the audio tag."
-msgstr ""
+msgstr "مرورگر شما از تگ صوتی پشتیبانی نمی‌کند."
 
 msgid "Your browser does not support the video tag."
-msgstr ""
+msgstr "مرورگر شما از تگ تصویری پشتیبانی نمی‌کند."
 
-msgid ""
-"Your changes are saved and can be checked every time you hit Preview or Save"
+msgid "Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
+"تغییرات شما ذخیره می‌شوند و هر بار که پیش‌نمایش یا ذخیره را فشار می‌دهید، قابل بررسی است"
 
 msgid "Your chapter here..."
-msgstr ""
+msgstr "فصل شما اینجا..."
 
 msgid "Your current bookbuilder token is:"
-msgstr ""
+msgstr "توکن کتاب‌ساز فعلی شما:"
 
 msgid "Your email"
-msgstr ""
+msgstr "ایمیل شما"
 
 msgid "Your file is ready"
-msgstr ""
+msgstr "فایل شما آماده است"
 
 msgid "Your part here..."
-msgstr ""
+msgstr "بخش شما اینجا..."
 
 #. (password)
 msgid "Your password is %1."
-msgstr ""
+msgstr "رمزعبور شما %1 است."
 
 msgid "Your password was reset, now you can login with it"
-msgstr ""
+msgstr "رمز عبور شما بازنشانی شد، اکنون می‌توانید با آن وارد شوید"
 
 msgid "Your section here..."
-msgstr ""
+msgstr "قسمت شما اینجا..."
 
 msgid "Your sub-sub-section (or description heading) here..."
-msgstr ""
+msgstr "زیر-زیر-بخش (یا عنوان توضیحات) در اینجا..."
 
 msgid "Your subsection here..."
-msgstr ""
+msgstr "زیربخش شما اینجا..."
 
 #. (home)
 msgid "Your user at %1 has been created."
-msgstr ""
+msgstr "کاربر شما در %1 ایجاد شده است."
 
 #. (username)
 msgid "Your username is %1."
-msgstr ""
+msgstr "نام‌کاربری شما %1 است."
 
 msgid "aborted"
-msgstr ""
+msgstr "لغو شده"
 
 msgid "about, links..."
-msgstr ""
+msgstr "درمورد، لینک‌ها و..."
 
 msgid "activate to sort column ascending"
-msgstr ""
+msgstr "فعال‌کردن مرتب‌سازی ستون‌ به صورت بالا‌رونده"
 
 msgid "activate to sort column descending"
-msgstr ""
+msgstr "فعال‌کردن مرتب‌سازی ستون‌ به صورت پایین‌رونده"
 
 msgid "active"
-msgstr ""
+msgstr "فعال‌سازی"
 
 msgid "affects only the frontend webserver configuration"
-msgstr ""
+msgstr "فقط بر پیکربندی frontend وب سرور تأثیر می گذارد"
 
 msgid "any"
-msgstr ""
+msgstr "هرچیزی"
 
 msgid "automatically generated if not present, using author and title"
-msgstr ""
+msgstr "در صورت عدم وجود به طور خودکار تولید می‌شود با استفاده از نویسنده و عنوان"
 
 msgid "code and monospace"
 msgstr ""
 
 msgid "comma separated list"
-msgstr ""
+msgstr "لیست جدا شده با کاما"
 
 msgid "completed"
-msgstr ""
+msgstr "کامل‌ شده"
 
 msgid "conflict"
-msgstr ""
+msgstr "ناسازگاری"
 
 msgid "description"
-msgstr ""
+msgstr "توضیحات"
 
 msgid "displayed text"
-msgstr ""
+msgstr "متن نمایش داده شده"
 
 msgid "edit, commit..."
-msgstr ""
+msgstr "ویرایش، ارائه کردن نسخه بازنگری شده..."
 
 msgid "editing"
-msgstr ""
+msgstr "درحال ویرایش"
 
 msgid "emphasis"
-msgstr ""
+msgstr "مهم"
 
 msgid "failed"
-msgstr ""
+msgstr "ناموفق"
 
 msgid "filtered from _MAX_ total entries"
 msgstr ""
@@ -3249,126 +3429,137 @@ msgid "for code, monospaced"
 msgstr ""
 
 msgid "for display"
-msgstr ""
+msgstr "برای نمایش"
 
 msgid "for poetry"
-msgstr ""
+msgstr "برای شعر"
 
 msgid "generic sectioning, good for articles"
-msgstr ""
+msgstr "بخش‌بندی عمومی، برای مقالات خوب است"
 
 msgid "if you want to use a custom size, you need to set both width and height"
-msgstr ""
+msgstr "اگر می‌خواهید از اندازه دلخواه استفاده کنید، باید هم عرض و هم ارتفاع را تنظیم کنید"
 
 msgid "image"
-msgstr ""
+msgstr "تصویر"
 
 msgid "left"
-msgstr ""
+msgstr "چپ"
 
 msgid "mandatory"
-msgstr ""
+msgstr "اجباری"
 
 msgid "markup *not* interpreted"
 msgstr ""
 
 #. (site.binary_upload_max_size_in_mega)
 msgid "max %1 Mb"
-msgstr ""
+msgstr "حداکثر %1 مگابایت"
 
 msgid "minutes"
-msgstr ""
+msgstr "دقیقه"
 
 msgid "new-example-uri"
 msgstr ""
 
 msgid "only lowercase ASCII and hyphens"
-msgstr ""
+msgstr "فقط حروف کوچک ASCII و خط فاصله(hyphens)"
 
 msgid "or"
-msgstr ""
+msgstr "یا"
 
 msgid "ordered item"
-msgstr ""
+msgstr "آیتم‌های مرتب‌شده"
 
 msgid "overstriked"
-msgstr ""
+msgstr "یک کاراکتر روی کاراکتر دیگر چاپ شده است (overstrike)"
 
 msgid "pending"
-msgstr ""
+msgstr "در انتظار"
 
 msgid "plain PDF"
-msgstr ""
+msgstr "فایل PDF ساده"
 
 msgid "plain text source"
-msgstr ""
+msgstr "منبع متن ساده"
 
 msgid "processing"
-msgstr ""
+msgstr "در حال پردازش"
 
 msgid "published"
-msgstr ""
+msgstr "منتشر شده"
 
 msgid "revision"
-msgstr ""
+msgstr "بازنگری"
 
 msgid "right"
-msgstr ""
+msgstr "راست"
 
 #. (args)
 msgid "string"
-msgstr ""
+msgstr "رشته(string)"
 
 msgid "strong emphasis"
-msgstr ""
+msgstr "تاکید زیاد"
 
 msgid "sub-sub-section"
-msgstr ""
+msgstr "زیر-زیر-بخش(sub-sub-section)"
 
 msgid "subscript"
-msgstr ""
+msgstr "زیرنویس(superscript)"
 
 msgid "subsection"
-msgstr ""
+msgstr "زیربخش(subsection)"
 
 msgid "superscript"
-msgstr ""
+msgstr "بالانویس(superscript)"
 
 msgid "taken"
-msgstr ""
+msgstr "گرفته شده"
 
 msgid "texts by authors, title, topic..."
-msgstr ""
+msgstr "متون توسط نویسندگان، عنوان، موضوع..."
 
 msgid "texts sorted by author"
-msgstr ""
+msgstr "متون مرتب شده بر اساس نویسنده"
 
 msgid "texts sorted by title"
-msgstr ""
+msgstr "متون مرتب شده بر اساس عنوان"
 
 msgid "the author of the text (as displayed)"
-msgstr ""
+msgstr "نویسنده متن (همانطور که نشان داده شده است)"
 
 msgid "this text will be unpublished"
-msgstr ""
+msgstr "این متن لغو انتشار خواهد شد"
 
 msgid "topic"
-msgstr ""
+msgstr "موضوع"
 
 msgid "unordered item"
-msgstr ""
+msgstr "آیتم‌های نامرتب"
 
 msgid "very strong emphasis"
-msgstr ""
+msgstr "تاکید خیلی زیاد"
 
 msgid "with description"
-msgstr ""
+msgstr "با توضیحات"
 
 msgid "without description"
-msgstr ""
+msgstr "بدون توضیحات"
 
 msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
+"«ویرایش قدیمی» به این معنی است که ویرایش در حین بازنگری کنار گذاشته شده است،\n"
+" اما همچنان وجود دارد، در صورتی که کسی بخواهد هنگام ویرایش یک متن آن را انتخاب کند."
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "texts sorted by topic"
+
+#~ msgid "RSS"
+#~ msgstr "RSS"
+
+#~ msgid "syndicate"
+#~ msgstr "syndicate"
