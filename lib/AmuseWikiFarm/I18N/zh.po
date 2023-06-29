@@ -602,6 +602,9 @@ msgstr "永久删除"
 msgid "Delete remote repository %1"
 msgstr "删除远程仓库%1"
 
+msgid "Delete selected attachments"
+msgstr ""
+
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
@@ -851,6 +854,9 @@ msgstr "文件已上传！"
 
 msgid "Files"
 msgstr "文件"
+
+msgid "Files not referenced by any text"
+msgstr ""
 
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."

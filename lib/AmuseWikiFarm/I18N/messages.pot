@@ -104,7 +104,7 @@ msgstr ""
 msgid "A nice title"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1290
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1321
 msgid "A4 imposed PDF"
 msgstr ""
 
@@ -265,7 +265,7 @@ msgid ""
 "          body with the string “noslide”."
 msgstr ""
 
-#: root/src/attachments/edit.tt:22 root/src/attachments/list.tt:18
+#: root/src/attachments/edit.tt:22 root/src/attachments/list.tt:21
 msgid "Alternate Text"
 msgstr ""
 
@@ -323,7 +323,7 @@ msgstr ""
 msgid "Attachments"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1830 root/src/bookbuilder/index.tt:123 root/src/console/unpublished.tt:9 root/src/edit/newtext.tt:77
+#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1875 root/src/bookbuilder/index.tt:123 root/src/console/unpublished.tt:9 root/src/edit/newtext.tt:77
 msgid "Author"
 msgstr ""
 
@@ -331,7 +331,7 @@ msgstr ""
 msgid "Author and title. If one side document: title."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1830
+#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1875
 msgid "Authors"
 msgstr ""
 
@@ -618,7 +618,7 @@ msgstr ""
 msgid "Convert to archive markup"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4412
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4446
 msgid "Copyright notice"
 msgstr ""
 
@@ -626,7 +626,7 @@ msgstr ""
 msgid "Couldn't add the text"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1668
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1699
 msgid "Couldn't automatically generate the URI!"
 msgstr ""
 
@@ -728,7 +728,7 @@ msgstr ""
 msgid "Deferred/Deleted texts"
 msgstr ""
 
-#: root/src/admin/jobs.tt:76 root/src/admin/show_users.tt:33 root/src/admin/show_users.tt:9 root/src/bookbuilder/index.tt:284 root/src/bookbuilder/index.tt:47 root/src/category-details-edit.tt:22 root/src/console/alias_display.tt:177 root/src/publish/pending.tt:21 root/src/siteadmin/show_users.tt:9
+#: root/src/admin/jobs.tt:76 root/src/admin/show_users.tt:33 root/src/admin/show_users.tt:9 root/src/attachments/orphans.tt:24 root/src/bookbuilder/index.tt:284 root/src/bookbuilder/index.tt:47 root/src/category-details-edit.tt:22 root/src/console/alias_display.tt:177 root/src/publish/pending.tt:21 root/src/siteadmin/show_users.tt:9
 msgid "Delete"
 msgstr ""
 
@@ -741,13 +741,17 @@ msgstr ""
 msgid "Delete remote repository %1"
 msgstr ""
 
+#: root/src/attachments/orphans.tt:56
+msgid "Delete selected attachments"
+msgstr ""
+
 #: root/src/publish/pending.tt:133
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
 msgstr ""
 
-#: root/src/attachments/edit.tt:32 root/src/attachments/list.tt:21 root/src/settings/edit_format.tt:25 root/src/settings/formats.tt:10
+#: root/src/attachments/edit.tt:32 root/src/attachments/list.tt:24 root/src/settings/edit_format.tt:25 root/src/settings/formats.tt:10
 msgid "Description"
 msgstr ""
 
@@ -848,7 +852,7 @@ msgstr ""
 msgid "EPUB"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1129
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1159
 msgid "EPUB (for mobile devices)"
 msgstr ""
 
@@ -947,7 +951,7 @@ msgstr ""
 msgid "Erase this revision"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1726
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1757
 msgid "Error converting the upload file. Is it an HTML file?"
 msgstr ""
 
@@ -955,7 +959,7 @@ msgstr ""
 msgid "Error sending mail!"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1742
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1773
 msgid "Error while converting the HTML. Sorry."
 msgstr ""
 
@@ -1060,6 +1064,10 @@ msgstr ""
 
 #: root/src/federation/show.tt:31
 msgid "Files"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Attachments.pm:67 root/src/attachments/list.tt:75 root/src/attachments/orphans.tt:6
+msgid "Files not referenced by any text"
 msgstr ""
 
 #: root/src/include/bbform.tt:1000
@@ -1177,7 +1185,7 @@ msgstr ""
 msgid "Formats"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Listing.pm:41 lib/AmuseWikiFarm/Role/Controller/RegularListing.pm:31 lib/AmuseWikiFarm/Schema/Result/Site.pm:4771
+#: lib/AmuseWikiFarm/Controller/Listing.pm:41 lib/AmuseWikiFarm/Role/Controller/RegularListing.pm:31 lib/AmuseWikiFarm/Schema/Result/Site.pm:4805
 msgid "Full list of texts"
 msgstr ""
 
@@ -1364,7 +1372,7 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4412
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4446
 msgid "ISBN"
 msgstr ""
 
@@ -1706,7 +1714,7 @@ msgstr ""
 msgid "Last updated"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Latest.pm:58 lib/AmuseWikiFarm/Controller/OPDS.pm:57 lib/AmuseWikiFarm/Schema/Result/Site.pm:4784 root/src/admin/edit.tt:777 root/src/layout.tt:276 root/src/layout.tt:277 root/src/layout.tt:766 root/src/text.tt:178
+#: lib/AmuseWikiFarm/Controller/Latest.pm:58 lib/AmuseWikiFarm/Controller/OPDS.pm:57 lib/AmuseWikiFarm/Schema/Result/Site.pm:4818 root/src/admin/edit.tt:777 root/src/layout.tt:276 root/src/layout.tt:277 root/src/layout.tt:766 root/src/text.tt:178
 msgid "Latest entries"
 msgstr ""
 
@@ -1722,7 +1730,7 @@ msgstr ""
 msgid "Leave this empty to have it automatically generated"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1306
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1337
 msgid "Letter imposed PDF"
 msgstr ""
 
@@ -1944,7 +1952,7 @@ msgstr ""
 msgid "N/A"
 msgstr ""
 
-#: root/src/admin/list.tt:17 root/src/attachments/list.tt:12 root/src/bookbuilder/index.tt:280 root/src/console/git_display.tt:10 root/src/console/list_categories.tt:12 root/src/settings/edit_format.tt:12 root/src/settings/formats.tt:9
+#: root/src/admin/list.tt:17 root/src/attachments/list.tt:15 root/src/attachments/orphans.tt:18 root/src/bookbuilder/index.tt:280 root/src/console/git_display.tt:10 root/src/console/list_categories.tt:12 root/src/settings/edit_format.tt:12 root/src/settings/formats.tt:9
 msgid "Name"
 msgstr ""
 
@@ -1976,7 +1984,7 @@ msgstr ""
 msgid "Never show teaser and/or cover in text lists"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4783 root/src/publish/pending.tt:34
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4817 root/src/publish/pending.tt:34
 msgid "New"
 msgstr ""
 
@@ -2278,7 +2286,7 @@ msgstr ""
 msgid "Place the notes on the back of the first page, impressum-style"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1277
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1308
 msgid "Plain PDF"
 msgstr ""
 
@@ -2510,7 +2518,7 @@ msgstr ""
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4413
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4447
 msgid "Publisher"
 msgstr ""
 
@@ -2589,7 +2597,7 @@ msgstr ""
 msgid "Reason for deletion"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4647
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4681
 msgid "Rebuild"
 msgstr ""
 
@@ -2753,7 +2761,7 @@ msgstr ""
 msgid "Running headings"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4413
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4447
 msgid "SKU"
 msgstr ""
 
@@ -2806,7 +2814,7 @@ msgstr ""
 msgid "Saved \"%1\" configuration"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Search.pm:103 lib/AmuseWikiFarm/Schema/Result/Site.pm:4790 root/src/admin/edit.tt:755 root/src/layout.tt:202 root/src/layout.tt:203 root/src/layout.tt:207 root/src/search/index.tt:24 root/src/search/index.tt:9 root/src/static-indexes.tt:93
+#: lib/AmuseWikiFarm/Controller/Search.pm:103 lib/AmuseWikiFarm/Schema/Result/Site.pm:4824 root/src/admin/edit.tt:755 root/src/layout.tt:202 root/src/layout.tt:203 root/src/layout.tt:207 root/src/search/index.tt:24 root/src/search/index.tt:9 root/src/static-indexes.tt:93
 msgid "Search"
 msgstr ""
 
@@ -2891,11 +2899,11 @@ msgstr ""
 msgid "Separate header fields"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4413
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4447
 msgid "Series Name"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4412
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4446
 msgid "Series Number"
 msgstr ""
 
@@ -2999,7 +3007,7 @@ msgstr ""
 msgid "Slides"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1322
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1353
 msgid "Slides (PDF)"
 msgstr ""
 
@@ -3039,7 +3047,7 @@ msgstr ""
 msgid "Source files"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1161
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1191
 msgid "Source files with attachments"
 msgstr ""
 
@@ -3071,7 +3079,7 @@ msgstr ""
 msgid "Stale editing"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1137
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1167
 msgid "Standalone HTML (printer-friendly)"
 msgstr ""
 
@@ -3115,7 +3123,7 @@ msgstr ""
 msgid "Such URI already exists"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1676
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1707
 msgid "Such an URI already exists"
 msgstr ""
 
@@ -3242,7 +3250,7 @@ msgid "The changes will propagate automatically once you push."
 msgstr ""
 
 #. ($uri)
-#: lib/AmuseWikiFarm/Controller/Attachments.pm:93
+#: lib/AmuseWikiFarm/Controller/Attachments.pm:134
 msgid "The description for %1 has been updated"
 msgstr ""
 
@@ -3250,7 +3258,7 @@ msgstr ""
 msgid "The differences between the list of footnotes and references is shown below."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1732
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1763
 msgid "The file uploaded is not an HTML file!"
 msgstr ""
 
@@ -3455,11 +3463,11 @@ msgstr ""
 msgid "This user cannot be removed"
 msgstr ""
 
-#: root/src/attachments/list.tt:24
+#: root/src/attachments/list.tt:27 root/src/attachments/orphans.tt:21
 msgid "Thumbnail"
 msgstr ""
 
-#: root/src/attachments/edit.tt:17 root/src/attachments/list.tt:15 root/src/bookbuilder/index.tt:103 root/src/console/unpublished.tt:10 root/src/edit/newtext.tt:38 root/src/edit/preview.tt:12 root/src/include/edit_node.tt:52 root/src/include/preamble.tt:17
+#: root/src/attachments/edit.tt:17 root/src/attachments/list.tt:18 root/src/bookbuilder/index.tt:103 root/src/console/unpublished.tt:10 root/src/edit/newtext.tt:38 root/src/edit/preview.tt:12 root/src/include/edit_node.tt:52 root/src/include/preamble.tt:17
 msgid "Title"
 msgstr ""
 
@@ -3483,7 +3491,7 @@ msgstr ""
 msgid "Title, author, date..."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:44 lib/AmuseWikiFarm/Schema/Result/Site.pm:4770 root/src/layout.tt:244 root/src/layout.tt:753
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:44 lib/AmuseWikiFarm/Schema/Result/Site.pm:4804 root/src/layout.tt:244 root/src/layout.tt:753
 msgid "Titles"
 msgstr ""
 
@@ -3536,11 +3544,11 @@ msgstr ""
 msgid "Top margin"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1830
+#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1875
 msgid "Topic"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1830 root/src/edit/edit.tt:703 root/src/layout.tt:260
+#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1875 root/src/edit/edit.tt:703 root/src/layout.tt:260
 msgid "Topics"
 msgstr ""
 
@@ -3874,7 +3882,7 @@ msgstr ""
 msgid "Wrong username or password"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1145
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1175
 msgid "XeLaTeX source"
 msgstr ""
 
@@ -4171,11 +4179,11 @@ msgstr ""
 msgid "pending"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1276
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1307
 msgid "plain PDF"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1153
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1183
 msgid "plain text source"
 msgstr ""
 

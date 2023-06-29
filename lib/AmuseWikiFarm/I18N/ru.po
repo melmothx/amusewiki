@@ -621,6 +621,9 @@ msgstr "Удалить безвозвратно"
 msgid "Delete remote repository %1"
 msgstr "Удалить удалённый репозиторий %1"
 
+msgid "Delete selected attachments"
+msgstr ""
+
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
@@ -880,6 +883,9 @@ msgstr "Файл загружен!"
 
 msgid "Files"
 msgstr "Файлы"
+
+msgid "Files not referenced by any text"
+msgstr ""
 
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."

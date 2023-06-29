@@ -636,6 +636,9 @@ msgstr "Odstraň permanentně"
 msgid "Delete remote repository %1"
 msgstr "Odstraň vzdálený repozitář"
 
+msgid "Delete selected attachments"
+msgstr ""
+
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
@@ -897,6 +900,9 @@ msgstr "Soubor nahrán!"
 
 msgid "Files"
 msgstr "Soubory"
+
+msgid "Files not referenced by any text"
+msgstr ""
 
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
@@ -1363,8 +1369,9 @@ msgstr "V obou případech dostaneš obrácené odsazení."
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
-msgstr "V textu se číslo ve hranatých závorkách interpretuje jako"
-"odkaz na poznámku pod čarou, pokud taková poznámka existuje."
+msgstr ""
+"V textu se číslo ve hranatých závorkách interpretuje jakoodkaz na poznámku "
+"pod čarou, pokud taková poznámka existuje."
 
 #. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
@@ -1372,7 +1379,8 @@ msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
 "  add %1 to the network libraries."
-msgstr "V tomto příkladu používáme FBreader, ale procedure je\n"
+msgstr ""
+"V tomto příkladu používáme FBreader, ale procedure je\n"
 "  v podstatě stejná pro všechny aplikace. Vše, co musíš udělat, je\n"
 "  přidat %1 do síťových knihoven."
 
@@ -2276,8 +2284,8 @@ msgstr ""
 "              opatrně a zkontroluj si výsledek. V případě, že se setkáš\n"
 "              s problémy, prosím ulož výsledek a nahlaš chyby ve zprávě.\n"
 "              Tato procedure se snaží být bezpečná a bude ignorovat\n"
-"              změnu, pokud poznámky pod čarou chybí, nebo pokud jich je"
-"příliš mnoho."
+"              změnu, pokud poznámky pod čarou chybí, nebo pokud jich "
+"jepříliš mnoho."
 
 msgid "Reason"
 msgstr "Důvod"
