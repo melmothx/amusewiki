@@ -6,7 +6,7 @@ use utf8;
 use Test::More;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-plan tests => 177 + 2 * scalar(keys %{ AmuseWikiFarm::Utils::Amuse::known_langs() });
+plan tests => 180 + 2 * scalar(keys %{ AmuseWikiFarm::Utils::Amuse::known_langs() });
 
 use File::Spec::Functions qw/catfile catdir/;
 use File::Path qw/make_path/;
@@ -281,4 +281,9 @@ $mech->content_like(qr{Italiano.*3.*Hrvatski.*3.*English.*3}s);
 
 $mech->get_ok("/?__language=eo");
 $mech->get_ok("/api/datatables-lang");
+
+$mech->get_ok("/?__language=fa");
+$mech->content_contains('dir="rtl"');
+$mech->get_ok("/api/datatables-lang");
+
 # diag $mech->content;

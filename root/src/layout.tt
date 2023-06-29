@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="[% current_locale_code %]">
+<html lang="[% current_locale_code %]"[% IF locale_is_rtl %] dir="rtl"[% END %]>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
