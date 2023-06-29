@@ -1060,6 +1060,7 @@ sub known_langs {
             ceb => 'Cebuano',
             kmr => 'Kurmancî',
             ro => 'Română',
+            fa => 'فارسی',
            };
 }
 
