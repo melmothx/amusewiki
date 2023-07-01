@@ -55,7 +55,7 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="[% c.uri_for('/static/js/jquery-3.5.1.min.js') %]">
+    <script src="[% c.uri_for('/static/js/jquery-3.7.0.min.js') %]">
     </script>
     <link rel="stylesheet"
           href="[% c.uri_for((bootstrap_css || '/static/css/bootstrap.css'), { v => 5 }) %]" />
@@ -68,9 +68,9 @@
           href="[% c.uri_for('/static/css/fork-awesome.min.css', { v => 3 }) %]" />
 
     <!-- jquery-ui for the highlight effect everywhere and autocompletion
-         source in [% c.uri_for('/static/js/jquery-ui-1.10.4.custom.js') %] -->
+         source in [% c.uri_for('/static/js/jquery-ui-1.13.2.custom/jquery-ui.js') %] -->
 
-    <script src="[% c.uri_for('/static/js/jquery-ui-1.12.1.custom/jquery-ui.min.js') %]" >
+    <script src="[% c.uri_for('/static/js/jquery-ui-1.13.2.custom/jquery-ui.min.js') %]" >
     </script>
 
     [%- IF nav == 'console' -%]
@@ -125,8 +125,8 @@
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 43 }) %]" />
-    <script src="[% c.uri_for('/static/js/amuse.js', { v => 5 }) %]"></script>
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 44 }) %]" />
+    <script src="[% c.uri_for('/static/js/amuse.js', { v => 6 }) %]"></script>
     <script>
       function amw_confirm() { return confirm('[% lh.loc('Are you sure?') | escape_js %]') }
     </script>
@@ -140,6 +140,13 @@
           href="[% c.uri_for_action('/sitefiles/local_files',
                                     [ site.id, 'local.css']) %]" />
     [%- END %]
+    [%- IF use_alternate_theme %]
+      [%- IF site.has_site_file('local-alt.css') -%]
+        <link rel="stylesheet" type="text/css"
+              href="[% c.uri_for_action('/sitefiles/local_files', [ site.id, 'local-alt.css']) %]" />
+      [%- END %]
+    [%- END %]
+
     [%- IF site.has_site_file('local.js') %]
     <script src="[% c.uri_for_action('/sitefiles/local_files',
                                     [ site.id, 'local.js']) %]">
@@ -752,7 +759,7 @@
       </div>
     </div>
     <script src="[% c.uri_for('/static/js/amw-autosuggest.js') %]"></script>
-    <script src="[% c.uri_for('/static/js/amw-navbar.js') %]"></script>
+    <script src="[% c.uri_for('/static/js/amw-navbar.js', { v => 2 }) %]"></script>
   </body>
 </html>
 
