@@ -669,7 +669,7 @@
 
       <div class="row">
         <div id="amw-main-layout-column"
-             class="col-sm-[% main_body_cols || 12 %][% IF left_layout_cols %] col-sm-push-[% left_layout_cols %][% END %]">
+             class="col-sm-[% main_body_cols || 12 %][% IF left_layout_cols %] offset-sm-[% left_layout_cols %][% END %]">
 
           <div id="js-site-settings" style="display:none"
                data-use-named-toc="[% site.use_named_toc %]"></div>
@@ -735,7 +735,7 @@
     </div><!-- end of main -->
     </div><!-- end of wrap -->
     <div id="footer" role="contentinfo">
-      <div class="footer">
+      <div class="footer bg-body-tertiary">
         <div class="center">
         <span id="amw-footer-link-random">
           <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">[% loc('Random') %]</a>
