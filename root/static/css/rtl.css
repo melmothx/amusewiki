@@ -1,0 +1,12 @@
+div.checkbox {
+    margin-right: 40px;
+}
+
+.checkbox input[type="checkbox"] {
+    margin-left: 0px;
+    margin-right: -20px;
+}
+
+.checkbox label {
+    padding-right: 0px;
+}
