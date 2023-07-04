@@ -1,7 +1,9 @@
+div.radio,
 div.checkbox {
     margin-right: 20px;
 }
 
+.radio input[type="radio"],
 .checkbox input[type="checkbox"] {
     margin-left: 0px;
     margin-right: -20px;
@@ -9,4 +11,8 @@ div.checkbox {
 
 .checkbox label {
     padding-right: 0px;
+}
+
+th {
+    text-align: inherit;
 }
