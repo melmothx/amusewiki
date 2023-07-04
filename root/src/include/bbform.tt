@@ -1016,7 +1016,7 @@
 [% IF locale_is_rtl %]
 <script>
   $(document).ready(function() {
-      $('#bbform-included .col-sm-3').addClass('pull-right');
+      $('.col-sm-3').addClass('pull-right');
   });
 </script>
 [% END %]

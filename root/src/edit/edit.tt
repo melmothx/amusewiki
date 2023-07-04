@@ -32,8 +32,9 @@
 
 <div class="row">
   <div id="page" class="col-sm-[% edit_option_page_right_bs_columns %]
-                        col-sm-push-[% edit_option_page_left_bs_columns %]">
-
+           [% UNLESS locale_is_rtl %]
+           col-sm-push-[% edit_option_page_left_bs_columns %]
+           [% END %]">
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">
@@ -96,8 +97,11 @@
 </div>
 
   </div>
-  <div id="edit-page-left-panels" class="col-sm-[% edit_option_page_left_bs_columns %]
-              col-sm-pull-[% edit_option_page_right_bs_columns %]">
+  <div id="edit-page-left-panels"
+       class="col-sm-[% edit_option_page_left_bs_columns %]
+       [% UNLESS locale_is_rtl %]
+           col-sm-pull-[% edit_option_page_right_bs_columns %]
+       [% END %]">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
