@@ -1,4 +1,3 @@
-[% # -*- mode:html -*- %]
 <div id="bbform-included">
   <div class="form-group">
     <div class="btn-group" data-toggle="buttons">
@@ -184,13 +183,13 @@
               </select>
             </div>
             <div class="row mt-1">
-              <div class="col-xs-2">
+              <div class="col-sm-3">
                 <label for="logical-paper-width">
                   [% loc('Width:') %]
                   <small id="logical-paper-width-label" class="text-danger">[% loc('Please set') %]</small>
                 </label>
               </div>
-              <div class="col-xs-4">
+              <div class="col-sm-9">
                 <select name="paper_width" id="logical-paper-width"
                         data-prefix="logical"
                         class="paper-select-handle form-control">
@@ -205,13 +204,15 @@
                   [% END %]
                 </select>
               </div>
-              <div class="col-xs-2">
+            </div>
+            <div class="row mt-1">
+              <div class="col-sm-3">
                 <label for="logical-paper-height">
                   [% loc('Height:') %]
                   <small id="logical-paper-height-label" class="text-danger">[% loc('Please set') %]</small>
                 </label>
               </div>
-              <div class="col-xs-4">
+              <div class="col-sm-9">
                 <select name="paper_height" id="logical-paper-height"
                         data-prefix="logical"
                         class="paper-select-handle form-control">
@@ -240,12 +241,12 @@
         </div>
         <div class="col-sm-9">
           <div class="row mt-1" id="division-container">
-            <div class="col-xs-3">
+            <div class="col-sm-3">
               <label for="division">
                 [% loc('Division factor') %]:
               </label>
             </div>
-            <div class="col-xs-3">
+            <div class="col-sm-9">
               <select name="division" id="division" class="form-control">
                 [% FOREACH division IN bb.divs_values %]
                   <option value="[% division %]"
@@ -257,12 +258,14 @@
                 [% END %]
               </select>
             </div>
-            <div class="col-xs-3">
+          </div>
+          <div class="row mt-1">
+            <div class="col-sm-3">
               <label for="bcor">
                 [% loc('Binding correction in millimeters (additional inner margin)') %]:
               </label>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-9">
               <select name="bcor" id="bcor" class="form-control">
                 [% FOREACH bcor IN bb.bcor_values %]
                   <option value="[% bcor %]"
@@ -275,13 +278,13 @@
           </div>
 
           <div class="row mt-1">
-            <div class="col-xs-2">
+            <div class="col-sm-3">
               <label for="areaset-paper-width">
                 [% loc('Text width') %]
                 <small id="areaset-paper-width-label" class="text-danger">[% loc('Please set') %]</small>
               </label>
             </div>
-            <div class="col-xs-4">
+            <div class="col-sm-9">
               <select name="areaset_width" id="areaset-paper-width"
                         data-prefix="areaset"
                         class="paper-select-handle form-control">
@@ -298,14 +301,16 @@
                 [% END %]
               </select>
             </div>
-            <div class="col-xs-2">
+          </div>
+          <div class="row mt-1">
+            <div class="col-sm-3">
               <label for="areaset-paper-height">
                 [% loc('Text height') %]
                 <small id="areaset-paper-height-label" class="text-danger">[% loc('Please set') %]</small>
 
               </label>
             </div>
-            <div class="col-xs-4">
+            <div class="col-sm-9">
               <select name="areaset_height" id="areaset-paper-height"
                       data-prefix="areaset"
                       class="paper-select-handle form-control">
@@ -323,14 +328,14 @@
               </select>
             </div>
           </div>
-          <div class="row mt-1 mb-2 geometry">
-            <div class="col-xs-2">
+          <div class="row mt-1 geometry">
+            <div class="col-xs-3">
               <label for="geometry-paper-width">
                 [% loc('Outer margin') %]
                 <small id="geometry-paper-width-label" class="text-danger">[% loc('Please set') %]</small>
               </label>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-9">
               <select name="geometry_outer_margin" id="geometry-paper-width"
                       data-prefix="geometry"
                       class="form-control paper-select-handle">
@@ -346,13 +351,15 @@
                 [% END %]
               </select>
             </div>
-            <div class="col-xs-2">
+          </div>
+          <div class="row mt-1 mb-2 geometry">
+            <div class="col-sm-3">
               <label for="geometry-paper-height">
                 [% loc('Top margin') %]
                 <small id="geometry-paper-height-label" class="text-danger">[% loc('Please set') %]</small>
               </label>
             </div>
-            <div class="col-xs-4">
+            <div class="col-sm-9">
               <select name="geometry_top_margin" id="geometry-paper-height"
                       data-prefix="geometry"
                       class="form-control paper-select-handle">
@@ -403,7 +410,7 @@
               [% loc('Paragraph indentation in points (pt)') %]
             </label>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-9">
             <input type="number"
                    name="parindent"
                    id="parindent"
@@ -424,7 +431,7 @@
               <label for="tex_tolerance" class="col-sm-3 control-label">
                 <code>tolerance</code>
               </label>
-              <div class="col-sm-3">
+              <div class="col-sm-9">
                 <select name="tex_tolerance" id="tex_tolerance" class="form-control">
                   [% FOREACH tolerance IN bb.tex_tolerances %]
                   <option value="[% tolerance %]"
@@ -434,10 +441,12 @@
                   [% END %]
                 </select>
               </div>
+            </div>
+            <div class="row mt-1">
               <label for="tex_emergencystretch" class="col-sm-3 control-label">
                 <code>emergencystretch</code>
               </label>
-              <div class="col-sm-3">
+              <div class="col-sm-9">
                 <select name="tex_emergencystretch" id="tex_emergencystretch" class="form-control">
                   [% FOREACH emergencystretch IN bb.tex_emergencystretch_values %]
                   <option value="[% emergencystretch %]"
@@ -1004,3 +1013,10 @@
     </div>
   </div>
 </div>
+[% IF locale_is_rtl %]
+<script>
+  $(document).ready(function() {
+      $('#bbform-included .col-sm-3').addClass('pull-right');
+  });
+</script>
+[% END %]

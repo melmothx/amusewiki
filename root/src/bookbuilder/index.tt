@@ -1,5 +1,3 @@
-[%# -*- mode: html -*- %]
-
 [% coming_from = c.flash.referrer %]
 [% IF coming_from %]
 <div>
@@ -455,3 +453,4 @@
   </p>
   <pre id="show-bb-cli" class="collapse">[% bb.as_cli | html %]</pre>
 </div>
+
