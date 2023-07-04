@@ -677,55 +677,55 @@ How smart a lash that speech doth giue my Conscience?
       <h4 id="csdirs">[% loc('Supported directive in the header') %]</h4>
       <ul>
         <li>
-          <code>#title [% loc('A nice title') %]</code><br />
+          <code><span dir="ltr">#title</span> [% loc('A nice title') %]</code><br />
           [% loc('The title of the document. The only mandatory directive.') %]
         </li>
         <li>
-          <code>#author [% loc('First Author and Second Author') %]</code> <br />
+          <code><span dir="ltr">#author</span> [% loc('First Author and Second Author') %]</code> <br />
           [% loc('the author of the text (as displayed)') %]
         </li>
         <li>
           <code>
-	        #SORTauthors [% loc('First Author, Second Author') %]
+	        <span dir="ltr">#SORTauthors</span> [% loc('First Author, Second Author') %]
           </code><br/>
           [% loc('Authors for indexing') %].
           [% loc('Comma or semicolon separated list') %].
           [% loc('Optional, defaults to the author directive') %].
         </li>
         <li>
-          <code>#LISTtitle [% loc('Nice title') %]</code> <br /> [%
+          <code><span dir="ltr">#LISTtitle</span> [% loc('Nice title') %]</code> <br /> [%
           loc('The title of the document, for sorting purposes. Useful
           if you want to strip the article, if any. A text titled “A
           nice title” could have this set to “Nice title”, and will be
           listed under N, not under A.') %]
         </li>
         <li>
-          <code>#subtitle [% loc('The optional subtitle') %]</code>
+          <code><span dir="ltr">#subtitle</span> [% loc('The optional subtitle') %]</code>
         </li>
         <li>
-          <code>#SORTtopics [% loc('topic') %] 1, [% loc('topic') %] 2, [% loc('topic') %] 3</code><br />
+          <code><span dir="ltr">#SORTtopics</span> [% loc('topic') %] 1, [% loc('topic') %] 2, [% loc('topic') %] 3</code><br />
           [% loc('Topics') %]. [% loc('Comma or semicolon separated list') %].
         </li>
         <li>
-          <code>#date 2012</code><br />
+          <code><span dir="ltr">#date</span> 2012</code><br />
           [% loc('Date of the original publication') %]
         </li>
         <li>
-          <code>#notes [% loc('Published in *A nice book*, published by My House, 2014') %]</code>
+          <code><span dir="ltr">#notes</span> [% loc('Published in *A nice book*, published by My House, 2014') %]</code>
           <br />
           [% loc('Additional information (full date, original title, translators, credits, etc).') %]
         </li>
         <li>
-          <code>#source [% loc('Retrieved on March 8, 2012 from') %] [[http://url.org]]</code><br />
+          <code><span dir="ltr">#source</span> [% loc('Retrieved on March 8, 2012 from') %] [[http://url.org]]</code><br />
           [% loc('Where does this text come from?') %]
         </li>
         <li>
-          <code>#lang en</code><br />
+          <code><span dir="ltr">#lang</span> en</code><br />
           [% loc('Language code of the document (2 or 3 letters). ') %]
         </li>
         <li>
           <p>
-          <code>#pubdate 2015-10-10</code> <br /> [% loc('If this line
+            <code><span dir="ltr">#pubdate</span> 2015-10-10</code> <br /> [% loc('If this line
           is present, set the publication date (on this site) to the
           date. The date may also be in the future, deferring the
           publication. If this line is not present, the publication
@@ -741,28 +741,28 @@ How smart a lash that speech doth giue my Conscience?
           </p>
         </li>
         <li>
-          <code>#DELETED [% loc('Reason') %]</code> <br /> [% loc('If this line is
+          <code><span dir="ltr">#DELETED</span> [% loc('Reason') %]</code> <br /> [% loc('If this line is
           present and the reason is set to something, the text will be
           stored in the archive, but will not be published.') %]
         </li>
         <li>
-          <code>#notoc 1</code> <br />
+          <code><span dir="ltr">#notoc</span> 1</code> <br />
           [%- loc('If this line is present, do not display the table of contents.') -%]
         </li>
         <li>
-          <code>#continuefootnotes 1</code> <br />
+          <code><span dir="ltr">#continuefootnotes</span> 1</code> <br />
           [%- loc('Continuous footnote numbering across the whole document.') -%]
         </li>
         <li>
-          <code>#centerchapter 1</code> <br />
+          <code><span dir="ltr">#centerchapter</span> 1</code> <br />
           [%- loc('Center the chapter titles.') -%]
         </li>
         <li>
-          <code>#centersection 1</code> <br />
+          <code><span dir="ltr">#centersection</span> 1</code> <br />
           [%- loc('Center all the sectioning titles.') -%]
         </li>
         <li>
-          <code>#ATTACH</code> <br />
+          <code><span dir="ltr">#ATTACH</SPAN></code> <br />
           [% loc('This directive wants a whitespace separated list of filenames.') %]<br />
           [% loc('PDFs not listed in the [_1] directive will be stored but ignored.', '#ATTACH') %]<br />
           [% loc('PDFs cannot be used in the body.') %]<br />
@@ -770,14 +770,14 @@ How smart a lash that speech doth giue my Conscience?
         end of the document.') %]
         </li>
         <li>
-          <code>#blob 1</code><br /> [% loc('If present, hide the
+          <code><span dir="ltr">#blob</span> 1</code><br /> [% loc('If present, hide the
           generated formats and the information box. This makes sense
           with attachments, when the text version is poor or not
           available and more relevance should be given to the attached
           files.') %]
         </li>
         <li>
-          <code>#nocoverpage 1</code> <br />
+          <code><span dir="ltr">#nocoverpage</span> 1</code> <br />
           [% loc('If this line is present, do not create a title page,
           but instead start the text on the very first page and
           produce a PDF styled like an article (chapters and parts
@@ -786,7 +786,7 @@ How smart a lash that speech doth giue my Conscience?
         [% IF site.sl_pdf %]
         <li>
           <p>
-            <code>#slides ON</code> <br /> [% loc('Also produce slides
+            <code><span dir="ltr">#slides</span> ON</code> <br /> [% loc('Also produce slides
           from the document. Each section, no matter how deep, will
           produce a slide. The text outside a section is ignored, so
           if you do not have sections, you will get empty slides. If
