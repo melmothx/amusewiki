@@ -13,11 +13,11 @@
     <tr>
       <th>[% loc('Revision') %]</th>
       <th>[% loc('Attachments') %]</th>
-      <th class="text-center">
+      <th>
         [% loc('Action')   %]
       </th>
       [% IF c.user_exists %]
-      <th class="text-center">
+      <th>
         [% loc('Delete')   %]
       </th>
       [% END %]
@@ -43,7 +43,7 @@
         [% END %]
         </ul>
       </td>
-      <td style="text-align:center">
+      <td>
         [% IF rev.pending %]
         <form method="post" name="publish"
               action="[% c.uri_for_action('/publish/publish') %]">
@@ -74,7 +74,7 @@
         [% END %]
       </td>
       [% IF c.user_exists %]
-      <td style="text-align:center">
+      <td>
         <form method="post" name="deletion"
               onsubmit="return amw_confirm()"
               action="[% c.uri_for_action('/publish/purge') %]">

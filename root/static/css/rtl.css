@@ -16,3 +16,7 @@ div.checkbox {
 th {
     text-align: inherit;
 }
+
+.dropdown-menu {
+    text-align: right;
+}

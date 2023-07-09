@@ -226,7 +226,7 @@
                 </span>
                 <b class="caret hidden-sm"></b>
               </a>
-              <ul id="amw-top-nav-toc" class="dropdown-menu dropdown-menu-left">
+              <ul id="amw-top-nav-toc" class="dropdown-menu [% IF locale_is_rtl %]dropdown-menu-right[% ELSE %]dropdown-menu-left[% END %]">
               </ul>
             </li>
             <li class="dropdown">
@@ -240,7 +240,7 @@
                 </span>
                 <b class="caret hidden-sm"></b>
               </a>
-              <ul class="dropdown-menu dropdown-menu-left">
+              <ul class="dropdown-menu [% IF locale_is_rtl %]dropdown-menu-right[% ELSE %]dropdown-menu-left[% END %]">
 	            <li[% IF nav == 'titles' %] class="active" [% END %]
                       id="amw-nav-bar-titles">
                   <a href="[% c.uri_for('/listing') %]"
@@ -331,7 +331,7 @@
                 </span>
                 <b class="caret hidden-sm"></b>
               </a>
-              <ul class="dropdown-menu dropdown-menu-left">
+              <ul class="dropdown-menu [% IF locale_is_rtl %]dropdown-menu-right[% ELSE %]dropdown-menu-left[% END %]">
                 [% FOREACH link IN navigation.specials %]
                 <li[% IF link.active %] class="active"[% END %]>
                   <a href="[% link.uri | html %]">[% link.name | html %]</a>
@@ -352,7 +352,7 @@
                 </span>
                 <b class="caret hidden-sm"></b>
               </a>
-              <ul class="dropdown-menu dropdown-menu-left">
+              <ul class="dropdown-menu [% IF locale_is_rtl %]dropdown-menu-right[% ELSE %]dropdown-menu-left[% END %]">
                 [% FOREACH link IN navigation.projects %]
                 <li [% IF link.active %] class="active"[% END %]>
                   <a href="[% link.uri | html %]">[% link.name | html %]</a>
@@ -375,7 +375,7 @@
                 </span>
                 <b class="caret hidden-sm"></b>
               </a>
-              <ul class="dropdown-menu dropdown-menu-left">
+              <ul class="dropdown-menu [% IF locale_is_rtl %]dropdown-menu-right[% ELSE %]dropdown-menu-left[% END %]">
                 [% FOREACH lang IN site.multilanguage_list %]
                 <li [% IF current_locale_code == lang.code -%]
                     class="active"
@@ -403,7 +403,7 @@
                 </span>
                 <b class="caret hidden-sm"></b>
               </a>
-              <ul class="dropdown-menu dropdown-menu-left">
+              <ul class="dropdown-menu [% IF locale_is_rtl %]dropdown-menu-right[% ELSE %]dropdown-menu-left[% END %]">
                 <li role="presentation" class="dropdown-header hidden-xs">
                   [% c.user.get('username') %]
                 </li>
