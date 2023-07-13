@@ -98,7 +98,7 @@ requires 'PDF::API2';
 # our own dogfood
 requires 'Text::Amuse' => '1.81';
 requires 'PDF::Imposition' => '0.26';
-requires 'Text::Amuse::Compile' => '1.87';
+requires 'Text::Amuse::Compile' => '1.88';
 requires 'Text::Amuse::Preprocessor' => '0.67';
 
 # devel things to be removed at the end of the development cycle
