@@ -376,11 +376,11 @@ DISTRIBUTIONS
       DBD::SQLite 0
       DBIx::Class 0.08114
       ExtUtils::MakeMaker 6.59
-      Hash::Merge 0
       List::MoreUtils 0
       Module::Runtime 0.012
       Moose 1.12
       MooseX::MarkAsMethods 0.13
+      MooseX::NonMoose 0.16
       MooseX::Types 0
       MooseX::Types::LoadableClass 0.009
       Storable 0
@@ -7279,10 +7279,10 @@ DISTRIBUTIONS
       File::Temp 0
       Test::More 0
       perl 5.010001
-  Text-Amuse-Compile-1.87
-    pathname: M/ME/MELMOTHX/Text-Amuse-Compile-1.87.tar.gz
+  Text-Amuse-Compile-1.88
+    pathname: M/ME/MELMOTHX/Text-Amuse-Compile-1.88.tar.gz
     provides:
-      Text::Amuse::Compile 1.87
+      Text::Amuse::Compile 1.88
       Text::Amuse::Compile::Devel undef
       Text::Amuse::Compile::File undef
       Text::Amuse::Compile::FileName undef
@@ -7314,12 +7314,12 @@ DISTRIBUTIONS
       Test::More 0
       Text::Amuse 1.81
       Type::Tiny 1
-  Text-Amuse-Preprocessor-0.66
-    pathname: M/ME/MELMOTHX/Text-Amuse-Preprocessor-0.66.tar.gz
+  Text-Amuse-Preprocessor-0.67
+    pathname: M/ME/MELMOTHX/Text-Amuse-Preprocessor-0.67.tar.gz
     provides:
-      Text::Amuse::Preprocessor 0.66
+      Text::Amuse::Preprocessor 0.67
       Text::Amuse::Preprocessor::Footnotes undef
-      Text::Amuse::Preprocessor::HTML 0.59
+      Text::Amuse::Preprocessor::HTML 0.67
       Text::Amuse::Preprocessor::Parser undef
       Text::Amuse::Preprocessor::Typography 0.09
       Text::Amuse::Preprocessor::TypographyFilters undef
