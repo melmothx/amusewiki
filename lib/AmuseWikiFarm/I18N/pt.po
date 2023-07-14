@@ -631,6 +631,9 @@ msgstr ""
 msgid "Delete remote repository %1"
 msgstr "Deletar repositório remoto %1"
 
+msgid "Delete selected attachments"
+msgstr ""
+
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
@@ -884,6 +887,9 @@ msgid "File uploaded!"
 msgstr "Arquivo enviado!"
 
 msgid "Files"
+msgstr ""
+
+msgid "Files not referenced by any text"
 msgstr ""
 
 msgid ""

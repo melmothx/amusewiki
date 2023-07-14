@@ -634,6 +634,9 @@ msgstr "Kalıcı olarak sil"
 msgid "Delete remote repository %1"
 msgstr "%1 uzak veri deposunu sil"
 
+msgid "Delete selected attachments"
+msgstr ""
+
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
@@ -895,6 +898,9 @@ msgstr "Dosya yüklendi!"
 
 msgid "Files"
 msgstr "Dosyalar"
+
+msgid "Files not referenced by any text"
+msgstr ""
 
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."

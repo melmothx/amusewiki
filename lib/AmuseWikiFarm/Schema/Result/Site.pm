@@ -1751,7 +1751,7 @@ sub import_text_from_html_params {
     my $error;
     if ($params->{fileupload}) {
         if (-f $params->{fileupload} && -T $params->{fileupload}) {
-            $body = eval { html_file_to_muse($params->{fileupload}) };
+            $body = eval { html_file_to_muse($params->{fileupload}, { lang => $params->{lang} }) };
             if ($@) {
                 log_error { "error while converting file upload: " . $@ };
                 # loc('Error converting the upload file. Is it an HTML file?');
@@ -1767,7 +1767,7 @@ sub import_text_from_html_params {
     else {
         $params->{textbody} //= "\n";
         $params->{textbody} =~ s/\r//g;
-        $body = eval { html_to_muse($params->{textbody}) };
+        $body = eval { html_to_muse($params->{textbody}, { lang => $params->{lang} }) };
         if ($@) {
             log_error { "error while converting HTML: " . $@ };
             # loc('Error while converting the HTML. Sorry.');

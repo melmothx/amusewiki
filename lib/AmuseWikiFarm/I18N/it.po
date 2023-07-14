@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2022-05-23 08:42+0200\n"
+"PO-Revision-Date: 2023-07-11 21:58+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -637,6 +637,9 @@ msgstr "Rimuovi per sempre"
 msgid "Delete remote repository %1"
 msgstr "Il repo remoto %1 è stato rimosso"
 
+msgid "Delete selected attachments"
+msgstr ""
+
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
@@ -901,6 +904,9 @@ msgstr "File caricato!"
 
 msgid "Files"
 msgstr "File"
+
+msgid "Files not referenced by any text"
+msgstr ""
 
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
@@ -3241,7 +3247,7 @@ msgstr ""
 "Usala come immagine d'anteprima aggiungendo alle intestazioni questa linea:"
 
 msgid "Use named table of contents anchors instead of numeric ones"
-msgstr "in stato non"
+msgstr "Usa ancore con il nome delle sezioni invece di ancore con collegamenti numerici"
 
 msgid "Use one of the site's formats"
 msgstr "Usa uno dei formati del sito"

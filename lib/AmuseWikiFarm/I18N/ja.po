@@ -593,6 +593,9 @@ msgstr "永久に削除"
 msgid "Delete remote repository %1"
 msgstr "リモートリポジトリ%1を削除"
 
+msgid "Delete selected attachments"
+msgstr ""
+
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
@@ -842,6 +845,9 @@ msgstr "ファイルアップロード完了！"
 
 msgid "Files"
 msgstr "ファイル"
+
+msgid "Files not referenced by any text"
+msgstr ""
 
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."

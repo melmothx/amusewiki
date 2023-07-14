@@ -1190,6 +1190,7 @@ root/static/css/images/bg-soft.png
 root/static/css/libre-baskerville.css
 root/static/css/news-cycle.css
 root/static/css/roboto.css
+root/static/css/rtl.css
 root/static/css/select2/select2-bootstrap.css
 root/static/css/select2/select2-spinner.gif
 root/static/css/select2/select2.css

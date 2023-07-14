@@ -4,10 +4,11 @@ with 'AmuseWikiFarm::Role::Controller::HumanLoginScreen';
 use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller' }
 
-use AmuseWikiFarm::Utils::Amuse qw//;
+use AmuseWikiFarm::Utils::Amuse ();
 use AmuseWikiFarm::Log::Contextual;
 use HTTP::BrowserDetect;
 use IO::File;
+use Text::Amuse::Utils ();
 
 use constant {
     AMW_NO_404_FALLBACK => $ENV{AMW_NO_404_FALLBACK},
@@ -179,6 +180,9 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
     $c->stash(current_locale_code => $locale,
               current_locale_name => $site->known_langs->{$locale},
              );
+    if (Text::Amuse::Utils::lang_code_is_rtl($locale)) {
+        $c->stash(locale_is_rtl => 1);
+    }
     # set the localization
     $c->set_language($locale, $site_id);
 
