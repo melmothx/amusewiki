@@ -1842,10 +1842,12 @@ t/express-publishing.t
 t/fail-on-cropmarks-109.t
 t/failed-thumbs.t
 t/failure-reason-371.t
+t/farsi.t
 t/federation.t
 t/files/amw-version-22.pdf
 t/files/big.jpeg
 t/files/manual.pdf
+t/files/rtl.html
 t/files/shot.jpg
 t/files/shot.pdf
 t/files/shot.png

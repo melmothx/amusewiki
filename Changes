@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.576 2023-07-14
+
+ - Add initial RTL support
+ - Add Farsi i18n
+
 2.575 2023-06-25
 
  - OAI-PMH: add a "web" set and serve marc21 for GetRecord call as well
