@@ -331,7 +331,7 @@
   </div>
   [% IF node_checkboxes %]
     <div id="create-block-nodes">
-    <h3>[% loc('Assign text to nodes') %]</h3>
+    <h3>[% loc('Assign text to collections') %]</h3>
     <div class="form-group">
       [% FOREACH node IN node_checkboxes %]
         <div class="col-xs-12">
