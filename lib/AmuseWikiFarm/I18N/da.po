@@ -2341,9 +2341,6 @@ msgstr "Roller"
 msgid "Root Collection"
 msgstr ""
 
-msgid "Root collection"
-msgstr ""
-
 msgid "Run diff"
 msgstr ""
 

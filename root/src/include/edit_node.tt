@@ -12,7 +12,7 @@
             [% loc('Parent collection') %]:
           </label>
           <select name="parent_node_uri" id="parent_node_uri" class="form-control">
-            <option value="0">[% loc('Root collection') %]</option>
+            <option value="0">[% loc('Root Collection') %]</option>
             [% FOREACH node IN all_nodes %]
               <option value="[% node.uri %]"
                       [% IF node.value == edit_node.parent_node_id %]selected="selected"[% END %]>

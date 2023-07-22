@@ -2411,9 +2411,6 @@ msgstr "Role"
 msgid "Root Collection"
 msgstr ""
 
-msgid "Root collection"
-msgstr ""
-
 msgid "Run diff"
 msgstr "Spusti diff"
 

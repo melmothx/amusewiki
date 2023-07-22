@@ -2450,9 +2450,6 @@ msgstr "Роли"
 msgid "Root Collection"
 msgstr ""
 
-msgid "Root collection"
-msgstr ""
-
 msgid "Run diff"
 msgstr ""
 

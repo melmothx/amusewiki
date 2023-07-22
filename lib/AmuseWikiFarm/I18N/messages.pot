@@ -2749,12 +2749,8 @@ msgstr ""
 msgid "Roles"
 msgstr ""
 
-#: root/src/nodes/node_root.tt:45
+#: root/src/include/edit_node.tt:15 root/src/nodes/node_root.tt:45
 msgid "Root Collection"
-msgstr ""
-
-#: root/src/include/edit_node.tt:15
-msgid "Root collection"
 msgstr ""
 
 #: root/src/console/git_fine_diff.tt:28
