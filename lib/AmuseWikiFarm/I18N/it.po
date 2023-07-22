@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2023-07-11 21:58+0200\n"
+"PO-Revision-Date: 2023-07-22 16:48+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -37,7 +37,7 @@ msgid "%1 pp."
 msgstr "%1 pp."
 
 msgid "(leave blank to keep the current one)"
-msgstr ""
+msgstr "(lascia in bianco per non cambiare nulla)"
 
 msgid "(narrowest)"
 msgstr "(più stretti)"
@@ -46,7 +46,7 @@ msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "virgolette tipografiche, collegamenti, note a piè di pagina, ecc."
 
 msgid "(use that as main link in static mirror as well)"
-msgstr ""
+msgstr "(usalo anche come link principale nel mirror statico)"
 
 msgid "(widest)"
 msgstr "(più larghi)"
@@ -163,7 +163,7 @@ msgid "Add this text to the bookbuilder"
 msgstr "Aggiungi questo testo all'impaginatore"
 
 msgid "Add to colophon"
-msgstr ""
+msgstr "Aggiungi al colofon"
 
 msgid "Added"
 msgstr "Aggiunto"
@@ -242,7 +242,7 @@ msgstr ""
 "comincia con un punto e virgola) con la parola chiave “noslide”."
 
 msgid "Alternate Text"
-msgstr ""
+msgstr "Testo alternativo"
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
@@ -280,7 +280,7 @@ msgid "As regular image in the body"
 msgstr "Come una normale immagine nel corpo del testo"
 
 msgid "Assign text to collections"
-msgstr ""
+msgstr "Assegna il testo a una o più collezioni"
 
 msgid "Attach"
 msgstr "Allega"
@@ -380,7 +380,7 @@ msgid "Build it"
 msgstr "Impagina"
 
 msgid "Built-in"
-msgstr ""
+msgstr "Di serie"
 
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
@@ -445,7 +445,7 @@ msgid "Changes applied"
 msgstr "Modifiche applicate"
 
 msgid "Changes applied."
-msgstr ""
+msgstr "Cambiamenti applicati"
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
@@ -503,10 +503,10 @@ msgid "Code"
 msgstr "Codice"
 
 msgid "Collections"
-msgstr ""
+msgstr "Collezioni"
 
 msgid "Colophon (displayed in the generated files):"
-msgstr ""
+msgstr "Colofon (visualizzato nei file generati)"
 
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
@@ -542,7 +542,7 @@ msgid "Convert to archive markup"
 msgstr "Converti nel markup dell'archivio"
 
 msgid "Copyright notice"
-msgstr ""
+msgstr "Nota sui diritti d'autore"
 
 msgid "Couldn't add the text"
 msgstr "Aggiunta del testo fallita"
@@ -641,7 +641,7 @@ msgid "Delete remote repository %1"
 msgstr "Il repo remoto %1 è stato rimosso"
 
 msgid "Delete selected attachments"
-msgstr ""
+msgstr "Rimuovi gli allegati selezionati"
 
 msgid ""
 "Deleting a revision is safe if a text has been\n"
@@ -788,7 +788,7 @@ msgid "Email updated"
 msgstr "e-mail aggiornata"
 
 msgid "Email, password, locale"
-msgstr ""
+msgstr "Email, password, lingua"
 
 msgid "Emails do not match"
 msgstr "Le e-mail non coincidono"
@@ -808,7 +808,7 @@ msgid "Enable title ordering by SKU"
 msgstr "Abilita l'ordinamento dei titoli per numero di inventario"
 
 msgid "Enforce e-mail on submission"
-msgstr ""
+msgstr "Richiedi la mail per i contributi"
 
 msgid "Erase this revision"
 msgstr "Cancella questa revisione"
@@ -885,7 +885,7 @@ msgid "Federation"
 msgstr "Federazione"
 
 msgid "Feed enclosure method (OPDS and RSS)"
-msgstr ""
+msgstr "Metodo per gli allegati dei feed (OPDS e RSS)"
 
 msgid "Fetch"
 msgstr "Recupera"
@@ -909,7 +909,7 @@ msgid "Files"
 msgstr "File"
 
 msgid "Files not referenced by any text"
-msgstr ""
+msgstr "File a cui non punta nessun testo"
 
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
@@ -939,7 +939,7 @@ msgid "First slide"
 msgstr "Prima diapositiva"
 
 msgid "First text attachment or EPUB"
-msgstr ""
+msgstr "Primo allegato del testo o EPUB"
 
 msgid "First you have to unpublish it via #DELETED."
 msgstr "Prima devi rimuoverlo con #DELETED."
@@ -1027,7 +1027,7 @@ msgid "General configuration"
 msgstr "Configurazione generale"
 
 msgid "Generate Index"
-msgstr ""
+msgstr "Genera l'indice"
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Formato generico (adatto per A4 e Letter)"
@@ -1096,7 +1096,7 @@ msgid "Half Letter paper"
 msgstr "Mezzo foglio “Letter”"
 
 msgid "Headers"
-msgstr ""
+msgstr "Intestazioni"
 
 msgid "Heading"
 msgstr "Sezioni"
@@ -1108,7 +1108,7 @@ msgid "Height:"
 msgstr "Altezza:"
 
 msgid "Help Text"
-msgstr ""
+msgstr "Aiuto in linea"
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr "Qui puoi trovare un'anteprima dei temi e dei colori delle diapositive"
@@ -1127,7 +1127,7 @@ msgid "Higher division factor means narrower margins"
 msgstr "Un fattore di divisione più alto implica margini più stretti"
 
 msgid "Highest priority format"
-msgstr ""
+msgstr "Formato con priorità più alta"
 
 msgid "How are you going to access Git?"
 msgstr "Come intendi accedere a Git"
@@ -1576,7 +1576,7 @@ msgid "Links"
 msgstr "Collegamenti"
 
 msgid "List of paths to attach to this collection, one per line."
-msgstr ""
+msgstr "Lista dei percorsi da aggiungere a questa collezione, uno per linea"
 
 msgid "List of texts on hold"
 msgstr "Lista dei testi in attesa di approvazione"
@@ -1604,7 +1604,7 @@ msgid "Local pages"
 msgstr "Pagine locali"
 
 msgid "Locale updated"
-msgstr ""
+msgstr "La lingua è stata aggiornata"
 
 msgid "Locked editing, no upload possible"
 msgstr "Modifiche bloccate, caricamento non permesso"
@@ -1660,7 +1660,7 @@ msgid "Manage categories"
 msgstr "Gestione delle categorie"
 
 msgid "Manage category types"
-msgstr ""
+msgstr "Gestisci i tipi di categoria"
 
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
@@ -1963,7 +1963,7 @@ msgid "Paragraphs"
 msgstr "Paragrafi"
 
 msgid "Parent collection"
-msgstr ""
+msgstr "Collezione genitore"
 
 msgid "Part"
 msgstr "Parte"
@@ -2136,7 +2136,7 @@ msgid "Please prove you are a human"
 msgstr "Dimostra di essere un umano"
 
 msgid "Please reindex the site."
-msgstr ""
+msgstr "Indicizza nuovamente il sito"
 
 msgid "Please reload your page"
 msgstr "Ricarica la pagina"
@@ -2194,7 +2194,7 @@ msgid "Popular texts"
 msgstr "Testi più letti"
 
 msgid "Preferred language"
-msgstr ""
+msgstr "Lingua preferita"
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
@@ -2325,7 +2325,7 @@ msgid "Rebuild all generated files"
 msgstr "Rigenera tutti i file generati dal sito"
 
 msgid "Rebuild formats"
-msgstr ""
+msgstr "Rigenera i formati"
 
 msgid "Rebuild the generated formats"
 msgstr "Rigenera i formati"
@@ -2343,7 +2343,7 @@ msgid "Refresh and apply filters"
 msgstr "Aggiorna e applica i filtri"
 
 msgid "Reindex site"
-msgstr ""
+msgstr "Indicizza di nuovo il sito"
 
 msgid "Related projects"
 msgstr "Progetti correlati"
@@ -2434,10 +2434,7 @@ msgid "Roles"
 msgstr "Ruoli"
 
 msgid "Root Collection"
-msgstr ""
-
-msgid "Root collection"
-msgstr ""
+msgstr "Collezione radice"
 
 msgid "Run diff"
 msgstr "Trova le differenze"
@@ -2446,7 +2443,7 @@ msgid "Running headings"
 msgstr "Testatine"
 
 msgid "SKU"
-msgstr ""
+msgstr "SKU"
 
 msgid "SSL CA certificate path (Apache)"
 msgstr "Percorso del file certificato SSL CA (Apache)"
@@ -2489,7 +2486,7 @@ msgid "Search"
 msgstr "Cerca"
 
 msgid "Search Engine Facets"
-msgstr ""
+msgstr "Filtri del motore di ricerca"
 
 msgid "Search filters"
 msgstr "Filtri la ricerca"
@@ -2550,10 +2547,10 @@ msgid "Separate header fields"
 msgstr "Separano i campi dell'intestazione"
 
 msgid "Series Name"
-msgstr ""
+msgstr "Nome della serie"
 
 msgid "Series Number"
-msgstr ""
+msgstr "Numero della serie"
 
 msgid "Session sharing"
 msgstr "Condivisione"
@@ -2993,7 +2990,7 @@ msgid "This section will not produce a slide"
 msgstr "Questa sezione non produrrà diapositive"
 
 msgid "This setting affects only the text creation form."
-msgstr ""
+msgstr "Questa impostazione riguarda solo la pagina di creazione del testo"
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
@@ -3265,7 +3262,7 @@ msgid "Use the image as cover"
 msgstr "Usa l'immagine come immagine di copertina"
 
 msgid "Use the site locale"
-msgstr ""
+msgstr "Usa la lingua del sito"
 
 msgid "Useful HTML snippets"
 msgstr "Frammenti HTML utili"
