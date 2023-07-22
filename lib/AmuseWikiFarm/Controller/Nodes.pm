@@ -27,7 +27,7 @@ sub node_root :Chained('root') :PathPart('') :Args(0) {
     my $site = $c->stash->{site};
     my $lang = $c->stash->{current_locale_code};
     $c->stash(node_list => $site->nodes->sorted->as_tree($lang),
-              page_title => $c->loc('Site Map'),
+              page_title => $c->loc('Collections'),
              );
     if ($c->user_exists) {
         $c->stash(all_nodes => $site->nodes->as_list_with_path($lang));

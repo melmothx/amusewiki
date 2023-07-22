@@ -9,10 +9,10 @@
       <div class="form-group">
         <div class="col-xs-12">
           <label for="parent_node_id">
-            [% loc('Parent node') %]:
+            [% loc('Parent collection') %]:
           </label>
           <select name="parent_node_uri" id="parent_node_uri" class="form-control">
-            <option value="0">[% loc('Root node') %]</option>
+            <option value="0">[% loc('Root collection') %]</option>
             [% FOREACH node IN all_nodes %]
               <option value="[% node.uri %]"
                       [% IF node.value == edit_node.parent_node_id %]selected="selected"[% END %]>
@@ -79,7 +79,7 @@
       <div class="form-group">
         <div class="col-sm-12">
           <label for="attached_uris">
-            [% loc('List of paths to attach to this node, one per line.') %]
+            [% loc('List of paths to attach to this collection, one per line.') %]
             [% loc('They can be texts, special texts, authors or topics.') %]
             [% loc('Example') %]: <code>/library/text</code>
           </label>

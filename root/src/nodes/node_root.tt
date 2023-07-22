@@ -2,7 +2,7 @@
 
 <div class="center">
   <div class="page-header">
-    <h1>[% loc('Site Map') %]</h1>
+    <h1>[% loc('Collections') %]</h1>
   </div>
 </div>
 
@@ -42,7 +42,7 @@
             [% loc('Parent node') %]
           </label>
           <select name="parent_node_uri" id="parent_node_uri" class="form-control">
-            <option value="0">[% loc('Root node') %]</option>
+            <option value="0">[% loc('Root Collection') %]</option>
             [% FOREACH node IN all_nodes %]
               <option value="[% node.uri %]">
                 [% node.title %]

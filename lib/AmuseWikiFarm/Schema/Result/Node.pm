@@ -522,7 +522,7 @@ sub breadcrumbs {
     }
     push @breadcrumbs, {
                         uri => "/node",
-                        label => $lh->loc_html('Site Map'),
+                        label => $lh->loc_html('Collections'),
                        };
     push @breadcrumbs, {
                         uri => "/",
