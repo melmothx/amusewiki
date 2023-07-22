@@ -270,7 +270,7 @@ msgstr "Jako okładka w nagłówku"
 msgid "As regular image in the body"
 msgstr "Jako zwykły obraz w treści"
 
-msgid "Assign text to nodes"
+msgid "Assign text to collections"
 msgstr ""
 
 msgid "Attach"
@@ -492,6 +492,9 @@ msgstr "Zamknij"
 
 msgid "Code"
 msgstr "Koduj"
+
+msgid "Collections"
+msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
 msgstr ""
@@ -1476,7 +1479,7 @@ msgstr "Link"
 msgid "Links"
 msgstr "Linki"
 
-msgid "List of paths to attach to this node, one per line."
+msgid "List of paths to attach to this collection, one per line."
 msgstr ""
 
 msgid "List of texts on hold"
@@ -1700,9 +1703,6 @@ msgstr "Nie znaleziono tekstu!"
 msgid "No text was added yet"
 msgstr "Nie dodano jeszcze żadnego tekstu"
 
-msgid "Nodes"
-msgstr ""
-
 msgid "None"
 msgstr ""
 
@@ -1840,7 +1840,7 @@ msgstr ""
 msgid "Paragraphs"
 msgstr "Akapity"
 
-msgid "Parent node"
+msgid "Parent collection"
 msgstr ""
 
 msgid "Part"
@@ -2291,7 +2291,10 @@ msgstr "Korekta %1 została usunięta"
 msgid "Roles"
 msgstr ""
 
-msgid "Root node"
+msgid "Root Collection"
+msgstr ""
+
+msgid "Root collection"
 msgstr ""
 
 msgid "Run diff"
@@ -2450,9 +2453,6 @@ msgid "Showing _START_ to _END_ of _TOTAL_ entries"
 msgstr ""
 
 msgid "Single bars"
-msgstr ""
-
-msgid "Site Map"
 msgstr ""
 
 msgid "Site already exists"

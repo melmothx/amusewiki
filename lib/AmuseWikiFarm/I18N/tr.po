@@ -282,8 +282,8 @@ msgstr "Üstlük kısmında kapak olarak"
 msgid "As regular image in the body"
 msgstr "Gövdede normal resim olarak"
 
-msgid "Assign text to nodes"
-msgstr "Düğümlere metin ara"
+msgid "Assign text to collections"
+msgstr ""
 
 msgid "Attach"
 msgstr "Ekle"
@@ -501,6 +501,9 @@ msgstr "Kapat"
 
 msgid "Code"
 msgstr "Kod"
+
+msgid "Collections"
+msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
 msgstr "Kolofon (oluşturulan dosyalarda gözükür)"
@@ -1546,8 +1549,8 @@ msgstr "Bağlantı"
 msgid "Links"
 msgstr "Bağlantılar"
 
-msgid "List of paths to attach to this node, one per line."
-msgstr "Bu düğüme eklenecek yolların listesi, her satıra bir tane."
+msgid "List of paths to attach to this collection, one per line."
+msgstr ""
 
 msgid "List of texts on hold"
 msgstr "Beklemedeki metinlerin listesi"
@@ -1772,9 +1775,6 @@ msgstr "Metin bulunamadı!"
 msgid "No text was added yet"
 msgstr "Henüz hiçbir metin eklenmedi"
 
-msgid "Nodes"
-msgstr "Düğümler"
-
 msgid "None"
 msgstr "Hiçbiri"
 
@@ -1930,8 +1930,8 @@ msgstr "Nokta cinsinden paragraf girintisi (pt)"
 msgid "Paragraphs"
 msgstr "Paragraflar"
 
-msgid "Parent node"
-msgstr "Üst düğüm"
+msgid "Parent collection"
+msgstr ""
 
 msgid "Part"
 msgstr "Parça"
@@ -2396,8 +2396,11 @@ msgstr "%1 için versiyon silindi"
 msgid "Roles"
 msgstr "Roller"
 
-msgid "Root node"
-msgstr "Kök düğüm"
+msgid "Root Collection"
+msgstr ""
+
+msgid "Root collection"
+msgstr ""
 
 msgid "Run diff"
 msgstr "Çalıştır: diff"
@@ -2556,9 +2559,6 @@ msgstr "_TOTAL_ kayıttan _START_ ile _END_ arası gösteriliyor"
 
 msgid "Single bars"
 msgstr "Tek sütünlar"
-
-msgid "Site Map"
-msgstr "Site Haritası"
 
 msgid "Site already exists"
 msgstr "Site zaten var"
@@ -3705,6 +3705,24 @@ msgstr ""
 "\"Yarım kalmış düzenleme\",  versiyon düzenlenirken yarıda bırakılmış,\n"
 "    ama birisi metni düzenlemek için oradan devam edebilir\n"
 "    demektir."
+
+#~ msgid "Nodes"
+#~ msgstr "Düğümler"
+
+#~ msgid "Assign text to nodes"
+#~ msgstr "Düğümlere metin ara"
+
+#~ msgid "Parent node"
+#~ msgstr "Üst düğüm"
+
+#~ msgid "List of paths to attach to this node, one per line."
+#~ msgstr "Bu düğüme eklenecek yolların listesi, her satıra bir tane."
+
+#~ msgid "Root node"
+#~ msgstr "Kök düğüm"
+
+#~ msgid "Site Map"
+#~ msgstr "Site Haritası"
 
 #~ msgid "Series"
 #~ msgstr "Dizi"

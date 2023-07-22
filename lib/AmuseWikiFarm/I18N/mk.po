@@ -281,8 +281,8 @@ msgstr "Како насловна страница во заглавието"
 msgid "As regular image in the body"
 msgstr "Како обична слика во текст"
 
-msgid "Assign text to nodes"
-msgstr "Додади текст кон јазлите"
+msgid "Assign text to collections"
+msgstr ""
 
 msgid "Attach"
 msgstr "Прилог"
@@ -496,6 +496,9 @@ msgid "Close"
 msgstr "Затвори"
 
 msgid "Code"
+msgstr ""
+
+msgid "Collections"
 msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
@@ -1535,7 +1538,7 @@ msgstr "Линк"
 msgid "Links"
 msgstr ""
 
-msgid "List of paths to attach to this node, one per line."
+msgid "List of paths to attach to this collection, one per line."
 msgstr ""
 
 msgid "List of texts on hold"
@@ -1762,9 +1765,6 @@ msgstr "Не е пронајден ниту еден текст!"
 msgid "No text was added yet"
 msgstr "Сѐ уште не е додаден ниту еден текст"
 
-msgid "Nodes"
-msgstr "Јазли"
-
 msgid "None"
 msgstr "Без"
 
@@ -1918,8 +1918,8 @@ msgstr ""
 msgid "Paragraphs"
 msgstr "Пасуси"
 
-msgid "Parent node"
-msgstr "Повисок јазол"
+msgid "Parent collection"
+msgstr ""
 
 msgid "Part"
 msgstr "Дел"
@@ -2391,8 +2391,11 @@ msgstr "Измената за %1 е избришана"
 msgid "Roles"
 msgstr "Улоги"
 
-msgid "Root node"
-msgstr "Највисок јазол"
+msgid "Root Collection"
+msgstr ""
+
+msgid "Root collection"
+msgstr ""
 
 msgid "Run diff"
 msgstr ""
@@ -2551,9 +2554,6 @@ msgstr ""
 
 msgid "Single bars"
 msgstr "Единечна лента"
-
-msgid "Site Map"
-msgstr "Мапа на сајтот"
 
 msgid "Site already exists"
 msgstr "Сајтот веќе постои"
@@ -3688,6 +3688,21 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Nodes"
+#~ msgstr "Јазли"
+
+#~ msgid "Assign text to nodes"
+#~ msgstr "Додади текст кон јазлите"
+
+#~ msgid "Parent node"
+#~ msgstr "Повисок јазол"
+
+#~ msgid "Root node"
+#~ msgstr "Највисок јазол"
+
+#~ msgid "Site Map"
+#~ msgstr "Мапа на сајтот"
 
 #~ msgid "Filter"
 #~ msgstr "Филтер"

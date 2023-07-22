@@ -276,7 +276,7 @@ msgstr ""
 msgid "As regular image in the body"
 msgstr ""
 
-msgid "Assign text to nodes"
+msgid "Assign text to collections"
 msgstr ""
 
 msgid "Attach"
@@ -489,6 +489,9 @@ msgid "Close"
 msgstr "Luk"
 
 msgid "Code"
+msgstr ""
+
+msgid "Collections"
 msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
@@ -1499,7 +1502,7 @@ msgstr "Link"
 msgid "Links"
 msgstr ""
 
-msgid "List of paths to attach to this node, one per line."
+msgid "List of paths to attach to this collection, one per line."
 msgstr ""
 
 msgid "List of texts on hold"
@@ -1721,9 +1724,6 @@ msgstr "Ingen tekst fundet!"
 msgid "No text was added yet"
 msgstr "Ingen tekst blev tilføjet endnu"
 
-msgid "Nodes"
-msgstr ""
-
 msgid "None"
 msgstr "Ingen"
 
@@ -1878,7 +1878,7 @@ msgstr ""
 msgid "Paragraphs"
 msgstr "Afsnit"
 
-msgid "Parent node"
+msgid "Parent collection"
 msgstr ""
 
 msgid "Part"
@@ -2338,7 +2338,10 @@ msgstr "Revisionen af %1 er blevet slettet"
 msgid "Roles"
 msgstr "Roller"
 
-msgid "Root node"
+msgid "Root Collection"
+msgstr ""
+
+msgid "Root collection"
 msgstr ""
 
 msgid "Run diff"
@@ -2498,9 +2501,6 @@ msgstr ""
 
 msgid "Single bars"
 msgstr "Enkelte barer"
-
-msgid "Site Map"
-msgstr ""
 
 msgid "Site already exists"
 msgstr "Siden eksisterer allerede"

@@ -285,8 +285,8 @@ msgstr "Jako přebal v záhlaví"
 msgid "As regular image in the body"
 msgstr "Jako běžný obrázek v těle"
 
-msgid "Assign text to nodes"
-msgstr "Přiřaď text uzlům"
+msgid "Assign text to collections"
+msgstr ""
 
 msgid "Attach"
 msgstr "Přilož"
@@ -505,6 +505,9 @@ msgstr "Zavři"
 
 msgid "Code"
 msgstr "Kód"
+
+msgid "Collections"
+msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
 msgstr "Tiráž (zobrazená v generovaných souborech)"
@@ -1557,8 +1560,8 @@ msgstr "Odkaz"
 msgid "Links"
 msgstr "Odkazy"
 
-msgid "List of paths to attach to this node, one per line."
-msgstr "Seznam cest, které se mají připojit k tomuto uzlu, jedna na řádek."
+msgid "List of paths to attach to this collection, one per line."
+msgstr ""
 
 msgid "List of texts on hold"
 msgstr "Seznam textů k držení"
@@ -1781,9 +1784,6 @@ msgstr "Žádný text nenalezen!"
 msgid "No text was added yet"
 msgstr "Žádný text zatím nebyl přidán"
 
-msgid "Nodes"
-msgstr "Uzly"
-
 msgid "None"
 msgstr "Žádné"
 
@@ -1941,8 +1941,8 @@ msgstr "Odsazení odstavce v bodech (pt)"
 msgid "Paragraphs"
 msgstr "Odstavce"
 
-msgid "Parent node"
-msgstr "Rodičovský uzel"
+msgid "Parent collection"
+msgstr ""
 
 msgid "Part"
 msgstr "Část"
@@ -2408,8 +2408,11 @@ msgstr "Revize pro %1 byla smazána"
 msgid "Roles"
 msgstr "Role"
 
-msgid "Root node"
-msgstr "Kořenový uzel"
+msgid "Root Collection"
+msgstr ""
+
+msgid "Root collection"
+msgstr ""
 
 msgid "Run diff"
 msgstr "Spusti diff"
@@ -2568,9 +2571,6 @@ msgstr "Ukazuje se od _START_ do _END_ z _TOTAL_ vstupů"
 
 msgid "Single bars"
 msgstr ""
-
-msgid "Site Map"
-msgstr "Mapa stránky"
 
 msgid "Site already exists"
 msgstr "Stránka již existuje"
@@ -3717,3 +3717,21 @@ msgstr ""
 "„Zastaralé úpravy“ znamená, že revize byla opuštěna\n"
 "    během editace, ale stále tu je, kdyby v ní náhodou\n"
 "    někdo chtěl pokračovat při úpravách textu."
+
+#~ msgid "Nodes"
+#~ msgstr "Uzly"
+
+#~ msgid "Assign text to nodes"
+#~ msgstr "Přiřaď text uzlům"
+
+#~ msgid "Parent node"
+#~ msgstr "Rodičovský uzel"
+
+#~ msgid "List of paths to attach to this node, one per line."
+#~ msgstr "Seznam cest, které se mají připojit k tomuto uzlu, jedna na řádek."
+
+#~ msgid "Root node"
+#~ msgstr "Kořenový uzel"
+
+#~ msgid "Site Map"
+#~ msgstr "Mapa stránky"

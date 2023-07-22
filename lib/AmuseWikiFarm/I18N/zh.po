@@ -262,8 +262,8 @@ msgstr "作为题图"
 msgid "As regular image in the body"
 msgstr "作为正文中的普通图片"
 
-msgid "Assign text to nodes"
-msgstr "把文章指派给节点"
+msgid "Assign text to collections"
+msgstr ""
 
 msgid "Attach"
 msgstr "插入附件"
@@ -474,6 +474,9 @@ msgstr "关闭"
 
 msgid "Code"
 msgstr "代码"
+
+msgid "Collections"
+msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
 msgstr ""
@@ -1450,8 +1453,8 @@ msgstr "链接"
 msgid "Links"
 msgstr "链接"
 
-msgid "List of paths to attach to this node, one per line."
-msgstr "附加到该节点的路径列表，每行一个。"
+msgid "List of paths to attach to this collection, one per line."
+msgstr ""
 
 msgid "List of texts on hold"
 msgstr "被搁置的文本列表"
@@ -1672,9 +1675,6 @@ msgstr "找不到文本！"
 msgid "No text was added yet"
 msgstr "还未添加文本"
 
-msgid "Nodes"
-msgstr "节点"
-
 msgid "None"
 msgstr "无"
 
@@ -1818,8 +1818,8 @@ msgstr ""
 msgid "Paragraphs"
 msgstr "段落"
 
-msgid "Parent node"
-msgstr "母节点"
+msgid "Parent collection"
+msgstr ""
 
 msgid "Part"
 msgstr "部"
@@ -2258,8 +2258,11 @@ msgstr "%1的修订已被删除"
 msgid "Roles"
 msgstr "角色"
 
-msgid "Root node"
-msgstr "根节点"
+msgid "Root Collection"
+msgstr ""
+
+msgid "Root collection"
+msgstr ""
 
 msgid "Run diff"
 msgstr ""
@@ -2418,9 +2421,6 @@ msgstr "显示从第_START_页到第_END_页，总计_TOTAL_项"
 
 msgid "Single bars"
 msgstr "单杠"
-
-msgid "Site Map"
-msgstr "站点地图"
 
 msgid "Site already exists"
 msgstr "站点已存在"
@@ -3495,6 +3495,24 @@ msgid ""
 msgstr ""
 "「陈旧编辑」意味着版本已在编辑时被放弃，但它仍然存在，以防有人在编辑文本时继"
 "续使用它。"
+
+#~ msgid "Nodes"
+#~ msgstr "节点"
+
+#~ msgid "Assign text to nodes"
+#~ msgstr "把文章指派给节点"
+
+#~ msgid "Parent node"
+#~ msgstr "母节点"
+
+#~ msgid "List of paths to attach to this node, one per line."
+#~ msgstr "附加到该节点的路径列表，每行一个。"
+
+#~ msgid "Root node"
+#~ msgstr "根节点"
+
+#~ msgid "Site Map"
+#~ msgstr "站点地图"
 
 #~ msgid "Series"
 #~ msgstr "系列"
