@@ -38,6 +38,13 @@
                  pattern="[a-z0-9][a-z0-9-]*[a-z0-9]" required/>
         </div>
         <div class="form-group">
+          <label for="canonical_title">
+            [% loc('Title') %]
+          </label>
+          <input type="text" name="canonical_title" class="form-control"
+                 id="canonical_title">
+        </div>
+        <div class="form-group">
           <label for="parent_node_id">
             [% loc('Parent collection') %]
           </label>

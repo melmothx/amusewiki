@@ -56,7 +56,7 @@ sub display :Chained('root') :PathPart('') :Args {
         }
         my $locale = $c->stash->{current_locale_code};
         my $desc = $target->description($locale);
-        my $title = $desc ? $desc->title_html : encode_entities($target->uri);
+        my $title = $desc ? $desc->title_html : encode_entities($target->canonical_title || $target->uri);
         my $body =  $desc ? $desc->body_html : '';
         my @pages = $target->linked_pages;
         my @children = $target->children_pages(locale => $locale);

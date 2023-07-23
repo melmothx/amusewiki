@@ -270,6 +270,7 @@ use Text::Amuse::Functions qw/muse_to_object
                              /;
 use HTML::Entities qw/encode_entities/;
 use AmuseWikiFarm::Utils::Amuse ();
+use DateTime;
 
 sub children {
     return shift->nodes;
@@ -340,6 +341,11 @@ sub update_from_params {
         log_debug { "Setting sorting pos to $params->{sorting_pos}" };
         $self->sorting_pos($params->{sorting_pos});
     }
+    $self->canonical_title($params->{canonical_title} || ucfirst($self->uri));
+    my $now = DateTime->now(time_zone => 'UTC');
+    # informative only
+    $self->last_updated_dt($now);
+    $self->last_updated_epoch($now->epoch);
     $self->update;
     $self->update_full_path;
     if (defined $params->{attached_uris}) {
@@ -402,6 +408,7 @@ sub serialize {
     my $parent = $self->parent;
     my %out = (
                uri => $self->uri,
+               canonical_title => $self->canonical_title,
                parent_node_uri => $parent ? $parent->uri : undef,
                sorting_pos => $self->sorting_pos,
               );
@@ -516,7 +523,7 @@ sub name {
     }
     else {
         # fallback
-        return encode_entities($self->uri);
+        return encode_entities($self->canonical_title || $self->uri);
     }
 }
 

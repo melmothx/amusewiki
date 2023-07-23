@@ -6,6 +6,16 @@
     <form method="POST" action="[% c.uri_for_action('nodes/update_node', [ node.uri]) %]"
           class="form-horizontal" id="node-edit-form">
       <input type="hidden" name="uri" value="[% edit_node.uri | html %]" />
+
+      <div class="form-group">
+        <div class="col-xs-12">
+          <label for="canonical_title">
+            [% loc('Title') %]
+          </label>
+          <input type="text" name="canonical_title" class="form-control"
+                 id="canonical_title" value="[% edit_node.canonical_title | html %]">
+        </div>
+      </div>
       <div class="form-group">
         <div class="col-xs-12">
           <label for="parent_node_id">

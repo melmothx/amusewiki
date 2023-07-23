@@ -65,13 +65,8 @@ sub all_nodes {
                     value => $node->{node_id},
                     title => join('/', '', 'node', $node->{full_path}),
                     uri => $node->{uri},
-                    label => encode_entities($node->{uri}),
+                    label => encode_entities($node->{canonical_title} || $node->{uri}),
                    );
-        if (@{$node->{node_bodies}}) {
-            if (my $label = $node->{node_bodies}->[0]->{title_html}) {
-                $node{label} = $label;
-            }
-        }
         push @out, \%node;
     }
     return \@out;
@@ -86,7 +81,7 @@ sub as_list_with_path {
                     value => $node->{node_id},
                     title => join(' / ', reverse(_get_path_label($source, $node->{node_id}))),
                     uri => $node->{uri},
-                    label => $node->{uri},
+                    label => $node->{canonical_title} || $node->{uri},
                     sorting_pos => $node->{sorting_pos},
                    };
     }
@@ -132,7 +127,7 @@ sub as_tree_source {
             $source{$n->{node_id}}{title_html} = $found->{title_html};
         }
         else {
-            $source{$n->{node_id}}{title_html} = encode_entities($n->{uri});
+            $source{$n->{node_id}}{title_html} = encode_entities($n->{canonical_title} || $n->{uri});
         }
     }
     Dlog_debug { "Flattened $_" } \%source;
