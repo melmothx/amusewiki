@@ -531,6 +531,25 @@ sub breadcrumbs {
     return [ reverse @breadcrumbs ];
 }
 
+sub title_ids {
+    my $self = shift;
+    my %hri = (result_class => 'DBIx::Class::ResultClass::HashRefInflator');
+    my @ids = map { $_->{id} } $self->titles->search(undef,
+                                                     {
+                                                      columns => [qw/id/],
+                                                      %hri,
+                                                     });
+    Dlog_debug { "Direct ids for " . $self->uri . " are $_" } \@ids;
+    my @catids = map { $_->{title_id} } $self->categories->search_related('title_categories')->search(undef,
+                                                                                                      {
+                                                                                                       columns => [qw/title_id/],
+                                                                                                       %hri,
+                                                                                                      });
+    Dlog_debug { "Ids via category for " . $self->uri . " are $_" } \@catids;
+    return [ @ids, @catids];
+}
+
+
 sub update_full_path {
     my $self = shift;
     $self->discard_changes;

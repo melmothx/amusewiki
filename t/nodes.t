@@ -9,7 +9,7 @@ use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
 use Data::Dumper::Concise;
-use Test::More tests => 2;
+use Test::More;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf8)";
@@ -23,6 +23,21 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0nodes1');
 
 $site->update({ multilanguage => 'en it' });
+
+foreach my $id (qw/one-1 one-2 four-1 four-2 seven/) {
+    my ($rev) = $site->create_new_text({
+                                        title => "Title " . ucfirst($id),
+                                        uri => $id,
+                                        lang => 'en',
+                                        textbody => '<p>hello there</p>',
+                                        author => "Author $id",
+                                        cat => "cat-$id",
+                                       }, 'text');
+    $rev->commit_version;
+    $rev->publish_text;
+}
+
+ok $site->categories->count;
 
 {
     my $parent;
@@ -38,11 +53,21 @@ $site->update({ multilanguage => 'en it' });
                                        parent_node_uri => $parent ? $parent->uri : undef,
                                       });
             if ($id) {
+                my @texts = $site->titles->search({ uri => { -like => '%' . $u . '%' } })->all;
+                $node->set_titles(\@texts);
+            }
+            else {
+                my @cats = $site->categories->search({ uri => { -like => '%' . $u . '%' } })->all;
+                $node->set_categories(\@cats);
+            }
+            if ($id) {
                 $parent = $node;
             }
         }
     }
 }
+
+ok $site->nodes->search_related('node_titles')->count;
 
 my %expect = (
               en => [
@@ -93,3 +118,15 @@ foreach my $lang (qw/en it/) {
     is_deeply(\@out, $expect{$lang});
 }
 
+foreach my $node ($site->nodes) {
+    # title_ids are the title linked via category or directly attached.
+    foreach my $title_id (@{ $node->title_ids }) {
+        my $title = $site->titles->find($title_id);
+        ok $title and diag $node->uri . " has " . $title->uri;
+    }
+}
+
+# now we need the tree for each title
+$site->node_title_tree;
+diag Dumper($site->nodes->as_list_with_path);
+done_testing;
