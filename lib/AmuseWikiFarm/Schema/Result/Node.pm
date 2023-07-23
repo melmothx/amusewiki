@@ -57,6 +57,24 @@ __PACKAGE__->table("node");
   is_nullable: 0
   size: 255
 
+=head2 canonical_title
+
+  data_type: 'varchar'
+  default_value: (empty string)
+  is_nullable: 0
+  size: 255
+
+=head2 last_updated_epoch
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
+=head2 last_updated_dt
+
+  data_type: 'datetime'
+  is_nullable: 1
+
 =head2 sorting_pos
 
   data_type: 'integer'
@@ -83,6 +101,12 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
   "uri",
   { data_type => "varchar", is_nullable => 0, size => 255 },
+  "canonical_title",
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
+  "last_updated_epoch",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "last_updated_dt",
+  { data_type => "datetime", is_nullable => 1 },
   "sorting_pos",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "full_path",
@@ -237,8 +261,8 @@ Composing rels: L</node_titles> -> title
 __PACKAGE__->many_to_many("titles", "node_titles", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-04-20 10:34:04
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:9Lu7sni+QZK7Tm9hmDQVEg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-07-23 18:11:16
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6aF6Qf0huVzKi0jociB9sA
 
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse::Functions qw/muse_to_object

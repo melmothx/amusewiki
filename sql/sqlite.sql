@@ -580,6 +580,9 @@ CREATE TABLE node (
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                                     ON DELETE CASCADE ON UPDATE CASCADE,
        uri VARCHAR(255) NOT NULL,
+       canonical_title VARCHAR(255) NOT NULL DEFAULT '',
+       last_updated_epoch INTEGER NOT NULL DEFAULT 0,
+       last_updated_dt DATETIME,
        sorting_pos INTEGER NOT NULL DEFAULT 0,
        full_path TEXT,
        parent_node_id INTEGER NULL REFERENCES node(node_id)
