@@ -53,6 +53,19 @@ sub update_site_records {
                                                        },
                                                        { key => 'set_spec_site_id_unique' });
 
+    my %sets;
+    foreach my $node ($site->nodes) {
+        $sets{$node->uri} = $site->oai_pmh_sets->update_or_create({
+                                                                   set_spec => "collection:" . $node->uri,
+                                                                   set_name => $node->canonical_title,
+                                                                  },
+                                                                  { key => 'set_spec_site_id_unique' });
+    }
+    my $node_tree = $site->node_title_tree->{titles};
+    # create the sets for nodes here. Build a tree of them for fast lookup
+
+
+
     my @files;
     my $rs = $site->titles->published_texts->search(undef,
                                                     {
@@ -94,7 +107,8 @@ sub update_site_records {
                           identifier => $identifier,
                           title_id => $title_id,
                           metadata_format => 'text/html',
-                          sets => [ $webset ],
+                          # lookup the collections from the prebuild tree
+                          sets => [ $webset, map { $sets{$_} } @{ $node_tree->{$title_id} || [] } ]
                          };
         }
     }

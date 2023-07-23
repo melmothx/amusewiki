@@ -10,6 +10,7 @@ use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
 use Data::Dumper::Concise;
 use Test::More;
+use AmuseWikiFarm::Archive::OAI::PMH;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf8)";
@@ -128,5 +129,19 @@ foreach my $node ($site->nodes) {
 
 # now we need the tree for each title
 $site->node_title_tree;
-diag Dumper($site->nodes->as_list_with_path);
+
+my $oai_pmh = AmuseWikiFarm::Archive::OAI::PMH->new(site => $site,
+                                                    oai_pmh_url => URI->new($site->canonical_url . '/oai-pmh'));
+$oai_pmh->update_site_records;
+like $oai_pmh->process_request({ verb => 'ListSets' }), qr{<setSpec>collection:seven-0</setSpec>};
+like $oai_pmh->process_request({ verb => 'ListRecords',
+                                 metadataPrefix => 'oai_dc',
+                                 set => "collection:seven-0"
+                               }), qr{
+                                         \Q<identifier>oai:0nodes1.amusewiki.org:/library/seven</identifier>\E
+                                         .*
+                                         \Q<setSpec>collection:one-1</setSpec>\E
+                                         .*
+                                         \Q<setSpec>collection:seven-1</setSpec>\E
+                                 }xs;
 done_testing;
