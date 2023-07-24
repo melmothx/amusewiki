@@ -15,6 +15,7 @@ use Data::Dumper::Concise;
 use Date::Parse;
 use JSON::MaybeXS;
 use MIME::Base64;
+use Time::HiRes qw/gettimeofday tv_interval/;
 
 use constant AMW_OAI_PMH_PAGE_SIZE => $ENV{AMW_OAI_PMH_PAGE_SIZE} || 40;
 
@@ -33,7 +34,8 @@ has logger => (
 has oai_pmh_url => (is => 'ro', isa => InstanceOf['URI']);
 
 sub update_site_records {
-    my ($self) = @_;
+    my ($self, $opts) = @_;
+    $opts ||= {};
     my $site = $self->site;
     my $schema = $site->result_source->schema;
     # we need to generate an id: oai:
@@ -41,6 +43,10 @@ sub update_site_records {
     my $site_id = $site->id;
     my $formats = $site->formats_definitions;
     my $mime_types = AmuseWikiFarm::Utils::Paths::served_mime_types();
+    my $start_time = [ gettimeofday ];
+    my $timing = sub {
+        return "[" . tv_interval($start_time) . "] ";
+    };
     my $amwset = $site->oai_pmh_sets->update_or_create({
                                                         set_spec => 'amusewiki',
                                                         set_name => 'Files needed to regenerate the archive',
@@ -112,7 +118,7 @@ sub update_site_records {
                          };
         }
     }
-    $self->logger->("Processing " . scalar(@files) . " files for texts\n");
+    $self->logger->($timing->() . "Processing " . scalar(@files) . " files for texts\n");
     $rs = $site->attachments->public_only->with_descriptions;
   ATTACHMENT:
     while (my $attachment = $rs->next) {
@@ -126,7 +132,7 @@ sub update_site_records {
                          };
         }
     }
-    $self->logger->("Processing " . scalar(@files) . " (including attachments)\n");
+    $self->logger->($timing->() . "Processing " . scalar(@files) . " (including attachments)\n");
     my %all = map { $_->{identifier} => $_ }
       $site->oai_pmh_records->search({ deleted => 0 },
                                      {
@@ -135,7 +141,7 @@ sub update_site_records {
                                      })->all;
     # Dlog_debug { "All: $_ " } \%all;
     # Dlog_debug { "Files: $_ " } [ map { "$_->{file}" } @files ];
-    $self->logger->("Collected existing records\n");
+    $self->logger->($timing->() . "Collected existing records\n");
 
   FILE:
     foreach my $f (@files) {
@@ -171,13 +177,12 @@ sub update_site_records {
             }
         }
     }
-    $self->logger->("Updated existing records\n");
+    $self->logger->($timing->() . "Updated existing records\n");
     if (my @removals = map { $_->{oai_pmh_record_id} } values %all) {
         Dlog_info { "Marking those records as removed: $_" } \@removals;
         $site->oai_pmh_records->set_deleted_flag_on_obsolete_records(\@removals);
     }
-    $self->logger->("Handled removals\n");
-    $self->logger->("Finished\n");
+    $self->logger->($timing->() . "Handled removals and finished\n");
 }
 
 sub process_request {
