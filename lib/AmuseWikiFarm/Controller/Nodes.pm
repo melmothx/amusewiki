@@ -91,15 +91,16 @@ sub create :Chained('admin') :PathPart('create') :Args(0) {
     my %params = %{$c->request->body_parameters};
     if (my $uri = $params{uri}) {
         log_info { $c->user->get('username') . " is creating nodes/$uri" };
-        if (my $node = $site->nodes->update_or_create_from_params(\%params)) {
+        if (my $node = $site->nodes->update_or_create_from_params(\%params, { create => 1 })) {
             $c->flash(status_msg => 'COLLECTION_UPDATE');
-            $c->response->redirect($c->uri_for($node->full_uri));
+            return $c->response->redirect($c->uri_for($node->full_uri));
         }
         else {
+            $c->flash(error_msg => $c->loc("A collection with this URI already exists"));
             log_error { "Failed attempt to create " . $site->id . "/node/$uri" };
         }
     }
-    $c->stash(nodes => [ $site->nodes->root_nodes->sorted->all ]);
+    $c->response->redirect($c->uri_for_action('/nodes/node_root'));
 }
 
 sub refresh_oai_pmh_repo :Chained('admin') :PathPart('refresh-oai-pmh-repo') Args(0) {

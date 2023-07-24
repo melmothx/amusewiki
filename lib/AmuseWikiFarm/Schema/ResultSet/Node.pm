@@ -25,11 +25,15 @@ sub root_nodes {
 }
 
 sub update_or_create_from_params {
-    my ($self, $params) = @_;
+    my ($self, $params, $opts) = @_;
+    $opts ||= {};
     if (my $uri = $params->{uri}) {
         if ($uri =~ m/([a-z0-9][a-z0-9-]*[a-z0-9])/) {
             $uri = $1;
             $uri =~ s/--+/-/g;
+            if ($opts->{create}) {
+                return if $self->find({ uri => $uri });
+            }
             my $node = $self->find_or_create({ uri => $uri });
             $node->discard_changes;
             $node->update_from_params($params);
