@@ -166,6 +166,7 @@ sub update_site_records {
                 # https://www.dublincore.org/specifications/dublin-core/type-element/
                 my $dc_type = 'text';
                 my $mime = $f->{metadata_format};
+                next FILE unless $mime; # shouldn't happen but there could be ancient records
                 if ($mime =~ m{^audio\/}) {
                     $dc_type = 'audio';
                 }
