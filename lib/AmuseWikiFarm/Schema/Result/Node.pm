@@ -57,6 +57,24 @@ __PACKAGE__->table("node");
   is_nullable: 0
   size: 255
 
+=head2 canonical_title
+
+  data_type: 'varchar'
+  default_value: (empty string)
+  is_nullable: 0
+  size: 255
+
+=head2 last_updated_epoch
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
+=head2 last_updated_dt
+
+  data_type: 'datetime'
+  is_nullable: 1
+
 =head2 sorting_pos
 
   data_type: 'integer'
@@ -83,6 +101,12 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
   "uri",
   { data_type => "varchar", is_nullable => 0, size => 255 },
+  "canonical_title",
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
+  "last_updated_epoch",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "last_updated_dt",
+  { data_type => "datetime", is_nullable => 1 },
   "sorting_pos",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "full_path",
@@ -237,8 +261,8 @@ Composing rels: L</node_titles> -> title
 __PACKAGE__->many_to_many("titles", "node_titles", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-04-20 10:34:04
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:9Lu7sni+QZK7Tm9hmDQVEg
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-07-23 18:11:16
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6aF6Qf0huVzKi0jociB9sA
 
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse::Functions qw/muse_to_object
@@ -246,6 +270,7 @@ use Text::Amuse::Functions qw/muse_to_object
                              /;
 use HTML::Entities qw/encode_entities/;
 use AmuseWikiFarm::Utils::Amuse ();
+use DateTime;
 
 sub children {
     return shift->nodes;
@@ -316,6 +341,11 @@ sub update_from_params {
         log_debug { "Setting sorting pos to $params->{sorting_pos}" };
         $self->sorting_pos($params->{sorting_pos});
     }
+    $self->canonical_title($params->{canonical_title} || ucfirst($self->uri));
+    my $now = DateTime->now(time_zone => 'UTC');
+    # informative only
+    $self->last_updated_dt($now);
+    $self->last_updated_epoch($now->epoch);
     $self->update;
     $self->update_full_path;
     if (defined $params->{attached_uris}) {
@@ -378,6 +408,7 @@ sub serialize {
     my $parent = $self->parent;
     my %out = (
                uri => $self->uri,
+               canonical_title => $self->canonical_title,
                parent_node_uri => $parent ? $parent->uri : undef,
                sorting_pos => $self->sorting_pos,
               );
@@ -492,7 +523,7 @@ sub name {
     }
     else {
         # fallback
-        return encode_entities($self->uri);
+        return encode_entities($self->canonical_title || $self->uri);
     }
 }
 
@@ -522,7 +553,7 @@ sub breadcrumbs {
     }
     push @breadcrumbs, {
                         uri => "/node",
-                        label => $lh->loc_html('Site Map'),
+                        label => $lh->loc_html('Collections'),
                        };
     push @breadcrumbs, {
                         uri => "/",
@@ -530,6 +561,25 @@ sub breadcrumbs {
                        };
     return [ reverse @breadcrumbs ];
 }
+
+sub title_ids {
+    my $self = shift;
+    my %hri = (result_class => 'DBIx::Class::ResultClass::HashRefInflator');
+    my @ids = map { $_->{id} } $self->titles->search(undef,
+                                                     {
+                                                      columns => [qw/id/],
+                                                      %hri,
+                                                     });
+    Dlog_debug { "Direct ids for " . $self->uri . " are $_" } \@ids;
+    my @catids = map { $_->{title_id} } $self->categories->search_related('title_categories')->search(undef,
+                                                                                                      {
+                                                                                                       columns => [qw/title_id/],
+                                                                                                       %hri,
+                                                                                                      });
+    Dlog_debug { "Ids via category for " . $self->uri . " are $_" } \@catids;
+    return [ @ids, @catids];
+}
+
 
 sub update_full_path {
     my $self = shift;

@@ -275,8 +275,8 @@ msgstr "Как обложка в заголовок"
 msgid "As regular image in the body"
 msgstr "Как обычное изображение в текст"
 
-msgid "Assign text to nodes"
-msgstr "Назначить текст узлам"
+msgid "Assign text to collections"
+msgstr ""
 
 msgid "Attach"
 msgstr "Прикрепить"
@@ -493,6 +493,9 @@ msgstr "Закрыть"
 
 msgid "Code"
 msgstr "Код"
+
+msgid "Collections"
+msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
 msgstr ""
@@ -1518,8 +1521,8 @@ msgstr "Ссылка"
 msgid "Links"
 msgstr "Ссылки"
 
-msgid "List of paths to attach to this node, one per line."
-msgstr "Список путей для прикрепления к этому узлу, один на строку."
+msgid "List of paths to attach to this collection, one per line."
+msgstr ""
 
 msgid "List of texts on hold"
 msgstr "Список текстов в ожидании"
@@ -1744,9 +1747,6 @@ msgstr "Текст не найден!"
 msgid "No text was added yet"
 msgstr "Ни один текст не был добавлен"
 
-msgid "Nodes"
-msgstr "Узлы"
-
 msgid "None"
 msgstr "Нет"
 
@@ -1897,8 +1897,8 @@ msgstr ""
 msgid "Paragraphs"
 msgstr "Параграфы"
 
-msgid "Parent node"
-msgstr "Родительский узел"
+msgid "Parent collection"
+msgstr ""
 
 msgid "Part"
 msgstr "Часть"
@@ -2356,8 +2356,8 @@ msgstr "Правка для %1 была удалена"
 msgid "Roles"
 msgstr "Роли"
 
-msgid "Root node"
-msgstr "Корневой узел"
+msgid "Root Collection"
+msgstr ""
 
 msgid "Run diff"
 msgstr ""
@@ -2516,9 +2516,6 @@ msgstr ""
 
 msgid "Single bars"
 msgstr "Одна вертикальная линия"
-
-msgid "Site Map"
-msgstr "Карта сайта"
 
 msgid "Site already exists"
 msgstr "Сайт уже существует"
@@ -3648,6 +3645,24 @@ msgstr ""
 "«Устаревшее редактирование» означает, что правка не была доделана, но всё "
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
+
+#~ msgid "Nodes"
+#~ msgstr "Узлы"
+
+#~ msgid "Assign text to nodes"
+#~ msgstr "Назначить текст узлам"
+
+#~ msgid "Parent node"
+#~ msgstr "Родительский узел"
+
+#~ msgid "List of paths to attach to this node, one per line."
+#~ msgstr "Список путей для прикрепления к этому узлу, один на строку."
+
+#~ msgid "Root node"
+#~ msgstr "Корневой узел"
+
+#~ msgid "Site Map"
+#~ msgstr "Карта сайта"
 
 #~ msgid "Filter"
 #~ msgstr "Фильтр"

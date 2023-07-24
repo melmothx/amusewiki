@@ -272,8 +272,8 @@ msgstr "Kao naslovnica na zaglavlju"
 msgid "As regular image in the body"
 msgstr "Kao obična slika u tekstu"
 
-msgid "Assign text to nodes"
-msgstr "Dodaj tekst čvorima"
+msgid "Assign text to collections"
+msgstr ""
 
 msgid "Attach"
 msgstr "Privitak"
@@ -484,6 +484,9 @@ msgid "Close"
 msgstr "Zatvori"
 
 msgid "Code"
+msgstr ""
+
+msgid "Collections"
 msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
@@ -1513,8 +1516,8 @@ msgstr "Poveznica"
 msgid "Links"
 msgstr "Poveznice"
 
-msgid "List of paths to attach to this node, one per line."
-msgstr "Popis tekstova i kategorija za ovaj čvor, po jedan za redak."
+msgid "List of paths to attach to this collection, one per line."
+msgstr ""
 
 msgid "List of texts on hold"
 msgstr "Popis tekstova na čekanju"
@@ -1735,9 +1738,6 @@ msgstr "Nijedan tekst nije pronađen!"
 msgid "No text was added yet"
 msgstr "Još nije dodan nijedan tekst"
 
-msgid "Nodes"
-msgstr "Čvorovi"
-
 msgid "None"
 msgstr "Bez"
 
@@ -1886,8 +1886,8 @@ msgstr ""
 msgid "Paragraphs"
 msgstr "Odlomci"
 
-msgid "Parent node"
-msgstr "Viši čvor"
+msgid "Parent collection"
+msgstr ""
 
 msgid "Part"
 msgstr "Dio"
@@ -2346,8 +2346,8 @@ msgstr "Izmjena za %1 izbrisana"
 msgid "Roles"
 msgstr "Uloge"
 
-msgid "Root node"
-msgstr "Najviši čvor"
+msgid "Root Collection"
+msgstr ""
 
 msgid "Run diff"
 msgstr ""
@@ -2506,9 +2506,6 @@ msgstr ""
 
 msgid "Single bars"
 msgstr "Jednostruke trake (\"|\")"
-
-msgid "Site Map"
-msgstr "Mapa sajta"
 
 msgid "Site already exists"
 msgstr "Sajt već postoji"
@@ -3623,6 +3620,24 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "Nodes"
+#~ msgstr "Čvorovi"
+
+#~ msgid "Assign text to nodes"
+#~ msgstr "Dodaj tekst čvorima"
+
+#~ msgid "Parent node"
+#~ msgstr "Viši čvor"
+
+#~ msgid "List of paths to attach to this node, one per line."
+#~ msgstr "Popis tekstova i kategorija za ovaj čvor, po jedan za redak."
+
+#~ msgid "Root node"
+#~ msgstr "Najviši čvor"
+
+#~ msgid "Site Map"
+#~ msgstr "Mapa sajta"
 
 #~ msgid "IRC channel on freenode"
 #~ msgstr "IRC kanal na mreži Freenode"

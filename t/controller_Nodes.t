@@ -27,7 +27,10 @@ my $site = create_site($schema, '0nodes0');
 {
     my $parent;
     foreach my $uri (qw/one two three four five six seven eight/) {
-        my $node = $site->nodes->create({ uri => $uri });
+        my $node = $site->nodes->create({
+                                         uri => $uri,
+                                         canonical_title => ucfirst($uri),
+                                        });
         if ($parent) {
             $node->parent_node($parent);
             $node->update;
@@ -155,6 +158,7 @@ foreach my $id (qw/first second third/) {
     $site->update({ multilanguage => 'en it' });
     my %params = (
                   uri => 'pinco',
+                  canonical_title => "Pinco",
                   parent_node_uri => 'pallino',
                   attached_uris => "/library/first /special/third /library/first /special/third",
                   sorting_pos => 1,
@@ -193,6 +197,7 @@ foreach my $id (qw/first second third/) {
 {
     my %params = (
                   uri => 'pinco-x',
+                  canonical_title => "Pinco X",
                   parent_node_uri => 'pallino',
                   attached_uris => "/category/author/author-script-kid /category/topic/x-script",
                   title_en => q{<script>"'pinco'"</script>"},

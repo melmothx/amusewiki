@@ -286,8 +286,8 @@ msgstr "Като снимка на корицата в заглавната ча
 msgid "As regular image in the body"
 msgstr "Като изображение в главната част"
 
-msgid "Assign text to nodes"
-msgstr "Добави текст към бележките"
+msgid "Assign text to collections"
+msgstr ""
 
 msgid "Attach"
 msgstr "Прикачи"
@@ -511,6 +511,9 @@ msgstr "Затвори"
 
 msgid "Code"
 msgstr "Код"
+
+msgid "Collections"
+msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
 msgstr ""
@@ -1580,9 +1583,8 @@ msgstr "Линк"
 msgid "Links"
 msgstr "Линкове"
 
-msgid "List of paths to attach to this node, one per line."
+msgid "List of paths to attach to this collection, one per line."
 msgstr ""
-"Линкове с пътища, които да бъдат закачени към този възел. По един на ред."
 
 msgid "List of texts on hold"
 msgstr "Списък с отложени текстове"
@@ -1811,9 +1813,6 @@ msgstr "Не бяха намерени текстове!"
 msgid "No text was added yet"
 msgstr "Все още няма нито един добавен текст"
 
-msgid "Nodes"
-msgstr "Възли"
-
 msgid "None"
 msgstr "Нито едно"
 
@@ -1976,8 +1975,8 @@ msgstr ""
 msgid "Paragraphs"
 msgstr "Параграфи"
 
-msgid "Parent node"
-msgstr "По-висок възел"
+msgid "Parent collection"
+msgstr ""
 
 msgid "Part"
 msgstr "Част"
@@ -2448,8 +2447,8 @@ msgstr "Ревизията за %1 беше премахната"
 msgid "Roles"
 msgstr "Роли"
 
-msgid "Root node"
-msgstr "Root възел"
+msgid "Root Collection"
+msgstr ""
 
 msgid "Run diff"
 msgstr ""
@@ -2608,9 +2607,6 @@ msgstr "Показване на _START_ до _END_ от _TOTAL_ записи"
 
 msgid "Single bars"
 msgstr "Единична лента"
-
-msgid "Site Map"
-msgstr "Карта на сайта"
 
 msgid "Site already exists"
 msgstr "Сайтът вече съществува"
@@ -3773,6 +3769,25 @@ msgstr ""
 "    докато текстът е бил редактиран, но тя все още присъства в случай, че "
 "някой\n"
 "    иска да започне от там нататък."
+
+#~ msgid "Nodes"
+#~ msgstr "Възли"
+
+#~ msgid "Assign text to nodes"
+#~ msgstr "Добави текст към бележките"
+
+#~ msgid "Parent node"
+#~ msgstr "По-висок възел"
+
+#~ msgid "List of paths to attach to this node, one per line."
+#~ msgstr ""
+#~ "Линкове с пътища, които да бъдат закачени към този възел. По един на ред."
+
+#~ msgid "Root node"
+#~ msgstr "Root възел"
+
+#~ msgid "Site Map"
+#~ msgstr "Карта на сайта"
 
 #~ msgid "Filter"
 #~ msgstr "Филтър"

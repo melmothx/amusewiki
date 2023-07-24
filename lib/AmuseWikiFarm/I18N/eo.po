@@ -284,8 +284,8 @@ msgstr "Kiel kovrilo en la kaplinio"
 msgid "As regular image in the body"
 msgstr "Kiel regula bildo en la korpo"
 
-msgid "Assign text to nodes"
-msgstr "Asignu tekston al nodoj"
+msgid "Assign text to collections"
+msgstr ""
 
 msgid "Attach"
 msgstr "Aligu"
@@ -504,6 +504,9 @@ msgstr "Fermu"
 
 msgid "Code"
 msgstr "Kodo"
+
+msgid "Collections"
+msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
 msgstr ""
@@ -1569,8 +1572,8 @@ msgstr "Ligilo"
 msgid "Links"
 msgstr "Ligiloj"
 
-msgid "List of paths to attach to this node, one per line."
-msgstr "Listo de vojoj por alfiksi al ĉi tiu nodo, po po unu linio."
+msgid "List of paths to attach to this collection, one per line."
+msgstr ""
 
 msgid "List of texts on hold"
 msgstr "Listo de tekstoj en atendo"
@@ -1793,9 +1796,6 @@ msgstr "Neniu teksto trovita!"
 msgid "No text was added yet"
 msgstr "Ankoraŭ neniu teksto estis aldonita"
 
-msgid "Nodes"
-msgstr "Nodoj"
-
 msgid "None"
 msgstr "Neniu"
 
@@ -1951,8 +1951,8 @@ msgstr ""
 msgid "Paragraphs"
 msgstr "Paragrafoj"
 
-msgid "Parent node"
-msgstr "Gepatra nodo"
+msgid "Parent collection"
+msgstr ""
 
 msgid "Part"
 msgstr "Parto"
@@ -2418,8 +2418,8 @@ msgstr "Revizio por% 1 estis forigita"
 msgid "Roles"
 msgstr "Roloj"
 
-msgid "Root node"
-msgstr "Radika nodo"
+msgid "Root Collection"
+msgstr ""
 
 msgid "Run diff"
 msgstr ""
@@ -2578,9 +2578,6 @@ msgstr "Montrante _START_ ĝis _END_ el _TOTAL_ eniroj"
 
 msgid "Single bars"
 msgstr "Unuopaj stangoj"
-
-msgid "Site Map"
-msgstr "Reteja Mapo"
 
 msgid "Site already exists"
 msgstr "Retejo jam ekzistas"
@@ -3731,6 +3728,24 @@ msgstr ""
 "\"Senfina redaktado\" signifas, ke la revizio estis forlasita\n"
 "     dum redaktado, sed ĝi ankoraŭ estas tie, por se iu volas elekti\n"
 "     ĝin supren redaktante tekston."
+
+#~ msgid "Nodes"
+#~ msgstr "Nodoj"
+
+#~ msgid "Assign text to nodes"
+#~ msgstr "Asignu tekston al nodoj"
+
+#~ msgid "Parent node"
+#~ msgstr "Gepatra nodo"
+
+#~ msgid "List of paths to attach to this node, one per line."
+#~ msgstr "Listo de vojoj por alfiksi al ĉi tiu nodo, po po unu linio."
+
+#~ msgid "Root node"
+#~ msgstr "Radika nodo"
+
+#~ msgid "Site Map"
+#~ msgstr "Reteja Mapo"
 
 #~ msgid "Series"
 #~ msgstr "Serio"

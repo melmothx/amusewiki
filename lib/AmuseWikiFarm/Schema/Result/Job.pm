@@ -580,6 +580,16 @@ sub purge_repo_file {
     $object->delete;
 }
 
+sub dispatch_job_refresh_oai_pmh_repo {
+    my ($self, $logger) = @_;
+    my $time = time();
+    AmuseWikiFarm::Archive::OAI::PMH->new(site => $self->site,
+                                          logger => $logger,
+                                         )->update_site_records({ refresh => 1 });
+    $logger->("Updated OAI-PMH records in " . (time() - $time) . " seconds\n");
+    return '/node';
+}
+
 sub dispatch_job_prune_orphans {
     my ($self, $logger) = @_;
     my $site = $self->site;

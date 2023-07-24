@@ -4369,6 +4369,51 @@ sub deserialize_nodes {
     return scalar(@$nodes);
 }
 
+sub node_title_tree {
+    my $self = shift;
+    my %all;
+    foreach my $node ($self->nodes) {
+        # this is probably too slow, but depends on the number of site nodes.
+        $all{$node->node_id} = {
+                                $node->get_columns,
+                                title_ids => $node->title_ids,
+                                children => [],
+                               };
+    }
+    # add the children to the cache
+    foreach my $node (values %all) {
+        if ($node->{parent_node_id}) {
+            push @{$all{$node->{parent_node_id}}{children}}, $node->{node_id};
+            # but a title also belong to this node if one of the children holds it, so add to the parent
+            my $current = $node;
+            my $max_depth = 20;
+            my @ids = @{$node->{title_ids}};
+            while (my $parent_node = $current->{parent_node_id} and --$max_depth > 0) {
+                Dlog_debug { "Adding $_ to parent node $parent_node and depth $max_depth" } \@ids;
+                push @{$all{$parent_node}{title_ids}}, @ids;
+                $current = $all{$parent_node};
+            }
+        }
+    }
+    # and finally create the title => nodes relationship
+    my %title_nodes;
+    foreach my $node (values %all) {
+        foreach my $tid (@{ $node->{title_ids} }) {
+            $title_nodes{$tid}{$node->{uri}}++;
+        }
+    }
+    Dlog_debug { "Node list is $_" } \%all;
+    Dlog_debug { "Title Node tree $_" } \%title_nodes;
+    my $out = {
+               nodes => [ values %all ],
+               titles => {
+                          map { $_ => [ keys %{$title_nodes{$_}} ] } keys %title_nodes
+                         },
+              };
+    Dlog_debug { "Map is $_" } $out;
+    return $out;
+}
+
 
 sub populate_monthly_archives {
     my $self = shift;

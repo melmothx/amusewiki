@@ -253,8 +253,8 @@ msgstr "ヘッダーのカバーとして"
 msgid "As regular image in the body"
 msgstr "ボディの通常の画像として"
 
-msgid "Assign text to nodes"
-msgstr "記事をノードに割り当てます"
+msgid "Assign text to collections"
+msgstr ""
 
 msgid "Attach"
 msgstr "添付"
@@ -465,6 +465,9 @@ msgstr "閉じる"
 
 msgid "Code"
 msgstr "コード"
+
+msgid "Collections"
+msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
 msgstr ""
@@ -1431,8 +1434,8 @@ msgstr "リンク"
 msgid "Links"
 msgstr "リンク"
 
-msgid "List of paths to attach to this node, one per line."
-msgstr "このノードに添付するパスの一覧、１行に１つ。"
+msgid "List of paths to attach to this collection, one per line."
+msgstr ""
 
 msgid "List of texts on hold"
 msgstr "保留中の記事のリスト"
@@ -1654,9 +1657,6 @@ msgstr "記事が見つかりません！"
 msgid "No text was added yet"
 msgstr "記事はまだ追加されていません"
 
-msgid "Nodes"
-msgstr "ノード"
-
 msgid "None"
 msgstr "無し"
 
@@ -1796,8 +1796,8 @@ msgstr ""
 msgid "Paragraphs"
 msgstr "段落"
 
-msgid "Parent node"
-msgstr "親ノード"
+msgid "Parent collection"
+msgstr ""
 
 msgid "Part"
 msgstr "部"
@@ -2234,8 +2234,8 @@ msgstr "%1のリビジョンが削除されています"
 msgid "Roles"
 msgstr "役割"
 
-msgid "Root node"
-msgstr "ルートノード"
+msgid "Root Collection"
+msgstr ""
 
 msgid "Run diff"
 msgstr ""
@@ -2394,9 +2394,6 @@ msgstr "_START_ to _END_ of _TOTAL_ のエントリを表示"
 
 msgid "Single bars"
 msgstr "シングルバー"
-
-msgid "Site Map"
-msgstr "サイトマップ"
 
 msgid "Site already exists"
 msgstr "サイトは既に存在しています"
@@ -3478,6 +3475,24 @@ msgid ""
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
+
+#~ msgid "Nodes"
+#~ msgstr "ノード"
+
+#~ msgid "Assign text to nodes"
+#~ msgstr "記事をノードに割り当てます"
+
+#~ msgid "Parent node"
+#~ msgstr "親ノード"
+
+#~ msgid "List of paths to attach to this node, one per line."
+#~ msgstr "このノードに添付するパスの一覧、１行に１つ。"
+
+#~ msgid "Root node"
+#~ msgstr "ルートノード"
+
+#~ msgid "Site Map"
+#~ msgstr "サイトマップ"
 
 #~ msgid "Series"
 #~ msgstr "シリーズ"

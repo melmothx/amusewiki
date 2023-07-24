@@ -295,8 +295,8 @@ msgstr "Ως εξώφυλλο στην επικεφαλίδα"
 msgid "As regular image in the body"
 msgstr "Ως κανονική εικόνα στο σώμα"
 
-msgid "Assign text to nodes"
-msgstr "Ανάθεση κειμένου σε κόμβους"
+msgid "Assign text to collections"
+msgstr ""
 
 msgid "Attach"
 msgstr "Επισύναψη"
@@ -519,6 +519,9 @@ msgstr "Κλείσιμο"
 
 msgid "Code"
 msgstr "Κώδικας"
+
+msgid "Collections"
+msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
 msgstr ""
@@ -1608,10 +1611,8 @@ msgstr "Σύνδεσμος"
 msgid "Links"
 msgstr "Σύνδεσμοι"
 
-msgid "List of paths to attach to this node, one per line."
+msgid "List of paths to attach to this collection, one per line."
 msgstr ""
-"Λίστα μονοπατιών που πρέπει να προσαρτηθούν σε αυτόν τον κόμβο, ένα ανά "
-"γραμμή."
 
 msgid "List of texts on hold"
 msgstr "Κατάλογος κειμένων σε αναμονή"
@@ -1838,9 +1839,6 @@ msgstr "Δεν βρέθηκε κείμενο!"
 msgid "No text was added yet"
 msgstr "Δεν έχει προστεθεί ακόμη κείμενο"
 
-msgid "Nodes"
-msgstr "Κόμβοι"
-
 msgid "None"
 msgstr "Κανένα"
 
@@ -2007,8 +2005,8 @@ msgstr ""
 msgid "Paragraphs"
 msgstr "Παράγραφοι"
 
-msgid "Parent node"
-msgstr "Γονικός κόμβος"
+msgid "Parent collection"
+msgstr ""
 
 msgid "Part"
 msgstr "Μέρος"
@@ -2495,8 +2493,8 @@ msgstr "Η διόρθωση για το %1 έχει διαγραφεί"
 msgid "Roles"
 msgstr "Ρόλοι"
 
-msgid "Root node"
-msgstr "Ριζικός κόμβος"
+msgid "Root Collection"
+msgstr ""
 
 msgid "Run diff"
 msgstr ""
@@ -2655,9 +2653,6 @@ msgstr ""
 
 msgid "Single bars"
 msgstr "Μονές μπάρες"
-
-msgid "Site Map"
-msgstr "Χάρτης Ιστοσελίδας"
 
 msgid "Site already exists"
 msgstr "Ο ιστότοπος υπάρχει ήδη"
@@ -3860,6 +3855,26 @@ msgstr ""
 "    κατά τη διάρκεια της επεξεργασίας, αλλά είναι ακόμα εκεί, σε περίπτωση "
 "που κάποιο άτομο θέλει να\n"
 "    την ανακτήσει κατά την επεξεργασία ενός κειμένου."
+
+#~ msgid "Nodes"
+#~ msgstr "Κόμβοι"
+
+#~ msgid "Assign text to nodes"
+#~ msgstr "Ανάθεση κειμένου σε κόμβους"
+
+#~ msgid "Parent node"
+#~ msgstr "Γονικός κόμβος"
+
+#~ msgid "List of paths to attach to this node, one per line."
+#~ msgstr ""
+#~ "Λίστα μονοπατιών που πρέπει να προσαρτηθούν σε αυτόν τον κόμβο, ένα ανά "
+#~ "γραμμή."
+
+#~ msgid "Root node"
+#~ msgstr "Ριζικός κόμβος"
+
+#~ msgid "Site Map"
+#~ msgstr "Χάρτης Ιστοσελίδας"
 
 #~ msgid "Series"
 #~ msgstr "Σειρά"

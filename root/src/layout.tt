@@ -452,18 +452,16 @@
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/console/list_categories') %]">
-                    <span class="fa fa-tags fa-fw" aria-hidden="true"></span>
+                    <span class="fa fa-tag fa-fw" aria-hidden="true"></span>
                     [% loc('Manage categories') %]
                   </a>
                 </li>
-                <!--
                 <li>
                   <a href="[% c.uri_for_action('/nodes/node_root') %]">
                     <span class="fa fa-tags fa-fw" aria-hidden="true"></span>
-                    [% loc('Nodes') %]
+                    [% loc('Collections') %]
                   </a>
                 </li>
-                -->
                 <li>
                   <a href="[% c.uri_for_action('/attachments/list') %]">
                     <span class="fa fa-file-image-o fa-fw" aria-hidden="true"></span>
@@ -685,9 +683,12 @@
       [% IF c.flash.status_msg %]
       <div class="alert alert-success" id="status_message">
         [% IF c.flash.status_msg == 'BOOKBUILDER_ADDED' %]
-        <a href="[% c.uri_for_action('/bookbuilder/index') %]"
-           style="color: black">
-          [% loc('The text was added to the bookbuilder') %]
+        <a href="[% c.uri_for_action('/bookbuilder/index') %]" class="text-success">
+          <strong>[% loc('The text was added to the bookbuilder') %]</strong>
+        </a>
+        [% ELSIF c.flash.status_msg == 'COLLECTION_UPDATE' %]
+        <a href="[% c.uri_for_action('/nodes/refresh_oai_pmh_repo') %]" class="text-success">
+          <strong>[% loc('Collections have been updated. You may want to refresh the OAI-PMH repository') %]</strong>
         </a>
         [% ELSE %]
         [% c.flash.status_msg | html %]

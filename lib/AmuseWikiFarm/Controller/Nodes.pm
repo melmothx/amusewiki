@@ -27,7 +27,7 @@ sub node_root :Chained('root') :PathPart('') :Args(0) {
     my $site = $c->stash->{site};
     my $lang = $c->stash->{current_locale_code};
     $c->stash(node_list => $site->nodes->sorted->as_tree($lang),
-              page_title => $c->loc('Site Map'),
+              page_title => $c->loc('Collections'),
              );
     if ($c->user_exists) {
         $c->stash(all_nodes => $site->nodes->as_list_with_path($lang));
@@ -56,7 +56,7 @@ sub display :Chained('root') :PathPart('') :Args {
         }
         my $locale = $c->stash->{current_locale_code};
         my $desc = $target->description($locale);
-        my $title = $desc ? $desc->title_html : encode_entities($target->uri);
+        my $title = $desc ? $desc->title_html : encode_entities($target->canonical_title || $target->uri);
         my $body =  $desc ? $desc->body_html : '';
         my @pages = $target->linked_pages;
         my @children = $target->children_pages(locale => $locale);
@@ -91,14 +91,25 @@ sub create :Chained('admin') :PathPart('create') :Args(0) {
     my %params = %{$c->request->body_parameters};
     if (my $uri = $params{uri}) {
         log_info { $c->user->get('username') . " is creating nodes/$uri" };
-        if (my $node = $site->nodes->update_or_create_from_params(\%params)) {
-            $c->response->redirect($c->uri_for($node->full_uri));
+        if (my $node = $site->nodes->update_or_create_from_params(\%params, { create => 1 })) {
+            $c->flash(status_msg => 'COLLECTION_UPDATE');
+            return $c->response->redirect($c->uri_for($node->full_uri));
         }
         else {
+            $c->flash(error_msg => $c->loc("A collection with this URI already exists"));
             log_error { "Failed attempt to create " . $site->id . "/node/$uri" };
         }
     }
-    $c->stash(nodes => [ $site->nodes->root_nodes->sorted->all ]);
+    $c->response->redirect($c->uri_for_action('/nodes/node_root'));
+}
+
+sub refresh_oai_pmh_repo :Chained('admin') :PathPart('refresh-oai-pmh-repo') Args(0) {
+    my ($self, $c) = @_;
+    my $site = $c->stash->{site};
+    log_info { $c->user->get('username') . " is refreshing oai-pmh" };
+    my $job = $site->jobs->enqueue(refresh_oai_pmh_repo => {}, $c->user->get('username'));
+    $c->res->redirect($c->uri_for_action('/tasks/display',
+                                         [$job->id]));
 }
 
 sub edit :Chained('admin') :PathPart('edit') :CaptureArgs(1) {
@@ -119,11 +130,12 @@ sub update_node :Chained('edit') :PathPart('') :Args(0) {
     if ($params{update}) {
         Dlog_info { $c->user->get('username') . " is updating " . $node->full_uri . " with $_" } \%params;
         $node->update_from_params(\%params);
-        $c->stash({ update_ok => 1 });
+        $c->flash(status_msg => 'COLLECTION_UPDATE');
     }
     elsif ($params{delete}) {
         Dlog_info { $c->user->get('username') . " deleted $_" } +{ $node->get_columns };
         $node->delete;
+        $c->flash(status_msg => 'COLLECTION_UPDATE');
         $c->response->redirect($c->uri_for_action('/nodes/node_root'));
         return;
     }

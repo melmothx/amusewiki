@@ -292,8 +292,8 @@ msgstr "Ca acoperire în antet"
 msgid "As regular image in the body"
 msgstr "Ca imagine obișnuită în corp"
 
-msgid "Assign text to nodes"
-msgstr "Atribuiți text nodurilor"
+msgid "Assign text to collections"
+msgstr ""
 
 msgid "Attach"
 msgstr "Atașează"
@@ -512,6 +512,9 @@ msgstr "Închide"
 
 msgid "Code"
 msgstr "Codează"
+
+msgid "Collections"
+msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
 msgstr "Colophon (afișat în fișierele generate):"
@@ -1590,8 +1593,8 @@ msgstr "Link"
 msgid "Links"
 msgstr "Link-uri"
 
-msgid "List of paths to attach to this node, one per line."
-msgstr "Lista căilor de atașare la acest nod, una pe linie."
+msgid "List of paths to attach to this collection, one per line."
+msgstr ""
 
 msgid "List of texts on hold"
 msgstr "Lista de texte în așteptare"
@@ -1818,9 +1821,6 @@ msgstr "Nu s-a găsit niciun text!"
 msgid "No text was added yet"
 msgstr "Nici un text nu a fost adăugat încă"
 
-msgid "Nodes"
-msgstr "Nodes"
-
 msgid "None"
 msgstr "Nu există"
 
@@ -1990,8 +1990,8 @@ msgstr "Indentarea paragrafului în puncte (pt)"
 msgid "Paragraphs"
 msgstr "Paragrafe"
 
-msgid "Parent node"
-msgstr "Nodul părinte"
+msgid "Parent collection"
+msgstr ""
 
 msgid "Part"
 msgstr "Parte"
@@ -2475,8 +2475,8 @@ msgstr "Revizuirea pentru %1 a fost ștearsă"
 msgid "Roles"
 msgstr "Roluri"
 
-msgid "Root node"
-msgstr "Root node"
+msgid "Root Collection"
+msgstr ""
 
 msgid "Run diff"
 msgstr "Run diff"
@@ -2635,10 +2635,6 @@ msgstr "Showing _START_ to _END_ of _TOTAL_ entries"
 
 msgid "Single bars"
 msgstr "Single bars"
-
-#, fuzzy
-msgid "Site Map"
-msgstr "Site Map"
 
 msgid "Site already exists"
 msgstr "Site-ul deja există"
@@ -3829,6 +3825,25 @@ msgstr ""
 "    în timpul editării, dar este încă acolo, în cazul în care cineva dorește "
 "să o ia.\n"
 "    să o preia atunci când editează un text."
+
+#~ msgid "Nodes"
+#~ msgstr "Nodes"
+
+#~ msgid "Assign text to nodes"
+#~ msgstr "Atribuiți text nodurilor"
+
+#~ msgid "Parent node"
+#~ msgstr "Nodul părinte"
+
+#~ msgid "List of paths to attach to this node, one per line."
+#~ msgstr "Lista căilor de atașare la acest nod, una pe linie."
+
+#~ msgid "Root node"
+#~ msgstr "Root node"
+
+#, fuzzy
+#~ msgid "Site Map"
+#~ msgstr "Site Map"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "texts sorted by topic"

@@ -265,7 +265,7 @@ msgstr ""
 msgid "As regular image in the body"
 msgstr ""
 
-msgid "Assign text to nodes"
+msgid "Assign text to collections"
 msgstr ""
 
 msgid "Attach"
@@ -472,6 +472,9 @@ msgid "Close"
 msgstr "Stäng"
 
 msgid "Code"
+msgstr ""
+
+msgid "Collections"
 msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
@@ -1428,7 +1431,7 @@ msgstr "Länk"
 msgid "Links"
 msgstr ""
 
-msgid "List of paths to attach to this node, one per line."
+msgid "List of paths to attach to this collection, one per line."
 msgstr ""
 
 msgid "List of texts on hold"
@@ -1650,9 +1653,6 @@ msgstr "Ingen text hittades!"
 msgid "No text was added yet"
 msgstr "Ingen text har ännu lagts till"
 
-msgid "Nodes"
-msgstr ""
-
 msgid "None"
 msgstr ""
 
@@ -1802,7 +1802,7 @@ msgstr ""
 msgid "Paragraphs"
 msgstr "Stycken"
 
-msgid "Parent node"
+msgid "Parent collection"
 msgstr ""
 
 msgid "Part"
@@ -2250,7 +2250,7 @@ msgstr "Revidering för %1 har raderats"
 msgid "Roles"
 msgstr ""
 
-msgid "Root node"
+msgid "Root Collection"
 msgstr ""
 
 msgid "Run diff"
@@ -2410,9 +2410,6 @@ msgstr ""
 
 msgid "Single bars"
 msgstr "Enkla staplar"
-
-msgid "Site Map"
-msgstr ""
 
 msgid "Site already exists"
 msgstr "Sidan finns redan"
