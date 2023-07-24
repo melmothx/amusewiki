@@ -61,6 +61,7 @@ sub handled_jobs_hashref {
             download_remote => 26,
             install_downloaded => 27,
             prune_orphans => 28,
+            refresh_oai_pmh_repo => 29,
            };
 }
 

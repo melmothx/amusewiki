@@ -150,8 +150,10 @@ sub update_site_records {
                 # $self->logger->("Updating/Creating " . $f->{identifier} . "\n");
                 my $epoch_timestamp = (stat($file))[9];
                 if (my $existing_rec = delete $all{$f->{identifier}}) {
-                    # not modified since last check, skip
-                    next FILE if $existing_rec->{update_run} >= $epoch_timestamp;
+                    unless ($opts->{refresh}) {
+                        # not modified since last check, skip
+                        next FILE if $existing_rec->{update_run} >= $epoch_timestamp;
+                    }
                 }
                 $f->{site_id} = $site_id;
 
