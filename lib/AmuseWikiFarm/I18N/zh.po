@@ -55,6 +55,9 @@ msgstr ""
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "空行（或多个空行）开始新段落。"
 
+msgid "A collection with this URI already exists"
+msgstr ""
+
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
@@ -476,6 +479,10 @@ msgid "Code"
 msgstr "代码"
 
 msgid "Collections"
+msgstr ""
+
+msgid ""
+"Collections have been updated. You may want to refresh the OAI-PMH repository"
 msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
