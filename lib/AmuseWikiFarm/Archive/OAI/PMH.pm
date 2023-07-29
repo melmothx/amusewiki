@@ -59,23 +59,37 @@ sub update_site_records {
                                                        },
                                                        { key => 'set_spec_site_id_unique' });
 
-    my %sets;
+    my (%node_sets, %cat_sets);
+    # do the same for categories
     foreach my $node ($site->nodes) {
-        $sets{$node->uri} = $site->oai_pmh_sets->update_or_create({
-                                                                   set_spec => "collection:" . $node->uri,
+        $node_sets{$node->uri} = $site->oai_pmh_sets->update_or_create({
+                                                                   set_spec => $node->oai_pmh_set_spec,
                                                                    set_name => $node->canonical_title,
                                                                   },
                                                                   { key => 'set_spec_site_id_unique' });
     }
-    my $node_tree = $site->node_title_tree->{titles};
     # create the sets for nodes here. Build a tree of them for fast lookup
+    my $node_tree = $site->node_title_tree->{titles};
+
 
 
 
     my @files;
+
+    foreach my $cat ($site->categories) {
+        $cat_sets{$cat->oai_pmh_set_spec} = $site->oai_pmh_sets->update_or_create({
+                                                                                   set_spec => $cat->oai_pmh_set_spec,
+                                                                                   set_name => $cat->name,
+                                                                                  },
+                                                                                  { key => 'set_spec_site_id_unique' });
+    }
+
     my $rs = $site->titles->published_texts->search(undef,
                                                     {
-                                                     prefetch => { title_attachments => 'attachment' }
+                                                     prefetch => {
+                                                                  title_attachments => 'attachment',
+                                                                  title_categories => 'category',
+                                                                 }
                                                     });
     my %done;
     while (my $title = $rs->next) {
@@ -114,7 +128,10 @@ sub update_site_records {
                           title_id => $title_id,
                           metadata_format => 'text/html',
                           # lookup the collections from the prebuild tree
-                          sets => [ $webset, map { $sets{$_} } @{ $node_tree->{$title_id} || [] } ]
+                          sets => [ $webset,
+                                    (map { $node_sets{$_} } @{ $node_tree->{$title_id} || [] }),
+                                    (map { $cat_sets{$_->oai_pmh_set_spec} } $title->categories),
+                                  ]
                          };
         }
     }

@@ -590,6 +590,11 @@ sub update_full_path {
     return $full;
 }
 
+sub oai_pmh_set_spec {
+    my $self = shift;
+    return "collection:" . $self->uri;
+}
+
 after insert => sub {
     shift->update_full_path;
 };

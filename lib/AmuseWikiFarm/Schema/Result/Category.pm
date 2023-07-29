@@ -335,5 +335,10 @@ sub toggle_active {
     return $new;
 }
 
+sub oai_pmh_set_spec {
+    my $self = shift;
+    return join(":", category => $self->type, $self->uri);
+}
+
 __PACKAGE__->meta->make_immutable;
 1;

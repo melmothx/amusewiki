@@ -9,7 +9,7 @@ use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
 use Data::Dumper::Concise;
-use Test::More;
+use Test::More tests => 27;
 use AmuseWikiFarm::Archive::OAI::PMH;
 
 my $builder = Test::More->builder;
@@ -133,15 +133,38 @@ $site->node_title_tree;
 my $oai_pmh = AmuseWikiFarm::Archive::OAI::PMH->new(site => $site,
                                                     oai_pmh_url => URI->new($site->canonical_url . '/oai-pmh'));
 $oai_pmh->update_site_records;
-like $oai_pmh->process_request({ verb => 'ListSets' }), qr{<setSpec>collection:seven-0</setSpec>};
-like $oai_pmh->process_request({ verb => 'ListRecords',
+{
+    my $list_sets = $oai_pmh->process_request({ verb => 'ListSets' });
+    diag $list_sets;
+    like $list_sets, qr{<setSpec>collection:seven-0</setSpec>};
+    like $list_sets, qr{<setSpec>category:topic:cat-one-2</setSpec>};
+}
+
+{
+    my $test_set = $oai_pmh->process_request({ verb => 'ListRecords',
                                  metadataPrefix => 'oai_dc',
                                  set => "collection:seven-0"
-                               }), qr{
-                                         \Q<identifier>oai:0nodes1.amusewiki.org:/library/seven</identifier>\E
-                                         .*
-                                         \Q<setSpec>collection:one-1</setSpec>\E
-                                         .*
-                                         \Q<setSpec>collection:seven-1</setSpec>\E
-                                 }xs;
-done_testing;
+                               });
+    like $test_set, qr{
+                          \Q<identifier>oai:0nodes1.amusewiki.org:/library/seven</identifier>\E
+                          .*
+                          \Q<setSpec>collection:one-1</setSpec>\E
+                          .*
+                          \Q<setSpec>collection:seven-1</setSpec>\E
+                  }xs;
+    diag $test_set;
+}
+
+$oai_pmh->update_site_records({ refresh => 1 });
+
+foreach my $set ("category:author:author-one-1",
+                 "category:topic:cat-one-2") {
+    my $test_set = $oai_pmh->process_request({ verb => 'ListRecords',
+                                               metadataPrefix => 'oai_dc',
+                                               set => $set,
+                                             });
+    like $test_set, qr{<setSpec>web</setSpec>};
+    like $test_set, qr{\Q<setSpec>$set</setSpec>\E};
+    like $test_set, qr{<dc:title>.*</dc:title>};
+    diag $test_set;
+}
