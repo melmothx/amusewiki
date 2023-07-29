@@ -9,7 +9,7 @@ use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
 use Data::Dumper::Concise;
-use Test::More tests => 27;
+use Test::More tests => 28;
 use AmuseWikiFarm::Archive::OAI::PMH;
 
 my $builder = Test::More->builder;
