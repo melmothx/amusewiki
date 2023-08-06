@@ -1,4 +1,4 @@
-package AmuseWikiFarm::Controller::OaiPmh;
+package AmuseWikiFarm::Controller::OAI;
 use Moose;
 
 use namespace::autoclean;
@@ -26,7 +26,7 @@ There is a single entry point.
 
 =cut
 
-sub root :Chained('/site') :PathPart('oai-pmh') :Args(0) {
+sub pmh :Chained('/site') :PathPart('oai-pmh') :Args(0) {
     my ($self, $c) = @_;
     my $params = $c->request->params;
     my $xml = $c->model('OaiPmh')->process_request($params);

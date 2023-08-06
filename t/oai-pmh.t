@@ -562,7 +562,7 @@ foreach my $test ({
         $test->{args}->{identifier} = $site->oai_pmh_base_identifier . $test->{args}->{identifier}
     }
     $uri->query_form($test->{args});
-    $mech->get_ok("$uri");
+    $mech->get_ok("$uri") or die;
     diag $mech->content;
     foreach my $exp (@{$test->{expect}}) {
         $mech->content_contains($exp);

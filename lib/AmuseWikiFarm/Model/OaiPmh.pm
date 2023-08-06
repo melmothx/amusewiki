@@ -12,7 +12,7 @@ sub prepare_arguments {
     my ($self, $c) = @_;
     my %args = (
                 site => $c->stash->{site},
-                oai_pmh_url => $c->uri_for_action('/oaipmh/root'),
+                oai_pmh_url => $c->uri_for_action('/oai/pmh'),
                );
     return \%args;
 }
