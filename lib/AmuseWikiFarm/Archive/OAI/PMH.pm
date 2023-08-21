@@ -9,6 +9,7 @@ use Types::Standard qw/Object Str CodeRef HashRef ArrayRef InstanceOf/;
 use AmuseWikiFarm::Log::Contextual;
 use DateTime;
 use AmuseWikiFarm::Utils::Paths;
+use AmuseWikiFarm::Utils::XML;
 use Path::Tiny;
 use XML::Writer;
 use Data::Dumper::Concise;
@@ -269,46 +270,9 @@ sub process_request {
                  @response,
                 ]
                ];
-    _generate_xml($w, @$data);
+    AmuseWikiFarm::Utils::XML::generate_xml($w, @$data);
     $w->end;
     return "$w";
-}
-
-sub _generate_xml {
-    my ($w, $name, @args) = @_;
-    my ($attrs, $value);
-    if (@args == 0) {
-        # all undef
-    }
-    elsif (@args == 1) {
-        $attrs = [];
-        $value = $args[0];
-    }
-    elsif (@args == 2) {
-        ($attrs, $value) = @args;
-    }
-    else {
-        die "Bad usage" . Dumper(\@_);
-    }
-    if (defined $value) {
-        $w->startTag($name, @$attrs);
-        if (ref($value) eq 'ARRAY') {
-            foreach my $v (@$value) {
-                # recursive call
-                _generate_xml($w, @$v)
-            }
-        }
-        elsif (ref($value)) {
-            die "Not an array ref! " . Dumper($value);
-        }
-        else {
-            $w->characters($value);
-        }
-        $w->endTag;
-    }
-    else {
-        $w->emptyTag($name, @$attrs);
-    }
 }
 
 sub list_records {
