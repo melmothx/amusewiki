@@ -41,6 +41,10 @@
     [% END %]
     [% END %]
 
+    [% IF ore_rdf_link %]
+      <link rel="resourcemap" type="application/rdf+xml" href="[% ore_rdf_link %]"/>
+    [% END %]
+
     [%- IF open_graph %]
     <!-- open graph stanza -->
     [%- FOREACH open_graph_meta IN open_graph %]
