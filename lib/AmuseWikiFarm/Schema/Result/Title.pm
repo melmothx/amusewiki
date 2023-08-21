@@ -1113,7 +1113,7 @@ sub full_ore_rdf_uri {
 
 sub full_ore_aggregation_uri {
     my $self = shift;
-    return $self->full_uri . '/ore.rdf#rdf';
+    return $self->full_uri . '/ore.rdf#aggregation';
 }
 
 sub full_rebuild_uri {
