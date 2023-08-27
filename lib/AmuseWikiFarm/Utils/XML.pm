@@ -3,6 +3,7 @@ package AmuseWikiFarm::Utils::XML;
 use utf8;
 use strict;
 use warnings;
+use Data::Dumper::Concise;
 
 =head1 SYNOPSIS
 

@@ -21,10 +21,9 @@ sub as_rdf_xml {
     my $created = $text->pubdate->iso8601 . 'Z';
     my $updated = $text->f_timestamp->iso8601 . 'Z';
     my @dc;
-    if (my $oai_pmh_record = $text->oai_pmh_record) {
+    if (my $oai_pmh_record = $text->oai_pmh_records->not_deleted->first) {
         @dc = @{ $oai_pmh_record->dublin_core_record || [] };
     }
-
     my $data = [
                 'rdf:RDF' => [
                               'xmlns:rdf' => "http://www.w3.org/1999/02/22-rdf-syntax-ns#" ,
@@ -50,9 +49,11 @@ sub as_rdf_xml {
                  ],
 
                  [ 'rdf:Description' => [ 'rdf:about', $self->uri_maker->($text->full_ore_aggregation_uri) ],
-                   @dc,
-                   [ 'dcterms:created' => [ 'rdf:datatype' => "http://www.w3.org/2001/XMLSchema#dateTime" ], $created ],
-                   [ 'dcterms:modified' => [ 'rdf:datatype' => "http://www.w3.org/2001/XMLSchema#dateTime" ], $updated ],
+                   [
+                    @dc,
+                    [ 'dcterms:created' => [ 'rdf:datatype' => "http://www.w3.org/2001/XMLSchema#dateTime" ], $created ],
+                    [ 'dcterms:modified' => [ 'rdf:datatype' => "http://www.w3.org/2001/XMLSchema#dateTime" ], $updated ],
+                   ]
                  ],
                 ]
                ];
