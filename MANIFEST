@@ -940,6 +940,7 @@ lib/AmuseWikiFarm/I18N/sr.po
 lib/AmuseWikiFarm/I18N/sv.po
 lib/AmuseWikiFarm/I18N/tl.po
 lib/AmuseWikiFarm/I18N/tr.po
+lib/AmuseWikiFarm/I18N/uk.po
 lib/AmuseWikiFarm/I18N/zh.po
 lib/AmuseWikiFarm/Log/Contextual.pm
 lib/AmuseWikiFarm/Log/Contextual/App.pm
