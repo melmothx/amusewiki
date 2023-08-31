@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.578 2023-08-31
+
+ - i18n: add initial support for uk
+ - oai-pmh: expose the categories
+
 2.577 2023-07-24
 
  - Rename in the front-end the "nodes" to "collections". URLs and
