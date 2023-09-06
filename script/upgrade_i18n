@@ -13,9 +13,14 @@ carton exec xgettext.pl -P perl=* -P tt2=* -P generic=js \
     --output=lib/AmuseWikiFarm/I18N/messages.pot -f $filelist
 
 for i in bg hr fi es el mk ru id it de fr nl en sq sr \
-            sv pl pt da cs tr kmr ar fa he eo zh ja tl ceb ro fa \
-            uk; do
+            sv pl pt da cs tr kmr ar fa he eo zh ja tl ceb ro fa; do
     msgmerge --no-fuzzy-matching --update --no-location \
+             lib/AmuseWikiFarm/I18N/$i.po \
+             lib/AmuseWikiFarm/I18N/messages.pot
+done
+
+for i in uk; do
+    msgmerge --no-fuzzy-matching --update --sort-by-file\
              lib/AmuseWikiFarm/I18N/$i.po \
              lib/AmuseWikiFarm/I18N/messages.pot
 done

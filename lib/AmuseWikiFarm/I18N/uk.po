@@ -1,1114 +1,1557 @@
 # AmuseWiki i18n
 # This file is distributed under the same license as the AmuseWiki package.
 # Marco Pessotto <melmothx@gmail.com>, 2014.
+# Denys Nykula <vegan@libre.net.ua>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2023-08-31 20:54+0200\n"
-"Last-Translator: Marco <marco@pessotto.hr>\n"
+"PO-Revision-Date: 2023-09-02 17:09+0300\n"
+"Last-Translator: Denys Nykula <vegan@libre.net.ua>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#. ($filename)
-msgid "%1 doesn't exist"
-msgstr ""
+#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:1105
+msgid "Quota exceeded, too many pages"
+msgstr "Квоту перевищено, забагато сторінок"
 
-#. ([$total])
-msgid "%1 jobs deleted"
-msgstr ""
+#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:1110
+msgid "Couldn't add the text"
+msgstr "Не вдалося додати текст"
 
-#. ([$total])
-msgid "%1 jobs rescheduled"
-msgstr ""
+#: lib/AmuseWikiFarm/Archive/Lexicon.pm:37
+msgid "Test"
+msgstr "Тест"
 
-#. ($c->stash->{site}->full_name)
-#. (site.full_name)
-msgid "%1 on mobile"
-msgstr ""
+#: lib/AmuseWikiFarm/Archive/StaticIndexes.pm:132
+msgid "Estimated pages"
+msgstr "Приблизно сторінок"
 
-#. (text.pages_estimated)
-msgid "%1 pp."
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/API.pm:64
+msgid "Such URI already exists"
+msgstr "Ідентифікатор уже існує"
 
-msgid "(leave blank to keep the current one)"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/API.pm:71
+msgid "Invalid URI"
+msgstr "Хибний ідентифікатор"
 
-msgid "(narrowest)"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/API.pm:112
+#: lib/AmuseWikiFarm/Controller/API.pm:113
+msgid "File format not allowed"
+msgstr "Формат файлу не дозволено"
 
-msgid "(smart quotes, links, footnotes, etc.)"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/API.pm:114
+msgid "File too big"
+msgstr "Файл завеликий"
 
-msgid "(use that as main link in static mirror as well)"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/API.pm:115
+msgid "Request failed! Please report the the problem"
+msgstr "Запит не вдався! Будь ласка, повідомте про проблему"
 
-msgid "(widest)"
-msgstr ""
-
-msgid "A blank line (or more blank lines) starts a new paragraph."
-msgstr ""
-
-msgid "A collection with this URI already exists"
-msgstr ""
-
-msgid ""
-"A cover image was already added, but you can replace it uploading\n"
-"              a new one."
-msgstr ""
-
-msgid ""
-"A footnote is a line which starts with a number between square\n"
-"          brackets, with no leading whitespace."
-msgstr ""
-
-msgid "A line which starts with 2 or more whitespaces is a quotation."
-msgstr ""
-
-msgid "A line which starts with 20 or more whitespaces is right-aligned."
-msgstr ""
-
-msgid "A line which starts with 6 or more whitespaces is centered."
-msgstr ""
-
-msgid ""
-"A list of links and labels to insert into the top\n"
-"            bar. One per line, first the url, then the label,\n"
-"            separated by a space, e.g. \"http://test.me Test site\""
-msgstr ""
-
-#. (location)
-msgid "A new text has been created at %1"
-msgstr ""
-
-msgid "A nice title"
-msgstr ""
-
-msgid "A4 imposed PDF"
-msgstr ""
-
-msgid "A4 paper"
-msgstr ""
-
-msgid "A5 paper"
-msgstr ""
-
-msgid "A6 paper (also suitable for e-readers)"
-msgstr ""
-
-msgid "Abandoned editing in progress, feel free to check the diff and resume"
-msgstr ""
-
-msgid "Action"
-msgstr ""
-
-msgid "Activate the blog-style look and feel"
-msgstr ""
-
-msgid "Active"
-msgstr ""
-
-msgid "Add"
-msgstr ""
-
-msgid "Add a cover image (PNG or JPG)"
-msgstr ""
-
-msgid "Add a new text"
-msgstr ""
-
-msgid "Add an attachment"
-msgstr ""
-
-msgid "Add crop marks to the PDF"
-msgstr ""
-
-msgid "Add new remote repository"
-msgstr ""
-
-msgid "Add non-breaking spaces where appropriate for the language"
-msgstr ""
-
-msgid ""
-"Add paginator for text listing when the number of texts is greater than "
-"(integer)"
-msgstr ""
-
-msgid "Add sections to the bookbuilder"
-msgstr ""
-
-msgid "Add the OPDS URL"
-msgstr ""
-
-msgid "Add the selected parts to the bookbuilder"
-msgstr ""
-
-msgid "Add the whole text"
-msgstr ""
-
-msgid "Add this text to the bookbuilder"
-msgstr ""
-
-msgid "Add to colophon"
-msgstr ""
-
-msgid "Added"
-msgstr ""
-
-msgid ""
-"Additional information (full date, original title, translators, credits, "
-"etc)."
-msgstr ""
-
-msgid "Additional nginx configuration"
-msgstr ""
-
-#. (c.uri_for_action('/console/unpublished')
-#. (c.uri_for_action("/console/unpublished").path)
-msgid ""
-"After the approval of the\n"
-"  change, it will appear under %1. There is a big red\n"
-"  button for each deleted text, and you can proceed with the purging."
-msgstr ""
-
-msgid "Age:"
-msgstr ""
-
-msgid "Alias"
-msgstr ""
-
-msgid "Alias can't point to itself"
-msgstr ""
-
-msgid ""
-"All kind of lists start with one or more leading\n"
-"        whitespace."
-msgstr ""
-
-msgid "All languages"
-msgstr ""
-
-msgid "All revisions"
-msgstr ""
-
+#: lib/AmuseWikiFarm/Controller/Admin.pm:68
 msgid "All sites"
-msgstr ""
+msgstr "Усі сайти"
 
-msgid "All users"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Admin.pm:102
+msgid "Site already exists"
+msgstr "Сайт уже існує"
 
-msgid ""
-"Allow Unicode URIs for categories (author, topics). Recommended for non-"
-"latin scripts."
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Admin.pm:125
+msgid "Invalid name"
+msgstr "Хибна назва"
 
-msgid ""
-"Allow binary uploads to logged in users: list of whitespace separate file "
-"extensions"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Admin.pm:156
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:211
+msgid "Jobs"
+msgstr "Завдання"
 
-msgid ""
-"Also produce slides\n"
-"          from the document. Each section, no matter how deep, will\n"
-"          produce a slide. The text outside a section is ignored, so\n"
-"          if you do not have sections, you will get empty slides. If\n"
-"          you want to exclude a section, put a comment in the section\n"
-"          body with the string “noslide”."
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Admin.pm:187
+msgid "Such an user already exists!"
+msgstr "Користувач_ка вже існує!"
 
-msgid "Alternate Text"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Admin.pm:212 root/src/layout.tt:537
+msgid "Users"
+msgstr "Користувач_ки"
 
-msgid ""
-"An URI is a string which uniquely identifies the text\n"
-"      in the archive. In theory, it could be anything, but if you want\n"
-"      to set it yourself, please stick with the convention: author\n"
-"      name, title, language, eventual number for disambiguation, e.g.\n"
-"      errico-malatesta-anarchy-2. Please note that this is normally\n"
-"      not needed"
-msgstr ""
+#. ($user->username)
+#: lib/AmuseWikiFarm/Controller/Admin.pm:289
+#: lib/AmuseWikiFarm/Controller/User.pm:311
+msgid "User %1 updated"
+msgstr "Користувач_ку %1 оновлено"
 
-msgid "Apache is not currently supported"
-msgstr ""
+#. ($user->username)
+#. ($c->stash->{user}->username)
+#: lib/AmuseWikiFarm/Controller/Admin.pm:305
+#: lib/AmuseWikiFarm/Controller/SiteAdmin.pm:84
+msgid "User %1 deleted"
+msgstr "Користувач_ку %1 видалено"
 
-msgid "Archive"
-msgstr ""
+#. ($from, $to)
+#: lib/AmuseWikiFarm/Controller/Admin.pm:333
+msgid "Sending test mails from %1 to %2"
+msgstr "Надсилання тестової пошти від %1 до %2"
 
-msgid "Archive by month"
-msgstr ""
+#. ($from || "NO MAIL FROM", $to)
+#: lib/AmuseWikiFarm/Controller/Admin.pm:336
+msgid "Unable to send mail from %1 to %2!"
+msgstr "Не вдалося надіслати пошту від %1 до %2!"
 
-msgid "Archive history"
-msgstr ""
-
-msgid "Are you sure?"
-msgstr ""
-
-msgid "As cover in the header"
-msgstr ""
-
-msgid "As regular image in the body"
-msgstr ""
-
-msgid "Assign text to collections"
-msgstr ""
-
-msgid "Attach"
-msgstr ""
-
-msgid "Attached images"
-msgstr ""
-
+#: lib/AmuseWikiFarm/Controller/Attachments.pm:33 mkits/commit/body.txt:28
+#: root/src/layout.tt:468 root/src/publish/pending.tt:15
 msgid "Attachments"
-msgstr ""
+msgstr "Вкладення"
 
-msgid "Author"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Attachments.pm:67
+#: root/src/attachments/list.tt:75 root/src/attachments/orphans.tt:6
+msgid "Files not referenced by any text"
+msgstr "Файли, не згадані в жодному тексті"
 
-msgid "Author and title. If one side document: title."
-msgstr ""
+#. ($uri)
+#: lib/AmuseWikiFarm/Controller/Attachments.pm:134
+msgid "The description for %1 has been updated"
+msgstr "Опис %1 оновлено"
 
-msgid "Authors"
-msgstr ""
-
-msgid "Authors and topics listing"
-msgstr ""
-
-msgid "Authors for indexing"
-msgstr ""
-
-msgid "Auto"
-msgstr ""
-
-msgid "Automatically generated"
-msgstr ""
-
-msgid "Automatically request and renew SSL certificates from Let's Encrypt"
-msgstr ""
-
-msgid "Available"
-msgstr ""
-
-msgid "Available category tags for header"
-msgstr ""
-
-msgid ""
-"Avoid hyphenation on the last word of a sentence (it could result in bad "
-"spacing)"
-msgstr ""
-
-msgid "Back to the text"
-msgstr ""
-
-msgid "Bad request"
-msgstr ""
-
-msgid "Beamer color theme"
-msgstr ""
-
-msgid "Beamer theme"
-msgstr ""
-
-msgid "Beside topics and authors you can add more categories here"
-msgstr ""
-
-msgid "Binding correction in millimeters (additional inner margin)"
-msgstr ""
-
-msgid ""
-"Blocks of 16 pages to be folded twice and then bound\n"
-"                together."
-msgstr ""
-
-msgid ""
-"Blocks of 8 pages to be folded twice and then bound\n"
-"                together."
-msgstr ""
-
-msgid "Blog"
-msgstr ""
-
-msgid "Body"
-msgstr ""
-
-msgid "Bold"
-msgstr ""
-
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:36 root/src/layout.tt:585
+#: root/src/layout.tt:589
 msgid "Bookbuilder"
-msgstr ""
+msgstr "Конструктор"
 
-msgid "Bookbuilder page limit (integer)"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:89
+#: lib/AmuseWikiFarm/Controller/Publish.pm:125
+msgid "Sorry, too many jobs pending, please try again later!"
+msgstr "На жаль, забагато завдань у черзі. Спробуйте згодом!"
 
-msgid "Build it"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:103
+msgid "Couldn't build that"
+msgstr "Не вдалося зібрати"
 
-msgid "Built-in"
-msgstr ""
+#. ($pname)
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:268
+msgid "Saved \"%1\" configuration"
+msgstr "Збережено конфігурацію «%1»"
 
+#. ($pname)
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:275
+msgid "Loaded \"%1\" configuration"
+msgstr "Завантажено конфігурацію «%1»"
+
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:324
+#: root/src/bookbuilder/fonts.tt:4
+msgid "Font preview"
+msgstr "Перегляд шрифту"
+
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:330
+#: root/src/bookbuilder/schemas.tt:3 root/src/include/bbform.tt:648
+msgid "Imposition schemas"
+msgstr "Схеми друку"
+
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:344
+msgid "Unable to load the bookbuilder session"
+msgstr "Не вдалося завантажити сеанс конструктора"
+
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:364
+msgid "Settings loaded"
+msgstr "Налаштування завантажено"
+
+#: lib/AmuseWikiFarm/Controller/Category.pm:214 root/src/library.tt:16
+msgid "All languages"
+msgstr "Усі мови"
+
+#: lib/AmuseWikiFarm/Controller/Console.pm:49
+msgid "Git is not enabled on this site"
+msgstr "Git вимкнено на цьому сайті"
+
+#: lib/AmuseWikiFarm/Controller/Console.pm:73
+#: root/src/tasks/show_bulk_job.tt:10
+msgid "Git console"
+msgstr "Консоль Git"
+
+#. ("$name $url")
+#: lib/AmuseWikiFarm/Controller/Console.pm:85
+msgid "Remote repository %1 added"
+msgstr "Віддалений репозиторій %1 додано"
+
+#. ("$name $url")
+#: lib/AmuseWikiFarm/Controller/Console.pm:88
+msgid "Failed to add remote repository %1"
+msgstr "Не вдалося додати віддалений репозиторій %1"
+
+#. ($name)
+#: lib/AmuseWikiFarm/Controller/Console.pm:99
+msgid "Remote repository %1 removed"
+msgstr "Віддалений репозиторій %1 вилучно"
+
+#. ($name)
+#: lib/AmuseWikiFarm/Controller/Console.pm:102
+msgid "Failed to remove Remote repository %1"
+msgstr "Не вдалося вилучити віддалений репозиторій %1"
+
+#: lib/AmuseWikiFarm/Controller/Console.pm:139
+msgid "Unpublished texts"
+msgstr "Неоприлюднені тексти"
+
+#: lib/AmuseWikiFarm/Controller/Console.pm:212
+#: root/src/console/alias_display.tt:3 root/src/layout.tt:480
+msgid "Redirections"
+msgstr "Переспрямування"
+
+#: lib/AmuseWikiFarm/Controller/Console.pm:239
+msgid "Missing alias"
+msgstr "Бракує псевдоніма"
+
+#: lib/AmuseWikiFarm/Controller/Console.pm:242
+msgid "Missing redirection"
+msgstr "Бракує переспрямування"
+
+#: lib/AmuseWikiFarm/Controller/Console.pm:245
+msgid "Alias can't point to itself"
+msgstr "Псевдонім не може вести сам до себе"
+
+#: lib/AmuseWikiFarm/Controller/Console.pm:261
+msgid "Bad request"
+msgstr "Хибний запит"
+
+#: lib/AmuseWikiFarm/Controller/Console.pm:289 root/src/layout.tt:426
+msgid "Internal list of translations"
+msgstr "Внутрішній перелік перекладів"
+
+#: lib/AmuseWikiFarm/Controller/Console.pm:307 root/src/layout.tt:456
+msgid "Manage categories"
+msgstr "Керувати категоріями"
+
+#: lib/AmuseWikiFarm/Controller/Edit.pm:65 root/src/layout.tt:308
+#: root/src/layout.tt:622 root/src/layout.tt:625 root/src/layout.tt:780
+msgid "Add a new text"
+msgstr "Додати новий текст"
+
+#: lib/AmuseWikiFarm/Controller/Edit.pm:111 root/src/publish/pending.tt:98
+msgid "Created new text"
+msgstr "Текст створено"
+
+#. ($c->loc('Save')
+#: lib/AmuseWikiFarm/Controller/Edit.pm:112
 msgid ""
-"By default, secondary footnotes use arabic numbering\n"
-"        between parens. With this option they will use per-page alpha\n"
-"        numbering"
-msgstr ""
+"Not finished yet! Please have a look at the text and then click on \"%1\" to "
+"finalize your submission!"
+msgstr "Ще не все! Будь ласка, перевірте текст і тоді натисніть «%1», щоб завершити надсилання!"
 
-msgid "By number of pages, ascending"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Edit.pm:145
+msgid "Please upload your file again!"
+msgstr "Будь ласка, повторіть спробу вивантаження файлу!"
 
-msgid "By number of pages, descending"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Edit.pm:192 root/src/edit/edit.tt:19
+#: root/src/edit/edit.tt:108 root/src/edit/revs.tt:3
+msgid "Editing"
+msgstr "Редагування"
 
-msgid "By relevance"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Edit.pm:198
+msgid "This text does not exist"
+msgstr "Тексту не існує"
 
-msgid "By sku ascending"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Edit.pm:312
+msgid "This revision is being edited by someone else!"
+msgstr "Версію вже редагує хтось іще!"
 
-msgid "By sku descending"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Edit.pm:317
+msgid "This revision is already published, ignoring changes"
+msgstr "Версію вже оприлюднено, зміни нехтуються"
 
-msgid "By title A-Z"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Edit.pm:329
+msgid "Locked editing, no upload possible"
+msgstr "Редагування заблоковано, вивантажити неможливо"
 
-msgid "By title Z-A"
-msgstr ""
+#. ($mime_type)
+#. ($mime)
+#: lib/AmuseWikiFarm/Controller/Edit.pm:348
+#: lib/AmuseWikiFarm/Controller/Edit.pm:508
+#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:560
+msgid "Unsupported file type %1"
+msgstr "Тип файлу %1 не підтримується"
 
-msgid "CSS Alternate Theme (Dark mode, optional)"
-msgstr ""
+#. ($w, $h, $limit, $limit)
+#: lib/AmuseWikiFarm/Controller/Edit.pm:363
+msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
+msgstr "Розміри зображення %1 x %2 перевищують обмеження: %3 x %4 пікселів"
 
-msgid "CSS Theme"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Edit.pm:397
+msgid "Nothing uploaded"
+msgstr "Нічого не вивантажено"
 
-msgid "Cancel"
-msgstr ""
+#. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
+#: lib/AmuseWikiFarm/Controller/Edit.pm:424
+msgid ""
+"Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
+"in the body (%4), ignoring changes."
+msgstr "Примітки не збігаються: їх %1 (%2), а посилань у тілі %3 (%4); змін не застосовано."
 
-msgid "Canonical name"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Edit.pm:426
+msgid ""
+"The differences between the list of footnotes and references is shown below."
+msgstr "Перелік відмінностей приміток і посилань показано внизу."
 
-msgid "Categories"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Edit.pm:524
+msgid "File uploaded!"
+msgstr "Файл вивантажено"
 
-#. ($site->canonical)
-#. (site.canonical)
-msgid "Category types for %1"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Edit.pm:598
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr "Супер! Зміни збережено й додано в чергу розгляду"
 
-msgid "Center all the sectioning titles."
-msgstr ""
-
-msgid "Center the chapter titles."
-msgstr ""
-
-msgid "Changes"
-msgstr ""
-
-msgid "Changes applied"
-msgstr ""
-
-msgid "Changes applied."
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Edit.pm:619
+msgid "Missing #title header in the text!"
+msgstr "Бракує #title у шапці тексту"
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 #. (author_title)
+#: lib/AmuseWikiFarm/Controller/Edit.pm:681 mkits/commit/body.txt:1
+#: root/src/edit/diff.tt:4
 msgid "Changes for %1"
-msgstr ""
+msgstr "Зміни %1"
 
-msgid "Changes saved, thanks! They are now waiting to be published"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Federation.pm:40
+#: root/src/federation/details.tt:4 root/src/federation/show.tt:4
+#: root/src/federation/show.tt:14 root/src/layout.tt:530
+#: root/src/tasks/show_bulk_job.tt:15
+msgid "Federation"
+msgstr "Федерування"
 
-msgid ""
-"Changing urls is a poor practice. Anyway, if you know what you’re\n"
-"doing, you can delete an existing text and point to another adding a\n"
-"#DELETED directive in the text header with a special syntax:"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Federation.pm:75
+msgid "Added"
+msgstr "Додано"
 
-msgid "Chapter"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Federation.pm:79
+msgid "Invalid response"
+msgstr "Хибна відповідь"
 
-msgid "Chapter and section. If one side document: chapter."
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Federation.pm:83
+msgid "Failure fetching the source"
+msgstr "Помилка отримання джерела"
 
-msgid "Chapter, only for chapter divisions in books"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Federation.pm:91
+msgid "Invalid domain"
+msgstr "Хибний домен"
 
-msgid "Cheatsheet for the markup"
-msgstr ""
+#. ($res->{error} || "Unknwon error")
+#: lib/AmuseWikiFarm/Controller/Federation.pm:153
+msgid "Error: %1"
+msgstr "Помилка: %1"
 
-msgid "Check"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Federation.pm:162
+msgid "Source removed"
+msgstr "Джерело вилучено"
 
-msgid "Check mail sending and send mail to:"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Federation.pm:193
+msgid "Invalid parameter"
+msgstr "Хибний параметр"
 
-msgid "Choose a paper format"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Federation.pm:197
+msgid "Invalid field"
+msgstr "Хибне поле"
 
-msgid "Clear the book list"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Federation.pm:201
+msgid "Invalid target"
+msgstr "Хибна ціль"
 
-msgid "Click on the images to get the sample PDF"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Federation.pm:205
+msgid "Invalid ID"
+msgstr "Хибний ідентифікатор"
 
-msgid "Clone"
-msgstr ""
+#. ($c->stash->{site}->full_name)
+#. (site.full_name)
+#: lib/AmuseWikiFarm/Controller/Help.pm:35 root/src/help/opds.tt:2
+msgid "%1 on mobile"
+msgstr "«%1» на мобільному"
 
-msgid "Close"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Help.pm:40 root/src/help/faq.tt:2
+#: root/src/layout.tt:570
+msgid "Maintainer's FAQ"
+msgstr "ЧаП супровідни_ці"
 
-msgid "Code"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Help.pm:46 root/src/layout.tt:315
+msgid "Real time help"
+msgstr "Допомога наживо"
 
+#: lib/AmuseWikiFarm/Controller/Latest.pm:58
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:57
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4863 root/src/admin/edit.tt:777
+#: root/src/layout.tt:280 root/src/layout.tt:281 root/src/layout.tt:771
+#: root/src/text.tt:178
+msgid "Latest entries"
+msgstr "Нещодавно додане"
+
+#: lib/AmuseWikiFarm/Controller/Listing.pm:41
+#: lib/AmuseWikiFarm/Role/Controller/RegularListing.pm:31
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4850
+msgid "Full list of texts"
+msgstr "Повний перелік текстів"
+
+#: lib/AmuseWikiFarm/Controller/Monthly.pm:35
+#: lib/AmuseWikiFarm/Controller/Monthly.pm:39 root/src/admin/edit.tt:766
+#: root/src/layout.tt:289 root/src/layout.tt:290
+msgid "Archive by month"
+msgstr "Архів за місяцем"
+
+#: lib/AmuseWikiFarm/Controller/Nodes.pm:30 root/src/layout.tt:462
+#: root/src/nodes/node_root.tt:5
 msgid "Collections"
-msgstr ""
+msgstr "Добірки"
 
-msgid ""
-"Collections have been updated. You may want to refresh the OAI-PMH repository"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Nodes.pm:99
+msgid "A collection with this URI already exists"
+msgstr "Збірка з таким ідентифікатором уже існує"
 
-msgid "Colophon (displayed in the generated files):"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:44
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4849 root/src/layout.tt:248
+#: root/src/layout.tt:758
+msgid "Titles"
+msgstr "Назви"
 
-msgid ""
-"Columns for the left side of the editing page, with the editing box (out of "
-"12)"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:159
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:171 root/src/search/index.tt:120
+msgid "Search results"
+msgstr "Результати пошуку"
 
-msgid "Comma or semicolon separated list"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:160
+msgid "texts sorted by author"
+msgstr "тексти сортовано за автор_кою"
 
-msgid "Commit ID"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Publish.pm:71 root/src/layout.tt:433
+msgid "Pending revisions"
+msgstr "Версії на розгляді"
 
-msgid "Completed"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Publish.pm:82 root/src/layout.tt:444
+msgid "All revisions"
+msgstr "Усі версії"
 
-msgid "Computing of differences took"
-msgstr ""
+#. ($uri)
+#: lib/AmuseWikiFarm/Controller/Publish.pm:156
+msgid "Revision for %1 has been deleted"
+msgstr "Версію %1 вилучено"
 
-msgid "Confirm"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Root.pm:287
+#: lib/AmuseWikiFarm/Controller/Root.pm:302
+msgid "Page not found!"
+msgstr "Сторінку не знайдено!"
 
-msgid "Conflict"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Search.pm:103
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4869 root/src/admin/edit.tt:755
+#: root/src/layout.tt:206 root/src/layout.tt:207 root/src/layout.tt:211
+#: root/src/search/index.tt:9 root/src/search/index.tt:24
+#: root/src/static-indexes.tt:93
+msgid "Search"
+msgstr "Пошук"
 
-msgid "Continuous footnote numbering across the whole document."
-msgstr ""
-
-msgid "Convert to archive markup"
-msgstr ""
-
-msgid "Copyright notice"
-msgstr ""
-
-msgid "Couldn't add the text"
-msgstr ""
-
-msgid "Couldn't automatically generate the URI!"
-msgstr ""
-
-msgid "Couldn't build that"
-msgstr ""
-
-msgid "Create"
-msgstr ""
-
-msgid "Create a new category type. Please use only lowercase ASCII letters"
-msgstr ""
-
-msgid "Create a new format"
-msgstr ""
-
-msgid "Create a new librarian"
-msgstr ""
-
-msgid "Create a new special page"
-msgstr ""
-
-msgid "Create a new user"
-msgstr ""
-
-msgid ""
-"Create a public repository on GitLab, GitHub or similar services (or on your "
-"own server). "
-msgstr ""
-
-msgid "Create a topic alias"
-msgstr ""
-
-msgid "Create an author alias"
-msgstr ""
-
-msgid "Create new site"
-msgstr ""
-
-msgid "Create user and mail password"
-msgstr ""
-
-msgid "Created"
-msgstr ""
-
-msgid "Created by"
-msgstr ""
-
-msgid "Created new text"
-msgstr ""
-
-msgid "Current time"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Settings.pm:33 root/src/layout.tt:494
+msgid "Edit site configuration"
+msgstr "Редагувати налаштування сайту"
 
 #. ($c->stash->{site}->canonical)
 #. (site.canonical)
+#: lib/AmuseWikiFarm/Controller/Settings.pm:48
+#: lib/AmuseWikiFarm/Controller/Settings.pm:78 root/src/layout.tt:500
 msgid "Custom formats for %1"
-msgstr ""
+msgstr "Власні формати %1"
 
-msgid "Custom home page"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Settings.pm:100
+msgid "Format successfully created"
+msgstr "Формат успішно створено"
 
-msgid "Date"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Settings.pm:142
+msgid "Format successfully updated"
+msgstr "Формат успішно оновлено"
 
-msgid "Date of the original publication"
-msgstr ""
+#. ($format->format_name)
+#: lib/AmuseWikiFarm/Controller/Settings.pm:149
+msgid "Edit format %1"
+msgstr "Редагувати формат %1"
 
-msgid "Default"
-msgstr ""
+#. ($site->canonical)
+#. (site.canonical)
+#: lib/AmuseWikiFarm/Controller/Settings.pm:223 root/src/layout.tt:506
+msgid "Category types for %1"
+msgstr "Типи категорій %1"
 
-msgid "Default sorting for the category text list"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Settings.pm:239
+msgid "Changes applied."
+msgstr "Зміни застосовано."
 
-msgid "Default value if blank:"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Settings.pm:241
+msgid "Please reindex the site."
+msgstr "Будь ласка, переіндексуйте сайт."
 
-msgid "Deferred/Deleted texts"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/SiteAdmin.pm:57 root/src/layout.tt:542
+#: root/src/siteadmin/show_users.tt:1
+msgid "Site users"
+msgstr "Користувач_ки сайту"
 
-msgid "Delete"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/SiteAdmin.pm:88
+msgid "This user cannot be removed"
+msgstr "Користувач_ку неможливо вилучити"
 
-msgid "Delete permanently"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Special.pm:26
+msgid "Special pages"
+msgstr "Особливі сторінки"
 
-#. (remote.name)
-msgid "Delete remote repository %1"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Stats.pm:65
+msgid "Popular texts"
+msgstr "Популярні тексти"
 
-msgid "Delete selected attachments"
-msgstr ""
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:85
+msgid "Your file is ready"
+msgstr "Ваш файл готовий"
 
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:86
+msgid "Changes applied"
+msgstr "Зміни застосовано"
+
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:87 root/src/help/opds.tt:110
+msgid "Done"
+msgstr "Готово"
+
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:102
+msgid "Queue"
+msgstr "Черга"
+
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:190 root/src/include/bulk_job.tt:20
+msgid "N/A"
+msgstr "Невідомо"
+
+#: lib/AmuseWikiFarm/Controller/User.pm:60
+msgid "You are already logged in"
+msgstr "Ви вже зайшли"
+
+#: lib/AmuseWikiFarm/Controller/User.pm:81 root/src/user/reset_password.tt:15
+msgid "Reset password"
+msgstr "Скинути пароль"
+
+#: lib/AmuseWikiFarm/Controller/User.pm:126
+msgid "Your password was reset, now you can login with it"
+msgstr "Пароль скинуто, тепер можете з ним увійти"
+
+#: lib/AmuseWikiFarm/Controller/User.pm:143
+msgid "You have logged out"
+msgstr "Ви вийшли"
+
+#: lib/AmuseWikiFarm/Controller/User.pm:181
+msgid "Some fields are missing, all are required"
+msgstr "Бракує деяких полів, заповніть усі"
+
+#: lib/AmuseWikiFarm/Controller/User.pm:201
+msgid "Such username already exists"
+msgstr "Логін уже зайнято"
+
+#. ($user->username)
+#: lib/AmuseWikiFarm/Controller/User.pm:212
+msgid "User %1 created!"
+msgstr "Користувач_ку %1 створено!"
+
+#: lib/AmuseWikiFarm/Controller/User.pm:227
+msgid "Email sent!"
+msgstr "Лист надіслано!"
+
+#: lib/AmuseWikiFarm/Controller/User.pm:230
+msgid "Error sending mail!"
+msgstr "Помилка надсилання листа!"
+
+#: lib/AmuseWikiFarm/Controller/User.pm:265
+msgid "Password updated"
+msgstr "Пароль оновлено"
+
+#: lib/AmuseWikiFarm/Controller/User.pm:271
+msgid "Email updated"
+msgstr "Е-пошту оновлено"
+
+#: lib/AmuseWikiFarm/Controller/User.pm:274
+msgid "Locale updated"
+msgstr "Мову оновлено"
+
+#: lib/AmuseWikiFarm/Controller/User.pm:292
+msgid "Use the site locale"
+msgstr "Використовувати мову сайту"
+
+#: lib/AmuseWikiFarm/Controller/User.pm:316 root/src/admin/jobs.tt:73
+msgid "Errors"
+msgstr "Помилки"
+
+#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:151
 msgid ""
-"Deleting a revision is safe if a text has been\n"
-"    published. Otherwise deleting it you'll lose the unpublished changes"
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
+"Ви надіслали особові дані через незашифроване з'єднання. Перемкніться на "
+"HTTPS, увійдіть і якнайшвидше змініть пароль. Цього не має траплятись."
+
+#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:165
+msgid "You are logged in now!"
+msgstr "Ви успішно зайшли!"
+
+#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:182
+msgid "Wrong username or password"
+msgstr "Хибний логін чи пароль"
+
+#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:215
+msgid "Login"
+msgstr "Увійти"
+
+#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:260
+msgid "Wrong answer!"
+msgstr "Хибна відповідь!"
+
+#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:273
+#: root/src/user/human.tt:5
+msgid "Please prove you are a human"
+msgstr "Будь ласка, доведіть, що ви людина"
+
+#. ([$total])
+#: lib/AmuseWikiFarm/Role/Controller/Jobs.pm:30
+msgid "%1 jobs deleted"
+msgstr "%1 завдань видалено"
+
+#. ([$total])
+#: lib/AmuseWikiFarm/Role/Controller/Jobs.pm:42
+msgid "%1 jobs rescheduled"
+msgstr "%1 завдань відкладено"
+
+#. ($filename)
+#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:549
+msgid "%1 doesn't exist"
+msgstr "%1 не існує"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1159
+msgid "EPUB (for mobile devices)"
+msgstr "EPUB (для мобільних)"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1167
+msgid "Standalone HTML (printer-friendly)"
+msgstr "HTML без обрамлення (для принтерів)"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1175
+msgid "XeLaTeX source"
+msgstr "XeLaTeX-джерело"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1183
+msgid "plain text source"
+msgstr "просте текстове джерело"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1191
+msgid "Source files with attachments"
+msgstr "Файли джерела зі вкладеннями"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1307
+msgid "plain PDF"
+msgstr "простий PDF"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1308
+msgid "Plain PDF"
+msgstr "Простий PDF"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1321
+msgid "A4 imposed PDF"
+msgstr "PDF для A4-друку"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1337
+msgid "Letter imposed PDF"
+msgstr "PDF для Letter-друку"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1353
+msgid "Slides (PDF)"
+msgstr "Слайди (PDF)"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1699
+msgid "Couldn't automatically generate the URI!"
+msgstr "Не вдалось автоматично згенерувати ідентифікатор!"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1707
+msgid "Such an URI already exists"
+msgstr "Ідентифікатор уже зайнято"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1757
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr "Не вдалося конвертувати вивантажений файл. Це точно HTML?"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1763
+msgid "The file uploaded is not an HTML file!"
+msgstr "Вивантажений файл — не HTML!"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1773
+msgid "Error while converting the HTML. Sorry."
+msgstr "На жаль, виникла помилка конвертування HTML."
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4491
+msgid "Copyright notice"
+msgstr "Примітка про авторські права"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4491
+msgid "ISBN"
 msgstr ""
 
-msgid "Description"
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4491
+msgid "Series Number"
+msgstr "Номер серї"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4492
+msgid "Publisher"
+msgstr "Видавництво"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4492
+msgid "SKU"
+msgstr "Артикул"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4492
+msgid "Series Name"
+msgstr "Назва серії"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4726
+msgid "Rebuild"
+msgstr "Перезібрати"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:4862 root/src/publish/pending.tt:34
+msgid "New"
+msgstr "Створити"
+
+#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1875
+#: root/src/bookbuilder/index.tt:121 root/src/console/unpublished.tt:9
+#: root/src/edit/newtext.tt:77
+msgid "Author"
+msgstr "Автор_ка"
+
+#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1875
+msgid "Authors"
+msgstr "Автор_ки"
+
+#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1875
+msgid "Topic"
+msgstr "Тема"
+
+#: lib/AmuseWikiFarm/Schema/Result/Title.pm:1875 root/src/edit/edit.tt:707
+#: root/src/layout.tt:264
+msgid "Topics"
+msgstr "Теми"
+
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:411
+msgid "By sku ascending"
+msgstr "За артикулом у порядку зростання"
+
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:418
+msgid "By sku descending"
+msgstr "За артикулом у порядку спадання"
+
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:425 root/src/search/index.tt:61
+msgid "By title A-Z"
+msgstr "За назвою, спершу А"
+
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:432 root/src/search/index.tt:64
+msgid "By title Z-A"
+msgstr "За назвою, спершу Я"
+
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:442 root/src/search/index.tt:70
+msgid "Newer first"
+msgstr "Спершу новіші"
+
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:449 root/src/search/index.tt:67
+msgid "Older first"
+msgstr "Спершу старіші"
+
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:456 root/src/search/index.tt:73
+msgid "By number of pages, ascending"
+msgstr "За кількістю сторінок, спершу коротші"
+
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:466 root/src/search/index.tt:76
+msgid "By number of pages, descending"
+msgstr "За кількістю сторінок, спершу довші"
+
+#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:59
+msgid "Some fields are too long"
+msgstr "Деякі поля задовгі"
+
+#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:80
+msgid "Invalid username"
+msgstr "Хибний логін"
+
+#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:90
+msgid "Invalid email"
+msgstr "Хибна е-пошта"
+
+#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:103
+msgid "Password too short"
+msgstr "Пароль закороткий"
+
+#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:108
+msgid "Passwords do not match"
+msgstr "Паролі не збігаються"
+
+#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:121
+msgid "Emails do not match"
+msgstr "Е-пошти не збігаються"
+
+#. (args)
+#: lib/CatalystX/AmuseWiki/I18N.pm:49 lib/CatalystX/AmuseWiki/I18N.pm:55
+msgid "string"
+msgstr "рядок"
+
+#: mkits/commit/body.txt:4 root/src/edit/diff.tt:8
+msgid "This text is new"
+msgstr "Цей текст новий"
+
+#: mkits/commit/body.txt:6
+msgid "The revision has the following messages"
+msgstr "Версія має такі коментарі"
+
+#: mkits/commit/body.txt:10
+msgid "If the user provided a mail, it's listed in the mail's CC field"
+msgstr ""
+"Адресу е-пошти користувач_ки за наявності буде зазначено в CC-полі листа"
+
+#: mkits/commit/body.txt:12
+msgid "To resume the editing you can visit the following URL"
+msgstr "Щоб редагувати далі, перейдіть за наступним посиланням"
+
+#: mkits/commit/body.txt:16
+msgid "To view the changes introduced, you can visit the following URL"
+msgstr "Щоб переглянути зміни, перейдіть за наступним посиланням"
+
+#: mkits/commit/body.txt:20 root/src/admin/edit.tt:879 root/src/edit/edit.tt:41
+#: root/src/edit/edit.tt:141 root/src/edit/preview.tt:3
+msgid "Preview"
+msgstr "Перегляд"
+
+#. (pending_url)
+#: mkits/commit/body.txt:24
+msgid "To apply the changes, you can visit %1"
+msgstr "Можете застосувати зміни за допомогою %1"
+
+#: mkits/git_action/body.txt:5
+msgid "Expected pages"
 msgstr ""
 
-msgid "Description item"
-msgstr ""
-
+#. (shared)
+#: mkits/git_conflict/body.txt:1
 msgid ""
-"Description lists use a double colon to separate the\n"
-"        term and the description."
+"Unfortunately, the shared repository located at %1 appeared out of sync."
+msgstr "На жаль, спільний репозиторій за адресою %1 виглядає розсинхронованим."
+
+#: mkits/git_conflict/body.txt:3
+msgid ""
+"Now it has been aligned to the site's archive, but this means that there are "
+"some missing commits."
+msgstr "Його було вирівняно за архівом сайту, але через це тепер бракує деяких комітів."
+
+#: mkits/git_conflict/body.txt:5
+msgid ""
+"Usually this is due to high traffic and bad luck, and it can be fixed by "
+"pushing the changes again."
+msgstr "Зазвичай причиною є високе навантаження чи випадковість; для виправлення виконайте ще один push зі змінами."
+
+#: mkits/git_conflict/body.txt:7
+msgid ""
+"If it's not the case, please open a bug report at https://github.com/"
+"melmothx/amusewiki/issues"
+msgstr "Якщо це не допомагає, будь ласка, повідомте про ваду https://github.com/melmothx/amusewiki/issues"
+
+#. (backup)
+#: mkits/git_conflict/body.txt:9
+msgid ""
+"You can access the backup located at %1 or ask your host for help, "
+"forwarding this email"
+msgstr "Можете скористатися резервною копією %1 чи попросити провайдера про допомогу, переславши цей лист"
+
+#. (location)
+#: mkits/newtext/body.txt:1
+msgid "A new text has been created at %1"
+msgstr "Створено текст: %1"
+
+#: mkits/newtext/body.txt:3
+msgid ""
+"This mail has been sent to notify you about a new text\n"
+"creation, even if the uploading is not completed yet and the user\n"
+"still needs to finalize the upload. Another mail should follow soon.\n"
+"If this doesn't happen, it means that the uploading has been abandoned\n"
+"and you may want to check it out."
 msgstr ""
 
-msgid "Desired URI"
+#. (home)
+#: mkits/newuser/body.txt:2
+msgid "Your user at %1 has been created."
+msgstr "Користувач_ку %1 створено."
+
+#. (username)
+#: mkits/newuser/body.txt:4
+msgid "Your username is %1."
+msgstr "Логін: %1."
+
+#. (password)
+#: mkits/newuser/body.txt:6
+msgid "Your password is %1."
+msgstr "Пароль: %1."
+
+#. (edit_url)
+#: mkits/newuser/body.txt:8
+msgid "You should change your password right away at %1"
+msgstr "Одразу змініть пароль: %1"
+
+#. (create_url)
+#: mkits/newuser/body.txt:10
+#, fuzzy
+msgid "You can create a peer at %1"
+msgstr "Можете додати ще за допомогою %1"
+
+#: mkits/newuser/manifest.json:8
+msgid "User created"
+msgstr "Користувач_ку створено"
+
+#: mkits/publish/body.txt:3 root/src/console/unpublished.tt:13
+#: root/src/include/preamble.tt:7 root/src/include/preamble.tt:69
+msgid "Publication date"
+msgstr "Дата оприлюднення"
+
+#: mkits/publish/body.txt:4
+msgid "Status changed"
+msgstr "Стан змінено"
+
+#: mkits/resetpassword/body.txt:1
+msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr "Якщо ви забули пароль, можете обрати новий за допомогою цього посилання (натисніть або скопіюйте й вставте в оглядач):"
+
+#: mkits/resetpassword/body.txt:6
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr "Якщо ви не надсилали такого запиту, не зважайте на цей лист, і вашого пароля не буде змінено."
+
+#: mkits/resetpassword/body.txt:9
+msgid "The reset link will expire in a hour."
+msgstr "Посилання на скидання чинне протягом години."
+
+#: mkits/resetpassword/manifest.json:7
+msgid "Reset your password"
+msgstr "Скинути пароль"
+
+#: root/src/admin/edit.tt:2
+msgid "A4 paper"
+msgstr "Папір A4"
+
+#: root/src/admin/edit.tt:3
+msgid "A5 paper"
+msgstr "Папір A5"
+
+#: root/src/admin/edit.tt:4
+msgid "A6 paper (also suitable for e-readers)"
+msgstr "Папір A6 (також підходить для е-книжок)"
+
+#: root/src/admin/edit.tt:5
+msgid "Letter paper"
 msgstr ""
 
-msgid "Destination"
+#: root/src/admin/edit.tt:6
+msgid "Half Letter paper"
 msgstr ""
 
-msgid "Details"
+#: root/src/admin/edit.tt:7
+msgid "Quarter Letter paper"
 msgstr ""
 
-msgid "Did you mean:"
-msgstr ""
+#: root/src/admin/edit.tt:8
+msgid "Generic (fits in A4 and Letter)"
+msgstr "Узагальнений (вміщається в A4 та Letter)"
 
-msgid "Diff"
+#: root/src/admin/edit.tt:12
+msgid ""
+"The webserver needs to be reconfigured. Please execute in a root shell the "
+"following commands:"
 msgstr ""
+"Вебсервер слід переналаштувати. Будь ласка, виконайте з правами root такі "
+"команди:"
 
-msgid "Differences"
-msgstr ""
+#. (esite.id)
+#: root/src/admin/edit.tt:20
+msgid "Edit site %1"
+msgstr "Редагувати сайт %1"
 
+#: root/src/admin/edit.tt:36
+msgid "Restricted configuration variables"
+msgstr "Обмежені змінні конфігурації"
+
+#: root/src/admin/edit.tt:43 root/src/admin/list.tt:88
+msgid "Main canonical hostname, without protocol"
+msgstr "Канонічна назва хоста без протоколу"
+
+#: root/src/admin/edit.tt:52
+msgid "Virtual hosts, one per line"
+msgstr "Віртуальні хости, по одному на рядок"
+
+#: root/src/admin/edit.tt:66
+msgid "Max size for uploads in Mb"
+msgstr "Максимальний розмір вивантажень у мегабайтах"
+
+#: root/src/admin/edit.tt:78 root/src/admin/list.tt:14
+msgid "Site group"
+msgstr "Група сайту"
+
+#: root/src/admin/edit.tt:92 root/src/admin/list.tt:13
+#: root/src/admin/show_user_details.tt:38 root/src/admin/show_users.tt:11
+#: root/src/console/list_categories.tt:13 root/src/federation/show.tt:32
+#: root/src/settings/categories.tt:12 root/src/settings/formats.tt:11
+#: root/src/siteadmin/show_users.tt:11
+msgid "Active"
+msgstr "Активно"
+
+#: root/src/admin/edit.tt:93
+msgid "affects only the frontend webserver configuration"
+msgstr "впливає лише на конфігурацію вебсервера фронтенду"
+
+#: root/src/admin/edit.tt:104
+msgid "Do not redirect aliases to canonical"
+msgstr "Не переспрямомувати псевдонімів до канонічної адреси"
+
+#: root/src/admin/edit.tt:110
+msgid "Additional nginx configuration"
+msgstr "Додаткова конфігурація nginx"
+
+#: root/src/admin/edit.tt:127
+msgid "Restricted format options"
+msgstr "Обмежені налаштування формату"
+
+#: root/src/admin/edit.tt:134
 msgid ""
 "Directory with templates in the site repository, e.g.\n"
 "        \"templates\" (ASCII only). Do not set it unless you know\n"
 "        exactly what you are doing"
 msgstr ""
+"Каталог із шаблонами в репозиторії сайту, наприклад «templates» (лише "
+"ASCII). Не встановлюйте, якщо не знаєте напевне, як це працює"
 
-msgid "Disable /mirror/ URL for anonymous users"
+#: root/src/admin/edit.tt:150
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
+msgstr "Використовувати LuaLaTeX замість XeLaTeX (повільніше)"
+
+#: root/src/admin/edit.tt:161
+msgid "The logo has the site name on itself"
+msgstr "Логотип містить назву сайту"
+
+#: root/src/admin/edit.tt:168
+msgid "PDF logo"
+msgstr "PDF-логотип"
+
+#: root/src/admin/edit.tt:176
+msgid ""
+"The PDF logo value can be either an absolute path\n"
+"            or just a filename if you choose to install it in the\n"
+"            TeXlive tree. You can do so with the following commands.\n"
+"            The last one checks if the file can be found."
+msgstr ""
+"У полі PDF-логотипу може бути абсолютний шлях або просто назва файлу, якщо "
+"ви встановили його в дерево TeXlive. Встановлюють його такими командами. "
+"Остання перевіряє, чи вдається знайти файл."
+
+#: root/src/admin/edit.tt:199
+msgid "General configuration"
+msgstr "Загальні налаштування"
+
+#: root/src/admin/edit.tt:205
+msgid "Site name"
+msgstr "Назва сайту"
+
+#: root/src/admin/edit.tt:215
+msgid "Site mode"
+msgstr "Режим сайту"
+
+#: root/src/admin/edit.tt:221
+msgid "Private"
+msgstr "Приватний"
+
+#: root/src/admin/edit.tt:225
+msgid "Moderated wiki"
+msgstr "Модерована вікі"
+
+#: root/src/admin/edit.tt:229
+msgid "Blog"
+msgstr "Блог"
+
+#: root/src/admin/edit.tt:233
+msgid "Open wiki"
+msgstr "Відкрита вікі"
+
+#: root/src/admin/edit.tt:244
+msgid "Activate the blog-style look and feel"
+msgstr "Виглядати як блог"
+
+#: root/src/admin/edit.tt:252
+msgid "Show the text infobox at the bottom of the texts"
 msgstr ""
 
-msgid "Display the latest entries on special pages"
+#: root/src/admin/edit.tt:260
+msgid ""
+"Turn links to images into images (affects site display only, static formats "
+"have the link)"
+msgstr ""
+"Підставляти картинки замість посилань (впливає лише на сайт, у статичних "
+"форматах посилання залишаються)"
+
+#: root/src/admin/edit.tt:268
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"            Gmaps into widgets (affects site display only, static\n"
+"            formats have the link)"
+msgstr ""
+"Вбудовувати YouTube, Vimeo, Gmaps замість посилань без опису (впливає лише "
+"на сайт, у статичних форматах посилання залишаються)"
+
+#: root/src/admin/edit.tt:278
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
 msgstr ""
 
-msgid "Display url as"
+#: root/src/admin/edit.tt:288
+msgid "Never show teaser and/or cover in text lists"
 msgstr ""
 
-msgid "Division factor"
-msgstr ""
+#: root/src/admin/edit.tt:296
+msgid "Enable title ordering by SKU"
+msgstr "Дозволити впорядкування назв за артикулом"
 
-msgid "Do not create a cover page and start the text on the first page"
-msgstr ""
-
-msgid "Do not enforce save message"
-msgstr ""
-
-msgid "Do not redirect aliases to canonical"
-msgstr ""
-
-msgid "Do not use bold fonts"
-msgstr ""
-
-msgid "Domain"
-msgstr ""
-
-msgid "Done"
-msgstr ""
-
-msgid "Double bars"
-msgstr ""
-
-msgid "Downloads"
-msgstr ""
-
-msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
-msgstr ""
-
-msgid "EPUB"
-msgstr ""
-
-msgid "EPUB (for mobile devices)"
-msgstr ""
-
-msgid "ETA"
-msgstr ""
-
-msgid "Edit"
-msgstr ""
-
-msgid "Edit attachment description"
-msgstr ""
-
-#. ($format->format_name)
-msgid "Edit format %1"
-msgstr ""
-
-msgid "Edit full site configuration"
-msgstr ""
-
-msgid "Edit screen layout options"
-msgstr ""
-
-#. (esite.id)
-msgid "Edit site %1"
-msgstr ""
-
-msgid "Edit site configuration"
-msgstr ""
-
-msgid "Edit the text you want to unpublish and add this line to the header:"
-msgstr ""
-
-msgid "Edit this text"
-msgstr ""
-
-#. (user.username)
-msgid "Edit user %1"
-msgstr ""
-
-msgid "Editing"
-msgstr ""
-
-msgid "Email"
-msgstr ""
-
-msgid "Email sent!"
-msgstr ""
-
-msgid "Email updated"
-msgstr ""
-
-msgid "Email, password, locale"
-msgstr ""
-
-msgid "Emails do not match"
-msgstr ""
-
-msgid "Embed fonts in the EPUB file"
-msgstr ""
-
+#: root/src/admin/edit.tt:304
 msgid "Enable \"What links here\" feature"
-msgstr ""
+msgstr "Увімкнути функцію «Що сюди посилається»"
 
+#: root/src/admin/edit.tt:312
+msgid "Show text type and number of pages in the listing"
+msgstr "Показувати тип тексту й кількість сторінок у переліку"
+
+#: root/src/admin/edit.tt:320
 msgid "Enable search suggestions (did you mean...)"
 msgstr ""
 
-msgid "Enable title ordering by SKU"
-msgstr ""
+#: root/src/admin/edit.tt:327
+msgid "Default sorting for the category text list"
+msgstr "Типовий порядок текстів категорії"
 
-msgid "Enforce e-mail on submission"
-msgstr ""
+#: root/src/admin/edit.tt:342
+msgid "Custom home page"
+msgstr "Власна головна сторінка"
 
-msgid "Erase this revision"
-msgstr ""
+#: root/src/admin/edit.tt:355
+msgid "CSS Theme"
+msgstr "CSS-тема"
 
-msgid "Error converting the upload file. Is it an HTML file?"
-msgstr ""
+#: root/src/admin/edit.tt:371
+msgid "CSS Alternate Theme (Dark mode, optional)"
+msgstr "Інша CSS-тема (темний режим, необов'язково)"
 
-msgid "Error sending mail!"
-msgstr ""
+#: root/src/admin/edit.tt:375 root/src/bookbuilder/index.tt:203
+#: root/src/include/bbform.tt:611 root/src/include/mirror-infos.tt:2
+#: root/src/include/mirror-infos.tt:9
+msgid "None"
+msgstr "Немає"
 
-msgid "Error while converting the HTML. Sorry."
-msgstr ""
+#: root/src/admin/edit.tt:389 root/src/admin/list.tt:16
+#: root/src/edit/newtext.tt:179
+msgid "Language"
+msgstr "Мова"
 
-#. ($res->{error} || "Unknwon error")
-msgid "Error: %1"
-msgstr ""
+#: root/src/admin/edit.tt:407
+msgid "Multilanguage: list of whitespace separated language codes"
+msgstr "Багатомовність: перелік кодів мов через пробіл"
 
-msgid "Errors"
-msgstr ""
-
-msgid "Estimated pages"
-msgstr ""
-
+#: root/src/admin/edit.tt:420
 msgid ""
-"Even if this site has a responsive, mobile-friendly layout,\n"
-"  it does not provide a dedicated mobile application."
+"Allow binary uploads to logged in users: list of whitespace separate file "
+"extensions"
 msgstr ""
+"Дозволити двійкові вивантаження авторизованим користувач_кам: перелік "
+"суфіксів файлів через пробіл"
 
-msgid ""
-"Every\n"
-"        section will generate a slide. You need to do proper\n"
-"        sectioning for this to work."
-msgstr ""
+#: root/src/admin/edit.tt:426
+msgid "Available"
+msgstr "Підтримуються"
 
-msgid ""
-"Exactly like 2up, but the sheets are meant to be cut\n"
-"        horizontally first and then stack on each other. This way you\n"
-"        can print, for example, A6 booklets on A4."
-msgstr ""
+#: root/src/admin/edit.tt:429
+msgid "JPG, PNG and PDF are always allowed."
+msgstr "JPG, PNG та PDF завжди дозволено."
 
-msgid "Example"
-msgstr ""
+#: root/src/admin/edit.tt:432
+msgid "Suggested values:"
+msgstr "Рекомендовані значення:"
 
-msgid "Exception"
-msgstr ""
+#: root/src/admin/edit.tt:440
+msgid "Magic question"
+msgstr "Чарівне запитання"
 
-msgid "Existing redirections"
-msgstr ""
+#: root/src/admin/edit.tt:450
+msgid "Magic answer"
+msgstr "Чарівна відповідь"
 
-msgid "Expected pages"
-msgstr ""
-
-msgid "Failed"
-msgstr ""
-
-#. ("$name $url")
-msgid "Failed to add remote repository %1"
-msgstr ""
-
-#. ($name)
-msgid "Failed to remove Remote repository %1"
-msgstr ""
-
-msgid "Failure fetching the source"
-msgstr ""
-
-msgid "Federation"
-msgstr ""
-
-msgid "Feed enclosure method (OPDS and RSS)"
-msgstr ""
-
-msgid "Fetch"
-msgstr ""
-
-msgid "File already in the body"
-msgstr ""
-
-msgid "File extension"
-msgstr ""
-
-msgid "File format not allowed"
-msgstr ""
-
-msgid "File too big"
-msgstr ""
-
-msgid "File uploaded!"
-msgstr ""
-
-msgid "Files"
-msgstr ""
-
-msgid "Files not referenced by any text"
-msgstr ""
-
-msgid ""
-"Fill with blank pages before the last page if the signature is not full."
-msgstr ""
-
-msgid "Filters"
-msgstr ""
-
-msgid "Find the add catalogue menu."
-msgstr ""
-
-msgid "Find the network library menu, or equivalent."
-msgstr ""
-
-msgid "First"
-msgstr ""
-
-msgid "First Author and Second Author"
-msgstr ""
-
-msgid "First Author, Second Author"
-msgstr ""
-
-msgid "First slide"
-msgstr ""
-
-msgid "First text attachment or EPUB"
-msgstr ""
-
-msgid "First you have to unpublish it via #DELETED."
-msgstr ""
-
-msgid "Fix typography (smart quotes)"
-msgstr ""
-
-msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
-msgstr ""
-
-msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
-msgstr ""
-
-msgid ""
-"Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
-"and bound together."
-msgstr ""
-
+#: root/src/admin/edit.tt:460
 msgid "Fixed topic list"
 msgstr ""
 
-msgid "Font preview"
+#: root/src/admin/edit.tt:467
+#, fuzzy
+msgid "Beside topics and authors you can add more categories here"
+msgstr "Крім тем і автор_ок, можете додати тут більше категорій"
+
+#: root/src/admin/edit.tt:476
+msgid "Site slogan"
+msgstr "Гасло сайту"
+
+#: root/src/admin/edit.tt:486
+msgid "Notify mail: blank field will disable them"
+msgstr "Пошта сповіщень: залиште порожньою, щоб вимкнути"
+
+#: root/src/admin/edit.tt:487
+msgid "comma separated list"
+msgstr "перелік через кому"
+
+#: root/src/admin/edit.tt:498
+msgid "Site mail (From field)"
+msgstr "Пошта сайту (поле From)"
+
+#: root/src/admin/edit.tt:508
+msgid "Bookbuilder page limit (integer)"
+msgstr "Максимум сторінок у конструкторі (ціле число)"
+
+#: root/src/admin/edit.tt:518
+msgid "Max image dimension in pixels, applies to both width and height"
+msgstr "Максимальна ширина та висота зображення в пікселях"
+
+#: root/src/admin/edit.tt:534 root/src/include/preamble.tt:150
+#: root/src/include/preamble.tt:151
+msgid "View history"
+msgstr "Переглянути історію"
+
+#: root/src/admin/edit.tt:545
+msgid "Disable /mirror/ URL for anonymous users"
 msgstr ""
 
-msgid "Font size"
-msgstr ""
-
-msgid "Footnotes"
-msgstr ""
-
-#. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
+#: root/src/admin/edit.tt:557
 msgid ""
-"Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
-"in the body (%4), ignoring changes."
+"If the user is allowed to publish, speed up the process skipping the "
+"revision page if there are no conflicts and automatically redirect to the "
+"published text once it is done."
 msgstr ""
 
-msgid "For texts from the internet use"
+#: root/src/admin/edit.tt:569
+msgid ""
+"When creating a new text, do not populate the publication date if not "
+"provided by the user."
+msgstr ""
+"При створенні тексту не заповнювати автоматично дату оприлюднення, якщо "
+"користувач_ка її не вказа_ла."
+
+#: root/src/admin/edit.tt:581
+msgid "Use named table of contents anchors instead of numeric ones"
+msgstr "Текстові ярлики в таблиці змісту замість цифрових"
+
+#: root/src/admin/edit.tt:594
+msgid "Do not enforce save message"
 msgstr ""
 
+#: root/src/admin/edit.tt:605
+msgid "Enforce e-mail on submission"
+msgstr "Е-пошта обов'язкова для створення тексту"
+
+#: root/src/admin/edit.tt:618
+msgid "Display the latest entries on special pages"
+msgstr ""
+
+#: root/src/admin/edit.tt:629
+msgid "On text creation, enforce user to choose the URI"
+msgstr "Користувач_ка мусить обрати ідентифікатор при створенні тексту"
+
+#: root/src/admin/edit.tt:641
+msgid ""
+"Allow Unicode URIs for categories (author, topics). Recommended for non-"
+"latin scripts."
+msgstr ""
+"Дозволити юнікод у посиланнях на категорії (й на автор_ок і теми). "
+"Рекомендовано для нелатинських абеток."
+
+#: root/src/admin/edit.tt:647
+msgid "Feed enclosure method (OPDS and RSS)"
+msgstr ""
+
+#: root/src/admin/edit.tt:654 root/src/include/bbform.tt:23
+msgid "EPUB"
+msgstr ""
+
+#: root/src/admin/edit.tt:658
+msgid "Highest priority format"
+msgstr ""
+
+#: root/src/admin/edit.tt:662
+msgid "First text attachment or EPUB"
+msgstr ""
+
+#: root/src/admin/edit.tt:663
+msgid "(use that as main link in static mirror as well)"
+msgstr "(навести як основне посилання в статичному дзеркалі також)"
+
+#: root/src/admin/edit.tt:670
+msgid "Use JS syntax highlight for code blocks"
+msgstr "Підсвічувати синтаксис блоків коду за допомогою JavaScript"
+
+#: root/src/admin/edit.tt:678
+msgid "Specify a whitespace-separated list of languages to activate it."
+msgstr "Перелічіть мови через пробіл, щоб активувати."
+
+#: root/src/admin/edit.tt:679
+msgid "Languages supported"
+msgstr "Підтримувані мови"
+
+#: root/src/admin/edit.tt:686
+msgid ""
+"A list of links and labels to insert into the top\n"
+"            bar. One per line, first the url, then the label,\n"
+"            separated by a space, e.g. \"http://test.me Test site\""
+msgstr ""
+"Перелік посилань із мітками, які слід додати у верхню панель. По одному на "
+"рядок: спершу посилання, тоді мітку через пробіл: «http://test.me Тестовий "
+"сайт»"
+
+#: root/src/admin/edit.tt:700
+msgid "Same as above, for the Related Projects menu"
+msgstr "Меню пов'язаних проєктів, аналогічно"
+
+#: root/src/admin/edit.tt:712
+msgid "Same as above, for the Archive menu"
+msgstr "Меню архіву, аналогічно"
+
+#: root/src/admin/edit.tt:723
+msgid "URL pointing to an embeddable webchat"
+msgstr "URL-адреса вбудовування вебчату"
+
+#: root/src/admin/edit.tt:734
+msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
+msgstr ""
+
+#: root/src/admin/edit.tt:744 root/src/admin/edit.tt:754
+#: root/src/admin/edit.tt:765 root/src/admin/edit.tt:776
+#: root/src/admin/edit.tt:787
+msgid "Number of results to show on paginated pages (an integer)"
+msgstr ""
+
+#: root/src/admin/edit.tt:788
+msgid "Authors and topics listing"
+msgstr "Перелік автор_ок і тем"
+
+#: root/src/admin/edit.tt:799
+msgid "Number of latest entries to display on the RSS (an integer)"
+msgstr ""
+
+#: root/src/admin/edit.tt:811
+msgid ""
+"Add paginator for text listing when the number of texts is greater than "
+"(integer)"
+msgstr ""
+
+#: root/src/admin/edit.tt:831
+msgid "Default value if blank:"
+msgstr "Типове значення, якщо порожньо:"
+
+#: root/src/admin/edit.tt:839
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr ""
+"Список дозволених IP-адрес (для резервного копіювання, по одній на рядок)"
+
+#: root/src/admin/edit.tt:861
+msgid "Formats"
+msgstr "Формати"
+
+#: root/src/admin/edit.tt:870
+msgid "The following settings provide the defaults for each format."
+msgstr ""
+
+#: root/src/admin/edit.tt:872
+msgid "You can tune them editing them here."
+msgstr ""
+
+#: root/src/admin/edit.tt:876
+msgid ""
+"The Beamer selections are relevant only if you activate the\n"
+"  slides output."
+msgstr ""
+
+#: root/src/admin/edit.tt:903 root/src/include/bbform.tt:169
+msgid "Choose a paper format"
+msgstr "Оберіть розмір аркуша"
+
+#: root/src/admin/edit.tt:920 root/src/include/bbform.tt:246
+msgid "Division factor"
+msgstr "Співвідношення"
+
+#: root/src/admin/edit.tt:921
+msgid "Higher division factor means narrower margins"
+msgstr "Чим вище співвідношення, тим вужчі поля"
+
+#: root/src/admin/edit.tt:940 root/src/include/bbform.tt:265
+msgid "Binding correction in millimeters (additional inner margin)"
+msgstr "Поправка на скріплення в міліметрах (додаткове внутрішнє поле)"
+
+#: root/src/admin/edit.tt:960
+msgid "Font size"
+msgstr "Розмір шрифту"
+
+#: root/src/admin/edit.tt:976 root/src/include/bbform.tt:587
+msgid "Page where to start a chapter"
+msgstr ""
+
+#: root/src/admin/edit.tt:977
+msgid "any"
+msgstr ""
+
+#: root/src/admin/edit.tt:977
+msgid "left"
+msgstr ""
+
+#: root/src/admin/edit.tt:977
+msgid "right"
+msgstr ""
+
+#: root/src/admin/edit.tt:993
+msgid "Main font"
+msgstr ""
+
+#: root/src/admin/edit.tt:1009 root/src/edit/edit.tt:517
+#: root/src/edit/edit.tt:519
+msgid "Sans font"
+msgstr ""
+
+#: root/src/admin/edit.tt:1025
+msgid "Mono font"
+msgstr ""
+
+#: root/src/admin/edit.tt:1041
+msgid "Beamer theme"
+msgstr ""
+
+#: root/src/admin/edit.tt:1058
+msgid "Beamer color theme"
+msgstr ""
+
+#: root/src/admin/edit.tt:1080 root/src/include/bbform.tt:580
+msgid "Two side layout"
+msgstr ""
+
+#: root/src/admin/edit.tt:1091 root/src/include/bbform.tt:573
 msgid "For texts without a table of content, start text on the very first page"
 msgstr ""
 
-msgid ""
-"For topics and authors redirections, you can create them\n"
-"  here"
-msgstr ""
+#: root/src/admin/edit.tt:1103
+msgid "Layout"
+msgstr "Макет"
 
-msgid "Force a line break."
-msgstr ""
-
-msgid "Force publishing"
-msgstr ""
-
-msgid "Format name"
-msgstr ""
-
-msgid "Format successfully created"
-msgstr ""
-
-msgid "Format successfully updated"
-msgstr ""
-
-msgid "Formats"
-msgstr ""
-
-msgid "Full list of texts"
-msgstr ""
-
-msgid "Full tag cloud"
-msgstr ""
-
-msgid "Full text search"
-msgstr ""
-
+#: root/src/admin/edit.tt:1115
 msgid "Full width, fluid layout"
-msgstr ""
+msgstr "Не обмежувати ширину"
 
-msgid "General configuration"
-msgstr ""
-
-msgid "Generate Index"
-msgstr ""
-
-msgid "Generic (fits in A4 and Letter)"
-msgstr ""
-
-msgid "Get generated URI"
-msgstr ""
-
-msgid ""
-"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
-"using the form you can find above. You can have one personal repository."
-msgstr ""
-
-msgid "Git"
-msgstr ""
-
-msgid "Git console"
-msgstr ""
-
-msgid "Git is not enabled on this site"
-msgstr ""
-
-msgid ""
-"HTML code to append to each regular page, inserted\n"
-"            verbatim, so be careful"
-msgstr ""
-
+#: root/src/admin/edit.tt:1125
 msgid ""
 "HTML to append to each special page, inserted\n"
 "            verbatim, now you have a chance to screw up everything, so\n"
 "            be careful"
 msgstr ""
 
-msgid "HTML to insert in the footer of the layout, below the links"
+#: root/src/admin/edit.tt:1141
+msgid ""
+"HTML code to append to each regular page, inserted\n"
+"            verbatim, so be careful"
 msgstr ""
 
-msgid "HTML to insert into the left sidebar"
-msgstr ""
-
-msgid "HTML to insert into the right sidebar"
-msgstr ""
-
-msgid "HTML to insert on the bottom of the layout, above the footer"
-msgstr ""
-
+#: root/src/admin/edit.tt:1157
 msgid ""
 "HTML to insert on the top of the layout, behind the navigation bar and below "
 "the banner"
 msgstr ""
 
-msgid "HTML/Word Importer"
+#: root/src/admin/edit.tt:1171
+msgid "HTML to insert on the bottom of the layout, above the footer"
 msgstr ""
 
-msgid "Half Letter paper"
+#: root/src/admin/edit.tt:1185
+msgid "HTML to insert in the footer of the layout, below the links"
 msgstr ""
 
-msgid "Headers"
+#: root/src/admin/edit.tt:1200
+msgid "HTML to insert into the left sidebar"
 msgstr ""
 
-msgid "Heading"
+#: root/src/admin/edit.tt:1214
+msgid "HTML to insert into the right sidebar"
 msgstr ""
 
-msgid "Headings"
+#: root/src/admin/edit.tt:1226
+msgid "Useful HTML snippets"
 msgstr ""
 
-msgid "Height:"
+#: root/src/admin/edit.tt:1229
+msgid "Full tag cloud"
 msgstr ""
 
-msgid "Help Text"
+#: root/src/admin/edit.tt:1242
+msgid "Tag cloud with authors"
 msgstr ""
 
-msgid "Here you can find a preview of the Beamer themes and color themes"
+#: root/src/admin/edit.tt:1254
+msgid "Tag cloud with topics"
 msgstr ""
 
+#: root/src/admin/edit.tt:1279
+msgid "RSS aggregator"
+msgstr ""
+
+#: root/src/admin/edit.tt:1303 root/src/user/edit.tt:17
+#: root/src/user/edit_options.tt:16
+msgid "Edit screen layout options"
+msgstr "Екран редагування"
+
+#: root/src/admin/edit.tt:1320
+msgid "SSL configuration"
+msgstr "Налаштування SSL"
+
+#: root/src/admin/edit.tt:1332
+msgid "Use SSL for authenticated users"
+msgstr "Використовувати SSL для автентифікованих користувач_ок"
+
+#: root/src/admin/edit.tt:1340
 msgid ""
-"Here you can save or load your templates. The text list\n"
-"      and the cover image are excluded by the saved settings. You can\n"
-"      use this to save paper/fonts/imposition and other options."
+"The generate webserver configuration will redirect\n"
+"          all the HTTP requests to HTTPS"
+msgstr ""
+"Згенерована конфігурація вебсервера переспрямовуватиме всі HTTP-запити до "
+"HTTPS"
+
+#: root/src/admin/edit.tt:1349
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr "Автоматично запитувати й оновлювати SSL-сертифікати Let's Encrypt"
+
+#: root/src/admin/edit.tt:1356
+msgid "The following values are used to generate the webserver configuration."
 msgstr ""
 
-msgid "Higher division factor means narrower margins"
-msgstr ""
-
-msgid "Highest priority format"
-msgstr ""
-
-msgid "How are you going to access Git?"
-msgstr ""
-
-msgid "How do I create a landing page?"
-msgstr ""
-
-msgid "How do I create a special page?"
-msgstr ""
-
-msgid "How do I delete a text?"
-msgstr ""
-
-msgid "How do I modify a special page?"
-msgstr ""
-
-msgid "How do I purge a text?"
-msgstr ""
-
-msgid "How do I redirect to another page?"
-msgstr ""
-
-msgid "How to choose a password"
-msgstr ""
-
+#: root/src/admin/edit.tt:1357
 msgid ""
-"However, you can browse, search, download and read the texts\n"
-"  from mobile reading applications which support the so-called OPDS\n"
-"  protocol."
+"They should be paths relative to the webserver configuration root or "
+"absolute paths (recommended)."
 msgstr ""
 
-msgid "I am human"
-msgstr ""
+#: root/src/admin/edit.tt:1358
+msgid "Apache is not currently supported"
+msgstr "Apache наразі не підтримується"
 
-msgid "I have a system user with SSH access"
-msgstr ""
-
-msgid "I want an imposed (ready to print) PDF"
-msgstr ""
-
-msgid "I will provide my remote repository"
-msgstr ""
-
-msgid "ID"
-msgstr ""
-
-msgid "ISBN"
-msgstr ""
-
-msgid "Id"
-msgstr ""
-
-msgid ""
-"If by chance another text with the same author and title exists, choose the "
-"desired URI using the field below inserting author, title and a number, e.g. "
-"my-author-my-title-1"
-msgstr ""
-
-msgid ""
-"If it was not your intention, please just ignore this mail and\n"
-"your password will not be changed."
-msgstr ""
-
-msgid ""
-"If it's not the case, please open a bug report at https://github.com/"
-"melmothx/amusewiki/issues"
+#: root/src/admin/edit.tt:1364
+msgid "SSL key path"
 msgstr ""
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
@@ -1119,756 +1562,821 @@ msgstr ""
 #. ("ssl/' _ esite.canonical _ '/fullchain.pem")
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
+#: root/src/admin/edit.tt:1372 root/src/admin/edit.tt:1386
+#: root/src/admin/edit.tt:1400 root/src/admin/edit.tt:1414
 msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
-msgid ""
-"If present, hide the\n"
-"          generated formats and the information box. This makes sense\n"
-"          with attachments, when the text version is poor or not\n"
-"          available and more relevance should be given to the attached\n"
-"          files."
+#: root/src/admin/edit.tt:1378
+msgid "SSL chained certificate path (Nginx)"
 msgstr ""
 
-msgid ""
-"If set to a number greater than 0, automatically generate a teaser, with "
-"roughly this length"
+#: root/src/admin/edit.tt:1392
+msgid "SSL certificate path (Apache)"
 msgstr ""
 
-msgid ""
-"If the publication of a text is deferred, list it\n"
-"            with the teaser and the cover without providing access to\n"
-"            the body"
+#: root/src/admin/edit.tt:1406
+msgid "SSL CA certificate path (Apache)"
 msgstr ""
 
-msgid ""
-"If the user is allowed to publish, speed up the process skipping the "
-"revision page if there are no conflicts and automatically redirect to the "
-"published text once it is done."
-msgstr ""
+#: root/src/admin/edit.tt:1427 root/src/admin/jobs.tt:107
+#: root/src/admin/show_user_details.tt:70 root/src/attachments/edit.tt:38
+#: root/src/bookbuilder/index.tt:239 root/src/bookbuilder/index.tt:261
+#: root/src/category-details-edit.tt:41 root/src/include/edit_node.tt:119
+#: root/src/settings/categories.tt:114 root/src/settings/edit_format.tt:38
+#: root/src/user/edit.tt:72 root/src/user/edit_options.tt:33
+#: root/src/user/reset_password_confirm.tt:32
+msgid "Update"
+msgstr "Оновити"
 
-msgid "If the user provided a mail, it's listed in the mail's CC field"
-msgstr ""
-
-msgid ""
-"If this line\n"
-"          is present, set the publication date (on this site) to the\n"
-"          date. The date may also be in the future, deferring the\n"
-"          publication. If this line is not present, the publication\n"
-"          date will be the time of the publishing, triggering a bump\n"
-"          on RSS and special pages at each editing."
-msgstr ""
-
-msgid ""
-"If this line is\n"
-"          present and the reason is set to something, the text will be\n"
-"          stored in the archive, but will not be published."
-msgstr ""
-
-msgid ""
-"If this line is present, do not create a title page,\n"
-"          but instead start the text on the very first page and\n"
-"          produce a PDF styled like an article (chapters and parts\n"
-"          will not start on a new page)."
-msgstr ""
-
-msgid "If this line is present, do not display the table of contents."
-msgstr ""
-
-msgid "If you asked for imposition, select an imposition schema"
-msgstr ""
-
+#: root/src/admin/edit.tt:1439 root/src/tasks/rebuild.tt:3
 msgid ""
 "If you edit some format options, like fonts or paper\n"
 "      dimensions, you may want to rebuild the generated files"
 msgstr ""
-
-msgid ""
-"If you forgot your password, you can choose a new one visiting\n"
-"this link (click on it or copy and paste it in your browser):"
-msgstr ""
-
-msgid ""
-"If you have a file in .doc or .odt, you can easily convert it saving it as "
-"HTML"
-msgstr ""
-
-msgid ""
-"If you request a rebuild when one is ongoing, you will\n"
-"    abort the current one."
-msgstr ""
-
-msgid ""
-"If you use it as a teaser image, the image will also\n"
-"      be placed on the first page of the PDF. You can set its width\n"
-"      adding the following line to the header, where the value is the\n"
-"      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
-"      on"
-msgstr ""
-
-msgid ""
-"If your site doesn’t have that, just create a special page and assign\n"
-"the uri \"index\"."
-msgstr ""
-
-msgid ""
-"If your site is multilanguage, you can create a language-specific\n"
-"  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
-"  URI \"index\", a dash, and the locale code."
-msgstr ""
-
-msgid "Image already set as cover"
-msgstr ""
-
-#. ($w, $h, $limit, $limit)
-msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
-msgstr ""
-
-msgid ""
-"Image uploading may be done on the next step, when you can\n"
-"        review and preview the upload."
-msgstr ""
-
-msgid "Image url"
-msgstr ""
-
-msgid "Images"
-msgstr ""
-
-msgid "Imposition schemas"
-msgstr ""
-
-msgid "In both case you will get a reverse indentation."
-msgstr ""
-
-msgid ""
-"In the text, a number within square brackets is interpreted as a\n"
-"          footnote reference, if such footnote exists."
-msgstr ""
-
-#. (c.uri_for_action('/opds/start')
-#. (c.uri_for_action("/opds/start"))
-msgid ""
-"In this example, we use FBreader, but the procedure is\n"
-"  pretty much the same for all applications. All you have to do is to\n"
-"  add %1 to the network libraries."
-msgstr ""
-
-msgid "Inline elements"
-msgstr ""
-
-msgid "Insert the file into the body at the cursor position"
-msgstr ""
-
-msgid "Internal list of translations"
-msgstr ""
-
-msgid "Invalid ID"
-msgstr ""
-
-msgid "Invalid URI"
-msgstr ""
-
-msgid "Invalid domain"
-msgstr ""
-
-msgid "Invalid email"
-msgstr ""
-
-msgid "Invalid field"
-msgstr ""
-
-msgid "Invalid name"
-msgstr ""
-
-msgid "Invalid parameter"
-msgstr ""
-
-msgid "Invalid response"
-msgstr ""
-
-msgid "Invalid target"
-msgstr ""
-
-msgid "Invalid username"
-msgstr ""
-
-msgid ""
-"It is possible to have an additional set of\n"
-"          footnotes which you use to annote the text (e.g. critical\n"
-"          editions or translator's notes). They work the same way as\n"
-"          the regular footnotes, but they use curly brackets instead\n"
-"          of square brackets. Placing secondary footnote references\n"
-"          inside a regular footnote is permitted."
-msgstr ""
-
-msgid ""
-"It is recommended to always set a publication\n"
-"                    date, so the system does not need to rely on the\n"
-"                    file timestamp. Also, you should bump the\n"
-"                    publication date only on major editing, leaving it\n"
-"                    untouched for minor ones."
-msgstr ""
-
-msgid ""
-"It works the same as for regular page, but the link is hidden. Just\n"
-"append \"/edit\" to the url of the page."
-msgstr ""
-
-msgid "Italic"
-msgstr ""
-
-msgid "Italics, bold, monospace and code, linebreaks..."
-msgstr ""
-
-msgid "JPG, PNG and PDF are always allowed."
-msgstr ""
-
-msgid "Job status"
-msgstr ""
-
-msgid "Jobs"
-msgstr ""
-
-msgid "Jobs (all sites)"
-msgstr ""
-
-msgid "Jobs waiting before yours:"
-msgstr ""
-
-msgid "Just packs 2 consecutives logical pages on a physical one."
-msgstr ""
-
-msgid ""
-"Keep in mind that I’m cleaning the text and give it\n"
-"        back to you in the markup used on this site. It’s up to you to\n"
-"        check it and finally upload it. Some rarely used markup will\n"
-"        be lost in the process. Please check the preview on the next\n"
-"        step, where you can also insert images."
-msgstr ""
-
-msgid "Keep in mind that some character may be missing in the required font."
-msgstr ""
-
-msgid ""
-"Keep in mind that unusually\n"
-"        complex formatting will be stripped. Is it possible to add\n"
-"        tables and images only on the next step."
-msgstr ""
-
-msgid "Language"
-msgstr ""
-
-msgid "Language code of the document (2 or 3 letters). "
-msgstr ""
-
-msgid "Language selection"
-msgstr ""
-
-msgid "Languages supported"
-msgstr ""
-
-msgid "Last"
-msgstr ""
-
-msgid "Last successful rebuild"
-msgstr ""
-
-msgid "Last updated"
-msgstr ""
-
-msgid "Latest entries"
-msgstr ""
-
-msgid "Layout"
-msgstr ""
-
-msgid "Leave it blank if you want it published right away."
-msgstr ""
-
-msgid "Leave this empty to have it automatically generated"
-msgstr ""
-
-msgid "Letter imposed PDF"
-msgstr ""
-
-msgid "Letter paper"
-msgstr ""
-
-msgid "Line spacing"
-msgstr ""
-
-msgid "Link"
-msgstr ""
-
-msgid "Links"
-msgstr ""
-
-msgid "List of paths to attach to this collection, one per line."
-msgstr ""
-
-msgid "List of texts on hold"
-msgstr ""
-
-msgid "Lists"
-msgstr ""
-
-msgid "Load"
-msgstr ""
-
-msgid "Load another session by token"
-msgstr ""
-
-#. ($pname)
-msgid "Loaded \"%1\" configuration"
-msgstr ""
-
-msgid "Loading"
-msgstr ""
-
-msgid "Local"
-msgstr ""
-
-msgid "Local pages"
-msgstr ""
-
-msgid "Locale updated"
-msgstr ""
-
-msgid "Locked editing, no upload possible"
-msgstr ""
-
-msgid "Log in"
-msgstr ""
-
-msgid "Login"
-msgstr ""
-
-msgid "Logout"
-msgstr ""
-
-msgid "Look into the account’s menu, there is an entry for that."
-msgstr ""
-
-msgid "Lost your password?"
-msgstr ""
-
-msgid "Magic answer"
-msgstr ""
-
-msgid "Magic question"
-msgstr ""
-
-msgid "Mail from"
-msgstr ""
-
-msgid "Main canonical hostname, without protocol"
-msgstr ""
-
-msgid "Main font"
-msgstr ""
-
-msgid "Main text"
-msgstr ""
-
-msgid "Maintainer's FAQ"
-msgstr ""
-
-msgid "Make a link clickable"
-msgstr ""
-
-msgid "Make all links active"
-msgstr ""
-
-msgid "Make all non-breaking spaces explicit and visible as ~~"
-msgstr ""
-
-msgid "Manage categories"
-msgstr ""
-
-msgid "Manage category types"
-msgstr ""
-
-msgid "Margins: please choose a division factor or set width and height"
-msgstr ""
-
-msgid "Max image dimension in pixels, applies to both width and height"
-msgstr ""
-
-msgid "Max size for uploads in Mb"
-msgstr ""
-
-msgid "Message"
-msgstr ""
-
-#. (8)
-msgid "Minimum %1 characters"
-msgstr ""
-
-msgid "Mirror"
-msgstr ""
-
-msgid "Mirror of:"
-msgstr ""
-
-msgid "Missing #title header in the text!"
-msgstr ""
-
-msgid "Missing alias"
-msgstr ""
-
-msgid "Missing character will be reported"
-msgstr ""
-
-msgid "Missing redirection"
-msgstr ""
-
-msgid "Mobile"
-msgstr ""
-
-msgid "Mobile applications"
-msgstr ""
-
+"Після редагування шрифтів, розмірів аркуша та інших подібних опцій "
+"форматування доречно перезібрати згенеровані файли"
+
+#: root/src/admin/jobs.tt:11 root/src/publish/pending.tt:2
+#: root/src/tasks/display.tt:2
+msgid "pending"
+msgstr "у черзі"
+
+#: root/src/admin/jobs.tt:12 root/src/include/bulk_job.tt:2
+#: root/src/tasks/display.tt:4
+msgid "completed"
+msgstr "завершено"
+
+#: root/src/admin/jobs.tt:13 root/src/tasks/display.tt:5
+msgid "failed"
+msgstr "збій"
+
+#: root/src/admin/jobs.tt:14 root/src/tasks/display.tt:3
+msgid "taken"
+msgstr "триває"
+
+#: root/src/admin/jobs.tt:26
+msgid "Age:"
+msgstr "Минуло:"
+
+#: root/src/admin/jobs.tt:28
+msgid "minutes"
+msgstr "хв"
+
+#: root/src/admin/jobs.tt:43 root/src/admin/list.tt:12
+msgid "Id"
+msgstr "Ідентифікатор"
+
+#: root/src/admin/jobs.tt:46
+msgid "Site id"
+msgstr "Ідентифікатор сайту"
+
+#: root/src/admin/jobs.tt:49
+msgid "Task"
+msgstr "Завдання"
+
+#: root/src/admin/jobs.tt:52
+msgid "Payload"
+msgstr "Параметри"
+
+#: root/src/admin/jobs.tt:55 root/src/console/unpublished.tt:11
+#: root/src/tasks/display.tt:10 root/src/tasks/display.tt:45
+#: root/src/tasks/display.tt:68
+msgid "Status"
+msgstr "Стан"
+
+#: root/src/admin/jobs.tt:58
+msgid "Created"
+msgstr "Створено"
+
+#: root/src/admin/jobs.tt:61 root/src/include/bulk_job.tt:13
+msgid "Started"
+msgstr "Почато"
+
+#: root/src/admin/jobs.tt:64 root/src/include/bulk_job.tt:15
+msgid "Completed"
+msgstr "Завершено"
+
+#: root/src/admin/jobs.tt:67 root/src/settings/categories.tt:16
+#: root/src/settings/formats.tt:13
+msgid "Priority"
+msgstr "Пріоритет"
+
+#: root/src/admin/jobs.tt:70
+msgid "Produced"
+msgstr "Результати"
+
+#: root/src/admin/jobs.tt:76 root/src/admin/show_users.tt:9
+#: root/src/admin/show_users.tt:33 root/src/attachments/orphans.tt:24
+#: root/src/bookbuilder/index.tt:45 root/src/bookbuilder/index.tt:282
+#: root/src/category-details-edit.tt:22 root/src/console/alias_display.tt:177
+#: root/src/publish/pending.tt:21 root/src/siteadmin/show_users.tt:9
+msgid "Delete"
+msgstr "Видалити"
+
+#: root/src/admin/jobs.tt:79
+msgid "Reschedule"
+msgstr "Відкласти"
+
+#: root/src/admin/jobs.tt:85 root/src/admin/jobs.tt:86
+#: root/src/admin/jobs.tt:87 root/src/admin/jobs.tt:88
+#: root/src/admin/jobs.tt:93 root/src/admin/jobs.tt:94
+msgid "Search this column"
+msgstr "Шукати в колонці"
+
+#: root/src/admin/jobs.tt:108
+msgid "Select all for deletion"
+msgstr "Обрати всі для видалення"
+
+#: root/src/admin/jobs.tt:109
+msgid "Select all for rescheduling"
+msgstr "Обрати всі для відкладання"
+
+#: root/src/admin/list.tt:15
 msgid "Mode"
-msgstr ""
+msgstr "Режим"
 
-msgid "Moderated wiki"
-msgstr ""
-
-msgid "Mono font"
-msgstr ""
-
-msgid "More"
-msgstr ""
-
-msgid "Move down"
-msgstr ""
-
-msgid "Move up"
-msgstr ""
-
-msgid "Multilanguage: list of whitespace separated language codes"
-msgstr ""
-
-msgid "My description"
-msgstr ""
-
-msgid "N/A"
-msgstr ""
-
+#: root/src/admin/list.tt:17 root/src/attachments/list.tt:15
+#: root/src/attachments/orphans.tt:18 root/src/bookbuilder/index.tt:278
+#: root/src/console/git_display.tt:10 root/src/console/list_categories.tt:12
+#: root/src/settings/edit_format.tt:12 root/src/settings/formats.tt:9
 msgid "Name"
-msgstr ""
+msgstr "Назва"
 
-msgid "Name plural"
-msgstr ""
+#: root/src/admin/list.tt:18
+msgid "Mail from"
+msgstr "Лист від"
 
-msgid "Name singular"
-msgstr ""
-
-msgid "Network library listing screen."
-msgstr ""
-
-msgid "Never display the cover"
-msgstr ""
-
-msgid "Never generate a table of content"
-msgstr ""
-
-msgid ""
-"Never generate the standard final page with title/author/notes/logo/site name"
-msgstr ""
-
-msgid "Never show teaser and/or cover in text lists"
-msgstr ""
-
-msgid "New"
-msgstr ""
-
-msgid "New revision"
-msgstr ""
-
-msgid "New site id"
-msgstr ""
-
-msgid "Newer first"
-msgstr ""
-
-msgid "Newer texts"
-msgstr ""
-
-msgid "Next"
-msgstr ""
-
-msgid "Nice title"
-msgstr ""
-
-msgid "No"
-msgstr ""
-
-msgid "No data available in table"
-msgstr ""
-
-msgid "No editing yet!"
-msgstr ""
-
-msgid "No matching records found"
-msgstr ""
-
-msgid "No result found!"
-msgstr ""
-
-msgid "No revisions to show"
-msgstr ""
-
-msgid "No text found!"
-msgstr ""
-
-msgid "No text was added yet"
-msgstr ""
-
-msgid "None"
-msgstr ""
-
-#. ($c->loc('Save')
-msgid ""
-"Not finished yet! Please have a look at the text and then click on \"%1\" to "
-"finalize your submission!"
-msgstr ""
-
-msgid "Notes"
-msgstr ""
-
-msgid "Nothing to see here, so far"
-msgstr ""
-
-msgid "Nothing uploaded"
-msgstr ""
-
-msgid "Notify mail: blank field will disable them"
-msgstr ""
-
+#: root/src/admin/list.tt:19
 msgid "Notify to"
-msgstr ""
+msgstr "Сповістити"
 
+#: root/src/admin/list.tt:20
+msgid "Canonical name"
+msgstr "Канонічна назва"
+
+#: root/src/admin/list.tt:21
+msgid "Virtual hosts"
+msgstr "Віртуальні хости"
+
+#: root/src/admin/list.tt:82
+msgid "New site id"
+msgstr "Новий ідентифікатор сайту"
+
+#: root/src/admin/list.tt:94
+msgid "Create new site"
+msgstr "Створити сайт"
+
+#: root/src/admin/list.tt:108
+msgid "Check mail sending and send mail to:"
+msgstr "Перевірити надсилання пошти й надіслати лист:"
+
+#: root/src/admin/list.tt:114
+msgid "Send mail"
+msgstr "Надіслати лист"
+
+#. (user.username)
+#: root/src/admin/show_user_details.tt:6 root/src/user/edit.tt:5
+#: root/src/user/edit_options.tt:4
+msgid "Edit user %1"
+msgstr "Редагувати користувач_ку %1"
+
+#: root/src/admin/show_user_details.tt:12 root/src/user/create.tt:20
+#: root/src/user/edit.tt:29 root/src/user/reset_password_confirm.tt:12
+msgid "Password, minimum 8 characters."
+msgstr "Пароль, мінімум 8 символів."
+
+#: root/src/admin/show_user_details.tt:13 root/src/user/create.tt:21
+#: root/src/user/edit.tt:32 root/src/user/reset_password_confirm.tt:13
+msgid "Please do not use a valuable password."
+msgstr "Не використовуйте пароль з іншого сайту."
+
+#: root/src/admin/show_user_details.tt:20 root/src/user/create.tt:29
+#: root/src/user/edit.tt:39 root/src/user/reset_password_confirm.tt:23
+msgid "Repeat password"
+msgstr "Повторіть пароль"
+
+#: root/src/admin/show_user_details.tt:27 root/src/admin/show_users.tt:10
+#: root/src/siteadmin/show_users.tt:10 root/src/user/create.tt:37
+#: root/src/user/edit.tt:46
+msgid "Email"
+msgstr "Е-пошта"
+
+#: root/src/admin/show_user_details.tt:42 root/src/admin/show_users.tt:12
+#: root/src/siteadmin/show_users.tt:12
+msgid "Roles"
+msgstr "Ролі"
+
+#: root/src/admin/show_user_details.tt:54 root/src/admin/show_users.tt:13
+#: root/src/layout.tt:557
+msgid "Sites"
+msgstr "Сайти"
+
+#: root/src/admin/show_users.tt:1
+msgid "All users"
+msgstr "Усі користувач_ки"
+
+#: root/src/admin/show_users.tt:7 root/src/admin/show_users.tt:71
+#: root/src/siteadmin/show_users.tt:7 root/src/user/login.tt:11
+#: root/src/user/login.tt:13
+msgid "Username"
+msgstr "Логін"
+
+#: root/src/admin/show_users.tt:8 root/src/siteadmin/show_users.tt:8
+msgid "Created by"
+msgstr "Створено"
+
+#: root/src/admin/show_users.tt:40 root/src/bookbuilder/index.tt:29
+#: root/src/federation/show.tt:55 root/src/settings/categories.tt:35
+#: root/src/settings/categories.tt:41 root/src/settings/categories.tt:47
+#: root/src/settings/categories.tt:90 root/src/siteadmin/show_users.tt:39
+msgid "Yes"
+msgstr "Так"
+
+#: root/src/admin/show_users.tt:42 root/src/federation/show.tt:56
+#: root/src/settings/categories.tt:34 root/src/settings/categories.tt:40
+#: root/src/settings/categories.tt:46 root/src/settings/categories.tt:93
+#: root/src/settings/categories.tt:97 root/src/settings/categories.tt:102
+#: root/src/siteadmin/show_users.tt:41
+msgid "No"
+msgstr "Ні"
+
+#: root/src/admin/show_users.tt:63 root/src/admin/show_users.tt:77
+#: root/src/siteadmin/show_users.tt:55
+msgid "Create a new user"
+msgstr "Додати користувач_ку"
+
+#: root/src/attachments/edit.tt:17 root/src/attachments/list.tt:18
+#: root/src/bookbuilder/index.tt:101 root/src/console/unpublished.tt:10
+#: root/src/edit/newtext.tt:38 root/src/edit/preview.tt:12
+#: root/src/include/edit_node.tt:13 root/src/include/edit_node.tt:62
+#: root/src/include/preamble.tt:17 root/src/nodes/node_root.tt:42
+msgid "Title"
+msgstr "Назва"
+
+#: root/src/attachments/edit.tt:22 root/src/attachments/list.tt:21
+msgid "Alternate Text"
+msgstr "Альтернативний текст"
+
+#: root/src/attachments/edit.tt:29 root/src/category-details-edit.tt:33
+#: root/src/edit/edit.tt:136
+msgid "Toggle fullscreen editor"
+msgstr "Перемкнути повноекранний редактор"
+
+#: root/src/attachments/edit.tt:32 root/src/attachments/list.tt:24
+#: root/src/settings/edit_format.tt:25 root/src/settings/formats.tt:10
+msgid "Description"
+msgstr "Опис"
+
+#: root/src/attachments/list.tt:27 root/src/attachments/orphans.tt:21
+msgid "Thumbnail"
+msgstr "Мініатюра"
+
+#: root/src/attachments/orphans.tt:56
+msgid "Delete selected attachments"
+msgstr "Видалити обрані вкладення"
+
+#: root/src/bookbuilder/fonts.tt:6
+msgid "Click on the images to get the sample PDF"
+msgstr "Натискайте картинки, щоб відкривати PDF-зразки"
+
+#: root/src/bookbuilder/index.tt:4
+msgid "Back to the text"
+msgstr "Назад до тексту"
+
+#: root/src/bookbuilder/index.tt:17 root/src/console/alias_display.tt:35
+#: root/src/console/alias_display.tt:148 root/src/console/unpublished.tt:8
+#: root/src/edit/revs.tt:15 root/src/nodes/node_root.tt:33
+msgid "URI"
+msgstr "Ідентифікатор"
+
+#: root/src/bookbuilder/index.tt:18
+msgid "Partial selection"
+msgstr "Часткове обрання"
+
+#: root/src/bookbuilder/index.tt:19 root/src/console/alias_display.tt:154
+#: root/src/console/git_display.tt:16 root/src/publish/pending.tt:17
+msgid "Action"
+msgstr "Дія"
+
+#: root/src/bookbuilder/index.tt:38
+msgid "Move up"
+msgstr "Угору"
+
+#: root/src/bookbuilder/index.tt:41
+msgid "Move down"
+msgstr "Донизу"
+
+#: root/src/bookbuilder/index.tt:54
+msgid "Total pages"
+msgstr "Усього сторінок"
+
+#: root/src/bookbuilder/index.tt:63
+msgid "Clear the book list"
+msgstr "Очистити перелік книг"
+
+#: root/src/bookbuilder/index.tt:66
+msgid "Reset all"
+msgstr "Скинути все"
+
+#: root/src/bookbuilder/index.tt:78
+msgid "Use one of the site's formats"
+msgstr "Використати один із форматів сайту"
+
+#: root/src/bookbuilder/index.tt:95
 msgid ""
-"Now it has been aligned to the site's archive, but this means that there are "
-"some missing commits."
+"You are building a collection. Please provide a title and, optionally, any "
+"other information needed for the front cover (author, subtitle, date) and "
+"the back cover (source and notes)."
 msgstr ""
+"Ви складаєте добірку. Будь ласка, зазначте заголовок і (необов'язково) всі "
+"інші дані обох боків обкладинки: автор_ку, підзаголовок і дату; джерело й "
+"примітки."
 
-msgid "Now we are going to populate it and get it ready"
-msgstr ""
+#: root/src/bookbuilder/index.tt:101 root/src/edit/newtext.tt:39
+msgid "mandatory"
+msgstr "обов'язково"
 
-msgid "Number of jobs"
-msgstr ""
+#: root/src/bookbuilder/index.tt:111 root/src/edit/newtext.tt:56
+#: root/src/edit/preview.tt:18 root/src/include/preamble.tt:24
+msgid "Subtitle"
+msgstr "Підзаголовок"
 
-msgid "Number of latest entries to display on the RSS (an integer)"
-msgstr ""
+#: root/src/bookbuilder/index.tt:132 root/src/edit/preview.tt:39
+#: root/src/include/preamble.tt:56 root/src/publish/pending.tt:26
+msgid "Date"
+msgstr "Дата"
 
-msgid "Number of results to show on paginated pages (an integer)"
-msgstr ""
+#: root/src/bookbuilder/index.tt:143 root/src/edit/newtext.tt:157
+#: root/src/edit/preview.tt:48 root/src/include/mirror-infos.tt:24
+#: root/src/include/preamble.tt:82
+msgid "Source"
+msgstr "Джерело"
 
-msgid "OPDS"
-msgstr ""
+#: root/src/bookbuilder/index.tt:152 root/src/edit/newtext.tt:243
+#: root/src/edit/preview.tt:57 root/src/edit/revs.tt:17
+#: root/src/include/preamble.tt:91
+msgid "Notes"
+msgstr "Примітки"
 
-msgid "Older first"
-msgstr ""
+#: root/src/bookbuilder/index.tt:164
+msgid "Add a cover image (PNG or JPG)"
+msgstr "Додати картинку обкладинки (PNG чи JPG)"
 
-msgid "Older texts"
-msgstr ""
-
-msgid "On text creation, enforce user to choose the URI"
-msgstr ""
-
+#: root/src/bookbuilder/index.tt:167
 msgid ""
-"One page per sheet. This is useful only if you want to add the cropmarks"
+"A cover image was already added, but you can replace it uploading\n"
+"              a new one."
 msgstr ""
+"Картинку обкладинки вже додано, але можете замінити її, вивантаживши нову."
 
-msgid "Open wiki"
-msgstr ""
+#: root/src/bookbuilder/index.tt:175
+msgid "Remove cover image"
+msgstr "Вилучити картинку обкладинки"
 
+#: root/src/bookbuilder/index.tt:190
+msgid "You may want to use one of these images"
+msgstr "Можете використати одну з цих картинок"
+
+#: root/src/bookbuilder/index.tt:215
+msgid "Width of the cover image in percent of the text block width."
+msgstr "Ширина картинки обкладинки у відсотках ширини текстового блоку."
+
+#: root/src/bookbuilder/index.tt:236
+msgid "Build it"
+msgstr "Зібрати"
+
+#: root/src/bookbuilder/index.tt:258
 msgid "Option templates"
 msgstr ""
 
-msgid "Optional, defaults to the author directive"
-msgstr ""
-
+#. (loc('Update')
+#. (loc("Update"))
+#: root/src/bookbuilder/index.tt:261
 msgid ""
-"Or create a new revision, at your own peril. Having multiple\n"
-"          concurrent revisions means that, unless someone takes care\n"
-"          of it, only one will be chosen. You can go ahead, or retry\n"
-"          later, or, better, contact the librarians before proceeding,\n"
-"          to avoid wasting energies."
+"To save or update the templates, you need first to save\n"
+"    the options with the \"%1\" button"
 msgstr ""
 
-msgid "Or log in, if you have an account."
-msgstr ""
-
-msgid "Or provide an HTML file to upload"
-msgstr ""
-
-msgid "Or wrap it in"
-msgstr ""
-
-msgid "Ordered List"
-msgstr ""
-
-msgid "Outer margin"
-msgstr ""
-
-msgid "PDF"
-msgstr ""
-
-msgid "PDF logo"
-msgstr ""
-
-msgid "PDFs cannot be used in the body."
-msgstr ""
-
-#. ('#ATTACH')
-#. ("#ATTACH")
-msgid "PDFs not listed in the %1 directive will be stored but ignored."
-msgstr ""
-
-msgid "Page not found!"
-msgstr ""
-
-msgid "Page where to start a chapter"
-msgstr ""
-
+#: root/src/bookbuilder/index.tt:267
 msgid ""
-"Pages are not reordered. The first sheet contains\n"
-"        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
-"        This is not meant to be folded."
+"Here you can save or load your templates. The text list\n"
+"      and the cover image are excluded by the saved settings. You can\n"
+"      use this to save paper/fonts/imposition and other options."
 msgstr ""
 
+#: root/src/bookbuilder/index.tt:279
+msgid "Load"
+msgstr "Завантажити"
+
+#: root/src/bookbuilder/index.tt:280
+msgid "Rename to"
+msgstr "Перейменувати на"
+
+#: root/src/bookbuilder/index.tt:281
+msgid "Update to current settings"
+msgstr "Оновити до поточних налаштувань"
+
+#: root/src/bookbuilder/index.tt:334
+msgid "Save the current settings with a name"
+msgstr "Зберегти поточні налаштування під назвою"
+
+#: root/src/bookbuilder/index.tt:356
+msgid "No text was added yet"
+msgstr "Тексту ще не додано"
+
+#: root/src/bookbuilder/index.tt:361
 msgid ""
-"Pages are reordered, in one or more groups\n"
-"        (signatures), then folded in half. If you have more\n"
-"        signatures, you will have to bound them together like a book.\n"
-"        With this option, you may want to decide the size of the\n"
-"        signatures. This can be a fixed value (4,8,16, etc.), the\n"
-"        whole book in a single signature, or an optimized size to\n"
-"        reduce the number of blank pages."
+"With the bookbuilder you can change the layout (fonts,\n"
+"    dimensions, paper, margins) of the texts on the library. You can\n"
+"    also merge more texts to create your own booklet. Just try it!"
 msgstr ""
 
-msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
-msgstr ""
-
-msgid "Paragraph indentation in points (pt)"
-msgstr ""
-
-msgid "Paragraphs"
-msgstr ""
-
-msgid "Parent collection"
-msgstr ""
-
-msgid "Part"
-msgstr ""
-
-msgid "Part and chapter. If one side document: part."
-msgstr ""
-
-msgid "Part of"
-msgstr ""
-
-msgid "Part, for larger books only"
-msgstr ""
-
-msgid "Partial selection"
-msgstr ""
-
-msgid "Password"
-msgstr ""
-
-msgid "Password too short"
-msgstr ""
-
-msgid "Password updated"
-msgstr ""
-
-msgid "Password, minimum 8 characters."
-msgstr ""
-
-msgid "Passwords do not match"
-msgstr ""
-
-msgid "Path"
-msgstr ""
-
-msgid "Payload"
-msgstr ""
-
-msgid "Pending revisions"
-msgstr ""
-
-msgid "Picture"
-msgstr ""
-
-msgid "Place it in the body with a description:"
-msgstr ""
-
-msgid "Place it in the body without description:"
-msgstr ""
-
-msgid "Place the notes on the back of the first page, impressum-style"
-msgstr ""
-
-msgid "Plain PDF"
-msgstr ""
-
+#: root/src/bookbuilder/index.tt:366
 msgid ""
-"Please check your inbox, we tried to deliver a mail to the address you "
-"specified with a password reset link"
+"You can add texts to the bookbuilder clicking on the\n"
+"    “plus” icon near the downloads of each text. You can add and\n"
+"    remove the texts later."
 msgstr ""
 
-msgid "Please choose a text"
-msgstr ""
+#: root/src/bookbuilder/index.tt:372
+msgid "Try a random text if unsure"
+msgstr "Спробуйте довільний текст, якщо не певні"
 
-msgid "Please choose the Beamer color theme"
-msgstr ""
+#: root/src/bookbuilder/index.tt:398
+msgid "Session sharing"
+msgstr "Поділитися сеансом"
 
-msgid "Please choose the Beamer theme"
-msgstr ""
+#: root/src/bookbuilder/index.tt:403
+msgid "Your current bookbuilder token is:"
+msgstr "Ваш поточний токен конструктора:"
 
-msgid "Please choose the font size"
-msgstr ""
-
-msgid "Please choose the main font"
-msgstr ""
-
-msgid "Please choose the mono font"
-msgstr ""
-
-msgid "Please choose the sans font"
-msgstr ""
-
-msgid "Please describe shortly what you did"
-msgstr ""
-
-msgid "Please do not use a valuable password."
-msgstr ""
-
+#: root/src/bookbuilder/index.tt:407
 msgid ""
-"Please do not use higher levels (part or chapter) for short articles with "
-"sections."
+"Using this token, you can load the bookbuilder settings\n"
+"    and the text list from another computer, or share it with someone\n"
+"    else. Just write it down and then load it from another computer\n"
+"    using the following form."
 msgstr ""
+"Токен дає змогу завантажити налаштування конструктора та перелік текстів на "
+"іншому комп'ютері чи поділитися ними з кимось. Просто запишіть його й "
+"завантажте на іншому комп'ютері цією формою."
+
+#: root/src/bookbuilder/index.tt:414
+msgid ""
+"When you start a bookbuilder session, at the end of the\n"
+"    bookbuilder page you can see a token for sharing the session. You\n"
+"    can load it here from another device to resume what you were\n"
+"    doing."
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:431
+msgid "Load another session by token"
+msgstr "Завантажити інший сеанс за токеном"
+
+#: root/src/bookbuilder/index.tt:451 root/src/settings/edit_format.tt:56
+msgid "Working locally?"
+msgstr "Працюєте локально?"
+
+#: root/src/bookbuilder/schemas.tt:24
+msgid "Just packs 2 consecutives logical pages on a physical one."
+msgstr ""
+
+#: root/src/bookbuilder/schemas.tt:37 root/src/include/bbform.tt:845
+msgid ""
+"Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
+"and bound together."
+msgstr ""
+
+#: root/src/category-details-edit.tt:7 root/src/category-details.tt:15
+msgid "Update category description"
+msgstr "Оновити опис категорії"
+
+#: root/src/category-details.tt:20
+msgid "Remove this category"
+msgstr "Вилучити цю категорію"
+
+#: root/src/console/alias_display.tt:6
+msgid ""
+"Text redirections are set in the text itself, using the\n"
+"  DELETED header with this syntax"
+msgstr ""
+"Переспрямування текстів встановлюються в самих текстах за допомогою "
+"заголовка DELETED із таким синтаксисом"
+
+#: root/src/console/alias_display.tt:18
+msgid ""
+"Such an header will unpublish the text and put a\n"
+"  redirection in place, and will be listed here"
+msgstr ""
+"Такий заголовок скасує оприлюднення тексту й додасть замість нього "
+"переспрямування, яке буде згадано на цій сторінці"
+
+#: root/src/console/alias_display.tt:23
+msgid ""
+"For topics and authors redirections, you can create them\n"
+"  here"
+msgstr "Ще ви можете додати тут переспрямування тем і автор_ок"
+
+#: root/src/console/alias_display.tt:27
+msgid "Rename text URI"
+msgstr "Змінити ідентифікатор тексту"
+
+#: root/src/console/alias_display.tt:37 root/src/console/alias_display.tt:88
+#: root/src/console/alias_display.tt:97 root/src/console/alias_display.tt:120
+#: root/src/console/alias_display.tt:129
+msgid "Please select"
+msgstr "Оберіть"
+
+#: root/src/console/alias_display.tt:57
+msgid "Rename"
+msgstr "Перейменувати"
+
+#: root/src/console/alias_display.tt:65 root/src/edit/newtext.tt:24
+msgid "URI is available and valid"
+msgstr "Ідентифікатор вільний і чинний"
+
+#: root/src/console/alias_display.tt:72 root/src/edit/newtext.tt:31
+msgid ""
+"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
+"my-author-title-1"
+msgstr ""
+
+#: root/src/console/alias_display.tt:78
+msgid "Create an author alias"
+msgstr "Створити псевдонім автор_ки"
+
+#: root/src/console/alias_display.tt:86 root/src/console/alias_display.tt:118
+msgid "Alias"
+msgstr "Псевдонім"
+
+#: root/src/console/alias_display.tt:95 root/src/console/alias_display.tt:127
+msgid "Pointing to"
+msgstr "Вказує на"
+
+#: root/src/console/alias_display.tt:105 root/src/console/alias_display.tt:137
+#: root/src/edit/newtext.tt:327 root/src/nodes/node_root.tt:27
+#: root/src/nodes/node_root.tt:62
+msgid "Create"
+msgstr "Створити"
+
+#: root/src/console/alias_display.tt:110
+msgid "Create a topic alias"
+msgstr "Створити псевдонім теми"
+
+#: root/src/console/alias_display.tt:142
+msgid "Existing redirections"
+msgstr "Наявні переспрямування"
+
+#: root/src/console/alias_display.tt:151 root/src/include/mirror-infos.tt:25
+msgid "Destination"
+msgstr "Ціль"
+
+#: root/src/console/alias_display.tt:185 root/src/console/translations.tt:33
+#: root/src/nodes/display.tt:52
+msgid "Edit"
+msgstr "Редагувати"
+
+#: root/src/console/git_display.tt:13
+msgid "URL"
+msgstr ""
+
+#: root/src/console/git_display.tt:19 root/src/federation/show.tt:86
+#: root/static/js/amw-batch-upload.js:123
+msgid "Remove"
+msgstr "Вилучити"
+
+#. (remote.name)
+#: root/src/console/git_display.tt:46
+msgid "Delete remote repository %1"
+msgstr "Видалити віддалений репозиторій %1"
+
+#: root/src/console/git_display.tt:65
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
+msgstr "URL-адреса нового віддаленого репозиторію (HTTPS, HTTP чи Git)"
+
+#: root/src/console/git_display.tt:73
+msgid "Add new remote repository"
+msgstr "Додати віддалений репозиторій"
+
+#: root/src/console/git_display.tt:80
+msgid "How are you going to access Git?"
+msgstr "Який доступ до Git у вас є?"
+
+#: root/src/console/git_display.tt:85
+msgid "I have a system user with SSH access"
+msgstr "Маю системну обліковку з SSH-доступом"
+
+#: root/src/console/git_display.tt:89
+msgid "I will provide my remote repository"
+msgstr "Працюватиму через віддалений репозиторій"
+
+#: root/src/console/git_display.tt:95 root/src/console/git_display.tt:129
+msgid "Setup"
+msgstr "Початкове налаштування"
+
+#: root/src/console/git_display.tt:101 root/src/console/git_display.tt:141
+msgid "Workflow"
+msgstr "Робочий процес"
+
+#: root/src/console/git_display.tt:104 root/src/console/git_display.tt:148
+msgid "edit, commit..."
+msgstr "відредагуйте, зробіть коміт…"
+
+#: root/src/console/git_display.tt:109
+msgid "The changes will propagate automatically once you push."
+msgstr "Зміни автоматично застосовуються після виконання push."
 
 #. (amw_group_name)
+#: root/src/console/git_display.tt:110
 msgid "Please ensure that your system user is member of the \"%1\" group"
-msgstr ""
+msgstr "Переконайтесь, що ваша системна обліковка входить до групи «%1»."
 
+#: root/src/console/git_display.tt:117
 msgid ""
-"Please give us a username. It should *not* be a mail address.\n"
-"        Just a fancy name, so we can know that multiple uploads come\n"
-"        from the same person."
-msgstr ""
+"Create a public repository on GitLab, GitHub or similar services (or on your "
+"own server). "
+msgstr "Створіть загальнодоступний репозиторій на GitLab чи Codeberg тощо (або на власному сервері)."
 
+#: root/src/console/git_display.tt:120
 msgid ""
 "Please initialized it empty, without any README,license, .gitignore or "
 "similar."
+msgstr "Будь ласка, ініціалізуйте його порожнім, без README, ліценії, .gitignore чи інших файлів."
+
+#: root/src/console/git_display.tt:123
+msgid ""
+"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
+"using the form you can find above. You can have one personal repository."
+msgstr "Знайдіть URL-адресу свого репозиторію з протоколом HTTPS (як-от https://example.org/git/test) і додайте її за допомогою форми вгорі. У вас може бути один особистий репозиторій."
+
+#: root/src/console/git_display.tt:126
+msgid "Now we are going to populate it and get it ready"
+msgstr "Далі описано, як заповнити репозиторій і почати ним користуватись"
+
+#: root/src/console/git_display.tt:135
+msgid ""
+"Please replace the example URL in the next line with the real one with SSH "
+"protocol"
+msgstr "Замініть зразкову URL-адресу в наступному рядку на справжню з SSH-протоколом"
+
+#: root/src/console/git_display.tt:153
+msgid "Then fetch the updates from this page."
+msgstr "Тоді натисніть fetch угорі на цій сторінці."
+
+#: root/src/console/git_display.tt:159
+msgid "See here for the full documentation."
+msgstr "Перегляньте повну документацію."
+
+#: root/src/console/git_display.tt:160
+msgid "Read about the file naming scheme if you need to add files to the tree."
+msgstr "Якщо плануєте додавати файли в дерево, прочитайте, як слід їх називати."
+
+#: root/src/console/git_fine_diff.tt:4
+msgid "Git"
+msgstr "Git"
+
+#: root/src/console/git_fine_diff.tt:7
+msgid "Diff"
+msgstr "Різниця"
+
+#: root/src/console/git_fine_diff.tt:14
+msgid "Please choose a text"
+msgstr "Оберіть текст"
+
+#: root/src/console/git_fine_diff.tt:20 root/src/console/git_fine_diff.tt:24
+msgid "Commit ID"
+msgstr "Ідентифікатор коміту"
+
+#: root/src/console/git_fine_diff.tt:28
+msgid "Run diff"
+msgstr "Виявити різницю"
+
+#: root/src/console/list_categories.tt:11
+msgid "Type"
+msgstr "Тип"
+
+#: root/src/console/list_categories.tt:39
+msgid "Manage category types"
+msgstr "Керувати типами категорій"
+
+#: root/src/console/translations.tt:12
+msgid "Texts"
+msgstr "Тексти"
+
+#: root/src/console/translations.tt:21
+msgid "These texts are missing the unique id."
+msgstr "Цим текстам бракує унікальних ідентифікаторів."
+
+#: root/src/console/unpublished.tt:1
+msgid "List of texts on hold"
+msgstr "Перелік затриманих текстів"
+
+#: root/src/console/unpublished.tt:12 root/src/edit/edit.tt:744
+msgid "Reason"
+msgstr "Підстава"
+
+#: root/src/console/unpublished.tt:14 root/src/console/unpublished.tt:47
+msgid "Purge"
+msgstr "Стерти"
+
+#: root/src/console/unpublished.tt:61 root/src/stats/popular.tt:18
+msgid "Nothing to see here, so far"
+msgstr "Тут поки нічого нема"
+
+#: root/src/edit/diff.tt:5
+msgid "revision"
+msgstr "версія"
+
+#: root/src/edit/diff.tt:23
+msgid ""
+"Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
 
+#: root/src/edit/diff.tt:42
+msgid "Recheck"
+msgstr ""
+
+#: root/src/edit/diff.tt:51 root/src/edit/revs.tt:53
+#: root/src/publish/pending.tt:100
+msgid "No editing yet!"
+msgstr ""
+
+#: root/src/edit/edit.tt:43
+msgid "Show preview in other tab"
+msgstr ""
+
+#: root/src/edit/edit.tt:47 root/src/edit/revs.tt:50
+#: root/src/publish/pending.tt:95
+msgid "Show differences in other tab"
+msgstr ""
+
+#: root/src/edit/edit.tt:49 root/src/publish/pending.tt:24
+msgid "Changes"
+msgstr "Зміни"
+
+#: root/src/edit/edit.tt:70
+msgid "Attached images"
+msgstr "Вкладені картинки"
+
+#: root/src/edit/edit.tt:82
+msgid "As regular image in the body"
+msgstr "Звичайна картинка в основному тексті"
+
+#: root/src/edit/edit.tt:83
+msgid "As cover in the header"
+msgstr "Обкладинка в шапці"
+
+#: root/src/edit/edit.tt:90
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr ""
+
+#: root/src/edit/edit.tt:119
+msgid "Available category tags for header"
+msgstr "Доступні теги категорій для шапки"
+
+#: root/src/edit/edit.tt:141
+msgid "Refresh and apply filters"
+msgstr ""
+
+#: root/src/edit/edit.tt:151 root/src/edit/edit.tt:359
+msgid "Cheatsheet for the markup"
+msgstr "Шпаргалка про розмітку"
+
+#: root/src/edit/edit.tt:157 root/src/utils/import.tt:6
+msgid "HTML/Word Importer"
+msgstr "Імпортування HTML чи Word"
+
+#: root/src/edit/edit.tt:176
+msgid "Add an attachment"
+msgstr "Додати вкладення"
+
+#. (site.binary_upload_max_size_in_mega)
+#: root/src/edit/edit.tt:177
+msgid "max %1 Mb"
+msgstr "макс. %1 МБ"
+
+#: root/src/edit/edit.tt:190
+msgid "Upload"
+msgstr "Вивантажити"
+
+#: root/src/edit/edit.tt:198 root/static/js/amw-batch-upload.js:86
+msgid "Insert the file into the body at the cursor position"
+msgstr ""
+
+#: root/src/edit/edit.tt:206
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr ""
+
+#: root/src/edit/edit.tt:217
+msgid "Filters"
+msgstr "Фільтри"
+
+#: root/src/edit/edit.tt:218
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr "(лапки, посилання, примітки тощо)"
+
+#: root/src/edit/edit.tt:225
 msgid ""
 "Please keep in mind that filters are language-specific\n"
 "              and may or may not be available for the language of the\n"
@@ -1876,180 +2384,29 @@ msgid ""
 "              is."
 msgstr ""
 
+#: root/src/edit/edit.tt:236
+msgid "Fix typography (smart quotes)"
+msgstr "Прикрасити пунктуацію (лапки)"
+
+#: root/src/edit/edit.tt:245
+msgid "Make all links active"
+msgstr "Активувати всі посилання"
+
+#: root/src/edit/edit.tt:255
 msgid ""
-"Please keep in mind that if you see “Force publishing”\n"
-"    as action, it means that the revision has been superseded by\n"
-"    another one, so publishing this one, you'll end up reverting a\n"
-"    previous one. Try to avoid this, unless you know what you're\n"
-"    doing."
+"Unconditionally remove all the invisible non-breaking\n"
+"                spaces in the text"
 msgstr ""
 
-msgid "Please leave a mail if you want to be contacted about this change"
+#: root/src/edit/edit.tt:267
+msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
-msgid "Please note that wrapping tags must be placed on a line by themselves."
-msgstr ""
+#: root/src/edit/edit.tt:279
+msgid "Add non-breaking spaces where appropriate for the language"
+msgstr "Додати нерозривні пробіли відповідно до правил мови"
 
-msgid ""
-"Please note that you may want to paste from a\n"
-"        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
-"        from word” button. This is supposed to preserve the markup."
-msgstr ""
-
-msgid ""
-"Please note: without any prefix, protocol or hostname, just\n"
-"  the bare page name as shown above. External redirecting is not\n"
-"  supported."
-msgstr ""
-
-msgid "Please prove you are a human"
-msgstr ""
-
-msgid "Please reindex the site."
-msgstr ""
-
-msgid "Please reload your page"
-msgstr ""
-
-msgid "Please remove this file from the body first"
-msgstr ""
-
-msgid ""
-"Please replace the example URL in the next line with the real one with SSH "
-"protocol"
-msgstr ""
-
-msgid "Please select"
-msgstr ""
-
-msgid "Please select the desired fonts"
-msgstr ""
-
-msgid "Please select the signature size:"
-msgstr ""
-
-msgid ""
-"Please select the size of each page including the crop marks, before the "
-"imposing"
-msgstr ""
-
-msgid "Please set"
-msgstr ""
-
-msgid ""
-"Please set the URI you desire. Author (if present),\n"
-"        title and eventually a number if the URI already exists is\n"
-"        usually a good choice"
-msgstr ""
-
-msgid "Please setup the Beamer layout"
-msgstr ""
-
-msgid "Please upload your file again!"
-msgstr ""
-
-msgid "Poetry, bibliographies, plays, code blocks"
-msgstr ""
-
-msgid "Pointing to"
-msgstr ""
-
-msgid "Popular texts"
-msgstr ""
-
-msgid "Preferred language"
-msgstr ""
-
-msgid ""
-"Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
-"        “i.”, “I.”, depending on the list type you need."
-msgstr ""
-
-msgid "Preview"
-msgstr ""
-
-msgid "Preview box height in pixel"
-msgstr ""
-
-msgid "Previous"
-msgstr ""
-
-msgid "Priority"
-msgstr ""
-
-msgid "Private"
-msgstr ""
-
-msgid "Procedure"
-msgstr ""
-
-msgid "Processing"
-msgstr ""
-
-msgid "Produce slides."
-msgstr ""
-
-msgid "Produced"
-msgstr ""
-
-msgid "Publication date"
-msgstr ""
-
-msgid "Publication date on this site"
-msgstr ""
-
-msgid "Publish"
-msgstr ""
-
-msgid "Published in *A nice book*, published by My House, 2014"
-msgstr ""
-
-msgid "Publisher"
-msgstr ""
-
-msgid "Purge"
-msgstr ""
-
-msgid ""
-"Purging means removing it completely from the archive, not just hiding it."
-msgstr ""
-
-msgid ""
-"Put additional information here (original\n"
-"\t  title, translators, credits, etc). Footnotes go in the\n"
-"\t  body."
-msgstr ""
-
-msgid "Quarter Letter paper"
-msgstr ""
-
-msgid "Queue"
-msgstr ""
-
-msgid "Quota exceeded, too many pages"
-msgstr ""
-
-msgid "Quotes"
-msgstr ""
-
-msgid "RSS aggregator"
-msgstr ""
-
-msgid "RSS feed"
-msgstr ""
-
-msgid "Random"
-msgstr ""
-
-msgid "Read about the file naming scheme if you need to add files to the tree."
-msgstr ""
-
-msgid "Read the whole text..."
-msgstr ""
-
-msgid "Real time help"
-msgstr ""
-
+#: root/src/edit/edit.tt:290
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
 "              considering only the order in which they were inserted.\n"
@@ -2061,1326 +2418,2222 @@ msgid ""
 "              the change if footnotes are missing or are too many."
 msgstr ""
 
-msgid "Reason"
+#: root/src/edit/edit.tt:307
+msgid "Please describe shortly what you did"
+msgstr "Коротко опишіть, що ви зробили"
+
+#: root/src/edit/edit.tt:316
+msgid "Please leave a mail if you want to be contacted about this change"
+msgstr "Залиште е-пошту, щоб із вами могли зв'язатися щодо цієї зміни"
+
+#: root/src/edit/edit.tt:332
+msgid ""
+"Please give us a username. It should *not* be a mail address.\n"
+"        Just a fancy name, so we can know that multiple uploads come\n"
+"        from the same person."
 msgstr ""
 
-msgid "Reason for deletion"
-msgstr ""
-
-msgid "Rebuild"
-msgstr ""
-
-msgid "Rebuild all generated files"
-msgstr ""
-
-msgid "Rebuild formats"
-msgstr ""
-
-msgid "Rebuild the generated formats"
-msgstr ""
-
-msgid "Rebuilding"
-msgstr ""
-
-msgid "Recheck"
-msgstr ""
-
-msgid "Redirections"
-msgstr ""
-
-msgid "Refresh and apply filters"
-msgstr ""
-
-msgid "Reindex site"
-msgstr ""
-
-msgid "Related projects"
-msgstr ""
-
-#. ("$name $url")
-msgid "Remote repository %1 added"
-msgstr ""
-
-#. ($name)
-msgid "Remote repository %1 removed"
-msgstr ""
-
-msgid "Remove"
-msgstr ""
-
-msgid "Remove cover image"
-msgstr ""
-
-msgid "Remove this category"
-msgstr ""
-
-msgid "Removed Upstream"
-msgstr ""
-
-msgid "Rename"
-msgstr ""
-
-msgid "Rename text URI"
-msgstr ""
-
-msgid "Rename to"
-msgstr ""
-
-msgid "Repeat email"
-msgstr ""
-
-msgid "Repeat password"
-msgstr ""
-
-msgid "Request failed! Please report the the problem"
-msgstr ""
-
-msgid "Reschedule"
-msgstr ""
-
-msgid "Reset all"
-msgstr ""
-
-msgid "Reset filters"
-msgstr ""
-
-msgid "Reset password"
-msgstr ""
-
-#. (username)
-msgid "Reset password for user %1"
-msgstr ""
-
-msgid "Reset to site defaults"
-msgstr ""
-
-msgid "Reset your password"
-msgstr ""
-
-msgid "Restricted configuration variables"
-msgstr ""
-
-msgid "Restricted format options"
-msgstr ""
-
-msgid "Results per page:"
-msgstr ""
-
-msgid "Retrieved on DATE from URL"
-msgstr ""
-
-msgid "Retrieved on March 8, 2012 from"
-msgstr ""
-
-msgid "Revision"
-msgstr ""
-
-#. ($uri)
-msgid "Revision for %1 has been deleted"
-msgstr ""
-
-msgid "Roles"
-msgstr ""
-
-msgid "Root Collection"
-msgstr ""
-
-msgid "Run diff"
-msgstr ""
-
-msgid "Running headings"
-msgstr ""
-
-msgid "SKU"
-msgstr ""
-
-msgid "SSL CA certificate path (Apache)"
-msgstr ""
-
-msgid "SSL certificate path (Apache)"
-msgstr ""
-
-msgid "SSL chained certificate path (Nginx)"
-msgstr ""
-
-msgid "SSL configuration"
-msgstr ""
-
-msgid "SSL key path"
-msgstr ""
-
-msgid "Same as above, but for duplex printers"
-msgstr ""
-
-msgid "Same as above, for the Archive menu"
-msgstr ""
-
-msgid "Same as above, for the Related Projects menu"
-msgstr ""
-
-msgid "Sans font"
-msgstr ""
-
+#: root/src/edit/edit.tt:342
 msgid "Save"
-msgstr ""
+msgstr "Зберегти"
 
-msgid "Save the current settings with a name"
-msgstr ""
+#: root/src/edit/edit.tt:366
+msgid "Summary"
+msgstr "Підсумок"
 
-#. ($pname)
-msgid "Saved \"%1\" configuration"
-msgstr ""
+#: root/src/edit/edit.tt:368 root/src/edit/edit.tt:393
+msgid "Headings"
+msgstr "Заголовки"
 
-msgid "Search"
-msgstr ""
+#: root/src/edit/edit.tt:369 root/src/edit/edit.tt:415
+msgid "Paragraphs"
+msgstr "Абзаци"
 
-msgid "Search Engine Facets"
-msgstr ""
+#: root/src/edit/edit.tt:372
+msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr "Курсив, грубий чи моноширинний текст, код, розриви рядків…"
 
-msgid "Search filters"
-msgstr ""
+#: root/src/edit/edit.tt:375 root/src/edit/edit.tt:527
+msgid "Footnotes"
+msgstr "Примітки"
 
-msgid "Search results"
-msgstr ""
-
-msgid "Search this column"
-msgstr ""
-
+#: root/src/edit/edit.tt:376 root/src/edit/edit.tt:542
 msgid "Secondary footnotes"
 msgstr ""
 
-msgid "Section"
+#: root/src/edit/edit.tt:379
+msgid "Poetry, bibliographies, plays, code blocks"
 msgstr ""
 
-msgid "Section and subsection. If one side document: section."
+#: root/src/edit/edit.tt:382 root/src/edit/edit.tt:610
+msgid "Lists"
 msgstr ""
 
-msgid "See here for more details."
-msgstr ""
-
-msgid "See here for the full documentation."
-msgstr ""
-
-msgid "See the full manual for more details (english)"
-msgstr ""
-
-msgid "Select"
-msgstr ""
-
-msgid "Select all"
-msgstr ""
-
-msgid "Select all for deletion"
-msgstr ""
-
-msgid "Select all for rescheduling"
-msgstr ""
-
-msgid "Select individual parts for the bookbuilder"
-msgstr ""
-
-msgid "Send mail"
-msgstr ""
-
-#. ($from, $to)
-msgid "Sending test mails from %1 to %2"
-msgstr ""
-
-msgid "Separate body fields"
-msgstr ""
-
-msgid "Separate footer fields"
-msgstr ""
-
-msgid "Separate header fields"
-msgstr ""
-
-msgid "Series Name"
-msgstr ""
-
-msgid "Series Number"
-msgstr ""
-
-msgid "Session sharing"
-msgstr ""
-
-msgid "Set a date in the future if you want it deferred."
-msgstr ""
-
-msgid "Settings loaded"
-msgstr ""
-
-msgid "Setup"
-msgstr ""
-
-msgid "Show _MENU_ entries"
-msgstr ""
-
-msgid "Show cheatsheet"
-msgstr ""
-
-msgid "Show differences in other tab"
-msgstr ""
-
-msgid "Show filters"
-msgstr ""
-
-msgid "Show preview in other tab"
-msgstr ""
-
-msgid "Show text type and number of pages in the listing"
-msgstr ""
-
-msgid "Show the text infobox at the bottom of the texts"
-msgstr ""
-
-msgid "Showing 0 to 0 of 0 entries"
-msgstr ""
-
-msgid "Showing _START_ to _END_ of _TOTAL_ entries"
-msgstr ""
-
-msgid "Single bars"
-msgstr ""
-
-msgid "Site already exists"
-msgstr ""
-
-msgid "Site group"
-msgstr ""
-
-msgid "Site id"
-msgstr ""
-
-msgid "Site mail (From field)"
-msgstr ""
-
-msgid "Site mode"
-msgstr ""
-
-msgid "Site name"
-msgstr ""
-
-msgid "Site slogan"
-msgstr ""
-
-msgid "Site users"
-msgstr ""
-
-msgid "Sites"
-msgstr ""
-
-msgid "Slides"
-msgstr ""
-
-msgid "Slides (PDF)"
-msgstr ""
-
-msgid "Small Caps"
-msgstr ""
-
-msgid "So we can be sure we are not mailing passwords to random people"
-msgstr ""
-
-msgid "Some fields are missing, all are required"
-msgstr ""
-
-msgid "Some fields are too long"
-msgstr ""
-
-msgid "Some ongoing revisions were found"
-msgstr ""
-
-msgid "Sorry, too many jobs pending, please try again later!"
-msgstr ""
-
-msgid "Sorting:"
-msgstr ""
-
-msgid "Source"
-msgstr ""
-
-msgid "Source files"
-msgstr ""
-
-msgid "Source files with attachments"
-msgstr ""
-
-msgid "Source removed"
-msgstr ""
-
-msgid "Source, notes..."
-msgstr ""
-
-msgid "Sources"
-msgstr ""
-
-msgid "Special blocks"
-msgstr ""
-
-msgid "Special pages"
-msgstr ""
-
-msgid "Specify a whitespace-separated list of languages to activate it."
-msgstr ""
-
-msgid "Stale editing"
-msgstr ""
-
-msgid "Standalone HTML (printer-friendly)"
-msgstr ""
-
-msgid "Standard"
-msgstr ""
-
-msgid "Start the document with an empty page"
-msgstr ""
-
-msgid "Started"
-msgstr ""
-
-msgid "Static page without javascript"
-msgstr ""
-
-msgid "Status"
-msgstr ""
-
-msgid "Status changed"
-msgstr ""
-
-msgid "Subsection"
-msgstr ""
-
-msgid "Subsubsection or description item"
-msgstr ""
-
-msgid "Subtitle"
-msgstr ""
-
-msgid "Such URI already exists"
-msgstr ""
+#: root/src/edit/edit.tt:383 root/src/edit/edit.tt:633
+msgid "Links"
+msgstr "Посилання"
 
-msgid "Such an URI already exists"
-msgstr ""
-
-msgid ""
-"Such an header will unpublish the text and put a\n"
-"  redirection in place, and will be listed here"
-msgstr ""
-
-msgid "Such an user already exists!"
-msgstr ""
+#: root/src/edit/edit.tt:384 root/src/edit/edit.tt:647
+msgid "Images"
+msgstr "Картинки"
 
-msgid "Such username already exists"
-msgstr ""
-
-msgid "Suggested values:"
-msgstr ""
-
-msgid "Summary"
-msgstr ""
+#: root/src/edit/edit.tt:385 root/src/edit/edit.tt:670
+msgid "Tables"
+msgstr "Таблиці"
 
+#: root/src/edit/edit.tt:388 root/src/edit/edit.tt:677
 msgid "Supported directive in the header"
 msgstr ""
 
-msgid "Switch theme"
+#: root/src/edit/edit.tt:396
+msgid "Part"
+msgstr "Частина"
+
+#: root/src/edit/edit.tt:399
+msgid "Chapter"
+msgstr "Глава"
+
+#: root/src/edit/edit.tt:402 root/src/edit/edit.tt:796
+#: root/src/edit/edit.tt:800 root/src/library/bbselect.tt:48
+msgid "Section"
+msgstr "Розділ"
+
+#: root/src/edit/edit.tt:405
+msgid "Subsection"
+msgstr "Підрозділ"
+
+#: root/src/edit/edit.tt:408
+msgid "Subsubsection or description item"
 msgstr ""
 
-msgid "Table of Contents"
-msgstr ""
-
-msgid "Tables"
-msgstr ""
-
-msgid "Tag cloud with authors"
-msgstr ""
-
-msgid "Tag cloud with topics"
-msgstr ""
-
-msgid "Task"
-msgstr ""
-
-msgid "TeX options (advanced)"
-msgstr ""
-
-msgid "Teaser"
-msgstr ""
-
-msgid "Teaser image"
-msgstr ""
-
-msgid "Term"
-msgstr ""
-
-msgid "Test"
-msgstr ""
-
-msgid "Tested applications, in this order of preference"
-msgstr ""
-
-msgid "Text body only (no title, no final pages)"
-msgstr ""
-
-msgid "Text formatted with markup"
-msgstr ""
-
-msgid "Text height"
-msgstr ""
-
+#: root/src/edit/edit.tt:412
 msgid ""
-"Text redirections are set in the text itself, using the\n"
-"  DELETED header with this syntax"
+"Please do not use higher levels (part or chapter) for short articles with "
+"sections."
 msgstr ""
 
-msgid "Text width"
-msgstr ""
-
-msgid "Texts"
-msgstr ""
-
-msgid ""
-"The Beamer selections are relevant only if you activate the\n"
-"  slides output."
-msgstr ""
-
-msgid "The OPDS address for this site is:"
-msgstr ""
-
-msgid ""
-"The PDF logo value can be either an absolute path\n"
-"            or just a filename if you choose to install it in the\n"
-"            TeXlive tree. You can do so with the following commands.\n"
-"            The last one checks if the file can be found."
-msgstr ""
-
-msgid "The changes will propagate automatically once you push."
-msgstr ""
-
-#. ($uri)
-msgid "The description for %1 has been updated"
-msgstr ""
-
-msgid ""
-"The differences between the list of footnotes and references is shown below."
-msgstr ""
-
-msgid "The file uploaded is not an HTML file!"
-msgstr ""
-
-msgid "The following settings provide the defaults for each format."
-msgstr ""
-
-msgid "The following values are used to generate the webserver configuration."
-msgstr ""
-
-msgid ""
-"The generate webserver configuration will redirect\n"
-"          all the HTTP requests to HTTPS"
-msgstr ""
-
-msgid "The logo has the site name on itself"
-msgstr ""
-
-msgid "The optional subtitle"
-msgstr ""
-
-msgid ""
-"The page /special/index is twice special. It is assumed to be the\n"
-"default page to visit when loading the site’s root."
-msgstr ""
-
-msgid "The password will be mailed at this address"
-msgstr ""
-
-msgid "The reset link will expire in a hour."
-msgstr ""
-
-msgid "The revision has the following messages"
-msgstr ""
-
-msgid ""
-"The site will display the PDFs with a thumbnail at the\n"
-"        end of the document."
-msgstr ""
-
-msgid "The text structure is shown below."
-msgstr ""
-
-msgid "The text to show on the homepage preview"
-msgstr ""
-
-msgid "The text was added to the bookbuilder"
-msgstr ""
-
-msgid ""
-"The title of the document, for sorting purposes. Useful\n"
-"          if you want to strip the article, if any. A text titled “A\n"
-"          nice title” could have this set to “Nice title”, and will be\n"
-"          listed under N, not under A."
-msgstr ""
-
-msgid "The title of the document. The only mandatory directive."
-msgstr ""
-
-msgid ""
-"The webserver needs to be reconfigured. Please execute in a root shell the "
-"following commands:"
-msgstr ""
-
-msgid "The whole book in as single signature"
-msgstr ""
-
-msgid "Then approve the change as it would be a normal publishing."
-msgstr ""
-
-msgid "Then fetch the updates from this page."
-msgstr ""
-
-msgid "There are failed jobs"
-msgstr ""
-
-msgid "There are pending revisions"
-msgstr ""
-
-msgid "These texts are missing the unique id."
-msgstr ""
-
-msgid "They can be texts, special texts, authors or topics."
-msgstr ""
-
-msgid ""
-"They should be paths relative to the webserver configuration root or "
-"absolute paths (recommended)."
-msgstr ""
-
-msgid "This directive wants a whitespace separated list of filenames."
-msgstr ""
-
-msgid ""
-"This is a WYSIWYG editor. If you prefer to use\n"
-"        the wiki-like syntax leave it as is, fill the required fields\n"
-"        above and postpone the editing to the next step."
-msgstr ""
-
-msgid ""
-"This is relevant only for the generated files, where you may need to have an "
-"alternate set of fonts. It has no effect in the web application if already "
-"using a sans font."
-msgstr ""
-
-msgid "This is the caption"
-msgstr ""
-
-msgid ""
-"This mail has been sent to notify you about a new text\n"
-"creation, even if the uploading is not completed yet and the user\n"
-"still needs to finalize the upload. Another mail should follow soon.\n"
-"If this doesn't happen, it means that the uploading has been abandoned\n"
-"and you may want to check it out."
-msgstr ""
-
-msgid "This revision is already published, ignoring changes"
-msgstr ""
-
-msgid "This revision is being actively edited"
-msgstr ""
-
-msgid "This revision is being actively edited by you"
-msgstr ""
-
-msgid "This revision is being edited by someone else!"
-msgstr ""
-
-msgid "This section will not produce a slide"
-msgstr ""
-
-msgid "This setting affects only the text creation form."
-msgstr ""
-
-msgid ""
-"This site is private and mobile applications should ask for your username "
-"and\n"
-"  password to access the OPDS."
-msgstr ""
-
-msgid "This text does not exist"
-msgstr ""
-
-msgid "This text is a book"
-msgstr ""
-
-msgid "This text is an article"
-msgstr ""
-
-msgid "This text is new"
-msgstr ""
-
-msgid "This text is not available"
-msgstr ""
-
-msgid "This text is not public yet"
-msgstr ""
-
-msgid "This text is not published yet"
-msgstr ""
-
-#. (rev.is_deferred)
-msgid "This text will be deferred to %1"
-msgstr ""
-
-msgid "This user cannot be removed"
-msgstr ""
-
-msgid "Thumbnail"
-msgstr ""
-
-msgid "Title"
-msgstr ""
-
-msgid "Title and chapter. If one side document: chapter."
-msgstr ""
-
-msgid "Title and section.  If one side document: section."
-msgstr ""
-
-msgid "Title and subtitle. If one side document: title."
-msgstr ""
-
-msgid "Title for sorting"
-msgstr ""
-
-msgid "Title, author, date..."
-msgstr ""
-
-msgid "Titles"
-msgstr ""
-
-#. (pending_url)
-msgid "To apply the changes, you can visit %1"
-msgstr ""
-
-msgid "To display the PDFs, set or append the following string in the header"
-msgstr ""
-
-msgid ""
-"To preserve the whitespaces and line breakings, wrap the paragraphs with"
-msgstr ""
-
-msgid "To quickly format bibliographies wrap them in"
-msgstr ""
-
-msgid "To quickly format plays, use"
-msgstr ""
-
-msgid "To resume the editing you can visit the following URL"
-msgstr ""
-
-#. (loc('Update')
-#. (loc("Update"))
-msgid ""
-"To save or update the templates, you need first to save\n"
-"    the options with the \"%1\" button"
-msgstr ""
-
-msgid "To view the changes introduced, you can visit the following URL"
-msgstr ""
-
-msgid "Toggle"
-msgstr ""
-
-msgid "Toggle fullscreen editor"
-msgstr ""
-
-msgid "Top margin"
-msgstr ""
-
-msgid "Topic"
-msgstr ""
-
-msgid "Topics"
-msgstr ""
-
-msgid "Total pages"
-msgstr ""
-
-msgid "Triple bars"
-msgstr ""
-
-msgid "Try a random text if unsure"
-msgstr ""
-
-msgid ""
-"Turn links to images into images (affects site display only, static formats "
-"have the link)"
-msgstr ""
-
-msgid ""
-"Turn links without description to YouTube, Vimeo,\n"
-"            Gmaps into widgets (affects site display only, static\n"
-"            formats have the link)"
-msgstr ""
-
-msgid "Two side layout"
-msgstr ""
-
-msgid "Type"
-msgstr ""
-
-msgid "URI"
-msgstr ""
-
-msgid "URI is available and valid"
-msgstr ""
-
-msgid ""
-"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
-"my-author-title-1"
-msgstr ""
-
-msgid "URL"
-msgstr ""
-
-msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
-msgstr ""
-
-msgid "URL pointing to an embeddable webchat"
-msgstr ""
-
-msgid "UTC"
-msgstr ""
-
-msgid "Unable to load the bookbuilder session"
-msgstr ""
-
-#. ($from || "NO MAIL FROM", $to)
-msgid "Unable to send mail from %1 to %2!"
-msgstr ""
-
-msgid "Unbranded PDF (hide site name, logo, etc.)"
-msgstr ""
-
-msgid ""
-"Unconditionally remove all the invisible non-breaking\n"
-"                spaces in the text"
-msgstr ""
-
-#. (shared)
-msgid ""
-"Unfortunately, the shared repository located at %1 appeared out of sync."
-msgstr ""
-
-msgid "Unique ID for the text"
-msgstr ""
-
-msgid "Unlimited"
-msgstr ""
-
-msgid "Unordered List"
-msgstr ""
-
-msgid "Unpublished texts"
-msgstr ""
-
-#. ($mime_type)
-#. ($mime)
-msgid "Unsupported file type %1"
-msgstr ""
-
-msgid "Unused attachment"
-msgstr ""
-
-msgid "Update"
-msgstr ""
-
-msgid "Update account info"
-msgstr ""
-
-msgid "Update category description"
-msgstr ""
-
-msgid "Update to current settings"
-msgstr ""
-
-msgid "Upload"
-msgstr ""
-
-msgid "Upload the image and note its name. Files are always renamed."
-msgstr ""
-
-msgid ""
-"Uploaded and available images are shown and listed below the text preview."
-msgstr ""
+#: root/src/edit/edit.tt:417
+msgid "A blank line (or more blank lines) starts a new paragraph."
+msgstr "Порожній рядок (один або більше) починає новий абзац."
 
-msgid "Url"
-msgstr ""
-
-msgid "Use JS syntax highlight for code blocks"
-msgstr ""
-
-msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
-msgstr ""
-
-msgid "Use SSL for authenticated users"
-msgstr ""
-
-msgid "Use it as a teaser image adding to the header this line:"
-msgstr ""
-
-msgid "Use named table of contents anchors instead of numeric ones"
-msgstr ""
-
-msgid "Use one of the site's formats"
-msgstr ""
-
-#. (sign)
-msgid "Use optimized signatures with %1 pages each"
-msgstr ""
-
-msgid "Use sans fonts for section titles"
-msgstr ""
-
-msgid "Use the image as cover"
-msgstr ""
-
-msgid "Use the site locale"
-msgstr ""
-
-msgid "Useful HTML snippets"
-msgstr ""
-
-msgid ""
-"Useful for footnotes or in the headers of the document, where you cannot put "
-"a blank line to mark a new paragraph."
-msgstr ""
-
-#. ($user->username)
-msgid "User %1 created!"
-msgstr ""
-
-#. ($user->username)
-#. ($c->stash->{user}->username)
-msgid "User %1 deleted"
-msgstr ""
-
-#. ($user->username)
-msgid "User %1 updated"
-msgstr ""
-
-msgid "User created"
-msgstr ""
-
-msgid "Username"
-msgstr ""
+#: root/src/edit/edit.tt:420
+msgid "A line which starts with 2 or more whitespaces is a quotation."
+msgstr "Рядок, що починається з 2 чи більше пробілів, — це цитата."
 
-msgid "Username, alphanumerical only, no special characters, no uppercase"
-msgstr ""
-
-msgid "Users"
-msgstr ""
-
-msgid ""
-"Using this token, you can load the bookbuilder settings\n"
-"    and the text list from another computer, or share it with someone\n"
-"    else. Just write it down and then load it from another computer\n"
-"    using the following form."
-msgstr ""
-
-msgid ""
-"Usually this is due to high traffic and bad luck, and it can be fixed by "
-"pushing the changes again."
-msgstr ""
-
-msgid "Verbatim block"
-msgstr ""
-
-msgid "View history"
-msgstr ""
-
-msgid "Virtual hosts"
-msgstr ""
-
-msgid "Virtual hosts, one per line"
-msgstr ""
-
-msgid "What links here"
-msgstr ""
-
-msgid ""
-"When creating a new text, do not populate the publication date if not "
-"provided by the user."
-msgstr ""
-
-msgid ""
-"When you start a bookbuilder session, at the end of the\n"
-"    bookbuilder page you can see a token for sharing the session. You\n"
-"    can load it here from another device to resume what you were\n"
-"    doing."
-msgstr ""
-
-msgid "When you upload a PDF, split it into images to be inserted in the body"
-msgstr ""
-
-msgid "Where does this text come from?"
-msgstr ""
-
-msgid "Whitelisted IP (for backup, one per line)"
-msgstr ""
+#: root/src/edit/edit.tt:421 root/src/edit/edit.tt:424
+#: root/src/edit/edit.tt:428
+msgid "Or wrap it in"
+msgstr "Чи обгорніть його"
 
-msgid "Width of the cover image in percent of the text block width."
-msgstr ""
-
-msgid "Width:"
-msgstr ""
-
-msgid ""
-"With complex structures, e.g., a chapter with\n"
-"      subsections, selecting only the chapter is likely to select only\n"
-"      the chapter's title, so probably you want to select the chapter\n"
-"      and all its subsections."
-msgstr ""
-
-msgid ""
-"With the \"verbatim\" tag you can avoid the markup to\n"
-"          be interpreted, usually not needed"
-msgstr ""
-
-msgid ""
-"With the bookbuilder you can change the layout (fonts,\n"
-"    dimensions, paper, margins) of the texts on the library. You can\n"
-"    also merge more texts to create your own booklet. Just try it!"
-msgstr ""
+#: root/src/edit/edit.tt:423
+msgid "A line which starts with 6 or more whitespaces is centered."
+msgstr "Рядок, що починається з 6 чи більше пробілів, — центрується."
 
-msgid "Workflow"
+#: root/src/edit/edit.tt:427
+msgid "A line which starts with 20 or more whitespaces is right-aligned."
 msgstr ""
+"Рядок, що починається з 20 чи більше пробілів, — вирівнюється за правим "
+"краєм."
 
-msgid "Working locally?"
+#: root/src/edit/edit.tt:433 root/src/edit/edit.tt:571
+msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
 
+#: root/src/edit/edit.tt:435 root/src/edit/edit.tt:573
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
 "          which require leading space (notably, you cannot use them in\n"
 "          lists)."
 msgstr ""
 
-msgid "Wrong answer!"
+#: root/src/edit/edit.tt:440 root/src/edit/edit.tt:445
+#: root/src/edit/edit.tt:448 root/src/edit/edit.tt:453
+#: root/src/edit/edit.tt:456 root/src/edit/edit.tt:461
+#: root/src/utils/import.tt:25
+msgid "Text formatted with markup"
 msgstr ""
 
-msgid "Wrong username or password"
+#: root/src/edit/edit.tt:442 root/src/edit/edit.tt:450
+#: root/src/edit/edit.tt:458 root/src/edit/edit.tt:467
+#: root/src/edit/edit.tt:473 root/src/edit/edit.tt:479
+#: root/src/edit/edit.tt:485 root/src/edit/edit.tt:559
+#: root/src/edit/edit.tt:560 root/src/edit/edit.tt:638
+msgid "or"
 msgstr ""
 
-msgid "XeLaTeX source"
+#: root/src/edit/edit.tt:463
+msgid "Inline elements"
 msgstr ""
 
-msgid "Yes"
+#: root/src/edit/edit.tt:467 root/src/edit/edit.tt:469
+msgid "emphasis"
 msgstr ""
 
+#: root/src/edit/edit.tt:473 root/src/edit/edit.tt:475
+msgid "strong emphasis"
+msgstr ""
+
+#: root/src/edit/edit.tt:479 root/src/edit/edit.tt:480
+#: root/src/edit/edit.tt:482
+msgid "very strong emphasis"
+msgstr ""
+
+#: root/src/edit/edit.tt:485 root/src/edit/edit.tt:486
+#: root/src/edit/edit.tt:488
+msgid "code and monospace"
+msgstr ""
+
+#: root/src/edit/edit.tt:491
+msgid "Force a line break."
+msgstr ""
+
+#: root/src/edit/edit.tt:492
+msgid ""
+"Useful for footnotes or in the headers of the document, where you cannot put "
+"a blank line to mark a new paragraph."
+msgstr ""
+
+#: root/src/edit/edit.tt:494 root/src/edit/edit.tt:497
+msgid "subscript"
+msgstr "нижній регістр"
+
+#: root/src/edit/edit.tt:495 root/src/edit/edit.tt:498
+msgid "superscript"
+msgstr "верхній регістр"
+
+#: root/src/edit/edit.tt:496 root/src/edit/edit.tt:499
+msgid "overstriked"
+msgstr "закреслення"
+
+#: root/src/edit/edit.tt:502 root/src/edit/edit.tt:505
+msgid "markup *not* interpreted"
+msgstr ""
+
+#: root/src/edit/edit.tt:508
+msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr ""
+
+#: root/src/edit/edit.tt:513 root/src/edit/edit.tt:514
+msgid "Small Caps"
+msgstr ""
+
+#: root/src/edit/edit.tt:521
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
+
+#: root/src/edit/edit.tt:530
+msgid ""
+"In the text, a number within square brackets is interpreted as a\n"
+"          footnote reference, if such footnote exists."
+msgstr ""
+
+#: root/src/edit/edit.tt:532 root/src/edit/edit.tt:538
+#: root/src/edit/edit.tt:551 root/src/edit/edit.tt:553
+#: root/src/include/edit_node.tt:94 root/src/include/edit_node.tt:103
+msgid "Example"
+msgstr "Зразок"
+
+#: root/src/edit/edit.tt:535
+msgid ""
+"A footnote is a line which starts with a number between square\n"
+"          brackets, with no leading whitespace."
+msgstr ""
+"Примітка — це рядок, що починається з числа в квадратних дужках без пробілів "
+"на початку."
+
+#: root/src/edit/edit.tt:544
+msgid ""
+"It is possible to have an additional set of\n"
+"          footnotes which you use to annote the text (e.g. critical\n"
+"          editions or translator's notes). They work the same way as\n"
+"          the regular footnotes, but they use curly brackets instead\n"
+"          of square brackets. Placing secondary footnote references\n"
+"          inside a regular footnote is permitted."
+msgstr ""
+
+#: root/src/edit/edit.tt:555
+msgid "Special blocks"
+msgstr "Особливі блоки"
+
+#: root/src/edit/edit.tt:557
+msgid ""
+"To preserve the whitespaces and line breakings, wrap the paragraphs with"
+msgstr ""
+
+#: root/src/edit/edit.tt:558
+msgid "for poetry"
+msgstr ""
+
+#: root/src/edit/edit.tt:560
+msgid "for code, monospaced"
+msgstr ""
+
+#: root/src/edit/edit.tt:563
+msgid "To quickly format bibliographies wrap them in"
+msgstr ""
+
+#: root/src/edit/edit.tt:565
+msgid "To quickly format plays, use"
+msgstr ""
+
+#: root/src/edit/edit.tt:567
+msgid "In both case you will get a reverse indentation."
+msgstr ""
+
+#: root/src/edit/edit.tt:612
+msgid ""
+"All kind of lists start with one or more leading\n"
+"        whitespace."
+msgstr "Списки будь-якого виду починаються з одного чи більше пробілів."
+
+#: root/src/edit/edit.tt:616 root/src/edit/edit.tt:617
+msgid "unordered item"
+msgstr "маркований список"
+
+#: root/src/edit/edit.tt:619 root/src/edit/edit.tt:620
+msgid "ordered item"
+msgstr "нумерований список"
+
+#: root/src/edit/edit.tt:622 root/src/edit/edit.tt:623
+msgid "Description item"
+msgstr ""
+
+#: root/src/edit/edit.tt:622 root/src/edit/edit.tt:623
+msgid "Term"
+msgstr "Термін"
+
+#: root/src/edit/edit.tt:626
+msgid ""
+"Description lists use a double colon to separate the\n"
+"        term and the description."
+msgstr ""
+
+#: root/src/edit/edit.tt:630
+msgid ""
+"Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
+"        “i.”, “I.”, depending on the list type you need."
+msgstr ""
+
+#: root/src/edit/edit.tt:635
+msgid "Make a link clickable"
+msgstr "Активувати посилання"
+
+#: root/src/edit/edit.tt:636
+msgid "displayed text"
+msgstr "показаний текст"
+
+#: root/src/edit/edit.tt:637
+msgid "with description"
+msgstr "з описом"
+
+#: root/src/edit/edit.tt:639
+msgid "without description"
+msgstr "без опису"
+
+#: root/src/edit/edit.tt:643
+msgid ""
+"You can also link to a part of the text. Please refer to the manual for this "
+"feature"
+msgstr ""
+
+#: root/src/edit/edit.tt:649
+msgid "Upload the image and note its name. Files are always renamed."
+msgstr ""
+
+#: root/src/edit/edit.tt:650
+msgid ""
+"Uploaded and available images are shown and listed below the text preview."
+msgstr ""
+
+#: root/src/edit/edit.tt:653
+msgid "Place it in the body without description:"
+msgstr ""
+
+#: root/src/edit/edit.tt:654 root/src/edit/edit.tt:657
+#: root/src/edit/edit.tt:660
+msgid "image"
+msgstr "картинка"
+
+#: root/src/edit/edit.tt:656
+msgid "Place it in the body with a description:"
+msgstr ""
+
+#: root/src/edit/edit.tt:657
+msgid "My description"
+msgstr "Мій опис"
+
+#: root/src/edit/edit.tt:659
+msgid "Use it as a teaser image adding to the header this line:"
+msgstr ""
+
+#: root/src/edit/edit.tt:662
+msgid ""
+"If you use it as a teaser image, the image will also\n"
+"      be placed on the first page of the PDF. You can set its width\n"
+"      adding the following line to the header, where the value is the\n"
+"      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
+"      on"
+msgstr ""
+
+#: root/src/edit/edit.tt:672
+msgid "Separate footer fields"
+msgstr ""
+
+#: root/src/edit/edit.tt:672
+msgid "Triple bars"
+msgstr ""
+
+#: root/src/edit/edit.tt:673
+msgid "Double bars"
+msgstr ""
+
+#: root/src/edit/edit.tt:673
+msgid "Separate header fields"
+msgstr ""
+
+#: root/src/edit/edit.tt:674
+msgid "Separate body fields"
+msgstr ""
+
+#: root/src/edit/edit.tt:674
+msgid "Single bars"
+msgstr ""
+
+#: root/src/edit/edit.tt:675
+msgid "This is the caption"
+msgstr ""
+
+#: root/src/edit/edit.tt:680
+#, fuzzy
+msgid "A nice title"
+msgstr "м. Київ"
+
+#: root/src/edit/edit.tt:681
+msgid "The title of the document. The only mandatory directive."
+msgstr ""
+
+#: root/src/edit/edit.tt:684
+msgid "First Author and Second Author"
+msgstr ""
+
+#: root/src/edit/edit.tt:685
+msgid "the author of the text (as displayed)"
+msgstr ""
+
+#: root/src/edit/edit.tt:689
+msgid "First Author, Second Author"
+msgstr ""
+
+#: root/src/edit/edit.tt:691
+msgid "Authors for indexing"
+msgstr "Автор_ки для індексування"
+
+#: root/src/edit/edit.tt:692 root/src/edit/edit.tt:707
+#: root/src/edit/newtext.tt:107
+msgid "Comma or semicolon separated list"
+msgstr "Перелік через кому чи крапку з комою"
+
+#: root/src/edit/edit.tt:693
+msgid "Optional, defaults to the author directive"
+msgstr ""
+
+#: root/src/edit/edit.tt:696
+#, fuzzy
+msgid "Nice title"
+msgstr "Київ"
+
+#: root/src/edit/edit.tt:697
+#, fuzzy
+msgid ""
+"The title of the document, for sorting purposes. Useful\n"
+"          if you want to strip the article, if any. A text titled “A\n"
+"          nice title” could have this set to “Nice title”, and will be\n"
+"          listed under N, not under A."
+msgstr ""
+"Назва документу при сортуванні. Корисно, якщо слід вилучити артикль. "
+"Наприклад, якщо для тексту «м. Київ» вказати тут «Київ», його буде віднесено "
+"до літери К, а не М."
+
+#: root/src/edit/edit.tt:703
+msgid "The optional subtitle"
+msgstr "Необов'язковий підзаголовок"
+
+#: root/src/edit/edit.tt:706
+msgid "topic"
+msgstr "тема"
+
+#: root/src/edit/edit.tt:711 root/src/edit/newtext.tt:133
+msgid "Date of the original publication"
+msgstr "Коли вийшов оригінал"
+
+#: root/src/edit/edit.tt:714
+msgid "Published in *A nice book*, published by My House, 2014"
+msgstr ""
+
+#: root/src/edit/edit.tt:716
+msgid ""
+"Additional information (full date, original title, translators, credits, "
+"etc)."
+msgstr ""
+"Додаткові відомості (повна дата, назва в оригіналі, перекладач_ки, подяки "
+"тощо)."
+
+#: root/src/edit/edit.tt:719
+msgid "Retrieved on March 8, 2012 from"
+msgstr ""
+
+#: root/src/edit/edit.tt:720
+msgid "Where does this text come from?"
+msgstr ""
+
+#: root/src/edit/edit.tt:724
+msgid "Language code of the document (2 or 3 letters). "
+msgstr ""
+
+#: root/src/edit/edit.tt:728
+msgid ""
+"If this line\n"
+"          is present, set the publication date (on this site) to the\n"
+"          date. The date may also be in the future, deferring the\n"
+"          publication. If this line is not present, the publication\n"
+"          date will be the time of the publishing, triggering a bump\n"
+"          on RSS and special pages at each editing."
+msgstr ""
+
+#: root/src/edit/edit.tt:736
+msgid ""
+"It is recommended to always set a publication\n"
+"                    date, so the system does not need to rely on the\n"
+"                    file timestamp. Also, you should bump the\n"
+"                    publication date only on major editing, leaving it\n"
+"                    untouched for minor ones."
+msgstr ""
+
+#: root/src/edit/edit.tt:744
+msgid ""
+"If this line is\n"
+"          present and the reason is set to something, the text will be\n"
+"          stored in the archive, but will not be published."
+msgstr ""
+
+#: root/src/edit/edit.tt:750
+msgid "If this line is present, do not display the table of contents."
+msgstr ""
+
+#: root/src/edit/edit.tt:754 root/src/include/bbform.tt:566
+msgid "Continuous footnote numbering across the whole document."
+msgstr ""
+
+#: root/src/edit/edit.tt:758 root/src/include/bbform.tt:636
+msgid "Center the chapter titles."
+msgstr ""
+
+#: root/src/edit/edit.tt:762 root/src/include/bbform.tt:643
+msgid "Center all the sectioning titles."
+msgstr ""
+
+#: root/src/edit/edit.tt:766
+msgid "This directive wants a whitespace separated list of filenames."
+msgstr ""
+
+#. ('#ATTACH')
+#. ("#ATTACH")
+#: root/src/edit/edit.tt:767
+msgid "PDFs not listed in the %1 directive will be stored but ignored."
+msgstr ""
+
+#: root/src/edit/edit.tt:768
+msgid "PDFs cannot be used in the body."
+msgstr ""
+
+#: root/src/edit/edit.tt:769
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr ""
+
+#: root/src/edit/edit.tt:773
+msgid ""
+"If present, hide the\n"
+"          generated formats and the information box. This makes sense\n"
+"          with attachments, when the text version is poor or not\n"
+"          available and more relevance should be given to the attached\n"
+"          files."
+msgstr ""
+
+#: root/src/edit/edit.tt:781
+msgid ""
+"If this line is present, do not create a title page,\n"
+"          but instead start the text on the very first page and\n"
+"          produce a PDF styled like an article (chapters and parts\n"
+"          will not start on a new page)."
+msgstr ""
+
+#: root/src/edit/edit.tt:789
+msgid ""
+"Also produce slides\n"
+"          from the document. Each section, no matter how deep, will\n"
+"          produce a slide. The text outside a section is ignored, so\n"
+"          if you do not have sections, you will get empty slides. If\n"
+"          you want to exclude a section, put a comment in the section\n"
+"          body with the string “noslide”."
+msgstr ""
+"Також робити слайди з документу. Кожен розділ незалежно від глибини матиме "
+"свій слайд. Текст за межами розділів пропускається, тож за відсутності "
+"розділів будуть порожні слайди. Щоб пропустити певний розділ, додайте в "
+"основний текст розділу коментар із рядком «noslide»."
+
+#: root/src/edit/edit.tt:798
+msgid "First slide"
+msgstr ""
+
+#: root/src/edit/edit.tt:804
+msgid "This section will not produce a slide"
+msgstr ""
+
+#: root/src/edit/edit.tt:810
+msgid "See the full manual for more details (english)"
+msgstr ""
+
+#: root/src/edit/newtext.tt:12 root/src/edit/newtext.tt:282
+msgid "Desired URI"
+msgstr "Бажаний ідентифікатор"
+
+#: root/src/edit/newtext.tt:13
+msgid ""
+"Please set the URI you desire. Author (if present),\n"
+"        title and eventually a number if the URI already exists is\n"
+"        usually a good choice"
+msgstr ""
+
+#: root/src/edit/newtext.tt:48
+msgid ""
+"If by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+"Якщо вже існує текст із такими ж автор_кою й назвою, оберіть бажане "
+"посилання за допомогою поля внизу, вказавши автор_ку, назву та номер, "
+"наприклад my-author-my-title-1"
+
+#: root/src/edit/newtext.tt:66
+msgid "Title for sorting"
+msgstr "Назва для сортування"
+
+#: root/src/edit/newtext.tt:71
+msgid ""
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr "Може бути доречно вилучити артиклі з початку назви"
+
+#: root/src/edit/newtext.tt:78
+msgid "for display"
+msgstr "для показу"
+
+#: root/src/edit/newtext.tt:117
+msgid "Categories"
+msgstr "Категорії"
+
+#: root/src/edit/newtext.tt:163
+msgid "For texts from the internet use"
+msgstr "Формат для текстів з інтернету"
+
+#: root/src/edit/newtext.tt:164
+msgid "Retrieved on DATE from URL"
+msgstr "Отримано ДАТА з ПОСИЛАННЯ"
+
+#: root/src/edit/newtext.tt:171
+msgid "Unique ID for the text"
+msgstr "Унікальний ідентифікатор тексту"
+
+#: root/src/edit/newtext.tt:198
+msgid ""
+"Every\n"
+"        section will generate a slide. You need to do proper\n"
+"        sectioning for this to work."
+msgstr ""
+"Кожен розділ стане слайдом. Коректно сформуйте розділи, щоб це спрацювало."
+
+#: root/src/edit/newtext.tt:198
+msgid "Produce slides."
+msgstr "Зробити слайди."
+
+#: root/src/edit/newtext.tt:205
+msgid "Main text"
+msgstr "Основний текст"
+
+#: root/src/edit/newtext.tt:208
+msgid ""
+"Please note that you may want to paste from a\n"
+"        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
+"        from word” button. This is supposed to preserve the markup."
+msgstr ""
+"Для документів у форматах Word/OpenOffice/LibreOffice/HTML є сенс "
+"використовувати кнопку «Вставити з Word». Це збереже розмітку."
+
+#: root/src/edit/newtext.tt:213
+msgid ""
+"This is a WYSIWYG editor. If you prefer to use\n"
+"        the wiki-like syntax leave it as is, fill the required fields\n"
+"        above and postpone the editing to the next step."
+msgstr ""
+"Це графічний редактор. Якщо бажаєте використати вікі-синтаксис, не чіпайте "
+"його, а лише заповніть обов'язкові поля вгорі й відкладіть редагування до "
+"наступного кроку."
+
+#: root/src/edit/newtext.tt:218
+msgid ""
+"Image uploading may be done on the next step, when you can\n"
+"        review and preview the upload."
+msgstr ""
+"Вивантажити картинки можна на наступному кроці, де ви також зможете "
+"відредагувати вивантажений текст і переглянути результат."
+
+#: root/src/edit/newtext.tt:222
+msgid ""
+"Keep in mind that unusually\n"
+"        complex formatting will be stripped. Is it possible to add\n"
+"        tables and images only on the next step."
+msgstr ""
+"Зауважте, що незвично складне форматування буде вилучено. Додати таблиці й "
+"картинки можна лише на наступному кроці."
+
+#: root/src/edit/newtext.tt:234
+msgid "Or provide an HTML file to upload"
+msgstr "Або вивантажте HTML-файл"
+
+#: root/src/edit/newtext.tt:237
+msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr ""
+"Якщо маєте файл .doc чи .odt, його легко конвертувати: збережіть його як HTML"
+
+#: root/src/edit/newtext.tt:245
+msgid ""
+"Put additional information here (original\n"
+"\t  title, translators, credits, etc). Footnotes go in the\n"
+"\t  body."
+msgstr ""
+"Наведіть тут додаткові відомості: назву в оригіналі, перекладач_ок, подяки "
+"тощо. Примітки мають бути в основному тексті."
+
+#: root/src/edit/newtext.tt:260 root/src/edit/preview.tt:77
+#: root/src/edit/preview.tt:82
+msgid "Teaser"
+msgstr ""
+
+#: root/src/edit/newtext.tt:262
+msgid "The text to show on the homepage preview"
+msgstr ""
+
+#: root/src/edit/newtext.tt:267
+msgid "Leave this empty to have it automatically generated"
+msgstr "Залиште порожнім, щоб згенерувати автоматично"
+
+#: root/src/edit/newtext.tt:283
+msgid "automatically generated if not present, using author and title"
+msgstr "якщо пропустити, генерується автоматично з автор_ки й назви"
+
+#: root/src/edit/newtext.tt:290
+msgid "Get generated URI"
+msgstr "Згенерувати ідентифікатор"
+
+#: root/src/edit/newtext.tt:294
+msgid ""
+"An URI is a string which uniquely identifies the text\n"
+"      in the archive. In theory, it could be anything, but if you want\n"
+"      to set it yourself, please stick with the convention: author\n"
+"      name, title, language, eventual number for disambiguation, e.g.\n"
+"      errico-malatesta-anarchy-2. Please note that this is normally\n"
+"      not needed"
+msgstr ""
+"Ідентифікатор — це рядок, якому відповідає один і лише один текст в архіві. "
+"Теоретично він може бути довільним, але якщо бажаєте обрати його самостійно, "
+"будь ласка, дотримуйтеся домовленості: ім'я автор_ки, назва, мова й номер "
+"для усунення багатозначності — наприклад, errico-malatesta-anarchy-2. "
+"Зауважте, зазвичай цього не роблять вручну"
+
+#: root/src/edit/newtext.tt:305
+msgid "Publication date on this site"
+msgstr "Дата оприлюднення на цьому сайті"
+
+#: root/src/edit/newtext.tt:311
+msgid "Leave it blank if you want it published right away."
+msgstr "Залиште порожньою, щоб оприлюднити одразу."
+
+#: root/src/edit/newtext.tt:312
+msgid "Set a date in the future if you want it deferred."
+msgstr "Оберіть майбутню дату, щоб відкласти."
+
+#: root/src/edit/newtext.tt:318
+msgid ""
+"Keep in mind that I’m cleaning the text and give it\n"
+"        back to you in the markup used on this site. It’s up to you to\n"
+"        check it and finally upload it. Some rarely used markup will\n"
+"        be lost in the process. Please check the preview on the next\n"
+"        step, where you can also insert images."
+msgstr ""
+"Зауважте, текст буде очищено й показано вам ще раз у «рідній» розмітці "
+"сайту. Вам слід буде його перевірити й остаточно вивантажити. Деяку рідко "
+"вживану розмітку буде вилучено. На наступному кроці ви зможете переглянути "
+"результат і вставити картинки."
+
+#: root/src/edit/newtext.tt:334
+msgid "Assign text to collections"
+msgstr ""
+
+#: root/src/edit/preview.tt:83
+msgid "Automatically generated"
+msgstr "Згенеровано автоматично"
+
+#: root/src/edit/preview.tt:88
+msgid "Teaser image"
+msgstr ""
+
+#: root/src/edit/preview.tt:95
+msgid "Colophon (displayed in the generated files):"
+msgstr ""
+
+#: root/src/edit/revs.tt:9
+msgid "Some ongoing revisions were found"
+msgstr ""
+
+#: root/src/edit/revs.tt:10
+msgid "You may want to resume the editing of one of them"
+msgstr ""
+
+#: root/src/edit/revs.tt:16 root/src/include/mirror-infos.tt:27
+msgid "Last updated"
+msgstr "Востаннє оновлено"
+
+#: root/src/edit/revs.tt:18
+msgid "Differences"
+msgstr "Відмінності"
+
+#: root/src/edit/revs.tt:29 root/src/publish/pending.tt:109
+msgid "UTC"
+msgstr ""
+
+#: root/src/edit/revs.tt:35
+msgid "This revision is being actively edited by you"
+msgstr "Ви вже редагуєте десь цю версію"
+
+#: root/src/edit/revs.tt:37
+msgid "This revision is being actively edited"
+msgstr "Цю версію зараз редагують"
+
+#: root/src/edit/revs.tt:41
+msgid "Abandoned editing in progress, feel free to check the diff and resume"
+msgstr "Є незавершене редагування, можете проглянути відмінності й підсумок"
+
+#: root/src/edit/revs.tt:63
+msgid ""
+"Or create a new revision, at your own peril. Having multiple\n"
+"          concurrent revisions means that, unless someone takes care\n"
+"          of it, only one will be chosen. You can go ahead, or retry\n"
+"          later, or, better, contact the librarians before proceeding,\n"
+"          to avoid wasting energies."
+msgstr ""
+"Або створіть нову версію на свій ризик. Коли є кілька паралельних версій, "
+"зазвичай їх не зводять вручну, а обирають одну з них. Можете продовжити "
+"попри це чи повернутися згодом, але краще домовитися про подальші дії з "
+"упорядни_цями бібліотеки, щоб не марнувати нічиїх зусиль."
+
+#: root/src/edit/revs.tt:73
+msgid "New revision"
+msgstr "Нова версія"
+
+#: root/src/edit/revs.tt:80
+msgid ""
+"You can't create a new revision because the text has not been published yet"
+msgstr ""
+
+#: root/src/federation/show.tt:7 root/src/federation/show.tt:105
+msgid "Local pages"
+msgstr "Локальні сторінки"
+
+#: root/src/federation/show.tt:28
+msgid "Details"
+msgstr "Деталі"
+
+#: root/src/federation/show.tt:29
+msgid "Domain"
+msgstr "Домен"
+
+#: root/src/federation/show.tt:30
+msgid "Path"
+msgstr "Шлях"
+
+#: root/src/federation/show.tt:31
+msgid "Files"
+msgstr "Файли"
+
+#: root/src/federation/show.tt:61
+msgid "Toggle"
+msgstr "Перемкнути"
+
+#: root/src/federation/show.tt:67
+msgid "Check"
+msgstr "Активувати"
+
+#: root/src/federation/show.tt:80
+msgid "Fetch"
+msgstr "Завантажити"
+
+#: root/src/federation/show.tt:97
+msgid "Add"
+msgstr "Додати"
+
+#: root/src/git/git.tt:2
+msgid "Archive history"
+msgstr "Історія архіву"
+
+#: root/src/help/faq.tt:6 root/src/help/faq.tt:15
+msgid "How do I create a special page?"
+msgstr "Як створити особливу сторінку?"
+
+#: root/src/help/faq.tt:7 root/src/help/faq.tt:20
+msgid "How do I modify a special page?"
+msgstr "Як відредагувати особливу сторінку?"
+
+#: root/src/help/faq.tt:8 root/src/help/faq.tt:27
+msgid "How do I create a landing page?"
+msgstr "Як створити головну сторінку?"
+
+#: root/src/help/faq.tt:9 root/src/help/faq.tt:44
+msgid "How do I delete a text?"
+msgstr "Як видалити текст?"
+
+#: root/src/help/faq.tt:10 root/src/help/faq.tt:65
+msgid "How do I purge a text?"
+msgstr "Як стерти текст?"
+
+#: root/src/help/faq.tt:11 root/src/help/faq.tt:83
+msgid "How do I redirect to another page?"
+msgstr "Як переспрямувати сторінку?"
+
+#: root/src/help/faq.tt:17
+msgid "Look into the account’s menu, there is an entry for that."
+msgstr "Перегляньте меню обліковки, там є відповідний пункт."
+
+#: root/src/help/faq.tt:22
+msgid ""
+"It works the same as for regular page, but the link is hidden. Just\n"
+"append \"/edit\" to the url of the page."
+msgstr ""
+"Як і звичайну, тільки посилання ховається. Додайте «/edit» у кінець адреси."
+
+#: root/src/help/faq.tt:29
+msgid ""
+"The page /special/index is twice special. It is assumed to be the\n"
+"default page to visit when loading the site’s root."
+msgstr ""
+
+#: root/src/help/faq.tt:34
+msgid ""
+"If your site doesn’t have that, just create a special page and assign\n"
+"the uri \"index\"."
+msgstr ""
+
+#: root/src/help/faq.tt:39
+msgid ""
+"If your site is multilanguage, you can create a language-specific\n"
+"  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
+"  URI \"index\", a dash, and the locale code."
+msgstr ""
+
+#: root/src/help/faq.tt:48
+msgid "Edit the text you want to unpublish and add this line to the header:"
+msgstr ""
+
+#: root/src/help/faq.tt:52
+msgid "Reason for deletion"
+msgstr "Підстава видалення"
+
+#: root/src/help/faq.tt:56
 msgid ""
 "You MUST specify a reason, otherwise the line will have no effect.\n"
 "The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
 "etc.) is irrelevant."
 msgstr ""
 
-msgid "You are already logged in"
+#: root/src/help/faq.tt:62
+msgid "Then approve the change as it would be a normal publishing."
 msgstr ""
 
+#: root/src/help/faq.tt:69
 msgid ""
-"You are building a collection. Please provide a title and, optionally, any "
-"other information needed for the front cover (author, subtitle, date) and "
-"the back cover (source and notes)."
+"Purging means removing it completely from the archive, not just hiding it."
 msgstr ""
 
-msgid "You are logged in now!"
+#: root/src/help/faq.tt:73
+msgid "First you have to unpublish it via #DELETED."
 msgstr ""
 
-#. (backup)
+#. (c.uri_for_action('/console/unpublished')
+#. (c.uri_for_action("/console/unpublished").path)
+#: root/src/help/faq.tt:76 root/src/help/faq.tt:77
 msgid ""
-"You can access the backup located at %1 or ask your host for help, "
-"forwarding this email"
+"After the approval of the\n"
+"  change, it will appear under %1. There is a big red\n"
+"  button for each deleted text, and you can proceed with the purging."
 msgstr ""
+"Після затвердження зміна з'явиться в розділі: %1. Велика червона кнопка "
+"поруч із кожним видаленим текстом дає змогу продовжити стирання."
 
+#: root/src/help/faq.tt:87
 msgid ""
-"You can add texts to the bookbuilder clicking on the\n"
-"    “plus” icon near the downloads of each text. You can add and\n"
-"    remove the texts later."
+"Changing urls is a poor practice. Anyway, if you know what you’re\n"
+"doing, you can delete an existing text and point to another adding a\n"
+"#DELETED directive in the text header with a special syntax:"
 msgstr ""
+"Зміна посилань — проблемне явище. Втім, якщо ви розумієте, що робите: щоб "
+"видалити наявний текст і вказати на інший, додайте настанову #DELETED у "
+"шапку тексту за допомогою особливого синтаксису:"
 
-msgid ""
-"You can also link to a part of the text. Please refer to the manual for this "
-"feature"
-msgstr ""
-
-#. (create_url)
-msgid "You can create a peer at %1"
-msgstr ""
-
-msgid "You can do so answering a simple question."
-msgstr ""
-
-msgid "You can tune them editing them here."
-msgstr ""
-
-msgid ""
-"You can use the following prefixes to search a word in a specific field, e."
-"g. \"title:example\""
-msgstr ""
-
-msgid ""
-"You can't create a new revision because the text has not been published yet"
-msgstr ""
-
-msgid "You have logged out"
-msgstr ""
-
-msgid "You may want to resume the editing of one of them"
-msgstr ""
-
-msgid ""
-"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
-msgstr ""
-
-msgid "You may want to use one of these images"
-msgstr ""
-
-msgid ""
-"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
-"login, and change your password right away. This shouldn't happen."
-msgstr ""
-
-#. (edit_url)
-msgid "You should change your password right away at %1"
-msgstr ""
-
-msgid "Your browser does not support the audio tag."
-msgstr ""
-
-msgid "Your browser does not support the video tag."
-msgstr ""
-
-msgid ""
-"Your changes are saved and can be checked every time you hit Preview or Save"
-msgstr ""
-
-msgid "Your chapter here..."
-msgstr ""
-
-msgid "Your current bookbuilder token is:"
-msgstr ""
-
-msgid "Your email"
-msgstr ""
-
-msgid "Your file is ready"
-msgstr ""
-
-msgid "Your part here..."
-msgstr ""
-
-#. (password)
-msgid "Your password is %1."
-msgstr ""
-
-msgid "Your password was reset, now you can login with it"
-msgstr ""
-
-msgid "Your section here..."
-msgstr ""
-
-msgid "Your sub-sub-section (or description heading) here..."
-msgstr ""
-
-msgid "Your subsection here..."
-msgstr ""
-
-#. (home)
-msgid "Your user at %1 has been created."
-msgstr ""
-
-#. (username)
-msgid "Your username is %1."
-msgstr ""
-
-msgid "aborted"
-msgstr ""
-
-msgid "about, links..."
-msgstr ""
-
-msgid "activate to sort column ascending"
-msgstr ""
-
-msgid "activate to sort column descending"
-msgstr ""
-
-msgid "active"
-msgstr ""
-
-msgid "affects only the frontend webserver configuration"
-msgstr ""
-
-msgid "any"
-msgstr ""
-
-msgid "automatically generated if not present, using author and title"
-msgstr ""
-
-msgid "code and monospace"
-msgstr ""
-
-msgid "comma separated list"
-msgstr ""
-
-msgid "completed"
-msgstr ""
-
-msgid "conflict"
-msgstr ""
-
-msgid "description"
-msgstr ""
-
-msgid "displayed text"
-msgstr ""
-
-msgid "edit, commit..."
-msgstr ""
-
-msgid "editing"
-msgstr ""
-
-msgid "emphasis"
-msgstr ""
-
-msgid "failed"
-msgstr ""
-
-msgid "filtered from _MAX_ total entries"
-msgstr ""
-
-msgid "for code, monospaced"
-msgstr ""
-
-msgid "for display"
-msgstr ""
-
-msgid "for poetry"
-msgstr ""
-
-msgid "generic sectioning, good for articles"
-msgstr ""
-
-msgid "if you want to use a custom size, you need to set both width and height"
-msgstr ""
-
-msgid "image"
-msgstr ""
-
-msgid "left"
-msgstr ""
-
-msgid "mandatory"
-msgstr ""
-
-msgid "markup *not* interpreted"
-msgstr ""
-
-#. (site.binary_upload_max_size_in_mega)
-msgid "max %1 Mb"
-msgstr ""
-
-msgid "minutes"
-msgstr ""
-
+#: root/src/help/faq.tt:93
 msgid "new-example-uri"
 msgstr ""
 
-msgid "only lowercase ASCII and hyphens"
+#: root/src/help/faq.tt:97
+msgid ""
+"Please note: without any prefix, protocol or hostname, just\n"
+"  the bare page name as shown above. External redirecting is not\n"
+"  supported."
 msgstr ""
 
-msgid "or"
+#: root/src/help/opds.tt:6
+msgid ""
+"Even if this site has a responsive, mobile-friendly layout,\n"
+"  it does not provide a dedicated mobile application."
+msgstr ""
+"Цей сайт має адаптивну верстку, що підходить для мобільних пристроїв. Він не "
+"надає окремого мобільного застосунка."
+
+#: root/src/help/opds.tt:10
+msgid ""
+"However, you can browse, search, download and read the texts\n"
+"  from mobile reading applications which support the so-called OPDS\n"
+"  protocol."
+msgstr ""
+"Проте ви можете переглядати, шукати, завантажувати й читати тексти за "
+"допомогою мобільних застосунків для читання, які підтримують OPDS-протокол."
+
+#: root/src/help/opds.tt:16
+msgid "The OPDS address for this site is:"
+msgstr "OPDS-адреса цього сайту:"
+
+#: root/src/help/opds.tt:27
+msgid "Tested applications, in this order of preference"
+msgstr "Перевірені застосунки, від більш до менш рекомендованих"
+
+#: root/src/help/opds.tt:50
+msgid ""
+"This site is private and mobile applications should ask for your username "
+"and\n"
+"  password to access the OPDS."
+msgstr ""
+"Це приватний сайт. Мобільні застосунки запитуватимуть у вас логін та пароль "
+"для OPDS-доступу."
+
+#: root/src/help/opds.tt:56
+msgid "Procedure"
+msgstr "Процес"
+
+#. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
+#: root/src/help/opds.tt:59
+msgid ""
+"In this example, we use FBreader, but the procedure is\n"
+"  pretty much the same for all applications. All you have to do is to\n"
+"  add %1 to the network libraries."
+msgstr ""
+"У цьому прикладі ми використовуємо FBreader, але процес приблизно однаковий "
+"для всіх застосунків. Вам достатньо додати %1 до мережних бібліотек."
+
+#: root/src/help/opds.tt:71
+msgid "Find the network library menu, or equivalent."
+msgstr "Знайдіть меню мережних бібліотек або його аналог."
+
+#: root/src/help/opds.tt:78
+msgid "Network library listing screen."
+msgstr "Екран переліку мережних бібліотек."
+
+#: root/src/help/opds.tt:85
+msgid "Find the add catalogue menu."
+msgstr "Знайдіть меню додання каталогу."
+
+#: root/src/help/opds.tt:93
+msgid "Add the OPDS URL"
+msgstr "Додайте OPDS-адресу"
+
+#: root/src/help/opds.tt:102
+msgid "Confirm"
+msgstr "Підтвердьте"
+
+#: root/src/include/attachment.tt:25
+msgid "Your browser does not support the audio tag."
+msgstr "Ваш оглядач не підтримує звуку."
+
+#: root/src/include/attachment.tt:32
+msgid "Your browser does not support the video tag."
+msgstr "Ваш оглядач не підтримує відео."
+
+#: root/src/include/attachment.tt:49
+msgid "Edit attachment description"
+msgstr "Редагувати опис вкладення"
+
+#: root/src/include/bbform.tt:8
+msgid "PDF"
+msgstr "PDF"
+
+#: root/src/include/bbform.tt:16
+msgid "Slides"
+msgstr "Слайди"
+
+#: root/src/include/bbform.tt:31
+msgid "Please select the desired fonts"
+msgstr "Оберіть бажані шрифти"
+
+#: root/src/include/bbform.tt:36
+msgid "Keep in mind that some character may be missing in the required font."
+msgstr "Пам'ятайте, деяких символів може бракувати в типовому шрифті."
+
+#: root/src/include/bbform.tt:37
+msgid "Missing character will be reported"
+msgstr "Символи, яких бракує, буде перелічено"
+
+#: root/src/include/bbform.tt:45
+msgid "Please choose the main font"
+msgstr "Оберіть головний шрифт"
+
+#: root/src/include/bbform.tt:62
+msgid "Please choose the sans font"
+msgstr "Оберіть шрифт без засічок"
+
+#: root/src/include/bbform.tt:80
+msgid "Please choose the mono font"
+msgstr "Оберіть моноширинний шрифт"
+
+#: root/src/include/bbform.tt:97
+msgid "Please choose the font size"
+msgstr "Оберіть розмір шрифту"
+
+#: root/src/include/bbform.tt:115
+msgid "Embed fonts in the EPUB file"
+msgstr "Вбудувати шрифти в EPUB-файл"
+
+#: root/src/include/bbform.tt:121
+msgid "Please setup the Beamer layout"
 msgstr ""
 
-msgid "ordered item"
+#: root/src/include/bbform.tt:125
+msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
 
-msgid "overstriked"
+#: root/src/include/bbform.tt:133
+msgid "Please choose the Beamer theme"
 msgstr ""
 
-msgid "pending"
+#: root/src/include/bbform.tt:150
+msgid "Please choose the Beamer color theme"
 msgstr ""
 
-msgid "plain PDF"
+#: root/src/include/bbform.tt:170 root/src/include/bbform.tt:921
+msgid "if you want to use a custom size, you need to set both width and height"
+msgstr "для власного розміра оберіть і ширину, і висоту"
+
+#: root/src/include/bbform.tt:188 root/src/include/bbform.tt:940
+msgid "Width:"
+msgstr "Ширина:"
+
+#: root/src/include/bbform.tt:189 root/src/include/bbform.tt:212
+#: root/src/include/bbform.tt:284 root/src/include/bbform.tt:309
+#: root/src/include/bbform.tt:335 root/src/include/bbform.tt:359
+#: root/src/include/bbform.tt:941 root/src/include/bbform.tt:963
+msgid "Please set"
 msgstr ""
 
-msgid "plain text source"
+#: root/src/include/bbform.tt:201 root/src/include/bbform.tt:224
+#: root/src/include/bbform.tt:954 root/src/include/bbform.tt:976
+msgid "Standard"
 msgstr ""
 
-msgid "processing"
+#: root/src/include/bbform.tt:211 root/src/include/bbform.tt:962
+msgid "Height:"
+msgstr "Висота:"
+
+#: root/src/include/bbform.tt:239
+msgid "Margins: please choose a division factor or set width and height"
+msgstr "Поля: оберіть співвідношення чи ширину й висоту"
+
+#: root/src/include/bbform.tt:255
+msgid "(widest)"
+msgstr "(найширше)"
+
+#: root/src/include/bbform.tt:256
+msgid "(narrowest)"
+msgstr "(найвужче)"
+
+#: root/src/include/bbform.tt:283
+msgid "Text width"
+msgstr "Ширина тексту"
+
+#: root/src/include/bbform.tt:298 root/src/include/bbform.tt:324
+#: root/src/include/bbform.tt:348 root/src/include/bbform.tt:372
+msgid "Auto"
+msgstr "Автоматично"
+
+#: root/src/include/bbform.tt:308
+msgid "Text height"
+msgstr "Висота тексту"
+
+#: root/src/include/bbform.tt:334
+msgid "Outer margin"
+msgstr "Зовнішній відступ"
+
+#: root/src/include/bbform.tt:358
+msgid "Top margin"
+msgstr "Відступ угорі"
+
+#: root/src/include/bbform.tt:385
+msgid "Line spacing"
+msgstr "Міжрядковий інтервал"
+
+#: root/src/include/bbform.tt:390
+msgid "Default"
+msgstr "Типово"
+
+#: root/src/include/bbform.tt:410
+msgid "Paragraph indentation in points (pt)"
+msgstr "Абзацний відступ у пунктах (пт)"
+
+#: root/src/include/bbform.tt:427
+msgid "TeX options (advanced)"
+msgstr "Налаштування TeX (якщо доводиться)"
+
+#: root/src/include/bbform.tt:467
+msgid "Never generate a table of content"
+msgstr "Ніколи не генерувати таблиць змісту"
+
+#: root/src/include/bbform.tt:474
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
+"Ніколи не генерувати стандартної останньої сторінки з заголовком, автор_кою, "
+"примітками, логотипом та назвою сайту"
+
+#: root/src/include/bbform.tt:481
+msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr ""
 
-msgid "published"
+#: root/src/include/bbform.tt:488
+msgid "Do not create a cover page and start the text on the first page"
 msgstr ""
 
-msgid "revision"
+#: root/src/include/bbform.tt:496
+msgid "Text body only (no title, no final pages)"
 msgstr ""
 
-msgid "right"
+#: root/src/include/bbform.tt:505
+msgid "Place the notes on the back of the first page, impressum-style"
 msgstr ""
 
-#. (args)
-msgid "string"
+#: root/src/include/bbform.tt:512
+msgid "Use sans fonts for section titles"
 msgstr ""
 
-msgid "strong emphasis"
+#: root/src/include/bbform.tt:521
+msgid "Do not use bold fonts"
 msgstr ""
 
-msgid "sub-sub-section"
+#: root/src/include/bbform.tt:529
+msgid ""
+"By default, secondary footnotes use arabic numbering\n"
+"        between parens. With this option they will use per-page alpha\n"
+"        numbering"
 msgstr ""
 
-msgid "subscript"
+#: root/src/include/bbform.tt:540
+msgid "Start the document with an empty page"
 msgstr ""
 
+#: root/src/include/bbform.tt:549
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
+
+#: root/src/include/bbform.tt:557
+msgid "Never display the cover"
+msgstr ""
+
+#: root/src/include/bbform.tt:606
+msgid "Running headings"
+msgstr ""
+
+#: root/src/include/bbform.tt:612
+msgid "Part and chapter. If one side document: part."
+msgstr ""
+
+#: root/src/include/bbform.tt:613
+msgid "Title and subtitle. If one side document: title."
+msgstr ""
+
+#: root/src/include/bbform.tt:614
+msgid "Author and title. If one side document: title."
+msgstr ""
+
+#: root/src/include/bbform.tt:615
+msgid "Chapter and section. If one side document: chapter."
+msgstr ""
+
+#: root/src/include/bbform.tt:616
+msgid "Section and subsection. If one side document: section."
+msgstr ""
+
+#: root/src/include/bbform.tt:617
+msgid "Title and chapter. If one side document: chapter."
+msgstr ""
+
+#: root/src/include/bbform.tt:618
+msgid "Title and section.  If one side document: section."
+msgstr ""
+
+#: root/src/include/bbform.tt:653
+msgid "I want an imposed (ready to print) PDF"
+msgstr ""
+
+#: root/src/include/bbform.tt:659
+msgid "If you asked for imposition, select an imposition schema"
+msgstr ""
+
+#: root/src/include/bbform.tt:669
+msgid ""
+"Pages are reordered, in one or more groups\n"
+"        (signatures), then folded in half. If you have more\n"
+"        signatures, you will have to bound them together like a book.\n"
+"        With this option, you may want to decide the size of the\n"
+"        signatures. This can be a fixed value (4,8,16, etc.), the\n"
+"        whole book in a single signature, or an optimized size to\n"
+"        reduce the number of blank pages."
+msgstr ""
+
+#: root/src/include/bbform.tt:684
+msgid "Same as above, but for duplex printers"
+msgstr ""
+
+#: root/src/include/bbform.tt:704 root/src/include/bbform.tt:751
+msgid "Please select the signature size:"
+msgstr ""
+
+#. (sign)
+#: root/src/include/bbform.tt:713 root/src/include/bbform.tt:760
+msgid "Use optimized signatures with %1 pages each"
+msgstr ""
+
+#: root/src/include/bbform.tt:715 root/src/include/bbform.tt:762
+msgid "The whole book in as single signature"
+msgstr ""
+
+#: root/src/include/bbform.tt:731
+msgid ""
+"Exactly like 2up, but the sheets are meant to be cut\n"
+"        horizontally first and then stack on each other. This way you\n"
+"        can print, for example, A6 booklets on A4."
+msgstr ""
+
+#: root/src/include/bbform.tt:780
+msgid ""
+"Pages are not reordered. The first sheet contains\n"
+"        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
+"        This is not meant to be folded."
+msgstr ""
+
+#: root/src/include/bbform.tt:801
+msgid ""
+"Blocks of 8 pages to be folded twice and then bound\n"
+"                together."
+msgstr "8-сторінкові блоки, які складають двічі й тоді зшивають."
+
+#: root/src/include/bbform.tt:821
+msgid ""
+"Blocks of 16 pages to be folded twice and then bound\n"
+"                together."
+msgstr "16-сторінкові блоки, які складають двічі й тоді зшивають."
+
+#: root/src/include/bbform.tt:861
+msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
+msgstr ""
+
+#: root/src/include/bbform.tt:863 root/src/include/bbform.tt:882
+msgid "See here for more details."
+msgstr ""
+
+#: root/src/include/bbform.tt:880
+msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
+msgstr ""
+
+#: root/src/include/bbform.tt:905
+msgid ""
+"One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr ""
+
+#: root/src/include/bbform.tt:913
+msgid "Add crop marks to the PDF"
+msgstr "Додати відмітки зрізання в PDF"
+
+#: root/src/include/bbform.tt:920
+msgid ""
+"Please select the size of each page including the crop marks, before the "
+"imposing"
+msgstr ""
+
+#: root/src/include/bbform.tt:988
+msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
+msgstr ""
+
+#: root/src/include/bbform.tt:1009
+msgid ""
+"Fill with blank pages before the last page if the signature is not full."
+msgstr ""
+
+#: root/src/include/bulk_job.tt:2
+msgid "aborted"
+msgstr "перервано"
+
+#: root/src/include/bulk_job.tt:2
+msgid "active"
+msgstr "триває"
+
+#: root/src/include/bulk_job.tt:9
+msgid "Number of jobs"
+msgstr "Кількість завдань"
+
+#: root/src/include/bulk_job.tt:12
+msgid "Failed"
+msgstr "Не вдалися"
+
+#: root/src/include/bulk_job.tt:19
+msgid "ETA"
+msgstr "Завершиться приблизно"
+
+#: root/src/include/bulk_job.tt:37
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: root/src/include/edit_node.tt:22 root/src/nodes/node_root.tt:49
+msgid "Parent collection"
+msgstr "Батьківська добірка"
+
+#: root/src/include/edit_node.tt:25 root/src/nodes/node_root.tt:52
+msgid "Root Collection"
+msgstr "Коренева добірка"
+
+#: root/src/include/edit_node.tt:38 root/src/include/pagination-widget.tt:7
+#: root/src/search/index.tt:54
+msgid "Sorting:"
+msgstr "Порядок:"
+
+#: root/src/include/edit_node.tt:75
+msgid "Body"
+msgstr "Основний текст"
+
+#: root/src/include/edit_node.tt:92
+msgid "List of paths to attach to this collection, one per line."
+msgstr ""
+
+#: root/src/include/edit_node.tt:93
+msgid "They can be texts, special texts, authors or topics."
+msgstr ""
+
+#: root/src/include/edit_node.tt:125
+msgid "Delete permanently"
+msgstr "Видалити назовсім"
+
+#: root/src/include/editing-options.tt:5
+msgid "Preview box height in pixel"
+msgstr "Висота попереднього перегляду в пікселях"
+
+#: root/src/include/editing-options.tt:18
+msgid "Unlimited"
+msgstr "Необмежено"
+
+#: root/src/include/editing-options.tt:29
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr ""
+
+#: root/src/include/editing-options.tt:54
+msgid "Show filters"
+msgstr "Показувати фільтри"
+
+#: root/src/include/editing-options.tt:63
+msgid "Show cheatsheet"
+msgstr "Показувати шпаргалку"
+
+#: root/src/include/js-diff.tt:7
+msgid "Computing of differences took"
+msgstr ""
+
+#: root/src/include/markitup.tt:17 root/src/include/markitup.tt:22
+#: root/src/include/markitup.tt:27 root/src/include/markitup.tt:32
+#: root/src/include/markitup.tt:37
+msgid "Heading"
+msgstr "Заголовок"
+
+#: root/src/include/markitup.tt:17
+msgid "Part, for larger books only"
+msgstr "Частина, лише для великих книг"
+
+#: root/src/include/markitup.tt:19
+msgid "Your part here..."
+msgstr "Ваша частина…"
+
+#: root/src/include/markitup.tt:22
+msgid "Chapter, only for chapter divisions in books"
+msgstr "Глава, лише для виокремлених глав у книгах"
+
+#: root/src/include/markitup.tt:24
+msgid "Your chapter here..."
+msgstr "Ваша глава…"
+
+#: root/src/include/markitup.tt:27
+msgid "generic sectioning, good for articles"
+msgstr "Звичайні розділи, підходить для статей"
+
+#: root/src/include/markitup.tt:30
+msgid "Your section here..."
+msgstr "Ваш розділ…"
+
+#: root/src/include/markitup.tt:32
 msgid "subsection"
 msgstr ""
 
-msgid "superscript"
+#: root/src/include/markitup.tt:35
+msgid "Your subsection here..."
 msgstr ""
 
-msgid "taken"
+#: root/src/include/markitup.tt:37
+msgid "sub-sub-section"
 msgstr ""
 
+#: root/src/include/markitup.tt:40
+msgid "Your sub-sub-section (or description heading) here..."
+msgstr ""
+
+#: root/src/include/markitup.tt:42
+msgid "Italic"
+msgstr "Курсив"
+
+#: root/src/include/markitup.tt:45
+msgid "Bold"
+msgstr "Грубий"
+
+#: root/src/include/markitup.tt:48
+msgid "Unordered List"
+msgstr "Маркований список"
+
+#: root/src/include/markitup.tt:51
+msgid "Ordered List"
+msgstr "Нумерований список"
+
+#: root/src/include/markitup.tt:54
+msgid "Picture"
+msgstr "Картинка"
+
+#: root/src/include/markitup.tt:60
+msgid "Image url"
+msgstr "Посилання на картинку"
+
+#: root/src/include/markitup.tt:64
+msgid "description"
+msgstr "опис"
+
+#: root/src/include/markitup.tt:75
+msgid "Link"
+msgstr "Посилання"
+
+#: root/src/include/markitup.tt:81
+msgid "Url"
+msgstr ""
+
+#: root/src/include/markitup.tt:85
+msgid "Display url as"
+msgstr ""
+
+#: root/src/include/markitup.tt:96
+msgid "Quotes"
+msgstr "Лапки"
+
+#: root/src/include/markitup.tt:101
+msgid "Verbatim block"
+msgstr ""
+
+#: root/src/include/mirror-infos.tt:10
+msgid "Conflict"
+msgstr "Конфлікт"
+
+#: root/src/include/mirror-infos.tt:11
+msgid "Local"
+msgstr "Локально"
+
+#: root/src/include/mirror-infos.tt:12
+msgid "Removed Upstream"
+msgstr "Вилучено в джерелі"
+
+#: root/src/include/mirror-infos.tt:22
+msgid "ID"
+msgstr "Ідентифікатор"
+
+#: root/src/include/mirror-infos.tt:23
+msgid "Mirror"
+msgstr "Дзеркало"
+
+#: root/src/include/mirror-infos.tt:26
+msgid "Exception"
+msgstr "Виняток"
+
+#: root/src/include/pagination-widget.tt:18
+msgid "Results per page:"
+msgstr "Результатів на сторінці:"
+
+#: root/src/include/posts.tt:65
+msgid "Read the whole text..."
+msgstr "Прочитати весь текст…"
+
+#: root/src/include/posts.tt:95 root/src/library.tt:76
+msgid "No text found!"
+msgstr "Тексту не знайдено!"
+
+#: root/src/include/preamble.tt:9
+msgid "This text is not published yet"
+msgstr "Тексту ще не оприлюднено"
+
+#: root/src/include/preamble.tt:47
+msgid "Part of"
+msgstr "Частина"
+
+#: root/src/include/preamble.tt:112
+msgid "Mirror of:"
+msgstr "Дзеркало:"
+
+#: root/src/include/preamble.tt:124
+msgid "Downloads"
+msgstr "Завантаження"
+
+#: root/src/include/preamble.tt:162 root/src/include/preamble.tt:163
+msgid "Edit this text"
+msgstr "Редагувати текст"
+
+#: root/src/include/preamble.tt:175 root/src/include/preamble.tt:176
+msgid "Add this text to the bookbuilder"
+msgstr "Додати текст у конструктор"
+
+#: root/src/include/preamble.tt:186 root/src/include/preamble.tt:187
+msgid "Select individual parts for the bookbuilder"
+msgstr "Обрати окремі частини для конструктора"
+
+#: root/src/include/preamble.tt:195 root/src/include/preamble.tt:196
+msgid "Rebuild the generated formats"
+msgstr "Перезібрати згенеровані формати"
+
+#: root/src/include/preamble.tt:204 root/src/text.tt:239
+msgid "What links here"
+msgstr "Що сюди посилається"
+
+#: root/src/include/show_text_type.tt:4
+#: root/src/include/show_type_and_number_of_pages.tt:27 root/src/layout.tt:222
+#: root/src/layout.tt:225 root/src/text.tt:9
+msgid "Table of Contents"
+msgstr "Зміст"
+
+#: root/src/include/show_text_type.tt:8
+#: root/src/include/show_type_and_number_of_pages.tt:31
+msgid "This text is a book"
+msgstr "Цей текст — книга"
+
+#: root/src/include/show_text_type.tt:10
+#: root/src/include/show_type_and_number_of_pages.tt:33
+msgid "This text is an article"
+msgstr "Цей текст — стаття"
+
+#. (text.pages_estimated)
+#: root/src/include/show_type_and_number_of_pages.tt:45
+msgid "%1 pp."
+msgstr "%1 с."
+
+#: root/src/layout.tt:32
+msgid "OPDS"
+msgstr ""
+
+#: root/src/layout.tt:131
+msgid "Are you sure?"
+msgstr "Точно?"
+
+#: root/src/layout.tt:235
 msgid "texts by authors, title, topic..."
-msgstr ""
+msgstr "тексти за автор_кою, назвою, темою…"
 
-msgid "texts sorted by author"
-msgstr ""
+#: root/src/layout.tt:239
+msgid "Archive"
+msgstr "Архів"
 
+#: root/src/layout.tt:247 root/src/layout.tt:758
 msgid "texts sorted by title"
+msgstr "тексти, сортовані за назвою"
+
+#: root/src/layout.tt:326
+msgid "about, links..."
+msgstr "опис, посилання…"
+
+#: root/src/layout.tt:330
+msgid "More"
+msgstr "Додатково"
+
+#: root/src/layout.tt:347 root/src/layout.tt:351
+msgid "Related projects"
+msgstr "Пов'язані проєкти"
+
+#: root/src/layout.tt:370 root/src/layout.tt:374
+msgid "Language selection"
+msgstr "Вибір мови"
+
+#: root/src/layout.tt:413
+msgid "Update account info"
+msgstr "Змінити дані обліковки"
+
+#: root/src/layout.tt:419
+msgid "Create a new special page"
+msgstr "Створити особливу сторінку"
+
+#: root/src/layout.tt:435
+msgid "There are pending revisions"
 msgstr ""
 
-msgid "the author of the text (as displayed)"
+#: root/src/layout.tt:450
+msgid "Deferred/Deleted texts"
+msgstr "Відкладені й видалені тексти"
+
+#: root/src/layout.tt:486 root/src/user/create.tt:3
+msgid "Create a new librarian"
+msgstr "Додати бібліотекар_ку"
+
+#: root/src/layout.tt:512
+msgid "Rebuild all generated files"
+msgstr "Перезібрати всі згенеровані файли"
+
+#: root/src/layout.tt:518
+msgid "Job status"
+msgstr "Стан завдань"
+
+#: root/src/layout.tt:520
+msgid "There are failed jobs"
+msgstr "Деякі завдання не вдалися"
+
+#: root/src/layout.tt:551
+msgid "Edit full site configuration"
+msgstr "Редагувати повні налаштування сайту"
+
+#: root/src/layout.tt:563
+msgid "Jobs (all sites)"
+msgstr "Завдання (всіх сайтів)"
+
+#: root/src/layout.tt:576
+msgid "Logout"
+msgstr "Вийти"
+
+#: root/src/layout.tt:597 root/src/layout.tt:775
+msgid "Mobile"
+msgstr "Мобільна версія"
+
+#: root/src/layout.tt:600
+msgid "Mobile applications"
+msgstr "Мобільні застосунки"
+
+#: root/src/layout.tt:605 root/src/layout.tt:608 root/src/layout.tt:753
+msgid "RSS feed"
+msgstr "RSS-стрічка"
+
+#: root/src/layout.tt:613 root/src/layout.tt:616 root/src/layout.tt:749
+msgid "Random"
+msgstr "Довільний текст"
+
+#: root/src/layout.tt:632
+msgid "Switch theme"
+msgstr "Перемкнути тему"
+
+#: root/src/layout.tt:687
+msgid "The text was added to the bookbuilder"
+msgstr "Текст додано до конструктора"
+
+#: root/src/layout.tt:691
+msgid ""
+"Collections have been updated. You may want to refresh the OAI-PMH repository"
 msgstr ""
 
+#: root/src/library/bbselect.tt:4
+msgid "Add sections to the bookbuilder"
+msgstr "Додати розділи до конструктора"
+
+#: root/src/library/bbselect.tt:14
+msgid ""
+"With complex structures, e.g., a chapter with\n"
+"      subsections, selecting only the chapter is likely to select only\n"
+"      the chapter's title, so probably you want to select the chapter\n"
+"      and all its subsections."
+msgstr ""
+"Якщо структура складна (глава має розділи), то при обранні глави може "
+"обратись лише заголовок глави. В такому разі доречно обрати як главу, так і "
+"всі її розділи."
+
+#: root/src/library/bbselect.tt:20
+msgid "The text structure is shown below."
+msgstr "Структуру тексту показано внизу."
+
+#: root/src/library/bbselect.tt:29
+msgid "Select all"
+msgstr "Обрати все"
+
+#: root/src/library/bbselect.tt:31
+msgid "Add the whole text"
+msgstr "Додати весь текст"
+
+#: root/src/library/bbselect.tt:42 root/src/library/bbselect.tt:81
+msgid "Add the selected parts to the bookbuilder"
+msgstr "Додати обрані частини до конструктора"
+
+#: root/src/library/bbselect.tt:49
+msgid "Select"
+msgstr "Обрати"
+
+#: root/src/library/bbselect.tt:58
+msgid "Title, author, date..."
+msgstr "Заголовок, автор_ка, дата…"
+
+#: root/src/library/bbselect.tt:60
+msgid "Source, notes..."
+msgstr "Джерело, примітки…"
+
+#: root/src/nodes/node_root.tt:34
+msgid "only lowercase ASCII and hyphens"
+msgstr "лише малі латинські літери й дефіси"
+
+#: root/src/publish/pending.tt:1
+msgid "editing"
+msgstr "редагування"
+
+#: root/src/publish/pending.tt:3
+msgid "processing"
+msgstr "обробка"
+
+#: root/src/publish/pending.tt:4
+msgid "conflict"
+msgstr "конфлікт"
+
+#: root/src/publish/pending.tt:5
+msgid "published"
+msgstr "оприлюднено"
+
+#: root/src/publish/pending.tt:14
+msgid "Revision"
+msgstr "Версія"
+
+#: root/src/publish/pending.tt:25
+msgid "Message"
+msgstr "Повідомлення"
+
+#: root/src/publish/pending.tt:52
+msgid "Publish"
+msgstr "Оприлюднити"
+
+#: root/src/publish/pending.tt:54
+msgid "Force publishing"
+msgstr "Примусово оприлюднити"
+
+#: root/src/publish/pending.tt:59
 msgid "this text will be unpublished"
+msgstr "оприлюднення тексту буде скасовано"
+
+#. (rev.is_deferred)
+#: root/src/publish/pending.tt:61
+msgid "This text will be deferred to %1"
 msgstr ""
 
-msgid "topic"
+#: root/src/publish/pending.tt:71
+msgid "Stale editing"
 msgstr ""
 
-msgid "unordered item"
+#: root/src/publish/pending.tt:84
+msgid "Erase this revision"
+msgstr "Стерти цю версію"
+
+#: root/src/publish/pending.tt:121
+msgid ""
+"Please keep in mind that if you see “Force publishing”\n"
+"    as action, it means that the revision has been superseded by\n"
+"    another one, so publishing this one, you'll end up reverting a\n"
+"    previous one. Try to avoid this, unless you know what you're\n"
+"    doing."
 msgstr ""
 
-msgid "very strong emphasis"
-msgstr ""
-
-msgid "with description"
-msgstr ""
-
-msgid "without description"
-msgstr ""
-
+#: root/src/publish/pending.tt:128
 msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
+
+#: root/src/publish/pending.tt:133
+msgid ""
+"Deleting a revision is safe if a text has been\n"
+"    published. Otherwise deleting it you'll lose the unpublished changes"
+msgstr ""
+
+#: root/src/publish/pending.tt:140
+msgid "No revisions to show"
+msgstr "Нема версій для показу"
+
+#: root/src/search/index.tt:20
+msgid "Full text search"
+msgstr "Повнотекстовий пошук"
+
+#: root/src/search/index.tt:23
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr ""
+"певне слово AND title:\"Мій заголовок\" AND author:Автор_ка OR year:2017"
+
+#: root/src/search/index.tt:28
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
+msgstr ""
+"За допомогою наступних префіксів шукайте слово в окремому полі, наприклад "
+"«title:зразок»"
+
+#: root/src/search/index.tt:39
+msgid "Did you mean:"
+msgstr "Можливо, ви мали на увазі:"
+
+#: root/src/search/index.tt:51
+msgid "Search filters"
+msgstr "Фільтри пошуку"
+
+#: root/src/search/index.tt:58
+msgid "By relevance"
+msgstr "За відповідністю"
+
+#: root/src/search/index.tt:84 root/src/search/index.tt:110
+msgid "Reset filters"
+msgstr "Скинути фільтри"
+
+#: root/src/search/index.tt:128
+msgid "No result found!"
+msgstr ""
+
+#: root/src/settings/categories.tt:9 root/src/settings/formats.tt:8
+msgid "Code"
+msgstr "Код"
+
+#: root/src/settings/categories.tt:10
+msgid "Headers"
+msgstr "Заголовки"
+
+#: root/src/settings/categories.tt:14
+msgid "Generate Index"
+msgstr "Генерувати індекс"
+
+#: root/src/settings/categories.tt:15
+msgid "Add to colophon"
+msgstr ""
+
+#: root/src/settings/categories.tt:17
+msgid "Name singular"
+msgstr "Назва в однині"
+
+#: root/src/settings/categories.tt:18
+msgid "Name plural"
+msgstr "Назва в множині"
+
+#: root/src/settings/categories.tt:19
+msgid "Search Engine Facets"
+msgstr ""
+
+#: root/src/settings/categories.tt:20
+msgid "Help Text"
+msgstr "Текст довідки"
+
+#: root/src/settings/categories.tt:69 root/src/settings/categories.tt:98
+msgid "Built-in"
+msgstr "Вбудовано"
+
+#: root/src/settings/categories.tt:107
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr "Створити ще тип категорії. Використовуйте лише малі латинські літери"
+
+#: root/src/settings/categories.tt:124 root/src/tasks/rebuild.tt:29
+msgid "Reindex site"
+msgstr "Переіндексувати сайт"
+
+#: root/src/settings/categories.tt:130
+msgid "This setting affects only the text creation form."
+msgstr "Параметр впливає лише на форму створення тексту."
+
+#: root/src/settings/edit_format.tt:41
+msgid "Reset to site defaults"
+msgstr ""
+
+#: root/src/settings/formats.tt:12
+msgid "Clone"
+msgstr "Копіювати"
+
+#: root/src/settings/formats.tt:14
+msgid "File extension"
+msgstr "Суфікс файлу"
+
+#: root/src/settings/formats.tt:81
+msgid "Format name"
+msgstr "Назва формату"
+
+#: root/src/settings/formats.tt:87
+msgid "Create a new format"
+msgstr "Створити формат"
+
+#: root/src/static-indexes.tt:84
+msgid "No data available in table"
+msgstr "У таблиці нема даних"
+
+#: root/src/static-indexes.tt:85
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr "Показано _START_–_END_ із _TOTAL_"
+
+#: root/src/static-indexes.tt:86
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "Показано 0–0 із 0"
+
+#: root/src/static-indexes.tt:87
+msgid "filtered from _MAX_ total entries"
+msgstr "застосовано фільтр, усього _MAX_"
+
+#: root/src/static-indexes.tt:90
+msgid "Show _MENU_ entries"
+msgstr "Показати _MENU_"
+
+#: root/src/static-indexes.tt:91
+msgid "Loading"
+msgstr "Завантаження"
+
+#: root/src/static-indexes.tt:92
+msgid "Processing"
+msgstr "Обробка"
+
+#: root/src/static-indexes.tt:94
+msgid "No matching records found"
+msgstr "Збіжних записів не знайдено"
+
+#: root/src/static-indexes.tt:96
+msgid "First"
+msgstr "Перша"
+
+#: root/src/static-indexes.tt:97
+msgid "Last"
+msgstr "Остання"
+
+#: root/src/static-indexes.tt:98 root/src/text.tt:222
+msgid "Next"
+msgstr "Далі"
+
+#: root/src/static-indexes.tt:99 root/src/text.tt:208
+msgid "Previous"
+msgstr "Назад"
+
+#: root/src/static-indexes.tt:102
+msgid "activate to sort column ascending"
+msgstr "активуйте, щоб колонка була за зростанням"
+
+#: root/src/static-indexes.tt:103
+msgid "activate to sort column descending"
+msgstr "активуйте, щоб колонка була за спаданням"
+
+#: root/src/tasks/display.tt:13 root/src/tasks/display.tt:73
+msgid "Jobs waiting before yours:"
+msgstr "Завдання в черзі перед вашим:"
+
+#: root/src/tasks/display.tt:26 root/src/tasks/display.tt:53
+msgid "Source files"
+msgstr "Файли джерела"
+
+#: root/src/tasks/display.tt:45
+msgid "Please reload your page"
+msgstr "Будь ласка, перезавантажте сторінку"
+
+#: root/src/tasks/display.tt:82 root/src/tasks/display.tt:98
+msgid "Sources"
+msgstr "Джерела"
+
+#: root/src/tasks/display.tt:111
+msgid "Static page without javascript"
+msgstr "Статична сторінка без JavaScript"
+
+#: root/src/tasks/rebuild.tt:7
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
+msgstr ""
+"Якщо подати запит на перезбірку, коли перезбірка вже триває, то поточну "
+"перезбірку буде перервано."
+
+#: root/src/tasks/rebuild.tt:14
+msgid "Current time"
+msgstr "Поточний час"
+
+#: root/src/tasks/rebuild.tt:18
+msgid "Last successful rebuild"
+msgstr "Остання успішна збірка"
+
+#: root/src/tasks/rebuild.tt:26
+msgid "Rebuild formats"
+msgstr "Перезібрати формати"
+
+#: root/src/tasks/show_bulk_job.tt:5
+msgid "Rebuilding"
+msgstr "Перезбірка"
+
+#: root/src/text.tt:7 root/src/text.tt:15 root/src/text.tt:237
+#: root/src/text.tt:255
+msgid "Close"
+msgstr "Закрити"
+
+#: root/src/text.tt:62
+msgid "This text is not available"
+msgstr "Текст іще недоступний"
+
+#: root/src/text.tt:75
+msgid "This text is not public yet"
+msgstr "Тексту ще не оприлюднено"
+
+#: root/src/text.tt:210
+msgid "Older texts"
+msgstr "Старіші тексти"
+
+#: root/src/text.tt:224
+msgid "Newer texts"
+msgstr "Новіші тексти"
+
+#: root/src/user/create.tt:12
+msgid "Username, alphanumerical only, no special characters, no uppercase"
+msgstr ""
+"Логін (лише малі латинські літери без особливих символів, можна з цифрами)"
+
+#: root/src/user/create.tt:39
+msgid "The password will be mailed at this address"
+msgstr "Пароль буде надіслано на цю адресу"
+
+#: root/src/user/create.tt:45 root/src/user/edit.tt:54
+msgid "Repeat email"
+msgstr "Повторіть е-пошту"
+
+#: root/src/user/create.tt:47
+msgid "So we can be sure we are not mailing passwords to random people"
+msgstr "Аби ми були певні, що не надсилаємо паролів випадковим людям"
+
+#: root/src/user/create.tt:52
+msgid "Create user and mail password"
+msgstr "Додати користувач_ку й надіслати пароль"
+
+#: root/src/user/create.tt:59 root/src/user/edit.tt:79
+msgid "How to choose a password"
+msgstr "Як обрати пароль"
+
+#: root/src/user/edit.tt:12 root/src/user/edit_options.tt:11
+msgid "Email, password, locale"
+msgstr "Е-пошта, пароль, мова"
+
+#: root/src/user/edit.tt:30 root/src/user/edit.tt:47
+msgid "(leave blank to keep the current one)"
+msgstr "(залиште порожнім, щоб не змінювати)"
+
+#: root/src/user/edit.tt:60
+msgid "Preferred language"
+msgstr "Бажана мова"
+
+#: root/src/user/human.tt:7
+msgid "You can do so answering a simple question."
+msgstr "Достатньо відповісти на просте запитання."
+
+#: root/src/user/human.tt:22
+msgid "I am human"
+msgstr "Я людина"
+
+#: root/src/user/human.tt:26
+msgid "Or log in, if you have an account."
+msgstr "Або увійдіть, якщо маєте обліковку."
+
+#: root/src/user/login.tt:16 root/src/user/login.tt:18
+msgid "Password"
+msgstr "Пароль"
+
+#: root/src/user/login.tt:21
+msgid "Log in"
+msgstr "Увійти"
+
+#: root/src/user/login.tt:28
+msgid "Lost your password?"
+msgstr "Забули пароль?"
+
+#: root/src/user/reset_password.tt:5
+msgid ""
+"Please check your inbox, we tried to deliver a mail to the address you "
+"specified with a password reset link"
+msgstr ""
+"Будь ласка, перевірте вхідні. Ми спробували надіслати на адресу, яку ви "
+"вказали, лист із посиланням на скидання пароля"
+
+#: root/src/user/reset_password.tt:10
+msgid "Your email"
+msgstr "Ваша е-пошта"
+
+#. (username)
+#: root/src/user/reset_password_confirm.tt:3
+msgid "Reset password for user %1"
+msgstr "Скинути пароль користувач_ки %1"
+
+#. (8)
+#: root/src/user/reset_password_confirm.tt:18
+#: root/src/user/reset_password_confirm.tt:28
+msgid "Minimum %1 characters"
+msgstr "Мінімум %1 символів"
+
+#: root/src/utils/import.tt:18
+msgid "Convert to archive markup"
+msgstr "Конвертувати в архівну розмітку"
+
+#: root/static/js/amw-batch-upload.js:73 root/static/js/amw-batch-upload.js:75
+msgid "Unused attachment"
+msgstr "Невикористане вкладення"
+
+#: root/static/js/amw-batch-upload.js:83
+msgid "File already in the body"
+msgstr "Файл уже є в основному тексті"
+
+#: root/static/js/amw-batch-upload.js:89
+msgid "Attach"
+msgstr "Вкласти"
+
+#: root/static/js/amw-batch-upload.js:112
+msgid "Image already set as cover"
+msgstr "Картинка вже є обкладинкою"
+
+#: root/static/js/amw-batch-upload.js:113
+msgid "Use the image as cover"
+msgstr "Зробити картинку обкладинкою"
+
+#: root/static/js/amw-batch-upload.js:123
+msgid "Please remove this file from the body first"
+msgstr "Спершу вилучте цей файл з основного тексту"
