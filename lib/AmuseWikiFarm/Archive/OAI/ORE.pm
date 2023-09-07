@@ -20,10 +20,33 @@ sub as_rdf_xml {
     my $site = $text->site;
     my $created = $text->pubdate->iso8601 . 'Z';
     my $updated = $text->f_timestamp->iso8601 . 'Z';
-    my @dc;
-    if (my $oai_pmh_record = $text->oai_pmh_records->not_deleted->first) {
-        @dc = @{ $oai_pmh_record->dublin_core_record || [] };
+    my $full_uri = $text->full_uri;
+    my @canonical_dc;
+    my @aggregated_dcs;
+    my @aggregated_urls;
+    foreach my $pmh ($text->oai_pmh_records->not_deleted->all) {
+        if (my @dc = @{ $pmh->dublin_core_record || [] }) {
+            my $datestamp = $pmh->zulu_datestamp;
+            push @dc, [
+                       'dcterms:created',
+                       [ 'rdf:datatype' => "http://www.w3.org/2001/XMLSchema#dateTime" ],
+                       $datestamp,
+                      ];
+            push @dc, [
+                       'dcterms:modified',
+                       [ 'rdf:datatype' => "http://www.w3.org/2001/XMLSchema#dateTime" ],
+                       $datestamp,
+                      ];
+            if ($pmh->identifier eq $full_uri) {
+                @canonical_dc = @dc;
+            }
+            push @aggregated_dcs,
+              [ 'rdf:Description' => [ 'rdf:about', $self->uri_maker->($pmh->identifier) ], \@dc ];
+            push @aggregated_urls,
+              [ 'ore:aggregates' => [ 'rdf:resource', $self->uri_maker->($pmh->identifier) ], undef ];
+        }
     }
+    push @canonical_dc, @aggregated_urls;
     my $data = [
                 'rdf:RDF' => [
                               'xmlns:rdf' => "http://www.w3.org/1999/02/22-rdf-syntax-ns#" ,
@@ -49,12 +72,9 @@ sub as_rdf_xml {
                  ],
 
                  [ 'rdf:Description' => [ 'rdf:about', $self->uri_maker->($text->full_ore_aggregation_uri) ],
-                   [
-                    @dc,
-                    [ 'dcterms:created' => [ 'rdf:datatype' => "http://www.w3.org/2001/XMLSchema#dateTime" ], $created ],
-                    [ 'dcterms:modified' => [ 'rdf:datatype' => "http://www.w3.org/2001/XMLSchema#dateTime" ], $updated ],
-                   ]
+                   \@canonical_dc,
                  ],
+                 @aggregated_dcs,
                 ]
                ];
     my $w = XML::Writer->new(OUTPUT => "self",

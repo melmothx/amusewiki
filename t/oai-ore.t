@@ -31,10 +31,7 @@ binmode STDOUT, ":encoding(UTF-8)";
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_id = '0ore0';
 
-my $site = $schema->resultset('Site')->find($site_id);
-
-unless ($site) {
-$site = create_site($schema, $site_id);
+my $site = create_site($schema, $site_id);
 $site->update({ pdf => 1, a4_pdf => 1 });
 $site->check_and_update_custom_formats;
 
@@ -106,8 +103,6 @@ if (my $att = $site->attachments->find({ uri => 't-t-1.png' })) {
                comment_muse => $att->uri . " *comment*",
                alt_text => $att->uri . " description ",
               );
-}
-
 }
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
