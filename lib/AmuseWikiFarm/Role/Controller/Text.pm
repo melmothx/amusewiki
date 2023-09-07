@@ -103,8 +103,11 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
         }
         $c->stash(page_title => HTML::Entities::decode_entities($text->title),
                   text_json_api => $c->uri_for($text->full_header_api),
-                  ore_rdf_link => $c->uri_for($text->full_ore_rdf_uri),
                   show_preview_only => $show_preview_only);
+        if ($c->stash->{f_class} eq 'text') {
+            $c->stash(ore_rdf_link => $c->uri_for($text->full_ore_rdf_uri));
+        }
+
     }
     elsif (my $attach = $site->attachments->by_uri($canonical . $append_ext)) {
         log_debug { "Found attachment $canonical$append_ext" };
