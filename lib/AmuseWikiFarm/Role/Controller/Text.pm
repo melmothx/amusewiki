@@ -104,6 +104,10 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
         $c->stash(page_title => HTML::Entities::decode_entities($text->title),
                   text_json_api => $c->uri_for($text->full_header_api),
                   show_preview_only => $show_preview_only);
+        if ($c->stash->{f_class} eq 'text') {
+            $c->stash(ore_rdf_link => $c->uri_for($text->full_ore_rdf_uri));
+        }
+
     }
     elsif (my $attach = $site->attachments->by_uri($canonical . $append_ext)) {
         log_debug { "Found attachment $canonical$append_ext" };
@@ -262,6 +266,14 @@ sub json :Chained('match') PathPart('json') :Args(0) {
     my ($self, $c) = @_;
     $c->stash(json => $c->stash->{text}->raw_headers);
     $c->detach($c->view('JSON'));
+}
+
+sub ore_rdf :Chained('match') PathPart('ore.rdf') :Args(0) {
+    my ($self, $c) = @_;
+    # depends on stash.text being present
+    my $ore = $c->model('OaiOre');
+    $c->response->content_type('application/rdf+xml');
+    $c->response->body($ore->as_rdf_xml);
 }
 
 sub mirror_manifest :Chained('match') PathPart('manifest.json') :Args(0) {

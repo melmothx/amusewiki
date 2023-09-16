@@ -869,6 +869,7 @@ lib/AmuseWikiFarm/Archive/CgitEmulated.pm
 lib/AmuseWikiFarm/Archive/Lexicon.pm
 lib/AmuseWikiFarm/Archive/Lexicon/Handles.pm
 lib/AmuseWikiFarm/Archive/Lexicon/Site.pm
+lib/AmuseWikiFarm/Archive/OAI/ORE.pm
 lib/AmuseWikiFarm/Archive/OAI/PMH.pm
 lib/AmuseWikiFarm/Archive/StaticIndexes.pm
 lib/AmuseWikiFarm/Archive/Xapian.pm
@@ -894,6 +895,7 @@ lib/AmuseWikiFarm/Controller/Listing.pm
 lib/AmuseWikiFarm/Controller/Mirror.pm
 lib/AmuseWikiFarm/Controller/Monthly.pm
 lib/AmuseWikiFarm/Controller/Nodes.pm
+lib/AmuseWikiFarm/Controller/OAI.pm
 lib/AmuseWikiFarm/Controller/OaiPmh.pm
 lib/AmuseWikiFarm/Controller/OPDS.pm
 lib/AmuseWikiFarm/Controller/Publish.pm
@@ -950,6 +952,7 @@ lib/AmuseWikiFarm/Model/BookBuilder.pm
 lib/AmuseWikiFarm/Model/Cgit.pm
 lib/AmuseWikiFarm/Model/DB.pm
 lib/AmuseWikiFarm/Model/Lexicon.pm
+lib/AmuseWikiFarm/Model/OaiOre.pm
 lib/AmuseWikiFarm/Model/OaiPmh.pm
 lib/AmuseWikiFarm/Model/OPDS.pm
 lib/AmuseWikiFarm/Model/Webserver.pm
@@ -1042,6 +1045,7 @@ lib/AmuseWikiFarm/Utils/Paginator.pm
 lib/AmuseWikiFarm/Utils/Paginator/Object.pm
 lib/AmuseWikiFarm/Utils/Paths.pm
 lib/AmuseWikiFarm/Utils/Webserver.pm
+lib/AmuseWikiFarm/Utils/XML.pm
 lib/AmuseWikiFarm/View/Atom.pm
 lib/AmuseWikiFarm/View/HTML.pm
 lib/AmuseWikiFarm/View/JSON.pm
@@ -1920,6 +1924,7 @@ t/not-found.t
 t/not/parsable/ciao.muse
 t/notify-deferred.t
 t/numeric-collation-cats.t
+t/oai-ore.t
 t/oai-pmh.t
 t/open-graph.t
 t/other-sites.t

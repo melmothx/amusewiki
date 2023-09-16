@@ -41,6 +41,12 @@ sub oldest_record {
                   })->first;
 }
 
+sub not_deleted {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    $self->search({ "$me.deleted" => 0 });
+}
+
 sub set_deleted_flag_on_obsolete_records {
     my ($self, $ids) = @_;
     die "Missing ids" unless $ids && ref($ids) eq 'ARRAY';

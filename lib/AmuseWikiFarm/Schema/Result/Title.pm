@@ -1106,6 +1106,16 @@ sub full_header_api {
     return $self->full_uri . '/json';
 }
 
+sub full_ore_rdf_uri {
+    my $self = shift;
+    return $self->full_uri . '/ore.rdf';
+}
+
+sub full_ore_aggregation_uri {
+    my $self = shift;
+    return $self->full_uri . '/ore.rdf#aggregation';
+}
+
 sub full_rebuild_uri {
     my $self = shift;
     return $self->full_uri . '/rebuild';
