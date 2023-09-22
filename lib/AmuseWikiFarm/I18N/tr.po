@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2023-05-05 20:06+0300\n"
+"PO-Revision-Date: 2023-09-19 13:33+0300\n"
 "Last-Translator: Rojen Zaman <rojen@riseup.net>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #. ($filename)
 msgid "%1 doesn't exist"
@@ -56,7 +56,7 @@ msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "Bir (ya da daha fazla) boş satır yeni paragraf başlatır."
 
 msgid "A collection with this URI already exists"
-msgstr ""
+msgstr "Bu URI'ye sahip bir koleksiyon zaten mevcut"
 
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
@@ -286,7 +286,7 @@ msgid "As regular image in the body"
 msgstr "Gövdede normal resim olarak"
 
 msgid "Assign text to collections"
-msgstr ""
+msgstr "Koleksiyonlara metin ata"
 
 msgid "Attach"
 msgstr "Ekle"
@@ -506,11 +506,11 @@ msgid "Code"
 msgstr "Kod"
 
 msgid "Collections"
-msgstr ""
+msgstr "Koleksiyonlar"
 
 msgid ""
 "Collections have been updated. You may want to refresh the OAI-PMH repository"
-msgstr ""
+msgstr "Koleksiyonlar güncellendi. OAI-PMH deposunu yenilemek isteyebilirsin"
 
 msgid "Colophon (displayed in the generated files):"
 msgstr "Kolofon (oluşturulan dosyalarda gözükür)"
@@ -582,7 +582,7 @@ msgid ""
 "own server). "
 msgstr ""
 "GitLab, GitHub veya benzeri servislerde (veya kendi sunucunuzda) herkese "
-"açık bir depo oluştur."
+"açık bir depo oluştur. "
 
 msgid "Create a topic alias"
 msgstr "Konu rumuzu yarat"
@@ -645,7 +645,7 @@ msgid "Delete remote repository %1"
 msgstr "%1 uzak veri deposunu sil"
 
 msgid "Delete selected attachments"
-msgstr ""
+msgstr "Seçili ekleri sil"
 
 msgid ""
 "Deleting a revision is safe if a text has been\n"
@@ -910,7 +910,7 @@ msgid "Files"
 msgstr "Dosyalar"
 
 msgid "Files not referenced by any text"
-msgstr ""
+msgstr "Herhangi bir metin tarafından referans verilmeyen dosyalar"
 
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
@@ -1558,6 +1558,7 @@ msgstr "Bağlantılar"
 
 msgid "List of paths to attach to this collection, one per line."
 msgstr ""
+"Satır başına bir tane olmak üzere bu koleksiyona eklenecek yolların listesi."
 
 msgid "List of texts on hold"
 msgstr "Beklemedeki metinlerin listesi"
@@ -1938,7 +1939,7 @@ msgid "Paragraphs"
 msgstr "Paragraflar"
 
 msgid "Parent collection"
-msgstr ""
+msgstr "Üst koleksiyon"
 
 msgid "Part"
 msgstr "Parça"
@@ -2404,7 +2405,7 @@ msgid "Roles"
 msgstr "Roller"
 
 msgid "Root Collection"
-msgstr ""
+msgstr "Kök Koleksiyon"
 
 msgid "Run diff"
 msgstr "Çalıştır: diff"
