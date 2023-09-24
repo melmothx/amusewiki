@@ -126,6 +126,11 @@ __PACKAGE__->table("attachment");
   is_nullable: 1
   size: 255
 
+=head2 errors
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 site_id
 
   data_type: 'varchar'
@@ -168,6 +173,8 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 1 },
   "mime_type",
   { data_type => "varchar", is_nullable => 1, size => 255 },
+  "errors",
+  { data_type => "text", is_nullable => 1 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
@@ -288,8 +295,8 @@ Composing rels: L</title_attachments> -> title
 __PACKAGE__->many_to_many("titles", "title_attachments", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-11 11:21:16
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:K9JySnrsd8/WE3cVhAodBA
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-09-24 07:45:00
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TVqeU1H8gcMTJChQnxiovw
 
 =head2 File classes
 
