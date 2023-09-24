@@ -329,6 +329,7 @@ use AmuseWikiFarm::Log::Contextual;
 use Path::Tiny;
 use AmuseWikiFarm::Utils::Amuse qw/build_full_uri/;
 use HTML::Entities qw/encode_entities/;
+use Try::Tiny;
 
 sub can_be_inlined {
     my $self = shift;
@@ -421,6 +422,18 @@ sub path_object {
 
 sub generate_thumbnails {
     my $self = shift;
+    my $errors;
+    try {
+        $self->_do_generate_thumbnails;
+    }
+    catch {
+        $errors = $_;
+    };
+    $self->update({ errors => $errors });
+}
+
+sub _do_generate_thumbnails {
+    my $self = shift;
     my $srcfile = $self->path_object;
     my $basename = $srcfile->basename;
     my $repo_root = $self->site->repo_root;
@@ -456,7 +469,7 @@ sub generate_thumbnails {
                                                 });
         }
         else {
-            log_error { "Cannot extract thumbnail from $src into $out with $dimensions{$ext}"};
+            die "Cannot extract thumbnail from $src into $out with $dimensions{$ext}";
         }
     }
 }

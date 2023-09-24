@@ -977,24 +977,11 @@ sub convert_pdf_to_png {
         return $output;
     }
     else {
-        Dlog_error { "Execution of $_ failed" } \@exec;
+        die "Execution of " . join(" ", @exec) . " failed";
     }
 }
 
 sub create_thumbnail {
-    my ($input, $output, $width) = @_;
-    return unless $input && $output && $width;
-    my ($w, $h);
-    try {
-        ($w, $h) = _generate_thumbnail($input, $output, $width);
-    } catch {
-        my $err = $_;
-        log_error { "Failure to create thumbnail $input => $output => $width with error $err" };
-    };
-    return ($w, $h);
-}
-
-sub _generate_thumbnail {
     my ($input, $output, $width) = @_;
     die unless $input && $output && $width;
     my $wd = Path::Tiny->tempdir;
