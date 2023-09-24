@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 56;
+use Test::More tests => 63;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -9,6 +9,8 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
+use Path::Tiny;
+use Data::Dumper::Concise;
 
 my $pdf = catfile(qw/t files shot.pdf/);
 my $png = catfile(qw/t files shot.png/);
@@ -86,3 +88,31 @@ foreach my $attachment ($site->attachments) {
 ok $site->thumbnails->min_dimensions(200, 200)->count, "Found thumbs with dimensions > 200";
 $mech->get_ok('/latest');
 $mech->content_contains("/uploads/$site_id/thumbnails/$png_att.small.png");
+
+{
+    my $bad = Path::Tiny->tempfile;
+    $bad->spew_raw("%PDF-1.3\nalsdfjlaksdjflkasdflkjasdf\n");
+    my ($rev) = $site->create_new_text({ title => 'In error',
+                                         lang => 'hr',
+                                         textbody => '<p>ciao</p>',
+                                       }, 'text');
+    my $add  = $rev->add_attachment("$bad");
+    diag Dumper($add);
+    my $first = $add->{attachment};
+    diag "Added $first";
+    $rev->edit("#ATTACH $first\n" . $rev->muse_body);
+    my $second = $rev->add_attachment("$bad")->{attachment};
+    diag "Added $second";
+    $rev->commit_version;
+    $rev->publish_text;
+    foreach my $att ($site->attachments) {
+        $att->generate_thumbnails;
+    }
+    is $site->attachments->search({ errors => { '<>' => '' } })->count, 2;
+    $mech->get_ok('/login');
+    ok $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' });
+    $mech->get_ok('/attachments/orphans');
+    $mech->content_contains('attachment-error');
+    $mech->get_ok('/attachments/list');
+    $mech->content_contains('attachment-error');
+}
