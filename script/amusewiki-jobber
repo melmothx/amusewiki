@@ -80,7 +80,10 @@ try {
 
         # ignore the attachments in the staging area instead of dying
         # because out of the root
-        my $attachments = $site->attachments->search({ f_archive_rel_path => { '!=' => '' } });
+        my $attachments = $site->attachments->search({
+                                                      f_archive_rel_path => { '!=' => '' },
+                                                      errors => undef,
+                                                     });
         while (my $att = $attachments->next) {
             if ($att->has_thumbnails and !$att->thumbnails->count) {
                 log_info { "Generating thumbnails for " . $att->uri };

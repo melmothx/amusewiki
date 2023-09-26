@@ -55,6 +55,7 @@ sub orphans :Chained('root') :Args(0) {
                      name => $att->uri,
                      thumb => $c->uri_for($att->small_uri),
                      has_thumbnails => $att->has_thumbnails,
+                     errors => $att->errors,
                     };
         if ($ainfo->{has_thumbnails}) {
             $ainfo->{has_thumbnails} = 0 unless $att->has_thumbnail_file('small');
@@ -98,6 +99,7 @@ sub list :Chained('root') :Args {
                      desc => $att->comment_html,
                      has_thumbnails => $att->has_thumbnails,
                      alt_text => $att->alt_text,
+                     errors => $att->errors,
                     };
         if ($ainfo->{has_thumbnails}) {
             $ainfo->{has_thumbnails} = 0 unless $att->has_thumbnail_file('small');

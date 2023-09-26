@@ -26,6 +26,9 @@
       <th>
         [% loc('Thumbnail') %]
       </th>
+      <th>
+        [% loc('Errors') %]
+      </th>
     </tr>
     </thead>
     <tbody>
@@ -62,6 +65,11 @@
             <i title="[% att.name | html %]" class="fa fa-file-o fa-4x fa-border attachment-without-thumb"></i>
           [% END %]
         </a>
+      </td>
+      <td>
+        [% IF att.errors %]
+          <div class="attachment-error text-danger">[% att.errors | html %]</div>
+        [% END %]
       </td>
     </tr>
     [% END %]
