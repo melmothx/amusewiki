@@ -1528,6 +1528,11 @@ sub dublin_core_entry {
     # we need one per format
     my ($self) = @_;
     my @cats = $self->categories;
+
+    my @rels;
+    if (my $parent = $self->parent_text) {
+        push @rels, $parent->full_uri;
+    }
     my $data = {
                 title => [ grep { length($_) } ($self->title, $self->subtitle) ],
                 creator => [
@@ -1543,11 +1548,12 @@ sub dublin_core_entry {
                 description => [
                                 map { /\w/ ? $_ : '-' } ($self->teaser, $self->notes)
                                ],
-                publisher => $self->publisher,
-                date => $self->date_year || $self->pubdate->ymd,
-                source => $self->source,
-                language => $self->lang || 'en',
-                rights => $self->rights,
+                publisher => [ $self->publisher ],
+                date => [ $self->date_year || $self->pubdate->ymd ],
+                source => [ $self->source ],
+                language => [ $self->lang || 'en' ],
+                rights => [ $self->rights ],
+                relation => [ @rels ],
                };
     return $data;
 }
