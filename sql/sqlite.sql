@@ -324,6 +324,7 @@ CREATE TABLE title (
         lang        VARCHAR(3) NOT NULL DEFAULT 'en',
 
         date        TEXT,
+        datefirst   TEXT,
         notes       TEXT,
         source      TEXT,
 

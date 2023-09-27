@@ -66,6 +66,11 @@ __PACKAGE__->table("title");
   data_type: 'text'
   is_nullable: 1
 
+=head2 datefirst
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 notes
 
   data_type: 'text'
@@ -278,6 +283,8 @@ __PACKAGE__->add_columns(
   "lang",
   { data_type => "varchar", default_value => "en", is_nullable => 0, size => 3 },
   "date",
+  { data_type => "text", is_nullable => 1 },
+  "datefirst",
   { data_type => "text", is_nullable => 1 },
   "notes",
   { data_type => "text", is_nullable => 1 },
@@ -624,8 +631,8 @@ Composing rels: L</node_titles> -> node
 __PACKAGE__->many_to_many("nodes", "node_titles", "node");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-11 11:21:16
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qx0/jlUYtl3Wv69Cb9SQdQ
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-09-27 15:39:42
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:zRJe4YP/ywJ7+t68cXr9Ew
 
 =head2 translations
 
