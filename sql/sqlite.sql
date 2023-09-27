@@ -1,11 +1,5 @@
 PRAGMA foreign_keys = ON;
 
-DROP TABLE IF EXISTS vhost;
-DROP TABLE IF EXISTS site;
-DROP TABLE IF EXISTS title_author;
-DROP TABLE IF EXISTS title;
-DROP TABLE IF EXISTS author;
-
 CREATE TABLE vhost (
        name VARCHAR(255) PRIMARY KEY,
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
@@ -707,7 +701,7 @@ CREATE TABLE oai_pmh_record (
 
        metadata_type VARCHAR(32), -- text/image/sound https://www.dublincore.org/specifications/dublin-core/type-element/
        metadata_format VARCHAR(32), -- mime type, but at runtime we should append the custom format description
-
+       metadata_format_description VARCHAR(255),
        -- flag for deletion
        deleted INTEGER(1) NOT NULL DEFAULT 0,
        update_run INTEGER NOT NULL DEFAULT 0

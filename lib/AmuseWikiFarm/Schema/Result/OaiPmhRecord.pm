@@ -92,6 +92,12 @@ __PACKAGE__->table("oai_pmh_record");
   is_nullable: 1
   size: 32
 
+=head2 metadata_format_description
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 deleted
 
   data_type: 'integer'
@@ -126,6 +132,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 32 },
   "metadata_format",
   { data_type => "varchar", is_nullable => 1, size => 32 },
+  "metadata_format_description",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "deleted",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "update_run",
@@ -263,8 +271,8 @@ Composing rels: L</oai_pmh_record_sets> -> oai_pmh_set
 __PACKAGE__->many_to_many("oai_pmh_sets", "oai_pmh_record_sets", "oai_pmh_set");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-15 17:57:21
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:F9R4sGRGGvtgz6wLvOY0xQ
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-09-27 10:47:43
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Xmhs3aN3f4dXdlIaIovXYA
 
 __PACKAGE__->add_columns('+datestamp' => { timezone => 'UTC' });
 
