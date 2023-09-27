@@ -1852,19 +1852,6 @@ sub wants_custom_format {
 sub display_categories {
     my $self = shift;
     my @out;
-
-    my $text = $self;
-    my $iterations = 0;
-  PARENT:
-    while (my $p = $text->parent_text) {
-        $text = $p;
-        $iterations++;
-        if ($iterations > 10) {
-            log_error { "Possible parentage with infinite recursion on " . $self->full_uri };
-            last PARENT;
-        }
-    }
-
     my %muse_headers = map { $_->muse_header => $_->as_html } $self->muse_headers;
 
   CTYPE:
@@ -1880,7 +1867,7 @@ sub display_categories {
             }
             next CTYPE;
         }
-        my $rs = $text->categories->by_type($ctype->category_type)->with_active_flag_on;
+        my $rs = $self->categories->by_type($ctype->category_type)->with_active_flag_on;
         my @list;
         while (my $cat = $rs->next) {
             push @list, {
