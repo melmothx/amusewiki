@@ -11,7 +11,7 @@ BEGIN {
 
 
 use Data::Dumper;
-use Test::More tests => 198;
+use Test::More tests => 224;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::OAI::PMH;
 use File::Spec::Functions qw/catfile catdir/;
@@ -114,6 +114,17 @@ MUSE
     path(t => files => 'shot.pdf')->copy(path($site->repo_root, 'uploads', 'shot.pdf'));
     path(t => files => 'shot.png')->copy(path($site->repo_root, qw/t tt t-t-1.png/));
     path(t => files => 'shot.jpg')->copy(path($site->repo_root, qw/t tt t-t-2.jpeg/));
+    my $child = path($site->repo_root, qw/t tt t-t-child.muse/);
+
+    $child->spew_utf8(<<"MUSE");
+#title Sub text
+#source From "the" internet
+#date 1923 and something else
+#subtitle This is a subtitle
+#parent to-test
+
+This is the body of the child
+MUSE
     $site->git->add('uploads');
     $site->git->add('t');
     $site->git->commit({ message => "Added files" });
@@ -277,7 +288,7 @@ foreach my $test ({
                             metadataPrefix => 'oai_dc',
                             identifier => $site->oai_pmh_records->search({
                                                                           title_id => { '>', 0 },
-                                                                          identifier => { -like => '%.pdf' },
+                                                                          identifier => { -like => '%to-test%.pdf' },
                                                                          })->first->identifier,
                            },
                    expect => [
@@ -306,7 +317,7 @@ foreach my $test ({
                             metadataPrefix => 'oai_dc',
                             identifier => $site->oai_pmh_records->search({
                                                                           title_id => { '>', 0 },
-                                                                          identifier => { -like => '%.muse' },
+                                                                          identifier => { -like => '%to-test%.muse' },
                                                                          })->first->identifier,
                            },
                    expect => [
@@ -337,6 +348,7 @@ foreach my $test ({
                               '<setSpec>amusewiki</setSpec>',
                               '<dc:format>image/png</dc:format>',
                               '<dc:type>image</dc:type>',
+                              '<dc:relation>https://0oai0.amusewiki.org/library/to-test</dc:relation>',
                              ],
                    lacks => [
                              '<header status="deleted">',
@@ -423,11 +435,11 @@ foreach my $test ({
                            },
                    expect => [
                               'to-test.pdf</identifier>',
-                              '<resumptionToken completeListSize="11" cursor="0">',
+                              '<resumptionToken completeListSize="18" cursor="0">',
                              ],
                    lacks => [
                              'to-test.a4.pdf</identifier>',
-                              '<resumptionToken completeListSize="11" cursor="9" />',
+                              '<resumptionToken completeListSize="18" cursor="9" />',
                             ],
 
                   },
@@ -453,11 +465,11 @@ foreach my $test ({
                    expect => [
                               'to-test.pdf</identifier>',
                               '<dc:description>Plain PDF</dc:description>',
-                              '<resumptionToken completeListSize="11" cursor="0">',
+                              '<resumptionToken completeListSize="18" cursor="0">',
                              ],
                    lacks => [
                              'to-test.a4.pdf</identifier>',
-                              '<resumptionToken completeListSize="11" cursor="9" />',
+                              '<resumptionToken completeListSize="18" cursor="9" />',
                             ],
                   },
                   {
@@ -487,7 +499,7 @@ foreach my $test ({
                            },
                    expect => [
                               'to-test.pdf</identifier>',
-                              '<resumptionToken completeListSize="11" cursor="0">',
+                              '<resumptionToken completeListSize="18" cursor="0">',
                              ],
                    lacks => [
                              '<error code="noRecordsMatch">',
@@ -513,7 +525,7 @@ foreach my $test ({
                            },
                    expect => [
                               'to-test.pdf</identifier>',
-                              '<resumptionToken completeListSize="11" cursor="0">',
+                              '<resumptionToken completeListSize="18" cursor="0">',
                               '<leader>      am         3u     </leader>',
                               '<datafield tag="246" ind1="3" ind2="3">',
                               '<subfield code="a">This is a subtitle</subfield>',
@@ -557,7 +569,22 @@ foreach my $test ({
                               '/uploads/0oai0/shot.pdf</identifier>',
                             ]
                   },
-
+                  {
+                   args => {
+                            verb => 'GetRecord',
+                            metadataPrefix => 'oai_dc',
+                            identifier => $site->oai_pmh_records->search({
+                                                                          title_id => { '>', 0 },
+                                                                          identifier => { -like => '%child%.epub' },
+                                                                         })->first->identifier,
+                           },
+                   expect => [
+                              '<dc:description>-</dc:description>',
+                              '<dc:description>EPUB (for mobile devices)</dc:description>',
+                              '<dc:relation>https://0oai0.amusewiki.org/library/to-test</dc:relation>',
+                             ],
+                   lacks => [],
+                  },
                  ) {
     my $uri = URI->new($site->canonical_url);
     $uri->path('/oai-pmh');

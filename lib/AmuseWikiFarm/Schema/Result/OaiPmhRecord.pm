@@ -426,13 +426,15 @@ sub dublin_core_record {
                ];
     }
     my $data = $obj->dublin_core_entry;
-    $data->{identifier} = $self->site->canonical_url . $self->identifier;
+    my $base_url = $self->site->canonical_url;
+    $data->{identifier} = $base_url . $self->identifier;
     $data->{format} = $self->metadata_format;
     $data->{type} = $self->metadata_type;
     if (my $fdesc = $self->metadata_format_description) {
-        my @descs = ref($data->{description}) ? @{$data->{description}} : ($data->{description});
-        $data->{description} = [ $fdesc, @descs ];
+        push @{$data->{description}}, $fdesc;
     }
+    $data->{relation} = [ map { $base_url . $_ } @{$data->{relation}} ];
+
     my @out;
     foreach my $k (qw/title
                       creator
