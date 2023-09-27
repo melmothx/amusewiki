@@ -1556,7 +1556,7 @@ sub dublin_core_entry {
                                 map { /\w/ ? $_ : '-' } ($self->teaser, $self->notes)
                                ],
                 publisher => [ $self->publisher ],
-                date => [ $self->date_year || $self->pubdate->ymd ],
+                date => [ grep { $_ } ($self->year_first_edition, $self->date_year || $self->pubdate->year) ],
                 source => [ $self->source ],
                 language => [ $self->lang || 'en' ],
                 rights => [ $self->rights ],
@@ -1807,6 +1807,16 @@ sub author_title {
     else {
         return $self->uri;
     }
+}
+
+sub year_first_edition {
+    my $self = shift;
+    if (my $date = $self->datefirst) {
+        if ($date =~ m/\b([0-9]{4})\b/) {
+            return $1;
+        }
+    }
+    return;
 }
 
 sub date_year {
