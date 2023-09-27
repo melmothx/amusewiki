@@ -11,7 +11,7 @@ BEGIN {
 
 
 use Data::Dumper;
-use Test::More tests => 224;
+use Test::More tests => 225;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::OAI::PMH;
 use File::Spec::Functions qw/catfile catdir/;
@@ -76,6 +76,7 @@ diag $oai_pmh->process_request({
 #attach shot.pdf
 #publisher <testing> publisher
 #date 1923 and something else
+#datefirst 1888 and something else
 #subtitle This is a subtitle
 #teaser This is the teaser
 #notes These are the notes
@@ -300,6 +301,7 @@ foreach my $test ({
                               '<dc:subject>And &lt;another&gt;</dc:subject>',
                               '<dc:subject>xAnd&amp;another</dc:subject>',
                               '<dc:publisher>&lt;testing&gt; publisher</dc:publisher>',
+                              '<dc:date>1888</dc:date>',
                               '<dc:date>1923</dc:date>',
                               '<dc:source>From "the" internet</dc:source>',
                               '<dc:language>it</dc:language>',
