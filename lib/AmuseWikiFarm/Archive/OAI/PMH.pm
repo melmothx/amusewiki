@@ -108,6 +108,7 @@ sub update_site_records {
                           title_id => $title_id,
                           custom_formats_id => $f->{custom_formats_id},
                           metadata_format => $mime_types->{$ext},
+                          metadata_format_description => $f->{desc},
                           sets => $ext eq 'muse' ? [ $amwset ] : [],
                          };
         }
@@ -117,6 +118,7 @@ sub update_site_records {
                           identifier => $attachment->full_uri,
                           attachment_id => $attachment->id,
                           metadata_format => $attachment->mime_type,
+                          metadata_format_description => "Attachment",
                           sets => [ $amwset ],
                          };
             $done{$attachment->id}++;
@@ -128,6 +130,7 @@ sub update_site_records {
                           identifier => $identifier,
                           title_id => $title_id,
                           metadata_format => 'text/html',
+                          metadata_format_description => "Landing page",
                           # lookup the collections from the prebuild tree
                           sets => [ $webset,
                                     (map { $node_sets{$_} } @{ $node_tree->{$title_id} || [] }),
@@ -147,6 +150,7 @@ sub update_site_records {
                           identifier => $attachment->full_uri,
                           attachment_id => $attachment->id,
                           metadata_format => $attachment->mime_type,
+                          metadata_format_description => "Orphan attachment",
                          };
         }
     }
