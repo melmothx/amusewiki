@@ -11,7 +11,7 @@ BEGIN {
 
 
 use Data::Dumper;
-use Test::More tests => 196;
+use Test::More tests => 198;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::OAI::PMH;
 use File::Spec::Functions qw/catfile catdir/;
@@ -78,6 +78,7 @@ diag $oai_pmh->process_request({
 #date 1923 and something else
 #subtitle This is a subtitle
 #teaser This is the teaser
+#notes These are the notes
 
 > Tirsi morir volea,
 > Gl'occhi mirando di colei ch'adora;
@@ -467,6 +468,8 @@ foreach my $test ({
                    expect => [
                               'to-test.a4.pdf</identifier>',
                               '<dc:description>A4 imposed PDF</dc:description>',
+                              '<dc:description>This is the teaser</dc:description>',
+                              '<dc:description>These are the notes</dc:description>',
                               '<resumptionToken completeListSize="10" cursor="9" />',
                              ],
                    lacks => [

@@ -1540,7 +1540,9 @@ sub dublin_core_entry {
                             grep { $_->type eq 'topic' }
                             @cats
                            ],
-                description => $self->teaser,
+                description => [
+                                map { /\w/ ? $_ : '-' } ($self->teaser, $self->notes)
+                               ],
                 publisher => $self->publisher,
                 date => $self->date_year || $self->pubdate->ymd,
                 source => $self->source,

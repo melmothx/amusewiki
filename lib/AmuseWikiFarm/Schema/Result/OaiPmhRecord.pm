@@ -429,6 +429,10 @@ sub dublin_core_record {
     $data->{identifier} = $self->site->canonical_url . $self->identifier;
     $data->{format} = $self->metadata_format;
     $data->{type} = $self->metadata_type;
+    if (my $fdesc = $self->metadata_format_description) {
+        my @descs = ref($data->{description}) ? @{$data->{description}} : ($data->{description});
+        $data->{description} = [ $fdesc, @descs ];
+    }
     my @out;
     foreach my $k (qw/title
                       creator
@@ -451,15 +455,8 @@ sub dublin_core_record {
                 my $cleaned = AmuseWikiFarm::Utils::Amuse::clean_html($value);
                 $cleaned =~ s/\A\s+//;
                 $cleaned =~ s/\s+\z//;
-                if ($cleaned) {
+                if (length($cleaned)) {
                     push @out, [ $prefix . $k => $cleaned ];
-                }
-            }
-        }
-        if ($k eq 'description') {
-            if (my $cf = $self->custom_format) {
-                if (my $cf_name = $cf->format_name) {
-                    push @out, [ $prefix . $k =>  $cf_name ]
                 }
             }
         }
