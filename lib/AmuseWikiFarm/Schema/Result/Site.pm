@@ -583,6 +583,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 annotations
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Annotation>
+
+=cut
+
+__PACKAGE__->has_many(
+  "annotations",
+  "AmuseWikiFarm::Schema::Result::Annotation",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 attachments
 
 Type: has_many
@@ -999,8 +1014,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-11 11:21:16
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:RCs7bR+Ayhr47kzoal15/g
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-10-01 08:37:40
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:xVVXee+HMfyH3ZvI6L7aHA
 
 =head2 other_sites
 
