@@ -716,12 +716,13 @@ use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse;
 use HTML::Entities qw/decode_entities encode_entities/;
 use AmuseWikiFarm::Utils::Amuse qw/cover_filename_is_valid to_json from_json build_full_uri/;
-use Path::Tiny qw//;
+use Path::Tiny ();
 use HTML::LinkExtor; # from HTML::Parser
 use HTML::TreeBuilder;
 use URI;
 use Data::Dumper::Concise;
 use AmuseWikiFarm::Utils::Paths;
+use File::MimeInfo::Magic qw/mimetype/;
 use constant { PAPER_PAGE_SIZE => 2000 };
 
 has selected_formats => (is => 'ro',
@@ -2029,22 +2030,86 @@ MUSE
 
 sub annotate {
     my ($self, $params) = @_;
+    my $site = $self->site;
     my @errors;
+  ANNOTATION:
     foreach my $ann ($self->site->annotations) {
         if (my $update = $params->{$ann->annotation_id}) {
             my $title_annotation = $self->title_annotations->find_or_create({ annotation => $ann });
+            my @path = ($site->repo_root, 'annotations');
+
+            # create directory and add gitingore
+            my $gitignore = Path::Tiny::path(@path, '.gitignore');
+            $gitignore->parent->mkpath;
+            unless ($gitignore->exists) {
+                $gitignore->spew_utf8("*\n*/\n");
+            }
+
+            # annotation name
+            if ($ann->annotation_name =~ m/\A([a-z0-9-]+)\z/) {
+                push @path, $1;
+            }
+            else {
+                push @errors, "Bad annotation name " . $ann->annotation_name;
+                next ANNOTATION;
+            }
+
+            # class, path, uri
+            push @path, $self->f_class;
+            if (my $relpath = $self->f_archive_rel_path) {
+                push @path, grep { /\A[a-z0-9-]+\z/ } split(/\//, $relpath);
+            }
+            if ($ann->annotation_name eq 'file' and my $file = $update->{file}) {
+                delete $update->{value};
+                if (-f $file) {
+                    my $mime = mimetype($file);
+                    my $all_mime = AmuseWikiFarm::Utils::Paths::served_mime_types();
+                    my %mimes = reverse %$all_mime;
+                    if (my $ext = $mimes{$mime}) {
+                        my $storage = Path::Tiny::path(@path, $self->uri . ".$ext");
+                        $storage->parent->mkpath;
+                        if (Path::Tiny::path($file)->copy($storage)) {
+                            log_debug { "File copied in $storage" };
+                            $update->{value} = $storage->relative($path[0]);
+                        }
+                        else {
+                            push @errors, "Could not copy $update->{file}";
+                            next ANNOTATION;
+                        }
+                    }
+                    else {
+                        push @errors, "$update->{file} has invalid mime $mime";
+                        next ANNOTATION;
+                    }
+                }
+                else {
+                    push @errors, "$update->{file} not found, cannot add to annotation";
+                    next ANNOTATION;
+                }
+            }
+            my $value = $update->{value};
+            my $destination = Path::Tiny::path(@path, $self->uri);
+            $destination->parent->mkpath;
+            log_debug { "Saving update in $destination" };
             if ($update->{remove}) {
                 $title_annotation->delete;
+                $destination->remove if $destination->exists;
             }
-            elsif ($update->{value}) {
-                $title_annotation->update({ annotation_value => $update->{value} });
+            elsif (defined $value) {
+                # save the content in a file, so we can reconstruct the tree.
+                my $destination = Path::Tiny::path(@path, $self->uri);
+                $destination->spew_utf8($value);
+                $title_annotation->update({ annotation_value => $value });
+            }
+            else {
+                push @errors, $ann->annotation_name . " was not passed!";
             }
         }
     }
     return {
             success => !@errors,
             errors => join(" / ", @errors),
-           }
+           };
 }
 
 __PACKAGE__->meta->make_immutable;

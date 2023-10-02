@@ -10,6 +10,7 @@ with 'AmuseWikiFarm::Role::Controller::HumanLoginScreen';
 use AmuseWikiFarm::Utils::Amuse qw//;
 use HTML::Entities qw//;
 use AmuseWikiFarm::Log::Contextual;
+use Try::Tiny;
 
 sub match :Chained('base') PathPart('') :CaptureArgs(1) {
     my ($self, $c, $arg) = @_;
@@ -191,17 +192,24 @@ sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
     if (@annotations) {
         my %vals;
         foreach my $ann ($text->title_annotations) {
-            $vals{$ann->annotation_id} = $ann->annotation_value;
+            $vals{$ann->annotation_id} = $ann->valid_value;
         }
+        Dlog_debug { "Values are  $_"  } \%vals;
         foreach my $ann (@annotations) {
             if (my $value = $vals{$ann->{id}}) {
                 $ann->{value} = $value;
+                if ($ann->{type} eq 'file') {
+                    log_debug { "File annotation is $value" };
+                    $ann->{url} = $c->uri_for($value)
+                }
                 my $html = HTML::Entities::encode_entities($value, q{<>&"'});
                 $html =~ s/\r?\n/<br>/g;
                 $ann->{html} = $html;
             }
         }
     }
+
+    Dlog_debug { "Annotations are  $_"  } \@annotations;
     $c->stash(annotations => \@annotations) if @annotations;
 }
 
