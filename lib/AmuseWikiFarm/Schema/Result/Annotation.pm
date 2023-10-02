@@ -51,12 +51,6 @@ __PACKAGE__->table("annotation");
   is_nullable: 0
   size: 16
 
-=head2 priority
-
-  data_type: 'integer'
-  default_value: 0
-  is_nullable: 0
-
 =head2 annotation_name
 
   data_type: 'varchar'
@@ -69,6 +63,32 @@ __PACKAGE__->table("annotation");
   is_nullable: 0
   size: 32
 
+=head2 label
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 255
+
+=head2 priority
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
+=head2 active
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+  size: 1
+
+=head2 private
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+  size: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -76,12 +96,18 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
-  "priority",
-  { data_type => "integer", default_value => 0, is_nullable => 0 },
   "annotation_name",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "annotation_type",
   { data_type => "varchar", is_nullable => 0, size => 32 },
+  "label",
+  { data_type => "varchar", is_nullable => 0, size => 255 },
+  "priority",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "active",
+  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
+  "private",
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -148,8 +174,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-10-01 08:37:40
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:GgRS0eeF35hkHJRABo2q9w
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-10-02 08:35:04
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TT8Fm/EQDALi7G+OQn/dsA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

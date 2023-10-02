@@ -735,9 +735,12 @@ CREATE TABLE oai_pmh_record_set (
 CREATE TABLE annotation (
     annotation_id INTEGER PRIMARY KEY AUTOINCREMENT,
     site_id VARCHAR(16) NOT NULL REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    priority INTEGER NOT NULL DEFAULT 0,
     annotation_name VARCHAR(255) NOT NULL,
-    annotation_type VARCHAR(32) NOT NULL
+    annotation_type VARCHAR(32) NOT NULL,
+    label VARCHAR(255) NOT NULL,
+    priority INTEGER NOT NULL DEFAULT 0,
+    active INTEGER(1) NOT NULL DEFAULT 1,
+    private INTEGER(1) NOT NULL DEFAULT 0
 );
 
 CREATE UNIQUE INDEX unique_site_annotation_key ON annotation (site_id, annotation_name);
