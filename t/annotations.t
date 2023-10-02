@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 8;
+use Test::More tests => 23;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -51,7 +51,8 @@ while (my $j = $site->jobs->dequeue) {
 }
 
 my $annotation = $site->annotations->create({
-                                             annotation_name => "Original",
+                                             label => "Original",
+                                             annotation_name => "original",
                                              annotation_type => "file",
                                             });
 
@@ -65,3 +66,37 @@ foreach my $title ($site->titles->all) {
 }
 ok $site->annotations->count;
 ok $annotation->title_annotations->count;
+
+foreach my $type (qw/identifier text/) {
+    my $ann = $site->annotations->create({
+                                          label => ucfirst($type),
+                                          annotation_name => $type,
+                                          annotation_type => $type,
+                                         });
+}
+
+foreach my $title ($site->titles->all) {
+    my %update;
+    foreach my $ann ($site->annotations) {
+        $update{$ann->annotation_id} = {
+                                        value => $ann->label . " Test",
+                                       };
+    }
+    my $res = $title->annotate(\%update);
+    ok $res->{success} or diag Dumper($res);
+    is $title->title_annotations->count, 3;
+
+    foreach my $up (values %update) {
+        $up->{value} .= " x";
+    }
+    $res = $title->annotate(\%update);
+    is $title->title_annotations->count, 3;
+    ok $res->{success} or diag Dumper($res);
+
+    foreach my $up (values %update) {
+        $up->{remove} = 1;
+    }
+    $res = $title->annotate(\%update);
+    ok $res->{success} or diag Dumper($res);
+}
+

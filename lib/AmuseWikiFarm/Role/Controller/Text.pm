@@ -176,6 +176,33 @@ sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
         }
         $c->stash(text_display_children => \@out);
     }
+
+    my $annotation_filter = { active => 1 };
+    unless ($c->user_exists) {
+        $annotation_filter->{private} = 0;
+    }
+    my @annotations = map { +{
+                              label => $_->label,
+                              name => $_->annotation_name,
+                              id => $_->annotation_id,
+                              type => $_->annotation_type,
+                             }
+                        } $site->annotations->search($annotation_filter, { order_by => 'priority' })->all;
+    if (@annotations) {
+        my %vals;
+        foreach my $ann ($text->title_annotations) {
+            $vals{$ann->annotation_id} = $ann->annotation_value;
+        }
+        foreach my $ann (@annotations) {
+            if (my $value = $vals{$ann->{id}}) {
+                $ann->{value} = $value;
+                my $html = HTML::Entities::encode_entities($value, q{<>&"'});
+                $html =~ s/\r?\n/<br>/g;
+                $ann->{html} = $html;
+            }
+        }
+    }
+    $c->stash(annotations => \@annotations) if @annotations;
 }
 
 sub text :Chained('populate_preamble') :PathPart('') :Args(0) {

@@ -226,6 +226,14 @@ sub bad_request :Private {
     $c->response->status(400);
 }
 
+sub bad_parameters :Private {
+    my ($self, $c) = @_;
+    $c->response->content_type('text/plain');
+    $c->response->body('Bad Parameters');
+    $c->response->status(400);
+}
+
+
 sub not_found :Private {
     my ($self, $c) = @_;
     $c->stash(please_index => 0);

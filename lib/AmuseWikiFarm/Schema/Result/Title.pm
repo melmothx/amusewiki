@@ -2027,6 +2027,26 @@ MUSE
     return $return;
 }
 
+sub annotate {
+    my ($self, $params) = @_;
+    my @errors;
+    foreach my $ann ($self->site->annotations) {
+        if (my $update = $params->{$ann->annotation_id}) {
+            my $title_annotation = $self->title_annotations->find_or_create({ annotation => $ann });
+            if ($update->{remove}) {
+                $title_annotation->delete;
+            }
+            elsif ($update->{value}) {
+                $title_annotation->update({ annotation_value => $update->{value} });
+            }
+        }
+    }
+    return {
+            success => !@errors,
+            errors => join(" / ", @errors),
+           }
+}
+
 __PACKAGE__->meta->make_immutable;
 
 1;
