@@ -66,6 +66,7 @@ __PACKAGE__->table("annotation");
 =head2 label
 
   data_type: 'varchar'
+  default_value: (empty string)
   is_nullable: 0
   size: 255
 
@@ -101,7 +102,7 @@ __PACKAGE__->add_columns(
   "annotation_type",
   { data_type => "varchar", is_nullable => 0, size => 32 },
   "label",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "priority",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "active",
@@ -174,8 +175,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-10-02 08:35:04
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TT8Fm/EQDALi7G+OQn/dsA
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-10-02 08:39:36
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Ma7AEFBtR3vngWkg1g+rEg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
