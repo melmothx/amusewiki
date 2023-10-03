@@ -34,11 +34,13 @@
   </table>
 </div>
 
+[% IF c.check_any_user_role('admin', 'root') %]
 <div class="row">
   <div class="col-xs-12">
     <a href="[% c.uri_for('/settings/categories') %]">[% loc('Manage category types') %]</a>
   </div>
 </div>
+[% END %]
 
 <script>
  $(document).ready(function() {
