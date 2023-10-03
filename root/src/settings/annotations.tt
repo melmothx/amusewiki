@@ -1,0 +1,71 @@
+[% INCLUDE 'include/breadcrumbs.tt' %]
+<div class="page-header">
+  <h2>[% page_title | html %]</h2>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    [% loc("Annotations are text metadata which are not included in the muse file. Examples could be: prices, catalog numbers, shelf location, working copies of large binary files, internal comments") %]
+  </div>
+</div>
+
+<div class="table-responsive">
+  <form action="[% c.uri_for_action('/settings/edit_annotations') %]" method="POST">
+    <table class="table table-striped table-condensed table-bordered">
+      <tr>
+        <th>[% loc('Code') %]</th>
+        <th>[% loc('Label') %]</th>
+        <th>[% loc('Priority') %]</th>
+        <th>[% loc('Type') %]</th>
+        <th>[% loc('Active') %]</th>
+        <th>[% loc('Private') %]</th>
+      </tr>
+      [% FOREACH ann IN annotations %]
+        <tr>
+          <td>
+            <input type="text" name="name-[% ann.annotations_id %]"
+                   pattern="[0-9a-z-]+"
+                   class="form-control"
+                   value="[% ann.annotation_name | html %]" />
+          </td>
+          <td>
+            <input type="text"
+                   class="form-control"
+                   name="label-[% ann.annotations_id %]"
+                   value="[% ann.label | html %]" />
+          </td>
+          <td>
+            <input type="number"
+                   class="form-control"
+                   name="priority-[% ann.annotations_id %]"
+                   value="[% ann.priority | html %]" />
+          </td>
+          <td>
+            <select class="form-control"
+                    name="type-[% ann.annotations_id %]">
+              <option value="file" [% IF ann.annotation_type == 'file' %]selected="selected"[% END %]>
+                [% loc('File') %]
+              </option>
+              <option value="identifier" [% IF ann.annotation_type == 'identifier' %]selected="selected"[% END %]>
+                [% loc('Indentifier') %]
+              </option>
+              <option value="text" [% IF ann.annotation_type == 'text' %]selected="selected"[% END %]>
+                [% loc('Text') %]
+              </option>
+            </select>
+          </td>
+          <td>
+            <input type="checkbox" name="active-[% ann.annotations_id %]"
+                   value="1" [% IF ann.active %]checked="checked"[% END %] />
+          </td>
+          <td>
+            <input type="checkbox" name="private-[% ann.annotations_id %]"
+                   value="1" [% IF ann.private %]checked="checked"[% END %] />
+          </td>
+        </tr>
+      [% END %]
+    </table>
+    <div class="text-center">
+      <button class="btn btn-primary" type="submit">[% loc('Update') %]</button>
+    </div>
+  </form>
+</div>
