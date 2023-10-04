@@ -75,7 +75,9 @@ directory.
 
 =item --bootstrap
 
-Import only option. After the import, bootstrap the site.
+Import only option. After the import, bootstrap the site (file
+compilation, add texts to nodes, add annotations). Recommended, unless
+you are just syncing site configurations.
 
 =back
 
