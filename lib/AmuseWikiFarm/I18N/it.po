@@ -261,6 +261,19 @@ msgstr ""
 "codice lingua ed eventualmente un numero per disambiguare. Normalmente\n"
 "ciò non è richiesto."
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Apache non è supportato al momento"
 
@@ -563,6 +576,9 @@ msgstr "Errore nella compilazione del testo"
 msgid "Create"
 msgstr "Crea"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 "Crea un nuovo tipo di categoria. Per cortesia, usa solo lettere minuscole "
@@ -731,6 +747,9 @@ msgstr "Fatto"
 msgid "Double bars"
 msgstr "Doppie barre"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "Download"
 
@@ -749,6 +768,9 @@ msgstr "Orario stimato"
 
 msgid "Edit"
 msgstr "Modifica"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr "Modifica la descrizione dell'allegato"
@@ -896,6 +918,9 @@ msgstr "Metodo per gli allegati dei feed (OPDS e RSS)"
 
 msgid "Fetch"
 msgstr "Recupera"
+
+msgid "File"
+msgstr ""
 
 msgid "File already in the body"
 msgstr "File già presente nel corpo del testo"
@@ -1409,6 +1434,9 @@ msgstr ""
 "la stessa per tutte le applicazioni. Basta solo aggiungere %1 alle\n"
 "biblioteche online."
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Elementi per la riga"
 
@@ -1533,6 +1561,9 @@ msgid ""
 msgstr ""
 "Tieni presente che elementi di formattazione complessa andranno persi.\n"
 "È possibile aggiungere immagini e tabelle solo nel passo successivo."
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "Lingua"
@@ -2191,6 +2222,9 @@ msgstr "Seleziona lo stile delle diapositive"
 msgid "Please upload your file again!"
 msgstr "Carica di nuovo il tuo file per cortesia!"
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Poesia, bibliografie, pezzi teatrali, blocchi di codice"
 
@@ -2783,6 +2817,9 @@ msgstr "Test"
 msgid "Tested applications, in this order of preference"
 msgstr "Applicazioni funzionanti, in questo ordine di preferenza"
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr "Solo corpo del testo (senza titolo e pagine finali)"
 
@@ -2804,6 +2841,9 @@ msgstr "Larghezza del testo"
 
 msgid "Texts"
 msgstr "Testi"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

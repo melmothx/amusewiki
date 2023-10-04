@@ -235,6 +235,19 @@ msgid ""
 "      not needed"
 msgstr ""
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Apacheは現在サポートされていません"
 
@@ -523,6 +536,9 @@ msgstr "作成できませんでした"
 msgid "Create"
 msgstr "作成"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr "新しいカテゴリタイプを作成。 小文字のASCII文字のみご使用ください"
 
@@ -679,6 +695,9 @@ msgstr "完成"
 msgid "Double bars"
 msgstr "ダブルバー"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "ダウンロード"
 
@@ -696,6 +715,9 @@ msgstr "ETA"
 
 msgid "Edit"
 msgstr "編集"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr "添付ファイルの説明を編集"
@@ -836,6 +858,9 @@ msgid "Feed enclosure method (OPDS and RSS)"
 msgstr ""
 
 msgid "Fetch"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "File already in the body"
@@ -1290,6 +1315,9 @@ msgstr ""
 "です。 あなたがしなければならないのは、ネットワークライブラリに%1を追加するこ"
 "とです。"
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "インライン要素"
 
@@ -1391,6 +1419,9 @@ msgid ""
 "Keep in mind that unusually\n"
 "        complex formatting will be stripped. Is it possible to add\n"
 "        tables and images only on the next step."
+msgstr ""
+
+msgid "Label"
 msgstr ""
 
 msgid "Language"
@@ -2003,6 +2034,9 @@ msgstr "ビーマーレイアウトしてを設定してください"
 msgid "Please upload your file again!"
 msgstr "もう一度ファイルをアップロードしてください！"
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "詩、書誌、演劇、コードブロック"
 
@@ -2582,6 +2616,9 @@ msgstr "テスト"
 msgid "Tested applications, in this order of preference"
 msgstr "好みの順でテスト済みのアプリケーション"
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr ""
 
@@ -2603,6 +2640,9 @@ msgstr ""
 
 msgid "Texts"
 msgstr "記事"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

@@ -257,6 +257,19 @@ msgstr ""
 "число для устранения неоднозначности, например: errico-malatesta-anarchy-2. "
 "Пожалуйста, помните, что обычно в этом нет необходимости"
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Apache в данный момент не поддерживается"
 
@@ -551,6 +564,9 @@ msgstr "Нельзя создать это"
 msgid "Create"
 msgstr "Создать"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 
@@ -713,6 +729,9 @@ msgstr "Готово"
 msgid "Double bars"
 msgstr "Две вертикальные линии"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "Загрузки"
 
@@ -730,6 +749,9 @@ msgstr "Расчётное время завершения"
 
 msgid "Edit"
 msgstr "Редактировать"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr "Редактировать описание вложения"
@@ -874,6 +896,9 @@ msgid "Feed enclosure method (OPDS and RSS)"
 msgstr ""
 
 msgid "Fetch"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "File already in the body"
@@ -1364,6 +1389,9 @@ msgstr ""
 "  почти такая же для всех приложений. Всё что вам нужно сделать это\n"
 "  добавить %1 в список сетевых библиотек."
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Символьные стили"
 
@@ -1479,6 +1507,9 @@ msgid ""
 msgstr ""
 "Помните, что слишком сложная разметка будет удалена. Таблицы и изображения "
 "можно будет загрузить только на следующем этапе."
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "Язык"
@@ -2119,6 +2150,9 @@ msgstr "Пожалуйста, установите раскладку Beamer"
 msgid "Please upload your file again!"
 msgstr "Пожалуйста, загрузите ваш файл снова!"
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Поэзия, библиографии, пьесы, блоки кода"
 
@@ -2702,6 +2736,9 @@ msgstr "Тест"
 msgid "Tested applications, in this order of preference"
 msgstr "Протестированные приложения, в порядке предпочтения"
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr ""
 
@@ -2723,6 +2760,9 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Тексты"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

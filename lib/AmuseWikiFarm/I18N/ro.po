@@ -274,6 +274,19 @@ msgstr ""
 "acest lucru este\n"
 "      nu este necesar"
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Apache nu este susținut în prezent"
 
@@ -572,6 +585,9 @@ msgstr "Nu s-a putut construi asta"
 msgid "Create"
 msgstr "Creează"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 "Creați un nou tip de categorie. Vă rugăm să folosiți numai litere ASCII mici"
@@ -740,6 +756,9 @@ msgstr "Realizat"
 msgid "Double bars"
 msgstr "Double bars"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "Descărcări"
 
@@ -757,6 +776,9 @@ msgstr "ETA"
 
 msgid "Edit"
 msgstr "Editează"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr "Editează descrierea atașamentului"
@@ -905,6 +927,9 @@ msgstr "Metoda de închidere a fluxurilor (OPDS și RSS)"
 
 msgid "Fetch"
 msgstr "Obține"
+
+msgid "File"
+msgstr ""
 
 msgid "File already in the body"
 msgstr "Fișierul se află deja în corp"
@@ -1424,6 +1449,9 @@ msgstr ""
 "este să\n"
 "  adăugați %1 la bibliotecile de rețea."
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Elemente în linie"
 
@@ -1551,6 +1579,9 @@ msgstr ""
 "Țineți cont de faptul că formatting neobișnuit de complex\n"
 "        va fi eliminat. Este posibil să se adauge\n"
 "        tabele și imagini doar în etapa următoare."
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "Limbaj"
@@ -2230,6 +2261,9 @@ msgstr "Vă rugăm să configurați aspectul Beamer"
 msgid "Please upload your file again!"
 msgstr "Vă rugăm să încărcați din nou fișierul dumneavoastră!"
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Poezie, bibliografii, piese de teatru, blocuri de coduri"
 
@@ -2828,6 +2862,9 @@ msgstr "Test"
 msgid "Tested applications, in this order of preference"
 msgstr "Aplicații testate, în această ordine de preferință"
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr "Numai corpul textului (fără titlu, fără pagini finale)"
 
@@ -2851,6 +2888,9 @@ msgstr "Lățimea textului"
 
 msgid "Texts"
 msgstr "Texte"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

@@ -269,6 +269,19 @@ msgstr ""
 "      errico-malatesta-anarchy-2. Ju lutemi keni parasysh që zakonisht\n"
 "      kjo nuk është e nevojshme"
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "\"Apache\" nuk është i përkahur "
 
@@ -563,6 +576,9 @@ msgstr "Nuk mundi të krijoj atë"
 msgid "Create"
 msgstr "Krijo"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 
@@ -724,6 +740,9 @@ msgstr "E përfunduar"
 msgid "Double bars"
 msgstr "Shirita të dyfisht"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "Shkarkimet"
 
@@ -741,6 +760,9 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Ndrysho"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr ""
@@ -887,6 +909,9 @@ msgid "Feed enclosure method (OPDS and RSS)"
 msgstr ""
 
 msgid "Fetch"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "File already in the body"
@@ -1358,6 +1383,9 @@ msgstr ""
 "shumë e njëjtë për të gjitha aplikacionet. E gjitha që duhet ta bëni është "
 "ta shtoni %1 në rrjetin e librarive."
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Elementet në rresht "
 
@@ -1471,6 +1499,9 @@ msgstr ""
 "Keni kujdes sepse zakonisht\n"
 "formatimi i ndërlikuar do të largohet. Vetëm në hapin\n"
 "e ardhshëm vendosja e imazheve dhe tabelave është e mundur."
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "Gjuha"
@@ -2100,6 +2131,9 @@ msgstr ""
 msgid "Please upload your file again!"
 msgstr ""
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Poezi, referencat, shfaqet, bloqet e kodit"
 
@@ -2692,6 +2726,9 @@ msgstr "Test "
 msgid "Tested applications, in this order of preference"
 msgstr "Aplikacionet e testuara"
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr ""
 
@@ -2711,6 +2748,9 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Tekstet"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

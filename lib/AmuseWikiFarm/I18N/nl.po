@@ -269,6 +269,19 @@ msgstr ""
 "      om dubbelzinnigheid te voorkomen, bijvoorbeeld \n"
 "      errico-malatesta-anarchy-2. Let op dat dit meestal niet nodig is"
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Apache wordt momenteel niet ondersteund"
 
@@ -565,6 +578,9 @@ msgstr "Kon dat niet maken"
 msgid "Create"
 msgstr "Maak"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 
@@ -731,6 +747,9 @@ msgstr "Voltooid"
 msgid "Double bars"
 msgstr "Dubbele strepen"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "Downloads"
 
@@ -749,6 +768,9 @@ msgstr "Geschatte tijd"
 
 msgid "Edit"
 msgstr "Bewerk"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr "Voeg een beschrijvings bijlage toe"
@@ -896,6 +918,9 @@ msgid "Feed enclosure method (OPDS and RSS)"
 msgstr ""
 
 msgid "Fetch"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "File already in the body"
@@ -1397,6 +1422,9 @@ msgstr ""
 "  grotendeels hetzelfde voor alle toepassingen. Alles wat je hoeft te\n"
 "  doen is %1 toevoegen aan de netwerkbibliotheken."
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Elementen in de lopende tekst"
 
@@ -1524,6 +1552,9 @@ msgstr ""
 "Houd in gedachten dat ongebruikelijk\n"
 "        complexe opmaak verwijderd wordt. Het is alleen mogelijk \n"
 "        om tabellen en afbeeldingen in te voegen, in de volgende stap."
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "Taal"
@@ -2169,6 +2200,9 @@ msgstr "Stel de Beamer layout is"
 msgid "Please upload your file again!"
 msgstr "Upload je bestand nog een keer!"
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Poezie, bibliografie, toneelstukken, codeblokken"
 
@@ -2763,6 +2797,9 @@ msgstr "Test"
 msgid "Tested applications, in this order of preference"
 msgstr "Geteste toepassing, in deze volgorde van voorkeur"
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr ""
 
@@ -2784,6 +2821,9 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Teksten"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

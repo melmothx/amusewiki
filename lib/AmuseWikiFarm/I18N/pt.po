@@ -265,6 +265,19 @@ msgstr ""
 "      errico-malatesta-anarquia-2. Por favor note que isso normalmente\n"
 "      não é necessário"
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Apache atualmente não é suportado"
 
@@ -561,6 +574,9 @@ msgstr "Não consegui construir isso"
 msgid "Create"
 msgstr "Criar"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 
@@ -720,6 +736,9 @@ msgstr "Pronto"
 msgid "Double bars"
 msgstr "Barras duplas"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "Downloads"
 
@@ -739,6 +758,9 @@ msgstr "ETA"
 
 msgid "Edit"
 msgstr "Editar"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr "Editar descrição do anexo"
@@ -879,6 +901,9 @@ msgid "Feed enclosure method (OPDS and RSS)"
 msgstr ""
 
 msgid "Fetch"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "File already in the body"
@@ -1364,6 +1389,9 @@ msgstr ""
 "     mais ou menos o mesmo para todas as aplicações. Tudo\n"
 "     que você deve fazer é adicionar %1 às bibliotecas de redes."
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Elementos inline (em linha)"
 
@@ -1490,6 +1518,9 @@ msgstr ""
 "Lembre que formatação\n"
 "         complexa e não-usual será removida. É possível adicionar\n"
 "         tabelas e imagens apenas no próximo passo."
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "Idioma"
@@ -2133,6 +2164,9 @@ msgstr "Por favor configure o layout do Beamer"
 msgid "Please upload your file again!"
 msgstr "Por favor envie o seu arquivo de novo!"
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Poesia, bibliografias, peças, blocos de código"
 
@@ -2724,6 +2758,9 @@ msgstr "Teste"
 msgid "Tested applications, in this order of preference"
 msgstr "Aplicações testadas, na ordem de preferência"
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr ""
 
@@ -2745,6 +2782,9 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Textos"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

@@ -264,6 +264,19 @@ msgstr ""
 "مثال: اریکو-مالاتستا-آنارشی-۲. لطفا توجه داشته باشید که معمولا این کار نیاز "
 "نیست"
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "آپاچی(Apache) در حال حاضر ساپورت نمی‌شود"
 
@@ -557,6 +570,9 @@ msgstr "ساخته نمی‌شود"
 msgid "Create"
 msgstr "ساختن"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr "ایجاد کردن دسته‌بندی جدید. لطفا فقط از حروف کوچک ASCII استفاده کنید"
 
@@ -720,6 +736,9 @@ msgstr "انجام شد"
 msgid "Double bars"
 msgstr ""
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "دانلودها"
 
@@ -737,6 +756,9 @@ msgstr ""
 
 msgid "Edit"
 msgstr "ویرایش"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr "ویرایش توضیحات ضمیمه شده"
@@ -881,6 +903,9 @@ msgstr "روش ضمیمه کردن محتوا (OPDS ,RSS)"
 
 msgid "Fetch"
 msgstr "دسترسی داشتن"
+
+msgid "File"
+msgstr ""
 
 msgid "File already in the body"
 msgstr "فایل در بدنه وجود دارد"
@@ -1373,6 +1398,9 @@ msgstr ""
 " تنها کاری که باید انجام دهید این است که %1 را به کتابخانه‌های شبکه اضافه "
 "کنید."
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "عناصر درون خطی"
 
@@ -1502,6 +1530,9 @@ msgstr ""
 "آن را با استفاده از ترکیب دکمه‌های (ctrl+shift+2) اضافه کرده‌اید، چنانچه \n"
 "از روش‌های دیگری جهت افزودن نیم‌فاصله استفاده کرده باشید، نیم‌فاصله‌های شما \n"
 "حذف و متن‌تان ساختاری بهم ریخته پیدا می‌کند."
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "زبان"
@@ -2143,6 +2174,9 @@ msgstr "لطفا طرح Beamer را تنظیم کنید"
 msgid "Please upload your file again!"
 msgstr "لطفا فایل خود را دوباره بارگذاری کنید!"
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "شعر، کتابشناسی، نمایشنامه، بلاک‌های کد"
 
@@ -2730,6 +2764,9 @@ msgstr "آزمایش"
 msgid "Tested applications, in this order of preference"
 msgstr "برنامه‌های آزمایش شده، به ترتیب اولویت"
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr "فقط متن (بدون عنوان، بدون صفحات پایانی)"
 
@@ -2751,6 +2788,9 @@ msgstr "عرض متن"
 
 msgid "Texts"
 msgstr "متن‌ها"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

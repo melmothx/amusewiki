@@ -247,6 +247,19 @@ msgstr ""
 "språk, eventuell diambiguering, t.ex.errico-malatesta-anarchy-2. Vanligtvis "
 "behövs det dock inte"
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr ""
 
@@ -531,6 +544,9 @@ msgstr "Det gick inte att bygga det"
 msgid "Create"
 msgstr "Skapa"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 
@@ -689,6 +705,9 @@ msgstr "Klart"
 msgid "Double bars"
 msgstr "Dubbla staplar"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "Nedladdningar"
 
@@ -706,6 +725,9 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Redigera"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr ""
@@ -842,6 +864,9 @@ msgid "Feed enclosure method (OPDS and RSS)"
 msgstr ""
 
 msgid "Fetch"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "File already in the body"
@@ -1281,6 +1306,9 @@ msgid ""
 "  add %1 to the network libraries."
 msgstr ""
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Infogade element"
 
@@ -1389,6 +1417,9 @@ msgid ""
 msgstr ""
 "Tänk på att komplex           formatering vanligtvis plockas bort. Det är "
 "endast möjligt att          lägga till tabeller och bilder i nästa steg. "
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "Språk"
@@ -2013,6 +2044,9 @@ msgstr ""
 msgid "Please upload your file again!"
 msgstr ""
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr ""
 
@@ -2597,6 +2631,9 @@ msgstr ""
 msgid "Tested applications, in this order of preference"
 msgstr ""
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr ""
 
@@ -2618,6 +2655,9 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Texter"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

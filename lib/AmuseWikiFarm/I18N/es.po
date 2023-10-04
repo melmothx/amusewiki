@@ -264,6 +264,19 @@ msgstr ""
 "      enrico-malatesta-anarquia-2. Por favor nota que esto normalmente no \n"
 "      es necesario."
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Actualmente no hay soporte para Apache"
 
@@ -556,6 +569,9 @@ msgstr "No se pudo crear eso"
 msgid "Create"
 msgstr "Crear"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 
@@ -719,6 +735,9 @@ msgstr "Listo"
 msgid "Double bars"
 msgstr "Barras dobles"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "Descargas"
 
@@ -736,6 +755,9 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Editar"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr ""
@@ -883,6 +905,9 @@ msgid "Feed enclosure method (OPDS and RSS)"
 msgstr ""
 
 msgid "Fetch"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "File already in the body"
@@ -1373,6 +1398,9 @@ msgstr ""
 "  casi el mismo para todas las aplicaciones. Todo lo que tienes que hacer\n"
 "  es agregar %1 a las bibliotecas en red."
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Elementos en línea"
 
@@ -1487,6 +1515,9 @@ msgstr ""
 "Ten en cuenta que formato\n"
 "        inusualmente complejo será descartado. Es posible añadir\n"
 "        tablas e imágnes solo en el siguiente paso."
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "Idioma"
@@ -2126,6 +2157,9 @@ msgstr "Por favor configura la plantilla de Beamer"
 msgid "Please upload your file again!"
 msgstr ""
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Poesía, bibliografías, diálogos, bloques de código"
 
@@ -2717,6 +2751,9 @@ msgstr "Prueba"
 msgid "Tested applications, in this order of preference"
 msgstr "Aplicaciones probadas, en este orden de preferencia"
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr ""
 
@@ -2738,6 +2775,9 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Textos"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

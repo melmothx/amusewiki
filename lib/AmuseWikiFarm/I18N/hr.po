@@ -254,6 +254,19 @@ msgstr ""
 "pridržavate ovog principa: autor, ime, naslov, jezik, eventualni broj,\n"
 "npr. \"errico-malatesta-anarchy-2\". Inače to nije potrebno."
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Trenutno Apache se ne podržava"
 
@@ -543,6 +556,9 @@ msgstr "Ne mogu stvoriti zbirku"
 msgid "Create"
 msgstr "Stvori"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 
@@ -706,6 +722,9 @@ msgstr "Gotovo"
 msgid "Double bars"
 msgstr "Dvostruke trake (\"||\")"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "Preuzimanja"
 
@@ -723,6 +742,9 @@ msgstr "Predviđeno vrijeme završetka"
 
 msgid "Edit"
 msgstr "Uredi"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr "Uredi opis priloga"
@@ -865,6 +887,9 @@ msgid "Feed enclosure method (OPDS and RSS)"
 msgstr ""
 
 msgid "Fetch"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "File already in the body"
@@ -1355,6 +1380,9 @@ msgstr ""
 "U ovom primjeru koristi se FBreader, ali procedura je više-manje ista\n"
 "za sve aplikacije. Trebaš samo dodati %1 mrežnim bibliotekama."
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Elementi po retku"
 
@@ -1474,6 +1502,9 @@ msgstr ""
 "Pazi, neobično i kompleksno oblikovani tekstovi bit će\n"
 "pojednostavljeni. Možeš dodati tabele i slike samo na slijedećoj\n"
 "stranici."
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "Jezik"
@@ -2106,6 +2137,9 @@ msgstr "Izaberi stil slajdova"
 msgid "Please upload your file again!"
 msgstr "Molim ponovo učitaj datoteku!"
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Poezija, bibliografije, drame, kod"
 
@@ -2692,6 +2726,9 @@ msgstr "Test"
 msgid "Tested applications, in this order of preference"
 msgstr "Testirane aplikacije"
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr ""
 
@@ -2713,6 +2750,9 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Tekstovi"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

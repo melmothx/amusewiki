@@ -244,6 +244,19 @@ msgstr ""
 "的话，请按照以下的规范：作者名，标题，语言，最后用于去歧义的数字标识，比如"
 "「errico-malatesta-anarchy-2」。请注意一般来说这是没必要的"
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "目前不支持Apache"
 
@@ -532,6 +545,9 @@ msgstr "无法建书"
 msgid "Create"
 msgstr "新建"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr "新建类别。请只用小写ASCII字符"
 
@@ -692,6 +708,9 @@ msgstr "完成"
 msgid "Double bars"
 msgstr "双杠"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "下载"
 
@@ -709,6 +728,9 @@ msgstr "预计到达时间"
 
 msgid "Edit"
 msgstr "编辑"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr "编辑附件描述"
@@ -845,6 +867,9 @@ msgid "Feed enclosure method (OPDS and RSS)"
 msgstr ""
 
 msgid "Fetch"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "File already in the body"
@@ -1300,6 +1325,9 @@ msgstr ""
 "在这个例子中，我们使用FBreader，但这个所有的应用程序的流程都是差不多的。你所"
 "要做的就是把%1添加到网络库中。"
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "行内元素"
 
@@ -1411,6 +1439,9 @@ msgid ""
 "        complex formatting will be stripped. Is it possible to add\n"
 "        tables and images only on the next step."
 msgstr "请记住，异常复杂的格式会被剥离。可以只在下一步添加表格和图片。"
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "语言"
@@ -2026,6 +2057,9 @@ msgstr "请配置Beamer排版"
 msgid "Please upload your file again!"
 msgstr "请重新上传你的文件！"
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "诗歌、书目、戏剧、代码块"
 
@@ -2602,6 +2636,9 @@ msgstr "测试"
 msgid "Tested applications, in this order of preference"
 msgstr "已测试的应用，顺序按照喜好"
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr ""
 
@@ -2621,6 +2658,9 @@ msgstr ""
 
 msgid "Texts"
 msgstr "文本"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

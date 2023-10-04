@@ -258,6 +258,19 @@ msgstr ""
 "      errico-malatesta-anarki-2. Læg venligst mærke til at det normalt\n"
 "      ikke er nødvendigt."
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Apache er ikke understøttet i øjeblikket"
 
@@ -548,6 +561,9 @@ msgstr "Kunne ikke skabe den"
 msgid "Create"
 msgstr "Skab"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 
@@ -708,6 +724,9 @@ msgstr "Færdig"
 msgid "Double bars"
 msgstr "Dobbelte barer"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "Downloads"
 
@@ -725,6 +744,9 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Rediger"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr ""
@@ -871,6 +893,9 @@ msgid "Feed enclosure method (OPDS and RSS)"
 msgstr ""
 
 msgid "Fetch"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "File already in the body"
@@ -1346,6 +1371,9 @@ msgid ""
 "  add %1 to the network libraries."
 msgstr ""
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr ""
 
@@ -1459,6 +1487,9 @@ msgstr ""
 "Husk at ualmindelig\n"
 "        kompleks formatering bliver fjernet. På næste trin er det\n"
 "        muligt at tilføje tabeller og billeder."
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "Sprog"
@@ -2095,6 +2126,9 @@ msgstr ""
 msgid "Please upload your file again!"
 msgstr ""
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Poesi, bibliografier, skuespil, kodeblokke"
 
@@ -2684,6 +2718,9 @@ msgstr "Test"
 msgid "Tested applications, in this order of preference"
 msgstr ""
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr ""
 
@@ -2703,6 +2740,9 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Tekster"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

@@ -277,6 +277,19 @@ msgstr ""
 "π.χ. ερρίκο-μαλατέστα-αναρχία-2. \n"
 "Να σημειωθεί πως αυτό φυσιολογικά δεν είναι απαραίτητο"
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Το Apache δεν υποστηρίζεται αυτή τη στιγμή"
 
@@ -579,6 +592,9 @@ msgstr "Το χτίσιμο δεν ήταν δυνατό"
 msgid "Create"
 msgstr "Δημιουργία"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 "Δημιουργία νέου τύπου κατηγορίας. Χρησιμοποίησε μόνο μικρούς ASCII χαρακτήρες"
@@ -745,6 +761,9 @@ msgstr "Τέλος"
 msgid "Double bars"
 msgstr "Διπλές μπάρες"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "Λήψεις"
 
@@ -764,6 +783,9 @@ msgstr "Εκτιμώμενος χρόνος"
 
 msgid "Edit"
 msgstr "Επεξεργασία"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr "Επεξεργασία περιγραφής συνημμένου"
@@ -910,6 +932,9 @@ msgid "Feed enclosure method (OPDS and RSS)"
 msgstr ""
 
 msgid "Fetch"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "File already in the body"
@@ -1434,6 +1459,9 @@ msgstr ""
 "είναι\n"
 "  να προσθέσετε το %1 στις βιβλιοθήκες δικτύου."
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Ενσωματωμένα στοιχεία"
 
@@ -1569,6 +1597,9 @@ msgstr ""
 "Λάβε υπόψη ότι η ασυνήθιστα\n"
 "        πολύπλοκη μορφοποίηση θα αφαιρεθεί. Η προσθήκη πινάκων και εικόνων\n"
 "        μπορεί να γίνει μόνο στο επόμενο βήμα."
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "Γλώσσα"
@@ -2243,6 +2274,9 @@ msgstr "Ρύθμισε τη διάταξη Beamer"
 msgid "Please upload your file again!"
 msgstr "Παρακαλούμε ανεβάστε ξανά το αρχείο σας!"
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Ποίηση, βιβλιογραφίες, θεατρικά έργα, μπλοκ κωδικών"
 
@@ -2845,6 +2879,9 @@ msgstr "Δοκιμή"
 msgid "Tested applications, in this order of preference"
 msgstr "Δοκιμασμένες εφαρμογές, με αυτή τη σειρά προτίμησης"
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr ""
 
@@ -2867,6 +2904,9 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Κείμενα"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

@@ -264,6 +264,19 @@ msgstr ""
 "      adı, başlık, dil, ayırıcı sayı, örn. errico-malatesta-anarsi-2.\n"
 "      Not: normalde bu gerekli olmaz"
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Apache henüz desteklenmiyor"
 
@@ -561,6 +574,9 @@ msgstr "Onu yapılandıramadım"
 msgid "Create"
 msgstr "Yarat"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 "Yeni bir kategori tipi yarat. Lütfen yalnızca küçük ASCII harflerini kullan"
@@ -727,6 +743,9 @@ msgstr "Bitti"
 msgid "Double bars"
 msgstr "İkili sütünlar"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "İndirilenler"
 
@@ -744,6 +763,9 @@ msgstr "Tahmini süre"
 
 msgid "Edit"
 msgstr "Düzenle"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr "Ek dosya açıklamasını düzenle"
@@ -890,6 +912,9 @@ msgstr "Beslemeler için dosya belirleme yöntemi (OPDS ve RSS)"
 
 msgid "Fetch"
 msgstr "Getir"
+
+msgid "File"
+msgstr ""
 
 msgid "File already in the body"
 msgstr "Dosya zaten gövdede"
@@ -1387,6 +1412,9 @@ msgstr ""
 "  için aşağı yukarı aynıdır. Bütün yapman gereken network kütüphanelerine\n"
 "  %1 eklemek."
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Satıriçi öğeler"
 
@@ -1507,6 +1535,9 @@ msgstr ""
 "Unutma ki olağanüstü\n"
 "        karmaşık biçimlendirmeler çıkarılacak. Tablolar ve\n"
 "        resimler sadece bir sonraki adımda eklenebilir."
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "Dil"
@@ -2155,6 +2186,9 @@ msgstr "Lütfen Beamer yerleşimini kurun"
 msgid "Please upload your file again!"
 msgstr "Lütfen dosyayı tekrar yükleyin!"
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Şiir, kaynakça, oyun, kod parçaları"
 
@@ -2744,6 +2778,9 @@ msgstr "Test"
 msgid "Tested applications, in this order of preference"
 msgstr "Test edilen uygulamalar, buradaki sıraya göre tercih edilir"
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr "Yalnızca metin gövdesi (başlık yok, son sayfa yok)"
 
@@ -2765,6 +2802,9 @@ msgstr "Metin genişliği"
 
 msgid "Texts"
 msgstr "Metinler"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

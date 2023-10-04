@@ -242,6 +242,19 @@ msgstr ""
 "      nimi, otsikko, kieli, versionumero. Esim. \n"
 "      bob-black-eroon-tyosta-2. Yleensä tätä ei tarvitse erikseen tehdä"
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr ""
 
@@ -526,6 +539,9 @@ msgstr "Ei onnistunut"
 msgid "Create"
 msgstr "Luo"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 
@@ -684,6 +700,9 @@ msgstr "Valmis"
 msgid "Double bars"
 msgstr "Kaksi putkea"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "Lataukset"
 
@@ -701,6 +720,9 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Muokkaa"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr ""
@@ -837,6 +859,9 @@ msgid "Feed enclosure method (OPDS and RSS)"
 msgstr ""
 
 msgid "Fetch"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "File already in the body"
@@ -1270,6 +1295,9 @@ msgid ""
 "  add %1 to the network libraries."
 msgstr ""
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Sisäiset elementit"
 
@@ -1382,6 +1410,9 @@ msgstr ""
 "Poikkeuksellisen monimutkaiset\n"
 "        muotoilut tullaan riisumaan. Taulukoita ja kuvia voi lisätä\n"
 "        vasta seuraavassa vaiheessa."
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "Kieli"
@@ -2001,6 +2032,9 @@ msgstr ""
 msgid "Please upload your file again!"
 msgstr ""
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr ""
 
@@ -2577,6 +2611,9 @@ msgstr ""
 msgid "Tested applications, in this order of preference"
 msgstr ""
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr ""
 
@@ -2598,6 +2635,9 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Tekstit"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

@@ -252,6 +252,19 @@ msgstr ""
 "      errico-malatesta-anarchy-2. Pamiętaj, że zwykle ustawianie\n"
 "      URI nie jest potrzebne"
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr ""
 
@@ -550,6 +563,9 @@ msgstr "Kreacja nie powiodła się"
 msgid "Create"
 msgstr "Stwórz"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr "Stwórz nowy typ kategorii. Używaj tylko małych liter ASCII"
 
@@ -709,6 +725,9 @@ msgstr "Gotowe"
 msgid "Double bars"
 msgstr "Podwójne słupki"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "Pobrane"
 
@@ -727,6 +746,9 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Edytuj"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr "Edytuj opis załącznika"
@@ -868,6 +890,9 @@ msgid "Feed enclosure method (OPDS and RSS)"
 msgstr ""
 
 msgid "Fetch"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "File already in the body"
@@ -1320,6 +1345,9 @@ msgstr ""
 "to\n"
 "  dodać %1 do \"network libraries\"."
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr ""
 
@@ -1437,6 +1465,9 @@ msgstr ""
 "Pamiętaj, że wyjątkowo\n"
 "        skomplikowane formaty zostaną utracone. Dodanie\n"
 "        tabel i obrazów możliwe jest wyłącznie w kolejnym kroku."
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "Język"
@@ -2053,6 +2084,9 @@ msgstr ""
 msgid "Please upload your file again!"
 msgstr "Prześlij swój plik ponownie!"
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr ""
 
@@ -2637,6 +2671,9 @@ msgstr "Test"
 msgid "Tested applications, in this order of preference"
 msgstr "Sprawdzone aplikacje, w kolejności preferencji"
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr ""
 
@@ -2656,6 +2693,9 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Teksty"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

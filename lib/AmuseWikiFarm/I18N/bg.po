@@ -268,6 +268,19 @@ msgstr ""
 "      име, заглавие, език, евентуален номер за различаване, напр.\n"
 "      errico-malatesta-anarchy-2. По принцип това не е задължително"
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Apache не се поддържа в момента"
 
@@ -569,6 +582,9 @@ msgstr "Не беше възможно да се построи това"
 msgid "Create"
 msgstr "Създай"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 "Създай нова категория. Моля използвай само малки букви по ASCII стандарта"
@@ -736,6 +752,9 @@ msgstr "Готово"
 msgid "Double bars"
 msgstr "Двойна лента"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "Изтегляния"
 
@@ -755,6 +774,9 @@ msgstr "ETA"
 
 msgid "Edit"
 msgstr "Редактирай"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr "Редактирай описанието на прикачения файл"
@@ -901,6 +923,9 @@ msgid "Feed enclosure method (OPDS and RSS)"
 msgstr ""
 
 msgid "Fetch"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "File already in the body"
@@ -1417,6 +1442,9 @@ msgstr ""
 "  една и съща за всички приложения. Единственото, което трябва да направиш,\n"
 "  е да добавиш %1 към мрежовата библиотека."
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Вградени елементи"
 
@@ -1541,6 +1569,9 @@ msgstr ""
 "Не забравяй, че по принцип\n"
 "        сложно оформление ще бъде премахнато. Възможно е\n"
 "        да добавиш таблици и изображения само на следващата страница."
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "Език"
@@ -2202,6 +2233,9 @@ msgstr "Моля, настрой оформлението на Beamer"
 msgid "Please upload your file again!"
 msgstr "Моля, отново качи файла си!"
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Поезия, библиографии, пиеси, кодови блокове"
 
@@ -2795,6 +2829,9 @@ msgstr "Тест"
 msgid "Tested applications, in this order of preference"
 msgstr "Тествани приложения в тази последователност"
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr ""
 
@@ -2816,6 +2853,9 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Текстове"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"

@@ -266,6 +266,19 @@ msgstr ""
 "       errico-malatesta-anarchy-2. Bonvolu noti, ke tio estas normale\n"
 "       ne bezonata"
 
+msgid "Annotations"
+msgstr ""
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Apache ne estas nuntempe subtenata"
 
@@ -564,6 +577,9 @@ msgstr "Ne povis konstrui tion"
 msgid "Create"
 msgstr "Kreu"
 
+msgid "Create a new annotation."
+msgstr ""
+
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr "Kreu novan kategorion. Bonvolu uzi nur minusklajn ASCII-literojn"
 
@@ -729,6 +745,9 @@ msgstr "Farita"
 msgid "Double bars"
 msgstr "Duoblaj stangoj"
 
+msgid "Download"
+msgstr ""
+
 msgid "Downloads"
 msgstr "Downloads"
 
@@ -747,6 +766,9 @@ msgstr "ETA"
 
 msgid "Edit"
 msgstr "Redaktu"
+
+msgid "Edit annotations"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr "Redaktu aldonan priskribon"
@@ -893,6 +915,9 @@ msgid "Feed enclosure method (OPDS and RSS)"
 msgstr ""
 
 msgid "Fetch"
+msgstr ""
+
+msgid "File"
 msgstr ""
 
 msgid "File already in the body"
@@ -1407,6 +1432,9 @@ msgstr ""
 "   preskaŭ same por ĉiuj aplikoj. Vi nur devas fari\n"
 "   aldonu% 1 al la retaj bibliotekoj."
 
+msgid "Indentifier"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Enliniaj elementoj"
 
@@ -1530,6 +1558,9 @@ msgstr ""
 "Memoru tion nekutime\n"
 "         kompleksa formatado estos senigita. Ĉu eblas aldoni\n"
 "         tabloj kaj bildoj nur sur la sekva paŝo."
+
+msgid "Label"
+msgstr ""
 
 msgid "Language"
 msgstr "Lingvo"
@@ -2176,6 +2207,9 @@ msgstr "Bonvolu agordi la aranĝon de Beamer"
 msgid "Please upload your file again!"
 msgstr "Bonvolu alŝuti vian dosieron denove!"
 
+msgid "Please use only lowercase ASCII letters."
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Poezio, bibliografioj, teatraĵoj, kodblokoj"
 
@@ -2764,6 +2798,9 @@ msgstr "Testo"
 msgid "Tested applications, in this order of preference"
 msgstr "Provitaj kandidatiĝoj laŭ ĉi tiu ordo de prefero"
 
+msgid "Text"
+msgstr ""
+
 msgid "Text body only (no title, no final pages)"
 msgstr ""
 
@@ -2785,6 +2822,9 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Tekstoj"
+
+msgid "Thanks!"
+msgstr ""
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
