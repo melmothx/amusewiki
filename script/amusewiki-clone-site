@@ -12,9 +12,12 @@ use YAML qw/LoadFile DumpFile/;
 use Getopt::Long;
 use Pod::Usage;
 
-my ($directory, $help);
+my ($directory, $help, $bootstrap);
 
-GetOptions('directory=s' => \$directory, help => \$help) or die;
+GetOptions('directory=s' => \$directory,
+           help => \$help,
+           bootstrap => \$bootstrap,
+          ) or die;
 
 if ($directory) {
     unless (-d $directory) {
@@ -70,6 +73,10 @@ Accepted both by export and by import. On export, dump the files
 there. On import, import all the YAML file from the specified
 directory.
 
+=item --bootstrap
+
+Import only option. After the import, bootstrap the site.
+
 =back
 
 =cut
@@ -88,7 +95,18 @@ sub import {
         eval { $conf = LoadFile($file) };
         if ($conf) {
             print "Importing $file\n";
-            $schema->resultset('Site')->deserialize_site($conf);
+            my $site = $schema->resultset('Site')->deserialize_site($conf);
+            if ($bootstrap) {
+                if (-d $site->repo_root) {
+                    $site->init_category_types;
+                    $site->update_db_from_tree;
+                    print "Reimporting file after the bootstrap\n";
+                    $schema->resultset('Site')->deserialize_site(LoadFile($file));
+                }
+                else {
+                    die "Please place the site tree into " . $site->repo_root;
+                }
+            }
         }
         else {
             warn "Invalid file $file $@\n";
