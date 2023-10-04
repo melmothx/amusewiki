@@ -4,7 +4,7 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    [% loc("Annotations are text metadata which are not included in the muse file. Examples could be: prices, catalog numbers, shelf location, working copies of large binary files, internal comments") %]
+    [% loc("Annotations are text metadata which are not included in the muse file. Examples could be: prices, catalog numbers, shelf location, working copies of large binary files, internal comments.") %]
   </div>
 </div>
 
