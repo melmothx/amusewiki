@@ -427,12 +427,22 @@ sub dublin_core_record {
     }
     my $data = $obj->dublin_core_entry;
     my $base_url = $self->site->canonical_url;
-    $data->{identifier} = $base_url . $self->identifier;
+    $data->{identifier} = [ $base_url . $self->identifier ];
     $data->{format} = $self->metadata_format;
     $data->{type} = $self->metadata_type;
-    if (my $fdesc = $self->metadata_format_description) {
-        push @{$data->{description}}, $fdesc;
+    push @{$data->{description}}, $self->metadata_format_description || '-';
+    if ($obj->can('title_annotations')) {
+        foreach my $ann ($obj->title_annotations->public) {
+            my $annotation_type = $ann->annotation->annotation_type;
+            if ($annotation_type eq 'identifier') {
+                push @{$data->{identifier}}, $ann->annotation_value;
+            }
+            if ($annotation_type eq 'text') {
+                push @{$data->{description}}, $ann->annotation->label . ": " . $ann->annotation_value;
+            }
+        }
     }
+    # this is the parent.
     $data->{relation} = [ map { $base_url . $_ } @{$data->{relation}} ];
 
     my @out;

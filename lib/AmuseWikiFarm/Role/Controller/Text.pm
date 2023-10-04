@@ -187,6 +187,7 @@ sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
                               name => $_->annotation_name,
                               id => $_->annotation_id,
                               type => $_->annotation_type,
+                              private => $_->private,
                              }
                         } $site->annotations->search($annotation_filter, { order_by => 'priority' })->all;
     if (@annotations) {
