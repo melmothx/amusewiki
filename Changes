@@ -4,6 +4,20 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.579 2023-10-04
+
+ - i18n: tr (updated)
+
+ - Implement OAI-ORE aggregations in RDF file. This is somehow
+   experimental and unclear if it's actually useful and/or if it's
+   been correctly implemented, so it's EXPERIMENTAL.
+
+ - Implement text annotations. These values which you don't want to go
+   into the muse file, so they excluded from the git. Possible use
+   cases: large scan files used as working copies, physical book
+   location, comments. If marked as active and public, the annotations
+   (excluding the files) are exposed via OAI-PMH.
+
 2.578 2023-08-31
 
  - i18n: add initial support for uk
