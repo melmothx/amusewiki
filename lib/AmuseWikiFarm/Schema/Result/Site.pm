@@ -4348,9 +4348,7 @@ sub _validate_attached_uris {
 
 sub deserialize_nodes {
     my ($self, $nodes) = @_;
-    my $changed = $self->repo_find_changed_files;
     return unless @$nodes;
-
     my @fail;
     foreach my $node (@$nodes) {
         if (my $str = $node->{attached_uris}) {
