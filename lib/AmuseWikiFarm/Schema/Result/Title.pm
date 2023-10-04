@@ -2059,7 +2059,7 @@ sub annotate {
             if (my $relpath = $self->f_archive_rel_path) {
                 push @path, grep { /\A[a-z0-9-]+\z/ } split(/\//, $relpath);
             }
-            if ($ann->annotation_name eq 'file' and my $file = $update->{file}) {
+            if ($ann->annotation_type eq 'file' and my $file = $update->{file}) {
                 delete $update->{value};
                 if (-f $file) {
                     my $mime = mimetype($file);
