@@ -1,11 +1,5 @@
 PRAGMA foreign_keys = ON;
 
-DROP TABLE IF EXISTS vhost;
-DROP TABLE IF EXISTS site;
-DROP TABLE IF EXISTS title_author;
-DROP TABLE IF EXISTS title;
-DROP TABLE IF EXISTS author;
-
 CREATE TABLE vhost (
        name VARCHAR(255) PRIMARY KEY,
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
@@ -330,6 +324,7 @@ CREATE TABLE title (
         lang        VARCHAR(3) NOT NULL DEFAULT 'en',
 
         date        TEXT,
+        datefirst   TEXT,
         notes       TEXT,
         source      TEXT,
 
@@ -707,7 +702,7 @@ CREATE TABLE oai_pmh_record (
 
        metadata_type VARCHAR(32), -- text/image/sound https://www.dublincore.org/specifications/dublin-core/type-element/
        metadata_format VARCHAR(32), -- mime type, but at runtime we should append the custom format description
-
+       metadata_format_description VARCHAR(255),
        -- flag for deletion
        deleted INTEGER(1) NOT NULL DEFAULT 0,
        update_run INTEGER NOT NULL DEFAULT 0
@@ -733,6 +728,31 @@ CREATE TABLE oai_pmh_record_set (
        PRIMARY KEY (oai_pmh_record_id, oai_pmh_set_id)
 );
 
+-- annotations are not stored in the muse file and may hold metadata
+-- which are not supposed to be shared across libraries. E.g. catalog
+-- number, working attachments which you don't want in the git.
+
+CREATE TABLE annotation (
+    annotation_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    site_id VARCHAR(16) NOT NULL REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    annotation_name VARCHAR(255) NOT NULL,
+    annotation_type VARCHAR(32) NOT NULL,
+    label VARCHAR(255) NOT NULL DEFAULT '',
+    priority INTEGER NOT NULL DEFAULT 0,
+    active INTEGER(1) NOT NULL DEFAULT 1,
+    private INTEGER(1) NOT NULL DEFAULT 0
+);
+
+CREATE UNIQUE INDEX unique_site_annotation_key ON annotation (site_id, annotation_name);
+
+CREATE TABLE title_annotation (
+    annotation_id INTEGER NOT NULL REFERENCES annotation(annotation_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    title_id INTEGER NOT NULL REFERENCES title(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    annotation_value TEXT,
+    PRIMARY KEY (annotation_id, title_id)
+);
+
+CREATE UNIQUE INDEX unique_title_annotation_key ON title_annotation (annotation_id, title_id);
 
 INSERT INTO table_comments (table_name, comment_text)
        values

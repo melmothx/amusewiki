@@ -136,6 +136,7 @@ sub site_serialize_related_rels {
               [ custom_formats  => undef, { order_by => [qw/format_name/] } ],
               [ redirections    => undef, { order_by => [qw/uri/]         } ],
               [ site_category_types => undef, { order_by => [qw/priority/] } ],
+              [ annotations => undef, { order_by => [qw/priority/] } ],
              );
     return @out;
 }

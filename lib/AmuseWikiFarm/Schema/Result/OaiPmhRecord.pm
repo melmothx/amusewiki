@@ -92,6 +92,12 @@ __PACKAGE__->table("oai_pmh_record");
   is_nullable: 1
   size: 32
 
+=head2 metadata_format_description
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 deleted
 
   data_type: 'integer'
@@ -126,6 +132,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 32 },
   "metadata_format",
   { data_type => "varchar", is_nullable => 1, size => 32 },
+  "metadata_format_description",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "deleted",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "update_run",
@@ -263,8 +271,8 @@ Composing rels: L</oai_pmh_record_sets> -> oai_pmh_set
 __PACKAGE__->many_to_many("oai_pmh_sets", "oai_pmh_record_sets", "oai_pmh_set");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-15 17:57:21
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:F9R4sGRGGvtgz6wLvOY0xQ
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-09-27 10:47:43
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Xmhs3aN3f4dXdlIaIovXYA
 
 __PACKAGE__->add_columns('+datestamp' => { timezone => 'UTC' });
 
@@ -418,9 +426,25 @@ sub dublin_core_record {
                ];
     }
     my $data = $obj->dublin_core_entry;
-    $data->{identifier} = $self->site->canonical_url . $self->identifier;
+    my $base_url = $self->site->canonical_url;
+    $data->{identifier} = [ $base_url . $self->identifier ];
     $data->{format} = $self->metadata_format;
     $data->{type} = $self->metadata_type;
+    push @{$data->{description}}, $self->metadata_format_description || '-';
+    if ($obj->can('title_annotations')) {
+        foreach my $ann ($obj->title_annotations->public) {
+            my $annotation_type = $ann->annotation->annotation_type;
+            if ($annotation_type eq 'identifier') {
+                push @{$data->{identifier}}, $ann->annotation_value;
+            }
+            if ($annotation_type eq 'text') {
+                push @{$data->{description}}, $ann->annotation->label . ": " . $ann->annotation_value;
+            }
+        }
+    }
+    # this is the parent.
+    $data->{relation} = [ map { $base_url . $_ } @{$data->{relation}} ];
+
     my @out;
     foreach my $k (qw/title
                       creator
@@ -443,15 +467,8 @@ sub dublin_core_record {
                 my $cleaned = AmuseWikiFarm::Utils::Amuse::clean_html($value);
                 $cleaned =~ s/\A\s+//;
                 $cleaned =~ s/\s+\z//;
-                if ($cleaned) {
+                if (length($cleaned)) {
                     push @out, [ $prefix . $k => $cleaned ];
-                }
-            }
-        }
-        if ($k eq 'description') {
-            if (my $cf = $self->custom_format) {
-                if (my $cf_name = $cf->format_name) {
-                    push @out, [ $prefix . $k =>  $cf_name ]
                 }
             }
         }

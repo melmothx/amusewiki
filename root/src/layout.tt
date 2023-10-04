@@ -466,6 +466,14 @@
                     [% loc('Collections') %]
                   </a>
                 </li>
+                [% IF c.check_any_user_role('admin', 'root') %]
+                  <li>
+                    <a href="[% c.uri_for_action('/settings/annotations') %]">
+                      <span class="fa fa-tags fa-fw" aria-hidden="true"></span>
+                      [% loc('Annotations') %]
+                    </a>
+                  </li>
+                [% END %]
                 <li>
                   <a href="[% c.uri_for_action('/attachments/list') %]">
                     <span class="fa fa-file-image-o fa-fw" aria-hidden="true"></span>

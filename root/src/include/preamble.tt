@@ -113,6 +113,74 @@
         <a href="[% text_mirror_source | html %]">[% text_mirror_source | html %]</a>
       </div>
     [% END %]
+
+    [% IF annotations %]
+      [% FOREACH annotation IN annotations %]
+        [% IF annotation.html %]
+          <div
+              [% IF annotation.private %]
+                  class="text-annotation text-muted" title="[% loc('Private') %]"
+              [% ELSE %]
+                  class="text-annotation"
+              [% END %]
+          >
+            <strong>[% lh.site_loc_html(annotation.label) %]:</strong>
+            [% IF annotation.url %]
+              <a href="[% annotation.url %]">[% loc('Download') %]</a>
+            [% ELSE %]
+            <span>
+              [% annotation.html %]
+            </span>
+            [% END %]
+          </div>
+        [% END %]
+      [% END %]
+      [% IF c.user_exists %]
+        <div id="edit-annotation" class="collapse">
+          <form name="annotate" action="[% c.uri_for_action('annotate/title', text.id) %]"
+                method="POST"
+                enctype="multipart/form-data">
+            <table class="table table-striped table-bordered">
+              [% FOREACH annotation IN annotations %]
+                <tr>
+                  <td>
+                    <input type="hidden" name="passed-[% annotation.id %]" value="1" />
+                    <label for="annotation-[% annotation.id %]">
+                      [% lh.site_loc_html(annotation.label) %]
+                    </label>
+                  </td>
+                  <td>
+                    [% IF annotation.type == 'file' %]
+                      <input id="annotation-[% annotation.id %]"
+                             name="file-[% annotation.id %]" type="file" />
+                    [% ELSIF annotation.type == 'identifier' %]
+                      <input id="annotation-[% annotation.id %]"
+                             name="value-[% annotation.id %]"
+                             class="form-control" value="[% annotation.value | html %]" />
+                    [% ELSIF annotation.type == 'text' %]
+                      <textarea id="annotation-[% annotation.id %]"
+                                name="value-[% annotation.id %]"
+                                class="form-control">[% annotation.value | html %]</textarea>
+                    [% END %]
+                  </td>
+                  <td>
+                    <label>
+                      <input name="wipe-[% annotation.id %]" type="checkbox">
+                      [% loc('Remove') %]
+                    </label>
+                  </td>
+                </tr>
+              [% END %]
+            </table>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">
+                [% loc('Update') %]
+              </button>
+            </div>
+          </form>
+        </div>
+      [% END %]
+    [% END %]
   </div>
 
   <!-- end of the preamble -->
@@ -162,6 +230,16 @@
                 title="[% loc('Edit this text') %]"
                 ></span><span class="sr-only" >[% loc('Edit this text') %]</span></a>
       </span>
+      [% END %]
+      [% IF annotations && c.user_exists %]
+        <span id="text-annotation-button">
+          <a href="#edit-annotation"
+             data-toggle="collapse"
+          /><span class="fa fa-pencil-square fa-2x fa-border"
+                  aria-hidden="true"
+                  title="[% loc('Edit annotations') %]"
+            ></span><span class="sr-only" >[% loc('Edit annotations') %]</span></a>
+        </span>
       [% END %]
       [% IF text.show_formats %]
       <span id="book-builder-add-text">

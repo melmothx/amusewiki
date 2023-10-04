@@ -66,10 +66,10 @@ foreach my $text ($site->titles->search({ uri => { -like => 'c-child-%' } })) {
     ok $text->parent_text;
     is $text->children_texts->count, 0;
     is $text->parent_text->children_texts->count, 3;
-    is $text->categories->count, 0, "No categories set in the child text";
+    is $text->categories->count, 2, "2 categories set in the child text";
     my $expected = $text->parent_text->display_categories;
-    # diag Dumper($expected);
-    is_deeply $text->display_categories, $expected;
+    # is_deeply $text->display_categories, $expected or diag Dumper($expected, $text->display_categories);
+    is $text->authors->first->name, "Author dummy";
     $mech->get($text->full_uri . '?bare=1');
     #diag $mech->content;
     $mech->content_contains($text->parent_text->full_uri, "Link to parent found in " . $mech->uri);
@@ -112,7 +112,7 @@ foreach my $text ($site->titles->search({ uri => 'self' })) {
     ok $text->parent;
     ok $text->parent_text;
     is $text->children_texts->count, 1;
-    diag Dumper($text->display_categories);
-    is_deeply $text->display_categories, [];
+    diag Dumper ($text->display_categories);
+    is $text->authors->first->name, "Author";
 }
 

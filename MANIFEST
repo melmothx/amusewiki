@@ -164,6 +164,8 @@ dbicdh/_source/deploy/8/001-auto-__VERSION.yml
 dbicdh/_source/deploy/8/001-auto.yml
 dbicdh/_source/deploy/80/001-auto-__VERSION.yml
 dbicdh/_source/deploy/80/001-auto.yml
+dbicdh/_source/deploy/81/001-auto-__VERSION.yml
+dbicdh/_source/deploy/81/001-auto.yml
 dbicdh/_source/deploy/9/001-auto-__VERSION.yml
 dbicdh/_source/deploy/9/001-auto.yml
 dbicdh/MySQL/deploy/10/001-auto-__VERSION.sql
@@ -322,6 +324,8 @@ dbicdh/MySQL/deploy/8/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/8/001-auto.sql
 dbicdh/MySQL/deploy/80/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/80/001-auto.sql
+dbicdh/MySQL/deploy/81/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/81/001-auto.sql
 dbicdh/MySQL/deploy/9/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/9/001-auto.sql
 dbicdh/MySQL/upgrade/10-11/001-auto.sql
@@ -401,6 +405,7 @@ dbicdh/MySQL/upgrade/77-78/001-auto.sql
 dbicdh/MySQL/upgrade/78-79/001-auto.sql
 dbicdh/MySQL/upgrade/79-80/001-auto.sql
 dbicdh/MySQL/upgrade/8-9/001-auto.sql
+dbicdh/MySQL/upgrade/80-81/001-auto.sql
 dbicdh/MySQL/upgrade/9-10/001-auto.sql
 dbicdh/PostgreSQL/deploy/10/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/10/001-auto.sql
@@ -558,6 +563,8 @@ dbicdh/PostgreSQL/deploy/8/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/8/001-auto.sql
 dbicdh/PostgreSQL/deploy/80/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/80/001-auto.sql
+dbicdh/PostgreSQL/deploy/81/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/81/001-auto.sql
 dbicdh/PostgreSQL/deploy/9/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/9/001-auto.sql
 dbicdh/PostgreSQL/upgrade/10-11/001-auto.sql
@@ -637,6 +644,7 @@ dbicdh/PostgreSQL/upgrade/77-78/001-auto.sql
 dbicdh/PostgreSQL/upgrade/78-79/001-auto.sql
 dbicdh/PostgreSQL/upgrade/79-80/001-auto.sql
 dbicdh/PostgreSQL/upgrade/8-9/001-auto.sql
+dbicdh/PostgreSQL/upgrade/80-81/001-auto.sql
 dbicdh/PostgreSQL/upgrade/9-10/001-auto.sql
 dbicdh/SQLite/deploy/10/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/10/001-auto.sql
@@ -794,6 +802,8 @@ dbicdh/SQLite/deploy/8/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/8/001-auto.sql
 dbicdh/SQLite/deploy/80/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/80/001-auto.sql
+dbicdh/SQLite/deploy/81/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/81/001-auto.sql
 dbicdh/SQLite/deploy/9/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/9/001-auto.sql
 dbicdh/SQLite/upgrade/10-11/001-auto.sql
@@ -873,6 +883,7 @@ dbicdh/SQLite/upgrade/77-78/001-auto.sql
 dbicdh/SQLite/upgrade/78-79/001-auto.sql
 dbicdh/SQLite/upgrade/79-80/001-auto.sql
 dbicdh/SQLite/upgrade/8-9/001-auto.sql
+dbicdh/SQLite/upgrade/80-81/001-auto.sql
 dbicdh/SQLite/upgrade/9-10/001-auto.sql
 lib/AmuseWikiFarm.pm
 lib/AmuseWikiFarm/Archive/BookBuilder.pm
@@ -887,6 +898,7 @@ lib/AmuseWikiFarm/Archive/Xapian.pm
 lib/AmuseWikiFarm/Archive/Xapian/Result.pm
 lib/AmuseWikiFarm/Archive/Xapian/Result/Text.pm
 lib/AmuseWikiFarm/Controller/Admin.pm
+lib/AmuseWikiFarm/Controller/Annotate.pm
 lib/AmuseWikiFarm/Controller/API.pm
 lib/AmuseWikiFarm/Controller/Archive.pm
 lib/AmuseWikiFarm/Controller/Attachments.pm
@@ -975,6 +987,7 @@ lib/AmuseWikiFarm/Role/Controller/RegularListing.pm
 lib/AmuseWikiFarm/Role/Controller/Text.pm
 lib/AmuseWikiFarm/Schema.pm
 lib/AmuseWikiFarm/Schema/Result/AmwSession.pm
+lib/AmuseWikiFarm/Schema/Result/Annotation.pm
 lib/AmuseWikiFarm/Schema/Result/Attachment.pm
 lib/AmuseWikiFarm/Schema/Result/BookbuilderProfile.pm
 lib/AmuseWikiFarm/Schema/Result/BookbuilderSession.pm
@@ -1012,6 +1025,7 @@ lib/AmuseWikiFarm/Schema/Result/TextInternalLink.pm
 lib/AmuseWikiFarm/Schema/Result/TextMonth.pm
 lib/AmuseWikiFarm/Schema/Result/TextPart.pm
 lib/AmuseWikiFarm/Schema/Result/Title.pm
+lib/AmuseWikiFarm/Schema/Result/TitleAnnotation.pm
 lib/AmuseWikiFarm/Schema/Result/TitleAttachment.pm
 lib/AmuseWikiFarm/Schema/Result/TitleCategory.pm
 lib/AmuseWikiFarm/Schema/Result/TitleStat.pm
@@ -1021,6 +1035,7 @@ lib/AmuseWikiFarm/Schema/Result/UserSite.pm
 lib/AmuseWikiFarm/Schema/Result/Vhost.pm
 lib/AmuseWikiFarm/Schema/Result/WhitelistIp.pm
 lib/AmuseWikiFarm/Schema/ResultSet/AmwSession.pm
+lib/AmuseWikiFarm/Schema/ResultSet/Annotation.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Attachment.pm
 lib/AmuseWikiFarm/Schema/ResultSet/BookbuilderSession.pm
 lib/AmuseWikiFarm/Schema/ResultSet/BulkJob.pm
@@ -1042,6 +1057,7 @@ lib/AmuseWikiFarm/Schema/ResultSet/SiteCategoryType.pm
 lib/AmuseWikiFarm/Schema/ResultSet/TextInternalLink.pm
 lib/AmuseWikiFarm/Schema/ResultSet/TextPart.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Title.pm
+lib/AmuseWikiFarm/Schema/ResultSet/TitleAnnotation.pm
 lib/AmuseWikiFarm/Schema/ResultSet/TitleStat.pm
 lib/AmuseWikiFarm/Schema/ResultSet/User.pm
 lib/AmuseWikiFarm/Schema/ResultSet/WhitelistIp.pm
@@ -1164,6 +1180,7 @@ root/src/nodes/node_root.tt
 root/src/publish/pending.tt
 root/src/search/index.tt
 root/src/search/opensearch.tt
+root/src/settings/annotations.tt
 root/src/settings/categories.tt
 root/src/settings/edit_format.tt
 root/src/settings/formats.tt
@@ -1776,6 +1793,7 @@ t/03podcoverage.t
 t/aliases.t
 t/amuse-utils.t
 t/amw-session-dbic.t
+t/annotations.t
 t/archive-cache.t
 t/archive.t
 t/atr-lexicon.json
@@ -2066,4 +2084,5 @@ t/xapian-multilang.t
 t/xapian-versioning.t
 t/xapian.t
 t/xs-sessions.t
+t/years.t
 t/zz-finish-tests.t

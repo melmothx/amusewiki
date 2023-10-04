@@ -10,6 +10,7 @@ with 'AmuseWikiFarm::Role::Controller::HumanLoginScreen';
 use AmuseWikiFarm::Utils::Amuse qw//;
 use HTML::Entities qw//;
 use AmuseWikiFarm::Log::Contextual;
+use Try::Tiny;
 
 sub match :Chained('base') PathPart('') :CaptureArgs(1) {
     my ($self, $c, $arg) = @_;
@@ -176,6 +177,41 @@ sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
         }
         $c->stash(text_display_children => \@out);
     }
+
+    my $annotation_filter = { active => 1 };
+    unless ($c->user_exists) {
+        $annotation_filter->{private} = 0;
+    }
+    my @annotations = map { +{
+                              label => $_->label,
+                              name => $_->annotation_name,
+                              id => $_->annotation_id,
+                              type => $_->annotation_type,
+                              private => $_->private,
+                             }
+                        } $site->annotations->search($annotation_filter, { order_by => 'priority' })->all;
+    if (@annotations) {
+        my %vals;
+        foreach my $ann ($text->title_annotations) {
+            $vals{$ann->annotation_id} = $ann->valid_value;
+        }
+        Dlog_debug { "Values are  $_"  } \%vals;
+        foreach my $ann (@annotations) {
+            if (my $value = $vals{$ann->{id}}) {
+                $ann->{value} = $value;
+                if ($ann->{type} eq 'file') {
+                    log_debug { "File annotation is $value" };
+                    $ann->{url} = $c->uri_for($value)
+                }
+                my $html = HTML::Entities::encode_entities($value, q{<>&"'});
+                $html =~ s/\r?\n/<br>/g;
+                $ann->{html} = $html;
+            }
+        }
+    }
+
+    Dlog_debug { "Annotations are  $_"  } \@annotations;
+    $c->stash(annotations => \@annotations) if @annotations;
 }
 
 sub text :Chained('populate_preamble') :PathPart('') :Args(0) {

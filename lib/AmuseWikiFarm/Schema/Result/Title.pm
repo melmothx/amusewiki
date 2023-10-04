@@ -66,6 +66,11 @@ __PACKAGE__->table("title");
   data_type: 'text'
   is_nullable: 1
 
+=head2 datefirst
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 notes
 
   data_type: 'text'
@@ -278,6 +283,8 @@ __PACKAGE__->add_columns(
   "lang",
   { data_type => "varchar", default_value => "en", is_nullable => 0, size => 3 },
   "date",
+  { data_type => "text", is_nullable => 1 },
+  "datefirst",
   { data_type => "text", is_nullable => 1 },
   "notes",
   { data_type => "text", is_nullable => 1 },
@@ -538,6 +545,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 title_annotations
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::TitleAnnotation>
+
+=cut
+
+__PACKAGE__->has_many(
+  "title_annotations",
+  "AmuseWikiFarm::Schema::Result::TitleAnnotation",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 title_attachments
 
 Type: has_many
@@ -624,8 +646,8 @@ Composing rels: L</node_titles> -> node
 __PACKAGE__->many_to_many("nodes", "node_titles", "node");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-11 11:21:16
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qx0/jlUYtl3Wv69Cb9SQdQ
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-10-01 08:37:40
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JTCv/5sd8mgcXY0VgPYPTg
 
 =head2 translations
 
@@ -694,12 +716,13 @@ use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse;
 use HTML::Entities qw/decode_entities encode_entities/;
 use AmuseWikiFarm::Utils::Amuse qw/cover_filename_is_valid to_json from_json build_full_uri/;
-use Path::Tiny qw//;
+use Path::Tiny ();
 use HTML::LinkExtor; # from HTML::Parser
 use HTML::TreeBuilder;
 use URI;
 use Data::Dumper::Concise;
 use AmuseWikiFarm::Utils::Paths;
+use File::MimeInfo::Magic qw/mimetype/;
 use constant { PAPER_PAGE_SIZE => 2000 };
 
 has selected_formats => (is => 'ro',
@@ -1528,6 +1551,11 @@ sub dublin_core_entry {
     # we need one per format
     my ($self) = @_;
     my @cats = $self->categories;
+
+    my @rels;
+    if (my $parent = $self->parent_text) {
+        push @rels, $parent->full_uri;
+    }
     my $data = {
                 title => [ grep { length($_) } ($self->title, $self->subtitle) ],
                 creator => [
@@ -1540,12 +1568,15 @@ sub dublin_core_entry {
                             grep { $_->type eq 'topic' }
                             @cats
                            ],
-                description => $self->teaser,
-                publisher => $self->publisher,
-                date => $self->date_year || $self->pubdate->ymd,
-                source => $self->source,
-                language => $self->lang || 'en',
-                rights => $self->rights,
+                description => [
+                                map { /\w/ ? $_ : '-' } ($self->teaser, $self->notes)
+                               ],
+                publisher => [ $self->publisher ],
+                date => [ grep { $_ } ($self->year_first_edition, $self->date_year || $self->pubdate->year) ],
+                source => [ $self->source ],
+                language => [ $self->lang || 'en' ],
+                rights => [ $self->rights ],
+                relation => [ @rels ],
                };
     return $data;
 }
@@ -1794,6 +1825,16 @@ sub author_title {
     }
 }
 
+sub year_first_edition {
+    my $self = shift;
+    if (my $date = $self->datefirst) {
+        if ($date =~ m/\b([0-9]{4})\b/) {
+            return $1;
+        }
+    }
+    return;
+}
+
 sub date_year {
     my $self = shift;
     if (my $date = $self->date) {
@@ -1844,19 +1885,6 @@ sub wants_custom_format {
 sub display_categories {
     my $self = shift;
     my @out;
-
-    my $text = $self;
-    my $iterations = 0;
-  PARENT:
-    while (my $p = $text->parent_text) {
-        $text = $p;
-        $iterations++;
-        if ($iterations > 10) {
-            log_error { "Possible parentage with infinite recursion on " . $self->full_uri };
-            last PARENT;
-        }
-    }
-
     my %muse_headers = map { $_->muse_header => $_->as_html } $self->muse_headers;
 
   CTYPE:
@@ -1872,7 +1900,7 @@ sub display_categories {
             }
             next CTYPE;
         }
-        my $rs = $text->categories->by_type($ctype->category_type)->with_active_flag_on;
+        my $rs = $self->categories->by_type($ctype->category_type)->with_active_flag_on;
         my @list;
         while (my $cat = $rs->next) {
             push @list, {
@@ -1998,6 +2026,89 @@ MUSE
     $removal->commit_version(sprintf("Renamed %s to %s", $self->uri, $uri), $username);
     $removal->publish_text($logger);
     return $return;
+}
+
+sub annotate {
+    my ($self, $params) = @_;
+    my $site = $self->site;
+    my @errors;
+  ANNOTATION:
+    foreach my $ann ($self->site->annotations) {
+        if (my $update = $params->{$ann->annotation_id}) {
+            my $title_annotation = $self->title_annotations->find_or_create({ annotation => $ann });
+            my @path = ($site->repo_root, $site->annotations_directory);
+            # create directory and add gitingore
+            my $gitignore = Path::Tiny::path(@path, '.gitignore');
+            $gitignore->parent->mkpath;
+            unless ($gitignore->exists) {
+                $gitignore->spew_utf8("*\n*/\n");
+            }
+
+            # annotation name
+            if ($ann->annotation_name =~ m/\A([a-z0-9-]+)\z/) {
+                push @path, $1;
+            }
+            else {
+                push @errors, "Bad annotation name " . $ann->annotation_name;
+                next ANNOTATION;
+            }
+
+            # class, path, uri
+            push @path, $self->f_class;
+            if (my $relpath = $self->f_archive_rel_path) {
+                push @path, grep { /\A[a-z0-9-]+\z/ } split(/\//, $relpath);
+            }
+            if ($ann->annotation_type eq 'file' and my $file = $update->{file}) {
+                delete $update->{value};
+                if (-f $file) {
+                    my $mime = mimetype($file);
+                    my $all_mime = AmuseWikiFarm::Utils::Paths::served_mime_types();
+                    my %mimes = reverse %$all_mime;
+                    if (my $ext = $mimes{$mime}) {
+                        my $storage = Path::Tiny::path(@path, $self->uri . ".$ext");
+                        $storage->parent->mkpath;
+                        if (Path::Tiny::path($file)->copy($storage)) {
+                            log_debug { "File copied in $storage" };
+                            $update->{value} = $storage->relative($path[0]);
+                        }
+                        else {
+                            push @errors, "Could not copy $update->{file}";
+                            next ANNOTATION;
+                        }
+                    }
+                    else {
+                        push @errors, "$update->{file} has invalid mime $mime";
+                        next ANNOTATION;
+                    }
+                }
+                else {
+                    push @errors, "$update->{file} not found, cannot add to annotation";
+                    next ANNOTATION;
+                }
+            }
+            my $value = $update->{value};
+            my $destination = Path::Tiny::path(@path, $self->uri);
+            $destination->parent->mkpath;
+            log_debug { "Saving update in $destination" };
+            if ($update->{remove}) {
+                $title_annotation->delete;
+                $destination->remove if $destination->exists;
+            }
+            elsif (defined $value) {
+                # save the content in a file, so we can reconstruct the tree.
+                my $destination = Path::Tiny::path(@path, $self->uri);
+                $destination->spew_utf8($value);
+                $title_annotation->update({ annotation_value => $value });
+            }
+            else {
+                push @errors, $ann->annotation_name . " was not passed!";
+            }
+        }
+    }
+    return {
+            success => !@errors,
+            errors => join(" / ", @errors),
+           };
 }
 
 __PACKAGE__->meta->make_immutable;

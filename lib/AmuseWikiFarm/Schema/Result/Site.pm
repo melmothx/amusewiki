@@ -583,6 +583,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 annotations
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Annotation>
+
+=cut
+
+__PACKAGE__->has_many(
+  "annotations",
+  "AmuseWikiFarm::Schema::Result::Annotation",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 attachments
 
 Type: has_many
@@ -999,8 +1014,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-11 11:21:16
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:RCs7bR+Ayhr47kzoal15/g
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-10-01 08:37:40
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:xVVXee+HMfyH3ZvI6L7aHA
 
 =head2 other_sites
 
@@ -2278,11 +2293,6 @@ sub index_file {
     # this is needed because we insert it from title, and DBIC can't
     # infer the site_id from there (even if it should, but hey).
     my @parsed_cats;
-    if ($insertion{parent}) {
-        if (delete $details->{parsed_categories}) {
-            $logger->("Ignored categories, this is a child text\n");
-        }
-    }
     if (my $cats_from_title = delete $details->{parsed_categories}) {
         my %cat_hash;
         foreach my $cat (@$cats_from_title) {
@@ -2811,6 +2821,21 @@ Pass the first argument (a sub ref) as logger to
 L<Text::Amuse::Compile> if present.
 
 =cut
+
+sub bootstrap_archive {
+    my ($self, $opts) = @_;
+    my $logger = $opts->{logger} || sub {};
+    # just in case
+    $self->init_category_types;
+    # call this in any case, even if we want repo_find_files
+    my @files = $self->_pre_update_db_from_tree($logger);
+    if ($opts->{full}) {
+        @files = sort keys %{ $self->repo_find_files };
+    }
+    $self->compile_and_index_files(\@files, $logger);
+    # now that the files are indexed, see if we have the annotation directory to import.
+    $self->import_annotations_from_tree({ logger => $logger });
+}
 
 sub update_db_from_tree {
     my ($self, $logger) = @_;
@@ -4338,9 +4363,7 @@ sub _validate_attached_uris {
 
 sub deserialize_nodes {
     my ($self, $nodes) = @_;
-    my $changed = $self->repo_find_changed_files;
     return unless @$nodes;
-
     my @fail;
     foreach my $node (@$nodes) {
         if (my $str = $node->{attached_uris}) {
@@ -5032,6 +5055,52 @@ sub init_category_types {
     $self->discard_changes;
 }
 
+sub edit_annotations_from_params {
+    my ($self, $args) = @_;
+    my %params = %$args;
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    Dlog_debug { "Annotations: $_" } \%params;
+    my %valid_types = (qw/
+                             file file
+                             identifier identifier
+                             text text
+                         /);
+    my $changed = 0;
+    foreach my $ann ($self->annotations->all) {
+        my $id = $ann->annotation_id;
+        if ($params{"edit-$id"}) {
+            if (my $type = $valid_types{$params{"annotation_type-$id"}}) {
+                my %orig = $ann->get_columns;
+                foreach my $col (qw/annotation_type label priority active private/) {
+                    $ann->$col($params{$col . '-' . $id} // 0);
+                }
+                if ($ann->is_changed) {
+                    my %dirty = $ann->get_dirty_columns;
+                    Dlog_info { "Updating annotation $_" } +{ original => \%orig, changes => \%dirty };
+                    $ann->update;
+                    $changed++;
+                }
+            }
+            else {
+                die "Bad type " . $params{"type-$id"};
+            }
+        }
+    }
+    if ($params{create} and $params{create} =~ m/\A([a-z0-9]+)\z/) {
+        my $name = $1;
+        unless ($self->annotations->find({ annotation_name => $name }, { key => "site_id_annotation_name_unique" })) {
+            $self->annotations->create({
+                                        annotation_name => $name,
+                                        annotation_type => 'text',
+                                        label => ucfirst($name),
+                                       });
+            $changed++;
+        }
+    }
+    $guard->commit;
+    return $changed;
+}
+
 sub edit_category_types_from_params {
     my ($self, $args) = @_;
     my %params = %$args;
@@ -5240,6 +5309,50 @@ sub process_autoimport_files {
                 my $err = $_;
                 log_error { "Failure importing categories: $err" };
             };
+        }
+    }
+}
+
+sub annotations_directory {
+    return 'annotations';
+}
+
+sub import_annotations_from_tree {
+    my ($self, $opts) = @_;
+    my $logger = $opts->{logger} || sub { };
+    my $import_dir = Path::Tiny::path($self->repo_root, $self->annotations_directory);
+    return unless $import_dir->exists;
+    my @annotations;
+  DIRECTORY:
+    foreach my $dir ($import_dir->children(qr/\A([a-z0-9]+)\z/)) {
+        my $name = $dir->basename;
+        $logger->("Found annotation $name in tree\n");
+        my $annotation = $self->annotations->find({ annotation_name => $name });
+        unless ($annotation) {
+            $logger->("Ignoring directory $name, annotation not found!\n");
+            next DIRECTORY;
+        }
+        my %found;
+        find({ wanted => sub {
+                   my $filename = $_;
+                   if (-f $filename) {
+                       if ($filename =~ m/\A([a-z0-9-]+)\z/) {
+                           $found{$filename} = Path::Tiny::path($filename)->slurp_utf8;
+                       }
+                   }
+               },
+             }, $dir->child('text')->stringify);
+        foreach my $uri (keys %found) {
+            if (my $title = $self->titles->texts_only->by_uri($uri)->first) {
+                $logger->("Setting annotation $name for $uri to $found{$uri}\n");
+                my $ann = $title->title_annotations->update_or_create({
+                                                                       annotation => $annotation,
+                                                                       annotation_value => $found{$uri},
+                                                                      });
+            }
+            else {
+                $logger->("$uri not found in title records!\n");
+            }
         }
     }
 }

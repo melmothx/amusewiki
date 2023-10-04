@@ -250,6 +250,46 @@ sub edit_categories :Chained('list_categories') :PathPart('edit') :Args(0) {
     $c->response->redirect($c->uri_for_action('/settings/categories'));    
 }
 
+sub list_annotations :Chained('settings') :PathPart('annotations') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    unless ($c->check_any_user_role(qw/admin root/)) {
+        $c->detach('/not_permitted');
+        return;
+    }
+}
+
+sub annotations :Chained('list_annotations') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    my $site = $c->stash->{site};
+    my $page_title = $c->loc('Annotations for [_1]', $site->canonical);
+    push @{$c->stash->{breadcrumbs}}, {
+                                       uri => $c->uri_for_action('/settings/annotations'),
+                                       label => $page_title,
+                                      };
+    $c->stash(page_title => $page_title,
+              annotations => [ $site->annotations->hri->all ]);
+}
+
+sub edit_annotations :Chained('list_annotations') :PathPart('edit') :Args(0) {
+    my ($self, $c) = @_;
+    my $site = $c->stash->{site};
+    my %params = %{ $c->request->body_parameters };
+    Dlog_debug { "Params: $_" } \%params;
+    try {
+        if (my $changed = $site->edit_annotations_from_params(\%params)) {
+            my $msg = $c->loc("Changes applied.");
+            $c->flash(status_msg => $msg);
+        }
+    }
+    catch {
+        my $err = $_;
+        log_error { $err };
+        $c->flash(error_msg => "$err");
+    };
+    $c->response->redirect($c->uri_for_action('/settings/annotations'));
+}
+
+
 =encoding utf8
 
 =head1 AUTHOR

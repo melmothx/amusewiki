@@ -33,6 +33,7 @@ is_deeply $site->title_fields, {
                              'f_timestamp_epoch' => 1,
                              'pubdate' => 1,
                              'date' => 1,
+                                datefirst => 1,
                              'site_id' => 1,
                              'f_archive_rel_path' => 1,
                              'f_path' => 1,
