@@ -267,14 +267,14 @@ sub annotations :Chained('list_annotations') :PathPart('') :Args(0) {
                                        label => $page_title,
                                       };
     $c->stash(page_title => $page_title,
-              annotations => [ $site->annotations->all ],
-             );
+              annotations => [ $site->annotations->hri->all ]);
 }
 
 sub edit_annotations :Chained('list_annotations') :PathPart('edit') :Args(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
     my %params = %{ $c->request->body_parameters };
+    Dlog_debug { "Params: $_" } \%params;
     try {
         if (my $changed = $site->edit_annotations_from_params(\%params)) {
             my $msg = $c->loc("Changes applied.");

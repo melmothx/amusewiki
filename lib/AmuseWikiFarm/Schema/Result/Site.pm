@@ -5042,6 +5042,52 @@ sub init_category_types {
     $self->discard_changes;
 }
 
+sub edit_annotations_from_params {
+    my ($self, $args) = @_;
+    my %params = %$args;
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    Dlog_debug { "Annotations: $_" } \%params;
+    my %valid_types = (qw/
+                             file file
+                             identifier identifier
+                             text text
+                         /);
+    my $changed = 0;
+    foreach my $ann ($self->annotations->all) {
+        my $id = $ann->annotation_id;
+        if ($params{"edit-$id"}) {
+            if (my $type = $valid_types{$params{"annotation_type-$id"}}) {
+                my %orig = $ann->get_columns;
+                foreach my $col (qw/annotation_type label priority active private/) {
+                    $ann->$col($params{$col . '-' . $id} // 0);
+                }
+                if ($ann->is_changed) {
+                    my %dirty = $ann->get_dirty_columns;
+                    Dlog_info { "Updating annotation $_" } +{ original => \%orig, changes => \%dirty };
+                    $ann->update;
+                    $changed++;
+                }
+            }
+            else {
+                die "Bad type " . $params{"type-$id"};
+            }
+        }
+    }
+    if ($params{create} and $params{create} =~ m/\A([a-z0-9]+)\z/) {
+        my $name = $1;
+        unless ($self->annotations->find({ annotation_name => $name }, { key => "site_id_annotation_name_unique" })) {
+            $self->annotations->create({
+                                        annotation_name => $name,
+                                        annotation_type => 'text',
+                                        label => ucfirst($name),
+                                       });
+            $changed++;
+        }
+    }
+    $guard->commit;
+    return $changed;
+}
+
 sub edit_category_types_from_params {
     my ($self, $args) = @_;
     my %params = %$args;
