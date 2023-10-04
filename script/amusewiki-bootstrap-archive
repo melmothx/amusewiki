@@ -106,9 +106,7 @@ foreach my $code (@codes) {
     }
     # with --refresh, just check
     if ($refresh) {
-        # just in case
-        $site->init_category_types;
-        $site->update_db_from_tree;
+        $site->bootstrap_archive({ logger => sub { print @_ } });
     }
     elsif ($xapian) {
         $site->xapian_reindex_all(sub { print @_ });
@@ -120,7 +118,6 @@ foreach my $code (@codes) {
     }
     # without, do a full import
     else {
-        my @files = sort keys %{ $site->repo_find_files };
-        $site->compile_and_index_files(\@files);
+        $site->bootstrap_archive({ full => 1, logger => sub { print @_ } });
     }
 }

@@ -2822,6 +2822,19 @@ L<Text::Amuse::Compile> if present.
 
 =cut
 
+sub bootstrap_archive {
+    my ($self, $opts) = @_;
+    my $logger = $opts->{logger} || sub {};
+    # just in case
+    $self->init_category_types;
+    # call this in any case, even if we want repo_find_files
+    my @files = $self->_pre_update_db_from_tree($logger);
+    if ($opts->{full}) {
+        @files = sort keys %{ $self->repo_find_files };
+    }
+    $self->compile_and_index_files(\@files, $logger);
+}
+
 sub update_db_from_tree {
     my ($self, $logger) = @_;
     $logger ||= sub { print @_ };
