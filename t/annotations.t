@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 221;
+use Test::More tests => 233;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -217,3 +217,30 @@ foreach my $title ($site->titles->all) {
 
 ok path($site->repo_root, 'annotations', '.gitignore')->exists;
 
+# reinsert anew
+{
+    my %update;
+    foreach my $ann ($site->annotations) {
+        $ann->update({ private => 0, active => 1 });
+        $update{$ann->annotation_id} = {
+                                        value => $ann->label . " New Test",
+                                       };
+        if ($ann->annotation_type eq 'file') {
+            $update{$ann->annotation_id}{file} = 't/files/shot.pdf';
+        }
+    }
+    foreach my $title ($site->titles) {
+        $_->{value} .= " " . $title->uri for values %update;
+        my $res = $title->annotate(\%update);
+        ok $res->{success};
+    }
+    foreach my $ann ($site->annotations) {
+        ok $ann->title_annotations->count;
+        $ann->title_annotations->delete;
+        is $ann->title_annotations->count, 0, "Annotation cleared";
+    }
+    $site->import_annotations_from_tree({ logger => sub { diag @_ } });
+    foreach my $ann ($site->annotations) {
+        ok $ann->title_annotations->count;
+    }
+}

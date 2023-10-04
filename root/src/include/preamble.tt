@@ -124,7 +124,7 @@
                   class="text-annotation"
               [% END %]
           >
-            <strong>[% lh.site_loc_html(annotation.label) %]</strong>
+            <strong>[% lh.site_loc_html(annotation.label) %]:</strong>
             [% IF annotation.url %]
               <a href="[% annotation.url %]">[% loc('Download') %]</a>
             [% ELSE %]

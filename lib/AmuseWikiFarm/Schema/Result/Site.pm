@@ -2833,6 +2833,8 @@ sub bootstrap_archive {
         @files = sort keys %{ $self->repo_find_files };
     }
     $self->compile_and_index_files(\@files, $logger);
+    # now that the files are indexed, see if we have the annotation directory to import.
+    $self->import_annotations_from_tree({ logger => $logger });
 }
 
 sub update_db_from_tree {
@@ -5307,6 +5309,50 @@ sub process_autoimport_files {
                 my $err = $_;
                 log_error { "Failure importing categories: $err" };
             };
+        }
+    }
+}
+
+sub annotations_directory {
+    return 'annotations';
+}
+
+sub import_annotations_from_tree {
+    my ($self, $opts) = @_;
+    my $logger = $opts->{logger} || sub { };
+    my $import_dir = Path::Tiny::path($self->repo_root, $self->annotations_directory);
+    return unless $import_dir->exists;
+    my @annotations;
+  DIRECTORY:
+    foreach my $dir ($import_dir->children(qr/\A([a-z0-9]+)\z/)) {
+        my $name = $dir->basename;
+        $logger->("Found annotation $name in tree\n");
+        my $annotation = $self->annotations->find({ annotation_name => $name });
+        unless ($annotation) {
+            $logger->("Ignoring directory $name, annotation not found!\n");
+            next DIRECTORY;
+        }
+        my %found;
+        find({ wanted => sub {
+                   my $filename = $_;
+                   if (-f $filename) {
+                       if ($filename =~ m/\A([a-z0-9-]+)\z/) {
+                           $found{$filename} = Path::Tiny::path($filename)->slurp_utf8;
+                       }
+                   }
+               },
+             }, $dir->child('text')->stringify);
+        foreach my $uri (keys %found) {
+            if (my $title = $self->titles->texts_only->by_uri($uri)->first) {
+                $logger->("Setting annotation $name for $uri to $found{$uri}\n");
+                my $ann = $title->title_annotations->update_or_create({
+                                                                       annotation => $annotation,
+                                                                       annotation_value => $found{$uri},
+                                                                      });
+            }
+            else {
+                $logger->("$uri not found in title records!\n");
+            }
         }
     }
 }

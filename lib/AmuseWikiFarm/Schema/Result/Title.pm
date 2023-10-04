@@ -2036,8 +2036,7 @@ sub annotate {
     foreach my $ann ($self->site->annotations) {
         if (my $update = $params->{$ann->annotation_id}) {
             my $title_annotation = $self->title_annotations->find_or_create({ annotation => $ann });
-            my @path = ($site->repo_root, 'annotations');
-
+            my @path = ($site->repo_root, $site->annotations_directory);
             # create directory and add gitingore
             my $gitignore = Path::Tiny::path(@path, '.gitignore');
             $gitignore->parent->mkpath;

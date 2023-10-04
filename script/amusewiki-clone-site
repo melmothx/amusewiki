@@ -94,13 +94,13 @@ sub import {
         my $conf;
         eval { $conf = LoadFile($file) };
         if ($conf) {
-            print "Importing $file\n";
+            my $logger = sub { print @_ };
+            $logger->("Importing $file\n");
             my $site = $schema->resultset('Site')->deserialize_site($conf);
             if ($bootstrap) {
                 if (-d $site->repo_root) {
-                    $site->init_category_types;
-                    $site->update_db_from_tree;
-                    print "Reimporting file after the bootstrap\n";
+                    $site->bootstrap_archive({ full => 1, logger => $logger });
+                    $logger->("Reimporting file after the bootstrap\n");
                     $schema->resultset('Site')->deserialize_site(LoadFile($file));
                 }
                 else {
