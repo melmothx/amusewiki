@@ -919,7 +919,6 @@ lib/AmuseWikiFarm/Controller/Mirror.pm
 lib/AmuseWikiFarm/Controller/Monthly.pm
 lib/AmuseWikiFarm/Controller/Nodes.pm
 lib/AmuseWikiFarm/Controller/OAI.pm
-lib/AmuseWikiFarm/Controller/OaiPmh.pm
 lib/AmuseWikiFarm/Controller/OPDS.pm
 lib/AmuseWikiFarm/Controller/Publish.pm
 lib/AmuseWikiFarm/Controller/Remote.pm
