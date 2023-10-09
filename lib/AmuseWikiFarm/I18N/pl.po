@@ -1170,6 +1170,9 @@ msgstr ""
 msgid "Id"
 msgstr "Id"
 
+msgid "Identifier"
+msgstr ""
+
 msgid ""
 "If by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
@@ -1344,9 +1347,6 @@ msgstr ""
 "  mniej więcej tak samo dla wszystkich aplikacji. Wszystko co musisz zrobić, "
 "to\n"
 "  dodać %1 do \"network libraries\"."
-
-msgid "Indentifier"
-msgstr ""
 
 msgid "Inline elements"
 msgstr ""

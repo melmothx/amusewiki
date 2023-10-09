@@ -1213,6 +1213,9 @@ msgstr ""
 msgid "Id"
 msgstr "Id"
 
+msgid "Identifier"
+msgstr ""
+
 msgid ""
 "If by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
@@ -1421,9 +1424,6 @@ msgstr ""
 "In dit voorbeeld gebruiken we FBreader, maar de procedure\n"
 "  grotendeels hetzelfde voor alle toepassingen. Alles wat je hoeft te\n"
 "  doen is %1 toevoegen aan de netwerkbibliotheken."
-
-msgid "Indentifier"
-msgstr ""
 
 msgid "Inline elements"
 msgstr "Elementen in de lopende tekst"

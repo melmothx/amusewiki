@@ -48,7 +48,7 @@
                 [% loc('File') %]
               </option>
               <option value="identifier" [% IF ann.annotation_type == 'identifier' %]selected="selected"[% END %]>
-                [% loc('Indentifier') %]
+                [% loc('Identifier') %]
               </option>
               <option value="text" [% IF ann.annotation_type == 'text' %]selected="selected"[% END %]>
                 [% loc('Text') %]

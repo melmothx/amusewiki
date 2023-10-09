@@ -1203,6 +1203,9 @@ msgstr "ISBN"
 msgid "Id"
 msgstr "Kimlik"
 
+msgid "Identifier"
+msgstr ""
+
 msgid ""
 "If by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
@@ -1411,9 +1414,6 @@ msgstr ""
 "Bu örnekte, FBreader kullanıyoruz, ama süreç bütün uygulamalar\n"
 "  için aşağı yukarı aynıdır. Bütün yapman gereken network kütüphanelerine\n"
 "  %1 eklemek."
-
-msgid "Indentifier"
-msgstr ""
 
 msgid "Inline elements"
 msgstr "Satıriçi öğeler"

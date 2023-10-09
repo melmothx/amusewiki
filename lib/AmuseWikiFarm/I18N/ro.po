@@ -1224,6 +1224,9 @@ msgstr "ISBN"
 msgid "Id"
 msgstr "Id"
 
+msgid "Identifier"
+msgstr ""
+
 msgid ""
 "If by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
@@ -1448,9 +1451,6 @@ msgstr ""
 "  destul de asemănătoare pentru toate aplicațiile. Tot ce trebuie să faceți "
 "este să\n"
 "  adăugați %1 la bibliotecile de rețea."
-
-msgid "Indentifier"
-msgstr ""
 
 msgid "Inline elements"
 msgstr "Elemente în linie"

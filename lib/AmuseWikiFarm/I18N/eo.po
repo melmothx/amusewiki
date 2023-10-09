@@ -1212,6 +1212,9 @@ msgstr "ISBN"
 msgid "Id"
 msgstr "Id"
 
+msgid "Identifier"
+msgstr ""
+
 msgid ""
 "If by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
@@ -1431,9 +1434,6 @@ msgstr ""
 "En ĉi tiu ekzemplo, ni uzas FBreader, sed la procedo estas\n"
 "   preskaŭ same por ĉiuj aplikoj. Vi nur devas fari\n"
 "   aldonu% 1 al la retaj bibliotekoj."
-
-msgid "Indentifier"
-msgstr ""
 
 msgid "Inline elements"
 msgstr "Enliniaj elementoj"

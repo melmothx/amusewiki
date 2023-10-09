@@ -1189,6 +1189,9 @@ msgstr "شابک(ISBN)"
 msgid "Id"
 msgstr "شناسه(ID)"
 
+msgid "Identifier"
+msgstr ""
+
 msgid ""
 "If by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
@@ -1397,9 +1400,6 @@ msgstr ""
 "برنامه‌ها یکسان است.\n"
 " تنها کاری که باید انجام دهید این است که %1 را به کتابخانه‌های شبکه اضافه "
 "کنید."
-
-msgid "Indentifier"
-msgstr ""
 
 msgid "Inline elements"
 msgstr "عناصر درون خطی"

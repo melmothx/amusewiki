@@ -1143,6 +1143,9 @@ msgstr "ISBN码"
 msgid "Id"
 msgstr "Id"
 
+msgid "Identifier"
+msgstr ""
+
 msgid ""
 "If by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
@@ -1324,9 +1327,6 @@ msgid ""
 msgstr ""
 "在这个例子中，我们使用FBreader，但这个所有的应用程序的流程都是差不多的。你所"
 "要做的就是把%1添加到网络库中。"
-
-msgid "Indentifier"
-msgstr ""
 
 msgid "Inline elements"
 msgstr "行内元素"

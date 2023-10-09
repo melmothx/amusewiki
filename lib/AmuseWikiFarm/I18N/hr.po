@@ -1174,6 +1174,9 @@ msgstr ""
 msgid "Id"
 msgstr "Id"
 
+msgid "Identifier"
+msgstr ""
+
 msgid ""
 "If by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
@@ -1379,9 +1382,6 @@ msgid ""
 msgstr ""
 "U ovom primjeru koristi se FBreader, ali procedura je više-manje ista\n"
 "za sve aplikacije. Trebaš samo dodati %1 mrežnim bibliotekama."
-
-msgid "Indentifier"
-msgstr ""
 
 msgid "Inline elements"
 msgstr "Elementi po retku"
