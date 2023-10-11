@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2023-09-19 13:33+0300\n"
+"PO-Revision-Date: 2023-10-11 10:13+0300\n"
 "Last-Translator: Rojen Zaman <rojen@riseup.net>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #. ($filename)
 msgid "%1 doesn't exist"
@@ -265,17 +265,20 @@ msgstr ""
 "      Not: normalde bu gerekli olmaz"
 
 msgid "Annotations"
-msgstr ""
+msgstr "Ek Açıklamalar"
 
 msgid ""
 "Annotations are text metadata which are not included in the muse file. "
 "Examples could be: prices, catalog numbers, shelf location, working copies "
 "of large binary files, internal comments."
 msgstr ""
+"Ek açıklamalar, muse dosyasına dahil edilmeyen metin meta verileridir. Örnek "
+"olarak şunlar verilebilir: fiyatlar, katalog numaraları, raf konumu, büyük "
+"ikili dosyaların çalışma kopyaları, dahili yorumlar."
 
 #. ($site->canonical)
 msgid "Annotations for %1"
-msgstr ""
+msgstr "%1 için ek açıklamalar"
 
 msgid "Apache is not currently supported"
 msgstr "Apache henüz desteklenmiyor"
@@ -575,7 +578,7 @@ msgid "Create"
 msgstr "Yarat"
 
 msgid "Create a new annotation."
-msgstr ""
+msgstr "Yeni bir ek açıklama oluştur."
 
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
@@ -744,7 +747,7 @@ msgid "Double bars"
 msgstr "İkili sütünlar"
 
 msgid "Download"
-msgstr ""
+msgstr "İndir"
 
 msgid "Downloads"
 msgstr "İndirilenler"
@@ -765,7 +768,7 @@ msgid "Edit"
 msgstr "Düzenle"
 
 msgid "Edit annotations"
-msgstr ""
+msgstr "Ek açıklamaları düzenle"
 
 msgid "Edit attachment description"
 msgstr "Ek dosya açıklamasını düzenle"
@@ -914,7 +917,7 @@ msgid "Fetch"
 msgstr "Getir"
 
 msgid "File"
-msgstr ""
+msgstr "Dosya"
 
 msgid "File already in the body"
 msgstr "Dosya zaten gövdede"
@@ -1204,7 +1207,7 @@ msgid "Id"
 msgstr "Kimlik"
 
 msgid "Identifier"
-msgstr ""
+msgstr "Tanımlayıcı"
 
 msgid ""
 "If by chance another text with the same author and title exists, choose the "
@@ -1537,7 +1540,7 @@ msgstr ""
 "        resimler sadece bir sonraki adımda eklenebilir."
 
 msgid "Label"
-msgstr ""
+msgstr "Etiket"
 
 msgid "Language"
 msgstr "Dil"
@@ -2187,7 +2190,7 @@ msgid "Please upload your file again!"
 msgstr "Lütfen dosyayı tekrar yükleyin!"
 
 msgid "Please use only lowercase ASCII letters."
-msgstr ""
+msgstr "Lütfen yalnızca küçük ASCII harflerini kullan."
 
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Şiir, kaynakça, oyun, kod parçaları"
@@ -2779,7 +2782,7 @@ msgid "Tested applications, in this order of preference"
 msgstr "Test edilen uygulamalar, buradaki sıraya göre tercih edilir"
 
 msgid "Text"
-msgstr ""
+msgstr "Metin"
 
 msgid "Text body only (no title, no final pages)"
 msgstr "Yalnızca metin gövdesi (başlık yok, son sayfa yok)"
@@ -2804,7 +2807,7 @@ msgid "Texts"
 msgstr "Metinler"
 
 msgid "Thanks!"
-msgstr ""
+msgstr "Teşekkürler!"
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
