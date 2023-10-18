@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.580 2023-10-18
+
+ - i18n: tr (updated)
+ - Improve UI for federation: allow multiple urls by pasting
+
 2.579 2023-10-04
 
  - i18n: tr (updated)
