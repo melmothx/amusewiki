@@ -168,8 +168,14 @@ msgstr "Aggiungi questo testo all'impaginatore"
 msgid "Add to colophon"
 msgstr "Aggiungi al colofon"
 
-msgid "Added"
-msgstr "Aggiunto"
+msgid ""
+"Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
+"text or a category. Examples:"
+msgstr ""
+
+#. ($ok)
+msgid "Added %1 sources."
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -907,9 +913,6 @@ msgstr "Errore nell'aggiungere il repo remoto %1"
 msgid "Failed to remove Remote repository %1"
 msgstr "Errore nel rimuovere il repo remoto %1"
 
-msgid "Failure fetching the source"
-msgstr "Scaricamento della fonte fallito"
-
 msgid "Federation"
 msgstr "Federazione"
 
@@ -1453,9 +1456,6 @@ msgstr "ID non valido"
 msgid "Invalid URI"
 msgstr "URI non valido"
 
-msgid "Invalid domain"
-msgstr "Dominio non valido"
-
 msgid "Invalid email"
 msgstr "E-mail non valida"
 
@@ -1467,9 +1467,6 @@ msgstr "Nome non valido"
 
 msgid "Invalid parameter"
 msgstr "Parametro invalido"
-
-msgid "Invalid response"
-msgstr "Risposta non valida"
 
 msgid "Invalid target"
 msgstr "Destinazione non valida"
@@ -2662,6 +2659,10 @@ msgstr "Utenti del sito"
 msgid "Sites"
 msgstr "Siti"
 
+#. ($invalid)
+msgid "Skipped %1 invalid sources!"
+msgstr ""
+
 msgid "Slides"
 msgstr "Diapositive"
 
@@ -3138,6 +3139,9 @@ msgstr "Attiva/Disattiva"
 
 msgid "Toggle fullscreen editor"
 msgstr "Attiva/disattiva editor a tutto schermo"
+
+msgid "Too many URLs to process!"
+msgstr ""
 
 msgid "Top margin"
 msgstr "Margine superiore"
@@ -3809,6 +3813,18 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "Added"
+#~ msgstr "Aggiunto"
+
+#~ msgid "Failure fetching the source"
+#~ msgstr "Scaricamento della fonte fallito"
+
+#~ msgid "Invalid domain"
+#~ msgstr "Dominio non valido"
+
+#~ msgid "Invalid response"
+#~ msgstr "Risposta non valida"
 
 #~ msgid "Nodes"
 #~ msgstr "Nodi"

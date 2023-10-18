@@ -160,7 +160,13 @@ msgstr "将此文添加进建书器"
 msgid "Add to colophon"
 msgstr ""
 
-msgid "Added"
+msgid ""
+"Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
+"text or a category. Examples:"
+msgstr ""
+
+#. ($ok)
+msgid "Added %1 sources."
 msgstr ""
 
 msgid ""
@@ -857,9 +863,6 @@ msgstr "添加远程仓库%1失败"
 msgid "Failed to remove Remote repository %1"
 msgstr "移除远程仓库%1失败"
 
-msgid "Failure fetching the source"
-msgstr ""
-
 msgid "Federation"
 msgstr ""
 
@@ -1343,9 +1346,6 @@ msgstr ""
 msgid "Invalid URI"
 msgstr ""
 
-msgid "Invalid domain"
-msgstr ""
-
 msgid "Invalid email"
 msgstr "无效邮箱"
 
@@ -1356,9 +1356,6 @@ msgid "Invalid name"
 msgstr "无效名称"
 
 msgid "Invalid parameter"
-msgstr ""
-
-msgid "Invalid response"
 msgstr ""
 
 msgid "Invalid target"
@@ -2487,6 +2484,10 @@ msgstr "站点用户"
 msgid "Sites"
 msgstr "站点"
 
+#. ($invalid)
+msgid "Skipped %1 invalid sources!"
+msgstr ""
+
 msgid "Slides"
 msgstr "幻灯片"
 
@@ -2926,6 +2927,9 @@ msgstr ""
 
 msgid "Toggle fullscreen editor"
 msgstr "切换全屏编辑器"
+
+msgid "Too many URLs to process!"
+msgstr ""
 
 msgid "Top margin"
 msgstr ""

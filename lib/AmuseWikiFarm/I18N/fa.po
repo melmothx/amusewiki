@@ -169,8 +169,14 @@ msgstr "افزودن این متن به کتاب‌ساز"
 msgid "Add to colophon"
 msgstr "افزودن به صفحه آخر کتاب"
 
-msgid "Added"
-msgstr "افزوده شد"
+msgid ""
+"Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
+"text or a category. Examples:"
+msgstr ""
+
+#. ($ok)
+msgid "Added %1 sources."
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -892,9 +898,6 @@ msgstr "ناموفق در افزودن ریپازیتوری راه دور %1"
 msgid "Failed to remove Remote repository %1"
 msgstr "ناموفق در حذف کردن ریپازیتوری راه دور %1"
 
-msgid "Failure fetching the source"
-msgstr "ناموفق در دسترسی داشتن به منبع"
-
 msgid "Federation"
 msgstr "فدراسیون"
 
@@ -1416,9 +1419,6 @@ msgstr "شناسه نامعتبر(ID)"
 msgid "Invalid URI"
 msgstr "آدرس URI نامعتبر"
 
-msgid "Invalid domain"
-msgstr "دامنه‌ی نامعتبر"
-
 msgid "Invalid email"
 msgstr "ایمیل نامعتبر"
 
@@ -1430,9 +1430,6 @@ msgstr "نام نامعتبر"
 
 msgid "Invalid parameter"
 msgstr "پارامتر نامعتبر"
-
-msgid "Invalid response"
-msgstr "پاسخ نامعتبر"
 
 msgid "Invalid target"
 msgstr "هدف نامعتبر"
@@ -2611,6 +2608,10 @@ msgstr "کاربران سایت"
 msgid "Sites"
 msgstr "سایت‌ها"
 
+#. ($invalid)
+msgid "Skipped %1 invalid sources!"
+msgstr ""
+
 msgid "Slides"
 msgstr "اسلاید‌ها"
 
@@ -3072,6 +3073,9 @@ msgid "Toggle"
 msgstr ""
 
 msgid "Toggle fullscreen editor"
+msgstr ""
+
+msgid "Too many URLs to process!"
 msgstr ""
 
 msgid "Top margin"
@@ -3729,6 +3733,18 @@ msgstr ""
 "است،\n"
 " اما همچنان وجود دارد، در صورتی که کسی بخواهد هنگام ویرایش یک متن آن را "
 "انتخاب کند."
+
+#~ msgid "Added"
+#~ msgstr "افزوده شد"
+
+#~ msgid "Failure fetching the source"
+#~ msgstr "ناموفق در دسترسی داشتن به منبع"
+
+#~ msgid "Invalid domain"
+#~ msgstr "دامنه‌ی نامعتبر"
+
+#~ msgid "Invalid response"
+#~ msgstr "پاسخ نامعتبر"
 
 #~ msgid "Nodes"
 #~ msgstr "گره‌ها(Nodes)"

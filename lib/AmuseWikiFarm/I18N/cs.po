@@ -168,8 +168,14 @@ msgstr "Přidej tento text do bookbuilderu"
 msgid "Add to colophon"
 msgstr "Přidej do tiráže"
 
-msgid "Added"
-msgstr "Přidáno"
+msgid ""
+"Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
+"text or a category. Examples:"
+msgstr ""
+
+#. ($ok)
+msgid "Added %1 sources."
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -903,9 +909,6 @@ msgstr "Přidání vzdáleného repozitáře %1 selhalo"
 msgid "Failed to remove Remote repository %1"
 msgstr "Odstranění vzdáleného repozitáře %1 selhalo"
 
-msgid "Failure fetching the source"
-msgstr ""
-
 msgid "Federation"
 msgstr "Federace"
 
@@ -1437,9 +1440,6 @@ msgstr "Neplatné ID"
 msgid "Invalid URI"
 msgstr "Neplatné URI"
 
-msgid "Invalid domain"
-msgstr "Neplatná doména"
-
 msgid "Invalid email"
 msgstr "Neplatný email"
 
@@ -1451,9 +1451,6 @@ msgstr "Neplatné jméno"
 
 msgid "Invalid parameter"
 msgstr "Neplatný parametr"
-
-msgid "Invalid response"
-msgstr "Neplatná odezva"
 
 msgid "Invalid target"
 msgstr "Neplatný cíl"
@@ -2637,6 +2634,10 @@ msgstr "Uživatelstvo stránky"
 msgid "Sites"
 msgstr "Stránky"
 
+#. ($invalid)
+msgid "Skipped %1 invalid sources!"
+msgstr ""
+
 msgid "Slides"
 msgstr "Slajdy"
 
@@ -3107,6 +3108,9 @@ msgstr "Přepnout"
 
 msgid "Toggle fullscreen editor"
 msgstr "Přepnout editor na celou obrazovku"
+
+msgid "Too many URLs to process!"
+msgstr ""
 
 msgid "Top margin"
 msgstr "Vrchní okraj"
@@ -3761,6 +3765,15 @@ msgstr ""
 "„Zastaralé úpravy“ znamená, že revize byla opuštěna\n"
 "    během editace, ale stále tu je, kdyby v ní náhodou\n"
 "    někdo chtěl pokračovat při úpravách textu."
+
+#~ msgid "Added"
+#~ msgstr "Přidáno"
+
+#~ msgid "Invalid domain"
+#~ msgstr "Neplatná doména"
+
+#~ msgid "Invalid response"
+#~ msgstr "Neplatná odezva"
 
 #~ msgid "Nodes"
 #~ msgstr "Uzly"

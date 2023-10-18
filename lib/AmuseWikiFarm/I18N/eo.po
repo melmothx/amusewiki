@@ -170,7 +170,13 @@ msgstr "Aldonu ĉi tiun tekston al la librokonstruisto"
 msgid "Add to colophon"
 msgstr ""
 
-msgid "Added"
+msgid ""
+"Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
+"text or a category. Examples:"
+msgstr ""
+
+#. ($ok)
+msgid "Added %1 sources."
 msgstr ""
 
 msgid ""
@@ -905,9 +911,6 @@ msgstr "Malsukcesis aldoni foran deponejon% 1"
 msgid "Failed to remove Remote repository %1"
 msgstr "Malsukcesis forigi Foran deponejon% 1"
 
-msgid "Failure fetching the source"
-msgstr ""
-
 msgid "Federation"
 msgstr ""
 
@@ -1450,9 +1453,6 @@ msgstr ""
 msgid "Invalid URI"
 msgstr ""
 
-msgid "Invalid domain"
-msgstr ""
-
 msgid "Invalid email"
 msgstr "Nevalida Retpoŝto"
 
@@ -1463,9 +1463,6 @@ msgid "Invalid name"
 msgstr "Nevalida nomo"
 
 msgid "Invalid parameter"
-msgstr ""
-
-msgid "Invalid response"
 msgstr ""
 
 msgid "Invalid target"
@@ -2647,6 +2644,10 @@ msgstr "Uzantoj de la retejo"
 msgid "Sites"
 msgstr "Retejoj"
 
+#. ($invalid)
+msgid "Skipped %1 invalid sources!"
+msgstr ""
+
 msgid "Slides"
 msgstr "Diapozitivoj"
 
@@ -3120,6 +3121,9 @@ msgstr ""
 
 msgid "Toggle fullscreen editor"
 msgstr "Baskuli plenekranan redaktilon"
+
+msgid "Too many URLs to process!"
+msgstr ""
 
 msgid "Top margin"
 msgstr ""

@@ -166,7 +166,13 @@ msgstr "Dodaj ten tekst do kreatora książek"
 msgid "Add to colophon"
 msgstr ""
 
-msgid "Added"
+msgid ""
+"Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
+"text or a category. Examples:"
+msgstr ""
+
+#. ($ok)
+msgid "Added %1 sources."
 msgstr ""
 
 msgid ""
@@ -880,9 +886,6 @@ msgstr ""
 msgid "Failed to remove Remote repository %1"
 msgstr ""
 
-msgid "Failure fetching the source"
-msgstr ""
-
 msgid "Federation"
 msgstr ""
 
@@ -1363,9 +1366,6 @@ msgstr ""
 msgid "Invalid URI"
 msgstr ""
 
-msgid "Invalid domain"
-msgstr ""
-
 msgid "Invalid email"
 msgstr "Niepoprawny e-mail"
 
@@ -1376,9 +1376,6 @@ msgid "Invalid name"
 msgstr "Niepoprawna nazwa"
 
 msgid "Invalid parameter"
-msgstr ""
-
-msgid "Invalid response"
 msgstr ""
 
 msgid "Invalid target"
@@ -2520,6 +2517,10 @@ msgstr ""
 msgid "Sites"
 msgstr ""
 
+#. ($invalid)
+msgid "Skipped %1 invalid sources!"
+msgstr ""
+
 msgid "Slides"
 msgstr ""
 
@@ -2965,6 +2966,9 @@ msgstr ""
 
 msgid "Toggle fullscreen editor"
 msgstr "Włącz / Wyłącz edytor pełnoekranowy"
+
+msgid "Too many URLs to process!"
+msgstr ""
 
 msgid "Top margin"
 msgstr ""

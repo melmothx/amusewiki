@@ -156,7 +156,13 @@ msgstr ""
 msgid "Add to colophon"
 msgstr ""
 
-msgid "Added"
+msgid ""
+"Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
+"text or a category. Examples:"
+msgstr ""
+
+#. ($ok)
+msgid "Added %1 sources."
 msgstr ""
 
 msgid ""
@@ -837,9 +843,6 @@ msgstr ""
 msgid "Failed to remove Remote repository %1"
 msgstr ""
 
-msgid "Failure fetching the source"
-msgstr ""
-
 msgid "Federation"
 msgstr ""
 
@@ -1295,9 +1298,6 @@ msgstr ""
 msgid "Invalid URI"
 msgstr ""
 
-msgid "Invalid domain"
-msgstr ""
-
 msgid "Invalid email"
 msgstr ""
 
@@ -1308,9 +1308,6 @@ msgid "Invalid name"
 msgstr ""
 
 msgid "Invalid parameter"
-msgstr ""
-
-msgid "Invalid response"
 msgstr ""
 
 msgid "Invalid target"
@@ -2402,6 +2399,10 @@ msgstr ""
 msgid "Sites"
 msgstr ""
 
+#. ($invalid)
+msgid "Skipped %1 invalid sources!"
+msgstr ""
+
 msgid "Slides"
 msgstr ""
 
@@ -2828,6 +2829,9 @@ msgid "Toggle"
 msgstr ""
 
 msgid "Toggle fullscreen editor"
+msgstr ""
+
+msgid "Too many URLs to process!"
 msgstr ""
 
 msgid "Top margin"

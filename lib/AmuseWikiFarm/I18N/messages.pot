@@ -140,7 +140,7 @@ msgstr ""
 msgid "Active"
 msgstr ""
 
-#: root/src/federation/show.tt:97
+#: root/src/federation/show.tt:105
 msgid "Add"
 msgstr ""
 
@@ -196,8 +196,13 @@ msgstr ""
 msgid "Add to colophon"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Federation.pm:75
-msgid "Added"
+#: root/src/federation/show.tt:98
+msgid "Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a text or a category. Examples:"
+msgstr ""
+
+#. ($ok)
+#: lib/AmuseWikiFarm/Controller/Federation.pm:102
+msgid "Added %1 sources."
 msgstr ""
 
 #: root/src/edit/edit.tt:716
@@ -1001,7 +1006,7 @@ msgid "Error while converting the HTML. Sorry."
 msgstr ""
 
 #. ($res->{error} || "Unknwon error")
-#: lib/AmuseWikiFarm/Controller/Federation.pm:153
+#: lib/AmuseWikiFarm/Controller/Federation.pm:170
 msgid "Error: %1"
 msgstr ""
 
@@ -1061,10 +1066,6 @@ msgstr ""
 #. ($name)
 #: lib/AmuseWikiFarm/Controller/Console.pm:102
 msgid "Failed to remove Remote repository %1"
-msgstr ""
-
-#: lib/AmuseWikiFarm/Controller/Federation.pm:83
-msgid "Failure fetching the source"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Federation.pm:40 root/src/federation/details.tt:4 root/src/federation/show.tt:14 root/src/federation/show.tt:4 root/src/layout.tt:542 root/src/tasks/show_bulk_job.tt:15
@@ -1614,7 +1615,7 @@ msgstr ""
 msgid "Internal list of translations"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Federation.pm:205
+#: lib/AmuseWikiFarm/Controller/Federation.pm:222
 msgid "Invalid ID"
 msgstr ""
 
@@ -1622,15 +1623,11 @@ msgstr ""
 msgid "Invalid URI"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Federation.pm:91
-msgid "Invalid domain"
-msgstr ""
-
 #: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:90
 msgid "Invalid email"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Federation.pm:197
+#: lib/AmuseWikiFarm/Controller/Federation.pm:214
 msgid "Invalid field"
 msgstr ""
 
@@ -1638,15 +1635,11 @@ msgstr ""
 msgid "Invalid name"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Federation.pm:193
+#: lib/AmuseWikiFarm/Controller/Federation.pm:210
 msgid "Invalid parameter"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Federation.pm:79
-msgid "Invalid response"
-msgstr ""
-
-#: lib/AmuseWikiFarm/Controller/Federation.pm:201
+#: lib/AmuseWikiFarm/Controller/Federation.pm:218
 msgid "Invalid target"
 msgstr ""
 
@@ -1832,7 +1825,7 @@ msgstr ""
 msgid "Local"
 msgstr ""
 
-#: root/src/federation/show.tt:105 root/src/federation/show.tt:7
+#: root/src/federation/show.tt:116 root/src/federation/show.tt:7
 msgid "Local pages"
 msgstr ""
 
@@ -3048,6 +3041,11 @@ msgstr ""
 msgid "Sites"
 msgstr ""
 
+#. ($invalid)
+#: lib/AmuseWikiFarm/Controller/Federation.pm:105
+msgid "Skipped %1 invalid sources!"
+msgstr ""
+
 #: root/src/include/bbform.tt:16
 msgid "Slides"
 msgstr ""
@@ -3096,7 +3094,7 @@ msgstr ""
 msgid "Source files with attachments"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Federation.pm:162
+#: lib/AmuseWikiFarm/Controller/Federation.pm:179
 msgid "Source removed"
 msgstr ""
 
@@ -3591,6 +3589,10 @@ msgstr ""
 
 #: root/src/attachments/edit.tt:29 root/src/category-details-edit.tt:33 root/src/edit/edit.tt:136
 msgid "Toggle fullscreen editor"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Federation.pm:71
+msgid "Too many URLs to process!"
 msgstr ""
 
 #: root/src/include/bbform.tt:358

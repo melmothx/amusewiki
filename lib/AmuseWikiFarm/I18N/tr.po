@@ -168,8 +168,14 @@ msgstr "Bu metni kitap yapıcıya ekle"
 msgid "Add to colophon"
 msgstr "Kolofona ekle"
 
-msgid "Added"
-msgstr "Eklendi"
+msgid ""
+"Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
+"text or a category. Examples:"
+msgstr ""
+
+#. ($ok)
+msgid "Added %1 sources."
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -904,9 +910,6 @@ msgstr "% uzak veri deposu eklenemedi"
 msgid "Failed to remove Remote repository %1"
 msgstr "% uzak veri deposu silinemedi"
 
-msgid "Failure fetching the source"
-msgstr "Kaynak getirilemedi"
-
 msgid "Federation"
 msgstr "Federasyon"
 
@@ -1433,9 +1436,6 @@ msgstr "Geçersiz kimlik"
 msgid "Invalid URI"
 msgstr "Geçersiz URI"
 
-msgid "Invalid domain"
-msgstr "Geçersiz alan adı"
-
 msgid "Invalid email"
 msgstr "Geçersiz e-posta"
 
@@ -1447,9 +1447,6 @@ msgstr "Geçersiz isim"
 
 msgid "Invalid parameter"
 msgstr "Geçersiz parametre"
-
-msgid "Invalid response"
-msgstr "Geçersiz yanıt"
 
 msgid "Invalid target"
 msgstr "Geçersiz hedef"
@@ -2629,6 +2626,10 @@ msgstr "Site kullanıcıları"
 msgid "Sites"
 msgstr "Siteler"
 
+#. ($invalid)
+msgid "Skipped %1 invalid sources!"
+msgstr ""
+
 msgid "Slides"
 msgstr "Slaytlar"
 
@@ -3101,6 +3102,9 @@ msgstr "Aç/kapat"
 
 msgid "Toggle fullscreen editor"
 msgstr "Tam ekran düzenleyiciyi aç/kapat"
+
+msgid "Too many URLs to process!"
+msgstr ""
 
 msgid "Top margin"
 msgstr "Üst boşluk"
@@ -3753,6 +3757,18 @@ msgstr ""
 "\"Yarım kalmış düzenleme\",  versiyon düzenlenirken yarıda bırakılmış,\n"
 "    ama birisi metni düzenlemek için oradan devam edebilir\n"
 "    demektir."
+
+#~ msgid "Added"
+#~ msgstr "Eklendi"
+
+#~ msgid "Failure fetching the source"
+#~ msgstr "Kaynak getirilemedi"
+
+#~ msgid "Invalid domain"
+#~ msgstr "Geçersiz alan adı"
+
+#~ msgid "Invalid response"
+#~ msgstr "Geçersiz yanıt"
 
 #~ msgid "Nodes"
 #~ msgstr "Düğümler"

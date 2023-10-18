@@ -173,8 +173,14 @@ msgstr "Adăugați acest text la bookbuilder"
 msgid "Add to colophon"
 msgstr "Adăugați la colophon"
 
-msgid "Added"
-msgstr "Adăugat"
+msgid ""
+"Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
+"text or a category. Examples:"
+msgstr ""
+
+#. ($ok)
+msgid "Added %1 sources."
+msgstr ""
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -916,9 +922,6 @@ msgstr "Nu s-a reușit adăugarea depozitului la distanță %1"
 msgid "Failed to remove Remote repository %1"
 msgstr "Nu s-a reușit eliminarea depozitului de la distanță %1"
 
-msgid "Failure fetching the source"
-msgstr "Eșecul obținerii sursei"
-
 msgid "Federation"
 msgstr "Federație"
 
@@ -1467,9 +1470,6 @@ msgstr "Invalid ID"
 msgid "Invalid URI"
 msgstr "Invalid URI"
 
-msgid "Invalid domain"
-msgstr "Invalid domain"
-
 msgid "Invalid email"
 msgstr "Invalid email"
 
@@ -1481,9 +1481,6 @@ msgstr "Invalid name"
 
 msgid "Invalid parameter"
 msgstr "Invalid parameter"
-
-msgid "Invalid response"
-msgstr "Invalid response"
 
 msgid "Invalid target"
 msgstr "Invalid target"
@@ -2704,6 +2701,10 @@ msgstr "Utilizatorii site-ului"
 msgid "Sites"
 msgstr "Site-uri"
 
+#. ($invalid)
+msgid "Skipped %1 invalid sources!"
+msgstr ""
+
 msgid "Slides"
 msgstr "Diapozitive"
 
@@ -3198,6 +3199,9 @@ msgstr "Toggle"
 
 msgid "Toggle fullscreen editor"
 msgstr "Toggle fullscreen editor"
+
+msgid "Too many URLs to process!"
+msgstr ""
 
 msgid "Top margin"
 msgstr "Margine superioară"
@@ -3872,6 +3876,18 @@ msgstr ""
 "    în timpul editării, dar este încă acolo, în cazul în care cineva dorește "
 "să o ia.\n"
 "    să o preia atunci când editează un text."
+
+#~ msgid "Added"
+#~ msgstr "Adăugat"
+
+#~ msgid "Failure fetching the source"
+#~ msgstr "Eșecul obținerii sursei"
+
+#~ msgid "Invalid domain"
+#~ msgstr "Invalid domain"
+
+#~ msgid "Invalid response"
+#~ msgstr "Invalid response"
 
 #~ msgid "Nodes"
 #~ msgstr "Nodes"

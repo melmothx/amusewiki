@@ -165,7 +165,13 @@ msgstr "Dodaj ovaj tekst zbirci"
 msgid "Add to colophon"
 msgstr ""
 
-msgid "Added"
+msgid ""
+"Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
+"text or a category. Examples:"
+msgstr ""
+
+#. ($ok)
+msgid "Added %1 sources."
 msgstr ""
 
 msgid ""
@@ -877,9 +883,6 @@ msgstr "Greška pri dodavanju udaljenog repozitorija %1"
 msgid "Failed to remove Remote repository %1"
 msgstr "Greška pri izbrisanju udaljenog repozitorija %1"
 
-msgid "Failure fetching the source"
-msgstr ""
-
 msgid "Federation"
 msgstr ""
 
@@ -1398,9 +1401,6 @@ msgstr ""
 msgid "Invalid URI"
 msgstr ""
 
-msgid "Invalid domain"
-msgstr ""
-
 msgid "Invalid email"
 msgstr "E-mail nije valjan"
 
@@ -1411,9 +1411,6 @@ msgid "Invalid name"
 msgstr "Ime nije valjano"
 
 msgid "Invalid parameter"
-msgstr ""
-
-msgid "Invalid response"
 msgstr ""
 
 msgid "Invalid target"
@@ -2575,6 +2572,10 @@ msgstr ""
 msgid "Sites"
 msgstr "Sajtovi"
 
+#. ($invalid)
+msgid "Skipped %1 invalid sources!"
+msgstr ""
+
 msgid "Slides"
 msgstr "Slajdovi"
 
@@ -3030,6 +3031,9 @@ msgstr ""
 
 msgid "Toggle fullscreen editor"
 msgstr "Pokaži/skrij full-screen editor"
+
+msgid "Too many URLs to process!"
+msgstr ""
 
 msgid "Top margin"
 msgstr ""
