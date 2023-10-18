@@ -5,7 +5,7 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
-use Regexp::Common qw/net/;
+use URI;
 
 =head1 NAME
 
@@ -60,35 +60,52 @@ sub edit :Chained('sources') :PathPart('edit') :Args(0) {
     my %params = %{ $c->request->body_parameters };
     Dlog_debug { "Params: $_" } \%params;
     my $rs = $c->stash->{origins_rs};
-    if ($params{create} && $params{remote_domain} && $params{remote_path}) {
-        s/\s+//g for ($params{remote_domain}, $params{remote_domain});
-        if ($params{remote_domain} =~ m/\A$RE{net}{domain}{-nospace}{-rfc1101}\z/) {
-            # try to see if it's possible to get a response
-            my $src = $rs->create({
-                                   remote_domain => $params{remote_domain},
-                                   remote_path => $params{remote_path},
-                                  });
-            my $got_ok = 0;
-            if (my $res = $src->fetch_remote) {
-                Dlog_info { $_ } $res;
-                if ($res->{data}) {
-                    $c->flash(status_msg => $c->loc("Added"));
-                    $got_ok = 1;
-                }
-                else {
-                    $c->flash(error_msg => $c->loc("Invalid response"));
-                }
+    if ($params{create}) {
+        my $max = 20;
+        my ($ok, $invalid) = (0, 0);
+        my @errors;
+      ADDSRC:
+        foreach my $src (grep { $_ } split(/\s+/, $params{sources})) {
+            $max--;
+            if ($max < 1) {
+                push @errors, $c->loc("Too many URLs to process!");
+                last ADDSRC;
             }
-            else {
-                $c->flash(error_msg => $c->loc("Failure fetching the source"));
-            }
-            unless ($got_ok) {
-                log_info { "Failed response, removing the new source" };
-                $src->delete;
+            eval {
+                my $uri = URI->new($src);
+                if (my $host = $uri->host) {
+                    my $path = $uri->path;
+                    unless (length($path)) {
+                        $path = '/';
+                    }
+                    my $src = $rs->create({
+                                           remote_domain => $host,
+                                           remote_path => $path,
+                                          });
+                    my $res = $src->fetch_remote;
+                    Dlog_info { "Fetch remote response for $src: $_" } $res;
+                    if ($res->{error}) {
+                        $invalid++;
+                        $src->delete;
+                    }
+                    else {
+                        $ok++;
+                    }
+                }
+            };
+            if (my $err = $@) {
+                log_error { "$src: $err" };
+                $invalid++;
             }
         }
-        else {
-            $c->flash(error_msg => $c->loc("Invalid domain"));
+        if ($ok) {
+            $c->flash(status_msg => $c->loc("Added [_1] sources.", $ok));
+        }
+        if ($invalid) {
+            push @errors, $c->loc("Skipped [_1] invalid sources!", $invalid);
+        }
+        if (@errors) {
+            $c->flash(error_msg => join(' ', @errors));
         }
         $c->res->redirect($c->uri_for_action('/federation/show'));
         return;

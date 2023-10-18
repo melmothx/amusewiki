@@ -91,10 +91,21 @@
     </tbody>
     <tfoot>
       <tr>
-        <td></td>
-        <td><input class="form-control" name="remote_domain" placeholder="example.tld" required></td>
-        <td><input class="form-control" name="remote_path" placeholder="/" required></td>
-        <td><button type="submit" name="create" value="1" class="btn btn-primary">[% loc('Add') %]</button></td>
+        <td colspan="5">
+          <textarea class="form-control" name="sources"></textarea>
+          <br>
+          <p class="help-block">
+            [% loc('Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a text or a category. Examples:') %]
+            <pre>https://amusewiki.org/
+https://amusewiki.org/library/install
+https://amusewiki.org/category/topic/doc</pre>
+          </p>
+          <div class="text-center">
+            <button type="submit" name="create" value="1" class="btn btn-primary">
+              [% loc('Add') %]
+            </button>
+          </div>
+        </td>
       </tr>
     </tfoot>
   </table>
