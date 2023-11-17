@@ -4,7 +4,33 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
+    <p>
     [% loc("Annotations are text metadata which are not included in the muse file. Examples could be: prices, catalog numbers, shelf location, working copies of large binary files, internal comments.") %]
+    </p>
+    <p>
+      [% loc("Some annotation codes are special and have side effects. Here you can find the effect if you create and use them.") %]
+    </p>
+    <table class="table table-striped table-condensed table-bordered">
+      <thead>
+        <tr>
+          <th>[% loc('Code') %]</th>
+          <th>[% loc('Effect') %]</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>slc</code></td>
+          <td>
+            [% loc('Exposed to OAI-PMH as shelf location code') %]
+          </td>
+        </tr>
+        <tr>
+          <td><code>price</code></td>
+          <td>
+            [% loc('Exposed to OAI-PMH as trade price') %]
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 

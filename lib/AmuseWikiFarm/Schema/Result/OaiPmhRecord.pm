@@ -340,17 +340,50 @@ sub as_xml_structure {
 
 sub marc21_record {
     my $self = shift;
-    my $dcs = $self->dublin_core_record({ prefix => '' });
-    my %rec;
-    foreach my $i (@$dcs) {
-        my $dc_field = $i->[0];
-        my $dc_value = $i->[1];
-        $rec{$dc_field} ||= [];
-        push @{$rec{$dc_field}}, $dc_value;
+    my $title = $self->title;
+    my $attachment = $self->attachment;
+    my $obj = $title || $attachment;
+    my $base_url = $self->site->canonical_url;
+    my $dc = $obj->dublin_core_entry;
+    my %rec = (
+               %$dc,
+               full_uri => [ $base_url . $obj->full_uri ],
+               identifier => [ $base_url . $self->identifier ],
+               format => [ $self->metadata_format ],
+               type => [ $self->metadata_type ],
+              );
+    if ($title) {
+        $rec{title} = [ $title->title ];
+        $rec{subtitle} = [ $title->subtitle ];
+        $rec{sku} = [ $title->sku ];
+        $rec{isbn} = [ $title->isbn ];
+        # populate the rec here
+        foreach my $ann ($title->title_annotations->public) {
+            my $annotation = { $ann->annotation->get_columns };
+            if ($annotation->{annotation_name} eq 'slc') {
+                $rec{slc} = [ $ann->annotation_value ];
+            }
+            elsif ($annotation->{annotation_name} eq 'price') {
+                if (my $full_price = $ann->annotation_value) {
+                    $full_price =~ s/\s//g;
+                    if ($full_price =~ m/([^0-9\.\,]+)/) {
+                        $rec{trade_price_currency} = [ $1 ];
+                        # remove non-numeric
+                        $full_price =~ s/[^0-9\.\,]//g;
+                        $rec{trade_price_value} = [ $full_price ];
+                    }
+                    else {
+                        $rec{trade_price_value} = [ $full_price ];
+                    }
+                }
+            }
+            else {
+                push @{$rec{description}}, $ann->annotation->label . ": " . $ann->annotation_value;
+            }
+        }
     }
-    # Dlog_debug { "marc21 is $_" } \%rec;
-    my @out;
     my $type = $rec{type}[0] || '';
+    my @out;
     my %leaders = (
                    collection =>  'p',
                    dataset => 'm',
@@ -377,9 +410,10 @@ sub marc21_record {
                       [ contributor => '720', '0', '0', 'a', e => 'collaborator' ],
                       [ coverage    => '500', ' ', ' ', 'a' ],
                       [ creator     => '720', ' ', ' ', 'a', e => 'author' ],
-                      [ date        => '260', ' ', ' ', 'c' ],
+                      [ creator     => '100', '1', ' ', 'a', e => 'author' ],
+                      # date needs refinements
+                      # [ date        => '260', ' ', ' ', 'c' ],
                       [ description => '520', ' ', ' ', 'a' ],
-                      [ format      => '856', ' ', ' ', 'q' ],
                       [ identifier  => '024', '8', ' ', 'a' ],
                       [ language    => '546', ' ', ' ', 'a' ],
                       [ publisher   => '260', ' ', ' ', 'b' ],
@@ -387,19 +421,23 @@ sub marc21_record {
                       [ rights      => '540', ' ', ' ', 'a' ],
                       [ source      => '786', '0', ' ', 'n' ],
                       [ subject     => '653', ' ', ' ', 'a' ],
-                      [ 'title[0]'  => '245', '0', '0', 'a' ],
-                      [ 'title[1]'  => '246', '3', '3', 'a' ],
+                      [ title       => '245', '0', '0', 'a' ],
+                      [ subtitle    => '246', '3', '3', 'a' ],
                       [ type        => '655', '7', ' ', 'a', '2', 'local' ],
+                      [ type        => '336', ' ', ' ', 'a' ],
+                      [ trade_price_value => '365', ' ', ' ', 'b' ],
+                      [ trade_price_currency => '365', ' ', ' ', 'c' ],
+                      # koha full call number is 952 o
+                      [ slc         => '852', ' ', ' ', 'c' ],
+                      [ isbn        => '020', ' ', ' ', 'a' ],
+                      [ full_uri    => '856', ' ', ' ', 'u', q => $self->metadata_format || 'unknown' ],
                      );
-    foreach my $df (@datafields) {
+    Dlog_debug { "MARC21: $_" } \%rec;
+
+    foreach my $df (sort { $a->[1] cmp $b->[1] } @datafields) {
         my ($name, $tag, $ind1, $ind2, $code, @rest) = @$df;
-        my $limit;
-        if ($name =~ m/(\w+)\[(\d+)\]/) {
-            ($name, $limit) = ($1, $2);
-        }
         if (my $all = $rec{$name}) {
-            my @list = defined $limit ? ($all->[$limit]) : (@$all);
-            foreach my $i (grep { length $_ } @list) {
+            foreach my $i (grep { length $_ } @$all) {
                 push @out, [ datafield => [ tag => $tag, ind1 => $ind1, ind2 => $ind2 ],
                              [
                               [ subfield => [ code => $code ], $i ],
