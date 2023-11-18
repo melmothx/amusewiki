@@ -1569,7 +1569,7 @@ sub dublin_core_entry {
                             @cats
                            ],
                 description => [
-                                map { /\w/ ? $_ : '-' } ($self->teaser, $self->notes)
+                                grep { length($_) && /\w/ } ($self->teaser, $self->notes)
                                ],
                 publisher => [ $self->publisher ],
                 date => [ grep { $_ } ($self->year_first_edition, $self->date_year || $self->pubdate->year) ],

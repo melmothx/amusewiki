@@ -582,11 +582,12 @@ foreach my $test ({
                                                                          })->first->identifier,
                            },
                    expect => [
-                              '<dc:description>-</dc:description>',
                               '<dc:description>EPUB (for mobile devices)</dc:description>',
                               '<dc:relation>https://0oai0.amusewiki.org/library/to-test</dc:relation>',
                              ],
-                   lacks => [],
+                   lacks => [
+                              '<dc:description>-</dc:description>',
+                            ],
                   },
                  ) {
     my $uri = URI->new($site->canonical_url);

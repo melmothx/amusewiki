@@ -440,23 +440,28 @@ sub marc21_record {
         my ($name, $tag, $ind1, $ind2, $code, @rest) = @$df;
         if (my $all = $rec{$name}) {
             foreach my $item (grep { length $_ } @$all) {
-                # special case for author, of course
-                if ($name eq 'creator') {
-                    if ($item =~ m/,/) {
-                        # by surname
-                        $ind1 = '1';
+                my $cleaned = AmuseWikiFarm::Utils::Amuse::clean_html($item);
+                $cleaned =~ s/\A\s+//;
+                $cleaned =~ s/\s+\z//;
+                if (length($cleaned)) {
+                    # special case for author, of course
+                    if ($name eq 'creator') {
+                        if ($item =~ m/,/) {
+                            # by surname
+                            $ind1 = '1';
+                        }
+                        else {
+                            # by forename
+                            $ind1 = '0';
+                        }
                     }
-                    else {
-                        # by forename
-                        $ind1 = '0';
-                    }
+                    push @out, [ datafield => [ tag => $tag, ind1 => $ind1, ind2 => $ind2 ],
+                                 [
+                                  [ subfield => [ code => $code ], $cleaned ],
+                                  (@rest ? [ subfield => [ code => $rest[0] ], $rest[1] ] : ())
+                                 ]
+                               ];
                 }
-                push @out, [ datafield => [ tag => $tag, ind1 => $ind1, ind2 => $ind2 ],
-                             [
-                              [ subfield => [ code => $code ], $item ],
-                              (@rest ? [ subfield => [ code => $rest[0] ], $rest[1] ] : ())
-                             ]
-                           ];
             }
         }
     }

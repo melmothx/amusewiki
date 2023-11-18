@@ -49,8 +49,8 @@ foreach my $title (qw/one two tree/) {
 #date 1923 and something else
 #datefirst 1888 and something else
 #subtitle This is a subtitle
-#teaser This is the teaser
-#notes These are the notes
+#teaser This is the *teaser*
+#notes These **are** the notes
 #isbn 8790000000000
 #sku bib12341234
 
@@ -294,6 +294,8 @@ ok path($site->repo_root, 'annotations', '.gitignore')->exists;
     like $xml, qr{tag="856" ind1=" " ind2=" ">\s*<subfield code="u">https://0annotate0.amusewiki.org/library/}s;
     # sku
     like $xml, qr{tag="024" ind1="8" ind2=" ">\s*<subfield code="a">bib123}s;
+    like $xml, qr{These are the notes}, "HTML cleaned";
+    like $xml, qr{This is the teaser}, "HTML cleaned";
     diag $xml;
     # the dates
 }
