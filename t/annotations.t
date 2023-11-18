@@ -8,13 +8,14 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 233;
+use Test::More tests => 243;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use Path::Tiny;
+use URI;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf-8)";
@@ -37,10 +38,21 @@ foreach my $title (qw/one two tree/) {
     my $muse = path($site->repo_root, qw/t tt/, "to-test-$title.muse");
     $muse->parent->mkpath;
     $muse->spew_utf8(<<"MUSE");
-#authors Author $title; Authors $title 
+#authors Author $title; Authors $title; Pinco, Pallino
 #title Title $title
 #topics First $title; Second #title
 #lang en
+#author My author
+#source From "the" internet
+#rights No <copycat>
+#publisher <testing> publisher
+#date 1923 and something else
+#datefirst 1888 and something else
+#subtitle This is a subtitle
+#teaser This is the teaser
+#notes These are the notes
+#isbn 8790000000000
+#sku bib12341234
 
 Test $title
 MUSE
@@ -243,4 +255,45 @@ ok path($site->repo_root, 'annotations', '.gitignore')->exists;
     foreach my $ann ($site->annotations) {
         ok $ann->title_annotations->count;
     }
+}
+# test slc and price with oai-pmh
+{
+    my $ap = $site->annotations->create({
+                                         label => 'Price',
+                                         annotation_name => 'price',
+                                         annotation_type => 'text'
+                                        });
+    my $as = $site->annotations->create({
+                                         label => 'Shelf Location Code',
+                                         annotation_name => 'slc',
+                                         annotation_type => 'identifier'
+                                        });
+    my $title = $site->titles->first;
+    diag $title->full_uri;
+    $title->annotate({
+                      $ap->annotation_id => { value => '30 EUR' },
+                      $as->annotation_id => { value => 'YY/X' },
+                     });
+    $mech->get('/oai-pmh?verb=GetRecord&metadataPrefix=marc21&identifier=oai:0annotate0.amusewiki.org:' .
+               $title->full_uri);
+    my $xml = $mech->content;
+    # author with indicator for first last or last first
+    like $xml, qr{tag="100" ind1="0" ind2=" ">\s*<subfield code="a">Author one}s;
+    like $xml, qr{tag="100" ind1="1" ind2=" ">\s*<subfield code="a">Pinco, Pallino}s;
+    # isbn
+    like $xml, qr{tag="020" ind1=" " ind2=" ">\s*<subfield code="a">8790000000000}s;
+    # dates
+    like $xml, qr{tag="363" ind1=" " ind2=" ">\s*<subfield code="i">1888}s;
+    like $xml, qr{tag="363" ind1=" " ind2=" ">\s*<subfield code="i">1923}s;
+    #price
+    like $xml, qr{tag="365" ind1=" " ind2=" ">\s*<subfield code="b">30}s;
+    like $xml, qr{tag="365" ind1=" " ind2=" ">\s*<subfield code="c">EUR}s;
+    # slc
+    like $xml, qr{tag="852" ind1=" " ind2=" ">\s*<subfield code="c">YY/X}s;
+    # uri
+    like $xml, qr{tag="856" ind1=" " ind2=" ">\s*<subfield code="u">https://0annotate0.amusewiki.org/library/}s;
+    # sku
+    like $xml, qr{tag="024" ind1="8" ind2=" ">\s*<subfield code="a">bib123}s;
+    diag $xml;
+    # the dates
 }

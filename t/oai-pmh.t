@@ -80,6 +80,7 @@ diag $oai_pmh->process_request({
 #subtitle This is a subtitle
 #teaser This is the teaser
 #notes These are the notes
+#isbn 8790000000000
 
 > Tirsi morir volea,
 > Gl'occhi mirando di colei ch'adora;

@@ -28,5 +28,15 @@ sub active {
                          });
 }
 
+sub by_type {
+    my ($self, $type) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({
+                          "annotation.annotation_type" => $type,
+                         },
+                         {
+                          prefetch => [qw/annotation/],
+                         });
+}
 
 1;

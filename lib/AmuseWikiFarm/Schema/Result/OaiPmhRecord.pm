@@ -357,8 +357,9 @@ sub marc21_record {
         $rec{subtitle} = [ $title->subtitle ];
         $rec{sku} = [ $title->sku ];
         $rec{isbn} = [ $title->isbn ];
+        $rec{sku} = [ $title->sku ];
         # populate the rec here
-        foreach my $ann ($title->title_annotations->public) {
+        foreach my $ann ($title->title_annotations->public->by_type([qw/text identifier/])) {
             my $annotation = { $ann->annotation->get_columns };
             if ($annotation->{annotation_name} eq 'slc') {
                 $rec{slc} = [ $ann->annotation_value ];
@@ -409,12 +410,13 @@ sub marc21_record {
     my @datafields = (
                       [ contributor => '720', '0', '0', 'a', e => 'collaborator' ],
                       [ coverage    => '500', ' ', ' ', 'a' ],
-                      [ creator     => '720', ' ', ' ', 'a', e => 'author' ],
-                      [ creator     => '100', '1', ' ', 'a', e => 'author' ],
+                      # [ creator     => '720', ' ', ' ', 'a', e => 'author' ],
+                      [ creator     => '100', ' ', ' ', 'a', e => 'author' ],
                       # date needs refinements
-                      # [ date        => '260', ' ', ' ', 'c' ],
+                      [ date        => '260', ' ', ' ', 'c' ],
+                      [ date        => '363', ' ', ' ', 'i' ],
                       [ description => '520', ' ', ' ', 'a' ],
-                      [ identifier  => '024', '8', ' ', 'a' ],
+                      [ sku         => '024', '8', ' ', 'a' ],
                       [ language    => '546', ' ', ' ', 'a' ],
                       [ publisher   => '260', ' ', ' ', 'b' ],
                       [ relation    => '787', '0', ' ', 'n' ],
@@ -437,10 +439,21 @@ sub marc21_record {
     foreach my $df (sort { $a->[1] cmp $b->[1] } @datafields) {
         my ($name, $tag, $ind1, $ind2, $code, @rest) = @$df;
         if (my $all = $rec{$name}) {
-            foreach my $i (grep { length $_ } @$all) {
+            foreach my $item (grep { length $_ } @$all) {
+                # special case for author, of course
+                if ($name eq 'creator') {
+                    if ($item =~ m/,/) {
+                        # by surname
+                        $ind1 = '1';
+                    }
+                    else {
+                        # by forename
+                        $ind1 = '0';
+                    }
+                }
                 push @out, [ datafield => [ tag => $tag, ind1 => $ind1, ind2 => $ind2 ],
                              [
-                              [ subfield => [ code => $code ], $i ],
+                              [ subfield => [ code => $code ], $item ],
                               (@rest ? [ subfield => [ code => $rest[0] ], $rest[1] ] : ())
                              ]
                            ];
