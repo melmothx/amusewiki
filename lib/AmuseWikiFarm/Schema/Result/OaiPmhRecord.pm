@@ -347,8 +347,7 @@ sub marc21_record {
     my $dc = $obj->dublin_core_entry;
     my %rec = (
                %$dc,
-               full_uri => [ $base_url . $obj->full_uri ],
-               identifier => [ $base_url . $self->identifier ],
+               full_uri => [ $base_url . $self->identifier ],
                format => [ $self->metadata_format ],
                type => [ $self->metadata_type ],
               );

@@ -275,7 +275,7 @@ ok path($site->repo_root, 'annotations', '.gitignore')->exists;
                       $as->annotation_id => { value => 'YY/X' },
                      });
     $mech->get('/oai-pmh?verb=GetRecord&metadataPrefix=marc21&identifier=oai:0annotate0.amusewiki.org:' .
-               $title->full_uri);
+               $title->full_uri . '.epub');
     my $xml = $mech->content;
     # author with indicator for first last or last first
     like $xml, qr{tag="100" ind1="0" ind2=" ">\s*<subfield code="a">Author one}s;
@@ -291,7 +291,7 @@ ok path($site->repo_root, 'annotations', '.gitignore')->exists;
     # slc
     like $xml, qr{tag="852" ind1=" " ind2=" ">\s*<subfield code="c">YY/X}s;
     # uri
-    like $xml, qr{tag="856" ind1=" " ind2=" ">\s*<subfield code="u">https://0annotate0.amusewiki.org/library/}s;
+    like $xml, qr{tag="856" ind1=" " ind2=" ">\s*<subfield code="u">https://0annotate0.amusewiki.org/library/.*\.epub</subfield>\s*<subfield code="q">application/epub\+zip</subfield>}s;
     # sku
     like $xml, qr{tag="024" ind1="8" ind2=" ">\s*<subfield code="a">bib123}s;
     like $xml, qr{These are the notes}, "HTML cleaned";
