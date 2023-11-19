@@ -431,7 +431,10 @@ sub marc21_record {
                       # koha full call number is 952 o
                       [ slc         => '852', ' ', ' ', 'c' ],
                       [ isbn        => '020', ' ', ' ', 'a' ],
-                      [ full_uri    => '856', ' ', ' ', 'u', q => $self->metadata_format || 'unknown' ],
+                      [ full_uri    => '856', ' ', ' ', 'u',
+                        q => $self->metadata_format || '',
+                        y => $self->metadata_format_description || ''
+                      ],
                      );
     Dlog_debug { "MARC21: $_" } \%rec;
 
@@ -454,12 +457,12 @@ sub marc21_record {
                             $ind1 = '0';
                         }
                     }
+                    my @subfields = ([ subfield => [ code => $code ], $cleaned ]);
+                    while (my @additional = splice @rest, 0, 2) {
+                        push @subfields, [ subfield => [ code => $additional[0] ], $additional[1] ];
+                    }
                     push @out, [ datafield => [ tag => $tag, ind1 => $ind1, ind2 => $ind2 ],
-                                 [
-                                  [ subfield => [ code => $code ], $cleaned ],
-                                  (@rest ? [ subfield => [ code => $rest[0] ], $rest[1] ] : ())
-                                 ]
-                               ];
+                                 \@subfields ];
                 }
             }
         }
