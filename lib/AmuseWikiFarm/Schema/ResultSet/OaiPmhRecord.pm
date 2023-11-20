@@ -76,4 +76,17 @@ sub by_title_id {
     $self->search({ "$me.title_id" => { -in => $ids } });
 }
 
+sub by_id {
+    my ($self, $ids) = @_;
+    my $me = $self->current_source_alias;
+    $self->search({ "$me.oai_pmh_record_id" => { -in => $ids } });
+}
+
+sub landing_pages_only {
+    my ($self, $ids) = @_;
+    my $me = $self->current_source_alias;
+    # a dot in the path means that's a file format
+    $self->search({ "$me.identifier" => { -not_like => '%.%' } });
+}
+
 1;
