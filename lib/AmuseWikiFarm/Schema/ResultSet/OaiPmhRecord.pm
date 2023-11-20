@@ -63,4 +63,17 @@ sub set_deleted_flag_on_obsolete_records {
                              });
 }
 
+sub bump_datestamp {
+    my ($self) = @_;
+    my $dt = $self->result_source->schema->storage->datetime_parser
+      ->format_datetime(DateTime->now(time_zone => 'UTC'));
+    $self->update({ datestamp => $dt });
+}
+
+sub by_title_id {
+    my ($self, $ids) = @_;
+    my $me = $self->current_source_alias;
+    $self->search({ "$me.title_id" => { -in => $ids } });
+}
+
 1;

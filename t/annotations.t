@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 245;
+use Test::More tests => 250;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -304,4 +304,20 @@ ok path($site->repo_root, 'annotations', '.gitignore')->exists;
     like $xml, qr{This is the teaser}, "HTML cleaned";
     diag $xml;
     # the dates
+    my ($datestamp) = $xml =~ m/<datestamp>(.+)<\/datestamp>/;
+    sleep 1;
+    my $uri = URI->new($site->canonical_url);
+    my $now = DateTime->now(time_zone => 'UTC');
+    $uri->path('/oai-pmh');
+    $uri->query_form({ from => $now->iso8601 . 'Z', metadataPrefix => 'oai_dc', verb => 'ListRecords' });
+    $mech->get_ok($uri);
+    $mech->content_contains('noRecordsMatch');
+    sleep 1;
+    $title->annotate({
+                      $ap->annotation_id => { value => '300 EUR' },
+                      $as->annotation_id => { value => 'YYx/Xx' },
+                     });
+    $mech->get_ok($uri);
+    $mech->content_lacks('noRecordsMatch');
+    $mech->content_contains('YYx/Xx');
 }

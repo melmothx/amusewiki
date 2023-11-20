@@ -2103,6 +2103,10 @@ sub annotate {
             else {
                 push @errors, $ann->annotation_name . " was not passed!";
             }
+
+            # bump the OAI PMH records. Just update the datestamp, so
+            # we don't interfere, with the normal run
+            $self->oai_pmh_records->bump_datestamp unless @errors;
         }
     }
     return {

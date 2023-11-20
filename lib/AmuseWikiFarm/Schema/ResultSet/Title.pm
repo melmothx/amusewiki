@@ -112,7 +112,12 @@ sub status_is_deferred {
 sub by_id {
     my ($self, $id) = @_;
     my $me = $self->current_source_alias;
-    return $self->search({ "$me.id" => $id });
+    if (ref($id)) {
+        return $self->search({ "$me.id" => { -in => $id } });
+    }
+    else {
+        return $self->search({ "$me.id" => $id });
+    }
 }
 
 sub sorted_by_title {

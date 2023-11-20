@@ -9,7 +9,7 @@ use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
 use Data::Dumper::Concise;
-use Test::More tests => 28;
+use Test::More tests => 35;
 use AmuseWikiFarm::Archive::OAI::PMH;
 
 my $builder = Test::More->builder;
@@ -18,6 +18,9 @@ binmode $builder->failure_output, ":encoding(utf8)";
 binmode $builder->todo_output,    ":encoding(utf8)";
 
 use AmuseWiki::Tests qw/create_site/;
+use Test::WWW::Mechanize::Catalyst;
+use URI;
+
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -167,4 +170,30 @@ foreach my $set ("category:author:author-one-1",
     like $test_set, qr{\Q<setSpec>$set</setSpec>\E};
     like $test_set, qr{<dc:title>.*</dc:title>};
     diag $test_set;
+}
+
+{
+    # first, check if we didn't screw up the by_id method.
+    my @all = map { $_->id } $site->titles->all;
+    is $site->titles->by_id($all[0])->count, 1;
+    is $site->titles->by_id(\@all)->count, scalar(@all);
+
+    sleep 1;
+    my $uri = URI->new($site->canonical_url);
+    my $now = DateTime->now(time_zone => 'UTC');
+    $uri->path('/oai-pmh');
+    $uri->query_form({ from => $now->iso8601 . 'Z', metadataPrefix => 'oai_dc', verb => 'ListRecords' });
+    my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                                   host => $site->canonical);
+
+    $mech->get_ok($uri);
+    $mech->content_contains('noRecordsMatch');
+    sleep 1;
+    my $node = $site->nodes->first;
+    ok scalar(@{$node->title_ids});
+    $node->update_from_params({});
+    $mech->get_ok($uri);
+    diag $mech->content;
+    $mech->content_lacks('noRecordsMatch');
+
 }

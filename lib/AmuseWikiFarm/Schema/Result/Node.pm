@@ -316,6 +316,8 @@ sub update_from_params {
     my $site = $self->site;
     my @locales = $site->supported_locales;
     my $guard = $self->result_source->schema->txn_scope_guard;
+    # collect existing ids
+    my @title_ids = @{ $self->title_ids };
   LANG:
     foreach my $lang (@locales) {
         my $title = $params->{'title_' . $lang};
@@ -374,6 +376,12 @@ sub update_from_params {
         }
         $self->set_titles(\@titles);
         $self->set_categories(\@cats);
+    }
+    # add the new ones and bump the records
+    push @title_ids, @{ $self->title_ids };
+    Dlog_debug { "Updating ids $_ in OAI-PMH" } \@title_ids;
+    if (@title_ids) {
+        $site->oai_pmh_records->by_title_id(\@title_ids)->bump_datestamp;
     }
     $guard->commit;
 }
