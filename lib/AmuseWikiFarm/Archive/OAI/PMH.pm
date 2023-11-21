@@ -71,9 +71,7 @@ sub update_site_records {
     }
     # create the sets for nodes here. Build a tree of them for fast lookup
     my $node_tree = $site->node_title_tree->{titles};
-
-
-
+    # Dlog_debug { "Node tree is $_" } [ $node_tree, [ keys %node_sets ] ];
 
     my @files;
 
@@ -198,6 +196,7 @@ sub update_site_records {
                 $f->{metadata_type} = $dc_type;
                 my $sets = delete $f->{sets} || [];
                 my $rec = $site->oai_pmh_records->update_or_create($f, { key => 'identifier_site_id_unique' });
+                Dlog_debug { "Setting the record's sets $_" } [ map { $_->set_spec } @$sets ] if @$sets;
                 $rec->set_oai_pmh_sets($sets);
             }
         }

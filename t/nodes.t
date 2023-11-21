@@ -9,7 +9,7 @@ use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
 use Data::Dumper::Concise;
-use Test::More tests => 35;
+use Test::More tests => 64;
 use AmuseWikiFarm::Archive::OAI::PMH;
 
 my $builder = Test::More->builder;
@@ -131,7 +131,7 @@ foreach my $node ($site->nodes) {
 }
 
 # now we need the tree for each title
-$site->node_title_tree;
+diag Dumper($site->node_title_tree);
 
 my $oai_pmh = AmuseWikiFarm::Archive::OAI::PMH->new(site => $site,
                                                     oai_pmh_url => URI->new($site->canonical_url . '/oai-pmh'));
@@ -196,4 +196,85 @@ foreach my $set ("category:author:author-one-1",
     diag $mech->content;
     $mech->content_lacks('noRecordsMatch');
 
+    sleep 1;
+    $now = DateTime->now(time_zone => 'UTC');
+
+    $uri->query_form({ from => $now->iso8601 . 'Z',
+                       metadataPrefix => 'oai_dc', verb => 'ListIdentifiers' });
+    $mech->get_ok($uri);
+    $mech->content_contains('noRecordsMatch');
+
+    # create one
+    my $root_node = $site->nodes->create({ uri => 'root-oai-pmh' });
+    my $child_node = $site->nodes->create({
+                                           uri => 'child-oai-pmh',
+                                           parent_node => $root_node,
+                                          });
+    $root_node->update_from_params({
+                                    attached_uris => "/library/four-2",
+                                   });
+
+    $child_node->update_from_params({
+                                     attached_uris => "/library/seven /category/topic/cat-one-1",
+                                    });
+    sleep 1;
+    $mech->get_ok($uri);
+    $mech->content_lacks('noRecordsMatch');
+    $mech->content_contains('oai:0nodes1.amusewiki.org:/library/one-1', "one-1 is there because of category");
+    $mech->content_contains('oai:0nodes1.amusewiki.org:/library/seven', "seven is there because of direct child");
+
+    # now, ask for the root
+    $uri->query_form({ from => $now->iso8601 . 'Z',
+                       metadataPrefix => 'oai_dc', verb => 'ListIdentifiers',
+                       set => 'collection:root-oai-pmh',
+                     });
+    $mech->get_ok($uri);
+    $mech->content_contains('oai:0nodes1.amusewiki.org:/library/one-1', "one-1 is there because of category");
+    $mech->content_contains('oai:0nodes1.amusewiki.org:/library/seven', "seven is there because of direct child");
+    diag $mech->content;
+    # diag Dumper($site->node_title_tree);
+    sleep 1;
+    $now = DateTime->now(time_zone => 'UTC');
+    $uri->query_form({ from => $now->iso8601 . 'Z',
+                       metadataPrefix => 'oai_dc', verb => 'ListIdentifiers' });
+
+    $mech->get_ok($uri);
+    $mech->content_contains('noRecordsMatch');
+
+    # now update the child and ask for the parent
+    $child_node->update_from_params({ attached_uris => "/library/one-2" });
+
+    $uri->query_form({ from => $now->iso8601 . 'Z',
+                       metadataPrefix => 'oai_dc', verb => 'ListIdentifiers' });
+    $mech->get_ok($uri);
+    $mech->content_contains('oai:0nodes1.amusewiki.org:/library/one-1', "one-1 is there because of category");
+    $mech->content_contains('oai:0nodes1.amusewiki.org:/library/seven', "seven is there because of direct child");
+    $mech->content_contains('oai:0nodes1.amusewiki.org:/library/one-2', "one-2 is there because of category");
+    $mech->content_contains('oai:0nodes1.amusewiki.org:/library/four-2', "four-2 is attached to the parent");
+
+
+    foreach my $set ('collection:root-oai-pmh', 'collection:child-oai-pmh') {
+        $uri->query_form({ from => $now->iso8601 . 'Z',
+                           metadataPrefix => 'oai_dc', verb => 'ListIdentifiers',
+                           set => $set,
+                         });
+        $mech->get_ok($uri);
+        $mech->content_lacks('oai:0nodes1.amusewiki.org:/library/one-1', "one-1 is there because of category");
+        $mech->content_lacks('oai:0nodes1.amusewiki.org:/library/seven', "seven is there because of direct child");
+        $mech->content_contains('oai:0nodes1.amusewiki.org:/library/one-2', "one-2 is there because of category");
+        diag $mech->content;
+    }
+    sleep 1;
+    diag "Trying a deletion now";
+    $now = DateTime->now(time_zone => 'UTC');
+    $uri->query_form({ from => $now->iso8601 . 'Z',
+                       metadataPrefix => 'oai_dc', verb => 'ListIdentifiers' });
+    $mech->get_ok($uri);
+    $mech->content_contains('noRecordsMatch');
+
+    $child_node->delete;
+    $mech->get_ok($uri);
+    $mech->content_contains('oai:0nodes1.amusewiki.org:/library/one-2', "one-2 is there because of category");
+    $mech->content_contains('oai:0nodes1.amusewiki.org:/library/four-2', "four-2 is attached to the parent");
+    diag $mech->content;
 }

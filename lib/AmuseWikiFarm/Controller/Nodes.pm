@@ -92,7 +92,7 @@ sub create :Chained('admin') :PathPart('create') :Args(0) {
     if (my $uri = $params{uri}) {
         log_info { $c->user->get('username') . " is creating nodes/$uri" };
         if (my $node = $site->nodes->update_or_create_from_params(\%params, { create => 1 })) {
-            $c->flash(status_msg => 'COLLECTION_UPDATE');
+            $c->flash(status_msg => $c->loc("Collection created"));
             return $c->response->redirect($c->uri_for($node->full_uri));
         }
         else {
@@ -130,12 +130,12 @@ sub update_node :Chained('edit') :PathPart('') :Args(0) {
     if ($params{update}) {
         Dlog_info { $c->user->get('username') . " is updating " . $node->full_uri . " with $_" } \%params;
         $node->update_from_params(\%params);
-        $c->flash(status_msg => 'COLLECTION_UPDATE');
+        $c->flash(status_msg => $c->loc("Collection has been updated"));
     }
     elsif ($params{delete}) {
         Dlog_info { $c->user->get('username') . " deleted $_" } +{ $node->get_columns };
         $node->delete;
-        $c->flash(status_msg => 'COLLECTION_UPDATE');
+        $c->flash(status_msg => $c->loc("Collection has been deleted"));
         $c->response->redirect($c->uri_for_action('/nodes/node_root'));
         return;
     }

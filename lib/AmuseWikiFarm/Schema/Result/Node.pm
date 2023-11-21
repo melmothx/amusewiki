@@ -284,12 +284,7 @@ sub is_root {
     return !shift->parent_node_id;
 }
 
-has ancestors_cache => (is => 'ro',
-                        lazy => 1,
-                        isa => 'ArrayRef',
-                        builder => '_build_ancestors_cache');
-
-sub _build_ancestors_cache {
+sub ancestors {
     my $self = shift;
     my @ancestors;
     my $rec = $self;
@@ -298,11 +293,7 @@ sub _build_ancestors_cache {
     while (++$max < 10 and $rec = $rec->parent) {
         push @ancestors, $rec;
     }
-    return \@ancestors;
-}
-
-sub ancestors {
-    return @{shift->ancestors_cache};
+    return @ancestors;
 }
 
 sub full_uri {
@@ -312,17 +303,21 @@ sub full_uri {
 
 sub update_from_params {
     my ($self, $params) = @_;
+    $params ||= {};
     Dlog_debug { "Updating " . $self->full_uri . " with $_" } $params;
     my $site = $self->site;
     my @locales = $site->supported_locales;
     my $guard = $self->result_source->schema->txn_scope_guard;
-    my $oai_pmh_set = $site->oai_pmh_sets->find_or_create({
-                                                           set_spec => $self->oai_pmh_set_spec,
-                                                           set_name => $self->canonical_title,
-                                                          },
-                                                          { key => 'set_spec_site_id_unique' });
+    my %nodes;
+    foreach my $n ($self, $self->ancestors) {
+        $nodes{$n->node_id} = $site->oai_pmh_sets->find_or_create({
+                                                                   set_spec => $n->oai_pmh_set_spec,
+                                                                   set_name => $n->canonical_title,
+                                                                  },
+                                                                  { key => 'set_spec_site_id_unique' });
+    }
     # collect existing records. We will need to bump them.
-    my @oai_pmh_record_ids = map { $_->oai_pmh_record_id } $oai_pmh_set->oai_pmh_record_sets->all;
+    my @oai_pmh_record_ids = map { $_->oai_pmh_record_id } map { $_->oai_pmh_record_sets->all } values %nodes;
 
   LANG:
     foreach my $lang (@locales) {
@@ -339,11 +334,13 @@ sub update_from_params {
         $body{body_html} = muse_to_object($body{body_muse})->as_html;
         $self->node_bodies->update_or_create(\%body);
     }
-    if (my $parent = $site->nodes->find_by_uri($params->{parent_node_uri})) {
-        $self->parent_node($parent);
-    }
-    else {
-        $self->parent_node(undef);
+    if (defined $params->{parent_node_uri}) {
+        if (my $parent = $site->nodes->find_by_uri($params->{parent_node_uri})) {
+            $self->parent_node($parent);
+        }
+        else {
+            $self->parent_node(undef);
+        }
     }
     if (defined $params->{sorting_pos} and $params->{sorting_pos} =~ m/\A[1-9][0-9]*\z/) {
         log_debug { "Setting sorting pos to $params->{sorting_pos}" };
@@ -387,12 +384,12 @@ sub update_from_params {
     # bumps the new ones.
     my $tree = $site->node_title_tree;
     my $self_node_id = $self->node_id;
-    my ($tree_spec) = grep { $_->{node_id} == $self_node_id } @{ $tree->{nodes} || []};
     Dlog_debug { "Initial list of PMH records is $_"  } \@oai_pmh_record_ids;
-    if ($tree_spec) {
+    foreach my $tree_spec (grep { $nodes{$_->{node_id}} } @{ $tree->{nodes} || []}) {
+        Dlog_debug { "Updating $_" } $tree_spec;
         my @new_oai_pmh_records = $site->oai_pmh_records->by_title_id($tree_spec->{title_ids})->landing_pages_only->all;
         # this should clear the existing one and relink
-        $oai_pmh_set->set_oai_pmh_records(\@new_oai_pmh_records);
+        $nodes{$tree_spec->{node_id}}->set_oai_pmh_records(\@new_oai_pmh_records);
         push @oai_pmh_record_ids, map { $_->oai_pmh_record_id } @new_oai_pmh_records;
     }
     Dlog_debug { "Final list of PMH records is $_"  } \@oai_pmh_record_ids;
@@ -592,13 +589,13 @@ sub title_ids {
                                                       columns => [qw/id/],
                                                       %hri,
                                                      });
-    Dlog_debug { "Direct ids for " . $self->uri . " are $_" } \@ids;
+    # Dlog_debug { "Direct ids for " . $self->uri . " are $_" } \@ids;
     my @catids = map { $_->{title_id} } $self->categories->search_related('title_categories')->search(undef,
                                                                                                       {
                                                                                                        columns => [qw/title_id/],
                                                                                                        %hri,
                                                                                                       });
-    Dlog_debug { "Ids via category for " . $self->uri . " are $_" } \@catids;
+    # Dlog_debug { "Ids via category for " . $self->uri . " are $_" } \@catids;
     return [ @ids, @catids];
 }
 
@@ -618,7 +615,18 @@ sub oai_pmh_set_spec {
 }
 
 after insert => sub {
-    shift->update_full_path;
+    my $self = shift;
+    $self->update_full_path;
+    $self->update_from_params;
+};
+
+before delete => sub {
+    my $self = shift;
+    if (my $oaipmh_set = $self->site->oai_pmh_sets->find({ set_spec => $self->oai_pmh_set_spec })) {
+        $self->update_from_params;
+        log_debug { "Deleting the OAI_PMH set" };
+        $oaipmh_set->delete;
+    }
 };
 
 __PACKAGE__->meta->make_immutable;

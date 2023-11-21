@@ -698,10 +698,6 @@
         <a href="[% c.uri_for_action('/bookbuilder/index') %]" class="text-success">
           <strong>[% loc('The text was added to the bookbuilder') %]</strong>
         </a>
-        [% ELSIF c.flash.status_msg == 'COLLECTION_UPDATE' %]
-        <a href="[% c.uri_for_action('/nodes/refresh_oai_pmh_repo') %]" class="text-success">
-          <strong>[% loc('Collections have been updated. You may want to refresh the OAI-PMH repository') %]</strong>
-        </a>
         [% ELSE %]
         [% c.flash.status_msg | html %]
         [% END %]
