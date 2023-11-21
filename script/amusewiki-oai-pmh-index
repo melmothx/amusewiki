@@ -13,19 +13,29 @@ use Getopt::Long;
 use Pod::Usage;
 use Time::HiRes qw/gettimeofday tv_interval/;
 
-my $help;
-GetOptions(help => \$help) or die;
+my ($help, $all);
+GetOptions(help => \$help,
+           all => \$all) or die;
 
-my (@site_ids) = @ARGV;
+my @site_ids = @ARGV;
 
-if ($help or !@site_ids) {
+if ($help) {
+    pod2usage;
+    exit 2;
+}
+
+my $search = undef;
+if (@site_ids) {
+    $search = { id => \@site_ids };
+}
+elsif (!$all) {
     pod2usage;
     exit 2;
 }
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-foreach my $site ($schema->resultset('Site')->search({ id => \@site_ids })) {
+foreach my $site ($schema->resultset('Site')->search($search)) {
     my $start = [ gettimeofday ];
     my $oai_pmh = AmuseWikiFarm::Archive::OAI::PMH->new(site => $site,
                                                         logger => sub {
@@ -51,9 +61,7 @@ amusewiki-oai-pmh-index - Rebuild the OAI-PMH index
 
 =head1 SYNOPSIS
 
- amusewiki-oai-pmh-index site_id_1 [ site_id_2, ...]
-
-Mostly Used for debugging.
+ amusewiki-oai-pmh-index [ --all |  site_id_1 [ site_id_2 site_id_3 ...] ]
 
 =cut
 
