@@ -542,11 +542,16 @@ msgstr "Κλείσιμο"
 msgid "Code"
 msgstr "Κώδικας"
 
-msgid "Collections"
+msgid "Collection created"
 msgstr ""
 
-msgid ""
-"Collections have been updated. You may want to refresh the OAI-PMH repository"
+msgid "Collection has been deleted"
+msgstr ""
+
+msgid "Collection has been updated"
+msgstr ""
+
+msgid "Collections"
 msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
@@ -828,6 +833,9 @@ msgstr "Επεξεργασία χρήστη %1"
 msgid "Editing"
 msgstr "Επεξεργασία"
 
+msgid "Effect"
+msgstr ""
+
 msgid "Email"
 msgstr "Email"
 
@@ -916,6 +924,12 @@ msgstr "Υπάρχουσες ανακατευθύνσεις"
 
 msgid "Expected pages"
 msgstr "Αναμενόμενες σελίδες"
+
+msgid "Exposed to OAI-PMH as shelf location code"
+msgstr ""
+
+msgid "Exposed to OAI-PMH as trade price"
+msgstr ""
 
 msgid "Failed"
 msgstr "Απέτυχε"
@@ -2736,6 +2750,11 @@ msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
 "Έτσι μπορούμε να είμαστε σίγουροι ότι δεν στέλνουμε κωδικούς πρόσβασης σε "
 "τυχαία άτομα"
+
+msgid ""
+"Some annotation codes are special and have side effects if you create them "
+"with these codes."
+msgstr ""
 
 msgid "Some fields are missing, all are required"
 msgstr "Ορισμένα πεδία λείπουν, όλα είναι υποχρεωτικά"

@@ -517,11 +517,16 @@ msgstr "Fermer"
 msgid "Code"
 msgstr ""
 
-msgid "Collections"
+msgid "Collection created"
 msgstr ""
 
-msgid ""
-"Collections have been updated. You may want to refresh the OAI-PMH repository"
+msgid "Collection has been deleted"
+msgstr ""
+
+msgid "Collection has been updated"
+msgstr ""
+
+msgid "Collections"
 msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
@@ -800,6 +805,9 @@ msgstr "Modifier utilisateur %1"
 msgid "Editing"
 msgstr "Modifications en cours"
 
+msgid "Effect"
+msgstr ""
+
 msgid "Email"
 msgstr "Email"
 
@@ -888,6 +896,12 @@ msgid "Existing redirections"
 msgstr "Redirections existantes"
 
 msgid "Expected pages"
+msgstr ""
+
+msgid "Exposed to OAI-PMH as shelf location code"
+msgstr ""
+
+msgid "Exposed to OAI-PMH as trade price"
 msgstr ""
 
 msgid "Failed"
@@ -2616,6 +2630,11 @@ msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
 "Pour que nous puissions nous assurer de ne pas envoyer des mots de passe à "
 "n'importe qui"
+
+msgid ""
+"Some annotation codes are special and have side effects if you create them "
+"with these codes."
+msgstr ""
 
 msgid "Some fields are missing, all are required"
 msgstr "Certains champs sont vides, tous sont requis"

@@ -534,11 +534,16 @@ msgstr "Затвори"
 msgid "Code"
 msgstr "Код"
 
-msgid "Collections"
+msgid "Collection created"
 msgstr ""
 
-msgid ""
-"Collections have been updated. You may want to refresh the OAI-PMH repository"
+msgid "Collection has been deleted"
+msgstr ""
+
+msgid "Collection has been updated"
+msgstr ""
+
+msgid "Collections"
 msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
@@ -819,6 +824,9 @@ msgstr "Редактирай потребител %1"
 msgid "Editing"
 msgstr "Редактиране"
 
+msgid "Effect"
+msgstr ""
+
 msgid "Email"
 msgstr "Имейл"
 
@@ -907,6 +915,12 @@ msgstr "Вече съществуващи пренасочвания"
 
 msgid "Expected pages"
 msgstr "Очаквани страници"
+
+msgid "Exposed to OAI-PMH as shelf location code"
+msgstr ""
+
+msgid "Exposed to OAI-PMH as trade price"
+msgstr ""
 
 msgid "Failed"
 msgstr "Неуспешно"
@@ -2688,6 +2702,11 @@ msgstr ""
 
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr "За да сме сигурни, че не изпращаме пароли на случайни хора"
+
+msgid ""
+"Some annotation codes are special and have side effects if you create them "
+"with these codes."
+msgstr ""
 
 msgid "Some fields are missing, all are required"
 msgstr "Някои от полетата са празни, а всички са задължителни"

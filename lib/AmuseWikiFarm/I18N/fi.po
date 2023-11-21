@@ -491,11 +491,16 @@ msgstr "Sulje"
 msgid "Code"
 msgstr ""
 
-msgid "Collections"
+msgid "Collection created"
 msgstr ""
 
-msgid ""
-"Collections have been updated. You may want to refresh the OAI-PMH repository"
+msgid "Collection has been deleted"
+msgstr ""
+
+msgid "Collection has been updated"
+msgstr ""
+
+msgid "Collections"
 msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
@@ -763,6 +768,9 @@ msgstr "Muokkaa käyttäjää %1"
 msgid "Editing"
 msgstr "Muokataan"
 
+msgid "Effect"
+msgstr ""
+
 msgid "Email"
 msgstr "Sähköpostiosoite"
 
@@ -842,6 +850,12 @@ msgid "Existing redirections"
 msgstr "Nykyiset uudelleenohjaukset"
 
 msgid "Expected pages"
+msgstr ""
+
+msgid "Exposed to OAI-PMH as shelf location code"
+msgstr ""
+
+msgid "Exposed to OAI-PMH as trade price"
 msgstr ""
 
 msgid "Failed"
@@ -2472,6 +2486,11 @@ msgstr ""
 
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr "Jotta voimme varmistua siitä ettemme lähetä salasanoja summatyypeille"
+
+msgid ""
+"Some annotation codes are special and have side effects if you create them "
+"with these codes."
+msgstr ""
 
 msgid "Some fields are missing, all are required"
 msgstr "Jotkut kentät puuttuvat, kaikki vaaditaan"

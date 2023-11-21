@@ -136,11 +136,11 @@ msgstr ""
 msgid "Activate the blog-style look and feel"
 msgstr ""
 
-#: root/src/admin/edit.tt:92 root/src/admin/list.tt:13 root/src/admin/show_user_details.tt:38 root/src/admin/show_users.tt:11 root/src/console/list_categories.tt:13 root/src/federation/show.tt:32 root/src/settings/annotations.tt:19 root/src/settings/categories.tt:12 root/src/settings/formats.tt:11 root/src/siteadmin/show_users.tt:11
+#: root/src/admin/edit.tt:92 root/src/admin/list.tt:13 root/src/admin/show_user_details.tt:38 root/src/admin/show_users.tt:11 root/src/console/list_categories.tt:13 root/src/federation/show.tt:32 root/src/settings/annotations.tt:45 root/src/settings/categories.tt:12 root/src/settings/formats.tt:11 root/src/siteadmin/show_users.tt:11
 msgid "Active"
 msgstr ""
 
-#: root/src/federation/show.tt:105
+#: root/src/federation/show.tt:106
 msgid "Add"
 msgstr ""
 
@@ -148,7 +148,7 @@ msgstr ""
 msgid "Add a cover image (PNG or JPG)"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:65 root/src/layout.tt:312 root/src/layout.tt:634 root/src/layout.tt:637 root/src/layout.tt:792
+#: lib/AmuseWikiFarm/Controller/Edit.pm:65 root/src/layout.tt:312 root/src/layout.tt:634 root/src/layout.tt:637 root/src/layout.tt:788
 msgid "Add a new text"
 msgstr ""
 
@@ -196,7 +196,7 @@ msgstr ""
 msgid "Add to colophon"
 msgstr ""
 
-#: root/src/federation/show.tt:98
+#: root/src/federation/show.tt:97
 msgid "Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a text or a category. Examples:"
 msgstr ""
 
@@ -292,7 +292,7 @@ msgstr ""
 msgid "Annotations"
 msgstr ""
 
-#: root/src/settings/annotations.tt:7
+#: root/src/settings/annotations.tt:8
 msgid "Annotations are text metadata which are not included in the muse file. Examples could be: prices, catalog numbers, shelf location, working copies of large binary files, internal comments."
 msgstr ""
 
@@ -460,11 +460,11 @@ msgid ""
 "        numbering"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:456 root/src/search/index.tt:73
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:461 root/src/search/index.tt:73
 msgid "By number of pages, ascending"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:466 root/src/search/index.tt:76
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:471 root/src/search/index.tt:76
 msgid "By number of pages, descending"
 msgstr ""
 
@@ -472,19 +472,19 @@ msgstr ""
 msgid "By relevance"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:411
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:416
 msgid "By sku ascending"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:418
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:423
 msgid "By sku descending"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:425 root/src/search/index.tt:61
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:430 root/src/search/index.tt:61
 msgid "By title A-Z"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:432 root/src/search/index.tt:64
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:437 root/src/search/index.tt:64
 msgid "By title Z-A"
 msgstr ""
 
@@ -568,7 +568,7 @@ msgstr ""
 msgid "Cheatsheet for the markup"
 msgstr ""
 
-#: root/src/federation/show.tt:67
+#: root/src/federation/show.tt:68
 msgid "Check"
 msgstr ""
 
@@ -596,16 +596,24 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: root/src/settings/annotations.tt:15 root/src/settings/categories.tt:9 root/src/settings/formats.tt:8
+#: root/src/settings/annotations.tt:16 root/src/settings/annotations.tt:41 root/src/settings/categories.tt:9 root/src/settings/formats.tt:8
 msgid "Code"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Nodes.pm:95
+msgid "Collection created"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Nodes.pm:138
+msgid "Collection has been deleted"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Nodes.pm:133
+msgid "Collection has been updated"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Nodes.pm:30 root/src/layout.tt:466 root/src/nodes/node_root.tt:5
 msgid "Collections"
-msgstr ""
-
-#: root/src/layout.tt:703
-msgid "Collections have been updated. You may want to refresh the OAI-PMH repository"
 msgstr ""
 
 #: root/src/edit/preview.tt:95
@@ -668,7 +676,7 @@ msgstr ""
 msgid "Create"
 msgstr ""
 
-#: root/src/settings/annotations.tt:70
+#: root/src/settings/annotations.tt:96
 msgid "Create a new annotation."
 msgstr ""
 
@@ -949,6 +957,10 @@ msgstr ""
 msgid "Editing"
 msgstr ""
 
+#: root/src/settings/annotations.tt:17
+msgid "Effect"
+msgstr ""
+
 #: root/src/admin/show_user_details.tt:27 root/src/admin/show_users.tt:10 root/src/siteadmin/show_users.tt:10 root/src/user/create.tt:37 root/src/user/edit.tt:46
 msgid "Email"
 msgstr ""
@@ -1054,6 +1066,14 @@ msgstr ""
 msgid "Expected pages"
 msgstr ""
 
+#: root/src/settings/annotations.tt:23
+msgid "Exposed to OAI-PMH as shelf location code"
+msgstr ""
+
+#: root/src/settings/annotations.tt:29
+msgid "Exposed to OAI-PMH as trade price"
+msgstr ""
+
 #: root/src/include/bulk_job.tt:12
 msgid "Failed"
 msgstr ""
@@ -1076,11 +1096,11 @@ msgstr ""
 msgid "Feed enclosure method (OPDS and RSS)"
 msgstr ""
 
-#: root/src/federation/show.tt:80
+#: root/src/federation/show.tt:81
 msgid "Fetch"
 msgstr ""
 
-#: root/src/settings/annotations.tt:48
+#: root/src/settings/annotations.tt:74
 msgid "File"
 msgstr ""
 
@@ -1422,7 +1442,7 @@ msgstr ""
 msgid "Id"
 msgstr ""
 
-#: root/src/settings/annotations.tt:51
+#: root/src/settings/annotations.tt:77
 msgid "Identifier"
 msgstr ""
 
@@ -1724,7 +1744,7 @@ msgid ""
 "        tables and images only on the next step."
 msgstr ""
 
-#: root/src/settings/annotations.tt:16
+#: root/src/settings/annotations.tt:42
 msgid "Label"
 msgstr ""
 
@@ -1756,7 +1776,7 @@ msgstr ""
 msgid "Last updated"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Latest.pm:58 lib/AmuseWikiFarm/Controller/OPDS.pm:57 lib/AmuseWikiFarm/Schema/Result/Site.pm:4886 root/src/admin/edit.tt:777 root/src/layout.tt:284 root/src/layout.tt:285 root/src/layout.tt:783 root/src/text.tt:178
+#: lib/AmuseWikiFarm/Controller/Latest.pm:58 lib/AmuseWikiFarm/Controller/OPDS.pm:57 lib/AmuseWikiFarm/Schema/Result/Site.pm:4886 root/src/admin/edit.tt:777 root/src/layout.tt:284 root/src/layout.tt:285 root/src/layout.tt:779 root/src/text.tt:178
 msgid "Latest entries"
 msgstr ""
 
@@ -1825,7 +1845,7 @@ msgstr ""
 msgid "Local"
 msgstr ""
 
-#: root/src/federation/show.tt:116 root/src/federation/show.tt:7
+#: root/src/federation/show.tt:117 root/src/federation/show.tt:7
 msgid "Local pages"
 msgstr ""
 
@@ -1950,7 +1970,7 @@ msgstr ""
 msgid "Missing redirection"
 msgstr ""
 
-#: root/src/layout.tt:609 root/src/layout.tt:787
+#: root/src/layout.tt:609 root/src/layout.tt:783
 msgid "Mobile"
 msgstr ""
 
@@ -2038,7 +2058,7 @@ msgstr ""
 msgid "New site id"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:442 root/src/search/index.tt:70
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:447 root/src/search/index.tt:70
 msgid "Newer first"
 msgstr ""
 
@@ -2054,7 +2074,7 @@ msgstr ""
 msgid "Nice title"
 msgstr ""
 
-#: root/src/admin/show_users.tt:42 root/src/federation/show.tt:56 root/src/settings/categories.tt:102 root/src/settings/categories.tt:34 root/src/settings/categories.tt:40 root/src/settings/categories.tt:46 root/src/settings/categories.tt:93 root/src/settings/categories.tt:97 root/src/siteadmin/show_users.tt:41
+#: root/src/admin/show_users.tt:42 root/src/federation/show.tt:57 root/src/settings/categories.tt:102 root/src/settings/categories.tt:34 root/src/settings/categories.tt:40 root/src/settings/categories.tt:46 root/src/settings/categories.tt:93 root/src/settings/categories.tt:97 root/src/siteadmin/show_users.tt:41
 msgid "No"
 msgstr ""
 
@@ -2139,7 +2159,7 @@ msgstr ""
 msgid "OPDS"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:449 root/src/search/index.tt:67
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:454 root/src/search/index.tt:67
 msgid "Older first"
 msgstr ""
 
@@ -2482,7 +2502,7 @@ msgstr ""
 msgid "Please upload your file again!"
 msgstr ""
 
-#: root/src/settings/annotations.tt:71
+#: root/src/settings/annotations.tt:97
 msgid "Please use only lowercase ASCII letters."
 msgstr ""
 
@@ -2520,11 +2540,11 @@ msgstr ""
 msgid "Previous"
 msgstr ""
 
-#: root/src/admin/jobs.tt:67 root/src/settings/annotations.tt:17 root/src/settings/categories.tt:16 root/src/settings/formats.tt:13
+#: root/src/admin/jobs.tt:67 root/src/settings/annotations.tt:43 root/src/settings/categories.tt:16 root/src/settings/formats.tt:13
 msgid "Priority"
 msgstr ""
 
-#: root/src/admin/edit.tt:221 root/src/include/preamble.tt:122 root/src/settings/annotations.tt:20
+#: root/src/admin/edit.tt:221 root/src/include/preamble.tt:122 root/src/settings/annotations.tt:46
 msgid "Private"
 msgstr ""
 
@@ -2599,11 +2619,11 @@ msgstr ""
 msgid "RSS aggregator"
 msgstr ""
 
-#: root/src/layout.tt:617 root/src/layout.tt:620 root/src/layout.tt:765
+#: root/src/layout.tt:617 root/src/layout.tt:620 root/src/layout.tt:761
 msgid "RSS feed"
 msgstr ""
 
-#: root/src/layout.tt:625 root/src/layout.tt:628 root/src/layout.tt:761
+#: root/src/layout.tt:625 root/src/layout.tt:628 root/src/layout.tt:757
 msgid "Random"
 msgstr ""
 
@@ -2689,7 +2709,7 @@ msgstr ""
 msgid "Remote repository %1 removed"
 msgstr ""
 
-#: root/src/console/git_display.tt:19 root/src/federation/show.tt:86 root/src/include/preamble.tt:169 root/static/js/amw-batch-upload.js:123
+#: root/src/console/git_display.tt:19 root/src/federation/show.tt:87 root/src/include/preamble.tt:169 root/static/js/amw-batch-upload.js:123
 msgid "Remove"
 msgstr ""
 
@@ -3062,6 +3082,10 @@ msgstr ""
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
 
+#: root/src/settings/annotations.tt:11
+msgid "Some annotation codes are special and have side effects if you create them with these codes."
+msgstr ""
+
 #: lib/AmuseWikiFarm/Controller/User.pm:181
 msgid "Some fields are missing, all are required"
 msgstr ""
@@ -3244,7 +3268,7 @@ msgstr ""
 msgid "Tested applications, in this order of preference"
 msgstr ""
 
-#: root/src/settings/annotations.tt:54
+#: root/src/settings/annotations.tt:80
 msgid "Text"
 msgstr ""
 
@@ -3542,7 +3566,7 @@ msgstr ""
 msgid "Title, author, date..."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:44 lib/AmuseWikiFarm/Schema/Result/Site.pm:4872 root/src/layout.tt:252 root/src/layout.tt:770
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:44 lib/AmuseWikiFarm/Schema/Result/Site.pm:4872 root/src/layout.tt:252 root/src/layout.tt:766
 msgid "Titles"
 msgstr ""
 
@@ -3583,7 +3607,7 @@ msgstr ""
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr ""
 
-#: root/src/federation/show.tt:61
+#: root/src/federation/show.tt:62
 msgid "Toggle"
 msgstr ""
 
@@ -3634,7 +3658,7 @@ msgstr ""
 msgid "Two side layout"
 msgstr ""
 
-#: root/src/console/list_categories.tt:11 root/src/settings/annotations.tt:18
+#: root/src/console/list_categories.tt:11 root/src/settings/annotations.tt:44
 msgid "Type"
 msgstr ""
 
@@ -3716,7 +3740,7 @@ msgstr ""
 msgid "Unused attachment"
 msgstr ""
 
-#: root/src/admin/edit.tt:1427 root/src/admin/jobs.tt:107 root/src/admin/show_user_details.tt:70 root/src/attachments/edit.tt:38 root/src/bookbuilder/index.tt:239 root/src/bookbuilder/index.tt:261 root/src/category-details-edit.tt:41 root/src/include/edit_node.tt:119 root/src/include/preamble.tt:177 root/src/settings/annotations.tt:79 root/src/settings/categories.tt:114 root/src/settings/edit_format.tt:38 root/src/user/edit.tt:72 root/src/user/edit_options.tt:33 root/src/user/reset_password_confirm.tt:32
+#: root/src/admin/edit.tt:1427 root/src/admin/jobs.tt:107 root/src/admin/show_user_details.tt:70 root/src/attachments/edit.tt:38 root/src/bookbuilder/index.tt:239 root/src/bookbuilder/index.tt:261 root/src/category-details-edit.tt:41 root/src/include/edit_node.tt:119 root/src/include/preamble.tt:177 root/src/settings/annotations.tt:105 root/src/settings/categories.tt:114 root/src/settings/edit_format.tt:38 root/src/user/edit.tt:72 root/src/user/edit_options.tt:33 root/src/user/reset_password_confirm.tt:32
 msgid "Update"
 msgstr ""
 
@@ -3941,7 +3965,7 @@ msgstr ""
 msgid "XeLaTeX source"
 msgstr ""
 
-#: root/src/admin/show_users.tt:40 root/src/bookbuilder/index.tt:29 root/src/federation/show.tt:55 root/src/settings/categories.tt:35 root/src/settings/categories.tt:41 root/src/settings/categories.tt:47 root/src/settings/categories.tt:90 root/src/siteadmin/show_users.tt:39
+#: root/src/admin/show_users.tt:40 root/src/bookbuilder/index.tt:29 root/src/federation/show.tt:56 root/src/settings/categories.tt:35 root/src/settings/categories.tt:41 root/src/settings/categories.tt:47 root/src/settings/categories.tt:90 root/src/siteadmin/show_users.tt:39
 msgid "Yes"
 msgstr ""
 
@@ -4295,7 +4319,7 @@ msgstr ""
 msgid "texts sorted by author"
 msgstr ""
 
-#: root/src/layout.tt:251 root/src/layout.tt:770
+#: root/src/layout.tt:251 root/src/layout.tt:766
 msgid "texts sorted by title"
 msgstr ""
 

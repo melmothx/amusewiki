@@ -488,11 +488,16 @@ msgstr "閉じる"
 msgid "Code"
 msgstr "コード"
 
-msgid "Collections"
+msgid "Collection created"
 msgstr ""
 
-msgid ""
-"Collections have been updated. You may want to refresh the OAI-PMH repository"
+msgid "Collection has been deleted"
+msgstr ""
+
+msgid "Collection has been updated"
+msgstr ""
+
+msgid "Collections"
 msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
@@ -758,6 +763,9 @@ msgstr "ユーザー%1を編集"
 msgid "Editing"
 msgstr "編集"
 
+msgid "Effect"
+msgstr ""
+
 msgid "Email"
 msgstr "Eメール"
 
@@ -842,6 +850,12 @@ msgstr "既存のリダイレクト"
 
 msgid "Expected pages"
 msgstr "期待されるページ"
+
+msgid "Exposed to OAI-PMH as shelf location code"
+msgstr ""
+
+msgid "Exposed to OAI-PMH as trade price"
+msgstr ""
 
 msgid "Failed"
 msgstr "失敗"
@@ -2475,6 +2489,11 @@ msgstr "スモールキャピタル"
 
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr "手当たり次第に人にパスワードを送信していないことを確認できるように"
+
+msgid ""
+"Some annotation codes are special and have side effects if you create them "
+"with these codes."
+msgstr ""
 
 msgid "Some fields are missing, all are required"
 msgstr "一部のフィールドは抜けています。全て必須です"

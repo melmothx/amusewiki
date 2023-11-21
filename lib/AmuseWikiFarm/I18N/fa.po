@@ -519,11 +519,16 @@ msgstr "بستن"
 msgid "Code"
 msgstr "کد"
 
-msgid "Collections"
+msgid "Collection created"
 msgstr ""
 
-msgid ""
-"Collections have been updated. You may want to refresh the OAI-PMH repository"
+msgid "Collection has been deleted"
+msgstr ""
+
+msgid "Collection has been updated"
+msgstr ""
+
+msgid "Collections"
 msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
@@ -800,6 +805,9 @@ msgstr "ویرایش کاربر %1"
 msgid "Editing"
 msgstr "در حال ویرایش"
 
+msgid "Effect"
+msgstr ""
+
 msgid "Email"
 msgstr "ایمیل"
 
@@ -886,6 +894,12 @@ msgstr "تغییر مسیرهای موجود"
 
 msgid "Expected pages"
 msgstr "صفحات مدنظر"
+
+msgid "Exposed to OAI-PMH as shelf location code"
+msgstr ""
+
+msgid "Exposed to OAI-PMH as trade price"
+msgstr ""
 
 msgid "Failed"
 msgstr "ناموفق"
@@ -2624,6 +2638,11 @@ msgstr "حروف کوچک"
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
 "بنابراین می توانیم مطمئن باشیم که رمز عبور را برای افراد تصادفی پست نمی‌کنیم"
+
+msgid ""
+"Some annotation codes are special and have side effects if you create them "
+"with these codes."
+msgstr ""
 
 msgid "Some fields are missing, all are required"
 msgstr "برخی از فیلدها خالی هستند، همه‌شان الزامی است"

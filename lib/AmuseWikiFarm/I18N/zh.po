@@ -497,11 +497,16 @@ msgstr "关闭"
 msgid "Code"
 msgstr "代码"
 
-msgid "Collections"
+msgid "Collection created"
 msgstr ""
 
-msgid ""
-"Collections have been updated. You may want to refresh the OAI-PMH repository"
+msgid "Collection has been deleted"
+msgstr ""
+
+msgid "Collection has been updated"
+msgstr ""
+
+msgid "Collections"
 msgstr ""
 
 msgid "Colophon (displayed in the generated files):"
@@ -771,6 +776,9 @@ msgstr "编辑用户%1"
 msgid "Editing"
 msgstr "编辑中"
 
+msgid "Effect"
+msgstr ""
+
 msgid "Email"
 msgstr "邮件"
 
@@ -851,6 +859,12 @@ msgstr "现存重定向"
 
 msgid "Expected pages"
 msgstr "预计页数"
+
+msgid "Exposed to OAI-PMH as shelf location code"
+msgstr ""
+
+msgid "Exposed to OAI-PMH as trade price"
+msgstr ""
 
 msgid "Failed"
 msgstr "失败"
@@ -2499,6 +2513,11 @@ msgstr "小型大写字母"
 
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr "这样我们可以确定我们没有把密码邮寄给随机的人"
+
+msgid ""
+"Some annotation codes are special and have side effects if you create them "
+"with these codes."
+msgstr ""
 
 msgid "Some fields are missing, all are required"
 msgstr "有些字段缺失，所有字段都是必须的"

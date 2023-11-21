@@ -527,12 +527,17 @@ msgstr "Kapat"
 msgid "Code"
 msgstr "Kod"
 
+msgid "Collection created"
+msgstr ""
+
+msgid "Collection has been deleted"
+msgstr ""
+
+msgid "Collection has been updated"
+msgstr ""
+
 msgid "Collections"
 msgstr "Koleksiyonlar"
-
-msgid ""
-"Collections have been updated. You may want to refresh the OAI-PMH repository"
-msgstr "Koleksiyonlar güncellendi. OAI-PMH deposunu yenilemek isteyebilirsin"
 
 msgid "Colophon (displayed in the generated files):"
 msgstr "Kolofon (oluşturulan dosyalarda gözükür)"
@@ -810,6 +815,9 @@ msgstr "%1 kullanıcısını düzenle"
 msgid "Editing"
 msgstr "Düzenleme"
 
+msgid "Effect"
+msgstr ""
+
 msgid "Email"
 msgstr "E-posta"
 
@@ -898,6 +906,12 @@ msgstr "Mevcut yönlendirmeler"
 
 msgid "Expected pages"
 msgstr "Beklenen sayfalar"
+
+msgid "Exposed to OAI-PMH as shelf location code"
+msgstr ""
+
+msgid "Exposed to OAI-PMH as trade price"
+msgstr ""
 
 msgid "Failed"
 msgstr "Başarısız"
@@ -2643,6 +2657,11 @@ msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
 "Böylece rastgele insanlara parola postası göndermediğimize emin olabiliriz"
 
+msgid ""
+"Some annotation codes are special and have side effects if you create them "
+"with these codes."
+msgstr ""
+
 msgid "Some fields are missing, all are required"
 msgstr "Bazı alanlar eksik, hepsi zorunlu"
 
@@ -3757,6 +3776,12 @@ msgstr ""
 "\"Yarım kalmış düzenleme\",  versiyon düzenlenirken yarıda bırakılmış,\n"
 "    ama birisi metni düzenlemek için oradan devam edebilir\n"
 "    demektir."
+
+#~ msgid ""
+#~ "Collections have been updated. You may want to refresh the OAI-PMH "
+#~ "repository"
+#~ msgstr ""
+#~ "Koleksiyonlar güncellendi. OAI-PMH deposunu yenilemek isteyebilirsin"
 
 #~ msgid "Added"
 #~ msgstr "Eklendi"
