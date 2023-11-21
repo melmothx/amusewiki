@@ -8,7 +8,7 @@
     [% loc("Annotations are text metadata which are not included in the muse file. Examples could be: prices, catalog numbers, shelf location, working copies of large binary files, internal comments.") %]
     </p>
     <p>
-      [% loc("Some annotation codes are special and have side effects. Here you can find the effect if you create and use them.") %]
+      [% loc("Some annotation codes are special and have side effects if you create them with these codes.") %]
     </p>
     <table class="table table-striped table-condensed table-bordered">
       <thead>
