@@ -4,6 +4,14 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.581 2023-10-18
+
+ - improve OAI-PMH's MARC21 output with more data (notably uri, label
+   and content type)
+
+ - on annotation and collection changes, bump the relevant records for
+   incremental harvesting
+
 2.580 2023-10-18
 
  - i18n: tr (updated)
