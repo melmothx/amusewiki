@@ -163,6 +163,7 @@ sub update_site_records {
     # Dlog_debug { "Files: $_ " } [ map { "$_->{file}" } @files ];
     $self->logger->($timing->() . "Collected existing records\n");
 
+    my $records_updated = 0;
   FILE:
     foreach my $f (@files) {
         if (my $file = delete $f->{file}) {
@@ -196,12 +197,12 @@ sub update_site_records {
                 $f->{metadata_type} = $dc_type;
                 my $sets = delete $f->{sets} || [];
                 my $rec = $site->oai_pmh_records->update_or_create($f, { key => 'identifier_site_id_unique' });
-                Dlog_debug { "Setting the record's sets $_" } [ map { $_->set_spec } @$sets ] if @$sets;
+                $records_updated++;
                 $rec->set_oai_pmh_sets($sets);
             }
         }
     }
-    $self->logger->($timing->() . "Updated existing records\n");
+    $self->logger->($timing->() . "Updated $records_updated records\n");
     if (my @removals = map { $_->{oai_pmh_record_id} } values %all) {
         Dlog_info { "Marking those records as removed: $_" } \@removals;
         $site->oai_pmh_records->set_deleted_flag_on_obsolete_records(\@removals);

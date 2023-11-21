@@ -35,7 +35,7 @@ elsif (!$all) {
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-foreach my $site ($schema->resultset('Site')->search($search)) {
+foreach my $site ($schema->resultset('Site')->search($search, { order_by => 'id' })) {
     my $start = [ gettimeofday ];
     my $oai_pmh = AmuseWikiFarm::Archive::OAI::PMH->new(site => $site,
                                                         logger => sub {
@@ -46,7 +46,7 @@ foreach my $site ($schema->resultset('Site')->search($search)) {
                                                         },
                                                        );
     my $time = time();
-    $oai_pmh->update_site_records;
+    $oai_pmh->update_site_records({ refresh => 1 });
     print "Updated OAI-PMH records for " . $site->id . " in " . (time() - $time) . " seconds\n";
 }
 

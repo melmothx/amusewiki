@@ -488,7 +488,10 @@ sub dublin_core_record {
     $data->{identifier} = [ $base_url . $self->identifier ];
     $data->{format} = $self->metadata_format;
     $data->{type} = $self->metadata_type;
-    push @{$data->{description}}, $self->metadata_format_description || '-';
+    # It should be always there at this point.
+    if (my $fdesc = $self->metadata_format_description) {
+        push @{$data->{description}}, $fdesc;
+    }
     if ($obj->can('title_annotations')) {
         foreach my $ann ($obj->title_annotations->public) {
             my $annotation_type = $ann->annotation->annotation_type;
