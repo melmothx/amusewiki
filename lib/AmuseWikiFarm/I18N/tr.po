@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2023-10-11 10:13+0300\n"
+"PO-Revision-Date: 2023-12-04 15:27+0300\n"
 "Last-Translator: Rojen Zaman <rojen@riseup.net>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #. ($filename)
 msgid "%1 doesn't exist"
@@ -172,10 +172,12 @@ msgid ""
 "Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
 "text or a category. Examples:"
 msgstr ""
+"En fazla 20 URL ekle. Bunların Amusewiki URL'leri olması (sitenin kendisi, "
+"bir metin veya bir kategori) gerekir. Örnekler:"
 
 #. ($ok)
 msgid "Added %1 sources."
-msgstr ""
+msgstr "%1 kaynak eklendi."
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -528,13 +530,13 @@ msgid "Code"
 msgstr "Kod"
 
 msgid "Collection created"
-msgstr ""
+msgstr "Koleksiyon oluşturuldu"
 
 msgid "Collection has been deleted"
-msgstr ""
+msgstr "Koleksiyon silindi"
 
 msgid "Collection has been updated"
-msgstr ""
+msgstr "Koleksiyon güncellendi"
 
 msgid "Collections"
 msgstr "Koleksiyonlar"
@@ -725,13 +727,13 @@ msgstr ""
 "        değiştirme"
 
 msgid "Disable /mirror/ URL for anonymous users"
-msgstr "Anonim kullanıcılar için /mirror/ URL i etkisizleştir"
+msgstr "Anonim kullanıcılar için /mirror/ URL'yi etkisizleştir"
 
 msgid "Display the latest entries on special pages"
 msgstr "Son girişleri özel sayfalarda görüntüle"
 
 msgid "Display url as"
-msgstr "URL'i şöyle göster"
+msgstr "URL'yi şöyle göster"
 
 msgid "Division factor"
 msgstr "Bölme katsayısı"
@@ -816,7 +818,7 @@ msgid "Editing"
 msgstr "Düzenleme"
 
 msgid "Effect"
-msgstr ""
+msgstr "Etkisi"
 
 msgid "Email"
 msgstr "E-posta"
@@ -908,10 +910,10 @@ msgid "Expected pages"
 msgstr "Beklenen sayfalar"
 
 msgid "Exposed to OAI-PMH as shelf location code"
-msgstr ""
+msgstr "OAI-PMH'ye raf konum kodu cinsinden sunulur"
 
 msgid "Exposed to OAI-PMH as trade price"
-msgstr ""
+msgstr "OAI-PMH'ye ticaret fiyatı cinsinden sunulur"
 
 msgid "Failed"
 msgstr "Başarısız"
@@ -1232,7 +1234,7 @@ msgid ""
 "my-author-my-title-1"
 msgstr ""
 "Eğer şans eseri aynı yazar ve başlığa sahip bir metin varsa, aşağıdaki alana "
-"yazar, başlık ve bir sayı girerek istenilen URL'i seç, örn yazar-baslik-1"
+"yazar, başlık ve bir sayı girerek istenilen URL'yi seç, örn yazar-baslik-1"
 
 msgid ""
 "If it was not your intention, please just ignore this mail and\n"
@@ -1499,7 +1501,7 @@ msgid ""
 "append \"/edit\" to the url of the page."
 msgstr ""
 "Normal sayfa ile aynı çalışır, ama link gizlidir. Tek yapacağın\n"
-"sayfa url'inin sonuna \"/edit\" eklemek."
+"sayfa url'nin sonuna \"/edit\" eklemek."
 
 msgid "Italic"
 msgstr "Yatık"
@@ -2642,7 +2644,7 @@ msgstr "Siteler"
 
 #. ($invalid)
 msgid "Skipped %1 invalid sources!"
-msgstr ""
+msgstr "%1 geçersiz kaynak atlandı!"
 
 msgid "Slides"
 msgstr "Slaytlar"
@@ -2661,6 +2663,8 @@ msgid ""
 "Some annotation codes are special and have side effects if you create them "
 "with these codes."
 msgstr ""
+"Bazı ek açıklama kodları özel olup, bu kodlarla oluşturman halinde olumsuz "
+"etkileri olacaktır."
 
 msgid "Some fields are missing, all are required"
 msgstr "Bazı alanlar eksik, hepsi zorunlu"
@@ -3123,7 +3127,7 @@ msgid "Toggle fullscreen editor"
 msgstr "Tam ekran düzenleyiciyi aç/kapat"
 
 msgid "Too many URLs to process!"
-msgstr ""
+msgstr "İşlemek için çok fazla URL!"
 
 msgid "Top margin"
 msgstr "Üst boşluk"
