@@ -414,6 +414,9 @@ msgstr "Construiți-l"
 msgid "Built-in"
 msgstr "Built-in"
 
+msgid "Bump Publication Date"
+msgstr ""
+
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -2623,6 +2626,9 @@ msgstr "Selectați tot pentru reprogramare"
 
 msgid "Select individual parts for the bookbuilder"
 msgstr "Selectați părți individuale pentru bookbuilder"
+
+msgid "Send Email"
+msgstr ""
 
 msgid "Send mail"
 msgstr "Trimiteți mail"

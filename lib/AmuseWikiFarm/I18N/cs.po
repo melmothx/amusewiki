@@ -409,6 +409,9 @@ msgstr "Započni sestavování"
 msgid "Built-in"
 msgstr "Zabudované"
 
+msgid "Bump Publication Date"
+msgstr ""
+
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -2556,6 +2559,9 @@ msgstr "Vyber vše přeplánování"
 
 msgid "Select individual parts for the bookbuilder"
 msgstr "Vyber jednotlivé části pro bookbuilder"
+
+msgid "Send Email"
+msgstr ""
 
 msgid "Send mail"
 msgstr "Odeslat mail"

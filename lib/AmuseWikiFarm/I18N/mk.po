@@ -403,6 +403,9 @@ msgstr "Направи"
 msgid "Built-in"
 msgstr ""
 
+msgid "Bump Publication Date"
+msgstr ""
+
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -2539,6 +2542,9 @@ msgstr "Избери сѐ за презакажување"
 
 msgid "Select individual parts for the bookbuilder"
 msgstr "Избери поединечни делови за збирка"
+
+msgid "Send Email"
+msgstr ""
 
 msgid "Send mail"
 msgstr ""

@@ -398,6 +398,9 @@ msgstr "Générer"
 msgid "Built-in"
 msgstr ""
 
+msgid "Bump Publication Date"
+msgstr ""
+
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -2521,6 +2524,9 @@ msgstr ""
 
 msgid "Select individual parts for the bookbuilder"
 msgstr "Individuellement sélectionner des parties pour le générateur de livres"
+
+msgid "Send Email"
+msgstr ""
 
 msgid "Send mail"
 msgstr ""

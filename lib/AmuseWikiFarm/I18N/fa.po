@@ -401,6 +401,9 @@ msgstr "آن‌ را بساز"
 msgid "Built-in"
 msgstr "از پیش ساخته شده"
 
+msgid "Bump Publication Date"
+msgstr ""
+
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -2530,6 +2533,9 @@ msgstr "انتخاب همه برای برنامه‌ریزی دوباره"
 
 msgid "Select individual parts for the bookbuilder"
 msgstr "انتخاب بخش‌های جداگانه برای کتاب‌ساز"
+
+msgid "Send Email"
+msgstr ""
 
 msgid "Send mail"
 msgstr "فرستادن ایمیل"

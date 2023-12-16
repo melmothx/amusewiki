@@ -373,6 +373,9 @@ msgstr "作成"
 msgid "Built-in"
 msgstr ""
 
+msgid "Bump Publication Date"
+msgstr ""
+
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -2382,6 +2385,9 @@ msgstr "再スケジューリングのために全てを選択"
 
 msgid "Select individual parts for the bookbuilder"
 msgstr "Bookbuilderのための個々のパーツを選択"
+
+msgid "Send Email"
+msgstr ""
 
 msgid "Send mail"
 msgstr "メールを送信"
