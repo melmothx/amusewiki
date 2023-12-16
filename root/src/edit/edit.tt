@@ -140,6 +140,9 @@
                 value="preview" id="amw-edit-form-preview-button">
           [% loc('Preview') %] / [% loc('Refresh and apply filters') %]
         </button>
+        <button type="button" class="bump-pubdate btn btn-default btn-sm">
+          [% loc('Bump Publication Date') %]
+        </button>
         <br>
         <div class="alert alert-danger" id="editing-warnings-inline" style="display:none; margin: 10px 0;"></div>
         <pre id="editing-warnings-inline-footnotes" style="display:none"></pre>
@@ -830,6 +833,9 @@ $(document).ready(function(){
  });
 </script>
 
+<script type="text/javascript"
+        src="[% c.uri_for('/static/js/amw-edit.js', { v => 1 }) %]">
+</script>
 <script type="text/javascript"
         src="[% c.uri_for('/static/js/simpleUpload.min.js') %]">
 </script>
