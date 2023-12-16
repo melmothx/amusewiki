@@ -1183,6 +1183,7 @@ root/src/settings/annotations.tt
 root/src/settings/categories.tt
 root/src/settings/edit_format.tt
 root/src/settings/formats.tt
+root/src/siteadmin/send_email.tt
 root/src/siteadmin/show_users.tt
 root/src/special/display.tt
 root/src/static-indexes.tt
@@ -1525,6 +1526,7 @@ root/static/js/amw-autosuggest.js
 root/static/js/amw-batch-upload.js
 root/static/js/amw-datatables.js
 root/static/js/amw-diff.js
+root/static/js/amw-edit.js
 root/static/js/amw-extimg.js
 root/static/js/amw-footnotes.js
 root/static/js/amw-navbar.js
