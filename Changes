@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.582 2023-12-16
+
+ - i18n: tr (updated)
+ - Add function to send mails from the site under site-admin/send-email
+ - Add Bump Pubdate function (#450)
+
 2.581 2023-10-18
 
  - improve OAI-PMH's MARC21 output with more data (notably uri, label
