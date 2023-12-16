@@ -3513,6 +3513,22 @@ DISTRIBUTIONS
       perl 5.012
       strict 0
       warnings 0
+  Email-Stuffer-0.020
+    pathname: R/RJ/RJBS/Email-Stuffer-0.020.tar.gz
+    provides:
+      Email::Stuffer 0.020
+    requirements:
+      Carp 0
+      Email::MIME 1.943
+      Email::MIME::Creator 0
+      Email::Sender::Simple 0
+      ExtUtils::MakeMaker 6.78
+      File::Basename 0
+      Module::Runtime 0
+      Params::Util 1.05
+      Scalar::Util 0
+      perl 5.012
+      warnings 0
   Email-Valid-1.203
     pathname: R/RJ/RJBS/Email-Valid-1.203.tar.gz
     provides:
