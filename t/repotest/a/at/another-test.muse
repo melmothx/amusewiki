@@ -1,6 +1,6 @@
 #title Test
 #SORTauthors Émile, Èmile
 #SORTtopics <"'ècole&>, École-
-#pubdate 2014-01-01 00:00
+#pubdate 2014-01-01T00:00:00.416Z
 
 hello

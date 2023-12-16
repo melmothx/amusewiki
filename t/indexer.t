@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 70;
+use Test::More tests => 72;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Date::Parse qw/str2time/;
@@ -357,3 +357,6 @@ MUSE
 
 
 unlink $testfile or die "Couldn't remove $testfile $!";
+is(DateTime->from_epoch(epoch => str2time('2014-01-01', 'UTC'))->iso8601, '2014-01-01T00:00:00');
+is(DateTime->from_epoch(epoch => str2time('2024-12-16T11:41:46.791Z', 'UTC'))->iso8601,
+   '2024-12-16T11:41:46');
