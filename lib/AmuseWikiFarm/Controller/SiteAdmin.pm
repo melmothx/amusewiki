@@ -5,6 +5,7 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
+use Email::Stuffer;
 
 =head1 NAME
 
@@ -90,6 +91,32 @@ sub delete_user :Chained('users') :PathPart('delete') :Args(1) {
         }
     }
     $c->response->redirect($c->uri_for_action('/siteadmin/show_users'));
+}
+
+sub send_email :Chained('root') :PathPart('send-email') :Args(0) {
+    my ($self, $c) = @_;
+    my $params = $c->request->body_params;
+    my $site = $c->stash->{site};
+    if ($params->{subject} and $params->{text_body} and $params->{to}) {
+        my %args = (
+                    from => $site->mail_from_default,
+                    to => $params->{to},
+                    text_body => $params->{text_body},
+                    subject => $params->{subject}
+                   );
+        foreach my $f (qw/cc bcc reply_to/) {
+            if (my $v = $params->{$f}) {
+                $args{$f} = $v;
+            }
+        }
+        Dlog_info { "Sending mail with $_" } \%args;
+        if (Email::Stuffer->new(\%args)->send) {
+            $c->flash(status_msg => "E-mail sent!");
+        }
+        else {
+            $c->flash(error_msg => "Failure sending e-mail");
+        }
+    }
 }
 
 =encoding utf8
