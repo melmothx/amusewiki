@@ -1,179 +1,194 @@
 # AmuseWiki i18n
 # This file is distributed under the same license as the AmuseWiki package.
 # Marco Pessotto <melmothx@gmail.com>, 2014.
+# Denys Nykula <vegan@libre.net.ua>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2023-08-31 20:54+0200\n"
-"Last-Translator: Marco <marco@pessotto.hr>\n"
+"PO-Revision-Date: 2024-01-01 19:07+0200\n"
+"Last-Translator: Denys Nykula <vegan@libre.net.ua>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Emacs PO mode, version 2.29\n"
 
 #. ($filename)
 msgid "%1 doesn't exist"
-msgstr ""
+msgstr "%1 не існує"
 
 #. ([$total])
 msgid "%1 jobs deleted"
-msgstr ""
+msgstr "Видалено завдань: %1"
 
 #. ([$total])
 msgid "%1 jobs rescheduled"
-msgstr ""
+msgstr "Відкладено завдань: %1"
 
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
-msgstr ""
+msgstr "«%1» на мобільному"
 
 #. (text.pages_estimated)
 msgid "%1 pp."
-msgstr ""
+msgstr "%1 с."
 
 msgid "(leave blank to keep the current one)"
-msgstr ""
+msgstr "(залиште порожнім, щоб не змінювати)"
 
 msgid "(narrowest)"
-msgstr ""
+msgstr "(найвужче)"
 
 msgid "(smart quotes, links, footnotes, etc.)"
-msgstr ""
+msgstr "(лапки, посилання, примітки тощо)"
 
 msgid "(use that as main link in static mirror as well)"
-msgstr ""
+msgstr "(також основне посилання в статичному дзеркалі)"
 
 msgid "(widest)"
-msgstr ""
+msgstr "(найширше)"
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
-msgstr ""
+msgstr "Порожній рядок (один або більше) починає новий абзац."
 
 msgid "A collection with this URI already exists"
-msgstr ""
+msgstr "Збірка з таким ідентифікатором уже існує"
 
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
 msgstr ""
+"Картинку обкладинки вже додано, але можете замінити її, вивантаживши нову."
 
 msgid ""
 "A footnote is a line which starts with a number between square\n"
 "          brackets, with no leading whitespace."
 msgstr ""
+"Примітка — це рядок, що починається з числа в квадратних дужках без пробілів "
+"на початку."
 
 msgid "A line which starts with 2 or more whitespaces is a quotation."
-msgstr ""
+msgstr "Рядок, що починається з 2 чи більше пробілів, — це цитата."
 
 msgid "A line which starts with 20 or more whitespaces is right-aligned."
 msgstr ""
+"Рядок, що починається з 20 чи більше пробілів, — вирівнюється за правим "
+"краєм."
 
 msgid "A line which starts with 6 or more whitespaces is centered."
-msgstr ""
+msgstr "Рядок, що починається з 6 чи більше пробілів, — центрується."
 
 msgid ""
 "A list of links and labels to insert into the top\n"
 "            bar. One per line, first the url, then the label,\n"
 "            separated by a space, e.g. \"http://test.me Test site\""
 msgstr ""
+"Перелік посилань із мітками, які слід додати у верхню панель. По одному на "
+"рядок: спершу посилання, тоді мітку через пробіл: «http://test.me Тестовий "
+"сайт»"
 
 #. (location)
 msgid "A new text has been created at %1"
-msgstr ""
+msgstr "Створено текст: %1"
 
 msgid "A nice title"
-msgstr ""
+msgstr "м. Київ"
 
 msgid "A4 imposed PDF"
-msgstr ""
+msgstr "PDF для A4-друку"
 
 msgid "A4 paper"
-msgstr ""
+msgstr "Папір A4"
 
 msgid "A5 paper"
-msgstr ""
+msgstr "Папір A5"
 
 msgid "A6 paper (also suitable for e-readers)"
-msgstr ""
+msgstr "Папір A6 (також підходить для е-книжок)"
 
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
-msgstr ""
+msgstr "Є незавершене редагування, можете проглянути відмінності й підсумок"
 
 msgid "Action"
-msgstr ""
+msgstr "Дія"
 
 msgid "Activate the blog-style look and feel"
-msgstr ""
+msgstr "Виглядати як блог"
 
 msgid "Active"
-msgstr ""
+msgstr "Активно"
 
 msgid "Add"
-msgstr ""
+msgstr "Додати"
 
 msgid "Add a cover image (PNG or JPG)"
-msgstr ""
+msgstr "Додати картинку обкладинки (PNG чи JPG)"
 
 msgid "Add a new text"
-msgstr ""
+msgstr "Додати новий текст"
 
 msgid "Add an attachment"
-msgstr ""
+msgstr "Додати вкладення"
 
 msgid "Add crop marks to the PDF"
-msgstr ""
+msgstr "Додати відмітки зрізання в PDF"
 
 msgid "Add new remote repository"
-msgstr ""
+msgstr "Додати віддалений репозиторій"
 
 msgid "Add non-breaking spaces where appropriate for the language"
-msgstr ""
+msgstr "Додати нерозривні пробіли відповідно до правил мови"
 
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
 "(integer)"
 msgstr ""
+"Ділити перелік текстів на сторінки, коли текстів більше, ніж (ціле число)"
 
 msgid "Add sections to the bookbuilder"
-msgstr ""
+msgstr "Додати розділи до конструктора"
 
 msgid "Add the OPDS URL"
-msgstr ""
+msgstr "Додайте OPDS-адресу"
 
 msgid "Add the selected parts to the bookbuilder"
-msgstr ""
+msgstr "Додати обрані частини до конструктора"
 
 msgid "Add the whole text"
-msgstr ""
+msgstr "Додати весь текст"
 
 msgid "Add this text to the bookbuilder"
-msgstr ""
+msgstr "Додати текст у конструктор"
 
 msgid "Add to colophon"
-msgstr ""
+msgstr "Додати до випускних даних"
 
 msgid ""
 "Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
 "text or a category. Examples:"
 msgstr ""
+"Можете додати максимум 20 URL-адрес. Підтримуються такі URL-адреси "
+"Amusewiki: повний сайт, текст чи категорія. Наприклад:"
 
 #. ($ok)
 msgid "Added %1 sources."
-msgstr ""
+msgstr "Додано %1 джерел."
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
 "etc)."
 msgstr ""
+"Додаткові відомості (повна дата, назва в оригіналі, перекладач_ки, подяки "
+"тощо)."
 
 msgid "Additional nginx configuration"
-msgstr ""
+msgstr "Додаткова конфігурація nginx"
 
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
@@ -182,42 +197,48 @@ msgid ""
 "  change, it will appear under %1. There is a big red\n"
 "  button for each deleted text, and you can proceed with the purging."
 msgstr ""
+"Після затвердження зміна з'явиться в розділі: %1. Велика червона кнопка "
+"поруч із кожним видаленим текстом дає змогу продовжити стирання."
 
 msgid "Age:"
-msgstr ""
+msgstr "Минуло:"
 
 msgid "Alias"
-msgstr ""
+msgstr "Псевдонім"
 
 msgid "Alias can't point to itself"
-msgstr ""
+msgstr "Псевдонім не може вести сам до себе"
 
 msgid ""
 "All kind of lists start with one or more leading\n"
 "        whitespace."
-msgstr ""
+msgstr "Списки будь-якого виду починаються з одного чи більше пробілів."
 
 msgid "All languages"
-msgstr ""
+msgstr "Усі мови"
 
 msgid "All revisions"
-msgstr ""
+msgstr "Усі версії"
 
 msgid "All sites"
-msgstr ""
+msgstr "Усі сайти"
 
 msgid "All users"
-msgstr ""
+msgstr "Усі користувач_ки"
 
 msgid ""
 "Allow Unicode URIs for categories (author, topics). Recommended for non-"
 "latin scripts."
 msgstr ""
+"Дозволити юнікод у посиланнях на категорії (й на автор_ок і теми). "
+"Рекомендовано для нелатинських абеток."
 
 msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
 "extensions"
 msgstr ""
+"Дозволити двійкові вивантаження авторизованим користувач_кам: перелік "
+"суфіксів файлів через пробіл"
 
 msgid ""
 "Also produce slides\n"
@@ -227,9 +248,13 @@ msgid ""
 "          you want to exclude a section, put a comment in the section\n"
 "          body with the string “noslide”."
 msgstr ""
+"Також робити слайди з документу. Кожен розділ незалежно від глибини матиме "
+"свій слайд. Текст за межами розділів пропускається, тож за відсутності "
+"розділів будуть порожні слайди. Щоб пропустити певний розділ, додайте в "
+"основний текст розділу коментар із рядком «noslide»."
 
 msgid "Alternate Text"
-msgstr ""
+msgstr "Альтернативний текст"
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
@@ -239,925 +264,979 @@ msgid ""
 "      errico-malatesta-anarchy-2. Please note that this is normally\n"
 "      not needed"
 msgstr ""
+"Ідентифікатор — це рядок, якому відповідає один і лише один текст в архіві. "
+"Теоретично він може бути довільним, але якщо бажаєте обрати його самостійно, "
+"будь ласка, дотримуйтеся домовленості: ім'я автор_ки, назва, мова й номер "
+"для усунення багатозначності — наприклад, errico-malatesta-anarchy-2. "
+"Зауважте, зазвичай цього не роблять вручну"
 
 msgid "Annotations"
-msgstr ""
+msgstr "Анотації"
 
 msgid ""
 "Annotations are text metadata which are not included in the muse file. "
 "Examples could be: prices, catalog numbers, shelf location, working copies "
 "of large binary files, internal comments."
 msgstr ""
+"Анотації — це дані про текст, які не додаються до muse-файлу. Наприклад: "
+"ціна, номер у каталозі, місце на полиці, робоча копія великого двійкового "
+"файлу, примітка для колег."
 
 #. ($site->canonical)
 msgid "Annotations for %1"
-msgstr ""
+msgstr "Анотації для %1"
 
 msgid "Apache is not currently supported"
-msgstr ""
+msgstr "Apache наразі не підтримується"
 
 msgid "Archive"
-msgstr ""
+msgstr "Архів"
 
 msgid "Archive by month"
-msgstr ""
+msgstr "Архів за місяцем"
 
 msgid "Archive history"
-msgstr ""
+msgstr "Історія архіву"
 
 msgid "Are you sure?"
-msgstr ""
+msgstr "Точно?"
 
 msgid "As cover in the header"
-msgstr ""
+msgstr "Обкладинка в шапці"
 
 msgid "As regular image in the body"
-msgstr ""
+msgstr "Звичайна картинка в основному тексті"
 
 msgid "Assign text to collections"
-msgstr ""
+msgstr "Додати текст у добірки"
 
 msgid "Attach"
-msgstr ""
+msgstr "Вкласти"
 
 msgid "Attached images"
-msgstr ""
+msgstr "Вкладені картинки"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Вкладення"
 
 msgid "Author"
-msgstr ""
+msgstr "Автор_ка"
 
 msgid "Author and title. If one side document: title."
-msgstr ""
+msgstr "Автор_ка й назва. Якщо однобічний документ: назва."
 
 msgid "Authors"
-msgstr ""
+msgstr "Автор_ки"
 
 msgid "Authors and topics listing"
-msgstr ""
+msgstr "Перелік автор_ок і тем"
 
 msgid "Authors for indexing"
-msgstr ""
+msgstr "Автор_ки для індексування"
 
 msgid "Auto"
-msgstr ""
+msgstr "Автоматично"
 
 msgid "Automatically generated"
-msgstr ""
+msgstr "Згенеровано автоматично"
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
-msgstr ""
+msgstr "Автоматично запитувати й оновлювати SSL-сертифікати Let's Encrypt"
 
 msgid "Available"
-msgstr ""
+msgstr "Підтримуються"
 
 msgid "Available category tags for header"
-msgstr ""
+msgstr "Доступні мітки категорій для шапки"
 
 msgid ""
 "Avoid hyphenation on the last word of a sentence (it could result in bad "
 "spacing)"
 msgstr ""
+"Уникати переносу останнього слова речення (може псувати міжслівний інтервал)"
 
 msgid "Back to the text"
-msgstr ""
+msgstr "Назад до тексту"
 
 msgid "Bad request"
-msgstr ""
+msgstr "Хибний запит"
 
 msgid "Beamer color theme"
-msgstr ""
+msgstr "Кольори Beamer-презентації"
 
 msgid "Beamer theme"
-msgstr ""
+msgstr "Стиль Beamer-презентації"
 
 msgid "Beside topics and authors you can add more categories here"
-msgstr ""
+msgstr "Крім тем і автор_ок, можете додати тут більше категорій"
 
 msgid "Binding correction in millimeters (additional inner margin)"
-msgstr ""
+msgstr "Поправка на скріплення в міліметрах (додаткове внутрішнє поле)"
 
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
-msgstr ""
+msgstr "16-сторінкові блоки, які складають двічі й тоді зшивають."
 
 msgid ""
 "Blocks of 8 pages to be folded twice and then bound\n"
 "                together."
-msgstr ""
+msgstr "8-сторінкові блоки, які складають двічі й тоді зшивають."
 
 msgid "Blog"
-msgstr ""
+msgstr "Блог"
 
 msgid "Body"
-msgstr ""
+msgstr "Основний текст"
 
 msgid "Bold"
-msgstr ""
+msgstr "Грубий"
 
 msgid "Bookbuilder"
-msgstr ""
+msgstr "Конструктор"
 
 msgid "Bookbuilder page limit (integer)"
-msgstr ""
+msgstr "Максимум сторінок у конструкторі (ціле число)"
 
 msgid "Build it"
-msgstr ""
+msgstr "Зібрати"
 
 msgid "Built-in"
-msgstr ""
+msgstr "Вбудовано"
 
 msgid "Bump Publication Date"
-msgstr ""
+msgstr "Замінити дату оприлюднення"
 
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
 "        numbering"
 msgstr ""
+"Типово другорядні примітки нумеруються арабськими цифрами в дужках. Із цією "
+"опцією вони нумеруватимуться літерами — на кожній сторінці окремо"
 
 msgid "By number of pages, ascending"
-msgstr ""
+msgstr "За кількістю сторінок, спершу коротші"
 
 msgid "By number of pages, descending"
-msgstr ""
+msgstr "За кількістю сторінок, спершу довші"
 
 msgid "By relevance"
-msgstr ""
+msgstr "За відповідністю"
 
 msgid "By sku ascending"
-msgstr ""
+msgstr "За артикулом у порядку зростання"
 
 msgid "By sku descending"
-msgstr ""
+msgstr "За артикулом у порядку спадання"
 
 msgid "By title A-Z"
-msgstr ""
+msgstr "За назвою, спершу А"
 
 msgid "By title Z-A"
-msgstr ""
+msgstr "За назвою, спершу Я"
 
 msgid "CSS Alternate Theme (Dark mode, optional)"
-msgstr ""
+msgstr "Інша CSS-тема (темний режим, необов'язково)"
 
 msgid "CSS Theme"
-msgstr ""
+msgstr "CSS-тема"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Скасувати"
 
 msgid "Canonical name"
-msgstr ""
+msgstr "Канонічна назва"
 
 msgid "Categories"
-msgstr ""
+msgstr "Категорії"
 
 #. ($site->canonical)
 #. (site.canonical)
 msgid "Category types for %1"
-msgstr ""
+msgstr "Типи категорій %1"
 
 msgid "Center all the sectioning titles."
-msgstr ""
+msgstr "Центрувати всі заголовки розділів."
 
 msgid "Center the chapter titles."
-msgstr ""
+msgstr "Центрувати назви глав."
 
 msgid "Changes"
-msgstr ""
+msgstr "Зміни"
 
 msgid "Changes applied"
-msgstr ""
+msgstr "Зміни застосовано"
 
 msgid "Changes applied."
-msgstr ""
+msgstr "Зміни застосовано."
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 #. (author_title)
 msgid "Changes for %1"
-msgstr ""
+msgstr "Зміни %1"
 
 msgid "Changes saved, thanks! They are now waiting to be published"
-msgstr ""
+msgstr "Супер! Зміни збережено й додано в чергу розгляду"
 
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
 "doing, you can delete an existing text and point to another adding a\n"
 "#DELETED directive in the text header with a special syntax:"
 msgstr ""
+"Зміна посилань — проблемне явище. Втім, якщо ви розумієте, що робите: щоб "
+"видалити наявний текст і вказати на інший, додайте настанову #DELETED у "
+"шапку тексту за допомогою особливого синтаксису:"
 
 msgid "Chapter"
-msgstr ""
+msgstr "Глава"
 
 msgid "Chapter and section. If one side document: chapter."
-msgstr ""
+msgstr "Глава й розділ. Якщо однобічний документ: глава."
 
 msgid "Chapter, only for chapter divisions in books"
-msgstr ""
+msgstr "Глава, лише для виокремлених глав у книгах"
 
 msgid "Cheatsheet for the markup"
-msgstr ""
+msgstr "Шпаргалка про розмітку"
 
 msgid "Check"
-msgstr ""
+msgstr "Активувати"
 
 msgid "Check mail sending and send mail to:"
-msgstr ""
+msgstr "Перевірити надсилання пошти й надіслати лист:"
 
 msgid "Choose a paper format"
-msgstr ""
+msgstr "Оберіть розмір аркуша"
 
 msgid "Clear the book list"
-msgstr ""
+msgstr "Очистити перелік книг"
 
 msgid "Click on the images to get the sample PDF"
-msgstr ""
+msgstr "Натискайте картинки, щоб відкривати PDF-зразки"
 
 msgid "Clone"
-msgstr ""
+msgstr "Копіювати"
 
 msgid "Close"
-msgstr ""
+msgstr "Закрити"
 
 msgid "Code"
-msgstr ""
+msgstr "Код"
 
 msgid "Collection created"
-msgstr ""
+msgstr "Добірку створено"
 
 msgid "Collection has been deleted"
-msgstr ""
+msgstr "Добірку видалено"
 
 msgid "Collection has been updated"
-msgstr ""
+msgstr "Добірку оновлено"
 
 msgid "Collections"
-msgstr ""
+msgstr "Добірки"
 
 msgid "Colophon (displayed in the generated files):"
-msgstr ""
+msgstr "Випускні дані (додається в згенеровані файли):"
 
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
 msgstr ""
+"Кількість колонок у лівій частині сторінки редагування — там, де редактор; "
+"із 12"
 
 msgid "Comma or semicolon separated list"
-msgstr ""
+msgstr "Перелік через кому чи крапку з комою"
 
 msgid "Commit ID"
-msgstr ""
+msgstr "Ідентифікатор коміту"
 
 msgid "Completed"
-msgstr ""
+msgstr "Завершено"
 
 msgid "Computing of differences took"
-msgstr ""
+msgstr "Зміни виявлялись"
 
 msgid "Confirm"
-msgstr ""
+msgstr "Підтвердьте"
 
 msgid "Conflict"
-msgstr ""
+msgstr "Конфлікт"
 
 msgid "Continuous footnote numbering across the whole document."
-msgstr ""
+msgstr "Безперервно нумерувати примітки в усьому документі."
 
 msgid "Convert to archive markup"
-msgstr ""
+msgstr "Конвертувати в архівну розмітку"
 
 msgid "Copyright notice"
-msgstr ""
+msgstr "Примітка про авторські права"
 
 msgid "Couldn't add the text"
-msgstr ""
+msgstr "Не вдалося додати текст"
 
 msgid "Couldn't automatically generate the URI!"
-msgstr ""
+msgstr "Не вдалось автоматично згенерувати ідентифікатор!"
 
 msgid "Couldn't build that"
-msgstr ""
+msgstr "Не вдалося зібрати"
 
 msgid "Create"
-msgstr ""
+msgstr "Створити"
 
 msgid "Create a new annotation."
-msgstr ""
+msgstr "Створити анотацію."
 
 msgid "Create a new category type. Please use only lowercase ASCII letters"
-msgstr ""
+msgstr "Створити ще тип категорії. Використовуйте лише малі латинські літери"
 
 msgid "Create a new format"
-msgstr ""
+msgstr "Створити формат"
 
 msgid "Create a new librarian"
-msgstr ""
+msgstr "Додати бібліотекар_ку"
 
 msgid "Create a new special page"
-msgstr ""
+msgstr "Створити особливу сторінку"
 
 msgid "Create a new user"
-msgstr ""
+msgstr "Додати користувач_ку"
 
 msgid ""
 "Create a public repository on GitLab, GitHub or similar services (or on your "
 "own server). "
 msgstr ""
+"Створіть загальнодоступний репозиторій на GitLab чи Codeberg тощо (або на "
+"власному сервері)."
 
 msgid "Create a topic alias"
-msgstr ""
+msgstr "Створити псевдонім теми"
 
 msgid "Create an author alias"
-msgstr ""
+msgstr "Створити псевдонім автор_ки"
 
 msgid "Create new site"
-msgstr ""
+msgstr "Створити сайт"
 
 msgid "Create user and mail password"
-msgstr ""
+msgstr "Додати користувач_ку й надіслати пароль"
 
 msgid "Created"
-msgstr ""
+msgstr "Створено"
 
 msgid "Created by"
-msgstr ""
+msgstr "Створено"
 
 msgid "Created new text"
-msgstr ""
+msgstr "Текст створено"
 
 msgid "Current time"
-msgstr ""
+msgstr "Поточний час"
 
 #. ($c->stash->{site}->canonical)
 #. (site.canonical)
 msgid "Custom formats for %1"
-msgstr ""
+msgstr "Власні формати %1"
 
 msgid "Custom home page"
-msgstr ""
+msgstr "Власна головна сторінка"
 
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 msgid "Date of the original publication"
-msgstr ""
+msgstr "Коли вийшов оригінал"
 
 msgid "Default"
-msgstr ""
+msgstr "Типово"
 
 msgid "Default sorting for the category text list"
-msgstr ""
+msgstr "Типовий порядок текстів категорії"
 
 msgid "Default value if blank:"
-msgstr ""
+msgstr "Типове значення, якщо порожньо:"
 
 msgid "Deferred/Deleted texts"
-msgstr ""
+msgstr "Відкладені й видалені тексти"
 
 msgid "Delete"
-msgstr ""
+msgstr "Видалити"
 
 msgid "Delete permanently"
-msgstr ""
+msgstr "Видалити назовсім"
 
 #. (remote.name)
 msgid "Delete remote repository %1"
-msgstr ""
+msgstr "Видалити віддалений репозиторій %1"
 
 msgid "Delete selected attachments"
-msgstr ""
+msgstr "Видалити обрані вкладення"
 
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
 msgstr ""
+"Якщо текст було оприлюднено, версію можна безпечно видалити. Інакше "
+"видалення призведе до втрат неоприлюднених змін"
 
 msgid "Description"
-msgstr ""
+msgstr "Опис"
 
 msgid "Description item"
-msgstr ""
+msgstr "Означення"
 
 msgid ""
 "Description lists use a double colon to separate the\n"
 "        term and the description."
-msgstr ""
+msgstr "У словниках розділяйте парою двокрапок термін та означення."
 
 msgid "Desired URI"
-msgstr ""
+msgstr "Бажаний ідентифікатор"
 
 msgid "Destination"
-msgstr ""
+msgstr "Ціль"
 
 msgid "Details"
-msgstr ""
+msgstr "Деталі"
 
 msgid "Did you mean:"
-msgstr ""
+msgstr "Можливо, ви мали на увазі:"
 
 msgid "Diff"
-msgstr ""
+msgstr "Різниця"
 
 msgid "Differences"
-msgstr ""
+msgstr "Відмінності"
 
 msgid ""
 "Directory with templates in the site repository, e.g.\n"
 "        \"templates\" (ASCII only). Do not set it unless you know\n"
 "        exactly what you are doing"
 msgstr ""
+"Каталог із шаблонами в репозиторії сайту, наприклад «templates» (лише "
+"латинські літери). Не встановлюйте, якщо не знаєте напевне, як це працює"
 
 msgid "Disable /mirror/ URL for anonymous users"
-msgstr ""
+msgstr "Вимкнути URL-адресу /mirror/ для анонімних користувач_ок"
 
 msgid "Display the latest entries on special pages"
-msgstr ""
+msgstr "Показувати нещодавні тексти на особливих сторінках"
 
 msgid "Display url as"
-msgstr ""
+msgstr "Показати URL-адресу як"
 
 msgid "Division factor"
-msgstr ""
+msgstr "Співвідношення"
 
 msgid "Do not create a cover page and start the text on the first page"
-msgstr ""
+msgstr "Не створювати обкладинки, а почати текст на першій же сторінці"
 
 msgid "Do not enforce save message"
-msgstr ""
+msgstr "Не вимагати коментаря при збереженні"
 
 msgid "Do not redirect aliases to canonical"
-msgstr ""
+msgstr "Не переспрямомувати псевдонімів до канонічної адреси"
 
 msgid "Do not use bold fonts"
-msgstr ""
+msgstr "Не використовувати грубих шрифтів"
 
 msgid "Domain"
-msgstr ""
+msgstr "Домен"
 
 msgid "Done"
-msgstr ""
+msgstr "Готово"
 
 msgid "Double bars"
-msgstr ""
+msgstr "Дві риски"
 
 msgid "Download"
-msgstr ""
+msgstr "Завантажити"
 
 msgid "Downloads"
-msgstr ""
+msgstr "Завантаження"
 
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr ""
+"певне слово AND title:\"Мій заголовок\" AND author:Автор_ка OR year:2017"
 
 msgid "EPUB"
-msgstr ""
+msgstr "EPUB"
 
 msgid "EPUB (for mobile devices)"
-msgstr ""
+msgstr "EPUB (для мобільних)"
 
 msgid "ETA"
-msgstr ""
+msgstr "Завершиться приблизно"
 
 msgid "Edit"
-msgstr ""
+msgstr "Редагувати"
 
 msgid "Edit annotations"
-msgstr ""
+msgstr "Редагувати анотації"
 
 msgid "Edit attachment description"
-msgstr ""
+msgstr "Редагувати опис вкладення"
 
 #. ($format->format_name)
 msgid "Edit format %1"
-msgstr ""
+msgstr "Редагувати формат %1"
 
 msgid "Edit full site configuration"
-msgstr ""
+msgstr "Редагувати повні налаштування сайту"
 
 msgid "Edit screen layout options"
-msgstr ""
+msgstr "Екран редагування"
 
 #. (esite.id)
 msgid "Edit site %1"
-msgstr ""
+msgstr "Редагувати сайт %1"
 
 msgid "Edit site configuration"
-msgstr ""
+msgstr "Редагувати налаштування сайту"
 
 msgid "Edit the text you want to unpublish and add this line to the header:"
 msgstr ""
+"Відредагуйте текст, оприлюднення якого слід скасувати, — додавши такий рядок "
+"у шапку:"
 
 msgid "Edit this text"
-msgstr ""
+msgstr "Редагувати текст"
 
 #. (user.username)
 msgid "Edit user %1"
-msgstr ""
+msgstr "Редагувати користувач_ку %1"
 
 msgid "Editing"
-msgstr ""
+msgstr "Редагування"
 
 msgid "Effect"
-msgstr ""
+msgstr "Дія"
 
 msgid "Email"
-msgstr ""
+msgstr "Е-пошта"
 
 msgid "Email sent!"
-msgstr ""
+msgstr "Лист надіслано!"
 
 msgid "Email updated"
-msgstr ""
+msgstr "Е-пошту оновлено"
 
 msgid "Email, password, locale"
-msgstr ""
+msgstr "Е-пошта, пароль, мова"
 
 msgid "Emails do not match"
-msgstr ""
+msgstr "Е-пошти не збігаються"
 
 msgid "Embed fonts in the EPUB file"
-msgstr ""
+msgstr "Вбудувати шрифти в EPUB-файл"
 
 msgid "Enable \"What links here\" feature"
-msgstr ""
+msgstr "Увімкнути функцію «Що сюди посилається»"
 
 msgid "Enable search suggestions (did you mean...)"
-msgstr ""
+msgstr "Увімкнути пошукові підказки («можливо, ви мали на увазі…»)"
 
 msgid "Enable title ordering by SKU"
-msgstr ""
+msgstr "Дозволити впорядкування назв за артикулом"
 
 msgid "Enforce e-mail on submission"
-msgstr ""
+msgstr "Е-пошта обов'язкова для створення тексту"
 
 msgid "Erase this revision"
-msgstr ""
+msgstr "Стерти цю версію"
 
 msgid "Error converting the upload file. Is it an HTML file?"
-msgstr ""
+msgstr "Не вдалося конвертувати вивантажений файл. Це точно HTML?"
 
 msgid "Error sending mail!"
-msgstr ""
+msgstr "Помилка надсилання листа!"
 
 msgid "Error while converting the HTML. Sorry."
-msgstr ""
+msgstr "На жаль, виникла помилка конвертування HTML."
 
 #. ($res->{error} || "Unknwon error")
 msgid "Error: %1"
-msgstr ""
+msgstr "Помилка: %1"
 
 msgid "Errors"
-msgstr ""
+msgstr "Помилки"
 
 msgid "Estimated pages"
-msgstr ""
+msgstr "Приблизно сторінок"
 
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
 msgstr ""
+"Цей сайт має адаптивну верстку, що підходить для мобільних пристроїв. Він не "
+"надає окремого мобільного застосунка."
 
 msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
 "        sectioning for this to work."
 msgstr ""
+"Кожен розділ стане слайдом. Коректно сформуйте розділи, щоб це спрацювало."
 
 msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
 msgstr ""
+"Те саме, але аркуші слід розрізати горизонтально й тоді викласти в стос. "
+"Таким чином можна друкувати, наприклад, A6-буклети на A4-аркушах."
 
 msgid "Example"
-msgstr ""
+msgstr "Зразок"
 
 msgid "Exception"
-msgstr ""
+msgstr "Виняток"
 
 msgid "Existing redirections"
-msgstr ""
+msgstr "Наявні переспрямування"
 
 msgid "Expected pages"
-msgstr ""
+msgstr "Очікується сторінок"
 
 msgid "Exposed to OAI-PMH as shelf location code"
-msgstr ""
+msgstr "Передається OAI-PMH як номер місця на полиці"
 
 msgid "Exposed to OAI-PMH as trade price"
-msgstr ""
+msgstr "Передається OAI-PMH як собівартість"
 
 msgid "Failed"
-msgstr ""
+msgstr "Не вдалися"
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
-msgstr ""
+msgstr "Не вдалося додати віддалений репозиторій %1"
 
 #. ($name)
 msgid "Failed to remove Remote repository %1"
-msgstr ""
+msgstr "Не вдалося вилучити віддалений репозиторій %1"
 
 msgid "Federation"
-msgstr ""
+msgstr "Федерування"
 
 msgid "Feed enclosure method (OPDS and RSS)"
-msgstr ""
+msgstr "Вкладення в OPDS- та RSS-стрічках"
 
 msgid "Fetch"
-msgstr ""
+msgstr "Завантажити"
 
 msgid "File"
-msgstr ""
+msgstr "Файл"
 
 msgid "File already in the body"
-msgstr ""
+msgstr "Файл уже є в основному тексті"
 
 msgid "File extension"
-msgstr ""
+msgstr "Суфікс файлу"
 
 msgid "File format not allowed"
-msgstr ""
+msgstr "Формат файлу не дозволено"
 
 msgid "File too big"
-msgstr ""
+msgstr "Файл завеликий"
 
 msgid "File uploaded!"
-msgstr ""
+msgstr "Файл вивантажено"
 
 msgid "Files"
-msgstr ""
+msgstr "Файли"
 
 msgid "Files not referenced by any text"
-msgstr ""
+msgstr "Файли, не згадані в жодному тексті"
 
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
+"Додати порожні сторінки перед останньою, якщо в групі залишається вільний "
+"простір."
 
 msgid "Filters"
-msgstr ""
+msgstr "Фільтри"
 
 msgid "Find the add catalogue menu."
-msgstr ""
+msgstr "Знайдіть меню додання каталогу."
 
 msgid "Find the network library menu, or equivalent."
-msgstr ""
+msgstr "Знайдіть меню мережних бібліотек або його аналог."
 
 msgid "First"
-msgstr ""
+msgstr "Перша"
 
 msgid "First Author and Second Author"
-msgstr ""
+msgstr "Автор_ка 1 і автор_ка 2"
 
 msgid "First Author, Second Author"
-msgstr ""
+msgstr "Автор_ка 1, автор_ка 2"
 
 msgid "First slide"
-msgstr ""
+msgstr "Перший слайд"
 
 msgid "First text attachment or EPUB"
-msgstr ""
+msgstr "Перше текстове вкладення чи EPUB"
 
 msgid "First you have to unpublish it via #DELETED."
-msgstr ""
+msgstr "Спершу скасуйте оприлюднення за допомогою #DELETED."
 
 msgid "Fix typography (smart quotes)"
-msgstr ""
+msgstr "Прикрасити пунктуацію (лапки)"
 
 msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
-msgstr ""
+msgstr "По 16 сторінок на два аркуші, двічі складені поодинці."
 
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
-msgstr ""
+msgstr "По 16 сторінок на тричі складений аркуш."
 
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
 msgstr ""
+"Сполучення 8 сторінок, яке слід розрізати горизонтально, згорнути й скріпити."
 
 msgid "Fixed topic list"
-msgstr ""
+msgstr "Постійні теми"
 
 msgid "Font preview"
-msgstr ""
+msgstr "Перегляд шрифту"
 
 msgid "Font size"
-msgstr ""
+msgstr "Розмір шрифту"
 
 msgid "Footnotes"
-msgstr ""
+msgstr "Примітки"
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
 "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
 "in the body (%4), ignoring changes."
 msgstr ""
+"Примітки не збігаються: їх %1 (%2), а посилань у тексті %3 (%4); змін не "
+"застосовано."
 
 msgid "For texts from the internet use"
-msgstr ""
+msgstr "Формат для текстів з інтернету"
 
 msgid "For texts without a table of content, start text on the very first page"
-msgstr ""
+msgstr "Якщо текст не має таблиці змісту, починати текст на найпершій сторінці"
 
 msgid ""
 "For topics and authors redirections, you can create them\n"
 "  here"
-msgstr ""
+msgstr "Ще ви можете додати тут переспрямування тем і автор_ок"
 
 msgid "Force a line break."
-msgstr ""
+msgstr "Примусово розірвати рядок."
 
 msgid "Force publishing"
-msgstr ""
+msgstr "Примусово оприлюднити"
 
 msgid "Format name"
-msgstr ""
+msgstr "Назва формату"
 
 msgid "Format successfully created"
-msgstr ""
+msgstr "Формат успішно створено"
 
 msgid "Format successfully updated"
-msgstr ""
+msgstr "Формат успішно оновлено"
 
 msgid "Formats"
-msgstr ""
+msgstr "Формати"
 
 msgid "Full list of texts"
-msgstr ""
+msgstr "Повний перелік текстів"
 
 msgid "Full tag cloud"
-msgstr ""
+msgstr "Хмара всіх міток"
 
 msgid "Full text search"
-msgstr ""
+msgstr "Повнотекстовий пошук"
 
 msgid "Full width, fluid layout"
-msgstr ""
+msgstr "Не обмежувати ширину"
 
 msgid "General configuration"
-msgstr ""
+msgstr "Загальні налаштування"
 
 msgid "Generate Index"
-msgstr ""
+msgstr "Генерувати індекс"
 
 msgid "Generic (fits in A4 and Letter)"
-msgstr ""
+msgstr "Узагальнений (вміщається в A4 та Letter)"
 
 msgid "Get generated URI"
-msgstr ""
+msgstr "Згенерувати ідентифікатор"
 
 msgid ""
 "Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
 "using the form you can find above. You can have one personal repository."
 msgstr ""
+"Знайдіть URL-адресу свого репозиторію з протоколом HTTPS (як-от https://"
+"example.org/git/test) і додайте її за допомогою форми вгорі. У вас може бути "
+"один особистий репозиторій."
 
 msgid "Git"
-msgstr ""
+msgstr "Git"
 
 msgid "Git console"
-msgstr ""
+msgstr "Консоль Git"
 
 msgid "Git is not enabled on this site"
-msgstr ""
+msgstr "Git вимкнено на цьому сайті"
 
 msgid ""
 "HTML code to append to each regular page, inserted\n"
 "            verbatim, so be careful"
 msgstr ""
+"HTML-код для додання до кожної звичайної сторінки. Вставляється як є. Будьте "
+"обачні"
 
 msgid ""
 "HTML to append to each special page, inserted\n"
 "            verbatim, now you have a chance to screw up everything, so\n"
 "            be careful"
 msgstr ""
+"HTML-код для додання до кожної особливої сторінки. Вставляється як є, тому "
+"це може все зіпсувати. Будьте обачні"
 
 msgid "HTML to insert in the footer of the layout, below the links"
-msgstr ""
+msgstr "HTML-код для додання в футер макета під посиланнями"
 
 msgid "HTML to insert into the left sidebar"
-msgstr ""
+msgstr "HTML-код для додання в панель ліворуч"
 
 msgid "HTML to insert into the right sidebar"
-msgstr ""
+msgstr "HTML-код для додання в панель праворуч"
 
 msgid "HTML to insert on the bottom of the layout, above the footer"
-msgstr ""
+msgstr "HTML-код для додання внизу макета над футером"
 
 msgid ""
 "HTML to insert on the top of the layout, behind the navigation bar and below "
 "the banner"
-msgstr ""
+msgstr "HTML-код для додання угорі макета позаду рядка меню й під банером"
 
 msgid "HTML/Word Importer"
-msgstr ""
+msgstr "Імпортування HTML чи Word"
 
 msgid "Half Letter paper"
-msgstr ""
+msgstr "Папір Letter, половина"
 
 msgid "Headers"
-msgstr ""
+msgstr "Заголовки"
 
 msgid "Heading"
-msgstr ""
+msgstr "Заголовок"
 
 msgid "Headings"
-msgstr ""
+msgstr "Заголовки"
 
 msgid "Height:"
-msgstr ""
+msgstr "Висота:"
 
 msgid "Help Text"
-msgstr ""
+msgstr "Текст довідки"
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
-msgstr ""
+msgstr "Тут ви можете переглянути стилі й кольори Beamer-презентації"
 
 msgid ""
 "Here you can save or load your templates. The text list\n"
 "      and the cover image are excluded by the saved settings. You can\n"
 "      use this to save paper/fonts/imposition and other options."
 msgstr ""
+"Тут ви можете зберегти чи завантажити свої шаблони. Вони не впливають на "
+"перелік текстів чи картинку обкладинки. Зберігаються формат паперу, шрифти, "
+"друк тощо."
 
 msgid "Higher division factor means narrower margins"
-msgstr ""
+msgstr "Чим вище співвідношення, тим вужчі поля"
 
 msgid "Highest priority format"
-msgstr ""
+msgstr "Формат із найвищим пріоритетом"
 
 msgid "How are you going to access Git?"
-msgstr ""
+msgstr "Який доступ до Git у вас є?"
 
 msgid "How do I create a landing page?"
-msgstr ""
+msgstr "Як створити головну сторінку?"
 
 msgid "How do I create a special page?"
-msgstr ""
+msgstr "Як створити особливу сторінку?"
 
 msgid "How do I delete a text?"
-msgstr ""
+msgstr "Як видалити текст?"
 
 msgid "How do I modify a special page?"
-msgstr ""
+msgstr "Як відредагувати особливу сторінку?"
 
 msgid "How do I purge a text?"
-msgstr ""
+msgstr "Як стерти текст?"
 
 msgid "How do I redirect to another page?"
-msgstr ""
+msgstr "Як переспрямувати сторінку?"
 
 msgid "How to choose a password"
-msgstr ""
+msgstr "Як обрати пароль"
 
 msgid ""
 "However, you can browse, search, download and read the texts\n"
 "  from mobile reading applications which support the so-called OPDS\n"
 "  protocol."
 msgstr ""
+"Проте ви можете переглядати, шукати, завантажувати й читати тексти за "
+"допомогою мобільних застосунків для читання, які підтримують OPDS-протокол."
 
 msgid "I am human"
-msgstr ""
+msgstr "Я людина"
 
 msgid "I have a system user with SSH access"
-msgstr ""
+msgstr "Маю системну обліковку з SSH-доступом"
 
 msgid "I want an imposed (ready to print) PDF"
-msgstr ""
+msgstr "Мені потрібен PDF з уже застосованим спуском шпальт (для друку)"
 
 msgid "I will provide my remote repository"
-msgstr ""
+msgstr "Працюватиму через віддалений репозиторій"
 
 msgid "ID"
-msgstr ""
+msgstr "Ідентифікатор"
 
 msgid "ISBN"
-msgstr ""
+msgstr "ISBN-ідентифікатор"
 
 msgid "Id"
-msgstr ""
+msgstr "Ідентифікатор"
 
 msgid "Identifier"
-msgstr ""
+msgstr "Ідентифікатор"
 
 msgid ""
 "If by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
 msgstr ""
+"Якщо вже існує текст із такими ж автор_кою й назвою, заповніть також поле "
+"«Бажаний ідентифікатор» унизу, вказавши автор_ку, назву та номер, наприклад "
+"my-author-my-title-1"
 
 msgid ""
 "If it was not your intention, please just ignore this mail and\n"
 "your password will not be changed."
 msgstr ""
+"Якщо ви не надсилали такого запиту, не зважайте на цей лист, і вашого пароля "
+"не буде змінено."
 
 msgid ""
 "If it's not the case, please open a bug report at https://github.com/"
 "melmothx/amusewiki/issues"
 msgstr ""
+"Якщо це не допомагає, будь ласка, повідомте про ваду https://github.com/"
+"melmothx/amusewiki/issues"
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
@@ -1168,7 +1247,7 @@ msgstr ""
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
-msgstr ""
+msgstr "Якщо порожньо, %1 буде шукатися в каталозі застосунка."
 
 msgid ""
 "If present, hide the\n"
@@ -1177,26 +1256,37 @@ msgid ""
 "          available and more relevance should be given to the attached\n"
 "          files."
 msgstr ""
+"Якщо вказано, сховати згенеровані формати й блок метаданих. Це має сенс для "
+"акцентування прикріплених файлів, коли текстова версія потребує допрацювання "
+"чи відсутня."
 
 msgid ""
 "If set to a number greater than 0, automatically generate a teaser, with "
 "roughly this length"
 msgstr ""
+"Якщо встановлено додатнє число, автоматично генерувати заглушку приблизно "
+"вказаного обсягу"
 
 msgid ""
 "If the publication of a text is deferred, list it\n"
 "            with the teaser and the cover without providing access to\n"
 "            the body"
 msgstr ""
+"Якщо оприлюднення тексту відкладено, показати в переліку замість нього "
+"заглушку й обкладинку, не надаючи доступу до тексту"
 
 msgid ""
 "If the user is allowed to publish, speed up the process skipping the "
 "revision page if there are no conflicts and automatically redirect to the "
 "published text once it is done."
 msgstr ""
+"Якщо користувач_ка має дозвіл на оприлюднення, заради прискорення процесу "
+"пропускати сторінку перевірки, якщо нема конфліктів, і автоматично "
+"переспрямовувати на готовий оприлюднений текст."
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
+"Адресу е-пошти користувач_ки за наявності буде зазначено в CC-полі листа"
 
 msgid ""
 "If this line\n"
@@ -1206,12 +1296,18 @@ msgid ""
 "          date will be the time of the publishing, triggering a bump\n"
 "          on RSS and special pages at each editing."
 msgstr ""
+"Якщо цей рядок наявний, встановити датою оприлюднення (на цьому сайті) "
+"вказану дату. Майбутня дата відкладає оприлюднення. Якщо цей рядок "
+"відсутній, кожне редагування замінюватиме дату оприлюднення, підіймаючи "
+"текст в RSS-стрічках і на особливих сторінках."
 
 msgid ""
 "If this line is\n"
 "          present and the reason is set to something, the text will be\n"
 "          stored in the archive, but will not be published."
 msgstr ""
+"Якщо цей рядок наявний і вказано підставу, текст буде збережено в архіві, "
+"але не оприлюднено."
 
 msgid ""
 "If this line is present, do not create a title page,\n"
@@ -1219,32 +1315,42 @@ msgid ""
 "          produce a PDF styled like an article (chapters and parts\n"
 "          will not start on a new page)."
 msgstr ""
+"Якщо цей рядок наявний, не створювати титульної сторінки, а почати текст на "
+"першій же сторінці й створити PDF-файл у стилі статті (без розриву сторінки "
+"перед новою главою чи частиною)."
 
 msgid "If this line is present, do not display the table of contents."
-msgstr ""
+msgstr "Якщо цей рядок наявний, не показувати таблиці змісту."
 
 msgid "If you asked for imposition, select an imposition schema"
-msgstr ""
+msgstr "Якщо ви ввімкнули спуск шпальт, оберіть схему спуску"
 
 msgid ""
 "If you edit some format options, like fonts or paper\n"
 "      dimensions, you may want to rebuild the generated files"
 msgstr ""
+"Після редагування шрифтів, розмірів аркуша та інших подібних опцій "
+"форматування доречно перезібрати згенеровані файли"
 
 msgid ""
 "If you forgot your password, you can choose a new one visiting\n"
 "this link (click on it or copy and paste it in your browser):"
 msgstr ""
+"Якщо ви забули пароль, можете обрати новий за допомогою цього посилання "
+"(натисніть або скопіюйте й вставте в оглядач):"
 
 msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
+"Якщо маєте файл .doc чи .odt, його легко конвертувати: збережіть його як HTML"
 
 msgid ""
 "If you request a rebuild when one is ongoing, you will\n"
 "    abort the current one."
 msgstr ""
+"Якщо подати запит на перезбірку, коли перезбірка вже триває, то поточну "
+"перезбірку буде перервано."
 
 msgid ""
 "If you use it as a teaser image, the image will also\n"
@@ -1253,46 +1359,58 @@ msgid ""
 "      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
 "      on"
 msgstr ""
+"Картинку-тизер також буде розміщено на першій сторінці PDF-файлу. Щоб "
+"встановити їй ширину, додайте наступний рядок у шапку. Значення — частка "
+"ширини тексту: 1 — повна ширина тексту, 0.5 — половина тощо."
 
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
 "the uri \"index\"."
 msgstr ""
+"Якщо ваш сайт ще не має головної сторінки, створіть особливу сторінку з "
+"ідентифікатором «index»."
 
 msgid ""
 "If your site is multilanguage, you can create a language-specific\n"
 "  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
 "  URI \"index\", a dash, and the locale code."
 msgstr ""
+"Якщо сайт багатомовний, можете створити певнй мові окрему головну сторінку, "
+"наприклад «/special/index-it», тобто ідентифікатор «index» і код мови через "
+"дефіс."
 
 msgid "Image already set as cover"
-msgstr ""
+msgstr "Картинка вже є обкладинкою"
 
 #. ($w, $h, $limit, $limit)
 msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
-msgstr ""
+msgstr "Розміри зображення %1 x %2 перевищують обмеження: %3 x %4 пікселів"
 
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
+"Вивантажити картинки можна на наступному кроці, де ви також зможете "
+"відредагувати вивантажений текст і переглянути результат."
 
 msgid "Image url"
-msgstr ""
+msgstr "Посилання на картинку"
 
 msgid "Images"
-msgstr ""
+msgstr "Картинки"
 
 msgid "Imposition schemas"
-msgstr ""
+msgstr "Схеми друку"
 
 msgid "In both case you will get a reverse indentation."
-msgstr ""
+msgstr "В обох випадках ви отримаєте від'ємний відступ."
 
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
 msgstr ""
+"Число в тексті, обгорнуте в квадратні дужки, обробляється як посилання на "
+"примітку, якщо відповідна примітка існує"
 
 #. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
@@ -1301,39 +1419,41 @@ msgid ""
 "  pretty much the same for all applications. All you have to do is to\n"
 "  add %1 to the network libraries."
 msgstr ""
+"У цьому прикладі ми використовуємо FBreader, але процес приблизно однаковий "
+"для всіх застосунків. Вам достатньо додати %1 до мережних бібліотек."
 
 msgid "Inline elements"
-msgstr ""
+msgstr "Елементи всередині рядка"
 
 msgid "Insert the file into the body at the cursor position"
-msgstr ""
+msgstr "Додати файл у текст туди, де зараз курсор"
 
 msgid "Internal list of translations"
-msgstr ""
+msgstr "Внутрішній перелік перекладів"
 
 msgid "Invalid ID"
-msgstr ""
+msgstr "Хибний ідентифікатор"
 
 msgid "Invalid URI"
-msgstr ""
+msgstr "Хибний ідентифікатор"
 
 msgid "Invalid email"
-msgstr ""
+msgstr "Хибна е-пошта"
 
 msgid "Invalid field"
-msgstr ""
+msgstr "Хибне поле"
 
 msgid "Invalid name"
-msgstr ""
+msgstr "Хибна назва"
 
 msgid "Invalid parameter"
-msgstr ""
+msgstr "Хибний параметр"
 
 msgid "Invalid target"
-msgstr ""
+msgstr "Хибна ціль"
 
 msgid "Invalid username"
-msgstr ""
+msgstr "Хибний логін"
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -1343,6 +1463,10 @@ msgid ""
 "          of square brackets. Placing secondary footnote references\n"
 "          inside a regular footnote is permitted."
 msgstr ""
+"Можливо доповнити текст додатковим набором приміток (наприклад, критичних чи "
+"перекладацьких). Вони працюють так само, як звичайні примітки, але "
+"використовують фігурні дужки замість квадратник. Можливо розміщувати "
+"посилання на другорядні примітки всередині звичайних приміткок."
 
 msgid ""
 "It is recommended to always set a publication\n"
@@ -1351,35 +1475,39 @@ msgid ""
 "                    publication date only on major editing, leaving it\n"
 "                    untouched for minor ones."
 msgstr ""
+"Варто завжди явно вказувати дату оприлюднення, щоб системі не доводилось "
+"орієнтуватись на час редагування файлу. Змінювати дату оприлюднення варто "
+"лише при суттєвих правках, залишаючи її як є при незначних."
 
 msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
 msgstr ""
+"Як і звичайну, тільки посилання ховається. Додайте «/edit» у кінець адреси."
 
 msgid "Italic"
-msgstr ""
+msgstr "Курсив"
 
 msgid "Italics, bold, monospace and code, linebreaks..."
-msgstr ""
+msgstr "Курсив, грубий чи моноширинний текст, код, розриви рядків…"
 
 msgid "JPG, PNG and PDF are always allowed."
-msgstr ""
+msgstr "JPG, PNG та PDF завжди дозволено."
 
 msgid "Job status"
-msgstr ""
+msgstr "Стан завдань"
 
 msgid "Jobs"
-msgstr ""
+msgstr "Завдання"
 
 msgid "Jobs (all sites)"
-msgstr ""
+msgstr "Завдання (всіх сайтів)"
 
 msgid "Jobs waiting before yours:"
-msgstr ""
+msgstr "Завдання в черзі перед вашим:"
 
 msgid "Just packs 2 consecutives logical pages on a physical one."
-msgstr ""
+msgstr "Вміщає дві послідовні логічні сторінки в одну фізичну."
 
 msgid ""
 "Keep in mind that I’m cleaning the text and give it\n"
@@ -1388,354 +1516,368 @@ msgid ""
 "        be lost in the process. Please check the preview on the next\n"
 "        step, where you can also insert images."
 msgstr ""
+"Зауважте, текст буде очищено й показано вам ще раз у «рідній» розмітці "
+"сайту. Вам слід буде його перевірити й остаточно вивантажити. Деяку рідко "
+"вживану розмітку буде вилучено. На наступному кроці ви зможете переглянути "
+"результат і вставити картинки."
 
 msgid "Keep in mind that some character may be missing in the required font."
-msgstr ""
+msgstr "Пам'ятайте, деяких символів може бракувати в типовому шрифті."
 
 msgid ""
 "Keep in mind that unusually\n"
 "        complex formatting will be stripped. Is it possible to add\n"
 "        tables and images only on the next step."
 msgstr ""
+"Зауважте, що незвично складне форматування буде вилучено. Додати таблиці й "
+"картинки можна лише на наступному кроці."
 
 msgid "Label"
-msgstr ""
+msgstr "Мітка"
 
 msgid "Language"
-msgstr ""
+msgstr "Мова"
 
 msgid "Language code of the document (2 or 3 letters). "
-msgstr ""
+msgstr "Код мови документу (2 чи 3 літери). "
 
 msgid "Language selection"
-msgstr ""
+msgstr "Вибір мови"
 
 msgid "Languages supported"
-msgstr ""
+msgstr "Підтримувані мови"
 
 msgid "Last"
-msgstr ""
+msgstr "Остання"
 
 msgid "Last successful rebuild"
-msgstr ""
+msgstr "Остання успішна збірка"
 
 msgid "Last updated"
-msgstr ""
+msgstr "Востаннє оновлено"
 
 msgid "Latest entries"
-msgstr ""
+msgstr "Нещодавно додане"
 
 msgid "Layout"
-msgstr ""
+msgstr "Макет"
 
 msgid "Leave it blank if you want it published right away."
-msgstr ""
+msgstr "Залиште порожньою, щоб оприлюднити одразу."
 
 msgid "Leave this empty to have it automatically generated"
-msgstr ""
+msgstr "Залиште порожнім, щоб згенерувати автоматично"
 
 msgid "Letter imposed PDF"
-msgstr ""
+msgstr "PDF для Letter-друку"
 
 msgid "Letter paper"
-msgstr ""
+msgstr "Папір Letter"
 
 msgid "Line spacing"
-msgstr ""
+msgstr "Міжрядковий інтервал"
 
 msgid "Link"
-msgstr ""
+msgstr "Посилання"
 
 msgid "Links"
-msgstr ""
+msgstr "Посилання"
 
 msgid "List of paths to attach to this collection, one per line."
-msgstr ""
+msgstr "Перелік шляхів, які слід додати до цієї добірки. По одному на рядок."
 
 msgid "List of texts on hold"
-msgstr ""
+msgstr "Перелік затриманих текстів"
 
 msgid "Lists"
-msgstr ""
+msgstr "Списки"
 
 msgid "Load"
-msgstr ""
+msgstr "Завантажити"
 
 msgid "Load another session by token"
-msgstr ""
+msgstr "Завантажити інший сеанс за токеном"
 
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
-msgstr ""
+msgstr "Завантажено конфігурацію «%1»"
 
 msgid "Loading"
-msgstr ""
+msgstr "Завантаження"
 
 msgid "Local"
-msgstr ""
+msgstr "Локально"
 
 msgid "Local pages"
-msgstr ""
+msgstr "Локальні сторінки"
 
 msgid "Locale updated"
-msgstr ""
+msgstr "Мову оновлено"
 
 msgid "Locked editing, no upload possible"
-msgstr ""
+msgstr "Редагування заблоковано, вивантажити неможливо"
 
 msgid "Log in"
-msgstr ""
+msgstr "Увійти"
 
 msgid "Login"
-msgstr ""
+msgstr "Увійти"
 
 msgid "Logout"
-msgstr ""
+msgstr "Вийти"
 
 msgid "Look into the account’s menu, there is an entry for that."
-msgstr ""
+msgstr "Перегляньте меню обліковки, там є відповідний пункт."
 
 msgid "Lost your password?"
-msgstr ""
+msgstr "Забули пароль?"
 
 msgid "Magic answer"
-msgstr ""
+msgstr "Чарівна відповідь"
 
 msgid "Magic question"
-msgstr ""
+msgstr "Чарівне запитання"
 
 msgid "Mail from"
-msgstr ""
+msgstr "Лист від"
 
 msgid "Main canonical hostname, without protocol"
-msgstr ""
+msgstr "Канонічна назва хоста без протоколу"
 
 msgid "Main font"
-msgstr ""
+msgstr "Головний шрифт"
 
 msgid "Main text"
-msgstr ""
+msgstr "Основний текст"
 
 msgid "Maintainer's FAQ"
-msgstr ""
+msgstr "ЧаП супровідни_ці"
 
 msgid "Make a link clickable"
-msgstr ""
+msgstr "Активувати посилання"
 
 msgid "Make all links active"
-msgstr ""
+msgstr "Активувати всі посилання"
 
 msgid "Make all non-breaking spaces explicit and visible as ~~"
-msgstr ""
+msgstr "Зробити всі нерозривні пробіли явними й видними як ~~"
 
 msgid "Manage categories"
-msgstr ""
+msgstr "Керувати категоріями"
 
 msgid "Manage category types"
-msgstr ""
+msgstr "Керувати типами категорій"
 
 msgid "Margins: please choose a division factor or set width and height"
-msgstr ""
+msgstr "Поля: оберіть співвідношення чи ширину й висоту"
 
 msgid "Max image dimension in pixels, applies to both width and height"
-msgstr ""
+msgstr "Максимальна ширина та висота зображення в пікселях"
 
 msgid "Max size for uploads in Mb"
-msgstr ""
+msgstr "Максимальний розмір вивантажень у мегабайтах"
 
 msgid "Message"
-msgstr ""
+msgstr "Коментар"
 
 #. (8)
 msgid "Minimum %1 characters"
-msgstr ""
+msgstr "Мінімум %1 символів"
 
 msgid "Mirror"
-msgstr ""
+msgstr "Дзеркало"
 
 msgid "Mirror of:"
-msgstr ""
+msgstr "Дзеркало:"
 
 msgid "Missing #title header in the text!"
-msgstr ""
+msgstr "Бракує #title у шапці тексту"
 
 msgid "Missing alias"
-msgstr ""
+msgstr "Бракує псевдоніма"
 
 msgid "Missing character will be reported"
-msgstr ""
+msgstr "Символи, яких бракує, буде перелічено"
 
 msgid "Missing redirection"
-msgstr ""
+msgstr "Бракує переспрямування"
 
 msgid "Mobile"
-msgstr ""
+msgstr "Мобільна версія"
 
 msgid "Mobile applications"
-msgstr ""
+msgstr "Мобільні застосунки"
 
 msgid "Mode"
-msgstr ""
+msgstr "Режим"
 
 msgid "Moderated wiki"
-msgstr ""
+msgstr "Модерована вікі"
 
 msgid "Mono font"
-msgstr ""
+msgstr "Моноширинний шрифт"
 
 msgid "More"
-msgstr ""
+msgstr "Додатково"
 
 msgid "Move down"
-msgstr ""
+msgstr "Донизу"
 
 msgid "Move up"
-msgstr ""
+msgstr "Угору"
 
 msgid "Multilanguage: list of whitespace separated language codes"
-msgstr ""
+msgstr "Багатомовність: перелік кодів мов через пробіл"
 
 msgid "My description"
-msgstr ""
+msgstr "Мій опис"
 
 msgid "N/A"
-msgstr ""
+msgstr "Невідомо"
 
 msgid "Name"
-msgstr ""
+msgstr "Назва"
 
 msgid "Name plural"
-msgstr ""
+msgstr "Назва в множині"
 
 msgid "Name singular"
-msgstr ""
+msgstr "Назва в однині"
 
 msgid "Network library listing screen."
-msgstr ""
+msgstr "Екран переліку мережних бібліотек."
 
 msgid "Never display the cover"
-msgstr ""
+msgstr "Ніколи не показувати обкладинки"
 
 msgid "Never generate a table of content"
-msgstr ""
+msgstr "Ніколи не генерувати таблиць змісту"
 
 msgid ""
 "Never generate the standard final page with title/author/notes/logo/site name"
 msgstr ""
+"Ніколи не генерувати стандартної останньої сторінки з заголовком, автор_кою, "
+"примітками, логотипом та назвою сайту"
 
 msgid "Never show teaser and/or cover in text lists"
-msgstr ""
+msgstr "Ніколи не показувати заглушки та/або обкладинки в переліку текстів"
 
 msgid "New"
-msgstr ""
+msgstr "Створити"
 
 msgid "New revision"
-msgstr ""
+msgstr "Нова версія"
 
 msgid "New site id"
-msgstr ""
+msgstr "Новий ідентифікатор сайту"
 
 msgid "Newer first"
-msgstr ""
+msgstr "Спершу новіші"
 
 msgid "Newer texts"
-msgstr ""
+msgstr "Новіші тексти"
 
 msgid "Next"
-msgstr ""
+msgstr "Далі"
 
 msgid "Nice title"
-msgstr ""
+msgstr "Київ"
 
 msgid "No"
-msgstr ""
+msgstr "Ні"
 
 msgid "No data available in table"
-msgstr ""
+msgstr "У таблиці нема даних"
 
 msgid "No editing yet!"
-msgstr ""
+msgstr "В редакторі ще нічого не змінили!"
 
 msgid "No matching records found"
-msgstr ""
+msgstr "Збіжних записів не знайдено"
 
 msgid "No result found!"
-msgstr ""
+msgstr "Результатів не знайдено!"
 
 msgid "No revisions to show"
-msgstr ""
+msgstr "Нема версій для показу"
 
 msgid "No text found!"
-msgstr ""
+msgstr "Текстів не знайдено!"
 
 msgid "No text was added yet"
-msgstr ""
+msgstr "Текстів ще не додано"
 
 msgid "None"
-msgstr ""
+msgstr "Немає"
 
 #. ($c->loc('Save')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
 "finalize your submission!"
 msgstr ""
+"Ще не все! Будь ласка, перевірте текст і тоді натисніть «%1», щоб завершити "
+"надсилання!"
 
 msgid "Notes"
-msgstr ""
+msgstr "Примітки"
 
 msgid "Nothing to see here, so far"
-msgstr ""
+msgstr "Тут поки нічого нема"
 
 msgid "Nothing uploaded"
-msgstr ""
+msgstr "Нічого не вивантажено"
 
 msgid "Notify mail: blank field will disable them"
-msgstr ""
+msgstr "Пошта сповіщень: залиште порожньою, щоб вимкнути"
 
 msgid "Notify to"
-msgstr ""
+msgstr "Сповістити"
 
 msgid ""
 "Now it has been aligned to the site's archive, but this means that there are "
 "some missing commits."
 msgstr ""
+"Його було вирівняно за архівом сайту, але через це тепер бракує деяких "
+"комітів."
 
 msgid "Now we are going to populate it and get it ready"
-msgstr ""
+msgstr "Далі описано, як заповнити репозиторій і почати ним користуватись"
 
 msgid "Number of jobs"
-msgstr ""
+msgstr "Кількість завдань"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
-msgstr ""
+msgstr "Кількість результатів у RSS-стрічці (ціле число)"
 
 msgid "Number of results to show on paginated pages (an integer)"
-msgstr ""
+msgstr "Кількість результатів на сторінці (ціле число)"
 
 msgid "OPDS"
-msgstr ""
+msgstr "OPDS-стрічка"
 
 msgid "Older first"
-msgstr ""
+msgstr "Спершу старіші"
 
 msgid "Older texts"
-msgstr ""
+msgstr "Старіші тексти"
 
 msgid "On text creation, enforce user to choose the URI"
-msgstr ""
+msgstr "Користувач_ка мусить обрати ідентифікатор при створенні тексту"
 
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
+"По одній сторінці на аркуш. Це корисно лише для додання позначок зрізання"
 
 msgid "Open wiki"
-msgstr ""
+msgstr "Відкрита вікі"
 
 msgid "Option templates"
-msgstr ""
+msgstr "Шаблони налаштувань"
 
 msgid "Optional, defaults to the author directive"
 msgstr ""
+"Необов'язково, значення типово береться з основної настанови про авторство"
 
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
@@ -1744,47 +1886,54 @@ msgid ""
 "          later, or, better, contact the librarians before proceeding,\n"
 "          to avoid wasting energies."
 msgstr ""
+"Або створіть нову версію на свій ризик. Коли є кілька паралельних версій, "
+"зазвичай їх не зводять вручну, а обирають одну з них. Можете продовжити "
+"попри це чи повернутися згодом, але краще домовитися про подальші дії з "
+"упорядни_цями бібліотеки, щоб не марнувати нічиїх зусиль."
 
 msgid "Or log in, if you have an account."
-msgstr ""
+msgstr "Або увійдіть, якщо маєте обліковку."
 
 msgid "Or provide an HTML file to upload"
-msgstr ""
+msgstr "Або вивантажте HTML-файл"
 
 msgid "Or wrap it in"
-msgstr ""
+msgstr "Чи обгорніть його"
 
 msgid "Ordered List"
-msgstr ""
+msgstr "Нумерований список"
 
 msgid "Outer margin"
-msgstr ""
+msgstr "Зовнішній відступ"
 
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 msgid "PDF logo"
-msgstr ""
+msgstr "PDF-логотип"
 
 msgid "PDFs cannot be used in the body."
-msgstr ""
+msgstr "PDF-файли неможливо використати в тексті."
 
 #. ('#ATTACH')
 #. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
+"PDF-файли, не згадані в настанові %1, буде збережено, але не використано."
 
 msgid "Page not found!"
-msgstr ""
+msgstr "Сторінки не знайдено!"
 
 msgid "Page where to start a chapter"
-msgstr ""
+msgstr "Сторінка початку глави"
 
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
 "        This is not meant to be folded."
 msgstr ""
+"Порядок сторінок не змінюється. Перший аркуш містить першу й другу сторінки "
+"поруч, другий — третю й четверту тощо. Аркуші не складаються."
 
 msgid ""
 "Pages are reordered, in one or more groups\n"
@@ -1795,124 +1944,137 @@ msgid ""
 "        whole book in a single signature, or an optimized size to\n"
 "        reduce the number of blank pages."
 msgstr ""
+"Сторінки впорядковують в одну групу чи кілька груп і складають навпіл. Якщо "
+"груп більше, їх зшивають як книжку. Цей параметр дає змогу обрати кількість "
+"шпальт у групі. Це може бути або стале значення (4, 8, 16 тощо), або друк "
+"усієї книги одною групою, або оптимізоване групування для уникнення порожніх "
+"сторінок."
 
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
-msgstr ""
+msgstr "Товщина паперу (0,10 має бути достатньо для типового паперу 80г/м2)"
 
 msgid "Paragraph indentation in points (pt)"
-msgstr ""
+msgstr "Абзацний відступ у пунктах (пт)"
 
 msgid "Paragraphs"
-msgstr ""
+msgstr "Абзаци"
 
 msgid "Parent collection"
-msgstr ""
+msgstr "Батьківська добірка"
 
 msgid "Part"
-msgstr ""
+msgstr "Частина"
 
 msgid "Part and chapter. If one side document: part."
-msgstr ""
+msgstr "Частина й глава. Якщо однобічний документ: частина."
 
 msgid "Part of"
-msgstr ""
+msgstr "Частина"
 
 msgid "Part, for larger books only"
-msgstr ""
+msgstr "Частина, лише для великих книг"
 
 msgid "Partial selection"
-msgstr ""
+msgstr "Часткове обрання"
 
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 msgid "Password too short"
-msgstr ""
+msgstr "Пароль закороткий"
 
 msgid "Password updated"
-msgstr ""
+msgstr "Пароль оновлено"
 
 msgid "Password, minimum 8 characters."
-msgstr ""
+msgstr "Пароль, мінімум 8 символів."
 
 msgid "Passwords do not match"
-msgstr ""
+msgstr "Паролі не збігаються"
 
 msgid "Path"
-msgstr ""
+msgstr "Шлях"
 
 msgid "Payload"
-msgstr ""
+msgstr "Параметри"
 
 msgid "Pending revisions"
-msgstr ""
+msgstr "Версії в черзі"
 
 msgid "Picture"
-msgstr ""
+msgstr "Картинка"
 
 msgid "Place it in the body with a description:"
-msgstr ""
+msgstr "Додати в текст з описом:"
 
 msgid "Place it in the body without description:"
-msgstr ""
+msgstr "Додати в текст без опису:"
 
 msgid "Place the notes on the back of the first page, impressum-style"
-msgstr ""
+msgstr "Вихідні відомості на звороті першої сторінки"
 
 msgid "Plain PDF"
-msgstr ""
+msgstr "Простий PDF"
 
 msgid ""
 "Please check your inbox, we tried to deliver a mail to the address you "
 "specified with a password reset link"
 msgstr ""
+"Будь ласка, перевірте вхідні. Ми спробували надіслати на адресу, яку ви "
+"вказали, лист із посиланням на скидання пароля"
 
 msgid "Please choose a text"
-msgstr ""
+msgstr "Оберіть текст"
 
 msgid "Please choose the Beamer color theme"
-msgstr ""
+msgstr "Оберіть кольори Beamer-презентації"
 
 msgid "Please choose the Beamer theme"
-msgstr ""
+msgstr "Оберіть стиль Beamer-презентації"
 
 msgid "Please choose the font size"
-msgstr ""
+msgstr "Оберіть розмір шрифту"
 
 msgid "Please choose the main font"
-msgstr ""
+msgstr "Оберіть головний шрифт"
 
 msgid "Please choose the mono font"
-msgstr ""
+msgstr "Оберіть моноширинний шрифт"
 
 msgid "Please choose the sans font"
-msgstr ""
+msgstr "Оберіть шрифт без засічок"
 
 msgid "Please describe shortly what you did"
-msgstr ""
+msgstr "Коротко опишіть, що ви зробили"
 
 msgid "Please do not use a valuable password."
-msgstr ""
+msgstr "Не використовуйте пароль з іншого сайту."
 
 msgid ""
 "Please do not use higher levels (part or chapter) for short articles with "
 "sections."
 msgstr ""
+"Будь ласка, не використовуйте вищих рівнів (частин і глав) для коротких "
+"статей із розділами."
 
 #. (amw_group_name)
 msgid "Please ensure that your system user is member of the \"%1\" group"
-msgstr ""
+msgstr "Переконайтесь, що ваша системна обліковка входить до групи «%1»."
 
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
 "        Just a fancy name, so we can know that multiple uploads come\n"
 "        from the same person."
 msgstr ""
+"Ваше ім'я. Це *не має* бути поштою. Просто яке-небудь ім'я, щоб ми розуміли, "
+"що декілька текстів надсилає та сама людина."
 
 msgid ""
 "Please initialized it empty, without any README,license, .gitignore or "
 "similar."
 msgstr ""
+"Будь ласка, ініціалізуйте його порожнім, без README, ліценії, .gitignore чи "
+"інших файлів."
 
 msgid ""
 "Please keep in mind that filters are language-specific\n"
@@ -1920,6 +2082,8 @@ msgid ""
 "              text. If not available, they will just leave the text as\n"
 "              is."
 msgstr ""
+"Зауважте, кожна мова має свої правила, й для мови цього тексту може не "
+"виявитись того чи іншого фільтра. Недоступні фільтри буде пропущено."
 
 msgid ""
 "Please keep in mind that if you see “Force publishing”\n"
@@ -1928,175 +2092,194 @@ msgid ""
 "    previous one. Try to avoid this, unless you know what you're\n"
 "    doing."
 msgstr ""
+"Зауважте: якщо ви бачите дію «Примусово оприлюднити», це означає, що версію "
+"було замінено іншою, оприлюднення якої буде скасовано оприлюдненням цієї. "
+"Спробуйте зробити по-іншому, якщо не певні, що потрібна саме така дія."
 
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
+"Залиште е-пошту, якщо бажаєте, щоб із вами могли зв'язатися щодо цієї зміни"
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
-msgstr ""
+msgstr "Зауважте, мітки перенесення мусять бути на окремих рядках."
 
 msgid ""
 "Please note that you may want to paste from a\n"
 "        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
 "        from word” button. This is supposed to preserve the markup."
 msgstr ""
+"Для документів у форматах Word/OpenOffice/LibreOffice/HTML є сенс "
+"використовувати кнопку «Вставити з Word». Це збереже розмітку."
 
 msgid ""
 "Please note: without any prefix, protocol or hostname, just\n"
 "  the bare page name as shown above. External redirecting is not\n"
 "  supported."
 msgstr ""
+"Зауважте: без префіксу, протоколу чи домену, лише назва сторінки сама по "
+"собі — як показано вгорі. Переспрямування назовні не підтримується."
 
 msgid "Please prove you are a human"
-msgstr ""
+msgstr "Будь ласка, доведіть, що ви людина"
 
 msgid "Please reindex the site."
-msgstr ""
+msgstr "Будь ласка, переіндексуйте сайт."
 
 msgid "Please reload your page"
-msgstr ""
+msgstr "Будь ласка, перезавантажте сторінку"
 
 msgid "Please remove this file from the body first"
-msgstr ""
+msgstr "Спершу вилучте цей файл з основного тексту"
 
 msgid ""
 "Please replace the example URL in the next line with the real one with SSH "
 "protocol"
 msgstr ""
+"Замініть зразкову URL-адресу в наступному рядку на справжню з SSH-протоколом"
 
 msgid "Please select"
-msgstr ""
+msgstr "Оберіть"
 
 msgid "Please select the desired fonts"
-msgstr ""
+msgstr "Оберіть бажані шрифти"
 
 msgid "Please select the signature size:"
-msgstr ""
+msgstr "Оберіть кількість шпальт:"
 
 msgid ""
 "Please select the size of each page including the crop marks, before the "
 "imposing"
 msgstr ""
+"Перед спуском оберіть розмір кожної сторінки, зокрема позначки зрізання"
 
 msgid "Please set"
-msgstr ""
+msgstr "Потрібно вказати"
 
 msgid ""
 "Please set the URI you desire. Author (if present),\n"
 "        title and eventually a number if the URI already exists is\n"
 "        usually a good choice"
 msgstr ""
+"Впишіть ідентифікатор, який вам до вподоби. Зазвичай хороший вибір: автор_ка "
+"(за наявності) й назва, а також додаткове число, якщо ідентифікатор уже "
+"зайнято"
 
 msgid "Please setup the Beamer layout"
-msgstr ""
+msgstr "Налаштуйте макет Beamer-презентації"
 
 msgid "Please upload your file again!"
-msgstr ""
+msgstr "Будь ласка, повторіть спробу вивантаження файлу!"
 
 msgid "Please use only lowercase ASCII letters."
-msgstr ""
+msgstr "Використовуйте лише малі латинські літери."
 
 msgid "Poetry, bibliographies, plays, code blocks"
-msgstr ""
+msgstr "Вірші, бібліографії, п'єси, блоки коду"
 
 msgid "Pointing to"
-msgstr ""
+msgstr "Вказує на"
 
 msgid "Popular texts"
-msgstr ""
+msgstr "Популярні тексти"
 
 msgid "Preferred language"
-msgstr ""
+msgstr "Бажана мова"
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
+"Префіксом у нумерованих списках може бути «1.», «a.», «A.», «i.» чи «I.» "
+"залежно від потрібного вам типу списку."
 
 msgid "Preview"
-msgstr ""
+msgstr "Перегляд"
 
 msgid "Preview box height in pixel"
-msgstr ""
+msgstr "Висота попереднього перегляду в пікселях"
 
 msgid "Previous"
-msgstr ""
+msgstr "Назад"
 
 msgid "Priority"
-msgstr ""
+msgstr "Пріоритет"
 
 msgid "Private"
-msgstr ""
+msgstr "Приватний"
 
 msgid "Procedure"
-msgstr ""
+msgstr "Процес"
 
 msgid "Processing"
-msgstr ""
+msgstr "Обробка"
 
 msgid "Produce slides."
-msgstr ""
+msgstr "Зробити слайди."
 
 msgid "Produced"
-msgstr ""
+msgstr "Результати"
 
 msgid "Publication date"
-msgstr ""
+msgstr "Дата оприлюднення"
 
 msgid "Publication date on this site"
-msgstr ""
+msgstr "Дата оприлюднення на цьому сайті"
 
 msgid "Publish"
-msgstr ""
+msgstr "Оприлюднити"
 
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr ""
+"Оприлюднено в «Гарній книжці», виданій «Моїм видавництвом» у 2014 році."
 
 msgid "Publisher"
-msgstr ""
+msgstr "Видавництво"
 
 msgid "Purge"
-msgstr ""
+msgstr "Стерти"
 
 msgid ""
 "Purging means removing it completely from the archive, not just hiding it."
-msgstr ""
+msgstr "Стирання означає остаточне вилучення з архіву, не лише приховування."
 
 msgid ""
 "Put additional information here (original\n"
 "\t  title, translators, credits, etc). Footnotes go in the\n"
 "\t  body."
 msgstr ""
+"Наведіть тут додаткові відомості: назву в оригіналі, перекладач_ок, подяки "
+"тощо. Примітки мають бути в основному тексті."
 
 msgid "Quarter Letter paper"
-msgstr ""
+msgstr "Папір Letter, чверть"
 
 msgid "Queue"
-msgstr ""
+msgstr "Черга"
 
 msgid "Quota exceeded, too many pages"
-msgstr ""
+msgstr "Квоту перевищено, забагато сторінок"
 
 msgid "Quotes"
-msgstr ""
+msgstr "Лапки"
 
 msgid "RSS aggregator"
-msgstr ""
+msgstr "RSS-стрічка"
 
 msgid "RSS feed"
-msgstr ""
+msgstr "RSS-стрічка"
 
 msgid "Random"
-msgstr ""
+msgstr "Довільний текст"
 
 msgid "Read about the file naming scheme if you need to add files to the tree."
 msgstr ""
+"Якщо плануєте додавати файли в дерево, прочитайте, як слід їх називати."
 
 msgid "Read the whole text..."
-msgstr ""
+msgstr "Прочитати весь текст…"
 
 msgid "Real time help"
-msgstr ""
+msgstr "Допомога наживо"
 
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
@@ -2108,510 +2291,521 @@ msgid ""
 "              message. The procedure tries to be safe and will ignore\n"
 "              the change if footnotes are missing or are too many."
 msgstr ""
+"Упорядкувати заново примітки й виправити нумерацію, зважаючи лише на порядок "
+"їхнього вставлення. Не ставте цієї пташки, якщо не певні, що це означає. "
+"Вона може призвести до втрати даних, тому використовуйте обережно й "
+"перевіряйте результат. Якщо виникнуть проблеми, будь ласка, опишіть їх у "
+"коментарі й збережіть результат. Задля безпеки ця функція не застосує змін, "
+"якщо приміток недостатньо чи забагато."
 
 msgid "Reason"
-msgstr ""
+msgstr "Підстава"
 
 msgid "Reason for deletion"
-msgstr ""
+msgstr "Підстава видалення"
 
 msgid "Rebuild"
-msgstr ""
+msgstr "Перезібрати"
 
 msgid "Rebuild all generated files"
-msgstr ""
+msgstr "Перезібрати всі згенеровані файли"
 
 msgid "Rebuild formats"
-msgstr ""
+msgstr "Перезібрати формати"
 
 msgid "Rebuild the generated formats"
-msgstr ""
+msgstr "Перезібрати згенеровані формати"
 
 msgid "Rebuilding"
-msgstr ""
+msgstr "Перезбірка"
 
 msgid "Recheck"
-msgstr ""
+msgstr "Повторити перевірку"
 
 msgid "Redirections"
-msgstr ""
+msgstr "Переспрямування"
 
 msgid "Refresh and apply filters"
-msgstr ""
+msgstr "Оновити й застосувати фільтри"
 
 msgid "Reindex site"
-msgstr ""
+msgstr "Переіндексувати сайт"
 
 msgid "Related projects"
-msgstr ""
+msgstr "Пов'язані проєкти"
 
 #. ("$name $url")
 msgid "Remote repository %1 added"
-msgstr ""
+msgstr "Віддалений репозиторій %1 додано"
 
 #. ($name)
 msgid "Remote repository %1 removed"
-msgstr ""
+msgstr "Віддалений репозиторій %1 вилучно"
 
 msgid "Remove"
-msgstr ""
+msgstr "Вилучити"
 
 msgid "Remove cover image"
-msgstr ""
+msgstr "Вилучити картинку обкладинки"
 
 msgid "Remove this category"
-msgstr ""
+msgstr "Вилучити цю категорію"
 
 msgid "Removed Upstream"
-msgstr ""
+msgstr "Вилучено в джерелі"
 
 msgid "Rename"
-msgstr ""
+msgstr "Перейменувати"
 
 msgid "Rename text URI"
-msgstr ""
+msgstr "Змінити ідентифікатор тексту"
 
 msgid "Rename to"
-msgstr ""
+msgstr "Перейменувати на"
 
 msgid "Repeat email"
-msgstr ""
+msgstr "Повторіть е-пошту"
 
 msgid "Repeat password"
-msgstr ""
+msgstr "Повторіть пароль"
 
 msgid "Request failed! Please report the the problem"
-msgstr ""
+msgstr "Запит не вдався! Будь ласка, повідомте про проблему"
 
 msgid "Reschedule"
-msgstr ""
+msgstr "Відкласти"
 
 msgid "Reset all"
-msgstr ""
+msgstr "Скинути все"
 
 msgid "Reset filters"
-msgstr ""
+msgstr "Скинути фільтри"
 
 msgid "Reset password"
-msgstr ""
+msgstr "Скинути пароль"
 
 #. (username)
 msgid "Reset password for user %1"
-msgstr ""
+msgstr "Скинути пароль користувач_ки %1"
 
 msgid "Reset to site defaults"
-msgstr ""
+msgstr "Відновити типові налаштування сайту"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "Скинути пароль"
 
 msgid "Restricted configuration variables"
-msgstr ""
+msgstr "Обмежені змінні конфігурації"
 
 msgid "Restricted format options"
-msgstr ""
+msgstr "Обмежені налаштування формату"
 
 msgid "Results per page:"
-msgstr ""
+msgstr "Результатів на сторінці:"
 
 msgid "Retrieved on DATE from URL"
-msgstr ""
+msgstr "Отримано ДАТА з ПОСИЛАННЯ"
 
 msgid "Retrieved on March 8, 2012 from"
-msgstr ""
+msgstr "Скопійовано 8 березня 2012 року з"
 
 msgid "Revision"
-msgstr ""
+msgstr "Версія"
 
 #. ($uri)
 msgid "Revision for %1 has been deleted"
-msgstr ""
+msgstr "Версію %1 вилучено"
 
 msgid "Roles"
-msgstr ""
+msgstr "Ролі"
 
 msgid "Root Collection"
-msgstr ""
+msgstr "Коренева добірка"
 
 msgid "Run diff"
-msgstr ""
+msgstr "Виявити різницю"
 
 msgid "Running headings"
-msgstr ""
+msgstr "Колонтитул"
 
 msgid "SKU"
-msgstr ""
+msgstr "Артикул"
 
 msgid "SSL CA certificate path (Apache)"
-msgstr ""
+msgstr "Шлях до кореневих SSL-сертифікатів (Apache)"
 
 msgid "SSL certificate path (Apache)"
-msgstr ""
+msgstr "Шлях до SSL-сертифікату (Apache)"
 
 msgid "SSL chained certificate path (Nginx)"
-msgstr ""
+msgstr "Шлях до ланцюга SSL-сертифікатів (Nginx)"
 
 msgid "SSL configuration"
-msgstr ""
+msgstr "Налаштування SSL"
 
 msgid "SSL key path"
-msgstr ""
+msgstr "Шлях до SSL-ключа"
 
 msgid "Same as above, but for duplex printers"
-msgstr ""
+msgstr "Те саме, але для принтерів, які можуть друкувати з обох боків"
 
 msgid "Same as above, for the Archive menu"
-msgstr ""
+msgstr "Меню архіву, аналогічно"
 
 msgid "Same as above, for the Related Projects menu"
-msgstr ""
+msgstr "Меню пов'язаних проєктів, аналогічно"
 
 msgid "Sans font"
-msgstr ""
+msgstr "Шрифт без засічок"
 
 msgid "Save"
-msgstr ""
+msgstr "Зберегти"
 
 msgid "Save the current settings with a name"
-msgstr ""
+msgstr "Зберегти поточні налаштування під назвою"
 
 #. ($pname)
 msgid "Saved \"%1\" configuration"
-msgstr ""
+msgstr "Збережено конфігурацію «%1»"
 
 msgid "Search"
-msgstr ""
+msgstr "Пошук"
 
 msgid "Search Engine Facets"
-msgstr ""
+msgstr "Фасетний пошук"
 
 msgid "Search filters"
-msgstr ""
+msgstr "Фільтри пошуку"
 
 msgid "Search results"
-msgstr ""
+msgstr "Результати пошуку"
 
 msgid "Search this column"
-msgstr ""
+msgstr "Шукати в колонці"
 
 msgid "Secondary footnotes"
-msgstr ""
+msgstr "Другорядні примітки"
 
 msgid "Section"
-msgstr ""
+msgstr "Розділ"
 
 msgid "Section and subsection. If one side document: section."
-msgstr ""
+msgstr "Розділ і підрозділ. Якщо однобічний документ: розділ."
 
 msgid "See here for more details."
-msgstr ""
+msgstr "Тут описано докладніше."
 
 msgid "See here for the full documentation."
-msgstr ""
+msgstr "Перегляньте повну документацію."
 
 msgid "See the full manual for more details (english)"
-msgstr ""
+msgstr "Докладніше описано в посібнику (англійською)"
 
 msgid "Select"
-msgstr ""
+msgstr "Обрати"
 
 msgid "Select all"
-msgstr ""
+msgstr "Обрати все"
 
 msgid "Select all for deletion"
-msgstr ""
+msgstr "Обрати всі для видалення"
 
 msgid "Select all for rescheduling"
-msgstr ""
+msgstr "Обрати всі для відкладання"
 
 msgid "Select individual parts for the bookbuilder"
-msgstr ""
+msgstr "Обрати окремі частини для конструктора"
 
 msgid "Send Email"
-msgstr ""
+msgstr "Надіслати лист"
 
 msgid "Send mail"
-msgstr ""
+msgstr "Надіслати лист"
 
 #. ($from, $to)
 msgid "Sending test mails from %1 to %2"
-msgstr ""
+msgstr "Надсилання тестової пошти від %1 до %2"
 
 msgid "Separate body fields"
-msgstr ""
+msgstr "Розділяє поля вмісту"
 
 msgid "Separate footer fields"
-msgstr ""
+msgstr "Розділяють поля футера"
 
 msgid "Separate header fields"
-msgstr ""
+msgstr "Розділяють поля шапки"
 
 msgid "Series Name"
-msgstr ""
+msgstr "Назва серії"
 
 msgid "Series Number"
-msgstr ""
+msgstr "Номер серї"
 
 msgid "Session sharing"
-msgstr ""
+msgstr "Поділитися сеансом"
 
 msgid "Set a date in the future if you want it deferred."
-msgstr ""
+msgstr "Оберіть майбутню дату, щоб відкласти."
 
 msgid "Settings loaded"
-msgstr ""
+msgstr "Налаштування завантажено"
 
 msgid "Setup"
-msgstr ""
+msgstr "Початкове налаштування"
 
 msgid "Show _MENU_ entries"
-msgstr ""
+msgstr "Показати _MENU_"
 
 msgid "Show cheatsheet"
-msgstr ""
+msgstr "Показувати шпаргалку"
 
 msgid "Show differences in other tab"
-msgstr ""
+msgstr "Показати зміни в окремій вкладці"
 
 msgid "Show filters"
-msgstr ""
+msgstr "Показувати фільтри"
 
 msgid "Show preview in other tab"
-msgstr ""
+msgstr "Переглянути в окремій вкладці"
 
 msgid "Show text type and number of pages in the listing"
-msgstr ""
+msgstr "Показувати тип тексту й кількість сторінок у переліку"
 
 msgid "Show the text infobox at the bottom of the texts"
-msgstr ""
+msgstr "Показувати відомості про текст унизу текстів"
 
 msgid "Showing 0 to 0 of 0 entries"
-msgstr ""
+msgstr "Показано 0–0 із 0"
 
 msgid "Showing _START_ to _END_ of _TOTAL_ entries"
-msgstr ""
+msgstr "Показано _START_–_END_ із _TOTAL_"
 
 msgid "Single bars"
-msgstr ""
+msgstr "Одна риска"
 
 msgid "Site already exists"
-msgstr ""
+msgstr "Сайт уже існує"
 
 msgid "Site group"
-msgstr ""
+msgstr "Група сайту"
 
 msgid "Site id"
-msgstr ""
+msgstr "Ідентифікатор сайту"
 
 msgid "Site mail (From field)"
-msgstr ""
+msgstr "Пошта сайту (поле From)"
 
 msgid "Site mode"
-msgstr ""
+msgstr "Режим сайту"
 
 msgid "Site name"
-msgstr ""
+msgstr "Назва сайту"
 
 msgid "Site slogan"
-msgstr ""
+msgstr "Гасло сайту"
 
 msgid "Site users"
-msgstr ""
+msgstr "Користувач_ки сайту"
 
 msgid "Sites"
-msgstr ""
+msgstr "Сайти"
 
 #. ($invalid)
 msgid "Skipped %1 invalid sources!"
-msgstr ""
+msgstr "Пропущено %1 хибних джерел!"
 
 msgid "Slides"
-msgstr ""
+msgstr "Слайди"
 
 msgid "Slides (PDF)"
-msgstr ""
+msgstr "Слайди (PDF)"
 
 msgid "Small Caps"
-msgstr ""
+msgstr "Капітель"
 
 msgid "So we can be sure we are not mailing passwords to random people"
-msgstr ""
+msgstr "Аби ми були певні, що не надсилаємо паролів випадковим людям"
 
 msgid ""
 "Some annotation codes are special and have side effects if you create them "
 "with these codes."
 msgstr ""
+"Деякі коди анотацій мають особливе призначення й відповідну побічну дію."
 
 msgid "Some fields are missing, all are required"
-msgstr ""
+msgstr "Бракує деяких полів, заповніть усі"
 
 msgid "Some fields are too long"
-msgstr ""
+msgstr "Деякі поля задовгі"
 
 msgid "Some ongoing revisions were found"
-msgstr ""
+msgstr "Знайдено версії, редагування яких не завершено"
 
 msgid "Sorry, too many jobs pending, please try again later!"
-msgstr ""
+msgstr "На жаль, забагато завдань у черзі. Спробуйте згодом!"
 
 msgid "Sorting:"
-msgstr ""
+msgstr "Порядок:"
 
 msgid "Source"
-msgstr ""
+msgstr "Джерело"
 
 msgid "Source files"
-msgstr ""
+msgstr "Файли джерела"
 
 msgid "Source files with attachments"
-msgstr ""
+msgstr "Файли джерела зі вкладеннями"
 
 msgid "Source removed"
-msgstr ""
+msgstr "Джерело вилучено"
 
 msgid "Source, notes..."
-msgstr ""
+msgstr "Джерело, примітки…"
 
 msgid "Sources"
-msgstr ""
+msgstr "Джерела"
 
 msgid "Special blocks"
-msgstr ""
+msgstr "Особливі блоки"
 
 msgid "Special pages"
-msgstr ""
+msgstr "Особливі сторінки"
 
 msgid "Specify a whitespace-separated list of languages to activate it."
-msgstr ""
+msgstr "Перелічіть мови через пробіл, щоб активувати."
 
 msgid "Stale editing"
-msgstr ""
+msgstr "Покинуте редагування"
 
 msgid "Standalone HTML (printer-friendly)"
-msgstr ""
+msgstr "HTML без обрамлення (для принтерів)"
 
 msgid "Standard"
-msgstr ""
+msgstr "Стандартно"
 
 msgid "Start the document with an empty page"
-msgstr ""
+msgstr "Почати документ порожньою сторінкою"
 
 msgid "Started"
-msgstr ""
+msgstr "Почато"
 
 msgid "Static page without javascript"
-msgstr ""
+msgstr "Статична сторінка без JavaScript"
 
 msgid "Status"
-msgstr ""
+msgstr "Стан"
 
 msgid "Status changed"
-msgstr ""
+msgstr "Стан змінено"
 
 msgid "Subsection"
-msgstr ""
+msgstr "Підрозділ"
 
 msgid "Subsubsection or description item"
-msgstr ""
+msgstr "Підпідрозділ чи означення"
 
 msgid "Subtitle"
-msgstr ""
+msgstr "Підзаголовок"
 
 msgid "Such URI already exists"
-msgstr ""
+msgstr "Ідентифікатор уже існує"
 
 msgid "Such an URI already exists"
-msgstr ""
+msgstr "Ідентифікатор уже зайнято"
 
 msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
 msgstr ""
+"Такий заголовок скасує оприлюднення тексту й додасть замість нього "
+"переспрямування, яке буде згадано на цій сторінці"
 
 msgid "Such an user already exists!"
-msgstr ""
+msgstr "Користувач_ка вже існує!"
 
 msgid "Such username already exists"
-msgstr ""
+msgstr "Логін уже зайнято"
 
 msgid "Suggested values:"
-msgstr ""
+msgstr "Рекомендовані значення:"
 
 msgid "Summary"
-msgstr ""
+msgstr "Підсумок"
 
 msgid "Supported directive in the header"
-msgstr ""
+msgstr "Підтримувана настанова в шапці"
 
 msgid "Switch theme"
-msgstr ""
+msgstr "Перемкнути тему"
 
 msgid "Table of Contents"
-msgstr ""
+msgstr "Зміст"
 
 msgid "Tables"
-msgstr ""
+msgstr "Таблиці"
 
 msgid "Tag cloud with authors"
-msgstr ""
+msgstr "Хмара міток з автор_ками"
 
 msgid "Tag cloud with topics"
-msgstr ""
+msgstr "Хмара міток із темами"
 
 msgid "Task"
-msgstr ""
+msgstr "Завдання"
 
 msgid "TeX options (advanced)"
-msgstr ""
+msgstr "Налаштування TeX (якщо доводиться)"
 
 msgid "Teaser"
-msgstr ""
+msgstr "Тизер"
 
 msgid "Teaser image"
-msgstr ""
+msgstr "Картинка-тизер"
 
 msgid "Term"
-msgstr ""
+msgstr "Термін"
 
 msgid "Test"
-msgstr ""
+msgstr "Тест"
 
 msgid "Tested applications, in this order of preference"
-msgstr ""
+msgstr "Перевірені застосунки, від більш до менш рекомендованих"
 
 msgid "Text"
-msgstr ""
+msgstr "Текст"
 
 msgid "Text body only (no title, no final pages)"
-msgstr ""
+msgstr "Лише текст (без заголовка чи останніх сторінок)"
 
 msgid "Text formatted with markup"
-msgstr ""
+msgstr "Форматований текст із розміткою"
 
 msgid "Text height"
-msgstr ""
+msgstr "Висота тексту"
 
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
 msgstr ""
+"Переспрямування текстів встановлюються в самих текстах за допомогою "
+"заголовка DELETED із таким синтаксисом"
 
 msgid "Text width"
-msgstr ""
+msgstr "Ширина тексту"
 
 msgid "Texts"
-msgstr ""
+msgstr "Тексти"
 
 msgid "Thanks!"
-msgstr ""
+msgstr "Дякуємо!"
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
-msgstr ""
+msgstr "Якщо не робите слайдів, налаштовувати Beamer-презентацію не потрібно."
 
 msgid "The OPDS address for this site is:"
-msgstr ""
+msgstr "OPDS-адреса цього сайту:"
 
 msgid ""
 "The PDF logo value can be either an absolute path\n"
@@ -2619,65 +2813,73 @@ msgid ""
 "            TeXlive tree. You can do so with the following commands.\n"
 "            The last one checks if the file can be found."
 msgstr ""
+"У полі PDF-логотипу може бути абсолютний шлях або просто назва файлу, якщо "
+"ви встановили його в дерево TeXlive. Встановлюють його такими командами. "
+"Остання перевіряє, чи вдається знайти файл."
 
 msgid "The changes will propagate automatically once you push."
-msgstr ""
+msgstr "Зміни автоматично застосовуються після виконання push."
 
 #. ($uri)
 msgid "The description for %1 has been updated"
-msgstr ""
+msgstr "Опис %1 оновлено"
 
 msgid ""
 "The differences between the list of footnotes and references is shown below."
-msgstr ""
+msgstr "Перелік відмінностей приміток і посилань показано внизу."
 
 msgid "The file uploaded is not an HTML file!"
-msgstr ""
+msgstr "Вивантажений файл — не HTML!"
 
 msgid "The following settings provide the defaults for each format."
-msgstr ""
+msgstr "Далі наведено типові налаштування для кожного формату."
 
 msgid "The following values are used to generate the webserver configuration."
 msgstr ""
+"Наступні значення використовуються при генеруванні конфігурації вебсервера."
 
 msgid ""
 "The generate webserver configuration will redirect\n"
 "          all the HTTP requests to HTTPS"
 msgstr ""
+"Згенерована конфігурація вебсервера переспрямовуватиме всі HTTP-запити до "
+"HTTPS"
 
 msgid "The logo has the site name on itself"
-msgstr ""
+msgstr "Логотип містить назву сайту"
 
 msgid "The optional subtitle"
-msgstr ""
+msgstr "Необов'язковий підзаголовок"
 
 msgid ""
 "The page /special/index is twice special. It is assumed to be the\n"
 "default page to visit when loading the site’s root."
 msgstr ""
+"Сторінка /special/index — особлива серед особливих. Це головна сторінка, яку "
+"видно при відкритті кореня сайту."
 
 msgid "The password will be mailed at this address"
-msgstr ""
+msgstr "Пароль буде надіслано на цю адресу"
 
 msgid "The reset link will expire in a hour."
-msgstr ""
+msgstr "Посилання на скидання чинне протягом години."
 
 msgid "The revision has the following messages"
-msgstr ""
+msgstr "Версія має такі коментарі"
 
 msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
-msgstr ""
+msgstr "Сайт покаже PDF-файли як мініатюри в кінці документу."
 
 msgid "The text structure is shown below."
-msgstr ""
+msgstr "Структуру тексту показано внизу."
 
 msgid "The text to show on the homepage preview"
-msgstr ""
+msgstr "Текст у попередньому перегляді на головній сторінці"
 
 msgid "The text was added to the bookbuilder"
-msgstr ""
+msgstr "Текст додано до конструктора"
 
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
@@ -2685,58 +2887,71 @@ msgid ""
 "          nice title” could have this set to “Nice title”, and will be\n"
 "          listed under N, not under A."
 msgstr ""
+"Назва документу при сортуванні. Корисно, якщо слід вилучити артикль. "
+"Наприклад, якщо для тексту «м. Київ» вказати тут «Київ», його буде віднесено "
+"до літери К, а не М."
 
 msgid "The title of the document. The only mandatory directive."
-msgstr ""
+msgstr "Назва документу. Єдина обов'язкова настанова."
 
 msgid ""
 "The webserver needs to be reconfigured. Please execute in a root shell the "
 "following commands:"
 msgstr ""
+"Вебсервер слід переналаштувати. Будь ласка, виконайте з правами root такі "
+"команди:"
 
 msgid "The whole book in as single signature"
-msgstr ""
+msgstr "Уся книга одною групою"
 
 msgid "Then approve the change as it would be a normal publishing."
-msgstr ""
+msgstr "Тоді схваліть зміну, як зазвичай при оприлюдненні."
 
 msgid "Then fetch the updates from this page."
-msgstr ""
+msgstr "Тоді натисніть fetch угорі на цій сторінці."
 
 msgid "There are failed jobs"
-msgstr ""
+msgstr "Деякі завдання не вдалися"
 
 msgid "There are pending revisions"
-msgstr ""
+msgstr "Є версії в черзі"
 
 msgid "These texts are missing the unique id."
-msgstr ""
+msgstr "Цим текстам бракує унікальних ідентифікаторів."
 
 msgid "They can be texts, special texts, authors or topics."
-msgstr ""
+msgstr "Це можуть бути тексти, особливі тексти, автор_ки чи теми."
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
 "absolute paths (recommended)."
 msgstr ""
+"Вони можуть бути шляхами відносно кореня конфігурації вебсервера чи "
+"(рекомендовано) абсолютними шляхами."
 
 msgid "This directive wants a whitespace separated list of filenames."
-msgstr ""
+msgstr "Цій настанові потрібен розділений пробілами перелік назв файлів."
 
 msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
 msgstr ""
+"Це графічний редактор. Якщо бажаєте використати вікі-синтаксис, не чіпайте "
+"його, а лише заповніть обов'язкові поля вгорі й відкладіть редагування до "
+"наступного кроку."
 
 msgid ""
 "This is relevant only for the generated files, where you may need to have an "
 "alternate set of fonts. It has no effect in the web application if already "
 "using a sans font."
 msgstr ""
+"Це стосується лише згенерованих файлів, для яких може бути потрібен "
+"альтернативний набір шрифтів. На вебзастосунок це не впливає, якщо уже "
+"використовується шрифт без засічок."
 
 msgid "This is the caption"
-msgstr ""
+msgstr "Це заголовок"
 
 msgid ""
 "This mail has been sent to notify you about a new text\n"
@@ -2745,308 +2960,326 @@ msgid ""
 "If this doesn't happen, it means that the uploading has been abandoned\n"
 "and you may want to check it out."
 msgstr ""
+"Цей лист надіслано, щоб сповістити вас, що створюється новий текст. Додання "
+"ще триває й користувач_ці слід завершити вивантаження. Невдовзі має надійти "
+"ще один лист. Якщо цього не відбудеться, вивантаження було покинуто; "
+"можливо, вам слід його переглянути."
 
 msgid "This revision is already published, ignoring changes"
-msgstr ""
+msgstr "Версію вже оприлюднено, зміни нехтуються"
 
 msgid "This revision is being actively edited"
-msgstr ""
+msgstr "Цю версію зараз редагують"
 
 msgid "This revision is being actively edited by you"
-msgstr ""
+msgstr "Ви вже редагуєте десь цю версію"
 
 msgid "This revision is being edited by someone else!"
-msgstr ""
+msgstr "Версію вже редагує хтось іще!"
 
 msgid "This section will not produce a slide"
-msgstr ""
+msgstr "Цей розділ не матиме слайду"
 
 msgid "This setting affects only the text creation form."
-msgstr ""
+msgstr "Параметр впливає лише на форму створення тексту."
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
 "and\n"
 "  password to access the OPDS."
 msgstr ""
+"Це приватний сайт. Мобільні застосунки запитуватимуть у вас логін та пароль "
+"для OPDS-доступу."
 
 msgid "This text does not exist"
-msgstr ""
+msgstr "Тексту не існує"
 
 msgid "This text is a book"
-msgstr ""
+msgstr "Цей текст — книга"
 
 msgid "This text is an article"
-msgstr ""
+msgstr "Цей текст — стаття"
 
 msgid "This text is new"
-msgstr ""
+msgstr "Цей текст новий"
 
 msgid "This text is not available"
-msgstr ""
+msgstr "Текст іще недоступний"
 
 msgid "This text is not public yet"
-msgstr ""
+msgstr "Тексту ще не оприлюднено"
 
 msgid "This text is not published yet"
-msgstr ""
+msgstr "Тексту ще не оприлюднено"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
-msgstr ""
+msgstr "Текст буде відкладено до %1"
 
 msgid "This user cannot be removed"
-msgstr ""
+msgstr "Користувач_ку неможливо вилучити"
 
 msgid "Thumbnail"
-msgstr ""
+msgstr "Мініатюра"
 
 msgid "Title"
-msgstr ""
+msgstr "Назва"
 
 msgid "Title and chapter. If one side document: chapter."
-msgstr ""
+msgstr "Назва й глава. Якщо однобічний документ: глава."
 
 msgid "Title and section.  If one side document: section."
-msgstr ""
+msgstr "Назва й розділ. Якщо однобічний документ: розділ."
 
 msgid "Title and subtitle. If one side document: title."
-msgstr ""
+msgstr "Заголовок і підзаголовок. Якщо однобічний документ: назва."
 
 msgid "Title for sorting"
-msgstr ""
+msgstr "Назва для сортування"
 
 msgid "Title, author, date..."
-msgstr ""
+msgstr "Заголовок, автор_ка, дата…"
 
 msgid "Titles"
-msgstr ""
+msgstr "Назви"
 
 #. (pending_url)
 msgid "To apply the changes, you can visit %1"
-msgstr ""
+msgstr "Можете застосувати зміни за допомогою %1"
 
 msgid "To display the PDFs, set or append the following string in the header"
-msgstr ""
+msgstr "Щоб показати PDF-файли, додайте наступний рядок у шапку"
 
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
-msgstr ""
+msgstr "Щоб зберегти пробіли й розриви рядків, обгорніть абзаци в"
 
 msgid "To quickly format bibliographies wrap them in"
-msgstr ""
+msgstr "Щоб швидко форматувати бібліографії, обгорніть їх у"
 
 msgid "To quickly format plays, use"
-msgstr ""
+msgstr "Щоб швидко форматувати п'єси, використайте"
 
 msgid "To resume the editing you can visit the following URL"
-msgstr ""
+msgstr "Щоб редагувати далі, перейдіть за наступним посиланням"
 
 #. (loc('Update')
 #. (loc("Update"))
 msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
-msgstr ""
+msgstr "Щоб зберегти чи оновити шаблони, спершу збережіть їх кнопкою «%1»"
 
 msgid "To view the changes introduced, you can visit the following URL"
-msgstr ""
+msgstr "Щоб переглянути зміни, перейдіть за наступним посиланням"
 
 msgid "Toggle"
-msgstr ""
+msgstr "Перемкнути"
 
 msgid "Toggle fullscreen editor"
-msgstr ""
+msgstr "Перемкнути повноекранний редактор"
 
 msgid "Too many URLs to process!"
-msgstr ""
+msgstr "Забагато URL-адрес для обробки!"
 
 msgid "Top margin"
-msgstr ""
+msgstr "Відступ угорі"
 
 msgid "Topic"
-msgstr ""
+msgstr "Тема"
 
 msgid "Topics"
-msgstr ""
+msgstr "Теми"
 
 msgid "Total pages"
-msgstr ""
+msgstr "Усього сторінок"
 
 msgid "Triple bars"
-msgstr ""
+msgstr "Три риски"
 
 msgid "Try a random text if unsure"
-msgstr ""
+msgstr "Можете спробувати довільний текст для початку"
 
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
 msgstr ""
+"Підставляти картинки замість посилань (впливає лише на сайт, у статичних "
+"форматах посилання залишаються)"
 
 msgid ""
 "Turn links without description to YouTube, Vimeo,\n"
 "            Gmaps into widgets (affects site display only, static\n"
 "            formats have the link)"
 msgstr ""
+"Вбудовувати YouTube, Vimeo, Gmaps замість посилань без опису (впливає лише "
+"на сайт, у статичних форматах посилання залишаються)"
 
 msgid "Two side layout"
-msgstr ""
+msgstr "Двобічний макет"
 
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 msgid "URI"
-msgstr ""
+msgstr "Ідентифікатор"
 
 msgid "URI is available and valid"
-msgstr ""
+msgstr "Ідентифікатор вільний і чинний"
 
 msgid ""
 "URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
 "my-author-title-1"
 msgstr ""
+"Ідентифікатору слід складатися з латинських літер, цифр і дефісів без "
+"пробілів, наприклад my-author-title-1"
 
 msgid "URL"
-msgstr ""
+msgstr "URL-адреса"
 
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
-msgstr ""
+msgstr "URL-адреса нового віддаленого репозиторію (HTTPS, HTTP чи Git)"
 
 msgid "URL pointing to an embeddable webchat"
-msgstr ""
+msgstr "URL-адреса вбудовування вебчату"
 
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 msgid "Unable to load the bookbuilder session"
-msgstr ""
+msgstr "Не вдалося завантажити сеанс конструктора"
 
 #. ($from || "NO MAIL FROM", $to)
 msgid "Unable to send mail from %1 to %2!"
-msgstr ""
+msgstr "Не вдалося надіслати пошту від %1 до %2!"
 
 msgid "Unbranded PDF (hide site name, logo, etc.)"
-msgstr ""
+msgstr "PDF без символіки (сховати назву сайту, логотип тощо)"
 
 msgid ""
 "Unconditionally remove all the invisible non-breaking\n"
 "                spaces in the text"
-msgstr ""
+msgstr "Безумовно вилучити всі невидимі нерозривні пробіли в тексті"
 
 #. (shared)
 msgid ""
 "Unfortunately, the shared repository located at %1 appeared out of sync."
-msgstr ""
+msgstr "На жаль, спільний репозиторій за адресою %1 виглядає розсинхронованим."
 
 msgid "Unique ID for the text"
-msgstr ""
+msgstr "Унікальний ідентифікатор тексту"
 
 msgid "Unlimited"
-msgstr ""
+msgstr "Необмежено"
 
 msgid "Unordered List"
-msgstr ""
+msgstr "Маркований список"
 
 msgid "Unpublished texts"
-msgstr ""
+msgstr "Неоприлюднені тексти"
 
 #. ($mime_type)
 #. ($mime)
 msgid "Unsupported file type %1"
-msgstr ""
+msgstr "Тип файлу %1 не підтримується"
 
 msgid "Unused attachment"
-msgstr ""
+msgstr "Невикористане вкладення"
 
 msgid "Update"
-msgstr ""
+msgstr "Оновити"
 
 msgid "Update account info"
-msgstr ""
+msgstr "Змінити дані обліковки"
 
 msgid "Update category description"
-msgstr ""
+msgstr "Оновити опис категорії"
 
 msgid "Update to current settings"
-msgstr ""
+msgstr "Оновити до поточних налаштувань"
 
 msgid "Upload"
-msgstr ""
+msgstr "Вивантажити"
 
 msgid "Upload the image and note its name. Files are always renamed."
 msgstr ""
+"Вивантажте картинку й запишіть її назву. Файли завжди перейменовуються."
 
 msgid ""
 "Uploaded and available images are shown and listed below the text preview."
 msgstr ""
+"Перелік вивантажених і доступних картинок показано під попереднім переглядом "
+"тексту."
 
 msgid "Url"
-msgstr ""
+msgstr "URL-адреса"
 
 msgid "Use JS syntax highlight for code blocks"
-msgstr ""
+msgstr "Підсвічувати синтаксис блоків коду за допомогою JavaScript"
 
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
-msgstr ""
+msgstr "Використовувати LuaLaTeX замість XeLaTeX (повільніше)"
 
 msgid "Use SSL for authenticated users"
-msgstr ""
+msgstr "Використовувати SSL для автентифікованих користувач_ок"
 
 msgid "Use it as a teaser image adding to the header this line:"
-msgstr ""
+msgstr "Щоб використати картинку як тизер, додайте в шапку такий рядок:"
 
 msgid "Use named table of contents anchors instead of numeric ones"
-msgstr ""
+msgstr "Текстові ярлики в таблиці змісту замість цифрових"
 
 msgid "Use one of the site's formats"
-msgstr ""
+msgstr "Використати один із форматів сайту"
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
-msgstr ""
+msgstr "Оптимізоване групування по %1 с."
 
 msgid "Use sans fonts for section titles"
-msgstr ""
+msgstr "Використати шрифти без засічок для заголовків розділів"
 
 msgid "Use the image as cover"
-msgstr ""
+msgstr "Зробити картинку обкладинкою"
 
 msgid "Use the site locale"
-msgstr ""
+msgstr "Використовувати мову сайту"
 
 msgid "Useful HTML snippets"
-msgstr ""
+msgstr "Корисні шматки HTML-коду"
 
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
 "a blank line to mark a new paragraph."
 msgstr ""
+"Корисно в примітках чи в шапці документу, де немає можливості розділити "
+"абзаци звичайним новим рядком."
 
 #. ($user->username)
 msgid "User %1 created!"
-msgstr ""
+msgstr "Користувач_ку %1 створено!"
 
 #. ($user->username)
 #. ($c->stash->{user}->username)
 msgid "User %1 deleted"
-msgstr ""
+msgstr "Користувач_ку %1 видалено"
 
 #. ($user->username)
 msgid "User %1 updated"
-msgstr ""
+msgstr "Користувач_ку %1 оновлено"
 
 msgid "User created"
-msgstr ""
+msgstr "Користувач_ку створено"
 
 msgid "Username"
-msgstr ""
+msgstr "Логін"
 
 msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
+"Логін (лише малі латинські літери без особливих символів, можна з цифрами)"
 
 msgid "Users"
-msgstr ""
+msgstr "Користувач_ки"
 
 msgid ""
 "Using this token, you can load the bookbuilder settings\n"
@@ -3054,31 +3287,38 @@ msgid ""
 "    else. Just write it down and then load it from another computer\n"
 "    using the following form."
 msgstr ""
+"Токен дає змогу завантажити налаштування конструктора та перелік текстів на "
+"іншому комп'ютері чи поділитися ними з кимось. Просто запишіть його й "
+"завантажте на іншому комп'ютері цією формою."
 
 msgid ""
 "Usually this is due to high traffic and bad luck, and it can be fixed by "
 "pushing the changes again."
 msgstr ""
+"Зазвичай причиною є високе навантаження чи випадковість; для виправлення "
+"виконайте ще один push зі змінами."
 
 msgid "Verbatim block"
-msgstr ""
+msgstr "Без застосування розмітки"
 
 msgid "View history"
-msgstr ""
+msgstr "Переглянути історію"
 
 msgid "Virtual hosts"
-msgstr ""
+msgstr "Віртуальні хости"
 
 msgid "Virtual hosts, one per line"
-msgstr ""
+msgstr "Віртуальні хости, по одному на рядок"
 
 msgid "What links here"
-msgstr ""
+msgstr "Що сюди посилається"
 
 msgid ""
 "When creating a new text, do not populate the publication date if not "
 "provided by the user."
 msgstr ""
+"При створенні тексту не заповнювати автоматично дату оприлюднення, якщо "
+"користувач_ка її не вказа_ла."
 
 msgid ""
 "When you start a bookbuilder session, at the end of the\n"
@@ -3086,21 +3326,26 @@ msgid ""
 "    can load it here from another device to resume what you were\n"
 "    doing."
 msgstr ""
+"Створивши сеанс конструктора, в кінці сторінки конструктора ви бачите токен, "
+"який надає змогу поділитися сеансом. Щоб продовжити розпочату роботу, ви "
+"можете завантажити сеанс на іншому пристрої, вставивши токен сюди."
 
 msgid "When you upload a PDF, split it into images to be inserted in the body"
 msgstr ""
+"При завантаженні PDF-файлу вставити його сторінки в текст як окремі картинки"
 
 msgid "Where does this text come from?"
-msgstr ""
+msgstr "Звідки взято цей текст?"
 
 msgid "Whitelisted IP (for backup, one per line)"
 msgstr ""
+"Список дозволених IP-адрес (для резервного копіювання, по одній на рядок)"
 
 msgid "Width of the cover image in percent of the text block width."
-msgstr ""
+msgstr "Ширина картинки обкладинки у відсотках ширини текстового блоку."
 
 msgid "Width:"
-msgstr ""
+msgstr "Ширина:"
 
 msgid ""
 "With complex structures, e.g., a chapter with\n"
@@ -3108,348 +3353,378 @@ msgid ""
 "      the chapter's title, so probably you want to select the chapter\n"
 "      and all its subsections."
 msgstr ""
+"Якщо структура складна (глава має розділи), то при обранні глави може "
+"обратись лише заголовок. В такому разі доречно обрати як главу, так і всі її "
+"розділи."
 
 msgid ""
 "With the \"verbatim\" tag you can avoid the markup to\n"
 "          be interpreted, usually not needed"
 msgstr ""
+"Мітка «verbatim» надає змогу вимкнути застосування розмітки. Зазвичай цього "
+"не потрібно"
 
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
 msgstr ""
+"Конструктор надає змогу змінювати макет (шрифти, формат паперу, поля) "
+"текстів у бібліотеці, а також об'єднувати тексти в брошури. Спробуйте!"
 
 msgid "Workflow"
-msgstr ""
+msgstr "Робочий процес"
 
 msgid "Working locally?"
-msgstr ""
+msgstr "Працюєте локально?"
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
 "          which require leading space (notably, you cannot use them in\n"
 "          lists)."
 msgstr ""
+"Міток перенесення не вдасться використати в середовищах із пробілами на "
+"початку (зокрема їх неможливо використовувати в списках)."
 
 msgid "Wrong answer!"
-msgstr ""
+msgstr "Хибна відповідь!"
 
 msgid "Wrong username or password"
-msgstr ""
+msgstr "Хибний логін чи пароль"
 
 msgid "XeLaTeX source"
-msgstr ""
+msgstr "XeLaTeX-джерело"
 
 msgid "Yes"
-msgstr ""
+msgstr "Так"
 
 msgid ""
 "You MUST specify a reason, otherwise the line will have no effect.\n"
 "The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
 "etc.) is irrelevant."
 msgstr ""
+"Зазначити підставу ОБОВʼЯЗКОВО, інакше рядок не діятиме.\n"
+"Порядок рядків у шапці («#title», «#lang» тощо) не має значення."
 
 msgid "You are already logged in"
-msgstr ""
+msgstr "Ви вже зайшли"
 
 msgid ""
 "You are building a collection. Please provide a title and, optionally, any "
 "other information needed for the front cover (author, subtitle, date) and "
 "the back cover (source and notes)."
 msgstr ""
+"Ви складаєте добірку. Будь ласка, зазначте заголовок і (необов'язково) всі "
+"інші дані обох боків обкладинки: автор_ку, підзаголовок і дату; джерело й "
+"примітки."
 
 msgid "You are logged in now!"
-msgstr ""
+msgstr "Ви успішно зайшли!"
 
 #. (backup)
 msgid ""
 "You can access the backup located at %1 or ask your host for help, "
 "forwarding this email"
 msgstr ""
+"Можете скористатися резервною копією %1 чи попросити провайдера про "
+"допомогу, переславши цей лист"
 
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"
 "    remove the texts later."
 msgstr ""
+"Щоб додати кілька текстів у конструктор, натисніть значок книги в панелі "
+"завантажень кожного з них. Пізніше можете додати ще тексти чи вилучити "
+"наявні."
 
 msgid ""
 "You can also link to a part of the text. Please refer to the manual for this "
 "feature"
 msgstr ""
+"Можете також послатись на частину тексту. Докладніше цю функцію описує "
+"посібник"
 
 #. (create_url)
 msgid "You can create a peer at %1"
-msgstr ""
+msgstr "Можете додати товариш_ку: %1"
 
 msgid "You can do so answering a simple question."
-msgstr ""
+msgstr "Достатньо відповісти на просте запитання."
 
 msgid "You can tune them editing them here."
-msgstr ""
+msgstr "Можете відредагувати їх тут."
 
 msgid ""
 "You can use the following prefixes to search a word in a specific field, e."
 "g. \"title:example\""
 msgstr ""
+"За допомогою наступних префіксів шукайте слово в окремому полі, наприклад "
+"«title:зразок»"
 
 msgid ""
 "You can't create a new revision because the text has not been published yet"
-msgstr ""
+msgstr "Створити нову версію стане можливо після оприлюднення тексту"
 
 msgid "You have logged out"
-msgstr ""
+msgstr "Ви вийшли"
 
 msgid "You may want to resume the editing of one of them"
-msgstr ""
+msgstr "Можливо, є сенс продовжити редагувати одну з них"
 
 msgid ""
 "You may want to strip the leading “A”, “An”, “The”, and so on from the title"
-msgstr ""
+msgstr "Може бути доречно вилучити артиклі з початку назви"
 
 msgid "You may want to use one of these images"
-msgstr ""
+msgstr "Можете використати одну з цих картинок"
 
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
 msgstr ""
+"Ви надіслали особові дані через незашифроване з'єднання. Перемкніться на "
+"HTTPS, увійдіть і якнайшвидше змініть пароль. Цього не має траплятись."
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
-msgstr ""
+msgstr "Одразу змініть пароль: %1"
 
 msgid "Your browser does not support the audio tag."
-msgstr ""
+msgstr "Ваш оглядач не підтримує звуку."
 
 msgid "Your browser does not support the video tag."
-msgstr ""
+msgstr "Ваш оглядач не підтримує відео."
 
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
+"Ваші зміни зберігаються й можуть бути перевірені при кожному натиску "
+"«Перегляд» чи «Зберегти»"
 
 msgid "Your chapter here..."
-msgstr ""
+msgstr "Ваша глава…"
 
 msgid "Your current bookbuilder token is:"
-msgstr ""
+msgstr "Ваш поточний токен конструктора:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Ваша е-пошта"
 
 msgid "Your file is ready"
-msgstr ""
+msgstr "Ваш файл готовий"
 
 msgid "Your part here..."
-msgstr ""
+msgstr "Ваша частина…"
 
 #. (password)
 msgid "Your password is %1."
-msgstr ""
+msgstr "Пароль: %1."
 
 msgid "Your password was reset, now you can login with it"
-msgstr ""
+msgstr "Пароль скинуто, тепер можете з ним увійти"
 
 msgid "Your section here..."
-msgstr ""
+msgstr "Ваш розділ…"
 
 msgid "Your sub-sub-section (or description heading) here..."
-msgstr ""
+msgstr "Ваш підпідрозділ (чи термін)…"
 
 msgid "Your subsection here..."
-msgstr ""
+msgstr "Ваш підрозділ…"
 
 #. (home)
 msgid "Your user at %1 has been created."
-msgstr ""
+msgstr "Користувач_ку %1 створено."
 
 #. (username)
 msgid "Your username is %1."
-msgstr ""
+msgstr "Логін: %1."
 
 msgid "aborted"
-msgstr ""
+msgstr "перервано"
 
 msgid "about, links..."
-msgstr ""
+msgstr "опис, посилання…"
 
 msgid "activate to sort column ascending"
-msgstr ""
+msgstr "активуйте, щоб колонка була за зростанням"
 
 msgid "activate to sort column descending"
-msgstr ""
+msgstr "активуйте, щоб колонка була за спаданням"
 
 msgid "active"
-msgstr ""
+msgstr "триває"
 
 msgid "affects only the frontend webserver configuration"
-msgstr ""
+msgstr "впливає лише на конфігурацію вебсервера фронтенду"
 
 msgid "any"
-msgstr ""
+msgstr "будь-яка"
 
 msgid "automatically generated if not present, using author and title"
-msgstr ""
+msgstr "якщо пропустити, генерується автоматично з автор_ки й назви"
 
 msgid "code and monospace"
-msgstr ""
+msgstr "код і моноширинний текст"
 
 msgid "comma separated list"
-msgstr ""
+msgstr "перелік через кому"
 
 msgid "completed"
-msgstr ""
+msgstr "завершено"
 
 msgid "conflict"
-msgstr ""
+msgstr "конфлікт"
 
 msgid "description"
-msgstr ""
+msgstr "опис"
 
 msgid "displayed text"
-msgstr ""
+msgstr "показаний текст"
 
 msgid "edit, commit..."
-msgstr ""
+msgstr "відредагуйте, зробіть коміт…"
 
 msgid "editing"
-msgstr ""
+msgstr "редагування"
 
 msgid "emphasis"
-msgstr ""
+msgstr "курсив"
 
 msgid "failed"
-msgstr ""
+msgstr "збій"
 
 msgid "filtered from _MAX_ total entries"
-msgstr ""
+msgstr "застосовано фільтр, усього _MAX_"
 
 msgid "for code, monospaced"
-msgstr ""
+msgstr "для коду, моноширинний шрифт"
 
 msgid "for display"
-msgstr ""
+msgstr "для показу"
 
 msgid "for poetry"
-msgstr ""
+msgstr "для віршів"
 
 msgid "generic sectioning, good for articles"
-msgstr ""
+msgstr "Звичайні розділи, підходить для статей"
 
 msgid "if you want to use a custom size, you need to set both width and height"
-msgstr ""
+msgstr "для власного розміра оберіть і ширину, і висоту"
 
 msgid "image"
-msgstr ""
+msgstr "картинка"
 
 msgid "left"
-msgstr ""
+msgstr "ліва"
 
 msgid "mandatory"
-msgstr ""
+msgstr "обов'язково"
 
 msgid "markup *not* interpreted"
-msgstr ""
+msgstr "*не* застосовувати розмітки"
 
 #. (site.binary_upload_max_size_in_mega)
 msgid "max %1 Mb"
-msgstr ""
+msgstr "макс. %1 МБ"
 
 msgid "minutes"
-msgstr ""
+msgstr "хв"
 
 msgid "new-example-uri"
-msgstr ""
+msgstr "new-example-uri"
 
 msgid "only lowercase ASCII and hyphens"
-msgstr ""
+msgstr "лише малі латинські літери й дефіси"
 
 msgid "or"
-msgstr ""
+msgstr "чи"
 
 msgid "ordered item"
-msgstr ""
+msgstr "нумерований список"
 
 msgid "overstriked"
-msgstr ""
+msgstr "закреслення"
 
 msgid "pending"
-msgstr ""
+msgstr "у черзі"
 
 msgid "plain PDF"
-msgstr ""
+msgstr "простий PDF"
 
 msgid "plain text source"
-msgstr ""
+msgstr "просте текстове джерело"
 
 msgid "processing"
-msgstr ""
+msgstr "обробка"
 
 msgid "published"
-msgstr ""
+msgstr "оприлюднено"
 
 msgid "revision"
-msgstr ""
+msgstr "версія"
 
 msgid "right"
-msgstr ""
+msgstr "права"
 
 #. (args)
 msgid "string"
-msgstr ""
+msgstr "рядок"
 
 msgid "strong emphasis"
-msgstr ""
+msgstr "грубий шрифт"
 
 msgid "sub-sub-section"
-msgstr ""
+msgstr "підпідрозділ"
 
 msgid "subscript"
-msgstr ""
+msgstr "нижній регістр"
 
 msgid "subsection"
-msgstr ""
+msgstr "підрозділ"
 
 msgid "superscript"
-msgstr ""
+msgstr "верхній регістр"
 
 msgid "taken"
-msgstr ""
+msgstr "триває"
 
 msgid "texts by authors, title, topic..."
-msgstr ""
+msgstr "тексти за автор_кою, назвою, темою…"
 
 msgid "texts sorted by author"
-msgstr ""
+msgstr "тексти сортовано за автор_кою"
 
 msgid "texts sorted by title"
-msgstr ""
+msgstr "тексти, сортовані за назвою"
 
 msgid "the author of the text (as displayed)"
-msgstr ""
+msgstr "автор_ка тексту (для показу)"
 
 msgid "this text will be unpublished"
-msgstr ""
+msgstr "оприлюднення тексту буде скасовано"
 
 msgid "topic"
-msgstr ""
+msgstr "тема"
 
 msgid "unordered item"
-msgstr ""
+msgstr "маркований список"
 
 msgid "very strong emphasis"
-msgstr ""
+msgstr "дуже грубий шрифт"
 
 msgid "with description"
-msgstr ""
+msgstr "з описом"
 
 msgid "without description"
-msgstr ""
+msgstr "без опису"
 
 msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
+"«Покинуте редагування» означає, що відредагованої версії не було "
+"оприлюднено, але її залишено на випадок, щоб інші могли відштовхнутися від "
+"неї, починаючи власні редагування."
