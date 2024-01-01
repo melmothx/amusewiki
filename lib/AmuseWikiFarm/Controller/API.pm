@@ -319,6 +319,13 @@ sub attachments :Chained('api') :PathPart('attachment') :Args(1) {
     $c->detach($c->view('JSON'));
 }
 
+sub format_definitions :Chained('api') :PathPart('format-definitions') :Args(0) {
+    my ($self, $c) = @_;
+    my $out = $c->stash->{site}->formats_definitions;
+    $c->stash(json => $out);
+    $c->detach($c->view('JSON'));
+}
+
 =head1 AUTHOR
 
 Marco Pessotto <melmothx@gmail.com>
