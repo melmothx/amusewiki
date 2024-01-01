@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.583 2024-01-01
+
+ - Expose the format definitions to the API
+ - Serve the .bare.html file if requested
+
 2.582 2023-12-16
 
  - i18n: tr (updated)
