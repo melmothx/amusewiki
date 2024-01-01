@@ -38,6 +38,7 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
                       epub    |
                       muse    |
                       zip     |
+                      bare\.html |
 
                       # these two need special treatment
                       jpe?g   |
