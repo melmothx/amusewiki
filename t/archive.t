@@ -169,7 +169,7 @@ ok(!$schema->resultset('Category')->with_texts->single({'me.uri' => 'supermarco'
 my $dummy_content_deferred =<<'MUSE';
 #title Dummy text
 #author Superpippo
-#pubdate 2024-01-01
+#pubdate 2034-01-01
 
 bla bla
 
@@ -190,7 +190,7 @@ ok(!$title->deleted);
 is($title->status, 'deferred');
 
 my $global_deferred_titles = $schema->resultset('Title')
-  ->deferred_to_publish(DateTime->new(year => 2025,
+  ->deferred_to_publish(DateTime->new(year => 2035,
                                       month => 1,
                                       day => 1));
 ok ($global_deferred_titles->count, "Found deferred titles");

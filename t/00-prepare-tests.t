@@ -33,7 +33,7 @@ plan tests => 20;
 
 my $script_dir = AmuseWikiFarm::Utils::Paths::dbicdh_location();
 diag "Script dir is $script_dir";
-ok -d $script_dir;
+ok -d $script_dir, "Script dir ok";
 
 Text::Amuse::Compile::Fonts::Import->new(output => 'fontspec.json')->import_and_save;
 
@@ -112,7 +112,7 @@ my $libr_role = $schema->resultset('Role')->create({ role => 'librarian' });
 
 $mr_root->add_to_roles($root_role);
 
-ok($mr_root->id);
+ok($mr_root->id, "Found root user");
 
 
 my %repos = ('0blog0' => {
@@ -172,7 +172,7 @@ foreach my $repo (sort keys %repos) {
     }
     ok(dircopy($src, $dest), "File copied, ready to go");
     my $site = $schema->resultset('Site')->create($repos{$repo})->discard_changes;
-    ok ($site->id) or diag $repo->{id} . " couldn't be created";
+    ok ($site->id, "Created site") or diag $repo->{id} . " couldn't be created";
     $site->magic_question('First month of the year');
     $site->magic_answer('January');
     $site->sitegroup('1');
@@ -181,13 +181,13 @@ foreach my $repo (sort keys %repos) {
     if (my $mainfont = $repos{$repo}{mainfont}) {
         foreach my $text ($site->titles->published_texts) {
             my $html = read_file($text->filepath_for_ext('html'));
-            like $html, qr{\Q$mainfont\E};
+            like $html, qr{\Q$mainfont\E}, "mainfont checked for " . $text->full_uri;
         }
     }
-    ok -d $site->root_install_directory;
+    ok -d $site->root_install_directory, "Install dir OK";
     diag "INSTALL DIRECTORY is " . $site->root_install_directory;
-    ok -d $site->mkits_location;
-    ok -d $site->templates_location;
+    ok -d $site->mkits_location, "mk location ok";
+    ok -d $site->templates_location, "template location ok";
 }
 
 my $blog = $schema->resultset('Site')->find('0blog0');
@@ -209,7 +209,7 @@ foreach my $i (1..3) {
     }
     $user->add_to_roles($libr_role);
     $user->add_to_sites($blog);
-    ok($user->id, "Found " . $user->id);
+    ok($user->id, "Found UID " . $user->id);
 }
 
 $schema->resultset('User')->create({ username => 'marcomarco',

@@ -46,7 +46,7 @@ $mech->get_ok('/action/text/new');
 foreach my $spec ({
                    title => 'deferred-text',
                    author => 'pippo',
-                   pubdate => '2024-10-10',
+                   pubdate => '2034-10-10',
                    status => 'deferred'
                   },
                   {
