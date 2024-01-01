@@ -10,7 +10,7 @@ dedicated tree.
  - Add function to send mails from the site under site-admin/send-email
  - Add Bump Pubdate function (#450)
 
-2.581 2023-10-18
+2.581 2023-10-21
 
  - improve OAI-PMH's MARC21 output with more data (notably uri, label
    and content type)
