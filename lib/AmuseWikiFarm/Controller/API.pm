@@ -326,6 +326,13 @@ sub format_definitions :Chained('api') :PathPart('format-definitions') :Args(0) 
     $c->detach($c->view('JSON'));
 }
 
+sub aggregations :Chained('api') :PathPart('aggregations') :Args(0) {
+    my ($self, $c) = @_;
+    my $out = [ $c->stash->{site}->aggregations->sorted->hri ];
+    $c->stash(json => $out);
+    $c->detach($c->view('JSON'));
+}
+
 =head1 AUTHOR
 
 Marco Pessotto <melmothx@gmail.com>

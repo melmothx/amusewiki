@@ -115,7 +115,7 @@
     [% END %]
 
     [% FOREACH aggregation IN aggregations %]
-      <div class="text-aggregation">
+      <div class="text-aggregation" data-aggregation-id="[% aggregation.aggregation_id | html %]">
         <strong>[% loc('Part of:') %]</strong>
         <a href="[% c.uri_for_action('aggregation/aggregation', aggregation.aggregation_uri) | html %]">
           [% aggregation.aggregation_name | html %]
@@ -145,8 +145,46 @@
           </div>
         [% END %]
       [% END %]
+    [% END %]
+    [% IF annotation_editor %]
       [% IF c.user_exists %]
         <div id="edit-annotation" class="collapse">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <form name="aggregate" action="[% c.uri_for_action('aggregation/title', text.id) %]"
+                    method="POST">
+                <div>
+                  <strong>[% loc('Update aggregations') %]</strong>
+                </div>
+                <div style="margin: 5px 0" id="annotation-editor-aggregations">
+                  <a href="[% c.uri_for_action('/aggregation/manage') %]">
+                    [% loc('No aggregation available. Do you want to create one?') %]
+                  </a>
+                </div>
+                [% FOREACH aggregation IN aggregations %]
+                  <div style="margin: 5px 0">
+                    <label>
+                      <input type="checkbox" name="remove-aggregation[% aggregation.aggregation_id | html%]">
+                      [% loc('Remove') %]
+                      <em>
+                        [% aggregation.aggregation_name | html %]
+                        [% aggregation.series_number | html %]
+                      </em>
+                    </label>
+                  </div>
+                [% END %]
+                <div>
+                  <button type="submit" class="btn btn-primary">
+                    [% loc('Update') %]
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          [% IF annotations %]
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <strong>[% loc('Update annotations') %]</strong>
           <form name="annotate" action="[% c.uri_for_action('annotate/title', text.id) %]"
                 method="POST"
                 enctype="multipart/form-data">
@@ -188,6 +226,9 @@
               </button>
             </div>
           </form>
+            </div>
+          </div>
+          [% END %]
         </div>
       [% END %]
     [% END %]
@@ -241,7 +282,7 @@
                 ></span><span class="sr-only" >[% loc('Edit this text') %]</span></a>
       </span>
       [% END %]
-      [% IF annotations && c.user_exists %]
+      [% IF annotation_editor %]
         <span id="text-annotation-button">
           <a href="#edit-annotation"
              data-toggle="collapse"
@@ -333,3 +374,27 @@
        $('#preamble').css('padding-bottom', '0px');
    }
   </script>
+  [% IF annotation_editor %]
+    <script>
+     $(document).ready(function() {
+         $('#text-annotation-button').on('click', function() {
+             $.get('/api/aggregations', function(data) {
+                 if (data.length) {
+                     $('#annotation-editor-aggregations').children().remove();
+                     var dropdown = $('<select>',
+                                      { "name": "aggregation_name",
+                                        "class": "form-control"
+                                      });
+                     dropdown.append($('<option>', { "value": "" }).text(''));
+                     for (var i = 0; i < data.length; i++) {
+                         dropdown.append($('<option>', { "value": data[i].aggregation_id })
+                             .text(data[i].aggregation_name + ' ' + data[i].series_number));
+                     }
+                     $('#annotation-editor-aggregations').append(dropdown);
+                     dropdown.select2();
+                 }
+             });
+         });
+     });
+    </script>
+  [% END %]
