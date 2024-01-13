@@ -217,7 +217,7 @@ sub titles {
             push @out, $title;
         }
     }
-    return \@out;
+    return @out;
 }
 
 __PACKAGE__->meta->make_immutable;

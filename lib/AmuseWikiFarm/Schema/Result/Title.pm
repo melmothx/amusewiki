@@ -2115,6 +2115,17 @@ sub annotate {
            };
 }
 
+sub aggregations {
+    my $self = shift;
+    if ($self->is_regular && $self->is_published) {
+        return $self->site->aggregations->with_title_uri($self->uri);
+    }
+    else {
+        return $self->site->aggregations->no_match;
+    }
+
+}
+
 __PACKAGE__->meta->make_immutable;
 
 1;

@@ -355,7 +355,7 @@ sub marc21_record {
                             }
                            ],
                format => [ $self->metadata_format ],
-               type => [ { a => $self->metadata_type, "2" => 'local' } ],
+               type => [ { a => $self->metadata_type, 2 => 'local' } ],
               );
     my %mapping = (
                    contributor => 'collaborator',
@@ -396,6 +396,23 @@ sub marc21_record {
             else {
                 push @{$rec{description}}, $ann->annotation->label . ": " . $ann->annotation_value;
             }
+        }
+        my @aggregations;
+        foreach my $agg ($title->aggregations->sorted->hri->all) {
+            Dlog_debug { "Aggregation is $_" } $agg;
+            push @aggregations, {
+                                 't' => $agg->{aggregation_name},
+                                 'g' => $agg->{series_number},
+                                 'o' => $agg->{aggregation_uri},
+                                 '6' => $base_url . '/aggregation/' . $agg->{aggregation_uri},
+                                 'z' => $agg->{isbn},
+                                 'd' => join(' ', grep { $_ } map { $agg->{$_} } qw/publication_place
+                                                                                    publication_date
+                                                                                    publisher/),
+                                };
+        }
+        if (@aggregations) {
+            $rec{aggregation} = \@aggregations;
         }
     }
     my $type = $rec{type}[0] || '';
@@ -448,6 +465,7 @@ sub marc21_record {
                       [ slc         => '852', ' ', ' ', 'c' ],
                       [ isbn        => '020', ' ', ' ', 'a' ],
                       [ full_uri    => '856', ' ', ' ', qw/u q y/],
+                      [ aggregation => '773', ' ', ' ', qw/t g o 6 z d/],
                       );
     Dlog_debug { "MARC21: $_" } \%rec;
 
@@ -473,7 +491,9 @@ sub marc21_record {
                     }
                     my @subfields = ([ subfield => [ code => $code ], $cleaned ]);
                     foreach my $add (@rest) {
-                        push @subfields, [ subfield => [ code => $add ], $r->{$add} ];
+                        if (defined $r->{$add} and length($r->{$add})) {
+                            push @subfields, [ subfield => [ code => $add ], $r->{$add} ];
+                        }
                     }
                     push @out, [ datafield => [ tag => $tag, ind1 => $ind1, ind2 => $ind2 ],
                                  \@subfields ];

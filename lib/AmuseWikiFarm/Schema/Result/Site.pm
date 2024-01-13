@@ -5333,7 +5333,6 @@ sub process_autoimport_files {
 
 sub create_aggregation {
     my ($self, $args) = @_;
-    Dlog_debug { "Creating aggregation for $_" } $args;
     my $guard = $self->result_source->schema->txn_scope_guard;
     my @errors;
     my %rec;
@@ -5380,8 +5379,17 @@ sub create_aggregation {
     foreach my $u (qw/aggregation_code aggregation_uri/) {
         $rec{$u} = muse_naming_algo($rec{$u});
     }
-    Dlog_debug { "Creating aggregation with $_" } \%rec;
-    my $aggregation = $self->aggregations->update_or_create(\%rec);
+    my $aggregation = $self->aggregations->find({ aggregation_uri => $rec{aggregation_uri} });
+    my @existing_uris;
+    if ($aggregation) {
+        Dlog_debug { "Updating aggregation with $_" } \%rec;
+        $aggregation->update(\%rec);
+        @existing_uris = map { $_->uri } $aggregation->titles;
+    }
+    else {
+        Dlog_debug { "Creating aggregation with $_" } \%rec;
+        $aggregation = $self->aggregations->create(\%rec);
+    }
     my @uris;
     Dlog_debug { "Titles: $_" } $args->{titles};
     if ($args->{titles} and ref($args->{titles}) eq 'ARRAY') {
@@ -5389,19 +5397,27 @@ sub create_aggregation {
     }
     $aggregation->aggregation_titles->delete;
     my $pos = 0;
+    my %done;
     foreach my $uri (@uris) {
         if ($uri and $uri =~ m/\w/) {
             $uri =~ s/\s*//g;
             $aggregation->aggregation_titles->create({
                                                       sorting_pos => ++$pos,
                                                       title_uri => $uri,
-                                                     });
+                                                     }) unless $done{$uri};
+            $done{$uri}++;
         }
+    }
+    if (join('|', @uris) ne join('|', @existing_uris)) {
+        Dlog_debug { "Aggregation changed $_" } +{ from => \@existing_uris, to => \@uris };
+        my @ids = map { $_->id } $aggregation->titles;
+        $self->oai_pmh_records->by_title_id(\@ids)->bump_datestamp;
     }
     $guard->commit;
     $aggregation->discard_changes;
     return $aggregation;
 }
+
 
 sub serialize_aggregations {
     my $self = shift;
@@ -5414,7 +5430,7 @@ sub serialize_aggregations {
         foreach my $k (keys %vals) {
             delete $vals{$k} unless defined $vals{$k};
         }
-        $vals{titles} = [ map { $_->uri } @{$agg->titles} ];
+        $vals{titles} = [ map { $_->uri } $agg->titles ];
         push @out, \%vals;
     }
     return \@out;

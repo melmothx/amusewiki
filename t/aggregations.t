@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 3;
+use Test::More tests => 27;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -38,6 +38,7 @@ my $ag = [
            aggregation_code => "fmx",
            aggregation_uri => "fmx-1",
            aggregation_name => "For Marco",
+           isbn => '97899999999999',
            series_number => "#1",
            sorting_pos => 1,
            titles => [
@@ -65,7 +66,8 @@ my $ag = [
 DumpFile($autoimport->child('aggregations.yml'), $ag);
 my $copy = LoadFile($autoimport->child('aggregations.yml'));
 
-push @{$ag->[0]->{titles}}, 'non-existent';
+# and a duplicate
+push @{$ag->[0]->{titles}}, 'non-existent', 'to-test-one';
 push @{$ag->[1]->{titles}}, 'non-existent-1';
 
 DumpFile($autoimport->child('aggregations.yml'), $ag);
@@ -93,3 +95,36 @@ is $site->aggregations->count, 2;
 is $site->aggregations->search_related('aggregation_titles')->count, 8;
 
 is_deeply $site->serialize_aggregations, $copy;
+
+sleep 1;
+
+diag "Reimporting";
+
+my $removed = pop @{$copy->[1]->{titles}};
+
+DumpFile($autoimport->child('aggregations.yml'), $copy);
+$site->process_autoimport_files;
+is $site->aggregations->search_related('aggregation_titles')->count, 5;
+
+is_deeply $site->serialize_aggregations, $copy;
+
+is $site->aggregations->no_match->count, 0;
+
+foreach my $title ($site->titles) {
+    if ($title->uri eq $removed) {
+        is $title->aggregations->count, 1;
+    }
+    else {
+        is $title->aggregations->count, 2;
+    }
+}
+
+while (my $j = $site->jobs->dequeue) {
+    $j->dispatch_job;
+    diag $j->logs;
+}
+
+
+foreach my $rec ($site->oai_pmh_records) {
+    ok $rec->marc21_record;
+}
