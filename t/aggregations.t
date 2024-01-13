@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 39;
+use Test::More tests => 41;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -150,4 +150,9 @@ $mech->content_like(qr{Title three.*Title two}s);
 foreach my $title ($site->titles) {
     $mech->get_ok($title->full_uri);
     $mech->content_contains('/aggregation/fmx');
+}
+
+foreach my $agg ($site->aggregations) {
+    my @titles = $agg->titles;
+    ok scalar(@titles);
 }

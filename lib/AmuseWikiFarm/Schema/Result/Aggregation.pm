@@ -210,7 +210,7 @@ sub titles {
     my @uris = map { $_->{title_uri} }
       $self->aggregation_titles->search(undef,
                                         {
-                                         order_by => [qw/sorting_pos uri/],
+                                         order_by => [qw/sorting_pos title_uri/],
                                          columns => [qw/title_uri/],
                                          result_class => 'DBIx::Class::ResultClass::HashRefInflator',
                                         })->all;
