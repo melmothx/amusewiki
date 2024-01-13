@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 27;
+use Test::More tests => 29;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -128,3 +128,15 @@ while (my $j = $site->jobs->dequeue) {
 foreach my $rec ($site->oai_pmh_records) {
     ok $rec->marc21_record;
 }
+
+$mech->get_ok('/oai-pmh?verb=ListRecords&metadataPrefix=marc21');
+$mech->content_like(qr{
+\s+<datafield\s+tag="773"\s+ind1="\s+"\s+ind2="\s+">
+\s+<subfield\s+code="t">For\s+Marco</subfield>
+\s+<subfield\s+code="g">\#1</subfield>
+\s+<subfield\s+code="o">fmx-1</subfield>
+\s+<subfield\s+code="6">https://0aggregation0.amusewiki.org/aggregation/fmx-1</subfield>
+\s+<subfield\s+code="z">97899999999999</subfield>
+\s+<subfield\s+code="d">Nowhere</subfield>
+\s+</datafield>
+}sx);
