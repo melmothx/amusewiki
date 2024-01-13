@@ -154,7 +154,7 @@
               <form name="aggregate" action="[% c.uri_for_action('aggregation/title', text.id) %]"
                     method="POST">
                 <div>
-                  <strong>[% loc('Update aggregations') %]</strong>
+                  <strong>[% loc('Add aggregation') %]</strong>
                 </div>
                 <div style="margin: 5px 0" id="annotation-editor-aggregations">
                   <a href="[% c.uri_for_action('/aggregation/manage') %]">
@@ -164,7 +164,8 @@
                 [% FOREACH aggregation IN aggregations %]
                   <div style="margin: 5px 0">
                     <label>
-                      <input type="checkbox" name="remove-aggregation[% aggregation.aggregation_id | html%]">
+                      <input type="checkbox" name="remove_aggregation"
+                             value="[% aggregation.aggregation_id | html%]">
                       [% loc('Remove') %]
                       <em>
                         [% aggregation.aggregation_name | html %]
@@ -382,7 +383,7 @@
                  if (data.length) {
                      $('#annotation-editor-aggregations').children().remove();
                      var dropdown = $('<select>',
-                                      { "name": "aggregation_name",
+                                      { "name": "add_aggregation_id",
                                         "class": "form-control"
                                       });
                      dropdown.append($('<option>', { "value": "" }).text(''));
