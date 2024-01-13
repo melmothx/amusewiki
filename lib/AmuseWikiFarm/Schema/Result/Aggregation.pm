@@ -199,6 +199,11 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-13 09:21:29
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:1hA0FBKGbmWN6Kkq5aWX/g
 
+sub sqlt_deploy_hook {
+    my ($self, $sqlt_table) = @_;
+    $sqlt_table->add_index(name => 'aggregation_uri_amw_index', fields => ['aggregation_uri']);
+    $sqlt_table->add_index(name => 'aggregation_code_amw_index', fields => ['aggregation_code']);
+}
 
 sub titles {
     my $self = shift;
