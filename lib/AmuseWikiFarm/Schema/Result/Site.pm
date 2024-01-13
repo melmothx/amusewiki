@@ -568,6 +568,21 @@ __PACKAGE__->add_unique_constraint("canonical_unique", ["canonical"]);
 
 =head1 RELATIONS
 
+=head2 aggregations
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Aggregation>
+
+=cut
+
+__PACKAGE__->has_many(
+  "aggregations",
+  "AmuseWikiFarm::Schema::Result::Aggregation",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 amw_sessions
 
 Type: has_many
@@ -1014,8 +1029,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-10-01 08:37:40
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:xVVXee+HMfyH3ZvI6L7aHA
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-13 08:19:39
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6zA69GDg8yls5/fPUpINEg
 
 =head2 other_sites
 

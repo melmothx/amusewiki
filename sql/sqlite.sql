@@ -754,6 +754,46 @@ CREATE TABLE title_annotation (
 
 CREATE UNIQUE INDEX unique_title_annotation_key ON title_annotation (annotation_id, title_id);
 
+CREATE TABLE aggregation (
+       aggregation_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       uri VARCHAR(255) NOT NULL,  -- fe-15
+       name VARCHAR(255) NOT NULL, -- F.E.
+       -- inside the same name
+       series_number VARCHAR(255), -- 15
+       -- and if the series number are not integers:
+       sorting_pos INTEGER NOT NULL DEFAULT 0,
+
+       -- if available
+       publication_place VARCHAR(255),
+       publication_date VARCHAR(255),
+       isbn VARCHAR(32),
+
+       -- this is usually the same for the same aggregation across
+       -- serials, so there's a bit of redundancy, but that's not enough
+       -- for another table. It's not even required.
+       publisher VARCHAR(255),
+
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE
+);
+CREATE INDEX aggregation_name_idx ON aggregation(name);
+
+CREATE UNIQUE INDEX unique_aggregation ON aggregation (uri, site_id);
+
+CREATE TABLE aggregation_title (
+    aggregation_id INTEGER NOT NULL REFERENCES aggregation(id) ON DELETE CASCADE ON UPDATE CASCADE,
+
+    -- this is not a FK because we want the info in before the record
+    -- actually exists and after it's gone for the autoimport we can
+    -- ignore them.
+    title_uri VARCHAR(255) NOT NULL,
+    sorting_pos INTEGER NOT NULL DEFAULT 0,
+    PRIMARY KEY (aggregation_id, title_uri)
+);
+
+CREATE INDEX aggregation_title_uri_idx ON aggregation_title(title_uri);
+
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),
