@@ -40,6 +40,7 @@ Posting here will trigger the action
 sub root :Chained('/site_user_required') :PathPart('console') :CaptureArgs(0) {
     my ($self, $c) = @_;
     $c->stash(full_page_no_side_columns => 1,
+              load_select2 => 1,
               nav => 'console');
 }
 

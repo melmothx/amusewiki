@@ -216,6 +216,15 @@ sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
     my @aggregations = $text->aggregations->sorted->hri->all;
     Dlog_debug { "Aggregations are  $_"  } \@aggregations;
     $c->stash(aggregations => \@aggregations);
+    # save query if we already have something:
+    if ($c->user_exists) {
+        if (@annotations or @aggregations or $site->aggregations->count) {
+            $c->stash(
+                      annotation_editor => 1,
+                      load_select2 => 1,
+                     );
+        }
+    }
 }
 
 sub text :Chained('populate_preamble') :PathPart('') :Args(0) {
