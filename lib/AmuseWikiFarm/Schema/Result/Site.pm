@@ -2242,7 +2242,7 @@ sub index_file {
                                                            category_types => $self->custom_category_types,
                                                            category_uri_use_unicode => $self->category_uri_use_unicode,
                                                           });
-    Dlog_debug { "Details are $_"  } $details;
+    # Dlog_debug { "Details are $_"  } $details;
     # unparsable
     return unless $details;
 
@@ -5292,7 +5292,7 @@ sub process_autoimport_files {
     my $dir = Path::Tiny::path($self->autoimport_dir);
     # for now we support the categories (with descriptions) and the
     # legacy links, as they can't be inferred from the archive itself.
-    foreach my $type (qw/categories legacy_links/) {
+    foreach my $type (qw/categories legacy_links aggregations/) {
         my $file =  $dir->child($type . '.yml');
         if ($file->exists) {
             try {
@@ -5315,6 +5315,9 @@ sub process_autoimport_files {
                             $cat->category_descriptions->find_or_create($desc, { key => 'category_id_lang_unique' });
                         }
                     }
+                    elsif ($type eq 'aggregations') {
+                        $self->create_aggregation($item);
+                    }
                     else {
                         $self->$type->update_or_create($item);
                     }
@@ -5327,6 +5330,77 @@ sub process_autoimport_files {
         }
     }
 }
+
+sub create_aggregation {
+    my ($self, $args) = @_;
+    Dlog_debug { "Creating aggregation for $_" } $args;
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    my @errors;
+    my %rec;
+    foreach my $k (keys %$args) {
+        unless (defined $args->{$k}) {
+            $args->{$k} = "";
+        }
+        unless (ref($args)) {
+            $args->{$k} =~ s/\s+/ /gs;
+            $args->{$k} =~ s/\A\s*//;
+            $args->{$k} =~ s/\s*\z//;
+        }
+    }
+    foreach my $required (qw/aggregation_code aggregation_uri aggregation_name/) {
+        if (my $v = $args->{$required}) {
+            $rec{$required} = $v;
+        }
+        else {
+            push @errors, "Missing $required field";
+        }
+    }
+    if (@errors) {
+        Dlog_error { "Errors: $_" } \@errors;
+        return;
+    }
+    foreach my $f (qw/series_number
+                      publication_place
+                      publication_date
+                      isbn
+                      publisher/) {
+        if (exists $args->{$f}) {
+            $rec{$f} = $args->{$f};
+        }
+    }
+    # integers
+    foreach my $i (qw/sorting_pos/) {
+        if (exists $args->{$i}
+            and defined exists $args->{$i}
+            and $args->{$i} =~ m/\A([1-9][0-9]*)/a) {
+            $rec{$i} = $1;
+        }
+    }
+    # uris
+    foreach my $u (qw/aggregation_code aggregation_uri/) {
+        $rec{$u} = muse_naming_algo($rec{$u});
+    }
+    Dlog_debug { "Creating aggregation with $_" } \%rec;
+    my $aggregation = $self->aggregations->update_or_create(\%rec);
+    my @uris;
+    Dlog_debug { "Titles: $_" } $args->{titles};
+    if ($args->{titles} and ref($args->{titles}) eq 'ARRAY') {
+        @uris = @{$args->{titles}};
+    }
+    $aggregation->aggregation_titles->delete;
+    my $pos = 0;
+    foreach my $uri (@uris) {
+        if ($uri and $uri =~ m/\w/) {
+            $uri =~ s/\s*//g;
+            $aggregation->aggregation_titles->create({
+                                                      sorting_pos => ++$pos,
+                                                      title_uri => $uri,
+                                                     });
+        }
+    }
+    $guard->commit;
+}
+
 
 sub annotations_directory {
     return 'annotations';
