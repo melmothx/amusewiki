@@ -781,8 +781,7 @@ CREATE INDEX aggregation_name_idx ON aggregation(name);
 CREATE UNIQUE INDEX unique_aggregation ON aggregation (uri, site_id);
 
 CREATE TABLE aggregation_title (
-    aggregation_id INTEGER NOT NULL REFERENCES aggregation(id) ON DELETE CASCADE ON UPDATE CASCADE,
-
+    aggregation_id INTEGER NOT NULL REFERENCES aggregation(aggregation_id) ON DELETE CASCADE ON UPDATE CASCADE,
     -- this is not a FK because we want the info in before the record
     -- actually exists and after it's gone for the autoimport we can
     -- ignore them.

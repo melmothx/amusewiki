@@ -165,7 +165,7 @@ Related object: L<AmuseWikiFarm::Schema::Result::AggregationTitle>
 __PACKAGE__->has_many(
   "aggregation_titles",
   "AmuseWikiFarm::Schema::Result::AggregationTitle",
-  { "foreign.aggregation_id" => "self.id" },
+  { "foreign.aggregation_id" => "self.aggregation_id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
@@ -185,8 +185,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-13 08:19:39
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:asAjsdWCQqqSjTmfdO6Icw
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-13 08:44:33
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:nUMeC3DbhhAKPAqwM3ohpw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

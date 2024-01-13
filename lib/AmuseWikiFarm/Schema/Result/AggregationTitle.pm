@@ -94,13 +94,13 @@ Related object: L<AmuseWikiFarm::Schema::Result::Aggregation>
 __PACKAGE__->belongs_to(
   "aggregation",
   "AmuseWikiFarm::Schema::Result::Aggregation",
-  { id => "aggregation_id" },
+  { aggregation_id => "aggregation_id" },
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-13 08:19:39
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:jQqF5j3rKED2ytkKQaKYOw
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-13 08:44:33
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:MOob6o5qgaZ55MT8FqAZZA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
