@@ -200,6 +200,25 @@ __PACKAGE__->belongs_to(
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:1hA0FBKGbmWN6Kkq5aWX/g
 
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+sub titles {
+    my $self = shift;
+    my @uris = map { $_->{title_uri} }
+      $self->aggregation_titles->search(undef,
+                                        {
+                                         order_by => [qw/sorting_pos uri/],
+                                         columns => [qw/title_uri/],
+                                         result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                                        })->all;
+    my %titles = map { $_->uri => $_ }
+      $self->site->titles->texts_only->status_is_published->by_uri(\@uris)->all;
+    my @out;
+    foreach my $uri (@uris) {
+        if (my $title = $titles{$uri}) {
+            push @out, $title;
+        }
+    }
+    return \@out;
+}
+
 __PACKAGE__->meta->make_immutable;
 1;

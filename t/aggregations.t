@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 2;
+use Test::More tests => 3;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -16,7 +16,7 @@ use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use Path::Tiny;
 use URI;
-use YAML qw/DumpFile/;
+use YAML qw/DumpFile LoadFile/;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf-8)";
@@ -33,8 +33,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 my $autoimport = path($site->autoimport_dir);
 $autoimport->mkpath;
-DumpFile($autoimport->child('aggregations.yml'),
-         [
+my $ag = [
           {
            aggregation_code => "fmx",
            aggregation_uri => "fmx-1",
@@ -44,7 +43,6 @@ DumpFile($autoimport->child('aggregations.yml'),
            titles => [
                       'to-test-one',
                       'to-test-two',
-                      'non-existent',
                       'to-test-three',
                      ],
            publication_place => "Nowhere",
@@ -54,19 +52,25 @@ DumpFile($autoimport->child('aggregations.yml'),
            aggregation_uri => "fmx-2",
            aggregation_name => "For Marco",
            series_number => "#2",
-           sorting_pos => 1,
+           sorting_pos => 2,
            titles => [
                       'to-test-three',
                       'to-test-two',
                       'to-test-one',
-                      'non-existent-1',
                      ],
            publication_date => "Never",
            publisher => "Nobody",
           },
-         ]);
+         ];
+DumpFile($autoimport->child('aggregations.yml'), $ag);
+my $copy = LoadFile($autoimport->child('aggregations.yml'));
 
-foreach my $title (qw/one two tree/) {
+push @{$ag->[0]->{titles}}, 'non-existent';
+push @{$ag->[1]->{titles}}, 'non-existent-1';
+
+DumpFile($autoimport->child('aggregations.yml'), $ag);
+
+foreach my $title (qw/one two three/) {
     my $muse = path($site->repo_root, qw/t tt/, "to-test-$title.muse");
     $muse->parent->mkpath;
     $muse->spew_utf8(<<"MUSE");
@@ -87,3 +91,5 @@ $site->update_db_from_tree;
 
 is $site->aggregations->count, 2;
 is $site->aggregations->search_related('aggregation_titles')->count, 8;
+
+is_deeply $site->serialize_aggregations, $copy;

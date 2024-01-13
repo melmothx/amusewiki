@@ -5399,8 +5399,26 @@ sub create_aggregation {
         }
     }
     $guard->commit;
+    $aggregation->discard_changes;
+    return $aggregation;
 }
 
+sub serialize_aggregations {
+    my $self = shift;
+    my @out;
+    foreach my $agg ($self->aggregations->search(undef, { order_by => 'uri' })) {
+        my %vals = $agg->get_columns;
+        foreach my $k (qw/aggregation_id site_id/) {
+            delete $vals{$k};
+        }
+        foreach my $k (keys %vals) {
+            delete $vals{$k} unless defined $vals{$k};
+        }
+        $vals{titles} = [ map { $_->uri } @{$agg->titles} ];
+        push @out, \%vals;
+    }
+    return \@out;
+}
 
 sub annotations_directory {
     return 'annotations';
