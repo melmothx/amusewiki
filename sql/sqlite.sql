@@ -756,7 +756,7 @@ CREATE UNIQUE INDEX unique_title_annotation_key ON title_annotation (annotation_
 
 CREATE TABLE aggregation (
        aggregation_id INTEGER PRIMARY KEY AUTOINCREMENT,
-       uri VARCHAR(255) NOT NULL,  -- fe-15
+       aggregation_uri VARCHAR(255) NOT NULL,  -- fe-15
        name VARCHAR(255) NOT NULL, -- F.E.
        -- inside the same name
        series_number VARCHAR(255), -- 15
@@ -778,7 +778,7 @@ CREATE TABLE aggregation (
 );
 CREATE INDEX aggregation_name_idx ON aggregation(name);
 
-CREATE UNIQUE INDEX unique_aggregation ON aggregation (uri, site_id);
+CREATE UNIQUE INDEX unique_aggregation ON aggregation (aggregation_uri, site_id);
 
 CREATE TABLE aggregation_title (
     aggregation_id INTEGER NOT NULL REFERENCES aggregation(aggregation_id) ON DELETE CASCADE ON UPDATE CASCADE,

@@ -44,7 +44,7 @@ __PACKAGE__->table("aggregation");
   is_auto_increment: 1
   is_nullable: 0
 
-=head2 uri
+=head2 aggregation_uri
 
   data_type: 'varchar'
   is_nullable: 0
@@ -104,7 +104,7 @@ __PACKAGE__->table("aggregation");
 __PACKAGE__->add_columns(
   "aggregation_id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
-  "uri",
+  "aggregation_uri",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "name",
   { data_type => "varchar", is_nullable => 0, size => 255 },
@@ -138,11 +138,11 @@ __PACKAGE__->set_primary_key("aggregation_id");
 
 =head1 UNIQUE CONSTRAINTS
 
-=head2 C<uri_site_id_unique>
+=head2 C<aggregation_uri_site_id_unique>
 
 =over 4
 
-=item * L</uri>
+=item * L</aggregation_uri>
 
 =item * L</site_id>
 
@@ -150,7 +150,10 @@ __PACKAGE__->set_primary_key("aggregation_id");
 
 =cut
 
-__PACKAGE__->add_unique_constraint("uri_site_id_unique", ["uri", "site_id"]);
+__PACKAGE__->add_unique_constraint(
+  "aggregation_uri_site_id_unique",
+  ["aggregation_uri", "site_id"],
+);
 
 =head1 RELATIONS
 
@@ -185,8 +188,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-13 08:44:33
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:nUMeC3DbhhAKPAqwM3ohpw
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-13 08:51:59
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OvK/gLRxFR/f+YzIcud0BQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
