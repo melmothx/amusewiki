@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 29;
+use Test::More tests => 39;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -117,6 +117,7 @@ foreach my $title ($site->titles) {
     else {
         is $title->aggregations->count, 2;
     }
+    diag "The aggregations sorted are " . Dumper([$title->aggregations->sorted->hri->all]);
 }
 
 while (my $j = $site->jobs->dequeue) {
@@ -140,3 +141,13 @@ $mech->content_like(qr{
 \s+<subfield\s+code="d">Nowhere</subfield>
 \s+</datafield>
 }sx);
+
+$mech->get_ok('/aggregation/fmx-1');
+$mech->content_like(qr{Title one.*Title two.*Title three}s);
+$mech->get_ok('/aggregation/fmx-2');
+$mech->content_like(qr{Title three.*Title two}s);
+
+foreach my $title ($site->titles) {
+    $mech->get_ok($title->full_uri);
+    $mech->content_contains('/aggregation/fmx');
+}

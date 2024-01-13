@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h1>
+    [% aggregation.aggregation_name | html %]
+    [% aggregation.series_number | html %]
+  </h1>
+</div>
+[% IF aggregation.has_details %]
+  <div class="well">
+    [% IF aggregation.publication_place %]
+      <div>
+        <strong>[% loc('Publication Place:') %]</strong> [% aggregation.publication_place | html %]
+      </div>
+    [% END  %]
+    [% IF aggregation.publication_date %]
+      <div>
+        <strong>[% loc('Publication Date:') %]</strong> [% aggregation.publication_date | html %]
+      </div>
+    [% END  %]
+    [% IF aggregation.publisher %]
+      <div>
+        <strong>[% loc('Publisher:') %]</strong> [% aggregation.publisher | html %]
+      </div>
+    [% END  %]
+    [% IF aggregation.isbn %]
+      <div>
+        <strong>[% loc('ISBN:') %]</strong> [% aggregation.isbn | html %]
+      </div>
+    [% END  %]
+    [% IF aggregation.has_siblings %]
+      <div style="margin-top: 10px">
+        <a href="[% c.uri_for_action('/aggregation/series', aggregation.aggregation_code) | html %]">
+          <strong>[% loc('See all') %]</strong>
+        </a>
+      </div>
+    [% END %]
+  </div>
+[% END %]
+
+
+[% INCLUDE 'include/posts.tt' %]

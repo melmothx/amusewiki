@@ -114,6 +114,16 @@
       </div>
     [% END %]
 
+    [% FOREACH aggregation IN aggregations %]
+      <div class="text-aggregation">
+        <strong>[% loc('Part of:') %]</strong>
+        <a href="[% c.uri_for_action('aggregation/aggregation', aggregation.aggregation_uri) | html %]">
+          [% aggregation.aggregation_name | html %]
+          [% aggregation.series_number | html %]
+        </a>
+      </div>
+    [% END %]
+
     [% IF annotations %]
       [% FOREACH annotation IN annotations %]
         [% IF annotation.html %]

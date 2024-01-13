@@ -213,6 +213,9 @@ sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
 
     Dlog_debug { "Annotations are  $_"  } \@annotations;
     $c->stash(annotations => \@annotations) if @annotations;
+    my @aggregations = $text->aggregations->sorted->hri->all;
+    Dlog_debug { "Aggregations are  $_"  } \@aggregations;
+    $c->stash(aggregations => \@aggregations);
 }
 
 sub text :Chained('populate_preamble') :PathPart('') :Args(0) {
