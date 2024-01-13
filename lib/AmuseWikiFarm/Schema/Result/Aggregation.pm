@@ -225,5 +225,29 @@ sub titles {
     return @out;
 }
 
+sub has_details {
+    my $self = shift;
+    if ($self->publication_place
+        or $self->publication_date
+        or $self->publisher
+        or $self->isbn
+        or $self->has_siblings) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+sub has_siblings {
+    my $self = shift;
+    if ($self->site->aggregations->search({ aggregation_code => $self->aggregation_code })->count > 1) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
 __PACKAGE__->meta->make_immutable;
 1;

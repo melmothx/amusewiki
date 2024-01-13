@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h1>
+    [% title | html %]
+  </h1>
+</div>
+
+<div class="list-group">
+  [% FOREACH agg IN aggregations %]
+    <div class="amw-listing-item">
+      <a class="list-group-item clearfix"
+         href="[% c.uri_for_action('aggregation/aggregation', agg.aggregation_uri) | html %]">
+        [% agg.aggregation_name | html %]
+        [% agg.series_number | html %]
+      </a>
+    </div>
+  [% END %]
+</div>
