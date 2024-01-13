@@ -756,8 +756,9 @@ CREATE UNIQUE INDEX unique_title_annotation_key ON title_annotation (annotation_
 
 CREATE TABLE aggregation (
        aggregation_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       aggregation_code VARCHAR(255) NOT NULL, -- fe, the parent
        aggregation_uri VARCHAR(255) NOT NULL,  -- fe-15
-       name VARCHAR(255) NOT NULL, -- F.E.
+       aggregation_name VARCHAR(255) NOT NULL, -- F.E.
        -- inside the same name
        series_number VARCHAR(255), -- 15
        -- and if the series number are not integers:
@@ -776,8 +777,8 @@ CREATE TABLE aggregation (
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE
 );
-CREATE INDEX aggregation_name_idx ON aggregation(name);
-
+CREATE INDEX aggregation_code_idx ON aggregation(aggregation_code);
+CREATE INDEX aggregation_uri_idx ON aggregation(aggregation_uri);
 CREATE UNIQUE INDEX unique_aggregation ON aggregation (aggregation_uri, site_id);
 
 CREATE TABLE aggregation_title (
@@ -839,6 +840,8 @@ INSERT INTO table_comments (table_name, comment_text)
          ('oai_pmh_set', 'OAI-PMH Sets definition'), 
          ('oai_pmh_record', 'OAI-PMH Records'), 
          ('oai_pmh_record_set', 'OAI-PMH brigde table between records and sets'), 
+         ('aggregation', 'Aggregations'),
+         ('aggregation_title', 'Linking table for aggregations'),
          ('included_file', 'Files included in muse documents'),
          ('include_path', 'Directories to search for file inclusions')
          ;

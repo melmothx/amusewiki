@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::Aggregation;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::Aggregation
+AmuseWikiFarm::Schema::Result::Aggregation - Aggregations
 
 =cut
 
@@ -44,13 +44,19 @@ __PACKAGE__->table("aggregation");
   is_auto_increment: 1
   is_nullable: 0
 
+=head2 aggregation_code
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 255
+
 =head2 aggregation_uri
 
   data_type: 'varchar'
   is_nullable: 0
   size: 255
 
-=head2 name
+=head2 aggregation_name
 
   data_type: 'varchar'
   is_nullable: 0
@@ -104,9 +110,11 @@ __PACKAGE__->table("aggregation");
 __PACKAGE__->add_columns(
   "aggregation_id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
+  "aggregation_code",
+  { data_type => "varchar", is_nullable => 0, size => 255 },
   "aggregation_uri",
   { data_type => "varchar", is_nullable => 0, size => 255 },
-  "name",
+  "aggregation_name",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "series_number",
   { data_type => "varchar", is_nullable => 1, size => 255 },
@@ -188,8 +196,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-13 08:51:59
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OvK/gLRxFR/f+YzIcud0BQ
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-13 09:21:29
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:1hA0FBKGbmWN6Kkq5aWX/g
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

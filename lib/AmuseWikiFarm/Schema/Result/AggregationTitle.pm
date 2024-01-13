@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::AggregationTitle;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::AggregationTitle
+AmuseWikiFarm::Schema::Result::AggregationTitle - Linking table for aggregations
 
 =cut
 
@@ -99,8 +99,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-13 08:44:33
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:MOob6o5qgaZ55MT8FqAZZA
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-13 09:21:29
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sWGh42sQQufnaBcfGb18lQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
