@@ -466,6 +466,12 @@
                     [% loc('Collections') %]
                   </a>
                 </li>
+                <li>
+                  <a href="[% c.uri_for_action('/aggregation/manage') %]">
+                    <span class="fa fa-tags fa-fw" aria-hidden="true"></span>
+                    [% loc('Aggregations') %]
+                  </a>
+                </li>
                 [% IF c.check_any_user_role('admin', 'root') %]
                   <li>
                     <a href="[% c.uri_for_action('/settings/annotations') %]">

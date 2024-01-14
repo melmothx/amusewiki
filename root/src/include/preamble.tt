@@ -157,9 +157,6 @@
                   <strong>[% loc('Add aggregation') %]</strong>
                 </div>
                 <div style="margin: 5px 0" id="annotation-editor-aggregations">
-                  <a href="[% c.uri_for_action('/aggregation/manage') %]">
-                    [% loc('No aggregation available. Do you want to create one?') %]
-                  </a>
                 </div>
                 [% FOREACH aggregation IN aggregations %]
                   <div style="margin: 5px 0">
@@ -179,6 +176,9 @@
                     [% loc('Update') %]
                   </button>
                 </div>
+                <a href="[% c.uri_for_action('/aggregation/manage') %]">
+                  <small>[% loc('Do you want to create a new aggregation?') %]</small>
+                </a>
               </form>
             </div>
           </div>

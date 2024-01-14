@@ -5394,8 +5394,8 @@ sub create_aggregation {
     Dlog_debug { "Titles: $_" } $args->{titles};
     if ($args->{titles} and ref($args->{titles}) eq 'ARRAY') {
         @uris = @{$args->{titles}};
+        $aggregation->aggregation_titles->delete;
     }
-    $aggregation->aggregation_titles->delete;
     my $pos = 0;
     my %done;
     foreach my $uri (@uris) {
@@ -5410,8 +5410,7 @@ sub create_aggregation {
     }
     if (join('|', @uris) ne join('|', @existing_uris)) {
         Dlog_debug { "Aggregation changed $_" } +{ from => \@existing_uris, to => \@uris };
-        my @ids = map { $_->id } $aggregation->titles;
-        $self->oai_pmh_records->by_title_id(\@ids)->bump_datestamp;
+        $aggregation->bump_oai_pmh_records;
     }
     $guard->commit;
     $aggregation->discard_changes;
@@ -5423,15 +5422,7 @@ sub serialize_aggregations {
     my $self = shift;
     my @out;
     foreach my $agg ($self->aggregations->search(undef, { order_by => 'uri' })) {
-        my %vals = $agg->get_columns;
-        foreach my $k (qw/aggregation_id site_id/) {
-            delete $vals{$k};
-        }
-        foreach my $k (keys %vals) {
-            delete $vals{$k} unless defined $vals{$k};
-        }
-        $vals{titles} = [ map { $_->uri } $agg->titles ];
-        push @out, \%vals;
+        push @out, $agg->serialize;
     }
     return \@out;
 }
