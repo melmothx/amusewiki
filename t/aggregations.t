@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 62;
+use Test::More tests => 67;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -94,7 +94,9 @@ $site->update_db_from_tree;
 is $site->aggregations->count, 2;
 is $site->aggregations->search_related('aggregation_titles')->count, 8;
 
-is_deeply $site->serialize_aggregations, $copy;
+# the last one is a duplicate
+is pop @{$ag->[0]->{titles}}, "to-test-one";
+is_deeply $site->serialize_aggregations, $ag;
 
 sleep 1;
 
@@ -182,3 +184,16 @@ foreach my $title ($site->titles) {
 }
 # reset
 $site->process_autoimport_files;
+
+my $dump = $site->serialize_site;
+$autoimport->remove_tree;
+$site->delete;
+{
+    my @save = @{$dump->{aggregations}};
+    my $newsite = $schema->resultset('Site')->deserialize_site($dump);
+    is scalar(@save), 2;
+    is_deeply $save[0]{titles}, [ 'to-test-one', 'to-test-two', 'to-test-three'];
+    is $save[1]{publication_date}, "Never";
+    is_deeply $newsite->serialize_aggregations, \@save;
+    diag Dumper(\@save);
+}

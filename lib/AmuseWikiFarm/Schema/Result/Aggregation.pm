@@ -207,13 +207,7 @@ sub sqlt_deploy_hook {
 
 sub titles {
     my $self = shift;
-    my @uris = map { $_->{title_uri} }
-      $self->aggregation_titles->search(undef,
-                                        {
-                                         order_by => [qw/sorting_pos title_uri/],
-                                         columns => [qw/title_uri/],
-                                         result_class => 'DBIx::Class::ResultClass::HashRefInflator',
-                                        })->all;
+    my @uris = map { $_->{title_uri} } $self->aggregation_titles->title_uris->hri->all;
     my %titles = map { $_->uri => $_ }
       $self->site->titles->texts_only->status_is_published->by_uri(\@uris)->all;
     my @out;
@@ -258,7 +252,7 @@ sub serialize {
     foreach my $k (keys %vals) {
         delete $vals{$k} unless defined $vals{$k};
     }
-    $vals{titles} = [ map { $_->uri } $self->titles ];
+    $vals{titles} = [ map { $_->{title_uri} } $self->aggregation_titles->title_uris->hri->all ];
     return \%vals;
 }
 

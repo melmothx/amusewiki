@@ -13,4 +13,13 @@ sub by_title_uri {
     $self->search({ "$me.title_uri" => $uri });
 }
 
+sub title_uris {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    $self->search(undef,
+                  {
+                   order_by => ["$me.sorting_pos", "$me.title_uri"],
+                  });
+}
+
 1;
