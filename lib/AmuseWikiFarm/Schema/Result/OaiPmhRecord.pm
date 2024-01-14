@@ -409,6 +409,7 @@ sub marc21_record {
                                  'd' => join(' ', grep { $_ } map { $agg->{$_} } qw/publication_place
                                                                                     publication_date
                                                                                     publisher/),
+                                 'q' => $agg->{title_sorting_pos},
                                 };
         }
         if (@aggregations) {
@@ -465,7 +466,7 @@ sub marc21_record {
                       [ slc         => '852', ' ', ' ', 'c' ],
                       [ isbn        => '020', ' ', ' ', 'a' ],
                       [ full_uri    => '856', ' ', ' ', qw/u q y/],
-                      [ aggregation => '773', ' ', ' ', qw/t g o 6 z d/],
+                      [ aggregation => '773', ' ', ' ', qw/t g o 6 z d q/],
                       );
     Dlog_debug { "MARC21: $_" } \%rec;
 

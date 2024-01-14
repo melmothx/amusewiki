@@ -139,6 +139,7 @@ $mech->content_like(qr{
 \s+<subfield\s+code="6">https://0aggregation0.amusewiki.org/aggregation/fmx-1</subfield>
 \s+<subfield\s+code="z">97899999999999</subfield>
 \s+<subfield\s+code="d">Nowhere</subfield>
+\s+<subfield\s+code="q">1</subfield>
 \s+</datafield>
 }sx);
 
