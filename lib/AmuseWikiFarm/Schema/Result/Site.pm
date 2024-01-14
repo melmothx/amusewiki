@@ -4345,6 +4345,7 @@ sub serialize_site {
                                    comment_html => $_->comment_html,
                                    alt_text => $_->alt_text,
                                   } } $self->attachments->with_descriptions->all ];
+    $data{aggregations} = $self->serialize_aggregations;
     return \%data;
 }
 
