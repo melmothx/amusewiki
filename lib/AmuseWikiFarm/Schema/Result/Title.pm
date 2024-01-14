@@ -2150,6 +2150,9 @@ sub aggregate {
             }
         }
     }
+    if ($ok) {
+        $self->oai_pmh_records->bump_datestamp;
+    }
     return $ok;
 }
 

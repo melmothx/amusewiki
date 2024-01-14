@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 59;
+use Test::More tests => 62;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -160,6 +160,8 @@ foreach my $agg ($site->aggregations) {
 my @ids = map { $_->aggregation_id } $site->aggregations;
 
 foreach my $title ($site->titles) {
+    my $pmh_date = $title->oai_pmh_records->first->zulu_datestamp;
+    sleep 1;
     foreach my $id (@ids) {
         $title->aggregate({ add_aggregation_id => $id });
     }
@@ -175,4 +177,8 @@ foreach my $title ($site->titles) {
     }
     $title->discard_changes;
     is scalar(@ids), $title->aggregations->count, "Aggregations restored";
+    my $new_date = $title->oai_pmh_records->first->zulu_datestamp;
+    ok $new_date gt $pmh_date, "$new_date > $pmh_date";
 }
+# reset
+$site->process_autoimport_files;
