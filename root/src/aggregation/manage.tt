@@ -60,4 +60,9 @@
   </table>
 </div>
 
+<a class="btn btn-primary" href="[% c.uri_for_action('/aggregation/edit') | html %]">
+  [% loc('Create a new aggregation') %]
+</a>
+
+
 TODO: Add an explanation here.
