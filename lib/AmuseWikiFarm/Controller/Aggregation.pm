@@ -30,30 +30,10 @@ sub title :Chained('aggregate') :PathPart('title') :Args(1) {
     my $site = $c->stash->{site};
     my $ok = 0;
     my $int = qr{\A\d+\z}a;
+    my $params = $c->request->body_params;
     if ($title_id =~ m/$int/) {
         if (my $title = $site->titles->texts_only->status_is_published->find($title_id)) {
-            my $title_uri = $title->uri;
-            my $removals = $c->request->body_params->{remove_aggregation};
-            # this can be an array or an scalar, and that's fine
-            # will crash if not a number
-            if (my @remove_ids = grep { /$int/ } (ref($removals) ? @$removals : ($removals))) {
-                $site->aggregations->search({ 'me.aggregation_id' => \@remove_ids })
-                  ->search_related('aggregation_titles')->search({
-                                                                  title_uri => $title_uri,
-                                                                 })->delete;
-                $ok++;
-            }
-            if (my $add_id = $c->request->body_params->{add_aggregation_id}) {
-                if ($add_id =~ m/$int/) {
-                    if (my $agg = $site->aggregations->find($add_id)) {
-                        unless ($agg->aggregation_titles->find({ title_uri => $title_uri })) {
-                            $agg->aggregation_titles->create({ title_uri => $title_uri });
-                            $ok++;
-                        }
-                    }
-                }
-            }
-            if ($ok) {
+            if ($title->aggregate($params)) {
                 $c->flash(status_msg => $c->loc("Thanks!"));
             }
             return $c->response->redirect($c->uri_for($title->full_uri));

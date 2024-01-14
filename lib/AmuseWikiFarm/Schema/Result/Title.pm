@@ -2123,7 +2123,34 @@ sub aggregations {
     else {
         return $self->site->aggregations->no_match;
     }
+}
 
+sub aggregate {
+    my ($self, $params) = @_;
+    my $ok;
+    my $title_uri = $self->uri;
+    my $site = $self->site;
+    my $int = qr{\A\d+\z}a;
+    if (my $removals = $params->{remove_aggregation}) {
+        # this can be an array or an scalar, and that's fine
+        # will crash if not a number
+        if (my @remove_ids = grep { /$int/ } (ref($removals) ? @$removals : ($removals))) {
+            $site->aggregations->by_id(\@remove_ids)
+              ->search_related('aggregation_titles')->by_title_uri($title_uri)->delete;
+            $ok++;
+        }
+    }
+    if (my $add_id = $params->{add_aggregation_id}) {
+        if ($add_id =~ m/$int/) {
+            if (my $agg = $site->aggregations->find($add_id)) {
+                unless ($agg->aggregation_titles->by_title_uri($title_uri)->count) {
+                    $agg->aggregation_titles->create({ title_uri => $title_uri });
+                    $ok++;
+                }
+            }
+        }
+    }
+    return $ok;
 }
 
 __PACKAGE__->meta->make_immutable;

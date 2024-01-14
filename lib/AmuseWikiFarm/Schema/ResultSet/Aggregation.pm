@@ -39,4 +39,10 @@ sub sorted {
                   })
 }
 
+sub by_id {
+    my ($self, $id) = @_;
+    my $me = $self->current_source_alias;
+    $self->search({ "$me.aggregation_id" => $id });
+}
+
 1;

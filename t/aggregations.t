@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 41;
+use Test::More tests => 59;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -156,4 +156,23 @@ foreach my $title ($site->titles) {
 foreach my $agg ($site->aggregations) {
     my @titles = $agg->titles;
     ok scalar(@titles);
+}
+my @ids = map { $_->aggregation_id } $site->aggregations;
+
+foreach my $title ($site->titles) {
+    foreach my $id (@ids) {
+        $title->aggregate({ add_aggregation_id => $id });
+    }
+    ok $title->aggregate({ remove_aggregation => $ids[0] });
+    ok $title->aggregate({ remove_aggregation => \@ids });
+    $title->discard_changes;
+    is $title->aggregations->count, 0, "Aggregations removed";
+    foreach my $id (@ids) {
+        ok $title->aggregate({
+                              remove_aggregation => $id,
+                              add_aggregation_id => $id,
+                             });
+    }
+    $title->discard_changes;
+    is scalar(@ids), $title->aggregations->count, "Aggregations restored";
 }
