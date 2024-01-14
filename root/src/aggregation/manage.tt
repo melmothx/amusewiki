@@ -1,0 +1,63 @@
+[% INCLUDE 'include/breadcrumbs.tt' %]
+<div class="page-header">
+  <h1>[% loc('Manage aggregations') %]</h1>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped table-condensed table-bordered amw-datatable">
+    <thead>
+    <tr>
+      <th>[% loc('ID') %]</th>
+      <th>[% loc('Code') %]</th>
+      <th>[% loc('URI') %]</th>
+      <th>[% loc('Name') %]</th>
+      <th>[% loc('Series Number') %]</th>
+      <th>[% loc('Order') %]</th>
+      <th>[% loc('Publication Place') %]</th>
+      <th>[% loc('Publication Date') %]</th>
+      <th>[% loc('Publisher') %]</th>
+      <th>[% loc('ISBN') %]</th>
+      <th>[% loc('Remove') %]</th>
+    </tr>
+    </thead>
+    <tbody>
+    [% FOREACH agg IN aggregations %]
+      <tr>
+        <td>
+          <a href="[% c.uri_for_action('/aggregation/edit', agg.aggregation_id) | html %]">
+            [% agg.aggregation_id    | html %]
+            <i class="fa fa-edit"></i>
+          </a>
+        </td>
+        <td>
+          <a href="[% c.uri_for_action('/aggregation/series', agg.aggregation_code) | html %]">
+            [% agg.aggregation_code  | html %]
+          </a>
+        </td>
+        <td>
+          <a href="[% c.uri_for_action('/aggregation/aggregation', agg.aggregation_uri) | html %]">
+            [% agg.aggregation_uri   | html %]
+          </a>
+        </td>
+        <td>[% agg.aggregation_name  | html %]</td>
+        <td>[% agg.series_number     | html %]</td>
+        <td>[% agg.sorting_pos       | html %]</td>
+        <td>[% agg.publication_place | html %]</td>
+        <td>[% agg.publication_date  | html %]</td>
+        <td>[% agg.publisher         | html %]</td>
+        <td>[% agg.isbn              | html %]</td>
+        <td>
+          <form action="[% c.uri_for_action('/aggregation/remove', agg.aggregation_id) | html %]"
+                method="POST" onsubmit="return amw_confirm()">
+            <input type="hidden" name="remove" value="remove" />
+            <button class="btn btn-primary" type="submit">
+              <i class="fa fa-trash"></i>
+            </button>
+          </form>
+        </td>
+      </tr>
+    [% END %]
+    </tbody>
+  </table>
+</div>
+
+TODO: Add an explanation here.

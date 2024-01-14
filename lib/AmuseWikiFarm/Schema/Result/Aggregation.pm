@@ -249,5 +249,24 @@ sub has_siblings {
     }
 }
 
+sub serialize {
+    my $self = shift;
+    my %vals = $self->get_columns;
+    foreach my $k (qw/aggregation_id site_id/) {
+        delete $vals{$k};
+    }
+    foreach my $k (keys %vals) {
+        delete $vals{$k} unless defined $vals{$k};
+    }
+    $vals{titles} = [ map { $_->uri } $self->titles ];
+    return \%vals;
+}
+
+sub bump_oai_pmh_records {
+    my $self = shift;
+    my @ids = map { $_->id } $self->titles;
+    $self->site->oai_pmh_records->by_title_id(\@ids)->bump_datestamp;
+}
+
 __PACKAGE__->meta->make_immutable;
 1;

@@ -2091,6 +2091,7 @@ sub annotate {
             $destination->parent->mkpath;
             log_debug { "Saving update in $destination" };
             if ($update->{remove}) {
+                log_info { "Removing $title_annotation" };
                 $title_annotation->delete;
                 $destination->remove if $destination->exists;
             }

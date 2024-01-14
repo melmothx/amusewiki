@@ -8,22 +8,22 @@
   <div class="well">
     [% IF aggregation.publication_place %]
       <div>
-        <strong>[% loc('Publication Place:') %]</strong> [% aggregation.publication_place | html %]
+        <strong>[% loc('Publication Place') %]:</strong> [% aggregation.publication_place | html %]
       </div>
     [% END  %]
     [% IF aggregation.publication_date %]
       <div>
-        <strong>[% loc('Publication Date:') %]</strong> [% aggregation.publication_date | html %]
+        <strong>[% loc('Publication Date') %]:</strong> [% aggregation.publication_date | html %]
       </div>
     [% END  %]
     [% IF aggregation.publisher %]
       <div>
-        <strong>[% loc('Publisher:') %]</strong> [% aggregation.publisher | html %]
+        <strong>[% loc('Publisher') %]:</strong> [% aggregation.publisher | html %]
       </div>
     [% END  %]
     [% IF aggregation.isbn %]
       <div>
-        <strong>[% loc('ISBN:') %]</strong> [% aggregation.isbn | html %]
+        <strong>[% loc('ISBN') %]:</strong> [% aggregation.isbn | html %]
       </div>
     [% END  %]
     [% IF aggregation.has_siblings %]

@@ -18,11 +18,60 @@ use AmuseWikiFarm::Log::Contextual;
 
 sub aggregate :Chained('/site_user_required') :PathPart('aggregate') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    Dlog_debug { "Params are $_" } $c->request->body_params;
+    $c->stash(breadcrumbs => [
+                              {
+                               uri => $c->uri_for_action('/aggregation/manage'),
+                               label => $c->loc("Aggregations"),
+                              }
+                             ]);
 }
 
 sub manage :Chained('aggregate') :PathPart('manage') :Args(0) {
     my ($self, $c) = @_;
+    $c->stash(
+              load_datatables => 1,
+              aggregations => [ $c->stash->{site}->aggregations->sorted->hri ],
+             );
+}
+
+sub edit :Chained('aggregate') :PathPart('edit') :Args {
+    my ($self, $c, $id) = @_;
+    my $site = $c->stash->{site};
+    my $params = $c->request->body_params;
+    push @{$c->stash->{breadcrumbs}},
+      {
+       uri => $c->uri_for_action('/attachments/edit'),
+       label => $c->loc('Edit'),
+      };
+    if (delete $params->{update}) {
+        Dlog_debug { "Params are $_" } $params;
+        my $updated = $site->create_aggregation($params);
+        $c->flash(status_msg => $c->loc("Thanks!"));
+        return $c->response->redirect($c->uri_for_action('/aggregation/manage'));
+    }
+    if ($id and $id =~ /\A\d+\z/a) {
+        if (my $agg = $site->aggregations->find($id)) {
+            $c->stash(aggregation => $agg->serialize);
+        }
+        else {
+            return $c->detach('/not_found');
+        }
+    }
+    else {
+        $c->stash(aggregation => {});
+    }
+}
+
+sub remove :Chained('aggregate') :PathPart('remove') :Args(1) {
+    my ($self, $c, $id) = @_;
+    if ($id =~ /\A\d+\z/a) {
+        if (my $agg = $c->stash->{site}->aggregations->find($id)) {
+            $agg->bump_oai_pmh_records;
+            $agg->delete;
+            $c->flash(status_msg => $c->loc("Record deleted!"));
+        }
+    }
+    return $c->response->redirect($c->uri_for_action('/aggregation/manage'));
 }
 
 sub title :Chained('aggregate') :PathPart('title') :Args(1) {
