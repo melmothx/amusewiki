@@ -34,7 +34,17 @@ sub manage :Chained('aggregate') :PathPart('manage') :Args(0) {
              );
 }
 
-sub edit :Chained('aggregate') :PathPart('edit') :Args {
+sub edit_gate :Chained('aggregate') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    if ($c->stash->{site}->has_autoimport_file('aggregations')) {
+        $c->flash(error_msg => $c->loc('Aggregation editing is disabled (autoimport file present)'));
+        $c->response->redirect($c->uri_for_action('/aggregation/manage'));
+        log_info { "Aggregation editing is disabled because of autoimport file" };
+        $c->detach;
+    }
+}
+
+sub edit :Chained('edit_gate') :PathPart('edit') :Args {
     my ($self, $c, $id) = @_;
     my $site = $c->stash->{site};
     my $params = $c->request->body_params;
@@ -62,7 +72,7 @@ sub edit :Chained('aggregate') :PathPart('edit') :Args {
     }
 }
 
-sub remove :Chained('aggregate') :PathPart('remove') :Args(1) {
+sub remove :Chained('edit_gate') :PathPart('remove') :Args(1) {
     my ($self, $c, $id) = @_;
     if ($id =~ /\A\d+\z/a) {
         if (my $agg = $c->stash->{site}->aggregations->find($id)) {
@@ -74,7 +84,7 @@ sub remove :Chained('aggregate') :PathPart('remove') :Args(1) {
     return $c->response->redirect($c->uri_for_action('/aggregation/manage'));
 }
 
-sub title :Chained('aggregate') :PathPart('title') :Args(1) {
+sub title :Chained('edit_gate') :PathPart('title') :Args(1) {
     my ($self, $c, $title_id) = @_;
     my $site = $c->stash->{site};
     my $ok = 0;

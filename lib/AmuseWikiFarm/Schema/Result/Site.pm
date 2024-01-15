@@ -5288,6 +5288,18 @@ sub oai_pmh_base_identifier {
     return join(':', oai => $self->canonical, '');
 }
 
+sub has_autoimport_file {
+    my ($self, $type) = @_;
+    my $dir = Path::Tiny::path($self->autoimport_dir);
+    my %files = map { $_ => $dir->child($_ . '.yml') } qw/categories legacy_links aggregations/;
+    if ($files{$type} and $files{$type}->exists) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
 sub process_autoimport_files {
     my $self = shift;
     my $dir = Path::Tiny::path($self->autoimport_dir);

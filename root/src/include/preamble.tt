@@ -374,8 +374,8 @@
              data-toggle="collapse"
           /><span class="fa fa-pencil-square fa-2x fa-border"
                   aria-hidden="true"
-                  title="[% loc('Edit annotations') %]"
-            ></span><span class="sr-only" >[% loc('Edit annotations') %]</span></a>
+                  title="[% loc('Annotations, collections, aggregations') %]"
+            ></span><span class="sr-only" >[% loc('Annotations, collections, aggregations') %]</span></a>
         </span>
       [% END %]
       [% IF text.show_formats %]

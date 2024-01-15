@@ -294,7 +294,7 @@ sub text :Chained('populate_preamble') :PathPart('') :Args(0) {
     }
     if ($c->user_exists) {
         $c->stash(
-                  site_has_aggregations => $site->aggregations->count,
+                  site_has_aggregations => $site->has_autoimport_file('aggregations') ? 0 : $site->aggregations->count,
                   site_has_collections => $site->nodes->count,
                  );
         if ($c->stash->{annotations}
