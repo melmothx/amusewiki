@@ -290,7 +290,16 @@ sub single_category_by_lang_display :Chained('single_category_by_lang') :PathPar
 sub category_editing_auth :Chained('single_category_by_lang') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
     if ($self->check_login($c)) {
-        return 1;
+        if ($c->stash->{site}->has_autoimport_file('categories')) {
+            $c->flash(error_msg => $c->loc('Category editing is disabled (autoimport file present)'));
+            $c->response->redirect($c->uri_for($c->stash->{category}->full_uri));
+            log_info { "Category desc editing is disabled because of autoimport file" };
+            $c->detach;
+            return;
+        }
+        else {
+            return 1;
+        }
     }
     else {
         die "Unreachable";

@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 67;
+use Test::More tests => 78;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -185,8 +185,30 @@ foreach my $title ($site->titles) {
 # reset
 $site->process_autoimport_files;
 
+{
+    $mech->get('/aggregate/edit/' . $ids[0]);
+    is $mech->status, 401, "Bounced to login";
+    ok($mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }),
+       "Found login form");
+    is $mech->uri->path, '/aggregate/manage';
+    $mech->get_ok('/aggregate/edit/' . $ids[0]);
+    is $mech->uri->path, '/aggregate/manage';
+    $mech->content_contains('autoimport file present');
+    my $text_uri = $site->titles->first->full_uri;
+    $mech->get_ok($text_uri);
+    $mech->content_lacks('id="annotation-editor-aggregations"');
+
+    $autoimport->child('aggregations.yml')->remove;
+
+    $mech->get('/aggregate/edit/' . $ids[0]);
+    is $mech->uri->path, '/aggregate/edit/' . $ids[0];
+    $mech->get_ok($text_uri);
+    $mech->content_contains('id="annotation-editor-aggregations"');
+}
+
+
+
 my $dump = $site->serialize_site;
-$autoimport->remove_tree;
 $site->delete;
 {
     my @save = @{$dump->{aggregations}};
