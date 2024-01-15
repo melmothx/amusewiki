@@ -81,7 +81,7 @@ sub title :Chained('aggregate') :PathPart('title') :Args(1) {
     my $int = qr{\A\d+\z}a;
     my $params = $c->request->body_params;
     if ($title_id =~ m/$int/) {
-        if (my $title = $site->titles->texts_only->status_is_published->find($title_id)) {
+        if (my $title = $site->titles->texts_only->find($title_id)) {
             if ($title->aggregate($params)) {
                 $c->flash(status_msg => $c->loc("Thanks!"));
             }

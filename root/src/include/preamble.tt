@@ -146,13 +146,66 @@
         [% END %]
       [% END %]
     [% END %]
+    [% # this is triggered only if there's an user %]
     [% IF annotation_editor %]
-      [% IF c.user_exists %]
-        <div id="edit-annotation" class="collapse" style="margin-top: 20px">
+      <div id="edit-annotation" class="collapse" style="margin-top: 20px">
+        [% IF site_has_collections %]
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <form name="collection-editor" action="[% c.uri_for_action('nodes/title', text.id) %]"
+                    method="POST">
+                <div class="text-center">
+                  <strong>[% loc('Collections') %]</strong>
+                </div>
+                <table class="table table-striped table-bordered">
+                  <tr>
+                    <th>[% loc('Action') %]</th>
+                    <th>[% loc('Collection') %]</th>
+                  </tr>
+                  [% FOREACH collection IN collections %]
+                    <tr>
+                      <td>
+                        <label>
+                          <input type="checkbox" name="remove_node"
+                               value="[% collection.node_id %]">
+                          [% loc('Remove') %]
+                        </label>
+                      </td>
+                      <td>
+                        <a href="[% c.uri_for("/node/" _ collection.full_path) | html %]">
+                          [% collection.canonical_title | html %]
+                          <code>[% collection.full_path | html %]</code>
+                        </a>
+                      </td>
+                    </tr>
+                  [% END %]
+                  <tr>
+                    <td>
+                      [% loc('Add') %]
+                    </td>
+                    <td>
+                      <div id="collection-editor">
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">
+                    [% loc('Update') %]
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        [% END %]
+        [% IF site_has_aggregations %]
           <div class="panel panel-default">
             <div class="panel-body">
               <form name="aggregate" action="[% c.uri_for_action('aggregation/title', text.id) %]"
                     method="POST">
+                <div class="text-center">
+                  <strong>[% loc('Aggregations') %]</strong>
+                </div>
                 <table class="table table-striped table-bordered">
                   <tr>
                     <th>[% loc('Action') %]</th>
@@ -207,10 +260,13 @@
               </form>
             </div>
           </div>
-          [% IF annotations %]
+        [% END %]
+        [% IF annotations %]
           <div class="panel panel-default">
             <div class="panel-body">
-              <strong>[% loc('Update annotations') %]</strong>
+              <div class="text-center">
+                <strong>[% loc('Annotations') %]</strong>
+              </div>
           <form name="annotate" action="[% c.uri_for_action('annotate/title', text.id) %]"
                 method="POST"
                 enctype="multipart/form-data">
@@ -254,9 +310,8 @@
           </form>
             </div>
           </div>
-          [% END %]
-        </div>
-      [% END %]
+        [% END %]
+      </div>
     [% END %]
   </div>
 
@@ -417,6 +472,23 @@
                              .text(data[i].aggregation_name + ' ' + data[i].series_number));
                      }
                      $('#annotation-editor-aggregations').append(dropdown);
+                     dropdown.select2();
+                 }
+             });
+             $.get('/api/collections', function(data) {
+                 console.log(data);
+                 if (data.length) {
+                     $('#collection-editor').children().remove();
+                     var dropdown = $('<select>', {
+                         "name": "add_node_id",
+                         "class": "form-control"
+                     });
+                     dropdown.append($('<option>', { "value": "" }).text(''));
+                     for (var i = 0; i < data.length; i++) {
+                         dropdown.append($('<option>', { "value": data[i].node_id })
+                             .text(data[i].canonical_title + " (/" + (data[i].full_path || data[i].uri ) + ")"));
+                     }
+                     $('#collection-editor').append(dropdown);
                      dropdown.select2();
                  }
              });

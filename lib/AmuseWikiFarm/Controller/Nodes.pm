@@ -143,6 +143,39 @@ sub update_node :Chained('edit') :PathPart('') :Args(0) {
     $c->response->redirect($c->uri_for($node->full_uri));
 }
 
+sub title :Chained('admin') :PathPart('text') :Args(1) {
+    my ($self, $c, $title_id) = @_;
+    my $site = $c->stash->{site};
+    my $ok = 0;
+    my $int = qr{\A\d+\z}a;
+    my $params = $c->request->body_params;
+    if ($title_id =~ m/$int/) {
+        if (my $title = $site->titles->texts_only->find($title_id)) {
+            if (my $removals = $params->{remove_node}) {
+                my @ids = ref($removals) ? @$removals : ($removals);
+                if (@ids) {
+                    $title->node_titles->search({ node_id => \@ids })->delete;
+                    $ok++;
+                }
+            }
+            if (my $nid = $params->{add_node_id}) {
+                if ($nid =~ m/$int/) {
+                    if (my $node = $site->nodes->find($nid)) {
+                        unless ($title->nodes->find($nid)) {
+                            $title->add_to_nodes($node);
+                            $ok++;
+                        }
+                    }
+                }
+            }
+            if ($ok) {
+                $c->flash(status_msg => $c->loc("Thanks!"));
+            }
+            return $c->response->redirect($c->uri_for($title->full_uri));
+        }
+    }
+    $c->detach('/not_found');
+}
 
 =encoding utf8
 
