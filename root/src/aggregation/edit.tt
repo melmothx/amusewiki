@@ -21,7 +21,7 @@
     <div class="form-group">
       <label for="aggregation_code">Code</label>
       <input type="text" class="form-control" id="aggregation_code" name="aggregation_code"
-             pattern="[0-9a-z-]{3,}" required>
+             pattern="[0-9a-z][0-9a-z-]{3,}" required>
     </div>
     [% END %]
 
@@ -31,7 +31,7 @@
     <div class="form-group">
       <label for="aggregation_uri">URI</label>
       <input type="text" class="form-control" id="aggregation_uri" name="aggregation_uri"
-             pattern="[0-9a-z-]{3,}" required>
+             pattern="[0-9a-z][0-9a-z-]{3,}" required>
     </div>
     [% END %]
 

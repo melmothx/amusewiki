@@ -2131,7 +2131,7 @@ sub aggregate {
     my $ok;
     my $title_uri = $self->uri;
     my $site = $self->site;
-    my $int = qr{\A\d+\z}a;
+    my $int = qr{\A[0-9]+\z}a;
     if (my $removals = $params->{remove_aggregation}) {
         # this can be an array or an scalar, and that's fine
         # will crash if not a number
@@ -2145,8 +2145,28 @@ sub aggregate {
         if ($add_id =~ m/$int/) {
             if (my $agg = $site->aggregations->find($add_id)) {
                 unless ($agg->aggregation_titles->by_title_uri($title_uri)->count) {
-                    $agg->aggregation_titles->create({ title_uri => $title_uri });
+                    my $sorting_pos = 0;
+                    if ($params->{title_sorting_pos} and $params->{title_sorting_pos} =~ m/($int)/) {
+                        $sorting_pos = $params->{title_sorting_pos};
+                    }
+                    log_debug { "Sorting pos is $sorting_pos" };
+                    $agg->aggregation_titles->create({
+                                                      title_uri => $title_uri,
+                                                      sorting_pos => $sorting_pos,
+                                                     });
                     $ok++;
+                }
+            }
+        }
+    }
+    foreach my $param (sort keys %$params) {
+        if ($param =~ m/\Atitle_sorting_pos-(\d+)\z/a) {
+            my $aid = $1;
+            if ($params->{$param} =~ m/($int)/) {
+                my $sorting_pos = $1;
+                if (my $agg = $site->aggregations->find($aid)) {
+                    log_debug { "Updating sorting pos for $aid to $sorting_pos" };
+                    $agg->aggregation_titles->by_title_uri($title_uri)->update({ sorting_pos => $sorting_pos });
                 }
             }
         }
