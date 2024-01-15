@@ -333,6 +333,14 @@ sub aggregations :Chained('api') :PathPart('aggregations') :Args(0) {
     $c->detach($c->view('JSON'));
 }
 
+sub collections :Chained('api') :PathPart('collections') :Args(0) {
+    my ($self, $c) = @_;
+    my $out = [ $c->stash->{site}->nodes->sorted
+                ->search(undef, { columns => [qw/node_id full_path uri canonical_title/] })->hri ];
+    $c->stash(json => $out);
+    $c->detach($c->view('JSON'));
+}
+
 =head1 AUTHOR
 
 Marco Pessotto <melmothx@gmail.com>

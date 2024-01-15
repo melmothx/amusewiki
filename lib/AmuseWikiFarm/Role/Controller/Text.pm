@@ -213,18 +213,10 @@ sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
 
     Dlog_debug { "Annotations are  $_"  } \@annotations;
     $c->stash(annotations => \@annotations) if @annotations;
-    my @aggregations = $text->aggregations->sorted->hri->all;
-    Dlog_debug { "Aggregations are  $_"  } \@aggregations;
-    $c->stash(aggregations => \@aggregations);
-    # save query if we already have something:
-    if ($c->user_exists) {
-        if (@annotations or @aggregations or $site->aggregations->count) {
-            $c->stash(
-                      annotation_editor => 1,
-                      load_select2 => 1,
-                     );
-        }
-    }
+    $c->stash(
+              collections => [ $text->nodes->sorted->hri->all ],
+              aggregations => [ $text->aggregations->sorted->hri->all ],
+             );
 }
 
 sub text :Chained('populate_preamble') :PathPart('') :Args(0) {
@@ -299,6 +291,20 @@ sub text :Chained('populate_preamble') :PathPart('') :Args(0) {
                         };
         }
         $c->stash(node_breadcrumbs => \@node_breadcrumbs);
+    }
+    if ($c->user_exists) {
+        $c->stash(
+                  site_has_aggregations => $site->aggregations->count,
+                  site_has_collections => $site->nodes->count,
+                 );
+        if ($c->stash->{annotations}
+            or $c->stash->{site_has_aggregations}
+            or $c->stash->{site_has_collections}) {
+            $c->stash(
+                      annotation_editor => 1,
+                      load_select2 => 1,
+                     );
+        }
     }
     $c->response->headers->last_modified($text->f_timestamp_epoch || time());
 }
