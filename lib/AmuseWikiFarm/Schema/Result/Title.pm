@@ -2177,6 +2177,32 @@ sub aggregate {
     return $ok;
 }
 
+sub edit_collections {
+    my ($self, $params) = @_;
+    my $ok = 0;
+    my $int = qr{\A[0-9]+\z}a;
+    if (my $removals = $params->{remove_node}) {
+        if (my @ids = grep { /$int/ } (ref($removals) ? @$removals : ($removals))){
+            $self->node_titles->search({ node_id => \@ids })->delete;
+            $ok++;
+        }
+    }
+    if (my $nid = $params->{add_node_id}) {
+        if ($nid =~ m/$int/) {
+            if (my $node = $self->site->nodes->find($nid)) {
+                unless ($self->nodes->find($nid)) {
+                    $self->add_to_nodes($node);
+                    $ok++;
+                }
+            }
+        }
+    }
+    if ($ok) {
+        $self->oai_pmh_records->bump_datestamp;
+    }
+    return $ok;
+}
+
 __PACKAGE__->meta->make_immutable;
 
 1;
