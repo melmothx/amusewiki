@@ -44,11 +44,7 @@
           [% END %]
         </td>
         <td>
-          [% IF agg.series_data  %]
-            [% agg.issue_name | html %]
-          [% ELSE %]
-            [% agg.aggregation_name  | html %]
-          [% END %]
+          [% agg.aggregation_name  | html %]
         </td>
         <td>[% agg.issue     | html %]</td>
         <td>[% agg.sorting_pos       | html %]</td>
