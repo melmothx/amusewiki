@@ -15,6 +15,7 @@ Catalyst Controller.
 =cut
 
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Utils::Amuse qw/muse_naming_algo/;
 
 sub aggregate :Chained('/site_user_required') :PathPart('aggregate') :CaptureArgs(0) {
     my ($self, $c) = @_;
@@ -28,9 +29,11 @@ sub aggregate :Chained('/site_user_required') :PathPart('aggregate') :CaptureArg
 
 sub manage :Chained('aggregate') :PathPart('manage') :Args(0) {
     my ($self, $c) = @_;
+    my $site = $c->stash->{site};
     $c->stash(
               load_datatables => 1,
-              aggregations => [ map { $_->final_data } $c->stash->{site}->aggregations->sorted ],
+              aggregations => [ map { $_->final_data } $site->aggregations->sorted ],
+              series => [ $site->aggregation_series->sorted->hri ],
              );
 }
 
@@ -44,14 +47,62 @@ sub edit_gate :Chained('aggregate') :PathPart('') :CaptureArgs(0) {
     }
 }
 
+sub edit_series :Chained('edit_gate') :PathPart('series') :Args {
+    my ($self, $c, $id) = @_;
+    my $site = $c->stash->{site};
+    my $params = $c->request->body_params;
+    push @{$c->stash->{breadcrumbs}},
+      {
+       uri => $c->uri_for_action('/aggregation/edit_series'),
+       label => $c->loc('Edit Series'),
+      };
+    if (delete $params->{update}) {
+        Dlog_debug { "Params are $_" } $params;
+        my %clean;
+        foreach my $f (qw/aggregation_series_uri
+                          aggregation_series_name
+                          publisher
+                          publication_place
+                         /) {
+            if ($f eq 'aggregation_series_uri') {
+                $clean{$f} = muse_naming_algo($params->{$f});
+            }
+            else {
+                $clean{$f} = $params->{$f};
+            }
+        }
+        if ($clean{aggregation_series_uri} and $clean{aggregation_series_name}) {
+            $site->aggregation_series->update_or_create(\%clean,
+                                                        { key => 'aggregation_series_uri_site_id_unique' });
+            $c->flash(status_msg => $c->loc("Thanks!"));
+        }
+        else {
+            $c->flash(error_msg => $c->loc("Invalid data!"));
+        }
+        return $c->response->redirect($c->uri_for_action('/aggregation/manage'));
+    }
+    if ($id and $id =~ /\A\d+\z/a) {
+        if (my $series = $site->aggregation_series->find($id)) {
+            my $series_data = { $series->get_columns };
+            $c->stash(series => $series_data);
+        }
+        else {
+            return $c->detach('/not_found');
+        }
+    }
+    else {
+        $c->stash(series => {});
+    }
+}
+
 sub edit :Chained('edit_gate') :PathPart('edit') :Args {
     my ($self, $c, $id) = @_;
     my $site = $c->stash->{site};
     my $params = $c->request->body_params;
     push @{$c->stash->{breadcrumbs}},
       {
-       uri => $c->uri_for_action('/attachments/edit'),
-       label => $c->loc('Edit'),
+       uri => $c->uri_for_action('/aggregation/edit'),
+       label => $c->loc('Edit Aggregation'),
       };
     if (delete $params->{update}) {
         Dlog_debug { "Params are $_" } $params;
@@ -121,7 +172,7 @@ sub aggregation :Chained('/site') :PathPart('aggregation') :Args(1) {
     }
 }
 
-sub series :Chained('/site') :PathPart('aggregation-series') :Args(1) {
+sub series :Chained('/site') :PathPart('series') :Args(1) {
     my ($self, $c, $code) = @_;
     if (my $series = $c->stash->{site}->aggregation_series->find({ aggregation_series_uri => $code })) {
         $c->stash(
