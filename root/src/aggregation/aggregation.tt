@@ -1,10 +1,8 @@
 <div class="page-header">
   <h1>
     [% aggregation.aggregation_name | html %]
-    [% aggregation.series_number | html %]
   </h1>
 </div>
-[% IF aggregation.has_details %]
   <div class="well">
     [% IF aggregation.publication_place %]
       <div>
@@ -26,15 +24,15 @@
         <strong>[% loc('ISBN') %]:</strong> [% aggregation.isbn | html %]
       </div>
     [% END  %]
-    [% IF aggregation.has_siblings %]
+    [% IF aggregation.series %]
       <div style="margin-top: 10px">
-        <a href="[% c.uri_for_action('/aggregation/series', aggregation.aggregation_code) | html %]">
+        <a href="[% c.uri_for_action('/aggregation/series', aggregation.series.aggregation_series_uri) | html %]">
           <strong>[% loc('See all') %]</strong>
         </a>
       </div>
     [% END %]
   </div>
-[% END %]
+
 
 
 [% INCLUDE 'include/posts.tt' %]

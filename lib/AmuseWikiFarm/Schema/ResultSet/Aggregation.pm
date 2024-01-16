@@ -35,8 +35,13 @@ sub sorted {
     my $me = $self->current_source_alias;
     $self->search(undef,
                   {
-                   order_by => [ "$me.aggregation_code", "$me.sorting_pos", "$me.aggregation_uri" ],
-                  })
+                   join => [qw/aggregation_series/],
+                   order_by => [
+                                "aggregation_series.aggregation_series_name",
+                                "$me.sorting_pos",
+                                "$me.aggregation_uri"
+                               ],
+                  });
 }
 
 sub by_id {

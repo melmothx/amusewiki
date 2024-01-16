@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1>
-    [% title | html %]
+    [% series.aggregation_series_name | html %]
   </h1>
 </div>
 
@@ -10,7 +10,6 @@
       <a class="list-group-item clearfix"
          href="[% c.uri_for_action('aggregation/aggregation', agg.aggregation_uri) | html %]">
         [% agg.aggregation_name | html %]
-        [% agg.series_number | html %]
       </a>
     </div>
   [% END %]

@@ -35,11 +35,29 @@ my $autoimport = path($site->autoimport_dir);
 $autoimport->mkpath;
 my $ag = [
           {
-           aggregation_code => "fmx",
+           aggregation_uri => "antology",
+           aggregation_name => "My Antology",
+           titles => [
+                      'to-test-one',
+                     ],
+           publication_date => "Never",
+           publisher => "Nobody",
+           publication_place => 'Another',
+           sorting_pos => 0,
+           publication_date_year => 2023,
+           publication_date_month => 12,
+           publication_date_day => 1,
+          },
+          {
+           aggregation_series => {
+                                  aggregation_series_uri => 'fmx',
+                                  aggregation_series_name => 'For Marco',
+                                  publisher => 'Publisher',
+                                  publication_place => 'Place',
+                                 },
            aggregation_uri => "fmx-1",
-           aggregation_name => "For Marco",
            isbn => '97899999999999',
-           series_number => "#1",
+           issue => "#1",
            sorting_pos => 1,
            titles => [
                       'to-test-one',
@@ -49,10 +67,14 @@ my $ag = [
            publication_place => "Nowhere",
           },
           {
-           aggregation_code => "fmx",
+           aggregation_series => {
+                                  aggregation_series_uri => 'fmx',
+                                  aggregation_series_name => 'For Marco',
+                                  publisher => 'Publisher',
+                                  publication_place => 'Place',
+                                 },
            aggregation_uri => "fmx-2",
-           aggregation_name => "For Marco",
-           series_number => "#2",
+           issue => "#2",
            sorting_pos => 2,
            titles => [
                       'to-test-three',
@@ -91,34 +113,29 @@ $site->git->commit({ message => "Added files" });
 diag "Updating DB from tree";
 $site->update_db_from_tree;
 
-is $site->aggregations->count, 2;
-is $site->aggregations->search_related('aggregation_titles')->count, 8;
+is $site->aggregations->count, 3;
+is $site->aggregations->search_related('aggregation_titles')->count, 9;
 
 # the last one is a duplicate
 is pop @{$ag->[0]->{titles}}, "to-test-one";
-is_deeply $site->serialize_aggregations, $ag;
-
-sleep 1;
-
+{
+    my $serialized = $site->serialize_aggregations;
+    is_deeply $serialized, $ag or die Dumper($serialized, $ag);
+}
 diag "Reimporting";
 
 my $removed = pop @{$copy->[1]->{titles}};
 
 DumpFile($autoimport->child('aggregations.yml'), $copy);
 $site->process_autoimport_files;
-is $site->aggregations->search_related('aggregation_titles')->count, 5;
+is $site->aggregations->search_related('aggregation_titles')->count, 6;
 
 is_deeply $site->serialize_aggregations, $copy;
 
 is $site->aggregations->no_match->count, 0;
 
-foreach my $title ($site->titles) {
-    if ($title->uri eq $removed) {
-        is $title->aggregations->count, 1;
-    }
-    else {
-        is $title->aggregations->count, 2;
-    }
+foreach my $title ($site->titles->search({ uri => 'to-test-one' })) {
+    is $title->aggregations->count, 3;
     diag "The aggregations sorted are " . Dumper([$title->aggregations->sorted->hri->all]);
 }
 
@@ -143,9 +160,9 @@ $mech->content_like(qr{
 \s+<subfield\s+code="d">Nowhere</subfield>
 \s+<subfield\s+code="q">1</subfield>
 \s+</datafield>
-}sx);
+}sx) or die $mech->content;
 
-$mech->get_ok('/aggregation/fmx-1');
+$mech->get_ok('/aggregation/fmx-1') or die;
 $mech->content_like(qr{Title one.*Title two.*Title three}s);
 $mech->get_ok('/aggregation/fmx-2');
 $mech->content_like(qr{Title three.*Title two}s);

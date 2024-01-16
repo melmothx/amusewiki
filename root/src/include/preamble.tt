@@ -119,7 +119,6 @@
         <strong>[% loc('Part of:') %]</strong>
         <a href="[% c.uri_for_action('aggregation/aggregation', aggregation.aggregation_uri) | html %]">
           [% aggregation.aggregation_name | html %]
-          [% aggregation.series_number | html %]
         </a>
       </div>
     [% END %]
@@ -474,7 +473,7 @@
                      dropdown.append($('<option>', { "value": "" }).text(''));
                      for (var i = 0; i < data.length; i++) {
                          dropdown.append($('<option>', { "value": data[i].aggregation_id })
-                             .text(data[i].aggregation_name + ' ' + data[i].series_number));
+                             .text(data[i].aggregation_name);
                      }
                      $('#annotation-editor-aggregations').append(dropdown);
                      dropdown.select2();

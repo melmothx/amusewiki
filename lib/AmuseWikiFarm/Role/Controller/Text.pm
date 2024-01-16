@@ -215,7 +215,7 @@ sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
     $c->stash(annotations => \@annotations) if @annotations;
     $c->stash(
               collections => [ $text->nodes->sorted->hri->all ],
-              aggregations => [ $text->aggregations->sorted->hri->all ],
+              aggregations => [ map { $_->final_data } $text->aggregations->sorted->all ],
              );
 }
 
