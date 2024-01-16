@@ -774,9 +774,9 @@ CREATE TABLE aggregation (
        -- dates. As a string and broken down in components. Primary
        -- sorting before the issue_order. All can be null.
        publication_date VARCHAR(255),
-       publication_data_year INTEGER,
-       publication_data_month INTEGER,
-       publication_data_day INTEGER,
+       publication_date_year INTEGER,
+       publication_date_month INTEGER,
+       publication_date_day INTEGER,
 
        -- inside the same series, as a string and as an integer (#15 and 15)
        issue VARCHAR(255),
