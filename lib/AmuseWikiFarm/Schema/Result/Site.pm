@@ -5444,6 +5444,16 @@ sub create_aggregation {
             $rec{$i} = $1;
         }
     }
+    # if it's a serie, remove the name, otherwise clean issue and sorting_pos
+    if ($rec{aggregation_series_id}) {
+        log_debug { "Removing aggregation name" };
+        $rec{aggregation_name} = undef;
+    }
+    else {
+        log_debug { "Removing issue and sorting_pos" };
+        $rec{issue} = undef;
+        $rec{sorting_pos} = 0;
+    }
     # uris
     foreach my $u (qw/aggregation_uri/) {
         $rec{$u} = muse_naming_algo($rec{$u});
