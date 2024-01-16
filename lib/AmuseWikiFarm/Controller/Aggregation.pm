@@ -30,7 +30,7 @@ sub manage :Chained('aggregate') :PathPart('manage') :Args(0) {
     my ($self, $c) = @_;
     $c->stash(
               load_datatables => 1,
-              aggregations => [ $c->stash->{site}->aggregations->sorted->hri ],
+              aggregations => [ map { $_->final_data } $c->stash->{site}->aggregations->sorted ],
              );
 }
 
@@ -105,7 +105,7 @@ sub aggregation :Chained('/site') :PathPart('aggregation') :Args(1) {
     my ($self, $c, $uri) = @_;
     if (my $agg = $c->stash->{site}->aggregations->find({ aggregation_uri => $uri })) {
         $c->stash(
-                  aggregation => $agg,
+                  aggregation => $agg->final_data,
                   texts => AmuseWikiFarm::Utils::Iterator->new([ $agg->titles ])
                  );
     }
@@ -116,16 +116,10 @@ sub aggregation :Chained('/site') :PathPart('aggregation') :Args(1) {
 
 sub series :Chained('/site') :PathPart('aggregation-series') :Args(1) {
     my ($self, $c, $code) = @_;
-    my $rs = $c->stash->{site}->aggregations->search({ aggregation_code => $code });
-    my %names;
-    if ($rs->count) {
-        my @all = $rs->sorted->all;
-        foreach my $agg (@all) {
-            $names{$agg->aggregation_name}++;
-        }
+    if (my $series = $c->stash->{site}->aggregation_series->find({ aggregation_series_uri => $code })) {
         $c->stash(
-                  aggregations => \@all,
-                  title => join(' / ', sort keys %names),
+                  aggregations => [ map { $_->final_data } $series->aggregations ],
+                  series => $series,
                  );
     }
     else {

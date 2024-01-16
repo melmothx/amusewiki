@@ -328,7 +328,7 @@ sub format_definitions :Chained('api') :PathPart('format-definitions') :Args(0) 
 
 sub aggregations :Chained('api') :PathPart('aggregations') :Args(0) {
     my ($self, $c) = @_;
-    my $out = [ $c->stash->{site}->aggregations->sorted->hri ];
+    my $out = [ map { $_->final_data } $c->stash->{site}->aggregations->sorted ];
     $c->stash(json => $out);
     $c->detach($c->view('JSON'));
 }

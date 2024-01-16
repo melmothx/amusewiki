@@ -5361,20 +5361,18 @@ sub process_autoimport_files {
 
 sub create_aggregation {
     my ($self, $args) = @_;
-    my $guard = $self->result_source->schema->txn_scope_guard;
+    my $schema = $self->result_source->schema;
+    my $guard = $schema->txn_scope_guard;
     my @errors;
     my %rec;
     foreach my $k (keys %$args) {
-        unless (defined $args->{$k}) {
-            $args->{$k} = "";
-        }
-        unless (ref($args)) {
+        if (defined $args->{$k} and not ref($args->{$k})) {
             $args->{$k} =~ s/\s+/ /gs;
             $args->{$k} =~ s/\A\s*//;
             $args->{$k} =~ s/\s*\z//;
         }
     }
-    foreach my $required (qw/aggregation_code aggregation_uri aggregation_name/) {
+    foreach my $required (qw/aggregation_uri/) {
         if (my $v = $args->{$required}) {
             $rec{$required} = $v;
         }
@@ -5382,21 +5380,49 @@ sub create_aggregation {
             push @errors, "Missing $required field";
         }
     }
+    if (my $series_data = $args->{aggregation_series}) {
+        if (my $uri = muse_naming_algo($series_data->{aggregation_series_uri})) {
+            my %sd = (aggregation_series_uri => $uri);
+            foreach my $f (qw/aggregation_series_name publisher publication_place/) {
+                $sd{$f} = $series_data->{$f} if $series_data->{$f};
+            }
+            if ($sd{aggregation_series_name}) {
+                my $key = { key => 'aggregation_series_uri_site_id_unique' };
+                Dlog_debug { "Updating/Creating aggregation series: $_" } \%sd;
+                my $series = $self->aggregation_series->update_or_create(\%sd, $key);
+                $rec{aggregation_series_id} = $series->discard_changes->aggregation_series_id;
+            }
+            else {
+                push @errors, "Missing aggregation_series_name";
+            }
+        }
+        else {
+            push @errors, "Missing aggregation_series_uri";
+        }
+    }
+    else {
+        push @errors, "Missing aggregation_name" unless $args->{aggregation_name};
+    }
     if (@errors) {
         Dlog_error { "Errors: $_" } \@errors;
         return;
     }
-    foreach my $f (qw/series_number
+    foreach my $f (qw/aggregation_name
+                      issue
                       publication_place
                       publication_date
                       isbn
                       publisher/) {
-        if (exists $args->{$f}) {
+        if (exists $args->{$f} and defined $args->{$f}) {
             $rec{$f} = $args->{$f};
         }
     }
     # integers
-    foreach my $i (qw/sorting_pos/) {
+    foreach my $i (qw/sorting_pos
+                      publication_date_year
+                      publication_date_month
+                      publication_date_day
+                     /) {
         if (exists $args->{$i}
             and defined exists $args->{$i}
             and $args->{$i} =~ m/\A([1-9][0-9]*)/a) {
@@ -5404,7 +5430,7 @@ sub create_aggregation {
         }
     }
     # uris
-    foreach my $u (qw/aggregation_code aggregation_uri/) {
+    foreach my $u (qw/aggregation_uri/) {
         $rec{$u} = muse_naming_algo($rec{$u});
     }
     my $aggregation = $self->aggregations->find({ aggregation_uri => $rec{aggregation_uri} });

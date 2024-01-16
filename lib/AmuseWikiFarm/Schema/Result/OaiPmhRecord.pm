@@ -398,11 +398,15 @@ sub marc21_record {
             }
         }
         my @aggregations;
-        foreach my $agg ($title->aggregations->sorted->hri->all) {
+        foreach my $agg (map { $_->final_data } $title->aggregations->sorted->all) {
             Dlog_debug { "Aggregation is $_" } $agg;
+            my $name = $agg->{aggregation_name};
+            if ($agg->{series} and $agg->{series}->{aggregation_series_name}) {
+                $name = $agg->{series}->{aggregation_series_name};
+            }
             push @aggregations, {
-                                 't' => $agg->{aggregation_name},
-                                 'g' => $agg->{series_number},
+                                 't' => $name,
+                                 'g' => $agg->{issue},
                                  'o' => $agg->{aggregation_uri},
                                  '6' => $base_url . '/aggregation/' . $agg->{aggregation_uri},
                                  'z' => $agg->{isbn},

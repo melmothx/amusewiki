@@ -259,40 +259,36 @@ sub titles {
     return @out;
 }
 
-sub has_details {
-    my $self = shift;
-    if ($self->publication_place
-        or $self->publication_date
-        or $self->publisher
-        or $self->isbn
-        or $self->has_siblings) {
-        return 1;
-    }
-    else {
-        return 0;
-    }
-}
-
 sub has_siblings {
     my $self = shift;
-    if ($self->site->aggregations->search({ aggregation_code => $self->aggregation_code })->count > 1) {
-        return 1;
+    if (my $series = $self->aggregation_series) {
+        if ($series->aggregations->count > 1) {
+            return 1;
+        }
     }
-    else {
-        return 0;
-    }
+    return 0;
 }
 
 sub serialize {
     my $self = shift;
     my %vals = $self->get_columns;
-    foreach my $k (qw/aggregation_id site_id/) {
+    foreach my $k (qw/aggregation_id site_id aggregation_series_id/) {
         delete $vals{$k};
     }
     foreach my $k (keys %vals) {
         delete $vals{$k} unless defined $vals{$k};
     }
     $vals{titles} = [ map { $_->{title_uri} } $self->aggregation_titles->title_uris->hri->all ];
+    if (my $series = $self->aggregation_series) {
+        my %series_data = $series->get_columns;
+        foreach my $k (qw/aggregation_series_id site_id/) {
+            delete $series_data{$k};
+        }
+        foreach my $f (keys %series_data) {
+            delete $series_data{$f} if not defined $series_data{$f};
+        }
+        $vals{aggregation_series} = \%series_data;
+    }
     return \%vals;
 }
 
@@ -300,6 +296,20 @@ sub bump_oai_pmh_records {
     my $self = shift;
     my @ids = map { $_->id } $self->titles;
     $self->site->oai_pmh_records->by_title_id(\@ids)->bump_datestamp;
+}
+
+sub final_data {
+    my $self = shift;
+    my %data = $self->get_columns;
+    if (my $series = $self->aggregation_series) {
+        my %series = $series->get_columns;
+        $data{aggregation_name} ||= join(' ', grep { /\w/ } ($series{aggregation_series_name}, $data{issue}));
+        foreach my $f (q/publication_place publication_date/) {
+            $data{$f} ||= $series{$f};
+        }
+        $data{series} = \%series;
+    }
+    return \%data;
 }
 
 __PACKAGE__->meta->make_immutable;
