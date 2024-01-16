@@ -1,6 +1,13 @@
 <div class="page-header">
   <h1>
     [% aggregation.aggregation_name | html %]
+    [% IF c.user_exists %]
+      <a href="[% c.uri_for_action('/aggregation/edit', aggregation.aggregation_id) | html %]"
+         title="[% loc('Update') %]"
+         class="btn btn-default pull-right" role="button">
+        <span class="fa fa-edit"></span>
+      </a>
+    [% END %]
   </h1>
 </div>
   <div class="well">

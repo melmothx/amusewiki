@@ -401,8 +401,8 @@ sub marc21_record {
         foreach my $agg (map { $_->final_data } $title->aggregations->sorted->all) {
             Dlog_debug { "Aggregation is $_" } $agg;
             my $name = $agg->{aggregation_name};
-            if ($agg->{series} and $agg->{series}->{aggregation_series_name}) {
-                $name = $agg->{series}->{aggregation_series_name};
+            if ($agg->{series_data} and $agg->{series_data}->{aggregation_series_name}) {
+                $name = $agg->{series_data}->{aggregation_series_name};
             }
             push @aggregations, {
                                  't' => $name,
