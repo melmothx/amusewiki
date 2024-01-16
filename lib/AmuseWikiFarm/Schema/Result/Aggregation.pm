@@ -68,17 +68,17 @@ __PACKAGE__->table("aggregation");
   is_nullable: 1
   size: 255
 
-=head2 publication_data_year
+=head2 publication_date_year
 
   data_type: 'integer'
   is_nullable: 1
 
-=head2 publication_data_month
+=head2 publication_date_month
 
   data_type: 'integer'
   is_nullable: 1
 
-=head2 publication_data_day
+=head2 publication_date_day
 
   data_type: 'integer'
   is_nullable: 1
@@ -133,11 +133,11 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "publication_date",
   { data_type => "varchar", is_nullable => 1, size => 255 },
-  "publication_data_year",
+  "publication_date_year",
   { data_type => "integer", is_nullable => 1 },
-  "publication_data_month",
+  "publication_date_month",
   { data_type => "integer", is_nullable => 1 },
-  "publication_data_day",
+  "publication_date_day",
   { data_type => "integer", is_nullable => 1 },
   "issue",
   { data_type => "varchar", is_nullable => 1, size => 255 },
@@ -237,8 +237,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-16 13:27:46
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Khj/5igKi53Uu1SwbQZ7bA
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-16 14:21:51
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sxPkc1Xhx6yiPrWTmTQApw
 
 sub sqlt_deploy_hook {
     my ($self, $sqlt_table) = @_;
