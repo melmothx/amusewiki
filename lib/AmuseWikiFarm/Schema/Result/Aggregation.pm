@@ -44,11 +44,11 @@ __PACKAGE__->table("aggregation");
   is_auto_increment: 1
   is_nullable: 0
 
-=head2 aggregation_code
+=head2 aggregation_series_id
 
-  data_type: 'varchar'
-  is_nullable: 0
-  size: 255
+  data_type: 'integer'
+  is_foreign_key: 1
+  is_nullable: 1
 
 =head2 aggregation_uri
 
@@ -59,10 +59,31 @@ __PACKAGE__->table("aggregation");
 =head2 aggregation_name
 
   data_type: 'varchar'
-  is_nullable: 0
+  is_nullable: 1
   size: 255
 
-=head2 series_number
+=head2 publication_date
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
+=head2 publication_data_year
+
+  data_type: 'integer'
+  is_nullable: 1
+
+=head2 publication_data_month
+
+  data_type: 'integer'
+  is_nullable: 1
+
+=head2 publication_data_day
+
+  data_type: 'integer'
+  is_nullable: 1
+
+=head2 issue
 
   data_type: 'varchar'
   is_nullable: 1
@@ -80,7 +101,7 @@ __PACKAGE__->table("aggregation");
   is_nullable: 1
   size: 255
 
-=head2 publication_date
+=head2 publisher
 
   data_type: 'varchar'
   is_nullable: 1
@@ -91,12 +112,6 @@ __PACKAGE__->table("aggregation");
   data_type: 'varchar'
   is_nullable: 1
   size: 32
-
-=head2 publisher
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 255
 
 =head2 site_id
 
@@ -110,24 +125,30 @@ __PACKAGE__->table("aggregation");
 __PACKAGE__->add_columns(
   "aggregation_id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
-  "aggregation_code",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  "aggregation_series_id",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "aggregation_uri",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "aggregation_name",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
-  "series_number",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "publication_date",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "publication_data_year",
+  { data_type => "integer", is_nullable => 1 },
+  "publication_data_month",
+  { data_type => "integer", is_nullable => 1 },
+  "publication_data_day",
+  { data_type => "integer", is_nullable => 1 },
+  "issue",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "sorting_pos",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "publication_place",
   { data_type => "varchar", is_nullable => 1, size => 255 },
-  "publication_date",
+  "publisher",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "isbn",
   { data_type => "varchar", is_nullable => 1, size => 32 },
-  "publisher",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
@@ -165,6 +186,26 @@ __PACKAGE__->add_unique_constraint(
 
 =head1 RELATIONS
 
+=head2 aggregation_series
+
+Type: belongs_to
+
+Related object: L<AmuseWikiFarm::Schema::Result::AggregationSeries>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "aggregation_series",
+  "AmuseWikiFarm::Schema::Result::AggregationSeries",
+  { aggregation_series_id => "aggregation_series_id" },
+  {
+    is_deferrable => 0,
+    join_type     => "LEFT",
+    on_delete     => "SET NULL",
+    on_update     => "CASCADE",
+  },
+);
+
 =head2 aggregation_titles
 
 Type: has_many
@@ -196,13 +237,12 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-13 09:21:29
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:1hA0FBKGbmWN6Kkq5aWX/g
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-16 13:27:46
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Khj/5igKi53Uu1SwbQZ7bA
 
 sub sqlt_deploy_hook {
     my ($self, $sqlt_table) = @_;
     $sqlt_table->add_index(name => 'aggregation_uri_amw_index', fields => ['aggregation_uri']);
-    $sqlt_table->add_index(name => 'aggregation_code_amw_index', fields => ['aggregation_code']);
 }
 
 sub titles {

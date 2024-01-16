@@ -754,31 +754,43 @@ CREATE TABLE title_annotation (
 
 CREATE UNIQUE INDEX unique_title_annotation_key ON title_annotation (annotation_id, title_id);
 
+CREATE TABLE aggregation_series (
+    aggregation_series_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    site_id VARCHAR(16) NOT NULL REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    aggregation_series_uri VARCHAR(255) NOT NULL,
+    aggregation_series_name VARCHAR(255) NOT NULL,
+    publisher VARCHAR(255),
+    publication_place VARCHAR(255)
+);
+CREATE UNIQUE INDEX unique_aggregation_series_uri_site_id ON aggregation_series (aggregation_series_uri, site_id);
+
 CREATE TABLE aggregation (
        aggregation_id INTEGER PRIMARY KEY AUTOINCREMENT,
-       aggregation_code VARCHAR(255) NOT NULL, -- fe, the parent
+       aggregation_series_id INTEGER NULL REFERENCES aggregation_series(aggregation_series_id)
+                             ON DELETE SET NULL ON UPDATE CASCADE,
        aggregation_uri VARCHAR(255) NOT NULL,  -- fe-15
-       aggregation_name VARCHAR(255) NOT NULL, -- F.E.
-       -- inside the same name
-       series_number VARCHAR(255), -- 15
-       -- and if the series number are not integers:
+       aggregation_name VARCHAR(255) NULL, -- Name if there is no aggregation series
+
+       -- dates. As a string and broken down in components. Primary
+       -- sorting before the issue_order. All can be null.
+       publication_date VARCHAR(255),
+       publication_data_year INTEGER,
+       publication_data_month INTEGER,
+       publication_data_day INTEGER,
+
+       -- inside the same series, as a string and as an integer (#15 and 15)
+       issue VARCHAR(255),
        sorting_pos INTEGER NOT NULL DEFAULT 0,
 
-       -- if available
+       -- if available, takes precedence over series.publication_place and  publisher
        publication_place VARCHAR(255),
-       publication_date VARCHAR(255),
-       isbn VARCHAR(32),
-
-       -- this is usually the same for the same aggregation across
-       -- serials, so there's a bit of redundancy, but that's not enough
-       -- for another table. It's not even required.
        publisher VARCHAR(255),
 
+       isbn VARCHAR(32),
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE
 );
-CREATE INDEX aggregation_code_idx ON aggregation(aggregation_code);
-CREATE INDEX aggregation_uri_idx ON aggregation(aggregation_uri);
+
 CREATE UNIQUE INDEX unique_aggregation ON aggregation (aggregation_uri, site_id);
 
 CREATE TABLE aggregation_title (
