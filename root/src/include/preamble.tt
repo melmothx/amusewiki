@@ -473,7 +473,7 @@
                      dropdown.append($('<option>', { "value": "" }).text(''));
                      for (var i = 0; i < data.length; i++) {
                          dropdown.append($('<option>', { "value": data[i].aggregation_id })
-                             .text(data[i].aggregation_name);
+                             .text(data[i].aggregation_name));
                      }
                      $('#annotation-editor-aggregations').append(dropdown);
                      dropdown.select2();

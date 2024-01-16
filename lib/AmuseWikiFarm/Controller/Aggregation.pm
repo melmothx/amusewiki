@@ -55,13 +55,19 @@ sub edit :Chained('edit_gate') :PathPart('edit') :Args {
       };
     if (delete $params->{update}) {
         Dlog_debug { "Params are $_" } $params;
-        my $updated = $site->create_aggregation($params);
-        $c->flash(status_msg => $c->loc("Thanks!"));
+        if (my $updated = $site->create_aggregation($params)) {
+            $c->flash(status_msg => $c->loc("Thanks!"));
+        }
+        else {
+            $c->flash(error_msg => $c->loc("Invalid data!"));
+        }
         return $c->response->redirect($c->uri_for_action('/aggregation/manage'));
     }
     if ($id and $id =~ /\A\d+\z/a) {
         if (my $agg = $site->aggregations->find($id)) {
-            $c->stash(aggregation => $agg->serialize);
+            my $agg_data = $agg->serialize;
+            Dlog_debug { "Data are $_" } $agg_data;
+            $c->stash(aggregation => $agg_data);
         }
         else {
             return $c->detach('/not_found');
@@ -70,6 +76,7 @@ sub edit :Chained('edit_gate') :PathPart('edit') :Args {
     else {
         $c->stash(aggregation => {});
     }
+    $c->stash(load_select2 => 1);
 }
 
 sub remove :Chained('edit_gate') :PathPart('remove') :Args(1) {

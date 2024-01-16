@@ -240,6 +240,8 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-16 14:21:51
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sxPkc1Xhx6yiPrWTmTQApw
 
+use AmuseWikiFarm::Log::Contextual;
+
 sub sqlt_deploy_hook {
     my ($self, $sqlt_table) = @_;
     $sqlt_table->add_index(name => 'aggregation_uri_amw_index', fields => ['aggregation_uri']);
@@ -303,12 +305,18 @@ sub final_data {
     my %data = $self->get_columns;
     if (my $series = $self->aggregation_series) {
         my %series = $series->get_columns;
+        my %issue_data = map { $_ => $data{$_} } (qw/aggregation_name
+                                                     publication_place
+                                                     publisher
+                                                    /);
         $data{aggregation_name} ||= join(' ', grep { /\w/ } ($series{aggregation_series_name}, $data{issue}));
-        foreach my $f (q/publication_place publication_date/) {
+        foreach my $f (qw/publication_place publisher/) {
             $data{$f} ||= $series{$f};
         }
-        $data{series} = \%series;
+        $data{issue_data} = \%issue_data;
+        $data{series_data} = \%series;
     }
+    # Dlog_debug { "Final data is $_" } \%data;
     return \%data;
 }
 

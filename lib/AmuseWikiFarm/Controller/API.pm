@@ -333,6 +333,14 @@ sub aggregations :Chained('api') :PathPart('aggregations') :Args(0) {
     $c->detach($c->view('JSON'));
 }
 
+sub series :Chained('api') :PathPart('series') :Args(0) {
+    my ($self, $c) = @_;
+    my $out = [ $c->stash->{site}->aggregation_series->sorted->hri ];
+    $c->stash(json => $out);
+    $c->detach($c->view('JSON'));
+}
+
+
 sub collections :Chained('api') :PathPart('collections') :Args(0) {
     my ($self, $c) = @_;
     my $out = [ $c->stash->{site}->nodes->sorted

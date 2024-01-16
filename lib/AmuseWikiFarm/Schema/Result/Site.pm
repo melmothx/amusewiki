@@ -5380,7 +5380,22 @@ sub create_aggregation {
             push @errors, "Missing $required field";
         }
     }
-    if (my $series_data = $args->{aggregation_series}) {
+    # if passed in the root, just pick it up
+    if (defined $args->{aggregation_series_uri}) {
+        if (my $series_uri = $args->{aggregation_series_uri}) {
+            if (my $series = $self->aggregation_series->find({ aggregation_series_uri => $series_uri })) {
+                $rec{aggregation_series_id} = $series->aggregation_series_id;
+            }
+            else {
+                push @errors, "Bad Series uri";
+            }
+        }
+        else {
+            log_debug { "Removing the series" };
+            $rec{aggregation_series_id} = undef;
+        }
+    }
+    elsif (my $series_data = $args->{aggregation_series}) {
         if (my $uri = muse_naming_algo($series_data->{aggregation_series_uri})) {
             my %sd = (aggregation_series_uri => $uri);
             foreach my $f (qw/aggregation_series_name publisher publication_place/) {
