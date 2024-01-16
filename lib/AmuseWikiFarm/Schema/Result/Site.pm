@@ -5434,7 +5434,7 @@ sub create_aggregation {
 sub serialize_aggregations {
     my $self = shift;
     my @out;
-    foreach my $agg ($self->aggregations->search(undef, { order_by => 'uri' })) {
+    foreach my $agg ($self->aggregations->sorted) {
         push @out, $agg->serialize;
     }
     return \@out;
