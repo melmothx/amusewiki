@@ -297,6 +297,7 @@ sub serialize {
 sub bump_oai_pmh_records {
     my $self = shift;
     my @ids = map { $_->id } $self->titles;
+    Dlog_debug { "Bumping datestamp for $_" } \@ids;
     $self->site->oai_pmh_records->by_title_id(\@ids)->bump_datestamp;
 }
 

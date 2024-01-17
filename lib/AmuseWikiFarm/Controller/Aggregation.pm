@@ -72,9 +72,22 @@ sub edit_series :Chained('edit_gate') :PathPart('series') :Args {
             }
         }
         if ($clean{aggregation_series_uri} and $clean{aggregation_series_name}) {
-            $site->aggregation_series->update_or_create(\%clean,
-                                                        { key => 'aggregation_series_uri_site_id_unique' });
-            $c->flash(status_msg => $c->loc("Thanks!"));
+            my $series = $site->aggregation_series->find(\%clean,
+                                                         { key => 'aggregation_series_uri_site_id_unique' });
+            if ($series) {
+                if ($params->{is_update}) {
+                    $series->update(\%clean);
+                    $series->bump_oai_pmh_records;
+                    $c->flash(status_msg => $c->loc("Thanks!"));
+                }
+                else {
+                    $c->flash(error_msg => $c->loc("URI already exists!"));
+                }
+            }
+            else {
+                $site->aggregation_series->create(\%clean);
+                $c->flash(status_msg => $c->loc("Thanks!"));
+            }
         }
         else {
             $c->flash(error_msg => $c->loc("Invalid data!"));
@@ -95,6 +108,19 @@ sub edit_series :Chained('edit_gate') :PathPart('series') :Args {
     }
 }
 
+sub remove_series :Chained('edit_gate') :PathPart('remove-series') :Args(1) {
+    my ($self, $c, $id) = @_;
+    if ($id =~ /\A\d+\z/a) {
+        if (my $series = $c->stash->{site}->aggregation_series->find($id)) {
+            $series->bump_oai_pmh_records;
+            $series->delete;
+            $c->flash(status_msg => $c->loc("Record deleted!"));
+        }
+    }
+    return $c->response->redirect($c->uri_for_action('/aggregation/manage'));
+}
+
+
 sub edit :Chained('edit_gate') :PathPart('edit') :Args {
     my ($self, $c, $id) = @_;
     my $site = $c->stash->{site};
@@ -106,6 +132,14 @@ sub edit :Chained('edit_gate') :PathPart('edit') :Args {
       };
     if (delete $params->{update}) {
         Dlog_debug { "Params are $_" } $params;
+        unless (delete $params->{is_update}) {
+            # new: check if exists
+            if ($site->aggregations->find({ aggregation_uri => muse_naming_algo($params->{aggregation_uri}) })) {
+                $c->flash(error_msg => $c->loc("URI already exists!"));
+                return $c->response->redirect($c->uri_for_action('/aggregation/manage'));
+            }
+        }
+
         if (my $updated = $site->create_aggregation($params)) {
             $c->flash(status_msg => $c->loc("Thanks!"));
         }
@@ -166,6 +200,7 @@ sub aggregation :Chained('/site') :PathPart('aggregation') :Args(1) {
                   aggregation => $agg->final_data,
                   texts => AmuseWikiFarm::Utils::Iterator->new([ $agg->titles ])
                  );
+        Dlog_debug { "Agg is $_"  } $c->stash->{aggregation};
     }
     else {
         $c->detach('/not_found');
