@@ -117,10 +117,12 @@
       <th>[% loc('Series') %]</th>
       <th>[% loc('Publisher') %]</th>
       <th>[% loc('Publication Date') %]</th>
+      <th>[% loc('Remove') %]</th>
     </tr>
     </thead>
     <tbody>
       [% FOREACH serie IN series %]
+      <tr>
         <td>
           <a href="[% c.uri_for_action('/aggregation/edit_series', serie.aggregation_series_id) | html %]">
             [% serie.aggregation_series_id | html %]
@@ -134,6 +136,16 @@
         <td>[% serie.aggregation_series_name | html %]</td>
         <td>[% serie.publisher | html %]</td>
         <td>[% serie.publication_place | html %]</td>
+        <td>
+          <form action="[% c.uri_for_action('/aggregation/remove_series', serie.aggregation_series_id) | html %]"
+                method="POST" onsubmit="return amw_confirm()">
+            <input type="hidden" name="remove" value="remove" />
+            <button class="btn btn-primary" type="submit">
+              <i class="fa fa-trash"></i>
+            </button>
+          </form>
+        </td>
+      </tr>
       [% END %]
     </tbody>
   </table>

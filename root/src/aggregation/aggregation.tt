@@ -11,6 +11,15 @@
   </h1>
 </div>
   <div class="well">
+    [% IF aggregation.series_data %]
+      <div>
+        <strong>[% loc('Series') %]:</strong>
+        <a href="[% c.uri_for_action('/aggregation/series',  aggregation.series_data.aggregation_series_uri) | html %]">
+          [% aggregation.series_data.aggregation_series_name %]
+        </a>
+      </div>
+    [% END %]
+
     [% IF aggregation.publication_place %]
       <div>
         <strong>[% loc('Publication Place') %]:</strong> [% aggregation.publication_place | html %]

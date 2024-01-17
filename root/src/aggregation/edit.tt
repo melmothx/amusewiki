@@ -17,9 +17,18 @@
     <div class="form-group">
       <label class="col-sm-2 control-label" for="aggregation_series_uri">Series</label>
       <div class="col-sm-4">
-        <input type="hidden" name="aggregation_series_uri"
-               value="[% IF aggregation.aggregation_series %][% aggregation.aggregation_series.aggregation_series_uri %][% END %]"
-               id="aggregation_series_uri" />
+        <div>
+          <input type="hidden" name="aggregation_series_uri"
+                 value="[% IF aggregation.aggregation_series %][% aggregation.aggregation_series.aggregation_series_uri %][% END %]"
+                 id="aggregation_series_uri" />
+        </div>
+        <div>
+          <a href="[% c.uri_for_action('/aggregation/edit_series') %]">
+            <small>
+              [% loc('Missing? Create one') %]
+            </small>
+          </a>
+        </div>
       </div>
       <label class="col-sm-1 control-label" for="issue">[% loc('Issue') %]</label>
       <div class="col-sm-2">
@@ -38,6 +47,7 @@
     </div>
     [% IF aggregation.aggregation_uri %]
       <input type="hidden" name="aggregation_uri" value="[% aggregation.aggregation_uri | html %]" />
+      <input type="hidden" name="is_update" value="1" />
     [% ELSE %]
     <div class="form-group">
       <label class="col-sm-2 control-label" for="aggregation_uri">URI</label>

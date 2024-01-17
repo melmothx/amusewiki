@@ -159,7 +159,13 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-16 13:27:46
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UpqlD6YsIbNWLwKSJzjEAA
 
+sub bump_oai_pmh_records {
+    my $self = shift;
+    foreach my $agg ($self->aggregations) {
+        $agg->bump_oai_pmh_records;
+    }
+}
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+
 __PACKAGE__->meta->make_immutable;
 1;

@@ -5487,10 +5487,8 @@ sub create_aggregation {
             $done{$uri}++;
         }
     }
-    if (join('|', @uris) ne join('|', @existing_uris)) {
-        Dlog_debug { "Aggregation changed $_" } +{ from => \@existing_uris, to => \@uris };
-        $aggregation->bump_oai_pmh_records;
-    }
+    Dlog_debug { "Aggregation changed $_" } +{ from => \@existing_uris, to => \@uris };
+    $aggregation->bump_oai_pmh_records;
     $guard->commit;
     $aggregation->discard_changes;
     return $aggregation;
