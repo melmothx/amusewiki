@@ -57,6 +57,19 @@ div.float_image_r {
     padding: 0 0 0 19px;
 }
 
+.navbar {
+    border-radius: 0;
+    border-width: 0 0 1px;
+}
+
+body[style*="padding-top"] .navbar:not(.navbar-fixed-top) {
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1030;
+}
+
 img.amw-navlogo-img {
     padding: 5px 5px;
     height: 50px;
