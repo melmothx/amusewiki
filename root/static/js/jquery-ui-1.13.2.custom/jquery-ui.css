@@ -1,8 +1,12 @@
-/*! jQuery UI - v1.13.2 - 2023-06-02
+/*! jQuery UI - v1.13.2 - 2024-01-17
 * http://jqueryui.com
-* Includes: core.css, autocomplete.css, menu.css
+* Includes: sortable.css, core.css, autocomplete.css, menu.css
 * Copyright jQuery Foundation and other contributors; Licensed MIT */
 
+.ui-sortable-handle {
+	-ms-touch-action: none;
+	touch-action: none;
+}
 /* Layout helpers
 ----------------------------------*/
 .ui-helper-hidden {
