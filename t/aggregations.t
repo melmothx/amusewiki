@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 78;
+use Test::More tests => 80;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -89,8 +89,8 @@ DumpFile($autoimport->child('aggregations.yml'), $ag);
 my $copy = LoadFile($autoimport->child('aggregations.yml'));
 
 # and a duplicate
-push @{$ag->[0]->{titles}}, 'non-existent', 'to-test-one';
-push @{$ag->[1]->{titles}}, 'non-existent-1';
+push @{$ag->[1]->{titles}}, 'non-existent', 'to-test-one';
+push @{$ag->[2]->{titles}}, 'non-existent-1';
 
 DumpFile($autoimport->child('aggregations.yml'), $ag);
 
@@ -117,14 +117,14 @@ is $site->aggregations->count, 3;
 is $site->aggregations->search_related('aggregation_titles')->count, 9;
 
 # the last one is a duplicate
-is pop @{$ag->[0]->{titles}}, "to-test-one";
+is pop @{$ag->[1]->{titles}}, "to-test-one";
 {
     my $serialized = $site->serialize_aggregations;
     is_deeply $serialized, $ag or die Dumper($serialized, $ag);
 }
 diag "Reimporting";
 
-my $removed = pop @{$copy->[1]->{titles}};
+my $removed = pop @{$copy->[2]->{titles}};
 
 DumpFile($autoimport->child('aggregations.yml'), $copy);
 $site->process_autoimport_files;
@@ -134,8 +134,8 @@ is_deeply $site->serialize_aggregations, $copy;
 
 is $site->aggregations->no_match->count, 0;
 
-foreach my $title ($site->titles->search({ uri => 'to-test-one' })) {
-    is $title->aggregations->count, 3;
+foreach my $title ($site->titles->search({ uri => $removed })) {
+    is $title->aggregations->count, 2 or die Dumper($copy);
     diag "The aggregations sorted are " . Dumper([$title->aggregations->sorted->hri->all]);
 }
 
@@ -162,8 +162,8 @@ $mech->content_like(qr{
 \s+</datafield>
 }sx) or die $mech->content;
 
-$mech->get_ok('/aggregation/fmx-1') or die;
-$mech->content_like(qr{Title one.*Title two.*Title three}s);
+$mech->get_ok('/aggregation/fmx-1?bare=1') or die;
+$mech->content_like(qr{Title one.*Title two.*Title three}s) or die $mech->content;
 $mech->get_ok('/aggregation/fmx-2');
 $mech->content_like(qr{Title three.*Title two}s);
 
@@ -230,9 +230,9 @@ $site->delete;
 {
     my @save = @{$dump->{aggregations}};
     my $newsite = $schema->resultset('Site')->deserialize_site($dump);
-    is scalar(@save), 2;
-    is_deeply $save[0]{titles}, [ 'to-test-one', 'to-test-two', 'to-test-three'];
-    is $save[1]{publication_date}, "Never";
+    is scalar(@save), 3;
+    is_deeply $save[1]{titles}, [ 'to-test-one', 'to-test-two', 'to-test-three'];
+    is $save[2]{publication_date}, "Never";
     is_deeply $newsite->serialize_aggregations, \@save;
     diag Dumper(\@save);
 }
