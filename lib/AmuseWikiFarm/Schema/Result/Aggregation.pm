@@ -336,5 +336,10 @@ sub final_data {
     return \%data;
 }
 
+# compat
+sub uri {
+    shift->aggregation_uri;
+}
+
 __PACKAGE__->meta->make_immutable;
 1;
