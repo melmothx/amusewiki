@@ -1,6 +1,7 @@
 <div class="page-header">
   <h1>
-    [% series.aggregation_series_name | html %]
+    [% loc('Series') %]:
+    <em>[% series.aggregation_series_name | html %]</em>
     [% IF c.user_exists %]
       <a href="[% c.uri_for_action('/aggregation/edit_series', series.aggregation_series_id) | html %]"
          title="[% loc('Update') %]"
