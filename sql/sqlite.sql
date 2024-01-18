@@ -806,6 +806,15 @@ CREATE TABLE aggregation_title (
 CREATE INDEX aggregation_title_uri_idx ON aggregation_title(title_uri);
 
 
+CREATE TABLE aggregation_annotation (
+    annotation_id INTEGER NOT NULL REFERENCES annotation(annotation_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    aggregation_id INTEGER NOT NULL REFERENCES aggregation(aggregation_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    annotation_value TEXT,
+    PRIMARY KEY (annotation_id, aggregation_id)
+);
+
+CREATE UNIQUE INDEX unique_aggregation_annotation_key ON aggregation_annotation (annotation_id, aggregation_id);
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),
@@ -854,6 +863,8 @@ INSERT INTO table_comments (table_name, comment_text)
          ('oai_pmh_record_set', 'OAI-PMH brigde table between records and sets'), 
          ('aggregation', 'Aggregations'),
          ('aggregation_title', 'Linking table for aggregations'),
+         ('aggregation_annotation', 'Linking table for aggregation/annotations'),
+         ('aggregation_series', 'Aggregation Series'),
          ('included_file', 'Files included in muse documents'),
          ('include_path', 'Directories to search for file inclusions')
          ;
