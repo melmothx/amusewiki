@@ -193,7 +193,104 @@ __PACKAGE__->has_many(
 # Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-18 18:05:10
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:h1en/hmsPCQDSpHegRVMiA
 
+use Path::Tiny ();
+use AmuseWikiFarm::Utils::Paths ();
+use AmuseWikiFarm::Log::Contextual;
+use File::MimeInfo::Magic qw/mimetype/;
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+sub annotate {
+    my ($self, $object, $update) = @_;
+    # now, we can have both text and annotations, s
+    my $store;
+    my $type;
+    my @errors;
+    if ($object->isa('AmuseWikiFarm::Schema::Result::Title')) {
+        $type = $object->f_class;
+        $store = $self->title_annotations->find_or_create({ title => $object });
+    }
+    elsif ($object->isa('AmuseWikiFarm::Schema::Result::Aggregation')) {
+        $type = 'aggregation';
+        $store = $self->title_annotations->find_or_create({ aggregation => $object });
+    }
+    else {
+        die "Invalid object passed";
+    }
+    Dlog_debug { "Updating $type annotation $_" }  $update;
+    my $site = $self->site;
+
+    my @path = ($site->repo_root, $site->annotations_directory);
+    # create directory and add gitingore
+    my $gitignore = Path::Tiny::path(@path, '.gitignore');
+    $gitignore->parent->mkpath;
+    unless ($gitignore->exists) {
+        $gitignore->spew_utf8("*\n*/\n");
+    }
+
+    # annotation name: sanity check
+    if ($self->annotation_name =~ m/\A([a-z0-9][a-z0-9-]*[a-z0-9])\z/) {
+        push @path, $1;
+    }
+    else {
+        return { errors => [ "Bad annotation name " . $self->annotation_name ] };
+    }
+
+    push @path, $type;
+
+    if ($object->can('f_archive_rel_path')) {
+        if (my $relpath = $object->f_archive_rel_path) {
+            push @path, grep { /\A[a-z0-9-]+\z/ } split(/\//, $relpath);
+        }
+    }
+    if ($self->annotation_type eq 'file' and my $file = $update->{file}) {
+        delete $update->{value};
+        if (-f $file) {
+            my $mime = mimetype($file);
+            my $all_mime = AmuseWikiFarm::Utils::Paths::served_mime_types();
+            my %mimes = reverse %$all_mime;
+            if (my $ext = $mimes{$mime}) {
+                my $storage = Path::Tiny::path(@path, $object->uri . ".$ext");
+                $storage->parent->mkpath;
+                if (Path::Tiny::path($file)->copy($storage)) {
+                    log_debug { "File copied in $storage" };
+                    $update->{value} = $storage->relative($path[0]);
+                }
+                else {
+                    push @errors, "Could not copy $update->{file}";
+                }
+            }
+            else {
+                push @errors, "$update->{file} has invalid mime $mime";
+            }
+        }
+        else {
+            push @errors, "$update->{file} not found, cannot add to annotation";
+        }
+    }
+    if (@errors) {
+        return { errors => \@errors };
+    }
+    my $value = $update->{value};
+    my $destination = Path::Tiny::path(@path, $object->uri);
+    $destination->parent->mkpath;
+    log_debug { "Saving update in $destination" };
+    if ($update->{remove}) {
+        log_info { "Removing $store" };
+        $store->delete;
+        $destination->remove if $destination->exists;
+    }
+    elsif (defined $value) {
+        # save the content in a file, so we can reconstruct the tree.
+        my $destination = Path::Tiny::path(@path, $object->uri);
+        $destination->spew_utf8($value);
+        $store->update({ annotation_value => $value });
+    }
+    else {
+        push @errors, $self->annotation_name . " was not passed!";
+    }
+    $object->oai_pmh_records->bump_datestamp unless @errors;
+    return { errors => \@errors };
+}
+
+
 __PACKAGE__->meta->make_immutable;
 1;
