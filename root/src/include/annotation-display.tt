@@ -1,0 +1,22 @@
+    [% IF annotations %]
+      [% FOREACH annotation IN annotations %]
+        [% IF annotation.html %]
+          <div
+              [% IF annotation.private %]
+                  class="text-annotation text-muted" title="[% loc('Private') %]"
+              [% ELSE %]
+                  class="text-annotation"
+              [% END %]
+          >
+            <strong>[% lh.site_loc_html(annotation.label) %]:</strong>
+            [% IF annotation.url %]
+              <a href="[% annotation.url %]">[% loc('Download') %]</a>
+            [% ELSE %]
+            <span>
+              [% annotation.html %]
+            </span>
+            [% END %]
+          </div>
+        [% END %]
+      [% END %]
+    [% END %]
