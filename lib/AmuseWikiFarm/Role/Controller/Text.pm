@@ -179,18 +179,12 @@ sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
         $c->stash(text_display_children => \@out);
     }
 
-    my $annotation_filter = { active => 1 };
+    my $ann_rs = $site->annotations->active_only;
     unless ($c->user_exists) {
-        $annotation_filter->{private} = 0;
+        $ann_rs = $ann_rs->public_only;
     }
-    my @annotations = map { +{
-                              label => $_->label,
-                              name => $_->annotation_name,
-                              id => $_->annotation_id,
-                              type => $_->annotation_type,
-                              private => $_->private,
-                             }
-                        } $site->annotations->search($annotation_filter, { order_by => 'priority' })->all;
+    # same in Controller::Aggregation::populate_annotations
+    my @annotations = $ann_rs->sorted->as_hashref_list;
     if (@annotations) {
         my %vals;
         foreach my $ann ($text->title_annotations) {
