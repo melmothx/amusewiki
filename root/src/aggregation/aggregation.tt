@@ -47,6 +47,7 @@
         </a>
       </div>
     [% END %]
+    [% INCLUDE 'include/annotation-display.tt' %]
   </div>
 
 

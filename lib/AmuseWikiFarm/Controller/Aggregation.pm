@@ -179,6 +179,7 @@ sub edit :Chained('edit_gate') :PathPart('edit') :Args {
                       aggregation => $agg_data,
                       titles => [ $agg->titles ],
                      );
+            $self->populate_annotations($c, $agg);
         }
         else {
             return $c->detach('/not_found');
@@ -186,6 +187,7 @@ sub edit :Chained('edit_gate') :PathPart('edit') :Args {
     }
     else {
         $c->stash(aggregation => {});
+        $self->populate_annotations($c);
     }
     $c->stash(load_select2 => 1);
 }
@@ -226,6 +228,7 @@ sub aggregation :Chained('/site') :PathPart('aggregation') :Args(1) {
                   aggregation => $agg->final_data,
                   texts => AmuseWikiFarm::Utils::Iterator->new([ $agg->titles ])
                  );
+        $self->populate_annotations($c, $agg);
         Dlog_debug { "Agg is $_"  } $c->stash->{aggregation};
     }
     else {
@@ -243,6 +246,38 @@ sub series :Chained('/site') :PathPart('series') :Args(1) {
     }
     else {
         $c->detach('/not_found');
+    }
+}
+
+sub populate_annotations :Private {
+    my ($self, $c, $agg) = @_;
+    my $ann_rs = $c->stash->{site}->annotations->active_only;
+    # mutatis mutandis AmuseWikiFarm::Role::Controller::Text
+    unless ($c->user_exists) {
+        $ann_rs = $ann_rs->public_only;
+    }
+    if (my @annotations = $ann_rs->sorted->as_hashref_list) {
+        my %vals;
+        if ($agg) {
+            foreach my $ann ($agg->aggregation_annotations) {
+                $vals{$ann->annotation_id} = $ann->valid_value;
+            }
+        }
+        Dlog_debug { "Values are  $_"  } \%vals;
+        foreach my $ann (@annotations) {
+            if (my $value = $vals{$ann->{id}}) {
+                $ann->{value} = $value;
+                if ($ann->{type} eq 'file') {
+                    log_debug { "File annotation is $value" };
+                    $ann->{url} = $c->uri_for($value)
+                }
+                my $html = HTML::Entities::encode_entities($value, q{<>&"'});
+                $html =~ s/\r?\n/<br>/g;
+                $ann->{html} = $html;
+            }
+        }
+        $c->stash(annotations => \@annotations);
+        Dlog_debug { "Annotations " . $_ } \@annotations;
     }
 }
 
