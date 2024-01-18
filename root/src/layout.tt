@@ -74,7 +74,7 @@
     <!-- jquery-ui for the highlight effect everywhere and autocompletion
          source in [% c.uri_for('/static/js/jquery-ui-1.13.2.custom/jquery-ui.js') %] -->
 
-    <script src="[% c.uri_for('/static/js/jquery-ui-1.13.2.custom/jquery-ui.min.js') %]" >
+    <script src="[% c.uri_for('/static/js/jquery-ui-1.13.2.custom/jquery-ui.min.js', { v => 2 }) %]" >
     </script>
 
     [%- IF load_select2 -%]

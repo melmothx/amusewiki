@@ -77,16 +77,33 @@ sub edit_series :Chained('edit_gate') :PathPart('series') :Args {
             if ($series) {
                 if ($params->{is_update}) {
                     $series->update(\%clean);
+                    if ($params->{aggregations}) {
+                        my @aids = ref($params->{aggregations}) ? @{$params->{aggregations}} : ( $params->{aggregations} );
+                        my $order = 0;
+                        foreach my $aid (@aids) {
+                            if (my $agg = $series->aggregations->find($aid)) {
+                                $agg->update({ sorting_pos => ++$order });
+                                log_debug { "Updated order for $aid: $order" };
+                            }
+                            else {
+                                log_error { "Aggregation $aid not found is series $id" };
+                            }
+                        }
+                    }
                     $series->bump_oai_pmh_records;
                     $c->flash(status_msg => $c->loc("Thanks!"));
+                    return $c->response->redirect($c->uri_for_action('/aggregation/series',
+                                                                     $series->aggregation_series_uri));
                 }
                 else {
                     $c->flash(error_msg => $c->loc("URI already exists!"));
                 }
             }
             else {
-                $site->aggregation_series->create(\%clean);
+                $series = $site->aggregation_series->create(\%clean);
                 $c->flash(status_msg => $c->loc("Thanks!"));
+                return $c->response->redirect($c->uri_for_action('/aggregation/series',
+                                                                 $series->aggregation_series_uri));
             }
         }
         else {
@@ -97,7 +114,9 @@ sub edit_series :Chained('edit_gate') :PathPart('series') :Args {
     if ($id and $id =~ /\A\d+\z/a) {
         if (my $series = $site->aggregation_series->find($id)) {
             my $series_data = { $series->get_columns };
-            $c->stash(series => $series_data);
+            $c->stash(series => $series_data,
+                      aggregations => [ $series->aggregations->sorted ]
+                     );
         }
         else {
             return $c->detach('/not_found');
@@ -139,9 +158,13 @@ sub edit :Chained('edit_gate') :PathPart('edit') :Args {
                 return $c->response->redirect($c->uri_for_action('/aggregation/manage'));
             }
         }
-
+        if ($params->{titles} and !ref($params->{titles})) {
+            $params->{titles} = [ $params->{titles} ];
+        }
         if (my $updated = $site->create_aggregation($params)) {
             $c->flash(status_msg => $c->loc("Thanks!"));
+            return $c->response->redirect($c->uri_for_action('/aggregation/aggregation',
+                                                             $updated->aggregation_uri));
         }
         else {
             $c->flash(error_msg => $c->loc("Invalid data!"));
@@ -152,7 +175,10 @@ sub edit :Chained('edit_gate') :PathPart('edit') :Args {
         if (my $agg = $site->aggregations->find($id)) {
             my $agg_data = $agg->serialize;
             Dlog_debug { "Data are $_" } $agg_data;
-            $c->stash(aggregation => $agg_data);
+            $c->stash(
+                      aggregation => $agg_data,
+                      titles => [ $agg->titles ],
+                     );
         }
         else {
             return $c->detach('/not_found');
@@ -211,7 +237,7 @@ sub series :Chained('/site') :PathPart('series') :Args(1) {
     my ($self, $c, $code) = @_;
     if (my $series = $c->stash->{site}->aggregation_series->find({ aggregation_series_uri => $code })) {
         $c->stash(
-                  aggregations => [ map { $_->final_data } $series->aggregations ],
+                  aggregations => [ map { $_->final_data } $series->aggregations->sorted ],
                   series => $series,
                  );
     }
