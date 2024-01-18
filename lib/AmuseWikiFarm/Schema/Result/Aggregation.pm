@@ -186,6 +186,21 @@ __PACKAGE__->add_unique_constraint(
 
 =head1 RELATIONS
 
+=head2 aggregation_annotations
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::AggregationAnnotation>
+
+=cut
+
+__PACKAGE__->has_many(
+  "aggregation_annotations",
+  "AmuseWikiFarm::Schema::Result::AggregationAnnotation",
+  { "foreign.aggregation_id" => "self.aggregation_id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 aggregation_series
 
 Type: belongs_to
@@ -237,8 +252,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-16 14:21:51
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sxPkc1Xhx6yiPrWTmTQApw
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-18 18:05:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:pXIZpgnGn5Upppzbx6/55w
 
 use AmuseWikiFarm::Log::Contextual;
 

@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::AggregationSeries;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::AggregationSeries
+AmuseWikiFarm::Schema::Result::AggregationSeries - Aggregation Series
 
 =cut
 
@@ -156,8 +156,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-16 13:27:46
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UpqlD6YsIbNWLwKSJzjEAA
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-18 18:05:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:P/nKXvNcKkunxk74YMXIDg
 
 sub bump_oai_pmh_records {
     my $self = shift;
