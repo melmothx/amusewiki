@@ -125,6 +125,38 @@
       </div>
     </div>
     <input type="hidden" name="update" value="1">
+    [% IF annotations %]
+      [% FOREACH annotation IN annotations %]
+        <input type="hidden" name="annotation-passed-[% annotation.id %]" value="1" />
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="annotation-id-[% annotation.id %]">
+            [% lh.site_loc_html(annotation.label) %]
+          </label>
+          <div class="col-sm-8">
+            [% IF annotation.type == 'file' %]
+              <input id="annotation-id-[% annotation.id %]"
+                     name="annotation-file-[% annotation.id %]" type="file" />
+            [% ELSIF annotation.type == 'identifier' %]
+              <input id="annotation-id-[% annotation.id %]"
+                     name="annotation-value-[% annotation.id %]"
+                     class="form-control" value="[% annotation.value | html %]" />
+            [% ELSIF annotation.type == 'text' %]
+              <textarea id="annotation-id-[% annotation.id %]"
+                        name="annotation-value-[% annotation.id %]"
+                        class="form-control">[% annotation.value | html %]</textarea>
+            [% END %]
+          </div>
+          <div class="col-sm-2">
+            <label>
+              <input name="annotation-wipe-[% annotation.id %]" type="checkbox">
+              [% loc('Remove') %]
+            </label>
+          </div>
+        </div>
+      [% END %]
+
+    [% END %]
+
     [% IF titles %]
       <div class="form-group">
         <label class="col-sm-2 control-label">[% loc('Sorting') %]</label>
