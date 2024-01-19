@@ -50,4 +50,10 @@ sub by_id {
     $self->search({ "$me.aggregation_id" => $id });
 }
 
+sub by_uri {
+    my ($self, $uri) = @_;
+    my $me = $self->current_source_alias;
+    $self->search({ "$me.aggregation_uri" => $uri });
+}
+
 1;

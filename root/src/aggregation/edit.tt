@@ -13,7 +13,9 @@
   </h1>
 </div>
 <div>
-  <form action="[% c.uri_for_action('/aggregation/edit') %]" method="POST" class="form-horizontal">
+  <form action="[% c.uri_for_action('/aggregation/edit') %]"
+        enctype="multipart/form-data"
+        method="POST" class="form-horizontal">
     <div class="form-group">
       <label class="col-sm-2 control-label" for="aggregation_series_uri">Series</label>
       <div class="col-sm-4">

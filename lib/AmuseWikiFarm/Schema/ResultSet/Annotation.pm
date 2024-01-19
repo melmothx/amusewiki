@@ -26,18 +26,4 @@ sub sorted {
     return $self->search(undef, { order_by => "$me.priority" });
 }
 
-sub as_hashref_list {
-    my $self = shift;
-    my $me = $self->current_source_alias;
-    my @all = map { +{
-                      label => $_->label,
-                      name => $_->annotation_name,
-                      id => $_->annotation_id,
-                      type => $_->annotation_type,
-                      private => $_->private,
-                     }
-                } $self->all;
-    return @all;
-}
-
 1;
