@@ -72,25 +72,27 @@ sub annotation :Chained('/site') :PathPart('annotation') :CaptureArgs(0) {
     my ($self, $c) = @_;
 }
 
-sub download :Chained('annotation') :Args(3) {
-    my ($self, $c, $title_id, $annotation_id, $filename) = @_;
+sub download :Chained('annotation') :Args(4) {
+    my ($self, $c, $annotation_id, $type, $uri, $filename) = @_;
     my $site = $c->stash->{site};
-    if ($title_id =~ m/\A\d+\z/a and $annotation_id =~ m/\A\d+\z/a) {
-        log_debug { "Here: $title_id $annotation_id" };
-        if (my $title = $site->titles->find($title_id)) {
-            if (my $title_annotation = $title->title_annotations->find({ annotation_id => $annotation_id })) {
-                if (my $file = $title_annotation->validate_file) {
-                    $c->stash(serve_static_file => $file);
-                    $c->detach($c->view('StaticFile'));
-                    return;
-                }
+    if ($annotation_id =~ m/\A\d+\z/a) {
+        if (my $annotation = $site->annotations->find($annotation_id)) {
+            my $object;
+            if ($type eq 'aggregation') {
+                $object = $site->aggregations->by_uri($uri)->single;
+            }
+            else {
+                $object = $site->titles->by_type($type)->by_uri($uri)->single;
+            }
+            my $validate = $annotation->values_for_object($object);
+            if ($validate and $validate->{file_path}) {
+                $c->stash(serve_static_file => $validate->{file_path});
+                return $c->detach($c->view('StaticFile'));
             }
         }
     }
     $c->detach('/not_found');
 }
-
-
 
 =encoding utf8
 

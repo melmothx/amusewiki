@@ -2041,6 +2041,7 @@ sub annotate {
             }
         }
     }
+    $self->oai_pmh_records->bump_datestamp;
     return {
             success => !@errors,
             errors => join(" / ", @errors),

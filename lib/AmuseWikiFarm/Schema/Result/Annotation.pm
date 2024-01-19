@@ -197,24 +197,14 @@ use Path::Tiny ();
 use AmuseWikiFarm::Utils::Paths ();
 use AmuseWikiFarm::Log::Contextual;
 use File::MimeInfo::Magic qw/mimetype/;
+use HTML::Entities ();
+use Try::Tiny;
 
 sub annotate {
     my ($self, $object, $update) = @_;
     # now, we can have both text and annotations, s
-    my $store;
-    my $type;
+    my ($type, $store) = $self->_identify_object($object);
     my @errors;
-    if ($object->isa('AmuseWikiFarm::Schema::Result::Title')) {
-        $type = $object->f_class;
-        $store = $self->title_annotations->find_or_create({ title => $object });
-    }
-    elsif ($object->isa('AmuseWikiFarm::Schema::Result::Aggregation')) {
-        $type = 'aggregation';
-        $store = $self->title_annotations->find_or_create({ aggregation => $object });
-    }
-    else {
-        die "Invalid object passed";
-    }
     Dlog_debug { "Updating $type annotation $_" }  $update;
     my $site = $self->site;
 
@@ -287,10 +277,92 @@ sub annotate {
     else {
         push @errors, $self->annotation_name . " was not passed!";
     }
-    $object->oai_pmh_records->bump_datestamp unless @errors;
     return { errors => \@errors };
 }
 
+sub values_for_object {
+    my ($self, $object, $uri_prefix) = @_;
+    my ($type, $store) = $self->_identify_object($object);
+    return unless $object;
+    my %out = (
+               label => $self->label,
+               name => $self->annotation_name,
+               id => $self->annotation_id,
+               type => $self->annotation_type,
+               private => $self->private,
+              );
+    my $value = $store->annotation_value;
+    if ($value and $self->annotation_type eq 'file') {
+        if (my $valid = $self->_validate_file($value)) {
+            $out{file_path} = $valid;
+            if ($uri_prefix) {
+                $out{url} = join("/", $uri_prefix,
+                                 qw/annotation download/,
+                                 $self->annotation_id,
+                                 $type,
+                                 $object->uri,
+                                 $valid->basename);
+            }
+        }
+        else {
+            $value = undef;
+        }
+    }
+    $out{value} = $value;
+    if (defined $value) {
+        my $html = HTML::Entities::encode_entities($value, q{<>&"'});
+        $html =~ s/\r?\n/<br>/g;
+        $out{html} = $html;
+    }
+    return \%out;
+}
+
+sub _validate_file {
+    my ($self, $raw) = @_;
+    log_debug { "File is $raw (not validated)" };
+    my $value;
+    try {
+        my $repo_root = Path::Tiny::path($self->site->repo_root)->realpath;
+        my $file = Path::Tiny::path($repo_root, $raw)->realpath;
+        if ($file->exists) {
+            # realpaths already resolved above
+            if ($repo_root->subsumes($file)) {
+                log_debug { "OK, returning $file" };
+                $value = $file;
+            }
+            else {
+                log_warn { "$file not under $repo_root" };
+            }
+        }
+        else {
+            log_warn { "$file does not exists in $repo_root" };
+        }
+    }
+    catch {
+        my $err = $_;
+        log_warn { "Error in handling file $raw annotation $err" };
+    };
+    return $value;
+}
+
+
+sub _identify_object {
+    my ($self, $object) = @_;
+    my ($type, $store);
+    if ($object->isa('AmuseWikiFarm::Schema::Result::Title')) {
+        $type = $object->f_class;
+        $store = $self->title_annotations->find_or_create({ title => $object });
+    }
+    elsif ($object->isa('AmuseWikiFarm::Schema::Result::Aggregation')) {
+        $type = 'aggregation';
+        $store = $self->aggregation_annotations->find_or_create({ aggregation => $object });
+        log_error { "$store" };
+    }
+    else {
+        die "Invalid object passed";
+    }
+    return ($type, $store);
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

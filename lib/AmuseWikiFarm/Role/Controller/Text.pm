@@ -184,27 +184,10 @@ sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
         $ann_rs = $ann_rs->public_only;
     }
     # same in Controller::Aggregation::populate_annotations
-    my @annotations = $ann_rs->sorted->as_hashref_list;
-    if (@annotations) {
-        my %vals;
-        foreach my $ann ($text->title_annotations) {
-            $vals{$ann->annotation_id} = $ann->valid_value;
-        }
-        Dlog_debug { "Values are  $_"  } \%vals;
-        foreach my $ann (@annotations) {
-            if (my $value = $vals{$ann->{id}}) {
-                $ann->{value} = $value;
-                if ($ann->{type} eq 'file') {
-                    log_debug { "File annotation is $value" };
-                    $ann->{url} = $c->uri_for($value)
-                }
-                my $html = HTML::Entities::encode_entities($value, q{<>&"'});
-                $html =~ s/\r?\n/<br>/g;
-                $ann->{html} = $html;
-            }
-        }
+    my @annotations;
+    foreach my $ann ($ann_rs->sorted->all) {
+        push @annotations, $ann->values_for_object($text, $c->uri_for('/'));
     }
-
     Dlog_debug { "Annotations are  $_"  } \@annotations;
     $c->stash(annotations => \@annotations) if @annotations;
     $c->stash(

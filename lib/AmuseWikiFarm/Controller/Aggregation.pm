@@ -161,10 +161,39 @@ sub edit :Chained('edit_gate') :PathPart('edit') :Args {
         if ($params->{titles} and !ref($params->{titles})) {
             $params->{titles} = [ $params->{titles} ];
         }
-        if (my $updated = $site->create_aggregation($params)) {
+        if (my $agg = $site->create_aggregation($params)) {
+            # handle the annotations
+            Dlog_debug { "Now params are $_" } $params;
+          ANNOTATION:
+            foreach my $ann ($site->annotations) {
+                my $aid = $ann->annotation_id;
+                log_debug { "Checking $aid" };
+                if ($params->{"annotation-passed-$aid"}) {
+                    my %single = (value => $params->{"annotation-value-$aid"});
+                    if ($params->{"annotation-wipe-$aid"}) {
+                        $single{remove} = 1;
+                    }
+                    elsif ($ann->annotation_type eq 'file') {
+                        my ($upload) = $c->request->upload("annotation-file-$aid");
+                        if ($upload) {
+                            $single{file} = $upload->tempname;
+                            $single{value} = $upload->basename;
+                        }
+                        else {
+                            # skip if there's nothing to do do.
+                            next ANNOTATION;
+                        }
+                    }
+                    $ann->annotate($agg, \%single);
+                }
+                else {
+                    log_debug { "$aid not passed" };
+                }
+            }
             $c->flash(status_msg => $c->loc("Thanks!"));
+            $agg->bump_oai_pmh_records;
             return $c->response->redirect($c->uri_for_action('/aggregation/aggregation',
-                                                             $updated->aggregation_uri));
+                                                             $agg->aggregation_uri));
         }
         else {
             $c->flash(error_msg => $c->loc("Invalid data!"));
@@ -256,29 +285,11 @@ sub populate_annotations :Private {
     unless ($c->user_exists) {
         $ann_rs = $ann_rs->public_only;
     }
-    if (my @annotations = $ann_rs->sorted->as_hashref_list) {
-        my %vals;
-        if ($agg) {
-            foreach my $ann ($agg->aggregation_annotations) {
-                $vals{$ann->annotation_id} = $ann->valid_value;
-            }
-        }
-        Dlog_debug { "Values are  $_"  } \%vals;
-        foreach my $ann (@annotations) {
-            if (my $value = $vals{$ann->{id}}) {
-                $ann->{value} = $value;
-                if ($ann->{type} eq 'file') {
-                    log_debug { "File annotation is $value" };
-                    $ann->{url} = $c->uri_for($value)
-                }
-                my $html = HTML::Entities::encode_entities($value, q{<>&"'});
-                $html =~ s/\r?\n/<br>/g;
-                $ann->{html} = $html;
-            }
-        }
-        $c->stash(annotations => \@annotations);
-        Dlog_debug { "Annotations " . $_ } \@annotations;
+    my @annotations;
+    foreach my $ann ($ann_rs->sorted->all) {
+        push @annotations, $ann->values_for_object($agg, $c->uri_for('/'));
     }
+    $c->stash(annotations => \@annotations);
 }
 
 __PACKAGE__->meta->make_immutable;

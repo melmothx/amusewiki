@@ -121,8 +121,11 @@ foreach my $title ($site->titles->all) {
     $res = $title->annotate(\%update);
     is $title->title_annotations->count, 3;
 
-    $mech->get_ok('/annotation/download/' . $title->id . '/' .
-                  $annotation_types{file}->annotation_id . '/whatever');
+    $mech->get_ok(join('/', '/annotation/download',
+                       $annotation_types{file}->annotation_id,
+                       $title->f_class,
+                       $title->uri,
+                       'whatever'));
 
     # this is for librarians only
     $mech->get('/annotate/title/' . $title->id);
@@ -206,8 +209,11 @@ foreach my $title ($site->titles->all) {
 
     # if we have a bad value in the db: do not serve it.
     $title->title_annotations->update({ annotation_value => '../../../../../../../../../../../etc/passwd' });
-    $mech->get('/annotation/download/' . $title->id . '/' .
-               $annotation_types{file}->annotation_id . '/whatever');
+    $mech->get(join('/', '/annotation/download',
+                    $annotation_types{file}->annotation_id,
+                    $title->f_class,
+                    $title->uri,
+                    'whatever'));
     is $mech->status, 404;
     ok $res->{success} or diag Dumper($res);
 
