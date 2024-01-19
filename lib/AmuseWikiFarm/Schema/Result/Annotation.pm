@@ -282,8 +282,8 @@ sub annotate {
 
 sub values_for_object {
     my ($self, $object, $uri_prefix) = @_;
-    my ($type, $store) = $self->_identify_object($object);
     return unless $object;
+    my ($type, $store) = $self->_identify_object($object);
     my %out = (
                label => $self->label,
                name => $self->annotation_name,
