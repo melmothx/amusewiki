@@ -16,7 +16,7 @@
       <div>
         <strong>[% loc('Series') %]:</strong>
         <a href="[% c.uri_for_action('/aggregation/series',  aggregation.series_data.aggregation_series_uri) | html %]">
-          [% aggregation.series_data.aggregation_series_name %]
+          [% aggregation.series_data.aggregation_series_name | html %]
         </a>
       </div>
     [% END %]
@@ -48,9 +48,17 @@
         </a>
       </div>
     [% END %]
+    [% FOREACH ctype IN categories %]
+      <div>
+        <strong>[% ctype.title | html %]:</strong>
+        [% FOREACH cat IN ctype.entries %]
+          <a href="[% c.uri_for(cat.full_uri) | html %]">[% lh.site_loc_html(cat.name) %]</a>[% UNLESS loop.last %],[% END %]
+        [% END %]
+      </div>
+    [% END %]
+
+
     [% INCLUDE 'include/annotation-display.tt' %]
   </div>
-
-
 
 [% INCLUDE 'include/posts.tt' %]

@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 80;
+use Test::More tests => 83;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -100,8 +100,9 @@ foreach my $title (qw/one two three/) {
     $muse->spew_utf8(<<"MUSE");
 #authors Author $title; Authors $title; Pinco, Pallino
 #title Title $title
+#topics Topic $title
 #lang en
-#author My author
+#author My author $title
 
 Test $title
 MUSE
@@ -223,7 +224,31 @@ $site->process_autoimport_files;
     $mech->content_contains('id="annotation-editor-aggregations"');
 }
 
-
+{
+    my $agg = $site->aggregations->by_uri('fmx-1')->single;
+    ok $agg;
+    my $ctypes = $agg->display_categories;
+    ok @$ctypes;
+    my @expect = (
+                  '/category/author/author-one',
+                  '/category/author/authors-one',
+                  '/category/author/authors-three',
+                  '/category/author/authors-two',
+                  '/category/author/author-three',
+                  '/category/author/author-two',
+                  '/category/author/pinco-pallino',
+                  '/category/topic/topic-one',
+                  '/category/topic/topic-three',
+                  '/category/topic/topic-two',
+                 );
+    my @got;
+    foreach my $ctype (@{$ctypes}) {
+        foreach my $cat (@{$ctype->{entries}}) {
+            push @got, $cat->full_uri;
+        }
+    }
+    is_deeply(\@got, \@expect);
+}
 
 my $dump = $site->serialize_site;
 $site->delete;

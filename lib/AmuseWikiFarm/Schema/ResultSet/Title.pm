@@ -205,7 +205,7 @@ sub special_by_uri {
 sub by_uri {
     my ($self, $uri) = @_;
     my $me = $self->current_source_alias;
-    return $self->search({ "$me.uri" => $uri });
+    return $self->search({ "$me.uri" => ref($uri) ? +{ -in => $uri } : $uri });
 }
 
 =head2 find_file($path)

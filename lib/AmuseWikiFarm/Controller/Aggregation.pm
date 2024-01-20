@@ -339,7 +339,8 @@ sub aggregation :Chained('show') :PathPart('aggregation') :Args(1) {
 
         $c->stash(
                   aggregation => $agg->final_data,
-                  texts => AmuseWikiFarm::Utils::Iterator->new([ $agg->titles ])
+                  texts => AmuseWikiFarm::Utils::Iterator->new([ $agg->titles ]),
+                  categories => $agg->display_categories,
                  );
         $self->populate_annotations($c, $agg);
         Dlog_debug { "Agg is $_"  } $c->stash->{aggregation};
