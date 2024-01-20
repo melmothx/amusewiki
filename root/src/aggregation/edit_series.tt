@@ -79,7 +79,13 @@
       </div>
     [% END %]
     <div class="text-center">
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" class="btn btn-default">[% loc('Update') %]</button>
+      <span> </span>
+      <button type="submit"
+              class="btn btn-default"
+              name="and_create_aggregation" value="1">
+        [% loc('Update and create new aggregation') %]
+      </button>
     </div>
   </form>
 </div>

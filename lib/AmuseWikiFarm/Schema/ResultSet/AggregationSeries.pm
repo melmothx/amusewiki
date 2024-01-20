@@ -13,4 +13,10 @@ sub sorted {
     $self->search(undef, { order_by => "$me.aggregation_series_name" });
 }
 
+sub by_uri {
+    my ($self, $uri) = @_;
+    my $me = $self->current_source_alias;
+    $self->search({ "$me.aggregation_series_uri" => $uri });
+}
+
 1;
