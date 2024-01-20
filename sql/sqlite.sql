@@ -615,6 +615,23 @@ CREATE TABLE node_category (
        PRIMARY KEY (node_id, category_id)
 );
 
+CREATE TABLE node_aggregation (
+       node_id INTEGER NOT NULL REFERENCES node(node_id)
+               ON DELETE CASCADE ON UPDATE CASCADE,
+       aggregation_id INTEGER NOT NULL REFERENCES aggregation(aggregation_id)
+                      ON DELETE CASCADE ON UPDATE CASCADE,
+       PRIMARY KEY (node_id, aggregation_id)
+);
+
+CREATE TABLE node_aggregation_series (
+       node_id INTEGER NOT NULL REFERENCES node(node_id)
+               ON DELETE CASCADE ON UPDATE CASCADE,
+       aggregation_series_id INTEGER NOT NULL REFERENCES aggregation_series(aggregation_series_id)
+                      ON DELETE CASCADE ON UPDATE CASCADE,
+       PRIMARY KEY (node_id, aggregation_series_id)
+);
+
+
 CREATE TABLE title_attachment (
        title_id INTEGER NOT NULL REFERENCES title(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
@@ -855,6 +872,8 @@ INSERT INTO table_comments (table_name, comment_text)
          ('node_body', 'Nodes description'),
          ('node_title', 'Linking table from Node to Title'),
          ('node_category', 'Linking table from Node to Category'),
+         ('node_aggregation', 'Linking table from Node to Aggregation'),
+         ('node_aggregation_series', 'Linking table from Node to AggregationSeries'),
          ('mirror_info', 'Mirror meta-info'),
          ('mirror_origin', 'Mirror origin'),
          ('site_category_type', 'Table with the category types'),
