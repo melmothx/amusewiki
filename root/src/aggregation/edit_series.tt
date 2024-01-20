@@ -28,6 +28,9 @@
                name="aggregation_series_uri"
                pattern="[0-9a-z][0-9a-z-]{3,}" required>
       </div>
+      <small>
+        [% loc('Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase characters and digits, optionally separated by a hyphen, e.g. [_1]', 'my-uri-1') %]
+      </small>
     </div>
     [% END %]
     <div class="form-group">
