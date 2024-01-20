@@ -16,23 +16,29 @@
 <hr />
 [% END %]
 <div class="row" >
-  [% IF node_linked_pages %]
-    <div class="col-sm-12">
-      <div class="list-group">
-        [% FOREACH page IN node_linked_pages %]
-          <div class="amw-listing-item">
-            <a class="list-group-item" href="[% page.uri %]">[% page.label %]</a>
-          </div>
-        [% END %]
-      </div>
-    </div>
-  [% END %]
   [% IF node_children %]
     <div class="col-sm-12">
       <div class="list-group">
         [% FOREACH page IN node_children %]
           <div class="amw-listing-item">
-            <a class="list-group-item" href="[% page.uri %]">[% page.label %]</a>
+            <a class="list-group-item" href="[% page.uri %]">
+              <i class="text-primary fa fa-list"></i>
+              [% page.label %]
+            </a>
+          </div>
+        [% END %]
+      </div>
+    </div>
+  [% END %]
+  [% IF node_linked_pages %]
+    <div class="col-sm-12">
+      <div class="list-group">
+        [% FOREACH page IN node_linked_pages %]
+          <div class="amw-listing-item">
+            <a class="list-group-item" href="[% page.uri %]">
+              <i class="text-primary fa fa-[% page.icon %]"></i>
+              [% page.label %]
+            </a>
           </div>
         [% END %]
       </div>

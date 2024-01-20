@@ -124,6 +124,10 @@ sub sorted_by_title {
     return shift->order_by('title_asc');
 }
 
+sub sorted {
+    return shift->sorted_by_title;
+}
+
 sub sort_by_pubdate_desc {
     return shift->order_by('pubdate_desc');
 }

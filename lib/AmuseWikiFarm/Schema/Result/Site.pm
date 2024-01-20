@@ -5552,6 +5552,10 @@ sub has_aggregations {
     shift->aggregations->count;
 }
 
+sub has_collections {
+    shift->nodes->count;
+}
+
 after insert => sub {
     my $self = shift;
     $self->discard_changes;

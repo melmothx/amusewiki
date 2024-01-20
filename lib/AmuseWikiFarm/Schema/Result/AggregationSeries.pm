@@ -195,5 +195,9 @@ sub full_uri {
     return "/series/" . shift->aggregation_series_uri;
 }
 
+sub final_name {
+    shift->aggregation_series_name;
+}
+
 __PACKAGE__->meta->make_immutable;
 1;
