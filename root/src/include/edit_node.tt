@@ -41,6 +41,34 @@
                  value="[% edit_node.sorting_pos | html %]" />
         </div>
       </div>
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <label for="attached_uris">
+            [% loc('List of paths to attach to this collection, one per line.') %]
+            [% loc('They can be texts, special texts, authors, topics, custom categories, aggregations and series.') %]
+            [% loc('Example') %]: <code>/library/text</code>
+          </label>
+        </div>
+        <div class="col-sm-12">
+          <textarea name="attached_uris"
+                    id="attached_uris"
+                    rows="10"
+                    class="form-control">[% edit_node.serialize.attached_uris | html %]</textarea>
+          <p class="help-block">
+            [% loc('Example') %]:<br>
+            <pre>
+/series/my-uri
+/aggregation/my-uri
+/library/regular-text
+/special/index
+/category/author/my-author
+/category/topic/my-topic</pre>
+          </p>
+        </div>
+      </div>
+
+
       <div class="row">
         [% FOREACH desc IN edit_node.prepare_form_tokens %]
           <div class="col-md-6">
@@ -85,29 +113,6 @@
             </fieldset>
           </div>
         [% END %]
-      </div>
-      <div class="form-group">
-        <div class="col-sm-12">
-          <label for="attached_uris">
-            [% loc('List of paths to attach to this collection, one per line.') %]
-            [% loc('They can be texts, special texts, authors or topics.') %]
-            [% loc('Example') %]: <code>/library/text</code>
-          </label>
-        </div>
-        <div class="col-sm-12">
-          <textarea name="attached_uris"
-                    id="attached_uris"
-                    rows="10"
-                    class="form-control">[% edit_node.serialize.attached_uris | html %]</textarea>
-          <p class="help-block">
-            [% loc('Example') %]:<br>
-            <pre>
-/library/regular-text
-/special/index
-/category/author/my-author
-/category/topic/my-topic</pre>
-          </p>
-        </div>
       </div>
       <div class="row">
         <div class="form-group">

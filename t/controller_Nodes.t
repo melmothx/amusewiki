@@ -171,7 +171,7 @@ foreach my $id (qw/first second third/) {
     is $node->name, "<em>pinco</em>";
     is $node->titles->count, 2, "Found titles";
     is $node->categories->count, 0, "Found 0 cats";
-    $params{attached_uris} = "/library/first\n/special/third";
+    $params{attached_uris} = "/special/third\n/library/first";
     my %copy = %params;
     # pallino doesn't exist yet, so will return undef
     $copy{parent_node_uri} = undef;

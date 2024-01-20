@@ -19,4 +19,12 @@ sub by_uri {
     $self->search({ "$me.aggregation_series_uri" => $uri });
 }
 
+sub by_full_uri {
+    my ($self, $full_uri) = @_;
+    if ($full_uri =~ m{series\/([a-z0-9-]+)\s*\z}) {
+        return $self->by_uri($1)->single;
+    }
+    return;
+}
+
 1;

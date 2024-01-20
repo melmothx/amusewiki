@@ -68,4 +68,12 @@ sub anthologies {
     $self->search({ "$me.aggregation_series_id" => undef });
 }
 
+sub by_full_uri {
+    my ($self, $full_uri) = @_;
+    if ($full_uri =~ m{aggregation\/([a-z0-9-]+)\s*\z}) {
+        return $self->by_uri($1)->single;
+    }
+    return;
+}
+
 1;
