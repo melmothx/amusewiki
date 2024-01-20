@@ -1,13 +1,13 @@
 [% INCLUDE 'include/breadcrumbs.tt' %]
 <div class="page-header">
-  <h1>[% loc('Antologies and periodicals') %]</h1>
+  <h1>[% loc('Anthologies and periodicals') %]</h1>
 </div>
-[% IF antologies && antologies.size %]
+[% IF anthologies && anthologies.size %]
   <div>
-    <h2>[% loc('Antologies') %]</h2>
+    <h2>[% loc('Anthologies') %]</h2>
     <div>
       <div class="list-group">
-        [% FOREACH ant IN antologies %]
+        [% FOREACH ant IN anthologies %]
           <div class="amw-listing-item">
             <a class="list-group-item clearfix" href="[% ant.url | html %]">
               [% ant.name | html %]

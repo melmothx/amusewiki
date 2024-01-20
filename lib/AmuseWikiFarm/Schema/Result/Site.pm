@@ -5548,6 +5548,10 @@ sub import_annotations_from_tree {
     }
 }
 
+sub has_aggregations {
+    shift->aggregations->count;
+}
+
 after insert => sub {
     my $self = shift;
     $self->discard_changes;

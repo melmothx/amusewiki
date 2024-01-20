@@ -274,9 +274,28 @@ sub title :Chained('edit_gate') :PathPart('title') :Args(1) {
     $c->detach('/not_found');
 }
 
-sub list_aggregations :Chained('/site') :PathPart('aggregation') :Args(0) {
+sub show :Chained('/site') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    $c->stash(breadcrumbs => [
+                              {
+                               uri => $c->uri_for('/'),
+                               label => $c->loc("Home"),
+                              },
+                              {
+                               uri => $c->uri_for_action('/aggregation/list_aggregations'),
+                               label => $c->loc("Aggregations"),
+                              }
+                             ]);
+}
+
+sub list_aggregations :Chained('show') :PathPart('aggregation') :Args(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
+    push @{$c->stash->{breadcrumbs}},
+      {
+       uri => '#',
+       label => $c->loc('All'),
+      };
     my (@anthologies, @periodicals);
     foreach my $anthology ($site->aggregations->anthologies->sorted->all) {
         push @anthologies, {
@@ -296,9 +315,28 @@ sub list_aggregations :Chained('/site') :PathPart('aggregation') :Args(0) {
              );
 }
 
-sub aggregation :Chained('/site') :PathPart('aggregation') :Args(1) {
+sub aggregation :Chained('show') :PathPart('aggregation') :Args(1) {
     my ($self, $c, $uri) = @_;
     if (my $agg = $c->stash->{site}->aggregations->find({ aggregation_uri => $uri })) {
+        my @breadcrumbs;
+        if (my $series = $agg->aggregation_series) {
+            @breadcrumbs = ({
+                             uri => $c->uri_for_action('/aggregation/series', $series->aggregation_series_uri),
+                             label => $series->aggregation_series_name,
+                            },
+                            {
+                             uri => '#',
+                             label => $agg->issue,
+                            });
+        }
+        else {
+            @breadcrumbs = ({
+                             uri => '#',
+                             label => $agg->aggregation_name,
+                            });
+        }
+        push @{$c->stash->{breadcrumbs}}, @breadcrumbs;
+
         $c->stash(
                   aggregation => $agg->final_data,
                   texts => AmuseWikiFarm::Utils::Iterator->new([ $agg->titles ])
@@ -311,9 +349,14 @@ sub aggregation :Chained('/site') :PathPart('aggregation') :Args(1) {
     }
 }
 
-sub series :Chained('/site') :PathPart('series') :Args(1) {
+sub series :Chained('show') :PathPart('series') :Args(1) {
     my ($self, $c, $code) = @_;
     if (my $series = $c->stash->{site}->aggregation_series->find({ aggregation_series_uri => $code })) {
+        push @{$c->stash->{breadcrumbs}},
+          {
+           uri => '#',
+           label => $series->aggregation_series_name,
+          };
         $c->stash(
                   aggregations => [ map { $_->final_data } $series->aggregations->sorted ],
                   series => $series,

@@ -276,6 +276,13 @@
                 </li>
                 [%     END  %]
                 [% END %]
+                [% IF site.has_aggregations %]
+                  <li>
+                    <a href="[% c.uri_for_action('/aggregation/list_aggregations') %]">
+                      [% loc('Anthologies and periodicals') %]
+                    </a>
+                  </li>
+                [% END %]
                 <li role="presentation" class="divider"
                     id="amw-nav-bar-latest-separator"></li>
                 <li[% IF nav == 'latest' %] class="active"[% END %]
