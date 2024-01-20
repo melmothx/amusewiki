@@ -18,8 +18,20 @@
                   </td>
                   <td>
                     [% IF annotation.type == 'file' %]
-                      <input id="annotation-[% annotation.id %]"
-                             name="file-[% annotation.id %]" type="file" />
+                      <div class="row">
+                        <div class="col-xs-6">
+                          <input id="annotation-[% annotation.id %]"
+                                 name="file-[% annotation.id %]" type="file" />
+                        </div>
+                        [% IF annotation.type == 'file' && annotation.value %]
+                          <div class="col-xs-6">
+                            <label>
+                              <input name="wipe-[% annotation.id %]" type="checkbox">
+                              [% loc('Remove') %]
+                            </label>
+                          </div>
+                        [% END %]
+                      </div>
                     [% ELSIF annotation.type == 'identifier' %]
                       <input id="annotation-[% annotation.id %]"
                              name="value-[% annotation.id %]"
@@ -29,12 +41,6 @@
                                 name="value-[% annotation.id %]"
                                 class="form-control">[% annotation.value | html %]</textarea>
                     [% END %]
-                  </td>
-                  <td>
-                    <label>
-                      <input name="wipe-[% annotation.id %]" type="checkbox">
-                      [% loc('Remove') %]
-                    </label>
                   </td>
                 </tr>
               [% END %]
