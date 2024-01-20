@@ -58,10 +58,11 @@
             <input type="checkbox"
                    [% IF usite.active %]checked="checked"[% END %]
                    name="site-[% usite.id %]" />
-            <a href="http://[% usite.canonical %]">
-              [% usite.sitename %]
-            </a>
+            [% usite.sitename %]
           </label>
+          <a href="http://[% usite.canonical %]">
+            <i class="fa fa-link"></i>
+          </a>
           <br />
           [% END %]
         </div>
