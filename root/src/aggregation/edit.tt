@@ -136,10 +136,25 @@
           <label class="col-sm-2 control-label" for="annotation-id-[% annotation.id %]">
             [% lh.site_loc_html(annotation.label) %]
           </label>
-          <div class="col-sm-8">
+          <div class="col-sm-10">
             [% IF annotation.type == 'file' %]
-              <input id="annotation-id-[% annotation.id %]"
-                     name="annotation-file-[% annotation.id %]" type="file" />
+              <div class="row">
+                <div class="col-xs-6">
+                  <input id="annotation-id-[% annotation.id %]"
+                         name="annotation-file-[% annotation.id %]" type="file" />
+                </div>
+                [% IF annotation.value %]
+                  <div class="col-xs-3">
+                    <a href="[% annotation.url | html %]">[% loc('Download') %]</a>
+                  </div>
+                  <div class="col-xs-3">
+                    <label>
+                      <input name="annotation-wipe-[% annotation.id %]" type="checkbox">
+                      [% loc('Remove File') %]
+                    </label>
+                  </div>
+                [% END %]
+              </div>
             [% ELSIF annotation.type == 'identifier' %]
               <input id="annotation-id-[% annotation.id %]"
                      name="annotation-value-[% annotation.id %]"
@@ -149,12 +164,6 @@
                         name="annotation-value-[% annotation.id %]"
                         class="form-control">[% annotation.value | html %]</textarea>
             [% END %]
-          </div>
-          <div class="col-sm-2">
-            <label>
-              <input name="annotation-wipe-[% annotation.id %]" type="checkbox">
-              [% loc('Remove') %]
-            </label>
           </div>
         </div>
       [% END %]
