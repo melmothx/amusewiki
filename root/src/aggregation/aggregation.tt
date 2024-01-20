@@ -1,3 +1,4 @@
+[% INCLUDE 'include/breadcrumbs.tt' %]
 <div class="page-header">
   <h1>
     [% aggregation.aggregation_name | html %]
