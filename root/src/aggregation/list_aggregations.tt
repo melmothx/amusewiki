@@ -1,0 +1,36 @@
+[% INCLUDE 'include/breadcrumbs.tt' %]
+<div class="page-header">
+  <h1>[% loc('Antologies and periodicals') %]</h1>
+</div>
+[% IF antologies && antologies.size %]
+  <div>
+    <h2>[% loc('Antologies') %]</h2>
+    <div>
+      <div class="list-group">
+        [% FOREACH ant IN antologies %]
+          <div class="amw-listing-item">
+            <a class="list-group-item clearfix" href="[% ant.url | html %]">
+              [% ant.name | html %]
+            </a>
+          </div>
+        [% END %]
+      </div>
+    </div>
+  </div>
+[% END %]
+[% IF periodicals && periodicals.size %]
+<div>
+  <h2>[% loc('Periodicals') %]</h2>
+  <div>
+    <div class="list-group">
+      [% FOREACH periodical IN periodicals %]
+        <div class="amw-listing-item">
+          <a class="list-group-item clearfix" href="[% periodical.url | html %]">
+            [% periodical.name | html %]
+          </a>
+        </div>
+      [% END %]
+    </div>
+  </div>
+</div>
+[% END %]

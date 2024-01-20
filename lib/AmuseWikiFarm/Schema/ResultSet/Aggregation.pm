@@ -56,4 +56,16 @@ sub by_uri {
     $self->search({ "$me.aggregation_uri" => $uri });
 }
 
+sub periodicals {
+    my ($self) = @_;
+    my $me = $self->current_source_alias;
+    $self->search({ "$me.aggregation_series_id" => { '!=' => undef } });
+}
+
+sub anthologies {
+    my ($self) = @_;
+    my $me = $self->current_source_alias;
+    $self->search({ "$me.aggregation_series_id" => undef });
+}
+
 1;

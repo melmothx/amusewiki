@@ -282,15 +282,16 @@ sub annotate {
 
 sub values_for_object {
     my ($self, $object, $uri_prefix) = @_;
-    return unless $object;
-    my ($type, $store) = $self->_identify_object($object);
     my %out = (
                label => $self->label,
                name => $self->annotation_name,
                id => $self->annotation_id,
                type => $self->annotation_type,
                private => $self->private,
+               value => undef,
               );
+    return \%out unless $object;
+    my ($type, $store) = $self->_identify_object($object);
     my $value = $store->annotation_value;
     if ($value and $self->annotation_type eq 'file') {
         if (my $valid = $self->_validate_file($value)) {

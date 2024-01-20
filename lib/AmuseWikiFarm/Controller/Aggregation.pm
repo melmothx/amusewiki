@@ -91,9 +91,6 @@ sub edit_series :Chained('edit_gate') :PathPart('series') :Args {
                         }
                     }
                     $series->bump_oai_pmh_records;
-                    $c->flash(status_msg => $c->loc("Thanks!"));
-                    return $c->response->redirect($c->uri_for_action('/aggregation/series',
-                                                                     $series->aggregation_series_uri));
                 }
                 else {
                     $c->flash(error_msg => $c->loc("URI already exists!"));
@@ -101,9 +98,18 @@ sub edit_series :Chained('edit_gate') :PathPart('series') :Args {
             }
             else {
                 $series = $site->aggregation_series->create(\%clean);
+            }
+            if ($series) {
                 $c->flash(status_msg => $c->loc("Thanks!"));
-                return $c->response->redirect($c->uri_for_action('/aggregation/series',
-                                                                 $series->aggregation_series_uri));
+                my $redirect;
+                if ($params->{and_create_aggregation}) {
+                    $redirect = $c->uri_for_action('/aggregation/edit', [], { series => $series->aggregation_series_uri });
+                }
+                else {
+                    $redirect = $c->uri_for_action('/aggregation/series',
+                                                   $series->aggregation_series_uri);
+                }
+                return $c->response->redirect($redirect);
             }
         }
         else {
@@ -213,6 +219,9 @@ sub edit :Chained('edit_gate') :PathPart('edit') :Args {
                       aggregation => $agg_data,
                       titles => [ $agg->titles ],
                      );
+            if ($agg_data->{aggregation_series}) {
+                $c->stash(aggregation_series_uri => $agg_data->{aggregation_series}->{aggregation_series_uri});
+            }
             $self->populate_annotations($c, $agg);
         }
         else {
@@ -221,6 +230,11 @@ sub edit :Chained('edit_gate') :PathPart('edit') :Args {
     }
     else {
         $c->stash(aggregation => {});
+        if (my $series_uri = $c->request->query_params->{series}) {
+            if ($site->aggregation_series->by_uri($series_uri)->count) {
+                $c->stash(aggregation_series_uri => $series_uri);
+            }
+        }
         $self->populate_annotations($c);
     }
     $c->stash(load_select2 => 1);
@@ -258,6 +272,28 @@ sub title :Chained('edit_gate') :PathPart('title') :Args(1) {
         }
     }
     $c->detach('/not_found');
+}
+
+sub list_aggregations :Chained('/site') :PathPart('aggregation') :Args(0) {
+    my ($self, $c) = @_;
+    my $site = $c->stash->{site};
+    my (@anthologies, @periodicals);
+    foreach my $anthology ($site->aggregations->anthologies->sorted->all) {
+        push @anthologies, {
+                           name => $anthology->aggregation_name,
+                           url => $c->uri_for_action('/aggregation/aggregation', $anthology->aggregation_uri),
+                          };
+    }
+    foreach my $periodical ($site->aggregation_series->sorted->all) {
+        push @periodicals, {
+                            name => $periodical->aggregation_series_name,
+                            url => $c->uri_for_action('/aggregation/series', $periodical->aggregation_series_uri),
+                           };
+    }
+    $c->stash(
+              anthologies => \@anthologies,
+              periodicals => \@periodicals,
+             );
 }
 
 sub aggregation :Chained('/site') :PathPart('aggregation') :Args(1) {

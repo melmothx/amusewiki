@@ -17,23 +17,25 @@
         enctype="multipart/form-data"
         method="POST" class="form-horizontal">
     <div class="form-group">
-      <label class="col-sm-2 control-label" for="aggregation_series_uri">Series</label>
-      <div class="col-sm-4">
+      <label class="col-sm-2 control-label" for="aggregation_series_uri">[% loc('Series or Periodical') %]</label>
+      <div class="col-sm-10">
         <div>
           <input type="hidden" name="aggregation_series_uri"
-                 value="[% IF aggregation.aggregation_series %][% aggregation.aggregation_series.aggregation_series_uri %][% END %]"
+                 value="[% aggregation_series_uri %]"
                  id="aggregation_series_uri" />
         </div>
         <div>
-          <a href="[% c.uri_for_action('/aggregation/edit_series') %]">
+          <a href="[% c.uri_for_action('/aggregation/edit_series') %]" target="_blank">
             <small>
               [% loc('Missing? Create one') %]
             </small>
           </a>
         </div>
       </div>
-      <label class="col-sm-1 control-label" for="issue">[% loc('Issue') %]</label>
-      <div class="col-sm-2">
+    </div>
+    <div class="form-group periodical">
+      <label class="col-sm-2 control-label" for="issue">[% loc('Issue') %]</label>
+      <div class="col-sm-7">
         <input type="text" class="form-control" id="issue"
                name="issue"
                value="[% aggregation.issue | html %]"
@@ -59,8 +61,8 @@
       </div>
     </div>
     [% END %]
-    <div class="form-group">
-      <label class="col-sm-2 control-label" for="aggregation_name">[% loc('Name') %]</label>
+    <div class="form-group anthology">
+      <label class="col-sm-2 control-label" for="aggregation_name">[% loc('Anthology Name') %]</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="aggregation_name" name="aggregation_name"
                value="[% aggregation.aggregation_name | html %]"
@@ -159,7 +161,7 @@
 
     [% END %]
 
-    [% IF titles %]
+    [% IF titles && titles.size %]
       <div class="form-group">
         <label class="col-sm-2 control-label">[% loc('Sorting') %]</label>
         <div class="col-sm-10">
@@ -179,9 +181,12 @@
       </div>
     [% END %]
     <div class="text-center">
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" class="btn btn-default">[% loc('Update') %]</button>
     </div>
   </form>
+</div>
+<div id="is_anthology" style="display:none">
+  [% loc('Not a periodical') %]
 </div>
 
 <script>
@@ -196,6 +201,9 @@
              $('#sorting_pos').prop('required', true);
              $('#issue').prop('disabled', false);
              $('#sorting_pos').prop('disabled', false);
+             $('.aggregation_name_container').hide();
+             $('.anthology').hide();
+             $('.periodical').show();
          }
          else {
              $('#aggregation_name').prop('disabled', false);
@@ -204,6 +212,9 @@
              $('#sorting_pos').prop('required', false);
              $('#issue').prop('disabled', true);
              $('#sorting_pos').prop('disabled', true);
+             $('.aggregation_name_container').show();
+             $('.anthology').show();
+             $('.periodical').hide();
          }
      }
      check_series();
@@ -216,7 +227,7 @@
              "name": el.attr('name'),
              "class": "form-control"
          });
-         dropdown.append($('<option>', { "value": "" }).text('------'));
+         dropdown.append($('<option>', { "value": "" }).text(' -- ' + $('#is_anthology').text() + ' -- '));
          for (var i = 0; i < data.length; i++) {
              dropdown.append($('<option>', { "value": data[i].aggregation_series_uri })
                  .text(data[i].aggregation_series_name));
