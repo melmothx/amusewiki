@@ -191,6 +191,9 @@ sub bump_oai_pmh_records {
     }
 }
 
+sub full_uri {
+    return "/series/" . shift->aggregation_series_uri;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

@@ -372,6 +372,12 @@ sub uri {
     shift->aggregation_uri;
 }
 
+sub full_uri {
+    return "/aggregation/" . shift->aggregation_uri;
+}
+
+
+
 sub display_categories {
     my $self = shift;
     my @cats = $self->rs_titles

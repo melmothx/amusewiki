@@ -411,28 +411,51 @@ sub update_from_params {
         my @list = ref($params->{attached_uris})
           ? (@{$params->{attached_uris}})
           : (split(/\s+/, $params->{attached_uris}));
-        my (@titles, @cats);
-        my $titles_rs = $site->titles;
-        my $cats_rs = $site->categories;
+        my (@titles, @cats, @aggs, @series);
+
+        # all of them have a shared api, so we can loop
+        my @objects = (
+                       {
+                        list => [],
+                        method => 'set_titles',
+                        rs => scalar($site->titles),
+                       },
+                       {
+                        list => [],
+                        method => 'set_categories',
+                        rs => scalar($site->categories),
+                       },
+                       {
+                        list => [],
+                        method => 'set_aggregations',
+                        rs => scalar($site->aggregations),
+                       },
+                       {
+                        list => [],
+                        method => 'set_aggregation_series',
+                        rs => scalar($site->aggregation_series),
+                       },
+                      );
         my %done;
       STRING:
         foreach my $str (@list) {
-            if (my $title = $titles_rs->by_full_uri($str)) {
-                my $u = $title->full_uri;
-                $done{$u}++;
-                push @titles, $title unless $done{$u} > 1;
+          OBJECT:
+            foreach my $obj (@objects) {
+                if (my $found = $obj->{rs}->by_full_uri($str)) {
+                    my $u = $found->full_uri;
+                    $done{$u}++;
+                    push @{$obj->{list}}, $found if $done{$u} == 1;
+                    next OBJECT;
+                }
             }
-            elsif (my $cat = $cats_rs->by_full_uri($str)) {
-                my $u = $cat->full_uri;
-                $done{$u}++;
-                push @cats, $cat unless $done{$u} > 1;
-            }
-            else {
-                Dlog_info { "Ignored $str while updating from params $_"} $params;
-            }
+            Dlog_info { "Ignored $str while updating from params $_"} $params;
         }
-        $self->set_titles(\@titles);
-        $self->set_categories(\@cats);
+
+        Dlog_info { "Done $_" } \%done;
+        foreach my $obj (@objects) {
+            my $method = $obj->{method};
+            $self->$method($obj->{list});
+        }
     }
     # we need to change the linkage between the record and the set and
     # bumps the new ones.
@@ -490,11 +513,13 @@ sub serialize {
         $out{'title_' . $lang} = $desc->title_muse;
         $out{'body_'  . $lang} = $desc->body_muse;
     }
-    my @attached;
-    foreach my $el ($self->titles->all, $self->categories->all) {
-        push @attached, $el->full_uri;
-    }
-    $out{attached_uris} = join("\n", sort @attached);
+    my @attached = map { $_->full_uri } (
+                                         $self->aggregation_series->sorted->all,
+                                         $self->aggregations->sorted->all,
+                                         $self->categories->sorted->all,
+                                         $self->titles->sorted_by_title->all,
+                                        );
+    $out{attached_uris} = join("\n", @attached);
     return \%out;
 }
 
