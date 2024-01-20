@@ -58,6 +58,9 @@
       <div class="col-sm-10">
         <input type="text" class="form-control" id="aggregation_uri" name="aggregation_uri"
                pattern="[0-9a-z][0-9a-z-]{3,}" required>
+        <small>
+          [% loc('Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase characters and digits, optionally separated by a hyphen, e.g. [_1]', 'my-uri-1') %]
+        </small>
       </div>
     </div>
     [% END %]
