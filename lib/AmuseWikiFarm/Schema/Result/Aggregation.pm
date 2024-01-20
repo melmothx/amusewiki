@@ -262,11 +262,17 @@ sub sqlt_deploy_hook {
     $sqlt_table->add_index(name => 'aggregation_uri_amw_index', fields => ['aggregation_uri']);
 }
 
+sub rs_titles {
+    my $self = shift;
+    my @uris = map { $_->{title_uri} } $self->aggregation_titles->title_uris->hri->all;
+    return $self->site->titles->texts_only->by_uri(\@uris);
+}
+
 sub titles {
     my $self = shift;
     my @uris = map { $_->{title_uri} } $self->aggregation_titles->title_uris->hri->all;
     my %titles = map { $_->uri => $_ }
-      $self->site->titles->texts_only->status_is_published->by_uri(\@uris)->all;
+      $self->site->titles->texts_only->by_uri(\@uris)->all;
     my @out;
     foreach my $uri (@uris) {
         if (my $title = $titles{$uri}) {
@@ -340,6 +346,26 @@ sub final_data {
 sub uri {
     shift->aggregation_uri;
 }
+
+sub display_categories {
+    my $self = shift;
+    my @cats = $self->rs_titles
+      ->search_related('title_categories')
+      ->search_related('category')
+      ->with_active_flag_on->sorted->distinct->all;
+    my @out;
+    foreach my $ctype ($self->site->site_category_types->active->with_index_page->ordered->all) {
+        if (my @list = grep { $_->type eq $ctype->category_type } @cats) {
+            push @out, {
+                        title => @list > 1 ? $ctype->name_plural : $ctype->name_singular,
+                        entries => \@list,
+                        code => $ctype->category_type,
+                       };
+        }
+    }
+    return \@out;
+}
+
 
 __PACKAGE__->meta->make_immutable;
 1;
