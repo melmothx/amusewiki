@@ -16,6 +16,7 @@ Catalyst Controller.
 
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse qw/muse_naming_algo/;
+use HTML::Entities qw/encode_entities/;
 
 sub aggregate :Chained('/site_user_required') :PathPart('aggregate') :CaptureArgs(0) {
     my ($self, $c) = @_;
@@ -336,7 +337,7 @@ sub aggregation :Chained('show') :PathPart('aggregation') :Args(1) {
                             });
         }
         push @{$c->stash->{breadcrumbs}}, @breadcrumbs;
-
+        $self->populate_node_breadcrumbs($c, $agg);
         $c->stash(
                   aggregation => $agg->final_data,
                   texts => AmuseWikiFarm::Utils::Iterator->new([ $agg->titles ]),
@@ -358,6 +359,7 @@ sub series :Chained('show') :PathPart('series') :Args(1) {
            uri => '#',
            label => $series->aggregation_series_name,
           };
+        $self->populate_node_breadcrumbs($c, $series);
         $c->stash(
                   aggregations => [ map { $_->final_data } $series->aggregations->sorted ],
                   series => $series,
@@ -365,6 +367,21 @@ sub series :Chained('show') :PathPart('series') :Args(1) {
     }
     else {
         $c->detach('/not_found');
+    }
+}
+
+sub populate_node_breadcrumbs :Private {
+    my ($self, $c, $obj) = @_;
+    if (my @nodes = $obj->nodes->sorted->all) {
+        my $lang = $c->stash->{current_locale_code} || 'en';
+        my @node_breadcrumbs = map { $_->breadcrumbs($lang) } @nodes;
+        foreach my $nbc (@node_breadcrumbs) {
+            push @$nbc, {
+                         uri => $obj->full_uri,
+                         label => encode_entities($obj->final_name),
+                        };
+        }
+        $c->stash(node_breadcrumbs => \@node_breadcrumbs);
     }
 }
 

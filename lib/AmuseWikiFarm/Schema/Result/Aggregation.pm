@@ -372,6 +372,10 @@ sub uri {
     shift->aggregation_uri;
 }
 
+sub final_name {
+    shift->final_data->{aggregation_name};
+}
+
 sub full_uri {
     return "/aggregation/" . shift->aggregation_uri;
 }

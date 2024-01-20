@@ -259,6 +259,14 @@
                     </a>
                   </li>
                 [% END %]
+                [% IF site.has_collections %]
+                  <li>
+                    <a href="[% c.uri_for_action('/nodes/node_root') %]">
+                      [% loc('Collections') %]
+                    </a>
+                  </li>
+                [% END %]
+                <li role="presentation" class="divider"></li>
                 [% FOREACH sitectype IN category_types_navbar_display %]
                   <li[% IF nav == sitectype.ctype %] class="active" [% END %]
                                                      id="amw-nav-bar-[% sitectype.ctype %]s">

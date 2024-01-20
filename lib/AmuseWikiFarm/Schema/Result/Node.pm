@@ -524,18 +524,33 @@ sub serialize {
 }
 
 sub linked_pages {
-    my ($self, %options) = @_;
-    my $titles = $self->titles;
-    my $cats = $self->categories;
-    unless ($options{logged_in}) {
-        # this sort them as well
-        $titles = $titles->published_all;
-        $cats = $cats->active_only;
-    }
+    my $self = shift;
     my @out;
-    push @out, map { +{ label => $_->name,         uri => $_->full_uri } } $cats->all;
-    push @out, map { +{ label => $_->author_title, uri => $_->full_uri } } $titles->all;
+    my %icons = (
+                 author => 'address-book-o',
+                 topic => 'tag',
+                 series => 'archive',
+                 aggregations => 'book',
+                 special => 'file-text-o',
+                 text => 'file-text-o',
+                );
+    push @out, map { +{ label => encode_entities($_->aggregation_series_name),
+                        type => "series",
+                        uri => $_->full_uri } } $self->aggregation_series->sorted;
+    push @out, map { +{ label => encode_entities($_->final_name),
+                        type => "aggregation",
+                        uri => $_->full_uri } } $self->aggregations->sorted;
+    # these are already escaped
+    push @out, map { +{ label => $_->name,
+                        type => $_->type,
+                        uri => $_->full_uri } } $self->categories->active_only->sorted;
+    push @out, map { +{ label => $_->author_title,
+                        type => $_->f_class,
+                        uri => $_->full_uri } } $self->titles->sorted->published_all;
     Dlog_debug { "linked pages: $_" } \@out;
+    foreach my $i (@out) {
+        $i->{icon} = $icons{$i->{type}} || 'tags';
+    }
     return @out;
 }
 
