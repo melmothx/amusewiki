@@ -131,9 +131,14 @@ sub remove_series :Chained('edit_gate') :PathPart('remove-series') :Args(1) {
     my ($self, $c, $id) = @_;
     if ($id =~ /\A\d+\z/a) {
         if (my $series = $c->stash->{site}->aggregation_series->find($id)) {
-            $series->bump_oai_pmh_records;
-            $series->delete;
-            $c->flash(status_msg => $c->loc("Record deleted!"));
+            if ($c->check_any_user_role(qw/admin root/)) {
+                $series->bump_oai_pmh_records;
+                $series->delete;
+                $c->flash(status_msg => $c->loc("Record deleted!"));
+            }
+            else {
+                $c->flash(error_msg => $c->loc("Sorry, you can't remove this, please ask an admin"));
+            }
         }
     }
     return $c->response->redirect($c->uri_for_action('/aggregation/manage'));
@@ -225,9 +230,14 @@ sub remove :Chained('edit_gate') :PathPart('remove') :Args(1) {
     my ($self, $c, $id) = @_;
     if ($id =~ /\A\d+\z/a) {
         if (my $agg = $c->stash->{site}->aggregations->find($id)) {
-            $agg->bump_oai_pmh_records;
-            $agg->delete;
-            $c->flash(status_msg => $c->loc("Record deleted!"));
+            if ($c->check_any_user_role(qw/admin root/)) {
+                $agg->bump_oai_pmh_records;
+                $agg->delete;
+                $c->flash(status_msg => $c->loc("Record deleted!"));
+            }
+            else {
+                $c->flash(error_msg => $c->loc("Sorry, you can't remove this, please ask an admin"));
+            }
         }
     }
     return $c->response->redirect($c->uri_for_action('/aggregation/manage'));
