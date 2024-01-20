@@ -145,6 +145,36 @@ __PACKAGE__->add_unique_constraint("site_id_uri_unique", ["site_id", "uri"]);
 
 =head1 RELATIONS
 
+=head2 node_aggregation_series
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::NodeAggregationSeries>
+
+=cut
+
+__PACKAGE__->has_many(
+  "node_aggregation_series",
+  "AmuseWikiFarm::Schema::Result::NodeAggregationSeries",
+  { "foreign.node_id" => "self.node_id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 node_aggregations
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::NodeAggregation>
+
+=cut
+
+__PACKAGE__->has_many(
+  "node_aggregations",
+  "AmuseWikiFarm::Schema::Result::NodeAggregation",
+  { "foreign.node_id" => "self.node_id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 node_bodies
 
 Type: has_many
@@ -240,6 +270,30 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
+=head2 aggregation_series
+
+Type: many_to_many
+
+Composing rels: L</node_aggregation_series> -> aggregation_series
+
+=cut
+
+__PACKAGE__->many_to_many(
+  "aggregation_series",
+  "node_aggregation_series",
+  "aggregation_series",
+);
+
+=head2 aggregations
+
+Type: many_to_many
+
+Composing rels: L</node_aggregations> -> aggregation
+
+=cut
+
+__PACKAGE__->many_to_many("aggregations", "node_aggregations", "aggregation");
+
 =head2 categories
 
 Type: many_to_many
@@ -261,8 +315,8 @@ Composing rels: L</node_titles> -> title
 __PACKAGE__->many_to_many("titles", "node_titles", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-07-23 18:11:16
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6aF6Qf0huVzKi0jociB9sA
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-20 15:08:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:e2qKuKUuWxgCTWN71140JA
 
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse::Functions qw/muse_to_object

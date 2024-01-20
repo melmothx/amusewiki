@@ -236,6 +236,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 node_aggregations
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::NodeAggregation>
+
+=cut
+
+__PACKAGE__->has_many(
+  "node_aggregations",
+  "AmuseWikiFarm::Schema::Result::NodeAggregation",
+  { "foreign.aggregation_id" => "self.aggregation_id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 site
 
 Type: belongs_to
@@ -251,9 +266,19 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
+=head2 nodes
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-18 18:05:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:pXIZpgnGn5Upppzbx6/55w
+Type: many_to_many
+
+Composing rels: L</node_aggregations> -> node
+
+=cut
+
+__PACKAGE__->many_to_many("nodes", "node_aggregations", "node");
+
+
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-20 15:08:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wBwbP1XY7l/hROxwlTPKIA
 
 use AmuseWikiFarm::Log::Contextual;
 

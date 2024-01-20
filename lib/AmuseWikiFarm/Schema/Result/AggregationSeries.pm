@@ -140,6 +140,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 node_aggregation_series
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::NodeAggregationSeries>
+
+=cut
+
+__PACKAGE__->has_many(
+  "node_aggregation_series",
+  "AmuseWikiFarm::Schema::Result::NodeAggregationSeries",
+  { "foreign.aggregation_series_id" => "self.aggregation_series_id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 site
 
 Type: belongs_to
@@ -155,9 +170,19 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
+=head2 nodes
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-18 18:05:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:P/nKXvNcKkunxk74YMXIDg
+Type: many_to_many
+
+Composing rels: L</node_aggregation_series> -> node
+
+=cut
+
+__PACKAGE__->many_to_many("nodes", "node_aggregation_series", "node");
+
+
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-20 15:08:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Q1WKCP4xfLdEPC2uzwopVA
 
 sub bump_oai_pmh_records {
     my $self = shift;
