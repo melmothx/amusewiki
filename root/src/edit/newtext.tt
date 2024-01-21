@@ -318,9 +318,8 @@
       <label for="node_id">[% loc('Assign text to collections') %]</label>
       <select id="node_id" name="node_id" class="form-control" multiple>
         [% FOREACH node IN node_selections %]
-          <option value="[% node.value %]"
-                  [% IF node.checked %]selected="selected"[% END %]>
-            [% node.title | html %]
+          <option value="[% node.value %]" [% IF node.checked %]selected="selected"[% END %]>
+            [% node.title %]
           </option>
         [% END %]
       </select>
