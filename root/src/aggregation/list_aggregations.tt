@@ -2,22 +2,6 @@
 <div class="page-header">
   <h1>[% loc('Anthologies and periodicals') %]</h1>
 </div>
-[% IF anthologies && anthologies.size %]
-  <div>
-    <h2>[% loc('Anthologies') %]</h2>
-    <div>
-      <div class="list-group">
-        [% FOREACH ant IN anthologies %]
-          <div class="amw-listing-item">
-            <a class="list-group-item clearfix" href="[% ant.url | html %]">
-              [% ant.name | html %]
-            </a>
-          </div>
-        [% END %]
-      </div>
-    </div>
-  </div>
-[% END %]
 [% IF periodicals && periodicals.size %]
 <div>
   <h2>[% loc('Periodicals') %]</h2>
@@ -33,4 +17,20 @@
     </div>
   </div>
 </div>
+[% END %]
+[% IF anthologies && anthologies.size %]
+  <div>
+    <h2>[% loc('Anthologies') %]</h2>
+    <div>
+      <div class="list-group">
+        [% FOREACH ant IN anthologies %]
+          <div class="amw-listing-item">
+            <a class="list-group-item clearfix" href="[% ant.url | html %]">
+              [% ant.name | html %]
+            </a>
+          </div>
+        [% END %]
+      </div>
+    </div>
+  </div>
 [% END %]

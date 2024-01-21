@@ -8,6 +8,13 @@
          title="[% loc('Update') %]"
          class="btn btn-default pull-right" role="button">
         <span class="fa fa-edit"></span>
+        <span class="sr-only">[% loc('Edit') %]</span>
+      </a>
+      <a href="[% c.uri_for_action('/edit/newtext', ['text'], { aggregation => aggregation.aggregation_uri }) | html %]"
+         title="[% loc('Create a new text for this aggregation') %]"
+         class="btn btn-default pull-right" role="button" style="margin: 0 10px">
+        <span class="fa fa-plus"></span>
+        <span class="sr-only">[% loc('Create a new text for this aggregation') %]</span>
       </a>
     [% END %]
   </h1>
