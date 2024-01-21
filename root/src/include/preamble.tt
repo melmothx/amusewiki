@@ -399,7 +399,7 @@
                                       { "name": "add_aggregation_id",
                                         "class": "form-control"
                                       });
-                     dropdown.append($('<option>', { "value": "" }).text(''));
+                     dropdown.append($('<option>', { "value": "" }).text('--------------'));
                      for (var i = 0; i < data.length; i++) {
                          dropdown.append($('<option>', { "value": data[i].aggregation_id })
                              .text(data[i].aggregation_name));
@@ -416,7 +416,7 @@
                          "name": "add_node_id",
                          "class": "form-control"
                      });
-                     dropdown.append($('<option>', { "value": "" }).text(''));
+                     dropdown.append($('<option>', { "value": "" }).text('--------------'));
                      for (var i = 0; i < data.length; i++) {
                          dropdown.append($('<option>', { "value": data[i].node_id })
                              .text(data[i].canonical_title + " (/" + (data[i].full_path || data[i].uri ) + ")"));
