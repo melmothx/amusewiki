@@ -218,7 +218,7 @@ sub _render_node {
     if (@list) {
         $html .= join("",
                       $indent . "<ul>\n",
-                      (map { $indent . sprintf(' <li><i class="fa fa-%s"></i> <a href="%s">%s</a></li>',
+                      (map { $indent . sprintf(' <li><i class="text-primary fa fa-%s"></i> <a href="%s">%s</a></li>',
                                                $_->[2],
                                                $_->[1],
                                                $_->[0]) . "\n" }

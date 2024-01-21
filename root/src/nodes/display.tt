@@ -37,8 +37,7 @@
           <div class="amw-listing-item">
             <a class="list-group-item" href="[% page.uri %]">
               <i class="text-primary fa fa-[% page.icon %]"></i>
-              [% page.label %]
-            </a>
+              <span> </span>[% page.label %]</a>
           </div>
         [% END %]
       </div>
