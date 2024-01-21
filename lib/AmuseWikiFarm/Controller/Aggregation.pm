@@ -345,7 +345,10 @@ sub aggregation :Chained('show') :PathPart('aggregation') :Args(1) {
         $self->populate_node_breadcrumbs($c, $agg);
         $c->stash(
                   aggregation => $agg->final_data,
-                  texts => AmuseWikiFarm::Utils::Iterator->new([ $agg->titles ]),
+                  texts => AmuseWikiFarm::Utils::Iterator->new([
+                                                                $agg->titles({ view => 1,
+                                                                               public_only => !$c->user_exists })
+                                                               ]),
                   categories => $agg->display_categories,
                  );
         $self->populate_annotations($c, $agg);

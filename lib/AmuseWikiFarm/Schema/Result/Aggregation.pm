@@ -287,17 +287,34 @@ sub sqlt_deploy_hook {
     $sqlt_table->add_index(name => 'aggregation_uri_amw_index', fields => ['aggregation_uri']);
 }
 
-sub rs_titles {
+sub _rs_titles {
     my $self = shift;
     my @uris = map { $_->{title_uri} } $self->aggregation_titles->title_uris->hri->all;
-    return $self->site->titles->texts_only->by_uri(\@uris);
+    my $rs = $self->site->titles->texts_only->by_uri(\@uris);
+    return {
+            rs => $rs,
+            uris => \@uris,
+           };
+}
+
+sub rs_titles {
+    shift->_rs_titles->{rs};
 }
 
 sub titles {
-    my $self = shift;
-    my @uris = map { $_->{title_uri} } $self->aggregation_titles->title_uris->hri->all;
-    my %titles = map { $_->uri => $_ }
-      $self->site->titles->texts_only->by_uri(\@uris)->all;
+    my ($self, $opts) = @_;
+    my $rsd = $self->_rs_titles;
+    my $rs = $rsd->{rs};
+    if ($opts->{view}) {
+        if ($opts->{public_only}) {
+            $rs = $rs->status_is_published;
+        }
+        else {
+            $rs = $rs->status_is_published_or_deferred;
+        }
+    }
+    my @uris = @{$rsd->{uris}};
+    my %titles = map { $_->uri => $_ } $rs->all;
     my @out;
     foreach my $uri (@uris) {
         if (my $title = $titles{$uri}) {
