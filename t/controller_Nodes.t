@@ -216,7 +216,7 @@ foreach my $id (qw/first second third/) {
         $expected =~ s/&#39;/&#x27;/g;
         $mech->content_contains($expected);
 
-        $mech->content_contains('&quot;&lt;script&gt;&quot; kid</a>');
+        $mech->content_contains('&quot;&lt;script&gt;&quot; kid</a>') or die $mech->content;
         $mech->content_lacks('"<script>" kid');
         $mech->content_contains('<a href="/category/topic/x-script">&quot;x&quot; &lt;script&gt;</a>');
         $mech->content_lacks(q{>"'pinco'"<});
@@ -228,9 +228,9 @@ foreach my $id (qw/first second third/) {
         diag $mech->uri;
         $mech->content_contains($expected);
         $mech->content_lacks($params{"title_$lang"}) or diag $mech->content;
-        $mech->content_contains('>&quot;x&quot; &lt;script&gt;</a>') or diag $mech->content;
+        $mech->content_contains('>&quot;x&quot; &lt;script&gt;</a>') or die $mech->content;
         $mech->content_lacks(q{"x" <script>}) or diag $mech->content;
-        $mech->content_contains('&quot;&lt;script&gt;&quot; kid</a>');
+        $mech->content_contains('&quot;&lt;script&gt;&quot; kid</a>') or die $mech->content;
         $mech->content_lacks('"<script>" kid');
     }
     $mech->get_ok($node->full_uri . '?bare=1');
