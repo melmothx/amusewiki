@@ -35,6 +35,7 @@ sub manage :Chained('aggregate') :PathPart('manage') :Args(0) {
               load_datatables => 1,
               aggregations => [ map { $_->final_data } $site->aggregations->sorted ],
               series => [ $site->aggregation_series->sorted->hri ],
+              page_title => $c->loc("Manage aggregations")
              );
 }
 
@@ -293,7 +294,7 @@ sub show :Chained('/site') :PathPart('') :CaptureArgs(0) {
                               },
                               {
                                uri => $c->uri_for_action('/aggregation/list_aggregations'),
-                               label => $c->loc("Aggregations"),
+                               label => $c->loc("Anthologies and periodicals"),
                               }
                              ]);
 }
@@ -301,11 +302,6 @@ sub show :Chained('/site') :PathPart('') :CaptureArgs(0) {
 sub list_aggregations :Chained('show') :PathPart('aggregation') :Args(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
-    push @{$c->stash->{breadcrumbs}},
-      {
-       uri => '#',
-       label => $c->loc('All'),
-      };
     my (@anthologies, @periodicals);
     foreach my $anthology ($site->aggregations->anthologies->sorted->all) {
         push @anthologies, {
