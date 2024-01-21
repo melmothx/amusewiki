@@ -208,7 +208,7 @@ sub edit :Chained('edit_gate') :PathPart('edit') :Args {
             my $redirect;
             if ($params->{and_create_text}) {
                 $redirect = $c->uri_for_action('/edit/newtext', ['text'],
-                                               { aggregation => $agg->aggregation_uri });
+                                               { aggregation => $agg->aggregation_id });
             }
             else {
                 $redirect = $c->uri_for_action('/aggregation/aggregation',
