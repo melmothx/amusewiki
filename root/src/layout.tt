@@ -78,12 +78,12 @@
     </script>
 
     [%- IF load_select2 -%]
-    <script src="[% c.uri_for('/static/js/select2/select2.min.js') %]" >
-    </script>
-    <link rel="stylesheet"
-          href="[% c.uri_for('/static/css/select2/select2.css') %]" />
-    <link rel="stylesheet"
-          href="[% c.uri_for('/static/css/select2/select2-bootstrap.css') %]" />
+      <script src="[% c.uri_for('/static/js/select2/js/select2.min.js') %]" ></script>
+      <link rel="stylesheet" href="[% c.uri_for('/static/js/select2/css/select2.min.css') %]" />
+      <script src="[% c.uri_for('/static/js/select2/js/i18n/' _ current_locale_code _ '.js') %]" ></script>
+      <script>
+       $.fn.select2.defaults.set("theme", "classic");
+      </script>
     [%- END -%]
 
     [% IF load_highlight %]

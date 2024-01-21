@@ -250,7 +250,6 @@
          container.append(dropdown);
          dropdown.on('change', check_series);
          dropdown.select2();
-
      });
  });
 </script>
