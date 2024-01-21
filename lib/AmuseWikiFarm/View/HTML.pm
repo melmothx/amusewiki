@@ -54,6 +54,10 @@ before process => sub {
             $c->stash->{site_failed_jobs} = $site->jobs->failed_jobs->count;
         }
 
+        # if page_title is not set, fall back to the last breadcrumb label
+        if (!$c->stash->{page_title} and @{$c->stash->{breadcrumbs} || []}) {
+            $c->stash->{page_title} = $c->stash->{breadcrumbs}->[-1]->{label};
+        }
         # layout adjustments
         my $theme = $site->bootstrap_theme;
         my $navlogo;
