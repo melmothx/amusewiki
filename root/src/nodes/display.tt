@@ -4,7 +4,25 @@
 
 <div class="center">
   <div class="page-header">
-    <h1>[% node_title %]</h1>
+    <h1>[% node_title %]
+      [% IF edit_node %]
+        <button type="button"
+                class="btn btn-default pull-right"
+                data-target="#node-editing-form"
+                data-toggle="collapse"
+                aria-expanded="false"
+                aria-controls="node-editing-form">
+          <i class="fa fa-edit"></i>
+          <span class="sr-only">[% loc('Edit') %]</span>
+        </button>
+        <a href="[% c.uri_for_action('/edit/newtext', ['text'], { node => node.node_id }) | html %]"
+           title="[% loc('Create a new text for this collection') %]"
+           class="btn btn-default pull-right" role="button" style="margin: 0 10px">
+          <i class="fa fa-plus"></i>
+          <span class="sr-only">[% loc('Create a new text for this collection') %]</span>
+        </a>
+      [% END %]
+    </h1>
   </div>
 </div>
 [% IF node_body %]
@@ -46,17 +64,6 @@
 </div>
 [% IF edit_node %]
   <hr />
-  <div class="text-right">
-    <button type="button"
-            class="btn btn-default"
-            data-target="#node-editing-form"
-            data-toggle="collapse"
-            aria-expanded="false"
-            aria-controls="node-editing-form">
-      <i class="fa fa-edit fa-border"></i>
-      <span class="sr-only">[% loc('Edit') %]</span>
-    </button>
-  </div>
   <div id="node-editing-form" class="collapse">
     [% INCLUDE 'include/edit_node.tt' %]
   </div>

@@ -25,7 +25,7 @@
                  id="aggregation_series_uri" />
         </div>
         <div>
-          <a href="[% c.uri_for_action('/aggregation/edit_series') %]" target="_blank">
+          <a href="[% c.uri_for_action('/aggregation/edit_series') %]">
             <small>
               [% loc('Missing? Create one') %]
             </small>
@@ -192,8 +192,17 @@
         </div>
       </div>
     [% END %]
+    [%IF c.request.query_params.add_text %]
+      <input type="hidden" name="titles" value="[% c.request.query_params.add_text | html %]" />
+    [% END %]
     <div class="text-center">
       <button type="submit" class="btn btn-default">[% loc('Update') %]</button>
+      <span> </span>
+      <button type="submit"
+              class="btn btn-default"
+              name="and_create_text" value="1">
+        [% loc('Update and create new text') %]
+      </button>
     </div>
   </form>
 </div>

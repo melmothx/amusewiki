@@ -8,12 +8,14 @@
       <a href="[% c.uri_for_action('/aggregation/edit_series', series.aggregation_series_id) | html %]"
          title="[% loc('Update') %]"
          class="btn btn-default pull-right" role="button">
-        <span class="fa fa-edit"></span>
+        <i class="fa fa-edit"></i>
+        <span class="sr-only">[% loc('Edit') %]</span>
       </a>
       <a href="[% c.uri_for_action('/aggregation/edit', { series => series.aggregation_series_uri }) | html %]"
-         title="[% loc('Create new aggregation for this series') %]"
+         title="[% loc('Create a new aggregation for this series') %]"
          class="btn btn-default pull-right" role="button" style="margin: 0 10px">
-        <span class="fa fa-plus"></span>
+        <i class="fa fa-plus"></i>
+        <span class="sr-only">[% loc('Create a new aggregation for this series') %]</span>
       </a>
     [% END %]
   </h1>

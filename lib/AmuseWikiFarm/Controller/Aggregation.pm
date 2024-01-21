@@ -92,6 +92,7 @@ sub edit_series :Chained('edit_gate') :PathPart('series') :Args {
                         }
                     }
                     $series->bump_oai_pmh_records;
+                    $c->flash(status_msg => $c->loc("Thanks!"));
                 }
                 else {
                     $c->flash(error_msg => $c->loc("URI already exists!"));
@@ -99,9 +100,9 @@ sub edit_series :Chained('edit_gate') :PathPart('series') :Args {
             }
             else {
                 $series = $site->aggregation_series->create(\%clean);
+                $c->flash(status_msg => $c->loc("Thanks!"));
             }
             if ($series) {
-                $c->flash(status_msg => $c->loc("Thanks!"));
                 my $redirect;
                 if ($params->{and_create_aggregation}) {
                     $redirect = $c->uri_for_action('/aggregation/edit', [], { series => $series->aggregation_series_uri });
@@ -204,8 +205,16 @@ sub edit :Chained('edit_gate') :PathPart('edit') :Args {
             }
             $c->flash(status_msg => $c->loc("Thanks!"));
             $agg->bump_oai_pmh_records;
-            return $c->response->redirect($c->uri_for_action('/aggregation/aggregation',
-                                                             $agg->aggregation_uri));
+            my $redirect;
+            if ($params->{and_create_text}) {
+                $redirect = $c->uri_for_action('/edit/newtext', ['text'],
+                                               { aggregation => $agg->aggregation_uri });
+            }
+            else {
+                $redirect = $c->uri_for_action('/aggregation/aggregation',
+                                               $agg->aggregation_uri);
+            }
+            return $c->response->redirect($redirect);
         }
         else {
             $c->flash(error_msg => $c->loc("Invalid data!"));
