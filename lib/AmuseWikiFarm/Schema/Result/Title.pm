@@ -2058,6 +2058,13 @@ sub aggregations {
     }
 }
 
+sub add_to_aggregations {
+    my ($self, @aggs) = @_;
+    foreach my $agg (@aggs) {
+        $agg->aggregation_titles->find_or_create({ title_uri => $self->uri });
+    }
+}
+
 sub aggregate {
     my ($self, $params) = @_;
     my $ok;

@@ -1826,16 +1826,21 @@ sub import_text_from_html_params {
     my $guard = $self->result_source->schema->txn_scope_guard;
     # title->can_spawn_revision will return false, so we have to force
     my $created = $self->titles->create($bogus);
-    if ($params->{node_id}) {
-        Dlog_debug { "Assigning text to nodes $_" } $params->{node_id};
-        my @nodes = ref($params->{node_id}) ? (@{$params->{node_id}}) : ($params->{node_id});
-        foreach my $id (@nodes) {
-            if (my $node = $self->nodes->find($id)) {
-                log_info { "Assigned " . $created->uri . " to node " . $node->uri };
-                $created->add_to_nodes($node);
-            }
-            else {
-                log_error { "node $id not found in site " . $self->id };
+
+    foreach my $meta (qw/node aggregation/) {
+        if (my $ids = $params->{$meta . "_id"}) {
+            Dlog_debug { "Assigning text to $meta $_" } $ids;
+            my @objects = ref($ids) ? (@$ids) : ($ids);
+            my $all = $meta . "s"; # ->nodes ->aggregations
+            my $add = "add_to_" . $all; # ->add_to_nodes ->add_to_aggregations
+            foreach my $id (@objects) {
+                if (my $found = $self->$all->find($id)) {
+                    log_info { "Assigned " . $created->uri . " to node " . $found->uri };
+                    $created->$add($found);
+                }
+                else {
+                    log_error { "$meta $id not found in site " . $self->id };
+                }
             }
         }
     }

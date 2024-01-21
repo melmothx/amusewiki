@@ -176,6 +176,32 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
                   node_selections => $nodes,
                  );
     }
+    if (my @aggregations = $site->aggregations->sorted->search(undef, { prefetch => 'aggregation_series' })->all) {
+        my %selected;
+        foreach my $v ($params->{aggregation_id}, $c->request->query_params->{aggregation}) {
+            if ($v) {
+                if (ref($v)) {
+                    $selected{$_} = 1 for @$v;
+                }
+                else {
+                    $selected{$v} = 1;
+                }
+            }
+        }
+        my @aggs;
+        foreach my $agg (@aggregations) {
+            push @aggs, {
+                         value => $agg->aggregation_id,
+                         title => $agg->final_name,
+                         checked => $selected{$agg->aggregation_id},
+                        };
+        }
+        Dlog_debug { "Nodes are $_" } \@aggs;
+        $c->stash(
+                  load_select2 => 1,
+                  aggregation_selections => \@aggs,
+                 );
+    }
 }
 
 sub text :Chained('root') :PathPart('edit') :CaptureArgs(1) {
