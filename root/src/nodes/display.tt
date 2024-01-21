@@ -19,7 +19,15 @@
            title="[% loc('Create a new text for this collection') %]"
            class="btn btn-default pull-right" role="button" style="margin: 0 10px">
           <i class="fa fa-plus"></i>
+          <i class="fa fa-file-text-o"></i>
           <span class="sr-only">[% loc('Create a new text for this collection') %]</span>
+        </a>
+        <a href="[% c.uri_for_action('/nodes/node_root', { node => node.uri }) | html %]"
+           title="[% loc('Create a new child collection') %]"
+           class="btn btn-default pull-right" role="button">
+          <i class="fa fa-plus"></i>
+          <i class="fa fa-tags"></i>
+          <span class="sr-only">[% loc('Create a new child collection') %]</span>
         </a>
       [% END %]
     </h1>

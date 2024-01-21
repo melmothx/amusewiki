@@ -30,7 +30,9 @@ sub node_root :Chained('root') :PathPart('') :Args(0) {
               page_title => $c->loc('Collections'),
              );
     if ($c->user_exists) {
-        $c->stash(all_nodes => $site->nodes->as_list_with_path($lang));
+        $c->stash(all_nodes => $site->nodes->as_list_with_path($lang),
+                  load_select2 => 1,
+                 );
         Dlog_debug  { "All nodes: $_" } $c->stash->{all_nodes};
     }
 }
@@ -72,6 +74,7 @@ sub display :Chained('root') :PathPart('') :Args {
             $c->stash(edit_node => $target,
                       load_markitup_css => 1,
                       all_nodes => $site->nodes->as_list_with_path($locale),
+                      load_select2 => 1,
                      );
         }
     }

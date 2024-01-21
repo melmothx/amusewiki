@@ -192,7 +192,7 @@
         </div>
       </div>
     [% END %]
-    [%IF c.request.query_params.add_text %]
+    [% IF c.request.query_params.add_text %]
       <input type="hidden" name="titles" value="[% c.request.query_params.add_text | html %]" />
     [% END %]
     <div class="text-center">
