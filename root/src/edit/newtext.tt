@@ -317,7 +317,6 @@
     <div class="form-group">
       <label for="node_id">[% loc('Assign text to collections') %]</label>
       <select id="node_id" name="node_id" class="form-control" multiple>
-        <option value="0">[% loc('None') %]</option>
         [% FOREACH node IN node_selections %]
           <option value="[% node.value | html %]"
                   [% IF node.checked %]selected="selected"[% END %]>
@@ -327,7 +326,19 @@
       </select>
     </div>
   [% END %]
-
+  [% IF aggregation_selections %]
+    <div class="form-group">
+      <label for="aggregation_id">[% loc('Assign text to aggregations') %]</label>
+      <select id="aggregation_id" name="aggregation_id" class="form-control" multiple>
+        [% FOREACH agg IN aggregation_selections %]
+          <option value="[% agg.value | html %]"
+                  [% IF agg.checked %]selected="selected"[% END %]>
+            [% agg.title | html %]
+          </option>
+        [% END %]
+      </select>
+    </div>
+  [% END %]
 
   <div class="row">
     <div class="col-xs-12">
@@ -415,6 +426,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#node_id').select2();
+        $('#aggregation_id').select2();
         var separator = /[;,]\s*/;
         var all_terms = {};
         $('.amwautocomplete').each(function () {
