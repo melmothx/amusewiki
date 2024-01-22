@@ -305,7 +305,7 @@ sub titles {
     my ($self, $opts) = @_;
     my $rsd = $self->_rs_titles;
     my $rs = $rsd->{rs};
-    if ($opts->{view}) {
+    if ($opts->{view} or $opts->{public_only}) {
         if ($opts->{public_only}) {
             $rs = $rs->status_is_published;
         }

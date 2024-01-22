@@ -718,6 +718,10 @@
         <a href="[% c.uri_for_action('/bookbuilder/index') %]" class="text-success">
           <strong>[% loc('The text was added to the bookbuilder') %]</strong>
         </a>
+        [% ELSIF c.flash.status_msg == 'BOOKBUILDER_ADDED_BULK' %]
+        <a href="[% c.uri_for_action('/bookbuilder/index') %]" class="text-success">
+          <strong>[% loc('The texts were added to the bookbuilder') %]</strong>
+        </a>
         [% ELSE %]
         [% c.flash.status_msg | html %]
         [% END %]
