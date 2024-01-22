@@ -82,7 +82,7 @@
       </div>
     [% END %]
     <div class="text-center">
-      <button type="submit" class="btn btn-default">[% loc('Update') %]</button>
+      <button type="submit" name="update_button" class="btn btn-default">[% loc('Update') %]</button>
       <span> </span>
       <button type="submit"
               class="btn btn-default"

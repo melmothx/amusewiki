@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 117;
+use Test::More tests => 131;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -335,4 +335,46 @@ $site->delete;
     my $title = $site->titles->by_uri('pippo-new-text-in-collection')->first;
     ok $title, "Title created";
     ok $title->nodes->count, "It already has nodes";
+}
+
+{
+    $mech->get_ok('/aggregate/manage');
+    $mech->get_ok('/aggregate/series');
+    $mech->submit_form(with_fields => {
+                                       aggregation_series_uri => 'Serie <em> Pallino </em>',
+                                       aggregation_series_name => 'Serie <em>Pallino</em>',
+                                       publication_place => '<em>"test" & "test"</em>',
+                                       publisher => '<em>Test<b>',
+                                      },
+                       button => 'update_button');
+    is $mech->uri->path, '/series/serie-em-pallino-em';
+    $mech->content_contains('<strong>Publication Place:</strong> &lt;em&gt;&quot;test&quot; &amp; &quot;test&quot;&lt;/em&gt;');
+    $mech->content_contains('<strong>Publisher:</strong> &lt;em&gt;Test&lt;b&gt;');
+    $mech->content_lacks('<em>Pallino</em>');
+    $mech->content_contains('Serie &lt;em&gt;Pallino&lt;/em&gt;');
+
+    ok $mech->follow_link(url_regex => qr{aggregate/edit\?series=});
+    $mech->content_contains('name="aggregation_series_uri" value="serie-em-pallino-em"');
+
+    # TODO go back and try the other button (and create)
+
+
+    $mech->submit_form(with_fields => {
+                                       aggregation_uri => 'NEW Aggregation',
+                                       issue => '#3',
+                                       sorting_pos => 1,
+                                      },
+                       button => 'update_button',
+                      );
+    is $mech->uri->path, '/aggregation/new-aggregation';
+
+    # inherited from the series:
+    $mech->content_contains('<strong>Publication Place:</strong> &lt;em&gt;&quot;test&quot; &amp; &quot;test&quot;&lt;/em&gt;');
+    $mech->content_contains('<strong>Publisher:</strong> &lt;em&gt;Test&lt;b&gt;');
+    $mech->content_lacks('<em>Pallino</em>');
+    $mech->content_contains('Serie &lt;em&gt;Pallino&lt;/em&gt;');
+
+    # TODO now try the other button (and create)
+
+    # Test the create text
 }
