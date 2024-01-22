@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 85;
+use Test::More tests => 117;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -273,5 +273,66 @@ $site->delete;
     is_deeply $newsite->serialize_aggregations, \@save;
     diag Dumper(\@save);
     my $fresh_dump = $newsite->serialize_site;
+    diag Dumper($fresh_dump);
+    is $fresh_dump->{nodes}->[0]->{attached_uris}, "/series/fmx\n/aggregation/fmx-2";
     is_deeply $fresh_dump, $deep_copy or die Dumper({ new => $fresh_dump, old => $deep_copy });
+    is $newsite->aggregation_series->count, 1;
+    is $newsite->aggregations->count, 3;
+    $newsite->bootstrap_archive({ full => 1, logger => sub { diag @_ } });
+    $site = $newsite;
+}
+
+{
+    # session are lost after the reloading
+    $mech->get('/aggregate/manage');
+    is $mech->status, 401, "Bounced to login";
+    ok($mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }),
+       "Found login form");
+    is $mech->uri->path, '/aggregate/manage';
+    my $node = $site->nodes->find_by_uri('pallino');
+    $mech->get_ok('/node');
+    $mech->content_contains('<option value="pallino">') or die $mech->content;
+    $mech->get_ok('/node/pallino?bare=1');
+    $mech->content_contains(q{href="/series/fmx"});
+    $mech->content_contains(q{href="/aggregation/fmx-2"});
+    $mech->content_lacks('<option value="pallino">', "Not offering to create a child from itself");
+    $mech->content_contains('<option value="0">');
+    $mech->submit_form(with_fields => {
+                                       canonical_title => "Collection Pinco & Pallino <em>",
+                                       attached_uris => "/series/fmx /aggregation/antology /library/to-test-one",
+                                      },
+                       button => 'update',
+                      );
+    $mech->get_ok('/node/pallino?bare=1');
+    $mech->content_lacks('Pallino <em>');
+    $mech->content_contains('Collection Pinco &amp; Pallino &lt;em&gt;');
+    $node->discard_changes;
+    is $node->aggregations->first->aggregation_uri, 'antology';
+    is $node->aggregation_series->first->aggregation_series_uri, 'fmx';
+    $mech->content_contains(q{href="/series/fmx"});
+    $mech->content_lacks(q{href="/aggregation/fmx-2"});
+    $mech->content_contains(q{href="/aggregation/antology"});
+    ok $mech->follow_link(url_regex => qr{/bookbuilder/bulk/node/});
+    is $mech->uri->path, '/node/pallino';
+    $mech->content_contains('The texts were added to the bookbuilder');
+    ok $mech->follow_link(url_regex => qr{/node\?node=pallino});
+    $mech->content_contains(q{<option value="pallino" selected="selected">});
+    $mech->submit_form(with_fields => {
+                                       uri => 'Child Node',
+                                       canonical_title => 'Child node',
+                                       attached_uris => "/aggregation/fmx-2",
+                                      });
+    is $mech->uri->path, '/node/pallino/child-node';
+    $mech->content_contains('For Marco #2');
+    ok $mech->follow_link(url_regex => qr{/action/text/new\?node=});
+    $mech->content_contains('selected="selected">Collection Pinco &amp; Pallino &lt;em&gt; / Child node<');
+    $mech->submit_form(with_fields => {
+                                       title => 'New Text In Collection',
+                                       author => "Pippo",
+                                      },
+                       button => 'go',
+                      );
+    my $title = $site->titles->by_uri('pippo-new-text-in-collection')->first;
+    ok $title, "Title created";
+    ok $title->nodes->count, "It already has nodes";
 }

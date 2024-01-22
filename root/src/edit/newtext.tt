@@ -318,9 +318,7 @@
       <label for="node_id">[% loc('Assign text to collections') %]</label>
       <select id="node_id" name="node_id" class="form-control" multiple>
         [% FOREACH node IN node_selections %]
-          <option value="[% node.value %]" [% IF node.checked %]selected="selected"[% END %]>
-            [% node.title %]
-          </option>
+          <option value="[% node.value %]"[% IF node.checked %] selected="selected"[% END %]>[% node.title %]</option>
         [% END %]
       </select>
     </div>
@@ -330,10 +328,7 @@
       <label for="aggregation_id">[% loc('Assign text to aggregations') %]</label>
       <select id="aggregation_id" name="aggregation_id" class="form-control" multiple>
         [% FOREACH agg IN aggregation_selections %]
-          <option value="[% agg.value | html %]"
-                  [% IF agg.checked %]selected="selected"[% END %]>
-            [% agg.title | html %]
-          </option>
+          <option value="[% agg.value | html %]"[% IF agg.checked %] selected="selected"[% END %]>[% agg.title | html %]</option>
         [% END %]
       </select>
     </div>
