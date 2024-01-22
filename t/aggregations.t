@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 83;
+use Test::More tests => 85;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -16,7 +16,7 @@ use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use Path::Tiny;
 use URI;
-use YAML qw/DumpFile LoadFile/;
+use YAML qw/DumpFile LoadFile Dump Load/;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf-8)";
@@ -250,9 +250,21 @@ $site->process_autoimport_files;
     is_deeply(\@got, \@expect);
 }
 
+{
+    my $node = $site->nodes
+      ->update_or_create_from_params({
+                                      uri => 'pallino',
+                                      canonical_title => "Pallino",
+                                      attached_uris => '/aggregation/fmx-2 /series/fmx',
+                                     });
+    is($node->serialize->{attached_uris}, "/series/fmx\n/aggregation/fmx-2");
+}
+
+
 my $dump = $site->serialize_site;
 $site->delete;
 {
+    my $deep_copy = Load(Dump($dump));
     my @save = @{$dump->{aggregations}};
     my $newsite = $schema->resultset('Site')->deserialize_site($dump);
     is scalar(@save), 3;
@@ -260,4 +272,6 @@ $site->delete;
     is $save[2]{publication_date}, "Never";
     is_deeply $newsite->serialize_aggregations, \@save;
     diag Dumper(\@save);
+    my $fresh_dump = $newsite->serialize_site;
+    is_deeply $fresh_dump, $deep_copy or die Dumper({ new => $fresh_dump, old => $deep_copy });
 }

@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
-use Test::More tests => 111;
+use Test::More tests => 112;
 use Data::Dumper::Concise;
 use YAML qw/Dump Load/;
 
@@ -169,7 +169,8 @@ foreach my $id (qw/first second third/) {
                  );
     my $node = $site->nodes->update_or_create_from_params({ %params });
     is $node->name, "<em>pinco</em>";
-    is $node->titles->count, 2, "Found titles";
+    ok $site->titles->by_full_uri('/library/first');
+    is $node->titles->count, 2, "Found titles" or die;
     is $node->categories->count, 0, "Found 0 cats";
     $params{attached_uris} = "/special/third\n/library/first";
     my %copy = %params;

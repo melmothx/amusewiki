@@ -216,7 +216,6 @@ sub deserialize_site {
         }
     }
     $site->set_users(\@add);
-    $site->deserialize_nodes(\@nodes);
     foreach my $att (@attachments) {
         my $uri = delete $att->{uri};
         if (my $found = $site->attachments->by_uri($uri)) {
@@ -227,6 +226,7 @@ sub deserialize_site {
         }
     }
     $site->create_aggregation($_) for @aggregations;
+    $site->deserialize_nodes(\@nodes);
     $guard->commit;
     $site->discard_changes;
     return $site;

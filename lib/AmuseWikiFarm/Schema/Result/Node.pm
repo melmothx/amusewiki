@@ -407,52 +407,11 @@ sub update_from_params {
     $self->last_updated_epoch($now->epoch);
     $self->update;
     $self->update_full_path;
+
     if (defined $params->{attached_uris}) {
-        my @list = ref($params->{attached_uris})
-          ? (@{$params->{attached_uris}})
-          : (split(/\s+/, $params->{attached_uris}));
-        my (@titles, @cats, @aggs, @series);
-
-        # all of them have a shared api, so we can loop
-        my @objects = (
-                       {
-                        list => [],
-                        method => 'set_titles',
-                        rs => scalar($site->titles),
-                       },
-                       {
-                        list => [],
-                        method => 'set_categories',
-                        rs => scalar($site->categories),
-                       },
-                       {
-                        list => [],
-                        method => 'set_aggregations',
-                        rs => scalar($site->aggregations),
-                       },
-                       {
-                        list => [],
-                        method => 'set_aggregation_series',
-                        rs => scalar($site->aggregation_series),
-                       },
-                      );
-        my %done;
-      STRING:
-        foreach my $str (@list) {
-          OBJECT:
-            foreach my $obj (@objects) {
-                if (my $found = $obj->{rs}->by_full_uri($str)) {
-                    my $u = $found->full_uri;
-                    $done{$u}++;
-                    push @{$obj->{list}}, $found if $done{$u} == 1;
-                    next OBJECT;
-                }
-            }
-            Dlog_info { "Ignored $str while updating from params $_"} $params;
-        }
-
-        Dlog_info { "Done $_" } \%done;
-        foreach my $obj (@objects) {
+        my $res = $site->validate_node_attached_uris($params->{attached_uris});
+        foreach my $obj (@{$res->{objects}}) {
+            # here it will call set_aggregations, set_series_aggregations, set_categories, set_titles
             my $method = $obj->{method};
             $self->$method($obj->{list});
         }
