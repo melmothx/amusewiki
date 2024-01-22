@@ -4372,28 +4372,58 @@ sub serialize_site {
     return \%data;
 }
 
-sub _validate_attached_uris {
+sub validate_node_attached_uris {
     my ($self, $string) = @_;
     my @list = ref($string)
           ? (@$string)
           : (grep { length($_) } split(/\s+/, $string));
-    my $titles_rs = $self->titles;
-    my $cats_rs = $self->categories;
-    my (@done, @missing);
+
+    # all of them have a shared api, so we can loop
+    my @objects = (
+                   {
+                    list => [],
+                    method => 'set_titles',
+                    rs => scalar($self->titles),
+                   },
+                   {
+                    list => [],
+                    method => 'set_categories',
+                    rs => scalar($self->categories),
+                   },
+                   {
+                    list => [],
+                    method => 'set_aggregations',
+                    rs => scalar($self->aggregations),
+                   },
+                   {
+                    list => [],
+                    method => 'set_aggregation_series',
+                    rs => scalar($self->aggregation_series),
+                   },
+                  );
+    my %done;
+    my @missing;
   STRING:
     foreach my $str (@list) {
-        if (my $title = $titles_rs->by_full_uri($str)) {
-            push @done, $str;
+      OBJECT:
+        foreach my $obj (@objects) {
+            if (my $found = $obj->{rs}->by_full_uri($str)) {
+                my $u = $found->full_uri;
+                $done{$u}++;
+                push @{$obj->{list}}, $found if $done{$u} == 1;
+                next STRING;
+            }
         }
-        elsif (my $cat = $cats_rs->by_full_uri($str)) {
-            push @done, $str;
-        }
-        else {
-            push @missing, $str;
-        }
+        push @missing, $str;
+        log_info { "Ignored $str while validating node uris $string" };
     }
+    Dlog_debug { "Validation: $_ " }
+      +{
+        objects => [ map { $_->{method} . ' ' . scalar(@{$_->{list}}) }  @objects ],
+        fail => \@missing,
+       };
     return +{
-             ok => \@done,
+             objects => \@objects,
              fail => \@missing,
             };
 }
@@ -4406,8 +4436,7 @@ sub deserialize_nodes {
     my @fail;
     foreach my $node (@$nodes) {
         if (my $str = $node->{attached_uris}) {
-            my $validate = $self->_validate_attached_uris($str);
-            Dlog_debug { "$str => $_" } $validate;
+            my $validate = $self->validate_node_attached_uris($str);
             push @fail, @{$validate->{fail} || []};
         }
     }
