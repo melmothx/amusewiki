@@ -17,6 +17,12 @@
         <span class="sr-only">[% loc('Create a new text for this aggregation') %]</span>
       </a>
     [% END %]
+    <a href="[% c.uri_for_action('/bookbuilder/bulk', 'aggregation', aggregation.aggregation_id) | html %]"
+       title="[% loc('Add to the Bookbuilder') %]"
+       class="btn btn-default pull-right" role="button">
+      <span class="fa fa-book"></span>
+      <span class="sr-only">[% loc('Add to the Bookbuilder') %]</span>
+    </a>
   </h1>
 </div>
   <div class="well">

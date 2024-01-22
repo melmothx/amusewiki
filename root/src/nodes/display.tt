@@ -30,6 +30,14 @@
           <span class="sr-only">[% loc('Create a new child collection') %]</span>
         </a>
       [% END %]
+      [% IF node_linked_pages %]
+        <a href="[% c.uri_for_action('/bookbuilder/bulk', 'node', node.node_id) | html %]"
+          title="[% loc('Add to the Bookbuilder') %]"
+          class="btn btn-default pull-right" role="button" style="margin: 0 10px">
+          <span class="fa fa-book"></span>
+          <span class="sr-only">[% loc('Add to the Bookbuilder') %]</span>
+        </a>
+      [% END %]
     </h1>
   </div>
 </div>

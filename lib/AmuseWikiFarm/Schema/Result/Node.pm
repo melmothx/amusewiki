@@ -629,6 +629,13 @@ sub as_html {
     return $html;
 }
 
+sub muse_name {
+    my ($self, $lang) = @_;
+    my $desc = $self->description($lang);
+    my $name = $desc ? $desc->title_muse : $self->canonical_title || $self->uri;
+    return $name;
+}
+
 sub name {
     my ($self, $lang) = @_;
     if (my $desc = $self->description($lang)) {

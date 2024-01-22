@@ -150,6 +150,47 @@ sub clear :Chained('root') :PathPart('clear') :Args(0) {
     $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
 }
 
+sub bulk :Chained('root') :PathPart('bulk') :Args(2) {
+    my ($self, $c, $type, $id) = @_;
+    my $bb   = $c->stash->{bb};
+    my $site = $c->stash->{site};
+    if ($id =~ m/\A[0-9]+\z/) {
+        my @list;
+        my ($found, $bulk_name);
+        if ($type eq 'aggregation') {
+            if (my $agg = $site->aggregations->find($id)) {
+                $found = $c->uri_for_action('/aggregation/aggregation', $agg->uri);
+                $bulk_name = $agg->final_name;
+                foreach my $title ($agg->titles({ public_only => 1 })) {
+                    push @list, $title->uri;
+                }
+            }
+        }
+        elsif ($type eq 'node') {
+            if (my $node = $site->nodes->find($id)) {
+                $found = $c->uri_for_action('/nodes/display', $node->uri);
+                $bulk_name = $node->muse_name($c->stash->{current_locale_code});
+                foreach my $title ($node->titles->sorted->published_all) {
+                    push @list, $title->uri;
+                }
+            }
+        }
+        if ($found) {
+            if (@list) {
+                $bb->add_text($_) for @list;
+                if ($bulk_name and !$bb->title) {
+                    $bb->title($bulk_name);
+                }
+                $self->save_session($c);
+                log_debug { "All ok" };
+                $c->flash(status_msg => 'BOOKBUILDER_ADDED_BULK');
+            }
+            return $c->response->redirect($found);
+        }
+    }
+    $c->detach('/not_found');
+}
+
 sub add :Chained('root') :PathPart('add') :Args(1) {
     my ( $self, $c, $text ) = @_;
     my $bb   = $c->stash->{bb};
