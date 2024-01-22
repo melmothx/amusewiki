@@ -1866,6 +1866,7 @@ sub import_text_from_html_params {
     # populate the file with the parameters
     open (my $fh, '>:encoding(utf-8)', $file) or die "Couldn't open $file $!";
 
+    my %done;
     foreach my $directive (qw/title subtitle author LISTtitle SORTauthors
                               SORTtopics date uid cat
                               slides
@@ -1879,7 +1880,9 @@ sub import_text_from_html_params {
                              /,
                            map { $_->{header} } @{ $self->custom_category_types || [] }
                           ) {
-        $self->_add_directive($fh, $directive, $params->{$directive});
+        $self->_add_directive($fh, $directive, $params->{$directive}) unless $done{$directive};
+        # avoid duplicate if the custom category overrides the built-in
+        $done{$directive}++
     }
     # add the notes
     foreach my $field (qw/notes teaser/) {

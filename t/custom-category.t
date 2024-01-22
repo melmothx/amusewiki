@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 223;
+use Test::More tests => 225;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -356,4 +356,26 @@ foreach my $text ($site->titles) {
     ok $cc->assign_xapian_custom_slot, "Assigned xapian custom slot";
     is $cc->xapian_custom_slot, 4;
     is $cc->generate_index, 1, "Generate index has been turned on";
+}
+
+{
+    # conflict with built-in
+    my $cc = $site->site_category_types->create({
+                                                 category_type => 'publisher',
+                                                 active => 1,
+                                                 priority => 1,
+                                                 name_singular => 'Publisher',
+                                                 name_plural => 'Publishers',
+                                                 description => "Publisher",
+                                                 generate_index => 1,
+                                                });
+    $site = $site->get_from_storage;
+    my ($rev) = $site->create_new_text({
+                                        title => "Pizza pizzosa",
+                                        textbody => 'Hey',
+                                        publisher => "Publisher",
+                                       }, "text");
+    diag $rev->muse_body;
+    like $rev->muse_body, qr{#publisher Publisher};
+    unlike $rev->muse_body, qr{#publisher Publisher.*#publisher Publisher}s;
 }
