@@ -200,6 +200,9 @@
                   <li style="cursor: move" class="list-group-item">
                     [% title.author_title %]
                     <input type="hidden" name="titles" value="[% title.uri %]" />
+                    <span class="remove-item pull-right" style="cursor: pointer">
+                      <i class="text-danger fa fa-trash fa-border fa-lg"></i>
+                    </span>
                   </li>
                 [% END %]
               </ul>
@@ -208,9 +211,14 @@
         </div>
       </div>
     [% END %]
-    [% IF c.request.query_params.add_text %]
-      <input type="hidden" name="titles" value="[% c.request.query_params.add_text | html %]" />
-    [% END %]
+      <div class="form-group">
+        <label class="col-sm-2 control-label">[% loc('Add text') %]</label>
+        <div class="col-sm-10">
+          <span class="add-title-loading fa fa-spinner fa-spin fa-2x" aria-hidden="true"></span>
+          <input id="titles" type="hidden" name="titles" value="[% c.request.query_params.add_text | html %]" />
+        </div>
+      </div>
+    </div>
     <div class="text-center">
       <button type="submit" name="update_button" class="btn btn-default">[% loc('Update') %]</button>
       <span> </span>
@@ -219,6 +227,16 @@
               name="and_create_text" value="1">
         [% loc('Update and create new text') %]
       </button>
+      <span> </span>
+      <a
+          [% IF aggregation.aggregation_uri %]
+              href="[% c.uri_for_action('/aggregation/aggregation', aggregation.aggregation_uri) %]"
+          [% ELSE %]
+              href="[% c.uri_for_action('/aggregation/manage') %]"
+          [% END %]
+          class="btn btn-default">
+        [% loc('Cancel') %]
+      </a>
     </div>
   </form>
 </div>
@@ -229,6 +247,25 @@
 <script>
  $(document).ready(function(data) {
      $('#aggregation-titles').sortable();
+     $.get('/api/titles', function(data) {
+         var dropdown = $('<select>', { "name": "titles", "class": "form-control" });
+         dropdown.prop('multiple', true);
+         for (var i = 0; i < data.length; i++) {
+             dropdown.append($('<option>', { "value": data[i].uri })
+                 .text(data[i].label));
+         }
+         var el = $('#titles');
+         if (el.val()) {
+             dropdown.val(el.val());
+         }
+         el.parent().append(dropdown);
+         dropdown.select2();
+         el.remove();
+         $('.add-title-loading').remove();
+     });
+     $('.remove-item').on('click', function() {
+         $(this).closest('li').remove();
+     });
      $('.ajax-check-uri').on('keyup', function() {
          var el = $(this);
          var query = {
