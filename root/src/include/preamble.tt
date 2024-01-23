@@ -165,7 +165,7 @@
                       <div id="collection-editor">
                       </div>
                       <a href="[% c.uri_for_action('/nodes/node_root', { add_text => text.full_uri }) | html %]">
-                        <small>[% loc('Do you want to add it to a new one?') %]</small>
+                        <small>[% loc('Missing? Create one') %]</small>
                       </a>
                     </td>
                   </tr>
@@ -225,7 +225,7 @@
                       <div id="annotation-editor-aggregations">
                       </div>
                       <a href="[% c.uri_for_action('/aggregation/edit', { add_text => text.uri }) | html %]">
-                        <small>[% loc('Do you want to add it to a new one?') %]</small>
+                        <small>[% loc('Missing? Create one') %]</small>
                       </a>
                     </td>
                     <td style="width: 100px">

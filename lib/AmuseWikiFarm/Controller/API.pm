@@ -1,4 +1,5 @@
 package AmuseWikiFarm::Controller::API;
+use utf8;
 use Moose;
 use namespace::autoclean;
 
@@ -362,6 +363,26 @@ sub collections :Chained('api') :PathPart('collections') :Args(0) {
     my $out = [ $c->stash->{site}->nodes->sorted
                 ->search(undef, { columns => [qw/node_id full_path uri canonical_title/] })->hri ];
     $c->stash(json => $out);
+    $c->detach($c->view('JSON'));
+}
+
+sub titles :Chained('api') :PathPart('titles') :Args(0) {
+    my ($self, $c) = @_;
+    my @all = $c->stash->{site}->titles->texts_only->status_is_published
+      ->search(undef, {
+                       columns => [qw/uri title author/],
+                       order_by => [qw/sorting_pos/],
+                       result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                      })->all;
+    foreach my $i (@all) {
+        if ($i->{author}) {
+            $i->{label} = "$i->{author} — $i->{title} ($i->{uri})";
+        }
+        else {
+            $i->{label} = "$i->{title} ($i->{uri})";
+        }
+    }
+    $c->stash(json => \@all);
     $c->detach($c->view('JSON'));
 }
 
