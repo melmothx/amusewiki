@@ -57,14 +57,30 @@ sub check_existing_uri :Chained('api') :PathPart('check-existing-uri') :Args(0) 
     my ($self, $c) = @_;
     my %out;
     if (my $uri = $c->request->params->{uri}) {
+        my $type = $c->request->params->{type} || 'title';
+        my $site = $c->stash->{site};
         # check if valid
         my $cleaned = AmuseWikiFarm::Utils::Amuse::muse_naming_algo($uri);
         if ($uri eq $cleaned) {
-            if ($c->stash->{site}->titles->search({ uri => "$uri" })->count) {
+            my $exists;
+            if ($type eq 'title') {
+                $exists = $site->titles->by_uri($uri)->count;
+            }
+            elsif ($type eq 'aggregation_series') {
+                $exists = $site->aggregation_series->by_uri($uri)->count;
+            }
+            elsif ($type eq 'aggregation') {
+                $exists = $site->aggregations->by_uri($uri)->count;
+            }
+
+            if ($exists) {
                 $out{error} = $c->loc("Such URI already exists");
             }
-            else {
+            elsif (defined $exists) {
                 $out{success} = $uri;
+            }
+            else {
+                $out{error} = $c->loc("Bad type. This is a bug");
             }
         }
         else {

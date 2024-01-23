@@ -21,16 +21,29 @@
     [% ELSE %]
     <div class="form-group">
       <label class="col-sm-2 control-label" for="aggregation_series_uri">URI</label>
-      <div class="col-sm-10">
+      <div class="col-sm-7">
         <input type="text"
-               class="form-control"
+               class="form-control ajax-check-uri"
                id="aggregation_series_uri"
+               data-uri-type="aggregation_series"
+               data-check-target="[% c.uri_for_action('/api/check_existing_uri') | html %]"
                name="aggregation_series_uri"
-               pattern="[0-9a-z][0-9a-z-]{3,}" required>
+               pattern="[0-9a-z-]{3,}" required>
+        <small>
+          [% loc('Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase characters and digits, optionally separated by a hyphen, e.g. [_1]', 'my-uri-1') %]
+        </small>
       </div>
-      <small>
-        [% loc('Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase characters and digits, optionally separated by a hyphen, e.g. [_1]', 'my-uri-1') %]
-      </small>
+      <div class="col-sm-3">
+        <div class="check-success" style="display:none; color:green">
+          <i class="fa fa-check"></i>
+          [% loc('URI is available and valid') %]
+        </div>
+        <div class="check-failure" style="display:none">
+          <i class="fa fa-warning" style="color:red">
+          </i>
+          <span class="check-message" style="color:red"></span>
+        </div>
+      </div>
     </div>
     [% END %]
     <div class="form-group">
@@ -95,5 +108,24 @@
 <script>
  $(document).ready(function(data) {
      $('#aggregation-titles').sortable();
+     $('.ajax-check-uri').on('keyup', function() {
+         var el = $(this);
+         var query = {
+             "uri": el.val(),
+             "type": el.data('uri-type'),
+         };
+         console.log("here");
+         $.post(el.data('check-target'), query, function(data) {
+             $('.check-failure').hide();
+             $('.check-success').hide();
+             if (data.success) {
+                 $('.check-success').show();
+             }
+             else {
+                 $('.check-failure').find('.check-message').text(data.error)
+                 $('.check-failure').show();
+             }
+         });
+     });
  });
 </script>
