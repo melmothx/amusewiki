@@ -129,7 +129,8 @@
         [% IF site_has_collections %]
           <div class="panel panel-default">
             <div class="panel-body">
-              <form name="collection-editor" action="[% c.uri_for_action('nodes/title', text.id) %]"
+              <form id="inline_collection_editor"
+                    name="collection-editor" action="[% c.uri_for_action('nodes/title', text.id) %]"
                     method="POST">
                 <div class="text-center">
                   <strong>[% loc('Collections') %]</strong>
@@ -170,7 +171,7 @@
                   </tr>
                 </table>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary">
+                  <button name="update_title_nodes" type="submit" class="btn btn-primary">
                     [% loc('Update') %]
                   </button>
                 </div>
@@ -181,7 +182,8 @@
         [% IF site_has_aggregations %]
           <div class="panel panel-default">
             <div class="panel-body">
-              <form name="aggregate" action="[% c.uri_for_action('aggregation/title', text.id) %]"
+              <form name="aggregate" id="inline_aggregation_editor"
+                    action="[% c.uri_for_action('aggregation/title', text.id) %]"
                     method="POST">
                 <div class="text-center">
                   <strong>[% loc('Aggregations') %]</strong>
@@ -235,7 +237,7 @@
                   </tr>
                 </table>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary">
+                  <button name="update_title_aggregations" type="submit" class="btn btn-primary">
                     [% loc('Update') %]
                   </button>
                 </div>

@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 131;
+use Test::More tests => 154;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -355,10 +355,6 @@ $site->delete;
 
     ok $mech->follow_link(url_regex => qr{aggregate/edit\?series=});
     $mech->content_contains('name="aggregation_series_uri" value="serie-em-pallino-em"');
-
-    # TODO go back and try the other button (and create)
-
-
     $mech->submit_form(with_fields => {
                                        aggregation_uri => 'NEW Aggregation',
                                        issue => '#3',
@@ -367,14 +363,74 @@ $site->delete;
                        button => 'update_button',
                       );
     is $mech->uri->path, '/aggregation/new-aggregation';
-
     # inherited from the series:
     $mech->content_contains('<strong>Publication Place:</strong> &lt;em&gt;&quot;test&quot; &amp; &quot;test&quot;&lt;/em&gt;');
     $mech->content_contains('<strong>Publisher:</strong> &lt;em&gt;Test&lt;b&gt;');
     $mech->content_lacks('<em>Pallino</em>');
-    $mech->content_contains('Serie &lt;em&gt;Pallino&lt;/em&gt;');
+    $mech->content_contains('Serie &lt;em&gt;Pallino&lt;/em&gt; #3');
 
-    # TODO now try the other button (and create)
+    # now create a text in it.
+    ok $mech->follow_link(url_regex => qr{/action/text/new\?aggregation=});
+    $mech->submit_form(with_fields => {
+                                       title => 'New Text In Aggregation',
+                                       author => "Pippuzzo",
+                                      },
+                       button => 'go',
+                      );
+    my $title = $site->titles->by_uri('pippuzzo-new-text-in-aggregation')->first;
+    ok $title, "Title created";
+    ok $site->aggregations->with_title_uri('pippuzzo-new-text-in-aggregation')->count, "It already has aggregations";
 
-    # Test the create text
+    # Other flow, from series to text
+    $mech->get_ok('/aggregate/series');
+    $mech->submit_form(with_fields => {
+                                       aggregation_series_uri => 'Other <b>Serie',
+                                       aggregation_series_name => 'Other <b>Serie',
+                                       publication_place => '<b>"test" & "test"</b>',
+                                       publisher => '<b>Test<em>',
+                                      },
+                       button => 'and_create_aggregation');
+    is $mech->uri->path, '/aggregate/edit';
+    $mech->content_contains(q{name="aggregation_series_uri" value="other-b-serie"});
+    $mech->submit_form(with_fields => {
+                                       aggregation_uri => 'Other AGGREG',
+                                       issue => '#4',
+                                       sorting_pos => 1,
+                                      },
+                       button => 'and_create_text',
+                      );
+    is $mech->uri->path, '/action/text/new';
+    $mech->submit_form(with_fields => {
+                                       title => 'Other Text In Aggregation 2',
+                                       author => "Pippuzzo",
+                                      },
+                       button => 'go',
+                      );
+    my $title2 = $site->titles->by_uri('pippuzzo-other-text-in-aggregation-2')->first;
+    ok $title2, "Title created";
+    ok $site->aggregations->with_title_uri('pippuzzo-other-text-in-aggregation-2')->count, "It already has aggregations";
+
+    $mech->get_ok('/aggregation/fmx-1');
+    $mech->content_contains('category/author/author-one">Author one</a>,');
+    $mech->content_contains('category/topic/topic-one">Topic one</a>,');
+    ok $mech->follow_link(url_regex => qr{/bookbuilder/bulk/aggregation/});
+    is $mech->uri->path, '/aggregation/fmx-1';
+    $mech->content_contains('The texts were added to the bookbuilder');
+    $mech->get_ok('/bookbuilder?bare=1');
+    $mech->content_contains('/library/to-test-one');
+    $mech->get_ok('/library/to-test-one');
+    ok $mech->form_id('inline_aggregation_editor');
+    my $agg_id = $site->aggregations->with_title_uri('to-test-one')->first->aggregation_id;
+    $mech->tick(remove_aggregation => $agg_id);
+    ok $site->aggregations->with_title_uri('to-test-one')->find($agg_id);
+    $mech->click('update_title_aggregations');
+    ok !$site->aggregations->with_title_uri('to-test-one')->find($agg_id);
+
+    # this was attached above
+    my $title3 = $site->titles->by_uri('to-test-one')->first;
+    my $nid = $title3->nodes->first->node_id;
+    ok $mech->form_id('inline_collection_editor');
+    $mech->tick(remove_node => $nid);
+    $mech->click('update_title_nodes');
+    ok !$title3->nodes->count, "Collection removed";
 }
