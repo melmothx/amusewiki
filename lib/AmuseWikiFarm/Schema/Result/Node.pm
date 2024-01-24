@@ -420,11 +420,14 @@ sub update_from_params {
     # bumps the new ones.
     my $tree = $site->node_title_tree;
     my $self_node_id = $self->node_id;
+    Dlog_debug { "Tree is  $_"  } $tree;
     Dlog_debug { "Initial list of PMH records is $_"  } \@oai_pmh_record_ids;
+    Dlog_debug { "Nodes are  $_"  } [ keys %nodes ];
     foreach my $tree_spec (grep { $nodes{$_->{node_id}} } @{ $tree->{nodes} || []}) {
         Dlog_debug { "Updating $_" } $tree_spec;
         my @new_oai_pmh_records = $site->oai_pmh_records->by_title_id($tree_spec->{title_ids})->landing_pages_only->all;
         # this should clear the existing one and relink
+        log_debug { "Total new oai recs " . scalar(@new_oai_pmh_records) };
         $nodes{$tree_spec->{node_id}}->set_oai_pmh_records(\@new_oai_pmh_records);
         push @oai_pmh_record_ids, map { $_->oai_pmh_record_id } @new_oai_pmh_records;
     }

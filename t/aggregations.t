@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 154;
+use Test::More tests => 201;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -29,6 +29,10 @@ my $site_id = '0aggregation0';
 my $site = create_site($schema, $site_id);
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
+
+my $anon = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => $site->canonical);
+
 
 
 my $autoimport = path($site->autoimport_dir);
@@ -280,6 +284,11 @@ $site->delete;
     is $newsite->aggregations->count, 3;
     $newsite->bootstrap_archive({ full => 1, logger => sub { diag @_ } });
     $site = $newsite;
+    $site->update_db_from_tree;
+    while (my $j = $site->jobs->dequeue) {
+        $j->dispatch_job;
+        diag $j->logs;
+    }
 }
 
 {
@@ -297,12 +306,15 @@ $site->delete;
     $mech->content_contains(q{href="/aggregation/fmx-2"});
     $mech->content_lacks('<option value="pallino">', "Not offering to create a child from itself");
     $mech->content_contains('<option value="0">');
+    # before the update we don't expect new oai-records
+    my $last_checked = check_oai_pmh($site);
     $mech->submit_form(with_fields => {
                                        canonical_title => "Collection Pinco & Pallino <em>",
                                        attached_uris => "/series/fmx /aggregation/antology /library/to-test-one",
                                       },
                        button => 'update',
                       );
+    check_oai_pmh($site, $last_checked, 1, "After node update, oai-pmh bumped");
     $mech->get_ok('/node/pallino?bare=1');
     $mech->content_lacks('Pallino <em>');
     $mech->content_contains('Collection Pinco &amp; Pallino &lt;em&gt;');
@@ -317,6 +329,8 @@ $site->delete;
     $mech->content_contains('The texts were added to the bookbuilder');
     ok $mech->follow_link(url_regex => qr{/node\?node=pallino});
     $mech->content_contains(q{<option value="pallino" selected="selected">});
+    # reset
+    $last_checked = check_oai_pmh($site);
     $mech->submit_form(with_fields => {
                                        uri => 'Child Node',
                                        canonical_title => 'Child node',
@@ -324,6 +338,8 @@ $site->delete;
                                       });
     is $mech->uri->path, '/node/pallino/child-node';
     $mech->content_contains('For Marco #2');
+    check_oai_pmh($site, $last_checked, 0, "No update if no texts");
+
     ok $mech->follow_link(url_regex => qr{/action/text/new\?node=});
     $mech->content_contains('selected="selected">Collection Pinco &amp; Pallino &lt;em&gt; / Child node<');
     $mech->submit_form(with_fields => {
@@ -335,6 +351,7 @@ $site->delete;
     my $title = $site->titles->by_uri('pippo-new-text-in-collection')->first;
     ok $title, "Title created";
     ok $title->nodes->count, "It already has nodes";
+    check_oai_pmh($site, $last_checked, 0, "No update if text not finalized");
 }
 
 {
@@ -369,6 +386,8 @@ $site->delete;
     $mech->content_lacks('<em>Pallino</em>');
     $mech->content_contains('Serie &lt;em&gt;Pallino&lt;/em&gt; #3');
 
+    my $last_checked = check_oai_pmh($site);
+
     # now create a text in it.
     ok $mech->follow_link(url_regex => qr{/action/text/new\?aggregation=});
     $mech->submit_form(with_fields => {
@@ -380,6 +399,8 @@ $site->delete;
     my $title = $site->titles->by_uri('pippuzzo-new-text-in-aggregation')->first;
     ok $title, "Title created";
     ok $site->aggregations->with_title_uri('pippuzzo-new-text-in-aggregation')->count, "It already has aggregations";
+
+    check_oai_pmh($site, $last_checked, 0, "After aggregation update, oai-pmh not bumped, text not finalized");
 
     # Other flow, from series to text
     $mech->get_ok('/aggregate/series');
@@ -409,6 +430,7 @@ $site->delete;
     my $title2 = $site->titles->by_uri('pippuzzo-other-text-in-aggregation-2')->first;
     ok $title2, "Title created";
     ok $site->aggregations->with_title_uri('pippuzzo-other-text-in-aggregation-2')->count, "It already has aggregations";
+    check_oai_pmh($site, $last_checked, 0, "Text not finalized");
 
     $mech->get_ok('/aggregation/fmx-1');
     $mech->content_contains('category/author/author-one">Author one</a>,');
@@ -426,6 +448,9 @@ $site->delete;
     $mech->click('update_title_aggregations');
     ok !$site->aggregations->with_title_uri('to-test-one')->find($agg_id);
 
+    check_oai_pmh($site, $last_checked, 1, "After aggregation update, oai-pmh bumped, with texts");
+
+    $last_checked = check_oai_pmh($site, undef, 0, "Nothing new");
     # this was attached above
     my $title3 = $site->titles->by_uri('to-test-one')->first;
     my $nid = $title3->nodes->first->node_id;
@@ -433,4 +458,50 @@ $site->delete;
     $mech->tick(remove_node => $nid);
     $mech->click('update_title_nodes');
     ok !$title3->nodes->count, "Collection removed";
+    check_oai_pmh($site, $last_checked, 1, "After aggregation update, oai-pmh bumped, with texts");
+
+    $last_checked = check_oai_pmh($site, undef, 0, "Nothing new");
+
+    $mech->get_ok('/series/fmx');
+    $mech->follow_link(url_regex => qr{aggregate/series/\d+});
+    $mech->submit_form(with_fields => {
+                                       aggregation_series_name => 'Updated Name',
+                                       publication_place => '<em>"test" & "test"</em>',
+                                      },
+                       button => 'update_button');
+    check_oai_pmh($site, $last_checked, 1, "After serie update, oai-pmh bumped, with texts");
+
+    $last_checked = check_oai_pmh($site, undef, 0, "Resetting");
+
+    $mech->get_ok('/aggregation/fmx-1');
+    $mech->follow_link(url_regex => qr{aggregate/edit/\d+});
+    $mech->submit_form(with_fields => {
+                                       issue => 'Issue X',
+                                       publication_place => '<em>"test" & "test"</em>',
+                                       publication_date_year => 2023,
+                                       publication_date_month => 4,
+                                      },
+                       button => 'update_button');
+    check_oai_pmh($site, $last_checked, 1, "After aggregation update, oai-pmh bumped, with texts");
+}
+
+sub check_oai_pmh {
+    my ($s, $now, $expect_records, $msg) = @_;
+    sleep 1;
+    my $uri = URI->new($s->canonical_url);
+    $now ||= DateTime->now(time_zone => 'UTC');
+    $uri->path('/oai-pmh');
+    $uri->query_form({ from => $now->iso8601 . 'Z', metadataPrefix => 'oai_dc', verb => 'ListRecords' });
+    $anon->get_ok($uri);
+    diag $anon->content;
+    diag $msg if $msg;
+    if ($expect_records) {
+        $anon->content_lacks('noRecordsMatch', "Records found in OAI-PMH") or die $anon->content;
+        $anon->content_contains('<dc:identifier>');
+    }
+    else {
+        $anon->content_contains('noRecordsMatch', "No records found in OAI-PMH") or die $anon->content;
+        $anon->content_lacks('<dc:identifier>');
+    }
+    return $now;
 }
