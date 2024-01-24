@@ -87,8 +87,8 @@ msgid ""
 msgstr ""
 "Una lista de enlaces y etiquetas para insertar\n"
 "            en la barra superior. Uno por línea, primero la url\n"
-"            separado por un espacio, ej.: \"http://prueba.me Sitio de prueba"
-"\""
+"            separado por un espacio, ej.: \"http://prueba.me Sitio de "
+"prueba\""
 
 #. (location)
 msgid "A new text has been created at %1"
@@ -153,6 +153,9 @@ msgstr ""
 msgid "Add sections to the bookbuilder"
 msgstr "Agregar secciones al creador de libros"
 
+msgid "Add text"
+msgstr ""
+
 msgid "Add the OPDS URL"
 msgstr "Agregar URL del OPDS"
 
@@ -166,6 +169,9 @@ msgid "Add this text to the bookbuilder"
 msgstr "Agrega este texto al creador de libros"
 
 msgid "Add to colophon"
+msgstr ""
+
+msgid "Add to the Bookbuilder"
 msgstr ""
 
 msgid ""
@@ -198,6 +204,15 @@ msgstr ""
 "  de cada texto borrado, donde puedes purgarlo."
 
 msgid "Age:"
+msgstr ""
+
+msgid "Aggregation"
+msgstr ""
+
+msgid "Aggregation editing is disabled (autoimport file present)"
+msgstr ""
+
+msgid "Aggregations"
 msgstr ""
 
 msgid "Alias"
@@ -283,6 +298,18 @@ msgstr ""
 msgid "Annotations for %1"
 msgstr ""
 
+msgid "Annotations, collections, aggregations"
+msgstr ""
+
+msgid "Anthologies"
+msgstr ""
+
+msgid "Anthologies and periodicals"
+msgstr ""
+
+msgid "Anthology Name"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Actualmente no hay soporte para Apache"
 
@@ -302,6 +329,9 @@ msgid "As cover in the header"
 msgstr ""
 
 msgid "As regular image in the body"
+msgstr ""
+
+msgid "Assign text to aggregations"
 msgstr ""
 
 msgid "Assign text to collections"
@@ -356,6 +386,9 @@ msgstr "Volver al texto"
 
 msgid "Bad request"
 msgstr "Petición errónea"
+
+msgid "Bad type. This is a bug"
+msgstr ""
 
 msgid "Beamer color theme"
 msgstr "Color de tema de Beamer"
@@ -447,6 +480,9 @@ msgstr "Nombre canónico"
 msgid "Categories"
 msgstr "Categorías"
 
+msgid "Category editing is disabled (autoimport file present)"
+msgstr ""
+
 #. ($site->canonical)
 #. (site.canonical)
 msgid "Category types for %1"
@@ -521,6 +557,9 @@ msgstr "Cerrar"
 msgid "Code"
 msgstr ""
 
+msgid "Collection"
+msgstr ""
+
 msgid "Collection created"
 msgstr ""
 
@@ -583,10 +622,19 @@ msgstr "No se pudo crear eso"
 msgid "Create"
 msgstr "Crear"
 
+msgid "Create a new aggregation"
+msgstr ""
+
+msgid "Create a new aggregation for this series"
+msgstr ""
+
 msgid "Create a new annotation."
 msgstr ""
 
 msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
+
+msgid "Create a new child collection"
 msgstr ""
 
 msgid "Create a new format"
@@ -595,8 +643,17 @@ msgstr ""
 msgid "Create a new librarian"
 msgstr "Crear un nuevo bibliotecario"
 
+msgid "Create a new series"
+msgstr ""
+
 msgid "Create a new special page"
 msgstr "Crear una nueva página especial"
+
+msgid "Create a new text for this aggregation"
+msgstr ""
+
+msgid "Create a new text for this collection"
+msgstr ""
 
 msgid "Create a new user"
 msgstr "Crear una nueva usuaria"
@@ -643,6 +700,9 @@ msgstr "Fecha"
 
 msgid "Date of the original publication"
 msgstr "Fecha de la publicación original"
+
+msgid "Day"
+msgstr ""
 
 msgid "Default"
 msgstr ""
@@ -770,7 +830,10 @@ msgstr ""
 msgid "Edit"
 msgstr "Editar"
 
-msgid "Edit annotations"
+msgid "Edit Aggregation"
+msgstr ""
+
+msgid "Edit Series"
 msgstr ""
 
 msgid "Edit attachment description"
@@ -1168,6 +1231,9 @@ msgstr "Un factor de división más alto significa márgenes más delgados"
 msgid "Highest priority format"
 msgstr ""
 
+msgid "Home"
+msgstr ""
+
 msgid "How are you going to access Git?"
 msgstr ""
 
@@ -1421,6 +1487,9 @@ msgstr ""
 "  casi el mismo para todas las aplicaciones. Todo lo que tienes que hacer\n"
 "  es agregar %1 a las bibliotecas en red."
 
+msgid "Inherited from the series"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Elementos en línea"
 
@@ -1434,6 +1503,9 @@ msgid "Invalid ID"
 msgstr ""
 
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid data!"
 msgstr ""
 
 msgid "Invalid email"
@@ -1453,6 +1525,9 @@ msgstr ""
 
 msgid "Invalid username"
 msgstr "Nombre de usuaria/o no válido"
+
+msgid "Issue"
+msgstr ""
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -1660,6 +1735,9 @@ msgstr "Haz todos los enlaces activos"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
+msgid "Manage aggregations"
+msgstr ""
+
 msgid "Manage categories"
 msgstr ""
 
@@ -1700,6 +1778,9 @@ msgstr "El caracter que no se encuentra se reportará"
 msgid "Missing redirection"
 msgstr "Falta redirección"
 
+msgid "Missing? Create one"
+msgstr ""
+
 msgid "Mobile"
 msgstr "Móvil"
 
@@ -1714,6 +1795,9 @@ msgstr "Wiki moderada"
 
 msgid "Mono font"
 msgstr "Tipografía monoespaciada"
+
+msgid "Month"
+msgstr ""
 
 msgid "More"
 msgstr "Más"
@@ -1806,6 +1890,9 @@ msgstr "No se ha agregado un texto todavía"
 msgid "None"
 msgstr "Ninguno"
 
+msgid "Not a periodical"
+msgstr ""
+
 #. ($c->loc('Save')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
@@ -1893,6 +1980,9 @@ msgstr "O provee un archivo HTML para subir"
 msgid "Or wrap it in"
 msgstr "O termínalo"
 
+msgid "Order"
+msgstr ""
+
 msgid "Ordered List"
 msgstr "Lista enumerada"
 
@@ -1969,6 +2059,9 @@ msgstr ""
 msgid "Part of"
 msgstr ""
 
+msgid "Part of:"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Parte, solo para grandes libros"
 
@@ -1998,6 +2091,9 @@ msgstr "Payload"
 
 msgid "Pending revisions"
 msgstr "Revisiones pendientes"
+
+msgid "Periodicals"
+msgstr ""
 
 msgid "Picture"
 msgstr "Imagen"
@@ -2220,6 +2316,12 @@ msgstr "Producir diapositivas"
 msgid "Produced"
 msgstr "Producido"
 
+msgid "Publication Date"
+msgstr ""
+
+msgid "Publication Place"
+msgstr ""
+
 msgid "Publication date"
 msgstr "Fecha de publicación"
 
@@ -2325,6 +2427,9 @@ msgstr ""
 
 msgid "Recheck"
 msgstr "Volver a revisar"
+
+msgid "Record deleted!"
+msgstr ""
 
 msgid "Redirections"
 msgstr "Redirecciones"
@@ -2496,6 +2601,9 @@ msgstr "Sección"
 msgid "Section and subsection. If one side document: section."
 msgstr "Sección y subsección. Si es documento de un lado: sección."
 
+msgid "See all"
+msgstr ""
+
 msgid "See here for more details."
 msgstr "Ver aquí para más detalles."
 
@@ -2539,10 +2647,16 @@ msgstr "Campos separados del footer"
 msgid "Separate header fields"
 msgstr "Campos separados del encabezado"
 
+msgid "Series"
+msgstr ""
+
 msgid "Series Name"
 msgstr ""
 
 msgid "Series Number"
+msgstr ""
+
+msgid "Series or Periodical"
 msgstr ""
 
 msgid "Session sharing"
@@ -2650,6 +2764,9 @@ msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 "Disculpa, hay muchos procesos pendientes, ¡intenta más tarde por favor!"
 
+msgid "Sorry, you can't remove this, please ask an admin"
+msgstr ""
+
 msgid "Sorting:"
 msgstr ""
 
@@ -2715,9 +2832,6 @@ msgstr "Subtítulo"
 
 msgid "Such URI already exists"
 msgstr ""
-
-msgid "Such an URI already exists"
-msgstr "Ya existe esa URI"
 
 msgid ""
 "Such an header will unpublish the text and put a\n"
@@ -2891,6 +3005,9 @@ msgstr "El texto para mostrar en la previsualización del home"
 msgid "The text was added to the bookbuilder"
 msgstr "El texto fue agregado al creador de libros"
 
+msgid "The texts were added to the bookbuilder"
+msgstr ""
+
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -2931,7 +3048,9 @@ msgstr ""
 msgid "These texts are missing the unique id."
 msgstr "Estos textos no tienen el id único."
 
-msgid "They can be texts, special texts, authors or topics."
+msgid ""
+"They can be texts, special texts, authors, topics, custom categories, "
+"aggregations and series."
 msgstr ""
 
 msgid ""
@@ -3182,6 +3301,13 @@ msgstr ""
 msgid "Unique ID for the text"
 msgstr "ID único para el texto"
 
+#. ('my-uri-1')
+#. ("my-uri-1")
+msgid ""
+"Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase "
+"characters and digits, optionally separated by a hyphen, e.g. %1"
+msgstr ""
+
 msgid "Unlimited"
 msgstr "Ilimitado"
 
@@ -3205,8 +3331,20 @@ msgstr "Actualizar"
 msgid "Update account info"
 msgstr "Actualizar información de la cuenta"
 
+msgid "Update aggregation"
+msgstr ""
+
+msgid "Update and create new aggregation"
+msgstr ""
+
+msgid "Update and create new text"
+msgstr ""
+
 msgid "Update category description"
 msgstr "Actualizar descripción de categoría"
+
+msgid "Update series"
+msgstr ""
 
 msgid "Update to current settings"
 msgstr "Actualizar a opciones actuales"
@@ -3401,6 +3539,9 @@ msgstr "Nombre de usuaria/o o contraseña equivocado"
 
 msgid "XeLaTeX source"
 msgstr "Fuente XeLaTeX"
+
+msgid "Year"
+msgstr "Año"
 
 msgid "Yes"
 msgstr "Sí"
@@ -3738,6 +3879,9 @@ msgstr ""
 "    mientras se estaba editando, pero todavía está ahí, en caso de que\n"
 "    alguien quiera modificarla cuando edite un texto."
 
+#~ msgid "Such an URI already exists"
+#~ msgstr "Ya existe esa URI"
+
 #~ msgid "IRC channel on freenode"
 #~ msgstr "Canal IRC en freenode"
 
@@ -3852,9 +3996,6 @@ msgstr ""
 
 #~ msgid "Show options"
 #~ msgstr "Mostrar opciones"
-
-#~ msgid "Year"
-#~ msgstr "Año"
 
 #~ msgid "Attached PDFs"
 #~ msgstr "PDFs adjuntados"

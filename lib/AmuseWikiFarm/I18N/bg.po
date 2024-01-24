@@ -155,6 +155,9 @@ msgstr ""
 msgid "Add sections to the bookbuilder"
 msgstr "Добави раздели към книгострояча"
 
+msgid "Add text"
+msgstr ""
+
 msgid "Add the OPDS URL"
 msgstr "Добави URL-а на OPDS"
 
@@ -168,6 +171,9 @@ msgid "Add this text to the bookbuilder"
 msgstr "Добави този текст към книгострояча"
 
 msgid "Add to colophon"
+msgstr ""
+
+msgid "Add to the Bookbuilder"
 msgstr ""
 
 msgid ""
@@ -202,6 +208,15 @@ msgstr ""
 
 msgid "Age:"
 msgstr "Години:"
+
+msgid "Aggregation"
+msgstr ""
+
+msgid "Aggregation editing is disabled (autoimport file present)"
+msgstr ""
+
+msgid "Aggregations"
+msgstr ""
 
 msgid "Alias"
 msgstr "Пренасочване"
@@ -287,6 +302,18 @@ msgstr ""
 msgid "Annotations for %1"
 msgstr ""
 
+msgid "Annotations, collections, aggregations"
+msgstr ""
+
+msgid "Anthologies"
+msgstr ""
+
+msgid "Anthologies and periodicals"
+msgstr ""
+
+msgid "Anthology Name"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Apache не се поддържа в момента"
 
@@ -307,6 +334,9 @@ msgstr "Като снимка на корицата в заглавната ча
 
 msgid "As regular image in the body"
 msgstr "Като изображение в главната част"
+
+msgid "Assign text to aggregations"
+msgstr ""
 
 msgid "Assign text to collections"
 msgstr ""
@@ -363,6 +393,9 @@ msgstr "Обратно към текста"
 
 msgid "Bad request"
 msgstr "Грешна заявка"
+
+msgid "Bad type. This is a bug"
+msgstr ""
 
 msgid "Beamer color theme"
 msgstr "Beamer тема за цветовете"
@@ -460,6 +493,9 @@ msgstr "Основно име"
 msgid "Categories"
 msgstr "Категории"
 
+msgid "Category editing is disabled (autoimport file present)"
+msgstr ""
+
 #. ($site->canonical)
 #. (site.canonical)
 msgid "Category types for %1"
@@ -537,6 +573,9 @@ msgstr "Затвори"
 msgid "Code"
 msgstr "Код"
 
+msgid "Collection"
+msgstr ""
+
 msgid "Collection created"
 msgstr ""
 
@@ -596,6 +635,12 @@ msgstr "Не беше възможно да се построи това"
 msgid "Create"
 msgstr "Създай"
 
+msgid "Create a new aggregation"
+msgstr ""
+
+msgid "Create a new aggregation for this series"
+msgstr ""
+
 msgid "Create a new annotation."
 msgstr ""
 
@@ -603,14 +648,26 @@ msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 "Създай нова категория. Моля използвай само малки букви по ASCII стандарта"
 
+msgid "Create a new child collection"
+msgstr ""
+
 msgid "Create a new format"
 msgstr "Създай нов формат"
 
 msgid "Create a new librarian"
 msgstr "Създай нов библиотекар"
 
+msgid "Create a new series"
+msgstr ""
+
 msgid "Create a new special page"
 msgstr "Създай нова, специална страница"
+
+msgid "Create a new text for this aggregation"
+msgstr ""
+
+msgid "Create a new text for this collection"
+msgstr ""
 
 msgid "Create a new user"
 msgstr "Създай нов потребител"
@@ -659,6 +716,9 @@ msgstr "Дата"
 
 msgid "Date of the original publication"
 msgstr "Дата на първоначалното публикуване"
+
+msgid "Day"
+msgstr ""
 
 msgid "Default"
 msgstr ""
@@ -789,7 +849,10 @@ msgstr "ETA"
 msgid "Edit"
 msgstr "Редактирай"
 
-msgid "Edit annotations"
+msgid "Edit Aggregation"
+msgstr ""
+
+msgid "Edit Series"
 msgstr ""
 
 msgid "Edit attachment description"
@@ -1183,6 +1246,9 @@ msgstr ""
 msgid "Highest priority format"
 msgstr ""
 
+msgid "Home"
+msgstr ""
+
 msgid "How are you going to access Git?"
 msgstr "Как ще влезеш в Git?"
 
@@ -1465,6 +1531,9 @@ msgstr ""
 "  една и съща за всички приложения. Единственото, което трябва да направиш,\n"
 "  е да добавиш %1 към мрежовата библиотека."
 
+msgid "Inherited from the series"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Вградени елементи"
 
@@ -1478,6 +1547,9 @@ msgid "Invalid ID"
 msgstr ""
 
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid data!"
 msgstr ""
 
 msgid "Invalid email"
@@ -1497,6 +1569,9 @@ msgstr ""
 
 msgid "Invalid username"
 msgstr "Невалидно потребителско име"
+
+msgid "Issue"
+msgstr ""
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -1714,6 +1789,9 @@ msgstr "Активирай всички линкове"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Промени всички неразделящи празни пространства да са видими като ~~"
 
+msgid "Manage aggregations"
+msgstr ""
+
 msgid "Manage categories"
 msgstr "Управление на категории"
 
@@ -1758,6 +1836,9 @@ msgstr ""
 msgid "Missing redirection"
 msgstr "Липсва пренасочване"
 
+msgid "Missing? Create one"
+msgstr ""
+
 msgid "Mobile"
 msgstr "Mobile"
 
@@ -1772,6 +1853,9 @@ msgstr "Модерирано уики"
 
 msgid "Mono font"
 msgstr "Mono шрифт"
+
+msgid "Month"
+msgstr ""
 
 msgid "More"
 msgstr "Повече"
@@ -1868,6 +1952,9 @@ msgstr "Все още няма нито един добавен текст"
 msgid "None"
 msgstr "Нито едно"
 
+msgid "Not a periodical"
+msgstr ""
+
 #. ($c->loc('Save')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
@@ -1961,6 +2048,9 @@ msgstr "Или предостави HTML файл за качване"
 msgid "Or wrap it in"
 msgstr "Или го обвий в"
 
+msgid "Order"
+msgstr ""
+
 msgid "Ordered List"
 msgstr "Подреден списък"
 
@@ -2039,6 +2129,9 @@ msgstr "Част и глава. Ако документът е едностра�
 msgid "Part of"
 msgstr "Част от"
 
+msgid "Part of:"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Част (само за по-големи книги)"
 
@@ -2068,6 +2161,9 @@ msgstr "Съдържание"
 
 msgid "Pending revisions"
 msgstr "Неуредени ревизии"
+
+msgid "Periodicals"
+msgstr ""
 
 msgid "Picture"
 msgstr "Снимка"
@@ -2296,6 +2392,12 @@ msgstr "Създай слайдове."
 msgid "Produced"
 msgstr "Произведено"
 
+msgid "Publication Date"
+msgstr ""
+
+msgid "Publication Place"
+msgstr ""
+
 msgid "Publication date"
 msgstr "Дата на публикация"
 
@@ -2404,6 +2506,9 @@ msgstr "Построяване наново"
 
 msgid "Recheck"
 msgstr "Провери отново"
+
+msgid "Record deleted!"
+msgstr ""
 
 msgid "Redirections"
 msgstr "Пренасочвания"
@@ -2575,6 +2680,9 @@ msgstr "Раздел"
 msgid "Section and subsection. If one side document: section."
 msgstr "Раздел и подраздел. Ако документът е едностранен: раздел."
 
+msgid "See all"
+msgstr ""
+
 msgid "See here for more details."
 msgstr "Погледни тук за повече детайли."
 
@@ -2618,10 +2726,16 @@ msgstr "Отделни полета за бележки под линията"
 msgid "Separate header fields"
 msgstr "Отделни полета за заглавни части"
 
+msgid "Series"
+msgstr ""
+
 msgid "Series Name"
 msgstr ""
 
 msgid "Series Number"
+msgstr ""
+
+msgid "Series or Periodical"
 msgstr ""
 
 msgid "Session sharing"
@@ -2728,6 +2842,9 @@ msgstr ""
 "Съжаляваме, в момента има прекалено много неуредени задачи, моля, опитай "
 "отново по-късно!"
 
+msgid "Sorry, you can't remove this, please ask an admin"
+msgstr ""
+
 msgid "Sorting:"
 msgstr "Сортиране:"
 
@@ -2793,9 +2910,6 @@ msgstr "Подзаглавие"
 
 msgid "Such URI already exists"
 msgstr ""
-
-msgid "Such an URI already exists"
-msgstr "Такъв URI вече съществува"
 
 msgid ""
 "Such an header will unpublish the text and put a\n"
@@ -2976,6 +3090,9 @@ msgstr "Текстът, който ще бъде видим в прегледа 
 msgid "The text was added to the bookbuilder"
 msgstr "Текстът беше добавен към книгострояча"
 
+msgid "The texts were added to the bookbuilder"
+msgstr ""
+
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -3014,8 +3131,10 @@ msgstr "Има още неуредени ревизии"
 msgid "These texts are missing the unique id."
 msgstr "Уникално ID липсва в този текст."
 
-msgid "They can be texts, special texts, authors or topics."
-msgstr "Могат да бъдат текстове, специални текстове, автори или теми."
+msgid ""
+"They can be texts, special texts, authors, topics, custom categories, "
+"aggregations and series."
+msgstr ""
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
@@ -3268,6 +3387,13 @@ msgstr "За съжаление споделеното хранилище %1 е 
 msgid "Unique ID for the text"
 msgstr "Уникално ID за текста"
 
+#. ('my-uri-1')
+#. ("my-uri-1")
+msgid ""
+"Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase "
+"characters and digits, optionally separated by a hyphen, e.g. %1"
+msgstr ""
+
 msgid "Unlimited"
 msgstr "Неограничено"
 
@@ -3291,8 +3417,20 @@ msgstr "Обнови"
 msgid "Update account info"
 msgstr "Обнови информацията за акаунта си"
 
+msgid "Update aggregation"
+msgstr ""
+
+msgid "Update and create new aggregation"
+msgstr ""
+
+msgid "Update and create new text"
+msgstr ""
+
 msgid "Update category description"
 msgstr "Обнови описанието на категорията"
+
+msgid "Update series"
+msgstr ""
 
 msgid "Update to current settings"
 msgstr "Обнови до текущите настройки"
@@ -3502,6 +3640,9 @@ msgstr "Грешно потребителско име или парола"
 
 msgid "XeLaTeX source"
 msgstr "XeLaTeX източник"
+
+msgid "Year"
+msgstr ""
 
 msgid "Yes"
 msgstr "Да"
@@ -3845,6 +3986,12 @@ msgstr ""
 "    докато текстът е бил редактиран, но тя все още присъства в случай, че "
 "някой\n"
 "    иска да започне от там нататък."
+
+#~ msgid "Such an URI already exists"
+#~ msgstr "Такъв URI вече съществува"
+
+#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgstr "Могат да бъдат текстове, специални текстове, автори или теми."
 
 #~ msgid "Nodes"
 #~ msgstr "Възли"

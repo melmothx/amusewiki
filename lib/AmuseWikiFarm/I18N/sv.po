@@ -149,6 +149,9 @@ msgstr ""
 msgid "Add sections to the bookbuilder"
 msgstr ""
 
+msgid "Add text"
+msgstr ""
+
 msgid "Add the OPDS URL"
 msgstr ""
 
@@ -162,6 +165,9 @@ msgid "Add this text to the bookbuilder"
 msgstr "Lägg till denna text i bokskaparen"
 
 msgid "Add to colophon"
+msgstr ""
+
+msgid "Add to the Bookbuilder"
 msgstr ""
 
 msgid ""
@@ -192,6 +198,15 @@ msgid ""
 msgstr ""
 
 msgid "Age:"
+msgstr ""
+
+msgid "Aggregation"
+msgstr ""
+
+msgid "Aggregation editing is disabled (autoimport file present)"
+msgstr ""
+
+msgid "Aggregations"
 msgstr ""
 
 msgid "Alias"
@@ -266,6 +281,18 @@ msgstr ""
 msgid "Annotations for %1"
 msgstr ""
 
+msgid "Annotations, collections, aggregations"
+msgstr ""
+
+msgid "Anthologies"
+msgstr ""
+
+msgid "Anthologies and periodicals"
+msgstr ""
+
+msgid "Anthology Name"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr ""
 
@@ -285,6 +312,9 @@ msgid "As cover in the header"
 msgstr ""
 
 msgid "As regular image in the body"
+msgstr ""
+
+msgid "Assign text to aggregations"
 msgstr ""
 
 msgid "Assign text to collections"
@@ -339,6 +369,9 @@ msgstr "Tillbaka till texten"
 
 msgid "Bad request"
 msgstr "Bad request"
+
+msgid "Bad type. This is a bug"
+msgstr ""
 
 msgid "Beamer color theme"
 msgstr ""
@@ -428,6 +461,9 @@ msgstr "CNAME"
 msgid "Categories"
 msgstr "Kategorier"
 
+msgid "Category editing is disabled (autoimport file present)"
+msgstr ""
+
 #. ($site->canonical)
 #. (site.canonical)
 msgid "Category types for %1"
@@ -499,6 +535,9 @@ msgstr "Stäng"
 msgid "Code"
 msgstr ""
 
+msgid "Collection"
+msgstr ""
+
 msgid "Collection created"
 msgstr ""
 
@@ -558,10 +597,19 @@ msgstr "Det gick inte att bygga det"
 msgid "Create"
 msgstr "Skapa"
 
+msgid "Create a new aggregation"
+msgstr ""
+
+msgid "Create a new aggregation for this series"
+msgstr ""
+
 msgid "Create a new annotation."
 msgstr ""
 
 msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
+
+msgid "Create a new child collection"
 msgstr ""
 
 msgid "Create a new format"
@@ -570,8 +618,17 @@ msgstr ""
 msgid "Create a new librarian"
 msgstr "Skapa en ny bibliotekarie"
 
+msgid "Create a new series"
+msgstr ""
+
 msgid "Create a new special page"
 msgstr "Skapa en ny specialsida"
+
+msgid "Create a new text for this aggregation"
+msgstr ""
+
+msgid "Create a new text for this collection"
+msgstr ""
 
 msgid "Create a new user"
 msgstr ""
@@ -618,6 +675,9 @@ msgstr "Datum"
 
 msgid "Date of the original publication"
 msgstr "Orginalpublikationens datum"
+
+msgid "Day"
+msgstr ""
 
 msgid "Default"
 msgstr ""
@@ -740,7 +800,10 @@ msgstr ""
 msgid "Edit"
 msgstr "Redigera"
 
-msgid "Edit annotations"
+msgid "Edit Aggregation"
+msgstr ""
+
+msgid "Edit Series"
 msgstr ""
 
 msgid "Edit attachment description"
@@ -1109,6 +1172,9 @@ msgstr "Högre uppdelningsfaktor innebär mindre marginaler"
 msgid "Highest priority format"
 msgstr ""
 
+msgid "Home"
+msgstr ""
+
 msgid "How are you going to access Git?"
 msgstr ""
 
@@ -1329,6 +1395,9 @@ msgid ""
 "  add %1 to the network libraries."
 msgstr ""
 
+msgid "Inherited from the series"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Infogade element"
 
@@ -1342,6 +1411,9 @@ msgid "Invalid ID"
 msgstr ""
 
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid data!"
 msgstr ""
 
 msgid "Invalid email"
@@ -1361,6 +1433,9 @@ msgstr ""
 
 msgid "Invalid username"
 msgstr "Ogiltigt användarnamn"
+
+msgid "Issue"
+msgstr ""
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -1562,6 +1637,9 @@ msgstr "Aktivera alla länkar"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
+msgid "Manage aggregations"
+msgstr ""
+
 msgid "Manage categories"
 msgstr ""
 
@@ -1602,6 +1680,9 @@ msgstr "Saknat tecken kommer att rapporteras"
 msgid "Missing redirection"
 msgstr "Omdirigering saknas"
 
+msgid "Missing? Create one"
+msgstr ""
+
 msgid "Mobile"
 msgstr ""
 
@@ -1615,6 +1696,9 @@ msgid "Moderated wiki"
 msgstr "Modererad wiki"
 
 msgid "Mono font"
+msgstr ""
+
+msgid "Month"
 msgstr ""
 
 msgid "More"
@@ -1708,6 +1792,9 @@ msgstr "Ingen text har ännu lagts till"
 msgid "None"
 msgstr ""
 
+msgid "Not a periodical"
+msgstr ""
+
 #. ($c->loc('Save')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
@@ -1793,6 +1880,9 @@ msgstr ""
 msgid "Or wrap it in"
 msgstr "Eller wrappa in det"
 
+msgid "Order"
+msgstr ""
+
 msgid "Ordered List"
 msgstr "Numerisk lista"
 
@@ -1866,6 +1956,9 @@ msgstr ""
 msgid "Part of"
 msgstr ""
 
+msgid "Part of:"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Del, endast för större böcker"
 
@@ -1895,6 +1988,9 @@ msgstr "Payload"
 
 msgid "Pending revisions"
 msgstr "Väntande revideringar"
+
+msgid "Periodicals"
+msgstr ""
 
 msgid "Picture"
 msgstr "Bilder"
@@ -2105,6 +2201,12 @@ msgstr ""
 msgid "Produced"
 msgstr "Producerad"
 
+msgid "Publication Date"
+msgstr ""
+
+msgid "Publication Place"
+msgstr ""
+
 msgid "Publication date"
 msgstr "Publikationsdatum"
 
@@ -2207,6 +2309,9 @@ msgstr ""
 
 msgid "Recheck"
 msgstr "Recheck"
+
+msgid "Record deleted!"
+msgstr ""
 
 msgid "Redirections"
 msgstr "Omdirigeringar"
@@ -2378,6 +2483,9 @@ msgstr "Sektion"
 msgid "Section and subsection. If one side document: section."
 msgstr ""
 
+msgid "See all"
+msgstr ""
+
 msgid "See here for more details."
 msgstr ""
 
@@ -2421,10 +2529,16 @@ msgstr "Separera fält för sidfot"
 msgid "Separate header fields"
 msgstr "Separera fält för sidhuvud"
 
+msgid "Series"
+msgstr ""
+
 msgid "Series Name"
 msgstr ""
 
 msgid "Series Number"
+msgstr ""
+
+msgid "Series or Periodical"
 msgstr ""
 
 msgid "Session sharing"
@@ -2530,6 +2644,9 @@ msgstr "Några pågående revideringar hittades"
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 
+msgid "Sorry, you can't remove this, please ask an admin"
+msgstr ""
+
 msgid "Sorting:"
 msgstr ""
 
@@ -2595,9 +2712,6 @@ msgstr "Undertitel"
 
 msgid "Such URI already exists"
 msgstr ""
-
-msgid "Such an URI already exists"
-msgstr "En sådan uri existerar redan"
 
 msgid ""
 "Such an header will unpublish the text and put a\n"
@@ -2759,6 +2873,9 @@ msgstr ""
 msgid "The text was added to the bookbuilder"
 msgstr "Texten har lagts till i bokskaparen"
 
+msgid "The texts were added to the bookbuilder"
+msgstr ""
+
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -2796,7 +2913,9 @@ msgstr ""
 msgid "These texts are missing the unique id."
 msgstr "Dessa texter saknar det unika ID:t."
 
-msgid "They can be texts, special texts, authors or topics."
+msgid ""
+"They can be texts, special texts, authors, topics, custom categories, "
+"aggregations and series."
 msgstr ""
 
 msgid ""
@@ -3030,6 +3149,13 @@ msgstr ""
 msgid "Unique ID for the text"
 msgstr "Unik ID för texten"
 
+#. ('my-uri-1')
+#. ("my-uri-1")
+msgid ""
+"Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase "
+"characters and digits, optionally separated by a hyphen, e.g. %1"
+msgstr ""
+
 msgid "Unlimited"
 msgstr ""
 
@@ -3053,7 +3179,19 @@ msgstr "Updatera"
 msgid "Update account info"
 msgstr "Updatera kontoinformation"
 
+msgid "Update aggregation"
+msgstr ""
+
+msgid "Update and create new aggregation"
+msgstr ""
+
+msgid "Update and create new text"
+msgstr ""
+
 msgid "Update category description"
+msgstr ""
+
+msgid "Update series"
 msgstr ""
 
 msgid "Update to current settings"
@@ -3235,6 +3373,9 @@ msgstr "Fel användarnamn och lösenord"
 msgid "XeLaTeX source"
 msgstr "XeLaTeX källa"
 
+msgid "Year"
+msgstr "År"
+
 msgid "Yes"
 msgstr ""
 
@@ -3267,9 +3408,9 @@ msgid ""
 "    “plus” icon near the downloads of each text. You can add and\n"
 "    remove the texts later."
 msgstr ""
-"Du kan lägga till texter i bokskaparen genom att trycka på      \"plus-ikonen"
-"\" bredvid nedladdnings-ikonerna på varje texts       sida. Du kan lägga "
-"till eller ta bort texterna senare."
+"Du kan lägga till texter i bokskaparen genom att trycka på      \"plus-"
+"ikonen\" bredvid nedladdnings-ikonerna på varje texts       sida. Du kan "
+"lägga till eller ta bort texterna senare."
 
 msgid ""
 "You can also link to a part of the text. Please refer to the manual for this "
@@ -3558,6 +3699,9 @@ msgstr ""
 "redigeringens gång, men den är fortfarande där, utifall att     någon vill "
 "återuppta den, medans den redigerar en text."
 
+#~ msgid "Such an URI already exists"
+#~ msgstr "En sådan uri existerar redan"
+
 #~ msgid "texts sorted by topics"
 #~ msgstr "texter sorterade efter ämnen"
 
@@ -3613,9 +3757,6 @@ msgstr ""
 
 #~ msgid "Show options"
 #~ msgstr "Visa alternativ"
-
-#~ msgid "Year"
-#~ msgstr "År"
 
 #~ msgid "Attached PDFs"
 #~ msgstr "Bifogade PDF:er"

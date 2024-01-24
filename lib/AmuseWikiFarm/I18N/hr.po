@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. ($filename)
 msgid "%1 doesn't exist"
@@ -150,6 +150,9 @@ msgstr ""
 msgid "Add sections to the bookbuilder"
 msgstr "Dodaj dijelove tekstova zbirci"
 
+msgid "Add text"
+msgstr ""
+
 msgid "Add the OPDS URL"
 msgstr "Dodaj URL OPDS-a"
 
@@ -163,6 +166,9 @@ msgid "Add this text to the bookbuilder"
 msgstr "Dodaj ovaj tekst zbirci"
 
 msgid "Add to colophon"
+msgstr ""
+
+msgid "Add to the Bookbuilder"
 msgstr ""
 
 msgid ""
@@ -195,6 +201,15 @@ msgstr ""
 
 msgid "Age:"
 msgstr "Starost:"
+
+msgid "Aggregation"
+msgstr ""
+
+msgid "Aggregation editing is disabled (autoimport file present)"
+msgstr ""
+
+msgid "Aggregations"
+msgstr ""
 
 msgid "Alias"
 msgstr "Alias"
@@ -273,6 +288,18 @@ msgstr ""
 msgid "Annotations for %1"
 msgstr ""
 
+msgid "Annotations, collections, aggregations"
+msgstr ""
+
+msgid "Anthologies"
+msgstr ""
+
+msgid "Anthologies and periodicals"
+msgstr ""
+
+msgid "Anthology Name"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Trenutno Apache se ne podržava"
 
@@ -293,6 +320,9 @@ msgstr "Kao naslovnica na zaglavlju"
 
 msgid "As regular image in the body"
 msgstr "Kao obična slika u tekstu"
+
+msgid "Assign text to aggregations"
+msgstr ""
 
 msgid "Assign text to collections"
 msgstr ""
@@ -346,6 +376,9 @@ msgstr "Vrati se na tekst"
 
 msgid "Bad request"
 msgstr "Pogrešan zahtjev"
+
+msgid "Bad type. This is a bug"
+msgstr ""
 
 msgid "Beamer color theme"
 msgstr "Beamer tema za boju"
@@ -437,6 +470,9 @@ msgstr "Glavno osnovno ime"
 msgid "Categories"
 msgstr "Teme"
 
+msgid "Category editing is disabled (autoimport file present)"
+msgstr ""
+
 #. ($site->canonical)
 #. (site.canonical)
 msgid "Category types for %1"
@@ -511,6 +547,9 @@ msgstr "Zatvori"
 msgid "Code"
 msgstr ""
 
+msgid "Collection"
+msgstr ""
+
 msgid "Collection created"
 msgstr ""
 
@@ -570,10 +609,19 @@ msgstr "Ne mogu stvoriti zbirku"
 msgid "Create"
 msgstr "Stvori"
 
+msgid "Create a new aggregation"
+msgstr ""
+
+msgid "Create a new aggregation for this series"
+msgstr ""
+
 msgid "Create a new annotation."
 msgstr ""
 
 msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
+
+msgid "Create a new child collection"
 msgstr ""
 
 msgid "Create a new format"
@@ -582,8 +630,17 @@ msgstr "Stvori novi format"
 msgid "Create a new librarian"
 msgstr "Stvori novog bibliotekara"
 
+msgid "Create a new series"
+msgstr ""
+
 msgid "Create a new special page"
 msgstr "Stvori novu posebnu stranicu"
+
+msgid "Create a new text for this aggregation"
+msgstr ""
+
+msgid "Create a new text for this collection"
+msgstr ""
 
 msgid "Create a new user"
 msgstr "Stvori novog korisnika"
@@ -630,6 +687,9 @@ msgstr "Datum"
 
 msgid "Date of the original publication"
 msgstr "Datum prvog izdanja"
+
+msgid "Day"
+msgstr ""
 
 msgid "Default"
 msgstr ""
@@ -757,7 +817,10 @@ msgstr "Predviđeno vrijeme završetka"
 msgid "Edit"
 msgstr "Uredi"
 
-msgid "Edit annotations"
+msgid "Edit Aggregation"
+msgstr ""
+
+msgid "Edit Series"
 msgstr ""
 
 msgid "Edit attachment description"
@@ -1141,6 +1204,9 @@ msgstr "Što je faktor podijele veći to će margine biti uže"
 msgid "Highest priority format"
 msgstr ""
 
+msgid "Home"
+msgstr ""
+
 msgid "How are you going to access Git?"
 msgstr ""
 
@@ -1403,6 +1469,9 @@ msgstr ""
 "U ovom primjeru koristi se FBreader, ali procedura je više-manje ista\n"
 "za sve aplikacije. Trebaš samo dodati %1 mrežnim bibliotekama."
 
+msgid "Inherited from the series"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Elementi po retku"
 
@@ -1416,6 +1485,9 @@ msgid "Invalid ID"
 msgstr ""
 
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid data!"
 msgstr ""
 
 msgid "Invalid email"
@@ -1435,6 +1507,9 @@ msgstr ""
 
 msgid "Invalid username"
 msgstr "Ime korisnika nije valjano"
+
+msgid "Issue"
+msgstr ""
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -1647,6 +1722,9 @@ msgstr "Aktiviraj sve poveznice"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Pokaži neodvojivi razmak kao ~~"
 
+msgid "Manage aggregations"
+msgstr ""
+
 msgid "Manage categories"
 msgstr "Upravljanje kategorijama"
 
@@ -1687,6 +1765,9 @@ msgstr "Pokazat će se slova koja nedostaju"
 msgid "Missing redirection"
 msgstr "Nedostaje preusmjeravanje"
 
+msgid "Missing? Create one"
+msgstr ""
+
 msgid "Mobile"
 msgstr "Mobile"
 
@@ -1701,6 +1782,9 @@ msgstr "Moderirani wiki"
 
 msgid "Mono font"
 msgstr "Mono fontovi"
+
+msgid "Month"
+msgstr ""
 
 msgid "More"
 msgstr "Više"
@@ -1793,6 +1877,9 @@ msgstr "Još nije dodan nijedan tekst"
 msgid "None"
 msgstr "Bez"
 
+msgid "Not a periodical"
+msgstr ""
+
 #. ($c->loc('Save')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
@@ -1878,6 +1965,9 @@ msgstr "Ili učitaj HTML datoteku"
 msgid "Or wrap it in"
 msgstr "Ili umetni između"
 
+msgid "Order"
+msgstr ""
+
 msgid "Ordered List"
 msgstr "Brojčan popis"
 
@@ -1950,6 +2040,9 @@ msgstr "Dio i poglavlje. Za jednostrani prijelom: dio."
 msgid "Part of"
 msgstr ""
 
+msgid "Part of:"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Dio, samo za velike knjige"
 
@@ -1979,6 +2072,9 @@ msgstr "Sadržaj"
 
 msgid "Pending revisions"
 msgstr "Izmjene na čekanju"
+
+msgid "Periodicals"
+msgstr ""
 
 msgid "Picture"
 msgstr "Slika"
@@ -2201,6 +2297,12 @@ msgstr "Slajdovi."
 msgid "Produced"
 msgstr "Stvoreno"
 
+msgid "Publication Date"
+msgstr ""
+
+msgid "Publication Place"
+msgstr ""
+
 msgid "Publication date"
 msgstr "Datum objavljivanja"
 
@@ -2303,6 +2405,9 @@ msgstr "Regeneracija"
 
 msgid "Recheck"
 msgstr "Ponovo provjeri"
+
+msgid "Record deleted!"
+msgstr ""
 
 msgid "Redirections"
 msgstr "Preusmjeravanja"
@@ -2474,6 +2579,9 @@ msgstr "Odjeljak"
 msgid "Section and subsection. If one side document: section."
 msgstr "Odjeljak i pododjeljak. Za jednostrani prijelom: odjeljak."
 
+msgid "See all"
+msgstr ""
+
 msgid "See here for more details."
 msgstr "Vidi ovdje za više detalja."
 
@@ -2517,10 +2625,16 @@ msgstr "Odvajaju dijelove podnožja"
 msgid "Separate header fields"
 msgstr "Odvajaju dijelove zaglavlja"
 
+msgid "Series"
+msgstr ""
+
 msgid "Series Name"
 msgstr ""
 
 msgid "Series Number"
+msgstr ""
+
+msgid "Series or Periodical"
 msgstr ""
 
 msgid "Session sharing"
@@ -2625,6 +2739,9 @@ msgstr "Pronađene su neke aktivne izmjene"
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr "Previše zadataka na čekanju, vratite se kasnije!"
 
+msgid "Sorry, you can't remove this, please ask an admin"
+msgstr ""
+
 msgid "Sorting:"
 msgstr "Sortiranje:"
 
@@ -2690,9 +2807,6 @@ msgstr "Podnaslov"
 
 msgid "Such URI already exists"
 msgstr ""
-
-msgid "Such an URI already exists"
-msgstr "Ovaj URI već postoji"
 
 msgid ""
 "Such an header will unpublish the text and put a\n"
@@ -2863,6 +2977,9 @@ msgstr "Tekst za pregled i naslovnice sajta"
 msgid "The text was added to the bookbuilder"
 msgstr "Tekst je dodan zbirci"
 
+msgid "The texts were added to the bookbuilder"
+msgstr ""
+
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -2900,8 +3017,10 @@ msgstr "Ima izmjena na čekanju"
 msgid "These texts are missing the unique id."
 msgstr "Ovim tekstovima nedostaje jedinstveni id."
 
-msgid "They can be texts, special texts, authors or topics."
-msgstr "Mogu to biti tekstovi, specijalni tekstovi, autori ili teme."
+msgid ""
+"They can be texts, special texts, authors, topics, custom categories, "
+"aggregations and series."
+msgstr ""
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
@@ -3143,6 +3262,13 @@ msgstr ""
 msgid "Unique ID for the text"
 msgstr "Jedinstveni ID za tekst"
 
+#. ('my-uri-1')
+#. ("my-uri-1")
+msgid ""
+"Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase "
+"characters and digits, optionally separated by a hyphen, e.g. %1"
+msgstr ""
+
 msgid "Unlimited"
 msgstr "Neograničeno"
 
@@ -3166,8 +3292,20 @@ msgstr "Ažuriraj"
 msgid "Update account info"
 msgstr "Ažuriraj informacije o računu"
 
+msgid "Update aggregation"
+msgstr ""
+
+msgid "Update and create new aggregation"
+msgstr ""
+
+msgid "Update and create new text"
+msgstr ""
+
 msgid "Update category description"
 msgstr "Ažuriraj opis teme"
+
+msgid "Update series"
+msgstr ""
 
 msgid "Update to current settings"
 msgstr "Spremi ovdje aktivne opcije"
@@ -3363,6 +3501,9 @@ msgstr "Pogrešno korisničko ime ili lozinka"
 
 msgid "XeLaTeX source"
 msgstr "XeLaTex izvor"
+
+msgid "Year"
+msgstr "Godina"
 
 msgid "Yes"
 msgstr "Da"
@@ -3697,6 +3838,12 @@ msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
 
+#~ msgid "Such an URI already exists"
+#~ msgstr "Ovaj URI već postoji"
+
+#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgstr "Mogu to biti tekstovi, specijalni tekstovi, autori ili teme."
+
 #~ msgid "Nodes"
 #~ msgstr "Čvorovi"
 
@@ -3849,9 +3996,6 @@ msgstr ""
 
 #~ msgid "Show options"
 #~ msgstr "Pokaži opcije"
-
-#~ msgid "Year"
-#~ msgstr "Godina"
 
 #~ msgid "Insert the file into the body"
 #~ msgstr "Dodaj datoteku tekstu"

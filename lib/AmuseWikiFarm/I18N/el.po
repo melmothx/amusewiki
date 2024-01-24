@@ -162,6 +162,9 @@ msgstr ""
 msgid "Add sections to the bookbuilder"
 msgstr "Προσθήκη ενοτήτων στο βιβλιοχτίστη"
 
+msgid "Add text"
+msgstr ""
+
 msgid "Add the OPDS URL"
 msgstr "Προσθήκη του OPDS URL"
 
@@ -175,6 +178,9 @@ msgid "Add this text to the bookbuilder"
 msgstr "Προσθήκη αυτού του κειμένου στο βιβλιοχτίστη"
 
 msgid "Add to colophon"
+msgstr ""
+
+msgid "Add to the Bookbuilder"
 msgstr ""
 
 msgid ""
@@ -209,6 +215,15 @@ msgstr ""
 
 msgid "Age:"
 msgstr "Ηλικία:"
+
+msgid "Aggregation"
+msgstr ""
+
+msgid "Aggregation editing is disabled (autoimport file present)"
+msgstr ""
+
+msgid "Aggregations"
+msgstr ""
 
 msgid "Alias"
 msgstr "Ψευδώνυμο"
@@ -296,6 +311,18 @@ msgstr ""
 msgid "Annotations for %1"
 msgstr ""
 
+msgid "Annotations, collections, aggregations"
+msgstr ""
+
+msgid "Anthologies"
+msgstr ""
+
+msgid "Anthologies and periodicals"
+msgstr ""
+
+msgid "Anthology Name"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Το Apache δεν υποστηρίζεται αυτή τη στιγμή"
 
@@ -316,6 +343,9 @@ msgstr "Ως εξώφυλλο στην επικεφαλίδα"
 
 msgid "As regular image in the body"
 msgstr "Ως κανονική εικόνα στο σώμα"
+
+msgid "Assign text to aggregations"
+msgstr ""
 
 msgid "Assign text to collections"
 msgstr ""
@@ -371,6 +401,9 @@ msgstr "Πίσω στο κείμενο"
 
 msgid "Bad request"
 msgstr "Κακό αίτημα"
+
+msgid "Bad type. This is a bug"
+msgstr ""
 
 msgid "Beamer color theme"
 msgstr "Θέμα χρώματος σλάιντ"
@@ -469,6 +502,9 @@ msgstr "Κανονικό όνομα"
 msgid "Categories"
 msgstr "Κατηγορίες"
 
+msgid "Category editing is disabled (autoimport file present)"
+msgstr ""
+
 #. ($site->canonical)
 #. (site.canonical)
 msgid "Category types for %1"
@@ -545,6 +581,9 @@ msgstr "Κλείσιμο"
 msgid "Code"
 msgstr "Κώδικας"
 
+msgid "Collection"
+msgstr ""
+
 msgid "Collection created"
 msgstr ""
 
@@ -606,6 +645,12 @@ msgstr "Το χτίσιμο δεν ήταν δυνατό"
 msgid "Create"
 msgstr "Δημιουργία"
 
+msgid "Create a new aggregation"
+msgstr ""
+
+msgid "Create a new aggregation for this series"
+msgstr ""
+
 msgid "Create a new annotation."
 msgstr ""
 
@@ -613,14 +658,26 @@ msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 "Δημιουργία νέου τύπου κατηγορίας. Χρησιμοποίησε μόνο μικρούς ASCII χαρακτήρες"
 
+msgid "Create a new child collection"
+msgstr ""
+
 msgid "Create a new format"
 msgstr "Δημιουργία νέας μορφής"
 
 msgid "Create a new librarian"
 msgstr "Δημιουργία νέου βιβλιοθηκάριου"
 
+msgid "Create a new series"
+msgstr ""
+
 msgid "Create a new special page"
 msgstr "Δημιουργία νέας ειδικής σελίδας"
+
+msgid "Create a new text for this aggregation"
+msgstr ""
+
+msgid "Create a new text for this collection"
+msgstr ""
 
 msgid "Create a new user"
 msgstr "Δημιουργία νέου χρήστη"
@@ -669,6 +726,9 @@ msgstr "Ημερομηνία"
 
 msgid "Date of the original publication"
 msgstr "Ημερομηνία αρχικής δημοσίευσης"
+
+msgid "Day"
+msgstr ""
 
 msgid "Default"
 msgstr ""
@@ -798,7 +858,10 @@ msgstr "Εκτιμώμενος χρόνος"
 msgid "Edit"
 msgstr "Επεξεργασία"
 
-msgid "Edit annotations"
+msgid "Edit Aggregation"
+msgstr ""
+
+msgid "Edit Series"
 msgstr ""
 
 msgid "Edit attachment description"
@@ -1199,6 +1262,9 @@ msgstr "Υψηλότερος συντελεστής διαίρεσης σημα�
 msgid "Highest priority format"
 msgstr ""
 
+msgid "Home"
+msgstr ""
+
 msgid "How are you going to access Git?"
 msgstr "Πώς θα έχεις πρόσβαση στο Git;"
 
@@ -1482,6 +1548,9 @@ msgstr ""
 "είναι\n"
 "  να προσθέσετε το %1 στις βιβλιοθήκες δικτύου."
 
+msgid "Inherited from the series"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Ενσωματωμένα στοιχεία"
 
@@ -1495,6 +1564,9 @@ msgid "Invalid ID"
 msgstr ""
 
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid data!"
 msgstr ""
 
 msgid "Invalid email"
@@ -1514,6 +1586,9 @@ msgstr ""
 
 msgid "Invalid username"
 msgstr "Μη έγκυρο όνομα χρήστη"
+
+msgid "Issue"
+msgstr ""
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -1742,6 +1817,9 @@ msgstr "Κάντε όλους τους συνδέσμους ενεργούς"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Κάντε όλα τα μη διακεκομμένα κενά ρητά και ορατά ως ~~"
 
+msgid "Manage aggregations"
+msgstr ""
+
 msgid "Manage categories"
 msgstr "Διαχείριση κατηγοριών"
 
@@ -1784,6 +1862,9 @@ msgstr "Ο χαρακτήρας που λείπει θα αναφερθεί"
 msgid "Missing redirection"
 msgstr "Έλλειψη ανακατεύθυνσης"
 
+msgid "Missing? Create one"
+msgstr ""
+
 msgid "Mobile"
 msgstr "Φορητή συσκευή"
 
@@ -1798,6 +1879,9 @@ msgstr "Συντονισμένο wiki"
 
 msgid "Mono font"
 msgstr "Γραμματοσειρά Mono"
+
+msgid "Month"
+msgstr ""
 
 msgid "More"
 msgstr "Περισσότερα"
@@ -1893,6 +1977,9 @@ msgstr "Δεν έχει προστεθεί ακόμη κείμενο"
 
 msgid "None"
 msgstr "Κανένα"
+
+msgid "Not a periodical"
+msgstr ""
 
 #. ($c->loc('Save')
 msgid ""
@@ -1991,6 +2078,9 @@ msgstr "Ή δώσε ένα αρχείο HTML για μεταφόρτωση"
 msgid "Or wrap it in"
 msgstr "Ή τύλιξέ το σε"
 
+msgid "Order"
+msgstr ""
+
 msgid "Ordered List"
 msgstr "Διατεταγμένη λίστα"
 
@@ -2069,6 +2159,9 @@ msgstr "Μέρος και κεφάλαιο. Εάν το έγγραφο είνα�
 msgid "Part of"
 msgstr "Μέρος από"
 
+msgid "Part of:"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Μέρος, μόνο για μεγαλύτερα βιβλία"
 
@@ -2098,6 +2191,9 @@ msgstr "Payload"
 
 msgid "Pending revisions"
 msgstr "Εκκρεµείς διορθώσεις"
+
+msgid "Periodicals"
+msgstr ""
 
 msgid "Picture"
 msgstr "Εικόνα"
@@ -2338,6 +2434,12 @@ msgstr "Δημιουργία διαφανειών."
 msgid "Produced"
 msgstr "Δημιουργημένο"
 
+msgid "Publication Date"
+msgstr ""
+
+msgid "Publication Place"
+msgstr ""
+
 msgid "Publication date"
 msgstr "Ημερομηνία δημοσίευσης"
 
@@ -2450,6 +2552,9 @@ msgstr "Ανακατασκευή"
 
 msgid "Recheck"
 msgstr "Επανέλεγχος"
+
+msgid "Record deleted!"
+msgstr ""
 
 msgid "Redirections"
 msgstr "Επανακατευθύνσεις"
@@ -2621,6 +2726,9 @@ msgstr "Ενότητα"
 msgid "Section and subsection. If one side document: section."
 msgstr "Ενότητα και υποενότητα. Εάν το έγγραφο της μίας πλευράς: ενότητα."
 
+msgid "See all"
+msgstr ""
+
 msgid "See here for more details."
 msgstr "Δες εδώ για περισσότερες λεπτομέρειες."
 
@@ -2664,10 +2772,16 @@ msgstr "Ξεχωριστά πεδία υποσέλιδου"
 msgid "Separate header fields"
 msgstr "Ξεχωριστά πεδία επικεφαλίδων"
 
+msgid "Series"
+msgstr "Σειρά"
+
 msgid "Series Name"
 msgstr ""
 
 msgid "Series Number"
+msgstr ""
+
+msgid "Series or Periodical"
 msgstr ""
 
 msgid "Session sharing"
@@ -2776,6 +2890,9 @@ msgstr ""
 "Συγγνώμη, εκκρεμούν πάρα πολλές εργασίες, παρακαλούμε προσπαθήστε ξανά "
 "αργότερα!"
 
+msgid "Sorry, you can't remove this, please ask an admin"
+msgstr ""
+
 msgid "Sorting:"
 msgstr "Ταξινόμηση:"
 
@@ -2843,9 +2960,6 @@ msgstr "Υπότιτλος"
 
 msgid "Such URI already exists"
 msgstr ""
-
-msgid "Such an URI already exists"
-msgstr "Ένα τέτοιο URI υπάρχει ήδη"
 
 msgid ""
 "Such an header will unpublish the text and put a\n"
@@ -3025,6 +3139,9 @@ msgstr "Το κείμενο που θα εμφανίζεται στην προε
 msgid "The text was added to the bookbuilder"
 msgstr "Το κείμενο προστέθηκε στο bookbuilder"
 
+msgid "The texts were added to the bookbuilder"
+msgstr ""
+
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -3068,8 +3185,10 @@ msgstr "Εκκρεμούν διορθώσεις"
 msgid "These texts are missing the unique id."
 msgstr "Από τα κείμενα αυτά λείπει το μοναδικό αναγνωριστικό."
 
-msgid "They can be texts, special texts, authors or topics."
-msgstr "Μπορεί να είναι κείμενα, ειδικά κείμενα, συγγραφείς ή θέματα."
+msgid ""
+"They can be texts, special texts, authors, topics, custom categories, "
+"aggregations and series."
+msgstr ""
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
@@ -3340,6 +3459,13 @@ msgstr ""
 msgid "Unique ID for the text"
 msgstr "Μοναδικό αναγνωριστικό για το κείμενο"
 
+#. ('my-uri-1')
+#. ("my-uri-1")
+msgid ""
+"Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase "
+"characters and digits, optionally separated by a hyphen, e.g. %1"
+msgstr ""
+
 msgid "Unlimited"
 msgstr "Απεριόριστα"
 
@@ -3363,8 +3489,20 @@ msgstr "Ενημέρωση"
 msgid "Update account info"
 msgstr "Ενημέρωση πληροφοριών λογαριασμού"
 
+msgid "Update aggregation"
+msgstr ""
+
+msgid "Update and create new aggregation"
+msgstr ""
+
+msgid "Update and create new text"
+msgstr ""
+
 msgid "Update category description"
 msgstr "Ενημέρωση περιγραφής κατηγορίας"
+
+msgid "Update series"
+msgstr ""
 
 msgid "Update to current settings"
 msgstr "Ενημέρωση στις τρέχουσες ρυθμίσεις"
@@ -3581,6 +3719,9 @@ msgid "Wrong username or password"
 msgstr "Λάθος όνομα χρήστη ή κωδικός πρόσβασης"
 
 msgid "XeLaTeX source"
+msgstr ""
+
+msgid "Year"
 msgstr ""
 
 msgid "Yes"
@@ -3932,6 +4073,12 @@ msgstr ""
 "που κάποιο άτομο θέλει να\n"
 "    την ανακτήσει κατά την επεξεργασία ενός κειμένου."
 
+#~ msgid "Such an URI already exists"
+#~ msgstr "Ένα τέτοιο URI υπάρχει ήδη"
+
+#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgstr "Μπορεί να είναι κείμενα, ειδικά κείμενα, συγγραφείς ή θέματα."
+
 #~ msgid "Nodes"
 #~ msgstr "Κόμβοι"
 
@@ -3951,9 +4098,6 @@ msgstr ""
 
 #~ msgid "Site Map"
 #~ msgstr "Χάρτης Ιστοσελίδας"
-
-#~ msgid "Series"
-#~ msgstr "Σειρά"
 
 #~ msgid "Filter"
 #~ msgstr "Φίλτρο"

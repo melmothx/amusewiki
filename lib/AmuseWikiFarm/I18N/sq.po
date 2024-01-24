@@ -157,6 +157,9 @@ msgstr ""
 msgid "Add sections to the bookbuilder"
 msgstr "Shto seksione në përpiluesin e librit"
 
+msgid "Add text"
+msgstr ""
+
 msgid "Add the OPDS URL"
 msgstr "Shto OPDS URL"
 
@@ -170,6 +173,9 @@ msgid "Add this text to the bookbuilder"
 msgstr "Shto këtë tekst në përpilues të librit"
 
 msgid "Add to colophon"
+msgstr ""
+
+msgid "Add to the Bookbuilder"
 msgstr ""
 
 msgid ""
@@ -204,6 +210,15 @@ msgstr ""
 "spastrim."
 
 msgid "Age:"
+msgstr ""
+
+msgid "Aggregation"
+msgstr ""
+
+msgid "Aggregation editing is disabled (autoimport file present)"
+msgstr ""
+
+msgid "Aggregations"
 msgstr ""
 
 msgid "Alias"
@@ -288,6 +303,18 @@ msgstr ""
 msgid "Annotations for %1"
 msgstr ""
 
+msgid "Annotations, collections, aggregations"
+msgstr ""
+
+msgid "Anthologies"
+msgstr ""
+
+msgid "Anthologies and periodicals"
+msgstr ""
+
+msgid "Anthology Name"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "\"Apache\" nuk është i përkahur "
 
@@ -307,6 +334,9 @@ msgid "As cover in the header"
 msgstr ""
 
 msgid "As regular image in the body"
+msgstr ""
+
+msgid "Assign text to aggregations"
 msgstr ""
 
 msgid "Assign text to collections"
@@ -364,6 +394,9 @@ msgstr "Ktheju tek teksti"
 
 msgid "Bad request"
 msgstr "Kërkesë e keqe"
+
+msgid "Bad type. This is a bug"
+msgstr ""
 
 msgid "Beamer color theme"
 msgstr ""
@@ -455,6 +488,9 @@ msgstr "Emër kanonik"
 msgid "Categories"
 msgstr "Kategoritë"
 
+msgid "Category editing is disabled (autoimport file present)"
+msgstr ""
+
 #. ($site->canonical)
 #. (site.canonical)
 msgid "Category types for %1"
@@ -531,6 +567,9 @@ msgstr "Mbyll"
 msgid "Code"
 msgstr ""
 
+msgid "Collection"
+msgstr ""
+
 msgid "Collection created"
 msgstr ""
 
@@ -590,10 +629,19 @@ msgstr "Nuk mundi të krijoj atë"
 msgid "Create"
 msgstr "Krijo"
 
+msgid "Create a new aggregation"
+msgstr ""
+
+msgid "Create a new aggregation for this series"
+msgstr ""
+
 msgid "Create a new annotation."
 msgstr ""
 
 msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
+
+msgid "Create a new child collection"
 msgstr ""
 
 msgid "Create a new format"
@@ -602,8 +650,17 @@ msgstr ""
 msgid "Create a new librarian"
 msgstr "Krijo një bibliotekar të ri"
 
+msgid "Create a new series"
+msgstr ""
+
 msgid "Create a new special page"
 msgstr "Krijo ne faqe të re speciale"
+
+msgid "Create a new text for this aggregation"
+msgstr ""
+
+msgid "Create a new text for this collection"
+msgstr ""
 
 msgid "Create a new user"
 msgstr "Krijo një përdorues të ri."
@@ -650,6 +707,9 @@ msgstr "Data"
 
 msgid "Date of the original publication"
 msgstr "Data e origjinale e botimit"
+
+msgid "Day"
+msgstr ""
 
 msgid "Default"
 msgstr ""
@@ -775,7 +835,10 @@ msgstr ""
 msgid "Edit"
 msgstr "Ndrysho"
 
-msgid "Edit annotations"
+msgid "Edit Aggregation"
+msgstr ""
+
+msgid "Edit Series"
 msgstr ""
 
 msgid "Edit attachment description"
@@ -1162,6 +1225,9 @@ msgstr "Faktori më i lartë i ndarjes dmth. margjinat më të ngushta"
 msgid "Highest priority format"
 msgstr ""
 
+msgid "Home"
+msgstr ""
+
 msgid "How are you going to access Git?"
 msgstr ""
 
@@ -1406,6 +1472,9 @@ msgstr ""
 "shumë e njëjtë për të gjitha aplikacionet. E gjitha që duhet ta bëni është "
 "ta shtoni %1 në rrjetin e librarive."
 
+msgid "Inherited from the series"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Elementet në rresht "
 
@@ -1419,6 +1488,9 @@ msgid "Invalid ID"
 msgstr ""
 
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid data!"
 msgstr ""
 
 msgid "Invalid email"
@@ -1438,6 +1510,9 @@ msgstr ""
 
 msgid "Invalid username"
 msgstr "Përdoruesi i pavlefshëm"
+
+msgid "Issue"
+msgstr ""
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -1645,6 +1720,9 @@ msgstr "Shëndërroi të gjitha linqet në linqe aktive"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
+msgid "Manage aggregations"
+msgstr ""
+
 msgid "Manage categories"
 msgstr ""
 
@@ -1685,6 +1763,9 @@ msgstr "(karakterët mangu do të raportohen)"
 msgid "Missing redirection"
 msgstr "Mungon ridrejtimi"
 
+msgid "Missing? Create one"
+msgstr ""
+
 msgid "Mobile"
 msgstr "Për pajisje mobile"
 
@@ -1698,6 +1779,9 @@ msgid "Moderated wiki"
 msgstr "Wiki i moderuar"
 
 msgid "Mono font"
+msgstr ""
+
+msgid "Month"
 msgstr ""
 
 msgid "More"
@@ -1791,6 +1875,9 @@ msgstr "Asnjë tekst nuk është futur deri më tani"
 msgid "None"
 msgstr "Asnjë"
 
+msgid "Not a periodical"
+msgstr ""
+
 #. ($c->loc('Save')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
@@ -1877,6 +1964,9 @@ msgstr "Ose ngarko një document HTML ."
 msgid "Or wrap it in"
 msgstr "Ose shtoje brenda"
 
+msgid "Order"
+msgstr ""
+
 msgid "Ordered List"
 msgstr "Lista Numerike"
 
@@ -1945,6 +2035,9 @@ msgstr ""
 msgid "Part of"
 msgstr ""
 
+msgid "Part of:"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Pjesa, vetëm për librat më të më mëdhenjë"
 
@@ -1974,6 +2067,9 @@ msgstr ""
 
 msgid "Pending revisions"
 msgstr "Përpunimet në pritje"
+
+msgid "Periodicals"
+msgstr ""
 
 msgid "Picture"
 msgstr "Foto"
@@ -2195,6 +2291,12 @@ msgstr "Krijo slide"
 msgid "Produced"
 msgstr "Krijuar"
 
+msgid "Publication Date"
+msgstr ""
+
+msgid "Publication Place"
+msgstr ""
+
 msgid "Publication date"
 msgstr "Data e publikimit"
 
@@ -2300,6 +2402,9 @@ msgstr ""
 
 msgid "Recheck"
 msgstr "Rishiko"
+
+msgid "Record deleted!"
+msgstr ""
 
 msgid "Redirections"
 msgstr ""
@@ -2472,6 +2577,9 @@ msgid "Section and subsection. If one side document: section."
 msgstr ""
 "Seksioni dhe nënseksioni. Nëse dokumenti është vetëm në një anë: seksion."
 
+msgid "See all"
+msgstr ""
+
 msgid "See here for more details."
 msgstr "Shiko këtu për më shumë detale."
 
@@ -2515,10 +2623,16 @@ msgstr "Ndaji fushat "
 msgid "Separate header fields"
 msgstr "Fushat e ndara të pjesës së sipërme të dokumentit "
 
+msgid "Series"
+msgstr ""
+
 msgid "Series Name"
 msgstr ""
 
 msgid "Series Number"
+msgstr ""
+
+msgid "Series or Periodical"
 msgstr ""
 
 msgid "Session sharing"
@@ -2627,6 +2741,9 @@ msgstr ""
 "Kërkojmë falje, mirëpo një numër i madh i punëve është në pritje. Ju lutem "
 "provoni më vonë!"
 
+msgid "Sorry, you can't remove this, please ask an admin"
+msgstr ""
+
 msgid "Sorting:"
 msgstr ""
 
@@ -2692,9 +2809,6 @@ msgstr "Nëntitulli"
 
 msgid "Such URI already exists"
 msgstr ""
-
-msgid "Such an URI already exists"
-msgstr "URI i tillë egziston"
 
 msgid ""
 "Such an header will unpublish the text and put a\n"
@@ -2854,6 +2968,9 @@ msgstr "Teksti që tregohet në faqën e parë"
 msgid "The text was added to the bookbuilder"
 msgstr "Teksti është shtuar në krijuesin e librit"
 
+msgid "The texts were added to the bookbuilder"
+msgstr ""
+
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -2894,7 +3011,9 @@ msgstr ""
 msgid "These texts are missing the unique id."
 msgstr "Ketyre teksteve iu mungon ID e veçantë."
 
-msgid "They can be texts, special texts, authors or topics."
+msgid ""
+"They can be texts, special texts, authors, topics, custom categories, "
+"aggregations and series."
 msgstr ""
 
 msgid ""
@@ -3151,6 +3270,13 @@ msgstr ""
 msgid "Unique ID for the text"
 msgstr "ID unike per tekst"
 
+#. ('my-uri-1')
+#. ("my-uri-1")
+msgid ""
+"Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase "
+"characters and digits, optionally separated by a hyphen, e.g. %1"
+msgstr ""
+
 msgid "Unlimited"
 msgstr ""
 
@@ -3174,8 +3300,20 @@ msgstr "Përditëso"
 msgid "Update account info"
 msgstr "Përditëso të dhënat e llogarisë"
 
+msgid "Update aggregation"
+msgstr ""
+
+msgid "Update and create new aggregation"
+msgstr ""
+
+msgid "Update and create new text"
+msgstr ""
+
 msgid "Update category description"
 msgstr "Përditëso përshkrimin e kategorisë"
+
+msgid "Update series"
+msgstr ""
 
 msgid "Update to current settings"
 msgstr "Përditëso parametrat aktuale"
@@ -3363,6 +3501,9 @@ msgstr "Emri i shfrytëzuesit ose fjalëkalimi gabim"
 
 msgid "XeLaTeX source"
 msgstr ""
+
+msgid "Year"
+msgstr "Viti"
 
 msgid "Yes"
 msgstr "Po"
@@ -3699,6 +3840,9 @@ msgstr ""
 " gjatë ndryshimit por është ende aty në rast se dikush dëshiron të vazhdoj\n"
 " me ndryshimin e tekstit."
 
+#~ msgid "Such an URI already exists"
+#~ msgstr "URI i tillë egziston"
+
 #~ msgid "IRC channel on freenode"
 #~ msgstr "Kanali IRC në freenode"
 
@@ -3772,9 +3916,6 @@ msgstr ""
 
 #~ msgid "Show options"
 #~ msgstr "Tego opcionet"
-
-#~ msgid "Year"
-#~ msgstr "Viti"
 
 #~ msgid "Attached PDFs"
 #~ msgstr "PDF-ët e bashkangjitur"

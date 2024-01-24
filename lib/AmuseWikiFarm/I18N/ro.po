@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n"
-"%100<=19) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && "
+"n%100<=19) ? 1 : 2);\n"
 "X-Generator: Poedit 3.2\n"
 
 #. ($filename)
@@ -158,6 +158,9 @@ msgstr ""
 msgid "Add sections to the bookbuilder"
 msgstr "Adăugați secțiuni la bookbuilder"
 
+msgid "Add text"
+msgstr ""
+
 msgid "Add the OPDS URL"
 msgstr "Adăugați URL-ul OPDS"
 
@@ -172,6 +175,9 @@ msgstr "Adăugați acest text la bookbuilder"
 
 msgid "Add to colophon"
 msgstr "Adăugați la colophon"
+
+msgid "Add to the Bookbuilder"
+msgstr ""
 
 msgid ""
 "Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
@@ -205,6 +211,15 @@ msgstr ""
 
 msgid "Age:"
 msgstr "Vârstă:"
+
+msgid "Aggregation"
+msgstr ""
+
+msgid "Aggregation editing is disabled (autoimport file present)"
+msgstr ""
+
+msgid "Aggregations"
+msgstr ""
 
 msgid "Alias"
 msgstr "Pseudonim"
@@ -293,6 +308,18 @@ msgstr ""
 msgid "Annotations for %1"
 msgstr ""
 
+msgid "Annotations, collections, aggregations"
+msgstr ""
+
+msgid "Anthologies"
+msgstr ""
+
+msgid "Anthologies and periodicals"
+msgstr ""
+
+msgid "Anthology Name"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Apache nu este susținut în prezent"
 
@@ -313,6 +340,9 @@ msgstr "Ca acoperire în antet"
 
 msgid "As regular image in the body"
 msgstr "Ca imagine obișnuită în corp"
+
+msgid "Assign text to aggregations"
+msgstr ""
 
 msgid "Assign text to collections"
 msgstr ""
@@ -368,6 +398,9 @@ msgstr "Înapoi spre text"
 
 msgid "Bad request"
 msgstr "Cerere necorespunzătoare"
+
+msgid "Bad type. This is a bug"
+msgstr ""
 
 msgid "Beamer color theme"
 msgstr "Tema de culoare Beamer"
@@ -461,6 +494,9 @@ msgstr "Nume canonic"
 msgid "Categories"
 msgstr "Categorii"
 
+msgid "Category editing is disabled (autoimport file present)"
+msgstr ""
+
 #. ($site->canonical)
 #. (site.canonical)
 msgid "Category types for %1"
@@ -538,6 +574,9 @@ msgstr "Închide"
 msgid "Code"
 msgstr "Codează"
 
+msgid "Collection"
+msgstr ""
+
 msgid "Collection created"
 msgstr ""
 
@@ -599,6 +638,12 @@ msgstr "Nu s-a putut construi asta"
 msgid "Create"
 msgstr "Creează"
 
+msgid "Create a new aggregation"
+msgstr ""
+
+msgid "Create a new aggregation for this series"
+msgstr ""
+
 msgid "Create a new annotation."
 msgstr ""
 
@@ -606,14 +651,26 @@ msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr ""
 "Creați un nou tip de categorie. Vă rugăm să folosiți numai litere ASCII mici"
 
+msgid "Create a new child collection"
+msgstr ""
+
 msgid "Create a new format"
 msgstr "Creează un nou format"
 
 msgid "Create a new librarian"
 msgstr "Creează un nou librar"
 
+msgid "Create a new series"
+msgstr ""
+
 msgid "Create a new special page"
 msgstr "Creează o nouă pagina specială"
+
+msgid "Create a new text for this aggregation"
+msgstr ""
+
+msgid "Create a new text for this collection"
+msgstr ""
 
 msgid "Create a new user"
 msgstr "Creează un nou utilizator"
@@ -662,6 +719,9 @@ msgstr "Dată"
 
 msgid "Date of the original publication"
 msgstr "Data publicării originale"
+
+msgid "Day"
+msgstr ""
 
 msgid "Default"
 msgstr "Default"
@@ -791,7 +851,10 @@ msgstr "ETA"
 msgid "Edit"
 msgstr "Editează"
 
-msgid "Edit annotations"
+msgid "Edit Aggregation"
+msgstr ""
+
+msgid "Edit Series"
 msgstr ""
 
 msgid "Edit attachment description"
@@ -1190,6 +1253,9 @@ msgstr "Un factor de divizare mai mare înseamnă marje mai mici"
 msgid "Highest priority format"
 msgstr "Formatul cu cea mai mare prioritate"
 
+msgid "Home"
+msgstr ""
+
 msgid "How are you going to access Git?"
 msgstr "Cum vei accesa Git?"
 
@@ -1472,6 +1538,9 @@ msgstr ""
 "este să\n"
 "  adăugați %1 la bibliotecile de rețea."
 
+msgid "Inherited from the series"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Elemente în linie"
 
@@ -1486,6 +1555,9 @@ msgstr "Invalid ID"
 
 msgid "Invalid URI"
 msgstr "Invalid URI"
+
+msgid "Invalid data!"
+msgstr ""
 
 msgid "Invalid email"
 msgstr "Invalid email"
@@ -1504,6 +1576,9 @@ msgstr "Invalid target"
 
 msgid "Invalid username"
 msgstr "Nume de utilizator nevalid"
+
+msgid "Issue"
+msgstr ""
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -1724,6 +1799,9 @@ msgstr "Faceți toate link-urile active"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Faceți toate spațiile fără întrerupere explicite și vizibile ca ~~"
 
+msgid "Manage aggregations"
+msgstr ""
+
 msgid "Manage categories"
 msgstr "Gestionați categoriile"
 
@@ -1768,6 +1846,9 @@ msgstr "Missing character will be reported"
 msgid "Missing redirection"
 msgstr "Caracterul lipsă va fi raportat"
 
+msgid "Missing? Create one"
+msgstr ""
+
 msgid "Mobile"
 msgstr "Mobile"
 
@@ -1782,6 +1863,9 @@ msgstr "Wiki moderat"
 
 msgid "Mono font"
 msgstr "Mono font"
+
+msgid "Month"
+msgstr ""
 
 msgid "More"
 msgstr "Mai mult"
@@ -1875,6 +1959,9 @@ msgstr "Nici un text nu a fost adăugat încă"
 
 msgid "None"
 msgstr "Nu există"
+
+msgid "Not a periodical"
+msgstr ""
 
 #. ($c->loc('Save')
 msgid ""
@@ -1974,6 +2061,9 @@ msgstr "Sau furnizați un fișier HTML pentru a încărca"
 msgid "Or wrap it in"
 msgstr "Or wrap it in"
 
+msgid "Order"
+msgstr ""
+
 msgid "Ordered List"
 msgstr "Listă ordonată"
 
@@ -2055,6 +2145,9 @@ msgstr "Partea și capitolul. În cazul unui document cu o singură parte: parte
 msgid "Part of"
 msgstr "Parte a"
 
+msgid "Part of:"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Parte, numai pentru cărți mai mari"
 
@@ -2084,6 +2177,9 @@ msgstr "Payload"
 
 msgid "Pending revisions"
 msgstr "Revizuiri în așteptare"
+
+msgid "Periodicals"
+msgstr ""
 
 msgid "Picture"
 msgstr "Poză"
@@ -2208,8 +2304,8 @@ msgid ""
 "        from word” button. This is supposed to preserve the markup."
 msgstr ""
 "Vă rugăm să rețineți că este posibil să lipiți de pe un fișier\n"
-"        document Word/OpenOffice/LibreOffice/HTML utilizând funcția \"paste"
-"\".\n"
+"        document Word/OpenOffice/LibreOffice/HTML utilizând funcția "
+"\"paste\".\n"
 "        din Word\". Acest lucru ar trebui să păstreze markup-ul."
 
 msgid ""
@@ -2324,6 +2420,12 @@ msgstr "Produceți diapozitive."
 msgid "Produced"
 msgstr "Produs"
 
+msgid "Publication Date"
+msgstr ""
+
+msgid "Publication Place"
+msgstr ""
+
 msgid "Publication date"
 msgstr "Data publicării"
 
@@ -2431,6 +2533,9 @@ msgstr "În curs de reconstruire"
 
 msgid "Recheck"
 msgstr "Verifică din nou"
+
+msgid "Record deleted!"
+msgstr ""
 
 msgid "Redirections"
 msgstr "Redirecționări"
@@ -2603,6 +2708,9 @@ msgstr "Secțiune"
 msgid "Section and subsection. If one side document: section."
 msgstr "Secțiune și subsecțiune. Dacă documentul are doar o parte: secțiune."
 
+msgid "See all"
+msgstr ""
+
 msgid "See here for more details."
 msgstr "Vedeți aici pentru mai multe detalii."
 
@@ -2646,11 +2754,17 @@ msgstr "Câmpuri de subsol separate"
 msgid "Separate header fields"
 msgstr "Câmpuri de antet separate"
 
+msgid "Series"
+msgstr ""
+
 msgid "Series Name"
 msgstr "Denumirea seriei"
 
 msgid "Series Number"
 msgstr "Numărul seriei"
+
+msgid "Series or Periodical"
+msgstr ""
 
 msgid "Session sharing"
 msgstr "Partajarea sesiunii"
@@ -2758,6 +2872,9 @@ msgstr ""
 "Ne pare rău, prea multe posturi în așteptare, vă rugăm să încercați din nou "
 "mai târziu!"
 
+msgid "Sorry, you can't remove this, please ask an admin"
+msgstr ""
+
 msgid "Sorting:"
 msgstr "Sortare:"
 
@@ -2826,9 +2943,6 @@ msgstr "Subtitle"
 
 msgid "Such URI already exists"
 msgstr "Astfel de URI-uri deja există"
-
-msgid "Such an URI already exists"
-msgstr "Un astfel de URI deja există"
 
 msgid ""
 "Such an header will unpublish the text and put a\n"
@@ -3011,6 +3125,9 @@ msgstr "Textul care va fi afișat în previzualizarea paginii de pornire"
 msgid "The text was added to the bookbuilder"
 msgstr "Textul a fost adăugat la bookbuilder"
 
+msgid "The texts were added to the bookbuilder"
+msgstr ""
+
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -3020,8 +3137,8 @@ msgstr ""
 "Titlul documentului, în scopul sortării. Util\n"
 "          dacă doriți să eliminați articolul, dacă există. Un text intitulat "
 "\"Un\n"
-"          titlu frumos\" ar putea avea acest lucru setat la \"Titlu frumos"
-"\", și va fi\n"
+"          titlu frumos\" ar putea avea acest lucru setat la \"Titlu "
+"frumos\", și va fi\n"
 "          listat sub T, nu sub U."
 
 msgid "The title of the document. The only mandatory directive."
@@ -3053,8 +3170,10 @@ msgstr "Există revizuiri în așteptare"
 msgid "These texts are missing the unique id."
 msgstr "Acestor texte le lipsește ID-ul unic."
 
-msgid "They can be texts, special texts, authors or topics."
-msgstr "Acestea pot fi texte, texte speciale, autori sau subiecte."
+msgid ""
+"They can be texts, special texts, authors, topics, custom categories, "
+"aggregations and series."
+msgstr ""
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
@@ -3319,6 +3438,13 @@ msgstr ""
 msgid "Unique ID for the text"
 msgstr "ID-ul unic pentru text"
 
+#. ('my-uri-1')
+#. ("my-uri-1")
+msgid ""
+"Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase "
+"characters and digits, optionally separated by a hyphen, e.g. %1"
+msgstr ""
+
 msgid "Unlimited"
 msgstr "Nelimitat"
 
@@ -3342,8 +3468,20 @@ msgstr "Actualizare"
 msgid "Update account info"
 msgstr "Actualizează informațiile contului"
 
+msgid "Update aggregation"
+msgstr ""
+
+msgid "Update and create new aggregation"
+msgstr ""
+
+msgid "Update and create new text"
+msgstr ""
+
 msgid "Update category description"
 msgstr "Actualizează descrierea categoriei"
+
+msgid "Update series"
+msgstr ""
 
 msgid "Update to current settings"
 msgstr "Actualizează la setările curente"
@@ -3556,6 +3694,9 @@ msgstr "Nume de utilizator sau parolă greșit"
 
 msgid "XeLaTeX source"
 msgstr "XeLaTeX source"
+
+msgid "Year"
+msgstr ""
 
 msgid "Yes"
 msgstr "Da"
@@ -3901,6 +4042,12 @@ msgstr ""
 "    în timpul editării, dar este încă acolo, în cazul în care cineva dorește "
 "să o ia.\n"
 "    să o preia atunci când editează un text."
+
+#~ msgid "Such an URI already exists"
+#~ msgstr "Un astfel de URI deja există"
+
+#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgstr "Acestea pot fi texte, texte speciale, autori sau subiecte."
 
 #~ msgid "Added"
 #~ msgstr "Adăugat"

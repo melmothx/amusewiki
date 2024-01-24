@@ -153,6 +153,9 @@ msgstr ""
 msgid "Add sections to the bookbuilder"
 msgstr "Přidej sekce do bookbuilderu"
 
+msgid "Add text"
+msgstr ""
+
 msgid "Add the OPDS URL"
 msgstr "Přidej OPDS URL"
 
@@ -167,6 +170,9 @@ msgstr "Přidej tento text do bookbuilderu"
 
 msgid "Add to colophon"
 msgstr "Přidej do tiráže"
+
+msgid "Add to the Bookbuilder"
+msgstr ""
 
 msgid ""
 "Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
@@ -200,6 +206,15 @@ msgstr ""
 
 msgid "Age:"
 msgstr "Stáří:"
+
+msgid "Aggregation"
+msgstr ""
+
+msgid "Aggregation editing is disabled (autoimport file present)"
+msgstr ""
+
+msgid "Aggregations"
+msgstr ""
 
 msgid "Alias"
 msgstr "Alias"
@@ -286,6 +301,18 @@ msgstr ""
 msgid "Annotations for %1"
 msgstr ""
 
+msgid "Annotations, collections, aggregations"
+msgstr ""
+
+msgid "Anthologies"
+msgstr ""
+
+msgid "Anthologies and periodicals"
+msgstr ""
+
+msgid "Anthology Name"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Apache právě nepodporujeme"
 
@@ -306,6 +333,9 @@ msgstr "Jako přebal v záhlaví"
 
 msgid "As regular image in the body"
 msgstr "Jako běžný obrázek v těle"
+
+msgid "Assign text to aggregations"
+msgstr ""
 
 msgid "Assign text to collections"
 msgstr ""
@@ -361,6 +391,9 @@ msgstr "Zpátky k textu"
 
 msgid "Bad request"
 msgstr "Špatný request"
+
+msgid "Bad type. This is a bug"
+msgstr ""
 
 msgid "Beamer color theme"
 msgstr "Barevný motiv pro Beameru"
@@ -457,6 +490,9 @@ msgstr "Kanonické jméno"
 msgid "Categories"
 msgstr "Kategorie"
 
+msgid "Category editing is disabled (autoimport file present)"
+msgstr ""
+
 #. ($site->canonical)
 #. (site.canonical)
 msgid "Category types for %1"
@@ -531,6 +567,9 @@ msgstr "Zavři"
 msgid "Code"
 msgstr "Kód"
 
+msgid "Collection"
+msgstr ""
+
 msgid "Collection created"
 msgstr ""
 
@@ -591,11 +630,20 @@ msgstr "Toto nešlo sestavit"
 msgid "Create"
 msgstr "Vytvořit"
 
+msgid "Create a new aggregation"
+msgstr ""
+
+msgid "Create a new aggregation for this series"
+msgstr ""
+
 msgid "Create a new annotation."
 msgstr ""
 
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr "Vytvoř nový typ kategorie. Prosím používej pouze malá písmena ASCII"
+
+msgid "Create a new child collection"
+msgstr ""
 
 msgid "Create a new format"
 msgstr "Vytvoř nový formát"
@@ -603,8 +651,17 @@ msgstr "Vytvoř nový formát"
 msgid "Create a new librarian"
 msgstr "Vytvoř nové knihovnictvo"
 
+msgid "Create a new series"
+msgstr ""
+
 msgid "Create a new special page"
 msgstr "Vytvoř novou zvláštní stránku"
+
+msgid "Create a new text for this aggregation"
+msgstr ""
+
+msgid "Create a new text for this collection"
+msgstr ""
 
 msgid "Create a new user"
 msgstr "Vytvoř nové uživatelstvo"
@@ -653,6 +710,9 @@ msgstr "Datum"
 
 msgid "Date of the original publication"
 msgstr "Datum původní publikace"
+
+msgid "Day"
+msgstr ""
 
 msgid "Default"
 msgstr "Výchozí"
@@ -780,7 +840,10 @@ msgstr "ETA"
 msgid "Edit"
 msgstr "Upravuj"
 
-msgid "Edit annotations"
+msgid "Edit Aggregation"
+msgstr ""
+
+msgid "Edit Series"
 msgstr ""
 
 msgid "Edit attachment description"
@@ -1169,6 +1232,9 @@ msgstr "Větší dělitel znamená užší okraje"
 msgid "Highest priority format"
 msgstr "Formát nejvyšší priority"
 
+msgid "Home"
+msgstr ""
+
 msgid "How are you going to access Git?"
 msgstr "Jak chceš přistupovat ke Gitu?"
 
@@ -1442,6 +1508,9 @@ msgstr ""
 "  v podstatě stejná pro všechny aplikace. Vše, co musíš udělat, je\n"
 "  přidat %1 do síťových knihoven."
 
+msgid "Inherited from the series"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Prvky v řádku"
 
@@ -1456,6 +1525,9 @@ msgstr "Neplatné ID"
 
 msgid "Invalid URI"
 msgstr "Neplatné URI"
+
+msgid "Invalid data!"
+msgstr ""
 
 msgid "Invalid email"
 msgstr "Neplatný email"
@@ -1474,6 +1546,9 @@ msgstr "Neplatný cíl"
 
 msgid "Invalid username"
 msgstr "Neplatné uživatelské jméno"
+
+msgid "Issue"
+msgstr ""
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -1691,6 +1766,9 @@ msgstr "Aktivuj všechny odkazy"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Udělej všechny pevné mezery explicitní a viditelné jako ~~"
 
+msgid "Manage aggregations"
+msgstr ""
+
 msgid "Manage categories"
 msgstr "Spravuj kategorie"
 
@@ -1731,6 +1809,9 @@ msgstr "Chybějící znak bude nahlášen"
 msgid "Missing redirection"
 msgstr "Chybějící přesměrování"
 
+msgid "Missing? Create one"
+msgstr ""
+
 msgid "Mobile"
 msgstr "Mobilní"
 
@@ -1745,6 +1826,9 @@ msgstr "Moderovaná wiki"
 
 msgid "Mono font"
 msgstr "Mono font"
+
+msgid "Month"
+msgstr ""
 
 msgid "More"
 msgstr "Více"
@@ -1839,6 +1923,9 @@ msgstr "Žádný text zatím nebyl přidán"
 msgid "None"
 msgstr "Žádné"
 
+msgid "Not a periodical"
+msgstr ""
+
 #. ($c->loc('Save')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
@@ -1932,6 +2019,9 @@ msgstr "Nebo poskytni HTML soubor k nahrání"
 msgid "Or wrap it in"
 msgstr "Nebo to zabal"
 
+msgid "Order"
+msgstr ""
+
 msgid "Ordered List"
 msgstr "Číslovaný Seznam"
 
@@ -2005,6 +2095,9 @@ msgstr "Část a kapitola. Pokud jednostranný dokument: část."
 msgid "Part of"
 msgstr "Část z"
 
+msgid "Part of:"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Část, pouze pro větší knihy"
 
@@ -2034,6 +2127,9 @@ msgstr ""
 
 msgid "Pending revisions"
 msgstr "Čekající revize"
+
+msgid "Periodicals"
+msgstr ""
 
 msgid "Picture"
 msgstr "Obrázek"
@@ -2258,6 +2354,12 @@ msgstr "Vytvoř slajdy."
 msgid "Produced"
 msgstr "Vytvořeno"
 
+msgid "Publication Date"
+msgstr ""
+
+msgid "Publication Place"
+msgstr ""
+
 msgid "Publication date"
 msgstr "Publikační datum"
 
@@ -2365,6 +2467,9 @@ msgstr "Znovu sestavuji"
 
 msgid "Recheck"
 msgstr "Znovu zkontroluj"
+
+msgid "Record deleted!"
+msgstr ""
 
 msgid "Redirections"
 msgstr "Přesměrování"
@@ -2536,6 +2641,9 @@ msgstr "Sekce"
 msgid "Section and subsection. If one side document: section."
 msgstr "Sekce a podsekce. Pokud jedna strana dokumentu: sekce."
 
+msgid "See all"
+msgstr ""
+
 msgid "See here for more details."
 msgstr "Podívej se sem pro více detailů."
 
@@ -2579,11 +2687,17 @@ msgstr "Oddělená políčka pro patičku"
 msgid "Separate header fields"
 msgstr "Oddělená políčka pro hlavičku"
 
+msgid "Series"
+msgstr ""
+
 msgid "Series Name"
 msgstr "Název série"
 
 msgid "Series Number"
 msgstr "Číslo série"
+
+msgid "Series or Periodical"
+msgstr ""
 
 msgid "Session sharing"
 msgstr "Sdílení sezení"
@@ -2689,6 +2803,9 @@ msgstr ""
 "Omlouváme se, ale příliš mnoho úkolů čeká na vyřízení, prosím zkus to "
 "později!"
 
+msgid "Sorry, you can't remove this, please ask an admin"
+msgstr ""
+
 msgid "Sorting:"
 msgstr "Třídění:"
 
@@ -2753,9 +2870,6 @@ msgid "Subtitle"
 msgstr "Podtitul"
 
 msgid "Such URI already exists"
-msgstr "Takové URI již existuje"
-
-msgid "Such an URI already exists"
 msgstr "Takové URI již existuje"
 
 msgid ""
@@ -2929,6 +3043,9 @@ msgstr "Text k ukázání je ne náhledu domovské stránky"
 msgid "The text was added to the bookbuilder"
 msgstr "Text byl přidán do bookbuilderu"
 
+msgid "The texts were added to the bookbuilder"
+msgstr ""
+
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -2968,8 +3085,10 @@ msgstr "Vyskytují se revize čekající na schválení"
 msgid "These texts are missing the unique id."
 msgstr "Tyto texty postrádají své unikátní id."
 
-msgid "They can be texts, special texts, authors or topics."
-msgstr "Mohou to být texty, speciální texty, autoři, nebo témata."
+msgid ""
+"They can be texts, special texts, authors, topics, custom categories, "
+"aggregations and series."
+msgstr ""
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
@@ -3226,6 +3345,13 @@ msgstr ""
 msgid "Unique ID for the text"
 msgstr "Jedinečné ID pro text"
 
+#. ('my-uri-1')
+#. ("my-uri-1")
+msgid ""
+"Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase "
+"characters and digits, optionally separated by a hyphen, e.g. %1"
+msgstr ""
+
 msgid "Unlimited"
 msgstr "Nelimitované"
 
@@ -3249,8 +3375,20 @@ msgstr "Aktualizovat"
 msgid "Update account info"
 msgstr "Aktualizovat informace o účtu"
 
+msgid "Update aggregation"
+msgstr ""
+
+msgid "Update and create new aggregation"
+msgstr ""
+
+msgid "Update and create new text"
+msgstr ""
+
 msgid "Update category description"
 msgstr "Aktualizovat popis kategorií"
+
+msgid "Update series"
+msgstr ""
 
 msgid "Update to current settings"
 msgstr "Aktualizovat nynější nastavení"
@@ -3455,6 +3593,9 @@ msgstr "Špatné uživatelské jméno nebo heslo"
 
 msgid "XeLaTeX source"
 msgstr "XeLaTeXový zdroj"
+
+msgid "Year"
+msgstr ""
 
 msgid "Yes"
 msgstr "Ano"
@@ -3790,6 +3931,12 @@ msgstr ""
 "„Zastaralé úpravy“ znamená, že revize byla opuštěna\n"
 "    během editace, ale stále tu je, kdyby v ní náhodou\n"
 "    někdo chtěl pokračovat při úpravách textu."
+
+#~ msgid "Such an URI already exists"
+#~ msgstr "Takové URI již existuje"
+
+#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgstr "Mohou to být texty, speciální texty, autoři, nebo témata."
 
 #~ msgid "Added"
 #~ msgstr "Přidáno"

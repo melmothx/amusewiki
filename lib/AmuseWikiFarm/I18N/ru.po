@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.7\n"
 
 #. ($filename)
@@ -152,6 +152,9 @@ msgstr ""
 msgid "Add sections to the bookbuilder"
 msgstr "Добавить разделы в конструктор книг"
 
+msgid "Add text"
+msgstr ""
+
 msgid "Add the OPDS URL"
 msgstr "Добавьте OPDS URL"
 
@@ -165,6 +168,9 @@ msgid "Add this text to the bookbuilder"
 msgstr "Добавить этот текст в конструктор книг"
 
 msgid "Add to colophon"
+msgstr ""
+
+msgid "Add to the Bookbuilder"
 msgstr ""
 
 msgid ""
@@ -197,6 +203,15 @@ msgstr ""
 
 msgid "Age:"
 msgstr "Прошло времени:"
+
+msgid "Aggregation"
+msgstr ""
+
+msgid "Aggregation editing is disabled (autoimport file present)"
+msgstr ""
+
+msgid "Aggregations"
+msgstr ""
 
 msgid "Alias"
 msgstr "Псевдоним"
@@ -276,6 +291,18 @@ msgstr ""
 msgid "Annotations for %1"
 msgstr ""
 
+msgid "Annotations, collections, aggregations"
+msgstr ""
+
+msgid "Anthologies"
+msgstr ""
+
+msgid "Anthologies and periodicals"
+msgstr ""
+
+msgid "Anthology Name"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Apache в данный момент не поддерживается"
 
@@ -296,6 +323,9 @@ msgstr "Как обложка в заголовок"
 
 msgid "As regular image in the body"
 msgstr "Как обычное изображение в текст"
+
+msgid "Assign text to aggregations"
+msgstr ""
 
 msgid "Assign text to collections"
 msgstr ""
@@ -352,6 +382,9 @@ msgstr "Вернуться к тексту"
 
 msgid "Bad request"
 msgstr "Ошибочный запрос"
+
+msgid "Bad type. This is a bug"
+msgstr ""
 
 msgid "Beamer color theme"
 msgstr "Цветовая схема Beamer"
@@ -445,6 +478,9 @@ msgstr "Традиционное имя"
 msgid "Categories"
 msgstr "Категории"
 
+msgid "Category editing is disabled (autoimport file present)"
+msgstr ""
+
 #. ($site->canonical)
 #. (site.canonical)
 msgid "Category types for %1"
@@ -519,6 +555,9 @@ msgstr "Закрыть"
 msgid "Code"
 msgstr "Код"
 
+msgid "Collection"
+msgstr ""
+
 msgid "Collection created"
 msgstr ""
 
@@ -578,10 +617,19 @@ msgstr "Нельзя создать это"
 msgid "Create"
 msgstr "Создать"
 
+msgid "Create a new aggregation"
+msgstr ""
+
+msgid "Create a new aggregation for this series"
+msgstr ""
+
 msgid "Create a new annotation."
 msgstr ""
 
 msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
+
+msgid "Create a new child collection"
 msgstr ""
 
 msgid "Create a new format"
@@ -590,8 +638,17 @@ msgstr "Создать новый формат"
 msgid "Create a new librarian"
 msgstr "Создать нового библиотекаря"
 
+msgid "Create a new series"
+msgstr ""
+
 msgid "Create a new special page"
 msgstr "Создать новую специальную страницу"
+
+msgid "Create a new text for this aggregation"
+msgstr ""
+
+msgid "Create a new text for this collection"
+msgstr ""
 
 msgid "Create a new user"
 msgstr "Создать нового пользователя"
@@ -638,6 +695,9 @@ msgstr "Дата"
 
 msgid "Date of the original publication"
 msgstr "Дата оригинальной публикации"
+
+msgid "Day"
+msgstr ""
 
 msgid "Default"
 msgstr ""
@@ -707,8 +767,9 @@ msgid ""
 "        \"templates\" (ASCII only). Do not set it unless you know\n"
 "        exactly what you are doing"
 msgstr ""
-"Директория с шаблонами для репозитория сайта, например, \"templates"
-"\" (только ASCII). Не указывайте это если вы не уверены в том, что вы делаете"
+"Директория с шаблонами для репозитория сайта, например, "
+"\"templates\" (только ASCII). Не указывайте это если вы не уверены в том, "
+"что вы делаете"
 
 msgid "Disable /mirror/ URL for anonymous users"
 msgstr "Отключить путь /mirror/ для анонимных пользователей"
@@ -764,7 +825,10 @@ msgstr "Расчётное время завершения"
 msgid "Edit"
 msgstr "Редактировать"
 
-msgid "Edit annotations"
+msgid "Edit Aggregation"
+msgstr ""
+
+msgid "Edit Series"
 msgstr ""
 
 msgid "Edit attachment description"
@@ -1149,6 +1213,9 @@ msgstr "Чем больше число — тем уже поля"
 msgid "Highest priority format"
 msgstr ""
 
+msgid "Home"
+msgstr ""
+
 msgid "How are you going to access Git?"
 msgstr "Как вы собираетесь получать доступ к Git?"
 
@@ -1365,8 +1432,8 @@ msgid ""
 "  URI \"index\", a dash, and the locale code."
 msgstr ""
 "Если ваш сайт многоязыковой, то вы можете создать отдельную стартовую "
-"страницу для каждого языка, например \"/special/index-ru\", т.е. URI \"index"
-"\", знак минуса и код языка."
+"страницу для каждого языка, например \"/special/index-ru\", т.е. URI "
+"\"index\", знак минуса и код языка."
 
 msgid "Image already set as cover"
 msgstr "Изображение уже установлено в качестве обложки"
@@ -1412,6 +1479,9 @@ msgstr ""
 "  почти такая же для всех приложений. Всё что вам нужно сделать это\n"
 "  добавить %1 в список сетевых библиотек."
 
+msgid "Inherited from the series"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Символьные стили"
 
@@ -1425,6 +1495,9 @@ msgid "Invalid ID"
 msgstr ""
 
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid data!"
 msgstr ""
 
 msgid "Invalid email"
@@ -1444,6 +1517,9 @@ msgstr ""
 
 msgid "Invalid username"
 msgstr "Неправильное имя пользователя"
+
+msgid "Issue"
+msgstr ""
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -1652,6 +1728,9 @@ msgstr "Сделать все ссылки активными"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Сделать все неразрывные пробелы явными и видимыми как ~~"
 
+msgid "Manage aggregations"
+msgstr ""
+
 msgid "Manage categories"
 msgstr "Управление категориями"
 
@@ -1694,6 +1773,9 @@ msgstr "Об отсутствующих символах будет сообще
 msgid "Missing redirection"
 msgstr "Отсутствующие перенаправления"
 
+msgid "Missing? Create one"
+msgstr ""
+
 msgid "Mobile"
 msgstr "Мобильные устройства"
 
@@ -1708,6 +1790,9 @@ msgstr "Модерируемая вики"
 
 msgid "Mono font"
 msgstr "Моноширинный шрифт"
+
+msgid "Month"
+msgstr ""
 
 msgid "More"
 msgstr "Дополнительно"
@@ -1802,6 +1887,9 @@ msgstr "Ни один текст не был добавлен"
 msgid "None"
 msgstr "Нет"
 
+msgid "Not a periodical"
+msgstr ""
+
 #. ($c->loc('Save')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
@@ -1890,6 +1978,9 @@ msgstr "Или предоставьте HTML-файл для загрузки"
 msgid "Or wrap it in"
 msgstr "Или поместите текст в тег"
 
+msgid "Order"
+msgstr ""
+
 msgid "Ordered List"
 msgstr "Список с нумерацией"
 
@@ -1961,6 +2052,9 @@ msgstr "Часть и глава. Если документ односторон
 msgid "Part of"
 msgstr "Часть"
 
+msgid "Part of:"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Часть (только для больших текстов)"
 
@@ -1990,6 +2084,9 @@ msgstr "Полезные данные"
 
 msgid "Pending revisions"
 msgstr "Ожидающие правки"
+
+msgid "Periodicals"
+msgstr ""
 
 msgid "Picture"
 msgstr "Изображение"
@@ -2213,6 +2310,12 @@ msgstr "Произвести слайды."
 msgid "Produced"
 msgstr "Изготовлено"
 
+msgid "Publication Date"
+msgstr ""
+
+msgid "Publication Place"
+msgstr ""
+
 msgid "Publication date"
 msgstr "Дата публикации"
 
@@ -2313,6 +2416,9 @@ msgstr "Пересобираем"
 
 msgid "Recheck"
 msgstr "Повторная проверка"
+
+msgid "Record deleted!"
+msgstr ""
 
 msgid "Redirections"
 msgstr "Перенаправления"
@@ -2484,6 +2590,9 @@ msgstr "Раздел"
 msgid "Section and subsection. If one side document: section."
 msgstr "Раздел и подраздел."
 
+msgid "See all"
+msgstr ""
+
 msgid "See here for more details."
 msgstr "Подробнее смотрите здесь."
 
@@ -2527,10 +2636,16 @@ msgstr "Разделить поля футера"
 msgid "Separate header fields"
 msgstr "Разделить поля шапки"
 
+msgid "Series"
+msgstr ""
+
 msgid "Series Name"
 msgstr ""
 
 msgid "Series Number"
+msgstr ""
+
+msgid "Series or Periodical"
 msgstr ""
 
 msgid "Session sharing"
@@ -2635,6 +2750,9 @@ msgstr "Некоторые незаконченные правки были на
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr "Извините, слишком много задач в очереди, пожалуйста, попробуйте позже!"
 
+msgid "Sorry, you can't remove this, please ask an admin"
+msgstr ""
+
 msgid "Sorting:"
 msgstr "Упорядочить по:"
 
@@ -2700,9 +2818,6 @@ msgstr "Подзаголовок"
 
 msgid "Such URI already exists"
 msgstr ""
-
-msgid "Such an URI already exists"
-msgstr "Текст с таким URI уже существует. Вы можете указать свой URI"
 
 msgid ""
 "Such an header will unpublish the text and put a\n"
@@ -2875,6 +2990,9 @@ msgstr ""
 "Текст был добавлен в конструктор книг. Вы можете перейти в него по этой "
 "ссылке или продолжить добавлять тексты"
 
+msgid "The texts were added to the bookbuilder"
+msgstr ""
+
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -2882,8 +3000,8 @@ msgid ""
 "          listed under N, not under A."
 msgstr ""
 "Название документа, для сортировки. Полезно, если вы хотите, убрать артикль. "
-"Текст под названием \"A nice title\" может быть переименован в \"Nice title"
-"\", и будет отсортирован в N, а не в А."
+"Текст под названием \"A nice title\" может быть переименован в \"Nice "
+"title\", и будет отсортирован в N, а не в А."
 
 msgid "The title of the document. The only mandatory directive."
 msgstr "Название текста. Обязательно для указания."
@@ -2913,8 +3031,10 @@ msgstr "Есть ожидающие правки"
 msgid "These texts are missing the unique id."
 msgstr "У этих текстов отсутствуют уникальные идентификаторы."
 
-msgid "They can be texts, special texts, authors or topics."
-msgstr "Это могут быть тексты, специальные тексты, авторы и темы."
+msgid ""
+"They can be texts, special texts, authors, topics, custom categories, "
+"aggregations and series."
+msgstr ""
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
@@ -3161,6 +3281,13 @@ msgstr ""
 msgid "Unique ID for the text"
 msgstr "Уникальный ID для текста"
 
+#. ('my-uri-1')
+#. ("my-uri-1")
+msgid ""
+"Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase "
+"characters and digits, optionally separated by a hyphen, e.g. %1"
+msgstr ""
+
 msgid "Unlimited"
 msgstr "Неограничено"
 
@@ -3184,8 +3311,20 @@ msgstr "Обновить"
 msgid "Update account info"
 msgstr "Обновить информацию аккаунта"
 
+msgid "Update aggregation"
+msgstr ""
+
+msgid "Update and create new aggregation"
+msgstr ""
+
+msgid "Update and create new text"
+msgstr ""
+
 msgid "Update category description"
 msgstr "Обновить описание категории"
+
+msgid "Update series"
+msgstr ""
 
 msgid "Update to current settings"
 msgstr "Обновить текущие настройки"
@@ -3383,6 +3522,9 @@ msgstr "Неправильные имя пользователя или паро
 
 msgid "XeLaTeX source"
 msgstr "Исходник XeLaTeX"
+
+msgid "Year"
+msgstr "Год"
 
 msgid "Yes"
 msgstr "Да"
@@ -3722,6 +3864,12 @@ msgstr ""
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
 
+#~ msgid "Such an URI already exists"
+#~ msgstr "Текст с таким URI уже существует. Вы можете указать свой URI"
+
+#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgstr "Это могут быть тексты, специальные тексты, авторы и темы."
+
 #~ msgid "Nodes"
 #~ msgstr "Узлы"
 
@@ -3882,9 +4030,6 @@ msgstr ""
 
 #~ msgid "Show options"
 #~ msgstr "Показать опции"
-
-#~ msgid "Year"
-#~ msgstr "Год"
 
 #~ msgid "Insert the file into the body"
 #~ msgstr "Вставить файл в текст"

@@ -145,6 +145,9 @@ msgstr "当文章数量超过（整数）时添加分页器"
 msgid "Add sections to the bookbuilder"
 msgstr "在建书器中添加节"
 
+msgid "Add text"
+msgstr ""
+
 msgid "Add the OPDS URL"
 msgstr "添加OPDS地址"
 
@@ -158,6 +161,9 @@ msgid "Add this text to the bookbuilder"
 msgstr "将此文添加进建书器"
 
 msgid "Add to colophon"
+msgstr ""
+
+msgid "Add to the Bookbuilder"
 msgstr ""
 
 msgid ""
@@ -189,6 +195,15 @@ msgstr ""
 
 msgid "Age:"
 msgstr "年龄："
+
+msgid "Aggregation"
+msgstr ""
+
+msgid "Aggregation editing is disabled (autoimport file present)"
+msgstr ""
+
+msgid "Aggregations"
+msgstr ""
 
 msgid "Alias"
 msgstr "别名"
@@ -263,6 +278,18 @@ msgstr ""
 msgid "Annotations for %1"
 msgstr ""
 
+msgid "Annotations, collections, aggregations"
+msgstr ""
+
+msgid "Anthologies"
+msgstr ""
+
+msgid "Anthologies and periodicals"
+msgstr ""
+
+msgid "Anthology Name"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "目前不支持Apache"
 
@@ -283,6 +310,9 @@ msgstr "作为题图"
 
 msgid "As regular image in the body"
 msgstr "作为正文中的普通图片"
+
+msgid "Assign text to aggregations"
+msgstr ""
 
 msgid "Assign text to collections"
 msgstr ""
@@ -336,6 +366,9 @@ msgstr "回到文章"
 
 msgid "Bad request"
 msgstr "错误请求"
+
+msgid "Bad type. This is a bug"
+msgstr ""
 
 msgid "Beamer color theme"
 msgstr "Beamer颜色主题"
@@ -427,6 +460,9 @@ msgstr "正统名称"
 msgid "Categories"
 msgstr "类别"
 
+msgid "Category editing is disabled (autoimport file present)"
+msgstr ""
+
 #. ($site->canonical)
 #. (site.canonical)
 msgid "Category types for %1"
@@ -500,6 +536,9 @@ msgstr "关闭"
 msgid "Code"
 msgstr "代码"
 
+msgid "Collection"
+msgstr ""
+
 msgid "Collection created"
 msgstr ""
 
@@ -559,11 +598,20 @@ msgstr "无法建书"
 msgid "Create"
 msgstr "新建"
 
+msgid "Create a new aggregation"
+msgstr ""
+
+msgid "Create a new aggregation for this series"
+msgstr ""
+
 msgid "Create a new annotation."
 msgstr ""
 
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr "新建类别。请只用小写ASCII字符"
+
+msgid "Create a new child collection"
+msgstr ""
 
 msgid "Create a new format"
 msgstr "新建格式"
@@ -571,8 +619,17 @@ msgstr "新建格式"
 msgid "Create a new librarian"
 msgstr "新建图书馆员"
 
+msgid "Create a new series"
+msgstr ""
+
 msgid "Create a new special page"
 msgstr "新建特殊页"
+
+msgid "Create a new text for this aggregation"
+msgstr ""
+
+msgid "Create a new text for this collection"
+msgstr ""
 
 msgid "Create a new user"
 msgstr "新建用户"
@@ -619,6 +676,9 @@ msgstr "日期"
 
 msgid "Date of the original publication"
 msgstr "原出版日期"
+
+msgid "Day"
+msgstr ""
 
 msgid "Default"
 msgstr ""
@@ -743,7 +803,10 @@ msgstr "预计到达时间"
 msgid "Edit"
 msgstr "编辑"
 
-msgid "Edit annotations"
+msgid "Edit Aggregation"
+msgstr ""
+
+msgid "Edit Series"
 msgstr ""
 
 msgid "Edit attachment description"
@@ -1112,6 +1175,9 @@ msgstr "更高的分割系数意味着更窄的边距"
 msgid "Highest priority format"
 msgstr ""
 
+msgid "Home"
+msgstr ""
+
 msgid "How are you going to access Git?"
 msgstr "你要怎样获取Git？"
 
@@ -1348,6 +1414,9 @@ msgstr ""
 "在这个例子中，我们使用FBreader，但这个所有的应用程序的流程都是差不多的。你所"
 "要做的就是把%1添加到网络库中。"
 
+msgid "Inherited from the series"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "行内元素"
 
@@ -1361,6 +1430,9 @@ msgid "Invalid ID"
 msgstr ""
 
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid data!"
 msgstr ""
 
 msgid "Invalid email"
@@ -1380,6 +1452,9 @@ msgstr ""
 
 msgid "Invalid username"
 msgstr "无效用户名"
+
+msgid "Issue"
+msgstr ""
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -1584,6 +1659,9 @@ msgstr "使所有链接活跃"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "使所有不换行的空格突出显示为~~"
 
+msgid "Manage aggregations"
+msgstr ""
+
 msgid "Manage categories"
 msgstr "管理类别"
 
@@ -1624,6 +1702,9 @@ msgstr "缺少的字符将会被报告"
 msgid "Missing redirection"
 msgstr "缺少重定向"
 
+msgid "Missing? Create one"
+msgstr ""
+
 msgid "Mobile"
 msgstr "移动"
 
@@ -1638,6 +1719,9 @@ msgstr "管理的wiki"
 
 msgid "Mono font"
 msgstr "等距字体"
+
+msgid "Month"
+msgstr ""
 
 msgid "More"
 msgstr "更多"
@@ -1730,6 +1814,9 @@ msgstr "还未添加文本"
 msgid "None"
 msgstr "无"
 
+msgid "Not a periodical"
+msgstr ""
+
 #. ($c->loc('Save')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
@@ -1813,6 +1900,9 @@ msgstr "或者提供用以上传的HTML文件"
 msgid "Or wrap it in"
 msgstr "或者折起来"
 
+msgid "Order"
+msgstr ""
+
 msgid "Ordered List"
 msgstr "有序列表"
 
@@ -1882,6 +1972,9 @@ msgstr "部和章。如果是单面文档：部。"
 msgid "Part of"
 msgstr "部分"
 
+msgid "Part of:"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "部，只用于很大的书"
 
@@ -1911,6 +2004,9 @@ msgstr "载荷"
 
 msgid "Pending revisions"
 msgstr "等待中的修订"
+
+msgid "Periodicals"
+msgstr ""
 
 msgid "Picture"
 msgstr "图片"
@@ -2120,6 +2216,12 @@ msgstr "生成幻灯片。"
 msgid "Produced"
 msgstr "已生成"
 
+msgid "Publication Date"
+msgstr ""
+
+msgid "Publication Place"
+msgstr ""
+
 msgid "Publication date"
 msgstr "发表日期"
 
@@ -2215,6 +2317,9 @@ msgstr "重建中"
 
 msgid "Recheck"
 msgstr "重新检查"
+
+msgid "Record deleted!"
+msgstr ""
 
 msgid "Redirections"
 msgstr "重定向"
@@ -2386,6 +2491,9 @@ msgstr "节"
 msgid "Section and subsection. If one side document: section."
 msgstr "节和次级节。如果是单面文档的话：节。"
 
+msgid "See all"
+msgstr ""
+
 msgid "See here for more details."
 msgstr "这里有更多细节。"
 
@@ -2429,10 +2537,16 @@ msgstr "分割脚注域"
 msgid "Separate header fields"
 msgstr "分割页头域"
 
+msgid "Series"
+msgstr "系列"
+
 msgid "Series Name"
 msgstr ""
 
 msgid "Series Number"
+msgstr ""
+
+msgid "Series or Periodical"
 msgstr ""
 
 msgid "Session sharing"
@@ -2537,6 +2651,9 @@ msgstr "发现一些正在进行的修订工作"
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr "对不起，有太多的工作要做，请稍后再试！"
 
+msgid "Sorry, you can't remove this, please ask an admin"
+msgstr ""
+
 msgid "Sorting:"
 msgstr "排序："
 
@@ -2602,9 +2719,6 @@ msgstr "副标题"
 
 msgid "Such URI already exists"
 msgstr ""
-
-msgid "Such an URI already exists"
-msgstr "URI已存在"
 
 msgid ""
 "Such an header will unpublish the text and put a\n"
@@ -2765,6 +2879,9 @@ msgstr "在主页预览中显示的文本"
 msgid "The text was added to the bookbuilder"
 msgstr "该文本已被添加到建书器中"
 
+msgid "The texts were added to the bookbuilder"
+msgstr ""
+
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -2800,8 +2917,10 @@ msgstr "有进行中的修订"
 msgid "These texts are missing the unique id."
 msgstr "这些文本缺少唯一的ID。"
 
-msgid "They can be texts, special texts, authors or topics."
-msgstr "它们可以是文本、特殊文本、作者或话题。"
+msgid ""
+"They can be texts, special texts, authors, topics, custom categories, "
+"aggregations and series."
+msgstr ""
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
@@ -3039,6 +3158,13 @@ msgstr "糟糕，位于%1的共享仓库出现了不同步的情况。"
 msgid "Unique ID for the text"
 msgstr "文本的唯一ID"
 
+#. ('my-uri-1')
+#. ("my-uri-1")
+msgid ""
+"Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase "
+"characters and digits, optionally separated by a hyphen, e.g. %1"
+msgstr ""
+
 msgid "Unlimited"
 msgstr "无限的"
 
@@ -3062,8 +3188,20 @@ msgstr "更新"
 msgid "Update account info"
 msgstr "更新账户消息"
 
+msgid "Update aggregation"
+msgstr ""
+
+msgid "Update and create new aggregation"
+msgstr ""
+
+msgid "Update and create new text"
+msgstr ""
+
 msgid "Update category description"
 msgstr "更新类标描述"
+
+msgid "Update series"
+msgstr ""
 
 msgid "Update to current settings"
 msgstr "更新至现在的设置"
@@ -3246,6 +3384,9 @@ msgstr "用户名或密码错误"
 msgid "XeLaTeX source"
 msgstr "XeLaTeX源码"
 
+msgid "Year"
+msgstr ""
+
 msgid "Yes"
 msgstr "是"
 
@@ -3254,8 +3395,8 @@ msgid ""
 "The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
 "etc.) is irrelevant."
 msgstr ""
-"您必须指定一个原因，否则该行将不起作用。标题行的顺序（其中有 \"#title"
-"\"，\"#lang\" 等）是无关紧要的。"
+"您必须指定一个原因，否则该行将不起作用。标题行的顺序（其中有 "
+"\"#title\"，\"#lang\" 等）是无关紧要的。"
 
 msgid "You are already logged in"
 msgstr "您已经登录"
@@ -3569,6 +3710,12 @@ msgstr ""
 "「陈旧编辑」意味着版本已在编辑时被放弃，但它仍然存在，以防有人在编辑文本时继"
 "续使用它。"
 
+#~ msgid "Such an URI already exists"
+#~ msgstr "URI已存在"
+
+#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgstr "它们可以是文本、特殊文本、作者或话题。"
+
 #~ msgid "Nodes"
 #~ msgstr "节点"
 
@@ -3586,9 +3733,6 @@ msgstr ""
 
 #~ msgid "Site Map"
 #~ msgstr "站点地图"
-
-#~ msgid "Series"
-#~ msgstr "系列"
 
 #~ msgid "Filter"
 #~ msgstr "筛选"

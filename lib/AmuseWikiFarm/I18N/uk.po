@@ -154,6 +154,9 @@ msgstr ""
 msgid "Add sections to the bookbuilder"
 msgstr "Додати розділи до конструктора"
 
+msgid "Add text"
+msgstr ""
+
 msgid "Add the OPDS URL"
 msgstr "Додайте OPDS-адресу"
 
@@ -168,6 +171,9 @@ msgstr "Додати текст у конструктор"
 
 msgid "Add to colophon"
 msgstr "Додати до випускних даних"
+
+msgid "Add to the Bookbuilder"
+msgstr ""
 
 msgid ""
 "Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
@@ -202,6 +208,15 @@ msgstr ""
 
 msgid "Age:"
 msgstr "Минуло:"
+
+msgid "Aggregation"
+msgstr ""
+
+msgid "Aggregation editing is disabled (autoimport file present)"
+msgstr ""
+
+msgid "Aggregations"
+msgstr ""
 
 msgid "Alias"
 msgstr "Псевдонім"
@@ -286,6 +301,18 @@ msgstr ""
 msgid "Annotations for %1"
 msgstr "Анотації для %1"
 
+msgid "Annotations, collections, aggregations"
+msgstr ""
+
+msgid "Anthologies"
+msgstr ""
+
+msgid "Anthologies and periodicals"
+msgstr ""
+
+msgid "Anthology Name"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Apache наразі не підтримується"
 
@@ -306,6 +333,9 @@ msgstr "Обкладинка в шапці"
 
 msgid "As regular image in the body"
 msgstr "Звичайна картинка в основному тексті"
+
+msgid "Assign text to aggregations"
+msgstr ""
 
 msgid "Assign text to collections"
 msgstr "Додати текст у добірки"
@@ -360,6 +390,9 @@ msgstr "Назад до тексту"
 
 msgid "Bad request"
 msgstr "Хибний запит"
+
+msgid "Bad type. This is a bug"
+msgstr ""
 
 msgid "Beamer color theme"
 msgstr "Кольори Beamer-презентації"
@@ -451,6 +484,9 @@ msgstr "Канонічна назва"
 msgid "Categories"
 msgstr "Категорії"
 
+msgid "Category editing is disabled (autoimport file present)"
+msgstr ""
+
 #. ($site->canonical)
 #. (site.canonical)
 msgid "Category types for %1"
@@ -525,6 +561,9 @@ msgstr "Закрити"
 msgid "Code"
 msgstr "Код"
 
+msgid "Collection"
+msgstr ""
+
 msgid "Collection created"
 msgstr "Добірку створено"
 
@@ -586,11 +625,20 @@ msgstr "Не вдалося зібрати"
 msgid "Create"
 msgstr "Створити"
 
+msgid "Create a new aggregation"
+msgstr ""
+
+msgid "Create a new aggregation for this series"
+msgstr ""
+
 msgid "Create a new annotation."
 msgstr "Створити анотацію."
 
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr "Створити ще тип категорії. Використовуйте лише малі латинські літери"
+
+msgid "Create a new child collection"
+msgstr ""
 
 msgid "Create a new format"
 msgstr "Створити формат"
@@ -598,8 +646,17 @@ msgstr "Створити формат"
 msgid "Create a new librarian"
 msgstr "Додати бібліотекар_ку"
 
+msgid "Create a new series"
+msgstr ""
+
 msgid "Create a new special page"
 msgstr "Створити особливу сторінку"
+
+msgid "Create a new text for this aggregation"
+msgstr ""
+
+msgid "Create a new text for this collection"
+msgstr ""
 
 msgid "Create a new user"
 msgstr "Додати користувач_ку"
@@ -648,6 +705,9 @@ msgstr "Дата"
 
 msgid "Date of the original publication"
 msgstr "Коли вийшов оригінал"
+
+msgid "Day"
+msgstr ""
 
 msgid "Default"
 msgstr "Типово"
@@ -773,8 +833,11 @@ msgstr "Завершиться приблизно"
 msgid "Edit"
 msgstr "Редагувати"
 
-msgid "Edit annotations"
-msgstr "Редагувати анотації"
+msgid "Edit Aggregation"
+msgstr ""
+
+msgid "Edit Series"
+msgstr ""
 
 msgid "Edit attachment description"
 msgstr "Редагувати опис вкладення"
@@ -1159,6 +1222,9 @@ msgstr "Чим вище співвідношення, тим вужчі поля
 msgid "Highest priority format"
 msgstr "Формат із найвищим пріоритетом"
 
+msgid "Home"
+msgstr ""
+
 msgid "How are you going to access Git?"
 msgstr "Який доступ до Git у вас є?"
 
@@ -1422,6 +1488,9 @@ msgstr ""
 "У цьому прикладі ми використовуємо FBreader, але процес приблизно однаковий "
 "для всіх застосунків. Вам достатньо додати %1 до мережних бібліотек."
 
+msgid "Inherited from the series"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Елементи всередині рядка"
 
@@ -1436,6 +1505,9 @@ msgstr "Хибний ідентифікатор"
 
 msgid "Invalid URI"
 msgstr "Хибний ідентифікатор"
+
+msgid "Invalid data!"
+msgstr ""
 
 msgid "Invalid email"
 msgstr "Хибна е-пошта"
@@ -1454,6 +1526,9 @@ msgstr "Хибна ціль"
 
 msgid "Invalid username"
 msgstr "Хибний логін"
+
+msgid "Issue"
+msgstr ""
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -1662,6 +1737,9 @@ msgstr "Активувати всі посилання"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Зробити всі нерозривні пробіли явними й видними як ~~"
 
+msgid "Manage aggregations"
+msgstr ""
+
 msgid "Manage categories"
 msgstr "Керувати категоріями"
 
@@ -1702,6 +1780,9 @@ msgstr "Символи, яких бракує, буде перелічено"
 msgid "Missing redirection"
 msgstr "Бракує переспрямування"
 
+msgid "Missing? Create one"
+msgstr ""
+
 msgid "Mobile"
 msgstr "Мобільна версія"
 
@@ -1716,6 +1797,9 @@ msgstr "Модерована вікі"
 
 msgid "Mono font"
 msgstr "Моноширинний шрифт"
+
+msgid "Month"
+msgstr ""
 
 msgid "More"
 msgstr "Додатково"
@@ -1810,6 +1894,9 @@ msgstr "Текстів ще не додано"
 msgid "None"
 msgstr "Немає"
 
+msgid "Not a periodical"
+msgstr ""
+
 #. ($c->loc('Save')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
@@ -1900,6 +1987,9 @@ msgstr "Або вивантажте HTML-файл"
 msgid "Or wrap it in"
 msgstr "Чи обгорніть його"
 
+msgid "Order"
+msgstr ""
+
 msgid "Ordered List"
 msgstr "Нумерований список"
 
@@ -1971,6 +2061,9 @@ msgstr "Частина й глава. Якщо однобічний докуме
 msgid "Part of"
 msgstr "Частина"
 
+msgid "Part of:"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Частина, лише для великих книг"
 
@@ -2000,6 +2093,9 @@ msgstr "Параметри"
 
 msgid "Pending revisions"
 msgstr "Версії в черзі"
+
+msgid "Periodicals"
+msgstr ""
 
 msgid "Picture"
 msgstr "Картинка"
@@ -2219,6 +2315,12 @@ msgstr "Зробити слайди."
 msgid "Produced"
 msgstr "Результати"
 
+msgid "Publication Date"
+msgstr ""
+
+msgid "Publication Place"
+msgstr ""
+
 msgid "Publication date"
 msgstr "Дата оприлюднення"
 
@@ -2321,6 +2423,9 @@ msgstr "Перезбірка"
 
 msgid "Recheck"
 msgstr "Повторити перевірку"
+
+msgid "Record deleted!"
+msgstr ""
 
 msgid "Redirections"
 msgstr "Переспрямування"
@@ -2492,6 +2597,9 @@ msgstr "Розділ"
 msgid "Section and subsection. If one side document: section."
 msgstr "Розділ і підрозділ. Якщо однобічний документ: розділ."
 
+msgid "See all"
+msgstr ""
+
 msgid "See here for more details."
 msgstr "Тут описано докладніше."
 
@@ -2535,11 +2643,17 @@ msgstr "Розділяють поля футера"
 msgid "Separate header fields"
 msgstr "Розділяють поля шапки"
 
+msgid "Series"
+msgstr ""
+
 msgid "Series Name"
 msgstr "Назва серії"
 
 msgid "Series Number"
 msgstr "Номер серї"
+
+msgid "Series or Periodical"
+msgstr ""
 
 msgid "Session sharing"
 msgstr "Поділитися сеансом"
@@ -2644,6 +2758,9 @@ msgstr "Знайдено версії, редагування яких не за
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr "На жаль, забагато завдань у черзі. Спробуйте згодом!"
 
+msgid "Sorry, you can't remove this, please ask an admin"
+msgstr ""
+
 msgid "Sorting:"
 msgstr "Порядок:"
 
@@ -2709,9 +2826,6 @@ msgstr "Підзаголовок"
 
 msgid "Such URI already exists"
 msgstr "Ідентифікатор уже існує"
-
-msgid "Such an URI already exists"
-msgstr "Ідентифікатор уже зайнято"
 
 msgid ""
 "Such an header will unpublish the text and put a\n"
@@ -2881,6 +2995,9 @@ msgstr "Текст у попередньому перегляді на голо�
 msgid "The text was added to the bookbuilder"
 msgstr "Текст додано до конструктора"
 
+msgid "The texts were added to the bookbuilder"
+msgstr ""
+
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -2919,8 +3036,10 @@ msgstr "Є версії в черзі"
 msgid "These texts are missing the unique id."
 msgstr "Цим текстам бракує унікальних ідентифікаторів."
 
-msgid "They can be texts, special texts, authors or topics."
-msgstr "Це можуть бути тексти, особливі тексти, автор_ки чи теми."
+msgid ""
+"They can be texts, special texts, authors, topics, custom categories, "
+"aggregations and series."
+msgstr ""
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
@@ -3169,6 +3288,13 @@ msgstr "На жаль, спільний репозиторій за адресо
 msgid "Unique ID for the text"
 msgstr "Унікальний ідентифікатор тексту"
 
+#. ('my-uri-1')
+#. ("my-uri-1")
+msgid ""
+"Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase "
+"characters and digits, optionally separated by a hyphen, e.g. %1"
+msgstr ""
+
 msgid "Unlimited"
 msgstr "Необмежено"
 
@@ -3192,8 +3318,20 @@ msgstr "Оновити"
 msgid "Update account info"
 msgstr "Змінити дані обліковки"
 
+msgid "Update aggregation"
+msgstr ""
+
+msgid "Update and create new aggregation"
+msgstr ""
+
+msgid "Update and create new text"
+msgstr ""
+
 msgid "Update category description"
 msgstr "Оновити опис категорії"
+
+msgid "Update series"
+msgstr ""
 
 msgid "Update to current settings"
 msgstr "Оновити до поточних налаштувань"
@@ -3394,6 +3532,9 @@ msgstr "Хибний логін чи пароль"
 
 msgid "XeLaTeX source"
 msgstr "XeLaTeX-джерело"
+
+msgid "Year"
+msgstr ""
 
 msgid "Yes"
 msgstr "Так"
@@ -3728,3 +3869,12 @@ msgstr ""
 "«Покинуте редагування» означає, що відредагованої версії не було "
 "оприлюднено, але її залишено на випадок, щоб інші могли відштовхнутися від "
 "неї, починаючи власні редагування."
+
+#~ msgid "Such an URI already exists"
+#~ msgstr "Ідентифікатор уже зайнято"
+
+#~ msgid "Edit annotations"
+#~ msgstr "Редагувати анотації"
+
+#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgstr "Це можуть бути тексти, особливі тексти, автор_ки чи теми."

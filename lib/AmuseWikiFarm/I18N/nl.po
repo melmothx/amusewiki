@@ -158,6 +158,9 @@ msgstr ""
 msgid "Add sections to the bookbuilder"
 msgstr "Voeg secties toe aan de boekmaker"
 
+msgid "Add text"
+msgstr ""
+
 msgid "Add the OPDS URL"
 msgstr "Voeg de OPDS URL toe"
 
@@ -171,6 +174,9 @@ msgid "Add this text to the bookbuilder"
 msgstr "Voeg deze tekst toe aan de boekmaker"
 
 msgid "Add to colophon"
+msgstr ""
+
+msgid "Add to the Bookbuilder"
 msgstr ""
 
 msgid ""
@@ -205,6 +211,15 @@ msgstr ""
 "  met verwijderen."
 
 msgid "Age:"
+msgstr ""
+
+msgid "Aggregation"
+msgstr ""
+
+msgid "Aggregation editing is disabled (autoimport file present)"
+msgstr ""
+
+msgid "Aggregations"
 msgstr ""
 
 msgid "Alias"
@@ -288,6 +303,18 @@ msgstr ""
 msgid "Annotations for %1"
 msgstr ""
 
+msgid "Annotations, collections, aggregations"
+msgstr ""
+
+msgid "Anthologies"
+msgstr ""
+
+msgid "Anthologies and periodicals"
+msgstr ""
+
+msgid "Anthology Name"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Apache wordt momenteel niet ondersteund"
 
@@ -308,6 +335,9 @@ msgstr "Als omslag in de koptekst"
 
 msgid "As regular image in the body"
 msgstr "Als normale afbeelding in de hoofdtekst"
+
+msgid "Assign text to aggregations"
+msgstr ""
 
 msgid "Assign text to collections"
 msgstr ""
@@ -361,6 +391,9 @@ msgstr "Terug naar de tekst"
 
 msgid "Bad request"
 msgstr "Verkeerde aanvraag"
+
+msgid "Bad type. This is a bug"
+msgstr ""
 
 msgid "Beamer color theme"
 msgstr "Beamer kleurthema"
@@ -455,6 +488,9 @@ msgstr "Kanonieke naam"
 msgid "Categories"
 msgstr "Categorieen"
 
+msgid "Category editing is disabled (autoimport file present)"
+msgstr ""
+
 #. ($site->canonical)
 #. (site.canonical)
 msgid "Category types for %1"
@@ -531,6 +567,9 @@ msgstr "Sluit"
 msgid "Code"
 msgstr ""
 
+msgid "Collection"
+msgstr ""
+
 msgid "Collection created"
 msgstr ""
 
@@ -592,10 +631,19 @@ msgstr "Kon dat niet maken"
 msgid "Create"
 msgstr "Maak"
 
+msgid "Create a new aggregation"
+msgstr ""
+
+msgid "Create a new aggregation for this series"
+msgstr ""
+
 msgid "Create a new annotation."
 msgstr ""
 
 msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
+
+msgid "Create a new child collection"
 msgstr ""
 
 msgid "Create a new format"
@@ -604,8 +652,17 @@ msgstr "Maak een nieuw formaat"
 msgid "Create a new librarian"
 msgstr "Maak een nieuwe bilbiothecaris"
 
+msgid "Create a new series"
+msgstr ""
+
 msgid "Create a new special page"
 msgstr "Maak een nieuwe speciale pagina"
+
+msgid "Create a new text for this aggregation"
+msgstr ""
+
+msgid "Create a new text for this collection"
+msgstr ""
 
 msgid "Create a new user"
 msgstr "Maak een nieuwe gebruiker"
@@ -652,6 +709,9 @@ msgstr "Datum"
 
 msgid "Date of the original publication"
 msgstr "Datum van de originele publicatie"
+
+msgid "Day"
+msgstr ""
 
 msgid "Default"
 msgstr ""
@@ -783,7 +843,10 @@ msgstr "Geschatte tijd"
 msgid "Edit"
 msgstr "Bewerk"
 
-msgid "Edit annotations"
+msgid "Edit Aggregation"
+msgstr ""
+
+msgid "Edit Series"
 msgstr ""
 
 msgid "Edit attachment description"
@@ -1179,6 +1242,9 @@ msgstr "Hogere deelfactor betekent smallere marges"
 msgid "Highest priority format"
 msgstr ""
 
+msgid "Home"
+msgstr ""
+
 msgid "How are you going to access Git?"
 msgstr ""
 
@@ -1445,6 +1511,9 @@ msgstr ""
 "  grotendeels hetzelfde voor alle toepassingen. Alles wat je hoeft te\n"
 "  doen is %1 toevoegen aan de netwerkbibliotheken."
 
+msgid "Inherited from the series"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Elementen in de lopende tekst"
 
@@ -1458,6 +1527,9 @@ msgid "Invalid ID"
 msgstr ""
 
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid data!"
 msgstr ""
 
 msgid "Invalid email"
@@ -1477,6 +1549,9 @@ msgstr ""
 
 msgid "Invalid username"
 msgstr "Ongeldige gebruikersnaam"
+
+msgid "Issue"
+msgstr ""
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -1697,6 +1772,9 @@ msgstr "Maak alle links actief"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Maak alle harde spaties expliciet en zichtbaar als ~~"
 
+msgid "Manage aggregations"
+msgstr ""
+
 msgid "Manage categories"
 msgstr ""
 
@@ -1737,6 +1815,9 @@ msgstr "Missend karakter zal worden gemeld"
 msgid "Missing redirection"
 msgstr "Missende verwijzing"
 
+msgid "Missing? Create one"
+msgstr ""
+
 msgid "Mobile"
 msgstr "Mobiel"
 
@@ -1751,6 +1832,9 @@ msgstr "Gemodereerde wiki"
 
 msgid "Mono font"
 msgstr "Mono lettertype"
+
+msgid "Month"
+msgstr ""
 
 msgid "More"
 msgstr "Meer"
@@ -1845,6 +1929,9 @@ msgstr "Er is nog geen tekst toegevoegd"
 msgid "None"
 msgstr "Geen"
 
+msgid "Not a periodical"
+msgstr ""
+
 #. ($c->loc('Save')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
@@ -1933,6 +2020,9 @@ msgstr "Of voorzie in een HTML-bestand om te uploaden"
 msgid "Or wrap it in"
 msgstr "Of verpak het ik"
 
+msgid "Order"
+msgstr ""
+
 msgid "Ordered List"
 msgstr "Georderde lijst"
 
@@ -2008,6 +2098,9 @@ msgstr ""
 msgid "Part of"
 msgstr ""
 
+msgid "Part of:"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Deel, alleen voor grotere boeken"
 
@@ -2037,6 +2130,9 @@ msgstr "Payload"
 
 msgid "Pending revisions"
 msgstr "Herzieningen in de wacht"
+
+msgid "Periodicals"
+msgstr ""
 
 msgid "Picture"
 msgstr "Foto"
@@ -2264,6 +2360,12 @@ msgstr "Maak slides."
 msgid "Produced"
 msgstr "Gemaakt"
 
+msgid "Publication Date"
+msgstr ""
+
+msgid "Publication Place"
+msgstr ""
+
 msgid "Publication date"
 msgstr "Publicatiedatum"
 
@@ -2371,6 +2473,9 @@ msgstr "Opnieuw aan het maken"
 
 msgid "Recheck"
 msgstr "Controleer opnieuw"
+
+msgid "Record deleted!"
+msgstr ""
 
 msgid "Redirections"
 msgstr "Verwijzingen"
@@ -2542,6 +2647,9 @@ msgstr "Sectie"
 msgid "Section and subsection. If one side document: section."
 msgstr "Sectie en subsectie. Indien eenzijdigd document: sectie."
 
+msgid "See all"
+msgstr ""
+
 msgid "See here for more details."
 msgstr "Zie hier voor meer details."
 
@@ -2585,10 +2693,16 @@ msgstr "Scheid voettekstvelden"
 msgid "Separate header fields"
 msgstr "Scheid koptekstvelden"
 
+msgid "Series"
+msgstr ""
+
 msgid "Series Name"
 msgstr ""
 
 msgid "Series Number"
+msgstr ""
+
+msgid "Series or Periodical"
 msgstr ""
 
 msgid "Session sharing"
@@ -2695,6 +2809,9 @@ msgstr "Er zijn een paar lopende herzieningen gevonden"
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr "Sorry, te veel taken in de wacht, probeer het later opnieuw!"
 
+msgid "Sorry, you can't remove this, please ask an admin"
+msgstr ""
+
 msgid "Sorting:"
 msgstr "Sortering:"
 
@@ -2760,9 +2877,6 @@ msgstr "Ondertitel"
 
 msgid "Such URI already exists"
 msgstr ""
-
-msgid "Such an URI already exists"
-msgstr "Zo'n URI bestaat al"
 
 msgid ""
 "Such an header will unpublish the text and put a\n"
@@ -2941,6 +3055,9 @@ msgstr "De tekst om op de thuispagina-voorvertoning te laten zien"
 msgid "The text was added to the bookbuilder"
 msgstr "De tekst is toegevoegd aan de boekmaker"
 
+msgid "The texts were added to the bookbuilder"
+msgstr ""
+
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -2981,7 +3098,9 @@ msgstr ""
 msgid "These texts are missing the unique id."
 msgstr "Deze teksten missen de unieke id."
 
-msgid "They can be texts, special texts, authors or topics."
+msgid ""
+"They can be texts, special texts, authors, topics, custom categories, "
+"aggregations and series."
 msgstr ""
 
 msgid ""
@@ -3235,6 +3354,13 @@ msgstr ""
 msgid "Unique ID for the text"
 msgstr "Unieke ID voor de tekst"
 
+#. ('my-uri-1')
+#. ("my-uri-1")
+msgid ""
+"Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase "
+"characters and digits, optionally separated by a hyphen, e.g. %1"
+msgstr ""
+
 msgid "Unlimited"
 msgstr "Onbeperkt"
 
@@ -3258,8 +3384,20 @@ msgstr "Update"
 msgid "Update account info"
 msgstr "Update account info"
 
+msgid "Update aggregation"
+msgstr ""
+
+msgid "Update and create new aggregation"
+msgstr ""
+
+msgid "Update and create new text"
+msgstr ""
+
 msgid "Update category description"
 msgstr "Update categoriebeschrijving"
+
+msgid "Update series"
+msgstr ""
 
 msgid "Update to current settings"
 msgstr "Update naar huidige instellingen"
@@ -3465,6 +3603,9 @@ msgstr "Foute gebruikersnaam of wachtwoord"
 
 msgid "XeLaTeX source"
 msgstr "XeLaTeX bron"
+
+msgid "Year"
+msgstr ""
 
 msgid "Yes"
 msgstr "Ja"
@@ -3804,6 +3945,9 @@ msgstr ""
 "\"Oude bewerking\" betekent dat de herziening was verlaten\n"
 "    tijdens het bewerken, maar hij is er nog steeds voor het geval dat\n"
 "    iemand er verder mee wil gaan bij het bewerken van een tekst."
+
+#~ msgid "Such an URI already exists"
+#~ msgstr "Zo'n URI bestaat al"
 
 #~ msgid "IRC channel on freenode"
 #~ msgstr "IRC kanaal op freenode"

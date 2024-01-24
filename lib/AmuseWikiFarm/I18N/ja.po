@@ -140,6 +140,9 @@ msgstr ""
 msgid "Add sections to the bookbuilder"
 msgstr "Bookbuilderにセクションを追加"
 
+msgid "Add text"
+msgstr ""
+
 msgid "Add the OPDS URL"
 msgstr "OPDS URLを追加"
 
@@ -153,6 +156,9 @@ msgid "Add this text to the bookbuilder"
 msgstr "この記事をbookbuilderに追加"
 
 msgid "Add to colophon"
+msgstr ""
+
+msgid "Add to the Bookbuilder"
 msgstr ""
 
 msgid ""
@@ -184,6 +190,15 @@ msgstr ""
 
 msgid "Age:"
 msgstr "年齢："
+
+msgid "Aggregation"
+msgstr ""
+
+msgid "Aggregation editing is disabled (autoimport file present)"
+msgstr ""
+
+msgid "Aggregations"
+msgstr ""
 
 msgid "Alias"
 msgstr "エイリアス"
@@ -254,6 +269,18 @@ msgstr ""
 msgid "Annotations for %1"
 msgstr ""
 
+msgid "Annotations, collections, aggregations"
+msgstr ""
+
+msgid "Anthologies"
+msgstr ""
+
+msgid "Anthologies and periodicals"
+msgstr ""
+
+msgid "Anthology Name"
+msgstr ""
+
 msgid "Apache is not currently supported"
 msgstr "Apacheは現在サポートされていません"
 
@@ -274,6 +301,9 @@ msgstr "ヘッダーのカバーとして"
 
 msgid "As regular image in the body"
 msgstr "ボディの通常の画像として"
+
+msgid "Assign text to aggregations"
+msgstr ""
 
 msgid "Assign text to collections"
 msgstr ""
@@ -329,6 +359,9 @@ msgstr "記事に戻る"
 
 msgid "Bad request"
 msgstr "不正なリクエスト"
+
+msgid "Bad type. This is a bug"
+msgstr ""
 
 msgid "Beamer color theme"
 msgstr "ビーマーカラーテーマ"
@@ -418,6 +451,9 @@ msgstr "正規名称"
 msgid "Categories"
 msgstr "カテゴリー"
 
+msgid "Category editing is disabled (autoimport file present)"
+msgstr ""
+
 #. ($site->canonical)
 #. (site.canonical)
 msgid "Category types for %1"
@@ -491,6 +527,9 @@ msgstr "閉じる"
 msgid "Code"
 msgstr "コード"
 
+msgid "Collection"
+msgstr ""
+
 msgid "Collection created"
 msgstr ""
 
@@ -550,11 +589,20 @@ msgstr "作成できませんでした"
 msgid "Create"
 msgstr "作成"
 
+msgid "Create a new aggregation"
+msgstr ""
+
+msgid "Create a new aggregation for this series"
+msgstr ""
+
 msgid "Create a new annotation."
 msgstr ""
 
 msgid "Create a new category type. Please use only lowercase ASCII letters"
 msgstr "新しいカテゴリタイプを作成。 小文字のASCII文字のみご使用ください"
+
+msgid "Create a new child collection"
+msgstr ""
 
 msgid "Create a new format"
 msgstr "新しいフォーマットを作成"
@@ -562,8 +610,17 @@ msgstr "新しいフォーマットを作成"
 msgid "Create a new librarian"
 msgstr "新しいライブラリアンを作成"
 
+msgid "Create a new series"
+msgstr ""
+
 msgid "Create a new special page"
 msgstr "新しい特別ページを作成"
+
+msgid "Create a new text for this aggregation"
+msgstr ""
+
+msgid "Create a new text for this collection"
+msgstr ""
 
 msgid "Create a new user"
 msgstr "新しいユーザーを作成"
@@ -610,6 +667,9 @@ msgstr "発行日"
 
 msgid "Date of the original publication"
 msgstr "元の発行日"
+
+msgid "Day"
+msgstr ""
 
 msgid "Default"
 msgstr ""
@@ -730,7 +790,10 @@ msgstr "ETA"
 msgid "Edit"
 msgstr "編集"
 
-msgid "Edit annotations"
+msgid "Edit Aggregation"
+msgstr ""
+
+msgid "Edit Series"
 msgstr ""
 
 msgid "Edit attachment description"
@@ -1107,6 +1170,9 @@ msgstr "除数係数が高いほど、マージンが狭くなります"
 msgid "Highest priority format"
 msgstr ""
 
+msgid "Home"
+msgstr ""
+
 msgid "How are you going to access Git?"
 msgstr "どのようにGitにアクセスしますか？"
 
@@ -1338,6 +1404,9 @@ msgstr ""
 "です。 あなたがしなければならないのは、ネットワークライブラリに%1を追加するこ"
 "とです。"
 
+msgid "Inherited from the series"
+msgstr ""
+
 msgid "Inline elements"
 msgstr "インライン要素"
 
@@ -1351,6 +1420,9 @@ msgid "Invalid ID"
 msgstr ""
 
 msgid "Invalid URI"
+msgstr ""
+
+msgid "Invalid data!"
 msgstr ""
 
 msgid "Invalid email"
@@ -1370,6 +1442,9 @@ msgstr ""
 
 msgid "Invalid username"
 msgstr "無効なユーザー名"
+
+msgid "Issue"
+msgstr ""
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -1565,6 +1640,9 @@ msgstr "全てのリンクをアクティブに"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "改行しないスペースを全て明示的にし、~~として表示"
 
+msgid "Manage aggregations"
+msgstr ""
+
 msgid "Manage categories"
 msgstr "カテゴリを管理"
 
@@ -1605,6 +1683,9 @@ msgstr "不足している文字は報告されます"
 msgid "Missing redirection"
 msgstr "リダイレクトがありません"
 
+msgid "Missing? Create one"
+msgstr ""
+
 msgid "Mobile"
 msgstr "スマートフォン"
 
@@ -1619,6 +1700,9 @@ msgstr "モデレートウィキ"
 
 msgid "Mono font"
 msgstr "モノフォント"
+
+msgid "Month"
+msgstr ""
 
 msgid "More"
 msgstr "その他"
@@ -1712,6 +1796,9 @@ msgstr "記事はまだ追加されていません"
 msgid "None"
 msgstr "無し"
 
+msgid "Not a periodical"
+msgstr ""
+
 #. ($c->loc('Save')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
@@ -1796,6 +1883,9 @@ msgstr "またはアップロード用HTMLファイルを提供してくださ�
 msgid "Or wrap it in"
 msgstr "それか、ラップしてください"
 
+msgid "Order"
+msgstr ""
+
 msgid "Ordered List"
 msgstr "順序付きリスト"
 
@@ -1860,6 +1950,9 @@ msgstr "部と章。片側が文書の場合：一部。"
 msgid "Part of"
 msgstr "の一部"
 
+msgid "Part of:"
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "一部、大型本のみ"
 
@@ -1889,6 +1982,9 @@ msgstr "ペイロード"
 
 msgid "Pending revisions"
 msgstr "保留中の改訂"
+
+msgid "Periodicals"
+msgstr ""
 
 msgid "Picture"
 msgstr "画像"
@@ -2095,6 +2191,12 @@ msgstr "スライド作成。"
 msgid "Produced"
 msgstr "作成完了"
 
+msgid "Publication Date"
+msgstr ""
+
+msgid "Publication Place"
+msgstr ""
+
 msgid "Publication date"
 msgstr "発行日"
 
@@ -2191,6 +2293,9 @@ msgstr "再構築中"
 
 msgid "Recheck"
 msgstr "再確認"
+
+msgid "Record deleted!"
+msgstr ""
 
 msgid "Redirections"
 msgstr "リダイレクト"
@@ -2362,6 +2467,9 @@ msgstr "セクション"
 msgid "Section and subsection. If one side document: section."
 msgstr "セクションおよびサブセクション。片側が文書の場合：セクション。"
 
+msgid "See all"
+msgstr ""
+
 msgid "See here for more details."
 msgstr "詳細はこちらをご覧ください。"
 
@@ -2405,10 +2513,16 @@ msgstr "別のフッターフィールド"
 msgid "Separate header fields"
 msgstr "別のヘッダーフィールド"
 
+msgid "Series"
+msgstr "シリーズ"
+
 msgid "Series Name"
 msgstr ""
 
 msgid "Series Number"
+msgstr ""
+
+msgid "Series or Periodical"
 msgstr ""
 
 msgid "Session sharing"
@@ -2515,6 +2629,9 @@ msgstr ""
 "申し訳ありませんが、あまりにも多くのジョブが保留中なので、後ほど再度お試しく"
 "ださい！"
 
+msgid "Sorry, you can't remove this, please ask an admin"
+msgstr ""
+
 msgid "Sorting:"
 msgstr "並べ替え："
 
@@ -2580,9 +2697,6 @@ msgstr "サブタイトル"
 
 msgid "Such URI already exists"
 msgstr ""
-
-msgid "Such an URI already exists"
-msgstr "このURIは既に存在しています"
 
 msgid ""
 "Such an header will unpublish the text and put a\n"
@@ -2745,6 +2859,9 @@ msgstr "ホームページプレビューに表示される記事"
 msgid "The text was added to the bookbuilder"
 msgstr "記事はbookbuilderに追加されました"
 
+msgid "The texts were added to the bookbuilder"
+msgstr ""
+
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -2780,8 +2897,10 @@ msgstr "保留中のリビジョンがあります"
 msgid "These texts are missing the unique id."
 msgstr "これらの記事は、一意のIDが欠落しています。"
 
-msgid "They can be texts, special texts, authors or topics."
-msgstr "記事、特殊な記事、著者またはトピックです。"
+msgid ""
+"They can be texts, special texts, authors, topics, custom categories, "
+"aggregations and series."
+msgstr ""
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
@@ -3016,6 +3135,13 @@ msgstr "残念ながら、%1にある共有リポジトリは同期していな�
 msgid "Unique ID for the text"
 msgstr "記事の一意ID"
 
+#. ('my-uri-1')
+#. ("my-uri-1")
+msgid ""
+"Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase "
+"characters and digits, optionally separated by a hyphen, e.g. %1"
+msgstr ""
+
 msgid "Unlimited"
 msgstr "無限"
 
@@ -3039,8 +3165,20 @@ msgstr "更新"
 msgid "Update account info"
 msgstr "アカウント情報を更新"
 
+msgid "Update aggregation"
+msgstr ""
+
+msgid "Update and create new aggregation"
+msgstr ""
+
+msgid "Update and create new text"
+msgstr ""
+
 msgid "Update category description"
 msgstr "カテゴリ説明を更新"
+
+msgid "Update series"
+msgstr ""
 
 msgid "Update to current settings"
 msgstr "現在の設定を更新"
@@ -3223,6 +3361,9 @@ msgstr "ユーザー名またはパスワードが間違っていま"
 
 msgid "XeLaTeX source"
 msgstr "XeLaTeXソース"
+
+msgid "Year"
+msgstr ""
 
 msgid "Yes"
 msgstr "はい"
@@ -3552,6 +3693,12 @@ msgid ""
 "    it up when editing a text."
 msgstr ""
 
+#~ msgid "Such an URI already exists"
+#~ msgstr "このURIは既に存在しています"
+
+#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgstr "記事、特殊な記事、著者またはトピックです。"
+
 #~ msgid "Nodes"
 #~ msgstr "ノード"
 
@@ -3569,9 +3716,6 @@ msgstr ""
 
 #~ msgid "Site Map"
 #~ msgstr "サイトマップ"
-
-#~ msgid "Series"
-#~ msgstr "シリーズ"
 
 #~ msgid "en"
 #~ msgstr "ja"
@@ -4142,8 +4286,8 @@ msgstr ""
 
 #~ msgid ""
 #~ "You MUST specify a reason, otherwise the line will have no effect.\n"
-#~ " The ordering of the header’s lines (where there is \"#title\", \"#lang"
-#~ "\",\n"
+#~ " The ordering of the header’s lines (where there is \"#title\", "
+#~ "\"#lang\",\n"
 #~ " etc.) is irrelevant."
 #~ msgstr ""
 #~ "理由を指定しないと効果がありません。ヘッダーの行の順序（「#title」、"
