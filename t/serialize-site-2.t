@@ -4,7 +4,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 31;
+use Test::More tests => 30;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -129,15 +129,20 @@ my $placeholder = create_site($schema, "0blabla0");
 
 
     # this is the critical one
-    is_deeply [ map { $_->code } $site->custom_formats->sorted_by_priority ], $cfs,
-      "Custom formats retained thery code";
+    # is_deeply [ map { $_->code } $site->custom_formats->sorted_by_priority ], $cfs,
+    # "Custom formats retained thery code";
 
-    diag Dumper($cfs);
+    # We can't have this, because given that the format_code is
+    # unique, the needed one could have already been taken upon
+    # loading, so those codes are unstable across installations.
+
+    diag "New: " . Dumper([ map { $_->code } $site->custom_formats->sorted_by_priority ]);
+    diag "Old:" . Dumper($cfs);
     foreach my $cf ($site->custom_formats->sorted_by_priority) {
         diag "Checking " . $cf->custom_formats_id . ' ' .  $cf->code;
         ok $cf->format_code;
         is $cf->code, $cf->format_code;
-        isnt "c" . $cf->custom_formats_id, $cf->code;
+        is "c" . $cf->custom_formats_id, $cf->code;
         if ($cf->active) {
             my $produced = path($site->repo_root, t => tt => 'test.' . $cf->extension);
             ok $produced->exists, "$produced exists";

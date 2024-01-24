@@ -4334,6 +4334,11 @@ sub serialize_site {
                     $row_data{category_descriptions} = \@descriptions;
                 }
             }
+            if ($method eq 'custom_formats') {
+                # this is basically c + id and will break in db reset
+                # and will be restored by the jobber.
+                delete $row_data{format_code};
+            }
             push @records, \%row_data;
         }
         if (my $ordering = $search_args[1]{order_by}) {
