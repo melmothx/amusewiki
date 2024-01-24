@@ -96,7 +96,7 @@ sub edit_series :Chained('edit_gate') :PathPart('series') :Args {
                     $c->flash(status_msg => $c->loc("Thanks!"));
                 }
                 else {
-                    $c->flash(error_msg => $c->loc("URI already exists!"));
+                    $c->flash(error_msg => $c->loc("Such URI already exists"));
                 }
             }
             else {
@@ -168,7 +168,7 @@ sub edit :Chained('edit_gate') :PathPart('edit') :Args {
         unless (delete $params->{is_update}) {
             # new: check if exists
             if ($site->aggregations->find({ aggregation_uri => muse_naming_algo($params->{aggregation_uri}) })) {
-                $c->flash(error_msg => $c->loc("URI already exists!"));
+                $c->flash(error_msg => $c->loc("Such URI already exists"));
                 return $c->response->redirect($c->uri_for_action('/aggregation/manage'));
             }
         }

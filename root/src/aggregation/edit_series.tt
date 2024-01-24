@@ -3,12 +3,12 @@
 <div class="page-header">
   <h1>
     [% IF series.aggregation_series_uri %]
-      [% loc('Update Series') %]
+      [% loc('Update series') %]
       <em>
         [% series.aggregation_series_name | html %]
       </em>
     [% ELSE %]
-      [% loc('Create New Series') %]
+      [% loc('Create a new series') %]
     [% END %]
   </h1>
 </div>
@@ -75,7 +75,7 @@
     <input type="hidden" name="update" value="1">
     [% IF aggregations %]
       <div class="form-group">
-        <label class="col-sm-2 control-label">[% loc('Sorting') %]</label>
+        <label class="col-sm-2 control-label">[% loc('Order') %]</label>
         <div class="col-sm-10">
           <div class="panel panel-default" style="margin-top: 20px">
             <div class="panel-body">

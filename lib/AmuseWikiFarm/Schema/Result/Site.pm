@@ -1749,8 +1749,8 @@ sub create_new_text {
     $params->{uri} = $uri;
 
     if ($self->titles->find({ uri => $uri, f_class => $f_class })) {
-        # loc("Such an URI already exists");
-        return undef, "Such an URI already exists";
+        # loc("Such URI already exists");
+        return undef, "Such URI already exists";
     }
     return $self->import_text_from_html_params($params, $f_class);
 }
