@@ -77,18 +77,17 @@
 </div>
 [% END %]
 
+[% IF !site.cgit_integration || site.mode == 'private' %]
 <h3>[% loc('Access token') %]</h3>
 <p>
-  [% loc('The git access is protected. You can authorize your IP for 24 hours visiting the following link.') %]
+  [% loc('You can authorize your IP for Git access and site access (for private sites) for 4 hours visiting the following link.') %]
 </p>
 <p>
   <strong>[% loc('Access token') %]:</strong> <code>[% api_access_token | html %]</code><br>
-  <strong>[% loc('Created') %]:</strong> <code>[% api_access_created | html %]</code>
-</p>
-<p>
-  <a href="[% c.uri_for_action('/user/authorize_ip', api_access_token) | html %]"
-     class="btn btn-primary">
-    [% loc('Authorize my IP') %]
+  <strong>[% loc('Created') %]:</strong> <code>[% api_access_created | html %]</code><br>
+  <strong>[% loc('URL') %]:</strong>
+  <a href="[% c.uri_for_action('/user/authorize_ip', api_access_token) | html %]">
+    [% c.uri_for_action('/user/authorize_ip', api_access_token) | html %]
   </a>
   <form method="post" action="[% c.uri_for_action('/user/refresh_api_access_token') %]"
         onsubmit="return amw_confirm()">
@@ -97,6 +96,7 @@
     </button>
   </form>
 </p>
+[% END %]
 
 <h3>[% loc('How are you going to access Git?') %]</h3>
 <div class="form-group">

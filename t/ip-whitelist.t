@@ -148,10 +148,16 @@ $site->whitelist_ips->delete;
     $mech->get_ok('/refresh-api-access-token');
     $mech->content_lacks($token);
     isnt $user->discard_changes->get_api_access_token, $token;
+    $token = $user->discard_changes->get_api_access_token;
     $mech->get_ok('/admin/sites/edit/' . $site->id);
     $mech->content_lacks('66.66.66.66', "Temporary auth not displayed");
 
     $mech->get('/logout');
+    $mech->get('/git');
+    is $mech->status, 401;
+    $mech->get_ok("/authorize-ip/$token");
+    $mech->get_ok('/git');
+
     $mech->get_ok('/git');
     $site->whitelist_ips->search({ expire_epoch => { '>' => 0 } })->update({ expire_epoch => 10 });
     $mech->get('/git');

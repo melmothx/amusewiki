@@ -67,7 +67,7 @@ sub authorize_ip :Chained('/site_no_auth') :PathPart('authorize-ip') :Args(1) {
                 $user->user_sites->find({ site_id => $site->id })) {
                 log_info { "IP $ip authorized by " . $user->username };
                 my %update = (
-                              expire_epoch => time() + 60 * 60 * 24,
+                              expire_epoch => time() + 60 * 60 * 4,
                               granted_by_username => $user->username,
                              );
                 if (my $existing = $site->whitelist_ips->find({ ip => $ip })) {
@@ -102,10 +102,11 @@ sub authorize_ip :Chained('/site_no_auth') :PathPart('authorize-ip') :Args(1) {
 sub refresh_api_access_token :Chained('/site_user_required') :PathPart('refresh-api-access-token') :Args(0) {
     my ($self, $c) = @_;
     die unless $c->user_exists;
-    my $id = $c->user->get('id');
-    if ($id) {
-        log_info { "Resetting the token for $id" };
-        $c->model('DB::User')->find($id)->get_api_access_token({ reset => 1 });
+    my $username = $c->user->get('username');
+    if ($username) {
+        log_info { "Resetting the token for $username" };
+        $c->model('DB::User')->find({ username => $username })->get_api_access_token({ reset => 1 });
+        $c->stash->{site}->whitelist_ips->search({ granted_by_username => $username })->delete;
     }
     $c->flash(status_msg => $c->loc("Token refreshed"));
     $c->response->redirect($c->uri_for_action('/console/git_display'));
