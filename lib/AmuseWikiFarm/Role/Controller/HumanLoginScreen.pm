@@ -283,7 +283,14 @@ sub ip_is_whitelisted {
     my $site = $c->stash->{site};
     if ($site) {
         if (my $ip = $c->req->address) {
-            if ($site->whitelist_ips->find({ ip => $ip })) {
+            if (my $authorized = $site->whitelist_ips->find({ ip => $ip })) {
+                if (my $expires = $authorized->expire_epoch) {
+                    if ($expires < time()) {
+                        Dlog_info { "Expired authorization for $ip: removing record $_" } +{ $authorized->get_columns };
+                        $authorized->delete;
+                        return 0;
+                    }
+                }
                 $c->stash(whitelisted_ip => $ip);
                 log_debug { "Granting access to " . $c->req->uri . ":  $ip is whitelisted" };
                 return 1;

@@ -112,6 +112,11 @@ __PACKAGE__->table("users");
   data_type: 'text'
   is_nullable: 1
 
+=head2 api_access_created
+
+  data_type: 'datetime'
+  is_nullable: 1
+
 =head2 reset_token
 
   data_type: 'text'
@@ -149,6 +154,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 8 },
   "api_access_token",
   { data_type => "text", is_nullable => 1 },
+  "api_access_created",
+  { data_type => "datetime", is_nullable => 1 },
   "reset_token",
   { data_type => "text", is_nullable => 1 },
   "reset_until",
@@ -249,8 +256,8 @@ Composing rels: L</user_sites> -> site
 __PACKAGE__->many_to_many("sites", "user_sites", "site");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-24 14:16:07
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UmV4w+W/FeflQPgyCSCBcg
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-24 15:48:54
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:IbfU/vrDLVWCgnnNxOUKdw
 
 __PACKAGE__->load_components(qw(PassphraseColumn));
 
@@ -291,6 +298,8 @@ __PACKAGE__->add_columns(
 
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse ();
+use Bytes::Random::Secure;
+use DateTime;
 
 has reset_token_plain => (is => 'rw');
 
@@ -416,6 +425,18 @@ sub can_login_into {
     else {
         return 0;
     }
+}
+
+sub get_api_access_token {
+    my ($self, $opts) = @_;
+    if (($opts && $opts->{reset}) or !$self->api_access_token) {
+        my $token = Bytes::Random::Secure->new(NonBlocking => 1)->string_from('ABCDEFGHLMNPQRSTUVWYZ123456789', 32);
+        $self->update({
+                       api_access_token => $token,
+                       api_access_created => DateTime->now(time_zone => 'UTC'),
+                      });
+    }
+    return $self->api_access_token;
 }
 
 __PACKAGE__->meta->make_immutable;

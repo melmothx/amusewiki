@@ -56,6 +56,7 @@ sub git :Chained('root') :PathPart('git') :CaptureArgs(0) {
     Dlog_debug { "Remotes are $_" } \@remotes;
     my $username = $c->user->get('username');
     die "This shouldn't happen, no username" unless $username;
+    my $user = $c->model('DB::User')->find({ username => $username });
     my $found_own = 0;
     foreach my $remote (@remotes) {
         if ($remote->{name} eq $username) {
@@ -63,7 +64,10 @@ sub git :Chained('root') :PathPart('git') :CaptureArgs(0) {
             $found_own = 1;
         }
     }
+    my $token = $user->get_api_access_token;
     $c->stash(user_has_own_remote => $found_own,
+              api_access_token => $token,
+              api_access_created => $user->api_access_created->ymd,
               remotes => [ grep { $_->{action} && $_->{action} eq 'fetch' } @remotes ],
               repo_validation => $c->stash->{site}->remote_gits_hashref);
 }

@@ -145,7 +145,7 @@ __PACKAGE__->table("site");
 =head2 cgit_integration
 
   data_type: 'integer'
-  default_value: 1
+  default_value: 0
   is_nullable: 0
   size: 1
 
@@ -432,7 +432,7 @@ __PACKAGE__->add_columns(
   "sitegroup",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "cgit_integration",
-  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "ssl_key",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "ssl_cert",
@@ -1044,8 +1044,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-16 13:27:46
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:dtZ3/kATboLNdU6gVH8LRQ
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-24 16:27:05
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:02jKqZQE9APHLfMDXAVdrA
 
 =head2 other_sites
 

@@ -53,6 +53,64 @@ use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse ();
 use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
 
+sub authorize_ip :Chained('/site_no_auth') :PathPart('authorize-ip') :Args(1) {
+    my ($self, $c, $token) = @_;
+    $self->redirect_to_secure($c);
+    # first, check if the token is present for any user
+    my $site = $c->stash->{site};
+    my $ip = $c->req->address;
+    my $ok;
+    if ($token) {
+      USER:
+        foreach my $user ($c->model('DB::User')->search({ api_access_token => $token })) {
+            if ($user->roles->find({ role => 'root' }) or
+                $user->user_sites->find({ site_id => $site->id })) {
+                log_info { "IP $ip authorized by " . $user->username };
+                my %update = (
+                              expire_epoch => time() + 60 * 60 * 24,
+                              granted_by_username => $user->username,
+                             );
+                if (my $existing = $site->whitelist_ips->find({ ip => $ip })) {
+                    if ($existing->expire_epoch) {
+                        $existing->update(\%update);
+                    }
+                    else {
+                        log_debug { "IP is already permanently whitelisted" };
+                    }
+                }
+                else {
+                    $site->add_to_whitelist_ips({
+                                                 ip => $ip,
+                                                 user_editable => 0,
+                                                 %update,
+                                                });
+                }
+                $ok++;
+                last USER;
+            }
+        }
+    }
+    if ($ok) {
+        $c->response->content_type('text/plain');
+        $c->response->body("$ip has been authorized\n");
+    }
+    else {
+        $c->detach('/not_permitted');
+    }
+}
+
+sub refresh_api_access_token :Chained('/site_user_required') :PathPart('refresh-api-access-token') :Args(0) {
+    my ($self, $c) = @_;
+    die unless $c->user_exists;
+    my $id = $c->user->get('id');
+    if ($id) {
+        log_info { "Resetting the token for $id" };
+        $c->model('DB::User')->find($id)->get_api_access_token({ reset => 1 });
+    }
+    $c->flash(status_msg => $c->loc("Token refreshed"));
+    $c->response->redirect($c->uri_for_action('/console/git_display'));
+}
+
 # used by /login and /reset_password
 sub secure_no_user :Chained('/site_no_auth') :PathPart('') :CaptureArgs(0) {
     my ( $self, $c ) = @_;

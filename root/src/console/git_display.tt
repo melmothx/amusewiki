@@ -77,6 +77,27 @@
 </div>
 [% END %]
 
+<h3>[% loc('Access token') %]</h3>
+<p>
+  [% loc('The git access is protected. You can authorize your IP for 24 hours visiting the following link.') %]
+</p>
+<p>
+  <strong>[% loc('Access token') %]:</strong> <code>[% api_access_token | html %]</code><br>
+  <strong>[% loc('Created') %]:</strong> <code>[% api_access_created | html %]</code>
+</p>
+<p>
+  <a href="[% c.uri_for_action('/user/authorize_ip', api_access_token) | html %]"
+     class="btn btn-primary">
+    [% loc('Authorize my IP') %]
+  </a>
+  <form method="post" action="[% c.uri_for_action('/user/refresh_api_access_token') %]"
+        onsubmit="return amw_confirm()">
+    <button type="submit" name="delete" value="delete" class="btn btn-danger">
+      [% loc('Refresh the token') %]
+    </button>
+  </form>
+</p>
+
 <h3>[% loc('How are you going to access Git?') %]</h3>
 <div class="form-group">
   <div class="btn-group" data-toggle="buttons">
@@ -129,6 +150,8 @@ git push
   <h4>[% loc('Setup') %]</h4>
 
   <pre>
+# [% loc('Authorize your IP') %]
+curl [% c.uri_for_action('/user/authorize_ip', api_access_token) %]
 git clone [% site.canonical_url %]/git/[% site.id %]
 cd [% site.id %]
 git remote rename origin web
@@ -142,6 +165,8 @@ git checkout -b upstream -t web/master
 
   <pre>
 git checkout upstream
+# [% loc('Authorize your IP, if needed') %]
+curl [% c.uri_for_action('/user/authorize_ip', api_access_token) %]
 git pull
 git checkout master
 git merge upstream
