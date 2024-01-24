@@ -11,7 +11,7 @@ BEGIN {
 
 
 use Data::Dumper;
-use Test::More tests => 225;
+use Test::More tests => 227;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::OAI::PMH;
 use File::Spec::Functions qw/catfile catdir/;
@@ -537,6 +537,10 @@ foreach my $test ({
                              '<error code="noRecordsMatch">',
                              '<subfield code="a" />',
                             ],
+                   re => [
+                          qr{<datafield tag="100" ind1="0" ind2=" ">\s*<subfield code="a">.*?</subfield>\s*<subfield code="e">author</subfield>}si,
+                          qr{<datafield tag="856" ind1=" " ind2=" ">\s*<subfield code="u">.*?</subfield>\s*<subfield code="q">.*?</subfield>\s*<subfield code="y">.*?</subfield>}
+                         ],
                   },
                   {
                    args => {
@@ -598,6 +602,9 @@ foreach my $test ({
     $uri->query_form($test->{args});
     $mech->get_ok("$uri") or die;
     diag $mech->content;
+    foreach my $re (@{$test->{re} || []}) {
+        $mech->content_like($re);
+    }
     foreach my $exp (@{$test->{expect}}) {
         $mech->content_contains($exp);
     }

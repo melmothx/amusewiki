@@ -114,72 +114,139 @@
       </div>
     [% END %]
 
-    [% IF annotations %]
-      [% FOREACH annotation IN annotations %]
-        [% IF annotation.html %]
-          <div
-              [% IF annotation.private %]
-                  class="text-annotation text-muted" title="[% loc('Private') %]"
-              [% ELSE %]
-                  class="text-annotation"
-              [% END %]
-          >
-            <strong>[% lh.site_loc_html(annotation.label) %]:</strong>
-            [% IF annotation.url %]
-              <a href="[% annotation.url %]">[% loc('Download') %]</a>
-            [% ELSE %]
-            <span>
-              [% annotation.html %]
-            </span>
-            [% END %]
+    [% FOREACH aggregation IN aggregations %]
+      <div class="text-aggregation" data-aggregation-id="[% aggregation.aggregation_id | html %]">
+        <strong>[% loc('Part of:') %]</strong>
+        <a href="[% c.uri_for_action('aggregation/aggregation', aggregation.aggregation_uri) | html %]">
+          [% aggregation.aggregation_name | html %]
+        </a>
+      </div>
+    [% END %]
+    [% INCLUDE 'include/annotation-display.tt' %]
+    [% # this is triggered only if there's an user %]
+    [% IF annotation_editor %]
+      <div id="edit-annotation" class="collapse" style="margin-top: 20px">
+        [% IF site_has_collections %]
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <form id="inline_collection_editor"
+                    name="collection-editor" action="[% c.uri_for_action('nodes/title', text.id) %]"
+                    method="POST">
+                <div class="text-center">
+                  <strong>[% loc('Collections') %]</strong>
+                </div>
+                <table class="table table-striped table-bordered">
+                  <tr>
+                    <th>[% loc('Action') %]</th>
+                    <th>[% loc('Collection') %]</th>
+                  </tr>
+                  [% FOREACH collection IN collections %]
+                    <tr>
+                      <td>
+                        <label>
+                          <input type="checkbox" name="remove_node"
+                               value="[% collection.node_id %]">
+                          [% loc('Remove') %]
+                        </label>
+                      </td>
+                      <td>
+                        <a href="[% c.uri_for("/node/" _ collection.full_path) | html %]">
+                          [% collection.canonical_title | html %]
+                          <code>[% collection.full_path | html %]</code>
+                        </a>
+                      </td>
+                    </tr>
+                  [% END %]
+                  <tr>
+                    <td>
+                      <strong>[% loc('Add') %]</strong>
+                    </td>
+                    <td>
+                      <div id="collection-editor">
+                      </div>
+                      <a href="[% c.uri_for_action('/nodes/node_root', { add_text => text.full_uri }) | html %]">
+                        <small>[% loc('Missing? Create one') %]</small>
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+                <div class="text-center">
+                  <button name="update_title_nodes" type="submit" class="btn btn-primary">
+                    [% loc('Update') %]
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         [% END %]
-      [% END %]
-      [% IF c.user_exists %]
-        <div id="edit-annotation" class="collapse">
-          <form name="annotate" action="[% c.uri_for_action('annotate/title', text.id) %]"
-                method="POST"
-                enctype="multipart/form-data">
-            <table class="table table-striped table-bordered">
-              [% FOREACH annotation IN annotations %]
-                <tr>
-                  <td>
-                    <input type="hidden" name="passed-[% annotation.id %]" value="1" />
-                    <label for="annotation-[% annotation.id %]">
-                      [% lh.site_loc_html(annotation.label) %]
-                    </label>
-                  </td>
-                  <td>
-                    [% IF annotation.type == 'file' %]
-                      <input id="annotation-[% annotation.id %]"
-                             name="file-[% annotation.id %]" type="file" />
-                    [% ELSIF annotation.type == 'identifier' %]
-                      <input id="annotation-[% annotation.id %]"
-                             name="value-[% annotation.id %]"
-                             class="form-control" value="[% annotation.value | html %]" />
-                    [% ELSIF annotation.type == 'text' %]
-                      <textarea id="annotation-[% annotation.id %]"
-                                name="value-[% annotation.id %]"
-                                class="form-control">[% annotation.value | html %]</textarea>
-                    [% END %]
-                  </td>
-                  <td>
-                    <label>
-                      <input name="wipe-[% annotation.id %]" type="checkbox">
-                      [% loc('Remove') %]
-                    </label>
-                  </td>
-                </tr>
-              [% END %]
-            </table>
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary">
-                [% loc('Update') %]
-              </button>
+        [% IF site_has_aggregations %]
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <form name="aggregate" id="inline_aggregation_editor"
+                    action="[% c.uri_for_action('aggregation/title', text.id) %]"
+                    method="POST">
+                <div class="text-center">
+                  <strong>[% loc('Aggregations') %]</strong>
+                </div>
+                <table class="table table-striped table-bordered">
+                  <tr>
+                    <th>[% loc('Action') %]</th>
+                    <th>[% loc('Aggregation') %]</th>
+                    <th>[% loc('Position') %]</th>
+                  </tr>
+                  [% FOREACH aggregation IN aggregations %]
+                  <tr>
+                    <td>
+                      <label>
+                        <input type="checkbox" name="remove_aggregation"
+                               value="[% aggregation.aggregation_id | html%]">
+                        [% loc('Remove') %]
+                      </label>
+                    </td>
+                    <td>
+                      <a href="[% c.uri_for_action('aggregation/aggregation', aggregation.aggregation_uri) | html %]">
+                        [% aggregation.aggregation_name | html %]
+                        [% aggregation.series_number | html %]
+                      </a>
+                    </td>
+                    <td style="width: 100px">
+                      <input type="number" step="1" min="0"
+                             class="form-control"
+                             name="title_sorting_pos-[% aggregation.aggregation_id %]"
+                             value="[% aggregation.title_sorting_pos %]" />
+                    </td>
+                  </tr>
+                  [% END %]
+                  <tr>
+                    <td>
+                      <strong>[% loc('Add') %]</strong>
+                    </td>
+                    <td style="min-width:200px">
+                      <div id="annotation-editor-aggregations">
+                      </div>
+                      <a href="[% c.uri_for_action('/aggregation/edit', { add_text => text.uri }) | html %]">
+                        <small>[% loc('Missing? Create one') %]</small>
+                      </a>
+                    </td>
+                    <td style="width: 100px">
+                      <input type="number" step="1" min="0"
+                             class="form-control"
+                             name="title_sorting_pos"
+                             value="0" />
+                    </td>
+                  </tr>
+                </table>
+                <div class="text-center">
+                  <button name="update_title_aggregations" type="submit" class="btn btn-primary">
+                    [% loc('Update') %]
+                  </button>
+                </div>
+              </form>
             </div>
-          </form>
-        </div>
-      [% END %]
+          </div>
+        [% END %]
+        [% INCLUDE 'include/annotation-editor.tt' %]
+      </div>
     [% END %]
   </div>
 
@@ -231,14 +298,14 @@
                 ></span><span class="sr-only" >[% loc('Edit this text') %]</span></a>
       </span>
       [% END %]
-      [% IF annotations && c.user_exists %]
+      [% IF annotation_editor %]
         <span id="text-annotation-button">
           <a href="#edit-annotation"
              data-toggle="collapse"
           /><span class="fa fa-pencil-square fa-2x fa-border"
                   aria-hidden="true"
-                  title="[% loc('Edit annotations') %]"
-            ></span><span class="sr-only" >[% loc('Edit annotations') %]</span></a>
+                  title="[% loc('Annotations, collections, aggregations') %]"
+            ></span><span class="sr-only" >[% loc('Annotations, collections, aggregations') %]</span></a>
         </span>
       [% END %]
       [% IF text.show_formats %]
@@ -323,3 +390,44 @@
        $('#preamble').css('padding-bottom', '0px');
    }
   </script>
+  [% IF annotation_editor %]
+    <script>
+     $(document).ready(function() {
+         $('#text-annotation-button').on('click', function() {
+             $.get('/api/aggregations', function(data) {
+                 if (data.length) {
+                     $('#annotation-editor-aggregations').children().remove();
+                     var dropdown = $('<select>',
+                                      { "name": "add_aggregation_id",
+                                        "class": "form-control"
+                                      });
+                     dropdown.append($('<option>', { "value": "" }).text('--------------'));
+                     for (var i = 0; i < data.length; i++) {
+                         dropdown.append($('<option>', { "value": data[i].aggregation_id })
+                             .text(data[i].aggregation_name));
+                     }
+                     $('#annotation-editor-aggregations').append(dropdown);
+                     dropdown.select2();
+                 }
+             });
+             $.get('/api/collections', function(data) {
+                 console.log(data);
+                 if (data.length) {
+                     $('#collection-editor').children().remove();
+                     var dropdown = $('<select>', {
+                         "name": "add_node_id",
+                         "class": "form-control"
+                     });
+                     dropdown.append($('<option>', { "value": "" }).text('--------------'));
+                     for (var i = 0; i < data.length; i++) {
+                         dropdown.append($('<option>', { "value": data[i].node_id })
+                             .text(data[i].canonical_title + " (/" + (data[i].full_path || data[i].uri ) + ")"));
+                     }
+                     $('#collection-editor').append(dropdown);
+                     dropdown.select2();
+                 }
+             });
+         });
+     });
+    </script>
+  [% END %]

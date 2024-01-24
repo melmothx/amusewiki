@@ -154,6 +154,7 @@ sub deserialize_site {
     my @users = @{ delete $hashref->{users} || [] };
     my @nodes = @{ delete $hashref->{nodes} || [] };
     my @attachments = @{ delete $hashref->{attachments} || [] };
+    my @aggregations = @{ delete $hashref->{aggregations} || [] };
     my $site = $self->update_or_create($hashref);
 
     # notably, tables without a non-auto PK, and where it makes sense
@@ -215,7 +216,6 @@ sub deserialize_site {
         }
     }
     $site->set_users(\@add);
-    $site->deserialize_nodes(\@nodes);
     foreach my $att (@attachments) {
         my $uri = delete $att->{uri};
         if (my $found = $site->attachments->by_uri($uri)) {
@@ -225,6 +225,8 @@ sub deserialize_site {
             log_info { "$uri not found in the tree" };
         }
     }
+    $site->create_aggregation($_) for @aggregations;
+    $site->deserialize_nodes(\@nodes);
     $guard->commit;
     $site->discard_changes;
     return $site;

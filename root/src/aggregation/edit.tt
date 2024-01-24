@@ -1,0 +1,336 @@
+[% INCLUDE 'include/breadcrumbs.tt' %]
+
+<div class="page-header">
+  <h1>
+    [% IF aggregation.aggregation_uri %]
+      [% loc('Update aggregation') %]
+      <em>
+        [% aggregation.aggregation_name | html %]
+      </em>
+    [% ELSE %]
+      [% loc('Create new aggregation') %]
+    [% END %]
+  </h1>
+</div>
+<div>
+  <form action="[% c.uri_for_action('/aggregation/edit') %]"
+        enctype="multipart/form-data"
+        method="POST" class="form-horizontal">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="aggregation_series_uri">[% loc('Series or Periodical') %]</label>
+      <div class="col-sm-10">
+        <div>
+          <input type="hidden"
+                 name="aggregation_series_uri" value="[% aggregation_series_uri %]"
+                 id="aggregation_series_uri" />
+        </div>
+        <div>
+          <a href="[% c.uri_for_action('/aggregation/edit_series') %]">
+            <small>
+              [% loc('Missing? Create one') %]
+            </small>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="form-group periodical">
+      <label class="col-sm-2 control-label" for="issue">[% loc('Issue') %]</label>
+      <div class="col-sm-7">
+        <input type="text" class="form-control" id="issue"
+               name="issue"
+               value="[% aggregation.issue | html %]"
+        />
+      </div>
+      <label class="col-sm-1 control-label" for="sorting_pos">[% loc('Order') %]</label>
+      <div class="col-sm-2">
+        <input type="number" class="form-control" id="sorting_pos" name="sorting_pos"
+               step="1" min="0"
+               value="[% aggregation.sorting_pos | html %]"
+        />
+      </div>
+    </div>
+    [% IF aggregation.aggregation_uri %]
+      <input type="hidden" name="aggregation_uri" value="[% aggregation.aggregation_uri | html %]" />
+      <input type="hidden" name="is_update" value="1" />
+    [% ELSE %]
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="aggregation_uri">URI</label>
+      <div class="col-sm-7">
+        <input type="text"
+               class="form-control ajax-check-uri"
+               id="aggregation_uri"
+               data-uri-type="aggregation"
+               data-check-target="[% c.uri_for_action('/api/check_existing_uri') | html %]"
+               name="aggregation_uri"
+               pattern="[0-9a-z-]{3,}" required>
+        <small>
+          [% loc('Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase characters and digits, optionally separated by a hyphen, e.g. [_1]', 'my-uri-1') %]
+        </small>
+      </div>
+      <div class="col-sm-3">
+        <div class="check-success" style="display:none; color:green">
+          <i class="fa fa-check"></i>
+          [% loc('URI is available and valid') %]
+        </div>
+        <div class="check-failure" style="display:none">
+          <i class="fa fa-warning" style="color:red">
+          </i>
+          <span class="check-message" style="color:red"></span>
+        </div>
+      </div>
+    </div>
+    [% END %]
+    <div class="form-group anthology">
+      <label class="col-sm-2 control-label" for="aggregation_name">[% loc('Anthology Name') %]</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="aggregation_name" name="aggregation_name"
+               value="[% aggregation.aggregation_name | html %]"
+               required/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="publication_place">[% loc('Publication Place') %]</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="publication_place"
+               name="publication_place"
+               value="[% aggregation.publication_place | html %]"
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="publication_date">[% loc('Publication Date') %]</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="publication_date"
+               name="publication_date"
+               value="[% aggregation.publication_date | html %]"
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="publication_date_year">[% loc('Year') %]</label>
+      <div class="col-sm-2">
+        <input type="number" step="1" class="form-control" id="publication_date_year"
+               name="publication_date_year"
+               value="[% aggregation.publication_date_year | html %]"
+        />
+      </div>
+      <label class="col-sm-2 control-label" for="publication_date_month">[% loc('Month') %]</label>
+      <div class="col-sm-2">
+        <input type="number" step="1" min="0" max="12" class="form-control" id="publication_date_month"
+               name="publication_date_month"
+               value="[% aggregation.publication_date_month | html %]"
+        />
+      </div>
+      <label class="col-sm-2 control-label" for="publication_date_day">[% loc('Day') %]</label>
+      <div class="col-sm-2">
+        <input type="number" step="1" min="0" max="31" class="form-control" id="publication_date_day"
+               name="publication_date_day"
+               value="[% aggregation.publication_date_day | html %]"
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="publisher">[% loc('Publisher') %]</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="publisher"
+               name="publisher"
+               value="[% aggregation.publisher | html %]"
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="isbn">[% loc('ISBN') %]</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="isbn"
+               name="isbn"
+               value="[% aggregation.isbn | html %]"
+        />
+      </div>
+    </div>
+    <input type="hidden" name="update" value="1">
+    [% IF annotations %]
+      [% FOREACH annotation IN annotations %]
+        <input type="hidden" name="annotation-passed-[% annotation.id %]" value="1" />
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="annotation-id-[% annotation.id %]">
+            [% lh.site_loc_html(annotation.label) %]
+          </label>
+          <div class="col-sm-10">
+            [% IF annotation.type == 'file' %]
+              <div class="row">
+                <div class="col-xs-6">
+                  <input id="annotation-id-[% annotation.id %]"
+                         name="annotation-file-[% annotation.id %]" type="file" />
+                </div>
+                [% IF annotation.value %]
+                  <div class="col-xs-3">
+                    <a href="[% annotation.url | html %]">[% loc('Download') %]</a>
+                  </div>
+                  <div class="col-xs-3">
+                    <label>
+                      <input name="annotation-wipe-[% annotation.id %]" type="checkbox">
+                      [% loc('Remove') %]
+                    </label>
+                  </div>
+                [% END %]
+              </div>
+            [% ELSIF annotation.type == 'identifier' %]
+              <input id="annotation-id-[% annotation.id %]"
+                     name="annotation-value-[% annotation.id %]"
+                     class="form-control" value="[% annotation.value | html %]" />
+            [% ELSIF annotation.type == 'text' %]
+              <textarea id="annotation-id-[% annotation.id %]"
+                        name="annotation-value-[% annotation.id %]"
+                        class="form-control">[% annotation.value | html %]</textarea>
+            [% END %]
+          </div>
+        </div>
+      [% END %]
+
+    [% END %]
+
+    [% IF titles && titles.size %]
+      <div class="form-group">
+        <label class="col-sm-2 control-label">[% loc('Sorting') %]</label>
+        <div class="col-sm-10">
+          <div class="panel panel-default" style="margin-top: 20px">
+            <div class="panel-body">
+              <ul id="aggregation-titles" class="list-group">
+                [% FOREACH title IN titles %]
+                  <li style="cursor: move" class="list-group-item">
+                    [% title.author_title %]
+                    <input type="hidden" name="titles" value="[% title.uri %]" />
+                    <span class="remove-item pull-right" style="cursor: pointer">
+                      <i class="text-danger fa fa-trash fa-border fa-lg"></i>
+                    </span>
+                  </li>
+                [% END %]
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    [% END %]
+      <div class="form-group">
+        <label class="col-sm-2 control-label">[% loc('Add text') %]</label>
+        <div class="col-sm-10">
+          <span class="add-title-loading fa fa-spinner fa-spin fa-2x" aria-hidden="true"></span>
+          <input id="titles" type="hidden" name="titles" value="[% c.request.query_params.add_text | html %]" />
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="submit" name="update_button" class="btn btn-default">[% loc('Update') %]</button>
+      <span> </span>
+      <button type="submit"
+              class="btn btn-default"
+              name="and_create_text" value="1">
+        [% loc('Update and create new text') %]
+      </button>
+      <span> </span>
+      <a
+          [% IF aggregation.aggregation_uri %]
+              href="[% c.uri_for_action('/aggregation/aggregation', aggregation.aggregation_uri) %]"
+          [% ELSE %]
+              href="[% c.uri_for_action('/aggregation/manage') %]"
+          [% END %]
+          class="btn btn-default">
+        [% loc('Cancel') %]
+      </a>
+    </div>
+  </form>
+</div>
+<div id="is_anthology" style="display:none">
+  [% loc('Not a periodical') %]
+</div>
+
+<script>
+ $(document).ready(function(data) {
+     $('#aggregation-titles').sortable();
+     $.get('/api/titles', function(data) {
+         var dropdown = $('<select>', { "name": "titles", "class": "form-control" });
+         dropdown.prop('multiple', true);
+         for (var i = 0; i < data.length; i++) {
+             dropdown.append($('<option>', { "value": data[i].uri })
+                 .text(data[i].label));
+         }
+         var el = $('#titles');
+         if (el.val()) {
+             dropdown.val(el.val());
+         }
+         el.parent().append(dropdown);
+         dropdown.select2();
+         el.remove();
+         $('.add-title-loading').remove();
+     });
+     $('.remove-item').on('click', function() {
+         $(this).closest('li').remove();
+     });
+     $('.ajax-check-uri').on('keyup', function() {
+         var el = $(this);
+         var query = {
+             "uri": el.val(),
+             "type": el.data('uri-type'),
+         };
+         console.log("here");
+         $.post(el.data('check-target'), query, function(data) {
+             $('.check-failure').hide();
+             $('.check-success').hide();
+             if (data.success) {
+                 $('.check-success').show();
+             }
+             else {
+                 $('.check-failure').find('.check-message').text(data.error)
+                 $('.check-failure').show();
+             }
+         });
+     });
+     function check_series() {
+         console.log("Checking");
+         if ($('#aggregation_series_uri').val()) {
+             $('#aggregation_name').prop('disabled', true);
+             $('#aggregation_name').prop('required', false);
+             $('#issue').prop('required', true);
+             $('#sorting_pos').prop('required', true);
+             $('#issue').prop('disabled', false);
+             $('#sorting_pos').prop('disabled', false);
+             $('.aggregation_name_container').hide();
+             $('.anthology').hide();
+             $('.periodical').show();
+         }
+         else {
+             $('#aggregation_name').prop('disabled', false);
+             $('#aggregation_name').prop('required', true);
+             $('#issue').prop('required', false);
+             $('#sorting_pos').prop('required', false);
+             $('#issue').prop('disabled', true);
+             $('#sorting_pos').prop('disabled', true);
+             $('.aggregation_name_container').show();
+             $('.anthology').show();
+             $('.periodical').hide();
+         }
+     }
+     check_series();
+     $.get('/api/series', function(data) {
+         var el = $('#aggregation_series_uri');
+         var current = el.val();
+         var container = el.parent();
+         var dropdown = $('<select>', {
+             "id": el.attr('id'),
+             "name": el.attr('name'),
+             "class": "form-control"
+         });
+         dropdown.append($('<option>', { "value": "" }).text(' -- ' + $('#is_anthology').text() + ' -- '));
+         for (var i = 0; i < data.length; i++) {
+             dropdown.append($('<option>', { "value": data[i].aggregation_series_uri })
+                 .text(data[i].aggregation_series_name));
+         }
+         console.log(current);
+         dropdown.val(current);
+         el.remove();
+         container.append(dropdown);
+         dropdown.on('change', check_series);
+         dropdown.select2();
+     });
+ });
+</script>

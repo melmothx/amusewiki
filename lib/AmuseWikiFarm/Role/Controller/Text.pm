@@ -179,40 +179,21 @@ sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
         $c->stash(text_display_children => \@out);
     }
 
-    my $annotation_filter = { active => 1 };
+    my $ann_rs = $site->annotations->active_only;
     unless ($c->user_exists) {
-        $annotation_filter->{private} = 0;
+        $ann_rs = $ann_rs->public_only;
     }
-    my @annotations = map { +{
-                              label => $_->label,
-                              name => $_->annotation_name,
-                              id => $_->annotation_id,
-                              type => $_->annotation_type,
-                              private => $_->private,
-                             }
-                        } $site->annotations->search($annotation_filter, { order_by => 'priority' })->all;
-    if (@annotations) {
-        my %vals;
-        foreach my $ann ($text->title_annotations) {
-            $vals{$ann->annotation_id} = $ann->valid_value;
-        }
-        Dlog_debug { "Values are  $_"  } \%vals;
-        foreach my $ann (@annotations) {
-            if (my $value = $vals{$ann->{id}}) {
-                $ann->{value} = $value;
-                if ($ann->{type} eq 'file') {
-                    log_debug { "File annotation is $value" };
-                    $ann->{url} = $c->uri_for($value)
-                }
-                my $html = HTML::Entities::encode_entities($value, q{<>&"'});
-                $html =~ s/\r?\n/<br>/g;
-                $ann->{html} = $html;
-            }
-        }
+    # same in Controller::Aggregation::populate_annotations
+    my @annotations;
+    foreach my $ann ($ann_rs->sorted->all) {
+        push @annotations, $ann->values_for_object($text, $c->uri_for('/'));
     }
-
     Dlog_debug { "Annotations are  $_"  } \@annotations;
     $c->stash(annotations => \@annotations) if @annotations;
+    $c->stash(
+              collections => [ $text->nodes->sorted->hri->all ],
+              aggregations => [ map { $_->final_data } $text->aggregations->sorted->all ],
+             );
 }
 
 sub text :Chained('populate_preamble') :PathPart('') :Args(0) {
@@ -287,6 +268,20 @@ sub text :Chained('populate_preamble') :PathPart('') :Args(0) {
                         };
         }
         $c->stash(node_breadcrumbs => \@node_breadcrumbs);
+    }
+    if ($c->user_exists) {
+        $c->stash(
+                  site_has_aggregations => $site->has_autoimport_file('aggregations') ? 0 : $site->aggregations->count,
+                  site_has_collections => $site->nodes->count,
+                 );
+        if ($c->stash->{annotations}
+            or $c->stash->{site_has_aggregations}
+            or $c->stash->{site_has_collections}) {
+            $c->stash(
+                      annotation_editor => 1,
+                      load_select2 => 1,
+                     );
+        }
     }
     $c->response->headers->last_modified($text->f_timestamp_epoch || time());
 }

@@ -6,6 +6,7 @@ use warnings;
 use base 'DBIx::Class::ResultSet';
 use HTML::Entities qw/encode_entities/;
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Utils::Amuse;
 
 sub hri {
     return shift->search(undef, { result_class => 'DBIx::Class::ResultClass::HashRefInflator' });
@@ -27,18 +28,14 @@ sub root_nodes {
 sub update_or_create_from_params {
     my ($self, $params, $opts) = @_;
     $opts ||= {};
-    if (my $uri = $params->{uri}) {
-        if ($uri =~ m/([a-z0-9][a-z0-9-]*[a-z0-9])/) {
-            $uri = $1;
-            $uri =~ s/--+/-/g;
-            if ($opts->{create}) {
-                return if $self->find({ uri => $uri });
-            }
-            my $node = $self->find_or_create({ uri => $uri });
-            $node->discard_changes;
-            $node->update_from_params($params);
-            return $node;
+    if (my $uri = AmuseWikiFarm::Utils::Amuse::muse_naming_algo($params->{uri})) {
+        if ($opts->{create}) {
+            return if $self->find({ uri => $uri });
         }
+        my $node = $self->find_or_create({ uri => $uri });
+        $node->discard_changes;
+        $node->update_from_params($params);
+        return $node;
     }
 }
 
@@ -116,6 +113,8 @@ sub as_tree_source {
                                           {
                                            node_categories => 'category',
                                            node_titles => 'title',
+                                           node_aggregation_series => 'aggregation_series',
+                                           node_aggregations => { aggregation => 'aggregation_series' },
                                           },
                                          ],
                             })->hri->all;
@@ -162,8 +161,46 @@ sub _render_node {
                      '/node/' . $node->{full_path},
                      $node->{title_html});
     $html .= "</div>\n";
-
+    my %icons = (
+                 author => 'address-book-o',
+                 topic => 'tag',
+                 series => 'archive',
+                 aggregations => 'book',
+                 special => 'file-text-o',
+                 text => 'file-text-o',
+                );
     my @list;
+    if (my @series = @{$node->{node_aggregation_series}}) {
+        foreach my $series (sort { $a->{aggregation_series_uri} cmp $b->{aggregation_series_uri} }
+                            map { $_->{aggregation_series} }
+                            @series) {
+            push @list, [ encode_entities($series->{aggregation_series_name}),
+                          "/series/$series->{aggregation_series_uri}",
+                          'archive',
+                        ];
+        }
+    }
+    if (my @aggs = @{$node->{node_aggregations}}) {
+        foreach my $agg (sort { $a->{aggregation_uri} cmp $b->{aggregation_uri}  }
+                            map { $_->{aggregation} }
+                            @aggs) {
+            $agg->{aggregation_name} ||= join(' ', grep { /\w/ }
+                                              ($agg->{aggregation_series}->{aggregation_series_name},
+                                               $agg->{issue}));
+            push @list, [ encode_entities($agg->{aggregation_name}),
+                          "/aggregation/$agg->{aggregation_uri}",
+                          'book',
+                        ];
+        }
+    }
+    if (my @categories = @{$node->{node_categories}}) {
+        foreach my $cat (sort { $a->{sorting_pos} <=> $b->{sorting_pos} }
+                         grep { $_->{active} }
+                         map { $_->{category} }
+                         @categories) {
+            push @list, [ $cat->{name}, "/category/$cat->{type}/$cat->{uri}", $icons{$cat->{type}} || 'tag'] ;
+        }
+    }
     if (my @titles = @{$node->{node_titles}}) {
         foreach my $title (sort { $a->{sorting_pos} <=> $b->{sorting_pos} }
                            grep { $_->{status} eq 'published' }
@@ -172,21 +209,16 @@ sub _render_node {
             my $full_uri = $title->{f_class} eq 'text'
               ? "/library/$title->{uri}"
               : "/special/$title->{uri}";
-            push @list, [ $title->{title}, $full_uri ];
-        }
-    }
-    if (my @categories = @{$node->{node_categories}}) {
-        foreach my $cat (sort { $a->{sorting_pos} <=> $b->{sorting_pos} }
-                         grep { $_->{active} }
-                         map { $_->{category} }
-                         @categories) {
-            push @list, [ $cat->{name}, "/category/$cat->{type}/$cat->{uri}"] ;
+            push @list, [ $title->{title}, $full_uri, $icons{$title->{f_class}} ];
         }
     }
     if (@list) {
         $html .= join("",
                       $indent . "<ul>\n",
-                      (map { $indent . sprintf(' <li><a href="%s">%s</a></li>', $_->[1], $_->[0]) . "\n" }
+                      (map { $indent . sprintf(' <li><i class="text-primary fa fa-%s"></i> <a href="%s">%s</a></li>',
+                                               $_->[2],
+                                               $_->[1],
+                                               $_->[0]) . "\n" }
                        @list),
                       $indent . "</ul>\n");
     }

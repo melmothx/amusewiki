@@ -2035,84 +2035,111 @@ sub annotate {
   ANNOTATION:
     foreach my $ann ($self->site->annotations) {
         if (my $update = $params->{$ann->annotation_id}) {
-            my $title_annotation = $self->title_annotations->find_or_create({ annotation => $ann });
-            my @path = ($site->repo_root, $site->annotations_directory);
-            # create directory and add gitingore
-            my $gitignore = Path::Tiny::path(@path, '.gitignore');
-            $gitignore->parent->mkpath;
-            unless ($gitignore->exists) {
-                $gitignore->spew_utf8("*\n*/\n");
+            my $res = $ann->annotate($self, $update);
+            if ($res->{errors} and @{$res->{errors}}) {
+                push @errors, $res->{errors};
             }
-
-            # annotation name
-            if ($ann->annotation_name =~ m/\A([a-z0-9-]+)\z/) {
-                push @path, $1;
-            }
-            else {
-                push @errors, "Bad annotation name " . $ann->annotation_name;
-                next ANNOTATION;
-            }
-
-            # class, path, uri
-            push @path, $self->f_class;
-            if (my $relpath = $self->f_archive_rel_path) {
-                push @path, grep { /\A[a-z0-9-]+\z/ } split(/\//, $relpath);
-            }
-            if ($ann->annotation_type eq 'file' and my $file = $update->{file}) {
-                delete $update->{value};
-                if (-f $file) {
-                    my $mime = mimetype($file);
-                    my $all_mime = AmuseWikiFarm::Utils::Paths::served_mime_types();
-                    my %mimes = reverse %$all_mime;
-                    if (my $ext = $mimes{$mime}) {
-                        my $storage = Path::Tiny::path(@path, $self->uri . ".$ext");
-                        $storage->parent->mkpath;
-                        if (Path::Tiny::path($file)->copy($storage)) {
-                            log_debug { "File copied in $storage" };
-                            $update->{value} = $storage->relative($path[0]);
-                        }
-                        else {
-                            push @errors, "Could not copy $update->{file}";
-                            next ANNOTATION;
-                        }
-                    }
-                    else {
-                        push @errors, "$update->{file} has invalid mime $mime";
-                        next ANNOTATION;
-                    }
-                }
-                else {
-                    push @errors, "$update->{file} not found, cannot add to annotation";
-                    next ANNOTATION;
-                }
-            }
-            my $value = $update->{value};
-            my $destination = Path::Tiny::path(@path, $self->uri);
-            $destination->parent->mkpath;
-            log_debug { "Saving update in $destination" };
-            if ($update->{remove}) {
-                $title_annotation->delete;
-                $destination->remove if $destination->exists;
-            }
-            elsif (defined $value) {
-                # save the content in a file, so we can reconstruct the tree.
-                my $destination = Path::Tiny::path(@path, $self->uri);
-                $destination->spew_utf8($value);
-                $title_annotation->update({ annotation_value => $value });
-            }
-            else {
-                push @errors, $ann->annotation_name . " was not passed!";
-            }
-
-            # bump the OAI PMH records. Just update the datestamp, so
-            # we don't interfere, with the normal run
-            $self->oai_pmh_records->bump_datestamp unless @errors;
         }
     }
+    $self->oai_pmh_records->bump_datestamp;
     return {
             success => !@errors,
             errors => join(" / ", @errors),
            };
+}
+
+sub aggregations {
+    my $self = shift;
+    if ($self->is_regular && $self->is_published) {
+        return $self->site->aggregations->with_title_uri($self->uri);
+    }
+    else {
+        return $self->site->aggregations->no_match;
+    }
+}
+
+sub add_to_aggregations {
+    my ($self, @aggs) = @_;
+    foreach my $agg (@aggs) {
+        $agg->aggregation_titles->find_or_create({ title_uri => $self->uri });
+    }
+}
+
+sub aggregate {
+    my ($self, $params) = @_;
+    my $ok;
+    my $title_uri = $self->uri;
+    my $site = $self->site;
+    my $int = qr{\A[0-9]+\z}a;
+    if (my $removals = $params->{remove_aggregation}) {
+        # this can be an array or an scalar, and that's fine
+        # will crash if not a number
+        if (my @remove_ids = grep { /$int/ } (ref($removals) ? @$removals : ($removals))) {
+            $site->aggregations->by_id(\@remove_ids)
+              ->search_related('aggregation_titles')->by_title_uri($title_uri)->delete;
+            $ok++;
+        }
+    }
+    if (my $add_id = $params->{add_aggregation_id}) {
+        if ($add_id =~ m/$int/) {
+            if (my $agg = $site->aggregations->find($add_id)) {
+                unless ($agg->aggregation_titles->by_title_uri($title_uri)->count) {
+                    my $sorting_pos = 0;
+                    if ($params->{title_sorting_pos} and $params->{title_sorting_pos} =~ m/($int)/) {
+                        $sorting_pos = $params->{title_sorting_pos};
+                    }
+                    log_debug { "Sorting pos is $sorting_pos" };
+                    $agg->aggregation_titles->create({
+                                                      title_uri => $title_uri,
+                                                      sorting_pos => $sorting_pos,
+                                                     });
+                    $ok++;
+                }
+            }
+        }
+    }
+    foreach my $param (sort keys %$params) {
+        if ($param =~ m/\Atitle_sorting_pos-(\d+)\z/a) {
+            my $aid = $1;
+            if ($params->{$param} =~ m/($int)/) {
+                my $sorting_pos = $1;
+                if (my $agg = $site->aggregations->find($aid)) {
+                    log_debug { "Updating sorting pos for $aid to $sorting_pos" };
+                    $agg->aggregation_titles->by_title_uri($title_uri)->update({ sorting_pos => $sorting_pos });
+                }
+            }
+        }
+    }
+    if ($ok) {
+        $self->oai_pmh_records->bump_datestamp;
+    }
+    return $ok;
+}
+
+sub edit_collections {
+    my ($self, $params) = @_;
+    my $ok = 0;
+    my $int = qr{\A[0-9]+\z}a;
+    if (my $removals = $params->{remove_node}) {
+        if (my @ids = grep { /$int/ } (ref($removals) ? @$removals : ($removals))){
+            $self->node_titles->search({ node_id => \@ids })->delete;
+            $ok++;
+        }
+    }
+    if (my $nid = $params->{add_node_id}) {
+        if ($nid =~ m/$int/) {
+            if (my $node = $self->site->nodes->find($nid)) {
+                unless ($self->nodes->find($nid)) {
+                    $self->add_to_nodes($node);
+                    $ok++;
+                }
+            }
+        }
+    }
+    if ($ok) {
+        $self->oai_pmh_records->bump_datestamp;
+    }
+    return $ok;
 }
 
 __PACKAGE__->meta->make_immutable;

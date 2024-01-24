@@ -347,10 +347,26 @@ sub marc21_record {
     my $dc = $obj->dublin_core_entry;
     my %rec = (
                %$dc,
-               full_uri => [ $base_url . $self->identifier ],
+               full_uri => [
+                            {
+                             u => $base_url . $self->identifier,
+                             q => $self->metadata_format || '',
+                             y => $self->metadata_format_description || '',
+                            }
+                           ],
                format => [ $self->metadata_format ],
-               type => [ $self->metadata_type ],
+               type => [ { a => $self->metadata_type, 2 => 'local' } ],
               );
+    my %mapping = (
+                   contributor => 'collaborator',
+                   creator => 'author',
+                  );
+    foreach my $k (keys %mapping) {
+        if ($rec{$k}) {
+            $rec{$k} = [ map { +{ a => $_, e => $mapping{$k} } } @{$rec{$k}} ];
+        }
+    }
+
     if ($title) {
         $rec{title} = [ $title->title ];
         $rec{subtitle} = [ $title->subtitle ];
@@ -381,6 +397,28 @@ sub marc21_record {
                 push @{$rec{description}}, $ann->annotation->label . ": " . $ann->annotation_value;
             }
         }
+        my @aggregations;
+        foreach my $agg (map { $_->final_data } $title->aggregations->sorted->all) {
+            Dlog_debug { "Aggregation is $_" } $agg;
+            my $name = $agg->{aggregation_name};
+            if ($agg->{series_data} and $agg->{series_data}->{aggregation_series_name}) {
+                $name = $agg->{series_data}->{aggregation_series_name};
+            }
+            push @aggregations, {
+                                 't' => $name,
+                                 'g' => $agg->{issue},
+                                 'o' => $agg->{aggregation_uri},
+                                 '6' => $base_url . '/aggregation/' . $agg->{aggregation_uri},
+                                 'z' => $agg->{isbn},
+                                 'd' => join(' ', grep { $_ } map { $agg->{$_} } qw/publication_place
+                                                                                    publication_date
+                                                                                    publisher/),
+                                 'q' => $agg->{title_sorting_pos},
+                                };
+        }
+        if (@aggregations) {
+            $rec{aggregation} = \@aggregations;
+        }
     }
     my $type = $rec{type}[0] || '';
     my @out;
@@ -407,10 +445,10 @@ sub marc21_record {
       ];
 
     my @datafields = (
-                      [ contributor => '720', '0', '0', 'a', e => 'collaborator' ],
+                      [ contributor => '720', '0', '0', qw/a e/],
                       [ coverage    => '500', ' ', ' ', 'a' ],
-                      # [ creator     => '720', ' ', ' ', 'a', e => 'author' ],
-                      [ creator     => '100', ' ', ' ', 'a', e => 'author' ],
+                      # [ creator     => '720', ' ', ' ', qw/a e/],
+                      [ creator     => '100', ' ', ' ', qw/a e/],
                       # date needs refinements
                       [ date        => '260', ' ', ' ', 'c' ],
                       [ date        => '363', ' ', ' ', 'i' ],
@@ -424,24 +462,23 @@ sub marc21_record {
                       [ subject     => '653', ' ', ' ', 'a' ],
                       [ title       => '245', '0', '0', 'a' ],
                       [ subtitle    => '246', '3', '3', 'a' ],
-                      [ type        => '655', '7', ' ', 'a', '2', 'local' ],
+                      [ type        => '655', '7', ' ', 'a', '2' ],
                       [ type        => '336', ' ', ' ', 'a' ],
                       [ trade_price_value => '365', ' ', ' ', 'b' ],
                       [ trade_price_currency => '365', ' ', ' ', 'c' ],
                       # koha full call number is 952 o
                       [ slc         => '852', ' ', ' ', 'c' ],
                       [ isbn        => '020', ' ', ' ', 'a' ],
-                      [ full_uri    => '856', ' ', ' ', 'u',
-                        q => $self->metadata_format || '',
-                        y => $self->metadata_format_description || ''
-                      ],
-                     );
+                      [ full_uri    => '856', ' ', ' ', qw/u q y/],
+                      [ aggregation => '773', ' ', ' ', qw/t g o 6 z d q/],
+                      );
     Dlog_debug { "MARC21: $_" } \%rec;
 
     foreach my $df (sort { $a->[1] cmp $b->[1] } @datafields) {
         my ($name, $tag, $ind1, $ind2, $code, @rest) = @$df;
         if (my $all = $rec{$name}) {
-            foreach my $item (grep { length $_ } @$all) {
+            foreach my $r (grep { length $_ } @$all) {
+                my $item = ref($r) ? $r->{$code} : $r;
                 my $cleaned = AmuseWikiFarm::Utils::Amuse::clean_html($item);
                 $cleaned =~ s/\A\s+//;
                 $cleaned =~ s/\s+\z//;
@@ -458,8 +495,10 @@ sub marc21_record {
                         }
                     }
                     my @subfields = ([ subfield => [ code => $code ], $cleaned ]);
-                    while (my @additional = splice @rest, 0, 2) {
-                        push @subfields, [ subfield => [ code => $additional[0] ], $additional[1] ];
+                    foreach my $add (@rest) {
+                        if (defined $r->{$add} and length($r->{$add})) {
+                            push @subfields, [ subfield => [ code => $add ], $r->{$add} ];
+                        }
                     }
                     push @out, [ datafield => [ tag => $tag, ind1 => $ind1, ind2 => $ind2 ],
                                  \@subfields ];

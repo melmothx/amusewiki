@@ -124,6 +124,10 @@ sub sorted_by_title {
     return shift->order_by('title_asc');
 }
 
+sub sorted {
+    return shift->sorted_by_title;
+}
+
 sub sort_by_pubdate_desc {
     return shift->order_by('pubdate_desc');
 }
@@ -205,7 +209,7 @@ sub special_by_uri {
 sub by_uri {
     my ($self, $uri) = @_;
     my $me = $self->current_source_alias;
-    return $self->search({ "$me.uri" => $uri });
+    return $self->search({ "$me.uri" => ref($uri) ? +{ -in => $uri } : $uri });
 }
 
 =head2 find_file($path)

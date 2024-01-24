@@ -145,6 +145,36 @@ __PACKAGE__->add_unique_constraint("site_id_uri_unique", ["site_id", "uri"]);
 
 =head1 RELATIONS
 
+=head2 node_aggregation_series
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::NodeAggregationSeries>
+
+=cut
+
+__PACKAGE__->has_many(
+  "node_aggregation_series",
+  "AmuseWikiFarm::Schema::Result::NodeAggregationSeries",
+  { "foreign.node_id" => "self.node_id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 node_aggregations
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::NodeAggregation>
+
+=cut
+
+__PACKAGE__->has_many(
+  "node_aggregations",
+  "AmuseWikiFarm::Schema::Result::NodeAggregation",
+  { "foreign.node_id" => "self.node_id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 node_bodies
 
 Type: has_many
@@ -240,6 +270,30 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
+=head2 aggregation_series
+
+Type: many_to_many
+
+Composing rels: L</node_aggregation_series> -> aggregation_series
+
+=cut
+
+__PACKAGE__->many_to_many(
+  "aggregation_series",
+  "node_aggregation_series",
+  "aggregation_series",
+);
+
+=head2 aggregations
+
+Type: many_to_many
+
+Composing rels: L</node_aggregations> -> aggregation
+
+=cut
+
+__PACKAGE__->many_to_many("aggregations", "node_aggregations", "aggregation");
+
 =head2 categories
 
 Type: many_to_many
@@ -261,8 +315,8 @@ Composing rels: L</node_titles> -> title
 __PACKAGE__->many_to_many("titles", "node_titles", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-07-23 18:11:16
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6aF6Qf0huVzKi0jociB9sA
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-20 15:08:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:e2qKuKUuWxgCTWN71140JA
 
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse::Functions qw/muse_to_object
@@ -353,32 +407,14 @@ sub update_from_params {
     $self->last_updated_epoch($now->epoch);
     $self->update;
     $self->update_full_path;
+
     if (defined $params->{attached_uris}) {
-        my @list = ref($params->{attached_uris})
-          ? (@{$params->{attached_uris}})
-          : (split(/\s+/, $params->{attached_uris}));
-        my (@titles, @cats);
-        my $titles_rs = $site->titles;
-        my $cats_rs = $site->categories;
-        my %done;
-      STRING:
-        foreach my $str (@list) {
-            if (my $title = $titles_rs->by_full_uri($str)) {
-                my $u = $title->full_uri;
-                $done{$u}++;
-                push @titles, $title unless $done{$u} > 1;
-            }
-            elsif (my $cat = $cats_rs->by_full_uri($str)) {
-                my $u = $cat->full_uri;
-                $done{$u}++;
-                push @cats, $cat unless $done{$u} > 1;
-            }
-            else {
-                Dlog_info { "Ignored $str while updating from params $_"} $params;
-            }
+        my $res = $site->validate_node_attached_uris($params->{attached_uris});
+        foreach my $obj (@{$res->{objects}}) {
+            # here it will call set_aggregations, set_series_aggregations, set_categories, set_titles
+            my $method = $obj->{method};
+            $self->$method($obj->{list});
         }
-        $self->set_titles(\@titles);
-        $self->set_categories(\@cats);
     }
     # we need to change the linkage between the record and the set and
     # bumps the new ones.
@@ -436,27 +472,44 @@ sub serialize {
         $out{'title_' . $lang} = $desc->title_muse;
         $out{'body_'  . $lang} = $desc->body_muse;
     }
-    my @attached;
-    foreach my $el ($self->titles->all, $self->categories->all) {
-        push @attached, $el->full_uri;
-    }
-    $out{attached_uris} = join("\n", sort @attached);
+    my @attached = map { $_->full_uri } (
+                                         $self->aggregation_series->sorted->all,
+                                         $self->aggregations->sorted->all,
+                                         $self->categories->sorted->all,
+                                         $self->titles->sorted_by_title->all,
+                                        );
+    $out{attached_uris} = join("\n", @attached);
     return \%out;
 }
 
 sub linked_pages {
-    my ($self, %options) = @_;
-    my $titles = $self->titles;
-    my $cats = $self->categories;
-    unless ($options{logged_in}) {
-        # this sort them as well
-        $titles = $titles->published_all;
-        $cats = $cats->active_only;
-    }
+    my $self = shift;
     my @out;
-    push @out, map { +{ label => $_->name,         uri => $_->full_uri } } $cats->all;
-    push @out, map { +{ label => $_->author_title, uri => $_->full_uri } } $titles->all;
+    my %icons = (
+                 author => 'address-book-o',
+                 topic => 'tag',
+                 series => 'archive',
+                 aggregations => 'book',
+                 special => 'file-text-o',
+                 text => 'file-text-o',
+                );
+    push @out, map { +{ label => encode_entities($_->aggregation_series_name),
+                        type => "series",
+                        uri => $_->full_uri } } $self->aggregation_series->sorted;
+    push @out, map { +{ label => encode_entities($_->final_name),
+                        type => "aggregation",
+                        uri => $_->full_uri } } $self->aggregations->sorted;
+    # these are already escaped
+    push @out, map { +{ label => $_->name,
+                        type => $_->type,
+                        uri => $_->full_uri } } $self->categories->active_only->sorted;
+    push @out, map { +{ label => $_->author_title,
+                        type => $_->f_class,
+                        uri => $_->full_uri } } $self->titles->sorted->published_all;
     Dlog_debug { "linked pages: $_" } \@out;
+    foreach my $i (@out) {
+        $i->{icon} = $icons{$i->{type}} || 'tags';
+    }
     return @out;
 }
 
@@ -533,6 +586,13 @@ sub as_html {
     }
     $html .= $root_indent . "</div>";
     return $html;
+}
+
+sub muse_name {
+    my ($self, $lang) = @_;
+    my $desc = $self->description($lang);
+    my $name = $desc ? $desc->title_muse : $self->canonical_title || $self->uri;
+    return $name;
 }
 
 sub name {

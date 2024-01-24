@@ -22,12 +22,14 @@ my ($hostname, $mail_notify, $help);
 my $site_id = 'amw';
 my $password = Crypt::XkcdPassword->new(words => 'IT')->make_password(5, qr{\A[0-9a-zA-Z]{3,}\z});
 my $username = "amusewiki";
+my $create_db_only;
 
 GetOptions(
            'hostname=s' => \$hostname,
            'username=s' => \$username,
            'password=s' => \$password,
            'email=s' => \$mail_notify,
+           'create-db-only' => \$create_db_only,
            help => \$help,
           ) or die;
 
@@ -109,6 +111,8 @@ my $dh = DBIx::Class::DeploymentHandler->new({
                                              });
 
 $dh->install;
+
+exit if $create_db_only;
 
 # create the needed directories
 foreach my $dir (qw/repo opt xapian bbfiles cronjobs opt ssl staging log/) {

@@ -74,16 +74,16 @@
     <!-- jquery-ui for the highlight effect everywhere and autocompletion
          source in [% c.uri_for('/static/js/jquery-ui-1.13.2.custom/jquery-ui.js') %] -->
 
-    <script src="[% c.uri_for('/static/js/jquery-ui-1.13.2.custom/jquery-ui.min.js') %]" >
+    <script src="[% c.uri_for('/static/js/jquery-ui-1.13.2.custom/jquery-ui.min.js', { v => 2 }) %]" >
     </script>
 
-    [%- IF nav == 'console' -%]
-    <script src="[% c.uri_for('/static/js/select2/select2.min.js') %]" >
-    </script>
-    <link rel="stylesheet"
-          href="[% c.uri_for('/static/css/select2/select2.css') %]" />
-    <link rel="stylesheet"
-          href="[% c.uri_for('/static/css/select2/select2-bootstrap.css') %]" />
+    [%- IF load_select2 -%]
+      <script src="[% c.uri_for('/static/js/select2/js/select2.min.js') %]" ></script>
+      <link rel="stylesheet" href="[% c.uri_for('/static/js/select2/css/select2.min.css') %]" />
+      <script src="[% c.uri_for('/static/js/select2/js/i18n/' _ current_locale_code _ '.js') %]" ></script>
+      <script>
+       $.fn.select2.defaults.set("theme", "classic");
+      </script>
     [%- END -%]
 
     [% IF load_highlight %]
@@ -252,7 +252,21 @@
                     [% loc('Titles') %]
                   </a>
                 </li>
-
+                [% IF site.has_aggregations %]
+                  <li>
+                    <a href="[% c.uri_for_action('/aggregation/list_aggregations') %]">
+                      [% loc('Anthologies and periodicals') %]
+                    </a>
+                  </li>
+                [% END %]
+                [% IF site.has_collections %]
+                  <li>
+                    <a href="[% c.uri_for_action('/nodes/node_root') %]">
+                      [% loc('Collections') %]
+                    </a>
+                  </li>
+                [% END %]
+                <li role="presentation" class="divider"></li>
                 [% FOREACH sitectype IN category_types_navbar_display %]
                   <li[% IF nav == sitectype.ctype %] class="active" [% END %]
                                                      id="amw-nav-bar-[% sitectype.ctype %]s">
@@ -464,6 +478,12 @@
                   <a href="[% c.uri_for_action('/nodes/node_root') %]">
                     <span class="fa fa-tags fa-fw" aria-hidden="true"></span>
                     [% loc('Collections') %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/aggregation/manage') %]">
+                    <span class="fa fa-tags fa-fw" aria-hidden="true"></span>
+                    [% loc('Aggregations') %]
                   </a>
                 </li>
                 [% IF c.check_any_user_role('admin', 'root') %]
@@ -697,6 +717,10 @@
         [% IF c.flash.status_msg == 'BOOKBUILDER_ADDED' %]
         <a href="[% c.uri_for_action('/bookbuilder/index') %]" class="text-success">
           <strong>[% loc('The text was added to the bookbuilder') %]</strong>
+        </a>
+        [% ELSIF c.flash.status_msg == 'BOOKBUILDER_ADDED_BULK' %]
+        <a href="[% c.uri_for_action('/bookbuilder/index') %]" class="text-success">
+          <strong>[% loc('The texts were added to the bookbuilder') %]</strong>
         </a>
         [% ELSE %]
         [% c.flash.status_msg | html %]

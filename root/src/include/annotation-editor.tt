@@ -1,0 +1,56 @@
+        [% IF annotations %]
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="text-center">
+                <strong>[% loc('Annotations') %]</strong>
+              </div>
+          <form name="annotate" action="[% c.uri_for_action('annotate/title', text.id) %]"
+                method="POST"
+                enctype="multipart/form-data">
+            <table class="table table-striped table-bordered">
+              [% FOREACH annotation IN annotations %]
+                <tr>
+                  <td>
+                    <input type="hidden" name="passed-[% annotation.id %]" value="1" />
+                    <label for="annotation-[% annotation.id %]">
+                      [% lh.site_loc_html(annotation.label) %]
+                    </label>
+                  </td>
+                  <td>
+                    [% IF annotation.type == 'file' %]
+                      <div class="row">
+                        <div class="col-xs-6">
+                          <input id="annotation-[% annotation.id %]"
+                                 name="file-[% annotation.id %]" type="file" />
+                        </div>
+                        [% IF annotation.type == 'file' && annotation.value %]
+                          <div class="col-xs-6">
+                            <label>
+                              <input name="wipe-[% annotation.id %]" type="checkbox">
+                              [% loc('Remove') %]
+                            </label>
+                          </div>
+                        [% END %]
+                      </div>
+                    [% ELSIF annotation.type == 'identifier' %]
+                      <input id="annotation-[% annotation.id %]"
+                             name="value-[% annotation.id %]"
+                             class="form-control" value="[% annotation.value | html %]" />
+                    [% ELSIF annotation.type == 'text' %]
+                      <textarea id="annotation-[% annotation.id %]"
+                                name="value-[% annotation.id %]"
+                                class="form-control">[% annotation.value | html %]</textarea>
+                    [% END %]
+                  </td>
+                </tr>
+              [% END %]
+            </table>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">
+                [% loc('Update') %]
+              </button>
+            </div>
+          </form>
+            </div>
+          </div>
+        [% END %]

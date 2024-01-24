@@ -1,4 +1,5 @@
 package AmuseWikiFarm::Controller::API;
+use utf8;
 use Moose;
 use namespace::autoclean;
 
@@ -57,14 +58,30 @@ sub check_existing_uri :Chained('api') :PathPart('check-existing-uri') :Args(0) 
     my ($self, $c) = @_;
     my %out;
     if (my $uri = $c->request->params->{uri}) {
+        my $type = $c->request->params->{type} || 'title';
+        my $site = $c->stash->{site};
         # check if valid
         my $cleaned = AmuseWikiFarm::Utils::Amuse::muse_naming_algo($uri);
         if ($uri eq $cleaned) {
-            if ($c->stash->{site}->titles->search({ uri => "$uri" })->count) {
+            my $exists;
+            if ($type eq 'title') {
+                $exists = $site->titles->by_uri($uri)->count;
+            }
+            elsif ($type eq 'aggregation_series') {
+                $exists = $site->aggregation_series->by_uri($uri)->count;
+            }
+            elsif ($type eq 'aggregation') {
+                $exists = $site->aggregations->by_uri($uri)->count;
+            }
+
+            if ($exists) {
                 $out{error} = $c->loc("Such URI already exists");
             }
-            else {
+            elsif (defined $exists) {
                 $out{success} = $uri;
+            }
+            else {
+                $out{error} = $c->loc("Bad type. This is a bug");
             }
         }
         else {
@@ -323,6 +340,49 @@ sub format_definitions :Chained('api') :PathPart('format-definitions') :Args(0) 
     my ($self, $c) = @_;
     my $out = $c->stash->{site}->formats_definitions;
     $c->stash(json => $out);
+    $c->detach($c->view('JSON'));
+}
+
+sub aggregations :Chained('api') :PathPart('aggregations') :Args(0) {
+    my ($self, $c) = @_;
+    my $out = [ map { $_->final_data } $c->stash->{site}->aggregations->sorted ];
+    $c->stash(json => $out);
+    $c->detach($c->view('JSON'));
+}
+
+sub series :Chained('api') :PathPart('series') :Args(0) {
+    my ($self, $c) = @_;
+    my $out = [ $c->stash->{site}->aggregation_series->sorted->hri ];
+    $c->stash(json => $out);
+    $c->detach($c->view('JSON'));
+}
+
+
+sub collections :Chained('api') :PathPart('collections') :Args(0) {
+    my ($self, $c) = @_;
+    my $out = [ $c->stash->{site}->nodes->sorted
+                ->search(undef, { columns => [qw/node_id full_path uri canonical_title/] })->hri ];
+    $c->stash(json => $out);
+    $c->detach($c->view('JSON'));
+}
+
+sub titles :Chained('api') :PathPart('titles') :Args(0) {
+    my ($self, $c) = @_;
+    my @all = $c->stash->{site}->titles->texts_only->status_is_published
+      ->search(undef, {
+                       columns => [qw/uri title author/],
+                       order_by => [qw/sorting_pos/],
+                       result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                      })->all;
+    foreach my $i (@all) {
+        if ($i->{author}) {
+            $i->{label} = "$i->{author} — $i->{title} ($i->{uri})";
+        }
+        else {
+            $i->{label} = "$i->{title} ($i->{uri})";
+        }
+    }
+    $c->stash(json => \@all);
     $c->detach($c->view('JSON'));
 }
 

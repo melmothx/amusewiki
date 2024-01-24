@@ -115,64 +115,6 @@ __PACKAGE__->belongs_to(
 
 # Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-10-01 08:37:40
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ZK2MrOhm7Wq1pasOD8hBgA
-use Path::Tiny ();
-use Try::Tiny;
-use AmuseWikiFarm::Log::Contextual;
-
-sub valid_value {
-    my ($self) = @_;
-    my $annotation = $self->annotation;
-    my $value = $self->annotation_value;
-    if ($value and $annotation->annotation_type eq 'file') {
-        $value = undef;
-        if (my $file = $self->validate_file) {
-            log_debug { "Value is $file" };
-            $value = join("/",
-                          "/annotation/download",
-                          $self->title->id,
-                          $annotation->annotation_id,
-                          $file->basename);
-        }
-    }
-    return $value;
-}
-
-sub validate_file {
-    my ($self) = @_;
-    my $annotation = $self->annotation;
-    my $value = $self->annotation_value;
-    if ($value and $annotation->annotation_type eq 'file') {
-        my $raw = $value;
-        log_debug { "File is $raw (not validated)" };
-        $value = undef;
-        try {
-            my $repo_root = Path::Tiny::path($annotation->site->repo_root)->realpath;
-            my $file = Path::Tiny::path($repo_root, $raw)->realpath;
-            if ($file->exists) {
-                # realpaths already resolved above
-                if ($repo_root->subsumes($file)) {
-                    log_debug { "OK, returning $file" };
-                    $value = $file;
-                }
-                else {
-                    log_warn { "$file not under $repo_root" };
-                }
-            }
-            else {
-                log_warn { "$file does not exists in $repo_root" };
-            }
-        }
-        catch {
-            my $err = $_;
-            log_warn { "Error in handling file $raw annotation $err" };
-        };
-        return $value;
-    }
-    return;
-}
-
-
-
 
 __PACKAGE__->meta->make_immutable;
 1;

@@ -615,6 +615,23 @@ CREATE TABLE node_category (
        PRIMARY KEY (node_id, category_id)
 );
 
+CREATE TABLE node_aggregation (
+       node_id INTEGER NOT NULL REFERENCES node(node_id)
+               ON DELETE CASCADE ON UPDATE CASCADE,
+       aggregation_id INTEGER NOT NULL REFERENCES aggregation(aggregation_id)
+                      ON DELETE CASCADE ON UPDATE CASCADE,
+       PRIMARY KEY (node_id, aggregation_id)
+);
+
+CREATE TABLE node_aggregation_series (
+       node_id INTEGER NOT NULL REFERENCES node(node_id)
+               ON DELETE CASCADE ON UPDATE CASCADE,
+       aggregation_series_id INTEGER NOT NULL REFERENCES aggregation_series(aggregation_series_id)
+                      ON DELETE CASCADE ON UPDATE CASCADE,
+       PRIMARY KEY (node_id, aggregation_series_id)
+);
+
+
 CREATE TABLE title_attachment (
        title_id INTEGER NOT NULL REFERENCES title(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
@@ -754,6 +771,67 @@ CREATE TABLE title_annotation (
 
 CREATE UNIQUE INDEX unique_title_annotation_key ON title_annotation (annotation_id, title_id);
 
+CREATE TABLE aggregation_series (
+    aggregation_series_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    site_id VARCHAR(16) NOT NULL REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    aggregation_series_uri VARCHAR(255) NOT NULL,
+    aggregation_series_name VARCHAR(255) NOT NULL,
+    publisher VARCHAR(255),
+    publication_place VARCHAR(255)
+);
+CREATE UNIQUE INDEX unique_aggregation_series_uri_site_id ON aggregation_series (aggregation_series_uri, site_id);
+
+CREATE TABLE aggregation (
+       aggregation_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       aggregation_series_id INTEGER NULL REFERENCES aggregation_series(aggregation_series_id)
+                             ON DELETE SET NULL ON UPDATE CASCADE,
+       aggregation_uri VARCHAR(255) NOT NULL,  -- fe-15
+       aggregation_name VARCHAR(255) NULL, -- Name if there is no aggregation series
+
+       -- dates. As a string and broken down in components. Primary
+       -- sorting before the issue_order. All can be null.
+       publication_date VARCHAR(255),
+       publication_date_year INTEGER,
+       publication_date_month INTEGER,
+       publication_date_day INTEGER,
+
+       -- inside the same series, as a string and as an integer (#15 and 15)
+       issue VARCHAR(255),
+       sorting_pos INTEGER NOT NULL DEFAULT 0,
+
+       -- if available, takes precedence over series.publication_place and  publisher
+       publication_place VARCHAR(255),
+       publisher VARCHAR(255),
+
+       isbn VARCHAR(32),
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE UNIQUE INDEX unique_aggregation ON aggregation (aggregation_uri, site_id);
+
+CREATE TABLE aggregation_title (
+    aggregation_id INTEGER NOT NULL REFERENCES aggregation(aggregation_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    -- this is not a FK because we want the info in before the record
+    -- actually exists and after it's gone for the autoimport we can
+    -- ignore them.
+    title_uri VARCHAR(255) NOT NULL,
+    sorting_pos INTEGER NOT NULL DEFAULT 0,
+    PRIMARY KEY (aggregation_id, title_uri)
+);
+
+CREATE INDEX aggregation_title_uri_idx ON aggregation_title(title_uri);
+
+
+CREATE TABLE aggregation_annotation (
+    annotation_id INTEGER NOT NULL REFERENCES annotation(annotation_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    aggregation_id INTEGER NOT NULL REFERENCES aggregation(aggregation_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    annotation_value TEXT,
+    PRIMARY KEY (annotation_id, aggregation_id)
+);
+
+CREATE UNIQUE INDEX unique_aggregation_annotation_key ON aggregation_annotation (annotation_id, aggregation_id);
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),
@@ -794,12 +872,18 @@ INSERT INTO table_comments (table_name, comment_text)
          ('node_body', 'Nodes description'),
          ('node_title', 'Linking table from Node to Title'),
          ('node_category', 'Linking table from Node to Category'),
+         ('node_aggregation', 'Linking table from Node to Aggregation'),
+         ('node_aggregation_series', 'Linking table from Node to AggregationSeries'),
          ('mirror_info', 'Mirror meta-info'),
          ('mirror_origin', 'Mirror origin'),
          ('site_category_type', 'Table with the category types'),
          ('oai_pmh_set', 'OAI-PMH Sets definition'), 
          ('oai_pmh_record', 'OAI-PMH Records'), 
          ('oai_pmh_record_set', 'OAI-PMH brigde table between records and sets'), 
+         ('aggregation', 'Aggregations'),
+         ('aggregation_title', 'Linking table for aggregations'),
+         ('aggregation_annotation', 'Linking table for aggregation/annotations'),
+         ('aggregation_series', 'Aggregation Series'),
          ('included_file', 'Files included in muse documents'),
          ('include_path', 'Directories to search for file inclusions')
          ;

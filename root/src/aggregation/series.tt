@@ -1,0 +1,47 @@
+[% INCLUDE 'include/node_breadcrumbs.tt' %]
+[% INCLUDE 'include/breadcrumbs.tt' %]
+<div class="page-header">
+  <h1>
+    [% loc('Series') %]:
+    <em>[% series.aggregation_series_name | html %]</em>
+    [% IF c.user_exists %]
+      <a href="[% c.uri_for_action('/aggregation/edit_series', series.aggregation_series_id) | html %]"
+         title="[% loc('Update') %]"
+         class="btn btn-default pull-right" role="button">
+        <i class="fa fa-edit"></i>
+        <span class="sr-only">[% loc('Edit') %]</span>
+      </a>
+      <a href="[% c.uri_for_action('/aggregation/edit', { series => series.aggregation_series_uri }) | html %]"
+         title="[% loc('Create a new aggregation for this series') %]"
+         class="btn btn-default pull-right" role="button" style="margin: 0 10px">
+        <i class="fa fa-plus"></i>
+        <span class="sr-only">[% loc('Create a new aggregation for this series') %]</span>
+      </a>
+    [% END %]
+  </h1>
+</div>
+[% IF series.publication_place || series.publisher  %]
+  <div class="well">
+    [% IF series.publication_place %]
+      <div>
+        <strong>[% loc('Publication Place') %]:</strong> [% series.publication_place | html %]
+      </div>
+    [% END  %]
+    [% IF series.publisher %]
+      <div>
+        <strong>[% loc('Publisher') %]:</strong> [% series.publisher | html %]
+      </div>
+    [% END  %]
+  </div>
+[% END %]
+</div>
+<div class="list-group">
+  [% FOREACH agg IN aggregations %]
+    <div class="amw-listing-item">
+      <a class="list-group-item clearfix"
+         href="[% c.uri_for_action('aggregation/aggregation', agg.aggregation_uri) | html %]">
+        [% agg.aggregation_name | html %]
+      </a>
+    </div>
+  [% END %]
+</div>

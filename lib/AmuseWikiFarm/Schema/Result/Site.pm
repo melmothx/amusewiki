@@ -568,6 +568,36 @@ __PACKAGE__->add_unique_constraint("canonical_unique", ["canonical"]);
 
 =head1 RELATIONS
 
+=head2 aggregation_series
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::AggregationSeries>
+
+=cut
+
+__PACKAGE__->has_many(
+  "aggregation_series",
+  "AmuseWikiFarm::Schema::Result::AggregationSeries",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 aggregations
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Aggregation>
+
+=cut
+
+__PACKAGE__->has_many(
+  "aggregations",
+  "AmuseWikiFarm::Schema::Result::Aggregation",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 amw_sessions
 
 Type: has_many
@@ -1014,8 +1044,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-10-01 08:37:40
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:xVVXee+HMfyH3ZvI6L7aHA
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-16 13:27:46
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:dtZ3/kATboLNdU6gVH8LRQ
 
 =head2 other_sites
 
@@ -1796,16 +1826,21 @@ sub import_text_from_html_params {
     my $guard = $self->result_source->schema->txn_scope_guard;
     # title->can_spawn_revision will return false, so we have to force
     my $created = $self->titles->create($bogus);
-    if ($params->{node_id}) {
-        Dlog_debug { "Assigning text to nodes $_" } $params->{node_id};
-        my @nodes = ref($params->{node_id}) ? (@{$params->{node_id}}) : ($params->{node_id});
-        foreach my $id (@nodes) {
-            if (my $node = $self->nodes->find($id)) {
-                log_info { "Assigned " . $created->uri . " to node " . $node->uri };
-                $created->add_to_nodes($node);
-            }
-            else {
-                log_error { "node $id not found in site " . $self->id };
+
+    foreach my $meta (qw/node aggregation/) {
+        if (my $ids = $params->{$meta . "_id"}) {
+            Dlog_debug { "Assigning text to $meta $_" } $ids;
+            my @objects = ref($ids) ? (@$ids) : ($ids);
+            my $all = $meta . "s"; # ->nodes ->aggregations
+            my $add = "add_to_" . $all; # ->add_to_nodes ->add_to_aggregations
+            foreach my $id (@objects) {
+                if (my $found = $self->$all->find($id)) {
+                    log_info { "Assigned " . $created->uri . " to node " . $found->uri };
+                    $created->$add($found);
+                }
+                else {
+                    log_error { "$meta $id not found in site " . $self->id };
+                }
             }
         }
     }
@@ -1831,6 +1866,7 @@ sub import_text_from_html_params {
     # populate the file with the parameters
     open (my $fh, '>:encoding(utf-8)', $file) or die "Couldn't open $file $!";
 
+    my %done;
     foreach my $directive (qw/title subtitle author LISTtitle SORTauthors
                               SORTtopics date uid cat
                               slides
@@ -1844,7 +1880,9 @@ sub import_text_from_html_params {
                              /,
                            map { $_->{header} } @{ $self->custom_category_types || [] }
                           ) {
-        $self->_add_directive($fh, $directive, $params->{$directive});
+        $self->_add_directive($fh, $directive, $params->{$directive}) unless $done{$directive};
+        # avoid duplicate if the custom category overrides the built-in
+        $done{$directive}++
     }
     # add the notes
     foreach my $field (qw/notes teaser/) {
@@ -2227,7 +2265,7 @@ sub index_file {
                                                            category_types => $self->custom_category_types,
                                                            category_uri_use_unicode => $self->category_uri_use_unicode,
                                                           });
-    Dlog_debug { "Details are $_"  } $details;
+    # Dlog_debug { "Details are $_"  } $details;
     # unparsable
     return unless $details;
 
@@ -4330,31 +4368,62 @@ sub serialize_site {
                                    comment_html => $_->comment_html,
                                    alt_text => $_->alt_text,
                                   } } $self->attachments->with_descriptions->all ];
+    $data{aggregations} = $self->serialize_aggregations;
     return \%data;
 }
 
-sub _validate_attached_uris {
+sub validate_node_attached_uris {
     my ($self, $string) = @_;
     my @list = ref($string)
           ? (@$string)
           : (grep { length($_) } split(/\s+/, $string));
-    my $titles_rs = $self->titles;
-    my $cats_rs = $self->categories;
-    my (@done, @missing);
+
+    # all of them have a shared api, so we can loop
+    my @objects = (
+                   {
+                    list => [],
+                    method => 'set_titles',
+                    rs => scalar($self->titles),
+                   },
+                   {
+                    list => [],
+                    method => 'set_categories',
+                    rs => scalar($self->categories),
+                   },
+                   {
+                    list => [],
+                    method => 'set_aggregations',
+                    rs => scalar($self->aggregations),
+                   },
+                   {
+                    list => [],
+                    method => 'set_aggregation_series',
+                    rs => scalar($self->aggregation_series),
+                   },
+                  );
+    my %done;
+    my @missing;
   STRING:
     foreach my $str (@list) {
-        if (my $title = $titles_rs->by_full_uri($str)) {
-            push @done, $str;
+      OBJECT:
+        foreach my $obj (@objects) {
+            if (my $found = $obj->{rs}->by_full_uri($str)) {
+                my $u = $found->full_uri;
+                $done{$u}++;
+                push @{$obj->{list}}, $found if $done{$u} == 1;
+                next STRING;
+            }
         }
-        elsif (my $cat = $cats_rs->by_full_uri($str)) {
-            push @done, $str;
-        }
-        else {
-            push @missing, $str;
-        }
+        push @missing, $str;
+        log_info { "Ignored $str while validating node uris $string" };
     }
+    Dlog_debug { "Validation: $_ " }
+      +{
+        objects => [ map { $_->{method} . ' ' . scalar(@{$_->{list}}) }  @objects ],
+        fail => \@missing,
+       };
     return +{
-             ok => \@done,
+             objects => \@objects,
              fail => \@missing,
             };
 }
@@ -4367,8 +4436,7 @@ sub deserialize_nodes {
     my @fail;
     foreach my $node (@$nodes) {
         if (my $str = $node->{attached_uris}) {
-            my $validate = $self->_validate_attached_uris($str);
-            Dlog_debug { "$str => $_" } $validate;
+            my $validate = $self->validate_node_attached_uris($str);
             push @fail, @{$validate->{fail} || []};
         }
     }
@@ -5272,12 +5340,24 @@ sub oai_pmh_base_identifier {
     return join(':', oai => $self->canonical, '');
 }
 
+sub has_autoimport_file {
+    my ($self, $type) = @_;
+    my $dir = Path::Tiny::path($self->autoimport_dir);
+    my %files = map { $_ => $dir->child($_ . '.yml') } qw/categories legacy_links aggregations/;
+    if ($files{$type} and $files{$type}->exists) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
 sub process_autoimport_files {
     my $self = shift;
     my $dir = Path::Tiny::path($self->autoimport_dir);
     # for now we support the categories (with descriptions) and the
     # legacy links, as they can't be inferred from the archive itself.
-    foreach my $type (qw/categories legacy_links/) {
+    foreach my $type (qw/categories legacy_links aggregations/) {
         my $file =  $dir->child($type . '.yml');
         if ($file->exists) {
             try {
@@ -5300,6 +5380,9 @@ sub process_autoimport_files {
                             $cat->category_descriptions->find_or_create($desc, { key => 'category_id_lang_unique' });
                         }
                     }
+                    elsif ($type eq 'aggregations') {
+                        $self->create_aggregation($item);
+                    }
                     else {
                         $self->$type->update_or_create($item);
                     }
@@ -5311,6 +5394,151 @@ sub process_autoimport_files {
             };
         }
     }
+}
+
+sub create_aggregation {
+    my ($self, $args) = @_;
+    my $schema = $self->result_source->schema;
+    my $guard = $schema->txn_scope_guard;
+    my @errors;
+    my %rec;
+    foreach my $k (keys %$args) {
+        if (defined $args->{$k} and not ref($args->{$k})) {
+            $args->{$k} =~ s/\s+/ /gs;
+            $args->{$k} =~ s/\A\s*//;
+            $args->{$k} =~ s/\s*\z//;
+        }
+    }
+    foreach my $required (qw/aggregation_uri/) {
+        if (my $v = $args->{$required}) {
+            $rec{$required} = $v;
+        }
+        else {
+            push @errors, "Missing $required field";
+        }
+    }
+    # if passed in the root, just pick it up
+    if (defined $args->{aggregation_series_uri}) {
+        if (my $series_uri = $args->{aggregation_series_uri}) {
+            if (my $series = $self->aggregation_series->find({ aggregation_series_uri => $series_uri })) {
+                $rec{aggregation_series_id} = $series->aggregation_series_id;
+            }
+            else {
+                push @errors, "Bad Series uri";
+            }
+        }
+        else {
+            log_debug { "Removing the series" };
+            $rec{aggregation_series_id} = undef;
+        }
+    }
+    elsif (my $series_data = $args->{aggregation_series}) {
+        if (my $uri = muse_naming_algo($series_data->{aggregation_series_uri})) {
+            my %sd = (aggregation_series_uri => $uri);
+            foreach my $f (qw/aggregation_series_name publisher publication_place/) {
+                $sd{$f} = $series_data->{$f} if $series_data->{$f};
+            }
+            if ($sd{aggregation_series_name}) {
+                my $key = { key => 'aggregation_series_uri_site_id_unique' };
+                Dlog_debug { "Updating/Creating aggregation series: $_" } \%sd;
+                my $series = $self->aggregation_series->update_or_create(\%sd, $key);
+                $rec{aggregation_series_id} = $series->discard_changes->aggregation_series_id;
+            }
+            else {
+                push @errors, "Missing aggregation_series_name";
+            }
+        }
+        else {
+            push @errors, "Missing aggregation_series_uri";
+        }
+    }
+    else {
+        push @errors, "Missing aggregation_name" unless $args->{aggregation_name};
+    }
+    if (@errors) {
+        Dlog_error { "Errors: $_" } \@errors;
+        return;
+    }
+    foreach my $f (qw/aggregation_name
+                      issue
+                      publication_place
+                      publication_date
+                      isbn
+                      publisher/) {
+        if (exists $args->{$f} and defined $args->{$f}) {
+            $rec{$f} = $args->{$f};
+        }
+    }
+    # integers
+    foreach my $i (qw/sorting_pos
+                      publication_date_year
+                      publication_date_month
+                      publication_date_day
+                     /) {
+        if (exists $args->{$i}
+            and defined exists $args->{$i}
+            and $args->{$i} =~ m/\A([1-9][0-9]*)/a) {
+            $rec{$i} = $1;
+        }
+    }
+    # if it's a serie, remove the name, otherwise clean issue and sorting_pos
+    if ($rec{aggregation_series_id}) {
+        log_debug { "Removing aggregation name" };
+        $rec{aggregation_name} = undef;
+    }
+    else {
+        log_debug { "Removing issue and sorting_pos" };
+        $rec{issue} = undef;
+        $rec{sorting_pos} = 0;
+    }
+    # uris
+    foreach my $u (qw/aggregation_uri/) {
+        $rec{$u} = muse_naming_algo($rec{$u});
+    }
+    my $aggregation = $self->aggregations->find({ aggregation_uri => $rec{aggregation_uri} });
+    my @existing_uris;
+    if ($aggregation) {
+        Dlog_debug { "Updating aggregation with $_" } \%rec;
+        $aggregation->update(\%rec);
+        @existing_uris = map { $_->uri } $aggregation->titles;
+    }
+    else {
+        Dlog_debug { "Creating aggregation with $_" } \%rec;
+        $aggregation = $self->aggregations->create(\%rec);
+    }
+    my @uris;
+    Dlog_debug { "Titles: $_" } $args->{titles};
+    if ($args->{titles} and ref($args->{titles}) eq 'ARRAY') {
+        @uris = @{$args->{titles}};
+        $aggregation->aggregation_titles->delete;
+    }
+    my $pos = 0;
+    my %done;
+    foreach my $uri (@uris) {
+        if ($uri and $uri =~ m/\w/) {
+            $uri =~ s/\s*//g;
+            $aggregation->aggregation_titles->create({
+                                                      sorting_pos => ++$pos,
+                                                      title_uri => $uri,
+                                                     }) unless $done{$uri};
+            $done{$uri}++;
+        }
+    }
+    Dlog_debug { "Aggregation changed $_" } +{ from => \@existing_uris, to => \@uris };
+    $aggregation->bump_oai_pmh_records;
+    $guard->commit;
+    $aggregation->discard_changes;
+    return $aggregation;
+}
+
+
+sub serialize_aggregations {
+    my $self = shift;
+    my @out;
+    foreach my $agg ($self->aggregations->sorted) {
+        push @out, $agg->serialize;
+    }
+    return \@out;
 }
 
 sub annotations_directory {
@@ -5355,6 +5583,14 @@ sub import_annotations_from_tree {
             }
         }
     }
+}
+
+sub has_aggregations {
+    shift->aggregations->count;
+}
+
+sub has_collections {
+    shift->nodes->count;
 }
 
 after insert => sub {

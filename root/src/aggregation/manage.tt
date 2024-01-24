@@ -1,0 +1,161 @@
+[% INCLUDE 'include/breadcrumbs.tt' %]
+<div class="page-header">
+  <h1>[% loc('Manage aggregations') %]</h1>
+</div>
+
+<h2>[% loc('Series') %]</h2>
+
+<div class="table-responsive">
+  <table class="table table-striped table-condensed table-bordered amw-datatable">
+    <thead>
+    <tr>
+      <th>[% loc('ID') %]</th>
+      <th>[% loc('URI') %]</th>
+      <th>[% loc('Series') %]</th>
+      <th>[% loc('Publisher') %]</th>
+      <th>[% loc('Publication Date') %]</th>
+      <th>[% loc('Remove') %]</th>
+    </tr>
+    </thead>
+    <tbody>
+      [% FOREACH serie IN series %]
+      <tr>
+        <td>
+          <a href="[% c.uri_for_action('/aggregation/edit_series', serie.aggregation_series_id) | html %]">
+            [% serie.aggregation_series_id | html %]
+            <i class="fa fa-edit"></i>
+          </a>
+        </td>
+        <td>
+          <a href="[% c.uri_for_action('/aggregation/series', serie.aggregation_series_uri) | html %]">
+            [% serie.aggregation_series_uri | html %]</td>
+          </a>
+        <td>[% serie.aggregation_series_name | html %]</td>
+        <td>[% serie.publisher | html %]</td>
+        <td>[% serie.publication_place | html %]</td>
+        <td>
+          <form action="[% c.uri_for_action('/aggregation/remove_series', serie.aggregation_series_id) | html %]"
+                method="POST" onsubmit="return amw_confirm()">
+            <input type="hidden" name="remove" value="remove" />
+            <button class="btn btn-primary" type="submit">
+              <i class="fa fa-trash"></i>
+            </button>
+          </form>
+        </td>
+      </tr>
+      [% END %]
+    </tbody>
+  </table>
+</div>
+<a class="btn btn-primary" href="[% c.uri_for_action('/aggregation/edit_series') | html %]">
+  [% loc('Create a new series') %]
+</a>
+
+<h2>[% loc('Aggregations') %]</h2>
+
+<div class="table-responsive">
+  <table class="table table-striped table-condensed table-bordered amw-datatable">
+    <thead>
+    <tr>
+      <th>[% loc('ID') %]</th>
+      <th>[% loc('URI') %]</th>
+      <th>[% loc('Series') %]</th>
+      <th>[% loc('Name') %]</th>
+      <th>[% loc('Series Number') %]</th>
+      <th>[% loc('Order') %]</th>
+      <th>[% loc('Publication Place') %]</th>
+      <th>[% loc('Publication Date') %]</th>
+      <th>[% loc('Year') %]</th>
+      <th>[% loc('Month') %]</th>
+      <th>[% loc('Day') %]</th>
+      <th>[% loc('Publisher') %]</th>
+      <th>[% loc('ISBN') %]</th>
+      <th>[% loc('Remove') %]</th>
+    </tr>
+    </thead>
+    <tbody>
+    [% FOREACH agg IN aggregations %]
+      <tr>
+        <td>
+          <a href="[% c.uri_for_action('/aggregation/edit', agg.aggregation_id) | html %]">
+            [% agg.aggregation_id    | html %]
+            <i class="fa fa-edit"></i>
+          </a>
+        </td>
+        <td>
+          <a href="[% c.uri_for_action('/aggregation/aggregation', agg.aggregation_uri) | html %]">
+            [% agg.aggregation_uri   | html %]
+          </a>
+        </td>
+        <td>
+          [% IF agg.series_data %]
+            <a href="[% c.uri_for_action('/aggregation/series', agg.series_data.aggregation_series_uri) | html %]">
+              [% agg.series_data.aggregation_series_name  | html %]
+            </a>
+          [% END %]
+        </td>
+        <td>
+          [% agg.aggregation_name  | html %]
+        </td>
+        <td>[% agg.issue     | html %]</td>
+        <td>[% agg.sorting_pos       | html %]</td>
+        <td>
+          <div>
+            [% agg.publication_place | html %]
+          </div>
+          [% IF agg.series_data && !agg.issue_data.publication_place %]
+            <div>
+              <small>[% loc('Inherited from the series') %]</small>
+            </div>
+          [% END %]
+        </td>
+        <td>
+          <div>
+            [% agg.publication_date  | html %]
+          </div>
+        </td>
+        <td>
+          [% IF agg.publication_date_year %]
+            [% agg.publication_date_year | html %]
+          [% END  %]
+        </td>
+        <td>
+          [% IF agg.publication_date_month %]
+            [% agg.publication_date_month | html %]
+          [% END  %]
+        </td>
+        <td>
+          [% IF agg.publication_date_day %]
+            [% agg.publication_date_day | html %]
+          [% END  %]
+        </td>
+        <td>
+          <div>
+            [% agg.publisher | html %]
+          </div>
+          [% IF agg.series_data && !agg.issue_data.publisher %]
+            <div>
+              <small>[% loc('Inherited from the series') %]</small>
+            </div>
+          [% END %]
+        </td>
+        <td>[% agg.isbn | html %]</td>
+        <td>
+          <form action="[% c.uri_for_action('/aggregation/remove', agg.aggregation_id) | html %]"
+                method="POST" onsubmit="return amw_confirm()">
+            <input type="hidden" name="remove" value="remove" />
+            <button class="btn btn-primary" type="submit">
+              <i class="fa fa-trash"></i>
+            </button>
+          </form>
+        </td>
+      </tr>
+    [% END %]
+    </tbody>
+  </table>
+</div>
+
+<a class="btn btn-primary" href="[% c.uri_for_action('/aggregation/edit') | html %]">
+  [% loc('Create a new aggregation') %]
+</a>
+

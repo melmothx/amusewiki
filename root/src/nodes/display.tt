@@ -4,7 +4,41 @@
 
 <div class="center">
   <div class="page-header">
-    <h1>[% node_title %]</h1>
+    <h1>[% node_title %]
+      [% IF edit_node %]
+        <button type="button"
+                class="btn btn-default pull-right"
+                data-target="#node-editing-form"
+                data-toggle="collapse"
+                aria-expanded="false"
+                aria-controls="node-editing-form">
+          <i class="fa fa-edit"></i>
+          <span class="sr-only">[% loc('Edit') %]</span>
+        </button>
+        <a href="[% c.uri_for_action('/edit/newtext', ['text'], { node => node.node_id }) | html %]"
+           title="[% loc('Create a new text for this collection') %]"
+           class="btn btn-default pull-right" role="button" style="margin: 0 10px">
+          <i class="fa fa-plus"></i>
+          <i class="fa fa-file-text-o"></i>
+          <span class="sr-only">[% loc('Create a new text for this collection') %]</span>
+        </a>
+        <a href="[% c.uri_for_action('/nodes/node_root', { node => node.uri }) | html %]"
+           title="[% loc('Create a new child collection') %]"
+           class="btn btn-default pull-right" role="button">
+          <i class="fa fa-plus"></i>
+          <i class="fa fa-tags"></i>
+          <span class="sr-only">[% loc('Create a new child collection') %]</span>
+        </a>
+      [% END %]
+      [% IF node_linked_pages %]
+        <a href="[% c.uri_for_action('/bookbuilder/bulk', 'node', node.node_id) | html %]"
+          title="[% loc('Add to the Bookbuilder') %]"
+          class="btn btn-default pull-right" role="button" style="margin: 0 10px">
+          <span class="fa fa-book"></span>
+          <span class="sr-only">[% loc('Add to the Bookbuilder') %]</span>
+        </a>
+      [% END %]
+    </h1>
   </div>
 </div>
 [% IF node_body %]
@@ -16,23 +50,28 @@
 <hr />
 [% END %]
 <div class="row" >
-  [% IF node_linked_pages %]
-    <div class="col-sm-12">
-      <div class="list-group">
-        [% FOREACH page IN node_linked_pages %]
-          <div class="amw-listing-item">
-            <a class="list-group-item" href="[% page.uri %]">[% page.label %]</a>
-          </div>
-        [% END %]
-      </div>
-    </div>
-  [% END %]
   [% IF node_children %]
     <div class="col-sm-12">
       <div class="list-group">
         [% FOREACH page IN node_children %]
           <div class="amw-listing-item">
-            <a class="list-group-item" href="[% page.uri %]">[% page.label %]</a>
+            <a class="list-group-item" href="[% page.uri %]">
+              <i class="text-primary fa fa-list"></i>
+              [% page.label %]
+            </a>
+          </div>
+        [% END %]
+      </div>
+    </div>
+  [% END %]
+  [% IF node_linked_pages %]
+    <div class="col-sm-12">
+      <div class="list-group">
+        [% FOREACH page IN node_linked_pages %]
+          <div class="amw-listing-item">
+            <a class="list-group-item" href="[% page.uri %]">
+              <i class="text-primary fa fa-[% page.icon %]"></i>
+              <span> </span>[% page.label %]</a>
           </div>
         [% END %]
       </div>
@@ -41,17 +80,6 @@
 </div>
 [% IF edit_node %]
   <hr />
-  <div class="text-right">
-    <button type="button"
-            class="btn btn-default"
-            data-target="#node-editing-form"
-            data-toggle="collapse"
-            aria-expanded="false"
-            aria-controls="node-editing-form">
-      <i class="fa fa-edit fa-border"></i>
-      <span class="sr-only">[% loc('Edit') %]</span>
-    </button>
-  </div>
   <div id="node-editing-form" class="collapse">
     [% INCLUDE 'include/edit_node.tt' %]
   </div>

@@ -1,0 +1,78 @@
+[% INCLUDE 'include/node_breadcrumbs.tt' %]
+[% INCLUDE 'include/breadcrumbs.tt' %]
+<div class="page-header">
+  <h1>
+    [% aggregation.aggregation_name | html %]
+    [% IF c.user_exists %]
+      <a href="[% c.uri_for_action('/aggregation/edit', aggregation.aggregation_id) | html %]"
+         title="[% loc('Update') %]"
+         class="btn btn-default pull-right" role="button">
+        <span class="fa fa-edit"></span>
+        <span class="sr-only">[% loc('Edit') %]</span>
+      </a>
+      <a href="[% c.uri_for_action('/edit/newtext', ['text'], { aggregation => aggregation.aggregation_id }) | html %]"
+         title="[% loc('Create a new text for this aggregation') %]"
+         class="btn btn-default pull-right" role="button" style="margin: 0 10px">
+        <span class="fa fa-plus"></span>
+        <span class="sr-only">[% loc('Create a new text for this aggregation') %]</span>
+      </a>
+    [% END %]
+    <a href="[% c.uri_for_action('/bookbuilder/bulk', 'aggregation', aggregation.aggregation_id) | html %]"
+       title="[% loc('Add to the Bookbuilder') %]"
+       class="btn btn-default pull-right" role="button">
+      <span class="fa fa-book"></span>
+      <span class="sr-only">[% loc('Add to the Bookbuilder') %]</span>
+    </a>
+  </h1>
+</div>
+  <div class="well">
+    [% IF aggregation.series_data %]
+      <div>
+        <strong>[% loc('Series') %]:</strong>
+        <a href="[% c.uri_for_action('/aggregation/series',  aggregation.series_data.aggregation_series_uri) | html %]">
+          [% aggregation.series_data.aggregation_series_name | html %]
+        </a>
+      </div>
+    [% END %]
+
+    [% IF aggregation.publication_place %]
+      <div>
+        <strong>[% loc('Publication Place') %]:</strong> [% aggregation.publication_place | html %]
+      </div>
+    [% END  %]
+    [% IF aggregation.publication_date %]
+      <div>
+        <strong>[% loc('Publication Date') %]:</strong> [% aggregation.publication_date | html %]
+      </div>
+    [% END  %]
+    [% IF aggregation.publisher %]
+      <div>
+        <strong>[% loc('Publisher') %]:</strong> [% aggregation.publisher | html %]
+      </div>
+    [% END  %]
+    [% IF aggregation.isbn %]
+      <div>
+        <strong>[% loc('ISBN') %]:</strong> [% aggregation.isbn | html %]
+      </div>
+    [% END  %]
+    [% IF aggregation.series %]
+      <div style="margin-top: 10px">
+        <a href="[% c.uri_for_action('/aggregation/series', aggregation.series.aggregation_series_uri) | html %]">
+          <strong>[% loc('See all') %]</strong>
+        </a>
+      </div>
+    [% END %]
+    [% FOREACH ctype IN categories %]
+      <div>
+        <strong>[% ctype.title | html %]:</strong>
+        [% FOREACH cat IN ctype.entries %]
+          <a href="[% c.uri_for(cat.full_uri) | html %]">[% lh.site_loc_html(cat.name) %]</a>[% UNLESS loop.last %],[% END %]
+        [% END %]
+      </div>
+    [% END %]
+
+
+    [% INCLUDE 'include/annotation-display.tt' %]
+  </div>
+
+[% INCLUDE 'include/posts.tt' %]

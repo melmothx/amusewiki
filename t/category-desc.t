@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-use Test::More tests => 154;
+use Test::More tests => 162;
 
 use File::Path qw/make_path remove_tree/;
 use File::Spec::Functions qw/catfile catdir/;
@@ -13,6 +13,7 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Data::Dumper;
 use Test::WWW::Mechanize::Catalyst;
+use Path::Tiny ();
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -257,3 +258,18 @@ ok $site->categories->find({ uri => 'pippo', type => 'author' }),
   "Category is still there";
 
 $schema->resultset('User')->update({ preferred_language => undef });
+
+{
+    $mech->get_ok("/category/author/pippo/en/edit");
+    is $mech->uri->path, "/category/author/pippo/en/edit";
+    my $autoimport = Path::Tiny::path($site->autoimport_dir, "categories.yml");
+    $autoimport->parent->mkpath;
+    $autoimport->spew("---\n");
+    $mech->get_ok("/category/author/pippo/en/edit");
+    is $mech->uri->path, "/category/author/pippo";
+    $mech->get_ok("/category/author/pippo/en/delete");
+    is $mech->uri->path, "/category/author/pippo";
+    $autoimport->remove;
+    $mech->get_ok("/category/author/pippo/en/edit");
+    is $mech->uri->path, "/category/author/pippo/en/edit";
+}

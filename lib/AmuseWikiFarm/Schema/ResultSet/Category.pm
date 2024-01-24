@@ -254,5 +254,9 @@ sub full_uri_name_mapping_hashref {
     return \%map;
 }
 
+sub distinct {
+    shift->search(undef, { distinct => 1 });
+}
+
 1;
 

@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
-use Test::More tests => 111;
+use Test::More tests => 112;
 use Data::Dumper::Concise;
 use YAML qw/Dump Load/;
 
@@ -169,9 +169,10 @@ foreach my $id (qw/first second third/) {
                  );
     my $node = $site->nodes->update_or_create_from_params({ %params });
     is $node->name, "<em>pinco</em>";
-    is $node->titles->count, 2, "Found titles";
+    ok $site->titles->by_full_uri('/library/first');
+    is $node->titles->count, 2, "Found titles" or die;
     is $node->categories->count, 0, "Found 0 cats";
-    $params{attached_uris} = "/library/first\n/special/third";
+    $params{attached_uris} = "/special/third\n/library/first";
     my %copy = %params;
     # pallino doesn't exist yet, so will return undef
     $copy{parent_node_uri} = undef;
@@ -216,7 +217,7 @@ foreach my $id (qw/first second third/) {
         $expected =~ s/&#39;/&#x27;/g;
         $mech->content_contains($expected);
 
-        $mech->content_contains('&quot;&lt;script&gt;&quot; kid</a>');
+        $mech->content_contains('&quot;&lt;script&gt;&quot; kid</a>') or die $mech->content;
         $mech->content_lacks('"<script>" kid');
         $mech->content_contains('<a href="/category/topic/x-script">&quot;x&quot; &lt;script&gt;</a>');
         $mech->content_lacks(q{>"'pinco'"<});
@@ -228,9 +229,9 @@ foreach my $id (qw/first second third/) {
         diag $mech->uri;
         $mech->content_contains($expected);
         $mech->content_lacks($params{"title_$lang"}) or diag $mech->content;
-        $mech->content_contains('>&quot;x&quot; &lt;script&gt;</a>') or diag $mech->content;
+        $mech->content_contains('>&quot;x&quot; &lt;script&gt;</a>') or die $mech->content;
         $mech->content_lacks(q{"x" <script>}) or diag $mech->content;
-        $mech->content_contains('&quot;&lt;script&gt;&quot; kid</a>');
+        $mech->content_contains('&quot;&lt;script&gt;&quot; kid</a>') or die $mech->content;
         $mech->content_lacks('"<script>" kid');
     }
     $mech->get_ok($node->full_uri . '?bare=1');
