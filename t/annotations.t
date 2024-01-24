@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 250;
+use Test::More tests => 254;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -326,4 +326,15 @@ ok path($site->repo_root, 'annotations', '.gitignore')->exists;
     $mech->get_ok($uri);
     $mech->content_lacks('noRecordsMatch');
     $mech->content_contains('YYx/Xx');
+
+    $now = DateTime->now(time_zone => 'UTC');
+    sleep 1;
+    $title->annotate({
+                      $ap->annotation_id => { value => '' },
+                      $as->annotation_id => { value => '' },
+                     });
+    $mech->get_ok($uri);
+    $mech->content_lacks('noRecordsMatch');
+    $mech->content_lacks('tag="852"') or diag $mech->content;
+    $mech->content_lacks('tag="365"') or diag $mech->content;
 }

@@ -374,13 +374,17 @@ sub marc21_record {
         $rec{isbn} = [ $title->isbn ];
         $rec{sku} = [ $title->sku ];
         # populate the rec here
+      ANNOTATION:
         foreach my $ann ($title->title_annotations->public->by_type([qw/text identifier/])) {
-            my $annotation = { $ann->annotation->get_columns };
-            if ($annotation->{annotation_name} eq 'slc') {
-                $rec{slc} = [ $ann->annotation_value ];
+            my $annotation = $ann->annotation;
+            my $annotation_name = $annotation->annotation_name;
+            my $annotation_value = $ann->annotation_value;
+            next ANNOTATION unless length($annotation_value);
+            if ($annotation_name eq 'slc') {
+                $rec{slc} = [ $annotation_value ];
             }
-            elsif ($annotation->{annotation_name} eq 'price') {
-                if (my $full_price = $ann->annotation_value) {
+            elsif ($annotation_name eq 'price') {
+                if (my $full_price = $annotation_value) {
                     $full_price =~ s/\s//g;
                     if ($full_price =~ m/([^0-9\.\,]+)/) {
                         $rec{trade_price_currency} = [ $1 ];
@@ -394,7 +398,7 @@ sub marc21_record {
                 }
             }
             else {
-                push @{$rec{description}}, $ann->annotation->label . ": " . $ann->annotation_value;
+                push @{$rec{description}}, $annotation->label . ": " . $annotation_value;
             }
         }
         my @aggregations;
