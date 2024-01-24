@@ -3293,6 +3293,7 @@ sub update_from_params_restricted {
                         ttdir             => 'value',
 
                         use_luatex               => 'option',
+                        cgit_integration         => 'option',
                         allow_hostname_aliases   => 'option',
                         additional_nginx_conf    => 'option',
 
