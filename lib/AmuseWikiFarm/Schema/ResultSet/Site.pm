@@ -225,9 +225,6 @@ sub deserialize_site {
             log_info { "$uri not found in the tree" };
         }
     }
-    foreach my $cf ($site->custom_formats) {
-        $cf->create_format_code;
-    }
     $site->create_aggregation($_) for @aggregations;
     $site->deserialize_nodes(\@nodes);
     $guard->commit;
