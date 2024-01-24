@@ -72,8 +72,8 @@ try {
     log_error { "Error initializing the remote git repositories" };
 };
 
-try {
-    foreach my $site ($schema->resultset('Site')->all) {
+foreach my $site ($schema->resultset('Site')->all) {
+    try {
         $site->check_and_update_custom_formats;
         $site->index_site_files;
         $site->generate_static_indexes;
@@ -96,10 +96,11 @@ try {
             }
         }
     }
-} catch {
-    my $err = $_;
-    log_error { "Error at startup: $err" };
-};
+    catch {
+        my $err = $_;
+        log_error { "Error at startup: $err" };
+    };
+}
 
 # check if there are missing checksums
 try {
