@@ -90,7 +90,7 @@ $homedir/local/texlive/$year/bin/$arch/tlmgr install \
         latex-bin epstopdf epstopdf-pkg ncctools luatexbase texdoc beamer      \
         pstricks fp pst-text xcolor geometry bidi zref auxhook chngcntr        \
         marginnote pst-barcode \
-        xetex-pstricks \
+        bookcover xetex-pstricks \
         footmisc \
         carlisle lua-uni-algos \
         xecjk luatexja ctex \
