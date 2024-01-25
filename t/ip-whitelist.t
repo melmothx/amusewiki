@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 42;
+use Test::More tests => 66;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -75,6 +75,7 @@ foreach my $path ('/', '/mirror/index.html', '/git') {
     is $other->status, 401;
 }
 
+my $user = $schema->resultset('User')->find({ username => 'root' });
 $mech->get_ok('/login');
 $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 
@@ -88,7 +89,7 @@ is $site->get_from_storage->whitelist_ips->count, 3;
 
 $site->whitelist_ips->update({ user_editable => 1 });
 
-
+$mech->get_ok("/authorize-ip/" . $user->get_api_access_token);
 
 $mech->get_ok('/admin/sites/edit/' . $site->id);
 $mech->content_contains('66.66.66.66', "ip displayed");
@@ -96,6 +97,12 @@ $mech->submit_form(with_fields => { whitelist_ips => "\n66.12.23.23\n\n111.111.1
                    button => 'edit_site');
 
 is $site->get_from_storage->whitelist_ips->count, 2;
+
+$mech->get_ok("/authorize-ip/" . $user->get_api_access_token);
+
+is $site->get_from_storage->whitelist_ips->count, 3;
+
+$site->whitelist_ips->search({ ip => '66.66.66.66' })->delete;
 
 # check git
 
@@ -115,7 +122,44 @@ is $site->get_from_storage->whitelist_ips->count, 2;
     is $mech->status, 200, "Can access /git";
     $mech->get('/mirror');
     is $mech->status, 200, "Can access /mirror";
-    
-    
 }
 
+$site->whitelist_ips->delete;
+
+{
+    my $token = $user->get_api_access_token({ reset => 1 });
+    $mech->get('/git');
+    is $mech->status, 401, "Cannot access /git";
+    $mech->get('/mirror');
+    is $mech->status, 401, "Cannot access /mirror";
+    $mech->get("/authorize-ip/x$token");
+    is $mech->status, 403;
+    $mech->get("/authorize-ip/x");
+    is $mech->status, 403;
+    $mech->get_ok("/authorize-ip/$token");
+    $mech->get_ok("/authorize-ip/$token");
+    diag $mech->content;
+    $mech->get_ok('/git');
+    $mech->get_ok('/mirror');
+    $mech->get_ok('/login');
+    $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+    $mech->get_ok('/console/git');
+    $mech->content_contains($token);
+    $mech->get_ok('/refresh-api-access-token');
+    $mech->content_lacks($token);
+    isnt $user->discard_changes->get_api_access_token, $token;
+    $token = $user->discard_changes->get_api_access_token;
+    $mech->get_ok('/admin/sites/edit/' . $site->id);
+    $mech->content_lacks('66.66.66.66', "Temporary auth not displayed");
+
+    $mech->get('/logout');
+    $mech->get('/git');
+    is $mech->status, 401;
+    $mech->get_ok("/authorize-ip/$token");
+    $mech->get_ok('/git');
+
+    $mech->get_ok('/git');
+    $site->whitelist_ips->search({ expire_epoch => { '>' => 0 } })->update({ expire_epoch => 10 });
+    $mech->get('/git');
+    is $mech->status, 401;
+}

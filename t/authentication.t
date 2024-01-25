@@ -18,7 +18,7 @@ use Test::More tests => 2463; # test spamming
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0authen0');
 
-$site->update({ magic_answer => 16, magic_question => '12+4' });
+$site->update({ magic_answer => 16, magic_question => '12+4', cgit_integration => 1 });
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 

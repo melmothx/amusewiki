@@ -34,7 +34,7 @@ CREATE TABLE site (
        sitegroup VARCHAR(255) NOT NULL DEFAULT '',
 
        -- cgit integration
-       cgit_integration INTEGER(1) NOT NULL DEFAULT 1,
+       cgit_integration INTEGER(1) NOT NULL DEFAULT 0,
 
        -- ssl options
        ssl_key VARCHAR(255) NOT NULL DEFAULT '',
@@ -212,6 +212,8 @@ CREATE TABLE users (
        edit_option_show_cheatsheet INTEGER(1) NOT NULL DEFAULT 1,
        edit_option_page_left_bs_columns INTEGER DEFAULT 6,
        preferred_language VARCHAR(8),
+       api_access_token TEXT NULL,
+       api_access_created DATETIME NULL,
        reset_token TEXT NULL,
        reset_until INTEGER NULL
 );
@@ -645,6 +647,8 @@ CREATE TABLE whitelist_ip (
                                     ON DELETE CASCADE ON UPDATE CASCADE,
        ip VARCHAR(64),
        user_editable SMALLINT NOT NULL DEFAULT 0,
+       granted_by_username VARCHAR(255),
+       expire_epoch INTEGER,
        PRIMARY KEY (site_id, ip)
 );
 

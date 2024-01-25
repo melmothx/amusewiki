@@ -57,6 +57,17 @@ __PACKAGE__->table("whitelist_ip");
   default_value: 0
   is_nullable: 0
 
+=head2 granted_by_username
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
+=head2 expire_epoch
+
+  data_type: 'integer'
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -66,6 +77,10 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 64 },
   "user_editable",
   { data_type => "smallint", default_value => 0, is_nullable => 0 },
+  "granted_by_username",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "expire_epoch",
+  { data_type => "integer", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -100,10 +115,16 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-06-09 07:25:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TdQc53eMC99qqUN9fFLgMg
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-24 14:16:07
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:jJ83qt+g37irvy0IkuvuDQ
 
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+use AmuseWikiFarm::Log::Contextual;
+
+sub sqlt_deploy_hook {
+    my ($self, $sqlt_table) = @_;
+    $sqlt_table->add_index(name => 'whitelist_ip_ip_amw_index', fields => ['ip']);
+}
+
 __PACKAGE__->meta->make_immutable;
 1;

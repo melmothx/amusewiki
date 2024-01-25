@@ -32,6 +32,7 @@ ok ($site);
 $site->update({
                secure_site => 0,
                pdf => 0,
+               cgit_integration => 1,
               });
 my $host = $site->canonical;
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
