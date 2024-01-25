@@ -4,6 +4,18 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.590 2024-01-25
+
+ - New features: aggregations and series (anthologies and periodical).
+   See /aggregate/manage.
+ - Improved collections (previously known as nodes)
+ - Create an authorization mechanism for IP, so scripts can access
+   /git and private sites. See (/console/git)
+ - Changed default for cgit public interface to false. This option is
+   now reserved for root users
+ - i18n: uk (thanks to @nykula)
+ - Fix jumpy navbar in some mobile browsers (thanks to @nykula)
+
 2.583 2024-01-01
 
  - Expose the format definitions to the API
