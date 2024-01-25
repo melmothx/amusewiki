@@ -112,6 +112,9 @@ msgstr ""
 "Opgav redigeringen under forløbet, du er velkommen til at tjekke forskellene "
 "og fortsætte"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "Handling"
 
@@ -345,6 +348,12 @@ msgstr "Forfatter"
 
 msgid "Author and title. If one side document: title."
 msgstr "Forfatter og titel. Hvis der kun er en side: titel."
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "Forfattere"
@@ -2407,6 +2416,9 @@ msgstr "Omdirigeringer"
 msgid "Refresh and apply filters"
 msgstr ""
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr ""
 
@@ -3154,6 +3166,9 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr ""
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr ""
 
@@ -3522,6 +3537,11 @@ msgstr ""
 msgid ""
 "You can also link to a part of the text. Please refer to the manual for this "
 "feature"
+msgstr ""
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
 msgstr ""
 
 #. (create_url)

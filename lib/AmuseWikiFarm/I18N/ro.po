@@ -118,6 +118,9 @@ msgstr ""
 "Abandonat editare în curs de desfășurare, nu ezitați să verificați diff și "
 "să reluați"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "Acțiune"
 
@@ -361,6 +364,12 @@ msgstr "Autor"
 
 msgid "Author and title. If one side document: title."
 msgstr "Autor și titlu. Dacă este un document cu o singură parte: titlu."
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "Autori"
@@ -2543,6 +2552,9 @@ msgstr "Redirecționări"
 msgid "Refresh and apply filters"
 msgstr "Reîmprospătați și aplicați filtre"
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr "Reindexați site-ul"
 
@@ -3344,6 +3356,9 @@ msgstr "Toggle"
 msgid "Toggle fullscreen editor"
 msgstr "Toggle fullscreen editor"
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr ""
 
@@ -3750,6 +3765,11 @@ msgid ""
 msgstr ""
 "Puteți face un link către o alta parte a textului. Vă rugăm să vă uitați la "
 "manual pentru această opțiune"
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
+msgstr ""
 
 #. (create_url)
 msgid "You can create a peer at %1"

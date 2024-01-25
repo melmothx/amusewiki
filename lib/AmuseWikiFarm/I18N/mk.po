@@ -113,6 +113,9 @@ msgstr "А6 формат (погоден и за е-читачи)"
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr "Напуштена измена во тек, слободно провери ги разликите и преземи"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "Акција"
 
@@ -350,6 +353,12 @@ msgstr "Автор"
 
 msgid "Author and title. If one side document: title."
 msgstr "Автор и наслов. За едностран прелом: наслов."
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "Автори"
@@ -2460,6 +2469,9 @@ msgstr "Пренасочувања"
 msgid "Refresh and apply filters"
 msgstr "Освежи и користи филтри"
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr ""
 
@@ -3229,6 +3241,9 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr "Прикажи/сокриј го едиторот за целосен екран"
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr ""
 
@@ -3616,6 +3631,11 @@ msgid ""
 msgstr ""
 "Може да се додаде линк на дел од текстот. Упатствата се наоѓаат во "
 "прирачникот (на англиски)"
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
+msgstr ""
 
 #. (create_url)
 msgid "You can create a peer at %1"

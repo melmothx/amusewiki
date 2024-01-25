@@ -115,6 +115,9 @@ msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr ""
 "Forlasita redaktado en progreso, bonvolu kontroli la diferencon kaj rekomenci"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "Ago"
 
@@ -353,6 +356,12 @@ msgstr "Aŭtoro"
 
 msgid "Author and title. If one side document: title."
 msgstr "Aŭtoro kaj titolo. Se unu flanka dokumento: titolo."
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "Aŭtoroj"
@@ -2487,6 +2496,9 @@ msgstr "Alidirektiloj"
 msgid "Refresh and apply filters"
 msgstr "Refreŝigu kaj apliki filtrilojn"
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr ""
 
@@ -3266,6 +3278,9 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr "Baskuli plenekranan redaktilon"
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr ""
 
@@ -3657,6 +3672,11 @@ msgid ""
 msgstr ""
 "Vi ankaŭ povas ligi al parto de la teksto. Bonvolu raporti al la manlibro "
 "por ĉi tiu funkcio"
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
+msgstr ""
 
 #. (create_url)
 msgid "You can create a peer at %1"

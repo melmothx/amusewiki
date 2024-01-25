@@ -113,6 +113,9 @@ msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr ""
 "Düzenleme yarım bırakılmış, farklara bakıp kaldığın yerden devam edebilirsin"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "İşlem"
 
@@ -356,6 +359,12 @@ msgstr "Yazar"
 
 msgid "Author and title. If one side document: title."
 msgstr "Yazar ve başlık. Tek taraflı döküman ise: başlık."
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "Yazarlar"
@@ -2471,6 +2480,9 @@ msgstr "Yönlendirmeler"
 msgid "Refresh and apply filters"
 msgstr "Yenile ve filtreleri uygula"
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr "Siteyi yeniden indeksle"
 
@@ -3251,6 +3263,9 @@ msgstr "Aç/kapat"
 msgid "Toggle fullscreen editor"
 msgstr "Tam ekran düzenleyiciyi aç/kapat"
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr "İşlemek için çok fazla URL!"
 
@@ -3644,6 +3659,11 @@ msgid ""
 msgstr ""
 "Metnin bir bölümüne de link verebilirsin. Bu özellik lütfen için elkitabına "
 "başvur"
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
+msgstr ""
 
 #. (create_url)
 msgid "You can create a peer at %1"

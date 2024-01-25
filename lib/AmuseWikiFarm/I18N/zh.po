@@ -107,6 +107,9 @@ msgstr "A6纸张（也适合电子阅读器）"
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr "放弃进行中的编辑，可以检查区别并继续"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "行动"
 
@@ -331,6 +334,12 @@ msgstr "作者"
 
 msgid "Author and title. If one side document: title."
 msgstr "作者和标题。如果是单面文档的话：标题。"
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "作者"
@@ -2327,6 +2336,9 @@ msgstr "重定向"
 msgid "Refresh and apply filters"
 msgstr "刷新并应用筛选器"
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr ""
 
@@ -3072,6 +3084,9 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr "切换全屏编辑器"
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr ""
 
@@ -3430,6 +3445,11 @@ msgid ""
 "You can also link to a part of the text. Please refer to the manual for this "
 "feature"
 msgstr "你也可以链接到文本的某个部分。请参考说明书"
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
+msgstr ""
 
 #. (create_url)
 msgid "You can create a peer at %1"

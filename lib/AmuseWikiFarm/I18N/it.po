@@ -111,6 +111,9 @@ msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr ""
 "Modifica in corso abbandonata, puoi controllare le differenze e riprenderla"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "Azione"
 
@@ -348,6 +351,12 @@ msgstr "Autore"
 
 msgid "Author and title. If one side document: title."
 msgstr "Autore e titolo. Se a facciata singola: titolo."
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "Autori"
@@ -2502,6 +2511,9 @@ msgstr "Redirezioni"
 msgid "Refresh and apply filters"
 msgstr "Aggiorna e applica i filtri"
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr "Indicizza di nuovo il sito"
 
@@ -3284,6 +3296,9 @@ msgstr "Attiva/Disattiva"
 msgid "Toggle fullscreen editor"
 msgstr "Attiva/disattiva editor a tutto schermo"
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr ""
 
@@ -3685,6 +3700,11 @@ msgid ""
 msgstr ""
 "Puoi anche inserire un collegamento a una parte del testo. Vedi il\n"
 "manuale (in inglese) per maggiori dettagli"
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
+msgstr ""
 
 #. (create_url)
 msgid "You can create a peer at %1"

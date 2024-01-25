@@ -115,6 +115,9 @@ msgstr ""
 "Изоставена редакция в ход, чувствай се свободен да провериш разликите и да "
 "продължиш"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "Действие"
 
@@ -355,6 +358,12 @@ msgstr "Автор"
 
 msgid "Author and title. If one side document: title."
 msgstr "Автор и заглавие. Ако документът е едностранен: заглавие."
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "Автори"
@@ -2516,6 +2525,9 @@ msgstr "Пренасочвания"
 msgid "Refresh and apply filters"
 msgstr "Презареди и приложи филтрите"
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr ""
 
@@ -3298,6 +3310,9 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr "Превключи редактора на цял екран"
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr ""
 
@@ -3695,6 +3710,11 @@ msgid ""
 msgstr ""
 "Можеш също да създадеш връзка към част от текста. Моля, посъветсвай се с "
 "наръчника, относно тази функция"
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
+msgstr ""
 
 #. (create_url)
 msgid "You can create a peer at %1"

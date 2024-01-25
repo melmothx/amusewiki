@@ -108,6 +108,9 @@ msgstr "A6 (sopii myös lukulaitteille)"
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr "Keskeytynyt muokkaus käynnissä, kannattaa tarkistaa erot ja lopputulos"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "Mitä tehdään"
 
@@ -328,6 +331,12 @@ msgid "Author"
 msgstr "Kirjoittaja"
 
 msgid "Author and title. If one side document: title."
+msgstr ""
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
 msgstr ""
 
 msgid "Authors"
@@ -2300,6 +2309,9 @@ msgstr "Uudelleenohjaukset"
 msgid "Refresh and apply filters"
 msgstr ""
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr ""
 
@@ -3041,6 +3053,9 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr ""
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr ""
 
@@ -3392,6 +3407,11 @@ msgstr ""
 msgid ""
 "You can also link to a part of the text. Please refer to the manual for this "
 "feature"
+msgstr ""
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
 msgstr ""
 
 #. (create_url)

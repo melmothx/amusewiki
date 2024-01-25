@@ -111,6 +111,9 @@ msgstr "Arkusz A6 (odpowiedni także dla czytników ebooków)"
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr "Porzucono rozpoczętą edycję, możesz sprawdzić zmiany i wznów"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "Akcja"
 
@@ -339,6 +342,12 @@ msgstr "Osoba autorska"
 
 msgid "Author and title. If one side document: title."
 msgstr "Osoba autorska i tytuł. Dla dokumentów jednostronnych: tytuł."
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "Osoby autorskie"
@@ -2360,6 +2369,9 @@ msgstr "Przekierowania"
 msgid "Refresh and apply filters"
 msgstr "Odśwież i zastosuj filtry"
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr ""
 
@@ -3111,6 +3123,9 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr "Włącz / Wyłącz edytor pełnoekranowy"
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr ""
 
@@ -3486,6 +3501,11 @@ msgstr ""
 msgid ""
 "You can also link to a part of the text. Please refer to the manual for this "
 "feature"
+msgstr ""
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
 msgstr ""
 
 #. (create_url)

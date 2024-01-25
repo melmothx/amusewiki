@@ -113,6 +113,9 @@ msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr ""
 "Opuštěné nedokončené úpravy, nezdráhejte se zkontrolovat diff a pokračovat"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "Akce"
 
@@ -354,6 +357,12 @@ msgstr "Autor"
 
 msgid "Author and title. If one side document: title."
 msgstr "Autor a název. Pokud jedna strana dokumentu: název."
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "Autoři"
@@ -2477,6 +2486,9 @@ msgstr "Přesměrování"
 msgid "Refresh and apply filters"
 msgstr "Znovu načti a aplikuj filtry"
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr "Přeindexuj stránku"
 
@@ -3253,6 +3265,9 @@ msgstr "Přepnout"
 msgid "Toggle fullscreen editor"
 msgstr "Přepnout editor na celou obrazovku"
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr ""
 
@@ -3646,6 +3661,11 @@ msgid ""
 "feature"
 msgstr ""
 "Můžeš také odkazovat na část textu. Prosím podívej se na manuál této featury"
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
+msgstr ""
 
 #. (create_url)
 msgid "You can create a peer at %1"

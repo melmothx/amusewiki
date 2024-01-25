@@ -110,6 +110,9 @@ msgstr "A6 papir (i za e-čitače)"
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr "Napuštena izmjena u toku, slobodno provjeri razlike i preuzmi"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "Akcija"
 
@@ -341,6 +344,12 @@ msgstr "Autor"
 
 msgid "Author and title. If one side document: title."
 msgstr "Autor i naslov. Za jednostrani prijelom: naslov."
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "Autori"
@@ -2415,6 +2424,9 @@ msgstr "Preusmjeravanja"
 msgid "Refresh and apply filters"
 msgstr "Osvježi i koristi filtere"
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr ""
 
@@ -3176,6 +3188,9 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr "Pokaži/skrij full-screen editor"
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr ""
 
@@ -3552,6 +3567,11 @@ msgid ""
 msgstr ""
 "Mogu se dodati i poveznice na neki pasus teksta. Upute se nalaze u "
 "priručniku (na engleskom)"
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
+msgstr ""
 
 #. (create_url)
 msgid "You can create a peer at %1"

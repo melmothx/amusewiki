@@ -121,6 +121,9 @@ msgstr ""
 "Εγκαταλειμμένη επεξεργασία σε εξέλιξη, μη διστάσετε να ελέγξετε τις διαφορές "
 "και να συνεχίσετε"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "Ενέργεια"
 
@@ -364,6 +367,12 @@ msgstr "Συγγραφέας"
 
 msgid "Author and title. If one side document: title."
 msgstr "Συγγραφέας και τίτλος. Εάν το έγγραφο είναι μονόπλευρο: τίτλος."
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "Συγγραφείς"
@@ -2562,6 +2571,9 @@ msgstr "Επανακατευθύνσεις"
 msgid "Refresh and apply filters"
 msgstr "Ανανέωση και εφαρμογή φίλτρων"
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr ""
 
@@ -3365,6 +3377,9 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr "Ενεργοποίηση/Απενεργοποίηση επεξεργαστή πλήρους οθόνης"
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr ""
 
@@ -3777,6 +3792,11 @@ msgid ""
 msgstr ""
 "Μπορείτε επίσης να παραπέμψετε σε ένα μέρος του κειμένου. Ανατρέξτε στο "
 "εγχειρίδιο για αυτή τη λειτουργία"
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
+msgstr ""
 
 #. (create_url)
 msgid "You can create a peer at %1"

@@ -116,6 +116,9 @@ msgstr "کاغذ A6‌(مناسب کتاب خوان الکترونیکی)"
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr "ویرایش کامل نشده در حال انجام است، تفاوت را بررسی و ادامه دهید"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "کارکرد"
 
@@ -351,6 +354,12 @@ msgstr "نویسنده"
 
 msgid "Author and title. If one side document: title."
 msgstr "نویسنده و عنوان. اگر متن یک طرفه است: عنوان."
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "نویسندگان"
@@ -2451,6 +2460,9 @@ msgstr "تغییر مسیرها"
 msgid "Refresh and apply filters"
 msgstr "بازخوانی و اعمال فیلترها"
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr "شاخص گذاری مجدد سایت"
 
@@ -3219,6 +3231,9 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr ""
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr ""
 
@@ -3607,6 +3622,11 @@ msgid ""
 msgstr ""
 "همچنین می توانید به بخشی از متن پیوند دهید. لطفاً برای این ویژگی به دفترچه "
 "راهنما مراجعه کنید"
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
+msgstr ""
 
 #. (create_url)
 msgid "You can create a peer at %1"

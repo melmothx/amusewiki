@@ -115,6 +115,9 @@ msgstr "Папір A6 (також підходить для е-книжок)"
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr "Є незавершене редагування, можете проглянути відмінності й підсумок"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "Дія"
 
@@ -354,6 +357,12 @@ msgstr "Автор_ка"
 
 msgid "Author and title. If one side document: title."
 msgstr "Автор_ка й назва. Якщо однобічний документ: назва."
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "Автор_ки"
@@ -2433,6 +2442,9 @@ msgstr "Переспрямування"
 msgid "Refresh and apply filters"
 msgstr "Оновити й застосувати фільтри"
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr "Переіндексувати сайт"
 
@@ -3198,6 +3210,9 @@ msgstr "Перемкнути"
 msgid "Toggle fullscreen editor"
 msgstr "Перемкнути повноекранний редактор"
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr "Забагато URL-адрес для обробки!"
 
@@ -3585,6 +3600,11 @@ msgid ""
 msgstr ""
 "Можете також послатись на частину тексту. Докладніше цю функцію описує "
 "посібник"
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
+msgstr ""
 
 #. (create_url)
 msgid "You can create a peer at %1"

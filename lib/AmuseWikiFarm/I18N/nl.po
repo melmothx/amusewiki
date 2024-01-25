@@ -118,6 +118,9 @@ msgstr ""
 "Verlaten opmaak bezig, voel je vrij om de diff te controleren en verder te "
 "gaan"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "Actie"
 
@@ -356,6 +359,12 @@ msgstr "Auteur"
 
 msgid "Author and title. If one side document: title."
 msgstr "Auteur en titel. Indien eenzijdig document: titel."
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "Auteurs"
@@ -2483,6 +2492,9 @@ msgstr "Verwijzingen"
 msgid "Refresh and apply filters"
 msgstr "Ververs en pas filters toe"
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr ""
 
@@ -3263,6 +3275,9 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr "Kies schermvullende editor"
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr ""
 
@@ -3653,6 +3668,11 @@ msgstr ""
 msgid ""
 "You can also link to a part of the text. Please refer to the manual for this "
 "feature"
+msgstr ""
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
 msgstr ""
 
 #. (create_url)

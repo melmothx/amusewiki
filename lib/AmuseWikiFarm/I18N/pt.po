@@ -116,6 +116,9 @@ msgstr ""
 "Edição abandonada em progresso, sinta se livre para checar o *diff* e "
 "continuar."
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "Ação"
 
@@ -352,6 +355,12 @@ msgstr "Autor"
 
 msgid "Author and title. If one side document: title."
 msgstr "Autor e título. Se documento de um lado só: título."
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "Autores"
@@ -2444,6 +2453,9 @@ msgstr "Redirecionamentos"
 msgid "Refresh and apply filters"
 msgstr "Atualizar e aplicar filtros"
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr ""
 
@@ -3220,6 +3232,9 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr "Mudar para o editor em tela cheia"
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr ""
 
@@ -3601,6 +3616,11 @@ msgstr ""
 msgid ""
 "You can also link to a part of the text. Please refer to the manual for this "
 "feature"
+msgstr ""
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
 msgstr ""
 
 #. (create_url)

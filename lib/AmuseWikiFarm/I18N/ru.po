@@ -113,6 +113,9 @@ msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr ""
 "Прошлое редактирование в процессе. Можете сравнить отличия и продолжать"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "Действия"
 
@@ -344,6 +347,12 @@ msgstr "Автор"
 
 msgid "Author and title. If one side document: title."
 msgstr "Автор и заголовок. Для одностороннего документа: заголовок."
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "Авторы"
@@ -2426,6 +2435,9 @@ msgstr "Перенаправления"
 msgid "Refresh and apply filters"
 msgstr "Перезагрузить и применить фильтры"
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr ""
 
@@ -3192,6 +3204,9 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr "Переключить редактор в полноэкранный режим"
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr ""
 
@@ -3573,6 +3588,11 @@ msgid ""
 msgstr ""
 "Вы также можете ссылаться на часть текста. Пожалуйста, обратитесь к "
 "руководству для этой функции"
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
+msgstr ""
 
 #. (create_url)
 msgid "You can create a peer at %1"

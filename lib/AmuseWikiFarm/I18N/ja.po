@@ -101,6 +101,9 @@ msgstr "A6紙（電子書籍リーダーにも適しています）"
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr "進行中の編集を破棄した。相違を確認して再開してください"
 
+msgid "Access token"
+msgstr ""
+
 msgid "Action"
 msgstr "アクション"
 
@@ -322,6 +325,12 @@ msgstr "著者名"
 
 msgid "Author and title. If one side document: title."
 msgstr "著者名とタイトル。片側が文書の場合：タイトル。"
+
+msgid "Authorize your IP"
+msgstr ""
+
+msgid "Authorize your IP, if needed"
+msgstr ""
 
 msgid "Authors"
 msgstr "著者名"
@@ -2303,6 +2312,9 @@ msgstr "リダイレクト"
 msgid "Refresh and apply filters"
 msgstr "更新・フィルタを適用"
 
+msgid "Refresh the token"
+msgstr ""
+
 msgid "Reindex site"
 msgstr ""
 
@@ -3049,6 +3061,9 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr "フルスクリーンエディタをトグル"
 
+msgid "Token refreshed"
+msgstr ""
+
 msgid "Too many URLs to process!"
 msgstr ""
 
@@ -3408,6 +3423,11 @@ msgid ""
 "feature"
 msgstr ""
 "記事の一部にリンクすることができます。この機能はマニュアルを参照してください"
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
+msgstr ""
 
 #. (create_url)
 msgid "You can create a peer at %1"
