@@ -222,6 +222,154 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-26 14:42:41
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:InnwjwmNZtGD5ijlmGwrFw
 
+use Path::Tiny;
+use File::Copy::Recursive qw/dircopy/;
+use AmuseWikiFarm::Utils::Paths;
+use AmuseWikiFarm::Log::Contextual;
+use Template::Tiny;
+
+sub working_dir {
+    my $self = shift;
+    my $root = AmuseWikiFarm::Utils::Paths::root_install_directory();
+    my $bcroot = $root->child('bookcovers');
+    $bcroot->mkpath unless $bcroot->exists;
+    my $wd = $bcroot->child($self->bookcover_id);
+    return $wd;
+}
+
+sub template_file {
+    shift->working_dir->child('cover.tt');
+}
+
+sub create_working_dir {
+    my $self = shift;
+    my $template_file = $self->template_file;
+    my $target = $template_file->parent;
+    if (my $ttdir = $self->site->valid_ttdir) {
+        if (my $template_dir = $self->template) {
+            if ($template_dir =~ m/\A([a-z0-9]{3,})\z/) {
+                my $src = path($ttdir, $1);
+                if ($src->exists and $src->child('cover.tt')->exists) {
+                    log_info { "Copying $src into $target" };
+                    dircopy("$src", "$target");
+                    return $target;
+                }
+            }
+        }
+    }
+    # still here? using the default
+    $target->mkpath;
+    my $body = <<'LATEX';
+% document class populated by us
+\begin{document}
+\begin{bookcover}
+\bookcovercomponent{normal}{front}[15mm,15mm,15mm,0.2\partheight]{
+\centering
+[% IF author_muse %]
+{\bfseries\LARGE\emph{[% author_muse %]}}
+\vskip 0.1\partheight
+[% END %]
+{\Huge\bfseries [% title_muse %]}}
+\bookcovercomponent{center}{spine}{
+  \rotatebox[origin=c]{-90}{\bfseries [% IF author_muse %]\emph{[% author_muse %]}\quad\quad[% END %]
+  [% title_muse %]}
+}
+\end{bookcover}
+\end{document}
+LATEX
+    $target->child('cover.tt')->spew_utf8($body);
+    return $target;
+}
+
+sub parse_template {
+    my $self = shift;
+    my $tt = $self->template_file;
+    # this is the simple TT one so we just check for the tokens used
+    my $body = $tt->slurp_utf8;
+    my %tokens;
+    while ($body =~ m/\[\%\s*(([a-z_]+)_(int|muse|float|file))\s*\%\]/g) {
+        my ($whole, $name, $type) = ($1, $2, $3);
+        $tokens{$whole} = { name => $name, type => $type };
+    }
+    return \%tokens;
+}
+
+sub populate_tokens {
+    my $self = shift;
+    my $tokens = $self->parse_template;
+    foreach my $k (keys %$tokens) {
+        $self->bookcover_tokens->find_or_create({
+                                                 token_name => $k
+                                                });
+    }
+}
+
+sub update_from_params {
+    my ($self, $params) = @_;
+    Dlog_debug { "Updating from params: $_" } $params;
+    my %update;
+    foreach my $int (qw/
+                           coverheight
+                           coverwidth
+                           spinewidth
+                           flapwidth
+                           wrapwidth
+                           bleedwidth
+                           marklength
+                           foldingmargin
+                       /) {
+        my $param = $params->{$int};
+        if (defined $param and $param =~ m/\A(0|[1-9][0-9]*)\z/) {
+            $update{$int} = $1;
+        }
+    }
+    if (%update) {
+        Dlog_debug { "Updating bookcover with $_" } \%update;
+        $self->update(\%update);
+    }
+    foreach my $token ($self->bookcover_tokens) {
+        if (defined $params->{$token->token_name}) {
+            $token->update_if_valid($params->{$token->token_name});
+        }
+    }
+}
+
+sub compose_class_header {
+    my $self = shift;
+    my @opts;
+    foreach my $k (qw/
+                         coverheight
+                         coverwidth
+                         spinewidth
+                         flapwidth
+                         wrapwidth
+                         bleedwidth
+                         marklength
+                     /) {
+        push @opts, "$k:" . $self->$k . 'mm';
+    }
+    foreach my $bool (qw/foldingmargin/) {
+        push @opts, "$bool:" . ($self->$bool ? "true" : "false");
+    }
+    return "\\documentclass[" . join(",", @opts) . "]{bookcover}\n";
+}
+
+sub write_tex_file {
+    my $self = shift;
+    my %vars;
+    foreach my $token ($self->bookcover_tokens) {
+        $vars{$token->token_name} = $token->token_value_for_template;
+    }
+    my $tfile = $self->template_file;
+    my $input = $tfile->slurp_utf8;
+    my $output;
+    Dlog_debug { "$tfile: $input $_" } \%vars;
+    Template::Tiny->new->process(\$input, \%vars, \$output);
+    log_debug { "Output is $output" };
+    my $outfile = $tfile->parent->child('cover.tex');
+    $outfile->spew_utf8($self->compose_class_header, $output);
+    return $outfile;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

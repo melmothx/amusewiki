@@ -102,7 +102,59 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-26 15:48:49
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:VwS7ypaoUHw40JbWYmKXdg
 
+use AmuseWikiFarm::Log::Contextual;
+use Text::Amuse::Functions qw/muse_to_object muse_format_line/;
+sub token_type {
+    my $self = shift;
+    if ($self->token_name =~ m/\A[a-z_]+_(int|muse|float|file)/) {
+        return $1;
+    }
+    return undef;
+}
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+sub _validate {
+    my ($self, $value) = @_;
+    log_debug { "Value is $value" };
+    return undef unless defined $value;
+    if (my $type = $self->token_type) {
+        my %checks = (
+                      int =>   qr{0|[1-9][0-9]*},
+                      float => qr{[0-9]*\.[0-9]+},
+                      muse =>  qr{.*},
+                      file =>  qr{[0-9a-z-]+\.(?:pdf|png|jpe?g)},
+                     );
+        if (my $re = $checks{$type}) {
+            if ($value =~ m/\A($re)\z/) {
+                my $valid = $1;
+                return $1;
+            }
+        }
+    }
+    log_debug { "Invalid value" };
+    return undef;
+}
+
+sub token_value_for_template {
+    my $self = shift;
+    my $validated = $self->_validate($self->token_value);
+    if (defined($validated)) {
+        if ($self->token_type eq 'muse') {
+            my $latex = muse_to_object($validated)->as_latex;
+            $latex =~ s/\A\s*//s;
+            $latex =~ s/\s*\z//s;
+            return $latex;
+        }
+        else {
+            return $validated;
+        }
+    }
+    return '';
+}
+
+sub update_if_valid {
+    my ($self, $value) = @_;
+    $self->update({ token_value => $self->_validate($value) });
+}
+
 __PACKAGE__->meta->make_immutable;
 1;
