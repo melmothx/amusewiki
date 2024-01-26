@@ -227,6 +227,9 @@ use File::Copy::Recursive qw/dircopy/;
 use AmuseWikiFarm::Utils::Paths;
 use AmuseWikiFarm::Log::Contextual;
 use Template::Tiny;
+use IPC::Run qw(run);
+use Cwd;
+use DateTime;
 
 sub working_dir {
     my $self = shift;
@@ -372,6 +375,21 @@ sub write_tex_file {
     $outfile->spew_utf8($self->compose_class_header, $output);
     return $outfile;
 }
+
+sub produce_pdf {
+    my $self = shift;
+    # this should happen only in the jobber, where we fork. But in
+    # case, return to the original directory.
+    my $cwd = getcwd;
+    my $wd = $self->working_dir;
+    chdir $wd or die "Cannot chdir into $wd";
+    my ($in, $out, $err);
+    my @run = ("lualatex", '-interaction=nonstopmode', 'cover.tex');
+    run \@run, \$in, \$out, \$err;
+    chdir $cwd or die "Cannot chdir back into $cwd";
+    log_info { "Compilation: $out $err" };
+}
+
 
 __PACKAGE__->meta->make_immutable;
 1;

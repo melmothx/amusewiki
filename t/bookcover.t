@@ -7,6 +7,7 @@ use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 use DateTime;
 use Test::More;
+use Path::Tiny;
 
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
@@ -59,7 +60,10 @@ ok $user_bc;
     my $outfile =  $anon_bc->write_tex_file;
     ok $outfile->exists;
     diag $outfile->slurp_utf8;
-    like $outfile->slurp_utf8, qr{The \\emph\{back\}}
+    like $outfile->slurp_utf8, qr{The \\emph\{back\}};
+    $anon_bc->produce_pdf;
+    my $pdf = path(bookcovers => $anon_bc->bookcover_id, "cover.pdf");
+    ok $pdf->exists, "$pdf exists";
 }
 
 done_testing;
