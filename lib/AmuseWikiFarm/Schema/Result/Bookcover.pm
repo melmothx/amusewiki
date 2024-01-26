@@ -54,11 +54,13 @@ __PACKAGE__->table("bookcover");
 =head2 coverheight
 
   data_type: 'integer'
+  default_value: 210
   is_nullable: 0
 
 =head2 coverwidth
 
   data_type: 'integer'
+  default_value: 148
   is_nullable: 0
 
 =head2 spinewidth
@@ -102,6 +104,11 @@ __PACKAGE__->table("bookcover");
   data_type: 'datetime'
   is_nullable: 0
 
+=head2 compiled
+
+  data_type: 'datetime'
+  is_nullable: 1
+
 =head2 user_id
 
   data_type: 'integer'
@@ -116,9 +123,9 @@ __PACKAGE__->add_columns(
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
   "coverheight",
-  { data_type => "integer", is_nullable => 0 },
+  { data_type => "integer", default_value => 210, is_nullable => 0 },
   "coverwidth",
-  { data_type => "integer", is_nullable => 0 },
+  { data_type => "integer", default_value => 148, is_nullable => 0 },
   "spinewidth",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "flapwidth",
@@ -133,6 +140,8 @@ __PACKAGE__->add_columns(
   { data_type => "smallint", default_value => 0, is_nullable => 0 },
   "created",
   { data_type => "datetime", is_nullable => 0 },
+  "compiled",
+  { data_type => "datetime", is_nullable => 1 },
   "user_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
 );
@@ -202,8 +211,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-26 14:19:33
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:v9tFJmUBd49AFqhmpWyskQ
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-26 14:39:00
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ZnGir94XL1rx23xCF78pJg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -839,8 +839,9 @@ CREATE UNIQUE INDEX unique_aggregation_annotation_key ON aggregation_annotation 
 CREATE TABLE bookcover (
     bookcover_id  INTEGER PRIMARY KEY AUTOINCREMENT,
     site_id VARCHAR(16) NOT NULL REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    coverheight   INTEGER NOT NULL,
-    coverwidth    INTEGER NOT NULL,
+    -- a5 as default dimensions
+    coverheight   INTEGER NOT NULL DEFAULT 210,
+    coverwidth    INTEGER NOT NULL DEFAULT 148,
     spinewidth    INTEGER NOT NULL DEFAULT 0,
     flapwidth     INTEGER NOT NULL DEFAULT 0,
     wrapwidth     INTEGER NOT NULL DEFAULT 0,
@@ -848,6 +849,7 @@ CREATE TABLE bookcover (
     marklength    INTEGER NOT NULL DEFAULT 5,
     foldingmargin SMALLINT NOT NULL DEFAULT 0,
     created DATETIME NOT NULL,
+    compiled DATETIME,
     user_id INTEGER NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
