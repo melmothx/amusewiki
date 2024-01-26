@@ -40,15 +40,16 @@ ok $user_bc;
     is_deeply $tokens, {
                         title_muse =>  { name => 'title',  type => 'muse' },
                         author_muse => { name => 'author', type => 'muse' },
+                        back_text_muse => { name => 'back_text', type => 'muse' },
                        };
     $anon_bc->populate_tokens;
     $anon_bc->populate_tokens;
-    is $anon_bc->bookcover_tokens->count, 2;
-
+    is $anon_bc->bookcover_tokens->count, 3;
     $anon_bc->update_from_params({
                                   title_muse => "Title *title*",
                                   author_muse => "Author *author*",
                                   spinewidth => 'asdf',
+                                  back_text_muse => "This\n\nIs\n\nThe *back*",
                                  });
     is $anon_bc->spinewidth, 0;
     $anon_bc->update_from_params({
@@ -58,6 +59,7 @@ ok $user_bc;
     my $outfile =  $anon_bc->write_tex_file;
     ok $outfile->exists;
     diag $outfile->slurp_utf8;
+    like $outfile->slurp_utf8, qr{The \\emph\{back\}}
 }
 
 done_testing;

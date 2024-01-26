@@ -274,6 +274,7 @@ sub create_working_dir {
   \rotatebox[origin=c]{-90}{\bfseries [% IF author_muse %]\emph{[% author_muse %]}\quad\quad[% END %]
   [% title_muse %]}
 }
+\bookcovercomponent{normal}{back}[15mm,15mm,15mm,0.2\partheight]{[% back_text_muse %]}
 \end{bookcover}
 \end{document}
 LATEX
@@ -336,7 +337,8 @@ sub update_from_params {
 
 sub compose_class_header {
     my $self = shift;
-    my @opts;
+    # built in for now
+    my @opts = ("12pt", "markcolor=black");
     foreach my $k (qw/
                          coverheight
                          coverwidth
@@ -346,10 +348,10 @@ sub compose_class_header {
                          bleedwidth
                          marklength
                      /) {
-        push @opts, "$k:" . $self->$k . 'mm';
+        push @opts, "$k=" . $self->$k . 'mm';
     }
     foreach my $bool (qw/foldingmargin/) {
-        push @opts, "$bool:" . ($self->$bool ? "true" : "false");
+        push @opts, "$bool=" . ($self->$bool ? "true" : "false");
     }
     return "\\documentclass[" . join(",", @opts) . "]{bookcover}\n";
 }

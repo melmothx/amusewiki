@@ -120,7 +120,7 @@ sub _validate {
         my %checks = (
                       int =>   qr{0|[1-9][0-9]*},
                       float => qr{[0-9]*\.[0-9]+},
-                      muse =>  qr{.*},
+                      muse =>  qr{.*}s,
                       file =>  qr{[0-9a-z-]+\.(?:pdf|png|jpe?g)},
                      );
         if (my $re = $checks{$type}) {
