@@ -855,10 +855,10 @@ CREATE TABLE bookcover (
 );
 
 CREATE TABLE bookcover_token (
-    bookcover_token_id  INTEGER PRIMARY KEY AUTOINCREMENT,
+    bookcover_id VARCHAR(16) NOT NULL REFERENCES bookcover(bookcover_id) ON DELETE CASCADE ON UPDATE CASCADE,
     token_name VARCHAR(255) NOT NULL,
     token_value TEXT,
-    bookcover_id VARCHAR(16) NOT NULL REFERENCES bookcover(bookcover_id) ON DELETE CASCADE ON UPDATE CASCADE
+    PRIMARY KEY (bookcover_id, token_name)
 );
 
 INSERT INTO table_comments (table_name, comment_text)
