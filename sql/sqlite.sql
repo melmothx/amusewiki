@@ -850,6 +850,7 @@ CREATE TABLE bookcover (
     foldingmargin SMALLINT NOT NULL DEFAULT 0,
     created DATETIME NOT NULL,
     compiled DATETIME,
+    template VARCHAR(64),
     user_id INTEGER NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
