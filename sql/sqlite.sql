@@ -851,6 +851,7 @@ CREATE TABLE bookcover (
     created DATETIME NOT NULL,
     compiled DATETIME,
     template VARCHAR(64),
+    session_id VARCHAR(255),
     user_id INTEGER NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 

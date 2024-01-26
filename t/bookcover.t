@@ -61,9 +61,10 @@ ok $user_bc;
     ok $outfile->exists;
     diag $outfile->slurp_utf8;
     like $outfile->slurp_utf8, qr{The \\emph\{back\}};
-    $anon_bc->produce_pdf;
-    my $pdf = path(bookcovers => $anon_bc->bookcover_id, "cover.pdf");
-    ok $pdf->exists, "$pdf exists";
+    my $res = $anon_bc->produce_pdf;
+    ok $res->{file}->exists, "$res->{file} exists";
+    diag $res->{out};
+    diag $res->{err};
 }
 
 done_testing;

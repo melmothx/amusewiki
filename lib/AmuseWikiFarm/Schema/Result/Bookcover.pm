@@ -115,6 +115,12 @@ __PACKAGE__->table("bookcover");
   is_nullable: 1
   size: 64
 
+=head2 session_id
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 user_id
 
   data_type: 'integer'
@@ -150,6 +156,8 @@ __PACKAGE__->add_columns(
   { data_type => "datetime", is_nullable => 1 },
   "template",
   { data_type => "varchar", is_nullable => 1, size => 64 },
+  "session_id",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "user_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
 );
@@ -219,8 +227,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-26 14:42:41
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:InnwjwmNZtGD5ijlmGwrFw
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-26 21:09:51
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Gfshihr4cfYIUiU1XR4Unw
 
 use Path::Tiny;
 use File::Copy::Recursive qw/dircopy/;
@@ -387,7 +395,12 @@ sub produce_pdf {
     my @run = ("lualatex", '-interaction=nonstopmode', 'cover.tex');
     run \@run, \$in, \$out, \$err;
     chdir $cwd or die "Cannot chdir back into $cwd";
-    log_info { "Compilation: $out $err" };
+    # log_info { "Compilation: $out $err" };
+    return {
+            stdout => $out,
+            stderr => $err,
+            file => $wd->child('cover.pdf'),
+           };
 }
 
 
