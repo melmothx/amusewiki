@@ -836,6 +836,28 @@ CREATE TABLE aggregation_annotation (
 
 CREATE UNIQUE INDEX unique_aggregation_annotation_key ON aggregation_annotation (annotation_id, aggregation_id);
 
+CREATE TABLE bookcover (
+    bookcover_id  INTEGER PRIMARY KEY AUTOINCREMENT,
+    site_id VARCHAR(16) NOT NULL REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    coverheight   INTEGER NOT NULL,
+    coverwidth    INTEGER NOT NULL,
+    spinewidth    INTEGER NOT NULL DEFAULT 0,
+    flapwidth     INTEGER NOT NULL DEFAULT 0,
+    wrapwidth     INTEGER NOT NULL DEFAULT 0,
+    bleedwidth    INTEGER NOT NULL DEFAULT 10,
+    marklength    INTEGER NOT NULL DEFAULT 5,
+    foldingmargin SMALLINT NOT NULL DEFAULT 0,
+    created DATETIME NOT NULL,
+    user_id INTEGER NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE bookcover_token (
+    bookcover_token_id  INTEGER PRIMARY KEY AUTOINCREMENT,
+    token_name VARCHAR(255) NOT NULL,
+    token_value TEXT,
+    bookcover_id VARCHAR(16) NOT NULL REFERENCES bookcover(bookcover_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),

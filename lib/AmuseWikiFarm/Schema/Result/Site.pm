@@ -658,6 +658,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 bookcovers
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Bookcover>
+
+=cut
+
+__PACKAGE__->has_many(
+  "bookcovers",
+  "AmuseWikiFarm::Schema::Result::Bookcover",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 bulk_jobs
 
 Type: has_many
@@ -1044,8 +1059,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-24 16:27:05
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:02jKqZQE9APHLfMDXAVdrA
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-26 14:19:33
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:tPR23DrUhsY5c2j96y2VMQ
 
 =head2 other_sites
 
