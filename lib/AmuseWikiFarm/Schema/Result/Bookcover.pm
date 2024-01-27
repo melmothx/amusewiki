@@ -328,12 +328,14 @@ sub update_from_params {
                            wrapwidth
                            bleedwidth
                            marklength
-                           foldingmargin
                        /) {
         my $param = $params->{$int};
         if (defined $param and $param =~ m/\A(0|[1-9][0-9]*)\z/) {
             $update{$int} = $1;
         }
+    }
+    foreach my $bool (qw/foldingmargin/) {
+        $update{$bool} = $params->{$bool} ? 1 : 0;
     }
     if (%update) {
         Dlog_debug { "Updating bookcover with $_" } \%update;

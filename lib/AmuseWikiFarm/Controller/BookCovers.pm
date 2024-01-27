@@ -19,6 +19,10 @@ sub create :Chained('bookcovers') :PathPart('create') :Args(0) {
                                                     session_id => $c->sessionid,
                                                     $c->user_exists ? (user_id => $c->user->id) : (),
                                                    });
+    # template selection should happen here, otherwise we need to redo
+    # these steps
+    $bc->create_working_dir;
+    $bc->populate_tokens;
     $c->response->redirect($c->uri_for_action('/bookcovers/edit', $bc->bookcover_id));
 }
 

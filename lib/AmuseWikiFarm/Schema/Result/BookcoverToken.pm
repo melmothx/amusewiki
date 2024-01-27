@@ -104,13 +104,27 @@ __PACKAGE__->belongs_to(
 
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse::Functions qw/muse_to_object muse_format_line/;
-sub token_type {
+
+has token_type => (is => 'ro', isa => 'Str', lazy => 1, builder => '_build_token_type');
+has label => (is => 'ro', isa => 'Str', lazy => 1, builder => '_build_label');
+
+sub _build_token_type {
     my $self = shift;
-    if ($self->token_name =~ m/\A[a-z_]+_(int|muse|float|file)/) {
+    if ($self->token_name =~ m/\A[a-z_]+_(int|muse|float|file)\z/) {
         return $1;
     }
     return undef;
 }
+
+sub _build_label {
+    my $self = shift;
+    if ($self->token_name =~ m/\A([a-z_]+)_(int|muse|float|file)\z/) {
+        my $label = $1;
+        return join(' ', map { ucfirst($_) } split(/_/, $label));
+    }
+    return undef;
+}
+
 
 sub _validate {
     my ($self, $value) = @_;
@@ -126,7 +140,7 @@ sub _validate {
         if (my $re = $checks{$type}) {
             if ($value =~ m/\A($re)\z/) {
                 my $valid = $1;
-                return $1;
+                return $valid;
             }
         }
     }
@@ -153,7 +167,9 @@ sub token_value_for_template {
 
 sub update_if_valid {
     my ($self, $value) = @_;
-    $self->update({ token_value => $self->_validate($value) });
+    my $validated = $self->_validate($value);
+    log_debug { "Validated value is $validated" };
+    $self->update({ token_value => $validated });
 }
 
 __PACKAGE__->meta->make_immutable;
