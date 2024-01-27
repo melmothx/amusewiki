@@ -1000,7 +1000,7 @@ sub dispatch_job_build_bookcover {
         }
         else {
             log_info { "Failure: $res->{stderr} $res->{stdout}" };
-            $logger->("Failure compiling the cover!");
+            $logger->("Failure compiling the cover!\n");
         }
     }
     else {

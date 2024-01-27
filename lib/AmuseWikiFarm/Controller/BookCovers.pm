@@ -30,20 +30,16 @@ sub find :Chained('bookcovers') :PathPart('bc') :CaptureArgs(1) {
     my ($self, $c, $id) = @_;
     if ($id =~ m/\A\d+\z/a) {
         my $user = $c->user ? $c->user->get_object : undef;
+        # if we have a user, do this cross-site
+        if ($user) {
+            if (my $bc = $user->bookcovers->find($id)) {
+                $c->stash(bookcover => $bc);
+                return;
+            }
+        }
+        # otherwise search by session, same site
         if (my $bc = $c->stash->{site}->bookcovers->find({ bookcover_id => $id })) {
-            my $can_view = 0;
             if ($bc->session_id and $c->sessionid and $c->sessionid eq $bc->session_id) {
-                log_debug { "Matched because of session id" };
-                $can_view = 1;
-            }
-            elsif ($bc->user_id and $user and $user->id eq $bc->user_id) {
-                log_debug { "Matched because of user id" };
-                $can_view = 1;
-            }
-            else {
-                log_info { "Permission denied to see bc $id" };
-            }
-            if ($can_view) {
                 $c->stash(bookcover => $bc);
                 return;
             }
@@ -94,6 +90,22 @@ sub download :Chained('find') :PathPart('download') :Args {
         }
     }
     return $c->detach('/not_found');
+}
+
+sub remove :Chained('find') :PathPart('remove') :Args(0) {
+    my ($self, $c, $type) = @_;
+    if ($c->request->body_params->{remove}) {
+        if (my $bc = $c->stash->{bookcover}) {
+            $c->flash(status_msg => $c->loc("Cover removed"));
+            $bc->delete;
+        }
+    }
+    if ($c->user_exists) {
+        $c->res->redirect($c->uri_for_action('/user/bookcovers'));
+    }
+    else {
+        $c->res->redirect($c->uri_for('/'));
+    }
 }
 
 

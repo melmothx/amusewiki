@@ -370,6 +370,9 @@ sub update_from_params {
     foreach my $bool (qw/foldingmargin/) {
         $update{$bool} = $params->{$bool} ? 1 : 0;
     }
+    foreach my $str (qw/title comments/) {
+        $update{$str} = $params->{$str} // '';
+    }
     if (%update) {
         Dlog_debug { "Updating bookcover with $_" } \%update;
         $self->update(\%update);

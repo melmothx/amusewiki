@@ -1,14 +1,16 @@
 <div class="page-header">
   <h1>[% loc('Create a book cover') %]</h1>
 </div>
+<form action="[% c.uri_for_action('/bookcovers/edit', bookcover.bookcover_id) %]"
+      method="POST"
+      enctype="multipart/form-data">
+
 <div class="row">
   <div class="col-sm-6">
-    <form action="[% c.uri_for_action('/bookcovers/edit', bookcover.bookcover_id) %]"
-          method="POST"
-          enctype="multipart/form-data"
-          class="form-horizontal">
+    <div class="form-horizontal">
       <div class="form-group">
-        <label for="coverheight" class="col-sm-6 control-label">Cover Height (mm)</label>
+        <label for="coverheight" class="col-sm-6 control-label">[% loc('Cover Height (mm)') %]
+        </label>
         <div class="col-sm-6">
           <input type="number" step="1" min="0"
                  class="form-control"
@@ -18,7 +20,8 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="coverwidth" class="col-sm-6 control-label">Cover Width (mm)</label>
+        <label for="coverwidth" class="col-sm-6 control-label">[% loc('Cover Width (mm)') %]
+        </label>
         <div class="col-sm-6">
           <input type="number" step="1" min="0"
                  class="form-control"
@@ -28,7 +31,8 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="spinewidth" class="col-sm-6 control-label">Spine Width (mm)</label>
+        <label for="spinewidth" class="col-sm-6 control-label">[% loc('Spine Width (mm)') %]
+        </label>
         <div class="col-sm-6">
           <input type="number" step="1" min="0"
                  class="form-control"
@@ -38,7 +42,8 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="flapwidth" class="col-sm-6 control-label">Flap Width (mm)</label>
+        <label for="flapwidth" class="col-sm-6 control-label">[% loc('Flap Width (mm)') %]
+        </label>
         <div class="col-sm-6">
           <input type="number" step="1" min="0"
                  class="form-control"
@@ -48,7 +53,8 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="wrapwidth" class="col-sm-6 control-label">Wrap Width (mm)</label>
+        <label for="wrapwidth" class="col-sm-6 control-label">[% loc('Wrap Width (mm)') %]
+        </label>
         <div class="col-sm-6">
           <input type="number" step="1" min="0"
                  class="form-control"
@@ -58,7 +64,8 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="bleedwidth" class="col-sm-6 control-label">Bleed Width (mm)</label>
+        <label for="bleedwidth" class="col-sm-6 control-label">[% loc('Bleed Width (mm)') %]
+        </label>
         <div class="col-sm-6">
           <input type="number" step="1" min="0"
                  class="form-control"
@@ -68,7 +75,8 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="marklength" class="col-sm-6 control-label">Mark Length (mm)</label>
+        <label for="marklength" class="col-sm-6 control-label">[% loc('Mark Length (mm)') %]
+        </label>
         <div class="col-sm-6">
           <input type="number" step="1" min="0"
                  class="form-control"
@@ -83,59 +91,86 @@
             <label>
               <input type="checkbox" name="foldingmargin"
                      [% IF bookcover.foldingmargin %]checked="checked"[% END %]>
-              Folding Margin
+              [% loc('Folding Margin') %]
             </label>
           </div>
         </div>
       </div>
-      [% FOREACH token IN bookcover.bookcover_tokens %]
-        <div class="form-group">
-          <label for="[% token.token_name | html%]" class="col-sm-6 control-label">
-            [% lh.site_loc_html(token.label) %]
-          </label>
-          [% IF token.token_type == "muse" %]
-            <div class="col-sm-6">
-              <textarea name="[% token.token_name | html %]"
-                        id="[% token.token_name | html %]"
-                        class="form-control">[% token.token_value | html %]</textarea>
-            </div>
-          [% ELSIF token.token_type == "int" %]
-            <div class="col-sm-6">
-              <input name="[% token.token_name | html %]"
-                     id="[% token.token_name | html %]"
-                     class="form-control"
-                     type="number" step="1"
-                     value="[% token.token_value | html %]" />
-            </div>
-          [% ELSIF token.token_type == "float" %]
-            <div class="col-sm-6">
-              <input name="[% token.token_name | html %]"
-                     id="[% token.token_name | html %]"
-                     class="form-control"
-                     type="number" step="0.01"
-                     value="[% token.token_value | html %]" />
-            </div>
-          [% ELSIF token.token_type == "file" %]
-            <div class="col-sm-6">
-              <input name="[% token.token_name | html %]"
-                     id="[% token.token_name | html %]"
-                     class="form-control"
-                     type="file" />
-              [% token.token_value | html %]
-            </div>
-          [% END %]
-        </div>
-      [% END %]
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" name="update" value="1" class="btn btn-default">Update</button>
-          <button type="submit" name="build" value="1" class="btn btn-default">Build</button>
-        </div>
-      </div>
-    </form>
+    </div>
   </div>
   <div class="col-sm-6 text-center">
     <img class="img-responsive" src="[% c.uri_for('/static/images/bookcover.png') %]">
-    <small><a href="http://mirrors.ctan.org/macros/latex/contrib/bookcover/bookcover.pdf">See the bookcover class for all the details</a></small>
+    <small><a href="http://mirrors.ctan.org/macros/latex/contrib/bookcover/bookcover.pdf">
+      [% loc('See the bookcover class for all the details') %]
+    </a></small>
   </div>
 </div>
+<div class="form-horizontal">
+  <div class="form-group">
+    <label for="coverheight" class="col-sm-3 control-label">[% loc('Title') %]
+    </label>
+    <div class="col-sm-9">
+      <input type="text"
+             class="form-control"
+             name="title"
+             value="[% bookcover.title | html %]"
+             id="title">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="comments" class="col-sm-3 control-label">[% loc('Comments') %]
+    </label>
+    <div class="col-sm-9">
+      <textarea name="comments"
+                id="comments"
+                class="form-control">[% bookcover.comments | html %]</textarea>
+    </div>
+  </div>
+  [% FOREACH token IN bookcover.bookcover_tokens %]
+    <div class="form-group">
+      <label for="[% token.token_name | html%]" class="col-sm-3 control-label">
+        [% lh.site_loc_html(token.label) %]
+        <br>
+        <small>[% loc('Template token') %]</small>
+      </label>
+      [% IF token.token_type == "muse" %]
+        <div class="col-sm-9">
+          <textarea name="[% token.token_name | html %]"
+                    id="[% token.token_name | html %]"
+                    class="form-control">[% token.token_value | html %]</textarea>
+        </div>
+      [% ELSIF token.token_type == "int" %]
+        <div class="col-sm-9">
+          <input name="[% token.token_name | html %]"
+                 id="[% token.token_name | html %]"
+                 class="form-control"
+                 type="number" step="1"
+                 value="[% token.token_value | html %]" />
+        </div>
+      [% ELSIF token.token_type == "float" %]
+        <div class="col-sm-9">
+          <input name="[% token.token_name | html %]"
+                 id="[% token.token_name | html %]"
+                 class="form-control"
+                 type="number" step="0.01"
+                 value="[% token.token_value | html %]" />
+        </div>
+      [% ELSIF token.token_type == "file" %]
+        <div class="col-sm-9">
+          <input name="[% token.token_name | html %]"
+                 id="[% token.token_name | html %]"
+                 class="form-control"
+                 type="file" />
+          [% token.token_value | html %]
+        </div>
+      [% END %]
+    </div>
+  [% END %]
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" name="update" value="1" class="btn btn-default">Update</button>
+      <button type="submit" name="build" value="1" class="btn btn-default">Build</button>
+    </div>
+  </div>
+</div>
+</form>

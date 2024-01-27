@@ -401,6 +401,14 @@ sub site_config :Chained('user') :PathPart('site') :Args(0) {
               restricted => 1);
 }
 
+sub bookcovers :Chained('user') :PathPart('bookcovers') :Args(0) {
+    my ($self, $c) = @_;
+    my $user = $c->user->get_object;
+    $c->stash(bookcovers => [ $user->bookcovers->all ],
+              load_datatables => 1,
+             );
+}
+
 
 =head1 AUTHOR
 
