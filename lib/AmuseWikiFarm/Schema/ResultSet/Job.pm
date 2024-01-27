@@ -45,6 +45,7 @@ sub handled_jobs_hashref {
             purge => 2,
             alias_delete => 3,
             alias_create => 4,
+            build_bookcover => 4, # this is a fast one
             publish => 5,
             bookbuilder => 6,
             git => 7,

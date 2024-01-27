@@ -238,11 +238,12 @@ use Template::Tiny;
 use IPC::Run qw(run);
 use Cwd;
 use DateTime;
+use Archive::Zip ();
 
 sub working_dir {
     my $self = shift;
     my $root = AmuseWikiFarm::Utils::Paths::root_install_directory();
-    my $bcroot = $root->child('bookcovers');
+    my $bcroot = path($root, qw/bbfiles bookcovers/);
     $bcroot->mkpath unless $bcroot->exists;
     my $wd = $bcroot->child($self->bookcover_id);
     return $wd;
@@ -387,24 +388,51 @@ sub write_tex_file {
 }
 
 sub produce_pdf {
-    my $self = shift;
+    my ($self, $logger) = @_;
+    $logger ||= sub {};
+    my $tex = $self->write_tex_file;
     # this should happen only in the jobber, where we fork. But in
     # case, return to the original directory.
     my $cwd = getcwd;
     my $wd = $self->working_dir;
     chdir $wd or die "Cannot chdir into $wd";
     my ($in, $out, $err);
-    my @run = ("lualatex", '-interaction=nonstopmode', 'cover.tex');
-    run \@run, \$in, \$out, \$err;
+    my @run = ("lualatex", '-interaction=nonstopmode', $tex->basename);
+    my $ok = run \@run, \$in, \$out, \$err;
     chdir $cwd or die "Cannot chdir back into $cwd";
     # log_info { "Compilation: $out $err" };
+    if ($ok) {
+        $self->update({
+                       compiled => DateTime->now(time_zone => 'UTC'),
+                      });
+        my $zipdir = Archive::Zip->new;
+        if ($zipdir->addTree("$wd", "bookcover-" . $wd->basename) == Archive::Zip::AZ_OK) {
+            my $zipfile = $wd->parent->child("bookcover-" . $wd->basename . ".zip");
+            if ($zipdir->writeToFileNamed("$zipfile") == Archive::Zip::AZ_OK) {
+                $logger->("Produced zip $zipfile");
+            }
+            else {
+                $logger->("Failed to write zip $zipfile");
+            }
+        }
+        else {
+            $logger->("Failed to create zip");
+        }
+    }
     return {
             stdout => $out,
             stderr => $err,
-            file => $wd->child('cover.pdf'),
+            success => $ok,
            };
 }
 
+sub username {
+    my $self = shift;
+    if (my $user = $self->user) {
+        return $user->username;
+    }
+    return;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

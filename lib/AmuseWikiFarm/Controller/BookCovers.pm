@@ -23,20 +23,20 @@ sub create :Chained('bookcovers') :PathPart('create') :Args(0) {
     # these steps
     $bc->create_working_dir;
     $bc->populate_tokens;
-    $c->response->redirect($c->uri_for_action('/bookcovers/edit', $bc->bookcover_id));
+    $c->response->redirect($c->uri_for_action('/bookcovers/edit', [ $bc->bookcover_id ]));
 }
 
-
-sub edit :Chained('bookcovers') :PathPart('edit') :Args(1) {
+sub find :Chained('bookcovers') :PathPart('bc') :CaptureArgs(1) {
     my ($self, $c, $id) = @_;
     if ($id =~ m/\A\d+\z/a) {
+        my $user = $c->user ? $c->user->get_object : undef;
         if (my $bc = $c->stash->{site}->bookcovers->find({ bookcover_id => $id })) {
             my $can_view = 0;
             if ($bc->session_id and $c->sessionid and $c->sessionid eq $bc->session_id) {
                 log_debug { "Matched because of session id" };
                 $can_view = 1;
             }
-            elsif ($bc->user_id and $c->user and $c->user->id eq $bc->user_id) {
+            elsif ($bc->user_id and $user and $user->id eq $bc->user_id) {
                 log_debug { "Matched because of user id" };
                 $can_view = 1;
             }
@@ -44,21 +44,43 @@ sub edit :Chained('bookcovers') :PathPart('edit') :Args(1) {
                 log_info { "Permission denied to see bc $id" };
             }
             if ($can_view) {
-                my $params = $c->request->body_params;
-                # post request
-                if (%$params) {
-                    # TODO handle uploads here
-                    $bc->update_from_params($params);
-                    if ($params->{compile}) {
-                        # need to create a job
-                    }
-                }
                 $c->stash(bookcover => $bc);
                 return;
             }
         }
     }
-    return $c->detach('/not_found');        
+    $c->detach('/not_found');
+}
+
+sub edit :Chained('find') :PathPart('edit') :Args(0) {
+    my ($self, $c) = @_;
+    my $site = $c->stash->{site};
+    my $bc = $c->stash->{bookcover};
+    # shouldn't happen.
+    return $c->detach('/not_found') unless $bc;
+    my $params = $c->request->body_params;
+    # post request
+    if (%$params) {
+        # TODO handle uploads here
+        $bc->update_from_params($params);
+        if ($params->{build}) {
+            my $job = $site->jobs->enqueue(build_bookcover => {
+                                                               id => $bc->bookcover_id,
+                                                              }, $bc->username);
+            $c->res->redirect($c->uri_for_action('/tasks/display',
+                                                 [$job->id]));
+        }
+    }
+}
+
+sub download :Chained('find') :PathPart('download') :Args {
+    my ($self, $c, $type) = @_;
+    if ($type) {
+        if ($type eq 'zip') {
+        }
+        elsif ($type eq 'pdf') {
+        }
+    }
 }
 
 

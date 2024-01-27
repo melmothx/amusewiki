@@ -61,10 +61,10 @@ ok $user_bc;
     ok $outfile->exists;
     diag $outfile->slurp_utf8;
     like $outfile->slurp_utf8, qr{The \\emph\{back\}};
-    my $res = $anon_bc->produce_pdf;
-    ok $res->{file}->exists, "$res->{file} exists";
-    diag $res->{out};
-    diag $res->{err};
+    my $res = $anon_bc->produce_pdf(sub { diag @_ });
+    ok $res->{success};
+    diag $res->{stdout};
+    diag $res->{stderr};
 }
 
 done_testing;

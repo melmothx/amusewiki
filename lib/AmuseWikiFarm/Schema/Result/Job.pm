@@ -989,6 +989,22 @@ sub dispatch_job_rename_uri {
     return;
 }
 
+sub dispatch_job_build_bookcover {
+    my ($self, $logger) = @_;
+    if (my $bc = $self->site->bookcovers->find($self->job_data->{id})) {
+        my $res = $bc->produce_pdf;
+        if (my $res->{success}) {
+            return sprintf("/bookcovers/bc/%i/download", $bc->bookcover_id);
+        }
+        $logger->($res->{stdout});
+        $logger->($res->{stderr});
+    }
+    else {
+        $logger->("Cover data not found!");
+    }
+    return;
+}
+
 before delete => sub {
     my $self = shift;
     my @leftovers = $self->produced_files;
