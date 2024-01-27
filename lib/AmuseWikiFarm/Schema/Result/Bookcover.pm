@@ -418,14 +418,19 @@ sub produce_pdf {
     chdir $cwd or die "Cannot chdir back into $cwd";
     # log_info { "Compilation: $out $err" };
     if ($ok) {
-        $self->update({
-                       compiled => DateTime->now(time_zone => 'UTC'),
-                      });
+        my $pdf = "$tex";
+        $pdf =~ s/\.tex/.pdf/;
+        $self->compiled();
+        $self->pdf_path($pdf);
         my $zipdir = Archive::Zip->new;
         if ($zipdir->addTree("$wd", "bookcover-" . $wd->basename) == Archive::Zip::AZ_OK) {
             my $zipfile = $wd->parent->child("bookcover-" . $wd->basename . ".zip");
             if ($zipdir->writeToFileNamed("$zipfile") == Archive::Zip::AZ_OK) {
-                $logger->("Produced zip $zipfile");
+                $self->update({
+                               zip_path => "$zipfile",
+                               pdf_path => "$pdf",
+                               compiled => DateTime->now(time_zone => 'UTC'),
+                              });
             }
             else {
                 $logger->("Failed to write zip $zipfile");
@@ -438,7 +443,7 @@ sub produce_pdf {
     return {
             stdout => $out,
             stderr => $err,
-            success => $ok,
+            success => $self->compiled ? 1 : 0,
            };
 }
 

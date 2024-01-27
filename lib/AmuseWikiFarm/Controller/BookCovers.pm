@@ -75,12 +75,25 @@ sub edit :Chained('find') :PathPart('edit') :Args(0) {
 
 sub download :Chained('find') :PathPart('download') :Args {
     my ($self, $c, $type) = @_;
-    if ($type) {
-        if ($type eq 'zip') {
-        }
-        elsif ($type eq 'pdf') {
+    if (my $bc = $c->stash->{bookcover}) {
+        if ($bc->compiled) {
+            if ($type =~ m/\.zip\z/) {
+                if (my $path = $bc->zip_path) {
+                    $c->stash(serve_static_file => $path);
+                    $c->detach($c->view('StaticFile'));
+                    return;
+                }
+            }
+            elsif ($type =~ m/\.pdf\z/) {
+                if (my $path = $bc->pdf_path) {
+                    $c->stash(serve_static_file => $path);
+                    $c->detach($c->view('StaticFile'));
+                    return;
+                }
+            }
         }
     }
+    return $c->detach('/not_found');
 }
 
 

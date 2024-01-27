@@ -992,12 +992,16 @@ sub dispatch_job_rename_uri {
 sub dispatch_job_build_bookcover {
     my ($self, $logger) = @_;
     if (my $bc = $self->site->bookcovers->find($self->job_data->{id})) {
-        my $res = $bc->produce_pdf;
-        if (my $res->{success}) {
-            return sprintf("/bookcovers/bc/%i/download", $bc->bookcover_id);
+        $logger->("Producing cover for " . $self->job_data->{id} . "\n");
+        my $res = $bc->produce_pdf($logger);
+        Dlog_info { "Result is $_" } $res;
+        if ($res->{success}) {
+            return sprintf("/bookcovers/bc/%i/download/bc-%i.pdf", $bc->bookcover_id, $bc->bookcover_id);
         }
-        $logger->($res->{stdout});
-        $logger->($res->{stderr});
+        else {
+            log_info { "Failure: $res->{stderr} $res->{stdout}" };
+            $logger->("Failure compiling the cover!");
+        }
     }
     else {
         $logger->("Cover data not found!");

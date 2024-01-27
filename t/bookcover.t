@@ -8,6 +8,7 @@ use Test::WWW::Mechanize::Catalyst;
 use DateTime;
 use Test::More;
 use Path::Tiny;
+use Data::Dumper::Concise;
 
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
@@ -63,8 +64,11 @@ ok $user_bc;
     like $outfile->slurp_utf8, qr{The \\emph\{back\}};
     my $res = $anon_bc->produce_pdf(sub { diag @_ });
     ok $res->{success};
-    diag $res->{stdout};
-    diag $res->{stderr};
+    diag Dumper($res);
+    ok $anon_bc->zip_path;
+    ok $anon_bc->pdf_path;
+    ok -f $anon_bc->pdf_path, $anon_bc->pdf_path . " exists";
+    ok -f $anon_bc->zip_path, $anon_bc->zip_path . " exists";
 }
 
 done_testing;
