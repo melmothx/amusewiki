@@ -51,6 +51,13 @@ __PACKAGE__->table("bookcover");
   is_nullable: 0
   size: 16
 
+=head2 title
+
+  data_type: 'varchar'
+  default_value: (empty string)
+  is_nullable: 0
+  size: 255
+
 =head2 coverheight
 
   data_type: 'integer'
@@ -127,6 +134,11 @@ __PACKAGE__->table("bookcover");
   is_nullable: 1
   size: 64
 
+=head2 comments
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 session_id
 
   data_type: 'varchar'
@@ -146,6 +158,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
+  "title",
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "coverheight",
   { data_type => "integer", default_value => 210, is_nullable => 0 },
   "coverwidth",
@@ -172,6 +186,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "template",
   { data_type => "varchar", is_nullable => 1, size => 64 },
+  "comments",
+  { data_type => "text", is_nullable => 1 },
   "session_id",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "user_id",
@@ -243,8 +259,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-27 10:17:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:WiXbhu0ZVmJdk8dR3zqPoQ
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-27 14:03:33
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:9DsGCgQ0Ye13ypx0sHhKGg
 
 use Path::Tiny;
 use File::Copy::Recursive qw/dircopy/;
