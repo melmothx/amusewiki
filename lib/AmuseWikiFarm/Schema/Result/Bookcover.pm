@@ -109,6 +109,18 @@ __PACKAGE__->table("bookcover");
   data_type: 'datetime'
   is_nullable: 1
 
+=head2 zip_path
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
+=head2 pdf_path
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 template
 
   data_type: 'varchar'
@@ -154,6 +166,10 @@ __PACKAGE__->add_columns(
   { data_type => "datetime", is_nullable => 0 },
   "compiled",
   { data_type => "datetime", is_nullable => 1 },
+  "zip_path",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "pdf_path",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "template",
   { data_type => "varchar", is_nullable => 1, size => 64 },
   "session_id",
@@ -227,8 +243,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-26 21:09:51
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Gfshihr4cfYIUiU1XR4Unw
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-27 10:17:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:WiXbhu0ZVmJdk8dR3zqPoQ
 
 use Path::Tiny;
 use File::Copy::Recursive qw/dircopy/;

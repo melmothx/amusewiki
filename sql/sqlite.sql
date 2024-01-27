@@ -850,6 +850,8 @@ CREATE TABLE bookcover (
     foldingmargin SMALLINT NOT NULL DEFAULT 0,
     created DATETIME NOT NULL,
     compiled DATETIME,
+    zip_path VARCHAR(255),
+    pdf_path VARCHAR(255),
     template VARCHAR(64),
     session_id VARCHAR(255),
     user_id INTEGER NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
