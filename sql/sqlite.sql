@@ -853,7 +853,10 @@ CREATE TABLE bookcover (
     compiled DATETIME,
     zip_path VARCHAR(255),
     pdf_path VARCHAR(255),
+
     template VARCHAR(64),
+    font_name VARCHAR(255),
+    language_code VARCHAR(8),
     comments TEXT,
     session_id VARCHAR(255),
     user_id INTEGER NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
@@ -918,6 +921,8 @@ INSERT INTO table_comments (table_name, comment_text)
          ('aggregation_title', 'Linking table for aggregations'),
          ('aggregation_annotation', 'Linking table for aggregation/annotations'),
          ('aggregation_series', 'Aggregation Series'),
+         ('bookcover', 'Book Cover record'),
+         ('bookcover_token', 'Book Cover Template Tokens'),
          ('included_file', 'Files included in muse documents'),
          ('include_path', 'Directories to search for file inclusions')
          ;

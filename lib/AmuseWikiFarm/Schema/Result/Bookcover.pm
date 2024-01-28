@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::Bookcover;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::Bookcover
+AmuseWikiFarm::Schema::Result::Bookcover - Book Cover record
 
 =cut
 
@@ -134,6 +134,18 @@ __PACKAGE__->table("bookcover");
   is_nullable: 1
   size: 64
 
+=head2 font_name
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
+=head2 language_code
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 8
+
 =head2 comments
 
   data_type: 'text'
@@ -186,6 +198,10 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "template",
   { data_type => "varchar", is_nullable => 1, size => 64 },
+  "font_name",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "language_code",
+  { data_type => "varchar", is_nullable => 1, size => 8 },
   "comments",
   { data_type => "text", is_nullable => 1 },
   "session_id",
@@ -259,8 +275,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-27 14:03:33
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:9DsGCgQ0Ye13ypx0sHhKGg
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-28 08:28:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:fVLEfhqffdDOy7MPywIHTg
 
 use Path::Tiny;
 use File::Copy::Recursive qw/dircopy/;

@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::BookcoverToken;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::BookcoverToken
+AmuseWikiFarm::Schema::Result::BookcoverToken - Book Cover Template Tokens
 
 =cut
 
@@ -99,8 +99,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-26 15:48:49
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:VwS7ypaoUHw40JbWYmKXdg
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-28 08:28:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:vGU3aG7IMvIXxx63U3Z/mQ
 
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse::Functions qw/muse_to_object muse_format_line/;
