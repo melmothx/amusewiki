@@ -17,6 +17,7 @@ sub create :Chained('bookcovers') :PathPart('create') :Args(0) {
     my %values = (
                   created => DateTime->now(time_zone => 'UTC'),
                   session_id => $c->sessionid,
+                  language_code => $c->stash->{current_locale_code},
                   $c->user_exists ? (user_id => $c->user->id) : (),
                  );
     my $bc = $c->stash->{site}->bookcovers->create_and_initalize(\%values);

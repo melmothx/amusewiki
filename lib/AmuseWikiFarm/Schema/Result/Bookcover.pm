@@ -287,6 +287,22 @@ use IPC::Run qw(run);
 use Cwd;
 use DateTime;
 use Archive::Zip ();
+use Text::Amuse::Utils;
+use Text::Amuse::Compile::Fonts;
+use Text::Amuse::Compile::Fonts::Selected;
+
+has fonts => (is => 'ro',
+              isa => 'Object',
+              lazy => 1,
+              builder => '_build_fonts',
+              handles => [qw/serif_fonts mono_fonts sans_fonts all_fonts/],
+             );
+
+sub _build_fonts {
+    my $self = shift;
+    return Text::Amuse::Compile::Fonts->new($self->site->fontspec_file);
+}
+
 
 sub working_dir {
     my $self = shift;
@@ -389,6 +405,22 @@ sub update_from_params {
     foreach my $str (qw/title comments/) {
         $update{$str} = $params->{$str} // '';
     }
+    if (my @all_fonts = $self->all_fonts) {
+        if (my $font = $params->{font_name}) {
+            if (grep { $_->name eq $font } @all_fonts) {
+                $update{font_name} = $font;
+            }
+        }
+        $update{font_name} ||= $all_fonts[0]->name;
+    }
+    if (my $lang = $params->{language_code}) {
+        if ($self->site->known_langs->{$lang}) {
+            $update{language_code} = $lang;
+        }
+        else {
+            $update{language_code} = 'en';
+        }
+    }
     if (%update) {
         Dlog_debug { "Updating bookcover with $_" } \%update;
         $self->update(\%update);
@@ -400,26 +432,56 @@ sub update_from_params {
     }
 }
 
-sub compose_class_header {
+sub compose_preamble {
     my $self = shift;
     # built in for now
-    my @opts = ("12pt", "markcolor=black");
-    foreach my $k (qw/
-                         coverheight
-                         coverwidth
-                         spinewidth
-                         flapwidth
-                         wrapwidth
-                         bleedwidth
-                         marklength
-                     /) {
-        push @opts, "$k=" . $self->$k . 'mm';
+    my @preamble;
+    # header
+    {
+        my @opts = ("12pt", "markcolor=black");
+        foreach my $k (qw/
+                             coverheight
+                             coverwidth
+                             spinewidth
+                             flapwidth
+                             wrapwidth
+                             bleedwidth
+                             marklength
+                         /) {
+            push @opts, "$k=" . $self->$k . 'mm';
+        }
+        foreach my $bool (qw/foldingmargin/) {
+            push @opts, "$bool=" . ($self->$bool ? "true" : "false");
+        }
+        push @preamble, "\\documentclass[" . join(",", @opts) . "]{bookcover}";
     }
-    foreach my $bool (qw/foldingmargin/) {
-        push @opts, "$bool=" . ($self->$bool ? "true" : "false");
+    # fonts
+    if (my $choice = $self->font_name) {
+        if (my @fonts = $self->all_fonts) {
+            my ($selected) = grep { $_->name eq $choice } @fonts;
+            $selected ||= $fonts[0];
+            my $babel_lang = Text::Amuse::Utils::language_mapping()->{$self->language_code};
+            my $final = Text::Amuse::Compile::Fonts::Selected->new(
+                                                                   all_fonts => $self->fonts,
+                                                                   size => 12,
+                                                                   luatex => 1,
+                                                                   main => $selected,
+                                                                   mono => $selected,
+                                                                   sans => $selected,
+                                                                  );
+            my $preamble = $final->compose_polyglossia_fontspec_stanza(lang => $babel_lang);
+            # sorry for the hack. Remove everything before babel loading
+            $preamble =~ s/\A.*(\\usepackage\[.*?\]\{babel\}.*)\z/$1/s;
+            push @preamble, $preamble;
+            push @preamble, "\\frenchspacing";
+        }
     }
-    return "\\documentclass[" . join(",", @opts) . "]{bookcover}\n";
+    push @preamble, "";
+    return join("\n", @preamble);
 }
+
+# add the font + the language if the template doesn not have
+# babel/polyglossia loaded.
 
 sub write_tex_file {
     my $self = shift;
@@ -434,7 +496,7 @@ sub write_tex_file {
     Template::Tiny->new->process(\$input, \%vars, \$output);
     log_debug { "Output is $output" };
     my $outfile = $tfile->parent->child('cover.tex');
-    $outfile->spew_utf8($self->compose_class_header, $output);
+    $outfile->spew_utf8($self->compose_preamble, $output);
     return $outfile;
 }
 

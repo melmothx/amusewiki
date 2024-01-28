@@ -53,18 +53,36 @@ ok $user_bc;
                                   spinewidth => 'asdf',
                                   back_text_muse => "This\n\nIs\n\nThe *back*",
                                  });
+    ok $anon_bc->font_name, "Font name set";
+    diag $anon_bc->font_name;
     is $anon_bc->spinewidth, 0;
     $anon_bc->update_from_params({
                                   spinewidth => 15,
+                                  font_name => 'TeX Gyre Pagella',
                                  });
+    is $anon_bc->font_name, 'TeX Gyre Pagella';
+    $anon_bc->update_from_params({
+                                  spinewidth => 15,
+                                  font_name => 'Random crap',
+                                 });
+    is $anon_bc->font_name, ($anon_bc->all_fonts)[0]->name;
     is $anon_bc->spinewidth, 15;
-    my $outfile =  $anon_bc->write_tex_file;
+
+    $anon_bc->update_from_params({
+                                  spinewidth => 15,
+                                  font_name => 'TeX Gyre Pagella',
+                                  language_code => 'fr',
+                                 });
+    my $outfile = $anon_bc->write_tex_file;
     ok $outfile->exists;
-    diag $outfile->slurp_utf8;
-    like $outfile->slurp_utf8, qr{The \\emph\{back\}};
+    my $tex_body = $outfile->slurp_utf8;
+    like $tex_body, qr{The \\emph\{back\}};
+    like $tex_body, qr(\\usepackage.*french.*\{babel\});
+    like $tex_body, qr{texgyrepagella};
+    diag $tex_body;
     my $res = $anon_bc->produce_pdf(sub { diag @_ });
-    ok $res->{success};
-    diag Dumper($res);
+    ok $res->{success} or die $res->{stdout};
+    # diag Dumper($res);
     ok $anon_bc->zip_path;
     ok $anon_bc->pdf_path;
     ok -f $anon_bc->pdf_path, $anon_bc->pdf_path . " exists";

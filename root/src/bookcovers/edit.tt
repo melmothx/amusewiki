@@ -126,6 +126,34 @@
                 class="form-control">[% bookcover.comments | html %]</textarea>
     </div>
   </div>
+
+  <div class="form-group">
+    <label for="font_name" class="col-sm-3 control-label">[% loc('Font') %]
+    </label>
+    <div class="col-sm-9">
+      <select name="font_name" id="font_name" class="form-control">
+        [% FOREACH font IN bookcover.all_fonts %]
+          <option name="[% font.name | html %]"
+                  [% IF font.name == bookcover.font_name %]selected="selected"[% END %]>
+            [% font.desc | html %]
+          </option>
+        [% END %]
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="language_code" class="col-sm-3 control-label">[% loc('Language') %]</label>
+    <div class="col-sm-9">
+      <select name="language_code" id="language_code" class="form-control">
+        [% known_langs = site.known_langs %]
+        [% FOREACH lang IN known_langs.keys.sort %]
+          <option value="[% lang %]" [% IF bookcover.language_code == lang %]selected="selected"[% END %]>
+            [% known_langs.$lang %]
+          </option>
+        [% END %]
+      </select>
+    </div>
+  </div>
   [% FOREACH token IN bookcover.bookcover_tokens %]
     <div class="form-group">
       <label for="[% token.token_name | html%]" class="col-sm-3 control-label">
