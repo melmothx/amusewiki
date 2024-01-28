@@ -14,15 +14,12 @@ sub bookcovers :Chained('/site_human_required') :PathPart('bookcovers') :Capture
 sub create :Chained('bookcovers') :PathPart('create') :Args(0) {
     my ($self, $c) = @_;
     # add the user
-    my $bc = $c->stash->{site}->bookcovers->create({
-                                                    created => DateTime->now(time_zone => 'UTC'),
-                                                    session_id => $c->sessionid,
-                                                    $c->user_exists ? (user_id => $c->user->id) : (),
-                                                   });
-    # template selection should happen here, otherwise we need to redo
-    # these steps
-    $bc->create_working_dir;
-    $bc->populate_tokens;
+    my %values = (
+                  created => DateTime->now(time_zone => 'UTC'),
+                  session_id => $c->sessionid,
+                  $c->user_exists ? (user_id => $c->user->id) : (),
+                 );
+    my $bc = $c->stash->{site}->bookcovers->create_and_initalize(\%values);
     $c->response->redirect($c->uri_for_action('/bookcovers/edit', [ $bc->bookcover_id ]));
 }
 
@@ -108,6 +105,22 @@ sub remove :Chained('find') :PathPart('remove') :Args(0) {
     }
 }
 
+sub clone :Chained('find') :PathPart('clone') :Args(0) {
+    my ($self, $c) = @_;
+    if (my $src = $c->stash->{bookcover}) {
+        my %values = $src->get_columns;
+        foreach my $f (qw/created session_id user_id bookcover_id/) {
+            delete $values{$f};
+        }
+        $values{created} = DateTime->now(time_zone => 'UTC');
+        $values{session_id} = $c->sessionid;
+        if ($c->user_exists) {
+            $values{user_id} = $c->user->id;
+        }
+        my $bc = $c->stash->{site}->bookcovers->create_and_initalize(\%values);
+        $c->response->redirect($c->uri_for_action('/bookcovers/edit', [ $bc->bookcover_id ]));
+    }
+}
 
 __PACKAGE__->meta->make_immutable;
 

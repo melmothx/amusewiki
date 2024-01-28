@@ -30,22 +30,31 @@
         <td>[% bc.title | html %]</td>
         <td>
           <a class="bookcover-icon"
+             title="[% loc('Edit') %]"
              href="[% c.uri_for_action('/bookcovers/edit', [bc.bookcover_id]) %]">
             <i class="fa fa-edit fa-lg"></i>
             <span class="sr-only">[% loc('Edit') %]</span>
           </a>
           [% IF bc.compiled %]
             <a class="bookcover-icon"
+               title="[% loc('Zip') %]"
                href="[% c.uri_for_action('/bookcovers/download', [bc.bookcover_id], 'bookcover-' _ bc.bookcover_id _ '.zip') %]">
               <i class="fa fa-file-archive-o fa-lg"></i>
               <span class="sr-only">[% loc('Zip') %]</span>
             </a>
             <a class="bookcover-icon"
+               title="[% loc('PDF') %]"
                href="[% c.uri_for_action('/bookcovers/download', [bc.bookcover_id], 'bookcover-' _ bc.bookcover_id _ '.pdf') %]">
               <i class="fa fa-file-pdf-o fa-lg"></i>
               <span class="sr-only">[% loc('PDF') %]</span>
             </a>
             [% END %]
+            <a class="bookcover-icon"
+               title="[% loc('Clone') %]"
+               href="[% c.uri_for_action('/bookcovers/clone', [bc.bookcover_id]) %]">
+              <i class="fa fa-copy fa-lg"></i>
+              <span class="sr-only">[% loc('Clone') %]</span>
+            </a>
         </td>
         <td>[% bc.comments | html %]</td>
 
