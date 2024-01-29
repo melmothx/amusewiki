@@ -303,8 +303,14 @@ sub _build_fonts {
     return Text::Amuse::Compile::Fonts->new($self->site->fontspec_file);
 }
 
+has working_dir => (
+                    is => 'ro',
+                    isa => 'Object',
+                    lazy => 1,
+                    builder => '_build_working_dir',
+                   );
 
-sub working_dir {
+sub _build_working_dir {
     my $self = shift;
     my $root = AmuseWikiFarm::Utils::Paths::root_install_directory();
     my $bcroot = path($root, qw/bbfiles bookcovers/);
@@ -507,15 +513,60 @@ sub write_tex_file {
     return $outfile;
 }
 
+sub convert_images_to_cmyk {
+    my ($self, $logger) = @_;
+    my $wd = $self->working_dir;
+    # if the profile are provided with the template, convert
+    my $rgb = $wd->child('srgb.icc');
+    my $cmyk = $wd->child('cmyk.icc');
+    if ($rgb->exists and $cmyk->exists) {
+        foreach my $v ($self->bookcover_tokens) {
+            if ($v->token_name =~ m/_file\z/) {
+                if (my $basename = $v->token_value_for_template) {
+                    if ($basename =~ m/\.(jpe?g)\z/) {
+                        my $path = $wd->child($basename);
+                        $logger->("Examining $basename\n");
+                        my ($in, $out, $err);
+                        my @cmd = (identify => -format => '%r', "$path");
+                        log_info { "Running " . join(" ", @cmd) };
+                        if (run(\@cmd, \$in, \$out, \$err)) {
+                            $logger->("Colorspace is $out\n");
+                            if ($out =~ m/sRGB/) {
+                                $logger->("Converting to CMYK\n");
+                                my $tmp = $path->copy($wd->child('tmp.' . $path->basename));
+                                @cmd = (convert => "$tmp",
+                                        -profile => "$rgb",
+                                        -profile => "$cmyk",
+                                        "$path");
+                                log_info { "Running " . join(" ", @cmd) };
+                                run(\@cmd, \$in, \$out, \$err);
+                                log_info { "Output: $out $err" };
+                            }
+                            else {
+                                $logger->("Skipping convertion for image with colorspace $out\n");
+                            }
+                        }
+                        else {
+                            $logger->("Failure examining $path: $out $err\n");
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 sub produce_pdf {
     my ($self, $logger) = @_;
     $logger ||= sub {};
     my $tex = $self->write_tex_file;
     # this should happen only in the jobber, where we fork. But in
     # case, return to the original directory.
+    $self->convert_images_to_cmyk($logger);
     my $cwd = getcwd;
     my $wd = $self->working_dir;
     chdir $wd or die "Cannot chdir into $wd";
+
     my ($in, $out, $err);
     my @run = ("lualatex", '-interaction=nonstopmode', $tex->basename);
     my $ok = run \@run, \$in, \$out, \$err;

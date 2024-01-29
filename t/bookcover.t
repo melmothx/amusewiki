@@ -9,9 +9,10 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use DateTime;
-use Test::More tests => 74;
+use Test::More tests => 79;
 use Path::Tiny;
 use Data::Dumper::Concise;
+use IPC::Run (qw/run/);
 
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
@@ -180,7 +181,7 @@ ok $user_bc;
 {
     $mech->get('/bookcovers');
     ok $mech->submit_form(with_fields => { __auth_human => 16 });
-    ok $mech->follow_link(url_regex => qr{/bookcovers/create});
+    ok $mech->submit_form(with_fields => { template => "" });
     my $current_uri = $mech->uri->path;
     $mech->get_ok('/bookcovers?bare=1');
     my $body = $mech->content;
@@ -203,7 +204,7 @@ my $tuser = $site->update_or_create_user({
     $tuser->set_roles([{ role => 'librarian' }]);
     $mech->submit_form(with_fields => { __auth_user => 'bclib', __auth_pass => 'pallino' });
     $mech->get_ok('/bookcovers');
-    ok $mech->follow_link(url_regex => qr{/bookcovers/create});
+    ok $mech->submit_form(with_fields => { template => "" });
     my $current_uri = $mech->uri->path;
     $mech->get_ok('/bookcovers?bare=1');
     my $body = $mech->content;
@@ -273,4 +274,36 @@ my $tuser = $site->update_or_create_user({
                                             });
     ok $schema->resultset('Bookcover')->expired->count;
     ok $schema->resultset('Bookcover')->purge_old_bookcovers;
+}
+
+diag "Testing CMYK conversion";
+{
+    my $bc = $site->bookcovers->create_and_initalize({ created => $now });
+    my $wd = $bc->working_dir;
+    path("t/color-profiles/sRGB2014.icc")->copy($wd->child('srgb.icc'));
+    path("t/color-profiles/GRACoL2006_Coated1v2.icc")->copy($wd->child('cmyk.icc'));
+    my $image = path("t/files/shot.jpg")->copy($wd->child("f1.jpeg"));
+    my ($in, $out, $err);
+    run([ identify => -format => '%r', "$image" ], \$in, \$out, \$err);
+    like $out, qr{sRGB};
+    $bc->update_from_params({
+                             title_muse_str => "Title *title*",
+                             author_muse_str => "Author *author*",
+                             spinewidth => 10,
+                             back_text_muse_body => "This\n\nIs\n\nThe *back*",
+                             image_file => "f1.jpeg",
+                            });
+    my $outfile = $bc->write_tex_file;
+    ok $outfile->exists;
+    my @logs;
+    my $res = $bc->produce_pdf(sub { push @logs, @_ });
+    ok $res->{success};
+    diag Dumper(\@logs);
+    is_deeply(\@logs, [
+                       "Examining f1.jpeg\n",
+                       "Colorspace is DirectClass sRGB \n",
+                       "Converting to CMYK\n",
+                      ]);
+    run([ identify => -format => '%r', "$image" ], \$in, \$out, \$err);
+    like $out, qr{CMYK};
 }

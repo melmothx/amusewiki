@@ -83,8 +83,21 @@
   </tbody>
 </table>
 
-<div class="row">
-  <div class="col-xs-12">
-    <a class="btn btn-primary" href="[% c.uri_for_action('/bookcovers/create') %]">[% loc('Create') %]</a>
+<div class="row" style="margin-top: 30px">
+  <div class="col-sm-8">
+    <form action="[% c.uri_for_action('/bookcovers/create') %]" method="POST">
+      <div class="input-group">
+        <span class="input-group-addon">[% loc('Choose a template') %]</span>
+        <select name="template" class="form-control">
+          <option value="">[% loc('default') %]</option>
+          [% FOREACH bctemplate IN site.valid_bookcover_templates.keys.sort %]
+            <option value="[% bctemplate | html %]">[% bctemplate | html %]</option>
+          [% END %]
+        </select>
+        <div class="input-group-btn">
+          <button class="btn btn-primary">[% loc('Create') %]</button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
