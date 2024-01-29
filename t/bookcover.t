@@ -40,18 +40,18 @@ ok $user_bc;
     diag "Working dir is $wd";
     my $tokens =  $anon_bc->parse_template;
     is_deeply $tokens, {
-                        title_muse =>  { name => 'title',  type => 'muse' },
-                        author_muse => { name => 'author', type => 'muse' },
-                        back_text_muse => { name => 'back_text', type => 'muse' },
+                        title_muse_str =>  { name => 'title',  type => 'muse_str' },
+                        author_muse_str => { name => 'author', type => 'muse_str' },
+                        back_text_muse_body => { name => 'back_text', type => 'muse_body' },
                        };
     $anon_bc->populate_tokens;
     $anon_bc->populate_tokens;
     is $anon_bc->bookcover_tokens->count, 3;
     $anon_bc->update_from_params({
-                                  title_muse => "Title *title*",
-                                  author_muse => "Author *author*",
+                                  title_muse_str => "Title *title*",
+                                  author_muse_str => "Author *author*",
                                   spinewidth => 'asdf',
-                                  back_text_muse => "This\n\nIs\n\nThe *back*",
+                                  back_text_muse_body => "This\n\nIs\n\nThe *back*",
                                  });
     ok $anon_bc->font_name, "Font name set";
     diag $anon_bc->font_name;
@@ -87,6 +87,30 @@ ok $user_bc;
     ok $anon_bc->pdf_path;
     ok -f $anon_bc->pdf_path, $anon_bc->pdf_path . " exists";
     ok -f $anon_bc->zip_path, $anon_bc->zip_path . " exists";
+    my $token = $anon_bc->bookcover_tokens->create({ token_name => 'test' });
+    my @checks = (
+                  [ float => '0.81', '0.81' ],
+                  [ float => '0.1', '0.1' ],
+                  [ float => '0.0', '0.0' ],
+                  [ float => 'pippo', '0' ],
+                  [ float => '1', '1'],
+                  [ int => '0.01', '0' ],
+                  [ int => 'pippo', '0' ],
+                  [ int => '3', '3'],
+                  [ int => '33', '33'],
+                  [ muse => "asdfa", ''], # invalid type
+                  [ muse_str => "asdfa\n*em*", 'asdfa \emph{em}'],
+                  [ muse_str => "asdfa<br>*em*", 'asdfa \emph{em}'],
+                  [ muse_body => "asdfa\n\n*em*", "asdfa\n\n\n\\emph{em}"],
+                 );
+    foreach my $c (@checks) {
+        $token = $token->get_from_storage;
+        $token->update({
+                        token_name => "pizza_" . $c->[0],
+                        token_value => $c->[1],
+                       });
+        is $token->token_value_for_template, $c->[2], join(' => ', @$c);
+    }
 }
 
 done_testing;

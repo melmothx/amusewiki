@@ -161,11 +161,19 @@
         <br>
         <small>[% loc('Template token') %]</small>
       </label>
-      [% IF token.token_type == "muse" %]
+      [% IF token.token_type == "muse_body" %]
         <div class="col-sm-9">
           <textarea name="[% token.token_name | html %]"
                     id="[% token.token_name | html %]"
                     class="form-control">[% token.token_value | html %]</textarea>
+        </div>
+      [% ELSIF token.token_type == "muse_str" %]
+        <div class="col-sm-9">
+          <input type="text"
+                 name="[% token.token_name | html %]"
+                 id="[% token.token_name | html %]"
+                 class="form-control"
+                 value="[% token.token_value | html %]" />
         </div>
       [% ELSIF token.token_type == "int" %]
         <div class="col-sm-9">

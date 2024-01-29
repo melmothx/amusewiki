@@ -110,19 +110,19 @@ has label => (is => 'ro', isa => 'Str', lazy => 1, builder => '_build_label');
 
 sub _build_token_type {
     my $self = shift;
-    if ($self->token_name =~ m/\A[a-z_]+_(int|muse|float|file)\z/) {
+    if ($self->token_name =~ m/\A[a-z_]+_(int|muse_str|muse_body|float|file)\z/) {
         return $1;
     }
-    return undef;
+    return "";
 }
 
 sub _build_label {
     my $self = shift;
-    if ($self->token_name =~ m/\A([a-z_]+)_(int|muse|float|file)\z/) {
+    if ($self->token_name =~ m/\A([a-z_]+)_(int|muse_str|muse_body|float|file)\z/) {
         my $label = $1;
         return join(' ', map { ucfirst($_) } split(/_/, $label));
     }
-    return undef;
+    return "";
 }
 
 
@@ -133,8 +133,9 @@ sub _validate {
     if (my $type = $self->token_type) {
         my %checks = (
                       int =>   qr{0|[1-9][0-9]*},
-                      float => qr{[0-9]*\.[0-9]+},
-                      muse =>  qr{.*}s,
+                      float => qr{[0-9]+(?:\.[0-9]+)?},
+                      muse_body =>  qr{.*}s,
+                      muse_str =>  qr{.*}s, # we're mangling the new lines anyway
                       file =>  qr{[0-9a-z-]+\.(?:pdf|png|jpe?g)},
                      );
         if (my $re = $checks{$type}) {
@@ -151,18 +152,39 @@ sub _validate {
 sub token_value_for_template {
     my $self = shift;
     my $validated = $self->_validate($self->token_value);
+    my $token_type = $self->token_type;
+    my %trans = (
+                 float => sub { return $_[0] },
+                 int => sub { return $_[0] },
+                 muse_body => sub {
+                     my $str = $_[0];
+                     my $latex = muse_to_object($str)->as_latex;
+                     $latex =~ s/\A\s*//s;
+                     $latex =~ s/\s*\z//s;
+                     return $latex;
+                 },
+                 muse_str => sub {
+                     my $str = $_[0];
+                     $str =~ s/\s+/ /gs;
+                     $str =~ s/<\s*br\s*\/*\s*>/ /gs;
+                     my $latex = muse_format_line(ltx => $str);
+                     $latex =~ s/\A\s*//s;
+                     $latex =~ s/\s*\z//s;
+                     return $latex;
+                 },
+                );
     if (defined($validated)) {
-        if ($self->token_type eq 'muse') {
-            my $latex = muse_to_object($validated)->as_latex;
-            $latex =~ s/\A\s*//s;
-            $latex =~ s/\s*\z//s;
-            return $latex;
-        }
-        else {
-            return $validated;
+        if (my $sub = $trans{$token_type}) {
+            return $sub->($validated);
         }
     }
-    return '';
+    # still here?
+    if ($token_type eq 'int' or $token_type eq 'float') {
+        return 0;
+    }
+    else {
+        return '';
+    }
 }
 
 sub update_if_valid {

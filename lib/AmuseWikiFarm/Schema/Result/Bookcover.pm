@@ -341,16 +341,16 @@ sub create_working_dir {
 \begin{bookcover}
 \bookcovercomponent{normal}{front}[15mm,15mm,15mm,0.2\partheight]{
 \centering
-[% IF author_muse %]
-{\bfseries\LARGE\emph{[% author_muse %]}}
+[% IF author_muse_str %]
+{\bfseries\itshape\LARGE [% author_muse_str %]\par}
 \vskip 0.1\partheight
 [% END %]
-{\Huge\bfseries [% title_muse %]}}
+{\bfseries\Huge [% title_muse_str %]\par}}
 \bookcovercomponent{center}{spine}{
-  \rotatebox[origin=c]{-90}{\bfseries [% IF author_muse %]\emph{[% author_muse %]}\quad\quad[% END %]
+  \rotatebox[origin=c]{-90}{\bfseries [% IF author_muse_str %]\emph{[% author_muse_str %]}\quad\quad[% END %]
   [% title_muse %]}
 }
-\bookcovercomponent{normal}{back}[15mm,15mm,15mm,0.2\partheight]{[% back_text_muse %]}
+\bookcovercomponent{normal}{back}[15mm,15mm,15mm,0.2\partheight]{[% back_text_muse_body %]}
 \end{bookcover}
 \end{document}
 LATEX
@@ -364,7 +364,7 @@ sub parse_template {
     # this is the simple TT one so we just check for the tokens used
     my $body = $tt->slurp_utf8;
     my %tokens;
-    while ($body =~ m/\[\%\s*(([a-z_]+)_(int|muse|float|file))\s*\%\]/g) {
+    while ($body =~ m/\[\%\s*(([a-z_]+)_(int|muse_str|muse_body|float|file))\s*\%\]/g) {
         my ($whole, $name, $type) = ($1, $2, $3);
         $tokens{$whole} = { name => $name, type => $type };
     }
