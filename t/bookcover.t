@@ -1,5 +1,9 @@
 #!perl
 
+BEGIN {
+    $ENV{DBIX_CONFIG_DIR} = "t";
+};
+
 use utf8;
 use strict;
 use warnings;
@@ -13,10 +17,6 @@ use Test::More tests => 81;
 use Path::Tiny;
 use Data::Dumper::Concise;
 use IPC::Run (qw/run/);
-
-BEGIN {
-    $ENV{DBIX_CONFIG_DIR} = "t";
-};
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 # use the 0blog0 here.
