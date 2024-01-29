@@ -128,8 +128,8 @@ sub _build_label {
 
 sub _validate {
     my ($self, $value) = @_;
-    log_debug { "Value is $value" };
     return undef unless defined $value;
+    log_debug { "Value is $value" };
     if (my $type = $self->token_type) {
         my %checks = (
                       int =>   qr{0|[1-9][0-9]*},

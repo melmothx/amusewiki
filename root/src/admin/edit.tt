@@ -147,6 +147,7 @@
       <div class="col-sm-6">
         <input type="text"  name="ttdir" id="ttdir"
                class="form-control" value="[% esite.ttdir | html %]" />
+        [% loc('This has security implications and must be used only on trusted repositories') %]
       </div>
     </div>
 
