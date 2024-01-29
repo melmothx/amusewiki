@@ -473,7 +473,7 @@ sub compose_preamble {
         if (my @fonts = $self->all_fonts) {
             my ($selected) = grep { $_->name eq $choice } @fonts;
             $selected ||= $fonts[0];
-            my $babel_lang = Text::Amuse::Utils::language_mapping()->{$self->language_code};
+            my $babel_lang = Text::Amuse::Utils::language_mapping()->{$self->language_code || 'en'};
             my $final = Text::Amuse::Compile::Fonts::Selected->new(
                                                                    all_fonts => $self->fonts,
                                                                    size => 12,
