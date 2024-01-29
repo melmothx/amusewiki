@@ -339,18 +339,23 @@ sub create_working_dir {
 % document class populated by us
 \begin{document}
 \begin{bookcover}
-\bookcovercomponent{normal}{front}[15mm,15mm,15mm,0.2\partheight]{
+\bookcovercomponent{normal}{front}[0.1\partheight,0.1\partheight,0.1\partheight,0.1\partheight]{
 \centering
 [% IF author_muse_str %]
 {\bfseries\itshape\LARGE [% author_muse_str %]\par}
 \vskip 0.1\partheight
 [% END %]
-{\bfseries\Huge [% title_muse_str %]\par}}
+{\bfseries\Huge [% title_muse_str %]\par}
+[% IF image_file %]
+\vskip 0.1\partheight
+\includegraphics[width=0.5\partwidth]{[% image_file %]}
+[% END %]
+}
 \bookcovercomponent{center}{spine}{
   \rotatebox[origin=c]{-90}{\bfseries [% IF author_muse_str %]\emph{[% author_muse_str %]}\quad\quad[% END %]
   [% title_muse %]}
 }
-\bookcovercomponent{normal}{back}[15mm,15mm,15mm,0.2\partheight]{[% back_text_muse_body %]}
+\bookcovercomponent{normal}{back}[0.1\partheight,0.1\partheight,0.1\partheight,0.1\partheight]{[% back_text_muse_body %]}
 \end{bookcover}
 \end{document}
 LATEX
@@ -366,7 +371,7 @@ sub parse_template {
     my %tokens;
     while ($body =~ m/\[\%\s*(([a-z_]+)_(int|muse_str|muse_body|float|file))\s*\%\]/g) {
         my ($whole, $name, $type) = ($1, $2, $3);
-        $tokens{$whole} = { name => $name, type => $type };
+        $tokens{$whole} = { name => $name, type => $type, full_name => $whole };
     }
     return \%tokens;
 }

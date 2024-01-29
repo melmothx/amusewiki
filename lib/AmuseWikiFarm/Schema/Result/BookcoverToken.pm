@@ -172,6 +172,13 @@ sub token_value_for_template {
                      $latex =~ s/\s*\z//s;
                      return $latex;
                  },
+                 file => sub {
+                     my $fname = $_[0];
+                     if ($fname =~ m/\A(f[0-9]+\.(pdf|png|jpe?g))\z/) {
+                         return $1;
+                     }
+                     return '';
+                 },
                 );
     if (defined($validated)) {
         if (my $sub = $trans{$token_type}) {

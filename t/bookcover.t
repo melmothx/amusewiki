@@ -40,18 +40,24 @@ ok $user_bc;
     diag "Working dir is $wd";
     my $tokens =  $anon_bc->parse_template;
     is_deeply $tokens, {
-                        title_muse_str =>  { name => 'title',  type => 'muse_str' },
-                        author_muse_str => { name => 'author', type => 'muse_str' },
-                        back_text_muse_body => { name => 'back_text', type => 'muse_body' },
+                        image_file => { name => 'image', type => 'file', full_name => 'image_file' },
+                        title_muse_str =>  { name => 'title',  type => 'muse_str', full_name => 'title_muse_str' },
+                        author_muse_str => { name => 'author', type => 'muse_str', full_name => 'author_muse_str' },
+                        back_text_muse_body => {
+                                                name => 'back_text', type => 'muse_body',
+                                                full_name => 'back_text_muse_body'
+                                               },
                        };
+    path("t/files/shot.png")->copy($anon_bc->working_dir->child("f1.png"));
     $anon_bc->populate_tokens;
     $anon_bc->populate_tokens;
-    is $anon_bc->bookcover_tokens->count, 3;
+    is $anon_bc->bookcover_tokens->count, 4;
     $anon_bc->update_from_params({
                                   title_muse_str => "Title *title*",
                                   author_muse_str => "Author *author*",
                                   spinewidth => 'asdf',
                                   back_text_muse_body => "This\n\nIs\n\nThe *back*",
+                                  image_file => "f1.png",
                                  });
     ok $anon_bc->font_name, "Font name set";
     diag $anon_bc->font_name;
@@ -79,6 +85,7 @@ ok $user_bc;
     like $tex_body, qr{The \\emph\{back\}};
     like $tex_body, qr(\\usepackage.*french.*\{babel\});
     like $tex_body, qr{texgyrepagella};
+    like $tex_body, qr{includegraphics};
     diag $tex_body;
     my $res = $anon_bc->produce_pdf(sub { diag @_ });
     ok $res->{success} or die $res->{stdout};
@@ -102,6 +109,15 @@ ok $user_bc;
                   [ muse_str => "asdfa\n*em*", 'asdfa \emph{em}'],
                   [ muse_str => "asdfa<br>*em*", 'asdfa \emph{em}'],
                   [ muse_body => "asdfa\n\n*em*", "asdfa\n\n\n\\emph{em}"],
+                  [ file => "f1.pdf", "f1.pdf" ],
+                  [ file => "f 2.pdf", "" ],
+                  [ file => "f2.png", "f2.png" ],
+                  [ file => "f2.jpg", "f2.jpg" ],
+                  [ file => "f2.jpeg", "f2.jpeg" ],
+                  [ file => " f2.jpg ", "" ],
+                  [ file => " f2.jpeg ", "" ],
+                  [ file => " c1.jpeg ", "" ],
+                  [ file => " .pdf ", "" ],
                  );
     foreach my $c (@checks) {
         $token = $token->get_from_storage;

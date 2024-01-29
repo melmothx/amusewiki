@@ -201,7 +201,11 @@
                  id="[% token.token_name | html %]"
                  class="form-control"
                  type="file" />
-          [% token.token_value | html %]
+          [% IF token.token_value %]
+            <a href="[% c.uri_for_action('/bookcovers/attached', [ bookcover.bookcover_id, token.token_value ]) %]">
+              [% loc('Download') %]
+            </a>
+          [% END %]
         </div>
       [% END %]
     </div>

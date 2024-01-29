@@ -6,6 +6,7 @@ BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
 use DateTime;
+use AmuseWikiFarm::Utils::Amuse;
 
 sub bookcovers :Chained('/site_human_required') :PathPart('bookcovers') :CaptureArgs(0) {
     my ($self, $c) = @_;
@@ -63,12 +64,39 @@ sub edit :Chained('find') :PathPart('edit') :Args(0) {
        uri => $c->uri_for_action('/bookcovers/edit', [ $bc->bookcover_id ]),
        label => $c->loc('Edit'),
       };
-    my $params = $c->request->body_params;
+    my %params = %{$c->request->body_params};
     # post request
-    if (%$params) {
+    if (%params) {
+        my $tokens = $bc->parse_template;
+        my $wd = $bc->working_dir;
+        # should always be fine.
+        if (-d $wd) {
+            my $fi = 1;
+            foreach my $up (grep { $_->{type} eq 'file' } values %$tokens) {
+                delete $params{$up->{full_name}};
+                my ($upload) = $c->request->upload($up->{full_name});
+                if ($upload) {
+                    my $file = $upload->tempname;
+                    my $mime_type = AmuseWikiFarm::Utils::Amuse::mimetype($file);
+                    log_info { "provided $file $mime_type" };
+                    if ($mime_type =~ m/(pdf|jpe?g|png)\z/) {
+                        my $ext = $1;
+                        my $fname = "f" . $fi++ . "." . $ext;
+                        my $target = $wd->child($fname);
+                        log_info { "Saving file into $target" };
+                        if ($upload->copy_to("$target")) {
+                            $params{$up->{full_name}} = $fname;
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            log_error { "$wd does not exists!" };
+        }
         # TODO handle uploads here
-        $bc->update_from_params($params);
-        if ($params->{build}) {
+        $bc->update_from_params(\%params);
+        if ($params{build}) {
             my $job = $site->jobs->enqueue(build_bookcover => {
                                                                id => $bc->bookcover_id,
                                                               }, $bc->username);
@@ -131,7 +159,23 @@ sub clone :Chained('find') :PathPart('clone') :Args(0) {
         }
         my $bc = $c->stash->{site}->bookcovers->create_and_initalize(\%values);
         $c->response->redirect($c->uri_for_action('/bookcovers/edit', [ $bc->bookcover_id ]));
+        return;
     }
+    return $c->detach('/not_found');
+}
+
+sub attached :Chained('find') :PathPart('attached') :Args(1) {
+    my ($self, $c, $fname) = @_;
+    if (my $src = $c->stash->{bookcover}) {
+        if ($fname =~ m/\Af\d+\.(pdf|png|jpe?g)\z/) {
+            my $file = $src->working_dir->child($fname);
+            if ($file->exists) {
+                $c->stash(serve_static_file => "$file");
+                $c->detach($c->view('StaticFile'));
+            }
+        }
+    }
+    return $c->detach('/not_found');
 }
 
 __PACKAGE__->meta->make_immutable;
