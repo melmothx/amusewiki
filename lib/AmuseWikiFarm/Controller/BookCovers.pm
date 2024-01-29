@@ -9,6 +9,12 @@ use DateTime;
 
 sub bookcovers :Chained('/site_human_required') :PathPart('bookcovers') :CaptureArgs(0) {
     my ($self, $c) = @_;
+    $c->stash(breadcrumbs => [
+                              {
+                               uri => $c->uri_for_action('/user/bookcovers'),
+                               label => $c->loc("Book Covers"),
+                              }
+                             ]);
 }
 
 sub create :Chained('bookcovers') :PathPart('create') :Args(0) {
@@ -52,6 +58,11 @@ sub edit :Chained('find') :PathPart('edit') :Args(0) {
     my $bc = $c->stash->{bookcover};
     # shouldn't happen.
     return $c->detach('/not_found') unless $bc;
+    push @{$c->stash->{breadcrumbs}},
+      {
+       uri => $c->uri_for_action('/bookcovers/edit', [ $bc->bookcover_id ]),
+       label => $c->loc('Edit'),
+      };
     my $params = $c->request->body_params;
     # post request
     if (%$params) {
