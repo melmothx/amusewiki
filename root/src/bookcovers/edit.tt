@@ -1,6 +1,4 @@
-[% IF c.user_exists %]
-  [% INCLUDE 'include/breadcrumbs.tt' %]
-[% END %]
+[% INCLUDE 'include/breadcrumbs.tt' %]
 
 <div class="page-header">
   <h1>[% loc('Create a book cover') %]</h1>

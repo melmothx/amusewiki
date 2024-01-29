@@ -52,8 +52,6 @@ TTBODY
 
 
 my $user = $schema->resultset('User')->find({ username => 'root' });
-my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
-                                               host => $site->canonical);
 my $now = DateTime->now(time_zone => 'UTC');
 $site->bookcovers->delete;
 my $anon_bc = $site->bookcovers->create({
@@ -176,7 +174,86 @@ ok $user_bc;
     ok $user_bc->pdf_path;
     ok -f $user_bc->pdf_path, $user_bc->pdf_path . " exists";
     ok -f $user_bc->zip_path, $user_bc->zip_path . " exists";
-
 }
 
+# anonymous
+{
+    $mech->get('/bookcovers');
+    ok $mech->submit_form(with_fields => { __auth_human => 16 });
+    ok $mech->follow_link(url_regex => qr{/bookcovers/create});
+    my $current_uri = $mech->uri->path;
+    $mech->get_ok('/bookcovers?bare=1');
+    my $body = $mech->content;
+    my @found;
+    while ($body =~ m{(/bookcovers/bc/(\d+)/edit)}g) {
+        diag $1;
+        push @found, $2;
+    }
+    is scalar(@found), 1, "Found only one cover";
+}
+
+
+my $tuser = $site->update_or_create_user({
+                                         username => 'bclib',
+                                         password => 'pallino'
+                                        });
+# librarian
+{
+    $mech->get_ok('/login');
+    $tuser->set_roles([{ role => 'librarian' }]);
+    $mech->submit_form(with_fields => { __auth_user => 'bclib', __auth_pass => 'pallino' });
+    $mech->get_ok('/bookcovers');
+    ok $mech->follow_link(url_regex => qr{/bookcovers/create});
+    my $current_uri = $mech->uri->path;
+    $mech->get_ok('/bookcovers?bare=1');
+    my $body = $mech->content;
+    my @found;
+    while ($body =~ m{(/bookcovers/bc/(\d+)/edit)}g) {
+        diag $1;
+        push @found, $2;
+    }
+    is scalar(@found), 1, "Found only one cover";
+    $mech->get_ok('/logout');
+}
+# admin
+{
+    $mech->get_ok('/login');
+    $tuser->set_roles([
+                       { role => 'admin' },
+                       { role => 'librarian' },
+                      ]);
+    $mech->submit_form(with_fields => { __auth_user => 'bclib', __auth_pass => 'pallino' });
+    $mech->get_ok('/bookcovers?bare=1');
+    my $body = $mech->content;
+    my @found;
+    while ($body =~ m{(/bookcovers/bc/(\d+)/edit)}g) {
+        diag $1;
+        push @found, $2;
+    }
+    is scalar(@found), $site->bookcovers->count, "Found more covers: " . join(' ', @found);
+    $mech->get_ok('/logout');
+}
+# root
+{
+    # change the bookcover ownership
+    my $otherbc = $site->bookcovers->first;
+    $otherbc->update({ site_id => '0blog0' });
+    $mech->get_ok('/login');
+    $tuser->set_roles([
+                       { role => 'admin' },
+                       { role => 'librarian' },
+                       { role => 'root' },
+                     ]);
+    $mech->submit_form(with_fields => { __auth_user => 'bclib', __auth_pass => 'pallino' });
+    $mech->get_ok('/bookcovers?bare=1');
+    my $body = $mech->content;
+    my @found;
+    while ($body =~ m{(/bookcovers/bc/(\d+)/edit)}g) {
+        diag $1;
+        push @found, $2;
+    }
+    is scalar(@found), $schema->resultset('Bookcover')->count, "Found all covers: " . join(' ', @found);
+    $mech->get_ok('/logout');
+    ok scalar(grep { $_ == $otherbc->bookcover_id } @found), "Found the bc from other site";
+}
 done_testing;

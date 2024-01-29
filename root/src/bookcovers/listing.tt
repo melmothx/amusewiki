@@ -14,20 +14,29 @@
 
 <table class="table table-striped table-condensed table-bordered amw-datatable">
   <thead>
-    <th>[% loc('Created') %]</th>
-    <th>[% loc('Title') %]</th>
-    <th>[% loc('Download') %]</th>
-    <th>[% loc('Comments') %]</th>
+    <tr>
+      <th>[% loc('Created') %]</th>
+      <th>[% loc('Title') %]</th>
+      <th>[% loc('User') %]</th>
+      <th>[% loc('Download') %]</th>
+      <th>[% loc('Comments') %]</th>
 
-    <th>[% loc('Finished') %]</th>
-
-    <th>[% loc('Remove') %]</th>
+      <th>[% loc('Finished') %]</th>
+      <th>[% loc('Remove') %]</th>
+    </tr>
   </thead>
   <tbody>
     [% FOREACH bc IN bookcovers  %]
       <tr>
         <td>[% bc.created | html %]</td>
         <td>[% bc.title | html %]</td>
+        <td>
+          [% IF bc.user_id %]
+            [% bc.user.username | html %]
+          [% ELSE %]
+            [% loc('Not logged in') %]
+          [% END %]
+        </td>
         <td>
           <a class="bookcover-icon"
              title="[% loc('Edit') %]"

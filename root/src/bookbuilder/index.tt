@@ -238,6 +238,9 @@
       <button type="submit" name="update" value="update" class="btn btn-default">
         [% loc('Update') %]
       </button>
+      <a href="/bookcovers/create" class="btn btn-default">
+        [% loc('Do you also need a cover?') %]
+      </a>
     </div>
   </div>
 </form>

@@ -12,7 +12,7 @@ sub bookcovers :Chained('/site_human_required') :PathPart('bookcovers') :Capture
     my ($self, $c) = @_;
     $c->stash(breadcrumbs => [
                               {
-                               uri => $c->uri_for_action('/user/bookcovers'),
+                               uri => $c->uri_for_action('/bookcovers/listing'),
                                label => $c->loc("Book Covers"),
                               }
                              ]);
@@ -27,27 +27,57 @@ sub create :Chained('bookcovers') :PathPart('create') :Args(0) {
                   language_code => $c->stash->{current_locale_code},
                   $c->user_exists ? (user_id => $c->user->id) : (),
                  );
+    if (my $template = $c->request->params->{template}) {
+        $values{template} = "$template";
+    }
     my $bc = $c->stash->{site}->bookcovers->create_and_initalize(\%values);
     $c->response->redirect($c->uri_for_action('/bookcovers/edit', [ $bc->bookcover_id ]));
 }
 
-sub find :Chained('bookcovers') :PathPart('bc') :CaptureArgs(1) {
+sub resultset :Chained('bookcovers') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    my $rs;
+    if ($c->user_exists) {
+        if ($c->check_user_roles('root')) {
+            # any
+            $rs = $c->model('DB::Bookcover');
+        }
+        elsif ($c->check_user_roles('admin')) {
+            # site's covers
+            $rs = $c->stash->{site}->bookcovers;
+        }
+        else {
+            # user's covers
+            $rs = $c->user->get_object->bookcovers;
+        }
+    }
+    elsif (my $sid = $c->sessionid) {
+        # otherwise session's ones
+        $rs = $c->stash->{site}->bookcovers->search({
+                                                     session_id => $sid,
+                                                    });
+    }
+    if ($rs) {
+        $c->stash(bookcovers_rs => $rs);
+    }
+    else {
+        $c->detach('/not_found');
+    }
+}
+
+sub listing :Chained('resultset') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(bookcovers => [ $c->stash->{bookcovers_rs}->all ],
+              load_datatables => 1,
+             );
+}
+
+sub find :Chained('resultset') :PathPart('bc') :CaptureArgs(1) {
     my ($self, $c, $id) = @_;
     if ($id =~ m/\A\d+\z/a) {
-        my $user = $c->user ? $c->user->get_object : undef;
-        # if we have a user, do this cross-site
-        if ($user) {
-            if (my $bc = $user->bookcovers->find($id)) {
-                $c->stash(bookcover => $bc);
-                return;
-            }
-        }
-        # otherwise search by session, same site
-        if (my $bc = $c->stash->{site}->bookcovers->find({ bookcover_id => $id })) {
-            if ($bc->session_id and $c->sessionid and $c->sessionid eq $bc->session_id) {
-                $c->stash(bookcover => $bc);
-                return;
-            }
+        if (my $bc = $c->stash->{bookcovers_rs}->find($id)) {
+            $c->stash(bookcover => $bc);
+            return;
         }
     }
     $c->detach('/not_found');
@@ -141,7 +171,7 @@ sub remove :Chained('find') :PathPart('remove') :Args(0) {
         }
     }
     if ($c->user_exists) {
-        $c->res->redirect($c->uri_for_action('/user/bookcovers'));
+        $c->res->redirect($c->uri_for_action('/bookcovers/listing'));
     }
     else {
         $c->res->redirect($c->uri_for('/'));
