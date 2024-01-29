@@ -59,6 +59,9 @@ sub edit :Chained('find') :PathPart('edit') :Args(0) {
     my $bc = $c->stash->{bookcover};
     # shouldn't happen.
     return $c->detach('/not_found') unless $bc;
+
+    $c->stash(bookcover_tokens => [ $bc->bookcover_tokens->search(undef, { order_by => 'token_name' }) ]);
+
     push @{$c->stash->{breadcrumbs}},
       {
        uri => $c->uri_for_action('/bookcovers/edit', [ $bc->bookcover_id ]),

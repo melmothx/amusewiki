@@ -348,7 +348,7 @@ sub create_working_dir {
 {\bfseries\Huge [% title_muse_str %]\par}
 [% IF image_file %]
 \vskip 0.1\partheight
-\includegraphics[width=0.5\partwidth]{[% image_file %]}
+\includegraphics[width=0.6\partwidth]{[% image_file %]}
 [% END %]
 }
 \bookcovercomponent{center}{spine}{
