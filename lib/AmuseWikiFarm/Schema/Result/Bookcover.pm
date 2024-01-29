@@ -321,15 +321,15 @@ sub create_working_dir {
     my $self = shift;
     my $template_file = $self->template_file;
     my $target = $template_file->parent;
-    if (my $ttdir = $self->site->valid_ttdir) {
-        if (my $template_dir = $self->template) {
-            if ($template_dir =~ m/\A([a-z0-9]{3,})\z/) {
-                my $src = path($ttdir, $1);
-                if ($src->exists and $src->child('cover.tt')->exists) {
-                    log_info { "Copying $src into $target" };
-                    dircopy("$src", "$target");
-                    return $target;
-                }
+    if (my $custom = $self->template) {
+        if (my $src = $self->site->valid_bookcover_templates->{$custom}) {
+            log_debug { "Copying $src into $target" };
+            if (dircopy("$src", "$target")) {
+                return $target;
+            }
+            else {
+                my $err = $!;
+                log_error { "Failure copying $src into $target: $err" };
             }
         }
     }

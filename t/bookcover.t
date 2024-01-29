@@ -4,6 +4,9 @@ use utf8;
 use strict;
 use warnings;
 use AmuseWikiFarm::Schema;
+use File::Spec::Functions qw/catfile catdir/;
+use lib catdir(qw/t lib/);
+use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use DateTime;
 use Test::More;
@@ -17,7 +20,37 @@ BEGIN {
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 # use the 0blog0 here.
 
-my $site = $schema->resultset('Site')->find('0blog0');
+my $site_id = '0bookcovers0';
+my $site = create_site($schema, $site_id);
+my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => $site->canonical);
+
+{
+    my %expect;
+    my $td = path($site->repo_root)->child('templates')->child('bookcovers');
+    foreach my $tn (qw/first second/) {
+        my $target = $td->child($tn);
+        $target->mkpath;
+        my $ttbody = <<'TTBODY';
+% document class populated by us
+\begin{document}
+\begin{bookcover}
+\bookcovercomponent{center}{front}%
+{{\bfseries\Huge [% title_muse_str %]\par\includegraphics[width=0.6\partwidth]{images/sample.png}}}
+\end{bookcover}
+\end{document}
+TTBODY
+        $ttbody .= "% $tn\n";
+        $target->child('cover.tt')->spew_utf8($ttbody);
+        $target->child('images')->mkpath;
+        path("t/files/shot.png")->copy($target->child('images')->child("sample.png"));
+        $expect{$tn} = "$target";
+    }
+    $site->update({ ttdir => 'templates' });
+    is_deeply $site->valid_bookcover_templates, \%expect or die;
+}
+
+
 my $user = $schema->resultset('User')->find({ username => 'root' });
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
@@ -27,12 +60,6 @@ my $anon_bc = $site->bookcovers->create({
                                          created => $now,
                                         })->discard_changes;
 ok $anon_bc;
-
-my $user_bc = $site->bookcovers->create({
-                                         user => $user,
-                                         created => $now,
-                                        })->discard_changes;
-ok $user_bc;
 
 {
     my $wd = $anon_bc->create_working_dir;
@@ -127,6 +154,29 @@ ok $user_bc;
                        });
         is $token->token_value_for_template, $c->[2], join(' => ', @$c);
     }
+}
+
+my $user_bc = $site->bookcovers->create_and_initalize({
+                                                       user => $user,
+                                                       created => $now,
+                                                       template => 'first',
+                                                      });
+ok $user_bc;
+
+{
+    my $outfile = $user_bc->write_tex_file;
+    ok $outfile->exists;
+    diag "TeX file is $outfile";
+    my $tex_body = $outfile->slurp_utf8;
+    diag $tex_body;
+    like $tex_body, qr{images/sample.png};
+    my $res = $user_bc->produce_pdf(sub { diag @_ });
+    ok $res->{success};
+    ok $user_bc->zip_path;
+    ok $user_bc->pdf_path;
+    ok -f $user_bc->pdf_path, $user_bc->pdf_path . " exists";
+    ok -f $user_bc->zip_path, $user_bc->zip_path . " exists";
+
 }
 
 done_testing;

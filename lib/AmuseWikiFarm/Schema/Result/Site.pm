@@ -1167,6 +1167,24 @@ sub valid_ttdir {
     return;
 }
 
+sub valid_bookcover_templates {
+    my $self = shift;
+    my %out;
+    if (my $ttdir = $self->valid_ttdir) {
+        log_debug { "TTdir is $ttdir" };
+        my $bcdir = Path::Tiny::path($ttdir)->child('bookcovers');
+        if ($bcdir->exists) {
+            log_debug { "Checking $bcdir" };
+            foreach my $child ($bcdir->children(qr|\A[a-z0-9]{3,}\z|)) {
+                if ($child->child('cover.tt')->exists) {
+                    $out{$child->basename} = $child->stringify;
+                }
+            }
+        }
+    }
+    return \%out;
+}
+
 
 sub compile_options {
     my $self = shift;

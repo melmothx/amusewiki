@@ -12,6 +12,7 @@ sub create_and_initalize {
     my $bc = $self->create($values);
     $bc->create_working_dir;
     $bc->populate_tokens;
+    $bc->discard_changes;
     return $bc;
 }
 
