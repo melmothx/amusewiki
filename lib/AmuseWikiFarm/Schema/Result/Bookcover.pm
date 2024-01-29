@@ -309,6 +309,8 @@ sub working_dir {
     my $root = AmuseWikiFarm::Utils::Paths::root_install_directory();
     my $bcroot = path($root, qw/bbfiles bookcovers/);
     $bcroot->mkpath unless $bcroot->exists;
+    my $id = $self->bookcover_id;
+    die "No ID in the object?" unless $id;
     my $wd = $bcroot->child($self->bookcover_id);
     return $wd;
 }
@@ -556,6 +558,21 @@ sub username {
     }
     return;
 }
+
+before delete => sub {
+    my $self = shift;
+    if (my $wd = $self->working_dir) {
+        if ($wd->exists) {
+            log_info { "Removing working directory before row deletion $wd" };
+            my $list;
+            $wd->remove_tree({
+                              result => \$list,
+                              safe => 1,
+                             });
+            Dlog_info { "Removed $_" } $list;
+        }
+    }
+};
 
 __PACKAGE__->meta->make_immutable;
 1;

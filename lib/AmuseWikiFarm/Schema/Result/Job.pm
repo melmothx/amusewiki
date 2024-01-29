@@ -891,6 +891,7 @@ sub dispatch_job_hourly_job {
     my $schema = $self->result_source->schema;
     $schema->resultset('Job')->fail_stale_jobs;
     $schema->resultset('AmwSession')->delete_expired_sessions;
+    $schema->resultset('Bookcover')->purge_old_bookcovers;
     # this is the former publish_deferred, the "async" way
     my $deferred = $schema->resultset('Title')->deferred_to_publish(DateTime->now);
     my $username = $self->username;

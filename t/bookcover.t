@@ -9,7 +9,7 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use DateTime;
-use Test::More;
+use Test::More tests => 74;
 use Path::Tiny;
 use Data::Dumper::Concise;
 
@@ -256,4 +256,21 @@ my $tuser = $site->update_or_create_user({
     $mech->get_ok('/logout');
     ok scalar(grep { $_ == $otherbc->bookcover_id } @found), "Found the bc from other site";
 }
-done_testing;
+
+{
+    foreach my $bc ($site->bookcovers) {
+        my $wd = $bc->working_dir;
+        if ($wd->exists) {
+            $bc->delete;
+        }
+        ok !$wd->exists, "$wd removed";
+    }
+}
+
+{
+    $site->bookcovers->create_and_initalize({
+                                             created => DateTime->now(time_zone => 'UTC')->subtract(days => 2),
+                                            });
+    ok $schema->resultset('Bookcover')->expired->count;
+    ok $schema->resultset('Bookcover')->purge_old_bookcovers;
+}

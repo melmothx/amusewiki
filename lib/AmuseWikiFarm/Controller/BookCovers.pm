@@ -170,19 +170,19 @@ sub remove :Chained('find') :PathPart('remove') :Args(0) {
             $bc->delete;
         }
     }
-    if ($c->user_exists) {
-        $c->res->redirect($c->uri_for_action('/bookcovers/listing'));
-    }
-    else {
-        $c->res->redirect($c->uri_for('/'));
-    }
+    $c->res->redirect($c->uri_for_action('/bookcovers/listing'));
 }
 
 sub clone :Chained('find') :PathPart('clone') :Args(0) {
     my ($self, $c) = @_;
     if (my $src = $c->stash->{bookcover}) {
         my %values = $src->get_columns;
-        foreach my $f (qw/created session_id user_id bookcover_id/) {
+        foreach my $f (qw/created session_id
+                          user_id bookcover_id
+                          compiled
+                          zip_path
+                          pdf_path
+                         /) {
             delete $values{$f};
         }
         $values{created} = DateTime->now(time_zone => 'UTC');
