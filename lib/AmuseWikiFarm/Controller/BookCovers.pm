@@ -200,7 +200,7 @@ sub clone :Chained('find') :PathPart('clone') :Args(0) {
 sub attached :Chained('find') :PathPart('attached') :Args(1) {
     my ($self, $c, $fname) = @_;
     if (my $src = $c->stash->{bookcover}) {
-        if ($fname =~ m/\Af\d+\.(pdf|png|jpe?g)\z/) {
+        if ($fname =~ m/\A(f\d+\.(pdf|png|jpe?g)|isbn-[0-9-]+\.pdf)\z/) {
             my $file = $src->working_dir->child($fname);
             if ($file->exists) {
                 $c->stash(serve_static_file => "$file");

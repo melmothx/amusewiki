@@ -110,7 +110,7 @@ has label => (is => 'ro', isa => 'Str', lazy => 1, builder => '_build_label');
 
 sub _build_token_type {
     my $self = shift;
-    if ($self->token_name =~ m/\A[a-z_]+_(int|muse_str|muse_body|float|file)\z/) {
+    if ($self->token_name =~ m/\A[a-z_]+_(int|muse_str|muse_body|float|file|isbn)\z/) {
         return $1;
     }
     return "";
@@ -118,7 +118,7 @@ sub _build_token_type {
 
 sub _build_label {
     my $self = shift;
-    if ($self->token_name =~ m/\A([a-z_]+)_(int|muse_str|muse_body|float|file)\z/) {
+    if ($self->token_name =~ m/\A([a-z_]+)_(int|muse_str|muse_body|float|file|isbn)\z/) {
         my $label = $1;
         return join(' ', map { ucfirst($_) } split(/_/, $label));
     }
@@ -129,7 +129,7 @@ sub _build_label {
 sub _validate {
     my ($self, $value) = @_;
     return undef unless defined $value;
-    log_debug { "Value is $value" };
+    # log_debug { "Value is $value" };
     if (my $type = $self->token_type) {
         my %checks = (
                       int =>   qr{0|[1-9][0-9]*},
@@ -137,6 +137,7 @@ sub _validate {
                       muse_body =>  qr{.*}s,
                       muse_str =>  qr{.*}s, # we're mangling the new lines anyway
                       file =>  qr{[0-9a-z-]+\.(?:pdf|png|jpe?g)},
+                      isbn => qr{isbn-[0-9-]{10,}\.pdf},
                      );
         if (my $re = $checks{$type}) {
             if ($value =~ m/\A($re)\z/) {
@@ -147,6 +148,15 @@ sub _validate {
     }
     log_debug { "Invalid value" };
     return undef;
+}
+
+sub token_value_for_form {
+    my $self = shift;
+    my $validated = $self->_validate($self->token_value);
+    if ($self->token_type eq 'isbn') {
+        $validated =~ s/isbn-([0-9-]{10,})\.pdf/$1/;
+    }
+    return $validated;
 }
 
 sub token_value_for_template {
@@ -179,6 +189,13 @@ sub token_value_for_template {
                      }
                      return '';
                  },
+                 isbn => sub {
+                     my $fname = $_[0];
+                     if ($fname =~ m/\A(isbn-[0-9-]+\.pdf)\z/) {
+                         return $1;
+                     }
+                     return '';
+                 }
                 );
     if (defined($validated)) {
         if (my $sub = $trans{$token_type}) {
@@ -197,7 +214,7 @@ sub token_value_for_template {
 sub update_if_valid {
     my ($self, $value) = @_;
     my $validated = $self->_validate($value);
-    log_debug { "Validated value is $validated" };
+    # log_debug { "Validated value is $validated" };
     $self->update({ token_value => $validated });
 }
 

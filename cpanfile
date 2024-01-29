@@ -95,6 +95,7 @@ requires 'JavaScript::Packer';
 #images
 requires 'Imager';
 requires 'PDF::API2';
+requires 'Business::ISBN';
 
 # our own dogfood
 requires 'Text::Amuse' => '1.81';

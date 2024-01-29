@@ -193,6 +193,20 @@
                  type="number" step="0.01"
                  value="[% token.token_value | html %]" />
         </div>
+      [% ELSIF token.token_type == "isbn" %]
+        <div class="col-sm-9">
+          <input name="[% token.token_name | html %]"
+                 id="[% token.token_name | html %]"
+                 class="form-control"
+                 type="text"
+                 pattern="[0-9-]+"
+                 value="[% token.token_value_for_form | html %]" />
+          [% IF token.token_value %]
+            <a href="[% c.uri_for_action('/bookcovers/attached', [ bookcover.bookcover_id, token.token_value ]) %]">
+              [% loc('Download') %]
+            </a>
+          [% END %]
+        </div>
       [% ELSIF token.token_type == "file" %]
         <div class="col-sm-9">
           <input name="[% token.token_name | html %]"

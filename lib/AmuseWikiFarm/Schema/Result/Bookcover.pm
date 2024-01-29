@@ -290,6 +290,8 @@ use Archive::Zip ();
 use Text::Amuse::Utils;
 use Text::Amuse::Compile::Fonts;
 use Text::Amuse::Compile::Fonts::Selected;
+use PDF::API2;
+use Business::ISBN;
 
 has fonts => (is => 'ro',
               isa => 'Object',
@@ -364,6 +366,15 @@ sub create_working_dir {
   [% title_muse %]}
 }
 \bookcovercomponent{normal}{back}[0.1\partheight,0.1\partheight,0.1\partheight,0.1\partheight]{[% back_text_muse_body %]}
+[% IF isbn_isbn %]
+\bookcovercomponent{normal}{back}[0.1\partheight,0.1\partheight,0.1\partheight,0.1\partheight]{
+\strut
+\vfill
+\begin{flushright}
+\includegraphics[width=0.3\partwidth]{[% isbn_isbn %]}
+\end{flushright}
+}
+[% END %]
 \end{bookcover}
 \end{document}
 LATEX
@@ -377,7 +388,7 @@ sub parse_template {
     # this is the simple TT one so we just check for the tokens used
     my $body = $tt->slurp_utf8;
     my %tokens;
-    while ($body =~ m/\[\%\s*(([a-z_]+)_(int|muse_str|muse_body|float|file))\s*\%\]/g) {
+    while ($body =~ m/\[\%\s*(([a-z_]+)_(int|muse_str|muse_body|float|file|isbn))\s*\%\]/g) {
         my ($whole, $name, $type) = ($1, $2, $3);
         $tokens{$whole} = { name => $name, type => $type, full_name => $whole };
     }
@@ -440,7 +451,42 @@ sub update_from_params {
     }
     foreach my $token ($self->bookcover_tokens) {
         if (defined $params->{$token->token_name}) {
-            $token->update_if_valid($params->{$token->token_name});
+            if ($token->token_type eq 'isbn') {
+                if (my $code = $params->{$token->token_name}) {
+                    my $isbn = Business::ISBN->new($code);
+                    if ($isbn->is_valid) {
+                        my $isbn = my $barcode = $isbn->as_string;
+                        $barcode =~ s/\D//ga;
+                        my $pdf = PDF::API2->new(-compress => 0);
+                        my $page = $pdf->page;
+                        my $gfx = $page->gfx;
+                        $page->mediabox(114,96);
+                        my $xo = $pdf->xo_ean13(-code => $barcode,
+                                                -font => $pdf->corefont('Helvetica'),
+                                                -umzn => 20,
+                                                -lmzn => 8,
+                                                -zone => 52,
+                                                -quzn => 4,
+                                                -fnsz => 10,
+                                               );
+                        $gfx->formimage($xo, 0, 0);
+                        my $text = $page->text;
+                        $text->font($pdf->corefont('Helvetica'), 9);
+                        $text->fillcolor('black');
+                        $text->translate(57, 86);
+                        $text->text_center("ISBN $isbn");
+                        my $dest = $self->working_dir->child("isbn-$isbn.pdf");
+                        $pdf->save("$dest");
+                        $token->update_if_valid($dest->basename);
+                    }
+                    else {
+                        log_info { "Invalid ISBN $code" };
+                    }
+                }
+            }
+            else {
+                $token->update_if_valid($params->{$token->token_name});
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use DateTime;
-use Test::More tests => 79;
+use Test::More tests => 81;
 use Path::Tiny;
 use Data::Dumper::Concise;
 use IPC::Run (qw/run/);
@@ -73,11 +73,16 @@ ok $anon_bc;
                                                 name => 'back_text', type => 'muse_body',
                                                 full_name => 'back_text_muse_body'
                                                },
+                        isbn_isbn => {
+                                      name => 'isbn', type => 'isbn',
+                                      full_name => 'isbn_isbn'
+
+                                     }
                        };
     path("t/files/shot.png")->copy($anon_bc->working_dir->child("f1.png"));
     $anon_bc->populate_tokens;
     $anon_bc->populate_tokens;
-    is $anon_bc->bookcover_tokens->count, 4;
+    is $anon_bc->bookcover_tokens->count, 5;
     $anon_bc->update_from_params({
                                   title_muse_str => "Title *title*",
                                   author_muse_str => "Author *author*",
@@ -292,9 +297,14 @@ diag "Testing CMYK conversion";
                              spinewidth => 10,
                              back_text_muse_body => "This\n\nIs\n\nThe *back*",
                              image_file => "f1.jpeg",
+                             isbn_isbn => "9788899757410",
                             });
     my $outfile = $bc->write_tex_file;
     ok $outfile->exists;
+    my ($isbn) = $wd->children(qr{isbn-.*\.pdf});
+    ok $isbn;
+    my $texbody = $outfile->slurp_utf8;
+    like $texbody, qr{isbn.*\.pdf};
     my @logs;
     my $res = $bc->produce_pdf(sub { push @logs, @_ });
     ok $res->{success};
