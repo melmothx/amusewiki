@@ -417,6 +417,9 @@ msgstr ""
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Milimetre cinsinden cilt düzeltmesi (ek iç kenar boşluğu)"
 
+msgid "Bleed Width (mm)"
+msgstr ""
+
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -439,6 +442,9 @@ msgstr "Gövde"
 
 msgid "Bold"
 msgstr "Kalın"
+
+msgid "Book Covers"
+msgstr ""
 
 msgid "Bookbuilder"
 msgstr "Kitap yapıcı"
@@ -562,6 +568,9 @@ msgstr "Posta gönderilebilirliğini şuraya posta atarak sına:"
 msgid "Choose a paper format"
 msgstr "Sayfa biçimini seç"
 
+msgid "Choose a template"
+msgstr ""
+
 msgid "Clear the book list"
 msgstr "Kitap listesini temizle"
 
@@ -605,6 +614,9 @@ msgstr ""
 msgid "Comma or semicolon separated list"
 msgstr "Virgül ya da noktalı virgülle ayrılmış liste"
 
+msgid "Comments"
+msgstr ""
+
 msgid "Commit ID"
 msgstr "Commit kimliği"
 
@@ -638,8 +650,20 @@ msgstr "URI otomatik olarak üretilemedi!"
 msgid "Couldn't build that"
 msgstr "Onu yapılandıramadım"
 
+msgid "Cover Height (mm)"
+msgstr ""
+
+msgid "Cover Width (mm)"
+msgstr ""
+
+msgid "Cover removed"
+msgstr ""
+
 msgid "Create"
 msgstr "Yarat"
+
+msgid "Create a book cover"
+msgstr ""
 
 msgid "Create a new aggregation"
 msgstr ""
@@ -821,6 +845,9 @@ msgstr "Rumuzları kurallı olarak yönlendirmeyin"
 
 msgid "Do not use bold fonts"
 msgstr "Kalın fontları kullanma"
+
+msgid "Do you also need a cover?"
+msgstr ""
 
 msgid "Domain"
 msgstr "Alan adı"
@@ -1048,6 +1075,9 @@ msgstr "Katalog ekle menüsünü bul."
 msgid "Find the network library menu, or equivalent."
 msgstr "Ağ kütüphanesi menüsünü ya da benzerini bul."
 
+msgid "Finished"
+msgstr ""
+
 msgid "First"
 msgstr "İlk"
 
@@ -1084,6 +1114,15 @@ msgstr ""
 
 msgid "Fixed topic list"
 msgstr "Sabit konu listesi"
+
+msgid "Flap Width (mm)"
+msgstr ""
+
+msgid "Folding Margin"
+msgstr ""
+
+msgid "Font"
+msgstr ""
 
 msgid "Font preview"
 msgstr "Font ön izleme"
@@ -1784,6 +1823,9 @@ msgstr ""
 "Kenar boşlukları: lütfen bir bölme katsayısı seç veya genişlik ve yüksekliği "
 "ayarla"
 
+msgid "Mark Length (mm)"
+msgstr ""
+
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr "Max resim boyutları, hem genişlik hem yükseklik için (pixel)"
 
@@ -1847,6 +1889,9 @@ msgstr "Yukarı taşı"
 
 msgid "Multilanguage: list of whitespace separated language codes"
 msgstr "Çok dil: beyaz boşluklarla ayrılmış dil kodları listesi"
+
+msgid "My book covers"
+msgstr ""
 
 msgid "My description"
 msgstr "Benim tanımım"
@@ -1939,6 +1984,9 @@ msgid ""
 msgstr ""
 "Henüz bitmedi! Metni tekrar incele ve gönderimini tamamlamak için \"%1\" "
 "üzerine tıkla!"
+
+msgid "Not logged in"
+msgstr ""
 
 msgid "Notes"
 msgstr "Notlar"
@@ -2656,6 +2704,9 @@ msgstr "Daha fazla bilgi için buraya bakın."
 msgid "See here for the full documentation."
 msgstr "Bütün dokümantasyon için buraya bakın."
 
+msgid "See the bookcover class for all the details"
+msgstr ""
+
 msgid "See the full manual for more details (english)"
 msgstr "Daha fazla detay için (ingilizce) elkitabına bakın"
 
@@ -2843,6 +2894,9 @@ msgstr "Özel sayfalar"
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr "Etkinleştirmek için dilleri boşluklarla ayırarak listele."
 
+msgid "Spine Width (mm)"
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Yarım kalmış düzenleme"
 
@@ -2927,6 +2981,9 @@ msgstr "Fragman"
 
 msgid "Teaser image"
 msgstr "Fragman resmi"
+
+msgid "Template token"
+msgstr ""
 
 msgid "Term"
 msgstr "Terim"
@@ -3112,6 +3169,10 @@ msgid "This directive wants a whitespace separated list of filenames."
 msgstr "Bu komut dosya adlarının listesini boşluklarla ayırarak istiyor."
 
 msgid ""
+"This has security implications and must be used only on trusted repositories"
+msgstr ""
+
+msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
@@ -3280,6 +3341,9 @@ msgstr "Konular"
 
 msgid "Total pages"
 msgstr "Toplam sayfa"
+
+msgid "Total size (mm)"
+msgstr ""
 
 msgid "Triple bars"
 msgstr "Üçlü sütunlar"
@@ -3465,6 +3529,9 @@ msgstr ""
 "Metnin içinde yeni bir paragrafı işaretlemek için boş satır koyulamayan "
 "yerlerde, dipnotlarda ya da üstlüklerde kullanışlı."
 
+msgid "User"
+msgstr ""
+
 #. ($user->username)
 msgid "User %1 created!"
 msgstr "%1 kullanıcısı yaratıldı!"
@@ -3588,6 +3655,9 @@ msgstr "İş akışı"
 
 msgid "Working locally?"
 msgstr "Lokalde mi çalışıyorsun?"
+
+msgid "Wrap Width (mm)"
+msgstr ""
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
@@ -3759,6 +3829,9 @@ msgstr "%1 deki kullanıcın yaratıldı."
 msgid "Your username is %1."
 msgstr "Kullanıcı adın %1."
 
+msgid "Zip"
+msgstr ""
+
 msgid "aborted"
 msgstr "iptal edildi"
 
@@ -3794,6 +3867,9 @@ msgstr "tamamlandı"
 
 msgid "conflict"
 msgstr "çakışma"
+
+msgid "default"
+msgstr ""
 
 msgid "description"
 msgstr "açıklama"

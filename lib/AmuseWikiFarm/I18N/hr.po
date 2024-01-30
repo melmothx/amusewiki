@@ -401,6 +401,9 @@ msgstr ""
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Korekcija za uvez u milimetrima (dodatna unutarnja margina)"
 
+msgid "Bleed Width (mm)"
+msgstr ""
+
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -419,6 +422,9 @@ msgstr "Tekst"
 
 msgid "Bold"
 msgstr "Podebljano"
+
+msgid "Book Covers"
+msgstr ""
 
 msgid "Bookbuilder"
 msgstr "Napravi zbirku"
@@ -541,6 +547,9 @@ msgstr ""
 msgid "Choose a paper format"
 msgstr "Izaberi format papira"
 
+msgid "Choose a template"
+msgstr ""
+
 msgid "Clear the book list"
 msgstr "Poništi popis tekstova"
 
@@ -582,6 +591,9 @@ msgstr "Širina lijeve strane stranice za uređivanje tekstova"
 msgid "Comma or semicolon separated list"
 msgstr "Popis odvojen zarezom"
 
+msgid "Comments"
+msgstr ""
+
 msgid "Commit ID"
 msgstr ""
 
@@ -615,8 +627,20 @@ msgstr "Nemoguće automatski generirati jedan URI za ovaj tekst"
 msgid "Couldn't build that"
 msgstr "Ne mogu stvoriti zbirku"
 
+msgid "Cover Height (mm)"
+msgstr ""
+
+msgid "Cover Width (mm)"
+msgstr ""
+
+msgid "Cover removed"
+msgstr ""
+
 msgid "Create"
 msgstr "Stvori"
+
+msgid "Create a book cover"
+msgstr ""
 
 msgid "Create a new aggregation"
 msgstr ""
@@ -795,6 +819,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Ne koristi podebljane fontove"
+
+msgid "Do you also need a cover?"
+msgstr ""
 
 msgid "Domain"
 msgstr ""
@@ -1020,6 +1047,9 @@ msgstr "Pronađi menu za nove kataloge."
 msgid "Find the network library menu, or equivalent."
 msgstr "Pronađi menu za mrežne biblioteke (ili slično)."
 
+msgid "Finished"
+msgstr ""
+
 msgid "First"
 msgstr ""
 
@@ -1055,6 +1085,15 @@ msgstr ""
 "i uvez u buklet"
 
 msgid "Fixed topic list"
+msgstr ""
+
+msgid "Flap Width (mm)"
+msgstr ""
+
+msgid "Folding Margin"
+msgstr ""
+
+msgid "Font"
 msgstr ""
 
 msgid "Font preview"
@@ -1743,6 +1782,9 @@ msgstr ""
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
+msgid "Mark Length (mm)"
+msgstr ""
+
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr "Najveća veličina slika u pikselima, i za širinu i za visinu"
 
@@ -1806,6 +1848,9 @@ msgstr "Više"
 
 msgid "Multilanguage: list of whitespace separated language codes"
 msgstr "Višejezičnost: popis jezičnih kodova odvojenih razmakom"
+
+msgid "My book covers"
+msgstr ""
 
 msgid "My description"
 msgstr "Moj opis"
@@ -1894,6 +1939,9 @@ msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
 "finalize your submission!"
 msgstr "Procedura je još u toku! Provjeri tekst pa pritisni \"%1\"."
+
+msgid "Not logged in"
+msgstr ""
 
 msgid "Notes"
 msgstr "Napomene"
@@ -2600,6 +2648,9 @@ msgstr "Vidi ovdje za više detalja."
 msgid "See here for the full documentation."
 msgstr "Vidi ovdje za potpunu dokumentaciju."
 
+msgid "See the bookcover class for all the details"
+msgstr ""
+
 msgid "See the full manual for more details (english)"
 msgstr "Vidi priručnik za detalje (na engleskom)"
 
@@ -2784,6 +2835,9 @@ msgstr "Posebne stranice"
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr "Za aktivaciju dodaj popis jezika odvojenih razmakom."
 
+msgid "Spine Width (mm)"
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Napuštena izmjena"
 
@@ -2868,6 +2922,9 @@ msgstr "Pregled"
 
 msgid "Teaser image"
 msgstr "Sliku za pregled"
+
+msgid "Template token"
+msgstr ""
 
 msgid "Term"
 msgstr "Pojam"
@@ -3045,6 +3102,10 @@ msgid "This directive wants a whitespace separated list of filenames."
 msgstr "Ovo polje zahtjeva popis imena datoteka odvojenih razmacima."
 
 msgid ""
+"This has security implications and must be used only on trusted repositories"
+msgstr ""
+
+msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
@@ -3205,6 +3266,9 @@ msgstr "Teme"
 
 msgid "Total pages"
 msgstr "Ukupno stranica"
+
+msgid "Total size (mm)"
+msgstr ""
 
 msgid "Triple bars"
 msgstr "Trostruka traka (\"|||\")"
@@ -3380,6 +3444,9 @@ msgstr ""
 "Korisno za fusnote ili zaglavlja, tamo gdje ne možeš koristiti prazan redak "
 "za odvajanje odlomaka."
 
+msgid "User"
+msgstr ""
+
 #. ($user->username)
 msgid "User %1 created!"
 msgstr "Korisnik %1 stvoren!"
@@ -3498,6 +3565,9 @@ msgstr "Upravljanje"
 
 msgid "Working locally?"
 msgstr "Lokalno radiš?"
+
+msgid "Wrap Width (mm)"
+msgstr ""
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
@@ -3671,6 +3741,9 @@ msgstr "Tvoj korisnik je stvoren na %1."
 msgid "Your username is %1."
 msgstr "Tvoje korisničko ime je %1."
 
+msgid "Zip"
+msgstr ""
+
 msgid "aborted"
 msgstr "nedovršeno"
 
@@ -3706,6 +3779,9 @@ msgstr "gotovo"
 
 msgid "conflict"
 msgstr "konflikt"
+
+msgid "default"
+msgstr ""
 
 msgid "description"
 msgstr "opis"

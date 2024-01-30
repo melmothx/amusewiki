@@ -384,6 +384,9 @@ msgstr "トピックと著者のほかに、ここでさらにカテゴリが追
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "ミリメートル単位のバインディング補正（追加の内側マージン）"
 
+msgid "Bleed Width (mm)"
+msgstr ""
+
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -402,6 +405,9 @@ msgstr "ボディ"
 
 msgid "Bold"
 msgstr "ボールド"
+
+msgid "Book Covers"
+msgstr ""
 
 msgid "Bookbuilder"
 msgstr "Bookbuilder"
@@ -521,6 +527,9 @@ msgstr "メールの内容を確認し、次の宛先に送信:"
 msgid "Choose a paper format"
 msgstr "用紙の様式選択"
 
+msgid "Choose a template"
+msgstr ""
+
 msgid "Clear the book list"
 msgstr "ブックリストをクリア"
 
@@ -562,6 +571,9 @@ msgstr "編集ボックスのある編集ページの左側の列（12のうち�
 msgid "Comma or semicolon separated list"
 msgstr "コンマまたはセミコロン区切りリスト"
 
+msgid "Comments"
+msgstr ""
+
 msgid "Commit ID"
 msgstr ""
 
@@ -595,8 +607,20 @@ msgstr "URIを自動生成できませんでした!"
 msgid "Couldn't build that"
 msgstr "作成できませんでした"
 
+msgid "Cover Height (mm)"
+msgstr ""
+
+msgid "Cover Width (mm)"
+msgstr ""
+
+msgid "Cover removed"
+msgstr ""
+
 msgid "Create"
 msgstr "作成"
+
+msgid "Create a book cover"
+msgstr ""
 
 msgid "Create a new aggregation"
 msgstr ""
@@ -768,6 +792,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "太字のフォントは使用しないでください"
+
+msgid "Do you also need a cover?"
+msgstr ""
 
 msgid "Domain"
 msgstr ""
@@ -990,6 +1017,9 @@ msgstr "カタログの追加メニューを探す。"
 msgid "Find the network library menu, or equivalent."
 msgstr "ネットワークライブラリメニュー、または同等のものを探す。"
 
+msgid "Finished"
+msgstr ""
+
 msgid "First"
 msgstr "最初"
 
@@ -1026,6 +1056,15 @@ msgstr ""
 
 msgid "Fixed topic list"
 msgstr "トピックリスト固定完了"
+
+msgid "Flap Width (mm)"
+msgstr ""
+
+msgid "Folding Margin"
+msgstr ""
+
+msgid "Font"
+msgstr ""
 
 msgid "Font preview"
 msgstr "フォントプレビュー"
@@ -1661,6 +1700,9 @@ msgstr ""
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
+msgid "Mark Length (mm)"
+msgstr ""
+
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr "最大画像寸法はピクセル単位で、幅と高さの両方に適用されます"
 
@@ -1724,6 +1766,9 @@ msgstr "上に移動"
 
 msgid "Multilanguage: list of whitespace separated language codes"
 msgstr "多言語：空白で区切られた言語コードのリスト"
+
+msgid "My book covers"
+msgstr ""
 
 msgid "My description"
 msgstr "私の説明"
@@ -1815,6 +1860,9 @@ msgid ""
 msgstr ""
 "投稿はまだ完了していません！原稿をご確認し、「%1」をクリックして送信を完了し"
 "てください！"
+
+msgid "Not logged in"
+msgstr ""
 
 msgid "Notes"
 msgstr "備考"
@@ -2488,6 +2536,9 @@ msgstr "詳細はこちらをご覧ください。"
 msgid "See here for the full documentation."
 msgstr "完全なドキュメントについてはこちらをご覧ください。"
 
+msgid "See the bookcover class for all the details"
+msgstr ""
+
 msgid "See the full manual for more details (english)"
 msgstr "詳細（英語）フルマニュアルを参照してください。"
 
@@ -2674,6 +2725,9 @@ msgstr "特殊ページ"
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr "有効にするために空白で区切られた言語リストを指定してください。"
 
+msgid "Spine Width (mm)"
+msgstr ""
+
 msgid "Stale editing"
 msgstr "無効編集"
 
@@ -2758,6 +2812,9 @@ msgstr "ティーザー"
 
 msgid "Teaser image"
 msgstr "ティーザー画像"
+
+msgid "Template token"
+msgstr ""
 
 msgid "Term"
 msgstr "期間"
@@ -2923,6 +2980,10 @@ msgid "This directive wants a whitespace separated list of filenames."
 msgstr "このディレクティブは、ファイル名を空白で区切ったリストが必要です。"
 
 msgid ""
+"This has security implications and must be used only on trusted repositories"
+msgstr ""
+
+msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
@@ -3078,6 +3139,9 @@ msgstr "トピック"
 
 msgid "Total pages"
 msgstr "総ページ"
+
+msgid "Total size (mm)"
+msgstr ""
 
 msgid "Triple bars"
 msgstr "トリプルバー"
@@ -3255,6 +3319,9 @@ msgstr ""
 "新しい段落をマークするために空白行を置くことができない文書の脚注もしくはヘッ"
 "ダーに便利です。"
 
+msgid "User"
+msgstr ""
+
 #. ($user->username)
 msgid "User %1 created!"
 msgstr "ユーザー%1が作成されました！"
@@ -3361,6 +3428,9 @@ msgstr "ワークフロー"
 
 msgid "Working locally?"
 msgstr "ローカルで作業していますか？"
+
+msgid "Wrap Width (mm)"
+msgstr ""
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
@@ -3527,6 +3597,9 @@ msgstr "%1でユーザーが作成されました。"
 msgid "Your username is %1."
 msgstr "あなたのユーザ名は%1です。"
 
+msgid "Zip"
+msgstr ""
+
 msgid "aborted"
 msgstr "中止"
 
@@ -3562,6 +3635,9 @@ msgstr "完成"
 
 msgid "conflict"
 msgstr "競合"
+
+msgid "default"
+msgstr ""
 
 msgid "description"
 msgstr "説明"

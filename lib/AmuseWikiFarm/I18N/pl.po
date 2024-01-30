@@ -402,6 +402,9 @@ msgid "Binding correction in millimeters (additional inner margin)"
 msgstr ""
 "Poprawka na złączenie stron w milimetrach (dodatkowy wewnętrzny margines)"
 
+msgid "Bleed Width (mm)"
+msgstr ""
+
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -424,6 +427,9 @@ msgstr "Treść"
 
 msgid "Bold"
 msgstr "Pogrubienie"
+
+msgid "Book Covers"
+msgstr ""
 
 msgid "Bookbuilder"
 msgstr "Kreator książek"
@@ -548,6 +554,9 @@ msgstr ""
 msgid "Choose a paper format"
 msgstr "Wybierz format arkuszu"
 
+msgid "Choose a template"
+msgstr ""
+
 msgid "Clear the book list"
 msgstr "Wyczyść listę książki"
 
@@ -589,6 +598,9 @@ msgstr ""
 msgid "Comma or semicolon separated list"
 msgstr "Lista z kolejnymi elementami oddzielonymi przecinkiem lub średnikiem"
 
+msgid "Comments"
+msgstr ""
+
 msgid "Commit ID"
 msgstr ""
 
@@ -622,8 +634,20 @@ msgstr "Automatyczna generacja URI nie powiodła się!"
 msgid "Couldn't build that"
 msgstr "Kreacja nie powiodła się"
 
+msgid "Cover Height (mm)"
+msgstr ""
+
+msgid "Cover Width (mm)"
+msgstr ""
+
+msgid "Cover removed"
+msgstr ""
+
 msgid "Create"
 msgstr "Stwórz"
+
+msgid "Create a book cover"
+msgstr ""
 
 msgid "Create a new aggregation"
 msgstr ""
@@ -798,6 +822,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Nie używaj pogrubionych czcionek"
+
+msgid "Do you also need a cover?"
+msgstr ""
 
 msgid "Domain"
 msgstr ""
@@ -1021,6 +1048,9 @@ msgstr "Znajdź menu \"add catalogue\"."
 msgid "Find the network library menu, or equivalent."
 msgstr "Znajdź menu \"network library\", lub jego odpowiednik."
 
+msgid "Finished"
+msgstr ""
+
 msgid "First"
 msgstr "Pierwszy"
 
@@ -1054,6 +1084,15 @@ msgid ""
 msgstr ""
 
 msgid "Fixed topic list"
+msgstr ""
+
+msgid "Flap Width (mm)"
+msgstr ""
+
+msgid "Folding Margin"
+msgstr ""
+
+msgid "Font"
 msgstr ""
 
 msgid "Font preview"
@@ -1706,6 +1745,9 @@ msgstr ""
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
+msgid "Mark Length (mm)"
+msgstr ""
+
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr ""
 
@@ -1768,6 +1810,9 @@ msgid "Move up"
 msgstr "Przesuń w górę"
 
 msgid "Multilanguage: list of whitespace separated language codes"
+msgstr ""
+
+msgid "My book covers"
 msgstr ""
 
 msgid "My description"
@@ -1862,6 +1907,9 @@ msgstr ""
 "Proces nie jest jeszcze zakończony! Rzuć okiem na tekst, sprawdź czy "
 "wszystko jest dobrze, a później kliknij na \"%1\" aby sfinalizować swój "
 "upload!"
+
+msgid "Not logged in"
+msgstr ""
 
 msgid "Notes"
 msgstr "Notatki"
@@ -2545,6 +2593,9 @@ msgstr "Zajrzyj tutaj po więcej szczegółów."
 msgid "See here for the full documentation."
 msgstr ""
 
+msgid "See the bookcover class for all the details"
+msgstr ""
+
 msgid "See the full manual for more details (english)"
 msgstr ""
 
@@ -2729,6 +2780,9 @@ msgstr ""
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr ""
 
+msgid "Spine Width (mm)"
+msgstr ""
+
 msgid "Stale editing"
 msgstr ""
 
@@ -2812,6 +2866,9 @@ msgid "Teaser"
 msgstr ""
 
 msgid "Teaser image"
+msgstr ""
+
+msgid "Template token"
 msgstr ""
 
 msgid "Term"
@@ -2970,6 +3027,10 @@ msgid ""
 msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
+msgstr ""
+
+msgid ""
+"This has security implications and must be used only on trusted repositories"
 msgstr ""
 
 msgid ""
@@ -3140,6 +3201,9 @@ msgstr "Tematy"
 
 msgid "Total pages"
 msgstr "Całkowita liczba stron"
+
+msgid "Total size (mm)"
+msgstr ""
 
 msgid "Triple bars"
 msgstr ""
@@ -3314,6 +3378,9 @@ msgid ""
 "a blank line to mark a new paragraph."
 msgstr ""
 
+msgid "User"
+msgstr ""
+
 #. ($user->username)
 msgid "User %1 created!"
 msgstr ""
@@ -3439,6 +3506,9 @@ msgstr ""
 
 msgid "Working locally?"
 msgstr "Pracujesz lokalnie?"
+
+msgid "Wrap Width (mm)"
+msgstr ""
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
@@ -3606,6 +3676,9 @@ msgstr ""
 msgid "Your username is %1."
 msgstr ""
 
+msgid "Zip"
+msgstr ""
+
 msgid "aborted"
 msgstr "przerwano"
 
@@ -3643,6 +3716,9 @@ msgstr "zakończone"
 
 msgid "conflict"
 msgstr "konflikt"
+
+msgid "default"
+msgstr ""
 
 msgid "description"
 msgstr "opis"

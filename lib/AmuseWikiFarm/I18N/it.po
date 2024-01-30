@@ -413,6 +413,9 @@ msgid "Binding correction in millimeters (additional inner margin)"
 msgstr ""
 "Correzione per la rilegatura in millimetri (margine interno addizionale)"
 
+msgid "Bleed Width (mm)"
+msgstr ""
+
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -433,6 +436,9 @@ msgstr "Corpo del testo"
 
 msgid "Bold"
 msgstr "Grassetto"
+
+msgid "Book Covers"
+msgstr ""
 
 msgid "Bookbuilder"
 msgstr "Impaginatore"
@@ -557,6 +563,9 @@ msgstr "Controlla l'invio di email spedendone una a:"
 msgid "Choose a paper format"
 msgstr "Scegli un formato della carta"
 
+msgid "Choose a template"
+msgstr ""
+
 msgid "Clear the book list"
 msgstr "Cancella la lista dei testi"
 
@@ -600,6 +609,9 @@ msgstr ""
 msgid "Comma or semicolon separated list"
 msgstr "Lista separata da virgola o punto e virgola"
 
+msgid "Comments"
+msgstr ""
+
 msgid "Commit ID"
 msgstr "ID della revisione"
 
@@ -635,8 +647,20 @@ msgstr "Impossibile generare un URI automaticamente"
 msgid "Couldn't build that"
 msgstr "Errore nella compilazione del testo"
 
+msgid "Cover Height (mm)"
+msgstr ""
+
+msgid "Cover Width (mm)"
+msgstr ""
+
+msgid "Cover removed"
+msgstr ""
+
 msgid "Create"
 msgstr "Crea"
+
+msgid "Create a book cover"
+msgstr ""
 
 msgid "Create a new aggregation"
 msgstr ""
@@ -820,6 +844,9 @@ msgstr "Non reindirizzare gli alias al dominio canonico"
 
 msgid "Do not use bold fonts"
 msgstr "Non usare caratteri in grassetto"
+
+msgid "Do you also need a cover?"
+msgstr ""
 
 msgid "Domain"
 msgstr "Dominio"
@@ -1050,6 +1077,9 @@ msgstr "Trova il menù per aggiungere il catalogo."
 msgid "Find the network library menu, or equivalent."
 msgstr "Trova il menù per le biblioteche online (o equivalente)."
 
+msgid "Finished"
+msgstr ""
+
 msgid "First"
 msgstr "Primo"
 
@@ -1086,6 +1116,15 @@ msgstr ""
 
 msgid "Fixed topic list"
 msgstr "Lista fissa dei temi"
+
+msgid "Flap Width (mm)"
+msgstr ""
+
+msgid "Folding Margin"
+msgstr ""
+
+msgid "Font"
+msgstr ""
 
 msgid "Font preview"
 msgstr "Anteprima dei caratteri"
@@ -1806,6 +1845,9 @@ msgstr ""
 "Margini: per cortesia scegli un fattore di divisione o imposta altezza e "
 "larghezza"
 
+msgid "Mark Length (mm)"
+msgstr ""
+
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr ""
 "Dimensione massima in pixel, da applicare sia all'altezza che alla larghezza"
@@ -1870,6 +1912,9 @@ msgstr "Sposta in su"
 
 msgid "Multilanguage: list of whitespace separated language codes"
 msgstr "Multilingua: lista di codici lingua separati da uno spazio bianco"
+
+msgid "My book covers"
+msgstr ""
 
 msgid "My description"
 msgstr "La mia descrizione"
@@ -1962,6 +2007,9 @@ msgid ""
 msgstr ""
 "La procedura di caricamento è ancora incompleta! Controlla il testo e\n"
 "poi clicca su \"%1\" per completare la procedura!"
+
+msgid "Not logged in"
+msgstr ""
 
 msgid "Notes"
 msgstr "Note"
@@ -2687,6 +2735,9 @@ msgstr "Vedi qui per ulteriori informazioni."
 msgid "See here for the full documentation."
 msgstr "Vedi qui per la documentazione completa"
 
+msgid "See the bookcover class for all the details"
+msgstr ""
+
 msgid "See the full manual for more details (english)"
 msgstr "Vedi il manuale completo per maggiori dettagli (in inglese)"
 
@@ -2875,6 +2926,9 @@ msgstr ""
 "Specifica una lista di lingue separate da uno spazio bianco per "
 "l'attivazione."
 
+msgid "Spine Width (mm)"
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Modifica in corso abbandonata"
 
@@ -2959,6 +3013,9 @@ msgstr "Anteprima"
 
 msgid "Teaser image"
 msgstr "Immagine d'anteprima"
+
+msgid "Template token"
+msgstr ""
 
 msgid "Term"
 msgstr "Termine"
@@ -3148,6 +3205,10 @@ msgstr ""
 "bianchi."
 
 msgid ""
+"This has security implications and must be used only on trusted repositories"
+msgstr ""
+
+msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
@@ -3313,6 +3374,9 @@ msgstr "Argomenti"
 
 msgid "Total pages"
 msgstr "Pagine totali"
+
+msgid "Total size (mm)"
+msgstr ""
 
 msgid "Triple bars"
 msgstr "Triple barre"
@@ -3503,6 +3567,9 @@ msgstr ""
 "Utile per le note a piè di pagina o per le intestazioni, dove non puoi usare "
 "una riga vuota per separare un nuovo paragrafo."
 
+msgid "User"
+msgstr ""
+
 #. ($user->username)
 msgid "User %1 created!"
 msgstr "Utenza %1 creata!"
@@ -3629,6 +3696,9 @@ msgstr "Procedura"
 
 msgid "Working locally?"
 msgstr "Stai lavorando in locale?"
+
+msgid "Wrap Width (mm)"
+msgstr ""
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
@@ -3810,6 +3880,9 @@ msgstr "Il tuo utente su %1 è stato creato."
 msgid "Your username is %1."
 msgstr "Il tuo nome utente è %1."
 
+msgid "Zip"
+msgstr ""
+
 msgid "aborted"
 msgstr "abortito"
 
@@ -3845,6 +3918,9 @@ msgstr "completato"
 
 msgid "conflict"
 msgstr "conflitto"
+
+msgid "default"
+msgstr ""
 
 msgid "description"
 msgstr "descrizione"

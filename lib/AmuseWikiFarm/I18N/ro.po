@@ -423,6 +423,9 @@ msgstr "Pe lângă subiecte și autori, puteți adăuga mai multe categorii aici
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Corecția legăturii în milimetri (marja interioară suplimentară)"
 
+msgid "Bleed Width (mm)"
+msgstr ""
+
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -443,6 +446,9 @@ msgstr "Corp"
 
 msgid "Bold"
 msgstr "Bold"
+
+msgid "Book Covers"
+msgstr ""
 
 msgid "Bookbuilder"
 msgstr "Bookbuilder"
@@ -568,6 +574,9 @@ msgstr "Verificați trimiterea corespondenței și trimiteți corespondența la:
 msgid "Choose a paper format"
 msgstr "Alege un format pentru hârtie"
 
+msgid "Choose a template"
+msgstr ""
+
 msgid "Clear the book list"
 msgstr "Șterge lista de cărți"
 
@@ -611,6 +620,9 @@ msgstr ""
 msgid "Comma or semicolon separated list"
 msgstr "Listă separată prin virgulă sau punct și virgulă"
 
+msgid "Comments"
+msgstr ""
+
 msgid "Commit ID"
 msgstr "Commit ID"
 
@@ -644,8 +656,20 @@ msgstr "Nu s-a putut genera automat URI-ul!"
 msgid "Couldn't build that"
 msgstr "Nu s-a putut construi asta"
 
+msgid "Cover Height (mm)"
+msgstr ""
+
+msgid "Cover Width (mm)"
+msgstr ""
+
+msgid "Cover removed"
+msgstr ""
+
 msgid "Create"
 msgstr "Creează"
+
+msgid "Create a book cover"
+msgstr ""
 
 msgid "Create a new aggregation"
 msgstr ""
@@ -829,6 +853,9 @@ msgstr "Nu redirecționați pseudonimele către canonic"
 
 msgid "Do not use bold fonts"
 msgstr "Nu folosiți fonturi bold"
+
+msgid "Do you also need a cover?"
+msgstr ""
 
 msgid "Domain"
 msgstr "Domeniu"
@@ -1059,6 +1086,9 @@ msgstr "Găsiți meniul de adăugare a catalogului."
 msgid "Find the network library menu, or equivalent."
 msgstr "Găsiți meniul bibliotecii de rețea sau un meniu echivalent."
 
+msgid "Finished"
+msgstr ""
+
 msgid "First"
 msgstr "Primul"
 
@@ -1095,6 +1125,15 @@ msgstr ""
 
 msgid "Fixed topic list"
 msgstr "Listă de subiecte fixă"
+
+msgid "Flap Width (mm)"
+msgstr ""
+
+msgid "Folding Margin"
+msgstr ""
+
+msgid "Font"
+msgstr ""
 
 msgid "Font preview"
 msgstr "Previzualizare font"
@@ -1822,6 +1861,9 @@ msgstr ""
 "Marginile: vă rugăm să alegeți un factor de divizare sau să setați lățimea "
 "și înălțimea"
 
+msgid "Mark Length (mm)"
+msgstr ""
+
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr ""
 "Dimensiunea maximă a imaginii în pixeli, se aplică atât la lățime, cât și la "
@@ -1887,6 +1929,9 @@ msgstr "Move up"
 
 msgid "Multilanguage: list of whitespace separated language codes"
 msgstr "Multilanguage: listă de coduri de limbă separate prin spații albe"
+
+msgid "My book covers"
+msgstr ""
 
 msgid "My description"
 msgstr "Descrierea mea"
@@ -1979,6 +2024,9 @@ msgid ""
 msgstr ""
 "Nu este încă terminat! Vă rugăm să vă uitați la text și apoi dați click pe "
 "\"%1\" pentru a finaliza trimiterea!"
+
+msgid "Not logged in"
+msgstr ""
 
 msgid "Notes"
 msgstr "Notițe"
@@ -2729,6 +2777,9 @@ msgstr "Vedeți aici pentru mai multe detalii."
 msgid "See here for the full documentation."
 msgstr "Vedeți aici documentația completă."
 
+msgid "See the bookcover class for all the details"
+msgstr ""
+
 msgid "See the full manual for more details (english)"
 msgstr "Consultați manualul complet pentru mai multe detalii"
 
@@ -2919,6 +2970,9 @@ msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr ""
 "Specificați o listă de limbi, separate prin spații albe, pentru a-l activa."
 
+msgid "Spine Width (mm)"
+msgstr ""
+
 #, fuzzy
 msgid "Stale editing"
 msgstr "Stale editing"
@@ -3004,6 +3058,9 @@ msgstr "Teaser"
 
 msgid "Teaser image"
 msgstr "Imaginea teaser"
+
+msgid "Template token"
+msgstr ""
 
 msgid "Term"
 msgstr "Term"
@@ -3200,6 +3257,10 @@ msgstr ""
 "albe."
 
 msgid ""
+"This has security implications and must be used only on trusted repositories"
+msgstr ""
+
+msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
@@ -3373,6 +3434,9 @@ msgstr "Subiecte"
 
 msgid "Total pages"
 msgstr "Pagini totale"
+
+msgid "Total size (mm)"
+msgstr ""
 
 msgid "Triple bars"
 msgstr "Triple bars"
@@ -3558,6 +3622,9 @@ msgstr ""
 "Utile pentru notele de subsol sau în antetul documentului, unde nu puteți "
 "pune o linie goală pentru a marca un nou paragraf."
 
+msgid "User"
+msgstr ""
+
 #. ($user->username)
 msgid "User %1 created!"
 msgstr "Utilizator %1 creat!"
@@ -3690,6 +3757,9 @@ msgstr "Workflow"
 #, fuzzy
 msgid "Working locally?"
 msgstr "Lucrezi local?"
+
+msgid "Wrap Width (mm)"
+msgstr ""
 
 #, fuzzy
 msgid ""
@@ -3871,6 +3941,9 @@ msgstr "Contul tău de utilizator la %1 a fost creat."
 msgid "Your username is %1."
 msgstr "Numele tău de utilizator este %1."
 
+msgid "Zip"
+msgstr ""
+
 msgid "aborted"
 msgstr "aborted"
 
@@ -3906,6 +3979,9 @@ msgstr "completed"
 
 msgid "conflict"
 msgstr "conflict"
+
+msgid "default"
+msgstr ""
 
 msgid "description"
 msgstr "descriere"

@@ -416,6 +416,9 @@ msgstr "Krom témat a autorů můžeš přidat více kategorií zde"
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Opravy vazeb v milimetrech (dodatečný vnitřní okraj)"
 
+msgid "Bleed Width (mm)"
+msgstr ""
+
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -438,6 +441,9 @@ msgstr "Tělo"
 
 msgid "Bold"
 msgstr "Tučné"
+
+msgid "Book Covers"
+msgstr ""
 
 msgid "Bookbuilder"
 msgstr "Bookbuilder"
@@ -561,6 +567,9 @@ msgstr "Zkontroluj odeslání e-mailu a taky pošli e-mail:"
 msgid "Choose a paper format"
 msgstr "Vyber formát papíru"
 
+msgid "Choose a template"
+msgstr ""
+
 msgid "Clear the book list"
 msgstr "Vyčisti seznam knih"
 
@@ -603,6 +612,9 @@ msgstr ""
 msgid "Comma or semicolon separated list"
 msgstr "Seznamy oddělené čárkou nebo středníkem"
 
+msgid "Comments"
+msgstr ""
+
 msgid "Commit ID"
 msgstr "ID commitu"
 
@@ -636,8 +648,20 @@ msgstr "URI nemohlo být automaticky vygenerováno!"
 msgid "Couldn't build that"
 msgstr "Toto nešlo sestavit"
 
+msgid "Cover Height (mm)"
+msgstr ""
+
+msgid "Cover Width (mm)"
+msgstr ""
+
+msgid "Cover removed"
+msgstr ""
+
 msgid "Create"
 msgstr "Vytvořit"
+
+msgid "Create a book cover"
+msgstr ""
 
 msgid "Create a new aggregation"
 msgstr ""
@@ -818,6 +842,9 @@ msgstr "Nepřesměrovávat aliasy na kanonické"
 
 msgid "Do not use bold fonts"
 msgstr "Nepoužívat tučné fonty"
+
+msgid "Do you also need a cover?"
+msgstr ""
 
 msgid "Domain"
 msgstr "Doména"
@@ -1045,6 +1072,9 @@ msgstr "Najít menu přidání katalogu."
 msgid "Find the network library menu, or equivalent."
 msgstr "Najdi menu síťové knihovny, nebo ekvivalent."
 
+msgid "Finished"
+msgstr ""
+
 msgid "First"
 msgstr "První"
 
@@ -1082,6 +1112,15 @@ msgstr ""
 
 msgid "Fixed topic list"
 msgstr "Fixní seznam témat"
+
+msgid "Flap Width (mm)"
+msgstr ""
+
+msgid "Folding Margin"
+msgstr ""
+
+msgid "Font"
+msgstr ""
 
 msgid "Font preview"
 msgstr "Náhled fontu"
@@ -1787,6 +1826,9 @@ msgstr "Spravuj typy kategorií"
 msgid "Margins: please choose a division factor or set width and height"
 msgstr "Okraje: prosím vyber dělitele, nebo nastav šířku a výšku"
 
+msgid "Mark Length (mm)"
+msgstr ""
+
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr "Maximální rozměr v pixelech, platí jak na šířku, tak na výšku"
 
@@ -1850,6 +1892,9 @@ msgstr "Pohni nahoru"
 
 msgid "Multilanguage: list of whitespace separated language codes"
 msgstr "Vícejazykové: seznam jazykových kódů oddělených mezerou"
+
+msgid "My book covers"
+msgstr ""
 
 msgid "My description"
 msgstr "Můj popis"
@@ -1942,6 +1987,9 @@ msgid ""
 msgstr ""
 "Ještě není dokončeno! Prosím podívej se na text a poté klikni na \"%1\" pro "
 "finalizaci svého příspěvku!"
+
+msgid "Not logged in"
+msgstr ""
 
 msgid "Notes"
 msgstr "Poznámky"
@@ -2662,6 +2710,9 @@ msgstr "Podívej se sem pro více detailů."
 msgid "See here for the full documentation."
 msgstr "Podívej se sem pro plnou dokumentaci."
 
+msgid "See the bookcover class for all the details"
+msgstr ""
+
 msgid "See the full manual for more details (english)"
 msgstr "Podívej se na celý manuál pro více detailů (anglicky)"
 
@@ -2848,6 +2899,9 @@ msgstr "Speciální stránky"
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr "Specifikuj seznam jazyků oddělených mezerami, pro aktivaci."
 
+msgid "Spine Width (mm)"
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Zastaralá úprava"
 
@@ -2932,6 +2986,9 @@ msgstr "Upoutávka"
 
 msgid "Teaser image"
 msgstr "Obrázek upoutávky"
+
+msgid "Template token"
+msgstr ""
 
 msgid "Term"
 msgstr "Období"
@@ -3113,6 +3170,10 @@ msgid "This directive wants a whitespace separated list of filenames."
 msgstr "Tato direktiva chce seznam jmen souborů oddělených mezerami."
 
 msgid ""
+"This has security implications and must be used only on trusted repositories"
+msgstr ""
+
+msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
@@ -3282,6 +3343,9 @@ msgstr "Témata"
 
 msgid "Total pages"
 msgstr "Celkové stránky"
+
+msgid "Total size (mm)"
+msgstr ""
 
 msgid "Triple bars"
 msgstr ""
@@ -3465,6 +3529,9 @@ msgstr ""
 "Hodí se pro poznámky pod čarou nebo v hlavičkách dokumentu, kde nemůžeš dát "
 "prázdný řádek pro označení nového odstavce."
 
+msgid "User"
+msgstr ""
+
 #. ($user->username)
 msgid "User %1 created!"
 msgstr "Uživatelstvo %1 vytvořeno!"
@@ -3590,6 +3657,9 @@ msgstr "Pracovní postup"
 
 msgid "Working locally?"
 msgstr "Pracuješ lokálně?"
+
+msgid "Wrap Width (mm)"
+msgstr ""
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
@@ -3763,6 +3833,9 @@ msgstr "Tvoje uživatelstvo v %1 bylo vytvořeno."
 msgid "Your username is %1."
 msgstr "Tvoje uživatelské jméno bylo vytvořeno."
 
+msgid "Zip"
+msgstr ""
+
 msgid "aborted"
 msgstr "přerušeno"
 
@@ -3798,6 +3871,9 @@ msgstr "dokončeno"
 
 msgid "conflict"
 msgstr "konflikt"
+
+msgid "default"
+msgstr ""
 
 msgid "description"
 msgstr "popis"

@@ -405,6 +405,9 @@ msgstr ""
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Bindings justeringer i millimeter (ekstra indermargen)"
 
+msgid "Bleed Width (mm)"
+msgstr ""
+
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -425,6 +428,9 @@ msgstr ""
 
 msgid "Bold"
 msgstr "Fed"
+
+msgid "Book Covers"
+msgstr ""
 
 msgid "Bookbuilder"
 msgstr "Bogbygger"
@@ -546,6 +552,9 @@ msgstr ""
 msgid "Choose a paper format"
 msgstr "Vælg papirformatet"
 
+msgid "Choose a template"
+msgstr ""
+
 msgid "Clear the book list"
 msgstr "Tøm boglisten"
 
@@ -587,6 +596,9 @@ msgstr ""
 msgid "Comma or semicolon separated list"
 msgstr "Liste separeret af komma eller semikolon"
 
+msgid "Comments"
+msgstr ""
+
 msgid "Commit ID"
 msgstr ""
 
@@ -620,8 +632,20 @@ msgstr "Kunne ikke automatisk generere URI'en!"
 msgid "Couldn't build that"
 msgstr "Kunne ikke skabe den"
 
+msgid "Cover Height (mm)"
+msgstr ""
+
+msgid "Cover Width (mm)"
+msgstr ""
+
+msgid "Cover removed"
+msgstr ""
+
 msgid "Create"
 msgstr "Skab"
+
+msgid "Create a book cover"
+msgstr ""
 
 msgid "Create a new aggregation"
 msgstr ""
@@ -796,6 +820,9 @@ msgid "Do not redirect aliases to canonical"
 msgstr ""
 
 msgid "Do not use bold fonts"
+msgstr ""
+
+msgid "Do you also need a cover?"
 msgstr ""
 
 msgid "Domain"
@@ -1024,6 +1051,9 @@ msgstr "Find menuen for at tilføje kataloger."
 msgid "Find the network library menu, or equivalent."
 msgstr "Find netværkets biblioteksmenu, eller tilsvarende."
 
+msgid "Finished"
+msgstr ""
+
 msgid "First"
 msgstr ""
 
@@ -1061,6 +1091,15 @@ msgstr ""
 "bindes sammen."
 
 msgid "Fixed topic list"
+msgstr ""
+
+msgid "Flap Width (mm)"
+msgstr ""
+
+msgid "Folding Margin"
+msgstr ""
+
+msgid "Font"
 msgstr ""
 
 msgid "Font preview"
@@ -1729,6 +1768,9 @@ msgstr ""
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
+msgid "Mark Length (mm)"
+msgstr ""
+
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr ""
 
@@ -1792,6 +1834,9 @@ msgstr "Flyt op"
 
 msgid "Multilanguage: list of whitespace separated language codes"
 msgstr "Flersproget: liste med sprogkoder separeret med mellemrum"
+
+msgid "My book covers"
+msgstr ""
 
 msgid "My description"
 msgstr "Min beskrivelse"
@@ -1882,6 +1927,9 @@ msgid ""
 msgstr ""
 "Du er ikke helt færdig endnu! Tag venligst et kig på teksten og klik så på "
 "\"%1\" for at afslutte din indsendelse!"
+
+msgid "Not logged in"
+msgstr ""
 
 msgid "Notes"
 msgstr "Noter"
@@ -2592,6 +2640,9 @@ msgstr "Se her for at få flere detaljer."
 msgid "See here for the full documentation."
 msgstr "Se her for den fuldstændige dokumentation."
 
+msgid "See the bookcover class for all the details"
+msgstr ""
+
 msgid "See the full manual for more details (english)"
 msgstr "Se den fuldstændige manual for flere detaljer (på engelsk)"
 
@@ -2778,6 +2829,9 @@ msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr ""
 "Specificer en liste over sprog separeret med mellemrum for at aktivere det."
 
+msgid "Spine Width (mm)"
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Gammel redigering"
 
@@ -2860,6 +2914,9 @@ msgstr "Teaser"
 
 msgid "Teaser image"
 msgstr "Teaser billede"
+
+msgid "Template token"
+msgstr ""
 
 msgid "Term"
 msgstr "Begreb"
@@ -3018,6 +3075,10 @@ msgid ""
 msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
+msgstr ""
+
+msgid ""
+"This has security implications and must be used only on trusted repositories"
 msgstr ""
 
 msgid ""
@@ -3183,6 +3244,9 @@ msgstr "Emner"
 
 msgid "Total pages"
 msgstr "Totalt sideantal"
+
+msgid "Total size (mm)"
+msgstr ""
 
 msgid "Triple bars"
 msgstr "Tredobbelte barer"
@@ -3356,6 +3420,9 @@ msgstr ""
 "Praktisk til fodnoter eller i dokumentets sidehoved, hvor du ikke kan "
 "indsætte en tom linje for at markere et nyt afsnit."
 
+msgid "User"
+msgstr ""
+
 #. ($user->username)
 msgid "User %1 created!"
 msgstr "Brugeren %1 er blevet skabt!"
@@ -3472,6 +3539,9 @@ msgid "Workflow"
 msgstr "Arbejdsgang"
 
 msgid "Working locally?"
+msgstr ""
+
+msgid "Wrap Width (mm)"
 msgstr ""
 
 msgid ""
@@ -3642,6 +3712,9 @@ msgstr "Din bruger på %1 er blevet skabt."
 msgid "Your username is %1."
 msgstr "Dit brugernavn er %1"
 
+msgid "Zip"
+msgstr ""
+
 msgid "aborted"
 msgstr "afbrudt"
 
@@ -3678,6 +3751,9 @@ msgstr "færdig"
 
 msgid "conflict"
 msgstr "konflikt"
+
+msgid "default"
+msgstr ""
 
 msgid "description"
 msgstr "beskrivelse"

@@ -415,6 +415,9 @@ msgstr "Apud temoj kaj aŭtoroj vi povas aldoni pli da kategorioj ĉi tie"
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Liga korekto en milimetroj (aldona interna rando)"
 
+msgid "Bleed Width (mm)"
+msgstr ""
+
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -437,6 +440,9 @@ msgstr "Korpo"
 
 msgid "Bold"
 msgstr "Aŭdaca"
+
+msgid "Book Covers"
+msgstr ""
 
 msgid "Bookbuilder"
 msgstr "Librokonstruisto"
@@ -560,6 +566,9 @@ msgstr "Kontrolu retpoŝton kaj sendu poŝton al:"
 msgid "Choose a paper format"
 msgstr "Elektu paperan formaton"
 
+msgid "Choose a template"
+msgstr ""
+
 msgid "Clear the book list"
 msgstr "Forigu la libroliston"
 
@@ -603,6 +612,9 @@ msgstr ""
 msgid "Comma or semicolon separated list"
 msgstr "Koma aŭ punktokomo apartigita listo"
 
+msgid "Comments"
+msgstr ""
+
 msgid "Commit ID"
 msgstr ""
 
@@ -636,8 +648,20 @@ msgstr "Ne povis aŭtomate generi la URI!"
 msgid "Couldn't build that"
 msgstr "Ne povis konstrui tion"
 
+msgid "Cover Height (mm)"
+msgstr ""
+
+msgid "Cover Width (mm)"
+msgstr ""
+
+msgid "Cover removed"
+msgstr ""
+
 msgid "Create"
 msgstr "Kreu"
+
+msgid "Create a book cover"
+msgstr ""
 
 msgid "Create a new aggregation"
 msgstr ""
@@ -818,6 +842,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Ne uzu grasajn tiparojn"
+
+msgid "Do you also need a cover?"
+msgstr ""
 
 msgid "Domain"
 msgstr ""
@@ -1047,6 +1074,9 @@ msgstr "Trovu la aldonan katalogan menuon."
 msgid "Find the network library menu, or equivalent."
 msgstr "Trovu la retan bibliotekan menuon, aŭ ekvivalenton."
 
+msgid "Finished"
+msgstr ""
+
 msgid "First"
 msgstr "Unue"
 
@@ -1084,6 +1114,15 @@ msgstr ""
 
 msgid "Fixed topic list"
 msgstr "Fiksita listo de temoj"
+
+msgid "Flap Width (mm)"
+msgstr ""
+
+msgid "Folding Margin"
+msgstr ""
+
+msgid "Font"
+msgstr ""
 
 msgid "Font preview"
 msgstr "Antaŭvido de tiparo"
@@ -1799,6 +1838,9 @@ msgstr ""
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
+msgid "Mark Length (mm)"
+msgstr ""
+
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr "Maksimuma bilda dimensio en pikseloj, validas por kaj larĝo kaj alto"
 
@@ -1862,6 +1904,9 @@ msgstr "Supreniĝi"
 
 msgid "Multilanguage: list of whitespace separated language codes"
 msgstr "Plurlingva: listo de blankaj spacaj lingvokodoj"
+
+msgid "My book covers"
+msgstr ""
 
 msgid "My description"
 msgstr "Mia priskribo"
@@ -1954,6 +1999,9 @@ msgid ""
 msgstr ""
 "Ankoraŭ ne finita! Bonvolu rigardi la tekston kaj poste alklaki \"% 1\" por "
 "fini vian proponon!"
+
+msgid "Not logged in"
+msgstr ""
 
 msgid "Notes"
 msgstr "Notes"
@@ -2672,6 +2720,9 @@ msgstr "Vidu ĉi tie por pliaj detaloj."
 msgid "See here for the full documentation."
 msgstr "Vidu ĉi tie por la kompleta dokumentado."
 
+msgid "See the bookcover class for all the details"
+msgstr ""
+
 msgid "See the full manual for more details (english)"
 msgstr "Vidu la kompletan manlibron por pliaj detaloj (angla)"
 
@@ -2856,6 +2907,9 @@ msgstr "Specialaj paĝoj"
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr "Specifu liston de lingvoj apartigita en blanka spaco por aktivigi ĝin."
 
+msgid "Spine Width (mm)"
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Malfreŝa redaktado"
 
@@ -2940,6 +2994,9 @@ msgstr "Teaser"
 
 msgid "Teaser image"
 msgstr "Teaser-bildo"
+
+msgid "Template token"
+msgstr ""
 
 msgid "Term"
 msgstr "Terminon"
@@ -3127,6 +3184,10 @@ msgid "This directive wants a whitespace separated list of filenames."
 msgstr "Ĉi tiu direktivo volas blankan apartan liston de dosiernomoj."
 
 msgid ""
+"This has security implications and must be used only on trusted repositories"
+msgstr ""
+
+msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
@@ -3295,6 +3356,9 @@ msgstr "Topics"
 
 msgid "Total pages"
 msgstr "Entute paĝoj"
+
+msgid "Total size (mm)"
+msgstr ""
 
 msgid "Triple bars"
 msgstr "Trioblaj stangoj"
@@ -3476,6 +3540,9 @@ msgstr ""
 "Utila por piednotoj aŭ en la titoloj de la dokumento, kie vi ne povas meti "
 "malplenan linion por marki novan alineon."
 
+msgid "User"
+msgstr ""
+
 #. ($user->username)
 msgid "User %1 created!"
 msgstr "Uzanto% 1 kreita!"
@@ -3599,6 +3666,9 @@ msgstr "Laborfluo"
 
 msgid "Working locally?"
 msgstr "Ĉu vi laboras loke?"
+
+msgid "Wrap Width (mm)"
+msgstr ""
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
@@ -3777,6 +3847,9 @@ msgstr "Via uzanto ĉe% 1 estis kreita."
 msgid "Your username is %1."
 msgstr "Via salutnomo estas% 1."
 
+msgid "Zip"
+msgstr ""
+
 msgid "aborted"
 msgstr "abortita"
 
@@ -3812,6 +3885,9 @@ msgstr "kompletigita"
 
 msgid "conflict"
 msgstr "konflikto"
+
+msgid "default"
+msgstr ""
 
 msgid "description"
 msgstr "priskribo"

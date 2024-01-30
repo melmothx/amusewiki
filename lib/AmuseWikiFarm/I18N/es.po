@@ -411,6 +411,9 @@ msgstr ""
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Corrección en milímetros para cuadernillos (margen interno adicional)"
 
+msgid "Bleed Width (mm)"
+msgstr ""
+
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -431,6 +434,9 @@ msgstr ""
 
 msgid "Bold"
 msgstr "Negrita"
+
+msgid "Book Covers"
+msgstr ""
 
 msgid "Bookbuilder"
 msgstr "Creador de libros"
@@ -551,6 +557,9 @@ msgstr ""
 msgid "Choose a paper format"
 msgstr "Elige un formato para el papel"
 
+msgid "Choose a template"
+msgstr ""
+
 msgid "Clear the book list"
 msgstr "Limpia la lista de libros"
 
@@ -595,6 +604,9 @@ msgstr ""
 msgid "Comma or semicolon separated list"
 msgstr "Lista separada por coma o punto y coma"
 
+msgid "Comments"
+msgstr ""
+
 msgid "Commit ID"
 msgstr ""
 
@@ -628,8 +640,20 @@ msgstr "¡No se pudo generar automáticamente la URI!"
 msgid "Couldn't build that"
 msgstr "No se pudo crear eso"
 
+msgid "Cover Height (mm)"
+msgstr ""
+
+msgid "Cover Width (mm)"
+msgstr ""
+
+msgid "Cover removed"
+msgstr ""
+
 msgid "Create"
 msgstr "Crear"
+
+msgid "Create a book cover"
+msgstr ""
 
 msgid "Create a new aggregation"
 msgstr ""
@@ -807,6 +831,9 @@ msgid "Do not redirect aliases to canonical"
 msgstr ""
 
 msgid "Do not use bold fonts"
+msgstr ""
+
+msgid "Do you also need a cover?"
 msgstr ""
 
 msgid "Domain"
@@ -1038,6 +1065,9 @@ msgstr "Buscar el menú de agregar catálogo."
 msgid "Find the network library menu, or equivalent."
 msgstr "Buscar el menú de biblioteca en red o equivalente."
 
+msgid "Finished"
+msgstr ""
+
 msgid "First"
 msgstr ""
 
@@ -1075,6 +1105,15 @@ msgstr ""
 "dobladas individualmente y juntarlas todas en un cuadernillo."
 
 msgid "Fixed topic list"
+msgstr ""
+
+msgid "Flap Width (mm)"
+msgstr ""
+
+msgid "Folding Margin"
+msgstr ""
+
+msgid "Font"
 msgstr ""
 
 msgid "Font preview"
@@ -1756,6 +1795,9 @@ msgstr ""
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
+msgid "Mark Length (mm)"
+msgstr ""
+
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr ""
 
@@ -1819,6 +1861,9 @@ msgstr "Mover hacia arriba"
 
 msgid "Multilanguage: list of whitespace separated language codes"
 msgstr "Multi lenguaje: lista de códigos de idiomas separadas por un espacio"
+
+msgid "My book covers"
+msgstr ""
 
 msgid "My description"
 msgstr "Mi descripción"
@@ -1909,6 +1954,9 @@ msgid ""
 msgstr ""
 "¡Sin terminar! ¡Por favor revisa el texto y luego clickea en \"%1\" para\n"
 "finalizar tu envío!"
+
+msgid "Not logged in"
+msgstr ""
 
 msgid "Notes"
 msgstr "Notas"
@@ -2622,6 +2670,9 @@ msgstr "Ver aquí para más detalles."
 msgid "See here for the full documentation."
 msgstr "Ver aquí la documentación completa."
 
+msgid "See the bookcover class for all the details"
+msgstr ""
+
 msgid "See the full manual for more details (english)"
 msgstr "Ver el manual completo para más detalles (en inglés)"
 
@@ -2809,6 +2860,9 @@ msgstr "Páginas especiales"
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr "Especifica una lista separada por espacios de los idiomas a activar."
 
+msgid "Spine Width (mm)"
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Edición abandonada"
 
@@ -2893,6 +2947,9 @@ msgstr "Muestra"
 
 msgid "Teaser image"
 msgstr "Imagen de muestra"
+
+msgid "Template token"
+msgstr ""
 
 msgid "Term"
 msgstr "Término"
@@ -3078,6 +3135,10 @@ msgstr ""
 "archivo."
 
 msgid ""
+"This has security implications and must be used only on trusted repositories"
+msgstr ""
+
+msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
@@ -3241,6 +3302,9 @@ msgstr "Temas"
 
 msgid "Total pages"
 msgstr "Páginas totales"
+
+msgid "Total size (mm)"
+msgstr ""
 
 msgid "Triple bars"
 msgstr "Barras triples"
@@ -3419,6 +3483,9 @@ msgstr ""
 "Útil para notas a pie de página o en los encabezados del documento, donde no "
 "puedes poner una línea en blanco para marcar un nuevo párrafo."
 
+msgid "User"
+msgstr ""
+
 #. ($user->username)
 msgid "User %1 created!"
 msgstr "¡Se creó la/el usuaria/o %1!"
@@ -3538,6 +3605,9 @@ msgid "Workflow"
 msgstr "Flujo de trabajo"
 
 msgid "Working locally?"
+msgstr ""
+
+msgid "Wrap Width (mm)"
 msgstr ""
 
 msgid ""
@@ -3709,6 +3779,9 @@ msgstr "Tu usuaria/o ha sido creado en %1."
 msgid "Your username is %1."
 msgstr "Tu nombre de usuaria/o es %1."
 
+msgid "Zip"
+msgstr ""
+
 msgid "aborted"
 msgstr ""
 
@@ -3744,6 +3817,9 @@ msgstr "completado"
 
 msgid "conflict"
 msgstr "conflicto"
+
+msgid "default"
+msgstr ""
 
 msgid "description"
 msgstr "descripción"

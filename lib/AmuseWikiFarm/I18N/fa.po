@@ -412,6 +412,9 @@ msgstr "غیر از موضوعات و نویسندگان می‌توانید د�
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "ویرایش الزامی به میلی‌متر(حاشیه‌ی اضافی داخلی)"
 
+msgid "Bleed Width (mm)"
+msgstr ""
+
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -430,6 +433,9 @@ msgstr "بدنه"
 
 msgid "Bold"
 msgstr "برجسته"
+
+msgid "Book Covers"
+msgstr ""
 
 msgid "Bookbuilder"
 msgstr "کتاب‌ساز"
@@ -552,6 +558,9 @@ msgstr "بررسی ایمیل و فرستادن به:"
 msgid "Choose a paper format"
 msgstr "انتخاب فرمت کاغذ"
 
+msgid "Choose a template"
+msgstr ""
+
 msgid "Clear the book list"
 msgstr "پاک کردن فهرست کتاب"
 
@@ -596,6 +605,9 @@ msgstr ""
 "نکته: حتما از نشانه‌های کیبورد انگلیسی استفاده کنید، در غیر این صورت همه‌ی "
 "کلیدواژه ها یکی حساب می‌شوند"
 
+msgid "Comments"
+msgstr ""
+
 msgid "Commit ID"
 msgstr "شناسه تعهد (Commit ID)"
 
@@ -629,8 +641,20 @@ msgstr "به صورت اتوماتیک URI ساخته نمی‌شود!"
 msgid "Couldn't build that"
 msgstr "ساخته نمی‌شود"
 
+msgid "Cover Height (mm)"
+msgstr ""
+
+msgid "Cover Width (mm)"
+msgstr ""
+
+msgid "Cover removed"
+msgstr ""
+
 msgid "Create"
 msgstr "ساختن"
+
+msgid "Create a book cover"
+msgstr ""
 
 msgid "Create a new aggregation"
 msgstr ""
@@ -809,6 +833,9 @@ msgstr "نام مستعار را از نام قانونی نگیرید"
 
 msgid "Do not use bold fonts"
 msgstr "از فونت برجسته استفاده نکنید"
+
+msgid "Do you also need a cover?"
+msgstr ""
 
 msgid "Domain"
 msgstr "دامنه"
@@ -1033,6 +1060,9 @@ msgstr "منوی افزودن کاتالوگ را پیدا کنید."
 msgid "Find the network library menu, or equivalent."
 msgstr "منوی شبکه‌ی کتابخانه یا معادل آن را پیدا کنید."
 
+msgid "Finished"
+msgstr ""
+
 msgid "First"
 msgstr "اولین"
 
@@ -1067,6 +1097,15 @@ msgstr "۸ صفحه همراه با برش افقی در دسته‌های تک�
 
 msgid "Fixed topic list"
 msgstr "لیست موضوعات"
+
+msgid "Flap Width (mm)"
+msgstr ""
+
+msgid "Folding Margin"
+msgstr ""
+
+msgid "Font"
+msgstr ""
 
 msgid "Font preview"
 msgstr "پیش‌نمایش فونت"
@@ -1771,6 +1810,9 @@ msgstr "مدیریت انواع دسته‌بندی‌ها"
 msgid "Margins: please choose a division factor or set width and height"
 msgstr "حاشیه: لطفاً یک ضریب تقسیم را انتخاب کنید یا عرض و ارتفاع را تنظیم کنید"
 
+msgid "Mark Length (mm)"
+msgstr ""
+
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr "حداکثر ابعاد تصویر در پیکسل، هم برای عرض و هم برای ارتفاع اعمال می‌شود"
 
@@ -1834,6 +1876,9 @@ msgstr "به سمت بالا"
 
 msgid "Multilanguage: list of whitespace separated language codes"
 msgstr "چند زبانه: فهرستی از زبان‌های جدا شده با فاصله"
+
+msgid "My book covers"
+msgstr ""
 
 msgid "My description"
 msgstr "توصیف من"
@@ -1925,6 +1970,9 @@ msgid ""
 msgstr ""
 "هنوز تمام نشده! لطفاً به متن نگاه کنید و سپس بر روی \"%1\" کلیک کنید تا ارسال "
 "شود!"
+
+msgid "Not logged in"
+msgstr ""
 
 msgid "Notes"
 msgstr "یادداشت‌ها"
@@ -2636,6 +2684,9 @@ msgstr "برای دیدن اطلاعات بیشتر اینجا را ببینید
 msgid "See here for the full documentation."
 msgstr "برای دیدن تمام داکیومنتیشن اینجا را ببینید."
 
+msgid "See the bookcover class for all the details"
+msgstr ""
+
 msgid "See the full manual for more details (english)"
 msgstr "دیدن کتابچه‌ی راهنما برای جزئیات بیشتر(english)"
 
@@ -2822,6 +2873,9 @@ msgstr "صفحات ویژه"
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr "برای فعال کردن، فهرستی از زبان‌های جدا شده با فضای خالی را مشخص کنید."
 
+msgid "Spine Width (mm)"
+msgstr ""
+
 msgid "Stale editing"
 msgstr "ویرایش قدیمی"
 
@@ -2906,6 +2960,9 @@ msgstr "پیش‌نمایش"
 
 msgid "Teaser image"
 msgstr "پیش‌نمایش تصویر"
+
+msgid "Template token"
+msgstr ""
 
 msgid "Term"
 msgstr "شرایط"
@@ -3082,6 +3139,10 @@ msgid "This directive wants a whitespace separated list of filenames."
 msgstr "این دستورالعمل فهرستی از نام فایل‌ها(جدا شده با فاصله) می‌خواهد."
 
 msgid ""
+"This has security implications and must be used only on trusted repositories"
+msgstr ""
+
+msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
@@ -3248,6 +3309,9 @@ msgstr "موضوعات"
 
 msgid "Total pages"
 msgstr "تمام صفحات"
+
+msgid "Total size (mm)"
+msgstr ""
 
 msgid "Triple bars"
 msgstr ""
@@ -3429,6 +3493,9 @@ msgstr ""
 "برای پاورقی‌ها یا در سرفصل های متن مفید است،\n"
 " جایی که نمی‌توانید یک خط خالی برای علامت گذاری پاراگراف جدید قرار دهید."
 
+msgid "User"
+msgstr ""
+
 #. ($user->username)
 msgid "User %1 created!"
 msgstr "کاربر %1 ایجاد شد!"
@@ -3551,6 +3618,9 @@ msgid "Workflow"
 msgstr "روندکار"
 
 msgid "Working locally?"
+msgstr ""
+
+msgid "Wrap Width (mm)"
 msgstr ""
 
 msgid ""
@@ -3728,6 +3798,9 @@ msgstr "کاربر شما در %1 ایجاد شده است."
 msgid "Your username is %1."
 msgstr "نام‌کاربری شما %1 است."
 
+msgid "Zip"
+msgstr ""
+
 msgid "aborted"
 msgstr "لغو شده"
 
@@ -3764,6 +3837,9 @@ msgstr "تکمیل شد"
 
 msgid "conflict"
 msgstr "ناسازگاری"
+
+msgid "default"
+msgstr ""
 
 msgid "description"
 msgstr "توضیحات"

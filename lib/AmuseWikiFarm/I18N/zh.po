@@ -391,6 +391,9 @@ msgstr "除了主题和作者，你可以在这里添加更多的类别"
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "由毫米计的订书纠正（额外内缘）"
 
+msgid "Bleed Width (mm)"
+msgstr ""
+
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -409,6 +412,9 @@ msgstr "正文"
 
 msgid "Bold"
 msgstr "粗体"
+
+msgid "Book Covers"
+msgstr ""
 
 msgid "Bookbuilder"
 msgstr "建书器"
@@ -530,6 +536,9 @@ msgstr "确认发送邮件并致件于："
 msgid "Choose a paper format"
 msgstr "选择纸张格式"
 
+msgid "Choose a template"
+msgstr ""
+
 msgid "Clear the book list"
 msgstr "清除书单"
 
@@ -571,6 +580,9 @@ msgstr "编辑页面左侧的列，带有编辑框（共12个）"
 msgid "Comma or semicolon separated list"
 msgstr "半角逗号或者半角分号分割列表"
 
+msgid "Comments"
+msgstr ""
+
 msgid "Commit ID"
 msgstr ""
 
@@ -604,8 +616,20 @@ msgstr "无法自动生成URI！"
 msgid "Couldn't build that"
 msgstr "无法建书"
 
+msgid "Cover Height (mm)"
+msgstr ""
+
+msgid "Cover Width (mm)"
+msgstr ""
+
+msgid "Cover removed"
+msgstr ""
+
 msgid "Create"
 msgstr "新建"
+
+msgid "Create a book cover"
+msgstr ""
 
 msgid "Create a new aggregation"
 msgstr ""
@@ -781,6 +805,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "不要使用粗体字体"
+
+msgid "Do you also need a cover?"
+msgstr ""
 
 msgid "Domain"
 msgstr ""
@@ -998,6 +1025,9 @@ msgstr "找到添加目录菜单。"
 msgid "Find the network library menu, or equivalent."
 msgstr "找到网络库菜单或等同的。"
 
+msgid "Finished"
+msgstr ""
+
 msgid "First"
 msgstr "第一"
 
@@ -1032,6 +1062,15 @@ msgstr "固定签名为8页，水平切割，单独折叠并装订在一起。"
 
 msgid "Fixed topic list"
 msgstr "固定主题列表"
+
+msgid "Flap Width (mm)"
+msgstr ""
+
+msgid "Folding Margin"
+msgstr ""
+
+msgid "Font"
+msgstr ""
 
 msgid "Font preview"
 msgstr "字体预览"
@@ -1680,6 +1719,9 @@ msgstr ""
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
+msgid "Mark Length (mm)"
+msgstr ""
+
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr "最大图形像素尺寸，用于宽与高"
 
@@ -1743,6 +1785,9 @@ msgstr "上移"
 
 msgid "Multilanguage: list of whitespace separated language codes"
 msgstr "多语言：空格分隔的语言码列表"
+
+msgid "My book covers"
+msgstr ""
 
 msgid "My description"
 msgstr "我的描述"
@@ -1831,6 +1876,9 @@ msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
 "finalize your submission!"
 msgstr "还没有完成！请看一下文本，然后点击”%1“以最终完成您的提交！"
+
+msgid "Not logged in"
+msgstr ""
 
 msgid "Notes"
 msgstr "备注"
@@ -2512,6 +2560,9 @@ msgstr "这里有更多细节。"
 msgid "See here for the full documentation."
 msgstr "这里有完整说明书。"
 
+msgid "See the bookcover class for all the details"
+msgstr ""
+
 msgid "See the full manual for more details (english)"
 msgstr "更多细节请查阅完整使用手册（英文）。"
 
@@ -2696,6 +2747,9 @@ msgstr "特殊页面"
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr "指定一个用空格分隔的语言列表来激活它。"
 
+msgid "Spine Width (mm)"
+msgstr ""
+
 msgid "Stale editing"
 msgstr "陈旧编辑"
 
@@ -2778,6 +2832,9 @@ msgstr "预告"
 
 msgid "Teaser image"
 msgstr "预告片图像"
+
+msgid "Template token"
+msgstr ""
 
 msgid "Term"
 msgstr "词语"
@@ -2943,6 +3000,10 @@ msgid "This directive wants a whitespace separated list of filenames."
 msgstr "这条指令要一个以空格分隔的文件名列表。"
 
 msgid ""
+"This has security implications and must be used only on trusted repositories"
+msgstr ""
+
+msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
@@ -3101,6 +3162,9 @@ msgstr "话题"
 
 msgid "Total pages"
 msgstr "总页数"
+
+msgid "Total size (mm)"
+msgstr ""
 
 msgid "Triple bars"
 msgstr "三杠"
@@ -3273,6 +3337,9 @@ msgid ""
 "a blank line to mark a new paragraph."
 msgstr "对脚注或文档的页首很有用，因为在这些地方你不能放空行来标记新的段落。"
 
+msgid "User"
+msgstr ""
+
 #. ($user->username)
 msgid "User %1 created!"
 msgstr "用户%1已创建！"
@@ -3383,6 +3450,9 @@ msgstr "工作流程"
 
 msgid "Working locally?"
 msgstr "离线工作？"
+
+msgid "Wrap Width (mm)"
+msgstr ""
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
@@ -3543,6 +3613,9 @@ msgstr "你在%1的用户已创建。"
 msgid "Your username is %1."
 msgstr "你的用户名是%1。"
 
+msgid "Zip"
+msgstr ""
+
 msgid "aborted"
 msgstr "停止了"
 
@@ -3578,6 +3651,9 @@ msgstr "完成的"
 
 msgid "conflict"
 msgstr "冲突"
+
+msgid "default"
+msgstr ""
 
 msgid "description"
 msgstr "描述"

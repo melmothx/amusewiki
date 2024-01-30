@@ -414,6 +414,9 @@ msgstr "Покрај теми и автори, овде можеш да дода
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Корекција за повезот во милиметри (дополнителна внатрешна маргина)"
 
+msgid "Bleed Width (mm)"
+msgstr ""
+
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -432,6 +435,9 @@ msgstr "Текст"
 
 msgid "Bold"
 msgstr "Здебелено"
+
+msgid "Book Covers"
+msgstr ""
 
 msgid "Bookbuilder"
 msgstr "Направи збирка"
@@ -553,6 +559,9 @@ msgstr ""
 msgid "Choose a paper format"
 msgstr "Избери формат на хартијата"
 
+msgid "Choose a template"
+msgstr ""
+
 msgid "Clear the book list"
 msgstr "Поништи ја листата на текстови"
 
@@ -594,6 +603,9 @@ msgstr "Ширина на левата страна на страницата з
 msgid "Comma or semicolon separated list"
 msgstr "Листа разделена со запирка или точка-запирка"
 
+msgid "Comments"
+msgstr ""
+
 msgid "Commit ID"
 msgstr ""
 
@@ -627,8 +639,20 @@ msgstr "Невозможно е автоматски да се генерира 
 msgid "Couldn't build that"
 msgstr "Не можеше да се направи збирка"
 
+msgid "Cover Height (mm)"
+msgstr ""
+
+msgid "Cover Width (mm)"
+msgstr ""
+
+msgid "Cover removed"
+msgstr ""
+
 msgid "Create"
 msgstr "Креирај"
+
+msgid "Create a book cover"
+msgstr ""
 
 msgid "Create a new aggregation"
 msgstr ""
@@ -807,6 +831,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Не користи здебелен фонт"
+
+msgid "Do you also need a cover?"
+msgstr ""
 
 msgid "Domain"
 msgstr ""
@@ -1034,6 +1061,9 @@ msgstr "Пронајди го менито за нови каталози."
 msgid "Find the network library menu, or equivalent."
 msgstr "Пронајди го менито за мрежни библиотеки (или слично)."
 
+msgid "Finished"
+msgstr ""
+
 msgid "First"
 msgstr ""
 
@@ -1069,6 +1099,15 @@ msgstr ""
 "и повез во буклет"
 
 msgid "Fixed topic list"
+msgstr ""
+
+msgid "Flap Width (mm)"
+msgstr ""
+
+msgid "Folding Margin"
+msgstr ""
+
+msgid "Font"
 msgstr ""
 
 msgid "Font preview"
@@ -1767,6 +1806,9 @@ msgstr ""
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
+msgid "Mark Length (mm)"
+msgstr ""
+
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr "Максимална големина на сликите во пиксели, и за ширина и за висина"
 
@@ -1832,6 +1874,9 @@ msgstr "Нагоре"
 
 msgid "Multilanguage: list of whitespace separated language codes"
 msgstr "Повеќејазичност: листа на јазични кодови разделни со празно место"
+
+msgid "My book covers"
+msgstr ""
 
 msgid "My description"
 msgstr "Мој опис"
@@ -1921,6 +1966,9 @@ msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
 "finalize your submission!"
 msgstr "Процедурата сè уште е во тек! Провери го текстот па притисни \"%1\"."
+
+msgid "Not logged in"
+msgstr ""
 
 msgid "Notes"
 msgstr "Забелешки"
@@ -2645,6 +2693,9 @@ msgstr "Погледни овде за повеќе детали."
 msgid "See here for the full documentation."
 msgstr "Погледни овде за целосната документација."
 
+msgid "See the bookcover class for all the details"
+msgstr ""
+
 msgid "See the full manual for more details (english)"
 msgstr "Погледни го прирачникот за повеќе детали (на англиски)"
 
@@ -2829,6 +2880,9 @@ msgstr "Посебни страници"
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr "За активација додади листа на јазици одвоени со празно место."
 
+msgid "Spine Width (mm)"
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Напуштена измена"
 
@@ -2913,6 +2967,9 @@ msgstr "Преглед"
 
 msgid "Teaser image"
 msgstr "Слика за преглед"
+
+msgid "Template token"
+msgstr ""
 
 msgid "Term"
 msgstr "Поим"
@@ -3094,6 +3151,10 @@ msgid "This directive wants a whitespace separated list of filenames."
 msgstr "Ова поле бара листа на имињата на датотеки одвоени со празно место."
 
 msgid ""
+"This has security implications and must be used only on trusted repositories"
+msgstr ""
+
+msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
@@ -3258,6 +3319,9 @@ msgstr "Теми"
 
 msgid "Total pages"
 msgstr "Вкупно страници"
+
+msgid "Total size (mm)"
+msgstr ""
 
 msgid "Triple bars"
 msgstr "Тројна лента"
@@ -3438,6 +3502,9 @@ msgstr ""
 "Корисно за фусноти или заглавија, онаму каде што не можеш да користиш празен "
 "ред за одвојување на пасусите."
 
+msgid "User"
+msgstr ""
+
 #. ($user->username)
 msgid "User %1 created!"
 msgstr "Корисникот %1 е креиран!"
@@ -3561,6 +3628,9 @@ msgstr "Управување"
 
 msgid "Working locally?"
 msgstr "Работиш локално?"
+
+msgid "Wrap Width (mm)"
+msgstr ""
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
@@ -3736,6 +3806,9 @@ msgstr "Твојот корисник е креиран на %1."
 msgid "Your username is %1."
 msgstr "Твоето корисничко име е %1."
 
+msgid "Zip"
+msgstr ""
+
 msgid "aborted"
 msgstr "недовршено"
 
@@ -3771,6 +3844,9 @@ msgstr "готово"
 
 msgid "conflict"
 msgstr "конфликт"
+
+msgid "default"
+msgstr ""
 
 msgid "description"
 msgstr "опис"

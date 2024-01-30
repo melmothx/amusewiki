@@ -415,6 +415,9 @@ msgstr "Крім тем і автор_ок, можете додати тут б�
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Поправка на скріплення в міліметрах (додаткове внутрішнє поле)"
 
+msgid "Bleed Width (mm)"
+msgstr ""
+
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -433,6 +436,9 @@ msgstr "Основний текст"
 
 msgid "Bold"
 msgstr "Грубий"
+
+msgid "Book Covers"
+msgstr ""
 
 msgid "Bookbuilder"
 msgstr "Конструктор"
@@ -555,6 +561,9 @@ msgstr "Перевірити надсилання пошти й надіслат
 msgid "Choose a paper format"
 msgstr "Оберіть розмір аркуша"
 
+msgid "Choose a template"
+msgstr ""
+
 msgid "Clear the book list"
 msgstr "Очистити перелік книг"
 
@@ -598,6 +607,9 @@ msgstr ""
 msgid "Comma or semicolon separated list"
 msgstr "Перелік через кому чи крапку з комою"
 
+msgid "Comments"
+msgstr ""
+
 msgid "Commit ID"
 msgstr "Ідентифікатор коміту"
 
@@ -631,8 +643,20 @@ msgstr "Не вдалось автоматично згенерувати іде
 msgid "Couldn't build that"
 msgstr "Не вдалося зібрати"
 
+msgid "Cover Height (mm)"
+msgstr ""
+
+msgid "Cover Width (mm)"
+msgstr ""
+
+msgid "Cover removed"
+msgstr ""
+
 msgid "Create"
 msgstr "Створити"
+
+msgid "Create a book cover"
+msgstr ""
 
 msgid "Create a new aggregation"
 msgstr ""
@@ -810,6 +834,9 @@ msgstr "Не переспрямомувати псевдонімів до кан
 
 msgid "Do not use bold fonts"
 msgstr "Не використовувати грубих шрифтів"
+
+msgid "Do you also need a cover?"
+msgstr ""
 
 msgid "Domain"
 msgstr "Домен"
@@ -1037,6 +1064,9 @@ msgstr "Знайдіть меню додання каталогу."
 msgid "Find the network library menu, or equivalent."
 msgstr "Знайдіть меню мережних бібліотек або його аналог."
 
+msgid "Finished"
+msgstr ""
+
 msgid "First"
 msgstr "Перша"
 
@@ -1072,6 +1102,15 @@ msgstr ""
 
 msgid "Fixed topic list"
 msgstr "Постійні теми"
+
+msgid "Flap Width (mm)"
+msgstr ""
+
+msgid "Folding Margin"
+msgstr ""
+
+msgid "Font"
+msgstr ""
 
 msgid "Font preview"
 msgstr "Перегляд шрифту"
@@ -1758,6 +1797,9 @@ msgstr "Керувати типами категорій"
 msgid "Margins: please choose a division factor or set width and height"
 msgstr "Поля: оберіть співвідношення чи ширину й висоту"
 
+msgid "Mark Length (mm)"
+msgstr ""
+
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr "Максимальна ширина та висота зображення в пікселях"
 
@@ -1821,6 +1863,9 @@ msgstr "Угору"
 
 msgid "Multilanguage: list of whitespace separated language codes"
 msgstr "Багатомовність: перелік кодів мов через пробіл"
+
+msgid "My book covers"
+msgstr ""
 
 msgid "My description"
 msgstr "Мій опис"
@@ -1913,6 +1958,9 @@ msgid ""
 msgstr ""
 "Ще не все! Будь ласка, перевірте текст і тоді натисніть «%1», щоб завершити "
 "надсилання!"
+
+msgid "Not logged in"
+msgstr ""
 
 msgid "Notes"
 msgstr "Примітки"
@@ -2618,6 +2666,9 @@ msgstr "Тут описано докладніше."
 msgid "See here for the full documentation."
 msgstr "Перегляньте повну документацію."
 
+msgid "See the bookcover class for all the details"
+msgstr ""
+
 msgid "See the full manual for more details (english)"
 msgstr "Докладніше описано в посібнику (англійською)"
 
@@ -2803,6 +2854,9 @@ msgstr "Особливі сторінки"
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr "Перелічіть мови через пробіл, щоб активувати."
 
+msgid "Spine Width (mm)"
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Покинуте редагування"
 
@@ -2887,6 +2941,9 @@ msgstr "Тизер"
 
 msgid "Teaser image"
 msgstr "Картинка-тизер"
+
+msgid "Template token"
+msgstr ""
 
 msgid "Term"
 msgstr "Термін"
@@ -3064,6 +3121,10 @@ msgid "This directive wants a whitespace separated list of filenames."
 msgstr "Цій настанові потрібен розділений пробілами перелік назв файлів."
 
 msgid ""
+"This has security implications and must be used only on trusted repositories"
+msgstr ""
+
+msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
@@ -3227,6 +3288,9 @@ msgstr "Теми"
 
 msgid "Total pages"
 msgstr "Усього сторінок"
+
+msgid "Total size (mm)"
+msgstr ""
 
 msgid "Triple bars"
 msgstr "Три риски"
@@ -3408,6 +3472,9 @@ msgstr ""
 "Корисно в примітках чи в шапці документу, де немає можливості розділити "
 "абзаци звичайним новим рядком."
 
+msgid "User"
+msgstr ""
+
 #. ($user->username)
 msgid "User %1 created!"
 msgstr "Користувач_ку %1 створено!"
@@ -3530,6 +3597,9 @@ msgstr "Робочий процес"
 
 msgid "Working locally?"
 msgstr "Працюєте локально?"
+
+msgid "Wrap Width (mm)"
+msgstr ""
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
@@ -3702,6 +3772,9 @@ msgstr "Користувач_ку %1 створено."
 msgid "Your username is %1."
 msgstr "Логін: %1."
 
+msgid "Zip"
+msgstr ""
+
 msgid "aborted"
 msgstr "перервано"
 
@@ -3737,6 +3810,9 @@ msgstr "завершено"
 
 msgid "conflict"
 msgstr "конфлікт"
+
+msgid "default"
+msgstr ""
 
 msgid "description"
 msgstr "опис"

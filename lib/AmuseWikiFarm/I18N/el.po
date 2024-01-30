@@ -428,6 +428,9 @@ msgstr ""
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Διόρθωση βιβλιοδεσίας σε χιλιοστά (πρόσθετο εσωτερικό περιθώριο)"
 
+msgid "Bleed Width (mm)"
+msgstr ""
+
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -450,6 +453,9 @@ msgstr "Σώμα"
 
 msgid "Bold"
 msgstr "Έντονη γραφή"
+
+msgid "Book Covers"
+msgstr ""
 
 msgid "Bookbuilder"
 msgstr "Βιβλιοχτίστης"
@@ -575,6 +581,9 @@ msgstr "Έλεγχος αποστολής email και αποστολή email σ
 msgid "Choose a paper format"
 msgstr "Διάλεξε τύπο χαρτιού"
 
+msgid "Choose a template"
+msgstr ""
+
 msgid "Clear the book list"
 msgstr "Εκκαθάριση λίστας βιβλίων"
 
@@ -618,6 +627,9 @@ msgstr ""
 msgid "Comma or semicolon separated list"
 msgstr "Λίστα διαχωρισμένη με κόμμα ή άνω τελεία"
 
+msgid "Comments"
+msgstr ""
+
 msgid "Commit ID"
 msgstr ""
 
@@ -651,8 +663,20 @@ msgstr "Η αυτόματη δημιουργία URI δεν ήταν δυνατ�
 msgid "Couldn't build that"
 msgstr "Το χτίσιμο δεν ήταν δυνατό"
 
+msgid "Cover Height (mm)"
+msgstr ""
+
+msgid "Cover Width (mm)"
+msgstr ""
+
+msgid "Cover removed"
+msgstr ""
+
 msgid "Create"
 msgstr "Δημιουργία"
+
+msgid "Create a book cover"
+msgstr ""
 
 msgid "Create a new aggregation"
 msgstr ""
@@ -834,6 +858,9 @@ msgstr ""
 
 msgid "Do not use bold fonts"
 msgstr "Μη χρησιμοποιείς έντονη γραμματοσειρά (bold)"
+
+msgid "Do you also need a cover?"
+msgstr ""
 
 msgid "Domain"
 msgstr ""
@@ -1065,6 +1092,9 @@ msgstr "Βρες το μενού προσθήκης καταλόγου."
 msgid "Find the network library menu, or equivalent."
 msgstr "Βρες το μενού βιβλιοθήκης δικτύου, ή κάτι παρόμοιο."
 
+msgid "Finished"
+msgstr ""
+
 msgid "First"
 msgstr "Πρώτη"
 
@@ -1101,6 +1131,15 @@ msgstr ""
 
 msgid "Fixed topic list"
 msgstr "Σταθερή λίστα θεμάτων"
+
+msgid "Flap Width (mm)"
+msgstr ""
+
+msgid "Folding Margin"
+msgstr ""
+
+msgid "Font"
+msgstr ""
 
 msgid "Font preview"
 msgstr "Προεπισκόπηση γραμματοσειράς"
@@ -1838,6 +1877,9 @@ msgstr ""
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
+msgid "Mark Length (mm)"
+msgstr ""
+
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr ""
 "Μέγιστη διάσταση εικόνας σε pixels, ισχύει τόσο για το πλάτος όσο και για το "
@@ -1905,6 +1947,9 @@ msgid "Multilanguage: list of whitespace separated language codes"
 msgstr ""
 "Πολλαπλές γλώσσες: κατάλογος γλωσσικών κωδικών που χωρίζονται με κενό "
 "διάστημα"
+
+msgid "My book covers"
+msgstr ""
 
 msgid "My description"
 msgstr "Η περιγραφή μου"
@@ -1997,6 +2042,9 @@ msgid ""
 msgstr ""
 "Δεν έχει τελειώσει ακόμα! Ρίξτε μια ματιά στο κείμενο και στη συνέχεια κάντε "
 "κλικ στο \"%1\" για να ολοκληρώσετε την υποβολή σας!"
+
+msgid "Not logged in"
+msgstr ""
 
 msgid "Notes"
 msgstr "Σημειώσεις"
@@ -2747,6 +2795,9 @@ msgstr "Δες εδώ για περισσότερες λεπτομέρειες."
 msgid "See here for the full documentation."
 msgstr "Δες εδώ τις πλήρεις οδηγίες."
 
+msgid "See the bookcover class for all the details"
+msgstr ""
+
 msgid "See the full manual for more details (english)"
 msgstr "Δείτε το πλήρες εγχειρίδιο για περισσότερες λεπτομέρειες (αγγλικά)"
 
@@ -2937,6 +2988,9 @@ msgstr ""
 "Καθορίστε μια λίστα γλωσσών που διαχωρίζεται με κενό διάστημα για να την "
 "ενεργοποιήσετε."
 
+msgid "Spine Width (mm)"
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Παρωχημένη επεξεργασία"
 
@@ -3021,6 +3075,9 @@ msgstr "Teaser"
 
 msgid "Teaser image"
 msgstr "Εικόνα Teaser"
+
+msgid "Template token"
+msgstr ""
 
 msgid "Term"
 msgstr "Όρος"
@@ -3215,6 +3272,10 @@ msgstr ""
 "διάστημα."
 
 msgid ""
+"This has security implications and must be used only on trusted repositories"
+msgstr ""
+
+msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
@@ -3394,6 +3455,9 @@ msgstr "Θέματα"
 
 msgid "Total pages"
 msgstr "Σύνολο σελίδων"
+
+msgid "Total size (mm)"
+msgstr ""
 
 msgid "Triple bars"
 msgstr "Τριπλές μπάρες"
@@ -3582,6 +3646,9 @@ msgstr ""
 "Χρήσιμο για υποσημειώσεις ή στις επικεφαλίδες του εγγράφου, όπου δεν "
 "μπορείτε να βάλετε μια κενή γραμμή για να επισημάνετε μια νέα παράγραφο."
 
+msgid "User"
+msgstr ""
+
 #. ($user->username)
 msgid "User %1 created!"
 msgstr "Ο/Η χρήστης %1 δημιουργήθηκε!"
@@ -3716,6 +3783,9 @@ msgstr "Ροή εργασίας"
 
 msgid "Working locally?"
 msgstr "Εργάζεστε τοπικά;"
+
+msgid "Wrap Width (mm)"
+msgstr ""
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
@@ -3900,6 +3970,9 @@ msgstr "Ο χρήστης σας στο %1 έχει δημιουργηθεί."
 msgid "Your username is %1."
 msgstr "Το όνομα χρήστη σου είναι %1."
 
+msgid "Zip"
+msgstr ""
+
 msgid "aborted"
 msgstr "ματαιώθηκε"
 
@@ -3937,6 +4010,9 @@ msgstr "ολοκληρωμένο"
 
 msgid "conflict"
 msgstr "σύγκρουση"
+
+msgid "default"
+msgstr ""
 
 msgid "description"
 msgstr "περιγραφή"
