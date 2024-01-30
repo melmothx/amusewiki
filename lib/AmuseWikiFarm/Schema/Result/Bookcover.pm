@@ -523,7 +523,7 @@ sub compose_preamble {
             my $final = Text::Amuse::Compile::Fonts::Selected->new(
                                                                    all_fonts => $self->fonts,
                                                                    size => 12,
-                                                                   luatex => 1,
+                                                                   luatex => 0,
                                                                    main => $selected,
                                                                    mono => $selected,
                                                                    sans => $selected,
@@ -614,7 +614,7 @@ sub produce_pdf {
     chdir $wd or die "Cannot chdir into $wd";
 
     my ($in, $out, $err);
-    my @run = ("lualatex", '-interaction=nonstopmode', $tex->basename);
+    my @run = ("xelatex", '-interaction=nonstopmode', $tex->basename);
     my $ok = run \@run, \$in, \$out, \$err;
     chdir $cwd or die "Cannot chdir back into $cwd";
     # log_info { "Compilation: $out $err" };
