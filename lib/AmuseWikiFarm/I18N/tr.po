@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2023-12-04 15:27+0300\n"
+"PO-Revision-Date: 2024-01-30 15:52+0300\n"
 "Last-Translator: Rojen Zaman <rojen@riseup.net>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. ($filename)
 msgid "%1 doesn't exist"
@@ -114,7 +114,7 @@ msgstr ""
 "Düzenleme yarım bırakılmış, farklara bakıp kaldığın yerden devam edebilirsin"
 
 msgid "Access token"
-msgstr ""
+msgstr "Erişim anahtarı"
 
 msgid "Action"
 msgstr "İşlem"
@@ -157,7 +157,7 @@ msgid "Add sections to the bookbuilder"
 msgstr "Kitap yapıcıya bölümler ekle"
 
 msgid "Add text"
-msgstr ""
+msgstr "Metin ekle"
 
 msgid "Add the OPDS URL"
 msgstr "OPDS URL ekle"
@@ -175,7 +175,7 @@ msgid "Add to colophon"
 msgstr "Kolofona ekle"
 
 msgid "Add to the Bookbuilder"
-msgstr ""
+msgstr "Kitap yapıcıya ekle"
 
 msgid ""
 "Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
@@ -211,13 +211,13 @@ msgid "Age:"
 msgstr "Zaman:"
 
 msgid "Aggregation"
-msgstr ""
+msgstr "Yığın"
 
 msgid "Aggregation editing is disabled (autoimport file present)"
-msgstr ""
+msgstr "Yığın düzenleme devre dışı (autoimport dosyası mevcut)"
 
 msgid "Aggregations"
-msgstr ""
+msgstr "Yığınlar"
 
 msgid "Alias"
 msgstr "Rumuz"
@@ -307,16 +307,16 @@ msgid "Annotations for %1"
 msgstr "%1 için ek açıklamalar"
 
 msgid "Annotations, collections, aggregations"
-msgstr ""
+msgstr "Ek açıklamalar, koleksiyonlar, yığınlar"
 
 msgid "Anthologies"
-msgstr ""
+msgstr "Seçkiler"
 
 msgid "Anthologies and periodicals"
-msgstr ""
+msgstr "Seçkiler ve süreli yayınlar"
 
 msgid "Anthology Name"
-msgstr ""
+msgstr "Seçki adı"
 
 msgid "Apache is not currently supported"
 msgstr "Apache henüz desteklenmiyor"
@@ -340,7 +340,7 @@ msgid "As regular image in the body"
 msgstr "Gövdede normal resim olarak"
 
 msgid "Assign text to aggregations"
-msgstr ""
+msgstr "Metni yığın(lar)a ekle"
 
 msgid "Assign text to collections"
 msgstr "Koleksiyonlara metin ata"
@@ -361,10 +361,10 @@ msgid "Author and title. If one side document: title."
 msgstr "Yazar ve başlık. Tek taraflı döküman ise: başlık."
 
 msgid "Authorize your IP"
-msgstr ""
+msgstr "IP'ni yetkilendir"
 
 msgid "Authorize your IP, if needed"
-msgstr ""
+msgstr "IP'ni yetkilendir (gerekirse)"
 
 msgid "Authors"
 msgstr "Yazarlar"
@@ -402,7 +402,7 @@ msgid "Bad request"
 msgstr "Bad request"
 
 msgid "Bad type. This is a bug"
-msgstr ""
+msgstr "Yanlış tip. Bu bir hata"
 
 msgid "Beamer color theme"
 msgstr "Beamer renk teması"
@@ -418,7 +418,7 @@ msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Milimetre cinsinden cilt düzeltmesi (ek iç kenar boşluğu)"
 
 msgid "Bleed Width (mm)"
-msgstr ""
+msgstr "Taşma Genişliği (mm)"
 
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
@@ -444,7 +444,7 @@ msgid "Bold"
 msgstr "Kalın"
 
 msgid "Book Covers"
-msgstr ""
+msgstr "Kitap Kapakları"
 
 msgid "Bookbuilder"
 msgstr "Kitap yapıcı"
@@ -459,7 +459,7 @@ msgid "Built-in"
 msgstr "Yerleşik"
 
 msgid "Bump Publication Date"
-msgstr ""
+msgstr "Yayınlama Tarihini Değiştir"
 
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
@@ -507,7 +507,7 @@ msgid "Categories"
 msgstr "Kategoriler"
 
 msgid "Category editing is disabled (autoimport file present)"
-msgstr ""
+msgstr "Kategori düzenleme devre dışı (autoimport dosyası mevcut)"
 
 #. ($site->canonical)
 #. (site.canonical)
@@ -569,7 +569,7 @@ msgid "Choose a paper format"
 msgstr "Sayfa biçimini seç"
 
 msgid "Choose a template"
-msgstr ""
+msgstr "Bir şablon seç"
 
 msgid "Clear the book list"
 msgstr "Kitap listesini temizle"
@@ -587,7 +587,7 @@ msgid "Code"
 msgstr "Kod"
 
 msgid "Collection"
-msgstr ""
+msgstr "Koleksiyon"
 
 msgid "Collection created"
 msgstr "Koleksiyon oluşturuldu"
@@ -615,7 +615,7 @@ msgid "Comma or semicolon separated list"
 msgstr "Virgül ya da noktalı virgülle ayrılmış liste"
 
 msgid "Comments"
-msgstr ""
+msgstr "Yorumlar"
 
 msgid "Commit ID"
 msgstr "Commit kimliği"
@@ -651,25 +651,25 @@ msgid "Couldn't build that"
 msgstr "Onu yapılandıramadım"
 
 msgid "Cover Height (mm)"
-msgstr ""
+msgstr "Kapak Yüksekliği (mm)"
 
 msgid "Cover Width (mm)"
-msgstr ""
+msgstr "Kapak Genişliği (mm)"
 
 msgid "Cover removed"
-msgstr ""
+msgstr "Kapak kaldırıldı"
 
 msgid "Create"
 msgstr "Yarat"
 
 msgid "Create a book cover"
-msgstr ""
+msgstr "Kitap kapağı oluştur"
 
 msgid "Create a new aggregation"
-msgstr ""
+msgstr "Yeni bir yığın oluştur"
 
 msgid "Create a new aggregation for this series"
-msgstr ""
+msgstr "Bu dizi için yeni bir yığın oluştur"
 
 msgid "Create a new annotation."
 msgstr "Yeni bir ek açıklama oluştur."
@@ -679,7 +679,7 @@ msgstr ""
 "Yeni bir kategori tipi yarat. Lütfen yalnızca küçük ASCII harflerini kullan"
 
 msgid "Create a new child collection"
-msgstr ""
+msgstr "Yeni bir alt koleksiyon oluştur"
 
 msgid "Create a new format"
 msgstr "Yeni bir biçim yarat"
@@ -688,16 +688,16 @@ msgid "Create a new librarian"
 msgstr "Yeni bir kütüphaneci yarat"
 
 msgid "Create a new series"
-msgstr ""
+msgstr "Yeni bir dizi oluştur"
 
 msgid "Create a new special page"
 msgstr "Yeni bir özel sayfa yarat"
 
 msgid "Create a new text for this aggregation"
-msgstr ""
+msgstr "Bu yığın için yeni bir metin oluştur"
 
 msgid "Create a new text for this collection"
-msgstr ""
+msgstr "Bu koleksiyon için yeni bir metin oluştur"
 
 msgid "Create a new user"
 msgstr "Yeni bir kullanıcı yarat"
@@ -748,7 +748,7 @@ msgid "Date of the original publication"
 msgstr "Orijinal yayın tarihi"
 
 msgid "Day"
-msgstr ""
+msgstr "Gün"
 
 msgid "Default"
 msgstr "Varsayılan"
@@ -847,7 +847,7 @@ msgid "Do not use bold fonts"
 msgstr "Kalın fontları kullanma"
 
 msgid "Do you also need a cover?"
-msgstr ""
+msgstr "Bir kapağa da ihtiyacın var mı?"
 
 msgid "Domain"
 msgstr "Alan adı"
@@ -880,10 +880,10 @@ msgid "Edit"
 msgstr "Düzenle"
 
 msgid "Edit Aggregation"
-msgstr ""
+msgstr "Yığını Düzenle"
 
 msgid "Edit Series"
-msgstr ""
+msgstr "Diziyi Düzenle"
 
 msgid "Edit attachment description"
 msgstr "Ek dosya açıklamasını düzenle"
@@ -1076,7 +1076,7 @@ msgid "Find the network library menu, or equivalent."
 msgstr "Ağ kütüphanesi menüsünü ya da benzerini bul."
 
 msgid "Finished"
-msgstr ""
+msgstr "Tamamlandı"
 
 msgid "First"
 msgstr "İlk"
@@ -1116,13 +1116,13 @@ msgid "Fixed topic list"
 msgstr "Sabit konu listesi"
 
 msgid "Flap Width (mm)"
-msgstr ""
+msgstr "Katlama Kenarı Genişliği (mm)"
 
 msgid "Folding Margin"
-msgstr ""
+msgstr "Katlamalı Kenar"
 
 msgid "Font"
-msgstr ""
+msgstr "Font"
 
 msgid "Font preview"
 msgstr "Font ön izleme"
@@ -1287,7 +1287,7 @@ msgid "Highest priority format"
 msgstr "Önceliği en yüksek olan biçim"
 
 msgid "Home"
-msgstr ""
+msgstr "Anasayfa"
 
 msgid "How are you going to access Git?"
 msgstr "Git'e nasıl erişeceksin?"
@@ -1508,7 +1508,7 @@ msgid ""
 "  URI \"index\", a dash, and the locale code."
 msgstr ""
 "Eğer siten çok dilli ise dile-özel bir karşılama sayfası yaratabilirsin\n"
-"  örn. \"/special/index-tr\", URI \"index\", tire ve dil kodu."
+"  örn. \"/special/index-tr\", URI \"index\", kısa çizgi ve dil kodu."
 
 msgid "Image already set as cover"
 msgstr "Resim zaten kapak olarak seçili"
@@ -1555,7 +1555,7 @@ msgstr ""
 "  %1 eklemek."
 
 msgid "Inherited from the series"
-msgstr ""
+msgstr "Diziden devralındı"
 
 msgid "Inline elements"
 msgstr "Satıriçi öğeler"
@@ -1573,7 +1573,7 @@ msgid "Invalid URI"
 msgstr "Geçersiz URI"
 
 msgid "Invalid data!"
-msgstr ""
+msgstr "Geçersiz veri!"
 
 msgid "Invalid email"
 msgstr "Geçersiz e-posta"
@@ -1594,7 +1594,7 @@ msgid "Invalid username"
 msgstr "Geçersiz kullanıcı adı"
 
 msgid "Issue"
-msgstr ""
+msgstr "Sayı"
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -1810,7 +1810,7 @@ msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Bütün ayırıcı olmayan boşlukları belirgin ve ~~ şeklinde görünür yap"
 
 msgid "Manage aggregations"
-msgstr ""
+msgstr "Yığınları yönet"
 
 msgid "Manage categories"
 msgstr "Kategorileri yönet"
@@ -1824,7 +1824,7 @@ msgstr ""
 "ayarla"
 
 msgid "Mark Length (mm)"
-msgstr ""
+msgstr "İşaretleme Uzunluğu (mm)"
 
 msgid "Max image dimension in pixels, applies to both width and height"
 msgstr "Max resim boyutları, hem genişlik hem yükseklik için (pixel)"
@@ -1858,7 +1858,7 @@ msgid "Missing redirection"
 msgstr "Eksik yönlendirme"
 
 msgid "Missing? Create one"
-msgstr ""
+msgstr "Yok mu? Yeni bir tane oluştur"
 
 msgid "Mobile"
 msgstr "Mobil"
@@ -1876,7 +1876,7 @@ msgid "Mono font"
 msgstr "Sabit aralıklı font"
 
 msgid "Month"
-msgstr ""
+msgstr "Ay"
 
 msgid "More"
 msgstr "Daha fazla"
@@ -1891,7 +1891,7 @@ msgid "Multilanguage: list of whitespace separated language codes"
 msgstr "Çok dil: beyaz boşluklarla ayrılmış dil kodları listesi"
 
 msgid "My book covers"
-msgstr ""
+msgstr "Kitap kapaklarım"
 
 msgid "My description"
 msgstr "Benim tanımım"
@@ -1975,7 +1975,7 @@ msgid "None"
 msgstr "Hiçbiri"
 
 msgid "Not a periodical"
-msgstr ""
+msgstr "Süreli yayın değil"
 
 #. ($c->loc('Save')
 msgid ""
@@ -1986,7 +1986,7 @@ msgstr ""
 "üzerine tıkla!"
 
 msgid "Not logged in"
-msgstr ""
+msgstr "Giriş yapılmadı"
 
 msgid "Notes"
 msgstr "Notlar"
@@ -2072,7 +2072,7 @@ msgid "Or wrap it in"
 msgstr "Ya da içeri kaydır"
 
 msgid "Order"
-msgstr ""
+msgstr "Sıra"
 
 msgid "Ordered List"
 msgstr "Sıralı Liste"
@@ -2148,7 +2148,7 @@ msgid "Part of"
 msgstr "Parçası"
 
 msgid "Part of:"
-msgstr ""
+msgstr "Şuraya ait:"
 
 msgid "Part, for larger books only"
 msgstr "Parça, sadece büyük kitaplar için"
@@ -2181,7 +2181,7 @@ msgid "Pending revisions"
 msgstr "Bekleyen versiyonlar"
 
 msgid "Periodicals"
-msgstr ""
+msgstr "Süreli yayınlar"
 
 msgid "Picture"
 msgstr "Resim"
@@ -2408,10 +2408,10 @@ msgid "Produced"
 msgstr "Üretildi"
 
 msgid "Publication Date"
-msgstr ""
+msgstr "Yayınlanma Tarihi"
 
 msgid "Publication Place"
-msgstr ""
+msgstr "Yayınlanma Yeri"
 
 msgid "Publication date"
 msgstr "Yayınlanma tarihi"
@@ -2520,7 +2520,7 @@ msgid "Recheck"
 msgstr "Tekrar denetle"
 
 msgid "Record deleted!"
-msgstr ""
+msgstr "Kayıt silindi!"
 
 msgid "Redirections"
 msgstr "Yönlendirmeler"
@@ -2529,7 +2529,7 @@ msgid "Refresh and apply filters"
 msgstr "Yenile ve filtreleri uygula"
 
 msgid "Refresh the token"
-msgstr ""
+msgstr "Anahtarı yenile"
 
 msgid "Reindex site"
 msgstr "Siteyi yeniden indeksle"
@@ -2696,7 +2696,7 @@ msgid "Section and subsection. If one side document: section."
 msgstr "Bölüm ve alt bölüm. Eğer tek taraflı ise: bölüm."
 
 msgid "See all"
-msgstr ""
+msgstr "Tümünü gör"
 
 msgid "See here for more details."
 msgstr "Daha fazla bilgi için buraya bakın."
@@ -2705,7 +2705,7 @@ msgid "See here for the full documentation."
 msgstr "Bütün dokümantasyon için buraya bakın."
 
 msgid "See the bookcover class for all the details"
-msgstr ""
+msgstr "Tüm ayrıntılar için kitap kapağı sınıfına bak"
 
 msgid "See the full manual for more details (english)"
 msgstr "Daha fazla detay için (ingilizce) elkitabına bakın"
@@ -2726,7 +2726,7 @@ msgid "Select individual parts for the bookbuilder"
 msgstr "Kitap yapıcı için tek tek parçaları seç"
 
 msgid "Send Email"
-msgstr ""
+msgstr "E-posta yolla"
 
 msgid "Send mail"
 msgstr "Posta gönder"
@@ -2754,7 +2754,7 @@ msgid "Series Number"
 msgstr "Seri Numarası"
 
 msgid "Series or Periodical"
-msgstr ""
+msgstr "Diziler veya Süreli Yayınlar"
 
 msgid "Session sharing"
 msgstr "Oturum paylaşma"
@@ -2862,7 +2862,7 @@ msgid "Sorry, too many jobs pending, please try again later!"
 msgstr "Üzgünüm, bekleyen çok fazla iş var, lütfen sonra tekrar dene!"
 
 msgid "Sorry, you can't remove this, please ask an admin"
-msgstr ""
+msgstr "Üzgünüm, bunu kaldıramazsın, lütfen bir yöneticiye danış"
 
 msgid "Sorting:"
 msgstr "Sıralama:"
@@ -2895,7 +2895,7 @@ msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr "Etkinleştirmek için dilleri boşluklarla ayırarak listele."
 
 msgid "Spine Width (mm)"
-msgstr ""
+msgstr "Sırt Genişliği (mm)"
 
 msgid "Stale editing"
 msgstr "Yarım kalmış düzenleme"
@@ -2983,7 +2983,7 @@ msgid "Teaser image"
 msgstr "Fragman resmi"
 
 msgid "Template token"
-msgstr ""
+msgstr "Şablon belirteci"
 
 msgid "Term"
 msgstr "Terim"
@@ -3106,13 +3106,13 @@ msgid "The text structure is shown below."
 msgstr "Metnin yapısı aşağıda gösterilmiştir."
 
 msgid "The text to show on the homepage preview"
-msgstr "Anasayfa önizlemsinde gösterilecek metin"
+msgstr "Anasayfa önizlemesinde gösterilecek metin"
 
 msgid "The text was added to the bookbuilder"
 msgstr "Metin kitap yapıcıya eklendi"
 
 msgid "The texts were added to the bookbuilder"
-msgstr ""
+msgstr "Metinler kitap oluşturucuya eklendi"
 
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
@@ -3157,6 +3157,8 @@ msgid ""
 "They can be texts, special texts, authors, topics, custom categories, "
 "aggregations and series."
 msgstr ""
+"They can be texts, special texts, authors, topics, custom categories, "
+"aggregations and series."
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
@@ -3171,6 +3173,8 @@ msgstr "Bu komut dosya adlarının listesini boşluklarla ayırarak istiyor."
 msgid ""
 "This has security implications and must be used only on trusted repositories"
 msgstr ""
+"Bunun güvenlikle alakalı sonuçları vardır ve yalnızca güvenilir depolarda "
+"kullanılmalıdır"
 
 msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
@@ -3325,7 +3329,7 @@ msgid "Toggle fullscreen editor"
 msgstr "Tam ekran düzenleyiciyi aç/kapat"
 
 msgid "Token refreshed"
-msgstr ""
+msgstr "Anahtar yenilendi"
 
 msgid "Too many URLs to process!"
 msgstr "İşlemek için çok fazla URL!"
@@ -3343,7 +3347,7 @@ msgid "Total pages"
 msgstr "Toplam sayfa"
 
 msgid "Total size (mm)"
-msgstr ""
+msgstr "Toplam Boyut (mm)"
 
 msgid "Triple bars"
 msgstr "Üçlü sütunlar"
@@ -3431,6 +3435,8 @@ msgid ""
 "Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase "
 "characters and digits, optionally separated by a hyphen, e.g. %1"
 msgstr ""
+"Tekil kimlik. Sonradan değiştirilemez. En az 4 karakterli küçük harf veya "
+"rakam (isteğe bağlı olarak kısa çizgilerle ayrılmış) içermeli, örneğin %1"
 
 msgid "Unlimited"
 msgstr "Sınırsız"
@@ -3456,19 +3462,19 @@ msgid "Update account info"
 msgstr "Hesap bilgilerini güncelle"
 
 msgid "Update aggregation"
-msgstr ""
+msgstr "Yığını güncelle"
 
 msgid "Update and create new aggregation"
-msgstr ""
+msgstr "Güncelle ve yeni bir yığın oluştur"
 
 msgid "Update and create new text"
-msgstr ""
+msgstr "Güncelle ve yeni bir metin oluştur"
 
 msgid "Update category description"
 msgstr "Kategori açıklamasını güncelle"
 
 msgid "Update series"
-msgstr ""
+msgstr "Dizileri güncelle"
 
 msgid "Update to current settings"
 msgstr "Mevcut ayarlara güncelle"
@@ -3530,7 +3536,7 @@ msgstr ""
 "yerlerde, dipnotlarda ya da üstlüklerde kullanışlı."
 
 msgid "User"
-msgstr ""
+msgstr "Kullanıcı"
 
 #. ($user->username)
 msgid "User %1 created!"
@@ -3657,7 +3663,7 @@ msgid "Working locally?"
 msgstr "Lokalde mi çalışıyorsun?"
 
 msgid "Wrap Width (mm)"
-msgstr ""
+msgstr "Kaplama Genişliği (mm)"
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
@@ -3677,7 +3683,7 @@ msgid "XeLaTeX source"
 msgstr "XeLaTeX kaynak kodu"
 
 msgid "Year"
-msgstr ""
+msgstr "Yıl"
 
 msgid "Yes"
 msgstr "Evet"
@@ -3734,6 +3740,8 @@ msgid ""
 "You can authorize your IP for Git access and site access (for private sites) "
 "for 4 hours visiting the following link."
 msgstr ""
+"Aşağıdaki bağlantıyı ziyaret ederek IP'ni Git erişimi ve site erişimi (özel "
+"siteler için) için 4 saatliğine yetkilendirebilirsin."
 
 #. (create_url)
 msgid "You can create a peer at %1"
@@ -3830,7 +3838,7 @@ msgid "Your username is %1."
 msgstr "Kullanıcı adın %1."
 
 msgid "Zip"
-msgstr ""
+msgstr "Zip"
 
 msgid "aborted"
 msgstr "iptal edildi"
@@ -3869,7 +3877,7 @@ msgid "conflict"
 msgstr "çakışma"
 
 msgid "default"
-msgstr ""
+msgstr "varsayılan"
 
 msgid "description"
 msgstr "açıklama"
@@ -3931,7 +3939,7 @@ msgid "new-example-uri"
 msgstr "yeni-örnek-url"
 
 msgid "only lowercase ASCII and hyphens"
-msgstr "sadece küçük harf ASCII ve tireler"
+msgstr "sadece küçük harf ASCII ve kısa çizgiler"
 
 msgid "or"
 msgstr "ya da"
