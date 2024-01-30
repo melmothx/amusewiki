@@ -108,13 +108,13 @@ ok $anon_bc;
     $anon_bc->update_from_params({
                                   spinewidth => 15,
                                   font_name => 'TeX Gyre Pagella',
-                                  language_code => 'fr',
+                                  language_code => 'it',
                                  });
     my $outfile = $anon_bc->write_tex_file;
     ok $outfile->exists;
     my $tex_body = $outfile->slurp_utf8;
     like $tex_body, qr{The \\emph\{back\}};
-    like $tex_body, qr(\\usepackage.*french.*\{babel\});
+    like $tex_body, qr(\\usepackage.*italian.*\{babel\});
     like $tex_body, qr{texgyrepagella};
     like $tex_body, qr{includegraphics};
     diag $tex_body;
