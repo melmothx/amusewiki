@@ -205,6 +205,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 bookcovers
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Bookcover>
+
+=cut
+
+__PACKAGE__->has_many(
+  "bookcovers",
+  "AmuseWikiFarm::Schema::Result::Bookcover",
+  { "foreign.user_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 user_roles
 
 Type: has_many
@@ -256,8 +271,8 @@ Composing rels: L</user_sites> -> site
 __PACKAGE__->many_to_many("sites", "user_sites", "site");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-24 15:48:54
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:IbfU/vrDLVWCgnnNxOUKdw
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-26 14:19:33
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+x2gxKn4n/UEAi6CXfDl2Q
 
 __PACKAGE__->load_components(qw(PassphraseColumn));
 

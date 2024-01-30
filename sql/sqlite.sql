@@ -836,6 +836,39 @@ CREATE TABLE aggregation_annotation (
 
 CREATE UNIQUE INDEX unique_aggregation_annotation_key ON aggregation_annotation (annotation_id, aggregation_id);
 
+CREATE TABLE bookcover (
+    bookcover_id  INTEGER PRIMARY KEY AUTOINCREMENT,
+    site_id VARCHAR(16) NOT NULL REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    title VARCHAR(255) NOT NULL DEFAULT '',
+    -- a5 as default dimensions
+    coverheight   INTEGER NOT NULL DEFAULT 210,
+    coverwidth    INTEGER NOT NULL DEFAULT 148,
+    spinewidth    INTEGER NOT NULL DEFAULT 0,
+    flapwidth     INTEGER NOT NULL DEFAULT 0,
+    wrapwidth     INTEGER NOT NULL DEFAULT 0,
+    bleedwidth    INTEGER NOT NULL DEFAULT 10,
+    marklength    INTEGER NOT NULL DEFAULT 5,
+    foldingmargin SMALLINT NOT NULL DEFAULT 0,
+    created DATETIME NOT NULL,
+    compiled DATETIME,
+    zip_path VARCHAR(255),
+    pdf_path VARCHAR(255),
+
+    template VARCHAR(64),
+    font_name VARCHAR(255),
+    language_code VARCHAR(8),
+    comments TEXT,
+    session_id VARCHAR(255),
+    user_id INTEGER NULL REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE bookcover_token (
+    bookcover_id VARCHAR(16) NOT NULL REFERENCES bookcover(bookcover_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    token_name VARCHAR(255) NOT NULL,
+    token_value TEXT,
+    PRIMARY KEY (bookcover_id, token_name)
+);
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),
@@ -888,6 +921,8 @@ INSERT INTO table_comments (table_name, comment_text)
          ('aggregation_title', 'Linking table for aggregations'),
          ('aggregation_annotation', 'Linking table for aggregation/annotations'),
          ('aggregation_series', 'Aggregation Series'),
+         ('bookcover', 'Book Cover record'),
+         ('bookcover_token', 'Book Cover Template Tokens'),
          ('included_file', 'Files included in muse documents'),
          ('include_path', 'Directories to search for file inclusions')
          ;

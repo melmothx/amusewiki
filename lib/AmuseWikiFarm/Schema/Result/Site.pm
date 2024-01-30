@@ -658,6 +658,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 bookcovers
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Bookcover>
+
+=cut
+
+__PACKAGE__->has_many(
+  "bookcovers",
+  "AmuseWikiFarm::Schema::Result::Bookcover",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 bulk_jobs
 
 Type: has_many
@@ -1044,8 +1059,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-24 16:27:05
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:02jKqZQE9APHLfMDXAVdrA
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-26 14:19:33
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:tPR23DrUhsY5c2j96y2VMQ
 
 =head2 other_sites
 
@@ -1150,6 +1165,24 @@ sub valid_ttdir {
         }
     }
     return;
+}
+
+sub valid_bookcover_templates {
+    my $self = shift;
+    my %out;
+    if (my $ttdir = $self->valid_ttdir) {
+        log_debug { "TTdir is $ttdir" };
+        my $bcdir = Path::Tiny::path($ttdir)->child('bookcovers');
+        if ($bcdir->exists) {
+            log_debug { "Checking $bcdir" };
+            foreach my $child ($bcdir->children(qr|\A[a-z0-9]{3,}\z|)) {
+                if ($child->child('cover.tt')->exists) {
+                    $out{$child->basename} = $child->stringify;
+                }
+            }
+        }
+    }
+    return \%out;
 }
 
 

@@ -891,6 +891,7 @@ sub dispatch_job_hourly_job {
     my $schema = $self->result_source->schema;
     $schema->resultset('Job')->fail_stale_jobs;
     $schema->resultset('AmwSession')->delete_expired_sessions;
+    $schema->resultset('Bookcover')->purge_old_bookcovers;
     # this is the former publish_deferred, the "async" way
     my $deferred = $schema->resultset('Title')->deferred_to_publish(DateTime->now);
     my $username = $self->username;
@@ -985,6 +986,26 @@ sub dispatch_job_rename_uri {
                 }
             }
         }
+    }
+    return;
+}
+
+sub dispatch_job_build_bookcover {
+    my ($self, $logger) = @_;
+    if (my $bc = $self->site->bookcovers->find($self->job_data->{id})) {
+        $logger->("Producing cover for " . $self->job_data->{id} . "\n");
+        my $res = $bc->produce_pdf($logger);
+        Dlog_info { "Result is $_" } $res;
+        if ($res->{success}) {
+            return sprintf("/bookcovers/bc/%i/download/bc-%i.pdf", $bc->bookcover_id, $bc->bookcover_id);
+        }
+        else {
+            log_info { "Failure: $res->{stderr} $res->{stdout}" };
+            $logger->("Failure compiling the cover!\n");
+        }
+    }
+    else {
+        $logger->("Cover data not found!");
     }
     return;
 }

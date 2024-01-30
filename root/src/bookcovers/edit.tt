@@ -1,0 +1,264 @@
+[% INCLUDE 'include/breadcrumbs.tt' %]
+
+<div class="page-header">
+  <h1>[% loc('Create a book cover') %]</h1>
+</div>
+<form action="[% c.uri_for_action('/bookcovers/edit', bookcover.bookcover_id) %]"
+      method="POST"
+      id="bookcover-form"
+      enctype="multipart/form-data">
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-horizontal">
+      <div class="form-group">
+        <label for="coverheight" class="col-sm-6 control-label">[% loc('Cover Height (mm)') %]
+        </label>
+        <div class="col-sm-6">
+          <input type="number" step="1" min="0"
+                 class="form-control"
+                 name="coverheight"
+                 value="[% bookcover.coverheight | html %]"
+                 id="coverheight">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="coverwidth" class="col-sm-6 control-label">[% loc('Cover Width (mm)') %]
+        </label>
+        <div class="col-sm-6">
+          <input type="number" step="1" min="0"
+                 class="form-control"
+                 name="coverwidth"
+                 value="[% bookcover.coverwidth | html %]"
+                 id="coverwidth">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="spinewidth" class="col-sm-6 control-label">[% loc('Spine Width (mm)') %]
+        </label>
+        <div class="col-sm-6">
+          <input type="number" step="1" min="0"
+                 class="form-control"
+                 name="spinewidth"
+                 value="[% bookcover.spinewidth | html %]"
+                 id="spinewidth">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="flapwidth" class="col-sm-6 control-label">[% loc('Flap Width (mm)') %]
+        </label>
+        <div class="col-sm-6">
+          <input type="number" step="1" min="0"
+                 class="form-control"
+                 name="flapwidth"
+                 value="[% bookcover.flapwidth | html %]"
+                 id="flapwidth">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="wrapwidth" class="col-sm-6 control-label">[% loc('Wrap Width (mm)') %]
+        </label>
+        <div class="col-sm-6">
+          <input type="number" step="1" min="0"
+                 class="form-control"
+                 name="wrapwidth"
+                 value="[% bookcover.wrapwidth | html %]"
+                 id="wrapwidth">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="bleedwidth" class="col-sm-6 control-label">[% loc('Bleed Width (mm)') %]
+        </label>
+        <div class="col-sm-6">
+          <input type="number" step="1" min="0"
+                 class="form-control"
+                 name="bleedwidth"
+                 value="[% bookcover.bleedwidth | html %]"
+                 id="bleedwidth">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="marklength" class="col-sm-6 control-label">[% loc('Mark Length (mm)') %]
+        </label>
+        <div class="col-sm-6">
+          <input type="number" step="1" min="0"
+                 class="form-control"
+                 name="marklength"
+                 value="[% bookcover.marklength | html %]"
+                 id="marklength">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="total-lengths" class="col-sm-6 text-right">[% loc('Total size (mm)') %]
+        </label>
+        <div class="col-sm-6" id="total-lengths">
+          <strong>
+            <span id="paper-width"></span> x <span id="paper-height"></span>
+          </strong>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-6 col-sm-6">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="foldingmargin"
+                     [% IF bookcover.foldingmargin %]checked="checked"[% END %]>
+              [% loc('Folding Margin') %]
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 text-center">
+    <img class="img-responsive" src="[% c.uri_for('/static/images/bookcover.png') %]">
+    <small><a href="http://mirrors.ctan.org/macros/latex/contrib/bookcover/bookcover.pdf">
+      [% loc('See the bookcover class for all the details') %]
+    </a></small>
+  </div>
+</div>
+<div class="form-horizontal">
+  <div class="form-group">
+    <label for="coverheight" class="col-sm-3 control-label">[% loc('Title') %]
+    </label>
+    <div class="col-sm-9">
+      <input type="text"
+             class="form-control"
+             name="title"
+             value="[% bookcover.title | html %]"
+             id="title">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="comments" class="col-sm-3 control-label">[% loc('Comments') %]
+    </label>
+    <div class="col-sm-9">
+      <textarea name="comments"
+                id="comments"
+                class="form-control">[% bookcover.comments | html %]</textarea>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="font_name" class="col-sm-3 control-label">[% loc('Font') %]
+    </label>
+    <div class="col-sm-9">
+      <select name="font_name" id="font_name" class="form-control">
+        [% FOREACH font IN bookcover.all_fonts %]
+          <option name="[% font.name | html %]"
+                  [% IF font.name == bookcover.font_name %]selected="selected"[% END %]>
+            [% font.desc | html %]
+          </option>
+        [% END %]
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="language_code" class="col-sm-3 control-label">[% loc('Language') %]</label>
+    <div class="col-sm-9">
+      <select name="language_code" id="language_code" class="form-control">
+        [% known_langs = site.known_langs %]
+        [% FOREACH lang IN known_langs.keys.sort %]
+          <option value="[% lang %]" [% IF bookcover.language_code == lang %]selected="selected"[% END %]>
+            [% known_langs.$lang %]
+          </option>
+        [% END %]
+      </select>
+    </div>
+  </div>
+  [% FOREACH token IN bookcover_tokens %]
+    <div class="form-group">
+      <label for="[% token.token_name | html%]" class="col-sm-3 control-label">
+        [% lh.site_loc_html(token.label) %]
+        <br>
+        <small>[% loc('Template token') %]</small>
+      </label>
+      [% IF token.token_type == "muse_body" %]
+        <div class="col-sm-9">
+          <textarea name="[% token.token_name | html %]"
+                    id="[% token.token_name | html %]"
+                    class="form-control">[% token.token_value | html %]</textarea>
+        </div>
+      [% ELSIF token.token_type == "muse_str" %]
+        <div class="col-sm-9">
+          <input type="text"
+                 name="[% token.token_name | html %]"
+                 id="[% token.token_name | html %]"
+                 class="form-control"
+                 value="[% token.token_value | html %]" />
+        </div>
+      [% ELSIF token.token_type == "int" %]
+        <div class="col-sm-9">
+          <input name="[% token.token_name | html %]"
+                 id="[% token.token_name | html %]"
+                 class="form-control"
+                 type="number" step="1"
+                 value="[% token.token_value | html %]" />
+        </div>
+      [% ELSIF token.token_type == "float" %]
+        <div class="col-sm-9">
+          <input name="[% token.token_name | html %]"
+                 id="[% token.token_name | html %]"
+                 class="form-control"
+                 type="number" step="0.01"
+                 value="[% token.token_value | html %]" />
+        </div>
+      [% ELSIF token.token_type == "isbn" %]
+        <div class="col-sm-9">
+          <input name="[% token.token_name | html %]"
+                 id="[% token.token_name | html %]"
+                 class="form-control"
+                 type="text"
+                 pattern="[0-9-]+"
+                 value="[% token.token_value_for_form | html %]" />
+          [% IF token.token_value %]
+            <a href="[% c.uri_for_action('/bookcovers/attached', [ bookcover.bookcover_id, token.token_value ]) %]">
+              [% loc('Download') %]
+            </a>
+          [% END %]
+        </div>
+      [% ELSIF token.token_type == "file" %]
+        <div class="col-sm-9">
+          <input name="[% token.token_name | html %]"
+                 id="[% token.token_name | html %]"
+                 class="form-control"
+                 type="file" />
+          [% IF token.token_value %]
+            <a href="[% c.uri_for_action('/bookcovers/attached', [ bookcover.bookcover_id, token.token_value ]) %]">
+              [% loc('Download') %]
+            </a>
+          [% END %]
+        </div>
+      [% END %]
+    </div>
+  [% END %]
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" name="update" value="1" class="btn btn-default">Update</button>
+      <button type="submit" name="build" value="1" class="btn btn-default">Build</button>
+    </div>
+  </div>
+</div>
+</form>
+
+<script>
+ $(document).ready(function() {
+     function compute_total() {
+         console.log("Computing totals");
+         var total_height = parseInt($('#coverheight').val() || 0)
+                          + parseInt($('#bleedwidth').val()  || 0) * 2
+                          + parseInt($('#marklength').val()  || 0) * 2;
+         var total_width = parseInt($('#coverwidth').val() || 0) * 2
+                         + parseInt($('#spinewidth').val() || 0)
+                         + parseInt($('#wrapwidth').val()  || 0) * 2
+                         + parseInt($('#flapwidth').val()  || 0) * 2
+                         + parseInt($('#bleedwidth').val() || 0) * 2
+                         + parseInt($('#marklength').val() || 0) * 2;
+         $('#paper-height').text(total_height);
+         $('#paper-width').text(total_width);
+     }
+     compute_total();
+     $('#bookcover-form').on('keyup', compute_total);
+     $('#bookcover-form').on('change', compute_total);
+ });
+</script>

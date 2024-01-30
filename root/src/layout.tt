@@ -518,6 +518,12 @@
                     [% loc('Create a new librarian') %]
                   </a>
                 </li>
+                <li>
+                  <a href="[% c.uri_for_action('/bookcovers/listing') %]">
+                    <span class="fa fa-book fa-fw" aria-hidden="true"></span>
+                    [% loc('Book Covers') %]
+                  </a>
+                </li>
                 [%# and these are for root %]
                 [% IF c.check_any_user_role('admin', 'root') %]
                 <li>

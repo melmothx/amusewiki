@@ -401,7 +401,6 @@ sub site_config :Chained('user') :PathPart('site') :Args(0) {
               restricted => 1);
 }
 
-
 =head1 AUTHOR
 
 Marco Pessotto <melmothx@gmail.com>
