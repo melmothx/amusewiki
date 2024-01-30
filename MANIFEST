@@ -170,6 +170,8 @@ dbicdh/_source/deploy/82/001-auto-__VERSION.yml
 dbicdh/_source/deploy/82/001-auto.yml
 dbicdh/_source/deploy/83/001-auto-__VERSION.yml
 dbicdh/_source/deploy/83/001-auto.yml
+dbicdh/_source/deploy/84/001-auto-__VERSION.yml
+dbicdh/_source/deploy/84/001-auto.yml
 dbicdh/_source/deploy/9/001-auto-__VERSION.yml
 dbicdh/_source/deploy/9/001-auto.yml
 dbicdh/MySQL/deploy/10/001-auto-__VERSION.sql
@@ -334,6 +336,8 @@ dbicdh/MySQL/deploy/82/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/82/001-auto.sql
 dbicdh/MySQL/deploy/83/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/83/001-auto.sql
+dbicdh/MySQL/deploy/84/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/84/001-auto.sql
 dbicdh/MySQL/deploy/9/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/9/001-auto.sql
 dbicdh/MySQL/upgrade/10-11/001-auto.sql
@@ -416,6 +420,7 @@ dbicdh/MySQL/upgrade/8-9/001-auto.sql
 dbicdh/MySQL/upgrade/80-81/001-auto.sql
 dbicdh/MySQL/upgrade/81-82/001-auto.sql
 dbicdh/MySQL/upgrade/82-83/001-auto.sql
+dbicdh/MySQL/upgrade/83-84/001-auto.sql
 dbicdh/MySQL/upgrade/9-10/001-auto.sql
 dbicdh/PostgreSQL/deploy/10/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/10/001-auto.sql
@@ -579,6 +584,8 @@ dbicdh/PostgreSQL/deploy/82/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/82/001-auto.sql
 dbicdh/PostgreSQL/deploy/83/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/83/001-auto.sql
+dbicdh/PostgreSQL/deploy/84/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/84/001-auto.sql
 dbicdh/PostgreSQL/deploy/9/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/9/001-auto.sql
 dbicdh/PostgreSQL/upgrade/10-11/001-auto.sql
@@ -661,6 +668,7 @@ dbicdh/PostgreSQL/upgrade/8-9/001-auto.sql
 dbicdh/PostgreSQL/upgrade/80-81/001-auto.sql
 dbicdh/PostgreSQL/upgrade/81-82/001-auto.sql
 dbicdh/PostgreSQL/upgrade/82-83/001-auto.sql
+dbicdh/PostgreSQL/upgrade/83-84/001-auto.sql
 dbicdh/PostgreSQL/upgrade/9-10/001-auto.sql
 dbicdh/SQLite/deploy/10/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/10/001-auto.sql
@@ -824,6 +832,8 @@ dbicdh/SQLite/deploy/82/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/82/001-auto.sql
 dbicdh/SQLite/deploy/83/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/83/001-auto.sql
+dbicdh/SQLite/deploy/84/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/84/001-auto.sql
 dbicdh/SQLite/deploy/9/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/9/001-auto.sql
 dbicdh/SQLite/upgrade/10-11/001-auto.sql
@@ -906,6 +916,7 @@ dbicdh/SQLite/upgrade/8-9/001-auto.sql
 dbicdh/SQLite/upgrade/80-81/001-auto.sql
 dbicdh/SQLite/upgrade/81-82/001-auto.sql
 dbicdh/SQLite/upgrade/82-83/001-auto.sql
+dbicdh/SQLite/upgrade/83-84/001-auto.sql
 dbicdh/SQLite/upgrade/9-10/001-auto.sql
 lib/AmuseWikiFarm.pm
 lib/AmuseWikiFarm/Archive/BookBuilder.pm
@@ -926,6 +937,7 @@ lib/AmuseWikiFarm/Controller/API.pm
 lib/AmuseWikiFarm/Controller/Archive.pm
 lib/AmuseWikiFarm/Controller/Attachments.pm
 lib/AmuseWikiFarm/Controller/BookBuilder.pm
+lib/AmuseWikiFarm/Controller/BookCovers.pm
 lib/AmuseWikiFarm/Controller/Category.pm
 lib/AmuseWikiFarm/Controller/Cloud.pm
 lib/AmuseWikiFarm/Controller/Console.pm
@@ -1017,6 +1029,8 @@ lib/AmuseWikiFarm/Schema/Result/Annotation.pm
 lib/AmuseWikiFarm/Schema/Result/Attachment.pm
 lib/AmuseWikiFarm/Schema/Result/BookbuilderProfile.pm
 lib/AmuseWikiFarm/Schema/Result/BookbuilderSession.pm
+lib/AmuseWikiFarm/Schema/Result/Bookcover.pm
+lib/AmuseWikiFarm/Schema/Result/BookcoverToken.pm
 lib/AmuseWikiFarm/Schema/Result/BulkJob.pm
 lib/AmuseWikiFarm/Schema/Result/Category.pm
 lib/AmuseWikiFarm/Schema/Result/CategoryDescription.pm
@@ -1069,6 +1083,7 @@ lib/AmuseWikiFarm/Schema/ResultSet/AmwSession.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Annotation.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Attachment.pm
 lib/AmuseWikiFarm/Schema/ResultSet/BookbuilderSession.pm
+lib/AmuseWikiFarm/Schema/ResultSet/Bookcover.pm
 lib/AmuseWikiFarm/Schema/ResultSet/BulkJob.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Category.pm
 lib/AmuseWikiFarm/Schema/ResultSet/CategoryDescription.pm
@@ -1161,6 +1176,8 @@ root/src/attachments/orphans.tt
 root/src/bookbuilder/fonts.tt
 root/src/bookbuilder/index.tt
 root/src/bookbuilder/schemas.tt
+root/src/bookcovers/edit.tt
+root/src/bookcovers/listing.tt
 root/src/category-details-edit.tt
 root/src/category-details.tt
 root/src/category.tt
@@ -1379,6 +1396,7 @@ root/static/images/ajax-loader-circular.gif
 root/static/images/ajax-loader.gif
 root/static/images/bb-instructions-1.png
 root/static/images/bb-instructions-2.png
+root/static/images/bookcover.png
 root/static/images/diff.png
 root/static/images/epub.png
 root/static/images/feed-icon-14x14.png
@@ -1927,6 +1945,7 @@ t/bookbuilder-ajax.t
 t/bookbuilder-cli.t
 t/bookbuilder-custom-papersize.t
 t/bookbuilder-sessions.t
+t/bookcover.t
 t/bootstrapping-status-file.t
 t/bootstrapping.t
 t/canonical-urls.t
@@ -1939,6 +1958,8 @@ t/cf-scheduling.t
 t/cgit-integration.t
 t/cleanups.t
 t/collation-index.t
+t/color-profiles/GRACoL2006_Coated1v2.icc
+t/color-profiles/sRGB2014.icc
 t/conditional-get.t
 t/conditional-nocoverpage.t
 t/conflicts.t
