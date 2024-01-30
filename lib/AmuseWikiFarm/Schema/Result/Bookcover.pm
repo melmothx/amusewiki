@@ -530,8 +530,6 @@ sub compose_preamble {
                                                                    sans => $selected,
                                                                   );
             my $preamble = $final->compose_polyglossia_fontspec_stanza(lang => $babel_lang);
-            # sorry for the hack. Remove everything before babel loading
-            $preamble =~ s/\A.*(\\usepackage\[.*?\]\{babel\}.*)\z/$1/s;
             push @preamble, $preamble;
             push @preamble, "\\frenchspacing";
         }
