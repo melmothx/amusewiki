@@ -863,7 +863,7 @@ CREATE TABLE bookcover (
 );
 
 CREATE TABLE bookcover_token (
-    bookcover_id VARCHAR(16) NOT NULL REFERENCES bookcover(bookcover_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    bookcover_id INTEGER NOT NULL REFERENCES bookcover(bookcover_id) ON DELETE CASCADE ON UPDATE CASCADE,
     token_name VARCHAR(255) NOT NULL,
     token_value TEXT,
     PRIMARY KEY (bookcover_id, token_name)

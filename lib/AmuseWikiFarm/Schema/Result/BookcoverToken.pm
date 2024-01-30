@@ -40,10 +40,9 @@ __PACKAGE__->table("bookcover_token");
 
 =head2 bookcover_id
 
-  data_type: 'varchar'
+  data_type: 'integer'
   is_foreign_key: 1
   is_nullable: 0
-  size: 16
 
 =head2 token_name
 
@@ -60,7 +59,7 @@ __PACKAGE__->table("bookcover_token");
 
 __PACKAGE__->add_columns(
   "bookcover_id",
-  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "token_name",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "token_value",
@@ -99,14 +98,13 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-28 08:28:06
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:vGU3aG7IMvIXxx63U3Z/mQ
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-30 14:43:43
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bHiJzkvKDRzoBp080jX4xA
 
 sub sqlt_deploy_hook {
     my ($self, $sqlt_table) = @_;
     $sqlt_table->add_index(name => 'bookcover_token_name_amw_index', fields => ['token_name']);
 }
-
 
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse::Functions qw/muse_to_object muse_format_line/;
