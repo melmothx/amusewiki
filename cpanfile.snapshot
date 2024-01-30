@@ -181,6 +181,27 @@ DISTRIBUTIONS
       perl 5.008001
       strict 0
       warnings 0
+  Business-ISBN-3.008
+    pathname: B/BD/BDFOY/Business-ISBN-3.008.tar.gz
+    provides:
+      Business::ISBN 3.008
+      Business::ISBN10 3.008
+      Business::ISBN13 3.008
+    requirements:
+      Business::ISBN::Data 20230322.001
+      ExtUtils::MakeMaker 6.64
+      File::Spec::Functions 0
+      perl 5.008
+  Business-ISBN-Data-20240126.001
+    pathname: B/BD/BDFOY/Business-ISBN-Data-20240126.001.tar.gz
+    provides:
+      Business::ISBN::Data 20240126.001
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 6.64
+      File::Basename 0
+      File::Spec::Functions 0
+      perl 5.008
   Bytes-Random-Secure-0.29
     pathname: D/DA/DAVIDO/Bytes-Random-Secure-0.29.tar.gz
     provides:
