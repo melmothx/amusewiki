@@ -102,6 +102,12 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-28 08:28:06
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:vGU3aG7IMvIXxx63U3Z/mQ
 
+sub sqlt_deploy_hook {
+    my ($self, $sqlt_table) = @_;
+    $sqlt_table->add_index(name => 'bookcover_token_name_amw_index', fields => ['token_name']);
+}
+
+
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse::Functions qw/muse_to_object muse_format_line/;
 
