@@ -5,6 +5,7 @@
 </div>
 <form action="[% c.uri_for_action('/bookcovers/edit', bookcover.bookcover_id) %]"
       method="POST"
+      id="bookcover-form"
       enctype="multipart/form-data">
 
 <div class="row">
@@ -85,6 +86,15 @@
                  name="marklength"
                  value="[% bookcover.marklength | html %]"
                  id="marklength">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="total-lengths" class="col-sm-6 text-right">[% loc('Total size (mm)') %]
+        </label>
+        <div class="col-sm-6" id="total-lengths">
+          <strong>
+            <span id="paper-width"></span> x <span id="paper-height"></span>
+          </strong>
         </div>
       </div>
       <div class="form-group">
@@ -230,3 +240,25 @@
   </div>
 </div>
 </form>
+
+<script>
+ $(document).ready(function() {
+     function compute_total() {
+         console.log("Computing totals");
+         var total_height = parseInt($('#coverheight').val() || 0)
+                          + parseInt($('#bleedwidth').val()  || 0) * 2
+                          + parseInt($('#marklength').val()  || 0) * 2;
+         var total_width = parseInt($('#coverwidth').val() || 0) * 2
+                         + parseInt($('#spinewidth').val() || 0)
+                         + parseInt($('#wrapwidth').val()  || 0) * 2
+                         + parseInt($('#flapwidth').val()  || 0) * 2
+                         + parseInt($('#bleedwidth').val() || 0) * 2
+                         + parseInt($('#marklength').val() || 0) * 2;
+         $('#paper-height').text(total_height);
+         $('#paper-width').text(total_width);
+     }
+     compute_total();
+     $('#bookcover-form').on('keyup', compute_total);
+     $('#bookcover-form').on('change', compute_total);
+ });
+</script>
