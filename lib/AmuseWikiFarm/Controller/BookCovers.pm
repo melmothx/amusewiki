@@ -90,8 +90,6 @@ sub edit :Chained('find') :PathPart('edit') :Args(0) {
     # shouldn't happen.
     return $c->detach('/not_found') unless $bc;
 
-    $c->stash(bookcover_tokens => [ $bc->bookcover_tokens->search(undef, { order_by => 'token_name' }) ]);
-
     push @{$c->stash->{breadcrumbs}},
       {
        uri => $c->uri_for_action('/bookcovers/edit', [ $bc->bookcover_id ]),
@@ -137,6 +135,7 @@ sub edit :Chained('find') :PathPart('edit') :Args(0) {
                                                  [$job->id]));
         }
     }
+    $c->stash(bookcover_tokens => [ $bc->bookcover_tokens->search(undef, { order_by => 'token_name' }) ]);
 }
 
 sub download :Chained('find') :PathPart('download') :Args {

@@ -13,7 +13,7 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use DateTime;
-use Test::More tests => 81;
+use Test::More tests => 102;
 use Path::Tiny;
 use Data::Dumper::Concise;
 use IPC::Run (qw/run/);
@@ -259,8 +259,21 @@ my $tuser = $site->update_or_create_user({
         push @found, $2;
     }
     is scalar(@found), $schema->resultset('Bookcover')->count, "Found all covers: " . join(' ', @found);
-    $mech->get_ok('/logout');
     ok scalar(grep { $_ == $otherbc->bookcover_id } @found), "Found the bc from other site";
+    $mech->get_ok('/bookcovers/bc/' . $otherbc->bookcover_id . '/edit');
+    $mech->get_ok('/logout');
+
+    $mech->get('/bookcovers/bc/' . $otherbc->bookcover_id . '/edit');
+    is $mech->status, 404;
+
+    $mech->get_ok('/login');
+    $tuser->set_roles([
+                       { role => 'admin' },
+                       { role => 'librarian' },
+                     ]);
+    $mech->submit_form(with_fields => { __auth_user => 'bclib', __auth_pass => 'pallino' });
+    $mech->get('/bookcovers/bc/' . $otherbc->bookcover_id . '/edit');
+    is $mech->status, 404;
 }
 
 {
@@ -316,4 +329,44 @@ diag "Testing CMYK conversion";
                       ]);
     run([ identify => -format => '%r', "$image" ], \$in, \$out, \$err);
     like $out, qr{CMYK};
+}
+
+{
+    my $amech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                                    host => $site->canonical);
+    $amech->get('/bookcovers');
+    ok $amech->submit_form(with_fields => { __auth_human => 16 });
+    my $found = 0;
+    foreach my $bc ($schema->resultset('Bookcover')->all) {
+        $amech->get('/bookcovers/bc/' . $bc->bookcover_id . '/edit');
+        diag $amech->status;
+        if ($amech->status ne '404') {
+            $found++;
+        }
+    }
+    is $found, 0, "Anonymous user can't find any bookcover";
+    $amech->get('/bookcovers/create');
+    $amech->submit_form(with_fields => {
+                                        title_muse_str => '<em>Test Title</em> <b>Test Title</b>',
+                                        author_muse_str => '<em>Test Author</em> <b>Test Author</b>',
+                                        back_text_muse_body => '<em>Test Body</em> <b>Test Body</b>',
+                                        comments => '<em>Test Comment</em> <b>Test Comment</b>',
+                                        title => '<em>Test Name</em> <b>Test Name</b>',
+                                        isbn_isbn => '<em>Test ISBN</em> <b>Test ISBN</b>',
+                                       },
+                        button => 'update',
+                       );
+    diag $amech->uri->path;
+    $amech->content_lacks("Test ISBN");
+    foreach my $n (qw/Title Body Comment Name Author/) {
+        $amech->content_lacks("<em>Test $n</em> <b>Test $n</b>");
+        $amech->content_contains("&lt;em&gt;Test ${n}&lt;/em&gt; &lt;b&gt;Test ${n}&lt;/b&gt;")
+          or die $amech->content;
+    }
+    $amech->get('/bookcovers');
+    foreach my $n (qw/Comment Name/) {
+        $amech->content_lacks("<em>Test $n</em> <b>Test $n</b>");
+        $amech->content_contains("&lt;em&gt;Test ${n}&lt;/em&gt; &lt;b&gt;Test ${n}&lt;/b&gt;")
+          or die $amech->content;
+    }
 }
