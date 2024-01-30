@@ -153,7 +153,7 @@ sub _validate {
 sub token_value_for_form {
     my $self = shift;
     my $validated = $self->_validate($self->token_value);
-    if ($self->token_type eq 'isbn') {
+    if ($validated and $self->token_type eq 'isbn') {
         $validated =~ s/isbn-([0-9-]{10,})\.pdf/$1/;
     }
     return $validated;
