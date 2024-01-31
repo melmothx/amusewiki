@@ -469,7 +469,7 @@ msgstr ""
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr ""
 
-#: root/src/bookcovers/edit.tt:70
+#: root/src/bookcovers/edit.tt:85
 msgid "Bleed Width (mm)"
 msgstr ""
 
@@ -652,7 +652,7 @@ msgstr ""
 msgid "Choose a paper format"
 msgstr ""
 
-#: root/src/bookcovers/listing.tt:90
+#: root/src/bookcovers/listing.tt:92
 msgid "Choose a template"
 msgstr ""
 
@@ -664,7 +664,7 @@ msgstr ""
 msgid "Click on the images to get the sample PDF"
 msgstr ""
 
-#: root/src/bookcovers/listing.tt:62 root/src/bookcovers/listing.tt:65 root/src/settings/formats.tt:12
+#: root/src/bookcovers/listing.tt:64 root/src/bookcovers/listing.tt:67 root/src/settings/formats.tt:12
 msgid "Clone"
 msgstr ""
 
@@ -708,7 +708,7 @@ msgstr ""
 msgid "Comma or semicolon separated list"
 msgstr ""
 
-#: root/src/bookcovers/edit.tt:133 root/src/bookcovers/listing.tt:22
+#: root/src/bookcovers/edit.tt:148 root/src/bookcovers/listing.tt:23
 msgid "Comments"
 msgstr ""
 
@@ -756,19 +756,19 @@ msgstr ""
 msgid "Couldn't build that"
 msgstr ""
 
-#: root/src/bookcovers/edit.tt:15
+#: root/src/bookcovers/edit.tt:30
 msgid "Cover Height (mm)"
 msgstr ""
 
-#: root/src/bookcovers/edit.tt:26
+#: root/src/bookcovers/edit.tt:41
 msgid "Cover Width (mm)"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookCovers.pm:168
+#: lib/AmuseWikiFarm/Controller/BookCovers.pm:170
 msgid "Cover removed"
 msgstr ""
 
-#: root/src/bookcovers/listing.tt:98 root/src/console/alias_display.tt:105 root/src/console/alias_display.tt:137 root/src/edit/newtext.tt:349 root/src/nodes/node_root.tt:27 root/src/nodes/node_root.tt:72
+#: root/src/bookcovers/listing.tt:100 root/src/console/alias_display.tt:105 root/src/console/alias_display.tt:137 root/src/edit/newtext.tt:349 root/src/nodes/node_root.tt:27 root/src/nodes/node_root.tt:72
 msgid "Create"
 msgstr ""
 
@@ -844,7 +844,7 @@ msgstr ""
 msgid "Create user and mail password"
 msgstr ""
 
-#: root/src/admin/jobs.tt:58 root/src/bookcovers/listing.tt:18 root/src/console/git_display.tt:87
+#: root/src/admin/jobs.tt:58 root/src/bookcovers/listing.tt:19 root/src/console/git_display.tt:87
 msgid "Created"
 msgstr ""
 
@@ -1014,7 +1014,7 @@ msgstr ""
 msgid "Double bars"
 msgstr ""
 
-#: root/src/aggregation/edit.tt:167 root/src/bookcovers/edit.tt:216 root/src/bookcovers/edit.tt:228 root/src/bookcovers/listing.tt:21 root/src/include/annotation-display.tt:13
+#: root/src/aggregation/edit.tt:167 root/src/bookcovers/edit.tt:10 root/src/bookcovers/edit.tt:231 root/src/bookcovers/edit.tt:243 root/src/bookcovers/listing.tt:22 root/src/include/annotation-display.tt:13
 msgid "Download"
 msgstr ""
 
@@ -1038,7 +1038,7 @@ msgstr ""
 msgid "ETA"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookCovers.pm:96 root/src/aggregation/aggregation.tt:11 root/src/aggregation/series.tt:12 root/src/bookcovers/listing.tt:42 root/src/bookcovers/listing.tt:45 root/src/console/alias_display.tt:185 root/src/console/translations.tt:33 root/src/nodes/display.tt:16
+#: lib/AmuseWikiFarm/Controller/BookCovers.pm:96 root/src/aggregation/aggregation.tt:11 root/src/aggregation/series.tt:12 root/src/bookcovers/listing.tt:44 root/src/bookcovers/listing.tt:47 root/src/console/alias_display.tt:185 root/src/console/translations.tt:33 root/src/nodes/display.tt:16
 msgid "Edit"
 msgstr ""
 
@@ -1284,7 +1284,7 @@ msgstr ""
 msgid "Find the network library menu, or equivalent."
 msgstr ""
 
-#: root/src/bookcovers/listing.tt:24
+#: root/src/bookcovers/listing.tt:25
 msgid "Finished"
 msgstr ""
 
@@ -1332,15 +1332,15 @@ msgstr ""
 msgid "Fixed topic list"
 msgstr ""
 
-#: root/src/bookcovers/edit.tt:48
+#: root/src/bookcovers/edit.tt:63
 msgid "Flap Width (mm)"
 msgstr ""
 
-#: root/src/bookcovers/edit.tt:106
+#: root/src/bookcovers/edit.tt:121
 msgid "Folding Margin"
 msgstr ""
 
-#: root/src/bookcovers/edit.tt:143
+#: root/src/bookcovers/edit.tt:158
 msgid "Font"
 msgstr ""
 
@@ -1586,7 +1586,7 @@ msgstr ""
 msgid "I will provide my remote repository"
 msgstr ""
 
-#: root/src/aggregation/manage.tt:12 root/src/aggregation/manage.tt:60 root/src/include/mirror-infos.tt:22
+#: root/src/aggregation/manage.tt:12 root/src/aggregation/manage.tt:60 root/src/bookcovers/listing.tt:18 root/src/include/mirror-infos.tt:22
 msgid "ID"
 msgstr ""
 
@@ -1916,7 +1916,7 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: root/src/admin/edit.tt:399 root/src/admin/list.tt:16 root/src/bookcovers/edit.tt:157 root/src/edit/newtext.tt:179
+#: root/src/admin/edit.tt:399 root/src/admin/list.tt:16 root/src/bookcovers/edit.tt:172 root/src/edit/newtext.tt:179
 msgid "Language"
 msgstr ""
 
@@ -2101,7 +2101,7 @@ msgstr ""
 msgid "Margins: please choose a division factor or set width and height"
 msgstr ""
 
-#: root/src/bookcovers/edit.tt:81
+#: root/src/bookcovers/edit.tt:96
 msgid "Mark Length (mm)"
 msgstr ""
 
@@ -2307,7 +2307,7 @@ msgstr ""
 msgid "Not finished yet! Please have a look at the text and then click on \"%1\" to finalize your submission!"
 msgstr ""
 
-#: root/src/bookcovers/listing.tt:37
+#: root/src/bookcovers/listing.tt:39
 msgid "Not logged in"
 msgstr ""
 
@@ -2416,7 +2416,7 @@ msgstr ""
 msgid "Outer margin"
 msgstr ""
 
-#: root/src/bookcovers/listing.tt:55 root/src/bookcovers/listing.tt:58 root/src/include/bbform.tt:8
+#: root/src/bookcovers/edit.tt:11 root/src/bookcovers/edit.tt:8 root/src/bookcovers/listing.tt:57 root/src/bookcovers/listing.tt:60 root/src/include/bbform.tt:8
 msgid "PDF"
 msgstr ""
 
@@ -2933,7 +2933,7 @@ msgstr ""
 msgid "Remote repository %1 removed"
 msgstr ""
 
-#: root/src/aggregation/edit.tt:172 root/src/aggregation/manage.tt:17 root/src/aggregation/manage.tt:73 root/src/bookcovers/listing.tt:25 root/src/bookcovers/listing.tt:77 root/src/console/git_display.tt:19 root/src/federation/show.tt:87 root/src/include/annotation-editor.tt:30 root/src/include/preamble.tt:149 root/src/include/preamble.tt:203 root/static/js/amw-batch-upload.js:123
+#: root/src/aggregation/edit.tt:172 root/src/aggregation/manage.tt:17 root/src/aggregation/manage.tt:73 root/src/bookcovers/listing.tt:26 root/src/bookcovers/listing.tt:79 root/src/console/git_display.tt:19 root/src/federation/show.tt:87 root/src/include/annotation-editor.tt:30 root/src/include/preamble.tt:149 root/src/include/preamble.tt:203 root/static/js/amw-batch-upload.js:123
 msgid "Remove"
 msgstr ""
 
@@ -3144,7 +3144,7 @@ msgstr ""
 msgid "See here for the full documentation."
 msgstr ""
 
-#: root/src/bookcovers/edit.tt:116
+#: root/src/bookcovers/edit.tt:131
 msgid "See the bookcover class for all the details"
 msgstr ""
 
@@ -3390,7 +3390,7 @@ msgstr ""
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr ""
 
-#: root/src/bookcovers/edit.tt:37
+#: root/src/bookcovers/edit.tt:52
 msgid "Spine Width (mm)"
 msgstr ""
 
@@ -3504,7 +3504,7 @@ msgstr ""
 msgid "Teaser image"
 msgstr ""
 
-#: root/src/bookcovers/edit.tt:174
+#: root/src/bookcovers/edit.tt:189
 msgid "Template token"
 msgstr ""
 
@@ -3802,7 +3802,7 @@ msgstr ""
 msgid "Thumbnail"
 msgstr ""
 
-#: root/src/attachments/edit.tt:17 root/src/attachments/list.tt:18 root/src/bookbuilder/index.tt:101 root/src/bookcovers/edit.tt:122 root/src/bookcovers/listing.tt:19 root/src/console/unpublished.tt:10 root/src/edit/newtext.tt:38 root/src/edit/preview.tt:12 root/src/include/edit_node.tt:13 root/src/include/edit_node.tt:87 root/src/include/preamble.tt:17 root/src/nodes/node_root.tt:42
+#: root/src/attachments/edit.tt:17 root/src/attachments/list.tt:18 root/src/bookbuilder/index.tt:101 root/src/bookcovers/edit.tt:137 root/src/bookcovers/listing.tt:20 root/src/console/unpublished.tt:10 root/src/edit/newtext.tt:38 root/src/edit/preview.tt:12 root/src/include/edit_node.tt:13 root/src/include/edit_node.tt:87 root/src/include/preamble.tt:17 root/src/nodes/node_root.tt:42
 msgid "Title"
 msgstr ""
 
@@ -3899,7 +3899,7 @@ msgstr ""
 msgid "Total pages"
 msgstr ""
 
-#: root/src/bookcovers/edit.tt:92
+#: root/src/bookcovers/edit.tt:107
 msgid "Total size (mm)"
 msgstr ""
 
@@ -4111,7 +4111,7 @@ msgstr ""
 msgid "Useful for footnotes or in the headers of the document, where you cannot put a blank line to mark a new paragraph."
 msgstr ""
 
-#: root/src/bookcovers/listing.tt:20
+#: root/src/bookcovers/listing.tt:21
 msgid "User"
 msgstr ""
 
@@ -4240,7 +4240,7 @@ msgstr ""
 msgid "Working locally?"
 msgstr ""
 
-#: root/src/bookcovers/edit.tt:59
+#: root/src/bookcovers/edit.tt:74
 msgid "Wrap Width (mm)"
 msgstr ""
 
@@ -4419,7 +4419,7 @@ msgstr ""
 msgid "Your username is %1."
 msgstr ""
 
-#: root/src/bookcovers/listing.tt:49 root/src/bookcovers/listing.tt:52
+#: root/src/bookcovers/edit.tt:14 root/src/bookcovers/edit.tt:16 root/src/bookcovers/listing.tt:51 root/src/bookcovers/listing.tt:54
 msgid "Zip"
 msgstr ""
 
@@ -4471,7 +4471,7 @@ msgstr ""
 msgid "conflict"
 msgstr ""
 
-#: root/src/bookcovers/listing.tt:92
+#: root/src/bookcovers/listing.tt:94
 msgid "default"
 msgstr ""
 
