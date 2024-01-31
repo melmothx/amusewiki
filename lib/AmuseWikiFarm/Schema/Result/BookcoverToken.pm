@@ -55,6 +55,12 @@ __PACKAGE__->table("bookcover_token");
   data_type: 'text'
   is_nullable: 1
 
+=head2 sorting_pos
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -64,6 +70,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "token_value",
   { data_type => "text", is_nullable => 1 },
+  "sorting_pos",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
 );
 
 =head1 PRIMARY KEY
@@ -98,8 +106,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-30 14:43:43
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bHiJzkvKDRzoBp080jX4xA
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-31 14:33:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:BZmzIrocy0DwzxNPQs6Tyg
 
 sub sqlt_deploy_hook {
     my ($self, $sqlt_table) = @_;
