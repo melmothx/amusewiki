@@ -106,7 +106,7 @@ sub edit :Chained('find') :PathPart('edit') :Args(0) {
         # should always be fine.
         if (-d $wd) {
             my $fi = 1;
-            foreach my $up (grep { $_->{type} eq 'file' } values %$tokens) {
+            foreach my $up (grep { $_->{type} eq 'file' } @$tokens) {
                 delete $params{$up->{full_name}};
                 my ($upload) = $c->request->upload($up->{full_name});
                 if ($upload) {
@@ -138,7 +138,7 @@ sub edit :Chained('find') :PathPart('edit') :Args(0) {
                                                  [$job->id]));
         }
     }
-    $c->stash(bookcover_tokens => [ $bc->bookcover_tokens->search(undef, { order_by => 'token_name' }) ]);
+    $c->stash(bookcover_tokens => [ $bc->bookcover_tokens->sorted->all ]);
 }
 
 sub download :Chained('find') :PathPart('download') :Args {

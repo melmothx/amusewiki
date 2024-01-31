@@ -189,6 +189,7 @@
     <div class="form-group">
       <label for="[% token.token_name | html%]" class="col-sm-3 control-label">
         [% lh.site_loc_html(token.label) %]
+        [% token.sorting_pos %]
         <br>
         <small>[% loc('Template token') %]</small>
       </label>

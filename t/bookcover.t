@@ -65,20 +65,13 @@ ok $anon_bc;
     ok $wd->exists;
     diag "Working dir is $wd";
     my $tokens =  $anon_bc->parse_template;
-    is_deeply $tokens, {
-                        image_file => { name => 'image', type => 'file', full_name => 'image_file' },
-                        title_muse_str =>  { name => 'title',  type => 'muse_str', full_name => 'title_muse_str' },
-                        author_muse_str => { name => 'author', type => 'muse_str', full_name => 'author_muse_str' },
-                        back_text_muse_body => {
-                                                name => 'back_text', type => 'muse_body',
-                                                full_name => 'back_text_muse_body'
-                                               },
-                        isbn_isbn => {
-                                      name => 'isbn', type => 'isbn',
-                                      full_name => 'isbn_isbn'
-
-                                     }
-                       };
+    is_deeply $tokens, [
+                        { name => 'author', type => 'muse_str', full_name => 'author_muse_str' },
+                        { name => 'title',  type => 'muse_str', full_name => 'title_muse_str' },
+                        { name => 'image', type => 'file', full_name => 'image_file' },
+                        { name => 'back_text', type => 'muse_body', full_name => 'back_text_muse_body' },
+                        { name => 'isbn', type => 'isbn', full_name => 'isbn_isbn' }
+                       ];
     path("t/files/shot.png")->copy($anon_bc->working_dir->child("f1.png"));
     $anon_bc->populate_tokens;
     $anon_bc->populate_tokens;
