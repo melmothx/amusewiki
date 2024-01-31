@@ -314,8 +314,8 @@ has working_dir => (
 
 sub _build_working_dir {
     my $self = shift;
-    my $root = AmuseWikiFarm::Utils::Paths::root_install_directory();
-    my $bcroot = path($root, qw/bbfiles bookcovers/);
+    my $bcroot = path(qw/bbfiles bookcovers/);
+    die "Wrong directory!" unless $bcroot->parent->exists;
     $bcroot->mkpath unless $bcroot->exists;
     my $id = $self->bookcover_id;
     die "No ID in the object?" unless $id;
