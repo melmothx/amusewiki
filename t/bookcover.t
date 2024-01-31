@@ -13,7 +13,7 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use DateTime;
-use Test::More tests => 105;
+use Test::More tests => 107;
 use Path::Tiny;
 use Data::Dumper::Concise;
 use IPC::Run (qw/run/);
@@ -370,4 +370,12 @@ diag "Testing CMYK conversion";
     like $amech->uri->path, qr{\d+/edit$};
     isnt $amech->uri->path, $current_path;
     diag $amech->uri->path;
+}
+
+{
+    my $bc = $site->bookcovers->first;
+    is $bc->site_id, $site->id;
+    my $j = $schema->resultset('Site')->find('0blog0')->jobs->enqueue(build_bookcover => { id => $bc->bookcover_id });
+    $j->dispatch_job;
+    like path($j->log_file)->slurp_utf8, qr/SUCCESS/;
 }

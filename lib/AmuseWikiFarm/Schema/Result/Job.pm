@@ -992,7 +992,7 @@ sub dispatch_job_rename_uri {
 
 sub dispatch_job_build_bookcover {
     my ($self, $logger) = @_;
-    if (my $bc = $self->site->bookcovers->find($self->job_data->{id})) {
+    if (my $bc = $self->result_source->schema->resultset('Bookcover')->find($self->job_data->{id})) {
         $logger->("Producing cover for " . $self->job_data->{id} . "\n");
         my $res = $bc->produce_pdf($logger);
         # Dlog_info { "Result is $_" } $res;
