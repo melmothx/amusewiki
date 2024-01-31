@@ -10,6 +10,7 @@ use AmuseWikiFarm::Utils::Amuse;
 
 sub bookcovers :Chained('/site_human_required') :PathPart('bookcovers') :CaptureArgs(0) {
     my ($self, $c) = @_;
+    $c->stash(full_page_no_side_columns => 1);
     $c->stash(breadcrumbs => [
                               {
                                uri => $c->uri_for_action('/bookcovers/listing'),
@@ -183,6 +184,7 @@ sub clone :Chained('find') :PathPart('clone') :Args(0) {
                           compiled
                           zip_path
                           pdf_path
+                          site_id
                          /) {
             delete $values{$f};
         }

@@ -13,7 +13,7 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use DateTime;
-use Test::More tests => 102;
+use Test::More tests => 105;
 use Path::Tiny;
 use Data::Dumper::Concise;
 use IPC::Run (qw/run/);
@@ -357,6 +357,7 @@ diag "Testing CMYK conversion";
                         button => 'update',
                        );
     diag $amech->uri->path;
+    my $current_path = $amech->uri->path;
     $amech->content_lacks("Test ISBN");
     foreach my $n (qw/Title Body Comment Name Author/) {
         $amech->content_lacks("<em>Test $n</em> <b>Test $n</b>");
@@ -369,4 +370,11 @@ diag "Testing CMYK conversion";
         $amech->content_contains("&lt;em&gt;Test ${n}&lt;/em&gt; &lt;b&gt;Test ${n}&lt;/b&gt;")
           or die $amech->content;
     }
+    # at least check that it doesn't crash
+    my $clone_path = $current_path;
+    $clone_path =~ s/edit$/clone/;
+    $amech->get_ok($clone_path);
+    like $amech->uri->path, qr{\d+/edit$};
+    isnt $amech->uri->path, $current_path;
+    diag $amech->uri->path;
 }

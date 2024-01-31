@@ -16,12 +16,12 @@
   <thead>
     <tr>
       <th>[% loc('ID') %]</th>
+      <th>[% loc('Site') %]</th>
       <th>[% loc('Created') %]</th>
       <th>[% loc('Title') %]</th>
       <th>[% loc('User') %]</th>
       <th>[% loc('Download') %]</th>
       <th>[% loc('Comments') %]</th>
-
       <th>[% loc('Finished') %]</th>
       <th>[% loc('Remove') %]</th>
     </tr>
@@ -30,6 +30,7 @@
     [% FOREACH bc IN bookcovers  %]
       <tr>
         <td>[% bc.bookcover_id | html %]</td>
+        <td>[% bc.site_id | html %]</td>
         <td>[% bc.created | html %]</td>
         <td>[% bc.title | html %]</td>
         <td>
