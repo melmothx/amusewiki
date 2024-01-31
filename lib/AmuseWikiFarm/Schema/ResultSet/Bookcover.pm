@@ -11,11 +11,7 @@ use DateTime;
 
 sub create_and_initalize {
     my ($self, $values) = @_;
-    my $bc = $self->create($values);
-    $bc->create_working_dir;
-    $bc->populate_tokens;
-    $bc->discard_changes;
-    return $bc;
+    return $self->create($values)->initialize;
 }
 
 sub expired {

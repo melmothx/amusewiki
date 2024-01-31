@@ -995,14 +995,14 @@ sub dispatch_job_build_bookcover {
     if (my $bc = $self->site->bookcovers->find($self->job_data->{id})) {
         $logger->("Producing cover for " . $self->job_data->{id} . "\n");
         my $res = $bc->produce_pdf($logger);
-        Dlog_info { "Result is $_" } $res;
+        # Dlog_info { "Result is $_" } $res;
         if ($res->{success}) {
-            return sprintf("/bookcovers/bc/%i/download/bc-%i.pdf", $bc->bookcover_id, $bc->bookcover_id);
+            $logger->("SUCCESS!\n");
         }
         else {
-            log_info { "Failure: $res->{stderr} $res->{stdout}" };
-            $logger->("Failure compiling the cover!\n");
+            $logger->("FAILURE compiling the cover! Please contact your admin\n");
         }
+        return sprintf("/bookcovers/bc/%i/edit", $bc->bookcover_id);
     }
     else {
         $logger->("Cover data not found!");

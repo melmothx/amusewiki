@@ -98,6 +98,8 @@ sub edit :Chained('find') :PathPart('edit') :Args(0) {
     my %params = %{$c->request->body_params};
     # post request
     if (%params) {
+        # initialize again. This will refresh the template
+        $bc->initialize;
         my $tokens = $bc->parse_template;
         my $wd = $bc->working_dir;
         # should always be fine.

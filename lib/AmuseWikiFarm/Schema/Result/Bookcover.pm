@@ -605,23 +605,30 @@ sub produce_pdf {
     my ($self, $logger) = @_;
     $logger ||= sub {};
     my $tex = $self->write_tex_file;
+    my $pdf = "$tex";
+    $pdf =~ s/\.tex/.pdf/;
+    $self->update({
+                   compiled => undef,
+                   zip_path => undef,
+                   pdf_path => undef,
+                  });
+    if (-f $pdf) {
+        log_info { "Removing $pdf" };
+        unlink $pdf or die $!;
+    }
+    $self->convert_images_to_cmyk($logger);
+
     # this should happen only in the jobber, where we fork. But in
     # case, return to the original directory.
-    $self->convert_images_to_cmyk($logger);
     my $cwd = getcwd;
     my $wd = $self->working_dir;
     chdir $wd or die "Cannot chdir into $wd";
-
     my ($in, $out, $err);
     my @run = ("xelatex", '-interaction=nonstopmode', $tex->basename);
     my $ok = run \@run, \$in, \$out, \$err;
     chdir $cwd or die "Cannot chdir back into $cwd";
     # log_info { "Compilation: $out $err" };
-    if ($ok) {
-        my $pdf = "$tex";
-        $pdf =~ s/\.tex/.pdf/;
-        $self->compiled();
-        $self->pdf_path($pdf);
+    if ($ok and -f $pdf) {
         my $zipdir = Archive::Zip->new;
         if ($zipdir->addTree("$wd", "bookcover-" . $wd->basename) == Archive::Zip::AZ_OK) {
             my $zipfile = $wd->parent->child("bookcover-" . $wd->basename . ".zip");
@@ -653,6 +660,13 @@ sub username {
         return $user->username;
     }
     return;
+}
+
+sub initialize {
+    my $self = shift;
+    $self->create_working_dir;
+    $self->populate_tokens;
+    return $self->discard_changes;
 }
 
 before delete => sub {
