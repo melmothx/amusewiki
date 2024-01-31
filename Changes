@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.592 2024-01-31
+
+ - Fix breakage in bookcovers when installed via .deb
+
 2.591 2024-01-31
 
  - New feature: bookcovers. This is the companion for the bookbuilder.
