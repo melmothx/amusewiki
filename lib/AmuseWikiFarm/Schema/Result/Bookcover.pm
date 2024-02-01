@@ -389,7 +389,7 @@ sub parse_template {
     my $body = $tt->slurp_utf8;
     my %tokens;
     my @out;
-    while ($body =~ m/\[\%\s*(([a-z_]+)_(int|muse_str|muse_body|float|file|isbn))\s*\%\]/g) {
+    while ($body =~ m/\[\%\s*(?:IF)?\s*(([a-z_]+)_(int|muse_str|muse_body|float|file|isbn))\s*\%\]/g) {
         my ($whole, $name, $type) = ($1, $2, $3);
         unless ($tokens{$whole}) {
             push @out, { name => $name, type => $type, full_name => $whole };
