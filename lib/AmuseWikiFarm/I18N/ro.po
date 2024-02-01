@@ -2871,6 +2871,9 @@ msgstr "Showing _START_ to _END_ of _TOTAL_ entries"
 msgid "Single bars"
 msgstr "Single bars"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Site-ul deja există"
 

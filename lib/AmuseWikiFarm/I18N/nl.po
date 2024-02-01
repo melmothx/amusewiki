@@ -2810,6 +2810,9 @@ msgstr ""
 msgid "Single bars"
 msgstr "Enkele strepen"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Site bestaat al"
 

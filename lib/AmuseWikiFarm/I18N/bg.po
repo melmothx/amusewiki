@@ -2843,6 +2843,9 @@ msgstr "Показване на _START_ до _END_ от _TOTAL_ записи"
 msgid "Single bars"
 msgstr "Единична лента"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Сайтът вече съществува"
 

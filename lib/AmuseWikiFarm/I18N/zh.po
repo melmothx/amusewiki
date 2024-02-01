@@ -2654,6 +2654,9 @@ msgstr "显示从第_START_页到第_END_页，总计_TOTAL_项"
 msgid "Single bars"
 msgstr "单杠"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "站点已存在"
 

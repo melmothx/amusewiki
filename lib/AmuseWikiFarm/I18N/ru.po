@@ -2753,6 +2753,9 @@ msgstr ""
 msgid "Single bars"
 msgstr "Одна вертикальная линия"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Сайт уже существует"
 

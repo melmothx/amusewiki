@@ -2778,6 +2778,9 @@ msgstr ""
 msgid "Single bars"
 msgstr ""
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "این سایت قبلا وجود دارد"
 

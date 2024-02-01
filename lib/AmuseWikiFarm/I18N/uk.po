@@ -2760,6 +2760,9 @@ msgstr "Показано _START_–_END_ із _TOTAL_"
 msgid "Single bars"
 msgstr "Одна риска"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Сайт уже існує"
 

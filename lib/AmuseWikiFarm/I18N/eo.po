@@ -2814,6 +2814,9 @@ msgstr "Montrante _START_ ĝis _END_ el _TOTAL_ eniroj"
 msgid "Single bars"
 msgstr "Unuopaj stangoj"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Retejo jam ekzistas"
 

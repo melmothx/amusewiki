@@ -2787,6 +2787,9 @@ msgstr ""
 msgid "Single bars"
 msgstr "Единечна лента"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Сајтот веќе постои"
 

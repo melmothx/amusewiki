@@ -2646,6 +2646,9 @@ msgstr ""
 msgid "Single bars"
 msgstr "Enkla staplar"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Sidan finns redan"
 

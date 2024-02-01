@@ -2740,6 +2740,9 @@ msgstr ""
 msgid "Single bars"
 msgstr "Shiritat e veçantë"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Kjo faqe tashmë egziston"
 

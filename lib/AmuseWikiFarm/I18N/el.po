@@ -2889,6 +2889,9 @@ msgstr ""
 msgid "Single bars"
 msgstr "Μονές μπάρες"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Ο ιστότοπος υπάρχει ήδη"
 

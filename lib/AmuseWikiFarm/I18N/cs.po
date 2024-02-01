@@ -2804,6 +2804,9 @@ msgstr "Ukazuje se od _START_ do _END_ z _TOTAL_ vstupů"
 msgid "Single bars"
 msgstr ""
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Stránka již existuje"
 

@@ -2742,6 +2742,9 @@ msgstr ""
 msgid "Single bars"
 msgstr "Jednostruke trake (\"|\")"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Sajt već postoji"
 

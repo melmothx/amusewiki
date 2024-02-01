@@ -2627,6 +2627,9 @@ msgstr ""
 msgid "Single bars"
 msgstr "Yksittäinen putki"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Sivu on jo olemassa"
 

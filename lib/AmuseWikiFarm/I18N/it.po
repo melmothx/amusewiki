@@ -2829,6 +2829,9 @@ msgstr "Vista da _START_ a _END_ di _TOTAL_ elementi"
 msgid "Single bars"
 msgstr "Le barre singole"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Il sito già esiste"
 

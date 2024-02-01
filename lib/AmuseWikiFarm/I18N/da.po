@@ -2734,6 +2734,9 @@ msgstr ""
 msgid "Single bars"
 msgstr "Enkelte barer"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Siden eksisterer allerede"
 

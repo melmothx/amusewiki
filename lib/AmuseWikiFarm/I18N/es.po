@@ -2764,6 +2764,9 @@ msgstr ""
 msgid "Single bars"
 msgstr "Barras simples"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "El sitio ya existe"
 

@@ -2630,6 +2630,9 @@ msgstr "_START_ to _END_ of _TOTAL_ のエントリを表示"
 msgid "Single bars"
 msgstr "シングルバー"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "サイトは既に存在しています"
 

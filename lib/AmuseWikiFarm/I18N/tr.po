@@ -2798,6 +2798,9 @@ msgstr "_TOTAL_ kayıttan _START_ ile _END_ arası gösteriliyor"
 msgid "Single bars"
 msgstr "Tek sütünlar"
 
+msgid "Site"
+msgstr ""
+
 msgid "Site already exists"
 msgstr "Site zaten var"
 
