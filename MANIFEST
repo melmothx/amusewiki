@@ -1233,6 +1233,7 @@ root/src/include/posts.tt
 root/src/include/preamble.tt
 root/src/include/show_text_type.tt
 root/src/include/show_type_and_number_of_pages.tt
+root/src/include/uri-checker.tt
 root/src/latest/index.tt
 root/src/layout.tt
 root/src/library.tt
