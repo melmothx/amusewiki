@@ -4,6 +4,13 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.593 2024-02-01
+
+ - Keep the bookcover template tokens sorted
+ - Add descriptions to aggregations and series
+ - Add uri checker for collections
+ - Random fixes
+
 2.592 2024-01-31
 
  - Fix breakage in bookcovers when installed via .deb
