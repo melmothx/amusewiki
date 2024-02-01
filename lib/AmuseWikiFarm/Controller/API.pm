@@ -73,6 +73,9 @@ sub check_existing_uri :Chained('api') :PathPart('check-existing-uri') :Args(0) 
             elsif ($type eq 'aggregation') {
                 $exists = $site->aggregations->by_uri($uri)->count;
             }
+            elsif ($type eq 'nodes') {
+                $exists = $site->nodes->by_uri($uri)->count;
+            }
 
             if ($exists) {
                 $out{error} = $c->loc("Such URI already exists");

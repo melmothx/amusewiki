@@ -34,15 +34,7 @@
         </small>
       </div>
       <div class="col-sm-3">
-        <div class="check-success" style="display:none; color:green">
-          <i class="fa fa-check"></i>
-          [% loc('URI is available and valid') %]
-        </div>
-        <div class="check-failure" style="display:none">
-          <i class="fa fa-warning" style="color:red">
-          </i>
-          <span class="check-message" style="color:red"></span>
-        </div>
+        [% INCLUDE 'include/uri-checker.tt' %]
       </div>
     </div>
     [% END %]
@@ -114,24 +106,5 @@
 <script>
  $(document).ready(function(data) {
      $('#aggregation-titles').sortable();
-     $('.ajax-check-uri').on('keyup', function() {
-         var el = $(this);
-         var query = {
-             "uri": el.val(),
-             "type": el.data('uri-type'),
-         };
-         console.log("here");
-         $.post(el.data('check-target'), query, function(data) {
-             $('.check-failure').hide();
-             $('.check-success').hide();
-             if (data.success) {
-                 $('.check-success').show();
-             }
-             else {
-                 $('.check-failure').find('.check-message').text(data.error)
-                 $('.check-failure').show();
-             }
-         });
-     });
  });
 </script>

@@ -1,0 +1,31 @@
+<div class="check-uri-success" style="display:none; color:green">
+  <i class="fa fa-check"></i>
+  [% loc('URI is available and valid') %]
+</div>
+<div class="check-uri-failure" style="display:none">
+  <i class="fa fa-warning" style="color:red">
+  </i>
+  <span class="check-uri-message" style="color:red"></span>
+</div>
+<script>
+ $(document).ready(function(data) {
+     $('.ajax-check-uri').on('keyup', function() {
+         var el = $(this);
+         var query = {
+             "uri": el.val(),
+             "type": el.data('uri-type'),
+         };
+         $.post(el.data('check-target'), query, function(data) {
+             $('.check-uri-failure').hide();
+             $('.check-uri-success').hide();
+             if (data.success) {
+                 $('.check-uri-success').show();
+             }
+             else {
+                 $('.check-uri-failure').find('.check-uri-message').text(data.error)
+                 $('.check-uri-failure').show();
+             }
+         });
+     });
+ });
+</script>
