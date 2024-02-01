@@ -27,28 +27,42 @@
       <h2>[% loc('Create') %]</h2>
     </div>
     <div class="col-xs-12">
-      <form method="POST" id="create-node-form" action="[% c.uri_for_action('/nodes/create') %]">
+      <form method="POST"
+            class="form-horizontal"
+            id="create-node-form" action="[% c.uri_for_action('/nodes/create') %]">
         <div class="form-group">
-          <label for="create_node">
+          <label class="col-sm-2 control-label" for="create_node">
             [% loc('URI') %]
-            ([% loc('only lowercase ASCII and hyphens') %])
           </label>
-          <input type="text" name="uri" class="form-control"
-                 id="create_node"
-                 pattern="[a-z0-9][a-z0-9-]*[a-z0-9]" required/>
+          <div class="col-sm-7">
+            <input type="text" name="uri"
+                   class="form-control ajax-check-uri"
+                   data-uri-type="nodes"
+                   data-check-target="[% c.uri_for_action('/api/check_existing_uri') | html %]"
+                   id="create_node"
+                   pattern="[a-z0-9][a-z0-9-]*[a-z0-9]" required/>
+            <small>[% loc('only lowercase ASCII and hyphens') %]</small>
+
+          </div>
+          <div class="col-sm-3">
+            [% INCLUDE 'include/uri-checker.tt' %]
+          </div>
         </div>
         <div class="form-group">
-          <label for="canonical_title">
+          <label class="col-sm-2 control-label" for="canonical_title">
             [% loc('Title') %]
           </label>
-          <input type="text" name="canonical_title" class="form-control"
-                 id="canonical_title">
+          <div class="col-sm-10">
+            <input type="text" name="canonical_title" class="form-control"
+                   id="canonical_title">
+          </div>
         </div>
         <div class="form-group">
-          <label for="parent_node_id">
+          <label class="col-sm-2 control-label" for="parent_node_id">
             [% loc('Parent collection') %]
           </label>
-          <select name="parent_node_uri"
+          <div class="col-sm-10">
+            <select name="parent_node_uri"
                   id="parent_node_uri"
                   data-preseeded="[% c.request.query_params.node | html %]"
                   class="form-control">
@@ -56,16 +70,21 @@
             [% FOREACH node IN all_nodes %]
               <option value="[% node.uri %]"[% IF node.selected %] selected="selected"[% END %]>[% node.title %]</option>
             [% END %]
-          </select>
+            </select>
+          </div>
         </div>
-        <label for="attached_uris">
-          [% loc('List of paths to attach to this collection, one per line.') %]
-        </label>
         <div class="form-group">
+          <label for="attached_uris" class="col-xs-12 text-center">
+          [% loc('List of paths to attach to this collection, one per line.') %]
+          </label>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
           <textarea name="attached_uris"
                     id="attached_uris"
                     rows="3"
                     class="form-control">[% c.request.query_params.add_text | html %]</textarea>
+          </div>
         </div>
         <div class="form-group center">
           <button type="submit" class="btn btn-default">

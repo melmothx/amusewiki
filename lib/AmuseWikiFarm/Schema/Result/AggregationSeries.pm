@@ -63,6 +63,16 @@ __PACKAGE__->table("aggregation_series");
   is_nullable: 0
   size: 255
 
+=head2 comment_muse
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 comment_html
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 publisher
 
   data_type: 'varchar'
@@ -86,6 +96,10 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "aggregation_series_name",
   { data_type => "varchar", is_nullable => 0, size => 255 },
+  "comment_muse",
+  { data_type => "text", is_nullable => 1 },
+  "comment_html",
+  { data_type => "text", is_nullable => 1 },
   "publisher",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "publication_place",
@@ -181,8 +195,8 @@ Composing rels: L</node_aggregation_series> -> node
 __PACKAGE__->many_to_many("nodes", "node_aggregation_series", "node");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-20 15:08:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Q1WKCP4xfLdEPC2uzwopVA
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-31 14:33:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ne33d+bTABqBYyS+fnDy4A
 
 sub bump_oai_pmh_records {
     my $self = shift;

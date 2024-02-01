@@ -13,7 +13,7 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use DateTime;
-use Test::More tests => 102;
+use Test::More tests => 107;
 use Path::Tiny;
 use Data::Dumper::Concise;
 use IPC::Run (qw/run/);
@@ -65,20 +65,13 @@ ok $anon_bc;
     ok $wd->exists;
     diag "Working dir is $wd";
     my $tokens =  $anon_bc->parse_template;
-    is_deeply $tokens, {
-                        image_file => { name => 'image', type => 'file', full_name => 'image_file' },
-                        title_muse_str =>  { name => 'title',  type => 'muse_str', full_name => 'title_muse_str' },
-                        author_muse_str => { name => 'author', type => 'muse_str', full_name => 'author_muse_str' },
-                        back_text_muse_body => {
-                                                name => 'back_text', type => 'muse_body',
-                                                full_name => 'back_text_muse_body'
-                                               },
-                        isbn_isbn => {
-                                      name => 'isbn', type => 'isbn',
-                                      full_name => 'isbn_isbn'
-
-                                     }
-                       };
+    is_deeply $tokens, [
+                        { name => 'author', type => 'muse_str', full_name => 'author_muse_str' },
+                        { name => 'title',  type => 'muse_str', full_name => 'title_muse_str' },
+                        { name => 'image', type => 'file', full_name => 'image_file' },
+                        { name => 'back_text', type => 'muse_body', full_name => 'back_text_muse_body' },
+                        { name => 'isbn', type => 'isbn', full_name => 'isbn_isbn' }
+                       ];
     path("t/files/shot.png")->copy($anon_bc->working_dir->child("f1.png"));
     $anon_bc->populate_tokens;
     $anon_bc->populate_tokens;
@@ -357,6 +350,7 @@ diag "Testing CMYK conversion";
                         button => 'update',
                        );
     diag $amech->uri->path;
+    my $current_path = $amech->uri->path;
     $amech->content_lacks("Test ISBN");
     foreach my $n (qw/Title Body Comment Name Author/) {
         $amech->content_lacks("<em>Test $n</em> <b>Test $n</b>");
@@ -369,4 +363,19 @@ diag "Testing CMYK conversion";
         $amech->content_contains("&lt;em&gt;Test ${n}&lt;/em&gt; &lt;b&gt;Test ${n}&lt;/b&gt;")
           or die $amech->content;
     }
+    # at least check that it doesn't crash
+    my $clone_path = $current_path;
+    $clone_path =~ s/edit$/clone/;
+    $amech->get_ok($clone_path);
+    like $amech->uri->path, qr{\d+/edit$};
+    isnt $amech->uri->path, $current_path;
+    diag $amech->uri->path;
+}
+
+{
+    my $bc = $site->bookcovers->first;
+    is $bc->site_id, $site->id;
+    my $j = $schema->resultset('Site')->find('0blog0')->jobs->enqueue(build_bookcover => { id => $bc->bookcover_id });
+    $j->dispatch_job;
+    like path($j->log_file)->slurp_utf8, qr/SUCCESS/;
 }

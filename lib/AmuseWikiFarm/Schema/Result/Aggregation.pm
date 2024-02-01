@@ -107,6 +107,16 @@ __PACKAGE__->table("aggregation");
   is_nullable: 1
   size: 255
 
+=head2 comment_muse
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 comment_html
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 isbn
 
   data_type: 'varchar'
@@ -147,6 +157,10 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "publisher",
   { data_type => "varchar", is_nullable => 1, size => 255 },
+  "comment_muse",
+  { data_type => "text", is_nullable => 1 },
+  "comment_html",
+  { data_type => "text", is_nullable => 1 },
   "isbn",
   { data_type => "varchar", is_nullable => 1, size => 32 },
   "site_id",
@@ -277,8 +291,8 @@ Composing rels: L</node_aggregations> -> node
 __PACKAGE__->many_to_many("nodes", "node_aggregations", "node");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-20 15:08:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wBwbP1XY7l/hROxwlTPKIA
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-31 14:33:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wXStTsaW0wNLj4y7zsjDPw
 
 use AmuseWikiFarm::Log::Contextual;
 
@@ -337,7 +351,8 @@ sub has_siblings {
 sub serialize {
     my $self = shift;
     my %vals = $self->get_columns;
-    foreach my $k (qw/aggregation_id site_id aggregation_series_id/) {
+    foreach my $k (qw/aggregation_id site_id aggregation_series_id
+                      comment_html/) {
         delete $vals{$k};
     }
     foreach my $k (keys %vals) {
@@ -346,7 +361,7 @@ sub serialize {
     $vals{titles} = [ map { $_->{title_uri} } $self->aggregation_titles->title_uris->hri->all ];
     if (my $series = $self->aggregation_series) {
         my %series_data = $series->get_columns;
-        foreach my $k (qw/aggregation_series_id site_id/) {
+        foreach my $k (qw/aggregation_series_id site_id comment_html/) {
             delete $series_data{$k};
         }
         foreach my $f (keys %series_data) {

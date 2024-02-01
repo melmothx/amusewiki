@@ -17,6 +17,7 @@ Catalyst Controller.
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse qw/muse_naming_algo/;
 use HTML::Entities qw/encode_entities/;
+use Text::Amuse::Functions qw/muse_to_object/;
 
 sub aggregate :Chained('/site_user_required') :PathPart('aggregate') :CaptureArgs(0) {
     my ($self, $c) = @_;
@@ -32,6 +33,7 @@ sub manage :Chained('aggregate') :PathPart('manage') :Args(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
     $c->stash(
+              full_page_no_side_columns => 1,
               load_datatables => 1,
               aggregations => [ map { $_->final_data } $site->aggregations->sorted ],
               series => [ $site->aggregation_series->sorted->hri ],
@@ -65,6 +67,7 @@ sub edit_series :Chained('edit_gate') :PathPart('series') :Args {
                           aggregation_series_name
                           publisher
                           publication_place
+                          comment_muse
                          /) {
             if ($f eq 'aggregation_series_uri') {
                 $clean{$f} = muse_naming_algo($params->{$f});
@@ -73,6 +76,8 @@ sub edit_series :Chained('edit_gate') :PathPart('series') :Args {
                 $clean{$f} = $params->{$f};
             }
         }
+        $clean{comment_muse} //= '';
+        $clean{comment_html} = muse_to_object($clean{comment_muse})->as_html;
         if ($clean{aggregation_series_uri} and $clean{aggregation_series_name}) {
             my $series = $site->aggregation_series->find(\%clean,
                                                          { key => 'aggregation_series_uri_site_id_unique' });

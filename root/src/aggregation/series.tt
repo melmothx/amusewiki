@@ -34,7 +34,15 @@
     [% END  %]
   </div>
 [% END %]
-</div>
+
+[% IF series.comment_html %]
+  <div class="panel panel-default">
+    <div class="panel-body">
+      [% series.comment_html %]
+    </div>
+  </div>
+[% END %]
+
 <div class="list-group">
   [% FOREACH agg IN aggregations %]
     <div class="amw-listing-item">

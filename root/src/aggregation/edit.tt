@@ -68,15 +68,7 @@
         </small>
       </div>
       <div class="col-sm-3">
-        <div class="check-success" style="display:none; color:green">
-          <i class="fa fa-check"></i>
-          [% loc('URI is available and valid') %]
-        </div>
-        <div class="check-failure" style="display:none">
-          <i class="fa fa-warning" style="color:red">
-          </i>
-          <span class="check-message" style="color:red"></span>
-        </div>
+        [% INCLUDE 'include/uri-checker.tt' %]
       </div>
     </div>
     [% END %]
@@ -145,6 +137,12 @@
                name="isbn"
                value="[% aggregation.isbn | html %]"
         />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="comment_muse">[% loc('Description') %]</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="comment_muse" name="comment_muse">[% aggregation.comment_muse | html %]</textarea>
       </div>
     </div>
     <input type="hidden" name="update" value="1">
@@ -218,7 +216,6 @@
           <input id="titles" type="hidden" name="titles" value="[% c.request.query_params.add_text | html %]" />
         </div>
       </div>
-    </div>
     <div class="text-center">
       <button type="submit" name="update_button" class="btn btn-default">[% loc('Update') %]</button>
       <span> </span>
@@ -265,25 +262,6 @@
      });
      $('.remove-item').on('click', function() {
          $(this).closest('li').remove();
-     });
-     $('.ajax-check-uri').on('keyup', function() {
-         var el = $(this);
-         var query = {
-             "uri": el.val(),
-             "type": el.data('uri-type'),
-         };
-         console.log("here");
-         $.post(el.data('check-target'), query, function(data) {
-             $('.check-failure').hide();
-             $('.check-success').hide();
-             if (data.success) {
-                 $('.check-success').show();
-             }
-             else {
-                 $('.check-failure').find('.check-message').text(data.error)
-                 $('.check-failure').show();
-             }
-         });
      });
      function check_series() {
          console.log("Checking");

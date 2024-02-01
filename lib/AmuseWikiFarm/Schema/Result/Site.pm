@@ -5469,8 +5469,17 @@ sub create_aggregation {
     elsif (my $series_data = $args->{aggregation_series}) {
         if (my $uri = muse_naming_algo($series_data->{aggregation_series_uri})) {
             my %sd = (aggregation_series_uri => $uri);
-            foreach my $f (qw/aggregation_series_name publisher publication_place/) {
-                $sd{$f} = $series_data->{$f} if $series_data->{$f};
+            foreach my $f (qw/aggregation_series_name
+                              publisher
+                              publication_place
+                              comment_muse
+                             /) {
+                if (exists $series_data->{$f} and defined $series_data->{$f}) {
+                    $sd{$f} = $series_data->{$f};
+                }
+            }
+            if (exists $sd{comment_muse}) {
+                $sd{comment_html} = muse_to_object($sd{comment_muse})->as_html;
             }
             if ($sd{aggregation_series_name}) {
                 my $key = { key => 'aggregation_series_uri_site_id_unique' };
@@ -5497,11 +5506,15 @@ sub create_aggregation {
                       issue
                       publication_place
                       publication_date
+                      comment_muse
                       isbn
                       publisher/) {
         if (exists $args->{$f} and defined $args->{$f}) {
             $rec{$f} = $args->{$f};
         }
+    }
+    if (exists $rec{comment_muse}) {
+        $rec{comment_html} = muse_to_object($rec{comment_muse})->as_html;
     }
     # integers
     foreach my $i (qw/sorting_pos

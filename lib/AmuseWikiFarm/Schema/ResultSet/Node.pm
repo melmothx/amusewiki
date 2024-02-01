@@ -12,6 +12,12 @@ sub hri {
     return shift->search(undef, { result_class => 'DBIx::Class::ResultClass::HashRefInflator' });
 }
 
+sub by_uri {
+    my ($self, $uri) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.uri" => $uri });
+}
+
 sub find_by_uri {
     my ($self, $uri) = @_;
     return unless $uri;

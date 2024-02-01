@@ -388,20 +388,26 @@ sub parse_template {
     # this is the simple TT one so we just check for the tokens used
     my $body = $tt->slurp_utf8;
     my %tokens;
-    while ($body =~ m/\[\%\s*(([a-z_]+)_(int|muse_str|muse_body|float|file|isbn))\s*\%\]/g) {
+    my @out;
+    while ($body =~ m/\[\%\s*(?:IF\s+)?(([a-z_]+)_(int|muse_str|muse_body|float|file|isbn))\s*\%\]/g) {
         my ($whole, $name, $type) = ($1, $2, $3);
-        $tokens{$whole} = { name => $name, type => $type, full_name => $whole };
+        unless ($tokens{$whole}) {
+            push @out, { name => $name, type => $type, full_name => $whole };
+            $tokens{$whole}++;
+        }
     }
-    return \%tokens;
+    return \@out;
 }
 
 sub populate_tokens {
     my $self = shift;
     my $tokens = $self->parse_template;
-    foreach my $k (keys %$tokens) {
-        $self->bookcover_tokens->find_or_create({
-                                                 token_name => $k
-                                                });
+    my $i = 0;
+    foreach my $k (@$tokens) {
+        $self->bookcover_tokens->update_or_create({
+                                                   sorting_pos => ++$i,
+                                                   token_name => $k->{full_name},
+                                                  });
     }
 }
 

@@ -1,22 +1,26 @@
 [% INCLUDE 'include/breadcrumbs.tt' %]
 
 <div class="page-header">
-  <h1>[% loc('Create a book cover') %]
-    [% IF bookcover.compiled %]
-      <div class="pull-right" style="font-size:20px">
-        <a class="bookcover-icon"
-           title="[% loc('PDF') %]"
-           href="[% c.uri_for_action('/bookcovers/download', [bookcover.bookcover_id], 'bookcover-' _ bookcover.bookcover_id _ '.pdf') %]">
-          [% loc('Download') %]
-          <i class="fa fa-file-pdf-o fa-lg"></i><span class="sr-only">[% loc('PDF') %]</span></a>
+  <div class="row">
+    <div class="col-sm-9">
+      <h1>[% loc('Create a book cover') %]
+        [% IF bookcover.compiled %]
+          <small>
+            <a class="bookcover-icon"
+               title="[% loc('PDF') %]"
+               href="[% c.uri_for_action('/bookcovers/download', [bookcover.bookcover_id], 'bookcover-' _ bookcover.bookcover_id _ '.pdf') %]">
+              [% loc('Download') %]
+              <i class="fa fa-file-pdf-o fa-lg"></i><span class="sr-only">[% loc('PDF') %]</span></a>
 
-        <a class="bookcover-icon"
-           title="[% loc('Zip') %]"
-           href="[% c.uri_for_action('/bookcovers/download', [bookcover.bookcover_id], 'bookcover-' _ bookcover.bookcover_id _ '.zip') %]">
-          <i class="fa fa-file-archive-o fa-lg"></i><span class="sr-only">[% loc('Zip') %]</span></a>
-      </div>
-    [% END %]
-  </h1>
+            <a class="bookcover-icon"
+               title="[% loc('Zip') %]"
+               href="[% c.uri_for_action('/bookcovers/download', [bookcover.bookcover_id], 'bookcover-' _ bookcover.bookcover_id _ '.zip') %]">
+              <i class="fa fa-file-archive-o fa-lg"></i><span class="sr-only">[% loc('Zip') %]</span></a>
+          </small>
+        [% END %]
+      </h1>
+    </div>
+  </div>
 </div>
 <form action="[% c.uri_for_action('/bookcovers/edit', bookcover.bookcover_id) %]"
       method="POST"

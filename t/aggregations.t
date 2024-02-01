@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 201;
+use Test::More tests => 203;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -58,6 +58,7 @@ my $ag = [
                                   aggregation_series_name => 'For Marco',
                                   publisher => 'Publisher',
                                   publication_place => 'Place',
+                                  comment_muse => 'This is *valid*',
                                  },
            aggregation_uri => "fmx-1",
            isbn => '97899999999999',
@@ -69,6 +70,7 @@ my $ag = [
                       'to-test-three',
                      ],
            publication_place => "Nowhere",
+           comment_muse => 'Muse is **valid**',
           },
           {
            aggregation_series => {
@@ -76,6 +78,7 @@ my $ag = [
                                   aggregation_series_name => 'For Marco',
                                   publisher => 'Publisher',
                                   publication_place => 'Place',
+                                  comment_muse => 'This is *valid*',
                                  },
            aggregation_uri => "fmx-2",
            issue => "#2",
@@ -90,6 +93,7 @@ my $ag = [
           },
          ];
 DumpFile($autoimport->child('aggregations.yml'), $ag);
+
 my $copy = LoadFile($autoimport->child('aggregations.yml'));
 
 # and a duplicate
@@ -483,6 +487,25 @@ $site->delete;
                                       },
                        button => 'update_button');
     check_oai_pmh($site, $last_checked, 1, "After aggregation update, oai-pmh bumped, with texts");
+}
+
+{
+    # comments
+    my $agg = $site->create_aggregation({
+                                         comment_muse => 'Muse is **valid**',
+                                         comment_html => "Ignored <script>",
+                                         aggregation_uri => 'comments',
+                                         aggregation_series => {
+                                                                aggregation_series_uri => 'cmt',
+                                                                aggregation_series_name => 'Comment',
+                                                                comment_muse => 'This is *valid*',
+                                                                comment_html => 'Invalid <script>',
+                                                               },
+                                         issue => "#1",
+                                         sorting_pos => 1,
+                                        });
+    like $agg->comment_html, qr{<strong>valid</strong>};
+    like $agg->aggregation_series->comment_html, qr{<em>valid</em>};
 }
 
 sub check_oai_pmh {
