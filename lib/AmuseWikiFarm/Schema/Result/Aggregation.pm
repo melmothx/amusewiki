@@ -351,7 +351,8 @@ sub has_siblings {
 sub serialize {
     my $self = shift;
     my %vals = $self->get_columns;
-    foreach my $k (qw/aggregation_id site_id aggregation_series_id/) {
+    foreach my $k (qw/aggregation_id site_id aggregation_series_id
+                      comment_html/) {
         delete $vals{$k};
     }
     foreach my $k (keys %vals) {
@@ -360,7 +361,7 @@ sub serialize {
     $vals{titles} = [ map { $_->{title_uri} } $self->aggregation_titles->title_uris->hri->all ];
     if (my $series = $self->aggregation_series) {
         my %series_data = $series->get_columns;
-        foreach my $k (qw/aggregation_series_id site_id/) {
+        foreach my $k (qw/aggregation_series_id site_id comment_html/) {
             delete $series_data{$k};
         }
         foreach my $f (keys %series_data) {

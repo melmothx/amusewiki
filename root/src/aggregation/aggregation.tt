@@ -75,4 +75,13 @@
     [% INCLUDE 'include/annotation-display.tt' %]
   </div>
 
+  [% IF aggregation.comment_html %]
+    <div class="panel panel-default">
+      <div class="panel-body">
+        [% aggregation.comment_html %]
+      </div>
+    </div>
+  [% END %]
+
+
 [% INCLUDE 'include/posts.tt' %]
