@@ -2084,7 +2084,12 @@ sub aggregate {
         if ($add_id =~ m/$int/) {
             if (my $agg = $site->aggregations->find($add_id)) {
                 unless ($agg->aggregation_titles->by_title_uri($title_uri)->count) {
-                    my $sorting_pos = $agg->aggregation_titles->count;
+                    my $i = 1;
+                    # retrieve them in sorted order and rearrange
+                    foreach my $at ($agg->aggregation_titles->sorted->all) {
+                        $at->update({ sorting_pos => $i++ });
+                    }
+                    my $sorting_pos = $i;
                     if ($params->{title_sorting_pos} and $params->{title_sorting_pos} =~ m/($int)/) {
                         $sorting_pos = $params->{title_sorting_pos};
                     }
