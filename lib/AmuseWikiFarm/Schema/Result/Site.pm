@@ -5456,6 +5456,14 @@ sub create_aggregation {
         if (my $series_uri = $args->{aggregation_series_uri}) {
             if (my $series = $self->aggregation_series->find({ aggregation_series_uri => $series_uri })) {
                 $rec{aggregation_series_id} = $series->aggregation_series_id;
+                unless ($rec{sorting_pos}) {
+                    my $i = 1;
+                    foreach my $sag ($series->aggregations->sorted) {
+                        $sag->update({ sorting_pos => $i++ });
+                    }
+                    log_debug { "Setting the sorting pos to $i after update" };
+                    $rec{sorting_pos} = $i;
+                }
             }
             else {
                 push @errors, "Bad Series uri";
