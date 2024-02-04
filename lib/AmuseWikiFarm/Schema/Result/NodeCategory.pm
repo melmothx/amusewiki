@@ -50,6 +50,12 @@ __PACKAGE__->table("node_category");
   is_foreign_key: 1
   is_nullable: 0
 
+=head2 sorting_pos
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -57,6 +63,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "category_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
+  "sorting_pos",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
 );
 
 =head1 PRIMARY KEY
@@ -106,8 +114,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-04-05 08:15:44
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:RWGDLCdvwWeFJRelLu9tlg
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-02-04 10:21:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4g7nMXOV/cnqnKyUSd6fxQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

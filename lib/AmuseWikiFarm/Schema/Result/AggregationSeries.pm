@@ -184,19 +184,12 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
-=head2 nodes
 
-Type: many_to_many
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-02-04 10:21:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TFmMgjtA0OU5orrTG0cFPQ
 
-Composing rels: L</node_aggregation_series> -> node
-
-=cut
 
 __PACKAGE__->many_to_many("nodes", "node_aggregation_series", "node");
-
-
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-31 14:33:44
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ne33d+bTABqBYyS+fnDy4A
 
 sub bump_oai_pmh_records {
     my $self = shift;

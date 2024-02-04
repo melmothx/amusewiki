@@ -635,19 +635,11 @@ Composing rels: L</text_months> -> monthly_archive
 
 __PACKAGE__->many_to_many("monthly_archives", "text_months", "monthly_archive");
 
-=head2 nodes
 
-Type: many_to_many
-
-Composing rels: L</node_titles> -> node
-
-=cut
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-02-04 10:21:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:5n6Fealtc8VPxubYQ/2o9A
 
 __PACKAGE__->many_to_many("nodes", "node_titles", "node");
-
-
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-10-01 08:37:40
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JTCv/5sd8mgcXY0VgPYPTg
 
 =head2 translations
 

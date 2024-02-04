@@ -270,53 +270,21 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
-=head2 aggregation_series
 
-Type: many_to_many
-
-Composing rels: L</node_aggregation_series> -> aggregation_series
-
-=cut
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-02-04 10:21:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:VtwWxn/LpdpAg+FBdohlhw
 
 __PACKAGE__->many_to_many(
   "aggregation_series",
   "node_aggregation_series",
   "aggregation_series",
 );
-
-=head2 aggregations
-
-Type: many_to_many
-
-Composing rels: L</node_aggregations> -> aggregation
-
-=cut
-
 __PACKAGE__->many_to_many("aggregations", "node_aggregations", "aggregation");
-
-=head2 categories
-
-Type: many_to_many
-
-Composing rels: L</node_categories> -> category
-
-=cut
-
 __PACKAGE__->many_to_many("categories", "node_categories", "category");
-
-=head2 titles
-
-Type: many_to_many
-
-Composing rels: L</node_titles> -> title
-
-=cut
-
 __PACKAGE__->many_to_many("titles", "node_titles", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-20 15:08:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:e2qKuKUuWxgCTWN71140JA
+
 
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse::Functions qw/muse_to_object

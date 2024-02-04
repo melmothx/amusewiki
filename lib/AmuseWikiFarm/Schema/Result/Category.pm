@@ -199,16 +199,6 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 nodes
-
-Type: many_to_many
-
-Composing rels: L</node_categories> -> node
-
-=cut
-
-__PACKAGE__->many_to_many("nodes", "node_categories", "node");
-
 =head2 titles
 
 Type: many_to_many
@@ -220,8 +210,10 @@ Composing rels: L</title_categories> -> title
 __PACKAGE__->many_to_many("titles", "title_categories", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-04-05 08:15:44
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:hdrQWlxYWWxzRpXlv/uGqw
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-02-04 10:21:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:xJaYkc1CT49O3v91CoySSA
+
+__PACKAGE__->many_to_many("nodes", "node_categories", "node");
 
 =head2 published_titles
 

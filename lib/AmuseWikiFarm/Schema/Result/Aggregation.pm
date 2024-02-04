@@ -280,19 +280,12 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
-=head2 nodes
 
-Type: many_to_many
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-02-04 10:21:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:u64oudOvWQ0hvzb8HQbEKA
 
-Composing rels: L</node_aggregations> -> node
-
-=cut
 
 __PACKAGE__->many_to_many("nodes", "node_aggregations", "node");
-
-
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-31 14:33:44
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wXStTsaW0wNLj4y7zsjDPw
 
 use AmuseWikiFarm::Log::Contextual;
 
