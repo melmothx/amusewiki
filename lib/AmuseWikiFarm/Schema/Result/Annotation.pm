@@ -357,7 +357,7 @@ sub _identify_object {
     elsif ($object->isa('AmuseWikiFarm::Schema::Result::Aggregation')) {
         $type = 'aggregation';
         $store = $self->aggregation_annotations->find_or_create({ aggregation => $object });
-        log_error { "$store" };
+        # log_error { "$store" };
     }
     else {
         die "Invalid object passed";

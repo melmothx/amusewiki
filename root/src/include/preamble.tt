@@ -192,7 +192,6 @@
                   <tr>
                     <th>[% loc('Action') %]</th>
                     <th>[% loc('Aggregation') %]</th>
-                    <th>[% loc('Order') %]</th>
                   </tr>
                   [% FOREACH aggregation IN aggregations %]
                   <tr>
@@ -209,12 +208,6 @@
                         [% aggregation.series_number | html %]
                       </a>
                     </td>
-                    <td style="width: 100px">
-                      <input type="number" step="1" min="0"
-                             class="form-control"
-                             name="title_sorting_pos-[% aggregation.aggregation_id %]"
-                             value="[% aggregation.title_sorting_pos %]" />
-                    </td>
                   </tr>
                   [% END %]
                   <tr>
@@ -227,12 +220,6 @@
                       <a href="[% c.uri_for_action('/aggregation/edit', { add_text => text.uri }) | html %]">
                         <small>[% loc('Missing? Create one') %]</small>
                       </a>
-                    </td>
-                    <td style="width: 100px">
-                      <input type="number" step="1" min="0"
-                             class="form-control"
-                             name="title_sorting_pos"
-                             value="0" />
                     </td>
                   </tr>
                 </table>
