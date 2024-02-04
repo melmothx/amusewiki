@@ -379,7 +379,6 @@ $site->delete;
     $mech->submit_form(with_fields => {
                                        aggregation_uri => 'NEW Aggregation',
                                        issue => '#3',
-                                       sorting_pos => 1,
                                       },
                        button => 'update_button',
                       );
@@ -420,7 +419,6 @@ $site->delete;
     $mech->submit_form(with_fields => {
                                        aggregation_uri => 'Other AGGREG',
                                        issue => '#4',
-                                       sorting_pos => 1,
                                       },
                        button => 'and_create_text',
                       );
@@ -502,7 +500,6 @@ $site->delete;
                                                                 comment_html => 'Invalid <script>',
                                                                },
                                          issue => "#1",
-                                         sorting_pos => 1,
                                         });
     like $agg->comment_html, qr{<strong>valid</strong>};
     like $agg->aggregation_series->comment_html, qr{<em>valid</em>};
