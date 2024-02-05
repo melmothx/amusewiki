@@ -473,45 +473,14 @@ sub serialize {
         $out{'title_' . $lang} = $desc->title_muse;
         $out{'body_'  . $lang} = $desc->body_muse;
     }
-    my @attached = map { $_->full_uri } (
-                                         $self->aggregation_series->sorted->all,
-                                         $self->aggregations->sorted->all,
-                                         $self->categories->sorted->all,
-                                         $self->titles->sorted_by_title->all,
-                                        );
+    my @attached = map { $_->{uri} } $self->linked_pages;
     $out{attached_uris} = join("\n", @attached);
     return \%out;
 }
 
 sub linked_pages {
     my $self = shift;
-    my @out;
-    my %icons = (
-                 author => 'address-book-o',
-                 topic => 'tag',
-                 series => 'archive',
-                 aggregations => 'book',
-                 special => 'file-text-o',
-                 text => 'file-text-o',
-                );
-    push @out, map { +{ label => encode_entities($_->aggregation_series_name),
-                        type => "series",
-                        uri => $_->full_uri } } $self->aggregation_series->sorted;
-    push @out, map { +{ label => encode_entities($_->final_name),
-                        type => "aggregation",
-                        uri => $_->full_uri } } $self->aggregations->sorted;
-    # these are already escaped
-    push @out, map { +{ label => $_->name,
-                        type => $_->type,
-                        uri => $_->full_uri } } $self->categories->active_only->sorted;
-    push @out, map { +{ label => $_->author_title,
-                        type => $_->f_class,
-                        uri => $_->full_uri } } $self->titles->sorted->published_all;
-    Dlog_debug { "linked pages: $_" } \@out;
-    foreach my $i (@out) {
-        $i->{icon} = $icons{$i->{type}} || 'tags';
-    }
-    return @out;
+    return $self->site->nodes->linked_pages_for_node($self->node_id);
 }
 
 sub children_pages {

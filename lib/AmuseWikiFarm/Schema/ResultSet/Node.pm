@@ -152,21 +152,27 @@ sub as_tree {
     return \@out;
 }
 
-sub _render_node {
-    my ($source, $id, $depth, %opts) = @_;
-    $depth ||= 0;
-    log_debug { "Rendering $id $depth" };
-    my $node = $source->{$id};
-    my $root_indent = '  ' x $depth;
-    my $indent = $root_indent . '  ';
-    my $html = "\n" . $root_indent . "<div>\n";
-    $html .= $indent . '<div>';
-    my $class= $opts{class} || 'amw-label-node';
-    $html .= sprintf('<div class="%s"><a href="%s">%s</a></div>',
-                     $class,
-                     '/node/' . $node->{full_path},
-                     $node->{title_html});
-    $html .= "</div>\n";
+sub linked_pages_for_node {
+    my ($self, $nid) = @_;
+    my $me = $self->current_source_alias;
+    my $src = $self->search({ "$me.node_id" => $nid })->as_tree_source;
+    my @list;
+    if (my $node = $src->{$nid}) {
+        foreach my $obj (@{_unroll_linked_object($node)}) {
+            push @list, {
+                         label => $obj->[0],
+                         uri => $obj->[1],
+                         icon => $obj->[2],
+                        };
+        }
+    }
+    Dlog_debug { "Linked pages: $_" } \@list;
+    return @list;
+}
+
+sub _unroll_linked_object {
+    my ($node) = @_;
+    my @list;
     my %icons = (
                  author => 'address-book-o',
                  topic => 'tag',
@@ -175,7 +181,6 @@ sub _render_node {
                  special => 'file-text-o',
                  text => 'file-text-o',
                 );
-    my @list;
     # here we need to sort.
     foreach my $series (@{$node->{node_aggregation_series} || []}) {
         if (my $s = $series->{aggregation_series}) {
@@ -214,8 +219,8 @@ sub _render_node {
         if (my $t = $title->{title}) {
             if ($t->{status} eq 'published') {
                 my $full_uri = $t->{f_class} eq 'text'
-                  ? "/library/$title->{uri}"
-                  : "/special/$title->{uri}";
+                  ? "/library/$t->{uri}"
+                  : "/special/$t->{uri}";
                 push @list, [ $t->{title},
                               $full_uri,
                               $icons{$t->{f_class}},
@@ -224,6 +229,25 @@ sub _render_node {
             }
         }
     }
+    return [ sort { $a->[3] <=> $b->[3] } @list ];
+}
+
+sub _render_node {
+    my ($source, $id, $depth, %opts) = @_;
+    $depth ||= 0;
+    log_debug { "Rendering $id $depth" };
+    my $node = $source->{$id};
+    my $root_indent = '  ' x $depth;
+    my $indent = $root_indent . '  ';
+    my $html = "\n" . $root_indent . "<div>\n";
+    $html .= $indent . '<div>';
+    my $class= $opts{class} || 'amw-label-node';
+    $html .= sprintf('<div class="%s"><a href="%s">%s</a></div>',
+                     $class,
+                     '/node/' . $node->{full_path},
+                     $node->{title_html});
+    $html .= "</div>\n";
+    my @list = @{_unroll_linked_object($node)};
     Dlog_debug { "My linked pages: $_" } \@list;
     if (@list) {
         $html .= join("",
@@ -232,7 +256,6 @@ sub _render_node {
                                                $_->[2],
                                                $_->[1],
                                                $_->[0]) . "\n" }
-                       sort { $a->[3] <=> $b->[3] }
                        @list),
                       $indent . "</ul>\n");
     }
