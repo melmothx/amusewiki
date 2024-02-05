@@ -49,21 +49,23 @@ ok $site->categories->count;
         for my $id (0..1) {
             my $uri = "$u-$id";
             my $node = $site->nodes->create({ uri => $uri });
-            $node->update_from_params({
-                                       title_en => ucfirst($uri) . ' (en)',
-                                       body_en => ucfirst($uri) . ' body EN',
-                                       title_it => ucfirst($uri) . ' (it)',
-                                       body_it => ucfirst($uri) . ' body IT',
-                                       parent_node_uri => $parent ? $parent->uri : undef,
-                                      });
+            my %params = (
+                          title_en => ucfirst($uri) . ' (en)',
+                          body_en => ucfirst($uri) . ' body EN',
+                          title_it => ucfirst($uri) . ' (it)',
+                          body_it => ucfirst($uri) . ' body IT',
+                          parent_node_uri => $parent ? $parent->uri : undef,
+                         );
+            # test both styles.
             if ($id) {
                 my @texts = $site->titles->search({ uri => { -like => '%' . $u . '%' } })->all;
-                $node->set_titles(\@texts);
+                $params{attached_uris} = [ map { $_->full_uri } @texts ];
             }
             else {
                 my @cats = $site->categories->search({ uri => { -like => '%' . $u . '%' } })->all;
-                $node->set_categories(\@cats);
+                $params{attached_uris} = join(' ', map { $_->full_uri } @cats);
             }
+            $node->update_from_params(\%params);
             if ($id) {
                 $parent = $node;
             }

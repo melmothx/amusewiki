@@ -4408,9 +4408,7 @@ sub serialize_site {
 
 sub validate_node_attached_uris {
     my ($self, $string) = @_;
-    my @list = ref($string)
-          ? (@$string)
-          : (grep { length($_) } split(/\s+/, $string));
+    my @list = grep { length($_) } map { split(/\s+/, $_) } (ref($string) ? @$string : ($string));
 
     # all of them have a shared api, so we can loop
     my @objects = (
@@ -4437,6 +4435,7 @@ sub validate_node_attached_uris {
                   );
     my %done;
     my @missing;
+    my @out;
   STRING:
     foreach my $str (@list) {
       OBJECT:
@@ -4444,20 +4443,15 @@ sub validate_node_attached_uris {
             if (my $found = $obj->{rs}->by_full_uri($str)) {
                 my $u = $found->full_uri;
                 $done{$u}++;
-                push @{$obj->{list}}, $found if $done{$u} == 1;
+                push @out, $found if $done{$u} == 1;
                 next STRING;
             }
         }
         push @missing, $str;
         log_info { "Ignored $str while validating node uris $string" };
     }
-    Dlog_debug { "Validation: $_ " }
-      +{
-        objects => [ map { $_->{method} . ' ' . scalar(@{$_->{list}}) }  @objects ],
-        fail => \@missing,
-       };
     return +{
-             objects => \@objects,
+             objects => \@out,
              fail => \@missing,
             };
 }

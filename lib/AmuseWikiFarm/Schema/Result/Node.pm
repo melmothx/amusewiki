@@ -378,10 +378,40 @@ sub update_from_params {
 
     if (defined $params->{attached_uris}) {
         my $res = $site->validate_node_attached_uris($params->{attached_uris});
+        # we're in a transaction
+        my $sorting_pos = 0;
+        foreach my $rel (qw/node_titles node_categories node_aggregations node_aggregation_series/) {
+            $self->$rel->delete;
+        }
         foreach my $obj (@{$res->{objects}}) {
-            # here it will call set_aggregations, set_series_aggregations, set_categories, set_titles
-            my $method = $obj->{method};
-            $self->$method($obj->{list});
+            my %common = (sorting_pos => ++$sorting_pos);
+            if ($obj->isa('AmuseWikiFarm::Schema::Result::Title')) {
+                $self->node_titles->create({
+                                            %common,
+                                            title => $obj,
+                                           });
+            }
+            elsif ($obj->isa('AmuseWikiFarm::Schema::Result::Category')) {
+                $self->node_categories->create({
+                                                %common,
+                                                category => $obj,
+                                               });
+            }
+            elsif ($obj->isa('AmuseWikiFarm::Schema::Result::Aggregation')) {
+                $self->node_aggregations->create({
+                                                  %common,
+                                                  aggregation => $obj,
+                                                 });
+            }
+            elsif ($obj->isa('AmuseWikiFarm::Schema::Result::AggregationSeries')) {
+                $self->node_aggregations->create({
+                                                  %common,
+                                                  aggregation_series => $obj,
+                                                 });
+            }
+            else {
+                die "Shouldn't happen $obj";
+            }
         }
     }
     # we need to change the linkage between the record and the set and
