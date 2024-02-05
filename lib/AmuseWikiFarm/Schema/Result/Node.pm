@@ -491,6 +491,7 @@ sub children_pages {
         push @out, {
                     label => $child->name($locale),
                     uri => $child->full_uri,
+                    node_id => $child->node_id,
                    };
     }
     Dlog_debug { "children nodes are $_" } \@out;

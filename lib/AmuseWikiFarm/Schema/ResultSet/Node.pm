@@ -124,7 +124,7 @@ sub as_tree_source {
                                           },
                                          ],
                             })->hri->all;
-    Dlog_debug { "All nodes: $_ " } \@all;
+    # Dlog_debug { "All nodes: $_ " } \@all;
     my %source;
     foreach my $n (@all) {
         $source{$n->{node_id}} = $n;
@@ -139,7 +139,7 @@ sub as_tree_source {
             $source{$n->{node_id}}{title_html} = encode_entities($n->{canonical_title} || $n->{uri});
         }
     }
-    Dlog_debug { "Flattened $_" } \%source;
+    # Dlog_debug { "Flattened $_" } \%source;
     return \%source;
 }
 
