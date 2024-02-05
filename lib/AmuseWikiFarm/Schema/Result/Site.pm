@@ -4521,8 +4521,8 @@ sub node_title_tree {
             $title_nodes{$tid}{$node->{uri}}++;
         }
     }
-    Dlog_debug { "Node list is $_" } \%all;
-    Dlog_debug { "Title Node tree $_" } \%title_nodes;
+    # Dlog_debug { "Node list is $_" } \%all;
+    # Dlog_debug { "Title Node tree $_" } \%title_nodes;
     my $out = {
                nodes => [ values %all ],
                titles => {

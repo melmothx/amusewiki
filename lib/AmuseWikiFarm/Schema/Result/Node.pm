@@ -356,8 +356,10 @@ sub update_from_params {
         $body{body_html} = muse_to_object($body{body_muse})->as_html;
         $self->node_bodies->update_or_create(\%body);
     }
+    my $siblings = 0;
     if (defined $params->{parent_node_uri}) {
         if (my $parent = $site->nodes->find_by_uri($params->{parent_node_uri})) {
+            $siblings = $parent->children->count + 1;
             $self->parent_node($parent);
         }
         else {
@@ -367,6 +369,10 @@ sub update_from_params {
     if (defined $params->{sorting_pos} and $params->{sorting_pos} =~ m/\A[1-9][0-9]*\z/) {
         log_debug { "Setting sorting pos to $params->{sorting_pos}" };
         $self->sorting_pos($params->{sorting_pos});
+    }
+    elsif ($siblings) {
+        log_debug { "Setting sorting_pos to last $siblings" };
+        $self->sorting_pos($siblings);
     }
     $self->canonical_title($params->{canonical_title} || ucfirst($self->uri));
     my $now = DateTime->now(time_zone => 'UTC');
