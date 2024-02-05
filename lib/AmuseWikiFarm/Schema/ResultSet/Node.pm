@@ -176,48 +176,55 @@ sub _render_node {
                  text => 'file-text-o',
                 );
     my @list;
-    if (my @series = @{$node->{node_aggregation_series}}) {
-        foreach my $series (sort { $a->{aggregation_series_uri} cmp $b->{aggregation_series_uri} }
-                            map { $_->{aggregation_series} }
-                            @series) {
-            push @list, [ encode_entities($series->{aggregation_series_name}),
-                          "/series/$series->{aggregation_series_uri}",
-                          'archive',
+    # here we need to sort.
+    foreach my $series (@{$node->{node_aggregation_series} || []}) {
+        if (my $s = $series->{aggregation_series}) {
+            push @list, [
+                         encode_entities($s->{aggregation_series_name}),
+                         "/series/$s->{aggregation_series_uri}",
+                         'archive',
+                         $series->{sorting_pos},
                         ];
         }
     }
-    if (my @aggs = @{$node->{node_aggregations}}) {
-        foreach my $agg (sort { $a->{aggregation_uri} cmp $b->{aggregation_uri}  }
-                            map { $_->{aggregation} }
-                            @aggs) {
+    foreach my $aggregation (@{$node->{node_aggregations} || []}) {
+        if (my $agg = $aggregation->{aggregation}) {
             $agg->{aggregation_name} ||= join(' ', grep { /\w/ }
                                               ($agg->{aggregation_series}->{aggregation_series_name},
                                                $agg->{issue}));
             push @list, [ encode_entities($agg->{aggregation_name}),
                           "/aggregation/$agg->{aggregation_uri}",
                           'book',
+                          $aggregation->{sorting_pos},
                         ];
         }
     }
-    if (my @categories = @{$node->{node_categories}}) {
-        foreach my $cat (sort { $a->{sorting_pos} <=> $b->{sorting_pos} }
-                         grep { $_->{active} }
-                         map { $_->{category} }
-                         @categories) {
-            push @list, [ $cat->{name}, "/category/$cat->{type}/$cat->{uri}", $icons{$cat->{type}} || 'tag'] ;
+    foreach my $category (@{$node->{node_categories}}) {
+        if (my $cat = $category->{category}) {
+            if ($cat->{active}) {
+                push @list, [ $cat->{name},
+                              "/category/$cat->{type}/$cat->{uri}",
+                              $icons{$cat->{type}} || 'tag',
+                              $category->{sorting_pos},
+                            ];
+            }
         }
     }
-    if (my @titles = @{$node->{node_titles}}) {
-        foreach my $title (sort { $a->{sorting_pos} <=> $b->{sorting_pos} }
-                           grep { $_->{status} eq 'published' }
-                           map { $_->{title} }
-                           @titles) {
-            my $full_uri = $title->{f_class} eq 'text'
-              ? "/library/$title->{uri}"
-              : "/special/$title->{uri}";
-            push @list, [ $title->{title}, $full_uri, $icons{$title->{f_class}} ];
+    foreach my $title (@{$node->{node_titles} || []}) {
+        if (my $t = $title->{title}) {
+            if ($t->{status} eq 'published') {
+                my $full_uri = $t->{f_class} eq 'text'
+                  ? "/library/$title->{uri}"
+                  : "/special/$title->{uri}";
+                push @list, [ $t->{title},
+                              $full_uri,
+                              $icons{$t->{f_class}},
+                              $title->{sorting_pos},
+                            ];
+            }
         }
     }
+    Dlog_debug { "My linked pages: $_" } \@list;
     if (@list) {
         $html .= join("",
                       $indent . "<ul>\n",
@@ -225,6 +232,7 @@ sub _render_node {
                                                $_->[2],
                                                $_->[1],
                                                $_->[0]) . "\n" }
+                       sort { $a->[3] <=> $b->[3] }
                        @list),
                       $indent . "</ul>\n");
     }

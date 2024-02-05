@@ -29,6 +29,8 @@ sub node_root :Chained('root') :PathPart('') :Args(0) {
     $c->stash(node_list => $site->nodes->sorted->as_tree($lang),
               page_title => $c->loc('Collections'),
              );
+    Dlog_debug  { "Node tree: $_" } $c->stash->{node_list};
+
     if ($c->user_exists) {
         my $all_nodes = $site->nodes->as_list_with_path($lang);
         if (my $preseeded = $c->req->query_params->{node}) {

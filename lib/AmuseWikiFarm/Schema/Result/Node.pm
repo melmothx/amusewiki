@@ -404,10 +404,10 @@ sub update_from_params {
                                                  });
             }
             elsif ($obj->isa('AmuseWikiFarm::Schema::Result::AggregationSeries')) {
-                $self->node_aggregations->create({
-                                                  %common,
-                                                  aggregation_series => $obj,
-                                                 });
+                $self->node_aggregation_series->create({
+                                                        %common,
+                                                        aggregation_series => $obj,
+                                                       });
             }
             else {
                 die "Shouldn't happen $obj";
@@ -526,67 +526,6 @@ sub children_pages {
     }
     Dlog_debug { "children nodes are $_" } \@out;
     return @out;
-}
-
-sub linked_pages_as_html {
-    my ($self, %options) = @_;
-    my $indent = $options{indent} || '';
-    my @list;
-    my $titles = $self->titles->sorted_by_title;
-    while (my $title = $titles->next) {
-        push @list, [ $title->author_title, $title->full_uri ];
-    }
-    my $cats = $self->categories->sorted;
-    while (my $cat = $cats->next) {
-        push @list, [ $cat->name, $cat->full_uri ];
-    }
-    if (@list) {
-        return join("",
-                    $indent . "<ul>\n",
-                    (map { $indent . sprintf(' <li><a href="%s">%s</a></li>', $_->[1], $_->[0]) . "\n" }
-                     sort { $a->[1] cmp $b->[1] }
-                     @list),
-                    $indent . "</ul>\n");
-    }
-    else {
-        return '';
-    }
-}
-
-sub as_html {
-    my ($self, $lang, $depth, %options) = @_;
-    $depth ||= 0;
-    $lang ||= 'en';
-    # this is not to be pretty.
-    # First, retrieve the body.
-    #Dlog_debug { "Descending into $lang $depth " . $self->uri . " $_" } \%options;
-    my $root_indent = '  ' x $depth;
-    my $indent = $root_indent . '  ';
-    my $html = "\n" . $root_indent . "<div>\n";
-    $html .= $indent . '<div>';
-    $html .= sprintf('<strong><a href="%s">%s</a></strong>',
-                     $self->full_uri,
-                     $self->name($lang));
-    $html .= "</div>\n";
-    $html .= $self->linked_pages_as_html(indent => $indent);
-    $depth++;
-    if ($depth > 10) {
-        log_error { "Recursion too deep! on $html" };
-        return $html;
-    }
-    my $children = $self->children->sorted;
-    my @children_html;
-    while (my $child = $children->next) {
-        push @children_html, $child->as_html($lang, $depth, %options);
-    }
-    if (@children_html) {
-        $html .= join("",
-                      $indent . "<ul>\n",
-                      (map { $indent . '<li>' . $_ . "\n" . $indent . "</li>\n" } @children_html),
-                      $indent . "</ul>\n");
-    }
-    $html .= $root_indent . "</div>";
-    return $html;
 }
 
 sub muse_name {

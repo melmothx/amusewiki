@@ -87,10 +87,6 @@ foreach my $id (qw/first second third/) {
 # let's attach some texts
 
 {
-    my $node = $site->nodes->find_by_uri('one');
-    diag $node->as_html;
-}
-{
     my $node = $site->nodes->find_by_uri('four');
     ok $node;
     my $title = $site->titles->text_by_uri('first');
@@ -110,8 +106,6 @@ foreach my $id (qw/first second third/) {
     diag Dumper($node->serialize);
     my $params = get_params($node);
     is_deeply($params, $update, "Update is fine and idempotens");
-
-    diag $node->as_html('en');
 
     $site->update({ multilanguage => 'en es de' });
     $node = $node->get_from_storage;
