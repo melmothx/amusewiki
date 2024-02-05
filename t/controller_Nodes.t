@@ -120,7 +120,7 @@ foreach my $id (qw/first second third/) {
     $mech->get_ok('/login');
     ok $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' });
     {
-        my $existing = $node->serialize;
+        my $existing = $node->discard_changes->serialize;
         $node->update_from_params({ %$existing });
         is_deeply($node->serialize, $existing, "serialization is idempotens")
           or die Dumper($node->serialize, $existing);
@@ -166,7 +166,7 @@ foreach my $id (qw/first second third/) {
     ok $site->titles->by_full_uri('/library/first');
     is $node->titles->count, 2, "Found titles" or die;
     is $node->categories->count, 0, "Found 0 cats";
-    $params{attached_uris} = "/special/third\n/library/first";
+    $params{attached_uris} = "/library/first\n/special/third", "Same order as input, modulo dupes";
     my %copy = %params;
     # pallino doesn't exist yet, so will return undef
     $copy{parent_node_uri} = undef;
@@ -235,8 +235,8 @@ foreach my $id (qw/first second third/) {
         $expected =~ s/&#39;/&#x27;/g;
         $mech->content_contains($expected);
     }
-    $mech->content_contains("/category/topic/x-script</textarea>");
-    $mech->content_contains(">/category/author/author-script-kid\n");
+    $mech->content_contains(q{value="/category/topic/x-script"});
+    $mech->content_contains(q{value="/category/author/author-script-kid"});
 }
 
 my @node_ids = map { $_->node_id } $site->nodes;

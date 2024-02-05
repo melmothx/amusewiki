@@ -265,7 +265,7 @@ $site->process_autoimport_files;
                                       canonical_title => "Pallino",
                                       attached_uris => '/aggregation/fmx-2 /series/fmx',
                                      });
-    is($node->serialize->{attached_uris}, "/series/fmx\n/aggregation/fmx-2");
+    is($node->serialize->{attached_uris}, "/aggregation/fmx-2\n/series/fmx", "Same order");
 }
 
 
@@ -282,7 +282,7 @@ $site->delete;
     diag Dumper(\@save);
     my $fresh_dump = $newsite->serialize_site;
     diag Dumper($fresh_dump);
-    is $fresh_dump->{nodes}->[0]->{attached_uris}, "/series/fmx\n/aggregation/fmx-2";
+    is $fresh_dump->{nodes}->[0]->{attached_uris}, "/aggregation/fmx-2\n/series/fmx", "Same order as original";
     is_deeply $fresh_dump, $deep_copy or die Dumper({ new => $fresh_dump, old => $deep_copy });
     is $newsite->aggregation_series->count, 1;
     is $newsite->aggregations->count, 3;

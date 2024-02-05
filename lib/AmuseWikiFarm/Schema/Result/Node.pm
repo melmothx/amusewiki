@@ -366,7 +366,7 @@ sub update_from_params {
             $self->parent_node(undef);
         }
     }
-    if (defined $params->{sorting_pos} and $params->{sorting_pos} =~ m/\A[1-9][0-9]*\z/) {
+    if (defined $params->{sorting_pos} and $params->{sorting_pos} =~ m/\A[0-9]+\z/) {
         log_debug { "Setting sorting pos to $params->{sorting_pos}" };
         $self->sorting_pos($params->{sorting_pos});
     }
