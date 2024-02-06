@@ -824,6 +824,9 @@ msgstr ""
 msgid "Downloads"
 msgstr "下载"
 
+msgid "Drag to reorder"
+msgstr ""
+
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr "例如，一些单词AND标题：“我的标题\" AND author:作者 OR year:2017"
 

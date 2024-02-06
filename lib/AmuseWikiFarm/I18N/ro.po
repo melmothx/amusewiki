@@ -872,6 +872,9 @@ msgstr ""
 msgid "Downloads"
 msgstr "Descărcări"
 
+msgid "Drag to reorder"
+msgstr ""
+
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 

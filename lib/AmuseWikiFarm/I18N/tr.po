@@ -864,6 +864,9 @@ msgstr "İndir"
 msgid "Downloads"
 msgstr "İndirilenler"
 
+msgid "Drag to reorder"
+msgstr ""
+
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr "Örn. bir kelime AND title:\"Bir başlık\" AND author:Yazar OR yıl:2017"
 

@@ -811,6 +811,9 @@ msgstr ""
 msgid "Downloads"
 msgstr "ダウンロード"
 
+msgid "Drag to reorder"
+msgstr ""
+
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr "例：いくつかの単語ANDタイトル： \"My Title\" AND 著者：著者OR年：2017"
 

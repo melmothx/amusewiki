@@ -841,6 +841,9 @@ msgstr ""
 msgid "Downloads"
 msgstr "Pobrane"
 
+msgid "Drag to reorder"
+msgstr ""
+
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr ""
 "Np.: jakieś słowo I tytuł:\"Mójtytuł\" I osoba autorska:Autor ALBO rok:2017"

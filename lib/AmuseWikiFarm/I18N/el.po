@@ -877,6 +877,9 @@ msgstr ""
 msgid "Downloads"
 msgstr "Λήψεις"
 
+msgid "Drag to reorder"
+msgstr ""
+
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr ""
 "Π.χ. κάποια λέξη ΚΑΙ title: \"Ο Τίτλος μου\" ΚΑΙ author: Συγγραφέας Ή year: "

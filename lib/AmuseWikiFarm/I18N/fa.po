@@ -852,6 +852,9 @@ msgstr ""
 msgid "Downloads"
 msgstr "دانلودها"
 
+msgid "Drag to reorder"
+msgstr ""
+
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr "مثال. title:موضوع و author:اسم-نویسنده یا year:شماره-سال"
 

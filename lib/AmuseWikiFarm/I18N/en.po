@@ -809,6 +809,9 @@ msgstr ""
 msgid "Downloads"
 msgstr "Downloads"
 
+msgid "Drag to reorder"
+msgstr ""
+
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr ""
 

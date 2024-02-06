@@ -863,6 +863,9 @@ msgstr ""
 msgid "Downloads"
 msgstr "Download"
 
+msgid "Drag to reorder"
+msgstr ""
+
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr ""
 "Ad esempio Qualche parola AND title:\"Tizio\" AND author:Caio OR year:2017"

@@ -861,6 +861,9 @@ msgstr ""
 msgid "Downloads"
 msgstr "Stažené soubory"
 
+msgid "Drag to reorder"
+msgstr ""
+
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr "Např. některé slovo A název:\"Můj název\" A autor:Autor NEBO rok:2017"
 

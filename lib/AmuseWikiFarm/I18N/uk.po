@@ -853,6 +853,9 @@ msgstr "Завантажити"
 msgid "Downloads"
 msgstr "Завантаження"
 
+msgid "Drag to reorder"
+msgstr ""
+
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr ""
 "певне слово AND title:\"Мій заголовок\" AND author:Автор_ка OR year:2017"

@@ -838,6 +838,9 @@ msgstr ""
 msgid "Downloads"
 msgstr "Preuzimanja"
 
+msgid "Drag to reorder"
+msgstr ""
+
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr "Npr. neka riječ AND title:\"Naslov\" AND author:Autor OR year:2017"
 

@@ -850,6 +850,9 @@ msgstr ""
 msgid "Downloads"
 msgstr "Преземања"
 
+msgid "Drag to reorder"
+msgstr ""
+
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr "На пр. некој збор AND title:\"Наслов\" AND author:Автор OR year:2017"
 
