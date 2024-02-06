@@ -6,7 +6,6 @@ use warnings;
 use FindBin;
 use lib "$FindBin::Bin/../lib";
 use URI;
-use AmuseWikiFarm::Schema;
 use WordPress::DBIC::Schema;
 use Data::Dumper::Concise;
 use Date::Parse;
@@ -16,7 +15,9 @@ use LWP::UserAgent;
 use File::Spec;
 use Getopt::Long;
 use Path::Tiny;
-use AmuseWikiFarm::Utils::Amuse qw/muse_naming_algo/;
+use Text::Amuse::Preprocessor;
+use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path muse_naming_algo/;
+use YAML qw/DumpFile/;
 
 my %opts;
 
@@ -24,46 +25,21 @@ GetOptions(\%opts,
            'post=i',
            'parent=i',
            'grandparent=i',
-           'sku-prefix=s',
-           'topic-prefix=s',
            'merge-children=s',
            'skip-main',
+           'no-image-download',
+           'series-name=s',
           ) or die;
 
 binmode STDOUT, ':encoding(UTF-8)';
 
 my $ua = LWP::UserAgent->new(agent => 'Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.1');
 my ($site_id, $hostname, $lang) = @ARGV;
+my $repo = path(repo => $site_id);
 $lang ||= 'en';
 die "2 arguments required: site_id and hostname" unless $site_id && $hostname;
 
-my $schema = AmuseWikiFarm::Schema->connect('amuse');
-my $site = $schema->resultset('Site')->find($site_id) or die "Cannot find site id $site_id!";
-my $email = $site->mail_notify;
-$site->update({ mail_notify => undef });
 my $wp = WordPress::DBIC::Schema->connect('wordpress');
-my $topic_prefix = $opts{'topic-prefix'} || '';
-my $sku_prefix = $opts{'sku-prefix'} || '';
-
-if ($opts{'skip-main'}) {
-    if ($opts{grandparent}) {
-        if ($opts{'merge-children'}) {
-            collect_children($opts{grandparent}, $opts{'merge-children'});
-        }
-    }
-    exit;
-}
-
-
-print "Reimporting\n";
-$site->titles->delete;
-$site->categories->delete;
-$site->legacy_links->delete;
-$site->attachments->delete;
-path($site->repo_root)->remove_tree({ safe => 0 });
-$site->initialize_git;
-$site->jobs->delete;
-
 
 my $posts = $wp->resultset('WpPost');
 
@@ -90,22 +66,54 @@ my @errors;
 
 print "Total " . $posts->count . " posts\n";
 
-while (my $post = $posts->next) {
-    print $post->clean_url . "\n";
+my $series_name = $opts{'series-name'};
+my $series_uri = muse_naming_algo($series_name);
+my $agg_prefix = lc(join("", map { substr($_, 0, 1) } grep { $_ } split(/\s+/, $series_name)));
+print "$series_name $series_uri $agg_prefix\n";
+
+my %aggregations;
+
+my $count = 0;
+unless ($opts{'skip-main'}) {
+    while (my $post = $posts->next) {
+        if (++$count % 100 == 0) {
+            print "Done $count\n";
+        }
+        import_post($post);
+    }
+}
+my $autoimport_dir = path($repo, site_files => 'autoimport');
+$autoimport_dir->mkpath;
+
+
+sub import_post {
+    my ($post, $opts) = @_;
+    # print $post->clean_url . "\n";
     my $parent = $post->parent;
-    my $topic = $parent->post_title || $parent->post_name || die "Missing parent name!";
-    $topic =~ s/;/,/g;
+    my $issue = $parent->post_title || $parent->post_name || die "Missing parent name!";
     my %out = (
-               uri => $parent->post_name . '-' . $post->post_name,
-               sku => $sku_prefix . sprintf('%.4d-%.8d-%.4d-%.8d',
-                                            $parent->menu_order, $parent->id, $post->menu_order, $post->id),
+               uri => muse_naming_algo($parent->post_name . '-' . $post->post_name),
                title => $post->post_title,
-               SORTtopics => $topic_prefix . $topic . ';',
                lang => $lang,
-               notes => $topic_prefix . $topic,
+               notes => $series_name . ' #' . $issue,
               );
-    if (my $date = $post->post_date) {
-        $out{pubdate} = $date->ymd;
+
+    $aggregations{$parent->id} ||= {
+                                titles => [],
+                                sorting_pos => $parent->menu_order,
+                                aggregation_uri => muse_naming_algo($agg_prefix . ' ' . $issue . ' ' . $parent->id),
+                                issue => $issue,
+                                aggregation_series => {
+                                                       aggregation_series_uri => $series_uri,
+                                                       aggregation_series_name => $series_name,
+                                                      },
+                               };
+    push @{$aggregations{$parent->id}{titles}}, $out{uri};
+    if ($issue =~ m/\b((19|20)\d{2})\b/) {
+        $out{date} = $1;
+    }
+    if (my $pubdate = $post->post_date) {
+        $out{pubdate} = $pubdate->ymd;
     }
     if (my $subtitle = $post->metas->search({ meta_key => 'subtitle'})->first) {
         $out{subtitle} = $subtitle->meta_value;
@@ -122,6 +130,7 @@ while (my $post = $posts->next) {
 
     if ($out{textbody} =~ m/\[child-pages.*?\]/) {
         # reset the body, we're interested only in the content. Too bad for the image.
+        print "Collecting child pages\n";
         $out{textbody} = '';
         foreach my $child ($post->children->published->search({
                                                                post_type => [qw/page/],
@@ -143,180 +152,88 @@ while (my $post = $posts->next) {
             push @links, $child->clean_url, $child->permalink;
         }
     }
+    $out{textbody} =~ s/(?:<a .*?>)(<img .*?>)(?:<\/a>)/$1/g;
     $out{textbody} =~ s/<strong>(.*?<img .*?>.*?)<\/strong>/$1/g;
     $out{textbody} =~ s/(<h.>.*?)(<img .*?>)(.*?<\/h.>)/$1$2$3/g;
-    add_text(\%out, \@links);
+
+    # print Dumper(\%out);
+    parse_html(\%out);
+    #add_text(\%out, \@links);
 }
 
 print Dumper(\@errors) if @errors;
 
-sub collect_children {
-    my ($parent, $page_name) = @_;
-    my $parents = $wp->resultset('WpPost')->published->search({ post_parent => $parent },
-                                                              {
-                                                               order_by => ['menu_order']
-                                                              });
-    $site->titles->search({ f_class => 'special', title => $page_name })->delete;
-    my ($revision, $error) = $site->create_new_text({ title => $page_name }, 'special');
-    die $error if $error;
-    my $muse = $revision->muse_body;
-    my @topics;
-    my $imgcounter = 0;
-    my $tmp = File::Temp->newdir;
-    while (my $post = $parents->next) {
-        my %images;
-        my %downloads;
-        my $html = $post->post_content;
-      IMAGE:
-        while ($html =~ m/(https?:\/\/\Q$hostname\E\/wp-content\/uploads\/[0-9a-zA-Z\.\/\-]*\.(gif|png|jpe?g))/g) {
-            my $img = $1;
-            my $ext = $2;
-            if ($img !~ m/\d+x\d+\.(png|gif|jpe?g)$/) {
-                $downloads{$img}++;
-                next IMAGE if $downloads{$img} > 1;
-                my $local = download_image($img) or die "Couldn't download $img";
-                my $got = $revision->add_attachment($local);
-                die Dumper($got) unless $got->{attachment};
-                $images{$got->{attachment}}++;
-            }
-        }
-        $muse .= "\n\n** " . $topic_prefix . $post->post_title . "\n\n";
-
-        if (%images) {
-            my $name = $topic_prefix . ($post->post_title || $post->post_name);
-            my @images = keys %images;
-            my $desc;
-            foreach my $img (@images) {
-                $muse .= "\n[[$img][$name]]\n";
-                $desc .= "\n[[$img f]]\n";
-            }
-            if (my $c = $site->categories->single({ uri => muse_naming_algo($name), type => 'topic' })) {
-                $c->category_descriptions->update_description(en => $desc);
-            }
-            else {
-                print "Skipping $desc for $name\n";
-            }
-        }
-
-        foreach my $art ($post->children->published->search(undef, {
-                                                                    order_by => [qw/menu_order post_name/],
-                                                                   })->all) {
-            $muse .= "\n\n[[" . $art->clean_url . "][" . $art->post_title . "]]\n\n";
-        }
-    }
-    $revision->edit({ body => $muse });
-    $revision->commit_version;
-    $revision->publish_text;
-}
+print Dumper(\%aggregations);
 
 if ($opts{grandparent}) {
-    if ($opts{'merge-children'}) {
-        collect_children($opts{grandparent}, $opts{'merge-children'});
-    }
-}
-
-$site->update({ mail_notify => $email });
-
-print "Done. Generating indexes now\n";
-if (my $j = $site->jobs->search({ task => 'build_static_indexes' })->dequeue) {
-    $j->dispatch_job;
-}
-
-
-sub add_text {
-    my ($text, $links) = @_;
-    die unless $text;
-    my ($revision) = $site->create_new_text($text, 'text');
-    if (my $cover = $text->{cover}) {
-        my $target = File::Spec->catfile('out.png');
-        if (system(convert => -resize => '300x300',
-                   URI->new($cover)->canonical, $target) == 0) {
-            if (my $cover_uri = $revision->add_attachment($target)->{attachment}) {
-                $text->{cover} = $cover_uri;
+    if (my $title = $opts{'merge-children'}) {
+        my $tops = $wp->resultset('WpPost')->published->search({ post_parent => $opts{grandparent} },
+                                                               { order_by => ['menu_order'] });
+        my @legacy_links;
+        while (my $top = $tops->next) {
+            print "Done ($title) " . ++$count . "\n";
+            my $html = $top->html_body;
+            my $issue = $top->post_title || $top->post_name;
+            my @lines;
+            while ($html =~ m/(<img[^>]+?>)/g) {
+                push @lines, $1;
             }
-            else {
-                warn "Failed to upload the cover!\n";
-                delete $text->{cover};
+            foreach my $art ($top->children->published->search(undef, {
+                                                                       order_by => [qw/menu_order post_name/],
+                                                                      })->all) {
+                push @lines, sprintf('<p><a href="%s">%s</a></p>', $art->clean_url, $art->post_title);
+                my $new_path = "/library/" . muse_naming_algo($top->post_name . '-' . $art->post_name);
+                foreach my $legacy_path ($art->clean_url, $art->permalink) {
+                    push @legacy_links, {
+                                         legacy_path => $legacy_path,
+                                         new_path => $new_path,
+                                        };
+                }
+            }
+
+            my %post = (
+                        uri => muse_naming_algo($title . '-' . $top->post_name),
+                        title => "$series_name $issue",
+                        textbody => join("\n\n", @lines),
+                        SORTtopics => $title,
+                        DELETED => "Not needed",
+                       );
+            if (my $saved = parse_html(\%post)) {
+                my $muse_body = join("\n", grep { /^\[\[[0-9a-z-]+\.(png|jpe?g)\]\]/ } $saved->lines_utf8);
+                if ($muse_body) {
+                    if ($aggregations{$top->id}) {
+                        $aggregations{$top->id}{comment_muse} = $muse_body;
+                    }
+                    else {
+                        print "Missing aggregation for $muse_body ID:" . $top->id . "\n";
+
+                    }
+                }
             }
         }
-        else {
-            warn "Fetching $cover failed!";
-            delete $text->{cover};
-        }
-    }
-    my $muse = $revision->muse_body;
-
-    # cleaning
-    $muse =~ s/\s+\]\]/]]/sg;
-    $muse =~ s/\]\[\]\]/]]/sg;
-    $muse =~ s/\s*\z//;
-
-    my @pdfs;
-    $muse =~ s!
-           \[\[
-           (https?://\Q$hostname\E/[^\]]*?\.(gif|pdf|png|jpe?g))\]
-           (\[.*?\])?
-           \]!attach_to_text($revision, $1, $3, \@pdfs)!igex;
-
-    $muse =~ s/\[caption(.*?)\]
-               (.*?)
-               (\[\[.+?\]\])
-               (.*?)
-               \[\/caption\]/handle_caption($1, $2, $3, $4)/sgex;
-
-    if (@pdfs) {
-        $muse = "#ATTACH " . join(' ', @pdfs) . "\n" . $muse . "\n";
-    }
-
-    $muse =~ s/<strong>\s*<\/strong>//gs;
-    $muse =~ s/<em>\s*<\/em>//gs;
-    $muse =~ s/^\*+ *$//gm;
-
-    $revision->edit({
-                     body => $muse,
-                     fix_typography => 1,
-                    });
-    $revision->commit_version;
-    my $new_uri = $revision->publish_text;
-    print "New uri is $new_uri\n";
-    if ($links) {
-        foreach my $old (@$links) {
-            $site->add_to_legacy_links({
-                                        legacy_path => $old,
-                                        new_path => $new_uri,
-                                       });
-        }
+        DumpFile($autoimport_dir->child('legacy_links.yml'), \@legacy_links);
     }
 }
 
-sub attach_to_text {
-    my ($rev, $url, $desc, $pdfs) = @_;
-    $desc ||= '';
-    die unless $rev && $url;
-    print "Replacing $url $desc\n";
-    my $tmp = File::Temp->newdir;
-    my $local;
-    if ($url =~ m/\.pdf$/) {
-        $local = File::Spec->catfile($tmp, 'out.pdf');
-        $ua->mirror($url, $local);
+my @aggregations;
+foreach my $agg (sort { $a->{sorting_pos} <=> $b->{sorting_pos} } grep { defined $_->{issue} } values %aggregations) {
+    if ($agg->{issue} =~ m/\A\d+,\s*(.*+)\z/) {
+        $agg->{publication_date} = $1;
+        if ($agg->{publication_date} =~ m/((19|20)\d{2})/) {
+            $agg->{publication_date_year} = $1;
+        }
     }
-    else {
-        $local = download_image($url) or die "$url wasn't downloaded";
-    }
-    my $got = $rev->add_attachment($local);
-    if ($got->{error}) {
-        warn "FAILED to add $local file";
-        push @errors, "FAILED to add $local file" . Dumper($got);
-        return $desc;
-    }
-    die unless $got->{attachment};
-    if ($got->{attachment} =~ m/\.pdf$/) {
-        push @$pdfs, $got->{attachment};
-        $got->{attachment} = '#amw-attached-pdfs';
-    }
-    print "Attaching $got->{attachment}\n";
-    return "\n\n[[" . $got->{attachment} . "]$desc]\n\n";
+    push @aggregations, $agg;
 }
+DumpFile($autoimport_dir->child('aggregations.yml'), \@aggregations);
+
+# $site->update({ mail_notify => $email });
+# 
+# print "Done. Generating indexes now\n";
+# if (my $j = $site->jobs->search({ task => 'build_static_indexes' })->dequeue) {
+#     $j->dispatch_job;
+# }
+
 
 sub handle_caption {
     my ($args, $before, $url, $after) = @_;
@@ -346,30 +263,100 @@ sub handle_caption {
     }
 }
 
-sub download_image {
-    my $img = shift;
-    my $destdir = path('image-cache');
-    $destdir->mkpath;
-    if ($img =~ m/(https?:\/\/\Q$hostname\E\/(.+\.(gif|png|jpe?g)))/i) {
-        my $base = $2;
-        my $ext  = $3;
-        $base =~ s/[^a-zA-Z0-9]/_/g;
-        my $local = $destdir->child($base . '.local.png');
-        my $mirrored = $destdir->child($base . '.orig.' . $ext);
-        if ($local->exists) {
-            print "$local already exists, reusing\n";
+sub parse_html {
+    my ($text) = @_;
+    if (my $path = muse_get_full_path($text->{uri})) {
+        my $final = path($repo, $path->[0], $path->[1], $path->[2] . '.muse');
+        my $dir = $final->parent;
+        my $img_basename = ($path->[1]);
+        $img_basename =~ s/\A(.)(.)\z/$1-$2/;
+        $dir->mkpath unless -d $dir;
+        # print "$final\n";
+        my $html = delete $text->{textbody};
+        $html =~ s/(<img[^>]+?>)/download_and_insert_image($1, $dir, $img_basename)/igex;
+        my $muse = html_to_muse($html);
+        my @lines;
+        foreach my $directive (qw/title subtitle author LISTtitle SORTauthors
+                                  SORTtopics date uid cat
+                                  slides
+                                  sku
+                                  source lang pubdate
+                                  publisher
+                                  isbn
+                                  rights
+                                  seriesname
+                                  seriesnumber
+                                  notes
+                                  DELETED
+                                 /) {
+            my $v = $text->{$directive};
+            if (defined $v) {
+                $v =~ s/\r*\n/ /gs; # it's a directive, no \n
+                # leading and trailing spaces
+                $v =~ s/^\s*//s;
+                $v =~ s/\s+$//s;
+                $v =~ s/  +/ /gs; # pack the whitespaces
+                if (length $v) {
+                    push @lines, "#${directive} $v";
+                }
+            }
         }
-        else {
-            print "Fetching $img and saving into $local\n";
-            $ua->mirror($img, "$mirrored");
-            die "Failure to download $img into $mirrored" unless $mirrored->exists;
-            die "Failed to convert $mirrored to $local" if system(convert => -strip => "$mirrored", "$local") != 0;
-            die "No $local produced" unless $local->exists;
-        }
-        return "$local";
+        # cleaning
+        $muse =~ s/\s+\]\]/]]/sg;
+        $muse =~ s/\]\[\]\]/]]/sg;
+        $muse =~ s/\s*\z//;
+
+        $muse =~ s/\[caption(.*?)\]
+                   (.*?)
+                   (\[\[.+?\]\])
+                   (.*?)
+                   \[\/caption\]/handle_caption($1, $2, $3, $4)/sgex;
+
+        $muse =~ s/<strong>\s*<\/strong>//gs;
+        $muse =~ s/<em>\s*<\/em>//gs;
+        $muse =~ s/^\*+ *$//gm;
+
+
+        my $body = join("\n", @lines, "", $muse, "");
+        my $out;
+        my $pp = Text::Amuse::Preprocessor->new(input => \$body, output => "$final", fix_typography => 1);
+        $pp->process;
+        return $final;
     }
     else {
-        die "$img doesn't match";
+        die Dumper($text);
     }
-    return;
+
+}
+
+sub download_and_insert_image {
+    my ($img, $dir, $img_basename) = @_;
+    if ($img =~ m/src="(.*?)"/) {
+        my $src = $1;
+        my (@fragments) = split(/\//, $src);
+        my $file = lc($fragments[-1]);
+        $file =~ s/[^a-z0-9\.\-]//g;
+        my $target = $dir->child($img_basename . '-' . $file);
+        if ($opts{'no-image-download'}) {
+            return "<div>[[" . $target->basename . "]]</div>";
+        }
+        my $res = $ua->mirror($src, "$target");
+        if ($res->is_success or $res->code eq '304') {
+            if ($file =~ m/\A(.+)\.gif\z/i) {
+                my $png = $1 . '.png';
+                my $destination = $dir->child($img_basename . '-' . $png);
+                if (!$destination->exists or $destination->stat->mtime < $target->stat->mtime) {
+                    print "Converting $target to $destination\n";
+                    system(convert => -strip => "$target", "$destination");
+                }
+                return "<div>[[" . $destination->basename . "]]</div>"
+            }
+            print "Downloaded $src\n" if $res->is_success;
+            return "<div>[[" . $target->basename . "]]</div>";
+        }
+        else {
+            print "$src => " . $res->status_line . "\n";
+        }
+    }
+    return '';
 }
