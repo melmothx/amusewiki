@@ -606,6 +606,7 @@ CREATE TABLE node_title (
                  ON DELETE CASCADE ON UPDATE CASCADE,
         title_id INTEGER NOT NULL REFERENCES title(id)
                  ON DELETE CASCADE ON UPDATE CASCADE,
+        sorting_pos INTEGER NOT NULL DEFAULT 0,
         PRIMARY KEY (node_id, title_id)
 );
 
@@ -614,6 +615,7 @@ CREATE TABLE node_category (
                    ON DELETE CASCADE ON UPDATE CASCADE,
        category_id INTEGER NOT NULL REFERENCES category(id)
                    ON DELETE CASCADE ON UPDATE CASCADE,
+       sorting_pos INTEGER NOT NULL DEFAULT 0,
        PRIMARY KEY (node_id, category_id)
 );
 
@@ -622,6 +624,7 @@ CREATE TABLE node_aggregation (
                ON DELETE CASCADE ON UPDATE CASCADE,
        aggregation_id INTEGER NOT NULL REFERENCES aggregation(aggregation_id)
                       ON DELETE CASCADE ON UPDATE CASCADE,
+       sorting_pos INTEGER NOT NULL DEFAULT 0,
        PRIMARY KEY (node_id, aggregation_id)
 );
 
@@ -630,6 +633,7 @@ CREATE TABLE node_aggregation_series (
                ON DELETE CASCADE ON UPDATE CASCADE,
        aggregation_series_id INTEGER NOT NULL REFERENCES aggregation_series(aggregation_series_id)
                       ON DELETE CASCADE ON UPDATE CASCADE,
+       sorting_pos INTEGER NOT NULL DEFAULT 0,
        PRIMARY KEY (node_id, aggregation_series_id)
 );
 

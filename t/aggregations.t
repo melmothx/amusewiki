@@ -265,7 +265,7 @@ $site->process_autoimport_files;
                                       canonical_title => "Pallino",
                                       attached_uris => '/aggregation/fmx-2 /series/fmx',
                                      });
-    is($node->serialize->{attached_uris}, "/series/fmx\n/aggregation/fmx-2");
+    is($node->serialize->{attached_uris}, "/aggregation/fmx-2\n/series/fmx", "Same order");
 }
 
 
@@ -282,7 +282,7 @@ $site->delete;
     diag Dumper(\@save);
     my $fresh_dump = $newsite->serialize_site;
     diag Dumper($fresh_dump);
-    is $fresh_dump->{nodes}->[0]->{attached_uris}, "/series/fmx\n/aggregation/fmx-2";
+    is $fresh_dump->{nodes}->[0]->{attached_uris}, "/aggregation/fmx-2\n/series/fmx", "Same order as original";
     is_deeply $fresh_dump, $deep_copy or die Dumper({ new => $fresh_dump, old => $deep_copy });
     is $newsite->aggregation_series->count, 1;
     is $newsite->aggregations->count, 3;
@@ -379,7 +379,6 @@ $site->delete;
     $mech->submit_form(with_fields => {
                                        aggregation_uri => 'NEW Aggregation',
                                        issue => '#3',
-                                       sorting_pos => 1,
                                       },
                        button => 'update_button',
                       );
@@ -420,7 +419,6 @@ $site->delete;
     $mech->submit_form(with_fields => {
                                        aggregation_uri => 'Other AGGREG',
                                        issue => '#4',
-                                       sorting_pos => 1,
                                       },
                        button => 'and_create_text',
                       );
@@ -502,7 +500,6 @@ $site->delete;
                                                                 comment_html => 'Invalid <script>',
                                                                },
                                          issue => "#1",
-                                         sorting_pos => 1,
                                         });
     like $agg->comment_html, qr{<strong>valid</strong>};
     like $agg->aggregation_series->comment_html, qr{<em>valid</em>};

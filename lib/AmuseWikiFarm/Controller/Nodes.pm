@@ -29,6 +29,8 @@ sub node_root :Chained('root') :PathPart('') :Args(0) {
     $c->stash(node_list => $site->nodes->sorted->as_tree($lang),
               page_title => $c->loc('Collections'),
              );
+    # Dlog_debug  { "Node tree: $_" } $c->stash->{node_list};
+
     if ($c->user_exists) {
         my $all_nodes = $site->nodes->as_list_with_path($lang);
         if (my $preseeded = $c->req->query_params->{node}) {
@@ -41,7 +43,7 @@ sub node_root :Chained('root') :PathPart('') :Args(0) {
         $c->stash(all_nodes => $all_nodes,
                   load_select2 => 1,
                  );
-        Dlog_debug  { "All nodes: $_" } $c->stash->{all_nodes};
+        # Dlog_debug  { "All nodes: $_" } $c->stash->{all_nodes};
     }
 }
 
@@ -81,7 +83,7 @@ sub display :Chained('root') :PathPart('') :Args {
         if ($c->user_exists) {
             my $nid = $target->node_id;
             my @all_nodes = grep { $nid != $_->{value} } @{$site->nodes->as_list_with_path($locale) || []};
-            Dlog_debug { "Nodes for $nid are $_" } \@all_nodes;
+            # Dlog_debug { "Nodes for $nid are $_" } \@all_nodes;
             $c->stash(edit_node => $target,
                       load_markitup_css => 1,
                       all_nodes => \@all_nodes,
@@ -143,7 +145,26 @@ sub update_node :Chained('edit') :PathPart('') :Args(0) {
     Dlog_info { "Editing " . $node->node_id . " with $_" } \%params;
     if ($params{update}) {
         Dlog_info { $c->user->get('username') . " is updating " . $node->full_uri . " with $_" } \%params;
+        my $children = delete $params{child_node};
         $node->update_from_params(\%params);
+
+        my $sorting_pos = 0;
+        my %children_pos = map { $_ => ++$sorting_pos } (ref($children) ? @$children : ($children));
+        Dlog_debug { "Children nodes: $_" } { children => $children, sorting => \%children_pos };
+        foreach my $child ($node->children) {
+            my $nid = $child->node_id;
+            if (my $pos = $children_pos{$nid}) {
+                log_info { "Updating $nid node sorting pos from " . $child->sorting_pos . " $pos" };
+                $child->update({ sorting_pos => $pos });
+            }
+            else {
+                log_info { "Orphaning $nid" };
+                $child->update({
+                                sorting_pos => 0,
+                                parent_node_id => undef,
+                               });
+            }
+        }
         $c->flash(status_msg => $c->loc("Collection has been updated"));
     }
     elsif ($params{delete}) {

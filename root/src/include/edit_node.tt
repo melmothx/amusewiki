@@ -6,7 +6,7 @@
     <form method="POST" action="[% c.uri_for_action('nodes/update_node', [ node.uri]) %]"
           class="form-horizontal" id="node-edit-form">
       <input type="hidden" name="uri" value="[% edit_node.uri | html %]" />
-
+      <input type="hidden" name="sorting_pos" value="[% edit_node.sorting_pos | html %]" />
       <div class="form-group">
         <div class="col-xs-12">
           <label for="canonical_title">
@@ -29,15 +29,55 @@
           </select>
         </div>
       </div>
-      <div class="form-group">
-        <div class="col-xs-12">
-          <label for="sorting_pos">
-            [% loc('Sorting:') %]
-          </label>
-          <input type="number" min="0" step="1" id="sorting_pos" name="sorting_pos"
-                 value="[% edit_node.sorting_pos | html %]" />
+
+      [% IF node_children %]
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="panel panel-default" style="margin-top: 20px">
+              <div class="panel-body">
+                <ul id="children_nodes" class="list-group">
+                  [% FOREACH page IN node_children %]
+                    <li style="cursor: move" class="list-group-item">
+                      <i class="text-primary fa fa-list"></i>
+                      [% page.label %]
+                      <input type="hidden" name="child_node" value="[% page.node_id %]" />
+                      <span class="remove-item pull-right" style="cursor: pointer">
+                        <i class="text-danger fa fa-trash fa-border fa-lg"></i>
+                      </span>
+                    </li>
+                  [% END %]
+                </ul>
+                <small>[% loc('Drag to reorder') %]</small>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      [% END %]
+      [% IF node_linked_pages %]
+        <div class="form-group">
+          <div class="col-xs-12">
+            <div class="panel panel-default" style="margin-top: 20px">
+              <div class="panel-body">
+                <ul id="children_pages" class="list-group">
+                  [% FOREACH page IN node_linked_pages %]
+                    <li style="cursor: move" class="list-group-item">
+                      <input type="hidden" name="attached_uris" value="[% page.uri | html %]" />
+                      <a style="cursor:pointer" href="[% page.uri %]">
+                        <i class="text-primary fa fa-[% page.icon %]"></i>
+                      </a>
+                      [% page.label %]
+                      <span class="remove-item pull-right" style="cursor: pointer">
+                        <i class="text-danger fa fa-trash fa-border fa-lg"></i>
+                      </span>
+                    </li>
+                  [% END %]
+                </ul>
+                <small>[% loc('Drag to reorder') %]</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      [% END %]
 
       <div class="form-group">
         <div class="col-sm-12">
@@ -50,8 +90,8 @@
         <div class="col-sm-12">
           <textarea name="attached_uris"
                     id="attached_uris"
-                    rows="10"
-                    class="form-control">[% edit_node.serialize.attached_uris | html %]</textarea>
+                    rows="2"
+                    class="form-control"></textarea>
           <p class="help-block">
             [% loc('Example') %]:<br>
             <pre>
@@ -146,6 +186,11 @@
  }
  $(document).ready(function() {
      $('#parent_node_uri').select2();
+     $('#children_nodes').sortable();
+     $('#children_pages').sortable();
+     $('.remove-item').on('click', function() {
+         $(this).closest('li').remove();
+     });
      node_require_title();
      $('.node-body-text').on('change', function() {
          node_require_title();

@@ -4408,9 +4408,7 @@ sub serialize_site {
 
 sub validate_node_attached_uris {
     my ($self, $string) = @_;
-    my @list = ref($string)
-          ? (@$string)
-          : (grep { length($_) } split(/\s+/, $string));
+    my @list = grep { length($_) } map { split(/\s+/, $_) } (ref($string) ? @$string : ($string));
 
     # all of them have a shared api, so we can loop
     my @objects = (
@@ -4437,6 +4435,7 @@ sub validate_node_attached_uris {
                   );
     my %done;
     my @missing;
+    my @out;
   STRING:
     foreach my $str (@list) {
       OBJECT:
@@ -4444,20 +4443,15 @@ sub validate_node_attached_uris {
             if (my $found = $obj->{rs}->by_full_uri($str)) {
                 my $u = $found->full_uri;
                 $done{$u}++;
-                push @{$obj->{list}}, $found if $done{$u} == 1;
+                push @out, $found if $done{$u} == 1;
                 next STRING;
             }
         }
         push @missing, $str;
         log_info { "Ignored $str while validating node uris $string" };
     }
-    Dlog_debug { "Validation: $_ " }
-      +{
-        objects => [ map { $_->{method} . ' ' . scalar(@{$_->{list}}) }  @objects ],
-        fail => \@missing,
-       };
     return +{
-             objects => \@objects,
+             objects => \@out,
              fail => \@missing,
             };
 }
@@ -4527,15 +4521,15 @@ sub node_title_tree {
             $title_nodes{$tid}{$node->{uri}}++;
         }
     }
-    Dlog_debug { "Node list is $_" } \%all;
-    Dlog_debug { "Title Node tree $_" } \%title_nodes;
+    # Dlog_debug { "Node list is $_" } \%all;
+    # Dlog_debug { "Title Node tree $_" } \%title_nodes;
     my $out = {
                nodes => [ values %all ],
                titles => {
                           map { $_ => [ keys %{$title_nodes{$_}} ] } keys %title_nodes
                          },
               };
-    Dlog_debug { "Map is $_" } $out;
+    # Dlog_debug { "Map is $_" } $out;
     return $out;
 }
 
@@ -5456,6 +5450,14 @@ sub create_aggregation {
         if (my $series_uri = $args->{aggregation_series_uri}) {
             if (my $series = $self->aggregation_series->find({ aggregation_series_uri => $series_uri })) {
                 $rec{aggregation_series_id} = $series->aggregation_series_id;
+                unless ($rec{sorting_pos}) {
+                    my $i = 1;
+                    foreach my $sag ($series->aggregations->sorted) {
+                        $sag->update({ sorting_pos => $i++ });
+                    }
+                    log_debug { "Setting the sorting pos to $i after update" };
+                    $rec{sorting_pos} = $i;
+                }
             }
             else {
                 push @errors, "Bad Series uri";

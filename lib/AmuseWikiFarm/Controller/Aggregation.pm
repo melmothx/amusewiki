@@ -357,7 +357,7 @@ sub aggregation :Chained('show') :PathPart('aggregation') :Args(1) {
                   categories => $agg->display_categories,
                  );
         $self->populate_annotations($c, $agg);
-        Dlog_debug { "Agg is $_"  } $c->stash->{aggregation};
+        # Dlog_debug { "Agg is $_"  } $c->stash->{aggregation};
     }
     else {
         $c->detach('/not_found');

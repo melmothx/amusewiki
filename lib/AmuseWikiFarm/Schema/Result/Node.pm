@@ -270,53 +270,21 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
-=head2 aggregation_series
 
-Type: many_to_many
-
-Composing rels: L</node_aggregation_series> -> aggregation_series
-
-=cut
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-02-04 10:21:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:VtwWxn/LpdpAg+FBdohlhw
 
 __PACKAGE__->many_to_many(
   "aggregation_series",
   "node_aggregation_series",
   "aggregation_series",
 );
-
-=head2 aggregations
-
-Type: many_to_many
-
-Composing rels: L</node_aggregations> -> aggregation
-
-=cut
-
 __PACKAGE__->many_to_many("aggregations", "node_aggregations", "aggregation");
-
-=head2 categories
-
-Type: many_to_many
-
-Composing rels: L</node_categories> -> category
-
-=cut
-
 __PACKAGE__->many_to_many("categories", "node_categories", "category");
-
-=head2 titles
-
-Type: many_to_many
-
-Composing rels: L</node_titles> -> title
-
-=cut
-
 __PACKAGE__->many_to_many("titles", "node_titles", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-20 15:08:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:e2qKuKUuWxgCTWN71140JA
+
 
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse::Functions qw/muse_to_object
@@ -388,17 +356,23 @@ sub update_from_params {
         $body{body_html} = muse_to_object($body{body_muse})->as_html;
         $self->node_bodies->update_or_create(\%body);
     }
+    my $siblings = 0;
     if (defined $params->{parent_node_uri}) {
         if (my $parent = $site->nodes->find_by_uri($params->{parent_node_uri})) {
+            $siblings = $parent->children->count + 1;
             $self->parent_node($parent);
         }
         else {
             $self->parent_node(undef);
         }
     }
-    if (defined $params->{sorting_pos} and $params->{sorting_pos} =~ m/\A[1-9][0-9]*\z/) {
+    if (defined $params->{sorting_pos} and $params->{sorting_pos} =~ m/\A[0-9]+\z/) {
         log_debug { "Setting sorting pos to $params->{sorting_pos}" };
         $self->sorting_pos($params->{sorting_pos});
+    }
+    elsif ($siblings) {
+        log_debug { "Setting sorting_pos to last $siblings" };
+        $self->sorting_pos($siblings);
     }
     $self->canonical_title($params->{canonical_title} || ucfirst($self->uri));
     my $now = DateTime->now(time_zone => 'UTC');
@@ -410,10 +384,40 @@ sub update_from_params {
 
     if (defined $params->{attached_uris}) {
         my $res = $site->validate_node_attached_uris($params->{attached_uris});
+        # we're in a transaction
+        my $sorting_pos = 0;
+        foreach my $rel (qw/node_titles node_categories node_aggregations node_aggregation_series/) {
+            $self->$rel->delete;
+        }
         foreach my $obj (@{$res->{objects}}) {
-            # here it will call set_aggregations, set_series_aggregations, set_categories, set_titles
-            my $method = $obj->{method};
-            $self->$method($obj->{list});
+            my %common = (sorting_pos => ++$sorting_pos);
+            if ($obj->isa('AmuseWikiFarm::Schema::Result::Title')) {
+                $self->node_titles->create({
+                                            %common,
+                                            title => $obj,
+                                           });
+            }
+            elsif ($obj->isa('AmuseWikiFarm::Schema::Result::Category')) {
+                $self->node_categories->create({
+                                                %common,
+                                                category => $obj,
+                                               });
+            }
+            elsif ($obj->isa('AmuseWikiFarm::Schema::Result::Aggregation')) {
+                $self->node_aggregations->create({
+                                                  %common,
+                                                  aggregation => $obj,
+                                                 });
+            }
+            elsif ($obj->isa('AmuseWikiFarm::Schema::Result::AggregationSeries')) {
+                $self->node_aggregation_series->create({
+                                                        %common,
+                                                        aggregation_series => $obj,
+                                                       });
+            }
+            else {
+                die "Shouldn't happen $obj";
+            }
         }
     }
     # we need to change the linkage between the record and the set and
@@ -475,45 +479,14 @@ sub serialize {
         $out{'title_' . $lang} = $desc->title_muse;
         $out{'body_'  . $lang} = $desc->body_muse;
     }
-    my @attached = map { $_->full_uri } (
-                                         $self->aggregation_series->sorted->all,
-                                         $self->aggregations->sorted->all,
-                                         $self->categories->sorted->all,
-                                         $self->titles->sorted_by_title->all,
-                                        );
+    my @attached = map { $_->{uri} } $self->linked_pages;
     $out{attached_uris} = join("\n", @attached);
     return \%out;
 }
 
 sub linked_pages {
     my $self = shift;
-    my @out;
-    my %icons = (
-                 author => 'address-book-o',
-                 topic => 'tag',
-                 series => 'archive',
-                 aggregations => 'book',
-                 special => 'file-text-o',
-                 text => 'file-text-o',
-                );
-    push @out, map { +{ label => encode_entities($_->aggregation_series_name),
-                        type => "series",
-                        uri => $_->full_uri } } $self->aggregation_series->sorted;
-    push @out, map { +{ label => encode_entities($_->final_name),
-                        type => "aggregation",
-                        uri => $_->full_uri } } $self->aggregations->sorted;
-    # these are already escaped
-    push @out, map { +{ label => $_->name,
-                        type => $_->type,
-                        uri => $_->full_uri } } $self->categories->active_only->sorted;
-    push @out, map { +{ label => $_->author_title,
-                        type => $_->f_class,
-                        uri => $_->full_uri } } $self->titles->sorted->published_all;
-    Dlog_debug { "linked pages: $_" } \@out;
-    foreach my $i (@out) {
-        $i->{icon} = $icons{$i->{type}} || 'tags';
-    }
-    return @out;
+    return $self->site->nodes->linked_pages_for_node($self->node_id);
 }
 
 sub children_pages {
@@ -524,71 +497,11 @@ sub children_pages {
         push @out, {
                     label => $child->name($locale),
                     uri => $child->full_uri,
+                    node_id => $child->node_id,
                    };
     }
     Dlog_debug { "children nodes are $_" } \@out;
     return @out;
-}
-
-sub linked_pages_as_html {
-    my ($self, %options) = @_;
-    my $indent = $options{indent} || '';
-    my @list;
-    my $titles = $self->titles->sorted_by_title;
-    while (my $title = $titles->next) {
-        push @list, [ $title->author_title, $title->full_uri ];
-    }
-    my $cats = $self->categories->sorted;
-    while (my $cat = $cats->next) {
-        push @list, [ $cat->name, $cat->full_uri ];
-    }
-    if (@list) {
-        return join("",
-                    $indent . "<ul>\n",
-                    (map { $indent . sprintf(' <li><a href="%s">%s</a></li>', $_->[1], $_->[0]) . "\n" }
-                     sort { $a->[1] cmp $b->[1] }
-                     @list),
-                    $indent . "</ul>\n");
-    }
-    else {
-        return '';
-    }
-}
-
-sub as_html {
-    my ($self, $lang, $depth, %options) = @_;
-    $depth ||= 0;
-    $lang ||= 'en';
-    # this is not to be pretty.
-    # First, retrieve the body.
-    #Dlog_debug { "Descending into $lang $depth " . $self->uri . " $_" } \%options;
-    my $root_indent = '  ' x $depth;
-    my $indent = $root_indent . '  ';
-    my $html = "\n" . $root_indent . "<div>\n";
-    $html .= $indent . '<div>';
-    $html .= sprintf('<strong><a href="%s">%s</a></strong>',
-                     $self->full_uri,
-                     $self->name($lang));
-    $html .= "</div>\n";
-    $html .= $self->linked_pages_as_html(indent => $indent);
-    $depth++;
-    if ($depth > 10) {
-        log_error { "Recursion too deep! on $html" };
-        return $html;
-    }
-    my $children = $self->children->sorted;
-    my @children_html;
-    while (my $child = $children->next) {
-        push @children_html, $child->as_html($lang, $depth, %options);
-    }
-    if (@children_html) {
-        $html .= join("",
-                      $indent . "<ul>\n",
-                      (map { $indent . '<li>' . $_ . "\n" . $indent . "</li>\n" } @children_html),
-                      $indent . "</ul>\n");
-    }
-    $html .= $root_indent . "</div>";
-    return $html;
 }
 
 sub muse_name {

@@ -124,7 +124,7 @@ sub as_tree_source {
                                           },
                                          ],
                             })->hri->all;
-    Dlog_debug { "All nodes: $_ " } \@all;
+    # Dlog_debug { "All nodes: $_ " } \@all;
     my %source;
     foreach my $n (@all) {
         $source{$n->{node_id}} = $n;
@@ -139,7 +139,7 @@ sub as_tree_source {
             $source{$n->{node_id}}{title_html} = encode_entities($n->{canonical_title} || $n->{uri});
         }
     }
-    Dlog_debug { "Flattened $_" } \%source;
+    # Dlog_debug { "Flattened $_" } \%source;
     return \%source;
 }
 
@@ -150,6 +150,86 @@ sub as_tree {
       sort { $a->{sorting_pos} <=> $b->{sorting_pos} or $a->{uri} cmp $b->{uri} }
       grep { !$_->{parent_node_id} } values %$source;
     return \@out;
+}
+
+sub linked_pages_for_node {
+    my ($self, $nid) = @_;
+    my $me = $self->current_source_alias;
+    my $src = $self->search({ "$me.node_id" => $nid })->as_tree_source;
+    my @list;
+    if (my $node = $src->{$nid}) {
+        foreach my $obj (@{_unroll_linked_object($node)}) {
+            push @list, {
+                         label => $obj->[0],
+                         uri => $obj->[1],
+                         icon => $obj->[2],
+                        };
+        }
+    }
+    Dlog_debug { "Linked pages: $_" } \@list;
+    return @list;
+}
+
+sub _unroll_linked_object {
+    my ($node) = @_;
+    my @list;
+    my %icons = (
+                 author => 'address-book-o',
+                 topic => 'tag',
+                 series => 'archive',
+                 aggregations => 'book',
+                 special => 'file-text-o',
+                 text => 'file-text-o',
+                );
+    # here we need to sort.
+    foreach my $series (@{$node->{node_aggregation_series} || []}) {
+        if (my $s = $series->{aggregation_series}) {
+            push @list, [
+                         encode_entities($s->{aggregation_series_name}),
+                         "/series/$s->{aggregation_series_uri}",
+                         'archive',
+                         $series->{sorting_pos},
+                        ];
+        }
+    }
+    foreach my $aggregation (@{$node->{node_aggregations} || []}) {
+        if (my $agg = $aggregation->{aggregation}) {
+            $agg->{aggregation_name} ||= join(' ', grep { /\w/ }
+                                              ($agg->{aggregation_series}->{aggregation_series_name},
+                                               $agg->{issue}));
+            push @list, [ encode_entities($agg->{aggregation_name}),
+                          "/aggregation/$agg->{aggregation_uri}",
+                          'book',
+                          $aggregation->{sorting_pos},
+                        ];
+        }
+    }
+    foreach my $category (@{$node->{node_categories}}) {
+        if (my $cat = $category->{category}) {
+            if ($cat->{active}) {
+                push @list, [ $cat->{name},
+                              "/category/$cat->{type}/$cat->{uri}",
+                              $icons{$cat->{type}} || 'tag',
+                              $category->{sorting_pos},
+                            ];
+            }
+        }
+    }
+    foreach my $title (@{$node->{node_titles} || []}) {
+        if (my $t = $title->{title}) {
+            if ($t->{status} eq 'published') {
+                my $full_uri = $t->{f_class} eq 'text'
+                  ? "/library/$t->{uri}"
+                  : "/special/$t->{uri}";
+                push @list, [ $t->{title},
+                              $full_uri,
+                              $icons{$t->{f_class}},
+                              $title->{sorting_pos},
+                            ];
+            }
+        }
+    }
+    return [ sort { $a->[3] <=> $b->[3] } @list ];
 }
 
 sub _render_node {
@@ -167,57 +247,8 @@ sub _render_node {
                      '/node/' . $node->{full_path},
                      $node->{title_html});
     $html .= "</div>\n";
-    my %icons = (
-                 author => 'address-book-o',
-                 topic => 'tag',
-                 series => 'archive',
-                 aggregations => 'book',
-                 special => 'file-text-o',
-                 text => 'file-text-o',
-                );
-    my @list;
-    if (my @series = @{$node->{node_aggregation_series}}) {
-        foreach my $series (sort { $a->{aggregation_series_uri} cmp $b->{aggregation_series_uri} }
-                            map { $_->{aggregation_series} }
-                            @series) {
-            push @list, [ encode_entities($series->{aggregation_series_name}),
-                          "/series/$series->{aggregation_series_uri}",
-                          'archive',
-                        ];
-        }
-    }
-    if (my @aggs = @{$node->{node_aggregations}}) {
-        foreach my $agg (sort { $a->{aggregation_uri} cmp $b->{aggregation_uri}  }
-                            map { $_->{aggregation} }
-                            @aggs) {
-            $agg->{aggregation_name} ||= join(' ', grep { /\w/ }
-                                              ($agg->{aggregation_series}->{aggregation_series_name},
-                                               $agg->{issue}));
-            push @list, [ encode_entities($agg->{aggregation_name}),
-                          "/aggregation/$agg->{aggregation_uri}",
-                          'book',
-                        ];
-        }
-    }
-    if (my @categories = @{$node->{node_categories}}) {
-        foreach my $cat (sort { $a->{sorting_pos} <=> $b->{sorting_pos} }
-                         grep { $_->{active} }
-                         map { $_->{category} }
-                         @categories) {
-            push @list, [ $cat->{name}, "/category/$cat->{type}/$cat->{uri}", $icons{$cat->{type}} || 'tag'] ;
-        }
-    }
-    if (my @titles = @{$node->{node_titles}}) {
-        foreach my $title (sort { $a->{sorting_pos} <=> $b->{sorting_pos} }
-                           grep { $_->{status} eq 'published' }
-                           map { $_->{title} }
-                           @titles) {
-            my $full_uri = $title->{f_class} eq 'text'
-              ? "/library/$title->{uri}"
-              : "/special/$title->{uri}";
-            push @list, [ $title->{title}, $full_uri, $icons{$title->{f_class}} ];
-        }
-    }
+    my @list = @{_unroll_linked_object($node)};
+    Dlog_debug { "My linked pages: $_" } \@list;
     if (@list) {
         $html .= join("",
                       $indent . "<ul>\n",

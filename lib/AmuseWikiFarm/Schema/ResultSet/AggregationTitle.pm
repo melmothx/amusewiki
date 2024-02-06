@@ -22,4 +22,8 @@ sub title_uris {
                   });
 }
 
+sub sorted {
+    shift->title_uris;
+}
+
 1;
