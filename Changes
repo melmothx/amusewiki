@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.594 2024-02-06
+
+ - Keep the collections items ordered as the user defined them
+ - Remove the order number input in the aggregation widgets (that
+   should be done with the drag&drop in the parent)
+
 2.593 2024-02-01
 
  - Keep the bookcover template tokens sorted
