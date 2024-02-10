@@ -343,6 +343,18 @@ sub marc21_record {
     my $title = $self->title;
     my $attachment = $self->attachment;
     my $obj = $title || $attachment;
+    unless ($obj) {
+        return [
+                [
+                 datafield => [ tag => '245', ind1 => 0, ind2 => 0 ],
+                 [ [ subfield => [ code => 'a'], 'Removed entry' ] ],
+                ],
+                [
+                 datafield => [ tag => '520', ind1 => ' ', ind2 => ' ' ],
+                 [ [ subfield => [ code => 'a', ],  'This entry was deleted' ] ],
+                ],
+               ];
+    }
     my $base_url = $self->site->canonical_url;
     my $dc = $obj->dublin_core_entry;
     my %rec = (

@@ -11,7 +11,7 @@ BEGIN {
 
 
 use Data::Dumper;
-use Test::More tests => 227;
+use Test::More tests => 235;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::OAI::PMH;
 use File::Spec::Functions qw/catfile catdir/;
@@ -371,6 +371,18 @@ foreach my $test ({
                   },
                   {
                    args => {
+                            verb => 'GetRecord',
+                            metadataPrefix => 'marc21',
+                            identifier => $site->oai_pmh_records->search({
+                                                                          deleted => 1,
+                                                                         })->first->identifier,
+                           },
+                   expect => [
+                              '<header status="deleted">',
+                             ],
+                  },
+                  {
+                   args => {
                             verb => 'ListRecords',
                             metadataPrefix => 'oai_dc',
                             set => 'amusewiki',
@@ -615,23 +627,30 @@ foreach my $test ({
 
 ok $site->oai_pmh_records->oldest_record;
 
-{
-    sleep 2;
-    my $now = DateTime->now;
-    $site->oai_pmh_records->create({
-                                    datestamp => $now,
-                                    identifier => 'testxx',
-                                    update_run => $now->epoch,
-                                   });
-    $mech->get_ok('/oai-pmh?verb=GetRecord&identifier=oai%3A0oai0.amusewiki.org%3Atestxx&metadataPrefix=oai_dc');
+sleep 2;
+my $now = DateTime->now;
+$site->oai_pmh_records->create({
+                                datestamp => $now,
+                                identifier => 'testxx',
+                                update_run => $now->epoch,
+                               });
+
+foreach my $prefix (qw/oai_dc marc21/){
+    $mech->get_ok(qq{/oai-pmh?verb=GetRecord&identifier=oai%3A0oai0.amusewiki.org%3Atestxx&metadataPrefix=$prefix});
     diag $mech->content;
-    $mech->content_contains('<dc:title>Removed entry</dc:title>');
-    $mech->content_contains('<dc:description>This entry was deleted</dc:description>');
+    if ($prefix eq 'oai_dc') {
+        $mech->content_contains('<dc:title>Removed entry</dc:title>');
+        $mech->content_contains('<dc:description>This entry was deleted</dc:description>');
+    }
+    else {
+        $mech->content_contains('<subfield code="a">Removed entry<');
+        $mech->content_contains('<subfield code="a">This entry was deleted<');
+    }
     $mech->content_contains('<header status="deleted">');
 
     my $uri = URI->new($site->canonical_url);
     $uri->path('/oai-pmh');
-    $uri->query_form({ from => $now->iso8601 . 'Z', metadataPrefix => 'oai_dc', verb => 'ListRecords' });
+    $uri->query_form({ from => $now->iso8601 . 'Z', metadataPrefix => $prefix, verb => 'ListRecords' });
     $mech->get_ok($uri);
     my $xml = $mech->content;
     my @identifiers;
