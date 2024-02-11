@@ -1049,6 +1049,7 @@ sub known_langs {
             kmr => 'Kurmancî',
             ro => 'Română',
             fa => 'فارسی',
+            eu => 'Euskara',
            };
 }
 

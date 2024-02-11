@@ -1,0 +1,4107 @@
+# AmuseWiki i18n
+# This file is distributed under the same license as the AmuseWiki package.
+# Marco Pessotto <melmothx@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AmuseWiki 2.594\n"
+"POT-Creation-Date: 2014-03-06 10:16+0100\n"
+"PO-Revision-Date: 2024-02-11 14:25+0100\n"
+"Last-Translator: Aitor <amento@ni.eus>\n"
+"Language-Team: Aitor\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. ($filename)
+msgid "%1 doesn't exist"
+msgstr "%1 ez dago"
+
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr "%1 lan ezabatu dira"
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr "%1 lan berrantolatu dira"
+
+#. ($c->stash->{site}->full_name)
+#. (site.full_name)
+msgid "%1 on mobile"
+msgstr "%1 mugikorrean"
+
+#. (text.pages_estimated)
+msgid "%1 pp."
+msgstr "%1 pp."
+
+msgid "(leave blank to keep the current one)"
+msgstr "(utzi hutsik unekoa mantentzeko)"
+
+msgid "(narrowest)"
+msgstr "(estuena)"
+
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr "(aipu adimendumak, estekak, oin-oharrak, etab.)"
+
+msgid "(use that as main link in static mirror as well)"
+msgstr "(erabili hori esteka nagusi gisa ispilu estatikoan ere)"
+
+msgid "(widest)"
+msgstr "(zabalena)"
+
+msgid "A blank line (or more blank lines) starts a new paragraph."
+msgstr ""
+"Lerro huts batek (edo lerro huts gehiagok) paragrafo berri bat hasten du."
+
+msgid "A collection with this URI already exists"
+msgstr "URI bera duen bilduma badago"
+
+msgid ""
+"A cover image was already added, but you can replace it uploading\n"
+"              a new one."
+msgstr ""
+"Azala jada gehitu da, baina ordez dezakezu\n"
+"              berri bat igoz."
+
+msgid ""
+"A footnote is a line which starts with a number between square\n"
+"          brackets, with no leading whitespace."
+msgstr ""
+"Oin-ohar bat kako zuzenen arteko zenbaki batekin hasten den\n"
+"          lerro bat da, hasierako zuriunerik gabe."
+
+msgid "A line which starts with 2 or more whitespaces is a quotation."
+msgstr "2 zuriune edo gehiagorekin hasten den lerro bat aipu bat da."
+
+msgid "A line which starts with 20 or more whitespaces is right-aligned."
+msgstr ""
+"20 zuriune edo gehigaorekin hasten den lerro bat eskuineruntz lerrokatuta "
+"dago."
+
+msgid "A line which starts with 6 or more whitespaces is centered."
+msgstr "6 zuriune edo gehiagorekin hasten den lerro bat erdiratuta dago."
+
+msgid ""
+"A list of links and labels to insert into the top\n"
+"            bar. One per line, first the url, then the label,\n"
+"            separated by a space, e.g. \"http://test.me Test site\""
+msgstr ""
+"Goian txertatuko diren esteka eta etiketen\n"
+"            zerrenda-barra. Bat lerroko, lehenik URLa, gero etiketa,\n"
+"            zuriune batez bananduta, adib. \"http://test.me Proba-gunea\""
+
+#. (location)
+msgid "A new text has been created at %1"
+msgstr "Testu berri bat sortu da hemen: %1"
+
+msgid "A nice title"
+msgstr "Izenburu polit bat"
+
+msgid "A4 imposed PDF"
+msgstr "A4 ezarritako PDFa"
+
+msgid "A4 paper"
+msgstr "A4 papera"
+
+msgid "A5 paper"
+msgstr "A5 papera"
+
+msgid "A6 paper (also suitable for e-readers)"
+msgstr "A6 papera (irakurgailu elektronikoetarako ere)"
+
+msgid "Abandoned editing in progress, feel free to check the diff and resume"
+msgstr ""
+"Abian zegoen edizioa bertan behera utzi da, ezberdintasuna ikus dezakezu eta "
+"jarraitu"
+
+msgid "Access token"
+msgstr "Sarbide-tokena"
+
+msgid "Action"
+msgstr "Ekintza"
+
+msgid "Activate the blog-style look and feel"
+msgstr "Gaitu blog estiloaren itxura"
+
+msgid "Active"
+msgstr "Gaitu"
+
+msgid "Add"
+msgstr "Gehitu"
+
+msgid "Add a cover image (PNG or JPG)"
+msgstr "Gehitu azala (PNG edo JPG)"
+
+msgid "Add a new text"
+msgstr "Gehitu testu berria"
+
+msgid "Add an attachment"
+msgstr "Gehitu eranskin bat"
+
+msgid "Add crop marks to the PDF"
+msgstr "Gehitu mozte-markak PDFan"
+
+msgid "Add new remote repository"
+msgstr "Gehitu urruneko biltegi berria"
+
+msgid "Add non-breaking spaces where appropriate for the language"
+msgstr "Gehitu zuriune banaezinak hizkuntzarentzat apropos den lekuan"
+
+msgid ""
+"Add paginator for text listing when the number of texts is greater than "
+"(integer)"
+msgstr ""
+"Gehitu testu-zerrendaren orri-zenbatzailea testuen kopurua (integer) baino "
+"handiagoa denean"
+
+msgid "Add sections to the bookbuilder"
+msgstr "Gehitu sekzioak liburu-sortzailean"
+
+msgid "Add text"
+msgstr "Gehitu testua"
+
+msgid "Add the OPDS URL"
+msgstr "Gehitu OPDS-ren URLa"
+
+msgid "Add the selected parts to the bookbuilder"
+msgstr "Gehitu hautatutako zatiak liburu-sortzailean"
+
+msgid "Add the whole text"
+msgstr "Gehitu testu osoa"
+
+msgid "Add this text to the bookbuilder"
+msgstr "Gehitu testu hau liburu-sortzailean"
+
+msgid "Add to colophon"
+msgstr "Gehitu azken oharrean"
+
+msgid "Add to the Bookbuilder"
+msgstr "Gehitu liburu-sortzailean"
+
+msgid ""
+"Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
+"text or a category. Examples:"
+msgstr ""
+"Gehitu 20 URL gehienez. Amusewiki-ren URLak izan behar dira, bai gune "
+"osoarena, testuarena edo kategoriarena. Adibideak:"
+
+#. ($ok)
+msgid "Added %1 sources."
+msgstr "%1 iturburu gehitu dira."
+
+msgid ""
+"Additional information (full date, original title, translators, credits, "
+"etc)."
+msgstr ""
+"Informazio gehigarria (data osoa, jatorrizko izenburua, itzultzaileak, "
+"kredituak, etab.)"
+
+msgid "Additional nginx configuration"
+msgstr "Nginx-en konfigurazio gehigarria"
+
+#. (c.uri_for_action('/console/unpublished')
+#. (c.uri_for_action("/console/unpublished").path)
+msgid ""
+"After the approval of the\n"
+"  change, it will appear under %1. There is a big red\n"
+"  button for each deleted text, and you can proceed with the purging."
+msgstr ""
+"Aldaketaren baieztapenaren ondoren\n"
+"  %1 gisa agertuko da. Botoi gorri handi bat\n"
+"  dago ezabatutako testu bakoitzeko, eta garbiketarekin jarrai dezakezu."
+
+msgid "Age:"
+msgstr "Adina:"
+
+msgid "Aggregation"
+msgstr "Agregazioa"
+
+msgid "Aggregation editing is disabled (autoimport file present)"
+msgstr ""
+"Agregazio-edizioa desgaituta dago (inportazio automatikoaren fitxategia dago)"
+
+msgid "Aggregations"
+msgstr "Agregazioak"
+
+msgid "Alias"
+msgstr "Ezizena"
+
+msgid "Alias can't point to itself"
+msgstr "Ezin da zuzendu ezizena bere buruari"
+
+msgid ""
+"All kind of lists start with one or more leading\n"
+"        whitespace."
+msgstr ""
+"Mota guztietako zerrendak hasierako zuriune bat\n"
+"        edo gehiagorekin hasten dira."
+
+msgid "All languages"
+msgstr "Hizkuntza guztiak"
+
+msgid "All revisions"
+msgstr "Berrikuspen guztiak"
+
+msgid "All sites"
+msgstr "Gune guztiak"
+
+msgid "All users"
+msgstr "Erabiltzaile guztiak"
+
+msgid ""
+"Allow Unicode URIs for categories (author, topics). Recommended for non-"
+"latin scripts."
+msgstr ""
+"Onartu kategorien Unicode-ren URIak (egilea, gaiak). Latindar idazkerakoak "
+"ez direnentzat gomendatua."
+
+msgid ""
+"Allow binary uploads to logged in users: list of whitespace separate file "
+"extensions"
+msgstr ""
+"Onartu igoera bitarrak saioa hasi duten erabiltzaileei: zuriunez banandutako "
+"fitxategi-luzapenen zerrenda"
+
+msgid ""
+"Also produce slides\n"
+"          from the document. Each section, no matter how deep, will\n"
+"          produce a slide. The text outside a section is ignored, so\n"
+"          if you do not have sections, you will get empty slides. If\n"
+"          you want to exclude a section, put a comment in the section\n"
+"          body with the string “noslide”."
+msgstr ""
+"Baita ere, sortu diapositibak\n"
+"          dokumentutik. Sekzio bakoitzak, sakontasuna aintzat hartu gabe,\n"
+"          diapositiba bat sortuko du. Sekzio batetik at dagoen testua "
+"baztertuko da,\n"
+"          beraz, sekziorik ez baduzu, diapositiba hutsak izango dituzu.\n"
+"          Sekzio bat kendu nahi baduzu, jarri iruzkin bat sekzioaren "
+"gorputzean\n"
+"          “noslide” katearekin."
+
+msgid "Alternate Text"
+msgstr "Ordezko testua"
+
+msgid ""
+"An URI is a string which uniquely identifies the text\n"
+"      in the archive. In theory, it could be anything, but if you want\n"
+"      to set it yourself, please stick with the convention: author\n"
+"      name, title, language, eventual number for disambiguation, e.g.\n"
+"      errico-malatesta-anarchy-2. Please note that this is normally\n"
+"      not needed"
+msgstr ""
+"URIa artxiboko testua soilik identifikatzen duen\n"
+"      kate bat da. Teorian, edozer izan liteke, baina zuk zeuk\n"
+"      ezarri nahi baduzu, jarraitu hitzartutakoa: egilearen\n"
+"      izena, izenburua, hizkuntza, amaierako zenbakia gaizkiulerturik egon "
+"ez dadin, adib.\n"
+"      errico-malatesta-anarkia-2. Gogoan izan, normalean, hau\n"
+"      beharrezkoa ez dela"
+
+msgid "Annotations"
+msgstr "Oharrak"
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+"Oharrak testu-metadatuak dira eta ez dira gehitzen muse fitxategian. "
+"Adibideak: prezioak, katalogo-zenbakiak, apalaren kokapena, fitxategi bitar "
+"handien kopia erabilgarriak, barne-iruzkinak."
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr "Honen oharrak: %1"
+
+msgid "Annotations, collections, aggregations"
+msgstr "Oharrak, bildumak, agregazioak"
+
+msgid "Anthologies"
+msgstr "Antologiak"
+
+msgid "Anthologies and periodicals"
+msgstr "Antologiak eta aldizkariak"
+
+msgid "Anthology Name"
+msgstr "Antologiaren izena"
+
+msgid "Apache is not currently supported"
+msgstr "Apache ez da onartzen une honetan"
+
+msgid "Archive"
+msgstr "Artxiboa"
+
+msgid "Archive by month"
+msgstr "Artxiboa hilabeteko"
+
+msgid "Archive history"
+msgstr "Artxiboaren historia"
+
+msgid "Are you sure?"
+msgstr "Ziur zaude?"
+
+msgid "As cover in the header"
+msgstr "Goiburuko azal gisa"
+
+msgid "As regular image in the body"
+msgstr "Gorputzeko ohiko irudi gisa"
+
+msgid "Assign text to aggregations"
+msgstr "Esleitu testua agregazioei"
+
+msgid "Assign text to collections"
+msgstr "Esleitu testua bildumei"
+
+msgid "Attach"
+msgstr "Erantsi"
+
+msgid "Attached images"
+msgstr "Erantsitako irudiak"
+
+msgid "Attachments"
+msgstr "Eranskinak"
+
+msgid "Author"
+msgstr "Egilea"
+
+msgid "Author and title. If one side document: title."
+msgstr "Egilea eta izenburua. Alde bateko dokumentua bada: izenburua."
+
+msgid "Authorize your IP"
+msgstr "Baimendu zure IPa"
+
+msgid "Authorize your IP, if needed"
+msgstr "Baimendu zure IPa, beharrezkoa bada"
+
+msgid "Authors"
+msgstr "Egileak"
+
+msgid "Authors and topics listing"
+msgstr "Egileen eta gaien zerrenda"
+
+msgid "Authors for indexing"
+msgstr "Indexatuko diren egileak"
+
+msgid "Auto"
+msgstr "Automatikoa"
+
+msgid "Automatically generated"
+msgstr "Automatikoki sortua"
+
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr "Eskatu eta berritu automatikoki Let's Encrypt-eko SSL ziurtagiriak"
+
+msgid "Available"
+msgstr "Erabilgarri"
+
+msgid "Available category tags for header"
+msgstr "Goiburuaren kategoria-etiketa erabilgarriak"
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
+"Saihestu marrak gehitzea esaldi baten azkeneko hitzan (zuriune okerrak sor "
+"litezke)"
+
+msgid "Back to the text"
+msgstr "Itzuli testura"
+
+msgid "Bad request"
+msgstr "Eskaera okerra"
+
+msgid "Bad type. This is a bug"
+msgstr "Mota okerra. Hau arazo bat da."
+
+msgid "Beamer color theme"
+msgstr "Errainuaren kolore-gaia"
+
+msgid "Beamer theme"
+msgstr "Errainuaren gaia"
+
+msgid "Beside topics and authors you can add more categories here"
+msgstr "Gai eta egileez gain, kategoria gehiago gehi ditzakezu hemen"
+
+msgid "Binding correction in millimeters (additional inner margin)"
+msgstr "Azalaren zuzenketa milimetrotan (barneko orri-bazter gehigarria)"
+
+msgid "Bleed Width (mm)"
+msgstr "Koskaren zabalera (mm)"
+
+msgid ""
+"Blocks of 16 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+"Bitan tolestuko diren 16 orriko blokeak eta gero lotu\n"
+"                guztiak."
+
+msgid ""
+"Blocks of 8 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+"Bitan tolestuko diren 8 orriko blokeak eta gero lotu\n"
+"                guztiak."
+
+msgid "Blog"
+msgstr "Bloga"
+
+msgid "Body"
+msgstr "Gorputza"
+
+msgid "Bold"
+msgstr "Letra lodia"
+
+msgid "Book Covers"
+msgstr "Liburu-azalak"
+
+msgid "Bookbuilder"
+msgstr "Liburu-sortzailea"
+
+msgid "Bookbuilder page limit (integer)"
+msgstr "Liburu-sortzailearen orri-muga (integer)"
+
+msgid "Build it"
+msgstr "Sortu"
+
+msgid "Built-in"
+msgstr "Integratuta"
+
+msgid "Bump Publication Date"
+msgstr "Ezeztatu argitalpen-data"
+
+msgid ""
+"By default, secondary footnotes use arabic numbering\n"
+"        between parens. With this option they will use per-page alpha\n"
+"        numbering"
+msgstr ""
+"Lehenespenez, bigarren mailako oin-oharrek zenbaki arabiarrak\n"
+"        erabiltzen dituzte parentesi artean. Aukera honekin, orri "
+"bakoitzeko\n"
+"        alfanumerikoa erabiliko dute."
+
+msgid "By number of pages, ascending"
+msgstr "Orri kopuruaren arabera, goruntz"
+
+msgid "By number of pages, descending"
+msgstr "Orri kopuruaren arabera, beheruntz"
+
+msgid "By relevance"
+msgstr "Garrantziaren arabera"
+
+msgid "By sku ascending"
+msgstr "SKUaren arabera, goruntz"
+
+msgid "By sku descending"
+msgstr "SKUaren arabera, beheruntz"
+
+msgid "By title A-Z"
+msgstr "Izenburuaren arabera, A-Z"
+
+msgid "By title Z-A"
+msgstr "Izenburuaren arabera, Z-A"
+
+msgid "CSS Alternate Theme (Dark mode, optional)"
+msgstr "CSSren ordezko gaia (modu iluna, aukerakoa)"
+
+msgid "CSS Theme"
+msgstr "CSS gaia"
+
+msgid "Cancel"
+msgstr "Utzi"
+
+msgid "Canonical name"
+msgstr "Izen kanonikoa"
+
+msgid "Categories"
+msgstr "Kategoriak"
+
+msgid "Category editing is disabled (autoimport file present)"
+msgstr ""
+"Kategoriak editatzea desgaituta dago (inportazio automatikoaren fitxategia "
+"dago)"
+
+#. ($site->canonical)
+#. (site.canonical)
+msgid "Category types for %1"
+msgstr "Honen kategoria motak: %1"
+
+msgid "Center all the sectioning titles."
+msgstr "Erdiratu sekzioen izenburu guztiak."
+
+msgid "Center the chapter titles."
+msgstr "Erdiratu atalen izenburuak."
+
+msgid "Changes"
+msgstr "Aldaketak"
+
+msgid "Changes applied"
+msgstr "Aldaketak aplikatu dira"
+
+msgid "Changes applied."
+msgstr "Aldaketak aplikatu dira."
+
+#. ($c->stash->{revision}->title->uri)
+#. (revision.title.uri)
+#. (author_title)
+msgid "Changes for %1"
+msgstr "Honen aldaketak: %1"
+
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr "Aldaketak gorde dira, mila esker! Orain, argitaratzeko zain daude"
+
+msgid ""
+"Changing urls is a poor practice. Anyway, if you know what you’re\n"
+"doing, you can delete an existing text and point to another adding a\n"
+"#DELETED directive in the text header with a special syntax:"
+msgstr ""
+"URLak aldatzea ez da gomendagarria. Halere, zer egiten ari zaren\n"
+"baldin badakizu, dagoen testu bat ezaba dezakezu eta zuzendu beste\n"
+"batera #DELETED direktiba bat gehituz testuaren goiburuan sintaxi berezi "
+"batekin:"
+
+msgid "Chapter"
+msgstr "Atala"
+
+msgid "Chapter and section. If one side document: chapter."
+msgstr "Atala eta sekzioa. Alde bateko dokumentua bada: atala."
+
+msgid "Chapter, only for chapter divisions in books"
+msgstr "Atala, soilik liburuetako atal-banaketentzat"
+
+msgid "Cheatsheet for the markup"
+msgstr "Markatzearen trikimailu-orria"
+
+msgid "Check"
+msgstr "Egiaztatu"
+
+msgid "Check mail sending and send mail to:"
+msgstr "Egiaztatu postaren bidalketa eta bidali mezu bat hona:"
+
+msgid "Choose a paper format"
+msgstr "Aukeratu paper-formatu bat"
+
+msgid "Choose a template"
+msgstr "Aukeratu txantiloi bat"
+
+msgid "Clear the book list"
+msgstr "Garbitu liburu-zerrenda"
+
+msgid "Click on the images to get the sample PDF"
+msgstr "Sakatu irudietan adibide bat PDF formatuan lortzeko"
+
+msgid "Clone"
+msgstr "Bikoiztu"
+
+msgid "Close"
+msgstr "Itxi"
+
+msgid "Code"
+msgstr "Kodea"
+
+msgid "Collection"
+msgstr "Bilduma"
+
+msgid "Collection created"
+msgstr "Bilduma sortu da"
+
+msgid "Collection has been deleted"
+msgstr "Bilduma ezabatu da"
+
+msgid "Collection has been updated"
+msgstr "Bilduma eguneratu da"
+
+msgid "Collections"
+msgstr "Bildumak"
+
+msgid "Colophon (displayed in the generated files):"
+msgstr "Azken oharra (sortutako fitxategietan bistaratuta):"
+
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr ""
+"Editatzen ari den orriaren ezker aldeko zutabeak, edizio-koadroarekin "
+"(hamabitik)"
+
+msgid "Comma or semicolon separated list"
+msgstr "Koma edo puntu eta komaz bereizitako zerrenda"
+
+msgid "Comments"
+msgstr "Iruzkinak"
+
+msgid "Commit ID"
+msgstr "Berrespen IDa"
+
+msgid "Completed"
+msgstr "Osatuta"
+
+msgid "Computing of differences took"
+msgstr "Hartutako ezberdintasunen kalkulua"
+
+msgid "Confirm"
+msgstr "Berretsi"
+
+msgid "Conflict"
+msgstr "Gatazka"
+
+msgid "Continuous footnote numbering across the whole document."
+msgstr "Oin-ohar zenbaketa jarraikorra dokumentu osoan zehar."
+
+msgid "Convert to archive markup"
+msgstr "Bihurtu artxiboaren markatze"
+
+msgid "Copyright notice"
+msgstr "Egile-eskubidearen oharra"
+
+msgid "Couldn't add the text"
+msgstr "Ezin izan da gehitu testua"
+
+msgid "Couldn't automatically generate the URI!"
+msgstr "Ezin izan da sortu automatikoki URIa"
+
+msgid "Couldn't build that"
+msgstr "Ezin izan da sortu"
+
+msgid "Cover Height (mm)"
+msgstr "Azalaren altuera (mm)"
+
+msgid "Cover Width (mm)"
+msgstr "Azalaren zabalera (mm)"
+
+msgid "Cover removed"
+msgstr "Azala kendu da"
+
+msgid "Create"
+msgstr "Sortu"
+
+msgid "Create a book cover"
+msgstr "Sortu liburu-azala"
+
+msgid "Create a new aggregation"
+msgstr "Sortu agregazio berria"
+
+msgid "Create a new aggregation for this series"
+msgstr "Sortu sail honen agregazio berria"
+
+msgid "Create a new annotation."
+msgstr "Sortu ohar berria"
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr "Sortu kategoria berria. Erabili soilik ASCII-ren letra xeheak"
+
+msgid "Create a new child collection"
+msgstr "Sortu bigarren mailako bilduma berria"
+
+msgid "Create a new format"
+msgstr "Sortu formatu berria"
+
+msgid "Create a new librarian"
+msgstr "Sortu liburuzain berria"
+
+msgid "Create a new series"
+msgstr "Sortu sail berria"
+
+msgid "Create a new special page"
+msgstr "Sortu orri berezi berria"
+
+msgid "Create a new text for this aggregation"
+msgstr "Sortu agregazio honen testu berria"
+
+msgid "Create a new text for this collection"
+msgstr "Sortu bilduma honen testu berria"
+
+msgid "Create a new user"
+msgstr "Sortu erabiltzaile berria"
+
+msgid ""
+"Create a public repository on GitLab, GitHub or similar services (or on your "
+"own server). "
+msgstr ""
+"Sortu biltegi publikoa GitLab, GitHub edo antzeko zerbitzu batean (edo zure "
+"zerbitzarian). "
+
+msgid "Create a topic alias"
+msgstr "Sortu gaiaren ezizena"
+
+msgid "Create an author alias"
+msgstr "Sortu egilearen ezizena"
+
+msgid "Create new site"
+msgstr "Sortu gune berria"
+
+msgid "Create user and mail password"
+msgstr "Sortu erabiltzaile eta postaren pasahitza"
+
+msgid "Created"
+msgstr "Sortuta"
+
+msgid "Created by"
+msgstr "Egilea:"
+
+msgid "Created new text"
+msgstr "Testu berria sortu da"
+
+msgid "Current time"
+msgstr "Uneko ordua"
+
+#. ($c->stash->{site}->canonical)
+#. (site.canonical)
+msgid "Custom formats for %1"
+msgstr "Honen formatu pertsonalizatuak: %1"
+
+msgid "Custom home page"
+msgstr "Hasierako orri pertsonalizatua"
+
+msgid "Date"
+msgstr "Data"
+
+msgid "Date of the original publication"
+msgstr "Jatorrizko argitalpenaren data"
+
+msgid "Day"
+msgstr "Eguna"
+
+msgid "Default"
+msgstr "Lehenetsitakoa"
+
+msgid "Default sorting for the category text list"
+msgstr "Kategoriako testu-zerrendaren ordena lehenetsia"
+
+msgid "Default value if blank:"
+msgstr "Balio lehenetsia hutsik dagoenean:"
+
+msgid "Deferred/Deleted texts"
+msgstr "Atzeratutako/Ezabatutako testuak"
+
+msgid "Delete"
+msgstr "Ezabatu"
+
+msgid "Delete permanently"
+msgstr "Ezabatu betiko"
+
+#. (remote.name)
+msgid "Delete remote repository %1"
+msgstr "Ezabatu urruneko %1 biltegia"
+
+msgid "Delete selected attachments"
+msgstr "Ezabatu hautatutako eranskinak"
+
+msgid ""
+"Deleting a revision is safe if a text has been\n"
+"    published. Otherwise deleting it you'll lose the unpublished changes"
+msgstr ""
+"Berrikuspen bat ezabatzea segurua da, baldin eta\n"
+"    testua argitaratu bada. Bestela, ezabatzean, argitaratu gabeko aldaketak "
+"galduko dituzu."
+
+msgid "Description"
+msgstr "Azalpena"
+
+msgid "Description item"
+msgstr "Azalpenaren elementua"
+
+msgid ""
+"Description lists use a double colon to separate the\n"
+"        term and the description."
+msgstr ""
+"Azalpen-zerrendek koma bikoitza erabiltzen dute\n"
+"        terminoa eta azalpena bereizteko."
+
+msgid "Desired URI"
+msgstr "Nahi den URIa"
+
+msgid "Destination"
+msgstr "Helmuga"
+
+msgid "Details"
+msgstr "Xehetasunak"
+
+msgid "Did you mean:"
+msgstr "Hau esan al nahi zenuen?"
+
+msgid "Diff"
+msgstr "Ezb."
+
+msgid "Differences"
+msgstr "Ezberdintasunak"
+
+msgid ""
+"Directory with templates in the site repository, e.g.\n"
+"        \"templates\" (ASCII only). Do not set it unless you know\n"
+"        exactly what you are doing"
+msgstr ""
+"Txantiloiak dituen gunearen biltegiko direktorioa, adib.\n"
+"        \"txantiloiak\" (ASCII soilik). Ez ezarri zer egiten ari zaren\n"
+"        ez baldin badakizu."
+
+msgid "Disable /mirror/ URL for anonymous users"
+msgstr "Desgaitu /ispiluaren/ URLa erabiltzaile anonimoentzat"
+
+msgid "Display the latest entries on special pages"
+msgstr "Bistaratu azken sarrerak orri berezietan"
+
+msgid "Display url as"
+msgstr "Bistaratu URLa honen gisa:"
+
+msgid "Division factor"
+msgstr "Zatiketaren faktorea"
+
+msgid "Do not create a cover page and start the text on the first page"
+msgstr "Ez sortu azal-orri bat eta hasi testua lehen orrian"
+
+msgid "Do not enforce save message"
+msgstr "Ez behartu mezua gordetzera"
+
+msgid "Do not redirect aliases to canonical"
+msgstr "Ez birbideratu ezizneak kanonikora"
+
+msgid "Do not use bold fonts"
+msgstr "Ez erabili letra-tipoen letra lodia"
+
+msgid "Do you also need a cover?"
+msgstr "Azal bat behar al duzu?"
+
+msgid "Domain"
+msgstr "Domeinua"
+
+msgid "Done"
+msgstr "Kitto"
+
+msgid "Double bars"
+msgstr "Barra bikoitzak"
+
+msgid "Download"
+msgstr "Deskargatu"
+
+msgid "Downloads"
+msgstr "Deskargak"
+
+msgid "Drag to reorder"
+msgstr "Arrastatu birrordenatzeko"
+
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr "Adibidea: \"Izenburua\" ETA egilea:Izena EDO urtea:2017"
+
+msgid "EPUB"
+msgstr "EPUB"
+
+msgid "EPUB (for mobile devices)"
+msgstr "EPUB (gailu mugikorrentzat)"
+
+msgid "ETA"
+msgstr "Iristeke"
+
+msgid "Edit"
+msgstr "Editatu"
+
+msgid "Edit Aggregation"
+msgstr "Editatu agregazioa"
+
+msgid "Edit Series"
+msgstr "Editatu saila"
+
+msgid "Edit attachment description"
+msgstr "Editatu eranskinaren azalpena"
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr "Editatu %1 formatua"
+
+msgid "Edit full site configuration"
+msgstr "Editatu gune osoaren konfigurazioa"
+
+msgid "Edit screen layout options"
+msgstr "Editatu pantailaren diseinuaren aukerak"
+
+#. (esite.id)
+msgid "Edit site %1"
+msgstr "Editatu %1 gunea"
+
+msgid "Edit site configuration"
+msgstr "Editatu gunearen konfigurazioa"
+
+msgid "Edit the text you want to unpublish and add this line to the header:"
+msgstr ""
+"Editatu argitalpena ezeztatu nahi diozun testua eta gehitu lerro hau "
+"goiburuan:"
+
+msgid "Edit this text"
+msgstr "Editatu testu hau"
+
+#. (user.username)
+msgid "Edit user %1"
+msgstr "Editatu %1 erabiltzailea"
+
+msgid "Editing"
+msgstr "Editatzen"
+
+msgid "Effect"
+msgstr "Eragina"
+
+msgid "Email"
+msgstr "Posta elektronikoa"
+
+msgid "Email sent!"
+msgstr "Mezua bidali da."
+
+msgid "Email updated"
+msgstr "Helbide elektronikoa eguneratu da"
+
+msgid "Email, password, locale"
+msgstr "Posta elektronikoa, pasahitza, eskualdeko ezarpenak"
+
+msgid "Emails do not match"
+msgstr "Helbideak ez datoz bat"
+
+msgid "Embed fonts in the EPUB file"
+msgstr "Txertatu letra-tipoak EPUB fitxategian"
+
+msgid "Enable \"What links here\" feature"
+msgstr "Gaitu \"Zerk dakar hona\" eginbidea"
+
+msgid "Enable search suggestions (did you mean...)"
+msgstr "Gaitu bilaketa-iradokizunak (\"hau esan al nahi zenuen?\"...)"
+
+msgid "Enable title ordering by SKU"
+msgstr "Gaitu SKU-ren izenburu-ordena"
+
+msgid "Enforce e-mail on submission"
+msgstr "Behartu posta elektronikoa bidaltzean"
+
+msgid "Erase this revision"
+msgstr "Ezabatu berrikuspen hau"
+
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr "Errorea izan da igotzeko fitxategia bihurtzean. HTML fitxategia al da?"
+
+msgid "Error sending mail!"
+msgstr "Errorea izan da mezua bidaltzean."
+
+msgid "Error while converting the HTML. Sorry."
+msgstr "Errorea izan da HTML bihurtzean."
+
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr "Errorea: %1"
+
+msgid "Errors"
+msgstr "Erroreak"
+
+msgid "Estimated pages"
+msgstr "Aurreikusitako orriak"
+
+msgid ""
+"Even if this site has a responsive, mobile-friendly layout,\n"
+"  it does not provide a dedicated mobile application."
+msgstr ""
+"Nahiz eta gune honek mugikorrentzat diseinu harbera izan,\n"
+"  ez du eskaintzen mugikorretarako aplikazioa."
+
+msgid ""
+"Every\n"
+"        section will generate a slide. You need to do proper\n"
+"        sectioning for this to work."
+msgstr ""
+"Sekzio orok\n"
+"        diapositiba bat sortuko du. Sekzioak behar bezala\n"
+"        gehitu behar dituzu honek funtziona dezan."
+
+msgid ""
+"Exactly like 2up, but the sheets are meant to be cut\n"
+"        horizontally first and then stack on each other. This way you\n"
+"        can print, for example, A6 booklets on A4."
+msgstr ""
+"2up bezala, baina orriak horizontalki mozteko\n"
+"        dira lehenik eta gero bata bestearekin elkartzen dira. Horrela,\n"
+"        A6 tamainako liburuxkak A4 tamainan inprima ditzakezu, adibidez."
+
+msgid "Example"
+msgstr "Adibidea"
+
+msgid "Exception"
+msgstr "Salbuespena"
+
+msgid "Existing redirections"
+msgstr "Dauden birbideraketak"
+
+msgid "Expected pages"
+msgstr "Aurreikusitako orriak"
+
+msgid "Exposed to OAI-PMH as shelf location code"
+msgstr "OAI-PMH-ri erakutsita apalaren kokapen-kode gisa"
+
+msgid "Exposed to OAI-PMH as trade price"
+msgstr "OAI-PMH-ri erakutsita salerosketa-prezio gisa"
+
+msgid "Failed"
+msgstr "Huts egin da"
+
+#. ("$name $url")
+msgid "Failed to add remote repository %1"
+msgstr "Ezin izan da gehitu %1 biltegia"
+
+#. ($name)
+msgid "Failed to remove Remote repository %1"
+msgstr "Ezin izan da kendu urruneko %1 biltegia"
+
+msgid "Federation"
+msgstr "Federazioa"
+
+msgid "Feed enclosure method (OPDS and RSS)"
+msgstr "Jarioa eransteko metodoa (OPDS eta RSS)"
+
+msgid "Fetch"
+msgstr "Lortu"
+
+msgid "File"
+msgstr "Fitxategia"
+
+msgid "File already in the body"
+msgstr "Fitxategia jada gorputzean dago"
+
+msgid "File extension"
+msgstr "Fitxategi-luzapena"
+
+msgid "File format not allowed"
+msgstr "Fitxategi-formatua ez da onartzen"
+
+msgid "File too big"
+msgstr "Fitxategia handiegia da"
+
+msgid "File uploaded!"
+msgstr "Fitxategia igo da"
+
+msgid "Files"
+msgstr "Fitxategiak"
+
+msgid "Files not referenced by any text"
+msgstr "Ez dago testurik fitxategi honi erreferentzia egiten dionik"
+
+msgid ""
+"Fill with blank pages before the last page if the signature is not full."
+msgstr "Bete orri hutsekin azken orria baino lehen sinadura ez bada osoa."
+
+msgid "Filters"
+msgstr "Iragazkia"
+
+msgid "Find the add catalogue menu."
+msgstr "Aurkitu katalogoa gehitzeko menua."
+
+msgid "Find the network library menu, or equivalent."
+msgstr "Aurkitu sareko liburutegi-menua, edo baliokidea."
+
+msgid "Finished"
+msgstr "Amaituta"
+
+msgid "First"
+msgstr "Lehena"
+
+msgid "First Author and Second Author"
+msgstr "Lehen egilea eta bigarren egilea"
+
+msgid "First Author, Second Author"
+msgstr "Lehen egilea, bigarren egilea"
+
+msgid "First slide"
+msgstr "Lehen diapositiba"
+
+msgid "First text attachment or EPUB"
+msgstr "Lehen testu-eranskina edo EPUB"
+
+msgid "First you have to unpublish it via #DELETED."
+msgstr "Lehenik, argitalpena ezeztatu behar duzu #DELETED bidez."
+
+msgid "Fix typography (smart quotes)"
+msgstr "Konpondu tipografia (aipu adimendunak)"
+
+msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
+msgstr ""
+"16 orrietako sinadurak konpondu dira 2 orritan, banako tolesdura "
+"bikoitzarekin."
+
+msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
+msgstr ""
+"16 orrietako sinadurak konpondu dira orri bakarrean, tolesdura "
+"hirukoitzarekin."
+
+msgid ""
+"Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
+"and bound together."
+msgstr ""
+"8 orrietako sinadurak konpondu dira, horizontalki mozteko, banaka tolesteko "
+"eta elkarrekin batzeko."
+
+msgid "Fixed topic list"
+msgstr "Gai-zerrenda konpondu da"
+
+msgid "Flap Width (mm)"
+msgstr "Hegalaren zabalera (mm)"
+
+msgid "Folding Margin"
+msgstr "Tolestearen orri-bazterra"
+
+msgid "Font"
+msgstr "Letra-tipoa"
+
+msgid "Font preview"
+msgstr "Letra-tipoaren aurrebista"
+
+msgid "Font size"
+msgstr "Letra-tipoaren tamaina"
+
+msgid "Footnotes"
+msgstr "Oin-oharrak"
+
+#. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
+msgid ""
+"Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
+"in the body (%4), ignoring changes."
+msgstr ""
+"Oin-oharrak ez datoz bat: %1 oin-ohar aurkitu dira (%2) eta oin-oharren %3 "
+"erreferentzia aurkitu dira gorputzean (%4), aldaketak baztertzen direlarik."
+
+msgid "For texts from the internet use"
+msgstr "Interneteko testuetarako, erabili"
+
+msgid "For texts without a table of content, start text on the very first page"
+msgstr "Eduki-taula ez duten testuetarako, hasi testua lehenengo orrian"
+
+msgid ""
+"For topics and authors redirections, you can create them\n"
+"  here"
+msgstr ""
+"Gaien eta egileen birbideraketetarako, hurak sor ditzakezu\n"
+"  hemen"
+
+msgid "Force a line break."
+msgstr "Behartu lerro-jauzia."
+
+msgid "Force publishing"
+msgstr "Behartu argitaratzea"
+
+msgid "Format name"
+msgstr "Formatuaren izena"
+
+msgid "Format successfully created"
+msgstr "Formatua sortu da"
+
+msgid "Format successfully updated"
+msgstr "Formatua eguneratu da"
+
+msgid "Formats"
+msgstr "Formatuak"
+
+msgid "Full list of texts"
+msgstr "Testu-zerrenda osoa"
+
+msgid "Full tag cloud"
+msgstr "Hodei-etiketa osoa"
+
+msgid "Full text search"
+msgstr "Testu-bilaketa osoa"
+
+msgid "Full width, fluid layout"
+msgstr "Zabalera osoa, diseinu arina"
+
+msgid "General configuration"
+msgstr "Konfigurazio orokorra"
+
+msgid "Generate Index"
+msgstr "Sortu aurkibidea"
+
+msgid "Generic (fits in A4 and Letter)"
+msgstr "Orokorra (A4 eta gutun formatuentzat)"
+
+msgid "Get generated URI"
+msgstr "Lortu sortutako URIa"
+
+msgid ""
+"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
+"using the form you can find above. You can have one personal repository."
+msgstr ""
+"Lortu biltegiaren HTTPS URLa, adibidez: https://example.com/git/test eta "
+"gehitu goian aurki dezakezun inprimakia erabiliz. Biltegi pertsonal bakarra "
+"izan dezakezu."
+
+msgid "Git"
+msgstr "Git"
+
+msgid "Git console"
+msgstr "Git kontsola"
+
+msgid "Git is not enabled on this site"
+msgstr "Git ez dago gaituta gune honetan"
+
+msgid ""
+"HTML code to append to each regular page, inserted\n"
+"            verbatim, so be careful"
+msgstr ""
+"Ohiko orri bakoitzari erantsi beharreko HTML kodea,\n"
+"            verbatim txertatu da, beraz, adi"
+
+msgid ""
+"HTML to append to each special page, inserted\n"
+"            verbatim, now you have a chance to screw up everything, so\n"
+"            be careful"
+msgstr ""
+"Orri berezi bakoitzari erantsi beharreko HTML kodea,\n"
+"            verbatim txertatu da, orain guztia hankaz gora jartzeko aukera "
+"duzu,\n"
+"            beraz, adi"
+
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr "Diseinuaren oinean txertatu beharreko HTMLa, esteken azpian"
+
+msgid "HTML to insert into the left sidebar"
+msgstr "Ezkerreko alboko barran txertatu beharreko HTMLa"
+
+msgid "HTML to insert into the right sidebar"
+msgstr "Eskuineko alboko barran txertatu beharreko HTMLa"
+
+msgid "HTML to insert on the bottom of the layout, above the footer"
+msgstr "Diseinuaren behealdean txertatu beharreko HTMLa, oinaren gainean"
+
+msgid ""
+"HTML to insert on the top of the layout, behind the navigation bar and below "
+"the banner"
+msgstr ""
+"Diseinuaren goialdean txertatu beharreko HTMLa, nabigazio-barraren atzean "
+"eta pankartaren azpian"
+
+msgid "HTML/Word Importer"
+msgstr "HTML/Word inportatzailea"
+
+msgid "Half Letter paper"
+msgstr "Gutun-erdi papera"
+
+msgid "Headers"
+msgstr "Goiburuak"
+
+msgid "Heading"
+msgstr "Goiburua"
+
+msgid "Headings"
+msgstr "Goiburuak"
+
+msgid "Height:"
+msgstr "Altuera:"
+
+msgid "Help Text"
+msgstr "Laguntza-testua"
+
+msgid "Here you can find a preview of the Beamer themes and color themes"
+msgstr "Hemen Errainuaren gaien eta kolore-gaien aurrebista aurki dezakezu"
+
+msgid ""
+"Here you can save or load your templates. The text list\n"
+"      and the cover image are excluded by the saved settings. You can\n"
+"      use this to save paper/fonts/imposition and other options."
+msgstr ""
+"Hemen txantiloiak gorde eta karga ditzakezu. Testu-zerrenda\n"
+"      eta azalaren irudia gordetako ezarpenek baztertzen dituzte. Aukera\n"
+"      hau erabil dezakezu papera/letra-tipoak/ezarpenak eta beste aukerak "
+"gordetzeko."
+
+msgid "Higher division factor means narrower margins"
+msgstr ""
+"Zatiketaren faktorea geroz eta altuago, orduan eta estuagoak orri-bazterrak"
+
+msgid "Highest priority format"
+msgstr "Lehentasunik handienaren formatua"
+
+msgid "Home"
+msgstr "Hasiera"
+
+msgid "How are you going to access Git?"
+msgstr "Nola atzituko duzu Git-a?"
+
+msgid "How do I create a landing page?"
+msgstr "Nola sor dezaket helburu-orria?"
+
+msgid "How do I create a special page?"
+msgstr "Nola sor dezaket orri berezia?"
+
+msgid "How do I delete a text?"
+msgstr "Nola ezaba dezaket testua?"
+
+msgid "How do I modify a special page?"
+msgstr "Nola alda dezaket orri berezia?"
+
+msgid "How do I purge a text?"
+msgstr "Nola garbi dezaket testua?"
+
+msgid "How do I redirect to another page?"
+msgstr "Nola birbidera dezaket beste orri batera?"
+
+msgid "How to choose a password"
+msgstr "Pasahitza nola aukeratu"
+
+msgid ""
+"However, you can browse, search, download and read the texts\n"
+"  from mobile reading applications which support the so-called OPDS\n"
+"  protocol."
+msgstr ""
+"Halere, testuak arakatu, bilatu, deskargatu eta irakur ditzakezu\n"
+"  aski ezaguna den OPDS protokoloa onartzen duen mugikorrerako irakurtzeko\n"
+"  aplikazio batetik."
+
+msgid "I am human"
+msgstr "Gizakia naiz"
+
+msgid "I have a system user with SSH access"
+msgstr "Sistemaren erabiltzailea dut SSH sarbidearekin"
+
+msgid "I want an imposed (ready to print) PDF"
+msgstr "Ezarritako (inprimatzeko prest) PDF bat nahi dut"
+
+msgid "I will provide my remote repository"
+msgstr "Urruneko biltegia emango dut"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "ISBN"
+msgstr "ISBN"
+
+msgid "Id"
+msgstr "ID"
+
+msgid "Identifier"
+msgstr "Identifikatzailea"
+
+msgid ""
+"If by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+"Egile eta izenburu bereko beste testu bat baldin badago, aukeratu nahi duzun "
+"URIa jarraian dagoen eremuan egilea, izenburua eta zenbaki bat txertatuz, "
+"adibidez: egilea-izenburua-1"
+
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+"Ez bazenuen hau egin nahi, baztertu mezu hau eta\n"
+"zure pasahitza ez da aldatuko."
+
+msgid ""
+"If it's not the case, please open a bug report at https://github.com/"
+"melmothx/amusewiki/issues"
+msgstr ""
+"Kasua hau ez bada, argitaratu arazo-txosten bat hemen: https://github.com/"
+"melmothx/amusewiki/issues"
+
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
+msgid "If not set %1 will be looked up from the application directory."
+msgstr "Ez bada ezartzen, %1 aplikazio-direktorioan bilatuko da."
+
+msgid ""
+"If present, hide the\n"
+"          generated formats and the information box. This makes sense\n"
+"          with attachments, when the text version is poor or not\n"
+"          available and more relevance should be given to the attached\n"
+"          files."
+msgstr ""
+"Badgao, ezkutatu\n"
+"          sortutako formatuak eta informazio-koadroa. Honek eranskinekin\n"
+"          du zentzua, testuaren bertsioa urria denean edo\n"
+"          erabilezina eta garrantzi gehiago eman behar zaienean erantsitako\n"
+"          fitxategiei."
+
+msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
+msgstr ""
+"0 baino zenbaki altuago bat ezartzean, aurrerapen bat automatikoki sortzen "
+"du, luzera honetakoa gutxi gorabehera."
+
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
+msgstr ""
+"Argitalpen baten testua atzeratzen denean, zerrendatu\n"
+"            aurrerapen eta azalarekin, gorputzerako sarbidea\n"
+"            eman gabe."
+
+msgid ""
+"If the user is allowed to publish, speed up the process skipping the "
+"revision page if there are no conflicts and automatically redirect to the "
+"published text once it is done."
+msgstr ""
+"Erabiltzaileak argitara badezake, bizkortu prozesua berrikuspen-orria "
+"baztertuz, baldin eta gatazkarik ez badago, eta birbideratu automatikoki "
+"argitaratutako testura behin amaitzean."
+
+msgid "If the user provided a mail, it's listed in the mail's CC field"
+msgstr ""
+"Erabiltzaileak helbide elektronikoa eman badu, mezuaren CC eremuan "
+"zerrendatuko da."
+
+msgid ""
+"If this line\n"
+"          is present, set the publication date (on this site) to the\n"
+"          date. The date may also be in the future, deferring the\n"
+"          publication. If this line is not present, the publication\n"
+"          date will be the time of the publishing, triggering a bump\n"
+"          on RSS and special pages at each editing."
+msgstr ""
+"Lerro hau\n"
+"          badago, ezarri argitalpen-data (gune honetakoa) datari\n"
+"          Data etorkizunekoa ere izan daiteke, argitalpena\n"
+"          atzeratuz. Lerro hau ez badago, argitalpen-data\n"
+"          argitaratzen den dataren bera izango da, eta ekintza bat\n"
+"          abiaraziko da RSS eta orri berezietan editatze bakoitzean."
+
+msgid ""
+"If this line is\n"
+"          present and the reason is set to something, the text will be\n"
+"          stored in the archive, but will not be published."
+msgstr ""
+"Lerro hau\n"
+"          baldin badago eta arrazoia zerbaiti ezartzea bada, testua\n"
+"          artxiboan biltegiratuko da, eta ez da argitaratuko."
+
+msgid ""
+"If this line is present, do not create a title page,\n"
+"          but instead start the text on the very first page and\n"
+"          produce a PDF styled like an article (chapters and parts\n"
+"          will not start on a new page)."
+msgstr ""
+"Lerro hau badago, ez sortu izenburu-orri bat,\n"
+"          horren ordez, hasi testua lehenbiziko orrian eta\n"
+"          sortu PDF estiloko artikulu bat (atala eta zatiak\n"
+"          ez dira hasiko orri berri batean)."
+
+msgid "If this line is present, do not display the table of contents."
+msgstr "Lerro hau badago, ez bistaratu eduki-taulak."
+
+msgid "If you asked for imposition, select an imposition schema"
+msgstr "Ezartzea eskatu baduzu, hautatu ezarpen-eskema bat"
+
+msgid ""
+"If you edit some format options, like fonts or paper\n"
+"      dimensions, you may want to rebuild the generated files"
+msgstr ""
+"Formatuen aukerak editatzen badituzu, hala nola, letra-tipoak\n"
+"      eta paperaren dimentsioak, sortutako fitxategiak birsor ditzakezu"
+
+msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+"Pasahitza ahazten baduzu, berri bat aukera dezakezu\n"
+"esteka hau sakatuz (edo kopiatu eta itsatsi arakatzailean):"
+
+msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr ""
+"Fitxategi bat .doc edo .odt formatuan baduzu, erraz-merraz bihur dezakezu "
+"HTML gisa gordeaz."
+
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
+msgstr ""
+"Birsortzea eskatzen baduzu beste bat abian dagoenean,\n"
+"    uneko prozesua bertan behera utz dezakezu."
+
+msgid ""
+"If you use it as a teaser image, the image will also\n"
+"      be placed on the first page of the PDF. You can set its width\n"
+"      adding the following line to the header, where the value is the\n"
+"      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
+"      on"
+msgstr ""
+"Aurrerapen-irudi gisa erabiltzean, irudia PDF-aren\n"
+"      lehen orrian kokatuko da. Bere zabalera ezar dezakezu\n"
+"      jarraian dagoen lerroa goiburuan gehituz, non balioa\n"
+"      testu-zabaleraren proportzioa den. 1 testu-zabalera osoa da, 0.5 "
+"erdia,\n"
+"      eta abar."
+
+msgid ""
+"If your site doesn’t have that, just create a special page and assign\n"
+"the uri \"index\"."
+msgstr ""
+"Guneak ez badu horrelakorik, sortu orri berezi bat eta esleitu\n"
+"URIaren \"aurkibidea\"."
+
+msgid ""
+"If your site is multilanguage, you can create a language-specific\n"
+"  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
+"  URI \"index\", a dash, and the locale code."
+msgstr ""
+"Gunea hainbat hizkuntzatan badago, hizkuntza jakin baten\n"
+"  helmuga-orria sor dezakezu, adibidez, honakoa sortuz: \"/special/index-"
+"it\", the\n"
+"  URI \"index\", a dash, and the locale code."
+
+msgid "Image already set as cover"
+msgstr "Irudia jada ezarri da azal gisa"
+
+#. ($w, $h, $limit, $limit)
+msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
+msgstr "Irudiaren %1 x %2 dimentsioak %3 x %4 pixeletako muga gainditzen du"
+
+msgid ""
+"Image uploading may be done on the next step, when you can\n"
+"        review and preview the upload."
+msgstr ""
+"Irudia hurrengo urratsean igo daiteke, non igoera\n"
+"        berrikusi eta aurreikus dezakezun."
+
+msgid "Image url"
+msgstr "Irudiaren URLa"
+
+msgid "Images"
+msgstr "Irudiak"
+
+msgid "Imposition schemas"
+msgstr "Ezarpen-eskemak"
+
+msgid "In both case you will get a reverse indentation."
+msgstr "Bi kasuetan, alderantzizko koska bat lortuko duzu."
+
+msgid ""
+"In the text, a number within square brackets is interpreted as a\n"
+"          footnote reference, if such footnote exists."
+msgstr ""
+"Testuan, kako zuzenen arteko zenbaki bat oin-oharraren\n"
+"          erreferentzia gisa ulertzen da, oin-ohar orri baldin badago."
+
+#. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
+msgid ""
+"In this example, we use FBreader, but the procedure is\n"
+"  pretty much the same for all applications. All you have to do is to\n"
+"  add %1 to the network libraries."
+msgstr ""
+"Adibide honetan, FBreader erabiltzen dugu, baina prozedura\n"
+"  ia berdina da aplikazio guztietarako. Besterik gabe, gehitu %1\n"
+"  sareko liburutegietan."
+
+msgid "Inherited from the series"
+msgstr "Sailetik jarauntsia"
+
+msgid "Inline elements"
+msgstr "Txertatutako elementuak"
+
+msgid "Insert the file into the body at the cursor position"
+msgstr "Txertatu fitxategia gorputzean adierazlearen kokapenean"
+
+msgid "Internal list of translations"
+msgstr "Itzulpenen barne-zerrenda"
+
+msgid "Invalid ID"
+msgstr "ID baliogabea"
+
+msgid "Invalid URI"
+msgstr "URI baliogabea"
+
+msgid "Invalid data!"
+msgstr "Datu baliogabeak"
+
+msgid "Invalid email"
+msgstr "Helbide elektroniko baliogabea"
+
+msgid "Invalid field"
+msgstr "Eremu baliogabea"
+
+msgid "Invalid name"
+msgstr "Izen baliogabea"
+
+msgid "Invalid parameter"
+msgstr "Parametro baliogabea"
+
+msgid "Invalid target"
+msgstr "Helmuga baliogabea"
+
+msgid "Invalid username"
+msgstr "Erabiltzaile-izen baliogabea"
+
+msgid "Issue"
+msgstr "Arazoa"
+
+msgid ""
+"It is possible to have an additional set of\n"
+"          footnotes which you use to annote the text (e.g. critical\n"
+"          editions or translator's notes). They work the same way as\n"
+"          the regular footnotes, but they use curly brackets instead\n"
+"          of square brackets. Placing secondary footnote references\n"
+"          inside a regular footnote is permitted."
+msgstr ""
+"Posible da oin-ohar multzo gehigarri bat\n"
+"          izatea, bertan oharrak gehitzeko (adibidez: itzultzaile-\n"
+"          oharren edizio garrantzitsuak). Ohiko oin-oharrak bezala\n"
+"          funtzionatzen dute, baina giltzak erabiltzen dituzte kako\n"
+"          zuzenen ordez. Ohiko oin-ohar batean bigarren mailako\n"
+"          oin-oharren erreferentziak gehitzea onartuta dago."
+
+msgid ""
+"It is recommended to always set a publication\n"
+"                    date, so the system does not need to rely on the\n"
+"                    file timestamp. Also, you should bump the\n"
+"                    publication date only on major editing, leaving it\n"
+"                    untouched for minor ones."
+msgstr ""
+"Gomendagarria da beti argitalpen-data bat\n"
+"                    ezartzea, horrela, sistemak ez du fitxategiaren\n"
+"                    denbora-zigilua begiratu behar. Baita ere, argitalpen-"
+"data\n"
+"                    ezarri behar duzu soilik edizio nagusietan, aldatu gabe\n"
+"                    utzirik edizio txikiagoetan."
+
+msgid ""
+"It works the same as for regular page, but the link is hidden. Just\n"
+"append \"/edit\" to the url of the page."
+msgstr ""
+"Ohiko orrien antzera funtzionatzen du, baina estekak ezkutatuta daude.\n"
+"Gehitu \"/edit\" orriaren URLari."
+
+msgid "Italic"
+msgstr "Letra etzana"
+
+msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr ""
+"Letra etzana, letra lodia, lerroarte bakarra eta kodea, lerro-jauziak..."
+
+msgid "JPG, PNG and PDF are always allowed."
+msgstr "JPG, PNG eta PDF beti onartzen dira."
+
+msgid "Job status"
+msgstr "Lanaren egoera"
+
+msgid "Jobs"
+msgstr "Lanak"
+
+msgid "Jobs (all sites)"
+msgstr "Lanak (gune guztiak)"
+
+msgid "Jobs waiting before yours:"
+msgstr "Zurearen aurretik zain dauden lanak:"
+
+msgid "Just packs 2 consecutives logical pages on a physical one."
+msgstr "Ondoz ondoko 2 orri logiko batzen ditu orri fisiko batean."
+
+msgid ""
+"Keep in mind that I’m cleaning the text and give it\n"
+"        back to you in the markup used on this site. It’s up to you to\n"
+"        check it and finally upload it. Some rarely used markup will\n"
+"        be lost in the process. Please check the preview on the next\n"
+"        step, where you can also insert images."
+msgstr ""
+"Gogoan izan testua garbituko dudala eta zuri bueltan\n"
+"        gune honetan erabiltzen den markatzearekin itzuliko dizudala.\n"
+"        Zure esku dago berrikustea eta igotzea. Gutxi erabilitako markatzea\n"
+"        galduko da prozesuan. Egiaztatu aurrebista hurrengo urratsean,\n"
+"        non irudiak ere txertatu ahalko dituzun."
+
+msgid "Keep in mind that some character may be missing in the required font."
+msgstr ""
+"Gogoan izan karaktere batzuk falta daitezkeela eskatutako letra-tipoarekin."
+
+msgid ""
+"Keep in mind that unusually\n"
+"        complex formatting will be stripped. Is it possible to add\n"
+"        tables and images only on the next step."
+msgstr ""
+"Gogoan izan ohikoak ez diren\n"
+"        formatu konplexuak baliogabetuko dituela. Hurrengo urratsean\n"
+"        soilik posible da taulak eta irudiak gehitzea."
+
+msgid "Label"
+msgstr "Etiketa"
+
+msgid "Language"
+msgstr "Hizkuntza"
+
+msgid "Language code of the document (2 or 3 letters). "
+msgstr "Dokumentuaren hizkuntza-kodea (2 edo 3 letra). "
+
+msgid "Language selection"
+msgstr "Hizkuntza-hautapena"
+
+msgid "Languages supported"
+msgstr "Onartutako hizkuntzak"
+
+msgid "Last"
+msgstr "Azkena"
+
+msgid "Last successful rebuild"
+msgstr "Azkeneko birsorrera"
+
+msgid "Last updated"
+msgstr "Eguneratutako azkena"
+
+msgid "Latest entries"
+msgstr "Azken sarrerak"
+
+msgid "Layout"
+msgstr "Diseinua"
+
+msgid "Leave it blank if you want it published right away."
+msgstr "Utzi hutsik oraintxe bertan argitaratu nahi baduzu."
+
+msgid "Leave this empty to have it automatically generated"
+msgstr "Utzi hutsik automatikoki sortzeko"
+
+msgid "Letter imposed PDF"
+msgstr "Gutuna ezarrita duen PDFa"
+
+msgid "Letter paper"
+msgstr "Gutun-orria"
+
+msgid "Line spacing"
+msgstr "Lerrotartea"
+
+msgid "Link"
+msgstr "Esteka"
+
+msgid "Links"
+msgstr "Estekak"
+
+msgid "List of paths to attach to this collection, one per line."
+msgstr "Bilduma honetan erantsi beharreko bide-izenen zerrenda, bat lerroko."
+
+msgid "List of texts on hold"
+msgstr "Zain dauden testu-zerrenda"
+
+msgid "Lists"
+msgstr "Zerrendak"
+
+msgid "Load"
+msgstr "Kargatu"
+
+msgid "Load another session by token"
+msgstr "Kargatu beste saio bat token bidez"
+
+#. ($pname)
+msgid "Loaded \"%1\" configuration"
+msgstr "\"%1\" konfigurazioa kargatu da"
+
+msgid "Loading"
+msgstr "Kargatzen"
+
+msgid "Local"
+msgstr "Bertakoa"
+
+msgid "Local pages"
+msgstr "Bertako orriak"
+
+msgid "Locale updated"
+msgstr "Eskualdeko ezarpenak eguneratu dira"
+
+msgid "Locked editing, no upload possible"
+msgstr "Edizioa blokeatu da, ezin da igo"
+
+msgid "Log in"
+msgstr "Hasi saioa"
+
+msgid "Login"
+msgstr "Saio-hasiera"
+
+msgid "Logout"
+msgstr "Amaitu saioa"
+
+msgid "Look into the account’s menu, there is an entry for that."
+msgstr "Begiratu kontuaren menuan, horren sarrera bat dago."
+
+msgid "Lost your password?"
+msgstr "Pasahitza galdu duzu?"
+
+msgid "Magic answer"
+msgstr "Erantzun magikoa"
+
+msgid "Magic question"
+msgstr "Galdera magikoa"
+
+msgid "Mail from"
+msgstr "Honen mezua:"
+
+msgid "Main canonical hostname, without protocol"
+msgstr "Ostalari-izen kanoniko nagusia, protokolorik gabe"
+
+msgid "Main font"
+msgstr "Letra-tipo nagusia"
+
+msgid "Main text"
+msgstr "Testu nagusia"
+
+msgid "Maintainer's FAQ"
+msgstr "Mantentzailearen maiz eginiko galderak"
+
+msgid "Make a link clickable"
+msgstr "Egin esteka sakagarria"
+
+msgid "Make all links active"
+msgstr "Egin esteka guztiak aktibo"
+
+msgid "Make all non-breaking spaces explicit and visible as ~~"
+msgstr "Egin zuriune banaezin guztiak esplizitu eta ikusgai ~~ gisa"
+
+msgid "Manage aggregations"
+msgstr "Kudeatu agregazioak"
+
+msgid "Manage categories"
+msgstr "Kudeatu kategoriak"
+
+msgid "Manage category types"
+msgstr "Kudeatu kategoria motak"
+
+msgid "Margins: please choose a division factor or set width and height"
+msgstr ""
+"Orri-bazterrak: aukeratu zatiketaren faktore bat edo ezarri zabalera eta "
+"altuera"
+
+msgid "Mark Length (mm)"
+msgstr "Markaren luzera (mm)"
+
+msgid "Max image dimension in pixels, applies to both width and height"
+msgstr ""
+"Irudiaren gehieneko dimentsioa pixeletan, zabalera eta altuerari aplikatzen "
+"zaie"
+
+msgid "Max size for uploads in Mb"
+msgstr "Igoeren gehieneko tamaina MB-etan"
+
+msgid "Message"
+msgstr "Mezua"
+
+#. (8)
+msgid "Minimum %1 characters"
+msgstr "Gutxienez %1 karaktere"
+
+msgid "Mirror"
+msgstr "Ispilua"
+
+msgid "Mirror of:"
+msgstr "Honen ispilua:"
+
+msgid "Missing #title header in the text!"
+msgstr "#izenburuaren goiburua falta da testuan."
+
+msgid "Missing alias"
+msgstr "Falta den ezizena"
+
+msgid "Missing character will be reported"
+msgstr "Falta den karakterearen berri emango da"
+
+msgid "Missing redirection"
+msgstr "Falta den birbideraketa"
+
+msgid "Missing? Create one"
+msgstr "Falta al da? Sortu bat"
+
+msgid "Mobile"
+msgstr "Mugikorra"
+
+msgid "Mobile applications"
+msgstr "Mugikorrerako aplikazioak"
+
+msgid "Mode"
+msgstr "Modua"
+
+msgid "Moderated wiki"
+msgstr "Moderatutako wikia"
+
+msgid "Mono font"
+msgstr "Lerroarte bakarraren letra-tipoa"
+
+msgid "Month"
+msgstr "Hilabetea"
+
+msgid "More"
+msgstr "Gehiago"
+
+msgid "Move down"
+msgstr "Mugitu beheruntz"
+
+msgid "Move up"
+msgstr "Mugitu goruntz"
+
+msgid "Multilanguage: list of whitespace separated language codes"
+msgstr "Hainbat hizkuntza: zuriunez banandutako hizkuntza-kodeen zerrenda"
+
+msgid "My book covers"
+msgstr "Nire liburu-azalak"
+
+msgid "My description"
+msgstr "Nire azalpena"
+
+msgid "N/A"
+msgstr "E/E"
+
+msgid "Name"
+msgstr "Izena"
+
+msgid "Name plural"
+msgstr "Izen plurala"
+
+msgid "Name singular"
+msgstr "Izen singularra"
+
+msgid "Network library listing screen."
+msgstr "Sareko liburutegi-zerrendaren pantaila."
+
+msgid "Never display the cover"
+msgstr "Ez bistaratu inoiz azala"
+
+msgid "Never generate a table of content"
+msgstr "Ez sortu inoiz eduki-taula bat"
+
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
+"Ez sortu inoiz amaierako orri arrunta izenburu, egile, ohar, logotipo edo "
+"gunearen izenarekin"
+
+msgid "Never show teaser and/or cover in text lists"
+msgstr "Ez erakutsi inoiz aurrerapena edota azala testu-zerrendetan"
+
+msgid "New"
+msgstr "Berria"
+
+msgid "New revision"
+msgstr "Berrikuspen berria"
+
+msgid "New site id"
+msgstr "Gunearen ID berria"
+
+msgid "Newer first"
+msgstr "Berrienak lehenik"
+
+msgid "Newer texts"
+msgstr "Testu berrienak"
+
+msgid "Next"
+msgstr "Hurrengoa"
+
+msgid "Nice title"
+msgstr "Izenburu polita"
+
+msgid "No"
+msgstr "Ez"
+
+msgid "No data available in table"
+msgstr "Ez dago daturik erabilgarri taulan"
+
+msgid "No editing yet!"
+msgstr "Ez da editatu oraindik."
+
+msgid "No matching records found"
+msgstr "Ez da aurkitu bat datorren erregistrorik"
+
+msgid "No result found!"
+msgstr "Ez da aurkitu emaitzarik."
+
+msgid "No revisions to show"
+msgstr "Ez dago berrikuspenik erakusteko"
+
+msgid "No text found!"
+msgstr "Ez da aurkitu testua."
+
+msgid "No text was added yet"
+msgstr "Ez da gehitu testua oraindik"
+
+msgid "None"
+msgstr "Bat ere ez"
+
+msgid "Not a periodical"
+msgstr "Ez da aldizkakoa"
+
+#. ($c->loc('Save')
+msgid ""
+"Not finished yet! Please have a look at the text and then click on \"%1\" to "
+"finalize your submission!"
+msgstr ""
+"Ez dago amaitua oraindik. Eman begiratu bat testuari eta gero sakatu \"%1\" "
+"bidalketa amaitzeko."
+
+msgid "Not logged in"
+msgstr "Ez da hasi saioa"
+
+msgid "Notes"
+msgstr "Oharrak"
+
+msgid "Nothing to see here, so far"
+msgstr "Ez dago ezer hemen, oraindik"
+
+msgid "Nothing uploaded"
+msgstr "Ez da igo ezer"
+
+msgid "Notify mail: blank field will disable them"
+msgstr "Jakinarazpen-mezua: eremu hutsak desgaituko ditu"
+
+msgid "Notify to"
+msgstr "Jakinarazi honi:"
+
+msgid ""
+"Now it has been aligned to the site's archive, but this means that there are "
+"some missing commits."
+msgstr ""
+"Orain gunearen artxiboarekin lerrokatu da, baina berrespen batzuk falta dira."
+
+msgid "Now we are going to populate it and get it ready"
+msgstr "Orain, bete eta prestatu egingo dugu"
+
+msgid "Number of jobs"
+msgstr "Lan kopurua"
+
+msgid "Number of latest entries to display on the RSS (an integer)"
+msgstr "RSS-n bistaratuko diren azken sarrerenkopurua (zenbaki osoa)"
+
+msgid "Number of results to show on paginated pages (an integer)"
+msgstr "Zenbatutako orrietan erakutsiko diren emaitza kopurua (zenbaki osoa)"
+
+msgid "OPDS"
+msgstr "OPDS"
+
+msgid "Older first"
+msgstr "Zaharrenak lehenik"
+
+msgid "Older texts"
+msgstr "Testu zaharrenak"
+
+msgid "On text creation, enforce user to choose the URI"
+msgstr "Testua sortzean, behartu erabiltzaileari URIa aukeratzera"
+
+msgid ""
+"One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr ""
+"Orrialde bat orriko. Aukera hau erabilgarria da mozte-markak gehitu nahi "
+"badituzu."
+
+msgid "Open wiki"
+msgstr "Ireki wikia"
+
+msgid "Option templates"
+msgstr "Aukeraren txantiloiak"
+
+msgid "Optional, defaults to the author directive"
+msgstr "Aukerakoa, egilearen direktiba da lehenetsitakoa"
+
+msgid ""
+"Or create a new revision, at your own peril. Having multiple\n"
+"          concurrent revisions means that, unless someone takes care\n"
+"          of it, only one will be chosen. You can go ahead, or retry\n"
+"          later, or, better, contact the librarians before proceeding,\n"
+"          to avoid wasting energies."
+msgstr ""
+"Edo sortu berrikuspen berria, zure arriskupean. Pilaturiko\n"
+"          hainbat berrikuspen badaude, bakarra aukeratuko da,\n"
+"          norbaitek ez badu horretan lan egiten. Aurrera jarrai dezakezu,\n"
+"          edo berriro saiatu geroago, jarri harremanetan liburuzainekin\n"
+"          aurrera jarraitu baino lehen lana alferrik ez egiteko."
+
+msgid "Or log in, if you have an account."
+msgstr "Edo hasi saioa, kontua baduzu."
+
+msgid "Or provide an HTML file to upload"
+msgstr "Edo eman HTML fitxategi bat igotzeko"
+
+msgid "Or wrap it in"
+msgstr "Edo bildu"
+
+msgid "Order"
+msgstr "Ordena"
+
+msgid "Ordered List"
+msgstr "Ordenatutako zerrenda"
+
+msgid "Outer margin"
+msgstr "Kanpoko orri-bazterra"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "PDF logo"
+msgstr "PDF logotiboa"
+
+msgid "PDFs cannot be used in the body."
+msgstr "Ezin dira erabili PDFak gorputzean."
+
+#. ('#ATTACH')
+#. ("#ATTACH")
+msgid "PDFs not listed in the %1 directive will be stored but ignored."
+msgstr ""
+"%1 direktiban zerrendatzen ez diren PDFak biltegiratuko dira, baina "
+"baztertuko dira."
+
+msgid "Page not found!"
+msgstr "Ez da aurkitu orria."
+
+msgid "Page where to start a chapter"
+msgstr "Atala hasiko den orria"
+
+msgid ""
+"Pages are not reordered. The first sheet contains\n"
+"        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
+"        This is not meant to be folded."
+msgstr ""
+"Orriak ez daude birrordenatuta. Lehen orriak\n"
+"        1. eta 2. orrialdeak ditu, bigarrenak 3. eta 4., eta abar, alboz "
+"albo.\n"
+"        Ez da tolesteko."
+
+msgid ""
+"Pages are reordered, in one or more groups\n"
+"        (signatures), then folded in half. If you have more\n"
+"        signatures, you will have to bound them together like a book.\n"
+"        With this option, you may want to decide the size of the\n"
+"        signatures. This can be a fixed value (4,8,16, etc.), the\n"
+"        whole book in a single signature, or an optimized size to\n"
+"        reduce the number of blank pages."
+msgstr ""
+"Orriak birrordenatuta daude, talde bat edo gehiagotan\n"
+"        (sinadurak), erditik tolestuta. Sinadura gehiago\n"
+"        badituzu, lotu beharko dituzu liburu bat bezala.\n"
+"        Aukera honekin, sinaduren tamaina ezarri behar\n"
+"        duzu. Balio finko bat izan daiteke (4,8,16, etab),\n"
+"        liburu osoa sinadura bakar batean, edo optimizatutako\n"
+"        tamaina bat orri huts kopurua murrizteko."
+
+msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
+msgstr "Paperaren lodiera (0,10 egokia da ohiko 80g/m2-ko paperentzat)"
+
+msgid "Paragraph indentation in points (pt)"
+msgstr "Paragrafoaren koska puntutan (pt)"
+
+msgid "Paragraphs"
+msgstr "Paragrafoak"
+
+msgid "Parent collection"
+msgstr "Bilduma nagusia"
+
+msgid "Part"
+msgstr "Zatia"
+
+msgid "Part and chapter. If one side document: part."
+msgstr "Zatia eta atala. Alde bateko dokumentua bada: zatia."
+
+msgid "Part of"
+msgstr "Honen zatia:"
+
+msgid "Part of:"
+msgstr "Honen zatia:"
+
+msgid "Part, for larger books only"
+msgstr "Zatia, liburu handiagoentzat soilik"
+
+msgid "Partial selection"
+msgstr "Hautapen partziala"
+
+msgid "Password"
+msgstr "Pasahitza"
+
+msgid "Password too short"
+msgstr "Pasahitza laburregia da"
+
+msgid "Password updated"
+msgstr "Pasahitza eguneratu da"
+
+msgid "Password, minimum 8 characters."
+msgstr "Pasahitza, gutxienez, 8 karaktere"
+
+msgid "Passwords do not match"
+msgstr "Pasahitzak ez datoz bat"
+
+msgid "Path"
+msgstr "Bide-izena"
+
+msgid "Payload"
+msgstr "Karga"
+
+msgid "Pending revisions"
+msgstr "Zain dauden berrikuspenak"
+
+msgid "Periodicals"
+msgstr "Aldizkakoak"
+
+msgid "Picture"
+msgstr "Irudia"
+
+msgid "Place it in the body with a description:"
+msgstr "Kokatu gorputzean azalpen batekin:"
+
+msgid "Place it in the body without description:"
+msgstr "Kokatu gorputzean azalpenik gabe:"
+
+msgid "Place the notes on the back of the first page, impressum-style"
+msgstr "Kokatu oharrak lehen orriaren atzean, inprimaki-estiloa"
+
+msgid "Plain PDF"
+msgstr "PDF arrunta"
+
+msgid ""
+"Please check your inbox, we tried to deliver a mail to the address you "
+"specified with a password reset link"
+msgstr ""
+"Begiratu sarrera-ontzia, zehaztutako helbidera mezu bat bidaltzen saiatu "
+"gara pasahitza berrezartzeko estekarekin"
+
+msgid "Please choose a text"
+msgstr "Aukeratu testu bat"
+
+msgid "Please choose the Beamer color theme"
+msgstr "Aukeratu Errainuaren kolore-gaia"
+
+msgid "Please choose the Beamer theme"
+msgstr "Aukeratu Errainuaren gaia"
+
+msgid "Please choose the font size"
+msgstr "Aukeratu letra-tipoaren tamaina"
+
+msgid "Please choose the main font"
+msgstr "Aukeratu letra-tipo nagusia"
+
+msgid "Please choose the mono font"
+msgstr "Aukeratu lerroarte bakarraren letra-tipoa"
+
+msgid "Please choose the sans font"
+msgstr "Aukeratu errematerik gabeko letra-tipoa"
+
+msgid "Please describe shortly what you did"
+msgstr "Azaldu laburki zer egin duzun"
+
+msgid "Please do not use a valuable password."
+msgstr "Ez erabili pasahitz baliotsua"
+
+msgid ""
+"Please do not use higher levels (part or chapter) for short articles with "
+"sections."
+msgstr ""
+"Ez erabili maila altuagoak (zatia edo atala) sekzioak dituen artikulu "
+"laburrentzat."
+
+#. (amw_group_name)
+msgid "Please ensure that your system user is member of the \"%1\" group"
+msgstr "Ziurtatu sistemaren erabiltzailea \"%1\" taldeko kidea dela"
+
+msgid ""
+"Please give us a username. It should *not* be a mail address.\n"
+"        Just a fancy name, so we can know that multiple uploads come\n"
+"        from the same person."
+msgstr ""
+"Eman erabitzaile-izen bat. *Ez* du helbide elektroniko bat izan behar. "
+"Soilik izen dibertigarri bat, horrela, badakigu hainbat igoera pertsona "
+"berdinarenak direla."
+
+msgid ""
+"Please initialized it empty, without any README,license, .gitignore or "
+"similar."
+msgstr "Hasieratu hutsik, README, lizentzia, .gitignore edo antzekorik gabe."
+
+msgid ""
+"Please keep in mind that filters are language-specific\n"
+"              and may or may not be available for the language of the\n"
+"              text. If not available, they will just leave the text as\n"
+"              is."
+msgstr ""
+"Gogoan izan iragazkiak hizkuntza bakoitzaren araberakoak\n"
+"              direla, eta baliteke testuaren hizkuntzarako erabilgarri\n"
+"              ez egotea. Ez badago erabilgarri, testua dagoen bezala\n"
+"              utziko da."
+
+msgid ""
+"Please keep in mind that if you see “Force publishing”\n"
+"    as action, it means that the revision has been superseded by\n"
+"    another one, so publishing this one, you'll end up reverting a\n"
+"    previous one. Try to avoid this, unless you know what you're\n"
+"    doing."
+msgstr ""
+"Gogoan izan “Behartu argitaratzea” ekintza gisa ikusten\n"
+"    baduzu, berrikuspena beste batek bertan behera utzi duela\n"
+"    esan nahi du, beraz, hau argitaratzean, aurreko bat ezeztatuko\n"
+"    duzu. Saiatu hau ekiditen, zer egiten ari zaren ez baldin badakizu."
+
+msgid "Please leave a mail if you want to be contacted about this change"
+msgstr ""
+"Sartu helbide elektronikoa aldaketa honen inguruan jakinaraztea nahi baduzu"
+
+msgid "Please note that wrapping tags must be placed on a line by themselves."
+msgstr ""
+"Gogoan izan etiketa bilduak lerro batean kokatu behar direla beren kabuz."
+
+msgid ""
+"Please note that you may want to paste from a\n"
+"        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
+"        from word” button. This is supposed to preserve the markup."
+msgstr ""
+"Gogan izan Word/OpenOffice/LibreOffice/HTML\n"
+"        dokumentu batetik itsatsi dezakezula “itsatsi word-etik\"\n"
+"        botoia erabiliz. Aukera honek markatzea mantenduko du."
+
+msgid ""
+"Please note: without any prefix, protocol or hostname, just\n"
+"  the bare page name as shown above. External redirecting is not\n"
+"  supported."
+msgstr ""
+"Gogoan izan: aurrizki, protokolo edo ostalari-izenik gabe,\n"
+"  lehen erakutsi den bezalako orri hutsaren izena . Kanpoko birbideratzea\n"
+"  ez dago onartuta."
+
+msgid "Please prove you are a human"
+msgstr "Frogatu gizakia zarela"
+
+msgid "Please reindex the site."
+msgstr "Berrindexatu gunea."
+
+msgid "Please reload your page"
+msgstr "Birkargatu orria"
+
+msgid "Please remove this file from the body first"
+msgstr "Kendu fitxategi hau gorputzetik lehenik"
+
+msgid ""
+"Please replace the example URL in the next line with the real one with SSH "
+"protocol"
+msgstr ""
+"Kokatu berriro adibide-URLa hurrengo lerroan SSH protokoloa duen benetako "
+"batekin"
+
+msgid "Please select"
+msgstr "Hautatu"
+
+msgid "Please select the desired fonts"
+msgstr "Hautatu nahi dituzun letra-tipoak"
+
+msgid "Please select the signature size:"
+msgstr "Hautatu sinaduraren tamaina:"
+
+msgid ""
+"Please select the size of each page including the crop marks, before the "
+"imposing"
+msgstr ""
+"Hautatu orri bakoitzaren tamaina mozte-markak gehituz, ezarri baino lehen"
+
+msgid "Please set"
+msgstr "Ezarri"
+
+msgid ""
+"Please set the URI you desire. Author (if present),\n"
+"        title and eventually a number if the URI already exists is\n"
+"        usually a good choice"
+msgstr ""
+"Ezarri nahi duzun URIa. Egilea (badago),\n"
+"        izenburua, eta azkenik, zenbaki bat URIa jada badago.\n"
+"        Aukera ona izan ohi da."
+
+msgid "Please setup the Beamer layout"
+msgstr "Konfiguratu Errainuaren diseinua"
+
+msgid "Please upload your file again!"
+msgstr "Igo berriro fitxategia."
+
+msgid "Please use only lowercase ASCII letters."
+msgstr "Erabili soilik ASCII-ren letra xeheak."
+
+msgid "Poetry, bibliographies, plays, code blocks"
+msgstr "Poesia, bibliografiak, antzezlanak, kode-blokeak"
+
+msgid "Pointing to"
+msgstr "Hona zuzenduta:"
+
+msgid "Popular texts"
+msgstr "Testu ezagunak"
+
+msgid "Preferred language"
+msgstr "Hobetsitako hizkuntza"
+
+msgid ""
+"Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
+"        “i.”, “I.”, depending on the list type you need."
+msgstr ""
+"Ordenatutako zerrenden aurrizkiak \"1.\", \"a.\",\n"
+"        \"A.\", “i.”, “I.” izan daitezke, nahi duzun zerrenda motaren "
+"arabera."
+
+msgid "Preview"
+msgstr "Aurrebista"
+
+msgid "Preview box height in pixel"
+msgstr "Aurrebista-koadroaren altuera pixeletan"
+
+msgid "Previous"
+msgstr "Aurrekoa"
+
+msgid "Priority"
+msgstr "Lehentasuna"
+
+msgid "Private"
+msgstr "Pribatua"
+
+msgid "Procedure"
+msgstr "Prozedura"
+
+msgid "Processing"
+msgstr "Prozesatzen"
+
+msgid "Produce slides."
+msgstr "Sortu diapositibak"
+
+msgid "Produced"
+msgstr "Sortuta"
+
+msgid "Publication Date"
+msgstr "Argitaratze-data"
+
+msgid "Publication Place"
+msgstr "Argitaratze-lekua"
+
+msgid "Publication date"
+msgstr "Argitaratze-data"
+
+msgid "Publication date on this site"
+msgstr "Gune honetako argitaratze-data"
+
+msgid "Publish"
+msgstr "Argitaratu"
+
+msgid "Published in *A nice book*, published by My House, 2014"
+msgstr ""
+"*Liburu polit bat* liburuan argitaratu da, Argitaletxeak argitaratua, 2014"
+
+msgid "Publisher"
+msgstr "Argitaratzailea"
+
+msgid "Purge"
+msgstr "Garbitu"
+
+msgid ""
+"Purging means removing it completely from the archive, not just hiding it."
+msgstr "Garbitzean, artxibotik guztiz kentzen da, ez da soilik ezkutatzen."
+
+msgid ""
+"Put additional information here (original\n"
+"\t  title, translators, credits, etc). Footnotes go in the\n"
+"\t  body."
+msgstr ""
+"Jarri informazio gehigarria hemen (jatorrizko\n"
+"\t  izenburua, itzultzaileak, kredituak, etab.). Oin-oharrak\n"
+"\t  gorputzean doaz."
+
+msgid "Quarter Letter paper"
+msgstr "Gutun-laurden papera"
+
+msgid "Queue"
+msgstr "Ilara"
+
+msgid "Quota exceeded, too many pages"
+msgstr "Kuota gainditu da, orri gehiegi"
+
+msgid "Quotes"
+msgstr "Kuotak"
+
+msgid "RSS aggregator"
+msgstr "RSS agregatzailea"
+
+msgid "RSS feed"
+msgstr "RSS jarioa"
+
+msgid "Random"
+msgstr "Ausazkoa"
+
+msgid "Read about the file naming scheme if you need to add files to the tree."
+msgstr ""
+"Irakurri fitxategien izendapen-eskemari buruz fitxategiak zuhaitzean gehitu "
+"nahi badituzu."
+
+msgid "Read the whole text..."
+msgstr "Irakurri testu osoa..."
+
+msgid "Real time help"
+msgstr "Laguntza denbora errealean"
+
+msgid ""
+"Rearrange the footnotes, fixing the numbering,\n"
+"              considering only the order in which they were inserted.\n"
+"              Please leave unchecked if you don't know what this\n"
+"              means. This option could be destructive, please use with\n"
+"              caution and check the result. In case you encounter\n"
+"              problems, please save the result reporting them in the\n"
+"              message. The procedure tries to be safe and will ignore\n"
+"              the change if footnotes are missing or are too many."
+msgstr ""
+"Birrantolatu oin-oharrak, zenbaketa zuzenduz,\n"
+"              sartu zireneko ordena kontuan izanik.\n"
+"              Utzi markatu gabe ez badakizu zer esan nahi\n"
+"              duen. Aukera hau kaltegarria izan daiteke, adi\n"
+"              erabiltzean eta egiaztatu emaitza. Arazorik\n"
+"              aurkitzen baduzu, gorde erantzunak hauen berri\n"
+"              emanaz mezuan. Prozedura segurua da eta aldaketa\n"
+"              baztertuko du oin-oharrak falta badira edo gehiegi badaude."
+
+msgid "Reason"
+msgstr "Arrazoia"
+
+msgid "Reason for deletion"
+msgstr "Ezabatzearen arrazoia"
+
+msgid "Rebuild"
+msgstr "Birsortu"
+
+msgid "Rebuild all generated files"
+msgstr "Birsortu sortutako fitxategi guztiak"
+
+msgid "Rebuild formats"
+msgstr "Birsortu formatuak"
+
+msgid "Rebuild the generated formats"
+msgstr "Birsortu sortutako formatuak"
+
+msgid "Rebuilding"
+msgstr "Birsortzen"
+
+msgid "Recheck"
+msgstr "Egiaztatu berriro"
+
+msgid "Record deleted!"
+msgstr "Erregistroa ezabatu da."
+
+msgid "Redirections"
+msgstr "Birbideraketak"
+
+msgid "Refresh and apply filters"
+msgstr "Freskatu eta aplikatu iragazkiak"
+
+msgid "Refresh the token"
+msgstr "Freskatu tokena"
+
+msgid "Reindex site"
+msgstr "Berrindexatu gunea"
+
+msgid "Related projects"
+msgstr "Loturiko proiektuak"
+
+#. ("$name $url")
+msgid "Remote repository %1 added"
+msgstr "Urruneko %1 biltegia gehitu da"
+
+#. ($name)
+msgid "Remote repository %1 removed"
+msgstr "Urruneko %1 biltegia kendu da"
+
+msgid "Remove"
+msgstr "Kendu"
+
+msgid "Remove cover image"
+msgstr "Kendu azalaren irudia"
+
+msgid "Remove this category"
+msgstr "Kendu kategoria hau"
+
+msgid "Removed Upstream"
+msgstr "Kendutako goranzkoa"
+
+msgid "Rename"
+msgstr "Berrizendatu"
+
+msgid "Rename text URI"
+msgstr "Berrizendatu testuaren URIa"
+
+msgid "Rename to"
+msgstr "Ezarri izen hau:"
+
+msgid "Repeat email"
+msgstr "Errepikatu helbide elektronikoa"
+
+msgid "Repeat password"
+msgstr "Errepikatu pasahitza"
+
+msgid "Request failed! Please report the the problem"
+msgstr "Eskaerak huts egin du. Eman arazoaren berri."
+
+msgid "Reschedule"
+msgstr "Berrantolatu"
+
+msgid "Reset all"
+msgstr "Berrezarri dena"
+
+msgid "Reset filters"
+msgstr "Berrezarri iragazkiak"
+
+msgid "Reset password"
+msgstr "Berrezarri pasahitza"
+
+#. (username)
+msgid "Reset password for user %1"
+msgstr "Berrezarri %1 erabiltzailearen pasahitza"
+
+msgid "Reset to site defaults"
+msgstr "Berrezarri gunearen balio lehenetsietara"
+
+msgid "Reset your password"
+msgstr "Berrezarri pasahitza"
+
+msgid "Restricted configuration variables"
+msgstr "Murriztutako konfigurazioaren aldagaiak"
+
+msgid "Restricted format options"
+msgstr "Murriztutako formatuaren aukerak"
+
+msgid "Results per page:"
+msgstr "Emaitzak orriko:"
+
+msgid "Retrieved on DATE from URL"
+msgstr "DATA-(a)n eskuratuta hemendik: URL"
+
+msgid "Retrieved on March 8, 2012 from"
+msgstr "2021ko martxoaren 8an eskuratuta hemendik:"
+
+msgid "Revision"
+msgstr "Berrikuspena"
+
+#. ($uri)
+msgid "Revision for %1 has been deleted"
+msgstr "Honen berrikuspena ezabatu da: %1"
+
+msgid "Roles"
+msgstr "Funtzioak"
+
+msgid "Root Collection"
+msgstr "Erroko bilduma"
+
+msgid "Run diff"
+msgstr "Exekutatu ezberdintasuna"
+
+msgid "Running headings"
+msgstr "Exekutatzen ari diren goiburuak"
+
+msgid "SKU"
+msgstr "SKU"
+
+msgid "SSL CA certificate path (Apache)"
+msgstr "SSL CA ziurtagiriaren bide-izena (Apache)"
+
+msgid "SSL certificate path (Apache)"
+msgstr "SSL ziurtagiriaren bide-izena (Apache)"
+
+msgid "SSL chained certificate path (Nginx)"
+msgstr "Kateatutako SSL ziurtagiriaren bide-izena (Nginx)"
+
+msgid "SSL configuration"
+msgstr "SSL-ren konfigurazioa"
+
+msgid "SSL key path"
+msgstr "SSL gakoaren bide-izena"
+
+msgid "Same as above, but for duplex printers"
+msgstr "Aurrekoaren berdina, baina bi aurpegiko inprimagailuentzat"
+
+msgid "Same as above, for the Archive menu"
+msgstr "Aurrekoaren berdina, artxiboaren menuarentzat"
+
+msgid "Same as above, for the Related Projects menu"
+msgstr "Aurrekoaren berdina, loturiko proiektuen menuarentzat"
+
+msgid "Sans font"
+msgstr "Errematerik gabeko letra-tipoa"
+
+msgid "Save"
+msgstr "Gorde"
+
+msgid "Save the current settings with a name"
+msgstr "Gorde uneko ezarpenak izen batekin"
+
+#. ($pname)
+msgid "Saved \"%1\" configuration"
+msgstr "\"%1\" konfigurazioa gorde da"
+
+msgid "Search"
+msgstr "Bilatu"
+
+msgid "Search Engine Facets"
+msgstr "Bilaketa-motorraren alderdiak"
+
+msgid "Search filters"
+msgstr "Bilaketa-iragazkiak"
+
+msgid "Search results"
+msgstr "Bilaketa-emaitzak"
+
+msgid "Search this column"
+msgstr "Bilatu zutabe honetan"
+
+msgid "Secondary footnotes"
+msgstr "Bigarren mailako oin-oharrak"
+
+msgid "Section"
+msgstr "Sekzioa"
+
+msgid "Section and subsection. If one side document: section."
+msgstr "Sekzioa eta azpisekzioa. Alde bateko dokumentua bada: sekzioa."
+
+msgid "See all"
+msgstr "Ikusi dena"
+
+msgid "See here for more details."
+msgstr "Ikusi hemen xehetasun gehiagorako."
+
+msgid "See here for the full documentation."
+msgstr "Ikusi hemen dokumentazio osorako."
+
+msgid "See the bookcover class for all the details"
+msgstr "Ikusi liburu-azalaren klasea xehetasun guztietarako."
+
+msgid "See the full manual for more details (english)"
+msgstr "Ikusi eskuliburu osoa xehetasun gehiagorako (ingelesez)"
+
+msgid "Select"
+msgstr "Hautatu"
+
+msgid "Select all"
+msgstr "Hautatu dena"
+
+msgid "Select all for deletion"
+msgstr "Hautatu dena ezabatzeko"
+
+msgid "Select all for rescheduling"
+msgstr "Hautatu dena berrantolatzeko"
+
+msgid "Select individual parts for the bookbuilder"
+msgstr "Hautatu liburu-sortzailearen banako zatiak"
+
+msgid "Send Email"
+msgstr "Bidali mezua"
+
+msgid "Send mail"
+msgstr "Bidali mezua"
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
+msgstr "Proba-mezuak bidaltzen hemendik: %1 hona: %2"
+
+msgid "Separate body fields"
+msgstr "Banandu gorputzaren eremuak"
+
+msgid "Separate footer fields"
+msgstr "Banandu oinaren eremuak"
+
+msgid "Separate header fields"
+msgstr "Banandu goiburuaren eremuak"
+
+msgid "Series"
+msgstr "Saila"
+
+msgid "Series Name"
+msgstr "Sailaren izena"
+
+msgid "Series Number"
+msgstr "Sailaren zenbakia"
+
+msgid "Series or Periodical"
+msgstr "Saila edo aldizkaria"
+
+msgid "Session sharing"
+msgstr "Saioaren partekatzea"
+
+msgid "Set a date in the future if you want it deferred."
+msgstr "Ezarri etorkizuneko data bat atzeratu nahi baduzu."
+
+msgid "Settings loaded"
+msgstr "Ezarpenak kargatu dira"
+
+msgid "Setup"
+msgstr "Konfiguratu"
+
+msgid "Show _MENU_ entries"
+msgstr "Erakutsi _MENU_ menuaren sarrerak"
+
+msgid "Show cheatsheet"
+msgstr "Erakutsi trikimailu-orria"
+
+msgid "Show differences in other tab"
+msgstr "Erakutsi ezberdintasunak beste fitxan"
+
+msgid "Show filters"
+msgstr "Erakutsi iragazkiak"
+
+msgid "Show preview in other tab"
+msgstr "Erakutsi aurrebista beste fitxan"
+
+msgid "Show text type and number of pages in the listing"
+msgstr "Erakutsi testu mota eta orri kopurua zerrendan"
+
+msgid "Show the text infobox at the bottom of the texts"
+msgstr "Erakutsi testuaren informazio-koadroa testuen azpialdean"
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "0 - 0 erakusten, 0 sarreretatik"
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr "_START_ to _END_ erakusten, _TOTAL_ sarreretatik"
+
+msgid "Single bars"
+msgstr "Barra bakarrak"
+
+msgid "Site"
+msgstr "Gunea"
+
+msgid "Site already exists"
+msgstr "Gunea jada badago"
+
+msgid "Site group"
+msgstr "Gunearen taldea"
+
+msgid "Site id"
+msgstr "Gunearen IDa"
+
+msgid "Site mail (From field)"
+msgstr "Gunearen posta (inprimaki-eremua)"
+
+msgid "Site mode"
+msgstr "Gunearen modua"
+
+msgid "Site name"
+msgstr "Gunearen izena"
+
+msgid "Site slogan"
+msgstr "Gunearen leloa"
+
+msgid "Site users"
+msgstr "Guneko erabiltzaileak"
+
+msgid "Sites"
+msgstr "Guneak"
+
+#. ($invalid)
+msgid "Skipped %1 invalid sources!"
+msgstr "%1 iturburu baliogabe baztertu dira."
+
+msgid "Slides"
+msgstr "Diapositibak"
+
+msgid "Slides (PDF)"
+msgstr "Diapositibak (PDF)"
+
+msgid "Small Caps"
+msgstr "Letra larri txikiak"
+
+msgid "So we can be sure we are not mailing passwords to random people"
+msgstr ""
+"Horrela, pasahitzak ausazko jendeari bidaltzen ari ez garela ziurta dezakegu"
+
+msgid ""
+"Some annotation codes are special and have side effects if you create them "
+"with these codes."
+msgstr ""
+"Ohar-kode batzuk bereziak dira eta alboko efektuak dituzte kode hauekin "
+"sortzen badituzu."
+
+msgid "Some fields are missing, all are required"
+msgstr "Eremu batzuk falta dira, denak beharrezkoak dira."
+
+msgid "Some fields are too long"
+msgstr "Eremu batzuk luzeegiak dira"
+
+msgid "Some ongoing revisions were found"
+msgstr "Abian dauden berrikuspen batzuk aurkitu dira"
+
+msgid "Sorry, too many jobs pending, please try again later!"
+msgstr "Barkatu, lan gehiegi daude zain, saiatu berriro geroago."
+
+msgid "Sorry, you can't remove this, please ask an admin"
+msgstr "Barkatu, ezin duzu hau kendu, galdetu administratzaile bati"
+
+msgid "Sorting:"
+msgstr "Ordena:"
+
+msgid "Source"
+msgstr "Iturburua"
+
+msgid "Source files"
+msgstr "Iturburu-fitxategiak"
+
+msgid "Source files with attachments"
+msgstr "Eranskinak dituzten iturburu-fitxategiak"
+
+msgid "Source removed"
+msgstr "Iturburua kendu da"
+
+msgid "Source, notes..."
+msgstr "Iturburua, oharrak..."
+
+msgid "Sources"
+msgstr "Iturburuak"
+
+msgid "Special blocks"
+msgstr "Bloke bereziak"
+
+msgid "Special pages"
+msgstr "Orri bereziak"
+
+msgid "Specify a whitespace-separated list of languages to activate it."
+msgstr "Zehaztu gaituko diren hizkuntzen zerrenda zuriunez banandurik."
+
+msgid "Spine Width (mm)"
+msgstr "Bizkarraren zabalera (mm)"
+
+msgid "Stale editing"
+msgstr "Edizio zaharkitua"
+
+msgid "Standalone HTML (printer-friendly)"
+msgstr "HTML independentea (inprimatzeko)"
+
+msgid "Standard"
+msgstr "Arrunta"
+
+msgid "Start the document with an empty page"
+msgstr "Hasi dokumentua orri huts batekin"
+
+msgid "Started"
+msgstr "Hasi da"
+
+msgid "Static page without javascript"
+msgstr "Orri estatikoa javascript-ik gabe"
+
+msgid "Status"
+msgstr "Egoera"
+
+msgid "Status changed"
+msgstr "Egoera aldatu da"
+
+msgid "Subsection"
+msgstr "Azpisekzioa"
+
+msgid "Subsubsection or description item"
+msgstr "Azalpen-elementuaren azpisekzioa"
+
+msgid "Subtitle"
+msgstr "Azpititulua"
+
+msgid "Such URI already exists"
+msgstr "URI hori jada badago"
+
+msgid ""
+"Such an header will unpublish the text and put a\n"
+"  redirection in place, and will be listed here"
+msgstr ""
+"Goiburu horrek testuaren argitalpena ezeztatuko\n"
+"  du, birbideraketa bat gehituko dio, eta hemen zerrendatuko da."
+
+msgid "Such an user already exists!"
+msgstr "Erabiltzaile hori jada badago."
+
+msgid "Such username already exists"
+msgstr "Erabiltzaile-izen hori badago"
+
+msgid "Suggested values:"
+msgstr "Iradokitako balioak:"
+
+msgid "Summary"
+msgstr "Laburpena"
+
+msgid "Supported directive in the header"
+msgstr "Onartutako direktiba goiburuan"
+
+msgid "Switch theme"
+msgstr "Aldatu gaia"
+
+msgid "Table of Contents"
+msgstr "Eduki-taula"
+
+msgid "Tables"
+msgstr "Taulak"
+
+msgid "Tag cloud with authors"
+msgstr "Etiketa-hodeia egileekin"
+
+msgid "Tag cloud with topics"
+msgstr "Etiketa-hodeia gaiekin"
+
+msgid "Task"
+msgstr "Zeregina"
+
+msgid "TeX options (advanced)"
+msgstr "TeX-en aukerak (aurreratua)"
+
+msgid "Teaser"
+msgstr "Aurrerapena"
+
+msgid "Teaser image"
+msgstr "Aurrerapenaren irudia"
+
+msgid "Template token"
+msgstr "Txantiloiaren tokena"
+
+msgid "Term"
+msgstr "Terminoa"
+
+msgid "Test"
+msgstr "Proba"
+
+msgid "Tested applications, in this order of preference"
+msgstr "Probatutako aplikazioak, hobespenaren ordena honetan"
+
+msgid "Text"
+msgstr "Testua"
+
+msgid "Text body only (no title, no final pages)"
+msgstr "Testu-gorputza soilik (izenbururik eta amaierako orririk gabe)"
+
+msgid "Text formatted with markup"
+msgstr "Markatze formatudun testua"
+
+msgid "Text height"
+msgstr "Testuaren altuera"
+
+msgid ""
+"Text redirections are set in the text itself, using the\n"
+"  DELETED header with this syntax"
+msgstr ""
+"Testu-birbideraketak testuan ezartzen dira,\n"
+"  DELETED goiburua erabiliz sintaxi honekin"
+
+msgid "Text width"
+msgstr "Testuaren zabalera"
+
+msgid "Texts"
+msgstr "Testuak"
+
+msgid "Thanks!"
+msgstr "Mila esker!"
+
+msgid ""
+"The Beamer selections are relevant only if you activate the\n"
+"  slides output."
+msgstr ""
+"Errainuaren hautapenak garrantzitsuak dira soilik diapositiben\n"
+"  irteera gaitzen baduzu."
+
+msgid "The OPDS address for this site is:"
+msgstr "Gune honen OPDS-ren helbidea hau da:"
+
+msgid ""
+"The PDF logo value can be either an absolute path\n"
+"            or just a filename if you choose to install it in the\n"
+"            TeXlive tree. You can do so with the following commands.\n"
+"            The last one checks if the file can be found."
+msgstr ""
+"PDFaren logotipoaren balioa bide-izen absolutu bat\n"
+"            edo soilik fitxategi-izen bat izan daiteke, TeXlive\n"
+"            zuhaitzean instalatzea aukeratzen baduzu. Honako komandoekin\n"
+"            egin dezakezu. Azkenak fitxategia aurki daitekeen egiaztatzen du."
+
+msgid "The changes will propagate automatically once you push."
+msgstr "Aldaketak automatikoki hedatuko dira behin sakatzean."
+
+#. ($uri)
+msgid "The description for %1 has been updated"
+msgstr "Honen azalpena eguneratu da: %1"
+
+msgid ""
+"The differences between the list of footnotes and references is shown below."
+msgstr ""
+"Oin-oharren eta erreferentzien zerrenden arteko ezberdintasuna jarraian "
+"erakusten da."
+
+msgid "The file uploaded is not an HTML file!"
+msgstr "Igotako fitxategia ez da HTML fitxategia."
+
+msgid "The following settings provide the defaults for each format."
+msgstr ""
+"Jarraian dauden ezarpenek formatu bakoitzaren balio lehenetsiak ematen "
+"dituzte."
+
+msgid "The following values are used to generate the webserver configuration."
+msgstr ""
+"Jarraian dauden balioak web-zerbitzariaren konfigurazioa sortzeko erabiltzen "
+"dira."
+
+msgid ""
+"The generate webserver configuration will redirect\n"
+"          all the HTTP requests to HTTPS"
+msgstr ""
+"Sortutako web-zerbitzariaren konfigurazioak\n"
+"          HTTP eskaera guztiak HTTPS-ra birbideratuko ditu"
+
+msgid "The logo has the site name on itself"
+msgstr "Logotipoak gunearen izena du"
+
+msgid "The optional subtitle"
+msgstr "Aukerako azpititulua"
+
+msgid ""
+"The page /special/index is twice special. It is assumed to be the\n"
+"default page to visit when loading the site’s root."
+msgstr ""
+"/special/index orria oso berezia da. Gunearen erroa\n"
+"kargatzean bisitatzen den lehenetsitako orritzat jotzen baita."
+
+msgid "The password will be mailed at this address"
+msgstr "Pasahitza helbide honetara bidaliko da"
+
+msgid "The reset link will expire in a hour."
+msgstr "Berrezartzeko esteka ordu batean iraungiko da."
+
+msgid "The revision has the following messages"
+msgstr "Berrikuspenak honako mezu hauek ditu"
+
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr ""
+"Guneak PDFak miniaturekin bistaratuko ditu\n"
+"        dokumentuaren amaieran."
+
+msgid "The text structure is shown below."
+msgstr "Testuaren egitura jarraian erakusten da."
+
+msgid "The text to show on the homepage preview"
+msgstr "Hasierako orriaren aurrebistan erakutsiko den testua"
+
+msgid "The text was added to the bookbuilder"
+msgstr "Testua liburu-sortzailean gehitu da"
+
+msgid "The texts were added to the bookbuilder"
+msgstr "Testuak liburu-sortzailean gehitu dira"
+
+msgid ""
+"The title of the document, for sorting purposes. Useful\n"
+"          if you want to strip the article, if any. A text titled “A\n"
+"          nice title” could have this set to “Nice title”, and will be\n"
+"          listed under N, not under A."
+msgstr ""
+"Dokumentuaren izenburua, ordenatzeko. Erabilgarria\n"
+"          artikuluari formatua baliogabetu nahi badiozu, baldin badauka.\n"
+"          \"Izenburu polit bat\" izenburua duen testuak \"Izenburu polita\" "
+"izan dezake,\n"
+"          eta N barruan zerrendatuko da, ez A barruan."
+
+msgid "The title of the document. The only mandatory directive."
+msgstr "Dokumentuaren izenburua. Beharrezkoa den direktiba bakarra."
+
+msgid ""
+"The webserver needs to be reconfigured. Please execute in a root shell the "
+"following commands:"
+msgstr ""
+"Web-zerbitzaria birkonfiguratu behar da. Exekutatu erro-kapsulan honako "
+"komando hauek:"
+
+msgid "The whole book in as single signature"
+msgstr "Liburu osoa sinadura bakar batean"
+
+msgid "Then approve the change as it would be a normal publishing."
+msgstr "Ondoren, onartu aldaketa argitaratze arrunt bat balitz bezala."
+
+msgid "Then fetch the updates from this page."
+msgstr "Gero, lortu orri honetako eguneraketak."
+
+msgid "There are failed jobs"
+msgstr "Huts egin duten lanak daude"
+
+msgid "There are pending revisions"
+msgstr "Zain dauden berrikuspenak daude"
+
+msgid "These texts are missing the unique id."
+msgstr "Testu hauei ID bakarra falta zaie."
+
+msgid ""
+"They can be texts, special texts, authors, topics, custom categories, "
+"aggregations and series."
+msgstr ""
+"Testuak, testu bereziak, egileak, gaiak, kategoria pertsonalizatuak, "
+"agregazioak eta sailak izan daitezke."
+
+msgid ""
+"They should be paths relative to the webserver configuration root or "
+"absolute paths (recommended)."
+msgstr ""
+"Web-zerbitzariaren konfigurazio-erroarekin edo bide-izen absolutuekin "
+"lotutako bide-izenak izan behar dute (gomendatua)."
+
+msgid "This directive wants a whitespace separated list of filenames."
+msgstr ""
+"Direktiba honek zuriunez banandutako fitxategi-izenen zerrenda nahi du."
+
+msgid ""
+"This has security implications and must be used only on trusted repositories"
+msgstr ""
+"Honek segurtasun-inplikazioak ditu eta biltegi fidagarrietan soilik erabili "
+"behar da"
+
+msgid ""
+"This is a WYSIWYG editor. If you prefer to use\n"
+"        the wiki-like syntax leave it as is, fill the required fields\n"
+"        above and postpone the editing to the next step."
+msgstr ""
+"Hau WYSIWYG editorea da. Wiki moduko sintaxia\n"
+"        erabiltzea nahiago baduzu, utzi dagoen bezala, bete\n"
+"        aurreko beharrezko eremuak eta atzeratu edizioa hurrengo urratserako."
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
+"Hau soilik sortutako fitxategientzat da garrantzitsua, non letra-tipoen "
+"ordezko sorta bat behar duzun. Ez du eraginik web-aplikazioan errematerik "
+"gabeko letra-tipoa jada erabiltzen bada."
+
+msgid "This is the caption"
+msgstr "Hau goiburukoa da"
+
+msgid ""
+"This mail has been sent to notify you about a new text\n"
+"creation, even if the uploading is not completed yet and the user\n"
+"still needs to finalize the upload. Another mail should follow soon.\n"
+"If this doesn't happen, it means that the uploading has been abandoned\n"
+"and you may want to check it out."
+msgstr ""
+"Mezu hau testu berri bat sortu dela jakinarazteko bidali da,\n"
+"oraindik igoera osatu ez bada, eta erabiltzaileak oraindik\n"
+"igoera amaitu behar badu ere. Beste mezu bat bidaliko da laster.\n"
+"Ez bada hori gertatzen, igoera bertan behera utzi dela esan nahi du\n"
+"eta egiaztatu beharko zenuke."
+
+msgid "This revision is already published, ignoring changes"
+msgstr "Berrikuspena argitaratu da, aldaketak baztertzen"
+
+msgid "This revision is being actively edited"
+msgstr "Berrikuspena aktiboki editatzen ari da"
+
+msgid "This revision is being actively edited by you"
+msgstr "Berrikuspena aktiboki editatzen ari zara"
+
+msgid "This revision is being edited by someone else!"
+msgstr "Berrikuspena aktiboki editatzen ari da beste norbait"
+
+msgid "This section will not produce a slide"
+msgstr "Sekzio honek ez du sortuko diapositibarik"
+
+msgid "This setting affects only the text creation form."
+msgstr "Ezarpen honek soilik testua sortzeko inprimakiari eragiten dio."
+
+msgid ""
+"This site is private and mobile applications should ask for your username "
+"and\n"
+"  password to access the OPDS."
+msgstr ""
+"Gune hau pribatua da eta mugikorrerako aplikazioek erabiltzaile-izena eta\n"
+"  pasahitza eskatu behar dute OPDS atzitzeko."
+
+msgid "This text does not exist"
+msgstr "Testu hau ez dago"
+
+msgid "This text is a book"
+msgstr "Testua liburu bat da"
+
+msgid "This text is an article"
+msgstr "Testua artikulu bat da"
+
+msgid "This text is new"
+msgstr "Testua berria da"
+
+msgid "This text is not available"
+msgstr "Testua ez dago erabilgarri"
+
+msgid "This text is not public yet"
+msgstr "Testu hau ez da publikoa oraindik"
+
+msgid "This text is not published yet"
+msgstr "Testua ez da argitaratu oraindik"
+
+#. (rev.is_deferred)
+msgid "This text will be deferred to %1"
+msgstr "Testua data honetara atzeratuko da: %1"
+
+msgid "This user cannot be removed"
+msgstr "Erabiltzaile hau ezin da kendu"
+
+msgid "Thumbnail"
+msgstr "Miniatura"
+
+msgid "Title"
+msgstr "Izenburua"
+
+msgid "Title and chapter. If one side document: chapter."
+msgstr "Izenburua eta atala. Alde bateko dokumentua bada: atala."
+
+msgid "Title and section.  If one side document: section."
+msgstr "Izenburua eta sekzioa. Alde bateko dokumentua bada: sekzioa."
+
+msgid "Title and subtitle. If one side document: title."
+msgstr "Izenburua eta azpititulua. Alde bateko dokumentua bada: izenburua."
+
+msgid "Title for sorting"
+msgstr "Ordenaren izenburua"
+
+msgid "Title, author, date..."
+msgstr "Izenburua, egilea, data..."
+
+msgid "Titles"
+msgstr "Izenburuak"
+
+#. (pending_url)
+msgid "To apply the changes, you can visit %1"
+msgstr "Aldaketak aplikatzeko, %1 bisita dezakezu"
+
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr "PDFak bistaratzeko, ezarri edo gehitu honako katea goiburuan"
+
+msgid ""
+"To preserve the whitespaces and line breakings, wrap the paragraphs with"
+msgstr "Zuriuneak eta lerro-jauziak mantentzeko, bildu paragrafoak honekin:"
+
+msgid "To quickly format bibliographies wrap them in"
+msgstr "Bibliografiak bizkor formateatzeko bildu hemen:"
+
+msgid "To quickly format plays, use"
+msgstr "Antzezlanak bizkor formateatzeko, erabili:"
+
+msgid "To resume the editing you can visit the following URL"
+msgstr "Edizioa berrekiteko honako URLa bisita dezakezu"
+
+#. (loc('Update')
+#. (loc("Update"))
+msgid ""
+"To save or update the templates, you need first to save\n"
+"    the options with the \"%1\" button"
+msgstr ""
+"Txantiloiak gordetzeko edo eguneratzeko, lehenik,\n"
+"    aldaketak gorde behar dituzu \"%1\" botoiarekin"
+
+msgid "To view the changes introduced, you can visit the following URL"
+msgstr "Sartutako aldaketak ikusteko, honako URLa bisita dezakezu"
+
+msgid "Toggle"
+msgstr "Aldatu"
+
+msgid "Toggle fullscreen editor"
+msgstr "Aldatu pantaila osoko editorea"
+
+msgid "Token refreshed"
+msgstr "Tokena freskatu da"
+
+msgid "Too many URLs to process!"
+msgstr "URL gehiegi prozesatzeko."
+
+msgid "Top margin"
+msgstr "Goiko orri-bazterra"
+
+msgid "Topic"
+msgstr "Gaia"
+
+msgid "Topics"
+msgstr "Gaiak"
+
+msgid "Total pages"
+msgstr "Orri guztiak"
+
+msgid "Total size (mm)"
+msgstr "Tamaina osoa (mm)"
+
+msgid "Triple bars"
+msgstr "Barra hirukoitzak"
+
+msgid "Try a random text if unsure"
+msgstr "Saiatu ausazko testuarekin ez bazaude ziur"
+
+msgid ""
+"Turn links to images into images (affects site display only, static formats "
+"have the link)"
+msgstr ""
+"Bihurtu irudietarako estekak irudi (guneko bistaratzeari eragiten dio "
+"soilik, formatu estatikoek esteka dute)."
+
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"            Gmaps into widgets (affects site display only, static\n"
+"            formats have the link)"
+msgstr ""
+"Bihurtu azalpenik gabeko YouTube, Vimeo,\n"
+"            Gmaps -erako estekak widget (guneko bistaratzeari\n"
+"            eragiten dio soilik, formatu estatikoek esteka dute)."
+
+msgid "Two side layout"
+msgstr "Bi aldeko diseinua"
+
+msgid "Type"
+msgstr "Mota"
+
+msgid "URI"
+msgstr "URIa"
+
+msgid "URI is available and valid"
+msgstr "URIa erabilgarri dago eta baliozkoa da"
+
+msgid ""
+"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
+"my-author-title-1"
+msgstr ""
+"URIak ASCII katea izan behar du, marrez bereizita, zuriunerik gabe. "
+"Adibidez: nire-egilea-izenburua-1"
+
+msgid "URL"
+msgstr "URLa"
+
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
+msgstr "Urruneko biltegi berriaren URLa (HTTPS, HTTP, edo GIT)"
+
+msgid "URL pointing to an embeddable webchat"
+msgstr "Web-txat txertagarri batera zuzendutako URLa"
+
+msgid "UTC"
+msgstr "UTC"
+
+msgid "Unable to load the bookbuilder session"
+msgstr "Ezin da kargatu liburu-sortzailearen saioa"
+
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr "Ezin da bidali mezua hemendik: %1 hona: %2"
+
+msgid "Unbranded PDF (hide site name, logo, etc.)"
+msgstr "Markarik gabeko PDFa (gunearen izena, logotipoa, etab. ezkutatuta)"
+
+msgid ""
+"Unconditionally remove all the invisible non-breaking\n"
+"                spaces in the text"
+msgstr ""
+"Baldintzarik gabe, kendu ikusgai ez dauden testuko\n"
+"                zuriune banaezinak"
+
+#. (shared)
+msgid ""
+"Unfortunately, the shared repository located at %1 appeared out of sync."
+msgstr ""
+"Zoritxarrez, %1 lekuan dagoen biltegi partekatua sinkronizatu gabe dago."
+
+msgid "Unique ID for the text"
+msgstr "Testuaren ID bakarra"
+
+#. ('my-uri-1')
+#. ("my-uri-1")
+msgid ""
+"Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase "
+"characters and digits, optionally separated by a hyphen, e.g. %1"
+msgstr ""
+"Identifikatzaile bakarra. Aukera hau ezin da aldatu geroago. Gutxienez, "
+"ASCII-ren eta letra xehea duten 4 karaktere eta digitu, aukeran, marra batez "
+"bereizita, adibidez: %1"
+
+msgid "Unlimited"
+msgstr "Mugagabea"
+
+msgid "Unordered List"
+msgstr "Ordenatu gabeko zerrenda"
+
+msgid "Unpublished texts"
+msgstr "Argitaratu gabeko testuak"
+
+#. ($mime_type)
+#. ($mime)
+msgid "Unsupported file type %1"
+msgstr "Onartu gabeko %1 fitxategi mota"
+
+msgid "Unused attachment"
+msgstr "Erabili gabeko eranskina"
+
+msgid "Update"
+msgstr "Eguneratu"
+
+msgid "Update account info"
+msgstr "Eguneratu kontuaren informazioa"
+
+msgid "Update aggregation"
+msgstr "Eguneratu agregazioa"
+
+msgid "Update and create new aggregation"
+msgstr "Eguneratu eta sortu agregazio berria"
+
+msgid "Update and create new text"
+msgstr "Eguneratu eta sortu testu berria"
+
+msgid "Update category description"
+msgstr "Eguneratu kategoriaren azalpena"
+
+msgid "Update series"
+msgstr "Eguneratu saila"
+
+msgid "Update to current settings"
+msgstr "Eguneratu uneko ezarpenetara"
+
+msgid "Upload"
+msgstr "Igo"
+
+msgid "Upload the image and note its name. Files are always renamed."
+msgstr "Igo irudia eta gorde bere izena. Fitxategiei beti aldatzen zaie izena."
+
+msgid ""
+"Uploaded and available images are shown and listed below the text preview."
+msgstr ""
+"Igotako eta erabilgarri dauden irudiak testuaren aurrebistaren azpian "
+"erakutsi eta zerrendatzen dira."
+
+msgid "Url"
+msgstr "URLa"
+
+msgid "Use JS syntax highlight for code blocks"
+msgstr "Erabili kode-blokeen JS-ren sintaxi nabarmena"
+
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
+msgstr "Erabili LuaLaTeX, XeLaTeX-en ordez (mantsoagoa)"
+
+msgid "Use SSL for authenticated users"
+msgstr "Erabili SSL baimendutako erabiltzaileentzat"
+
+msgid "Use it as a teaser image adding to the header this line:"
+msgstr "Erabili aurrerapen-irudi gisa goiburuan lerro hau gehituz:"
+
+msgid "Use named table of contents anchors instead of numeric ones"
+msgstr "Erabili izendatutako eduki-taularen aingura, zenbakizkoen ordez"
+
+msgid "Use one of the site's formats"
+msgstr "Erabili guneko formatuetako bat"
+
+#. (sign)
+msgid "Use optimized signatures with %1 pages each"
+msgstr "Erabili optimizatutako sinadurak, bakoitza %1 orrirekin"
+
+msgid "Use sans fonts for section titles"
+msgstr "Erabili errematerik gabeko letra-tipoak sekzioko izenburuentzat"
+
+msgid "Use the image as cover"
+msgstr "Erabili irudia azal gisa"
+
+msgid "Use the site locale"
+msgstr "Erabili guneko eskualdeko ezarpenak"
+
+msgid "Useful HTML snippets"
+msgstr "HTML-ren kode zati erabilgarriak"
+
+msgid ""
+"Useful for footnotes or in the headers of the document, where you cannot put "
+"a blank line to mark a new paragraph."
+msgstr ""
+"Oin-oharrentzat edo dokumentuaren goiburuentzat erabilgarria, non ezin duzun "
+"lerro huts bat jarri paragrafo berri bat markatzeko."
+
+msgid "User"
+msgstr "Erabiltzailea"
+
+#. ($user->username)
+msgid "User %1 created!"
+msgstr "%1 erabiltzailea sortu da."
+
+#. ($user->username)
+#. ($c->stash->{user}->username)
+msgid "User %1 deleted"
+msgstr "%1 erabiltzailea ezabatu da."
+
+#. ($user->username)
+msgid "User %1 updated"
+msgstr "%1 erabiltzailea eguneratu da."
+
+msgid "User created"
+msgstr "Erabiltzailea sortu da"
+
+msgid "Username"
+msgstr "Erabiltzaile-izena"
+
+msgid "Username, alphanumerical only, no special characters, no uppercase"
+msgstr ""
+"Erabiltzaile-izena, alfazenbakizkoa soilik, karaktere berezirik gabe, letra "
+"larririk gabe"
+
+msgid "Users"
+msgstr "Erabiltzaileak"
+
+msgid ""
+"Using this token, you can load the bookbuilder settings\n"
+"    and the text list from another computer, or share it with someone\n"
+"    else. Just write it down and then load it from another computer\n"
+"    using the following form."
+msgstr ""
+"Token hau erabiltzean, liburu-sortzailearen ezarpenak karga\n"
+"    ditzakezu eta beste ordenagailuko testu-zerrenda, baita ere,\n"
+"    beste norbaitekin parteka dezakezu. Idatz ezazu eta kargatu\n"
+"    beste ordenagailutik honako inprimakia erabiliz."
+
+msgid ""
+"Usually this is due to high traffic and bad luck, and it can be fixed by "
+"pushing the changes again."
+msgstr ""
+"Normalean, trafiko altua eta zorte txarra dela eta gertatzen da, eta berriro "
+"konpon daiteke aldaketak berriro aplikatuz."
+
+msgid "Verbatim block"
+msgstr "Verbatim-aren blokeoa"
+
+msgid "View history"
+msgstr "Ikusi historia"
+
+msgid "Virtual hosts"
+msgstr "Ostalari birtualak"
+
+msgid "Virtual hosts, one per line"
+msgstr "Ostalari birtualak, bat lerroko"
+
+msgid "What links here"
+msgstr "Zerk dakar hona"
+
+msgid ""
+"When creating a new text, do not populate the publication date if not "
+"provided by the user."
+msgstr ""
+"Testu berria sortzean, ez bete argitaratze-data ez badu erabiltzaileak eman."
+
+msgid ""
+"When you start a bookbuilder session, at the end of the\n"
+"    bookbuilder page you can see a token for sharing the session. You\n"
+"    can load it here from another device to resume what you were\n"
+"    doing."
+msgstr ""
+"Liburu-sortzailearen saio bat hastean, liburu-sortzailearen\n"
+"    amaieran, saioa partekatzeko erabiltzen den token bat ikusiko duzu.\n"
+"    Hemen karga dezakezu beste gailu batetik, horrela, egiten ari zinena\n"
+"    egiten jarrai dezakezu."
+
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr "PDF bat igotzean, zatitu iruditan gorputzean txertatzeko."
+
+msgid "Where does this text come from?"
+msgstr "Nondik dator testu hau?"
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr "Onartutako IPak (babeskopietarako, bat lerroko)"
+
+msgid "Width of the cover image in percent of the text block width."
+msgstr "Azalaren irudiaren zabalera testu-blokearen zabaleraren ehunekotan"
+
+msgid "Width:"
+msgstr "Zabalera:"
+
+msgid ""
+"With complex structures, e.g., a chapter with\n"
+"      subsections, selecting only the chapter is likely to select only\n"
+"      the chapter's title, so probably you want to select the chapter\n"
+"      and all its subsections."
+msgstr ""
+"Egitura konplexuekin, adibidez: azpisekzioak\n"
+"      dituen atal bat, atal bat hautatzean, normalean, atalaren\n"
+"      atalaren izenburua hautatuko du, beraz hobe atala eta bere\n"
+"      azpisekzio guztiak hautatzen badituzu."
+
+msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr ""
+"Markatzea interpreta ez dadin, \"verbatim\" etiketa\n"
+"          erabil dezakezu, normalean, ez da behar"
+
+msgid ""
+"With the bookbuilder you can change the layout (fonts,\n"
+"    dimensions, paper, margins) of the texts on the library. You can\n"
+"    also merge more texts to create your own booklet. Just try it!"
+msgstr ""
+"Liburu-sortzailearekin liburutegiko testuen diseinua\n"
+"    (letra-tipoak, dimentsioak, papera, orri-bazterrak). Testu\n"
+"    gehiago batu ditzakezu zure liburuxka sortzeko. Probatu!"
+
+msgid "Workflow"
+msgstr "Lan-fluxua"
+
+msgid "Working locally?"
+msgstr "Lineaz kanpo lan egiten ari zara?"
+
+msgid "Wrap Width (mm)"
+msgstr "Bilgarriaren zabalera (mm)"
+
+msgid ""
+"Wrapping tags cannot be used inside environments\n"
+"          which require leading space (notably, you cannot use them in\n"
+"          lists)."
+msgstr ""
+"Etiketa bilgarriak ezin dira erabili inguruneen barruan,\n"
+"          hasierako zuriunea behar baitute (batez ere, ezin dituzu erabili\n"
+"          zerrendetan)."
+
+msgid "Wrong answer!"
+msgstr "Erantzun okerra."
+
+msgid "Wrong username or password"
+msgstr "Erabiltzaile-izen edo pasahitz okerra"
+
+msgid "XeLaTeX source"
+msgstr "XeLaTeX-en iturburua"
+
+msgid "Year"
+msgstr "Urtea"
+
+msgid "Yes"
+msgstr "Bai"
+
+msgid ""
+"You MUST specify a reason, otherwise the line will have no effect.\n"
+"The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
+"etc.) is irrelevant."
+msgstr ""
+"Arrazoi bat zehaztu BEHAR duzu, bestela, lerroak ez du eraginik izango.\n"
+"Goiburuko lerroen ordena (non \"#title\", \"#lang\", etab. dauden)\n"
+"garrantzirik gabekoa da."
+
+msgid "You are already logged in"
+msgstr "Jada saioa hasi duzu"
+
+msgid ""
+"You are building a collection. Please provide a title and, optionally, any "
+"other information needed for the front cover (author, subtitle, date) and "
+"the back cover (source and notes)."
+msgstr ""
+"Bilduma bat sortzen ari zara. Jarri izenburu bat, eta aukeran, aurrealdeko "
+"azalerako beharrezkoa den informazioa (egilea, azpititulua, data) eta "
+"atzealdeko azala (iturburua eta oharrak)."
+
+msgid "You are logged in now!"
+msgstr "Saioa hasi duzu."
+
+#. (backup)
+msgid ""
+"You can access the backup located at %1 or ask your host for help, "
+"forwarding this email"
+msgstr ""
+"%1 lekuan kokatuta dagoen babeskopia atzi dezakezu edo galdetu ostalariari "
+"laguntza lortzeko, mezu hau birbidaliz."
+
+msgid ""
+"You can add texts to the bookbuilder clicking on the\n"
+"    “plus” icon near the downloads of each text. You can add and\n"
+"    remove the texts later."
+msgstr ""
+"Testuak gehi ditzakezu liburu-sortzailean testu bakoitzaren\n"
+"    deskargen gertu dagoen \"gehi\" ikonoa sakatuz. Testuak\n"
+"    geroago gehi edo ken ditzakezu."
+
+msgid ""
+"You can also link to a part of the text. Please refer to the manual for this "
+"feature"
+msgstr ""
+"Baita ere, testuko zati batera lotu dezakezu. Irakurri eskuliburua eginbide "
+"honi buruz jakiteko."
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
+msgstr ""
+"Zure IPa baimen dezakezu Git eta gunea atzitzeko (gune pribatuentzat) 4 "
+"orduz, honako esteka hau bisitatuz."
+
+#. (create_url)
+msgid "You can create a peer at %1"
+msgstr "Pareko bat sor dezakezu hemen: %1"
+
+msgid "You can do so answering a simple question."
+msgstr "Hori egin dezakezu galdera arrunt bati erantzunez."
+
+msgid "You can tune them editing them here."
+msgstr "Doi ditzakezu hemen editatuz."
+
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
+msgstr ""
+"Honako aurrizki hauek erabil ditzakezu hitz bat eremu jakin batean "
+"bilatzeko, adibidez: \"title:adibidea\"."
+
+msgid ""
+"You can't create a new revision because the text has not been published yet"
+msgstr ""
+"Ezin duzu sortu berrikuspen berria, testua ez baita oraindik argitaratu."
+
+msgid "You have logged out"
+msgstr "Saioa amaitu duzu"
+
+msgid "You may want to resume the editing of one of them"
+msgstr "Horietako baten edizioa jarrai dezakezu"
+
+msgid ""
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr ""
+"Hasierako \"A\", \"An\", \"The\" eta horrelakoak baliogabe ditzakezu "
+"izenburutik (ingeleseko testuentzat)"
+
+msgid "You may want to use one of these images"
+msgstr "Honako irudietako bat erabil dezakezu"
+
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
+"Egiaztagiriak bidali dituzu enkriptatu gabeko konexio batetik. Aldatu HTTPS "
+"protokolora, hasi saioa eta aldatu pasahitza oraintxe bertan. Hau ez "
+"litzateke gertatu behar."
+
+#. (edit_url)
+msgid "You should change your password right away at %1"
+msgstr "Pasahitza aldatu behar duzu oraintxe bertan hemen: %1"
+
+msgid "Your browser does not support the audio tag."
+msgstr "Arakatzaileak ez du onartzen audio-etiketa."
+
+msgid "Your browser does not support the video tag."
+msgstr "Arakatzaileak ez du onartzen bideo-etiketa."
+
+msgid ""
+"Your changes are saved and can be checked every time you hit Preview or Save"
+msgstr ""
+"Aldaketak gorde dira eta egiazta daitezke \"Aurreikusi\" edo \"Gorde\" "
+"sakatzean."
+
+msgid "Your chapter here..."
+msgstr "Atala..."
+
+msgid "Your current bookbuilder token is:"
+msgstr "Liburu-sortzailearen tokena hau da:"
+
+msgid "Your email"
+msgstr "Helbide elektronikoa"
+
+msgid "Your file is ready"
+msgstr "Fitxategia prest dago"
+
+msgid "Your part here..."
+msgstr "Zatia..."
+
+#. (password)
+msgid "Your password is %1."
+msgstr "Zure pasahitza %1 da."
+
+msgid "Your password was reset, now you can login with it"
+msgstr "Pasahitza berrezarri da, orain, honekin has dezakezu saioa:"
+
+msgid "Your section here..."
+msgstr "Sekzioa..."
+
+msgid "Your sub-sub-section (or description heading) here..."
+msgstr "Azpi-azpisekzioa (edo azalpenaren goiburua)..."
+
+msgid "Your subsection here..."
+msgstr "Azpisekzioa..."
+
+#. (home)
+msgid "Your user at %1 has been created."
+msgstr "Hemengo erabiltzailea sortu da: %1"
+
+#. (username)
+msgid "Your username is %1."
+msgstr "Zure erabiltzaile-izena %1 da."
+
+msgid "Zip"
+msgstr "ZIP"
+
+msgid "aborted"
+msgstr "bertan behera utzi da"
+
+msgid "about, links..."
+msgstr "honi buruz, estekak..."
+
+msgid "activate to sort column ascending"
+msgstr "gaitu zutabeak goruntz ordenatzea"
+
+msgid "activate to sort column descending"
+msgstr "gaitu zutabeak beheruntz ordenatzea"
+
+msgid "active"
+msgstr "gaitu"
+
+msgid "affects only the frontend webserver configuration"
+msgstr "interfazeko web-zerbitzariaren konfigurazioari soilik eragiten dio"
+
+msgid "any"
+msgstr "edozein"
+
+msgid "automatically generated if not present, using author and title"
+msgstr "automatikoki sortutakoa ez badago, egilea eta izenburua erabiliko dira"
+
+msgid "code and monospace"
+msgstr "kodea eta lerroarte bakarra"
+
+msgid "comma separated list"
+msgstr "komaz bereizitako zerrenda"
+
+msgid "completed"
+msgstr "osatuta"
+
+msgid "conflict"
+msgstr "gatazka"
+
+msgid "default"
+msgstr "lehenetsitakoa"
+
+msgid "description"
+msgstr "azalpena"
+
+msgid "displayed text"
+msgstr "bistaratutako testua"
+
+msgid "edit, commit..."
+msgstr "editatu, berretsi..."
+
+msgid "editing"
+msgstr "editatzen"
+
+msgid "emphasis"
+msgstr "enfasia"
+
+msgid "failed"
+msgstr "huts egin du"
+
+msgid "filtered from _MAX_ total entries"
+msgstr "_MAX_ sarreretatik iragazita"
+
+msgid "for code, monospaced"
+msgstr "kodearentzat, lerroarte bakarrarekin"
+
+msgid "for display"
+msgstr "bistaratzeko"
+
+msgid "for poetry"
+msgstr "poesiarako"
+
+msgid "generic sectioning, good for articles"
+msgstr "sekzio orokorrak, artikuluentzat aproposa"
+
+msgid "if you want to use a custom size, you need to set both width and height"
+msgstr ""
+"tamaina pertsonalizatua nahi baduzu, zabalera eta altuera ezarri behar dituzu"
+
+msgid "image"
+msgstr "irudia"
+
+msgid "left"
+msgstr "ezkerra"
+
+msgid "mandatory"
+msgstr "beharrezkoa"
+
+msgid "markup *not* interpreted"
+msgstr "markatzea *ez* da interpretatu"
+
+#. (site.binary_upload_max_size_in_mega)
+msgid "max %1 Mb"
+msgstr "gehienez %1 Mb"
+
+msgid "minutes"
+msgstr "minutuak"
+
+msgid "new-example-uri"
+msgstr "uri-adibide-berria"
+
+msgid "only lowercase ASCII and hyphens"
+msgstr "ASCII-ren letra xeheak eta marrak soilik"
+
+msgid "or"
+msgstr "edo"
+
+msgid "ordered item"
+msgstr "ordenatutako elementua"
+
+msgid "overstriked"
+msgstr "gainkargatua"
+
+msgid "pending"
+msgstr "zain"
+
+msgid "plain PDF"
+msgstr "PDF arrunta"
+
+msgid "plain text source"
+msgstr "testu arruntaren iturburua"
+
+msgid "processing"
+msgstr "prozesatzen"
+
+msgid "published"
+msgstr "argitaratuta"
+
+msgid "revision"
+msgstr "berrikuspena"
+
+msgid "right"
+msgstr "eskuina"
+
+#. (args)
+msgid "string"
+msgstr "katea"
+
+msgid "strong emphasis"
+msgstr "enfasi handia"
+
+msgid "sub-sub-section"
+msgstr "azpi-azpisekzioa"
+
+msgid "subscript"
+msgstr "azpigidoia"
+
+msgid "subsection"
+msgstr "azpisekzioa"
+
+msgid "superscript"
+msgstr "supergidoia"
+
+msgid "taken"
+msgstr "hartuta"
+
+msgid "texts by authors, title, topic..."
+msgstr "testuak egileen, izenburuen, gaien... arabera"
+
+msgid "texts sorted by author"
+msgstr "testuak egilearen arabera ordenatuta"
+
+msgid "texts sorted by title"
+msgstr "testuak izenburuaren arabera ordenatuta"
+
+msgid "the author of the text (as displayed)"
+msgstr "testuaren egilea (bistaratzen den gisa)"
+
+msgid "this text will be unpublished"
+msgstr "testu honen argitalpena ezeztatuko da"
+
+msgid "topic"
+msgstr "gaia"
+
+msgid "unordered item"
+msgstr "ordenatu gabeko elementua"
+
+msgid "very strong emphasis"
+msgstr "enfasi oso handia"
+
+msgid "with description"
+msgstr "azalpenarekin"
+
+msgid "without description"
+msgstr "azalpenik gabe"
+
+msgid ""
+"“Stale editing” means that the revision was abandoned\n"
+"    while editing, but it's still there, in case someone wants to pick\n"
+"    it up when editing a text."
+msgstr ""
+"“Edizio zaharkitua” hitzak esan nahi du berrikuspena\n"
+"    editatu bitartean bertan behera utzi dela, nahiz eta oraindik\n"
+"    badagoen, norbaitek hartu nahi baldin badu testua editatzen den "
+"bitartean."
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "texts sorted by topic"
+
+#~ msgid "RSS"
+#~ msgstr "RSS"
+
+#~ msgid "syndicate"
+#~ msgstr "syndicate"
