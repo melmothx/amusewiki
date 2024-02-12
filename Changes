@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.596 2024-02-12
+
+ - Add basque (eu) i18n. Thanks to @a-mento
+
 2.595 2024-02-10
 
  - Fix crash in OAI-PMH with Marc21 and hard-deleted entry.
