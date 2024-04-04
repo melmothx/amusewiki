@@ -63,6 +63,7 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
     $c->stash(
               nav => 'add-to-library',
               page_title => $c->loc('Add a new text'),
+              load_select2 => 1,
              );
 
     my $site    = $c->stash->{site};
@@ -172,7 +173,6 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
         }
         Dlog_debug { "Nodes are $_" } $nodes;
         $c->stash(
-                  load_select2 => 1,
                   node_selections => $nodes,
                  );
     }
