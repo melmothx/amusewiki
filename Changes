@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.597 2024-04-04
+
+ - Fix JS breakage on newtext because of select2 library not loaded.
+ - Updated eu localization. Thanks to @a-mento
+
 2.596 2024-02-12
 
  - Add basque (eu) i18n. Thanks to @a-mento
