@@ -149,7 +149,7 @@ sub update_node :Chained('edit') :PathPart('') :Args(0) {
         $node->update_from_params(\%params);
 
         my $sorting_pos = 0;
-        my %children_pos = map { $_ => ++$sorting_pos } (ref($children) ? @$children : ($children));
+        my %children_pos = map { $_ => ++$sorting_pos } grep { defined $_ } (ref($children) ? @$children : ($children));
         Dlog_debug { "Children nodes: $_" } { children => $children, sorting => \%children_pos };
         foreach my $child ($node->children) {
             my $nid = $child->node_id;
