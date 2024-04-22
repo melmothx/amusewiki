@@ -5546,9 +5546,20 @@ sub create_aggregation {
     }
     my $aggregation = $self->aggregations->find({ aggregation_uri => $rec{aggregation_uri} });
     my @existing_uris;
+    my $bump_pmh = 1;
     if ($aggregation) {
         Dlog_debug { "Updating aggregation with $_" } \%rec;
-        $aggregation->update(\%rec);
+        foreach my $k (sort keys %rec) {
+            $aggregation->$k($rec{$k});
+        }
+        if ($aggregation->is_changed) {
+            Dlog_debug { "Aggregation was updated $_" } +{ $aggregation->get_dirty_columns };
+            $aggregation->update;
+        }
+        else {
+            log_debug { "No changes in the aggregation" };
+            $bump_pmh = 0;
+        }
         @existing_uris = map { $_->uri } $aggregation->titles;
     }
     else {
@@ -5574,7 +5585,14 @@ sub create_aggregation {
         }
     }
     Dlog_debug { "Aggregation changed $_" } +{ from => \@existing_uris, to => \@uris };
-    $aggregation->bump_oai_pmh_records;
+    if ($bump_pmh
+        or join('|', @existing_uris) ne join('|', @uris)) {
+        Dlog_info { "Bumping OAI PMH records for " . $aggregation->aggregation_uri . " aggregation $_" } \@uris;
+        $aggregation->bump_oai_pmh_records;
+    }
+    else {
+        log_info { "No OAI-PMH update for aggregation " . $aggregation->aggregation_uri };
+    }
     $guard->commit;
     $aggregation->discard_changes;
     return $aggregation;

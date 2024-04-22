@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 203;
+use Test::More tests => 204;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -503,6 +503,17 @@ $site->delete;
                                         });
     like $agg->comment_html, qr{<strong>valid</strong>};
     like $agg->aggregation_series->comment_html, qr{<em>valid</em>};
+}
+
+{
+    my $max = $site->oai_pmh_records->search(undef, { order_by => { -desc => 'datestamp' }, rows => 1 })->first;
+    diag $max->datestamp;
+    diag "Reimporting and checking if ts changed";
+    DumpFile($autoimport->child('aggregations.yml'), $site->serialize_aggregations);
+    sleep 2;
+    $site->process_autoimport_files;
+    my $newmax = $site->oai_pmh_records->search(undef, { order_by => { -desc => 'datestamp' }, rows => 1 })->first;
+    is $max->datestamp->epoch, $newmax->datestamp->epoch;
 }
 
 sub check_oai_pmh {
