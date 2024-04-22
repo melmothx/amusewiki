@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 204;
+use Test::More tests => 205;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -208,8 +208,17 @@ foreach my $title ($site->titles) {
     my $new_date = $title->oai_pmh_records->first->zulu_datestamp;
     ok $new_date gt $pmh_date, "$new_date > $pmh_date";
 }
+
 # reset
-$site->process_autoimport_files;
+{
+    my $max = $site->oai_pmh_records->search(undef, { order_by => { -desc => 'datestamp' }, rows => 1 })->first;
+    diag $max->datestamp;
+    diag "Reimporting and checking if ts changed";
+    sleep 2;
+    $site->process_autoimport_files;
+    my $newmax = $site->oai_pmh_records->search(undef, { order_by => { -desc => 'datestamp' }, rows => 1 })->first;
+    ok $max->datestamp->epoch < $newmax->datestamp->epoch;
+}
 
 {
     $mech->get('/aggregate/edit/' . $ids[0]);

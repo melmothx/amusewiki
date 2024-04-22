@@ -5587,8 +5587,10 @@ sub create_aggregation {
     Dlog_debug { "Aggregation changed $_" } +{ from => \@existing_uris, to => \@uris };
     if ($bump_pmh
         or join('|', @existing_uris) ne join('|', @uris)) {
-        Dlog_info { "Bumping OAI PMH records for " . $aggregation->aggregation_uri . " aggregation $_" } \@uris;
-        $aggregation->bump_oai_pmh_records;
+        my @all_uris = (@existing_uris, @uris);
+        Dlog_info { "Bumping OAI PMH records for $_" } \@all_uris;
+        $self->titles->texts_only->by_uri(\@all_uris)->search_related('oai_pmh_records')->bump_datestamp;
+        # $aggregation->bump_oai_pmh_records;
     }
     else {
         log_info { "No OAI-PMH update for aggregation " . $aggregation->aggregation_uri };
