@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.598 2024-04-30
+
+ - Fix OAI-PMH aggregation handling
+
 2.597 2024-04-04
 
  - Fix JS breakage on newtext because of select2 library not loaded.
