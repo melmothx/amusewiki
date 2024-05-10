@@ -1050,6 +1050,7 @@ sub known_langs {
             ro => 'Română',
             fa => 'فارسی',
             eu => 'Euskara',
+            hu => 'Magyar',
            };
 }
 
