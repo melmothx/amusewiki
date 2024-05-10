@@ -1,0 +1,3723 @@
+# AmuseWiki i18n
+# This file is distributed under the same license as the AmuseWiki package.
+# Marco Pessotto <melmothx@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AmuseWiki 0.01\n"
+"POT-Creation-Date: 2014-03-06 10:16+0100\n"
+"PO-Revision-Date: 2019-11-14 15:19+0100\n"
+"Last-Translator: Marco <melmothx@gmail.com>\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.2.1\n"
+
+#. ($filename)
+msgid "%1 doesn't exist"
+msgstr "%1 nem létezik"
+
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr "%1 folyamat törölve"
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr "%1 folyamat újraütemezve"
+
+#. ($c->stash->{site}->full_name)
+#. (site.full_name)
+msgid "%1 on mobile"
+msgstr "%1 mobil nézetben"
+
+#. (text.pages_estimated)
+msgid "%1 pp."
+msgstr "%1 oldal."
+
+msgid "(leave blank to keep the current one)"
+msgstr "(hagyd üresen hogy a jelenlegit tartsd meg)"
+
+msgid "(narrowest)"
+msgstr "(legkeskenyebb)"
+
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr "(okos idézetek, linkek, lábjegyzetek, stb.)"
+
+msgid "(use that as main link in static mirror as well)"
+msgstr "(használd a fő link esetében és a statikus mirror esetében is)"
+
+msgid "(widest)"
+msgstr "(legszélesebb)"
+
+msgid "A blank line (or more blank lines) starts a new paragraph."
+msgstr "Üres sor (több üres sor) kezdi az új bekezdést."
+
+msgid "A collection with this URI already exists"
+msgstr "A gyűjteménye ahol az URI már létezik"
+
+msgid ""
+"A cover image was already added, but you can replace it uploading\n"
+"              a new one."
+msgstr ""
+"A borító kép ahol hozzá van adva és kicserélhető feltöltéssel\n"
+"              egy újra."
+
+msgid ""
+"A footnote is a line which starts with a number between square\n"
+"          brackets, with no leading whitespace."
+msgstr ""
+"A lábjegyzet egy sorban kezdődik szögletes zárójelben kezdő szóközök nélkül."
+
+msgid "A line which starts with 2 or more whitespaces is a quotation."
+msgstr "A sor 2 vagy több szóközzel kezdődik akkor idézet."
+
+msgid "A line which starts with 20 or more whitespaces is right-aligned."
+msgstr "A sor 20 vagy több szóközzel kezdődik akkor az jobbra igazított."
+
+msgid "A line which starts with 6 or more whitespaces is centered."
+msgstr "A sor ami 6 vagy több szóközzel kezdődik az középre van igazítva."
+
+msgid ""
+"A list of links and labels to insert into the top\n"
+"            bar. One per line, first the url, then the label,\n"
+"            separated by a space, e.g. \"http://test.me Test site\""
+msgstr ""
+"A lista linkekhez és címkékhez beszúrása a felső sávba.\n"
+"            Soronként egy, először az URL, utána a címke egy\n"
+"            szóközzel elválasztva pl. http://example.com Példa oldal"
+
+#. (location)
+msgid "A new text has been created at %1"
+msgstr "Új szöveg létrejött itt: %1"
+
+msgid "A nice title"
+msgstr "Egy szép cím"
+
+msgid "A4 imposed PDF"
+msgstr "A4 imposed PDF"
+
+msgid "A4 paper"
+msgstr "A4"
+
+msgid "A5 paper"
+msgstr "A5"
+
+msgid "A6 paper (also suitable for e-readers)"
+msgstr "A6 (mobil nézetre is jó)"
+
+msgid "Abandoned editing in progress, feel free to check the diff and resume"
+msgstr "Elhagyott szerkesztés folyamatban, nézz rá a diffre és folytasd"
+
+msgid "Action"
+msgstr "Akció"
+
+msgid "Activate the blog-style look and feel"
+msgstr "AKtiváld a blog stílusú megjelenést"
+
+msgid "Active"
+msgstr "Aktív"
+
+msgid "Add"
+msgstr "Hozzáad"
+
+msgid "Add a cover image (PNG or JPG)"
+msgstr "Borító hozzáadása (PNG vagy JPG)"
+
+msgid "Add a new text"
+msgstr "Új szöveg hozzáadása"
+
+msgid "Add an attachment"
+msgstr "Új csatolmány hozzáadása"
+
+msgid "Add crop marks to the PDF"
+msgstr "Vágási segédvonalak hozzáadása a PDFhez"
+
+msgid "Add new remote repository"
+msgstr "TÁvoli repó hozzáadása"
+
+msgid "Add non-breaking spaces where appropriate for the language"
+msgstr "Tördelhető szóközök hozzáadása a nyelvtan szerint"
+
+msgid ""
+"Add paginator for text listing when the number of texts is greater than "
+"(integer)"
+msgstr ""
+"Oldaltördelő hozzáadása a szöveg listázáshoz ha a szövegek száma nagyobb mint (természetes szám)"
+
+msgid "Add sections to the bookbuilder"
+msgstr "Szekciók hozzáadása a könyvkészítőhöz"
+
+msgid "Add the OPDS URL"
+msgstr "ODPS URL hozzáadása"
+
+msgid "Add the selected parts to the bookbuilder"
+msgstr "A kiválasztott részek hozzáadása a könyvkészítőhöz"
+
+msgid "Add the whole text"
+msgstr "Teljes szöveg hozzáadása"
+
+msgid "Add this text to the bookbuilder"
+msgstr "A szöveg hozzáadása a könyvkészítőhöz"
+
+msgid "Add to colophon"
+msgstr "Kolofon hozzáadása"
+
+msgid ""
+"Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
+"text or a category. Examples:"
+msgstr ""
+"Adj hozzá 20 URL-ig. Ez szükséges az AMusewiki URLekhez, vagy teljes oldakhoz, "
+" egy szöveghez vagy kategóriához. Például: "
+
+#. ($ok)
+msgid "Added %1 sources."
+msgstr "%1 forrás hozzáadva"
+
+msgid ""
+"Additional information (full date, original title, translators, credits, "
+"etc)."
+msgstr ""
+"További információk (teljes dátum, eredeti cím, fordítások, "
+"köszönetnyilvánítások, stb.)"
+
+msgid "Additional nginx configuration"
+msgstr "További nginx beállítások"
+
+#. (c.uri_for_action('/console/unpublished')
+#. (c.uri_for_action("/console/unpublished").path)
+msgid ""
+"After the approval of the\n"
+"  change, it will appear under %1. There is a big red\n"
+"  button for each deleted text, and you can proceed with the purging."
+msgstr ""
+"A változás jóváhagyása után \n"
+"  megjelenik a változás a %1 alatt. Egy nagy piros\n"
+"  gomb minden törlés előtt megjelenik, így folytathatod egyesével a törléseket."
+
+msgid "Age:"
+msgstr "Életkor:"
+
+msgid "Alias"
+msgstr "Alias"
+
+msgid "Alias can't point to itself"
+msgstr "Alias nem mutathat önmagára"
+
+msgid ""
+"All kind of lists start with one or more leading\n"
+"        whitespace."
+msgstr ""
+"Minden fajta lista egy vagy több szóközzel kezdődik.\n"
+
+msgid "All languages"
+msgstr "Minden nyelv"
+
+msgid "All revisions"
+msgstr "Minden verzió"
+
+msgid "All sites"
+msgstr "Minden oldal"
+
+msgid "All users"
+msgstr "Minden felhasználó"
+
+msgid ""
+"Allow Unicode URIs for categories (author, topics). Recommended for non-"
+"latin scripts."
+msgstr ""
+"Engedélyezd az URIket a kategóriákhoz (szerző, témák). Javasolt nem latin szövegrészekhez."
+
+msgid ""
+"Allow binary uploads to logged in users: list of whitespace separate file "
+"extensions"
+msgstr ""
+"Engedélyezi bináris feltöltéseket a bejelentkezett usereknek: szóközzel "
+"elválasztott bővítménynevek"
+
+msgid ""
+"Also produce slides\n"
+"          from the document. Each section, no matter how deep, will\n"
+"          produce a slide. The text outside a section is ignored, so\n"
+"          if you do not have sections, you will get empty slides. If\n"
+"          you want to exclude a section, put a comment in the section\n"
+"          body with the string “noslide”."
+msgstr ""
+"Hozz létre diákat\n"
+"        a dokumentumhoz. Minden szekcióból – függetlenül a mélységétől –\n"
+"        létrejön egy dia. A szöveg a szekción kívül figyelmen kívül lesz hagyva,\n"
+"        így ha nincsen szekciód akkor üres diákat fogsz kapni. Ha\n"
+"        egy szekciót figyelmen kívül hagynál akkor adj hozzá egy kommentet\n"
+"        „noslide” szöveggel!"
+
+msgid "Alternate Text"
+msgstr "Alternatív szöveg"
+
+msgid ""
+"An URI is a string which uniquely identifies the text\n"
+"      in the archive. In theory, it could be anything, but if you want\n"
+"      to set it yourself, please stick with the convention: author\n"
+"      name, title, language, eventual number for disambiguation, e.g.\n"
+"      errico-malatesta-anarchy-2. Please note that this is normally\n"
+"      not needed"
+msgstr ""
+"Egy URI az egy karakterfüzér ami egyértelműen azonosít egy szöveget\n"
+" az archívumban. Elméletileg bármi lehet, de ha te szeretnéd beállítani\n"
+" akkor a szerző, név, cím, nyelv, szám a kiadás megkülönböztetéshez\n"
+" pl: errico-malatesta-anarchia-2. Az egyedileg megadás általában nem szükséges\n"
+
+msgid "Annotations"
+msgstr "Annotációk"
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+"Az annotációk azok szöveges metaadatok amik nincsenek belekódolva a muse fájlba. "
+"Példák lehetnek: árak, katalógus azonosítók, polcon elfoglalt fizikai hely, mjunkapéldányok "
+" nagy bináris állományok (pl. ISO-k), belső csoportmunka-megjegyzések"
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr "Annotációk – %1"
+
+msgid "Apache is not currently supported"
+msgstr "Apache jelenleg nincs támogatva"
+
+msgid "Archive"
+msgstr "Archívum"
+
+msgid "Archive by month"
+msgstr "Archívum havi bontásban"
+
+msgid "Archive history"
+msgstr "Archívum történet"
+
+msgid "Are you sure?"
+msgstr "Biztos vagy benne?"
+
+msgid "As cover in the header"
+msgstr "Használat borítóként a fejlécben"
+
+msgid "As regular image in the body"
+msgstr "Használat képként a törzsben"
+
+msgid "Assign text to collections"
+msgstr "Szöveg hozzáadása kollekciókhoz"
+
+msgid "Attach"
+msgstr "Csatol"
+
+msgid "Attached images"
+msgstr "Csatolt képek"
+
+msgid "Attachments"
+msgstr "Csatolmányok"
+
+msgid "Author"
+msgstr "Szerző"
+
+msgid "Author and title. If one side document: title."
+msgstr "Szerző és cím. Egy oldalas dokumentumnál: cím."
+
+msgid "Authors"
+msgstr "Szerzők"
+
+msgid "Authors and topics listing"
+msgstr "Szerző és témák listája"
+
+msgid "Authors for indexing"
+msgstr "Szerző katalogizáláshoz"
+
+msgid "Auto"
+msgstr "Automatikus"
+
+msgid "Automatically generated"
+msgstr "Automatikusan generált"
+
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr "Automatikusan SSL cert megújítást Let's Encrypt segítségével"
+
+msgid "Available"
+msgstr "Elérhető"
+
+msgid "Available category tags for header"
+msgstr "Elérhető kategória címkék a fejléchez"
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
+"Az elválasztás elkerülése a mondat utolsó szaván (hibás"
+" tördelést eredményezhet)"
+
+msgid "Back to the text"
+msgstr "Vissza a szöveghez"
+
+msgid "Bad request"
+msgstr "Hibás lekérés"
+
+msgid "Beamer color theme"
+msgstr "Beamer szín téma"
+
+msgid "Beamer theme"
+msgstr "Beamer téma"
+
+msgid "Beside topics and authors you can add more categories here"
+msgstr "Témákon és szerzőkön kívül kategóriákat is itt adhatod meg"
+
+msgid "Binding correction in millimeters (additional inner margin)"
+msgstr "Kötési korrekió miliméterben (hozzáadódik a belső margóhoz)"
+
+msgid ""
+"Blocks of 16 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+"Kötegei a 16 oldalas kétszer összehajtott kiadványoknak."
+
+msgid ""
+"Blocks of 8 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+"Kötegei a 8 oldalas kétszer összehajtott kiadványoknak."
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "Body"
+msgstr "Törzs"
+
+msgid "Bold"
+msgstr "Félkövér"
+
+msgid "Bookbuilder"
+msgstr "Könyvkészítő"
+
+msgid "Bookbuilder page limit (integer)"
+msgstr "Könyvkészítő oldal limit (természetes szám)"
+
+msgid "Build it"
+msgstr "Generáld"
+
+msgid "Built-in"
+msgstr "Beépülő"
+
+msgid ""
+"By default, secondary footnotes use arabic numbering\n"
+"        between parens. With this option they will use per-page alpha\n"
+"        numbering"
+msgstr ""
+"Alapértelmezés szerint a másodlagos lábjegyzetek arab számokat használnak\n"
+"        zárójeleek között. Ezzel a beállítással oldalankénti alfanumerikus\n"
+"        kerül lábjegyzetelés beállításra"
+
+msgid "By number of pages, ascending"
+msgstr "Oldalszám szerint növekvő"
+
+msgid "By number of pages, descending"
+msgstr "Oldalszám szerint csökkenő"
+
+msgid "By relevance"
+msgstr "Relevancia szerint"
+
+msgid "By sku ascending"
+msgstr "Darabszám szerinti rendezés"
+
+msgid "By sku descending"
+msgstr "Darabszám szerinti rendezés"
+
+msgid "By title A-Z"
+msgstr "Cím szerint A-Zs"
+
+msgid "By title Z-A"
+msgstr "Cím szerint Zs-A"
+
+msgid "CSS Alternate Theme (Dark mode, optional)"
+msgstr "Alternatív CSS téma (sötét mód, opcionális)"
+
+msgid "CSS Theme"
+msgstr "CSS téma"
+
+msgid "Cancel"
+msgstr "Mégse"
+
+msgid "Canonical name"
+msgstr "Kanonikus név"
+
+msgid "Categories"
+msgstr "Kategóriák"
+
+#. ($site->canonical)
+#. (site.canonical)
+msgid "Category types for %1"
+msgstr "Kategóriák a következő típushoz: %1"
+
+msgid "Center all the sectioning titles."
+msgstr "Center all section titles."
+
+msgid "Center the chapter titles."
+msgstr "Center chapter titles."
+
+msgid "Changes"
+msgstr "Változások"
+
+msgid "Changes applied"
+msgstr "Változások alkalmazva"
+
+msgid "Changes applied."
+msgstr "Változások alkalmazva."
+
+#. ($c->stash->{revision}->title->uri)
+#. (revision.title.uri)
+#. (author_title)
+msgid "Changes for %1"
+msgstr "Változások %1-re vonatkoztatva"
+
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr "Változások elmentve, köszi! Közzétételre várakozik"
+
+msgid ""
+"Changing urls is a poor practice. Anyway, if you know what you’re\n"
+"doing, you can delete an existing text and point to another adding a\n"
+"#DELETED directive in the text header with a special syntax:"
+msgstr ""
+"URL-ek változtatása rossz gyakorlat. \n"
+"Amennyiben érted hogy miért csinálod akkor lehet törölni \n"
+" a jelenleg létező szöveget és használhatod a #DELETED direktívát\n"
+" az új szövegre irányítva."
+
+msgid "Chapter"
+msgstr "Fejezet"
+
+msgid "Chapter and section. If one side document: chapter."
+msgstr "Fejezet és szekció. Egy oldalas dokumentumoknál: fejezet."
+
+msgid "Chapter, only for chapter divisions in books"
+msgstr "Fejezet, csak a fejezetekre osztott könyveknél"
+
+msgid "Cheatsheet for the markup"
+msgstr "Markup cheatsheet"
+
+msgid "Check"
+msgstr "Ellenőrzés"
+
+msgid "Check mail sending and send mail to:"
+msgstr "ELlenőrizd az e-mail küldést azza hogy ide küldesz:"
+
+msgid "Choose a paper format"
+msgstr "Válassz papír formátumot"
+
+msgid "Clear the book list"
+msgstr "Töröld a könyv listát"
+
+msgid "Click on the images to get the sample PDF"
+msgstr "Klikkelj a képekre hogy megnézd a példa PDF-et"
+
+msgid "Clone"
+msgstr "Klónozás"
+
+msgid "Close"
+msgstr "Bezárás"
+
+msgid "Code"
+msgstr "Kód"
+
+msgid "Collections"
+msgstr "Kollekciók"
+
+msgid ""
+"Collections have been updated. You may want to refresh the OAI-PMH repository"
+msgstr ""
+"A kollekciók frissítésre kerültek. Lehet hogy frissíteni akarod a OAI-PMH repódat is."
+
+msgid "Colophon (displayed in the generated files):"
+msgstr "Kolofon (a generált fájlokban jelenik meg):"
+
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr ""
+"Oszlopok a bal oldalán a szerkesztői oldalnak szerkesztő box-al (12-ből)"
+
+msgid "Comma or semicolon separated list"
+msgstr "Vessző vagy pontosvessző által elválasztott lista"
+
+msgid "Commit ID"
+msgstr "Commit ID"
+
+msgid "Completed"
+msgstr "Befejezve"
+
+msgid "Computing of differences took"
+msgstr "A különbségek kiszámolása tartott –"
+
+msgid "Confirm"
+msgstr "Megerősít"
+
+msgid "Conflict"
+msgstr "Ütközés"
+
+msgid "Continuous footnote numbering across the whole document."
+msgstr "Folyamatos lábjegyzetek a teljes dokumentumon keresztül."
+
+msgid "Convert to archive markup"
+msgstr "Konvertálás archivált markuppá"
+
+msgid "Copyright notice"
+msgstr "Szerzői jogi figyelmeztetés"
+
+msgid "Couldn't add the text"
+msgstr "Nem sikerült hozzáadni a szöveget"
+
+msgid "Couldn't automatically generate the URI!"
+msgstr "Nem sikerült automatikusan generálni az URI-t!"
+
+msgid "Couldn't build that"
+msgstr "Nem sikerült legenerálni ezt"
+
+msgid "Create"
+msgstr "Létrehoz"
+
+msgid "Create a new annotation."
+msgstr "Annotáció létrehozása."
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr "Új kategória típus létrehozása. Csak kis betűs ASCII karaktereket használj"
+
+msgid "Create a new format"
+msgstr "Új formátum létrehozása"
+
+msgid "Create a new librarian"
+msgstr "Új könyvtáros hozzáadása"
+
+msgid "Create a new special page"
+msgstr "Új speciális lap hozzáadása"
+
+msgid "Create a new user"
+msgstr "Új felhasználó hozzáadása"
+
+msgid ""
+"Create a public repository on GitLab, GitHub or similar services (or on your "
+"own server). "
+msgstr ""
+"Hozz létre egy publikus repót a GitLab-on, GitHub-on vagy valamelyik hasonló"
+"szolgáltatónál (vagy saját szerveren)"
+
+msgid "Create a topic alias"
+msgstr "Új téma alias hozzáadása"
+
+msgid "Create an author alias"
+msgstr "Új szerző alias hozzáadása"
+
+msgid "Create new site"
+msgstr "Új oldal hozzáadása"
+
+msgid "Create user and mail password"
+msgstr "Új felhasználó létrehozása és jelszó küldése levélben"
+
+msgid "Created"
+msgstr "Létrehozva"
+
+msgid "Created by"
+msgstr "Létrehozva –"
+
+msgid "Created new text"
+msgstr "Új szöveg létrehozva"
+
+msgid "Current time"
+msgstr "Jelenlegi idő"
+
+#. ($c->stash->{site}->canonical)
+#. (site.canonical)
+msgid "Custom formats for %1"
+msgstr "Egyedi formátumok ehhez – %1"
+
+msgid "Custom home page"
+msgstr "Egyedi kezdő oldal"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Date of the original publication"
+msgstr "A publikáció eredeti dátuma"
+
+msgid "Default"
+msgstr "Alapértelmezett"
+
+msgid "Default sorting for the category text list"
+msgstr "Alapértelmezett rendezés a kategória szöveg listára"
+
+msgid "Default value if blank:"
+msgstr "Alapértelmezett érték ha üres:"
+
+msgid "Deferred/Deleted texts"
+msgstr "Eltávolított szövegek"
+
+msgid "Delete"
+msgstr "Kukába helyezés"
+
+msgid "Delete permanently"
+msgstr "Végleges törlés"
+
+#. (remote.name)
+msgid "Delete remote repository %1"
+msgstr "Töröld a távoli repót (%1)"
+
+msgid "Delete selected attachments"
+msgstr "Töröld a kiválasztott csatolmányokat"
+
+msgid ""
+"Deleting a revision is safe if a text has been\n"
+"    published. Otherwise deleting it you'll lose the unpublished changes"
+msgstr ""
+"Verzió törlése akkor biztonságos ha már publikálva\n"
+" lett a szöveg. Egyébként a törlés alkalmával a nem publikált változások elvesznek"
+
+msgid "Description"
+msgstr "Leírás"
+
+msgid "Description item"
+msgstr "Leírás elem"
+
+msgid ""
+"Description lists use a double colon to separate the\n"
+"        term and the description."
+msgstr ""
+"Leírás listák dupla vesszőt használnak az kifejezések\n"
+" és a leírások elválasztásához."
+
+msgid "Desired URI"
+msgstr "Kívánt URI"
+
+msgid "Destination"
+msgstr "Cél"
+
+msgid "Details"
+msgstr "Részletek"
+
+msgid "Did you mean:"
+msgstr "Erre gondoltál"
+
+msgid "Diff"
+msgstr "Eltér"
+
+msgid "Differences"
+msgstr "Különbségek"
+
+msgid ""
+"Directory with templates in the site repository, e.g.\n"
+"        \"templates\" (ASCII only). Do not set it unless you know\n"
+"        exactly what you are doing"
+msgstr ""
+"Könyvtár sablonokkal az oldal repójában pl. \n"
+" „sablonok” (ASCII). Ne állítsd be ha nem tudod mit csinálsz\n"
+
+msgid "Disable /mirror/ URL for anonymous users"
+msgstr "Tiltsd a /mirror/ URLt nem bejelentkezett felhasználóknak"
+
+msgid "Display the latest entries on special pages"
+msgstr "Tiltsd a legutóbbi módosítások speciális oldalt"
+
+msgid "Display url as"
+msgstr "URL megjelenítése mint"
+
+msgid "Division factor"
+msgstr "Osztó"
+
+msgid "Do not create a cover page and start the text on the first page"
+msgstr "Ne generálj borítót és kezd a szöveget az első oldalon"
+
+msgid "Do not enforce save message"
+msgstr "Ne kényszerítsd ki az üzenet mentést"
+
+msgid "Do not redirect aliases to canonical"
+msgstr "Ne irányítsd át az aliaszokat a kanonikus oldalra"
+
+msgid "Do not use bold fonts"
+msgstr "Ne használj félkövér fontokat"
+
+msgid "Domain"
+msgstr "Domain"
+
+msgid "Done"
+msgstr "Kész"
+
+msgid "Double bars"
+msgstr "Dupla vonal"
+
+msgid "Download"
+msgstr "Letöltések"
+
+msgid "Downloads"
+msgstr "Letöltések"
+
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr "Pl. pár szó ÉS cím:\"Én címem\" ÉS szerző:Szerző vagy év:2017"
+
+msgid "EPUB"
+msgstr "EPUB"
+
+msgid "EPUB (for mobile devices)"
+msgstr "EPUB (mobil eszközökhöz)"
+
+msgid "ETA"
+msgstr "hátralévő idő"
+
+msgid "Edit"
+msgstr "Szerkesztés"
+
+msgid "Edit annotations"
+msgstr "Szerkesztési megjegyzések"
+
+msgid "Edit attachment description"
+msgstr "Csatolmány leírásának módosítása"
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr "A %1 formátum szerkesztése"
+
+msgid "Edit full site configuration"
+msgstr "Szekeszd a teljes oldal beállításait"
+
+msgid "Edit screen layout options"
+msgstr "Szerkeszd a elrendezés beállításait"
+
+#. (esite.id)
+msgid "Edit site %1"
+msgstr "Szekeszd az oldalt (%1)"
+
+msgid "Edit site configuration"
+msgstr "Szerkeszd az oldal beállításait"
+
+msgid "Edit the text you want to unpublish and add this line to the header:"
+msgstr "Szerkeszd a szöveget aminek a publikálását visszavonnád és add ezt a címsorhoz:"
+
+msgid "Edit this text"
+msgstr "Szerkeszd ezt a szöveget"
+
+#. (user.username)
+msgid "Edit user %1"
+msgstr "Szerkeszd ezt a felhasználót %1"
+
+msgid "Editing"
+msgstr "Szerkesztés"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Email sent!"
+msgstr "E-mail elküldve!"
+
+msgid "Email updated"
+msgstr "E-mail frissítve"
+
+msgid "Email, password, locale"
+msgstr "E-mail, jelszó, nyelv"
+
+msgid "Emails do not match"
+msgstr "E-mail címek nem egyeznek"
+
+msgid "Embed fonts in the EPUB file"
+msgstr "EPUB fájlba beágyazott fontok"
+
+msgid "Enable \"What links here\" feature"
+msgstr "Engedélyezi a \"Mi hivatkozik erre\" funkciót"
+
+msgid "Enable search suggestions (did you mean...)"
+msgstr "Engedélyezi a keresési javaslatokat (erre gondoltál…)"
+
+msgid "Enable title ordering by SKU"
+msgstr "Darabszám szerinti rendezés bekapcsolása"
+
+msgid "Enforce e-mail on submission"
+msgstr "Kikényszeríti az e-mailt beküldéskor"
+
+msgid "Erase this revision"
+msgstr "Verzió törlése"
+
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr "Hia a feltöltött fájl átalakításakor. Ez egy HTML fájl?"
+
+msgid "Error sending mail!"
+msgstr "E-mail küldési hiba"
+
+msgid "Error while converting the HTML. Sorry."
+msgstr "Hiba a HTML átalakításakor. Elnézést."
+
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr "Hiba: %1"
+
+msgid "Errors"
+msgstr "Hibák"
+
+msgid "Estimated pages"
+msgstr "Becsült oldalszám"
+
+msgid ""
+"Even if this site has a responsive, mobile-friendly layout,\n"
+"  it does not provide a dedicated mobile application."
+msgstr ""
+"Bármennyire is igyekeztek mobil-barát weboldal fejlesztésével\n"
+"  nincs hozzá külön applikáció."
+
+msgid ""
+"Every\n"
+"        section will generate a slide. You need to do proper\n"
+"        sectioning for this to work."
+msgstr ""
+"Minden \n"
+"        szekció egy dia lesz. Jó szekció felosztás kell"
+"        a használatához."
+
+msgid ""
+"Exactly like 2up, but the sheets are meant to be cut\n"
+"        horizontally first and then stack on each other. This way you\n"
+"        can print, for example, A6 booklets on A4."
+msgstr ""
+"Pontosan 2up, de az ívet kettévágjuk\n"
+"        horizontálisan először aztán egymásra rakjuk. Így \n"
+"        nyomtathatsz pl A6 kiadványokat A4-es lapra."
+
+msgid "Example"
+msgstr "Példa"
+
+msgid "Exception"
+msgstr "Kivétel"
+
+msgid "Existing redirections"
+msgstr "Mglévő átirányítások"
+
+msgid "Expected pages"
+msgstr "Elvárt oldalak"
+
+msgid "Failed"
+msgstr "Nem sikerült"
+
+#. ("$name $url")
+msgid "Failed to add remote repository %1"
+msgstr "Nem sikerült hozzáadni a távoli repót: %1"
+
+#. ($name)
+msgid "Failed to remove Remote repository %1"
+msgstr "Nem sikerült eltávolítani a távoli repót: %1"
+
+msgid "Federation"
+msgstr "Federáció"
+
+msgid "Feed enclosure method (OPDS and RSS)"
+msgstr "Feed formátum (OPDS vagy RSS)"
+
+msgid "Fetch"
+msgstr "Letölt"
+
+msgid "File"
+msgstr "Állomány"
+
+msgid "File already in the body"
+msgstr "A fájl már benne van a törzsben"
+
+msgid "File extension"
+msgstr "File kiterjesztés"
+
+msgid "File format not allowed"
+msgstr "Fájl formátum nem engedélyezett"
+
+msgid "File too big"
+msgstr "Fájl túl nagy"
+
+msgid "File uploaded!"
+msgstr "Fájl feltöltve!"
+
+msgid "Files"
+msgstr "Fájlok"
+
+msgid "Files not referenced by any text"
+msgstr "A fájlok nincsenek hivatkozva egy szöveg által sem"
+
+msgid ""
+"Fill with blank pages before the last page if the signature is not full."
+msgstr ""
+"Töltsd ki az üres oldalakat mielőtt az utolsó oldali aláírás nem tölti azt ki."
+
+msgid "Filters"
+msgstr "Szűrők"
+
+msgid "Find the add catalogue menu."
+msgstr "Keresd a katalógus hozzáadása menüt."
+
+msgid "Find the network library menu, or equivalent."
+msgstr "Keresd a hálózati könyvtár menüt vagy hasonlót."
+
+msgid "First"
+msgstr "Első"
+
+msgid "First Author and Second Author"
+msgstr "Elsődleges és másodlagos szerző"
+
+msgid "First Author, Second Author"
+msgstr "Elsődleges szerő, másodlagos szerző"
+
+msgid "First slide"
+msgstr "Első dia"
+
+msgid "First text attachment or EPUB"
+msgstr "Első fájl csatolva az EPUBhoz"
+
+msgid "First you have to unpublish it via #DELETED."
+msgstr "Először vissza kell vonnod a publikációt a #DELETED funkcióval."
+
+msgid "Fix typography (smart quotes)"
+msgstr "Tipográfia helyrehozása (okos idézetek)"
+
+msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
+msgstr "Fix 16 oldalas jegyzetek két íven, dupla egyedi hajtással."
+
+msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
+msgstr "Fix 16 oldalas aláírások egy íven hármas osztatúan."
+
+msgid ""
+"Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
+"and bound together."
+msgstr ""
+"Fix 8 oldalas aláírások horizontális vágással, egyesével hajtogatva, "
+"és összefűzve."
+
+msgid "Fixed topic list"
+msgstr "Rögzített téma lista"
+
+msgid "Font preview"
+msgstr "Font előnézet"
+
+msgid "Font size"
+msgstr "Font méret"
+
+msgid "Footnotes"
+msgstr "Lábjegyzetek"
+
+#. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
+msgid ""
+"Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
+"in the body (%4), ignoring changes."
+msgstr ""
+"Lábjegyzet egyezési hiba: %1 lábjegyetet találtam (%2) és %3 lábjegyzet hivatkozás"
+" van a szövegtörzsben (%4), változtatások figyelmen kívül hagyva."
+
+msgid "For texts from the internet use"
+msgstr "Internetes szövegekhez használd"
+
+msgid "For texts without a table of content, start text on the very first page"
+msgstr "Tartalomjegyzék nélküli szöveghez ami az első oldalon kezdődik"
+
+msgid ""
+"For topics and authors redirections, you can create them\n"
+"  here"
+msgstr ""
+"Témákhoz és szerző átirányításhoz, itt tudod létrehozni ezeket"
+
+msgid "Force a line break."
+msgstr "Újsor beszúrása"
+
+msgid "Force publishing"
+msgstr "Publikálás mindenképp"
+
+msgid "Format name"
+msgstr "Formátum név"
+
+msgid "Format successfully created"
+msgstr "Formátum sikeresen elkészítve"
+
+msgid "Format successfully updated"
+msgstr "Formátum sikeresen frissítve"
+
+msgid "Formats"
+msgstr "Formátumok"
+
+msgid "Full list of texts"
+msgstr "Szövegek teljes listája"
+
+msgid "Full tag cloud"
+msgstr "Teljes címkefelhő"
+
+msgid "Full text search"
+msgstr "Keresés a teljes szövegben"
+
+msgid "Full width, fluid layout"
+msgstr "Teljes szélesség, változó elrendezés"
+
+msgid "General configuration"
+msgstr "Általános beállítások"
+
+msgid "Generate Index"
+msgstr "Index generálása"
+
+msgid "Generic (fits in A4 and Letter)"
+msgstr "Általános (levél és A4 papírra is nyomtatható)"
+
+msgid "Get generated URI"
+msgstr "Használd a generált URI-t"
+
+msgid ""
+"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
+"using the form you can find above. You can have one personal repository."
+msgstr ""
+"HTTPS URL-t használj pl. https://example.com/git/test és add hozzá "
+"a fenetbbi form segítségével. Lehet a személyes repód is."
+
+msgid "Git"
+msgstr "git"
+
+msgid "Git console"
+msgstr "git konzol"
+
+msgid "Git is not enabled on this site"
+msgstr "Git nincs bekapcsolva az oldalhoz"
+
+msgid ""
+"HTML code to append to each regular page, inserted\n"
+"            verbatim, so be careful"
+msgstr ""
+"HTML kód amit minden oldalhoz hozzáfűzünk\n"
+" karakter szerinti, légy körültekintő!"
+
+msgid ""
+"HTML to append to each special page, inserted\n"
+"            verbatim, now you have a chance to screw up everything, so\n"
+"            be careful"
+msgstr ""
+"HTML amit hozzáfűz minden speciális oldalhoz"
+"            karakterhűen kerül beillesztésre szóval sok mindent el tud\n"
+"            rontani. Óvatosan!"
+
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr "HTML beillesztése a láblécbe, az alábbi linkekkel"
+
+msgid "HTML to insert into the left sidebar"
+msgstr "HTML a bal oldali oldalsávba"
+
+msgid "HTML to insert into the right sidebar"
+msgstr "HTML a jobb oldali oldalsávba"
+
+msgid "HTML to insert on the bottom of the layout, above the footer"
+msgstr "HTML amit a lábjegyzet fölé illesztenénk be"
+
+msgid ""
+"HTML to insert on the top of the layout, behind the navigation bar and below "
+"the banner"
+msgstr ""
+"HTML amit a fejlécbe illesztenénk be a navigációs sáv alá a banner alá"
+
+msgid "HTML/Word Importer"
+msgstr "HTML/Word importáló"
+
+msgid "Half Letter paper"
+msgstr "Fél levél papír"
+
+msgid "Headers"
+msgstr "Címsorok"
+
+msgid "Heading"
+msgstr "Címsor"
+
+msgid "Headings"
+msgstr "Címsorok"
+
+msgid "Height:"
+msgstr "Magasság:"
+
+msgid "Help Text"
+msgstr "Súgó szöveg"
+
+msgid "Here you can find a preview of the Beamer themes and color themes"
+msgstr "Itt találod az előnézetekeet a Beamer témákhoz és szín témákhoz"
+
+msgid ""
+"Here you can save or load your templates. The text list\n"
+"      and the cover image are excluded by the saved settings. You can\n"
+"      use this to save paper/fonts/imposition and other options."
+msgstr ""
+"Itt töltheted be a saját sablonjaidat. A szöveg lista\n"
+" és borítókép figyelmen kívül vannak hagyva a beállítások által.\n"
+" Így papírt/fontot/impozíciót itt tudod menteni."
+
+msgid "Higher division factor means narrower margins"
+msgstr "Nagyobb osztó keskenyebb margót jelent"
+
+msgid "Highest priority format"
+msgstr "Legnagyobb prioritású formátum"
+
+msgid "How are you going to access Git?"
+msgstr "Hogyan férek hozzá a githez?"
+
+msgid "How do I create a landing page?"
+msgstr "Hogyan csinálok egy érkező oldalt?"
+
+msgid "How do I create a special page?"
+msgstr "Hogyan csinálok speciális oldalt?"
+
+msgid "How do I delete a text?"
+msgstr "Hogyan törlöm a szöveget?"
+
+msgid "How do I modify a special page?"
+msgstr "Hogyan módosítom a speciálist szöveget?"
+
+msgid "How do I purge a text?"
+msgstr "Hogyan törlök véglegesen egy szöveget?"
+
+msgid "How do I redirect to another page?"
+msgstr "Hogyan irányítók át egy másik oldalra?"
+
+msgid "How to choose a password"
+msgstr "Hogyan válassz jelszőt?"
+
+msgid ""
+"However, you can browse, search, download and read the texts\n"
+"  from mobile reading applications which support the so-called OPDS\n"
+"  protocol."
+msgstr ""
+"Mindazonáltal, böngészheted, keresheted és letöltheted a szövegeket\n"
+"  mobil olvasáshoz használt appot amik támogatják az ODPS protokollt.\n"
+
+msgid "I am human"
+msgstr "Ember vagyok"
+
+msgid "I have a system user with SSH access"
+msgstr "Van SSH hozzáférésű felhasználóm"
+
+msgid "I want an imposed (ready to print) PDF"
+msgstr "Nyomtatható PDF-et szeretnék"
+
+msgid "I will provide my remote repository"
+msgstr "Megadom a távoli repómat"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "ISBN"
+msgstr "ISBN"
+
+msgid "Id"
+msgstr "Id"
+
+msgid "Identifier"
+msgstr "Azonosító"
+
+msgid ""
+"If by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+"Ha máshol cseréled ki a szöveget úgy hogy az azonos szerzővel és címmel létezik "
+"akkor a kívánt URI-be bekerül a szerző, cím és szám pl.:"
+"en-szerzom-en-cimem-1"
+
+
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+"Ha ez nem a te szándékod volt, akkor hagyd figyelmen kívól \n"
+"a jelszavad nem lesz megváltoztatva."
+
+msgid ""
+"If it's not the case, please open a bug report at https://github.com/"
+"melmothx/amusewiki/issues"
+msgstr ""
+"Ha nem ez az eset áll fenn, akkor nyiss egy hibajegyet itt: "
+"https://github.com/melmothx/amusewiki/issues"
+
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
+msgid "If not set %1 will be looked up from the application directory."
+msgstr "Ha a(z) %1 nincs beállítva akkor az alkalmazás-könyvtárból keresi."
+
+msgid ""
+"If present, hide the\n"
+"          generated formats and the information box. This makes sense\n"
+"          with attachments, when the text version is poor or not\n"
+"          available and more relevance should be given to the attached\n"
+"          files."
+msgstr ""
+"Ha be van állítva, akkor elrejti\n"
+"          a generált formátumokat és az infoboxot. Ha ennek van értelme\n"
+"          csatolmányokat amikor a szöveges verzió gyenge minőségű vagy nem\n"
+"          áll rendelkezésre és a csatolt fájl relevánsabb."
+
+msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
+msgstr ""
+"Ha 0-nál nagyobb számra van állítva, akkor generál előzetest, kb. a beállított "
+"szélességgel"
+
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
+msgstr ""
+"Ha a szöveg publikációja késleltetve van, listázd\n"
+"            az előzetessel és a borítóval a szövegtörzshöz való hozzáférés\n"
+"            nélkül"
+
+msgid ""
+"If the user is allowed to publish, speed up the process skipping the "
+"revision page if there are no conflicts and automatically redirect to the "
+"published text once it is done."
+msgstr ""
+"Ha a felhasználó publikálhat, felgyorsíthatja annak menetét "
+"a verzió oldal kihagyásával amennyiben nincsenek ütközések és automatikusan "
+"a publikált oldalra iírányítja amint az elkészül."
+
+msgid "If the user provided a mail, it's listed in the mail's CC field"
+msgstr "Ha a user megadott e-mailt akkor a CC mezőben lesz feltüntetve"
+
+msgid ""
+"If this line\n"
+"          is present, set the publication date (on this site) to the\n"
+"          date. The date may also be in the future, deferring the\n"
+"          publication. If this line is not present, the publication\n"
+"          date will be the time of the publishing, triggering a bump\n"
+"          on RSS and special pages at each editing."
+msgstr ""
+
+msgid ""
+"If this line is\n"
+"          present and the reason is set to something, the text will be\n"
+"          stored in the archive, but will not be published."
+msgstr ""
+
+msgid ""
+"If this line is present, do not create a title page,\n"
+"          but instead start the text on the very first page and\n"
+"          produce a PDF styled like an article (chapters and parts\n"
+"          will not start on a new page)."
+msgstr ""
+
+msgid "If this line is present, do not display the table of contents."
+msgstr "Ha ez a sor nem üres akkor megjelenik a tartalomjegyzékben."
+
+msgid "If you asked for imposition, select an imposition schema"
+msgstr "Ha impozíciót kell választanod akkor válassz egy impozíciós sémát"
+
+msgid ""
+"If you edit some format options, like fonts or paper\n"
+"      dimensions, you may want to rebuild the generated files"
+msgstr ""
+"Ha szerkeszted a formátum beállításokat, mint a font vagy papír\n"
+"      méreteit, akkor újra kell generálnod a fájlokat"
+
+msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+"Ha elfelejtetted a jelszót, akkor hozz létre egy újat a linkre kattintva\n"
+"(vagy beillesztve a böngésződbe):"
+
+msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr ""
+"Ha egy .doc vagy .odt fájlod van akkor könnyen konvertálhatod HTML-é"
+
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
+msgstr ""
+"Ha egy újragenerálást csinálnál újra miközben fut, az lelövi\n"
+"    a jelenleg futót."
+
+msgid ""
+"If you use it as a teaser image, the image will also\n"
+"      be placed on the first page of the PDF. You can set its width\n"
+"      adding the following line to the header, where the value is the\n"
+"      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
+"      on"
+msgstr ""
+"Ha ezt használod borítónak a kép szintén\n"
+"      az első oldal lesz a PDF-ben, Beállíthatod a szélességét\n"
+"      a következő sor fejléchez adásával, ahol az érték a szöveg\n"
+"      szélességének az arányszáma. 1 a teljes szövegszélességet jelenti,\n"
+"      a 0.5 a fél szélességet; és így tovább"
+
+msgid ""
+"If your site doesn’t have that, just create a special page and assign\n"
+"the uri \"index\"."
+msgstr ""
+"Ha az oldalnak nincs akkor csinálhatsz egy speciális oldalt és használhatod\n"
+" az URI \"index\"-et kezdőoldalnak."
+
+msgid ""
+"If your site is multilanguage, you can create a language-specific\n"
+"  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
+"  URI \"index\", a dash, and the locale code."
+msgstr ""
+"Ha az oldalad többnyelvű, akkor nyelv-specifikus\n"
+"  érkező oldalt is csinálhatsz pl. \"/special/index-hu\"/ pl. a\n"
+"  URI \"index\", egy vessző és az ország kód."
+
+msgid "Image already set as cover"
+msgstr "A kép már borítóként van használva"
+
+#. ($w, $h, $limit, $limit)
+msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
+msgstr "Kép felbontása %1 x %2 meghaladja a %3 x %4 picel felbontást"
+
+msgid ""
+"Image uploading may be done on the next step, when you can\n"
+"        review and preview the upload."
+msgstr ""
+"A képfeltöltés befejezéséhez a következő lépés\n"
+" ahol átnézheted az előnézetét a feltöltésednek."
+
+msgid "Image url"
+msgstr "Kép url"
+
+msgid "Images"
+msgstr "Képek"
+
+msgid "Imposition schemas"
+msgstr "Impozíciós sémák"
+
+msgid "In both case you will get a reverse indentation."
+msgstr "Mindkét esetben fordított indentálást kapsz"
+
+msgid ""
+"In the text, a number within square brackets is interpreted as a\n"
+"          footnote reference, if such footnote exists."
+msgstr ""
+"A szövegben a számok kapcsos zárójelben úgy vannak értelmezve mint\n"
+"          lábjegyzetek ha létezik ilyen slábjegyzetek."
+
+#. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
+msgid ""
+"In this example, we use FBreader, but the procedure is\n"
+"  pretty much the same for all applications. All you have to do is to\n"
+"  add %1 to the network libraries."
+msgstr ""
+"Ebben a példában FBreader-t használunk és az eljárás \n"
+" nagyon hasonló más alkalmazások esetében is. Amit tenned kell\n"
+" a %1 hozzáadása a hálózati könyvtárakhoz."
+
+msgid "Inline elements"
+msgstr "Inline elemek"
+
+msgid "Insert the file into the body at the cursor position"
+msgstr "Szúrd be a fájlt a szövegtörzsbe a kurzor pozíciónál"
+
+msgid "Internal list of translations"
+msgstr "Belső lista a fordításokról"
+
+msgid "Invalid ID"
+msgstr "Hibás ID"
+
+msgid "Invalid URI"
+msgstr "Hibás URI"
+
+msgid "Invalid email"
+msgstr "Hibás email"
+
+msgid "Invalid field"
+msgstr "Hibás mező"
+
+msgid "Invalid name"
+msgstr "Hibás név"
+
+msgid "Invalid parameter"
+msgstr "Hibás paraméter"
+
+msgid "Invalid target"
+msgstr "Hibás cél"
+
+msgid "Invalid username"
+msgstr "Hibás felhasználónév"
+
+msgid ""
+"It is possible to have an additional set of\n"
+"          footnotes which you use to annote the text (e.g. critical\n"
+"          editions or translator's notes). They work the same way as\n"
+"          the regular footnotes, but they use curly brackets instead\n"
+"          of square brackets. Placing secondary footnote references\n"
+"          inside a regular footnote is permitted."
+msgstr ""
+"Lehetséges hogy további \n"
+"          lábjegyzetek annotációra vannak használva (pl kritikai kiadások \n"
+"          vagy fordítói megjegyzések). Ezek úgy működnek mint a normál \n"
+"          lábjegyzetek, de a sima zárójelek használatosak a kapcsos helyett.\n"
+"          Másodlagos lábjegyzet a sima lájegyzetben megengedett."
+
+
+msgid ""
+"It is recommended to always set a publication\n"
+"                    date, so the system does not need to rely on the\n"
+"                    file timestamp. Also, you should bump the\n"
+"                    publication date only on major editing, leaving it\n"
+"                    untouched for minor ones."
+msgstr ""
+"Mindig javasolt a publikációs dátum feltüntetése,\n"
+"                    így a rendszer tudja használni azt a fájl időbélyeg helyett.\n"
+"                    Csak nagy változtatás esetében érdemes ezt módosítani, \n"
+"                    kis változásokat nem érdemes vele jelölni."
+
+msgid ""
+"It works the same as for regular page, but the link is hidden. Just\n"
+"append \"/edit\" to the url of the page."
+msgstr ""
+"Sima oldalként működik, de a link el van rejtve. Csak\n"
+" hozzáfűzi a \"szerkesztés\" gombot az oldal url-éhez."
+
+msgid "Italic"
+msgstr "Dőlt"
+
+msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr "Dőlt, félkövér, fix szélességű, sortörés…"
+
+msgid "JPG, PNG and PDF are always allowed."
+msgstr "JPG, PNG és PDF mindig használhatók"
+
+msgid "Job status"
+msgstr "Folyamat állapot"
+
+msgid "Jobs"
+msgstr "Folyamat"
+
+msgid "Jobs (all sites)"
+msgstr "Folyamatok (minden oldalé)"
+
+msgid "Jobs waiting before yours:"
+msgstr "Folyamatok amik a tied előtt állnak sorban:"
+
+msgid "Just packs 2 consecutives logical pages on a physical one."
+msgstr "Csak összecsomagol 2 egymást követő logikai oldalt egy fizikai oldalba."
+
+msgid ""
+"Keep in mind that I’m cleaning the text and give it\n"
+"        back to you in the markup used on this site. It’s up to you to\n"
+"        check it and finally upload it. Some rarely used markup will\n"
+"        be lost in the process. Please check the preview on the next\n"
+"        step, where you can also insert images."
+msgstr ""
+"Vedd figyelembe hogy az Átnézem a szöveget és \n"
+"        markupban töltöm fel újra az oldalra. Rajtad múlik hogy\n"
+"        a formázást megcsináld feltöltés előtt. Néhány ritkán hasnzált\n"
+"        markup elveszhet a feldolgozás során. Használd az előnézetet a következő\n"
+"        lépésben ahol a képbeillesztést is megcsinálhatod."
+
+msgid "Keep in mind that some character may be missing in the required font."
+msgstr "Vedd figyelembe hogy néhány karakter hiányozhat a kiválasztott fontban."
+
+msgid ""
+"Keep in mind that unusually\n"
+"        complex formatting will be stripped. Is it possible to add\n"
+"        tables and images only on the next step."
+msgstr ""
+"Vedd figyelembe hogy általában \n"
+"        komplex formázás csonkítva lesz. Lehetőség van táblázatok\n"
+"        és képek hozzáadására a következő lépésben."
+
+msgid "Label"
+msgstr "Címke"
+
+msgid "Language"
+msgstr "Nyelv"
+
+msgid "Language code of the document (2 or 3 letters). "
+msgstr "Nyelvi kód a dokumentumhoz (2 vagy 3 karakter)"
+
+msgid "Language selection"
+msgstr "Nyelv kiválasztás"
+
+msgid "Languages supported"
+msgstr "Nyelvek támogatva"
+
+msgid "Last"
+msgstr "Utolsó"
+
+msgid "Last successful rebuild"
+msgstr "Utolsó sikeres kimenet"
+
+msgid "Last updated"
+msgstr "Utoljára frissítve"
+
+msgid "Latest entries"
+msgstr "Utolsó entitások"
+
+msgid "Layout"
+msgstr "Elrendezés"
+
+msgid "Leave it blank if you want it published right away."
+msgstr "Hagyd üresen ha rögtön publikálni akarod."
+
+msgid "Leave this empty to have it automatically generated"
+msgstr "Hagyd üresen ahhoz hogy automatikusan generálódjon"
+
+msgid "Letter imposed PDF"
+msgstr "Letter imposed PDF"
+
+msgid "Letter paper"
+msgstr "Levél papír"
+
+msgid "Line spacing"
+msgstr "Sorköz"
+
+msgid "Link"
+msgstr "Hivatkozás"
+
+msgid "Links"
+msgstr "Hivatkozások"
+
+msgid "List of paths to attach to this collection, one per line."
+msgstr "Elérési útvonalak amiket a kollekcióhoz adnál (soronként)"
+
+msgid "List of texts on hold"
+msgstr "Visszatartott szövegek listája"
+
+msgid "Lists"
+msgstr "Listák"
+
+msgid "Load"
+msgstr "Töltés"
+
+msgid "Load another session by token"
+msgstr "Töltsd be a munkamenetet token alapján"
+
+#. ($pname)
+msgid "Loaded \"%1\" configuration"
+msgstr "Betöltve a \"%1\" konfiguráció"
+
+msgid "Loading"
+msgstr "Betöltés"
+
+msgid "Local"
+msgstr "Helyi"
+
+msgid "Local pages"
+msgstr "Helyi oldalak"
+
+msgid "Locale updated"
+msgstr "Locale frissítve"
+
+msgid "Locked editing, no upload possible"
+msgstr "Zárolt szerkesztés, nem lehetséges feltöltés"
+
+msgid "Log in"
+msgstr "Bejelentkezés"
+
+msgid "Login"
+msgstr "Bejelentkezés"
+
+msgid "Logout"
+msgstr "Kijelentkezés"
+
+msgid "Look into the account’s menu, there is an entry for that."
+msgstr "Nézd meg a profilod menüjét, van ott egy bejegyzés ehhez."
+
+msgid "Lost your password?"
+msgstr "Elveszett jelszó?"
+
+msgid "Magic answer"
+msgstr "Varázs válasz"
+
+msgid "Magic question"
+msgstr "Varázs kérdés"
+
+msgid "Mail from"
+msgstr "E-mail feladó"
+
+msgid "Main canonical hostname, without protocol"
+msgstr "Az elsődleges kanonikus hosztnév, protokoll nélkül"
+
+msgid "Main font"
+msgstr "Fő font"
+
+msgid "Main text"
+msgstr "Fő szöveg"
+
+msgid "Maintainer's FAQ"
+msgstr "Karbantartó GYIK"
+
+msgid "Make a link clickable"
+msgstr "Klikkelhető link"
+
+msgid "Make all links active"
+msgstr "Minden link aktív"
+
+msgid "Make all non-breaking spaces explicit and visible as ~~"
+msgstr "Legyen az összes nem tördelhető szóköz explicit és mutasd így ~~"
+
+msgid "Manage categories"
+msgstr "Kategóriák módosítása"
+
+msgid "Manage category types"
+msgstr "Kategória típusok módosítása"
+
+msgid "Margins: please choose a division factor or set width and height"
+msgstr "Margók: válassz egy arányszámot vagy add meg a cél-szélességet vagy cél-magasságot"
+
+msgid "Max image dimension in pixels, applies to both width and height"
+msgstr "Maximum kép felbontás pixelben; mind szélességre, mind magasságra vonatkozik"
+
+msgid "Max size for uploads in Mb"
+msgstr "Maximum méret a feltöltésnek (Mb)"
+
+msgid "Message"
+msgstr "Üzenet"
+
+#. (8)
+msgid "Minimum %1 characters"
+msgstr "Minimum %1 karakter"
+
+msgid "Mirror"
+msgstr "Tükör:"
+
+msgid "Mirror of:"
+msgstr "Tükrözve:"
+
+msgid "Missing #title header in the text!"
+msgstr "Hiányzó #cím fejléc a szövegben!"
+
+msgid "Missing alias"
+msgstr "Hiányzó alias"
+
+msgid "Missing character will be reported"
+msgstr "Hiányzó fejezet jelezve lesz"
+
+msgid "Missing redirection"
+msgstr "Hiányzó átirányítás"
+
+msgid "Mobile"
+msgstr "Mobil"
+
+msgid "Mobile applications"
+msgstr "Mobil alkalmazások"
+
+msgid "Mode"
+msgstr "Mód"
+
+msgid "Moderated wiki"
+msgstr "Moderált wiki"
+
+msgid "Mono font"
+msgstr "Fix szélességű font"
+
+msgid "More"
+msgstr "Több"
+
+msgid "Move down"
+msgstr "Lefelé"
+
+msgid "Move up"
+msgstr "Felfelé"
+
+msgid "Multilanguage: list of whitespace separated language codes"
+msgstr "Többnyelvű: szóközzel elválasztott nyelvi kódok"
+
+msgid "My description"
+msgstr "Én leírásom"
+
+msgid "N/A"
+msgstr "N/E"
+
+msgid "Name"
+msgstr "Név"
+
+msgid "Name plural"
+msgstr "Név (többes számban)"
+
+msgid "Name singular"
+msgstr "Név (egyes számban)"
+
+msgid "Network library listing screen."
+msgstr "Hálózati könyvtár listázó képernyője"
+
+msgid "Never display the cover"
+msgstr "Sose mutasd a fedlapot"
+
+msgid "Never generate a table of content"
+msgstr "Sose generálj tartalomjegyyzéket"
+
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
+"Sose generálj alapértelmezett utolsó oldalt a címmel/szerzővel/jegyzetekkel/logoval/oldalnévvel"
+
+msgid "Never show teaser and/or cover in text lists"
+msgstr "Sose mutasd az előlapot vagy fedőt a szöveg listában"
+
+msgid "New"
+msgstr "Új"
+
+msgid "New revision"
+msgstr "Új verzió"
+
+msgid "New site id"
+msgstr "Új oldal id"
+
+msgid "Newer first"
+msgstr "Újabbak elől"
+
+msgid "Newer texts"
+msgstr "Újabb szövegek"
+
+msgid "Next"
+msgstr "Következő"
+
+msgid "Nice title"
+msgstr "Jó cím"
+
+msgid "No"
+msgstr "Nem"
+
+msgid "No data available in table"
+msgstr "Nincs adat a táblában"
+
+msgid "No editing yet!"
+msgstr "Nincs még szerkesztés"
+
+msgid "No matching records found"
+msgstr "Nincsenek illeszkedő bejegyzések"
+
+msgid "No result found!"
+msgstr "Nincsenek eredmények!"
+
+msgid "No revisions to show"
+msgstr "Nincsenek verziók"
+
+msgid "No text found!"
+msgstr "Szöveg nem található!"
+
+msgid "No text was added yet"
+msgstr "Nincs szöveg hozzáadva még"
+
+msgid "None"
+msgstr "Semmi"
+
+#. ($c->loc('Save')
+msgid ""
+"Not finished yet! Please have a look at the text and then click on \"%1\" to "
+"finalize your submission!"
+msgstr ""
+"Nincs még befejezve! Kérlek nézd át a szöveget és klikelj a \"%1\"-re"
+" hogy véglegesítsd a beküldésed!"
+
+msgid "Notes"
+msgstr "Jegyzetek"
+
+msgid "Nothing to see here, so far"
+msgstr "Nincs még itt semmi"
+
+msgid "Nothing uploaded"
+msgstr "Nincs feltöltve semmi"
+
+msgid "Notify mail: blank field will disable them"
+msgstr "Értesítő email: üresen hagyva nem értesít"
+
+msgid "Notify to"
+msgstr "Értesítés ide"
+
+msgid ""
+"Now it has been aligned to the site's archive, but this means that there are "
+"some missing commits."
+msgstr ""
+"Most már bekerült az oldal archívumába, de ez azt jelenti hogy néhány commit hiányzik"
+
+msgid "Now we are going to populate it and get it ready"
+msgstr "Most belakjuk és beállítjuk"
+
+msgid "Number of jobs"
+msgstr "Folyamatok száma"
+
+msgid "Number of latest entries to display on the RSS (an integer)"
+msgstr "Az RSSben mutatott bejegyzések száma (természetes szám)"
+
+msgid "Number of results to show on paginated pages (an integer)"
+msgstr "Az oldalon mutatott eredmények száma (természetes szám)"
+
+msgid "OPDS"
+msgstr "GPDS"
+
+msgid "Older first"
+msgstr "Régebbi elől"
+
+msgid "Older texts"
+msgstr "Régebbi szövegek"
+
+msgid "On text creation, enforce user to choose the URI"
+msgstr "Szöveg létrehozásakor URI megadására kötelezni a felhasználót"
+
+msgid ""
+"One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr ""
+"Ívenként egy oldal. Befűzés esetén hasznos."
+
+msgid "Open wiki"
+msgstr "Nyílt wiki"
+
+msgid "Option templates"
+msgstr "Opció sablonok"
+
+msgid "Optional, defaults to the author directive"
+msgstr "Választható, alapértelmezetten a szerző direktíva"
+
+msgid ""
+"Or create a new revision, at your own peril. Having multiple\n"
+"          concurrent revisions means that, unless someone takes care\n"
+"          of it, only one will be chosen. You can go ahead, or retry\n"
+"          later, or, better, contact the librarians before proceeding,\n"
+"          to avoid wasting energies."
+msgstr ""
+"Vagy készíts egy új verziót saját felelősségre. Több konkurens\n"
+"          verzió azt jelenti, hogy amennyiben nem figyeltek oda\n"
+"          csak egy lesz kiválasztva. Folytathatod, mepróbálhatod később,\n"
+"          vagy ami még jobb vedd fel a kapcsolataot a könyvtárosokkal mielőtt folytatnád\n"
+"          hogy ne dolgozzon senki feleslegesen."
+
+msgid "Or log in, if you have an account."
+msgstr "Vagy jelentkezz be ha van regisztrációd."
+
+msgid "Or provide an HTML file to upload"
+msgstr "Vagy tölts fel egy HTML fájlt."
+
+msgid "Or wrap it in"
+msgstr "Vagy tördeld be"
+
+msgid "Ordered List"
+msgstr "Rendezett lista"
+
+msgid "Outer margin"
+msgstr "Külső margó"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "PDF logo"
+msgstr "PDF logo"
+
+msgid "PDFs cannot be used in the body."
+msgstr "PDFek nem használhatók a törzsben"
+
+#. ('#ATTACH')
+#. ("#ATTACH")
+msgid "PDFs not listed in the %1 directive will be stored but ignored."
+msgstr "PDFek amik nincsenek listázva a %1 direktívában figyelmen kívül lesznek hagyva de eltárolásra kerülnek."
+
+msgid "Page not found!"
+msgstr "Az oldal nem található!"
+
+msgid "Page where to start a chapter"
+msgstr "Az oldal ahol a fejezet kezdődik"
+
+msgid ""
+"Pages are not reordered. The first sheet contains\n"
+"        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
+"        This is not meant to be folded."
+msgstr ""
+"Az oldalak nincsenek átrendezve. Az első ív tartalmazza\n"
+"        az 1. és 2. oldalt, a második a 3. és 4. oldalt és így tovább.\n"
+"        Ez nem hajtogatásra van tervezve."
+
+msgid ""
+"Pages are reordered, in one or more groups\n"
+"        (signatures), then folded in half. If you have more\n"
+"        signatures, you will have to bound them together like a book.\n"
+"        With this option, you may want to decide the size of the\n"
+"        signatures. This can be a fixed value (4,8,16, etc.), the\n"
+"        whole book in a single signature, or an optimized size to\n"
+"        reduce the number of blank pages."
+msgstr ""
+"Oldalak átrendezve, egy vagy több csoportban\n"
+"        (aláírások), majd félbehajtandók. Ha több aláírásod van\n"
+"        akkor egyben kell kezelned mint egy könyvet. \n"
+"        Ezzel a beállítással megválaszthatod az aláírások méretét\n"
+"        Ez lehet tetszőleges érték (4,8,16, stb.), az egész könyv\n"
+"        egy aláírásban, vagy optimált méret hogy az üres oldalak számát\n"
+"        csükkentsd."
+
+msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
+msgstr "Papír vastagság (0,10 szokott lenni a 80g/m2 papír)"
+
+msgid "Paragraph indentation in points (pt)"
+msgstr "Bekezdés beszedése (pontok)"
+
+msgid "Paragraphs"
+msgstr "Bekezdések"
+
+msgid "Parent collection"
+msgstr "Szülő kollekció"
+
+msgid "Part"
+msgstr "Rész"
+
+msgid "Part and chapter. If one side document: part."
+msgstr "Rész és fejezet. Egy oldalas dokumentumoknál: rész"
+
+msgid "Part of"
+msgstr "Része"
+
+msgid "Part, for larger books only"
+msgstr "Rész, csak hosszabb könyveknél"
+
+msgid "Partial selection"
+msgstr "Rész szekció"
+
+msgid "Password"
+msgstr "Jelszó"
+
+msgid "Password too short"
+msgstr "Jelszó túl rövid"
+
+msgid "Password updated"
+msgstr "Jelszó frissítve"
+
+msgid "Password, minimum 8 characters."
+msgstr "A jelszónak legalább 8 karakter hosszúnak kell lennie"
+
+msgid "Passwords do not match"
+msgstr "A jelszavak nem egyeznek"
+
+msgid "Path"
+msgstr "Elérési útvonal"
+
+msgid "Payload"
+msgstr "Csomag"
+
+msgid "Pending revisions"
+msgstr "Ellenőrzésre váró változtatások"
+
+msgid "Picture"
+msgstr "Kép"
+
+msgid "Place it in the body with a description:"
+msgstr "Helyezd a törzsbe leírással:"
+
+msgid "Place it in the body without description:"
+msgstr "Helyezd a tözsbe leírás nélkül"
+
+msgid "Place the notes on the back of the first page, impressum-style"
+msgstr "Helyezd a jegyzeteket az első oldal hátoldalára, nyomdai stílusban"
+
+msgid "Plain PDF"
+msgstr "Sima PDF"
+
+msgid ""
+"Please check your inbox, we tried to deliver a mail to the address you "
+"specified with a password reset link"
+msgstr ""
+"Nézz rá a bejövő üzeneteidre, elküldtük az e-mailcímedre a \n"
+"jelszó visszaállító linket"
+
+msgid "Please choose a text"
+msgstr "Válassz szöveget"
+
+msgid "Please choose the Beamer color theme"
+msgstr "Válassz Beamer szín témát"
+
+msgid "Please choose the Beamer theme"
+msgstr "Válassz Beamer témát"
+
+msgid "Please choose the font size"
+msgstr "Válassz font méretet"
+
+msgid "Please choose the main font"
+msgstr "Válassz fő fontot"
+
+msgid "Please choose the mono font"
+msgstr "Válassz fix szélességű fontot"
+
+msgid "Please choose the sans font"
+msgstr "Válassz sans fontot"
+
+msgid "Please describe shortly what you did"
+msgstr "Please briefly describe what you did"
+
+msgid "Please do not use a valuable password."
+msgstr "Ne használj máshol is használt jelszót!"
+
+msgid ""
+"Please do not use higher levels (part or chapter) for short articles with "
+"sections."
+msgstr ""
+"Ne használj magasabb szüntet (részt vagy fejezetet) rövid cikkekhez szekciókkal."
+
+#. (amw_group_name)
+msgid "Please ensure that your system user is member of the \"%1\" group"
+msgstr "Ellenőrizd hogy a rendszer felhasználó tagja-e a \"%1\" csoportnak"
+
+msgid ""
+"Please give us a username. It should *not* be a mail address.\n"
+"        Just a fancy name, so we can know that multiple uploads come\n"
+"        from the same person."
+msgstr ""
+"Please provide a username. It should *not* be an email address. Just a fancy "
+"name, so we know when multiple uploads come from the same person."
+
+msgid ""
+"Please initialized it empty, without any README,license, .gitignore or "
+"similar."
+msgstr ""
+"Üressel kezd, README, licens és .gitignore nélkül."
+
+msgid ""
+"Please keep in mind that filters are language-specific\n"
+"              and may or may not be available for the language of the\n"
+"              text. If not available, they will just leave the text as\n"
+"              is."
+msgstr ""
+""
+
+msgid ""
+"Please keep in mind that if you see “Force publishing”\n"
+"    as action, it means that the revision has been superseded by\n"
+"    another one, so publishing this one, you'll end up reverting a\n"
+"    previous one. Try to avoid this, unless you know what you're\n"
+"    doing."
+msgstr ""
+
+msgid "Please leave a mail if you want to be contacted about this change"
+msgstr ""
+"Enter your email address if you would like to be contacted about this change"
+
+msgid "Please note that wrapping tags must be placed on a line by themselves."
+msgstr "Vedd figyelembe hogy a túlcsorduló címkék önmagukban jelennek meg a sorban."
+
+msgid ""
+"Please note that you may want to paste from a\n"
+"        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
+"        from word” button. This is supposed to preserve the markup."
+msgstr ""
+"Ha szövegszerkesztőből illesztenél be egy\n"
+"        Word/OpenOffice/LibreOffice/HTML dokumentumot akkor a “beillesztés\n"
+"        wordből“ gombot használd. Így megőrzödik a formázás."
+
+msgid ""
+"Please note: without any prefix, protocol or hostname, just\n"
+"  the bare page name as shown above. External redirecting is not\n"
+"  supported."
+msgstr ""
+"Vedd figyelembe: előtag, protokoll vagy hosztnév nélkül, csak\n"
+"  a nyers oldal lesz megjelenítve fent. Külső átirányítás nem támogatott.\n"
+
+msgid "Please prove you are a human"
+msgstr "Bizonyítsd hogy ember vagy"
+
+msgid "Please reindex the site."
+msgstr "Indexeld újra az oldalt."
+
+msgid "Please reload your page"
+msgstr "Töltsd újra az oldalt"
+
+msgid "Please remove this file from the body first"
+msgstr "Előbb töröld ezt a fájlt a törzsből"
+
+msgid ""
+"Please replace the example URL in the next line with the real one with SSH "
+"protocol"
+msgstr ""
+"Kérlek írd ád a példa URL-t egy valós SSH protokoll bélire"
+
+msgid "Please select"
+msgstr "Válassz"
+
+msgid "Please select the desired fonts"
+msgstr "Válaszd ki a kívánt fontokat"
+
+msgid "Please select the signature size:"
+msgstr "Válaszd ki az aláírás méretét"
+
+msgid ""
+"Please select the size of each page including the crop marks, before the "
+"imposing"
+msgstr ""
+"Válaszd ki az egyes oldalak méretét beleértve a vágási jelöléseket nyomtatás előtt"
+
+msgid "Please set"
+msgstr "Állítsd be"
+
+msgid ""
+"Please set the URI you desire. Author (if present),\n"
+"        title and eventually a number if the URI already exists is\n"
+"        usually a good choice"
+msgstr ""
+"Állítsd be a kívánt URI-t. Szerző (ha van),\n"
+"        cím és végül egy szám lesz az URI ha már létezik "
+
+msgid "Please setup the Beamer layout"
+msgstr "Állítsd be a Beamer elrendezést"
+
+msgid "Please upload your file again!"
+msgstr "Töltsd fel újra a fájlt"
+
+msgid "Please use only lowercase ASCII letters."
+msgstr "Csak kis latin betűket használj"
+
+msgid "Poetry, bibliographies, plays, code blocks"
+msgstr "Költészeti, bibliográfia, színművek, kód blokkok"
+
+msgid "Pointing to"
+msgstr "Ide mutat"
+
+msgid "Popular texts"
+msgstr "Népszerű szövegek"
+
+msgid "Preferred language"
+msgstr "Elsődleges nyelv"
+
+msgid ""
+"Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
+"        “i.”, “I.”, depending on the list type you need."
+msgstr ""
+"Az előtag a rendezett listákhoz lehet “1.”, “a.”, “A.”,\n"
+"        “i.”, “I.”, attól függően hogy milyen listára van szükséged."
+
+
+msgid "Preview"
+msgstr "Előnézet"
+
+msgid "Preview box height in pixel"
+msgstr "Előnézet doboz magassága pixelben"
+
+msgid "Previous"
+msgstr "Előző"
+
+msgid "Priority"
+msgstr "Elsőbbségi"
+
+msgid "Private"
+msgstr "Titkos"
+
+msgid "Procedure"
+msgstr "Eljárás"
+
+msgid "Processing"
+msgstr "Feldolgozás"
+
+msgid "Produce slides."
+msgstr "Diák előállítása."
+
+msgid "Produced"
+msgstr "Elkészült"
+
+msgid "Publication date"
+msgstr "Megjelenés dátuma"
+
+msgid "Publication date on this site"
+msgstr "Az oldalon megjelenés dátuma"
+
+msgid "Publish"
+msgstr "Közzétesz"
+
+msgid "Published in *A nice book*, published by My House, 2014"
+msgstr "Publikálva a *Egy szép könyv*, kiadó Én Házam, 2014"
+
+msgid "Publisher"
+msgstr "Kiadó"
+
+msgid "Purge"
+msgstr "Megsemmisítés"
+
+msgid ""
+"Purging means removing it completely from the archive, not just hiding it."
+msgstr ""
+"A megsemmisítés a végleges eltávolítást jelenti az archívumból, nem csak elrejtést."
+
+msgid ""
+"Put additional information here (original\n"
+"\t  title, translators, credits, etc). Footnotes go in the\n"
+"\t  body."
+msgstr ""
+"Add hozzá a további információkat itt\n"
+"\t  (eredeti cím, fordítások, köszönetnyilvánítások, stb).\n"
+"\t  Lábjegyzetek mehetnek a szövegtörzsbe."
+
+msgid "Quarter Letter paper"
+msgstr ""
+
+msgid "Queue"
+msgstr "Sor"
+
+msgid "Quota exceeded, too many pages"
+msgstr "A kvóta túllépve, túl sok oldal"
+
+msgid "Quotes"
+msgstr "Idézetek"
+
+msgid "RSS aggregator"
+msgstr "RSS aggregátor"
+
+msgid "RSS feed"
+msgstr "RSS feed"
+
+msgid "Random"
+msgstr "Véletlenszerű"
+
+msgid "Read about the file naming scheme if you need to add files to the tree."
+msgstr "Olvass a fájl nevezéktanról ha hozzá akarsz adni fájlokat  a tree-hez."
+
+msgid "Read the whole text..."
+msgstr "Olvasd el a teljes szöveget…"
+
+msgid "Real time help"
+msgstr "Valós idejű segítség"
+
+msgid ""
+"Rearrange the footnotes, fixing the numbering,\n"
+"              considering only the order in which they were inserted.\n"
+"              Please leave unchecked if you don't know what this\n"
+"              means. This option could be destructive, please use with\n"
+"              caution and check the result. In case you encounter\n"
+"              problems, please save the result reporting them in the\n"
+"              message. The procedure tries to be safe and will ignore\n"
+"              the change if footnotes are missing or are too many."
+msgstr ""
+"Rendezze át a lábjegyzeteket, rögzítve a számozást,\n"
+"              csak a beillesztés sorrendjét figyelembe véve.\n"
+"              Ha nem tudja, hogy ez mit jelent, kérjük, hagyja figyelmen kívül.\n" 
+"              Ez az opció romboló hatású lehet, kérjük, óvatosan használja, és ellenőrizze az eredményt.\n"
+"              Ha problémákat tapasztal, kérjük, mentse el az eredményt, és jelezze azokat az üzenetben. \n"
+"              Az eljárás igyekszik biztonságosan eljárni, és figyelmen kívül hagyja a módosítást, \n"
+"              ha a lábjegyzetek hiányoznak vagy túl sok van belőlük."
+
+msgid "Reason"
+msgstr "Ok"
+
+msgid "Reason for deletion"
+msgstr "Törlés oka"
+
+msgid "Rebuild"
+msgstr "Újragenerál"
+
+msgid "Rebuild all generated files"
+msgstr "Minden újragenerálása"
+
+msgid "Rebuild formats"
+msgstr "Formátumok újragenerálása"
+
+msgid "Rebuild the generated formats"
+msgstr "A generált formátumok újragenerálása"
+
+msgid "Rebuilding"
+msgstr "Újragenerálás"
+
+msgid "Recheck"
+msgstr "Újraellenőriz"
+
+msgid "Redirections"
+msgstr "Átirányítások"
+
+msgid "Refresh and apply filters"
+msgstr "Frissítsd és alkalmazd a szűrőket"
+
+msgid "Reindex site"
+msgstr "Oldal újraindexelése"
+
+msgid "Related projects"
+msgstr "Testvérprojektek"
+
+#. ("$name $url")
+msgid "Remote repository %1 added"
+msgstr "Távoli tároló %1 hozzáadva"
+
+#. ($name)
+msgid "Remote repository %1 removed"
+msgstr "Távoli tároló %1 eltávolítva"
+
+msgid "Remove"
+msgstr "Eltávolítás"
+
+msgid "Remove cover image"
+msgstr "Borítókép eltávolítása"
+
+msgid "Remove this category"
+msgstr "Kategória eltávolítása"
+
+msgid "Removed Upstream"
+msgstr "Távoli tároló eltávolítva"
+
+msgid "Rename"
+msgstr "Átnevezés"
+
+msgid "Rename text URI"
+msgstr "URI átnevezése"
+
+msgid "Rename to"
+msgstr "Új név"
+
+msgid "Repeat email"
+msgstr "email újra"
+
+msgid "Repeat password"
+msgstr "jelszó újra"
+
+msgid "Request failed! Please report the the problem"
+msgstr "A lekérés nem sikerült! Jelezd a problémát."
+
+msgid "Reschedule"
+msgstr "Újraütemezés"
+
+msgid "Reset all"
+msgstr "Minden visszaállítása"
+
+msgid "Reset filters"
+msgstr "Szűrők visszaállítása"
+
+msgid "Reset password"
+msgstr "Jelszó visszaállítása"
+
+#. (username)
+msgid "Reset password for user %1"
+msgstr "Felhasználó (%1) jelszavának visszaállítása"
+
+msgid "Reset to site defaults"
+msgstr "Az oldal alapértelmezéseinek visszaállítása"
+
+msgid "Reset your password"
+msgstr "Jelszó visszaállítása"
+
+msgid "Restricted configuration variables"
+msgstr "Korlátozott beállítási változók"
+
+msgid "Restricted format options"
+msgstr "Korlátozott formátum opciók"
+
+msgid "Results per page:"
+msgstr "Eredmények oldalanként"
+
+msgid "Retrieved on DATE from URL"
+msgstr "Letöltve ezen dátumon az URLről"
+
+msgid "Retrieved on March 8, 2012 from"
+msgstr "Letöltve 2012 március 8.-án innen:"
+
+msgid "Revision"
+msgstr "Változatok"
+
+#. ($uri)
+msgid "Revision for %1 has been deleted"
+msgstr "A(z) %1 verzió törölve lett"
+
+msgid "Roles"
+msgstr "Szerepek"
+
+msgid "Root Collection"
+msgstr "Gyökér kollekció"
+
+msgid "Run diff"
+msgstr "Különbség"
+
+msgid "Running headings"
+msgstr "Tördelhető címsor"
+
+msgid "SKU"
+msgstr "SKU"
+
+msgid "SSL CA certificate path (Apache)"
+msgstr "SSL CA tanusítvány útvonal (Apache)"
+
+msgid "SSL certificate path (Apache)"
+msgstr "SSL tanusítvány útvonal (Apache)"
+
+msgid "SSL chained certificate path (Nginx)"
+msgstr "SSL tanusítványlánc útvonal (Nginx)"
+
+msgid "SSL configuration"
+msgstr "SSL beállítás"
+
+msgid "SSL key path"
+msgstr "SSK kulcs útvonal"
+
+msgid "Same as above, but for duplex printers"
+msgstr "Ugyan az mint fent, csak duplex nyomtatókhoz"
+
+msgid "Same as above, for the Archive menu"
+msgstr "Ugyan az mint fent, Archív menünek"
+
+msgid "Same as above, for the Related Projects menu"
+msgstr "Ugyan az mint fent a Kapcsolódó Projektek menüre vonatkoztatva"
+
+msgid "Sans font"
+msgstr "Sans font"
+
+msgid "Save"
+msgstr "Mentés"
+
+msgid "Save the current settings with a name"
+msgstr "Mentsd a jelenlegi beállításokat névvel"
+
+#. ($pname)
+msgid "Saved \"%1\" configuration"
+msgstr "A \"%1\" beállítás mentve"
+
+msgid "Search"
+msgstr "Keresés"
+
+msgid "Search Engine Facets"
+msgstr "Keresőmotorhoz kifejezések"
+
+msgid "Search filters"
+msgstr "Kereső szűrők"
+
+msgid "Search results"
+msgstr "Eredmények keresése"
+
+msgid "Search this column"
+msgstr "Keresés az oszlopban"
+
+msgid "Secondary footnotes"
+msgstr "Másodlagos lábjegyzetek"
+
+msgid "Section"
+msgstr "Szekció"
+
+msgid "Section and subsection. If one side document: section."
+msgstr "Szekció és alszekció. Ha egy oldals dokumentum akkor szekció."
+
+msgid "See here for more details."
+msgstr "Mutasd a többi részletet."
+
+msgid "See here for the full documentation."
+msgstr "Mutasd a teljes dokumentumot."
+
+msgid "See the full manual for more details (english)"
+msgstr "A tövábbi részletekért olvasd el a teljes leírást (angolul)."
+
+msgid "Select"
+msgstr "Kiválasztás"
+
+msgid "Select all"
+msgstr "Minden kijelölése"
+
+msgid "Select all for deletion"
+msgstr "Minden kijelölése törlésre"
+
+msgid "Select all for rescheduling"
+msgstr "Minden kijelölése újraütemezésre"
+
+msgid "Select individual parts for the bookbuilder"
+msgstr "Válassz egyedi részeket a könyvkészítőhöz"
+
+msgid "Send mail"
+msgstr "Email elküldése"
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
+msgstr "Levél küldsée %1 címről %2 címre"
+
+msgid "Separate body fields"
+msgstr "Különálló törzs mezők"
+
+msgid "Separate footer fields"
+msgstr "Különálló lábléc mezők"
+
+msgid "Separate header fields"
+msgstr "Különálló fejléc mezők"
+
+msgid "Series Name"
+msgstr "Sorozat neve"
+
+msgid "Series Number"
+msgstr "Sorozat száma"
+
+msgid "Session sharing"
+msgstr "Munkamenet megosztás"
+
+msgid "Set a date in the future if you want it deferred."
+msgstr "Állítsd a dátumot a jövőbe ha elveted."
+
+msgid "Settings loaded"
+msgstr "Beállítások betöltve"
+
+msgid "Setup"
+msgstr "Beállítás"
+
+msgid "Show _MENU_ entries"
+msgstr "_MENU_ elemek"
+
+msgid "Show cheatsheet"
+msgstr "Puska mutatása"
+
+msgid "Show differences in other tab"
+msgstr "Különbségek megjelenítése új tabban"
+
+msgid "Show filters"
+msgstr "Szűrők megjelenítése"
+
+msgid "Show preview in other tab"
+msgstr "Előnézet megjelentíése új tabban"
+
+msgid "Show text type and number of pages in the listing"
+msgstr "Mutatja a szöveg típust és az oldalak számát a listában"
+
+msgid "Show the text infobox at the bottom of the texts"
+msgstr "Mutatja a szöveg infoboxot a szövegek alján"
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "0-0/0"
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr "_START_-_END_/_TOTAL_"
+
+msgid "Single bars"
+msgstr "Egy sáv"
+
+msgid "Site already exists"
+msgstr "Oldal már létezik"
+
+msgid "Site group"
+msgstr "Oldal csoport"
+
+msgid "Site id"
+msgstr "Oldal id"
+
+msgid "Site mail (From field)"
+msgstr "Oldal email (From mező)"
+
+msgid "Site mode"
+msgstr "Oldal mód"
+
+msgid "Site name"
+msgstr "Oldal név"
+
+msgid "Site slogan"
+msgstr "Oldal szlogen"
+
+msgid "Site users"
+msgstr "Oldal felhasználók"
+
+msgid "Sites"
+msgstr "Oldalak"
+
+#. ($invalid)
+msgid "Skipped %1 invalid sources!"
+msgstr "Átugrottunk %1 érvénytelen forrást!"
+
+msgid "Slides"
+msgstr "Diák"
+
+msgid "Slides (PDF)"
+msgstr "Diák (PDF)"
+
+msgid "Small Caps"
+msgstr "Kiskapitális"
+
+msgid "So we can be sure we are not mailing passwords to random people"
+msgstr "Így tehát meggyőződhetünk hogy nem véletlenszerű embereknek küldjük ki az jelszavakat"
+
+msgid "Some fields are missing, all are required"
+msgstr "Néhány mező hiányzik, mindegyik kötelező"
+
+msgid "Some fields are too long"
+msgstr "Néhány mező túl hosszú"
+
+msgid "Some ongoing revisions were found"
+msgstr "Néhány folyamatba lévő verziót találtunk"
+
+msgid "Sorry, too many jobs pending, please try again later!"
+msgstr "Elnézést, túl sok folyamat függőben, próbáld újra később!"
+
+msgid "Sorting:"
+msgstr "Rendezés:"
+
+msgid "Source"
+msgstr "Forrás"
+
+msgid "Source files"
+msgstr "Forrás fájlok"
+
+msgid "Source files with attachments"
+msgstr "Forrás fájlok csatolmányokkal"
+
+msgid "Source removed"
+msgstr "Forrás törölve"
+
+msgid "Source, notes..."
+msgstr "Forrás, jegyzetek…"
+
+msgid "Sources"
+msgstr "Források"
+
+msgid "Special blocks"
+msgstr "Speciális blokkok"
+
+msgid "Special pages"
+msgstr "Speciális oldalak"
+
+msgid "Specify a whitespace-separated list of languages to activate it."
+msgstr "Adj meg egy szóközzel elválasztott listátt nyelv listát hogy bekapcsold."
+
+msgid "Stale editing"
+msgstr "Félbehagyott szerkesztés"
+
+msgid "Standalone HTML (printer-friendly)"
+msgstr "Standalone HTML (printer-friendly)"
+
+msgid "Standard"
+msgstr "Általános"
+
+msgid "Start the document with an empty page"
+msgstr "Kezdjük az dokumentumot üres oldallal"
+
+msgid "Started"
+msgstr "Elkezdve"
+
+msgid "Static page without javascript"
+msgstr "Statikus oldal javascript nélkül"
+
+msgid "Status"
+msgstr "Állapot"
+
+msgid "Status changed"
+msgstr "Állapot megváltozott"
+
+msgid "Subsection"
+msgstr "Alszekció"
+
+msgid "Subsubsection or description item"
+msgstr "Alszekció vagy elem leírás"
+
+msgid "Subtitle"
+msgstr "Felirat"
+
+msgid "Such URI already exists"
+msgstr "A megadott URI már létezik"
+
+msgid "Such an URI already exists"
+msgstr "A megadott URI már létezik"
+
+msgid ""
+"Such an header will unpublish the text and put a\n"
+"  redirection in place, and will be listed here"
+msgstr ""
+"Ilyen fejléc visszavonja a publikációját a szövegnek\n"
+"  és átirányítást rak ide, valamint itt lesz listázva"
+
+msgid "Such an user already exists!"
+msgstr "A felhasználó már létezik"
+
+msgid "Such username already exists"
+msgstr "A felhasználónév már használatban"
+
+msgid "Suggested values:"
+msgstr "Ajánlott értékek:"
+
+msgid "Summary"
+msgstr "Összegzés"
+
+msgid "Supported directive in the header"
+msgstr "Támogatott direktívák a fejlécben"
+
+msgid "Switch theme"
+msgstr "Téma váltása"
+
+msgid "Table of Contents"
+msgstr "Tartalomjegyzék"
+
+msgid "Tables"
+msgstr "Táblázatok"
+
+msgid "Tag cloud with authors"
+msgstr "Címkefelhő szerzőkkel"
+
+msgid "Tag cloud with topics"
+msgstr "Címkefelhő témákkal"
+
+msgid "Task"
+msgstr "Folyamat"
+
+msgid "TeX options (advanced)"
+msgstr "TeX kapcsolók (haladó)"
+
+msgid "Teaser"
+msgstr "Kedvcsináló"
+
+msgid "Teaser image"
+msgstr "Kedvcsináló kép"
+
+msgid "Term"
+msgstr "Kifejezés"
+
+msgid "Test"
+msgstr "Teszt"
+
+msgid "Tested applications, in this order of preference"
+msgstr "Tesztelt appok preferencia-sorrendben"
+
+msgid "Text"
+msgstr "Szöveg"
+
+msgid "Text body only (no title, no final pages)"
+msgstr "Szöveg törzs (cím és végszó nélkül)"
+
+msgid "Text formatted with markup"
+msgstr "Szöveg markuppal formázva"
+
+msgid "Text height"
+msgstr "Szöveg magasság"
+
+msgid ""
+"Text redirections are set in the text itself, using the\n"
+"  DELETED header with this syntax"
+msgstr ""
+"A szöveges átirányításokat maga a szöveg tartalmazza, a\n"
+" DELETED-fejléc használatával ezzel a szintaxissal"
+
+msgid "Text width"
+msgstr "Szöveg szélesség"
+
+msgid "Texts"
+msgstr "Szövegek"
+
+msgid "Thanks!"
+msgstr "Köszi!"
+
+msgid ""
+"The Beamer selections are relevant only if you activate the\n"
+"  slides output."
+msgstr ""
+"A Beamer beállítások csak akkor érvényesülnek ha aktiválod\n"
+"  a dia kimenetet."
+
+msgid "The OPDS address for this site is:"
+msgstr "Az OPDS címe az oldalnak:"
+
+msgid ""
+"The PDF logo value can be either an absolute path\n"
+"            or just a filename if you choose to install it in the\n"
+"            TeXlive tree. You can do so with the following commands.\n"
+"            The last one checks if the file can be found."
+msgstr ""
+"A PDF logo érték vagy abszolút elérési útvonal\n"
+"            vagy csak egy fájlnév ha installálva van "
+
+msgid "The changes will propagate automatically once you push."
+msgstr "A változások átkerülnek automatikusan push esetén."
+
+#. ($uri)
+msgid "The description for %1 has been updated"
+msgstr "A %1 leírása frissítésre került"
+
+msgid ""
+"The differences between the list of footnotes and references is shown below."
+msgstr ""
+"A különbségek a lábjegyzetek listái és a hivatkozások között alább látható."
+
+msgid "The file uploaded is not an HTML file!"
+msgstr "A feltöltött fájl nem HTML!"
+
+msgid "The following settings provide the defaults for each format."
+msgstr "Az alábbi beállítások adják az alapértelmezéseket az egyes formátumokhoz."
+
+msgid "The following values are used to generate the webserver configuration."
+msgstr "A következő értékek lesznek használva a webszerver beállításához."
+
+msgid ""
+"The generate webserver configuration will redirect\n"
+"          all the HTTP requests to HTTPS"
+msgstr "A generált webkiszolgáló konfiguráció minden\n"
+"          HTTP-kérést átirányít HTTPS-re."
+
+msgid "The logo has the site name on itself"
+msgstr "A logo és az oldal neve önmagán"
+
+msgid "The optional subtitle"
+msgstr "A választható felirat"
+
+msgid ""
+"The page /special/index is twice special. It is assumed to be the\n"
+"default page to visit when loading the site’s root."
+msgstr ""
+"Az oldal /special/index duplán speciális. Ez töltődik be amikor az oldal\n"
+"gyökerét látogatják meg."
+
+msgid "The password will be mailed at this address"
+msgstr "A jelszó erre az e-mailcímre lesz kiküldve"
+
+msgid "The reset link will expire in a hour."
+msgstr "A visszaállító link egy óra múlva lejár."
+
+msgid "The revision has the following messages"
+msgstr "Ez a verzió a következő üzenetekkel rendelkezik"
+
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr ""
+"Az oldal PDFeket előnézeti képpel jeleníti meg\n"
+"        a dokumentum végén."
+
+msgid "The text structure is shown below."
+msgstr "A szöveg struktúráját lásd lentebb."
+
+msgid "The text to show on the homepage preview"
+msgstr "A szöveg amit a homepage előnézetében lesz"
+
+msgid "The text was added to the bookbuilder"
+msgstr "A szöveg hozzá van adva a könyvkészítőhöz"
+
+msgid ""
+"The title of the document, for sorting purposes. Useful\n"
+"          if you want to strip the article, if any. A text titled “A\n"
+"          nice title” could have this set to “Nice title”, and will be\n"
+"          listed under N, not under A."
+msgstr ""
+"A dokumentum címe rendezési célokra. Hasznos\n"
+"    ha névelő nélkül is akarod hivatkozni. Egy olyan szöveg aminek a címe\n"
+"    „A jó cím” „Jó cím” lesz és J alá kerül és nem az A-hoz."
+
+
+msgid "The title of the document. The only mandatory directive."
+msgstr "A dokumentum címe. Az egyetlen kötelező ¿irányelv?"
+
+msgid ""
+"The webserver needs to be reconfigured. Please execute in a root shell the "
+"following commands:"
+msgstr ""
+"A webszervert újra kell konfigurálni. Root shellben futtasd a következő parancsokat:"
+
+msgid "The whole book in as single signature"
+msgstr "A teljes könyv egy sorban"
+
+msgid "Then approve the change as it would be a normal publishing."
+msgstr "Majd hagyd jóvá a módosítást ahogyan egy normál publikálásnál."
+
+msgid "Then fetch the updates from this page."
+msgstr "Majd töltsd le az update-et ehhez az oldalhoz."
+
+msgid "There are failed jobs"
+msgstr "Vannak nem lefutott folyamatok"
+
+msgid "There are pending revisions"
+msgstr "Vannak függőben lévő revíziók"
+
+msgid "These texts are missing the unique id."
+msgstr "Ezeknek a szövegeknek nincsen egyedi azonosítójuk"
+
+msgid "They can be texts, special texts, authors or topics."
+msgstr "Lehetnek szövegek, speciális szövegek, szerzők és témák."
+
+msgid ""
+"They should be paths relative to the webserver configuration root or "
+"absolute paths (recommended)."
+msgstr ""
+"Ezeknek az elérési útvonalaknak relatívaknak kell lenniök a webszerver"
+" konfigurácoiós gyökeréshez vagy abszolút elérési útvonalaknak kell lenniük (ajánlott)."
+
+msgid "This directive wants a whitespace separated list of filenames."
+msgstr "Ehhez a direktívához kellenek a fájlnevek szóközzel elválasztva"
+
+msgid ""
+"This is a WYSIWYG editor. If you prefer to use\n"
+"        the wiki-like syntax leave it as is, fill the required fields\n"
+"        above and postpone the editing to the next step."
+msgstr ""
+"Ez egy WYSIWYG szerkesztő. Ha ezt használnád\n"
+"        a wiki szerű szintaxis helyett hagy így, add meg a szükséges mezőket\n"
+"        fentebb vagy halaszd el a szerkesztést a következő lépésben."
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
+"Ez csak a generált fájlokra vonatkozik, ahol már amúgy is alternatív fontok kellhetnek. "
+"Nincs hatással a webappra ha amúgy is sans fontokat használ már."
+
+msgid "This is the caption"
+msgstr "Ez a felirat"
+
+msgid ""
+"This mail has been sent to notify you about a new text\n"
+"creation, even if the uploading is not completed yet and the user\n"
+"still needs to finalize the upload. Another mail should follow soon.\n"
+"If this doesn't happen, it means that the uploading has been abandoned\n"
+"and you may want to check it out."
+msgstr ""
+"Ha az e-mail ki lett küldve az új szövegről értesítendő\n"
+", akkor is ha a feltöltés még nem ért véget vagy nem véglegesítette a feltöltést.\n"
+" Egy másik e-mail fog érkezni hamarosan amint véglegesíti.\n"
+"Ha ez nem történik meg az azt jelenti hogy a feltöltést félbehagyták\n"
+" és lehet hogy ellenőriznéd."
+
+msgid "This revision is already published, ignoring changes"
+msgstr "Ez a verzió már publikálva lett, módosítások elvetése"
+
+msgid "This revision is being actively edited"
+msgstr "Ez a verzió aktívan szerkesztve van"
+
+msgid "This revision is being actively edited by you"
+msgstr "Ezt a verziót te szerkeszted aktívan"
+
+msgid "This revision is being edited by someone else!"
+msgstr "Ez a verzió más által is szerkesztés alatt van!"
+
+msgid "This section will not produce a slide"
+msgstr "Ez a szekció nem jelenik meg diaként"
+
+msgid "This setting affects only the text creation form."
+msgstr "Ez a beállítás csak a szöveg létrehozó formot érinti."
+
+msgid ""
+"This site is private and mobile applications should ask for your username "
+"and\n"
+"  password to access the OPDS."
+msgstr ""
+"Ez az oldal privát és a mobil applikációk kérnek a hozzáférés \n"
+"előtt felhasználónevet és jelszavat az ODP-hez"
+
+msgid "This text does not exist"
+msgstr "Ez a szöveg nem létezik"
+
+msgid "This text is a book"
+msgstr "Ez a szöveg könyv"
+
+msgid "This text is an article"
+msgstr "Ez a szöveg egy cikk"
+
+msgid "This text is new"
+msgstr "Ez a szöveg új"
+
+msgid "This text is not available"
+msgstr "Ez a szöveg nem áll rendelkezésre"
+
+msgid "This text is not public yet"
+msgstr "Ez a szöveg nincs még kiélesítve"
+
+msgid "This text is not published yet"
+msgstr "Ez a szöveg nincs még publikálva"
+
+#. (rev.is_deferred)
+msgid "This text will be deferred to %1"
+msgstr "A szöveg átirányítva ide %1"
+
+msgid "This user cannot be removed"
+msgstr "Ez a felhasználó nem törölhető"
+
+msgid "Thumbnail"
+msgstr "Előnézet"
+
+msgid "Title"
+msgstr "Cím"
+
+msgid "Title and chapter. If one side document: chapter."
+msgstr "Cím és fejezet. Egy oldalas dokumentum: fejezet."
+
+msgid "Title and section.  If one side document: section."
+msgstr "Cím és szekció. Egy oldalas dokumentum: szekció."
+
+msgid "Title and subtitle. If one side document: title."
+msgstr "Cím és felirat. Egy oldalas dokumentum: cím."
+
+msgid "Title for sorting"
+msgstr "Cím és rendezés"
+
+msgid "Title, author, date..."
+msgstr "Cím, szerző és dátum…"
+
+msgid "Titles"
+msgstr "Címek"
+
+#. (pending_url)
+msgid "To apply the changes, you can visit %1"
+msgstr "A változások alkalmazásához látogasd meg: %1"
+
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr "A PDFek megjelenítéséhez a következő karakterláncot add a headerhez"
+
+msgid ""
+"To preserve the whitespaces and line breakings, wrap the paragraphs with"
+msgstr ""
+"A szóközök megőrzéséhez és oldaltörésekhez a bekezdéseket válaszd el –"
+
+msgid "To quickly format bibliographies wrap them in"
+msgstr "Ha gyorsan akarod a bibiliográfiékat formázni tedd ezek közé:"
+
+msgid "To quickly format plays, use"
+msgstr "Színdarabok gyors formázásához használd"
+
+msgid "To resume the editing you can visit the following URL"
+msgstr "Ha folytatni akarod a szerkesztést akkor használd ez az URL-t"
+
+#. (loc('Update')
+#. (loc("Update"))
+msgid ""
+"To save or update the templates, you need first to save\n"
+"    the options with the \"%1\" button"
+msgstr ""
+"A sablonváltoztatások mentéséhez először mentened kell \n"
+"a bállításokat a \"%1\" gombra nyomva"
+
+msgid "To view the changes introduced, you can visit the following URL"
+msgstr "A változások bevezetésre kerültek; ahhoz hogy megnézd látodasd meg a következő URL-t"
+
+msgid "Toggle"
+msgstr "Váltás"
+
+msgid "Toggle fullscreen editor"
+msgstr "Váltás teljes képernyős szerkesztőre"
+
+msgid "Too many URLs to process!"
+msgstr "Túl sok URL a feldolgozáshoz!"
+
+msgid "Top margin"
+msgstr "Felső margó"
+
+msgid "Topic"
+msgstr "Téma"
+
+msgid "Topics"
+msgstr "Témák"
+
+msgid "Total pages"
+msgstr "Összes oldal"
+
+msgid "Triple bars"
+msgstr "Három vonal"
+
+msgid "Try a random text if unsure"
+msgstr "Próbáld ki véletlen szöveggel ha bizonytalan vagy"
+
+msgid ""
+"Turn links to images into images (affects site display only, static formats "
+"have the link)"
+msgstr ""
+"Legynek a linkek képek (az oldal kinézetét befolyásolja csak, a statikus tartlmak maradnak linkek)"
+
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"            Gmaps into widgets (affects site display only, static\n"
+"            formats have the link)"
+msgstr ""
+"Legyenek a linkek leírások YouTube, Vimeo,\n"
+"            Gmaps beágyazások inkább (az oldal kinézetét befolyásolja csak,"
+" a statikus tartlmak maradnak linkek)"
+
+msgid "Two side layout"
+msgstr "Kétoldalas elrendezés"
+
+msgid "Type"
+msgstr "Típus"
+
+msgid "URI"
+msgstr "URI"
+
+msgid "URI is available and valid"
+msgstr "Az URI rendelkezésre áll és érvényes"
+
+msgid ""
+"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
+"my-author-title-1"
+msgstr ""
+"Az URI-nek ASCII szövegnek kell lennie vesszővel elválasztva szóközök nélkül pl:"
+"szerzom-cime-1"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
+msgstr "URL ahol a távoli repó van (HTTPS, HTTP vagy GIT)"
+
+msgid "URL pointing to an embeddable webchat"
+msgstr "URL ami a beágyazott internetes csevegésre mutat."
+
+msgid "UTC"
+msgstr "UTC"
+
+msgid "Unable to load the bookbuilder session"
+msgstr "Nem sikerült a könyvkészítő munkamenet betöltése"
+
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr "Nem lehet e-mailt küldeni a %1 feladóval a %2 címre!"
+
+msgid "Unbranded PDF (hide site name, logo, etc.)"
+msgstr "Jelölés nélküli PDF (oldal név és logó nélkül, stb.)"
+
+msgid ""
+"Unconditionally remove all the invisible non-breaking\n"
+"                spaces in the text"
+msgstr ""
+"Törölj minden láthatatlan nem tördelhető szóközta a szövegben."
+
+#. (shared)
+msgid ""
+"Unfortunately, the shared repository located at %1 appeared out of sync."
+msgstr ""
+"Úgy tűnik az osztott repó %1 helyen nincs szinkronizálva."
+
+msgid "Unique ID for the text"
+msgstr "Egyedi ID a szöveghez"
+
+msgid "Unlimited"
+msgstr "Korlátlan"
+
+msgid "Unordered List"
+msgstr "Unordered list"
+
+msgid "Unpublished texts"
+msgstr "Nem publikált szövegek"
+
+#. ($mime_type)
+#. ($mime)
+msgid "Unsupported file type %1"
+msgstr "Nem támogatott fájl típus: %1"
+
+msgid "Unused attachment"
+msgstr "Nem használt csatolmány"
+
+msgid "Update"
+msgstr "Frissítés"
+
+msgid "Update account info"
+msgstr "Fiók információ frissítése"
+
+msgid "Update category description"
+msgstr "Kategória leírás frissítése"
+
+msgid "Update to current settings"
+msgstr "A jelenlegi beállításokra frissítés"
+
+msgid "Upload"
+msgstr "Feltöltés"
+
+msgid "Upload the image and note its name. Files are always renamed."
+msgstr "Töltsd fel a képet és az elnevezését. A fájlok átneveződnek."
+
+msgid ""
+"Uploaded and available images are shown and listed below the text preview."
+msgstr ""
+"Feltöltött és rendelkezésre álló képek alább jelennek meg a szöveg előnézetben."
+
+msgid "Url"
+msgstr "Url"
+
+msgid "Use JS syntax highlight for code blocks"
+msgstr "JS szintaxis használata a"
+
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
+msgstr "Használd a LuaLaTeX-et a XeLaTeX helyett (lassabb)"
+
+msgid "Use SSL for authenticated users"
+msgstr "Használd az SSL-t bejelentkezett felhasználókhoz"
+
+msgid "Use it as a teaser image adding to the header this line:"
+msgstr "Használd a fedlap képként a fejléchez adott következő szöveggel:"
+
+msgid "Use named table of contents anchors instead of numeric ones"
+msgstr "Használd a neves tartalomjegyzéket a számos helyett"
+
+msgid "Use one of the site's formats"
+msgstr "Használd az oldal formátumai közül az egyiket."
+
+#. (sign)
+msgid "Use optimized signatures with %1 pages each"
+msgstr "Használd az optimalizált aláírást minden %1 oldalanként"
+
+msgid "Use sans fonts for section titles"
+msgstr "Használd a talpatlan fontot szekció címekhez"
+
+msgid "Use the image as cover"
+msgstr "Használd a képet borítóként"
+
+msgid "Use the site locale"
+msgstr "Használd az oldal területi beállítását"
+
+msgid "Useful HTML snippets"
+msgstr "Hasznos HTML részletek"
+
+msgid ""
+"Useful for footnotes or in the headers of the document, where you cannot put "
+"a blank line to mark a new paragraph."
+msgstr ""
+"Használd a lábjegyzetekhez a vagy a címekhez a dokumentumban, "
+" ahova nem tudsz üres sort tenni új bekezdés kezdéséhez."
+
+#. ($user->username)
+msgid "User %1 created!"
+msgstr "Felhasználó %1 létrehozva"
+
+#. ($user->username)
+#. ($c->stash->{user}->username)
+msgid "User %1 deleted"
+msgstr "Felhasználó %1 törölve"
+
+#. ($user->username)
+msgid "User %1 updated"
+msgstr "Felhasználó %1 frissítve"
+
+msgid "User created"
+msgstr "Felhasználó létrehozva"
+
+msgid "Username"
+msgstr "Felhasználó"
+
+msgid "Username, alphanumerical only, no special characters, no uppercase"
+msgstr "Felhasználó, csak kisbetűs alfanumerikus karakterek különleges karakterek nélkül"
+
+msgid "Users"
+msgstr "Felhasználók"
+
+msgid ""
+"Using this token, you can load the bookbuilder settings\n"
+"    and the text list from another computer, or share it with someone\n"
+"    else. Just write it down and then load it from another computer\n"
+"    using the following form."
+msgstr ""
+"Egy token használatával betöltheted a könyvkészítőd beállításait.\n"
+"    és hozzáadhatsz szöveg listákat másik számítógépről, vagy megoszthatod mással\n"
+"    Csak jegyezd fel és már használhatod is másik számítógépről a következő form-mal."
+
+msgid ""
+"Usually this is due to high traffic and bad luck, and it can be fixed by "
+"pushing the changes again."
+msgstr ""
+"Ez általában a nagy forgalom miatt vagy balszerencse miatt van így."
+" Megoldás a változások újra pusholása."
+
+msgid "Verbatim block"
+msgstr "Karakterhű blokk"
+
+msgid "View history"
+msgstr "Történet megnézése"
+
+msgid "Virtual hosts"
+msgstr "Vitual hostok"
+
+msgid "Virtual hosts, one per line"
+msgstr "Virtual hostok, soronként egy"
+
+msgid "What links here"
+msgstr "Mi hivatkozik ide"
+
+msgid ""
+"When creating a new text, do not populate the publication date if not "
+"provided by the user."
+msgstr ""
+"Új szöveg létrehozásánál ne add meg a publikációs dátumot ha a felhasználó"
+" azt nem adta meg."
+
+msgid ""
+"When you start a bookbuilder session, at the end of the\n"
+"    bookbuilder page you can see a token for sharing the session. You\n"
+"    can load it here from another device to resume what you were\n"
+"    doing."
+msgstr ""
+"Amennyiben egy könyvkészítő munkafolyamatot kezdesz akkor a végén\n"
+"    lesz egy könyvkészítő oldalad ahol látod a hozzáférési tokent \n"
+"    a munkafolyamat megosztásához. Folytathatod más eszközről is, \n"
+"    ott ahol abbahagytad."
+
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr "Amennyiben egy PDFet töltesz fel szedd képekre és azt illeszd a törzsbe"
+
+msgid "Where does this text come from?"
+msgstr "Honnan jön ez a szöveg?"
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr "Engedélyzési IP cím kivétellista (biztonsági mentésre, soronként egy)"
+
+msgid "Width of the cover image in percent of the text block width."
+msgstr "A borítókép a szöveg szélesség százalékában."
+
+msgid "Width:"
+msgstr "Szélesség:"
+
+msgid ""
+"With complex structures, e.g., a chapter with\n"
+"      subsections, selecting only the chapter is likely to select only\n"
+"      the chapter's title, so probably you want to select the chapter\n"
+"      and all its subsections."
+msgstr ""
+"Komplex struktúrákkal pl. fejezet alszekciókkal\n"
+"     egyes fejezetek kijelölése valószínűleg csak a fejezet\n"
+"     címét választja ki, szóval valószínűleg a fejezetet és az\n"
+"     alszekciókat is ki kell választanod."
+
+msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr ""
+"A \"verbatim\" címkével elkerülöd a markup értelmezését\n"
+"          általában nincs rá szükség."
+
+msgid ""
+"With the bookbuilder you can change the layout (fonts,\n"
+"    dimensions, paper, margins) of the texts on the library. You can\n"
+"    also merge more texts to create your own booklet. Just try it!"
+msgstr ""
+"A könyvkészítővel megváltoztathatod az elrendezését\n"
+" (fontok, lapméretek, lap típus, margók) a szövegeknek a könyvtárban.\n"
+" Összefűzhetsz több szöveget a könyvecske elkészítéséhez. Csak próbáld ki!"
+
+msgid "Workflow"
+msgstr "Munkafolyamat"
+
+msgid "Working locally?"
+msgstr "Helyben feldolgozás?"
+
+msgid ""
+"Wrapping tags cannot be used inside environments\n"
+"          which require leading space (notably, you cannot use them in\n"
+"          lists)."
+msgstr ""
+"Címkék környezeten belül nincsenek tördelve\n"
+"          ezekhez szükségesek a sor eleji szóközök\n"
+"          (így listákban nem használhatod a címkéket)\n"
+
+msgid "Wrong answer!"
+msgstr "Hibás válasz!"
+
+msgid "Wrong username or password"
+msgstr "Hibás felhasználónév vagy jelszó"
+
+msgid "XeLaTeX source"
+msgstr "XeLaTeX forrás"
+
+msgid "Yes"
+msgstr "Igen"
+
+msgid ""
+"You MUST specify a reason, otherwise the line will have no effect.\n"
+"The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
+"etc.) is irrelevant."
+msgstr ""
+"KÖTELEZŐ ok megadása egyébként a sornak nem lesz hatása.\n"
+"A rendezése a fejléc soroknak (ahol van \"#title\", \"#lang\",\n"
+"stb) nem számítanak."
+
+msgid "You are already logged in"
+msgstr "Már be vagy jelentkezve"
+
+msgid ""
+"You are building a collection. Please provide a title and, optionally, any "
+"other information needed for the front cover (author, subtitle, date) and "
+"the back cover (source and notes)."
+msgstr ""
+"Egy kollekciót készítesz. Add meg a címet és lehetőség szerint bármely "
+" olyan információt ami szükséges a címlaphoz (szerző, alcím, dátum) és"
+" a hátlaphoz (források és jegyzetek)."
+
+msgid "You are logged in now!"
+msgstr "Most be vagy jelentkezve!"
+
+#. (backup)
+msgid ""
+"You can access the backup located at %1 or ask your host for help, "
+"forwarding this email"
+msgstr ""
+"Hozzáférhetsz a backuphoz ami a %1 elérési útvonalon van. "
+"Vagy segítséget kérhetsz a szolgáltatódtól ezen e-mail továbbításával"
+
+msgid ""
+"You can add texts to the bookbuilder clicking on the\n"
+"    “plus” icon near the downloads of each text. You can add and\n"
+"    remove the texts later."
+msgstr ""
+"A könyvkészítőhöz hozzáadhatsz szövegeket a\n"
+" „plus” ikonnal a letöltés mellett, ami minden szöveg mellett ott van.\n"
+" Szövegek hozzáadására és kivételére a későbbiekben lesz lehetőséged."
+
+msgid ""
+"You can also link to a part of the text. Please refer to the manual for this "
+"feature"
+msgstr ""
+"A szöveg egy részére is hivatkozhatsz. Ezek a dokumentációban vannak leírva."
+
+#. (create_url)
+msgid "You can create a peer at %1"
+msgstr "Létrehozhatod itt %1"
+
+msgid "You can do so answering a simple question."
+msgstr "Egy egyszerű kérdés, amivel kezdheted."
+
+msgid "You can tune them editing them here."
+msgstr "Itt tudod finomhangolni ezeket."
+
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
+msgstr ""
+"Lehetőség van bizonyos metaadatban kereszni, pl.: „title:Működőképes anarchia”"
+
+msgid ""
+"You can't create a new revision because the text has not been published yet"
+msgstr ""
+"Nem csiálhatsz egy új verziót mert még nem lett publikálva ez a szöveg"
+
+msgid "You have logged out"
+msgstr "Kijelentkeztél"
+
+msgid "You may want to resume the editing of one of them"
+msgstr "Lehet hogy folytatni akarod a szerkesztését az egyiknek"
+
+msgid ""
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr ""
+"Lehet hogy pl. le akarod vágni a cím elejei „A”, „Az”, „Egy” névelőt"
+
+msgid "You may want to use one of these images"
+msgstr "Ezekt a képeket használhatnád"
+
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
+"A bejelentkezési adatokat nem titkosított kapcsolaton keresztül küldted. Válts HTTPS-re,"
+"és bejelentkezés után változtasd meg a jelszót. Ennek nem szabadott volna megtörténnie."
+
+#. (edit_url)
+msgid "You should change your password right away at %1"
+msgstr "Meg kell változtatni a jelszavad most itt %1"
+
+msgid "Your browser does not support the audio tag."
+msgstr "A böngésző nem támogatja az audio tag-et."
+
+msgid "Your browser does not support the video tag."
+msgstr "A böngésző nem támogatja az video tag-et."
+
+msgid ""
+"Your changes are saved and can be checked every time you hit Preview or Save"
+msgstr ""
+"A változtatásaid el lettek mentve és megtekinthetőek amikor megnyomod az Előnézet vagy Mentés gombot"
+
+msgid "Your chapter here..."
+msgstr "A fejezeted itt…"
+
+msgid "Your current bookbuilder token is:"
+msgstr "A jelenlegi könyv-építő tokened ez:"
+
+msgid "Your email"
+msgstr "E-mail címed"
+
+msgid "Your file is ready"
+msgstr "A fájl kész"
+
+msgid "Your part here..."
+msgstr "A te részed ide…"
+
+#. (password)
+msgid "Your password is %1."
+msgstr "A jelszavad %1"
+
+msgid "Your password was reset, now you can login with it"
+msgstr "A jelszavad vissza lett állítva; most már beléphetsz vele"
+
+msgid "Your section here..."
+msgstr "A te szakaszod ide…"
+
+msgid "Your sub-sub-section (or description heading) here..."
+msgstr "Az al-al szekciód (vagy a leíráscímed) itt…"
+
+msgid "Your subsection here..."
+msgstr "Alszekciód ide…"
+
+#. (home)
+msgid "Your user at %1 has been created."
+msgstr "A %1 nevű felhasználó létre lett hozva."
+
+#. (username)
+msgid "Your username is %1."
+msgstr "A felhasználóneved %1"
+
+msgid "aborted"
+msgstr "elvetve"
+
+msgid "about, links..."
+msgstr "névjegy, hivatkozások…"
+
+msgid "activate to sort column ascending"
+msgstr "rendezd az oszlopot növekvő sorrendbe"
+
+msgid "activate to sort column descending"
+msgstr "rendezd az oszlopot csökkenő sorrendbe"
+
+msgid "active"
+msgstr "aktív"
+
+msgid "affects only the frontend webserver configuration"
+msgstr "csak a frontend webszerver beállításait befolyásolja"
+
+msgid "any"
+msgstr "bármely"
+
+msgid "automatically generated if not present, using author and title"
+msgstr "automatikusan generálva ha nincs kitöltve, szerző és cím használata"
+
+msgid "code and monospace"
+msgstr "programkód és fix szélességű"
+
+msgid "comma separated list"
+msgstr "vesszővel elválasztott lista"
+
+msgid "completed"
+msgstr "kész"
+
+msgid "conflict"
+msgstr "ütközés"
+
+msgid "description"
+msgstr "leírás"
+
+msgid "displayed text"
+msgstr "megjelenített szövegek"
+
+msgid "edit, commit..."
+msgstr "szerkesztés, mentés…"
+
+msgid "editing"
+msgstr "szerkesztés"
+
+msgid "emphasis"
+msgstr "kiemelés"
+
+msgid "failed"
+msgstr "hiba"
+
+msgid "filtered from _MAX_ total entries"
+msgstr "_MAX_ összes bejegyzésből szűrve"
+
+msgid "for code, monospaced"
+msgstr "programkódhoz, fix szélességű"
+
+msgid "for display"
+msgstr "kijelzőhöz"
+
+msgid "for poetry"
+msgstr "versnek"
+
+msgid "generic sectioning, good for articles"
+msgstr "általános szekciózás, jó szócikkekhez"
+
+msgid "if you want to use a custom size, you need to set both width and height"
+msgstr "ha egyedi méretet használnál akkor a szélességet és a magasságot is meg kell adnod"
+
+msgid "image"
+msgstr "kép"
+
+msgid "left"
+msgstr "bal"
+
+msgid "mandatory"
+msgstr "kötelező"
+
+msgid "markup *not* interpreted"
+msgstr "markup *nincs* értelmezve"
+
+#. (site.binary_upload_max_size_in_mega)
+msgid "max %1 Mb"
+msgstr "max %1 Mb"
+
+msgid "minutes"
+msgstr "perc"
+
+msgid "new-example-uri"
+msgstr "uj-pelda-uri"
+
+msgid "only lowercase ASCII and hyphens"
+msgstr "csak kis latin betűk és kötőjel"
+
+msgid "or"
+msgstr "vagy"
+
+msgid "ordered item"
+msgstr "rendezett elemek"
+
+msgid "overstriked"
+msgstr "áthúzott"
+
+msgid "pending"
+msgstr "folyamatban"
+
+msgid "plain PDF"
+msgstr "plain PDF"
+
+msgid "plain text source"
+msgstr "plain text source"
+
+msgid "processing"
+msgstr "feldolgozás alatt"
+
+msgid "published"
+msgstr "közzétéve"
+
+msgid "revision"
+msgstr "állapot"
+
+msgid "right"
+msgstr "jobb"
+
+#. (args)
+msgid "string"
+msgstr "karakterlánc"
+
+msgid "strong emphasis"
+msgstr "erős kiemelés"
+
+msgid "sub-sub-section"
+msgstr "al-al szekció"
+
+msgid "subscript"
+msgstr "alsó index"
+
+msgid "subsection"
+msgstr "alszakasz"
+
+msgid "superscript"
+msgstr "felső index"
+
+msgid "taken"
+msgstr "foglalt"
+
+msgid "texts by authors, title, topic..."
+msgstr "szövegek szerzők, címek, témák szerint"
+
+msgid "texts sorted by author"
+msgstr "szövegek szerző szerint rendezve"
+
+msgid "texts sorted by title"
+msgstr "szövegek cím szerint rendezve"
+
+msgid "the author of the text (as displayed)"
+msgstr "a szöveg szerzője (ahogy megjelenik)"
+
+msgid "this text will be unpublished"
+msgstr "ez a szöveg publikálása vissza lesz állítva"
+
+msgid "topic"
+msgstr "téma"
+
+msgid "unordered item"
+msgstr "rendezetlen elem"
+
+msgid "very strong emphasis"
+msgstr "legerősebb kiemelés"
+
+msgid "with description"
+msgstr "leírással"
+
+msgid "without description"
+msgstr "leírás nélkül"
+
+msgid ""
+"“Stale editing” means that the revision was abandoned\n"
+"    while editing, but it's still there, in case someone wants to pick\n"
+"    it up when editing a text."
+msgstr ""
+"„Elakadt szerkesztés” azt jelenti hogy a verzió el lett hagyva\n"
+" szerkesztés közben. Az adatbázisban benne van, folytatni bármikor lehet."
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "texts sorted by topic"
+
+#~ msgid "RSS"
+#~ msgstr "RSS"
+
+#~ msgid "syndicate"
+#~ msgstr "syndicate"
