@@ -3560,8 +3560,8 @@ msgstr "Μη διατεταγμένη λίστα"
 msgid "Unpublished texts"
 msgstr "Αδημοσίευτα κείμενα"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Μη υποστηριζόμενος τύπος αρχείου %1"
 
@@ -3659,8 +3659,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Ο/Η χρήστης %1 δημιουργήθηκε!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Ο/Η χρήστης %1 διαγράφηκε"
 

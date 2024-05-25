@@ -3371,8 +3371,8 @@ msgstr "Lista e renditur"
 msgid "Unpublished texts"
 msgstr "Tekst i papublikuar"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Tip i dokumentit i pasuportuar %1"
 
@@ -3464,8 +3464,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Shfrytëzuesi %1 u krijua!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Shfrytëzuesi %1 u fshi"
 

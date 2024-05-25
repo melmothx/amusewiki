@@ -3458,8 +3458,8 @@ msgstr "Unordered list"
 msgid "Unpublished texts"
 msgstr "Neeldonitaj tekstoj"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Ne subtenata dosiertipo% 1"
 
@@ -3553,8 +3553,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Uzanto% 1 kreita!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Uzanto% 1 forigita"
 

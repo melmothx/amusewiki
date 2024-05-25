@@ -3259,8 +3259,8 @@ msgstr "无序列表"
 msgid "Unpublished texts"
 msgstr "未发表的文本"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "不支持的文件类型%1"
 
@@ -3350,8 +3350,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "用户%1已创建！"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "用户%1已删除"
 

@@ -3226,8 +3226,8 @@ msgstr "Luettelo"
 msgid "Unpublished texts"
 msgstr "Julkaisemattomat tekstit"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Tiedostotyyppi %1 ei ole tuettu"
 
@@ -3319,8 +3319,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Käyttäjä %1 luotu!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr ""
 

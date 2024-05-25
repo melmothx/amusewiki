@@ -852,7 +852,7 @@ msgstr ""
 msgid "Created by"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:111 root/src/publish/pending.tt:98
+#: lib/AmuseWikiFarm/Controller/Edit.pm:112 root/src/publish/pending.tt:98
 msgid "Created new text"
 msgstr ""
 
@@ -2307,7 +2307,7 @@ msgid "Not a periodical"
 msgstr ""
 
 #. ($c->loc('Save')
-#: lib/AmuseWikiFarm/Controller/Edit.pm:112
+#: lib/AmuseWikiFarm/Controller/Edit.pm:113
 msgid "Not finished yet! Please have a look at the text and then click on \"%1\" to finalize your submission!"
 msgstr ""
 
@@ -2710,7 +2710,7 @@ msgstr ""
 msgid "Please setup the Beamer layout"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:145
+#: lib/AmuseWikiFarm/Controller/Edit.pm:146
 msgid "Please upload your file again!"
 msgstr ""
 
@@ -4012,8 +4012,8 @@ msgstr ""
 msgid "Unpublished texts"
 msgstr ""
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 #: lib/AmuseWikiFarm/Controller/Edit.pm:379 lib/AmuseWikiFarm/Controller/Edit.pm:539 lib/AmuseWikiFarm/Schema/Result/Revision.pm:560
 msgid "Unsupported file type %1"
 msgstr ""
@@ -4128,8 +4128,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr ""
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 #: lib/AmuseWikiFarm/Controller/Admin.pm:305 lib/AmuseWikiFarm/Controller/SiteAdmin.pm:85
 msgid "User %1 deleted"
 msgstr ""

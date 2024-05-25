@@ -3339,8 +3339,8 @@ msgstr "Punkttegns liste"
 msgid "Unpublished texts"
 msgstr "Ikke offentliggjorte tekster"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Ikke understøttet filtype %1"
 
@@ -3433,8 +3433,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Brugeren %1 er blevet skabt!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Brugeren %1 er blevet slettet"
 

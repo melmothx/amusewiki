@@ -3446,8 +3446,8 @@ msgstr "Nečíslovaný seznam"
 msgid "Unpublished texts"
 msgstr "Nepublikované texty"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Nepodporovaný formát souboru %1"
 
@@ -3542,8 +3542,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Uživatelstvo %1 vytvořeno!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Uživatelstvo %1 odstraněno"
 

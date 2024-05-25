@@ -3389,8 +3389,8 @@ msgstr "Маркований список"
 msgid "Unpublished texts"
 msgstr "Неоприлюднені тексти"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Тип файлу %1 не підтримується"
 
@@ -3485,8 +3485,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Користувач_ку %1 створено!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Користувач_ку %1 видалено"
 

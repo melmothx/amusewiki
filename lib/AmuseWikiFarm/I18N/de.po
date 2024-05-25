@@ -3247,8 +3247,8 @@ msgstr "Aufzählung"
 msgid "Unpublished texts"
 msgstr "Unveröffentlichte Texte"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr ""
 
@@ -3340,8 +3340,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "BenutzerIn &1 erstellt!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr ""
 

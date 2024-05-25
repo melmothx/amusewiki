@@ -3236,8 +3236,8 @@ msgstr "順不同リスト"
 msgid "Unpublished texts"
 msgstr "未公開記事"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "サポートされていないファイルタイプ%1"
 
@@ -3332,8 +3332,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "ユーザー%1が作成されました！"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "ユーザ%1は削除されました"
 

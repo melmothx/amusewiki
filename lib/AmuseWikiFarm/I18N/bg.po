@@ -3488,8 +3488,8 @@ msgstr "Неподреден списък"
 msgid "Unpublished texts"
 msgstr "Текстове, дръпнати от публикация"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Неподдържан тип на файла %1"
 
@@ -3586,8 +3586,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Потребител %1 беше създаден!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Потребител %1 беше изтрит"
 

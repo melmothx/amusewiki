@@ -3453,8 +3453,8 @@ msgstr "Sırasız liste"
 msgid "Unpublished texts"
 msgstr "Yayınlanmamış metinler"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Desteklenmeyen dosya tipi %1"
 
@@ -3548,8 +3548,8 @@ msgstr "Kullanıcı"
 msgid "User %1 created!"
 msgstr "%1 kullanıcısı yaratıldı!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "%1 kullanıcısı silindi"
 

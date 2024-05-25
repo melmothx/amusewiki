@@ -3416,8 +3416,8 @@ msgstr "Liste à puces"
 msgid "Unpublished texts"
 msgstr "Textes non publiés"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Type de fichier %1 non pris en charge"
 
@@ -3511,8 +3511,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Utilisateur %1 créé!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Utilisateur %1 supprimé!"
 

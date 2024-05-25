@@ -3539,8 +3539,8 @@ msgstr "Listă neordonată"
 msgid "Unpublished texts"
 msgstr "Texte nepublicate"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Nu este suportat file type-ul %1"
 
@@ -3635,8 +3635,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Utilizator %1 creat!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Utiilizator %1 șters"
 
