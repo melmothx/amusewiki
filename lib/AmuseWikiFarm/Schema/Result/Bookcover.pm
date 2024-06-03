@@ -349,29 +349,43 @@ sub create_working_dir {
 % document class populated by us
 \begin{document}
 \begin{bookcover}
-\bookcovercomponent{normal}{front}[0.1\partheight,0.1\partheight,0.1\partheight,0.1\partheight]{
-\centering
+\bookcovercomponent{normal}{front}[0.1\partwidth,0.1\partheight,0.1\partwidth,0.1\partheight]{
+  \begin{minipage}{\partwidth}
+  \begin{center}
 [% IF author_muse_str %]
-{\bfseries\itshape\LARGE [% author_muse_str %]\par}
-\vskip 0.1\partheight
+{\bfseries\itshape\LARGE [% author_muse_str %]\par\bigskip}
 [% END %]
-{\bfseries\Huge [% title_muse_str %]\par}
+{\bfseries\Huge [% title_muse_str %]\par\bigskip}
+[% IF subtitle_muse_str %]
+{\bfseries\LARGE [% subtitle_muse_str %]\par\bigskip}
+[% END %]
+  \end{center}
+  \end{minipage}
 [% IF image_file %]
-\vskip 0.1\partheight
-\includegraphics[width=0.6\partwidth]{[% image_file %]}
+\vfill
+\begin{center}
+\includegraphics[% IF image_width_in_mm_int %][width=[% image_width_in_mm_int %]mm][% ELSE %][width=\partwidth][% END %]{[% image_file %]}
+\end{center}
+[% END %]
+[% IF front_footer_muse_str %]
+\vfill
+\begin{center}
+{\bfseries\large [% front_footer_muse_str %]}
+\end{center}
 [% END %]
 }
+
 \bookcovercomponent{center}{spine}{
   \rotatebox[origin=c]{-90}{\bfseries [% IF author_muse_str %]\emph{[% author_muse_str %]}\quad\quad[% END %]
-  [% title_muse %]}
+  [% title_muse_str %]}
 }
-\bookcovercomponent{normal}{back}[0.1\partheight,0.1\partheight,0.1\partheight,0.1\partheight]{[% back_text_muse_body %]}
+\bookcovercomponent{normal}{back}[0.1\partwidth,0.1\partheight,0.1\partwidth,0.1\partheight]{[% back_text_muse_body %]}
 [% IF isbn_isbn %]
-\bookcovercomponent{normal}{back}[0.1\partheight,0.1\partheight,0.1\partheight,0.1\partheight]{
+\bookcovercomponent{normal}{back}[,0.1\partheight,0.1\partwidth,0.1\partheight]{
 \strut
 \vfill
 \begin{flushright}
-\includegraphics[width=0.3\partwidth]{[% isbn_isbn %]}
+\includegraphics[height=3cm]{[% isbn_isbn %]}
 \end{flushright}
 }
 [% END %]
