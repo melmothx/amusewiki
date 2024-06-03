@@ -349,7 +349,7 @@ sub create_working_dir {
 % document class populated by us
 \begin{document}
 \begin{bookcover}
-\bookcovercomponent{normal}{front}[0.1\partwidth,0.1\partheight,0.1\partwidth,0.1\partheight]{
+\bookcovercomponent{normal}{front}[15mm,15mm,15mm,15mm]{
   \begin{minipage}{\partwidth}
   \begin{center}
 [% IF author_muse_str %]
@@ -379,9 +379,13 @@ sub create_working_dir {
   \rotatebox[origin=c]{-90}{\bfseries [% IF author_muse_str %]\emph{[% author_muse_str %]}\quad\quad[% END %]
   [% title_muse_str %]}
 }
-\bookcovercomponent{normal}{back}[0.1\partwidth,0.1\partheight,0.1\partwidth,0.1\partheight]{[% back_text_muse_body %]}
+\bookcovercomponent{normal}{back}[15mm,15mm,15mm,15mm]{
+  \begin{center}
+  \begin{minipage}{\partwidth}
+[% back_text_muse_body %]
+\end{minipage}
+\end{center}
 [% IF isbn_isbn %]
-\bookcovercomponent{normal}{back}[,0.1\partheight,0.1\partwidth,0.1\partheight]{
 \strut
 \vfill
 \begin{flushright}
