@@ -20,7 +20,7 @@
         <input type="radio" name="format" id="epub-format"
                class="format-radio"
                value="epub"  [% IF bb.epub %]checked="checked"[% END %]>
-        [% loc('EPUB') %]
+        [% loc('EPUB + HTML') %]
       </label>
     </div>
   </div>
@@ -114,6 +114,11 @@
                [% IF bb.epub_embed_fonts %]checked="checked"[% END %] />
         [% loc('Embed fonts in the EPUB file') %]
       </label>
+    </div>
+    <div class="epub-option" style="margin-top: 10px">
+      <p>
+        [% loc('HTML: once the file is ready, a download with the sources is offered. The ZIP contains the HTML with the same numeric filename as the EPUB, also included.') %]
+      </p>
     </div>
     <div class="form-group slides-option">
       <div class="row">

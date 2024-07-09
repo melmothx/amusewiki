@@ -312,6 +312,7 @@ sub as_hashref {
         if (my $bb = $self->bookbuilder) {
             $data->{message} = 'Your file is ready';
             $data->{sources} = '/custom/' .$bb->sources_filename;
+            $data->{is_epub} = $bb->epub;
         }
         elsif ($data->{task} eq 'publish') {
             $data->{message} = 'Changes applied';

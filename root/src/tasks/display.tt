@@ -22,9 +22,15 @@
   [% IF job.sources %]
   <div class="center">
     <a href="[% job.sources %]">
+      [% IF job.is_epub %]
+      <strong>
+        [% loc('Source files with HTML') %]
+      </strong>
+      [% ELSE %]
       <strong>
         [% loc('Source files') %]
       </strong>
+      [% END %]
     </a>
   </div>
   [% END %]
@@ -49,9 +55,15 @@
   [% IF job.sources %]
   <div class="center">
     <a href="[% job.sources %]">
+      [% IF job.is_epub %]
+      <strong>
+        [% loc('Source files with HTML') %]
+      </strong>
+      [% ELSE %]
       <strong>
         [% loc('Source files') %]
       </strong>
+      [% END %]
     </a>
   </div>
   [% END %]
@@ -79,7 +91,8 @@
   </div>
   <div class="center">
     <strong>
-      <a class="sources" style="display:none">[% loc('Sources') %]</a>
+      <a class="sources" style="display:none">[% loc('Source files') %]</a>
+      <a class="sources-html" style="display:none">[% loc('Source files with HTML') %]</a>
     </strong>
   </div>
 </div>
@@ -95,11 +108,12 @@
 </div>
   <div class="center">
     <strong>
-      <a class="sources" style="display:none">[% loc('Sources') %]</a>
+      <a class="sources" style="display:none">[% loc('Source files') %]</a>
+      <a class="sources-html" style="display:none">[% loc('Source files with HTML') %]</a>
     </strong>
   </div>
 
-<script src="[% c.uri_for('/static/js/queue.js', { v => 2 }) %]"></script>
+<script src="[% c.uri_for('/static/js/queue.js', { v => 3 }) %]"></script>
 <script type="text/javascript">
   $(document).ready(function() {
     update_status('[% c.uri_for_action('/tasks/ajax', [job.id]) %]');

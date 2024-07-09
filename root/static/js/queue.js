@@ -42,9 +42,15 @@ function update_status(url, reloaded, offset) {
             $('a.completed').text(data.message);
             $('a.completed').attr('href', data.produced_uri);
             $('.completed').show();
-            if (data.sources ) {
-                $('a.sources').attr('href', data.sources);
-                $('a.sources').show();
+            if (data.sources) {
+                if (data.is_epub) {
+                    $('a.sources-html').attr('href', data.sources);
+                    $('a.sources-html').show();
+                }
+                else {
+                    $('a.sources').attr('href', data.sources);
+                    $('a.sources').show();
+                }
             }
             if ($('#job-logs').data('express-publishing')) {
                 console.log("Redirecting to " + data.produced_uri);

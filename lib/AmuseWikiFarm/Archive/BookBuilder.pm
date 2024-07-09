@@ -1937,6 +1937,7 @@ sub compiler_options {
                          sl_tex => $self->slides,
                          sl_pdf => $self->slides,
                          epub => $self->epub,
+                         html => $self->epub,
                          epub_embed_fonts => $self->epub_embed_fonts,
                          coverpage_only_if_toc => $self->coverpage_only_if_toc,
                         );
