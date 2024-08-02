@@ -39,16 +39,14 @@ sub resultset :Chained('bookcovers') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my $rs;
     if ($c->user_exists) {
-        if ($c->check_user_roles('root')) {
-            # any
-            $rs = $c->model('DB::Bookcover');
-        }
-        elsif ($c->check_user_roles('admin')) {
+        if ($c->check_any_user_role(qw/admin root/)) {
             # site's covers
+            log_debug { "Pulling all site book covers" };
             $rs = $c->stash->{site}->bookcovers;
         }
         else {
             # user's covers
+            log_debug { "Pulling all users book covers" };
             $rs = $c->user->get_object->bookcovers;
         }
     }
