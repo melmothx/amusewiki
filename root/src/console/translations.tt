@@ -16,7 +16,12 @@
     <tr>
       <td>
         [% IF item.uid %]
-        <code>[% item.uid %]</code>
+          <code>[% item.uid | html %]</code>
+          <br>
+          <form method="POST" action="[% c.uri_for_action('/edit/newtext', ['text']) %]">
+            <input type="hidden" name="uid" value="[% item.uid | html %]">
+            <button class="btn btn-sm btn-default" type="submit">[% loc('New translation') %]</button>
+          </form>
         [% ELSE %]
         <strong>[% loc('These texts are missing the unique id.') %]</strong>
         [% END %]
@@ -28,6 +33,8 @@
             <a href="[% c.uri_for(text.full_uri) %]">
               [% text.title %]
             </a>
+
+            [[% text.lang | html %]]
             |
             <a href="[% c.uri_for(text.full_edit_uri) %]">
               [% loc('Edit') %]

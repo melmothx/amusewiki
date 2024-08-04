@@ -3837,7 +3837,7 @@ sub translations_list {
     # get all the texts
     my $rs = $self->titles->search({ f_class => 'text' },
                                    {
-                                    columns => [qw/uid title uri f_class/],
+                                    columns => [qw/uid author title uri f_class lang/],
                                     order_by => [qw/list_title/],
                                    });
     my %all;
@@ -3846,7 +3846,8 @@ sub translations_list {
         $all{$uid} ||= [];
         push @{$all{$uid}}, {
                              full_uri => $text->full_uri,
-                             title => $text->uri,
+                             title => $text->author_title,
+                             lang => $text->lang,
                              full_edit_uri => $text->full_edit_uri,
                             };
     }

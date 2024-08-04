@@ -289,8 +289,15 @@ sub translations :Chained('root') :PathPart('translations') :Args(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
     if ($site->multilanguage) {
+        my @translations = @{ $site->translations_list };
+        foreach my $tr (@translations) {
+            if ($tr->{uid}) {
+                $tr->{create_url} = $c->uri_for_action('/edit/newtext', [ 'text' ], { uid => $tr->{uid} });
+            }
+
+        }
         $c->stash(
-                  translations => $site->translations_list,
+                  translations => \@translations,
                   page_title => $c->loc('Internal list of translations'),
                  );
     }

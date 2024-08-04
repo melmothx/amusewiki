@@ -170,7 +170,7 @@
   <div id="create-block-uid" class="form-group">
     <label for="text-uid">[% loc('Unique ID for the text') %]</label>
     <input class="form-control" name="uid" id="text-uid" type="text"
-           value="[% processed_params.uid | html %]" />
+           value="[% c.req.params.uid | html %]" />
   </div>
   [% END %]
 
