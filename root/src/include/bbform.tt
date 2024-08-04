@@ -27,14 +27,15 @@
   <div class="form-group">
     <div class="row">
       <div class="col-sm-3">
-        <a target="_blank" href="[% c.uri_for_action('/bookbuilder/fonts') %]">
-          <strong>[% loc('Please select the desired fonts') %]</strong>
-        </a>
+        <strong>[% loc('Please select the desired fonts') %]</strong>
       </div>
       <div class="col-sm-9">
         <p class="pdf-option">
           [% loc('Keep in mind that some character may be missing in the required font.') %]
           [% loc('Missing character will be reported') %].
+          <a target="_blank" href="[% c.uri_for_action('/bookbuilder/fonts') %]">
+            <strong>[% loc('Font preview') %]
+          </a>
         </p>
       </div>
     </div>
