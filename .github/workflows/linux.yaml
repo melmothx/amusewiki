@@ -10,7 +10,6 @@ env:
   # test_runner: prove, make-test, matrix 
   test_runner: matrix
   
-  OREPAN_VERSION: 0.08
   # DBIC_TRACE: 4
   # DBIC_TRACE_PROFILE: console_monochrome
   
@@ -77,12 +76,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - uses: actions/cache/restore@v3
-        id: restore-dists
-        with:
-          path: ~/dists/
-          key: ${{ runner.os }}-build-${{ matrix.perl-version }}-${{ hashFiles('cpanfile.snapshot') }}
-          
       - uses: actions/cache/restore@v3
         id: restore-local
         with:
@@ -165,7 +158,6 @@ jobs:
 #
 # We get carton from dpkg in a later step because we have a self-test that looks for carton in $PATH
   depends:
-    needs: orepan
     runs-on: ubuntu-latest
     env:
       DEBIAN_FRONTEND: noninteractive
@@ -180,21 +172,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Cache dists
-        uses: actions/cache@v3
-        with:
-          path: ~/dists/
-          key: ${{ runner.os }}-build-${{ matrix.perl-version }}-${{ hashFiles('cpanfile.snapshot') }}
-          restore-keys: ${{ runner.os }}-build-${{ matrix.perl-version }}-${{ hashFiles('cpanfile.snapshot') }}
-
-      - name: Cache local
-        uses: actions/cache@v3
-        id: local-cache
-        with:
-          path: local/
-          key: ${{ runner.os }}-local-${{ matrix.perl-version }}-${{ hashFiles('cpanfile.snapshot') }}
-          restore-keys: ${{ runner.os }}-local-${{ matrix.perl-version }}-${{ hashFiles('cpanfile.snapshot') }}
-          
       # need these for the cpanm install to work: 
       - name: apt-get install 
         if: steps.local-cache.outputs.cache-hit != 'true'
@@ -204,43 +181,7 @@ jobs:
         if: steps.local-cache.outputs.cache-hit != 'true'
 #       run: cpanm -L extlib/ Carton; env PERL5LIB=`pwd`/extlib/lib/perl5/:$PERL5LIB extlib/bin/carton install --verbose --deployment
         run: |
-          cpanm --notest $VERBOSE --save-dists $HOME/dists/ --mirror file://$HOME/dists/ --mirror $CPAN_MIRROR -L local/ --installdeps . ;
-          cpanm --notest $VERBOSE --save-dists $HOME/dists/ --mirror file://$HOME/dists/ --mirror $CPAN_MIRROR -L local/ inc::Module::Install@1.02  Module::Install::Catalyst;
+          cpanm --notest $VERBOSE -L local/ --installdeps . ;
+          cpanm --notest $VERBOSE -L local/ inc::Module::Install@1.02  Module::Install::Catalyst;
 
-      - uses: actions/cache/restore@v3
-        id: restore-orepan
-        if: steps.local-cache.outputs.cache-hit != 'true'
-        with:
-          path: ~/orepan
-          key: ${{ runner.os }}-orepan-${{ matrix.perl-version }}-${{ env.OREPAN_VERSION }}
-          
-      - name: re-index dists with OrePAN
-        if: steps.local-cache.outputs.cache-hit != 'true'
-        run: perl -I$HOME/orepan/lib/perl5 $HOME/orepan/bin/orepan_index.pl -r $HOME/dists/
    
-#=
-#
-# First we install a cpan indexer, so we can re-use the downloaded dists for installing dependencies
-  orepan:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        perl-version:
-          - '5.36'
-           
-    container:
-      image: perl:${{ matrix.perl-version }}
-
-    steps:
-      - name: Cache orepan
-        uses: actions/cache@v3
-        id: orepan-cache
-        with:
-          path: ~/orepan
-          key: ${{ runner.os }}-orepan-${{ matrix.perl-version }}-${{ env.OREPAN_VERSION }}
-          restore-keys: ${{ runner.os }}-orepan-${{ matrix.perl-version }}-${{ env.OREPAN_VERSION }}
-
-      - name: setup OrePAN
-        if: steps.orepan-cache.outputs.cache-hit != 'true'
-        run: mkdir -p $HOME/orepan/ $HOME/dists/authors $HOME/dists/modules; cpanm --save-dists $HOME/dists/  --mirror file://$HOME/dists --mirror $CPAN_MIRROR $VERBOSE --notest -L $HOME/orepan OrePAN@$OREPAN_VERSION; 
-    
