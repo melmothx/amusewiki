@@ -53,7 +53,7 @@ jobs:
 # I've included 3 of them because I couldn't decide which is the best choice.
 # (and maybe it would make a nice matrix axis to test both types of release work right)
   test:
-    needs: [ depends, testlist ]
+    needs: [ testlist ]
     runs-on: ubuntu-latest
 
     strategy:
@@ -76,12 +76,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - uses: actions/cache/restore@v3
-        id: restore-local
-        with:
-          path: local/
-          key: ${{ runner.os }}-local-${{ matrix.perl-version }}-${{ hashFiles('cpanfile.snapshot') }}
-          
 # This should use a debian tool to install the things from debian/control's Build-Depends-Indep section 
 # instead of relying on me copy/pasting them into here like a caveperson 
 # libtext-amuse-compile-perl depends on a bunch of fonts, but I hard-coded them here
@@ -99,6 +93,13 @@ jobs:
           openssl libssl-dev \
           carton git fontconfig cgit rsync \
           devscripts dput lintian sudo \
+
+      - name: install Perl deps with cpanm
+        run: |
+          cpanm --notest $VERBOSE -L local/ --installdeps . ;
+          cpanm --notest $VERBOSE -L local/ inc::Module::Install@1.02  Module::Install::Catalyst;
+           
+      
 
 # I think this might be causing the failre I see in t/cgit-integration.t, but it's not clear:
       - name: git config
@@ -150,38 +151,3 @@ jobs:
     #    run:  make dist
 
 
-#=
-#
-# We use cpanm to install the dependencies into local/ (it's already in the perl image)
-# This usess the cached dists from last time, if there are any.
-# We then cache the local/, so we don't have to do the install again next time.
-#
-# We get carton from dpkg in a later step because we have a self-test that looks for carton in $PATH
-  depends:
-    runs-on: ubuntu-latest
-    env:
-      DEBIAN_FRONTEND: noninteractive
-    strategy:
-      matrix:
-        perl-version:
-          - '5.36'
-          
-    container:
-      image: perl:${{ matrix.perl-version }}
-
-    steps:
-      - uses: actions/checkout@v3
-      
-      # need these for the cpanm install to work: 
-      - name: apt-get install 
-        if: steps.local-cache.outputs.cache-hit != 'true'
-        run: apt-get update && apt-get install -y libxapian-dev texlive-xetex 
-        
-      - name: Install Dependencies
-        if: steps.local-cache.outputs.cache-hit != 'true'
-#       run: cpanm -L extlib/ Carton; env PERL5LIB=`pwd`/extlib/lib/perl5/:$PERL5LIB extlib/bin/carton install --verbose --deployment
-        run: |
-          cpanm --notest $VERBOSE -L local/ --installdeps . ;
-          cpanm --notest $VERBOSE -L local/ inc::Module::Install@1.02  Module::Install::Catalyst;
-
-   
