@@ -34,7 +34,7 @@
           [% loc('Keep in mind that some character may be missing in the required font.') %]
           [% loc('Missing character will be reported') %].
           <a target="_blank" href="[% c.uri_for_action('/bookbuilder/fonts') %]">
-            <strong>[% loc('Font preview') %]
+            <strong>[% loc('Font preview') %]</strong>
           </a>
         </p>
       </div>
