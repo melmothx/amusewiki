@@ -391,8 +391,8 @@ sub create_working_dir {
 \begin{flushright}
 \includegraphics[height=3cm]{[% isbn_isbn %]}
 \end{flushright}
-}
 [% END %]
+}
 \end{bookcover}
 \end{document}
 LATEX

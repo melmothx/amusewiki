@@ -68,20 +68,26 @@ ok $anon_bc;
     is_deeply $tokens, [
                         { name => 'author', type => 'muse_str', full_name => 'author_muse_str' },
                         { name => 'title',  type => 'muse_str', full_name => 'title_muse_str' },
+                        { name => 'subtitle',  type => 'muse_str', full_name => 'subtitle_muse_str' },
                         { name => 'image', type => 'file', full_name => 'image_file' },
+                        { name => 'image_width_in_mm', type => 'int', full_name => 'image_width_in_mm_int' },
+                        { name => "front_footer", type => "muse_str", full_name => "front_footer_muse_str" },
                         { name => 'back_text', type => 'muse_body', full_name => 'back_text_muse_body' },
                         { name => 'isbn', type => 'isbn', full_name => 'isbn_isbn' }
-                       ];
+                       ] or die Dumper($tokens);
     path("t/files/shot.png")->copy($anon_bc->working_dir->child("f1.png"));
     $anon_bc->populate_tokens;
     $anon_bc->populate_tokens;
-    is $anon_bc->bookcover_tokens->count, 5;
+    is $anon_bc->bookcover_tokens->count, 8;
     $anon_bc->update_from_params({
                                   title_muse_str => "Title *title*",
                                   author_muse_str => "Author *author*",
                                   spinewidth => 'asdf',
                                   back_text_muse_body => "This\n\nIs\n\nThe *back*",
                                   image_file => "f1.png",
+                                  image_width_in_mm_int => 10,
+                                  front_footer_muse_str  => "Test",
+                                  subtitle_muse_str => "test",
                                  });
     ok $anon_bc->font_name, "Font name set";
     diag $anon_bc->font_name;
@@ -110,7 +116,7 @@ ok $anon_bc;
     like $tex_body, qr(\\usepackage.*italian.*\{babel\});
     like $tex_body, qr{texgyrepagella};
     like $tex_body, qr{includegraphics};
-    diag $tex_body;
+    diag "$outfile";
     my $res = $anon_bc->produce_pdf(sub { diag @_ });
     ok $res->{success} or die $res->{stdout};
     # diag Dumper($res);
@@ -251,9 +257,10 @@ my $tuser = $site->update_or_create_user({
         diag $1;
         push @found, $2;
     }
-    is scalar(@found), $schema->resultset('Bookcover')->count, "Found all covers: " . join(' ', @found);
-    ok scalar(grep { $_ == $otherbc->bookcover_id } @found), "Found the bc from other site";
-    $mech->get_ok('/bookcovers/bc/' . $otherbc->bookcover_id . '/edit');
+    is scalar(@found), $site->bookcovers->count, "Found only sites: " . join(' ', @found);
+    ok !scalar(grep { $_ == $otherbc->bookcover_id } @found), "bc from other site not found";
+    $mech->get('/bookcovers/bc/' . $otherbc->bookcover_id . '/edit');
+    is $mech->status, 404;
     $mech->get_ok('/logout');
 
     $mech->get('/bookcovers/bc/' . $otherbc->bookcover_id . '/edit');
