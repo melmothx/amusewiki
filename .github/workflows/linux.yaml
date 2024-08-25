@@ -98,6 +98,7 @@ jobs:
           apt-get update && apt-get install -y \
           fonts-dejavu-extra fonts-dejavu-core fonts-linuxlibertine fonts-cmu fonts-texgyre fonts-cmu fonts-texgyre texlive-fonts-extra \
           texlive-lang-european texlive-lang-italian \
+          texlive-latex-extra \
           libxapian-dev texlive-xetex \
           graphicsmagick ghostscript imagemagick \
           xapian-tools libxapian-dev \
