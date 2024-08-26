@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.600 2024-08-26
+
+ - Improve bookcover stock template
+ - When generating and EPUB in the bookbuild, also produce HTML
+ - i18n: tr (updated, thanks to @rojenzaman)
+
 2.599 2024-05-25
 
  - Add hungarian (hu) i18n. Thanks to @zsolt-beringer
