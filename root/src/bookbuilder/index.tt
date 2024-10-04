@@ -405,6 +405,8 @@
   <p>
     [% loc('Your current bookbuilder token is:') %]
     <strong><code><span class="bb-token-id">[% bb.token %]</span></code></strong>
+    (<a href="[% c.uri_for_action('bookbuilder/start_new_session') %]"
+     >[% loc('Click here to start a new bookbuilder session') %] <i class="fa fa-trash"></i></a>)
   </p>
   <p>
     [% loc('Using this token, you can load the bookbuilder settings

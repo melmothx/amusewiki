@@ -29,6 +29,14 @@ Deny access to not-human
 
 =cut
 
+sub start_new_session :Chained('/site_human_required') :PathPart('bookbuild-new-session') :Args(0) {
+    my ($self, $c) = @_;
+    delete $c->session->{bookbuilder};
+    delete $c->session->{bookbuilder_token};
+    $c->flash->{status_msg} = $c->loc('Started new bookbuilder session');
+    $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
+}
+
 sub root :Chained('/site_human_required') :PathPart('bookbuilder') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
 
