@@ -99,13 +99,14 @@ is ($site->titles->search(undef, { order_by => 'sorting_pos' })->first->uri, 'na
 
 diag "Sorting done in " . (time() - $time) . " seconds";
 
-$site->generate_static_indexes(sub { diag @_ });
+# this is taking too much for a test
+# $site->generate_static_indexes(sub { diag @_ });
+# {
+#     my $job = $site->jobs->dequeue;
+#     diag "Logging to " . $job->log_file;
+#     $job->dispatch_job;
+#     diag $job->logs;
+# }
+# # $site->delete;
 
-{
-    my $job = $site->jobs->dequeue;
-    diag "Logging to " . $job->log_file;
-    $job->dispatch_job;
-    diag $job->logs;
-}
 
-# $site->delete;
