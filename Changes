@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.601 2024-10-04
+
+ - Add new options for federated sites acting as a pure mirror (remove
+   local and vanished files from upstream)
+
 2.600 2024-08-26
 
  - Improve bookcover stock template
