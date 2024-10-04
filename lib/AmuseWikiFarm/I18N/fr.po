@@ -863,6 +863,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (pour appareils mobiles)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr "Temps restant estimé"
 
@@ -1254,6 +1257,9 @@ msgstr "Titres"
 
 msgid "Height:"
 msgstr "Hauteur :"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr ""
@@ -1909,6 +1915,9 @@ msgstr "Nouvelle révision"
 
 msgid "New site id"
 msgstr "Nouvel ID de site"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr "Nouveaux d'abord"
@@ -2849,6 +2858,9 @@ msgstr "Source"
 msgid "Source files"
 msgstr "Fichiers source"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Fichiers source avec pièces jointes"
 
@@ -2857,9 +2869,6 @@ msgstr ""
 
 msgid "Source, notes..."
 msgstr "Source, notes..."
-
-msgid "Sources"
-msgstr "Sources"
 
 msgid "Special blocks"
 msgstr "Blocs spéciaux"
@@ -3072,6 +3081,11 @@ msgid "The revision has the following messages"
 msgstr "La révision a les messages suivants"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr "Le site affichera les PDFs avec une vignette à la fin du document."
@@ -3195,6 +3209,10 @@ msgid "This section will not produce a slide"
 msgstr "Cette section ne produira pas de diapositive"
 
 msgid "This setting affects only the text creation form."
+msgstr ""
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
 msgstr ""
 
 msgid ""
@@ -4002,6 +4020,9 @@ msgstr ""
 "\"Modification périmée\" signifie que la révision a été abandonnée en cours "
 "d'édition, mais qu'elle est toujours là, au cas où quelqu'un·e souhaiterait "
 "la récupérer lors d'une modification du texte."
+
+#~ msgid "Sources"
+#~ msgstr "Sources"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "Un tel URI existe déjà"

@@ -873,6 +873,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (pro mobilní zařízení)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr "ETA"
 
@@ -1260,6 +1263,9 @@ msgstr "Nadpisy"
 
 msgid "Height:"
 msgstr "Výška:"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr ""
@@ -1940,6 +1946,9 @@ msgstr "Nová revize"
 
 msgid "New site id"
 msgstr "Nové id stránky"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr "Novější dříve"
@@ -2884,6 +2893,9 @@ msgstr "Zdroj"
 msgid "Source files"
 msgstr "Zdrojové soubory"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Zdrojové soubory s přílohami"
 
@@ -2892,9 +2904,6 @@ msgstr "Zdroj odebrán"
 
 msgid "Source, notes..."
 msgstr "Zdroj, poznámky..."
-
-msgid "Sources"
-msgstr "Zdroje"
 
 msgid "Special blocks"
 msgstr "Speciální bloky"
@@ -3103,6 +3112,11 @@ msgid "The revision has the following messages"
 msgstr "Revize má následující zprávy"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
@@ -3230,6 +3244,10 @@ msgstr "Tato sekce nevyprodukuje slajd"
 
 msgid "This setting affects only the text creation form."
 msgstr "Toto nastavení má vliv pouze na formulář k vytvoření textu."
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
+msgstr ""
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
@@ -4033,6 +4051,9 @@ msgstr ""
 "„Zastaralé úpravy“ znamená, že revize byla opuštěna\n"
 "    během editace, ale stále tu je, kdyby v ní náhodou\n"
 "    někdo chtěl pokračovat při úpravách textu."
+
+#~ msgid "Sources"
+#~ msgstr "Zdroje"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "Takové URI již existuje"

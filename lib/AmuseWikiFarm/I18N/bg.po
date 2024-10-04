@@ -882,6 +882,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (за мобилни устройства)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr "ETA"
 
@@ -1274,6 +1277,9 @@ msgstr "Заглавни части"
 
 msgid "Height:"
 msgstr "Височина:"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr ""
@@ -1969,6 +1975,9 @@ msgstr "Нова ревизия"
 
 msgid "New site id"
 msgstr "Ново id на сайта"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr "По-новите първо"
@@ -2923,6 +2932,9 @@ msgstr "Източник"
 msgid "Source files"
 msgstr "Изходни файлове"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Изходни файлове с прикачени файлове"
 
@@ -2931,9 +2943,6 @@ msgstr ""
 
 msgid "Source, notes..."
 msgstr "Източници, бележки..."
-
-msgid "Sources"
-msgstr "Източници"
 
 msgid "Special blocks"
 msgstr "Специални блокове"
@@ -3150,6 +3159,11 @@ msgid "The revision has the following messages"
 msgstr "Ревизията съдържа следните съобщения"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
@@ -3274,6 +3288,10 @@ msgid "This section will not produce a slide"
 msgstr "Този раздел няма да създаде слайд"
 
 msgid "This setting affects only the text creation form."
+msgstr ""
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
 msgstr ""
 
 msgid ""
@@ -4088,6 +4106,9 @@ msgstr ""
 "    докато текстът е бил редактиран, но тя все още присъства в случай, че "
 "някой\n"
 "    иска да започне от там нататък."
+
+#~ msgid "Sources"
+#~ msgstr "Източници"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "Такъв URI вече съществува"

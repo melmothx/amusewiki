@@ -892,6 +892,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (gailu mugikorrentzat)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr "Iristeke"
 
@@ -1289,6 +1292,9 @@ msgstr "Goiburuak"
 
 msgid "Height:"
 msgstr "Altuera:"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr "Laguntza-testua"
@@ -1981,6 +1987,9 @@ msgstr "Berrikuspen berria"
 
 msgid "New site id"
 msgstr "Gunearen ID berria"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr "Berrienak lehenik"
@@ -2927,6 +2936,9 @@ msgstr "Iturburua"
 msgid "Source files"
 msgstr "Iturburu-fitxategiak"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Eranskinak dituzten iturburu-fitxategiak"
 
@@ -2935,9 +2947,6 @@ msgstr "Iturburua kendu da"
 
 msgid "Source, notes..."
 msgstr "Iturburua, oharrak..."
-
-msgid "Sources"
-msgstr "Iturburuak"
 
 msgid "Special blocks"
 msgstr "Bloke bereziak"
@@ -3153,6 +3162,11 @@ msgid "The revision has the following messages"
 msgstr "Berrikuspenak honako mezu hauek ditu"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
@@ -3286,6 +3300,10 @@ msgstr "Sekzio honek ez du sortuko diapositibarik"
 
 msgid "This setting affects only the text creation form."
 msgstr "Ezarpen honek soilik testua sortzeko inprimakiari eragiten dio."
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
+msgstr ""
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
@@ -4096,6 +4114,9 @@ msgstr ""
 "“Edizio zaharkitua” hitzak esan nahi du berrikuspena\n"
 "    editatu bitartean bertan behera utzi dela, nahiz eta oraindik\n"
 "    badagoen, norbaitek har dezake testua editatzen den bitartean."
+
+#~ msgid "Sources"
+#~ msgstr "Iturburuak"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "texts sorted by topic"

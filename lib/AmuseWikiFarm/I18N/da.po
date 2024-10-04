@@ -852,6 +852,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (til mobiler)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr ""
 
@@ -1237,6 +1240,9 @@ msgstr "Overskrifter"
 
 msgid "Height:"
 msgstr "Højde:"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr ""
@@ -1880,6 +1886,9 @@ msgstr "Ny revision"
 
 msgid "New site id"
 msgstr "Ny side ID"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr ""
@@ -2813,6 +2822,9 @@ msgstr "Kilde"
 msgid "Source files"
 msgstr "Kilde filer"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Kilde filer med vedhæftede filer"
 
@@ -2821,9 +2833,6 @@ msgstr ""
 
 msgid "Source, notes..."
 msgstr "Kilde, notater..."
-
-msgid "Sources"
-msgstr "Kilder"
 
 msgid "Special blocks"
 msgstr "Specielle blokke"
@@ -3020,6 +3029,11 @@ msgid "The revision has the following messages"
 msgstr "Revisionen har følgende beskeder"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
@@ -3135,6 +3149,10 @@ msgid "This section will not produce a slide"
 msgstr ""
 
 msgid "This setting affects only the text creation form."
+msgstr ""
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
 msgstr ""
 
 msgid ""
@@ -3915,6 +3933,9 @@ msgstr ""
 "    under redigeringen, men den er stadig der, hvis nogen skulle få lyst "
 "til\n"
 "    at samle den op under redigeringen af en tekst."
+
+#~ msgid "Sources"
+#~ msgstr "Kilder"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "En sådan URI eksisterer allerede"

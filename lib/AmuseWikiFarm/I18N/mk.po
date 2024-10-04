@@ -862,6 +862,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (за мобилни уреди)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr "Предвидено време на завршување"
 
@@ -1246,6 +1249,9 @@ msgstr "Заглавија"
 
 msgid "Height:"
 msgstr "Висина"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr ""
@@ -1921,6 +1927,9 @@ msgstr "Нова измена"
 
 msgid "New site id"
 msgstr "Нов id на сајтот"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr "Најновите први"
@@ -2865,6 +2874,9 @@ msgstr "Извор"
 msgid "Source files"
 msgstr "Изворни датотеки"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Изворни датотеки со прилози"
 
@@ -2873,9 +2885,6 @@ msgstr ""
 
 msgid "Source, notes..."
 msgstr "Извори, забелешки..."
-
-msgid "Sources"
-msgstr "Извори"
 
 msgid "Special blocks"
 msgstr "Посебни делови"
@@ -3087,6 +3096,11 @@ msgid "The revision has the following messages"
 msgstr "Измената ги содржи следните пораки"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr "PDF со минијатура ќе се прикаже на крајот од текстот"
@@ -3206,6 +3220,10 @@ msgid "This section will not produce a slide"
 msgstr "Овој оддел нема да создаде слајд"
 
 msgid "This setting affects only the text creation form."
+msgstr ""
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
 msgstr ""
 
 msgid ""
@@ -4004,6 +4022,9 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Sources"
+#~ msgstr "Извори"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "Такво URI веќе постои"

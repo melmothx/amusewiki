@@ -863,6 +863,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (para dispositivos móviles)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr ""
 
@@ -1257,6 +1260,9 @@ msgstr "Títulos"
 
 msgid "Height:"
 msgstr "Alto:"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr ""
@@ -1907,6 +1913,9 @@ msgstr "Nueva revisión"
 
 msgid "New site id"
 msgstr "Nuevo id de sitio"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr ""
@@ -2845,6 +2854,9 @@ msgstr "Fuente"
 msgid "Source files"
 msgstr "Archivos fuente"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Archivos fuentes con adjuntos"
 
@@ -2853,9 +2865,6 @@ msgstr ""
 
 msgid "Source, notes..."
 msgstr "Fuente, notas..."
-
-msgid "Sources"
-msgstr "Fuentes"
 
 msgid "Special blocks"
 msgstr "Bloques especiales"
@@ -3067,6 +3076,11 @@ msgid "The revision has the following messages"
 msgstr "La revisión tiene los siguientes mensajes"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
@@ -3191,6 +3205,10 @@ msgid "This section will not produce a slide"
 msgstr "Esta sección no producirá una diapositiva"
 
 msgid "This setting affects only the text creation form."
+msgstr ""
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
 msgstr ""
 
 msgid ""
@@ -3980,6 +3998,9 @@ msgstr ""
 "\"Edición abandonada\" significa que la revisión fue abandonada\n"
 "    mientras se estaba editando, pero todavía está ahí, en caso de que\n"
 "    alguien quiera modificarla cuando edite un texto."
+
+#~ msgid "Sources"
+#~ msgstr "Fuentes"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "Ya existe esa URI"

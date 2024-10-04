@@ -858,6 +858,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (для электронных книг)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr "Расчётное время завершения"
 
@@ -1242,6 +1245,9 @@ msgstr "Заголовки"
 
 msgid "Height:"
 msgstr "Высота:"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr ""
@@ -1904,6 +1910,9 @@ msgstr "Новая правка"
 
 msgid "New site id"
 msgstr "Новый идентификатор сайта"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr "Сначала более новые"
@@ -2831,6 +2840,9 @@ msgstr "Источник"
 msgid "Source files"
 msgstr "Исходные файлы"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Исходные файлы с вложениями"
 
@@ -2839,9 +2851,6 @@ msgstr ""
 
 msgid "Source, notes..."
 msgstr "Источник, дополнительная информация..."
-
-msgid "Sources"
-msgstr "Исходники"
 
 msgid "Special blocks"
 msgstr "Специальные блоки"
@@ -3050,6 +3059,11 @@ msgid "The revision has the following messages"
 msgstr "Для правки есть следующие сообщения"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr "Сайт будет показывать PDF с эскизом в конце документа."
@@ -3171,6 +3185,10 @@ msgid "This section will not produce a slide"
 msgstr "Этот раздел не произведёт слайд"
 
 msgid "This setting affects only the text creation form."
+msgstr ""
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
 msgstr ""
 
 msgid ""
@@ -3965,6 +3983,9 @@ msgstr ""
 "«Устаревшее редактирование» означает, что правка не была доделана, но всё "
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
+
+#~ msgid "Sources"
+#~ msgstr "Исходники"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "Текст с таким URI уже существует. Вы можете указать свой URI"

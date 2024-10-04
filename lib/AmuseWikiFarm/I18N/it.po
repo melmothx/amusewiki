@@ -876,6 +876,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (per dispositivi portatili)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr "Orario stimato"
 
@@ -1272,6 +1275,9 @@ msgstr "Sezione"
 
 msgid "Height:"
 msgstr "Altezza:"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr "Aiuto in linea"
@@ -1960,6 +1966,9 @@ msgstr "Nuova revisione"
 
 msgid "New site id"
 msgstr "Nuovo ID sito"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr "Comincia con i più recenti"
@@ -2909,6 +2918,9 @@ msgstr "Origine"
 msgid "Source files"
 msgstr "Sorgenti"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "File sorgenti con allegati"
 
@@ -2917,9 +2929,6 @@ msgstr "Fonte rimossa"
 
 msgid "Source, notes..."
 msgstr "Fonti, note"
-
-msgid "Sources"
-msgstr "Fonti"
 
 msgid "Special blocks"
 msgstr "Blocchi speciali"
@@ -3136,6 +3145,11 @@ msgid "The revision has the following messages"
 msgstr "La revisione contiene i seguenti messaggi"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr "Il sito mostrerà i PDF con una miniatura alla fine del documento."
@@ -3262,6 +3276,10 @@ msgstr "Questa sezione non produrrà diapositive"
 
 msgid "This setting affects only the text creation form."
 msgstr "Questa impostazione riguarda solo la pagina di creazione del testo"
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
+msgstr ""
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
@@ -4081,6 +4099,9 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "Sources"
+#~ msgstr "Fonti"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "URI già esistente"

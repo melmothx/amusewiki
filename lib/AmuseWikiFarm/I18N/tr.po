@@ -876,6 +876,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (mobil cihazlar için)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr "Tahmini süre"
 
@@ -1268,6 +1271,9 @@ msgstr "Üst bilgiler"
 
 msgid "Height:"
 msgstr "Yükseklik:"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr "Yardım metni"
@@ -1938,6 +1944,9 @@ msgstr "Yeni versiyon"
 
 msgid "New site id"
 msgstr "Yeni site kimliği"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr "Önce yeniler"
@@ -2880,6 +2889,9 @@ msgstr "Kaynak"
 msgid "Source files"
 msgstr "Kaynak dosyalar"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Ek dosyalarla birlikte kaynak dosyalar"
 
@@ -2888,9 +2900,6 @@ msgstr "Kaynak kaldırıldı"
 
 msgid "Source, notes..."
 msgstr "Kaynak, notlar..."
-
-msgid "Sources"
-msgstr "Kaynaklar"
 
 msgid "Special blocks"
 msgstr "Özel bloklar"
@@ -3103,6 +3112,11 @@ msgid "The revision has the following messages"
 msgstr "Versiyon için aşağıdaki mesajlar var"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
@@ -3232,6 +3246,10 @@ msgstr "Bu bölüm bir slayt üretmeyecek"
 
 msgid "This setting affects only the text creation form."
 msgstr "Bu ayar yalnızca metin oluşturma formunu etkiler."
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
+msgstr ""
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
@@ -4039,6 +4057,9 @@ msgstr ""
 "\"Yarım kalmış düzenleme\",  versiyon düzenlenirken yarıda bırakılmış,\n"
 "    ama birisi metni düzenlemek için oradan devam edebilir\n"
 "    demektir."
+
+#~ msgid "Sources"
+#~ msgstr "Kaynaklar"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "Böyle bir URI zaten var"

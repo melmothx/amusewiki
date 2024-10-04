@@ -874,6 +874,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (for mobile devices)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr "ETA"
 
@@ -1268,6 +1271,9 @@ msgstr "Titoloj"
 
 msgid "Height:"
 msgstr "Alteco:"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr ""
@@ -1952,6 +1958,9 @@ msgstr "Nova revizio"
 
 msgid "New site id"
 msgstr "Nova retejo-identigilo"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr "Pli nova unue"
@@ -2892,6 +2901,9 @@ msgstr "Source"
 msgid "Source files"
 msgstr "Fontaj dosieroj"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Fontaj dosieroj kun aldonaĵoj"
 
@@ -2900,9 +2912,6 @@ msgstr ""
 
 msgid "Source, notes..."
 msgstr "Fonto, notoj ..."
-
-msgid "Sources"
-msgstr "Fontoj"
 
 msgid "Special blocks"
 msgstr "Specialaj blokoj"
@@ -3115,6 +3124,11 @@ msgid "The revision has the following messages"
 msgstr "La revizio havas la jenajn mesaĝojn"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
@@ -3244,6 +3258,10 @@ msgid "This section will not produce a slide"
 msgstr "Ĉi tiu sekcio ne produktos diapozitivon"
 
 msgid "This setting affects only the text creation form."
+msgstr ""
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
 msgstr ""
 
 msgid ""
@@ -4047,6 +4065,9 @@ msgstr ""
 "\"Senfina redaktado\" signifas, ke la revizio estis forlasita\n"
 "     dum redaktado, sed ĝi ankoraŭ estas tie, por se iu volas elekti\n"
 "     ĝin supren redaktante tekston."
+
+#~ msgid "Sources"
+#~ msgstr "Fontoj"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "Tia URI jam ekzistas"

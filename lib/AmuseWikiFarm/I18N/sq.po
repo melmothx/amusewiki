@@ -868,6 +868,9 @@ msgstr ""
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (për telefona mobil)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr ""
 
@@ -1253,6 +1256,9 @@ msgstr "Kryetitujt"
 
 msgid "Height:"
 msgstr "Lartësia:"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr ""
@@ -1892,6 +1898,9 @@ msgstr "Përpunim i ri"
 
 msgid "New site id"
 msgstr "ID e re e faqes"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr ""
@@ -2822,6 +2831,9 @@ msgstr "Referenca"
 msgid "Source files"
 msgstr "Dokumentet bazë"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Dokumentet bazë dhe dokumentet e bashkangjitura"
 
@@ -2830,9 +2842,6 @@ msgstr ""
 
 msgid "Source, notes..."
 msgstr "Burimi, shënimet..."
-
-msgid "Sources"
-msgstr "Burimet"
 
 msgid "Special blocks"
 msgstr "Blloqet e veçanta"
@@ -3030,6 +3039,11 @@ msgid "The revision has the following messages"
 msgstr "Përpunimi ka marrë komentet në vazhdim"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
@@ -3152,6 +3166,10 @@ msgid "This section will not produce a slide"
 msgstr ""
 
 msgid "This setting affects only the text creation form."
+msgstr ""
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
 msgstr ""
 
 msgid ""
@@ -3941,6 +3959,9 @@ msgstr ""
 "“Ndryshim i mbetur” do të thotë që përpunimi është brakstisur\n"
 " gjatë ndryshimit por është ende aty në rast se dikush dëshiron të vazhdoj\n"
 " me ndryshimin e tekstit."
+
+#~ msgid "Sources"
+#~ msgstr "Burimet"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "URI i tillë egziston"

@@ -828,6 +828,9 @@ msgstr ""
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (mobiililaitteille)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr ""
 
@@ -1194,6 +1197,9 @@ msgid "Headings"
 msgstr "Otsikot"
 
 msgid "Height:"
+msgstr ""
+
+msgid "Help"
 msgstr ""
 
 msgid "Help Text"
@@ -1802,6 +1808,9 @@ msgstr "Uusi versio"
 
 msgid "New site id"
 msgstr "Uusi tunnus"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr ""
@@ -2705,6 +2714,9 @@ msgstr "Lähde"
 msgid "Source files"
 msgstr "Lähdetiedostot"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Lähdetiedostot liitteineen"
 
@@ -2713,9 +2725,6 @@ msgstr ""
 
 msgid "Source, notes..."
 msgstr ""
-
-msgid "Sources"
-msgstr "Lähdetiedostot"
 
 msgid "Special blocks"
 msgstr "Erityislohkot"
@@ -2915,6 +2924,11 @@ msgid "The revision has the following messages"
 msgstr "Versiossa on seuraavat viestit"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
@@ -3024,6 +3038,10 @@ msgid "This section will not produce a slide"
 msgstr ""
 
 msgid "This setting affects only the text creation form."
+msgstr ""
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
 msgstr ""
 
 msgid ""
@@ -3774,6 +3792,9 @@ msgid ""
 msgstr ""
 "\"Vanha muokkaus\" tarkoittaa sitä, että versio hylättiin\n"
 "    kesken muokkauksen, mutta se on yhä odottamassa jatkajaansa"
+
+#~ msgid "Sources"
+#~ msgstr "Lähdetiedostot"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "tekstit aiheen mukaan lajiteltuna"

@@ -866,6 +866,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (для мобільних)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr "Завершиться приблизно"
 
@@ -1251,6 +1254,9 @@ msgstr "Заголовки"
 
 msgid "Height:"
 msgstr "Висота:"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr "Текст довідки"
@@ -1911,6 +1917,9 @@ msgstr "Нова версія"
 
 msgid "New site id"
 msgstr "Новий ідентифікатор сайту"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr "Спершу новіші"
@@ -2839,6 +2848,9 @@ msgstr "Джерело"
 msgid "Source files"
 msgstr "Файли джерела"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Файли джерела зі вкладеннями"
 
@@ -2847,9 +2859,6 @@ msgstr "Джерело вилучено"
 
 msgid "Source, notes..."
 msgstr "Джерело, примітки…"
-
-msgid "Sources"
-msgstr "Джерела"
 
 msgid "Special blocks"
 msgstr "Особливі блоки"
@@ -3057,6 +3066,11 @@ msgid "The revision has the following messages"
 msgstr "Версія має такі коментарі"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr "Сайт покаже PDF-файли як мініатюри в кінці документу."
@@ -3180,6 +3194,10 @@ msgstr "Цей розділ не матиме слайду"
 
 msgid "This setting affects only the text creation form."
 msgstr "Параметр впливає лише на форму створення тексту."
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
+msgstr ""
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
@@ -3971,6 +3989,9 @@ msgstr ""
 "«Покинуте редагування» означає, що відредагованої версії не було "
 "оприлюднено, але її залишено на випадок, щоб інші могли відштовхнутися від "
 "неї, починаючи власні редагування."
+
+#~ msgid "Sources"
+#~ msgstr "Джерела"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "Ідентифікатор уже зайнято"

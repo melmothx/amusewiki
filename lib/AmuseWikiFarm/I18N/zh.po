@@ -836,6 +836,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB（适用于移动设备）"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr "预计到达时间"
 
@@ -1205,6 +1208,9 @@ msgstr "页首"
 
 msgid "Height:"
 msgstr "高度："
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr ""
@@ -1831,6 +1837,9 @@ msgstr "新修订"
 
 msgid "New site id"
 msgstr "新站点id"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr "从新到旧"
@@ -2732,6 +2741,9 @@ msgstr "来源"
 msgid "Source files"
 msgstr "源文件"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "带附件的源文件"
 
@@ -2740,9 +2752,6 @@ msgstr ""
 
 msgid "Source, notes..."
 msgstr "来源、备注…"
-
-msgid "Sources"
-msgstr "源文件"
 
 msgid "Special blocks"
 msgstr "特殊块"
@@ -2941,6 +2950,11 @@ msgid "The revision has the following messages"
 msgstr "该修订版有以下信息"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr "该网站将在文件的末尾以缩略图显示PDF文件。"
@@ -3055,6 +3069,10 @@ msgid "This section will not produce a slide"
 msgstr "这一节不会生成幻灯片"
 
 msgid "This setting affects only the text creation form."
+msgstr ""
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
 msgstr ""
 
 msgid ""
@@ -3811,6 +3829,9 @@ msgid ""
 msgstr ""
 "「陈旧编辑」意味着版本已在编辑时被放弃，但它仍然存在，以防有人在编辑文本时继"
 "续使用它。"
+
+#~ msgid "Sources"
+#~ msgstr "源文件"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "URI已存在"

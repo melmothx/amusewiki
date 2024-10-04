@@ -817,6 +817,9 @@ msgstr ""
 msgid "EPUB (for mobile devices)"
 msgstr ""
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr ""
 
@@ -1182,6 +1185,9 @@ msgid "Headings"
 msgstr ""
 
 msgid "Height:"
+msgstr ""
+
+msgid "Help"
 msgstr ""
 
 msgid "Help Text"
@@ -1773,6 +1779,9 @@ msgid "New revision"
 msgstr ""
 
 msgid "New site id"
+msgstr ""
+
+msgid "New translation"
 msgstr ""
 
 msgid "Newer first"
@@ -2648,6 +2657,9 @@ msgstr ""
 msgid "Source files"
 msgstr ""
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr ""
 
@@ -2655,9 +2667,6 @@ msgid "Source removed"
 msgstr ""
 
 msgid "Source, notes..."
-msgstr ""
-
-msgid "Sources"
 msgstr ""
 
 msgid "Special blocks"
@@ -2854,6 +2863,11 @@ msgid "The revision has the following messages"
 msgstr ""
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
@@ -2959,6 +2973,10 @@ msgid "This section will not produce a slide"
 msgstr ""
 
 msgid "This setting affects only the text creation form."
+msgstr ""
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
 msgstr ""
 
 msgid ""

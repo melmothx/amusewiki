@@ -833,6 +833,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (för mobila enheter)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr ""
 
@@ -1203,6 +1206,9 @@ msgid "Headings"
 msgstr "Rubriker"
 
 msgid "Height:"
+msgstr ""
+
+msgid "Help"
 msgstr ""
 
 msgid "Help Text"
@@ -1809,6 +1815,9 @@ msgstr "Ny revidering"
 
 msgid "New site id"
 msgstr "Ny sid-id"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr ""
@@ -2725,6 +2734,9 @@ msgstr "Källa"
 msgid "Source files"
 msgstr "Källfiler"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Källfiler med bilagor"
 
@@ -2733,9 +2745,6 @@ msgstr ""
 
 msgid "Source, notes..."
 msgstr ""
-
-msgid "Sources"
-msgstr "Källor"
 
 msgid "Special blocks"
 msgstr "Specialblock"
@@ -2935,6 +2944,11 @@ msgid "The revision has the following messages"
 msgstr "Revideringen har följande meddelanden"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
@@ -3047,6 +3061,10 @@ msgid "This section will not produce a slide"
 msgstr ""
 
 msgid "This setting affects only the text creation form."
+msgstr ""
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
 msgstr ""
 
 msgid ""
@@ -3800,6 +3818,9 @@ msgstr ""
 "\"Förlegad redigering\" innebär att revideringen övergavs    under "
 "redigeringens gång, men den är fortfarande där, utifall att     någon vill "
 "återuppta den, medans den redigerar en text."
+
+#~ msgid "Sources"
+#~ msgstr "Källor"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "En sådan uri existerar redan"

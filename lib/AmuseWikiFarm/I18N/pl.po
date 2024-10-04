@@ -854,6 +854,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (dla urządzeń mobilnych)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr ""
 
@@ -1227,6 +1230,9 @@ msgstr "Nagłówki"
 
 msgid "Height:"
 msgstr "Wysokość:"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr ""
@@ -1859,6 +1865,9 @@ msgstr "Nowa korekta"
 
 msgid "New site id"
 msgstr "Nowe id strony"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr "Najpierw nowsze"
@@ -2765,6 +2774,9 @@ msgstr "Źródło"
 msgid "Source files"
 msgstr "Pliki źródłowe"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Pliki źródłowe z załącznikami"
 
@@ -2773,9 +2785,6 @@ msgstr ""
 
 msgid "Source, notes..."
 msgstr "Źródło, uwagi..."
-
-msgid "Sources"
-msgstr "Źrodła"
 
 msgid "Special blocks"
 msgstr ""
@@ -2973,6 +2982,11 @@ msgid "The revision has the following messages"
 msgstr ""
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
@@ -3088,6 +3102,10 @@ msgid "This section will not produce a slide"
 msgstr ""
 
 msgid "This setting affects only the text creation form."
+msgstr ""
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
 msgstr ""
 
 msgid ""
@@ -3879,6 +3897,9 @@ msgstr ""
 "“Niedokończone edytowanie” oznacza, że korekta została porzucona\n"
 "    w trakcie edytowania, ale nadal istnieje, w razie gdyby ktoś chciał\n"
 "    kontynuować ją przy edycji tekstu."
+
+#~ msgid "Sources"
+#~ msgstr "Źrodła"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "Taki URI już istnieje"

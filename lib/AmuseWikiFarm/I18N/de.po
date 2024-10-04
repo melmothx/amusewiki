@@ -834,6 +834,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (für mobile Geräte)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr ""
 
@@ -1201,6 +1204,9 @@ msgid "Headings"
 msgstr "Überschriften"
 
 msgid "Height:"
+msgstr ""
+
+msgid "Help"
 msgstr ""
 
 msgid "Help Text"
@@ -1816,6 +1822,9 @@ msgstr "Neue Änderung"
 
 msgid "New site id"
 msgstr "Neue Seitenid"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr "Neue zuerst"
@@ -2718,6 +2727,9 @@ msgstr "Quelle"
 msgid "Source files"
 msgstr "Quellendatei"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Quellendatei mit Anhängen"
 
@@ -2726,9 +2738,6 @@ msgstr ""
 
 msgid "Source, notes..."
 msgstr ""
-
-msgid "Sources"
-msgstr "Quellen"
 
 msgid "Special blocks"
 msgstr "Spezialblöcke"
@@ -2928,6 +2937,11 @@ msgid "The revision has the following messages"
 msgstr "Die Änderung beinhaltet die folgenden Nachrichten"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
@@ -3043,6 +3057,10 @@ msgid "This section will not produce a slide"
 msgstr ""
 
 msgid "This setting affects only the text creation form."
+msgstr ""
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
 msgstr ""
 
 msgid ""
@@ -3802,6 +3820,9 @@ msgstr ""
 " Bearbeitung, auf Eis gelegt wurde, aber immer noch\n"
 " erhalten ist, falls sie jemand wieder aufnehmen will wenn sie den\n"
 " Text bearbeitet. "
+
+#~ msgid "Sources"
+#~ msgstr "Quellen"
 
 #~ msgid "texts sorted by topics"
 #~ msgstr "Texte nach Themen sortiert"

@@ -864,6 +864,9 @@ msgstr "فرمت EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "فرمت EPUB (برای موبایل)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr ""
 
@@ -1247,6 +1250,9 @@ msgstr "سرفصل‌ها"
 
 msgid "Height:"
 msgstr "ارتفاع:"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr "متن کمکی"
@@ -1923,6 +1929,9 @@ msgstr "بازنگری جدید"
 
 msgid "New site id"
 msgstr "شناسه جدید سایت"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr "جدیدترین"
@@ -2858,6 +2867,9 @@ msgstr "منبع"
 msgid "Source files"
 msgstr "فایل‌های منبع"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "فایل‌های منبع همراه با پیوست‌ها"
 
@@ -2866,9 +2878,6 @@ msgstr "منبع حذف شد"
 
 msgid "Source, notes..."
 msgstr "منبع، یادداشت‌ها..."
-
-msgid "Sources"
-msgstr "منابع"
 
 msgid "Special blocks"
 msgstr "بلاک‌های ویژه"
@@ -3075,6 +3084,11 @@ msgid "The revision has the following messages"
 msgstr "این ویرایش دارای پیام های زیر است"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
@@ -3199,6 +3213,10 @@ msgstr "این بخش اسلاید تولید نمی‌کند"
 
 msgid "This setting affects only the text creation form."
 msgstr "این تنظیم فقط بر شیوه‌ی ایجاد متن تأثیر می‌گذارد."
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
+msgstr ""
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
@@ -4001,6 +4019,9 @@ msgstr ""
 "است،\n"
 " اما همچنان وجود دارد، در صورتی که کسی بخواهد هنگام ویرایش یک متن آن را "
 "انتخاب کند."
+
+#~ msgid "Sources"
+#~ msgstr "منابع"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "این URI از قبل وجود دارد"

@@ -874,6 +874,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (mobil eszközökhöz)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr "hátralévő idő"
 
@@ -1263,6 +1266,9 @@ msgstr "Címsorok"
 
 msgid "Height:"
 msgstr "Magasság:"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr "Súgó szöveg"
@@ -1930,6 +1936,9 @@ msgstr "Új verzió"
 
 msgid "New site id"
 msgstr "Új oldal id"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr "Újabbak elől"
@@ -2863,6 +2872,9 @@ msgstr "Forrás"
 msgid "Source files"
 msgstr "Forrás fájlok"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Forrás fájlok csatolmányokkal"
 
@@ -2871,9 +2883,6 @@ msgstr "Forrás törölve"
 
 msgid "Source, notes..."
 msgstr "Forrás, jegyzetek…"
-
-msgid "Sources"
-msgstr "Források"
 
 msgid "Special blocks"
 msgstr "Speciális blokkok"
@@ -3084,6 +3093,11 @@ msgid "The revision has the following messages"
 msgstr "Ez a verzió a következő üzenetekkel rendelkezik"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
@@ -3212,6 +3226,10 @@ msgstr "Ez a szekció nem jelenik meg diaként"
 
 msgid "This setting affects only the text creation form."
 msgstr "Ez a beállítás csak a szöveg létrehozó formot érinti."
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
+msgstr ""
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
@@ -4015,6 +4033,9 @@ msgid ""
 msgstr ""
 "„Elakadt szerkesztés” azt jelenti hogy a verzió el lett hagyva\n"
 " szerkesztés közben. Az adatbázisban benne van, folytatni bármikor lehet."
+
+#~ msgid "Sources"
+#~ msgstr "Források"
 
 #~ msgid ""
 #~ "Collections have been updated. You may want to refresh the OAI-PMH "

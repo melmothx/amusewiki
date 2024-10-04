@@ -884,6 +884,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (pentru aparate mobile)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr "ETA"
 
@@ -1281,6 +1284,9 @@ msgstr "Rubrici/Headings"
 
 msgid "Height:"
 msgstr "Înălțime:"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr "Text de ajutor"
@@ -1977,6 +1983,9 @@ msgstr "Revizie nouă"
 
 msgid "New site id"
 msgstr "ID site nou"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr "Mai noi mai întâi"
@@ -2953,6 +2962,9 @@ msgstr "Sursă"
 msgid "Source files"
 msgstr "Source files"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Fișiere din sursă cu atașamente"
 
@@ -2961,9 +2973,6 @@ msgstr "Sursă înlăturată"
 
 msgid "Source, notes..."
 msgstr "Sursa, notițe..."
-
-msgid "Sources"
-msgstr "Surse"
 
 #, fuzzy
 msgid "Special blocks"
@@ -3185,6 +3194,11 @@ msgid "The revision has the following messages"
 msgstr "Revizuirea are următoarele mesaje"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
@@ -3320,6 +3334,10 @@ msgstr "Această secție nu va produce un diapozitiv"
 
 msgid "This setting affects only the text creation form."
 msgstr "Această setare afectează numai creearea textului."
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
+msgstr ""
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
@@ -4144,6 +4162,9 @@ msgstr ""
 "    în timpul editării, dar este încă acolo, în cazul în care cineva dorește "
 "să o ia.\n"
 "    să o preia atunci când editează un text."
+
+#~ msgid "Sources"
+#~ msgstr "Surse"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "Un astfel de URI deja există"

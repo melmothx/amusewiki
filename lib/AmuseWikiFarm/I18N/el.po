@@ -891,6 +891,9 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (για φορητές συσκευές)"
 
+msgid "EPUB + HTML"
+msgstr ""
+
 msgid "ETA"
 msgstr "Εκτιμώμενος χρόνος"
 
@@ -1288,6 +1291,9 @@ msgstr "Επικεφαλίδες"
 
 msgid "Height:"
 msgstr "Ύψος:"
+
+msgid "Help"
+msgstr ""
 
 msgid "Help Text"
 msgstr ""
@@ -1995,6 +2001,9 @@ msgstr "Νέα διόρθωση"
 
 msgid "New site id"
 msgstr "Νέο ID ιστότοπου"
+
+msgid "New translation"
+msgstr ""
 
 msgid "Newer first"
 msgstr "Νεότερα πρώτα"
@@ -2971,6 +2980,9 @@ msgstr "Πηγή"
 msgid "Source files"
 msgstr "Αρχεία πηγής"
 
+msgid "Source files with HTML"
+msgstr ""
+
 msgid "Source files with attachments"
 msgstr "Αρχεία πηγής με συνημμένα"
 
@@ -2979,9 +2991,6 @@ msgstr ""
 
 msgid "Source, notes..."
 msgstr "Πηγές, σημειώσεις..."
-
-msgid "Sources"
-msgstr "Πηγές"
 
 msgid "Special blocks"
 msgstr "Ειδικά μπλοκ"
@@ -3199,6 +3208,11 @@ msgid "The revision has the following messages"
 msgstr "Η διόρθωση έχει τα ακόλουθα μηνύματα"
 
 msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+
+msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
@@ -3334,6 +3348,10 @@ msgid "This section will not produce a slide"
 msgstr "Αυτό το τμήμα δεν θα παράγει μια διαφάνεια"
 
 msgid "This setting affects only the text creation form."
+msgstr ""
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
 msgstr ""
 
 msgid ""
@@ -4174,6 +4192,9 @@ msgstr ""
 "    κατά τη διάρκεια της επεξεργασίας, αλλά είναι ακόμα εκεί, σε περίπτωση "
 "που κάποιο άτομο θέλει να\n"
 "    την ανακτήσει κατά την επεξεργασία ενός κειμένου."
+
+#~ msgid "Sources"
+#~ msgstr "Πηγές"
 
 #~ msgid "Such an URI already exists"
 #~ msgstr "Ένα τέτοιο URI υπάρχει ήδη"
