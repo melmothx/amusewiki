@@ -2038,6 +2038,7 @@ t/fail-on-cropmarks-109.t
 t/failed-thumbs.t
 t/failure-reason-371.t
 t/farsi.t
+t/federation-mirror-only.t
 t/federation.t
 t/files/amw-version-22.pdf
 t/files/big.jpeg

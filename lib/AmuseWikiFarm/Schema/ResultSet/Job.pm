@@ -55,14 +55,15 @@ sub handled_jobs_hashref {
             rebuild => 20,
             reindex => 19,
             build_custom_format => 25, # after publish/rebuild/reindex but before the static indexes
-            build_static_indexes => 30,
             # testing
             testing => 10,
             testing_high => 5,
             download_remote => 26,
             install_downloaded => 27,
             prune_orphans => 28,
-            refresh_oai_pmh_repo => 29,
+            purge_mirror_leftovers => 29,
+            refresh_oai_pmh_repo => 90,
+            build_static_indexes => 100,
            };
 }
 

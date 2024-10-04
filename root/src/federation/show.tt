@@ -115,6 +115,11 @@ https://amusewiki.org/category/topic/doc</pre>
 <div class="center">
   <div class="page-header">
     <h2>[% loc('Local pages') %]</h2>
+    [% IF site.mirror_only %]
+      <p>
+        [% loc('This site is a pure mirror and untracked pages will be removed automatically') %]
+      </p>
+    [% END %]
   </div>
 </div>
 
