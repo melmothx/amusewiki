@@ -3329,6 +3329,7 @@ sub update_from_params_restricted {
                         cgit_integration         => 'option',
                         allow_hostname_aliases   => 'option',
                         additional_nginx_conf    => 'option',
+                        mirror_only              => 'option',
 
                         vhosts            => 'delete',
 
@@ -3639,6 +3640,7 @@ sub update_from_params {
     foreach my $option (qw/html_special_page_bottom use_luatex
                            allow_hostname_aliases
                            additional_nginx_conf
+                           mirror_only
                            html_regular_page_bottom
                            left_layout_html
                            right_layout_html
@@ -5661,6 +5663,10 @@ sub has_aggregations {
 
 sub has_collections {
     shift->nodes->count;
+}
+
+sub mirror_only {
+    shift->get_option('mirror_only') ? 1 : 0;
 }
 
 after insert => sub {

@@ -912,6 +912,10 @@ sub dispatch_job_hourly_job {
         if ($res->{error}) {
             $logger->("ERROR: $res->{error}\n");
         }
+        if ($origin->site->mirror_only) {
+            $logger->("Scheduled mirror pruning\n");
+            $origin->site->jobs->enqueue('purge_mirror_leftovers', {}, $username);
+        }
     }
     return;
 }
@@ -962,6 +966,40 @@ sub dispatch_job_install_downloaded {
             local $ENV{GIT_AUTHOR_EMAIL} = $self->committer_mail;
             my $bulk = $origin->install_downloaded($logger, $opts);
             return "/tasks/job/" . $bulk->bulk_job_id . "/show";
+        }
+    }
+    return;
+}
+
+sub dispatch_job_purge_mirror_leftovers {
+    my ($self, $logger) = @_;
+    my @removed;
+    my $site = $self->site;
+    if ($site->mirror_only) {
+        my $root_path = Path::Tiny::path($site->repo_root)->realpath;
+        if (my $git = $site->git) {
+            local $ENV{GIT_COMMITTER_NAME}  = $self->committer_name;
+            local $ENV{GIT_COMMITTER_EMAIL} = $self->committer_mail;
+            local $ENV{GIT_AUTHOR_NAME}  = $self->committer_name;
+            local $ENV{GIT_AUTHOR_EMAIL} = $self->committer_mail;
+            foreach my $local_file (
+                                    $site->mirror_infos->without_origin->all,
+                                    $site->mirror_infos->removed_upstream->all,
+                                   ) {
+                if (my $object = $local_file->repo_object) {
+                    my $full_path = Path::Tiny::path($object->f_full_path_name)->realpath;
+                    die "$full_path is not inside $root_path" unless $root_path->subsumes($full_path);
+                    my $path = $full_path->stringify;
+                    log_info { "Removing $path from git" };
+                    $git->rm($path);
+                    $logger->("Removed $path\n");
+                    push @removed, $path;
+                }
+            }
+            if (@removed) {
+                $git->commit({ message => "Removed local files because site is a pure mirror" });
+                $site->update_db_from_tree_async($logger, $self->username);
+            }
         }
     }
     return;

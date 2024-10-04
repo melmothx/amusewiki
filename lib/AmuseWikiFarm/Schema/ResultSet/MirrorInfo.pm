@@ -32,6 +32,12 @@ sub with_exceptions {
     return $self->search({ "$me.mirror_exception" => { '!=' => '' } });
 }
 
+sub removed_upstream {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.mirror_exception" => 'removed_upstream' });
+}
+
 sub without_origin {
     my $self = shift;
     my $me = $self->current_source_alias;
