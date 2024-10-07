@@ -70,7 +70,13 @@ if [ "x$action" = "xrestart" ]; then
          --nproc 3 -E deployment \
          /usr/share/perl5/AmuseWikiFarm/psgi/amusewiki.psgi &
 
-    sleep 20
+    for i in $(seq 1 10); do
+        echo "$i. waiting 10 seconds for the backup app to come up"
+        sleep 10
+        if [ -f "$tmppidfile" ]; then
+            break
+        fi
+    done
     if [ -f "$tmppidfile" ]; then
         temp_pid=`cat $tmppidfile`
         if [ -n "$temp_pid" ]; then
