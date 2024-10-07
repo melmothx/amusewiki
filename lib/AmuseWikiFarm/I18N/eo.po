@@ -572,6 +572,9 @@ msgstr ""
 msgid "Clear the book list"
 msgstr "Forigu la libroliston"
 
+msgid "Click here to start a new bookbuilder session"
+msgstr ""
+
 msgid "Click on the images to get the sample PDF"
 msgstr "Alklaku la bildojn por akiri la ekzemplan PDF"
 
@@ -2939,6 +2942,9 @@ msgstr "Komencu la dokumenton per malplena paĝo"
 
 msgid "Started"
 msgstr "Komencita"
+
+msgid "Started new bookbuilder session"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "Senmova paĝo sen ĝavaskripto"

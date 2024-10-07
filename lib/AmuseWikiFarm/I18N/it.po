@@ -569,6 +569,9 @@ msgstr ""
 msgid "Clear the book list"
 msgstr "Cancella la lista dei testi"
 
+msgid "Click here to start a new bookbuilder session"
+msgstr ""
+
 msgid "Click on the images to get the sample PDF"
 msgstr "Clicca sulle immagini per avere un PDF di esempio"
 
@@ -2958,6 +2961,9 @@ msgstr "Inizia il documento con una pagina vuota"
 
 msgid "Started"
 msgstr "Inizio"
+
+msgid "Started new bookbuilder session"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "Pagina statica senza javascript"

@@ -501,7 +501,7 @@ msgstr ""
 msgid "Book Covers"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:36 root/src/layout.tt:623 root/src/layout.tt:627
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:44 root/src/layout.tt:623 root/src/layout.tt:627
 msgid "Bookbuilder"
 msgstr ""
 
@@ -660,6 +660,10 @@ msgstr ""
 msgid "Clear the book list"
 msgstr ""
 
+#: root/src/bookbuilder/index.tt:409
+msgid "Click here to start a new bookbuilder session"
+msgstr ""
+
 #: root/src/bookbuilder/fonts.tt:6
 msgid "Click on the images to get the sample PDF"
 msgstr ""
@@ -752,7 +756,7 @@ msgstr ""
 msgid "Couldn't automatically generate the URI!"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:103
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:111
 msgid "Couldn't build that"
 msgstr ""
 
@@ -1352,7 +1356,7 @@ msgstr ""
 msgid "Font"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:365 root/src/bookbuilder/fonts.tt:4 root/src/include/bbform.tt:37
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:373 root/src/bookbuilder/fonts.tt:4 root/src/include/bbform.tt:37
 msgid "Font preview"
 msgstr ""
 
@@ -1768,7 +1772,7 @@ msgstr ""
 msgid "Images"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:371 root/src/bookbuilder/schemas.tt:3 root/src/include/bbform.tt:649
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:379 root/src/bookbuilder/schemas.tt:3 root/src/include/bbform.tt:649
 msgid "Imposition schemas"
 msgstr ""
 
@@ -2008,12 +2012,12 @@ msgstr ""
 msgid "Load"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:434
+#: root/src/bookbuilder/index.tt:436
 msgid "Load another session by token"
 msgstr ""
 
 #. ($pname)
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:316
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:324
 msgid "Loaded \"%1\" configuration"
 msgstr ""
 
@@ -3112,7 +3116,7 @@ msgid "Save the current settings with a name"
 msgstr ""
 
 #. ($pname)
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:309
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:317
 msgid "Saved \"%1\" configuration"
 msgstr ""
 
@@ -3237,7 +3241,7 @@ msgstr ""
 msgid "Set a date in the future if you want it deferred."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:405
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:413
 msgid "Settings loaded"
 msgstr ""
 
@@ -3362,7 +3366,7 @@ msgstr ""
 msgid "Some ongoing revisions were found"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:89 lib/AmuseWikiFarm/Controller/Publish.pm:125
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:97 lib/AmuseWikiFarm/Controller/Publish.pm:125
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 
@@ -3432,6 +3436,10 @@ msgstr ""
 
 #: root/src/admin/jobs.tt:61 root/src/include/bulk_job.tt:13
 msgid "Started"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:36
+msgid "Started new bookbuilder session"
 msgstr ""
 
 #: root/src/tasks/display.tt:125
@@ -3986,7 +3994,7 @@ msgstr ""
 msgid "UTC"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:385
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:393
 msgid "Unable to load the bookbuilder session"
 msgstr ""
 
@@ -4175,7 +4183,7 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:410
+#: root/src/bookbuilder/index.tt:412
 msgid ""
 "Using this token, you can load the bookbuilder settings\n"
 "    and the text list from another computer, or share it with someone\n"
@@ -4211,7 +4219,7 @@ msgstr ""
 msgid "When creating a new text, do not populate the publication date if not provided by the user."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:417
+#: root/src/bookbuilder/index.tt:419
 msgid ""
 "When you start a bookbuilder session, at the end of the\n"
 "    bookbuilder page you can see a token for sharing the session. You\n"
@@ -4264,7 +4272,7 @@ msgstr ""
 msgid "Workflow"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:454 root/src/settings/edit_format.tt:56
+#: root/src/bookbuilder/index.tt:456 root/src/settings/edit_format.tt:56
 msgid "Working locally?"
 msgstr ""
 

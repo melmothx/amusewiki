@@ -587,6 +587,9 @@ msgstr ""
 msgid "Clear the book list"
 msgstr "Εκκαθάριση λίστας βιβλίων"
 
+msgid "Click here to start a new bookbuilder session"
+msgstr ""
+
 msgid "Click on the images to get the sample PDF"
 msgstr "Κλίκαρε πάνω στις εικόνες για να λάβεις το δείγμα PDF"
 
@@ -3020,6 +3023,9 @@ msgstr "Ξεκινήστε το έγγραφο με μια κενή σελίδα
 
 msgid "Started"
 msgstr "Ξεκίνησε"
+
+msgid "Started new bookbuilder session"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "Στατική σελίδα χωρίς javascript"

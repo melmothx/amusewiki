@@ -542,6 +542,9 @@ msgstr ""
 msgid "Clear the book list"
 msgstr "清除书单"
 
+msgid "Click here to start a new bookbuilder session"
+msgstr ""
+
 msgid "Click on the images to get the sample PDF"
 msgstr "点击图像以获得样本PDF"
 
@@ -2779,6 +2782,9 @@ msgstr "以一个空页开始文件"
 
 msgid "Started"
 msgstr "已开始"
+
+msgid "Started new bookbuilder session"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "无javascript脚本的静态页面"

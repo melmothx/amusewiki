@@ -573,6 +573,9 @@ msgstr ""
 msgid "Clear the book list"
 msgstr "Vyčisti seznam knih"
 
+msgid "Click here to start a new bookbuilder session"
+msgstr ""
+
 msgid "Click on the images to get the sample PDF"
 msgstr "Klikni na obrázek pro dostání ukázky PDF"
 
@@ -2931,6 +2934,9 @@ msgstr "Začni dokument prázdnou stranou"
 
 msgid "Started"
 msgstr "Započato"
+
+msgid "Started new bookbuilder session"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "Statická stránka bez javascriptu"

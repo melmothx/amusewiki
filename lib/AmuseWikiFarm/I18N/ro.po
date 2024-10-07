@@ -580,6 +580,9 @@ msgstr ""
 msgid "Clear the book list"
 msgstr "Șterge lista de cărți"
 
+msgid "Click here to start a new bookbuilder session"
+msgstr ""
+
 msgid "Click on the images to get the sample PDF"
 msgstr "Faceți clic pe imagini pentru a obține exemplul PDF"
 
@@ -3003,6 +3006,9 @@ msgstr "Începeți documentul cu o pagină goală"
 
 msgid "Started"
 msgstr "Început"
+
+msgid "Started new bookbuilder session"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "Pagina statică fără javascript"

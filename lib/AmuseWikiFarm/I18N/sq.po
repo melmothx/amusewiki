@@ -573,6 +573,9 @@ msgstr ""
 msgid "Clear the book list"
 msgstr "Pastro listën e librave"
 
+msgid "Click here to start a new bookbuilder session"
+msgstr ""
+
 msgid "Click on the images to get the sample PDF"
 msgstr "Kliko në imazhin që ta shkarkosh mostrën e PDF-it"
 
@@ -2868,6 +2871,9 @@ msgid "Start the document with an empty page"
 msgstr ""
 
 msgid "Started"
+msgstr ""
+
+msgid "Started new bookbuilder session"
 msgstr ""
 
 msgid "Static page without javascript"

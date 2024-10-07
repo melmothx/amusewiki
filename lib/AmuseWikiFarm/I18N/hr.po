@@ -553,6 +553,9 @@ msgstr ""
 msgid "Clear the book list"
 msgstr "Poništi popis tekstova"
 
+msgid "Click here to start a new bookbuilder session"
+msgstr ""
+
 msgid "Click on the images to get the sample PDF"
 msgstr "Klikni na slike za primjer PDF-a"
 
@@ -2867,6 +2870,9 @@ msgstr "Dodaj praznu stranicu prije naslovnice"
 
 msgid "Started"
 msgstr "Započeto"
+
+msgid "Started new bookbuilder session"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "Statična stranica bez javascripta"

@@ -565,6 +565,9 @@ msgstr ""
 msgid "Clear the book list"
 msgstr "Поништи ја листата на текстови"
 
+msgid "Click here to start a new bookbuilder session"
+msgstr ""
+
 msgid "Click on the images to get the sample PDF"
 msgstr "Кликни на сликите за пример за PDF"
 
@@ -2912,6 +2915,9 @@ msgstr "Додади празна страница пред насловница
 
 msgid "Started"
 msgstr "Започнато"
+
+msgid "Started new bookbuilder session"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "Статична страница без javascript"

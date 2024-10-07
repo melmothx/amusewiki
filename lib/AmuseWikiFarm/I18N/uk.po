@@ -567,6 +567,9 @@ msgstr ""
 msgid "Clear the book list"
 msgstr "Очистити перелік книг"
 
+msgid "Click here to start a new bookbuilder session"
+msgstr ""
+
 msgid "Click on the images to get the sample PDF"
 msgstr "Натискайте картинки, щоб відкривати PDF-зразки"
 
@@ -2886,6 +2889,9 @@ msgstr "Почати документ порожньою сторінкою"
 
 msgid "Started"
 msgstr "Почато"
+
+msgid "Started new bookbuilder session"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "Статична сторінка без JavaScript"

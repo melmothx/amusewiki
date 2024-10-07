@@ -533,6 +533,9 @@ msgstr ""
 msgid "Clear the book list"
 msgstr "ブックリストをクリア"
 
+msgid "Click here to start a new bookbuilder session"
+msgstr ""
+
 msgid "Click on the images to get the sample PDF"
 msgstr "画像をクリックしてサンプルPDFを取得"
 
@@ -2757,6 +2760,9 @@ msgstr "文書を空白ページで開始"
 
 msgid "Started"
 msgstr "開始"
+
+msgid "Started new bookbuilder session"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "JavaScriptなしの静的ページ"

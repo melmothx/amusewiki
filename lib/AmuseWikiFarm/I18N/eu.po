@@ -590,6 +590,9 @@ msgstr "Aukeratu txantiloi bat"
 msgid "Clear the book list"
 msgstr "Garbitu liburu-zerrenda"
 
+msgid "Click here to start a new bookbuilder session"
+msgstr ""
+
 msgid "Click on the images to get the sample PDF"
 msgstr "Sakatu irudietan adibide bat PDF formatuan lortzeko"
 
@@ -2974,6 +2977,9 @@ msgstr "Hasi dokumentua orri huts batekin"
 
 msgid "Started"
 msgstr "Hasi da"
+
+msgid "Started new bookbuilder session"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "Orri estatikoa javascript-ik gabe"
