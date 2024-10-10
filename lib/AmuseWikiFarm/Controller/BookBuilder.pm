@@ -29,13 +29,37 @@ Deny access to not-human
 
 =cut
 
-sub start_new_session :Chained('/site_human_required') :PathPart('bookbuild-new-session') :Args(0) {
+sub start_new_session :Chained('/site_human_required') :PathPart('bookbuilder-new-session') :Args(0) {
     my ($self, $c) = @_;
     delete $c->session->{bookbuilder};
     delete $c->session->{bookbuilder_token};
     $c->flash->{status_msg} = $c->loc('Started new bookbuilder session');
     $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
 }
+
+sub load :Chained('/site_human_required') :PathPart('bookbuilder-load-token') :Args(0) {
+    my ( $self, $c ) = @_;
+    my $ok;
+    if (my $token = $c->request->body_parameters->{token}) {
+        if ($c->request->body_parameters->{replace}) {
+            # log_info { "Starting new BB session" };
+            delete $c->session->{bookbuilder};
+            delete $c->session->{bookbuilder_token};
+        }
+        my $bb = $c->model('BookBuilder');
+        if (my $newbb = $bb->load_from_token("$token")) {
+            $c->stash(bb => $newbb);
+            $self->save_session($c);
+            $ok = 1;
+        }
+    }
+    unless ($ok) {
+        $c->flash->{error_msg} = $c->loc('Unable to load the bookbuilder session');
+    }
+    $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
+}
+
+
 
 sub root :Chained('/site_human_required') :PathPart('bookbuilder') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
@@ -377,22 +401,6 @@ sub fonts :Chained('root') :PathPart('fonts') :Args(0) {
 sub schemas :Chained('root') :PathPart('schemas') :Args(0) {
     my ($self, $c) = @_;
     $c->stash(page_title => $c->loc('Imposition schemas'));
-}
-
-sub load :Chained('root') :Args(0) {
-    my ( $self, $c ) = @_;
-    my $ok;
-    if (my $token = $c->request->body_parameters->{token}) {
-        if (my $bb = $c->stash->{bb}->load_from_token($token . '')) {
-            $c->stash(bb => $bb);
-            $self->save_session($c);
-            $ok = 1;
-        }
-    }
-    unless ($ok) {
-        $c->flash->{error_msg} = $c->loc('Unable to load the bookbuilder session');
-    }
-    $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
 }
 
 # no tests here, seems pretty straightforward

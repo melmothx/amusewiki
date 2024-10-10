@@ -436,6 +436,11 @@
                  placeholder="[% loc('Load another session by token') %]" />
           <span class="input-group-btn">
             <button class="btn btn-default" type="submit" name="load" value="1">
+              [% loc('Load adding texts') %]
+              <span class="fa fa-folder-open-o"></span>
+            </button>
+            <button class="btn btn-default" type="submit" name="replace" value="1">
+              [% loc('Load replacing texts') %]
               <span class="fa fa-folder-open-o"></span>
             </button>
           </span>

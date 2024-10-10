@@ -13,7 +13,7 @@ use Text::Amuse::Compile::Utils qw/write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
-use Test::More tests => 2463; # test spamming
+use Test::More tests => 2483; # test spamming
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0authen0');
@@ -118,7 +118,8 @@ my @human_only = (
                   '/bookbuilder/edit',
                   '/bookbuilder/fonts',
                   '/bookbuilder',
-                  '/bookbuilder/load',
+                  '/bookbuilder-load-token',
+                  '/bookbuilder-new-session',
                   '/bookbuilder/profile/1',
                   '/bookbuilder/schemas',
                   # job number
