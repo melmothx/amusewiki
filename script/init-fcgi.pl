@@ -26,6 +26,8 @@ die "Couldn't find $psgi" unless -f $psgi;
 
 my $workers = $ENV{AMW_WORKERS} || 3;
 
+$ENV{PM_MAX_REQUESTS} ||= 1000;
+
 Daemon::Control->new({
                       name => "amusewiki-webapp",
                       lsb_start   => '$syslog $remote_fs',
@@ -40,6 +42,7 @@ Daemon::Control->new({
                                        '--listen' => $socket,
                                        '--nproc' => $workers,
                                        '-E' => 'deployment',
+                                       '--manager' => 'FCGI::ProcManager::Constrained',
                                        $psgi,
                                       ],
                       pid_file    => File::Spec->catfile($vardir, 'amw.pid'),

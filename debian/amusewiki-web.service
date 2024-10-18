@@ -3,10 +3,16 @@ Description=Amusewiki web server
 After=nss-user-lookup.target
 
 [Service]
+# this is already something
+Environment="PM_MAX_REQUESTS=1000"
+# You'll need Linux::Pid (liblinux-pid-perl) installed for the max size to work
+# Environment="PM_MAX_SIZE=524288"
+# Environment="PM_SIZECHECK_NUM_REQUESTS=10"
+
 WorkingDirectory=/var/lib/amusewiki
 User=amusewiki
 Group=amusewiki
-ExecStart=/usr/bin/plackup -s FCGI --listen /var/lib/amusewiki/amusewiki.socket --nproc 5 -E deployment /usr/share/perl5/AmuseWikiFarm/psgi/amusewiki.psgi
+ExecStart=/usr/bin/plackup -s FCGI --listen /var/lib/amusewiki/amusewiki.socket --nproc 8 -E deployment --manager FCGI::ProcManager::Constrained /usr/share/perl5/AmuseWikiFarm/psgi/amusewiki.psgi
 Restart=always
 
 [Install]
