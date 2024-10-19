@@ -41,13 +41,17 @@ sub load :Chained('/site_human_required') :PathPart('bookbuilder-load-token') :A
     my ( $self, $c ) = @_;
     my $ok;
     if (my $token = $c->request->body_parameters->{token}) {
+        my $replace = 0;
         if ($c->request->body_parameters->{replace}) {
             # log_info { "Starting new BB session" };
             delete $c->session->{bookbuilder};
             delete $c->session->{bookbuilder_token};
+            $replace = 1;
         }
         my $bb = $c->model('BookBuilder');
         if (my $newbb = $bb->load_from_token("$token")) {
+            # when loading a token, hijack it
+            $newbb->token("$token") if $replace;
             $c->stash(bb => $newbb);
             $self->save_session($c);
             $ok = 1;
