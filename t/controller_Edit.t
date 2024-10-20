@@ -114,7 +114,7 @@ foreach my $lang (sort keys %expected) {
 [3] footnote http://amusewiki.org nbsp nbsp removed
 EOF
     $mech->form_id('museform');
-    $body =~ s/\[20\]/\[20\]\0\r/sg;
+    # $body =~ s/\[20\]/\[20\]\0\r/sg;
     $mech->field(body => $body);
     $mech->click('preview');
     $mech->content_contains('&gt;[20]&lt;');
