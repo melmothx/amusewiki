@@ -440,7 +440,7 @@
               <span class="fa fa-folder-open-o"></span>
             </button>
             <button class="btn btn-default" type="submit" name="load" value="1">
-              [% loc('Load session') %]
+              [% loc('Import session') %]
               <span class="fa fa-folder-open-o"></span>
             </button>
           </span>
