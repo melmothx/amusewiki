@@ -6,6 +6,7 @@ use Test::More tests => 33;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
+use Data::Dumper::Concise;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Utils::Jobber;
