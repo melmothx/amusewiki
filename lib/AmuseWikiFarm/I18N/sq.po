@@ -1508,6 +1508,9 @@ msgstr "Linku i imazhit"
 msgid "Images"
 msgstr ""
 
+msgid "Import session"
+msgstr ""
+
 msgid "Imposition schemas"
 msgstr "Skemat e imponimit"
 
@@ -2562,6 +2565,9 @@ msgstr "Zgjedhjet e kufizuara të formatizmit"
 msgid "Results per page:"
 msgstr ""
 
+msgid "Resume session"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "E marrë me (datën) nga URL"
 
@@ -3395,8 +3401,8 @@ msgstr "Lista e renditur"
 msgid "Unpublished texts"
 msgstr "Tekst i papublikuar"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Tip i dokumentit i pasuportuar %1"
 
@@ -3488,8 +3494,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Shfrytëzuesi %1 u krijua!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Shfrytëzuesi %1 u fshi"
 

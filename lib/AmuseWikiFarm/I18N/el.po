@@ -1583,6 +1583,9 @@ msgstr "Url εικόνας"
 msgid "Images"
 msgstr "Εικόνες"
 
+msgid "Import session"
+msgstr ""
+
 msgid "Imposition schemas"
 msgstr "Σχήματα διάταξης"
 
@@ -2712,6 +2715,9 @@ msgstr "Περιορισμένες επιλογές μορφής"
 msgid "Results per page:"
 msgstr "Αποτελέσματα ανά σελίδα:"
 
+msgid "Resume session"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Ανακτήθηκε στις ΗΜΕΡΟΜΗΝΙΑ από URL"
 
@@ -3584,8 +3590,8 @@ msgstr "Μη διατεταγμένη λίστα"
 msgid "Unpublished texts"
 msgstr "Αδημοσίευτα κείμενα"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Μη υποστηριζόμενος τύπος αρχείου %1"
 
@@ -3683,8 +3689,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Ο/Η χρήστης %1 δημιουργήθηκε!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Ο/Η χρήστης %1 διαγράφηκε"
 

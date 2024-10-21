@@ -1434,6 +1434,9 @@ msgstr "Bild url"
 msgid "Images"
 msgstr ""
 
+msgid "Import session"
+msgstr ""
+
 msgid "Imposition schemas"
 msgstr "Införandesystem"
 
@@ -2469,6 +2472,9 @@ msgstr ""
 msgid "Results per page:"
 msgstr ""
 
+msgid "Resume session"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Mottogs den DATUM från URL"
 
@@ -3274,8 +3280,8 @@ msgstr "Punktlista"
 msgid "Unpublished texts"
 msgstr "Opublicerade texter"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Filtypen stöds inte %1"
 
@@ -3367,8 +3373,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Användare %1 skapad!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr ""
 

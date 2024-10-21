@@ -1521,6 +1521,9 @@ msgstr "Dirección URL de la imagen"
 msgid "Images"
 msgstr ""
 
+msgid "Import session"
+msgstr ""
+
 msgid "Imposition schemas"
 msgstr "Tipos de encuadernación"
 
@@ -2587,6 +2590,9 @@ msgstr "Opciones de formato restringidas"
 msgid "Results per page:"
 msgstr ""
 
+msgid "Resume session"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Recuperado el XX de MMMMM desde URL"
 
@@ -3426,8 +3432,8 @@ msgstr "Lista con viñetas"
 msgid "Unpublished texts"
 msgstr "Textos no publicados"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Tipo de archivo %1 no soportado"
 
@@ -3520,8 +3526,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "¡Se creó la/el usuaria/o %1!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Usuaria/o %1 borrada/o"
 

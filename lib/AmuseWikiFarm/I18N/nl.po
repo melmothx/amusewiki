@@ -1547,6 +1547,9 @@ msgstr "Afbeeldings URL"
 msgid "Images"
 msgstr ""
 
+msgid "Import session"
+msgstr ""
+
 msgid "Imposition schemas"
 msgstr "Oplegschemas"
 
@@ -2633,6 +2636,9 @@ msgstr "Afgescherme layoutopties"
 msgid "Results per page:"
 msgstr "Resultaten per pagina:"
 
+msgid "Resume session"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Verkregen op DATUM van URL"
 
@@ -3479,8 +3485,8 @@ msgstr "Ongeordende lijst"
 msgid "Unpublished texts"
 msgstr "Ongepubliceerde teksten"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Niet-ondersteund bestandsformaat %1"
 
@@ -3574,8 +3580,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Gebruiker %1 aangemaakt!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Gebruiker %1 verwijderd"
 

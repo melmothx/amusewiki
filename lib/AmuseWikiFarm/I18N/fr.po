@@ -1524,6 +1524,9 @@ msgstr "Url de l'image"
 msgid "Images"
 msgstr ""
 
+msgid "Import session"
+msgstr ""
+
 msgid "Imposition schemas"
 msgstr "Schémas d'imposition"
 
@@ -2592,6 +2595,9 @@ msgstr "Options de format restreintes"
 msgid "Results per page:"
 msgstr "Résultats par page :"
 
+msgid "Resume session"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Consulté le DATE de URL"
 
@@ -3440,8 +3446,8 @@ msgstr "Liste à puces"
 msgid "Unpublished texts"
 msgstr "Textes non publiés"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Type de fichier %1 non pris en charge"
 
@@ -3535,8 +3541,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Utilisateur %1 créé!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Utilisateur %1 supprimé!"
 

@@ -1499,6 +1499,9 @@ msgstr "Billedets URL"
 msgid "Images"
 msgstr ""
 
+msgid "Import session"
+msgstr ""
+
 msgid "Imposition schemas"
 msgstr "Udskydningsskemaer"
 
@@ -2557,6 +2560,9 @@ msgstr "Begrænsede format muligheder"
 msgid "Results per page:"
 msgstr ""
 
+msgid "Resume session"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Hentet DATO fra URL"
 
@@ -3363,8 +3369,8 @@ msgstr "Punkttegns liste"
 msgid "Unpublished texts"
 msgstr "Ikke offentliggjorte tekster"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Ikke understøttet filtype %1"
 
@@ -3457,8 +3463,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Brugeren %1 er blevet skabt!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Brugeren %1 er blevet slettet"
 

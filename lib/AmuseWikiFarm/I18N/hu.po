@@ -1530,6 +1530,9 @@ msgstr "Kép url"
 msgid "Images"
 msgstr "Képek"
 
+msgid "Import session"
+msgstr ""
+
 msgid "Imposition schemas"
 msgstr "Impozíciós sémák"
 
@@ -2606,6 +2609,9 @@ msgstr "Korlátozott formátum opciók"
 msgid "Results per page:"
 msgstr "Eredmények oldalanként"
 
+msgid "Resume session"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Letöltve ezen dátumon az URLről"
 
@@ -3450,8 +3456,8 @@ msgstr "Unordered list"
 msgid "Unpublished texts"
 msgstr "Nem publikált szövegek"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Nem támogatott fájl típus: %1"
 
@@ -3545,8 +3551,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Felhasználó %1 létrehozva"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Felhasználó %1 törölve"
 

@@ -1579,6 +1579,9 @@ msgstr "Irudiaren URLa"
 msgid "Images"
 msgstr "Irudiak"
 
+msgid "Import session"
+msgstr ""
+
 msgid "Imposition schemas"
 msgstr "Ezarpen-eskemak"
 
@@ -2669,6 +2672,9 @@ msgstr "Murriztutako formatuaren aukerak"
 msgid "Results per page:"
 msgstr "Emaitzak orriko:"
 
+msgid "Resume session"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "2024ko otsailaren 11ean eskuratua hemendik: URL"
 
@@ -3528,8 +3534,8 @@ msgstr "Ordenatu gabeko zerrenda"
 msgid "Unpublished texts"
 msgstr "Argitaratu gabeko testuak"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Onartu gabeko %1 fitxategi mota"
 
@@ -3623,8 +3629,8 @@ msgstr "Erabiltzailea"
 msgid "User %1 created!"
 msgstr "%1 erabiltzailea sortu da."
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "%1 erabiltzailea ezabatu da."
 

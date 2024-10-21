@@ -1442,6 +1442,9 @@ msgstr "画像のURL"
 msgid "Images"
 msgstr "画像"
 
+msgid "Import session"
+msgstr ""
+
 msgid "Imposition schemas"
 msgstr "面付け図"
 
@@ -2453,6 +2456,9 @@ msgstr "制限付きフォーマットオプション"
 msgid "Results per page:"
 msgstr "ページ毎の結果："
 
+msgid "Resume session"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "URL検索年月日"
 
@@ -3260,8 +3266,8 @@ msgstr "順不同リスト"
 msgid "Unpublished texts"
 msgstr "未公開記事"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "サポートされていないファイルタイプ%1"
 
@@ -3356,8 +3362,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "ユーザー%1が作成されました！"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "ユーザ%1は削除されました"
 

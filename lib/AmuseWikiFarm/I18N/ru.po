@@ -1515,6 +1515,9 @@ msgstr "URL изображения"
 msgid "Images"
 msgstr "Изображения"
 
+msgid "Import session"
+msgstr ""
+
 msgid "Imposition schemas"
 msgstr "Схемы спуска полос"
 
@@ -2576,6 +2579,9 @@ msgstr "Ограничить настройки формата"
 msgid "Results per page:"
 msgstr "Результатов на странице:"
 
+msgid "Resume session"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Скопировано ДАТА c ССЫЛКА"
 
@@ -3406,8 +3412,8 @@ msgstr "Маркированный список"
 msgid "Unpublished texts"
 msgstr "Неопубликованные тексты"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Неподдерживаемый формат файла %1"
 
@@ -3501,8 +3507,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Пользователь %1 создан!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Пользователь %1 удалён"
 

@@ -1453,6 +1453,9 @@ msgstr "图片URL"
 msgid "Images"
 msgstr "图片"
 
+msgid "Import session"
+msgstr ""
+
 msgid "Imposition schemas"
 msgstr "强制模式"
 
@@ -2477,6 +2480,9 @@ msgstr "被限制的格式选项"
 msgid "Results per page:"
 msgstr "每页结果数："
 
+msgid "Resume session"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "于DATE从URL拾获"
 
@@ -3283,8 +3289,8 @@ msgstr "无序列表"
 msgid "Unpublished texts"
 msgstr "未发表的文本"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "不支持的文件类型%1"
 
@@ -3374,8 +3380,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "用户%1已创建！"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "用户%1已删除"
 

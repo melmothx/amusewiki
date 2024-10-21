@@ -1506,6 +1506,9 @@ msgstr "URL slike"
 msgid "Images"
 msgstr "Slike"
 
+msgid "Import session"
+msgstr ""
+
 msgid "Imposition schemas"
 msgstr "Obrasci prijeloma teksta"
 
@@ -2565,6 +2568,9 @@ msgstr "Ograničene opcije za fajlove"
 msgid "Results per page:"
 msgstr "Rezultati po stranici:"
 
+msgid "Resume session"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Pronađeno DANA na URL-u"
 
@@ -3387,8 +3393,8 @@ msgstr "Običan popis"
 msgid "Unpublished texts"
 msgstr "Neobjavljeni tekstovi"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Pogrešna vrsta fajla: %1"
 
@@ -3481,8 +3487,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Korisnik %1 stvoren!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Korisnik %1 izbrisan"
 

@@ -1524,6 +1524,9 @@ msgstr "URL од сликата"
 msgid "Images"
 msgstr "Слики"
 
+msgid "Import session"
+msgstr ""
+
 msgid "Imposition schemas"
 msgstr "Обрасци за прелом на текстот"
 
@@ -2610,6 +2613,9 @@ msgstr "Ограничени опции за фајловите"
 msgid "Results per page:"
 msgstr "Резултати по страница:"
 
+msgid "Resume session"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Пронајдено на ДАТУМ на URL"
 
@@ -3443,8 +3449,8 @@ msgstr "Ненумерирана листа"
 msgid "Unpublished texts"
 msgstr "Необјавени текстови"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Погрешен вид на фајл %1"
 
@@ -3539,8 +3545,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Корисникот %1 е креиран!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Корисникот %1 избришан"
 

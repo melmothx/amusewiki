@@ -501,7 +501,7 @@ msgstr ""
 msgid "Book Covers"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:44 root/src/layout.tt:623 root/src/layout.tt:627
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:72 root/src/layout.tt:623 root/src/layout.tt:627
 msgid "Bookbuilder"
 msgstr ""
 
@@ -756,7 +756,7 @@ msgstr ""
 msgid "Couldn't automatically generate the URI!"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:111
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:139
 msgid "Couldn't build that"
 msgstr ""
 
@@ -1356,7 +1356,7 @@ msgstr ""
 msgid "Font"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:373 root/src/bookbuilder/fonts.tt:4 root/src/include/bbform.tt:37
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:401 root/src/bookbuilder/fonts.tt:4 root/src/include/bbform.tt:37
 msgid "Font preview"
 msgstr ""
 
@@ -1772,7 +1772,11 @@ msgstr ""
 msgid "Images"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:379 root/src/bookbuilder/schemas.tt:3 root/src/include/bbform.tt:649
+#: root/src/bookbuilder/index.tt:443
+msgid "Import session"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:407 root/src/bookbuilder/schemas.tt:3 root/src/include/bbform.tt:649
 msgid "Imposition schemas"
 msgstr ""
 
@@ -2017,7 +2021,7 @@ msgid "Load another session by token"
 msgstr ""
 
 #. ($pname)
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:324
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:352
 msgid "Loaded \"%1\" configuration"
 msgstr ""
 
@@ -3034,6 +3038,10 @@ msgstr ""
 msgid "Results per page:"
 msgstr ""
 
+#: root/src/bookbuilder/index.tt:439
+msgid "Resume session"
+msgstr ""
+
 #: root/src/edit/newtext.tt:164
 msgid "Retrieved on DATE from URL"
 msgstr ""
@@ -3116,7 +3124,7 @@ msgid "Save the current settings with a name"
 msgstr ""
 
 #. ($pname)
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:317
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:345
 msgid "Saved \"%1\" configuration"
 msgstr ""
 
@@ -3241,7 +3249,7 @@ msgstr ""
 msgid "Set a date in the future if you want it deferred."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:413
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:425
 msgid "Settings loaded"
 msgstr ""
 
@@ -3366,7 +3374,7 @@ msgstr ""
 msgid "Some ongoing revisions were found"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:97 lib/AmuseWikiFarm/Controller/Publish.pm:125
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:125 lib/AmuseWikiFarm/Controller/Publish.pm:125
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 
@@ -3994,7 +4002,7 @@ msgstr ""
 msgid "UTC"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:393
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:61
 msgid "Unable to load the bookbuilder session"
 msgstr ""
 
@@ -4040,8 +4048,8 @@ msgstr ""
 msgid "Unpublished texts"
 msgstr ""
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 #: lib/AmuseWikiFarm/Controller/Edit.pm:379 lib/AmuseWikiFarm/Controller/Edit.pm:539 lib/AmuseWikiFarm/Schema/Result/Revision.pm:560
 msgid "Unsupported file type %1"
 msgstr ""
@@ -4156,8 +4164,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr ""
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 #: lib/AmuseWikiFarm/Controller/Admin.pm:305 lib/AmuseWikiFarm/Controller/SiteAdmin.pm:85
 msgid "User %1 deleted"
 msgstr ""
@@ -4272,7 +4280,7 @@ msgstr ""
 msgid "Workflow"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:456 root/src/settings/edit_format.tt:56
+#: root/src/bookbuilder/index.tt:461 root/src/settings/edit_format.tt:56
 msgid "Working locally?"
 msgstr ""
 

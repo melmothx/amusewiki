@@ -1409,6 +1409,9 @@ msgstr ""
 msgid "Images"
 msgstr ""
 
+msgid "Import session"
+msgstr ""
+
 msgid "Imposition schemas"
 msgstr ""
 
@@ -2394,6 +2397,9 @@ msgstr ""
 msgid "Results per page:"
 msgstr ""
 
+msgid "Resume session"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr ""
 
@@ -3186,8 +3192,8 @@ msgstr ""
 msgid "Unpublished texts"
 msgstr ""
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr ""
 
@@ -3277,8 +3283,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr ""
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr ""
 

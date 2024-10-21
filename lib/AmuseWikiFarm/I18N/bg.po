@@ -1567,6 +1567,9 @@ msgstr "URL на изображението"
 msgid "Images"
 msgstr "Изображения"
 
+msgid "Import session"
+msgstr ""
+
 msgid "Imposition schemas"
 msgstr "Модели за прекъсване на текст"
 
@@ -2666,6 +2669,9 @@ msgstr "Ограничени опции за форматиране"
 msgid "Results per page:"
 msgstr "Резултати на страница:"
 
+msgid "Resume session"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Извлечено на ДАТА от URL-а"
 
@@ -3512,8 +3518,8 @@ msgstr "Неподреден списък"
 msgid "Unpublished texts"
 msgstr "Текстове, дръпнати от публикация"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Неподдържан тип на файла %1"
 
@@ -3610,8 +3616,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Потребител %1 беше създаден!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Потребител %1 беше изтрит"
 

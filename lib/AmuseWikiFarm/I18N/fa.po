@@ -1523,6 +1523,9 @@ msgstr "آدرس URL عکس"
 msgid "Images"
 msgstr "عکس‌ها"
 
+msgid "Import session"
+msgstr ""
+
 msgid "Imposition schemas"
 msgstr "طرح‌های انتخابی"
 
@@ -2601,6 +2604,9 @@ msgstr "گزینه‌های محدود فرمت"
 msgid "Results per page:"
 msgstr "نتایج در هر صفحه:"
 
+msgid "Resume session"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "تاریخ روز بوسیله URL بازیابی شد"
 
@@ -3434,8 +3440,8 @@ msgstr "لیست نامرتب"
 msgid "Unpublished texts"
 msgstr "متن‌های منتشر نشده"
 
-#. ($mime)
 #. ($mime_type)
+#. ($mime)
 msgid "Unsupported file type %1"
 msgstr "فایل %1 پشتیبانی نمی‌شود"
 
@@ -3530,8 +3536,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "کاربر %1 ایجاد شد!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "کاربر %1 حذف شد"
 
