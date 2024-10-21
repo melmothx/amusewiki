@@ -130,3 +130,8 @@ sub _fetch_remote {
         diag $job->logs;
     }
 }
+
+# keep the testing clean, breaks jobs.t
+
+$mirror->delete;
+$orig->delete;
