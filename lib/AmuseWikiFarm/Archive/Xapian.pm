@@ -445,15 +445,18 @@ sub index_text {
                 $indexer->index_text($notes, 1, 'XNOTES');
             }
 
-            # Increase the term position so that phrases can't straddle the
-            # doc_name and keywords.
-            $indexer->increase_termpos();
-
             foreach my $method (qw/title subtitle author teaser source notes/) {
                 if (my $thing = $title->$method) {
                     $self->_index_html($indexer, $thing);
                 }
             }
+            foreach my $method (qw/title subtitle author/) {
+                $self->_index_html($indexer, $title->$method, 20);
+            }
+            foreach my $method (qw/title subtitle author teaser source notes/) {
+                $self->_index_html($indexer, $title->$method);
+            }
+
             # built-ins fields
             # Dlog_debug { "Row is $_" } +{ $title->get_columns };
             foreach my $method (qw/rights isbn seriesname seriesnumber publisher sku/) {
@@ -461,6 +464,7 @@ sub index_text {
                 if (my $thing = $title->$method) {
                     # log_debug { "Indexing $method $thing" };
                     $indexer->index_text($thing);
+                    $indexer->increase_termpos;
                 }
             }
             my %muse_headers = map { $_->muse_header => $_->as_html } $title->muse_headers;
@@ -756,12 +760,14 @@ sub database_is_up_to_date {
 }
 
 sub _index_html {
-    my ($self, $indexer, $html) = @_;
+    my ($self, $indexer, $html, @rest) = @_;
+    return unless $html;
     if (my $tree = HTML::TreeBuilder->new_from_content($html)) {
         $tree->elementify;
         my $text = $tree->as_text;
         log_debug { "Text is $text" };
-        $indexer->index_text($text);
+        $indexer->index_text($text, @rest);
+        $indexer->increase_termpos;
         $tree->delete;
     }
 }
