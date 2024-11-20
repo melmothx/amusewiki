@@ -297,6 +297,7 @@ sub translations :Chained('root') :PathPart('translations') :Args(0) {
 
         }
         $c->stash(
+                  load_datatables => 1,
                   translations => \@translations,
                   page_title => $c->loc('Internal list of translations'),
                  );
