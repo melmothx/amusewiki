@@ -1249,7 +1249,7 @@ sub formats_definitions {
                {
                 code => 'tex',
                 ext => '.tex',
-                icon => 'fa-file-code-o',
+                icon => 'fa-tex',
                 # loc('XeLaTeX source');
                 desc => 'XeLaTeX source',
                 oldid => "downloadtex",

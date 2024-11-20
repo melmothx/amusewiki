@@ -69,7 +69,7 @@
     </script>
 
     <link rel="stylesheet"
-          href="[% c.uri_for('/static/css/fork-awesome.min.css', { v => 3 }) %]" />
+          href="[% c.uri_for('/static/css/fork-awesome.min.css', { v => 4 }) %]" />
 
     <!-- jquery-ui for the highlight effect everywhere and autocompletion
          source in [% c.uri_for('/static/js/jquery-ui-1.13.2.custom/jquery-ui.js') %] -->
