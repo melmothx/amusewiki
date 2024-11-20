@@ -284,6 +284,15 @@
                 title="[% loc('Edit this text') %]"
                 ></span><span class="sr-only" >[% loc('Edit this text') %]</span></a>
       </span>
+          [% IF text.uid %]
+            <span class="text-translate-button">
+              <a href="[% c.uri_for_action('/edit/newtext', ['text'], { uid => text.uid }) %]">
+                <span class="fa fa-language fa-2x fa-border"
+                      aria-hidden="true"
+                      title="[% loc('Translate this text') %]"
+                >
+                </span><span class="sr-only" >[% loc('Translate this text') %]</span></a></span>
+          [% END %]
       [% END %]
       [% IF annotation_editor %]
         <span id="text-annotation-button">
