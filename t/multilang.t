@@ -263,7 +263,7 @@ foreach my $lang (qw/alksd als jp lad/) {
     $mech->content_contains('This is the en index');
 }
 $mech->get_ok("/?__language=sr");
-$mech->content_lacks("Napravi zbirku") or diag $mech->content;
+$mech->content_contains("Napravi zbirku") or diag $mech->content;
 $schema->resultset('User')->update({ preferred_language => undef });
 
 
