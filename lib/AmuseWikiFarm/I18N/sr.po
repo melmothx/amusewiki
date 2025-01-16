@@ -6,19 +6,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-07-25 19:20+0200\n"
+"PO-Revision-Date: 2025-01-16 11:20+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Serbian\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. ($filename)
 msgid "%1 doesn't exist"
-msgstr ""
+msgstr "%1 ne postoji"
 
 #. ([$total])
 msgid "%1 jobs deleted"
@@ -31,11 +30,11 @@ msgstr ""
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
-msgstr ""
+msgstr "%1 za mobitele"
 
 #. (text.pages_estimated)
 msgid "%1 pp."
-msgstr ""
+msgstr "%1 str."
 
 msgid "(leave blank to keep the current one)"
 msgstr ""
@@ -44,7 +43,7 @@ msgid "(narrowest)"
 msgstr ""
 
 msgid "(smart quotes, links, footnotes, etc.)"
-msgstr ""
+msgstr "(navodnici, poveznice, fusnote itd.)"
 
 msgid "(use that as main link in static mirror as well)"
 msgstr ""
@@ -53,7 +52,7 @@ msgid "(widest)"
 msgstr ""
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
-msgstr ""
+msgstr "Praznim retkom (ili sa više praznih redaka) započinje novi odlomak"
 
 msgid "A collection with this URI already exists"
 msgstr ""
@@ -61,105 +60,112 @@ msgstr ""
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
-msgstr ""
+msgstr "Već postoji slika za naslovnicu, ali možeš je zamijeniti drugom"
 
 msgid ""
 "A footnote is a line which starts with a number between square\n"
 "          brackets, with no leading whitespace."
 msgstr ""
+"Fusnota je redak koji započinje brojem između uglatih zagrada, bez\n"
+"početnog razmaka"
 
 msgid "A line which starts with 2 or more whitespaces is a quotation."
-msgstr ""
+msgstr "Redak koji započinje sa 2 ili više praznih znakova je citat."
 
 msgid "A line which starts with 20 or more whitespaces is right-aligned."
-msgstr ""
+msgstr "Redak koji započinje s 20 ili više praznih znakova je poravnan desno."
 
 msgid "A line which starts with 6 or more whitespaces is centered."
-msgstr ""
+msgstr "Redak koji započinje sa 6 ili više praznih znakova je centriran."
 
 msgid ""
 "A list of links and labels to insert into the top\n"
 "            bar. One per line, first the url, then the label,\n"
 "            separated by a space, e.g. \"http://test.me Test site\""
 msgstr ""
+"Popis poveznica i naslova za gornji dio stranice. Jedna poveznica po\n"
+"retku, najprije URL i poslije naslov, odvojenih razmakom, npr.\n"
+"\"http://test.me Test sajt\""
 
 #. (location)
 msgid "A new text has been created at %1"
-msgstr ""
+msgstr "Novi tekst: %1"
 
 msgid "A nice title"
-msgstr ""
+msgstr "Lijep naslov"
 
 msgid "A4 imposed PDF"
-msgstr ""
+msgstr "A4 PDF za štampanje"
 
 msgid "A4 paper"
-msgstr ""
+msgstr "A4 papir"
 
 msgid "A5 paper"
-msgstr ""
+msgstr "A5 papir"
 
 msgid "A6 paper (also suitable for e-readers)"
-msgstr ""
+msgstr "A6 papir (i za e-čitače)"
 
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
-msgstr ""
+msgstr "Napuštena izmjena u toku, slobodno provjeri razlike i preuzmi"
 
 msgid "Access token"
 msgstr ""
 
 msgid "Action"
-msgstr ""
+msgstr "Akcija"
 
 msgid "Activate the blog-style look and feel"
-msgstr ""
+msgstr "Aktiviraj blog stil"
 
 msgid "Active"
-msgstr ""
+msgstr "Aktivno"
 
 msgid "Add"
 msgstr ""
 
 msgid "Add a cover image (PNG or JPG)"
-msgstr ""
+msgstr "Dodaj sliku za naslovnicu (PNG ili JPG)"
 
 msgid "Add a new text"
-msgstr ""
+msgstr "Dodaj novi tekst"
 
 msgid "Add an attachment"
-msgstr ""
+msgstr "Dodaj novi privitak"
 
 msgid "Add crop marks to the PDF"
-msgstr ""
+msgstr "Dodaj kontrolne oznake PDF-u"
 
 msgid "Add new remote repository"
-msgstr ""
+msgstr "Dodan je novi repozitorij"
 
 msgid "Add non-breaking spaces where appropriate for the language"
-msgstr ""
+msgstr "Dodaj neodvojivi razmak prikladan jeziku"
 
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
 "(integer)"
 msgstr ""
+"Dodaj popis početnih slova na početku popisa tekstova ako broj\n"
+"tekstova je veći od ovog broja"
 
 msgid "Add sections to the bookbuilder"
-msgstr ""
+msgstr "Dodaj dijelove tekstova zbirci"
 
 msgid "Add text"
 msgstr ""
 
 msgid "Add the OPDS URL"
-msgstr ""
+msgstr "Dodaj URL OPDS-a"
 
 msgid "Add the selected parts to the bookbuilder"
-msgstr ""
+msgstr "Dodaj označene dijelove zbirci"
 
 msgid "Add the whole text"
-msgstr ""
+msgstr "Dodaj cijeli tekst"
 
 msgid "Add this text to the bookbuilder"
-msgstr ""
+msgstr "Dodaj ovaj tekst zbirci"
 
 msgid "Add to colophon"
 msgstr ""
@@ -180,6 +186,7 @@ msgid ""
 "Additional information (full date, original title, translators, credits, "
 "etc)."
 msgstr ""
+"Dodatne informacije (kompletan datum, naslov originala, prevoditelji, itd.)"
 
 msgid "Additional nginx configuration"
 msgstr ""
@@ -191,9 +198,11 @@ msgid ""
 "  change, it will appear under %1. There is a big red\n"
 "  button for each deleted text, and you can proceed with the purging."
 msgstr ""
+"Nakon odobrenja izmjene, pojavit će se na stranici %1. Velikim crvenim\n"
+"gumbom možeš ga potpuno izbrisati iz arhiva."
 
 msgid "Age:"
-msgstr ""
+msgstr "Starost:"
 
 msgid "Aggregation"
 msgstr ""
@@ -205,27 +214,27 @@ msgid "Aggregations"
 msgstr ""
 
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 msgid "Alias can't point to itself"
-msgstr ""
+msgstr "Alias ne može povezivati samog sebe"
 
 msgid ""
 "All kind of lists start with one or more leading\n"
 "        whitespace."
-msgstr ""
+msgstr "Sve vrste popisa počinju jednom ili više razmaka na početku retka."
 
 msgid "All languages"
-msgstr ""
+msgstr "Svi jezici"
 
 msgid "All revisions"
-msgstr ""
+msgstr "Sve izmjene"
 
 msgid "All sites"
-msgstr ""
+msgstr "Svi sajtovi"
 
 msgid "All users"
-msgstr ""
+msgstr "Svi korisnici"
 
 msgid ""
 "Allow Unicode URIs for categories (author, topics). Recommended for non-"
@@ -236,6 +245,7 @@ msgid ""
 "Allow binary uploads to logged in users: list of whitespace separate file "
 "extensions"
 msgstr ""
+"Dopusti sljedeće vrste datoteka: popis ekstenzija odvojenih bijelim razmakom"
 
 msgid ""
 "Also produce slides\n"
@@ -245,6 +255,11 @@ msgid ""
 "          you want to exclude a section, put a comment in the section\n"
 "          body with the string “noslide”."
 msgstr ""
+"Proizvodi slajdove. Svaki odjeljak, bez obzira na njegovu razinu,\n"
+"proizvodi jedan slajd. Tekst koji ne pripada nijednom odjeljku\n"
+"ignorirat će se. Ako tekst nema odjeljke, slajdovi će biti prazni. Ako\n"
+"hoćeš preskočiti jedan odjeljak, dodaj komentar s riječi \"noslide\",\n"
+"npr. \"; no slide\""
 
 msgid "Alternate Text"
 msgstr ""
@@ -257,6 +272,10 @@ msgid ""
 "      errico-malatesta-anarchy-2. Please note that this is normally\n"
 "      not needed"
 msgstr ""
+"URI je niz znakova koji na jedinstven način određuje tekst u arhivi.\n"
+"Teoretski može biti bilo što, ali zbog dosljednosti molimo da se\n"
+"pridržavate ovog principa: autor, ime, naslov, jezik, eventualni broj,\n"
+"npr. \"errico-malatesta-anarchy-2\". Inače to nije potrebno."
 
 msgid "Annotations"
 msgstr ""
@@ -284,25 +303,25 @@ msgid "Anthology Name"
 msgstr ""
 
 msgid "Apache is not currently supported"
-msgstr ""
+msgstr "Trenutno Apache se ne podržava"
 
 msgid "Archive"
-msgstr ""
+msgstr "Arhiva"
 
 msgid "Archive by month"
-msgstr ""
+msgstr "Arhiva po mjesecima"
 
 msgid "Archive history"
-msgstr ""
+msgstr "Povijest arhiva"
 
 msgid "Are you sure?"
-msgstr ""
+msgstr "Sigurno?"
 
 msgid "As cover in the header"
-msgstr ""
+msgstr "Kao naslovnica na zaglavlju"
 
 msgid "As regular image in the body"
-msgstr ""
+msgstr "Kao obična slika u tekstu"
 
 msgid "Assign text to aggregations"
 msgstr ""
@@ -311,19 +330,19 @@ msgid "Assign text to collections"
 msgstr ""
 
 msgid "Attach"
-msgstr ""
+msgstr "Privitak"
 
 msgid "Attached images"
-msgstr ""
+msgstr "Slike u privitku"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Prilozi"
 
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 msgid "Author and title. If one side document: title."
-msgstr ""
+msgstr "Autor i naslov. Za jednostrani prijelom: naslov."
 
 msgid "Authorize your IP"
 msgstr ""
@@ -332,54 +351,54 @@ msgid "Authorize your IP, if needed"
 msgstr ""
 
 msgid "Authors"
-msgstr ""
+msgstr "Autori"
 
 msgid "Authors and topics listing"
-msgstr ""
+msgstr "Popisi autora i tema"
 
 msgid "Authors for indexing"
-msgstr ""
+msgstr "Autori za indeksiranje"
 
 msgid "Auto"
 msgstr ""
 
 msgid "Automatically generated"
-msgstr ""
+msgstr "Automatski"
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
-msgstr ""
+msgstr "Automatski zahtijevaj i obnovi SSL certifikate koristeći Let's Encrypt"
 
 msgid "Available"
-msgstr ""
+msgstr "Na raspolaganju"
 
 msgid "Available category tags for header"
-msgstr ""
+msgstr "Raspoložive kategorijske oznake za zaglavlje"
 
 msgid ""
 "Avoid hyphenation on the last word of a sentence (it could result in bad "
 "spacing)"
-msgstr ""
+msgstr "Nemoj prelamati zadnju riječ rečenice (može poremetiti razmake)"
 
 msgid "Back to the text"
-msgstr ""
+msgstr "Vrati se na tekst"
 
 msgid "Bad request"
-msgstr ""
+msgstr "Pogrešan zahtjev"
 
 msgid "Bad type. This is a bug"
 msgstr ""
 
 msgid "Beamer color theme"
-msgstr ""
+msgstr "Beamer tema za boju"
 
 msgid "Beamer theme"
-msgstr ""
+msgstr "Beamer tema"
 
 msgid "Beside topics and authors you can add more categories here"
 msgstr ""
 
 msgid "Binding correction in millimeters (additional inner margin)"
-msgstr ""
+msgstr "Korekcija za uvez u milimetrima (dodatna unutarnja margina)"
 
 msgid "Bleed Width (mm)"
 msgstr ""
@@ -387,33 +406,33 @@ msgstr ""
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
-msgstr ""
+msgstr "Svesci od 16 stranica koji treba savijati dva puta"
 
 msgid ""
 "Blocks of 8 pages to be folded twice and then bound\n"
 "                together."
-msgstr ""
+msgstr "Svesci od 8 stranica koji treba savijati dva puta i sašiti"
 
 msgid "Blog"
-msgstr ""
+msgstr "Blog"
 
 msgid "Body"
-msgstr ""
+msgstr "Tekst"
 
 msgid "Bold"
-msgstr ""
+msgstr "Podebljano"
 
 msgid "Book Covers"
 msgstr ""
 
 msgid "Bookbuilder"
-msgstr ""
+msgstr "Napravi zbirku"
 
 msgid "Bookbuilder page limit (integer)"
-msgstr ""
+msgstr "Maksimalni broj stranica zbirke"
 
 msgid "Build it"
-msgstr ""
+msgstr "Stvori"
 
 msgid "Built-in"
 msgstr ""
@@ -426,42 +445,44 @@ msgid ""
 "        between parens. With this option they will use per-page alpha\n"
 "        numbering"
 msgstr ""
+"Druga vrsta fusnota koristi brojeve u zagradama npr. (1) kao oznake. Ovom će "
+"se opcijom koristiti slova, počevši iznova na svakoj stranici."
 
 msgid "By number of pages, ascending"
-msgstr ""
+msgstr "Po broju stranica (manje na početku)"
 
 msgid "By number of pages, descending"
-msgstr ""
+msgstr "Po broju stranica (više na početku)"
 
 msgid "By relevance"
-msgstr ""
+msgstr "Po relevantnosti"
 
 msgid "By sku ascending"
-msgstr ""
+msgstr "Po SKU-u prema gore"
 
 msgid "By sku descending"
-msgstr ""
+msgstr "Po SKU-u prema dole"
 
 msgid "By title A-Z"
-msgstr ""
+msgstr "Po naslovu A-Z"
 
 msgid "By title Z-A"
-msgstr ""
+msgstr "Po naslovu Z-A"
 
 msgid "CSS Alternate Theme (Dark mode, optional)"
 msgstr ""
 
 msgid "CSS Theme"
-msgstr ""
+msgstr "Tema CSS-a"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Poništi"
 
 msgid "Canonical name"
-msgstr ""
+msgstr "Glavno osnovno ime"
 
 msgid "Categories"
-msgstr ""
+msgstr "Teme"
 
 msgid "Category editing is disabled (autoimport file present)"
 msgstr ""
@@ -472,16 +493,16 @@ msgid "Category types for %1"
 msgstr ""
 
 msgid "Center all the sectioning titles."
-msgstr ""
+msgstr "Centriraj sve naslove"
 
 msgid "Center the chapter titles."
-msgstr ""
+msgstr "Centriraj naslove poglavlja"
 
 msgid "Changes"
-msgstr ""
+msgstr "Izmjene"
 
 msgid "Changes applied"
-msgstr ""
+msgstr "Unesene izmjene"
 
 msgid "Changes applied."
 msgstr ""
@@ -490,28 +511,31 @@ msgstr ""
 #. (revision.title.uri)
 #. (author_title)
 msgid "Changes for %1"
-msgstr ""
+msgstr "Izmjene za %1"
 
 msgid "Changes saved, thanks! They are now waiting to be published"
-msgstr ""
+msgstr "Izmjene izvršene, hvala, sad su na čekanju"
 
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
 "doing, you can delete an existing text and point to another adding a\n"
 "#DELETED directive in the text header with a special syntax:"
 msgstr ""
+"Mijenjati URL-ove nije preporučeno, ali ako znaš što radiš, možeš\n"
+"izbrisati postojeći tekst i preusmjeravati na drugi dodajući direktivu\n"
+"#DELETED posebnim sintaksom:"
 
 msgid "Chapter"
-msgstr ""
+msgstr "Poglavlje"
 
 msgid "Chapter and section. If one side document: chapter."
-msgstr ""
+msgstr "Poglavlje i Odjeljak. Za jednostrani prijelom: poglavlje."
 
 msgid "Chapter, only for chapter divisions in books"
-msgstr ""
+msgstr "Poglavlje, samo za cijele knjige"
 
 msgid "Cheatsheet for the markup"
-msgstr ""
+msgstr "Sažetak za oblikovanje teksta"
 
 msgid "Check"
 msgstr ""
@@ -520,25 +544,25 @@ msgid "Check mail sending and send mail to:"
 msgstr ""
 
 msgid "Choose a paper format"
-msgstr ""
+msgstr "Izaberi format papira"
 
 msgid "Choose a template"
 msgstr ""
 
 msgid "Clear the book list"
-msgstr ""
+msgstr "Poništi popis tekstova"
 
 msgid "Click here to start a new bookbuilder session"
 msgstr ""
 
 msgid "Click on the images to get the sample PDF"
-msgstr ""
+msgstr "Klikni na slike za primjer PDF-a"
 
 msgid "Clone"
-msgstr ""
+msgstr "Kloniraj"
 
 msgid "Close"
-msgstr ""
+msgstr "Zatvori"
 
 msgid "Code"
 msgstr ""
@@ -564,10 +588,10 @@ msgstr ""
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
-msgstr ""
+msgstr "Širina lijeve strane stranice za uređivanje tekstova"
 
 msgid "Comma or semicolon separated list"
-msgstr ""
+msgstr "Popis odvojen zarezom"
 
 msgid "Comments"
 msgstr ""
@@ -576,34 +600,34 @@ msgid "Commit ID"
 msgstr ""
 
 msgid "Completed"
-msgstr ""
+msgstr "Gotovo"
 
 msgid "Computing of differences took"
-msgstr ""
+msgstr "Za izračunavanje razlika bilo je potrebno"
 
 msgid "Confirm"
-msgstr ""
+msgstr "Potvrdi"
 
 msgid "Conflict"
 msgstr ""
 
 msgid "Continuous footnote numbering across the whole document."
-msgstr ""
+msgstr "Nastavi brojanje fusnota kroz cijeli tekst."
 
 msgid "Convert to archive markup"
-msgstr ""
+msgstr "Pretvori u format koji se koristi u arhivu"
 
 msgid "Copyright notice"
 msgstr ""
 
 msgid "Couldn't add the text"
-msgstr ""
+msgstr "Nije bilo moguće dodati tekst"
 
 msgid "Couldn't automatically generate the URI!"
-msgstr ""
+msgstr "Nemoguće automatski generirati jedan URI za ovaj tekst"
 
 msgid "Couldn't build that"
-msgstr ""
+msgstr "Ne mogu stvoriti zbirku"
 
 msgid "Cover Height (mm)"
 msgstr ""
@@ -615,7 +639,7 @@ msgid "Cover removed"
 msgstr ""
 
 msgid "Create"
-msgstr ""
+msgstr "Stvori"
 
 msgid "Create a book cover"
 msgstr ""
@@ -636,16 +660,16 @@ msgid "Create a new child collection"
 msgstr ""
 
 msgid "Create a new format"
-msgstr ""
+msgstr "Stvori novi format"
 
 msgid "Create a new librarian"
-msgstr ""
+msgstr "Stvori novog bibliotekara"
 
 msgid "Create a new series"
 msgstr ""
 
 msgid "Create a new special page"
-msgstr ""
+msgstr "Stvori novu posebnu stranicu"
 
 msgid "Create a new text for this aggregation"
 msgstr ""
@@ -654,7 +678,7 @@ msgid "Create a new text for this collection"
 msgstr ""
 
 msgid "Create a new user"
-msgstr ""
+msgstr "Stvori novog korisnika"
 
 msgid ""
 "Create a public repository on GitLab, GitHub or similar services (or on your "
@@ -662,42 +686,42 @@ msgid ""
 msgstr ""
 
 msgid "Create a topic alias"
-msgstr ""
+msgstr "Stvori alias za temu"
 
 msgid "Create an author alias"
-msgstr ""
+msgstr "Stvori alias za autora"
 
 msgid "Create new site"
-msgstr ""
+msgstr "Stvori novi sajt"
 
 msgid "Create user and mail password"
-msgstr ""
+msgstr "Stvori korisnika i pošalji lozinku"
 
 msgid "Created"
-msgstr ""
+msgstr "Stvoreno"
 
 msgid "Created by"
-msgstr ""
+msgstr "Autor"
 
 msgid "Created new text"
-msgstr ""
+msgstr "Novi tekst stvoren"
 
 msgid "Current time"
-msgstr ""
+msgstr "Vrijeme"
 
 #. ($c->stash->{site}->canonical)
 #. (site.canonical)
 msgid "Custom formats for %1"
-msgstr ""
+msgstr "Posebni formati za %1"
 
 msgid "Custom home page"
-msgstr ""
+msgstr "Koristi ovaj stranicu kao homepage"
 
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 msgid "Date of the original publication"
-msgstr ""
+msgstr "Datum prvog izdanja"
 
 msgid "Day"
 msgstr ""
@@ -706,23 +730,23 @@ msgid "Default"
 msgstr ""
 
 msgid "Default sorting for the category text list"
-msgstr ""
+msgstr "Zadano sortiranje"
 
 msgid "Default value if blank:"
 msgstr ""
 
 msgid "Deferred/Deleted texts"
-msgstr ""
+msgstr "Odgođeni/izbrisani tekstovi"
 
 msgid "Delete"
-msgstr ""
+msgstr "Izbriši"
 
 msgid "Delete permanently"
-msgstr ""
+msgstr "Izbriši zauvijek"
 
 #. (remote.name)
 msgid "Delete remote repository %1"
-msgstr ""
+msgstr "Izbriši udaljeni repozitorij %1"
 
 msgid "Delete selected attachments"
 msgstr ""
@@ -731,65 +755,72 @@ msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
 msgstr ""
+"Potpuno je sigurno izbrisati izmjenu koja je već objavljena. Ako nije "
+"objavljena, izmjena će brisanjem biti zauvijek izgubljena"
 
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 msgid "Description item"
-msgstr ""
+msgstr "Popis definicija"
 
 msgid ""
 "Description lists use a double colon to separate the\n"
 "        term and the description."
 msgstr ""
+"U popisima definicija koriste se dvostruke dvije točne koji odvajaju\n"
+"pojam i definiciju."
 
 msgid "Desired URI"
-msgstr ""
+msgstr "URI po želji"
 
 msgid "Destination"
-msgstr ""
+msgstr "Odredište"
 
 msgid "Details"
 msgstr ""
 
 msgid "Did you mean:"
-msgstr ""
+msgstr "Možda je to bilo:"
 
 msgid "Diff"
 msgstr ""
 
 msgid "Differences"
-msgstr ""
+msgstr "Razlike"
 
 msgid ""
 "Directory with templates in the site repository, e.g.\n"
 "        \"templates\" (ASCII only). Do not set it unless you know\n"
 "        exactly what you are doing"
 msgstr ""
+"Direktorij s obrascima u repozitoriju sajta, npr. \"templates\" ili\n"
+"\"obrasci\" (samo ASCII slova, bez kvačicama itd.). Ostavi prazno ako ne\n"
+"znaš što to točno znači."
 
 msgid "Disable /mirror/ URL for anonymous users"
-msgstr ""
+msgstr "Onemogućavaj URL /mirror/ za anonimne korisnike"
 
 msgid "Display the latest entries on special pages"
 msgstr ""
 
 msgid "Display url as"
-msgstr ""
+msgstr "Pokaži URL kao"
 
 msgid "Division factor"
-msgstr ""
+msgstr "Faktor podijele"
 
 msgid "Do not create a cover page and start the text on the first page"
-msgstr ""
+msgstr "Bez naslovnice, tekst počinje na prvoj stranici"
 
 msgid "Do not enforce save message"
-msgstr ""
+msgstr "Ne forsiraj poruku kad se tekst spremi"
 
 msgid "Do not redirect aliases to canonical"
 msgstr ""
 
 msgid "Do not use bold fonts"
-msgstr ""
+msgstr "Ne koristi podebljane fontove"
 
 msgid "Do you also need a cover?"
 msgstr ""
@@ -798,37 +829,37 @@ msgid "Domain"
 msgstr ""
 
 msgid "Done"
-msgstr ""
+msgstr "Gotovo"
 
 msgid "Double bars"
-msgstr ""
+msgstr "Dvostruke trake (\"||\")"
 
 msgid "Download"
 msgstr ""
 
 msgid "Downloads"
-msgstr ""
+msgstr "Preuzimanja"
 
 msgid "Drag to reorder"
 msgstr ""
 
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
-msgstr ""
+msgstr "Npr. neka riječ AND title:\"Naslov\" AND author:Autor OR year:2017"
 
 msgid "EPUB"
-msgstr ""
+msgstr "EPUB"
 
 msgid "EPUB (for mobile devices)"
-msgstr ""
+msgstr "EPUB (za mobilne uređaje)"
 
 msgid "EPUB + HTML"
 msgstr ""
 
 msgid "ETA"
-msgstr ""
+msgstr "Predviđeno vrijeme završetka"
 
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 msgid "Edit Aggregation"
 msgstr ""
@@ -837,89 +868,90 @@ msgid "Edit Series"
 msgstr ""
 
 msgid "Edit attachment description"
-msgstr ""
+msgstr "Uredi opis priloga"
 
 #. ($format->format_name)
 msgid "Edit format %1"
-msgstr ""
+msgstr "Uredi format %1"
 
 msgid "Edit full site configuration"
-msgstr ""
+msgstr "Uredi postavke sajta (napredno)"
 
 msgid "Edit screen layout options"
-msgstr ""
+msgstr "Postavke za uređivanje tekstova"
 
 #. (esite.id)
 msgid "Edit site %1"
-msgstr ""
+msgstr "Uredi sajt %1"
 
 msgid "Edit site configuration"
-msgstr ""
+msgstr "Uredi konfiguraciju sajta"
 
 msgid "Edit the text you want to unpublish and add this line to the header:"
 msgstr ""
+"Izmijeni tekst koji želiš otkloniti i dodaj slijedeći redak u zaglavlju:"
 
 msgid "Edit this text"
-msgstr ""
+msgstr "Uredi ovaj tekst"
 
 #. (user.username)
 msgid "Edit user %1"
-msgstr ""
+msgstr "Uredi korisnika %1"
 
 msgid "Editing"
-msgstr ""
+msgstr "Uređivanje"
 
 msgid "Effect"
 msgstr ""
 
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 msgid "Email sent!"
-msgstr ""
+msgstr "E-mail poslan!"
 
 msgid "Email updated"
-msgstr ""
+msgstr "E-mail ažuriran"
 
 msgid "Email, password, locale"
 msgstr ""
 
 msgid "Emails do not match"
-msgstr ""
+msgstr "Ne podudaraju se mailovi"
 
 msgid "Embed fonts in the EPUB file"
-msgstr ""
+msgstr "Uključi fontove u EPUB datoteku"
 
 msgid "Enable \"What links here\" feature"
-msgstr ""
+msgstr "Omogući \"Što vodi ovamo\""
 
 msgid "Enable search suggestions (did you mean...)"
-msgstr ""
+msgstr "Omogući prijedloge kod pretrage (\"možda je to bilo...\")"
 
 msgid "Enable title ordering by SKU"
-msgstr ""
+msgstr "Omogući sortiranje po SKU-u"
 
 msgid "Enforce e-mail on submission"
 msgstr ""
 
 msgid "Erase this revision"
-msgstr ""
+msgstr "Izbriši izmjenu"
 
 msgid "Error converting the upload file. Is it an HTML file?"
-msgstr ""
+msgstr "Greška na učitavanju fajlu. Radi se o HTML dokumentu?"
 
 msgid "Error sending mail!"
-msgstr ""
+msgstr "Greška pri slanju maila!"
 
 msgid "Error while converting the HTML. Sorry."
-msgstr ""
+msgstr "Greška na prerađivanju HTML-a."
 
 #. ($res->{error} || "Unknwon error")
 msgid "Error: %1"
 msgstr ""
 
 msgid "Errors"
-msgstr ""
+msgstr "Greške"
 
 msgid "Estimated pages"
 msgstr ""
@@ -927,28 +959,33 @@ msgstr ""
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
-msgstr ""
+msgstr "Iako sajt prikladan je za mobitele, ne nudi svoju aplikaciju."
 
 msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
 "        sectioning for this to work."
 msgstr ""
+"Svaki će odjeljak proizvoditi jedan slajd. Trebaš odjeljke da bi to\n"
+"funkcioniralo."
 
 msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
 msgstr ""
+"Isto kao 2up, ali najprije treba horizontalno rezati listove i staviti\n"
+"jedna polovica na drugoj, a tek poslije savijati. Na ovaj način može\n"
+"se, npr., štampati A6 na A4."
 
 msgid "Example"
-msgstr ""
+msgstr "Primjer"
 
 msgid "Exception"
 msgstr ""
 
 msgid "Existing redirections"
-msgstr ""
+msgstr "Postojeća preusmjeravanja"
 
 msgid "Expected pages"
 msgstr ""
@@ -960,15 +997,15 @@ msgid "Exposed to OAI-PMH as trade price"
 msgstr ""
 
 msgid "Failed"
-msgstr ""
+msgstr "Neuspješno"
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
-msgstr ""
+msgstr "Greška pri dodavanju udaljenog repozitorija %1"
 
 #. ($name)
 msgid "Failed to remove Remote repository %1"
-msgstr ""
+msgstr "Greška pri izbrisanju udaljenog repozitorija %1"
 
 msgid "Federation"
 msgstr ""
@@ -983,19 +1020,19 @@ msgid "File"
 msgstr ""
 
 msgid "File already in the body"
-msgstr ""
+msgstr "Datoteka je već prisutna u tekstu"
 
 msgid "File extension"
-msgstr ""
+msgstr "Ekstenzija fajlova"
 
 msgid "File format not allowed"
-msgstr ""
+msgstr "Ova vrsta datoteke nije dopuštena"
 
 msgid "File too big"
-msgstr ""
+msgstr "Datoteka prevelika"
 
 msgid "File uploaded!"
-msgstr ""
+msgstr "Datoteka učitana!"
 
 msgid "Files"
 msgstr ""
@@ -1006,15 +1043,17 @@ msgstr ""
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
+"Ubaci prazne stranice prije zadnje stranice ako nedostaju stranice da\n"
+"bi se popunio svezak."
 
 msgid "Filters"
-msgstr ""
+msgstr "Filteri"
 
 msgid "Find the add catalogue menu."
-msgstr ""
+msgstr "Pronađi menu za nove kataloge."
 
 msgid "Find the network library menu, or equivalent."
-msgstr ""
+msgstr "Pronađi menu za mrežne biblioteke (ili slično)."
 
 msgid "Finished"
 msgstr ""
@@ -1023,33 +1062,35 @@ msgid "First"
 msgstr ""
 
 msgid "First Author and Second Author"
-msgstr ""
+msgstr "Prvi Autor i Drugi Autor"
 
 msgid "First Author, Second Author"
-msgstr ""
+msgstr "Prvi Autor, Drugi Autor"
 
 msgid "First slide"
-msgstr ""
+msgstr "Prvi slajd"
 
 msgid "First text attachment or EPUB"
 msgstr ""
 
 msgid "First you have to unpublish it via #DELETED."
-msgstr ""
+msgstr "Najprije moraš ga otkloniti retkom #DELETED."
 
 msgid "Fix typography (smart quotes)"
-msgstr ""
+msgstr "Tipografsko ispravljanje (navodnici i slično)"
 
 msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
-msgstr ""
+msgstr "Arci od 16 stranica na dva lista, uz dvostruko pojedinačno savijanje."
 
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
-msgstr ""
+msgstr "Arci od 16 stranica na jednom listu, uz trostruko savijanje."
 
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
 msgstr ""
+"Fiksni svesci od 8 stranica, za horizontalno rezanje, pojedinačno savijanje "
+"i uvez u buklet"
 
 msgid "Fixed topic list"
 msgstr ""
@@ -1064,69 +1105,71 @@ msgid "Font"
 msgstr ""
 
 msgid "Font preview"
-msgstr ""
+msgstr "Pretpregled fontova"
 
 msgid "Font size"
-msgstr ""
+msgstr "Veličina fontova"
 
 msgid "Footnotes"
-msgstr ""
+msgstr "Fusnote"
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
 "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
 "in the body (%4), ignoring changes."
 msgstr ""
+"Neusklađene fusnote: pronađeno %1 fusnota (%2) i pronađeno %3 fusnota\n"
+"u tekstu (%4), zanemarivši izmjene. "
 
 msgid "For texts from the internet use"
-msgstr ""
+msgstr "Za tekstove pronađene na internetu upotrijebi"
 
 msgid "For texts without a table of content, start text on the very first page"
-msgstr ""
+msgstr "Ako tekst nema poglavlja, počni tekst na prvoj stranici (bez omotnice)"
 
 msgid ""
 "For topics and authors redirections, you can create them\n"
 "  here"
-msgstr ""
+msgstr "Ovdje možeš stvoriti preusmjeravanje za teme i autore"
 
 msgid "Force a line break."
-msgstr ""
+msgstr "Prisili na prelazak u novi red"
 
 msgid "Force publishing"
-msgstr ""
+msgstr "Prisili na objavljivanje"
 
 msgid "Format name"
-msgstr ""
+msgstr "Ime formata"
 
 msgid "Format successfully created"
-msgstr ""
+msgstr "Format uspješno stvoren"
 
 msgid "Format successfully updated"
-msgstr ""
+msgstr "Format uspješno uređen"
 
 msgid "Formats"
-msgstr ""
+msgstr "Formati"
 
 msgid "Full list of texts"
-msgstr ""
+msgstr "Svi tekstovi"
 
 msgid "Full tag cloud"
-msgstr ""
+msgstr "Tag cloud s temama i autorima"
 
 msgid "Full text search"
-msgstr ""
+msgstr "Pretraga čitavog testa"
 
 msgid "Full width, fluid layout"
 msgstr ""
 
 msgid "General configuration"
-msgstr ""
+msgstr "Opća konfiguracija"
 
 msgid "Generate Index"
 msgstr ""
 
 msgid "Generic (fits in A4 and Letter)"
-msgstr ""
+msgstr "Generičan format (može stati i na A4 i na Letter)"
 
 msgid "Get generated URI"
 msgstr ""
@@ -1140,56 +1183,60 @@ msgid "Git"
 msgstr ""
 
 msgid "Git console"
-msgstr ""
+msgstr "Git konzola"
 
 msgid "Git is not enabled on this site"
-msgstr ""
+msgstr "Git nije aktivan na ovom sajtu"
 
 msgid ""
 "HTML code to append to each regular page, inserted\n"
 "            verbatim, so be careful"
 msgstr ""
+"Dodaj sljedeći HTML svakoj normalnoj stranici (/library/*), bez ikakve "
+"promjene."
 
 msgid ""
 "HTML to append to each special page, inserted\n"
 "            verbatim, now you have a chance to screw up everything, so\n"
 "            be careful"
 msgstr ""
+"Dodaj sljedeći HTML svakoj posebnoj stranici (/special/*), bez\n"
+"ikakve promjene (pazi što radiš)."
 
 msgid "HTML to insert in the footer of the layout, below the links"
-msgstr ""
+msgstr "HTML za dno svake stranice, ispod podnožja"
 
 msgid "HTML to insert into the left sidebar"
-msgstr ""
+msgstr "HTML za lijevu stranu svake stranice"
 
 msgid "HTML to insert into the right sidebar"
-msgstr ""
+msgstr "HTML za desnu stranu svake stranice"
 
 msgid "HTML to insert on the bottom of the layout, above the footer"
-msgstr ""
+msgstr "HTML za dno svake stranice, iznad podnožja"
 
 msgid ""
 "HTML to insert on the top of the layout, behind the navigation bar and below "
 "the banner"
-msgstr ""
+msgstr "HTML za gornji dio stranice, ispod menua i bannera"
 
 msgid "HTML/Word Importer"
-msgstr ""
+msgstr "Pretvori HTML/Word u wiki format"
 
 msgid "Half Letter paper"
-msgstr ""
+msgstr "Polovica “Letter” papira"
 
 msgid "Headers"
 msgstr ""
 
 msgid "Heading"
-msgstr ""
+msgstr "Zaglavlje"
 
 msgid "Headings"
-msgstr ""
+msgstr "Zaglavlja"
 
 msgid "Height:"
-msgstr ""
+msgstr "Visina"
 
 msgid "Help"
 msgstr ""
@@ -1198,16 +1245,20 @@ msgid "Help Text"
 msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
-msgstr ""
+msgstr "Ovdje možeš naći pregled tema i boja za slajdove"
 
 msgid ""
 "Here you can save or load your templates. The text list\n"
 "      and the cover image are excluded by the saved settings. You can\n"
 "      use this to save paper/fonts/imposition and other options."
 msgstr ""
+"Ovdje možeš spremiti ili koristiti svoje opcije. Popis tekstova i\n"
+"sliku za naslovnicu bit će ignorirane u spremljene opcije. Možeš to\n"
+"koristiti da spremiš svoje opcije za papir, fontove, prijelom itd.,\n"
+"koristeći ih u budućnost."
 
 msgid "Higher division factor means narrower margins"
-msgstr ""
+msgstr "Što je faktor podijele veći to će margine biti uže"
 
 msgid "Highest priority format"
 msgstr ""
@@ -1219,40 +1270,42 @@ msgid "How are you going to access Git?"
 msgstr ""
 
 msgid "How do I create a landing page?"
-msgstr ""
+msgstr "Kako mogu stvoriti naslovnu stranicu?"
 
 msgid "How do I create a special page?"
-msgstr ""
+msgstr "Kako mogu stvoriti jednu specijalnu stranicu?"
 
 msgid "How do I delete a text?"
-msgstr ""
+msgstr "Kako mogu izbrisati jedan tekst?"
 
 msgid "How do I modify a special page?"
-msgstr ""
+msgstr "Kako mogu izmijeniti jednu specijalnu stranicu?"
 
 msgid "How do I purge a text?"
-msgstr ""
+msgstr "Kako mogu potpuno izbrisati jedan tekst?"
 
 msgid "How do I redirect to another page?"
-msgstr ""
+msgstr "Kako mogu preusmjeravati na drugu stranicu?"
 
 msgid "How to choose a password"
-msgstr ""
+msgstr "Kako izabrati lozinku"
 
 msgid ""
 "However, you can browse, search, download and read the texts\n"
 "  from mobile reading applications which support the so-called OPDS\n"
 "  protocol."
 msgstr ""
+"Ipak možeš neposredno prelistati, pretražiti, skidati i čitati tekstove "
+"aplikacijama koje podržavaju OPDS protokol."
 
 msgid "I am human"
-msgstr ""
+msgstr "Ja sam ljudsko biće"
 
 msgid "I have a system user with SSH access"
 msgstr ""
 
 msgid "I want an imposed (ready to print) PDF"
-msgstr ""
+msgstr "Želim PDF spreman za štampu"
 
 msgid "I will provide my remote repository"
 msgstr ""
@@ -1264,7 +1317,7 @@ msgid "ISBN"
 msgstr ""
 
 msgid "Id"
-msgstr ""
+msgstr "Id"
 
 msgid "Identifier"
 msgstr ""
@@ -1274,11 +1327,16 @@ msgid ""
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
 msgstr ""
+"Ako slučajno postoji još jedan tekst istog autora i istog naslova, izaberi "
+"željeni URI koristeći polje niže, unesi autora, naslov i jedan broj, npr. "
+"moj-autor-moj-naslov-1"
 
 msgid ""
 "If it was not your intention, please just ignore this mail and\n"
 "your password will not be changed."
 msgstr ""
+"Ako nije vam bila namjera, jednostavno zanemarite ovu poruku i lozinka\n"
+"vaša neće se promijeniti"
 
 msgid ""
 "If it's not the case, please open a bug report at https://github.com/"
@@ -1294,7 +1352,7 @@ msgstr ""
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
-msgstr ""
+msgstr "Ako je prazno, koristit će se %1 iz direktorija aplikacije."
 
 msgid ""
 "If present, hide the\n"
@@ -1303,26 +1361,37 @@ msgid ""
 "          available and more relevance should be given to the attached\n"
 "          files."
 msgstr ""
+"Ako je to prisutno, sakrij generirane fajlove i informacije o tekstu.\n"
+"To ima smisla ako u stranici ima privitaka koji zaslužuju više pažnje\n"
+"nego tekst sam po sebi (ako na primjer nije u dobrom stanju)."
 
 msgid ""
 "If set to a number greater than 0, automatically generate a teaser, with "
 "roughly this length"
 msgstr ""
+"Ako je broj veći od nule, automatski stvori tekst za pregled s tolikim "
+"slovima (okvirno)"
 
 msgid ""
 "If the publication of a text is deferred, list it\n"
 "            with the teaser and the cover without providing access to\n"
 "            the body"
 msgstr ""
+"Ako je objavljivanje odgođeno, pokazati će se pregled i slika na\n"
+"popisima, ali bez pristupa tekstu"
 
 msgid ""
 "If the user is allowed to publish, speed up the process skipping the "
 "revision page if there are no conflicts and automatically redirect to the "
 "published text once it is done."
 msgstr ""
+"Ako je korisniku dopušteno objavljivanje, ako nema potrebe ne pokaži\n"
+"stranicu sa izmjenama na čekanju i idi ravno na stranicu objavljivanja\n"
+"i automatski preusmjeravaj na tekst kad je procedura gotova."
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
+"Ako je osoba koja je napravila izmijene navela mail, uključena je u CC listu"
 
 msgid ""
 "If this line\n"
@@ -1332,12 +1401,18 @@ msgid ""
 "          date will be the time of the publishing, triggering a bump\n"
 "          on RSS and special pages at each editing."
 msgstr ""
+"Ako taj redak je prisutan, koristi ga kao datum objavljivanja na ovom\n"
+"sajtu. Datum može i biti u budućnosti, tako odgađajući objavljivanje.\n"
+"Ako takav redak nije prisutan, datum objavljivanje bit će datum\n"
+"posljednje izmjene (koji će se dakle promijeniti pri svakom izmjeni)."
 
 msgid ""
 "If this line is\n"
 "          present and the reason is set to something, the text will be\n"
 "          stored in the archive, but will not be published."
 msgstr ""
+"Ako je ovaj redak prisutan i ima neki sadržaj, tekst će se spremiti\n"
+"ali neće se objaviti."
 
 msgid ""
 "If this line is present, do not create a title page,\n"
@@ -1345,32 +1420,43 @@ msgid ""
 "          produce a PDF styled like an article (chapters and parts\n"
 "          will not start on a new page)."
 msgstr ""
+"Ako je ovaj redak prisutan, neće se koristiti naslovnica pa će se\n"
+"tekst prelamati kao članak"
 
 msgid "If this line is present, do not display the table of contents."
 msgstr ""
+"Ako je ovaj redak prisutan, tekst bit će bez popis sadržaja (bez kazala)"
 
 msgid "If you asked for imposition, select an imposition schema"
-msgstr ""
+msgstr "Ako želiš prijelom teksta izaberi obrazac"
 
 msgid ""
 "If you edit some format options, like fonts or paper\n"
 "      dimensions, you may want to rebuild the generated files"
 msgstr ""
+"Ako se promijene postavke za fajlove, kao što su fontovi ili dimenzije\n"
+"papira, valja ponovo proizvoditi ih."
 
 msgid ""
 "If you forgot your password, you can choose a new one visiting\n"
 "this link (click on it or copy and paste it in your browser):"
 msgstr ""
+"Ako ste zaboravili lozinku, možete je ponovo birati na sljedećoj\n"
+"poveznici (kliknite ili zalijepite u vašem browseru):"
 
 msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
+"Ako imaš .doc ili .odt datoteku, možeš pretvoriti je u HTML spremajući\n"
+"je kao HTML."
 
 msgid ""
 "If you request a rebuild when one is ongoing, you will\n"
 "    abort the current one."
 msgstr ""
+"Ako se pokrene nova proizvodnja fajlova dok je jedna još u toku, stara neće "
+"završiti."
 
 msgid ""
 "If you use it as a teaser image, the image will also\n"
@@ -1379,49 +1465,61 @@ msgid ""
 "      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
 "      on"
 msgstr ""
+"Ako je koristiš kao sliku za naslovnica, slika će se pojaviti i na\n"
+"naslovnici PDF-a. Možeš mijenjati njenu širinu dodajući slijedeći\n"
+"redak zaglavlju, gdje vrijednost može biti između 0 i 1. 1 znači\n"
+"širinu teksta, 0.5 pola toga itd."
 
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
 "the uri \"index\"."
 msgstr ""
+"Ako tvoj sajt nema ga, možeš stvoriti jednu specijalnu stranicu i dati\n"
+"joj URI \"index\"."
 
 msgid ""
 "If your site is multilanguage, you can create a language-specific\n"
 "  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
 "  URI \"index\", a dash, and the locale code."
 msgstr ""
+"Ako je tvoj sajt višejezični, možeš stvoriti lokaliziranu naslovnu\n"
+"stranicu dajući joj ime, npr. \"/special/index-hr\", t.j. \"index\",\n"
+"crtica, i međunarodni jezični kod."
 
 msgid "Image already set as cover"
-msgstr ""
+msgstr "Slika je već na naslovnici"
 
 #. ($w, $h, $limit, $limit)
 msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
-msgstr ""
+msgstr "Veličina slike %1 za %2 prekorači granicu od %3 za %4 piksela"
 
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
+"Učitavanje slika u idućem koraku, gdje možeš vidjeti i pregledati izmjene"
 
 msgid "Image url"
-msgstr ""
+msgstr "URL slike"
 
 msgid "Images"
-msgstr ""
+msgstr "Slike"
 
 msgid "Import session"
 msgstr ""
 
 msgid "Imposition schemas"
-msgstr ""
+msgstr "Obrasci prijeloma teksta"
 
 msgid "In both case you will get a reverse indentation."
-msgstr ""
+msgstr "U oba slučaja tekst će biti obrnuto uvučen"
 
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
 msgstr ""
+"U tekstu se broj unutar uglatih zagrada interpretira kao fusnota, ako "
+"fusnota postoji"
 
 #. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
@@ -1430,18 +1528,20 @@ msgid ""
 "  pretty much the same for all applications. All you have to do is to\n"
 "  add %1 to the network libraries."
 msgstr ""
+"U ovom primjeru koristi se FBreader, ali procedura je više-manje ista\n"
+"za sve aplikacije. Trebaš samo dodati %1 mrežnim bibliotekama."
 
 msgid "Inherited from the series"
 msgstr ""
 
 msgid "Inline elements"
-msgstr ""
+msgstr "Elementi po retku"
 
 msgid "Insert the file into the body at the cursor position"
-msgstr ""
+msgstr "Dodaj datoteku tekstu tamo gdje se nalazi kursor"
 
 msgid "Internal list of translations"
-msgstr ""
+msgstr "Unutarnji popis prijevoda"
 
 msgid "Invalid ID"
 msgstr ""
@@ -1453,13 +1553,13 @@ msgid "Invalid data!"
 msgstr ""
 
 msgid "Invalid email"
-msgstr ""
+msgstr "E-mail nije valjan"
 
 msgid "Invalid field"
 msgstr ""
 
 msgid "Invalid name"
-msgstr ""
+msgstr "Ime nije valjano"
 
 msgid "Invalid parameter"
 msgstr ""
@@ -1468,7 +1568,7 @@ msgid "Invalid target"
 msgstr ""
 
 msgid "Invalid username"
-msgstr ""
+msgstr "Ime korisnika nije valjano"
 
 msgid "Issue"
 msgstr ""
@@ -1481,6 +1581,10 @@ msgid ""
 "          of square brackets. Placing secondary footnote references\n"
 "          inside a regular footnote is permitted."
 msgstr ""
+"Moguće je imati drugu vrstu fusnota, namijenjenih kritičnim izdanjima\n"
+"ili napomenama prevoditelja. Sintaksa je ista kao za obične fusnote,\n"
+"ali koriste se vitičaste zagrade umjesto uglatih. Moguće je dodati\n"
+"takve fusnote običnim fusnotama."
 
 msgid ""
 "It is recommended to always set a publication\n"
@@ -1489,35 +1593,42 @@ msgid ""
 "                    publication date only on major editing, leaving it\n"
 "                    untouched for minor ones."
 msgstr ""
+"Preporučuje se da se uvijek doda datum objavljivanja, da ne bi sustav\n"
+"koristio vrijeme izmjena fajla. Promijeni datum samo ako je izmjena\n"
+"velika, inače ostavi ga kakav je."
 
 msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
 msgstr ""
+"Isto kao i za normalne stranice, ali poveznica nije vidljiva. Samo\n"
+"dodaj \"/edit\" adresi stranici."
 
 msgid "Italic"
-msgstr ""
+msgstr "Kurziv"
 
 msgid "Italics, bold, monospace and code, linebreaks..."
-msgstr ""
+msgstr "Kurzivi, podebljano, kod, novi redak"
 
 msgid "JPG, PNG and PDF are always allowed."
-msgstr ""
+msgstr "Uvijek su dopuštene JPG, PNG i PDF datoteke."
 
 msgid "Job status"
-msgstr ""
+msgstr "Status zadatka"
 
 msgid "Jobs"
-msgstr ""
+msgstr "Zadaci"
 
 msgid "Jobs (all sites)"
-msgstr ""
+msgstr "Zadaci (svi sajtovi)"
 
 msgid "Jobs waiting before yours:"
-msgstr ""
+msgstr "Zadaci na čekanju:"
 
 msgid "Just packs 2 consecutives logical pages on a physical one."
 msgstr ""
+"Dvije logičke susljedne stranice se jednostavno nalaze na jednoj jedinoj "
+"fizičkoj stranici."
 
 msgid ""
 "Keep in mind that I’m cleaning the text and give it\n"
@@ -1526,85 +1637,92 @@ msgid ""
 "        be lost in the process. Please check the preview on the next\n"
 "        step, where you can also insert images."
 msgstr ""
+"Pazi, ja čistim tekst i vraćam ti ga u wiki formatu korištenom na ovom\n"
+"sajtu. Ti ga trebaš sam pregledati, provjeriti i spremiti. Rijetko\n"
+"korišteno oblikovanje bit će izgubljeno u toku procesa. Molim te,\n"
+"provjeri pregled na slijedećoj stranici, gdje možeš dodati i slike."
 
 msgid "Keep in mind that some character may be missing in the required font."
-msgstr ""
+msgstr "Neka slova mogu nedostajati u željenim fontovima."
 
 msgid ""
 "Keep in mind that unusually\n"
 "        complex formatting will be stripped. Is it possible to add\n"
 "        tables and images only on the next step."
 msgstr ""
+"Pazi, neobično i kompleksno oblikovani tekstovi bit će\n"
+"pojednostavljeni. Možeš dodati tabele i slike samo na slijedećoj\n"
+"stranici."
 
 msgid "Label"
 msgstr ""
 
 msgid "Language"
-msgstr ""
+msgstr "Jezik"
 
 msgid "Language code of the document (2 or 3 letters). "
-msgstr ""
+msgstr "Kod jezika teksta (2 ili 3 slova)"
 
 msgid "Language selection"
-msgstr ""
+msgstr "Izaberi jezik"
 
 msgid "Languages supported"
-msgstr ""
+msgstr "Jezici koji se podržavaju"
 
 msgid "Last"
 msgstr ""
 
 msgid "Last successful rebuild"
-msgstr ""
+msgstr "Zadnji put kad su datoteke s tekstovima regenerirane"
 
 msgid "Last updated"
-msgstr ""
+msgstr "Posljednja izmjena"
 
 msgid "Latest entries"
-msgstr ""
+msgstr "Posljednji unosi"
 
 msgid "Layout"
-msgstr ""
+msgstr "Layout"
 
 msgid "Leave it blank if you want it published right away."
-msgstr ""
+msgstr "Ostavi prazno ako želiš odmah objaviti."
 
 msgid "Leave this empty to have it automatically generated"
-msgstr ""
+msgstr "Ostavi prazno da bude automatski generirano"
 
 msgid "Letter imposed PDF"
-msgstr ""
+msgstr "Format \"Letter\" u PDF formatu"
 
 msgid "Letter paper"
-msgstr ""
+msgstr "Papir \"Letter\" format"
 
 msgid "Line spacing"
 msgstr ""
 
 msgid "Link"
-msgstr ""
+msgstr "Poveznica"
 
 msgid "Links"
-msgstr ""
+msgstr "Poveznice"
 
 msgid "List of paths to attach to this collection, one per line."
 msgstr ""
 
 msgid "List of texts on hold"
-msgstr ""
+msgstr "Popis tekstova na čekanju"
 
 msgid "Lists"
-msgstr ""
+msgstr "Popisi"
 
 msgid "Load"
-msgstr ""
+msgstr "Koristi"
 
 msgid "Load another session by token"
-msgstr ""
+msgstr "Učitaj drugu sesiju kodom"
 
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
-msgstr ""
+msgstr "Koristeći \"%1\" konfiguraciju"
 
 msgid "Loading"
 msgstr ""
@@ -1619,58 +1737,58 @@ msgid "Locale updated"
 msgstr ""
 
 msgid "Locked editing, no upload possible"
-msgstr ""
+msgstr "Uređenje zaključan, nije moguće učitati datoteku"
 
 msgid "Log in"
-msgstr ""
+msgstr "Uđi"
 
 msgid "Login"
-msgstr ""
+msgstr "Prijava"
 
 msgid "Logout"
-msgstr ""
+msgstr "Odjava"
 
 msgid "Look into the account’s menu, there is an entry for that."
-msgstr ""
+msgstr "Pogledaj na meni korisnika, gdje možeš naći poveznicu za to."
 
 msgid "Lost your password?"
-msgstr ""
+msgstr "Izgubljena lozinka?"
 
 msgid "Magic answer"
-msgstr ""
+msgstr "Čarobni odgovor"
 
 msgid "Magic question"
-msgstr ""
+msgstr "Čarobno pitanje"
 
 msgid "Mail from"
-msgstr ""
+msgstr "Mail od"
 
 msgid "Main canonical hostname, without protocol"
-msgstr ""
+msgstr "Glavni osnovni hostname, bez protokola"
 
 msgid "Main font"
-msgstr ""
+msgstr "Glavni font"
 
 msgid "Main text"
-msgstr ""
+msgstr "Tekst"
 
 msgid "Maintainer's FAQ"
-msgstr ""
+msgstr "Česta pitanja za urednike"
 
 msgid "Make a link clickable"
-msgstr ""
+msgstr "Stvori aktivnu poveznicu"
 
 msgid "Make all links active"
-msgstr ""
+msgstr "Aktiviraj sve poveznice"
 
 msgid "Make all non-breaking spaces explicit and visible as ~~"
-msgstr ""
+msgstr "Pokaži neodvojivi razmak kao ~~"
 
 msgid "Manage aggregations"
 msgstr ""
 
 msgid "Manage categories"
-msgstr ""
+msgstr "Upravljanje kategorijama"
 
 msgid "Manage category types"
 msgstr ""
@@ -1682,17 +1800,17 @@ msgid "Mark Length (mm)"
 msgstr ""
 
 msgid "Max image dimension in pixels, applies to both width and height"
-msgstr ""
+msgstr "Najveća veličina slika u pikselima, i za širinu i za visinu"
 
 msgid "Max size for uploads in Mb"
-msgstr ""
+msgstr "Najveća veličina fajlova (Mb)"
 
 msgid "Message"
-msgstr ""
+msgstr "Poruka"
 
 #. (8)
 msgid "Minimum %1 characters"
-msgstr ""
+msgstr "Najmanje %1 slova"
 
 msgid "Mirror"
 msgstr ""
@@ -1701,61 +1819,61 @@ msgid "Mirror of:"
 msgstr ""
 
 msgid "Missing #title header in the text!"
-msgstr ""
+msgstr "#title nedostaje u tekstu!"
 
 msgid "Missing alias"
-msgstr ""
+msgstr "Nedostaje alias"
 
 msgid "Missing character will be reported"
-msgstr ""
+msgstr "Pokazat će se slova koja nedostaju"
 
 msgid "Missing redirection"
-msgstr ""
+msgstr "Nedostaje preusmjeravanje"
 
 msgid "Missing? Create one"
 msgstr ""
 
 msgid "Mobile"
-msgstr ""
+msgstr "Mobile"
 
 msgid "Mobile applications"
-msgstr ""
+msgstr "Aplikacije za mobitele"
 
 msgid "Mode"
-msgstr ""
+msgstr "Način"
 
 msgid "Moderated wiki"
-msgstr ""
+msgstr "Moderirani wiki"
 
 msgid "Mono font"
-msgstr ""
+msgstr "Mono fontovi"
 
 msgid "Month"
 msgstr ""
 
 msgid "More"
-msgstr ""
+msgstr "Više"
 
 msgid "Move down"
-msgstr ""
+msgstr "Niže"
 
 msgid "Move up"
-msgstr ""
+msgstr "Više"
 
 msgid "Multilanguage: list of whitespace separated language codes"
-msgstr ""
+msgstr "Višejezičnost: popis jezičnih kodova odvojenih razmakom"
 
 msgid "My book covers"
 msgstr ""
 
 msgid "My description"
-msgstr ""
+msgstr "Moj opis"
 
 msgid "N/A"
-msgstr ""
+msgstr "Nepoznato"
 
 msgid "Name"
-msgstr ""
+msgstr "Ime"
 
 msgid "Name plural"
 msgstr ""
@@ -1764,71 +1882,71 @@ msgid "Name singular"
 msgstr ""
 
 msgid "Network library listing screen."
-msgstr ""
+msgstr "Stranica s popisom mrežnih arhiva."
 
 msgid "Never display the cover"
-msgstr ""
+msgstr "Nemoj prikazivati naslovnicu"
 
 msgid "Never generate a table of content"
-msgstr ""
+msgstr "Ne generiraj sadržaj"
 
 msgid ""
 "Never generate the standard final page with title/author/notes/logo/site name"
-msgstr ""
+msgstr "Nemoj stvoriti zadnju stranicu s naslovom, autorom, logom itd."
 
 msgid "Never show teaser and/or cover in text lists"
-msgstr ""
+msgstr "Nikad nemoj pokazati naslovnicu i pregled u popisima tekstova"
 
 msgid "New"
-msgstr ""
+msgstr "Novo"
 
 msgid "New revision"
-msgstr ""
+msgstr "Nova izmjena"
 
 msgid "New site id"
-msgstr ""
+msgstr "Novi id sajta"
 
 msgid "New translation"
 msgstr ""
 
 msgid "Newer first"
-msgstr ""
+msgstr "Najnoviji prvi"
 
 msgid "Newer texts"
-msgstr ""
+msgstr "Noviji tekstovi"
 
 msgid "Next"
-msgstr ""
+msgstr "Iduće"
 
 msgid "Nice title"
-msgstr ""
+msgstr "Lijep naslov"
 
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 msgid "No data available in table"
 msgstr ""
 
 msgid "No editing yet!"
-msgstr ""
+msgstr "Nema još izmjene!"
 
 msgid "No matching records found"
 msgstr ""
 
 msgid "No result found!"
-msgstr ""
+msgstr "Nema rezultata!"
 
 msgid "No revisions to show"
-msgstr ""
+msgstr "Nema inačica"
 
 msgid "No text found!"
-msgstr ""
+msgstr "Nijedan tekst nije pronađen!"
 
 msgid "No text was added yet"
-msgstr ""
+msgstr "Još nije dodan nijedan tekst"
 
 msgid "None"
-msgstr ""
+msgstr "Bez"
 
 msgid "Not a periodical"
 msgstr ""
@@ -1837,25 +1955,25 @@ msgstr ""
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
 "finalize your submission!"
-msgstr ""
+msgstr "Procedura je još u toku! Provjeri tekst pa pritisni \"%1\"."
 
 msgid "Not logged in"
 msgstr ""
 
 msgid "Notes"
-msgstr ""
+msgstr "Napomene"
 
 msgid "Nothing to see here, so far"
-msgstr ""
+msgstr "Ovdje se nema što vidjeti, za sada"
 
 msgid "Nothing uploaded"
-msgstr ""
+msgstr "Ništa nije učitano"
 
 msgid "Notify mail: blank field will disable them"
-msgstr ""
+msgstr "Mail obavijesti: ostavi prazno za onemogućiti"
 
 msgid "Notify to"
-msgstr ""
+msgstr "Obavijesti"
 
 msgid ""
 "Now it has been aligned to the site's archive, but this means that there are "
@@ -1866,22 +1984,22 @@ msgid "Now we are going to populate it and get it ready"
 msgstr ""
 
 msgid "Number of jobs"
-msgstr ""
+msgstr "Broj zadataka"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
-msgstr ""
+msgstr "Broj tekstova u RSS-u"
 
 msgid "Number of results to show on paginated pages (an integer)"
-msgstr ""
+msgstr "Broj rezultata po stranici kad popis ima više stranica (pagination)"
 
 msgid "OPDS"
-msgstr ""
+msgstr "OPDS"
 
 msgid "Older first"
-msgstr ""
+msgstr "Najstariji prvi"
 
 msgid "Older texts"
-msgstr ""
+msgstr "Stariji tekstovi"
 
 msgid "On text creation, enforce user to choose the URI"
 msgstr ""
@@ -1889,15 +2007,16 @@ msgstr ""
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
+"Jedna strana po listu. To je korisno samo ako se želi dodati kontrolne oznake"
 
 msgid "Open wiki"
-msgstr ""
+msgstr "Otvoreni wiki"
 
 msgid "Option templates"
-msgstr ""
+msgstr "Obrasci za opcije"
 
 msgid "Optional, defaults to the author directive"
-msgstr ""
+msgstr "neobavezno, ako nedostaje koristit će se polje autora"
 
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
@@ -1906,50 +2025,56 @@ msgid ""
 "          later, or, better, contact the librarians before proceeding,\n"
 "          to avoid wasting energies."
 msgstr ""
+"Ili stvori novu izmjenu, na tvoj vlastiti rizik. Kada postoje višestruke "
+"izmjene netko mora izabrati, i obično se izabire samo jedna. Možeš nastaviti "
+"ili pokušati kasnije, ili, još bolje, kontaktirati bibliotekare da bi se "
+"izbjeglo nepotrebno trošenje energije."
 
 msgid "Or log in, if you have an account."
-msgstr ""
+msgstr "Ili se prijavi, ako imaš račun."
 
 msgid "Or provide an HTML file to upload"
-msgstr ""
+msgstr "Ili učitaj HTML datoteku"
 
 msgid "Or wrap it in"
-msgstr ""
+msgstr "Ili umetni između"
 
 msgid "Order"
 msgstr ""
 
 msgid "Ordered List"
-msgstr ""
+msgstr "Brojčan popis"
 
 msgid "Outer margin"
 msgstr ""
 
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 msgid "PDF logo"
-msgstr ""
+msgstr "PDF logo"
 
 msgid "PDFs cannot be used in the body."
-msgstr ""
+msgstr "Nije moguće koristi PDF-ove unutar tekstova."
 
 #. ('#ATTACH')
 #. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
-msgstr ""
+msgstr "PDF-ovi koji nisu na popisu %1 polja bit će pohranjeni ali zanemareni."
 
 msgid "Page not found!"
-msgstr ""
+msgstr "Stranica nije pronađena!"
 
 msgid "Page where to start a chapter"
-msgstr ""
+msgstr "Stranica na kojoj početi poglavlja"
 
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
 "        This is not meant to be folded."
 msgstr ""
+"Stranice nisu sređene: prvi list ima prvu i drugu stranicu, drugi list\n"
+"treću i četvrtu, itd. Ne dobiva se buklet."
 
 msgid ""
 "Pages are reordered, in one or more groups\n"
@@ -1960,24 +2085,31 @@ msgid ""
 "        whole book in a single signature, or an optimized size to\n"
 "        reduce the number of blank pages."
 msgstr ""
+"Stranice su sređene, tako da bi se dobio buklet, u jedan ili više\n"
+"svezaka, koji treba saviti na pola. Ako ima više svezaka, trebaš ih\n"
+"nekako spojiti, da bi dobio knjižicu. Ovom opcijom, možeš odlučiti\n"
+"veličinu svezaka. To može biti neka određena veličina (4, 8, 16,\n"
+"itd.), ili cijeli tekst u jedan svezak, ili neka veličina koji sustav\n"
+"izračuna da bi smanjio broji bijelih stranica koje treba dodati."
 
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
 msgstr ""
+"Debljina papira (0.10 trebalo bi biti dovoljno za uobičajen papir 80g/m2)"
 
 msgid "Paragraph indentation in points (pt)"
 msgstr ""
 
 msgid "Paragraphs"
-msgstr ""
+msgstr "Odlomci"
 
 msgid "Parent collection"
 msgstr ""
 
 msgid "Part"
-msgstr ""
+msgstr "Dio"
 
 msgid "Part and chapter. If one side document: part."
-msgstr ""
+msgstr "Dio i poglavlje. Za jednostrani prijelom: dio."
 
 msgid "Part of"
 msgstr ""
@@ -1986,89 +2118,93 @@ msgid "Part of:"
 msgstr ""
 
 msgid "Part, for larger books only"
-msgstr ""
+msgstr "Dio, samo za velike knjige"
 
 msgid "Partial selection"
-msgstr ""
+msgstr "Djelomični izbor"
 
 msgid "Password"
-msgstr ""
+msgstr "Lozinka"
 
 msgid "Password too short"
-msgstr ""
+msgstr "Lozinka prekratka"
 
 msgid "Password updated"
-msgstr ""
+msgstr "Ažurirana lozinka"
 
 msgid "Password, minimum 8 characters."
-msgstr ""
+msgstr "Lozinka, minimalno 8 znakova"
 
 msgid "Passwords do not match"
-msgstr ""
+msgstr "Lozinke se ne podudaraju"
 
 msgid "Path"
 msgstr ""
 
 msgid "Payload"
-msgstr ""
+msgstr "Sadržaj"
 
 msgid "Pending revisions"
-msgstr ""
+msgstr "Izmjene na čekanju"
 
 msgid "Periodicals"
 msgstr ""
 
 msgid "Picture"
-msgstr ""
+msgstr "Slika"
 
 msgid "Place it in the body with a description:"
-msgstr ""
+msgstr "Stavi je u tekst s opisom"
 
 msgid "Place it in the body without description:"
-msgstr ""
+msgstr "Stavi je u tekst bez opisa"
 
 msgid "Place the notes on the back of the first page, impressum-style"
-msgstr ""
+msgstr "Ubaci napomene u drugu stranicu umjesto zadnje, kao impresum"
 
 msgid "Plain PDF"
-msgstr ""
+msgstr "Običan PDF"
 
 msgid ""
 "Please check your inbox, we tried to deliver a mail to the address you "
 "specified with a password reset link"
 msgstr ""
+"Provjeri svoj mail, pokušali smo poslati mail navedenoj adresi s uputama za "
+"novu lozinku"
 
 msgid "Please choose a text"
 msgstr ""
 
 msgid "Please choose the Beamer color theme"
-msgstr ""
+msgstr "Izaberi temu za boje slajdova"
 
 msgid "Please choose the Beamer theme"
-msgstr ""
+msgstr "Izaberi temu slajdova"
 
 msgid "Please choose the font size"
-msgstr ""
+msgstr "Izaberi veličinu fontova"
 
 msgid "Please choose the main font"
-msgstr ""
+msgstr "Izaberi glavni font"
 
 msgid "Please choose the mono font"
-msgstr ""
+msgstr "Izaberi mono font"
 
 msgid "Please choose the sans font"
-msgstr ""
+msgstr "Izaberi font bez serifa"
 
 msgid "Please describe shortly what you did"
-msgstr ""
+msgstr "Molim, opiši kratko što si učinio"
 
 msgid "Please do not use a valuable password."
-msgstr ""
+msgstr "Molim, ne koristi vrijedne lozinke koje koristiš drugdje"
 
 msgid ""
 "Please do not use higher levels (part or chapter) for short articles with "
 "sections."
 msgstr ""
+"Radi bolje preglednosti, ne koristi visoke razine (dio ili poglavlje)\n"
+"za kratke tekstove, nego odjeljke."
 
 #. (amw_group_name)
 msgid "Please ensure that your system user is member of the \"%1\" group"
@@ -2079,6 +2215,8 @@ msgid ""
 "        Just a fancy name, so we can know that multiple uploads come\n"
 "        from the same person."
 msgstr ""
+"Ubacite korisničko ime, koji *ne* mora biti mail adresa, samo neko ime\n"
+"da bi povezali tekstove koji dolaze iz iste osobe."
 
 msgid ""
 "Please initialized it empty, without any README,license, .gitignore or "
@@ -2091,6 +2229,9 @@ msgid ""
 "              text. If not available, they will just leave the text as\n"
 "              is."
 msgstr ""
+"Pazi, filteri su svojstveni jezicima i mogu biti dostupni ili\n"
+"nedostupni za jezik teksta. Ako nisu dostupni tekst će ostati\n"
+"neizmjenjen."
 
 msgid ""
 "Please keep in mind that if you see “Force publishing”\n"
@@ -2099,36 +2240,48 @@ msgid ""
 "    previous one. Try to avoid this, unless you know what you're\n"
 "    doing."
 msgstr ""
+"Pazi, ako vidiš \"Prisili objavljivanje\" kao akciju znači da je druga\n"
+"izmjena za isti tekst već objavljena, dakle, forsirajući objavljivanje\n"
+"izgubit će se izmjene već odobrene. Zato, nemoj to činiti, osim ako\n"
+"zaista znaš što radiš."
 
 msgid "Please leave a mail if you want to be contacted about this change"
-msgstr ""
+msgstr "Ostavi mail ako želiš biti kontaktiran u vezi ove izmjene"
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
+"Pazi: oznake između kojih se nalazi dio teksta moraju biti same u jednom "
+"retku, bez razmaka ili nečeg drugog."
 
 msgid ""
 "Please note that you may want to paste from a\n"
 "        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
 "        from word” button. This is supposed to preserve the markup."
 msgstr ""
+"Ako želiš zalijepiti (copy-paste) iz Word/OpenOffice/LibreOffice/HTML "
+"dokumenta možeš to učiniti samo ovdje da bi sačuvao izvorni izgled teksta "
+"(kurziv, podebljano itd.)"
 
 msgid ""
 "Please note: without any prefix, protocol or hostname, just\n"
 "  the bare page name as shown above. External redirecting is not\n"
 "  supported."
 msgstr ""
+"Pazi: bez prefiksa, protokola ili ime sajta, samo ime stranice, kao\n"
+"što je gore navedeno. Preusmjeravanje na vanjske stranice nije\n"
+"moguće."
 
 msgid "Please prove you are a human"
-msgstr ""
+msgstr "Dokaži da si ljudsko biće"
 
 msgid "Please reindex the site."
 msgstr ""
 
 msgid "Please reload your page"
-msgstr ""
+msgstr "Ponovno učitaj tvoju stranicu."
 
 msgid "Please remove this file from the body first"
-msgstr ""
+msgstr "Najprije se datoteka mora ukloniti iz teksta"
 
 msgid ""
 "Please replace the example URL in the next line with the real one with SSH "
@@ -2136,18 +2289,20 @@ msgid ""
 msgstr ""
 
 msgid "Please select"
-msgstr ""
+msgstr "Izaberi"
 
 msgid "Please select the desired fonts"
-msgstr ""
+msgstr "Izaberi fontove"
 
 msgid "Please select the signature size:"
-msgstr ""
+msgstr "Izaberi veličinu svezaka"
 
 msgid ""
 "Please select the size of each page including the crop marks, before the "
 "imposing"
 msgstr ""
+"Izaberi dimenzije stranice uključujući i kontrolne oznake, ali prije\n"
+"slaganja stranica"
 
 msgid "Please set"
 msgstr ""
@@ -2157,24 +2312,26 @@ msgid ""
 "        title and eventually a number if the URI already exists is\n"
 "        usually a good choice"
 msgstr ""
+"Izaberi željeni URI. Inače je autor, naslov i neki broj (ako URI već\n"
+"postoji) dobar izbor."
 
 msgid "Please setup the Beamer layout"
-msgstr ""
+msgstr "Izaberi stil slajdova"
 
 msgid "Please upload your file again!"
-msgstr ""
+msgstr "Molim ponovo učitaj datoteku!"
 
 msgid "Please use only lowercase ASCII letters."
 msgstr ""
 
 msgid "Poetry, bibliographies, plays, code blocks"
-msgstr ""
+msgstr "Poezija, bibliografije, drame, kod"
 
 msgid "Pointing to"
-msgstr ""
+msgstr "Povezuje"
 
 msgid "Popular texts"
-msgstr ""
+msgstr "Najčitaniji tekstovi"
 
 msgid "Preferred language"
 msgstr ""
@@ -2183,33 +2340,36 @@ msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
+"Prefiksi za brojčane liste su \"1.\", \"a.\", \"A.\", \"i.\", \"I\", ovisno "
+"o\n"
+"vrsti liste."
 
 msgid "Preview"
-msgstr ""
+msgstr "Pregled"
 
 msgid "Preview box height in pixel"
-msgstr ""
+msgstr "Visina pregledavanja (u pikselima)"
 
 msgid "Previous"
-msgstr ""
+msgstr "Prethodno"
 
 msgid "Priority"
-msgstr ""
+msgstr "Prioritet"
 
 msgid "Private"
-msgstr ""
+msgstr "Privatno"
 
 msgid "Procedure"
-msgstr ""
+msgstr "Procedura"
 
 msgid "Processing"
 msgstr ""
 
 msgid "Produce slides."
-msgstr ""
+msgstr "Slajdovi."
 
 msgid "Produced"
-msgstr ""
+msgstr "Stvoreno"
 
 msgid "Publication Date"
 msgstr ""
@@ -2218,62 +2378,66 @@ msgid "Publication Place"
 msgstr ""
 
 msgid "Publication date"
-msgstr ""
+msgstr "Datum objavljivanja"
 
 msgid "Publication date on this site"
-msgstr ""
+msgstr "Datum objavljivanja na ovom sajtu"
 
 msgid "Publish"
-msgstr ""
+msgstr "Objavi"
 
 msgid "Published in *A nice book*, published by My House, 2014"
-msgstr ""
+msgstr "Objavljeno u *Lijepa knjiga*, objavila Izdavačka kuća, 2014."
 
 msgid "Publisher"
 msgstr ""
 
 msgid "Purge"
-msgstr ""
+msgstr "Očisti"
 
 msgid ""
 "Purging means removing it completely from the archive, not just hiding it."
 msgstr ""
+"Očistiti znači potpuno otkloniti tekst iz arhiva, ne samo ga\n"
+"skrivati."
 
 msgid ""
 "Put additional information here (original\n"
 "\t  title, translators, credits, etc). Footnotes go in the\n"
 "\t  body."
 msgstr ""
+"Dodatne informacije napiši ovdje (naslov originala, prevodilac itd.). "
+"Fusnote su dio teksta, ne stavljaj ih u Napomene."
 
 msgid "Quarter Letter paper"
-msgstr ""
+msgstr "Četvrtina \"Letter\" papira"
 
 msgid "Queue"
-msgstr ""
+msgstr "Red"
 
 msgid "Quota exceeded, too many pages"
-msgstr ""
+msgstr "Previše stranica"
 
 msgid "Quotes"
-msgstr ""
+msgstr "Citati"
 
 msgid "RSS aggregator"
-msgstr ""
+msgstr "RSS agregator"
 
 msgid "RSS feed"
-msgstr ""
+msgstr "RSS feed"
 
 msgid "Random"
-msgstr ""
+msgstr "Slučajna stranica"
 
 msgid "Read about the file naming scheme if you need to add files to the tree."
 msgstr ""
 
 msgid "Read the whole text..."
-msgstr ""
+msgstr "Pročitaj cijeli tekst..."
 
 msgid "Real time help"
-msgstr ""
+msgstr "Online Pomoć"
 
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
@@ -2285,39 +2449,45 @@ msgid ""
 "              message. The procedure tries to be safe and will ignore\n"
 "              the change if footnotes are missing or are too many."
 msgstr ""
+"Preuredi fusnote, ispravljajući brojke, uzevši u obzir samo redoslijed\n"
+"kojim su bile unešene. Ostavi prazno ako ne znaš što to znači.\n"
+"Ova opcija može nanijeti štetu, koristiti oprezno i provjeriti ishod.\n"
+"U slučaju da naiđeš na problem pošalji ishod u poruci. Ipak, procedura\n"
+"nastoji biti sigurna i zanemarit će izmjenu ako fusnote nedostaju ili\n"
+"ih ima previše."
 
 msgid "Reason"
-msgstr ""
+msgstr "Razlog"
 
 msgid "Reason for deletion"
-msgstr ""
+msgstr "Razlog za izbrisanje"
 
 msgid "Rebuild"
-msgstr ""
+msgstr "Regeneracija"
 
 msgid "Rebuild all generated files"
-msgstr ""
+msgstr "Regeneriraj sve datoteke s tekstovima"
 
 msgid "Rebuild formats"
 msgstr ""
 
 msgid "Rebuild the generated formats"
-msgstr ""
+msgstr "Regeneriraj datoteke s tekstovima"
 
 msgid "Rebuilding"
-msgstr ""
+msgstr "Regeneracija"
 
 msgid "Recheck"
-msgstr ""
+msgstr "Ponovo provjeri"
 
 msgid "Record deleted!"
 msgstr ""
 
 msgid "Redirections"
-msgstr ""
+msgstr "Preusmjeravanja"
 
 msgid "Refresh and apply filters"
-msgstr ""
+msgstr "Osvježi i koristi filtere"
 
 msgid "Refresh the token"
 msgstr ""
@@ -2326,24 +2496,24 @@ msgid "Reindex site"
 msgstr ""
 
 msgid "Related projects"
-msgstr ""
+msgstr "Povezani projekti"
 
 #. ("$name $url")
 msgid "Remote repository %1 added"
-msgstr ""
+msgstr "Dodan je udaljeni repozitorij %1"
 
 #. ($name)
 msgid "Remote repository %1 removed"
-msgstr ""
+msgstr "Udaljen repozitorij %1 izbrisan"
 
 msgid "Remove"
-msgstr ""
+msgstr "Izbriši"
 
 msgid "Remove cover image"
-msgstr ""
+msgstr "Ukloni naslovnu sliku"
 
 msgid "Remove this category"
-msgstr ""
+msgstr "Ukloni ovu kategoriju"
 
 msgid "Removed Upstream"
 msgstr ""
@@ -2355,66 +2525,66 @@ msgid "Rename text URI"
 msgstr ""
 
 msgid "Rename to"
-msgstr ""
+msgstr "Preimenovanje"
 
 msgid "Repeat email"
-msgstr ""
+msgstr "Ponovi e-mail"
 
 msgid "Repeat password"
-msgstr ""
+msgstr "Ponovi lozinku"
 
 msgid "Request failed! Please report the the problem"
-msgstr ""
+msgstr "Greška! Kontaktirajte administratore"
 
 msgid "Reschedule"
 msgstr ""
 
 msgid "Reset all"
-msgstr ""
+msgstr "Poništi sve"
 
 msgid "Reset filters"
-msgstr ""
+msgstr "Poništi filtere"
 
 msgid "Reset password"
-msgstr ""
+msgstr "Ponovo postavi lozinku"
 
 #. (username)
 msgid "Reset password for user %1"
-msgstr ""
+msgstr "Promjena lozinke za %1"
 
 msgid "Reset to site defaults"
-msgstr ""
+msgstr "Koristi zadane postavke sajta"
 
 msgid "Reset your password"
-msgstr ""
+msgstr "Promjenite lozinku"
 
 msgid "Restricted configuration variables"
-msgstr ""
+msgstr "Ograničena konfiguracija"
 
 msgid "Restricted format options"
-msgstr ""
+msgstr "Ograničene opcije za fajlove"
 
 msgid "Results per page:"
-msgstr ""
+msgstr "Rezultati po stranici:"
 
 msgid "Resume session"
 msgstr ""
 
 msgid "Retrieved on DATE from URL"
-msgstr ""
+msgstr "Pronađeno DANA na URL-u"
 
 msgid "Retrieved on March 8, 2012 from"
-msgstr ""
+msgstr "Pronađeno 8. marta 2012. na"
 
 msgid "Revision"
-msgstr ""
+msgstr "Izmjena"
 
 #. ($uri)
 msgid "Revision for %1 has been deleted"
-msgstr ""
+msgstr "Izmjena za %1 izbrisana"
 
 msgid "Roles"
-msgstr ""
+msgstr "Uloge"
 
 msgid "Root Collection"
 msgstr ""
@@ -2423,92 +2593,92 @@ msgid "Run diff"
 msgstr ""
 
 msgid "Running headings"
-msgstr ""
+msgstr "Zaglavlje stranice"
 
 msgid "SKU"
 msgstr ""
 
 msgid "SSL CA certificate path (Apache)"
-msgstr ""
+msgstr "SSL CA certifikat (Apache)"
 
 msgid "SSL certificate path (Apache)"
-msgstr ""
+msgstr "SSL certifikat (Apache)"
 
 msgid "SSL chained certificate path (Nginx)"
-msgstr ""
+msgstr "SSL kombiniran certifikat (Nginx)"
 
 msgid "SSL configuration"
-msgstr ""
+msgstr "SSL konfiguracija"
 
 msgid "SSL key path"
-msgstr ""
+msgstr "Ključ SSL"
 
 msgid "Same as above, but for duplex printers"
 msgstr ""
 
 msgid "Same as above, for the Archive menu"
-msgstr ""
+msgstr "Isto kao gore navedeno, ali za Arhivu"
 
 msgid "Same as above, for the Related Projects menu"
-msgstr ""
+msgstr "Isto kao gore navedeno, ali za Povezane projekte"
 
 msgid "Sans font"
-msgstr ""
+msgstr "Font bez serifa"
 
 msgid "Save"
-msgstr ""
+msgstr "Spremi"
 
 msgid "Save the current settings with a name"
-msgstr ""
+msgstr "Spremi opcije imenom"
 
 #. ($pname)
 msgid "Saved \"%1\" configuration"
-msgstr ""
+msgstr "Spremljena konfiguracija \"%1\""
 
 msgid "Search"
-msgstr ""
+msgstr "Traži"
 
 msgid "Search Engine Facets"
 msgstr ""
 
 msgid "Search filters"
-msgstr ""
+msgstr "Filtriranje rezultata"
 
 msgid "Search results"
-msgstr ""
+msgstr "Rezultati pretraživanja"
 
 msgid "Search this column"
 msgstr ""
 
 msgid "Secondary footnotes"
-msgstr ""
+msgstr "Fusnote drugog reda"
 
 msgid "Section"
-msgstr ""
+msgstr "Odjeljak"
 
 msgid "Section and subsection. If one side document: section."
-msgstr ""
+msgstr "Odjeljak i pododjeljak. Za jednostrani prijelom: odjeljak."
 
 msgid "See all"
 msgstr ""
 
 msgid "See here for more details."
-msgstr ""
+msgstr "Vidi ovdje za više detalja."
 
 msgid "See here for the full documentation."
-msgstr ""
+msgstr "Vidi ovdje za potpunu dokumentaciju."
 
 msgid "See the bookcover class for all the details"
 msgstr ""
 
 msgid "See the full manual for more details (english)"
-msgstr ""
+msgstr "Vidi priručnik za detalje (na engleskom)"
 
 msgid "Select"
-msgstr ""
+msgstr "Izaberi"
 
 msgid "Select all"
-msgstr ""
+msgstr "Izaberi sve"
 
 msgid "Select all for deletion"
 msgstr ""
@@ -2517,7 +2687,7 @@ msgid "Select all for rescheduling"
 msgstr ""
 
 msgid "Select individual parts for the bookbuilder"
-msgstr ""
+msgstr "Izaberi pojedinačne dijelove za zbirku"
 
 msgid "Send Email"
 msgstr ""
@@ -2530,13 +2700,13 @@ msgid "Sending test mails from %1 to %2"
 msgstr ""
 
 msgid "Separate body fields"
-msgstr ""
+msgstr "Odvajaju dijelove tijela"
 
 msgid "Separate footer fields"
-msgstr ""
+msgstr "Odvajaju dijelove podnožja"
 
 msgid "Separate header fields"
-msgstr ""
+msgstr "Odvajaju dijelove zaglavlja"
 
 msgid "Series"
 msgstr ""
@@ -2551,10 +2721,10 @@ msgid "Series or Periodical"
 msgstr ""
 
 msgid "Session sharing"
-msgstr ""
+msgstr "Dijeli sesiju"
 
 msgid "Set a date in the future if you want it deferred."
-msgstr ""
+msgstr "Stavi budući datum ako želiš odgoditi objavljivanje."
 
 msgid "Settings loaded"
 msgstr ""
@@ -2566,22 +2736,22 @@ msgid "Show _MENU_ entries"
 msgstr ""
 
 msgid "Show cheatsheet"
-msgstr ""
+msgstr "Pokaži sažetak za oblikovanje teksta"
 
 msgid "Show differences in other tab"
-msgstr ""
+msgstr "Pokaži razlike u drugom prozoru"
 
 msgid "Show filters"
-msgstr ""
+msgstr "Pokaži filtere"
 
 msgid "Show preview in other tab"
-msgstr ""
+msgstr "Pokaži pregled u drugom prozoru"
 
 msgid "Show text type and number of pages in the listing"
-msgstr ""
+msgstr "Pokaži vrstu i broj stranica na popisima tekstova"
 
 msgid "Show the text infobox at the bottom of the texts"
-msgstr ""
+msgstr "Prikaži informacije o tekstu na dnu stranice"
 
 msgid "Showing 0 to 0 of 0 entries"
 msgstr ""
@@ -2590,53 +2760,53 @@ msgid "Showing _START_ to _END_ of _TOTAL_ entries"
 msgstr ""
 
 msgid "Single bars"
-msgstr ""
+msgstr "Jednostruke trake (\"|\")"
 
 msgid "Site"
 msgstr ""
 
 msgid "Site already exists"
-msgstr ""
+msgstr "Sajt već postoji"
 
 msgid "Site group"
-msgstr ""
+msgstr "Grupa sajta"
 
 msgid "Site id"
-msgstr ""
+msgstr "Id sajta"
 
 msgid "Site mail (From field)"
-msgstr ""
+msgstr "E-mail sajta (polje Sa)"
 
 msgid "Site mode"
-msgstr ""
+msgstr "Način sajta"
 
 msgid "Site name"
-msgstr ""
+msgstr "Ime sajta"
 
 msgid "Site slogan"
-msgstr ""
+msgstr "Slogan sajta"
 
 msgid "Site users"
 msgstr ""
 
 msgid "Sites"
-msgstr ""
+msgstr "Sajtovi"
 
 #. ($invalid)
 msgid "Skipped %1 invalid sources!"
 msgstr ""
 
 msgid "Slides"
-msgstr ""
+msgstr "Slajdovi"
 
 msgid "Slides (PDF)"
-msgstr ""
+msgstr "Slajdovi (PDF)"
 
 msgid "Small Caps"
 msgstr ""
 
 msgid "So we can be sure we are not mailing passwords to random people"
-msgstr ""
+msgstr "Tako da ne šaljemo lozinke pogrešnim osobama"
 
 msgid ""
 "Some annotation codes are special and have side effects if you create them "
@@ -2644,88 +2814,88 @@ msgid ""
 msgstr ""
 
 msgid "Some fields are missing, all are required"
-msgstr ""
+msgstr "Neka polja nedostaju, a sva su potrebna"
 
 msgid "Some fields are too long"
-msgstr ""
+msgstr "Neka polja su predugačka"
 
 msgid "Some ongoing revisions were found"
-msgstr ""
+msgstr "Pronađene su neke aktivne izmjene"
 
 msgid "Sorry, too many jobs pending, please try again later!"
-msgstr ""
+msgstr "Previše zadataka na čekanju, vratite se kasnije!"
 
 msgid "Sorry, you can't remove this, please ask an admin"
 msgstr ""
 
 msgid "Sorting:"
-msgstr ""
+msgstr "Sortiranje:"
 
 msgid "Source"
-msgstr ""
+msgstr "Izvor"
 
 msgid "Source files"
-msgstr ""
+msgstr "Izvorne datoteke"
 
 msgid "Source files with HTML"
 msgstr ""
 
 msgid "Source files with attachments"
-msgstr ""
+msgstr "Izvorne datoteke s privitcima"
 
 msgid "Source removed"
 msgstr ""
 
 msgid "Source, notes..."
-msgstr ""
+msgstr "Izvori, napomene..."
 
 msgid "Special blocks"
-msgstr ""
+msgstr "Posebni dijelovi"
 
 msgid "Special pages"
-msgstr ""
+msgstr "Posebne stranice"
 
 msgid "Specify a whitespace-separated list of languages to activate it."
-msgstr ""
+msgstr "Za aktivaciju dodaj popis jezika odvojenih razmakom."
 
 msgid "Spine Width (mm)"
 msgstr ""
 
 msgid "Stale editing"
-msgstr ""
+msgstr "Napuštena izmjena"
 
 msgid "Standalone HTML (printer-friendly)"
-msgstr ""
+msgstr "Potpuni HTML (za štampu)"
 
 msgid "Standard"
-msgstr ""
+msgstr "Standardno"
 
 msgid "Start the document with an empty page"
-msgstr ""
+msgstr "Dodaj praznu stranicu prije naslovnice"
 
 msgid "Started"
-msgstr ""
+msgstr "Započeto"
 
 msgid "Started new bookbuilder session"
 msgstr ""
 
 msgid "Static page without javascript"
-msgstr ""
+msgstr "Statična stranica bez javascripta"
 
 msgid "Status"
-msgstr ""
+msgstr "Stanje"
 
 msgid "Status changed"
-msgstr ""
+msgstr "Promjena stanja"
 
 msgid "Subsection"
-msgstr ""
+msgstr "Pododjeljak"
 
 msgid "Subsubsection or description item"
-msgstr ""
+msgstr "Podpododjeljak ili element opisa"
 
 msgid "Subtitle"
-msgstr ""
+msgstr "Podnaslov"
 
 msgid "Such URI already exists"
 msgstr ""
@@ -2734,60 +2904,62 @@ msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
 msgstr ""
+"Ovakvo zaglavlje briše tekst iz arhive i zamjenjuje ga preusmjeravanjem, a "
+"vidjet će se ovdje."
 
 msgid "Such an user already exists!"
-msgstr ""
+msgstr "Taj korisnik već postoji!"
 
 msgid "Such username already exists"
-msgstr ""
+msgstr "Korisničko ime već postoji"
 
 msgid "Suggested values:"
-msgstr ""
+msgstr "Predlaže se:"
 
 msgid "Summary"
-msgstr ""
+msgstr "Sažetak"
 
 msgid "Supported directive in the header"
-msgstr ""
+msgstr "Podržana polja u zaglavlju"
 
 msgid "Switch theme"
 msgstr ""
 
 msgid "Table of Contents"
-msgstr ""
+msgstr "Sadržaj"
 
 msgid "Tables"
-msgstr ""
+msgstr "Tablice"
 
 msgid "Tag cloud with authors"
-msgstr ""
+msgstr "Tag cloud s autorima"
 
 msgid "Tag cloud with topics"
-msgstr ""
+msgstr "Tag cloud s temama"
 
 msgid "Task"
-msgstr ""
+msgstr "Zadatak"
 
 msgid "TeX options (advanced)"
-msgstr ""
+msgstr "Opcije za TeX (napredno)"
 
 msgid "Teaser"
-msgstr ""
+msgstr "Pregled"
 
 msgid "Teaser image"
-msgstr ""
+msgstr "Sliku za pregled"
 
 msgid "Template token"
 msgstr ""
 
 msgid "Term"
-msgstr ""
+msgstr "Pojam"
 
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 msgid "Tested applications, in this order of preference"
-msgstr ""
+msgstr "Testirane aplikacije"
 
 msgid "Text"
 msgstr ""
@@ -2796,7 +2968,7 @@ msgid "Text body only (no title, no final pages)"
 msgstr ""
 
 msgid "Text formatted with markup"
-msgstr ""
+msgstr "Tekst u wiki formatu"
 
 msgid "Text height"
 msgstr ""
@@ -2805,12 +2977,14 @@ msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
 msgstr ""
+"Preusmjeravanja su određena u samom tekstu, koristeći zaglavlje #DELETED "
+"ovom sintaksom."
 
 msgid "Text width"
 msgstr ""
 
 msgid "Texts"
-msgstr ""
+msgstr "Tekstovi"
 
 msgid "Thanks!"
 msgstr ""
@@ -2819,9 +2993,11 @@ msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
 msgstr ""
+"Opcije koje se tiču slajdova nisu relevantne ako slajdovi su\n"
+"onemogućeni."
 
 msgid "The OPDS address for this site is:"
-msgstr ""
+msgstr "Adresa OPDS-a ovog sajta je: "
 
 msgid ""
 "The PDF logo value can be either an absolute path\n"
@@ -2829,51 +3005,58 @@ msgid ""
 "            TeXlive tree. You can do so with the following commands.\n"
 "            The last one checks if the file can be found."
 msgstr ""
+"Logo u PDF-u može biti apsolutni put do datoteke ili samo ime datoteke\n"
+"ako je ova instalirana u TeXlive-u. Možeš to napraviti koristeći\n"
+"slijedeće komande."
 
 msgid "The changes will propagate automatically once you push."
 msgstr ""
 
 #. ($uri)
 msgid "The description for %1 has been updated"
-msgstr ""
+msgstr "Opis za %1 uređena"
 
 msgid ""
 "The differences between the list of footnotes and references is shown below."
 msgstr ""
+"Dolje se pokazuju razlike između fusnota i fusnota koje nalaze u\n"
+"tekstu."
 
 msgid "The file uploaded is not an HTML file!"
-msgstr ""
+msgstr "Učitana datoteka nije u HTML-u!"
 
 msgid "The following settings provide the defaults for each format."
-msgstr ""
+msgstr "Sljedeće postavke koriste se kao zadane postavke za svaki format."
 
 msgid "The following values are used to generate the webserver configuration."
-msgstr ""
+msgstr "Slijedeće postavke služe za proizvodnju konfiguracije webservera."
 
 msgid ""
 "The generate webserver configuration will redirect\n"
 "          all the HTTP requests to HTTPS"
-msgstr ""
+msgstr "Konfiguracija webservera preusmjerit će sve HTTP zahtjeve na HTTPS"
 
 msgid "The logo has the site name on itself"
-msgstr ""
+msgstr "Logo ima ime sajta na sebi"
 
 msgid "The optional subtitle"
-msgstr ""
+msgstr "Podnaslov (nije obavezan)"
 
 msgid ""
 "The page /special/index is twice special. It is assumed to be the\n"
 "default page to visit when loading the site’s root."
 msgstr ""
+"Specijalna stranica \"index\" je dva puta specijalna, jer bit će naslovna\n"
+"stranica sajta."
 
 msgid "The password will be mailed at this address"
-msgstr ""
+msgstr "Lozinka će biti poslana ovu e-mail adresu"
 
 msgid "The reset link will expire in a hour."
-msgstr ""
+msgstr "Poveznica za promjenu lozinke isteći će za sat vremena"
 
 msgid "The revision has the following messages"
-msgstr ""
+msgstr "Izmjena sadrži slijedeće poruke"
 
 msgid ""
 "The site is a pure mirror (see the Federation page) and will not allow local "
@@ -2883,16 +3066,16 @@ msgstr ""
 msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
-msgstr ""
+msgstr "PDF s minijaturom pokazat će se na kraju teksta"
 
 msgid "The text structure is shown below."
-msgstr ""
+msgstr "Struktura teksta je pokazana dolje."
 
 msgid "The text to show on the homepage preview"
-msgstr ""
+msgstr "Tekst za pregled i naslovnice sajta"
 
 msgid "The text was added to the bookbuilder"
-msgstr ""
+msgstr "Tekst je dodan zbirci"
 
 msgid "The texts were added to the bookbuilder"
 msgstr ""
@@ -2903,32 +3086,36 @@ msgid ""
 "          nice title” could have this set to “Nice title”, and will be\n"
 "          listed under N, not under A."
 msgstr ""
+"Naslov dokumenta, u svrhu popisa. Obično se ne koristi u hrvatsko-srpskom "
+"jeziku."
 
 msgid "The title of the document. The only mandatory directive."
-msgstr ""
+msgstr "Naslov dokumenta. Jedino obavezno polje."
 
 msgid ""
 "The webserver needs to be reconfigured. Please execute in a root shell the "
 "following commands:"
 msgstr ""
+"Treba se ponovo podesiti webserver. Izvedi slijedeće komade kao root "
+"korisnik:"
 
 msgid "The whole book in as single signature"
-msgstr ""
+msgstr "Cijela knjiga u jednom jedinom svesku"
 
 msgid "Then approve the change as it would be a normal publishing."
-msgstr ""
+msgstr "Nakon toga, odobri izmjenu kao obično."
 
 msgid "Then fetch the updates from this page."
-msgstr ""
+msgstr "I preuzmi nadogradnje iz ove stranice."
 
 msgid "There are failed jobs"
-msgstr ""
+msgstr "Ima neuspjelih zadataka"
 
 msgid "There are pending revisions"
-msgstr ""
+msgstr "Ima izmjena na čekanju"
 
 msgid "These texts are missing the unique id."
-msgstr ""
+msgstr "Ovim tekstovima nedostaje jedinstveni id."
 
 msgid ""
 "They can be texts, special texts, authors, topics, custom categories, "
@@ -2939,9 +3126,11 @@ msgid ""
 "They should be paths relative to the webserver configuration root or "
 "absolute paths (recommended)."
 msgstr ""
+"Trebaju biti putevi od korijena konfiguracije webservera, ili, bolje,\n"
+"apsolutni putevi."
 
 msgid "This directive wants a whitespace separated list of filenames."
-msgstr ""
+msgstr "Ovo polje zahtjeva popis imena datoteka odvojenih razmacima."
 
 msgid ""
 "This has security implications and must be used only on trusted repositories"
@@ -2952,6 +3141,8 @@ msgid ""
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
 msgstr ""
+"Ovo je WYSIWYG uređivač teksta. Ako želiš koristiti wiki sintaksu ostavi "
+"prazno, ispuni druga polja i odgodi izmjenu na slijedeći korak."
 
 msgid ""
 "This is relevant only for the generated files, where you may need to have an "
@@ -2960,7 +3151,7 @@ msgid ""
 msgstr ""
 
 msgid "This is the caption"
-msgstr ""
+msgstr "Ovo je opis"
 
 msgid ""
 "This mail has been sent to notify you about a new text\n"
@@ -2969,21 +3160,25 @@ msgid ""
 "If this doesn't happen, it means that the uploading has been abandoned\n"
 "and you may want to check it out."
 msgstr ""
+"Svrha ove poruke je da prijavi novi tekst, iako je procedura još u\n"
+"toku i korisnik još bi trebao raditi na njemu. Trebao bi doći još\n"
+"jedan mail. Ako to se ne desi, znači da je korisnik napustio ga na\n"
+"pola puta."
 
 msgid "This revision is already published, ignoring changes"
-msgstr ""
+msgstr "Ova izmjena je već objavljena, zanemarit će se daljne izmjene"
 
 msgid "This revision is being actively edited"
-msgstr ""
+msgstr "Ova izmjena je u toku"
 
 msgid "This revision is being actively edited by you"
-msgstr ""
+msgstr "Ova izmjena je u toku od tvoje strane"
 
 msgid "This revision is being edited by someone else!"
-msgstr ""
+msgstr "Ova izmjena je u toku od strane nekog drugog!"
 
 msgid "This section will not produce a slide"
-msgstr ""
+msgstr "Ovaj odjeljak neće proizvoditi slajd"
 
 msgid "This setting affects only the text creation form."
 msgstr ""
@@ -2997,78 +3192,80 @@ msgid ""
 "and\n"
 "  password to access the OPDS."
 msgstr ""
+"Ovaj sajt je privatan i aplikacije bi trebale pitati korisničko ime i\n"
+"lozinku da bi pristupile OPDS-u."
 
 msgid "This text does not exist"
-msgstr ""
+msgstr "Ovaj tekst ne postoji"
 
 msgid "This text is a book"
-msgstr ""
+msgstr "Ovo je knjiga"
 
 msgid "This text is an article"
-msgstr ""
+msgstr "Ovo je članak"
 
 msgid "This text is new"
-msgstr ""
+msgstr "Ovaj tekst je nov"
 
 msgid "This text is not available"
-msgstr ""
+msgstr "Ovaj je tekst nedostupan"
 
 msgid "This text is not public yet"
-msgstr ""
+msgstr "Ovaj tekst nije još objavljen"
 
 msgid "This text is not published yet"
-msgstr ""
+msgstr "Ovaj tekst nije još objavljen"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
-msgstr ""
+msgstr "Ovaj će se tekst objaviti tek %1"
 
 msgid "This user cannot be removed"
 msgstr ""
 
 msgid "Thumbnail"
-msgstr ""
+msgstr "Minijatura"
 
 msgid "Title"
-msgstr ""
+msgstr "Naslov"
 
 msgid "Title and chapter. If one side document: chapter."
-msgstr ""
+msgstr "Naslov i poglavlje. Za jednostrani prijelom: poglavlje."
 
 msgid "Title and section.  If one side document: section."
-msgstr ""
+msgstr "Naslov i odjeljak. Za jednostrani prijelom: odjeljak."
 
 msgid "Title and subtitle. If one side document: title."
-msgstr ""
+msgstr "Naslov i podnaslov. Za jednostrani prijelom: naslov."
 
 msgid "Title for sorting"
-msgstr ""
+msgstr "Naslov za abecedni popis"
 
 msgid "Title, author, date..."
-msgstr ""
+msgstr "Naslov, autor, datum..."
 
 msgid "Titles"
-msgstr ""
+msgstr "Naslovi"
 
 #. (pending_url)
 msgid "To apply the changes, you can visit %1"
-msgstr ""
+msgstr "Da bi objavio izmjenu, idi na %1"
 
 msgid "To display the PDFs, set or append the following string in the header"
-msgstr ""
+msgstr "Da bi vidio PDF-ove, dodaj slijedeći redak zaglavlju"
 
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
-msgstr ""
+msgstr "Da bi se sačuvali prazni znakovi i novi redak, umetni odlomak između"
 
 msgid "To quickly format bibliographies wrap them in"
-msgstr ""
+msgstr "Za brzo oblikovanje bibliografija umetni ih između"
 
 msgid "To quickly format plays, use"
-msgstr ""
+msgstr "Za brzo oblikovanje drama upotrijebi"
 
 msgid "To resume the editing you can visit the following URL"
-msgstr ""
+msgstr "Za nastavak uređivanja, možeš ići na ovaj URL"
 
 #. (loc('Update')
 #. (loc("Update"))
@@ -3076,15 +3273,16 @@ msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
 msgstr ""
+"Za radnju s obrascima je najprije potrebno spremiti opcije gumbom \"%1\""
 
 msgid "To view the changes introduced, you can visit the following URL"
-msgstr ""
+msgstr "Za pogledati razlike, možeš ići na ovaj URL"
 
 msgid "Toggle"
 msgstr ""
 
 msgid "Toggle fullscreen editor"
-msgstr ""
+msgstr "Pokaži/skrij full-screen editor"
 
 msgid "Token refreshed"
 msgstr ""
@@ -3096,42 +3294,44 @@ msgid "Top margin"
 msgstr ""
 
 msgid "Topic"
-msgstr ""
+msgstr "Tema"
 
 msgid "Topics"
-msgstr ""
+msgstr "Teme"
 
 msgid "Total pages"
-msgstr ""
+msgstr "Ukupno stranica"
 
 msgid "Total size (mm)"
 msgstr ""
 
 msgid "Triple bars"
-msgstr ""
+msgstr "Trostruka traka (\"|||\")"
 
 msgid "Try a random text if unsure"
-msgstr ""
+msgstr "Pokušaj sa slučajnim tekstom ako nisi siguran"
 
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
-msgstr ""
+msgstr "Pretvori poveznice na slike u slike (to se tiče samo HTML prikaza)"
 
 msgid ""
 "Turn links without description to YouTube, Vimeo,\n"
 "            Gmaps into widgets (affects site display only, static\n"
 "            formats have the link)"
 msgstr ""
+"Pretvori linkove bez opisa na YouTube, Vimeo i Gmaps u widgets (samo\n"
+"na sajtu, formati za skidanje imat će samo link)"
 
 msgid "Two side layout"
-msgstr ""
+msgstr "Obostrani prijelom"
 
 msgid "Type"
-msgstr ""
+msgstr "Vrsta"
 
 msgid "URI"
-msgstr ""
+msgstr "URI"
 
 msgid "URI is available and valid"
 msgstr ""
@@ -3142,7 +3342,7 @@ msgid ""
 msgstr ""
 
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
 msgstr ""
@@ -3151,22 +3351,22 @@ msgid "URL pointing to an embeddable webchat"
 msgstr ""
 
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 msgid "Unable to load the bookbuilder session"
-msgstr ""
+msgstr "Očitovanje sesije nije uspjelo"
 
 #. ($from || "NO MAIL FROM", $to)
 msgid "Unable to send mail from %1 to %2!"
 msgstr ""
 
 msgid "Unbranded PDF (hide site name, logo, etc.)"
-msgstr ""
+msgstr "Anonimni PDF, bez imena sajta i bez loga"
 
 msgid ""
 "Unconditionally remove all the invisible non-breaking\n"
 "                spaces in the text"
-msgstr ""
+msgstr "Obavezno ukloni sve nevidljive neodvojive razmake u tekstu."
 
 #. (shared)
 msgid ""
@@ -3174,7 +3374,7 @@ msgid ""
 msgstr ""
 
 msgid "Unique ID for the text"
-msgstr ""
+msgstr "Jedinstveni ID za tekst"
 
 #. ('my-uri-1')
 #. ("my-uri-1")
@@ -3184,27 +3384,27 @@ msgid ""
 msgstr ""
 
 msgid "Unlimited"
-msgstr ""
+msgstr "Neograničeno"
 
 msgid "Unordered List"
-msgstr ""
+msgstr "Običan popis"
 
 msgid "Unpublished texts"
-msgstr ""
+msgstr "Neobjavljeni tekstovi"
 
 #. ($mime_type)
 #. ($mime)
 msgid "Unsupported file type %1"
-msgstr ""
+msgstr "Pogrešna vrsta fajla: %1"
 
 msgid "Unused attachment"
-msgstr ""
+msgstr "Privitak se ne koristi"
 
 msgid "Update"
-msgstr ""
+msgstr "Ažuriraj"
 
 msgid "Update account info"
-msgstr ""
+msgstr "Ažuriraj informacije o računu"
 
 msgid "Update aggregation"
 msgstr ""
@@ -3216,38 +3416,38 @@ msgid "Update and create new text"
 msgstr ""
 
 msgid "Update category description"
-msgstr ""
+msgstr "Ažuriraj opis teme"
 
 msgid "Update series"
 msgstr ""
 
 msgid "Update to current settings"
-msgstr ""
+msgstr "Spremi ovdje aktivne opcije"
 
 msgid "Upload"
-msgstr ""
+msgstr "Učitaj"
 
 msgid "Upload the image and note its name. Files are always renamed."
-msgstr ""
+msgstr "Učitaj sliku i zapamti njezino ime, jer se fajlovi uvijek preimenuju."
 
 msgid ""
 "Uploaded and available images are shown and listed below the text preview."
-msgstr ""
+msgstr "Učitane slike na raspolaganju se nalaze dolje ispod pregleda teksta"
 
 msgid "Url"
-msgstr ""
+msgstr "URL"
 
 msgid "Use JS syntax highlight for code blocks"
-msgstr ""
+msgstr "Koristi bojanje sintakse za kod uz pomoć javascripta"
 
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
-msgstr ""
+msgstr "Koristi LuaLaTeX umjesto XeLaTeXa (sporije)"
 
 msgid "Use SSL for authenticated users"
-msgstr ""
+msgstr "Koristi SSL za ovlaštene korisnike"
 
 msgid "Use it as a teaser image adding to the header this line:"
-msgstr ""
+msgstr "Koristi je kao sliku za pregled dodajući slijedeći redak zaglavlju:"
 
 msgid "Use named table of contents anchors instead of numeric ones"
 msgstr ""
@@ -3258,51 +3458,56 @@ msgstr ""
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
 msgstr ""
+"Kod prijeloma teksta koristi optimizirane sveske sa %1 stranica za svaki."
 
 msgid "Use sans fonts for section titles"
-msgstr ""
+msgstr "Koristi sans fontove za naslove odjeljaka i poglavlja"
 
 msgid "Use the image as cover"
-msgstr ""
+msgstr "Koristi sliku kao naslovnicu"
 
 msgid "Use the site locale"
 msgstr ""
 
 msgid "Useful HTML snippets"
-msgstr ""
+msgstr "Korisni dijelovi HTML koda"
 
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
 "a blank line to mark a new paragraph."
 msgstr ""
+"Korisno za fusnote ili zaglavlja, tamo gdje ne možeš koristiti prazan redak "
+"za odvajanje odlomaka."
 
 msgid "User"
 msgstr ""
 
 #. ($user->username)
 msgid "User %1 created!"
-msgstr ""
+msgstr "Korisnik %1 stvoren!"
 
 #. ($user->username)
 #. ($c->stash->{user}->username)
 msgid "User %1 deleted"
-msgstr ""
+msgstr "Korisnik %1 izbrisan"
 
 #. ($user->username)
 msgid "User %1 updated"
-msgstr ""
+msgstr "Korisnik %1 ažuriran"
 
 msgid "User created"
-msgstr ""
+msgstr "Korisnik stvoren"
 
 msgid "Username"
-msgstr ""
+msgstr "Korisničko ime"
 
 msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
+"Korisničko ime, samo slovnobrojčani znakovi, bez posebnih znakova, bez "
+"velikih slova."
 
 msgid "Users"
-msgstr ""
+msgstr "Korisnici"
 
 msgid ""
 "Using this token, you can load the bookbuilder settings\n"
@@ -3310,6 +3515,9 @@ msgid ""
 "    else. Just write it down and then load it from another computer\n"
 "    using the following form."
 msgstr ""
+"Koristeći ovaj kod, možeš učitati postavke i popis tekstova koje se\n"
+"sad nalaze u zbirci na drugom kompjuteru ili dijeliti ih s drugom\n"
+"osobom. Dovoljno je ga prepisati u slijedećem formularu."
 
 msgid ""
 "Usually this is due to high traffic and bad luck, and it can be fixed by "
@@ -3317,19 +3525,19 @@ msgid ""
 msgstr ""
 
 msgid "Verbatim block"
-msgstr ""
+msgstr "Predformatirani dio"
 
 msgid "View history"
-msgstr ""
+msgstr "Vidi stare izmjene"
 
 msgid "Virtual hosts"
-msgstr ""
+msgstr "Virtualni hostovi"
 
 msgid "Virtual hosts, one per line"
-msgstr ""
+msgstr "Virtualni hostovi, po jedan za redak"
 
 msgid "What links here"
-msgstr ""
+msgstr "Što vodi ovamo"
 
 msgid ""
 "When creating a new text, do not populate the publication date if not "
@@ -3342,21 +3550,25 @@ msgid ""
 "    can load it here from another device to resume what you were\n"
 "    doing."
 msgstr ""
+"Kad počinješ sastaviti jednu zbirku, na kraju stranice zbirke bit će\n"
+"jedan kôd za dijeljenje sesije. Možeš ga učitati s drugog kompjutera i\n"
+"tamo nastaviti."
 
 msgid "When you upload a PDF, split it into images to be inserted in the body"
 msgstr ""
+"Kad se učita PDF datoteku, pretvori je u slike koje je moguće dodati tekstu"
 
 msgid "Where does this text come from?"
-msgstr ""
+msgstr "Odakle dolazi ovaj tekst?"
 
 msgid "Whitelisted IP (for backup, one per line)"
 msgstr ""
 
 msgid "Width of the cover image in percent of the text block width."
-msgstr ""
+msgstr "Širina naslovne slike u postotku širine teksta."
 
 msgid "Width:"
-msgstr ""
+msgstr "Širina"
 
 msgid ""
 "With complex structures, e.g., a chapter with\n"
@@ -3364,23 +3576,30 @@ msgid ""
 "      the chapter's title, so probably you want to select the chapter\n"
 "      and all its subsections."
 msgstr ""
+"U prisustvu složene strukture, kao poglavlja, odjeljci, pododjeljci i\n"
+"slično, ako biraš samo najvišu razinu bez njezine niže razine,\n"
+"vjerojatno će se samo ubaciti naslov."
 
 msgid ""
 "With the \"verbatim\" tag you can avoid the markup to\n"
 "          be interpreted, usually not needed"
 msgstr ""
+"Koristeći se tagom \"verbatim\", može se spriječiti tumačenje markupa\n"
+"(inače to ne treba)"
 
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
 msgstr ""
+"Možeš promjeniti fontove, dimenzije, papir, margine u tekstovima biblioteke. "
+"Možeš stvoriti vlastitu zbirku za tvoj buklet. Isprobaj!"
 
 msgid "Workflow"
-msgstr ""
+msgstr "Upravljanje"
 
 msgid "Working locally?"
-msgstr ""
+msgstr "Lokalno radiš?"
 
 msgid "Wrap Width (mm)"
 msgstr ""
@@ -3390,39 +3609,48 @@ msgid ""
 "          which require leading space (notably, you cannot use them in\n"
 "          lists)."
 msgstr ""
+"Oznake između kojih se nalazi dio teksta ne smiju se koristiti u\n"
+"blokovima koji zahtijevaju razmake na početku retka, kao što su popisi\n"
+"i tablice."
 
 msgid "Wrong answer!"
-msgstr ""
+msgstr "Pogrešan odgovor!"
 
 msgid "Wrong username or password"
-msgstr ""
+msgstr "Pogrešno korisničko ime ili lozinka"
 
 msgid "XeLaTeX source"
-msgstr ""
+msgstr "XeLaTex izvor"
 
 msgid "Year"
-msgstr ""
+msgstr "Godina"
 
 msgid "Yes"
-msgstr ""
+msgstr "Da"
 
 msgid ""
 "You MUST specify a reason, otherwise the line will have no effect.\n"
 "The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
 "etc.) is irrelevant."
 msgstr ""
+"Razlog je OBAVEZAN, inače ovaj redak bit će bez učinka. Poredak\n"
+"direktiva na zaglavlju (gdje su \"#title\", \"#lang\" itd.) nema nikakvu\n"
+"važnost."
 
 msgid "You are already logged in"
-msgstr ""
+msgstr "Već si prijavljen"
 
 msgid ""
 "You are building a collection. Please provide a title and, optionally, any "
 "other information needed for the front cover (author, subtitle, date) and "
 "the back cover (source and notes)."
 msgstr ""
+"Trenutno stvaraš jednu zbirku. Molim ubaci naslov i, ako želiš, druge\n"
+"podatke za naslovnicu (autor, naslov, podnaslov, datum) i za zadnju\n"
+"stranicu (napomene i izvori)."
 
 msgid "You are logged in now!"
-msgstr ""
+msgstr "Sada si prijavljen!"
 
 #. (backup)
 msgid ""
@@ -3435,11 +3663,15 @@ msgid ""
 "    “plus” icon near the downloads of each text. You can add and\n"
 "    remove the texts later."
 msgstr ""
+"Klikni na “Plus”, pored preuzimanja, kod svakog teksta da bi ga dodao svojoj "
+"zbirci. Kasnije možeš dodati i izbrisati tekstove."
 
 msgid ""
 "You can also link to a part of the text. Please refer to the manual for this "
 "feature"
 msgstr ""
+"Mogu se dodati i poveznice na neki pasus teksta. Upute se nalaze u "
+"priručniku (na engleskom)"
 
 msgid ""
 "You can authorize your IP for Git access and site access (for private sites) "
@@ -3448,32 +3680,36 @@ msgstr ""
 
 #. (create_url)
 msgid "You can create a peer at %1"
-msgstr ""
+msgstr "Možeš stvoriti račun na %1"
 
 msgid "You can do so answering a simple question."
-msgstr ""
+msgstr "Odgovarajući na jednostavno pitanje."
 
 msgid "You can tune them editing them here."
-msgstr ""
+msgstr "Možeš ih podesiti ovdje."
 
 msgid ""
 "You can use the following prefixes to search a word in a specific field, e."
 "g. \"title:example\""
 msgstr ""
+"Možeš koristiti slijedeće oznake da bi se pretražila neka riječ u\n"
+"nekom određenom polju, npr. \"title:Naslov\""
 
 msgid ""
 "You can't create a new revision because the text has not been published yet"
-msgstr ""
+msgstr "Ne možeš napraviti novu izmjenu jer tekst još nije objavljen"
 
 msgid "You have logged out"
-msgstr ""
+msgstr "Odjavljen si"
 
 msgid "You may want to resume the editing of one of them"
-msgstr ""
+msgstr "Možeš se vratiti jednoj od izmjena u toku"
 
 msgid ""
 "You may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
+"Naslov dokumenta, u svrhu popisa. Obično se ne koristi u hrvatsko-srpskom "
+"jeziku"
 
 msgid "You may want to use one of these images"
 msgstr ""
@@ -3482,68 +3718,72 @@ msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
 msgstr ""
+"Lozinka je bila poslana koristeći nesigurnu vezu. Koristi HTTP,\n"
+"prijavi se i odmah promijeni lozinku. To se nije trebalo desiti."
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
-msgstr ""
+msgstr "Trebao bi promjeniti svoju lozinku sada na %1"
 
 msgid "Your browser does not support the audio tag."
-msgstr ""
+msgstr "Tvoj browser ne podržava audio fajlove"
 
 msgid "Your browser does not support the video tag."
-msgstr ""
+msgstr "Tvoj browser ne podržava video fajlove"
 
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
+"Tvoje izmjene su spremljene i možeš ih pregledati svaki put kada\n"
+"klikneš na “Pregled” ili “Spremi”"
 
 msgid "Your chapter here..."
-msgstr ""
+msgstr "Tvoje poglavlje..."
 
 msgid "Your current bookbuilder token is:"
-msgstr ""
+msgstr "Kôd tvoje zbirke je:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Tvoj mail"
 
 msgid "Your file is ready"
-msgstr ""
+msgstr "Tvoja datoteka je spremna"
 
 msgid "Your part here..."
-msgstr ""
+msgstr "Tvoj dio..."
 
 #. (password)
 msgid "Your password is %1."
-msgstr ""
+msgstr "Tvoja lozinka je %1."
 
 msgid "Your password was reset, now you can login with it"
-msgstr ""
+msgstr "Promijenili ste lozinku, sad se možete njom prijaviti"
 
 msgid "Your section here..."
-msgstr ""
+msgstr "Odjeljak..."
 
 msgid "Your sub-sub-section (or description heading) here..."
-msgstr ""
+msgstr "Tvoj podpododjeljak (ili zaglavlje opisa)..."
 
 msgid "Your subsection here..."
-msgstr ""
+msgstr "Tvoj pododjeljak..."
 
 #. (home)
 msgid "Your user at %1 has been created."
-msgstr ""
+msgstr "Tvoj korisnik je stvoren na %1."
 
 #. (username)
 msgid "Your username is %1."
-msgstr ""
+msgstr "Tvoje korisničko ime je %1."
 
 msgid "Zip"
 msgstr ""
 
 msgid "aborted"
-msgstr ""
+msgstr "nedovršeno"
 
 msgid "about, links..."
-msgstr ""
+msgstr "o projektu, poveznice..."
 
 msgid "activate to sort column ascending"
 msgstr ""
@@ -3552,177 +3792,518 @@ msgid "activate to sort column descending"
 msgstr ""
 
 msgid "active"
-msgstr ""
+msgstr "aktivno"
 
 msgid "affects only the frontend webserver configuration"
-msgstr ""
+msgstr "tiče se samo konfiguracije webservera"
 
 msgid "any"
-msgstr ""
+msgstr "bilo koja"
 
 msgid "automatically generated if not present, using author and title"
-msgstr ""
+msgstr "automatski generiran ako nedostaje, s autorom i naslovom"
 
 msgid "code and monospace"
-msgstr ""
+msgstr "oblikovanje koda"
 
 msgid "comma separated list"
 msgstr ""
 
 msgid "completed"
-msgstr ""
+msgstr "gotovo"
 
 msgid "conflict"
-msgstr ""
+msgstr "konflikt"
 
 msgid "default"
 msgstr ""
 
 msgid "description"
-msgstr ""
+msgstr "opis"
 
 msgid "displayed text"
-msgstr ""
+msgstr "prikazani tekst"
 
 msgid "edit, commit..."
-msgstr ""
+msgstr "izmijeni, spremi..."
 
 msgid "editing"
-msgstr ""
+msgstr "uređivanje u toku"
 
 msgid "emphasis"
-msgstr ""
+msgstr "istaknuto"
 
 msgid "failed"
-msgstr ""
+msgstr "Neuspjelo"
 
 msgid "filtered from _MAX_ total entries"
 msgstr ""
 
 msgid "for code, monospaced"
-msgstr ""
+msgstr "za kod"
 
 msgid "for display"
-msgstr ""
+msgstr "kao što je prikazano"
 
 msgid "for poetry"
-msgstr ""
+msgstr "za poeziju"
 
 msgid "generic sectioning, good for articles"
-msgstr ""
+msgstr "općenit odjeljak, preporučen za kratke tekstove"
 
 msgid "if you want to use a custom size, you need to set both width and height"
-msgstr ""
+msgstr "ako želiš posebne dimenzije, trebaš ubaciti i širinu i visinu"
 
 msgid "image"
-msgstr ""
+msgstr "slika"
 
 msgid "left"
-msgstr ""
+msgstr "lijeva"
 
 msgid "mandatory"
-msgstr ""
+msgstr "obavezno"
 
 msgid "markup *not* interpreted"
-msgstr ""
+msgstr "ovaj markup *nije* tumačen"
 
 #. (site.binary_upload_max_size_in_mega)
 msgid "max %1 Mb"
-msgstr ""
+msgstr "Najviše %1 Mb"
 
 msgid "minutes"
-msgstr ""
+msgstr "minuta"
 
 msgid "new-example-uri"
-msgstr ""
+msgstr "novi-uri-kao-primjer"
 
 msgid "only lowercase ASCII and hyphens"
-msgstr ""
+msgstr "samo ASCII u malom slovu i crtice"
 
 msgid "or"
-msgstr ""
+msgstr "ili"
 
 msgid "ordered item"
-msgstr ""
+msgstr "brojčani element"
 
 msgid "overstriked"
-msgstr ""
+msgstr "izbrisano"
 
 msgid "pending"
-msgstr ""
+msgstr "na čekanju"
 
 msgid "plain PDF"
-msgstr ""
+msgstr "običan PDF"
 
 msgid "plain text source"
-msgstr ""
+msgstr "izvor u običnom tekstu"
 
 msgid "processing"
-msgstr ""
+msgstr "u toku"
 
 msgid "published"
-msgstr ""
+msgstr "objavljeno"
 
 msgid "revision"
-msgstr ""
+msgstr "izmjena"
 
 msgid "right"
-msgstr ""
+msgstr "desna"
 
 #. (args)
 msgid "string"
-msgstr ""
+msgstr "rečenica"
 
 msgid "strong emphasis"
-msgstr ""
+msgstr "istaknuto i podebljano"
 
 msgid "sub-sub-section"
-msgstr ""
+msgstr "podpododjeljak"
 
 msgid "subscript"
-msgstr ""
+msgstr "indeks"
 
 msgid "subsection"
-msgstr ""
+msgstr "pododjeljak"
 
 msgid "superscript"
-msgstr ""
+msgstr "eksponent"
 
 msgid "taken"
-msgstr ""
+msgstr "u toku"
 
 msgid "texts by authors, title, topic..."
-msgstr ""
+msgstr "tekstovi po autoru, naslovu, temi..."
 
 msgid "texts sorted by author"
-msgstr ""
+msgstr "tekstovi po autoru"
 
 msgid "texts sorted by title"
-msgstr ""
+msgstr "tekstovi po naslovu"
 
 msgid "the author of the text (as displayed)"
-msgstr ""
+msgstr "autor teksta (za naslovnicu)"
 
 msgid "this text will be unpublished"
-msgstr ""
+msgstr "Ovaj će se tekst izbrisati (ali će ostati u arhivu, skriven)"
 
 msgid "topic"
-msgstr ""
+msgstr "tema"
 
 msgid "unordered item"
-msgstr ""
+msgstr "element bez broja"
 
 msgid "very strong emphasis"
-msgstr ""
+msgstr "istaknuto i jako podebljano"
 
 msgid "with description"
-msgstr ""
+msgstr "s opisom"
 
 msgid "without description"
-msgstr ""
+msgstr "bez opisa"
 
 msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
+"\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
+"tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "Sources"
+#~ msgstr "Izvori"
+
+#~ msgid "Such an URI already exists"
+#~ msgstr "Ovaj URI već postoji"
+
+#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgstr "Mogu to biti tekstovi, specijalni tekstovi, autori ili teme."
+
+#~ msgid "Nodes"
+#~ msgstr "Čvorovi"
+
+#~ msgid "Assign text to nodes"
+#~ msgstr "Dodaj tekst čvorima"
+
+#~ msgid "Parent node"
+#~ msgstr "Viši čvor"
+
+#~ msgid "List of paths to attach to this node, one per line."
+#~ msgstr "Popis tekstova i kategorija za ovaj čvor, po jedan za redak."
+
+#~ msgid "Root node"
+#~ msgstr "Najviši čvor"
+
+#~ msgid "Site Map"
+#~ msgstr "Mapa sajta"
+
+#~ msgid "IRC channel on freenode"
+#~ msgstr "IRC kanal na mreži Freenode"
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "tekstovi po temi"
+
+#~ msgid "Add or delete and add again the <user_repo_url> on this page."
+#~ msgstr "Dodaj ili izbriši i ponovo dodaj URL repositorija na ovoj stranici"
+
+#~ msgid "Clone the repo locally and set it up"
+#~ msgstr "Kloniraj na svoj mašini repozitorij i podesi ga"
+
+#~ msgid ""
+#~ "Create an empty repository. Here we refer to its url as <user_repo_url>."
+#~ msgstr ""
+#~ "Stvori novi repozitorij. Ovdje spominjemo njegov URL kao <user_repo_url>."
+
+#~ msgid "How to work with a remote repo"
+#~ msgstr "Kako upravljati udaljenim repozitorijima"
+
+#~ msgid "Remotes"
+#~ msgstr "Udaljeni repozitorij"
+
+#~ msgid "Repository"
+#~ msgstr "Repozitorij"
+
+#~ msgid "if the repository is exported"
+#~ msgstr "ako je repozitorij otvoren na webu"
+
+#~ msgid ""
+#~ "or, if you have SSH access to the machine (but do not use the same user "
+#~ "as amusewiki, it should be a read-only repo)"
+#~ msgstr ""
+#~ "Ili, ako imaš SSH pristup mašini (nemoj koristiti istog korisnika "
+#~ "aplikacije)"
+
+#~ msgid "If you want to proceed, please visit the following url: %1"
+#~ msgstr "Ako želiš nastaviti, idi na ovu adresu: %1"
+
+#~ msgid "Now you can proceed to login."
+#~ msgstr "Sad možeš nastaviti na prijavu."
+
+#~ msgid "Otherwise, please just ignore this mail."
+#~ msgstr "Ako to nije slučaj, možeš samo ignorirati ovaj mail."
+
+#~ msgid "Password reset for %1"
+#~ msgstr "Ponovno postavi lozinku za %1"
+
+#~ msgid "Someone, probably you, has requested a password reset for %1 at %2."
+#~ msgstr "Netko, vjerojatno ti, tražio je novu lozinku za %1 na sajtu %2."
+
+#~ msgid "The link is valid until %1 (one hour from now)"
+#~ msgstr "Adresa je važeća do %1 (sat vremena od sada)"
+
+#~ msgid "Fixed category list"
+#~ msgstr "Nepromjenjiv popis kategorija"
+
+#~ msgid "Job deleted"
+#~ msgstr "Izbrisani zadatak"
+
+#~ msgid "Job rescheduled"
+#~ msgstr "Zadatak opet postavljen"
+
+#~ msgid "Try again"
+#~ msgstr "Pokušaj ponovo"
+
+#~ msgid ""
+#~ "URL of the new remote repository\n"
+#~ "        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
+#~ "        supported."
+#~ msgstr ""
+#~ "URL udaljenog repozitorija (HTTP, HTTPS, GIT ili direktorij, ali ne SSH)."
+
+#~ msgid "Add an attachment (PNG, JPG or PDF)"
+#~ msgstr "Dodaj privitak (PNG, JPG ili PDF)"
+
+#~ msgid "File to delete not found!"
+#~ msgstr "Datoteka nije pronađena"
+
+#~ msgid "Format: yyyy-mm-dd hh:mm, e.g."
+#~ msgstr "Formatiranje: gggg-mm-dd ss:mm, npr."
+
+#~ msgid "Images:"
+#~ msgstr "Slike:"
+
+#~ msgid "Links and images"
+#~ msgstr "Poveznice i slike"
+
+#~ msgid ""
+#~ "Please note that you have to upload them first and\n"
+#~ "          use the name the form provides. Images are always renamed by\n"
+#~ "          us."
+#~ msgstr ""
+#~ "Pazi: moraš prije učitati i upotrijebiti ime koje će biti prikazano. "
+#~ "Sistem uvijek preimenuje slike."
+
+#~ msgid "They have the same syntax (images are actually links)"
+#~ msgstr "Imaju istu sintaksu (slike su u stvari samo poveznice)"
+
+#~ msgid "This field is required"
+#~ msgstr "Ovo polje je obavezno"
+
+#~ msgid "Time is optional."
+#~ msgstr "Sat je neobavezan"
+
+#~ msgid "Document type"
+#~ msgstr "Vrsta dokumenta"
+
+#~ msgid "Number of pages"
+#~ msgstr "Broj stranica"
+
+#~ msgid "Published on this site"
+#~ msgstr "Datum objavljivanja na ovom sajtu"
+
+#~ msgid "This also makes /mirror/ public"
+#~ msgstr "/mirror/ će isto biti javan"
+
+#~ msgid "article"
+#~ msgstr "članak"
+
+#~ msgid "book"
+#~ msgstr "knjiga"
+
+#~ msgid "Hide options"
+#~ msgstr "Sakrij opcije"
+
+#~ msgid "Match any of the fields above"
+#~ msgstr "Bilo koje polje"
+
+#~ msgid "Query was"
+#~ msgstr "Upit je"
+
+#~ msgid "Show options"
+#~ msgstr "Pokaži opcije"
+
+#~ msgid "Insert the file into the body"
+#~ msgstr "Dodaj datoteku tekstu"
+
+#~ msgid "Attached PDFs"
+#~ msgstr "PDFovi u privitku"
+
+#~ msgid "Images not used in the text are stored, but will be ignored."
+#~ msgstr ""
+#~ "Slike koje se ne koriste u tekstu su spremljene, ali bit će zanemarene."
+
+#~ msgid ""
+#~ "Please note that PDFs are external files and cannot be\n"
+#~ "        fully integrated in the document, so the generated files will\n"
+#~ "        not embed them. If you need that, you should split the PDF in\n"
+#~ "        images and upload those instead."
+#~ msgstr ""
+#~ "PDFovi su vanjske datoteke i ne mogu biti potpuno integrirane u\n"
+#~ "tekstu. Generirani formati bit će bez njih. Ako ih trebaš, možeš ih\n"
+#~ "pretvoriti u slike i dodati njih."
+
+#~ msgid ""
+#~ "You\n"
+#~ "    have attached one or more images. This is not enough! To make them\n"
+#~ "    appear, you have to place somewhere in the body or in the header,\n"
+#~ "    depending on their purpose. See the examples below."
+#~ msgstr ""
+#~ "Dodala/dodao si jednu ili više slika, ali procedura nije još dovršena.\n"
+#~ "Da bi se pojavile u tekstu, moraš ih koristiti ili u samom tekstu ili\n"
+#~ "u zaglavlju. Vidi primjere malo dolje."
+
+#~ msgid "A new revision has been created at %1"
+#~ msgstr "Nova izmjena stvorena na %1"
+
+#~ msgid "Bare HTML, needed by the application"
+#~ msgstr "Goli HTML, zahtjeva ga aplikacija"
+
+#~ msgid "Custom formats"
+#~ msgstr "Posebni formati"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Job not found"
+#~ msgstr "Zadatak nije pronađen"
+
+#~ msgid "Other languages"
+#~ msgstr "Drugi jezici"
+
+#~ msgid ""
+#~ "Please note that the twoside and binding correction options follow\n"
+#~ "  this logic: if you have some imposed format, they are ignored for\n"
+#~ "  the standalone PDF but applied for the imposed ones. If you have\n"
+#~ "  only the standalone PDF, they are applied to it."
+#~ msgstr ""
+#~ "Pazi da opcije za obostrani prijelom i za korekciju za uvez slijede\n"
+#~ "ovu logiku: ako su prisutni formati spremni za štampanje, onda za\n"
+#~ "običan PDF opcije budu ignorirane (ali se ipak koriste za formate za\n"
+#~ "štampanje). Ako samo običan PDF je prisutan, opcije se primjenjuju\n"
+#~ "ovom formatu."
+
+#~ msgid "TeX"
+#~ msgstr "TeX"
+
+#~ msgid "ZIP archive with sources, needed by the bookbuilder"
+#~ msgstr "ZIP arhiva s izvorom, potrebna za stvaranje zbirke"
+
+#~ msgid "relevant"
+#~ msgstr "relevantno"
+
+#~ msgid "By by sku ascending"
+#~ msgstr "Po SKU-u prema gore"
+
+#~ msgid "Text body, before any section"
+#~ msgstr "Tekst koji ne pripada nijednom dijelu"
+
+#~ msgid "Locale"
+#~ msgstr "Jezik"
+
+#~ msgid "Cover image (optional)"
+#~ msgstr "Slika za naslovnicu (neobavezna)"
+
+#~ msgid "Missing username or password"
+#~ msgstr "Nedostaje korisničko ime i lozinka"
+
+#~ msgid "Prepare this text for the archiving"
+#~ msgstr "Pripremi ovaj tekst za arhivu"
+
+#~ msgid "You already proved you are human"
+#~ msgstr "Već si dokazao da si ljudsko biće"
+
+#~ msgid "no font embedding"
+#~ msgstr "bez fontova u datoteci"
+
+#~ msgid ""
+#~ "Directory with templates. Do not set it unless you know what you are doing"
+#~ msgstr ""
+#~ "Direktorij s predlošcima. Ostavi prazno, osim ako zaista znaš što radiš."
+
+#~ msgid ""
+#~ "Number of latest entries to display on the special pages (an integer)"
+#~ msgstr "Broj tekstova na specijalnim stranicama"
+
+#~ msgid "The new password for %1 is:"
+#~ msgstr "Nova lozinka za %1 je: "
+
+#~ msgid "Add to library"
+#~ msgstr "Dodaj biblioteci"
+
+#~ msgid "Catalog"
+#~ msgstr "Katalog"
+
+#~ msgid "Use it in the body as"
+#~ msgstr "Koristi je u tekstu kao"
+
+#~ msgid "This site is private and mobile applications cannot access the OPDS."
+#~ msgstr "Ovaj sajt je privatan i mobiteli ne mogu pristupiti OPDS-u."
+
+#~ msgid "The user will have the same your level of access"
+#~ msgstr "Korisnik će imati tvoju istu razinu pristupa."
+
+#~ msgid "Displaying"
+#~ msgstr "Prikazujem"
+
+#~ msgid "Results"
+#~ msgstr "Rezultati"
+
+#~ msgid "Results found"
+#~ msgstr "Pronađeno"
+
+#~ msgid "text"
+#~ msgstr "tekst"
+
+#~ msgid "Please give a name to the collection."
+#~ msgstr "Naslovi zbirku."
+
+#~ msgid ""
+#~ "The name is always required, but used only if there are multiple texts."
+#~ msgstr "Ime je obavezno, ali se koristi samo za zbirke s više tekstova"
+
+#~ msgid "PDF logo (absolute path or put it in texmf)"
+#~ msgstr "PDF logo (obavezni smjer ili ime teksta u texmf)"
+
+#~ msgid "Italics, bold, monospace, linebreaks..."
+#~ msgstr "Kurzivi, podebljano, novi redak..."
+
+#~ msgid "Poetry, bibliographies, plays, code"
+#~ msgstr "Poezija, bibliografije, drame, kod"
+
+#~ msgid "Lists start with a single leading whitespace"
+#~ msgstr "Popisi započinju jednim jedinim praznim znakom na početku retka"
+
+#~ msgid "Toggle the table of contents"
+#~ msgstr "Pokaži/sakrij sadržaj"
+
+#~ msgid "Pubdate"
+#~ msgstr "Datum objavljivanja"
+
+#~ msgid "Full site canonical URL, including protocol"
+#~ msgstr "Čitav osnovni URL, uključujući protokol"
+
+#~ msgid "Changes saved, thanks!"
+#~ msgstr "Izmjene izvršene, hvala"
+
+#~ msgid ""
+#~ "Same as 2up, but each page is rotated by 90 degrees counter-clockwise."
+#~ msgstr ""
+#~ "Isto kao 2up, ali svaka stranice je rotirana za 90 stupnjeva u smjeru "
+#~ "suprotnom od kazaljke na satu."
+
+#~ msgid ""
+#~ "The prefix “r” means logical page disposed upside-down, rotated\n"
+#~ "by 180 degrees."
+#~ msgstr "Prefiks \"r\" označava logičku stranicu rotiranu za 180 stupnjeva."
+
+#~ msgid "if applicable"
+#~ msgstr "ako je moguće"
