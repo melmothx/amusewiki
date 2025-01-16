@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.603 2025-01-16
+
+ - Xapian indexing: give more relevance to titles and author
+ - Upgrade forkawesome to final version
+ - Improve translation UI
+
 2.602 2024-10-21
 
  - Improve bookbuilder session loading
