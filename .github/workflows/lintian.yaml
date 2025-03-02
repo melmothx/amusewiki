@@ -58,7 +58,7 @@ jobs:
             (cd ..; ls -d *.deb |grep -v "[-]build-deps$" | while read deb ; do lintian --verbose $deb | tee /lintz/lintian-$deb.txt; done)
           '
           
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: lintian-reports
           path: ~/lintz/*
