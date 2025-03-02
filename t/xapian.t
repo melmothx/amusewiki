@@ -11,7 +11,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 44;
+use Test::More tests => 70;
 use Data::Dumper;
 use File::Path qw/make_path/;
 
@@ -24,10 +24,24 @@ binmode STDOUT, ":encoding(utf-8)";
 
 use_ok('AmuseWikiFarm::Archive::Xapian') or die "Cannot load Xapian";
 
+is AmuseWikiFarm::Archive::Xapian::strip_diacritcs("ćdžéèà"), "cdzeea";
+is AmuseWikiFarm::Archive::Xapian::strip_diacritcs(10), 10;
+is AmuseWikiFarm::Archive::Xapian::strip_diacritcs(10.50), "10.5";
+is AmuseWikiFarm::Archive::Xapian::strip_diacritcs("10.50"), "10.50";
+is AmuseWikiFarm::Archive::Xapian::strip_diacritcs("test me èà\nèà\n"), "test me ea\nea\n";
+is AmuseWikiFarm::Archive::Xapian::strip_diacritcs(), "";
+
 my $site_id = '0xapian0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
-
+$site->site_category_types->find_or_create({
+                                            category_type => 'season',
+                                            active => 1,
+                                            priority => 1,
+                                            name_singular => 'Season',
+                                            name_plural => 'Seasons',
+                                            xapian_custom_slot => 1,
+                                           });
 
 diag $site->repo_root;
 ok ($site->xapian);
@@ -130,10 +144,11 @@ foreach my $term ('xxxумеренными', 'x1887x', 'xravnox', 'xprotivx', 'x
 
 sleep 1;
 
-write_file($target, "#title XXXX#lang fr\n#SORTtopics prova\n\nBla bla État\n");
+write_file($target, "#title XXXX#lang fr\n#SORTtopics prova\n#season spréng\n\nBla bla État\n");
 $site->update_db_from_tree;
 $site->xapian_reindex_all;
-foreach my $term ("état", "ÉTAT") {
+foreach my $term ("état", "ÉTAT", "ÈTAT", "ËTÃT", "etat",
+                  "spréng", "spreng") {
     my ($total, @results) = $site->xapian->search($term);
     is $total->total_entries, 1, "Found one record searching for $term";
     ok $results[0]->{pagedata}->{feed_teaser}, "Found the teaser";

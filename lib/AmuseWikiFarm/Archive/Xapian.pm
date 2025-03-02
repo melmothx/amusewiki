@@ -18,6 +18,7 @@ use JSON::MaybeXS;
 use AmuseWikiFarm::Archive::Xapian::Result;
 use AmuseWikiFarm::Archive::Xapian::Result::Text;
 use Encode ();
+use Unicode::Normalize;
 use namespace::clean;
 
 use constant {
@@ -360,13 +361,13 @@ sub index_text {
 
             # Index the author to allow fielded free-text searching.
             if (my $author = $title->author) {
-                $indexer->index_text($author, 1, 'A');
+                $indexer->index_text(strip_diacritcs($author), 1, 'A');
             }
             # Index the title and subtitle to allow fielded free-text searching.
-            $indexer->index_text($title->title, 1, 'S');
+            $indexer->index_text(strip_diacritcs($title->title), 1, 'S');
 
             if (my $subtitle = $title->subtitle) {
-                $indexer->index_text($subtitle, 2, 'S');
+                $indexer->index_text(strip_diacritcs($subtitle), 2, 'S');
             }
             my $site = $title->site;
             my $custom_category_types = $site ? $site->custom_category_types : [];
@@ -383,7 +384,9 @@ sub index_text {
                 foreach my $item ($title->categories->$rs->all) {
                     push @list, $item->full_uri;
                     $doc->add_boolean_term($SLOTS{$cat}{prefix} . $item->full_uri);
-                    $indexer->index_text($item->name, $index, $prefix);
+                    my $item_name = strip_diacritcs($item->name);
+                    $indexer->index_text($item_name, $index, $prefix);
+                    $indexer->index_text($item_name, 30);
                 }
                 $doc->add_value($SLOTS{$cat}{slot}, encode_json(\@list));
             }
@@ -439,10 +442,10 @@ sub index_text {
             $doc->add_value(SLOT_PAGES_FULL, Search::Xapian::sortable_serialise($title->pages_estimated));
 
             if (my $source = $title->source) {
-                $indexer->index_text($source, 1, 'XSOURCE');
+                $indexer->index_text(strip_diacritcs($source), 1, 'XSOURCE');
             }
             if (my $notes = $title->notes) {
-                $indexer->index_text($notes, 1, 'XNOTES');
+                $indexer->index_text(strip_diacritcs($notes), 1, 'XNOTES');
             }
 
             foreach my $method (qw/title subtitle author teaser source notes/) {
@@ -463,7 +466,7 @@ sub index_text {
                 # log_debug { "Calling $method against title" };
                 if (my $thing = $title->$method) {
                     # log_debug { "Indexing $method $thing" };
-                    $indexer->index_text($thing);
+                    $indexer->index_text(strip_diacritcs($thing));
                     $indexer->increase_termpos;
                 }
             }
@@ -542,6 +545,9 @@ sub faceted_search {
 
 sub _do_faceted_search {
     my ($self, %args) = @_;
+    if (exists $args{query}) {
+        $args{query} = strip_diacritcs($args{query});
+    }
     foreach my $default (qw/facets filters/) {
         $args{$default} = 1 unless exists $args{$default};
     }
@@ -766,10 +772,26 @@ sub _index_html {
         $tree->elementify;
         my $text = $tree->as_text;
         log_debug { "Text is $text" };
-        $indexer->index_text($text, @rest);
+        $indexer->index_text(strip_diacritcs($text), @rest);
         $indexer->increase_termpos;
         $tree->delete;
     }
+}
+
+sub strip_diacritcs {
+    my ($string) = @_;
+    my $out = '';
+    if (length($string)) {
+        try {
+            $out = NFKD("$string");
+            $out =~ s/\p{General_Category=Nonspacing_Mark}//g;
+        }
+        catch {
+            log_error { "Invalid input $string" };
+            $out = '';
+        };
+    }
+    return $out;
 }
 
 1;
