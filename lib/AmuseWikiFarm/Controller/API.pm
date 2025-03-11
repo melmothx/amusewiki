@@ -232,6 +232,7 @@ sub legacy_links :Chained('api') :PathPart('legacy-links') :Args(0) {
 sub datatables_lang :Chained('api') :PathPart('datatables-lang') :Args(0) {
     my ($self, $c) = @_;
     my %langs = (
+                 ca => 'Catalan',
                  tr => 'Turkish',
                  ru => 'Russian',
                  hr => 'Croatian',

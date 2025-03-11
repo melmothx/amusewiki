@@ -1019,6 +1019,7 @@ sub strip_image {
 
 sub known_langs {
     return {
+            ca => 'Català',
             ru => 'Русский',
             uk => 'Українська',
             sr => 'Srpski',

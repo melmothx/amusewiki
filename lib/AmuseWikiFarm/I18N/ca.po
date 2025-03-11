@@ -1,0 +1,4422 @@
+# AmuseWiki i18n
+# This file is distributed under the same license as the AmuseWiki package.
+# Marco Pessotto <melmothx@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AmuseWiki 0.01\n"
+"POT-Creation-Date: 2014-03-06 10:16+0100\n"
+"PO-Revision-Date: 2025-03-10 11:54+0100\n"
+"Last-Translator: Marco <melmothx@gmail.com>\n"
+"Language-Team: Catalan\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.5\n"
+
+#. ($filename)
+msgid "%1 doesn't exist"
+msgstr "%1 no existix"
+
+#. ([$total])
+msgid "%1 jobs deleted"
+msgstr "%1 treballs eliminats"
+
+#. ([$total])
+msgid "%1 jobs rescheduled"
+msgstr "%1 treballs reprogramats"
+
+#. ($c->stash->{site}->full_name)
+#. (site.full_name)
+msgid "%1 on mobile"
+msgstr "%1 en dispositius mòbils"
+
+#. (text.pages_estimated)
+msgid "%1 pp."
+msgstr "%1 pp."
+
+msgid "(leave blank to keep the current one)"
+msgstr "(deixar en blanc per a mantindre l'actual)"
+
+msgid "(narrowest)"
+msgstr "(el més estret)"
+
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr "(cites intel·ligents, enllaços, notes a peu de pàgina, etc.)"
+
+msgid "(use that as main link in static mirror as well)"
+msgstr "(utilitza-ho com a enllaç principal en el «mirror» estàtic)"
+
+msgid "(widest)"
+msgstr "(el més ample)"
+
+msgid "A blank line (or more blank lines) starts a new paragraph."
+msgstr "Una línia en blanc (o més d'una) inicia un nou paràgraf."
+
+msgid "A collection with this URI already exists"
+msgstr "Ja existix una col·lecció amb este URI"
+
+msgid ""
+"A cover image was already added, but you can replace it uploading\n"
+"              a new one."
+msgstr ""
+"Ja es va afegir una imatge per a la portada, però pots reemplaçar-la\n"
+"              pujant una nova."
+
+msgid ""
+"A footnote is a line which starts with a number between square\n"
+"          brackets, with no leading whitespace."
+msgstr ""
+"Una nota a peu de pàgina és una línia que comença amb un número\n"
+"          entre parèntesis quadrats sense espai a l'inici de la línia."
+
+msgid "A line which starts with 2 or more whitespaces is a quotation."
+msgstr "Una línia que comença amb 2 o més espais en blanc és una cita."
+
+msgid "A line which starts with 20 or more whitespaces is right-aligned."
+msgstr ""
+"Una línia que comença amb 20 o més espais en blanc s'alinea a la dreta."
+
+msgid "A line which starts with 6 or more whitespaces is centered."
+msgstr "Una línia que comença amb 6 o més espais en blanc se centra."
+
+msgid ""
+"A list of links and labels to insert into the top\n"
+"            bar. One per line, first the url, then the label,\n"
+"            separated by a space, e.g. \"http://test.me Test site\""
+msgstr ""
+"Una lllista d'enllaços i etiquetes per a inserir\n"
+"            en la barra superior. Un per línia, primer la url\n"
+"            separat per un espai, ex.: «http://prova.m Lloc de prova»"
+
+#. (location)
+msgid "A new text has been created at %1"
+msgstr "S'ha creat un nou text en %1"
+
+msgid "A nice title"
+msgstr "Un bon títol"
+
+msgid "A4 imposed PDF"
+msgstr "PDF A4 per a quadernet"
+
+msgid "A4 paper"
+msgstr "Grandària A4"
+
+msgid "A5 paper"
+msgstr "Grandària A5"
+
+msgid "A6 paper (also suitable for e-readers)"
+msgstr "Grandària A6 (apte tconé per a lectors electrònics)"
+
+msgid "Abandoned editing in progress, feel free to check the diff and resume"
+msgstr ""
+"Abandonant l'edició en curs, no dubte a comprovar les diferències i reprendre"
+
+msgid "Access token"
+msgstr "Clau d'accés"
+
+msgid "Action"
+msgstr "Acció"
+
+msgid "Activate the blog-style look and feel"
+msgstr "Activar l'aparença de blog"
+
+msgid "Active"
+msgstr "Actiu"
+
+msgid "Add"
+msgstr "Afegir"
+
+msgid "Add a cover image (PNG or JPG)"
+msgstr "Afegir una imatge de portada (PNG o JPG)"
+
+msgid "Add a new text"
+msgstr "Afegir un nou text"
+
+msgid "Add an attachment"
+msgstr "Afegir un enllaç"
+
+msgid "Add crop marks to the PDF"
+msgstr "Afegir marques de tall al PDF"
+
+msgid "Add new remote repository"
+msgstr "Afegir un nou repositori remot"
+
+msgid "Add non-breaking spaces where appropriate for the language"
+msgstr "Afegir espais sense salts on siga apropiat per a l'idioma"
+
+msgid ""
+"Add paginator for text listing when the number of texts is greater than "
+"(integer)"
+msgstr ""
+"Afegir enumeració de pàgines per a texts llistats quan el número de texts "
+"siga major a (número enter)"
+
+msgid "Add sections to the bookbuilder"
+msgstr "Afegir seccions al creador de llibres"
+
+msgid "Add text"
+msgstr "Afegir text"
+
+msgid "Add the OPDS URL"
+msgstr "Afegir l'URL de l'OPDS"
+
+msgid "Add the selected parts to the bookbuilder"
+msgstr "Afegir les parts seleccionades al creador de llibres"
+
+msgid "Add the whole text"
+msgstr "Afegir tot el text"
+
+msgid "Add this text to the bookbuilder"
+msgstr "Afegir este text al creador de llibres"
+
+msgid "Add to colophon"
+msgstr "Afegir al colofó"
+
+msgid "Add to the Bookbuilder"
+msgstr "Afegir al creador de llibres"
+
+msgid ""
+"Add up to 20 URLs. They need to be Amusewiki URLs, either the whole site, a "
+"text or a category. Examples:"
+msgstr ""
+"Afig fins a 20 URLs. Han de ser URLs d'Amusewiki, ja siga tot el lloc, un "
+"text o una categoria. Exemples:"
+
+#. ($ok)
+msgid "Added %1 sources."
+msgstr "Fonts %1 afegides."
+
+msgid ""
+"Additional information (full date, original title, translators, credits, "
+"etc)."
+msgstr ""
+"Informació addicional (data, títol original, traductores, crèdits, etc.)."
+
+msgid "Additional nginx configuration"
+msgstr "Configuració nginx addicional"
+
+#. (c.uri_for_action('/console/unpublished')
+#. (c.uri_for_action("/console/unpublished").path)
+msgid ""
+"After the approval of the\n"
+"  change, it will appear under %1. There is a big red\n"
+"  button for each deleted text, and you can proceed with the purging."
+msgstr ""
+"Tras la aprobación del\n"
+"  cconio, aparecerá en %1. Hay un botón grande rojo\n"
+"  per a cada text borrado, amb el que pots purgarlo."
+
+msgid "Age:"
+msgstr "Edat:"
+
+msgid "Aggregation"
+msgstr "Agregació"
+
+msgid "Aggregation editing is disabled (autoimport file present)"
+msgstr ""
+"L'edició de l'agregació està desactivada (arxiu d'autoimportació present)"
+
+msgid "Aggregations"
+msgstr "Agregacions"
+
+msgid "Alias"
+msgstr "Àlies"
+
+msgid "Alias can't point to itself"
+msgstr "Un àlies no pot assenyalar-se a si mateix"
+
+msgid ""
+"All kind of lists start with one or more leading\n"
+"        whitespace."
+msgstr ""
+"Tots els tipus de llistes comencen amb un o més\n"
+"        espais en blanc."
+
+msgid "All languages"
+msgstr "Tots els idiomes"
+
+msgid "All revisions"
+msgstr "Totes les revisions"
+
+msgid "All sites"
+msgstr "Tots els llocs"
+
+msgid "All users"
+msgstr "Totes les usuaries"
+
+msgid ""
+"Allow Unicode URIs for categories (author, topics). Recommended for non-"
+"latin scripts."
+msgstr ""
+"Permetre URIs Unicode per a categories (autor, temes). Recomanat per a "
+"alfabets no llatins."
+
+msgid ""
+"Allow binary uploads to logged in users: list of whitespace separate file "
+"extensions"
+msgstr ""
+"Permetre càrregues binàries a usuaris registrats: lllista d'extensions "
+"d'arxiu separades per espais en blanc"
+
+msgid ""
+"Also produce slides\n"
+"          from the document. Each section, no matter how deep, will\n"
+"          produce a slide. The text outside a section is ignored, so\n"
+"          if you do not have sections, you will get empty slides. If\n"
+"          you want to exclude a section, put a comment in the section\n"
+"          body with the string “noslide”."
+msgstr ""
+"Tconé produir diapositives\n"
+"          a partir del document. Cada secció, no importa quant llarga siga,\n"
+"          produirà una diapositiva. El text fora d'una secció és ignorat,\n"
+"\t   així que si no tens seccions, obtindràs\n"
+"          diapositives buides. Si vols excloure una secció, posa un\n"
+"          comentari en el cos de la secció amb la paraula “noslide”."
+
+msgid "Alternate Text"
+msgstr "Text Alternatiu"
+
+msgid ""
+"An URI is a string which uniquely identifies the text\n"
+"      in the archive. In theory, it could be anything, but if you want\n"
+"      to set it yourself, please stick with the convention: author\n"
+"      name, title, language, eventual number for disambiguation, e.g.\n"
+"      errico-malatesta-anarchy-2. Please note that this is normally\n"
+"      not needed"
+msgstr ""
+"Una URI és una cadena de caràcters que identifica de manera única a un text\n"
+"      en l'arxiu. En teoria, pot ser qualsevol cosa, però si vols\n"
+"      posar un especial, per favor seguix la convenció: autor/a, nom,\n"
+"      títol, idioma, número eventual per a diferenciació (ex.:\n"
+"      errico-malatesta-anarquia-2. Tingues en compte que normalment això\n"
+"      no es necessari"
+
+msgid "Annotations"
+msgstr "Anotacions"
+
+msgid ""
+"Annotations are text metadata which are not included in the muse file. "
+"Examples could be: prices, catalog numbers, shelf location, working copies "
+"of large binary files, internal comments."
+msgstr ""
+"Les anotacions són metadades de text que no s'inclouen en l'arxiu muse. "
+"Alguns exemples podrien ser: preus, números de catàleg, ubicació en "
+"prestatgeries, còpies de treball d'arxius binaris grans, comentaris interns."
+
+#. ($site->canonical)
+msgid "Annotations for %1"
+msgstr "Anotacions per a %1"
+
+msgid "Annotations, collections, aggregations"
+msgstr "Anotacions, col·leccions, agregats"
+
+msgid "Anthologies"
+msgstr "Antologies"
+
+msgid "Anthologies and periodicals"
+msgstr "Antologies i publicacions periòdiques"
+
+msgid "Anthology Name"
+msgstr "Nom de l'Antologia"
+
+msgid "Apache is not currently supported"
+msgstr "Actualment no hi ha suport per a Apache"
+
+msgid "Archive"
+msgstr "Arxiu"
+
+msgid "Archive by month"
+msgstr "Arxiu per mesos"
+
+msgid "Archive history"
+msgstr "Historial d'arxiu"
+
+msgid "Are you sure?"
+msgstr "Estàs segura?"
+
+msgid "As cover in the header"
+msgstr "Com a portada en la capçalera"
+
+msgid "As regular image in the body"
+msgstr "Com a imatge habitual en el cos"
+
+msgid "Assign text to aggregations"
+msgstr "Assignar text a les agregacions"
+
+msgid "Assign text to collections"
+msgstr "Assignar text a les col·leccions"
+
+msgid "Attach"
+msgstr "Adjuntar"
+
+msgid "Attached images"
+msgstr "Imatges adjuntes"
+
+msgid "Attachments"
+msgstr "Adjunts"
+
+msgid "Author"
+msgstr "Autoría"
+
+msgid "Author and title. If one side document: title."
+msgstr "Autoría i títol. Si es un document de un lado: títol."
+
+msgid "Authorize your IP"
+msgstr "Autoritza la teua IP"
+
+msgid "Authorize your IP, if needed"
+msgstr "Autoritza la teua IP, si es necessari"
+
+msgid "Authors"
+msgstr "Autores"
+
+msgid "Authors and topics listing"
+msgstr "Llistes d'autores i temes"
+
+msgid "Authors for indexing"
+msgstr "Autores per a indexar"
+
+msgid "Auto"
+msgstr "Auto"
+
+msgid "Automatically generated"
+msgstr "Generat automàticament"
+
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr "Sol·licitar i renovar automàticament certificats SSL de Let's Encrypt"
+
+msgid "Available"
+msgstr "Disponible"
+
+msgid "Available category tags for header"
+msgstr "Etiquetes de categories disponibles per a l'encapçalament"
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
+"Evita la separació sil·làbica en l'última paraula d'una frase (podria donar "
+"lloc a un espaiat incorrecte)"
+
+msgid "Back to the text"
+msgstr "Tornar al text"
+
+msgid "Bad request"
+msgstr "Petició errònia"
+
+msgid "Bad type. This is a bug"
+msgstr "Tipus dolent. Es tracta d'un error"
+
+msgid "Beamer color theme"
+msgstr "Color de tema de Beamer"
+
+msgid "Beamer theme"
+msgstr "Tema de Beamer"
+
+msgid "Beside topics and authors you can add more categories here"
+msgstr "A més de temes i autors, pots afegir més categories ací"
+
+msgid "Binding correction in millimeters (additional inner margin)"
+msgstr "Correcció en mil·límetres per a quadernets (marge intern addicional)"
+
+msgid "Bleed Width (mm)"
+msgstr "Amplària del sagnat (mm)"
+
+msgid ""
+"Blocks of 16 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+"Blocs de 16 pàgines a enquadernar dos vegades i després\n"
+"                 ajuntar-les."
+
+msgid ""
+"Blocks of 8 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+"Blocs de 8 pàgines que es dobleguen dos vegades i\n"
+"                i s'enquadernen."
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "Body"
+msgstr "Cos"
+
+msgid "Bold"
+msgstr "Negreta"
+
+msgid "Book Covers"
+msgstr "Portades de llibres"
+
+msgid "Bookbuilder"
+msgstr "Creador de llibres"
+
+msgid "Bookbuilder page limit (integer)"
+msgstr "Límit de pàgines del creador de llibres (nomb enter)"
+
+msgid "Build it"
+msgstr "Crear"
+
+msgid "Built-in"
+msgstr "Integrar"
+
+msgid "Bump Publication Date"
+msgstr "Data de publicació de Bump"
+
+msgid ""
+"By default, secondary footnotes use arabic numbering\n"
+"        between parens. With this option they will use per-page alpha\n"
+"        numbering"
+msgstr ""
+"Per defecte, les notes a peu de pàgina secundàries utilitzen numeració "
+"aràbiga\n"
+"          entre parèntesi. Amb esta opció utilitzaran la numeració alfa\n"
+"          per pàgina"
+
+msgid "By number of pages, ascending"
+msgstr "Per nomb de pàgines, ascendent"
+
+msgid "By number of pages, descending"
+msgstr "Per nomb de pàgines, descendent"
+
+msgid "By relevance"
+msgstr "Per rellevància"
+
+msgid "By sku ascending"
+msgstr "Per sku ascendent"
+
+msgid "By sku descending"
+msgstr "Per sku descendent"
+
+msgid "By title A-Z"
+msgstr "Per títol A-Z"
+
+msgid "By title Z-A"
+msgstr "Per títol Z-A"
+
+msgid "CSS Alternate Theme (Dark mode, optional)"
+msgstr "Tema alternatiu CSS (mode fosc, opcional)"
+
+msgid "CSS Theme"
+msgstr "Tema CSS"
+
+msgid "Cancel"
+msgstr "Cancel·lar"
+
+msgid "Canonical name"
+msgstr "Nom canònic"
+
+msgid "Categories"
+msgstr "Categories"
+
+msgid "Category editing is disabled (autoimport file present)"
+msgstr ""
+"L'edició de categories està desactivada (arxiu d'autoimportació present)"
+
+#. ($site->canonical)
+#. (site.canonical)
+msgid "Category types for %1"
+msgstr "Tipus de categoria per a %1"
+
+msgid "Center all the sectioning titles."
+msgstr "Centrar tots els títols de les seccions."
+
+msgid "Center the chapter titles."
+msgstr "Centrar els títols del capítols."
+
+msgid "Changes"
+msgstr "Canvis"
+
+msgid "Changes applied"
+msgstr "Canvis aplicats"
+
+msgid "Changes applied."
+msgstr "Canvis aplicats."
+
+#. ($c->stash->{revision}->title->uri)
+#. (revision.title.uri)
+#. (author_title)
+msgid "Changes for %1"
+msgstr "Canvis per a %1"
+
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr "Canvis aplicats, gràcies! Ara estàn a l'espera de ser publicats"
+
+msgid ""
+"Changing urls is a poor practice. Anyway, if you know what you’re\n"
+"doing, you can delete an existing text and point to another adding a\n"
+"#DELETED directive in the text header with a special syntax:"
+msgstr ""
+"Cconiar las urls es una mala práctica. De todas formas, si sabes lo que\n"
+"estás habiendo, pots borrar un text existente i apuntarlo a otro\n"
+"añadiendo la directiva #DELETED en el encapçalament amb una sensetaxis "
+"especial:"
+
+msgid "Chapter"
+msgstr "Capítol"
+
+msgid "Chapter and section. If one side document: chapter."
+msgstr "Capítol i secció. Si es document d'un costat: capítol."
+
+msgid "Chapter, only for chapter divisions in books"
+msgstr "Capítol, només per a divisions de capítols en llibres"
+
+msgid "Cheatsheet for the markup"
+msgstr "Trucs per al format de marcat"
+
+msgid "Check"
+msgstr "Comprovar"
+
+msgid "Check mail sending and send mail to:"
+msgstr "Comprova l'enviament del correu i envia'l a:"
+
+msgid "Choose a paper format"
+msgstr "Tria un format per al paper"
+
+msgid "Choose a template"
+msgstr "Tria una plantilla"
+
+msgid "Clear the book list"
+msgstr "Neteja la llista de llibres"
+
+msgid "Click here to start a new bookbuilder session"
+msgstr "Clica ací per a començar una nova sessió de creador de llibres"
+
+msgid "Click on the images to get the sample PDF"
+msgstr "Clica en les imatges per a obtindre un PDF de mostra"
+
+msgid "Clone"
+msgstr "Clonar"
+
+msgid "Close"
+msgstr "Tancar"
+
+msgid "Code"
+msgstr "Codificar"
+
+msgid "Collection"
+msgstr "Col·lecció"
+
+msgid "Collection created"
+msgstr "Col·lecció creada"
+
+msgid "Collection has been deleted"
+msgstr "Col·lecció ha sigut eliminada"
+
+msgid "Collection has been updated"
+msgstr "Col·lecció ha sigut actualitzada"
+
+msgid "Collections"
+msgstr "Col·leccions"
+
+msgid "Colophon (displayed in the generated files):"
+msgstr "Colofó (apareix en els arxius generats):"
+
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr ""
+"Columnes per al costat esquerre de la pàgina d'edició, amb la caixa d'edició "
+"(un màxim de 12)"
+
+msgid "Comma or semicolon separated list"
+msgstr "Lllista separada per coma o punt i coma"
+
+msgid "Comments"
+msgstr "Comentaris"
+
+msgid "Commit ID"
+msgstr "ID de compromís"
+
+msgid "Completed"
+msgstr "Completat"
+
+msgid "Computing of differences took"
+msgstr "Computant les diferències"
+
+msgid "Confirm"
+msgstr "Confirmar"
+
+msgid "Conflict"
+msgstr "Conflicte"
+
+msgid "Continuous footnote numbering across the whole document."
+msgstr "Numeració contínua de les notes a peu de pàgina en tot el document."
+
+msgid "Convert to archive markup"
+msgstr "Convertir al marcat de l'arxiu"
+
+msgid "Copyright notice"
+msgstr "Avís de drets d'autoria"
+
+msgid "Couldn't add the text"
+msgstr "No es pot afegir el text"
+
+msgid "Couldn't automatically generate the URI!"
+msgstr "No es pot generar automàticament la URI!"
+
+msgid "Couldn't build that"
+msgstr "No es pot crear això"
+
+msgid "Cover Height (mm)"
+msgstr "Altura de la portada (mm)"
+
+msgid "Cover Width (mm)"
+msgstr "Amplaria de la portada (mm)"
+
+msgid "Cover removed"
+msgstr "Portada eliminada"
+
+msgid "Create"
+msgstr "Crear"
+
+msgid "Create a book cover"
+msgstr "Crea una portada de llibre"
+
+msgid "Create a new aggregation"
+msgstr "Crea una nova agregació"
+
+msgid "Create a new aggregation for this series"
+msgstr "Crea una nova agregació per a aquesta sèrie"
+
+msgid "Create a new annotation."
+msgstr "Crea una nova anotació."
+
+msgid "Create a new category type. Please use only lowercase ASCII letters"
+msgstr ""
+"Crea un nou tipus de categoria. Utilitza només lletres ASCII minúscules"
+
+msgid "Create a new child collection"
+msgstr "Crea una nova col·lecció secundària"
+
+msgid "Create a new format"
+msgstr "Crea un nou format"
+
+msgid "Create a new librarian"
+msgstr "Crea una nova bibliotecària (librarian)"
+
+msgid "Create a new series"
+msgstr "Crea una nova sèrie"
+
+msgid "Create a new special page"
+msgstr "Crea una nova pàgina especial"
+
+msgid "Create a new text for this aggregation"
+msgstr "Crea un nou text per a aquesta agregació"
+
+msgid "Create a new text for this collection"
+msgstr "Crea un nou text per a aquesta col·lecció"
+
+msgid "Create a new user"
+msgstr "Crea una nova usuaria"
+
+msgid ""
+"Create a public repository on GitLab, GitHub or similar services (or on your "
+"own server). "
+msgstr ""
+"Crea un repositori públic en GitLab, GitHub o servicis similars (o en el teu "
+"propi servidor). "
+
+msgid "Create a topic alias"
+msgstr "Crear un àlies de tema"
+
+msgid "Create an author alias"
+msgstr "Crear un àlies d'autoria"
+
+msgid "Create new site"
+msgstr "Crear un nou lloc"
+
+msgid "Create user and mail password"
+msgstr "Crear contrasenya per a usuari i correu electrònic"
+
+msgid "Created"
+msgstr "Creat"
+
+msgid "Created by"
+msgstr "Creat per"
+
+msgid "Created new text"
+msgstr "Nou text creat"
+
+msgid "Current time"
+msgstr "Temps actual"
+
+#. ($c->stash->{site}->canonical)
+#. (site.canonical)
+msgid "Custom formats for %1"
+msgstr "Formats personalitzats per a %1"
+
+msgid "Custom home page"
+msgstr "Pàgina d'inici personalitzada"
+
+msgid "Date"
+msgstr "Data"
+
+msgid "Date of the original publication"
+msgstr "Data de la publicació original"
+
+msgid "Day"
+msgstr "Dia"
+
+msgid "Default"
+msgstr "Per defecte"
+
+msgid "Default sorting for the category text list"
+msgstr "Ordenació per defecte de la lllista de text de categories"
+
+msgid "Default value if blank:"
+msgstr "Valor per defecte si està en blanc:"
+
+msgid "Deferred/Deleted texts"
+msgstr "Textos postposats / eliminats"
+
+msgid "Delete"
+msgstr "Eliminar"
+
+msgid "Delete permanently"
+msgstr "Eliminar permanentment"
+
+#. (remote.name)
+msgid "Delete remote repository %1"
+msgstr "Eliminar repositori remot %1"
+
+msgid "Delete selected attachments"
+msgstr "Eliminar els arxius adjunts seleccionats"
+
+msgid ""
+"Deleting a revision is safe if a text has been\n"
+"    published. Otherwise deleting it you'll lose the unpublished changes"
+msgstr ""
+"L'eliminació d'una revisió és segura si hi ha un text\n"
+"    publicat. En cas contrari, si el suprimeixes, perdràs els canvis no "
+"publicats"
+
+msgid "Description"
+msgstr "Descripció"
+
+msgid "Description item"
+msgstr "Item de descripció"
+
+msgid ""
+"Description lists use a double colon to separate the\n"
+"        term and the description."
+msgstr ""
+"Les llistes de descripcions utilitzen dos punts dobles per a separar \n"
+"        el terme i la descripció."
+
+msgid "Desired URI"
+msgstr "URI desitjada"
+
+msgid "Destination"
+msgstr "Destinació"
+
+msgid "Details"
+msgstr "Detalls"
+
+msgid "Did you mean:"
+msgstr "Vols dir:"
+
+msgid "Diff"
+msgstr "Diferència"
+
+msgid "Differences"
+msgstr "Diferències"
+
+msgid ""
+"Directory with templates in the site repository, e.g.\n"
+"        \"templates\" (ASCII only). Do not set it unless you know\n"
+"        exactly what you are doing"
+msgstr ""
+"Directori amb les plantilles en el repositori del lloc, per exemple\n"
+"        «templates» (només ASCII). No ho configures llevat que sàpies\n"
+"        exactament el que estàs fent"
+
+msgid "Disable /mirror/ URL for anonymous users"
+msgstr "Desactivar /mirror/ URL per a usuaris anònims"
+
+msgid "Display the latest entries on special pages"
+msgstr "Mostrar les últimes entrades en pàgines especials"
+
+msgid "Display url as"
+msgstr "Mostrar l'url com"
+
+msgid "Division factor"
+msgstr "Factor de divisió"
+
+msgid "Do not create a cover page and start the text on the first page"
+msgstr "No crees una pàgina de portada i comença el text en la primera pàgina"
+
+msgid "Do not enforce save message"
+msgstr "No forçar el missatge per a guardar"
+
+msgid "Do not redirect aliases to canonical"
+msgstr "No redirigir àlies a canonical"
+
+msgid "Do not use bold fonts"
+msgstr "No utilitzes fonts en negreta"
+
+msgid "Do you also need a cover?"
+msgstr "Necessites tconé una portada?"
+
+msgid "Domain"
+msgstr "Domini"
+
+msgid "Done"
+msgstr "Fet"
+
+msgid "Double bars"
+msgstr "Barres dobles"
+
+msgid "Download"
+msgstr "Descarregar"
+
+msgid "Downloads"
+msgstr "Descàrregues"
+
+msgid "Drag to reorder"
+msgstr "Arrossegar per a reordenar"
+
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr ""
+"Per exemple, alguna paraula AND títol: «El meu títol» AND autor:Autor OR "
+"any:2017"
+
+msgid "EPUB"
+msgstr "EPUB"
+
+msgid "EPUB (for mobile devices)"
+msgstr "EPUB (per a dispositius mòbils)"
+
+msgid "EPUB + HTML"
+msgstr "EPUB + HTML"
+
+msgid "ETA"
+msgstr "ETA"
+
+msgid "Edit"
+msgstr "Editar"
+
+msgid "Edit Aggregation"
+msgstr "Editar Agregació"
+
+msgid "Edit Series"
+msgstr "Editar Sèries"
+
+msgid "Edit attachment description"
+msgstr "Editar la descripció de l'arxiu adjunt"
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr "Editar el format %1"
+
+msgid "Edit full site configuration"
+msgstr "Editar la configuració del lloc complet"
+
+msgid "Edit screen layout options"
+msgstr "Editar opcions de diagramació de la pantalla"
+
+#. (esite.id)
+msgid "Edit site %1"
+msgstr "Editar lloc %1"
+
+msgid "Edit site configuration"
+msgstr "Editar la configuració del lloc"
+
+msgid "Edit the text you want to unpublish and add this line to the header:"
+msgstr ""
+"Edita el text que vols despublicar i afegix aquesta línia a l'encapçalament:"
+
+msgid "Edit this text"
+msgstr "Edita aquest text"
+
+#. (user.username)
+msgid "Edit user %1"
+msgstr "Edita l'usuari %1"
+
+msgid "Editing"
+msgstr "Editant"
+
+msgid "Effect"
+msgstr "Efecte"
+
+msgid "Email"
+msgstr "Correu electrònic"
+
+msgid "Email sent!"
+msgstr "Correu electrònic enviat!"
+
+msgid "Email updated"
+msgstr "Correu electrònic actualitzat"
+
+msgid "Email, password, locale"
+msgstr "Correu electrònic, contrasenya, zona"
+
+msgid "Emails do not match"
+msgstr "Els correus electrònics no coincidixen"
+
+msgid "Embed fonts in the EPUB file"
+msgstr "Incrustar fonts en l'arxiu EPUB"
+
+msgid "Enable \"What links here\" feature"
+msgstr "Activar la funció «Què enllaça ací»"
+
+msgid "Enable search suggestions (did you mean...)"
+msgstr "Activar els suggeriments de busca (volies dir...?)"
+
+msgid "Enable title ordering by SKU"
+msgstr "Activar l'ordenació de títols per SKU"
+
+msgid "Enforce e-mail on submission"
+msgstr "Forçar el correu electrònic en l'enviament"
+
+msgid "Erase this revision"
+msgstr "Esborra aquesta revisió"
+
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr "Error al convertir l'arxiu pujat. ¿És un arxiu HTML?"
+
+msgid "Error sending mail!"
+msgstr "Error en l'enviament del correu electrònic!"
+
+msgid "Error while converting the HTML. Sorry."
+msgstr "Error al convertir el HTML. Disculpa."
+
+#. ($res->{error} || "Unknwon error")
+msgid "Error: %1"
+msgstr "Error: %1"
+
+msgid "Errors"
+msgstr "Errors"
+
+msgid "Estimated pages"
+msgstr "Pàgines estimades"
+
+msgid ""
+"Even if this site has a responsive, mobile-friendly layout,\n"
+"  it does not provide a dedicated mobile application."
+msgstr ""
+"Encara que este lloc tinga un disseny que s'adapta als dispositius mòbils,\n"
+"  no disposa d'una aplicació específica per a estos."
+
+msgid ""
+"Every\n"
+"        section will generate a slide. You need to do proper\n"
+"        sectioning for this to work."
+msgstr ""
+"Cada\n"
+"        secció generarà una diapositiva. Perquè això funcione, és "
+"necessari \n"
+"        definir adequadament les seccions."
+
+msgid ""
+"Exactly like 2up, but the sheets are meant to be cut\n"
+"        horizontally first and then stack on each other. This way you\n"
+"        can print, for example, A6 booklets on A4."
+msgstr ""
+"Exactament com 2up, però les fulles es tallen primer\n"
+"        horitzontalment i després s'apilen les unes sobre les altres. Així\n"
+"        pots imprimir, per exemple, fullets A6 en A4."
+
+msgid "Example"
+msgstr "Exemple"
+
+msgid "Exception"
+msgstr "Excepció"
+
+msgid "Existing redirections"
+msgstr "Redireccions existents"
+
+msgid "Expected pages"
+msgstr "Pàgines esperades"
+
+msgid "Exposed to OAI-PMH as shelf location code"
+msgstr "Exposat a OAI-PMH com a codi de localització de la prestatgeria"
+
+msgid "Exposed to OAI-PMH as trade price"
+msgstr "Exposat a OAI-PMH com a preu comercial"
+
+msgid "Failed"
+msgstr "Ha fallat"
+
+#. ("$name $url")
+msgid "Failed to add remote repository %1"
+msgstr "Fallada en afegir el repositori remot %1"
+
+#. ($name)
+msgid "Failed to remove Remote repository %1"
+msgstr "Fallada en eliminar el repositori remot %1"
+
+msgid "Federation"
+msgstr "Federació"
+
+msgid "Feed enclosure method (OPDS and RSS)"
+msgstr "Mètode d'inclusió de feeds (OPDS i RSS)"
+
+msgid "Fetch"
+msgstr "Anar a"
+
+msgid "File"
+msgstr "Arxiu"
+
+msgid "File already in the body"
+msgstr "L'Arxiu ja està en el cos"
+
+msgid "File extension"
+msgstr "Extensió de l'arxiu"
+
+msgid "File format not allowed"
+msgstr "Format de l'arxiu no permés"
+
+msgid "File too big"
+msgstr "Arxiu massa gran"
+
+msgid "File uploaded!"
+msgstr "Arxiu pujat!"
+
+msgid "Files"
+msgstr "Arxius"
+
+msgid "Files not referenced by any text"
+msgstr "Arxius no referenciats per cap text"
+
+msgid ""
+"Fill with blank pages before the last page if the signature is not full."
+msgstr ""
+"Ompli amb pàgines en blanc abans de l'última pàgina si l'enquadernació no "
+"està completa."
+
+msgid "Filters"
+msgstr "Filtres"
+
+msgid "Find the add catalogue menu."
+msgstr "Troba el menú d'afegir catàleg."
+
+msgid "Find the network library menu, or equivalent."
+msgstr "Troba el menú de la biblioteca de xarxa, o equivalent."
+
+msgid "Finished"
+msgstr "Acabat"
+
+msgid "First"
+msgstr "Primer"
+
+msgid "First Author and Second Author"
+msgstr "Primer i Segon Autor"
+
+msgid "First Author, Second Author"
+msgstr "Primer Autor, Segon Autor"
+
+msgid "First slide"
+msgstr "Primera diapositiva"
+
+msgid "First text attachment or EPUB"
+msgstr "Primer text adjunt o EPUB"
+
+msgid "First you have to unpublish it via #DELETED."
+msgstr "Primer has de despublicar-ho a través de #DELETED."
+
+msgid "Fix typography (smart quotes)"
+msgstr "Corregir tipografía"
+
+msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
+msgstr ""
+"Enquadernació ajustada a 16 pàgines en 2 fulles, amb doble plegat individual."
+
+msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
+msgstr ""
+"Enquadernació ajustada a 16 pàgines en una sola fulla, amb triple plegat."
+
+msgid ""
+"Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
+"and bound together."
+msgstr ""
+"Enquadernació fixa de 8 pàgines, que es tallen horitzontalment, es dobleguen "
+"individualment i s'enquadernen juntes."
+
+msgid "Fixed topic list"
+msgstr "Lllista fixa de temes"
+
+msgid "Flap Width (mm)"
+msgstr "Amplària de solapa (mm)"
+
+msgid "Folding Margin"
+msgstr "Marge de plegat"
+
+msgid "Font"
+msgstr "Font"
+
+msgid "Font preview"
+msgstr "Previsualització de la tipografia"
+
+msgid "Font size"
+msgstr "Tamany de la tipografia"
+
+msgid "Footnotes"
+msgstr "Notes a peu de pàgina"
+
+#. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
+msgid ""
+"Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
+"in the body (%4), ignoring changes."
+msgstr ""
+"Desajustament de notes a peu de pàgina: s'han trobat %1 notes a peu de "
+"pàgina (%2) i s'han trobat %3 referències de notes a peu de pàgina en el cos "
+"(%4), ignorant els canvis."
+
+msgid "For texts from the internet use"
+msgstr "Per als texts d'Internet, utilitza"
+
+msgid "For texts without a table of content, start text on the very first page"
+msgstr "Per als texts sense índex, començar el text en la primera pàgina"
+
+msgid ""
+"For topics and authors redirections, you can create them\n"
+"  here"
+msgstr ""
+"Per a les redireccions de temes i autors, pots crear-les\n"
+"  ací"
+
+msgid "Force a line break."
+msgstr "Forçar un salt de línia."
+
+msgid "Force publishing"
+msgstr "Forçar la publicació"
+
+msgid "Format name"
+msgstr "Formatejar el nom"
+
+msgid "Format successfully created"
+msgstr "Format creat amb èxit"
+
+msgid "Format successfully updated"
+msgstr "Format pujat amb èxit"
+
+msgid "Formats"
+msgstr "Formats"
+
+msgid "Full list of texts"
+msgstr "Lllista completa de texts"
+
+msgid "Full tag cloud"
+msgstr "Núvol d'etiquetes completa"
+
+msgid "Full text search"
+msgstr "Busca de text complet"
+
+msgid "Full width, fluid layout"
+msgstr "Amplària completa, disseny fluid"
+
+msgid "General configuration"
+msgstr "Configuració general"
+
+msgid "Generate Index"
+msgstr "Generar Índex"
+
+msgid "Generic (fits in A4 and Letter)"
+msgstr "Genèric (per a tamanys carta i A4)"
+
+msgid "Get generated URI"
+msgstr "Obtindre URI generat"
+
+msgid ""
+"Get the repository HTTPS URL, e.g. https://example.com/git/test and add it "
+"using the form you can find above. You can have one personal repository."
+msgstr ""
+"Aconseguix la URL HTTPS del repositori, per exemple https://example.com/git/"
+"test i afig-la utilitzant el formulari que trobaràs més amunt. Pots tindre "
+"un repositori personal."
+
+msgid "Git"
+msgstr "Git"
+
+msgid "Git console"
+msgstr "Consola Git"
+
+msgid "Git is not enabled on this site"
+msgstr "Git no està habilitat en aquest lloc"
+
+msgid ""
+"HTML code to append to each regular page, inserted\n"
+"            verbatim, so be careful"
+msgstr ""
+"Codi HTML per a afegir a cada pàgina normal, inserit \n"
+"           textualment, així que ves amb compte"
+
+msgid ""
+"HTML to append to each special page, inserted\n"
+"            verbatim, now you have a chance to screw up everything, so\n"
+"            be careful"
+msgstr ""
+"Codi HTML per a afegir a cada pàgina especial, inserit\n"
+"            textualment, ara tens l'oportunitat de desbaratar-ho tot, així "
+"que\n"
+"            ves amb compte"
+
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr ""
+"HTML per a inserir al peu de pàgina de la maqueta, davall dels enllaços"
+
+msgid "HTML to insert into the left sidebar"
+msgstr "HTML a inserir a la barra lateral esquerra"
+
+msgid "HTML to insert into the right sidebar"
+msgstr "HTML a inserir a la barra lateral dreta"
+
+msgid "HTML to insert on the bottom of the layout, above the footer"
+msgstr ""
+"HTML per a inserir en la part inferior del disseny, per damunt del peu de "
+"pàgina"
+
+msgid ""
+"HTML to insert on the top of the layout, behind the navigation bar and below "
+"the banner"
+msgstr ""
+"HTML per a inserir en la part superior del disseny, darrere de la barra de "
+"navegació i davall del bàner"
+
+msgid "HTML/Word Importer"
+msgstr "Importador de HTML/Word"
+
+msgid "Half Letter paper"
+msgstr "Grandària de mitja carta"
+
+msgid "Headers"
+msgstr "Encapçalaments"
+
+msgid "Heading"
+msgstr "Encapçalament"
+
+msgid "Headings"
+msgstr "Títols"
+
+msgid "Height:"
+msgstr "Altura:"
+
+msgid "Help"
+msgstr "Ajuda"
+
+msgid "Help Text"
+msgstr "Text d'Ajuda"
+
+msgid "Here you can find a preview of the Beamer themes and color themes"
+msgstr "Ací pot trobar una vista prèvia dels temes Beamer i temes de color"
+
+msgid ""
+"Here you can save or load your templates. The text list\n"
+"      and the cover image are excluded by the saved settings. You can\n"
+"      use this to save paper/fonts/imposition and other options."
+msgstr ""
+"Ací pots guardar o carregar les teues plantilles. La lllista de texts\n"
+"      i la imatge de portada queden excloses pels ajustos guardats. Pots\n"
+"      usar-ho per a guardar opcions de paper/tipus de lletra/imposició entre "
+"altres."
+
+msgid "Higher division factor means narrower margins"
+msgstr "Un factor de divisió més alt significa màrgens més estrets"
+
+msgid "Highest priority format"
+msgstr "Format de màxima prioritat"
+
+msgid "Home"
+msgstr "Inici"
+
+msgid "How are you going to access Git?"
+msgstr "Com accediràs a Git?"
+
+msgid "How do I create a landing page?"
+msgstr "Com es crea una pàgina d'aterratge?"
+
+msgid "How do I create a special page?"
+msgstr "Com es crea una pàgina especial?"
+
+msgid "How do I delete a text?"
+msgstr "Com s'elimina un text?"
+
+msgid "How do I modify a special page?"
+msgstr "Com es modifica una pàgina especial?"
+
+msgid "How do I purge a text?"
+msgstr "Com es purga un text?"
+
+msgid "How do I redirect to another page?"
+msgstr "Com es pot redirigir a una altra pàgina?"
+
+msgid "How to choose a password"
+msgstr "Com triar una contrasenya"
+
+msgid ""
+"However, you can browse, search, download and read the texts\n"
+"  from mobile reading applications which support the so-called OPDS\n"
+"  protocol."
+msgstr ""
+"No obstant això, pots navegar, buscar, descarregar i llegir els texts\n"
+"  des d'aplicacions per a mòbils que suporten el protocol anomenat\n"
+"  OPDS."
+
+msgid "I am human"
+msgstr "Sòc una persona"
+
+msgid "I have a system user with SSH access"
+msgstr "Tinc un usuari de sistema amb accés SSH"
+
+msgid "I want an imposed (ready to print) PDF"
+msgstr "Vull un PDF imposat (llest per a imprimir)"
+
+msgid "I will provide my remote repository"
+msgstr "Proporcionaré el meu repositori remot"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "ISBN"
+msgstr "ISBN"
+
+msgid "Id"
+msgstr "Id"
+
+msgid "Identifier"
+msgstr "Identificador"
+
+msgid ""
+"If by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+"Si per casualitat existix un altre text amb el mateix autor i títol, tria "
+"l'URI desitjat utilitzant el camp de baix inserint autor, títol i un número, "
+"ex. el meu-autor-el meu-títol-1"
+
+msgid ""
+"If it was not your intention, please just ignore this mail and\n"
+"your password will not be changed."
+msgstr ""
+"Si no era la teua intenció, per favor ignora este correu i\n"
+"la teua contrasenya no serà canviada."
+
+msgid ""
+"If it's not the case, please open a bug report at https://github.com/"
+"melmothx/amusewiki/issues"
+msgstr ""
+"Si no és el cas, obri un informe d'error en https://github.com/melmothx/"
+"amusewiki/issues"
+
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
+msgid "If not set %1 will be looked up from the application directory."
+msgstr "Si no s'establix %1 es buscarà en el directori de l'aplicació."
+
+msgid ""
+"If present, hide the\n"
+"          generated formats and the information box. This makes sense\n"
+"          with attachments, when the text version is poor or not\n"
+"          available and more relevance should be given to the attached\n"
+"          files."
+msgstr ""
+"Si és present, oculta els formats generats i el quadre d'informació. Això té "
+"sentit amb els arxius adjunts, quan la versió de text és deficient o no està "
+"disponible i s'ha de donar més rellevància als arxius adjunts."
+
+msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
+msgstr ""
+"Si s'establix en un número major que 0, genera automàticament un teaser, amb "
+"aproximadament aquesta longitud"
+
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
+msgstr ""
+"Si s'ajorna la publicació d'un text, enumere'l amb el teaser i la portada "
+"sense donar accés al cos"
+
+msgid ""
+"If the user is allowed to publish, speed up the process skipping the "
+"revision page if there are no conflicts and automatically redirect to the "
+"published text once it is done."
+msgstr ""
+"Si l'usuari té permís per a publicar, accelerar el procés saltant-se la "
+"pàgina de revisió si no hi ha conflictes i redirigir automàticament al text "
+"publicat una vegada finalitzat."
+
+msgid "If the user provided a mail, it's listed in the mail's CC field"
+msgstr ""
+"Si l'usuari va proporcionar un correu, apareix en el camp CC del correu"
+
+msgid ""
+"If this line\n"
+"          is present, set the publication date (on this site) to the\n"
+"          date. The date may also be in the future, deferring the\n"
+"          publication. If this line is not present, the publication\n"
+"          date will be the time of the publishing, triggering a bump\n"
+"          on RSS and special pages at each editing."
+msgstr ""
+"Si aquesta línia està present, fixa la data de publicació (en este lloc) a "
+"la data. La data tconé pot ser futura, ajornant la publicació. Si aquesta "
+"línia no és present, la data de publicació serà el moment de la publicació, "
+"desencadenant un sot en RSS i pàgines especials en cada edició."
+
+msgid ""
+"If this line is\n"
+"          present and the reason is set to something, the text will be\n"
+"          stored in the archive, but will not be published."
+msgstr ""
+"Si aquesta línia està present i el motiu es ajustar quelcom, el text es "
+"guardarà en l'arxiu, però no serà publicat."
+
+msgid ""
+"If this line is present, do not create a title page,\n"
+"          but instead start the text on the very first page and\n"
+"          produce a PDF styled like an article (chapters and parts\n"
+"          will not start on a new page)."
+msgstr "Si aquesta línia està present..."
+
+msgid "If this line is present, do not display the table of contents."
+msgstr "Si aquesta línia està present, no mostrar l'índex."
+
+msgid "If you asked for imposition, select an imposition schema"
+msgstr "Si has sol·licitat la imposició, selecciona un esquema d'imposició"
+
+msgid ""
+"If you edit some format options, like fonts or paper\n"
+"      dimensions, you may want to rebuild the generated files"
+msgstr ""
+"Si edites algunes opcions de format, com les fonts o les dimensions del "
+"paper, és possible que vulgues reconstruir els arxius generats"
+
+msgid ""
+"If you forgot your password, you can choose a new one visiting\n"
+"this link (click on it or copy and paste it in your browser):"
+msgstr ""
+"Si has oblidat la teua contrasenya, pots triar una nova visitant este enllaç "
+"(fes clic en ell o copia-ho i pega-ho en el teu navegador):"
+
+msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr ""
+"Si tens un arxiu .doc o .odt, pots convertir-ho fàcilment guardant-ho com "
+"HTML"
+
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
+msgstr ""
+"Si sol·licites una reconstrucció quan hi ha una en curs, avortaràs l'actual."
+
+msgid ""
+"If you use it as a teaser image, the image will also\n"
+"      be placed on the first page of the PDF. You can set its width\n"
+"      adding the following line to the header, where the value is the\n"
+"      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
+"      on"
+msgstr ""
+"Si la utilitzes com una imatge preliminar, la imatge tconé es col·locarà en "
+"la primera pàgina del PDF. Pots establir la seua amplària afegint la següent "
+"línia a la capçalera, on el valor és la proporció d'amplària del text. 1 és "
+"l'ample complet del text, 0,5 és la mitat, i així successivament"
+
+msgid ""
+"If your site doesn’t have that, just create a special page and assign\n"
+"the uri \"index\"."
+msgstr ""
+"Si el teu lloc no té això, n'hi ha prou amb crear una pàgina especial i "
+"assignar \n"
+"la uri «index»."
+
+msgid ""
+"If your site is multilanguage, you can create a language-specific\n"
+"  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
+"  URI \"index\", a dash, and the locale code."
+msgstr ""
+"Si el teu lloc és multilingüe, pots crear una pàgina d'aterratge específica "
+"per a cada idioma creant, per exemple, «/special/index-it», és a dir, la URI "
+"«index», un guió i el codi de configuració regional."
+
+msgid "Image already set as cover"
+msgstr "Imatge ja establida com a portada"
+
+#. ($w, $h, $limit, $limit)
+msgid "Image dimensions %1 x %2 exceed limit of %3 x %4 pixels"
+msgstr "Les dimensions de la imatge %1 x %2 superen el límit de %3 x %4 píxels"
+
+msgid ""
+"Image uploading may be done on the next step, when you can\n"
+"        review and preview the upload."
+msgstr ""
+"La càrrega d'imatges pot realitzar-se en el següent pas, quan pots revisar i "
+"previsualizar el text a pujar."
+
+msgid "Image url"
+msgstr "URL de la imatge"
+
+msgid "Images"
+msgstr "Imatges"
+
+msgid "Import session"
+msgstr "Importar sessió"
+
+msgid "Imposition schemas"
+msgstr "Esquemes d'imposició"
+
+msgid "In both case you will get a reverse indentation."
+msgstr "En els dos casos obtindrà una sagnia inversa."
+
+msgid ""
+"In the text, a number within square brackets is interpreted as a\n"
+"          footnote reference, if such footnote exists."
+msgstr ""
+"En el text, un número dins de parèntesis quadrats és interpretat com una "
+"referència a una nota a peu de pàgina, si és que esta nota a peu de pàgina "
+"existix."
+
+#. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
+msgid ""
+"In this example, we use FBreader, but the procedure is\n"
+"  pretty much the same for all applications. All you have to do is to\n"
+"  add %1 to the network libraries."
+msgstr ""
+"En este exemple, usem FBreader, però el procediment és quasi el mateix per a "
+"totes les aplicacions. Tot el que has de fer és agregar %1 a les "
+"biblioteques en xarxa."
+
+msgid "Inherited from the series"
+msgstr "Heretat de la sèrie"
+
+msgid "Inline elements"
+msgstr "Elements en la línia"
+
+msgid "Insert the file into the body at the cursor position"
+msgstr "Inserir l'arxiu en el cos en la posició del cursr"
+
+msgid "Internal list of translations"
+msgstr "Lllista interna de traduccions"
+
+msgid "Invalid ID"
+msgstr "ID no vàlida"
+
+msgid "Invalid URI"
+msgstr "URI no vàlida"
+
+msgid "Invalid data!"
+msgstr "Dada no vàlida!"
+
+msgid "Invalid email"
+msgstr "Correu electrònic no vàlid"
+
+msgid "Invalid field"
+msgstr "Camp no vàlid"
+
+msgid "Invalid name"
+msgstr "Nom no vàlid"
+
+msgid "Invalid parameter"
+msgstr "Paràmetre no vàlid"
+
+msgid "Invalid target"
+msgstr "Destí no vàlid"
+
+msgid "Invalid username"
+msgstr "Nom d'usuaria no vàlid"
+
+msgid "Issue"
+msgstr "Assumpte"
+
+msgid ""
+"It is possible to have an additional set of\n"
+"          footnotes which you use to annote the text (e.g. critical\n"
+"          editions or translator's notes). They work the same way as\n"
+"          the regular footnotes, but they use curly brackets instead\n"
+"          of square brackets. Placing secondary footnote references\n"
+"          inside a regular footnote is permitted."
+msgstr ""
+"És possible disposar d'un conjunt addicional de notes a peu de pàgina que "
+"s'utilitzen per a anotar el text (per exemple, edicions crítiques o notes "
+"del traductor). Funcionen igual que les notes al peu normals, però utilitzen "
+"claus en lloc de claudàtors ([ ]). Està permés col·locar referències "
+"secundàries a peu de pàgina dins d'una nota normal."
+
+msgid ""
+"It is recommended to always set a publication\n"
+"                    date, so the system does not need to rely on the\n"
+"                    file timestamp. Also, you should bump the\n"
+"                    publication date only on major editing, leaving it\n"
+"                    untouched for minor ones."
+msgstr ""
+"Es recomana fixar sempre una data de publicació, perquè el sistema no haja "
+"de basar-se en la marca de temps del fitxer. A més, has de modificar la data "
+"de publicació només en les edicions importants, deixant-la intacta per a les "
+"menors."
+
+msgid ""
+"It works the same as for regular page, but the link is hidden. Just\n"
+"append \"/edit\" to the url of the page."
+msgstr ""
+"Funciona igual que per a la pàgina normal, però l'enllaç està ocult. N'hi ha "
+"prou amb afegir «/edit» a la url de la pàgina."
+
+msgid "Italic"
+msgstr "Cursiva"
+
+msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr "Cursives, negreta, monoespaiat i codi, salts de línia..."
+
+msgid "JPG, PNG and PDF are always allowed."
+msgstr "JPG, PNG i PDF sempre estan permesos."
+
+msgid "Job status"
+msgstr "Estat del procés"
+
+msgid "Jobs"
+msgstr "Processos"
+
+msgid "Jobs (all sites)"
+msgstr "Processos (tots els llocs)"
+
+msgid "Jobs waiting before yours:"
+msgstr "Processos esperant abans que el teu:"
+
+msgid "Just packs 2 consecutives logical pages on a physical one."
+msgstr "Simplement empaqueta 2 pàgines lògiques consecutives en una física."
+
+msgid ""
+"Keep in mind that I’m cleaning the text and give it\n"
+"        back to you in the markup used on this site. It’s up to you to\n"
+"        check it and finally upload it. Some rarely used markup will\n"
+"        be lost in the process. Please check the preview on the next\n"
+"        step, where you can also insert images."
+msgstr ""
+"Ten en cuenta que estoy limpiando el text y entregándotelo\n"
+"        de vuelta en el lenguaje de marcado utilizado en este lloc. Es\n"
+"        tu responsabilidad revisarlo y finalmente subirlo. Algunas "
+"sensetaxis\n"
+"        de marcado raramente utilizadas se perderán en el proceso. Por\n"
+"        favor revisa la previsualización en el próximo paso, donde tconién\n"
+"        podrás insertar imatges."
+
+msgid "Keep in mind that some character may be missing in the required font."
+msgstr ""
+"Ten en cuenta que alguns caràcters pueden no estar presentes en la "
+"tipografía elegida."
+
+msgid ""
+"Keep in mind that unusually\n"
+"        complex formatting will be stripped. Is it possible to add\n"
+"        tables and images only on the next step."
+msgstr ""
+"Ten en cuenta que format\n"
+"        inusualmente complejo será descartado. Es posible añadir\n"
+"        tablas e imágnes solo en el següent paso."
+
+msgid "Label"
+msgstr "Etiqueta"
+
+msgid "Language"
+msgstr "Idioma"
+
+msgid "Language code of the document (2 or 3 letters). "
+msgstr "Codi de l'idioma del document (2 o 3 lletres). "
+
+msgid "Language selection"
+msgstr "Selecció d'idioma"
+
+msgid "Languages supported"
+msgstr "Idiomes suportats"
+
+msgid "Last"
+msgstr "Última"
+
+msgid "Last successful rebuild"
+msgstr "Última reconstrucció exitosa"
+
+msgid "Last updated"
+msgstr "Últims actualitzats"
+
+msgid "Latest entries"
+msgstr "Últimes publicacions"
+
+msgid "Layout"
+msgstr "Layout"
+
+msgid "Leave it blank if you want it published right away."
+msgstr "Deixa-ho en blanc si desitges que es publique immediatament."
+
+msgid "Leave this empty to have it automatically generated"
+msgstr "Deixa-ho buit perquè es genere automàticament"
+
+msgid "Letter imposed PDF"
+msgstr "PDF tamany carta per a cuadernillo"
+
+msgid "Letter paper"
+msgstr "Hoja tamany carta"
+
+msgid "Line spacing"
+msgstr "Espai entre línies"
+
+msgid "Link"
+msgstr "Enllaç"
+
+msgid "Links"
+msgstr "Enllaços"
+
+msgid "List of paths to attach to this collection, one per line."
+msgstr "Lllista de rutes a adjuntar a esta col·lecció, una per línia."
+
+msgid "List of texts on hold"
+msgstr "Lllista de texts pendents"
+
+msgid "Lists"
+msgstr "Llistes"
+
+msgid "Load"
+msgstr "Carregar"
+
+msgid "Load another session by token"
+msgstr "Cargar altra sessió mediante un token"
+
+#. ($pname)
+msgid "Loaded \"%1\" configuration"
+msgstr "Carregada la configuració «%1»"
+
+msgid "Loading"
+msgstr "Carregant"
+
+msgid "Local"
+msgstr "Local"
+
+msgid "Local pages"
+msgstr "Pàgines locals"
+
+msgid "Locale updated"
+msgstr "Local actualitzat"
+
+msgid "Locked editing, no upload possible"
+msgstr "Edició bloquejada, no és possible carregar"
+
+msgid "Log in"
+msgstr "Iniciar sessió"
+
+msgid "Login"
+msgstr "Iniciar sessió"
+
+msgid "Logout"
+msgstr "Tancar sessió"
+
+msgid "Look into the account’s menu, there is an entry for that."
+msgstr "Mira en el menú de la cuenta, hay una entrada per a eso."
+
+msgid "Lost your password?"
+msgstr "Has oblidat la teua contrasenya?"
+
+msgid "Magic answer"
+msgstr "Resposta màgica"
+
+msgid "Magic question"
+msgstr "Pregunta màgica"
+
+msgid "Mail from"
+msgstr "Correu electrotònic des de"
+
+msgid "Main canonical hostname, without protocol"
+msgstr "Nom de host canónico principal, sense protocolo"
+
+msgid "Main font"
+msgstr "Tipografia principal"
+
+msgid "Main text"
+msgstr "Text principal"
+
+msgid "Maintainer's FAQ"
+msgstr "Preguntes freqüents per a mantenidors"
+
+msgid "Make a link clickable"
+msgstr "Fer clicable un enllaç"
+
+msgid "Make all links active"
+msgstr "Fes tots els enllaços actius"
+
+msgid "Make all non-breaking spaces explicit and visible as ~~"
+msgstr "Fer explícits i visibles tots els espais sense ruptura com ~~"
+
+msgid "Manage aggregations"
+msgstr "Gestionar agregacions"
+
+msgid "Manage categories"
+msgstr "Gestionar categories"
+
+msgid "Manage category types"
+msgstr "Gestionar tipus de categories"
+
+msgid "Margins: please choose a division factor or set width and height"
+msgstr "Màrgens: tria un factor de divisió o establix l'amplària i l'altura"
+
+msgid "Mark Length (mm)"
+msgstr "Mark Length (mm)"
+
+msgid "Max image dimension in pixels, applies to both width and height"
+msgstr ""
+"Dimensió màxima de la imatge en píxels, s'aplica tant a l'amplària com a "
+"l'altura"
+
+msgid "Max size for uploads in Mb"
+msgstr "Grandària màxima de pujada en Mb"
+
+msgid "Message"
+msgstr "Missatge"
+
+#. (8)
+msgid "Minimum %1 characters"
+msgstr "Mínim %1 caràcters"
+
+msgid "Mirror"
+msgstr "Mirror"
+
+msgid "Mirror of:"
+msgstr "Mirror de:"
+
+msgid "Missing #title header in the text!"
+msgstr "¡Falta #title en l'encapçalament del text!"
+
+msgid "Missing alias"
+msgstr "Falta l'àlies"
+
+msgid "Missing character will be reported"
+msgstr "El caràcter que no es trobe es reportarà"
+
+msgid "Missing redirection"
+msgstr "Falta redirecció"
+
+msgid "Missing? Create one"
+msgstr "Falta? Crea un"
+
+msgid "Mobile"
+msgstr "Mòbil"
+
+msgid "Mobile applications"
+msgstr "Aplicacions mòbils"
+
+msgid "Mode"
+msgstr "Mode"
+
+msgid "Moderated wiki"
+msgstr "Wiki moderada"
+
+msgid "Mono font"
+msgstr "Tipografía monoespaciada"
+
+msgid "Month"
+msgstr "Mes"
+
+msgid "More"
+msgstr "Més"
+
+msgid "Move down"
+msgstr "Moure cap a baix"
+
+msgid "Move up"
+msgstr "Moure cap a dalt"
+
+msgid "Multilanguage: list of whitespace separated language codes"
+msgstr "Multi lenguaje: llista de codis de idiomas separadas per un espacio"
+
+msgid "My book covers"
+msgstr "Les meues portades de llibre"
+
+msgid "My description"
+msgstr "La meua descripció"
+
+msgid "N/A"
+msgstr "N/A"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Name plural"
+msgstr "Nom plural"
+
+msgid "Name singular"
+msgstr "Nom sensegular"
+
+msgid "Network library listing screen."
+msgstr "Pantalla mostrando biblioteca en red."
+
+msgid "Never display the cover"
+msgstr "Mai mostrar la portada"
+
+msgid "Never generate a table of content"
+msgstr "Mai generar un índex de continguts"
+
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
+"No generar mai la pàgina final estàndard amb títol/autor/notes/logotip/nom "
+"del lloc"
+
+msgid "Never show teaser and/or cover in text lists"
+msgstr "Mai mostrar el teaser i/o la portada en les llistes de text"
+
+msgid "New"
+msgstr "Nou"
+
+msgid "New revision"
+msgstr "Nova revisió"
+
+msgid "New site id"
+msgstr "Nueva id de lloc"
+
+msgid "New translation"
+msgstr "Nova traducció"
+
+msgid "Newer first"
+msgstr "Primer el més recent"
+
+msgid "Newer texts"
+msgstr "Textos més recents"
+
+msgid "Next"
+msgstr "Següent"
+
+msgid "Nice title"
+msgstr "Títol adequat"
+
+msgid "No"
+msgstr "No"
+
+msgid "No data available in table"
+msgstr "No hi ha dades disponibles en la taula"
+
+msgid "No editing yet!"
+msgstr "Encara no s'ha editat!"
+
+msgid "No matching records found"
+msgstr "No s'han trobat registres que coincidisquen"
+
+msgid "No result found!"
+msgstr "No s'ha trobat cap resultat!"
+
+msgid "No revisions to show"
+msgstr "Cap revisió que mostrar"
+
+msgid "No text found!"
+msgstr "No s'ha trobat el text!"
+
+msgid "No text was added yet"
+msgstr "Encara no s'ha agregat un text"
+
+msgid "None"
+msgstr "Cap"
+
+msgid "Not a periodical"
+msgstr "Not a periodical"
+
+#. ($c->loc('Save')
+msgid ""
+"Not finished yet! Please have a look at the text and then click on \"%1\" to "
+"finalize your submission!"
+msgstr ""
+"Sense acabar! Per favor revisa el text i després clica en «%1» per a "
+"finalitzar el teu enviament!"
+
+msgid "Not logged in"
+msgstr "No s'ha iniciat sessió"
+
+msgid "Notes"
+msgstr "Notes"
+
+msgid "Nothing to see here, so far"
+msgstr "Res que vore ací, per ara"
+
+msgid "Nothing uploaded"
+msgstr "No s'ha pujat res"
+
+msgid "Notify mail: blank field will disable them"
+msgstr "Correu electrònic de notificación: campo en blanco lo deshabilitará"
+
+msgid "Notify to"
+msgstr "Notificar a"
+
+msgid ""
+"Now it has been aligned to the site's archive, but this means that there are "
+"some missing commits."
+msgstr ""
+"Ara s'ha alineat amb l'arxiu del lloc, però això significa que falten alguns "
+"commits."
+
+msgid "Now we are going to populate it and get it ready"
+msgstr "Ara anem a emplenar-ho i preparar-ho"
+
+msgid "Number of jobs"
+msgstr "Nombre de processos"
+
+msgid "Number of latest entries to display on the RSS (an integer)"
+msgstr "Número de últimas publicaciones per a mostrar en el RSS (un entero)"
+
+msgid "Number of results to show on paginated pages (an integer)"
+msgstr "Número de resultados a mostrar en pàgines amb paginación (un entero)"
+
+msgid "OPDS"
+msgstr "OPDS"
+
+msgid "Older first"
+msgstr "El més antic primer"
+
+msgid "Older texts"
+msgstr "Textos més antics"
+
+msgid "On text creation, enforce user to choose the URI"
+msgstr "En la creació de text, força a l'usuari a triar la URI"
+
+msgid ""
+"One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr "Una pàgina fer fulla. Açò es útil només si vols afegir les cropmarks"
+
+msgid "Open wiki"
+msgstr "Wiki oberta"
+
+msgid "Option templates"
+msgstr "Opcions de plantilles"
+
+msgid "Optional, defaults to the author directive"
+msgstr "Opcional, per defecte és la directiva author"
+
+msgid ""
+"Or create a new revision, at your own peril. Having multiple\n"
+"          concurrent revisions means that, unless someone takes care\n"
+"          of it, only one will be chosen. You can go ahead, or retry\n"
+"          later, or, better, contact the librarians before proceeding,\n"
+"          to avoid wasting energies."
+msgstr ""
+"O crea una nueva revisió a tu propio gusto. Teniendo revisiones\n"
+"          concurrentes múltiples significa que, a menos que alguien se\n"
+"          preocupe de eso, solo uno será elegido. Pots seguir o\n"
+"          reintentar después, o mejor, contacta a uno de los\n"
+"          bibliotecarios antes de continuar, per a evitar perder energía."
+
+msgid "Or log in, if you have an account."
+msgstr "O identifícate si tienes una cuenta."
+
+msgid "Or provide an HTML file to upload"
+msgstr "O provee un arxiu HTML per a subir"
+
+msgid "Or wrap it in"
+msgstr "O termínalo"
+
+msgid "Order"
+msgstr "Orde"
+
+msgid "Ordered List"
+msgstr "Lista enumerada"
+
+msgid "Outer margin"
+msgstr "Marge extern"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "PDF logo"
+msgstr "PDF Logo"
+
+msgid "PDFs cannot be used in the body."
+msgstr "No es poden usar PDFs en el cos."
+
+#. ('#ATTACH')
+#. ("#ATTACH")
+msgid "PDFs not listed in the %1 directive will be stored but ignored."
+msgstr ""
+"Els PDF que no figuren en la directiva %1 s'emmagatzemaran però s'ignoraran."
+
+msgid "Page not found!"
+msgstr "¡Pàgina no trobada!"
+
+msgid "Page where to start a chapter"
+msgstr "Pàgina donde comienza un capítulo"
+
+msgid ""
+"Pages are not reordered. The first sheet contains\n"
+"        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
+"        This is not meant to be folded."
+msgstr ""
+"Les pàgines no están reordenadas. La primera fulla\n"
+"        contiene las pàgines 1 i 2, la segunda 3 i 4 i así sucesivamente,\n"
+"        lado per lado. Esto no significa que sea per a cuadernillos."
+
+msgid ""
+"Pages are reordered, in one or more groups\n"
+"        (signatures), then folded in half. If you have more\n"
+"        signatures, you will have to bound them together like a book.\n"
+"        With this option, you may want to decide the size of the\n"
+"        signatures. This can be a fixed value (4,8,16, etc.), the\n"
+"        whole book in a single signature, or an optimized size to\n"
+"        reduce the number of blank pages."
+msgstr ""
+"Les pàgines están reordenadas, en uno o més grupos\n"
+"        (fullas de cuadernillos), que luego se doblan per la mitad.\n"
+"        Si tienes més fullas de cuadernillo, tendrás que ponerlas juntas\n"
+"        como un llibre. Con esta opción, quizás quieras decidir el tamany\n"
+"        de la encuadernació. Esto puede ser un valor fijo (4,8,16, etc.),\n"
+"        tot el llibre amb un solo tipo de encuadernació, o un tamany\n"
+"        optimizado per a reducir el número de pàgines en blanco."
+
+msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
+msgstr ""
+"Espesor del papel (0.10 debería ser apropiado per a papel común de         "
+"80gr/m2)"
+
+msgid "Paragraph indentation in points (pt)"
+msgstr "Sagnia de paràgraf en punts (pt)"
+
+msgid "Paragraphs"
+msgstr "Paràgraf"
+
+msgid "Parent collection"
+msgstr "Col·lecció"
+
+msgid "Part"
+msgstr "Part"
+
+msgid "Part and chapter. If one side document: part."
+msgstr "Part i capítol. Si es un document d'un costat: part."
+
+msgid "Part of"
+msgstr "Part de"
+
+msgid "Part of:"
+msgstr "Part de:"
+
+msgid "Part, for larger books only"
+msgstr "Part, sols per a llibres grans"
+
+msgid "Partial selection"
+msgstr "Selecció parcial"
+
+msgid "Password"
+msgstr "Contrasenya"
+
+msgid "Password too short"
+msgstr "Contrasenya massa corta"
+
+msgid "Password updated"
+msgstr "Contrasenya actualitzada"
+
+msgid "Password, minimum 8 characters."
+msgstr "Contrasenya, mínimo 8 caràcters."
+
+msgid "Passwords do not match"
+msgstr "Les contrasenyes no concorden"
+
+msgid "Path"
+msgstr "Ruta"
+
+msgid "Payload"
+msgstr "Payload"
+
+msgid "Pending revisions"
+msgstr "Revisions pendents"
+
+msgid "Periodicals"
+msgstr "Publicacions periòdiques"
+
+msgid "Picture"
+msgstr "Imatge"
+
+msgid "Place it in the body with a description:"
+msgstr "Ubicar-ho en el cos amb una descripció:"
+
+msgid "Place it in the body without description:"
+msgstr "Ubicar-ho en el cos sense una descripció:"
+
+msgid "Place the notes on the back of the first page, impressum-style"
+msgstr ""
+"Col·loca les notes en el revers de la primera pàgina, a l'estil impressum"
+
+msgid "Plain PDF"
+msgstr "PDF plano"
+
+msgid ""
+"Please check your inbox, we tried to deliver a mail to the address you "
+"specified with a password reset link"
+msgstr ""
+"Per favor, comprova la teua safata d'entrada, hem intentat enviar un correu "
+"a l'adreça especificada amb un enllaç per a restablir la contrasenya"
+
+msgid "Please choose a text"
+msgstr "Per favor, selecciona un text"
+
+msgid "Please choose the Beamer color theme"
+msgstr "Tria el tema de color de Beamer"
+
+msgid "Please choose the Beamer theme"
+msgstr "Tria el tema de Beamer"
+
+msgid "Please choose the font size"
+msgstr "Tria el tamany de la lletra"
+
+msgid "Please choose the main font"
+msgstr "Tria la tipografia principal"
+
+msgid "Please choose the mono font"
+msgstr "Tria la tipografía monoespaiada"
+
+msgid "Please choose the sans font"
+msgstr "Tria la tipografía sans"
+
+msgid "Please describe shortly what you did"
+msgstr "Descriu breument el que has fet"
+
+msgid "Please do not use a valuable password."
+msgstr "Per favor no uses una contrasenya valiosa per a tu."
+
+msgid ""
+"Please do not use higher levels (part or chapter) for short articles with "
+"sections."
+msgstr ""
+"Per favor no uses nivells alts (parts o capítols) per a textos curts amb "
+"seccions."
+
+#. (amw_group_name)
+msgid "Please ensure that your system user is member of the \"%1\" group"
+msgstr "Assegura't que l'usuari del sistema és membre del grup «%1»"
+
+msgid ""
+"Please give us a username. It should *not* be a mail address.\n"
+"        Just a fancy name, so we can know that multiple uploads come\n"
+"        from the same person."
+msgstr ""
+"Indica'ns un nom d'usuari. No ha de ser una adreça de correu electrònic.\n"
+"Només un sobrenom, perquè puguem saber que diverses pujades provenen de la "
+"mateixa persona."
+
+msgid ""
+"Please initialized it empty, without any README,license, .gitignore or "
+"similar."
+msgstr ""
+"Per favor, inicialitza-ho buit, sense cap README, llicència, .gitignore o "
+"similar."
+
+msgid ""
+"Please keep in mind that filters are language-specific\n"
+"              and may or may not be available for the language of the\n"
+"              text. If not available, they will just leave the text as\n"
+"              is."
+msgstr ""
+"Per favor tingues en compte que els filtres son específics certes llengües i "
+"poden (o no) estar disponibles per a\n"
+"              la llengua del text. Si no estàn disponibles, deixa el text "
+"com està."
+
+msgid ""
+"Please keep in mind that if you see “Force publishing”\n"
+"    as action, it means that the revision has been superseded by\n"
+"    another one, so publishing this one, you'll end up reverting a\n"
+"    previous one. Try to avoid this, unless you know what you're\n"
+"    doing."
+msgstr ""
+"Per favor tingues en compte que si veus «Forçar publicació»\n"
+"    com a acció, significa que la revisió ha sigut anticipada per\n"
+"    altra, així que al publicar aquesta, acabaràs revertint l'anterior.\n"
+"    Intenta evitar fer això, a menys que sàpigues el que estàs fent."
+
+msgid "Please leave a mail if you want to be contacted about this change"
+msgstr ""
+"Deixa un correu electrònic si desitges que ens posem en contacte amb tu per "
+"a informar-te d'este canvi"
+
+msgid "Please note that wrapping tags must be placed on a line by themselves."
+msgstr ""
+"Tingues en compte que les etiquetes envolupants han de col·locar-se en una "
+"línia."
+
+msgid ""
+"Please note that you may want to paste from a\n"
+"        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
+"        from word” button. This is supposed to preserve the markup."
+msgstr ""
+"Per favor nota que tal vegada vulgues pegar des d'un\n"
+"        document de Word/OpenOffice/LibreOffice/HTML fent ús del botó\n"
+"        «pegar des de word». Això suposa conservar el format."
+
+msgid ""
+"Please note: without any prefix, protocol or hostname, just\n"
+"  the bare page name as shown above. External redirecting is not\n"
+"  supported."
+msgstr ""
+"Per favor ten presente: sense ningún prefijo, protocolo o hostname,\n"
+"  solo se muestra el nomb de la pàgina puro como se muestra más\n"
+"  arriba. No se soporta redireccionamiento externo."
+
+msgid "Please prove you are a human"
+msgstr "Per favor demostra que eres una persona"
+
+msgid "Please reindex the site."
+msgstr "Per favor, torna a indexar el lloc."
+
+msgid "Please reload your page"
+msgstr "Per favor, actualitza la pàgina"
+
+msgid "Please remove this file from the body first"
+msgstr "Per favor, elimina primer este arxiu del cos"
+
+msgid ""
+"Please replace the example URL in the next line with the real one with SSH "
+"protocol"
+msgstr ""
+"Per favor, substituïx la URL d'exemple de la següent línia per la real amb "
+"protocol SSH"
+
+msgid "Please select"
+msgstr "Selecciona, per favor"
+
+msgid "Please select the desired fonts"
+msgstr "Per favor selecciona les tipografies desitjades"
+
+msgid "Please select the signature size:"
+msgstr "Per favor, selecciona el tamany de la encuadernació:"
+
+msgid ""
+"Please select the size of each page including the crop marks, before the "
+"imposing"
+msgstr ""
+"Selecciona la grandària de cada pàgina, incloses les marques de tall, abans "
+"de l'enquadernació"
+
+msgid "Please set"
+msgstr "Per favor, configura"
+
+msgid ""
+"Please set the URI you desire. Author (if present),\n"
+"        title and eventually a number if the URI already exists is\n"
+"        usually a good choice"
+msgstr ""
+"Establix l'URI que desitges. Autor (si existix), títol i si és el cas un "
+"número si l'URI ja existix, la qual cosa sol ser una bona opció"
+
+msgid "Please setup the Beamer layout"
+msgstr "Per favor configura la plantilla de Beamer"
+
+msgid "Please upload your file again!"
+msgstr "Per favor, torna a pujar el teu arxiu!"
+
+msgid "Please use only lowercase ASCII letters."
+msgstr "Utilitza només lletres ASCII minúscules."
+
+msgid "Poetry, bibliographies, plays, code blocks"
+msgstr "Poesia, bibliografies, diàlegs, blocs de codi"
+
+msgid "Pointing to"
+msgstr "Apuntant a"
+
+msgid "Popular texts"
+msgstr "Textos populars"
+
+msgid "Preferred language"
+msgstr "Idioma de preferència"
+
+msgid ""
+"Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
+"        “i.”, “I.”, depending on the list type you need."
+msgstr ""
+"Los prefijos per a listas enumeradas pueden ser “1.”, “a.”,\n"
+"        “A.”, “i.”, “I.”, dependiendo del tipo de llista que necesites."
+
+msgid "Preview"
+msgstr "Previsualitzar"
+
+msgid "Preview box height in pixel"
+msgstr "Altura del quadre de vista prèvia en píxels"
+
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "Priority"
+msgstr "Prioritat"
+
+msgid "Private"
+msgstr "Privat"
+
+msgid "Procedure"
+msgstr "Procediment"
+
+msgid "Processing"
+msgstr "Processant"
+
+msgid "Produce slides."
+msgstr "Produir diapositives."
+
+msgid "Produced"
+msgstr "Produït"
+
+msgid "Publication Date"
+msgstr "Data de Publicació"
+
+msgid "Publication Place"
+msgstr "Lloc de Publicació"
+
+msgid "Publication date"
+msgstr "Data de publicació"
+
+msgid "Publication date on this site"
+msgstr "Data de publicació en este lloc"
+
+msgid "Publish"
+msgstr "Publicar"
+
+msgid "Published in *A nice book*, published by My House, 2014"
+msgstr "Publicat en un *Bonic llibre*, publicat per Ma Casa, 2014"
+
+msgid "Publisher"
+msgstr "Editor"
+
+msgid "Purge"
+msgstr "Purgar"
+
+msgid ""
+"Purging means removing it completely from the archive, not just hiding it."
+msgstr "Purgar significa eliminar per complet l'arxiu, no només amagar-ho."
+
+msgid ""
+"Put additional information here (original\n"
+"\t  title, translators, credits, etc). Footnotes go in the\n"
+"\t  body."
+msgstr ""
+"Agrega informació adicional ací (títol\n"
+"\t  original, traductores, crèdits, etc.).Les notes a peu de\n"
+"\t  pàgina van en el cos."
+
+msgid "Quarter Letter paper"
+msgstr "Carta d'un quart de fulla"
+
+msgid "Queue"
+msgstr "Qua"
+
+msgid "Quota exceeded, too many pages"
+msgstr "Quota excedida, massa pàgines"
+
+msgid "Quotes"
+msgstr "Cites"
+
+msgid "RSS aggregator"
+msgstr "Agregador de RSS"
+
+msgid "RSS feed"
+msgstr "RSS feed"
+
+msgid "Random"
+msgstr "Random"
+
+msgid "Read about the file naming scheme if you need to add files to the tree."
+msgstr ""
+"Llig sobre l'esquema de noms d'arxius si necessites afegir arxius a l'arbre."
+
+msgid "Read the whole text..."
+msgstr "Llegir tot el text..."
+
+msgid "Real time help"
+msgstr "Ajuda en temps real"
+
+msgid ""
+"Rearrange the footnotes, fixing the numbering,\n"
+"              considering only the order in which they were inserted.\n"
+"              Please leave unchecked if you don't know what this\n"
+"              means. This option could be destructive, please use with\n"
+"              caution and check the result. In case you encounter\n"
+"              problems, please save the result reporting them in the\n"
+"              message. The procedure tries to be safe and will ignore\n"
+"              the change if footnotes are missing or are too many."
+msgstr ""
+"Reordenar las notes a peu de pàgina, corrigiendo la \n"
+"              enumeración considerando solo el orden en que fueron\n"
+"              insertadas. Per favor deja esto sense seleccionar si no sabes\n"
+"              lo que esto significa. Esta opción puede ser destructiva,\n"
+"              per favor úsala amb precaución y revisa el resultado. En\n"
+"              caso de que encuentres problemas, per favor envía el\n"
+"              resultado reportándoles en el mensaje. Este procedimiento\n"
+"              trata de ser seguro e ignorará el cambio si faltan notas a\n"
+"              pie de pàgina o son muchas."
+
+msgid "Reason"
+msgstr "Raó"
+
+msgid "Reason for deletion"
+msgstr "Raó d'eliminació"
+
+msgid "Rebuild"
+msgstr "Reconstruïr"
+
+msgid "Rebuild all generated files"
+msgstr "Reconstrueix tots els arxius generats"
+
+msgid "Rebuild formats"
+msgstr "Reconstrueix els formats"
+
+msgid "Rebuild the generated formats"
+msgstr "Reconstrueix els formats generats"
+
+msgid "Rebuilding"
+msgstr "Reconstruïnt"
+
+msgid "Recheck"
+msgstr "Tornar a revisar"
+
+msgid "Record deleted!"
+msgstr "Grabació eliminada!"
+
+msgid "Redirections"
+msgstr "Redireccions"
+
+msgid "Refresh and apply filters"
+msgstr "Refresca i aplica filtres"
+
+msgid "Refresh the token"
+msgstr "Refresca el token"
+
+msgid "Reindex site"
+msgstr "Reindexar el lloc"
+
+msgid "Related projects"
+msgstr "Projectes relacionats"
+
+#. ("$name $url")
+msgid "Remote repository %1 added"
+msgstr "Repositori remot %1 agregat"
+
+#. ($name)
+msgid "Remote repository %1 removed"
+msgstr "Repositori remot %1 eliminat"
+
+msgid "Remove"
+msgstr "Llevar"
+
+msgid "Remove cover image"
+msgstr "Llevar imatge de portada"
+
+msgid "Remove this category"
+msgstr "Llevar aquesta categoria"
+
+msgid "Removed Upstream"
+msgstr "Upstream removido"
+
+msgid "Rename"
+msgstr "Renombrar"
+
+msgid "Rename text URI"
+msgstr "Renombrar el text URI"
+
+msgid "Rename to"
+msgstr "Renombrar a"
+
+msgid "Repeat email"
+msgstr "Repetir correu electrònic"
+
+msgid "Repeat password"
+msgstr "Repetir contrasenya"
+
+msgid "Request failed! Please report the the problem"
+msgstr "Petició fallida! Per favor, reporta el problema"
+
+msgid "Reschedule"
+msgstr "Reorganitzar"
+
+msgid "Reset all"
+msgstr "Reiniciar-ho tot"
+
+msgid "Reset filters"
+msgstr "Reinicia els filtres"
+
+msgid "Reset password"
+msgstr "Restablir la contrasenya"
+
+#. (username)
+msgid "Reset password for user %1"
+msgstr "Reinicia la contrasenya per a l'usuari %1"
+
+msgid "Reset to site defaults"
+msgstr "Reiniciar als valors per defecte del lloc"
+
+msgid "Reset your password"
+msgstr "Restableix la teua contrasenya"
+
+msgid "Restricted configuration variables"
+msgstr "Variables de configuració restringides"
+
+msgid "Restricted format options"
+msgstr "Opcions de format restringides"
+
+msgid "Results per page:"
+msgstr "Resultats per pàgina:"
+
+msgid "Resume session"
+msgstr "Terminar sessió"
+
+msgid "Retrieved on DATE from URL"
+msgstr "Recuperat el DATA des de URL"
+
+msgid "Retrieved on March 8, 2012 from"
+msgstr "Recuperat el 8 de març de 2012 des de"
+
+msgid "Revision"
+msgstr "Revisió"
+
+#. ($uri)
+msgid "Revision for %1 has been deleted"
+msgstr "La revisió per a %1 ha sigut eliminada"
+
+msgid "Roles"
+msgstr "Rols"
+
+msgid "Root Collection"
+msgstr "Col·lecció Arrel"
+
+msgid "Run diff"
+msgstr "Busca diferències"
+
+msgid "Running headings"
+msgstr "Encapçalaments en marxa"
+
+msgid "SKU"
+msgstr "SKU"
+
+msgid "SSL CA certificate path (Apache)"
+msgstr "Ruta de certificat SSL CA (Apache)"
+
+msgid "SSL certificate path (Apache)"
+msgstr "Ruta de certificat SSL (Apache)"
+
+msgid "SSL chained certificate path (Nginx)"
+msgstr "Ruta de certificat SSL (Nginx)"
+
+msgid "SSL configuration"
+msgstr "Configuració SSL"
+
+msgid "SSL key path"
+msgstr "Path de llave SSL"
+
+msgid "Same as above, but for duplex printers"
+msgstr "Igual que dalt, però per a impressores dúplex"
+
+msgid "Same as above, for the Archive menu"
+msgstr "Igual que dalt, per al menu Arxiu"
+
+msgid "Same as above, for the Related Projects menu"
+msgstr "Igual que a dalt, per al menu Projectes Relacionats"
+
+msgid "Sans font"
+msgstr "Tipografia sans"
+
+msgid "Save"
+msgstr "Enviar"
+
+msgid "Save the current settings with a name"
+msgstr "Guardar les opcions actuals amb un nom"
+
+#. ($pname)
+msgid "Saved \"%1\" configuration"
+msgstr "Configuració «%1» guardada"
+
+msgid "Search"
+msgstr "Busca"
+
+msgid "Search Engine Facets"
+msgstr "Facetes del motor de busca"
+
+msgid "Search filters"
+msgstr "Filtres de busca"
+
+msgid "Search results"
+msgstr "Resultats de busca"
+
+msgid "Search this column"
+msgstr "Busca en aquesta columna"
+
+msgid "Secondary footnotes"
+msgstr "Notes a peu de pàgina secundàries"
+
+msgid "Section"
+msgstr "Secció"
+
+msgid "Section and subsection. If one side document: section."
+msgstr "Secció i subsecció. Si es document d'un costat: secció."
+
+msgid "See all"
+msgstr "Mostrar-ho tot"
+
+msgid "See here for more details."
+msgstr "Mira ací per a més detalls."
+
+msgid "See here for the full documentation."
+msgstr "Mira ací la documentació completa."
+
+msgid "See the bookcover class for all the details"
+msgstr ""
+"Consulta la classe de cobertes de llibres per a conèixer tots els detalls"
+
+msgid "See the full manual for more details (english)"
+msgstr "Veure el manual complet per a més detalls (en anglès)"
+
+msgid "Select"
+msgstr "Seleccionar"
+
+msgid "Select all"
+msgstr "Seleccionar tot"
+
+msgid "Select all for deletion"
+msgstr "Seleccionar tot per a la seua eliminació"
+
+msgid "Select all for rescheduling"
+msgstr "Seleccionar tot per a reprogramació"
+
+msgid "Select individual parts for the bookbuilder"
+msgstr "Seleccionar parts individuals per al creador de llibres"
+
+msgid "Send Email"
+msgstr "Enviar Email"
+
+msgid "Send mail"
+msgstr "Enviar mail"
+
+#. ($from, $to)
+msgid "Sending test mails from %1 to %2"
+msgstr "Enviant mails de proba des de %1 a %2"
+
+msgid "Separate body fields"
+msgstr "Camps separats del cos"
+
+msgid "Separate footer fields"
+msgstr "Camps separats del footer"
+
+msgid "Separate header fields"
+msgstr "Camps separats del encapçalament"
+
+msgid "Series"
+msgstr "Serie"
+
+msgid "Series Name"
+msgstr "Nom de la Serie"
+
+msgid "Series Number"
+msgstr "Número de la Serie"
+
+msgid "Series or Periodical"
+msgstr "Sèrie o publicació periòdica"
+
+msgid "Session sharing"
+msgstr "Compartir sessió"
+
+msgid "Set a date in the future if you want it deferred."
+msgstr "Establecer una data en el futuro si quieres descartarlo."
+
+msgid "Settings loaded"
+msgstr "Configuracions carregades"
+
+msgid "Setup"
+msgstr "Configuració"
+
+msgid "Show _MENU_ entries"
+msgstr "Mosta_entrades_MENU"
+
+msgid "Show cheatsheet"
+msgstr "Mostrar fulla de comandes"
+
+msgid "Show differences in other tab"
+msgstr "Mostrar diferencias en altra pestaña"
+
+msgid "Show filters"
+msgstr "Mostrar filtres"
+
+msgid "Show preview in other tab"
+msgstr "Mostrar previsualización en altra pestaña"
+
+msgid "Show text type and number of pages in the listing"
+msgstr "Mostrar el tipus de text i el nombre de pàgines del llistat"
+
+msgid "Show the text infobox at the bottom of the texts"
+msgstr "Mostrar el quadre d'informació en la part inferior dels textos"
+
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "Mostrant 0 a 0 de 0 entrades"
+
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr ""
+
+msgid "Single bars"
+msgstr "Barres simples"
+
+msgid "Site"
+msgstr "Lloc"
+
+msgid "Site already exists"
+msgstr "El lloc ja existix"
+
+msgid "Site group"
+msgstr "Grup del lloc"
+
+msgid "Site id"
+msgstr "Id del lloc"
+
+msgid "Site mail (From field)"
+msgstr "Correu electrònic del lloc (des del camp)"
+
+msgid "Site mode"
+msgstr "Mode del lloc"
+
+msgid "Site name"
+msgstr "Nom del lloc"
+
+msgid "Site slogan"
+msgstr "Eslógan del lloc"
+
+msgid "Site users"
+msgstr "Usuaris del lloc"
+
+msgid "Sites"
+msgstr "Llocs"
+
+#. ($invalid)
+msgid "Skipped %1 invalid sources!"
+msgstr "S'han omés %1 fonts no vàlides!"
+
+msgid "Slides"
+msgstr "Diapositives"
+
+msgid "Slides (PDF)"
+msgstr "Diapositives (PDF)"
+
+msgid "Small Caps"
+msgstr "Lletres majúscules xicotetes"
+
+msgid "So we can be sure we are not mailing passwords to random people"
+msgstr ""
+"Així podem estar segurs que no estem enviant contrasenyes a persones a "
+"l'atzar"
+
+msgid ""
+"Some annotation codes are special and have side effects if you create them "
+"with these codes."
+msgstr ""
+"Alguns codis d'anotació son especials i tenen efectes secundaris si els "
+"crees amb aquests codis."
+
+msgid "Some fields are missing, all are required"
+msgstr "Falten per completar alguns camps, tots son obligatoris"
+
+msgid "Some fields are too long"
+msgstr "Alguns camps son massa llargs"
+
+msgid "Some ongoing revisions were found"
+msgstr "S'han trobat algunes revisions en curs"
+
+msgid "Sorry, too many jobs pending, please try again later!"
+msgstr "Disculpa, hi ha molts processos pendents, intenta més tard per favor!"
+
+msgid "Sorry, you can't remove this, please ask an admin"
+msgstr ""
+"Ho sentim, no es pot eliminar això, per favor pregunta a un administrador"
+
+msgid "Sorting:"
+msgstr "Classificant:"
+
+msgid "Source"
+msgstr "Font"
+
+msgid "Source files"
+msgstr "Arxius font"
+
+msgid "Source files with HTML"
+msgstr "Arxius font amb HTML"
+
+msgid "Source files with attachments"
+msgstr "Arxius fuentes amb adjuntos"
+
+msgid "Source removed"
+msgstr "Font llevada"
+
+msgid "Source, notes..."
+msgstr "Fuente, notas..."
+
+msgid "Special blocks"
+msgstr "Bloques especials"
+
+msgid "Special pages"
+msgstr "Páginas especials"
+
+msgid "Specify a whitespace-separated list of languages to activate it."
+msgstr "Especifica una lllista separada per espais dels idiomes a activar."
+
+msgid "Spine Width (mm)"
+msgstr "Amplària del llom (mm)"
+
+msgid "Stale editing"
+msgstr "Edició abandonada"
+
+msgid "Standalone HTML (printer-friendly)"
+msgstr "HTML pur (bo per a imprimir)"
+
+msgid "Standard"
+msgstr "Estàndard"
+
+msgid "Start the document with an empty page"
+msgstr "Comença el document amb una pàgina buida"
+
+msgid "Started"
+msgstr "Començat"
+
+msgid "Started new bookbuilder session"
+msgstr "Iniciada nova sessió de creador de llibres"
+
+msgid "Static page without javascript"
+msgstr "Pàgina estática sense javascript"
+
+msgid "Status"
+msgstr "Estatus"
+
+msgid "Status changed"
+msgstr "Estatus canviat"
+
+msgid "Subsection"
+msgstr "Subsecció"
+
+msgid "Subsubsection or description item"
+msgstr "Subsubsecció o ítem de descripció"
+
+msgid "Subtitle"
+msgstr "Subtítol"
+
+msgid "Such URI already exists"
+msgstr "Eixa URI ja existix"
+
+msgid ""
+"Such an header will unpublish the text and put a\n"
+"  redirection in place, and will be listed here"
+msgstr ""
+"Eixe encapçalament despublicará el text i posarà una\n"
+"  redirecció en el seu lloc, i serà llistat ací"
+
+msgid "Such an user already exists!"
+msgstr "Eixa usuaria ja existix!"
+
+msgid "Such username already exists"
+msgstr "Eixe nom d'usuaria ja existix"
+
+msgid "Suggested values:"
+msgstr "Valors suggerits:"
+
+msgid "Summary"
+msgstr "Resum"
+
+msgid "Supported directive in the header"
+msgstr "Directiva soportada en el encapçalament"
+
+msgid "Switch theme"
+msgstr "Canvia de tema"
+
+msgid "Table of Contents"
+msgstr "Índex de continguts"
+
+msgid "Tables"
+msgstr "Taulers"
+
+msgid "Tag cloud with authors"
+msgstr "Nube de etiquetes amb autores"
+
+msgid "Tag cloud with topics"
+msgstr "Nube de etiquetes amb temas"
+
+msgid "Task"
+msgstr "Tasca"
+
+msgid "TeX options (advanced)"
+msgstr "Opcions de text (avançades)"
+
+msgid "Teaser"
+msgstr "Mostra"
+
+msgid "Teaser image"
+msgstr "Imatge de mostra"
+
+msgid "Template token"
+msgstr "Plantilla de token"
+
+msgid "Term"
+msgstr "Termini"
+
+msgid "Test"
+msgstr "Test"
+
+msgid "Tested applications, in this order of preference"
+msgstr "Aplicacions probades, en este orde de preferència"
+
+msgid "Text"
+msgstr "Text"
+
+msgid "Text body only (no title, no final pages)"
+msgstr "Només cos de text (sense títol ni pàgines finals)"
+
+msgid "Text formatted with markup"
+msgstr "Text formatejat amb marcat"
+
+msgid "Text height"
+msgstr "Altura del text"
+
+msgid ""
+"Text redirections are set in the text itself, using the\n"
+"  DELETED header with this syntax"
+msgstr ""
+"Les redireccions de text s'establixen en el propi text, utilitzant la "
+"capçalera DELETED amb esta sintaxi"
+
+msgid "Text width"
+msgstr "Amplària del text"
+
+msgid "Texts"
+msgstr "Textos"
+
+msgid "Thanks!"
+msgstr "Gràcies!"
+
+msgid ""
+"The Beamer selections are relevant only if you activate the\n"
+"  slides output."
+msgstr ""
+"Les seleccions de Beamer només son rellevants si has activat \n"
+"  la eixida de diapositives."
+
+msgid "The OPDS address for this site is:"
+msgstr "La direcció OPDS per a este lloc és:"
+
+msgid ""
+"The PDF logo value can be either an absolute path\n"
+"            or just a filename if you choose to install it in the\n"
+"            TeXlive tree. You can do so with the following commands.\n"
+"            The last one checks if the file can be found."
+msgstr ""
+"El valor del logotip PDF pot ser una ruta absoluta o només un nom d'arxiu si "
+"decidixes instal·lar-ho en l'arbre de TeXlive. \n"
+"Pots fer-ho amb els següents comandos. L'últim comprova si es pot trobar "
+"l'arxiu."
+
+msgid "The changes will propagate automatically once you push."
+msgstr "Els canvis es propagaran automàticament una vegada que faces push."
+
+#. ($uri)
+msgid "The description for %1 has been updated"
+msgstr "S'ha actualitzat la descripció de %1"
+
+msgid ""
+"The differences between the list of footnotes and references is shown below."
+msgstr ""
+"A continuació s'indiquen les diferències entre la lllista de notes a peu de "
+"pàgina i la de referències."
+
+msgid "The file uploaded is not an HTML file!"
+msgstr "L'arxiu pujat no és un arxiu HTML!"
+
+msgid "The following settings provide the defaults for each format."
+msgstr ""
+"Els següents ajustos proporcionen els valors predeterminats per a cada "
+"format."
+
+msgid "The following values are used to generate the webserver configuration."
+msgstr ""
+"Els següents valors són usats per a generar la configuració del servidor web."
+
+msgid ""
+"The generate webserver configuration will redirect\n"
+"          all the HTTP requests to HTTPS"
+msgstr ""
+"La configuració del servidor web redirigirà totes les peticions HTTP a HTTPS"
+
+msgid "The logo has the site name on itself"
+msgstr "El logotip porta el nom del lloc"
+
+msgid "The optional subtitle"
+msgstr "El subtítol opcional"
+
+msgid ""
+"The page /special/index is twice special. It is assumed to be the\n"
+"default page to visit when loading the site’s root."
+msgstr ""
+"La pàgina /special/index és doblement especial. Se suposa que és la pàgina "
+"que es visita per defecte en carregar l'arrel del lloc."
+
+msgid "The password will be mailed at this address"
+msgstr "La contrasenya s'enviarà per correu electrònic a esta adreça"
+
+msgid "The reset link will expire in a hour."
+msgstr "L'enllaç de reinici caducarà en una hora."
+
+msgid "The revision has the following messages"
+msgstr "La revisió té els següents missatges"
+
+msgid ""
+"The site is a pure mirror (see the Federation page) and will not allow local "
+"files"
+msgstr ""
+"El lloc és un espill pur (vegeu la pàgina de la Federació) i no permetrà "
+"arxius locals"
+
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr "Este lloc mostrarà en els PDF una miniatura al final del document."
+
+msgid "The text structure is shown below."
+msgstr "L'estructura del text es mostra abaix."
+
+msgid "The text to show on the homepage preview"
+msgstr "El text per a mostrar en la previsualización del home"
+
+msgid "The text was added to the bookbuilder"
+msgstr "El text ha sigut agregat al creador de llibres"
+
+msgid "The texts were added to the bookbuilder"
+msgstr "Els textos han sigut agregats al creador de llibres"
+
+msgid ""
+"The title of the document, for sorting purposes. Useful\n"
+"          if you want to strip the article, if any. A text titled “A\n"
+"          nice title” could have this set to “Nice title”, and will be\n"
+"          listed under N, not under A."
+msgstr ""
+"El títol del document, a l'efecte de classificació. Útil si desitges "
+"desmuntar l'article, si és el cas. \n"
+"Un text titulat «Un bonic títol» podries definir-lo com a «Bonic títol», i "
+"serà llistat sota la B, no sota la lletra U."
+
+msgid "The title of the document. The only mandatory directive."
+msgstr "El títol del document. La única directiva obligatoria."
+
+msgid ""
+"The webserver needs to be reconfigured. Please execute in a root shell the "
+"following commands:"
+msgstr ""
+"El servidor web necessita ser reconfigurat. Per favor, executa en una "
+"consola root les següents comandes:"
+
+msgid "The whole book in as single signature"
+msgstr "Tot el llibre en un sol quadernet"
+
+msgid "Then approve the change as it would be a normal publishing."
+msgstr "Aleshores aprova el canvi com si fos una publicació normal."
+
+msgid "Then fetch the updates from this page."
+msgstr "Després pren les actualitzacions des d'aquesta pàgina."
+
+msgid "There are failed jobs"
+msgstr "Hi ha treballs fallits"
+
+msgid "There are pending revisions"
+msgstr "Hi ha revisions pendents"
+
+msgid "These texts are missing the unique id."
+msgstr "Estos texts careixen de la id única."
+
+msgid ""
+"They can be texts, special texts, authors, topics, custom categories, "
+"aggregations and series."
+msgstr ""
+"Poden ser textos, textos especials, autors, temes, categories "
+"personalitzades, agregacions i sèries."
+
+msgid ""
+"They should be paths relative to the webserver configuration root or "
+"absolute paths (recommended)."
+msgstr ""
+"Han de ser rutes relatives a l'arrel de configuració del servidor web o "
+"rutes absolutes (recomanat)."
+
+msgid "This directive wants a whitespace separated list of filenames."
+msgstr ""
+"Esta directiva vol una llista de noms d'arxiu separats per espais en blanc."
+
+msgid ""
+"This has security implications and must be used only on trusted repositories"
+msgstr ""
+"Això té implicacions de seguretat i només ha d'utilitzar-se en repositoris "
+"de confiança"
+
+msgid ""
+"This is a WYSIWYG editor. If you prefer to use\n"
+"        the wiki-like syntax leave it as is, fill the required fields\n"
+"        above and postpone the editing to the next step."
+msgstr ""
+"Este és un editor «El que Veus És El que Obtens» (WYSIWYG de les seues "
+"sigles en anglés). Si preferixes utilitzar la sintaxi wiki deixa-ho com "
+"està, emplena els camps obligatoris de dalt i posposa l'edició al següent "
+"pas."
+
+msgid ""
+"This is relevant only for the generated files, where you may need to have an "
+"alternate set of fonts. It has no effect in the web application if already "
+"using a sans font."
+msgstr ""
+"Això és rellevant només per als arxius generats, on pots necessitar tindre "
+"un conjunt alternatiu de fonts. No té cap efecte en l'aplicació web si ja "
+"s'utilitza una font sans."
+
+msgid "This is the caption"
+msgstr "Esta es la llegenda"
+
+msgid ""
+"This mail has been sent to notify you about a new text\n"
+"creation, even if the uploading is not completed yet and the user\n"
+"still needs to finalize the upload. Another mail should follow soon.\n"
+"If this doesn't happen, it means that the uploading has been abandoned\n"
+"and you may want to check it out."
+msgstr ""
+"Este correu s'ha enviat per a notificar-te la creació d'un nou text, \n"
+"encara que la càrrega encara no s'haja completat i l'usuari haja de "
+"finalitzar-la. \n"
+"Prompte s'enviarà un altre missatge.\n"
+"Si això no ocorre, significa que la pujada ha sigut abandonada i pot ser que "
+"vulgues comprovar-ho."
+
+msgid "This revision is already published, ignoring changes"
+msgstr "Esta revisió ya ha sido publicada, ignorando els canvis"
+
+msgid "This revision is being actively edited"
+msgstr "Esta revisió està sent editada activament"
+
+msgid "This revision is being actively edited by you"
+msgstr "Esta revisió està sent editada activament per tu"
+
+msgid "This revision is being edited by someone else!"
+msgstr "Esta revisió està sent editada per algú més!"
+
+msgid "This section will not produce a slide"
+msgstr "Esta secció no produirà una diapositiva"
+
+msgid "This setting affects only the text creation form."
+msgstr "Aquesta configuració només afecta a la forma de creació del text."
+
+msgid ""
+"This site is a pure mirror and untracked pages will be removed automatically"
+msgstr ""
+"Este lloc és un espill pur i les pàgines sense seguiment s'eliminaran "
+"automàticament"
+
+msgid ""
+"This site is private and mobile applications should ask for your username "
+"and\n"
+"  password to access the OPDS."
+msgstr ""
+"Este lloc es privat i las aplicaciones móviles te deberían solicitar tu\n"
+"nomb de usuario i contraseña per a acceder al OPDS."
+
+msgid "This text does not exist"
+msgstr "Este text no existix"
+
+msgid "This text is a book"
+msgstr "Este text és un llibre"
+
+msgid "This text is an article"
+msgstr "Este text és un article"
+
+msgid "This text is new"
+msgstr "Este text és nou"
+
+msgid "This text is not available"
+msgstr "Este text no està disponible"
+
+msgid "This text is not public yet"
+msgstr "Este text encara no es públic"
+
+msgid "This text is not published yet"
+msgstr "Este text encara no ha sigut publicat"
+
+#. (rev.is_deferred)
+msgid "This text will be deferred to %1"
+msgstr "Este text será postergado per a %1"
+
+msgid "This user cannot be removed"
+msgstr "Aquest usuari no pot ser eliminat"
+
+msgid "Thumbnail"
+msgstr "Miniatura"
+
+msgid "Title"
+msgstr "Títol"
+
+msgid "Title and chapter. If one side document: chapter."
+msgstr "Títol i capítol. Si és un document d'un costat: capítol."
+
+msgid "Title and section.  If one side document: section."
+msgstr "Títol i capítol. Si és un document d'un costat: secció."
+
+msgid "Title and subtitle. If one side document: title."
+msgstr "Títol i capítol. Si és un document d'un costat:: títol."
+
+msgid "Title for sorting"
+msgstr "Títol per a ordenar"
+
+msgid "Title, author, date..."
+msgstr "Títol, autor/a, data..."
+
+msgid "Titles"
+msgstr "Títols"
+
+#. (pending_url)
+msgid "To apply the changes, you can visit %1"
+msgstr "Per a aplicar els canvis, pots visitar %1"
+
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr "Per a mostrar les PDFs, cconia o agrega lo següent en el encapçalament"
+
+msgid ""
+"To preserve the whitespaces and line breakings, wrap the paragraphs with"
+msgstr ""
+"Per a conservar les espacios i saltos de línia, trunca les párrafos con"
+
+msgid "To quickly format bibliographies wrap them in"
+msgstr "Per a donar format ràpidament a les bibliografíes posa-les dins de"
+
+msgid "To quickly format plays, use"
+msgstr "Per a donar format a diàlegs, usa"
+
+msgid "To resume the editing you can visit the following URL"
+msgstr "Per a continuar editando, pots visitar la següent URL"
+
+#. (loc('Update')
+#. (loc("Update"))
+msgid ""
+"To save or update the templates, you need first to save\n"
+"    the options with the \"%1\" button"
+msgstr ""
+"Per a guardar o actualizar las plantilles, primero necesitas guardar\n"
+"    las opcions amb el botón «%1»"
+
+msgid "To view the changes introduced, you can visit the following URL"
+msgstr "Per a veure els canvis introduïts, pots visitar la següent URL"
+
+msgid "Toggle"
+msgstr "Toggle"
+
+msgid "Toggle fullscreen editor"
+msgstr "Editor Toggle de pantalla completa"
+
+msgid "Token refreshed"
+msgstr "Token refrescat"
+
+msgid "Too many URLs to process!"
+msgstr "Mass URLs que processar!"
+
+msgid "Top margin"
+msgstr "Marge superior"
+
+msgid "Topic"
+msgstr "Tema"
+
+msgid "Topics"
+msgstr "Temes"
+
+msgid "Total pages"
+msgstr "Pàgines totals"
+
+msgid "Total size (mm)"
+msgstr "Tamany total (mm)"
+
+msgid "Triple bars"
+msgstr "Barres triples"
+
+msgid "Try a random text if unsure"
+msgstr "Intenta amb un text aleatori si no estàs segura"
+
+msgid ""
+"Turn links to images into images (affects site display only, static formats "
+"have the link)"
+msgstr ""
+"Canviar «enllaços a imatges» per «imatges» (afecta només a la mostra en el "
+"lloc, els formats estàtics tenen l'enllaç)"
+
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"            Gmaps into widgets (affects site display only, static\n"
+"            formats have the link)"
+msgstr ""
+"Convertir enllaços sense descripció a YouTube, Vimeo, Gmaps en ginys (només "
+"afecta a la visualització del lloc, els formats estàtics tenen l'enllaç)."
+
+msgid "Two side layout"
+msgstr "Diagramació per ambdós costats de la fulla"
+
+msgid "Type"
+msgstr "Tipus"
+
+msgid "URI"
+msgstr "URI"
+
+msgid "URI is available and valid"
+msgstr "URI disponible i vàlida"
+
+msgid ""
+"URI should be be an ASCII string, separated by hyphens, without spaces. E.g. "
+"my-author-title-1"
+msgstr ""
+"L'URI ha de ser una cadena ASCII, separada per guions, sense espais. Per "
+"exemple: el meu-autor-títol-1"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "URL of the new remote repository (HTTPS, HTTP or GIT)"
+msgstr "URL del nou repositori remot (HTTPS, HTTP o GIT)"
+
+msgid "URL pointing to an embeddable webchat"
+msgstr "URL que apunta a un webchat incrustable"
+
+msgid "UTC"
+msgstr "UTC"
+
+msgid "Unable to load the bookbuilder session"
+msgstr "Incapaç de carregar la sessió del creador de llibres"
+
+#. ($from || "NO MAIL FROM", $to)
+msgid "Unable to send mail from %1 to %2!"
+msgstr "No es pot enviar correu de %1 a %2!"
+
+msgid "Unbranded PDF (hide site name, logo, etc.)"
+msgstr "PDF sense marca (esconder nomb del lloc, logo, etc.)"
+
+msgid ""
+"Unconditionally remove all the invisible non-breaking\n"
+"                spaces in the text"
+msgstr ""
+"Eliminar sense condiciones tots les saltos de línia invisibles\n"
+"                en el text"
+
+#. (shared)
+msgid ""
+"Unfortunately, the shared repository located at %1 appeared out of sync."
+msgstr ""
+"Desafortunadament, el repositori compartit localitzat en %1 aparegué "
+"dessincronitzat."
+
+msgid "Unique ID for the text"
+msgstr "ID únic per al text"
+
+#. ('my-uri-1')
+#. ("my-uri-1")
+msgid ""
+"Unique identifier. This cannot be changed later. Minimum 4 ASCII lowercase "
+"characters and digits, optionally separated by a hyphen, e.g. %1"
+msgstr ""
+"Identificador únic. No pot modificar-se posteriorment. Mínim 4 caràcters "
+"ASCII en minúscules i dígits, opcionalment separats per un guió, per exemple "
+"%1"
+
+msgid "Unlimited"
+msgstr "Ilimitado"
+
+msgid "Unordered List"
+msgstr "Llista amb vinyetes"
+
+msgid "Unpublished texts"
+msgstr "Textos no publicats"
+
+#. ($mime_type)
+#. ($mime)
+msgid "Unsupported file type %1"
+msgstr "Tipus d'arxiu %1 no suportat"
+
+msgid "Unused attachment"
+msgstr "Accessori sense utilitzar"
+
+msgid "Update"
+msgstr "Actualitzar"
+
+msgid "Update account info"
+msgstr "Actualitzar informació del compte"
+
+msgid "Update aggregation"
+msgstr "Actualitzar una agregació"
+
+msgid "Update and create new aggregation"
+msgstr "Actualitza i crea una nova agregació"
+
+msgid "Update and create new text"
+msgstr "Actualitza i crea un nou text"
+
+msgid "Update category description"
+msgstr "Actualitzar descripció de categoría"
+
+msgid "Update series"
+msgstr "Actualitzar la sèrie"
+
+msgid "Update to current settings"
+msgstr "Actualitzar a les opcions d'ara"
+
+msgid "Upload"
+msgstr "Pujar"
+
+msgid "Upload the image and note its name. Files are always renamed."
+msgstr ""
+"Puja la imatge i anota el seu nom. Els arxius sempre es canvien de nom."
+
+msgid ""
+"Uploaded and available images are shown and listed below the text preview."
+msgstr ""
+"Les imatges carregades i disponibles es mostren i enumeren davall de la "
+"vista prèvia del text."
+
+msgid "Url"
+msgstr "Url"
+
+msgid "Use JS syntax highlight for code blocks"
+msgstr "Usar resaltat de sintaxis JS per a blocs de codi"
+
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
+msgstr "Usar LuaLaTeX en lloc de XeLaTeX (més lent)"
+
+msgid "Use SSL for authenticated users"
+msgstr "Usar SSL per a usuàries autenticades"
+
+msgid "Use it as a teaser image adding to the header this line:"
+msgstr "Utilitza-la com a imatge de mostra afegint a la capçalera esta línia:"
+
+msgid "Use named table of contents anchors instead of numeric ones"
+msgstr "Utilitzar ancoratges d'índex amb nom en lloc de numèrics"
+
+msgid "Use one of the site's formats"
+msgstr "Utilitza un dels formats del lloc"
+
+#. (sign)
+msgid "Use optimized signatures with %1 pages each"
+msgstr "Utilitza firmes optimitzades amb %1 pàgines cada una"
+
+msgid "Use sans fonts for section titles"
+msgstr "Usa fonts sans per al títols de secció"
+
+msgid "Use the image as cover"
+msgstr "Usa la imatge com a portada"
+
+msgid "Use the site locale"
+msgstr "Utilitzar la configuració regional del lloc"
+
+msgid "Useful HTML snippets"
+msgstr "Snippets HTML útils"
+
+msgid ""
+"Useful for footnotes or in the headers of the document, where you cannot put "
+"a blank line to mark a new paragraph."
+msgstr ""
+"Útil per a notes a peu de pàgina o en les encapçalaments del document, donde "
+"no pots poner una línia en blanco per a marcar un nuevo párrafo."
+
+msgid "User"
+msgstr "Usuari"
+
+#. ($user->username)
+msgid "User %1 created!"
+msgstr "L'usuari %1 ha sigut creat!"
+
+#. ($user->username)
+#. ($c->stash->{user}->username)
+msgid "User %1 deleted"
+msgstr "Usuari %1 eliminat"
+
+#. ($user->username)
+msgid "User %1 updated"
+msgstr "Usuari %1 actualitzat"
+
+msgid "User created"
+msgstr "Usuari creat"
+
+msgid "Username"
+msgstr "Nom d'usuari"
+
+msgid "Username, alphanumerical only, no special characters, no uppercase"
+msgstr ""
+"Nom d'usuària, sols alfanumèric, sense caràcters especials ni majúscules"
+
+msgid "Users"
+msgstr "Usuàries"
+
+msgid ""
+"Using this token, you can load the bookbuilder settings\n"
+"    and the text list from another computer, or share it with someone\n"
+"    else. Just write it down and then load it from another computer\n"
+"    using the following form."
+msgstr ""
+"Utilitzant este token, pots carregar la configuració del bookbuilder i la "
+"llista de textos des d'un altre ordinador, o compartir-la amb una altra "
+"persona. \n"
+"Només has d'escriure-ho i després carregar-ho des d'un altre ordinador "
+"utilitzant el següent formulari."
+
+msgid ""
+"Usually this is due to high traffic and bad luck, and it can be fixed by "
+"pushing the changes again."
+msgstr ""
+"Normalment això es deu a un trànsit elevat i a la mala sort, i es pot "
+"arreglar tornant a introduir els canvis."
+
+msgid "Verbatim block"
+msgstr "Bloc Verbatim"
+
+msgid "View history"
+msgstr "Vore historial"
+
+msgid "Virtual hosts"
+msgstr "Virtual hosts"
+
+msgid "Virtual hosts, one per line"
+msgstr "Virtual hosts, uno per línia"
+
+msgid "What links here"
+msgstr "Qué enllaça ací"
+
+msgid ""
+"When creating a new text, do not populate the publication date if not "
+"provided by the user."
+msgstr ""
+"A l'hora de crear un nou text, no plenes la data de publicació si no ha "
+"sigut proveïda per l'usuari."
+
+msgid ""
+"When you start a bookbuilder session, at the end of the\n"
+"    bookbuilder page you can see a token for sharing the session. You\n"
+"    can load it here from another device to resume what you were\n"
+"    doing."
+msgstr ""
+"Quan inicias una sessió del creador de llibres, al final\n"
+"    de la pàgina del creador de llibres pots ver un token per a compartir\n"
+"    la sessió. Pots cargarla ací desde otro computador per a continuar\n"
+"    lo que estabas haciendo."
+
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr ""
+"Quan carregues un PDF, dividix-ho en imatges per a ser introduïdes en el cos"
+
+msgid "Where does this text come from?"
+msgstr "D'on ve este text?"
+
+msgid "Whitelisted IP (for backup, one per line)"
+msgstr "IP en lista blanca (para copia de seguridad, una por línea)"
+
+msgid "Width of the cover image in percent of the text block width."
+msgstr ""
+"Amplària de la imatge de portada en percentatge de l'amplària del bloc de "
+"text."
+
+msgid "Width:"
+msgstr "Amplària:"
+
+msgid ""
+"With complex structures, e.g., a chapter with\n"
+"      subsections, selecting only the chapter is likely to select only\n"
+"      the chapter's title, so probably you want to select the chapter\n"
+"      and all its subsections."
+msgstr ""
+"Amb estructures complexes, per exemple un capítol amb\n"
+"      subseccions, seleccionar només el capítol seleccionarà només el\n"
+"      títol del capítol, així que probablement vulgues seleccionar el\n"
+"      capítol i totes les seues subseccions."
+
+msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr ""
+"Amb l'etiqueta «verbatim» pots evitar que el marcat siga interpretat. "
+"Normalment no és necessari"
+
+msgid ""
+"With the bookbuilder you can change the layout (fonts,\n"
+"    dimensions, paper, margins) of the texts on the library. You can\n"
+"    also merge more texts to create your own booklet. Just try it!"
+msgstr ""
+"Amb el creador de llibres pots canviar el disseny \n"
+"(fonts, dimensions, paper, màrgens) dels texts de la biblioteca. \n"
+"Tconé pots combinar més texts per a crear el teu propi fullet. \n"
+"Prova-ho!"
+
+msgid "Workflow"
+msgstr "Flux de treball"
+
+msgid "Working locally?"
+msgstr "Estàs treballant localment?"
+
+msgid "Wrap Width (mm)"
+msgstr "Amplària de l'embolcall (mm)"
+
+msgid ""
+"Wrapping tags cannot be used inside environments\n"
+"          which require leading space (notably, you cannot use them in\n"
+"          lists)."
+msgstr ""
+"Les etiquetes envolupants no poden utilitzar-se dins d'entorns que "
+"requerisquen espai inicial (en particular, no poden utilitzar-se en llistes)."
+
+msgid "Wrong answer!"
+msgstr "Resposta incorrecta!"
+
+msgid "Wrong username or password"
+msgstr "Nom d'usuaria o contrasenya incorrecta"
+
+msgid "XeLaTeX source"
+msgstr "Font XeLaTeX"
+
+msgid "Year"
+msgstr "Any"
+
+msgid "Yes"
+msgstr "Si"
+
+msgid ""
+"You MUST specify a reason, otherwise the line will have no effect.\n"
+"The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
+"etc.) is irrelevant."
+msgstr ""
+"HAS d'especificar una raó, d'altra forma, la línia no tindrá efecte.\n"
+"L'orde de les línies de l'encapçalament (on està «#title», «#lang»,\n"
+"etc.) es irrellevant."
+
+msgid "You are already logged in"
+msgstr "Ja has iniciat sessió"
+
+msgid ""
+"You are building a collection. Please provide a title and, optionally, any "
+"other information needed for the front cover (author, subtitle, date) and "
+"the back cover (source and notes)."
+msgstr ""
+"Estas creando una colecció. Per favor provee un títol y, opcionalmente, "
+"qualsevol altra informació necessària per a la portada (autor/a, subtítol, "
+"data) i la contraportada (fuente i notas)."
+
+msgid "You are logged in now!"
+msgstr "Ja has iniciat sessió!"
+
+#. (backup)
+msgid ""
+"You can access the backup located at %1 or ask your host for help, "
+"forwarding this email"
+msgstr ""
+"Pots accedir a la còpia de seguretat que es troba en %1 o demanar ajuda al "
+"teu amfitrió, reexpedint-li este correu electrònic"
+
+msgid ""
+"You can add texts to the bookbuilder clicking on the\n"
+"    “plus” icon near the downloads of each text. You can add and\n"
+"    remove the texts later."
+msgstr ""
+"Pots agregar texts al creador de llibres fent clic en la\n"
+"    icona «més» al costat de les descàrregues de cada text. Pots agregar\n"
+"    i eliminar texts després."
+
+msgid ""
+"You can also link to a part of the text. Please refer to the manual for this "
+"feature"
+msgstr ""
+"També pots enllaçar a una part del text. Consulta el manual d'esta funció"
+
+msgid ""
+"You can authorize your IP for Git access and site access (for private sites) "
+"for 4 hours visiting the following link."
+msgstr ""
+"Pots autoritzar la teua IP per a l'accés a Git i al lloc (per a llocs "
+"privats) durant 4 hores visitant el següent enllaç."
+
+#. (create_url)
+msgid "You can create a peer at %1"
+msgstr "Pots crear un/a compañero/a en %1"
+
+msgid "You can do so answering a simple question."
+msgstr "Pots respondre una simple pregunta."
+
+msgid "You can tune them editing them here."
+msgstr "Pots sintonitzar-los editant-los ací."
+
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
+msgstr ""
+"Pot utilitzar els prefixos següents per a buscar una paraula en un camp "
+"específic, per exemple, «títol:exemple»"
+
+msgid ""
+"You can't create a new revision because the text has not been published yet"
+msgstr ""
+"No pots crear una nueva revisió porque el text no ha sido publicado todavía"
+
+msgid "You have logged out"
+msgstr "Has tancat sessió"
+
+msgid "You may want to resume the editing of one of them"
+msgstr "Quizás quieras continuar la edición de uno de ellos"
+
+msgid ""
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr ""
+"És possible que desitges eliminar els articles del títo: «La», «El»,  «Les»  "
+"«Els» «Una», «Un», «Unes» «Uns», etc. del título"
+
+msgid "You may want to use one of these images"
+msgstr "Tal vegada vulgues usar una d'aquestes imatges"
+
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
+"Estás enviando credenciales bajo una conexión sense encriptar. Per favor "
+"cconia a HTTPS, inicia sessió y cambia tu contraseña de inmeadiato. Esto no "
+"debería pasar."
+
+#. (edit_url)
+msgid "You should change your password right away at %1"
+msgstr "Deberías cconiar tu contraseña ahora en %1"
+
+msgid "Your browser does not support the audio tag."
+msgstr "El teu navegador no suporta l'etiqueta audio."
+
+msgid "Your browser does not support the video tag."
+msgstr "El teu navegador no suporta l'etiqueta vídeo."
+
+msgid ""
+"Your changes are saved and can be checked every time you hit Preview or Save"
+msgstr ""
+"Els teus canvis estan guardats i poden revisar-se cada vegada que faces clic "
+"en Previsualitzar o Desar"
+
+msgid "Your chapter here..."
+msgstr "El teu capítol ací..."
+
+msgid "Your current bookbuilder token is:"
+msgstr "El teu token actual per al creador de llibres és:"
+
+msgid "Your email"
+msgstr "El teu email"
+
+msgid "Your file is ready"
+msgstr "El teu arxiu està llest"
+
+msgid "Your part here..."
+msgstr "La teua parta ací..."
+
+#. (password)
+msgid "Your password is %1."
+msgstr "La teua contrasenya és %1."
+
+msgid "Your password was reset, now you can login with it"
+msgstr ""
+"La teua contrasenya ha sigut restablida, ara pots iniciar sessió amb ella"
+
+msgid "Your section here..."
+msgstr "Tu sección ací..."
+
+msgid "Your sub-sub-section (or description heading) here..."
+msgstr "Tu sub-sub-sección (o títol de descripció) ací..."
+
+msgid "Your subsection here..."
+msgstr "Tu subsección ací..."
+
+#. (home)
+msgid "Your user at %1 has been created."
+msgstr "El teu usuari ha sigut creat en %1."
+
+#. (username)
+msgid "Your username is %1."
+msgstr "El teu nom d'usuaria es %1."
+
+msgid "Zip"
+msgstr "Zip"
+
+msgid "aborted"
+msgstr "abortat"
+
+msgid "about, links..."
+msgstr "en quant a, enllaços..."
+
+msgid "activate to sort column ascending"
+msgstr "activar per a ordenar la columna de manera ascendent"
+
+msgid "activate to sort column descending"
+msgstr "activar per a ordenar la columna de manera descendent"
+
+msgid "active"
+msgstr "actiu"
+
+msgid "affects only the frontend webserver configuration"
+msgstr "afecta només a la configuració del front-end del servidor web"
+
+msgid "any"
+msgstr "qualsevol"
+
+msgid "automatically generated if not present, using author and title"
+msgstr "generat automàticament si no és present, utilitzant l'autor i el títol"
+
+msgid "code and monospace"
+msgstr "códi i mono-espaiat"
+
+msgid "comma separated list"
+msgstr "lllista separada per comes"
+
+msgid "completed"
+msgstr "completat"
+
+msgid "conflict"
+msgstr "conflicte"
+
+msgid "default"
+msgstr "per defecte"
+
+msgid "description"
+msgstr "descripció"
+
+msgid "displayed text"
+msgstr "text mostrat"
+
+msgid "edit, commit..."
+msgstr "editar, enviar..."
+
+msgid "editing"
+msgstr "editant"
+
+msgid "emphasis"
+msgstr "èmfasi"
+
+msgid "failed"
+msgstr "ha fallat"
+
+msgid "filtered from _MAX_ total entries"
+msgstr "filtrat de _MAX_ entrades totals"
+
+msgid "for code, monospaced"
+msgstr "per a códi, mono espaiat"
+
+msgid "for display"
+msgstr "per a mostrar"
+
+msgid "for poetry"
+msgstr "per a poesía"
+
+msgid "generic sectioning, good for articles"
+msgstr "división genérica, útil per a artículos"
+
+msgid "if you want to use a custom size, you need to set both width and height"
+msgstr ""
+"si quieres usar un tamany personalizado, necesitas ajustar tanto el ancho "
+"como el alto"
+
+msgid "image"
+msgstr "imatge"
+
+msgid "left"
+msgstr "esquerra"
+
+msgid "mandatory"
+msgstr "obligatori"
+
+msgid "markup *not* interpreted"
+msgstr "marcat *no* interpretat"
+
+#. (site.binary_upload_max_size_in_mega)
+msgid "max %1 Mb"
+msgstr "màx. %1 Mb"
+
+msgid "minutes"
+msgstr "minuts"
+
+msgid "new-example-uri"
+msgstr "uri-exemple-nou"
+
+msgid "only lowercase ASCII and hyphens"
+msgstr "només minúscules ASCII i hyphens"
+
+msgid "or"
+msgstr "ò"
+
+msgid "ordered item"
+msgstr "ítem numerat"
+
+msgid "overstriked"
+msgstr "overstriked"
+
+msgid "pending"
+msgstr "pendent"
+
+msgid "plain PDF"
+msgstr "plà PDF"
+
+msgid "plain text source"
+msgstr "font en text plà"
+
+msgid "processing"
+msgstr "processat"
+
+msgid "published"
+msgstr "publicat"
+
+msgid "revision"
+msgstr "revisió"
+
+msgid "right"
+msgstr "dreta"
+
+#. (args)
+msgid "string"
+msgstr "string"
+
+msgid "strong emphasis"
+msgstr "èmfasis fort"
+
+msgid "sub-sub-section"
+msgstr "sub-sub-secció"
+
+msgid "subscript"
+msgstr "sub índex"
+
+msgid "subsection"
+msgstr "subsecció"
+
+msgid "superscript"
+msgstr "super índex"
+
+msgid "taken"
+msgstr "pres"
+
+msgid "texts by authors, title, topic..."
+msgstr "texts ordenats per autoria, títol, tema..."
+
+msgid "texts sorted by author"
+msgstr "texts ordenats per autoria"
+
+msgid "texts sorted by title"
+msgstr "texts ordenats per títol"
+
+msgid "the author of the text (as displayed)"
+msgstr "autoría del text (com es mostra)"
+
+msgid "this text will be unpublished"
+msgstr "aquest text no serà publicat"
+
+msgid "topic"
+msgstr "tema"
+
+msgid "unordered item"
+msgstr "ítem sense ordenar"
+
+msgid "very strong emphasis"
+msgstr "èmfasis molt fort"
+
+msgid "with description"
+msgstr "amb descripció"
+
+msgid "without description"
+msgstr "sense descripció"
+
+msgid ""
+"“Stale editing” means that the revision was abandoned\n"
+"    while editing, but it's still there, in case someone wants to pick\n"
+"    it up when editing a text."
+msgstr ""
+"«Edició abandonada» significa que la revisió va ser abandonada\n"
+"    mentres s'estava editant, però encara està ahi, en cas que\n"
+"    algú vulguera modificar-la quan edite un text."
+
+#~ msgid "Sources"
+#~ msgstr "Fuentes"
+
+#~ msgid "Such an URI already exists"
+#~ msgstr "Ya existe esa URI"
+
+#~ msgid "IRC channel on freenode"
+#~ msgstr "Canal IRC en freenode"
+
+#~ msgid "texts sorted by topics"
+#~ msgstr "Textos ordenados por temas"
+
+#~ msgid "Add or delete and add again the <user_repo_url> on this page."
+#~ msgstr ""
+#~ "Agregar o eliminar y agregar de nuevo a <user_repo_url> a esta página."
+
+#~ msgid "Clone the repo locally and set it up"
+#~ msgstr "Clonar el repositorio localmente y configurarlo"
+
+#~ msgid ""
+#~ "Create an empty repository. Here we refer to its url as <user_repo_url>."
+#~ msgstr ""
+#~ "Crear un repositorio vacío. Aquí nos referimos a su url como "
+#~ "<user_repo_url>."
+
+#~ msgid "How to work with a remote repo"
+#~ msgstr "Cómo trabajar con un repositorio remoto"
+
+#~ msgid "Remotes"
+#~ msgstr "Remotes"
+
+#~ msgid "Repository"
+#~ msgstr "Repositorio"
+
+#~ msgid "if the repository is exported"
+#~ msgstr "si el repositorio es exportado"
+
+#~ msgid ""
+#~ "or, if you have SSH access to the machine (but do not use the same user "
+#~ "as amusewiki, it should be a read-only repo)"
+#~ msgstr ""
+#~ "o, si tienes acceso SSH a la máquina (pero no usas el mismo usuario como "
+#~ "amusewiki, debería ser un repositorio de solo lectura)"
+
+#~ msgid "If you want to proceed, please visit the following url: %1"
+#~ msgstr "Si quieres proceder, por favor visita la siguiente url: %1"
+
+#~ msgid "Now you can proceed to login."
+#~ msgstr "Ahora puedes identificarte."
+
+#~ msgid "Otherwise, please just ignore this mail."
+#~ msgstr "En caso contrario, por favor ignora este mail."
+
+#~ msgid "Password reset for %1"
+#~ msgstr "Reestablecimiento de contraseña para %1"
+
+#~ msgid "Someone, probably you, has requested a password reset for %1 at %2."
+#~ msgstr ""
+#~ "Alguien, probablemente tú, ha solicitado un reestablecimiento de "
+#~ "contraseña para %1 en %2."
+
+#~ msgid "The link is valid until %1 (one hour from now)"
+#~ msgstr "El enlace es válido hasta %1 (una hora desde ahora)"
+
+#~ msgid "Fixed category list"
+#~ msgstr "Lista de categorías corregida"
+
+#~ msgid "Job deleted"
+#~ msgstr "Proceso borrado"
+
+#~ msgid ""
+#~ "URL of the new remote repository\n"
+#~ "        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
+#~ "        supported."
+#~ msgstr ""
+#~ "URL del nuevo repositorio remoto\n"
+#~ "        HTTP, HTTPS, GIT, o local (solo la ruta local). SSH no es\n"
+#~ "        soportado."
+
+#~ msgid "Add an attachment (PNG, JPG or PDF)"
+#~ msgstr "Agregar un adjunto (PNG, JPG or PDF)"
+
+#~ msgid "Format: yyyy-mm-dd hh:mm, e.g."
+#~ msgstr "Formato: yyyy-mm-dd hh:mm, ej."
+
+#~ msgid "Images:"
+#~ msgstr "Imágenes"
+
+#~ msgid "Links and images"
+#~ msgstr "Enlaces e imágenes"
+
+#~ msgid ""
+#~ "Please note that you have to upload them first and\n"
+#~ "          use the name the form provides. Images are always renamed by\n"
+#~ "          us."
+#~ msgstr ""
+#~ "Por favor nota que tienes que subirlos primero y\n"
+#~ "          usar el nombre que el formulario provee. Las imágenes siempre\n"
+#~ "          son renombradas por nosotros."
+
+#~ msgid "They have the same syntax (images are actually links)"
+#~ msgstr "Tienen la misma sintaxis (de hecho, las imágenes son enlaces)"
+
+#~ msgid "This field is required"
+#~ msgstr "Este campo es obligatorio"
+
+#~ msgid "Time is optional."
+#~ msgstr "El tiempo es opcional."
+
+#~ msgid "Hide options"
+#~ msgstr "Ocultar opciones"
+
+#~ msgid "Match any of the fields above"
+#~ msgstr "Ajusta cualquiera de los campos anteriores"
+
+#~ msgid "Query was"
+#~ msgstr "La petición fue"
+
+#~ msgid "Show options"
+#~ msgstr "Mostrar opciones"
+
+#~ msgid "Attached PDFs"
+#~ msgstr "PDFs adjuntados"
+
+#~ msgid "Images not used in the text are stored, but will be ignored."
+#~ msgstr ""
+#~ "Las imágenes no usadas en el texto son guardadas, pero serán ignoradas."
+
+#~ msgid ""
+#~ "You\n"
+#~ "    have attached one or more images. This is not enough! To make them\n"
+#~ "    appear, you have to place somewhere in the body or in the header,\n"
+#~ "    depending on their purpose. See the examples below."
+#~ msgstr ""
+#~ "Tú\n"
+#~ "    has adjuntado una o más imágenes. ¡Esto no es suficiente! Para "
+#~ "hacerlas\n"
+#~ "    visibles, debes insertar en alguna parte del cuerpo del texto o en "
+#~ "el,\n"
+#~ "    header, dependiendo de tu propósito. Mira ejemplos más abajo."
+
+#~ msgid "A new revision has been created at %1"
+#~ msgstr "Se ha creado una nueva revisión en %1"
+
+#~ msgid "Bare HTML, needed by the application"
+#~ msgstr "HTML desnudo (bare), necesitado por la aplicación"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Job not found"
+#~ msgstr "Proceso no encontrado"
+
+#~ msgid "Other languages"
+#~ msgstr "Otros idiomas"
+
+#~ msgid ""
+#~ "Please note that the twoside and binding correction options follow\n"
+#~ "  this logic: if you have some imposed format, they are ignored for\n"
+#~ "  the standalone PDF but applied for the imposed ones. If you have\n"
+#~ "  only the standalone PDF, they are applied to it."
+#~ msgstr ""
+#~ "Por favor ten en cuenta que las opciones de corrección para "
+#~ "encuadernación\n"
+#~ "  y doble página siguen esta lógica: si tienes algún formato para "
+#~ "encuadernación,\n"
+#~ "  son ignorados para el PDF normal, pero aplicados para los PDFs para "
+#~ "encuadernación.\n"
+#~ "  Si tienes solo un PDF, las correcciones se le aplican a ese."
+
+#~ msgid "TeX"
+#~ msgstr "TeX"
+
+#~ msgid "ZIP archive with sources, needed by the bookbuilder"
+#~ msgstr "Archivo ZIP con fuentes, necesario para el creador de libros"
+
+#~ msgid "relevant"
+#~ msgstr "relevante"
+
+#~ msgid "Text body, before any section"
+#~ msgstr "Texto del cuerpo, antes de cualquier sección"
+
+#~ msgid "Locale"
+#~ msgstr "Local"
+
+#~ msgid "Cover image (optional)"
+#~ msgstr "Imagen de portada (opcional)"
+
+#~ msgid "Missing username or password"
+#~ msgstr "Falta nombre de usuaria/o o contraseña"
+
+#~ msgid "Prepare this text for the archiving"
+#~ msgstr "Prepara este texto para archivar"
+
+#~ msgid "You already proved you are human"
+#~ msgstr "Ya probaste que eres una persona"
+
+#~ msgid "no font embedding"
+#~ msgstr "sin incrustación de tipografía"
+
+#~ msgid ""
+#~ "Directory with templates. Do not set it unless you know what you are doing"
+#~ msgstr ""
+#~ "Directorio con plantillas. No lo uses a menos que sepas lo que estás "
+#~ "haciendo"
+
+#~ msgid ""
+#~ "Number of latest entries to display on the special pages (an integer)"
+#~ msgstr ""
+#~ "Numero de últimas publicaciones para mostrar en las páginas especiales "
+#~ "(un entero)"
+
+#~ msgid "The new password for %1 is:"
+#~ msgstr "La nueva contraseña para %1 es:"
+
+#~ msgid "Add to library"
+#~ msgstr "Agrega a la biblioteca"
+
+#~ msgid "Catalog"
+#~ msgstr "Catálogo"
+
+#~ msgid "Use it in the body as"
+#~ msgstr "Usarlo en el cuerpo como"
+
+#~ msgid "The user will have the same your level of access"
+#~ msgstr "La/el usuaria/o tendrá tu mismo nivel de acceso"
+
+#~ msgid "Displaying"
+#~ msgstr "Mostrando"
+
+#~ msgid "Results"
+#~ msgstr "Resultados"
+
+#~ msgid "Results found"
+#~ msgstr "Resultados encontrados"
+
+#~ msgid "text"
+#~ msgstr "texto"
+
+#~ msgid "SSL chained certertificate path (Nginx)"
+#~ msgstr "Path certificado encadenado SSL (Nginx)"
+
+#~ msgid ""
+#~ "Generate running headings in the document. Beware that\n"
+#~ "        this probably need manual adjustments to the TeX sources for a\n"
+#~ "        satisfying output"
+#~ msgstr ""
+#~ "Generar encabezados en el documento. Ten cuidado\n"
+#~ "        que esto probablemente necesite ajustes manuales en las fuentes\n"
+#~ "        TeX para una salida satisfactoria"
+
+#~ msgid "Please give a name to the collection."
+#~ msgstr "Por favor ponle un nombre a la colección."
+
+#~ msgid ""
+#~ "The name is always required, but used only if there are multiple texts."
+#~ msgstr ""
+#~ "El nombre siempre es obligatorio, pero solo se usa si hay múltiples "
+#~ "textos."
+
+#~ msgid "PDF logo (absolute path or put it in texmf)"
+#~ msgstr "Logo en PDF (path absoluto o ponlo en texmf)"
+
+#~ msgid "Italics, bold, monospace, linebreaks..."
+#~ msgstr "Itálica, negrita, mono espaciada, saltos de línea..."
+
+#~ msgid "Poetry, bibliographies, plays, code"
+#~ msgstr "Poesía, bibliografías, diálogos, código"
+
+#~ msgid "Lists start with a single leading whitespace"
+#~ msgstr "Las listas empiezan con un espacio al inicio de la línea"
+
+#~ msgid "Produce an EPUB instead of a PDF"
+#~ msgstr "Produce un EPUB en vez de un PDF"
+
+#~ msgid "Toggle the table of contents"
+#~ msgstr "Plegar índice de contenidos"
+
+#~ msgid "Pubdate"
+#~ msgstr "Fecha de publicación"
+
+#~ msgid "Full site canonical URL, including protocol"
+#~ msgstr "Dirección URL canónica completa del sitio, incluyendo protocolo"
+
+#~ msgid ""
+#~ "Same as 2up, but each page is rotated by 90 degrees counter-clockwise."
+#~ msgstr ""
+#~ "Lo mismo que 2up, pero cada página se rota en 90 grados en sentido "
+#~ "antihorario."
+
+#~ msgid ""
+#~ "The prefix “r” means logical page disposed upside-down, rotated\n"
+#~ "by 180 degrees."
+#~ msgstr ""
+#~ "El prefijo \"r\" significa que la disposición de la página de arriba\n"
+#~ "a abajo, rotada en 180 grados."
+
+#~ msgid "if applicable"
+#~ msgstr "si es que aplica"
