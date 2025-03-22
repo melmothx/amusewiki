@@ -263,7 +263,10 @@
   </div>
 </div>
 </form>
-
+[% IF bookcover.compiled %]
+  <iframe width="100%" height="900px" src="[% c.uri_for_action('/bookcovers/download', [bookcover.bookcover_id], 'bookcover-' _ bookcover.bookcover_id _ '.pdf') %]">
+  </iframe>
+[% END %]
 <script>
  $(document).ready(function() {
      function compute_total() {
