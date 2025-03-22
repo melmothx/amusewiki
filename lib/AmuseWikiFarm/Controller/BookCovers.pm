@@ -103,9 +103,15 @@ sub edit :Chained('find') :PathPart('edit') :Args(0) {
         my $wd = $bc->working_dir;
         # should always be fine.
         if (-d $wd) {
-            my $fi = 1;
+            my $fi = 0;
             foreach my $up (grep { $_->{type} eq 'file' } @$tokens) {
-                delete $params{$up->{full_name}};
+                $fi++;
+                if (delete $params{$up->{full_name} . "_delete"}) {
+                    $params{$up->{full_name}} = '';
+                }
+                else {
+                    delete $params{$up->{full_name}};
+                }
                 my ($upload) = $c->request->upload($up->{full_name});
                 if ($upload) {
                     my $file = $upload->tempname;
@@ -113,7 +119,7 @@ sub edit :Chained('find') :PathPart('edit') :Args(0) {
                     log_info { "provided $file $mime_type" };
                     if ($mime_type =~ m/(pdf|jpe?g|png)\z/) {
                         my $ext = $1;
-                        my $fname = "f" . $fi++ . "." . $ext;
+                        my $fname = "f" . $fi . "." . $ext;
                         my $target = $wd->child($fname);
                         log_info { "Saving file into $target" };
                         if ($upload->copy_to("$target")) {

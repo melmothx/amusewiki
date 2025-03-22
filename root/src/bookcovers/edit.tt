@@ -246,6 +246,10 @@
             <a href="[% c.uri_for_action('/bookcovers/attached', [ bookcover.bookcover_id, token.token_value ]) %]">
               [% loc('Download') %]
             </a>
+            <label>[% loc('Remove') %]
+              <input type="checkbox" name="[% token.token_name | html %]_delete"
+                     value="1" />
+            </label>
           [% END %]
         </div>
       [% END %]
