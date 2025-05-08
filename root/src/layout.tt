@@ -828,6 +828,23 @@
     </div>
     <script src="[% c.uri_for('/static/js/amw-autosuggest.js') %]"></script>
     <script src="[% c.uri_for('/static/js/amw-navbar.js', { v => 3 }) %]"></script>
+    <script>
+     $(document).ready(function() {
+         var urlregex = /^https?:\/\/\S+$/
+         $('div.caption').each(function() {
+             var el = $(this);
+             var url = el.text();
+             if (urlregex.test(url)) {
+                 console.log("Looks like an URL: " + url);
+                 var img = el.parent().find('img.embedimg')
+                 if (img) {
+                     el.remove();
+                     img.wrap($("<a>").attr('href', url));
+                 }
+             }
+         });
+     });
+    </script>
   </body>
 </html>
 
