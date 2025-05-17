@@ -1969,6 +1969,15 @@ sub mirror_source {
     return;
 }
 
+sub mirror_source_landing_page {
+    my $self = shift;
+    if (my $url = $self->mirror_source) {
+        $url =~ s/\.muse$//;
+        return $url;
+    }
+    return;
+}
+
 sub rename_to {
     my ($self, $uri, $logger, $username) = @_;
     $logger ||= sub {};

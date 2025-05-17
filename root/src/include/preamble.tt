@@ -106,7 +106,7 @@
       [% END %]
     [% END %]
 
-    [% SET text_mirror_source = text.mirror_source %]
+    [% SET text_mirror_source = text.mirror_source_landing_page %]
     [% IF text_mirror_source %]
       <div id="text-mirror-link">
         <strong>[% loc('Mirror of:') %]</strong>
