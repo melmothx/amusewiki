@@ -256,8 +256,7 @@
     </div>
   [% END %]
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" name="update" value="1" class="btn btn-default">Update</button>
+    <div class="col-sm-offset-3 col-sm-9 text-center">
       <button type="submit" name="build" value="1" class="btn btn-default">Build</button>
     </div>
   </div>

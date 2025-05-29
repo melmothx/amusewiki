@@ -346,6 +346,8 @@ diag "Testing CMYK conversion";
     }
     is $found, 0, "Anonymous user can't find any bookcover";
     $amech->get('/bookcovers/create');
+    my $current_path = $amech->uri->path;
+    diag $amech->uri->path;
     $amech->submit_form(with_fields => {
                                         title_muse_str => '<em>Test Title</em> <b>Test Title</b>',
                                         author_muse_str => '<em>Test Author</em> <b>Test Author</b>',
@@ -354,10 +356,9 @@ diag "Testing CMYK conversion";
                                         title => '<em>Test Name</em> <b>Test Name</b>',
                                         isbn_isbn => '<em>Test ISBN</em> <b>Test ISBN</b>',
                                        },
-                        button => 'update',
+                        button => 'build',
                        );
-    diag $amech->uri->path;
-    my $current_path = $amech->uri->path;
+    $amech->get($current_path);
     $amech->content_lacks("Test ISBN");
     foreach my $n (qw/Title Body Comment Name Author/) {
         $amech->content_lacks("<em>Test $n</em> <b>Test $n</b>");
