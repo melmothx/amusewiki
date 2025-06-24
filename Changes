@@ -4,6 +4,16 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.606 2025-06-24
+
+ - Bookcover: bugfix and support image deletion
+ - Bookcover: add preview
+ - Bookcover: remove confusing Update button
+ - Updated i18n: ca and mk
+ - Turn images with link as caption into hyperlink
+ - Mirror source: link the landing page instead of the muse file
+ - Editing: implement footnote analyzer
+
 2.605 2025-03-11
 
  - Add catalan i18n (ca)
