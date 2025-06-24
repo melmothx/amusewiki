@@ -1,0 +1,55 @@
+<div class="center">
+  <div class="page-header">
+    <h1>[% loc('Footnotes Report') %] [% revision.title.uri %]
+      <small>
+        <a href="[% editing_uri %]"><span class="fa fa-arrow-circle-left"></span></a>
+      </small>
+    </h1>
+  </div>
+</div>
+[% IF primary_list.size || secondary_list.size %]
+<table class="table table-striped" >
+  <thead>
+    <tr>
+      <th>[% loc('Body') %]</th>
+      <th>[% loc('Footnote') %]</th>
+    </tr>
+  </thead>
+  <tbody>
+    [% FOREACH row IN primary_list  %]
+      <tr>
+        <td>
+          ...[% row.body.before | html %]
+          [% row.body.fn | html %]
+          [% row.body.after | html %]...
+        </td>
+        <td>
+          ...[% row.footnote.before | html %]
+          [% row.footnote.fn | html %]
+          [% row.footnote.after | html %]...
+        </td>
+      </tr>
+    [% END %]
+    [% IF secondary_list.size %]
+      <tr><td>&nbsp;</td><td></td></tr>
+      [% FOREACH row IN secondary_list  %]
+        <tr>
+          <td>
+            ...[% row.body.before | html %]
+            [% row.body.fn | html %]
+            [% row.body.after | html %]...
+          </td>
+          <td>
+            ...[% row.footnote.before | html %]
+            [% row.footnote.fn | html %]
+            [% row.footnote.after | html %]...
+          </td>
+        </tr>
+      [% END %]
+    [% END %]
+  </tbody>
+</table>
+[% ELSE %]
+<p>[% loc('No footnotes found in the text') %]</p>
+[% END %]
+

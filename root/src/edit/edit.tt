@@ -43,9 +43,15 @@
            title="[% loc('Show preview in other tab') %]">
           <span class="fa fa-arrows-alt"></span>
         </a>
+        <a href="[% footnotes_uri | html %]" target="_blank"
+           title="[% loc('Footnote report in other tab') %]">
+          <span class="pull-right" style="text-decoration: none; padding-left: 20px">
+            [% loc('Footnotes') %]
+            <span class="fa fa-superscript"></span>
+          </span></a>
         <a href="[% diffing_uri | html %]" target="_blank"
            title="[% loc('Show differences in other tab') %]">
-          <span class="pull-right" style="text-decoration: none">
+          <span class="pull-right" style="text-decoration: none; padding-left: 20px">
             [% loc('Changes') %]
             <span class="fa fa-plus"></span>
             <span class="fa fa-minus"></span>

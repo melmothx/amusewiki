@@ -1135,6 +1135,7 @@ lib/AmuseWikiFarm/Schema/ResultSet/User.pm
 lib/AmuseWikiFarm/Schema/ResultSet/WhitelistIp.pm
 lib/AmuseWikiFarm/Utils/Amuse.pm
 lib/AmuseWikiFarm/Utils/CgitSetup.pm
+lib/AmuseWikiFarm/Utils/Footnotes.pm
 lib/AmuseWikiFarm/Utils/Iterator.pm
 lib/AmuseWikiFarm/Utils/Jobber.pm
 lib/AmuseWikiFarm/Utils/LetsEncrypt.pm
@@ -1216,6 +1217,7 @@ root/src/console/translations.tt
 root/src/console/unpublished.tt
 root/src/edit/diff.tt
 root/src/edit/edit.tt
+root/src/edit/footnotes.tt
 root/src/edit/newtext.tt
 root/src/edit/preview.tt
 root/src/edit/revs.tt
@@ -2053,6 +2055,7 @@ t/files/slides.muse
 t/files/upload.html
 t/files/widebanner.png
 t/fontspec-json.t
+t/footnotes.t
 t/french.t
 t/full-blog-mode.t
 t/git-pulling-async.t

@@ -13,6 +13,7 @@ use Text::Wrapper;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse qw/clean_username clean_html/;
 use AmuseWikiFarm::Utils::Paths ();
+use AmuseWikiFarm::Utils::Footnotes;
 use Path::Tiny ();
 
 =head1 NAME
@@ -314,6 +315,7 @@ sub get_revision :Chained('text') :PathPart('') :CaptureArgs(1) {
                   ajax_delete_uri => $c->uri_for_action('/edit/remove_attachment', [@args]),
                   editing_uri => $c->uri_for_action('/edit/edit', [@args]),
                   diffing_uri => $c->uri_for_action('/edit/diff', [@args]),
+                  footnotes_uri => $c->uri_for_action('/edit/footnotes', [@args]),
                   binary_upload_uri => $c->uri_for_action('/edit/upload', [@args]),
                   upload_listing_uri => $c->uri_for_action('/edit/list_uploads', [@args]),
                   preview_uri => $c->uri_for_action('/edit/preview', [@args]),
@@ -710,6 +712,16 @@ sub diff :Chained('get_revision') :PathPart('diff') :Args(0) {
     my ($self, $c) = @_;
     $c->stash->{page_title} =
       $c->loc('Changes for [_1]', $c->stash->{revision}->title->uri);
+}
+
+sub footnotes :Chained('get_revision') :PathPart('footnotes') :Args(0) {
+    my ($self, $c) = @_;
+    my $rev = $c->stash->{revision};
+    $c->stash->{page_title} = $c->loc('Footnote report for [_1]', $rev->title->uri);
+    my $body = $rev->muse_body;
+    my $fn = AmuseWikiFarm::Utils::Footnotes->new(muse_body => $rev->muse_body)->report_as_list;
+    $c->stash->{primary_list} = $fn->{primary};
+    $c->stash->{secondary_list} = $fn->{secondary};
 }
 
 =head2 preview
