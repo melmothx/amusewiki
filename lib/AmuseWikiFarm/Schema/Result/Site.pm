@@ -2924,6 +2924,7 @@ sub _pre_update_db_from_tree {
     foreach my $purge (@{ $todo->{removed} }) {
         if (my $found = $self->find_file_by_path($purge)) {
             $logger->("Removing $purge from database\n");
+            $found->oai_pmh_records->bump_datestamp;
             $found->delete;
         }
         else {

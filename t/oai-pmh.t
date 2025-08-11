@@ -11,7 +11,7 @@ BEGIN {
 
 
 use Data::Dumper;
-use Test::More tests => 235;
+use Test::More tests => 240;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::OAI::PMH;
 use File::Spec::Functions qw/catfile catdir/;
@@ -628,15 +628,47 @@ foreach my $test ({
 ok $site->oai_pmh_records->oldest_record;
 
 sleep 2;
-my $now = DateTime->now;
-$site->oai_pmh_records->create({
-                                datestamp => $now,
-                                identifier => 'testxx',
-                                update_run => $now->epoch,
-                               });
+my $now;
+
+
+{
+    my $muse = path($site->repo_root, qw/t tx testxx.muse/);
+    $muse->parent->mkpath;
+    $muse->spew_utf8(<<"MUSE");
+#title Test XX
+#lang en
+
+[[t-x-1.png]]
+
+Test
+MUSE
+    my $att = path($site->repo_root, qw/t tx t-x-1.png/);
+    path(t => files => 'shot.png')->copy(path($att));
+    $site->update_db_from_tree;
+    while (my $j = $site->jobs->dequeue) {
+        $j->dispatch_job;
+        diag $j->logs;
+    }
+    ok $site->oai_pmh_records->find({ identifier => '/library/testxx' });
+    ok $site->oai_pmh_records->find({ identifier => '/library/t-x-1.png' });
+
+    sleep 2;
+    $att->remove;
+    $muse->remove;
+    # we are going to ask the records since the removal
+    $now = DateTime->now;
+    $site->update_db_from_tree;
+    while (my $j = $site->jobs->dequeue) {
+        $j->dispatch_job;
+        diag $j->logs;
+    }
+    is $site->oai_pmh_records->find({ identifier => '/library/testxx' })->deleted, 1;
+    is $site->oai_pmh_records->find({ identifier => '/library/t-x-1.png' })->deleted, 1;
+    sleep 2;
+}
 
 foreach my $prefix (qw/oai_dc marc21/){
-    $mech->get_ok(qq{/oai-pmh?verb=GetRecord&identifier=oai%3A0oai0.amusewiki.org%3Atestxx&metadataPrefix=$prefix});
+    $mech->get_ok(qq{/oai-pmh?verb=GetRecord&identifier=oai%3A0oai0.amusewiki.org%3A%2Flibrary%2Ftestxx&metadataPrefix=$prefix});
     diag $mech->content;
     if ($prefix eq 'oai_dc') {
         $mech->content_contains('<dc:title>Removed entry</dc:title>');
@@ -657,14 +689,15 @@ foreach my $prefix (qw/oai_dc marc21/){
     while ($xml =~ m{<identifier>(.*)</identifier>}g) {
         push @identifiers, $1;
     }
-    is_deeply(\@identifiers, [ 'oai:0oai0.amusewiki.org:testxx' ]) or diag $mech->content;
+    ok scalar(grep { $_ eq 'oai:0oai0.amusewiki.org:/library/testxx', } @identifiers);
+    ok scalar(grep { $_ eq 'oai:0oai0.amusewiki.org:/library/t-x-1.png', } @identifiers);
+    diag Dumper(\@identifiers);
 }
 
-is $site->oai_pmh_records->find({ identifier => 'testxx' })->deleted, 0;
 is $site->oai_pmh_records->find({ identifier => '/library/to-test.a4.pdf' })->deleted, 1;
 sleep 1;
 path($site->repo_root, qw/t tt to-test.a4.pdf/)->spew_raw("test");
 $oai_pmh->update_site_records;
-is $site->oai_pmh_records->find({ identifier => 'testxx' })->deleted, 1;
+is $site->oai_pmh_records->find({ identifier => '/library/testxx' })->deleted, 1;
 is $site->oai_pmh_records->find({ identifier => '/library/to-test.a4.pdf' })->deleted, 0;
 
