@@ -6,7 +6,7 @@ BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
 
-sub index :Chained('/site_robot_index') :PathPart('translations') :Args {
+sub index :Chained('/site_robot_index') :PathPart('localized') :Args {
     my ($self, $c, $lang) = @_;
     my $site = $c->stash->{site};
     my @languages = grep { $_ and /\A[a-z]+\z/ } ($site->locale, $c->stash->{current_locale_code}, $lang);
