@@ -1,0 +1,11 @@
+<div class="page-header">
+  <h1>
+    [% site.sitename | html  %]
+    [% IF site.siteslogan %]
+    <br>
+    <small>[% site.siteslogan | html %]</small>
+    [% END %]
+  </h1>
+</div>
+[% INCLUDE 'include/posts.tt' %]
+

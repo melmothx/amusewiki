@@ -639,6 +639,14 @@ sub without_index_uri {
                          });
 }
 
+sub with_uid {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({
+                          "$me.uid" => { '!=' => '' }
+                         });
+}
+
 sub no_uid_or_localized {
     my ($self, $lang) = @_;
     my $me = $self->current_source_alias;
