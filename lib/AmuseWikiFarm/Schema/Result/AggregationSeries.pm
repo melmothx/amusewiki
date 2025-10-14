@@ -208,6 +208,7 @@ __PACKAGE__->many_to_many("nodes", "node_aggregation_series", "node");
 
 sub bump_oai_pmh_records {
     my $self = shift;
+    $self->bump_datestamp;
     foreach my $agg ($self->aggregations) {
         $agg->bump_oai_pmh_records;
     }
@@ -220,6 +221,11 @@ sub full_uri {
 sub final_name {
     shift->aggregation_series_name;
 }
+
+sub bump_datestamp {
+    shift->oai_pmh_records->bump_datestamp;
+}
+
 
 __PACKAGE__->meta->make_immutable;
 1;

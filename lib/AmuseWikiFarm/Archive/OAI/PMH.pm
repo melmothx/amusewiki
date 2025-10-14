@@ -203,6 +203,39 @@ sub update_site_records {
         }
     }
     $self->logger->($timing->() . "Updated $records_updated records\n");
+
+    # do both /series/ and /aggregation/
+    foreach my $agg ($site->aggregations, $site->aggregation_series) {
+        if (my $full_uri = $agg->full_uri) {
+            if (my $agg_pmh_rec = $agg->oai_pmh_records->first) {
+                delete $all{$agg_pmh_rec->full_uri};
+            }
+            else {
+                Dlog_debug { "Creating $full_uri" };
+                my $now = time();
+                my $rec = $agg->oai_pmh_records->create({
+                                                         site_id => $site->id,
+                                                         identifier => $full_uri,
+                                                         metadata_format => 'text/html',
+                                                         metadata_format_description => "Aggregation Landing Page",
+                                                         datestamp => DateTime->from_epoch(epoch => $now,
+                                                                                           time_zone => 'UTC'),
+                                                         update_run => $now,
+                                                         deleted => 0,
+                                                        });
+                my @sets = ($webset);
+                foreach my $node ($agg->nodes) {
+                    Dlog_debug { "Creating set for " . $node->oai_pmh_set_spec };
+                    push @sets, $site->oai_pmh_sets->update_or_create({
+                                                                       set_spec => $node->oai_pmh_set_spec,
+                                                                       set_name => $node->canonical_title,
+                                                                      },
+                                                                      { key => 'set_spec_site_id_unique' });
+                }
+                $rec->set_oai_pmh_sets(\@sets);
+            }
+        }
+    }
     if (my @removals = map { $_->{oai_pmh_record_id} } values %all) {
         Dlog_info { "Marking those records as removed: $_" } \@removals;
         $site->oai_pmh_records->set_deleted_flag_on_obsolete_records(\@removals);
