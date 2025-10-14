@@ -74,6 +74,18 @@ __PACKAGE__->table("oai_pmh_record");
   is_foreign_key: 1
   is_nullable: 1
 
+=head2 aggregation_series_id
+
+  data_type: 'integer'
+  is_foreign_key: 1
+  is_nullable: 1
+
+=head2 aggregation_id
+
+  data_type: 'integer'
+  is_foreign_key: 1
+  is_nullable: 1
+
 =head2 custom_formats_id
 
   data_type: 'integer'
@@ -126,6 +138,10 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "attachment_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
+  "aggregation_series_id",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
+  "aggregation_id",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "custom_formats_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "metadata_type",
@@ -169,6 +185,46 @@ __PACKAGE__->set_primary_key("oai_pmh_record_id");
 __PACKAGE__->add_unique_constraint("identifier_site_id_unique", ["identifier", "site_id"]);
 
 =head1 RELATIONS
+
+=head2 aggregation
+
+Type: belongs_to
+
+Related object: L<AmuseWikiFarm::Schema::Result::Aggregation>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "aggregation",
+  "AmuseWikiFarm::Schema::Result::Aggregation",
+  { aggregation_id => "aggregation_id" },
+  {
+    is_deferrable => 0,
+    join_type     => "LEFT",
+    on_delete     => "SET NULL",
+    on_update     => "CASCADE",
+  },
+);
+
+=head2 aggregation_series
+
+Type: belongs_to
+
+Related object: L<AmuseWikiFarm::Schema::Result::AggregationSeries>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "aggregation_series",
+  "AmuseWikiFarm::Schema::Result::AggregationSeries",
+  { aggregation_series_id => "aggregation_series_id" },
+  {
+    is_deferrable => 0,
+    join_type     => "LEFT",
+    on_delete     => "SET NULL",
+    on_update     => "CASCADE",
+  },
+);
 
 =head2 attachment
 
@@ -271,8 +327,8 @@ Composing rels: L</oai_pmh_record_sets> -> oai_pmh_set
 __PACKAGE__->many_to_many("oai_pmh_sets", "oai_pmh_record_sets", "oai_pmh_set");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-09-27 10:47:43
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Xmhs3aN3f4dXdlIaIovXYA
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2025-10-14 10:56:53
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Cp9Nn1vN5pIRt/Cw9DyBdw
 
 __PACKAGE__->add_columns('+datestamp' => { timezone => 'UTC' });
 

@@ -706,6 +706,50 @@ CREATE TABLE mirror_info (
 CREATE UNIQUE INDEX unique_mirror_info_title_id ON mirror_info(title_id);
 CREATE UNIQUE INDEX unique_mirror_info_attachment_id ON mirror_info(attachment_id);
 
+CREATE TABLE aggregation_series (
+    aggregation_series_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    site_id VARCHAR(16) NOT NULL REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    aggregation_series_uri VARCHAR(255) NOT NULL,
+    aggregation_series_name VARCHAR(255) NOT NULL,
+    comment_muse TEXT,
+    comment_html TEXT,
+    publisher VARCHAR(255),
+    publication_place VARCHAR(255)
+);
+CREATE UNIQUE INDEX unique_aggregation_series_uri_site_id ON aggregation_series (aggregation_series_uri, site_id);
+
+CREATE TABLE aggregation (
+       aggregation_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       aggregation_series_id INTEGER NULL REFERENCES aggregation_series(aggregation_series_id)
+                             ON DELETE SET NULL ON UPDATE CASCADE,
+       aggregation_uri VARCHAR(255) NOT NULL,  -- fe-15
+       aggregation_name VARCHAR(255) NULL, -- Name if there is no aggregation series
+
+       -- dates. As a string and broken down in components. Primary
+       -- sorting before the issue_order. All can be null.
+       publication_date VARCHAR(255),
+       publication_date_year INTEGER,
+       publication_date_month INTEGER,
+       publication_date_day INTEGER,
+
+       -- inside the same series, as a string and as an integer (#15 and 15)
+       issue VARCHAR(255),
+       sorting_pos INTEGER NOT NULL DEFAULT 0,
+
+       -- if available, takes precedence over series.publication_place and  publisher
+       publication_place VARCHAR(255),
+       publisher VARCHAR(255),
+
+       comment_muse TEXT,
+       comment_html TEXT,
+
+       isbn VARCHAR(32),
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE UNIQUE INDEX unique_aggregation ON aggregation (aggregation_uri, site_id);
+
 CREATE TABLE oai_pmh_record (
        oai_pmh_record_id INTEGER PRIMARY KEY AUTOINCREMENT,
 
@@ -722,6 +766,13 @@ CREATE TABLE oai_pmh_record (
                              ON DELETE SET NULL ON UPDATE CASCADE,
        attachment_id INTEGER NULL REFERENCES attachment(id)
                              ON DELETE SET NULL ON UPDATE CASCADE,
+
+       aggregation_series_id INTEGER NULL REFERENCES aggregation_series(aggregation_series_id)
+                             ON DELETE SET NULL ON UPDATE CASCADE,
+
+       aggregation_id INTEGER NULL REFERENCES aggregation(aggregation_id)
+                             ON DELETE SET NULL ON UPDATE CASCADE,
+
        custom_formats_id INTEGER NULL REFERENCES custom_formats(custom_formats_id)
                                  ON DELETE SET NULL ON UPDATE CASCADE,
 
@@ -779,49 +830,6 @@ CREATE TABLE title_annotation (
 
 CREATE UNIQUE INDEX unique_title_annotation_key ON title_annotation (annotation_id, title_id);
 
-CREATE TABLE aggregation_series (
-    aggregation_series_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    site_id VARCHAR(16) NOT NULL REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    aggregation_series_uri VARCHAR(255) NOT NULL,
-    aggregation_series_name VARCHAR(255) NOT NULL,
-    comment_muse TEXT,
-    comment_html TEXT,
-    publisher VARCHAR(255),
-    publication_place VARCHAR(255)
-);
-CREATE UNIQUE INDEX unique_aggregation_series_uri_site_id ON aggregation_series (aggregation_series_uri, site_id);
-
-CREATE TABLE aggregation (
-       aggregation_id INTEGER PRIMARY KEY AUTOINCREMENT,
-       aggregation_series_id INTEGER NULL REFERENCES aggregation_series(aggregation_series_id)
-                             ON DELETE SET NULL ON UPDATE CASCADE,
-       aggregation_uri VARCHAR(255) NOT NULL,  -- fe-15
-       aggregation_name VARCHAR(255) NULL, -- Name if there is no aggregation series
-
-       -- dates. As a string and broken down in components. Primary
-       -- sorting before the issue_order. All can be null.
-       publication_date VARCHAR(255),
-       publication_date_year INTEGER,
-       publication_date_month INTEGER,
-       publication_date_day INTEGER,
-
-       -- inside the same series, as a string and as an integer (#15 and 15)
-       issue VARCHAR(255),
-       sorting_pos INTEGER NOT NULL DEFAULT 0,
-
-       -- if available, takes precedence over series.publication_place and  publisher
-       publication_place VARCHAR(255),
-       publisher VARCHAR(255),
-
-       comment_muse TEXT,
-       comment_html TEXT,
-
-       isbn VARCHAR(32),
-       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
-                          ON DELETE CASCADE ON UPDATE CASCADE
-);
-
-CREATE UNIQUE INDEX unique_aggregation ON aggregation (aggregation_uri, site_id);
 
 CREATE TABLE aggregation_title (
     aggregation_id INTEGER NOT NULL REFERENCES aggregation(aggregation_id) ON DELETE CASCADE ON UPDATE CASCADE,

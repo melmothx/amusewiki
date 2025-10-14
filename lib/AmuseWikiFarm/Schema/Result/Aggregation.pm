@@ -265,6 +265,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 oai_pmh_records
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::OaiPmhRecord>
+
+=cut
+
+__PACKAGE__->has_many(
+  "oai_pmh_records",
+  "AmuseWikiFarm::Schema::Result::OaiPmhRecord",
+  { "foreign.aggregation_id" => "self.aggregation_id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 site
 
 Type: belongs_to
@@ -281,8 +296,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-02-04 10:21:08
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:u64oudOvWQ0hvzb8HQbEKA
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2025-10-14 10:56:53
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:c6N+vPUtpw1Ag5G0IO29Kw
 
 
 __PACKAGE__->many_to_many("nodes", "node_aggregations", "node");
