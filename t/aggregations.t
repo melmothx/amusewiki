@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 205;
+use Test::More tests => 215;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -153,23 +153,246 @@ while (my $j = $site->jobs->dequeue) {
     diag $j->logs;
 }
 
-
 foreach my $rec ($site->oai_pmh_records) {
     ok $rec->marc21_record;
 }
+
+{
+    my $agg = $site->aggregations->find({ aggregation_uri => 'fmx-2' });
+    $agg->update({
+                  comment_html => "test",
+                  publication_date => '2025',
+                  isbn => '999999999999',
+                 });
+    is_deeply $agg->dublin_core_entry, {
+                                        'description' => [
+                                                          'test'
+                                                         ],
+                                        'relation' => [
+                                                       '/series/fmx',
+                                                       '/library/to-test-three',
+                                                       '/library/to-test-two',
+                                                      ],
+                                        'title' => [
+                                                    'For Marco #2'
+                                                   ],
+                                        'creator' => [
+                                                      'Author three',
+                                                      'Author two',
+                                                      'Authors three',
+                                                      'Authors two',
+                                                      'Pinco, Pallino'
+                                                     ],
+                                        'language' => [
+                                                       'en'
+                                                      ],
+                                        'date' => [
+                                                   '2025'
+                                                  ],
+                                        'subject' => [
+                                                      'Topic three',
+                                                      'Topic two'
+                                                     ],
+                                        'publisher' => [
+                                                        'Nobody'
+                                                       ]
+
+                                       };
+    my $a_pmh_rec = $agg->oai_pmh_records->first;
+    is_deeply $a_pmh_rec->dublin_core_record,
+      [
+       [
+        'dc:title',
+        'For Marco #2'
+       ],
+       [
+        'dc:creator',
+        'Author three'
+       ],
+       [
+        'dc:creator',
+        'Author two'
+       ],
+       [
+        'dc:creator',
+        'Authors three'
+       ],
+       [
+        'dc:creator',
+        'Authors two'
+       ],
+       [
+        'dc:creator',
+        'Pinco, Pallino'
+       ],
+       [
+        'dc:subject',
+        'Topic three'
+       ],
+       [
+        'dc:subject',
+        'Topic two'
+       ],
+       [
+        'dc:description',
+        'test'
+       ],
+       [
+        'dc:description',
+        'Aggregation Landing Page'
+       ],
+       [
+        'dc:publisher',
+        'Nobody'
+       ],
+       [
+        'dc:date',
+        '2025'
+       ],
+       [
+        'dc:format',
+        'text/html'
+       ],
+       [
+        'dc:identifier',
+        'https://0aggregation0.amusewiki.org/aggregation/fmx-2'
+       ],
+       [
+        'dc:identifier',
+        '999999999999'
+       ],
+       [
+        'dc:language',
+        'en'
+       ],
+       [
+        'dc:relation',
+        'https://0aggregation0.amusewiki.org/series/fmx'
+       ],
+       [
+        'dc:relation',
+        'https://0aggregation0.amusewiki.org/library/to-test-three'
+       ],
+       [
+        'dc:relation',
+        'https://0aggregation0.amusewiki.org/library/to-test-two'
+       ]
+      ];
+    my $series = $site->aggregation_series->find({ aggregation_series_uri => 'fmx' });
+    is_deeply $series->dublin_core_entry, {
+                                           'relation' => [
+                                                          '/aggregation/fmx-1',
+                                                          '/aggregation/fmx-2'
+                                                         ],
+                                           'title' => [
+                                                       'For Marco'
+                                                      ],
+                                           'description' => [
+                                                             "\n<p>\nThis is <em>valid</em>\n</p>\n",
+                                                            ],
+                                           'date' => [
+                                                      '2025'
+                                                     ],
+                                           'publisher' => [
+                                                           'Publisher'
+                                                          ]
+                                          };
+    my $s_pmh_rec = $series->oai_pmh_records->first;
+    is_deeply $s_pmh_rec->dublin_core_record,
+       [
+        [
+         'dc:title',
+         'For Marco'
+        ],
+        [
+         'dc:description',
+         'This is valid'
+        ],
+        [
+         'dc:description',
+         'Aggregation Landing Page'
+        ],
+        [
+         'dc:publisher',
+         'Publisher'
+        ],
+        [
+         'dc:date',
+         '2025'
+        ],
+        [
+         'dc:format',
+         'text/html'
+        ],
+        [
+         'dc:identifier',
+         'https://0aggregation0.amusewiki.org/series/fmx'
+        ],
+        [
+         'dc:relation',
+         'https://0aggregation0.amusewiki.org/aggregation/fmx-1'
+        ],
+        [
+         'dc:relation',
+         'https://0aggregation0.amusewiki.org/aggregation/fmx-2'
+        ]
+       ];
+}
+
 
 $mech->get_ok('/oai-pmh?verb=ListRecords&metadataPrefix=marc21');
 $mech->content_like(qr{
 \s+<datafield\s+tag="773"\s+ind1="\s+"\s+ind2="\s+">
 \s+<subfield\s+code="t">For\s+Marco</subfield>
 \s+<subfield\s+code="g">\#1</subfield>
-\s+<subfield\s+code="o">fmx-1</subfield>
+\s+<subfield\s+code="o">oai:0aggregation0.amusewiki.org:/aggregation/fmx-1</subfield>
 \s+<subfield\s+code="6">https://0aggregation0.amusewiki.org/aggregation/fmx-1</subfield>
 \s+<subfield\s+code="z">97899999999999</subfield>
 \s+<subfield\s+code="d">Nowhere\sPublisher</subfield>
 \s+<subfield\s+code="q">1</subfield>
 \s+</datafield>
 }sx) or die $mech->content;
+
+$mech->content_contains(qq{
+          <datafield tag="773" ind1=" " ind2=" ">
+            <subfield code="t">For Marco</subfield>
+            <subfield code="o">oai:0aggregation0.amusewiki.org:/series/fmx</subfield>
+            <subfield code="6">https://0aggregation0.amusewiki.org/series/fmx</subfield>
+            <subfield code="d">Place Publisher 2025</subfield>
+            <subfield code="q">1</subfield>
+          </datafield>
+          <datafield tag="774" ind1=" " ind2=" ">
+            <subfield code="t">My author one - Title one</subfield>
+            <subfield code="o">oai:0aggregation0.amusewiki.org:/library/to-test-one</subfield>
+            <subfield code="6">https://0aggregation0.amusewiki.org/library/to-test-one</subfield>
+            <subfield code="8">1</subfield>
+          </datafield>
+}, "Aggregation has constituent and host");
+
+
+$mech->content_contains(qq{
+          <datafield tag="520" ind1=" " ind2=" ">
+            <subfield code="a">This is valid</subfield>
+          </datafield>
+          <datafield tag="774" ind1=" " ind2=" ">
+            <subfield code="t">For Marco #1</subfield>
+            <subfield code="o">oai:0aggregation0.amusewiki.org:/aggregation/fmx-1</subfield>
+            <subfield code="6">https://0aggregation0.amusewiki.org/aggregation/fmx-1</subfield>
+            <subfield code="z">97899999999999</subfield>
+            <subfield code="d">Nowhere Publisher</subfield>
+            <subfield code="8">1</subfield>
+          </datafield>
+          <datafield tag="774" ind1=" " ind2=" ">
+            <subfield code="t">For Marco #2</subfield>
+            <subfield code="o">oai:0aggregation0.amusewiki.org:/aggregation/fmx-2</subfield>
+            <subfield code="6">https://0aggregation0.amusewiki.org/aggregation/fmx-2</subfield>
+            <subfield code="z">999999999999</subfield>
+            <subfield code="d">Place Nobody 2025</subfield>
+            <subfield code="8">2</subfield>
+          </datafield>
+}, "Series has constituents");
+
+
 
 $mech->get_ok('/aggregation/fmx-1?bare=1') or die;
 $mech->content_like(qr{Title one.*Title two.*Title three}s) or die $mech->content;

@@ -226,6 +226,47 @@ sub bump_datestamp {
     shift->oai_pmh_records->bump_datestamp;
 }
 
+sub publication_years {
+    my $self = shift;
+    my @issues = $self->aggregations;
+    my %udates;
+    foreach my $i (@issues) {
+        foreach my $date (grep { $_ } ($i->publication_date, $i->publication_date_year)) {
+            if ($date =~ m/([0-9]{4})/) {
+                $udates{$date}++;
+            }
+        }
+    }
+    return [ sort keys %udates ];
+}
+
+sub publication_date_range {
+    my $self = shift;
+    my @years = @{ $self->publication_years };
+    if (@years > 1) {
+        @years = ($years[0], $years[-1]);
+    }
+    return join('-', @years);
+}
+
+sub place_publisher_date {
+    my $self = shift;
+    return join(' ', grep { $_ } ($self->publication_place, $self->publisher, $self->publication_date_range));
+}
+
+
+sub dublin_core_entry {
+    my $self = shift;
+    my @issues = $self->aggregations;
+    my $data = {
+                title => [ grep { $_ } $self->aggregation_series_name ],
+                description => [ grep { $_ } $self->comment_html ],
+                publisher => [ grep { $_ } $self->publisher ],
+                relation => [ map { $_->full_uri } @issues ],
+                date => $self->publication_years,
+               };
+    return $data;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;
