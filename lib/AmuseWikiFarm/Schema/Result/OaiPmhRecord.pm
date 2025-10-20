@@ -649,9 +649,6 @@ sub dublin_core_record {
     my $data = $obj->dublin_core_entry;
     my $base_url = $self->site->canonical_url;
     $data->{identifier} = [ $base_url . $self->identifier ];
-    if ($obj->can('isbn')) {
-        push @{ $data->{identifier} }, $obj->isbn;
-    }
     $data->{format} = $self->metadata_format;
     $data->{type} = $self->metadata_type;
     # It should be always there at this point.
@@ -668,6 +665,9 @@ sub dublin_core_record {
                 push @{$data->{description}}, $ann->annotation->label . ": " . $ann->annotation_value;
             }
         }
+    }
+    if ($obj->can('isbn')) {
+        push @{ $data->{identifier} }, $obj->isbn;
     }
     # this is the parent.
     $data->{relation} = [ map { $base_url . $_ } @{$data->{relation}} ];
