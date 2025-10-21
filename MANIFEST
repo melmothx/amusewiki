@@ -176,6 +176,8 @@ dbicdh/_source/deploy/85/001-auto-__VERSION.yml
 dbicdh/_source/deploy/85/001-auto.yml
 dbicdh/_source/deploy/86/001-auto-__VERSION.yml
 dbicdh/_source/deploy/86/001-auto.yml
+dbicdh/_source/deploy/87/001-auto-__VERSION.yml
+dbicdh/_source/deploy/87/001-auto.yml
 dbicdh/_source/deploy/9/001-auto-__VERSION.yml
 dbicdh/_source/deploy/9/001-auto.yml
 dbicdh/MySQL/deploy/10/001-auto-__VERSION.sql
@@ -346,6 +348,8 @@ dbicdh/MySQL/deploy/85/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/85/001-auto.sql
 dbicdh/MySQL/deploy/86/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/86/001-auto.sql
+dbicdh/MySQL/deploy/87/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/87/001-auto.sql
 dbicdh/MySQL/deploy/9/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/9/001-auto.sql
 dbicdh/MySQL/upgrade/10-11/001-auto.sql
@@ -431,6 +435,7 @@ dbicdh/MySQL/upgrade/82-83/001-auto.sql
 dbicdh/MySQL/upgrade/83-84/001-auto.sql
 dbicdh/MySQL/upgrade/84-85/001-auto.sql
 dbicdh/MySQL/upgrade/85-86/001-auto.sql
+dbicdh/MySQL/upgrade/86-87/001-auto.sql
 dbicdh/MySQL/upgrade/9-10/001-auto.sql
 dbicdh/PostgreSQL/deploy/10/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/10/001-auto.sql
@@ -600,6 +605,8 @@ dbicdh/PostgreSQL/deploy/85/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/85/001-auto.sql
 dbicdh/PostgreSQL/deploy/86/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/86/001-auto.sql
+dbicdh/PostgreSQL/deploy/87/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/87/001-auto.sql
 dbicdh/PostgreSQL/deploy/9/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/9/001-auto.sql
 dbicdh/PostgreSQL/upgrade/10-11/001-auto.sql
@@ -685,6 +692,7 @@ dbicdh/PostgreSQL/upgrade/82-83/001-auto.sql
 dbicdh/PostgreSQL/upgrade/83-84/001-auto.sql
 dbicdh/PostgreSQL/upgrade/84-85/001-auto.sql
 dbicdh/PostgreSQL/upgrade/85-86/001-auto.sql
+dbicdh/PostgreSQL/upgrade/86-87/001-auto.sql
 dbicdh/PostgreSQL/upgrade/9-10/001-auto.sql
 dbicdh/SQLite/deploy/10/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/10/001-auto.sql
@@ -854,6 +862,8 @@ dbicdh/SQLite/deploy/85/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/85/001-auto.sql
 dbicdh/SQLite/deploy/86/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/86/001-auto.sql
+dbicdh/SQLite/deploy/87/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/87/001-auto.sql
 dbicdh/SQLite/deploy/9/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/9/001-auto.sql
 dbicdh/SQLite/upgrade/10-11/001-auto.sql
@@ -939,6 +949,7 @@ dbicdh/SQLite/upgrade/82-83/001-auto.sql
 dbicdh/SQLite/upgrade/83-84/001-auto.sql
 dbicdh/SQLite/upgrade/84-85/001-auto.sql
 dbicdh/SQLite/upgrade/85-86/001-auto.sql
+dbicdh/SQLite/upgrade/86-87/001-auto.sql
 dbicdh/SQLite/upgrade/9-10/001-auto.sql
 lib/AmuseWikiFarm.pm
 lib/AmuseWikiFarm/Archive/BookBuilder.pm
@@ -987,6 +998,7 @@ lib/AmuseWikiFarm/Controller/SiteFiles.pm
 lib/AmuseWikiFarm/Controller/Special.pm
 lib/AmuseWikiFarm/Controller/Stats.pm
 lib/AmuseWikiFarm/Controller/Tasks.pm
+lib/AmuseWikiFarm/Controller/Translations.pm
 lib/AmuseWikiFarm/Controller/Uploads.pm
 lib/AmuseWikiFarm/Controller/User.pm
 lib/AmuseWikiFarm/Controller/Utils.pm
@@ -1278,6 +1290,7 @@ root/src/tasks/display.tt
 root/src/tasks/rebuild.tt
 root/src/tasks/show_bulk_job.tt
 root/src/text.tt
+root/src/translations/index.tt
 root/src/user/create.tt
 root/src/user/edit.tt
 root/src/user/edit_options.tt
