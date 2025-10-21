@@ -74,6 +74,18 @@ __PACKAGE__->table("oai_pmh_record");
   is_foreign_key: 1
   is_nullable: 1
 
+=head2 aggregation_series_id
+
+  data_type: 'integer'
+  is_foreign_key: 1
+  is_nullable: 1
+
+=head2 aggregation_id
+
+  data_type: 'integer'
+  is_foreign_key: 1
+  is_nullable: 1
+
 =head2 custom_formats_id
 
   data_type: 'integer'
@@ -126,6 +138,10 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "attachment_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
+  "aggregation_series_id",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
+  "aggregation_id",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "custom_formats_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "metadata_type",
@@ -169,6 +185,46 @@ __PACKAGE__->set_primary_key("oai_pmh_record_id");
 __PACKAGE__->add_unique_constraint("identifier_site_id_unique", ["identifier", "site_id"]);
 
 =head1 RELATIONS
+
+=head2 aggregation
+
+Type: belongs_to
+
+Related object: L<AmuseWikiFarm::Schema::Result::Aggregation>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "aggregation",
+  "AmuseWikiFarm::Schema::Result::Aggregation",
+  { aggregation_id => "aggregation_id" },
+  {
+    is_deferrable => 0,
+    join_type     => "LEFT",
+    on_delete     => "SET NULL",
+    on_update     => "CASCADE",
+  },
+);
+
+=head2 aggregation_series
+
+Type: belongs_to
+
+Related object: L<AmuseWikiFarm::Schema::Result::AggregationSeries>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "aggregation_series",
+  "AmuseWikiFarm::Schema::Result::AggregationSeries",
+  { aggregation_series_id => "aggregation_series_id" },
+  {
+    is_deferrable => 0,
+    join_type     => "LEFT",
+    on_delete     => "SET NULL",
+    on_update     => "CASCADE",
+  },
+);
 
 =head2 attachment
 
@@ -271,8 +327,8 @@ Composing rels: L</oai_pmh_record_sets> -> oai_pmh_set
 __PACKAGE__->many_to_many("oai_pmh_sets", "oai_pmh_record_sets", "oai_pmh_set");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-09-27 10:47:43
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Xmhs3aN3f4dXdlIaIovXYA
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2025-10-14 10:56:53
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Cp9Nn1vN5pIRt/Cw9DyBdw
 
 __PACKAGE__->add_columns('+datestamp' => { timezone => 'UTC' });
 
@@ -283,6 +339,11 @@ sub zulu_datestamp {
     shift->datestamp->iso8601 . 'Z'
 }
 
+sub get_object {
+    my $self = shift;
+    return $self->title || $self->attachment || $self->aggregation || $self->aggregation_series;
+}
+
 sub as_xml_structure {
     my ($self, $prefix, $opts) = @_;
     my @sets;
@@ -290,16 +351,16 @@ sub as_xml_structure {
         push @sets, [ setSpec => $set->set_spec ];
     }
     my $deleted = $self->deleted;
-    unless ($self->title || $self->attachment) {
+    unless ($self->get_object) {
         $deleted = 1;
     }
     # optimization, so we don't need the site object in the loop. Meh for get_record.
-    my $base_id = $opts->{site_identifier} || $self->site->oai_pmh_base_identifier;
+    my $site_identifier = $opts->{site_identifier} || $self->site->oai_pmh_base_identifier;
 
     my @out = ([ header => [ $deleted ? (status => 'deleted') : () ], # header
                  # children
                  [
-                  [ identifier => $base_id . $self->identifier ],
+                  [ identifier => $site_identifier . $self->identifier ],
                   [ datestamp => $self->zulu_datestamp ],
                   @sets
                  ]
@@ -331,7 +392,7 @@ sub as_xml_structure {
                                  'xmlns' => "http://www.loc.gov/MARC21/slim",
                                  'xsi:schemaLocation' => $schema_location,
                                 ],
-                      $self->marc21_record,
+                      $self->marc21_record($opts),
                      ];
         push @out, [ metadata => [ $marc21 ] ];
     }
@@ -339,10 +400,9 @@ sub as_xml_structure {
 }
 
 sub marc21_record {
-    my $self = shift;
-    my $title = $self->title;
-    my $attachment = $self->attachment;
-    my $obj = $title || $attachment;
+    my ($self, $opts) = @_;
+    my $obj = $self->get_object;
+    my $site_identifier = $opts->{site_identifier} || $self->site->oai_pmh_base_identifier;
     unless ($obj) {
         return [
                 [
@@ -379,7 +439,7 @@ sub marc21_record {
         }
     }
 
-    if ($title) {
+    if (my $title = $self->title) {
         $rec{title} = [ $title->title ];
         $rec{subtitle} = [ $title->subtitle ];
         $rec{sku} = [ $title->sku ];
@@ -423,12 +483,10 @@ sub marc21_record {
             push @aggregations, {
                                  't' => $name,
                                  'g' => $agg->{issue},
-                                 'o' => $agg->{aggregation_uri},
-                                 '6' => $base_url . '/aggregation/' . $agg->{aggregation_uri},
+                                 'o' => $site_identifier . $agg->{full_uri},
+                                 '6' => $base_url . $agg->{full_uri},
                                  'z' => $agg->{isbn},
-                                 'd' => join(' ', grep { $_ } map { $agg->{$_} } qw/publication_place
-                                                                                    publication_date
-                                                                                    publisher/),
+                                 'd' => $agg->{aggregation_place_publisher_date},
                                  'q' => $agg->{title_sorting_pos},
                                 };
         }
@@ -436,6 +494,54 @@ sub marc21_record {
             $rec{aggregation} = \@aggregations;
         }
     }
+    elsif (my $series = $self->aggregation_series) {
+        $rec{pub_place} = [ $series->publication_place ];
+        my @aggregated;
+        foreach my $agg (map { $_->final_data } $series->aggregations->sorted->all) {
+            push @aggregated, {
+                               't' => $agg->{aggregation_name},
+                               'o' => $site_identifier . $agg->{full_uri},
+                               '6' => $base_url . $agg->{full_uri},
+                               'z' => $agg->{isbn},
+                               '8' => $agg->{sorting_pos},
+                               'd' => $agg->{aggregation_place_publisher_date},
+                              };
+        }
+        $rec{aggregated} = \@aggregated;
+    }
+    elsif (my $agg = $self->aggregation) {
+        my $data = $agg->final_data;
+        $rec{pub_place} = [ $data->{publication_place} ];
+        $rec{isbn} = [ $agg->isbn ];
+        # here we have both aggregated (titles) and aggregations (series)
+        my (@aggregated, @aggregations);
+        if (my $serie = $agg->aggregation_series) {
+            my $full_uri = $serie->full_uri;
+            # serie
+            push @aggregations, {
+                                 't' => $serie->final_name,
+                                 'o' => $site_identifier . $full_uri,
+                                 '6' => $base_url . $full_uri,
+                                 'd' => $serie->place_publisher_date,
+                                 'q' => $agg->sorting_pos,
+                                };
+        }
+        my $title_pos = 0;
+        foreach my $title ($agg->published_titles) {
+            my $full_uri = $title->full_uri;
+            push @aggregated, {
+                               't' => $title->author_title,
+                               'o' => $site_identifier . $full_uri,
+                               '6' => $base_url . $full_uri,
+                               'z' => $title->isbn,
+                               '8' => ++$title_pos,
+                               'd' => join(' ', grep { $_ } $title->publisher, $title->date_year),
+                              };
+        }
+        $rec{aggregated} = \@aggregated;
+        $rec{aggregation} = \@aggregations;
+    }
+
     my $type = $rec{type}[0] || '';
     my @out;
     my %leaders = (
@@ -466,12 +572,13 @@ sub marc21_record {
                       # [ creator     => '720', ' ', ' ', qw/a e/],
                       [ creator     => '100', ' ', ' ', qw/a e/],
                       # date needs refinements
+                      [ pub_place   => '260', ' ', ' ', 'a' ],
+                      [ publisher   => '260', ' ', ' ', 'b' ],
                       [ date        => '260', ' ', ' ', 'c' ],
                       [ date        => '363', ' ', ' ', 'i' ],
                       [ description => '520', ' ', ' ', 'a' ],
                       [ sku         => '024', '8', ' ', 'a' ],
                       [ language    => '546', ' ', ' ', 'a' ],
-                      [ publisher   => '260', ' ', ' ', 'b' ],
                       [ relation    => '787', '0', ' ', 'n' ],
                       [ rights      => '540', ' ', ' ', 'a' ],
                       [ source      => '786', '0', ' ', 'n' ],
@@ -486,7 +593,8 @@ sub marc21_record {
                       [ slc         => '852', ' ', ' ', 'c' ],
                       [ isbn        => '020', ' ', ' ', 'a' ],
                       [ full_uri    => '856', ' ', ' ', qw/u q y/],
-                      [ aggregation => '773', ' ', ' ', qw/t g o 6 z d q/],
+                      [ aggregation => '773', ' ', ' ', qw/t g o 6 z d q  /],
+                      [ aggregated =>  '774', ' ', ' ', qw/t   o 6 z d   8/],
                       );
     Dlog_debug { "MARC21: $_" } \%rec;
 
@@ -531,7 +639,7 @@ sub dublin_core_record {
     if ($opts and exists $opts->{prefix}) {
         $prefix = $opts->{prefix};
     }
-    my $obj = $self->title || $self->attachment;
+    my $obj = $self->get_object;
     unless ($obj) {
         return [
                 [ $prefix . 'title' => 'Removed entry' ],
@@ -557,6 +665,9 @@ sub dublin_core_record {
                 push @{$data->{description}}, $ann->annotation->label . ": " . $ann->annotation_value;
             }
         }
+    }
+    if ($obj->can('isbn')) {
+        push @{ $data->{identifier} }, $obj->isbn;
     }
     # this is the parent.
     $data->{relation} = [ map { $base_url . $_ } @{$data->{relation}} ];

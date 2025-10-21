@@ -106,6 +106,7 @@ sub edit_series :Chained('edit_gate') :PathPart('series') :Args {
             }
             else {
                 $series = $site->aggregation_series->create(\%clean);
+                $series->bump_datestamp;
                 $c->flash(status_msg => $c->loc("Thanks!"));
             }
             if ($series) {

@@ -265,6 +265,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 oai_pmh_records
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::OaiPmhRecord>
+
+=cut
+
+__PACKAGE__->has_many(
+  "oai_pmh_records",
+  "AmuseWikiFarm::Schema::Result::OaiPmhRecord",
+  { "foreign.aggregation_id" => "self.aggregation_id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 site
 
 Type: belongs_to
@@ -281,8 +296,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-02-04 10:21:08
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:u64oudOvWQ0hvzb8HQbEKA
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2025-10-14 10:56:53
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:c6N+vPUtpw1Ag5G0IO29Kw
 
 
 __PACKAGE__->many_to_many("nodes", "node_aggregations", "node");
@@ -306,6 +321,10 @@ sub _rs_titles {
 
 sub rs_titles {
     shift->_rs_titles->{rs};
+}
+
+sub published_titles {
+    shift->titles({ public_only => 1 });
 }
 
 sub titles {
@@ -369,6 +388,7 @@ sub bump_oai_pmh_records {
     my $self = shift;
     my @ids = map { $_->id } $self->titles;
     Dlog_debug { "Bumping datestamp for $_" } \@ids;
+    $self->bump_datestamp;
     $self->site->oai_pmh_records->by_title_id(\@ids)->bump_datestamp;
 }
 
@@ -387,6 +407,13 @@ sub final_data {
         }
         $data{issue_data} = \%issue_data;
         $data{series_data} = \%series;
+        $data{_date} = $self->publication_date_year || $self->publication_date;
+        $data{aggregation_place_publisher_date} = join(' ', grep { $_ } map { $data{$_} }
+                                                       qw/publication_place
+                                                          publisher
+                                                          _date/);
+        $data{full_uri} = $self->full_uri,
+        delete $data{_date};
     }
     # Dlog_debug { "Final data is $_" } \%data;
     return \%data;
@@ -426,6 +453,39 @@ sub display_categories {
     return \@out;
 }
 
+sub bump_datestamp {
+    shift->oai_pmh_records->bump_datestamp;
+}
+
+sub dublin_core_entry {
+    my $self = shift;
+    my @titles = $self->published_titles;
+    my %uniques;
+    foreach my $dc (map { $_->dublin_core_entry } @titles) {
+        foreach my $f (qw/creator subject language/) {
+            $uniques{$f} ||= {};
+            foreach my $v (grep { length($_) } @{ $dc->{$f} || []}) {
+                $uniques{$f}{$v} = 1;
+            }
+        }
+    }
+    my $final_data = $self->final_data;
+    my $data = {
+                title => [ $final_data->{aggregation_name} ],
+                # creator, subject, language, taken from texts
+                description => [ grep { $_ } ($self->comment_html) ],
+                publisher => [ grep { $_ } ($final_data->{publisher}) ],
+                relation => [ map { $_->full_uri } grep { $_ } (
+                                                                $self->aggregation_series,
+                                                                $self->published_titles,
+                                                               ) ],
+                date => [ grep { $_ } ($self->publication_date, $self->publication_date_year) ],
+               };
+    foreach my $f (keys %uniques) {
+        $data->{$f} = [ sort keys %{$uniques{$f}} ];
+    }
+    return $data;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

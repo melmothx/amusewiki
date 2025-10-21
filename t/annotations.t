@@ -146,7 +146,7 @@ foreach my $title ($site->titles->all) {
 
     foreach my $aoi ($title->oai_pmh_records) {
         my (@relevant) = grep { $_->[0] =~ m/dc:(identifier|description)/ } @{$aoi->dublin_core_record};
-        is scalar(@relevant), 6, "Found 6 records for DC " . $relevant[4][1];
+        is scalar(@relevant), 7, "Found 7 records for DC " . $relevant[4][1] or die Dumper(\@relevant);
         is $relevant[5][1], "Identifier Test x";
         is $relevant[3][1], "Text: Text Test x";
     }
@@ -166,7 +166,7 @@ foreach my $title ($site->titles->all) {
 
     foreach my $aoi ($title->oai_pmh_records) {
         my (@relevant) = grep { $_->[0] =~ m/dc:(identifier|description)/ } @{$aoi->dublin_core_record};
-        is scalar(@relevant), 4, "Found 4 records for DC " . $relevant[3][1];
+        is scalar(@relevant), 5, "Found 5 records for DC " . $relevant[3][1];
     }
 
     # inactive
@@ -185,7 +185,7 @@ foreach my $title ($site->titles->all) {
 
     foreach my $aoi ($title->oai_pmh_records) {
         my (@relevant) = grep { $_->[0] =~ m/dc:(identifier|description)/ } @{$aoi->dublin_core_record};
-        is scalar(@relevant), 4, "Found 4 records for DC " . $relevant[3][1];
+        is scalar(@relevant), 5, "Found 5 records for DC " . $relevant[3][1];
     }
 
     # active but private, so logged in can see/edit
@@ -204,7 +204,7 @@ foreach my $title ($site->titles->all) {
 
     foreach my $aoi ($title->oai_pmh_records) {
         my (@relevant) = grep { $_->[0] =~ m/dc:(identifier|description)/ } @{$aoi->dublin_core_record};
-        is scalar(@relevant), 4, "Found 4 records for DC " . $relevant[3][1];
+        is scalar(@relevant), 5, "Found 5 records for DC " . $relevant[3][1];
     }
 
     # if we have a bad value in the db: do not serve it.

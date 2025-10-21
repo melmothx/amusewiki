@@ -169,6 +169,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 oai_pmh_records
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::OaiPmhRecord>
+
+=cut
+
+__PACKAGE__->has_many(
+  "oai_pmh_records",
+  "AmuseWikiFarm::Schema::Result::OaiPmhRecord",
+  { "foreign.aggregation_series_id" => "self.aggregation_series_id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 site
 
 Type: belongs_to
@@ -185,14 +200,15 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-02-04 10:21:08
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TFmMgjtA0OU5orrTG0cFPQ
+# Created by DBIx::Class::Schema::Loader v0.07051 @ 2025-10-14 10:56:53
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:vo00RzY+HmVZNS4oSwLJkg
 
 
 __PACKAGE__->many_to_many("nodes", "node_aggregation_series", "node");
 
 sub bump_oai_pmh_records {
     my $self = shift;
+    $self->bump_datestamp;
     foreach my $agg ($self->aggregations) {
         $agg->bump_oai_pmh_records;
     }
@@ -204,6 +220,52 @@ sub full_uri {
 
 sub final_name {
     shift->aggregation_series_name;
+}
+
+sub bump_datestamp {
+    shift->oai_pmh_records->bump_datestamp;
+}
+
+sub publication_years {
+    my $self = shift;
+    my @issues = $self->aggregations;
+    my %udates;
+    foreach my $i (@issues) {
+        foreach my $date (grep { $_ } ($i->publication_date, $i->publication_date_year)) {
+            if ($date =~ m/([0-9]{4})/) {
+                $udates{$date}++;
+            }
+        }
+    }
+    return [ sort keys %udates ];
+}
+
+sub publication_date_range {
+    my $self = shift;
+    my @years = @{ $self->publication_years };
+    if (@years > 1) {
+        @years = ($years[0], $years[-1]);
+    }
+    return join('-', @years);
+}
+
+sub place_publisher_date {
+    my $self = shift;
+    return join(' ', grep { $_ } ($self->publication_place, $self->publisher, $self->publication_date_range));
+}
+
+
+sub dublin_core_entry {
+    my $self = shift;
+    my @issues = $self->aggregations;
+    my $data = {
+                title => [ grep { $_ } $self->aggregation_series_name ],
+                description => [ grep { $_ } $self->comment_html ],
+                publisher => [ grep { $_ } $self->publisher ],
+                relation => [ map { $_->full_uri } @issues ],
+                date => $self->publication_years,
+               };
+    return $data;
 }
 
 __PACKAGE__->meta->make_immutable;
