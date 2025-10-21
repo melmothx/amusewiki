@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.607 2025-10-21
+
+ - OAI-PMH: expose series and aggregations
+ - Add /localized URL
+
 2.606 2025-06-24
 
  - Bookcover: bugfix and support image deletion
