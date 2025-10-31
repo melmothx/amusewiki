@@ -208,7 +208,7 @@ sub update_site_records {
     foreach my $agg ($site->aggregations, $site->aggregation_series) {
         if (my $full_uri = $agg->full_uri) {
             if (my $agg_pmh_rec = $agg->oai_pmh_records->first) {
-                delete $all{$agg_pmh_rec->full_uri};
+                delete $all{$agg_pmh_rec->identifier};
             }
             else {
                 Dlog_debug { "Creating $full_uri" };
