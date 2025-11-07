@@ -2265,7 +2265,7 @@ sub get_file_list_for_mirroring {
                    Dlog_debug { "$filename: $_" } \@fragments;
                    return if grep { !m{\A[0-9a-zA-Z_-]+(\.[0-9a-zA-Z]+)*\z} } @fragments;
                    if ($fragments[-1] =~ m/(.*?) # basename
-                                           (\.(?:c[0-9]+|bare))? # format
+                                           (\.[a-z0-9]+)? # format bare, c12, a4, etc.
                                            \.([0-9a-zA-Z]+) # extension
                                            \z/x) {
                        my ($basename, $format, $ext) = ($1, $2, $3);
