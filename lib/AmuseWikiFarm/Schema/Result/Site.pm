@@ -2275,18 +2275,22 @@ sub get_file_list_for_mirroring {
                                 and length($fragments[-2]) == 2)
                                or (@fragments == 2 and $fragments[-2] eq 'specials')) {
                                if ($produced{$ext}) {
-                                   if (Path::Tiny::path($root, $dir)->child("$basename.muse")->exists) {
-                                       my $status_file = Path::Tiny::path($root, $dir)->child("$basename.status");
-                                       if ($status_file->exists and $status_file->slurp_utf8 =~ m/^DELETED/) {
-                                           log_info { "REMOVING $filename, $basename.muse has deleted status" };
+                                   my $status_file = Path::Tiny::path($root, $dir)->child("$basename.status");
+                                   if ($status_file->exists) {
+                                       # if the status file exists, it means that compilation happened.
+                                       # if the muse file exists, check the status, otherwise remove
+                                       if (Path::Tiny::path($root, $dir)->child("$basename.muse")->exists) {
+                                           if ($status_file->slurp_utf8 =~ m/^DELETED/) {
+                                               log_info { "REMOVING $filename, $basename.muse has deleted status" };
+                                               unlink $filename;
+                                               return;
+                                           }
+                                       }
+                                       else {
+                                           log_info { "REMOVING $filename, $basename.muse is missing" };
                                            unlink $filename;
                                            return;
                                        }
-                                   }
-                                   else {
-                                       log_info { "REMOVING $filename, $basename.muse is missing" };
-                                       unlink $filename;
-                                       return;
                                    }
                                }
                            }
