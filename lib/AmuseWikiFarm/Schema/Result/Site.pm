@@ -2253,6 +2253,7 @@ sub get_file_list_for_mirroring {
                       } } ('index.html', 'titles.html', 'topics.html', 'authors.html' );
     my $root_as_string = $root->stringify;
     my $mime = AmuseWikiFarm::Utils::Paths::served_mime_types();
+    my %produced = map { $_ => 1 } (qw/pdf epub html tex zip/);
     find({ wanted => sub {
                my $filename = $_;
                if (-f $filename) {
@@ -2263,9 +2264,36 @@ sub get_file_list_for_mirroring {
 
                    Dlog_debug { "$filename: $_" } \@fragments;
                    return if grep { !m{\A[0-9a-zA-Z_-]+(\.[0-9a-zA-Z]+)*\z} } @fragments;
-                   if ($fragments[-1] =~ m/\.([0-9a-zA-Z]+)\z/) {
-                       my $ext = $1;
+                   if ($fragments[-1] =~ m/(.*?) # basename
+                                           (\.[a-z0-9]+)? # format bare, c12, a4, etc.
+                                           \.([0-9a-zA-Z]+) # extension
+                                           \z/x) {
+                       my ($basename, $format, $ext) = ($1, $2, $3);
                        if ($mime->{$ext}) {
+                           if ((@fragments == 3
+                                and length($fragments[-3]) == 1
+                                and length($fragments[-2]) == 2)
+                               or (@fragments == 2 and $fragments[-2] eq 'specials')) {
+                               if ($produced{$ext}) {
+                                   my $status_file = Path::Tiny::path($root, $dir)->child("$basename.status");
+                                   if ($status_file->exists) {
+                                       # if the status file exists, it means that compilation happened.
+                                       # if the muse file exists, check the status, otherwise remove
+                                       if (Path::Tiny::path($root, $dir)->child("$basename.muse")->exists) {
+                                           if ($status_file->slurp_utf8 =~ m/^DELETED/) {
+                                               log_info { "REMOVING $filename, $basename.muse has deleted status" };
+                                               unlink $filename;
+                                               return;
+                                           }
+                                       }
+                                       else {
+                                           log_info { "REMOVING $filename, $basename.muse is missing" };
+                                           unlink $filename;
+                                           return;
+                                       }
+                                   }
+                               }
+                           }
                            push @list, {
                                         file => join('/', @fragments),
                                         ts => $ts,
