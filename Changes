@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.608 2025-11-08
+
+ - Cleanup stale output files from tree (hard and soft deleted files)
+ - Fix OAI-PMH error with aggregations
+
 2.607 2025-10-21
 
  - OAI-PMH: expose series and aggregations
