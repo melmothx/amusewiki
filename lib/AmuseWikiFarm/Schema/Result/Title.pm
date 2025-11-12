@@ -656,6 +656,7 @@ __PACKAGE__->has_many(
             "$args->{foreign_alias}.id"  => { '!=' => { -ident => "$args->{self_alias}.id" } },
             "$args->{foreign_alias}.uid" => { -ident => "$args->{self_alias}.uid",
                                               '!=' => ''},
+            "$args->{foreign_alias}.site_id" => { -ident => "$args->{self_alias}.site_id" },
         };
     },
     { cascade_copy => 0, cascade_delete => 0 },
