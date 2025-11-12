@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.609 2025-11-12
+
+ - Prevent leaking of translation titles across instances [SECURITY]
+
 2.608 2025-11-08
 
  - Cleanup stale output files from tree (hard and soft deleted files)
