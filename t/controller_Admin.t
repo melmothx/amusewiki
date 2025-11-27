@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 113;
+use Test::More tests => 147;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -112,6 +112,9 @@ $mech->content_lacks('<a href="http://www.amusewiki.org">WWW</a>');
 $mech->get_ok('/library/second-test');
 $mech->content_lacks($html_regular_injection, "Regular HTML in /libary");
 
+my $vhost = $schema->resultset('Vhost')->find_or_create({ site_id => '0blog0',
+                                                          name => 'duplicate.amusewiki.org'
+                                                        });
 
 foreach my $sitespec ({
                        create_site => 'alsdflkj laksjdflkaksd asdfasdf',
@@ -120,6 +123,14 @@ foreach my $sitespec ({
                       {
                        create_site => '0invalid0',
                        canonical => 'my site.org',
+                      },
+                      {
+                       create_site => '0duplicate0',
+                       canonical => 'blog.amusewiki.org',
+                      },
+                      {
+                       create_site => '0duplicate0',
+                       canonical => 'duplicate.amusewiki.org',
                       },
                       {
                        create_site => 'thisisinvalidbecauseitsverylong',
@@ -171,11 +182,29 @@ foreach my $sitespec ({
 
     ok($mech->form_with_fields(qw/mode locale/), "Found form") or diag $mech->content;
 
+    foreach my $try ({ vhosts => 'duplicate.amusewiki.org' },
+                     { vhosts => 'blog.amusewiki.org' },
+                     { canonical => 'blog.amusewiki.org' },
+                     { canonical => 'duplicate.amusewiki.org' }) {
+        $mech->submit_form(with_fields => {
+                                           locale => 'en',
+                                           mail_notify => 'me@amusewiki.org',
+                                           mail_from => 'noreply@amusewiki.org',
+                                           acme_certificate => 1,
+                                           %$try,
+                                          },
+                           button => 'edit_site');
+        is $mech->uri->path, "/admin/sites/edit/$site_id";
+        $mech->content_contains(q{id="error_message"});
+    }
+
     $mech->submit_form(with_fields => {
                                        locale => 'en',
                                        mail_notify => 'me@amusewiki.org',
                                        mail_from => 'noreply@amusewiki.org',
                                        acme_certificate => 1,
+                                       canonical => $sitespec->{canonical},
+                                       vhosts => $sitespec->{canonical},
                                       },
                        button => 'edit_site');
 
@@ -200,3 +229,5 @@ foreach my $sitespec ({
     $created->delete;
     remove_tree($created_root);
 }
+
+$vhost->delete;
