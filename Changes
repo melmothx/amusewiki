@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.610 2025-11-27
+
+ - Prevent crash and/or inconsistencies when updating site canonical
+   and vhosts. Thanks to @ant-222 for the report.
+
 2.609 2025-11-12
 
  - Prevent leaking of translation titles across instances [SECURITY]
