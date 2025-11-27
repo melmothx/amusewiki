@@ -98,7 +98,12 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
         if ($params{create_site} =~ m/\A([0-9a-z]{2,16})\z/ and
             $params{canonical}   =~ m/\A$RE{net}{domain}{-nospace}{-rfc1101}\z/) {
             $id = $params{create_site};
-            if ($c->model('DB::Site')->find($id)) {
+            $params{canonical} = lc($params{canonical});
+            if ($c->model('DB::Site')->search([
+                                               { id => $id },
+                                               { canonical => $params{canonical} },
+                                              ])->count
+                or $c->model('DB::Vhost')->search({ name => $params{canonical} })->count) {
                 $c->flash(error_msg => $c->loc('Site already exists'));
                 $c->response->redirect($listing_url);
                 $c->detach();

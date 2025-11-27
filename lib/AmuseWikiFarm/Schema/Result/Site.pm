@@ -3479,8 +3479,13 @@ sub update_from_params {
     }
     if ($params->{canonical} and
         $params->{canonical} =~ m/\A$RE{net}{domain}{-nospace}{-rfc1101}\z/) {
-        my $canonical = delete $params->{canonical};
-        $self->canonical($canonical);
+        my $canonical = lc(delete $params->{canonical});
+        if ($self->vhost_already_present($canonical)) {
+            push @errors, "Site already exists";
+        }
+        else {
+            $self->canonical($canonical);
+        }
     }
     else {
         log_error { ($params->{canonical} || '') . "doesn't match"
@@ -3610,15 +3615,10 @@ sub update_from_params {
     my @vhosts;
     # ignore missing vhosts
     if (my $vhosts = delete $params->{vhosts}) {
-        @vhosts = grep { m/\w/ } split(/\s+/, $vhosts);
+        @vhosts = map { lc($_) } grep { m/\w/ } split(/\s+/, $vhosts);
         if (@vhosts) {
-            my @existing = $self->result_source->schema->resultset('Vhost')
-              ->search( {
-                         name => [ @vhosts ],
-                         site_id => { '!=' => $self->id }
-                        } );
-            foreach my $ex (@existing) {
-                push @errors, "Found existing vhost: " . $ex->name;
+            foreach my $existing ($self->vhost_already_present(@vhosts)) {
+                push @errors, "Found existing vhost: $existing";
             }
         }
     }
@@ -5696,6 +5696,23 @@ sub has_collections {
 
 sub mirror_only {
     shift->get_option('mirror_only') ? 1 : 0;
+}
+
+sub vhost_already_present {
+    my ($self, @domains) = @_;
+    my $schema = $self->result_source->schema;
+    my @found = map { $_->name }
+      $schema->resultset('Vhost')->search({
+                                           name => \@domains,
+                                           site_id => { '!=' => $self->id }
+                                          });
+    my @cfound = map { $_->canonical }
+      $schema->resultset('Site')->search({
+                                          canonical => \@domains,
+                                          id => { '!=' => $self->id },
+                                         });
+    push @found, @cfound if @cfound;
+    return @found;
 }
 
 after insert => sub {
