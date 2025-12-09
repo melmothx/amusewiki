@@ -1052,6 +1052,7 @@ sub known_langs {
             fa => 'فارسی',
             eu => 'Euskara',
             hu => 'Magyar',
+            bn => 'বাংলা',
            };
 }
 
