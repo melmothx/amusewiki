@@ -1148,8 +1148,21 @@ msgstr "Преглед на шрифта"
 msgid "Font size"
 msgstr "Големина на шрифта"
 
+msgid "Footnote"
+msgstr ""
+
+#. ($rev->title->uri)
+msgid "Footnote report for %1"
+msgstr ""
+
+msgid "Footnote report in other tab"
+msgstr ""
+
 msgid "Footnotes"
 msgstr "Бележки под линиите"
+
+msgid "Footnotes Report"
+msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
@@ -2005,6 +2018,9 @@ msgstr "Няма налични данни в таблицата"
 
 msgid "No editing yet!"
 msgstr "Все още няма редакции!"
+
+msgid "No footnotes found in the text"
+msgstr ""
 
 msgid "No matching records found"
 msgstr "Не бяха намерени съотвестващи записи"
@@ -3426,6 +3442,9 @@ msgid "Total pages"
 msgstr "Общо страници"
 
 msgid "Total size (mm)"
+msgstr ""
+
+msgid "Translate this text"
 msgstr ""
 
 msgid "Triple bars"

@@ -1131,8 +1131,21 @@ msgstr "Inspektim i fontit"
 msgid "Font size"
 msgstr "Madhësia e fontit"
 
+msgid "Footnote"
+msgstr ""
+
+#. ($rev->title->uri)
+msgid "Footnote report for %1"
+msgstr ""
+
+msgid "Footnote report in other tab"
+msgstr ""
+
 msgid "Footnotes"
 msgstr "Fusnota"
+
+msgid "Footnotes Report"
+msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
@@ -1928,6 +1941,9 @@ msgstr ""
 
 msgid "No editing yet!"
 msgstr "Ska redaktim për tani!"
+
+msgid "No footnotes found in the text"
+msgstr ""
 
 msgid "No matching records found"
 msgstr ""
@@ -3310,6 +3326,9 @@ msgid "Total pages"
 msgstr "Numri i përgjithshëm i faqeve"
 
 msgid "Total size (mm)"
+msgstr ""
+
+msgid "Translate this text"
 msgstr ""
 
 msgid "Triple bars"

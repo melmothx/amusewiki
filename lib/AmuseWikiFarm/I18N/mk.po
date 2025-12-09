@@ -1125,8 +1125,21 @@ msgstr "Преглед на фонт"
 msgid "Font size"
 msgstr "Големина на фонт"
 
+msgid "Footnote"
+msgstr ""
+
+#. ($rev->title->uri)
+msgid "Footnote report for %1"
+msgstr ""
+
+msgid "Footnote report in other tab"
+msgstr ""
+
 msgid "Footnotes"
 msgstr "Фусноти"
+
+msgid "Footnotes Report"
+msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
@@ -1961,6 +1974,9 @@ msgstr ""
 
 msgid "No editing yet!"
 msgstr "Сè уште нема измена!"
+
+msgid "No footnotes found in the text"
+msgstr ""
 
 msgid "No matching records found"
 msgstr "Ништо не е пронајдено"
@@ -3365,6 +3381,9 @@ msgstr "Вкупно страници"
 msgid "Total size (mm)"
 msgstr ""
 
+msgid "Translate this text"
+msgstr ""
+
 msgid "Triple bars"
 msgstr "Тројна лента"
 
@@ -3760,8 +3779,8 @@ msgid "You can tune them editing them here."
 msgstr "Можеш да ги подесиш овде."
 
 msgid ""
-"You can use the following prefixes to search a word in a specific field, "
-"e.g. \"title:example\""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
 msgstr ""
 "Можеш да ги користиш следните ознаки за да пребараш некој збор во\n"
 "некое одредено поле, на пр. \"title:Наслов\""

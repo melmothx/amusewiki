@@ -1131,8 +1131,21 @@ msgstr "Previsualización de la tipografía"
 msgid "Font size"
 msgstr "Tamaño de la tipografía"
 
+msgid "Footnote"
+msgstr ""
+
+#. ($rev->title->uri)
+msgid "Footnote report for %1"
+msgstr ""
+
+msgid "Footnote report in other tab"
+msgstr ""
+
 msgid "Footnotes"
 msgstr "Notas a pie de página"
+
+msgid "Footnotes Report"
+msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
@@ -1943,6 +1956,9 @@ msgstr ""
 
 msgid "No editing yet!"
 msgstr "¡Sin ediciones todavía!"
+
+msgid "No footnotes found in the text"
+msgstr ""
 
 msgid "No matching records found"
 msgstr ""
@@ -3340,6 +3356,9 @@ msgid "Total pages"
 msgstr "Páginas totales"
 
 msgid "Total size (mm)"
+msgstr ""
+
+msgid "Translate this text"
 msgstr ""
 
 msgid "Triple bars"

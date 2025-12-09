@@ -1140,8 +1140,21 @@ msgstr "Font ön izleme"
 msgid "Font size"
 msgstr "Font büyüklüğü"
 
+msgid "Footnote"
+msgstr ""
+
+#. ($rev->title->uri)
+msgid "Footnote report for %1"
+msgstr ""
+
+msgid "Footnote report in other tab"
+msgstr ""
+
 msgid "Footnotes"
 msgstr "Dipnotlar"
+
+msgid "Footnotes Report"
+msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
@@ -1974,6 +1987,9 @@ msgstr "Tabloda veri yok"
 
 msgid "No editing yet!"
 msgstr "Henüz düzenleme yok!"
+
+msgid "No footnotes found in the text"
+msgstr ""
 
 msgid "No matching records found"
 msgstr "Hiçbir eşleşen kayıt bulunamadı"
@@ -3385,6 +3401,9 @@ msgstr "Toplam sayfa"
 
 msgid "Total size (mm)"
 msgstr "Toplam Boyut (mm)"
+
+msgid "Translate this text"
+msgstr ""
 
 msgid "Triple bars"
 msgstr "Üçlü sütunlar"

@@ -1127,8 +1127,21 @@ msgstr "Перегляд шрифту"
 msgid "Font size"
 msgstr "Розмір шрифту"
 
+msgid "Footnote"
+msgstr ""
+
+#. ($rev->title->uri)
+msgid "Footnote report for %1"
+msgstr ""
+
+msgid "Footnote report in other tab"
+msgstr ""
+
 msgid "Footnotes"
 msgstr "Примітки"
+
+msgid "Footnotes Report"
+msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
@@ -1947,6 +1960,9 @@ msgstr "У таблиці нема даних"
 
 msgid "No editing yet!"
 msgstr "В редакторі ще нічого не змінили!"
+
+msgid "No footnotes found in the text"
+msgstr ""
 
 msgid "No matching records found"
 msgstr "Збіжних записів не знайдено"
@@ -3326,6 +3342,9 @@ msgid "Total pages"
 msgstr "Усього сторінок"
 
 msgid "Total size (mm)"
+msgstr ""
+
+msgid "Translate this text"
 msgstr ""
 
 msgid "Triple bars"

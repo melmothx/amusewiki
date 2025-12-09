@@ -1159,8 +1159,21 @@ msgstr "Letra-tipoaren aurrebista"
 msgid "Font size"
 msgstr "Letra-tipoaren tamaina"
 
+msgid "Footnote"
+msgstr ""
+
+#. ($rev->title->uri)
+msgid "Footnote report for %1"
+msgstr ""
+
+msgid "Footnote report in other tab"
+msgstr ""
+
 msgid "Footnotes"
 msgstr "Oin-oharrak"
+
+msgid "Footnotes Report"
+msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
@@ -2017,6 +2030,9 @@ msgstr "Ez dago daturik erabilgarri taulan"
 
 msgid "No editing yet!"
 msgstr "Ez da editatu oraindik."
+
+msgid "No footnotes found in the text"
+msgstr ""
 
 msgid "No matching records found"
 msgstr "Ez da aurkitu bat datorren erregistrorik"
@@ -3435,6 +3451,9 @@ msgstr "Orri guztiak"
 
 msgid "Total size (mm)"
 msgstr "Tamaina osoa (mm)"
+
+msgid "Translate this text"
+msgstr ""
 
 msgid "Triple bars"
 msgstr "Barra hirukoitzak"

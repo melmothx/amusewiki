@@ -1081,8 +1081,21 @@ msgstr "フォントプレビュー"
 msgid "Font size"
 msgstr "フォントサイズ"
 
+msgid "Footnote"
+msgstr ""
+
+#. ($rev->title->uri)
+msgid "Footnote report for %1"
+msgstr ""
+
+msgid "Footnote report in other tab"
+msgstr ""
+
 msgid "Footnotes"
 msgstr "脚注"
+
+msgid "Footnotes Report"
+msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
@@ -1849,6 +1862,9 @@ msgstr "テーブル内はデータ無し"
 
 msgid "No editing yet!"
 msgstr "編集はまだです！"
+
+msgid "No footnotes found in the text"
+msgstr ""
 
 msgid "No matching records found"
 msgstr "該当する記録が見つかりません"
@@ -3177,6 +3193,9 @@ msgid "Total pages"
 msgstr "総ページ"
 
 msgid "Total size (mm)"
+msgstr ""
+
+msgid "Translate this text"
 msgstr ""
 
 msgid "Triple bars"

@@ -1130,8 +1130,21 @@ msgstr "Aperçu de police"
 msgid "Font size"
 msgstr "Taille de police"
 
+msgid "Footnote"
+msgstr ""
+
+#. ($rev->title->uri)
+msgid "Footnote report for %1"
+msgstr ""
+
+msgid "Footnote report in other tab"
+msgstr ""
+
 msgid "Footnotes"
 msgstr "Notes de bas de page"
+
+msgid "Footnotes Report"
+msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
@@ -1945,6 +1958,9 @@ msgstr ""
 
 msgid "No editing yet!"
 msgstr "Pas encore de modifications !"
+
+msgid "No footnotes found in the text"
+msgstr ""
 
 msgid "No matching records found"
 msgstr ""
@@ -3349,6 +3365,9 @@ msgid "Total pages"
 msgstr "Nombre total de pages"
 
 msgid "Total size (mm)"
+msgstr ""
+
+msgid "Translate this text"
 msgstr ""
 
 msgid "Triple bars"

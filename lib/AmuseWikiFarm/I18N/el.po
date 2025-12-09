@@ -1156,8 +1156,21 @@ msgstr "Προεπισκόπηση γραμματοσειράς"
 msgid "Font size"
 msgstr "Μέγεθος γραμματοσειράς"
 
+msgid "Footnote"
+msgstr ""
+
+#. ($rev->title->uri)
+msgid "Footnote report for %1"
+msgstr ""
+
+msgid "Footnote report in other tab"
+msgstr ""
+
 msgid "Footnotes"
 msgstr "Υποσημειώσεις"
+
+msgid "Footnotes Report"
+msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
@@ -2031,6 +2044,9 @@ msgstr "Δεν υπάρχουν διαθέσιμα στοιχεία στον π�
 
 msgid "No editing yet!"
 msgstr "Καμία επεξεργασία ακόμα!"
+
+msgid "No footnotes found in the text"
+msgstr ""
 
 msgid "No matching records found"
 msgstr "Δεν βρέθηκαν ταιριαστές εγγραφές"
@@ -3493,6 +3509,9 @@ msgid "Total pages"
 msgstr "Σύνολο σελίδων"
 
 msgid "Total size (mm)"
+msgstr ""
+
+msgid "Translate this text"
 msgstr ""
 
 msgid "Triple bars"

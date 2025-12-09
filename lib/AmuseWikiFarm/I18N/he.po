@@ -1068,7 +1068,20 @@ msgstr ""
 msgid "Font size"
 msgstr ""
 
+msgid "Footnote"
+msgstr ""
+
+#. ($rev->title->uri)
+msgid "Footnote report for %1"
+msgstr ""
+
+msgid "Footnote report in other tab"
+msgstr ""
+
 msgid "Footnotes"
+msgstr ""
+
+msgid "Footnotes Report"
 msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
@@ -1809,6 +1822,9 @@ msgid "No data available in table"
 msgstr ""
 
 msgid "No editing yet!"
+msgstr ""
+
+msgid "No footnotes found in the text"
 msgstr ""
 
 msgid "No matching records found"
@@ -3104,6 +3120,9 @@ msgid "Total pages"
 msgstr ""
 
 msgid "Total size (mm)"
+msgstr ""
+
+msgid "Translate this text"
 msgstr ""
 
 msgid "Triple bars"

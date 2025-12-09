@@ -1150,8 +1150,21 @@ msgstr "Previzualizare font"
 msgid "Font size"
 msgstr "Dimensiune font"
 
+msgid "Footnote"
+msgstr ""
+
+#. ($rev->title->uri)
+msgid "Footnote report for %1"
+msgstr ""
+
+msgid "Footnote report in other tab"
+msgstr ""
+
 msgid "Footnotes"
 msgstr "Note de subsol"
+
+msgid "Footnotes Report"
+msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
@@ -2013,6 +2026,9 @@ msgstr "Nu există date disponibile în tabel"
 
 msgid "No editing yet!"
 msgstr "Fără editare momentan!"
+
+msgid "No footnotes found in the text"
+msgstr ""
 
 msgid "No matching records found"
 msgstr "Nu s-au găsit înregistrări corespunzătoare"
@@ -3472,6 +3488,9 @@ msgid "Total pages"
 msgstr "Pagini totale"
 
 msgid "Total size (mm)"
+msgstr ""
+
+msgid "Translate this text"
 msgstr ""
 
 msgid "Triple bars"

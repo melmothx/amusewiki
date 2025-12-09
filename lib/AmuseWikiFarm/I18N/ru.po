@@ -1120,8 +1120,21 @@ msgstr "Предпросмотр шрифта"
 msgid "Font size"
 msgstr "Размер шрифта"
 
+msgid "Footnote"
+msgstr ""
+
+#. ($rev->title->uri)
+msgid "Footnote report for %1"
+msgstr ""
+
+msgid "Footnote report in other tab"
+msgstr ""
+
 msgid "Footnotes"
 msgstr "Сноски"
+
+msgid "Footnotes Report"
+msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
@@ -1940,6 +1953,9 @@ msgstr ""
 
 msgid "No editing yet!"
 msgstr "Ещё нет правок!"
+
+msgid "No footnotes found in the text"
+msgstr ""
 
 msgid "No matching records found"
 msgstr ""
@@ -3320,6 +3336,9 @@ msgid "Total pages"
 msgstr "Страниц всего"
 
 msgid "Total size (mm)"
+msgstr ""
+
+msgid "Translate this text"
 msgstr ""
 
 msgid "Triple bars"

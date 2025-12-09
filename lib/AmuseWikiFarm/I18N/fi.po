@@ -1080,8 +1080,21 @@ msgstr "Fonttien esikatselu"
 msgid "Font size"
 msgstr "Fonttikoko"
 
+msgid "Footnote"
+msgstr ""
+
+#. ($rev->title->uri)
+msgid "Footnote report for %1"
+msgstr ""
+
+msgid "Footnote report in other tab"
+msgstr ""
+
 msgid "Footnotes"
 msgstr "Loppuviitteet"
+
+msgid "Footnotes Report"
+msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
@@ -1837,6 +1850,9 @@ msgid "No data available in table"
 msgstr ""
 
 msgid "No editing yet!"
+msgstr ""
+
+msgid "No footnotes found in the text"
 msgstr ""
 
 msgid "No matching records found"
@@ -3169,6 +3185,9 @@ msgid "Total pages"
 msgstr "Sivuja yhteensä"
 
 msgid "Total size (mm)"
+msgstr ""
+
+msgid "Translate this text"
 msgstr ""
 
 msgid "Triple bars"

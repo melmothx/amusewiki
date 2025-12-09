@@ -1137,8 +1137,21 @@ msgstr "Náhled fontu"
 msgid "Font size"
 msgstr "Velikost fontu"
 
+msgid "Footnote"
+msgstr ""
+
+#. ($rev->title->uri)
+msgid "Footnote report for %1"
+msgstr ""
+
+msgid "Footnote report in other tab"
+msgstr ""
+
 msgid "Footnotes"
 msgstr "Poznámky pod čarou"
+
+msgid "Footnotes Report"
+msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
@@ -1976,6 +1989,9 @@ msgstr "Žádná data nejsou dostupná v tabulce"
 
 msgid "No editing yet!"
 msgstr "Ještě žádné editování!"
+
+msgid "No footnotes found in the text"
+msgstr ""
 
 msgid "No matching records found"
 msgstr "Žádné shodující se záznamy nenalezeny"
@@ -3381,6 +3397,9 @@ msgid "Total pages"
 msgstr "Celkové stránky"
 
 msgid "Total size (mm)"
+msgstr ""
+
+msgid "Translate this text"
 msgstr ""
 
 msgid "Triple bars"

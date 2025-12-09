@@ -1141,8 +1141,21 @@ msgstr "Anteprima dei caratteri"
 msgid "Font size"
 msgstr "Dimensione caratteri"
 
+msgid "Footnote"
+msgstr ""
+
+#. ($rev->title->uri)
+msgid "Footnote report for %1"
+msgstr ""
+
+msgid "Footnote report in other tab"
+msgstr ""
+
 msgid "Footnotes"
 msgstr "Note a piè di pagina"
+
+msgid "Footnotes Report"
+msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
@@ -1996,6 +2009,9 @@ msgstr "Nessun dato disponibile in questa tabella"
 
 msgid "No editing yet!"
 msgstr "Nessuna modifica apportata!"
+
+msgid "No footnotes found in the text"
+msgstr ""
 
 msgid "No matching records found"
 msgstr "Nessun record corrispondente è stato trovato"
@@ -3412,6 +3428,9 @@ msgid "Total pages"
 msgstr "Pagine totali"
 
 msgid "Total size (mm)"
+msgstr ""
+
+msgid "Translate this text"
 msgstr ""
 
 msgid "Triple bars"

@@ -1139,8 +1139,21 @@ msgstr "Font előnézet"
 msgid "Font size"
 msgstr "Font méret"
 
+msgid "Footnote"
+msgstr ""
+
+#. ($rev->title->uri)
+msgid "Footnote report for %1"
+msgstr ""
+
+msgid "Footnote report in other tab"
+msgstr ""
+
 msgid "Footnotes"
 msgstr "Lábjegyzetek"
+
+msgid "Footnotes Report"
+msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
@@ -1966,6 +1979,9 @@ msgstr "Nincs adat a táblában"
 
 msgid "No editing yet!"
 msgstr "Nincs még szerkesztés"
+
+msgid "No footnotes found in the text"
+msgstr ""
 
 msgid "No matching records found"
 msgstr "Nincsenek illeszkedő bejegyzések"
@@ -3362,6 +3378,9 @@ msgid "Total pages"
 msgstr "Összes oldal"
 
 msgid "Total size (mm)"
+msgstr ""
+
+msgid "Translate this text"
 msgstr ""
 
 msgid "Triple bars"
