@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 26;
+use Test::More tests => 27;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catdir catfile/;
@@ -93,13 +93,19 @@ is $mirror->titles->count, 4, "Mirror OK";
 
 _fetch_remote($remote);
 is $mirror->titles->count, 4, "Mirror OK";
+
+my ($rev) = $mirror->create_new_text({ uri => "dummy", title => "Dummy" }, 'text');
+$rev->edit("#title Dummy\n\nTest");
+$rev->commit_version;
+$rev->publish_text;
+
 $mirror->jobs->enqueue('purge_mirror_leftovers', {});
 while (my $job = $mirror->jobs->dequeue) {
     $job->dispatch_job;
     is $job->status, 'completed';
     diag $job->logs;
 }
-is $mirror->titles->count, 4, "Mirror intact";
+is $mirror->titles->count, 5, "Mirror intact";
 
 $mirror->site_options->update_or_create({
                                          option_name => 'mirror_only',

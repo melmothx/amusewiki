@@ -987,13 +987,22 @@ sub dispatch_job_purge_mirror_leftovers {
                                     $site->mirror_infos->removed_upstream->all,
                                    ) {
                 if (my $object = $local_file->repo_object) {
-                    my $full_path = Path::Tiny::path($object->f_full_path_name)->realpath;
-                    die "$full_path is not inside $root_path" unless $root_path->subsumes($full_path);
-                    my $path = $full_path->stringify;
-                    log_info { "Removing $path from git" };
-                    $git->rm($path);
-                    $logger->("Removed $path\n");
-                    push @removed, $path;
+                    if (my $object_full_path = $object->f_full_path_name) {
+                        my $full_path = Path::Tiny::path($object_full_path)->realpath;
+                        if ($root_path->subsumes($full_path)) {
+                            my $path = $full_path->stringify;
+                            log_info { "Removing $path from git" };
+                            $git->rm($path);
+                            $logger->("Removed $path\n");
+                            push @removed, $path;
+                        }
+                        else {
+                            log_info { "$full_path is not inside $root_path" };
+                        }
+                    }
+                    else {
+                        log_info { "Missing full path in object" };
+                    }
                 }
             }
             if (@removed) {
