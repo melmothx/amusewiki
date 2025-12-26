@@ -524,6 +524,26 @@ kpsewhich mylogo.pdf
     </div>
 
     <div class="form-group">
+      <label for="telegram_bot_token" class="col-sm-6 control-label">
+        [% loc('Telegram Bot Token') %]
+      </label>
+      <div class="col-sm-6">
+        <input type="text"  name="telegram_bot_token" id="telegram_bot_token"
+               class="form-control" value="[% esite.telegram_bot_token | html %]" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="telegram_chat_id" class="col-sm-6 control-label">
+        [% loc('Telegram Chat ID') %]
+      </label>
+      <div class="col-sm-6">
+        <input type="text"  name="telegram_chat_id" id="telegram_chat_id"
+               class="form-control" value="[% esite.telegram_chat_id | html %]" />
+      </div>
+    </div>
+
+
+    <div class="form-group">
       <label for="bb_page_limit" class="col-sm-6 control-label">
         [% loc('Bookbuilder page limit (integer)') %]
       </label>

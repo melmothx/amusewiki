@@ -3706,6 +3706,8 @@ sub update_from_params {
                            category_uri_use_unicode
                            enforce_manual_uri
                            feed_enclosure_method
+                           telegram_bot_token
+                           telegram_chat_id
                           /) {
         my $value = delete $params->{$option} || '';
         # clean it up from leading and trailing spaces
@@ -4285,6 +4287,14 @@ sub additional_nginx_conf {
 sub do_not_enforce_commit_message {
     my ($self) = @_;
     $self->get_option('do_not_enforce_commit_message') ? 1 : 0;
+}
+
+sub telegram_bot_token {
+    shift->get_option('telegram_bot_token');
+}
+
+sub telegram_chat_id {
+    shift->get_option('telegram_chat_id');
 }
 
 sub enforce_email_commit {
