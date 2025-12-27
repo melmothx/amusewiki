@@ -4939,7 +4939,10 @@ sub localizer {
 sub mailer {
     my ($self, @args) = @_;
     require AmuseWikiFarm::Utils::Mailer;
-    return AmuseWikiFarm::Utils::Mailer->new(mkit_location => $self->mkits_location->stringify, @args);
+    return AmuseWikiFarm::Utils::Mailer->new(mkit_location => $self->mkits_location->stringify,
+                                             telegram_bot_token => $self->telegram_bot_token || '',
+                                             telegram_chat_id => $self->telegram_chat_id || '',
+                                             @args);
     # please note that the catalyst config could have injected args.
     # If we call this, those settings will be ignored, hence we permit
     # argument passing)
@@ -4965,21 +4968,17 @@ sub send_mail {
             $tokens->{$f} = '';
         }
     }
-    return unless $tokens->{to} && $tokens->{from};
-
-    # check if the recipient is known to us and have a language
-    # preference
-
-    if (my $known_user = $self->result_source->schema->resultset('User')
-        ->search({
-                  email => $tokens->{to},
-                  preferred_language => [ keys %{$self->known_langs} ],
-                 })->first) {
-        $tokens->{lh} = $self->localizer($known_user->preferred_language);
+    my @locale;
+    if ($tokens->{to}) {
+        if (my $known_user = $self->result_source->schema->resultset('User')
+            ->search({
+                      email => $tokens->{to},
+                      preferred_language => [ keys %{$self->known_langs} ],
+                     })->first) {
+            push @locale, $known_user->preferred_language;
+        }
     }
-    else {
-        $tokens->{lh} = $self->localizer;
-    }
+    $tokens->{lh} = $self->localizer(@locale);
     $tokens->{list_id} = $self->id . '.' . $self->canonical;
     $self->mailer->send_mail($mkit => $tokens);
 }

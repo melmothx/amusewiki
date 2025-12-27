@@ -48,6 +48,16 @@ ok($mailer);
 my $site_id = '0mail0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
+
+$site->site_options->update_or_create({
+                                       option_name => 'telegram_bot_token',
+                                       option_value => $ENV{TELEGRAM_BOT_TOKEN} || '',
+                                      });
+$site->site_options->update_or_create({
+                                       option_name => 'telegram_chat_id',
+                                       option_value => $ENV{TELEGRAM_CHAT_ID} || '',
+                                      });
+
 $site->update({ mail_from => 'root@amusewiki.org',
                 locale => 'en',
                 mail_notify => 'xnotifications@amusewiki.org',

@@ -530,6 +530,11 @@ kpsewhich mylogo.pdf
       <div class="col-sm-6">
         <input type="text"  name="telegram_bot_token" id="telegram_bot_token"
                class="form-control" value="[% esite.telegram_bot_token | html %]" />
+        <p class="help-block">
+          <a href="https://core.telegram.org/bots/tutorial">
+            [% loc('See the Telegram tutorial how to create a bot and get the token') %]
+          </a>
+        </p>
       </div>
     </div>
     <div class="form-group">
@@ -539,6 +544,14 @@ kpsewhich mylogo.pdf
       <div class="col-sm-6">
         <input type="text"  name="telegram_chat_id" id="telegram_chat_id"
                class="form-control" value="[% esite.telegram_chat_id | html %]" />
+        <p class="help-block">
+          [% loc('Comma or space separated list of chat ids (individuals or groups).') %]
+          <br>
+          [% loc('To get the chat ids, address your bot and issue the following call:') %]
+          <a href="https://api.telegram.org/bot[% IF esite.telegram_bot_token %][% esite.telegram_bot_token | html %][% ELSE %]YOUR-TOKEN[% END %]/getUpdates">
+            https://api.telegram.org/bot[% IF esite.telegram_bot_token %][% esite.telegram_bot_token | html %][% ELSE %]YOUR-TOKEN[% END %]/getUpdates
+          </a>
+        </p>
       </div>
     </div>
 
