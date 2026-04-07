@@ -26,7 +26,7 @@ homedir=`pwd`
 # hyphen-spanish hyphen-swedish hyphen-thai hyphen-turkish
 # hyphen-turkmen hyphen-ukrainian hyphen-uppersorbian hyphen-welsh
 
-year=2023
+year=2026
 
 if [ -d $homedir/local/texlive ]; then
     echo "Moving old installation to backup directory"
