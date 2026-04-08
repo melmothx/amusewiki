@@ -1248,7 +1248,6 @@ root/src/include/attachment.tt
 root/src/include/bbform.tt
 root/src/include/breadcrumbs.tt
 root/src/include/bulk_job.tt
-root/src/include/ckeditor.tt
 root/src/include/edit_node.tt
 root/src/include/editing-options.tt
 root/src/include/hide_type_and_number_of_pages.tt

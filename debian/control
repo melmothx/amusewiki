@@ -203,7 +203,7 @@ Depends: ${misc:Depends}, ${perl:Depends},
  libcgi-emulate-psgi-perl,
  libcgi-compile-perl,
  lsof,
- cgit, ckeditor, nginx, git, fontconfig,
+ cgit, nginx, git, fontconfig,
  fonts-cmu, fonts-texgyre, fonts-fandol,
  imagemagick,
  amusewiki-texlive

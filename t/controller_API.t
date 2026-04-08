@@ -3,7 +3,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 48;
+use Test::More tests => 44;
 
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
@@ -37,12 +37,6 @@ my $topics = from_json($mech->response->content);
 my @empty = grep { $_ eq 'empty category' } @$topics;
 ok (!@empty, "No empty categories found") or diag Dumper($topics);
 
-$mech->get_ok("/api/ckeditor");
-my $config = from_json($mech->response->content);
-diag Dumper($config);
-is $config->{language}, "hr";
-is $config->{toolbar}, "AmuseWiki";
-ok $config->{toolbar_AmuseWiki};
 
 $empty->delete;
 

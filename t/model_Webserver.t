@@ -3,7 +3,7 @@ use warnings;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 13;
+use Test::More tests => 10;
 use Test::WWW::Mechanize::Catalyst;
 use File::Spec;
 use File::Copy qw/move/;
@@ -45,11 +45,6 @@ $mech->get($mech->uri . '?__language=en');
     my $ws = AmuseWikiFarm::Utils::Webserver->new;
 
   SKIP: {
-        skip "ckeditor use cdn", 2 if $ws->ckeditor_use_cdn;
-        ok $ws->ckeditor_location, "Found ck location";
-        ok (-d $ws->ckeditor_location, $ws->ckeditor_location . " exists");
-    }
-  SKIP: {
         skip "highlight use cdn", 2 if $ws->highlight_use_cdn;
         ok $ws->highlight_location, "Found hightlight location";
         ok (-d $ws->highlight_location, $ws->highlight_location . " exists");
@@ -57,9 +52,7 @@ $mech->get($mech->uri . '?__language=en');
 }
 
 {
-    my $ws = AmuseWikiFarm::Utils::Webserver->new(highlight_location => '/bla',
-                                                  ckeditor_location => '/asdlfj');
-    ok $ws->ckeditor_use_cdn;
+    my $ws = AmuseWikiFarm::Utils::Webserver->new(highlight_location => '/bla');
     ok $ws->highlight_use_cdn;
 }
 

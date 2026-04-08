@@ -21,7 +21,6 @@ dbic.sqlite
 !t/dbic.yaml
 root/git/*
 root/static/images/font-preview/*
-root/static/js/ckeditor*
 root/static/js/highlight*
 opt/*
 staging/*
