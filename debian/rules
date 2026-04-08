@@ -4,15 +4,12 @@ TMP     = $(CURDIR)/debian/$(PACKAGE)
 export PATH := /opt/amusewiki-texlive/current/bin/arch:$(PATH)
 
 %:
-	dh $@ --with systemd
+	dh $@
 
-override_dh_systemd_enable:
-	install -d $(TMP)/lib/systemd/system
-	install -p -m644 $(CURDIR)/debian/amusewiki-web.service $(TMP)/lib/systemd/system/
-	install -p -m644 $(CURDIR)/debian/amusewiki-jobber.service $(TMP)/lib/systemd/system/
-	install -p -m644 $(CURDIR)/debian/amusewiki-nginx-reload.service $(TMP)/lib/systemd/system/
-	install -p -m644 $(CURDIR)/debian/amusewiki-nginx-reload.path $(TMP)/lib/systemd/system/
-	dh_systemd_enable
+override_dh_installsystemd:
+	dh_installsystemd --name=amusewiki-web
+	dh_installsystemd --name=amusewiki-jobber
+	dh_installsystemd --name=amusewiki-nginx-reload
 
 # no parallel
 override_dh_auto_build:
