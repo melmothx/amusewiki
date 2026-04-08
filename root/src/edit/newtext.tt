@@ -1,6 +1,7 @@
-[% # -*- mode: html -*- %]
+[% # -*- mode: web -*- %]
 
-[% INCLUDE 'include/ckeditor.tt' %]
+<link rel="stylesheet" href="[% c.uri_for('/static/js/jodit/jodit.min.css') %]">
+<script src="[% c.uri_for('/static/js/jodit/jodit.min.js') %]"></script>
 
 [% form_action %]
 
@@ -355,18 +356,15 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-      $.ajax({
-          url: "[% c.uri_for_action('/api/ckeditor') %]",
-      }).done(function(data) {
-          $('#textbody').ckeditor(data);
-          data.height = 100;
-          $('#notes').ckeditor(data);
-          $('#teaser').ckeditor(data);
-      }).fail(function() {
-          $('#textbody').ckeditor();
-          $('#notes').ckeditor({ height: 100 });
-          $('#teaser').ckeditor({ height: 100 });
-      });
+      if (document.getElementById('textbody')) {
+          Jodit.make('#textbody', { buttons: ['bold', 'italic', 'underline', '|', 'ul', 'ol'] });
+      }
+      if (document.getElementById('notes')) {
+          Jodit.make('#notes', { buttons: ['bold', 'italic' ] });
+      }
+      if (document.getElementById('teaser')) {
+          Jodit.make('#teaser', { buttons: ['bold', 'italic' ] });
+      }
       $('.ajax-check-uri').on('keyup', function() {
           var el = $(this);
           var query = { uri: el.val() };

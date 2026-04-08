@@ -1,6 +1,8 @@
-[% # -*- mode: html -*- %]
+[% # -*- mode: web -*- %]
 
-[% INCLUDE 'include/ckeditor.tt' %]
+<link rel="stylesheet" href="[% c.uri_for('/static/js/jodit/jodit.min.css') %]">
+<script src="[% c.uri_for('/static/js/jodit/jodit.min.js') %]"></script>
+
 
 <div class="center">
   <h3>[% loc('HTML/Word Importer') %]</h3>
@@ -28,16 +30,5 @@
 [% END %]
 
 <script type="text/javascript">
-  $(document).ready(function() {
-      $.ajax({
-          url: "[% c.uri_for_action('/api/ckeditor') %]",
-      }).done(function(data) {
-          $('#html_body').ckeditor(data);
-      }).fail(function() {
-          $('#html_body').ckeditor();
-      });
-  });
-
-
-
+ const editor = Jodit.make('#html_body', { buttons: ['bold', 'italic', 'underline', '|', 'ul', 'ol'] });
 </script>
