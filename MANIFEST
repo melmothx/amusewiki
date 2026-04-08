@@ -1792,6 +1792,8 @@ root/static/js/diff/diff_match_patch_uncompressed.js
 root/static/js/diff/README.txt
 root/static/js/imagesloaded.pkgd.js
 root/static/js/imagesloaded.pkgd.min.js
+root/static/js/jodit/jodit.min.css
+root/static/js/jodit/jodit.min.js
 root/static/js/jquery-3.7.0.js
 root/static/js/jquery-3.7.0.min.js
 root/static/js/jquery-3.7.0.min.map
