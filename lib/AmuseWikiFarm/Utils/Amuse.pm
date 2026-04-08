@@ -19,7 +19,7 @@ use JSON::MaybeXS ();
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;
 use Path::Tiny;
-use File::MimeInfo::Magic qw/mimetype/;
+use File::MimeInfo::Magic ();
 use Imager;
 use Cwd;
 use constant ROOT => getcwd();
@@ -43,6 +43,16 @@ our @EXPORT_OK = qw/muse_file_info
                     unicode_uri_fragment
                     cover_filename_is_valid
                     muse_filename_is_valid/;
+
+
+sub mimetype {
+    # handle aliases
+    my $mime = File::MimeInfo::Magic::mimetype(@_);
+    my %aliases = (
+                   'video/vnd.avi' => 'video/x-msvideo',
+                  );
+    return $aliases{$mime || ''} || $mime;
+}
 
 =head1 NAME
 

@@ -13,7 +13,6 @@ use DateTime;
 use File::Spec;
 use File::Temp;
 use File::Copy qw/copy move/;
-use File::MimeInfo::Magic qw/mimetype/;
 use File::Copy qw/copy/;
 use Try::Tiny;
 use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
@@ -1034,7 +1033,7 @@ sub add_file {
     return unless -f $filename;
     die "Look like we're in the wrong path!, bbfiles dir not found"
       unless -d $self->filedir;
-    my $mime = mimetype($filename) || "";
+    my $mime = AmuseWikiFarm::Utils::Amuse::mimetype($filename) || "";
     my $ext;
     if ($mime eq 'image/jpeg') {
         $ext = '.jpg';

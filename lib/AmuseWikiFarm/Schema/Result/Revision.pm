@@ -175,7 +175,6 @@ use Digest::SHA;
 use DateTime;
 
 use Text::Amuse::Compile::Utils qw/read_file append_file write_file/;
-use File::MimeInfo::Magic qw/mimetype/;
 use Text::Amuse::Functions qw/muse_fast_scan_header/;
 use Date::Parse;
 use Text::Amuse;
@@ -552,7 +551,7 @@ sub add_attachment {
         $out{error} = [ "[_1] doesn't exist", $filename ];
         return \%out;
     }
-    my $mime = mimetype($filename) || "";
+    my $mime = AmuseWikiFarm::Utils::Amuse::mimetype($filename) || "";
     my $site = $self->site;
     my $ext = $site->allowed_binary_uploads->{$mime};
     unless ($ext) {

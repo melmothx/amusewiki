@@ -715,7 +715,6 @@ use HTML::TreeBuilder;
 use URI;
 use Data::Dumper::Concise;
 use AmuseWikiFarm::Utils::Paths;
-use File::MimeInfo::Magic qw/mimetype/;
 use constant { PAPER_PAGE_SIZE => 2000 };
 
 has selected_formats => (is => 'ro',

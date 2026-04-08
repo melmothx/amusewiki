@@ -195,8 +195,8 @@ __PACKAGE__->has_many(
 
 use Path::Tiny ();
 use AmuseWikiFarm::Utils::Paths ();
+use AmuseWikiFarm::Utils::Amuse ();
 use AmuseWikiFarm::Log::Contextual;
-use File::MimeInfo::Magic qw/mimetype/;
 use HTML::Entities ();
 use Try::Tiny;
 
@@ -234,7 +234,7 @@ sub annotate {
     if ($self->annotation_type eq 'file' and my $file = $update->{file}) {
         delete $update->{value};
         if (-f $file) {
-            my $mime = mimetype($file);
+            my $mime = AmuseWikiFarm::Utils::Amuse::mimetype($file);
             my $all_mime = AmuseWikiFarm::Utils::Paths::served_mime_types();
             my %mimes = reverse %$all_mime;
             if (my $ext = $mimes{$mime}) {
