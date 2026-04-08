@@ -11,6 +11,7 @@ use DateTime;
 use Try::Tiny;
 use Data::Dumper;
 use AmuseWikiFarm::Log::Contextual;
+use HTTP::Tiny;
 
 has staging => (is => 'ro', isa => Bool, default => 1);
 
