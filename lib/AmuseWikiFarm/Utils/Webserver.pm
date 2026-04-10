@@ -36,12 +36,6 @@ E.g.
 
 =head1 ACCESSORS
 
-=head2 ckeditor_location
-
-Default to C</usr/share/javascript/ckeditor> or
-C<root/static/js/ckeditor>. If the directory it's not found, it will
-use the CDN.
-
 =head2 highlight_location
 
 Default to C</usr/share/javascript/highlight.js> or
@@ -101,39 +95,6 @@ the commands to be run by root to install them.
 
 =cut
 
-
-has ckeditor_use_cdn => ( is => 'ro',
-                          lazy => 1,
-                          isa => 'Bool',
-                          builder => '_build_ckeditor_use_cdn',
-                        );
-
-has ckeditor_location => (
-                          is => 'ro',
-                          default => sub {
-                              my $system_wide = '/usr/share/javascript/ckeditor';
-                              my $local = File::Spec->rel2abs(File::Spec->catdir(qw/root static js ckeditor/));
-                              if (-d $local) {
-                                  return $local;
-                              }
-                              elsif (-d $system_wide) {
-                                  return $system_wide;
-                              }
-                              else {
-                                  return '';
-                              }
-                          },
-                          isa => 'Str');
-
-sub _build_ckeditor_use_cdn {
-    my $self = shift;
-    if (my $location = $self->ckeditor_location) {
-        if (-d $location) {
-            return 0;
-        }
-    }
-    return 1;
-}
 
 has highlight_use_cdn => (is => 'ro',
                           lazy => 1,
@@ -344,7 +305,7 @@ sub generate_nginx_config {
 
 INCLUDE
 
-    foreach my $cdn_or_local (qw/ckeditor highlight/) {
+    foreach my $cdn_or_local (qw/highlight/) {
         my $method = $cdn_or_local . '_location';
         my $use_cdn = $cdn_or_local . '_use_cdn';
         unless ($self->$use_cdn) {

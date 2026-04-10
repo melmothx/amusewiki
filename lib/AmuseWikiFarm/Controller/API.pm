@@ -151,67 +151,6 @@ sub lexicon :Chained('api') :PathPart('lexicon.json') :Args(0) {
     $c->detach($c->view('JSON'));
 }
 
-sub ckeditor :Chained('api') :Args(0) {
-    my ($self, $c) = @_;
-    my $lang = $c->stash->{current_locale_code} || 'en';
-    my $config = {
-                  language => $lang,
-                  toolbar => 'AmuseWiki',
-                  toolbar_AmuseWiki => [
-                                        {
-                                         name => 'document',
-                                         items => [ 'Source'],
-                                        },
-                                        {
-                                         name =>  'clipboard',
-                                         items  =>  [
-                                                     'Cut',
-                                                     'Copy',
-                                                     'Paste',
-                                                     'PasteText',
-                                                     'PasteFromWord',
-                                                     '-',
-                                                     'Undo',
-                                                     'Redo'
-                                                    ],
-                                        },
-                                        {
-                                         name =>  'editing',
-                                         items  =>  [
-                                                      'Find',
-                                                      'Replace',
-                                                      '-',
-                                                      'SelectAll',
-                                                     ],
-                                        },
-                                        {
-                                         name =>  'basicstyles',
-                                         items  =>  [
-                                                     'Bold',
-                                                     'Italic',
-                                                     '-',
-                                                     'RemoveFormat'
-                                                    ],
-                                        },
-                                        {
-                                         name => 'paragraph',
-                                         items  => [
-                                                    'NumberedList',
-                                                    'BulletedList',
-                                                    '-',
-                                                    'Blockquote',
-                                                   ],
-                                        },
-                                        {
-                                         name =>  'styles',
-                                         items  => [ 'Format'],
-                                        }
-                                       ],
-                 };
-    $c->stash(json => $config);
-    $c->detach($c->view('JSON'));
-}
-
 sub legacy_links :Chained('api') :PathPart('legacy-links') :Args(0) {
     my ($self, $c)  = @_;
     my @redirections = $c->stash->{site}->legacy_links
