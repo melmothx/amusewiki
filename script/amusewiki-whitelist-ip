@@ -19,7 +19,6 @@ GetOptions ('reset' => \$reset,
             'site=s' => \@site_ids,
             'add=s' => \@add,
             'remove=s' => \@remove,
-            'reset' => \$reset,
             'list' => \$list,
             'all' => \$all_sites) or die;
 
