@@ -53,6 +53,18 @@ use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse ();
 use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
 
+# Constant time comparison algorithm to prevent timing attacks. The secret
+# string should be the second argument, to avoid leaking information about
+# the length of the string.
+
+sub _secure_compare {
+    my ($one, $two) = @_;
+    my $r = length $one != length $two;
+    $two = $one if $r;
+    $r |= ord(substr $one, $_) ^ ord(substr $two, $_) for 0 .. length($one) - 1;
+    return $r == 0;
+}
+
 sub authorize_ip :Chained('/site_no_auth') :PathPart('authorize-ip') :Args(1) {
     my ($self, $c, $token) = @_;
     $self->redirect_to_secure($c);
@@ -60,9 +72,10 @@ sub authorize_ip :Chained('/site_no_auth') :PathPart('authorize-ip') :Args(1) {
     my $site = $c->stash->{site};
     my $ip = $c->req->address;
     my $ok;
+    my @users = $c->model('DB::User')->search({ api_access_token => { '!=' => '' } })->all;
     if ($token) {
       USER:
-        foreach my $user ($c->model('DB::User')->search({ api_access_token => $token })) {
+        foreach my $user (grep { _secure_compare($token, $_->api_access_token) } @users) {
             if ($user->roles->find({ role => 'root' }) or
                 $user->user_sites->find({ site_id => $site->id })) {
                 log_info { "IP $ip authorized by " . $user->username };
@@ -95,6 +108,7 @@ sub authorize_ip :Chained('/site_no_auth') :PathPart('authorize-ip') :Args(1) {
         $c->response->body("$ip has been authorized\n");
     }
     else {
+        log_info { "Failed attempt against access token" };
         $c->detach('/not_permitted');
     }
 }
