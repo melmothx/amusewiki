@@ -82,7 +82,7 @@ $mech->content_like(qr/class="list-group-item\ clearfix"
 $mech->get_ok('/topics/war');
 
 if ($tt_escape_single_quotes) {
-    $mech->content_contains(q{<title>Ratovi&quot; i&#39; &amp; terorizam | </title>});
+    $mech->content_contains(q{<title>Ratovi&quot; i&#39;  &amp; terorizam | </title>});
 }
 else {
     $mech->content_contains(q{<title>Ratovi&quot; i'  &amp; terorizam | </title>});
