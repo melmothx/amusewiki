@@ -9,11 +9,13 @@ use Getopt::Long;
 use Pod::Usage;
 use AmuseWikiFarm::Schema;
 
-my ($all, $help, %set);
+my ($all, $help, %set, @get);
 
 GetOptions('set=s%' => \%set,
            'help' => \$help,
-           'all' => \$all);
+           'get=s' => \@get,
+           'all' => \$all)
+  or die;
 
 if ($help) {
     pod2usage;
@@ -30,7 +32,7 @@ amusewiki-set-site-variable - Set a site option from the command line.
 
 =head1 SYNOPSIS
 
-Usage: amusewiki-set-site-variable [ --all | site_id site_id_2 ... ] --set name=value [ --set ... ]
+Usage: amusewiki-set-site-variable [ --all | site_id site_id_2 ... ] [ --set name=value [ --set ... ] [ [ --get name ] --get name2 ]
 
 Set a site option from the command line. The site IDs should be passed
 as arguments, or you can use C<--all> to affect all of them.
@@ -63,6 +65,16 @@ foreach my $id (@sites) {
         foreach my $k (keys %set) {
             print "Updating $id $k => $set{$k}\n";
             $site->update_option_value($k => $set{$k});
+        }
+        if (@sites == 1 and @get == 1) {
+            print $site->get_option_value($get[0]) . "\n";
+        }
+        else {
+            foreach my $k (@get) {
+                printf "%s value for %s: %s\n",
+                  $id, $k,
+                  $site->get_option_value($k) || 'NULL',
+            }
         }
     }
     else {

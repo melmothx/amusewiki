@@ -4107,6 +4107,12 @@ sub update_option_value {
     return $self->get_from_storage;
 }
 
+sub get_option_value {
+    my ($self, $option) = @_;
+    my %columns = map { $_ => 1 } $self->columns;
+    return $columns{$option} ? $self->$option : $self->get_option($option);
+}
+
 sub get_option {
     my ($self, $lookup) = @_;
     if ($lookup) {
