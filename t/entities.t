@@ -17,11 +17,17 @@ use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Utils::LexiconMigration;
 use Test::Differences;
+use Template;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
 binmode $builder->failure_output, ":utf8";
 binmode $builder->todo_output,    ":utf8";
+
+my $sample = q{[% "'" | html %]};
+my $tt_escape;
+Template->new->process(\$sample, {}, \$tt_escape);
+my $tt_escape_single_quotes = $tt_escape ne "'";
 
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
@@ -74,16 +80,33 @@ $mech->content_like(qr/class="list-group-item\ clearfix"
 
 
 $mech->get_ok('/topics/war');
-$mech->content_contains(q{<title>Ratovi&quot; i'  &amp; terorizam | </title>});
+
+if ($tt_escape_single_quotes) {
+    $mech->content_contains(q{<title>Ratovi&quot; i&#39; &amp; terorizam | </title>});
+}
+else {
+    $mech->content_contains(q{<title>Ratovi&quot; i'  &amp; terorizam | </title>});
+}
 $mech->content_contains(q{<h1><span id="amw-category-details-category-name">Ratovi&quot; i&#39; &lt;državni&gt; &amp; terorizam}) or diag $mech->content;
 
 $mech->get_ok('/topics/topic');
 # title is escaped with | html, so "'" is preserved
-$mech->content_like(qr/<title>&quot;'topic'&quot;/) or diag $mech->content;
+if ($tt_escape_single_quotes) {
+    $mech->content_like(qr/<title>&quot;&#39;topic&#39;&quot;/) or diag $mech->content;
+}
+else {
+    $mech->content_like(qr/<title>&quot;'topic'&quot;/) or diag $mech->content;
+}
 $mech->content_contains(q{<h1><span id="amw-category-details-category-name">&quot;&#39;topic&#39;&quot;});
 
 $mech->get_ok('/library/a-test');
-$mech->content_contains(q{<title> &quot;'hello'&quot; | </title>});
+
+if ($tt_escape_single_quotes) {
+    $mech->content_contains(q{<title> &quot;&#39;hello&#39;&quot; | </title>});
+}
+else {
+    $mech->content_contains(q{<title> &quot;'hello'&quot; | </title>});
+}
 
 # login as root and try the debug_loc
 $mech->get_ok('/login');

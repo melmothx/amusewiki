@@ -10,6 +10,7 @@ use AmuseWikiFarm::Schema;
 use Test::More tests => 112;
 use Data::Dumper::Concise;
 use YAML qw/Dump Load/;
+use Template;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf8)";
@@ -308,7 +309,15 @@ foreach my $checked ([ single => $node_ids[0] ], [ all => \@node_ids ]) {
                        button => 'update',
                       );
     my ($page_title) = $mech->content =~ m{<title>(.*?)</title>};
-    is $page_title, q{'&quot;Io&quot;' | };
+    my $sample = q{[% "'" | html %]};
+    my $tt_escape;
+    Template->new->process(\$sample, {}, \$tt_escape);
+    if ($tt_escape ne "'") {
+        is $page_title, q{&#39;&quot;Io&quot;&#39; | };
+    }
+    else {
+        is $page_title, q{'&quot;Io&quot;' | };
+    }
 }
 
 

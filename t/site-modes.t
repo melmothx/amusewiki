@@ -171,7 +171,7 @@ sub common_tests {
     is ($mech->uri->path, '/bookbuilder');
     $mech->get('/bookbuilder/add/alsdflasdf');
     is ($mech->status, '404', "Page alsdflasdf not found");
-    $mech->content_contains("Couldn't add the text");
+    $mech->content_like(qr{Couldn\S+t add the text});
     $mech->get('/action/special/new');
     is $mech->status, 401;
     $mech->content_contains('__auth_pass');

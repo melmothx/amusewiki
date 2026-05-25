@@ -12,6 +12,7 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use HTML::Entities;
+use Template;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
 binmode $builder->failure_output, ":utf8";
@@ -104,6 +105,15 @@ $mech->tick(fix_footnotes => 1);
 $mech->tick(fix_nbsp => 1);
 $mech->tick(remove_nbsp => 1);
 
+my $sample = q{[% "'" | html %]};
+my $tt_escape;
+Template->new->process(\$sample, {}, \$tt_escape);
+my $escape_charset = q{<>"};
+if ($tt_escape ne "'") {
+    $escape_charset = q{<>"'};
+}
+
+
 foreach my $lang (sort keys %expected) {
     my $body =<<"EOF";
 #title $title
@@ -121,7 +131,7 @@ EOF
     $mech->form_id('museform');
     my $got_body = $mech->value('body');
     like $got_body, qr/\Q$expected{$lang}\E \[1\]/;
-    $mech->content_contains(encode_entities($expected{$lang}, q{<>"}) .  ' [1]') or die $mech->content;
+    $mech->content_contains(encode_entities($expected{$lang}, $escape_charset) .  ' [1]') or die $mech->content;
     my $exp_string =
       q{[1] footnote [[http://amusewiki.org][amusewiki.org]] nbsp nbsp removed};
     like $got_body, qr/\Q$exp_string\E/, "links, nbsp, footnotes fixed";
