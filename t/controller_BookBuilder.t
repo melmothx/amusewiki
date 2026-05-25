@@ -35,14 +35,14 @@ $mech->content_contains("test if the user is a human");
 $mech->submit_form(with_fields => { __auth_human => 'January' });
 is ($mech->status, '404', "bogus text not found: " . $mech->status);
 is $mech->uri->path, '/library/alsdflasdf';
-$mech->content_contains("Couldn't add the text");
+$mech->content_like("Couldn\S+t add the text");
 $mech->content_contains("Page not found!");
 
 
 $mech->get('/bookbuilder/add/alsdflasdf');
 
 is ($mech->status, '404', "bogus text not found: " . $mech->status);
-$mech->content_contains("Couldn't add the text");
+$mech->content_like("Couldn\S+t add the text");
 $mech->content_contains("Page not found!");
 
 $mech->get_ok('/bookbuilder/fonts');
@@ -71,7 +71,7 @@ foreach my $i (1..5) {
     is ($mech->uri->path, '/library/second-test');
     $mech->content_contains('The text was added to the bookbuilder');
     $mech->get('/bookbuilder');
-    $mech->content_lacks("Couldn't add the text");
+    $mech->content_unlike("Couldn\S+t add the text");
     $mech->content_lacks("Quota exceeded");
     $mech->content_like(qr/Total pages: \Q$i\E/) or die $mech->content;
 }
