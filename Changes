@@ -4,6 +4,13 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.614 2026-05-28
+
+ - Fix tests broken by recent Template release (html filter)
+ - Add --get option to amusewiki-set-site-variable (useful in scripts)
+ - Use constant time comparison to check the access token to avoid
+   timing attacks against it [SECURITY]
+
 2.613 2026-04-10
 
  - Replaced CKeditor with Jodit
