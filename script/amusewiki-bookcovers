@@ -1,0 +1,99 @@
+#!/usr/bin/env perl
+
+BEGIN {
+    die "Do not run this as root" unless $>;
+    $ENV{DBICDH_DEBUG} = 1;
+}
+use strict;
+use warnings;
+use utf8;
+use lib 'lib';
+use DBIx::Class::DeploymentHandler;
+use AmuseWikiFarm::Schema;
+use Getopt::Long;
+use YAML qw/DumpFile LoadFile/;
+use Data::Dumper;
+use Path::Tiny;
+use File::Copy::Recursive qw/dircopy/;
+
+my ($import_site, $export_site, $working_dir);
+
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
+
+GetOptions(
+           'export=s' => \$export_site,
+           'import=s' => \$import_site,
+           'working-directory=s' => \$working_dir,
+          ) or die;
+
+if ($import_site && $export_site) {
+    die "--import and --export are mutually exclusive"
+}
+die "Missing --working-directory option" unless $working_dir;
+
+my $wd = path($working_dir);
+$wd->mkpath;
+
+my @bc_fields = (qw/
+                       title
+                       coverheight
+                       coverwidth
+                       spinewidth
+                       flapwidth
+                       wrapwidth
+                       bleedwidth
+                       marklength
+                       foldingmargin
+                       template
+                       font_name
+                       language_code
+                       comments
+                       created
+                   /
+                );
+my @tk_fields = (qw/
+                       token_name token_value sorting_pos
+                   /);
+
+
+if ($export_site) {
+    if (my $site = $schema->resultset('Site')->find($export_site)) {
+        foreach my $bc ($site->bookcovers) {
+            my %dbdata = $bc->get_columns;
+            my %data = map { $_ => $dbdata{$_} } @bc_fields;
+            my @tokens;
+            foreach my $token ($bc->bookcover_tokens) {
+                push @tokens, { map { $_ => $token->$_ } @tk_fields };
+            }
+            $data{tokens} = \@tokens;
+            # print Dumper \%data;
+            DumpFile($wd->child($bc->bookcover_id . '.yaml')->stringify, \%data);
+            dircopy($bc->working_dir->stringify, $wd->child($bc->bookcover_id)->stringify);
+        }
+        print "$export_site left in $wd\n";
+    }
+}
+if ($import_site) {
+    if (my $site = $schema->resultset('Site')->find($import_site)) {
+        foreach my $file ($wd->children(qr/\.yaml$/)) {
+            my $sourcedir = $wd->child($file->basename(qr/\.yaml/));
+            if ($sourcedir->exists) {
+                print "$file\n";
+                my $data = LoadFile("$file");
+                print Dumper($data);
+                my @tokens = @{ delete $data->{tokens} };
+                my $bc = $site->bookcovers->create($data);
+                foreach my $tk (@tokens) {
+                    $bc->bookcover_tokens->create($tk);
+                }
+                my $bcwd = $bc->working_dir;
+                print "Creating $bcwd from $sourcedir\n";
+                dircopy("$sourcedir", "$bcwd");
+            }
+            else {
+                print "$sourcedir does not exist\n";
+            }
+        }
+    }
+}
+
