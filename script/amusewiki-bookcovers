@@ -15,21 +15,71 @@ use YAML qw/DumpFile LoadFile/;
 use Data::Dumper;
 use Path::Tiny;
 use File::Copy::Recursive qw/dircopy/;
+use Pod::Usage;
 
-my ($import_site, $export_site, $working_dir);
-
-my $schema = AmuseWikiFarm::Schema->connect('amuse');
+my ($import_site, $export_site, $working_dir, $help);
 
 GetOptions(
            'export|e=s' => \$export_site,
            'import|i=s' => \$import_site,
            'working-directory|d=s' => \$working_dir,
+           'help|h' => \$help,
           ) or die;
+
+=head1 NAME
+
+amusewiki-bookcover - export/import bookcovers across sites/instances
+
+=head1 SYNOPSIS
+
+ amusewiki-bookcover --export SITE-ID --working-directory EXPORT-DIR
+
+ amusewiki-bookcover --import SITE-ID --working-directory IMPORT-DIR
+
+The import and export options are mutually exclusive.
+
+The working directory will be created by the export and consumed by
+the import.
+
+=head2 OPTIONS
+
+=over 4
+
+=item --help
+
+Show this help and exit.
+
+=item --working-directory DIRECTORY
+
+Mandatory. The import will consume the directory produced by the
+export (so you can copy that over to other server and import the
+bookcovers there, or on the same server if you want to copy the
+bookcovers across sites).
+
+=item --export SITE-ID
+
+Export the site's bookcovers in the working directory.
+
+=item --import SITE-ID
+
+Perform an import of the bookcovers in the working directory into the
+site with this ID.
+
+=back
+
+=cut
+
+if ($help) {
+    pod2usage;
+    exit 2;
+}
 
 if ($import_site && $export_site) {
     die "--import and --export are mutually exclusive"
 }
 die "Missing --working-directory option" unless $working_dir;
+
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $wd = path($working_dir);
 $wd->mkpath;
