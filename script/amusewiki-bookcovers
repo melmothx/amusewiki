@@ -21,9 +21,9 @@ my ($import_site, $export_site, $working_dir);
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 GetOptions(
-           'export=s' => \$export_site,
-           'import=s' => \$import_site,
-           'working-directory=s' => \$working_dir,
+           'export|e=s' => \$export_site,
+           'import|i=s' => \$import_site,
+           'working-directory|d=s' => \$working_dir,
           ) or die;
 
 if ($import_site && $export_site) {
@@ -66,6 +66,7 @@ if ($export_site) {
                 push @tokens, { map { $_ => $token->$_ } @tk_fields };
             }
             $data{tokens} = \@tokens;
+            $data{username} = $bc->username;
             # print Dumper \%data;
             DumpFile($wd->child($bc->bookcover_id . '.yaml')->stringify, \%data);
             dircopy($bc->working_dir->stringify, $wd->child($bc->bookcover_id)->stringify);
@@ -78,10 +79,14 @@ if ($import_site) {
         foreach my $file ($wd->children(qr/\.yaml$/)) {
             my $sourcedir = $wd->child($file->basename(qr/\.yaml/));
             if ($sourcedir->exists) {
-                print "$file\n";
                 my $data = LoadFile("$file");
-                print Dumper($data);
                 my @tokens = @{ delete $data->{tokens} };
+                if (my $username = delete $data->{username}) {
+                    if (my $user = $schema->resultset('User')->find({ username => $username })) {
+                        print "Assigning to user $username\n";
+                        $data->{user_id} = $user->id;
+                    }
+                }
                 my $bc = $site->bookcovers->create($data);
                 foreach my $tk (@tokens) {
                     $bc->bookcover_tokens->create($tk);
