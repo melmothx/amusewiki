@@ -1906,6 +1906,7 @@ root/static/js/simpleUpload.min.js
 root/themes/test-theme/layout.tt
 root/themes/test-theme/library.tt
 script/add-texlive-to-path.sh
+script/amusewiki-bookcovers
 script/amusewiki-bootstrap-archive
 script/amusewiki-check-compiler
 script/amusewiki-clone-site

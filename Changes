@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.615 2026-07-30
+
+ - Add bookcover import/export
+
 2.614 2026-05-28
 
  - Fix tests broken by recent Template release (html filter)
