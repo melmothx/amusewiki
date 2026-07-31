@@ -283,8 +283,11 @@ __PACKAGE__->many_to_many("aggregations", "node_aggregations", "aggregation");
 __PACKAGE__->many_to_many("categories", "node_categories", "category");
 __PACKAGE__->many_to_many("titles", "node_titles", "title");
 
-
-
+sub sqlt_deploy_hook {
+    my ($self, $sqlt_table) = @_;
+    $sqlt_table->add_index(name => 'node_site_id_sorting_pos_uri_index',
+                           fields => [qw/site_id sorting_pos uri/]);
+}
 
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse::Functions qw/muse_to_object
