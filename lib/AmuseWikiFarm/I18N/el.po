@@ -3303,7 +3303,7 @@ msgid "These texts are missing the unique id."
 msgstr "Από τα κείμενα αυτά λείπει το μοναδικό αναγνωριστικό."
 
 msgid ""
-"They can be texts, special texts, authors, topics, custom categories, "
+"They can be texts, special pages, authors, topics, custom categories, "
 "aggregations and series."
 msgstr ""
 
@@ -4230,7 +4230,7 @@ msgstr ""
 #~ msgid "Such an URI already exists"
 #~ msgstr "Ένα τέτοιο URI υπάρχει ήδη"
 
-#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgid "They can be texts, special pages, authors or topics."
 #~ msgstr "Μπορεί να είναι κείμενα, ειδικά κείμενα, συγγραφείς ή θέματα."
 
 #~ msgid "Nodes"

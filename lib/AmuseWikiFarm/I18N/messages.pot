@@ -3753,7 +3753,7 @@ msgid "These texts are missing the unique id."
 msgstr ""
 
 #: root/src/include/edit_node.tt:86
-msgid "They can be texts, special texts, authors, topics, custom categories, aggregations and series."
+msgid "They can be texts, special pages, authors, topics, custom categories, aggregations and series."
 msgstr ""
 
 #: root/src/admin/edit.tt:1367

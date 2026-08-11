@@ -3035,7 +3035,7 @@ msgid "These texts are missing the unique id."
 msgstr "这些文本缺少唯一的ID。"
 
 msgid ""
-"They can be texts, special texts, authors, topics, custom categories, "
+"They can be texts, special pages, authors, topics, custom categories, "
 "aggregations and series."
 msgstr ""
 
@@ -3867,7 +3867,7 @@ msgstr ""
 #~ msgid "Such an URI already exists"
 #~ msgstr "URI已存在"
 
-#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgid "They can be texts, special pages, authors or topics."
 #~ msgstr "它们可以是文本、特殊文本、作者或话题。"
 
 #~ msgid "Nodes"

@@ -3189,7 +3189,7 @@ msgid "These texts are missing the unique id."
 msgstr "На овие текстови им недостига единствениот id."
 
 msgid ""
-"They can be texts, special texts, authors, topics, custom categories, "
+"They can be texts, special pages, authors, topics, custom categories, "
 "aggregations and series."
 msgstr ""
 
@@ -4066,7 +4066,7 @@ msgstr ""
 #~ msgid "Such an URI already exists"
 #~ msgstr "Такво URI веќе постои"
 
-#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgid "They can be texts, special pages, authors or topics."
 #~ msgstr "Можат да бидат текстови, специјални текстови, автори или теми."
 
 #~ msgid "Nodes"

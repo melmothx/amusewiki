@@ -3183,7 +3183,7 @@ msgid "These texts are missing the unique id."
 msgstr "Ezeknek a szövegeknek nincsen egyedi azonosítójuk"
 
 msgid ""
-"They can be texts, special texts, authors, topics, custom categories, "
+"They can be texts, special pages, authors, topics, custom categories, "
 "aggregations and series."
 msgstr ""
 
@@ -4081,7 +4081,7 @@ msgstr ""
 #~ msgid "Such an URI already exists"
 #~ msgstr "A megadott URI már létezik"
 
-#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgid "They can be texts, special pages, authors or topics."
 #~ msgstr "Lehetnek szövegek, speciális szövegek, szerzők és témák."
 
 #~ msgid "texts sorted by topics"

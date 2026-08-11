@@ -3089,7 +3089,7 @@ msgid "These texts are missing the unique id."
 msgstr "Il manque l'ID unique de ces textes."
 
 msgid ""
-"They can be texts, special texts, authors, topics, custom categories, aggregations and series."
+"They can be texts, special pages, authors, topics, custom categories, aggregations and series."
 msgstr ""
 "Il peut s'agir de textes, de textes spéciaux, d'auteur·e·s, de thèmes, de catégories "
 "personnalisées, d'agrégations et de séries."

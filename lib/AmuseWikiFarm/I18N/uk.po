@@ -3154,7 +3154,7 @@ msgid "These texts are missing the unique id."
 msgstr "Цим текстам бракує унікальних ідентифікаторів."
 
 msgid ""
-"They can be texts, special texts, authors, topics, custom categories, "
+"They can be texts, special pages, authors, topics, custom categories, "
 "aggregations and series."
 msgstr ""
 
@@ -4030,5 +4030,5 @@ msgstr ""
 #~ msgid "Edit annotations"
 #~ msgstr "Редагувати анотації"
 
-#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgid "They can be texts, special pages, authors or topics."
 #~ msgstr "Це можуть бути тексти, особливі тексти, автор_ки чи теми."

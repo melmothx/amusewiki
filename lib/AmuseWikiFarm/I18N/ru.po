@@ -3149,7 +3149,7 @@ msgid "These texts are missing the unique id."
 msgstr "У этих текстов отсутствуют уникальные идентификаторы."
 
 msgid ""
-"They can be texts, special texts, authors, topics, custom categories, "
+"They can be texts, special pages, authors, topics, custom categories, "
 "aggregations and series."
 msgstr ""
 
@@ -4021,7 +4021,7 @@ msgstr ""
 #~ msgid "Such an URI already exists"
 #~ msgstr "Текст с таким URI уже существует. Вы можете указать свой URI"
 
-#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgid "They can be texts, special pages, authors or topics."
 #~ msgstr "Это могут быть тексты, специальные тексты, авторы и темы."
 
 #~ msgid "Nodes"

@@ -3288,7 +3288,7 @@ msgid "These texts are missing the unique id."
 msgstr "Acestor texte le lipsește ID-ul unic."
 
 msgid ""
-"They can be texts, special texts, authors, topics, custom categories, "
+"They can be texts, special pages, authors, topics, custom categories, "
 "aggregations and series."
 msgstr ""
 
@@ -4200,7 +4200,7 @@ msgstr ""
 #~ msgid "Such an URI already exists"
 #~ msgstr "Un astfel de URI deja există"
 
-#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgid "They can be texts, special pages, authors or topics."
 #~ msgstr "Acestea pot fi texte, texte speciale, autori sau subiecte."
 
 #~ msgid "Added"

@@ -3217,7 +3217,7 @@ msgid "These texts are missing the unique id."
 msgstr "Al ĉi tiuj tekstoj mankas la unika identigilo."
 
 msgid ""
-"They can be texts, special texts, authors, topics, custom categories, "
+"They can be texts, special pages, authors, topics, custom categories, "
 "aggregations and series."
 msgstr ""
 
@@ -4103,7 +4103,7 @@ msgstr ""
 #~ msgid "Such an URI already exists"
 #~ msgstr "Tia URI jam ekzistas"
 
-#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgid "They can be texts, special pages, authors or topics."
 #~ msgstr "Ili povas esti tekstoj, specialaj tekstoj, aŭtoroj aŭ temoj."
 
 #~ msgid "Nodes"

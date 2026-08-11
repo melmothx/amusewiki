@@ -83,7 +83,7 @@
         <div class="col-sm-12">
           <label for="attached_uris">
             [% loc('List of paths to attach to this collection, one per line.') %]
-            [% loc('They can be texts, special texts, authors, topics, custom categories, aggregations and series.') %]
+            [% loc('They can be texts, special pages, authors, topics, custom categories, aggregations and series.') %]
             [% loc('Example') %]: <code>/library/text</code>
           </label>
         </div>

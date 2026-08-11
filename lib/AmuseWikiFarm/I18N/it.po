@@ -3236,7 +3236,7 @@ msgid "These texts are missing the unique id."
 msgstr "Questi testi sono senza identificativo."
 
 msgid ""
-"They can be texts, special texts, authors, topics, custom categories, "
+"They can be texts, special pages, authors, topics, custom categories, "
 "aggregations and series."
 msgstr ""
 
@@ -4137,7 +4137,7 @@ msgstr ""
 #~ msgid "Such an URI already exists"
 #~ msgstr "URI già esistente"
 
-#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgid "They can be texts, special pages, authors or topics."
 #~ msgstr "Possono essere testi, testi speciali, autori o argomenti."
 
 #~ msgid "Added"

@@ -3015,7 +3015,7 @@ msgid "These texts are missing the unique id."
 msgstr "これらの記事は、一意のIDが欠落しています。"
 
 msgid ""
-"They can be texts, special texts, authors, topics, custom categories, "
+"They can be texts, special pages, authors, topics, custom categories, "
 "aggregations and series."
 msgstr ""
 
@@ -3850,7 +3850,7 @@ msgstr ""
 #~ msgid "Such an URI already exists"
 #~ msgstr "このURIは既に存在しています"
 
-#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgid "They can be texts, special pages, authors or topics."
 #~ msgstr "記事、特殊な記事、著者またはトピックです。"
 
 #~ msgid "Nodes"

@@ -3249,7 +3249,7 @@ msgid "These texts are missing the unique id."
 msgstr "A estos textos els falta l'identificador únic."
 
 msgid ""
-"They can be texts, special texts, authors, topics, custom categories, "
+"They can be texts, special pages, authors, topics, custom categories, "
 "aggregations and series."
 msgstr ""
 "Poden ser textos, textos especials, autors(es, temes, categories "

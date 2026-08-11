@@ -3203,10 +3203,10 @@ msgid "These texts are missing the unique id."
 msgstr "Bu metinlerde tekil kimlik eksik."
 
 msgid ""
-"They can be texts, special texts, authors, topics, custom categories, "
+"They can be texts, special pages, authors, topics, custom categories, "
 "aggregations and series."
 msgstr ""
-"They can be texts, special texts, authors, topics, custom categories, "
+"They can be texts, special pages, authors, topics, custom categories, "
 "aggregations and series."
 
 msgid ""
@@ -4098,7 +4098,7 @@ msgstr ""
 #~ msgid "Edit annotations"
 #~ msgstr "Ek açıklamaları düzenle"
 
-#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgid "They can be texts, special pages, authors or topics."
 #~ msgstr "Bunlar metin, özel metin, yazar ya da konu olabilir."
 
 #~ msgid ""

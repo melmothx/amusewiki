@@ -3031,7 +3031,7 @@ msgid "These texts are missing the unique id."
 msgstr "Dessa texter saknar det unika ID:t."
 
 msgid ""
-"They can be texts, special texts, authors, topics, custom categories, "
+"They can be texts, special pages, authors, topics, custom categories, "
 "aggregations and series."
 msgstr ""
 

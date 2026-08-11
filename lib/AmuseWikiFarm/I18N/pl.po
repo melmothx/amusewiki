@@ -3065,7 +3065,7 @@ msgid "These texts are missing the unique id."
 msgstr ""
 
 msgid ""
-"They can be texts, special texts, authors, topics, custom categories, "
+"They can be texts, special pages, authors, topics, custom categories, "
 "aggregations and series."
 msgstr ""
 
@@ -3935,7 +3935,7 @@ msgstr ""
 #~ msgid "Such an URI already exists"
 #~ msgstr "Taki URI już istnieje"
 
-#~ msgid "They can be texts, special texts, authors or topics."
+#~ msgid "They can be texts, special pages, authors or topics."
 #~ msgstr "Mogą być tekstami, specjalnymi tekstami bądź tematami."
 
 #~ msgid "Filter"

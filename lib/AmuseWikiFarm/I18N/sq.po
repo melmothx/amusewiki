@@ -3129,7 +3129,7 @@ msgid "These texts are missing the unique id."
 msgstr "Ketyre teksteve iu mungon ID e veçantë."
 
 msgid ""
-"They can be texts, special texts, authors, topics, custom categories, "
+"They can be texts, special pages, authors, topics, custom categories, "
 "aggregations and series."
 msgstr ""
 
