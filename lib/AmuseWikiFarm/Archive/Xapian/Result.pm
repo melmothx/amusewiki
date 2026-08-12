@@ -139,6 +139,12 @@ sub facet_tokens {
             }
         }
     }
+    # loc('Document type');
+    # loc('Number of pages');
+    # loc('Date');
+    # loc('Publication date');
+    # loc('book');
+    # loc('article');
     push @out, {
                 label => $loc->('Document type'),
                 facets => $self->text_types,
