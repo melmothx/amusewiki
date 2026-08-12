@@ -860,6 +860,9 @@ msgstr "Nu folosiți fonturi bold"
 msgid "Do you also need a cover?"
 msgstr ""
 
+msgid "Document type"
+msgstr ""
+
 msgid "Domain"
 msgstr "Domeniu"
 
@@ -2094,6 +2097,9 @@ msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr ""
 "Numărul celor mai recente înregistrări care urmează să fie afișate pe RSS "
 "(un număr întreg)"
+
+msgid "Number of pages"
+msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
@@ -3588,8 +3594,8 @@ msgstr "Listă neordonată"
 msgid "Unpublished texts"
 msgstr "Texte nepublicate"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Nu este suportat file type-ul %1"
 
@@ -3684,8 +3690,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Utilizator %1 creat!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Utiilizator %1 șters"
 
@@ -4020,8 +4026,14 @@ msgstr "affects only the frontend webserver configuration"
 msgid "any"
 msgstr "any"
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr "generată automat dacă nu este prezentă, folosind autorul și titlul"
+
+msgid "book"
+msgstr ""
 
 msgid "code and monospace"
 msgstr "code and monospace"

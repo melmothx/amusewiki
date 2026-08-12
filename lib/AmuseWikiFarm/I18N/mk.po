@@ -838,6 +838,9 @@ msgstr "Не користи здебелен фонт"
 msgid "Do you also need a cover?"
 msgstr "Ти треба ли и насловница?"
 
+msgid "Document type"
+msgstr ""
+
 msgid "Domain"
 msgstr ""
 
@@ -2036,6 +2039,9 @@ msgstr "Број на задачи"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Бројот на последни записи за приказ на RSS (цел број)"
+
+msgid "Number of pages"
+msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
@@ -3474,8 +3480,8 @@ msgstr "Ненумерирана листа"
 msgid "Unpublished texts"
 msgstr "Необјавени текстови"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Погрешен вид на фајл %1"
 
@@ -3570,8 +3576,8 @@ msgstr "Корисник"
 msgid "User %1 created!"
 msgstr "Корисникот %1 е креиран!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Корисникот %1 избришан"
 
@@ -3891,8 +3897,14 @@ msgstr "се однесува само на конфигурацијата на 
 msgid "any"
 msgstr "која било"
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr "се генерира автоматски доколку недостига, со автор и наслов"
+
+msgid "book"
+msgstr ""
 
 msgid "code and monospace"
 msgstr "обликување на кодот"

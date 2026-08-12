@@ -834,6 +834,9 @@ msgstr "Не использовать жирный шрифт"
 msgid "Do you also need a cover?"
 msgstr ""
 
+msgid "Document type"
+msgstr "Тип документа"
+
 msgid "Domain"
 msgstr ""
 
@@ -2017,6 +2020,9 @@ msgstr "Число заданий"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Число последних записей для отображения в RSS (целое)"
+
+msgid "Number of pages"
+msgstr "Число страниц"
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Число результатов для показа на странице (целое)"
@@ -3431,8 +3437,8 @@ msgstr "Маркированный список"
 msgid "Unpublished texts"
 msgstr "Неопубликованные тексты"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Неподдерживаемый формат файла %1"
 
@@ -3526,8 +3532,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Пользователь %1 создан!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Пользователь %1 удалён"
 
@@ -3841,10 +3847,16 @@ msgstr "влияет только на настройку вебсервера"
 msgid "any"
 msgstr "любой"
 
+msgid "article"
+msgstr "статья"
+
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 "если поле оставлено пустым создаётся автоматически с использованием автора и "
 "названия"
+
+msgid "book"
+msgstr "книга"
 
 msgid "code and monospace"
 msgstr "код и моноширинный"
@@ -4155,23 +4167,11 @@ msgstr ""
 #~ msgid "Time is optional."
 #~ msgstr "Время можно не указывать."
 
-#~ msgid "Document type"
-#~ msgstr "Тип документа"
-
-#~ msgid "Number of pages"
-#~ msgstr "Число страниц"
-
 #~ msgid "Published on this site"
 #~ msgstr "Опубликовано на сайте"
 
 #~ msgid "This also makes /mirror/ public"
 #~ msgstr "Это также делает /mirror/ общедоступным"
-
-#~ msgid "article"
-#~ msgstr "статья"
-
-#~ msgid "book"
-#~ msgstr "книга"
 
 #~ msgid "Hide options"
 #~ msgstr "Скрыть опции"

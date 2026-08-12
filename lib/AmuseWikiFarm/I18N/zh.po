@@ -812,6 +812,9 @@ msgstr "不要使用粗体字体"
 msgid "Do you also need a cover?"
 msgstr ""
 
+msgid "Document type"
+msgstr ""
+
 msgid "Domain"
 msgstr ""
 
@@ -1942,6 +1945,9 @@ msgstr "任务数"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "在RSS上显示的最新条目数（整数）"
+
+msgid "Number of pages"
+msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "在分页页面上显示的结果数量（整数）。"
@@ -3308,8 +3314,8 @@ msgstr "无序列表"
 msgid "Unpublished texts"
 msgstr "未发表的文本"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "不支持的文件类型%1"
 
@@ -3399,8 +3405,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "用户%1已创建！"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "用户%1已删除"
 
@@ -3692,8 +3698,14 @@ msgstr "只影响到前端webserver的配置"
 msgid "any"
 msgstr "任意"
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr "若留空，将使用作者和标题自动生成"
+
+msgid "book"
+msgstr ""
 
 msgid "code and monospace"
 msgstr "代码和等距文本"

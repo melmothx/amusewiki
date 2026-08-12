@@ -797,6 +797,9 @@ msgstr ""
 msgid "Do you also need a cover?"
 msgstr ""
 
+msgid "Document type"
+msgstr ""
+
 msgid "Domain"
 msgstr ""
 
@@ -1888,6 +1891,9 @@ msgid "Number of jobs"
 msgstr ""
 
 msgid "Number of latest entries to display on the RSS (an integer)"
+msgstr ""
+
+msgid "Number of pages"
 msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
@@ -3217,8 +3223,8 @@ msgstr "Unordered list"
 msgid "Unpublished texts"
 msgstr ""
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr ""
 
@@ -3308,8 +3314,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr ""
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr ""
 
@@ -3585,7 +3591,13 @@ msgstr ""
 msgid "any"
 msgstr ""
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
+msgstr ""
+
+msgid "book"
 msgstr ""
 
 msgid "code and monospace"

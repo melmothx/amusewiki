@@ -856,6 +856,9 @@ msgstr "Не използвай получерни шрифтове"
 msgid "Do you also need a cover?"
 msgstr ""
 
+msgid "Document type"
+msgstr ""
+
 msgid "Domain"
 msgstr ""
 
@@ -2084,6 +2087,9 @@ msgstr "Брой задачи"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Брой последни текстове, които ще се покажат на RSS feed-а (цяло число)"
+
+msgid "Number of pages"
+msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Брой резултати за показване на страници с пагинация (цяло число)"
@@ -3537,8 +3543,8 @@ msgstr "Неподреден списък"
 msgid "Unpublished texts"
 msgstr "Текстове, дръпнати от публикация"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Неподдържан тип на файла %1"
 
@@ -3635,8 +3641,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Потребител %1 беше създаден!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Потребител %1 беше изтрит"
 
@@ -3965,8 +3971,14 @@ msgstr "засяга само конфигурацията на frontent уеб 
 msgid "any"
 msgstr "всякакви"
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr "автоматично се произвежда, ако не присъстват автор и заглавие"
+
+msgid "book"
+msgstr ""
 
 msgid "code and monospace"
 msgstr "код с monospace шрифт"

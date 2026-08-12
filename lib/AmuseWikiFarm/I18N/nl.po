@@ -851,6 +851,9 @@ msgstr "Gebruik geen vette lettertpyes"
 msgid "Do you also need a cover?"
 msgstr ""
 
+msgid "Document type"
+msgstr "Documenttype"
+
 msgid "Domain"
 msgstr ""
 
@@ -2057,6 +2060,9 @@ msgstr "Aantal taken"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Aantal laatste inzendingen om weer te geven op de RSS (een integer)"
+
+msgid "Number of pages"
+msgstr "Aantal paginas"
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
@@ -3504,8 +3510,8 @@ msgstr "Ongeordende lijst"
 msgid "Unpublished texts"
 msgstr "Ongepubliceerde teksten"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Niet-ondersteund bestandsformaat %1"
 
@@ -3599,8 +3605,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Gebruiker %1 aangemaakt!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Gebruiker %1 verwijderd"
 
@@ -3924,9 +3930,15 @@ msgstr "heeft alleen invloed op de frontend webserver configuratie"
 msgid "any"
 msgstr "elk"
 
+msgid "article"
+msgstr "artikel"
+
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 "automatisch gegenereerd indien niet aanwezig, op basis van auteur en titel"
+
+msgid "book"
+msgstr "boek"
 
 msgid "code and monospace"
 msgstr "code en niet-proportioneel (monospace)"
@@ -4216,20 +4228,8 @@ msgstr ""
 #~ msgid "Time is optional."
 #~ msgstr "Tijd is optioneel."
 
-#~ msgid "Document type"
-#~ msgstr "Documenttype"
-
-#~ msgid "Number of pages"
-#~ msgstr "Aantal paginas"
-
 #~ msgid "Published on this site"
 #~ msgstr "Gepubliceerd op deze site"
 
 #~ msgid "This also makes /mirror/ public"
 #~ msgstr "Dit maakt ook /mirror/ publiek"
-
-#~ msgid "article"
-#~ msgstr "artikel"
-
-#~ msgid "book"
-#~ msgstr "boek"

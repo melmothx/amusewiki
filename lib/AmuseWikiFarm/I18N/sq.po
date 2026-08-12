@@ -844,6 +844,9 @@ msgstr ""
 msgid "Do you also need a cover?"
 msgstr ""
 
+msgid "Document type"
+msgstr ""
+
 msgid "Domain"
 msgstr ""
 
@@ -2005,6 +2008,9 @@ msgstr ""
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Numri i shënimeve të fundit për ti shfaqur në RSS (integjer)"
+
+msgid "Number of pages"
+msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Numri i rezultateve për ti shfaqur në faqe të numëruara (integjer)"
@@ -3420,8 +3426,8 @@ msgstr "Lista e renditur"
 msgid "Unpublished texts"
 msgstr "Tekst i papublikuar"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Tip i dokumentit i pasuportuar %1"
 
@@ -3513,8 +3519,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Shfrytëzuesi %1 u krijua!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Shfrytëzuesi %1 u fshi"
 
@@ -3817,10 +3823,16 @@ msgstr ""
 msgid "any"
 msgstr "cilido"
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 "gjenerohet automatikisht nëse nuk është prezente duke përdorur autorin dhe "
 "titullin"
+
+msgid "book"
+msgstr ""
 
 msgid "code and monospace"
 msgstr "Kodi dhe monospace"

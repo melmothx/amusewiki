@@ -840,6 +840,9 @@ msgstr "از فونت برجسته استفاده نکنید"
 msgid "Do you also need a cover?"
 msgstr ""
 
+msgid "Document type"
+msgstr ""
+
 msgid "Domain"
 msgstr "دامنه"
 
@@ -2038,6 +2041,9 @@ msgstr "تعداد برنامه‌ها"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "تعداد آخرین ورودی ها برای نمایش در RSS (عدد)"
+
+msgid "Number of pages"
+msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "تعداد نتایج برای نمایش در صفحات صفحه‌بندی شده (عدد)"
@@ -3459,8 +3465,8 @@ msgstr "لیست نامرتب"
 msgid "Unpublished texts"
 msgstr "متن‌های منتشر نشده"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "فایل %1 پشتیبانی نمی‌شود"
 
@@ -3555,8 +3561,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "کاربر %1 ایجاد شد!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "کاربر %1 حذف شد"
 
@@ -3877,9 +3883,15 @@ msgstr "فقط بر پیکربندی فرانت-اند وب سرور تأثیر 
 msgid "any"
 msgstr "هرچیزی"
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 "در صورت عدم وجود، با استفاده از نویسنده و عنوان به طور خودکار تولید می‌شود"
+
+msgid "book"
+msgstr ""
 
 msgid "code and monospace"
 msgstr ""

@@ -799,6 +799,9 @@ msgstr "太字のフォントは使用しないでください"
 msgid "Do you also need a cover?"
 msgstr ""
 
+msgid "Document type"
+msgstr ""
+
 msgid "Domain"
 msgstr ""
 
@@ -1928,6 +1931,9 @@ msgstr "ジョブの数"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "RSSに表示する最新のエントリ数（整数）"
+
+msgid "Number of pages"
+msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "ページ番号付きのページに表示する結果の数（整数）"
@@ -3285,8 +3291,8 @@ msgstr "順不同リスト"
 msgid "Unpublished texts"
 msgstr "未公開記事"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "サポートされていないファイルタイプ%1"
 
@@ -3381,8 +3387,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "ユーザー%1が作成されました！"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "ユーザ%1は削除されました"
 
@@ -3676,8 +3682,14 @@ msgstr "フロントエンドのWebサーバの設定のみに影響がありま
 msgid "any"
 msgstr "どれでも"
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr "存在しない場合は、著者名とタイトルを使用して自動生成"
+
+msgid "book"
+msgstr ""
 
 msgid "code and monospace"
 msgstr "コードとモノスペース"

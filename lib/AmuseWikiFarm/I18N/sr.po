@@ -826,6 +826,9 @@ msgstr "Ne koristi podebljane fontove"
 msgid "Do you also need a cover?"
 msgstr ""
 
+msgid "Document type"
+msgstr "Vrsta dokumenta"
+
 msgid "Domain"
 msgstr ""
 
@@ -2005,6 +2008,9 @@ msgstr "Broj zadataka"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Broj tekstova u RSS-u"
+
+msgid "Number of pages"
+msgstr "Broj stranica"
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Broj rezultata po stranici kad popis ima više stranica (pagination)"
@@ -3412,8 +3418,8 @@ msgstr "Običan popis"
 msgid "Unpublished texts"
 msgstr "Neobjavljeni tekstovi"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Pogrešna vrsta fajla: %1"
 
@@ -3506,8 +3512,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Korisnik %1 stvoren!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Korisnik %1 izbrisan"
 
@@ -3820,8 +3826,14 @@ msgstr "tiče se samo konfiguracije webservera"
 msgid "any"
 msgstr "bilo koja"
 
+msgid "article"
+msgstr "članak"
+
 msgid "automatically generated if not present, using author and title"
 msgstr "automatski generiran ako nedostaje, s autorom i naslovom"
+
+msgid "book"
+msgstr "knjiga"
 
 msgid "code and monospace"
 msgstr "oblikovanje koda"
@@ -4121,23 +4133,11 @@ msgstr ""
 #~ msgid "Time is optional."
 #~ msgstr "Sat je neobavezan"
 
-#~ msgid "Document type"
-#~ msgstr "Vrsta dokumenta"
-
-#~ msgid "Number of pages"
-#~ msgstr "Broj stranica"
-
 #~ msgid "Published on this site"
 #~ msgstr "Datum objavljivanja na ovom sajtu"
 
 #~ msgid "This also makes /mirror/ public"
 #~ msgstr "/mirror/ će isto biti javan"
-
-#~ msgid "article"
-#~ msgstr "članak"
-
-#~ msgid "book"
-#~ msgstr "knjiga"
 
 #~ msgid "Hide options"
 #~ msgstr "Sakrij opcije"

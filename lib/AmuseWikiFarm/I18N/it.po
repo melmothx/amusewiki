@@ -851,6 +851,9 @@ msgstr "Non usare caratteri in grassetto"
 msgid "Do you also need a cover?"
 msgstr ""
 
+msgid "Document type"
+msgstr "Tipo di documento"
+
 msgid "Domain"
 msgstr "Dominio"
 
@@ -2075,6 +2078,9 @@ msgstr "Numero di lavori"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Numero di testi da mostrare nel feed RSS (numero intero)"
+
+msgid "Number of pages"
+msgstr "Numero di pagine"
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Numero di risultati da mostrare nelle paginazioni (un numero intero)"
@@ -3529,8 +3535,8 @@ msgstr "Lista puntata"
 msgid "Unpublished texts"
 msgstr "Testi non pubblicati"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Tipo di file (%1) non supportato"
 
@@ -3629,8 +3635,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Utenza %1 creata!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Utenza %1 rimossa"
 
@@ -3959,8 +3965,14 @@ msgstr "ha effetto solo sulla configurazione automatica del server web"
 msgid "any"
 msgstr "qualsiasi"
 
+msgid "article"
+msgstr "articolo"
+
 msgid "automatically generated if not present, using author and title"
 msgstr "generato automaticamente se non presente, usando autore e titolo"
+
+msgid "book"
+msgstr "libro"
 
 msgid "code and monospace"
 msgstr "formattazione codice"
@@ -4285,23 +4297,11 @@ msgstr ""
 #~ msgid "Time is optional."
 #~ msgstr "L'ora è opzionale"
 
-#~ msgid "Document type"
-#~ msgstr "Tipo di documento"
-
-#~ msgid "Number of pages"
-#~ msgstr "Numero di pagine"
-
 #~ msgid "Published on this site"
 #~ msgstr "Data di pubblicazione su questo sito"
 
 #~ msgid "This also makes /mirror/ public"
 #~ msgstr "Ciò rende il percorso /mirror/ pubblico"
-
-#~ msgid "article"
-#~ msgstr "articolo"
-
-#~ msgid "book"
-#~ msgstr "libro"
 
 #~ msgid "Hide options"
 #~ msgstr "Nascondi le opzioni"

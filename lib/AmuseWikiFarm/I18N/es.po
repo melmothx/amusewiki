@@ -839,6 +839,9 @@ msgstr ""
 msgid "Do you also need a cover?"
 msgstr ""
 
+msgid "Document type"
+msgstr ""
+
 msgid "Domain"
 msgstr ""
 
@@ -2020,6 +2023,9 @@ msgstr ""
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Número de últimas publicaciones para mostrar en el RSS (un entero)"
+
+msgid "Number of pages"
+msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Número de resultados a mostrar en páginas con paginación (un entero)"
@@ -3451,8 +3457,8 @@ msgstr "Lista con viñetas"
 msgid "Unpublished texts"
 msgstr "Textos no publicados"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Tipo de archivo %1 no soportado"
 
@@ -3545,8 +3551,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "¡Se creó la/el usuaria/o %1!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Usuaria/o %1 borrada/o"
 
@@ -3858,8 +3864,14 @@ msgstr "afecta solo la configuración del frontend del servidor web"
 msgid "any"
 msgstr "cualquiera"
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr "generado automáticamente si no se ocupa, usando autor/a y título"
+
+msgid "book"
+msgstr ""
 
 msgid "code and monospace"
 msgstr "código y mono espaciado"

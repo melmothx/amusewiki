@@ -865,6 +865,9 @@ msgstr "Μη χρησιμοποιείς έντονη γραμματοσειρά 
 msgid "Do you also need a cover?"
 msgstr ""
 
+msgid "Document type"
+msgstr ""
+
 msgid "Domain"
 msgstr ""
 
@@ -2112,6 +2115,9 @@ msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr ""
 "Αριθμός των τελευταίων καταχωρήσεων που θα εμφανίζονται στο RSS (ακέραιος "
 "αριθμός)"
+
+msgid "Number of pages"
+msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
@@ -3609,8 +3615,8 @@ msgstr "Μη διατεταγμένη λίστα"
 msgid "Unpublished texts"
 msgstr "Αδημοσίευτα κείμενα"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Μη υποστηριζόμενος τύπος αρχείου %1"
 
@@ -3708,8 +3714,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Ο/Η χρήστης %1 δημιουργήθηκε!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "Ο/Η χρήστης %1 διαγράφηκε"
 
@@ -4049,10 +4055,16 @@ msgstr "επηρεάζει μόνο τη διαμόρφωση του frontend we
 msgid "any"
 msgstr "οποιοδήποτε"
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 "δημιουργείται αυτόματα εάν δεν υπάρχει, χρησιμοποιώντας τον συγγραφέα και "
 "τον τίτλο"
+
+msgid "book"
+msgstr ""
 
 msgid "code and monospace"
 msgstr "κώδικας και monospace"

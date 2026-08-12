@@ -852,6 +852,9 @@ msgstr "Kalın fontları kullanma"
 msgid "Do you also need a cover?"
 msgstr "Bir kapağa da ihtiyacın var mı?"
 
+msgid "Document type"
+msgstr ""
+
 msgid "Domain"
 msgstr "Alan adı"
 
@@ -2053,6 +2056,9 @@ msgstr "İş sayısı"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "RSS üzerinde gösterilecek en son gönderilerin sayısı (tam sayı)"
+
+msgid "Number of pages"
+msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Her sayfada gösterilecek sonuç sayısı (tam sayı)"
@@ -3503,8 +3509,8 @@ msgstr "Sırasız liste"
 msgid "Unpublished texts"
 msgstr "Yayınlanmamış metinler"
 
-#. ($mime_type)
 #. ($mime)
+#. ($mime_type)
 msgid "Unsupported file type %1"
 msgstr "Desteklenmeyen dosya tipi %1"
 
@@ -3598,8 +3604,8 @@ msgstr "Kullanıcı"
 msgid "User %1 created!"
 msgstr "%1 kullanıcısı yaratıldı!"
 
-#. ($user->username)
 #. ($c->stash->{user}->username)
+#. ($user->username)
 msgid "User %1 deleted"
 msgstr "%1 kullanıcısı silindi"
 
@@ -3918,8 +3924,14 @@ msgstr "sadece frontend web sunucusu konfigurasyonunu etkiler"
 msgid "any"
 msgstr "herhangi"
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr "yoksa yazar ve başlık kullanılarak otomatik oluşturulur"
+
+msgid "book"
+msgstr ""
 
 msgid "code and monospace"
 msgstr "kod ve sabit aralıklı"
