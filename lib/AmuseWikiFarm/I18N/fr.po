@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2026-08-10 20:44-0400\n"
+"PO-Revision-Date: 2026-08-13 13:28-0400\n"
 "Last-Translator: Val <vavalulu05@proton.me>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -216,7 +216,7 @@ msgstr "Agrégation"
 
 msgid "Aggregation editing is disabled (autoimport file present)"
 msgstr ""
-"La modification de l'agrégation est désactivée (autoimport file présent)"
+"La modification de l'agrégation est désactivée (« autoimport file » présent)"
 
 msgid "Aggregations"
 msgstr "Agrégation"
@@ -425,7 +425,7 @@ msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Correction de liaison en millimètres (marge intérieure supplémentaire)"
 
 msgid "Bleed Width (mm)"
-msgstr ""
+msgstr "Largeur de la marge perdue (mm)"
 
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
@@ -469,6 +469,9 @@ msgid ""
 "        between parens. With this option they will use per-page alpha\n"
 "        numbering"
 msgstr ""
+"Par défaut, les notes de bas de pages secondaires utilisent une numérotation "
+"arabe entre accolades. Avec cette option, elles utiliseront une numérotation "
+"alphabétique par page."
 
 msgid "By number of pages, ascending"
 msgstr "Par nombre de pages, croissant"
@@ -508,6 +511,7 @@ msgstr "Catégories"
 
 msgid "Category editing is disabled (autoimport file present)"
 msgstr ""
+"La modification de la catégorie est désactivée (« autoimport file » présent)"
 
 #. ($site->canonical)
 #. (site.canonical)
@@ -625,7 +629,7 @@ msgid "Comments"
 msgstr "Commentaires"
 
 msgid "Commit ID"
-msgstr ""
+msgstr "ID de commit"
 
 msgid "Completed"
 msgstr "Complété"
@@ -817,7 +821,7 @@ msgid "Did you mean:"
 msgstr "Vouliez-vous dire :"
 
 msgid "Diff"
-msgstr ""
+msgstr "Diff"
 
 msgid "Differences"
 msgstr "Différences"
@@ -827,9 +831,9 @@ msgid ""
 "        \"templates\" (ASCII only). Do not set it unless you know\n"
 "        exactly what you are doing"
 msgstr ""
-"Répertoire avec des modèles dans le dépôt du site, par exemple "
-"« modèles » (ASCII seulement). Ne pas le définir à moins de savoir "
-"exactement ce que vous êtes en train de faire"
+"Répertoire avec des modèles dans le dépôt du site, par exemple « modèles » "
+"(ASCII seulement). Ne pas le définir à moins de savoir exactement ce que "
+"vous êtes en train de faire"
 
 msgid "Disable /mirror/ URL for anonymous users"
 msgstr "Désactiver l'URL /mirroir/ pour les utilisateurices anonymes"
@@ -861,10 +865,10 @@ msgid "Do you also need a cover?"
 msgstr "Avez-vous aussi besoin d'une couverture ?"
 
 msgid "Document type"
-msgstr ""
+msgstr "Type de document"
 
 msgid "Domain"
-msgstr ""
+msgstr "Domaine"
 
 msgid "Done"
 msgstr "Fait"
@@ -1142,7 +1146,7 @@ msgid "Fixed topic list"
 msgstr "Liste de thèmes fixe"
 
 msgid "Flap Width (mm)"
-msgstr ""
+msgstr "Largeur des rabats (mm)"
 
 msgid "Folding Margin"
 msgstr "Marge de plie"
@@ -1329,7 +1333,7 @@ msgid "Higher division factor means narrower margins"
 msgstr "Un facteur de division plus élevé crée des marges plus étroites"
 
 msgid "Highest priority format"
-msgstr ""
+msgstr "Format avec la plus haute priorité"
 
 msgid "Home"
 msgstr "Accueil"
@@ -1651,7 +1655,7 @@ msgid "Invalid username"
 msgstr "Nom d'utilisateurice invalide"
 
 msgid "Issue"
-msgstr ""
+msgstr "Publication"
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -2089,7 +2093,7 @@ msgstr ""
 "Nombre de derniers ajouts à afficher sur le flux RSS (un nombre entier)"
 
 msgid "Number of pages"
-msgstr ""
+msgstr "Nombre de pages"
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
@@ -3262,7 +3266,7 @@ msgid ""
 "They can be texts, special pages, authors, topics, custom categories, "
 "aggregations and series."
 msgstr ""
-"Il peut s'agir de textes, de textes spéciaux, d'auteur·e·s, de thèmes, de "
+"Il peut s'agir de textes, de pages spéciales, d'auteur·e·s, de thèmes, de "
 "catégories personnalisées, d'agrégations et de séries."
 
 msgid ""
@@ -3788,8 +3792,9 @@ msgstr "Flux de travaux"
 msgid "Working locally?"
 msgstr "Travailler localement ?"
 
+#, fuzzy
 msgid "Wrap Width (mm)"
-msgstr ""
+msgstr "Largeur du « wrap » (mm)"
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
@@ -3882,8 +3887,8 @@ msgid "You can tune them editing them here."
 msgstr ""
 
 msgid ""
-"You can use the following prefixes to search a word in a specific field, e."
-"g. \"title:example\""
+"You can use the following prefixes to search a word in a specific field, "
+"e.g. \"title:example\""
 msgstr ""
 "Vous pouvez utiliser un des préfixes suivants pour rechercher un mot dans un "
 "champ spécifique, par exemple « title:exemple »"
@@ -3999,7 +4004,7 @@ msgid "any"
 msgstr "quelconque"
 
 msgid "article"
-msgstr ""
+msgstr "article"
 
 msgid "automatically generated if not present, using author and title"
 msgstr ""
@@ -4007,7 +4012,7 @@ msgstr ""
 "titre"
 
 msgid "book"
-msgstr ""
+msgstr "livre"
 
 msgid "code and monospace"
 msgstr "code et espacement fixe"
