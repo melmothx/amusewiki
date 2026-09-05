@@ -157,23 +157,38 @@ XAPIAN_UPGRADE: {
     }
 }
 
-my $jobber = AmuseWikiFarm::Utils::Jobber->new(
-                                               schema => $schema,
+undef $schema;
+
+sub create_jobber {
+    return AmuseWikiFarm::Utils::Jobber->new(
+                                               schema => AmuseWikiFarm::Schema->connect('amuse'),
                                                polling_interval => $polling_interval,
                                                max_parallel => $max_parallel,
                                               );
-
+}
+my $jobber = create_jobber();
 print "Starting jobber's loop with polling interval of " . $jobber->polling_interval . " seconds with pid $$\n";
 print "Lockfile is " . $jobber->pidfile . "\n";
 print "Max parallel jobs: " . $jobber->max_parallel . "\n";
 
 while (1) {
+    my $in_error;
     try {
         $jobber->main_loop;
     } catch {
         my $err = $_;
         log_error { "Error $err on the jobber's main loop" };
+        $in_error = 1;
     };
+    if ($in_error) {
+        sleep 60;
+        try {
+            $jobber = create_jobber();
+        }
+        catch {
+            sleep 30;
+        };
+    }
 }
     
 
