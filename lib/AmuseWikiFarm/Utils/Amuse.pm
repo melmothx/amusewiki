@@ -1063,6 +1063,7 @@ sub known_langs {
             eu => 'Euskara',
             hu => 'Magyar',
             bn => 'বাংলা',
+            ko => '한국어',
            };
 }
 
