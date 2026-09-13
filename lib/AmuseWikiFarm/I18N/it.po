@@ -1400,8 +1400,8 @@ msgid ""
 "If it's not the case, please open a bug report at https://github.com/"
 "melmothx/amusewiki/issues"
 msgstr ""
-"Se così non fosse, per cortesia riferisci il problema qui: https://github."
-"com/melmothx/amusewiki/issues"
+"Se così non fosse, per cortesia riferisci il problema qui: https://"
+"github.com/melmothx/amusewiki/issues"
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
@@ -3635,8 +3635,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Utenza %1 creata!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Utenza %1 rimossa"
 
@@ -3848,8 +3848,8 @@ msgid "You can tune them editing them here."
 msgstr "Puoi modificarli qui."
 
 msgid ""
-"You can use the following prefixes to search a word in a specific field, e."
-"g. \"title:example\""
+"You can use the following prefixes to search a word in a specific field, "
+"e.g. \"title:example\""
 msgstr ""
 "Si possono usare i seguenti prefissi per cercare una parola in un\n"
 "campo specifico, ad esempio: \"title:titolo\" (i prefissi sono in\n"

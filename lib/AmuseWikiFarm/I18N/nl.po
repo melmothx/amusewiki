@@ -3605,8 +3605,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Gebruiker %1 aangemaakt!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Gebruiker %1 verwijderd"
 
@@ -3817,8 +3817,8 @@ msgid "You can tune them editing them here."
 msgstr "Je kun ze bijwerken door ze hier aan te passen."
 
 msgid ""
-"You can use the following prefixes to search a word in a specific field, e."
-"g. \"title:example\""
+"You can use the following prefixes to search a word in a specific field, "
+"e.g. \"title:example\""
 msgstr ""
 "Je kunt de volgende voorvoegsels gebruiken om te zoeken naar een woord in "
 "een specifiek veld, bijvoorbeeld \"title:example\""

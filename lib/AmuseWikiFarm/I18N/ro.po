@@ -3690,8 +3690,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Utilizator %1 creat!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Utiilizator %1 șters"
 
@@ -3913,8 +3913,8 @@ msgid "You can tune them editing them here."
 msgstr "Puteți să le ajustați editându-le aici."
 
 msgid ""
-"You can use the following prefixes to search a word in a specific field, e."
-"g. \"title:example\""
+"You can use the following prefixes to search a word in a specific field, "
+"e.g. \"title:example\""
 msgstr ""
 "Puteți utiliza următoarele prefixe pentru a căuta un cuvânt într-un anumit "
 "câmp, de exemplu, \"title:example\""

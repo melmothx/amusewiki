@@ -1397,8 +1397,8 @@ msgid ""
 "If it's not the case, please open a bug report at https://github.com/"
 "melmothx/amusewiki/issues"
 msgstr ""
-"Se ĝi ne estas la kazo, bonvolu malfermi cimon-raporton ĉe https://github."
-"com/melmothx/amusewiki/issues"
+"Se ĝi ne estas la kazo, bonvolu malfermi cimon-raporton ĉe https://"
+"github.com/melmothx/amusewiki/issues"
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
@@ -3608,8 +3608,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Uzanto% 1 kreita!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Uzanto% 1 forigita"
 
@@ -3820,8 +3820,8 @@ msgid "You can tune them editing them here."
 msgstr "You can tune them by editing them here."
 
 msgid ""
-"You can use the following prefixes to search a word in a specific field, e."
-"g. \"title:example\""
+"You can use the following prefixes to search a word in a specific field, "
+"e.g. \"title:example\""
 msgstr ""
 "Vi povas uzi la jenajn prefiksojn por serĉi vorton en specifa kampo, ekz. "
 "\"titolo: ekzemplo\""

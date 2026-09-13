@@ -809,9 +809,9 @@ msgid ""
 "        \"templates\" (ASCII only). Do not set it unless you know\n"
 "        exactly what you are doing"
 msgstr ""
-"Diretório com modelos no repositório do site, por exemplo "
-"\"templates\" (apenas ASCII). Não configure exceto se você souber exatamente "
-"o que está fazendo"
+"Diretório com modelos no repositório do site, por exemplo \"templates\" "
+"(apenas ASCII). Não configure exceto se você souber exatamente o que está "
+"fazendo"
 
 msgid "Disable /mirror/ URL for anonymous users"
 msgstr "Desabilitar /mirror/ URL para usuários anônimos"
@@ -3559,8 +3559,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Usuário %1 criado!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Usuário %1 deletado"
 
@@ -3765,8 +3765,8 @@ msgid "You can tune them editing them here."
 msgstr "Você pode ajustar eles editando aqui."
 
 msgid ""
-"You can use the following prefixes to search a word in a specific field, e."
-"g. \"title:example\""
+"You can use the following prefixes to search a word in a specific field, "
+"e.g. \"title:example\""
 msgstr ""
 "Você pode usar os seguintes prefixos para procurar uma palavra em um campo "
 "específico, por exemplo \"title:exemplo\""

@@ -3387,8 +3387,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "ユーザー%1が作成されました！"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "ユーザ%1は削除されました"
 
@@ -3571,8 +3571,8 @@ msgid "You can tune them editing them here."
 msgstr "ここで編集することでチューンできます。"
 
 msgid ""
-"You can use the following prefixes to search a word in a specific field, e."
-"g. \"title:example\""
+"You can use the following prefixes to search a word in a specific field, "
+"e.g. \"title:example\""
 msgstr ""
 "次のプレフィックスを使用して特定のフィールドで単語を検索できます、例：「タイ"
 "トル：例」。"

@@ -3576,8 +3576,8 @@ msgstr "Корисник"
 msgid "User %1 created!"
 msgstr "Корисникот %1 е креиран!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Корисникот %1 избришан"
 
@@ -3785,8 +3785,8 @@ msgid "You can tune them editing them here."
 msgstr "Можеш да ги подесиш овде."
 
 msgid ""
-"You can use the following prefixes to search a word in a specific field, e."
-"g. \"title:example\""
+"You can use the following prefixes to search a word in a specific field, "
+"e.g. \"title:example\""
 msgstr ""
 "Можеш да ги користиш следните ознаки за да пребараш некој збор во\n"
 "некое одредено поле, на пр. \"title:Наслов\""

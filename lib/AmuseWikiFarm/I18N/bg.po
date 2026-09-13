@@ -192,8 +192,8 @@ msgid ""
 "Additional information (full date, original title, translators, credits, "
 "etc)."
 msgstr ""
-"Допълнителна информация (пълна дата, заглавие на оригинала, преводачи, и т."
-"н.)."
+"Допълнителна информация (пълна дата, заглавие на оригинала, преводачи, и "
+"т.н.)."
 
 msgid "Additional nginx configuration"
 msgstr ""
@@ -879,8 +879,8 @@ msgstr ""
 
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr ""
-"Напр. някаква дума И заглавие(title:\"Моето Заглавие\") И автор(author:"
-"Автор) ИЛИ година(year:2017)"
+"Напр. някаква дума И заглавие(title:\"Моето Заглавие\") И "
+"автор(author:Автор) ИЛИ година(year:2017)"
 
 msgid "EPUB"
 msgstr "EPUB"
@@ -2198,8 +2198,8 @@ msgstr ""
 "        и после сгънати наполовина. Ако имаш повече групи\n"
 "        ще трябва да ги обвържеш заедно като книга.\n"
 "        Ако избереш тази опция, ще имаш и възможността да избереш\n"
-"        големината на групата. Може да бъде фиксирана стойност(4, 8, 18, т."
-"н.),\n"
+"        големината на групата. Може да бъде фиксирана стойност(4, 8, 18, "
+"т.н.),\n"
 "        цялата книга в една група или оптимизирана големина, за да намалиш\n"
 "        броя празни страници."
 
@@ -3641,8 +3641,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Потребител %1 беше създаден!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Потребител %1 беше изтрит"
 
@@ -3858,8 +3858,8 @@ msgid "You can tune them editing them here."
 msgstr "Можеш да ги настроиш тук."
 
 msgid ""
-"You can use the following prefixes to search a word in a specific field, e."
-"g. \"title:example\""
+"You can use the following prefixes to search a word in a specific field, "
+"e.g. \"title:example\""
 msgstr ""
 "Може да използваш следните префикси, за да потърсиш дума в специфично поле, "
 "напр. \"title:пример\"(където \"title\" означава заглавие)"

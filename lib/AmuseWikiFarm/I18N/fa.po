@@ -2400,8 +2400,8 @@ msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
-"پیشوند لیست‌های مرتب شده بسته به نوع لیست مورد نیاز شما ممکن است \".1 \" و \"."
-"آ \" باشد."
+"پیشوند لیست‌های مرتب شده بسته به نوع لیست مورد نیاز شما ممکن است \".1 \" و "
+"\".آ \" باشد."
 
 msgid "Preview"
 msgstr "پیش‌نمایش"
@@ -3561,8 +3561,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "کاربر %1 ایجاد شد!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "کاربر %1 حذف شد"
 
@@ -3770,8 +3770,8 @@ msgid "You can tune them editing them here."
 msgstr "می‌توانید آنها را با ویرایش در اینجا تنظیم کنید."
 
 msgid ""
-"You can use the following prefixes to search a word in a specific field, e."
-"g. \"title:example\""
+"You can use the following prefixes to search a word in a specific field, "
+"e.g. \"title:example\""
 msgstr ""
 "می توانید از پیشوندهای زیر برای جستجوی یک کلمه در یک فیلد خاص استفاده کنید، "
 "برای مثال. \"title: کلمه\"\n"

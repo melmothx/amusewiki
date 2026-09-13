@@ -3357,8 +3357,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr ""
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr ""
 
@@ -3531,8 +3531,8 @@ msgid "You can tune them editing them here."
 msgstr ""
 
 msgid ""
-"You can use the following prefixes to search a word in a specific field, e."
-"g. \"title:example\""
+"You can use the following prefixes to search a word in a specific field, "
+"e.g. \"title:example\""
 msgstr ""
 
 msgid ""

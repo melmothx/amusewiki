@@ -3405,8 +3405,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "用户%1已创建！"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "用户%1已删除"
 
@@ -3541,8 +3541,8 @@ msgid ""
 "The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
 "etc.) is irrelevant."
 msgstr ""
-"您必须指定一个原因，否则该行将不起作用。标题行的顺序（其中有 "
-"\"#title\"，\"#lang\" 等）是无关紧要的。"
+"您必须指定一个原因，否则该行将不起作用。标题行的顺序（其中有 \"#title\"，"
+"\"#lang\" 等）是无关紧要的。"
 
 msgid "You are already logged in"
 msgstr "您已经登录"
@@ -3593,8 +3593,8 @@ msgid "You can tune them editing them here."
 msgstr "你可以在这里调整编辑它们。"
 
 msgid ""
-"You can use the following prefixes to search a word in a specific field, e."
-"g. \"title:example\""
+"You can use the following prefixes to search a word in a specific field, "
+"e.g. \"title:example\""
 msgstr "你可以使用以下前缀来搜索特定领域的单词，例如「title:example」。"
 
 msgid ""

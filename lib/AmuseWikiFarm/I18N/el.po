@@ -3714,8 +3714,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Ο/Η χρήστης %1 δημιουργήθηκε!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Ο/Η χρήστης %1 διαγράφηκε"
 
@@ -3940,8 +3940,8 @@ msgid "You can tune them editing them here."
 msgstr "Μπορείτε να τα συντονίσετε με την επεξεργασία τους εδώ."
 
 msgid ""
-"You can use the following prefixes to search a word in a specific field, e."
-"g. \"title:example\""
+"You can use the following prefixes to search a word in a specific field, "
+"e.g. \"title:example\""
 msgstr ""
 "Μπορείτε να χρησιμοποιήσετε τα ακόλουθα προθέματα για να αναζητήσετε μια "
 "λέξη σε ένα συγκεκριμένο πεδίο, π.χ. \"title:παράδειγμα\""

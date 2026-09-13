@@ -1501,8 +1501,8 @@ msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
-"Pokud máš soubor ve formátu .doc nebo .odr, můžeš ho jednoduše konvertovat,"
-"když jej uložíš jako HTML"
+"Pokud máš soubor ve formátu .doc nebo .odr, můžeš ho jednoduše "
+"konvertovat,když jej uložíš jako HTML"
 
 msgid ""
 "If you request a rebuild when one is ongoing, you will\n"
@@ -3597,8 +3597,8 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Uživatelstvo %1 vytvořeno!"
 
-#. ($c->stash->{user}->username)
 #. ($user->username)
+#. ($c->stash->{user}->username)
 msgid "User %1 deleted"
 msgstr "Uživatelstvo %1 odstraněno"
 
@@ -3809,8 +3809,8 @@ msgid "You can tune them editing them here."
 msgstr "Můžeš je vyladit tím, že je zde upravíš."
 
 msgid ""
-"You can use the following prefixes to search a word in a specific field, e."
-"g. \"title:example\""
+"You can use the following prefixes to search a word in a specific field, "
+"e.g. \"title:example\""
 msgstr ""
 "Můžeš použít následující předpony pro vyhledání slova ve specifickém poli, "
 "např. \"title:example\""
