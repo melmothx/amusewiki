@@ -525,7 +525,11 @@ sub page_number {
 
 sub rows_number {
     my ($self, $rows) = @_;
-    return $self->search(undef, { rows => $self->_check_integer($rows) || 10 });
+    my $requested = $self->_check_integer($rows) || 10;
+    if ($requested > 500) {
+        $requested = 500;
+    }
+    return $self->search(undef, { rows => $requested });
 }
 
 sub _check_integer {
