@@ -4,6 +4,15 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.617 2026-09-14
+
+ - Implement the amusewiki-broadcast script to send a mass email to
+   all the instance users (poor man's mailing list)
+ - Add ko localization file
+ - Updated fr localization (thanks to @Vavalulu)
+ - Limit the max number of rows to 500 in the listings
+ - intercept jobber failure (tentative)
+
 2.616 2026-07-31
 
  - Fix performance problems on /nodes. thanks to @Vavalulu for the
