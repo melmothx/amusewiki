@@ -356,6 +356,10 @@ INCLUDE
         internal;
         alias $amw_home/thumbnails/;
     }
+    location /private/backups/ {
+        internal;
+        alias $amw_home/backups/;
+    }
     location / {
         try_files \$uri \@proxy;
         expires 1w;

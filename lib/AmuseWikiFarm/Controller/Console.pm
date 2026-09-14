@@ -5,6 +5,7 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
+use DateTime;
 
 =head1 NAME
 
@@ -355,6 +356,24 @@ sub git_fine_diff :Chained('root') :PathPart('git-fine-diff') :Args {
     }
     $c->stash(git_urls => $urls);
 }
+
+sub download_backup :Chained('root') :PathPart('download-backup') :Args(0) {
+    my ($self, $c) = @_;
+    my $site = $c->stash->{site};
+    if (my $file = $site->backup_tarball) {
+        if ($file->exists) {
+            $c->stash(
+                      serve_static_file_mime_type => 'application/gzip',
+                      serve_static_file => "$file",
+                     );
+            my $filename = sprintf('%s-backup-%s.tar.gz', $site->id, DateTime->today->ymd);
+            $c->response->headers->header("Content-Disposition", "attachment; filename=$filename");
+            return $c->detach($c->view('StaticFile'));
+        }
+    }
+    $c->detach('/not_found');
+}
+
 
 =head1 AUTHOR
 

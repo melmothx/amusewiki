@@ -232,4 +232,13 @@ sub deserialize_site {
     return $site;
 }
 
+sub backup_trees {
+    my ($self, $logger) = @_;
+    my $done;
+    foreach my $site ($self->all) {
+        $site->make_backup($logger);
+    }
+    return $done;
+}
+
 1;

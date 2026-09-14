@@ -1116,6 +1116,7 @@ use Bytes::Random::Secure;
 use Email::Address;
 use XML::OPDS;
 use YAML ();
+use IPC::Run ();
 
 =head2 repo_root_rel
 
@@ -1729,6 +1730,17 @@ sub staging_dirname {
 sub staging_dir {
     my $self = shift;
     return File::Spec->catdir(ROOT, $self->staging_dirname);
+}
+
+sub backup_directory {
+    my $self = shift;
+    my $dir = Path::Tiny::path(ROOT, backups => $self->id);
+    $dir->mkpath;
+    return $dir;
+}
+
+sub backup_tarball {
+    shift->backup_directory->child('site-backup.tar.gz');
 }
 
 =head2 create_new_text(\%params, $f_class)
@@ -5719,6 +5731,26 @@ sub vhost_already_present {
                                          });
     push @found, @cfound if @cfound;
     return @found;
+}
+
+sub make_backup {
+    my ($self, $logger) = @_;
+    $logger ||= sub {};
+    my $today = DateTime->today->ymd;
+    my $target = $self->backup_tarball;
+    my @exec = (tar => -C => ROOT, -czf => "$target.tmp", $self->repo_root_rel);
+    $logger->("Executing " . join(' ', @exec) . "\n");
+    my ($in, $out, $err);
+    IPC::Run::run \@exec, \$in, \$out, \$err, IPC::Run::timeout(6000)
+      or die "Failure creating tarball";
+    if (rename "$target.tmp", "$target") {
+        $logger->("Produced $target\n");
+        return 1;
+    }
+    else {
+        $logger->("Failure renaming $target.tmp to $target: $!\n");
+        return 0;
+    }
 }
 
 after insert => sub {

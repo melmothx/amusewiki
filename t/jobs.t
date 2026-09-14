@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 33;
+use Test::More tests => 35;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -72,3 +72,15 @@ foreach my $i (1..5) {
 }
 sleep 2;
 ok !$site->jobs->pending->build_custom_format_jobs->count, "queue exausted";
+
+foreach my $s ($schema->resultset('Site')->all) {
+    my $tgz = $s->backup_tarball;
+    if ($tgz->exists) {
+        diag "Removing $tgz";
+        $tgz->remove;
+    }
+}
+$schema->resultset('Site')->backup_trees(sub { diag @_ });;
+
+ok $site->backup_tarball->exists, "Backup is there";
+ok $site->backup_tarball->stat->size, "Backup has non-zero size";
