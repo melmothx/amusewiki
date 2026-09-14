@@ -5743,6 +5743,7 @@ sub make_backup {
     my ($in, $out, $err);
     IPC::Run::run \@exec, \$in, \$out, \$err, IPC::Run::timeout(6000)
       or die "Failure creating tarball";
+    $logger->("$out\n$err\n");
     if (rename "$target.tmp", "$target") {
         $logger->("Produced $target\n");
         return 1;
