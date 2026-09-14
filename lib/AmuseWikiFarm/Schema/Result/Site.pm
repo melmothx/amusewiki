@@ -5736,14 +5736,21 @@ sub vhost_already_present {
 sub make_backup {
     my ($self, $logger) = @_;
     $logger ||= sub {};
+
+
+    # source dir gone, for whatever reason?
+    unless (-d $self->repo_root) {
+        $logger->("Source dir does not exist for " . $self->id . "\n");
+        return;
+    }
     my $today = DateTime->today->ymd;
     my $target = $self->backup_tarball;
     my @exec = (tar => -C => ROOT, -czf => "$target.tmp", $self->repo_root_rel);
     $logger->("Executing " . join(' ', @exec) . "\n");
     my ($in, $out, $err);
-    IPC::Run::run \@exec, \$in, \$out, \$err, IPC::Run::timeout(6000)
-      or die "Failure creating tarball";
-    $logger->("$out\n$err\n");
+    my $ret = IPC::Run::run \@exec, \$in, \$out, \$err, IPC::Run::timeout(6000);
+    die sprintf('Failure executing %s: %s %s %s', join(' ', @exec), $out, $err, $!) unless $ret;
+    $logger->("$out $err");
     if (rename "$target.tmp", "$target") {
         $logger->("Produced $target\n");
         return 1;
