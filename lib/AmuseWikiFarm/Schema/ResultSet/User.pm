@@ -205,4 +205,10 @@ sub reset_password_token_is_valid {
 }
 
 
+sub active_only {
+    my ($self) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.active" => 1 });
+}
+
 1;
