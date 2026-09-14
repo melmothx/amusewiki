@@ -366,7 +366,7 @@ sub download_backup :Chained('root') :PathPart('download-backup') :Args(0) {
                       serve_static_file_mime_type => 'application/gzip',
                       serve_static_file => "$file",
                      );
-            my $filename = sprintf('%s-backup-%s.tar.gz', $site->id, DateTime->today->ymd);
+            my $filename = sprintf('site-backup-%s-%s.tar.gz', $site->id, DateTime->today->ymd);
             $c->response->headers->header("Content-Disposition", "attachment; filename=$filename");
             return $c->detach($c->view('StaticFile'));
         }
