@@ -2,13 +2,11 @@
 
 BEGIN {
     die "Do not run this as root" unless $>;
-    $ENV{DBICDH_DEBUG} = 1;
 }
 use strict;
 use warnings;
 use utf8;
 use lib 'lib';
-use DBIx::Class::DeploymentHandler;
 use AmuseWikiFarm::Schema;
 use Getopt::Long;
 use YAML qw/DumpFile LoadFile/;

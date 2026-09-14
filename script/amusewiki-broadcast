@@ -1,0 +1,131 @@
+#!/usr/bin/env perl
+
+BEGIN {
+    die "Do not run this as root" unless $>;
+}
+use strict;
+use warnings;
+use utf8;
+use lib 'lib';
+
+use AmuseWikiFarm::Schema;
+use Getopt::Long;
+use Pod::Usage;
+use Path::Tiny;
+use Email::Address;
+use Email::Stuffer;
+use Data::Dumper::Concise;
+
+my ($from_addr, $file_body, $subject,
+    $help,
+    $dry_run,
+    $reply_to,
+   );
+my @skip;
+
+GetOptions('from-address|f=s' => \$from_addr,
+           'subject|s=s' => \$subject,
+           'file-body|b=s' => \$file_body,
+           'reply-to|r=s' => \$reply_to,
+           'dry-run|n' => \$dry_run,
+           'skip=s' => \@skip,
+           'help|h' => \$help) or die;
+
+=head1 NAME
+
+amusewiki-broadcast - send a mass email to all instance users
+
+=head1 SYNOPSIS
+
+ amusewiki-broadcast -s "Subject" -f announce@amusewiki.org  -b message.txt
+
+ amusewiki-broadcast --subject "Subject" --from-address announce@amusewiki.org  --file-body message.txt
+
+All the 3 options are mandatory.
+
+=head2 OPTIONS
+
+=item --help
+
+Show this help and exit.
+
+=item --dry-run | -n
+
+Just print diagnostics and do not send emails
+
+=item --subject | -s "Subject"
+
+The mail subject.
+
+=item --from-address | -f email
+
+Set the sender email.
+
+=item --reply-to | -r email
+
+Set the reply-to header.
+
+=item --file-body | -b file.txt
+
+Load the text email body from this file.
+
+=item --skip address (repeatable)
+
+Do not send to these addresses
+
+=back
+
+=cut
+
+if ($help) {
+    pod2usage;
+    exit 2;
+}
+
+die "Missing --from-address" unless $from_addr;
+die "Missing --subject" unless $subject;
+die "Missing --file-body" unless $file_body;
+die "$file_body is not a file" unless -f $file_body;
+my $text_body = path($file_body)->slurp_utf8;
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
+my @all;
+foreach my $s ($schema->resultset('Site')->active_only->all) {
+    if (my $notify = $s->mail_notify) {
+        push @all, Email::Address->parse($notify);
+    }
+}
+foreach my $u ($schema->resultset('User')->active_only->all) {
+    if (my $email = $u->email) {
+        push @all, Email::Address->parse($email);
+    }
+}
+my %skipped = map { $_ => 1 } @skip;
+my %recipients;
+foreach my $email (map { $_->address } @all) {
+    if ($skipped{$email}) {
+        print "Skipping $email\n";
+    }
+    else {
+        $recipients{$email}++;
+    }
+}
+foreach my $address (sort keys %recipients) {
+    my %args = (
+                to => $address,
+                from => $from_addr,
+                subject => $subject,
+                text_body => $text_body,
+                ($reply_to ? (reply_to => $reply_to) : ()),
+               );
+    print "Sending to $address: ";
+    if ($dry_run) {
+        delete $args{text_body};
+        print Dumper(\%args);
+    }
+    elsif (Email::Stuffer->new(\%args)->send) {
+        print "OK\n";
+    }
+    else {
+        print "Unknown error\n";
+    }
+}
