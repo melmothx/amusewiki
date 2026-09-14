@@ -469,6 +469,12 @@
                   </a>
                 </li>
                 <li>
+                  <a href="[% c.uri_for_action('/console/download_backup') %]">
+                    <span class="fa fa-cloud-download fa-fw" aria-hidden="true"></span>
+                    [% loc('Download Backup') %]
+                  </a>
+                </li>
+                <li>
                   <a href="[% c.uri_for_action('/console/list_categories') %]">
                     <span class="fa fa-tag fa-fw" aria-hidden="true"></span>
                     [% loc('Manage categories') %]

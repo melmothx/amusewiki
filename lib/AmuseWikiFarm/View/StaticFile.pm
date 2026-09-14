@@ -43,10 +43,12 @@ sub process {
     # resolve symlinks and upward directory parts.
     $file = Path::Tiny::path($file)->realpath->stringify;
     my $mime = AmuseWikiFarm::Utils::Paths::served_mime_types();
-    my $type;
+    my $type = $c->stash->{serve_static_file_mime_type};
     # no extension => octect-stream
-    if ($file =~ m/\.(\w+)$/) {
-        $type = $mime->{$1};
+    unless ($type) {
+        if ($file =~ m/\.(\w+)$/) {
+            $type = $mime->{$1};
+        }
     }
     if (index($file, ROOT) != 0 or !$type) {
         $c->response->status(403);

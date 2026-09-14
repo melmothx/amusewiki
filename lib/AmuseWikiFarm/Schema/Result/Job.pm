@@ -884,6 +884,7 @@ sub dispatch_job_daily_job {
     $schema->resultset('Job')->purge_old_jobs;
     $schema->resultset('Revision')->purge_old_revisions;
     $schema->resultset('Site')->check_and_update_acme_certificates(1);
+    $schema->resultset('Site')->backup_trees($logger);
     return;
 }
 
