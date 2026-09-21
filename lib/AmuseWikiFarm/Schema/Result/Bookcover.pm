@@ -485,8 +485,12 @@ sub update_from_params {
                             my $page = $pdf->page;
                             my $gfx = $page->gfx;
                             $page->mediabox(114,96);
+                            my $freefont = '/usr/share/fonts/opentype/freefont/FreeSans.otf';
+                            my $isbnfont = -f $freefont
+                              ? $pdf->font($freefont)
+                              : $pdf->corefont('Helvetica');
                             my $xo = $pdf->xo_ean13(-code => $barcode,
-                                                    -font => $pdf->corefont('Helvetica'),
+                                                    -font => $isbnfont,
                                                     -umzn => 20,
                                                     -lmzn => 8,
                                                     -zone => 52,
@@ -495,7 +499,7 @@ sub update_from_params {
                                                    );
                             $gfx->formimage($xo, 0, 0);
                             my $text = $page->text;
-                            $text->font($pdf->corefont('Helvetica'), 9);
+                            $text->font($isbnfont, 9);
                             $text->fillcolor('black');
                             $text->translate(57, 86);
                             $text->text_center("ISBN $isbn");
