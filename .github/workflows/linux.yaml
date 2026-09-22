@@ -24,15 +24,14 @@ jobs:
       tests: ${{ steps.tests.outputs.files }}
     steps:
       - uses: actions/checkout@v5
-        # set-output is deprecated, but it looks like you can't read from $GITHUB_ENV in the matrix: section
       - id: tests
         run: |
           find t/ -type f -name '*.t' | \
-          perl -nlE '
+          perl -MJSON::PP -nlE '
             push @files, $_ unless /00-prepare-tests.t/ 
             }{
-            printf q{::set-output name=files::[%s]}, join ",", map qq/"$_"/, @files
-          '
+            print "files=" . encode_json(\@files)
+          ' >> "$GITHUB_OUTPUT"
 
 # This step sets up the github worker to run the tests, and then runs the tests
 # env.test_runner can be used to pick how we run the tests 
