@@ -1,0 +1,27 @@
+FROM debian:trixie
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+COPY debian/control /tmp/debian/control
+
+RUN apt-get update && \
+    apt-get install -y \
+        wget \
+        ca-certificates \
+        devscripts \
+        equivs \
+    && wget -q https://deb.amusewiki.org/amusewiki-archive-keyring-trixie_1.0.0_all.deb \
+    && apt-get install -y ./amusewiki-archive-keyring-trixie_1.0.0_all.deb \
+    && rm amusewiki-archive-keyring-trixie_1.0.0_all.deb \
+    && apt-get update \
+    && cd /tmp \
+    && mk-build-deps \
+        --install \
+        --remove \
+        --tool 'apt-get -y --no-install-recommends' \
+        debian/control \
+    && rm -rf /var/lib/apt/lists/*
+
+
+        
+    
