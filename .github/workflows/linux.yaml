@@ -63,8 +63,5 @@ jobs:
 
       - name: prove ${{ matrix.test_file }}
         run: |
-          PERL_DL_NONLAZY=1 perl -MExtUtils::Command::MM -MTest::Harness -e "
-            undef *Test::Harness::Switches; 
-            test_harness(0, 'inc', 'blib/lib', 'blib/arch')
-          " -- t/00-prepare-tests.t ${{ matrix.test_file }}
+          prove -lv t/00-prepare-tests.t ${{ matrix.test_file }}
 
