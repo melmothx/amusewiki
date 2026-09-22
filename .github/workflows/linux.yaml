@@ -8,8 +8,6 @@ on:
   
 jobs:
  
-#=
-#
 # This step lists t/**.t, so that we can run the tests in a matrix on
 # it in github. When you run each test as it's own step we get the
 # results testing broken up into a nice list in the side bar, and
@@ -33,9 +31,6 @@ jobs:
             print "files=" . encode_json(\@files)
           ' >> "$GITHUB_OUTPUT"
 
-# This step sets up the github worker to run the tests, and then runs the tests
-# env.test_runner can be used to pick how we run the tests 
-
   test:
     needs: [ testlist ]
     runs-on: ubuntu-latest
@@ -54,7 +49,7 @@ jobs:
       - name: git config
         run: |
             git config --global user.email "im-sorry-my-ci-build-is-harssing-you-from@amusewiki.github.com"; 
-            git config --global user.name "Amuse wiki CI biuld of $GITHUB_REF"
+            git config --global user.name "amusewiki CI build of $GITHUB_REF"
           
       - name: set PATH + PERL5LIB, github style
         run: |
