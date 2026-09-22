@@ -23,7 +23,7 @@ jobs:
     outputs:
       tests: ${{ steps.tests.outputs.files }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         # set-output is deprecated, but it looks like you can't read from $GITHUB_ENV in the matrix: section
       - id: tests
         run: |
@@ -50,7 +50,7 @@ jobs:
       image: ghcr.io/melmothx/amusewiki-ci:trixie
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: git config
         run: |
