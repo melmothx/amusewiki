@@ -37,11 +37,12 @@ jobs:
       image: ghcr.io/melmothx/amusewiki-ci:trixie
     steps:
       - uses: actions/checkout@v5
+      - name: install prerequisite
+        run: |
+          apt-get update && apt-get install bash-completion
       - name: build package
         run: |
-          apt-get install bash-completion;
           DEB_BUILD_OPTIONS=nocheck debuild -i -us -uc --pre-clean --post-clean -b
-
       - name: check package content
         run: |
           cd ..; for i in *.deb; do dpkg --contents $i; done; true
