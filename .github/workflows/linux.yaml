@@ -31,8 +31,18 @@ jobs:
             print "files=" . encode_json(\@files)
           ' >> "$GITHUB_OUTPUT"
 
+  builddeb:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/melmothx/amusewiki-ci:trixie
+    steps:
+      - uses: actions/checkout@v5
+      - name: build package
+        run: |
+          DEB_BUILD_OPTIONS=nocheck dpkg-buildpackage
+
   test:
-    needs: [ testlist ]
+    needs: [ testlist, builddeb ]
     runs-on: ubuntu-latest
 
     strategy:
@@ -51,7 +61,7 @@ jobs:
             git config --global user.email "im-sorry-my-ci-build-is-harssing-you-from@amusewiki.github.com"; 
             git config --global user.name "amusewiki CI build of $GITHUB_REF"
           
-      - name: set PATH + PERL5LIB, github style
+      - name: set PATH
         run: |
           echo "PATH=/opt/amusewiki-texlive/current/bin/arch:$PATH" >> $GITHUB_ENV
 
