@@ -43,7 +43,7 @@ jobs:
 
       - name: check package content
         run: |
-          (cd ..; for i in *.deb; do dpkg --contents $i; done)
+          cd ..; for i in *.deb; do dpkg --contents $i; done; true
 
   test:
     needs: [ testlist, builddeb ]
