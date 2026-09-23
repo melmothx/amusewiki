@@ -39,7 +39,11 @@ jobs:
       - uses: actions/checkout@v5
       - name: build package
         run: |
-          DEB_BUILD_OPTIONS=nocheck dpkg-buildpackage
+          DEB_BUILD_OPTIONS=nocheck debuild -i -us -uc --pre-clean --post-clean -b
+
+      - name: check package content
+        run: |
+          (cd ..; for i in *.deb; do dpkg --contents $i; done)
 
   test:
     needs: [ testlist, builddeb ]
