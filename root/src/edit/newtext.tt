@@ -80,15 +80,16 @@
 
 
   <div id="create-block-author" class="form-group">
-    <label class="col-sm-2 control-label" for="author">[% loc('Author') %]
-      ([% loc('for display') %])
-    </label>
+    <label class="col-sm-2 control-label" for="author">[% loc('Author') %]</label>
     <div class="col-sm-10">
     <input class="form-control amwautocomplete uri-maker"
            type="text" name="author" id="author"
            data-category-type="displayed_author"
                maxlength="250"
                value="[% processed_params.author | html %]" />
+    <p class="help-block">
+      ([% loc('Display only, this goes into the title page') %])
+    </p>
     </div>
   </div>
 
@@ -144,13 +145,16 @@
 
   <div id="create-block-date" class="form-group">
     <label class="col-sm-2 control-label"
-           for="date">[% loc('Date of the original publication') %]</label>
+           for="date">[% loc('Date') %]</label>
     <div class="col-sm-10">
     <input class="form-control" id="date"
            size="50"
            maxlength="250"
            name="date"
            value="[% processed_params.date | html %]" />
+    <p class="help-block">
+      [% loc('Date of the original publication') %]
+    </p>
     </div>
   </div>
   [% FOREACH builtindir IN site.built_in_directives %]
@@ -178,7 +182,7 @@
                name="source" value="[% processed_params.source | html %]" />
     <p class="help-block">
       [% loc('For texts from the internet use') %]:
-      [% loc('Retrieved on DATE from URL') %].
+      <code>[% loc('Retrieved on DATE from URL') %]</code>.
     </p>
     </div>
   </div>
@@ -186,10 +190,13 @@
 
   [% IF site.multilanguage %]
   <div id="create-block-uid" class="form-group">
-    <label class="col-sm-2 control-label" for="text-uid">[% loc('Unique ID for the text') %]</label>
+    <label class="col-sm-2 control-label" for="text-uid">[% loc('Unique ID') %]</label>
     <div class="col-sm-10">
     <input class="form-control" name="uid" id="text-uid" type="text"
            value="[% c.req.params.uid | html %]" />
+    <p class="help-block">
+      [% loc('This should be set if you want to generate translation relationships between texts. If you set the same ID (an arbitrary string) on two different texts, they will appear as the same text in different languages.') %]
+    </p>
     </div>
   </div>
   [% END %]
@@ -229,23 +236,16 @@
     </div>
     <div class="col-sm-6" id="new-text-textareas">
   <div id="create-block-muse-body">
-  <h3>[% loc('Main text') %]</h3>
+  <h3 style="margin-top: 0px">[% loc('Main text') %]</h3>
   <div>
     <p class="help-block">
-      [% loc('Please note that you may want to paste from a
-        Word/OpenOffice/LibreOffice/HTML document using the “paste
-        from word” button. This is supposed to preserve the markup.') %]
-      <br>
       [% loc('This is a WYSIWYG editor. If you prefer to use
         the wiki-like syntax leave it as is, fill the required fields
         above and postpone the editing to the next step.') %]
       <br>
-      [% loc('Formatting elements which are not very common will be stripped.') %]
+      [% loc('You can paste from a Word/OpenOffice/LibreOffice/HTML document and the most relevant formatting will be preserved (bold, italics, headers)') %]
       <br>
-      [% loc('Image uploading may be done on the next step, when you can
-        review and preview the upload.') %]
-      <br>
-      [% loc('You can add or re-add tables and images only on the next step.') %]
+      [% loc('Image uploading and table formatting may be done on the next step, when you can review and preview the upload.') %]
     </p>
   </div>
   <div>
@@ -253,11 +253,11 @@
               rows="20">[%- processed_params.textbody | html -%]</textarea>
   </div>
   <div class="form-group">
-    <label class="col-sm-2 control-label" for="texthtmlfile">[% loc('Or provide an HTML file to upload') %]</label>
-    <div class="col-sm-10">
-    <input id="texthtmlfile" name="texthtmlfile" type="file" />
+    <label class="col-sm-4 control-label" for="texthtmlfile">[% loc('Or provide an HTML file to upload') %]</label>
+    <div class="col-sm-8">
+    <input id="texthtmlfile" name="texthtmlfile" type="file"  style="margin-top: 10px"/>
     <p class="help-block">
-      [% loc('If you have a file in .doc or .odt, you can easily convert it saving it as HTML') %]
+      [% loc('You can upload only an HTML file. Any other format (.doc, .odt, .docx, etc.) needs to be converted to HTML first. You can do that easily with e.g. LibreOffice and upload the resulting .html file.') %]
     </p>
     </div>
   </div>
