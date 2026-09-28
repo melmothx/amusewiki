@@ -376,13 +376,42 @@
 <script type="text/javascript">
   $(document).ready(function() {
       if (document.getElementById('textbody')) {
-          Jodit.make('#textbody', { buttons: ['bold', 'italic', 'underline', '|', 'ul', 'ol'] });
+          const buttons = [
+              'paragraph',
+              'bold', 'italic',
+              'ul', 'ol',
+              'undo', 'redo',
+              'cut', 'copy', 'paste',
+              'fullsize',
+              'source'
+          ];
+          Jodit.make('#textbody', {
+              buttons: [ ...buttons ],
+              buttonsXS: [ ...buttons ],
+              buttonsSM: [ ...buttons ],
+              buttonsMD: [ ...buttons ],
+              height: 350,
+          });
       }
       if (document.getElementById('notes')) {
-          Jodit.make('#notes', { buttons: ['bold', 'italic' ] });
+          Jodit.make('#notes', {
+              buttons: ['bold', 'italic' ],
+              buttonsXS: ['bold', 'italic' ],
+              buttonsSM: ['bold', 'italic' ],
+              buttonsMD: ['bold', 'italic' ],
+              minHeight: 100,
+              height: 120,
+          });
       }
       if (document.getElementById('teaser')) {
-          Jodit.make('#teaser', { buttons: ['bold', 'italic' ] });
+          Jodit.make('#teaser', {
+              buttons: ['bold', 'italic' ],
+              buttonsXS: ['bold', 'italic' ],
+              buttonsSM: ['bold', 'italic' ],
+              buttonsMD: ['bold', 'italic' ],
+              minHeight: 100,
+              height: 120,
+          });
       }
       $('.ajax-check-uri').on('keyup', function() {
           var el = $(this);
