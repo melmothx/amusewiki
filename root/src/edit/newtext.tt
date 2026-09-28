@@ -4,6 +4,8 @@
 <script src="[% c.uri_for('/static/js/jodit/jodit.min.js') %]"></script>
 
 <form id="ckform" method="post" enctype="multipart/form-data" class="form-horizontal">
+  <div class="row">
+    <div class="col-sm-6" id="new-text-metadata">
   [% IF pop_uri_field_to_the_top %]
   <div id="choose-uri" class="form-group">
     <label class="col-sm-2 control-label mandatory" for="uri">[% loc('Desired URI') %]
@@ -223,6 +225,9 @@
   </div>
     </div>
   [% END %]
+
+    </div>
+    <div class="col-sm-6" id="new-text-textareas">
   <div id="create-block-muse-body">
   <h3>[% loc('Main text') %]</h3>
   <div>
@@ -294,6 +299,8 @@
     </div>
   [% END %]
   [% END %]
+    </div>
+  </div>
 
   <div style="margin-top: 10px">
   [% UNLESS pop_uri_field_to_the_top %]
