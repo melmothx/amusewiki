@@ -3,19 +3,15 @@
 <link rel="stylesheet" href="[% c.uri_for('/static/js/jodit/jodit.min.css') %]">
 <script src="[% c.uri_for('/static/js/jodit/jodit.min.js') %]"></script>
 
-[% form_action %]
-
-<form id="ckform" method="post"
-      enctype="multipart/form-data">
-
+<form id="ckform" method="post" enctype="multipart/form-data" class="form-horizontal">
   [% IF pop_uri_field_to_the_top %]
   <div id="choose-uri" class="form-group">
-    <label class="mandatory" for="uri">[% loc('Desired URI') %]
+    <label class="col-sm-2 control-label mandatory" for="uri">[% loc('Desired URI') %]
       ([% loc('Please set the URI you desire. Author (if present),
         title and eventually a number if the URI already exists is
         usually a good choice') %]).
     </label>
-    <br>
+    <div class="col-sm-10">
     <input class="form-control ajax-check-uri" type="text" name="uri" id="uri" size="50"
            value="[% processed_params.uri | html %]"
            required />
@@ -33,13 +29,15 @@
         </div>
       </div>
     </p>
+    </div>
   </div>
   [% END %]
   <div id="create-block-title" class="form-group">
-    <label for="title" class="mandatory">[% loc('Title') %]
+    <label for="title" class="col-sm-2 control-label mandatory">[% loc('Title') %]
       ([% loc('mandatory') %])
     </label>
-    <input class="form-control uri-maker" type="text" name="title"
+    <div class="col-sm-10">
+      <input class="form-control uri-maker" type="text" name="title"
            maxlength="250" id="title"
            size="30"
            value="[% processed_params.title | html %]"
@@ -51,50 +49,59 @@
         <span class="fa fa-share"></span>
       </a>
     </p>
+    </div>
   </div>
 
   <div id="create-block-subtitle" class="form-group">
-    <label for="subtitle">[% loc('Subtitle') %]</label>
+    <label class="col-sm-2 control-label" for="subtitle">[% loc('Subtitle') %]</label>
+    <div class="col-sm-10">
     <input class="form-control" type="text" name="subtitle" id="subtitle"
            maxlength="250"
            size="30"
            value="[% processed_params.subtitle | html %]" />
+    </div>
   </div>
 
   [% IF f_class == 'text' %]
 
   <div id="create-block-listtitle" class="form-group">
-    <label for="LISTtitle">[% loc('Title for sorting') %]</label>
+    <label class="col-sm-2 control-label" for="LISTtitle">[% loc('Title for sorting') %]</label>
+    <div class="col-sm-10">
     <input class="form-control" type="text" name="LISTtitle" id="LISTtitle"
            maxlength="250" size="30"
            value="[% processed_params.LISTtitle | html %]" />
     <p class="help-block">
       [% loc('You may want to strip the leading “A”, “An”, “The”, and so on from the title') %].
     </p>
+    </div>
   </div>
 
 
   <div id="create-block-author" class="form-group">
-    <label for="author">[% loc('Author') %]</label>
-    ([% loc('for display') %])
+    <label class="col-sm-2 control-label" for="author">[% loc('Author') %]
+      ([% loc('for display') %])
+    </label>
+    <div class="col-sm-10">
     <input class="form-control amwautocomplete uri-maker"
            type="text" name="author" id="author"
            data-category-type="displayed_author"
                maxlength="250"
                value="[% processed_params.author | html %]" />
+    </div>
   </div>
 
   [% FOREACH cct IN site.custom_category_types %]
     [% SET cct_name = cct.header %]
     [% IF cct.active && !cct.custom_form %]
       <div id="create-block-[% cct_name %]" class="form-group">
-        <label for="cct-[% cct_name %]">
+        <label class="col-sm-2 control-label" for="cct-[% cct_name %]">
           [% IF cct.generate_index %]
             [% loc(cct.name_plural) %]
           [% ELSE %]
             [% loc(cct.name_singular) %]
           [% END %]
         </label>
+        <div class="col-sm-10">
         <input id="cct-[% cct_name %]" class="form-control[% IF cct.generate_index %] amwautocomplete[% END %]"
                data-category-type="[% cct.category_type %]"
                maxlength="250" name="[% cct_name %]"
@@ -109,13 +116,15 @@
             [% END %]
           </p>
         [% END %]
+        </div>
       </div>
     [% END %]
   [% END %]
 
   [% IF site.fixed_category_list %]
   <div id="fixed-category-choose" class="form-group">
-    <strong>[% loc('Categories') %]</strong>
+    <label class="col-sm-2 control-label">[% loc('Categories') %]</label>
+    <div class="col-sm-10">
     [% FOREACH cat IN site.list_fixed_categories %]
     <div class="checkbox">
       <label>
@@ -127,57 +136,66 @@
       </label>
     </div>
     [% END %]
+    </div>
   </div>
   [% END %]
 
   <div id="create-block-date" class="form-group">
-    <label for="date">[% loc('Date of the original publication') %]</label>
+    <label class="col-sm-2 control-label"
+           for="date">[% loc('Date of the original publication') %]</label>
+    <div class="col-sm-10">
     <input class="form-control" id="date"
            size="50"
            maxlength="250"
            name="date"
            value="[% processed_params.date | html %]" />
+    </div>
   </div>
-
   [% FOREACH builtindir IN site.built_in_directives %]
     [% SET builtindir_name = builtindir.name %]
     [% IF builtindir.active %]
       <div class="form-group">
-        <label for="[% builtindir_name %]">[% loc(builtindir.description) %]</label>
-
+        <label class="col-sm-2 control-label" for="[% builtindir_name %]">
+          [% loc(builtindir.description) %]
+        </label>
+        <div class="col-sm-10">
         <input class="form-control" id="[% builtindir_name %]"
                size="50"
                maxlength="250"
                name="[% builtindir_name %]"
                value="[% processed_params.$builtindir_name | html %]" />
+        </div>
       </div>
     [% END %]
   [% END %]
 
   <div id="create-block-source" class="form-group">
-    <label for="source">[% loc('Source') %]</label>
-
-
+    <label class="col-sm-2 control-label" for="source">[% loc('Source') %]</label>
+    <div class="col-sm-10">
     <input class="form-control" id="source" size="50" maxlength="250"
                name="source" value="[% processed_params.source | html %]" />
     <p class="help-block">
       [% loc('For texts from the internet use') %]:
       [% loc('Retrieved on DATE from URL') %].
     </p>
+    </div>
   </div>
   [% END %]
 
   [% IF site.multilanguage %]
   <div id="create-block-uid" class="form-group">
-    <label for="text-uid">[% loc('Unique ID for the text') %]</label>
+    <label class="col-sm-2 control-label" for="text-uid">[% loc('Unique ID for the text') %]</label>
+    <div class="col-sm-10">
     <input class="form-control" name="uid" id="text-uid" type="text"
            value="[% c.req.params.uid | html %]" />
+    </div>
   </div>
   [% END %]
 
   <div id="create-block-lang" class="form-group">
     [% SET current_language = processed_params.lang || current_locale_code %]
-    <label for="lang">[% loc('Language') %]</label>
+    <label class="col-sm-2 control-label"for="lang">[% loc('Language') %]</label>
+    <div class="col-sm-10">
     <select name="lang" id="lang" class="form-control uri-maker">
 
     [% known_langs = site.known_langs %]
@@ -187,11 +205,13 @@
       [% known_langs.$lang %]
     </option>
     [% END %]
-  </select>
+    </select>
+    </div>
   </div>
 
   [% IF site.sl_pdf %]
-  <div id="create-block-slides" class="checkbox">
+    <div class="form-group">
+  <div id="create-block-slides" class="checkbox col-sm-offset-2 col-sm-10">
     <label>
       <input type="checkbox"
              [% IF c.req.params.slides %]checked="checked"[% END %]
@@ -201,53 +221,52 @@
         sectioning for this to work.') %]
     </label>
   </div>
+    </div>
   [% END %]
   <div id="create-block-muse-body">
   <h3>[% loc('Main text') %]</h3>
   <div>
-    <p>
+    <p class="help-block">
       [% loc('Please note that you may want to paste from a
         Word/OpenOffice/LibreOffice/HTML document using the “paste
         from word” button. This is supposed to preserve the markup.') %]
-    </p>
-    <p>
+      <br>
       [% loc('This is a WYSIWYG editor. If you prefer to use
         the wiki-like syntax leave it as is, fill the required fields
         above and postpone the editing to the next step.') %]
-    </p>
-    <p>
+      <br>
+      [% loc('Formatting elements which are not very common will be stripped.') %]
+      <br>
       [% loc('Image uploading may be done on the next step, when you can
         review and preview the upload.') %]
-    </p>
-    <p>
-      [% loc('Keep in mind that unusually
-        complex formatting will be stripped. Is it possible to add
-        tables and images only on the next step.') %]
+      <br>
+      [% loc('You can add or re-add tables and images only on the next step.') %]
     </p>
   </div>
-  <div>&nbsp;</div>
   <div>
     <textarea id="textbody" name="textbody" cols="80"
               rows="20">[%- processed_params.textbody | html -%]</textarea>
   </div>
-  <div>&nbsp;</div>
   <div class="form-group">
-    <label for="texthtmlfile">[% loc('Or provide an HTML file to upload') %]</label>
+    <label class="col-sm-2 control-label" for="texthtmlfile">[% loc('Or provide an HTML file to upload') %]</label>
+    <div class="col-sm-10">
     <input id="texthtmlfile" name="texthtmlfile" type="file" />
     <p class="help-block">
       [% loc('If you have a file in .doc or .odt, you can easily convert it saving it as HTML') %]
     </p>
+    </div>
   </div>
   </div>
   [% IF f_class == 'text' %]
     <div id="create-block-notes">
-  <h3>[% loc('Notes') %]</h3>
+  <h3 style="margin-top: 0">[% loc('Notes') %]</h3>
   <div>
+    <p class="help-block">
     [% loc('Put additional information here (original
 	  title, translators, credits, etc). Footnotes go in the
 	  body.') %]
+    </p>
   </div>
-  <div>&nbsp;</div>
   <div>
     <textarea id="notes" name="notes" cols="80"
               rows="5">[%- processed_params.notes | html %]</textarea>
@@ -280,12 +299,12 @@
   <div style="margin-top: 10px">
   [% UNLESS pop_uri_field_to_the_top %]
   <div id="choose-uri">
-    <label for="uri">[% loc('Desired URI') %]
+    <label class="col-sm-2 control-label" for="uri">[% loc('Desired URI') %]
     ([% loc('automatically generated if not present, using author and title') %])
     </label>
-
+    <div class="col-sm-10">
     <div class="input-group">
-      <input class="form-control" type="text" name="uri" id="uri" size="50"
+      <input class="form-control" type="text" name="uri" id="uri"
              value="[% processed_params.uri | html %]"/>
       <span class="input-group-btn">
         <a class="btn btn-default" href="#uri" id="get-generated-uri">[% loc('Get generated URI') %]</a>
@@ -299,11 +318,13 @@
       errico-malatesta-anarchy-2. Please note that this is normally
       not needed") %]
     </p>
+    </div>
   </div>
   [% END %]
   </div>
   <div id="create-block-pubdate" class="form-group">
-    <label for="pubdate">[% loc('Publication date on this site') %]</label>
+    <label class="col-sm-2 control-label" for="pubdate">[% loc('Publication date on this site') %]</label>
+    <div class="col-sm-10">
     <input class="form-control" id="pubdate"
            type="date"
            value="[% processed_params.pubdate | html %]"
@@ -312,38 +333,37 @@
       [% loc('Leave it blank if you want it published right away.') %]
       [% loc('Set a date in the future if you want it deferred.') %]
     </p>
+    </div>
   </div>
-
   [% IF node_selections %]
     <div class="form-group">
-      <label for="node_id">[% loc('Assign text to collections') %]</label>
+      <label class="col-sm-2 control-label"
+             for="node_id">[% loc('Assign text to collections') %]</label>
+      <div class="col-sm-10">
       <select id="node_id" name="node_id" class="form-control" multiple>
         [% FOREACH node IN node_selections %]
           <option value="[% node.value %]"[% IF node.checked %] selected="selected"[% END %]>[% node.title %]</option>
         [% END %]
       </select>
+      </div>
     </div>
   [% END %]
   [% IF aggregation_selections %]
     <div class="form-group">
-      <label for="aggregation_id">[% loc('Assign text to aggregations') %]</label>
+      <label class="col-sm-2 control-label"
+             for="aggregation_id">[% loc('Assign text to aggregations') %]</label>
+      <div class="col-sm-10">
       <select id="aggregation_id" name="aggregation_id" class="form-control" multiple>
         [% FOREACH agg IN aggregation_selections %]
           <option value="[% agg.value | html %]"[% IF agg.checked %] selected="selected"[% END %]>[% agg.title | html %]</option>
         [% END %]
       </select>
+      </div>
     </div>
   [% END %]
 
   <div class="row">
     <div class="col-xs-12">
-      <p id="create-block-submit-warning" class="help-block">
-        [% loc('Keep in mind that I’m cleaning the text and give it
-        back to you in the markup used on this site. It’s up to you to
-        check it and finally upload it. Some rarely used markup will
-        be lost in the process. Please check the preview on the next
-        step, where you can also insert images.') %]
-      </p>
       <p class="text-center">
         <button type="submit" class="btn btn-default"
                 name="go" value="go">
