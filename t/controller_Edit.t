@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 125;
+use Test::More tests => 127;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -342,4 +342,21 @@ $mech->content_like(qr{porchetta.*going-to-abandon-this}si, "First the committed
     $mech->click("commit");
 
     is $mech->uri->path, "/publish/pending";
+}
+
+{
+    $mech->get('/action/text/new');
+    ok($mech->form_id('ckform'), "Found the form");
+    my %params = (
+                  title => "My empty body",
+                  lang => "it",
+                  author => "Autore",
+                  authors => "auth1, auth2",
+                  topics => "topic1, topic2",
+                  uri => 'empty-body',
+                  no_body => 1,
+                 );
+    $mech->set_fields(%params);
+    $mech->click;
+    is $mech->uri->path, "/library/empty-body", "Empty body gets published right away";
 }
