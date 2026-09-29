@@ -10,6 +10,7 @@ override_dh_installsystemd:
 	dh_installsystemd --name=amusewiki-web
 	dh_installsystemd --name=amusewiki-jobber
 	dh_installsystemd --name=amusewiki-nginx-reload
+	dh_installsystemd --name=amusewiki-daily
 
 # no parallel
 override_dh_auto_build:

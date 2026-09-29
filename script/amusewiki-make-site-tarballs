@@ -1,0 +1,36 @@
+#!/usr/bin/env perl
+
+BEGIN {
+    die "Do not run this as root" unless $>;
+}
+use strict;
+use warnings;
+use utf8;
+use lib 'lib';
+
+use AmuseWikiFarm::Schema;
+use Getopt::Long;
+use Pod::Usage;
+
+my $help;
+
+GetOptions('help|h' => \$help) or die;
+
+=head1 NAME
+
+amusewiki-broadcast - send a mass email to all instance users
+
+=head1 SYNOPSIS
+
+Script meant to be in a daily cronjob. Create a tarball for each site.
+
+=cut
+
+if ($help) {
+    pod2usage;
+    exit 2;
+}
+
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
+
+$schema->resultset('Site')->backup_trees(sub { print @_ });

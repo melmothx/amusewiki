@@ -1932,6 +1932,7 @@ script/amusewiki-import-redirections
 script/amusewiki-include-path
 script/amusewiki-jobber
 script/amusewiki-letsencrypt
+script/amusewiki-make-site-tarballs
 script/amusewiki-oai-pmh-index
 script/amusewiki-populate-monthly
 script/amusewiki-populate-webfonts

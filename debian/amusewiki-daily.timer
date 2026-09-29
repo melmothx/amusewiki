@@ -1,0 +1,6 @@
+[Timer]
+OnCalendar=04:30
+Persistent=true
+
+[Install]
+WantedBy=timers.target
