@@ -229,6 +229,47 @@
     </div>
   [% END %]
 
+  <div id="create-block-pubdate" class="form-group">
+    <label class="col-sm-2 control-label" for="pubdate">[% loc('Publication date on this site') %]</label>
+    <div class="col-sm-10">
+    <input class="form-control" id="pubdate"
+           type="date"
+           value="[% processed_params.pubdate | html %]"
+           name="pubdate" />
+    <p class="help-block">
+      [% loc('Leave it blank if you want it published right away.') %]
+      [% loc('Set a date in the future if you want it deferred.') %]
+    </p>
+    </div>
+  </div>
+  [% IF node_selections %]
+    <div class="form-group">
+      <label class="col-sm-2 control-label"
+             for="node_id">[% loc('Assign text to collections') %]</label>
+      <div class="col-sm-10">
+      <select id="node_id" name="node_id" class="form-control" multiple>
+        [% FOREACH node IN node_selections %]
+          <option value="[% node.value %]"[% IF node.checked %] selected="selected"[% END %]>[% node.title %]</option>
+        [% END %]
+      </select>
+      </div>
+    </div>
+  [% END %]
+  [% IF aggregation_selections %]
+    <div class="form-group">
+      <label class="col-sm-2 control-label"
+             for="aggregation_id">[% loc('Assign text to aggregations') %]</label>
+      <div class="col-sm-10">
+      <select id="aggregation_id" name="aggregation_id" class="form-control" multiple>
+        [% FOREACH agg IN aggregation_selections %]
+          <option value="[% agg.value | html %]"[% IF agg.checked %] selected="selected"[% END %]>[% agg.title | html %]</option>
+        [% END %]
+      </select>
+      </div>
+    </div>
+  [% END %]
+
+
     </div>
     <div class="col-sm-6" id="new-text-textareas">
   <div id="create-block-muse-body">
@@ -297,45 +338,6 @@
   [% END %]
     </div>
   </div>
-  <div id="create-block-pubdate" class="form-group">
-    <label class="col-sm-2 control-label" for="pubdate">[% loc('Publication date on this site') %]</label>
-    <div class="col-sm-10">
-    <input class="form-control" id="pubdate"
-           type="date"
-           value="[% processed_params.pubdate | html %]"
-           name="pubdate" />
-    <p class="help-block">
-      [% loc('Leave it blank if you want it published right away.') %]
-      [% loc('Set a date in the future if you want it deferred.') %]
-    </p>
-    </div>
-  </div>
-  [% IF node_selections %]
-    <div class="form-group">
-      <label class="col-sm-2 control-label"
-             for="node_id">[% loc('Assign text to collections') %]</label>
-      <div class="col-sm-10">
-      <select id="node_id" name="node_id" class="form-control" multiple>
-        [% FOREACH node IN node_selections %]
-          <option value="[% node.value %]"[% IF node.checked %] selected="selected"[% END %]>[% node.title %]</option>
-        [% END %]
-      </select>
-      </div>
-    </div>
-  [% END %]
-  [% IF aggregation_selections %]
-    <div class="form-group">
-      <label class="col-sm-2 control-label"
-             for="aggregation_id">[% loc('Assign text to aggregations') %]</label>
-      <div class="col-sm-10">
-      <select id="aggregation_id" name="aggregation_id" class="form-control" multiple>
-        [% FOREACH agg IN aggregation_selections %]
-          <option value="[% agg.value | html %]"[% IF agg.checked %] selected="selected"[% END %]>[% agg.title | html %]</option>
-        [% END %]
-      </select>
-      </div>
-    </div>
-  [% END %]
 
   <div class="row">
     <div class="col-xs-12">
