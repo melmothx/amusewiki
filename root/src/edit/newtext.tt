@@ -6,34 +6,31 @@
 <form id="ckform" method="post" enctype="multipart/form-data" class="form-horizontal">
   <div class="row">
     <div class="col-sm-6" id="new-text-metadata">
-  [% IF pop_uri_field_to_the_top %]
   <div id="choose-uri" class="form-group">
-    <label class="col-sm-2 control-label mandatory" for="uri">[% loc('Desired URI') %]
-      ([% loc('Please set the URI you desire. Author (if present),
-        title and eventually a number if the URI already exists is
-        usually a good choice') %]).
-    </label>
+    <label class="col-sm-2 control-label mandatory" for="uri">[% loc('URI') %]</label>
     <div class="col-sm-10">
     <input class="form-control ajax-check-uri" type="text" name="uri" id="uri" size="50"
            value="[% processed_params.uri | html %]"
            required />
+    <div class="check-success" style="display:none; color:green">
+      <i class="fa fa-check"></i>
+      [% loc('URI is available and valid') %]
+    </div>
+    <div class="check-failure" style="display:none">
+      <i class="fa fa-warning" style="color:red"></i>
+      <span class="check-message" style="color:red"></span>
+    </div>
     <p class="help-block">
-      <div class="check-success" style="display:none; color:green">
-        <i class="fa fa-check"></i>
-        [% loc('URI is available and valid') %]
-      </div>
-      <div class="check-failure" style="display:none">
-        <i class="fa fa-warning" style="color:red">
-        </i>
-        <span class="check-message" style="color:red"></span>
-        <div class="help-block">
-          [% loc('URI should be be an ASCII string, separated by hyphens, without spaces. E.g. my-author-title-1') %]
-        </div>
-      </div>
+      [% loc('Please set the URI you desire. Author (if present),
+        title and eventually a number if the URI already exists is
+        usually a good choice') %]
+      <br />
+      [% loc('URI should be be an ASCII string, separated by hyphens, without spaces. E.g. my-author-title-1') %]
+      <br />
+      [% loc('If you leave it blank, it will be automatically populated') %]
     </p>
     </div>
   </div>
-  [% END %]
   <div id="create-block-title" class="form-group">
     <label for="title" class="col-sm-2 control-label mandatory">[% loc('Title') %]
       ([% loc('mandatory') %])
@@ -77,7 +74,6 @@
     </p>
     </div>
   </div>
-
 
   <div id="create-block-author" class="form-group">
     <label class="col-sm-2 control-label" for="author">[% loc('Author') %]</label>
@@ -236,7 +232,7 @@
     </div>
     <div class="col-sm-6" id="new-text-textareas">
   <div id="create-block-muse-body">
-  <h3 style="margin-top: 0px">[% loc('Main text') %]</h3>
+  <h3 style="margin-top: 0px">[% loc('Text body') %]</h3>
   <div>
     <p class="help-block">
       [% loc('This is a WYSIWYG editor. If you prefer to use
@@ -300,33 +296,6 @@
   [% END %]
   [% END %]
     </div>
-  </div>
-
-  <div style="margin-top: 10px">
-  [% UNLESS pop_uri_field_to_the_top %]
-  <div id="choose-uri">
-    <label class="col-sm-2 control-label" for="uri">[% loc('Desired URI') %]
-    ([% loc('automatically generated if not present, using author and title') %])
-    </label>
-    <div class="col-sm-10">
-    <div class="input-group">
-      <input class="form-control" type="text" name="uri" id="uri"
-             value="[% processed_params.uri | html %]"/>
-      <span class="input-group-btn">
-        <a class="btn btn-default" href="#uri" id="get-generated-uri">[% loc('Get generated URI') %]</a>
-      </span>
-    </div>
-    <p class="help-block">
-    [% loc("An URI is a string which uniquely identifies the text
-      in the archive. In theory, it could be anything, but if you want
-      to set it yourself, please stick with the convention: author
-      name, title, language, eventual number for disambiguation, e.g.
-      errico-malatesta-anarchy-2. Please note that this is normally
-      not needed") %]
-    </p>
-    </div>
-  </div>
-  [% END %]
   </div>
   <div id="create-block-pubdate" class="form-group">
     <label class="col-sm-2 control-label" for="pubdate">[% loc('Publication date on this site') %]</label>
@@ -420,10 +389,9 @@
               height: 120,
           });
       }
-      $('.ajax-check-uri').on('keyup', function() {
-          var el = $(this);
-          var query = { uri: el.val() };
-          label = el.closest('div').find('label');
+     function check_uri() {
+          var query = { uri: $('#uri').val() };
+          var label = $('#choose-uri').find('label');
           $.post("[% c.uri_for_action('/api/check_existing_uri') %]", query, function(data) {
               console.log(data);
               label.removeClass('mandatory');
@@ -431,22 +399,23 @@
               $('.check-success').hide();
               if (data.success) {
                   $('.check-success').show();
+                  has_manual_uri = true;
               }
               else {
+                  if (!query.uri) {
+                      has_manual_uri = false;
+                  }
                   label.addClass('mandatory');
                   $('.check-failure').find('.check-message').text(data.error)
                   $('.check-failure').show();
               }
           });
-      });
-  });
-</script>
-
-[% UNLESS pop_uri_field_to_the_top %]
-  <script>
-   $(document).ready(function() {
+     }
        function build_uri() {
-           var data = {}
+           if ($('#uri').data('has_manual_uri')) {
+               return;
+           }
+           var data = {};
            $('.uri-maker').each(function() {
                var el = $(this);
                data[el.attr('name')] = el.val();
@@ -455,18 +424,30 @@
                console.log(data);
                if (data.uri) {
                    $('#uri').val(data.uri);
+                   check_uri();
                }
                else if (data.error) {
                    alert(data.error);
                }
            });
        }
-       build_uri();
-       $('#get-generated-uri').on('click', build_uri);
-       $('.uri-maker').on('change', build_uri);
-   });
-  </script>
-[% END %]
+      build_uri();
+     $('.uri-maker').on('keyup', build_uri);
+     $('#uri').on('keyup', function() {
+         console.log("Updated #uri");
+         if ($(this).val() && !$('#uri').data('has_manual_uri')) {
+             console.log("Setting has_manual_uri to true");
+             $('#uri').data('has_manual_uri', true);
+         }
+         else if (!$(this).val() && $('#uri').data('has_manual_uri')) {
+             console.log("Setting has_manual_uri to false");
+             $('#uri').data('has_manual_uri', false);
+         }
+         check_uri();
+     });
+
+  });
+</script>
 
 [% IF f_class == 'text' %]
 
