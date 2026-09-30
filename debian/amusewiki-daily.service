@@ -2,4 +2,4 @@
 Description=Daily Job for Amusewiki
 
 [Service]
-ExecStart=/usr/bin/amusewiki make-site-tarballs
+ExecStart=/usr/sbin/amusewiki make-site-tarballs
