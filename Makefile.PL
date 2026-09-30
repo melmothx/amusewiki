@@ -71,6 +71,8 @@ catalyst_ignore('repo',
                 'MYMETA.json',
                 'MYMETA.yml',
                 'README.mdwn',
+                'Dockerfile.ghci',
+                'backups',
                 'Vagrantfile');
 catalyst;
 
