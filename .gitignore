@@ -55,3 +55,4 @@ cover_db
 # Carton module installation directory
 local/
 shared/
+backups/
