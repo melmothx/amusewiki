@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.618 2026-09-30
+
+ - Removed the backup job from the jobber, and put in a systemd timer
+ - When generating ISBN PDF, prefer an embedded font
+
 2.617 2026-09-14
 
  - Implement the amusewiki-broadcast script to send a mass email to
