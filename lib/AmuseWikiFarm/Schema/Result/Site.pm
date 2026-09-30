@@ -5750,7 +5750,8 @@ sub make_backup {
     my ($in, $out, $err);
     my $ret = IPC::Run::run \@exec, \$in, \$out, \$err, IPC::Run::timeout(6000);
     die sprintf('Failure executing %s: %s %s %s', join(' ', @exec), $out, $err, $!) unless $ret;
-    $logger->("$out $err");
+    $logger->("$out\n") if $out;
+    $logger->("$err\n") if $err;
     if (rename "$target.tmp", "$target") {
         $logger->("Produced $target\n");
         return 1;

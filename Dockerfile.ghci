@@ -21,7 +21,3 @@ RUN apt-get update && \
         --tool 'apt-get -y --no-install-recommends' \
         debian/control \
     && rm -rf /var/lib/apt/lists/*
-
-
-        
-    
