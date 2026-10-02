@@ -8,7 +8,7 @@ BEGIN {
     $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';
 };
 
-use Test::More tests => 149;
+use Test::More tests => 150;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -395,6 +395,7 @@ if (my $emptybody = $site->titles->find({ uri => 'empty-body-authenticated' })) 
     $mech->content_lacks('/bookbuilder/add/empty-body-authenticated');
     $mech->content_lacks('id="text-author"');
     $mech->content_lacks('id="text-title"');
+    $mech->content_contains('id="htmltextbody"', "Container for body still there, and that's fine");
 }
 
 {
