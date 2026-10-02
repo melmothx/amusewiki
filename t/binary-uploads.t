@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
-use Test::More tests => 319;
+use Test::More tests => 320;
 use Data::Dumper::Concise;
 use YAML qw/Dump Load/;
 use Path::Tiny;
@@ -85,7 +85,8 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 $mech->get_ok('/');
 $mech->get_ok('/latest');
 $mech->content_lacks('This text is a book');
-$mech->content_contains('This text is an article');
+$mech->content_lacks('This text is an article');
+$mech->content_contains('Metadata only');
 $mech->content_contains('amw-show-text-type');
 $mech->content_contains('amw-show-text-type-and-number-of-pages');
 
