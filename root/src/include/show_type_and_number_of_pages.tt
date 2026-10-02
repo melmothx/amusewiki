@@ -23,12 +23,18 @@ $(document).ready(function() {
 [%- BLOCK show_text_type %]
 [%- UNLESS text.blob_container %]
 <span class="amw-show-text-type"
+     [% IF text.text_qualification != 'metadata_only' %]
       data-poload="[% text.full_toc_uri %]"
-      data-title="[% loc('Table of Contents') %]">
+      data-title="[% loc('Table of Contents') %]"
+     [% END %]
+  >
   <i aria-hidden="true"
      [% IF text.text_qualification == 'book' %]
      class="awm-show-text-type-icon fa fa-book"
      title="[% loc('This text is a book') %]"
+     [% ELSIF text.text_qualification == 'metadata_only' %]
+     title="[% loc('Metadata only') %]"
+     class="awm-show-text-type-icon fa fa-address-card-o"
      [% ELSE %]
      title="[% loc('This text is an article') %]"
      class="awm-show-text-type-icon fa fa-file-text-o"
