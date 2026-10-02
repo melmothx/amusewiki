@@ -1839,7 +1839,10 @@ sub import_text_from_html_params {
 
     my $body;
     my $error;
-    if ($params->{fileupload}) {
+    if ($params->{no_muse_body}) {
+        log_info { "Biblio entry only, skip the body" };
+    }
+    elsif ($params->{fileupload}) {
         if (-f $params->{fileupload} && -T $params->{fileupload}) {
             $body = eval { html_file_to_muse($params->{fileupload}, { lang => $params->{lang} }) };
             if ($@) {
@@ -1931,6 +1934,9 @@ sub import_text_from_html_params {
     }
     # add the notes
     foreach my $field (qw/notes teaser/) {
+        if ($field eq 'teaser' and $params->{no_muse_body}) {
+            next;
+        }
         $self->_add_directive($fh, $field => html_to_muse($params->{$field}));
     }
     if (my $colophon = $self->_autocreate_colophon($params)) {

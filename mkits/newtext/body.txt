@@ -1,3 +1,8 @@
+[% IF no_muse_body %]
+[% lh.loc('A new bibliographical entry has been created at [_1]', location) %]
+
+[% lh.loc('Please approve, discard or edit it at [_1]', pending_url) %]
+[% ELSE %]
 [% lh.loc('A new text has been created at [_1]', location) %]
 
 [% lh.loc("This mail has been sent to notify you about a new text
@@ -5,3 +10,4 @@ creation, even if the uploading is not completed yet and the user
 still needs to finalize the upload. Another mail should follow soon.
 If this doesn't happen, it means that the uploading has been abandoned
 and you may want to check it out.") %]
+[% END %]
