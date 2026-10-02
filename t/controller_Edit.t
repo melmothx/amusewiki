@@ -3,9 +3,12 @@
 use utf8;
 use strict;
 use warnings;
-BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+BEGIN {
+    $ENV{DBIX_CONFIG_DIR} = "t";
+    $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';
+};
 
-use Test::More tests => 127;
+use Test::More tests => 136;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -345,6 +348,15 @@ $mech->content_like(qr{porchetta.*going-to-abandon-this}si, "First the committed
 }
 
 {
+    $mech->get_ok('/login');
+    $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root'});
+
+    $site->update({
+                   mail_notify => 'to@amusewiki.org',
+                   mail_from => 'from@amusewiki.org',
+                   mode => 'modwiki',
+                 });
+
     $mech->get('/action/text/new');
     ok($mech->form_id('ckform'), "Found the form");
     my %params = (
@@ -353,10 +365,42 @@ $mech->content_like(qr{porchetta.*going-to-abandon-this}si, "First the committed
                   author => "Autore",
                   authors => "auth1, auth2",
                   topics => "topic1, topic2",
-                  uri => 'empty-body',
-                  no_body => 1,
+                  uri => 'empty-body-authenticated',
+                  no_muse_body => 1,
                  );
     $mech->set_fields(%params);
     $mech->click;
-    is $mech->uri->path, "/library/empty-body", "Empty body gets published right away";
+    like $mech->uri->path, qr{^/tasks/status/}, "Empty body gets published right away";
+}
+while (my $j = $site->jobs->dequeue) {
+    $j->dispatch_job;
+    diag $j->logs;
+}
+{
+    $mech->get_ok('/logout');
+    $mech->get('/action/text/new');
+    ok($mech->form_id('ckform'), "Found the form");
+    my %params = (
+                  title => "My empty body",
+                  lang => "it",
+                  author => "Autore",
+                  authors => "auth1, auth2",
+                  topics => "topic1, topic2",
+                  uri => 'empty-body-anonymous',
+                  no_muse_body => 1,
+                 );
+    $mech->set_fields(%params);
+    $mech->click;
+    diag $mech->uri->path;
+    is $mech->uri->path, '/latest', "Anonymous submissions need approval";
+    $mech->content_contains('Changes saved, thanks! They are now waiting to be published');
+}
+
+
+{
+    my @deliveries = Email::Sender::Simple->default_transport->deliveries;
+    is scalar(@deliveries), 2, "Mailing OK";
+    like $deliveries[0]{email}->as_string, qr{Subject: /library/empty-body-authenticated: published};
+    like $deliveries[1]{email}->as_string, qr{A new bibliographical entry has been created at};
+    like $deliveries[1]{email}->as_string, qr{/text/edit/empty-body-anonymous/\d};
 }
