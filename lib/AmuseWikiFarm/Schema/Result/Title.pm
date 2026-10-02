@@ -1305,7 +1305,7 @@ sub text_html_structure {
             my $book = 0;
             my $real_parts = 0;
             foreach my $part (@$parts) {
-                if ($part->{part_index} and $part->{part_index} =~ /^\d$/sa) {
+                if (defined $part->{part_index} and $part->{part_index} =~ /^\d$/sa) {
                     $real_parts++;
                 }
                 $part->{part_order} = $order++;
