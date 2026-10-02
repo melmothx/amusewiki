@@ -8,7 +8,7 @@ BEGIN {
     $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';
 };
 
-use Test::More tests => 142;
+use Test::More tests => 149;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -387,6 +387,14 @@ if (my $emptybody = $site->titles->find({ uri => 'empty-body-authenticated' })) 
     $mech->content_contains('empty-body-authenticated.html');
     $mech->content_lacks('empty-body-authenticated.zip');
     $mech->content_contains('fa-address-card-o') or diag $mech->content;
+
+    $mech->get_ok('/library/empty-body-authenticated');
+    $mech->content_contains('/library/empty-body-authenticated/edit');
+    $mech->content_lacks('/library/empty-body-authenticated.epub');
+    $mech->content_lacks('/library/empty-body-authenticated.zip');
+    $mech->content_lacks('/bookbuilder/add/empty-body-authenticated');
+    $mech->content_lacks('id="text-author"');
+    $mech->content_lacks('id="text-title"');
 }
 
 {

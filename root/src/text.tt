@@ -35,6 +35,7 @@
   </div>
   [% END %]
   [% END %]
+  [% IF text.has_text_body %]
   <div class="center">
     <div id="amw-title-page-header" class="page-header">
       [% IF text.author %]
@@ -48,6 +49,7 @@
       </h1>
     </div>
   </div>
+  [% END %]
   [% IF show_preview_only %]
     <div>
       [% IF text.valid_cover %]
