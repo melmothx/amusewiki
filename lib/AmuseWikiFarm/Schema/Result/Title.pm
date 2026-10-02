@@ -1303,7 +1303,11 @@ sub text_html_structure {
             $self->text_parts->delete;
             my $total_size = 0;
             my $book = 0;
+            my $real_parts = 0;
             foreach my $part (@$parts) {
+                if ($part->{part_index} and $part->{part_index} =~ /^\d$/sa) {
+                    $real_parts++;
+                }
                 $part->{part_order} = $order++;
                 $self->text_parts->create($part);
                 $total_size += $part->{part_size};
@@ -1312,9 +1316,21 @@ sub text_html_structure {
                     $book++;
                 }
             }
+            # no body:
+            my $qualification;
+            if ($book) {
+                $qualification = 'book';
+            }
+            elsif ($real_parts) {
+                $qualification = 'article';
+            }
+            else {
+                $qualification = 'metadata_only';
+                $total_size = 0;
+            }
             $self->update({
                            text_size => $total_size,
-                           text_qualification => ($book ? 'book' : 'article'),
+                           text_qualification => $qualification,
                            text_structure => '', # obsolete.
                           });
         };
