@@ -204,8 +204,22 @@ TEMPLATE
 
     $file_template =~ s/\n//g;
     $title_template =~ s/\n//g;
-    my $book_note = $lh->loc_html('This text is a book');
-    my $art_note = $lh->loc_html('This text is an article');
+    my %qualifications = (
+                          book => {
+                                   title => $lh->loc_html('This text is a book'),
+                                   class => 'fa fa-book',
+                                  },
+                          article => {
+                                      title => $lh->loc_html('This text is an article'),
+                                      class => 'fa fa-file-text-o',
+                                     },
+                          metadata_only => {
+                                            title => $lh->loc_html('Metadata only'),
+                                            class => 'fa fa-address-card-o',
+                                           },
+                         );
+
+
     my $use_first_attachment_link = $site->feed_enclosure_method eq 'first_attachment' ? 1 : 0;
     foreach my $title (@texts) {
         _in_tree_uri($title);
@@ -244,7 +258,9 @@ TEMPLATE
             $title->{"category_" . $ctype} = join('<br>', @{$list || []});
         }
         my @files;
-        foreach my $f (@formats) {
+      GENERATEDFILE:
+        if ($title->{pages_estimated}) {
+          foreach my $f (@formats) {
             unless ($f->{is_slides} and !$title->{slides}) {
                 push @files, sprintf($file_template,
                                      $f->{code},
@@ -254,6 +270,7 @@ TEMPLATE
                                      $f->{desc},
                                      $f->{desc});
             }
+          }
         }
         if ($title->{attach}) {
             # see Title.attached_objects
@@ -285,8 +302,10 @@ TEMPLATE
         my $title_icon_class = "no-icon";
         my $title_icon_title = "";
         if ($show_type_and_number_of_pages) {
-            $title_icon_class = $title->{text_qualification} eq 'book' ? 'fa fa-book' : 'fa fa-file-text-o';
-            $title_icon_title = $title->{text_qualification} eq 'book' ? $book_note : $art_note;
+            if (my $qual = $qualifications{$title->{text_qualification} || ''}) {
+                $title_icon_class = $qual->{class};
+                $title_icon_title = $qual->{title};
+            }
         }
         $title->{display_title} = sprintf($title_template,
                                           $title_icon_class,
