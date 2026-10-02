@@ -8,7 +8,7 @@ BEGIN {
     $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';
 };
 
-use Test::More tests => 136;
+use Test::More tests => 142;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -16,6 +16,7 @@ use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use HTML::Entities;
 use Template;
+use Data::Dumper::Concise;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
 binmode $builder->failure_output, ":utf8";
@@ -356,6 +357,8 @@ $mech->content_like(qr{porchetta.*going-to-abandon-this}si, "First the committed
                    mail_from => 'from@amusewiki.org',
                    mode => 'modwiki',
                  });
+    $site->site_options->update_or_create({ option_name => 'show_type_and_number_of_pages',
+                                            option_value => 1 });
 
     $mech->get('/action/text/new');
     ok($mech->form_id('ckform'), "Found the form");
@@ -376,6 +379,16 @@ while (my $j = $site->jobs->dequeue) {
     $j->dispatch_job;
     diag $j->logs;
 }
+
+if (my $emptybody = $site->titles->find({ uri => 'empty-body-authenticated' })) {
+    is $emptybody->text_qualification, 'metadata_only', 'Text is marked as metadata';
+    is $emptybody->text_size, 0;
+    $mech->get_ok('/mirror');
+    $mech->content_contains('empty-body-authenticated.html');
+    $mech->content_lacks('empty-body-authenticated.zip');
+    $mech->content_contains('fa-address-card-o') or diag $mech->content;
+}
+
 {
     $mech->get_ok('/logout');
     $mech->get('/action/text/new');
