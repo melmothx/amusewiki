@@ -269,6 +269,16 @@
     </div>
   [% END %]
 
+  <div class="form-group">
+    <div id="biblioentry-only-block" class="checkbox col-sm-offset-2 col-sm-10">
+      <label>
+        <input type="checkbox" id="biblioentry-only-toggler"
+               [% IF c.req.params.no_muse_body %]checked="checked"[% END %]
+               name="no_muse_body" value="1"/>
+        <strong>[% loc('Bibliographical entry only, no text') %]</strong>
+      </label>
+    </div>
+  </div>
 
     </div>
     <div class="col-sm-6" id="new-text-textareas">
@@ -447,7 +457,18 @@
          }
          check_uri();
      });
-
+      function muse_body_needed() {
+          if ($('#biblioentry-only-toggler').prop('checked')) {
+              $('#create-block-muse-body').hide();
+              $('#create-block-teaser').hide();
+          }
+          else {
+              $('#create-block-muse-body').show();
+              $('#create-block-teaser').show();
+          }
+      }
+      muse_body_needed();
+      $('#biblioentry-only-toggler').on('change', muse_body_needed);
   });
 </script>
 

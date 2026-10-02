@@ -70,10 +70,6 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
     my $site    = $c->stash->{site};
     my $f_class = $c->stash->{f_class} or die;
 
-    if ($site->enforce_manual_uri || $site->category_uri_use_unicode) {
-        $c->stash(pop_uri_field_to_the_top => 1);
-    }
-
     # create a working copy of the params
     my $params = { %{$c->request->body_params} };
     Dlog_debug { "In the newtext route $_" } $params;
@@ -107,16 +103,39 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
         # this call is going to add uri to $params, if not present
         my ($revision, $error) = $site->create_new_text($params, $f_class);
         if ($revision) {
+            my $redirect_to;
+            my $uri = $revision->title->uri;
+            if ($params->{no_muse_body}) {
+                my $committer = $c->user_exists ? clean_username($c->user->get("username")) : 'anonymous';
+                $revision->commit_version("Bibliographical entry", $committer);
+                log_info { "$uri is without muse body" };
+                $revision->discard_changes;
+                if ($c->user_exists || $site->human_can_publish ) {
+                    log_info { "Publishing $uri right away" };
+                    my $job = $site->jobs->publish_add($revision,
+                                                       $c->user_exists ? $c->user->get("username") : '');
+                    $c->response->redirect($c->uri_for_action('/tasks/display',
+                                                              [$job->id],
+                                                              { express => 1 }));
+                    # no need to mail anyone, the publish message should go anyway.
+                    return;
+                }
+                else {
+                    log_info { "Stashing $uri for approval" };
+                    $c->flash(status_msg => $c->loc("Changes saved, thanks! They are now waiting to be published"));
+                    $redirect_to = $c->uri_for('/');
+                }
+            }
+            else {
             # set the session id
             $revision->session_id($c->sessionid);
             $revision->update;
             $c->flash(status_msg => $c->loc("Created new text"));
             $c->flash(error_msg => $c->loc('Not finished yet! Please have a look at the text and then click on "[_1]" to finalize your submission!', $c->loc('Save')));
-
-            my $uri = $revision->title->uri;
+            }
             my $id  = $revision->id;
             my $location = $c->uri_for_action('/edit/edit', [$f_class, $uri, $id]);
-
+            $redirect_to ||= $location;
             # Notify
             my $mail_to =   $c->stash->{site}->mail_notify;
             my $mail_from = $c->stash->{site}->mail_from;
@@ -127,21 +146,17 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
                             subject => $revision->title->full_uri,
                             home => $c->uri_for('/'),
                             location => $location,
+                            pending_url => $c->uri_for_action('/publish/pending'),
+                            no_muse_body => $params->{no_muse_body} ? 1 : 0,
                            );
                 log_info { "Sending mail from $mail_from to $mail_to for new $uri" };
                 $c->stash->{site}->send_mail(newtext => \%mail);
             }
-            $c->response->redirect($location);
+            $c->response->redirect($redirect_to);
             return;
         }
         else {
             $c->stash(processed_params => $params);
-
-            # this is not a clean solution, but makes sense anyway: if
-            # the error concern the URI, we pop the field up.
-            if ($error =~  m/URI/) {
-                $c->stash(pop_uri_field_to_the_top => 1);
-            }
             my $loc_error = $c->loc($error);
             if ($params->{fileupload}) {
                 $loc_error .= ' ' . $c->loc("Please upload your file again!");
