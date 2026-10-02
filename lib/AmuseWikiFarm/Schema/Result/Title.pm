@@ -741,12 +741,23 @@ has show_formats => (is => 'ro',
 
 sub _build_show_formats {
     my $self = shift;
+    return 0 unless $self->has_text_body;
     if (my $formats = $self->muse_headers->header_value_by_name('formats')) {
         if ($formats =~ m/\A\s*(no|none|off|-)\s*\z/i) {
             return 0;
         }
     }
     return 1;
+}
+
+sub has_text_body {
+    my $self = shift;
+    if ($self->text_qualification and $self->text_qualification eq 'metadata_only') {
+        return 0;
+    }
+    else {
+        return 1;
+    }
 }
 
 =head2 listing
