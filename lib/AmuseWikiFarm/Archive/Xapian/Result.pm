@@ -139,6 +139,7 @@ sub facet_tokens {
             }
         }
     }
+    # loc('metadata_only');
     # loc('Document type');
     # loc('Number of pages');
     # loc('Date');
