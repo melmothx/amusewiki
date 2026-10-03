@@ -5424,6 +5424,12 @@ sub oai_pmh_base_identifier {
     return join(':', oai => $self->canonical, '');
 }
 
+sub spreadsheet_upload_specification {
+    my $self = shift;
+    return [];
+}
+
+
 sub has_autoimport_file {
     my ($self, $type) = @_;
     my $dir = Path::Tiny::path($self->autoimport_dir);

@@ -1986,6 +1986,7 @@ t/backlinks.t
 t/batch-upload.t
 t/bb-profiles.t
 t/beamer.t
+t/bibliographical-entries.t
 t/binary-files/audio.flac
 t/binary-files/audio.mp3
 t/binary-files/audio.ogg
