@@ -1743,6 +1743,14 @@ sub backup_tarball {
     shift->backup_directory->child('site-backup.tar.gz');
 }
 
+sub site_yaml {
+    my $self = shift;
+    # we don't want this served to anyone, so not in the backups directory
+    my $dir = Path::Tiny::path(ROOT, var => 'private-backups', $self->id);
+    $dir->mkpath;
+    return $dir->child($self->id . '.yaml');
+}
+
 =head2 create_new_text(\%params, $f_class)
 
 Using the parameters passed, create a new text and return its revision
@@ -5743,7 +5751,10 @@ sub make_backup {
         $logger->("Source dir does not exist for " . $self->id . "\n");
         return;
     }
-    my $today = DateTime->today->ymd;
+    my $conf = $self->serialize_site;
+    my $yamlfile = $self->site_yaml->stringify;
+    $logger->("Dumping site configuration to $yamlfile\n");
+    YAML::DumpFile("$yamlfile", $conf);
     my $target = $self->backup_tarball;
     my @exec = (tar => -C => ROOT, -czf => "$target.tmp", $self->repo_root_rel);
     $logger->("Executing " . join(' ', @exec) . "\n");
