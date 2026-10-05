@@ -1806,6 +1806,70 @@ HTML => muse conversion
 
 =cut
 
+# this should be used to build the creation form
+sub spreadsheet_upload_specification {
+    my $self = shift;
+    my $lh = $self->localizer;
+    my @list = (
+                {
+                 name => 'uri',
+                 label => $lh->loc("URI"),
+                },
+                {
+                 name  => 'title',
+                 label => $lh->loc("Title"),
+                }
+                ,
+                {
+                 name  => 'subtitle',
+                 label => $lh->loc("Subtitle"),
+                },
+                {
+                 name  => 'LISTtitle',
+                 label => $lh->loc("Title for sorting"),
+                },
+                {
+                 name  => 'author',
+                 label => $lh->loc("Author"),
+                }
+               );
+    foreach my $cct (grep { $_->{active} } @{ $self->custom_category_types || [] }) {
+        push @list, {
+                     name => $cct->{header},
+                     label => $cct->{generate_index} ? $lh->loc($cct->{name_plural}) : $lh->loc($cct->{name_singular})
+                    };
+    }
+    push @list, {
+                 name  => 'date',
+                 label => $lh->loc("Date of the original publication"),
+                };
+    foreach my $bi (grep { $_->{active} } @{ $self->built_in_directives || [] }) {
+        push @list, {
+                     name => $bi->{name},
+                     label => $lh->loc($bi->{description})
+                    }
+    }
+    push @list, {
+                 name => 'source',
+                 label => $lh->loc('Source'),
+                };
+    if ($self->multilanguage) {
+        push @list, {
+                     name => 'uid',
+                     label => $lh->loc('Text identifier (shared between translations)'),
+                    };
+    }
+    push @list, {
+                 name => 'lang',
+                 label => "Language ISO code (two letters)",
+                };
+    push @list, {
+                 name => 'notes',
+                 label => "Additional Notes",
+                };
+    return \@list;
+}
+
 sub import_text_from_html_params {
     my ($self, $params, $f_class) = @_;
     die "Missing params"  unless $params;
@@ -5423,12 +5487,6 @@ sub oai_pmh_base_identifier {
     my $self = shift;
     return join(':', oai => $self->canonical, '');
 }
-
-sub spreadsheet_upload_specification {
-    my $self = shift;
-    return [];
-}
-
 
 sub has_autoimport_file {
     my ($self, $type) = @_;
