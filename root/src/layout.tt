@@ -437,6 +437,13 @@
                     [% loc('Create a new special page') %]
                   </a>
                 </li>
+                <li>
+                  <a href="[% c.uri_for_action('/console/upload_spreadsheet') %]">
+                    <span class="fa fa-file-excel-o fa-fw" aria-hidden="true"></span>
+                    [% loc('Upload catalog metadata') %]
+                  </a>
+                </li>
+
                 [% IF site.multilanguage %]
                 <li>
                   <a href="[% c.uri_for_action('/console/translations') %]">
