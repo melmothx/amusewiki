@@ -375,6 +375,16 @@ sub download_backup :Chained('root') :PathPart('download-backup') :Args(0) {
 }
 
 
+sub upload_spreadsheet :Chained('root') :PathPart('upload-spreadsheet') :Args(0) {
+    my ($self, $c) = @_;
+    my $spec = $c->stash->{site}->spreadsheet_upload_specification;
+    # Dlog_info { $_ } $spec;
+    $c->stash(
+              page_title => $c->loc("Upload catalog metadata"),
+              spreadsheet_specification => $spec,
+             );
+}
+
 =head1 AUTHOR
 
 Marco Pessotto <melmothx@gmail.com>

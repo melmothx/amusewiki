@@ -1,0 +1,51 @@
+<div class="center">
+  <div class="page-header">
+    <h1>[% page_title | html %]</h1>
+  </div>
+</div>
+
+<p>
+  [% loc('Here you can provide a spreadsheet with your bibliographical entries. We are going to create an entry for each record. First you need to set the field names.') %]
+</p>
+
+http://blog.amusewiki.org/settings/categories
+
+<form action="" method="POST">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>[% loc('Description') %]</th>
+        <th>[% loc('Spreadsheet field') %]</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <td>
+          <label class="control-label" for="spreadsheet-file">[% loc('Spreadsheet') %]</label>
+        </td>
+        <td>
+          <input type="file" id="spreadsheet-file" required/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="text-center">
+          <button class="btn btn-primary">Upload</button>
+        </td>
+      </tr>
+    </tfoot>
+    <tbody>
+      [% FOREACH ss_spec IN spreadsheet_specification %]
+        <tr>
+          <td>
+            <label class="control-label" for="sss-[% ss_spec.name | html %]">[% ss_spec.label | html %]</label>
+          </td>
+          <td>
+            <input class="form-control"
+                   name="sss-[% ss_spec.name | html %]"
+                   id="sss-[% ss_spec.name | html %]" value="[% ss_spec.name | html %]"></code>
+          </td>
+        </tr>
+      [% END %]
+    </tbody>
+  </table>
+</form>

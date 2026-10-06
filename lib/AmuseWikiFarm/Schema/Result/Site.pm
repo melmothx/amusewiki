@@ -1818,6 +1818,7 @@ sub spreadsheet_upload_specification {
                 {
                  name  => 'title',
                  label => $lh->loc("Title"),
+                 required => 1,
                 }
                 ,
                 {
@@ -1830,13 +1831,15 @@ sub spreadsheet_upload_specification {
                 },
                 {
                  name  => 'author',
-                 label => $lh->loc("Author"),
+                 label => $lh->loc("Author (as displayed)"),
+                 required => 1,
                 }
                );
     foreach my $cct (grep { $_->{active} } @{ $self->custom_category_types || [] }) {
         push @list, {
                      name => $cct->{header},
-                     label => $cct->{generate_index} ? $lh->loc($cct->{name_plural}) : $lh->loc($cct->{name_singular})
+                     label => $cct->{generate_index} ? $lh->loc($cct->{name_plural}) : $lh->loc($cct->{name_singular}),
+                     semicolon_separated => 1,
                     };
     }
     push @list, {
