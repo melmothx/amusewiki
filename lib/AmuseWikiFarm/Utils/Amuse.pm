@@ -1064,6 +1064,7 @@ sub known_langs {
             hu => 'Magyar',
             bn => 'বাংলা',
             ko => '한국어',
+            ne => 'नेपाली',
            };
 }
 
