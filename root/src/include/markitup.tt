@@ -105,15 +105,5 @@ $(document).ready(function() {
 	    ]
     }
     $('.text-muse-body').markItUp(myMuseSettings);
-    $('#fullscreen-markitup-toggle').on('click', function(event){
-        if (screenfull.enabled) {
-            screenfull.toggle($('#fullscreen-markitup')[0]);
-        }
-    });
-    if (screenfull.enabled) {
-        screenfull.onchange(function() {
-            $('#fullscreen-markitup').toggleClass('editor-fullscreen');
-        });
-    }
 });
 </script>

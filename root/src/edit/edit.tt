@@ -138,9 +138,6 @@
                 required
                 name="body">[%- revision.muse_body | html -%]</textarea>
       <div id="fullscreen-markitup-toggle-button">
-        <button class="btn btn-default btn-sm" type="button" id="fullscreen-markitup-toggle">
-          [% loc('Toggle fullscreen editor') %]
-        </button>
         <button type="submit" class="btn btn-default btn-sm" name="preview"
                 data-ajax-post="[% ajax_editing_uri %]"
                 value="preview" id="amw-edit-form-preview-button">
