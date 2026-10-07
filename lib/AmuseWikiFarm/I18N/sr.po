@@ -592,7 +592,7 @@ msgid ""
 msgstr "Širina lijeve strane stranice za uređivanje tekstova"
 
 msgid "Comma or semicolon separated list"
-msgstr "Popis odvojen zarezom"
+msgstr "Popis odvojen zarezom ili točkom sa zarezom"
 
 msgid "Comments"
 msgstr ""
