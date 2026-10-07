@@ -99,7 +99,32 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
                 $params->{cat} = join(' ', @out);
             }
         }
-
+        my %annotation_updates;
+        foreach my $ann ($site->annotations->active_only->public_only->sorted->all) {
+            my %annotation_values;
+            my $form_name = $ann->html_form_name;
+            if ($ann->annotation_type eq 'file') {
+                my ($upload) = $c->request->upload($form_name);
+                if ($upload) {
+                    log_debug { "Annotation file: $form_name" };
+                    $annotation_values{file} = $upload->tempname;
+                    $annotation_values{value} = $upload->basename;
+                }
+            }
+            else {
+                my $v = $params->{$form_name};
+                if (defined $v and length $v) {
+                    $annotation_values{value} = $v;
+                }
+            }
+            if (%annotation_values) {
+                $annotation_updates{$ann->annotation_id} = \%annotation_values;
+            }
+        }
+        if (%annotation_updates) {
+            $params->{annotation_updates} = \%annotation_updates;
+            Dlog_debug { "Annotations: $_" } $params->{annotation_updates};
+        }
         # this call is going to add uri to $params, if not present
         my ($revision, $error) = $site->create_new_text($params, $f_class);
         if ($revision) {
@@ -218,6 +243,15 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
                   aggregation_selections => \@aggs,
                  );
     }
+    my @annotations = map { $_->values_for_object } $site->annotations->active_only->public_only->sorted->all;
+    foreach my $ann (@annotations) {
+        if ($ann->{type} ne 'file') {
+            my $v = $params->{$ann->{html_form_name}};
+            $ann->{value} = $v if defined $v;
+        }
+    }
+    $c->stash(annotations => \@annotations);
+    Dlog_debug { "Annotations: $_" } $c->stash->{annotations};
 }
 
 sub text :Chained('root') :PathPart('edit') :CaptureArgs(1) {

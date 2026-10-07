@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 254;
+use Test::More tests => 267;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -337,4 +337,43 @@ ok path($site->repo_root, 'annotations', '.gitignore')->exists;
     $mech->content_lacks('noRecordsMatch');
     $mech->content_lacks('tag="852"') or diag $mech->content;
     $mech->content_lacks('tag="365"') or diag $mech->content;
+    # test the upload
+
+    my $af = $site->annotations->create({
+                                         label => 'Raw Scan',
+                                         annotation_name => 'rawscan',
+                                         annotation_type => 'file'
+                                        });
+    $root->get_ok('/action/text/new');
+    my $body = $root->content;
+    foreach my $str ($ap->html_form_name,
+                     $as->html_form_name,
+                     $af->html_form_name,
+                     $af->label,
+                     $ap->label,
+                     $as->label) {
+        like $body, qr{\Q$str\E}, "Found $str in the body";
+    }
+    ok $root->form_id('ckform'), "Found the form for uploading stuff";
+    $root->set_fields(
+                      uri => "my-final-test-with-annotation",
+                      title => "Final test with annotation",
+                      $ap->html_form_name => "300 EUR",
+                      $as->html_form_name => "ZZZxxx/XXXxxx",
+                      $af->html_form_name => [ 't/files/shot.pdf', 'shot.pdf' ],
+                     );
+    $root->tick(no_muse_body => 1);
+    $root->click('go');
+    while (my $j = $site->jobs->dequeue) {
+        $j->dispatch_job;
+        diag $j->logs;
+    }
+    my $annotated = $site->titles->find({ uri => "my-final-test-with-annotation" });
+    ok $annotated;
+    is $annotated->title_annotations->count, 3;
+    foreach my $ta ($annotated->title_annotations->all) {
+        ok $ta->annotation_value, "Found " . $ta->annotation_value;
+    }
+
+
 }

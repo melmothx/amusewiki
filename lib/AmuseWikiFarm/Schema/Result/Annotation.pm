@@ -280,6 +280,13 @@ sub annotate {
     return { errors => \@errors };
 }
 
+sub html_form_name {
+    my $self = shift;
+    return join('-', annotation => $self->annotation_type,
+                $self->annotation_name, # checked when creating it, ascii no space
+                $self->annotation_id);
+}
+
 sub values_for_object {
     my ($self, $object, $uri_prefix) = @_;
     my %out = (
@@ -288,6 +295,7 @@ sub values_for_object {
                id => $self->annotation_id,
                type => $self->annotation_type,
                private => $self->private,
+               html_form_name => $self->html_form_name,
                value => undef,
               );
     return \%out unless $object;

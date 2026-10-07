@@ -1864,12 +1864,18 @@ sub spreadsheet_upload_specification {
     }
     push @list, {
                  name => 'lang',
-                 label => "Language ISO code (two letters)",
+                 label => $lh->loc("Language ISO code (two letters)"),
                 };
     push @list, {
                  name => 'notes',
-                 label => "Additional Notes",
+                 label => $lh->loc("Additional Notes"),
                 };
+    foreach my $annotation ($self->annotations->active_only->public_only->no_files->sorted) {
+        push @list, {
+                     name => $annotation->html_form_name,
+                     label => $lh->loc($annotation->label),
+                    };
+    }
     return \@list;
 }
 
@@ -1939,7 +1945,6 @@ sub import_text_from_html_params {
     }
 
     my $guard = $self->result_source->schema->txn_scope_guard;
-    # title->can_spawn_revision will return false, so we have to force
     my $created = $self->titles->create($bogus);
 
     foreach my $meta (qw/node aggregation/) {
@@ -1959,6 +1964,11 @@ sub import_text_from_html_params {
             }
         }
     }
+    if ($params->{annotation_updates}) {
+        $created->annotate($params->{annotation_updates});
+    }
+
+    # title->can_spawn_revision will return false, so we have to force
     my $revision = $created->new_revision('force');
 
     # save a copy of the html request
