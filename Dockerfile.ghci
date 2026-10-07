@@ -12,6 +12,7 @@ RUN apt-get update && \
         equivs \
     && wget -q https://deb.amusewiki.org/amusewiki-archive-keyring-trixie_1.0.0_all.deb \
     && apt-get install -y ./amusewiki-archive-keyring-trixie_1.0.0_all.deb \
+    && apt-get install -y bash-completion libspreadsheet-parseexcel-perl libspreadsheet-parsexlsx-perl libtext-csv-perl libfile-bom-perl libencode-detect-perl \
     && rm amusewiki-archive-keyring-trixie_1.0.0_all.deb \
     && apt-get update \
     && cd /tmp \
