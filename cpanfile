@@ -114,6 +114,12 @@ requires 'Path::Tiny' => '0.048';
 requires 'Locale::Maketext::Lexicon';
 requires 'Locale::PO';
 
+requires 'Spreadsheet::ParseXLSX';
+requires 'Spreadsheet::ParseExcel;
+requires 'Text::CVS';
+requires 'File::BOM';
+requires 'Encode::Detect';
+
 test_requires 'Test::More' => '0.88';
 test_requires 'CAM::PDF';
 test_requires 'Test::Differences';

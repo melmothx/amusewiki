@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@v5
       - name: install prerequisite
         run: |
-          apt-get update && apt-get install bash-completion
+          apt-get update && apt-get install bash-completion libspreadsheet-parseexcel-perl libspreadsheet-parsexlsx-perl libtext-csv-perl libfile-bom-perl libencode-detect-perl
       - name: build package
         run: |
           DEB_BUILD_OPTIONS=nocheck debuild -i -us -uc --pre-clean --post-clean -b
