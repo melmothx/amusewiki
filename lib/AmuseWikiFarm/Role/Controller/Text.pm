@@ -186,7 +186,7 @@ sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
     # same in Controller::Aggregation::populate_annotations
     my @annotations;
     foreach my $ann ($ann_rs->sorted->all) {
-        push @annotations, $ann->values_for_object($text, $c->uri_for('/'));
+        push @annotations, $ann->values_for_object($text, sub { $c->uri_for($_[0])->as_string });
     }
     Dlog_debug { "Annotations are  $_"  } \@annotations;
     $c->stash(annotations => \@annotations) if @annotations;
