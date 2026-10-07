@@ -26,4 +26,10 @@ sub sorted {
     return $self->search(undef, { order_by => "$me.priority" });
 }
 
+sub no_files {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.annotation_type" => { '!=' => 'file' }});
+}
+
 1;
