@@ -288,7 +288,7 @@ sub html_form_name {
 }
 
 sub values_for_object {
-    my ($self, $object, $uri_prefix) = @_;
+    my ($self, $object, $uri_maker) = @_;
     my %out = (
                label => $self->label,
                name => $self->annotation_name,
@@ -304,13 +304,14 @@ sub values_for_object {
     if ($value and $self->annotation_type eq 'file') {
         if (my $valid = $self->_validate_file($value)) {
             $out{file_path} = $valid;
-            if ($uri_prefix) {
-                $out{url} = join("/", $uri_prefix,
+            if ($uri_maker) {
+                my $url = join("/", "",
                                  qw/annotation download/,
                                  $self->annotation_id,
                                  $type,
                                  $object->uri,
                                  $valid->basename);
+                $out{url} = $uri_maker->($url);
             }
         }
         else {

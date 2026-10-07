@@ -408,7 +408,7 @@ sub populate_annotations :Private {
     }
     my @annotations;
     foreach my $ann ($ann_rs->sorted->all) {
-        push @annotations, $ann->values_for_object($agg, $c->uri_for('/'));
+        push @annotations, $ann->values_for_object($agg, sub { $c->uri_for($_[0])->as_string });
     }
     $c->stash(annotations => \@annotations);
 }
