@@ -206,6 +206,11 @@ Depends: ${misc:Depends}, ${perl:Depends},
  cgit, nginx, git, fontconfig,
  fonts-cmu, fonts-texgyre, fonts-fandol,
  imagemagick,
+ libspreadsheet-parseexcel-perl,
+ libspreadsheet-parsexlsx-perl,
+ libtext-csv-perl,
+ libfile-bom-perl,
+ libencode-detect-perl,
  amusewiki-texlive
 Recommends: amusewiki-extra-fonts
 Description: library-oriented wiki engine, publishing and authoring platform
