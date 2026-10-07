@@ -102,6 +102,11 @@ Build-Depends-Indep: libbytes-random-secure-perl,
  cgit,
  lsof,
  fonts-cmu, fonts-texgyre, fonts-fandol,
+ libspreadsheet-parseexcel-perl,
+ libspreadsheet-parsexlsx-perl,
+ libtext-csv-perl,
+ libfile-bom-perl,
+ libencode-detect-perl,
  amusewiki-texlive
 Standards-Version: 4.5.1
 Homepage: https://amusewiki.org
