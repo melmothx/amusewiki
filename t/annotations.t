@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 267;
+use Test::More tests => 268;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -374,6 +374,7 @@ ok path($site->repo_root, 'annotations', '.gitignore')->exists;
     foreach my $ta ($annotated->title_annotations->all) {
         ok $ta->annotation_value, "Found " . $ta->annotation_value;
     }
-
-
+    my $got = $site->generate_spreadsheet_catalog;
+    ok $got;
+    diag $got->slurp_utf8;
 }
