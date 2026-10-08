@@ -375,15 +375,23 @@ sub download_backup :Chained('root') :PathPart('download-backup') :Args(0) {
 }
 
 
-sub upload_spreadsheet :Chained('root') :PathPart('upload-spreadsheet') :Args(0) {
+sub upload_spreadsheet :Chained('root') :PathPart('upload-catalog-spreadsheet') :Args(0) {
     my ($self, $c) = @_;
-    my $spec = $c->stash->{site}->spreadsheet_upload_specification;
+    my $spec = $c->stash->{site}->spreadsheet_catalog_specification;
     # Dlog_info { $_ } $spec;
     $c->stash(
-              page_title => $c->loc("Upload catalog metadata"),
+              page_title => $c->loc("Catalog Spreadsheets"),
               spreadsheet_specification => $spec,
              );
 }
+
+sub download_spreadsheet :Chained('root') :PathPart('download-catalog-spreadsheet') :Args(0) {
+    my ($self, $c) = @_;
+    my $file = $c->stash->{site}->generate_spreadsheet_catalog;
+    $c->response->content_type('text/csv');
+    $c->response->body($file->slurp_utf8);
+}
+
 
 =head1 AUTHOR
 

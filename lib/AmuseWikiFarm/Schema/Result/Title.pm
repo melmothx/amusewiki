@@ -807,12 +807,34 @@ sub author_list {
 
 sub category_listing {
     my ($self, $type, $sep) = @_;
+    return '' unless $type;
+    unless (defined $sep) {
+        $sep = ';';
+    }
     my @cats;
-    my @results = $self->categories->by_type($type);
-    foreach my $cat (@results) {
-        push @cats, $cat->name;
+    # we do this because if prefetched we save a query
+    foreach my $cat ($self->categories->all) {
+        if ($cat->type eq $type) {
+            push @cats, $cat->name;
+        }
     }
     @cats ? return join($sep, @cats) : return '';
+}
+
+sub get_annotation_value {
+    my ($self, $annotation_id) = @_;
+    return '' unless $annotation_id;
+    my $val = '';
+    # same as above
+    foreach my $ta ($self->title_annotations->all) {
+        if ($ta->annotation_id == $annotation_id) {
+            my $aval = $ta->annotation_value;
+            if (defined $aval) {
+                $val = $aval;
+            }
+        }
+    }
+    return $val;
 }
 
 =head2 Published text

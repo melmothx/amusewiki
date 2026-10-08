@@ -5,10 +5,24 @@
 </div>
 
 <p>
-  [% loc('Here you can provide a spreadsheet with your bibliographical entries. We are going to create an entry for each record. First you need to set the field names.') %]
+  [% loc('Here you can provide a spreadsheet with your bibliographical entries. We are going to create an entry for each record. First you need to set the field names. Empty fields will be ignored.') %]
 </p>
 
-http://blog.amusewiki.org/settings/categories
+<p>
+  [% loc('If you need more fields, please see:') %]
+</p>
+<ul>
+  <li><a href="[% c.uri_for_action('/settings/categories') %]">[% loc('Categories') %]</a></li>
+  <li><a href="[% c.uri_for_action('/settings/annotations') %]">[% loc('Annotations') %]</a></li>
+</ul>
+
+<p>
+  [% loc('You can also download the current catalog in CSV (encoding: UTF-8, end of line: LF, separator: comma)')  %]:
+</p>
+
+<p class="text-center">
+  <a class="btn btn-primary" href="[% c.uri_for_action('/console/download_spreadsheet') %]">Download Catalog</a>
+</p>
 
 <form action="" method="POST">
   <table class="table table-striped">
@@ -16,6 +30,7 @@ http://blog.amusewiki.org/settings/categories
       <tr>
         <th>[% loc('Description') %]</th>
         <th>[% loc('Spreadsheet field') %]</th>
+        <th>[% loc('Field separator for multiple values') %]</th>
       </tr>
     </thead>
     <tfoot>
@@ -26,10 +41,13 @@ http://blog.amusewiki.org/settings/categories
         <td>
           <input type="file" id="spreadsheet-file" required/>
         </td>
+        <td>
+          [% loc('The file can be a CSV, a XLS or a XLSX') %]
+        </td>
       </tr>
       <tr>
-        <td colspan="2" class="text-center">
-          <button class="btn btn-primary">Upload</button>
+        <td colspan="3" class="text-center">
+          <button type="submit" class="btn btn-primary">Upload</button>
         </td>
       </tr>
     </tfoot>
@@ -38,11 +56,20 @@ http://blog.amusewiki.org/settings/categories
         <tr>
           <td>
             <label class="control-label" for="sss-[% ss_spec.name | html %]">[% ss_spec.label | html %]</label>
+            [% IF ss_spec.help %]<small>[% ss_spec.help | html %]</small>[% END %]
           </td>
           <td>
             <input class="form-control"
-                   name="sss-[% ss_spec.name | html %]"
-                   id="sss-[% ss_spec.name | html %]" value="[% ss_spec.name | html %]"></code>
+                   name="sss-[% ss_spec.name | html %]" [% IF ss_spec.required %]required[% END %]
+                   id="sss-[% ss_spec.name | html %]"
+                   value="[% ss_spec.name | html %]"></code>
+          </td>
+          <td>
+            [% IF ss_spec.separator %]
+            <input class="form-control"
+                   name="separator-[% ss_spec.name %]"
+                   value="[% ss_spec.separator %]" />
+            [% END %]
           </td>
         </tr>
       [% END %]

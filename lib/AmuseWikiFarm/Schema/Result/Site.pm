@@ -1117,6 +1117,7 @@ use Email::Address;
 use XML::OPDS;
 use YAML ();
 use IPC::Run ();
+use Text::CSV;
 
 =head2 repo_root_rel
 
@@ -1807,13 +1808,14 @@ HTML => muse conversion
 =cut
 
 # this should be used to build the creation form
-sub spreadsheet_upload_specification {
+sub spreadsheet_catalog_specification {
     my $self = shift;
     my $lh = $self->localizer;
     my @list = (
                 {
                  name => 'uri',
                  label => $lh->loc("URI"),
+                 method => 'uri',
                 },
                 {
                  name  => 'title',
@@ -1836,11 +1838,15 @@ sub spreadsheet_upload_specification {
                 }
                );
     foreach my $cct (grep { $_->{active} } @{ $self->custom_category_types || [] }) {
-        push @list, {
-                     name => $cct->{header},
-                     label => $cct->{generate_index} ? $lh->loc($cct->{name_plural}) : $lh->loc($cct->{name_singular}),
-                     semicolon_separated => 1,
-                    };
+        my $spec = {
+                    name => $cct->{header},
+                    label => $cct->{generate_index} ? $lh->loc($cct->{name_plural}) : $lh->loc($cct->{name_singular}),
+                    help => $cct->{description} || '',
+                    separator => $cct->{generate_index} ? ';' : '',
+                    method => 'category_listing',
+                    args => [ $cct->{name}, '; ' ],
+                   };
+        push @list, $spec;
     }
     push @list, {
                  name  => 'date',
@@ -1849,8 +1855,8 @@ sub spreadsheet_upload_specification {
     foreach my $bi (grep { $_->{active} } @{ $self->built_in_directives || [] }) {
         push @list, {
                      name => $bi->{name},
-                     label => $lh->loc($bi->{description})
-                    }
+                     label => $lh->loc($bi->{description}),
+                    };
     }
     push @list, {
                  name => 'source',
@@ -1874,10 +1880,51 @@ sub spreadsheet_upload_specification {
         push @list, {
                      name => $annotation->html_form_name,
                      label => $lh->loc($annotation->label),
+                     method => 'get_annotation_value',
+                     args => [ $annotation->annotation_id ],
                     };
     }
     return \@list;
 }
+
+sub generate_spreadsheet_catalog {
+    my $self = shift;
+    my $file = Path::Tiny->tempfile;
+    my $csv = Text::CSV->new({
+                              binary => 1,
+                              eol => "\n",
+                              auto_diag => 2,
+                              always_quote => 1,
+                             }) or die Text::CSV->error_diag;
+    my $fh = $file->filehandle('>', ':encoding(utf-8)');
+    my $spec = $self->spreadsheet_catalog_specification;
+    my @headers = map { $_->{name} } @$spec;
+    $csv->say($fh, \@headers);
+    foreach my $title ($self->titles->texts_only->published_or_deferred_all
+                       ->search(undef,
+                                {
+                                 prefetch => [
+                                              { title_categories => 'category' },
+                                              'title_annotations',
+                                              'muse_headers',
+                                             ],
+                                })->all) {
+        my @row;
+        my $headers = $title->raw_headers;
+        foreach my $el (@$spec) {
+            if (my $method = $el->{method}) {
+                push @row, $title->$method(@{$el->{args} || []});
+            }
+            else {
+                push @row, $headers->{lc($el->{name})};
+            }
+        }
+        $csv->say($fh, \@row);
+    }
+    close $fh;
+    return $file;
+}
+
 
 sub import_text_from_html_params {
     my ($self, $params, $f_class) = @_;
