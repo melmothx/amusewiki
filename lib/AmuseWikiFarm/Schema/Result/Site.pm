@@ -4788,7 +4788,7 @@ sub bootstrap_alt_theme {
 sub built_in_directives {
     my $self = shift;
     # loc('Copyright notice'); loc('ISBN'); loc('Series Number');
-    # loc('Series Name'); loc('Publisher'); loc('SKU');
+    # loc('Series Name'); loc('Publisher'); loc('SKU'); loc('First Edition Date');
     my %builtins = (
                     rights => 'Copyright notice',
                     isbn => 'ISBN',
@@ -4796,6 +4796,7 @@ sub built_in_directives {
                     seriesname => 'Series Name',
                     publisher => 'Publisher',
                     sku => 'SKU',
+                    datefirst => 'First Edition Date',
                    );
     my @out;
     foreach my $f (sort keys %builtins) {
