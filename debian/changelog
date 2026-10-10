@@ -1,3 +1,9 @@
+amusewiki (2.619-1) unstable; urgency=medium
+
+  * New release
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sat, 10 Oct 2026 13:52:29 +0200
+
 amusewiki (2.618-2) unstable; urgency=medium
 
   * Correct systemd unit file
