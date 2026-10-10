@@ -115,7 +115,7 @@ requires 'Locale::Maketext::Lexicon';
 requires 'Locale::PO';
 
 requires 'Spreadsheet::ParseXLSX';
-requires 'Spreadsheet::ParseExcel;
+requires 'Spreadsheet::ParseExcel';
 requires 'Text::CVS';
 requires 'File::BOM';
 requires 'Encode::Detect';

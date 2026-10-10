@@ -6,6 +6,8 @@ BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
 use DateTime;
+use AmuseWikiFarm::Utils::Paths;
+use AmuseWikiFarm::Archive::CatalogSpreadsheet;
 
 =head1 NAME
 
@@ -379,6 +381,21 @@ sub upload_spreadsheet :Chained('root') :PathPart('upload-catalog-spreadsheet') 
     my ($self, $c) = @_;
     my $spec = $c->stash->{site}->spreadsheet_catalog_specification;
     # Dlog_info { $_ } $spec;
+    my ($upload) = $c->request->upload('spreadsheet-file');
+    if ($upload) {
+        my $file_basename = $upload->basename;
+        if ($file_basename =~ m/\.(csv|xls|xlsx)$/) {
+            $file_basename =~ s/[^a-zA-Z0-9_\.-]/_/g;
+            $file_basename = time() . '-' . $file_basename;
+            my $target = AmuseWikiFarm::Utils::Paths::cache_upload_location->child($file_basename);
+            log_debug { "Uploading to $target" };
+            $upload->copy_to("$target");
+        }
+        else {
+            $c->flash(error_msg => $c->loc("We accept only CSV, XLS or XLSX files"));
+        }
+    }
+
     $c->stash(
               page_title => $c->loc("Catalog Spreadsheets"),
               spreadsheet_specification => $spec,

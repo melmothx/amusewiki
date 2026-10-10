@@ -24,7 +24,7 @@
   <a class="btn btn-primary" href="[% c.uri_for_action('/console/download_spreadsheet') %]">Download Catalog</a>
 </p>
 
-<form action="" method="POST">
+<form action="" method="POST" enctype="multipart/form-data">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -39,7 +39,7 @@
           <label class="control-label" for="spreadsheet-file">[% loc('Spreadsheet') %]</label>
         </td>
         <td>
-          <input type="file" id="spreadsheet-file" required/>
+          <input type="file" id="spreadsheet-file" name="spreadsheet-file" required/>
         </td>
         <td>
           [% loc('The file can be a CSV, a XLS or a XLSX') %]
