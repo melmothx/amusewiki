@@ -30,6 +30,7 @@ log/jobs/*.log
 *.db
 var/*
 !var/.exists
+!var/uploads
 current_version_is*.txt
 webfonts/*/*
 log4perl.local.conf

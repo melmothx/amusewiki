@@ -964,6 +964,7 @@ dbicdh/SQLite/upgrade/87-88/001-auto.sql
 dbicdh/SQLite/upgrade/9-10/001-auto.sql
 lib/AmuseWikiFarm.pm
 lib/AmuseWikiFarm/Archive/BookBuilder.pm
+lib/AmuseWikiFarm/Archive/CatalogSpreadsheet.pm
 lib/AmuseWikiFarm/Archive/CgitEmulated.pm
 lib/AmuseWikiFarm/Archive/Lexicon.pm
 lib/AmuseWikiFarm/Archive/Lexicon/Handles.pm
@@ -1240,6 +1241,7 @@ root/src/console/git_fine_diff.tt
 root/src/console/list_categories.tt
 root/src/console/translations.tt
 root/src/console/unpublished.tt
+root/src/console/upload_spreadsheet.tt
 root/src/edit/diff.tt
 root/src/edit/edit.tt
 root/src/edit/footnotes.tt
