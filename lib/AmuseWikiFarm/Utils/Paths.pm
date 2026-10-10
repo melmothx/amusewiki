@@ -96,6 +96,10 @@ sub static_file_location {
     return _install_location(qw/root static/);
 }
 
+sub cache_upload_location {
+    return _install_location(qw/var uploads/);
+}
+
 
 sub served_mime_types {
     return  +{
