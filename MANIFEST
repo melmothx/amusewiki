@@ -2077,6 +2077,9 @@ t/federation-mirror-only.t
 t/federation.t
 t/files/amw-version-22.pdf
 t/files/big.jpeg
+t/files/catalog-sample.csv
+t/files/catalog-sample.xls
+t/files/catalog-sample.xlsx
 t/files/manual.pdf
 t/files/rtl.html
 t/files/shot.jpg
