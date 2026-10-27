@@ -8,13 +8,14 @@ BEGIN {
     $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';
 };
 
-use Test::More tests => 5;
+use Test::More tests => 11;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper::Concise;
+use AmuseWikiFarm::Archive::CatalogSpreadsheet;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
 binmode $builder->failure_output, ":utf8";
@@ -33,6 +34,23 @@ $mech->get_ok('/console/upload-catalog-spreadsheet');
 $mech->get_ok('/console/download-catalog-spreadsheet');
 diag $mech->content;
 
+
 # we want an export/import here. So they do the first upload with
 # their sheet and they can get it back converted. Also good for
 # backup.
+
+my $cs = AmuseWikiFarm::Archive::CatalogSpreadsheet->new(site => $site);
+ok $cs;
+
+my $current;
+foreach my $ext (qw/csv xls xlsx/) {
+    my $records = $cs->get_records(catfile(t => files => 'catalog-sample.' . $ext));
+    ok $records;
+    if ($current) {
+        is_deeply($records, $current);
+    }
+    else {
+        diag Dumper($records);
+    }
+    $current = $records;
+}
