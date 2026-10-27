@@ -64,10 +64,10 @@ ok $revision->muse_header->{pubdate}, "found the pubdate"
 like $muse, qr/^#title Pallino$/m, "Found title";
 ok !$revision->is_deferred, "text is not deferred";
 is $revision->deferred_pubdate, '', "no deferred pubdate";
-$revision->edit("#title test\n#pubdate 2026-10-11 12:00\n\nBlabla");
+$revision->edit("#title test\n#pubdate 2036-10-11 12:00\n\nBlabla");
 ok($revision->has_local_modifications, "Locally modified");
-is $revision->is_deferred, "2026-10-11", "text now is deferred";
-is $revision->muse_header->{pubdate}, "2026-10-11 12:00";
+is $revision->is_deferred, "2036-10-11", "text now is deferred";
+is $revision->muse_header->{pubdate}, "2036-10-11 12:00";
 $revision->edit("garbage");
 ok !$revision->is_deferred, "text is not deferred";
 $revision->edit("#pubdate lkasdlfkjalsdf\n\nblabla");
