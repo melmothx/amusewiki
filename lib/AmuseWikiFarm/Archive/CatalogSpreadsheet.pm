@@ -32,16 +32,18 @@ sub get_records {
     }
     my $specification = $self->specification;
     my $site_specification = $self->site->spreadsheet_catalog_specification;
-    $specification ||= $site_specification;
+    unless ($specification) {
+        $specification = $self->site->spreadsheet_catalog_specification;
+        $_->{column} = $_->{name} for @$specification;
+    }
     my %map;
-    my %sitesep = map { $_->{name} => $_->{separator} } grep { $_->{separator} } @$site_specification;
-    my %sheetsep = map { $_->{name} => $_->{separator} } grep { $_->{separator} } @$specification;
     foreach my $spec (@$specification) {
-        if (my $mapped = $spec->{column} || $spec->{name}) {
+        if (my $mapped = $spec->{column}) {
             $map{$mapped} = $spec->{name};
         }
     }
-    print Dumper(\%map);
+    my %sitesep = map { $_->{name} => $_->{separator} } grep { $_->{separator} } @$site_specification;
+    my %sheetsep = map { $_->{name} => $_->{separator} } grep { $_->{separator} } @$specification;
     my @converted;
     foreach my $r (@$out) {
         my %row;
@@ -54,7 +56,9 @@ sub get_records {
             }
             $row{$field} = $value;
         }
-        push @converted, \%row;
+        if (defined $row{title} and $row{title} =~ m/\w/) {
+            push @converted, \%row;
+        }
     }
     $out = \@converted;
     return $out;
