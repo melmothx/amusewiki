@@ -4,12 +4,14 @@ use utf8;
 use strict;
 use warnings;
 use Moo;
-use Types::Standard qw/Object Str/;
+use Types::Standard qw/Object Str ArrayRef/;
 use Spreadsheet::ParseXLSX;
 use Spreadsheet::ParseExcel;
 use Text::CSV;
+use Data::Dumper::Concise;
 
 has site => (is => 'ro', required => 1, isa => Object);
+has specification => (is => 'ro', required => 0, isa => ArrayRef);
 
 sub parse_file {
     my ($self, $file) = @_;
@@ -28,13 +30,40 @@ sub get_records {
     elsif ($file =~ m/\.xlsx\z/i) {
         $out = $self->_get_records_excel(Spreadsheet::ParseXLSX->new, $file);
     }
+    my $specification = $self->specification;
+    my $site_specification = $self->site->spreadsheet_catalog_specification;
+    $specification ||= $site_specification;
+    my %map;
+    my %sitesep = map { $_->{name} => $_->{separator} } grep { $_->{separator} } @$site_specification;
+    my %sheetsep = map { $_->{name} => $_->{separator} } grep { $_->{separator} } @$specification;
+    foreach my $spec (@$specification) {
+        if (my $mapped = $spec->{column} || $spec->{name}) {
+            $map{$mapped} = $spec->{name};
+        }
+    }
+    print Dumper(\%map);
+    my @converted;
+    foreach my $r (@$out) {
+        my %row;
+        foreach my $mapped (keys %map) {
+            my $field = $map{$mapped};
+            my $value = $r->{$mapped} // '';
+            if ($sheetsep{$field} and $sitesep{$field} and $sheetsep{$field} ne $sitesep{$field}) {
+                my $sep = $sheetsep{$field};
+                $value = join("$sitesep{$field} ", split(/\s*\Q$sep\E\s*/, $value))
+            }
+            $row{$field} = $value;
+        }
+        push @converted, \%row;
+    }
+    $out = \@converted;
     return $out;
 }
 
 sub _get_records_csv {
     my ($self, $file) = @_;
     # first see if there's a BOM
-    open (my $fh, '<:encoding(UTF-8)', $file) or die "Cannot open $file";
+    open (my $fh, '<:encoding(UTF-8)', "$file") or die "Cannot open $file";
     # read the first line and reset the position
     my $first = <$fh>;
     seek $fh, 0, 0;
@@ -58,7 +87,7 @@ sub _get_records_csv {
 
 sub _get_records_excel {
     my ($self, $parser, $file) = @_;
-    my $wb = $parser->parse($file) or die "Cannot parse $file";
+    my $wb = $parser->parse("$file") or die "Cannot parse $file";
     my @records;
     foreach my $ws ($wb->worksheets) {
         my ($row_min, $row_max) = $ws->row_range;

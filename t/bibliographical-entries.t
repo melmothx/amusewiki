@@ -8,7 +8,7 @@ BEGIN {
     $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';
 };
 
-use Test::More tests => 11;
+use Test::More tests => 12;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -45,7 +45,7 @@ ok $cs;
 my $current;
 foreach my $ext (qw/csv xls xlsx/) {
     my $records = $cs->get_records(catfile(t => files => 'catalog-sample.' . $ext));
-    ok $records;
+    ok $records->[0]->{title} or die Dumper($records) . " Missing title in records";
     if ($current) {
         is_deeply($records, $current);
     }
@@ -53,4 +53,25 @@ foreach my $ext (qw/csv xls xlsx/) {
         diag Dumper($records);
     }
     $current = $records;
+}
+
+{
+    my $specification = $site->spreadsheet_catalog_specification;
+    foreach my $spec (@$specification) {
+        if ($spec->{name} =~ /title/) {
+            $spec->{column} = 'x' . $spec->{name};
+        }
+        else {
+            $spec->{column} = $spec->{name};
+        }
+        if ($spec->{separator}) {
+            $spec->{separator} = '|';
+        }
+    }
+    diag Dumper($specification);
+    my $csx = AmuseWikiFarm::Archive::CatalogSpreadsheet->new(site => $site,
+                                                              specification => $specification,
+                                                             );
+    diag Dumper($current);
+    is_deeply $csx->get_records(catfile(t => files => 'catalog-sample-altered.csv')), $current;
 }
