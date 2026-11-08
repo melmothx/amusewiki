@@ -225,6 +225,7 @@ use Text::Amuse::Compile::Utils qw/read_file append_file/;
 use DateTime;
 use AmuseWikiFarm::Archive::BookBuilder;
 use AmuseWikiFarm::Archive::OAI::PMH;
+use AmuseWikiFarm::Archive::CatalogSpreadsheet;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse qw/clean_username to_json
                                    from_json/;
@@ -1056,6 +1057,22 @@ sub dispatch_job_build_bookcover {
         $logger->("Cover data not found!");
     }
     return;
+}
+
+sub dispatch_job_catalog_spreadsheet_import {
+    my ($self, $logger) = @_;
+    my $job_data = $self->job_data;
+    my $site = $self->site;
+    my $parser = AmuseWikiFarm::Archive::CatalogSpreadsheet->new(site => $site,
+                                                                 specification => $job_data->{specification},
+                                                                 logger => $logger,
+                                                                );
+    my $file = $job_data->{file};
+    my $bulk = $parser->create_revisions_from_file($file, {
+                                                           logger => $logger,
+                                                           username => $self->username,
+                                                          });
+    return "/tasks/job/" . $bulk->bulk_job_id . "/show";
 }
 
 before delete => sub {

@@ -4,6 +4,21 @@
   </div>
 </div>
 
+[% IF spreadsheet_preview %]
+  <h2>[% loc('Preview') %]</h2>
+  <pre>
+[% spreadsheet_preview | html %]
+  </pre>
+  <form action="" method="POST">
+    <button type="submit" class="btn btn-primary" name="proceed" value="1">
+      [% loc('Import this sheet') %]
+    </button>
+    <button type="submit" class="btn btn-primary" name="cancel" value="1">
+      [% loc('Cancel') %]
+    </button>
+  </form>
+[% ELSE %]
+
 <p>
   [% loc('Here you can provide a spreadsheet with your bibliographical entries. We are going to create an entry for each record. First you need to set the field names. Empty fields will be ignored.') %]
 </p>
@@ -76,3 +91,5 @@
     </tbody>
   </table>
 </form>
+
+[% END %]

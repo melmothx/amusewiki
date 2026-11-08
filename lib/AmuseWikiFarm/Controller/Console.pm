@@ -8,6 +8,7 @@ use AmuseWikiFarm::Log::Contextual;
 use DateTime;
 use AmuseWikiFarm::Utils::Paths;
 use AmuseWikiFarm::Archive::CatalogSpreadsheet;
+use YAML ();
 
 =head1 NAME
 
@@ -379,23 +380,67 @@ sub download_backup :Chained('root') :PathPart('download-backup') :Args(0) {
 
 sub upload_spreadsheet :Chained('root') :PathPart('upload-catalog-spreadsheet') :Args(0) {
     my ($self, $c) = @_;
-    my $spec = $c->stash->{site}->spreadsheet_catalog_specification;
+    my $site = $c->stash->{site};
+    my $spec = $site->spreadsheet_catalog_specification;
     # Dlog_info { $_ } $spec;
     my ($upload) = $c->request->upload('spreadsheet-file');
     if ($upload) {
         my $file_basename = $upload->basename;
         if ($file_basename =~ m/\.(csv|xls|xlsx)$/) {
             $file_basename =~ s/[^a-zA-Z0-9_\.-]/_/g;
-            $file_basename = time() . '-' . $file_basename;
+            $file_basename = $site->id . '-'. time() . '-' . $file_basename;
             my $target = AmuseWikiFarm::Utils::Paths::cache_upload_location->child($file_basename);
             log_debug { "Uploading to $target" };
             $upload->copy_to("$target");
+            # update the spec.
+            my $params = $c->request->body_params;
+            # we modifiy the spec saving the selections
+            foreach my $f (@$spec) {
+                if (my $mapped = $params->{'sss-' . $f->{name}}) {
+                    $f->{column} = "$mapped";
+                    if (my $separator = $params->{'separator-' . $f->{name}}) {
+                        $f->{separator} = "$separator";
+                    }
+                }
+            }
+            $c->session->{catalog_spreadsheet_upload} = $file_basename;
+            $c->session->{catalog_spreadsheet_spec} = $spec;
+            Dlog_debug { "Spec is $_" } [ $spec ];
+            my $parser = AmuseWikiFarm::Archive::CatalogSpreadsheet->new(site => $site,
+                                                                         specification => $spec,
+                                                                        );
+            my $records;
+            eval {
+                $records = $parser->get_records($target);
+            };
+            if ($@) {
+                log_error { "Failure parsing $target $@" };
+            }
+            if ($records and @$records) {
+                splice @$records, 5;
+                $c->stash(spreadsheet_preview => YAML::Dump($records));
+            }
+            else {
+                $c->flash(error_msg => $c->loc("Failure parsing your file"));
+            }
         }
         else {
             $c->flash(error_msg => $c->loc("We accept only CSV, XLS or XLSX files"));
         }
     }
-
+    if ($c->request->body_params->{cancel}) {
+        delete $c->session->{catalog_spreadsheet_upload};
+    }
+    if ($c->request->body_params->{proceed}) {
+        my $file = delete $c->session->{catalog_spreadsheet_upload};
+        my $spec = delete $c->session->{catalog_spreadsheet_spec};
+        my $job = $site->jobs->enqueue(catalog_spreadsheet_import => {
+                                                                      file => $file,
+                                                                      specification => $spec,
+                                                                     }, $c->user->get('username'));
+        $c->res->redirect($c->uri_for_action('/tasks/display',
+                                             [$job->id]));
+    }
     $c->stash(
               page_title => $c->loc("Catalog Spreadsheets"),
               spreadsheet_specification => $spec,

@@ -4,7 +4,7 @@ use utf8;
 use strict;
 use warnings;
 use Moo;
-use Types::Standard qw/Object Str ArrayRef/;
+use Types::Standard qw/Object Str ArrayRef CodeRef/;
 use Spreadsheet::ParseXLSX;
 use Spreadsheet::ParseExcel;
 use Text::CSV;
@@ -12,6 +12,7 @@ use Data::Dumper::Concise;
 
 has site => (is => 'ro', required => 1, isa => Object);
 has specification => (is => 'ro', required => 0, isa => ArrayRef);
+has logger => (is => 'ro', isa => CodeRef, default => sub { sub {} });
 
 sub parse_file {
     my ($self, $file) = @_;
@@ -123,6 +124,23 @@ sub _get_records_excel {
         }
     }
     return \@records;
+}
+
+sub create_revisions_from_file {
+    my ($self, $file, $opts) = @_;
+    $opts ||= {};
+    my $logger = $opts->{logger} || sub {};
+    $logger->("To do");
+    my @revs;
+    my $now = DateTime->now;
+    return $self->site->bulk_jobs->create({
+                                           task => 'publish_revisions',
+                                           created => $now,
+                                           status => (scalar(@revs) ? 'active' : 'completed'),
+                                           completed => (scalar(@revs) ? undef : $now),
+                                           username => $opts->{username},
+                                           jobs => []
+                                          });
 }
 
 1;

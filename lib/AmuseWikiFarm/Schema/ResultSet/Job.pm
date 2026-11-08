@@ -62,6 +62,7 @@ sub handled_jobs_hashref {
             install_downloaded => 27,
             prune_orphans => 28,
             purge_mirror_leftovers => 29,
+            catalog_spreadsheet_import => 24,
             refresh_oai_pmh_repo => 90,
             build_static_indexes => 100,
            };
