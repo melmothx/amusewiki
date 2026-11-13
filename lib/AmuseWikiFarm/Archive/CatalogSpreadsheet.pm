@@ -9,6 +9,8 @@ use Spreadsheet::ParseXLSX;
 use Spreadsheet::ParseExcel;
 use Text::CSV;
 use Data::Dumper::Concise;
+use AmuseWikiFarm::Utils::Amuse;
+use AmuseWikiFarm::Utils::Paths;
 
 has site => (is => 'ro', required => 1, isa => Object);
 has specification => (is => 'ro', required => 0, isa => ArrayRef);
@@ -130,17 +132,44 @@ sub create_revisions_from_file {
     my ($self, $file, $opts) = @_;
     $opts ||= {};
     my $logger = $opts->{logger} || sub {};
-    $logger->("To do");
     my @revs;
     my $now = DateTime->now;
-    return $self->site->bulk_jobs->create({
-                                           task => 'publish_revisions',
-                                           created => $now,
-                                           status => (scalar(@revs) ? 'active' : 'completed'),
-                                           completed => (scalar(@revs) ? undef : $now),
-                                           username => $opts->{username},
-                                           jobs => []
-                                          });
+    my $site = $self->site;
+    foreach my $rec (@{$self->get_records($file)}) {
+        my ($rev, $error) = $site->create_new_text({
+                                                    %$rec,
+                                                    no_muse_body => 1,
+                                                   }, 'text');
+        if ($rev) {
+            $rev->commit_version("CSV Import", $opts->{username});
+            push @revs, $rev->id;
+        }
+        else {
+            $logger->("Failure importing record: $error " . Dumper($rec))
+        }
+    }
+    my $site_id = $site->id;
+    return $site->bulk_jobs->create({
+                                     task => 'publish_revisions',
+                                     created => $now,
+                                     status => (scalar(@revs) ? 'active' : 'completed'),
+                                     completed => (scalar(@revs) ? undef : $now),
+                                     username => $opts->{username},
+                                     jobs => [
+                                              map {
+                                                  +{
+                                                    payload => AmuseWikiFarm::Utils::Amuse::to_json({ id => $_ }),
+                                                    site_id => $site_id,
+                                                    task => 'publish',
+                                                    status => 'pending',
+                                                    created => $now,
+                                                    priority => 18,
+                                                    username => $opts->{username},
+                                                   }
+                                              }
+                                              @revs
+                                             ],
+                                    });
 }
 
 1;

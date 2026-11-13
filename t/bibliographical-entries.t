@@ -8,7 +8,7 @@ BEGIN {
     $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';
 };
 
-use Test::More tests => 12;
+use Test::More tests => 32;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -74,4 +74,19 @@ foreach my $ext (qw/csv xls xlsx/) {
                                                              );
     diag Dumper($current);
     is_deeply $csx->get_records(catfile(t => files => 'catalog-sample-altered.csv')), $current;
+    my $file = catfile(t => files => 'catalog-sample-altered.csv');
+    my $bulk = $csx->create_revisions_from_file($file,
+                                                {
+                                                 logger => sub { diag @_ },
+                                                });
+    ok $bulk;
+    while (my $j = $site->jobs->dequeue) {
+        $j->dispatch_job;
+        diag $j->logs;
+    }
+    $mech->get_ok('/logout');
+    foreach my $r (@$current) {
+        $mech->get_ok('/library/' . $r->{uri});
+    }
+
 }

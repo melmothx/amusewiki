@@ -1382,6 +1382,10 @@ sub _parse_text_structure {
         log_error { "Can't find file for text id " . $self->id };
         return [];
     }
+    unless (grep { /\w/ } $muse->document->raw_body) {
+        log_debug { "No real body" }
+        return [];
+    }
     my @out = ({
                 part_index => 'pre',
                 part_level => 0,
