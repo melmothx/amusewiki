@@ -15,9 +15,13 @@
       <a href="[% c.uri_for_action('/federation/show') %]">[% loc('Federation') %]</a>
     </li>
     [% END %]
-    <li class="active">
-      [% bulk_job.job_title | html %]
+    [% IF bulk_job.is_catalog_upload %]
+    <li>
+      <a href="[% c.uri_for_action('/console/upload_spreadsheet') %]">
+        [% loc('Catalog Spreadsheets') %]
+      </a>
     </li>
+    [% END %]
   </ol>
 </div>
 

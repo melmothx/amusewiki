@@ -2,7 +2,9 @@
 [% # loc('active'), loc('aborted'), loc('completed') %]
 <div class="row">
   <div class="col-xs-4">
-    <h3><a href="[% c.uri_for_action('/tasks/show_bulk_job', [ bulk_job.bulk_job_id ]) %]">[% bulk_job.task %]</a>
+    [% # loc('catalog_upload'), loc('mirror'), loc('rebuild'), loc('reindex') %]
+    <h3>
+      <a href="[% c.uri_for_action('/tasks/show_bulk_job', [ bulk_job.bulk_job_id ]) %]">[% loc(bulk_job.task) %]</a>
       <small class="bulk-job-status">[% bulk_job.status %]</small>
     </h3>
     <ul>

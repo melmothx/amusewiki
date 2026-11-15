@@ -293,6 +293,11 @@ sub is_mirror {
     return shift->task eq 'mirror';
 }
 
+sub is_catalog_upload {
+    return shift->task eq 'catalog_upload';
+}
+
+
 sub job_title {
     my $self = shift;
     my $site = $self->site;

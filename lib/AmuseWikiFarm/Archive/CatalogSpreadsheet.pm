@@ -150,7 +150,7 @@ sub create_revisions_from_file {
     }
     my $site_id = $site->id;
     return $site->bulk_jobs->create({
-                                     task => 'publish_revisions',
+                                     task => 'catalog_upload',
                                      created => $now,
                                      status => (scalar(@revs) ? 'active' : 'completed'),
                                      completed => (scalar(@revs) ? undef : $now),
