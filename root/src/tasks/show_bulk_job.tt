@@ -22,6 +22,9 @@
       </a>
     </li>
     [% END %]
+    <li class="active">
+      [% bulk_job.job_title | html %]
+    </li>
   </ol>
 </div>
 
