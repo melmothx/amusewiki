@@ -1891,7 +1891,7 @@ sub spreadsheet_catalog_specification {
                  name => 'notes',
                  label => $lh->loc("Additional Notes"),
                 };
-    foreach my $annotation ($self->annotations->active_only->public_only->no_files->sorted) {
+    foreach my $annotation ($self->annotations->active_only->no_files->sorted) {
         push @list, {
                      name => $annotation->html_form_name,
                      label => $lh->loc($annotation->label),
@@ -2026,9 +2026,25 @@ sub import_text_from_html_params {
             }
         }
     }
-    if ($params->{annotation_updates}) {
-        $created->annotate($params->{annotation_updates});
+    # coming directly from the form:
+    my $annotation_updates = $params->{annotation_updates};
+    unless ($annotation_updates) {
+        # passed as named parameter. Skip the files though. We don't
+        # want to read arbitrary files around
+        my %annotations;
+        foreach my $ann ($self->annotations->active_only->no_files->sorted->all) {
+            my $form_name = $ann->html_form_name;
+            if (my $v = $params->{$form_name}) {
+                if (defined $v and length $v) {
+                    $annotations{$ann->annotation_id} = { value => $v };
+                }
+            }
+        }
+        if (%annotations) {
+            $annotation_updates = \%annotations;
+        }
     }
+    $created->annotate($annotation_updates) if $annotation_updates;
 
     # title->can_spawn_revision will return false, so we have to force
     my $revision = $created->new_revision('force');

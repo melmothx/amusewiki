@@ -8,7 +8,7 @@ BEGIN {
 };
 
 use Data::Dumper;
-use Test::More tests => 268;
+use Test::More tests => 271;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -377,4 +377,19 @@ ok path($site->repo_root, 'annotations', '.gitignore')->exists;
     my $got = $site->generate_spreadsheet_catalog;
     ok $got;
     diag $got->slurp_utf8;
+
+    my $rev = $site->create_new_text({
+                                      no_muse_body => 1,
+                                      $ap->html_form_name => "666 EUR",
+                                      $as->html_form_name => "Test-SLC",
+                                      # this should be skipped
+                                      $af->html_form_name => 't/files/shot.pdf',
+                                      title => "Annotation Test",
+                                      author => "Pinco Pallino",
+                                     }, 'text');
+    $rev->commit_version;
+    $rev->publish_text(sub { diag $@ });
+    $mech->get_ok('/library/pinco-pallino-annotation-test?bare=1');
+    $mech->content_contains("Test-SLC");
+    $mech->content_contains("666 EUR");
 }
