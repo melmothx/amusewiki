@@ -459,7 +459,7 @@ sub marc21_record {
                     }
                 }
             }
-            foreach my $attachment ($title->attachments->public_only->all) {
+            foreach my $attachment ($title->attachments->public_only->with_descriptions->all) {
                 foreach my $r ($attachment->oai_pmh_records->not_deleted) {
                     push @{ $rec{full_uri} }, {
                                                u => $base_url . $r->identifier,

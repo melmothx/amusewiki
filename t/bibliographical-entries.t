@@ -8,7 +8,7 @@ BEGIN {
     $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';
 };
 
-use Test::More tests => 34;
+use Test::More tests => 36;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -80,9 +80,8 @@ foreach my $ext (qw/csv xls xlsx/) {
                                                  logger => sub { diag @_ },
                                                 });
     ok $bulk;
-    my $total_jobs = 0;
+    my $total_jobs = $bulk->jobs->count;
     while (my $j = $site->jobs->dequeue) {
-        $total_jobs++;
         $j->dispatch_job;
         diag $j->logs;
     }
@@ -95,11 +94,44 @@ foreach my $ext (qw/csv xls xlsx/) {
                                               logger => sub { diag @_ },
                                              });
     ok $bulk;
+    is $bulk->jobs->count, $total_jobs, "Reimport the sheet spawned same number of jobs";
     while (my $j = $site->jobs->dequeue) {
-        $total_jobs--;
         $j->dispatch_job;
         diag $j->logs;
     }
-    ok !$total_jobs, "Reimport the sheet spawned same number of jobs";
-
+    # now we pick one and add some text, another and we add an
+    # attachment. Now the reimport would fail on those.
+    my ($t1, $t2, $t3) = $site->titles->search(undef, { rows => 3 })->all;
+    {
+        my $rev = $t1->new_revision;
+        my $got = $rev->add_attachment(catfile(qw/t files shot.pdf/));
+        $rev->edit("#attach $got->{attachment}\n" . $rev->muse_body);
+        $rev->commit_version;
+        $rev->publish_text;
+        my $att = $t1->discard_changes->attachments->first;
+        $att->edit(title_muse => 'Test Attachment');
+    }
+    {
+        my $rev = $t2->new_revision;
+        $rev->edit($rev->muse_body . "\n\nTest Body\n");
+        $rev->commit_version;
+        $rev->publish_text;
+    }
+    {
+        my $rev = $t3->new_revision;
+        my $got = $rev->add_attachment(catfile(qw/t files shot.pdf/));
+        $rev->edit("#attach $got->{attachment}\n" . $rev->muse_body);
+        $rev->commit_version;
+        $rev->publish_text;
+    }
+    $bulk = $csx->create_revisions_from_file($file,
+                                             {
+                                              logger => sub { diag @_ },
+                                             });
+    ok $bulk;
+    is $bulk->jobs->count, $total_jobs - 3, "Reimport the sheet spawned 3 jobs less";
+    while (my $j = $site->jobs->dequeue) {
+        $j->dispatch_job;
+        diag $j->logs;
+    }
 }

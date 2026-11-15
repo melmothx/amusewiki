@@ -1805,7 +1805,7 @@ sub create_new_text {
     if (my $existing_title = $self->titles->find({ uri => $uri, f_class => $f_class })) {
         # loc("Such URI already exists");
         # allow pure metadata overwriting here
-        if (!$existing_title->has_text_body and $params->{no_muse_body}) {
+        if (!$existing_title->has_text_body and !$existing_title->attachments->count and $params->{no_muse_body}) {
             log_info { "$f_class $uri already exists, removing"};
             $existing_title->delete;
         }
