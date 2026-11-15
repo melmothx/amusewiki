@@ -445,7 +445,31 @@ sub marc21_record {
         $rec{sku} = [ $title->sku ];
         $rec{isbn} = [ $title->isbn ];
         $rec{sku} = [ $title->sku ];
-        # populate the rec here
+
+        # add the formats and the attachments here if we are the landing page
+        if ($self->is_landing_page) {
+            if ($title->has_text_body) {
+                foreach my $r ($title->oai_pmh_records->not_deleted) {
+                    if ($r->identifier ne $self->identifier) {
+                        push @{ $rec{full_uri} }, {
+                                                   u => $base_url . $r->identifier,
+                                                   q => $r->metadata_format || '',
+                                                   y => $r->metadata_format_description || '',
+                                                  };
+                    }
+                }
+            }
+            foreach my $attachment ($title->attachments->public_only->all) {
+                foreach my $r ($attachment->oai_pmh_records->not_deleted) {
+                    push @{ $rec{full_uri} }, {
+                                               u => $base_url . $r->identifier,
+                                               q => $r->metadata_format || '',
+                                               y => $r->metadata_format_description || 'Attachment',
+                                              };
+                }
+            }
+        }
+
       ANNOTATION:
         foreach my $ann ($title->title_annotations->public->by_type([qw/text identifier/])) {
             my $annotation = $ann->annotation;
@@ -701,6 +725,17 @@ sub dublin_core_record {
         }
     }
     return \@out;
+}
+
+sub is_landing_page {
+    my $self = shift;
+    # no extension in the identifier
+    if ($self->identifier =~ m/\./) {
+        return 0;
+    }
+    else {
+        return 1;
+    }
 }
 
 
