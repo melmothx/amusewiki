@@ -8,7 +8,7 @@ BEGIN {
     $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';
 };
 
-use Test::More tests => 32;
+use Test::More tests => 34;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -80,7 +80,9 @@ foreach my $ext (qw/csv xls xlsx/) {
                                                  logger => sub { diag @_ },
                                                 });
     ok $bulk;
+    my $total_jobs = 0;
     while (my $j = $site->jobs->dequeue) {
+        $total_jobs++;
         $j->dispatch_job;
         diag $j->logs;
     }
@@ -88,5 +90,16 @@ foreach my $ext (qw/csv xls xlsx/) {
     foreach my $r (@$current) {
         $mech->get_ok('/library/' . $r->{uri});
     }
+    $bulk = $csx->create_revisions_from_file($file,
+                                             {
+                                              logger => sub { diag @_ },
+                                             });
+    ok $bulk;
+    while (my $j = $site->jobs->dequeue) {
+        $total_jobs--;
+        $j->dispatch_job;
+        diag $j->logs;
+    }
+    ok !$total_jobs, "Reimport the sheet spawned same number of jobs";
 
 }

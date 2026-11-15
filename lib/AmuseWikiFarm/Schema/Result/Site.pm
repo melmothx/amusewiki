@@ -1802,9 +1802,16 @@ sub create_new_text {
     # and store it in the params
     $params->{uri} = $uri;
 
-    if ($self->titles->find({ uri => $uri, f_class => $f_class })) {
+    if (my $existing_title = $self->titles->find({ uri => $uri, f_class => $f_class })) {
         # loc("Such URI already exists");
-        return undef, "Such URI already exists";
+        # allow pure metadata overwriting here
+        if (!$existing_title->has_text_body and $params->{no_muse_body}) {
+            log_info { "$f_class $uri already exists, removing"};
+            $existing_title->delete;
+        }
+        else {
+            return undef, "Such URI already exists";
+        }
     }
     return $self->import_text_from_html_params($params, $f_class);
 }
