@@ -2075,8 +2075,8 @@ sub import_text_from_html_params {
                               slides
                               source lang pubdate
                              /,
-                           map { $_->{name} }   @{ $self->built_in_directives || [] },
-                           map { $_->{header} } @{ $self->custom_category_types || [] },
+                           (map { $_->{name} }   @{ $self->built_in_directives || [] }),
+                           (map { $_->{header} } @{ $self->custom_category_types || [] }),
                           ) {
         $self->_add_directive($fh, $directive, $params->{$directive}) unless $done{$directive};
         # avoid duplicate if the custom category overrides the built-in
