@@ -444,7 +444,6 @@ sub marc21_record {
         $rec{subtitle} = [ $title->subtitle ];
         $rec{sku} = [ $title->sku ];
         $rec{isbn} = [ $title->isbn ];
-        $rec{sku} = [ $title->sku ];
 
         # add the formats and the attachments here if we are the landing page
         if ($self->is_landing_page) {
