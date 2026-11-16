@@ -589,39 +589,9 @@ sub marc21_record {
         ]
       ];
 
-    my @datafields = (
-                      [ contributor => '720', '0', '0', qw/a e/],
-                      [ coverage    => '500', ' ', ' ', 'a' ],
-                      # [ creator     => '720', ' ', ' ', qw/a e/],
-                      [ creator     => '100', ' ', ' ', qw/a e/],
-                      # date needs refinements
-                      [ pub_place   => '260', ' ', ' ', 'a' ],
-                      [ publisher   => '260', ' ', ' ', 'b' ],
-                      [ date        => '260', ' ', ' ', 'c' ],
-                      [ date        => '363', ' ', ' ', 'i' ],
-                      [ description => '520', ' ', ' ', 'a' ],
-                      [ sku         => '024', '8', ' ', 'a' ],
-                      [ language    => '546', ' ', ' ', 'a' ],
-                      [ relation    => '787', '0', ' ', 'n' ],
-                      [ rights      => '540', ' ', ' ', 'a' ],
-                      [ source      => '786', '0', ' ', 'n' ],
-                      [ subject     => '653', ' ', ' ', 'a' ],
-                      [ title       => '245', '0', '0', 'a' ],
-                      [ subtitle    => '246', '3', '3', 'a' ],
-                      [ type        => '655', '7', ' ', 'a', '2' ],
-                      [ type        => '336', ' ', ' ', 'a' ],
-                      [ trade_price_value => '365', ' ', ' ', 'b' ],
-                      [ trade_price_currency => '365', ' ', ' ', 'c' ],
-                      # koha full call number is 952 o
-                      [ slc         => '852', ' ', ' ', 'c' ],
-                      [ isbn        => '020', ' ', ' ', 'a' ],
-                      [ full_uri    => '856', ' ', ' ', qw/u q y/],
-                      [ aggregation => '773', ' ', ' ', qw/t g o 6 z d q  /],
-                      [ aggregated =>  '774', ' ', ' ', qw/t   o 6 z d   8/],
-                      );
     Dlog_debug { "MARC21: $_" } \%rec;
 
-    foreach my $df (sort { $a->[1] cmp $b->[1] } @datafields) {
+    foreach my $df (@{ $self->site->aoi_pmh_fields }) {
         my ($name, $tag, $ind1, $ind2, $code, @rest) = @$df;
         if (my $all = $rec{$name}) {
             foreach my $r (grep { length $_ } @$all) {

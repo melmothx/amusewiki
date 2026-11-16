@@ -4821,24 +4821,79 @@ sub built_in_directives {
     # loc('Copyright notice'); loc('ISBN'); loc('Series Number');
     # loc('Series Name'); loc('Publisher'); loc('SKU'); loc('First Edition Date');
     my %builtins = (
-                    rights => 'Copyright notice',
-                    isbn => 'ISBN',
-                    seriesnumber => 'Series Number',
-                    seriesname => 'Series Name',
-                    publisher => 'Publisher',
-                    sku => 'SKU',
-                    datefirst => 'First Edition Date',
+                    rights       => { description => 'Copyright notice',   oai_pmh_field => 'rights' },
+                    isbn         => { description => 'ISBN',               oai_pmh_field => 'isbn' },
+                    seriesnumber => { description => 'Series Number',      oai_pmh_field => '' },
+                    seriesname   => { description => 'Series Name',        oai_pmh_field => '' },
+                    publisher    => { description => 'Publisher',          oai_pmh_field => 'publisher' },
+                    sku          => { description => 'SKU',                oai_pmh_field => 'sku' },
+                    datefirst    => { description => 'First Edition Date', oai_pmh_field => '' },
                    );
+    my %oai_pmh_descs = map { $_->{field} => $_->{desc} } @{ $self->oai_pmh_field_descriptions };
     my @out;
     foreach my $f (sort keys %builtins) {
-        push @out, {
-                    name => $f,
-                    description => $builtins{$f},
-                    active => $self->get_option("active_built_in_directive_$f") || 0,
-                   };
+        my $bi = $builtins{$f};
+        $bi->{name} = $f;
+        $bi->{active} = $self->get_option("active_built_in_directive_$f") || 0;
+        $bi->{oai_pmh_field_desc} = $oai_pmh_descs{$bi->{oai_pmh_field}} || '';
+        push @out, $bi;
     }
     return \@out;
 }
+
+sub oai_pmh_fields {
+    my @datafields = (
+                      [ contributor => '720', '0', '0', qw/a e/],
+                      [ coverage    => '500', ' ', ' ', 'a' ],
+                      # [ creator     => '720', ' ', ' ', qw/a e/],
+                      [ creator     => '100', ' ', ' ', qw/a e/],
+                      # date needs refinements
+                      [ pub_place   => '260', ' ', ' ', 'a' ],
+                      [ publisher   => '260', ' ', ' ', 'b' ],
+                      [ date        => '260', ' ', ' ', 'c' ],
+                      [ date        => '363', ' ', ' ', 'i' ],
+                      [ description => '520', ' ', ' ', 'a' ],
+                      [ sku         => '024', '8', ' ', 'a' ],
+                      [ language    => '546', ' ', ' ', 'a' ],
+                      [ relation    => '787', '0', ' ', 'n' ],
+                      [ rights      => '540', ' ', ' ', 'a' ],
+                      [ source      => '786', '0', ' ', 'n' ],
+                      [ subject     => '653', ' ', ' ', 'a' ],
+                      [ title       => '245', '0', '0', 'a' ],
+                      [ subtitle    => '246', '3', '3', 'a' ],
+                      [ type        => '655', '7', ' ', 'a', '2' ],
+                      [ type        => '336', ' ', ' ', 'a' ],
+                      [ trade_price_value => '365', ' ', ' ', 'b' ],
+                      [ trade_price_currency => '365', ' ', ' ', 'c' ],
+                      # koha full call number is 952 o
+                      [ slc         => '852', ' ', ' ', 'c' ],
+                      [ isbn        => '020', ' ', ' ', 'a' ],
+                      [ full_uri    => '856', ' ', ' ', qw/u q y/],
+                      [ aggregation => '773', ' ', ' ', qw/t g o 6 z d q  /],
+                      [ aggregated =>  '774', ' ', ' ', qw/t   o 6 z d   8/],
+                     );
+    return [ sort { $a->[1] cmp $b->[1] } @datafields ];
+}
+
+# selectable ones
+sub oai_pmh_field_descriptions {
+    return [
+            { field => 'contributor', desc => 'Contributor' },
+            { field => 'creator', desc => 'Creator' },
+            { field => 'pub_place', desc => 'Publication Place' },
+            { field => 'publisher', desc => 'Publisher' },
+            { field => 'date', desc => 'Date' },
+            { field => 'description', desc => 'Description' },
+            { field => 'sku', desc => 'SKU' },
+            { field => 'isbn', desc => 'ISBN' },
+            { field => 'slc', desc => 'Shelf Location Code' },
+            { field => 'subject', desc => 'Subject' },
+            { field => 'rights', desc => 'Rights' },
+            { field => 'trade_price_value', desc => 'Trade Price Value' },
+            { field => 'trade_price_currency', desc => 'Trade Price Currency' },
+           ];
+}
+
 
 sub xapian_reindex_all {
     my ($self, $logger) = @_;
@@ -5424,7 +5479,8 @@ sub edit_category_types_from_params {
         # skip editing if not passed
         next CATEGORY_TYPE unless exists $params{$code . "_active"};
         foreach my $f (qw/active priority name_singular name_plural generate_index in_colophon
-                         description/) {
+                          oai_pmh_field
+                          description/) {
             my $cgi = $code . '_' . $f;
             if (exists $params{$cgi}) {
                 $cc->$f($params{$cgi})

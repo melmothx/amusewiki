@@ -17,6 +17,7 @@
         <th>[% loc('Name singular') %]</th>
         <th>[% loc('Name plural') %]</th>
         <th>[% loc('Search Engine Facets') %]</th>
+        <th>[% loc('OAI-PMH Field') %]</th>
         <th>[% loc('Help Text') %]</th>
       </tr>
       [% FOREACH ct IN site_category_types %]
@@ -75,6 +76,12 @@
             [% END %]
           </td>
           <td>
+            <select name="[% ct.category_type %]_oai_pmh_field">
+              [% SET current_oai_field = ct.exposed_oai_pmh_field %]
+              [% INCLUDE 'include/oai_pmh_fields.tt' %]
+            </select>
+          </td>
+          <td>
             <textarea class="form-control"
                       name="[% ct.category_type %]_description">[% ct.description | html %]</textarea>
           </td>
@@ -100,6 +107,7 @@
           <td>[% loc(builtindir.description) %]</td>
           <td>-</td>
           <td>[% loc('No') %]</td>
+          <td>[% builtindir.oai_pmh_field_desc %]</td>
           <td></td>
         </tr>
       [% END %]

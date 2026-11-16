@@ -1,0 +1,6 @@
+<option value="">[% loc('Not exposed') %]</option>
+[% FOREACH oai_pmh_field IN site.oai_pmh_field_descriptions %]
+  <option value="[% oai_pmh_field.field %]"
+          [% IF current_oai_field == oai_pmh_field.field %]selected="selected"[% END %]
+  >[% loc(oai_pmh_field.desc) %]</option>
+[% END %]

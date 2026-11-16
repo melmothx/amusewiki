@@ -1281,6 +1281,7 @@ root/src/include/js-diff.tt
 root/src/include/markitup.tt
 root/src/include/mirror-infos.tt
 root/src/include/node_breadcrumbs.tt
+root/src/include/oai_pmh_fields.tt
 root/src/include/pagination-widget.tt
 root/src/include/pagination.tt
 root/src/include/posts.tt

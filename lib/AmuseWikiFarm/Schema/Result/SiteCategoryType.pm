@@ -209,6 +209,21 @@ sub assign_xapian_custom_slot {
     return $done;
 }
 
+sub exposed_oai_pmh_field {
+    my $self = shift;
+    # the usual special cases
+    my %hardcoded = (
+                     author => 'creator',
+                     topic => 'subject',
+                    );
+    if (my $f = $self->oai_pmh_field) {
+        if ($f =~ m/\A[a-z0-9_]+\z/) {
+            return $f;
+        }
+    }
+    return $hardcoded{$self->category_type};
+}
+
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
