@@ -63,6 +63,12 @@ __PACKAGE__->table("annotation");
   is_nullable: 0
   size: 32
 
+=head2 oai_pmh_field
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 64
+
 =head2 label
 
   data_type: 'varchar'
@@ -101,6 +107,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "annotation_type",
   { data_type => "varchar", is_nullable => 0, size => 32 },
+  "oai_pmh_field",
+  { data_type => "varchar", is_nullable => 1, size => 64 },
   "label",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "priority",
@@ -190,8 +198,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07051 @ 2024-01-18 18:05:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:h1en/hmsPCQDSpHegRVMiA
+# Created by DBIx::Class::Schema::Loader v0.07053 @ 2026-11-16 15:52:15
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Nfa2JPzFD3ZOlO1hdF5qEQ
 
 use Path::Tiny ();
 use AmuseWikiFarm::Utils::Paths ();

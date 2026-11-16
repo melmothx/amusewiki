@@ -467,6 +467,7 @@ CREATE TABLE site_category_type (
        generate_index SMALLINT NOT NULL DEFAULT 1,
        in_colophon SMALLINT NOT NULL DEFAULT 0,
        xapian_custom_slot SMALLINT NULL,
+       oai_pmh_field VARCHAR(64),
        description TEXT,
        PRIMARY KEY (site_id, category_type)
 );
@@ -813,6 +814,7 @@ CREATE TABLE annotation (
     site_id VARCHAR(16) NOT NULL REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE,
     annotation_name VARCHAR(255) NOT NULL,
     annotation_type VARCHAR(32) NOT NULL,
+    oai_pmh_field VARCHAR(64),
     label VARCHAR(255) NOT NULL DEFAULT '',
     priority INTEGER NOT NULL DEFAULT 0,
     active INTEGER(1) NOT NULL DEFAULT 1,

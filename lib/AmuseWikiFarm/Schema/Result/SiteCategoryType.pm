@@ -92,6 +92,12 @@ __PACKAGE__->table("site_category_type");
   data_type: 'smallint'
   is_nullable: 1
 
+=head2 oai_pmh_field
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 64
+
 =head2 description
 
   data_type: 'text'
@@ -118,6 +124,8 @@ __PACKAGE__->add_columns(
   { data_type => "smallint", default_value => 0, is_nullable => 0 },
   "xapian_custom_slot",
   { data_type => "smallint", is_nullable => 1 },
+  "oai_pmh_field",
+  { data_type => "varchar", is_nullable => 1, size => 64 },
   "description",
   { data_type => "text", is_nullable => 1 },
 );
@@ -154,8 +162,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2023-05-07 15:43:51
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:hJIoIY+w8K5dGp9uxYbKng
+# Created by DBIx::Class::Schema::Loader v0.07053 @ 2026-11-16 15:52:15
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:06LGnV++1bNY3NQFSx434Q
 
 use AmuseWikiFarm::Log::Contextual;
 
