@@ -277,17 +277,26 @@ ok path($site->repo_root, 'annotations', '.gitignore')->exists;
     my $ap = $site->annotations->create({
                                          label => 'Price',
                                          annotation_name => 'price',
-                                         annotation_type => 'text'
+                                         annotation_type => 'text',
+                                         oai_pmh_field => 'trade_price_value',
+                                        });
+    my $apc = $site->annotations->create({
+                                         label => 'Currency',
+                                         annotation_name => 'currency',
+                                         annotation_type => 'text',
+                                         oai_pmh_field => 'trade_price_currency',
                                         });
     my $as = $site->annotations->create({
                                          label => 'Shelf Location Code',
                                          annotation_name => 'slc',
-                                         annotation_type => 'identifier'
+                                         annotation_type => 'identifier',
+                                         oai_pmh_field => 'slc',
                                         });
     my $title = $site->titles->first;
     diag $title->full_uri;
     $title->annotate({
-                      $ap->annotation_id => { value => '30 EUR' },
+                      $ap->annotation_id => { value => '30' },
+                      $apc->annotation_id => { value => 'EUR' },
                       $as->annotation_id => { value => 'YY/X' },
                      });
     $mech->get('/oai-pmh?verb=GetRecord&metadataPrefix=marc21&identifier=oai:0annotate0.amusewiki.org:' .

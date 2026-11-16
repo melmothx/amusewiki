@@ -473,22 +473,9 @@ sub marc21_record {
             my $annotation_name = $annotation->annotation_name;
             my $annotation_value = $ann->annotation_value;
             next ANNOTATION unless length($annotation_value);
-            if ($annotation_name eq 'slc') {
-                $rec{slc} = [ $annotation_value ];
-            }
-            elsif ($annotation_name eq 'price') {
-                if (my $full_price = $annotation_value) {
-                    $full_price =~ s/\s//g;
-                    if ($full_price =~ m/([^0-9\.\,]+)/) {
-                        $rec{trade_price_currency} = [ $1 ];
-                        # remove non-numeric
-                        $full_price =~ s/[^0-9\.\,]//g;
-                        $rec{trade_price_value} = [ $full_price ];
-                    }
-                    else {
-                        $rec{trade_price_value} = [ $full_price ];
-                    }
-                }
+            if (my $oai_field = $annotation->exposed_oai_pmh_field) {
+                $rec{$oai_field} ||= [];
+                push @{$rec{$oai_field}}, $annotation_value;
             }
             else {
                 push @{$rec{description}}, $annotation->label . ": " . $annotation_value;

@@ -5434,7 +5434,7 @@ sub edit_annotations_from_params {
         if ($params{"edit-$id"}) {
             if (my $type = $valid_types{$params{"annotation_type-$id"}}) {
                 my %orig = $ann->get_columns;
-                foreach my $col (qw/annotation_type label priority active private/) {
+                foreach my $col (qw/annotation_type oai_pmh_field label priority active private/) {
                     $ann->$col($params{$col . '-' . $id} // 0);
                 }
                 if ($ann->is_changed) {

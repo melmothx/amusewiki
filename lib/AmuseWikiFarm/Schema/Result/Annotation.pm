@@ -382,5 +382,16 @@ sub _identify_object {
     return ($type, $store);
 }
 
+sub exposed_oai_pmh_field {
+    my $self = shift;
+    # make sure it's sane and not some random crap
+    if (my $f = $self->oai_pmh_field) {
+        if ($f =~ m/\A[a-z0-9_]+\z/) {
+            return $f;
+        }
+    }
+    return undef;
+}
+
 __PACKAGE__->meta->make_immutable;
 1;
