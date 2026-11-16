@@ -1867,7 +1867,7 @@ sub spreadsheet_catalog_specification {
                  name  => 'date',
                  label => $lh->loc("Date of the original publication"),
                 };
-    foreach my $bi (grep { $_->{active} } @{ $self->built_in_directives || [] }) {
+    foreach my $bi (@{ $self->built_in_directives || [] }) {
         push @list, {
                      name => $bi->{name},
                      label => $lh->loc($bi->{description}),
@@ -4816,7 +4816,7 @@ sub bootstrap_alt_theme {
     return shift->get_option('bootstrap_alt_theme');
 }
 
-sub built_in_directives {
+sub built_in_directives_all {
     my $self = shift;
     # loc('Copyright notice'); loc('ISBN'); loc('Series Number');
     # loc('Series Name'); loc('Publisher'); loc('SKU'); loc('First Edition Date');
@@ -4839,6 +4839,11 @@ sub built_in_directives {
         push @out, $bi;
     }
     return \@out;
+}
+
+sub built_in_directives {
+    my $self = shift;
+    return [ grep { $_->{active} } @{$self->built_in_directives_all} ];
 }
 
 sub oai_pmh_fields {
