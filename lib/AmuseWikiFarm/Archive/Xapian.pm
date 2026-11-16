@@ -462,13 +462,16 @@ sub index_text {
 
             # built-ins fields
             # Dlog_debug { "Row is $_" } +{ $title->get_columns };
-            foreach my $method (qw/rights isbn seriesname seriesnumber publisher sku/) {
-                # log_debug { "Calling $method against title" };
-                if (my $thing = $title->$method) {
-                    # log_debug { "Indexing $method $thing" };
-                    $indexer->index_text(strip_diacritcs($thing));
-                    $indexer->increase_termpos;
+            if ($site) {
+                foreach my $method (map { $_->{name} } @{ $site->built_in_directives || [] }) {
+                    # log_debug { "Calling $method against title" };
+                    if (my $thing = $title->$method) {
+                        # log_debug { "Indexing $method $thing" };
+                        $indexer->index_text(strip_diacritics($thing));
+                        $indexer->increase_termpos;
+                    }
                 }
+
             }
             my %muse_headers = map { $_->muse_header => $_->as_html } $title->muse_headers;
             foreach my $cct (@$custom_category_types) {

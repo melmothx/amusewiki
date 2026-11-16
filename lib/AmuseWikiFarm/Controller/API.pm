@@ -248,16 +248,12 @@ sub latest :Chained('api') :PathPart('latest') :Args {
                                       pubdate
                                       status
                                       parent
-                                      publisher
-                                      isbn
-                                      rights
-                                      seriesname
-                                      seriesnumber
                                       cover
                                       teaser
-                                      sku
                                       uri
-                                     /],
+                                     /,
+                                   (map { $_->{name} } @{ $site->built_in_directives || [] })
+                                  ],
                        prefetch => [
                                     'muse_headers',
                                     { title_categories => 'category'},
