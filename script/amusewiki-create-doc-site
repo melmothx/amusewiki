@@ -29,6 +29,7 @@ GetOptions(
            'username=s' => \$username,
            'password=s' => \$password,
            'email=s' => \$mail_notify,
+           'id=s' => \$site_id,
            'create-db-only' => \$create_db_only,
            help => \$help,
           ) or die;
@@ -165,8 +166,7 @@ $site->discard_changes;
 my $repo_root = $site->repo_root;
 
 unless (-d $repo_root) {
-    if ((system(git => clone => "https://amusewiki.org/git/amw" => $site->repo_root) == 0) or
-        (system(git => clone => "https://github.com/melmothx/amusewiki-site.git" => $site->repo_root) == 0)) {
+    if (system(git => clone => "https://github.com/melmothx/amusewiki-site.git" => $site->repo_root) == 0) {
         print "Repository with the official documentation has been created at " . $site->repo_root . "\n";
         $site->configure_cgit;
     }
