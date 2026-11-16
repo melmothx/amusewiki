@@ -591,7 +591,7 @@ sub marc21_record {
 
     Dlog_debug { "MARC21: $_" } \%rec;
 
-    foreach my $df (@{ $self->site->aoi_pmh_fields }) {
+    foreach my $df (@{ $self->site->oai_pmh_fields }) {
         my ($name, $tag, $ind1, $ind2, $code, @rest) = @$df;
         if (my $all = $rec{$name}) {
             foreach my $r (grep { length $_ } @$all) {
