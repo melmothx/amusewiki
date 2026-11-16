@@ -4,6 +4,13 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.620 2026-11-16
+
+ - Updated ne.po
+
+ - Prevent title id and status to be picked up from the muse header,
+   leading to a crash
+
 2.619 2026-10-10
 
  - Add preliminary ne.po (no actual translations)
