@@ -8,7 +8,7 @@ BEGIN {
     $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';
 };
 
-use Test::More tests => 36;
+use Test::More tests => 54;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -102,6 +102,8 @@ foreach my $ext (qw/csv xls xlsx/) {
     # now we pick one and add some text, another and we add an
     # attachment. Now the reimport would fail on those.
     my ($t1, $t2, $t3) = $site->titles->search(undef, { rows => 3 })->all;
+    my @lacking;
+    my @expected = map { $_->full_uri } ($t1, $t2, $t3);
     {
         my $rev = $t1->new_revision;
         my $got = $rev->add_attachment(catfile(qw/t files shot.pdf/));
@@ -110,12 +112,15 @@ foreach my $ext (qw/csv xls xlsx/) {
         $rev->publish_text;
         my $att = $t1->discard_changes->attachments->first;
         $att->edit(title_muse => 'Test Attachment');
+        push @expected, $att->full_uri;
+        push @lacking, map { $t1->full_uri . $_ } ('.tex', '.epub', '.muse', '.zip');
     }
     {
         my $rev = $t2->new_revision;
         $rev->edit($rev->muse_body . "\n\nTest Body\n");
         $rev->commit_version;
         $rev->publish_text;
+        push @expected, map { $t2->full_uri . $_ } ('.tex', '.epub', '.muse', '.zip');
     }
     {
         my $rev = $t3->new_revision;
@@ -123,6 +128,9 @@ foreach my $ext (qw/csv xls xlsx/) {
         $rev->edit("#attach $got->{attachment}\n" . $rev->muse_body);
         $rev->commit_version;
         $rev->publish_text;
+        # attachment without a description won't get the entry
+        push @lacking, map { $t3->full_uri . $_ } ('.tex', '.epub', '.muse', '.zip');
+        push @lacking, $t3->discard_changes->attachments->first->full_uri;
     }
     $bulk = $csx->create_revisions_from_file($file,
                                              {
@@ -133,5 +141,13 @@ foreach my $ext (qw/csv xls xlsx/) {
     while (my $j = $site->jobs->dequeue) {
         $j->dispatch_job;
         diag $j->logs;
+    }
+    $mech->get_ok('/oai-pmh?verb=ListRecords&metadataPrefix=marc21&set=web');
+    diag $mech->content;
+    foreach my $str (@lacking) {
+        $mech->content_lacks($str);
+    }
+    foreach my $str (@expected) {
+        $mech->content_contains($str);
     }
 }
