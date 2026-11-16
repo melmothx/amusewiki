@@ -34,6 +34,16 @@ my $root = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 $root->get_ok('/login');
 ok $root->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 
+$site->site_options->update_or_create({
+                                       option_name => 'active_built_in_directive_sku',
+                                       option_value => 1,
+                                      });
+$site->site_options->update_or_create({
+                                       option_name => 'active_built_in_directive_isbn',
+                                       option_value => 1,
+                                      });
+$site->discard_changes;
+
 foreach my $title (qw/one two tree/) {
     my $muse = path($site->repo_root, qw/t tt/, "to-test-$title.muse");
     $muse->parent->mkpath;

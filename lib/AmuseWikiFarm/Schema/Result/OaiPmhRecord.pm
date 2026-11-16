@@ -416,7 +416,8 @@ sub marc21_record {
                ];
     }
     my $base_url = $self->site->canonical_url;
-    my $dc = $obj->dublin_core_entry;
+    my $dc = $obj->dublin_core_entry({ extended => 1 });
+    # Dlog_debug { "Dublin Core entry is $_" } $dc;
     my %rec = (
                %$dc,
                full_uri => [
@@ -442,9 +443,6 @@ sub marc21_record {
     if (my $title = $self->title) {
         $rec{title} = [ $title->title ];
         $rec{subtitle} = [ $title->subtitle ];
-        $rec{sku} = [ $title->sku ];
-        $rec{isbn} = [ $title->isbn ];
-
         # add the formats and the attachments here if we are the landing page
         if ($self->is_landing_page) {
             if ($title->has_text_body) {

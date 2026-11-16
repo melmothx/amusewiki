@@ -1594,7 +1594,8 @@ sub opds_entry {
 
 sub dublin_core_entry {
     # we need one per format
-    my ($self) = @_;
+    my ($self, $opts) = @_;
+    $opts ||= {};
     my @cats = $self->categories;
 
     my @rels;
@@ -1603,26 +1604,56 @@ sub dublin_core_entry {
     }
     my $data = {
                 title => [ grep { length($_) } ($self->title, $self->subtitle) ],
-                creator => [
-                            map { $_->name }
-                            grep { $_->type eq 'author' }
-                            @cats
-                           ],
-                subject => [
-                            map { $_->name }
-                            grep { $_->type eq 'topic' }
-                            @cats
-                           ],
                 description => [
                                 grep { length($_) && /\w/ } ($self->teaser, $self->notes)
                                ],
-                publisher => [ $self->publisher ],
                 date => [ grep { $_ } ($self->year_first_edition, $self->date_year || $self->pubdate->year) ],
                 source => [ $self->source ],
                 language => [ $self->lang || 'en' ],
-                rights => [ $self->rights ],
                 relation => [ @rels ],
+                creator => [],
+                subject => [],
+                publisher => [],
+                rights => [],
                };
+
+    # creator topic publisher rights
+    # creator => [
+    #                         map { $_->name }
+    #                         grep { $_->type eq 'author' }
+    #                         @cats
+    #                        ],
+    #             subject => [
+    #                         map { $_->name }
+    #                         grep { $_->type eq 'topic' }
+    #                         @cats
+    #                        ],
+    foreach my $ct ($self->site->site_category_types->active) {
+        if (my $oai_field = $ct->exposed_oai_pmh_field) {
+            if ($data->{$oai_field} or $opts->{extended}) {
+                $data->{$oai_field} ||= [];
+                my $ctype = $ct->category_type;
+                # log_debug { "Fetching $ctype from categories" };
+                push @{ $data->{$oai_field} }, (
+                                                map { $_->name }
+                                                grep { $_->type eq $ctype }
+                                                @cats
+                                               );
+            }
+        }
+    }
+    foreach my $bi (grep { $_->{active} } @{$self->site->built_in_directives}) {
+        if (my $method = $bi->{name}) {
+            if (my $oai_field = $bi->{oai_pmh_field}) {
+                # Dlog_debug { "Built in is $_" } $bi;
+                if ($data->{$oai_field} or $opts->{extended}) {
+                    $data->{$oai_field} ||= [];
+                    # log_debug { "Pushing $method to $oai_field" };
+                    push @{ $data->{$oai_field} }, $self->$method;
+                }
+            }
+        }
+    }
     return $data;
 }
 
