@@ -24,12 +24,12 @@ binmode STDOUT, ":encoding(utf-8)";
 
 use_ok('AmuseWikiFarm::Archive::Xapian') or die "Cannot load Xapian";
 
-is AmuseWikiFarm::Archive::Xapian::strip_diacritcs("ćdžéèà"), "cdzeea";
-is AmuseWikiFarm::Archive::Xapian::strip_diacritcs(10), 10;
-is AmuseWikiFarm::Archive::Xapian::strip_diacritcs(10.50), "10.5";
-is AmuseWikiFarm::Archive::Xapian::strip_diacritcs("10.50"), "10.50";
-is AmuseWikiFarm::Archive::Xapian::strip_diacritcs("test me èà\nèà\n"), "test me ea\nea\n";
-is AmuseWikiFarm::Archive::Xapian::strip_diacritcs(), "";
+is AmuseWikiFarm::Archive::Xapian::strip_diacritics("ćdžéèà"), "cdzeea";
+is AmuseWikiFarm::Archive::Xapian::strip_diacritics(10), 10;
+is AmuseWikiFarm::Archive::Xapian::strip_diacritics(10.50), "10.5";
+is AmuseWikiFarm::Archive::Xapian::strip_diacritics("10.50"), "10.50";
+is AmuseWikiFarm::Archive::Xapian::strip_diacritics("test me èà\nèà\n"), "test me ea\nea\n";
+is AmuseWikiFarm::Archive::Xapian::strip_diacritics(), "";
 
 my $site_id = '0xapian0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
