@@ -33,6 +33,15 @@ my $site = create_site($schema, $site_id);
 $site->update({ pdf => 1, a4_pdf => 1 });
 $site->check_and_update_custom_formats;
 
+foreach my $k (qw/rights isbn sku publisher/) {
+    $site->site_options->update_or_create({
+                                           option_name => "active_built_in_directive_$k",
+                                           option_value => 1,
+                                          });
+}
+
+$site->discard_changes;
+
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 
