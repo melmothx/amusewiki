@@ -2100,6 +2100,7 @@ t/improve-diff-124.t
 t/include/try-me.muse
 t/includes.t
 t/indexer.t
+t/injections.t
 t/internal-linking.t
 t/ip-whitelist.t
 t/job-console.t

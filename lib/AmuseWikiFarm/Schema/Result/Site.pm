@@ -2396,7 +2396,6 @@ sub index_file {
     my %insertion = (deleted => '');
     # lower case the keys
 
-
     my $fields = $self->title_fields;
     foreach my $col (keys %$details) {
         my $db_col = lc($col);
@@ -2404,7 +2403,13 @@ sub index_file {
             $insertion{$db_col} = delete $details->{$col};
         }
     }
-
+    # don't pick up those from the header. Internal. Fields with
+    # underscore are already filtered out during parsing.
+    foreach my $reserve (qw/id status/) {
+        if (my $ignored = delete $insertion{$reserve}) {
+            $logger->("Removed reserved $reserve: $ignored");
+        }
+    }
     delete $details->{coverwidth};
     $insertion{cover} = cover_filename_is_valid($insertion{cover});
     $insertion{blob_container} = delete $details->{blob} ? 1 : 0;
