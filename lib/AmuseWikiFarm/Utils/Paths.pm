@@ -97,7 +97,10 @@ sub static_file_location {
 }
 
 sub cache_upload_location {
-    return _install_location(qw/var uploads/);
+    # we can create this
+    my $path = root_install_directory->child(qw/var uploads/);
+    $path->mkpath unless $path->exists;
+    return $path;
 }
 
 
