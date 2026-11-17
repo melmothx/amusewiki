@@ -470,8 +470,8 @@
            });
        }
       build_uri();
-     $('.uri-maker').on('keyup', build_uri);
-     $('#uri').on('keyup', function() {
+     $('.uri-maker').on('input', build_uri);
+     $('#uri').on('input', function() {
          console.log("Updated #uri");
          if ($(this).val() && !$('#uri').data('has_manual_uri')) {
              console.log("Setting has_manual_uri to true");
