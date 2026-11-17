@@ -1867,7 +1867,7 @@ sub spreadsheet_catalog_specification {
                  name  => 'date',
                  label => $lh->loc("Date of the original publication"),
                 };
-    foreach my $bi (grep { $_->{active} } @{ $self->built_in_directives || [] }) {
+    foreach my $bi (grep { $_->{active} } @{ $self->built_in_directives_with_active_flag }) {
         push @list, {
                      name => $bi->{name},
                      label => $lh->loc($bi->{description}),
@@ -2075,7 +2075,7 @@ sub import_text_from_html_params {
                               slides
                               source lang pubdate
                              /,
-                           (map { $_->{name} }   @{ $self->built_in_directives || [] }),
+                           (map { $_->{name} }   @{ $self->built_in_directives }),
                            (map { $_->{header} } @{ $self->custom_category_types || [] }),
                           ) {
         $self->_add_directive($fh, $directive, $params->{$directive}) unless $done{$directive};
@@ -4834,11 +4834,19 @@ sub built_in_directives {
     foreach my $f (sort keys %builtins) {
         my $bi = $builtins{$f};
         $bi->{name} = $f;
-        $bi->{active} = $self->get_option("active_built_in_directive_$f") || 0;
         $bi->{oai_pmh_field_desc} = $oai_pmh_descs{$bi->{oai_pmh_field}} || '';
         push @out, $bi;
     }
     return \@out;
+}
+
+sub built_in_directives_with_active_flag {
+    my $self = shift;
+    my @directives = @{ $self->built_in_directives };
+    foreach my $i (@directives) {
+        $i->{active} = $self->get_option("active_built_in_directive_" . $i->{name}) || 0;
+    }
+    return \@directives;
 }
 
 sub oai_pmh_fields {
@@ -5511,7 +5519,7 @@ sub edit_category_types_from_params {
         }
     }
     # then the built-in directives
-    foreach my $bir (@{$self->built_in_directives || []}) {
+    foreach my $bir (@{ $self->built_in_directives }) {
         my $option = "active_built_in_directive_" . $bir->{name};
         $existing{$bir->{name}}++;
         if (defined $params{$option}) {

@@ -87,11 +87,12 @@
           </td>
         </tr>
       [% END %]
-      [% FOREACH builtindir IN site.built_in_directives %]
+      [% FOREACH builtindir IN site.built_in_directives_with_active_flag %]
         <tr>
           <td><code>[% builtindir.name %]</code></td>
           <td><code>#[% builtindir.name %]</code></td>
           <td>
+            <small class="help-block">[% loc('Always available. Shown in the creation form:') %]</small>
             <select name="active_built_in_directive_[% builtindir.name %]" required>
               <option value="1" [% IF builtindir.active %]selected[% END %]>
                 [% loc('Yes') %]
@@ -99,7 +100,7 @@
               <option value="0" [% UNLESS builtindir.active %]selected[% END %]>
                 [% loc('No') %]
               </option>
-            </select>&nbsp;<a href="#builtinexplanation"><strong>*</strong></a>
+            </select>
           </td>
           <td>[% loc('No') %]</td>
           <td>[% loc('Built-in') %]</td>
@@ -133,8 +134,3 @@
     </button>
   </form>
 </div>
-
-<p class="help-block" id="builtinexplanation">
-  <strong>*</strong>[% loc('This setting affects only the text creation form.') %]
-  <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]"><i class="fa fa-share"></i></a>
-</p>

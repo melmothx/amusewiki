@@ -252,7 +252,7 @@ sub latest :Chained('api') :PathPart('latest') :Args {
                                       teaser
                                       uri
                                      /,
-                                   (map { $_->{name} } @{ $site->built_in_directives || [] })
+                                   (map { $_->{name} } @{ $site->built_in_directives })
                                   ],
                        prefetch => [
                                     'muse_headers',

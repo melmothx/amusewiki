@@ -153,7 +153,7 @@
     </p>
     </div>
   </div>
-  [% FOREACH builtindir IN site.built_in_directives %]
+  [% FOREACH builtindir IN site.built_in_directives_with_active_flag %]
     [% SET builtindir_name = builtindir.name %]
     [% IF builtindir.active %]
       <div class="form-group">

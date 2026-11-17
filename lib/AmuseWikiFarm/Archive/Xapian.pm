@@ -463,7 +463,7 @@ sub index_text {
             # built-ins fields
             # Dlog_debug { "Row is $_" } +{ $title->get_columns };
             if ($site) {
-                foreach my $method (map { $_->{name} } @{ $site->built_in_directives || [] }) {
+                foreach my $method (map { $_->{name} } @{ $site->built_in_directives }) {
                     # log_debug { "Calling $method against title" };
                     if (my $thing = $title->$method) {
                         # log_debug { "Indexing $method $thing" };

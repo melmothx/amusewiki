@@ -1642,7 +1642,7 @@ sub dublin_core_entry {
             }
         }
     }
-    foreach my $bi (grep { $_->{active} } @{$self->site->built_in_directives}) {
+    foreach my $bi (@{$self->site->built_in_directives}) {
         if (my $method = $bi->{name}) {
             if (my $oai_field = $bi->{oai_pmh_field}) {
                 # Dlog_debug { "Built in is $_" } $bi;
