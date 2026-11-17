@@ -389,7 +389,7 @@ sub upload_spreadsheet :Chained('root') :PathPart('upload-catalog-spreadsheet') 
         if ($file_basename =~ m/\.(csv|xls|xlsx)$/) {
             $file_basename =~ s/[^a-zA-Z0-9_\.-]/_/g;
             $file_basename = $site->id . '-'. time() . '-' . $file_basename;
-            my $target = AmuseWikiFarm::Utils::Paths::cache_upload_location->child($file_basename);
+            my $target = $site->cache_upload_location->child($file_basename);
             log_debug { "Uploading to $target" };
             $upload->copy_to("$target");
             # update the spec.

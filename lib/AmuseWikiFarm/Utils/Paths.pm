@@ -96,14 +96,6 @@ sub static_file_location {
     return _install_location(qw/root static/);
 }
 
-sub cache_upload_location {
-    # we can create this
-    my $path = root_install_directory->child(qw/var uploads/);
-    $path->mkpath unless $path->exists;
-    return $path;
-}
-
-
 sub served_mime_types {
     return  +{
                 tex => 'application/x-tex',

@@ -1733,6 +1733,13 @@ sub staging_dir {
     return File::Spec->catdir(ROOT, $self->staging_dirname);
 }
 
+sub cache_upload_location {
+    my $self = shift;
+    my $dir = Path::Tiny::path(ROOT, qw/var uploads/, $self->id);
+    $dir->mkpath;
+    return $dir;
+}
+
 sub backup_directory {
     my $self = shift;
     my $dir = Path::Tiny::path(ROOT, backups => $self->id);

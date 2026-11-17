@@ -1067,7 +1067,7 @@ sub dispatch_job_catalog_spreadsheet_import {
                                                                  specification => $job_data->{specification},
                                                                  logger => $logger,
                                                                 );
-    my $file = AmuseWikiFarm::Utils::Paths::cache_upload_location->child($job_data->{file});
+    my $file = $site->cache_upload_location->child($job_data->{file});
     my $bulk = $parser->create_revisions_from_file($file, {
                                                            logger => $logger,
                                                            username => $self->username,
