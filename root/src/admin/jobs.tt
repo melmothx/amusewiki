@@ -81,19 +81,21 @@
       </tr>
     </thead>
     <tfoot>
-      <th></th>
-      <th><input type="text" size="4" placeholder="[% loc('Search this column') %]"/></th>
-      <th><input type="text" size="4" placeholder="[% loc('Search this column') %]"/></th>
-      <th><input class="form-control" type="text" placeholder="[% loc('Search this column') %]"/></th>
-      <th><input type="text" size="4" placeholder="[% loc('Search this column') %]"/></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th><input class="form-control" type="text" placeholder="[% loc('Search this column') %]"/></th>
-      <th><input class="form-control" type="text" placeholder="[% loc('Search this column') %]"/></th>
-      <th></th>
-      <th></th>
+      <tr>
+        <th></th>
+        <th><input type="text" size="4" placeholder="[% loc('Search this column') %]"/></th>
+        <th><input type="text" size="4" placeholder="[% loc('Search this column') %]"/></th>
+        <th><input class="form-control" type="text" placeholder="[% loc('Search this column') %]"/></th>
+        <th><input type="text" size="4" placeholder="[% loc('Search this column') %]"/></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><input class="form-control" type="text" placeholder="[% loc('Search this column') %]"/></th>
+        <th><input class="form-control" type="text" placeholder="[% loc('Search this column') %]"/></th>
+        <th></th>
+        <th></th>
+      </tr>
     </tfoot>
   </table>
 </div>
@@ -283,13 +285,9 @@
              }
          ]
      });
-     table.columns().every(function() {
-         var that = this;
-         $('input', this.footer()).on('keyup change', function () {
-             if ( that.search() !== this.value ) {
-                 that.search( this.value ).draw();
-             }
-         });
+     $('#job-table tfoot input').on('input', function() {
+         var index = $(this).closest('th').index();
+         table.column(index).search(this.value).draw();
      });
      $('.select-all').click(function() {
          var target = $(this).data('target');
