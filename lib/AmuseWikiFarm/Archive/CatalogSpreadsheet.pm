@@ -42,7 +42,8 @@ sub get_records {
     my %map;
     foreach my $spec (@$specification) {
         if (my $mapped = $spec->{column}) {
-            $map{$mapped} = $spec->{name};
+            $map{$mapped} ||= [];
+            push @{$map{$mapped}}, $spec->{name};
         }
     }
     my %sitesep = map { $_->{name} => $_->{separator} } grep { $_->{separator} } @$site_specification;
@@ -51,13 +52,14 @@ sub get_records {
     foreach my $r (@$out) {
         my %row;
         foreach my $mapped (keys %map) {
-            my $field = $map{$mapped};
-            my $value = $r->{$mapped} // '';
-            if ($sheetsep{$field} and $sitesep{$field} and $sheetsep{$field} ne $sitesep{$field}) {
-                my $sep = $sheetsep{$field};
-                $value = join("$sitesep{$field} ", split(/\s*\Q$sep\E\s*/, $value))
+            foreach my $field (@{$map{$mapped}}) {
+                my $value = $r->{$mapped} // '';
+                if ($sheetsep{$field} and $sitesep{$field} and $sheetsep{$field} ne $sitesep{$field}) {
+                    my $sep = $sheetsep{$field};
+                    $value = join("$sitesep{$field} ", split(/\s*\Q$sep\E\s*/, $value))
+                }
+                $row{$field} = $value;
             }
-            $row{$field} = $value;
         }
         if (defined $row{title} and $row{title} =~ m/\w/) {
             push @converted, \%row;
